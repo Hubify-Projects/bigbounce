@@ -12,3 +12,9 @@ Shared log of agent updates to this project. Other agents read this to see recen
 
 ## 2026-08-03T21:47:05.311Z — agent
 2026-08-03: Reconciled SSOT/site truth, consolidated all Git branch history onto main, removed obsolete refs/worktrees, aligned origin and personal fork, and advanced active plan to bounded final-hash acceptance. You.md remote push currently returns server_error: Failed to save bundle.
+
+## 2026-08-04T06:45:38.163Z — agent
+2026-08-03 publication architecture reset: paused six-equal-paper submission framing; mapped three research programs; P2 and P4 remain core, original DESI anomaly science requires claim reconciliation, P1A/P1B are specialist outputs, current P3/P5 are editorial holds. See project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md.
+
+## 2026-08-04T06:59:57.588Z — agent
+2026-08-03 DESI anomaly claim audit complete: 2,145 filtered candidates and 1,127 SIMBAD/NED-unmatched taxonomy rows survive as the strongest bounded science; the 22.5M enhanced parent/model must be restored or rerun; unsupported fNL, false-positive, enrichment, W2, redshift-neuron, and discovery wording retired. See project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md.

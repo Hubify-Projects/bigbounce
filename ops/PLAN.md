@@ -1,15 +1,23 @@
-# PLAN — BigBounce publication program
+# PLAN — BigBounce research and publication program
 
 **Authoritative program plan · reconciled 2026-08-03**
 
-This is the single executable plan for the six-paper program. It defines the
+This is the single executable plan for the research portfolio. It defines the
 current phase, gates, and work order. It does not duplicate manuscript science
 facts: use the source map below and the SSOT status board for those.
 
+> **Publication-architecture gate — 2026-08-03:** The former six-paper
+> submission plan is paused. The six count is an operational history, not a
+> scientific requirement. The governing decision draft is
+> `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`. Preserve all
+> completed packages, but do not submit, seek endorsements, mint new immutable
+> P4/P5 records, or push a public six-equal-papers framing until Houston accepts
+> or revises the new architecture.
+
 ## Mission
 
-Bring six honest, reproducible manuscripts through Houston's final review and
-then through their journal submission workflows. Automated review is a
+Publish the strongest honest, reproducible scientific portfolio, organized by
+research question rather than an inherited paper count. Automated review is a
 truth-auditing instrument, not a substitute for editorial or human scientific
 judgment.
 
@@ -49,6 +57,13 @@ process evidence in `CLAUDE.md`; they are not the current scoring or exit model.
 
 ## Current state
 
+Technical readiness and publication strategy are now deliberately separated.
+Six candidate packages reached the Directive-P agent gate, but that does not
+prove that all six should be independent publications. The active portfolio
+map is three core scientific stories (P2, a rebuilt anomaly-science paper, and
+P4), two specialist outputs (P1A and P1B), and two held editorial decisions
+(current P3 and P5). See the architecture reset for the rationale.
+
 The July 22 active-leg confirmation wave produced 19 genuinely-new-real
 findings across the portfolio; all were closed. The July 23–24 completeness
 resweep caught MAJOR items hidden beneath summary verdict labels and closed the
@@ -72,6 +87,21 @@ real defect. It is not permission to restart an unbounded verdict-word loop and
 does not automatically reduce readiness unless it finds a real regression.
 
 ## Phase plan
+
+### Phase 0 — publication architecture reset (active)
+
+1. Reconcile the original DESI anomaly project's datasets, thresholds, model
+   versions, candidate counts, validation claims, and surviving artifacts.
+2. Decide whether current P3 is a standalone technical/data note or a
+   supplement to the rebuilt anomaly-science paper.
+3. Decide whether P5 is an independent companion, a shorter P4 supplement, or
+   a deferred analysis.
+4. Obtain Houston's approval of the research-program map before regenerating
+   the public site and submission board.
+
+The initial claim audit is complete at
+`project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md`. Its next gate
+is artifact restoration or a clean rerun—not manuscript polishing.
 
 ### Phase A — truth reconciliation and production sync (complete 2026-08-03)
 
@@ -112,12 +142,15 @@ distribution task and is not on the journal critical path.
 
 ## Immediate priority order
 
-1. Complete the bounded active-leg confirmation against the six final served hashes.
-2. Present the six final PDFs and portal packets for Houston's visual review.
-3. Obtain Houston's six explicit sign-offs; keep all papers at 95 until then.
-4. After sign-off, refresh/mint the remaining P4/P5 archives and submit P2 first,
-   then the remaining journal-ready packets in the order that
-   minimizes account/reviewer/APC friction.
+1. Preserve the bounded P3 r17 technical closure without calling it the
+   replacement for the original anomaly science.
+2. Complete the anomaly source-to-claim reconciliation and propose the rebuilt
+   flagship manuscript's defensible scientific scope.
+3. Resolve the independent-publication decisions for current P3 and P5.
+4. Rewrite the public map around three research programs, then regenerate the
+   approval/submission/endorser board for the selected portfolio.
+5. Resume exact-hash acceptance, Houston visual review, and submission only
+   after the architecture is approved.
 
 ## Stop rules
 

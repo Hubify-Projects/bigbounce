@@ -1,10 +1,10 @@
 # AGENTS.md — bigbounce (Codex / any-agent entry point)
 
-This is the **bigbounce cosmology publication program**: six physics papers now
-moving from truth-audited automated convergence into journal submission, with a
-public Next.js lab site (https://bigbounce.hubify.app) kept in sync after every
-round. If you are an AI coding agent (Codex, Claude Code, Cursor, …) picking this
-up, read these IN ORDER before touching anything:
+This is the **bigbounce cosmology and astronomy research portfolio**, with a
+public Next.js lab site (https://bigbounce.hubify.app). Six candidate packages
+exist, but they are not presumed to be six equal or independently publishable
+scientific papers. If you are an AI coding agent (Codex, Claude Code, Cursor,
+…) picking this up, read these IN ORDER before touching anything:
 
 1. **`project-context/AGENT_ONBOARDING.md`** — the operational runbook: new-machine
    bootstrap, the R→D→P internal+external review loop, how to run one round, how to
@@ -15,15 +15,14 @@ up, read these IN ORDER before touching anything:
 ## Ground truth
 - Canonical paper status: **`project-context/SSOT/`** + **Convex** — never a `.tex`
   comment, `papers.ts`, or site HTML.
-- **State as of 2026-08-03: Directive-P agent gates complete at 95 for all six
-  current candidates; journal-submission phase.** Houston's explicit per-paper
-  sign-off supplies the final five points. A bounded final-hash confirmation is
-  still due because the final PDFs contain post-board closures. Submission,
-  endorsement, independent human review, and journal peer review are tracked as
-  a separate publishing phase and do not subtract from readiness. Start with
+- **State as of 2026-08-03: PUBLICATION-ARCHITECTURE HOLD.** Directive-P agent
+  gates and candidate packages are preserved, but submission, endorsement
+  outreach, P4/P5 archive minting, and a six-equal-papers production projection
+  are paused. Start with
+  `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`, then
   `ops/PLAN.md` and the top board in `project-context/SSOT/index.md`.
 
-## The 6 papers (current paths — there is no single `main.tex`)
+## The 6 preserved candidates (current paths — there is no single `main.tex`)
 | # | Source .tex |
 |---|---|
 | P1A | `arxiv/paper1a_ech_nogo.tex` |

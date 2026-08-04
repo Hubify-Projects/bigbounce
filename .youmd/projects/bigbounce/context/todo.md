@@ -2,15 +2,18 @@
 
 ## In Progress
 
-- Run the bounded active-leg confirmation against the exact served hashes and
-  clean-room submission packages defined in `ops/PLAN.md`.
-- Keep the Houston visual-review board synchronized with the six exact PDFs,
-  portal kits, submission targets, archive state, and endorser-code status.
+- Preserve the bounded P3 r17 technical closure without projecting it as the
+  missing anomaly-discovery paper.
+- Restore the historical enhanced DESI parent/model or choose a clean rerun,
+  then reproduce the 2,145/1,127 candidate selection from bound inputs.
+- Resolve whether current P3 and P5 merit standalone submission or belong as
+  supporting/companion outputs.
 
 ## Backlog
 
-- Collect Houston's explicit per-paper visual-review sign-offs or bounded final
-  feedback; the agent score remains 95 until then.
+- Obtain Houston's decision on the three-program publication architecture.
+- Rebuild the public site and approval/submission board around primary science
+  versus supporting outputs; then collect visual-review sign-offs.
 - After sign-off, refresh P4's archive and mint P5's immutable release/DOI,
   backpatch the final metadata, and re-audit any PDF whose bytes change.
 - Execute journal/arXiv submissions and honest endorsement outreach as a
@@ -31,3 +34,7 @@
   current journal-ready formats, and produced exact portal kits for every paper.
 - Added the canonical final approval/submission board at
   `project-context/SSOT/FINAL_APPROVAL_SUBMISSION_BOARD_2026-08-03.md`.
+- Audited the scientific purpose of the six candidates and documented why the
+  inherited count should not control publication strategy.
+- Completed the initial DESI anomaly source-to-claim inventory and retired the
+  unsupported headline claims in the project README.

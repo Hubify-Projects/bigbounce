@@ -13,22 +13,31 @@
 
 # P3 status — current authoritative section
 
-**Current candidate:** v3.2.0-r15 · `pipelines/p3_anomaly_engine/paper3_apjs.tex`
+**Current candidate:** v3.2.0-r17 · `pipelines/p3_anomaly_engine/paper3_apjs.tex`
 **Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
 
-The current ApJS artifact presents public-ID recovery machinery and explicitly
-labels the sub-0.1-arcsec core as expected seed self-recovery, not independent
-association evidence. Known active-leg findings and the abstract-length/package
-closures are closed through r15. The r15 submission-package closure adds the
-current AASTeX 7.0.2 shell, line numbers, short title, verified ORCID, and an
-evidence-bounded AI-use disclosure without changing the science. Run the bounded
-final-hash confirmation before Houston sign-off and AAS upload. The published
-archival Zenodo DOI is distinct from any
-AAS journal asset DOI. The stale Convex `R57-paper-3-latitude` row from the
-superseded multi-survey draft was closed on 2026-08-03 by artifact verification:
-the focused-DESI rewrite `3f5582c2` removed that claim wholesale, so no
-replacement result was fabricated. Old readiness caps and OPEN rows below are
-historical.
+The current ApJS artifact is a bounded **public-ID recovery and provenance
+paper**, not the anomaly-discovery flagship. It is on editorial hold while the
+portfolio is reorganized around scientific programs; see
+`project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`. The artifact
+explicitly labels the sub-0.1-arcsec core as expected seed self-recovery, not
+independent association evidence. Revision r17 closes four evidence defects
+without changing the 181-member release or making a new science claim. Its exact
+verified package is 17 pages: source SHA-256
+`c3a6823d2e936abdb9583227f79ef57415035a7481abe2094854fbba9914e73f`,
+PDF SHA-256
+`9a3769269ada4d2a5371aa447e6ce93aa55518ae2a3b13fdc3d83f0b8b779a0b`
+(MD5 `477b0d83ca31f6ace3273bb19bcfcf34`), and source-package SHA-256
+`47fac374616614872a6828357cb5712580f44b78836a798c249fb09939681843`.
+Two-pass compile, all-page visual audit, link audit, standalone package compile,
+and 17/17 pixel comparison passed. No r17 provider confirmation was requested
+after the architecture hold began. The published Zenodo record remains behind
+r17, and the venue/archive decision is held. Exact receipt:
+`pipelines/p3_anomaly_engine/FINAL_PACKAGE_RECEIPT_v3.2.0-r17_2026-08-03.md`.
+The stale Convex `R57-paper-3-latitude` row from the superseded multi-survey
+draft was closed on 2026-08-03 by artifact verification: the focused-DESI
+rewrite `3f5582c2` removed that claim wholesale, so no replacement result was
+fabricated. Old readiness caps and OPEN rows below are historical.
 
 ## Historical status ledger
 

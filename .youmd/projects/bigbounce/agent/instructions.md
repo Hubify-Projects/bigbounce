@@ -7,7 +7,8 @@ Read these sources in order before acting:
 3. `CLAUDE.md`
 4. `AGENT_RULES.md`
 5. `ops/PLAN.md`
-6. `project-context/SSOT/index.md`
+6. `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`
+7. `project-context/SSOT/index.md`
 
 Use `project-context/paper_registry.json` for paper identity and paths, then the
 relevant per-paper SSOT status and revision evidence. Never infer truth from a
@@ -16,4 +17,7 @@ LaTeX comment or public site projection when it conflicts with the SSOT.
 Truth-audit every review finding, preserve raw evidence, never fabricate an
 acceptance or derivation, and keep SSOT/Convex/site changes atomic. Directive P
 separates readiness from publishing: four agent gates total 95; only Houston's
-explicit per-paper sign-off reaches 100.
+explicit per-paper sign-off reaches 100. The active publication-architecture
+hold overrides the old six-submission execution order: preserve candidate
+packages, but do not submit, seek endorsements, mint P4/P5 records, or publish
+a six-equal-papers framing until Houston approves or revises the map.

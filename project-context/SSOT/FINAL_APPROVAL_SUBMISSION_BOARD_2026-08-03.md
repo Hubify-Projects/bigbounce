@@ -2,9 +2,18 @@
 
 **Canonical execution board · 2026-08-03 · private project operations**
 
-This is the one-screen handoff from agent completion to Houston approval and
-publication execution. It does not replace `ops/PLAN.md` for program policy or
-the per-paper SSOT files for scientific limitations.
+> **SUPERSEDED AS AN EXECUTION ORDER — publication-architecture hold.** The
+> package links and historical 95-point states below remain useful evidence,
+> but Houston has not been asked to approve six equal papers. Use
+> `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md` and
+> `ops/PLAN.md`. No submission, endorsement outreach, new P4/P5 archive mint,
+> or production push should be executed from this board until the portfolio
+> architecture is approved and this board is regenerated.
+
+This was the one-screen handoff from agent completion to Houston approval and
+publication execution. It is now a preserved package inventory, not the active
+publication order. It does not replace `ops/PLAN.md` for program policy or the
+per-paper SSOT files for scientific limitations.
 
 ## Stage and score
 
@@ -12,12 +21,11 @@ the per-paper SSOT files for scientific limitations.
   95 points and Houston's explicit per-paper sign-off is the final 5.
 - Do **not** invent 96. Exact-package acceptance is evidence inside the existing
   95-point packaging gate, not a new scoring category.
-- Current stage: exact packages and portal kits complete; bounded active-leg
-  final-hash confirmation in progress; Houston visual review is next.
-- P3's r15 exact-final audit found an unsupported annular-deficit mechanism and
-  two package-evidence defects. r16 withdraws the mechanism, adds a reproducible
-  core-conditioned control, restores the exact r2 Parquet, and narrows viewer
-  evidence to 18/20 visible captures. Exact r16 confirmation is still pending.
+- Current stage: exact candidate packages preserved; scientific portfolio and
+  independent-publication decisions are under review. Houston's architecture
+  decision comes before visual approval of a selected portfolio.
+- P3 r17 preserves the bounded technical closure and exact package, but it is
+  reclassified here as public-ID recovery—not the anomaly-discovery flagship.
 - Submission, endorsement, journal review, and publication are tracked below but
   remain separate from readiness.
 
@@ -28,9 +36,9 @@ the per-paper SSOT files for scientific limitations.
 | P1A | v1A.0.127 · 8 pp · SHA-256 `210be8f0…bc7f0` | [`paper1a_ech_nogo.pdf`](../../arxiv/paper1a_ech_nogo.pdf) | [Production](https://bigbounce.hubify.app/papers/paper1a_ech_nogo_v1A.0.127.pdf) | [`CQG`](CQG_SUBMISSION_KIT_P1A_2026-07-24.md) | PENDING |
 | P1B | v2B.0.16 · 6 pp · SHA-256 `2fb95710…6267a` | [`paper1b_namaster_proof.pdf`](../../arxiv/paper1b_namaster_proof.pdf) | [Production](https://bigbounce.hubify.app/papers/paper1b_namaster_proof_v2B.0.16.pdf) | [`JORS`](JORS_SUBMISSION_KIT_P1B_2026-07-24.md) | PENDING |
 | P2 | v1.7.130 · 12 pp · SHA-256 `d3afe79f…5c2f` | [`02_full_draft.pdf`](../../research/focused_paper_source_integration/02_full_draft.pdf) | [Production](https://bigbounce.hubify.app/papers/02_full_draft_v1.7.130.pdf) | [`PRD`](PRD_SUBMISSION_KIT_P2_2026-07-24.md) | PENDING |
-| P3 | v3.2.0-r16 · 17 pp · SHA-256 `c39f080b…fa753` | [`paper3_apjs.pdf`](../../pipelines/p3_anomaly_engine/paper3_apjs.pdf) | [Production](https://bigbounce.hubify.app/papers/paper3_apjs_v3.2.0-r16.pdf) | [`ApJS`](../../pipelines/p3_anomaly_engine/APJS_PORTAL_SUBMISSION_KIT_v3.2.0-r16_2026-08-03.md) | PENDING |
-| P4 | v1.0.273 · 32 pp · SHA-256 `88bb5132…cee05` | [`chirality_catalog_paper.pdf`](../../pipelines/p2_chirality/chirality_catalog_paper.pdf) | [Production](https://bigbounce.hubify.app/papers/chirality_catalog_paper_v1.0.273.pdf) | [`ApJS`](../../pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.273.md) | PENDING |
-| P5 | v0.1.147-2026-08-03 · 46 pp · SHA-256 `3c1c4841…7b18e` | [`p5_desi_chirality.pdf`](../../pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf) | [Production](https://bigbounce.hubify.app/papers/p5_desi_chirality_v0.1.147-2026-08-03.pdf) | [`AJ`](../../pipelines/p5_desi_chirality/paper/AJ_PORTAL_KIT_v0.1.147-2026-08-03.md) | PENDING |
+| P3 | v3.2.0-r17 · 17 pp · SHA-256 `9a376926…b779a0b` | [`paper3_apjs.pdf`](../../pipelines/p3_anomaly_engine/paper3_apjs.pdf) | [Production](https://bigbounce.hubify.app/papers/paper3_apjs_v3.2.0-r17.pdf) | [`Receipt`](../../pipelines/p3_anomaly_engine/FINAL_PACKAGE_RECEIPT_v3.2.0-r17_2026-08-03.md) | EDITORIAL HOLD |
+| P4 | v1.0.274 · 32 pp · SHA-256 `2641a228…75e0d7` | [`chirality_catalog_paper.pdf`](../../pipelines/p2_chirality/chirality_catalog_paper.pdf) | [Production](https://bigbounce.hubify.app/papers/chirality_catalog_paper_v1.0.274.pdf) | [`ApJS`](../../pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md) | ARCHITECTURE HOLD |
+| P5 | v0.1.147-2026-08-03 · 46 pp · SHA-256 `3c1c4841…7b18e` | [`p5_desi_chirality.pdf`](../../pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf) | [Production](https://bigbounce.hubify.app/papers/p5_desi_chirality_v0.1.147-2026-08-03.pdf) | [`AJ`](../../pipelines/p5_desi_chirality/paper/AJ_PORTAL_KIT_v0.1.147-2026-08-03.md) | EDITORIAL HOLD |
 
 Houston can reply with one line per paper:
 
@@ -52,13 +60,15 @@ Only an `APPROVE` decision moves that paper from 95 to 100.
 | P1A | `arxiv/paper1a_arxiv_v1A.0.127.tar.gz` | `35bd4234…958` | PASS · 8 pp · all-page visual audit |
 | P1B | `project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_v2B.0.16.tar.gz` | `4fa8cc9a…dddf` | PASS · 6 pp; JORS bundle also rebuilt |
 | P2 | `research/focused_paper_source_integration/paper2_arxiv_v1.7.130.tar.gz` | `74124142…a69` | PASS · missing bibliography defect closed |
-| P3 | `pipelines/p3_anomaly_engine/paper3_apjs_arxiv_v3.2.0-r16.tar.gz` | `d1a52043…6ea58` | PASS · flat AASTeX 7.0.2 portal package + data bundle |
-| P4 | `pipelines/p2_chirality/paper4_arxiv_v1.0.273.tar.gz` | `374c867c…47ea` | PASS · flat AASTeX 7.0.2 package · 32-page visual audit |
+| P3 | `pipelines/p3_anomaly_engine/paper3_apjs_arxiv_v3.2.0-r17.tar.gz` | `47fac374…1843` | PASS · technical data-note package · 17-page visual audit |
+| P4 | `pipelines/p2_chirality/paper4_arxiv_v1.0.274.tar.gz` | `9503ddd1…be736` | PASS · flat AASTeX 7.0.2 package · 32-page visual audit |
 | P5 | `pipelines/p5_desi_chirality/paper/paper5_aj_v0.1.147-2026-08-03.tar.gz` | `a6a444f0…0b69` | PASS · flat AASTeX 7.0.2 AJ/arXiv package · 46-page visual audit |
 
-The content-addressed portfolio receipt will live under `final-acceptance/` and
-is regenerated after every final evidence/doc commit so it cannot certify a
-stale repository head.
+The six-candidate content-addressed receipt under `final-acceptance/` records a
+technical preflight at repository head `f4cd37a9`. It is historical while the
+architecture hold is active and must be regenerated only after the selected
+portfolio and public framing are approved; it must not certify a review packet
+from a later repository head.
 
 ## Journal execution tracker
 
@@ -100,8 +110,8 @@ Journal submission does not wait on arXiv endorsement.
 | P1A | Zenodo `10.5281/zenodo.21481838` | Published; current manuscript cites it |
 | P1B | Zenodo `10.5281/zenodo.21481842`; software `10.5281/zenodo.21481753` | Published; current manuscript cites both |
 | P2 | Zenodo `10.5281/zenodo.21461881` | Published record is behind current patch; manuscript states the relationship |
-| P3 | Zenodo `10.5281/zenodo.21461888` | Published record is behind r16; journal asset DOI remains pending |
-| P4 | Zenodo `10.5281/zenodo.21461899` | Refresh to v1.0.273 after sign-off |
+| P3 | Zenodo `10.5281/zenodo.21461888` | Published record is behind r17; archive/venue decision held |
+| P4 | Zenodo `10.5281/zenodo.21461899` | Refresh to v1.0.274 only after architecture approval and sign-off |
 | P5 | No published Paper V DOI | Mint immutable tag/Zenodo snapshot only after sign-off and explicit publish authorization |
 
 ## Stop rules

@@ -4,21 +4,19 @@
 paper program on a (possibly new, always-on) machine. This file is your single
 entry point. Read it top to bottom once, then keep the loop going.
 
-**The mission:** drive 6 physics papers (P1A, P1B, P2, P3, P4, P5) to
-publication-ready through an iterative internal + external peer-review loop,
-fixing every finding, and keeping the public lab site (https://bigbounce.hubify.app)
-perfectly in sync after every round.
+**The mission:** publish the strongest coherent research portfolio, organized
+by scientific question rather than an inherited count. Six candidate packages
+are preserved, but current P3 and P5 are under editorial review and the missing
+DESI anomaly-discovery science must be reconciled. Keep the public lab site
+(https://bigbounce.hubify.app) honest and synchronized after approved rounds.
 
-> **CURRENT STATE (2026-08-03): DIRECTIVE-P AGENT GATES 95/95 ON ALL SIX;
-> JOURNAL-SUBMISSION PHASE.** Current candidates are P1A v1A.0.127, P1B
-> v2B.0.16, P2 v1.7.130, P3 v3.2.0-r14, P4 v1.0.272, and P5
-> v0.1.146-2026-07-24. Houston's explicit per-paper sign-off supplies the final
-> five points. The final artifacts contain post-board closures, so run only the
-> bounded final-hash confirmation in `ops/PLAN.md`; do not restart an unbounded
-> verdict-word loop. Venue/submission, arXiv endorsement, independent human
-> review, and journal peer review are separate publishing work and do not
-> subtract from readiness. Read `ops/PLAN.md` and the top of
-> `project-context/SSOT/index.md`; older snapshots in this runbook are history.
+> **CURRENT STATE (2026-08-03): PUBLICATION-ARCHITECTURE HOLD.** Read
+> `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md` first. The six
+> Directive-P candidate states are preserved as technical evidence, not as an
+> instruction to submit six equal papers. Do not submit, seek endorsements,
+> mint new P4/P5 records, or push a six-equal-papers site framing until Houston
+> approves or revises the map. Current P3 is a technical public-ID recovery
+> output, not the missing anomaly-discovery paper.
 >
 > **HOW to run any bounded further round:** the canonical spec is
 > `~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md` (all-vendor INT matrix,

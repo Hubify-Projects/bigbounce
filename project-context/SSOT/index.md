@@ -179,16 +179,23 @@ Venue selection, submission clicks, arXiv endorsement, independent human
 review, journal peer review, and publication are a separate publishing phase
 and never subtract from readiness.
 
-## Current six-paper board
+## Preserved six-candidate board — publication architecture review active
+
+The readiness rows below record completed candidate-package work; they do not
+decide scientific hierarchy or authorize six submissions. The active map and
+hold rules are in
+`project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`. Current P3 is
+a technical public-ID recovery output; the original DESI anomaly science is a
+separate reconstruction task. P3 and P5 remain editorial decisions.
 
 | Paper | Canonical source | Version | Readiness | Publishing state |
 |---|---|---:|---:|---|
 | P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | CQG packet; Houston sign-off and portal work next |
 | P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.16 | 95 | JORS packet; reviewer list, fee/waiver decision, sign-off, portal work |
 | P2 | `research/focused_paper_source_integration/02_full_draft.tex` | v1.7.130 | 95 | PRD packet; Houston sign-off and APS portal work next |
-| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r16 | 95 | r15 Gemini wording minor closed in r16; exact r16 confirmation and Houston sign-off next |
-| P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.273 | 95 | AASTeX 7.0.2 ApJS packet complete; bounded confirmation and Houston sign-off next |
-| P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | AASTeX 7.0.2 AJ packet complete; sign-off precedes immutable tag/Zenodo mint |
+| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r17 | 95 | Technical public-ID package preserved; editorial hold; not the anomaly flagship |
+| P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.274 | 95 | Exact package preserved; architecture hold precedes sign-off/submission |
+| P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | Exact package preserved; editorial hold on standalone/companion/defer decision |
 
 P5's target-program-by-environment interaction remains an honestly disclosed
 systematic limitation; convergence does not turn that conditional null into a

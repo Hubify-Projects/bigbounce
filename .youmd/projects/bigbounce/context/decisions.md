@@ -1,5 +1,20 @@
 # Decisions
 
+## 2026-08-03 — Publication architecture reset
+
+- The six-paper count is an operational history, not a scientific requirement.
+- The active public map is three programs: bounce theory, survey discovery,
+  and galaxy chirality.
+- P2, a rebuilt anomaly-science paper, and P4 are the three core scientific
+  stories; P1A and P1B are specialist theory/software publications.
+- Current P3 is a technical public-ID recovery output, not a replacement for
+  the original anomaly survey. P3 and P5 are on editorial hold pending a
+  standalone-versus-supporting decision.
+- Submission, endorsement outreach, new P4/P5 archive minting, and a production
+  push remain paused until Houston approves or revises the architecture.
+- Governing document:
+  `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`.
+
 ## 2026-08-03 — Canonical program map
 
 - `ops/PLAN.md` is the single executable plan.
