@@ -1,13 +1,16 @@
 # P4 status — current authoritative section
 
-**Current candidate:** v1.0.272 · `pipelines/p2_chirality/chirality_catalog_paper.tex`
+**Current candidate:** v1.0.273 · `pipelines/p2_chirality/chirality_catalog_paper.tex`
 **Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
 
 The July 23–24 completeness resweep recovered a real inline-provenance density
 MAJOR and closed it in v1.0.272 after the abstract-length closure. All known
 genuinely-new-real active-leg findings are closed; the observed-label null and
-its honestly bounded physical interpretation remain unchanged. A bounded
-final-hash confirmation remains due because v1.0.272 postdates the full board.
+its honestly bounded physical interpretation remain unchanged. v1.0.273 closes
+the final source-package defect: the current AASTeX 7.0.2 class
+is bundled and the 217.5-pt raw artifact-path overflow is replaced by a short
+Data Availability pointer without changing any science. The bounded final-hash
+confirmation remains due because v1.0.273 postdates the full board.
 Next publishing tasks are AAS/HF data-hosting confirmation, Houston sign-off,
 and ApJS upload. Old cap-80 snapshots and OPEN rows below are historical.
 

@@ -59,9 +59,9 @@ remaining P1B, P4, and P5 findings. The current versions are:
 | P1A | v1A.0.127 | 95/95 | CQG submission |
 | P1B | v2B.0.16 | 95/95 | JORS submission |
 | P2 | v1.7.130 | 95/95 | PRD submission |
-| P3 | v3.2.0-r14 | 95/95 | ApJS submission |
-| P4 | v1.0.272 | 95/95 | ApJS submission |
-| P5 | v0.1.146-2026-07-24 | 95/95 | AJ submission |
+| P3 | v3.2.0-r15 | 95/95 | Houston review, then ApJS submission |
+| P4 | v1.0.273 | 95/95 | Houston review, then ApJS submission |
+| P5 | v0.1.147-2026-08-03 | 95/95 | Houston review, archive mint, then AJ submission |
 
 The 95 values mean the four Directive-P agent gates are recorded complete; they
 do not claim Houston sign-off, submission, referee acceptance, or publication.
@@ -84,8 +84,9 @@ does not automatically reduce readiness unless it finds a real regression.
 
 Repository consolidation completed in the same recovery pass: archival merge
 `556b8454` preserves all formerly divergent tips, both GitHub remotes now expose
-only `main`, obsolete local branches/worktrees are removed, and local,
-`origin/main`, and `upstream/main` agree at `2be3964b`.
+only `main`, and obsolete local branches/worktrees are removed. At that
+consolidation checkpoint, local, `origin/main`, and `upstream/main` agreed at
+`2be3964b`; subsequent final-package commits are pushed after acceptance.
 
 ### Phase B — bounded final-artifact acceptance
 
@@ -111,10 +112,11 @@ distribution task and is not on the journal critical path.
 
 ## Immediate priority order
 
-1. Complete bounded final-hash/package acceptance for all six papers.
-2. Close remaining submission metadata for P3/P5 and finalize portal packets.
-3. Obtain Houston's six explicit sign-offs.
-4. Submit P2 first, then the remaining journal-ready packets in the order that
+1. Complete the bounded active-leg confirmation against the six final served hashes.
+2. Present the six final PDFs and portal packets for Houston's visual review.
+3. Obtain Houston's six explicit sign-offs; keep all papers at 95 until then.
+4. After sign-off, refresh/mint the remaining P4/P5 archives and submit P2 first,
+   then the remaining journal-ready packets in the order that
    minimizes account/reviewer/APC friction.
 
 ## Stop rules

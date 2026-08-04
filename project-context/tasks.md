@@ -11,11 +11,13 @@ preserved audit history and must not be read as the active queue.
   tracker, Convex, site data, and production behavior around the six current
   versions and Directive-P scoring; local build/typecheck/freshness gates pass
   and both remotes share the release commit. Completed 2026-08-03.
-- [ ] **AUG-002 — Bounded final-hash acceptance:** bind and verify current
-  exact PDFs/packages; run only the closure-confirmation needed for post-board
-  changes; reopen work only for genuinely-new-real regressions.
-- [ ] **AUG-003 — Submission metadata and packets:** close P3/P5 metadata gaps,
-  confirm the P5 staged archive decision, and produce portal-ready journal kits.
+- [ ] **AUG-002 — Bounded final-hash acceptance:** deterministic portfolio,
+  compile, link, mirror, visual-PDF, source-package, and science-contract gates
+  pass on the final candidates. The bounded active-leg confirmation is running;
+  reopen work only for genuinely-new-real regressions.
+- [x] **AUG-003 — Submission metadata and packets:** current CQG, JORS, PRD,
+  ApJS, and AJ portal kits and exact source packages now exist for all six
+  candidates. P4/P5 archive publication remains intentionally post-sign-off.
 - [ ] **AUG-004 — Houston sign-off:** collect one explicit per-paper decision;
   95 becomes 100 only after the corresponding quote is recorded in SSOT.
 - [ ] **AUG-005 — Journal submissions:** execute CQG/JORS/PRD/ApJS/AJ portal
@@ -33,8 +35,8 @@ preserved audit history and must not be read as the active queue.
 
 ## Current state
 
-P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r14, P4 v1.0.272, and
-P5 v0.1.146-2026-07-24 are recorded at the four completed Directive-P agent
+P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r15, P4 v1.0.273, and
+P5 v0.1.147-2026-08-03 are recorded at the four completed Directive-P agent
 gates (**95/95**). Houston's sign-off supplies the final five points. The July
 22 board and July 23–24 completeness resweep closed all known genuinely-new-real
 findings; a bounded exact-final-hash confirmation remains evidence hygiene.

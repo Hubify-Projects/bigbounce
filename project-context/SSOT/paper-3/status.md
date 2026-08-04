@@ -13,15 +13,17 @@
 
 # P3 status — current authoritative section
 
-**Current candidate:** v3.2.0-r14 · `pipelines/p3_anomaly_engine/paper3_apjs.tex`
+**Current candidate:** v3.2.0-r15 · `pipelines/p3_anomaly_engine/paper3_apjs.tex`
 **Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
 
 The current ApJS artifact presents public-ID recovery machinery and explicitly
 labels the sub-0.1-arcsec core as expected seed self-recovery, not independent
 association evidence. Known active-leg findings and the abstract-length/package
-closures are closed through r14. Run the bounded final-hash confirmation and
-verify submission metadata, especially ORCID and declarations, before Houston
-sign-off and AAS upload. The published archival Zenodo DOI is distinct from any
+closures are closed through r15. The r15 submission-package closure adds the
+current AASTeX 7.0.2 shell, line numbers, short title, verified ORCID, and an
+evidence-bounded AI-use disclosure without changing the science. Run the bounded
+final-hash confirmation before Houston sign-off and AAS upload. The published
+archival Zenodo DOI is distinct from any
 AAS journal asset DOI. The stale Convex `R57-paper-3-latitude` row from the
 superseded multi-survey draft was closed on 2026-08-03 by artifact verification:
 the focused-DESI rewrite `3f5582c2` removed that claim wholesale, so no

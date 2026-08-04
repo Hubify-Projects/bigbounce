@@ -9,9 +9,9 @@
     "P1A": "v1A.0.127",
     "P1B": "v2B.0.16",
     "P2": "v1.7.130",
-    "P3": "v3.2.0-r14",
-    "P4": "v1.0.272",
-    "P5": "v0.1.146-2026-07-24"
+    "P3": "v3.2.0-r15",
+    "P4": "v1.0.273",
+    "P5": "v0.1.147-2026-08-03"
   },
   "readiness_model": {
     "directive": "P",
@@ -29,15 +29,16 @@
     },
     {
       "id": "AUG-002",
-      "status": "pending",
+      "status": "in_progress",
       "title": "Run bounded exact-final-hash package and convergence acceptance across all six papers",
       "depends_on": ["AUG-001"]
     },
     {
       "id": "AUG-003",
-      "status": "pending",
+      "status": "complete",
       "title": "Close submission metadata gaps and assemble portal-ready journal packets",
-      "depends_on": ["AUG-002"]
+      "depends_on": ["AUG-002"],
+      "completion_evidence": "Six current portal kits and exact source packages; P2 bibliography omission fixed; P3/P4/P5 migrated to current venue shells and visually audited"
     },
     {
       "id": "AUG-004",

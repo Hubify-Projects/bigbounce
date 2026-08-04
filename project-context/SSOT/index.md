@@ -186,9 +186,9 @@ and never subtract from readiness.
 | P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | CQG packet; Houston sign-off and portal work next |
 | P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.16 | 95 | JORS packet; reviewer list, fee/waiver decision, sign-off, portal work |
 | P2 | `research/focused_paper_source_integration/02_full_draft.tex` | v1.7.130 | 95 | PRD packet; Houston sign-off and APS portal work next |
-| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r14 | 95 | ApJS packet; final metadata check, sign-off, portal work |
-| P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.272 | 95 | ApJS packet; data-hosting confirmation, sign-off, portal work |
-| P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.146-2026-07-24 | 95 | AJ packet; staged-deposit and metadata decisions, sign-off, portal work |
+| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r15 | 95 | AASTeX 7.0.2 ApJS packet complete; bounded confirmation and Houston sign-off next |
+| P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.273 | 95 | AASTeX 7.0.2 ApJS packet complete; bounded confirmation and Houston sign-off next |
+| P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | AASTeX 7.0.2 AJ packet complete; sign-off precedes immutable tag/Zenodo mint |
 
 P5's target-program-by-environment interaction remains an honestly disclosed
 systematic limitation; convergence does not turn that conditional null into a

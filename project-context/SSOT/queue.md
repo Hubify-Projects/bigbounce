@@ -786,8 +786,8 @@ with `ops/PLAN.md` as program authority and `SSOT/index.md` as status authority.
 | Priority | Work | State | Completion evidence |
 |---:|---|---|---|
 | 0 | Atomic truth sync across docs/SSOT, Convex, site data, and production | IN PROGRESS | Six identities, versions, 95 scores, publishing gates, and timelines agree; production QA passes |
-| 1 | Bounded final-hash/package acceptance for all six artifacts | NEXT | Version/commit/hash/package receipts; compile/link/visual audits; no genuinely-new-real regression across active legs |
-| 2 | Close submission metadata and packet gaps | NEXT | P3/P5 metadata verified; P5 staged-deposit decision recorded; six portal-ready kits |
+| 1 | Bounded final-hash/package acceptance for all six artifacts | IN PROGRESS | Deterministic/package/visual gates pass; bounded active-leg confirmation is the remaining evidence check |
+| 2 | Close submission metadata and packet gaps | DONE | Six current portal kits and exact source packages; P4/P5 irreversible archive actions intentionally follow sign-off |
 | 3 | Houston final review | HOUSTON | Explicit quote per paper; signed paper moves 95 → 100 |
 | 4 | Journal submission wave | HOUSTON + AGENT | CQG/JORS/PRD/ApJS/AJ portal receipts; publishing separate from readiness |
 | 5 | Branch consolidation | AFTER TRUTH SYNC | Every unmerged branch classified; unique work preserved before delete/merge/archive |
@@ -798,13 +798,13 @@ with `ops/PLAN.md` as program authority and `SSOT/index.md` as status authority.
 - **P1B v2B.0.16:** JORS account, five reviewer names with real emails,
   fee/waiver decision, final sign-off, and upload.
 - **P2 v1.7.130:** APS account/ORCID/DAS checks, final sign-off, PRD upload.
-- **P3 v3.2.0-r14:** verify ORCID and declaration metadata, final sign-off, and
-  ApJS upload. Its archival Zenodo DOI is distinct from a journal asset DOI.
-- **P4 v1.0.272:** confirm AAS acceptance of declared HF-hosted assets, final
+- **P3 v3.2.0-r15:** final sign-off and ApJS upload. Its archival Zenodo DOI is
+  distinct from a journal asset DOI.
+- **P4 v1.0.273:** confirm AAS acceptance of declared HF-hosted assets, final
   sign-off, and ApJS upload.
-- **P5 v0.1.146-2026-07-24:** decide whether to publish the staged Zenodo
-  deposit, verify ORCID/keywords metadata, retain the target-program caveat,
-  final sign-off, and AJ upload.
+- **P5 v0.1.147-2026-08-03:** retain the target-program caveat, obtain final
+  sign-off, then mint the immutable tag/Zenodo snapshot, back-patch identifiers,
+  rebuild, and complete the AJ upload.
 
 arXiv endorsement is a parallel distribution task, not a journal or readiness
 blocker.

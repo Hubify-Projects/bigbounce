@@ -1,6 +1,6 @@
 # P5 status — current authoritative section
 
-**Current candidate:** v0.1.146-2026-07-24 · `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`
+**Current candidate:** v0.1.147-2026-08-03 · `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`
 **Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
 
 The completeness resweep closed hierarchy sensitivity in v0.1.145 and added
@@ -10,9 +10,12 @@ the paper reports a conditional fixed-redshift-space classifier-label null, not
 physical environment independence. That limitation is compatible with
 automated convergence because it is disclosed rather than fabricated away.
 
-A bounded final-hash confirmation remains due. Publishing tasks are the staged
-Zenodo-deposit decision, ORCID/keywords verification, Houston sign-off, and AJ
-upload. Old cap-74 snapshots and OPEN rows below are historical.
+A bounded final-hash confirmation remains due. v0.1.147 migrates the canonical
+journal manuscript to the current AASTeX 7.0.2 AJ shell with line numbers and a
+clean 46-page visual audit; no science changed. Publishing tasks are Houston
+sign-off, then the immutable public tag/Zenodo mint and placeholder back-patch,
+followed by final rebuild and AJ upload. Old cap-74 snapshots and OPEN rows below
+are historical.
 
 ## Historical status ledger
 
