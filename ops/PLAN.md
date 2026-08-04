@@ -59,7 +59,7 @@ remaining P1B, P4, and P5 findings. The current versions are:
 | P1A | v1A.0.127 | 95/95 | CQG submission |
 | P1B | v2B.0.16 | 95/95 | JORS submission |
 | P2 | v1.7.130 | 95/95 | PRD submission |
-| P3 | v3.2.0-r15 | 95/95 | Houston review, then ApJS submission |
+| P3 | v3.2.0-r16 | 95/95 | Exact r16 confirmation, then Houston review and ApJS submission |
 | P4 | v1.0.273 | 95/95 | Houston review, then ApJS submission |
 | P5 | v0.1.147-2026-08-03 | 95/95 | Houston review, archive mint, then AJ submission |
 

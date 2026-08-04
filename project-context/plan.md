@@ -24,7 +24,7 @@ it must not become a second planning authority.
 Reconcile repository truth and the live production projection, verify the six
 final artifacts with a bounded final-hash acceptance pass, obtain Houston's
 five-point per-paper sign-off, and enter journal submission. Current versions
-are P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r15, P4 v1.0.273, and
+are P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r16, P4 v1.0.273, and
 P5 v0.1.147-2026-08-03.
 
 The four agent gates are recorded as 95/95 under Directive P. Publishing gates

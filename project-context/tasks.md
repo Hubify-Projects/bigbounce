@@ -35,7 +35,7 @@ preserved audit history and must not be read as the active queue.
 
 ## Current state
 
-P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r15, P4 v1.0.273, and
+P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r16, P4 v1.0.273, and
 P5 v0.1.147-2026-08-03 are recorded at the four completed Directive-P agent
 gates (**95/95**). Houston's sign-off supplies the final five points. The July
 22 board and July 23–24 completeness resweep closed all known genuinely-new-real

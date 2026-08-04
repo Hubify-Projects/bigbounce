@@ -798,8 +798,9 @@ with `ops/PLAN.md` as program authority and `SSOT/index.md` as status authority.
 - **P1B v2B.0.16:** JORS account, five reviewer names with real emails,
   fee/waiver decision, final sign-off, and upload.
 - **P2 v1.7.130:** APS account/ORCID/DAS checks, final sign-off, PRD upload.
-- **P3 v3.2.0-r15:** final sign-off and ApJS upload. Its archival Zenodo DOI is
-  distinct from a journal asset DOI.
+- **P3 v3.2.0-r16:** the sole r15 final-hash Gemini wording minor is closed;
+  exact r16 confirmation, final sign-off, and ApJS upload remain. Its archival
+  Zenodo DOI is distinct from a journal asset DOI.
 - **P4 v1.0.273:** confirm AAS acceptance of declared HF-hosted assets, final
   sign-off, and ApJS upload.
 - **P5 v0.1.147-2026-08-03:** retain the target-program caveat, obtain final

@@ -186,7 +186,7 @@ and never subtract from readiness.
 | P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | CQG packet; Houston sign-off and portal work next |
 | P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.16 | 95 | JORS packet; reviewer list, fee/waiver decision, sign-off, portal work |
 | P2 | `research/focused_paper_source_integration/02_full_draft.tex` | v1.7.130 | 95 | PRD packet; Houston sign-off and APS portal work next |
-| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r15 | 95 | AASTeX 7.0.2 ApJS packet complete; bounded confirmation and Houston sign-off next |
+| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r16 | 95 | r15 Gemini wording minor closed in r16; exact r16 confirmation and Houston sign-off next |
 | P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.273 | 95 | AASTeX 7.0.2 ApJS packet complete; bounded confirmation and Houston sign-off next |
 | P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | AASTeX 7.0.2 AJ packet complete; sign-off precedes immutable tag/Zenodo mint |
 

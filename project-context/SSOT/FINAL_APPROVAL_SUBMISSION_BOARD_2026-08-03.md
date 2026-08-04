@@ -14,6 +14,9 @@ the per-paper SSOT files for scientific limitations.
   95-point packaging gate, not a new scoring category.
 - Current stage: exact packages and portal kits complete; bounded active-leg
   final-hash confirmation in progress; Houston visual review is next.
+- P3's r15 final-hash Gemini leg found one descriptive-comparison wording minor;
+  r16 closes it with no science or readiness change. Exact r16 confirmation is
+  still pending.
 - Submission, endorsement, journal review, and publication are tracked below but
   remain separate from readiness.
 
@@ -24,7 +27,7 @@ the per-paper SSOT files for scientific limitations.
 | P1A | v1A.0.127 · 8 pp · SHA-256 `210be8f0…bc7f0` | [`paper1a_ech_nogo.pdf`](../../arxiv/paper1a_ech_nogo.pdf) | [Production](https://bigbounce.hubify.app/papers/paper1a_ech_nogo_v1A.0.127.pdf) | [`CQG`](CQG_SUBMISSION_KIT_P1A_2026-07-24.md) | PENDING |
 | P1B | v2B.0.16 · 6 pp · SHA-256 `2fb95710…6267a` | [`paper1b_namaster_proof.pdf`](../../arxiv/paper1b_namaster_proof.pdf) | [Production](https://bigbounce.hubify.app/papers/paper1b_namaster_proof_v2B.0.16.pdf) | [`JORS`](JORS_SUBMISSION_KIT_P1B_2026-07-24.md) | PENDING |
 | P2 | v1.7.130 · 12 pp · SHA-256 `d3afe79f…5c2f` | [`02_full_draft.pdf`](../../research/focused_paper_source_integration/02_full_draft.pdf) | [Production](https://bigbounce.hubify.app/papers/02_full_draft_v1.7.130.pdf) | [`PRD`](PRD_SUBMISSION_KIT_P2_2026-07-24.md) | PENDING |
-| P3 | v3.2.0-r15 · 17 pp · SHA-256 `793575f5…e47ef` | [`paper3_apjs.pdf`](../../pipelines/p3_anomaly_engine/paper3_apjs.pdf) | [Production](https://bigbounce.hubify.app/papers/paper3_apjs_v3.2.0-r15.pdf) | [`ApJS`](../../pipelines/p3_anomaly_engine/APJS_PORTAL_SUBMISSION_KIT_v3.2.0-r15_2026-08-03.md) | PENDING |
+| P3 | v3.2.0-r16 · 17 pp · SHA-256 `22c76260…26c5f` | [`paper3_apjs.pdf`](../../pipelines/p3_anomaly_engine/paper3_apjs.pdf) | [Production](https://bigbounce.hubify.app/papers/paper3_apjs_v3.2.0-r16.pdf) | [`ApJS`](../../pipelines/p3_anomaly_engine/APJS_PORTAL_SUBMISSION_KIT_v3.2.0-r16_2026-08-03.md) | PENDING |
 | P4 | v1.0.273 · 32 pp · SHA-256 `88bb5132…cee05` | [`chirality_catalog_paper.pdf`](../../pipelines/p2_chirality/chirality_catalog_paper.pdf) | [Production](https://bigbounce.hubify.app/papers/chirality_catalog_paper_v1.0.273.pdf) | [`ApJS`](../../pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.273.md) | PENDING |
 | P5 | v0.1.147-2026-08-03 · 46 pp · SHA-256 `3c1c4841…7b18e` | [`p5_desi_chirality.pdf`](../../pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf) | [Production](https://bigbounce.hubify.app/papers/p5_desi_chirality_v0.1.147-2026-08-03.pdf) | [`AJ`](../../pipelines/p5_desi_chirality/paper/AJ_PORTAL_KIT_v0.1.147-2026-08-03.md) | PENDING |
 
@@ -48,7 +51,7 @@ Only an `APPROVE` decision moves that paper from 95 to 100.
 | P1A | `arxiv/paper1a_arxiv_v1A.0.127.tar.gz` | `35bd4234…958` | PASS · 8 pp · all-page visual audit |
 | P1B | `project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_v2B.0.16.tar.gz` | `4fa8cc9a…dddf` | PASS · 6 pp; JORS bundle also rebuilt |
 | P2 | `research/focused_paper_source_integration/paper2_arxiv_v1.7.130.tar.gz` | `74124142…a69` | PASS · missing bibliography defect closed |
-| P3 | `pipelines/p3_anomaly_engine/paper3_apjs_arxiv_v3.2.0-r15.tar.gz` | `14689637…9fe7` | PASS · flat AASTeX 7.0.2 portal package + data bundle |
+| P3 | `pipelines/p3_anomaly_engine/paper3_apjs_arxiv_v3.2.0-r16.tar.gz` | `83680594…4e66` | PASS · flat AASTeX 7.0.2 portal package + data bundle |
 | P4 | `pipelines/p2_chirality/paper4_arxiv_v1.0.273.tar.gz` | `374c867c…47ea` | PASS · flat AASTeX 7.0.2 package · 32-page visual audit |
 | P5 | `pipelines/p5_desi_chirality/paper/paper5_aj_v0.1.147-2026-08-03.tar.gz` | `a6a444f0…0b69` | PASS · flat AASTeX 7.0.2 AJ/arXiv package · 46-page visual audit |
 
@@ -96,7 +99,7 @@ Journal submission does not wait on arXiv endorsement.
 | P1A | Zenodo `10.5281/zenodo.21481838` | Published; current manuscript cites it |
 | P1B | Zenodo `10.5281/zenodo.21481842`; software `10.5281/zenodo.21481753` | Published; current manuscript cites both |
 | P2 | Zenodo `10.5281/zenodo.21461881` | Published record is behind current patch; manuscript states the relationship |
-| P3 | Zenodo `10.5281/zenodo.21461888` | Published record is behind r15; journal asset DOI remains pending |
+| P3 | Zenodo `10.5281/zenodo.21461888` | Published record is behind r16; journal asset DOI remains pending |
 | P4 | Zenodo `10.5281/zenodo.21461899` | Refresh to v1.0.273 after sign-off |
 | P5 | No published Paper V DOI | Mint immutable tag/Zenodo snapshot only after sign-off and explicit publish authorization |
 
