@@ -139,14 +139,16 @@ distribution task and is not on the journal critical path.
 
 ## Immediate priority order
 
-1. Ship the three-program public map and exact P3/P5 roles.
-2. Complete anomaly artifact restoration; if the enhanced parent/model cannot
-   be recovered, specify and run the clean public-ID-first DESI rerun.
-3. Architect the rebuilt anomaly flagship around the defensible selected
+Completed 2026-08-04: the three-program public map and exact P3/P5 roles are
+live on production; the restoration gate selected a tested fail-closed rerun
+contract after proving the enhanced parent/calibration unrecoverable.
+
+1. Execute the clean public-ID-first DESI rerun from immutable inputs.
+2. Architect the rebuilt anomaly flagship around the defensible selected
    sample, validation, taxonomy, and named follow-up objects.
-4. Regenerate the approval/submission/endorser board for six standalone works
+3. Maintain the approval/submission/endorser board for six standalone works
    plus the integrated P3 release.
-5. Resume exact-hash acceptance and Houston visual review for the selected
+4. Resume exact-hash acceptance and Houston visual review for the selected
    submission portfolio.
 
 ## Stop rules

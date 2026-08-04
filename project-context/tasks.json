@@ -74,9 +74,10 @@
     },
     {
       "id": "AUG-009",
-      "status": "in_progress",
+      "status": "complete",
       "title": "Rewrite production around bounce theory, DESI anomaly discovery, and galaxy chirality",
-      "depends_on": ["AUG-008"]
+      "depends_on": ["AUG-008"],
+      "completion_evidence": "Production deployment from commit 8055a5b1 verified at bigbounce.hubify.app: exact P3/P5 roles, desktop/mobile no-overflow browser QA, zero browser warnings/errors, and six byte-identical served PDF hashes"
     },
     {
       "id": "AUG-010",

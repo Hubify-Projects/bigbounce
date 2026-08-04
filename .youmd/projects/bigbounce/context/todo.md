@@ -4,10 +4,8 @@
 
 - Preserve the bounded P3 r17 technical closure without projecting it as the
   missing anomaly-discovery paper.
-- Restore the historical enhanced DESI parent/model or choose a clean rerun,
-  then reproduce the 2,145/1,127 candidate selection from bound inputs.
-- Ship the three-program site map with P3 labeled as a supporting data release
-  and P5 labeled as a standalone companion.
+- Execute the selected clean DESI rerun, then reproduce or explain the
+  2,145/1,127 candidate selection from immutable bound inputs.
 
 ## Backlog
 
@@ -39,3 +37,7 @@
   unsupported headline claims in the project README.
 - Recorded Houston's approval of the three-program architecture and resolved
   the P3/P5 editorial decisions.
+- Shipped and production-verified the three-program site map with P3 labeled as
+  a supporting data release and P5 as the standalone AJ companion.
+- Selected and implemented the fail-closed clean DESI rerun contract after the
+  enhanced parent/calibration restoration gate failed honestly.

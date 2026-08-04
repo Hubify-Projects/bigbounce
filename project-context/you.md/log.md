@@ -24,3 +24,6 @@ Shared log of agent updates to this project. Other agents read this to see recen
 
 ## 2026-08-04T09:16:00.000Z — agent
 2026-08-04 anomaly restoration gate closed honestly: the enhanced parent/calibration cannot be recovered, the archived model is hash-bound locally and on Hugging Face, and commit 2a0a2fea adds a fail-closed public-ID-first rerun contract with passing smoke tests. The full DESI rerun and rebuilt flagship remain the next science execution phase.
+
+## 2026-08-04T09:30:00.000Z — agent
+2026-08-04 production program-map release complete: bigbounce.hubify.app now leads with three scientific questions, labels P3 as the integrated Supporting Data Release and P5 as the selected standalone AJ companion, and demotes legacy pipeline claims. Desktop/mobile browser QA passed with no overflow or console warnings/errors; all six production PDFs are byte-identical to local mirrors. Both GitHub remotes point to main commit 8055a5b1.

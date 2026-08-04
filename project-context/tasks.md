@@ -33,9 +33,10 @@ preserved audit history and must not be read as the active queue.
 - [x] **AUG-008 — Publication architecture:** Houston approved the three-program
   map on 2026-08-04. Current P3 is an integrated supporting data/provenance
   release; P5 remains a standalone AJ companion.
-- [ ] **AUG-009 — Production program-map rewrite:** replace the six-equal-paper
-  framing with bounce theory, DESI anomaly discovery, and galaxy chirality;
-  preserve exact artifacts while demoting process/readiness below science.
+- [x] **AUG-009 — Production program-map rewrite:** production now leads with
+  bounce theory, DESI anomaly discovery, and galaxy chirality; P3/P5 roles are
+  explicit, legacy pipeline claims are demoted, desktop/mobile QA passes, and
+  all six served PDFs are byte-identical to local mirrors. Completed 2026-08-04.
 - [x] **AUG-010 — Anomaly artifact restoration:** the enhanced parent and score
   calibration are not recoverable from current artifacts; the exact archived
   model was hash-bound and a fail-closed public-ID-first rerun contract with
