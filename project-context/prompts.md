@@ -929,3 +929,15 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex GPT-5.6
 
 > these papers and why they exist and for what purpose are confusing - need a better coherent no fluff easy to understand reason and explanation of each focus areas and novel or notable contributions of each and why we created them and i worry if we have been arbitrarily stuck on this "6 paper" thing when it should be a different number of papers im looking at paper 3 about the anomaly catalog now and i don't understand how this somehow replaces the whole original anomaly detection paper we did to create the original survey and feel like some of the other papers have become derivative or like these machinery/software reproducibility versions which have less clear scientific purposes or are jus tlike a few steps removed from the original science we are working on  or something.... i am happy to be wrong on this but also just confused and felt this as i was reviewing paper 2 as well and i feel like we are really missing something here or many things here in how we are presenting our research and organizing the papers and things in a non-intuitive or non-intelligent strategic way the bes tway they should be in the righ toder and groupings and number of papers and catalogs and models and datasets and things which we are trying to publish to the world..
+
+## 2026-08-04 - publication architecture execution
+
+### Houston messages, verbatim
+
+**00:30 PT - approve and execute all recommended next steps**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: publication architecture execution
+- `agent`: Codex GPT-5.6
+
+> continue all best next steps
