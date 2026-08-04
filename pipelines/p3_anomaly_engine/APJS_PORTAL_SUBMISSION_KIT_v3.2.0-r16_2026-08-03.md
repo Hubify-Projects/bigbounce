@@ -10,16 +10,18 @@ required before upload.
 | Item | Current binding |
 |---|---|
 | Venue | *The Astrophysical Journal Supplement Series* (ApJS) |
-| Source | `paper3_apjs.tex` · v3.2.0-r16 · SHA-256 `e54d4b8e307c2ebb62503a5b78e380e6afb00626ae0b4e0ffac7a65556336cdc` |
-| Served PDF | 17 pages · SHA-256 `22c76260da4da37d073fe78fcedc993fbaf7e56daca9a29a52a6b39226226c5f` |
-| Exact source tar | `paper3_apjs_arxiv_v3.2.0-r16.tar.gz` · SHA-256 `83680594c8829d51f17c207e6368c1945c257ed903dbb6365904c24dfa984e66` |
-| Flat staging directory | `apjs_portal_submission_v3.2.0-r16/` · `SHA256SUMS` SHA-256 `729f81f596c65d5eefc704b62949fe31a0d0759fa3b507a60f5860d17221253e` |
+| Source | `paper3_apjs.tex` · v3.2.0-r16 · SHA-256 `2c23eb15ab9e66320b4afed56f7863033b028614eae7a12939fb64158f7b5423` |
+| Served PDF | 17 pages · SHA-256 `c39f080b07c96b0b8db916330219db37afcefccb809659b0ae7de35cfa3fa753` |
+| Exact source tar | `paper3_apjs_arxiv_v3.2.0-r16.tar.gz` · SHA-256 `d1a520437f762c9e5724a5679629e982eda5202721e7a12ffe140e61b266ea58` |
+| Flat staging directory | `apjs_portal_submission_v3.2.0-r16/` · `SHA256SUMS` SHA-256 `a05b50193c173dd7cb89546e8331f6d8be51c50e452ce261e0846a26db62680d` |
 | Full evidence | `FINAL_PACKAGE_RECEIPT_v3.2.0-r16_2026-08-03.md` |
 
 The flat directory is line-numbered and contains every upload file at one level:
 `paper3_apjs.tex`, `aastex702.cls`, three figure PDFs, `tab3.tsv`, `ReadMe`, and
 `AAS_DIGITAL_ASSET_MANIFEST.json`. Its only source transformation is flattening
 the three figure paths. Its 17-page Tectonic build and every listed checksum pass.
+The named r2 release directory also contains the exact 58,038-byte Parquet
+payload bound by its release manifest.
 
 ## Portal entry points
 
