@@ -10,10 +10,8 @@ tie keys; and checkpoint resume binds content hashes of all three inputs.
 |---|---|
 | Source | `paper3_apjs.tex` · SHA-256 `2d5d56957ab73a3c24b2fdfab29c131384cd2964bea6847e80e7cccac78d7256` |
 | Canonical / served PDF | pdfTeX build · SHA-256 `f587ba2449332b0be444281629b5d6cb994098acf7e9492e8ffa9b0676f31589` · MD5 `d19835c1c85c2425e3ad9f33078b51b5` · 496,563 bytes · 17 pages |
-| Flat-package compile | Tectonic/xdvipdfmx · SHA-256 `91232b92e2cc4d17317d310511f207d8b89d1944d4613490de4a443369506fd3` · MD5 `44609a5990fe736c932a7d3495595b46` · 269,397 bytes · 17 pages |
 | Official class | `aastex702.cls` (AASTeX 7.0.2) · SHA-256 `0ee51ff72a4d0b608a1885e87cddad4bcb41efacb852889de97637671c74d8ad` |
 | Exact source tar | `paper3_apjs_arxiv_v3.2.0-r17.tar.gz` · SHA-256 `c2d6f211d073b6d0c72e53d94c5b82f7aeb0017d3dc833520b3f2af992973beb` |
-| Flat portal staging package | `apjs_portal_submission_v3.2.0-r17/` · `SHA256SUMS` SHA-256 `30e1cbfdb7e005fee901a231d935f5e976ce6fff7e4dbfa6a9d1590b9e9bf371` |
 
 ## Verification
 
@@ -36,8 +34,7 @@ The canonical log has 0 fatal errors, 0 undefined references/citations, and 0
 overfull hboxes. All 8 declared `\artifact{}` targets exist. Every rendered
 page (1–17) was visually reviewed: title block, text, tables, figures,
 appendices, and audit matrix are legible with no clipping, overlap, or column
-intrusion. The flat Tectonic build retains its pre-existing 1.82327 pt body
-hbox and `lineno.sty` UTF warning; its rendered 17-page output is clean.
+intrusion.
 
 This is a public-ID recovery technical/data-note package only, not a core-six
 paper, a replacement anomaly-science paper, a submission, or a readiness-status
