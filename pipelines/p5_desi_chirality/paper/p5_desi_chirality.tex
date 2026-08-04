@@ -1,10 +1,11 @@
-\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+\documentclass[twocolumn,linenumbers]{aastex702}
 
 \usepackage{amsmath,amssymb,bm}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{booktabs}
+\setcitestyle{numbers,sort&compress}
 \hypersetup{
   colorlinks=true,
   linkcolor=blue!60!black,
@@ -43,7 +44,13 @@ not peer reviewed}
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.146-2026-07-24}
+\newcommand{\paperVersion}{v0.1.147-2026-08-03}
+% v0.1.147 (2026-08-03 -- journal-shell closure only): migrated the canonical
+%   journal manuscript from the APS/PRD RevTeX shell to the current official
+%   AASTeX 7.0.2 two-column shell required for the declared AJ route, with
+%   mandatory review line numbers. Every scientific claim, number, caveat,
+%   figure, table, reference, data-availability statement, and AI disclosure
+%   is unchanged.
 % v0.1.146 (2026-07-24 -- TARGET-PROGRAM LEAKAGE PROMINENCE): closes the
 %   GENUINELY-NEW-REAL half of the P5/Gemini [MAJOR] on Sec VI.E.d
 %   ("Target-program leakage and deferred mocks") from the 2026-07-23 re-sweep.
@@ -878,7 +885,7 @@ not peer reviewed}
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 24, 2026, 19:05 PT}
+\newcommand{\paperTimestamp}{August 3, 2026}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -972,11 +979,11 @@ not peer reviewed}
 
 \begin{document}
 
-\title{A Catalog-Native DESIVAST Test of Classifier-Labelled Spiral Chirality in DESI DR1\protect\footnote{All environment labels are consumed or assigned in DESI DR1 redshift coordinates; no real-space reconstruction is performed (\S\ref{sec:limitations}).}}
+\title{A Catalog-Native DESIVAST Test of Classifier-Labelled Spiral Chirality in DESI DR1}
 
 \author{Houston Golden}
-\email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
+\email{houston@hubify.com}
 
 \date{\paperTimestamp\ (\paperVersion)}
 
@@ -1011,9 +1018,12 @@ interaction is not excluded. The result is therefore a catalog-specific
 non-detection for classifier labels, not a physical-handedness,
 real-space, or cosmological constraint.
 \end{abstract}
-\maketitle
 
 \section{Introduction}\label{sec:intro}
+
+\emph{Scope note.} All environment labels are consumed or assigned in DESI
+DR1 redshift coordinates; no real-space reconstruction is performed
+(\S\ref{sec:limitations}).
 
 Spiral galaxy chirality is, to leading order in a parity-conserving
 universe, an equal mixture of clockwise (CW) and counterclockwise (CCW)
@@ -1145,8 +1155,9 @@ The per-galaxy \texttt{class\_eq} labels are the only classifier input the
 focal contrast uses; the monopole amplitude enters
 only the $\sigma_{\rm pred}$ diagnostics.}
 \label{tab:p4_inputs}
-\begin{ruledtabular}
+\centering
 \footnotesize
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{lr}
 Quantity & Value (as used here) \\
 \hline
@@ -1162,7 +1173,7 @@ Global CW monopole & $f_{\rm CW} = 0.4974 \pm 0.000279$ \\
 \quad counting significance & ${\approx}9.5\sigma$ \\
 Real-space dipole (P4) & null, $+0.41\sigma$ \\
 \end{tabular}
-\end{ruledtabular}
+}
 \end{table}
 
 \subsection{DESI Data Release 1}
@@ -1253,7 +1264,8 @@ maximum $z = 3.83$ (Table~\ref{tab:match_summary}).}
 acceptance). Input rows are the post-cut DESI DR1 selection
 (\texttt{ZWARN=0}, GALAXY/QSO, $0.01 \le z \le 4$).}
 \label{tab:match_summary}
-\begin{ruledtabular}
+\centering
+\resizebox{0.95\columnwidth}{!}{%
 \begin{tabular}{lr}
 Quantity & Value \\
 \hline
@@ -1274,7 +1286,7 @@ $z$ max & $3.83$ \\
 $p_{50}$ separation & $0.0066''$ \\
 $p_{99}$ separation & $0.30''$ \\
 \end{tabular}
-\end{ruledtabular}
+}
 \end{table}
 
 \section{T-Web cosmic-web classification}\label{sec:vweb}
@@ -1322,9 +1334,14 @@ dimensional relation $D/(h^{-1}\,{\rm Mpc}) = h\cdot D[{\rm Mpc}]$ derived
 above and would give the wrong value ${\approx}1246\,h^{-1}$\,Mpc at
 $z=0.2$) is \emph{not} a valid alternative and is not used here; the
 multiply-by-$h$ convention above is what the pipeline implements.}
-\item Map to Cartesian
-$(X,Y,Z) = \chi (\cos\delta\cos\alpha, \cos\delta\sin\alpha,
-\sin\delta)$.
+\item Map to Cartesian:
+\[
+\begin{aligned}
+X &= \chi\cos\delta\cos\alpha, \\
+Y &= \chi\cos\delta\sin\alpha, \\
+Z &= \chi\sin\delta.
+\end{aligned}
+\]
 \item Cloud-in-Cell deposit onto a $256^3$ comoving grid (full DR1
 bounding box $6{,}634$\,Mpc$/h$ at $256^3 \to$ cell $25.9$\,Mpc$/h$).
 The deposit operates on the row-level parent ($14{,}622{,}283$
@@ -1453,7 +1470,8 @@ one-sample diagnostics; $z_\Delta$ is an unadjusted two-sample
 sensitivity statistic.}
 \label{tab:stats_glossary}
 {\small
-\begin{ruledtabular}
+\centering
+\resizebox{0.90\columnwidth}{!}{%
 \begin{tabular}{lll}
 Statistic & Null / denom.\ & Type / role \\
 \hline
@@ -1463,7 +1481,7 @@ $\sigma_{\rm vs\,monopole}$ & $p_0=f^{\rm P5}$; $0.5\sqrt{N}$ & 1-samp.; residua
 $z_\Delta$ & $\Delta f_{\rm CW}\!=\!0$; 2-samp.\ SE & 2-samp.; contrast \\
 empirical $p$ & label-shuffle CDF & perm.\ LEE \\
 \end{tabular}
-\end{ruledtabular}
+}
 }
 \end{table}
 
@@ -1607,8 +1625,9 @@ $p_\Delta$ ($0.76$, against the focal $0.66085$), so the post-review
 hierarchy change did not move the reported result toward the largest
 available $p$-value.}
 \label{tab:hierarchy_sensitivity}
-\begin{ruledtabular}
+\centering
 \footnotesize
+\resizebox{0.97\textwidth}{!}{%
 \begin{tabular}{p{0.25\textwidth}lrrcp{0.20\textwidth}}
 Estimator path & Status & $\Delta f_{\rm CW}$ & ${\rm SE}(\Delta)$ &
 $95\%$ CI & $p_\Delta$ and source \\
@@ -1636,7 +1655,7 @@ $0.76$; \S\ref{sec:desivast_anchored_void},
 Tables~\ref{tab:desivast_three_algo}
 and~\ref{tab:bonferroni5_family}, [A10] \\
 \end{tabular}
-\end{ruledtabular}
+}
 \end{table*}
 
 The focal released-parent descriptive estimate uses the released DESIVAST
@@ -1869,7 +1888,8 @@ analysis into a confirmatory family. Table~\ref{tab:hierarchy_sensitivity}
 gives the focal estimate side by side with the two demoted any-hole
 estimates.}
 \label{tab:analysis_tree}
-\begin{ruledtabular}
+\centering
+\resizebox{0.97\textwidth}{!}{%
 \begin{tabular}{llcl}
 Path & Tests & $K$ & Status \\
 \hline
@@ -1903,7 +1923,7 @@ Tempel FoF overlap & filament concordance & --- & descriptive \\
 ASTRA EDR per-object & supporting diagnostic consistency check (EDR overlap-size caveat) & --- & descriptive \\
 T-Web concurrent-lit & volume-fraction comparison & --- & descriptive \\
 \end{tabular}
-\end{ruledtabular}
+}
 \end{table*}
 
 \section{Results}\label{sec:results}
@@ -3173,7 +3193,7 @@ The DESIVAST
 public release at
 \url{https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/}
 provides the VoidFinder NGC/SGC FITS files
-(\texttt{DESIVAST\_BGS\_VOLLIM\_VoidFinder\_\{NGC,SGC\}.fits},
+(\nolinkurl{DESIVAST_BGS_VOLLIM_VoidFinder_\{NGC,SGC\}.fits},
 $89{,}003 + 12{,}860 = 101{,}863$ interior hole spheres comprising the
 $3{,}765$ maximal voids). We fetched both files and performed a direct
 per-galaxy cross-match of the T-Web void-class matched-spiral
