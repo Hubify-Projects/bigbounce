@@ -163,3 +163,19 @@ formally treated as separate, unreconciled generations. The approved path is a
 clean public-ID-first DESI rerun with immutable input, model, scaler, shard,
 schema, checkpoint, and deduplication receipts. Historical counts remain
 comparison sets, never acceptance targets.
+
+## Clean-rerun contract implemented — 2026-08-04
+
+The fail-closed rerun scaffold is now committed in
+`pipelines/p1_highz_tracers/clean_rerun_contract.py`, with the operator contract
+in `clean_rerun_contract.md` and smoke coverage in
+`tests/test_clean_rerun_contract.py`. It binds the archived BigAE architecture,
+model SHA-256, and inference-code hash; rejects an unsealed scaler or mutable
+DESI input locator; emits verifiable shard receipts and checkpoints; and applies
+last-TARGETID deduplication before counts. The historical labels are available
+for comparison only and cannot become acceptance targets. Two smoke tests pass.
+
+This closes artifact restoration as a decision gate: the missing enhanced
+parent cannot be truthfully reconstructed from current artifacts, so the clean
+rerun is selected. It does **not** mean the full DESI scan has run; execution of
+that scan and construction of the new defensible flagship sample are AUG-011.

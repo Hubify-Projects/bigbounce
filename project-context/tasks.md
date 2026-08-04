@@ -36,10 +36,12 @@ preserved audit history and must not be read as the active queue.
 - [ ] **AUG-009 — Production program-map rewrite:** replace the six-equal-paper
   framing with bounce theory, DESI anomaly discovery, and galaxy chirality;
   preserve exact artifacts while demoting process/readiness below science.
-- [ ] **AUG-010 — Anomaly artifact restoration:** locate and hash-verify the
-  enhanced 22.5M parent/model/normalization lineage or formally select a clean
-  public-ID-first rerun.
-- [ ] **AUG-011 — Rebuilt anomaly flagship:** reproduce one defensible sample,
+- [x] **AUG-010 — Anomaly artifact restoration:** the enhanced parent and score
+  calibration are not recoverable from current artifacts; the exact archived
+  model was hash-bound and a fail-closed public-ID-first rerun contract with
+  tests was selected and committed. Completed 2026-08-04; the full scan is not
+  implied by this gate.
+- [ ] **AUG-011 — Rebuilt anomaly flagship:** execute the clean rerun and reproduce one defensible sample,
   validation contract, taxonomy, and named follow-up set before drafting.
 - [ ] **AUG-012 — Selected-portfolio execution board:** maintain six standalone
   works (including the rebuilt anomaly flagship and P5, excluding P3) plus the

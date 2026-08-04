@@ -18,3 +18,9 @@ Shared log of agent updates to this project. Other agents read this to see recen
 
 ## 2026-08-04T06:59:57.588Z — agent
 2026-08-03 DESI anomaly claim audit complete: 2,145 filtered candidates and 1,127 SIMBAD/NED-unmatched taxonomy rows survive as the strongest bounded science; the 22.5M enhanced parent/model must be restored or rerun; unsupported fNL, false-positive, enrichment, W2, redshift-neuron, and discovery wording retired. See project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md.
+
+## 2026-08-04T09:15:00.000Z — agent
+2026-08-04 publication architecture approved: three question-first programs; P3 is Supporting Data Release · DESI Public-ID Recovery integrated with the rebuilt anomaly flagship, not a standalone submission; P5 is Standalone Companion · Chirality–Environment Null Test for AJ. The endpoint is six standalone works plus the P3 support release.
+
+## 2026-08-04T09:16:00.000Z — agent
+2026-08-04 anomaly restoration gate closed honestly: the enhanced parent/calibration cannot be recovered, the archived model is hash-bound locally and on Hugging Face, and commit 2a0a2fea adds a fail-closed public-ID-first rerun contract with passing smoke tests. The full DESI rerun and rebuilt flagship remain the next science execution phase.

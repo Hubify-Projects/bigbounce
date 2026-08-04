@@ -13,7 +13,7 @@
 - P5 remains a standalone AJ companion because its environment question,
   DESI/LSS joins, and systematics-controlled null are distinct from P4.
 - Houston approved executing the three-program architecture on 2026-08-04.
-- Provisional endpoint: six standalone works (including the rebuilt anomaly
+- Approved endpoint: six standalone works (including the rebuilt anomaly
   flagship and P5, excluding P3) plus the integrated P3 supporting release.
 - Governing document:
   `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`.

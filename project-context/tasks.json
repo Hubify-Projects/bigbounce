@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-08-04T00:40:00-07:00",
+  "updated_at": "2026-08-04T02:15:00-07:00",
   "project": "bigbounce",
   "objective": "Ship the approved three-program public architecture, restore or rerun the DESI anomaly flagship evidence chain, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.",
   "canonical_plan": "ops/PLAN.md",
@@ -80,14 +80,15 @@
     },
     {
       "id": "AUG-010",
-      "status": "in_progress",
+      "status": "complete",
       "title": "Restore and hash-verify the enhanced DESI parent/model lineage or select a clean rerun",
-      "depends_on": ["AUG-008"]
+      "depends_on": ["AUG-008"],
+      "completion_evidence": "Enhanced parent and calibration are absent; archived model SHA f5266ba48f476bca2f1b12610e0e81322caaa955af70ab83f0b05bf763885f07 verified locally and on Hugging Face; fail-closed clean rerun contract and two passing smoke tests committed in 2a0a2fea"
     },
     {
       "id": "AUG-011",
       "status": "pending",
-      "title": "Build the defensible DESI anomaly flagship sample, validation contract, taxonomy, and manuscript",
+      "title": "Execute the clean DESI rerun and build the defensible anomaly flagship sample, validation, taxonomy, and manuscript",
       "depends_on": ["AUG-010"]
     },
     {
