@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Legacy site archive — BigBounce",
@@ -30,7 +31,7 @@ export default function OldSiteArchivePage() {
         <a href="/old/index.html">Enter the legacy archive &rarr;</a>
       </p>
       <p style={{ marginTop: 8 }}>
-        <a href="/">&larr; Back to the current site</a>
+        <Link href="/">&larr; Back to the current site</Link>
       </p>
     </>
   );

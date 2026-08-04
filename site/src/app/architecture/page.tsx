@@ -234,7 +234,7 @@ export default function ApiDocsPage() {
             <code>closeFinding</code> + <code>closePathcCaveat</code> require an
             explicit <code>closureMethod</code> enum. The value{" "}
             <code>text-only-no-real-action</code> is permitted but raises a ⚠️ flag
-            (Houston 2026-05-29: "simply disclosing deferred items and caveats IS NOT REAL SCIENCE").
+            (Houston 2026-05-29: &ldquo;simply disclosing deferred items and caveats IS NOT REAL SCIENCE&rdquo;).
           </li>
           <li>
             <strong>Truth-audit before close.</strong> Findings must have{" "}
