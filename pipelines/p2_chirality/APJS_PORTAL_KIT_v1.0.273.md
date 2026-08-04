@@ -34,14 +34,14 @@ Verified preferred labels in UAT v6.0.0. Houston must select 1–12 in the porta
 
 Upload the flat contents of `paper4_arxiv_v1.0.273.tar.gz` (main file `chirality_catalog_paper.tex`): official `aastex702.cls`, 11 referenced figures, and the TeX source with inline bibliography. Do not upload the proof JSON as manuscript content.
 
-| Artifact | SHA-256 |
-|---|---|
-| `chirality_catalog_paper.tex` | `27c3f74173762695c2edb472ccd3d3c7668b1c282c17b5783525e37abf8961f8` |
-| `chirality_catalog_paper.pdf` | `6eafa6b758b8ad361d0e97fb400c32b59abc7d4472454837b386d387b3d8c3e8` |
-| `paper4_arxiv_v1.0.273.tar.gz` | `374c867c05260b3a17368feb5c68d5486817b6c7ed007600345d6962832047ea` |
-| `paper4_arxiv_v1.0.273.proof.json` | `a98a6dcaef239163cc1d9638f37bedc9cdb6dbbb2c773ee63b1c30f34ab89300` |
+| Artifact | SHA-256 | MD5 | Bytes |
+|---|---|---|---:|
+| `chirality_catalog_paper.tex` | `27c3f74173762695c2edb472ccd3d3c7668b1c282c17b5783525e37abf8961f8` | — | — |
+| `chirality_catalog_paper.pdf` | `88bb513284db6adf4c6cf22ee7e08be2787cf8c3ebf43ffdcc289f2d369cee05` | `4044ac0c2e159c71350733b319128cab` | 33,988,954 |
+| `paper4_arxiv_v1.0.273.tar.gz` | `374c867c05260b3a17368feb5c68d5486817b6c7ed007600345d6962832047ea` | — | — |
+| `paper4_arxiv_v1.0.273.proof.json` | `47ca372fd3f79c322a74c999b038c3f94b618e3090cf64dba77d01ae61691fb6` | — | — |
 
-Staging status: AASTeX 7.0.2; line-numbered; exact extracted package compiles to 32 pages with zero errors, undefined references, or overfull boxes; all 32 pages visually audited; local and external artifact links checked. The manuscript includes Data Availability, an AI-method disclosure, no-conflicts declaration, and no-external-funding declaration.
+Staging status: AASTeX 7.0.2; line-numbered; the retained and served pdfTeX PDF is byte-identical across 12 mirrors. Separately, the exact extracted package compiles under Tectonic to 32 pages with zero errors, undefined references, or overfull boxes; all 32 pages were visually audited; local and external artifact links were checked. The manuscript includes Data Availability, an AI-method disclosure, no-conflicts declaration, and no-external-funding declaration.
 
 ## Cover letter draft
 
@@ -63,4 +63,3 @@ Houston Golden
 - [ ] Confirm conflict, funding, data-editor, license, publication-charge, and waiver responses.
 - [ ] Update the existing Zenodo record so the current v1.0.273 bytes are archived; the manuscript states that the current patch is ahead of archived v1.0.268.
 - [ ] Review the portal-generated proof and click Submit.
-
