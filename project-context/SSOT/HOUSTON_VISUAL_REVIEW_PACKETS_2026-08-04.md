@@ -49,6 +49,11 @@ stated per manuscript below.
 
 ## 1. P2 — Exact matter-contraction amplitude
 
+**Reader-first decision surface:**
+[open the live P2 final-review page](https://bigbounce.hubify.app/final-review).
+It binds the exact PDF, five page-level reading checks, package evidence, and
+the one-line decision response in one place.
+
 **Why it exists.** It answers the clearest original bounce-cosmology question:
 what local non-Gaussian amplitude follows from the stated matter-dominated
 contracting background and cubic action?

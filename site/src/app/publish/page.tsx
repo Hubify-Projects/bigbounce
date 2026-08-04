@@ -25,6 +25,9 @@ export default function PublishPage() {
         <p>
           <strong>Execution order:</strong> {publicationExecution.selectedOrder.join(" → ")}. The anomaly rerun proceeds in parallel; its flagship is drafted only if its regenerated evidence is scientifically and reproducibly strong enough.
         </p>
+        <p>
+          <strong>Active decision:</strong> <Link href="/final-review">Review the exact P2 candidate →</Link>
+        </p>
       </section>
 
       <section className="pub-section">

@@ -21,6 +21,7 @@ import {
   Rocket,
   Search,
   ShieldCheck,
+  SquareCheckBig,
   Sparkle,
   Telescope,
 } from "lucide-react";
@@ -55,6 +56,7 @@ const sections: SidebarSection[] = [
       { href: "/status", label: "status", icon: Gauge },
       { href: "/reviews", label: "reviews", icon: ShieldCheck },
       { href: "/publish", label: "command center", icon: Rocket },
+      { href: "/final-review", label: "final review", icon: SquareCheckBig },
       { href: "/contributions", label: "contributions", icon: Sparkle },
     ],
   },

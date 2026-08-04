@@ -30,6 +30,7 @@ const STATIC_PAGES: SearchItem[] = [
   { category: "Page", title: "Predictions", blurb: "Conditional matter-contraction non-Gaussianity, birefringence and SGWB diagnostics, and future-survey context", href: "/predictions" },
   { category: "Page", title: "Research Programs", blurb: "Three scientific programs with versioned papers, supporting releases, and evidence readiness", href: "/paper" },
   { category: "Page", title: "Publication Map", blurb: "The definitive three-program plan for manuscripts, data, models, software, releases, and submission order", href: "/publish" },
+  { category: "Page", title: "Final Author Review · P2", blurb: "The exact P2 PDF, five reader checks, evidence links, and APPROVE / REVISE / DEFER decision block", href: "/final-review" },
   { category: "Page", title: "Data Explorer", blurb: "Interactive research data and equation calculators; historic MCMC records are not P1B's publication role", href: "/data-explorer" },
   { category: "Page", title: "Galaxy Explorer", blurb: "8.47M-galaxy DESI Legacy DR8 chirality catalog explorer", href: "/galaxy-explorer" },
   { category: "Page", title: "Anomaly Explorer", blurb: "Legacy DESI candidate records; candidate flags are not confirmed discoveries or bounce evidence", href: "/anomaly-explorer" },

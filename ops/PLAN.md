@@ -136,6 +136,12 @@ Present one short decision packet per paper: final PDF, central claim, honest
 limitations, artifact proof, and submission checklist. Record Houston's exact
 per-paper sign-off before changing 95 to 100.
 
+The active P2 reader-first decision surface is live at
+`https://bigbounce.hubify.app/final-review`; it binds the exact v1.7.130 PDF,
+five page-level checks, evidence links, and the `APPROVE | REVISE | DEFER`
+response block. Subsequent papers follow the same sequence after the P2
+decision.
+
 ### Phase D — journal submissions
 
 Use the existing venue kits and current final artifacts. Journal accounts,
