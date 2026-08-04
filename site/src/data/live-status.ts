@@ -95,7 +95,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "DESI anomaly-list recovery",
       version: "v3.2.0-r16",
       readiness: 95,
-      pendingWork: "Exact r16 bounded confirmation and Houston's visual review remain; r15's one Gemini wording minor is closed with no science or readiness change.",
+      pendingWork: "Exact r16 bounded confirmation and Houston's visual review remain; annular-null, r2 payload, and viewer-evidence defects from r15 are closed in the served candidate.",
     },
     {
       slug: "paper-4",
@@ -118,10 +118,10 @@ export const liveStatus: LiveStatus = {
     closed: 920,
     openBlockers: 0,
     openMajors: 0,
-    openMinors: 1,
+    openMinors: 0,
   },
   cronStatus:
-    "No autonomous review wave is running. No recorded open BLOCKER or MAJOR; P3 retains one recorded MINOR, and bounded current-hash confirmation plus Houston review are tracked separately.",
+    "No autonomous review wave is running. No recorded open BLOCKER, MAJOR, or MINOR; bounded current-hash confirmation plus Houston review are tracked separately.",
   etaToCompletion:
     "No automated completion estimate: the remaining readiness points require Houston's personal review. Submission and journal review proceed on their own publishing timeline.",
   pods: [],

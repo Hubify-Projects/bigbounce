@@ -57,17 +57,17 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
-    id: "p3-r16-final-hash-wording-closure-2026-08-03",
+    id: "p3-r16-final-hash-evidence-closure-2026-08-03",
     dateISO: "2026-08-03",
     timePT: "22:24",
     kind: "closure-wave",
-    title: "P3 r16 closes the r15 final-hash Gemini wording minor — exact r16 confirmation remains pending",
+    title: "P3 r16 closes the r15 annular-null and package-evidence findings — exact confirmation remains pending",
     papers: ["P3"],
     summary:
-      "The exact r15 Gemini final-hash leg identified one genuinely new but bounded descriptive-comparison wording minor. P3 v3.2.0-r16 closes that wording only: no metric, numerical result, scientific claim, or 95-point readiness state changed. The r16 ApJS package is rebuilt, hash-bound, line-numbered, and visually audited; this closure is not a submission record or a final-hash consensus, so an exact r16 confirmation remains the next evidence step.",
+      "The exact r15 final-hash audit found that core-seed nearest-slot consumption did not explain the 11-versus-75.56 annular deficit, the named r2 directory omitted its manifest-bound Parquet, and two of 20 viewer PNGs were blank. P3 v3.2.0-r16 withdraws the causal claim, reports a reproducible all-neighbor audit with zero annular targets or hidden-nearest cases in all 170 core clusters and all 16 shifted core controls, restores the exact 58,038-byte Parquet, and narrows the visual claim to 18/20 captures. The r16 ApJS package is rebuilt, hash-bound, line-numbered, and visually audited; this is not a submission record or final-hash consensus, so exact r16 confirmation remains next.",
     keyTakeaways: [
-      "P3 r16 served PDF: 17 pages · SHA-256 22c76260da4da37d073fe78fcedc993fbaf7e56daca9a29a52a6b39226226c5f · md5 c57ee558b8c1e49dcdb784febcd0eca3",
-      "The sole r15 Gemini wording minor is closed; no science or readiness change",
+      "P3 r16 served PDF: 17 pages · SHA-256 c39f080b07c96b0b8db916330219db37afcefccb809659b0ae7de35cfa3fa753 · md5 5f1d26eeb0cc7b06fca69bb0707edeb2",
+      "Unsupported annular mechanism withdrawn; exact core-conditioned result and package/viewer evidence defects closed",
       "Exact r16 confirmation and Houston sign-off remain pending",
     ],
     links: [
@@ -521,7 +521,7 @@ export const reviewRounds: ReviewRound[] = [
       "17 pp (was 16), MD5 9fb6e882068a4613132792633a9d7a60, SHA-256 627899f1bfa030b56502150224b174b66186b3d0beb3e608a68b2aab68ae0cd6, timestamp 2026-07-16 17:57 PT",
       "directive-G PASS, 6 mirrors byte-identical, Convex row k575m29x0rzc2z4mh8zt654v9h8aqzpm",
       "Genuinely-new-real finding: sub-0.1-arcsec core excess is expected seed self-recovery (centroid = seed member's own coordinates), not independent association evidence — the paper's own numbers prove it",
-      "Reframed at every claim site (abstract, Sec 3.5, Fig 1 caption, Sec 7, Sec 8); shift control scoped to the 0.1-1 arcsec tail; annulus deficit explained as nearest-neighbor shielding",
+      "Reframed at every claim site (abstract, Sec 3.5, Fig 1 caption, Sec 7, Sec 8); the later r16 exact audit supersedes the nearest-neighbor-shielding explanation and treats the annular comparison as descriptive only",
       "Zero data change, zero stale claims (grep-verified); this SUPERSEDES any prior site/SSOT text describing the sub-0.1-arcsec excess as association evidence",
       "No readiness uplift: exact v3.2.0-r10 confirmation, Zenodo deposit re-staging at r10, immutable archive/DOI, and human ApJS review remain open",
     ],
