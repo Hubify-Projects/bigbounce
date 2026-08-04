@@ -16,7 +16,7 @@
 % supporting number already in the manuscript. Canonical source for the ApJS track.
 % Compile: latexmk -pdf -interaction=nonstopmode -halt-on-error paper3_apjs.tex
 
-\documentclass[twocolumn]{aastex701}
+\documentclass[twocolumn,linenumbers]{aastex702}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{bm}
@@ -39,7 +39,7 @@
 % singular/plural/zero handling. A stale "one patch ahead" literal is therefore
 % unrepresentable — closing the half of pattern-047 that the 2026-07-23 closure
 % left as a hardcoded literal (it bound only the manuscript half to a macro).
-\newcommand{\paperVersion}{v3.2.0-r14}
+\newcommand{\paperVersion}{v3.2.0-r15}
 \newcommand{\depositVersion}{v3.2.0-r10}
 \makeatletter
 \def\bb@afterR#1-r#2\@nil{#2}                 % "v3.2.0-r14" -> "14"
@@ -58,7 +58,15 @@
     on the next re-stage%
   \fi}
 \makeatother
-\newcommand{\paperTimestamp}{July 24, 2026, 10:30 PDT}
+\newcommand{\paperTimestamp}{August 3, 2026, 19:34 PDT}
+% v3.2.0-r15 (2026-08-03 — ApJS portal-package closure; no science, abstract,
+% catalog, figure, or numerical change): adds the AAS-required line-number
+% option, a <=44-character running title, the author's verified ORCID, and an
+% evidence-bounded AI-use disclosure. The disclosure names only reviewer vendors
+% recorded in the P3 review archive and preserves authorship and verification with
+% Houston Golden. A flattened, line-numbered portal package is built separately
+% from this canonical source; the arXiv-style source bundle remains a distinct
+% package surface.
 % v3.2.0-r14 (2026-07-24 — ApJS SUBMISSION-CONFORMANCE + DRIFT-PROOF DEPOSIT REFERENCE.
 %   (1) ABSTRACT CUT TO THE AAS CAP. AAS Manuscript Preparation requires "a single
 %   paragraph of not more than 250 words" (https://journals.aas.org/manuscript-preparation/,
@@ -137,10 +145,12 @@
 
 \title{Public-ID Recovery for a Historical DESI DR1 Anomaly List:\\
 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations}
+\shorttitle{Public-ID Recovery for DESI DR1}
 
 \author{Houston Golden}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 \email{houston@hubify.com}
+\altaffiliation[ORCID: ]{\href{https://orcid.org/0009-0008-5616-5994}{0009-0008-5616-5994}}
 \date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
@@ -1026,9 +1036,14 @@ or recommendations expressed in this material are those of the author and do not
 reflect the views of the U.S. National Science Foundation, the U.S. Department of Energy, or
 any of the listed funding agencies.
 
-The analysis benefited from automated code and manuscript review; all catalog assertions
-reported here were checked against machine-readable artifacts, and no review-system output was
-accepted as evidence without a local or public-source verification.
+\emph{AI-assisted methods.}---AI coding and review tools, operated under the author's
+direction, assisted with implementation review, documentation, manuscript drafting and
+revision, and adversarial checks.  The retained P3 review archive records Claude, Grok,
+Gemini, and ChatGPT/OpenAI reviewer legs.  Their outputs were not treated as evidence:
+all catalog assertions reported here were accepted only after direct checking against
+the machine-readable artifacts, committed code, and local or public-source validation.
+The author set the study scope, made the scientific judgments, and takes full
+responsibility for the manuscript.  No AI system is an author or is credited as one.
 \end{acknowledgments}
 
 \begin{thebibliography}{20}
