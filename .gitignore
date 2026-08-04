@@ -91,6 +91,12 @@ project-context/LOOP_HEARTBEAT.json
 project-context/LOOP_WATCHDOG_LOG.md
 pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_shards/
 
+# Superseded 2026-08-03 final-acceptance/reviewer snapshots. Canonical later
+# receipts are tracked; preserve these local copies without repo status churn.
+project-context/SSOT/final-acceptance/portfolio-preflight-2026-08-03-P3-r16-superseding.json
+project-context/SSOT/final-acceptance/portfolio-preflight-2026-08-03-P3-r16-superseding-head-f61aac73.json
+project-context/peer-reviews/FINALHASH4_2026-08-03_P3_v3.2.0-r16_P3_Gemini_cosmology.md
+
 # P4 G1 retrain checkpoint — 88MB, backed up to HF bamfai/galaxy-chirality-v2 (g1-retrain-2026-07-17) + pod; not committed
 pipelines/p2_chirality/outputs/g1_retrain/*.pt
 
