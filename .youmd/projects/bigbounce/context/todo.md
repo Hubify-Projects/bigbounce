@@ -6,14 +6,13 @@
   missing anomaly-discovery paper.
 - Restore the historical enhanced DESI parent/model or choose a clean rerun,
   then reproduce the 2,145/1,127 candidate selection from bound inputs.
-- Resolve whether current P3 and P5 merit standalone submission or belong as
-  supporting/companion outputs.
+- Ship the three-program site map with P3 labeled as a supporting data release
+  and P5 labeled as a standalone companion.
 
 ## Backlog
 
-- Obtain Houston's decision on the three-program publication architecture.
-- Rebuild the public site and approval/submission board around primary science
-  versus supporting outputs; then collect visual-review sign-offs.
+- Rebuild the approval/submission board around the selected six standalone
+  works plus the integrated P3 release; then collect visual-review sign-offs.
 - After sign-off, refresh P4's archive and mint P5's immutable release/DOI,
   backpatch the final metadata, and re-audit any PDF whose bytes change.
 - Execute journal/arXiv submissions and honest endorsement outreach as a
@@ -38,3 +37,5 @@
   inherited count should not control publication strategy.
 - Completed the initial DESI anomaly source-to-claim inventory and retired the
   unsupported headline claims in the project README.
+- Recorded Houston's approval of the three-program architecture and resolved
+  the P3/P5 editorial decisions.

@@ -30,8 +30,8 @@ possible submission assets, but the six-at-once submission plan is on hold.
 | Research program | Main question | Primary scientific output | Supporting or optional output |
 |---|---|---|---|
 | Bounce theory | Does matter-dominated contraction produce a distinctive, exactly reproducible primordial non-Gaussian amplitude? | **P2** | **P1A** narrow ECH boundary note; **P1B** software |
-| Survey discovery | What unusual spectra are found by a full-scale DESI anomaly search, and which candidates survive scientific validation? | **Rebuilt anomaly-science paper** | Current **P3** public-ID recovery catalog/method |
-| Galaxy chirality | Is there a large-scale observed-label chirality dipole in the released DESI imaging catalog? | **P4** | **P5** exploratory environment companion, if it earns a separate venue |
+| Survey discovery | What unusual spectra are found by a full-scale DESI anomaly search, and which candidates survive scientific validation? | **Rebuilt anomaly-science paper** | Current **P3** integrated public-ID/provenance release |
+| Galaxy chirality | Is there a large-scale observed-label chirality dipole in the released DESI imaging catalog? | **P4** | **P5** standalone AJ companion on environment dependence |
 
 This is a portfolio of **three core scientific stories**, not a promise that
 the final submission count must equal three or six.
@@ -111,11 +111,10 @@ an anomaly rate, demonstrate novelty or purity, classify the discoveries, or
 publish the original full-survey science. Its use of the BigAE list is lineage
 and coordinate provenance.
 
-**Disposition:** Reclassify as a technical data/recovery note or as a methods
-and data supplement to the rebuilt anomaly paper. Do not present it as the
-replacement for the anomaly-discovery paper. Independent journal submission
-is optional and must be justified by editorial value, not by the old six-paper
-count.
+**Disposition:** Integrate it as the citable supporting data/provenance release
+for the rebuilt anomaly paper. Do not submit it as an independent ApJS paper
+and do not present it as the replacement for the anomaly-discovery paper. Its
+public label is **Supporting Data Release · DESI Public-ID Recovery**.
 
 ### P4 — DESI observed-label chirality catalog and dipole null
 
@@ -150,11 +149,11 @@ clear caveats.
 handedness measurement, or a cosmological constraint. It is exploratory and
 post-hoc.
 
-**Disposition:** Treat as an optional companion. Before submitting it
-separately, make an editorial decision: either its environmental question and
-methods justify a standalone article, its essential result belongs in a P4
-companion/supplement, or it should be deferred. Finishing a 46-page package is
-not by itself evidence that a separate paper is strategically wise.
+**Disposition:** Keep as a standalone AJ companion. Its environment-dependence
+question, independent DESI/LSS joins, and systematics-controlled null are
+distinct enough from P4 to justify a separate reader journey; merging it would
+overload the catalog paper. Its dependence on P4 labels remains explicit. Its
+public label is **Standalone Companion · Chirality–Environment Null Test**.
 
 ## What happened to the original anomaly paper
 
@@ -205,30 +204,35 @@ reconciliation, not marketing the largest number.
 4. **P1A — minimal ECH boundary Note**: coherent narrow theory result.
 5. **P1B — `namaster-proof` software paper**: coherent software result.
 
-### Outputs that must earn a separate-paper slot
+### Standalone companion
 
-6. **Current P3 — public-ID recovery**: technical note, data paper, or
-   supplement; hold the venue decision.
-7. **P5 — environment comparison**: optional companion; hold the venue
-   decision.
+6. **P5 — environment comparison**: a distinct AJ companion to P4.
 
-This means the likely final publication package is **five durable standalone
-works plus zero, one, or two additional companions**. More importantly, the
-public story remains three research programs with three clear lead results.
-The count follows the science and venue fit; the science does not follow the
-count.
+### Supporting release, not a standalone paper
 
-## Active decision gate
+- **Current P3 — public-ID recovery**: integrated provenance/data release for
+  the rebuilt anomaly flagship.
 
-Until Houston approves or revises this architecture:
+The provisional endpoint is therefore **six standalone works plus one
+supporting data release**. That happens to total six papers only after replacing
+the old standalone P3 with the rebuilt anomaly flagship; the number now follows
+the scientific questions and venue fit rather than controlling them. The public
+story remains three research programs with three clear lead results.
 
-- do not submit, request endorsements, mint new immutable P4/P5 records, or
-  push a site that presents all six candidates as equal and final;
-- keep Directive-P scores and finished artifacts as historical readiness
-  evidence, not as instructions to publish every package;
-- preserve the bounded P3 r17 technical closure, but do not project it as the
-  anomaly flagship;
-- make no claim that the rebuilt anomaly paper is ready.
+## Approved execution state — 2026-08-04
+
+Houston approved executing the recommended next steps with: `continue all best
+next steps`.
+
+- The three-program public framing is approved.
+- Current P3 is removed from the standalone submission queue and retained as
+  the anomaly program's supporting data/provenance release.
+- P5 remains a standalone AJ companion.
+- The rebuilt anomaly flagship is the primary scientific reconstruction task;
+  it is not yet submission-ready.
+- Directive-P scores and finished candidate artifacts remain preserved as
+  technical evidence, not as instructions to publish the old six-candidate
+  lineup.
 
 ## Production truth audit
 
@@ -262,12 +266,11 @@ honest status language, and any selected-paper decisions.
    paper around method validation, catalog characterization, candidate
    taxonomy, and genuinely supportable notable objects. Keep cosmology demos
    subordinate unless their estimators independently survive review.
-3. **Current P3 editorial decision.** Decide whether public-ID recovery is a
-   standalone data/methods note, a citable release paper, or a supplement to
-   the rebuilt anomaly paper.
-4. **P5 editorial decision.** Compare a standalone P5 against a shorter P4
-   companion or deferred analysis. Judge novelty, independence, and reader
-   value—not sunk effort.
+3. **Current P3 editorial decision — complete.** Integrate it as the rebuilt
+   anomaly paper's supporting data/provenance release; retire standalone ApJS
+   routing.
+4. **P5 editorial decision — complete.** Keep it as a standalone AJ companion
+   to P4 with dependency and exploratory scope explicit.
 5. **Public-site rewrite.** Replace “six papers” with Research Programs. Each
    program page should start with the question, result, limitation, lead paper,
    and linked supporting software/data. Readiness and review machinery move
@@ -276,14 +279,9 @@ honest status language, and any selected-paper decisions.
    approval board, venue order, archive plan, endorser plan, and exact served
    hashes. Then Houston reviews the actual selected portfolio.
 
-## Decision requested from Houston
+## Decision record
 
-Review the map, not six PDFs at once. The immediate decisions are:
-
-1. Approve the three-program hierarchy as the public framing.
-2. Confirm that rebuilding the original DESI anomaly-science story is the next
-   scientific priority.
-3. Keep current P3 and P5 on editorial hold until their standalone value is
-   assessed.
-
-No decision is needed yet on the final numerical paper count.
+The three-program hierarchy, anomaly rebuild priority, integrated-P3 role, and
+standalone-P5 role are approved. The remaining human decisions concern the
+actual selected manuscripts, final PDFs, archive actions, and submissions—not
+the portfolio architecture.

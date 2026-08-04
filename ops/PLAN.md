@@ -1,18 +1,16 @@
 # PLAN — BigBounce research and publication program
 
-**Authoritative program plan · reconciled 2026-08-03**
+**Authoritative program plan · reconciled 2026-08-04**
 
 This is the single executable plan for the research portfolio. It defines the
 current phase, gates, and work order. It does not duplicate manuscript science
 facts: use the source map below and the SSOT status board for those.
 
-> **Publication-architecture gate — 2026-08-03:** The former six-paper
-> submission plan is paused. The six count is an operational history, not a
-> scientific requirement. The governing decision draft is
-> `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`. Preserve all
-> completed packages, but do not submit, seek endorsements, mint new immutable
-> P4/P5 records, or push a public six-equal-papers framing until Houston accepts
-> or revises the new architecture.
+> **Publication architecture approved — 2026-08-04:** The public portfolio is
+> organized into bounce theory, DESI anomaly discovery, and galaxy chirality.
+> Current P3 is an integrated supporting data/provenance release, not a
+> standalone paper; P5 remains a standalone AJ companion. The governing record
+> is `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`.
 
 ## Mission
 
@@ -58,11 +56,12 @@ process evidence in `CLAUDE.md`; they are not the current scoring or exit model.
 ## Current state
 
 Technical readiness and publication strategy are now deliberately separated.
-Six candidate packages reached the Directive-P agent gate, but that does not
-prove that all six should be independent publications. The active portfolio
-map is three core scientific stories (P2, a rebuilt anomaly-science paper, and
-P4), two specialist outputs (P1A and P1B), and two held editorial decisions
-(current P3 and P5). See the architecture reset for the rationale.
+Six candidate packages reached the Directive-P agent gate, but the approved
+portfolio does not treat them as six equal publications. The final routing is
+three core scientific stories (P2, a rebuilt anomaly-science paper, and P4),
+two specialist outputs (P1A and P1B), one standalone companion (P5), and one
+supporting data release (current P3). See the architecture reset for the
+rationale.
 
 The July 22 active-leg confirmation wave produced 19 genuinely-new-real
 findings across the portfolio; all were closed. The July 23–24 completeness
@@ -74,8 +73,8 @@ remaining P1B, P4, and P5 findings. The current versions are:
 | P1A | v1A.0.127 | 95/95 | CQG submission |
 | P1B | v2B.0.16 | 95/95 | JORS submission |
 | P2 | v1.7.130 | 95/95 | PRD submission |
-| P3 | v3.2.0-r16 | 95/95 | Exact r16 confirmation, then Houston review and ApJS submission |
-| P4 | v1.0.273 | 95/95 | Houston review, then ApJS submission |
+| P3 support | v3.2.0-r17 | 95/95 | Integrate into anomaly flagship release; no standalone ApJS submission |
+| P4 | v1.0.274 | 95/95 | Houston review, then ApJS submission |
 | P5 | v0.1.147-2026-08-03 | 95/95 | Houston review, archive mint, then AJ submission |
 
 The 95 values mean the four Directive-P agent gates are recorded complete; they
@@ -88,16 +87,14 @@ does not automatically reduce readiness unless it finds a real regression.
 
 ## Phase plan
 
-### Phase 0 — publication architecture reset (active)
+### Phase 0 — publication architecture reset (complete 2026-08-04)
 
 1. Reconcile the original DESI anomaly project's datasets, thresholds, model
    versions, candidate counts, validation claims, and surviving artifacts.
-2. Decide whether current P3 is a standalone technical/data note or a
-   supplement to the rebuilt anomaly-science paper.
-3. Decide whether P5 is an independent companion, a shorter P4 supplement, or
-   a deferred analysis.
-4. Obtain Houston's approval of the research-program map before regenerating
-   the public site and submission board.
+2. Current P3 decision: integrated technical/data release for the rebuilt
+   anomaly-science paper; no standalone submission.
+3. P5 decision: independent AJ companion to P4.
+4. Houston approved the research-program map on 2026-08-04.
 
 The initial claim audit is complete at
 `project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md`. Its next gate
@@ -142,15 +139,15 @@ distribution task and is not on the journal critical path.
 
 ## Immediate priority order
 
-1. Preserve the bounded P3 r17 technical closure without calling it the
-   replacement for the original anomaly science.
-2. Complete the anomaly source-to-claim reconciliation and propose the rebuilt
-   flagship manuscript's defensible scientific scope.
-3. Resolve the independent-publication decisions for current P3 and P5.
-4. Rewrite the public map around three research programs, then regenerate the
-   approval/submission/endorser board for the selected portfolio.
-5. Resume exact-hash acceptance, Houston visual review, and submission only
-   after the architecture is approved.
+1. Ship the three-program public map and exact P3/P5 roles.
+2. Complete anomaly artifact restoration; if the enhanced parent/model cannot
+   be recovered, specify and run the clean public-ID-first DESI rerun.
+3. Architect the rebuilt anomaly flagship around the defensible selected
+   sample, validation, taxonomy, and named follow-up objects.
+4. Regenerate the approval/submission/endorser board for six standalone works
+   plus the integrated P3 release.
+5. Resume exact-hash acceptance and Houston visual review for the selected
+   submission portfolio.
 
 ## Stop rules
 

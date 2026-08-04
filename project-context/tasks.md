@@ -1,25 +1,23 @@
 # Tasks — BigBounce publication program
 
-## Current authoritative queue — 2026-08-03
+## Current authoritative queue — 2026-08-04
 
 The executable program plan is [`../ops/PLAN.md`](../ops/PLAN.md); the canonical
 paper queue is [`SSOT/queue.md`](SSOT/queue.md). This section is the current
 project-context task projection. Everything below **Historical task ledger** is
 preserved audit history and must not be read as the active queue.
 
-- [x] **AUG-001 — Atomic truth synchronization:** reconciled SSOT, revision
-  tracker, Convex, site data, and production behavior around the six current
-  versions and Directive-P scoring; local build/typecheck/freshness gates pass
-  and both remotes share the release commit. Completed 2026-08-03.
-- [ ] **AUG-002 — Bounded final-hash acceptance:** deterministic portfolio,
+- [x] **AUG-001 — Atomic truth synchronization:** reconciled SSOT, Convex, site
+  data, production PDFs, and both GitHub remotes. Completed 2026-08-03.
+- [x] **AUG-002 — Preserved-candidate package acceptance:** deterministic
   compile, link, mirror, visual-PDF, source-package, and science-contract gates
-  pass on the final candidates. The bounded active-leg confirmation is running;
-  reopen work only for genuinely-new-real regressions.
+  pass on the six preserved candidate packages. Completed 2026-08-03.
 - [x] **AUG-003 — Submission metadata and packets:** current CQG, JORS, PRD,
   ApJS, and AJ portal kits and exact source packages now exist for all six
   candidates. P4/P5 archive publication remains intentionally post-sign-off.
-- [ ] **AUG-004 — Houston sign-off:** collect one explicit per-paper decision;
-  95 becomes 100 only after the corresponding quote is recorded in SSOT.
+- [ ] **AUG-004 — Houston sign-off:** collect one explicit decision for P1A,
+  P1B, P2, P4, and P5; 95 becomes 100 only after the corresponding quote is
+  recorded. P3 is reviewed as supporting release infrastructure, not a paper.
 - [ ] **AUG-005 — Journal submissions:** execute CQG/JORS/PRD/ApJS/AJ portal
   work. Track accounts, reviewer suggestions, fees/waivers, and clicks as
   publishing tasks separate from readiness.
@@ -32,14 +30,29 @@ preserved audit history and must not be read as the active queue.
   unauthenticated. `.env.local` lacks `HUBIFY_TOKEN` although `.env.example`
   declares it. This does not block repo/site synchronization; do not print or
   fabricate a token.
+- [x] **AUG-008 — Publication architecture:** Houston approved the three-program
+  map on 2026-08-04. Current P3 is an integrated supporting data/provenance
+  release; P5 remains a standalone AJ companion.
+- [ ] **AUG-009 — Production program-map rewrite:** replace the six-equal-paper
+  framing with bounce theory, DESI anomaly discovery, and galaxy chirality;
+  preserve exact artifacts while demoting process/readiness below science.
+- [ ] **AUG-010 — Anomaly artifact restoration:** locate and hash-verify the
+  enhanced 22.5M parent/model/normalization lineage or formally select a clean
+  public-ID-first rerun.
+- [ ] **AUG-011 — Rebuilt anomaly flagship:** reproduce one defensible sample,
+  validation contract, taxonomy, and named follow-up set before drafting.
+- [ ] **AUG-012 — Selected-portfolio execution board:** maintain six standalone
+  works (including the rebuilt anomaly flagship and P5, excluding P3) plus the
+  integrated P3 release; then resume sign-off, archives, endorsers, and venues.
 
 ## Current state
 
-P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r16, P4 v1.0.273, and
-P5 v0.1.147-2026-08-03 are recorded at the four completed Directive-P agent
-gates (**95/95**). Houston's sign-off supplies the final five points. The July
-22 board and July 23–24 completeness resweep closed all known genuinely-new-real
-findings; a bounded exact-final-hash confirmation remains evidence hygiene.
+The approved portfolio has three lead science stories: P2, a rebuilt DESI
+anomaly flagship, and P4. P1A and P1B are specialist Note/software works. P5 is
+a standalone AJ companion. Current P3 r17 is the integrated public-ID/provenance
+release for the rebuilt anomaly program and is not a standalone submission.
+Preserved candidate readiness remains evidence; it does not replace Houston's
+selected-manuscript review or the anomaly rebuild.
 
 ## Historical task ledger
 

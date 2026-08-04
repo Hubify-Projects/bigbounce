@@ -8,10 +8,13 @@
 - P2, a rebuilt anomaly-science paper, and P4 are the three core scientific
   stories; P1A and P1B are specialist theory/software publications.
 - Current P3 is a technical public-ID recovery output, not a replacement for
-  the original anomaly survey. P3 and P5 are on editorial hold pending a
-  standalone-versus-supporting decision.
-- Submission, endorsement outreach, new P4/P5 archive minting, and a production
-  push remain paused until Houston approves or revises the architecture.
+  the original anomaly survey. It is an integrated supporting data/provenance
+  release, not a standalone ApJS paper.
+- P5 remains a standalone AJ companion because its environment question,
+  DESI/LSS joins, and systematics-controlled null are distinct from P4.
+- Houston approved executing the three-program architecture on 2026-08-04.
+- Provisional endpoint: six standalone works (including the rebuilt anomaly
+  flagship and P5, excluding P3) plus the integrated P3 supporting release.
 - Governing document:
   `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`.
 

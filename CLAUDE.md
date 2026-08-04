@@ -1,11 +1,11 @@
 # CLAUDE.md — bigbounce
 
-> **ACTIVE ARCHITECTURE GATE — 2026-08-03:** Read
+> **APPROVED PUBLICATION ARCHITECTURE — 2026-08-04:** Read
 > `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md` before paper,
-> site, archive, endorsement, or submission work. The inherited six-candidate
-> count is not a publication mandate. Preserve finished packages, but do not
-> submit, seek endorsements, mint new P4/P5 records, or publish a six-equal-
-> papers framing until Houston approves or revises the portfolio map.
+> site, archive, endorsement, or submission work. Use the three-program map.
+> Current P3 is an integrated supporting release, not a standalone paper; P5
+> is a standalone AJ companion. Never restore the old six-equal-candidates
+> framing.
 
 ## Ops center
 

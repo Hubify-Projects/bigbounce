@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updated_at": "2026-08-03T00:00:00-07:00",
+  "updated_at": "2026-08-04T00:40:00-07:00",
   "project": "bigbounce",
-  "objective": "Reconcile the canonical repository and production truth, verify the six current exact artifacts with a bounded final-hash acceptance pass, obtain Houston's per-paper sign-off, and enter journal submission without conflating publishing workflow with readiness.",
+  "objective": "Ship the approved three-program public architecture, restore or rerun the DESI anomaly flagship evidence chain, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.",
   "canonical_plan": "ops/PLAN.md",
   "canonical_status": "project-context/SSOT/index.md",
   "current_versions": {
     "P1A": "v1A.0.127",
     "P1B": "v2B.0.16",
     "P2": "v1.7.130",
-    "P3": "v3.2.0-r16",
-    "P4": "v1.0.273",
+    "P3_support": "v3.2.0-r17",
+    "P4": "v1.0.274",
     "P5": "v0.1.147-2026-08-03"
   },
   "readiness_model": {
@@ -29,9 +29,10 @@
     },
     {
       "id": "AUG-002",
-      "status": "in_progress",
-      "title": "Run bounded exact-final-hash package and convergence acceptance across all six papers",
-      "depends_on": ["AUG-001"]
+      "status": "complete",
+      "title": "Complete bounded package acceptance across the six preserved candidate artifacts",
+      "depends_on": ["AUG-001"],
+      "completion_evidence": "Exact package, PDF, visual, link, mirror, and contract gates passed through P3 r17 and P4 v1.0.274"
     },
     {
       "id": "AUG-003",
@@ -43,7 +44,7 @@
     {
       "id": "AUG-004",
       "status": "pending",
-      "title": "Record Houston's explicit per-paper sign-offs and move signed papers from 95 to 100",
+      "title": "Record Houston's explicit sign-offs for P1A, P1B, P2, P4, and P5",
       "depends_on": ["AUG-002"]
     },
     {
@@ -64,6 +65,36 @@
       "title": "Verify Hubify lab status after authentication is available",
       "blocker": ".env.local lacks HUBIFY_TOKEN; Hubify CLI status/papers/tasks/agents/activity fail unauthenticated",
       "critical_path": false
+    },
+    {
+      "id": "AUG-008",
+      "status": "complete",
+      "title": "Approve the three-program publication architecture and resolve P3/P5 editorial roles",
+      "completion_evidence": "Houston 2026-08-04 continue-all approval; P3 integrated supporting release; P5 standalone AJ companion"
+    },
+    {
+      "id": "AUG-009",
+      "status": "in_progress",
+      "title": "Rewrite production around bounce theory, DESI anomaly discovery, and galaxy chirality",
+      "depends_on": ["AUG-008"]
+    },
+    {
+      "id": "AUG-010",
+      "status": "in_progress",
+      "title": "Restore and hash-verify the enhanced DESI parent/model lineage or select a clean rerun",
+      "depends_on": ["AUG-008"]
+    },
+    {
+      "id": "AUG-011",
+      "status": "pending",
+      "title": "Build the defensible DESI anomaly flagship sample, validation contract, taxonomy, and manuscript",
+      "depends_on": ["AUG-010"]
+    },
+    {
+      "id": "AUG-012",
+      "status": "in_progress",
+      "title": "Regenerate approval, submission, archive, and endorser routing for six standalone works plus the P3 support release",
+      "depends_on": ["AUG-008", "AUG-009"]
     }
   ],
   "historical_tasks": [

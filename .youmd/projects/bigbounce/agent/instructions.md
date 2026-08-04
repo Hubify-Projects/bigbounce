@@ -17,7 +17,6 @@ LaTeX comment or public site projection when it conflicts with the SSOT.
 Truth-audit every review finding, preserve raw evidence, never fabricate an
 acceptance or derivation, and keep SSOT/Convex/site changes atomic. Directive P
 separates readiness from publishing: four agent gates total 95; only Houston's
-explicit per-paper sign-off reaches 100. The active publication-architecture
-hold overrides the old six-submission execution order: preserve candidate
-packages, but do not submit, seek endorsements, mint P4/P5 records, or publish
-a six-equal-papers framing until Houston approves or revises the map.
+explicit per-paper sign-off reaches 100. The approved architecture supersedes
+the old six-candidate execution order: use three research programs, integrate
+current P3 as a supporting release, and retain P5 as a standalone companion.

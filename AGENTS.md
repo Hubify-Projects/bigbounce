@@ -15,10 +15,10 @@ scientific papers. If you are an AI coding agent (Codex, Claude Code, Cursor,
 ## Ground truth
 - Canonical paper status: **`project-context/SSOT/`** + **Convex** — never a `.tex`
   comment, `papers.ts`, or site HTML.
-- **State as of 2026-08-03: PUBLICATION-ARCHITECTURE HOLD.** Directive-P agent
-  gates and candidate packages are preserved, but submission, endorsement
-  outreach, P4/P5 archive minting, and a six-equal-papers production projection
-  are paused. Start with
+- **State as of 2026-08-04: PUBLICATION ARCHITECTURE APPROVED.** The public map
+  is three research programs. Current P3 is an integrated supporting
+  data/provenance release, not a standalone paper; P5 is a standalone AJ
+  companion. Start with
   `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`, then
   `ops/PLAN.md` and the top board in `project-context/SSOT/index.md`.
 

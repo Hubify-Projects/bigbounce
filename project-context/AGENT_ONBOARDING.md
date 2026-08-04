@@ -6,17 +6,16 @@ entry point. Read it top to bottom once, then keep the loop going.
 
 **The mission:** publish the strongest coherent research portfolio, organized
 by scientific question rather than an inherited count. Six candidate packages
-are preserved, but current P3 and P5 are under editorial review and the missing
-DESI anomaly-discovery science must be reconciled. Keep the public lab site
+are preserved. Current P3 is an integrated supporting data/provenance release;
+P5 is a standalone AJ companion; the missing DESI anomaly-discovery science
+must be rebuilt. Keep the public lab site
 (https://bigbounce.hubify.app) honest and synchronized after approved rounds.
 
-> **CURRENT STATE (2026-08-03): PUBLICATION-ARCHITECTURE HOLD.** Read
+> **CURRENT STATE (2026-08-04): ARCHITECTURE APPROVED.** Read
 > `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md` first. The six
-> Directive-P candidate states are preserved as technical evidence, not as an
-> instruction to submit six equal papers. Do not submit, seek endorsements,
-> mint new P4/P5 records, or push a six-equal-papers site framing until Houston
-> approves or revises the map. Current P3 is a technical public-ID recovery
-> output, not the missing anomaly-discovery paper.
+> Directive-P candidate states remain technical evidence, not instructions to
+> submit six equal papers. Current P3 is a supporting public-ID/provenance
+> release, P5 is a standalone companion, and the anomaly flagship is a rebuild.
 >
 > **HOW to run any bounded further round:** the canonical spec is
 > `~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md` (all-vendor INT matrix,
