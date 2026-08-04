@@ -46,6 +46,67 @@ export interface Paper {
   }>;
 }
 
+export type ResearchProgramId =
+  | "bounce-theory"
+  | "desi-anomaly-discovery"
+  | "galaxy-chirality";
+
+export interface ResearchProgram {
+  id: ResearchProgramId;
+  title: string;
+  question: string;
+  result: string;
+  limitation: string;
+  leadSlug?: string;
+  supportSlugs: string[];
+  status: string;
+}
+
+/**
+ * Public-facing portfolio hierarchy. It deliberately separates the three
+ * scientific questions from completed candidate packages and review evidence.
+ */
+export const researchPrograms: ResearchProgram[] = [
+  {
+    id: "bounce-theory",
+    title: "Bounce theory",
+    question:
+      "Does matter-dominated contraction produce a distinctive, reproducible primordial non-Gaussian amplitude?",
+    result:
+      "P2 rederives the stated matter-contraction amplitude f_NL^local = −35/16; its survey mapping remains conditional, not a detection forecast.",
+    limitation:
+      "Nonlinear transmission through a specified bounce completion and survey-native covariance remain open scientific conditions.",
+    leadSlug: "paper-2",
+    supportSlugs: ["paper-1a", "paper-1b"],
+    status: "Primary theory result with a boundary Note and reusable research software.",
+  },
+  {
+    id: "desi-anomaly-discovery",
+    title: "DESI anomaly discovery",
+    question:
+      "What unusual spectra emerge from a full-scale DESI anomaly search, and which candidates survive scientific validation?",
+    result:
+      "A discovery-focused flagship is being rebuilt around the preserved 2,145-row filtered slice and 1,127 SIMBAD/NED-unmatched candidate taxonomy.",
+    limitation:
+      "The enhanced parent catalog, exact model, score lineage, and selection reproducibility must be restored or regenerated before a flagship manuscript is drafted.",
+    supportSlugs: ["paper-3"],
+    status: "Flagship rebuild active. Current P3 is technical provenance support, not the discovery paper.",
+  },
+  {
+    id: "galaxy-chirality",
+    title: "Galaxy chirality",
+    question:
+      "Is there a large-scale observed-label chirality dipole in the released DESI imaging catalog?",
+    result:
+      "P4 releases the catalog and reports a declared primary observed-label dipole consistent with zero.",
+    limitation:
+      "The result is not a physical primordial-parity constraint; morphology transfer and systematics remain open.",
+    leadSlug: "paper-4",
+    supportSlugs: ["paper-5"],
+    status: "Primary catalog result with an exploratory environment companion awaiting an editorial decision.",
+  },
+];
+
 /** Shared pipeline stages — every paper walks the same six gates. */
 function publicationPath(overrides: {
   external?: PublicationStage;

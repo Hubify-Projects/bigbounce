@@ -44,24 +44,24 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-08-04T03:23:00Z",
   lastUpdatedDisplay: "August 3, 2026 · 8:23 PM PT",
   headline:
-    "All six manuscripts remain IN REVISION at 95% publication readiness under Directive P. That score records completed evidence, packaging, and review-disposition work; it is not submission, journal acceptance, or Houston sign-off.",
+    "Candidate-package evidence is recorded at 95% under Directive P. The portfolio is organized around three research programs; this score records evidence, packaging, and review disposition, not a decision to submit every package.",
   summary:
-    "All six exact source packages and journal portal kits now exist. P3, P4, and P5 were migrated to the current AASTeX 7.0.2 journal shell and mirrored at the versions below; final-hash bounded confirmation is running against these served bytes before Houston's visual review.",
+    "All six exact source packages and journal portal kits remain available as versioned evidence. P3 is technical provenance support while its discovery-focused flagship is rebuilt, and P5 remains an editorial decision rather than an automatically independent submission.",
   currentlyRunning: [
     "Deterministic preflight, clean-room package compiles, link checks, mirror checks, and all-page visual audits pass; bounded reviewer confirmation remains version-specific.",
-    "Houston's final per-paper review is the remaining five readiness points and is not implied by an automated review result.",
+    "Houston's final review applies only after a program-level scientific and editorial decision; it is not implied by an automated review result.",
     "Publishing is a separate phase: endorsement, submission clicks, and independent human review do not convert a 95% paper into 100% automatically.",
   ],
   needsHouston: [
     {
-      title: "Final personal review",
-      why: "Directive P reserves the final five percentage points for Houston's per-paper review.",
-      ask: "Review each current PDF and record sign-off only when personally satisfied.",
+      title: "Program-level editorial decisions",
+      why: "The anomaly flagship must be rebuilt, P3 needs a standalone/support role decision, and P5 needs an explicit companion or defer decision.",
+      ask: "Choose the scientific role for each program before treating any candidate package as a submission target.",
     },
     {
       title: "arXiv endorsement and submission",
-      why: "Endorsement and submission actions belong to the separate publishing phase.",
-      ask: "Complete the required endorsement and submission actions when the publication decision is made.",
+      why: "Endorsement and submission actions belong to the separate publishing phase after a specific manuscript is selected.",
+      ask: "Complete the required endorsement and submission actions only for a selected submission target.",
     },
   ],
   papers: [

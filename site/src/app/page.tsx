@@ -1,11 +1,7 @@
-import { papers, getPaperBySlug } from "@/data/papers";
+import { getPaperBySlug, researchPrograms } from "@/data/papers";
 import { liveStatus } from "@/data/live-status";
-import { sortedReviewRounds } from "@/data/reviewTimeline";
 import { Button } from "@/components/ui/button";
-import { LiveStatus } from "@/components/Shell/LiveStatus";
 import { getLivePapers, displayVersion } from "@/lib/livePapers";
-import { getPublicationStatus } from "@/lib/publicationStatus";
-import { PublicationStatusWidget } from "@/components/PublicationStatusWidget";
 import {
   ArrowRight,
   Database,
@@ -16,12 +12,8 @@ import {
 import Link from "next/link";
 
 // ──────────────────────────────────────────────────────────────────────
-// First-time-visitor homepage. Opens with the science story, then the
-// two-halves program arc (mirrors /contributions #program-arc), the six
-// papers (readiness sourced ONLY from getLivePapers — the single Convex
-// source, NOT static papers.ts.readiness), a concise contributions list,
-// the open-science artifacts (PDFs + HuggingFace datasets + models), a
-// deep-dive nav, and finally a compact live-status strip.
+// First-time-visitor homepage. The science questions lead; candidate packages,
+// review evidence, and readiness remain available as supporting material.
 // ──────────────────────────────────────────────────────────────────────
 
 function readinessColor(readiness: number): string {
@@ -35,17 +27,6 @@ function readinessColor(readiness: number): string {
 const shortTitleBySlug = new Map(
   liveStatus.papers.map((p) => [p.slug, p.shortTitle]),
 );
-
-// The two-halves arc — verbatim from /contributions #program-arc so the
-// homepage and the deep-dive page tell the same story.
-const arcRoles: Array<{ n: string; role: string }> = [
-  { n: "P1A", role: "ECH theory + no-go: a perturbation-transparency theorem and a 14-constraint channel-level closure of the four minimal bounce→dark-energy routes." },
-  { n: "P1B", role: "MCMC + pipeline companion: frozen ΛCDM+ΔN_eff chains (honest null), NaMaster recovery, and an ALP-birefringence consistency check." },
-  { n: "P2", role: "f_NL = −35/16 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
-  { n: "P3", role: "Public-ID archive recovery: 181 DESI DR1 TARGETIDs recovered from a frozen historical anomaly list (170 high-coordinate-consistency core + 11 lower-confidence) — a reproducible provenance product, explicitly not a purity, novelty, or detection claim." },
-  { n: "P4", role: "Galaxy chirality null: 8.47M classified galaxies, a null +0.41σ real-space dipole, refuting the claimed ~3% parity signal at scale." },
-  { n: "P5", role: "DESI chirality × environment null: spiral handedness is independent of cosmic-web environment, constraining environment-coupled parity models." },
-];
 
 // Concise contributions — a short, scannable subset of /contributions.
 // Every line is copied from the canonical contributions data (no new claims).
@@ -100,7 +81,7 @@ const topContributions: Array<{
     tier: "N3",
     paper: "P5",
     title: "DESI Chirality × Environment Null",
-    line: "Galaxy handedness is statistically independent of large-scale-structure environment.",
+    line: "An exploratory void/non-void classifier-label contrast is consistent with zero; it is not a physical environment-independence result.",
   },
   {
     id: "alp-birefringence",
@@ -119,7 +100,7 @@ const artifactGroups: Array<{
   {
     label: "Paper PDFs",
     blurb: "Every paper compiles to a versioned PDF, served from the papers index.",
-    links: [{ label: "Browse all six papers", href: "/paper", internal: true }],
+    links: [{ label: "Browse papers & artifacts", href: "/paper", internal: true }],
   },
   {
     label: "Datasets on HuggingFace",
@@ -185,16 +166,6 @@ export default async function HomePage() {
   // Readiness comes from getLivePapers ONLY — the single Convex-first source
   // shared with the live paper-state surfaces. Never re-read papers.ts.readiness.
   const livePapers = await getLivePapers();
-  const publicationStatus = await getPublicationStatus();
-
-  // Review-proof band data. Only kinds that ARE reviews count as review
-  // rounds; skill-improvement entries are program bookkeeping and closure
-  // waves are fixes, tallied separately so the trust number stays honest.
-  const timeline = sortedReviewRounds();
-  const REVIEW_KINDS = new Set(["external-browser", "internal-api", "internal-cc"]);
-  const reviewRoundCount = timeline.filter((r) => REVIEW_KINDS.has(r.kind)).length;
-  const closureWaveCount = timeline.filter((r) => r.kind === "closure-wave" || r.kind === "ext-closure").length;
-  const latestRound = timeline[0];
   const avgReadiness = Math.round(
     livePapers.reduce((acc, p) => acc + p.readinessComputed, 0) /
       Math.max(1, livePapers.length),
@@ -202,8 +173,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <LiveStatus />
-
       {/* 1 — Science story */}
       <section className="hero">
         <p className="eyebrow" style={{ marginBottom: 8 }}>
@@ -229,9 +198,9 @@ export default async function HomePage() {
             marginTop: 4,
           }}
         >
-          Six papers, honest nulls, and quantified falsification windows — with
-          the decisive test (SPHEREx, ~2028) already on the calendar. Everything
-          here is public: the PDFs, the datasets, the models, and the code.
+          Three research programs connect theory, discovery, and observation.
+          Their lead results, candidate packages, data, and review evidence are
+          public — but a finished package is not automatically a flagship paper.
         </p>
         <div className="mt-5 flex flex-wrap gap-2">
           <Button asChild>
@@ -240,100 +209,58 @@ export default async function HomePage() {
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <Link href="/paper">Read the six papers</Link>
+            <Link href="/paper">Browse papers &amp; artifacts</Link>
           </Button>
         </div>
       </section>
 
-      {/* 1.5 — Adversarial review proof band (counts computed from the real
-          timeline at build time; the /reviews page is the full record).
-          Count ONLY actual review rounds — skill-improvement and closure
-          entries are program bookkeeping, not reviews, and inflating this
-          number would undercut the exact trust claim the band makes. */}
-      <section style={{ marginBottom: 40 }}>
-        <div className="card" style={{ borderLeft: "3px solid var(--accent)" }}>
-          <p className="eyebrow" style={{ marginBottom: 6 }}>
-            How every claim here gets vetted
-          </p>
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "72ch", margin: 0 }}>
-            Every result on this site has been through{" "}
-            <strong style={{ color: "var(--text)" }}>{reviewRoundCount} adversarial review rounds</strong> — model
-            families from five different labs told to refute each paper, plus independent external referees, with a
-            separate integrity audit on the review process itself — and {closureWaveCount} closure waves fixing what
-            those rounds found. The loop has caught real errors (an overlap-inflated significance, a mislabeled
-            catalog tier) before any reader could. The complete record is public
-            {latestRound ? <> — most recent: {latestRound.dateISO}</> : null}.
-          </p>
-          <p style={{ margin: "8px 0 0" }}>
-            <Link href="/reviews" style={{ color: "var(--accent)", fontSize: 13.5 }}>
-              Browse the full review timeline <ArrowRight size={13} style={{ display: "inline", verticalAlign: "-2px" }} />
-            </Link>
-          </p>
-        </div>
-      </section>
-
-      {/* 1.6 — Directive-P publication status: the remaining gates and who owns
-          each, live from Convex publicationStatus:get. Rendered unconditionally
-          — when the query fails the widget says so, because a silently absent
-          status surface is what let an eight-day-old number pass as current. */}
-      <section style={{ marginBottom: 40 }}>
-        <PublicationStatusWidget status={publicationStatus} livePapers={livePapers} />
-      </section>
-
-      {/* 2 — Two halves / program arc */}
+      {/* 2 — Research programs */}
       <section className="section" style={{ marginTop: 8 }}>
-        <p style={sectionLabel}>How the six papers fit together</p>
-        <h2 style={{ marginTop: 0 }}>One program, two halves</h2>
+        <p style={sectionLabel}>Research programs</p>
+        <h2 style={{ marginTop: 0 }}>Three questions, three lead results</h2>
         <p style={{ marginTop: 4, fontSize: 14, lineHeight: 1.7, maxWidth: "66ch" }}>
-          The <strong>theory arm</strong> (P1A, P1B, P2) asks where a nonsingular
-          Einstein–Cartan–Holst bounce could leave a falsifiable fingerprint,
-          proves the bounce mechanism itself is invisible to telescopes, closes
-          the enumerated dark-energy routes, and isolates the one surviving handle
-          — a parameter-free matter-bounce non-Gaussianity SPHEREx can test. The{" "}
-          <strong>data arm</strong> (P3, P4, P5) mines 45M+ archival sources for
-          the parity- and anomaly-level signatures any bounce would have to
-          imprint, and reports honest nulls with quantified falsification windows.
-          Negative theory results narrowed the search space; the surveys then went
-          looking exactly where the theory said to look.
+          The portfolio is organized around scientific questions, not a fixed
+          paper count. Supporting notes, software, and exploratory companions
+          remain available with their evidence, but do not displace the lead result.
         </p>
         <div style={{ display: "grid", gap: 0, marginTop: 16, maxWidth: "76ch" }}>
-          {arcRoles.map((p, i) => (
+          {researchPrograms.map((program, i) => {
+            const lead = program.leadSlug ? getPaperBySlug(program.leadSlug) : null;
+            const supports = program.supportSlugs
+              .flatMap((slug) => {
+                const paper = getPaperBySlug(slug);
+                return paper ? [paper] : [];
+              });
+            return (
             <div
-              key={p.n}
+              key={program.id}
               style={{
-                display: "grid",
-                gridTemplateColumns: "52px 1fr",
-                gap: 14,
-                alignItems: "baseline",
-                padding: "10px 0",
+                padding: "18px 0",
                 borderTop: i === 0 ? "none" : "1px solid var(--border)",
               }}
             >
-              <span
-                style={{
-                  fontFamily: "var(--font-mono-stack)",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  color: "var(--accent)",
-                }}
-              >
-                {p.n}
-              </span>
-              <span style={{ fontSize: 13, lineHeight: 1.6 }}>{p.role}</span>
+              <p style={sectionLabel}>{program.status}</p>
+              <h3 style={{ margin: 0, fontFamily: "var(--font-mono-stack)", fontSize: 17 }}>{program.title}</h3>
+              <p style={{ marginTop: 6, fontSize: 14, lineHeight: 1.65 }}><strong>Question:</strong> {program.question}</p>
+              <p style={{ marginTop: 4, fontSize: 13.5, lineHeight: 1.6, color: "var(--text-secondary)" }}><strong>Current result:</strong> {program.result}</p>
+              <p style={{ marginTop: 4, fontSize: 13, lineHeight: 1.6, color: "var(--text-tertiary)" }}><strong>Boundary:</strong> {program.limitation}</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 9, fontSize: 13 }}>
+                {lead && <Link href={`/papers/${lead.slug}`} style={{ color: "var(--accent)" }}>Lead: {lead.number} · {lead.title} &rarr;</Link>}
+                {supports.map((paper) => <Link key={paper.slug} href={`/papers/${paper.slug}`} style={{ color: "var(--text-secondary)" }}>Support: {paper.number} &middot; {paper.title}</Link>)}
+              </div>
             </div>
-          ))}
+            );
+          })}
         </div>
-        <p style={{ marginTop: 14, fontSize: 13 }}>
-          <Link href="/contributions#program-arc" style={{ color: "var(--accent)" }}>
-            Read the full program arc &rarr;
-          </Link>
-        </p>
       </section>
 
-      {/* 3 — The six papers, scannable (readiness from getLivePapers) */}
+      {/* 3 — Candidate packages, scannable (readiness from getLivePapers) */}
       <section className="section">
-        <p style={sectionLabel}>The evidence</p>
-        <h2 style={{ marginTop: 0 }}>The six papers</h2>
+        <p style={sectionLabel}>Evidence library</p>
+        <h2 style={{ marginTop: 0 }}>Papers, software, and technical records</h2>
+        <p style={{ marginTop: 4, fontSize: 13.5, lineHeight: 1.6, color: "var(--text-secondary)", maxWidth: "70ch" }}>
+          These candidate packages preserve their PDFs, artifacts, and version-specific review evidence. Their readiness is evidence status, not a claim that every package is science-complete or awaiting endorsement alone.
+        </p>
         <div style={{ display: "grid", gap: 0, marginTop: 12 }}>
           {livePapers.map((lp, i) => {
             const stat = getPaperBySlug(lp.slug);
@@ -747,11 +674,10 @@ export default async function HomePage() {
             maxWidth: "74ch",
           }}
         >
-          All six papers are drafted, internally peer-reviewed across multiple
-          independent models, and have passed repeated adversarial review rounds
-          with their numbers reproduced from committed code. The remaining step is
-          the author&apos;s final sign-off and a coordinated arXiv submission — the
-          science is in place; what&apos;s left is publication logistics.
+          Evidence and review state remain useful, but publication follows the
+          scientific architecture: P2 and P4 are lead results; P1A and P1B are
+          specialist outputs; the anomaly flagship is a rebuild; and P3/P5 await
+          editorial decisions about standalone value.
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Button asChild size="sm" variant="outline">

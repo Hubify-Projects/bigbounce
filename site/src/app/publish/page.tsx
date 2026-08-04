@@ -1,232 +1,110 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  publishData,
-  type PublishDecision,
-  type PublishWave,
-  type PublishBlocker,
-  type PaperReadiness,
-} from "@/data/publish";
+import { papers, researchPrograms } from "@/data/papers";
+import { publicationArchitecture } from "@/data/publish";
 import "./publish.css";
 
 export const metadata: Metadata = {
-  title: "Publication Command Center",
+  title: "Portfolio Decisions",
   description:
-    "The publication decision dashboard: the five author-only decisions (D1–D5), the compressed submission plan, the single remaining blocker, and per-paper submission readiness across all six manuscripts.",
+    "Research-program publication architecture, editorial holds, and candidate-package evidence for BigBounce.",
 };
 
-function StatusChip({ decision }: { decision: PublishDecision }) {
-  if (decision.status === "done") {
-    return <span className="pub-chip is-done">Done</span>;
-  }
-  if (decision.scheduleRisk) {
-    return <span className="pub-chip is-risk">Pending · risk</span>;
-  }
-  return <span className="pub-chip is-pending">Pending</span>;
-}
-
-function DItems({ items }: { items: string[] }) {
-  return (
-    <span className="pub-ditems">
-      {items.map((d) => (
-        <span key={d} className="pub-ditem">
-          {d}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-function WaveCard({ wave }: { wave: PublishWave }) {
-  const stateLabel =
-    wave.state === "ready" ? "ready" : wave.state === "building" ? "building" : "queued";
-  return (
-    <div className="pub-wave">
-      <div className="pub-wave-head">
-        <span className="pub-wave-label">{wave.label}</span>
-        <span className={`pub-wave-state state-${wave.state}`}>{stateLabel}</span>
-      </div>
-      <div className="pub-wave-order">
-        {wave.order.map((p, i) => (
-          <span key={p} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-            {i > 0 && <span className="pub-wave-arrow">→</span>}
-            <span className="pub-wave-step">{p}</span>
-          </span>
-        ))}
-      </div>
-      <p className="pub-wave-note">{wave.note}</p>
-      {wave.kit && <span className="pub-wave-kit">{wave.kit}</span>}
-    </div>
-  );
-}
-
-function BlockerCard({ blocker }: { blocker: PublishBlocker }) {
-  return (
-    <div className={`pub-blocker sev-${blocker.severity}`}>
-      <span className="pub-blocker-dot" aria-hidden="true" />
-      <div className="pub-blocker-body">
-        <p className="pub-blocker-title">
-          {blocker.title}
-          {blocker.decision && (
-            <span className="pub-blocker-decision">{blocker.decision}</span>
-          )}
-        </p>
-        <p className="pub-blocker-detail">{blocker.detail}</p>
-      </div>
-    </div>
-  );
-}
-
-function PaperRow({ paper }: { paper: PaperReadiness }) {
-  const waveTagClass = paper.wave === "wave-1" ? "tag-wave-1" : "";
-  return (
-    <tr>
-      <td className="pub-td">
-        <span className="pub-paper-code">{paper.code}</span>
-        <span className="pub-paper-title">{paper.title}</span>
-      </td>
-      <td className="pub-td">
-        <span className="pub-version">{paper.version}</span>
-      </td>
-      <td className="pub-td">
-        <span className="pub-readiness">{paper.readiness}</span>
-      </td>
-      <td className="pub-td">
-        <span className={`pub-wave-tag ${waveTagClass}`}>
-          {paper.wave.replace("-", " ")}
-        </span>
-      </td>
-      <td className="pub-td">{paper.board}</td>
-      <td className="pub-td">
-        <DItems items={paper.remaining} />
-      </td>
-    </tr>
-  );
-}
-
 export default function PublishPage() {
-  const { decisions, waves, blockers, papers, deadlineNote, lastUpdatedDisplay } = publishData;
-  const openDecisions = decisions.filter((d) => d.status !== "done").length;
-
   return (
     <>
-      <p className="pub-kicker">Publication Command Center</p>
-      <h1 className="pub-title">The decision dashboard for the publication sprint</h1>
-      <p className="pub-lede">{deadlineNote}</p>
-      <p className="pub-meta">
-        {openDecisions} decision{openDecisions === 1 ? "" : "s"} pending · six papers review-converged · updated {lastUpdatedDisplay}
-      </p>
+      <p className="pub-kicker">Publication architecture</p>
+      <h1 className="pub-title">Choose the science before the submission sequence</h1>
+      <p className="pub-lede">{publicationArchitecture.headline}</p>
+      <p className="pub-meta">Updated {publicationArchitecture.lastUpdatedDisplay}</p>
 
-      {/* ── 1. The 5 decisions ─────────────────────────────────────────── */}
       <section className="pub-section">
         <div className="pub-section-head">
           <span className="pub-section-index">01</span>
-          <h2 className="pub-section-title">The five decisions</h2>
+          <h2 className="pub-section-title">Research programs</h2>
         </div>
         <p className="pub-section-sub">
-          Each is a decision only Houston can make. Status chips are placeholders driven from the
-          data file, so a sync can flip any to <strong>Done</strong> as it lands. D4 carries the
-          schedule risk — make it first.
+          Each program starts with its question, lead result, and boundary. Specialist outputs and technical candidates remain linked as evidence rather than being treated as equal flagships.
         </p>
-        <div className="pub-table-wrap">
-          <table className="pub-table">
-            <thead>
-              <tr>
-                <th className="pub-th">Decision</th>
-                <th className="pub-th">Status</th>
-                <th className="pub-th">Options</th>
-                <th className="pub-th">Recommendation</th>
-                <th className="pub-th">Unblocks</th>
-              </tr>
-            </thead>
-            <tbody>
-              {decisions.map((d) => (
-                <tr key={d.id} className={d.scheduleRisk ? "is-risk-row" : undefined}>
-                  <td className="pub-td">
-                    <span className="pub-id">{d.id}</span>
-                    <span className="pub-decision-title">{d.title}</span>
-                  </td>
-                  <td className="pub-td">
-                    <StatusChip decision={d} />
-                  </td>
-                  <td className="pub-td">{d.options}</td>
-                  <td className="pub-td pub-rec">{d.recommendation}</td>
-                  <td className="pub-td pub-unblocks">{d.unblocks}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="pub-programs">
+          {researchPrograms.map((program) => {
+            const lead = program.leadSlug ? papers.find((paper) => paper.slug === program.leadSlug) : undefined;
+            const support = program.supportSlugs.flatMap((slug) => {
+              const paper = papers.find((item) => item.slug === slug);
+              return paper ? [paper] : [];
+            });
+            return (
+              <article className="pub-program" key={program.id}>
+                <p className="pub-program-status">{program.status}</p>
+                <h3>{program.title}</h3>
+                <p><strong>Question:</strong> {program.question}</p>
+                <p><strong>Current result:</strong> {program.result}</p>
+                <p className="pub-program-boundary"><strong>Boundary:</strong> {program.limitation}</p>
+                <div className="pub-program-links">
+                  {lead && <Link href={`/papers/${lead.slug}`}>Lead: {lead.number} &middot; {lead.title}</Link>}
+                  {support.map((paper) => <Link key={paper.slug} href={`/papers/${paper.slug}`}>Support: {paper.number} &middot; {paper.title}</Link>)}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
-      {/* ── 2. The compressed plan ─────────────────────────────────────── */}
       <section className="pub-section">
         <div className="pub-section-head">
           <span className="pub-section-index">02</span>
-          <h2 className="pub-section-title">The compressed plan</h2>
+          <h2 className="pub-section-title">Editorial decisions before submission</h2>
         </div>
         <p className="pub-section-sub">
-          Everything executes today / ASAP. Wave 1's click-walkthrough is written and verified; wave
-          2's kit is being assembled now; P5 follows the moment P4 has an arXiv ID.
+          These are scientific and editorial choices, not endorsement or upload tasks. No archive, endorsement, or journal route should outrun them.
         </p>
-        <div className="pub-waves">
-          {waves.map((w) => (
-            <WaveCard key={w.id} wave={w} />
+        <div className="pub-holds">
+          {publicationArchitecture.editorialHolds.map((hold) => (
+            <article className="pub-hold" key={hold.title}>
+              <h3>{hold.title}</h3>
+              <p>{hold.detail}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* ── 3. Blockers ────────────────────────────────────────────────── */}
       <section className="pub-section">
         <div className="pub-section-head">
           <span className="pub-section-index">03</span>
-          <h2 className="pub-section-title">Blockers</h2>
+          <h2 className="pub-section-title">Candidate package evidence</h2>
         </div>
         <p className="pub-section-sub">
-          One honest blocker remains on the critical path. Everything else is green.
-        </p>
-        <div className="pub-blockers">
-          {blockers.map((b) => (
-            <BlockerCard key={b.title} blocker={b} />
-          ))}
-        </div>
-      </section>
-
-      {/* ── 4. Per-paper submission readiness ──────────────────────────── */}
-      <section className="pub-section">
-        <div className="pub-section-head">
-          <span className="pub-section-index">04</span>
-          <h2 className="pub-section-title">Submission readiness — all six</h2>
-        </div>
-        <p className="pub-section-sub">
-          Version, the last exact-PDF board and its disposition, the submission wave, and which
-          decisions still gate each paper. Readiness caps hold pending human review and archive/DOI
-          gates; no verdict word converts into journal acceptance.
+          Every candidate remains available with its exact PDF and artifact record. The evidence percentage below is a packaging/review record, not a claim that the paper is science-complete, independently publishable, or awaiting endorsement only.
         </p>
         <div className="pub-table-wrap">
           <table className="pub-table">
             <thead>
               <tr>
-                <th className="pub-th">Paper</th>
-                <th className="pub-th">Version</th>
-                <th className="pub-th">Readiness</th>
-                <th className="pub-th">Wave</th>
-                <th className="pub-th">Board state</th>
-                <th className="pub-th">Remaining</th>
+                <th className="pub-th">Candidate</th>
+                <th className="pub-th">Portfolio role</th>
+                <th className="pub-th">Evidence record</th>
+                <th className="pub-th">Artifact</th>
               </tr>
             </thead>
             <tbody>
-              {papers.map((p) => (
-                <PaperRow key={p.code} paper={p} />
-              ))}
+              {papers.map((paper) => {
+                const program = researchPrograms.find((item) => item.leadSlug === paper.slug || item.supportSlugs.includes(paper.slug));
+                const isLead = program?.leadSlug === paper.slug;
+                const pdf = paper.artifacts.find((artifact) => artifact.kind === "primary" && artifact.href.endsWith(".pdf"));
+                return (
+                  <tr key={paper.slug}>
+                    <td className="pub-td"><span className="pub-paper-code">{paper.number}</span><span className="pub-paper-title">{paper.title}</span></td>
+                    <td className="pub-td">{isLead ? "Lead result" : "Supporting / editorial decision"}<br /><span className="pub-paper-title">{program?.title}</span></td>
+                    <td className="pub-td"><span className="pub-readiness">{paper.readiness}%</span><br /><span className="pub-paper-title">Versioned review and package evidence</span></td>
+                    <td className="pub-td">{pdf ? <a className="pub-artifact-link" href={pdf.href} target="_blank" rel="noopener noreferrer">Read PDF</a> : "—"}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
         <p className="pub-note">
-          Full round-by-round history lives at{" "}
-          <Link href="/reviews">/reviews</Link>; per-paper detail at{" "}
-          <Link href="/paper">/papers</Link>. Machine events stream at{" "}
-          <Link href="/activity">/activity</Link>.
+          Detailed package paths and review state are retained in <Link href="/paper">research programs</Link> and <Link href="/reviews">the review record</Link>.
         </p>
       </section>
     </>

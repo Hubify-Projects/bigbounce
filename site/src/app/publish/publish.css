@@ -67,6 +67,75 @@
   max-width: 72ch;
 }
 
+/* ── Program and editorial decision reading surfaces ────────────────── */
+.pub-programs,
+.pub-holds {
+  margin-top: 12px;
+  max-width: 78ch;
+}
+
+.pub-program {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.pub-program:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+
+.pub-program h3,
+.pub-hold h3 {
+  margin: 0;
+  font-family: var(--font-mono-stack);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pub-program p,
+.pub-hold p {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.pub-program-status {
+  margin-bottom: 8px !important;
+  font-family: var(--font-mono-stack);
+  font-size: 0.66rem !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+}
+
+.pub-program-boundary {
+  color: var(--text-tertiary) !important;
+}
+
+.pub-program-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 10px;
+  font-size: 0.76rem;
+}
+
+.pub-program-links a,
+.pub-artifact-link {
+  color: var(--accent-link);
+}
+
+.pub-hold {
+  padding: 13px 0 13px 15px;
+  border-left: 2px solid var(--warn);
+}
+
+.pub-hold + .pub-hold {
+  margin-top: 12px;
+}
+
 /* ── Status chips ───────────────────────────────────────────────────── */
 .pub-chip {
   display: inline-flex;
