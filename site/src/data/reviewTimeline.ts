@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "final-submission-package-closure-2026-08-03",
+    dateISO: "2026-08-03",
+    timePT: "14:00–20:23",
+    kind: "closure-wave",
+    title: "Six-paper submission-package closure — current journal shells, exact source bundles, and portal kits",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "A bounded publication audit rebound every current source/PDF/package pair and closed four real workflow defects before Houston review: P2's source bundle now includes its declared bibliography; P3 r15 adds AASTeX 7.0.2, line numbers, short title, verified ORCID, and an evidence-bounded AI-use disclosure; P4 v1.0.273 bundles the current class and removes a 217.5-pt artifact-path overflow; P5 v0.1.147 migrates the selected AJ manuscript from the PRD shell to a clean line-numbered AASTeX 7.0.2 build. All six now have current portal kits and clean-room package evidence. P3/P4/P5 were retained, mirrored, and read back from Convex at the exact served versions. Readiness remains 95: this is package evidence, not Houston sign-off or journal acceptance.",
+    keyTakeaways: [
+      "P1A/P1B/P2/P3/P4/P5 current source packages compile independently; P3/P4/P5 use the selected journals' current AASTeX 7.0.2 shell",
+      "P3 r15 is 17 pages, P4 v1.0.273 is 32 pages, and P5 v0.1.147 is 46 pages; their all-page visual audits pass",
+      "Six portal kits now bind exact metadata, upload inventories, hashes, cover letters, and Houston-only portal choices",
+      "No readiness uplift: the final five points remain Houston's explicit per-paper sign-off",
+    ],
+    links: [
+      { label: "P3 ApJS kit", href: `${GH}/pipelines/p3_anomaly_engine/APJS_PORTAL_SUBMISSION_KIT_v3.2.0-r15_2026-08-03.md` },
+      { label: "P4 ApJS kit", href: `${GH}/pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.273.md` },
+      { label: "P5 AJ kit", href: `${GH}/pipelines/p5_desi_chirality/paper/AJ_PORTAL_KIT_v0.1.147-2026-08-03.md` },
+    ],
+  },
+  {
     id: "served-pdf-mirror-integrity-gate-2026-07-24",
     dateISO: "2026-07-24",
     kind: "skill-improvement",

@@ -41,14 +41,14 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-08-03T21:52:00Z",
-  lastUpdatedDisplay: "August 3, 2026 · 2:52 PM PT",
+  lastUpdatedISO: "2026-08-04T03:23:00Z",
+  lastUpdatedDisplay: "August 3, 2026 · 8:23 PM PT",
   headline:
     "All six manuscripts remain IN REVISION at 95% publication readiness under Directive P. That score records completed evidence, packaging, and review-disposition work; it is not submission, journal acceptance, or Houston sign-off.",
   summary:
-    "The July 24 directive-G bundles set the current served versions below. Convex identities, source paths, venues, and open-finding counts were reconciled on August 3; earlier exact-PDF evidence remains version-specific, so final-hash bounded confirmation is still an explicit coverage check where it has not read the current artifact.",
+    "All six exact source packages and journal portal kits now exist. P3, P4, and P5 were migrated to the current AASTeX 7.0.2 journal shell and mirrored at the versions below; final-hash bounded confirmation is running against these served bytes before Houston's visual review.",
   currentlyRunning: [
-    "Bounded confirmation coverage is tracked against the exact current PDF; no older review label is presented as a verdict on a newer hash.",
+    "Deterministic preflight, clean-room package compiles, link checks, mirror checks, and all-page visual audits pass; bounded reviewer confirmation remains version-specific.",
     "Houston's final per-paper review is the remaining five readiness points and is not implied by an automated review result.",
     "Publishing is a separate phase: endorsement, submission clicks, and independent human review do not convert a 95% paper into 100% automatically.",
   ],
@@ -93,25 +93,25 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "DESI anomaly-list recovery",
-      version: "v3.2.0-r14",
+      version: "v3.2.0-r15",
       readiness: 95,
-      pendingWork: "One recorded minor and current-hash bounded confirmation remain under review; human ApJS review is separate.",
+      pendingWork: "Current-hash bounded confirmation and Houston's visual review remain; the AASTeX 7.0.2 ApJS portal package is complete.",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "Galaxy chirality null",
-      version: "v1.0.272",
+      version: "v1.0.273",
       readiness: 95,
-      pendingWork: "Current-hash bounded confirmation, systematics metadata, and human ApJS review remain open.",
+      pendingWork: "Current-hash bounded confirmation and Houston's visual review remain; the ApJS package is clean and line-numbered.",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality",
-      version: "v0.1.146-2026-07-24",
+      version: "v0.1.147-2026-08-03",
       readiness: 95,
-      pendingWork: "Current-hash bounded confirmation and independent human review remain open; the limitations remain in the paper.",
+      pendingWork: "Current-hash bounded confirmation and Houston review remain; after sign-off, mint the immutable tag/Zenodo snapshot and back-patch identifiers.",
     },
   ],
   blockerTally: {
