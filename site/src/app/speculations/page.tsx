@@ -46,19 +46,19 @@ const sections: Array<{
         title:"What Is Dark Energy?",
         tag:"ACTIONABLE · w0-wa MCMC · DESI DR2 · Quintom",
         children:
-"73% of the universe is dark energy. The quintom branch of bounce cosmology can unify bounce + dark energy through phantom fields, predicting w-crossing (quintom-B). External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing. Our own program treats this theoretically — Paper 1A's model-discrimination table is explicit that there are zero free-w0–wa samples in our 309,189-sample frozen posterior (Paper 1B). The actionable next step is standing up an in-house quintom MCMC.",
+"The quintom branch of bounce cosmology is a theoretical possibility that predicts w-crossing. External DESI analyses are not a BigBounce result, and our program has not run a free-w0–wa analysis. P1B is namaster-proof research software, not an MCMC paper. The actionable next step would be a separately scoped in-house analysis.",
       },
       {
         title:"fNL = −35/16: The Decisive Test",
         tag:"ACTIONABLE (forecast) · SPHEREx ~2028 · Parameter-free",
         children:
-"SPHEREx will measure primordial non-Gaussianity to σ ≈ 1. The matter-bounce prediction is −2.1875, parameter-free. Inflation predicts |fNL| < 1. One measurement, one answer.",
+"P2 derives a conditional matter-contraction prediction fNL = −2.1875. SPHEREx may provide a future test, but no present measurement proves a bounce or resolves the model landscape by itself.",
       },
       {
         title:"What Is Dark Matter?",
         tag:"Future · LISA ~2035 · PBH dark matter",
         children:
-"Certain bounce scenarios can produce asteroid-mass primordial black holes as dark matter candidates. The matter-bounce f_NL prediction constrains the primordial power spectrum in a way that naturally regulates PBH overproduction.",
+"Some bounce scenarios motivate asteroid-mass primordial black holes as dark-matter candidates. This remains a theoretical research direction, not a conclusion from the program's surveys or current artifacts.",
       },
     ],
   },
@@ -76,7 +76,7 @@ const sections: Array<{
         title:"Supermassive Black Hole Formation",
         tag:"ACTIONABLE · JWST data · Cross-match with anomaly catalog",
         children:
-"JWST found SMBHs at z > 10 that are too massive too early. PBHs from a bounce-era transition could seed them. Our anomaly catalog might contain their host galaxies.",
+"Early massive black holes motivate several formation hypotheses, including speculative primordial seeds. The legacy anomaly archive is not a discovery catalog and should not be treated as evidence for any such mechanism.",
       },
     ],
   },
@@ -88,7 +88,7 @@ const sections: Array<{
         title:"Exploratory anomaly candidates",
         tag:"SPECULATIVE · autoencoder pipeline candidates",
         children:
-"An exploratory autoencoder anomaly-detection pipeline flagged many archival objects as poorly-reconstructed candidates. What are they? These are exploratory pipeline candidates for follow-up, not confirmed detections — Paper 3 itself is the reproducible public-ID recovery of 181 DESI DR1 TARGETIDs from a frozen historical list, not a detection claim.",
+"Historic exploratory autoencoder runs flagged archival candidates for possible follow-up. They are not confirmed detections and are now legacy/superseded pipeline records. P3 is the integrated Supporting Data Release recovering 181 DESI DR1 TARGETIDs from a frozen historical list, not a standalone discovery claim.",
       },
       {
         title:"Galaxy Morphology: What Shapes Don't Fit?",
@@ -100,7 +100,7 @@ const sections: Array<{
         title:"Time-Domain: What Changed?",
         tag:"ACTIONABLE · NEOWISE/unTimely · ZTF · $200-400",
         children:
-"Cross-matching spectral anomalies with variability data finds objects that are BOTH spectrally AND temporally unusual — the strongest discovery candidates.",
+"A future cross-match could identify candidates that are unusual in more than one modality. Such candidates would still require independent validation and would not by themselves support a bounce claim.",
       },
     ],
   },
@@ -148,13 +148,13 @@ const sections: Array<{
         title:"Multi-Messenger Astronomy",
         tag:"ACTIONABLE · Cross-survey architecture exists",
         children:
-"Combining anomalies across electromagnetic + GW + neutrino data simultaneously. An object anomalous in 2+ surveys is the strongest discovery candidate.",
+"Combining heterogeneous data could prioritize future follow-up candidates. Agreement across pipelines is not a discovery confirmation or evidence for a bounce without independent validation.",
       },
       {
         title:"The Hubify Lab Scaling Vision",
         tag:"ACTIONABLE · This is the plan",
         children:
-"Run anomaly detection on every major public dataset simultaneously. 5+ papers and 10+ public data releases within 12 months. See The Window article.",
+"Build reproducible discovery infrastructure around explicit parent-catalog, model, score, and selection lineage. Any future outputs should be scoped as question-first programs rather than a paper-count target.",
       },
     ],
   },

@@ -56,17 +56,17 @@ function figureNumberValue(number: string) {
 function sourceGroup(source: string) {
   const normalized = source.toLowerCase();
   if (normalized.includes("paper 1a")) return "Paper 1A";
-  if (normalized.includes("paper 1b") || normalized.includes("mcmc")) return "Paper 1B / MCMC";
+  if (normalized.includes("paper 1b") || normalized.includes("namaster")) return "P1B / namaster-proof software";
   if (normalized.includes("paper 2") || normalized.includes("forecast") || normalized.includes("fnl")) return "Paper 2 / Forecast";
-  if (normalized.includes("paper 3") || normalized.includes("catalog")) return "Paper 3 / Catalog";
+  if (normalized.includes("paper 3") || normalized.includes("catalog")) return "P3 / Supporting Data Release";
   if (normalized.includes("paper 4") || normalized.includes("chirality")) return "Paper 4 / Chirality";
-  if (normalized.includes("paper 5")) return "Paper 5 / DESI × Void";
+  if (normalized.includes("paper 5")) return "P5 / AJ companion";
   if (normalized.includes("analysis")) return "Analysis";
   if (normalized.includes("program")) return "Program";
   return "Other";
 }
 
-// Stable display order: P1A → P1B → P2 → P3 → P4 → P5 → cross-cutting
+// Stable artifact display order: P1A → P1B → P2 → P3 data release → P4 → P5 → cross-cutting
 const ORDER: Record<FigurePaper, number> = {
   P1A: 1,
   P1B: 2,
@@ -81,13 +81,13 @@ const FILTERS: Array<{
   key: "all" | FigurePaper;
   label: string;
 }> = [
-  { key: "all", label: "All papers" },
+  { key: "all", label: "All artifacts" },
   { key: "P1A", label: "Paper 1A (ECH routes)" },
-  { key: "P1B", label: "Paper 1B (MCMC)" },
+  { key: "P1B", label: "P1B (namaster-proof software)" },
   { key: "P2", label: "Paper 2 (f_NL)" },
-  { key: "P3", label: "Paper 3 (anomalies)" },
+  { key: "P3", label: "P3 (Supporting Data Release)" },
   { key: "P4", label: "Paper 4 (chirality)" },
-  { key: "P5", label: "Paper 5 (DESI × void)" },
+  { key: "P5", label: "P5 (AJ companion)" },
   { key: "X", label: "Cross-cutting" },
 ];
 
@@ -257,10 +257,10 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
 
   return (
     <div className="figures-layout">
-      <aside className="figures-side-nav" aria-label="Browse figures by paper">
+      <aside className="figures-side-nav" aria-label="Browse figures by artifact">
         <div className="figures-side-label">
           <SlidersHorizontal aria-hidden="true" size={12} />
-          <span>By paper</span>
+          <span>By artifact</span>
         </div>
         {FILTERS.map((f) => {
           const isActive = filter === f.key;

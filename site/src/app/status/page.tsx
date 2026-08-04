@@ -24,16 +24,16 @@ import { SurveyQcTable } from "@/components/Cards/SurveyQcTable";
 export const metadata: Metadata = {
   title:"Research Status",
   description:
-"Master status page: papers, pipelines, MCMC chains, compute pods, and discoveries.",
+"Current research-program, artifact, and editorial status for BigBounce.",
 };
 
 const PAPER_DISPLAY_NAMES: Record<string, { number: string; tagline: string }> = {
   "paper-1a": { number: "P1A", tagline: "ECH channel-level closure + perturbation transparency" },
-  "paper-1b": { number: "P1B", tagline: "MCMC companion + tension survey" },
+  "paper-1b": { number: "P1B", tagline: "namaster-proof research software" },
   "paper-2": { number: "P2", tagline: "f_NL = -35/16 forecast (SPHEREx)" },
-  "paper-3": { number: "P3", tagline: "Multi-survey anomaly catalogue" },
+  "paper-3": { number: "P3", tagline: "Integrated Supporting Data Release · DESI Public-ID Recovery" },
   "paper-4": { number: "P4", tagline: "Galaxy chirality at 8.47M scale" },
-  "paper-5": { number: "P5", tagline: "DESI environmental chirality" },
+  "paper-5": { number: "P5", tagline: "Standalone AJ companion · DESI environmental chirality" },
 };
 
 function statusBadgeVariant(state: LivePaperState): "default" | "secondary" | "outline" {
@@ -50,22 +50,21 @@ function statusLabel(state: LivePaperState): string {
 }
 
 const stats: Array<{ value: string; label: string }> = [
-  { value:"6", label:"Papers (P1A, P1B, P2–P5)" },
+  { value:"3", label:"Question-first research programs" },
   {
-    value:"424K+",
-    label:"MCMC Samples (309,189 frozen · 3rd chain accumulating)",
+    value:"P2",
+    label:"Lead bounce-theory result" ,
   },
   {
-    value:"37.3M+",
-    label:"Sources Scored (8 Surveys)",
+    value:"P4",
+    label:"Lead galaxy-chirality result",
   },
   {
-    value:"378K+",
-    label:"Anomalies Found",
+    value:"P3",
+    label:"Integrated DESI Public-ID Recovery release",
   },
-  { value:"8.47M", label:"Galaxy Chirality Labels" },
-  { value:"6", label:"AI Pipelines" },
-  { value:"6", label:"Bounce Channels" },
+  { value:"P5", label:"Standalone AJ chirality companion" },
+  { value:"Legacy", label:"Survey-pipeline records preserved as archive evidence" },
 ];
 
 // Status is statically rendered, so use one stable build timestamp for every
@@ -117,8 +116,8 @@ export default async function StatusPage() {
         </h1>
         <p className="subtitle">
           Comprehensive source of truth for the entire BigBounce spin-torsion
-          cosmology research program. Paper versions, readiness, and open
-          findings counts are updated on every build.
+          cosmology research program. The three research questions lead; artifact
+          versions and review evidence below document their supporting work.
         </p>
       </div>
 
@@ -130,7 +129,7 @@ export default async function StatusPage() {
               Live portfolio status
             </CardTitle>
             <CardDescription className="font-mono text-xs">
-              {renderedAt} · {livePapers.length} papers tracked
+              {renderedAt} · {livePapers.length} versioned artifacts tracked
             </CardDescription>
           </div>
         </CardHeader>
@@ -157,7 +156,7 @@ export default async function StatusPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Paper</TableHead>
+                <TableHead>Artifact</TableHead>
                 <TableHead>Version</TableHead>
                 <TableHead>Readiness</TableHead>
                 <TableHead>Open findings</TableHead>
@@ -212,11 +211,9 @@ export default async function StatusPage() {
           </div>
           <p className="text-xs text-muted-foreground">
             Readiness follows <strong>directive P</strong> (2026-07-23): the headline % is
-            publication readiness only — science, evidence, review convergence, packaging,
-            plus Houston&rsquo;s final 5% personal review. Venue/endorsement/submission and
-            independent human peer review are the separate Publishing phase below and never
-            subtract from the score. Automated-model ACCEPT labels are review evidence, not
-            journal acceptance.
+            package and review evidence, not a scientific endorsement, standalone-submission
+            decision, journal acceptance, or proof that every tracked artifact is a flagship.
+            P3 is an integrated Supporting Data Release; P5 is the standalone AJ companion.
           </p>
         </CardContent>
       </Card>
@@ -378,10 +375,12 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>Paper Portfolio</h2>
+        <h2>Research programs and artifacts</h2>
         <p className="text-sm text-muted-foreground">
-          The live paper table above is the canonical source of truth.
-          Per-paper detail and current PDF mirrors live at{" "}
+          The live artifact table above preserves version and review evidence. The
+          portfolio is organized around three question-first programs; P3 is an
+          integrated Supporting Data Release rather than a standalone anomaly
+          flagship. Current PDFs and artifact detail live at{" "}
           <a href="/paper" className="underline">
             /paper
           </a>
@@ -390,7 +389,7 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>Bounce Channels &amp; Predictions</h2>
+        <h2>Predictions and boundaries</h2>
         <Card>
           <CardContent className="p-0">
             <Table>
@@ -412,7 +411,7 @@ export default async function StatusPage() {
                     f<sub>NL</sub> = -35/16 (parameter-free)
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary">FLAGSHIP</Badge>
+                    <Badge variant="secondary">P2 lead result</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -422,7 +421,7 @@ export default async function StatusPage() {
                   <TableCell>Quintom bounce</TableCell>
                   <TableCell className="font-mono">w(z) crosses -1</TableCell>
                   <TableCell>
-                    <Badge variant="outline">DESI DR2 chain: w_pivot = -0.952 ± 0.019 (+2.5σ from -1)</Badge>
+                    <Badge variant="outline">theoretical program; no in-house free-w0–wa result</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -432,7 +431,7 @@ export default async function StatusPage() {
                     γ = 3.0 vs 2.567 ± 0.382
                   </TableCell>
                   <TableCell>
-                    <Badge variant="default">+1.13σ consistent</Badge>
+                    <Badge variant="default">legacy consistency comparison; not a detection</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -440,7 +439,7 @@ export default async function StatusPage() {
                   <TableCell>Asymmetric matter bounce</TableCell>
                   <TableCell className="font-mono">Asteroid-mass PBHs</TableCell>
                   <TableCell>
-                    <Badge variant="outline">Viable</Badge>
+                    <Badge variant="outline">theoretical possibility</Badge>
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -450,14 +449,18 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>Completed Surveys (8 total)</h2>
+        <h2>Legacy survey-pipeline records</h2>
+        <p className="mb-4 text-sm text-muted-foreground">
+          These are preserved methodology and archive records. Their historic candidate counts
+          are superseded as current portfolio results; no survey result here proves a bounce.
+        </p>
         {/* Single-sourced from data/surveys.ts via SurveyQcTable — never
             hardcode QC verdicts here (previously contradicted /surveys). */}
         <SurveyQcTable />
       </section>
 
       <section className="section">
-        <h2>Key Discoveries</h2>
+        <h2>Program evidence and boundaries</h2>
         <div className="grid md:grid-cols-2 gap-x-10">
           <div className="flat-item-list">
             <div className="py-4">
@@ -468,9 +471,9 @@ export default async function StatusPage() {
                 Paper 2 · quintom_fnl_verification.py
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Verified across 3 bounce models: f_NL = -2.1875 is parameter-free
-                and mechanism-independent. SPHEREx (~2028) will measure to σ ~
-                0.7-2.
+                P2 presents the matter-contraction prediction f_NL = -2.1875 under
+                its stated assumptions. A future measurement may test that prediction;
+                it is not a present observational detection of a bounce.
               </p>
             </div>
             <div className="py-4">
@@ -481,7 +484,9 @@ export default async function StatusPage() {
                 nanograv real-KDE free-spectrum re-fit (Zenodo chains, emcee)
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Matter bounce γ = 3.0 vs NANOGrav real-KDE free-spectrum 2.567 ± 0.382 (+1.13σ consistent); SMBHB γ = 4.33 excluded at +4.61σ. Savage-Dickey decisively favors the bounce slope.
+                This legacy model-comparison note reports a compatible simplified slope
+                comparison. It is neither a bounce detection nor a basis for selecting a
+                publication flagship.
               </p>
             </div>
           </div>
@@ -507,10 +512,10 @@ export default async function StatusPage() {
                 Public-ID Recovery of a Historical DESI DR1 Anomaly List
               </p>
               <p className="font-mono text-[11px] text-muted-foreground mb-2">
-                Paper 3 (v3.2.0-r12) · 181 TARGETIDs recovered · archive-recovery product
+                P3 · Integrated Supporting Data Release · 181 TARGETIDs recovered
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Paper 3 recovers 181 public DESI DR1 TARGETIDs from a frozen
+                P3 preserves 181 public DESI DR1 TARGETIDs from a frozen
                 historical anomaly list (170 high-coordinate-consistency core + 11
                 lower-confidence) — an archive-recovery / provenance product,
                 explicitly not a purity, novelty, or detection claim. The

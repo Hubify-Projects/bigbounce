@@ -19,7 +19,7 @@ const glossaryEntries = [
     term:"f_NL",
     pronunciation:"eff-en-ell",
     definition:
-"The amplitude of local primordial non-Gaussianity. The matter bounce predicts f_NL = -35/16 = -2.1875, parameter-free. Inflation predicts |f_NL| < 1. SPHEREx will measure this.",
+"The amplitude of local primordial non-Gaussianity. P2 derives f_NL = -35/16 = -2.1875 for its stated matter-contraction assumptions. A future SPHEREx measurement may test that conditional prediction; it is not a current bounce detection.",
   },
   {
     term:"Birefringence",
@@ -49,7 +49,7 @@ const glossaryEntries = [
     term:"MCMC",
     pronunciation:"em-see-em-see",
     definition:
-"Markov Chain Monte Carlo. A statistical sampling method used to explore parameter spaces. We have 309,189 frozen posterior samples across 2 converged dataset combinations (176,240 full-tension + 132,949 Planck+BAO+SN), with a third Planck-only combination accumulating.",
+"Markov Chain Monte Carlo. A statistical sampling method used to explore parameter spaces. Historic posterior records are research context, not P1B's publication role: P1B is namaster-proof research software.",
   },
   {
     term:"SPHEREx",
@@ -61,25 +61,25 @@ const glossaryEntries = [
     term:"σ(f_NL)",
     pronunciation:"sigma of eff-en-ell",
     definition:
-"The uncertainty on the f_NL measurement. Current combined: σ ≈ 4.1 (external). Our DESI multi-tracer central forecast: 9.4% improvement, consistent with none at <1σ. SPHEREx target: σ ≈ 0.7-1.0.",
+"The uncertainty on the f_NL measurement. Current external constraints do not establish P2's conditional matter-contraction prediction. Earlier DESI anomaly-tracer improvement estimates are legacy/superseded pipeline work; the SPHEREx target is prospective.",
   },
   {
     term:"PBH",
     pronunciation:"pee-bee-aitch",
     definition:
-"Primordial Black Holes. Formed from density fluctuations in the early universe. The matter bounce f_NL = -35/16 naturally regulates PBH abundance, preventing overproduction.",
+"Primordial Black Holes. Hypothetical black holes that could form from early-universe density fluctuations. Their connection to a bounce scenario remains theoretical and is not established by a survey detection.",
   },
   {
     term:"NANOGrav",
     pronunciation:"NAN-oh-grav",
     definition:
-"North American Nanohertz Observatory for Gravitational Waves. Detected a gravitational wave background; our real-KDE free-spectrum re-fit gives spectral index γ = 2.567 ± 0.382. Bounce predicts γ = 3.0 (consistent at -1.13σ); SMBHB γ = 4.33 is excluded at -4.6σ.",
+"North American Nanohertz Observatory for Gravitational Waves. A historic simplified slope comparison was compatible with a matter-bounce value under its stated model choices. It is legacy context, not a bounce detection or a current portfolio result.",
   },
   {
     term:"Autoencoder",
     pronunciation:"AW-toh-en-KOH-der",
     definition:
-"A neural network trained to reconstruct its input. Objects it can't reconstruct well are flagged as anomaly candidates. BigBounce's exploratory autoencoder pipeline scored millions of archival survey spectra to build a candidate list; Paper 3 then recovers 181 public DESI DR1 TARGETIDs from a frozen historical anomaly list (an archive-recovery product, not a detection claim).",
+"A neural network trained to reconstruct its input. Objects it cannot reconstruct well may be flagged as candidates, not discoveries. BigBounce's historic exploratory pipeline produced archival candidate records; P3 is the integrated Supporting Data Release recovering 181 public DESI DR1 TARGETIDs from one frozen historical list, not a detection claim.",
   },
   {
     term:"Barbero-Immirzi parameter",
@@ -97,7 +97,7 @@ const glossaryEntries = [
     term:"Path-C",
     pronunciation:"path see",
     definition:
-"The native-retrain quality gate used in Paper 3. Each survey must pass two criteria: val_loss ≤ 0.30 on native training data AND ≥50% injection-recovery at 5σ. Surveys that fail are quarantined (e.g., ACT DR6) and contribute zero objects to the canonical anomaly catalog headline.",
+"A historic native-retrain quality-gate concept for exploratory anomaly pipelines. These pipeline records are legacy/superseded methodology and do not contribute a current anomaly-catalog headline or evidence for a bounce.",
   },
   {
     term:"LQC",
@@ -109,7 +109,7 @@ const glossaryEntries = [
     term:"Matter Bounce",
     pronunciation:"MAT-er bowns",
     definition:
-"A bounce cosmology scenario where the contracting phase is dominated by matter-like sources (w ≈ 0). Generates a nearly scale-invariant spectrum of perturbations and the parameter-free prediction f_NL = -35/16 = -2.1875, which is mechanism-independent across all matter bounce variants.",
+"A bounce cosmology scenario where the contracting phase is dominated by matter-like sources (w ≈ 0). P2 studies a conditional f_NL = -35/16 = -2.1875 prediction; observations have not established that a matter bounce occurred.",
   },
 ];
 
