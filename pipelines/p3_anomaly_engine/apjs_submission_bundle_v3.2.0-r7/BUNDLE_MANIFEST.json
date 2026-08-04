@@ -130,17 +130,17 @@
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/DATA_DICTIONARY.md"
     },
     {
-      "bytes": 5732,
+      "bytes": 5763,
       "path": "primary_release/PROVENANCE.json",
       "role": "primary_release",
-      "sha256": "a63fb5c06574bb872d5a2a39c949c600728a15df86d66431fda8fcef0fee1aed",
+      "sha256": "105979e52eb833726a205936e870366f363560af259a2e325376caa3dff77f34",
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/PROVENANCE.json"
     },
     {
-      "bytes": 4285,
+      "bytes": 4316,
       "path": "primary_release/QC_REPORT.json",
       "role": "primary_release",
-      "sha256": "33870e4da07d92709ceb4229e771fc730925da28c0bd7688ca887fe0bd82329f",
+      "sha256": "3cdda75b1309a9aa4649065dbbf1b5a89a6616792c0def89db1f884a5bf8d75a",
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/QC_REPORT.json"
     },
     {
@@ -154,7 +154,7 @@
       "bytes": 1790,
       "path": "primary_release/RELEASE_MANIFEST.json",
       "role": "primary_release",
-      "sha256": "91a26eff72d056bbd9a411ef9b56362cb054befec3678b14c0eb1a191e6f7560",
+      "sha256": "87d6f995bce50491da43ee1714419df5418aeb2accac71de029ce6111cbf140e",
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/RELEASE_MANIFEST.json"
     },
     {
@@ -172,10 +172,10 @@
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/SELECTION_AUDIT.md"
     },
     {
-      "bytes": 36869,
+      "bytes": 37401,
       "path": "primary_release/build_desi_science_catalog_v320_r2.py",
       "role": "primary_release",
-      "sha256": "0a62fa8019b0893b0e7d9f33654904660a3777671749b0d4b2ad8f7b9c98d969",
+      "sha256": "9dce6eccd409b8e72cc5b937f6a551bc1739abb975f56f1780f46695a15d7e67",
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/build_desi_science_catalog_v320_r2.py"
     },
     {

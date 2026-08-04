@@ -39,7 +39,7 @@
 % singular/plural/zero handling. A stale "one patch ahead" literal is therefore
 % unrepresentable — closing the half of pattern-047 that the 2026-07-23 closure
 % left as a hardcoded literal (it bound only the manuscript half to a macro).
-\newcommand{\paperVersion}{v3.2.0-r16}
+\newcommand{\paperVersion}{v3.2.0-r17}
 \newcommand{\depositVersion}{v3.2.0-r10}
 \makeatletter
 \def\bb@afterR#1-r#2\@nil{#2}                 % "v3.2.0-r14" -> "14"
@@ -58,7 +58,13 @@
     on the next re-stage%
   \fi}
 \makeatother
-\newcommand{\paperTimestamp}{August 3, 2026, 22:36 PDT}
+\newcommand{\paperTimestamp}{August 3, 2026, 23:45 PDT}
+% v3.2.0-r17 (2026-08-03 — exact-final reproducibility closure; no
+% catalog-membership change): binds retained public-viewer PNGs by path, SHA-256,
+% byte size, and blank/nonblank visual status; names the 2,468-row positional
+% parent as the denominator of the 2,287 strict-cohort exclusions; makes the two
+% deterministic deduplication sort keys explicit; and requires content hashes
+% of all three inputs before a checkpoint may be resumed.
 % v3.2.0-r16 (2026-08-03 — exact-final evidence closure; no catalog-membership
 % change): replaces a ranked association phrase in the warned-versus-accepted
 % comparison with wording bound only to the displayed summaries; withdraws the
@@ -358,8 +364,9 @@ predeclared $1\arcsec$ radius are retained.
 Each completed block is written atomically to a small Parquet part.  A JSON checkpoint records
 the input signature, completed block starts, cumulative row counts, and the last completed row;
 a fsynced JSON-lines progress file records the same counts with timestamps.  Restarting with the
-same signature skips completed parts.  A changed FITS path, size, column set, radius, chunk size,
-or cluster count invalidates the checkpoint rather than silently mixing runs.  The full scan took
+same signature skips completed parts.  The signature includes SHA-256 digests and byte sizes of
+the FITS, cluster, and anomaly inputs, as well as the column set, radius, and chunk size; a changed
+input or run configuration invalidates the checkpoint rather than silently mixing runs.  The full scan took
 97.1~s on the audit machine and retained only 2,468 match rows.  The release does not pin that
 machine's hardware; the streaming design bounds the resident working set to a single 200,000-row
 chunk rather than the full catalog, so the scan reproduces on commodity hardware such as the
@@ -412,8 +419,9 @@ survive.
 
 During the positional join, each eligible FITS row is assigned to its nearest anomaly cluster
 only.  After applying a cohort's predicates, duplicate cluster matches are ordered by smaller angular separation, larger
-\texttt{DELTACHI2}, smaller \texttt{TARGETID}, and smaller FITS row.  A second pass uses the same
-ordering to enforce one row per public \texttt{TARGETID}.  No tie-breaking is needed in the final
+\texttt{DELTACHI2}, smaller \texttt{TARGETID}, and smaller FITS row.  A second pass enforces one
+row per public \texttt{TARGETID} with the same first two keys, then smaller \texttt{cluster\_id}
+and smaller FITS row.  No tie-breaking is needed in the final
 cohort, but publishing the rule makes reruns deterministic.  The final 181 rows have unique
 candidate IDs, cluster IDs, public \texttt{TARGETID}s, and FITS row numbers.
 
@@ -787,10 +795,12 @@ in Table~\ref{tab:examples}; overlap gives 20 unique targets.  Every page return
 \texttt{TARGETID}, redshift, \texttt{SPECTYPE}, \texttt{ZWARN}, and \texttt{DELTACHI2} within the
 declared serialization tolerances, and served B, R, and Z spectral arrays containing 2,751,
 2,326, and 2,881 pixels, respectively, plus an imaging-cutout link.  Twenty per-target PNG captures
-are retained; 18 visibly contain both a rendered spectrum and coordinate marker, while the captures
-for \texttt{P3-DESI-000004} and \texttt{P3-DESI-000047} are blank and therefore supply no visual-render evidence.
+are retained in the r3 audit archive.  The machine-readable audit binds every capture's repository-relative
+path, SHA-256, and byte size, and records its visual status: 18 visibly contain both a rendered spectrum
+and coordinate marker, while the captures for \texttt{P3-DESI-000004} and \texttt{P3-DESI-000047}
+are blank and therefore supply no visual-render evidence.
 
-The exact URLs, returned metadata, arm lengths, checks, and screenshots are preserved with the r3
+The exact URLs, returned metadata, arm lengths, checks, and capture bindings are preserved with the r3
 audit artifacts; the machine-readable result is
 \artifact{pipelines/p3\_anomaly\_engine/audits/p3\_v320\_r3\_public\_viewer\_audit.json}.
 This establishes public retrieval and metadata agreement.  It is not a visual classification,
@@ -916,8 +926,8 @@ original-member-centered $1\arcsec$ counterfactual retains 180 rows and removes 
 \texttt{P3-DESI-000030}.
 
 The smaller, auditable count is the catalog-integrity improvement.  Relative to the frozen
-195,829-row historical anomaly table, it provides 181 traceable public-ID candidates and a clear account
-of the 2,287 exclusions.  The release retains the full $1\arcsec$ cohort definition while exposing
+195,829-row historical anomaly table, it provides 181 traceable public-ID candidates.  Within the
+2,468-row positional parent cohort, the strict quality gates exclude 2,287 rows.  The release retains the full $1\arcsec$ cohort definition while exposing
 the 11-row separation tail, preserves historical score metadata without turning it into a
 significance, and states that the warning-free cohort is unsuitable for occurrence-rate
 inference.  Its immediate purpose is reproducible spectral retrieval and follow-up; physical
@@ -1137,7 +1147,8 @@ $1\arcsec$ and that parent/strict pair counts remain 2,468/181.
 \item Apply the chosen cohort predicate before duplicate handling.
 \item Within that predicate-filtered cohort, keep the nearest row per cluster; break ties by descending
 \texttt{DELTACHI2}, ascending \texttt{TARGETID}, and ascending FITS row.
-\item Apply the same ordering to keep one cluster per \texttt{TARGETID}.
+\item For the public-\texttt{TARGETID} pass, retain the same separation and \texttt{DELTACHI2}
+ordering, then break ties by ascending \texttt{cluster\_id} and ascending FITS row.
 \item Label separation $\le0.1\arcsec$ as coordinate-consistent and the remaining declared
 $1\arcsec$ matches as the positional tail.
 \item Sort by \texttt{cluster\_id} and assign sequential release-local candidate IDs.
@@ -1256,7 +1267,7 @@ Warning-bearing auxiliary & PASS: exact 2,267/2,267 set & stable IDs, carried-fi
 Local-shift diagnostic & PASS: 16/16 realizations & descriptive curves; not a conditional null; core-conditioned annulus 0/170 \\
 Accepted/warned comparison & PASS: 181/2,267 exact rows & medians, quartiles, and Redrock class counts from Parquet \\
 Original-member sensitivity & PASS: 180 retained, one removed & explicit $\le1\arcsec$ expression; P3-DESI-000030 \\
-Public viewer retrieval & PASS: 20/20 data; 18/20 visual captures & matching metadata and B/R/Z arrays; two blank PNGs disclosed \\
+Public viewer retrieval & PASS: 20/20 data; 18/20 visual captures & matching metadata and B/R/Z arrays; 20 capture paths/hashes/statuses; two blanks disclosed \\
 FITS provenance & PASS & full local SHA equals current official checksum \\
 Remote parity & PASS: 8/8 & live 206/Content-Range/1 MiB/digest validation \\
 Payload manifest & PASS: 10 payloads & manifest self-excluded; 11 directory files total \\

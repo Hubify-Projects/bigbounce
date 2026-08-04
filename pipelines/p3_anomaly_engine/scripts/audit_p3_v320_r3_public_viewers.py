@@ -20,6 +20,7 @@ from typing import Any
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from PIL import Image
 
 
 VIEWER_TEMPLATE = "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid{targetid}"
@@ -143,12 +144,19 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=repo / "pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json",
     )
+    parser.add_argument(
+        "--captures-dir",
+        type=Path,
+        default=repo / "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer",
+        help="Directory holding the retained r3 per-target PNG captures.",
+    )
     parser.add_argument("--timeout", type=float, default=60.0)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    repo = Path(__file__).resolve().parents[3]
     frame = pd.read_parquet(args.catalog)
     tail_ids = frame.loc[frame["match_separation_arcsec"] > 0.1, "candidate_id"].astype(str).tolist()
     representative = representative_ids(frame)
@@ -158,6 +166,18 @@ def main() -> None:
     cases = []
     for position, candidate_id in enumerate(audit_ids, 1):
         row = frame.loc[frame["candidate_id"] == candidate_id].iloc[0]
+        capture = args.captures_dir / f"{candidate_id}.png"
+        if not capture.is_file():
+            raise RuntimeError(f"missing retained viewer capture {capture}")
+        with Image.open(capture) as image:
+            extrema = image.convert("RGB").getextrema()
+        blank = all(low == high == 255 for low, high in extrema)
+        capture_record = {
+            "repository_relative_path": str(capture.resolve().relative_to(repo)),
+            "sha256": sha256_file(capture),
+            "size_bytes": capture.stat().st_size,
+            "visual_status": "blank_no_visual_render_evidence" if blank else "visually_checked_rendered_spectrum_and_coordinate_marker",
+        }
         url = VIEWER_TEMPLATE.format(targetid=int(row.targetid))
         response = session.get(url, timeout=args.timeout)
         response.raise_for_status()
@@ -198,6 +218,7 @@ def main() -> None:
             },
             "spectral_arm_pixel_counts": viewer["spectral_arm_pixel_counts"],
             "imaging_cutout": viewer["cutout"],
+            "capture": capture_record,
             "checks": checks,
             "status": "PASS" if all(checks.values()) else "FAIL",
         })
@@ -218,6 +239,18 @@ def main() -> None:
             "viewer_url_template": VIEWER_TEMPLATE,
         },
         "input": {"catalog": str(args.catalog), "catalog_sha256": sha256_file(args.catalog)},
+        "capture_audit": {
+            "captures_dir": str(args.captures_dir.resolve().relative_to(repo)),
+            "retained_png_count": len(audit_ids),
+            "visually_checked_rendered_count": sum(
+                case["capture"]["visual_status"] == "visually_checked_rendered_spectrum_and_coordinate_marker"
+                for case in cases
+            ),
+            "blank_capture_ids": [
+                case["candidate_id"] for case in cases
+                if case["capture"]["visual_status"] == "blank_no_visual_render_evidence"
+            ],
+        },
         "interpretation": (
             "PASS establishes that the public DR1 viewer served metadata, B/R/Z spectral arrays, "
             "and an imaging-cutout link for every audited TARGETID, and that the listed metadata "

@@ -239,6 +239,7 @@ def make_paths(output_dir: Path) -> BuildPaths:
 def scan_fits(
     fits_path: Path,
     clusters: pd.DataFrame,
+    input_hashes: dict[str, str],
     paths: BuildPaths,
     chunk_rows: int,
 ) -> tuple[list[Path], dict[str, int]]:
@@ -250,7 +251,9 @@ def scan_fits(
         "version": VERSION,
         "fits_path": str(fits_path.resolve()),
         "fits_size_bytes": fits_path.stat().st_size,
-        "clusters": len(clusters),
+        "fits_sha256": input_hashes["fits"],
+        "clusters_sha256": input_hashes["clusters"],
+        "anomalies_sha256": input_hashes["anomalies"],
         "chunk_rows": chunk_rows,
         "columns": FITS_COLUMNS,
         "radius_arcsec": MATCH_RADIUS_ARCSEC,
@@ -475,6 +478,7 @@ def build_release(
     parts: list[Path],
     scan_totals: dict[str, int],
     paths: BuildPaths,
+    input_hashes: dict[str, str],
 ) -> dict[str, Any]:
     raw = pd.concat([pd.read_parquet(path) for path in parts], ignore_index=True)
     cluster_fields = clusters[
@@ -563,7 +567,8 @@ def build_release(
         },
         "deduplication": (
             "Nearest angular row per cluster; ties prefer higher DELTACHI2, smaller TARGETID, "
-            "then lower FITS row. A second pass enforces unique TARGETID using the same ordering."
+            "then lower FITS row. A second pass enforces unique TARGETID using separation, "
+            "DELTACHI2, cluster_id, then FITS row."
         ),
         "assertions": {
             "candidate_id_unique": bool(final["candidate_id"].is_unique),
@@ -609,7 +614,7 @@ def build_release(
                 "source_tag": INPUT_RELEASE_TAG,
                 "source_tag_commit": INPUT_RELEASE_COMMIT,
                 "size_bytes": args.clusters.stat().st_size,
-                "sha256": sha256_file(args.clusters),
+                "sha256": input_hashes["clusters"],
             },
             "anomalies": {
                 "input_label": "apjs_submission_v3.1.161/desi_dr1_anomalies.parquet",
@@ -617,12 +622,12 @@ def build_release(
                 "source_tag": INPUT_RELEASE_TAG,
                 "source_tag_commit": INPUT_RELEASE_COMMIT,
                 "size_bytes": args.anomalies.stat().st_size,
-                "sha256": sha256_file(args.anomalies),
+                "sha256": input_hashes["anomalies"],
             },
             "desi_zall_fits": {
                 "input_label": "DESI DR1 public zall-pix-iron.fits",
                 "size_bytes": args.fits.stat().st_size,
-                "sha256": args.fits_sha256 or "not recomputed; use upstream DESI provenance",
+                "sha256": input_hashes["fits"],
                 "public_url": DESI_FITS_URL,
                 "official_checksum_url": DESI_CHECKSUM_URL,
             },
@@ -819,12 +824,19 @@ def main() -> None:
         raise SystemExit("--chunk-rows must be positive")
 
     paths = make_paths(args.output_dir)
+    input_hashes = {
+        "clusters": sha256_file(args.clusters),
+        "anomalies": sha256_file(args.anomalies),
+        "fits": sha256_file(args.fits),
+    }
+    if args.fits_sha256 and input_hashes["fits"] != args.fits_sha256:
+        raise SystemExit("--fits-sha256 does not match the locally hashed FITS input")
     print(f"[{utc_now()}] loading DESI-containing anomaly clusters", flush=True)
     clusters = load_desi_clusters(args.clusters, args.anomalies)
     print(f"[{utc_now()}] loaded {len(clusters):,} clusters; streaming selected FITS columns", flush=True)
-    parts, totals = scan_fits(args.fits, clusters, paths, args.chunk_rows)
+    parts, totals = scan_fits(args.fits, clusters, input_hashes, paths, args.chunk_rows)
     print(f"[{utc_now()}] scan complete; building cohort matrices and immutable release", flush=True)
-    result = build_release(args, clusters, parts, totals, paths)
+    result = build_release(args, clusters, parts, totals, paths, input_hashes)
     append_jsonl(paths.progress_log, {"event": "release_complete", "utc": utc_now(), **result["counts"]})
     print(json.dumps(result["counts"], indent=2, sort_keys=True), flush=True)
     print(f"[{utc_now()}] release complete: {args.output_dir}", flush=True)

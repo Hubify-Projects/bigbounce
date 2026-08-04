@@ -1,7 +1,22 @@
 {
+  "capture_audit": {
+    "blank_capture_ids": [
+      "P3-DESI-000004",
+      "P3-DESI-000047"
+    ],
+    "captures_dir": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer",
+    "retained_png_count": 20,
+    "visually_checked_rendered_count": 18
+  },
   "cases": [
     {
       "candidate_id": "P3-DESI-000003",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000003.png",
+        "sha256": "69b705b172d7d4315f484572825c6013d5df92f127c77239ce2b8a18e606fc2f",
+        "size_bytes": 66600,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -58,6 +73,12 @@
     },
     {
       "candidate_id": "P3-DESI-000005",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000005.png",
+        "sha256": "cc4497d25c9ee4fcee9fb9d8196caab026fe94d16ad6b3b209cba5f7a83e7f7d",
+        "size_bytes": 328649,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -114,6 +135,12 @@
     },
     {
       "candidate_id": "P3-DESI-000017",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000017.png",
+        "sha256": "8798e3916a787f76b88ebdba0a085164bc55067b552557414b347b873e462821",
+        "size_bytes": 42287,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -169,6 +196,12 @@
     },
     {
       "candidate_id": "P3-DESI-000022",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000022.png",
+        "sha256": "c8f5f54a01552a334a62e084f4e9039070ffa1e45c01e57152f67b1ab27eb164",
+        "size_bytes": 319480,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -224,6 +257,12 @@
     },
     {
       "candidate_id": "P3-DESI-000030",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000030.png",
+        "sha256": "e86f21f24e09850f57f216854c8d5b6e10c2091199fcc948093e03a02c31cd37",
+        "size_bytes": 59146,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -279,6 +318,12 @@
     },
     {
       "candidate_id": "P3-DESI-000032",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000032.png",
+        "sha256": "815d1c9bb533df431a8e4c33368211e912ab8b90863bc3909547159cc00499fe",
+        "size_bytes": 59175,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -334,6 +379,12 @@
     },
     {
       "candidate_id": "P3-DESI-000039",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000039.png",
+        "sha256": "ac3d14badebb27f10b606a3c551b5da5e2b91f3d8152d6a8b38a77a7a49ed396",
+        "size_bytes": 317509,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -390,6 +441,12 @@
     },
     {
       "candidate_id": "P3-DESI-000045",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000045.png",
+        "sha256": "9c631623130b0d3b683b3ae795cb1b0c03a489cd49a94565af5448b57cccaa8b",
+        "size_bytes": 334201,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -445,6 +502,12 @@
     },
     {
       "candidate_id": "P3-DESI-000053",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000053.png",
+        "sha256": "8e8a20609a1289e043ba886d9a37bba0d1fd4d52a4326faf347a33ceccbaa542",
+        "size_bytes": 45320,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -500,6 +563,12 @@
     },
     {
       "candidate_id": "P3-DESI-000140",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000140.png",
+        "sha256": "51bfb4780d38285a6567452a638ae48fa7ccd621140555e091eef30b6b308204",
+        "size_bytes": 320644,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -555,6 +624,12 @@
     },
     {
       "candidate_id": "P3-DESI-000141",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000141.png",
+        "sha256": "d8edd4c6f71f06567f1b1f8156bc3010722f1353ebd5eaa3b4e81ddb6d049095",
+        "size_bytes": 52436,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -610,6 +685,12 @@
     },
     {
       "candidate_id": "P3-DESI-000001",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000001.png",
+        "sha256": "3c9fd79087ddf54c1472d55d8288cdc94710213bedf857dce3875b4576de1fb8",
+        "size_bytes": 327321,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -665,6 +746,12 @@
     },
     {
       "candidate_id": "P3-DESI-000002",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000002.png",
+        "sha256": "c01ae642e5bceaf6008ebb7867b4ec274a7840acf2a30c854e1399b01e86b4d9",
+        "size_bytes": 316070,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -720,6 +807,12 @@
     },
     {
       "candidate_id": "P3-DESI-000004",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000004.png",
+        "sha256": "3a729c703b8b9b0d1faa340aa1d50ae2bfa26c02fb460b79bfa723782397c60c",
+        "size_bytes": 7698,
+        "visual_status": "blank_no_visual_render_evidence"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -775,6 +868,12 @@
     },
     {
       "candidate_id": "P3-DESI-000006",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000006.png",
+        "sha256": "3875893447f4fd748ba696f1502eff64f66a6aa7a5c4e0d46854170bca3b1b65",
+        "size_bytes": 61980,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -830,6 +929,12 @@
     },
     {
       "candidate_id": "P3-DESI-000020",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000020.png",
+        "sha256": "199e92e2085d87a79bbc9e0401e184f600e9ca6f86a9fb4c90941c8743c3afb0",
+        "size_bytes": 57437,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -885,6 +990,12 @@
     },
     {
       "candidate_id": "P3-DESI-000047",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000047.png",
+        "sha256": "3a729c703b8b9b0d1faa340aa1d50ae2bfa26c02fb460b79bfa723782397c60c",
+        "size_bytes": 7698,
+        "visual_status": "blank_no_visual_render_evidence"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -940,6 +1051,12 @@
     },
     {
       "candidate_id": "P3-DESI-000018",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000018.png",
+        "sha256": "128a23c25456dc0d809991dc54200b688f1344dd29e3ca82b18a2e4bc5cc27f9",
+        "size_bytes": 42448,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -995,6 +1112,12 @@
     },
     {
       "candidate_id": "P3-DESI-000163",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000163.png",
+        "sha256": "11b9f105cd8389015c6c2347dffb72f5a6f05ce708b5308b3481d6090616ce88",
+        "size_bytes": 41172,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -1050,6 +1173,12 @@
     },
     {
       "candidate_id": "P3-DESI-000007",
+      "capture": {
+        "repository_relative_path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r3-EXACTPDF-9ed38c3c-NONANTHROPIC-CONFIRM/audit/viewer/P3-DESI-000007.png",
+        "sha256": "3ece821ac96fb28420604fe2449ebd75aae4d9b6a464a4e2fbef5c0175bb48d8",
+        "size_bytes": 45561,
+        "visual_status": "visually_checked_rendered_spectrum_and_coordinate_marker"
+      },
       "checks": {
         "deltachi2": true,
         "spectype": true,
@@ -1104,7 +1233,7 @@
       "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39636182677589446"
     }
   ],
-  "created_utc": "2026-07-14T13:08:55Z",
+  "created_utc": "2026-08-04T06:28:17Z",
   "input": {
     "catalog": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
     "catalog_sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03"

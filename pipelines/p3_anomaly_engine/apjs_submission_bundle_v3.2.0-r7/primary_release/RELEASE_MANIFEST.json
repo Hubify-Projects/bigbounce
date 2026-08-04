@@ -13,13 +13,13 @@
     },
     {
       "name": "PROVENANCE.json",
-      "sha256": "a63fb5c06574bb872d5a2a39c949c600728a15df86d66431fda8fcef0fee1aed",
-      "size_bytes": 5732
+      "sha256": "105979e52eb833726a205936e870366f363560af259a2e325376caa3dff77f34",
+      "size_bytes": 5763
     },
     {
       "name": "QC_REPORT.json",
-      "sha256": "33870e4da07d92709ceb4229e771fc730925da28c0bd7688ca887fe0bd82329f",
-      "size_bytes": 4285
+      "sha256": "3cdda75b1309a9aa4649065dbbf1b5a89a6616792c0def89db1f884a5bf8d75a",
+      "size_bytes": 4316
     },
     {
       "name": "README.md",
@@ -38,8 +38,8 @@
     },
     {
       "name": "build_desi_science_catalog_v320_r2.py",
-      "sha256": "0a62fa8019b0893b0e7d9f33654904660a3777671749b0d4b2ad8f7b9c98d969",
-      "size_bytes": 36869
+      "sha256": "9dce6eccd409b8e72cc5b937f6a551bc1739abb975f56f1780f46695a15d7e67",
+      "size_bytes": 37401
     },
     {
       "name": "desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",

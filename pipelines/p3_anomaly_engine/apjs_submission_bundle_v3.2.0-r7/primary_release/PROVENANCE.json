@@ -84,7 +84,7 @@
     "scipy": "1.13.1"
   },
   "selection_and_deduplication": {
-    "deduplication": "Nearest angular row per cluster; ties prefer higher DELTACHI2, smaller TARGETID, then lower FITS row. A second pass enforces unique TARGETID using the same ordering.",
+    "deduplication": "Nearest angular row per cluster; ties prefer higher DELTACHI2, smaller TARGETID, then lower FITS row. A second pass enforces unique TARGETID using separation, DELTACHI2, cluster_id, then FITS row.",
     "desi_target_any_bit": {
       "BGS_ANY": 60,
       "ELG": 1,

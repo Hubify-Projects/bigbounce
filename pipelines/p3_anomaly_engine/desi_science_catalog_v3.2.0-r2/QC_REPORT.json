@@ -11,7 +11,7 @@
   },
   "catalog": "desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
   "created_utc": "2026-07-14T12:27:40Z",
-  "deduplication": "Nearest angular row per cluster; ties prefer higher DELTACHI2, smaller TARGETID, then lower FITS row. A second pass enforces unique TARGETID using the same ordering.",
+  "deduplication": "Nearest angular row per cluster; ties prefer higher DELTACHI2, smaller TARGETID, then lower FITS row. A second pass enforces unique TARGETID using separation, DELTACHI2, cluster_id, then FITS row.",
   "match_separation_arcsec": {
     "max": 0.9905735599323949,
     "median": 0.0012693997648472865,
