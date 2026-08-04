@@ -39,7 +39,7 @@
 % singular/plural/zero handling. A stale "one patch ahead" literal is therefore
 % unrepresentable — closing the half of pattern-047 that the 2026-07-23 closure
 % left as a hardcoded literal (it bound only the manuscript half to a macro).
-\newcommand{\paperVersion}{v3.2.0-r15}
+\newcommand{\paperVersion}{v3.2.0-r16}
 \newcommand{\depositVersion}{v3.2.0-r10}
 \makeatletter
 \def\bb@afterR#1-r#2\@nil{#2}                 % "v3.2.0-r14" -> "14"
@@ -58,7 +58,11 @@
     on the next re-stage%
   \fi}
 \makeatother
-\newcommand{\paperTimestamp}{August 3, 2026, 19:34 PDT}
+\newcommand{\paperTimestamp}{August 3, 2026, 22:22 PDT}
+% v3.2.0-r16 (2026-08-03 — exact-final Gemini wording closure; no science,
+% abstract, catalog, figure, or numerical change): replaces a ranked association
+% phrase in the warned-versus-accepted descriptive comparison with wording bound
+% only to the displayed medians and interquartile ranges.
 % v3.2.0-r15 (2026-08-03 — ApJS portal-package closure; no science, abstract,
 % catalog, figure, or numerical change): adds the AAS-required line-number
 % option, a <=44-character running title, the author's verified ORCID, and an
@@ -578,8 +582,8 @@ $z$; [5.15557, 5.64065] versus [5.35522, 6.66982] in historical score;
 [0.000833, 0.001668] versus [0.000926, 0.001685]$\arcsec$ in separation; and
 [30.9988, 235.084] versus [1.77359, 17.3439] in \texttt{DELTACHI2}.  The warned table contains
 2,194 GALAXY, 72 QSO, and one STAR rows, while the accepted table contains 157, 23, and one.
-These contrasts show that the gate is associated most directly with fit discrimination and also
-changes the score/redshift composition.  They do not estimate selection probabilities, correct
+These descriptive contrasts report differences in fit-quality, score, and redshift summaries
+between the accepted and warning-bearing cohorts.  They do not estimate selection probabilities, correct
 bias, or promote warning-bearing rows into the primary catalog.
 
 \begin{deluxetable}{lr}
