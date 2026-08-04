@@ -1,4 +1,14 @@
 # Data Release Manifest — BigBounce Multi-Survey Anomaly Catalog
+
+> **SUPERSEDED PUBLICATION ROUTE — HISTORICAL DATASET RECORD (2026-08-04).**
+> This manifest preserves the earlier heterogeneous multi-survey release and
+> its audit trail. It is not the current Paper 3 publication plan, not the
+> submission sample for a new anomaly-discovery claim, and not a complete
+> rerunnable flagship catalog. Current P3 is the 181-TARGETID public-ID
+> recovery support release; the future anomaly flagship must be rebuilt under
+> [`pipelines/p1_highz_tracers/clean_rerun_contract.md`](../p1_highz_tracers/clean_rerun_contract.md).
+> See the [publication and release master map](../../project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md).
+
 ## Paper: Golden (2026), "A Multi-Survey Autoencoder Anomaly-Candidate Catalog: 268,319 Validated Point Sources plus 200 Archival CMB Map Patches" (Paper 3)
 ## Frozen: 2026-07-12 (immutable reviewable release, v3.1.157)
 ## Review-of-record paper: v3.1.161-apjs (local venue-fit source; no new HF tag uploaded)

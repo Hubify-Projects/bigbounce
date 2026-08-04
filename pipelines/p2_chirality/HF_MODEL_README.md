@@ -33,6 +33,15 @@ model-index:
 
 # Galaxy Chirality Classifier (bamfai/galaxy-chirality-v2)
 
+> **CURRENT PUBLICATION ALIGNMENT (2026-08-04).** This checkpoint is a
+> reproducibility artifact for Paper 4 and its Paper 5 companion, not an
+> independent physical-parity claim. The current Paper 4 candidate is
+> v1.0.274 and explicitly records unresolved historical training-composition
+> limits; provider metadata must be frozen to the exact approved paper-linked
+> revision after Houston approval. Any older statistics below are retained as
+> release history, not as the current manuscript headline. See the
+> [publication and release master map](../../project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md).
+
 **Companion model for the current Paper IV manuscript —
 *An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI
 Spirals and an 8.5-Million-Galaxy Catalog*.**

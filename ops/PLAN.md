@@ -11,6 +11,8 @@ facts: use the source map below and the SSOT status board for those.
 > Current P3 is an integrated supporting data/provenance release, not a
 > standalone paper; P5 remains a standalone AJ companion. The governing record
 > is `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`.
+> For the plain-English, complete paper/data/model/software release map, use
+> `project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md`.
 
 ## Mission
 
@@ -44,6 +46,7 @@ process evidence in `CLAUDE.md`; they are not the current scoring or exit model.
 | Concern | Canonical location |
 |---|---|
 | Program phase, priorities, decisions | `ops/PLAN.md` |
+| Plain-English paper/release architecture | `project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md` |
 | Manuscript identities, paths, venues | `project-context/paper_registry.json` |
 | Current portfolio status | `project-context/SSOT/index.md` |
 | Per-paper status and honest limitations | `project-context/SSOT/paper-*/status.md` |

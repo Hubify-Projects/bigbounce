@@ -30,6 +30,19 @@
 - Decision packet reference:
   `project-context/SSOT/HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md`.
 
+## 2026-08-04 — Master publication and release map
+
+- The durable strategy is three scientific programs, six eventual standalone
+  works, and one integrated P3 supporting release—not a fixed six-paper quota.
+- A lead paper ships with the data, code, model, schema, validation, archive,
+  and provenance needed to reproduce it; those components are not spun into
+  derivative papers unless they independently answer a new scientific question.
+- The rebuilt anomaly flagship depends on the selected clean DESI rerun. P3 is
+  its supporting public-ID/provenance release; P4's catalog/classifier is the
+  upstream dependency of P5.
+- Governing plain-English map:
+  `project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md`.
+
 ## 2026-08-03 — Canonical program map
 
 - `ops/PLAN.md` is the single executable plan.

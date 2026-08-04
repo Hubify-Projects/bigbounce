@@ -10,6 +10,14 @@ pretty_name: BigBounce Multi-Survey Autoencoder Anomaly Catalog (Paper 3)
 
 # BigBounce — Multi-Survey Autoencoder Anomaly Catalog (Paper 3)
 
+> **SUPERSEDED PUBLICATION ROUTE — HISTORICAL DATASET RECORD (2026-08-04).**
+> This provider copy preserves an earlier heterogeneous multi-survey release.
+> It is not the current P3 publication role and must not be cited as the input
+> or validated output of the future DESI anomaly flagship. Current P3 is the
+> 181-TARGETID public-ID recovery support release; new discovery claims require
+> the fail-closed clean rerun. See the
+> [publication and release master map](../../project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md).
+
 **Corrected release description.** This dataset backs Golden (2026), Paper 3 —
 *A Multi-Survey Autoencoder Anomaly-Candidate Catalog*. It is released
 **CC-BY-4.0**. The corrected submission release is frozen at the immutable tag

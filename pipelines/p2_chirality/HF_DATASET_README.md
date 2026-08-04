@@ -27,6 +27,14 @@ configs:
 
 # DESI Legacy Galaxy Chirality Catalog
 
+> **CURRENT PUBLICATION ALIGNMENT (2026-08-04).** The currently selected Paper
+> 4 manuscript is v1.0.274. The public v1.0.244 payload remains intentionally
+> immutable until Houston approves the final candidate; its version must not
+> be mistaken for the paper version. After approval, provider metadata,
+> strict-null overlays, archive bytes, and citations will be refreshed as one
+> hash-bound release. See the
+> [publication and release master map](../../project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md).
+
 This dataset accompanies the current Paper IV manuscript, *An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog*.
 
 The declared primary high-confidence observed-label statistic excludes every row marked `raw_flip_qc_unsafe` and is consistent with zero under fixed-occupancy label randomization (`N_selected=890069`, `N_support=887472`, `z_moment=0.6346508534`, one-sided add-one rank `p=0.2376762324`). This is not a calibrated true-spin, physical-amplitude, or primordial-parity bound.

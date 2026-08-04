@@ -6,6 +6,9 @@
   final-hash visual-review packets; no approval state is inferred by agents.
 - Execute the selected clean DESI rerun, then reproduce or explain the
   2,145/1,127 candidate selection from immutable bound inputs.
+- Use `project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md` as the
+  single plain-English release map; repair P4 provider metadata and P5's stale
+  bootstrap README only as part of their approved immutable-release bundles.
 
 ## Backlog
 

@@ -1,6 +1,14 @@
 # P5 — Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure
 
-**Status:** Bootstrap (2026-05-15). Scaffolding complete; awaiting first data fetch.
+> **CURRENT STATUS (2026-08-04):** selected standalone AJ companion,
+> v0.1.147, technical package 95/100 pending Houston approval. The historical
+> bootstrap plan below is preserved only as development provenance; it is not
+> the current execution state. Use the
+> [final portal kit](paper/AJ_PORTAL_KIT_v0.1.147-2026-08-03.md) and the
+> [publication and release master map](../../project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md)
+> for publication work.
+
+**Historical status recorded below:** Bootstrap (2026-05-15). Scaffolding complete; awaiting first data fetch.
 
 **Working title:** *Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure*
 

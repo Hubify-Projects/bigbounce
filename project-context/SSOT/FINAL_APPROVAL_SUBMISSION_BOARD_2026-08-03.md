@@ -11,6 +11,11 @@ This is the one-screen bridge from preserved candidate packages to the selected
 portfolio. It does not replace `ops/PLAN.md` for program policy or the per-paper
 SSOT files for scientific limitations.
 
+> **Start here if the portfolio feels confusing:**
+> [`PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md`](../PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md)
+> explains, in plain English, what each paper is for, which datasets/models/code
+> ship with it, what is not an independent paper, and the release order.
+
 ## Stage and score
 
 - The five preserved standalone submissions remain **95/100** under Directive
