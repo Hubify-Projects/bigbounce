@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-08-04T02:15:00-07:00",
+  "updated_at": "2026-08-04T02:55:00-07:00",
   "project": "bigbounce",
   "objective": "Ship the approved three-program public architecture, restore or rerun the DESI anomaly flagship evidence chain, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.",
   "canonical_plan": "ops/PLAN.md",
@@ -32,7 +32,7 @@
       "status": "complete",
       "title": "Complete bounded package acceptance across the six preserved candidate artifacts",
       "depends_on": ["AUG-001"],
-      "completion_evidence": "Exact package, PDF, visual, link, mirror, and contract gates passed through P3 r17 and P4 v1.0.274"
+      "completion_evidence": "Exact package, PDF, visual, link, mirror, and contract gates passed through P3 r17 and P4 v1.0.274; current PASS receipt generated 2026-08-04T08:04:33Z at manuscript-bearing head 8055a5b1 with zero later changes to the 12 canonical source/PDF paths"
     },
     {
       "id": "AUG-003",
@@ -96,7 +96,15 @@
       "id": "AUG-012",
       "status": "in_progress",
       "title": "Regenerate approval, submission, archive, and endorser routing for six standalone works plus the P3 support release",
-      "depends_on": ["AUG-008", "AUG-009"]
+      "depends_on": ["AUG-008", "AUG-009"],
+      "completion_evidence": "Canonical board regenerated for the selected portfolio; Houston decisions, post-approval archives, outreach, and submissions remain open"
+    },
+    {
+      "id": "AUG-013",
+      "status": "complete",
+      "title": "Bind current-hash evidence and create concise Houston visual-review decision packets",
+      "depends_on": ["AUG-002", "AUG-008"],
+      "completion_evidence": "project-context/SSOT/HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md binds exact versions, hashes, purposes, claim limits, provider coverage, live PDFs, portal kits, and APPROVE/REVISE/DEFER decisions; no 96 state"
     }
   ],
   "historical_tasks": [

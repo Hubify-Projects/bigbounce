@@ -47,6 +47,10 @@ preserved audit history and must not be read as the active queue.
 - [ ] **AUG-012 — Selected-portfolio execution board:** maintain six standalone
   works (including the rebuilt anomaly flagship and P5, excluding P3) plus the
   integrated P3 release; then resume sign-off, archives, endorsers, and venues.
+- [x] **AUG-013 — Current-hash Houston decision packets:** bound the selected
+  five exact PDFs to the current preflight and final-hash audits, documented
+  every provider/page limitation, and created one concise review packet in the
+  recommended order. Completed 2026-08-04; Houston decisions remain AUG-004.
 
 ## Current state
 

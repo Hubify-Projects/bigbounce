@@ -19,8 +19,10 @@ SSOT files for scientific limitations.
   longer scored as an independent submission.
 - Do **not** invent 96. Exact-package acceptance is evidence inside the existing
   95-point packaging gate, not a new scoring category.
-- Current stage: portfolio architecture approved; production map and selected
-  approval/submission packets are being regenerated.
+- Current stage: bounded current-hash acceptance complete; Houston visual
+  review is the active gate. Use the concise
+  [`HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md`](HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md)
+  in the recommended order P2 → P1A → P4 → P1B → P5.
 - P3 r17 is **Supporting Data Release · DESI Public-ID Recovery** and will be
   integrated into the rebuilt anomaly flagship release.
 - P5 is **Standalone Companion · Chirality–Environment Null Test**.
@@ -62,11 +64,16 @@ Only an `APPROVE` decision moves that paper from 95 to 100.
 | P4 | `pipelines/p2_chirality/paper4_arxiv_v1.0.274.tar.gz` | `9503ddd1…be736` | PASS · flat AASTeX 7.0.2 package · 32-page visual audit |
 | P5 | `pipelines/p5_desi_chirality/paper/paper5_aj_v0.1.147-2026-08-03.tar.gz` | `a6a444f0…0b69` | PASS · flat AASTeX 7.0.2 AJ/arXiv package · 46-page visual audit |
 
-The six-candidate content-addressed receipt under `final-acceptance/` records a
-technical preflight at repository head `f4cd37a9`. It remains historical
-technical evidence after architecture approval; selected-portfolio sign-off or
-any artifact change requires a fresh receipt before submission. It must not
-certify a review packet from a later repository head.
+The current content-addressed receipt under `final-acceptance/` is a `PASS`
+generated `2026-08-04T08:04:33Z` at manuscript-bearing head `8055a5b1`; receipt
+SHA-256 is `3b7cbb31…5fcd5`. A fresh diff from that head found zero changes to
+the six canonical source/PDF pairs, so it binds the exact candidates above even
+though later documentation commits advance repository HEAD. Final-hash coverage
+is not uniform: P1A/P1B/P2 each have one usable provider leg, P4 has a complete
+32-page Gemini leg plus partial Grok coverage and its sole ECE copy-edit closed
+in v1.0.274, and P5 has only a Grok leg over pages 1–25 of 46. These limits are
+carried paper by paper in the visual-review packet; no multi-provider consensus
+is claimed.
 
 ## Journal execution tracker
 

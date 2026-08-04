@@ -1,25 +1,27 @@
 # BigBounce current queue — authoritative entry point
 
-**Reconciled 2026-08-03.** The older chronological ledger below begins with
+**Reconciled 2026-08-04.** The older chronological ledger below begins with
 historical entries and is retained for provenance. The active work is:
 
-1. **NEXT — bounded final-hash/package acceptance:** bind the six current
-   source/PDF pairs to version, commit, hashes, packages, and visual/link audit
-   receipts; reopen only a confirmed genuinely-new-real regression.
-2. **NEXT — submission packets:** close P3/P5 metadata and the P5 staged-deposit
-   decision; finish the six journal portal kits.
-3. **HOUSTON — final sign-off:** record one explicit decision per paper; only
-   then move that paper from Directive-P 95 to 100.
-4. **HOUSTON + AGENT — submissions:** CQG/JORS/PRD/ApJS/AJ portal work, tracked
+1. **DONE — bounded current-hash/package acceptance:** the exact six preserved
+   source/PDF pairs pass the current receipt; five selected-manuscript
+   final-hash audits are bound with their honest provider limits. Review packet:
+   `HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md`.
+2. **HOUSTON — final sign-off:** decide P2, P1A, P4, P1B, and P5 in that order;
+   only explicit `APPROVE` moves that manuscript from Directive-P 95 to 100.
+   There is no 96 state. P3 receives support-release integration feedback only.
+3. **NEXT — anomaly flagship:** execute the clean public-ID-first DESI rerun and
+   build the defensible selected sample, validation, taxonomy, and manuscript.
+4. **HOUSTON + AGENT — publishing:** PRD/CQG/ApJS/JORS/AJ portal work, tracked
    separately from readiness. arXiv endorsement remains a parallel channel.
 5. **WATCHPOINT — Hubify auth:** restore `HUBIFY_TOKEN` through an approved
    secret source before CLI verification; this is not on the repo/site path.
 
-Completed this pass: atomic truth/production synchronization and repository
-consolidation. Archival merge `556b8454` preserves all former branch tips;
-local, `origin/main`, and `upstream/main` agree and both remotes expose only
-`main`. The detailed 2026-08-03 queue repeated later in this file provides the
-paper-by-paper publication checklist.
+Completed this pass: atomic truth/production synchronization, repository
+consolidation, the three-program architecture, current-hash acceptance, and the
+selected-manuscript review packet. Archival merge `556b8454` preserves all
+former branch tips; both remotes expose only `main`. The older detailed queue
+below is historical provenance, not the active publication order.
 
 - **✅ 2026-07-20 — DONE: Convex paper_figures re-seeded from corrected tex** (43->37 rows + 4 stale P1A rows pruned; seeder now strips \begin{comment} blocks so legacy manuscripts can never seed stale captions; figures.ts regenerates with ZERO -35/8 / 378,280 hits). (Was: OPEN — durability: re-seed Convex paper_figures from corrected tex** (tools/seed_paper_figures.mjs) so a future extract-figures-from-convex.mjs run cannot re-introduce the superseded -35/8 captions fixed in e7a8219d; run as a deliberate /bigbounce-site-sync pass.
 - **✅ 2026-07-20 — DONE: wave-1/wave-2 P2/P3/P4 submission tarballs rebuilt at the DOI-bearing versions.** Rebuilt with `tools/build_exact_arxiv_bundle.py --paper <P> --git-commit bdb3d5cceb61096a7ca9aab279e80a2d379ff15c --write`, commit-bound to current HEAD `bdb3d5cc` (one commit past the DOI-embed commit `b83b5a5c`, site-files-only in between — no paper-source changes, confirmed via `git diff --stat`). All 3 standalone-compile-verified in isolated temp extracts (tectonic 0.16.9, 0 errors, 0 undefined references): P2 `paper2_arxiv_v1.7.126.tar.gz` (11pp, matches expected), P3 `paper3_apjs_arxiv_v3.2.0-r11.tar.gz` (17pp), P4 `paper4_arxiv_v1.0.269.tar.gz` (32pp). Receipts written as `*.proof.json` alongside each tarball (verifier `doi-tarball-rebuild`). Both submission kits updated in place — `WAVE1_SUBMISSION_KIT_2026-07-19.md` (P3 row: tarball/checksums/DOI-embedded note, checklist item 4 flipped from "defer to v2" to "already embedded") and `WAVE2_P5_SUBMISSION_KIT_2026-07-20.md` (P2/P4 rows: tarball/checksums/DOI-embedded note, checklist item 4 flipped, P4 abstract block updated to match the live tex). P5/P1A/P1B tarballs unchanged (P5 still gets its own back-patch at submit time per the kit; P1A/P1B versions unchanged). Blocks cleared: `project-context/SSOT/WAVE1_SUBMISSION_KIT_2026-07-19.md`, `project-context/SSOT/WAVE2_P5_SUBMISSION_KIT_2026-07-20.md`.

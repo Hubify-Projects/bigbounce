@@ -79,11 +79,11 @@ remaining P1B, P4, and P5 findings. The current versions are:
 
 The 95 values mean the four Directive-P agent gates are recorded complete; they
 do not claim Houston sign-off, submission, referee acceptance, or publication.
-Because the current PDFs include closures made after the last complete
-six-paper active-leg board, one bounded **final-hash confirmation** is still an
-evidence-hygiene task. It checks that the exact final artifacts contain no new
-real defect. It is not permission to restart an unbounded verdict-word loop and
-does not automatically reduce readiness unless it finds a real regression.
+The bounded **final-hash confirmation** is complete for the selected portfolio.
+No exact artifact requires scientific reopening. The usable provider coverage
+is uneven and travels with each decision packet—especially P5, whose completed
+leg covered pages 1–25 of 46—so this evidence advances the work to Houston's
+visual review without being mislabeled as multi-provider or human consensus.
 
 ## Phase plan
 
@@ -115,7 +115,7 @@ only `main`, and obsolete local branches/worktrees are removed. At that
 consolidation checkpoint, local, `origin/main`, and `upstream/main` agreed at
 `2be3964b`; subsequent final-package commits are pushed after acceptance.
 
-### Phase B — bounded final-artifact acceptance
+### Phase B — bounded final-artifact acceptance (complete 2026-08-04)
 
 1. Bind each final source/PDF pair to version, commit, SHA-256, venue, and
    package receipt.
@@ -124,7 +124,10 @@ consolidation checkpoint, local, `origin/main`, and `upstream/main` agreed at
    the post-board closures; truth-audit every finding and reopen only confirmed
    genuinely-new-real defects.
 
-### Phase C — Houston sign-off
+Evidence and exact links are bound in
+`project-context/SSOT/HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md`.
+
+### Phase C — Houston sign-off (active)
 
 Present one short decision packet per paper: final PDF, central claim, honest
 limitations, artifact proof, and submission checklist. Record Houston's exact
@@ -143,13 +146,13 @@ Completed 2026-08-04: the three-program public map and exact P3/P5 roles are
 live on production; the restoration gate selected a tested fail-closed rerun
 contract after proving the enhanced parent/calibration unrecoverable.
 
-1. Execute the clean public-ID-first DESI rerun from immutable inputs.
-2. Architect the rebuilt anomaly flagship around the defensible selected
+1. Collect Houston's decisions in order P2 → P1A → P4 → P1B → P5 using the
+   bounded visual-review packet; P3 receives integration feedback only.
+2. Execute the clean public-ID-first DESI rerun from immutable inputs.
+3. Architect the rebuilt anomaly flagship around the defensible selected
    sample, validation, taxonomy, and named follow-up objects.
-3. Maintain the approval/submission/endorser board for six standalone works
-   plus the integrated P3 release.
-4. Resume exact-hash acceptance and Houston visual review for the selected
-   submission portfolio.
+4. After each approval, run that work's archive/portal/endorsement checklist
+   and preserve external receipts; do not wait for every paper to be approved.
 
 ## Stop rules
 
