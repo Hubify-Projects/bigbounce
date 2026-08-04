@@ -7,7 +7,7 @@ import "./publish.css";
 export const metadata: Metadata = {
   title: "Portfolio Decisions",
   description:
-    "Research-program publication architecture, editorial holds, and candidate-package evidence for BigBounce.",
+    "Approved research-program publication architecture, portfolio roles, and candidate-package evidence for BigBounce.",
 };
 
 export default function PublishPage() {
@@ -53,13 +53,13 @@ export default function PublishPage() {
       <section className="pub-section">
         <div className="pub-section-head">
           <span className="pub-section-index">02</span>
-          <h2 className="pub-section-title">Editorial decisions before submission</h2>
+          <h2 className="pub-section-title">Approved portfolio decisions</h2>
         </div>
         <p className="pub-section-sub">
-          These are scientific and editorial choices, not endorsement or upload tasks. No archive, endorsement, or journal route should outrun them.
+          These decisions settle what each output is for. The remaining work is manuscript review, flagship reconstruction, and then the separate endorsement and submission phase.
         </p>
         <div className="pub-holds">
-          {publicationArchitecture.editorialHolds.map((hold) => (
+          {publicationArchitecture.decisions.map((hold) => (
             <article className="pub-hold" key={hold.title}>
               <h3>{hold.title}</h3>
               <p>{hold.detail}</p>
@@ -89,12 +89,11 @@ export default function PublishPage() {
             <tbody>
               {papers.map((paper) => {
                 const program = researchPrograms.find((item) => item.leadSlug === paper.slug || item.supportSlugs.includes(paper.slug));
-                const isLead = program?.leadSlug === paper.slug;
                 const pdf = paper.artifacts.find((artifact) => artifact.kind === "primary" && artifact.href.endsWith(".pdf"));
                 return (
                   <tr key={paper.slug}>
                     <td className="pub-td"><span className="pub-paper-code">{paper.number}</span><span className="pub-paper-title">{paper.title}</span></td>
-                    <td className="pub-td">{isLead ? "Lead result" : "Supporting / editorial decision"}<br /><span className="pub-paper-title">{program?.title}</span></td>
+                    <td className="pub-td">{paper.publicationRole}<br /><span className="pub-paper-title">{paper.standaloneSubmission ? "Selected standalone submission" : "Integrated support release"} · {program?.title}</span></td>
                     <td className="pub-td"><span className="pub-readiness">{paper.readiness}%</span><br /><span className="pub-paper-title">Versioned review and package evidence</span></td>
                     <td className="pub-td">{pdf ? <a className="pub-artifact-link" href={pdf.href} target="_blank" rel="noopener noreferrer">Read PDF</a> : "—"}</td>
                   </tr>

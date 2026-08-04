@@ -49,8 +49,8 @@ const sections: Array<{
 "The quintom branch of bounce cosmology is a theoretical possibility that predicts w-crossing. External DESI analyses are not a BigBounce result, and our program has not run a free-w0–wa analysis. P1B is namaster-proof research software, not an MCMC paper. The actionable next step would be a separately scoped in-house analysis.",
       },
       {
-        title:"fNL = −35/16: The Decisive Test",
-        tag:"ACTIONABLE (forecast) · SPHEREx ~2028 · Parameter-free",
+        title:"fNL = −35/16: A Conditional Future Test",
+        tag:"ACTIONABLE (forecast) · SPHEREx ~2028 · scoped assumptions",
         children:
 "P2 derives a conditional matter-contraction prediction fNL = −2.1875. SPHEREx may provide a future test, but no present measurement proves a bounce or resolves the model landscape by itself.",
       },

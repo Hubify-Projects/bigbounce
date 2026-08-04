@@ -136,7 +136,7 @@ export function VerdictTrajectory() {
   return (
     <>
     <p style={{ margin: "0 0 8px", fontSize: "0.68rem", color: "var(--text-muted)", fontFamily: MONO }}>
-      Legend: A = ACCEPT · m = minor revisions · M = major revisions · R = REJECT · — = not swept that round. GPT column frozen since 2026-07-16 (OpenAI/Codex paused by standing directive N — never faked); the Claude INT leg has no column, its verdicts live in each round's note.
+      Legend: A = ACCEPT · m = minor revisions · M = major revisions · R = REJECT · — = not swept that round. GPT column frozen since 2026-07-16 (OpenAI/Codex paused by standing directive N — never faked); the Claude INT leg has no column, its verdicts live in each round&apos;s note.
     </p>
     <svg
       viewBox={`0 0 ${width} ${height}`}
@@ -953,8 +953,8 @@ export function VerdictSeverityTrend() {
 
 // Per-paper readiness — sourced directly from papers.ts (the canonical static
 // mirror of Convex readinessComputed) so this strip can never drift the way the
-// old hardcoded 2026-07-15 snapshot did. All six papers remain IN REVISION;
-// automated verdict labels inform the record but are not journal acceptance.
+// old hardcoded 2026-07-15 snapshot did. These six retained package records
+// preserve evidence readiness; portfolio role and journal state are separate.
 const READINESS_BY_SLUG: Record<PaperId, string> = {
   P1A: "paper-1a",
   P1B: "paper-1b",

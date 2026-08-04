@@ -182,12 +182,12 @@ export default async function HomePage() {
           Was there a bounce before the Big Bang?
         </h1>
         <p className="subtitle">
-          This is an open, falsifiable research program asking one question: can a
-          nonsingular <strong>Big Bounce</strong> cosmology — a universe that
-          contracted and rebounded rather than began at a singularity — beat the
-          standard <strong>ΛCDM + inflation</strong> picture? We attack it from
-          both ends: deriving where a bounce could leave a fingerprint, then
-          mining tens of millions of archival survey sources to look for it.
+          This is an open research program testing what a nonsingular
+          <strong> Big Bounce</strong> cosmology can actually predict and what
+          archival survey data can independently establish. The theory,
+          spectral-anomaly, and galaxy-chirality programs share tools and
+          motivation, but the survey catalogs are not presented as detections of
+          a bounce.
         </p>
         <p
           style={{

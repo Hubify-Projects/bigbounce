@@ -54,7 +54,7 @@ const events: Array<{
   {
     time:"~1 Gyr",
     label:"First Galaxies",
-    desc:"Galaxies form from bounce-era perturbations. Our 195K DESI anomalies trace structure at z > 2.",
+    desc:"Galaxies form from primordial perturbations. BigBounce's historical DESI pipeline records are unreconciled and do not establish a high-redshift population or a bounce connection; the anomaly flagship is being rebuilt.",
     color:"#9c927e",
   },
   {
@@ -66,13 +66,13 @@ const events: Array<{
   {
     time:"13.8 Gyr",
     label:"NOW (2026)",
-    desc:"BigBounce research program: 6 papers, an autoencoder anomaly-detection pipeline over millions of archival sources (Paper 3 recovers 181 public DESI DR1 TARGETIDs from a frozen historical list — an archive-recovery product, not a detection claim), ~309K frozen MCMC samples, an 8.47M-galaxy chirality catalog. 180+ recorded adversarial review waves run; all six papers are at 95% publication readiness (directive P) pending Houston's final per-paper review; endorsement/submission and independent human review are the separate Publishing phase.",
+    desc:"BigBounce is organized around three research programs. The retained evidence library contains six exact candidate packages at 95% evidence readiness; the selected endpoint is six standalone works plus P3 as a supporting public-ID recovery release. The DESI anomaly flagship is being rebuilt, and final author review remains separate from endorsement, submission, and independent peer review.",
     color:"var(--text-secondary)",
   },
   {
     time:"2028",
     label:"SPHEREx Launch",
-    desc:"NASA's SPHEREx will measure f_NL to σ ≈ 0.7–1.0. If f_NL ≈ -2.1875: bounce confirmed at >4σ.",
+    desc:"SPHEREx is a relevant future probe of primordial non-Gaussianity. Whether the paper's conditional f_NL = −35/16 result maps to a survey-level test depends on the stated bounce-transmission and covariance assumptions; it would not by itself prove a unique bounce origin.",
     color:"var(--text-secondary)",
   },
   {

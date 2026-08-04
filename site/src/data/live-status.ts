@@ -46,7 +46,7 @@ export const liveStatus: LiveStatus = {
   headline:
     "Candidate-package evidence is recorded at 95% under Directive P. The portfolio is organized around three research programs; this score records evidence, packaging, and review disposition, not a decision to submit every package.",
   summary:
-    "All six exact source packages and journal portal kits remain available as versioned evidence. P3 is technical provenance support while its discovery-focused flagship is rebuilt, and P5 remains an editorial decision rather than an automatically independent submission.",
+    "The exact candidate packages remain available as versioned evidence. P3 is the supporting DESI public-ID recovery release while its discovery-focused flagship is rebuilt; P5 is the selected standalone AJ chirality–environment companion.",
   currentlyRunning: [
     "Deterministic preflight, clean-room package compiles, link checks, mirror checks, and all-page visual audits pass; bounded reviewer confirmation remains version-specific.",
     "Houston's final review applies only after a program-level scientific and editorial decision; it is not implied by an automated review result.",
@@ -54,9 +54,9 @@ export const liveStatus: LiveStatus = {
   ],
   needsHouston: [
     {
-      title: "Program-level editorial decisions",
-      why: "The anomaly flagship must be rebuilt, P3 needs a standalone/support role decision, and P5 needs an explicit companion or defer decision.",
-      ask: "Choose the scientific role for each program before treating any candidate package as a submission target.",
+      title: "Final visual and scientific review",
+      why: "The portfolio roles are approved, but Houston's manuscript-by-manuscript sign-off remains the final five-point gate.",
+      ask: "Review the selected standalone manuscripts in journal order and record approve, revise, or defer for each.",
     },
     {
       title: "arXiv endorsement and submission",
@@ -95,7 +95,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "DESI anomaly-list recovery",
       version: "v3.2.0-r17",
       readiness: 95,
-      pendingWork: "Exact r17 bounded confirmation and Houston's visual review remain; denominator, deduplication-order, checkpoint-digest, and viewer-binding defects are closed in the served candidate.",
+      pendingWork: "Exact r17 bounded confirmation and integration review remain; the served package is supporting provenance for the anomaly flagship, not a standalone submission.",
     },
     {
       slug: "paper-4",

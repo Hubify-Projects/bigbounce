@@ -80,7 +80,7 @@ export default async function PaperPage() {
                 <Card key={paper.slug} className="index-card overflow-hidden">
                   <CardHeader className="pb-3">
                     <CardDescription className="text-xs uppercase tracking-wider">
-                      {paper.slug === program.leadSlug ? "Lead result" : "Supporting output"} &middot; {paper.number} &middot; {paper.version}
+                      {paper.publicationRole} &middot; {paper.number} &middot; {paper.version}
                     </CardDescription>
                     <CardTitle className="mt-1 text-base break-words" style={{ fontFamily: "var(--font-mono-stack)" }}>
                       <MathText>{paper.title}</MathText>

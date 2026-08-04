@@ -79,7 +79,7 @@ export default async function ReviewsPage() {
       >
         This feed preserves internal and external automated-review rounds, raw evidence,
         per-finding truth audits, and subsequent closures. It is a review history, not a
-        journal decision. <strong>Current status: all six papers remain IN REVISION.</strong>{" "}
+        journal decision. <strong>Current status: six candidate packages retain their review evidence; five are selected standalone manuscripts, P3 is an integrated support release, and the rebuilt anomaly flagship is new work.</strong>{" "}
         The canonical readiness caps are P1A {cap("paper-1a")}, P1B {cap("paper-1b")},
         P2 {cap("paper-2")}, P3 {cap("paper-3")}, P4 {cap("paper-4")}, and P5{" "}
         {cap("paper-5")} (average {avgCap}%). Automated ACCEPT labels are retained exactly
@@ -155,7 +155,7 @@ export default async function ReviewsPage() {
               <h3 className="progress-block-title">Internal/external gap — findings only the external tier caught</h3>
               <p className="progress-block-sub">
                 Substantive externally-caught findings that survived the internal rounds. The
-                unverified mid-2026 sweeps reported the gap "closed to zero" — but the 2026-07
+                unverified mid-2026 sweeps reported the gap &ldquo;closed to zero&rdquo; — but the 2026-07
                 verified board (with ChatGPT restored and raw text captured) caught genuinely-new
                 real items those sweeps had missed: a fabricated P2 derivation and a P1B dimensional
                 bug. Both were truth-audited and corrected. The lesson is procedural: full-context,
@@ -224,7 +224,7 @@ export default async function ReviewsPage() {
         </p>
         <ul className="campaign-obs-list">
           <li>
-            <strong>Run-to-run variance is the headline:</strong> the <em>same</em> papers swung MINOR-dominant (Round B EXT) → MAJOR-dominant (Round C EXT) while getting slightly <em>better</em>, not worse — frontier fast-tier referees carry large run-to-run noise, so any single sweep's verdict tally is not a stable quality signal.
+            <strong>Run-to-run variance is the headline:</strong> the <em>same</em> papers swung MINOR-dominant (Round B EXT) → MAJOR-dominant (Round C EXT) while getting slightly <em>better</em>, not worse — frontier fast-tier referees carry large run-to-run noise, so any single sweep&apos;s verdict tally is not a stable quality signal.
           </li>
           <li>
             <strong>Grok — harsh outlier (pattern-064):</strong> its REJECT/MAJOR verdicts truth-audit as false positives (future-date FPs, companion-reliance, disclosed-caveat-as-defect); it softened to MINOR on several papers after the round fixes landed.
@@ -233,7 +233,7 @@ export default async function ReviewsPage() {
             <strong>Gemini — highest automated ACCEPT-label count:</strong> returned ACCEPT labels for P1A at Round A and P5 at Round C, but also swung to MAJOR on later runs. These are model outputs, not journal decisions.
           </li>
           <li>
-            <strong>ChatGPT — caught real items + re-flags:</strong> surfaced a genuine P4 self-favoring overstatement (the abstract's "robust across the full confidence-cut sweep") which was corrected, alongside re-flags of already-disclosed caveats.
+            <strong>ChatGPT — caught real items + re-flags:</strong> surfaced a genuine P4 self-favoring overstatement (the abstract&apos;s &ldquo;robust across the full confidence-cut sweep&rdquo;) which was corrected, alongside re-flags of already-disclosed caveats.
           </li>
           <li>
             <strong>Recurring auto-falsified noise:</strong> future-date false-positives (June 2026 is the current date), PDF-raster math-extraction artifacts, an OpenAI leg <em>hallucinating</em> P1B robustness numbers that do not exist in the source, and the Zenodo DOI deferred-to-submission (normal pre-submission, not a defect).
@@ -273,7 +273,7 @@ export default async function ReviewsPage() {
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Canonical readiness</td>
-                <td className="eta-td">Evidence-capped average {avgCap}%: P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")}. All six remain IN REVISION; no automated score converts into journal acceptance.</td>
+                <td className="eta-td">Evidence-capped average {avgCap}% across six retained artifact records: P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")}. Five are selected standalone manuscripts; P3 is integrated support for the rebuilt anomaly flagship. No automated score converts into journal acceptance.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Remaining before 100%</td>

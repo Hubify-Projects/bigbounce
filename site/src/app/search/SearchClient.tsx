@@ -104,7 +104,7 @@ const CONTRIBUTIONS: SearchItem[] = [
   {
     category: "Equation",
     title: "f_NL_local = -35/16 = -2.1875 (matter bounce)",
-    blurb: "Closed-form, parameter-free local non-Gaussianity from matter-dominated contraction.",
+    blurb: "Closed-form local non-Gaussianity for P2's stated matter-contraction assumptions.",
     href: "/contributions#matter-bounce-fnl",
   },
   {

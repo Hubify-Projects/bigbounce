@@ -408,7 +408,7 @@ export default async function StatusPage() {
                   </TableCell>
                   <TableCell>Matter bounce</TableCell>
                   <TableCell className="font-mono">
-                    f<sub>NL</sub> = -35/16 (parameter-free)
+                    f<sub>NL</sub> = -35/16 (stated P2 assumptions)
                   </TableCell>
                   <TableCell>
                     <Badge variant="secondary">P2 lead result</Badge>

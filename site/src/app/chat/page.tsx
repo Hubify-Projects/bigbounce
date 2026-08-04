@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Astro Chat",
@@ -17,7 +18,7 @@ export default function ChatPage() {
           astro
         </h1>
         <p className="subtitle">
-          Ask anything about spin-torsion cosmology, the 6-paper portfolio,
+          Ask anything about spin-torsion cosmology, the three research programs,
           MCMC verification, anomaly surveys, the chirality catalog, or the
           14 structural barriers. Astro grounds answers in the published research.
         </p>
@@ -43,9 +44,9 @@ export default function ChatPage() {
           The chat backend is not deployed with this static release. Every
           answer Astro would give is grounded in the published materials, which
           are all here: start with the{" "}
-          <a href="/explained">plain-language explainer</a>, the{" "}
-          <a href="/papers">six papers</a>, or the{" "}
-          <a href="/reviews">open review record</a>. Questions are welcome at{" "}
+          <Link href="/explained">plain-language explainer</Link>, the{" "}
+          <Link href="/paper">research programs and evidence library</Link>, or the{" "}
+          <Link href="/reviews">open review record</Link>. Questions are welcome at{" "}
           <a href="mailto:houston@hubify.com">houston@hubify.com</a>.
         </p>
       </div>

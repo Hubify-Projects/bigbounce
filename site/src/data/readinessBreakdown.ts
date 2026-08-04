@@ -37,8 +37,8 @@ export interface PaperBreakdown {
 
 export const readinessBreakdownNote =
   "Directive P (2026-07-23): publication readiness = the five gates below only. " +
-  "No gate on any paper needs new math, compute, GPU/CPU runs, or data — the " +
-  "four agent gates are complete on all six papers, so every paper sits at 95%. " +
+  "The four recorded agent gates are complete on all six retained candidate packages, so each evidence record sits at 95%. " +
+  "That historical package score does not select a scientific flagship or erase newly identified portfolio work: P3 is now an integrated support release and the DESI anomaly flagship must be rebuilt. " +
   "The last 5% is Houston's final personal review, per paper: mark it good and " +
   "that paper is 100% ready and moves to the Publishing phase (endorsement → " +
   "submission → journal/human review), which is tracked below but never " +
@@ -66,7 +66,7 @@ function gates(convergenceNote: string): ReadinessGate[] {
 
 export const publishingPhase: PublishingStep[] = [
   { step: "arXiv endorsement", owner: "houston", status: "Codes issued + emailed 2026-07-22 (gr-qc HYEJ7S; astro-ph.IM L8TIPN; astro-ph.CO LRZHC4; astro-ph.GA CLVMAQ). One qualified endorser clears the astro-ph trio; shortlist verified on /publish." },
-  { step: "Submission clicks", owner: "houston", status: "Wave 1 (P1B → P1A → P3), wave 2 (P2 + P4), then P5 after the automatic Paper-IV back-patch. Draft 7859751 parked at Start, ready." },
+  { step: "Submission clicks", owner: "houston", status: "Selected manuscript order: P2 → P1A → P4 → P1B → P5 after final author approval and venue-specific checks. P3 remains attached support for the rebuilt anomaly flagship, not a standalone submission." },
   { step: "P5 Paper-IV back-patch", owner: "agent", status: "Automatic the moment P4 has an arXiv ID." },
   { step: "Journal / independent human review", owner: "external", status: "Begins when the papers are public — it is what publishing buys, not a precondition for it." },
 ];

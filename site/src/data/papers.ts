@@ -13,6 +13,10 @@ export interface PublicationStage {
 export interface Paper {
   slug: string;
   number: string;
+  /** Editorial role in the approved question-first publication portfolio. */
+  publicationRole: string;
+  /** Whether this artifact is currently selected for its own submission. */
+  standaloneSubmission: boolean;
   title: string;
   version: string;
   /** ISO 8601 date of the paper's last substantive update — set per-paper, NOT a uniform "today" stamp. */
@@ -103,7 +107,7 @@ export const researchPrograms: ResearchProgram[] = [
       "The result is not a physical primordial-parity constraint; morphology transfer and systematics remain open.",
     leadSlug: "paper-4",
     supportSlugs: ["paper-5"],
-    status: "Primary catalog result with an exploratory environment companion awaiting an editorial decision.",
+    status: "Primary catalog result with a distinct standalone AJ environment companion.",
   },
 ];
 
@@ -147,6 +151,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-1a",
     number: "1",
+    publicationRole: "Focused Theory Note · ECH Boundary Result",
+    standaloneSubmission: true,
     title: "Algebraic Cartan Elimination in Minimal Einstein–Cartan–Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches",
     version: "v1A.0.127",
     lastUpdated: "2026-08-03",
@@ -206,6 +212,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-1b",
     number: "1B",
+    publicationRole: "Research Software · Exact-Window Verification",
+    standaloneSubmission: true,
     title: "namaster-proof: Exact pseudo-Cℓ Window Inference and Tamper-Evident Provenance for Reproducible Spin-2 Analyses",
     version: "v2B.0.16",
     lastUpdated: "2026-08-03",
@@ -273,6 +281,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-2",
     number: "2",
+    publicationRole: "Lead Theory Paper · Matter-Contraction Non-Gaussianity",
+    standaloneSubmission: true,
     title: "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping",
     version: "v1.7.130",
     lastUpdated: "2026-08-03",
@@ -338,6 +348,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-3",
     number: "3",
+    publicationRole: "Supporting Data Release · DESI Public-ID Recovery",
+    standaloneSubmission: false,
     title: "Public-ID Recovery for a Historical DESI DR1 Anomaly List: 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations",
     version: "v3.2.0-r17",
     lastUpdated: "2026-08-03",
@@ -347,7 +359,7 @@ export const papers: Paper[] = [
     refs: "12",
     readiness: 95,
     statusVariant: "amber",
-    target: "ApJS",
+    target: "Integrated supporting release for the rebuilt DESI anomaly flagship",
     description: "A focused, reproducible public-ID recovery of a frozen historical DESI anomaly list. The declared 1-arcsec positional join yields 181 warning-free global-primary DESI DR1 associations: 170 at or below 0.1 arcsec and 11 lower-confidence associations between 0.1 and 1 arcsec. The sub-0.1-arcsec core is expected seed self-recovery — the cluster centroid equals the seed DESI member's own coordinates by construction, verified end-to-end rather than an independent association test. The aggregate annular shift comparison is descriptive, not a conditional false-association null or purity estimate. The release carries exact source-row provenance, explicit quality tiers, warned-row auxiliary data, checksums, and a clean-checkout validator while declining physical classification, purity, novelty, and anomaly-rate claims unsupported by the surviving historical lineage.",
     keyResults: [
       "181 unique warning-free global-primary DESI DR1 TARGETIDs, partitioned exactly into 170 core and 11 lower-confidence positional associations",
@@ -368,9 +380,9 @@ export const papers: Paper[] = [
     figures: ["Selection waterfall", "Separation distribution", "Shift-control radius curves", "Catalog sky distribution"],
     remainingWork: [
       "Run bounded confirmation against the exact v3.2.0-r17 PDF after the denominator, deduplication-specification, checkpoint-digest, and viewer-binding closures",
-      "Human ApJS/editorial review and submission decision; automated ACCEPT is not journal acceptance",
-      "AAS journal digital-asset DOI: the Zenodo archival DOI is now published and embedded (v3.2.0-r11, 10.5281/zenodo.21461888); the distinct AAS journal digital-asset DOI remains an honestly open, journal-assigned gate",
-      "Rebuild and validate the submission tarball at the current version before any author-controlled submission",
+      "Bind this release and its immutable archive lineage into the rebuilt anomaly flagship; it is not selected for a standalone journal submission",
+      "Reconcile the published Zenodo lineage (10.5281/zenodo.21461888) with the rebuilt flagship's archive; any future journal data DOI belongs to that integrated release path",
+      "Revalidate the source/data bundle when it is incorporated into the rebuilt flagship; no standalone P3 portal submission is planned",
       "Object-level physical interpretation and any representative-control performance study remain separate new-science work",
     ],
     preprintId: "HUBIFY-2026-003",
@@ -402,6 +414,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-4",
     number: "4",
+    publicationRole: "Lead Catalog Paper · Observed-Label Chirality Null",
+    standaloneSubmission: true,
     title: "An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
     version: "v1.0.274",
     lastUpdated: "2026-08-03",
@@ -486,6 +500,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-5",
     number: "5",
+    publicationRole: "Standalone Companion · Chirality–Environment Null Test",
+    standaloneSubmission: true,
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Catalog-Native Void Non-Detection with Secondary Cosmic-Web Cross-Checks",
     version: "v0.1.147-2026-08-03",
     lastUpdated: "2026-08-03",

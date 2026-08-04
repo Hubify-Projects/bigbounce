@@ -98,13 +98,13 @@ const contributions: Contribution[] = [
     paper: "Paper 2",
     oneLine:
       "First comprehensive forecast for testing Cai et al.'s matter-bounce non-Gaussianity prediction with upcoming surveys.",
-    why: "Makes the bounce hypothesis testable. Cai et al. derived the matter-bounce f_NL in 2009 (the corrected squeezed value is −35/16 = −2.1875) but nobody built the full machinery to test it. We did: SPHEREx sensitivity, Bayesian model comparison, template mismatch quantification, robustness against systematics. SPHEREx data (~2028) will confirm or kill this at ~5σ.",
-    what: "Parameter-free local non-Gaussianity from matter-dominated contraction: 300× larger than standard inflation, opposite sign. Forecast: σ(f_NL) = 0.7 (Heinrich+2023 multi-tracer Fisher); 3-5σ after systematic budget; 5.2-5.5σ optimistic pre-GR/b_φ degradation; 4.4σ at MegaMapper even at the worst convention.",
+    why: "Makes a specific matter-contraction calculation inspectable and potentially testable. P2 rederives the squeezed value −35/16 and states the bounce-transmission and survey-mapping assumptions that must hold before it becomes an observational test.",
+    what: "A convention-pinned local non-Gaussian amplitude for the stated matter-contraction setup, paired with conditional sensitivity studies. The survey numbers are forecasting diagnostics, not a detection or a unique proof of a bounce.",
     equation: "f_NL^{local} = -35/16 = -2.1875",
     prior:
       "Cai, Xue, Brandenberger & Zhang (2009); Heinrich, Doré & Krause (2023); Dalal et al. (2008); Li & Brandenberger (2014).",
     ours:
-      "First combination of (a) SPHEREx + MegaMapper sensitivity specific to bounce; (b) Bayesian model comparison with 600K+ MC realizations (bounce favored at 8-17:1 over tuned multifield); (c) GR-projection robustness; (d) template-mismatch (r ≈ 0.85-0.90); (e) ε-correction bounded [1-8%]; (f) cubic bounce transmission estimate; (g) Li-Brandenberger convention resolution.",
+      "A reproducible derivation plus explicit accounting of convention, template, transmission, projection, and survey-covariance boundaries. Novelty and venue significance remain for independent review.",
     verify: [
       {
         label: "research/bayesian_discrimination_program/",
@@ -253,12 +253,12 @@ const contributions: Contribution[] = [
   {
     id: "mcmc-verification",
     tier: "N2",
-    title: "MCMC Verification Infrastructure (309,189 frozen samples)",
-    paper: "Paper 1B",
+    title: "Archived MCMC Verification Infrastructure",
+    paper: "Program archive · not P1B's publication role",
     oneLine:
-      "309,189 frozen posterior samples across 2 converged dataset combinations (third accumulating). Honest null: ΔN_eff ≈ 0, H₀ = 67.68 (standard ΛCDM); DESI DR2 w0wa chain gives w_pivot = −0.952 ± 0.019 (+2.5σ from −1, twice-verified).",
+      "Frozen posterior records document earlier verification work. They are retained for provenance and are not a current lead result; P1B is namaster-proof research software.",
     what:
-      "Cobaya 3.6.1 + CAMB. Frozen combinations: 176,240 full-tension + 132,949 Planck+BAO+SN, Gelman-Rubin converged. A separate DESI DR2 BAO + Planck NPIPE + DES-Y5 + Pantheon+ w0wa chain reports w_pivot at the decorrelated pivot. Corrected our own earlier artifact (H₀ = 69.2 was a SH0ES prior artifact).",
+      "Cobaya/CAMB chain artifacts and diagnostics are preserved as historical research records. Their prior publication assignment and headline interpretations are superseded by the approved portfolio map.",
     why: "Demonstrates honest negative reporting — we found our own bug and disclosed it.",
     verify: [
       {
@@ -270,16 +270,16 @@ const contributions: Contribution[] = [
   {
     id: "pta-bounce",
     tier: "N2",
-    title: "NANOGrav Bounce GW Spectrum",
-    paper: "Paper 3, §6",
+    title: "Archived NANOGrav Slope Comparison",
+    paper: "Legacy program record · not current P3",
     oneLine:
-      "NANOGrav 15-yr real-KDE free-spectrum re-fit: γ = 2.567 ± 0.382. Matter-bounce γ = 3.0 consistent at +1.13σ; SMBHB γ = 4.33 excluded at +4.61σ.",
+      "A simplified historical power-law slope comparison is preserved for reproducibility; it does not identify a bounce origin or exclude complete astrophysical alternatives.",
     what:
-      "Real free-spectrum KDE likelihood (Zenodo chains, emcee re-fit; ESS = 5,507) replacing the earlier synthetic-power-law summary statistic γ = 3.20 ± 0.42. Savage-Dickey Bayes factor decisively favors the bounce slope over the SMBHB slope.",
+      "The archived computation uses a public summary likelihood and a simplified slope family. It is not part of the selected lead claims and would require a preregistered, multi-model physical analysis to revisit.",
     why:
-      "The PTA spectral slope is one of the few currently-measured observables that discriminates bounce-era tensor spectra from astrophysical SMBHB backgrounds.",
+      "It records an exploratory model-comparison path and, more importantly, the boundary that a single fitted slope cannot determine physical origin.",
     equation:
-      "γ_bounce = 3.0 (+1.13σ consistent)  ·  γ_obs = 2.567 ± 0.382  ·  γ_SMBHB = 4.33 (+4.61σ excluded)",
+      "Archived simplified comparison only · no bounce detection · no complete-source exclusion",
   },
   {
     id: "namaster-validation-suite",
@@ -315,7 +315,7 @@ const contributions: Contribution[] = [
     oneLine:
       "All 12 load-bearing compute closures (fsky sweeps, continuous-prior MCMC, permutation rebuilds, sign-symmetry reruns) executed on a dedicated pod with committed scripts + JSON artifacts, for ~$0.55 total.",
     what:
-      "Each job ships its driver script, inputs, seeds, and output artifact in-repo; results are stamped into the papers via the \\artifact{} macro pointing at immutable release tags. The chain covers P1B (fsky sweep, Caγ continuous-prior MCMC, c9f sign-symmetry), P4 (10k-permutation Table III rebuild, harmonic completeness injections), and P5 (closure-recompute scripts 17–19).",
+      "Each archived job ships its driver, inputs, seeds, and output artifact. Earlier P1B/MCMC assignments are superseded; the current P1B contribution is namaster-proof. P4/P5 receipts remain supporting reproducibility evidence for their scoped claims.",
     why:
       "A reviewer can rerun any headline number from the committed chain — reproducibility as an artifact, not a promise.",
     verify: [
@@ -328,17 +328,17 @@ const contributions: Contribution[] = [
   {
     id: "bigae-anomaly-detector",
     tier: "N2",
-    title: "BigAE Multi-Survey Autoencoder Anomaly Detector",
-    paper: "Paper 3",
+    title: "Archived BigAE Multi-Survey Pipeline",
+    paper: "Legacy anomaly work · not current P3",
     oneLine:
-      "A deterministic symmetric autoencoder trained per-survey on native data, scoring 269,317 objects across 6 surveys by reconstruction residual — the largest-by-sources autoencoder anomaly search assembled for cosmological-anomaly discovery.",
-    why: "Turns 'anomaly' from a hand-tuned cut into a learned, survey-native reconstruction score, so one pipeline scales across heterogeneous surveys and every headline count is reproducible from committed scripts rather than a promise.",
+      "Historical autoencoder pipeline artifacts are preserved, but their cross-survey counts and validation claims are not the current anomaly flagship and are not acceptance targets for the clean DESI rerun.",
+    why: "The archive records useful lessons about domain shift, native retraining, and provenance. Its scientific claims must be regenerated under the new fail-closed model/input/scaler contract.",
     what:
-      "Per-survey NATIVE retrains (the cross-transfer failure mode — a LAMOST-trained model drifts to an ~98% blue-excess artifact on other surveys — forced a native-retrain protocol); standardized reconstruction-residual score S. Validated not by injection-recovery but by a 5-fold cross-validation robustness gate (mean pairwise Jaccard 0.862) plus an out-of-distribution Jaccard gate — a validation methodology for UNSUPERVISED anomaly catalogs. UMAP of the latent space shows the high-score anomalies concentrate in distinct islands rather than scattering.",
+      "Legacy per-survey retrains exposed severe cross-transfer domain shift. The new flagship must regenerate the DESI sample with immutable inputs, the hash-bound model, a sealed scaler, shard receipts, deterministic deduplication, and independent candidate validation.",
     prior:
       "Autoencoder outlier detection (Baron & Poznanski 2017); single-survey spectral anomaly searches.",
     ours:
-      "No prior work combined per-survey-native autoencoder retrains into a single 6-survey reconstruction-scored anomaly catalog at this scale, with a cross-validation/OOD validation gate replacing injection-recovery for an unsupervised search. Model + catalog released open-source.",
+      "No current novelty claim is assigned to the unreconciled multi-survey catalog. The reusable contribution is the preserved failure analysis and the clean-rerun contract now governing the rebuild.",
     verify: [
       {
         label: "6-way dedup artifact (EXACT-MATCH)",
@@ -551,28 +551,27 @@ export default function ContributionsPage() {
           className="eyebrow"
           style={{ marginBottom: 8 }}
         >
-          How the six papers fit together
+          How the research outputs fit together
         </p>
         <p style={{ marginTop: 0, fontSize: 14, lineHeight: 1.7, maxWidth: "64ch" }}>
-          One program, two halves. The <strong>theory arm</strong> (P1A, P1B, P2)
-          asks where a nonsingular Einstein–Cartan–Holst bounce could leave a
-          falsifiable fingerprint, proves the bounce mechanism itself is invisible
-          to telescopes, closes the enumerated dark-energy routes, and isolates the
-          one surviving handle — a parameter-free matter-bounce non-Gaussianity
-          SPHEREx can test. The <strong>data arm</strong> (P3, P4, P5) mines 45M+
-          archival sources for the parity- and anomaly-level signatures any bounce
-          would have to imprint, and reports honest nulls with quantified
-          falsification windows. Negative theory results narrowed the search space;
-          the surveys then went looking exactly where the theory said to look.
+          The portfolio now follows <strong>three scientific questions</strong>,
+          not a fixed paper count. Bounce theory contains the lead P2 calculation,
+          a focused P1A boundary Note, and P1B verification software. DESI anomaly
+          discovery is being rebuilt as a science-first flagship, with the current
+          P3 retained as its public-ID provenance release. Galaxy chirality contains
+          the lead P4 observed-label catalog/null result and the distinct P5
+          chirality–environment companion. These programs share methods and data,
+          but they do not constitute a single evidentiary chain from bounce theory
+          to a claimed survey detection.
         </p>
         <div style={{ display: "grid", gap: 0, marginTop: 16 }}>
           {[
-            { n: "P1A", role: "ECH theory + no-go: perturbation-transparency theorem and a 14-constraint channel-level closure of the four minimal bounce→dark-energy routes." },
-            { n: "P1B", role: "MCMC + pipeline companion: frozen ΛCDM+ΔN_eff chains (honest null), NaMaster recovery, and an ALP-birefringence consistency check." },
-            { n: "P2", role: "f_NL = −35/16 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
-            { n: "P3", role: "Public-ID archive recovery: 181 DESI DR1 TARGETIDs recovered from a frozen historical anomaly list (170 high-coordinate-consistency core + 11 lower-confidence) — a reproducible provenance product, explicitly not a purity, novelty, or detection claim." },
-            { n: "P4", role: "Galaxy chirality null: 8.47M classified galaxies, a null +0.41σ real-space dipole, refuting the claimed ~3% parity signal at scale." },
-            { n: "P5", role: "DESI chirality × environment null: spiral handedness is independent of cosmic-web environment, constraining environment-coupled parity models." },
+            { n: "P1A", role: "Focused theory Note: derives the minimal ECH contact term and identifies the zero-spin scalar branch boundary under stated assumptions." },
+            { n: "P1B", role: "Research software: exact pseudo-Cℓ window inference and tamper-evident provenance for reproducible spin-2 analyses; it makes no cosmological detection claim." },
+            { n: "P2", role: "Lead theory paper: rederives f_NL^local = −35/16 for the stated matter-contraction setup and makes its bounce-transmission and survey-mapping conditions explicit." },
+            { n: "P3", role: "Supporting data release: recovers 181 DESI DR1 TARGETIDs from a frozen historical list. It is provenance support for the rebuilt anomaly flagship, not a replacement discovery paper." },
+            { n: "P4", role: "Lead catalog paper: releases 8.47M observed chirality labels and reports a declared primary dipole statistic consistent with zero, without converting it into a physical primordial-parity constraint." },
+            { n: "P5", role: "Standalone AJ companion: tests a distinct catalog-native void/non-void classifier-label contrast and finds no detected difference; it does not establish physical environment independence." },
           ].map((p, i) => (
             <div
               key={p.n}
@@ -600,11 +599,11 @@ export default function ContributionsPage() {
           ))}
         </div>
         <p style={{ marginTop: 12, fontSize: 12.5, lineHeight: 1.6, color: "var(--text-muted)" }}>
-          Program arc: P1A (ECH theory / no-go) → P1B (MCMC + pipeline companion) →
-          P2 (f_NL forecast) → P3 (anomaly catalog) + P4 (chirality null) +
-          P5 (DESI chirality × environment). See the{" "}
+          Approved endpoint: six standalone works across the three programs, plus
+          P3 as a supporting data release integrated with the rebuilt anomaly
+          flagship. See the{" "}
           <Link href="/paper" style={{ color: "var(--accent)" }}>
-            six papers
+            research programs and evidence library
           </Link>{" "}
           for full status and PDFs.
         </p>
