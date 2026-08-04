@@ -58,11 +58,15 @@
     on the next re-stage%
   \fi}
 \makeatother
-\newcommand{\paperTimestamp}{August 3, 2026, 22:22 PDT}
-% v3.2.0-r16 (2026-08-03 — exact-final Gemini wording closure; no science,
-% abstract, catalog, figure, or numerical change): replaces a ranked association
-% phrase in the warned-versus-accepted descriptive comparison with wording bound
-% only to the displayed medians and interquartile ranges.
+\newcommand{\paperTimestamp}{August 3, 2026, 22:36 PDT}
+% v3.2.0-r16 (2026-08-03 — exact-final evidence closure; no catalog-membership
+% change): replaces a ranked association phrase in the warned-versus-accepted
+% comparison with wording bound only to the displayed summaries; withdraws the
+% unsupported claim that core-seed nearest-neighbor slot consumption explains the
+% 11-versus-75.56 annular deficit; reports the exact core-conditioned rescan and
+% treats the aggregate shift comparison as descriptive rather than a conditional
+% false-association null; and narrows the viewer-capture claim to the 18 of 20
+% tracked PNGs that visibly contain both a rendered spectrum and coordinate marker.
 % v3.2.0-r15 (2026-08-03 — ApJS portal-package closure; no science, abstract,
 % catalog, figure, or numerical change): adds the AAS-required line-number
 % option, a <=44-character running title, the author's verified ORCID, and an
@@ -129,10 +133,10 @@
 %   claim to the truthful convention — the archived record pins the reviewed v3.2.0-r10 bytes
 %   exactly, v3.2.0-r11 is one patch ahead and will be added to the same concept record on the
 %   next re-stage; concept-DOI parenthetical now reads "presently resolves to...v3.2.0-r10".
-%   (2) "chance-compatible" mislabel: the 11-observed-vs-75.56-predicted 0.1-1" annulus rows are
-%   now stated as the large deficit they are (not chance-compatible), explained by the
-%   already-in-paper core self-recovery slot-consumption mechanism — no fiber-collision/dedup
-%   claim invented, per audit instruction. (3) Version-tag key footnote (Sec 2) completed to
+%   (2) "chance-compatible" mislabel: the 11-observed-vs-75.56-predicted 0.1-1" annulus rows were
+%   restated as a deficit. The causal slot-consumption explanation added in that round was later
+%   falsified by the exact r16 core-conditioned rescan and is withdrawn in the present version;
+%   no replacement mechanism is asserted. (3) Version-tag key footnote (Sec 2) completed to
 %   enumerate the intermediate r1/r3/r4/r6/r10 checkpoint tags used in the body. Gemini's two
 %   remaining MAJORs (astrophysical context, spectra plots) dispositioned SCOPE-VENUE-OPINION
 %   against this deliberately-scoped ID-recovery/provenance paper; Gemini's forward-date/Apple-M5
@@ -158,26 +162,26 @@
 \date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
-We recover public identifiers for a frozen historical DESI anomaly list whose legacy
-identifiers mixed public-looking values with internal hashes.  The primary deliverable is
-reusable, memory-bounded join and provenance/validation machinery; the 181-row catalog is its
-first instance.  The immutable clustering and BigAE lineage are documented; the unavailable
-production normalization and physical-feature sensitivity are not.  Streaming all 28,425,963
+We recover public identifiers for a frozen historical DESI anomaly list with mixed legacy
+identifiers.  The deliverable is reusable, memory-bounded join and provenance machinery with a
+181-row catalog.  The immutable clustering and BigAE lineage are documented; production
+normalization and physical-feature sensitivity are unavailable.  Streaming all 28,425,963
 rows of the DESI Data Release 1 (DR1) redshift catalog in 200,000-row chunks against a $k$-d
 tree of 190,015 clusters, a predeclared $1\arcsec$ match to a main-survey row with one of five
 \texttt{DESI\_TARGET} bits reproduces exactly 20,299,155 eligible DESI rows and 2,468 matches.
 Requiring the global primary redshift row leaves 2,448; requiring \texttt{ZWARN}=0 leaves 181
-unique public \texttt{TARGETID} associations, forming the \releaseVersion{} release audited in
-this \paperVersion{} manuscript: 170 high-coordinate-consistency core associations at or below
+unique public \texttt{TARGETID} associations: 170 high-coordinate-consistency core associations at or below
 $0.1\arcsec$ and 11 lower-confidence associations between $0.1\arcsec$ and $1\arcsec$.  Neither
 tier is a secure object-identity or purity claim.  Sixteen deterministic 60--120$\arcsec$ local
 shifts yield $86.7\pm14.4$ parent and $76.2\pm13.3$ warning-free-primary associations within
 $1\arcsec$ (versus 2,468 and 181 observed), and $75.6\pm13.0$ in the $0.1$--$1\arcsec$ annulus
-versus 11 observed, so that tail is not treated as secure candidate-level identity.  The
+versus 11 observed.  Because the observed positions are seed-centered while the controls are
+displaced, these counts are not a conditional false-association null or a purity estimate.  The
 sub-$0.1\arcsec$ excess is the expected self-recovery of the seed DESI members whose coordinates
 define the cluster centroids: it verifies the recovery end-to-end rather than providing
-independent association evidence, and the control is informative only for the
-$0.1$--$1\arcsec$ tail.  These are reproducible follow-up lists, not validated detections or
+independent association evidence.  The positional tail remains lower-confidence because of its
+larger offsets, not because the aggregate annular deficit has an established cause.  These are
+reproducible follow-up lists, not validated detections or
 unbiased samples for anomaly-rate inference.
 \end{abstract}
 
@@ -501,19 +505,22 @@ centroid.  A $60$--$120\arcsec$ shift moves the centroid off its seed member and
 destroys this self-recovery, which is why the shifted sub-$0.1\arcsec$ count collapses to $0.625$.
 The $170$-versus-$0.625$ gap is therefore a successful end-to-end seed self-recovery verification
 of the join --- confirmation that the recovered public identifiers reproduce the coordinates that
-generated the cluster centroids --- not an independent aggregate association excess.  The
-local-shift control is informative only for the $0.1$--$1\arcsec$ tail.  There the 11 observed
-rows fall well below the shifted mean of 75.56 --- a deficit, not an excess.  The shifted
-realizations are correlated local controls rather than an independent Poisson null, but the
-shortfall is large and is a direct corollary of the core self-recovery described below, so the 11
-tail rows do not acquire secure candidate-level identity from positional coincidence alone.  That
-the observed annulus count of 11 falls below the shifted mean is itself a corollary of the core
-self-recovery: each core cluster's nearest-neighbor slot is consumed by its own seed member inside
-$0.1\arcsec$, shielding those clusters from additional matches in the surrounding annulus.  We
-retain and flag the tail for
-auditability rather than subtracting an estimated background or claiming a corrected purity.  The
-shifts are correlated local controls, not an independent Poisson experiment or a
-selection-function model.
+generated the cluster centroids --- not an independent aggregate association excess.
+
+The observed annulus count of 11 is below the shifted mean of 75.56, but those configurations are
+not exchangeable: the observed centers are defined by seed-member coordinates, whereas the shifted
+centers sample displaced sky positions.  An exact core-conditioned rescan of the 18,134,821
+warning-free-primary science-target rows found that none of the 170 core clusters contains an
+additional target in the $0.1$--$1\arcsec$ annulus, that zero annular matches are hidden by assigning
+the seed as the nearest target, and that the same 170-cluster subset yields zero annular matches in
+each of all 16 shifted realizations.  Core-seed nearest-neighbor slot consumption therefore does not
+explain the aggregate 11-versus-75.56 deficit.  Establishing a cause would require a conditional
+null matched to the seed-centered construction and its local environments; this release does not
+provide one.  The exact all-neighbor result is preserved in
+\artifact{pipelines/p3\_anomaly\_engine/outputs/p3\_apjs\_r16\_core\_conditioned\_control.json}.
+We retain the aggregate shift curves as a descriptive coordinate-sensitivity
+diagnostic and flag the 11 larger-offset rows for auditability, without subtracting a background,
+claiming corrected purity, or assigning a causal mechanism to the deficit.
 
 \begin{figure*}
 \centering
@@ -523,10 +530,10 @@ science-bit parent (left) and warning-free global-primary cohort (right).  Shadi
 minimum and maximum shifted count; dashed curves give shifted means.  Logarithmic count axes show
 the sub-$0.1\arcsec$ core, where the large observed count is the expected seed self-recovery of the
 member coordinates that define the cluster centroids (the local shift verifies this recovery rather
-than testing an independent association), alongside the shift-controlled $0.1$--$1\arcsec$ tail,
-where the observed count (11) falls well below the shifted mean (75.6) because each core cluster's
-nearest-neighbor slot is consumed by its own seed inside $0.1\arcsec$; the tail is therefore not
-treated as secure candidate identity.
+than testing an independent association), alongside the descriptive $0.1$--$1\arcsec$ annular
+comparison.  The observed count (11) is below the shifted mean (75.6), but the seed-centered and
+displaced configurations do not define a conditional false-association null; no causal mechanism
+or purity estimate is assigned to that deficit.
 \label{fig:chance-control}}
 \end{figure*}
 
@@ -779,8 +786,9 @@ access guide for every one of the 11 rows above $0.1\arcsec$ and for the 12-row 
 in Table~\ref{tab:examples}; overlap gives 20 unique targets.  Every page returned the released
 \texttt{TARGETID}, redshift, \texttt{SPECTYPE}, \texttt{ZWARN}, and \texttt{DELTACHI2} within the
 declared serialization tolerances, and served B, R, and Z spectral arrays containing 2,751,
-2,326, and 2,881 pixels, respectively, plus an imaging-cutout link.  The governed browser capture
-also confirmed that each target-specific viewer page rendered a spectrum and coordinate marker.
+2,326, and 2,881 pixels, respectively, plus an imaging-cutout link.  Twenty per-target PNG captures
+are retained; 18 visibly contain both a rendered spectrum and coordinate marker, while the captures
+for \texttt{P3-DESI-000004} and \texttt{P3-DESI-000047} are blank and therefore supply no visual-render evidence.
 
 The exact URLs, returned metadata, arm lengths, checks, and screenshots are preserved with the r3
 audit artifacts; the machine-readable result is
@@ -859,10 +867,12 @@ bias and does not make them primary-catalog members.
 \textit{Third, positional association.}  A $1\arcsec$ match is not a proof of identity in every
 field.  The sub-$0.1\arcsec$ core recovers the seed DESI members whose own coordinates define the
 cluster centroids, so its local-shift comparison verifies the recovery rather than establishing an
-independent astrophysical association; the shift control is informative only for the 11-object
-$0.1$--$1\arcsec$ tail, which it does not secure at the individual-row level.  Those rows are
-flagged and all users retain the continuous separation.  An original-member-centered $1\arcsec$
-counterfactual retains 180 rows and removes \texttt{P3-DESI-000030}.
+independent astrophysical association.  Because seed-centered observed positions and displaced
+controls are not a matched conditional null, their annular-count difference does not establish a
+false-association rate or explain the 11-object tail.  Those rows remain lower-confidence on their
+larger positional offsets, are flagged, and retain the continuous separation.  An
+original-member-centered $1\arcsec$ counterfactual retains 180 rows and removes
+\texttt{P3-DESI-000030}.
 
 \textit{Fourth, no physical classification.}  Redrock class, redshift, and \texttt{DELTACHI2} are
 catalog metadata.  The 20-target viewer audit verifies public retrieval but does not classify
@@ -898,9 +908,9 @@ table with exact warning masks and replay assertions; they remain outside the pr
 are not physically classified.
 Deterministic local shifts confirm that the sub-$0.1\arcsec$ core is expected seed self-recovery of
 the member coordinates that define the cluster centroids --- an end-to-end verification of the
-recovery rather than an independent association excess --- while for the 11-object
-$0.1$--$1\arcsec$ tail, where the shift control is genuinely informative, the rows are not secure
-from position alone.  The exact warned-row
+recovery rather than an independent association excess.  The aggregate annular comparison is
+descriptive, not a conditional false-association null, and does not explain the 11-object
+$0.1$--$1\arcsec$ tail; those rows remain lower-confidence because of their larger offsets.  The exact warned-row
 comparison exposes the quality gate's compositional effect without correcting it, and an explicit
 original-member-centered $1\arcsec$ counterfactual retains 180 rows and removes only
 \texttt{P3-DESI-000030}.
@@ -1243,10 +1253,10 @@ Positional competitors & PASS & none within $1\arcsec$; one candidate has one co
 Nearest/all-neighbor equivalence & PASS & cluster minimum 5.02294$\arcsec$; exact 2,468/181 pairs \\
 Rejected ZWARN audit & PASS: 2,267 & seven exact masks; bits 1/2/11 counted and defined \\
 Warning-bearing auxiliary & PASS: exact 2,267/2,267 set & stable IDs, carried-field replay, decoded masks, manifest \\
-Local-shift association control & PASS: 16/16 realizations & 60/120$\arcsec$, eight angles, parent and strict radius curves \\
+Local-shift diagnostic & PASS: 16/16 realizations & descriptive curves; not a conditional null; core-conditioned annulus 0/170 \\
 Accepted/warned comparison & PASS: 181/2,267 exact rows & medians, quartiles, and Redrock class counts from Parquet \\
 Original-member sensitivity & PASS: 180 retained, one removed & explicit $\le1\arcsec$ expression; P3-DESI-000030 \\
-Public viewer retrieval & PASS: 20/20 & all 11 tail plus representative set; matching metadata and B/R/Z arrays \\
+Public viewer retrieval & PASS: 20/20 data; 18/20 visual captures & matching metadata and B/R/Z arrays; two blank PNGs disclosed \\
 FITS provenance & PASS & full local SHA equals current official checksum \\
 Remote parity & PASS: 8/8 & live 206/Content-Range/1 MiB/digest validation \\
 Payload manifest & PASS: 10 payloads & manifest self-excluded; 11 directory files total \\
