@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
+import json
 import os
 import subprocess
 import sys
@@ -23,6 +25,48 @@ def load_child():
     assert spec.loader
     spec.loader.exec_module(module)
     return module
+
+
+def install_fast_int_wave_contract(root: Path, env: dict[str, str]) -> None:
+    """Replace portfolio-scale prerequisites with deterministic seam fixtures."""
+    registry = json.loads(
+        (ROOT / "project-context/paper_registry.json").read_text(encoding="utf-8")
+    )["papers"]["P3"]
+    pdf_sha = hashlib.sha256((ROOT / registry["pdf_path"]).read_bytes()).hexdigest()
+    head = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+    ).strip()
+
+    preflight = root / "fast_preflight.py"
+    preflight.write_text(
+        """import json, pathlib, sys
+receipt = pathlib.Path(sys.argv[sys.argv.index("--receipt") + 1])
+receipt.write_text(json.dumps({"verdict": "PASS", "fixture": True}), encoding="utf-8")
+""",
+        encoding="utf-8",
+    )
+    packet = root / "fast_review_packet.py"
+    packet.write_text(
+        f"""import json, sys
+if sys.argv[1] != "P3":
+    raise SystemExit("unexpected fixture paper: " + sys.argv[1])
+print(json.dumps({{"packet": {{
+    "packet_key": "a" * 64,
+    "prompt_sha256": "b" * 64,
+    "pdf_sha256": {pdf_sha!r},
+    "page_count": 17,
+    "repository_head": {head!r},
+    "source_sha256": "c" * 64,
+    "pdf_snapshot_path": "pdf/{pdf_sha}.pdf"
+}}}}))
+""",
+        encoding="utf-8",
+    )
+    env.update({
+        "BIGBOUNCE_PREFLIGHT_BIN": str(preflight),
+        "BIGBOUNCE_REVIEW_PACKET_BIN": str(packet),
+        "INT_REVIEW_COMMIT": head,
+    })
 
 
 class ApjsPreflightGateTests(unittest.TestCase):
@@ -61,15 +105,17 @@ class ApjsPreflightGateTests(unittest.TestCase):
 
     def test_wrapper_dry_run_launches_no_provider_or_output_write(self):
         with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
             env = dict(os.environ)
             env.update(
                 {
                     "BIGBOUNCE_INT_WAVE_DRY_RUN": "1",
                     "BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED": "0",
-                    "BIGBOUNCE_REVIEW_CACHE": str(Path(tmp) / "cache"),
-                    "INT_OUTDIR": str(Path(tmp) / "must-not-exist"),
+                    "BIGBOUNCE_REVIEW_CACHE": str(root / "cache"),
+                    "INT_OUTDIR": str(root / "must-not-exist"),
                 }
             )
+            install_fast_int_wave_contract(root, env)
             result = subprocess.run(
                 ["bash", str(TOOLS / "int_wave_apjs.sh")], cwd=ROOT, env=env,
                 text=True, capture_output=True, timeout=60, check=False,
