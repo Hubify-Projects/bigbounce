@@ -1,0 +1,1261 @@
+% P3 v3.2.0-r10 integrity reframe: focused DESI DR1 candidate-catalog paper.
+% r10 lands the confirmed genuinely-new-real interpretive finding (Claude M1)
+% from the INT_v3 CLAUDESTACK-CONFIRM truth audit
+% (ROUND_2026-07-16-P3-v3.2.0-r9-EXACTPDF-7526e685). The sub-0.1" core is
+% single-member DESI clusters whose centroid IS the seed member's own
+% TARGET_RA/TARGET_DEC, and the public match target still contains that seed row,
+% so the sub-0.1" recovery is by-construction seed self-recovery (median match sep
+% 0.00127", target-to-original-member sep zero for >=90% of rows) -- an end-to-end
+% recovery VERIFICATION of the join, NOT independent association evidence. r10
+% reframes every instance to seed self-recovery and scopes the local-shift control
+% to the 0.1-1" tail only: (Sec 3.5 sec:chance-control) restate + G3 annulus-
+% shielding corollary; (Fig 1 caption); (Sec 7-Third limitations); (Sec 8
+% conclusions). Also (G2) one line of reproduction-machine CPU/RAM specs at
+% Sec 3.1 with honest wording (original audit-machine hardware not pinned in the
+% release). No new computation, no fabrication, no deletion of data; every
+% supporting number already in the manuscript. Canonical source for the ApJS track.
+% Compile: latexmk -pdf -interaction=nonstopmode -halt-on-error paper3_apjs.tex
+
+\documentclass[twocolumn,linenumbers]{aastex702}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\raggedbottom
+
+\setcitestyle{numbers,square,comma}
+\newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
+\newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
+% --- Version identity (SINGLE SOURCE OF TRUTH) -------------------------------
+% \paperVersion is the ONLY place the manuscript version is written (the bump
+% flow already owns it). \depositVersion is the ONLY place the Zenodo deposit
+% version is written; its ground truth is
+%   project-context/SSOT/zenodo/P3_zenodo_receipt_2026-07-20.json
+% (staged_version_binding.version). The manuscript-vs-deposit RELATIONSHIP is
+% never written as prose: \patchAhead PARSES the trailing patch integer out of
+% each version string and COMPUTES the delta with \numexpr, with correct
+% singular/plural/zero handling. A stale "one patch ahead" literal is therefore
+% unrepresentable — closing the half of pattern-047 that the 2026-07-23 closure
+% left as a hardcoded literal (it bound only the manuscript half to a macro).
+\newcommand{\paperVersion}{v3.2.0-r16}
+\newcommand{\depositVersion}{v3.2.0-r10}
+\makeatletter
+\def\bb@afterR#1-r#2\@nil{#2}                 % "v3.2.0-r14" -> "14"
+\newcommand{\patchOf}[1]{\expandafter\bb@afterR#1\@nil}
+\newcommand{\bb@patchDelta}{\numexpr\patchOf{\paperVersion}-\patchOf{\depositVersion}\relax}
+% The ENTIRE relationship clause -- including its tense -- is computed, so the
+% "will be added on the next re-stage" promise cannot survive the re-stage that
+% fulfils it.
+\newcommand{\depositRelation}{%
+  \ifnum\bb@patchDelta=0
+    the present manuscript is that same archived release%
+  \else
+    the present manuscript is \texttt{\paperVersion}, %
+    \ifnum\bb@patchDelta=1 one patch release\else\the\bb@patchDelta\ patch releases\fi\ %
+    ahead, and will be added to the same Zenodo concept record as a new version
+    on the next re-stage%
+  \fi}
+\makeatother
+\newcommand{\paperTimestamp}{August 3, 2026, 22:22 PDT}
+% v3.2.0-r16 (2026-08-03 — exact-final Gemini wording closure; no science,
+% abstract, catalog, figure, or numerical change): replaces a ranked association
+% phrase in the warned-versus-accepted descriptive comparison with wording bound
+% only to the displayed medians and interquartile ranges.
+% v3.2.0-r15 (2026-08-03 — ApJS portal-package closure; no science, abstract,
+% catalog, figure, or numerical change): adds the AAS-required line-number
+% option, a <=44-character running title, the author's verified ORCID, and an
+% evidence-bounded AI-use disclosure. The disclosure names only reviewer vendors
+% recorded in the P3 review archive and preserves authorship and verification with
+% Houston Golden. A flattened, line-numbered portal package is built separately
+% from this canonical source; the arXiv-style source bundle remains a distinct
+% package surface.
+% v3.2.0-r14 (2026-07-24 — ApJS SUBMISSION-CONFORMANCE + DRIFT-PROOF DEPOSIT REFERENCE.
+%   (1) ABSTRACT CUT TO THE AAS CAP. AAS Manuscript Preparation requires "a single
+%   paragraph of not more than 250 words" (https://journals.aas.org/manuscript-preparation/,
+%   re-verified 2026-07-24). The compiled v3.2.0-r13 abstract measured 426 words — 70% over —
+%   so P3 could not be cleanly submitted to its own declared venue. The abstract was
+%   REWRITTEN, not truncated: every surviving quantitative claim is numerically IDENTICAL
+%   (190,015 / 28,425,963 / 200,000 / 20,299,155 / 2,468 / 2,448 / 181 / 170 / 11 /
+%   86.7+-14.4 / 76.2+-13.3 / 75.6+-13.0 / 16 shifts / 60-120"), and EVERY integrity caveat
+%   was retained verbatim in substance: the BigAE-lineage non-reconstruction limitation, the
+%   "neither tier is a secure object-identity or purity claim" contract, the 0.1-1" annulus
+%   DEFICIT (75.6+-13.0 predicted vs 11 observed) and its "not secure candidate-level
+%   identity" consequence, the r10 sub-0.1" seed-self-recovery reframe (verification, NOT
+%   independent association evidence) with the local-shift control scoped to the 0.1-1" tail
+%   only, and the closing "reproducible follow-up lists, not validated detections" scope
+%   sentence. ONLY exposition was cut: the opening motivational sentence; the Redrock class
+%   composition (157 GALAXY / 23 QSO / 1 STAR + its "spectral type was not a selection cut"
+%   rider, dropped as a whole claim rather than mangled); the release-contents inventory
+%   (Parquet/dictionary/code/waterfall/checksums/provenance); the exact-replay re-read
+%   sentence; the 2,267 warned-aux table sentence; and the DESI_TARGET bit enumeration
+%   (retained as "one of five main-survey DESI_TARGET bits"; the five are named in Sec 2).
+%   All dropped material remains in the body — nothing was deleted from the manuscript.
+%   (2) DEPOSIT SELF-REFERENCE MADE DRIFT-PROOF BY CONSTRUCTION. The 2026-07-23 closure bound
+%   the MANUSCRIPT half of the Data-Availability self-reference to \paperVersion but left the
+%   DEPOSIT version and the RELATIONSHIP phrase as hardcoded literals; "one patch ahead" was
+%   already false (deposit r10 vs manuscript r13) and shipped in the served PDF — pattern-047
+%   recurring after its own closure. FIX: \paperPatch and \depositPatch are now the single
+%   integer sources of truth; \paperVersion, \depositVersion and the relationship phrase
+%   \patchAhead are all DERIVED (\numexpr), with singular/plural handled. The phrase now
+%   COMPUTES to "4 patch releases ahead" and can never again state a false delta. Deposit
+%   ground truth: project-context/SSOT/zenodo/P3_zenodo_receipt_2026-07-20.json
+%   (version v3.2.0-r10, DOI 10.5281/zenodo.21461888). The r11-tense wording closed on
+%   2026-07-22 was re-checked and is unchanged/correct. NO science number changed.)
+% v3.2.0-r13 (2026-07-23 — RE-SWEEP CLOSURE: the 2026-07-23 routine re-sweep truth audit
+%   (project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md) surfaced one
+%   genuinely-new-real class — version-stamp drift in the Data Availability prose: the
+%   self-reference "the present manuscript is v3.2.0-r11" was a hardcoded literal the
+%   version-bump flow never touched, so it lagged the \paperVersion stamp. FIX (drift-proof):
+%   bound the self-reference to the \paperVersion macro so it can never drift again; the
+%   already-truthful "will be added ... on the next re-stage" tense is retained. NO science
+%   number changed.)
+% v3.2.0-r11 (2026-07-20 — DOI BACK-PATCH: embedded the real minted Zenodo archival DOI
+%   in the Data Availability section, closing the standing immutable-archive/archival-DOI
+%   gate. Zenodo version DOI 10.5281/zenodo.21461888 (concept DOI 10.5281/zenodo.21461887)
+%   is the published, verified deposit of the reviewed v3.2.0-r10 release (paper3_apjs.pdf
+%   md5=9fb6e882068a4613132792633a9d7a60, 17 pp, + LaTeX source + arXiv bundle + tracked-
+%   provenance archive + SHA256SUMS; all asset md5s matched per
+%   project-context/SSOT/zenodo/P3_zenodo_receipt_2026-07-20.json). HONEST SCOPE: this
+%   Zenodo archival DOI is DISTINCT from the AAS journal digital-asset DOI, which the journal
+%   still assigns during its publication workflow and which remains an honest open gate (left
+%   untouched). SUBTLETY stated in-text: the record archives the v3.2.0-r10 PDF while this
+%   manuscript is v3.2.0-r11; the version DOI is the versioned archival deposit of the reviewed
+%   release, later versions added to the same concept record. NO science number changed.)
+% v3.2.0-r12 (2026-07-22 — CONFIRMATION-BOARD TRUTH-AUDIT CLOSURES: 3 genuinely-new-real
+%   findings closed from ROUND_2026-07-22-P3-v3.2.0-r11-EXACTPDF-d8b5b3b1-CLAUDESTACK-CONFIRM
+%   (TRUTH_AUDIT_2026-07-22.md). (1) Zenodo r11 tense: reworded the "added...as a new version"
+%   claim to the truthful convention — the archived record pins the reviewed v3.2.0-r10 bytes
+%   exactly, v3.2.0-r11 is one patch ahead and will be added to the same concept record on the
+%   next re-stage; concept-DOI parenthetical now reads "presently resolves to...v3.2.0-r10".
+%   (2) "chance-compatible" mislabel: the 11-observed-vs-75.56-predicted 0.1-1" annulus rows are
+%   now stated as the large deficit they are (not chance-compatible), explained by the
+%   already-in-paper core self-recovery slot-consumption mechanism — no fiber-collision/dedup
+%   claim invented, per audit instruction. (3) Version-tag key footnote (Sec 2) completed to
+%   enumerate the intermediate r1/r3/r4/r6/r10 checkpoint tags used in the body. Gemini's two
+%   remaining MAJORs (astrophysical context, spectra plots) dispositioned SCOPE-VENUE-OPINION
+%   against this deliberately-scoped ID-recovery/provenance paper; Gemini's forward-date/Apple-M5
+%   minor dispositioned FALSIFIED (today is 2026-07-22, timestamp is 2 days in the past; M5
+%   hardware honestly disclosed as unpinned in the release). NO catalog science number changed.)
+\newcommand{\releaseVersion}{v3.2.0-r2}
+\newcommand{\warnedAuxVersion}{v3.2.0-r5}
+\newcommand{\bundleVersion}{v3.2.0-r7}
+\newcommand{\releaseTag}{p3-v3.2.0-r2}
+\newcommand{\releaseRevision}{1a9e85ee004894956665444b4f110111f1090b79}
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black,pdfnewwindow=true}
+
+\begin{document}
+
+\title{Public-ID Recovery for a Historical DESI DR1 Anomaly List:\\
+170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations}
+\shorttitle{Public-ID Recovery for DESI DR1}
+
+\author{Houston Golden}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+\email{houston@hubify.com}
+\altaffiliation[ORCID: ]{\href{https://orcid.org/0009-0008-5616-5994}{0009-0008-5616-5994}}
+\date{\paperTimestamp{} --- \paperVersion}
+
+\begin{abstract}
+We recover public identifiers for a frozen historical DESI anomaly list whose legacy
+identifiers mixed public-looking values with internal hashes.  The primary deliverable is
+reusable, memory-bounded join and provenance/validation machinery; the 181-row catalog is its
+first instance.  The immutable clustering and BigAE lineage are documented; the unavailable
+production normalization and physical-feature sensitivity are not.  Streaming all 28,425,963
+rows of the DESI Data Release 1 (DR1) redshift catalog in 200,000-row chunks against a $k$-d
+tree of 190,015 clusters, a predeclared $1\arcsec$ match to a main-survey row with one of five
+\texttt{DESI\_TARGET} bits reproduces exactly 20,299,155 eligible DESI rows and 2,468 matches.
+Requiring the global primary redshift row leaves 2,448; requiring \texttt{ZWARN}=0 leaves 181
+unique public \texttt{TARGETID} associations, forming the \releaseVersion{} release audited in
+this \paperVersion{} manuscript: 170 high-coordinate-consistency core associations at or below
+$0.1\arcsec$ and 11 lower-confidence associations between $0.1\arcsec$ and $1\arcsec$.  Neither
+tier is a secure object-identity or purity claim.  Sixteen deterministic 60--120$\arcsec$ local
+shifts yield $86.7\pm14.4$ parent and $76.2\pm13.3$ warning-free-primary associations within
+$1\arcsec$ (versus 2,468 and 181 observed), and $75.6\pm13.0$ in the $0.1$--$1\arcsec$ annulus
+versus 11 observed, so that tail is not treated as secure candidate-level identity.  The
+sub-$0.1\arcsec$ excess is the expected self-recovery of the seed DESI members whose coordinates
+define the cluster centroids: it verifies the recovery end-to-end rather than providing
+independent association evidence, and the control is informative only for the
+$0.1$--$1\arcsec$ tail.  These are reproducible follow-up lists, not validated detections or
+unbiased samples for anomaly-rate inference.
+\end{abstract}
+
+\keywords{catalogs --- surveys --- methods: data analysis --- methods: statistical --- galaxies: spectra --- quasars: general}
+
+\section{Introduction}\label{sec:introduction}
+
+Spectroscopic surveys make it possible to search for unusual objects at scales that cannot be
+inspected manually.  Reconstruction models, latent-variable models, and other outlier methods
+have consequently been applied to SDSS and DESI spectra \citep{Baron2017,Liang2023,Nicolaou2026}.
+Their scientific value, however, depends on a distinction that is easy to blur: an unusual model
+score is a candidate-selection signal, whereas an archive-resolvable object with auditable
+quality metadata is a usable catalog row.  Neither is, by itself, a validated astrophysical
+detection.
+
+This paper addresses that distinction through a structural recovery.  The earlier public
+\textit{BigBounce Anomaly Catalog} (\nolinkurl{bamfai/bigbounce-anomaly-catalog}) multi-survey
+product contained DESI sky positions, anomaly scores, and residual summaries, but most
+legacy identifiers were internal hashes rather than public DESI \texttt{TARGETID}s.  A catalog
+whose coordinates cannot be joined deterministically to public spectra is difficult to verify,
+extend, or cite object by object.  The earlier product also mixed survey-specific selection
+functions.  Treating its aggregate row count as a homogeneous scientific sample would therefore
+be misleading even if every row were numerically correct.
+
+We replace that scope with one falsifiable deliverable: a DESI DR1 science-target candidate
+catalog whose public identifiers and carried metadata can be rejoined exactly.  The recovery
+uses the historical anomaly stream only as a source of coordinates and score metadata.  Public
+identity, targeting information, primary-row status, redshift metadata, and fit warnings all
+come from the current public DESI DR1 redshift catalog \citep{DESI2025DR1}.  The result is a small
+quality-controlled follow-up set rather than a claim about the prevalence, novelty, or physical
+origin of anomalous spectra.
+
+The contributions are:
+\begin{enumerate}
+\item a memory-bounded, checkpointed join of 190,015 DESI-containing anomaly clusters to the
+28.4 million-row DR1 redshift catalog;
+\item an exact reproduction of the previously quoted 2,468-row main-survey science-bit cohort;
+\item a declared quality waterfall yielding 181 warning-free global-primary candidates;
+\item deterministic local-shift association curves for the parent and strict cohorts;
+\item an exact descriptive comparison with all 2,267 warning-bearing global-primary rows;
+\item a public-ID release with exact field-by-field source-row validation; and
+\item a checksum-bound \bundleVersion{} submission bundle that defines the primary, auxiliary,
+AAS-table, science-control, and coordinate-lineage relationships without relabeling their frozen component versions.
+\end{enumerate}
+
+The primary, reusable deliverable is this machinery itself --- the memory-bounded checkpointed
+join together with the declared quality waterfall, field-by-field validation, and checksum-bound
+provenance framework --- and it is designed to be re-run on any future frozen anomaly or
+coordinate list.  The 181-row DESI DR1 catalog reported below is the first instance produced by
+applying that framework to a single historical input list, not the endpoint of the contribution.
+
+Section~\ref{sec:data} defines the two inputs.  Section~\ref{sec:method} specifies the join,
+selection, and duplicate rules.  Section~\ref{sec:results} describes the released cohort without
+interpreting it as a population measurement.  Sections~\ref{sec:selection} and
+\ref{sec:reproducibility} make the selection biases and reproducibility checks explicit.
+
+\section{Inputs and Scope}\label{sec:data}
+
+\subsection{Historical anomaly-cluster substrate}\label{sec:anomaly-input}
+
+The starting cluster table contains 378,480 coordinate clusters produced from eight survey
+inputs by a fixed $5\arcsec$ positional grouping.  The immutable dataset documentation records
+this as ``8-way $5\arcsec$ positional deduplication'' \citep{Golden2026Data}; the preserved
+executable lineage implements a friends-of-friends transitive closure with spherical neighbor
+pairs and union--find
+(\artifact{pipelines/p3\_anomaly\_engine/pathc\_positional\_dedup.py}).  Exactly 190,015 have a
+survey-membership string containing \texttt{desi\_dr1};
+190,005 are DESI-only clusters, eight also contain an SDSS member, and two also contain a LAMOST
+member.  Those historical cross-survey labels are retained only as provenance columns.  They do
+not enter the \releaseVersion{} recovery and no non-DESI table is included in the new
+release.\footnote{Version-tag key: the internal release-candidate tags label distinct frozen
+components of one program and are retained for provenance rather than deleted or relabeled.
+\releaseVersion{} is the audited primary data release; \warnedAuxVersion{} the secondary
+warned-primary auxiliary table; \bundleVersion{} the checksum-bound submission bundle; and
+\paperVersion{} this manuscript.  A later stage does not relabel the earlier component versions it
+supersedes, so a single published identifier can carry several component tags.  Body references to
+intermediate release-candidate tags (e.g.\ \texttt{r1}, \texttt{r3}, \texttt{r4}, \texttt{r6},
+\texttt{r10}) denote further frozen build/audit/submission checkpoints of the same program; this
+key lists the load-bearing component versions rather than every checkpoint.}
+
+The accompanying DESI anomaly table has 195,829 rows with an internal identifier, right
+ascension, declination, a scalar score $S$, the band producing the largest residual, and three
+residual summaries.  It is the frozen $S>5$ canonical-S selection from the DESI-trained BigAE
+stream, published under CC BY 4.0 at immutable dataset commit
+\href{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/tree/cdaaa03a72c69d86f011be128d93f261dc5b39a8}{\texttt{cdaaa03a...5b39a8}} \citep{Golden2026Data}.  The original
+training lineage preserved locally identifies a 496-to-128 BigAE evaluated as the five-seed mean
+reconstruction MSE.  That evidence does not recover the production absolute-scale normalization,
+spectral resampling, original object-to-spectrum mapping, or a physical-feature injection/sensitivity
+function.  Consequently the released per-object $S$ values cannot be numerically reproduced from
+the currently public spectra and are carried only as frozen, uncalibrated ranking metadata; no
+physical feature or detection efficiency is assigned to them.  This boundary is recorded in the
+held-out reinference and reconciliation evidence
+(\artifact{pipelines/p3\_anomaly\_engine/outputs/dp3\_15\_heldout\_reinference.json};
+\artifact{pipelines/p3\_anomaly\_engine/outputs/desi\_injection\_recovery/RECONCILIATION\_history\_2026-06-28.json}).
+The preserved upstream DESI inference code copies each anomaly row's \texttt{ra}/\texttt{dec}
+directly from the coadd FIBERMAP \texttt{TARGET\_RA}/\texttt{TARGET\_DEC} fields; a separate
+implementation also reads \texttt{MEAN\_FIBER\_RA}/\texttt{MEAN\_FIBER\_DEC} under distinct names.
+The positional-deduplication code then computes cluster \texttt{ra\_mean}/\texttt{dec\_mean} from
+the member coordinates.  The exact source files and SHA-256 values are bound by the \bundleVersion{}
+coordinate-lineage audit
+(\artifact{pipelines/p3\_anomaly\_engine/apjs\_submission\_bundle\_v3.2.0-r7/coordinate\_lineage/COORDINATE\_LINEAGE\_AUDIT.json}).
+This establishes coordinate-field lineage to public DESI target coordinates; it does not recover
+the unavailable production object-to-spectrum mapping or prove object identity for a positional
+association.  The cluster positions used here are the frozen ICRS means of those historical
+positional groups, with no coordinate transformation in this recovery beyond the spherical
+unit-vector representation used for matching.  The legacy
+identifier is not treated as a public key.  It mixes positive
+public-looking values with internal hashed values; 169,611 of the 195,829 values are negative.
+Within the released 181-row cohort, ten legacy identifiers are negative.  This behavior is
+preserved as audit history in \texttt{original\_internal\_tid}, while the recovered public
+\texttt{targetid} is the only archive join key recommended for users.
+
+When a cluster contains more than one DESI anomaly member, its canonical historical member is
+the one with the largest original score; ties are resolved by the smaller original row number.
+The score and residual fields are carried forward verbatim as ranking metadata.  They are not
+recomputed in this work, and they are not interpreted as calibrated probabilities, physical
+significances, or novelty measures.
+
+Exactly one released cluster has more than one historical anomaly member:
+\texttt{P3-DESI-000030} (\texttt{cluster\_id}=71390, \texttt{n\_detections}=2).  Its recovered
+public target is $0.979656\arcsec$ from the cluster coordinate but $1.979009\arcsec$ from the
+canonical original DESI member.  The public $1\arcsec$ selection is explicitly the target-to-cluster
+separation, not a target-to-original-member cut.  The release stores both quantities as
+\texttt{match\_separation\_arcsec} and \texttt{original\_member\_separation\_arcsec}.
+An explicit alternative rule,
+\texttt{original\_member\_separation\_arcsec}$\le1.0$, retains 180 of 181 rows and removes only
+\texttt{P3-DESI-000030}, whose original-member separation is $1.979009\arcsec$.  The r6
+machine-readable sensitivity sidecar publishes this Boolean expression and result for every row;
+the alternative is a sensitivity analysis, not a retroactive change to the frozen release.
+
+\subsection{Public DESI DR1 redshift catalog}\label{sec:desi-input}
+
+The public identity substrate is the \texttt{ZCATALOG} binary-table HDU (extension 1) of
+\texttt{zall-pix-iron.fits} from DESI DR1.  The local file has
+28,425,963 rows and 22,371,272,640 bytes.  Its SHA-256 is
+\texttt{2d95ad99361039b556c402b49e0e7c84\allowbreak df5f00106dc5731d44476a58b128b49b}, equal to the
+value in DESI's current official checksum list.  The FITS table contains repeat observations,
+survey and program labels, targeting bitmasks, Redrock redshift products, and flags defining
+primary rows.  We read only the fields listed in Table~\ref{tab:desi-fields}; no 21~GB in-memory
+table is formed.
+
+\begin{deluxetable*}{lll}
+\tablecaption{DESI fields read from each streamed FITS chunk\label{tab:desi-fields}}
+\tablehead{Group & Fields & Role in this work}
+\startdata
+Identity/position & \texttt{TARGETID}, \texttt{TARGET\_RA}, \texttt{TARGET\_DEC} & public rejoin and angular match \\
+Observing context & \texttt{SURVEY}, \texttt{PROGRAM} & main-survey selection and description \\
+Targeting & \texttt{DESI\_TARGET}, \texttt{BGS\_TARGET}, \texttt{MWS\_TARGET}, \texttt{SCND\_TARGET} & science-bit selection and raw metadata \\
+Redshift fit & \texttt{Z}, \texttt{ZWARN}, \texttt{SPECTYPE}, \texttt{DELTACHI2} & quality gate and descriptive metadata \\
+Coadd status & \texttt{COADD\_FIBERSTATUS} & descriptive quality cross-check \\
+Primary flags & \texttt{MAIN\_NSPEC}, \texttt{MAIN\_PRIMARY}, \texttt{ZCAT\_NSPEC}, \texttt{ZCAT\_PRIMARY} & repeat accounting and final primary gate \\
+\enddata
+\tablecomments{Column names follow the public DESI zcatalog.  Only \texttt{SURVEY},
+\texttt{DESI\_TARGET}, \texttt{ZCAT\_PRIMARY}, and \texttt{ZWARN} enter the final Boolean selection;
+coordinates enter the positional join.  \texttt{SPECTYPE} and \texttt{Z} are not selection cuts.}
+\end{deluxetable*}
+
+\section{Recovery and Selection Method}\label{sec:method}
+
+\subsection{Memory-bounded positional join}\label{sec:join}
+
+All cluster coordinates are converted from $(\alpha,\delta)$ to three-dimensional unit vectors,
+\begin{equation}
+\boldsymbol{x}=(\cos\delta\cos\alpha,\cos\delta\sin\alpha,\sin\delta),
+\end{equation}
+and indexed once with a \texttt{cKDTree}.  The FITS table is then traversed in blocks of 200,000
+rows using \texttt{fitsio}.  Numeric arrays are converted from FITS big-endian storage to native
+byte order before Parquet serialization; targeting masks are evaluated as unsigned 64-bit
+integers so bits 60 and 61 cannot be lost to signed shifts.  Within each block we first apply the survey and target
+bit mask, convert the remaining coordinates to unit vectors, and query the nearest cluster.
+Chord distances are converted back to great-circle arcseconds.  Only matches within the
+predeclared $1\arcsec$ radius are retained.
+
+Each completed block is written atomically to a small Parquet part.  A JSON checkpoint records
+the input signature, completed block starts, cumulative row counts, and the last completed row;
+a fsynced JSON-lines progress file records the same counts with timestamps.  Restarting with the
+same signature skips completed parts.  A changed FITS path, size, column set, radius, chunk size,
+or cluster count invalidates the checkpoint rather than silently mixing runs.  The full scan took
+97.1~s on the audit machine and retained only 2,468 match rows.  The release does not pin that
+machine's hardware; the streaming design bounds the resident working set to a single 200,000-row
+chunk rather than the full catalog, so the scan reproduces on commodity hardware such as the
+Apple~M5 (10-core, 24~GB RAM) reference machine used to reproduce it here.  Runtime is reported for
+reproducibility, not as a cross-platform benchmark.
+
+The published release was generated by a fresh replay of all 28,425,963 FITS rows into new output
+and checkpoint directories using only the three named input files.  The 143 checkpoint parts used
+by the independent validation were outputs of that same replay, not parts inherited from an older
+catalog run.  This establishes a clean public-input replay at the data-product level; it is not a
+claim of a hermetic operating-system image.
+
+The nearest-cluster assignment is also checked against the complete set of neighbors within
+$1\arcsec$.  Across the 190,015 DESI-containing clusters, the minimum cluster--cluster nearest-
+neighbor separation is $5.02294\arcsec$; none is within $2\arcsec$ of another cluster.  Direct
+all-neighbor queries return exactly 2,468 parent pairs and 181 strict pairs, with zero public rows
+matched to multiple clusters and every stored nearest cluster present in its all-neighbor set.
+Thus nearest-only and all-neighbor definitions are identical for these exact frozen inputs.  The
+full nearest-neighbor quantiles and direct pair counts are emitted by the independent validator.
+
+\subsection{Science-target parent cohort}\label{sec:parent-selection}
+
+The parent cohort uses the exact historical bitmask definition so that the earlier 2,468 count
+can be tested.  A row is eligible when
+\begin{equation}
+\begin{split}
+&\texttt{SURVEY}=\texttt{main},\\
+&\texttt{DESI\_TARGET}\mathbin{\&}
+\left(2^0\,|\,2^1\,|\,2^2\,|\,2^{60}\,|\,2^{61}\right)\ne0,
+\end{split}
+\end{equation}
+where bits 0, 1, 2, 60, and 61 denote LRG, ELG, QSO, BGS\_ANY, and MWS\_ANY, respectively.
+The exact unsigned 64-bit union mask is \texttt{0x3000000000000007}.
+These definitions follow the authoritative DESI target-mask data model \citep{DESIBitmasks}.
+These classes are not mutually exclusive.  The streamed scan finds 20,299,155 eligible rows,
+exactly reproducing the historical denominator.  Their nearest-neighbor join yields 2,468 rows
+within $1\arcsec$, exactly reproducing the historical match count.  This agreement tests the
+coordinate transform, endian-correct bitmask evaluation, row traversal, and radius together.
+
+\subsection{Quality cohort and duplicate rules}\label{sec:quality-selection}
+
+The public redshift catalog may contain multiple rows associated with one target.  Within each
+reported cohort, we first apply its predicates and only then deduplicate.  For the strict cohort
+we therefore require \texttt{ZCAT\_PRIMARY}=true, the global primary redshift-row flag, and then
+require
+\texttt{ZWARN}=0.  This latter gate is intentionally conservative: it removes any Redrock fit
+carrying a warning bit.  We do not require a particular \texttt{SPECTYPE}, redshift range, or
+minimum \texttt{DELTACHI2}; imposing such post-hoc cuts would redefine which anomaly morphologies
+survive.
+
+During the positional join, each eligible FITS row is assigned to its nearest anomaly cluster
+only.  After applying a cohort's predicates, duplicate cluster matches are ordered by smaller angular separation, larger
+\texttt{DELTACHI2}, smaller \texttt{TARGETID}, and smaller FITS row.  A second pass uses the same
+ordering to enforce one row per public \texttt{TARGETID}.  No tie-breaking is needed in the final
+cohort, but publishing the rule makes reruns deterministic.  The final 181 rows have unique
+candidate IDs, cluster IDs, public \texttt{TARGETID}s, and FITS row numbers.
+
+The executable order audit finds 2,468 parent rows, 2,448 rows satisfying
+\texttt{ZCAT\_PRIMARY}, and 181 satisfying both \texttt{ZCAT\_PRIMARY} and
+\texttt{ZWARN}=0 before deduplication.  All three cohorts already have unique cluster and
+\texttt{TARGETID} keys.  Consequently, a deliberately unsafe counterfactual that deduplicates the
+broad parent before applying the strict predicates also returns the same 181 identities and loses
+zero valid rows.  That empirical equality checks this release; it does not replace the declared
+predicate-before-deduplication rule.
+
+\subsection{Match-quality tier}\label{sec:match-tier}
+
+The $1\arcsec$ radius was fixed before inspecting the quality cohort and is retained for exact
+historical count reproduction.  The primary release contract therefore retains all 181 positional
+associations but divides them into a 170-row high-coordinate-consistency core at or below
+$0.1\arcsec$ and 11 lower-confidence associations between $0.1\arcsec$ and $1\arcsec$, including
+eight above $0.5\arcsec$ and five above $0.75\arcsec$; the maximum is $0.9906\arcsec$.  Rather than
+silently deleting these valid-by-definition matches, we publish \texttt{match\_quality\_tier} with
+values \texttt{coordinate\_consistent\_le\_0p1arcsec} and
+\texttt{positional\_match\_gt\_0p1\_le\_1arcsec}.  Users can reproduce either the declared catalog
+or the 170-row high-coordinate-consistency subset.  The full 181-row list is intentionally not
+purity-controlled, and neither tier is a secure candidate-level identity claim.
+Unlike the $1\arcsec$ join radius, the $0.1\arcsec$ boundary was introduced post hoc as a
+descriptive quality tier; it is not a predeclared selection cut and does not alter the 181-row
+catalog membership.
+
+For direct scrutiny, the 11 positional-tail identifiers and separations are listed in
+Table~\ref{tab:tail-ids}; the continuous values remain authoritative in the full catalog.
+
+\begin{deluxetable}{lr}
+\tablecaption{Released candidates in the $0.1$--$1\arcsec$ positional tail\label{tab:tail-ids}}
+\tablehead{Candidate & Separation (arcsec)}
+\startdata
+P3-DESI-000003 & 0.273888 \\
+P3-DESI-000005 & 0.990574 \\
+P3-DESI-000017 & 0.130508 \\
+P3-DESI-000022 & 0.785982 \\
+P3-DESI-000030 & 0.979656 \\
+P3-DESI-000032 & 0.754671 \\
+P3-DESI-000039 & 0.221264 \\
+P3-DESI-000045 & 0.621958 \\
+P3-DESI-000053 & 0.656096 \\
+P3-DESI-000140 & 0.969344 \\
+P3-DESI-000141 & 0.512381 \\
+\enddata
+\tablecomments{Separations are target-to-cluster great-circle arcseconds.  All satisfy the
+predeclared $1\arcsec$ catalog definition, but these 11 rows are lower-confidence positional
+associations; the full $1\arcsec$ list is not purity-controlled and no row is secured by position alone.}
+\end{deluxetable}
+
+The target-to-canonical-original-member separations have minimum, median, and 90th percentile
+zero, 95th percentile $0.2213\arcsec$, 99th percentile $0.9740\arcsec$, and maximum
+$1.9790\arcsec$.  Eleven exceed $0.1\arcsec$, eight exceed $0.5\arcsec$, five exceed
+$0.75\arcsec$, one exceeds $1\arcsec$, and none exceeds $2\arcsec$.  A second full scan of all
+20,299,155 eligible public parent rows finds no competing eligible row within $1\arcsec$ of either
+the cluster or canonical-original-member coordinate for any released candidate.  One case,
+\texttt{P3-DESI-000039}, has a second warning-free primary eligible row at $1.0498\arcsec$ from
+both centers, hence within $2\arcsec$ but outside the declared radius; the released row is at
+$0.2213\arcsec$.  The machine-readable audit publishes every row found within both radii.
+
+\subsection{Deterministic local-shift association control}\label{sec:chance-control}
+
+Catalog-key uniqueness does not estimate false association.  We therefore repeated the spherical
+join after shifting every one of the 190,015 cluster positions along great circles by 60 and
+120$\arcsec$ at each of eight fixed position angles.  These 16 realizations retain the local sky
+density and footprint on arcminute scales while moving well beyond the declared radius.  The
+28,425,963-row FITS table was streamed once against the observed and shifted trees.  For each
+realization we retained the nearest eligible target to each shifted cluster and counted associated
+cluster positions over the fixed radius grid shown in Figure~\ref{fig:chance-control}.
+
+For the 20,299,155-row science-bit parent, 2,468 observed cluster positions have an association
+within $1\arcsec$, versus a shifted mean of 86.69 (sample standard deviation 14.42; range 66--109).
+At $0.1\arcsec$, the comparison is 2,456 observed versus a shifted mean of 0.75.  Applying the
+global-primary and \texttt{ZWARN}=0 predicates to the background targets gives 181 observed versus
+76.19 (13.30; 61--103) within $1\arcsec$, and 170 observed versus 0.625 within $0.1\arcsec$.
+The observed strict $0.1$--$1\arcsec$ annulus contains 11 rows, whereas the shifted annulus mean
+is 75.56 (13.01; 61--101).  The sub-$0.1\arcsec$ comparison, however, is not an independent
+association test.  The 170 core rows are single-member DESI clusters
+(Section~\ref{sec:anomaly-input}) whose centroid is the seed member's own
+\texttt{TARGET\_RA}/\texttt{TARGET\_DEC}, and the public catalog matched against still contains
+that seed row (Section~\ref{sec:join}), so recovering it at $\ll0.1\arcsec$ is the expected
+signature of re-identifying the seed rather than evidence of an astrophysical association.  The
+already-reported median target-to-cluster separation of $0.00127\arcsec$
+(Section~\ref{sec:sky}) and the zero minimum, median, and 90th-percentile
+target-to-original-member separation (Section~\ref{sec:match-tier}) confirm this: for the core the
+recovered public object is, by construction, at essentially the member coordinate that defined the
+centroid.  A $60$--$120\arcsec$ shift moves the centroid off its seed member and necessarily
+destroys this self-recovery, which is why the shifted sub-$0.1\arcsec$ count collapses to $0.625$.
+The $170$-versus-$0.625$ gap is therefore a successful end-to-end seed self-recovery verification
+of the join --- confirmation that the recovered public identifiers reproduce the coordinates that
+generated the cluster centroids --- not an independent aggregate association excess.  The
+local-shift control is informative only for the $0.1$--$1\arcsec$ tail.  There the 11 observed
+rows fall well below the shifted mean of 75.56 --- a deficit, not an excess.  The shifted
+realizations are correlated local controls rather than an independent Poisson null, but the
+shortfall is large and is a direct corollary of the core self-recovery described below, so the 11
+tail rows do not acquire secure candidate-level identity from positional coincidence alone.  That
+the observed annulus count of 11 falls below the shifted mean is itself a corollary of the core
+self-recovery: each core cluster's nearest-neighbor slot is consumed by its own seed member inside
+$0.1\arcsec$, shielding those clusters from additional matches in the surrounding annulus.  We
+retain and flag the tail for
+auditability rather than subtracting an estimated background or claiming a corrected purity.  The
+shifts are correlated local controls, not an independent Poisson experiment or a
+selection-function model.
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.92\textwidth]{p3_v320_r6_chance_control.pdf}
+\caption{Observed association-radius curves and 16 deterministic local-shift controls for the
+science-bit parent (left) and warning-free global-primary cohort (right).  Shading spans the
+minimum and maximum shifted count; dashed curves give shifted means.  Logarithmic count axes show
+the sub-$0.1\arcsec$ core, where the large observed count is the expected seed self-recovery of the
+member coordinates that define the cluster centroids (the local shift verifies this recovery rather
+than testing an independent association), alongside the shift-controlled $0.1$--$1\arcsec$ tail,
+where the observed count (11) falls well below the shifted mean (75.6) because each core cluster's
+nearest-neighbor slot is consumed by its own seed inside $0.1\arcsec$; the tail is therefore not
+treated as secure candidate identity.
+\label{fig:chance-control}}
+\end{figure*}
+
+\section{Catalog Results}\label{sec:results}
+
+\subsection{Selection waterfall}\label{sec:waterfall}
+
+Table~\ref{tab:waterfall} and Figure~\ref{fig:waterfall} give the full waterfall.  Of the 2,468
+parent matches, only 20 are removed by the global-primary requirement.  The dominant reduction
+is \texttt{ZWARN}=0: 2,267 of the 2,448 primary rows carry at least one warning bit, leaving 181.
+Requiring \texttt{MAIN\_PRIMARY} in addition changes nothing; requiring
+\texttt{COADD\_FIBERSTATUS}=0 after the adopted gates also changes nothing.  These equalities are
+reported as cross-checks, not as independent evidence that the sample is unbiased.
+
+The excluded global-primary rows are also published as the clearly secondary
+\warnedAuxVersion{} warned-primary auxiliary table.  Its 2,267 stable IDs run from
+\texttt{P3-DESI-WARNED-000001} through \texttt{P3-DESI-WARNED-002267}; every row carries the
+same source and historical-lineage fields as the primary table plus the exact integer and
+hexadecimal \texttt{ZWARN} mask and decoded set bits.  Each row is marked
+\nolinkurl{SECONDARY_WARNING_BEARING_NOT_PRIMARY_NOT_PHYSICALLY_VALIDATED} and
+\texttt{primary\_catalog\_member=false}.  This disclosure does not weaken the warning-free
+primary gate, estimate its bias, or identify a physical anomaly class.
+
+The rejected-primary warning distribution is concentrated in the three Redrock bits defined by
+the DESI data model \citep{DESIBitmasks}: LITTLE\_COVERAGE (bit 1), SMALL\_DELTA\_CHI2 (bit 2),
+and POORDATA (bit 11).  Their nonexclusive counts are 2,110, 1,467, and 34.  The seven exact
+masks and counts are shown in Table~\ref{tab:zwarn}; the 2,267 warning-bearing primaries comprise
+2,194 GALAXY, 72 QSO, and one STAR Redrock classifications.  These flags describe known fitting
+or data-quality conditions; they do not identify physical anomaly classes.
+
+\begin{deluxetable*}{rrlr}
+\tablecaption{Exact ZWARN distribution among rejected global-primary rows\label{tab:zwarn}}
+\tablehead{Mask & Binary components & Official bit names & Rows}
+\startdata
+2    & $2^1$              & LITTLE\_COVERAGE & 787 \\
+4    & $2^2$              & SMALL\_DELTA\_CHI2 & 152 \\
+6    & $2^1+2^2$          & LITTLE\_COVERAGE + SMALL\_DELTA\_CHI2 & 1,294 \\
+2048 & $2^{11}$           & POORDATA & 3 \\
+2050 & $2^{11}+2^1$       & POORDATA + LITTLE\_COVERAGE & 10 \\
+2052 & $2^{11}+2^2$       & POORDATA + SMALL\_DELTA\_CHI2 & 2 \\
+2054 & $2^{11}+2^2+2^1$   & POORDATA + SMALL\_DELTA\_CHI2 + LITTLE\_COVERAGE & 19 \\
+\enddata
+\tablecomments{Counts sum to 2,267.  Bit counts are nonexclusive because a row may set multiple
+bits.  Names and meanings follow the authoritative DESI ZWARN data model.}
+\end{deluxetable*}
+
+The exact auxiliary product also permits a direct descriptive comparison, rather than inference
+from warning counts alone.  Accepted versus warning-bearing medians are respectively
+$z=1.10842$ versus 0.88605, historical score 5.32442 versus 5.84182, separation
+$0.001269\arcsec$ versus $0.001350\arcsec$, and \texttt{DELTACHI2}=61.0634 versus 4.91948.
+Their respective interquartile ranges are [0.61636, 1.40103] versus [0.40655, 1.31527] in
+$z$; [5.15557, 5.64065] versus [5.35522, 6.66982] in historical score;
+[0.000833, 0.001668] versus [0.000926, 0.001685]$\arcsec$ in separation; and
+[30.9988, 235.084] versus [1.77359, 17.3439] in \texttt{DELTACHI2}.  The warned table contains
+2,194 GALAXY, 72 QSO, and one STAR rows, while the accepted table contains 157, 23, and one.
+These descriptive contrasts report differences in fit-quality, score, and redshift summaries
+between the accepted and warning-bearing cohorts.  They do not estimate selection probabilities, correct
+bias, or promote warning-bearing rows into the primary catalog.
+
+\begin{deluxetable}{lr}
+\tablecaption{Declared selection waterfall\label{tab:waterfall}}
+\tablehead{Stage & Rows}
+\startdata
+DESI-containing anomaly clusters & 190,015 \\
+Main science-bit DESI rows searched & 20,299,155 \\
+$\leq1\arcsec$ positional matches & 2,468 \\
+Remove non-\texttt{ZCAT\_PRIMARY} & $-20$ \\
+Global-primary matches & 2,448 \\
+Remove primary rows with \texttt{ZWARN}$\ne0$ & $-2,267$ \\
+Released candidates & \textbf{181} \\
+\enddata
+\tablecomments{The 181-row release is 7.33\% of the positional science-bit cohort.  This is a
+quality-gate survival fraction, not an anomaly rate; see Section~\ref{sec:selection}.}
+\end{deluxetable}
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.90\textwidth]{p3_v320_selection_waterfall.pdf}
+\caption{\textit{Left:} Selection waterfall from the exact historical bitmask cohort to the
+warning-free global-primary release.  \textit{Right:} Number of released candidates at or above
+each positional separation.  The dashed line marks the published quality-tier boundary; the
+dotted line is the predeclared join limit.\label{fig:waterfall}}
+\end{figure*}
+
+The large \texttt{ZWARN} reduction is scientifically important.  An anomaly-selected spectrum is
+more likely than an ordinary spectrum to be difficult for a standard template-fitting pipeline.
+Consequently, the warning-free subset is cleaner for catalog-level redshift metadata but is not
+a random subset of all unusual spectra.  This tradeoff motivates the restricted interpretation
+in Section~\ref{sec:selection}.
+
+\subsection{Descriptive composition}\label{sec:composition}
+
+Redrock classifies 157 released rows as GALAXY, 23 as QSO, and one as STAR.  The observing programs
+are 162 dark and 19 bright.  Target-bit labels are overlapping: 157 rows carry ELG, 18 BGS\_ANY,
+seven QSO, one LRG, and one MWS\_ANY; a row can contribute to more than one count.  These values
+describe the catalog after selection.  They do not measure selection efficiencies by class
+because the relevant class-specific parent denominators and warning mechanisms have not been
+modeled.
+
+The redshift metadata span $-0.00034\le z\le6.0878$, with quartiles 0.616, 1.108, and 1.401.
+Two rows have $z<0$; 36 lie in $0\le z<0.5$, 36 in $0.5\le z<1$, 76 in $1\le z<1.5$, eight in
+$1.5\le z<2$, 13 in $2\le z<3$, and ten at $z\ge3$.  The two small negative values are retained
+because \texttt{ZWARN}=0 is the declared quality criterion and no physical-redshift cut was
+predeclared.  They are \texttt{P3-DESI-000018} ($z=-0.00033819$) and
+\texttt{P3-DESI-000163} ($z=-0.00033733$), both with descriptive Redrock
+\texttt{SPECTYPE=GALAXY}, BGS\_ANY targeting, and high coordinate consistency.  Their
+\texttt{DELTACHI2} values are 31,619.4203 and 14,278.0779, and their match separations are
+$0.000553\arcsec$ and $0.001766\arcsec$, respectively.  Both belong to the 20-target public-viewer
+audit in Section~\ref{sec:viewer-audit} and pass the same target retrieval, metadata agreement,
+and B/R/Z array-presence checks.  We retain those metadata without inferring that either is a template
+artifact.  Users interested in a positive-redshift science subset should add that cut explicitly
+and report the resulting 179 rows.
+
+The original anomaly-score range in the release is 5.0006--7.7057, with a median of 5.3244.  This
+narrow range is inherited from the historical anomaly threshold.  We do not convert it to a
+Gaussian significance or compare it across models.  Figure~\ref{fig:overview} shows the sky,
+redshift, score, and separation metadata without attaching a detection interpretation.
+
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{p3_v320_catalog_overview.pdf}
+\caption{Released \releaseVersion{} candidates.  (a) DESI-footprint sky distribution colored by descriptive
+Redrock \texttt{SPECTYPE}; open circles mark the 11 rows in the $0.1$--$1\arcsec$ separation tier.
+(b) Redshift metadata by spectral type.  (c) Historical anomaly score versus Redrock redshift.
+Neither \texttt{SPECTYPE} nor redshift was used to select the release, and the score is not a
+calibrated physical significance.\label{fig:overview}}
+\end{figure*}
+
+\subsection{Sky and positional coverage}\label{sec:sky}
+
+The released positions range from $3.73^\circ$ to $352.15^\circ$ in right ascension and
+$-19.31^\circ$ to $75.49^\circ$ in declination.  There are 134 candidates north and 47 south of
+the celestial equator.  All twelve 30-degree right-ascension bins are occupied, while four of
+six coarse equal-area declination bins are occupied.  These summaries demonstrate geographic
+coverage within the input, not isotropy.  The footprint is inherited from DESI DR1 and the
+historical anomaly sample; no all-sky uniformity correction is attempted.
+
+The median positional separation is $0.00127\arcsec$, with quartiles $0.00083\arcsec$ and
+$0.00167\arcsec$.  The abrupt tail of 11 larger separations is why both the continuous separation
+and categorical quality tier are released.  Positional coincidence inside $1\arcsec$ supports a
+catalog association, but it does not prove that the historical anomaly-row identity and public
+spectrum are physically identical in crowded or blended fields.  Those 11 rows are natural
+priorities for image-level and spectrum-level manual verification.
+
+\subsection{Example rows}\label{sec:examples}
+
+Table~\ref{tab:examples} uses a deterministic twelve-row illustrative set: the six highest
+historical scores, the highest-score QSO, the sole STAR, the maximum-redshift row, both negative-$z$
+rows, and the maximum-separation row.  Because these strata overlap, any unfilled slot is assigned
+to the next highest-score row not already selected.  Inclusion is not a recommendation that an
+object is novel or astrophysically important.  The complete machine-readable catalog contains all
+181 rows.
+
+\begin{deluxetable*}{lrrrrrrr}
+\tablecaption{Deterministic example rows: six highest-score rows plus the highest-score QSO,
+sole STAR, maximum-$z$, two negative-$z$, and maximum-separation strata, with overlaps filled by
+the next highest-score unused row\label{tab:examples}}
+\tablehead{Candidate & TARGETID & R.A. & Decl. & Type & $z$ & $S$ & Sep. (arcsec)}
+\startdata
+P3-DESI-000001 & 39633349869831142 & 272.82236 & 57.12256 & GALAXY & 0.668 & 7.71 & 0.001 \\
+P3-DESI-000002 & 39627706974869534 & 45.28046 & -3.31238 & GALAXY & 0.986 & 7.43 & 0.002 \\
+P3-DESI-000003 & 39627895609492977 & 131.94836 & 4.51377 & GALAXY & 0.838 & 7.30 & 0.274 \\
+P3-DESI-000004 & 39633407088529181 & 97.49930 & 61.65664 & GALAXY & 1.310 & 7.19 & 0.001 \\
+P3-DESI-000005 & 39627636166626827 & 132.90847 & -6.30883 & GALAXY & 1.033 & 7.08 & 0.991 \\
+P3-DESI-000006 & 39633418404759790 & 95.13019 & 62.74366 & GALAXY & 1.376 & 6.84 & 0.000 \\
+P3-DESI-000020 & 39627931743422578 & 132.93267 & 6.11482 & QSO & 3.816 & 6.07 & 0.001 \\
+P3-DESI-000039 & 39627780823979311 & 127.45356 & -0.20596 & STAR & 0.000 & 5.73 & 0.221 \\
+P3-DESI-000047 & 39627903570285763 & 247.89529 & 4.66991 & QSO & 6.088 & 5.63 & 0.002 \\
+P3-DESI-000018 & 39628296954055370 & 265.65886 & 21.45037 & GALAXY & -0.000 & 6.16 & 0.001 \\
+P3-DESI-000163 & 39628296954055072 & 265.64950 & 21.45594 & GALAXY & -0.000 & 5.06 & 0.002 \\
+P3-DESI-000007 & 39636182677589446 & 64.05184 & -16.74091 & GALAXY & 0.006 & 6.76 & 0.002 \\
+\enddata
+\tablecomments{R.A. and declination are ICRS degrees.  Type and $z$ are public Redrock metadata.
+$S$ is preserved historical anomaly-score metadata.  Values are rounded for display only; the
+full 181-row, 43-column table is supplied at submission as an AAS machine-readable digital asset.
+The two rows shown as $z=-0.000$ (\texttt{P3-DESI-000018}, \texttt{P3-DESI-000163}) are the small
+negative redshifts $z=-0.00033819$ and $z=-0.00033733$, reported to full precision in
+Section~\ref{sec:composition}; they are distinct from exact zero.}
+\end{deluxetable*}
+
+\section{Recovery Scope and Appropriate Use}\label{sec:selection}
+
+\subsection{What the catalog selects}\label{sec:what-selects}
+
+The release is the intersection of four operations: membership in a frozen historical
+anomaly-cluster list, positional coincidence with a public DESI row inside $1\arcsec$, membership
+in the declared main-survey science-bit parent, and the
+\texttt{ZCAT\_PRIMARY}/\texttt{ZWARN}=0 quality gates.  It is therefore conditional on the
+historical anomaly model, preprocessing, score threshold, survey footprint, target selection,
+public zcatalog construction, and Redrock warning behavior.  This work makes the public-ID
+recovery and downstream gates reproducible from the frozen list.  It does not reconstruct the
+upstream model/preprocessing selection function or make those inherited conditions ignorable.
+
+In particular, the released fraction $181/2468=7.33\%$ must not be called an anomaly rate, a
+validation efficiency, or a purity estimate.  The numerator is conditioned on warning-free
+template fits, while the denominator contains the very spectra for which template fitting may be
+difficult.  A population analysis would require at least the class-, magnitude-, redshift-,
+signal-to-noise-, and warning-dependent inclusion probabilities for both the historical anomaly
+stage and the DESI rejoin stage.  Those quantities are not available in this release.
+
+\subsection{Recommended uses}\label{sec:uses}
+
+The catalog is designed for:
+\begin{itemize}
+\item deterministic retrieval of 181 public DESI spectra by \texttt{TARGETID};
+\item manual or automated spectral vetting using the full public data products;
+\item testing alternative anomaly models on a fixed, warning-free candidate list;
+\item follow-up prioritization using continuous score, separation, target-bit, and redshift metadata; and
+\item reproducibility exercises in archive recovery and catalog selection.
+\end{itemize}
+
+It is not designed for estimating an anomaly occurrence rate, claiming new object classes,
+measuring cosmological parameters, or comparing raw counts with a differently selected survey.
+No SIMBAD-based novelty fraction, process-volume multiplier, cross-survey total, or cosmological
+inference is part of \releaseVersion{}.  Establishing novelty requires object-by-object literature and archive
+review beyond a coordinate database match.  Establishing a physical anomaly requires inspection
+of calibrated spectra, masks, observing conditions, and repeat observations.
+
+\subsection{Relationship to prior DESI anomaly searches}\label{sec:prior}
+
+Prior DESI studies have demonstrated useful outlier-search strategies for particular target
+classes and data subsets \citep{Liang2023,Nicolaou2026}.  Direct candidate-count comparisons are
+not meaningful here because the parent populations, preprocessing, models, thresholds, and
+quality gates differ.  The contribution of \releaseVersion{} is orthogonal: it converts a historically
+unrejoinable coordinate-and-score product into a small public-key catalog with a fully enumerated
+waterfall.  Model comparisons can use these 181 public spectra as a common follow-up set,
+but evaluation against a representative control sample would still be required.
+
+\section{Reproducibility and Integrity Audit}\label{sec:reproducibility}
+
+\subsection{Exact source-row rejoin}\label{sec:exact-rejoin}
+
+The independent validator reads the released \texttt{fits\_row} values from the final Parquet,
+reopens the public FITS file, and retrieves all 18 source fields listed in
+Table~\ref{tab:desi-fields}.  Integer, Boolean, and string fields are compared exactly; floating
+fields are also compared at zero tolerance because the Parquet values were copied directly.
+All 181 rows pass all 18 field comparisons.  Independently of the released table, the validator
+reconstructs the strict cohort from the 143 scan checkpoints and compares the complete
+\texttt{(cluster\_id, targetid, fits\_row)} sets.  The sets are exactly equal (181 expected,
+181 released, zero missing, and zero unexpected), rather than merely having equal counts.
+The validator separately confirms unique candidate,
+cluster, \texttt{TARGETID}, and FITS-row keys; zero null cells; main-survey membership; at least one
+declared science bit; \texttt{ZCAT\_PRIMARY}=true; \texttt{ZWARN}=0; and separation at or below
+$1\arcsec$.
+
+\subsection{Public-viewer retrieval audit}\label{sec:viewer-audit}
+
+We queried the DESI DR1 target-specific Legacy Survey viewer documented by the official DESI data
+access guide for every one of the 11 rows above $0.1\arcsec$ and for the 12-row representative set
+in Table~\ref{tab:examples}; overlap gives 20 unique targets.  Every page returned the released
+\texttt{TARGETID}, redshift, \texttt{SPECTYPE}, \texttt{ZWARN}, and \texttt{DELTACHI2} within the
+declared serialization tolerances, and served B, R, and Z spectral arrays containing 2,751,
+2,326, and 2,881 pixels, respectively, plus an imaging-cutout link.  The governed browser capture
+also confirmed that each target-specific viewer page rendered a spectrum and coordinate marker.
+
+The exact URLs, returned metadata, arm lengths, checks, and screenshots are preserved with the r3
+audit artifacts; the machine-readable result is
+\artifact{pipelines/p3\_anomaly\_engine/audits/p3\_v320\_r3\_public\_viewer\_audit.json}.
+This establishes public retrieval and metadata agreement.  It is not a visual classification,
+novelty result, or proof that a historical anomaly score has an astrophysical origin.  Imaging
+background appearance varied in the captured pages, so no crowded-field physical judgment is
+inferred from the screenshots.
+
+\subsection{Provenance and checksum reconciliation}\label{sec:checksums}
+
+The full local 22.37~GB FITS SHA-256 was recomputed.  A no-cache retrieval of DESI's current
+official checksum file reports the same value.  The live FITS endpoint reports the same byte size,
+an ETag of \texttt{6a516695-5356e87c0}, and a last-modified time of 2026-07-10 21:39:33 GMT.  The
+machine validator compared eight predeclared remote byte ranges, including the first and last,
+against the local FITS and required exact HTTP range metadata, byte counts, and SHA-256 digests;
+all eight passed.  Full transaction-level results remain in \texttt{SELECTION\_AUDIT.json}.  An older
+local provenance sidecar written in May 2026 records a
+different pre-replacement SHA-256.  We preserve that stale value in \texttt{PROVENANCE.json} and
+explicitly exclude it from current validation rather than overwriting the history.
+
+The two historical input Parquets are also hashed: the cluster table is
+\texttt{b14deb02...d6138c643} (12,087,824 bytes) and the anomaly table is
+\texttt{0a36b8d6...f103ec65} (10,514,503 bytes).  Full hashes, not abbreviated display forms, are in
+the release manifest and provenance file.
+
+\subsection{Release contents}\label{sec:release}
+
+The clean \releaseVersion{} directory contains one science table and its audit artifacts.  Its
+primary contract retains 181 positional associations, explicitly partitioned by
+\texttt{match\_quality\_tier} into the 170-row high-coordinate-consistency core and 11-row
+lower-confidence tail; it makes no secure-identity or purity claim:
+\begin{enumerate}
+\item \nolinkurl{desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet};
+\item \texttt{DATA\_DICTIONARY.md} and \texttt{README.md};
+\item \nolinkurl{COHORT_COUNTS.json}, \nolinkurl{QC_REPORT.json},
+\nolinkurl{SELECTION_AUDIT.json}, and \nolinkurl{SELECTION_AUDIT.md};
+\item exact build and independent-validation scripts;
+\item \texttt{PROVENANCE.json}; and
+\item \texttt{RELEASE\_MANIFEST.json} with SHA-256 and byte size for every payload file.
+\end{enumerate}
+The manifest hashes ten payload files and excludes itself to avoid a self-referential hash;
+the directory therefore contains eleven files total.  An independent post-generation
+pass recomputes every listed hash and byte count.  The release contains no Gaia, eROSITA, LAMOST,
+SDSS, Planck, ACT, or heterogeneous aggregate table.  Earlier releases remain historical and are
+not moved or rewritten.
+
+The separate directory \nolinkurl{desi_warned_primary_aux_v3.2.0-r5} contains the secondary
+warning-bearing Parquet table, dictionary, warning-forward README, provenance and license files,
+checkpoint and release manifests, exact-set replay assertion, and bundled builder/validator.
+Its validator independently reconstructs the 2,267 identities from all 143 clean-replay
+checkpoint parts, requires exact carried-field equality, and verifies the seven masks and decoded
+bits in Table~\ref{tab:zwarn}.  It is not part of the 181-row primary release.  The definitive
+\bundleVersion{} submission directory binds both products, the exact AAS table serialization,
+their builders/validators and dictionaries, the r6 controls, and the recovered coordinate-lineage
+evidence in one SHA-256 manifest.  Component version labels remain unchanged, and the AAS
+digital-asset DOI remains pending.
+
+\section{Limitations}\label{sec:limitations}
+
+The catalog has six central limitations.
+
+\textit{First, historical score lineage.}  The preserved evidence identifies a 496-to-128,
+five-seed-mean-MSE BigAE lineage, but the production normalization/resampling and original
+object-to-spectrum mapping are unavailable.  The score and residual columns are therefore
+preserved from the anomaly stream rather than recomputed from public spectra.  Neither
+\releaseVersion{} nor the auxiliary product claims exact historical-score reproduction or a
+physical-feature sensitivity function.
+
+\textit{Second, quality-conditioned incompleteness.}  Requiring \texttt{ZWARN}=0 removes 92.6\%
+of primary positional matches.  The released list is cleaner for metadata use but incomplete by
+construction and likely biased against the most difficult-to-fit spectra.  The secondary
+\warnedAuxVersion{} table makes those exclusions inspectable but does not estimate or correct that
+bias and does not make them primary-catalog members.
+
+\textit{Third, positional association.}  A $1\arcsec$ match is not a proof of identity in every
+field.  The sub-$0.1\arcsec$ core recovers the seed DESI members whose own coordinates define the
+cluster centroids, so its local-shift comparison verifies the recovery rather than establishing an
+independent astrophysical association; the shift control is informative only for the 11-object
+$0.1$--$1\arcsec$ tail, which it does not secure at the individual-row level.  Those rows are
+flagged and all users retain the continuous separation.  An original-member-centered $1\arcsec$
+counterfactual retains 180 rows and removes \texttt{P3-DESI-000030}.
+
+\textit{Fourth, no physical classification.}  Redrock class, redshift, and \texttt{DELTACHI2} are
+catalog metadata.  The 20-target viewer audit verifies public retrieval but does not classify
+spectral features.  We have not physically interpreted every spectrum, image, mask, or repeat
+observation, and we make no novelty or physical-anomaly claim.
+
+\textit{Fifth, inherited footprint and targeting.}  The sample follows DESI DR1 coverage and the
+declared target bits.  Target classes overlap, and no completeness correction is provided.
+
+\textit{Sixth, version specificity.}  Public redshift products can be regenerated or superseded.
+The release pins file size and checksum so later catalog versions can be compared rather than
+silently substituted.
+
+These limitations are not peripheral caveats: they define the valid use of the product.  The
+release should be cited as a candidate catalog and reproducibility artifact.
+
+\section{Conclusions}\label{sec:conclusions}
+
+We have replaced a heterogeneous, public-ID-limited anomaly product with a focused DESI DR1
+catalog whose public-ID recovery and provenance are testable from end to end.  Preserved code traces
+the historical DESI anomaly coordinates to FIBERMAP \texttt{TARGET\_RA}/\texttt{TARGET\_DEC} and
+the frozen cluster coordinates to member-coordinate means, while leaving the unavailable production
+object-to-spectrum mapping explicitly unresolved.  A memory-bounded scan of
+28,425,963 public zcatalog rows exactly reproduces the prior 20,299,155-row science-bit denominator
+and 2,468 one-arcsecond positional matches.  The declared global-primary and warning-free gates
+yield 181 unique public \texttt{TARGETID} associations.  The primary contract retains all 181 but
+distinguishes a 170-row high-coordinate-consistency core from 11 lower-confidence $0.1$--$1\arcsec$
+positional associations; neither is presented as a secure identity or purity estimate.  All carried
+DESI fields rejoin exactly, all released
+keys are unique, and every payload hash and byte size passes an independent manifest audit.
+The 2,267 warning-bearing global-primary matches are preserved in a separately labeled auxiliary
+table with exact warning masks and replay assertions; they remain outside the primary catalog and
+are not physically classified.
+Deterministic local shifts confirm that the sub-$0.1\arcsec$ core is expected seed self-recovery of
+the member coordinates that define the cluster centroids --- an end-to-end verification of the
+recovery rather than an independent association excess --- while for the 11-object
+$0.1$--$1\arcsec$ tail, where the shift control is genuinely informative, the rows are not secure
+from position alone.  The exact warned-row
+comparison exposes the quality gate's compositional effect without correcting it, and an explicit
+original-member-centered $1\arcsec$ counterfactual retains 180 rows and removes only
+\texttt{P3-DESI-000030}.
+
+The smaller, auditable count is the catalog-integrity improvement.  Relative to the frozen
+195,829-row historical anomaly table, it provides 181 traceable public-ID candidates and a clear account
+of the 2,287 exclusions.  The release retains the full $1\arcsec$ cohort definition while exposing
+the 11-row separation tail, preserves historical score metadata without turning it into a
+significance, and states that the warning-free cohort is unsuitable for occurrence-rate
+inference.  Its immediate purpose is reproducible spectral retrieval and follow-up; physical
+classification is not claimed by this catalog.
+
+\section*{Data Availability}
+
+The \releaseVersion{} primary release is published under the correction tag \releaseTag{} in the
+public Hugging Face dataset (accessed 2026-07-14)
+\url{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog}, path
+\nolinkurl{releases/p3-v3.2.0-r2/}.  At publication the tag resolves to commit
+\texttt{\releaseRevision}; that commit hash is the authoritative immutable identifier, and exact
+consumers should pin it rather than depend on a tag name alone.  All 11 files in that public
+snapshot were downloaded and verified byte-for-byte at its freeze.  The r5 closure validator,
+README, and audits are additive repository evidence; they do not rewrite and are not claimed to
+be present at the older public snapshot commit.  The
+historical \texttt{p3-v3.2.0} and \texttt{p3-v3.2.0-r1} tags and their artifacts are preserved;
+\releaseTag{} is an additive successor correction.
+
+The historical cluster and anomaly inputs (accessed 2026-07-14) are respectively
+\url{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/pathc_unique_objects.parquet}
+and
+\url{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/desi_dr1_anomalies.parquet}.
+Both are pinned by \texttt{p3-v3.1.161}, which resolves to immutable commit
+\href{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/tree/cdaaa03a72c69d86f011be128d93f261dc5b39a8}{\texttt{cdaaa03a...5b39a8}}; their SHA-256 values are recorded in
+\texttt{PROVENANCE.json}.  The public DESI input and official checksum list (accessed 2026-07-14) are available at
+\url{https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/}.  After downloading the
+three named inputs, the concrete build command is:
+\begingroup
+\scriptsize
+\begin{verbatim}
+BUILD=build_desi_science_catalog_v320_r2.py
+VALIDATE=validate_desi_science_catalog_v320_r2.py
+RELEASE=desi_science_catalog_v3.2.0-r2
+FITS=zall-pix-iron.fits
+FITS_SHA256=2d95ad99361039b556c402b49e0e7c84\
+df5f00106dc5731d44476a58b128b49b
+python3 "$BUILD" \
+  --clusters pathc_unique_objects.parquet \
+  --anomalies desi_dr1_anomalies.parquet \
+  --fits "$FITS" \
+  --output-dir "$RELEASE" \
+  --chunk-rows 200000 \
+  --fits-sha256 "$FITS_SHA256"
+python3 "$VALIDATE" \
+  --release-dir "$RELEASE" \
+  --fits "$FITS" \
+  --clusters pathc_unique_objects.parquet \
+  --parts-dir ".$RELEASE.build/match_parts"
+\end{verbatim}
+\endgroup
+The expected FITS digest is assigned on one shell line and passed through an environment
+variable, avoiding any copy-paste ambiguity.  The validator also derives the shown checkpoint
+path from \texttt{--release-dir} when \texttt{--parts-dir} is omitted; both forms pass from an
+unrelated fresh temporary directory.  The release README gives the same download, build,
+validation, and explicit \texttt{sha256sum -c} commands for the two historical inputs.  The source tree contains the same
+scripts at \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/scripts}{\nolinkurl{pipelines/p3_anomaly_engine/scripts/}}.  No secret credentials or private
+data are required to validate the released catalog against the public DESI file.
+
+The secondary \warnedAuxVersion{} product is available at
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5}{\nolinkurl{pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/}}
+(accessed 2026-07-14).  Its exact identity-set digest is
+\texttt{2cc02e4b839073a3d2664c57614a6b20\allowbreak205a3d1d9d68d71851b72ccb4794ee78};
+the release manifest records the SHA-256 and byte size of each payload.  This repository artifact
+is secondary, warning-bearing, outside the primary catalog, and not physically validated.
+
+The definitive checksum-bound \bundleVersion{} ApJS submission unit is
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/apjs_submission_bundle_v3.2.0-r7}{\nolinkurl{pipelines/p3_anomaly_engine/apjs_submission_bundle_v3.2.0-r7/}}.
+Its \texttt{BUNDLE\_MANIFEST.json} binds the primary release, warned auxiliary, AAS
+machine-readable table and builder, dictionaries and validators, r6 controls, and coordinate-lineage
+evidence by role, source path, byte size, and SHA-256.  The manifest defines the 170/11 primary
+contract and records the AAS digital-asset DOI as pending rather than claimed; \texttt{SHA256SUMS}
+also binds the manifest and bundle README.
+
+The r6 science-control script, full JSON result, 181-row original-member sensitivity sidecar,
+11-row positional-tail extract, and plotted radius curve are repository artifacts at
+\artifact{pipelines/p3\_anomaly\_engine/scripts/p3\_apjs\_r6\_science\_controls.py},
+\artifact{pipelines/p3\_anomaly\_engine/outputs/p3\_apjs\_r6\_science\_controls.json}, and the
+adjacent r6 output/figure paths.  The JSON records all 16 realizations, input hashes, cohort
+descriptives, and the deterministic original-member expression; it makes no archive-DOI claim.
+
+The printed Table~\ref{tab:examples} is only a 12-row, eight-column illustrative excerpt.  The
+separate full 181-row, 43-column catalog table (\texttt{tab3.tsv}) is prepared for submission with
+this manuscript, accompanied by a plain-text column dictionary and SHA-256
+manifest in
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4}{\nolinkurl{pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4/}}.  It will be submitted as an
+AAS contributed digital asset.  AAS assigns the journal digital-asset DOI during its publication
+workflow; no such DOI has yet been assigned or is claimed here.  The immutable Hugging Face commit
+above remains the present public byte-level reference.  In addition, an immutable versioned
+archival deposit of the reviewed \texttt{\depositVersion} release---this manuscript PDF, its \LaTeX{}
+source, the arXiv source bundle, a tracked-provenance archive, and \texttt{SHA256SUMS}---is now
+published on Zenodo under the minted archival DOI
+\href{https://doi.org/10.5281/zenodo.21461888}{doi:10.5281/zenodo.21461888} (version DOI; the
+concept DOI \href{https://doi.org/10.5281/zenodo.21461887}{doi:10.5281/zenodo.21461887}
+presently resolves to the latest deposited version (\texttt{\depositVersion}), to which subsequent
+versions will be added).  That deposit archives the reviewed \texttt{\depositVersion} bytes exactly;
+\depositRelation.  This Zenodo archival DOI is a self-deposited
+reproducibility handle and is distinct from the AAS journal digital-asset DOI, which the journal
+still assigns during its publication workflow and which remains an honest open gate.  The historical dataset and catalog
+data/documentation are CC BY 4.0; bundled code retains the repository license.  The AAS asset is
+the planned journal archive, with its DOI remaining an honest publication-workflow gate.  This follows the AAS data guide (accessed 2026-07-14)
+(\url{https://journals.aas.org/data-guide/}) and digital-asset DOI policy
+(\url{https://journals.aas.org/news/digital_asset_doi_landingpage/}).
+
+\section*{Software}
+
+The build used Python 3.9.6, NumPy 1.26.4 \citep{Harris2020}, pandas 2.1.4
+\citep{McKinney2010}, SciPy 1.13.1 \citep{Virtanen2020}, fitsio 1.3.0
+\citep{SheldonFitsio}, and PyArrow 21.0.0 \citep{ApacheArrow}.  FITS is described by
+the FITS standard \citep{Pence2010}.  Exact versions and the chunk size are recorded in
+\texttt{PROVENANCE.json}.
+
+\begin{acknowledgments}
+This research used data obtained with the Dark Energy Spectroscopic Instrument (DESI).  DESI
+construction and operations is managed by the Lawrence Berkeley National Laboratory.  This
+material is based upon work supported by the U.S. Department of Energy, Office of Science,
+Office of High-Energy Physics, under Contract No. DE--AC02--05CH11231, and by the National Energy
+Research Scientific Computing Center, a DOE Office of Science User Facility under the same
+contract.  Additional support for DESI was provided by the U.S. National Science Foundation
+(NSF), Division of Astronomical Sciences under Contract No. AST-0950945 to the NSF's National
+Optical-Infrared Astronomy Research Laboratory; the Science and Technology Facilities Council
+of the United Kingdom; the Gordon and Betty Moore Foundation; the Heising-Simons Foundation;
+the French Alternative Energies and Atomic Energy Commission (CEA); the National Council of
+Humanities, Science and Technology of Mexico (CONAHCYT); the Ministry of Science and Innovation
+of Spain (MICINN), and by the DESI Member Institutions:
+\url{https://www.desi.lbl.gov/collaborating-institutions}.  The DESI collaboration is honored to
+be permitted to conduct scientific research on I'oligam Du'ag (Kitt Peak), a mountain with
+particular significance to the Tohono O'odham Nation.  Any opinions, findings, and conclusions
+or recommendations expressed in this material are those of the author and do not necessarily
+reflect the views of the U.S. National Science Foundation, the U.S. Department of Energy, or
+any of the listed funding agencies.
+
+\emph{AI-assisted methodology.}---The retained AI-assisted review archive records Claude, Grok, Gemini, and ChatGPT/OpenAI reviewer legs. AI coding and review tools, operated under the author's direction, assisted with implementation review, documentation, manuscript drafting and revision, and adversarial checks. Their outputs were not treated as evidence:
+all catalog assertions reported here were accepted only after direct checking against
+the machine-readable artifacts, committed code, and local or public-source validation.
+The author set the study scope, made the scientific judgments, and takes full
+responsibility for the manuscript.  No AI system is an author or is credited as one.
+\end{acknowledgments}
+
+\begin{thebibliography}{20}
+
+\bibitem{DESI2025DR1}
+DESI Collaboration, ``Data Release 1 of the Dark Energy Spectroscopic Instrument,''
+Astron.\ J.\ \textbf{171}, 285 (2026),
+\href{https://doi.org/10.3847/1538-3881/ae4c43}{doi:10.3847/1538-3881/ae4c43},
+arXiv:2503.14745.
+
+\bibitem{Baron2017}
+D.\ Baron and D.\ Poznanski, ``The weirdest SDSS galaxies: results from an outlier detection
+algorithm,'' Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{465}, 4530 (2017).
+
+\bibitem{Liang2023}
+Y.\ Liang et al., ``Outlier Detection in the DESI Bright Galaxy Survey,''
+Astrophys.\ J.\ Lett.\ \textbf{956}, L6 (2023), arXiv:2307.07664.
+
+\bibitem{Nicolaou2026}
+C.\ Nicolaou et al., ``Identifying Anomalous DESI Galaxy Spectra with a Variational Autoencoder,''
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{547}(2), stag010 (2026),
+\href{https://doi.org/10.1093/mnras/stag010}{doi:10.1093/mnras/stag010},
+arXiv:2506.17376.
+
+\bibitem{Golden2026Data}
+H.\ Golden, ``BigBounce Multi-Survey Autoencoder Anomaly Catalog (Paper 3),''
+version \texttt{p3-v3.1.161}, CC BY 4.0 (2026), immutable revision
+\href{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/tree/cdaaa03a72c69d86f011be128d93f261dc5b39a8}{\texttt{cdaaa03a...5b39a8}}, accessed 2026-07-14.
+
+\bibitem{DESIBitmasks}
+DESI Data Systems, ``Bit Masks in DESI: target masks and Redrock ZWARN,''
+DESI Data Model 25.3 (2025),
+\url{https://desidatamodel.readthedocs.io/en/25.3/bitmasks.html}, accessed 2026-07-14.
+
+\bibitem{Harris2020}
+C.\ R.\ Harris et al., ``Array programming with NumPy,'' Nature \textbf{585}, 357 (2020),
+\href{https://doi.org/10.1038/s41586-020-2649-2}{doi:10.1038/s41586-020-2649-2}.
+
+\bibitem{McKinney2010}
+W.\ McKinney, ``Data Structures for Statistical Computing in Python,'' in
+Proceedings of the 9th Python in Science Conference, 56 (2010),
+\href{https://doi.org/10.25080/Majora-92bf1922-00a}{doi:10.25080/Majora-92bf1922-00a}.
+
+\bibitem{Virtanen2020}
+P.\ Virtanen et al., ``SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python,''
+Nat.\ Methods \textbf{17}, 261 (2020).
+
+\bibitem{Pence2010}
+W.\ D.\ Pence, L.\ Chiappetti, C.\ G.\ Page, R.\ A.\ Shaw, and E.\ Stobie,
+``Definition of the Flexible Image Transport System (FITS), version 3.0,''
+Astron.\ Astrophys.\ \textbf{524}, A42 (2010).
+
+\bibitem{SheldonFitsio}
+E.\ Sheldon, ``fitsio: a Python library to read from and write to FITS files,''
+version 1.3.0, \url{https://github.com/esheldon/fitsio}.
+
+\bibitem{ApacheArrow}
+Apache Software Foundation, ``Apache Arrow and PyArrow,'' version 21.0.0,
+\url{https://arrow.apache.org/docs/}.
+
+\end{thebibliography}
+
+\clearpage
+\appendix
+
+\section{Executable Selection Specification}\label{app:selection}
+
+For clarity, the released cohort can be represented by the following ordered specification:
+\begin{enumerate}
+\item Select the 190,015 historical clusters with \texttt{desi\_dr1} in their survey membership.
+\item For each cluster, select the highest-score DESI historical member, breaking ties by source row.
+\item Stream public zcatalog rows and retain
+\texttt{SURVEY==main} with at least one declared \texttt{DESI\_TARGET} bit.
+\item Assign each eligible zcatalog row to its nearest cluster in spherical unit-vector space.
+\item Retain separations $\le1\arcsec$.
+\item Verify by an all-neighbor query that no eligible row has a second cluster within
+$1\arcsec$ and that parent/strict pair counts remain 2,468/181.
+\item Define the parent, global-primary, and strict predicates; the strict predicate requires
+\texttt{ZCAT\_PRIMARY}=true and \texttt{ZWARN}=0.
+\item Apply the chosen cohort predicate before duplicate handling.
+\item Within that predicate-filtered cohort, keep the nearest row per cluster; break ties by descending
+\texttt{DELTACHI2}, ascending \texttt{TARGETID}, and ascending FITS row.
+\item Apply the same ordering to keep one cluster per \texttt{TARGETID}.
+\item Label separation $\le0.1\arcsec$ as coordinate-consistent and the remaining declared
+$1\arcsec$ matches as the positional tail.
+\item Sort by \texttt{cluster\_id} and assign sequential release-local candidate IDs.
+\end{enumerate}
+
+The script writes checkpoint parts before forming the final cohort.  Thus the selection counts
+can be inspected independently of the manuscript and an interrupted full-catalog scan can resume
+without replaying completed chunks.
+
+\section{Column Groups}\label{app:columns}
+
+The release contains 43 columns after addition of the separation-quality tier and the explicit
+target-to-original-member separation.  The authoritative
+field-by-field descriptions and storage dtypes are in \texttt{DATA\_DICTIONARY.md}.  The two
+tables below define the public and historical field groups without duplicating them in a third
+summary table.
+
+\clearpage
+\refstepcounter{table}\label{tab:public-fields}
+\begin{center}
+\textbf{Table \thetable.} Release and public-DESI field definitions
+
+\smallskip
+\scriptsize
+\begin{tabular}{p{0.25\textwidth}p{0.68\textwidth}}
+\toprule
+Column & Definition \\
+\midrule
+\texttt{candidate\_id} & Stable release-local ID ordered by cluster ID. \\
+\texttt{fits\_row} & Zero-based row in the public DR1 ZCATALOG extension used by the exact rejoin audit. \\
+\texttt{cluster\_table\_row} & Zero-based row in the committed historical cluster table. \\
+\texttt{match\_separation\_arcsec} & Great-circle target-to-cluster separation in arcseconds. \\
+\texttt{match\_quality\_tier} & At most $0.1\arcsec$, or greater than $0.1\arcsec$ and at most $1\arcsec$. \\
+\texttt{original\_member\_separation\_arcsec} & Great-circle target-to-canonical-original-member separation; not used as a selection cut. \\
+\texttt{targetid} & Public DESI \texttt{TARGETID}; recommended archive key. \\
+\texttt{target\_ra}, \texttt{target\_dec} & Public DESI target coordinates in ICRS degrees. \\
+\texttt{survey}, \texttt{program} & DESI survey and observing-program labels. \\
+\texttt{desi\_target} & Raw \texttt{DESI\_TARGET} bitmask used for the declared science-bit gate. \\
+\texttt{bgs\_target}, \texttt{mws\_target}, \texttt{scnd\_target} & Raw public class-specific targeting bitmasks. \\
+\texttt{z} & Redrock redshift estimate; descriptive, not a selection label. \\
+\texttt{zwarn} & Redrock warning mask; required to equal zero. \\
+\texttt{spectype} & Redrock best-fit spectral type; not used as a selection cut. \\
+\texttt{deltachi2} & Best-versus-next-best Redrock template $\Delta\chi^2$. \\
+\texttt{coadd\_fiberstatus} & Bitwise OR of fiber-status flags contributing to the coadd. \\
+\texttt{main\_nspec} & Number of associated main-survey spectra. \\
+\texttt{main\_primary} & Primary-within-main-survey flag. \\
+\texttt{zcat\_nspec} & Number of spectra in the global zcatalog grouping. \\
+\texttt{zcat\_primary} & Global primary redshift-row flag; required to be true. \\
+\bottomrule
+\multicolumn{2}{p{0.93\textwidth}}{\footnotesize Note---Raw integer bitmasks are preserved so
+additional DESI software can decode more detailed classes without relying on the release's compact
+label.}\\
+\end{tabular}
+\end{center}
+
+\clearpage
+\refstepcounter{table}\label{tab:history-fields}
+\begin{center}
+\textbf{Table \thetable.} Historical-cluster and anomaly-metadata field definitions
+
+\smallskip
+\scriptsize
+\begin{tabular}{p{0.25\textwidth}p{0.68\textwidth}}
+\toprule
+Column & Definition \\
+\midrule
+\texttt{cluster\_id} & Stable identifier from the historical positional clustering. \\
+\texttt{n\_detections} & Number of historical anomaly members in the cluster. \\
+\texttt{n\_surveys} & Number of historical survey labels in the cluster. \\
+\texttt{survey\_list} & Comma-separated historical membership; audit provenance only. \\
+\texttt{cluster\_ra\_deg}, \texttt{cluster\_dec\_deg} & Mean historical cluster coordinate in ICRS degrees. \\
+\texttt{cluster\_best\_score} & Maximum historical score over all cluster members. \\
+\texttt{member\_ids} & Pipe-separated legacy row labels; not public archive keys. \\
+\texttt{best\_survey} & Historical survey supplying the cluster-best score. \\
+\texttt{desi\_source\_row} & Row of the canonical DESI member in the historical anomaly table. \\
+\texttt{original\_internal\_tid} & Legacy mixed/hash identifier; negative values are expected and it must not be used as a public key. \\
+\texttt{original\_ra\_deg}, \texttt{original\_dec\_deg} & Coordinates of the canonical historical DESI anomaly member. \\
+\texttt{original\_score} & Preserved historical anomaly-ranking score, not a calibrated significance. \\
+\texttt{original\_worst\_band} & Band with the largest historical residual summary. \\
+\texttt{original\_residual\_b} & Preserved historical B-band residual summary. \\
+\texttt{original\_residual\_r} & Preserved historical R-band residual summary. \\
+\texttt{original\_residual\_z} & Preserved historical Z-band residual summary. \\
+\texttt{science\_target\_class} & Pipe-separated decoded selected bits; labels are nonexclusive. \\
+\bottomrule
+\multicolumn{2}{p{0.93\textwidth}}{\footnotesize Note---These fields preserve the recovery
+lineage. They do not convert historical model output into public identity or astrophysical
+validation.}\\
+\end{tabular}
+\end{center}
+
+\section{Audit Matrix}\label{app:audit}
+
+\refstepcounter{table}\label{tab:audit}
+\begin{center}
+\textbf{Table \thetable.} Independent \releaseVersion{} integrity checks and \paperVersion{} closure audits
+
+\smallskip
+\scriptsize
+\begin{tabular}{p{0.25\textwidth}p{0.23\textwidth}p{0.40\textwidth}}
+\toprule
+Check & Result & Evidence \\
+\midrule
+Historical denominator & PASS: 20,299,155 & streamed cumulative counter \\
+Historical match count & PASS: 2,468 & checkpoint parts and cohort JSON \\
+Strict cohort identity & PASS: exact 181/181 set & \texttt{(cluster\_id,targetid,fits\_row)}; zero missing/unexpected \\
+Public identity & PASS: 181/181 & direct FITS-row \texttt{TARGETID} comparison \\
+Carried DESI fields & PASS: 18/18 fields for 181 rows & zero-tolerance source-row comparison \\
+Uniqueness & PASS & candidate, cluster, TARGETID, and FITS row \\
+Null cells & PASS: none & full Parquet null scan \\
+Selection gates & PASS & main, science bit, primary, warning-free, radius \\
+Gate/deduplication order & PASS & predicate first; 2,468/2,448/181; unsafe counterfactual loses zero rows \\
+Positional competitors & PASS & none within $1\arcsec$; one candidate has one competitor within $2\arcsec$ \\
+Nearest/all-neighbor equivalence & PASS & cluster minimum 5.02294$\arcsec$; exact 2,468/181 pairs \\
+Rejected ZWARN audit & PASS: 2,267 & seven exact masks; bits 1/2/11 counted and defined \\
+Warning-bearing auxiliary & PASS: exact 2,267/2,267 set & stable IDs, carried-field replay, decoded masks, manifest \\
+Local-shift association control & PASS: 16/16 realizations & 60/120$\arcsec$, eight angles, parent and strict radius curves \\
+Accepted/warned comparison & PASS: 181/2,267 exact rows & medians, quartiles, and Redrock class counts from Parquet \\
+Original-member sensitivity & PASS: 180 retained, one removed & explicit $\le1\arcsec$ expression; P3-DESI-000030 \\
+Public viewer retrieval & PASS: 20/20 & all 11 tail plus representative set; matching metadata and B/R/Z arrays \\
+FITS provenance & PASS & full local SHA equals current official checksum \\
+Remote parity & PASS: 8/8 & live 206/Content-Range/1 MiB/digest validation \\
+Payload manifest & PASS: 10 payloads & manifest self-excluded; 11 directory files total \\
+AAS table package & PASS: 181$\times$43 & exact typed TSV round-trip; journal DOI not yet assigned \\
+\bottomrule
+\multicolumn{3}{p{0.88\textwidth}}{\footnotesize Note---PASS describes integrity relative to the
+declared release contract. It is not a claim that the candidates are astrophysically anomalous
+or novel.}\\
+\end{tabular}
+\end{center}
+
+\end{document}
