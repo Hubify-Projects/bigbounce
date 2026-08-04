@@ -3,7 +3,7 @@
 % CONDENSED VERSION v1.0.155 — cut from 54pp to ≤25pp per external reviewer mandate
 
 
-\documentclass[twocolumn,linenumbers]{aastex701}
+\documentclass[twocolumn,linenumbers]{aastex702}
 
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
@@ -56,7 +56,14 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.272}
+\newcommand{\paperVersion}{v1.0.273}
+% v1.0.273 (2026-08-03 — publication-package closure only; no scientific
+%   claim, number, or caveat changed. Updated the journal shell from AASTeX
+%   7.0.1 to the current official AASTeX 7.0.2 class. Replaced the raw
+%   joint-covariance repository path in Table 9's caption with a short
+%   Data Availability pointer after isolated Tectonic exposed a 217.5-pt
+%   out-of-page hyperlink annotation. The full resolvable artifact link
+%   remains in the surrounding text and Data Availability.)
 % v1.0.272 (2026-07-24 — PROVENANCE-CLUTTER + ABSTRACT-CAP CLOSURE. Two gates, one bump.
 %   GATE 1: closes the 2026-07-23 re-sweep MAJOR adjudicated GENUINELY-NEW-REAL
 %   (TRUTH_AUDIT_RESWEEP_2026-07-23.md, "P4 -- Gemini [MAJOR]"): raw SHA-256 digests,
@@ -957,7 +964,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 24, 2026}
+\newcommand{\paperTimestamp}{August 3, 2026}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -1426,7 +1433,7 @@ The estimators above are reported against separate, non-interchangeable nulls. T
 Table~\ref{tab:joint_cov} reports the resulting $4\times4$ block-bootstrap correlation matrix and the per-estimator significance $z=\hat\theta/\sigma_{\rm boot}$ of each full-sample value against its own bootstrap spread. Three features matter. First, the monopole is the only $|z|>3$ mode ($z=-6.57$; consistent with, but appropriately more conservative than, the per-pixel-independent binomial $-9.47\sigmaunit$ of Sec.~\ref{sec:cw_frac}, because the block bootstrap propagates spatial coherence), while both dipole amplitudes and the MASTER-decoupled harmonic $\ell=1$ power are non-significant ($z=+2.21$ real-space dipole, $+0.81$ WLS dipole, $-0.61$ MASTER $\ell=1$), consistent with the primary null. Second, the monopole is nearly uncorrelated with \emph{every} dipole/harmonic channel ($\rho=-0.037$ with the real-space dipole, $\rho=-0.020$ with the WLS dipole, $\rho=-0.061$ with the MASTER-decoupled $\ell=1$): within one shared resampling the large monopole deviation moves essentially independently of the parity-even $\ell=1$ family, so the joint covariance quantitatively supports treating it as a statistically \emph{distinct} mode rather than as a contamination channel of the primary dipole null. Third, this run closes the previously pod-bound MASTER-decoupled refinement and validates the paper's harmonic proxy: the decoupled $C_1^{\rm master}$ correlates at $\rho=+0.943$ with the mask-coupled \texttt{anafast} $C_1$ pseudo-power proxy carried through the same bootstrap (confirming the NaMaster-free proxy faithfully tracks the full mode-coupling-matrix-inverse estimator on identical resamples) and at $\rho=+0.794$ with the real-space dipole (both capturing the same $\ell=1$ content); the joint covariance is therefore now NaMaster-complete. \emph{One honest caveat.} The WLS channel's bootstrap $\sigma$ is sensitive to the BLAS implementation of its nine-column weighted normal-equation solve, which is ill-conditioned on a minority of resamples ($\sigma_{\rm boot}=0.003436$ on one platform versus $0.005776$ on another; the table quotes the latter). The WLS amplitude is non-significant under both ($z=+1.36$ and $+0.81$) and enters only as a diagnostic, so this platform sensitivity changes no conclusion. This block establishes the joint sampling covariance of the four computed estimators; the monopole's causal mechanism is addressed separately by the classifier-injection analysis of Sec.~\ref{sec:cw_frac} and remains partly open (Sec.~\ref{sec:conclusions}).
 
 \begin{table}[tbp]
-\caption{\label{tab:joint_cov}Joint block-bootstrap correlation of the four estimators, measured on one shared \nside{}$=8$ superpixel bootstrap ($N_{\rm boot}=2{,}000$ resamples, all valid; seed 42; primary HC sample $N=949{,}584$; artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/g3\_joint\_estimator\_covariance\_master\_v2.json}). The fourth channel $C_1^{\rm master}$ is the NaMaster MASTER-decoupled $\ell=1$ power (mode-coupling-matrix inverse on the fixed canonical effective mask, $f_{\rm sky}=0.4899$; pymaster~3.0), computed on the identical resample index sets. Off-diagonal entries are Pearson correlations across the shared resamples. $\sigma_{\rm boot}$ is the per-estimator bootstrap standard deviation and $z$ is the full-sample value over $\sigma_{\rm boot}$. The monopole is the only $|z|>3$ mode and is nearly uncorrelated with all three dipole/harmonic channels. (The WLS $\sigma_{\rm boot}$ is BLAS-sensitive; see text.)}
+\caption{\label{tab:joint_cov}Joint block-bootstrap correlation of the four estimators, measured on one shared \nside{}$=8$ superpixel bootstrap ($N_{\rm boot}=2{,}000$ resamples, all valid; seed 42; primary HC sample $N=949{,}584$; artifact linked in Data Availability). The fourth channel $C_1^{\rm master}$ is the NaMaster MASTER-decoupled $\ell=1$ power (mode-coupling-matrix inverse on the fixed canonical effective mask, $f_{\rm sky}=0.4899$; pymaster~3.0), computed on the identical resample index sets. Off-diagonal entries are Pearson correlations across the shared resamples. $\sigma_{\rm boot}$ is the per-estimator bootstrap standard deviation and $z$ is the full-sample value over $\sigma_{\rm boot}$. The monopole is the only $|z|>3$ mode and is nearly uncorrelated with all three dipole/harmonic channels. (The WLS $\sigma_{\rm boot}$ is BLAS-sensitive; see text.)}
 \begin{center}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccc}
