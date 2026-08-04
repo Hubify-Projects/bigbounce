@@ -1,0 +1,23 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P1A",
+  "paper_version": "v1A.0.127",
+  "git_commit": "c4eba285f13f5aa5b616b0e90fec726250fd6758",
+  "tarball": "arxiv/paper1a_arxiv_v1A.0.127.tar.gz",
+  "tarball_sha256": "35bd4234eb84217f04cb658d11599eb482f2f0c1235d43465e0a5ba464928958",
+  "tarball_md5": "f9d0d7761cb00b28b56eca05998b6a89",
+  "tarball_size_bytes": 1265384,
+  "source_tex_sha256": "7fff23a4c20d97022d09dee08488704efbd9b4181c93c1dca6a562d7e5417943",
+  "source_pdf": "arxiv/paper1a_ech_nogo.pdf",
+  "source_pdf_sha256": "210be8f0b285034d88b9854c532eaac4a32147cea2621dedbaaac94540bbc7f0",
+  "page_count": 8,
+  "status": "pass",
+  "engine": "pdfTeX (pdflatex; isolated three-pass compile)",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 0,
+  "compiled_pdf_sha256": "4e5bca4db0b3c253bdb7a6ed1fb9e50b027b01cbb81ce3596226cf376c506ab0",
+  "verification_mode": "self-contained staged tar extraction; all six declared PNG figures plus .bbl staged; three-pass pdflatex; log, link, and all-eight-page visual audit",
+  "verified_at_utc": "2026-08-04T02:18:49Z",
+  "verifier": "publication-finalization/P1A-P1B"
+}
