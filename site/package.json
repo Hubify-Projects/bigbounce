@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/copy-old-site.mjs && node scripts/extract-figures-from-convex.mjs",
+    "predev": "node scripts/copy-old-site.mjs && node scripts/extract-figures-from-convex.mjs && node scripts/sync-repro-manifests.mjs",
     "dev": "next dev --webpack",
-    "prebuild": "node scripts/copy-old-site.mjs && node scripts/extract-figures-from-convex.mjs",
+    "prebuild": "node scripts/copy-old-site.mjs && node scripts/extract-figures-from-convex.mjs && node scripts/sync-repro-manifests.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
