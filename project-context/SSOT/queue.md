@@ -1,7 +1,8 @@
 # BigBounce current queue — authoritative entry point
 
-**Reconciled 2026-08-04.** The older chronological ledger below begins with
-historical entries and is retained for provenance. The active work is:
+**Reconciled 2026-08-04 · progressed 2026-08-05.** The older chronological
+ledger below begins with historical entries and is retained for provenance.
+The active work is:
 
 1. **DONE — bounded current-hash/package acceptance:** the exact six preserved
    source/PDF pairs pass the current receipt; five selected-manuscript
@@ -10,10 +11,28 @@ historical entries and is retained for provenance. The active work is:
 2. **HOUSTON — final sign-off:** decide P2, P1A, P4, P1B, and P5 in that order;
    only explicit `APPROVE` moves that manuscript from Directive-P 95 to 100.
    There is no 96 state. P3 receives support-release integration feedback only.
-3. **NEXT — anomaly flagship:** execute the clean public-ID-first DESI rerun and
-   build the defensible selected sample, validation, taxonomy, and manuscript.
+3. **ACTIVE — anomaly flagship (AUG-011) — clean rerun campaign LAUNCHED
+   2026-08-05:** campaign assets committed (`ac176614` + calibration sampling
+   fix `9729c287`; 15/15 offline tests) at
+   `pipelines/p1_highz_tracers/clean_rerun/` — bounded two-stage PPS
+   calibration (200 groups / 40k rows, seed 20260804), fail-closed manifest
+   sealing, receipted scan runner, pod RUNBOOK. RunPod pod
+   `tc291bka0r6fl3` (A4000, 200GB volume, $0.17/hr) is running the phase-1
+   chain: zcatalog SHA-verify (official `2d95ad99…b49b`) → locator inventory →
+   manifest finalize → sealed calibration → run contract → 5-group smoke +
+   verify-receipts, then STOPS for orchestrator review before the full
+   multi-TB scan. Frozen artifacts verified byte-identical on-pod (model
+   `f5266ba4…`, inference code `3e7efb24…`). Full-scan go decision +
+   backup-3plus cadence are the next gates.
 4. **HOUSTON + AGENT — publishing:** PRD/CQG/ApJS/JORS/AJ portal work, tracked
    separately from readiness. arXiv endorsement remains a parallel channel.
+   2026-08-04/05 hygiene pass: WAVE1/WAVE2 kits + May sign-off brief marked
+   SUPERSEDED; JORS kit re-hashed to live v2B.0.16 artifacts (PDF `312c349d`,
+   tex `64d59059`, tarball `9d9d0c23`); reviewer count corrected to five per
+   JORS checklist; L8TIPN endorsement code remapped P3→P1B. Remaining
+   publishing items are Houston-only (approvals, accounts, reviewer picks,
+   fee/waiver, endorsement emails, submit clicks) + post-approval Zenodo
+   P4 refresh / P5 mint.
 5. **WATCHPOINT — Hubify auth:** restore `HUBIFY_TOKEN` through an approved
    secret source before CLI verification; this is not on the repo/site path.
 

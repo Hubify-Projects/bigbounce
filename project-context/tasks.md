@@ -44,6 +44,10 @@ preserved audit history and must not be read as the active queue.
   implied by this gate.
 - [ ] **AUG-011 — Rebuilt anomaly flagship:** execute the clean rerun and reproduce one defensible sample,
   validation contract, taxonomy, and named follow-up set before drafting.
+  *2026-08-05 progress:* campaign assets committed (`ac176614`, `9729c287`;
+  15/15 offline tests) and the phase-1 chain (zcatalog SHA-verify → inventory →
+  sealed manifest/calibration → contract → 5-group smoke) is running on RunPod
+  pod `tc291bka0r6fl3`; full scan gated on smoke review.
 - [ ] **AUG-012 — Selected-portfolio execution board:** maintain six standalone
   works (including the rebuilt anomaly flagship and P5, excluding P3) plus the
   integrated P3 release; then resume sign-off, archives, endorsers, and venues.
