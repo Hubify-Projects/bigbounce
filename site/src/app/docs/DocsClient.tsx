@@ -143,9 +143,13 @@ const SECTIONS: DocSection[] = [
     body: (
       <>
         <p>
-          BigBounce is an end-to-end research orchestration stack for six
-          peer-reviewed cosmology papers (P1A, P1B, P2, P3, P4, P5). It
-          consists of three layers:
+          BigBounce is an end-to-end research orchestration stack for three
+          research programs — bounce theory, DESI anomaly discovery, and
+          galaxy chirality — spanning six versioned manuscripts and releases:
+          P2 (lead theory result) with specialist support from P1A and P1B;
+          P3 as an integrated supporting data release, not a standalone
+          discovery paper; and P4 (lead catalog result) with P5 as its
+          standalone companion. It consists of three layers:
         </p>
         <ol>
           <li>

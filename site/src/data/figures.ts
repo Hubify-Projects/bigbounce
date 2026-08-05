@@ -21,7 +21,7 @@ export interface FigureSection {
 
 export const figureSections: FigureSection[] = [
   {
-    "title": "Paper 1B — Technical Verification Companion (MCMC + NaMaster)",
+    "title": "Paper 1B — namaster-proof Software Verification (Exact pseudo-Cℓ Windows)",
     "count": "6 figures",
     "items": [
       {
@@ -121,7 +121,7 @@ export const figureSections: FigureSection[] = [
     ]
   },
   {
-    "title": "Paper 3 — DESI Spectral Anomalies (Multi-Survey Catalog)",
+    "title": "Paper 3 — Supporting Data Release · DESI Public-ID Recovery",
     "count": "24 figures",
     "items": [
       {
@@ -319,7 +319,7 @@ export const figureSections: FigureSection[] = [
     ]
   },
   {
-    "title": "Paper 4 — Galaxy Chirality Catalog (3.3M Spirals)",
+    "title": "Paper 4 — Galaxy Chirality Catalog (8.47M Galaxies, 890,069 High-Confidence)",
     "count": "12 figures",
     "items": [
       {
