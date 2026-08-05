@@ -328,3 +328,20 @@ mid-scan under a sealed AUG-011 contract as of 2026-08-05, with a full
 manuscript architecture already drafted
 (`project-context/ANOMALY_FLAGSHIP_MANUSCRIPT_ARCHITECTURE_2026-08-05.md`)
 waiting only on the scan's numbers to fill in its placeholders.
+
+## Decision record — 2026-08-05 (agent-executed under Houston's explicit full delegation)
+
+Houston granted full decision authority ("make all the decisions on the next
+steps for me… continue long-running", verbatim in prompt-history 2026-08-05).
+Decisions taken:
+
+1. **No-go survey paper: RESURRECT.** The 14-barrier catalog (sec:barriers of
+   `arxiv/paper1_unified.tex`) becomes a standalone bounce-theory specialist
+   paper, extracted under directive Q1 pure-contribution framing. Working id:
+   P1C. Status: extraction started 2026-08-05.
+2. **MCMC companion: first-class site card.** `arxiv/paper1b_mcmc_companion.tex`
+   gets its own card under the bounce-theory program (supporting validation
+   dossier role), ending its buried-link status.
+3. **Reproducibility surface: build.** Public per-program reproduce view from
+   `reproducibility/manifests/` + Hubify import spec — the lab-level final test
+   per directive Q2.
