@@ -104,6 +104,15 @@
       "surfaced": "2026-08-05",
       "site_surface": "site/src/data/papers.ts researchPrograms[bounce-theory].supportingLinks (program-level supporting link, not a papers[] entry)",
       "note": "P1B's MCMC companion manuscript. Not one of the six campaign papers, but its PDF is mirrored under served roots. Canonical-owner resolution: surfaced 2026-08-05 as a first-class supporting validation dossier under the bounce-theory research program on /paper and /papers, per project-context/PAPER_LINEAGE_2026-08-05.md §Decision record item 2. Modeled as a program-level supporting link rather than a papers[] entry so it does not pick up version-chip/PDF-mirror/publication-path machinery it doesn't have."
+    },
+    "P1C": {
+      "tex_path": "arxiv/paper1c_nogo_survey/main.tex",
+      "pdf_path": "arxiv/paper1c_nogo_survey/main.pdf",
+      "status": "draft-extraction",
+      "venue_candidate": "Classical and Quantum Gravity or Physical Review D",
+      "source_path": "arxiv/paper1_unified.tex (sec:barriers barrier catalog + tab:barriers + fig:barrier_map, Route-2/Route-3 closures, operator-basis-completeness argument + Appendices dim4_completion/fierz)",
+      "served_aliases": [],
+      "note": "\"A Structural No-Go Survey of Minimal Spin-Torsion Routes to Dark Energy and Bounce Phenomenology.\" Standalone specialist paper resurrecting the 13-mechanism-class no-go catalog retired from the P1 split (2026-07-14), extracted per project-context/PAPER_LINEAGE_2026-08-05.md Sec. 4(a) and its Decision record, under directive Q1 pure-contribution framing. Companion to P1A: cites P1A's torsion-elimination (Route 1) and zero-spin-branch transparency results rather than duplicating them. Compiled clean (15 pages, 0 undefined refs, 0 overfull hboxes >50pt, /latex-audit PASS) but not yet wired into the six-paper campaign roster, SSOT, Convex, or the review-round pipeline."
     }
   },
   "served_pdf_policy": {
