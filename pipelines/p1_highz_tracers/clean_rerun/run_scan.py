@@ -15,19 +15,38 @@ by `derive_locator_inventory.py`, this script:
      the exact calibration bound into the run contract
      (`build_calibration.anomaly_score_from_calibration`, imported — never
      re-derived);
-  4. writes one Parquet shard per healpix group with columns `targetid`
-     (int64), `anomaly_score` (float64), `mean_mse` (float64), `healpix`,
-     `survey`, `program`;
-  5. immediately calls `clean_rerun_contract.py`'s `record_receipt()` on
+  4. filters the scored rows against the group's SHA-verified zcatalog
+     targetid set (see "Public-ID-first filtering" below), dropping any
+     coadd spectrum whose TARGETID is not a real zcatalog row for that
+     group;
+  5. writes one Parquet shard per healpix group, from the FILTERED rows
+     only, with columns `targetid` (int64), `anomaly_score` (float64),
+     `mean_mse` (float64), `healpix`, `survey`, `program`;
+  6. immediately calls `clean_rerun_contract.py`'s `record_receipt()` on
      that shard (hash, row count, schema, and an atomic, contract-bound
      resume checkpoint);
-  6. deletes the downloaded coadd FITS file to bound local disk use.
+  7. deletes the downloaded coadd FITS file to bound local disk use.
 
 Fail-closed: before scoring anything, this script re-verifies that the
 model file at `--model` and the archived inference module on disk still
 hash to exactly what the supplied `--contract` bound (`build-contract`
 already re-verified both once; this is a second, independent check against
 whatever files are actually present on this pod at scan time).
+
+Public-ID-first filtering: a DESI DR1 coadd file for a given
+`(survey, program, healpix)` group can contain real, unique, positive
+TARGETIDs that are NOT rows of the sealed zall-pix-iron zcatalog for that
+same group (confirmed on the AUG-011 clean-rerun smoke test — e.g. group
+cmx/other/2154 had 139 zcatalog rows but 284 coadd spectra). The paper's
+primary sample must contain ONLY TARGETIDs vouched for by the SHA-verified
+zcatalog, so every scored group is filtered against `--group-targetids`
+(the sorted Parquet file `derive_locator_inventory.py export-group-targetids`
+writes) before its shard is persisted: surplus coadd spectra are dropped,
+never silently — every group's kept/dropped/missing counts are appended as
+one JSON line to `--audit-log`. A group with zero zcatalog targetids, or
+whose fraction of zcatalog targetids absent from the coadd exceeds 1%, fails
+closed and aborts the run rather than shipping an unvouched or suspiciously
+incomplete group.
 
 `--start`/`--end` slice the locator inventory so multiple pod workers can
 scan disjoint ranges in parallel; `--limit` caps the number of groups
@@ -104,6 +123,128 @@ def shard_name(survey: str, program: str, healpix: int) -> str:
     return f"scored-{survey}-{program}-{healpix}.parquet"
 
 
+def load_group_targetids(
+    group_targetids_path: Path, groups: list[tuple[str, str, int]]
+) -> dict[tuple[str, str, int], set[int]]:
+    """Load the zcatalog-verified targetid set for each requested group.
+
+    Uses pyarrow dataset predicate pushdown against the sorted
+    `(survey, program, healpix, targetid)` Parquet file
+    `derive_locator_inventory.py export-group-targetids` writes, so a worker
+    never has to materialize the full ~23M-row file: it reads only the rows
+    whose (survey, program, healpix) fall within its own requested group set
+    (typically its `--start`/`--end` slice), then discards anything outside
+    the exact requested triples. Memory is bounded by that worker's own
+    group range, never by the full corpus.
+    """
+    import pyarrow.dataset as ds
+
+    if not groups:
+        return {}
+
+    dataset = ds.dataset(group_targetids_path, format="parquet")
+    surveys = sorted({group[0] for group in groups})
+    programs = sorted({group[1] for group in groups})
+    healpixes = sorted({group[2] for group in groups})
+    predicate = (
+        ds.field("survey").isin(surveys)
+        & ds.field("program").isin(programs)
+        & ds.field("healpix").isin(healpixes)
+    )
+    table = dataset.to_table(filter=predicate, columns=["survey", "program", "healpix", "targetid"])
+
+    wanted = set(groups)
+    result: dict[tuple[str, str, int], set[int]] = {group: set() for group in groups}
+    for survey, program, healpix, targetid in zip(
+        table.column("survey").to_pylist(),
+        table.column("program").to_pylist(),
+        table.column("healpix").to_pylist(),
+        table.column("targetid").to_pylist(),
+    ):
+        key = (survey, program, int(healpix))
+        if key in wanted:  # predicate pushdown over-selects; keep only exact triples
+            result[key].add(int(targetid))
+    return result
+
+
+def filter_group_to_zcatalog(
+    scored_rows: list[dict[str, Any]],
+    zcat_targetids: set[int],
+    survey: str,
+    program: str,
+    healpix: int,
+    max_missing_fraction: float = 0.01,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Enforce the public-ID-first filter for one scored coadd group.
+
+    Keeps only scored rows whose `targetid` is vouched for by the
+    SHA-verified zcatalog for this `(survey, program, healpix)` group;
+    surplus coadd spectra are dropped WITH an honest audit trail, never
+    silently. Fails closed (raises `ScanError`) if:
+
+      - the group has zero zcatalog targetids (an unvouched group must never
+        be scanned), or
+      - more than `max_missing_fraction` (default 1%) of the group's
+        zcatalog targetids have no corresponding spectrum anywhere in the
+        coadd (too many zcatalog rows missing their spectrum is itself a
+        sign something upstream is broken), or
+      - the kept-row count does not equal the exact set-theoretic
+        expectation `zcat_rows - zcat_missing_from_coadd` (would indicate,
+        e.g., duplicate TARGETIDs inside the coadd).
+
+    Returns `(kept_rows, audit_record)`; the caller is responsible for
+    persisting `kept_rows` as the shard and appending `audit_record` to the
+    scan audit log.
+    """
+    group_label = f"(survey={survey}, program={program}, healpix={healpix})"
+    if not zcat_targetids:
+        raise ScanError(f"group {group_label} has zero zcatalog targetids; refusing to scan an unvouched group")
+
+    zcat_rows = len(zcat_targetids)
+    coadd_rows = len(scored_rows)
+    scored_targetid_set = {row["targetid"] for row in scored_rows}
+
+    zcat_missing_from_coadd = len(zcat_targetids - scored_targetid_set)
+    missing_fraction = zcat_missing_from_coadd / zcat_rows
+    if missing_fraction > max_missing_fraction:
+        raise ScanError(
+            f"group {group_label}: {zcat_missing_from_coadd}/{zcat_rows} zcatalog "
+            f"targetids ({missing_fraction:.2%}) have no spectrum in the coadd, "
+            f"exceeding the {max_missing_fraction:.0%} fail-closed threshold; aborting group"
+        )
+
+    kept_rows = [row for row in scored_rows if row["targetid"] in zcat_targetids]
+    kept = len(kept_rows)
+    expected_kept = zcat_rows - zcat_missing_from_coadd
+    if kept != expected_kept:
+        raise ScanError(
+            f"group {group_label}: kept-row count {kept} != expected {expected_kept} "
+            f"(zcat_rows={zcat_rows}, zcat_missing_from_coadd={zcat_missing_from_coadd}); "
+            "likely duplicate targetids in the coadd"
+        )
+
+    surplus_dropped = coadd_rows - kept
+    audit_record = {
+        "survey": survey,
+        "program": program,
+        "healpix": healpix,
+        "coadd_rows": coadd_rows,
+        "zcat_rows": zcat_rows,
+        "kept": kept,
+        "surplus_dropped": surplus_dropped,
+        "zcat_missing_from_coadd": zcat_missing_from_coadd,
+    }
+    return kept_rows, audit_record
+
+
+def append_audit_line(audit_log_path: Path, record: dict[str, Any]) -> None:
+    """Append one JSON line to the scan audit log (never overwrite/truncate)."""
+    audit_log_path.parent.mkdir(parents=True, exist_ok=True)
+    with audit_log_path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(record, sort_keys=True, separators=(",", ":")))
+        handle.write("\n")
+
+
 def score_group(module: types.ModuleType, model: Any, device: Any, coadd_path: Path, calibration: dict[str, Any]) -> list[dict[str, Any]]:
     """Score every spectrum in a downloaded coadd via the archived process_healpix()."""
     _n_obj, rows = module.process_healpix(str(coadd_path), None, model, device)
@@ -152,6 +293,8 @@ def run_scan(
     receipt_dir: Path,
     checkpoint_path: Path,
     coadd_cache_dir: Path,
+    group_targetids_path: Path,
+    audit_log_path: Path,
     base_url: str = DESI_HEALPIX_BASE_URL,
     start: int = 0,
     end: int | None = None,
@@ -188,6 +331,12 @@ def run_scan(
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = load_model(inference_module, model_path, device)
 
+    # Load, once at startup, the zcatalog-verified targetid set for every
+    # group this worker's --start/--end/--limit slice will touch. Bounded by
+    # this worker's own range, never by the full ~23M-row export.
+    groups = [(record["survey"], record["program"], int(record["healpix"])) for record in records]
+    group_targetids = load_group_targetids(group_targetids_path, groups)
+
     completed = already_completed_shards(checkpoint_path)
     coadd_cache_dir.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
@@ -197,6 +346,15 @@ def run_scan(
         name = shard_name(survey, program, healpix)
         if name in completed:
             continue
+
+        group_key = (survey, program, healpix)
+        zcat_targetids = group_targetids.get(group_key, set())
+        if not zcat_targetids:
+            raise ScanError(
+                f"group (survey={survey}, program={program}, healpix={healpix}) has zero "
+                f"zcatalog targetids in {group_targetids_path}; refusing to scan an unvouched "
+                "group before even downloading its coadd"
+            )
 
         relative = record["coadd_relative_path"]
         if not relative.startswith("healpix/"):
@@ -210,7 +368,11 @@ def run_scan(
             raise ScanError(f"failed to download coadd after retries: {coadd_url}")
         try:
             scored_rows = score_group(inference_module, model, device, coadd_path, calibration)
-            shard_path = write_shard(scored_rows, survey, program, healpix, shard_dir)
+            kept_rows, audit_record = filter_group_to_zcatalog(
+                scored_rows, zcat_targetids, survey, program, healpix
+            )
+            shard_path = write_shard(kept_rows, survey, program, healpix, shard_dir)
+            append_audit_line(audit_log_path, audit_record)
         finally:
             if coadd_path.exists():
                 coadd_path.unlink()
@@ -231,6 +393,19 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--receipt-dir", type=Path, required=True)
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--coadd-cache-dir", type=Path, required=True)
+    parser.add_argument(
+        "--group-targetids",
+        type=Path,
+        required=True,
+        help="sorted (survey, program, healpix, targetid) Parquet file from "
+        "derive_locator_inventory.py export-group-targetids",
+    )
+    parser.add_argument(
+        "--audit-log",
+        type=Path,
+        required=True,
+        help="path to append one JSON line per group: kept/surplus-dropped/zcat-missing counts",
+    )
     parser.add_argument("--base-url", type=str, default=DESI_HEALPIX_BASE_URL)
     parser.add_argument("--start", type=int, default=0, help="inventory slice start (parallel workers)")
     parser.add_argument("--end", type=int, default=None, help="inventory slice end, exclusive")
@@ -248,6 +423,8 @@ def main() -> None:
         args.receipt_dir,
         args.checkpoint,
         args.coadd_cache_dir,
+        args.group_targetids,
+        args.audit_log,
         base_url=args.base_url,
         start=args.start,
         end=args.end,

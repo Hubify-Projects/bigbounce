@@ -12,7 +12,12 @@ locally-computable pieces of the campaign under
     involved;
   - the anomaly-score arithmetic, run through the real archived `BigAE`
     class (imported unmodified from `enhanced_18M_inference.py`) with a
-    fixed-seed state dict, against a hand-computed z-score.
+    fixed-seed state dict, against a hand-computed z-score;
+  - the AUG-011 public-ID-first scan filter: `export-group-targetids`
+    against a synthetic zcatalog-like FITS table, `run_scan.py`'s Parquet
+    predicate-pushdown group-targetid loader against a synthetic Parquet
+    file, and `run_scan.py`'s per-group filter/audit-record logic against
+    synthetic scored rows (no coadd download, no torch inference involved).
 """
 
 from __future__ import annotations
@@ -32,6 +37,7 @@ sys.path.insert(0, str(CLEAN_RERUN_DIR))
 
 import derive_locator_inventory as inventory_tool  # noqa: E402
 import build_calibration as calibration_tool  # noqa: E402
+import run_scan as run_scan_tool  # noqa: E402
 
 
 def _sha256_file(path: Path) -> str:
@@ -313,6 +319,240 @@ class AnomalyScoreArithmeticTest(unittest.TestCase):
         self.assertAlmostEqual(float(scores.mean()), 0.0, places=9)
         self.assertAlmostEqual(float(scores.std(ddof=1)), 1.0, places=9)
         self.assertEqual(int(np.argmax(raw_mse)), int(np.argmax(scores)))
+
+
+class ExportGroupTargetidsTest(unittest.TestCase):
+    """`derive_locator_inventory.py export-group-targetids`: streams a
+    synthetic zcatalog-like FITS table into a sorted
+    (survey, program, healpix, targetid) Parquet file."""
+
+    def test_writes_sorted_parquet_matching_zcatalog_rows(self) -> None:
+        import pyarrow.parquet as pq
+
+        rows = [
+            (5, "main", "dark", 100),
+            (1, "main", "dark", 100),
+            (3, "main", "bright", 50),
+            (2, "sv3", "dark", 50),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            work = Path(tmp)
+            zcatalog_path = work / "zcatalog.fits"
+            _write_synthetic_zcatalog(zcatalog_path, rows)
+            digest = _sha256_file(zcatalog_path)
+            manifest_path = work / "manifest.json"
+            manifest_path.write_text(json.dumps({"catalog_sha256": digest}))
+            output_path = work / "group_targetids.parquet"
+
+            written = inventory_tool.export_group_targetids(
+                zcatalog_path, manifest_path, output_path, chunk_rows=2
+            )
+            self.assertTrue(written.is_file())
+            printed_sha = inventory_tool.sha256_file(written)
+            self.assertEqual(printed_sha, _sha256_file(written))
+            self.assertEqual(len(printed_sha), 64)
+
+            table = pq.read_table(written)
+            self.assertEqual(table.num_rows, 4)
+            self.assertEqual(set(table.schema.names), {"survey", "program", "healpix", "targetid"})
+            records = table.to_pylist()
+            keys = [(r["survey"], r["program"], r["healpix"], r["targetid"]) for r in records]
+            self.assertEqual(keys, sorted(keys))  # deterministic ascending order
+            self.assertEqual(
+                keys,
+                [
+                    ("main", "bright", 50, 3),
+                    ("main", "dark", 100, 1),
+                    ("main", "dark", 100, 5),
+                    ("sv3", "dark", 50, 2),
+                ],
+            )
+
+    def test_checksum_mismatch_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            work = Path(tmp)
+            zcatalog_path = work / "zcatalog.fits"
+            _write_synthetic_zcatalog(zcatalog_path, [(1, "main", "dark", 1)])
+            manifest_path = work / "manifest.json"
+            manifest_path.write_text(json.dumps({"catalog_sha256": "0" * 64}))
+            with self.assertRaises(inventory_tool.LocatorDerivationError):
+                inventory_tool.export_group_targetids(
+                    zcatalog_path, manifest_path, work / "group_targetids.parquet", chunk_rows=10
+                )
+
+
+class LoadGroupTargetidsTest(unittest.TestCase):
+    """`run_scan.py`'s `load_group_targetids`: pyarrow predicate-pushdown
+    read of a group's targetid set from the sorted Parquet export."""
+
+    @staticmethod
+    def _write_group_targetids_parquet(path: Path, rows: list[tuple[str, str, int, int]]) -> None:
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+
+        table = pa.table(
+            {
+                "survey": pa.array([r[0] for r in rows], type=pa.string()),
+                "program": pa.array([r[1] for r in rows], type=pa.string()),
+                "healpix": pa.array([r[2] for r in rows], type=pa.int64()),
+                "targetid": pa.array([r[3] for r in rows], type=pa.int64()),
+            }
+        )
+        table = table.sort_by(
+            [
+                ("survey", "ascending"),
+                ("program", "ascending"),
+                ("healpix", "ascending"),
+                ("targetid", "ascending"),
+            ]
+        )
+        pq.write_table(table, path)
+
+    def test_loads_only_requested_groups(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "group_targetids.parquet"
+            rows = [
+                ("main", "dark", 100, 1),
+                ("main", "dark", 100, 2),
+                ("main", "bright", 50, 9),  # not requested
+                ("cmx", "other", 2154, 42),
+            ]
+            self._write_group_targetids_parquet(path, rows)
+            groups = [("main", "dark", 100), ("cmx", "other", 2154), ("sv3", "dark", 7)]  # zero rows in file
+            result = run_scan_tool.load_group_targetids(path, groups)
+            self.assertEqual(result[("main", "dark", 100)], {1, 2})
+            self.assertEqual(result[("cmx", "other", 2154)], {42})
+            self.assertEqual(result[("sv3", "dark", 7)], set())
+            self.assertNotIn(("main", "bright", 50), result)
+
+    def test_export_then_load_roundtrip(self) -> None:
+        rows = [
+            (5, "main", "dark", 100),
+            (1, "main", "dark", 100),
+            (3, "main", "bright", 50),
+            (2, "sv3", "dark", 50),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            work = Path(tmp)
+            zcatalog_path = work / "zcatalog.fits"
+            _write_synthetic_zcatalog(zcatalog_path, rows)
+            digest = _sha256_file(zcatalog_path)
+            manifest_path = work / "manifest.json"
+            manifest_path.write_text(json.dumps({"catalog_sha256": digest}))
+            output_path = work / "group_targetids.parquet"
+            inventory_tool.export_group_targetids(zcatalog_path, manifest_path, output_path, chunk_rows=2)
+
+            groups = [("main", "dark", 100), ("main", "bright", 50), ("sv3", "dark", 50)]
+            loaded = run_scan_tool.load_group_targetids(output_path, groups)
+            self.assertEqual(loaded[("main", "dark", 100)], {1, 5})
+            self.assertEqual(loaded[("main", "bright", 50)], {3})
+            self.assertEqual(loaded[("sv3", "dark", 50)], {2})
+
+
+class PublicIdFirstFilterTest(unittest.TestCase):
+    """`run_scan.py`'s `filter_group_to_zcatalog`: the public-ID-first scan
+    filter that drops surplus coadd spectra with an honest audit trail,
+    modeled directly on the AUG-011 smoke-test gap (group cmx/other/2154:
+    139 zcatalog rows, 284 coadd spectra)."""
+
+    def test_surplus_rows_dropped_and_kept_equals_intersection(self) -> None:
+        scored_rows = [
+            {"targetid": 1, "anomaly_score": 0.1, "mean_mse": 0.01},
+            {"targetid": 2, "anomaly_score": 0.2, "mean_mse": 0.02},
+            {"targetid": 3, "anomaly_score": 0.3, "mean_mse": 0.03},  # surplus: not in zcatalog
+            {"targetid": 4, "anomaly_score": 0.4, "mean_mse": 0.04},  # surplus: not in zcatalog
+        ]
+        zcat_ids = {1, 2}  # both zcatalog ids have a spectrum in the coadd; 3, 4 are surplus
+        kept_rows, audit = run_scan_tool.filter_group_to_zcatalog(scored_rows, zcat_ids, "cmx", "other", 2154)
+        self.assertEqual({r["targetid"] for r in kept_rows}, {1, 2})
+        self.assertEqual(
+            audit,
+            {
+                "survey": "cmx",
+                "program": "other",
+                "healpix": 2154,
+                "coadd_rows": 4,
+                "zcat_rows": 2,
+                "kept": 2,
+                "surplus_dropped": 2,
+                "zcat_missing_from_coadd": 0,
+            },
+        )
+
+    def test_realistic_aug_011_gap_group_counts(self) -> None:
+        # 139 zcatalog targetids, all present in a 284-row coadd (145 surplus).
+        zcat_ids = set(range(1, 140))
+        scored_rows = [{"targetid": i, "anomaly_score": 0.0, "mean_mse": 0.0} for i in range(1, 285)]
+        kept_rows, audit = run_scan_tool.filter_group_to_zcatalog(scored_rows, zcat_ids, "cmx", "other", 2154)
+        self.assertEqual(len(kept_rows), 139)
+        self.assertEqual(audit["coadd_rows"], 284)
+        self.assertEqual(audit["zcat_rows"], 139)
+        self.assertEqual(audit["kept"], 139)
+        self.assertEqual(audit["surplus_dropped"], 145)
+        self.assertEqual(audit["zcat_missing_from_coadd"], 0)
+
+    def test_fails_closed_on_zero_zcatalog_ids(self) -> None:
+        with self.assertRaises(run_scan_tool.ScanError):
+            run_scan_tool.filter_group_to_zcatalog(
+                [{"targetid": 1, "anomaly_score": 0.1, "mean_mse": 0.01}], set(), "main", "dark", 1
+            )
+
+    def test_exactly_one_percent_missing_passes(self) -> None:
+        zcat_ids = set(range(1, 101))  # 100 zcatalog ids
+        scored_rows = [{"targetid": i, "anomaly_score": 0.0, "mean_mse": 0.0} for i in range(1, 100)]  # 99 rows
+        kept_rows, audit = run_scan_tool.filter_group_to_zcatalog(scored_rows, zcat_ids, "main", "dark", 1)
+        self.assertEqual(audit["zcat_missing_from_coadd"], 1)  # exactly 1/100 = 1%
+        self.assertEqual(audit["kept"], 99)
+        self.assertEqual(audit["surplus_dropped"], 0)
+
+    def test_fails_closed_when_missing_fraction_exceeds_one_percent(self) -> None:
+        zcat_ids = set(range(1, 101))  # 100 zcatalog ids
+        scored_rows = [{"targetid": i, "anomaly_score": 0.0, "mean_mse": 0.0} for i in range(1, 98)]  # 97 rows -> 3 missing = 3%
+        with self.assertRaises(run_scan_tool.ScanError):
+            run_scan_tool.filter_group_to_zcatalog(scored_rows, zcat_ids, "main", "dark", 1)
+
+    def test_fails_closed_on_kept_count_mismatch_from_duplicate_targetids(self) -> None:
+        zcat_ids = {1, 2, 3}
+        scored_rows = [
+            {"targetid": 1, "anomaly_score": 0.0, "mean_mse": 0.0},
+            {"targetid": 1, "anomaly_score": 0.0, "mean_mse": 0.0},  # duplicate targetid in coadd
+            {"targetid": 2, "anomaly_score": 0.0, "mean_mse": 0.0},
+            {"targetid": 3, "anomaly_score": 0.0, "mean_mse": 0.0},
+        ]
+        with self.assertRaises(run_scan_tool.ScanError):
+            run_scan_tool.filter_group_to_zcatalog(scored_rows, zcat_ids, "main", "dark", 1)
+
+
+class ScanAuditLogTest(unittest.TestCase):
+    def test_append_audit_line_writes_exact_json_lines_without_truncating(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            audit_path = Path(tmp) / "nested" / "audit.jsonl"
+            record_a = {
+                "survey": "main",
+                "program": "dark",
+                "healpix": 1,
+                "coadd_rows": 5,
+                "zcat_rows": 5,
+                "kept": 5,
+                "surplus_dropped": 0,
+                "zcat_missing_from_coadd": 0,
+            }
+            record_b = {
+                "survey": "cmx",
+                "program": "other",
+                "healpix": 2154,
+                "coadd_rows": 284,
+                "zcat_rows": 139,
+                "kept": 139,
+                "surplus_dropped": 145,
+                "zcat_missing_from_coadd": 0,
+            }
+            run_scan_tool.append_audit_line(audit_path, record_a)
+            run_scan_tool.append_audit_line(audit_path, record_b)
+            lines = audit_path.read_text(encoding="utf-8").splitlines()
+            self.assertEqual(len(lines), 2)
+            self.assertEqual(json.loads(lines[0]), record_a)
+            self.assertEqual(json.loads(lines[1]), record_b)
 
 
 if __name__ == "__main__":

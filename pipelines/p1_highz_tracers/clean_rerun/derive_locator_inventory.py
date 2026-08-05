@@ -27,6 +27,15 @@ file and injecting it as `locator_inventory_sha256`. This is the ONLY
 supported way to populate that field; it must never be typed in by hand, and
 `clean_rerun_contract.py` rejects anything that is not a genuine lowercase
 64-hex digest anyway.
+
+Also exports `export-group-targetids`: the public-ID-first source of truth
+`run_scan.py` filters scored coadd spectra against. A DESI DR1 coadd file for
+a given (survey, program, healpix) can contain real, unique, positive
+TARGETIDs that are NOT rows of the sealed zcatalog for that same group (a
+coadd/zcatalog surplus, confirmed on the AUG-011 clean-rerun smoke test); the
+paper's primary sample must contain only TARGETIDs vouched for by this
+export, one Parquet file of every (survey, program, healpix, targetid) row in
+the SHA-verified zcatalog, sorted for efficient per-group filtering.
 """
 
 from __future__ import annotations
@@ -148,6 +157,98 @@ def scan_zcatalog_groups(zcatalog_path: Path, chunk_rows: int = 500_000) -> dict
     return counts
 
 
+def scan_zcatalog_rows(zcatalog_path: Path, chunk_rows: int = 500_000) -> Iterable[Any]:
+    """Stream SURVEY/PROGRAM/HEALPIX/TARGETID from the zcatalog in bounded
+    row chunks, yielding one `pyarrow.RecordBatch` per chunk.
+
+    Unlike `scan_zcatalog_groups` (which aggregates down to a per-group row
+    COUNT and never keeps a single TARGETID), this generator preserves every
+    row, because the group-targetid export needs the actual public IDs. Peak
+    memory is still bounded: each chunk's decoded Python strings/ints are
+    converted into a compact pyarrow batch immediately and then discarded, so
+    at most one chunk's worth of Python objects (`chunk_rows`, default
+    500,000) is ever live — the accumulated pyarrow batches for the full
+    ~23M-row zcatalog total well under 1 GB (two int64 columns plus two
+    low-cardinality string columns).
+    """
+    import pyarrow as pa
+
+    try:
+        from astropy.io import fits
+    except ImportError as exc:  # pragma: no cover - runtime prerequisite
+        raise LocatorDerivationError("astropy is required to read the zcatalog FITS file") from exc
+
+    with fits.open(zcatalog_path, memmap=True) as hdul:
+        table_hdu = find_catalog_hdu(hdul)
+        data = table_hdu.data
+        n_rows = len(data)
+        for start in range(0, n_rows, chunk_rows):
+            stop = min(start + chunk_rows, n_rows)
+            survey_chunk = data["SURVEY"][start:stop]
+            program_chunk = data["PROGRAM"][start:stop]
+            healpix_chunk = data["HEALPIX"][start:stop]
+            targetid_chunk = data["TARGETID"][start:stop]
+            if not (len(survey_chunk) == len(program_chunk) == len(healpix_chunk) == len(targetid_chunk)):
+                raise LocatorDerivationError(f"column-length mismatch in zcatalog chunk [{start}:{stop}]")
+            yield pa.record_batch(
+                {
+                    "survey": pa.array([decode_fits_str(v) for v in survey_chunk], type=pa.string()),
+                    "program": pa.array([decode_fits_str(v) for v in program_chunk], type=pa.string()),
+                    "healpix": pa.array([int(v) for v in healpix_chunk], type=pa.int64()),
+                    "targetid": pa.array([int(v) for v in targetid_chunk], type=pa.int64()),
+                }
+            )
+
+
+def export_group_targetids(
+    zcatalog_path: Path, manifest_path: Path, output_path: Path, chunk_rows: int = 500_000
+) -> Path:
+    """Stream the SHA-verified zcatalog and write ONE Parquet file of every
+    real (survey, program, healpix, targetid) row, sorted by
+    (survey, program, healpix, targetid).
+
+    This is the public-ID-first source of truth `run_scan.py` filters
+    against: a coadd FITS file may contain surplus spectra (real, unique,
+    positive TARGETIDs) that are NOT rows of the sealed zcatalog for that
+    group, and the paper's primary sample must contain only TARGETIDs
+    vouched for by this export.
+    """
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    manifest = read_json(manifest_path)
+    verify_zcatalog_checksum(zcatalog_path, manifest)
+
+    batches = list(scan_zcatalog_rows(zcatalog_path, chunk_rows=chunk_rows))
+    total_rows = sum(batch.num_rows for batch in batches)
+    if total_rows == 0:
+        raise LocatorDerivationError("zcatalog yielded zero rows for group-targetid export")
+
+    table = pa.Table.from_batches(batches)
+    del batches  # release the per-chunk batches once folded into one table
+    table = table.sort_by(
+        [
+            ("survey", "ascending"),
+            ("program", "ascending"),
+            ("healpix", "ascending"),
+            ("targetid", "ascending"),
+        ]
+    )
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = output_path.with_suffix(output_path.suffix + ".tmp")
+    writer = pq.ParquetWriter(tmp_path, table.schema, compression="zstd")
+    try:
+        # Write in row-chunk-sized batches rather than one bulk write call,
+        # bounding peak memory during the write step itself.
+        for batch in table.to_batches(max_chunksize=chunk_rows):
+            writer.write_batch(batch)
+    finally:
+        writer.close()
+    os.replace(tmp_path, output_path)
+    return output_path
+
+
 def derive_inventory(zcatalog_path: Path, manifest_path: Path, output_path: Path, chunk_rows: int) -> Path:
     manifest = read_json(manifest_path)
     verify_zcatalog_checksum(zcatalog_path, manifest)
@@ -204,6 +305,17 @@ def build_parser() -> argparse.ArgumentParser:
     finalize.add_argument("--inventory", type=Path, required=True)
     finalize.add_argument("--output", type=Path, required=True)
 
+    export = subcommands.add_parser(
+        "export-group-targetids",
+        help="stream the zcatalog and write a sorted (survey, program, healpix, targetid) Parquet file",
+    )
+    export.add_argument("--zcatalog", type=Path, required=True)
+    export.add_argument(
+        "--manifest", type=Path, required=True, help="draft or final manifest carrying catalog_sha256"
+    )
+    export.add_argument("--output", type=Path, required=True)
+    export.add_argument("--chunk-rows", type=int, default=500_000)
+
     return parser
 
 
@@ -215,6 +327,9 @@ def main() -> None:
     elif args.command == "finalize-manifest":
         manifest = finalize_manifest(args.draft, args.inventory, args.output)
         print(json.dumps(manifest, indent=2, sort_keys=True))
+    elif args.command == "export-group-targetids":
+        path = export_group_targetids(args.zcatalog, args.manifest, args.output, args.chunk_rows)
+        print(f"wrote group-targetid parquet: {path} (sha256={sha256_file(path)})")
 
 
 if __name__ == "__main__":

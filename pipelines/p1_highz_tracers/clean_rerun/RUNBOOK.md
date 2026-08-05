@@ -30,11 +30,25 @@ This run is never tuned or truncated to match them.
   `--start`/`--end` parallel workers matter far more than GPU class).
 - A single A4000-class GPU (or a CPU-strong instance with several download
   threads) is sufficient; this is not a training run.
-- Calibration (step 6, `build_calibration.py`) is a SEPARATE, bounded
+- Calibration (step 7, `build_calibration.py`) is a SEPARATE, bounded
   download: a two-stage PPS cluster sample over ~200 coadd groups,
   ~25 GB total — never the near-full-corpus multi-terabyte download a
-  naive uniform 40,000-row draw over the zcatalog would cause. See step 6
+  naive uniform 40,000-row draw over the zcatalog would cause. See step 7
   and `build_calibration.py`'s module docstring.
+- **Public-ID-first filter rule.** The AUG-011 clean-rerun smoke test found
+  that a DESI DR1 coadd file for a given `(survey, program, healpix)` group
+  can contain real, unique, positive TARGETIDs that are NOT rows of the
+  sealed `zall-pix-iron` zcatalog for that same group — e.g. group
+  `cmx/other/2154` has 139 zcatalog rows but 284 coadd spectra. The paper's
+  primary sample must contain ONLY TARGETIDs vouched for by the SHA-verified
+  zcatalog; surplus coadd spectra are dropped, and dropped WITH an honest
+  audit trail, never silently. **Audit-log honesty contract:** `run_scan.py`
+  appends one JSON line per group to `--audit-log`
+  (`{survey, program, healpix, coadd_rows, zcat_rows, kept, surplus_dropped,
+  zcat_missing_from_coadd}`) for every group it scores, whether or not any
+  rows were dropped, and fails closed (aborts the run) rather than shipping
+  a shard for a group with zero zcatalog targetids or with more than 1% of
+  its zcatalog targetids missing a coadd spectrum.
 
 ## 1. Provision the pod
 
@@ -92,7 +106,23 @@ python3 pipelines/p1_highz_tracers/clean_rerun/derive_locator_inventory.py final
 pass `clean_rerun_contract.py`'s `require_sha()` check. Never hand-edit that
 field.
 
-## 6. Build calibration
+## 6. Export the group-targetids parquet (public-ID-first filter source)
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/derive_locator_inventory.py export-group-targetids \
+  --zcatalog /workspace/zall-pix-iron.fits \
+  --manifest /workspace/input_manifest.json \
+  --output /workspace/group_targetids.parquet
+```
+
+Streams the same SHA-verified zcatalog a second time and writes ONE Parquet
+file of every real `(survey, program, healpix, targetid)` row, sorted by
+`(survey, program, healpix, targetid)`, printing its SHA-256 on completion.
+This ~23M-row file is the public-ID-first source of truth `run_scan.py`
+filters every scored coadd against in step 9 — see §0 above for the rule it
+enforces and why it exists.
+
+## 7. Build calibration
 
 ```sh
 python3 pipelines/p1_highz_tracers/clean_rerun/build_calibration.py \
@@ -131,7 +161,7 @@ module docstring in `build_calibration.py` for the full design rationale,
 including the design-effect note on why this 5x gate is conservative in
 the fail-closed direction only under cluster sampling.
 
-## 7. Build the run contract
+## 8. Build the run contract
 
 ```sh
 python3 pipelines/p1_highz_tracers/clean_rerun_contract.py build-contract \
@@ -146,7 +176,7 @@ Binds the model SHA-256 + architecture, the inference-code SHA-256, the
 sealed input manifest, and the sealed calibration into one contract. Every
 downstream step re-verifies against this file.
 
-## 8. Smoke run (5 healpix groups)
+## 9. Smoke run (5 healpix groups)
 
 ```sh
 python3 pipelines/p1_highz_tracers/clean_rerun/run_scan.py \
@@ -157,6 +187,8 @@ python3 pipelines/p1_highz_tracers/clean_rerun/run_scan.py \
   --receipt-dir /workspace/receipts \
   --checkpoint /workspace/checkpoint.json \
   --coadd-cache-dir /workspace/coadd_cache \
+  --group-targetids /workspace/group_targetids.parquet \
+  --audit-log /workspace/scan_audit.jsonl \
   --limit 5
 ```
 
@@ -169,11 +201,13 @@ python3 pipelines/p1_highz_tracers/clean_rerun_contract.py verify-receipts \
   --receipt-dir /workspace/receipts
 ```
 
-Confirm 5 shards, 5 receipts, `verify-receipts` reports success, and each
-downloaded coadd file was deleted from `/workspace/coadd_cache` after
-scoring before proceeding to the full scan.
+Confirm 5 shards, 5 receipts, `verify-receipts` reports success, 5 lines
+appended to `/workspace/scan_audit.jsonl` (one per group, honestly reporting
+`kept`/`surplus_dropped`/`zcat_missing_from_coadd` even when nothing was
+dropped), and each downloaded coadd file was deleted from
+`/workspace/coadd_cache` after scoring before proceeding to the full scan.
 
-## 9. Full scan
+## 10. Full scan
 
 Single worker:
 
@@ -185,14 +219,18 @@ python3 pipelines/p1_highz_tracers/clean_rerun/run_scan.py \
   --shard-dir /workspace/shards \
   --receipt-dir /workspace/receipts \
   --checkpoint /workspace/checkpoint.json \
-  --coadd-cache-dir /workspace/coadd_cache
+  --coadd-cache-dir /workspace/coadd_cache \
+  --group-targetids /workspace/group_targetids.parquet \
+  --audit-log /workspace/scan_audit.jsonl
 ```
 
 Parallel pod workers (disjoint inventory slices; each worker needs its own
 `--shard-dir`/`--receipt-dir`/`--checkpoint`/`--coadd-cache-dir`, or a
 shared `--shard-dir`/`--receipt-dir` with per-worker checkpoints — prefer
 separate checkpoints per worker to avoid `record-receipt`'s "receipt bound
-to a different contract" / concurrent-write races on one checkpoint file):
+to a different contract" / concurrent-write races on one checkpoint file;
+give each worker its own `--audit-log` too, e.g. `scan_audit_w0.jsonl`, so
+concurrent appends never interleave-corrupt one file):
 
 ```sh
 # worker 0
@@ -200,6 +238,7 @@ python3 pipelines/p1_highz_tracers/clean_rerun/run_scan.py \
   --inventory /workspace/locator_inventory.jsonl --contract /workspace/run-contract.json \
   --model best_model_47k.pt --shard-dir /workspace/shards --receipt-dir /workspace/receipts \
   --checkpoint /workspace/checkpoint_w0.json --coadd-cache-dir /workspace/coadd_cache_w0 \
+  --group-targetids /workspace/group_targetids.parquet --audit-log /workspace/scan_audit_w0.jsonl \
   --start 0 --end 5000
 
 # worker 1
@@ -207,6 +246,7 @@ python3 pipelines/p1_highz_tracers/clean_rerun/run_scan.py \
   --inventory /workspace/locator_inventory.jsonl --contract /workspace/run-contract.json \
   --model best_model_47k.pt --shard-dir /workspace/shards --receipt-dir /workspace/receipts \
   --checkpoint /workspace/checkpoint_w1.json --coadd-cache-dir /workspace/coadd_cache_w1 \
+  --group-targetids /workspace/group_targetids.parquet --audit-log /workspace/scan_audit_w1.jsonl \
   --start 5000 --end 10000
 # ...and so on, one range per worker.
 ```
@@ -214,7 +254,7 @@ python3 pipelines/p1_highz_tracers/clean_rerun/run_scan.py \
 Restarting a worker with the same `--checkpoint` path resumes automatically
 (already-recorded shards are skipped).
 
-## 10. Backup-3plus every ~2h (standing directive E — ALWAYS, not just before stop)
+## 11. Backup-3plus every ~2h (standing directive E — ALWAYS, not just before stop)
 
 Every ~2h of scan wall-clock, mirror the growing shard/receipt/checkpoint
 set to 3+ locations:
@@ -234,9 +274,10 @@ b2 sync ./local-backup/aug-011 b2://<bucket>/aug-011-clean-rerun/
 ```
 
 Never stop the pod without confirming all 3 locations are current
-(`/pod-backup-before-stop`).
+(`/pod-backup-before-stop`). Include every worker's `--audit-log` file in
+the mirrored set — the audit trail is as load-bearing as the shards/receipts.
 
-## 11. Verify receipts (full corpus)
+## 12. Verify receipts (full corpus)
 
 ```sh
 python3 pipelines/p1_highz_tracers/clean_rerun_contract.py verify-receipts \
@@ -248,7 +289,7 @@ python3 pipelines/p1_highz_tracers/clean_rerun_contract.py verify-receipts \
 Re-run after every backup checkpoint and again once the scan is declared
 complete.
 
-## 12. Summarize after dedup
+## 13. Summarize after dedup
 
 ```sh
 python3 pipelines/p1_highz_tracers/clean_rerun_contract.py summarize-after-dedup \
@@ -264,7 +305,7 @@ Streams every verified shard through SQLite, keeps the **last** row per
 `selection_threshold` (5.0). `--sqlite` must point to a path that does not
 already exist.
 
-## 13. Compare generations
+## 14. Compare generations
 
 ```sh
 python3 pipelines/p1_highz_tracers/clean_rerun_contract.py compare-generations \
@@ -286,7 +327,13 @@ match them.
 - `run_scan.py` resume is automatic per-checkpoint: rerun the exact same
   command after any interruption (OOM, network drop, spot-instance
   preemption) and already-recorded shards are skipped.
-- If the calibration stability gate in step 6 fails, do not loosen the 5x
+- If the calibration stability gate in step 7 fails, do not loosen the 5x
   bound to force a seal — investigate the download/scoring path first (see
   `build_calibration.py`'s module docstring for what a failure there
   usually means).
+- `run_scan.py`'s public-ID-first filter (step 9/10) fails closed and aborts
+  the run if a group has zero zcatalog targetids, or if more than 1% of a
+  group's zcatalog targetids have no spectrum in the coadd — do not loosen
+  that 1% bound to push past a failure; investigate whether
+  `--group-targetids` was built from the same zcatalog as `--inventory`
+  first (see §0's public-ID-first filter rule).
