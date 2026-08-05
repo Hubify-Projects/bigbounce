@@ -162,11 +162,12 @@ guidance, not a cap. Leave it as is.
 
 **Provenance:** pulled verbatim from the compiled JORS PDF
 `arxiv/jors_submission/paper1b_namaster_proof_jors.pdf`, rendering of manuscript
-**v2B.0.15**, PDF md5 `51e302e6746ef9d67e3bde9265b1ec91`, 8 pages A4.
+**v2B.0.16**, PDF md5 `312c349d7e5399246b6f22e89454b10a`, 8 pages A4
+(re-verified 2026-08-04 against the live compiled PDF).
 
 > **RE-VERIFY BEFORE PASTING** if a parallel lane has bumped P1B since: run
 > `md5 -q arxiv/jors_submission/paper1b_namaster_proof_jors.pdf`; if it is no
-> longer `51e302e6746ef9d67e3bde9265b1ec91`, re-read the abstract out of the new
+> longer `312c349d7e5399246b6f22e89454b10a`, re-read the abstract out of the new
 > PDF and diff it against the block below.
 
 ```
@@ -215,14 +216,14 @@ wizard may also ask for them as form fields. Copy from here:
 
 | Role | Path | md5 | Notes |
 |---|---|---|---|
-| **Main LaTeX source** | `arxiv/jors_submission/paper1b_namaster_proof_jors.tex` | `9d378c5c143931b1989e5721ce08c71d` | 27,192 bytes; `\documentclass{jors}` |
+| **Main LaTeX source** | `arxiv/jors_submission/paper1b_namaster_proof_jors.tex` | `64d59059791557183fb660a4426f5fa0` | 27,873 bytes; `\documentclass{jors}` (v2B.0.16 rendering, re-hashed 2026-08-04) |
 | **Class file** | `arxiv/jors_submission/jors.cls` | `fa935958e955a7eb9ca010c69c479148` | **byte-identical to the copy in JORS's own `JORS_Template.zip`** — upload it so the editor can compile without hunting for it |
-| **Compiled PDF** | `arxiv/jors_submission/paper1b_namaster_proof_jors.pdf` | `51e302e6746ef9d67e3bde9265b1ec91` | **8 pages, A4**, 280,105 bytes, **0 figures** |
+| **Compiled PDF** | `arxiv/jors_submission/paper1b_namaster_proof_jors.pdf` | `312c349d7e5399246b6f22e89454b10a` | **8 pages, A4**, 280,686 bytes, **0 figures** (v2B.0.16, re-hashed 2026-08-04) |
 
 **Do not upload:**
-- `paper1b_jors_submission_v2B.0.15.tar.gz` (md5 `4e68a042f7386d292dd9ad5720957038`) — that is the provenance bundle, not a submission file. The portal wants individual files.
+- `paper1b_jors_submission_v2B.0.16.tar.gz` (md5 `9d9d0c23e48738ab9f4feba71a84bffc`) — that is the provenance bundle, not a submission file. The portal wants individual files. (The older `paper1b_jors_submission_v2B.0.15.tar.gz` alongside it is historical.)
 - `JORS_template_reference.tex` — JORS's own template, kept locally for reference.
-- The canonical `arxiv/paper1b_namaster_proof.pdf` (6 pp, US Letter, md5 `e1a80ef5c6078b7fd93d036ff719bbd0`). **That is the wrong file for this venue** — it is the non-JORS rendering. This is the easiest mistake to make in the whole submission: the two PDFs have near-identical names and sit two directories apart. **Check for "(1) Overview" on page 1 before you upload.** If page 1 starts with a two-column REVTeX title block instead, you have the wrong file.
+- The canonical `arxiv/paper1b_namaster_proof.pdf` (6 pp, US Letter, md5 `6d20df58e70261c805cd2ce2f9a4d5d3` at v2B.0.16, re-hashed 2026-08-04). **That is the wrong file for this venue** — it is the non-JORS rendering. This is the easiest mistake to make in the whole submission: the two PDFs have near-identical names and sit two directories apart. **Check for "(1) Overview" on page 1 before you upload.** If page 1 starts with a two-column REVTeX title block instead, you have the wrong file.
 
 There is no `.bbl` or `.bib`: the bibliography is an inline `thebibliography`, so
 the source compiles standalone with `pdflatex` alone. Verified in an isolated

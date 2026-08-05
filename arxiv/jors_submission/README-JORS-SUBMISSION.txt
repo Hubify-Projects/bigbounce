@@ -84,8 +84,9 @@ Remaining author-only steps before submission
   1. Create the JORS account at account.openresearchsoftware.metajnl.com.
   2. Budget the £824.00 Software Metapaper APC, or request a waiver/discount
      in the cover letter at the point of submission.
-  3. Provide the names and email addresses of three potential peer reviewers
+  3. Provide the names and email addresses of five potential peer reviewers
      in the portal's "Comments for the Editor" field; this is an explicit JORS
-     Submission Preparation Checklist requirement.
+     Submission Preparation Checklist requirement (five per the checklist —
+     see project-context/SSOT/JORS_SUBMISSION_KIT_P1B_2026-07-24.md section 8).
   4. Upload paper1b_namaster_proof_jors.tex + jors.cls + the PDF, tick the
      Submission Preparation Checklist, and submit.
