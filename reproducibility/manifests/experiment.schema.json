@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigbounce.hubify.app/schemas/experiment.schema.json",
+  "title": "BigBounce experiment manifest",
+  "description": "One JSON file per discrete experiment/simulation/derivation/training run/scan/analysis. See reproducibility/manifests/SCHEMA.md (directive Q2).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "id",
+    "title",
+    "program",
+    "paper",
+    "kind",
+    "inputs",
+    "apis",
+    "code",
+    "environment",
+    "original_run",
+    "reproduction",
+    "outputs",
+    "verification",
+    "status",
+    "provenance"
+  ],
+  "properties": {
+    "manifest_version": {
+      "const": "bigbounce-experiment/v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable kebab-case id, e.g. p4-g1-vit-retrain"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Plain-English one-liner"
+    },
+    "program": {
+      "type": "string",
+      "enum": ["bounce-theory", "anomaly-discovery", "galaxy-chirality", "lab-infra"]
+    },
+    "paper": {
+      "type": "string",
+      "enum": ["P1A", "P1B", "P2", "P3-support", "P4", "P5", "anomaly-flagship", "none"]
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "derivation",
+        "training",
+        "inference-scan",
+        "validation",
+        "crossmatch",
+        "mcmc",
+        "analysis",
+        "figure-generation",
+        "packaging"
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "type", "locator"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "type": {
+            "type": "string",
+            "enum": ["external-dataset", "internal-artifact", "model"]
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1,
+            "description": "URL for external data (HF/DESI/Zenodo/etc.) or repo-relative path for internal artifacts"
+          },
+          "checksum": {
+            "type": ["string", "null"],
+            "description": "sha256/md5/HF revision when known; null if not evidenced"
+          },
+          "license": {
+            "type": ["string", "null"],
+            "description": "Required context for external inputs; null/omitted for internal artifacts"
+          }
+        }
+      }
+    },
+    "apis": {
+      "type": "array",
+      "description": "Services called at run time. Empty list = fully offline.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "endpoint", "auth_required"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "endpoint": { "type": "string", "minLength": 1 },
+          "auth_required": { "type": "boolean" }
+        }
+      }
+    },
+    "code": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "entrypoint"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Repo-relative path; MUST exist in the repo tree"
+          },
+          "entrypoint": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact command used to run this code"
+          },
+          "sha256": {
+            "type": ["string", "null"],
+            "description": "Optional pin of the script content"
+          }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["python", "hardware"],
+      "properties": {
+        "python": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Deps list (comma-separated) or requirements-file repo path"
+        },
+        "hardware": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Minimum hardware, e.g. cpu-only, gpu-24gb, gpu-a4000-16gb"
+        }
+      }
+    },
+    "original_run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["venue", "gpu", "pod_id_or_host", "date", "wall_clock", "actual_cost_usd"],
+      "description": "NEVER fabricate: any value not actually evidenced in the inventory/SSOT MUST be null.",
+      "properties": {
+        "venue": {
+          "type": ["string", "null"],
+          "enum": ["local", "runpod", null]
+        },
+        "gpu": { "type": ["string", "null"] },
+        "pod_id_or_host": { "type": ["string", "null"] },
+        "date": { "type": ["string", "null"] },
+        "wall_clock": { "type": ["string", "null"] },
+        "actual_cost_usd": { "type": ["number", "null"] }
+      }
+    },
+    "reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommended_venue", "est_wall_clock", "est_cost_usd", "parallelizable", "resume_support", "notes"],
+      "description": "Forward-looking engineering estimate, not a recorded fact.",
+      "properties": {
+        "recommended_venue": { "type": "string", "minLength": 1 },
+        "est_wall_clock": { "type": "string", "minLength": 1 },
+        "est_cost_usd": {
+          "type": "number",
+          "minimum": 0,
+          "description": "0 for local CPU-scale runs"
+        },
+        "parallelizable": { "type": "boolean" },
+        "resume_support": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["locator", "type"],
+        "properties": {
+          "locator": { "type": "string", "minLength": 1 },
+          "type": {
+            "type": "string",
+            "enum": ["dataset", "catalog", "model", "figure", "result-json", "receipt"]
+          },
+          "checksum": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "verification": {
+      "type": "string",
+      "minLength": 1,
+      "description": "How to confirm a reproduction matches: exact hashes, receipt tooling command, or numeric tolerances — state which."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["runnable-now", "needs-data-restore", "superseded"]
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Pointers into SSOT/status docs/inventory sections/commits backing every claim above"
+    }
+  }
+}
