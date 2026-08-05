@@ -57,6 +57,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "skills-autolog-2026-08-05",
+    dateISO: "2026-08-05",
+    kind: "skill-improvement",
+    title:
+      "Directive Q lands: reproducibility-first lab tooling, paper lineage record, All-Papers surface",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Five process/tooling commits since 2026-08-04 implement Houston's directive Q: standing directive text (pure-contribution publication framing + mandatory reproducibility manifests), reproducibility manifest schema v1 with JSON Schemas and a validator, the canonical paper-lineage disposition record (confirming the retired 14-barrier no-go catalog is intact in paper1_unified.tex with resurrection recommended), and the flat All-Papers site index with plain-English purpose subtitles on every paper surface. Tooling counter 39→40 (manifest validator added in tools/).",
+    keyTakeaways: [
+      "Directive Q standing text — bigbounce 946c6655",
+      "Reproducibility manifest schema v1 — bigbounce a0fac40e",
+      "JSON schemas + manifest validator — bigbounce 44b87570",
+      "Canonical paper-lineage disposition record — bigbounce 03f1fde2",
+      "Flat All-Papers index + plain-English subtitles — bigbounce 30e4676c",
+    ],
+    links: [
+      { label: "commit 946c6655", href: `${GH_COMMIT}/946c6655` },
+      { label: "commit a0fac40e", href: `${GH_COMMIT}/a0fac40e` },
+      { label: "commit 44b87570", href: `${GH_COMMIT}/44b87570` },
+      { label: "commit 03f1fde2", href: `${GH_COMMIT}/03f1fde2` },
+      { label: "commit 30e4676c", href: `${GH_COMMIT}/30e4676c` },
+    ],
+  },
+  {
     id: "p3-r16-final-hash-evidence-closure-2026-08-03",
     dateISO: "2026-08-03",
     timePT: "22:24",
