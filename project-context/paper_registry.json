@@ -100,7 +100,10 @@
       "served_aliases": [
         "paper1b_mcmc_companion.pdf"
       ],
-      "note": "P1B's MCMC companion manuscript. Not one of the six campaign papers, but its PDF is mirrored under served roots, so it needs a canonical owner or its mirrors read as orphans."
+      "owner": "bounce-theory research program",
+      "surfaced": "2026-08-05",
+      "site_surface": "site/src/data/papers.ts researchPrograms[bounce-theory].supportingLinks (program-level supporting link, not a papers[] entry)",
+      "note": "P1B's MCMC companion manuscript. Not one of the six campaign papers, but its PDF is mirrored under served roots. Canonical-owner resolution: surfaced 2026-08-05 as a first-class supporting validation dossier under the bounce-theory research program on /paper and /papers, per project-context/PAPER_LINEAGE_2026-08-05.md §Decision record item 2. Modeled as a program-level supporting link rather than a papers[] entry so it does not pick up version-chip/PDF-mirror/publication-path machinery it doesn't have."
     }
   },
   "served_pdf_policy": {

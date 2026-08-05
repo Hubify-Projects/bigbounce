@@ -119,6 +119,40 @@ export default async function PaperPage() {
                 </Card>
               ))}
             </div>
+
+            {program.supportingLinks && program.supportingLinks.length > 0 && (
+              <div className="flex flex-col gap-4 mt-4">
+                {program.supportingLinks.map((link) => (
+                  <div
+                    key={link.href}
+                    className="flex flex-col gap-1.5 pt-4"
+                    style={{ borderTop: "1px solid var(--border)" }}
+                  >
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                      {link.role}
+                    </p>
+                    <p className="text-sm font-medium break-words" style={{ fontFamily: "var(--font-mono-stack)" }}>
+                      <MathText>{link.title}</MathText>
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-snug">
+                      {link.plainTitle}
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed" style={{ maxWidth: "70ch" }}>
+                      {link.description}
+                    </p>
+                    <a
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      className="text-sm mt-1 inline-flex items-center gap-1"
+                      style={{ color: "var(--accent-link)", fontFamily: "var(--font-mono-stack)" }}
+                    >
+                      Read PDF &rarr;
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
           </section>
         );
       })}

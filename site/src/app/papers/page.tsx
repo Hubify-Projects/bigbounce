@@ -165,6 +165,83 @@ export default async function PapersIndexPage() {
               </div>
             );
           })}
+
+          {researchPrograms
+            .flatMap((program) =>
+              (program.supportingLinks ?? []).map((link) => ({ program, link })),
+            )
+            .map(({ program, link }) => (
+              <div
+                key={link.href}
+                style={{
+                  padding: "20px 0",
+                  borderTop: "1px solid var(--border)",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    gap: 8,
+                    marginBottom: 6,
+                  }}
+                >
+                  <Badge variant="outline">{program.title}</Badge>
+                  <Badge variant="secondary">Supporting link</Badge>
+                </div>
+
+                <h3
+                  style={{
+                    margin: 0,
+                    fontFamily: "var(--font-mono-stack)",
+                    fontSize: 16,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  <MathText>{link.title}</MathText>
+                </h3>
+                <p
+                  style={{
+                    margin: "5px 0 0",
+                    fontSize: 13.5,
+                    lineHeight: 1.6,
+                    color: "var(--text-secondary)",
+                    maxWidth: "78ch",
+                  }}
+                >
+                  {link.plainTitle}
+                </p>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 16,
+                    marginTop: 10,
+                    fontSize: 12.5,
+                  }}
+                >
+                  <span style={{ color: "var(--text-tertiary)" }}>
+                    {link.role}
+                  </span>
+                  <a
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 4,
+                      color: "var(--accent)",
+                      fontFamily: "var(--font-mono-stack)",
+                    }}
+                  >
+                    Read PDF <ArrowRight size={13} />
+                  </a>
+                </div>
+              </div>
+            ))}
         </div>
       </section>
     </>

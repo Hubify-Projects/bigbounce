@@ -57,6 +57,27 @@ export type ResearchProgramId =
   | "desi-anomaly-discovery"
   | "galaxy-chirality";
 
+/**
+ * A program-level supporting link — for real, registered manuscripts that
+ * back a program's science but do NOT carry the campaign-paper machinery
+ * (versioned PDF-mirror path, publication-path ladder, DOI/artifact record)
+ * that every entry in `papers` implies. Use this instead of adding a
+ * lightweight companion to `papers` when it would wrongly pick up that
+ * machinery on /paper, /papers, /publish, and /status.
+ */
+export interface ProgramSupportingLink {
+  /** Full manuscript title, as written in its own .tex \title. */
+  title: string;
+  /** One-line plain-English purpose label — what this work is FOR, no jargon. */
+  plainTitle: string;
+  /** Editorial role relative to the program's lead/support papers. */
+  role: string;
+  /** One plain-English sentence: what this work validates or checks. */
+  description: string;
+  href: string;
+  external?: boolean;
+}
+
 export interface ResearchProgram {
   id: ResearchProgramId;
   title: string;
@@ -65,6 +86,8 @@ export interface ResearchProgram {
   limitation: string;
   leadSlug?: string;
   supportSlugs: string[];
+  /** Registered companion manuscripts surfaced at the program level (see ProgramSupportingLink). */
+  supportingLinks?: ProgramSupportingLink[];
   status: string;
 }
 
@@ -84,6 +107,19 @@ export const researchPrograms: ResearchProgram[] = [
       "Nonlinear transmission through a specified bounce completion and survey-native covariance remain open scientific conditions.",
     leadSlug: "paper-2",
     supportSlugs: ["paper-1a", "paper-1b"],
+    supportingLinks: [
+      {
+        title:
+          "Reproducible Cosmological Proxy and Pipeline Checks: Stock-CAMB ΛCDM+ΔN_eff MCMC, Synthetic NaMaster Recovery, and a Generic Spectator-ALP Birefringence Fit",
+        plainTitle:
+          "The MCMC validation dossier behind the bounce-theory papers — chains, configs, and controls",
+        role: "Supporting validation dossier · P1A/P1B companion",
+        description:
+          "Three self-contained reproducibility checks, none of which tests or measures torsion: a stock-CAMB/Cobaya ΛCDM+ΔN_eff MCMC proxy (309,189 frozen samples, ΔN_eff consistent with zero), a 500-realization synthetic NaMaster E→B pseudo-Cℓ pipeline-recovery validation, and a generic spectator-ALP birefringence consistency fit with a quantified prior-predictive accommodation cost. Frozen chains, configs, and scripts are publicly archived.",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.pdf",
+        external: true,
+      },
+    ],
     status: "Primary theory result with a boundary Note and reusable research software.",
   },
   {
