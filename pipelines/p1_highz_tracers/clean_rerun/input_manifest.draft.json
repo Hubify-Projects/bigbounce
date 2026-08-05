@@ -1,0 +1,15 @@
+{
+  "manifest_version": "desi-dr1-clean-rerun-input/v1",
+  "source_revision": "iron",
+  "catalog_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+  "catalog_checksum_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum",
+  "catalog_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+  "targetid_column": "TARGETID",
+  "spectrum_locator": {
+    "type": "desi_dr1_iron_healpix",
+    "base_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/healpix/",
+    "algorithm": "resolve TARGETID in frozen zcatalog inventory, then fetch its coadd"
+  },
+  "locator_inventory_sha256": "PENDING-POD-DERIVATION",
+  "_draft_note": "This is a DRAFT, not a runnable manifest. catalog_sha256 above is the real, verified SHA-256 of https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits taken from redux_iron_zcatalog_v1.sha256sum (fetched 2026-08-04); it may be used as-is. locator_inventory_sha256 is deliberately the literal non-hex string 'PENDING-POD-DERIVATION' so this file can never pass clean_rerun_contract.py's require_sha() check and can never be mistaken for a sealed manifest. The real locator inventory can only be derived on the pod, after the verified zcatalog FITS file is downloaded there, by running derive_locator_inventory.py against it. Finalize this draft into a real input_manifest.json by running: python3 pipelines/p1_highz_tracers/clean_rerun/derive_locator_inventory.py finalize-manifest --draft pipelines/p1_highz_tracers/clean_rerun/input_manifest.draft.json --inventory <inventory.jsonl written by derive-inventory> --output <input_manifest.json>. Do not hand-edit locator_inventory_sha256; it must come from the derivation script's own SHA-256 of the inventory file it wrote."
+}
