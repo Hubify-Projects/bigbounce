@@ -126,8 +126,8 @@ export const researchPrograms: ResearchProgram[] = [
           "Which minimal spin-torsion routes to dark energy or a bounce are structurally closed — a 14-barrier survey (draft)",
         role: "In preparation · structural no-go survey (14-barrier catalog)",
         description:
-          "A systematic survey of 7 foundation mechanism classes and 6 observational branches, extracted from the retired P1U barrier catalog, collapsing to 13 distinct mechanism-class constraints across 14 catalog entries and closing four candidate dark-energy routes (R1-R4). Draft v1C.0.1, compiled 15 pp, 0 undefined refs. DRAFT: no internal or external review rounds have run, no readiness score has been computed, and no venue/Zenodo kit exists yet.",
-        href: "/papers/paper1c_nogo_survey_v1C.0.1.pdf",
+          "A systematic survey of 7 foundation mechanism classes and 6 observational branches, extracted from the retired P1U barrier catalog, collapsing to 13 distinct mechanism-class constraints across 14 catalog entries and closing four candidate dark-energy routes (R1-R4). Draft v1C.0.2, compiled 16 pp, 0 undefined refs, 0 overfull boxes — internal read-through closures landed (9 MAJOR + 11 MINOR dispositioned: figure/list rebuild, Fierz convention note, kappa convention split, 61-67-order fix, B14 branch assignment, dedup vs published P1A, historical-route reframe). DRAFT: next gate is a full INT review board; no readiness score has been computed and no venue/Zenodo kit exists yet.",
+        href: "/papers/paper1c_nogo_survey_v1C.0.2.pdf",
         external: true,
       },
     ],

@@ -1,14 +1,21 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft-extraction v1C.0.1 · 2026-08-05 ·
+**Current candidate:** draft v1C.0.2 · 2026-08-05 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: NEW DRAFT — not yet in the review pipeline.** No readiness
-percentage is claimed. This is a compiled, registered manuscript with zero
-review rounds, zero automated-convergence evidence, and zero packaging/venue
-work — do not read it against the 6-candidate readiness contract (science 25 +
-evidence 25 + convergence 25 + packaging 20 + Houston sign-off 5) until real
-gates have actually run.
+**Status: INTERNAL READ-THROUGH DONE → CLOSURES LANDED (v1C.0.2). Next
+gate: full INT board.** The 2026-08-05 internal referee read-through of
+v1C.0.1 (exact-PDF-bound, sha 847fb143;
+`project-context/peer-reviews/INT_v3/ROUND_2026-08-05-P1C-v1C.0.1-EXACTPDF-847fb143-INTERNAL-READTHROUGH/`)
+returned 9 MAJOR + 11 MINOR, verdict major-revisions. All 20 findings are
+dispositioned in the round's `CLOSURE_NOTES_v1C.0.2.md`; the closures landed
+as v1C.0.2 (figure/list rebuild to 0 overfull boxes, Fierz
+convention/discrepancy note, kappa-vs-imported-kappa~ convention split,
+41→61-order fix, B14→Branch H assignment propagated, division-of-content
+paragraph vs published P1A, R2/R3 reframed as historical-route amplitude
+budgets). No readiness percentage is claimed — zero INT/EXT board rounds,
+zero convergence evidence, zero packaging/venue work; do not read it against
+the 6-candidate readiness contract until real board gates have run.
 
 ## What this is
 
@@ -50,11 +57,14 @@ readiness contract table.
 
 ## Compile state
 
-15 pp, 0 undefined refs, compiled clean 2026-08-05
-(`arxiv/paper1c_nogo_survey/main.pdf`, 474,242 bytes). Mirrored byte-identical
-to `site/public/papers/paper1c_nogo_survey_v1C.0.1.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.1.pdf` (md5
-`eb73f83fbe9843b2e4effc32a4f5914b`, all three copies match).
+v1C.0.2: 16 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
+clean 2026-08-05 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.2.pdf` and
+`public/papers/paper1c_nogo_survey_v1C.0.2.pdf` (md5
+`3293e7244ab0705f6aabbef6e10f11ee`, all three copies match). Prior v1C.0.1
+mirrors retained. `/latex-audit` visual pass run on the recompile (figure
+page, barrier-list page, App-B page rendered and inspected; no column
+overflow, no box overprint).
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
@@ -72,14 +82,20 @@ to `site/public/papers/paper1c_nogo_survey_v1C.0.1.pdf` and
 
 ## Next gates (in order)
 
-1. Internal read-through (Houston or delegated agent) confirming the
-   extracted catalog reads correctly as a standalone paper, independent of
-   P1U/P1A framing
+1. ~~Internal read-through~~ DONE 2026-08-05 (9 MAJOR + 11 MINOR, all
+   dispositioned; closures landed as v1C.0.2 — see
+   `ROUND_2026-08-05-P1C-v1C.0.1-EXACTPDF-847fb143-INTERNAL-READTHROUGH/CLOSURE_NOTES_v1C.0.2.md`)
 2. INT board (Claude Opus INT leg + Grok API + Gemini API, per directive N
-   routing) — first review round, first real findings
+   routing) — first full review round on the v1C.0.2 PDF
 3. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 
-Until gate 1 runs, this file should not grow a readiness number, a version
-bump beyond editorial fixes, or a "converged" claim.
+Open deferred item (from the read-through closure): the Fierz-convention
+reconciliation between the monolith's App-B presentation (Itzykson–Zuber
+matrix + eq:AAdecomp coefficients) and the released
+`fierz_lemma_check.py`/published-P1A Nieves–Pal convention is DEFERRED to a
+dedicated convention audit; v1C.0.2 discloses the difference in-paper and no
+longer claims script verification of the printed display. Until the INT
+board runs, this file should not grow a readiness number or a "converged"
+claim.
