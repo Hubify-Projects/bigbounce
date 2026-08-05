@@ -1,0 +1,120 @@
+{
+  "calibration": {
+    "anomaly_score_definition": "(per_spectrum_mean_mse - mse_mean) / mse_std",
+    "artifact_version": "desi-bigae-calibration/v1",
+    "created_utc": "2026-08-05T09:19:13Z",
+    "fit_code_sha256": "c2253e95a44369ec4ccbea025c7c1733f1f44daf1ad29fb0ec8bc3958933105f",
+    "fit_scope": "held_out_training_validation_split",
+    "model_path": "/workspace/bigbounce/best_model_47k.pt",
+    "mse_mean": 0.8770776222235043,
+    "mse_std": 1.3605120637453498,
+    "n_fit": 20000,
+    "n_groups_selected": 200,
+    "n_rows_target": 40000,
+    "n_validation": 20000,
+    "sampling_design": "two-stage-pps-cluster/v2",
+    "score_definition": "mean_mse_over_per_spectrum_median_abs_flux_normalized_496_bins",
+    "seed": 20260804,
+    "selection_threshold": 5.0,
+    "stability_check": {
+      "bound": 0.048101365308022066,
+      "observed_deviation": 0.005428488844539614,
+      "passed": true,
+      "rule": "abs(validation_mse_mean - mse_mean) <= 5 * (mse_std / sqrt(n_fit))"
+    },
+    "status": "sealed",
+    "training_manifest_sha256": "3bde52d10f0a1c6ea70236c9f1ff5d12346dfbdb2815c24edc157811fa5777bd",
+    "validation_manifest_sha256": "cfb9227cac001baa62a799a85547602fd77c77a09586f30bb0007f1d32f604e9",
+    "validation_mse_mean": 0.8825061110680439,
+    "validation_mse_std": 1.3683886003341705,
+    "zcatalog_path": "/workspace/zall-pix-iron.fits"
+  },
+  "calibration_sha256": "25498638fd23bb0033960e8199608e890feacd9e0eb220b24b300efcc954eb2f",
+  "comparison_policy": "new counts are a new generation; never merge or tune to historical counts",
+  "contract_version": "p1-desi-clean-rerun/v1",
+  "created_utc": "2026-08-05T09:19:14Z",
+  "deduplication": {
+    "identity_column": "targetid",
+    "timing": "before threshold counts",
+    "winner_rule": "last row in deterministic lexical-shard then row order"
+  },
+  "historical_comparators": [
+    {
+      "generation_id": "historical-original-17_651_065",
+      "input_rows_reported": 17651065,
+      "status": "frozen release; distinct historical generation",
+      "threshold_count_reported": 195829
+    },
+    {
+      "generation_id": "historical-enhanced-22_504_897",
+      "input_rows_reported": 22504897,
+      "status": "summary-only; parent shards and calibration unrecovered",
+      "threshold_count_reported": 249905
+    }
+  ],
+  "inference_code": {
+    "byte_size": 40505,
+    "file_name": "enhanced_18M_inference.py",
+    "sha256": "3e7efb243fa5cc4e7e06c5ce8e13f011e1173d2cc44aecd8df47e0c67c0ab996"
+  },
+  "input_manifest": {
+    "catalog_checksum_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum",
+    "catalog_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "catalog_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+    "locator_inventory_sha256": "f3299a319266a9c8dff489b03a1532aca447748316eeb46c08b6307edd34557f",
+    "manifest_version": "desi-dr1-clean-rerun-input/v1",
+    "source_revision": "iron",
+    "spectrum_locator": {
+      "algorithm": "resolve TARGETID in frozen zcatalog inventory, then fetch its coadd",
+      "base_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/healpix/",
+      "type": "desi_dr1_iron_healpix"
+    },
+    "targetid_column": "TARGETID"
+  },
+  "input_manifest_sha256": "01fdf5a76d69d4fdbbf9e51d9ab3a2ac0878884d6db5c0f3569f9d5092648ea2",
+  "model": {
+    "architecture": {
+      "input_bins": 496,
+      "latent_dimensions": 128,
+      "name": "BigAE",
+      "required_tensor_shapes": {
+        "dec.0.weight": [
+          128,
+          128
+        ],
+        "dec.10.weight": [
+          496,
+          512
+        ],
+        "dec.2.weight": [
+          256,
+          128
+        ],
+        "dec.6.weight": [
+          512,
+          256
+        ],
+        "enc.0.weight": [
+          512,
+          496
+        ],
+        "enc.10.weight": [
+          128,
+          128
+        ],
+        "enc.4.weight": [
+          256,
+          512
+        ],
+        "enc.8.weight": [
+          128,
+          256
+        ]
+      },
+      "state_dict_key_count": 36
+    },
+    "byte_size": 3519170,
+    "file_name": "best_model_47k.pt",
+    "sha256": "f5266ba48f476bca2f1b12610e0e81322caaa955af70ab83f0b05bf763885f07"
+  }
+}

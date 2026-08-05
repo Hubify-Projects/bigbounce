@@ -1,0 +1,14 @@
+{
+  "catalog_checksum_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum",
+  "catalog_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+  "catalog_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+  "locator_inventory_sha256": "f3299a319266a9c8dff489b03a1532aca447748316eeb46c08b6307edd34557f",
+  "manifest_version": "desi-dr1-clean-rerun-input/v1",
+  "source_revision": "iron",
+  "spectrum_locator": {
+    "algorithm": "resolve TARGETID in frozen zcatalog inventory, then fetch its coadd",
+    "base_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/healpix/",
+    "type": "desi_dr1_iron_healpix"
+  },
+  "targetid_column": "TARGETID"
+}

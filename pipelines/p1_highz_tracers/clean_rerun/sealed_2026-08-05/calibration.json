@@ -1,0 +1,30 @@
+{
+  "anomaly_score_definition": "(per_spectrum_mean_mse - mse_mean) / mse_std",
+  "artifact_version": "desi-bigae-calibration/v1",
+  "created_utc": "2026-08-05T09:19:13Z",
+  "fit_code_sha256": "c2253e95a44369ec4ccbea025c7c1733f1f44daf1ad29fb0ec8bc3958933105f",
+  "fit_scope": "held_out_training_validation_split",
+  "model_path": "/workspace/bigbounce/best_model_47k.pt",
+  "mse_mean": 0.8770776222235043,
+  "mse_std": 1.3605120637453498,
+  "n_fit": 20000,
+  "n_groups_selected": 200,
+  "n_rows_target": 40000,
+  "n_validation": 20000,
+  "sampling_design": "two-stage-pps-cluster/v2",
+  "score_definition": "mean_mse_over_per_spectrum_median_abs_flux_normalized_496_bins",
+  "seed": 20260804,
+  "selection_threshold": 5.0,
+  "stability_check": {
+    "bound": 0.048101365308022066,
+    "observed_deviation": 0.005428488844539614,
+    "passed": true,
+    "rule": "abs(validation_mse_mean - mse_mean) <= 5 * (mse_std / sqrt(n_fit))"
+  },
+  "status": "sealed",
+  "training_manifest_sha256": "3bde52d10f0a1c6ea70236c9f1ff5d12346dfbdb2815c24edc157811fa5777bd",
+  "validation_manifest_sha256": "cfb9227cac001baa62a799a85547602fd77c77a09586f30bb0007f1d32f604e9",
+  "validation_mse_mean": 0.8825061110680439,
+  "validation_mse_std": 1.3683886003341705,
+  "zcatalog_path": "/workspace/zall-pix-iron.fits"
+}
