@@ -45,8 +45,8 @@ restored (inventory, "Restoration gate result — 2026-08-04").
 ### (a) New-generation post-dedup scored catalog, with sealed provenance chain
 
 The primary deliverable is not a bare score table — it is the table plus its
-receipts, because the entire rebuild exists to fix the provenance failure that
-sank the original manuscript. The provenance chain to publish:
+full provenance receipts, establishing an auditable, sealed provenance chain
+for every scored candidate. The provenance chain to publish:
 
 - official DESI DR1 `iron` zcatalog SHA-256 `2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b`;
 - 36,634-group locator inventory (hash `f3299a31…`);
@@ -109,18 +109,40 @@ independently re-executed on the new slice:
 
 ## 3. Section-by-section skeleton (ApJS style)
 
+### Directive Q1 framing contract
+
+Per CLAUDE.md Standing directive Q1 (pure-contribution publication framing),
+the manuscript presents exactly one thing: a survey-scale, reproducible DESI
+DR1 anomaly scan with sealed provenance, its candidate populations, taxonomy,
+and validation — full stop. It is not framed around redoing or fixing an
+earlier internal effort, and it does not narrate why any prior draft could
+not be carried forward. Internal process history (provenance gating,
+generation bookkeeping, prior-draft status) stays in this document, in SSOT,
+and in project-context — never in manuscript prose, section content, or
+claim-language wording. Any place below that references prior published
+generations does so only as prior-work comparison figures, per §4.
+
 | Section | Content |
 |---|---|
-| Introduction | Research question (§1); why the original manuscript could not be revived (provenance/generation conflation, per the inventory's "Data generations that were being conflated"); why this paper is a clean rerun, not a restoration. |
-| Data | DESI DR1 `iron`; public-ID-first contract (zcatalog SHA, locator inventory, group-targetids export); the public-ID-first filter rule and its audit-log honesty contract (per-group `kept`/`surplus_dropped`/`zcat_missing_from_coadd` line, fail-closed on >1% missing coadds or 0 zcatalog IDs for a group). |
-| Method | Archived BigAE (`best_model_47k.pt`, 496→512→256→128, SHA-256-bound); sealed two-stage PPS calibration and its stability gate; scoring definition; explicit statement that this is a fresh scan with a sealed contract, not a reproduction of either historical generation. |
+| Introduction | Research question (§1); the motivation for a survey-scale, reproducible, provenance-sealed methodology; why a clean, sealed-contract rerun is the right instrument for this question. |
+| Data | DESI DR1 `iron`; public-ID-first contract (zcatalog SHA, locator inventory, group-targetids export); the public-ID-first filter rule and its audit-log honesty contract (per-group `kept`/`surplus_dropped`/`zcat_missing_from_coadd` line, fail-closed on >1% missing coadds or 0 zcatalog IDs for a group); one neutral sentence noting that prior published DESI anomaly candidate lists exist and are cited here as prior work (see internal-only note below §3's table — the full generation comparison is not manuscript content). |
+| Method | Archived BigAE (`best_model_47k.pt`, 496→512→256→128, SHA-256-bound); sealed two-stage PPS calibration and its stability gate; scoring definition; explicit statement that this is a fresh scan run under a sealed contract. |
 | Validation | Per-class injection-recovery with exact model+substrate named (retiring the historical "0% false positive / 10-1,377x enrichment" summary per the claim table); held-out reproduction; honest limitations including the historical DESI NNLS-proxy study's 33.4% overall completeness, reported as a substrate-specific prior result, not the new run's own number unless independently re-measured. |
 | Candidate catalog + characterization | New-generation filtered slice (§2b) with its manifest: schema, selection code, row count, hashes, source-parent binding — this is inventory closure gate 3 applied to the new generation. |
-| Taxonomy | Rebuilt families from the new-generation unmatched subset (§2c); historical 10-family/76-AGN/27-post-starburst breakdown appears only as a labeled historical comparison. |
+| Taxonomy | Rebuilt families from the new-generation unmatched subset (§2c); historical 10-family/76-AGN/27-post-starburst breakdown appears only as a labeled historical comparison, cited as prior work. |
 | Notable objects | Inclusion criterion: named TARGETID + independently checked photometry/redshift (inventory gate 6). No object is promoted to "notable" on selection-pipeline output alone — this is the gate that retired the historical `z=5.65`/`W2=5.5 mag` headline object. |
-| Comparison to historical generations | `compare-generations` tool output against the 195,829-row original and 249,905-row enhanced labels — comparison-only framing, explicitly never reconciliation, per the RUNBOOK and inventory language. |
 | Data availability | Current P3 r17 integrated as the supporting public-ID/provenance release (per the reset doc's "integrated-P3 role" decision); Zenodo/HF plan for the new-generation catalog — **PLACEHOLDER** pending scan completion. |
 | Conclusions | Restate what survived validation vs. what is retired/deferred; explicit "not in this paper" list matching §7. |
+
+**Internal-only note (not a manuscript section).** The full comparison
+between this generation's catalog and prior published/internal generations
+(`compare-generations` tool output against the 195,829-row original and
+249,905-row enhanced labels) is retained as an internal project record — see
+§5 dependency gates and
+`pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md` step 14. It does not
+appear as a manuscript section; the manuscript's only reference to prior
+published candidate lists is the single neutral Data-section sentence above,
+which cites them as prior work, not as this paper's earlier generations.
 
 ## 4. Claim-language contract
 
@@ -131,9 +153,9 @@ they do not have allowed wording yet because they do not have numbers yet.
 
 | Planned claim | Allowed wording now | Source |
 |---|---|---|
-| Historical enhanced catalog (22,504,897 rows, 128 latent dims) | "A completed historical enhanced run reports 22,504,897 rows and 128 latent features; restoration/reproduction is pending." | Inventory claim table |
+| Historical enhanced catalog (22,504,897 rows, 128 latent dims) | "A completed historical enhanced run reports 22,504,897 rows and 128 latent features, cited as prior work; independent reproduction has not yet been performed." | Inventory claim table |
 | Historical frozen 195,829 `S>5` catalog | "The frozen original release contains 195,829 reconstruction-outlier candidates." Never merged with the 249,905 enhanced count. | Inventory claim table |
-| Historical enhanced 249,905 `S>5` count | Do not headline or compare until the parent run is restored and the score definition is reconciled. | Inventory claim table |
+| Historical enhanced 249,905 `S>5` count | Not currently a candidate for headline or comparison; requires independent verification of the parent run and its score definition before consideration. | Inventory claim table |
 | Historical 2,145-row filtered slice | "A historical filtered candidate slice contains 2,145 rows under the recorded score/SNR rule." | Inventory claim table |
 | Historical 1,127 unmatched objects | "1,127 candidates are unmatched in the stated SIMBAD/NED cone searches." | Inventory claim table |
 | Historical taxonomy (10 families, 76 AGN, 27 post-starburst) | "The pipeline groups the 1,127 candidates into 10 interpretable candidate families, including 76 IR-bright AGN candidates and 27 post-starburst candidates." | Inventory claim table |
@@ -161,7 +183,7 @@ drafted for real (not skeleton):
 | Candidate catalog + characterization | `summarize-after-dedup` on the completed scan + new-slice threshold decision (§2b) | `clean_rerun_contract.py summarize-after-dedup` (RUNBOOK step 13) |
 | Taxonomy | New-slice cross-match run + taxonomy rerun | `pipelines/p1_highz_tracers/scripts/silver_crossmatch.py` / `step2_crossmatch_full.py` analog; taxonomy clustering analog to `projects/h200_scripts/anomaly_taxonomy.py`, all re-run against §2b's output |
 | Notable objects | Independent validation of any named high-redshift/physical candidate (closure gate 6) | Manual/independent photometry+redshift check per object; no automated tool substitutes for this gate |
-| Comparison to historical generations | `compare-generations` on the new post-dedup summary | `clean_rerun_contract.py compare-generations` (RUNBOOK step 14) |
+| Comparison to historical generations (internal-only, not a manuscript section — see §3's internal-only note) | `compare-generations` on the new post-dedup summary | `clean_rerun_contract.py compare-generations` (RUNBOOK step 14) |
 | Data availability | P3 r17 already exists (`pipelines/p3_anomaly_engine/FINAL_PACKAGE_RECEIPT_v3.2.0-r17_2026-08-03.md`); new-generation Zenodo/HF release plan | **PLACEHOLDER** — no new-generation archival deposit exists yet |
 | Conclusions | All of the above | — |
 | Any `f_NL` content anywhere | Selection-function + survey-window analysis with a nonzero, defensible result (closure gate 7) | Not started; content stays out of the paper until this gate closes |
@@ -215,13 +237,13 @@ P3), which the reset doc already treats as integrated.
   proper selection-function and survey-window analysis independently produces
   a nonzero, defensible result. The historical 9.5% `sigma(f_NL)` improvement
   claim is not a result and is not restated even as context.
-- **Historical generations are comparison sets only, never reconciliation
-  targets.** The 195,829-row frozen release and the 249,905-row enhanced
-  count are formally unreconciled (inventory, "Restoration gate result"); the
-  new AUG-011 generation is never tuned, truncated, or thresholded to match
-  either historical count, and `compare-generations` output is presented as a
-  comparison, never as validation of the new run or reconciliation of the old
-  ones.
+- **Historical generations are cited as prior work only.** This paper does
+  not attempt to reconcile the 195,829-row frozen release or the 249,905-row
+  enhanced count with the new AUG-011 generation, tune or threshold the new
+  generation to match either historical count, or use them for validation.
+  Any internal comparison analysis (`compare-generations` tooling) is
+  retained as an internal project record only, per §5 dependency gates — it
+  is not manuscript content.
 - **No unsupervised claims for supervised results.** The latent-space photo-z
   result is a supervised regressor trained on historical latent vectors, not
   an unsupervised or emergent capability, and `lat_067` is a feature-importance
