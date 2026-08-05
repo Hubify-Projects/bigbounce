@@ -23,7 +23,7 @@ ask look legitimate rather than like phishing.
 | Code | Archive | Papers | Cai | Noriega | Brandenberger | Shamir |
 |---|---|---|---|---|---|---|
 | `HYEJ7S` | gr-qc | P1A | ✅ | ✅ | ✅ | ✗ |
-| `L8TIPN` | astro-ph.IM | P1B, P3 | ✅ | ✅ | ✗ | ✅ |
+| `L8TIPN` | astro-ph.IM | P1B (and the future anomaly flagship, if venue-compatible) | ✅ | ✅ | ✗ | ✅ |
 | `LRZHC4` | astro-ph.CO | P2 | ✅ | ✅ | ✅ | ✅ |
 | `CLVMAQ` | astro-ph.GA | P4, P5 | ✅ | ✅ | ✅ | ✅ |
 
@@ -289,8 +289,9 @@ forwarded message — roughly a minute per archive. arXiv is clear that
 endorsement attests only that the submitter is a legitimate researcher in the
 area, not that you support the results.
 
-If only one is convenient, `L8TIPN` (astro-ph.IM) covers the DR1 recovery
-paper. A no is completely fine.
+If only one is convenient, `L8TIPN` (astro-ph.IM) covers the P1B software
+metapaper — the DR1 recovery paper (P3) is no longer a standalone arXiv
+submission. A no is completely fine.
 
 With thanks for your time,
 Houston Golden

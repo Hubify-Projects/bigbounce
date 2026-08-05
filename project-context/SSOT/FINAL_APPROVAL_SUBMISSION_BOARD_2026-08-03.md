@@ -88,7 +88,7 @@ is claimed.
 | P1A | CQG Note | READY | Sign-off; ScholarOne account and final referee choices | NOT STARTED |
 | P3 support | Integrated with anomaly flagship | PACKAGE PRESERVED | Bind release/DOI and provenance into rebuilt flagship | NO STANDALONE SUBMISSION |
 | P4 | ApJS | READY | Sign-off; live portal choices; refresh current Zenodo version | NOT STARTED |
-| P1B | JORS | READY | Sign-off; three real reviewer names/emails and APC/waiver choice | NOT STARTED |
+| P1B | JORS | READY | Sign-off; five real reviewer names/emails (per `JORS_SUBMISSION_KIT_P1B_2026-07-24.md` §8, JORS's own checklist requirement) and APC/waiver choice | NOT STARTED |
 | P5 | AJ | READY FOR APPROVAL | Sign-off, then immutable tag/Zenodo mint, identifier back-patch, final rebuild, and portal choices | NOT STARTED |
 
 Recommended journal order after approvals: **P2 → P1A → P4 → P1B → P5**,

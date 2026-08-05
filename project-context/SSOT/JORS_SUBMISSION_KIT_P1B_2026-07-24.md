@@ -11,7 +11,7 @@
 > ### ✅ NO CONTENT GATE. The manuscript artifact is finished.
 > `arxiv/jors_submission/` already holds a JORS-template-conforming rendering on
 > the official `jors.cls`, content-equivalence-gated against the canonical
-> v2B.0.15 manuscript, compiling clean at 8 pages A4. Nothing in the paper needs
+> v2B.0.16 manuscript, compiling clean at 8 pages A4. Nothing in the paper needs
 > to change.
 >
 > ### ⚠️ BUT: two things must be ready BEFORE you open the wizard
@@ -272,7 +272,7 @@ under DOI 10.5281/zenodo.21481842 (CC-BY-4.0), available at
 https://doi.org/10.5281/zenodo.21481842. I declare it here because it is a
 publicly readable copy of substantially this text, and I would rather over-
 disclose than under-disclose. That deposit archives an earlier revision of the
-manuscript (v2B.0.13); the version submitted here is v2B.0.15, rendered onto the
+manuscript (v2B.0.13); the version submitted here is v2B.0.16, rendered onto the
 JORS article template.
 
 APC WAIVER REQUEST. I am an independent researcher with no institutional
@@ -463,7 +463,7 @@ exclusion request invites the editor to wonder why.
 | 1 | JORS-conforming manuscript exists on the official `jors.cls` | ✅ `arxiv/jors_submission/` — 8 pp A4, 0 errors, 0 undef-refs, 0 overfull hboxes, verified in an isolated extract |
 | 2 | `jors.cls` byte-identical to JORS's own distributed copy | ✅ md5 `fa935958e955a7eb9ca010c69c479148` |
 | 3 | All mandated template headings present in the required order | ✅ (1) Overview / (2) Availability / (3) Reuse potential + Acknowledgements, Funding statement, Competing interests |
-| 4 | Content equivalent to the canonical v2B.0.15 manuscript | ✅ 50 of 53 prose blocks byte-verbatim; the 3 exceptions are exactly the blocks JORS mandates be split into granular Availability fields, each reconciled fact-by-fact. No claim, number, caveat, or citation lost |
+| 4 | Content equivalent to the canonical v2B.0.16 manuscript | ✅ 50 of 53 prose blocks byte-verbatim; the 3 exceptions are exactly the blocks JORS mandates be split into granular Availability fields, each reconciled fact-by-fact. No claim, number, caveat, or citation lost |
 | 5 | ORCID in the manuscript | ✅ present in the author-roles line, `0009-0008-5616-5994` |
 | 6 | ORCID resolves publicly | ✅ **VERIFIED 2026-07-24** — HTTP 200, "Houston Golden" |
 | 7 | Software archived with a persistent identifier | ✅ Zenodo DOI `10.5281/zenodo.21481753` — **verified resolves HTTP 200** |
