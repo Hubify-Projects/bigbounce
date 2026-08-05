@@ -18,6 +18,7 @@ import {
 import type { Metadata } from"next";
 import Link from"next/link";
 import { getLivePapers, getRunningPods, displayVersion, type LivePaperState } from "@/lib/livePapers";
+import { getPaperBySlug } from "@/data/papers";
 import { readinessBreakdown, readinessBreakdownNote, publishingPhase, type GateOwner } from "@/data/readinessBreakdown";
 import { SurveyQcTable } from "@/components/Cards/SurveyQcTable";
 
@@ -27,13 +28,22 @@ export const metadata: Metadata = {
 "Current research-program, artifact, and editorial status for BigBounce.",
 };
 
+// Taglines are the plain-English purpose label from data/papers.ts (directive
+// Q3) — never hand-write a second copy here. Role prefixes carried over from
+// the previous hardcoded strings (P3's "Integrated Supporting Data Release",
+// P5's "Standalone AJ companion") are preserved in front of the plain label.
+function taglineFor(slug: string, rolePrefix?: string): string {
+  const plainTitle = getPaperBySlug(slug)?.plainTitle ?? "";
+  return rolePrefix ? `${rolePrefix} · ${plainTitle}` : plainTitle;
+}
+
 const PAPER_DISPLAY_NAMES: Record<string, { number: string; tagline: string }> = {
-  "paper-1a": { number: "P1A", tagline: "ECH channel-level closure + perturbation transparency" },
-  "paper-1b": { number: "P1B", tagline: "namaster-proof research software" },
-  "paper-2": { number: "P2", tagline: "f_NL = -35/16 forecast (SPHEREx)" },
-  "paper-3": { number: "P3", tagline: "Integrated Supporting Data Release · DESI Public-ID Recovery" },
-  "paper-4": { number: "P4", tagline: "Galaxy chirality at 8.47M scale" },
-  "paper-5": { number: "P5", tagline: "Standalone AJ companion · DESI environmental chirality" },
+  "paper-1a": { number: "P1A", tagline: taglineFor("paper-1a") },
+  "paper-1b": { number: "P1B", tagline: taglineFor("paper-1b") },
+  "paper-2": { number: "P2", tagline: taglineFor("paper-2") },
+  "paper-3": { number: "P3", tagline: taglineFor("paper-3", "Integrated Supporting Data Release") },
+  "paper-4": { number: "P4", tagline: taglineFor("paper-4") },
+  "paper-5": { number: "P5", tagline: taglineFor("paper-5", "Standalone AJ companion") },
 };
 
 function statusBadgeVariant(state: LivePaperState): "default" | "secondary" | "outline" {

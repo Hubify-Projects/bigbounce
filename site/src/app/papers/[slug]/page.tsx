@@ -186,6 +186,9 @@ export default async function PaperDetailPage({
               Paper {paper.number}
             </h1>
             <p className="subtitle"><MathText>{paper.title}</MathText></p>
+            <p style={{ marginTop: 6, fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+              {paper.plainTitle}
+            </p>
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <Badge variant={statusVariantMap[paper.statusVariant]}>
                 {readiness}% · {statusLabel(liveStatus)}

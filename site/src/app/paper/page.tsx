@@ -85,6 +85,9 @@ export default async function PaperPage() {
                     <CardTitle className="mt-1 text-base break-words" style={{ fontFamily: "var(--font-mono-stack)" }}>
                       <MathText>{paper.title}</MathText>
                     </CardTitle>
+                    <p className="mt-1 text-sm text-muted-foreground leading-snug">
+                      {paper.plainTitle}
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <p className="mb-3 text-sm text-muted-foreground leading-relaxed">

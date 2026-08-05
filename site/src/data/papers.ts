@@ -18,6 +18,8 @@ export interface Paper {
   /** Whether this artifact is currently selected for its own submission. */
   standaloneSubmission: boolean;
   title: string;
+  /** One-line plain-English purpose label — what this work is FOR, no jargon. A non-specialist gets it instantly. */
+  plainTitle: string;
   version: string;
   /** ISO 8601 date of the paper's last substantive update — set per-paper, NOT a uniform "today" stamp. */
   lastUpdated: string;
@@ -154,6 +156,7 @@ export const papers: Paper[] = [
     publicationRole: "Focused Theory Note · ECH Boundary Result",
     standaloneSubmission: true,
     title: "Algebraic Cartan Elimination in Minimal Einstein–Cartan–Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches",
+    plainTitle: "What minimal spin-torsion gravity can and cannot change — a boundary-setting theory note",
     version: "v1A.0.127",
     lastUpdated: "2026-08-03",
     tldr: "A compact CQG Note deriving the minimal Einstein–Cartan–Holst axial contact interaction and the zero-spin canonical-scalar branch. v1A.0.127 adds the mandatory declarations and availability section; earlier exact-PDF findings were truth-audited to zero genuinely-new-real. Final-hash bounded confirmation and Houston's own review remain distinct open gates.",
@@ -215,6 +218,7 @@ export const papers: Paper[] = [
     publicationRole: "Research Software · Exact-Window Verification",
     standaloneSubmission: true,
     title: "namaster-proof: Exact pseudo-Cℓ Window Inference and Tamper-Evident Provenance for Reproducible Spin-2 Analyses",
+    plainTitle: "Software that proves a common CMB/LSS analysis shortcut wasn't taken — verification + tamper-evident receipts",
     version: "v2B.0.16",
     lastUpdated: "2026-08-03",
     tldr: "P1B is a focused software metapaper around namaster-proof 0.1.7. Its evidence shows the workspace is deterministically regenerable; v2B.0.16 makes the manuscript-versus-software version boundary legible. The archival DOIs are published, while final-hash confirmation, correspondence metadata, and human review remain separate gates.",
@@ -284,6 +288,7 @@ export const papers: Paper[] = [
     publicationRole: "Lead Theory Paper · Matter-Contraction Non-Gaussianity",
     standaloneSubmission: true,
     title: "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping",
+    plainTitle: "The bounce program's core prediction: an exact primordial non-Gaussianity amplitude (f_NL = −35/16)",
     version: "v1.7.130",
     lastUpdated: "2026-08-03",
     tldr: "Derives f_NL = −35/16 for the stated matter-contraction background and cubic action, then maps that result conditionally to published and in-house large-scale-structure sensitivity estimates. v1.7.130 adds the APS AI-use disclosure and a drift-proof deposit reference; its final-hash bounded confirmation and Houston review remain separate from the earlier evidence.",
@@ -351,6 +356,7 @@ export const papers: Paper[] = [
     publicationRole: "Supporting Data Release · DESI Public-ID Recovery",
     standaloneSubmission: false,
     title: "Public-ID Recovery for a Historical DESI DR1 Anomaly List: 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations",
+    plainTitle: "Supporting data release: public DESI IDs for the anomaly program's follow-up list",
     version: "v3.2.0-r17",
     lastUpdated: "2026-08-03",
     tldr: "Recovers 181 public DESI DR1 TARGETIDs from a frozen historical anomaly list, split transparently into 170 high-coordinate-consistency core associations and 11 lower-confidence positional associations. v3.2.0-r17 binds the viewer captures, names the correct 2,468-row exclusion denominator, publishes the actual two-pass deduplication order, and content-hashes every resumable scan input. This is an archive-recovery product, not a detection claim.",
@@ -417,6 +423,7 @@ export const papers: Paper[] = [
     publicationRole: "Lead Catalog Paper · Observed-Label Chirality Null",
     standaloneSubmission: true,
     title: "An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
+    plainTitle: "Do spiral galaxies' apparent handedness directions cluster? An 8.5M-galaxy test (result: no dipole)",
     version: "v1.0.274",
     lastUpdated: "2026-08-03",
     tldr: "Classifies 8.47M galaxies. The strict safe-sample observed-label statistic remains null-consistent (z=0.63465, p=0.23768), and the v1.0.268 CE-composition audit retained the GZ1-core realization while documenting the honest-negative CE-inclusive retrain. v1.0.274 expands Expected Calibration Error (ECE) at first use without changing the science; exact confirmation and Houston review remain separate gates.",
@@ -503,6 +510,7 @@ export const papers: Paper[] = [
     publicationRole: "Standalone Companion · Chirality–Environment Null Test",
     standaloneSubmission: true,
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Catalog-Native Void Non-Detection with Secondary Cosmic-Web Cross-Checks",
+    plainTitle: "Does galaxy handedness differ inside cosmic voids? A null test companion to P4",
     version: "v0.1.147-2026-08-03",
     lastUpdated: "2026-08-03",
     tldr: "On the released DESIVAST GALZONE parent, the focal exploratory analysis detects no void/non-void difference in classifier-labelled CW fraction; this bounded non-detection does not establish physical environment independence.",
