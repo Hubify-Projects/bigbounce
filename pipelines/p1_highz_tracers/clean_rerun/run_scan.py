@@ -364,12 +364,29 @@ def run_scan(
         coadd_fname = Path(relative).name
         coadd_path = coadd_cache_dir / coadd_fname
 
-        ok = inference_module.download_file(coadd_url, str(coadd_path))
-        if not ok:
-            # Transient archive failures must not kill the whole worker range:
-            # skip the group with an audit line and retry it on a later
-            # incarnation (the group has no shard/checkpoint entry, and the
-            # worker exits nonzero at range end so the supervisor relaunches).
+        # Per-group fault isolation: any failure (transient archive outage,
+        # partial/vanished download, scoring I/O error, receipt race) skips
+        # the group with an audit line instead of killing the whole worker
+        # range. A skipped group has no shard/checkpoint entry, so a later
+        # incarnation retries it; the worker exits nonzero at range end so
+        # the supervisor relaunches. Integrity-critical validation (contract,
+        # model SHA, zero-zcat-id groups) stays fatal above/before this block.
+        try:
+            ok = inference_module.download_file(coadd_url, str(coadd_path))
+            if not ok:
+                raise ScanError(f"download failed after retries: {coadd_url}")
+            try:
+                scored_rows = score_group(inference_module, model, device, coadd_path, calibration)
+                kept_rows, audit_record = filter_group_to_zcatalog(
+                    scored_rows, zcat_targetids, survey, program, healpix
+                )
+                shard_path = write_shard(kept_rows, survey, program, healpix, shard_dir)
+                append_audit_line(audit_log_path, audit_record)
+            finally:
+                if coadd_path.exists():
+                    coadd_path.unlink()
+            contract_module.record_receipt(contract_path, shard_path, receipt_dir, checkpoint_path)
+        except Exception as exc:  # noqa: BLE001 — deliberate per-group fault barrier
             skipped_downloads += 1
             append_audit_line(
                 audit_log_path,
@@ -377,24 +394,13 @@ def run_scan(
                     "survey": survey,
                     "program": program,
                     "healpix": healpix,
-                    "download_failed": True,
+                    "group_error": f"{type(exc).__name__}: {exc}"[:400],
                     "coadd_url": coadd_url,
                 },
             )
-            print(f"SKIP (download failed, will retry next incarnation): {coadd_url}", flush=True)
+            print(f"SKIP ({type(exc).__name__}, will retry next incarnation): {coadd_url}", flush=True)
             continue
-        try:
-            scored_rows = score_group(inference_module, model, device, coadd_path, calibration)
-            kept_rows, audit_record = filter_group_to_zcatalog(
-                scored_rows, zcat_targetids, survey, program, healpix
-            )
-            shard_path = write_shard(kept_rows, survey, program, healpix, shard_dir)
-            append_audit_line(audit_log_path, audit_record)
-        finally:
-            if coadd_path.exists():
-                coadd_path.unlink()
 
-        contract_module.record_receipt(contract_path, shard_path, receipt_dir, checkpoint_path)
         completed.add(name)
         written.append(shard_path)
 
