@@ -30,6 +30,12 @@ The active work is:
    ~12 groups/min → ~2 days wall-clock. On completion: verify-receipts →
    summarize-after-dedup → compare-generations → commit receipts/summary,
    then build the defensible selected sample + taxonomy (flagship phase 3).
+   *Incident 2026-08-05 17:2xZ (resolved):* duplicate supervisor launches had
+   spawned extra same-range workers; full stop + fail-closed reconcile found
+   **all 11,200 shards receipt-verified intact** (0 bad / 0 orphans),
+   checkpoints rebuilt from verified receipts, singleton babysitter + backup
+   loop relaunched under flock; huggingface_hub installed to fix the failing
+   HF backup leg (B2 leg had 3 good cycles throughout).
 4. **HOUSTON + AGENT — publishing:** PRD/CQG/ApJS/JORS/AJ portal work, tracked
    separately from readiness. arXiv endorsement remains a parallel channel.
    2026-08-04/05 hygiene pass: WAVE1/WAVE2 kits + May sign-off brief marked
