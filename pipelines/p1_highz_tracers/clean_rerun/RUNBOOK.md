@@ -30,6 +30,11 @@ This run is never tuned or truncated to match them.
   `--start`/`--end` parallel workers matter far more than GPU class).
 - A single A4000-class GPU (or a CPU-strong instance with several download
   threads) is sufficient; this is not a training run.
+- Calibration (step 6, `build_calibration.py`) is a SEPARATE, bounded
+  download: a two-stage PPS cluster sample over ~200 coadd groups,
+  ~25 GB total — never the near-full-corpus multi-terabyte download a
+  naive uniform 40,000-row draw over the zcatalog would cause. See step 6
+  and `build_calibration.py`'s module docstring.
 
 ## 1. Provision the pod
 
@@ -100,11 +105,31 @@ python3 pipelines/p1_highz_tracers/clean_rerun/build_calibration.py \
   --output /workspace/calibration.json
 ```
 
-Draws a deterministic seeded 40,000/20,000/20,000 split (seed `20260804`),
-scores both halves through the archived inference path, and refuses to seal
-(non-zero exit, `CalibrationError`) if the held-out validation mean drifts
-more than 5x the fit-set standard error from the fit mean. See the module
-docstring in `build_calibration.py` for the full design rationale.
+Draws a **bounded two-stage PPS (probability-proportional-to-size) cluster
+sample** (seed `20260804`, `--n-groups` default 200, `--n-rows` default
+40,000): pass 1 streams the zcatalog to count rows per `(survey, program,
+healpix)` group; stage 2 selects 200 distinct groups with probability
+proportional to group size; stage 3 allocates the 40,000-row budget across
+those 200 groups (largest-remainder rounding) and, after a second bounded
+pass 2 collects row indices for only those 200 groups, samples each
+group's allocated rows with the same RNG; a final seeded permutation splits
+the 40,000 rows into the first 20,000 (fit) and last 20,000 (held-out
+validation). **This replaces the original naive design that drew 40,000
+uniform row indices directly from the zcatalog** — a uniform draw over the
+~23M-row zcatalog hits roughly two-thirds of all ~35,000 coadd groups
+(~24,000 distinct coadd downloads, multi-terabyte); the two-stage cluster
+sample instead expects to download only the ~200 selected coadds
+(~25 GB total). Both halves are drawn from the same 200-group pixel
+population by construction, so the stability gate below is a
+within-pixel-population compatibility check, not a cross-pixel
+generalization check.
+
+Scores both halves through the archived inference path, and refuses to
+seal (non-zero exit, `CalibrationError`) if the held-out validation mean
+drifts more than 5x the fit-set standard error from the fit mean. See the
+module docstring in `build_calibration.py` for the full design rationale,
+including the design-effect note on why this 5x gate is conservative in
+the fail-closed direction only under cluster sampling.
 
 ## 7. Build the run contract
 

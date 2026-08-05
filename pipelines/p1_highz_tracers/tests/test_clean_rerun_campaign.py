@@ -6,7 +6,10 @@ locally-computable pieces of the campaign under
 
   - inventory path-construction and grouping rules, against a synthetic
     zcatalog-like FITS table;
-  - the deterministic 40,000/20,000/20,000 seeded split;
+  - the deterministic two-stage PPS cluster sample (group selection, row-
+    budget allocation, per-group sampling, and the fit/validation split),
+    run entirely against small synthetic group tables — no FITS file
+    involved;
   - the anomaly-score arithmetic, run through the real archived `BigAE`
     class (imported unmodified from `enhanced_18M_inference.py`) with a
     fixed-seed state dict, against a hand-computed z-score.
@@ -137,29 +140,134 @@ class InventoryPathConstructionTest(unittest.TestCase):
             self.assertNotEqual(manifest["locator_inventory_sha256"], "PENDING-POD-DERIVATION")
 
 
-class SeededSplitTest(unittest.TestCase):
-    def test_deterministic_and_disjoint(self) -> None:
-        n_rows = 100_000
-        drawn_a = calibration_tool.draw_seeded_indices(n_rows)
-        drawn_b = calibration_tool.draw_seeded_indices(n_rows)
-        np.testing.assert_array_equal(drawn_a, drawn_b)  # same seed -> same draw
-        self.assertEqual(len(drawn_a), calibration_tool.N_TOTAL_SAMPLE)
-        self.assertEqual(len(set(drawn_a.tolist())), calibration_tool.N_TOTAL_SAMPLE)  # no duplicates
+def _synthetic_row_indices_by_group(n_groups: int, base_count: int = 40, step: int = 7) -> dict:
+    """Build a small synthetic (survey, program, healpix) -> row-index-array
+    table standing in for the real zcatalog's per-group row indices, with
+    deliberately unequal group sizes so PPS-vs-uniform selection and
+    largest-remainder allocation are both meaningfully exercised."""
+    table = {}
+    cursor = 0
+    for i in range(n_groups):
+        survey = "main" if i % 2 == 0 else "sv3"
+        program = "dark" if (i // 2) % 2 == 0 else "bright"
+        healpix = 1000 + i
+        count = base_count + (i * step) % 97  # unequal, deterministic group sizes
+        table[(survey, program, healpix)] = np.arange(cursor, cursor + count, dtype=np.int64)
+        cursor += count
+    return table
 
-        fit_idx, val_idx = calibration_tool.split_fit_validation(drawn_a)
-        self.assertEqual(len(fit_idx), calibration_tool.N_FIT)
-        self.assertEqual(len(val_idx), calibration_tool.N_TOTAL_SAMPLE - calibration_tool.N_FIT)
+
+class TwoStagePPSClusterSampleTest(unittest.TestCase):
+    """Exercises the AUG-012 two-stage PPS cluster sample (replacing the
+    original naive 40,000-uniform-row draw) against synthetic group tables
+    scaled down from the production 200-of-~35,000-groups /
+    40,000-of-~23M-rows design to a tractable 20-of-50 / 400-row analog."""
+
+    N_GROUPS = 20
+    N_ROWS = 400
+    N_FIT = 200
+
+    def test_selects_exact_group_count_from_more_available(self) -> None:
+        table = _synthetic_row_indices_by_group(n_groups=50)
+        counts_by_group = {g: len(rows) for g, rows in table.items()}
+        rng, selected_groups, alloc = calibration_tool.select_pps_groups_and_allocate(
+            counts_by_group, seed=calibration_tool.SEED, n_groups=self.N_GROUPS, n_rows=self.N_ROWS
+        )
+        self.assertEqual(len(selected_groups), self.N_GROUPS)
+        self.assertEqual(len(set(selected_groups)), self.N_GROUPS)  # distinct groups
+        self.assertEqual(selected_groups, sorted(selected_groups))  # ascending order
+
+    def test_allocation_sums_exactly_to_row_budget(self) -> None:
+        table = _synthetic_row_indices_by_group(n_groups=50)
+        counts_by_group = {g: len(rows) for g, rows in table.items()}
+        _rng, selected_groups, alloc = calibration_tool.select_pps_groups_and_allocate(
+            counts_by_group, seed=calibration_tool.SEED, n_groups=self.N_GROUPS, n_rows=self.N_ROWS
+        )
+        self.assertEqual(len(alloc), self.N_GROUPS)
+        self.assertEqual(sum(alloc), self.N_ROWS)  # exact total, largest-remainder rounding
+        for group, k in zip(selected_groups, alloc):
+            self.assertGreaterEqual(k, 0)
+            self.assertLessEqual(k, len(table[group]))  # never exceeds a group's capacity
+
+    def test_allocate_row_budget_respects_capacity_on_skewed_input(self) -> None:
+        # A very small group next to much larger ones: largest-remainder
+        # rounding must still land the tiny group at exactly its natural
+        # share without exceeding its capacity.
+        selected_counts = [2, 50, 50, 50]
+        alloc = calibration_tool.allocate_row_budget(selected_counts, n_rows=140)
+        self.assertEqual(sum(alloc), 140)
+        for k, cap in zip(alloc, selected_counts):
+            self.assertLessEqual(k, cap)
+        self.assertEqual(alloc[0], 2)
+
+    def test_allocate_row_budget_never_overflows_capacity(self) -> None:
+        # Property fuzz test proving the invariant documented in
+        # `allocate_row_budget`'s docstring: since `n_rows <=
+        # sum(selected_counts)` is always enforced,
+        # `proportional[i] <= selected_counts[i]` for every group, so
+        # largest-remainder rounding can never push an allocation above a
+        # group's capacity — the capacity-redistribution branch exists as
+        # a defensive guard but is never expected to trigger in practice.
+        rng = np.random.default_rng(1234)
+        for _ in range(200):
+            n = int(rng.integers(1, 12))
+            counts = rng.integers(1, 5000, size=n).tolist()
+            total = sum(counts)
+            n_rows = int(rng.integers(0, total + 1))
+            alloc = calibration_tool.allocate_row_budget(counts, n_rows)
+            self.assertEqual(sum(alloc), n_rows)
+            for k, cap in zip(alloc, counts):
+                self.assertGreaterEqual(k, 0)
+                self.assertLessEqual(k, cap)
+
+    def test_deterministic_across_two_runs_same_seed(self) -> None:
+        table = _synthetic_row_indices_by_group(n_groups=50)
+        fit_a, val_a, groups_a, alloc_a = calibration_tool.draw_two_stage_pps_sample(
+            table, seed=calibration_tool.SEED, n_groups=self.N_GROUPS, n_rows=self.N_ROWS, n_fit=self.N_FIT
+        )
+        fit_b, val_b, groups_b, alloc_b = calibration_tool.draw_two_stage_pps_sample(
+            table, seed=calibration_tool.SEED, n_groups=self.N_GROUPS, n_rows=self.N_ROWS, n_fit=self.N_FIT
+        )
+        self.assertEqual(groups_a, groups_b)
+        self.assertEqual(alloc_a, alloc_b)
+        np.testing.assert_array_equal(fit_a, fit_b)
+        np.testing.assert_array_equal(val_a, val_b)
+
+    def test_fit_validation_disjoint_and_correct_sizes(self) -> None:
+        table = _synthetic_row_indices_by_group(n_groups=50)
+        fit_idx, val_idx, selected_groups, alloc = calibration_tool.draw_two_stage_pps_sample(
+            table, seed=calibration_tool.SEED, n_groups=self.N_GROUPS, n_rows=self.N_ROWS, n_fit=self.N_FIT
+        )
+        self.assertEqual(len(fit_idx), self.N_FIT)
+        self.assertEqual(len(val_idx), self.N_ROWS - self.N_FIT)
         self.assertTrue(set(fit_idx.tolist()).isdisjoint(set(val_idx.tolist())))
-        np.testing.assert_array_equal(np.concatenate([fit_idx, val_idx]), drawn_a)
+        self.assertEqual(len(set(fit_idx.tolist())), len(fit_idx))  # no duplicates within fit
+        self.assertEqual(len(set(val_idx.tolist())), len(val_idx))  # no duplicates within validation
 
-        # Matches the documented API call directly: Generator(PCG64(seed=20260804)).choice(...)
-        rng = np.random.Generator(np.random.PCG64(calibration_tool.SEED))
-        expected = rng.choice(n_rows, size=calibration_tool.N_TOTAL_SAMPLE, replace=False)
-        np.testing.assert_array_equal(drawn_a, expected)
+        # Every drawn row must actually belong to one of the selected groups.
+        all_selected_rows = set()
+        for group in selected_groups:
+            all_selected_rows.update(table[group].tolist())
+        self.assertTrue(set(fit_idx.tolist()) <= all_selected_rows)
+        self.assertTrue(set(val_idx.tolist()) <= all_selected_rows)
 
-    def test_refuses_oversized_draw(self) -> None:
+    def test_refuses_more_groups_than_available(self) -> None:
+        table = _synthetic_row_indices_by_group(n_groups=10)
+        counts_by_group = {g: len(rows) for g, rows in table.items()}
         with self.assertRaises(calibration_tool.CalibrationError):
-            calibration_tool.draw_seeded_indices(n_rows=100, n_total=40_000)
+            calibration_tool.select_pps_groups_and_allocate(
+                counts_by_group, seed=calibration_tool.SEED, n_groups=20, n_rows=self.N_ROWS
+            )
+
+    def test_refuses_oversized_row_budget(self) -> None:
+        with self.assertRaises(calibration_tool.CalibrationError):
+            calibration_tool.allocate_row_budget([5, 5, 5], n_rows=100)
+
+    def test_production_defaults_are_self_consistent(self) -> None:
+        self.assertEqual(calibration_tool.DEFAULT_N_GROUPS, 200)
+        self.assertEqual(calibration_tool.DEFAULT_N_ROWS, 40_000)
+        self.assertEqual(calibration_tool.DEFAULT_N_ROWS % 2, 0)
+        self.assertEqual(calibration_tool.SAMPLING_DESIGN, "two-stage-pps-cluster/v2")
 
 
 class AnomalyScoreArithmeticTest(unittest.TestCase):
