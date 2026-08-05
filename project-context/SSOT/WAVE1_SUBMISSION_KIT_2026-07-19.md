@@ -1,4 +1,12 @@
 # Wave-1 arXiv Submission Kit — P3, P1A, P1B
+
+> **⚠️ SUPERSEDED / HISTORICAL — DO NOT USE FOR SUBMISSION (2026-08-04).**
+> This kit is retained for provenance only. The current authoritative source
+> is `project-context/SSOT/FINAL_APPROVAL_SUBMISSION_BOARD_2026-08-03.md`,
+> together with the 2026-07-24 per-paper kits (`CQG_SUBMISSION_KIT_P1A_2026-07-24.md`,
+> `JORS_SUBMISSION_KIT_P1B_2026-07-24.md`). This kit's P3 standalone arXiv/ApJS
+> routing was overturned by `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`
+> — P3 is now an integrated supporting release, not a standalone submission.
 ---
 
 ## 2026-07-22 ADDENDUM — pre-arXiv confirmation wave; P1B → v2B.0.14, P1A → v1A.0.126, P3 → v3.2.0-r13

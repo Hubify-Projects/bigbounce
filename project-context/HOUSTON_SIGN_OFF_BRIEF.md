@@ -1,5 +1,14 @@
 # Houston sign-off brief — 6-paper portfolio status
 
+> **⚠️ SUPERSEDED / HISTORICAL — DO NOT USE FOR SUBMISSION (2026-08-04).**
+> This is a May-vintage brief built on the old six-equal-papers framing. The
+> current authoritative source is
+> `project-context/SSOT/FINAL_APPROVAL_SUBMISSION_BOARD_2026-08-03.md`,
+> together with the 2026-07-24 per-paper kits (`CQG_SUBMISSION_KIT_P1A_2026-07-24.md`,
+> `JORS_SUBMISSION_KIT_P1B_2026-07-24.md`, `PRD_SUBMISSION_KIT_P2_2026-07-24.md`,
+> plus the current P4/P5 portal kits). P3 is no longer a standalone submission —
+> see `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`.
+
 **Generated:** 2026-05-22 PDT (tick 177, cron fire #55). **Last refresh:** 2026-05-26 PDT (tick 210, cron fire #88 — 🎯🎯🎯 ALL 6 PAPERS HAVE EXTERNAL 5-VENDOR R-ROUNDS LANDED).
 **Purpose:** Single-page summary for Houston's sign-off review across all 6 papers.
 

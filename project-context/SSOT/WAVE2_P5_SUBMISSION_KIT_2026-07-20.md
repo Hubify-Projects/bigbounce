@@ -1,4 +1,13 @@
 # Wave-2 + P5 arXiv Submission Kit — P2, P4, P5
+
+> **⚠️ SUPERSEDED / HISTORICAL — DO NOT USE FOR SUBMISSION (2026-08-04).**
+> This kit is retained for provenance only. The current authoritative source
+> is `project-context/SSOT/FINAL_APPROVAL_SUBMISSION_BOARD_2026-08-03.md`,
+> together with the 2026-07-24 per-paper kits (`PRD_SUBMISSION_KIT_P2_2026-07-24.md`
+> for P2) and the current P4/P5 portal kits
+> (`pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md`,
+> `pipelines/p5_desi_chirality/paper/AJ_PORTAL_KIT_v0.1.147-2026-08-03.md`).
+
 ## Prepared 2026-07-20 | git HEAD `f9c25de6` | Goal: a minutes-long click session for Houston
 
 > **2026-07-22 ADDENDUM — pre-arXiv confirmation wave; P2 → v1.7.128, P4 →
