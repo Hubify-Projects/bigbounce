@@ -1,0 +1,67 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p5-astra-crossmatch-hf-mirror",
+  "title": "Astra per-object crossmatch + HuggingFace mirror",
+  "program": "galaxy-chirality",
+  "paper": "P5",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "P5 matched chirality x DESI DR1 catalog",
+      "type": "internal-artifact",
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/15_astra_per_object_crossmatch.py",
+      "entrypoint": "python3 15_astra_per_object_crossmatch.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/mirror_astra_to_hf.py",
+      "entrypoint": "python3 mirror_astra_to_hf.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, pandas, numpy, huggingface_hub — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU",
+    "est_wall_clock": "~30 min - 1 hour for the per-object crossmatch + HF mirror push",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Not evidenced beyond code presence in the inventory; all original_run fields stay null. Reproduction requires a valid HF_TOKEN with write access to bamfai/astra-desi-edr-mirror to complete the mirror step."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p5_desi_chirality/results/analysis_astra_per_object/summary.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "https://huggingface.co/datasets/bamfai/astra-desi-edr-mirror",
+      "type": "dataset",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run the crossmatch and confirm the per-object summary statistics in analysis_astra_per_object/summary.json match the committed output, and that the HF mirror bamfai/astra-desi-edr-mirror reflects the same row count.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — astra per-object crossmatch + HF mirror bullet",
+    "project-context/SSOT/paper-5/status.md"
+  ]
+}

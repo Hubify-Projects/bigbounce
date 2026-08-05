@@ -84,3 +84,34 @@ An experiment counts as REPRODUCED only when its `verification` block passes
 on a fresh run (hash-identical outputs, receipt verification, or documented
 numeric tolerance). Reproductions get appended to the experiment's
 `provenance` — never overwrite the original-run record.
+
+## Current population (directive Q2, first full pass — 2026-08-05)
+
+52 experiment manifests + 3 program manifests, validated 0 errors via
+`tools/validate_repro_manifests.py` (structural check; `jsonschema` optional).
+
+**By program:**
+
+| Program | Experiments | runnable-now | needs-data-restore | superseded |
+|---|---|---|---|---|
+| bounce-theory | 12 | 10 | 1 | 1 |
+| galaxy-chirality | 23 | 19 | 3 | 1 |
+| anomaly-discovery | 17 | 12 | 5 | 0 |
+| **Total** | **52** | **41** | **9** | **2** |
+
+**Open evidence gaps carried over verbatim from the inventory (TODOs — not yet closed):**
+
+1. **P1 highz_tracers `clean_rerun` full scan (AUG-011)** — the single highest-priority gap: calibration is sealed (2026-08-05) but `run_scan.py`'s full DESI DR1 `iron` scan has not executed, so there is no wall-clock or dollar figure for the actual flagship-defining run yet. RUNBOOK gives a qualitative venue note ("A4000-class or CPU-strong, download-bound") but no cost estimate.
+2. **P3 NANOGrav PTA MCMC (`free_spectrum_real_2026-05-01/emcee_freespec.py`)** — 192,000-sample run with a full results JSON and chain file, but no RunPod pod ID, GPU/CPU class, $/hr, or wall-clock anywhere in `pipelines/p3_pta_mcmc/` or the referencing SSOT sections found.
+3. **P5 cosmic-web / DESIVAST + r24conf "pod session" scripts (`24_r24conf_pod_session.py`, `36_desivast_native_selection_control.py`, etc.)** — script names imply RunPod use but no pod ID, GPU class, cost, or runtime was found in `pipelines/p5_desi_chirality/` or in the reachable sections of `paper-5/status.md`.
+4. **P3 multi-survey raw per-survey outputs (`pipelines/h200_results/pod_backup_20260408_full/…`, `pod1_namaster_umap_2026-04-29/`, and ~28 sibling `h200_results/` subdirectories)** — dozens of historical H200-pod artifact directories exist with result JSONs but essentially no accompanying $/hr or wall-clock manifest; venue is inferable only from directory naming convention ("h200_results"), not from a receipt.
+5. **P4 empirical b/a DR8 morphology cross-match** (`edge_on_contamination_metric.json`) — status.md states it ran on "a spot A4000 that is now EXITED" with no dollar figure or duration recorded, and the NOIRLab Astro Data Lab TAP query parameters (the external API call itself) aren't captured as a standalone provenance artifact.
+
+**Path corrections made during population** (inventory cited a path that didn't exist; corrected and noted in the affected manifest's `provenance[]`):
+
+- `p1a-ntot-sensitivity-mc`: inventory cited `research/sensitivity_scan/` (does not exist); actual script is `research/theory_audit/vacuum_scale_sensitivity_scan.py`.
+- `p4-gz1only-retrain-dipole-null`: inventory cited `train_chirality_gz1only.py` (not preserved anywhere in the repo); nearest surviving scripts are `pipelines/p2_chirality/run_dipole_gz1only_fullN.py` and `pipelines/p2_chirality/scripts/gz1_stratified_confusion.py` — status set to `needs-data-restore`.
+- `p3-erosita-scaler-leakage-control`: no script generating `erosita_scaler_refit.json` was found via grep across `pipelines/p3_anomaly_engine/`; only the result JSON survives — status set to `needs-data-restore`.
+- `p3-umap-multiseed-stability`: no `.py` script exists under `pipelines/h200_results/pod1_namaster_umap_2026-04-29/`, only the results JSON — status set to `needs-data-restore`.
+- `p5-systematics-analysis` / `p5-cosmic-web-desivast-void`: the inventory's "scripts 05-09" bundle actually maps to `05_analysis_redshift.py`, `06_analysis_density.py`, `07_analysis_healpix.py`, `09_systematics.py` — script `08` is `08_analysis_cosmic_web.py`, which belongs to the cosmic-web/DESIVAST experiment, not the redshift/density/HEALPix/systematics quartet.
+- `p3-nanograv-pta-mcmc`: **content correction, not just a path fix.** The inventory's cited headline numbers (gamma=3.20+/-0.42, 192,000 samples, DeltaBIC=7.0) do not match the artifacts actually committed alongside `emcee_freespec.py`. The real committed `results.json`/`savage_dickey_2026-05-29.json` report gamma=2.5665+/-0.3818 on 320,000 samples (32 walkers x 10,000 production steps) with Savage-Dickey Bayes factors, not a Delta-BIC. The inventory's cited figures trace to a different script, `projects/nanograv/nanograv_improved_analysis.py` (outside this manifest's scope), per `project-context/SSOT/paper-3/status.md`'s Wave-14-RR note. The manifest documents the actual committed numbers and flags the discrepancy in `provenance[]`.

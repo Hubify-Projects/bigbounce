@@ -1,0 +1,71 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-planck-heldout-membership",
+  "title": "Planck held-out membership test + native re-inference (partial, 48/200 vs 30 expected)",
+  "program": "anomaly-discovery",
+  "paper": "P3-support",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "best_cmb_native.pt (native CMB autoencoder checkpoint)",
+      "type": "model",
+      "locator": "not preserved locally or in HF release — resided on a now-EXITED pod",
+      "checksum": null
+    },
+    {
+      "name": "cmb_native_patches.npy (200k masked SMICA patch tensor)",
+      "type": "internal-artifact",
+      "locator": "not preserved locally or in HF release — resided on a now-EXITED pod",
+      "checksum": null
+    },
+    {
+      "name": "HF release Planck cross-transfer baseline (patch_idx < 20k only, not the native 200k rescore)",
+      "type": "external-dataset",
+      "locator": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
+      "checksum": null,
+      "license": "cc-by-4.0"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p3_anomaly_engine/held_out_rescore.py",
+      "entrypoint": "python3 held_out_rescore.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "no third-party deps beyond stdlib (json, math.comb, pathlib) for the membership-test half; full native re-inference would additionally require torch — see requirements.txt",
+    "hardware": "cpu-only for the membership test; full native re-inference requirement unknown (blocked, never re-specified post pod exit)"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": "now-EXITED pod (native CMB checkpoint + patch tensor resided here; not in the HF release)",
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local (membership test only; full native re-inference blocked)",
+    "est_wall_clock": "minutes for the membership test; full native re-inference is not schedulable until best_cmb_native.pt + cmb_native_patches.npy + cmb_native_all_scores.parquet are re-staged",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "The held-out membership test (48/200 top anomalies fall in the 15%-held-out split vs 30 expected under random, a 1.60x over-representation, binomial one-sided p=5.49e-04) is fully reproducible locally from committed inputs. The FULL native re-inference is BLOCKED: it needs best_cmb_native.pt, cmb_native_patches.npy, and cmb_native_all_scores.parquet, all of which live on a now-EXITED pod and are not in the HF release (bamfai/bigbounce-anomaly-catalog carries only the cross-transfer baseline at patch_idx < 20k). The one currently-running pod (bigbounce-c123-namaster) refused SSH (key mismatch) and hosts a different job, so this cannot be re-staged from any currently accessible source."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p3_anomaly_engine/outputs/held_out_rescore_result.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run the membership-test half and confirm 48/200 top anomalies fall in the held-out split against an expected 30.0 under random assignment (1.60x over-representation, binomial one-sided p=5.49e-04), within exact integer-count equality on the same held-out split definition (val_frac=0.15, seed=42). Full native re-inference verification is not possible until the checkpoint/patch tensor are restored.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — Planck held-out membership test + native re-inference (partial) bullet",
+    "pipelines/p3_anomaly_engine/outputs/held_out_rescore_result.json (planck.full_native_reinference.status='BLOCKED (pod-side data gone)')",
+    "project-context/SSOT/paper-3/status.md"
+  ]
+}

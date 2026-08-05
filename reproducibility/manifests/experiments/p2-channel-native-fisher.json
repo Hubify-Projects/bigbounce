@@ -1,0 +1,78 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-channel-native-fisher",
+  "title": "Channel-native Fisher surrogate (c15) + covariance chain (c8-c15)",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "CAMB theory spectra",
+      "type": "internal-artifact",
+      "locator": "generated via c13 script (CAMB Boltzmann code)",
+      "checksum": null
+    },
+    {
+      "name": "Heinrich et al. 2023 SPHEREx covariance (Cov_B)",
+      "type": "external-dataset",
+      "locator": "not publicly released by original authors \u2014 DP2-26/DP2-29 gap",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/focused_paper_source_integration/scripts/c8_fnl_running_fisher.py",
+      "entrypoint": "python3 c8_fnl_running_fisher.py",
+      "sha256": null
+    },
+    {
+      "path": "research/focused_paper_source_integration/scripts/c15_channel_native_fisher.py",
+      "entrypoint": "python3 c15_channel_native_fisher.py",
+      "sha256": null
+    },
+    {
+      "path": "research/focused_paper_source_integration/scripts/c10_joint_covariance_marginalization.py",
+      "entrypoint": "python3 c10_joint_covariance_marginalization.py",
+      "sha256": null
+    },
+    {
+      "path": "research/focused_paper_source_integration/scripts/p2_joint_cov.py",
+      "entrypoint": "python3 p2_joint_cov.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "requirements.txt (repo root: numpy, scipy, astropy, sympy-adjacent research deps) + CAMB",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": "hours-scale (CAMB calls, exact per-script wall-clock not logged)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "2-6 hours (CAMB-bound)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Surrogate chain is runnable-now on local CPU; the true survey covariance (Cov_B) is external-data-gated \u2014 Heinrich et al. 2023 SPHEREx covariance was never publicly released."
+  },
+  "outputs": [
+    {
+      "locator": "research/focused_paper_source_integration/scripts/outputs/c15_channel_native_fisher.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the nuisance ladder 3.5-sigma/3.1-sigma/2.3-sigma/0.4-sigma reproduces to numeric tolerance (<1% relative); true-covariance closure requires the gated Cov_B and is out of scope for this reproduction.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P2 \u2014 channel-native Fisher bullet",
+    "DP2-26/DP2-29 gap tracking in project-context/SSOT/paper-2/status.md"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-nanograv-pta-mcmc",
+  "title": "NANOGrav 15-yr free-spectrum PTA MCMC (real Zenodo KDE likelihood, emcee)",
+  "program": "anomaly-discovery",
+  "paper": "P3-support",
+  "kind": "mcmc",
+  "inputs": [
+    {
+      "name": "NANOGrav 15-yr KDE Free Spectra v1.0.0 (30f_fs{hd}_ceffyl)",
+      "type": "external-dataset",
+      "locator": "https://zenodo.org/records/8060824",
+      "checksum": null,
+      "license": "NANOGrav 15-yr data release license"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py",
+      "entrypoint": "python3 emcee_freespec.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, emcee — see requirements.txt",
+    "hardware": "cpu-only (32 walkers, 30 frequency bins, production run completed in 24.97s wall per committed results.json)"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 minute (committed run reports production_seconds=24.97 for 32 walkers x 10,000 production + 2,500 burn-in)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "CONTENT CORRECTION vs the inventory bullet: the inventory's cited headline numbers (gamma=3.20+/-0.42, 192,000 samples = 32 walkers x 6,000 steps, DeltaBIC=7.0 from savage_dickey_2026-05-29.json) do NOT match the actual committed artifacts in this directory. The committed results.json for this exact script (emcee_freespec.py, real 30-bin Zenodo KDE likelihood) reports gamma mean=2.5665 +/- 0.3818 (median 2.5913), n_samples=320,000 (32 walkers x 10,000 production steps, plus 2,500 burn-in per the script docstring), and the committed savage_dickey_2026-05-29.json reports Savage-Dickey Bayes factors (B_matter_bounce_vs_free=3.228, log10_B_matter_bounce_vs_smbhb=3.854), not a Delta-BIC figure. The gamma=3.20+/-0.42 / DeltaBIC=7.0 figures instead belong to a DIFFERENT script, projects/nanograv/nanograv_improved_analysis.py (32 walkers x 6,000 steps, 134k post-burn samples, reconstructed from the published Agazie+2023 best-fit rather than the real Zenodo KDE likelihood — see project-context/SSOT/paper-3/status.md's Wave-14-RR note), which is outside this manifest's 17-id scope. Venue is genuinely ungated: no RunPod pod ID, GPU/CPU class, $/hr, or wall-clock is recorded anywhere in pipelines/p3_pta_mcmc/ (Top-5-gaps #2); the 24.97s committed production_seconds strongly suggests local CPU execution, but that inference is not itself logged evidence."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/chain_real_freespec.npy",
+      "type": "dataset",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/savage_dickey_2026-05-29.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the gamma posterior mean/std (2.5665 +/- 0.3818, median 2.5913) on the 320,000-sample chain (32 walkers x 10,000 production steps), within a small numeric tolerance (<=0.05 absolute on mean gamma given emcee stochasticity with a fixed seed), and confirm the Savage-Dickey Bayes factor B_matter_bounce_vs_free reproduces near 3.23 (log10_B_matter_bounce_vs_smbhb near 3.85) from savage_dickey_2026-05-29.json.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — NANOGrav 15-yr free-spectrum PTA MCMC bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps, item 2 (no pod ID/GPU class/$/hr/wall-clock recorded)",
+    "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/results.json and savage_dickey_2026-05-29.json (actual committed numbers used above; content correction vs the inventory's cited gamma=3.20/DeltaBIC=7.0 figures, which trace to the separate projects/nanograv/nanograv_improved_analysis.py script per project-context/SSOT/paper-3/status.md's Wave-14-RR note)"
+  ]
+}

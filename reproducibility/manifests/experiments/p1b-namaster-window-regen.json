@@ -1,0 +1,49 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1b-namaster-window-regen",
+  "title": "NaMaster window regenerability check (pymaster 3.0)",
+  "program": "bounce-theory",
+  "paper": "P1B",
+  "kind": "validation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "packages/namaster-proof/examples/rebuild_workspace_check.py",
+      "entrypoint": "python3 rebuild_workspace_check.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "pymaster 3.0, healpy, numpy",
+    "hardware": "cpu-only (ran on GPU pod but job itself is CPU-bound)"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "RTX A4000",
+    "pod_id_or_host": "580dgszgib3ti4 (shared with P4 G3 MASTER-leg session)",
+    "date": "2026-07-18",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local or runpod (CPU-only, no GPU needed)",
+    "est_wall_clock": "~5-15 minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Cost/time were bundled into the shared ~2.1h/$0.36 phase-2 pod session with P4 G3 (see p4-g3-joint-estimator-covariance); this check alone is CPU-light and runs fine locally at $0."
+  },
+  "outputs": [
+    {
+      "locator": "packages/namaster-proof/examples/rebuild_workspace_check_2026-07-18_podA4000.log",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm max|Delta| < 1e-10 against the regenerated NaMaster workspace (committed result: max|Delta|=9.926e-24, PASS).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P1B \u2014 NaMaster window regenerability bullet"
+  ]
+}

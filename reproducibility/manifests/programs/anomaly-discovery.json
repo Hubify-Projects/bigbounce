@@ -1,0 +1,48 @@
+{
+  "manifest_version": "bigbounce-program/v1",
+  "id": "anomaly-discovery",
+  "title": "DESI anomaly discovery",
+  "question": "What unusual spectra emerge from a full-scale DESI anomaly search, and which candidates survive scientific validation?",
+  "papers": [
+    { "paper": "anomaly-flagship", "role": "lead", "title": "Rebuilt DESI anomaly-science flagship (future primary paper)" },
+    { "paper": "P3-support", "role": "support", "title": "DESI Public-ID Recovery Catalog (supporting release)" }
+  ],
+  "experiments": [
+    { "id": "anomaly-bigae-18m-inference-historical", "depends_on": [] },
+    { "id": "anomaly-silver-crossmatch", "depends_on": ["anomaly-bigae-18m-inference-historical"] },
+    { "id": "anomaly-uncataloged-taxonomy", "depends_on": ["anomaly-silver-crossmatch"] },
+    { "id": "anomaly-injection-recovery-test", "depends_on": ["anomaly-bigae-18m-inference-historical"] },
+    { "id": "anomaly-neowise-crossmatch", "depends_on": ["anomaly-silver-crossmatch"] },
+    { "id": "anomaly-gold-z6-qso-spectra", "depends_on": ["anomaly-uncataloged-taxonomy"] },
+    { "id": "anomaly-photoz-latent-vectors", "depends_on": ["anomaly-bigae-18m-inference-historical"] },
+    { "id": "anomaly-fnl-tracer-selection", "depends_on": [] },
+    { "id": "anomaly-clean-rerun-scan", "depends_on": [] },
+    { "id": "p3-dp3-15-heldout", "depends_on": [] },
+    { "id": "p3-positional-dedup", "depends_on": [] },
+    { "id": "p3-kfold-cv-gate", "depends_on": [] },
+    { "id": "p3-planck-heldout-membership", "depends_on": [] },
+    { "id": "p3-erosita-scaler-leakage-control", "depends_on": [] },
+    { "id": "p3-nanograv-pta-mcmc", "depends_on": [] },
+    { "id": "p3-multisurvey-summary-crossmatch", "depends_on": [] },
+    { "id": "p3-umap-multiseed-stability", "depends_on": ["p3-multisurvey-summary-crossmatch"] }
+  ],
+  "external_data": [
+    { "name": "DESI DR1 iron zcatalog (zall-pix-iron.fits)", "link": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits", "kind": "dataset", "license": null },
+    { "name": "DESI DR1 (base release + coadd corpus)", "link": "https://data.desi.lbl.gov/public/dr1/", "kind": "dataset", "license": null },
+    { "name": "SPARCL (spectra retrieval API)", "link": "https://astrosparcl.datalab.noirlab.edu/sparc", "kind": "api", "license": null },
+    { "name": "NEOWISE IR variability catalog (IRSA)", "link": "https://irsa.ipac.caltech.edu/Missions/wise.html", "kind": "dataset", "license": null },
+    { "name": "NANOGrav 15-yr dataset", "link": "https://data.nanograv.org/", "kind": "dataset", "license": null },
+    { "name": "bamfai/bigbounce-anomaly-catalog (HF)", "link": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog", "kind": "dataset", "license": null },
+    { "name": "GitHub mirror (Hubify-Projects/bigbounce)", "link": "https://github.com/Hubify-Projects/bigbounce", "kind": "code-mirror", "license": null },
+    { "name": "P3 Zenodo archive", "link": "https://doi.org/10.5281/zenodo.21461888", "kind": "zenodo-archive", "license": null }
+  ],
+  "full_reproduction": {
+    "est_wall_clock": "Highly uncertain — the single most consequential open run (clean_rerun's run_scan.py full DESI DR1 iron scan, AUG-011) has not yet executed and has no wall-clock estimate beyond a qualitative 'download-bound, ~200GB volume' note. Of the legs that ARE runnable-now: most P3 legs (dedup, kfold gate, DP3-15 held-out, eROSITA control) are minutes-to-an-hour local-CPU; the NANOGrav PTA MCMC (192,000 samples) is hours-scale; the historical flagship legs (silver crossmatch, taxonomy, injection recovery, NEOWISE, gold z6 QSO, fnl tracer selection) are each minutes-to-an-hour on their preserved result JSONs.",
+    "est_cost_usd": 5.0,
+    "order": "Rollup estimate for the runnable-now legs only (local CPU-scale, ~$0 dominant); excludes the not-yet-executed clean_rerun full scan and the needs-data-restore legs (BigAE 18M inference, photo-z, Planck held-out native re-inference, multi-survey H200 snapshots, UMAP stability), none of which have a truthful cost/time estimate yet. Order: clean_rerun calibration (sealed, already done) should precede any full-scan attempt; P3 legs are independently parallelizable; the historical flagship legs are comparison-only and do not gate the clean_rerun path."
+  },
+  "hubify": {
+    "lab_slug": "bigbounce",
+    "module_notes": "This program has the lab's largest reproducibility gap: the flagship-defining clean_rerun full scan (AUG-011) is sealed at calibration but not yet executed, so Hubify should NOT surface a run-cost estimate for the full scan until a real receipt exists. Historical BigAE/H200 legs are flagged needs-data-restore/superseded and should be shown as lineage, not offered as live reproduction targets."
+  }
+}

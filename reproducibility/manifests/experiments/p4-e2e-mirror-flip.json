@@ -1,0 +1,63 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-e2e-mirror-flip",
+  "title": "e2e mirror-flip full-catalog inference (8.47M galaxies x 2 passes)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "inference-scan",
+  "inputs": [
+    {
+      "name": "G1 retrained checkpoint",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/outputs/g1_retrain/g1_ckpt_best.pt",
+      "checksum": "aed109dc… (sha256, partial per inventory)"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/scripts/e2e_mirror_flip_fullrun.py",
+      "entrypoint": "python3 e2e_mirror_flip_fullrun.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p2_chirality/scripts/e2e_mirror_flip_transfer_function.py",
+      "entrypoint": "python3 e2e_mirror_flip_transfer_function.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "torch, timm, pandas, pyarrow, numpy — see requirements.txt",
+    "hardware": "gpu-40gb"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "A100",
+    "pod_id_or_host": "0hh3humgpacgz1 (\"bigbounce-p4-e2e-mirror\", $1.19/hr rate quoted elsewhere)",
+    "date": "2026-07-11/12",
+    "wall_clock": "10.45h",
+    "actual_cost_usd": 12.44
+  },
+  "reproduction": {
+    "recommended_venue": "runpod A100 (or equivalent 40GB-class GPU)",
+    "est_wall_clock": "~10-11 hours for the full 192-shard, 16,949,062-inference run",
+    "est_cost_usd": 12.44,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "This is the best-documented cost/venue/time experiment in the repo (per inventory) — the estimate here simply restates the evidenced original-run total since it already IS a clean receipt. The 685MB shard outputs are backed to HF + B2 + local but are NOT checked into git (data-availability caveat) even though the pipeline itself remains runnable-now."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json",
+      "type": "result-json",
+      "checksum": "925649b7… (md5, partial per inventory)"
+    }
+  ],
+  "verification": "Re-run and confirm T_raw=0.2303, T_eq=0.99974 (transfer function values) with all 192/192 shards completing 16,949,062 inferences, within numeric tolerance stated in the result file; md5 925649b7… for a byte-identical reproduction.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — e2e mirror-flip full-catalog inference bullet (\"the best-documented cost/venue/time experiment in the repo\")",
+    "project-context/SSOT/paper-4/status.md",
+    "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md (line 533)"
+  ]
+}

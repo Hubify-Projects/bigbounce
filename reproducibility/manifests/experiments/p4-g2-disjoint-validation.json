@@ -1,0 +1,65 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-g2-disjoint-validation",
+  "title": "G2 — training-disjoint held-out GZ1 validation",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "G1 retrained checkpoint",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/outputs/g1_retrain/g1_ckpt_best.pt",
+      "checksum": "aed109dc… (sha256, partial per inventory)"
+    },
+    {
+      "name": "GZ1 CW/CCW human-vote labels (S3-hosted)",
+      "type": "external-dataset",
+      "locator": "GZ1 CW/CCW label set, S3-hosted — exact bucket path not captured in the inventory",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.py",
+      "entrypoint": "python3 g2_disjoint_validation_v1_0_266.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "torch, timm, scikit-learn, numpy — see requirements.txt",
+    "hardware": "gpu-16gb"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "RTX A4000",
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": "358s",
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod A4000 or equivalent 16GB GPU (inference-only)",
+    "est_wall_clock": "~6-10 minutes",
+    "est_cost_usd": 0.05,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Inference-only validation pass; n=3000 disjoint GZ1 spirals held fully out of G1 training via anti-join on retained training object IDs."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm accuracy=0.9867, Cohen's kappa=0.9733 on the n=3000 disjoint GZ1-spiral held-out set, within +/-0.001 numeric tolerance.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — G2 training-disjoint held-out GZ1 validation bullet",
+    "project-context/SSOT/paper-4/status.md",
+    "Path correction: the inventory names the output as `g2_disjoint_validation_v1_0_266.json` without a directory; verified via `find` that both the script and its output JSON live in `pipelines/p2_chirality/analysis/`, not under an `outputs/` directory."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-vertex-check",
+  "title": "Four-vertex f_NL^local = -35/16 amplitude derivation (P2 headline)",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/focused_paper_source_integration/scripts/p2_vertex_check.py",
+      "entrypoint": "python3 p2_vertex_check.py",
+      "sha256": null
+    },
+    {
+      "path": "research/focused_paper_source_integration/scripts/fig_4vertex_sum.py",
+      "entrypoint": "python3 fig_4vertex_sum.py",
+      "sha256": null
+    },
+    {
+      "path": "research/focused_paper_source_integration/scripts/exact_shape_analysis.py",
+      "entrypoint": "python3 exact_shape_analysis.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "sympy, numpy \u2014 pure symbolic algebra, no external deps beyond requirements.txt (repo root: numpy, scipy, astropy, sympy-adjacent research deps)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": "minutes",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Pure sympy symbolic algebra; quadruple-certified result, trivially reproducible on any machine."
+  },
+  "outputs": [
+    {
+      "locator": "research/focused_paper_source_integration/scripts/ (console output + LaTeX-ready coefficients)",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm symbolic output equals f_NL^local = -35/16, equilateral = -255/128 exactly (rational-number equality, not a numeric tolerance).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P2 \u2014 vertex-check bullet",
+    "project-context/SSOT/paper-2/status.md"
+  ]
+}

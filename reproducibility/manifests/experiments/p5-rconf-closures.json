@@ -1,0 +1,88 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p5-rconf-closures",
+  "title": "r23conf/r24conf/r27conf closure recomputes",
+  "program": "galaxy-chirality",
+  "paper": "P5",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "P5 matched chirality x DESI DR1 catalog",
+      "type": "internal-artifact",
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/21_r23conf_meta_closures.py",
+      "entrypoint": "python3 21_r23conf_meta_closures.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/22_r24conf_local_batch.py",
+      "entrypoint": "python3 22_r24conf_local_batch.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/24_r24conf_pod_session.py",
+      "entrypoint": "python3 24_r24conf_pod_session.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/26_r27conf_ess_recomputes.py",
+      "entrypoint": "python3 26_r27conf_ess_recomputes.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, pandas, numpy, scipy — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU (the pod-implying filename is unconfirmed; a local or RunPod CPU-strong instance both work)",
+    "est_wall_clock": "~30 min - 2 hours across the four closure/batch scripts",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "reproducibility: runnable-now (code present per inventory), venue evidence missing. This is gap #3 in the inventory's Top-5-gaps list: the script name `24_r24conf_pod_session.py` implies RunPod use but no pod ID, GPU class, cost, or runtime was found in pipelines/p5_desi_chirality/ or in the reachable sections of paper-5/status.md — so all original_run fields stay null rather than being inferred from the filename alone."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/21_r23conf_meta_closures.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/22_r24conf_local_batch.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/24_r24conf_pod_session.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/26_r27conf_ess_recomputes.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run all four closure recomputes and confirm the r23conf/r24conf/r27conf statistics match the committed JSONs within the numeric tolerance stated in each result file.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — r23conf/r24conf/r27conf closure recomputes + focal cluster inference bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
+    "project-context/SSOT/paper-5/status.md"
+  ]
+}

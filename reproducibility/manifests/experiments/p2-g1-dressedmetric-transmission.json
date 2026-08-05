@@ -1,0 +1,60 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-g1-dressedmetric-transmission",
+  "title": "G1 dressed-metric (Wilson-Ewing) transmission closure (T_c(k)=1, |delta f_NL| <= 6.8e-8)",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/g1_dressedmetric_transmission.py",
+      "entrypoint": "python3 g1_dressedmetric_transmission.py",
+      "sha256": null
+    },
+    {
+      "path": "research/cubic_bounce_transmission/g1_dressedmetric_ic_close.py",
+      "entrypoint": "python3 g1_dressedmetric_ic_close.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "requirements.txt (repo root: numpy, scipy, astropy, sympy-adjacent research deps)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-07-17",
+    "wall_clock": "seconds",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Deterministic closure computation; folded into paper v1.7.125 (commit e641cb1c)."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/g1_dressedmetric_transmission.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/g1_dressedmetric_ic_close.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm T_c(k)=1 and |delta f_NL| <= 6.8e-8 at k*eta_B=1e-2 (numeric tolerance <1e-9 absolute on delta f_NL).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P2 \u2014 G1 dressed-metric bullet",
+    "commit e641cb1c (v1.7.125)"
+  ]
+}

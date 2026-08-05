@@ -1,0 +1,50 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1a-ntot-sensitivity-mc",
+  "title": "100,000-sample N_tot sensitivity Monte Carlo (Spearman |rho_s|=0.996)",
+  "program": "bounce-theory",
+  "paper": "P1A",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/vacuum_scale_sensitivity_scan.py",
+      "entrypoint": "python3 vacuum_scale_sensitivity_scan.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "requirements.txt (repo root: numpy, scipy, astropy, sympy-adjacent research deps) + scipy.stats",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes (100,000-sample Monte Carlo is CPU-light)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Path correction: the inventory cited 'research/sensitivity_scan/', which does not exist in the repo (verified via find + git log --all --diff-filter=A). The actual script implementing the described 100k-sample N_tot Monte Carlo with Spearman correlation is research/theory_audit/vacuum_scale_sensitivity_scan.py."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/ (console output; N_tot viable range [79,95], 2.2% of parameter space)",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run 100,000-sample Monte Carlo and confirm Spearman |rho_s|=0.996 on N_tot to numeric tolerance (+/-0.005), and viable-fraction 2.2% of parameter space.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P1A \u2014 N_tot sensitivity MC bullet (path corrected: inventory cites 'research/sensitivity_scan/', actual path is research/theory_audit/vacuum_scale_sensitivity_scan.py)",
+    "project-context/SSOT/paper-1/status.md line 257 (Sensitivity scan table row) and line 275 (N_tot viable range)"
+  ]
+}

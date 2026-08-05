@@ -1,0 +1,56 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-c2-nall-binomial-null",
+  "title": "C2 — monopole/dipole N_all binomial null",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "validation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "h200_scripts/experiments/c2_p4_nall_binomial_null.py",
+      "entrypoint": "python3 c2_p4_nall_binomial_null.py",
+      "sha256": null
+    },
+    {
+      "path": "h200_scripts/experiments/launch_c123_pod.sh",
+      "entrypoint": "bash launch_c123_pod.sh",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, scipy — see requirements.txt",
+    "hardware": "cpu-strong (12 vCPU/62GB)"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": null,
+    "pod_id_or_host": "5i2td3deu3hojr, RTX A4000, $0.17/hr, 12 vCPU/62GB",
+    "date": "2026-06-09",
+    "wall_clock": "358s",
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod CPU-strong instance or local CPU (job is CPU-bound)",
+    "est_wall_clock": "~6-10 minutes",
+    "est_cost_usd": 0.02,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Wall-clock (358s) is DONE-logged in the inventory/compute-queue; only the pod's hourly rate ($0.17/hr) is known, no single-job dollar total was recorded, so actual_cost_usd stays null per directive and the estimate here is derived from rate x wall-clock."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/c2_nall_binomial_null.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the N_all binomial-null test statistics match the committed JSON within numeric tolerance stated in the result file.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — C1/C2/C3 NaMaster MC batch bullet (C2 DONE 358s)",
+    "project-context/SSOT/compute-queue.md (shared pod 5i2td3deu3hojr)",
+    "project-context/SSOT/paper-4/status.md"
+  ]
+}

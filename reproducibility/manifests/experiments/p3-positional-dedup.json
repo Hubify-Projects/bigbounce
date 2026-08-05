@@ -1,0 +1,73 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-positional-dedup",
+  "title": "6-way / 7-way / 8-way positional dedup (275,151 -> 269,317 unique, 2.12% collapse)",
+  "program": "anomaly-discovery",
+  "paper": "P3-support",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Per-object released survey catalogs (DESI DR1, SDSS DR18, eROSITA DR1, Planck CMB, Gaia DR3, NEOWISE)",
+      "type": "external-dataset",
+      "locator": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
+      "checksum": null,
+      "license": "cc-by-4.0"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p3_anomaly_engine/scripts/reproduce_headline_dedup.py",
+      "entrypoint": "python3 reproduce_headline_dedup.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p3_anomaly_engine/sixway_dedup.py",
+      "entrypoint": "python3 sixway_dedup.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p3_anomaly_engine/pathc_positional_dedup.py",
+      "entrypoint": "python3 pathc_positional_dedup.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, pandas, astropy (coordinates.SkyCoord, search_around_sky) — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-06-30",
+    "wall_clock": null,
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "reproduce_headline_dedup.py is the current headline reproduction entrypoint under scripts/; sixway_dedup.py and pathc_positional_dedup.py are the historical direct implementations it wraps/reproduces. All run locally with a 5.0 arcsec match radius and an 80-degree NEOWISE ecliptic-pole mask."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p3_anomaly_engine/outputs/sixway_dedup_artifact.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p3_anomaly_engine/outputs/sixway_dedup_artifact.csv",
+      "type": "catalog",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm total_survey_level_detections=275,151 collapses to n_unique_physical_objects=269,317 (n_collapsed_detections=5,834, a 2.12% collapse rate) — exact integer-count equality expected on a deterministic 5.0 arcsec positional crossmatch over the same six-survey input.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — 6-way / 7-way / 8-way positional dedup bullet",
+    "project-context/SSOT/paper-3/status.md"
+  ]
+}

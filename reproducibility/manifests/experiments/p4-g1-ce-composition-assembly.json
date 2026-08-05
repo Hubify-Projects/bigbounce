@@ -1,0 +1,70 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-g1-ce-composition-assembly",
+  "title": "G1 CE-included full composition (826-vs-846 adjudication)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "G1 retrained checkpoint",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/outputs/g1_retrain/g1_ckpt_best.pt",
+      "checksum": "aed109dc… (sha256, partial per inventory)"
+    },
+    {
+      "name": "CE-ResNet Zenodo release (pre_desi.fits)",
+      "type": "external-dataset",
+      "locator": "https://doi.org/10.5281/zenodo.7167388",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/scripts/g1_ce_composition_assembly.py",
+      "entrypoint": "python3 g1_ce_composition_assembly.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "pandas, numpy, pyarrow — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU",
+    "est_wall_clock": "minutes to ~1 hour for the 26,609-object composition/adjudication pass",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "CPU-only composition-assembly stage; the GPU host was capacity-full at original-run time so this ran on local CPU by necessity, which is also the natural reproduction venue."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/g1_full_composition/g1_full_composition_manifest.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/g1_full_composition/ce_composition_full.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm 26,609 total objects with ce_not_spiral=819 adjudicated (the 826-vs-846 CE-inclusion adjudication resolved) — exact integer match, not a numeric tolerance.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — G1 CE-included full composition bullet",
+    "project-context/SSOT/paper-4/status.md",
+    "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md"
+  ]
+}

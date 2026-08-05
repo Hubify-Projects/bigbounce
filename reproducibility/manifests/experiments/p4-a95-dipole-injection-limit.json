@@ -1,0 +1,51 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-a95-dipole-injection-limit",
+  "title": "A_95^obs coverage-calibrated dipole injection upper limit",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.py",
+      "entrypoint": "python3 a95_observed_label_upper_limit_v1_0_265.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, scipy — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": "597.7s (~10 min), logged exactly via a95_run.log",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU",
+    "est_wall_clock": "~10 minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Best time-logged example in the repo (per inventory) — the reproduction estimate simply restates the exactly-logged original run time since it is already a clean receipt."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm A_95^obs = 0.98% (coverage-calibrated dipole injection upper limit) within the numeric tolerance stated in the result JSON.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — A_95^obs coverage-calibrated dipole injection upper limit bullet (\"best time-logged example\")",
+    "project-context/SSOT/paper-4/status.md",
+    "Path correction: the inventory names the log as `a95_run.log` without a directory; verified via `find` that the script, log, and output JSON all live in `pipelines/p2_chirality/analysis/`, not under `outputs/`."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-c1-namaster-fsky-sweep",
+  "title": "C1 — NaMaster fsky sweep (part of the C1/C2/C3 monopole/dipole-null batch)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "validation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "h200_scripts/experiments/c1_p1b_namaster_fsky_sweep.py",
+      "entrypoint": "python3 c1_p1b_namaster_fsky_sweep.py",
+      "sha256": null
+    },
+    {
+      "path": "h200_scripts/experiments/launch_c123_pod.sh",
+      "entrypoint": "bash launch_c123_pod.sh",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "pymaster, healpy, numpy — see requirements.txt",
+    "hardware": "cpu-strong (12 vCPU/62GB — NaMaster MC jobs are CPU-bound despite running on a GPU-class pod)"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "RTX A4000 (unused — job is CPU-bound NaMaster MC)",
+    "pod_id_or_host": "5i2td3deu3hojr, $0.17/hr, 12 vCPU/62GB",
+    "date": "2026-06-09",
+    "wall_clock": "~71 min inferred (compute-queue.md logs pod-session start 2026-06-09 18:42; the committed output reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json carries a completion timestamp of 2026-06-09T19:53:31Z) — qualitative ETA quoted in compute-queue.md was ~1.3h at the time it was written while the job was still RUNNING",
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod CPU-strong instance (12+ vCPU, no GPU required)",
+    "est_wall_clock": "~1-1.5 hours for the 2x500 MC fsky sweep (fsky~0.85 and fsky~0.65)",
+    "est_cost_usd": 0.2,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "The inventory's own compute-queue.md entry captured this job mid-run with only a qualitative ETA (~1.3h), not a completed-run receipt at write time; a completed output file was independently located at reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json with a real completion timestamp, so the wall-clock above is DERIVED from two real logged timestamps rather than invented. Note: despite being grouped in the inventory under the P4 C1/C2/C3 NaMaster batch (shared pod session with the genuinely P4-scoped C2/C3 nulls), this script's own content and compute-queue.md both describe it as a P1B beta-injection-recovery pipeline-validation rerun, not a P4 chirality measurement — recorded here as paper=P4 per the inventory's grouping, with this discrepancy flagged for honesty."
+  },
+  "outputs": [
+    {
+      "locator": "reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the canonical fsky=0.32 reference (recovered_beta_deg=0.238, bias_deg=0.032, snr_se=20.32) and the fsky=0.85/0.65 sweep results (e.g. fsky_target=0.85: beta_recovered_deg=0.237, bias_deg=-0.033, snr_se=181.38) match the committed JSON within numeric tolerance.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — C1/C2/C3 NaMaster MC batch bullet",
+    "project-context/SSOT/compute-queue.md (pod ID 5i2td3deu3hojr; C1 row, 2026-06-09 18:42 start, RUNNING/~1.3h ETA at doc write time)",
+    "Path correction: the inventory does not give a repo-relative output path for C1 (only the pod-local `/workspace/c1_results/c1_fsky_sweep.json`); verified via `find` that the mirrored completed output lives at `reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json`, under the bounce-theory P1B NaMaster tree rather than pipelines/p2_chirality/outputs/canonical_provenance/ where C2/C3 outputs live."
+  ]
+}

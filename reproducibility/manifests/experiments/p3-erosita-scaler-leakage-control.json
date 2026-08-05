@@ -1,0 +1,59 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-erosita-scaler-leakage-control",
+  "title": "eROSITA scaler-leakage bounded control (top-298 overlap 257/298, J=0.76)",
+  "program": "anomaly-discovery",
+  "paper": "P3-support",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "eROSITA DR1 feature table (930,203 sources, pod-side only)",
+      "type": "internal-artifact",
+      "locator": "not preserved in-repo — pod-side feature tables only, per inventory",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p3_anomaly_engine/erosita_scaler_refit.json",
+      "entrypoint": "generating script not identified in current repo tree (grep -l \"erosita_scaler_refit\" over pipelines/p3_anomaly_engine/**/*.py found no match — the two closest candidates, erosita_membership_reproduce.py and r24conf_erosita_axis_sweep.py, write to differently-named output files: outputs/erosita_membership_reproduce.json and r24conf_erosita_axis_sweep.json respectively, not erosita_scaler_refit.json) — this JSON result file is the surviving artifact and is inspectable/re-analyzable as-is",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "unknown — generating script not identified; result JSON requires no code to inspect",
+    "hardware": "unknown (930,203-source scaler-refit comparison implies at minimum cpu-heavy, plausibly gpu-24gb given the paired A/B retrain)"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-06-11",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod (pending generating-script recovery)",
+    "est_wall_clock": "unknown until the generating script is recovered or rewritten from the committed result JSON's documented method",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "The eROSITA leg is inspectable/re-analyzable now (the result JSON documents its own method: identical seeds np/torch=42, only the scaler-fit population differs between run A (full-catalog scaler) and run B (train-split-only scaler)) — per the inventory's own verdict this leg is runnable-now. Caveat: the specific generating script was not identified in the current repo tree (see path-correction note below), so a from-scratch bit-for-bit RE-RUN is not currently executable without recovering or rewriting that script against the eROSITA feature table; the committed result JSON itself is the reproducible/inspectable artifact. The NEOWISE/Gaia scaler-refit extension of this same leakage-control method remains compute-gated and has NOT been run at all yet (separate open item from this eROSITA result) — do not conflate the two."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p3_anomaly_engine/erosita_scaler_refit.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Confirm the committed result: top-298 overlap between run A (full-catalog scaler) and run B (train-split-only scaler) = 257/298 (Jaccard 0.7581), top-1%-union overlap 7,279 (Jaccard 0.6427), Spearman rank correlation over the full 930,203-source catalog = 0.9413 — a bit-for-bit fresh-run check additionally requires recovering/rewriting the generating script against the eROSITA feature table; absent that, verification is against the committed JSON's own internally-consistent numbers.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — eROSITA scaler-leakage bounded control bullet",
+    "pipelines/p3_anomaly_engine/erosita_scaler_refit.json (leg='eROSITA (load-bearing; NEOWISE/Gaia remain queued — feature tables pod-side only)')",
+    "path correction: grep -l \"erosita_scaler_refit\" across pipelines/p3_anomaly_engine/*.py and pipelines/p3_anomaly_engine/**/*.py found no generating script; erosita_membership_reproduce.py writes outputs/erosita_membership_reproduce.json and r24conf_erosita_axis_sweep.py writes r24conf_erosita_axis_sweep.json — neither writes erosita_scaler_refit.json — so the result JSON itself is used as code[].path per the directive's fallback rule",
+    "project-context/SSOT/paper-3/status.md"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-multisurvey-summary-crossmatch",
+  "title": "Multi-survey summary / crossmatch / spatial-clustering / score-distributions (8 surveys)",
+  "program": "anomaly-discovery",
+  "paper": "P3-support",
+  "kind": "crossmatch",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/h200_results/pod_backup_20260408_full/bulk_cross_match_all.py",
+      "entrypoint": "python3 bulk_cross_match_all.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "requests, urllib — see requirements.txt (external per-survey archive queries)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": "H200 snapshot dir pod_backup_20260408_full (pod since rotated/exited)",
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local (script survives; per-survey raw output regeneration untested since the 2026-04-08 snapshot)",
+    "est_wall_clock": "hours (8-survey crossmatch, external archive query throughput bound)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "The generating script (bulk_cross_match_all.py) survives in the H200 pod-backup snapshot directory even though status is needs-data-restore — most of the per-survey raw outputs it produced do NOT survive alongside it (only result JSONs from a subset of the ~30 h200_results/ subdirectories are preserved). Primary blocker is that this raw multi-survey crossmatch has not been regenerated from the surviving script since the 2026-04-08 pod snapshot, so current-state raw per-survey outputs (spatial clustering, score distributions) cannot be verified against a fresh run without first re-executing the script end to end."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/h200_results/pod_backup_20260408_full/",
+      "type": "dataset",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run bulk_cross_match_all.py and confirm per-survey detection counts and spatial-clustering/score-distribution summaries reproduce the 2026-04-08 snapshot outputs within the same tolerances used for the 6-way dedup headline (p3-positional-dedup): exact integer-count equality on deterministic crossmatch passes per survey. Not yet re-verified against a fresh run.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — multi-survey summary / cross-match / spatial-clustering / score-distributions (8 surveys) bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps, item 4 (dozens of historical H200-pod artifact directories with no accompanying $/hr or wall-clock manifest)",
+    "project-context/SSOT/paper-3/status.md"
+  ]
+}

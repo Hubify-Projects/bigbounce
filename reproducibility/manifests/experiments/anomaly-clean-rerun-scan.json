@@ -1,0 +1,106 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-clean-rerun-scan",
+  "title": "clean_rerun campaign (AUG-011) — calibration stage, sealed 2026-08-05",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "inference-scan",
+  "inputs": [
+    {
+      "name": "DESI DR1 iron zcatalog (zall-pix-iron.fits)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+      "checksum": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+      "license": "DESI DR1 public data license"
+    },
+    {
+      "name": "Full DESI DR1 iron healpix coadd corpus (streamed per-pixel, multi-TB, no fixed archive locator)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/healpix/ (streamed pixel-by-pixel by run_scan.py; each coadd deleted immediately after scoring, per RUNBOOK.md §0)",
+      "checksum": null,
+      "license": "DESI DR1 public data license"
+    },
+    {
+      "name": "best_model_47k.pt (archived BigAE checkpoint, 496->512->256->128, reused input)",
+      "type": "model",
+      "locator": "best_model_47k.pt",
+      "checksum": "f5266ba48f476bca2f1b12610e0e81322caaa955af70ab83f0b05bf763885f07",
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/derive_locator_inventory.py",
+      "entrypoint": "python3 derive_locator_inventory.py derive --zcatalog zall-pix-iron.fits --output locator_inventory_draft.jsonl",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/build_calibration.py",
+      "entrypoint": "python3 build_calibration.py --zcatalog zall-pix-iron.fits --manifest run-contract.json --model best_model_47k.pt --coadd-cache-dir <cache> --training-manifest-output training_manifest.json --validation-manifest-output validation_manifest.json --output calibration.json",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/run_scan.py",
+      "entrypoint": "python3 run_scan.py --inventory locator_inventory.jsonl --contract run-contract.json --model best_model_47k.pt --shard-dir <shards> --receipt-dir <receipts> --checkpoint <ckpt> --coadd-cache-dir <cache>",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun_contract.py",
+      "entrypoint": "python3 clean_rerun_contract.py build --model best_model_47k.pt --inference-code enhanced_18M_inference.py --input-manifest input_manifest.json --calibration calibration.json",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, torch, astropy — see requirements.txt; fail-closed contract scaffold in clean_rerun_contract.py (never modify per RUNBOOK.md)",
+    "hardware": "gpu-a4000-16gb (RUNBOOK.md §0: 'A4000-class GPU or CPU-strong instance' — download-bound, not GPU-bound; inference itself is a small 3.5MB BigAE)"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-08-05T09:19:13Z",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod (A4000-class GPU or CPU-strong instance, ~200GB volume)",
+    "est_wall_clock": "calibration stage: hours (bounded ~25GB two-stage PPS-cluster download over ~200 coadd groups). Full DESI DR1 scan (run_scan.py): NOT YET EXECUTED anywhere — no wall-clock evidence exists; download-bound across tens of thousands of healpix groups, so this is a multi-day estimate pending a real run, not a recorded fact",
+    "est_cost_usd": 15.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "This manifest covers the CALIBRATION STAGE ONLY, which is sealed and runnable-now (n_fit=20,000 / n_validation=20,000, two-stage PPS-cluster sample over 200 groups / 40,000 rows, stability check PASS: observed_deviation=0.00543 <= bound 0.0481). The full DESI-DR1-scale scan via run_scan.py is the pending, not-yet-executed, single most consequential open experiment in the repo — it has no wall-clock or dollar figure recorded anywhere (Top-5-gaps #1). run_scan.py exists, is contract-validated against the sealed calibration, and is ready to execute, but until it actually runs this manifest cannot claim a full-scan reproduction cost with any evidence; the $15 estimate above is for the calibration stage only (bounded ~25GB download at typical RunPod A4000-class hourly rates), not for the full multi-TB scan. Per RUNBOOK.md §0, the scan is download-bound (DESI archive throughput + per-pixel HTTP overhead across tens of thousands of healpix groups), not GPU-bound, so --start/--end parallel workers matter more than GPU class."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/calibration.json",
+      "type": "result-json",
+      "checksum": "25498638fd23bb0033960e8199608e890feacd9e0eb220b24b300efcc954eb2f"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/training_manifest.json",
+      "type": "receipt",
+      "checksum": "3bde52d10f0a1c6ea70236c9f1ff5d12346dfbdb2815c24edc157811fa5777bd"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/validation_manifest.json",
+      "type": "receipt",
+      "checksum": "cfb9227cac001baa62a799a85547602fd77c77a09586f30bb0007f1d32f604e9"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/run-contract.json",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run the calibration stage and confirm n_fit=20,000 / n_validation=20,000 over the same 200-group / 40,000-row two-stage PPS-cluster sample, with the stability check passing under the committed rule abs(validation_mse_mean - mse_mean) <= 5*(mse_std/sqrt(n_fit)) (observed deviation 0.00543 against a bound of 0.0481 in the sealed calibration.json). Full-scan verification (row counts, anomaly rates at DESI-DR1 scale) is not yet possible since run_scan.py has not been executed.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — clean_rerun campaign (AUG-011) bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps, item 1 (full-scan wall-clock/cost evidence missing)",
+    "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md §0 (honest scale estimates)",
+    "pipelines/p1_highz_tracers/clean_rerun_contract.py",
+    "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/calibration.json and run-contract.json (created_utc 2026-08-05T09:19:13Z, stability_check.passed=true)",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md §Restoration gate result — 2026-08-04 (motivation for the clean rerun)"
+  ]
+}
