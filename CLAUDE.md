@@ -358,3 +358,33 @@ on the current exact PDFs, per directive H-refined truth-audit rules. Verdict
 WORDS are diagnostic feedback, never the gate. Every finding still gets a
 source-cited disposition; genuinely-new-real items still close before
 convergence is claimed. Integrity rules unchanged and absolute.
+
+## Standing directive (2026-08-05 — Houston explicit): Q — PURE-CONTRIBUTION PUBLICATION FRAMING + REPRODUCIBILITY-FIRST LAB
+
+Houston's core points (verbatim source: project-context/prompt-history.md,
+2026-08-05 entry):
+
+- **Q1 — No mistake-narration in published works.** Papers/datasets/releases
+  are presented in their pure form: the question, the method, the results, the
+  contributions (equations, math, models, datasets). Never frame a published
+  work around redoing/fixing our own earlier errors, lost data, or stale
+  artifacts. A work whose thesis is "we didn't do X right, so this paper redoes
+  X" is NOT a foundational publication unless the redo itself is genuinely
+  novel science. Internal truth-audit history stays internal (SSOT,
+  project-context) — it is process evidence, not paper content.
+- **Q2 — Reproducibility manifests are mandatory.** Every research program AND
+  every individual experiment/simulation/compute run gets a manifest: external
+  data sources with links (HF/DESI/etc.), APIs used, exact scripts, compute
+  venue (local = ~free vs RunPod GPU), reproduction cost estimate, and
+  wall-clock time. The lab-level goal: BigBounce is the flagship reproducible
+  lab for the Hubify platform; everything must be portable into Hubify and
+  reproducible individually and holistically. The full-reproduction pass is
+  the FINAL pre-publication test.
+- **Q3 — Keep both site surfaces.** The Research Programs grouping AND a
+  complete flat papers list page. Paper titles/descriptions must carry
+  plain-English purpose labels (e.g. namaster-proof needs a clear subtitle),
+  not jargon-only names.
+- **Q4 — Nothing viable gets lost.** Any narrowing/split/retirement of a paper
+  must preserve a documented disposition trail; periodically audit history for
+  viable unpublished science (e.g. the no-go-pathways survey) and either
+  resurrect it under a program or record explicitly why not.
