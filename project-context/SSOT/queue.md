@@ -11,19 +11,25 @@ The active work is:
 2. **HOUSTON — final sign-off:** decide P2, P1A, P4, P1B, and P5 in that order;
    only explicit `APPROVE` moves that manuscript from Directive-P 95 to 100.
    There is no 96 state. P3 receives support-release integration feedback only.
-3. **ACTIVE — anomaly flagship (AUG-011) — clean rerun campaign LAUNCHED
-   2026-08-05:** campaign assets committed (`ac176614` + calibration sampling
-   fix `9729c287`; 15/15 offline tests) at
-   `pipelines/p1_highz_tracers/clean_rerun/` — bounded two-stage PPS
-   calibration (200 groups / 40k rows, seed 20260804), fail-closed manifest
-   sealing, receipted scan runner, pod RUNBOOK. RunPod pod
-   `tc291bka0r6fl3` (A4000, 200GB volume, $0.17/hr) is running the phase-1
-   chain: zcatalog SHA-verify (official `2d95ad99…b49b`) → locator inventory →
-   manifest finalize → sealed calibration → run contract → 5-group smoke +
-   verify-receipts, then STOPS for orchestrator review before the full
-   multi-TB scan. Frozen artifacts verified byte-identical on-pod (model
-   `f5266ba4…`, inference code `3e7efb24…`). Full-scan go decision +
-   backup-3plus cadence are the next gates.
+3. **ACTIVE — anomaly flagship (AUG-011) — FULL SCAN RUNNING since
+   2026-08-05 09:43Z:** phase 1 sealed and committed (`568a33bf`:
+   input manifest with official zcatalog SHA `2d95ad99…`, 36,634-group
+   locator inventory `f3299a31…`, two-stage PPS calibration sealed —
+   mse_mean 0.8771 / mse_std 1.3605, stability gate PASSED at deviation
+   0.0054 vs bound 0.0481 — run contract binding model `f5266ba4…` +
+   inference code `3e7efb24…`); sealed inputs mirrored to GitHub + HF
+   dataset `bamfai/bigbounce-aug-011-clean-rerun` + local (3 locations).
+   Public-ID-first filter added (`b5518a5d`, 26/26 tests): every shard keeps
+   only zcatalog-vouched TARGETIDs with a per-group JSON audit line
+   (smoke: kept == zcat_rows exactly, 0 surplus, on all 5 groups; the
+   group-targetids export `013990ca…` agrees with the inventory on all
+   36,634 groups / 28,425,963 rows). Full scan: 12 parallel workers +
+   auto-restart babysitter + 2-hourly backup loop (B2 `$B2_BUCKET`
+   aug-011-clean-rerun/ + HF receipts/state) on RunPod pod `tc291bka0r6fl3`
+   (ssh -p 1349 root@193.183.22.56, A4000, $0.17/hr). Observed rate
+   ~12 groups/min → ~2 days wall-clock. On completion: verify-receipts →
+   summarize-after-dedup → compare-generations → commit receipts/summary,
+   then build the defensible selected sample + taxonomy (flagship phase 3).
 4. **HOUSTON + AGENT — publishing:** PRD/CQG/ApJS/JORS/AJ portal work, tracked
    separately from readiness. arXiv endorsement remains a parallel channel.
    2026-08-04/05 hygiene pass: WAVE1/WAVE2 kits + May sign-off brief marked
