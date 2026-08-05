@@ -340,6 +340,7 @@ def run_scan(
     completed = already_completed_shards(checkpoint_path)
     coadd_cache_dir.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
+    skipped_downloads = 0
 
     for record in records:
         survey, program, healpix = record["survey"], record["program"], int(record["healpix"])
@@ -365,7 +366,23 @@ def run_scan(
 
         ok = inference_module.download_file(coadd_url, str(coadd_path))
         if not ok:
-            raise ScanError(f"failed to download coadd after retries: {coadd_url}")
+            # Transient archive failures must not kill the whole worker range:
+            # skip the group with an audit line and retry it on a later
+            # incarnation (the group has no shard/checkpoint entry, and the
+            # worker exits nonzero at range end so the supervisor relaunches).
+            skipped_downloads += 1
+            append_audit_line(
+                audit_log_path,
+                {
+                    "survey": survey,
+                    "program": program,
+                    "healpix": healpix,
+                    "download_failed": True,
+                    "coadd_url": coadd_url,
+                },
+            )
+            print(f"SKIP (download failed, will retry next incarnation): {coadd_url}", flush=True)
+            continue
         try:
             scored_rows = score_group(inference_module, model, device, coadd_path, calibration)
             kept_rows, audit_record = filter_group_to_zcatalog(
@@ -381,7 +398,7 @@ def run_scan(
         completed.add(name)
         written.append(shard_path)
 
-    return written
+    return written, skipped_downloads
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -415,7 +432,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_parser().parse_args()
-    written = run_scan(
+    written, skipped_downloads = run_scan(
         args.inventory,
         args.contract,
         args.model,
@@ -433,6 +450,11 @@ def main() -> None:
     print(f"wrote {len(written)} shard(s)")
     for path in written:
         print(f"  {path}")
+    if skipped_downloads:
+        # Nonzero exit (and no "range complete" from the wrapper) so the
+        # supervisor relaunches this range to retry the skipped groups.
+        print(f"{skipped_downloads} group(s) skipped on download failure — exiting for retry")
+        raise SystemExit(3)
 
 
 if __name__ == "__main__":
