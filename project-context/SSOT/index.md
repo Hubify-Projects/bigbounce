@@ -196,6 +196,7 @@ a standalone paper. P5 remains a standalone AJ companion to P4.
 | P3 support | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r17 | 95 | Supporting Data Release · DESI Public-ID Recovery; integrate with anomaly flagship; no standalone ApJS submission |
 | P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.274 | 95 | Core chirality paper; Houston sign-off precedes ApJS submission |
 | P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | Standalone Companion · Chirality–Environment Null Test; Houston sign-off precedes AJ submission |
+| P1C | `arxiv/paper1c_nogo_survey/main.tex` | draft-extraction v1C.0.1 | — | **NEW DRAFT — not yet in review pipeline.** No-go barrier survey extracted from paper1_unified.tex sec:barriers; see `project-context/SSOT/paper-1c/status.md` |
 
 P5's target-program-by-environment interaction remains an honestly disclosed
 systematic limitation; convergence does not turn that conditional null into a
