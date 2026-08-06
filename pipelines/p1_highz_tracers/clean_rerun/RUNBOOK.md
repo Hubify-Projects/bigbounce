@@ -337,3 +337,116 @@ match them.
   that 1% bound to push past a failure; investigate whether
   `--group-targetids` was built from the same zcatalog as `--inventory`
   first (see §0's public-ID-first filter rule).
+
+## PHASE 3. Flagship candidate sample, cross-match, and taxonomy
+
+Runs once step 13 (`summarize-after-dedup`) has produced `/workspace/summary.json`
+for the completed, receipt-verified full scan. See
+`project-context/ANOMALY_FLAGSHIP_MANUSCRIPT_ARCHITECTURE_2026-08-05.md` §2
+for what these deliverables are for and §5 for the dependency gates they
+close. Tooling: `build_flagship_sample.py`, `crossmatch_flagship.py`,
+`taxonomy_flagship.py` in this directory; offline tests in
+`pipelines/p1_highz_tracers/tests/test_flagship_phase3.py`.
+
+Install the phase-3-only dependencies (in addition to §2's `torch astropy
+pyarrow numpy`):
+
+```sh
+pip install astroquery scikit-learn umap-learn
+```
+
+### 15. Describe the post-dedup score distribution (no sample emitted yet)
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py \
+  --contract /workspace/run-contract.json \
+  --shard-dir /workspace/shards \
+  --receipt-dir /workspace/receipts \
+  --summary /workspace/summary.json \
+  --describe
+```
+
+Fails closed if receipts don't verify or if `/workspace/summary.json`'s
+`contract_sha256` does not match `/workspace/run-contract.json`. Prints
+quantiles and counts/fractions above the candidate thresholds 3/4/5/6/8/10
+sigma. **This output is how `--score-threshold` for step 16 gets decided —
+never copy the historical `anomaly_score > 3.0` cut or tune the threshold to
+reproduce the historical 2,145-row count** (per the flagship architecture
+doc's §2b instruction and this repo's Standing Directive Q1).
+
+### 16. Build the sealed flagship sample
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py \
+  --contract /workspace/run-contract.json \
+  --shard-dir /workspace/shards \
+  --receipt-dir /workspace/receipts \
+  --summary /workspace/summary.json \
+  --score-threshold <DECIDED_FROM_STEP_15> \
+  --output-sample /workspace/flagship_sample.parquet \
+  --output-manifest /workspace/flagship_sample_manifest.json
+```
+
+Optional configured quality filters (repeatable): `--exclude-survey cmx`,
+`--exclude-program other`, etc. — see `build_flagship_sample.py`'s
+docstring for why the historical `max_snr > 0.5` filter is NOT ported
+(the new shard schema has no SNR column). The emitted manifest records the
+exact rule, thresholds, row count, parent generation id, and full
+shard-receipt binding.
+
+### 17. Cross-match the flagship sample against SIMBAD/NED
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/crossmatch_flagship.py \
+  --input-sample /workspace/flagship_sample.parquet \
+  --input-manifest /workspace/flagship_sample_manifest.json \
+  --zcatalog /workspace/zall-pix-iron.fits \
+  --checkpoint-dir /workspace/crossmatch_checkpoints \
+  --output-matched /workspace/flagship_matched.parquet \
+  --output-unmatched /workspace/flagship_unmatched.parquet \
+  --output-manifest /workspace/flagship_crossmatch_manifest.json
+```
+
+Fails closed if the sample's SHA-256 doesn't match its manifest, or if
+`--zcatalog`'s SHA-256 doesn't match the manifest's bound `catalog_sha256`
+(i.e. it is not the exact zcatalog the sample's targetids came from).
+Recovers RA/Dec by streaming that same zcatalog in bounded chunks (the new
+shard schema has no ra/dec columns). Resumable: re-running the identical
+command picks up from `--checkpoint-dir`'s per-service JSON checkpoints
+(default: checkpoint + print progress every 50 queries, 1.0s sleep between
+queries per service — tune with `--checkpoint-every`/`--rate-limit-sleep`).
+For a bounded smoke run first, add `--limit 20`.
+
+### 18. Build the candidate-family taxonomy on the unmatched subset
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/taxonomy_flagship.py \
+  --input-unmatched /workspace/flagship_unmatched.parquet \
+  --input-crossmatch-manifest /workspace/flagship_crossmatch_manifest.json \
+  --output-results /workspace/flagship_taxonomy_results.json \
+  --output-manifest /workspace/flagship_taxonomy_manifest.json
+```
+
+Fails closed if the unmatched table's SHA-256 doesn't match the crossmatch
+manifest. Ports the historical clustering METHOD (PCA -> UMAP -> HDBSCAN[leaf]
+-> kNN noise reassignment -> descriptor-identity family merge) but — read
+`taxonomy_flagship.py`'s module docstring before trusting the family labels —
+the new shard schema carries no latent vectors, WISE colors, spectype, or
+line IDs, so labels are GENERIC score-tier + provenance descriptors only
+("candidate family", never an astrophysical class name), per Standing
+Directive Q1. If a companion feature-extraction step for the new generation
+is ever built, pass it via `--extra-features` (a Parquet keyed by
+`targetid`) to enrich labeling without touching the clustering pipeline.
+
+### Recovery notes (phase 3)
+
+- All three phase-3 tools re-verify their upstream SHA-256 bindings before
+  doing anything (receipts, contract-summary binding, sample-manifest
+  binding, zcatalog binding) — a stale or swapped intermediate artifact
+  fails closed with a clear error instead of silently producing a
+  provenance-inconsistent sample/crossmatch/taxonomy.
+- `crossmatch_flagship.py` resume is automatic per `--checkpoint-dir`: rerun
+  the exact same command after any interruption and already-queried
+  targetids are skipped for that service.
+- Run the offline test suite before trusting a fresh phase-3 change:
+  `python3 -m pytest pipelines/p1_highz_tracers/tests/ -q`.
