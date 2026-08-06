@@ -126,8 +126,8 @@ export const researchPrograms: ResearchProgram[] = [
           "Which minimal spin-torsion routes to dark energy or a bounce are structurally closed — a 14-barrier survey (draft)",
         role: "In preparation · structural no-go survey (14-barrier catalog)",
         description:
-          "A systematic survey of 7 foundation mechanism classes and 6 observational branches, extracted from the retired P1U barrier catalog, collapsing to 13 distinct mechanism-class constraints across 14 catalog entries and closing four candidate dark-energy routes (R1-R4). Draft v1C.0.3, compiled 16 pp, 0 undefined refs, 0 overfull boxes — Appendix B's Fierz coefficient identity is independently adjudicated (SS + ½VV + ½AA − PP, G_s = −3κ/16, matching the published P1A appendix; verification script and report released) and cited in place of the prior convention note. DRAFT: next gate is a full INT review board; no readiness score has been computed and no venue/Zenodo kit exists yet.",
-        href: "/papers/paper1c_nogo_survey_v1C.0.3.pdf",
+          "A systematic survey of 7 foundation mechanism classes and 6 observational branches, extracted from the retired P1U barrier catalog, collapsing to 13 distinct mechanism-class constraints across 14 catalog entries and closing four candidate dark-energy routes (R1-R4). Draft v1C.0.4, compiled 17 pp, 0 undefined refs, 0 overfull boxes — closes the first full R1 review board on the exact v1C.0.3 PDF (Claude INT major-revisions, Grok REJECT, Gemini MAJOR): printed Fierz matrix (B1) replaced with the adjudication-computed published-P1A matrix so the displayed chain composes, the B14 Tier-I theorem is now stated and proved self-contained in-paper, Shapiro-Teixeira Omega coefficient transcriptions corrected against the arXiv source, and per-route closure metrics (R2 vs birefringence amplitude, R3 vs dark-energy density) stated honestly. DRAFT: next gate is an R2 confirmation board; no readiness score has been computed and no venue/Zenodo kit exists yet.",
+        href: "/papers/paper1c_nogo_survey_v1C.0.4.pdf",
         external: true,
       },
     ],
