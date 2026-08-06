@@ -5,6 +5,19 @@
   "objective": "Preserve a truthful, resumable BigBounce checkpoint across machines.",
   "tasks": [
     {
+      "id": "T000",
+      "status": "active",
+      "title": "Reconcile divergent local and origin/main histories before publishing the checkpoint",
+      "source_prompts": [
+        "2026-08-05 cross-machine checkpoint"
+      ],
+      "completion_criteria": [
+        "Local checkpoint commits are preserved",
+        "Reconciliation does not use force-push, reset, rebase, stash, or clean",
+        "A normal main-branch push is possible after an explicit history-resolution decision"
+      ]
+    },
+    {
       "id": "T001",
       "status": "active",
       "title": "Run Paper 1B's final independent confirmation spot-check",
@@ -20,6 +33,7 @@
   ],
   "watchpoints": [
     "Keep raw prompts raw; put audit conclusions in task and plan files.",
-    "Read SSOT before paper work and never commit local environment backups."
+    "Read SSOT before paper work and never commit local environment backups.",
+    "At handoff fetch, origin/main was 1,574 commits ahead while local main was 2 commits ahead; do not auto-reconcile divergent history."
   ]
 }
