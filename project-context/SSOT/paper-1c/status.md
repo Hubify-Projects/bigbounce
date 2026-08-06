@@ -1,10 +1,38 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.3 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.4 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: INTERNAL READ-THROUGH DONE → CLOSURES LANDED (v1C.0.2) → FIERZ
-DISCREPANCY ADJUDICATED (v1C.0.3). Next gate: full INT board.** The
+**Status: FIRST FULL REVIEW BOARD (R1) RUN AND TRUTH-AUDITED → 15
+GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.4). Next gate: R2 confirmation
+board on the exact v1C.0.4 PDF.** The R1 board ran 2026-08-06 on the exact
+v1C.0.3 PDF (sha `85e53832…`), three legs with raw receipts: **Claude Opus
+INT major-revisions (3 MAJOR / 8 MINOR) · Grok grok-4.3 REJECT · Gemini
+gemini-3.1-pro-preview MAJOR REVISIONS**. The Perplexity leg FAILED (API
+quota) and earlier R2/R3 dispatch attempts were infra failures (stale
+portfolio receipts) — failure records preserved, never counted. The
+verdict-first truth audit
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-06-P1C-v1C.0.3-EXACTPDF-85e53832/P1C_v1C.0.3_truth_audit.md`)
+deduplicated the board to 20 canonical items: **15 genuinely-new-real
+(closed in v1C.0.4), 2 re-flags of disclosed content, 1 scope/venue
+opinion, 2 falsified with source citations**. Headline closures: printed
+Fierz matrix (B1) replaced with the adjudication-computed published-P1A
+matrix so the displayed B1 → (−F_c) → B2 chain composes and matches
+`fierz_lemma_check.py` (adjudication [L12]/[L15]); the B14 Tier-I theorem
+is now stated and proved self-contained in-paper (new App. D, carried
+faithfully from P1A `sec:transparency`); Shapiro–Teixeira Ω₂₄/Ω₄₄
+transcriptions corrected against the arXiv source (Eq. 42) with the
+|Ω₄₄/α₄| illustrative ratio recomputed (≈3.3 at γ≈0.24); per-route closure
+metrics stated honestly everywhere (R2 vs observed birefringence
+amplitude, R3 vs observed dark-energy density); Fig. 1 B14→R2/R3/R4
+arrows; hierarchy display fixed to exact values (8.7×10¹²² ≈ 10¹²³) with a
+rounding-convention sentence; dimension-consistent ∂ϑ_NY ~ H₀²
+substitution; footnote 1 promoted to App. B; Contributions paragraph +
+Q1 hedging consolidation; frozen-commit pin + companion DOI in Data & Code
+Availability. Deferred-genuine (pre-submission checklist): ST Eq. 58 +
+"unable to solve" verbatim-quote verification (source render truncated;
+every other quoted ST/BS equation now source-verified); venue-length
+condensation (D/P rounds). Prior-round context follows. The
 2026-08-05 internal referee read-through of v1C.0.1 (exact-PDF-bound, sha
 847fb143;
 `project-context/peer-reviews/INT_v3/ROUND_2026-08-05-P1C-v1C.0.1-EXACTPDF-847fb143-INTERNAL-READTHROUGH/`)
@@ -69,22 +97,27 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.3: 16 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
+v1C.0.4: 17 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
 clean 2026-08-06 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.3.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.3.pdf` (md5
-`fb233faa223b8fc3ca8bb66905a7fdb5`, all three copies match). Prior v1C.0.1/
-v1C.0.2 mirrors retained. `/latex-audit` visual pass run on the recompile
-(title page, Data-and-Code-Availability page, App-B Fierz page rendered and
-inspected; no column overflow, no box overprint).
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.4.pdf` and
+`public/papers/paper1c_nogo_survey_v1C.0.4.pdf` (md5
+`6c9a8a2cd1f80c6a5d8dc55042e64b79`, sha256 `7ec5f221…`, all three copies
+match). Prior v1C.0.1/v1C.0.2/v1C.0.3 mirrors retained. `/latex-audit`
+visual pass on the recompile: all 17 pages rendered; title page, Fig. 1
+(new B14 arrows verified), Tables I–III, App. C Fierz matrix, App. D
+theorem inspected — no overflow/overlap; all embedded GitHub URLs resolve.
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
-- No INT review round (Claude/Grok/Gemini or otherwise)
+- ~~No INT review round~~ R1 INT board DONE 2026-08-06 (Claude
+  major-revisions / Grok REJECT / Gemini MAJOR; truth-audited; 15
+  genuinely-new-real closed as v1C.0.4). No R2 confirmation board yet —
+  zero convergence evidence.
 - No EXT review round (ChatGPT/Grok/Gemini browser sweep)
-- No truth-audit, no finding dispositions
 - No readiness percentage computed or claimed
 - No Convex `paperVersions` row, no `rRounds`/`externalReviews` entries
+  (P1C is a draft outside the 6-paper roster; site surfaces update via
+  static `papers.ts`/`reviewTimeline.ts` for now)
 - No Zenodo DOI, no venue kit, no arXiv submission prep
 - Not added to `papers[]` in `site/src/data/papers.ts` (would imply the
   version-chip/PDF-mirror/publication-path machinery every roster paper
@@ -97,9 +130,16 @@ inspected; no column overflow, no box overprint).
 1. ~~Internal read-through~~ DONE 2026-08-05 (9 MAJOR + 11 MINOR, all
    dispositioned; closures landed as v1C.0.2 — see
    `ROUND_2026-08-05-P1C-v1C.0.1-EXACTPDF-847fb143-INTERNAL-READTHROUGH/CLOSURE_NOTES_v1C.0.2.md`)
-2. INT board (Claude Opus INT leg + Grok API + Gemini API, per directive N
-   routing) — first full review round on the v1C.0.2 PDF
-3. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
+2. ~~First full INT board~~ DONE 2026-08-06 (R1 on the exact v1C.0.3 PDF:
+   Grok REJECT / Gemini MAJOR / Claude major-revisions; truth audit +
+   15 genuinely-new-real closures landed as v1C.0.4 — see
+   `ROUND_2026-08-06-P1C-v1C.0.3-EXACTPDF-85e53832/P1C_v1C.0.3_truth_audit.md`)
+3. R2 confirmation board (same three active legs, fresh, on the exact
+   v1C.0.4 PDF sha `7ec5f221…`) — exit test per directive H-refined:
+   0 genuinely-new-real findings. Carry the two deferred-genuine items
+   (ST Eq. 58 + quote verification; venue-length condensation) into the
+   pre-submission checklist.
+4. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 

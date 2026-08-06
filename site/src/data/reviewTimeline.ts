@@ -13,9 +13,10 @@ export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
  * active review target but is not one of the six papers keyed by the historical
  * `Record<PaperId, …>` verdict/gap matrices below, so it deliberately does NOT
  * widen `PaperId` (that would require a P1U column in every one of those
- * matrices).
+ * matrices). "P1C" (the no-go-survey draft companion) is added on the same
+ * basis: an active review target that is not one of the six roster papers.
  */
-export type RoundPaperId = PaperId | "P1U";
+export type RoundPaperId = PaperId | "P1U" | "P1C";
 
 export interface ReviewRoundLink {
   label: string;
@@ -56,6 +57,42 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "p1c-r1-board-truth-audit-closure-2026-08-06",
+    dateISO: "2026-08-06",
+    kind: "internal-api",
+    title:
+      "P1C first full review board (R1) on the exact v1C.0.3 PDF — Grok REJECT / Gemini MAJOR / Claude major-revisions; truth-audited and closed as v1C.0.4",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.3 PDF (sha 85e53832): Claude Opus INT major-revisions (3 MAJOR / 8 MINOR), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED (API quota) and the earlier R2/R3 dispatch attempts were infra failures (stale portfolio receipts) — all failure records are preserved, none counted. Verdict-first truth audit deduplicated the board to a 20-item ledger: 15 genuinely-new-real (headline: the printed Fierz matrix B1 did not compose with F_op=-F_c into B2 and contradicted the released script — replaced with the adjudication-computed published-P1A matrix; the sole Tier-I theorem B14 now stated and proved self-contained in-paper; Shapiro-Teixeira Omega_24/Omega_44 transcriptions corrected against the arXiv source; Fig. 1 B14 arrows; per-route closure metrics honest in abstract/scope/conclusions), 2 falsified with source citations (Grok's B8/B14 counting-inconsistency and no-arithmetic-shown claims), 3 re-flags/venue-opinions dispositioned. All closures landed as v1C.0.4 (17 pp, 0 errors / 0 undef / 0 overfull, visual audit pass, mirrors byte-identical).",
+    keyTakeaways: [
+      "P1C v1C.0.4 served PDF: 17 pages · SHA-256 7ec5f2218fa26eaf03252142e3576ccd0e76797327f90765f138b242cc6e8055 · md5 6c9a8a2cd1f80c6a5d8dc55042e64b79",
+      "Fierz Eq. (B1) fixed to the adjudication-computed P1A matrix — the displayed B1 -> (-F_c) -> B2 chain now composes and matches fierz_lemma_check.py",
+      "B14 perturbation-transparency theorem carried self-contained (new App. D) — the survey's Tier-I leg is now refereeable in-paper",
+      "Failed legs preserved honestly: Perplexity quota-FAILED; R2/R3 dispatches were infra failures, only the R4 legs count",
+      "Next gate: R2 confirmation board on the exact v1C.0.4 PDF",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-06-P1C-v1C.0.3-EXACTPDF-85e53832/P1C_claude_int_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-06-P1C-v1C.0.3-EXACTPDF-85e53832-R4_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-06-P1C-v1C.0.3-EXACTPDF-85e53832-R4_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "Truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-08-06-P1C-v1C.0.3-EXACTPDF-85e53832/P1C_v1C.0.3_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.4 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.4.pdf" },
+    ],
+  },
   {
     id: "skills-autolog-2026-08-05",
     dateISO: "2026-08-05",
