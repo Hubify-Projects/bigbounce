@@ -96,7 +96,12 @@ def require_verified_preflight():
     receipt = verify_receipt(
         REPO, REPO / DEFAULT_RULES, pathlib.Path(value).expanduser()
     )
-    if receipt.get("paper_count") != 6 or len(receipt.get("papers", [])) != 6:
+    canonical_papers = [
+        item
+        for item in receipt.get("papers", [])
+        if not (isinstance(item, dict) and item.get("draft"))
+    ]
+    if receipt.get("paper_count") != 6 or len(canonical_papers) != 6:
         raise PortfolioError("preflight receipt does not bind all six canonical papers")
     return receipt
 

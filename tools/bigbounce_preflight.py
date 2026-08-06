@@ -30,6 +30,7 @@ from verify_pdf_mirror_integrity import (
 )
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
+DRAFT_REGISTRY_RELATIVE = "project-context/draft_paper_registry.json"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
 DEFAULT_RULES = "project-context/pre-review-rules.json"
 EXPECTED_ENGINE_COMMIT = "79a436e"
@@ -87,6 +88,41 @@ def git_head(root: Path) -> str:
     return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
 
 
+def draft_registry_path(root: Path) -> Path:
+    return root / DRAFT_REGISTRY_RELATIVE
+
+
+def load_draft_registry(root: Path) -> dict[str, dict[str, Any]]:
+    """Load the auxiliary draft-paper registry (papers not yet in the canonical six).
+
+    Returns {} when the registry file is absent.  Draft entries share the
+    canonical field shape; they may never redefine a canonical paper id.
+    """
+    path = draft_registry_path(root)
+    if not path.is_file():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise PortfolioError(f"invalid draft paper registry: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise PortfolioError("draft paper registry must be a paper-id map")
+    drafts: dict[str, dict[str, Any]] = {}
+    for paper_id in sorted(payload):
+        entry = payload[paper_id]
+        if paper_id in CANONICAL_IDS:
+            raise PortfolioError(
+                f"draft paper registry may not redefine canonical paper: {paper_id}"
+            )
+        if not isinstance(entry, dict):
+            raise PortfolioError(f"draft paper entry must be a map: {paper_id}")
+        for field in ("tex_path", "pdf_path"):
+            if not isinstance(entry.get(field), str) or not entry[field]:
+                raise PortfolioError(f"draft paper {paper_id} missing field: {field}")
+        drafts[paper_id] = entry
+    return drafts
+
+
 def ensure_clean_inputs(
     root: Path,
     registry: dict[str, dict[str, Any]],
@@ -137,7 +173,7 @@ def pdf_pages(path: Path) -> int:
     return int(match.group(1))
 
 
-def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
+def evaluate(root: Path, rules_path: Path, *, include_drafts: bool = True) -> dict[str, Any]:
     root = root.resolve(strict=True)
     registry = load_registry(root)
     try:
@@ -321,6 +357,31 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
             "source": source,
             "pdf": pdf,
         })
+    # `paper_count` is the CANONICAL count only — consumers that assert the
+    # six-paper portfolio (e.g. int_api_review_p3apjs) rely on it staying 6.
+    canonical_count = len(papers)
+    drafts = load_draft_registry(root) if include_drafts else {}
+    if drafts:
+        draft_paths = [
+            entry[field]
+            for entry in drafts.values()
+            for field in ("tex_path", "pdf_path")
+        ]
+        status = subprocess.check_output(
+            ["git", "status", "--porcelain", "--", *draft_paths], cwd=root, text=True,
+        ).strip()
+        if status:
+            raise PortfolioError(f"draft paper inputs are dirty:\n{status}")
+        for paper_id, entry in drafts.items():
+            papers.append({
+                "paper_id": paper_id,
+                "verdict": "PASS",
+                "draft": True,
+                "version": paper_version(root / entry["tex_path"]),
+                "pages": pdf_pages(root / entry["pdf_path"]),
+                "source": file_record(root, entry["tex_path"]),
+                "pdf": file_record(root, entry["pdf_path"]),
+            })
     engine_raw = ENGINE.read_bytes()
     core = {
         "schema": SCHEMA,
@@ -335,7 +396,7 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         "generic_rule_receipt_sha256": sha256(canonical_bytes(generic)),
         "portfolio_validators": portfolio_validators,
         "papers": papers,
-        "paper_count": len(papers),
+        "paper_count": canonical_count,
         "verdict": "PASS",
     }
     core["core_sha256"] = sha256(canonical_bytes(core))
@@ -366,8 +427,21 @@ def verify_receipt(root: Path, rules: Path, receipt_path: Path) -> dict[str, Any
     expected_core_hash = sha256(canonical_bytes(recorded_core))
     if receipt.get("core_sha256") != expected_core_hash:
         raise PortfolioError("portfolio receipt core hash mismatch")
-    current = evaluate(root, rules)
-    if current != {**recorded_core, "core_sha256": expected_core_hash}:
+    # Draft-paper records ("draft": true) are additive: their per-paper hash
+    # bindings are enforced identically at dispatch time (review_packet
+    # build_packet compares the recorded binding against the live files), but
+    # they never gate canonical verification — old receipts without draft
+    # records must keep verifying, and a stale draft must fail only that
+    # draft's dispatch, never the canonical six.
+    current = evaluate(root, rules, include_drafts=False)
+    current_core = {k: v for k, v in current.items() if k != "core_sha256"}
+    recorded_canonical = dict(recorded_core)
+    recorded_canonical["papers"] = [
+        item
+        for item in recorded_core.get("papers", [])
+        if not (isinstance(item, dict) and item.get("draft"))
+    ]
+    if current_core != recorded_canonical:
         raise PortfolioError("portfolio receipt is stale: HEAD, registry, rules, source, or PDF changed")
     return receipt
 

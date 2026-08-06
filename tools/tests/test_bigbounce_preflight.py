@@ -20,6 +20,7 @@ from bigbounce_preflight import (  # noqa: E402
     write_receipt,
 )
 from paper_registry import CANONICAL_IDS  # noqa: E402
+from review_packet import build_packet  # noqa: E402
 
 
 class PortfolioPreflightTests(unittest.TestCase):
@@ -301,6 +302,114 @@ class PortfolioPreflightTests(unittest.TestCase):
         with self.registry_patch(), self.assertRaisesRegex(PortfolioError, "inputs are dirty"):
             write_receipt(self.root, self.rules, self.receipt)
         self.assertFalse(self.receipt.exists())
+
+    def add_draft_fixture(self, paper_id: str = "P1C") -> dict[str, str]:
+        directory = self.root / "papers" / paper_id
+        directory.mkdir(parents=True)
+        tex_rel = f"papers/{paper_id}/paper.tex"
+        pdf_rel = f"papers/{paper_id}/paper.pdf"
+        (self.root / tex_rel).write_text(
+            "\\newcommand{\\paperVersion}{v1C.0.1}\n\\begin{document}\nDRAFT\n\\end{document}\n",
+            encoding="utf-8",
+        )
+        shutil.copy2(ROOT / "arxiv/paper1a_ech_nogo.pdf", self.root / pdf_rel)
+        entry = {
+            "tex_path": tex_rel, "pdf_path": pdf_rel, "site_slug": paper_id.lower(),
+            "target_journal": "Journal", "article_type": "Draft", "review_profile": "PROFILE",
+        }
+        (self.root / "project-context/draft_paper_registry.json").write_text(
+            json.dumps({paper_id: entry}), encoding="utf-8",
+        )
+        subprocess.run(["git", "add", "."], cwd=self.root, check=True)
+        subprocess.run(["git", "commit", "-qm", "add draft paper"], cwd=self.root, check=True)
+        return entry
+
+    def test_draft_records_bind_and_verify(self):
+        self.add_draft_fixture()
+        with self.registry_patch():
+            written = write_receipt(self.root, self.rules, self.receipt)
+            verified = verify_receipt(self.root, self.rules, self.receipt)
+        self.assertEqual(written["verdict"], "PASS")
+        self.assertEqual(written["paper_count"], 6)
+        self.assertEqual(len(written["papers"]), 7)
+        self.assertEqual(
+            tuple(p["paper_id"] for p in written["papers"]), CANONICAL_IDS + ("P1C",)
+        )
+        draft = written["papers"][-1]
+        self.assertTrue(draft["draft"])
+        self.assertEqual(draft["version"], "v1C.0.1")
+        self.assertEqual(len(draft["pdf"]["sha256"]), 64)
+        self.assertTrue(all("draft" not in p for p in written["papers"][:6]))
+        self.assertEqual(verified["receipt_sha256"], written["receipt_sha256"])
+
+    def test_old_receipt_without_drafts_still_verifies_canonical(self):
+        self.add_draft_fixture()
+        # Simulate a receipt produced by the pre-draft-aware code: no draft
+        # records, even though the draft registry now exists in the repo.
+        with self.registry_patch(), mock.patch(
+            "bigbounce_preflight.load_draft_registry", return_value={}
+        ):
+            written = write_receipt(self.root, self.rules, self.receipt)
+        self.assertEqual(len(written["papers"]), 6)
+        with self.registry_patch():
+            verified = verify_receipt(self.root, self.rules, self.receipt)
+        self.assertEqual(verified["verdict"], "PASS")
+
+    def test_tampered_draft_pdf_fails_only_the_draft(self):
+        draft_entry = self.add_draft_fixture()
+        with self.registry_patch():
+            write_receipt(self.root, self.rules, self.receipt)
+        with (self.root / draft_entry["pdf_path"]).open("ab") as handle:
+            handle.write(b"\n% draft tamper\n")
+        cache = self.root / "cache"
+        with self.registry_patch():
+            # Canonical verification is untouched by the stale draft.
+            verify_receipt(self.root, self.rules, self.receipt)
+            # Canonical dispatch still passes.
+            packet = build_packet(
+                self.root, "P1A", self.registry["P1A"], b"prompt", b"", "model",
+                "effort", cache_root=cache, preflight_receipt=self.receipt,
+            )
+            self.assertEqual(packet["paper_id"], "P1A")
+            # Draft dispatch fails on the tampered PDF.
+            with self.assertRaises((RuntimeError, ValueError)):
+                build_packet(
+                    self.root, "P1C", draft_entry, b"prompt", b"", "model",
+                    "effort", cache_root=cache, preflight_receipt=self.receipt,
+                )
+
+    def test_intact_draft_is_dispatchable(self):
+        draft_entry = self.add_draft_fixture()
+        cache = self.root / "cache"
+        with self.registry_patch():
+            write_receipt(self.root, self.rules, self.receipt)
+            packet = build_packet(
+                self.root, "P1C", draft_entry, b"prompt", b"", "model",
+                "effort", cache_root=cache, preflight_receipt=self.receipt,
+            )
+        self.assertEqual(packet["paper_id"], "P1C")
+        self.assertEqual(packet["paper_version"], "v1C.0.1")
+
+    def test_dirty_draft_input_fails_run_closed(self):
+        draft_entry = self.add_draft_fixture()
+        with (self.root / draft_entry["pdf_path"]).open("ab") as handle:
+            handle.write(b"\n% dirty draft\n")
+        with self.registry_patch(), self.assertRaisesRegex(
+            PortfolioError, "draft paper inputs are dirty"
+        ):
+            write_receipt(self.root, self.rules, self.receipt)
+        self.assertFalse(self.receipt.exists())
+
+    def test_draft_registry_may_not_redefine_canonical(self):
+        (self.root / "project-context/draft_paper_registry.json").write_text(
+            json.dumps({"P1A": self.registry["P1A"]}), encoding="utf-8",
+        )
+        subprocess.run(["git", "add", "."], cwd=self.root, check=True)
+        subprocess.run(["git", "commit", "-qm", "bad draft registry"], cwd=self.root, check=True)
+        with self.registry_patch(), self.assertRaisesRegex(
+            PortfolioError, "may not redefine canonical"
+        ):
+            write_receipt(self.root, self.rules, self.receipt)
 
     def test_repository_catalog_passes_current_canonical_sources(self):
         result = load_engine().evaluate(
