@@ -122,3 +122,15 @@ Switched to Opus 4.7 + xhigh effort for this.
 > personally i don't like the level you have cut down on the figures on the papers - looking at paper 4 there are a lot of important valuable key figures and visuals that you need to add back - also I want you to improve the site design for the paper detail pages and ensure you have a section that shows ALL FIGURES on the paper page so I can actually look through them and be specific on which ones I want to add back to the paper too for all the papers ... obviously do not include any figures that have bad science or stand corrected or something but all current figures that are accurate and have nothing wrong or problematic with them for all papers on their paper details page and the main figures page and then also recompile the papers again with a few more figures each too
 >
 > -- also continue next best scoped steps too - and now that you are running on Fable 5 I want you to really understand my whole primary goal of this bigbounce project and our research for all the papers and also I need you to improve our api/mcp and our website to be more clear and working and ensure if any of our papers actuall require additional GPU/CPU runs via Runpod that you properly spin those up and track them on our website too so I can see and you should be able to do everything and access all apis - huggingface, runpod, et all - and help me with your most advanced scientific brain be my true bigbounce hubify labs research partner and get all my research clearly reviewed with a plan to get all papers fully publishable within next 3-4 days max (unless a long running cobaya/mcmc or something needs to run then we can extend timeline just for that -- only if hasn't been run yet etc etc for that specific paper) ensure none of our papers are too strongly cross-dependent on each other however I think that might be impossible for paper 5 so that one will need to be published after paper 4 etc... look at all my skills and houston-methodlogy and claude.md and all agentic preferences and loops and IMPROVE EVERYTHING i have been working on these papers for months now and need to get them all to the finish line and get them truly publishable so I can move on to next papers and additional on-going research from there
+
+## 2026-08-05 - cross-machine checkpoint
+
+### Houston messages, verbatim
+
+**17:45 PT - Commit and push local BigBounce work for cross-machine resumption.**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: cross-machine checkpoint
+- `agent`: Codex subagent
+
+> Commit and push everything to main and update the project context and everything that's been done across all the different work trees locally on this machine. Push everything so that I can resume all of these different work trees and things that we've been working on on this computer and this project when I get home on my other computer.
