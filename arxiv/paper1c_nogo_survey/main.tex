@@ -40,6 +40,28 @@
 %   (13) frozen-commit pin in Data & Code Availability. (14) dropped
 %   unverifiable four-significant-figure agreement claim.
 %
+% v1C.0.5 (2026-08-06): R2 confirmation-board closures (Claude
+%   minor-revisions / Grok REJECT / Gemini MAJOR on the exact v1C.0.4 PDF
+%   sha 7ec5f221; Perplexity leg FAILED). 7 genuinely-new-real items:
+%   (1) B10 classification made consistent (novelty = provenance label,
+%   decoupled from ECH-specificity; preamble/list/entry/Sec-VI agree).
+%   (2) O4 schematic re-indexed to the parsing form
+%   eps^{mu nu rho sigma} T^I_{mu nu} T_{I rho sigma} (= T_I wedge T^I,
+%   the NY torsion piece); T carries ONE internal index. (3) App-C G_s
+%   cross-ref fixed: Fierz chain gives the gamma-independent channel
+%   factor -3kappa/16 (gap-equation convention / gamma->infty); the
+%   gamma^2/(1+gamma^2) prefactor is Cartan-elimination content (P1A).
+%   (4) Table-II R1 row anchored to P1A's published benchmark
+%   kappa n_psi^2/rho_Lambda ~= 3.6e-69 (n/100cm^-3)^2 (~68 orders).
+%   (5) B12 window provenance: 0.41 = Ashtekar-Singh canonical at
+%   gamma=0.2375; 0.27 = SU(2)-entropy gamma~0.274 in the same formula
+%   (P1A internal extrapolation, scheme-dependent). (6) Table-III caption:
+%   Fate column = bare-invariant reduction; restoring prefactors O4=O5 ->
+%   kappa(J5.J5). (7) Eq. (2) denominator roles stated explicitly
+%   (angle + R4 coupling-budget normalization; direct angle-only
+%   contraction gives ~2e-62, two MORE orders — quoted ~1e-60 is the
+%   conservative side; margins unchanged).
+%
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 \documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
@@ -79,7 +101,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.4}
+\newcommand{\paperVersion}{v1C.0.5}
 \newcommand{\paperTimestamp}{August 6, 2026}
 
 \begin{document}
@@ -344,8 +366,14 @@ These constraints are specific to the ECH mechanism class; other bounce
 cosmologies (e.g., quintom scenarios) are not subject to them.
 
 \textit{Constraint classification.}---\textbf{Novel results} (Barriers 1,
-2, 3, 4, 8, 10, 11, 12, 14): ECH-specific calculations not immediate
-consequences of prior literature. \textbf{Known results} (Barriers 5, 6,
+2, 3, 4, 8, 10, 11, 12, 14): constraints first formulated within the ECH
+analysis, not immediate consequences of prior literature. Novelty here is
+a \emph{provenance} label, not a rigor or specificity claim: eight of the
+nine are ECH-specific calculations, while B10 is a general naturalness
+dilemma first articulated in this catalog in the ECH-bridge context ---
+consistent with its classification among the general naturalness
+arguments in the preamble above, in its own entry tag, and in
+Sec.~\ref{sec:scope}. \textbf{Known results} (Barriers 5, 6,
 7, 9): scale separation, attractor-sensitivity dilemma, parameter
 immunity, Liouville conservation (B9; heuristic ordering
 argument)---included to close mechanism classes that arise naturally in
@@ -542,8 +570,16 @@ without new non-minimal couplings.
 production from the ECH bounce is bounded above by
 $\Omega_{\rm GW}^{\rm ECH}|_{\rm bounce} \lesssim (\rhocrit/\rhoPl)^2 \simeq
 0.07\text{--}0.17$, using the LQG-bounce critical-density window
-$\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from the Ashtekar--Singh effective-LQC
-status report~\cite{Ashtekar2011}. The quadratic scaling is an order-of-magnitude
+$\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$: the $0.41$ endpoint is the
+canonical effective-LQC value quoted by Ashtekar--Singh at the standard
+area-gap choice $\gamma=0.2375$~\cite{Ashtekar2011}, while the $0.27$
+endpoint substitutes the SU(2) black-hole-entropy value
+$\gamma\approx0.274$ into the same
+$\rhocrit=\sqrt{3}/(32\pi^2\gamma^3)\,\rhoPl$ formula --- an internal
+extrapolation across entropy-counting schemes established in the
+companion paper~\cite{Golden2026P1a}, not a value quoted in
+Ref.~\cite{Ashtekar2011} --- so the window is scheme-dependent rather
+than a published LQC range. The quadratic scaling is an order-of-magnitude
 ceiling \emph{ansatz} (not derived here); B12 is used only as a global ceiling.
 This bounce-epoch fraction is not directly comparable to the present-day PTA
 spectral density $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$ (which differs by
@@ -719,7 +755,19 @@ loop-ordering corrections, i.e.\ suppression by at least $10^{-58}$ ---
 an explicit conservatism allowance, \emph{not} a derived range; the
 $\mathrm{eV}$-vs-$\mathrm{GeV}$ unit conversion is exact
 $1\,\mathrm{GeV} = 10^9\,\mathrm{eV}$ and is not a source of
-ambiguity), i.e.\ the one-loop induced $\beta$ is suppressed by
+ambiguity). The role of each denominator factor is stated explicitly so
+the contraction is not misread as a double division: the displayed ratio
+normalizes the one-loop amplitude \emph{both} by the observed angle
+$\beta_{\rm obs}$ \emph{and} by the dimensionless strength
+$M_{\rm Pl}(\alpha/M)\sim10^{-2}$ of the R4-fitted coupling that
+reproduces that angle --- i.e.\ it states the suppression relative to the
+fitted-coupling benchmark, the weaker (more conservative) normalization.
+Contracting directly against the observed angle alone gives
+$(\alpha_{\rm em}/4\pi)(H_0/M_{\rm Pl})/\beta_{\rm obs}\approx
+10^{-3}\cdot10^{-61}/(6\times10^{-3})\approx2\times10^{-62}$, \emph{two
+additional orders} of suppression; the quoted $\sim10^{-60}$ is therefore
+the conservative side of this bookkeeping choice, and the closure holds
+a fortiori under either contraction. Thus the one-loop induced $\beta$ is suppressed by
 ${\approx}60$ (conservatively $\geq 58$) orders of magnitude relative
 to the observed signal. This is the survey's one authoritative Route-2
 robustness statement: even inflating the one-loop coefficient by ten
@@ -1001,9 +1049,13 @@ sectors.\strut} \\[3pt]
 sourcing coherent $w\!=\!-1$ dark energy\strut} &
 \parbox[t]{0.32\textwidth}{\raggedright \textbf{(II)+(III)}: parity-even
 structure ($\langle J^5\rangle\!\approx\!0$, no coherent mean field) is a
-Tier-II algebraic fact; the $M_{\rm Pl}^{-2}$ amplitude suppression
-(${\sim}70$ orders below $\rho_\Lambda$) is a Tier-III order-of-magnitude
-estimate from a standard Cartan torsion-elimination derivation.\strut} \\[3pt]
+Tier-II algebraic fact; the $M_{\rm Pl}^{-2}$ amplitude suppression is a
+Tier-III order-of-magnitude estimate from a standard Cartan
+torsion-elimination derivation: the companion's coefficient-one
+benchmark $\kappa n_\psi^2/\rho_\Lambda\simeq
+3.6\times10^{-69}\,(n_\psi/100\,\mathrm{cm}^{-3})^2$, i.e.\
+${\approx}68$ orders below $\rho_\Lambda$ even at a deliberately
+elevated ISM-like normalization~\cite{Golden2026P1a}.\strut} \\[3pt]
 \parbox[t]{0.18\textwidth}{\raggedright R2 (one-loop graviton
 corrections)\strut} &
 \parbox[t]{0.40\textwidth}{\raggedright One-loop promotion of
@@ -1153,10 +1205,18 @@ Table~\ref{tab:dim4_parityodd})
 \mathcal{O}_{1}^{[4]}&=\MPl^{2}\,\varepsilon\,e^I e^J R_{IJ},
 & \mathcal{O}_{2}^{[4]}&=\MPl^{2}\,\mathrm{NY},\notag\\
 \mathcal{O}_{3}^{[4]}&=R^{IJ}\!\wedge R_{IJ},
-& \mathcal{O}_{4}^{[4]}&=\MPl^{2}\,\varepsilon_{IJKL}T^{IJ}T^{KL},\notag\\
+& \mathcal{O}_{4}^{[4]}&=\MPl^{2}\,\varepsilon^{\mu\nu\rho\sigma}T^{I}{}_{\mu\nu}T_{I\rho\sigma},\notag\\
 \mathcal{O}_{5}^{[4]}&=\varepsilon\,T\,e\,J^5,
 & \mathcal{O}_{6}^{[4]}&=\MPl^{2}\,\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma},
 \end{align}
+Here the torsion two-form $T^I$ carries a single internal index
+(components $T^{I}{}_{\mu\nu}$; the component tensor $T^{abc}=\kappa
+S^{abc}$ of Sec.~\ref{sec:conventions} is obtained by converting the
+spacetime pair with the tetrad), so the torsion-square density O4 is the
+single-internal-contraction invariant $T_I\wedge T^I$ written in
+components --- the torsion piece of the Nieh--Yan identity
+$d(e_I\wedge T^I)=T_I\wedge T^I-e_I\wedge e_J\wedge
+R^{IJ}$~\cite{NiehYan1982}. The basis is arranged
 so that Pontryagin (O3, $[R\wedge R]=+4$) and axial--torsion
 (O5, $[TeJ^5]=+1+0+3=+4$) already sit at dimension $4$ with a bare
 dimensionless coefficient, while the Holst dual, Nieh--Yan, torsion-square,
@@ -1579,6 +1639,10 @@ coefficient dimensions, and their fate. The bare schematic invariant of
 column~3 has naive dimension ``$\dim$''; the genuine dimension-$4$ density
 $\mathcal{O}_n^{[4]}$ [Eq.~\eqref{eq:dim4_defs}] is that invariant times the
 listed prefactor, carried by a \emph{dimensionless} Wilson coefficient $c_n$.
+The ``Fate'' column records the reduction of the \emph{bare} invariant,
+prior to multiplication by the prefactor; restoring the prefactor, the two
+genuine dimension-$4$ densities O4 and O5 both land on
+$\kappa(J^5\!\cdot\!J^5)$ [$\MPl^2\kappa^2=\kappa$; see text].
 All entries are topological total derivatives ($\to$ zero equations of
 motion), reduce under the algebraic Cartan constraint to the Fierz-closed
 four-fermion basis (App.~\ref{app:fierz}, natural coefficient $\sim\MPl^4$
@@ -1592,7 +1656,7 @@ None yields a $(\text{meV})^4$ vacuum energy without a new light scale.}
 O1 & $2$ & $\varepsilon\,e^I e^J R_{IJ}$ (Holst dual) & $\MPl^{2}$ & vanishes (Bianchi, Check~A) \\
 O2 & $2$ & $\mathrm{NY}=d(e_I\wedge T^I)$ (Nieh--Yan) & $\MPl^{2}$ & exact 4-form $\to0$ EOM \\
 O3 & $4$ & $R^{IJ}\wedge R_{IJ}$ (Pontryagin) & $1$ & exact $\to0$ EOM \\
-O4 & $2$ & $\varepsilon_{IJKL}T^{IJ}T^{KL}$ (torsion$^2$) & $\MPl^{2}$ & $\to\kappa^2(J^5\!\cdot\!J^5)$, Fierz basis \\
+O4 & $2$ & $\varepsilon^{\mu\nu\rho\sigma}T^{I}{}_{\mu\nu}T_{I\rho\sigma}$ (torsion$^2$) & $\MPl^{2}$ & $\to\kappa^2(J^5\!\cdot\!J^5)$, Fierz basis \\
 O5 & $4$ & $\varepsilon\,T\,e\,J^5$ (axial--torsion) & $1$ & $\to\kappa(J^5\!\cdot\!J^5)$, Fierz basis \\
 O6 & $2$ & $\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ & $\MPl^{2}$ & vanishes (Bianchi, Check~A) \\
 \end{tabular}
@@ -1745,8 +1809,15 @@ convention-dependent (class normalization, row-versus-column orientation,
 and the c-number-versus-anticommuting-operator map); Eq.~(\ref{eq:AAdecomp})
 is stated in the normalized Nieves--Pal c-number basis with the explicit
 Grassmann-exchange step, matching the companion paper's published Fierz
-appendix~\cite{Golden2026P1a} and giving the mean-field scalar-channel
-coupling $G_s=-3\kappa/16$ quoted in Sec.~\ref{sec:conventions}. This
+appendix~\cite{Golden2026P1a} and giving the $\gamma$-independent
+mean-field scalar-channel factor $G_s=-3\kappa/16$ of the companion's
+gap-equation convention. The Fierz rearrangement supplies only this
+channel factor; the full Sec.~\ref{sec:conventions} contact operator
+carries the additional finite-Holst prefactor $\gamma^2/(1+\gamma^2)<1$,
+which arises from the Cartan torsion elimination (not from the Fierz
+step) and which the companion's gap-equation bound conservatively omits
+because it can only reduce the coupling (equivalently, $G_s=-3\kappa/16$
+is the $\gamma\to\infty$ limit)~\cite{Golden2026P1a}. This
 coefficient set is independently verified by explicit $4\times4$
 Dirac-matrix construction in both metric signatures and an exact
 Grassmann-algebra derivation of the operator row (the unique solution for
