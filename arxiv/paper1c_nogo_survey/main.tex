@@ -53,8 +53,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.2}
-\newcommand{\paperTimestamp}{August 5, 2026}
+\newcommand{\paperVersion}{v1C.0.3}
+\newcommand{\paperTimestamp}{August 6, 2026}
 
 \begin{document}
 
@@ -1282,13 +1282,17 @@ in the companion papers' repository,
 to the committed files):
 \begin{center}
 \artifact{arxiv/scripts/dim4_parityodd_enumeration.py} \\
-\artifact{arxiv/scripts/fierz_lemma_check.py}
+\artifact{arxiv/scripts/fierz_lemma_check.py} \\
+\artifact{research/theory_audit/fierz_adjudication_2026_08_05.py}
 \end{center}
 The first script verifies the two reduction identities of
 Appendix~\ref{app:dim4_completion} (Checks A and D); the second verifies
 the companion paper's Fierz convention (see the convention note in
-Appendix~\ref{app:fierz}). Neither script performs the basis enumeration,
-which rests on the stated construction rule.
+Appendix~\ref{app:fierz}); the third independently adjudicates the Fierz
+coefficient identity of Eq.~(\ref{eq:AAdecomp}) by explicit $4\times4$
+Dirac-matrix construction and exact Grassmann-algebra derivation. None of
+the scripts performs the basis enumeration, which rests on the stated
+construction rule.
 
 %% ============================================================
 %%  ACKNOWLEDGMENTS
@@ -1617,33 +1621,39 @@ F=\frac14\!\begin{pmatrix}
 4&2&0&-2&-4\\ 1&-1&1&-1&1\end{pmatrix},\qquad F^2=\mathbb 1,
 \end{equation}
 in the order $(S,V,T,A,P)$, with the involution $F^2=\mathbb 1$.
-Applying $F$ to the generated operators gives the decompositions
-\begin{align}
-(J^5\!\cdot\!J^5)&\;\xrightarrow{\ \rm Fierz\ }\;
-\tfrac14 SS+\tfrac12 VV-\tfrac12 AA-\tfrac14 PP,\label{eq:AAdecomp}\\
-(J\!\cdot\!J)&\;\xrightarrow{\ \rm Fierz\ }\;
-\tfrac14 SS-\tfrac12 VV+\tfrac12 AA-\tfrac14 PP,
-\end{align}
+Applying $F$ to the current--current product $(J^5\!\cdot\!J^5)$ requires,
+beyond the c-number matrix identity of Eq.~(\ref{eq:fierzmatrix}), the
+anticommuting-field (Grassmann) exchange step appropriate to a genuine
+operator rearrangement, $F_{\rm op}=-F_{\rm c}$. The resulting
+operator-level decomposition is
+\begin{equation}\label{eq:AAdecomp}
+(J^5\!\cdot\!J^5)\;\xrightarrow{\ \rm Fierz\ }\;
+SS+\tfrac12 VV+\tfrac12 AA-PP,
+\end{equation}
 while the parity-odd $(J\!\cdot\!J^5)$ Holst partner rotates only within the
 $\{V,A\}$ block ($F_{VA}=F_{AV}=\tfrac12$), remaining a dimension-$6$
 parity-odd cross term.
 \emph{Convention note.}---Individual Fierz coefficients are
 convention-dependent (class normalization, row-versus-column orientation,
-and the c-number-versus-anticommuting-operator map). The companion
-paper's published Fierz appendix~\cite{Golden2026P1a} and the released
-script \texttt{arxiv/scripts/fierz\_lemma\_check.py} work in the
-normalized Nieves--Pal c-number basis with an explicit Grassmann-exchange
-step ($F_{\rm op}=-F_{\rm c}$), in which the axial-source operator row
-reads $(J^5\!\cdot\!J^5)\to SS+\tfrac12 VV+\tfrac12 AA-PP$; the script
-verifies that convention's matrix involution and axial-row coefficients,
-not the display above, and the two presentations are not reconciled
-coefficient-by-coefficient here --- that reconciliation is deferred to a
-dedicated convention audit. None of this survey's conclusions depends on
-the convention-bound coefficients: in either presentation the produced
-classes close on $\{SS,VV,AA,PP\}$ (the tensor channel is absent from
-the axial row), every coefficient is a dimensionless $O(1)$ rational, and
-the $\kappa=M_{\rm Pl}^{-2}$ prefactor is preserved exactly --- which is
-all the projection lemma uses. Every produced structure lies in the closed set
+and the c-number-versus-anticommuting-operator map); Eq.~(\ref{eq:AAdecomp})
+is stated in the normalized Nieves--Pal c-number basis with the explicit
+Grassmann-exchange step, matching the companion paper's published Fierz
+appendix~\cite{Golden2026P1a} and giving the mean-field scalar-channel
+coupling $G_s=-3\kappa/16$ quoted in Sec.~\ref{sec:conventions}. This
+coefficient set is independently verified by explicit $4\times4$
+Dirac-matrix construction in both metric signatures and an exact
+Grassmann-algebra derivation of the operator row (the unique solution for
+identical fields); see the released verification artifact
+\artifact{research/theory_audit/fierz_adjudication_2026_08_05.py} (report:
+\artifact{research/theory_audit/fierz_adjudication_2026_08_05.md}). The
+released script \texttt{arxiv/scripts/fierz\_lemma\_check.py} independently
+checks the same convention's matrix involution and axial-row coefficients.
+None of this survey's conclusions depends on the convention-bound
+coefficients beyond this identity: the produced classes close on
+$\{SS,VV,AA,PP\}$ (the tensor channel is absent from the axial row), every
+coefficient is a dimensionless $O(1)$ rational, and the
+$\kappa=M_{\rm Pl}^{-2}$ prefactor is preserved exactly --- which is all
+the projection lemma uses. Every produced structure lies in the closed set
 $\{SS,PP,VV,AA\}$ (with $\{V,A\}$ for the cross term); the tensor channel does
 not appear, and no operator escapes the enumerated basis. Because every
 coefficient in $F$ is a dimensionless rational, the Fierz map is an $O(1)$

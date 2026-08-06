@@ -1,11 +1,12 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.2 · 2026-08-05 ·
+**Current candidate:** draft v1C.0.3 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: INTERNAL READ-THROUGH DONE → CLOSURES LANDED (v1C.0.2). Next
-gate: full INT board.** The 2026-08-05 internal referee read-through of
-v1C.0.1 (exact-PDF-bound, sha 847fb143;
+**Status: INTERNAL READ-THROUGH DONE → CLOSURES LANDED (v1C.0.2) → FIERZ
+DISCREPANCY ADJUDICATED (v1C.0.3). Next gate: full INT board.** The
+2026-08-05 internal referee read-through of v1C.0.1 (exact-PDF-bound, sha
+847fb143;
 `project-context/peer-reviews/INT_v3/ROUND_2026-08-05-P1C-v1C.0.1-EXACTPDF-847fb143-INTERNAL-READTHROUGH/`)
 returned 9 MAJOR + 11 MINOR, verdict major-revisions. All 20 findings are
 dispositioned in the round's `CLOSURE_NOTES_v1C.0.2.md`; the closures landed
@@ -13,9 +14,20 @@ as v1C.0.2 (figure/list rebuild to 0 overfull boxes, Fierz
 convention/discrepancy note, kappa-vs-imported-kappa~ convention split,
 41→61-order fix, B14→Branch H assignment propagated, division-of-content
 paragraph vs published P1A, R2/R3 reframed as historical-route amplitude
-budgets). No readiness percentage is claimed — zero INT/EXT board rounds,
-zero convergence evidence, zero packaging/venue work; do not read it against
-the 6-candidate readiness contract until real board gates have run.
+budgets). The v1C.0.2 convention note's deferred item — reconciling the
+monolith's App-B Fierz coefficients against the published-P1A/
+`fierz_lemma_check.py` convention — is now resolved: independent adjudication
+(`research/theory_audit/fierz_adjudication_2026_08_05.{py,json,md}`, commit
+`7f1449b5`) found the published-P1A coefficients (operator row
+SS + ½VV + ½AA − PP, G_s = −3κ/16) correct under both metric signatures, and
+the monolith's App-B variant (¼SS+½VV−½AA−¼PP, G_s = −3κ/64) internally
+inconsistent (spurious ¼ factors; G_s 4× too small). v1C.0.3 adopts the
+adjudicated coefficients in Eq.~(B2) and Appendix B's convention note, citing
+the verification artifact; no downstream P1C equation used the monolith's
+−3κ/64 value (P1C's Sec.~II already stated −3κ/16), so no other correction
+was required. No readiness percentage is claimed — zero INT/EXT board
+rounds, zero convergence evidence, zero packaging/venue work; do not read it
+against the 6-candidate readiness contract until real board gates have run.
 
 ## What this is
 
@@ -57,14 +69,14 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.2: 16 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
-clean 2026-08-05 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.2.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.2.pdf` (md5
-`3293e7244ab0705f6aabbef6e10f11ee`, all three copies match). Prior v1C.0.1
-mirrors retained. `/latex-audit` visual pass run on the recompile (figure
-page, barrier-list page, App-B page rendered and inspected; no column
-overflow, no box overprint).
+v1C.0.3: 16 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
+clean 2026-08-06 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.3.pdf` and
+`public/papers/paper1c_nogo_survey_v1C.0.3.pdf` (md5
+`fb233faa223b8fc3ca8bb66905a7fdb5`, all three copies match). Prior v1C.0.1/
+v1C.0.2 mirrors retained. `/latex-audit` visual pass run on the recompile
+(title page, Data-and-Code-Availability page, App-B Fierz page rendered and
+inspected; no column overflow, no box overprint).
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
@@ -91,11 +103,11 @@ overflow, no box overprint).
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 
-Open deferred item (from the read-through closure): the Fierz-convention
-reconciliation between the monolith's App-B presentation (Itzykson–Zuber
-matrix + eq:AAdecomp coefficients) and the released
-`fierz_lemma_check.py`/published-P1A Nieves–Pal convention is DEFERRED to a
-dedicated convention audit; v1C.0.2 discloses the difference in-paper and no
-longer claims script verification of the printed display. Until the INT
-board runs, this file should not grow a readiness number or a "converged"
-claim.
+Deferred item from the read-through closure — RESOLVED 2026-08-06: the
+Fierz-convention reconciliation between the monolith's App-B presentation
+and the released `fierz_lemma_check.py`/published-P1A Nieves–Pal convention
+is adjudicated in favor of published P1A (see Status above and
+`research/theory_audit/fierz_adjudication_2026_08_05.md`); v1C.0.3's
+Eq.~(B2) and convention note now state and cite the adjudicated identity
+directly, no unresolved alternative presented. Until the INT board runs,
+this file should not grow a readiness number or a "converged" claim.
