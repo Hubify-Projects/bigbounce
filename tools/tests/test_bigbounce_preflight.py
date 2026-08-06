@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import contextlib
+import io
 import json
 import shutil
 import subprocess
 import sys
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -13,6 +16,7 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
+import artifact_crosscheck  # noqa: E402
 from bigbounce_preflight import (  # noqa: E402
     PortfolioError,
     load_engine,
@@ -410,6 +414,61 @@ class PortfolioPreflightTests(unittest.TestCase):
             PortfolioError, "may not redefine canonical"
         ):
             write_receipt(self.root, self.rules, self.receipt)
+
+    def test_crosscheck_capture_survives_foreign_stdout_redirect(self):
+        # Regression (2026-08-06 P1C dispatch failure): artifact_crosscheck
+        # report capture used contextlib.redirect_stdout, which swaps the
+        # PROCESS-GLOBAL sys.stdout — a concurrent thread's redirect swallowed
+        # the report, changed output_sha256, and failed receipt verification
+        # as falsely "stale".  The capture stream must be passed explicitly.
+        captured = io.StringIO()
+        foreign = io.StringIO()
+        with contextlib.redirect_stdout(foreign):
+            rc = artifact_crosscheck.main(
+                str(self.root / self.registry["P1A"]["tex_path"]),
+                self.root,
+                out=captured,
+            )
+        self.assertEqual(rc, 0)
+        self.assertIn("PASS: 0 problems", captured.getvalue())
+        self.assertEqual(foreign.getvalue(), "")
+
+    def test_receipt_verifies_under_parallel_dispatch_with_stdout_chatter(self):
+        # v3_native_pdf_review dispatches reviewer legs in parallel threads;
+        # each leg re-verifies the portfolio receipt (build_packet ->
+        # verify_receipt) while the main thread prints progress lines.  A
+        # PASS receipt must keep verifying under exactly that concurrency.
+        catalog = json.loads(self.rules.read_text(encoding="utf-8"))
+        catalog["portfolio_validators"] = ["artifact-crosscheck-six"]
+        self.rules.write_text(json.dumps(catalog), encoding="utf-8")
+        errors: list[Exception] = []
+        stop = threading.Event()
+
+        def chatter():
+            while not stop.is_set():
+                print("[leg] progress chatter — must never enter a capture")
+
+        def leg():
+            try:
+                verify_receipt(self.root, self.rules, self.receipt)
+            except Exception as exc:  # noqa: BLE001 — recorded for assertion
+                errors.append(exc)
+
+        sink = io.StringIO()
+        with self.registry_patch(), contextlib.redirect_stdout(sink):
+            write_receipt(self.root, self.rules, self.receipt)
+            noise = threading.Thread(target=chatter)
+            noise.start()
+            try:
+                legs = [threading.Thread(target=leg) for _ in range(3)]
+                for thread in legs:
+                    thread.start()
+                for thread in legs:
+                    thread.join()
+            finally:
+                stop.set()
+                noise.join()
+        self.assertEqual(errors, [])
 
     def test_repository_catalog_passes_current_canonical_sources(self):
         result = load_engine().evaluate(

@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import contextlib
 import datetime as dt
 import hashlib
 import importlib.util
@@ -272,11 +271,15 @@ def evaluate(root: Path, rules_path: Path, *, include_drafts: bool = True) -> di
             per_paper = []
             failed = []
             for paper_id in CANONICAL_IDS:
+                # Pass the capture stream explicitly — contextlib.redirect_stdout
+                # swaps the process-global sys.stdout, so concurrent evaluations
+                # (v3 review legs verify the receipt in parallel threads) would
+                # cross-capture each other's report lines, change output_sha256,
+                # and fail verification as falsely "stale".
                 output = io.StringIO()
-                with contextlib.redirect_stdout(output):
-                    rc = artifact_crosscheck.main(
-                        str(root / registry[paper_id]["tex_path"]), root,
-                    )
+                rc = artifact_crosscheck.main(
+                    str(root / registry[paper_id]["tex_path"]), root, out=output,
+                )
                 rendered = output.getvalue()
                 per_paper.append({
                     "paper_id": paper_id,

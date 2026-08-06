@@ -17,6 +17,7 @@ import pathlib
 import re
 import subprocess
 import sys
+import typing
 
 
 def repo_root(root_override: pathlib.Path | None = None) -> pathlib.Path:
@@ -27,7 +28,19 @@ def repo_root(root_override: pathlib.Path | None = None) -> pathlib.Path:
     )
 
 
-def main(tex_path: str, root_override: pathlib.Path | None = None) -> int:
+def main(
+    tex_path: str,
+    root_override: pathlib.Path | None = None,
+    out: typing.TextIO | None = None,
+) -> int:
+    # Report lines go to `out` explicitly.  Callers that need to capture the
+    # report (bigbounce_preflight portfolio receipts) pass a StringIO instead
+    # of using contextlib.redirect_stdout, which swaps the PROCESS-GLOBAL
+    # sys.stdout and corrupts captured output when evaluations run in
+    # parallel threads (v3 review legs dispatch concurrently).
+    def emit(*args: object) -> None:
+        print(*args, file=out if out is not None else sys.stdout)
+
     root = repo_root(root_override)
     tex_file = pathlib.Path(tex_path).resolve()
     tex = tex_file.read_text(errors="replace")
@@ -43,7 +56,7 @@ def main(tex_path: str, root_override: pathlib.Path | None = None) -> int:
     paths = set(re.findall(r"\\artifact\{([^}]+)\}", tex))
     paths |= set(re.findall(r"\\(?:texttt|path|repopath)\{((?:[\w\\.-]+/)+[\w\\.-]+)\}", tex))
     paths |= set(re.findall(r"blob/main/((?:[\w.-]+/)+[\w.-]+)", tex))
-    print(f"paper version: {ver} | candidate paths: {len(paths)}")
+    emit(f"paper version: {ver} | candidate paths: {len(paths)}")
 
     for p in sorted(paths):
         clean = p.replace("\\_", "_").replace("\\", "")
@@ -68,7 +81,7 @@ def main(tex_path: str, root_override: pathlib.Path | None = None) -> int:
                 if candidate.is_file() and candidate.as_posix().endswith(stem)
             ]
             if len(matches) == 2:
-                print(
+                emit(
                     f"RESOLVED {clean} -> "
                     + ", ".join(str(path.relative_to(root)) for path in matches)
                 )
@@ -93,15 +106,15 @@ def main(tex_path: str, root_override: pathlib.Path | None = None) -> int:
             )
             if len(suffix_matches) == 1:
                 target = suffix_matches[0]
-                print(f"RESOLVED {clean} -> {target.relative_to(root)}")
+                emit(f"RESOLVED {clean} -> {target.relative_to(root)}")
             elif len(suffix_matches) > 1:
-                print(
+                emit(
                     f"WARN-RELATIVE {clean}: resolves under {len(suffix_matches)} "
                     "declared/possible base directories"
                 )
                 continue
         if target is None:
-            print(f"MISSING  {clean}")
+            emit(f"MISSING  {clean}")
             problems += 1
             continue
         meta = None
@@ -115,14 +128,14 @@ def main(tex_path: str, root_override: pathlib.Path | None = None) -> int:
             if labels and ver not in labels:
                 explicit_versions = re.findall(r"v\d+[A-Z]?\.\d+\.\d+", clean)
                 if any(label in clean for label in labels) or explicit_versions:
-                    print(
+                    emit(
                         f"HISTORICAL-LABEL {clean}: explicitly versioned artifact "
                         f"contains {sorted(set(labels))}; paper is {ver}"
                     )
                 else:
-                    print(f"STALE-LABEL {clean}: metadata says {sorted(set(labels))}, paper is {ver}")
+                    emit(f"STALE-LABEL {clean}: metadata says {sorted(set(labels))}, paper is {ver}")
                     problems += 1
-        print(f"OK       {clean}")
+        emit(f"OK       {clean}")
 
     head = subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip()
     for h in set(re.findall(r"commit[~ `]*(?:\\[a-z]+\{)?([0-9a-f]{8,40})\b", tex, re.I)):
@@ -132,12 +145,12 @@ def main(tex_path: str, root_override: pathlib.Path | None = None) -> int:
                 stderr=subprocess.DEVNULL,
             )
             if not head.startswith(h):
-                print(f"WARN-OLD-COMMIT {h}: valid ancestor but not HEAD ({head[:8]}) — update at restamp")
+                emit(f"WARN-OLD-COMMIT {h}: valid ancestor but not HEAD ({head[:8]}) — update at restamp")
         except subprocess.CalledProcessError:
-            print(f"BAD-COMMIT {h}: not an ancestor of HEAD")
+            emit(f"BAD-COMMIT {h}: not an ancestor of HEAD")
             problems += 1
 
-    print(f"\n{'FAIL' if problems else 'PASS'}: {problems} problems")
+    emit(f"\n{'FAIL' if problems else 'PASS'}: {problems} problems")
     return 1 if problems else 0
 
 
