@@ -1,24 +1,25 @@
 {
   "schema": 1,
-  "updated_at": "2026-08-05 17:45 PT",
+  "updated_at": "2026-08-05 18:00 PT",
   "project": "bigbounce",
-  "objective": "Reconcile recent prompt history into concrete tasks.",
+  "objective": "Preserve a truthful, resumable BigBounce checkpoint across machines.",
   "tasks": [
     {
       "id": "T001",
       "status": "active",
-      "title": "Reconcile recent prompts into project tasks",
+      "title": "Run Paper 1B's final independent confirmation spot-check",
       "source_prompts": [
-        "recent project-context/prompts.md entries"
+        "project-context/SSOT/index.md (EXT19 status)"
       ],
       "completion_criteria": [
-        "Open asks are reflected in tasks.md",
-        "Open asks are reflected in tasks.json",
-        "Next steps are reflected in plan.md"
+        "The check uses the canonical Paper 1B source/PDF and is recorded in SSOT",
+        "Any findings are truth-audited and reflected in the paper/site state before readiness changes",
+        "No readiness claim exceeds the available evidence"
       ]
     }
   ],
   "watchpoints": [
-    "Keep raw prompts raw; put audit conclusions in task and plan files."
+    "Keep raw prompts raw; put audit conclusions in task and plan files.",
+    "Read SSOT before paper work and never commit local environment backups."
   ]
 }
