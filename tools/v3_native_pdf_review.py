@@ -60,6 +60,12 @@ from review_packet import (
 
 REPO = repo_root()
 REGISTRY = load_registry(REPO)
+# Draft papers not yet in the canonical six (e.g. P1C) live in an auxiliary
+# registry so preflight/freshness tooling keyed to CANONICAL_IDS is untouched.
+_DRAFTS_PATH = REPO / "project-context" / "draft_paper_registry.json"
+if _DRAFTS_PATH.is_file():
+    import json as _json
+    REGISTRY = {**REGISTRY, **_json.loads(_DRAFTS_PATH.read_text())}
 ENV_PATHS = [REPO / ".env.local"]
 
 # ---------------------------------------------------------------------------
