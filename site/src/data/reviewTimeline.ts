@@ -77,6 +77,42 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "p1c-r2-confirmation-board-truth-audit-closure-2026-08-06",
+    dateISO: "2026-08-06",
+    kind: "internal-api",
+    title:
+      "P1C R2 confirmation board on the exact v1C.0.4 PDF — Grok REJECT / Gemini MAJOR / Claude minor-revisions; 7 genuinely-new items truth-audited and closed as v1C.0.5; R3 confirmation required",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.4 PDF (sha 7ec5f221): Claude Opus INT minor-revisions (1 MAJOR / 4 MINOR), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. Verdict-first truth audit against the R1 disposition ledger deduplicated the board to a 20-item ledger: 7 genuinely-new-real (headline: B10 was classified both as an ECH-specific calculation and as a general naturalness argument on the same page — novelty is now a provenance label decoupled from ECH-specificity across all four surfaces; the O4 torsion-square schematic eps_IJKL T^IJ T^KL did not typecheck (torsion carries ONE internal index) and is re-indexed to the Nieh-Yan T-wedge-T component form; App-C's G_s = -3kappa/16 cross-reference reconciled with Sec II's gamma^2/(1+gamma^2) contact operator per P1A's gap-equation convention; Table-II R1 row anchored to P1A's published 3.6e-69 benchmark (~68 orders); the 0.27 LQC-window endpoint sourced as a P1A scheme extrapolation, not an Ashtekar-Singh value; Table-III fate-column bare-vs-full-operator note; Eq. (2) denominator roles stated explicitly — the direct angle-only contraction gives ~2e-62, two MORE orders, so the quoted ~1e-60 (>=58) is the conservative side and margins are unchanged), 9 re-flags of R1-dispositioned or disclosed content, 2 scope-opinions (tier-taxonomy wording; per-paper Zenodo DOI minting deferred to P-round packaging), 2 falsified with source citations (Grok's no-tier-rubric claim — the rubric is defined in Sec IV; concept-DOI-placeholder claim — version DOIs are primary and the entries are Zenodo deposits, not arXiv preprints). All closures landed as v1C.0.5 (18 pp, 0 errors / 0 undef / 0 overfull, visual audit pass on all 18 pages, mirrors byte-identical). Because R2 surfaced genuinely-new-real findings, the paper is NOT converged: an R3 confirmation board on the exact v1C.0.5 PDF is required (directive H-refined).",
+    keyTakeaways: [
+      "P1C v1C.0.5 served PDF: 18 pages · SHA-256 a770491d56d1e02adb8318fd423a4886f3a479270f03b8cfb3ad1a4e8d96bb74 · md5 36312efb1737119e22c5581da2980f02",
+      "7 genuinely-new-real R2 items closed with real edits; every fix carried from published P1A / the monolith / direct arithmetic — nothing invented",
+      "Gemini's Eq.-(2) double-division finding adjudicated real-as-clarity: the printed contraction is the conservative side (direct contraction gives 2 more orders); quoted margins unchanged",
+      "Perplexity leg FAILED — preserved as a failure record, never counted as a verdict",
+      "R2 was NOT clean (7 genuinely-new) — R3 confirmation board on the exact v1C.0.5 PDF is required before convergence can be claimed",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-06-P1C-v1C.0.4-EXACTPDF-7ec5f221-R2CONF/P1C_claude_r2_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-06-P1C-v1C.0.4-EXACTPDF-7ec5f221-R2CONF_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-06-P1C-v1C.0.4-EXACTPDF-7ec5f221-R2CONF_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "R2 truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-08-06-P1C-v1C.0.4-EXACTPDF-7ec5f221-R2CONF/P1C_v1C.0.4_R2_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.5 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.5.pdf" },
+    ],
+  },
+  {
     id: "p1c-r1-board-truth-audit-closure-2026-08-06",
     dateISO: "2026-08-06",
     kind: "internal-api",

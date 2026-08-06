@@ -1,11 +1,46 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.4 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.5 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: FIRST FULL REVIEW BOARD (R1) RUN AND TRUTH-AUDITED → 15
-GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.4). Next gate: R2 confirmation
-board on the exact v1C.0.4 PDF.** The R1 board ran 2026-08-06 on the exact
+**Status: R2 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 7 GENUINELY-NEW-REAL
+FINDINGS CLOSED (v1C.0.5). NOT CONVERGED — R3 confirmation board on the
+exact v1C.0.5 PDF is REQUIRED.** The R2 confirmation board ran 2026-08-06 on
+the exact v1C.0.4 PDF (sha `7ec5f221…`), three legs with raw receipts:
+**Claude Opus INT minor-revisions (1 MAJOR / 4 MINOR) · Grok grok-4.3
+REJECT · Gemini gemini-3.1-pro-preview MAJOR REVISIONS**. The Perplexity leg
+FAILED — recorded as failed, never a verdict. The verdict-first truth audit
+against the R1 disposition ledger
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-06-P1C-v1C.0.4-EXACTPDF-7ec5f221-R2CONF/P1C_v1C.0.4_R2_truth_audit.md`)
+deduplicated the board to 20 canonical items: **7 genuinely-new-real (closed
+in v1C.0.5), 9 re-flags of R1-dispositioned/disclosed content, 2
+scope/venue opinions (tier-taxonomy wording; per-paper Zenodo DOI minting →
+P-round checklist), 2 falsified with source citations** (no-tier-rubric —
+the rubric is printed in Sec. IV; concept-DOI-placeholder — version DOIs are
+primary and the entries are Zenodo deposits, not arXiv preprints). The 7
+closures: (1) B10 classification self-contradiction resolved (novelty =
+provenance label decoupled from ECH-specificity; preamble/list/entry/Sec-VI
+now agree); (2) O4 torsion-square schematic re-indexed from the
+non-typechecking ε_{IJKL}T^{IJ}T^{KL} to the parsing Nieh–Yan component
+form ε^{μνρσ}T^I_{μν}T_{Iρσ} (T carries ONE internal index); (3) App-C
+G_s = −3κ/16 cross-reference reconciled with Sec II's γ²/(1+γ²) contact
+operator per P1A's gap-equation convention (defect introduced by the R1
+closure); (4) Table-II R1 suppression anchored to P1A's published
+κn_ψ²/ρ_Λ ≃ 3.6×10⁻⁶⁹ (n/100 cm⁻³)² benchmark (≈68 orders, replacing the
+unanchored "∼70"); (5) LQC-window provenance: 0.41 = Ashtekar–Singh
+canonical at γ=0.2375, 0.27 = P1A's SU(2)-entropy scheme extrapolation, not
+a published value; (6) Table-III caption now states the Fate column is the
+bare-invariant reduction (restoring prefactors, O4 = O5 → κ(J⁵·J⁵)); (7)
+Eq. (2) denominator roles stated explicitly — the direct angle-only
+contraction gives ≈2×10⁻⁶² (two MORE orders), so the quoted ~10⁻⁶⁰ (≥58) is
+the conservative side; margins unchanged everywhere. **Convergence read
+(directive H-refined): R2 surfaced 7 genuinely-new-real findings against a
+target of 0, so the paper is NOT converged and an R3 confirmation board on
+the exact v1C.0.5 PDF (sha `a770491d…`) is required.** (Calibration
+context, not verdict-softening: 5 of 7 were single-leg minor-grade
+consistency/traceability items, 1 was introduced by an R1 closure, 1 was a
+conservative-direction labeling defect.) Prior-round record follows. The R1
+board ran 2026-08-06 on the exact
 v1C.0.3 PDF (sha `85e53832…`), three legs with raw receipts: **Claude Opus
 INT major-revisions (3 MAJOR / 8 MINOR) · Grok grok-4.3 REJECT · Gemini
 gemini-3.1-pro-preview MAJOR REVISIONS**. The Perplexity leg FAILED (API
@@ -97,22 +132,26 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.4: 17 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
+v1C.0.5: 18 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
 clean 2026-08-06 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.4.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.4.pdf` (md5
-`6c9a8a2cd1f80c6a5d8dc55042e64b79`, sha256 `7ec5f221…`, all three copies
-match). Prior v1C.0.1/v1C.0.2/v1C.0.3 mirrors retained. `/latex-audit`
-visual pass on the recompile: all 17 pages rendered; title page, Fig. 1
-(new B14 arrows verified), Tables I–III, App. C Fierz matrix, App. D
-theorem inspected — no overflow/overlap; all embedded GitHub URLs resolve.
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.5.pdf` and
+`public/papers/paper1c_nogo_survey_v1C.0.5.pdf` (md5
+`36312efb1737119e22c5581da2980f02`, sha256 `a770491d…`, all three copies
+match). Prior v1C.0.1–v1C.0.4 mirrors retained. `/latex-audit` visual pass
+on the recompile: all 18 pages rendered at 110 DPI; title block (v1C.0.5
+stamp), Sec. III classification, B12 window, Eq. (2) passage, Table II R1
+row, Eq. (8) + definitional sentence, Table III + caption, App. C bridge
+inspected — no overflow/overlap; no new URLs added (all cited artifact
+paths previously verified to resolve).
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
 - ~~No INT review round~~ R1 INT board DONE 2026-08-06 (Claude
   major-revisions / Grok REJECT / Gemini MAJOR; truth-audited; 15
-  genuinely-new-real closed as v1C.0.4). No R2 confirmation board yet —
-  zero convergence evidence.
+  genuinely-new-real closed as v1C.0.4). R2 confirmation board DONE
+  2026-08-06 (Claude minor-revisions / Grok REJECT / Gemini MAJOR;
+  Perplexity FAILED; 7 genuinely-new-real closed as v1C.0.5) — R2 was NOT
+  clean, so there is still zero convergence evidence; R3 required.
 - No EXT review round (ChatGPT/Grok/Gemini browser sweep)
 - No readiness percentage computed or claimed
 - No Convex `paperVersions` row, no `rRounds`/`externalReviews` entries
@@ -134,12 +173,19 @@ theorem inspected — no overflow/overlap; all embedded GitHub URLs resolve.
    Grok REJECT / Gemini MAJOR / Claude major-revisions; truth audit +
    15 genuinely-new-real closures landed as v1C.0.4 — see
    `ROUND_2026-08-06-P1C-v1C.0.3-EXACTPDF-85e53832/P1C_v1C.0.3_truth_audit.md`)
-3. R2 confirmation board (same three active legs, fresh, on the exact
-   v1C.0.4 PDF sha `7ec5f221…`) — exit test per directive H-refined:
-   0 genuinely-new-real findings. Carry the two deferred-genuine items
-   (ST Eq. 58 + quote verification; venue-length condensation) into the
-   pre-submission checklist.
-4. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
+3. ~~R2 confirmation board~~ DONE 2026-08-06 (on the exact v1C.0.4 PDF sha
+   `7ec5f221…`: Claude minor-revisions / Grok REJECT / Gemini MAJOR /
+   Perplexity FAILED; truth audit + 7 genuinely-new-real closures landed as
+   v1C.0.5 — see
+   `ROUND_2026-08-06-P1C-v1C.0.4-EXACTPDF-7ec5f221-R2CONF/P1C_v1C.0.4_R2_truth_audit.md`).
+   R2 was NOT clean (7 genuinely-new-real vs a target of 0) → convergence
+   NOT reached.
+4. R3 confirmation board (same three active legs, fresh, on the exact
+   v1C.0.5 PDF sha `a770491d…`) — exit test per directive H-refined:
+   0 genuinely-new-real findings. Pre-submission checklist carries: ST
+   Eq. 58 + quote verification; venue-length condensation; mint a version
+   DOI for the P1C script set at P-round (R2-SO-2).
+5. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 
