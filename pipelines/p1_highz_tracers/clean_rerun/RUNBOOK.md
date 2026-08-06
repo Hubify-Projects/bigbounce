@@ -394,6 +394,57 @@ docstring for why the historical `max_snr > 0.5` filter is NOT ported
 exact rule, thresholds, row count, parent generation id, and full
 shard-receipt binding.
 
+### 16b. Enrich the flagship sample (phase-3b: per-band SNR + latents)
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/enrich_flagship_sample.py \
+  --sample /workspace/flagship_sample.parquet \
+  --sample-manifest /workspace/flagship_sample_manifest.json \
+  --contract /workspace/run-contract.json \
+  --model best_model_47k.pt \
+  --zcatalog /workspace/zall-pix-iron.fits \
+  --coadd-cache-dir /workspace/enrich_coadd_cache \
+  --shard-dir /workspace/enrich_shards \
+  --checkpoint /workspace/enrich_checkpoint.json \
+  --audit-log /workspace/enrich_audit.jsonl \
+  --output /workspace/flagship_sample_enriched.parquet \
+  --manifest-output /workspace/flagship_sample_enriched_manifest.json
+```
+
+Step 16's sample carries only `targetid`/`anomaly_score`/`mean_mse`/`survey`/
+`program`/`healpix`, by design (`run_scan.py`'s narrow shard schema — see
+that script's own docstring). For the SELECTED sample only (thousands of
+rows, not the full ~28M-spectrum corpus), this step recovers the richer
+per-object features the historical `enhanced_18M_inference.py` pipeline
+computed: per-band residuals (`rB`/`rR`/`rZ`), `worst_band`,
+`peak_residual_wavelength`, `residual_kurtosis`, `median_coadd_snr_{b,r,z}`,
+redrock columns when available (`z`/`zerr`/`zwarn`/`spectype`/`subtype`/
+`deltachi2` — carried at their documented defaults since, like `run_scan.py`,
+this step never downloads a separate redrock file), FIBERMAP photometry, and
+the 128-dim BigAE latent vector as `latent_000..latent_127`. It re-downloads
+each needed coadd exactly once per `(survey, program, healpix)` group the
+sample touches, scores it through the SAME archived, contract-bound
+`process_healpix()` (imported unmodified — never copied or re-derived),
+keeps ONLY the sample's targetids, and deletes the coadd immediately after
+scoring, exactly like `run_scan.py`.
+
+**Cross-check gate.** For every enriched row, the recomputed per-spectrum
+mean MSE must reproduce that targetid's `mean_mse` from step 16's sample to
+within 1e-6 relative tolerance — proof the enrichment used bit-identical
+arithmetic to the original scan, not a re-implementation that merely looks
+similar. Any mismatch fails the run closed and lists every offending
+targetid in `--audit-log`; no `--output`/`--manifest-output` is written
+until zero offenders remain.
+
+**Fault barrier + resume**, exactly like `run_scan.py`: a failed group
+(archive outage, partial download, scoring error) is skipped with an audit
+line rather than aborting the whole run, and the run exits nonzero (3) if
+any group was skipped — rerun the identical command to retry only the
+skipped groups (`--checkpoint`-bound to this exact sample + contract SHA, so
+already-completed groups are never re-downloaded). The FINAL merged
+`--output` is written ONLY once every group in the sample has a completed,
+checkpointed shard.
+
 ### 17. Cross-match the flagship sample against SIMBAD/NED
 
 ```sh
@@ -437,14 +488,30 @@ line IDs, so labels are GENERIC score-tier + provenance descriptors only
 Directive Q1. If a companion feature-extraction step for the new generation
 is ever built, pass it via `--extra-features` (a Parquet keyed by
 `targetid`) to enrich labeling without touching the clustering pipeline.
+**That companion step now exists (step 16b, `enrich_flagship_sample.py`)**:
+pass its `--output` (`flagship_sample_enriched.parquet`) as
+`--extra-features` here — e.g. `--feature-columns
+anomaly_score,ra,dec,rB,rR,rZ,median_coadd_snr_b,median_coadd_snr_r,median_coadd_snr_z,latent_000,...,latent_127`
+— to cluster on real per-band SNR and/or BigAE latents instead of
+`anomaly_score`/`ra`/`dec` alone. This still does not license astrophysical
+class-name labels (spectype/WISE-color-based labeling per Standing Directive
+Q1 needs the redrock/photometry columns too, and step 16b's `spectype`/`z`
+stay at their documented defaults since no redrock file is downloaded); it
+does make the taxonomy's cluster GEOMETRY meaningfully richer.
 
 ### Recovery notes (phase 3)
 
-- All three phase-3 tools re-verify their upstream SHA-256 bindings before
+- All four phase-3 tools re-verify their upstream SHA-256 bindings before
   doing anything (receipts, contract-summary binding, sample-manifest
   binding, zcatalog binding) — a stale or swapped intermediate artifact
   fails closed with a clear error instead of silently producing a
-  provenance-inconsistent sample/crossmatch/taxonomy.
+  provenance-inconsistent sample/enrichment/crossmatch/taxonomy.
+- `enrich_flagship_sample.py` (step 16b) resume is automatic per
+  `--checkpoint`: rerun the exact same command after any interruption and
+  already-completed `(survey, program, healpix)` groups are never
+  re-downloaded; its MSE cross-check gate re-runs from the cached per-group
+  shards on every incarnation (no network needed) and still fails closed on
+  any offender.
 - `crossmatch_flagship.py` resume is automatic per `--checkpoint-dir`: rerun
   the exact same command after any interruption and already-queried
   targetids are skipped for that service.

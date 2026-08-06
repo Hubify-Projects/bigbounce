@@ -24,6 +24,22 @@ the pure, locally-computable pieces of `pipelines/p1_highz_tracers/clean_rerun/`
     exercised here — it is guarded by an explicit ImportError with an
     install hint, consistent with this repo's other optional-dependency
     guards (torch/astropy/pyarrow).
+  - `enrich_flagship_sample.py` (phase-3b): a synthetic coadd FITS is scored
+    through the REAL archived `process_healpix()` (imported unmodified, run
+    against the real archived `best_model_47k.pt` on CPU — no synthetic
+    model) to build both the "ground truth" sample `mean_mse` values and
+    the enriched output, with only `download_file` monkeypatched (on the
+    freshly-loaded, otherwise-untouched archived module instance) to copy a
+    local fixture file instead of hitting the network. Covers: the enriched
+    output keeps ONLY the selected sample's targetids even when the coadd
+    has more spectra than the sample; `latent_000..latent_127` are present
+    and `lat_000` is not; the MSE cross-check gate passes on genuine
+    recomputed values and fails closed (raising, with every offender listed
+    in the audit log) when a sample `mean_mse` is tampered; and checkpoint
+    resume skips an already-completed group's coadd re-download while a
+    still-failing group keeps the run in `status: incomplete` with no final
+    output written, until a later incarnation with the missing source
+    available completes it.
 """
 
 from __future__ import annotations
@@ -404,6 +420,409 @@ class TaxonomyFlagshipTest(unittest.TestCase):
                     unmatched_path, crossmatch_manifest_path,
                     work / "results.json", work / "manifest.json",
                 )
+
+
+class EnrichFlagshipSampleTest(unittest.TestCase):
+    """Phase-3b: per-band SNR + latent enrichment of the SELECTED sample only,
+    with the recomputed-vs-shard MSE cross-check gate. Uses the real archived
+    `process_healpix()`/`BigAE`/`best_model_47k.pt` throughout; the only
+    stand-in is a monkeypatched `download_file` (copies a local synthetic
+    coadd FITS instead of hitting the network) on a freshly-loaded module
+    instance — the archived FILE itself is never copied or modified.
+    """
+
+    # Real DESI per-arm downsample-bin counts (172+145+179 = 496), so the
+    # synthetic coadd's downsampled width matches BigAE(n_in=496) exactly,
+    # exercising the SAME downsample()/normalization path as production.
+    N_B, N_R, N_Z = 172, 145, 179
+    DOWNSAMPLE_FACTOR = 16
+
+    def setUp(self) -> None:
+        _require_pyarrow_astropy_torch(self)
+        import enrich_flagship_sample  # noqa: F401
+
+        self.mod = sys.modules["enrich_flagship_sample"]
+
+    def _write_synthetic_coadd(self, path: Path, targetids: list[int], seed: int) -> None:
+        from astropy.io import fits
+
+        rng = np.random.default_rng(seed)
+        n_obj = len(targetids)
+        b_flux = rng.normal(loc=5.0, scale=2.0, size=(n_obj, self.N_B * self.DOWNSAMPLE_FACTOR)).astype(np.float32)
+        r_flux = rng.normal(loc=5.0, scale=2.0, size=(n_obj, self.N_R * self.DOWNSAMPLE_FACTOR)).astype(np.float32)
+        z_flux = rng.normal(loc=5.0, scale=2.0, size=(n_obj, self.N_Z * self.DOWNSAMPLE_FACTOR)).astype(np.float32)
+
+        # COADD_NUMEXP must be present: the archived (contract-frozen, never
+        # modified) `process_healpix` does `int(coadd_numexp_f[j])`
+        # unconditionally, which raises on the NaN default `safe_col_array`
+        # returns for an absent column — a real DESI coadd always has it.
+        fibermap = fits.BinTableHDU.from_columns(
+            [
+                fits.Column(name="TARGETID", format="K", array=np.array(targetids, dtype=np.int64)),
+                fits.Column(name="COADD_NUMEXP", format="J", array=np.ones(n_obj, dtype=np.int32)),
+            ],
+            name="FIBERMAP",
+        )
+        hdul = fits.HDUList(
+            [
+                fits.PrimaryHDU(),
+                fits.ImageHDU(data=b_flux, name="B_FLUX"),
+                fits.ImageHDU(data=r_flux, name="R_FLUX"),
+                fits.ImageHDU(data=z_flux, name="Z_FLUX"),
+                fibermap,
+            ]
+        )
+        hdul.writeto(path, overwrite=True)
+
+    def _install_fake_download(self, inference_module, coadd_sources: dict[str, Path]) -> None:
+        import shutil
+
+        def _fake_download_file(url, dest, retries=3, timeout=60):
+            source = coadd_sources.get(Path(url).name)
+            if source is None or not Path(source).is_file():
+                return False
+            shutil.copy(source, dest)
+            return True
+
+        inference_module.download_file = _fake_download_file
+
+    def _score_ground_truth(self, inference_module, model, device, coadd_path: Path) -> dict[int, float]:
+        _n_obj, rows = inference_module.process_healpix(str(coadd_path), None, model, device)
+        return {int(r["targetid"]): float(r["anomaly_score"]) for r in rows}
+
+    def _build_fixture(self, work: Path):
+        """Real contract (real model/inference-code SHA bindings) + a real
+        selected-sample Parquet/manifest whose `mean_mse` values are the
+        actual archived `process_healpix()` output for two synthetic coadd
+        groups, exactly the way `run_scan.py` + `build_flagship_sample.py`
+        would have produced them."""
+        import torch
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+
+        contract_tool = _load_contract_module()
+
+        zcatalog_path = work / "zcatalog.fits"
+        zcatalog_path.write_bytes(b"synthetic zcatalog bytes; only its sha256 is ever checked")
+        catalog_sha256 = self.mod.sha256_file(zcatalog_path)
+
+        input_manifest = {
+            "manifest_version": "desi-dr1-clean-rerun-input/v1",
+            "source_revision": "iron",
+            "catalog_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+            "catalog_checksum_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum",
+            "catalog_sha256": catalog_sha256,
+            "targetid_column": "TARGETID",
+            "spectrum_locator": {
+                "type": "desi_dr1_iron_healpix",
+                "base_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/healpix/",
+            },
+            "locator_inventory_sha256": "b" * 64,
+        }
+        calibration = {
+            "artifact_version": "desi-bigae-calibration/v1",
+            "status": "sealed",
+            "score_definition": "mean_mse_over_per_spectrum_median_abs_flux_normalized_496_bins",
+            "fit_scope": "held_out_training_validation_split",
+            "mse_mean": 0.1,
+            "mse_std": 0.02,
+            "selection_threshold": 5.0,
+            "training_manifest_sha256": "c" * 64,
+            "validation_manifest_sha256": "d" * 64,
+            "fit_code_sha256": "e" * 64,
+        }
+        input_path, calibration_path = work / "input.json", work / "calibration.json"
+        input_path.write_text(json.dumps(input_manifest))
+        calibration_path.write_text(json.dumps(calibration))
+
+        contract = contract_tool.build_contract(MODEL_PATH, INFERENCE_CODE_PATH, input_path, calibration_path)
+        contract_path = work / "contract.json"
+        contract_tool.write_json_atomic(contract_path, contract)
+        contract_sha256 = contract_tool.payload_sha256(contract)
+
+        # Real archived module + real archived model, CPU, eval mode — the
+        # SAME path run_enrichment will use, so "ground truth" scores here
+        # are bit-identical to what enrichment recomputes.
+        inference_module = self.mod.load_archived_inference_module()
+        device = torch.device("cpu")
+        model = self.mod.load_model(inference_module, MODEL_PATH, device)
+
+        group_a = ("main", "dark", 100)
+        group_a_targetids = [11, 12, 13, 14]
+        group_b = ("sv3", "bright", 55)
+        group_b_targetids = [21, 22]
+
+        coadd_dir = work / "coadd_sources"
+        coadd_dir.mkdir()
+        coadd_paths = {}
+        for group, targetids, seed in ((group_a, group_a_targetids, 101), (group_b, group_b_targetids, 202)):
+            survey, program, healpix = group
+            relative = self.mod.coadd_relative_path(survey, program, healpix)
+            fname = Path(relative).name
+            coadd_path = coadd_dir / fname
+            self._write_synthetic_coadd(coadd_path, targetids, seed=seed)
+            coadd_paths[fname] = coadd_path
+
+        ground_truth = {}
+        for fname, coadd_path in coadd_paths.items():
+            ground_truth.update(self._score_ground_truth(inference_module, model, device, coadd_path))
+
+        # SELECT only a subset of each coadd's targetids into the sample —
+        # exercises "keeps ONLY the sample's targetids" against real coadd
+        # surplus (12, 14, 22 exist in the coadds but never in the sample).
+        selected = {
+            11: group_a,
+            13: group_a,
+            21: group_b,
+        }
+        sample_rows = []
+        for targetid, (survey, program, healpix) in selected.items():
+            sample_rows.append(
+                {
+                    "targetid": targetid,
+                    "anomaly_score": 6.5 + targetid * 0.01,  # sealed z-score stand-in; never touched by enrichment
+                    "mean_mse": ground_truth[targetid],
+                    "survey": survey,
+                    "program": program,
+                    "healpix": healpix,
+                }
+            )
+
+        sample_path = work / "flagship_sample.parquet"
+        table = pa.table(
+            {
+                "targetid": pa.array([r["targetid"] for r in sample_rows], type=pa.int64()),
+                "anomaly_score": pa.array([r["anomaly_score"] for r in sample_rows], type=pa.float64()),
+                "mean_mse": pa.array([r["mean_mse"] for r in sample_rows], type=pa.float64()),
+                "survey": pa.array([r["survey"] for r in sample_rows], type=pa.string()),
+                "program": pa.array([r["program"] for r in sample_rows], type=pa.string()),
+                "healpix": pa.array([r["healpix"] for r in sample_rows], type=pa.int64()),
+            }
+        )
+        pq.write_table(table, sample_path, compression="zstd")
+
+        sample_manifest = {
+            "manifest_version": "flagship-sample/v1",
+            "row_count": len(sample_rows),
+            "parent": {"contract_sha256": contract_sha256, "catalog_sha256": catalog_sha256},
+            "output": {"file_name": sample_path.name, "sha256": self.mod.sha256_file(sample_path)},
+        }
+        sample_manifest_path = work / "flagship_sample_manifest.json"
+        sample_manifest_path.write_text(json.dumps(sample_manifest))
+
+        return {
+            "contract_path": contract_path,
+            "sample_path": sample_path,
+            "sample_manifest_path": sample_manifest_path,
+            "zcatalog_path": zcatalog_path,
+            "inference_module": inference_module,
+            "coadd_paths": coadd_paths,
+            "selected": selected,
+            "ground_truth": ground_truth,
+        }
+
+    def _run_paths(self, work: Path):
+        return dict(
+            coadd_cache_dir=work / "coadd_cache",
+            shard_dir=work / "shards",
+            checkpoint_path=work / "checkpoint.json",
+            audit_log_path=work / "audit.jsonl",
+            output_path=work / "enriched.parquet",
+            manifest_output_path=work / "enriched_manifest.json",
+        )
+
+    def test_enrichment_keeps_only_sample_ids_and_mse_cross_check_passes(self) -> None:
+        import pyarrow.parquet as pq
+
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            fixture = self._build_fixture(work)
+            paths = self._run_paths(work)
+            self._install_fake_download(fixture["inference_module"], fixture["coadd_paths"])
+
+            manifest = self.mod.run_enrichment(
+                fixture["sample_path"],
+                fixture["sample_manifest_path"],
+                fixture["contract_path"],
+                MODEL_PATH,
+                fixture["zcatalog_path"],
+                paths["coadd_cache_dir"],
+                paths["shard_dir"],
+                paths["checkpoint_path"],
+                paths["audit_log_path"],
+                paths["output_path"],
+                paths["manifest_output_path"],
+                inference_module=fixture["inference_module"],
+            )
+
+            self.assertEqual(manifest["mse_cross_check"]["offenders"], 0)
+            self.assertTrue(manifest["mse_cross_check"]["passed"])
+            self.assertEqual(manifest["row_counts"]["input_sample_rows"], 3)
+            self.assertEqual(manifest["row_counts"]["output_rows"], 3)
+            self.assertEqual(manifest["groups"]["skipped"], 0)
+            self.assertTrue(paths["output_path"].is_file())
+            self.assertEqual(manifest["output"]["sha256"], self.mod.sha256_file(paths["output_path"]))
+
+            table = pq.read_table(paths["output_path"]).to_pydict()
+            self.assertEqual(sorted(table["targetid"]), [11, 13, 21])
+            # Coadd surplus never in the sample must never leak into output.
+            self.assertNotIn(12, table["targetid"])
+            self.assertNotIn(14, table["targetid"])
+            self.assertNotIn(22, table["targetid"])
+
+            columns = set(table.keys())
+            self.assertIn("latent_000", columns)
+            self.assertIn("latent_127", columns)
+            self.assertNotIn("lat_000", columns)
+            self.assertIn("rB", columns)
+            self.assertIn("rR", columns)
+            self.assertIn("rZ", columns)
+            self.assertIn("worst_band", columns)
+            self.assertIn("peak_residual_wavelength", columns)
+            self.assertIn("residual_kurtosis", columns)
+            self.assertIn("median_coadd_snr_b", columns)
+            self.assertIn("median_coadd_snr_r", columns)
+            self.assertIn("median_coadd_snr_z", columns)
+            self.assertIn("spectype", columns)
+            self.assertIn("z", columns)
+            # Sample's own columns survive untouched, including the SEALED
+            # anomaly_score (never overwritten by the raw recomputed MSE).
+            self.assertIn("mean_mse", columns)
+            self.assertIn("anomaly_score", columns)
+            for i, targetid in enumerate(table["targetid"]):
+                self.assertAlmostEqual(
+                    table["anomaly_score"][i], 6.5 + targetid * 0.01, places=9
+                )
+            self.assertNotIn("_mse_relative_error", columns)
+            self.assertNotIn("_recomputed_mean_mse", columns)
+
+    def test_mismatched_sample_mean_mse_fails_closed(self) -> None:
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            fixture = self._build_fixture(work)
+            paths = self._run_paths(work)
+            self._install_fake_download(fixture["inference_module"], fixture["coadd_paths"])
+
+            # Tamper ONE row's mean_mse after the fixture computed it
+            # honestly, then re-seal the sample manifest's own sha256 (as a
+            # legitimate producer would) so the ONLY thing under test is the
+            # enrichment cross-check catching a silently wrong mean_mse.
+            table = pq.read_table(fixture["sample_path"]).to_pydict()
+            tampered_index = table["targetid"].index(13)
+            table["mean_mse"][tampered_index] += 5.0
+            tampered = pa.table(
+                {
+                    "targetid": pa.array(table["targetid"], type=pa.int64()),
+                    "anomaly_score": pa.array(table["anomaly_score"], type=pa.float64()),
+                    "mean_mse": pa.array(table["mean_mse"], type=pa.float64()),
+                    "survey": pa.array(table["survey"], type=pa.string()),
+                    "program": pa.array(table["program"], type=pa.string()),
+                    "healpix": pa.array(table["healpix"], type=pa.int64()),
+                }
+            )
+            pq.write_table(tampered, fixture["sample_path"], compression="zstd")
+            sample_manifest = json.loads(fixture["sample_manifest_path"].read_text())
+            sample_manifest["output"]["sha256"] = self.mod.sha256_file(fixture["sample_path"])
+            fixture["sample_manifest_path"].write_text(json.dumps(sample_manifest))
+
+            with self.assertRaises(self.mod.EnrichmentError) as ctx:
+                self.mod.run_enrichment(
+                    fixture["sample_path"],
+                    fixture["sample_manifest_path"],
+                    fixture["contract_path"],
+                    MODEL_PATH,
+                    fixture["zcatalog_path"],
+                    paths["coadd_cache_dir"],
+                    paths["shard_dir"],
+                    paths["checkpoint_path"],
+                    paths["audit_log_path"],
+                    paths["output_path"],
+                    paths["manifest_output_path"],
+                    inference_module=fixture["inference_module"],
+                )
+            self.assertIn("MSE cross-check gate failed", str(ctx.exception))
+            self.assertFalse(paths["output_path"].exists())
+
+            audit_lines = [json.loads(line) for line in paths["audit_log_path"].read_text().splitlines()]
+            gate_failures = [line for line in audit_lines if line.get("mse_cross_check_gate") == "FAILED"]
+            self.assertEqual(len(gate_failures), 1)
+            offender_targetids = {o["targetid"] for o in gate_failures[0]["offenders"]}
+            self.assertEqual(offender_targetids, {13})
+
+    def test_checkpoint_resume_skips_completed_group_and_retries_failed_one(self) -> None:
+        import pyarrow.parquet as pq
+
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            fixture = self._build_fixture(work)
+            paths = self._run_paths(work)
+
+            group_a_key = ("main", "dark", 100)
+            group_b_key = ("sv3", "bright", 55)
+            group_a_fname = Path(self.mod.coadd_relative_path(*group_a_key)).name
+            group_b_fname = Path(self.mod.coadd_relative_path(*group_b_key)).name
+
+            # First incarnation: only group A's coadd source is reachable —
+            # group B must be skipped (download returns False), the run
+            # must report status "incomplete", and NO final output/manifest
+            # may be written for an incomplete enrichment.
+            only_a_sources = {group_a_fname: fixture["coadd_paths"][group_a_fname]}
+            self._install_fake_download(fixture["inference_module"], only_a_sources)
+
+            result = self.mod.run_enrichment(
+                fixture["sample_path"],
+                fixture["sample_manifest_path"],
+                fixture["contract_path"],
+                MODEL_PATH,
+                fixture["zcatalog_path"],
+                paths["coadd_cache_dir"],
+                paths["shard_dir"],
+                paths["checkpoint_path"],
+                paths["audit_log_path"],
+                paths["output_path"],
+                paths["manifest_output_path"],
+                inference_module=fixture["inference_module"],
+            )
+            self.assertEqual(result["status"], "incomplete")
+            self.assertEqual(result["skipped_groups"], 1)
+            self.assertFalse(paths["output_path"].exists())
+            self.assertFalse(paths["manifest_output_path"].exists())
+
+            checkpoint = json.loads(paths["checkpoint_path"].read_text())
+            completed_group_keys = {tuple(entry["group"]) for entry in checkpoint["completed_groups"]}
+            self.assertEqual(completed_group_keys, {group_a_key})
+
+            # Second incarnation: group A's source is deliberately REMOVED
+            # (proves resume never re-downloads a checkpointed group — if it
+            # tried, the group-A shard would be missing from the final
+            # output because the "download" would fail with no source);
+            # group B's source is now available and gets retried.
+            only_b_sources = {group_b_fname: fixture["coadd_paths"][group_b_fname]}
+            self._install_fake_download(fixture["inference_module"], only_b_sources)
+
+            manifest = self.mod.run_enrichment(
+                fixture["sample_path"],
+                fixture["sample_manifest_path"],
+                fixture["contract_path"],
+                MODEL_PATH,
+                fixture["zcatalog_path"],
+                paths["coadd_cache_dir"],
+                paths["shard_dir"],
+                paths["checkpoint_path"],
+                paths["audit_log_path"],
+                paths["output_path"],
+                paths["manifest_output_path"],
+                inference_module=fixture["inference_module"],
+            )
+            self.assertEqual(manifest["groups"]["skipped"], 0)
+            self.assertEqual(manifest["row_counts"]["output_rows"], 3)
+            self.assertTrue(paths["output_path"].is_file())
+
+            table = pq.read_table(paths["output_path"]).to_pydict()
+            self.assertEqual(sorted(table["targetid"]), [11, 13, 21])
 
 
 if __name__ == "__main__":
