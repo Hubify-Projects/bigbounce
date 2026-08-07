@@ -58,6 +58,51 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r9-correctness-convergence-board-adjudication-closure-2026-08-07",
+    dateISO: "2026-08-07",
+    kind: "internal-api",
+    title:
+      "P1C R9 correctness-convergence board on the exact v1C.0.11 PDF — Claude MAJOR REVISION (4 MAJOR / 11 MINOR, 8 findings self-classed correctness-grade) / Grok REJECT / Gemini MAJOR REVISIONS / Perplexity FAILED; adjudicated by an independent symbolic operator-basis computation (1130b7c5); v1C.0.12 re-frames {O1-O6} as a rank-4 spanning list, branch-scopes the Table III O1 reason, and corrects the O4 identity chain; R-phase NOT converged, R10 is the next correctness check",
+    papers: ["P1C"],
+    summary:
+      "Four raw legs bound to the exact v1C.0.11 PDF (sha 08688560): Claude Opus INT MAJOR REVISION (4 MAJOR / 11 MINOR, with 8 of the 15 findings self-classed correctness-grade under the R8 classification), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. Given the volume of correctness-grade claims, the round was adjudicated by an independent symbolic computation (committed 1130b7c5, research/theory_audit/operator_basis_adjudication_2026_08_07.py) that re-derived the O1-O6 operator list directly from the Cartan structure equations in exact rational arithmetic rather than resolving claims by re-reading prose. The computation drove three corrections into v1C.0.12: (a) Sec. V now calls {O1-O6} a spanning list / generating set, not a basis — computed rank 4 (nullity 2; rank 2 modulo total derivatives), with both exact relations stated (O1 - O6 = 0 and 2*O1 + 2*O2 - O4 = 0, i.e. O1 = (1/2)O4 - O2) and the Nieh-Yan form-vs-density normalization fixed explicitly, which is what had made the referee's literal coefficients come out a factor 2 off; (b) Table III's O1 row keeps Final = 0 but its reason is now branch-scoped (0 on the torsion-free branch by Bianchi/Check A; equal to -NY, an exact total derivative, on the T = kappa S branch) — the referee's claimed internal contradiction was FALSIFIED by the computation; (c) a correctness item neither reviewing party raised: Table III's O4 row, its caption, and the App. A 1 'O4 = O5' chain were wrong as printed — Check D's identity concerns the epsilon-free square T_abc T^abc, whereas the epsilon-contracted O4 vanishes identically under the purely axial Cartan torsion. All three sites corrected; the correction STRENGTHENS the no-go (an operator contributing nothing is a stronger disposal than one contributing a Planck-suppressed contact term) and the physics conclusion is unchanged. Other closures landed in the same pass: the Route-3 '61-67 orders' statement now carries a displayed mass-dimension scaling relation with the reference budget defined as rho_Lambda,obs and the Hubble symbol made uniformly H0; the Route-2 section now states plainly that Sec. IV A closes the birefringence channel while Route 2's dark-energy closure is inherited from the Sec. V / App. A bound; and the App.-A bridge sentence no longer mis-describes Eq. (1) as the dimension-(+1) operator. Falsified with receipts: Grok's Eq.-(2) over-suppression and typesetting-slip claims, Grok's '3.6 vs 3.9e-69 never reconciled' claim (the paper reconciles it in two places), and Gemini's 'gauge-invariaut' typo (a text-extraction artifact; the PDF prints 'gauge-invariant'). Because the adjudication surfaced a genuine structural correctness item (the O4 identity chain), the R-phase is NOT converged at R9: R10 on the exact v1C.0.12 PDF is the next correctness-convergence check.",
+    keyTakeaways: [
+      "P1C v1C.0.12 served PDF: 22 pages — adjudicated by an independent symbolic recomputation of O1-O6 from the Cartan structure equations (exact rational arithmetic), commit 1130b7c5",
+      "Sec. V now calls {O1-O6} a rank-4 spanning list, not a basis (nullity 2; rank 2 modulo total derivatives), with both exact relations displayed and the Nieh-Yan normalization fixed",
+      "Table III's O1 row Final=0 is now branch-scoped (torsion-free vs T=kappa*S); the referee's claimed internal contradiction was FALSIFIED by the computation",
+      "New correctness item found by the adjudication, not by either reviewer: Table III's O4 row / caption / App. A 1 'O4=O5' chain were wrong as printed and are now corrected; this strengthens the no-go and leaves the physics conclusion unchanged",
+      "Grok's Eq.-(2) and mantissa-reconciliation claims falsified with receipts; Gemini's 'gauge-invariaut' flagged as a text-extraction artifact",
+      "R-phase NOT converged at R9 — R10 on the exact v1C.0.12 PDF is the next correctness-convergence check; no readiness score or venue/Zenodo kit exists yet",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.11-EXACTPDF-08688560-R9CONV/P1C_claude_r9_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.11-EXACTPDF-08688560-R9CONV_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.11-EXACTPDF-08688560-R9CONV_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "Perplexity leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.11-EXACTPDF-08688560-R9CONV_P1C_Perplexity_citations.md`,
+      },
+      {
+        label: "Operator-basis adjudication script (commit 1130b7c5)",
+        href: `${GH_COMMIT}/1130b7c5`,
+      },
+      {
+        label: "R9 truth audit (verdict-first ledger)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.11-EXACTPDF-08688560-R9CONV/P1C_v1C.0.11_R9_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.12 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.12.pdf" },
+    ],
+  },
+  {
     id: "p1c-r8-confirmation-board-truth-audit-closure-2026-08-07",
     dateISO: "2026-08-07",
     kind: "internal-api",

@@ -1,12 +1,161 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.11 · 2026-08-07 ·
+**Current candidate:** draft v1C.0.12 · 2026-08-07 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R8 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 4 GENUINELY-NEW-REAL
-FINDINGS CLOSED (v1C.0.11): 2 CORRECTNESS-GRADE + 2 PRESENTATION-GRADE under
-the classification rule introduced this round. NOT CONVERGED — R9 on the
-exact v1C.0.11 PDF is REQUIRED and is the CORRECTNESS-CONVERGENCE CHECK.**
+**Status: R9 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED, WITH AN
+INDEPENDENT SYMBOLIC ADJUDICATION → 16 GENUINELY-NEW-REAL FINDINGS CLOSED
+(v1C.0.12): 10 CORRECTNESS-GRADE + 6 PRESENTATION-GRADE. R-PHASE NOT
+CONVERGED AT R9 — a STRUCTURAL correctness item was found and fixed, so
+R10 on the exact v1C.0.12 PDF is REQUIRED and is the next
+CORRECTNESS-CONVERGENCE CHECK.**
+The R9 board ran on the exact v1C.0.11 PDF (sha `0868856032…`), three legs
+with raw receipts, plus a referred-out symbolic computation.
+
+**R9 verdict matrix (2026-08-07, exact v1C.0.11 PDF):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **MAJOR REVISION** (4 MAJOR / 11 MINOR; leg self-classes 8 of 15 correctness-grade) — ~20-item verification log independently re-derived the Route-2 contractions, the Eq. (4) integration, the Route-3 endpoints, the App. A hierarchy chain, the App. C Fierz matrix, the App. E benchmark chain, and all 25 bibliography entries, with zero numeric or citation errors |
+| Grok API | grok-4.3 | **REJECT** (3 ESSENTIAL / 3 MAJOR / 2 NIT + pass-2: 3 MAJOR / 1 MINOR) |
+| Gemini API | gemini-3.1-pro-preview | **MAJOR REVISIONS** (1 ESSENTIAL / 2 MAJOR / 2 MINOR / 1 NIT) |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+**The adjudication (what made this round different).** Claude's MAJOR-1
+(`{O1–O6}` is linearly dependent) and MAJOR-2 (Table III's O1 row is
+internally contradictory) are claims about the *mathematics* of Sec. V and
+could not be dispositioned by re-reading the paper — the released script
+verifies Checks A and D only and computes no rank. Adjudicating them by
+re-arranging the paper's own quoted identities would have been pattern-036
+territory. They were referred out to an **independent symbolic computation**,
+committed at `1130b7c5` *before* any closure edit:
+`research/theory_audit/operator_basis_adjudication_2026_08_07.{py,json,md}`
+— O1–O6 re-derived from the Cartan structure equations on an algebraically
+independent 2-jet, expanded over 1368 jet monomials, reduced in exact
+rational arithmetic. Headline verdict **PARTIALLY-CORRECT**. Every v1C.0.12
+edit to Sec. V / Table III / App. A 1 is cited to a specific `[L##]` tag of
+that run's JSON log; no result is restated in the paper that the computation
+did not produce.
+
+The verdict-first truth audit against the R1–R8 disposition ledgers
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.11-EXACTPDF-08688560-R9CONV/P1C_v1C.0.11_R9_truth_audit.md`)
+deduplicated the board to **33 canonical items: 16 genuinely-new-real
+(14 referee-originated + 2 adjudication-originated, all closed in v1C.0.12),
+11 re-flags of R1–R8-dispositioned content (five with partial
+falsifications), 4 freshly falsified with receipts, 1 scope-opinion
+deferred, 1 opinion dispositioned.**
+
+**GNR by grade (all 16 closed in v1C.0.12; zero margin, count, or headline
+changes):**
+
+- **Correctness-grade (10)** — R9-GNR-1, 2, 3, 4, 6, 8, 10, 12 and
+  R9-ADJ-1, R9-ADJ-2.
+- **Presentation-grade (6)** — R9-GNR-5, 7, 9, 11, 13, 14. Closed in-round
+  rather than deferred, because each was a one-line edit adjacent to a
+  correctness edit already being made.
+
+**The three adjudication-driven changes:**
+
+1. **R9-GNR-1 [C] — Sec. V re-framed: `{O1–O6}` is a SPANNING / GENERATING
+   list, not a basis.** Computed rank **4**, nullity **2** `[L28]`/`[L29]`
+   (Gram certificate `[L34]`, independent numeric evaluation matrix `[L58]`);
+   rank **2 modulo total derivatives** `[L40]`. Both exact relations are now
+   stated in the paper: `O1 − O6 = 0` `[L31]`/`[L59]` (certified by an
+   independent Γ-route Riemann construction, all 256 components, three
+   configurations `[L49]`–`[L57]`) and `2·O1 + 2·O2 − O4 = 0`, equivalently
+   `O1 = ½O4 − O2` `[L30]`/`[L62]`/`[L63]`. The referee's literal
+   `O1 = O4 − O2` is **wrong by a factor 2 on O4** `[L60]`/`[L61]` — caused
+   by the paper never fixing the NY form-vs-density normalization `[L66]`,
+   now fixed explicitly as `NY ≡ ∂_μ(ε^{μνρσ}e_{Iν}T^I_{ρσ})`. The
+   completeness argument is re-worded to exactly what the computation
+   supports: the list **spans** the rule-admitted space; independence is not
+   claimed. Rank is 4 under both admissible O6 readings `[L104]`–`[L106]`.
+2. **R9-ADJ-1 [C] — Table III O1 row: `Final = 0` STAYS; the reason becomes
+   branch-scoped.** Check A reproduced `[L70]`, but it uses the
+   **torsion-free** first Bianchi identity, which `T = κS ≠ 0` violates
+   `[L71]`; O1 is not pointwise zero on shell `[L91]`/`[L92]`. Row now reads
+   `0 at T=0 (Bianchi, Check A); −NY at T=κS` → `0 (EOM)`; O6 mirrors it;
+   the abstract's trichotomy is scoped to match.
+3. **R9-ADJ-2 [C] — NEW correctness item found by the adjudication, raised
+   by neither party: Table III's O4 row, its caption, and the App. A 1
+   `O4^[4] = O5^[4]` chain were wrong as printed.** `O4 ≡ 0` on shell
+   `[L78]`/`[L81]`, confirmed in a genuine curved on-shell Einstein–Cartan
+   configuration `[L90]`/`[L94]`: `T_I∧T^I` is supported only by the
+   non-axial torsion irreps `[L82]`–`[L86]` and minimal Cartan torsion is
+   verified pure axial `[L09]`. Root cause: **Check D's identity concerns the
+   ε-free square `T_abc T^abc`** `[L87]`, a different invariant from the
+   ε-contracted O4 of Eq. (8) `[L86]`; the paper applied it to the wrong
+   contraction. All five affected sites corrected (row, caption, App. A 1
+   chain, Check D prose, Sec. V bullet (b)), plus the downstream class
+   statements. **This STRENGTHENS the no-go** — an operator contributing
+   nothing at all is a stronger disposal than one contributing a
+   Planck-suppressed contact term `[L89]` — and the physics conclusion is
+   unchanged.
+
+**Other correctness closures:** Route-3's "61–67 orders" now has a displayed
+mass-dimension scaling relation with the reference budget defined as
+`ρ_Λ,obs` and labelled Tier-III (R9-GNR-3), and the Hubble symbol is `H0`
+uniformly with the reason stated (R9-GNR-2); the App.-A bridge no longer
+mis-describes Eq. (1) as the dimension-(+1) operator, and Sec. IV now states
+once that Sec. IV A closes the *birefringence* channel while Route 2's
+dark-energy closure is inherited from Sec. V / App. A (R9-GNR-4); "natural
+coefficient ∼ M_Pl⁴" → "natural *density* scale" at three sites (R9-GNR-6);
+Eq. (3)'s false structural-consistency claim withdrawn in favour of the
+numerical bound (R9-GNR-8); App. D Step 4's dropped Holst `γ⁻¹` restored
+(R9-GNR-10); B11/B13/B4 logical independence now argued rather than asserted,
+keeping the count at 13 (R9-GNR-12).
+
+**Falsifications with receipts.** Claude MAJOR-2's "internal contradiction"
+is **FALSIFIED** `[L98]`/`[L99]`: with `O4 = 0`, Nieh–Yan gives `O1 = −O2`
+exactly `[L95]`/`[L97]`, an exact total derivative → 0 EOM / 0 vacuum
+energy, so `Final = 0` survives — the referee named the right row for the
+wrong reason, and the fix he requested would have introduced a new error.
+Grok C1 (Eq. (2) "over-suppressed by one M_Pl") falsified — the LHS is a
+double normalization stated in the following three lines, and both displayed
+lines were independently verified consistent. Grok N2 (Eq. (2) typesetting
+slip) falsified — `10⁻⁶⁴/6×10⁻⁵ = 1.67×10⁻⁶⁰`, correct as printed. Grok J1
+("3.6 vs 3.9×10⁻⁶⁹ never reconciled") falsified — reconciled explicitly in
+two printed places. Gemini N1 ("gauge-invariaut") falsified as a text-
+extraction artifact; `pdftotext` on p. 10 returns "gauge-invariant" — the
+**fifth** such artifact in the R3/R5/R7/R8 series.
+
+**Self-withdrawn by the reviewing leg before filing** (recorded so the board
+can distinguish "checked and clean" from "not checked"; never counted): the
+B1 torsion-coupling exponent (260-DPI re-render shows `√|t3| ∼ m_T⁻¹`,
+correct as printed) and the Fig. 1 barrier→route arrow counts (400 DPI gives
+R1=3, R2=4, R3=4, R4=3 = 14, matching Sec. III A exactly).
+
+v1C.0.12: 22 pp, 0 errors / 0 undef / 0 overfull, `/latex-audit` visual pass
+on pages 1, 9, 13, 15, 18, all 6 `\artifact{}` paths resolving, immutable pin
+advanced `c80b7487b01f` → `1130b7c5e3d2`, mirrors byte-identical (md5
+`0323f962…`, SHA-256 `c21fde9f1b…`), `npx next build` passes.
+
+**Convergence read (directive H-refined + the R8 classification rule): R9
+surfaced 16 genuinely-new-real findings against a target of 0, of which 10
+are correctness-grade. Neither the literal 0-GNR gate nor the
+correctness-convergence gate is met, so the paper is NOT converged and
+THE R-PHASE IS NOT CONVERGED AT R9.** R8 closed with 2 correctness-grade
+GNR and named R9 the correctness-convergence check; R9 returned 10,
+including a **structural item (R9-ADJ-2) that had survived nine boards,
+three referee legs per board, and the paper's own released verification
+script** — found only because two referee claims were referred out to an
+independent symbolic computation instead of being adjudicated from the
+paper's prose. That is the round's process lesson: a claim about the paper's
+mathematics cannot be dispositioned from the paper's own prose. **R10 on the
+exact v1C.0.12 PDF is the next correctness-convergence check**, all active
+legs re-run fresh (Claude INT + Grok API + Gemini API per directives
+N/M-AMENDED; Perplexity optional), exit test = **zero correctness-grade
+genuinely-new-real findings, counting adjudication-originated items exactly
+as referee-originated ones**. Residual presentation-grade items route to the
+D-round. GNR count trend: 15 → 7 → 8 → 10 → 6 → 9 → 7 → 4 → **16**; the
+jump is a measurement improvement, not a regression — the paper did not get
+worse, the instrument got sharper.
+
+Prior-round record follows.
+
+**Status at R8 (superseded): R8 CONFIRMATION BOARD RUN AND TRUTH-AUDITED →
+4 GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.11): 2 CORRECTNESS-GRADE +
+2 PRESENTATION-GRADE under the classification rule introduced that round.**
 The R8 confirmation board ran on the exact v1C.0.10 PDF (sha `d8b9db8e…`),
 three legs with raw receipts.
 
