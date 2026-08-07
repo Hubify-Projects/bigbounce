@@ -58,6 +58,44 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r5-confirmation-board-truth-audit-closure-2026-08-06",
+    dateISO: "2026-08-06",
+    kind: "internal-api",
+    title:
+      "P1C R5 confirmation board on the exact v1C.0.7 PDF — Claude ACCEPT (0 MAJOR / 3 MINOR, the Claude leg's first ACCEPT) / Grok REJECT / Gemini MAJOR REVISIONS; 6 genuinely-new items truth-audited and closed as v1C.0.8; R6 confirmation required",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.7 PDF (sha f085023f): Claude Opus INT ACCEPT (0 MAJOR / 3 MINOR — the Claude leg's first ACCEPT on P1C, with a 17-item independent verification log reproducing every load-bearing number), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. Verdict-first truth audit against the R1+R2+R3+R4 disposition ledgers deduplicated the board to a 16-item ledger: 6 genuinely-new-real, all bounded citation/wording/provenance-grade with zero numeric or margin changes — beta_obs = 0.342+-0.094 deg re-attributed to its actual source (Eskilt-Komatsu WMAP+Planck), with the Minami-Komatsu Planck-2018 first extraction (0.35+-0.14 deg) cited separately per faithful-sourcing; the 30-37 chiral-count lever-arm endpoints both motivated by explicit mu_IR choices (1 GeV -> ln 36.8; 1 TeV collider-probed cut -> ln 1e13 = 30, recomputed); the unreconstructible ~1e-33 alternative-ordering figure REMOVED per never-fabricate (labeled loose/unused; no derivation exists in this paper or the frozen monolith — the qualitative ordering-freedom disclosure is retained without the number); the Data & Code process-prose neutralized per directive Q1 (no revision/date narration, 'adjudicates' -> 'verifies') with the archive boundary restated structurally and a planned pre-publication archival deposit for this survey's own scripts stated in-text (DOI minting deferred-genuine to P-round); and the Fig 1 R4 node label harmonized to 'naturalness / expl. deficit' (matching Table I / Sec IV C / Sec VI). Gemini's MAJOR — the claimed Fierz (F_c)_13 = 1 typo 'breaking F_c^2 = 1' — was ADJUDICATED BY RECOMPUTATION: the matrix was transcribed from the compiled PDF at 180 DPI (the (1,3) entry prints as a stacked 1/2, identical typography in rows 1 and 5) and the exact-rational product F_c^2 reproduces the identity on all 25 entries; Gemini's counterfactual 22/16 arises only by substituting (1,3)=1, confirming a rasterization misread — the same root cause as the R3 falsification of the same claim (RE-FLAG, re-falsified with fresh receipts). Gemini's slash-fraction NIT falsified by the same render (both fractions stacked). 8 re-flags of R1-R4-dispositioned content (Grok's five recurrent ESSENTIAL demands, Grok M1/M2, Gemini's version-tag minor, and the re-falsified Fierz claim), 1 freshly falsified (the slash-fraction NIT), 1 opinion (Grok's grammar nit on the abstract's absolute construction). All closures landed as v1C.0.8 (18 pp, 0 errors / 0 undef / 0 overfull, visual audit pass on changed pages, mirrors byte-identical). Because R5 surfaced genuinely-new-real findings, the paper is NOT converged: an R6 confirmation board on the exact v1C.0.8 PDF is required (directive H-refined).",
+    keyTakeaways: [
+      "P1C v1C.0.8 served PDF: 18 pages · SHA-256 385158dd6351a515d1d0d73bdbbd7cc3b61ed1df90b88f067bed54d40778c575 · md5 992c02a29a85d989b8bb19b4b8ac846a",
+      "Claude leg flipped to ACCEPT (0 MAJOR / 3 MINOR) — the board's second ACCEPT-class verdict on P1C after Gemini's R4 ACCEPT",
+      "Gemini's Fierz-matrix MAJOR re-falsified by exact-rational recomputation of the PDF-transcribed matrix: F_c^2 = identity on all 25 entries; the (1,3) entry prints 1/2, not 1 (rasterization misread, same root cause as R3)",
+      "The unreconstructible ~1e-33 loose bound was removed rather than retro-derived — never-fabricate; all six closures are citation/wording/provenance-grade with zero numeric or margin changes",
+      "Data & Code availability now states a planned pre-publication archival deposit for this survey's scripts; actual DOI minting stays a P-round action (deferred-genuine)",
+      "Perplexity leg FAILED — preserved as a failure record, never counted as a verdict",
+      "R5 was NOT clean (6 genuinely-new) — R6 confirmation board on the exact v1C.0.8 PDF is required before convergence can be claimed",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.7-EXACTPDF-f085023f-R5CONF/P1C_claude_r5_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.7-EXACTPDF-f085023f-R5CONF_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.7-EXACTPDF-f085023f-R5CONF_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "R5 truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.7-EXACTPDF-f085023f-R5CONF/P1C_v1C.0.7_R5_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.8 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.8.pdf" },
+    ],
+  },
+  {
     id: "p1c-r4-confirmation-board-truth-audit-closure-2026-08-06",
     dateISO: "2026-08-06",
     kind: "internal-api",

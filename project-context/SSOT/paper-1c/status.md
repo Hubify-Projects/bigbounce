@@ -1,12 +1,70 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.7 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.8 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R4 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 10 GENUINELY-NEW-REAL
-FINDINGS CLOSED (v1C.0.7). NOT CONVERGED — R5 confirmation board on the
-exact v1C.0.7 PDF is REQUIRED (directive H-refined: the loop exits only at
-0 genuinely-new-real across all legs).** The R4 confirmation board ran on
+**Status: R5 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 6 GENUINELY-NEW-REAL
+FINDINGS CLOSED (v1C.0.8). NOT CONVERGED — R6 confirmation board on the
+exact v1C.0.8 PDF is REQUIRED (directive H-refined: the loop exits only at
+0 genuinely-new-real across all legs).** The R5 confirmation board ran on
+the exact v1C.0.7 PDF (sha `f085023f…`), three legs with raw receipts.
+
+**R5 verdict matrix (2026-08-06, exact v1C.0.7 PDF, round dir label 2026-08-07):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **ACCEPT** (0 MAJOR / 3 MINOR) — the Claude leg's FIRST ACCEPT on P1C, with a 17-item verification log independently reproducing every load-bearing number |
+| Grok API | grok-4.3 | **REJECT** |
+| Gemini API | gemini-3.1-pro-preview | **MAJOR REVISIONS** (ACCEPT→MAJOR flip vs R4 on unchanged-scope content; both named technical items falsified below) |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+The verdict-first truth audit against the R1+R2+R3+R4 disposition ledgers
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.7-EXACTPDF-f085023f-R5CONF/P1C_v1C.0.7_R5_truth_audit.md`)
+deduplicated the board to **16 canonical items: 6 genuinely-new-real
+(closed in v1C.0.8), 8 re-flags of R1–R4-dispositioned content (including
+Gemini's repeated Fierz (F_c)₁₃ = 1 claim, recorded as a RE-FLAG of
+R3-FAL-2 and re-falsified fresh with recomputation receipts), 1 freshly
+falsified (the slash-fraction NIT), 1 opinion**. All 6 closures are bounded citation/wording/provenance-grade;
+**zero numeric, margin, count, or headline changes**: (1) β_obs =
+0.342°±0.094° re-attributed to its actual source — Eskilt–Komatsu
+WMAP+Planck (PRD 106, 063503) — with the Minami–Komatsu Planck-2018 first
+extraction (0.35°±0.14°, PRL 125, 221301) cited separately; (2) the
+30–37 chiral-count lever-arm endpoints both motivated by explicit μ_IR
+choices (1 GeV → ln 10¹⁶ ≈ 36.8; 1 TeV collider-probed cut → ln 10¹³ ≈ 30,
+recomputed); (3) the unreconstructible ~10⁻³³ alternative-ordering figure
+REMOVED per never-fabricate (labeled loose/unused; no derivation exists in
+this paper or the frozen monolith — the qualitative ordering-freedom
+disclosure is retained without the number); (4) Data & Code process-prose
+neutralized per directive Q1 — no revision/date narration, "adjudicates" →
+"verifies", archive boundary restated structurally; (5) a planned
+pre-publication archival deposit for this survey's own scripts stated
+in-text (actual DOI minting = P-round, deferred-genuine; the citation-form
+half of Gemini's ESSENTIAL is closed — all four scripts were already
+repo-relative \artifact links pinned to immutable commit `9b92721d5d7e`);
+(6) Fig. 1 R4 node label harmonized to "naturalness / expl. deficit"
+(matches Table I / Sec. IV C / Sec. VI). **Gemini's MAJOR — the claimed
+Fierz (1,3) typo "breaking F_c² = 𝟙" — was adjudicated by recomputation:**
+the matrix was transcribed from the compiled PDF (180 DPI render; the
+(1,3) entry prints a stacked ½, identical typography in rows 1 and 5) and
+the exact-rational product F_c² reproduces the identity on all 25 entries;
+Gemini's 22/16 arises only by substituting (1,3)=1, confirming a
+rasterization misread — same root cause as the R3 falsification of the
+same claim. Gemini's slash-fraction NIT falsified by the same render.
+Grok's five ESSENTIALs and two MAJORs are all re-flags of R1–R4
+dispositions (self-containment, abstract-margin recomputation, version
+stamp, enumeration, conditional-closure framing — each source-cited in the
+audit); Grok's grammar nit on the abstract's absolute construction is
+dispositioned OPINION. v1C.0.8: 18 pp, 0 errors / 0 undef / 0 overfull,
+visual audit pass on changed pages (1, 4, 7, 8, 13), mirrors
+byte-identical (md5 `992c02a2…`, SHA-256 `385158dd…`).
+**Convergence read (directive H-refined): R5 surfaced 6 genuinely-new-real
+findings against a target of 0, so the paper is NOT converged and an R6
+confirmation board on the exact v1C.0.8 PDF (sha `385158dd…`) is
+required.** (Calibration context, not verdict-softening: the Claude leg
+flipped to ACCEPT — the board's second ACCEPT-class verdict after Gemini's
+R4 ACCEPT; all 6 items citation/wording/provenance-grade; both of
+Gemini's named technical items were falsified by computation; the GNR
+count is trending 15 → 7 → 8 → 10 → 6.) Prior-round record follows. The R4 confirmation board ran on
 the exact v1C.0.6 PDF (sha `fc23872d…`), three legs with raw receipts.
 
 **R4 verdict matrix (2026-08-06/07, exact v1C.0.6 PDF):**
@@ -232,17 +290,18 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.5: 18 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
+v1C.0.8: 18 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
 clean 2026-08-06 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.5.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.5.pdf` (md5
-`36312efb1737119e22c5581da2980f02`, sha256 `a770491d…`, all three copies
-match). Prior v1C.0.1–v1C.0.4 mirrors retained. `/latex-audit` visual pass
-on the recompile: all 18 pages rendered at 110 DPI; title block (v1C.0.5
-stamp), Sec. III classification, B12 window, Eq. (2) passage, Table II R1
-row, Eq. (8) + definitional sentence, Table III + caption, App. C bridge
-inspected — no overflow/overlap; no new URLs added (all cited artifact
-paths previously verified to resolve).
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.8.pdf` and
+`public/papers/paper1c_nogo_survey_v1C.0.8.pdf` (md5
+`992c02a29a85d989b8bb19b4b8ac846a`, sha256 `385158dd…`, all three copies
+match). Prior v1C.0.1–v1C.0.7 mirrors retained. `/latex-audit` visual pass
+on the recompile: changed pages rendered at 110 DPI — title block
+(v1C.0.8 stamp), Fig. 1 (harmonized R4 node label, no overflow), p. 7
+(10⁻³³ figure removed), p. 8 (lever-arm endpoints + β_obs re-attribution),
+p. 13 (neutralized Data & Code prose + planned-deposit sentence,
+footnote at column foot) — no overflow/overlap; no new URLs added (the
+four cited artifact paths unchanged and previously verified to resolve).
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
@@ -290,13 +349,22 @@ paths previously verified to resolve).
    `ROUND_2026-08-07-P1C-v1C.0.6-EXACTPDF-fc23872d-R4CONF/P1C_v1C.0.6_R4_truth_audit.md`).
    R4 was NOT clean (10 genuinely-new-real vs a target of 0) → convergence
    NOT reached.
-6. R5 confirmation board (same three active legs, fresh, on the exact
-   v1C.0.7 PDF sha `f085023f…`) — exit test per directive H-refined:
+6. ~~R5 confirmation board~~ DONE 2026-08-06 (on the exact v1C.0.7 PDF
+   sha `f085023f…`: Claude **ACCEPT** (0 MAJOR / 3 MINOR — first Claude
+   ACCEPT) / Grok REJECT / Gemini MAJOR (both named technical items
+   falsified by recomputation) / Perplexity FAILED; 6 genuinely-new-real
+   closed as v1C.0.8 — see
+   `ROUND_2026-08-07-P1C-v1C.0.7-EXACTPDF-f085023f-R5CONF/P1C_v1C.0.7_R5_truth_audit.md`).
+   R5 was NOT clean (6 genuinely-new-real vs a target of 0) → convergence
+   NOT reached.
+7. R6 confirmation board (same three active legs, fresh, on the exact
+   v1C.0.8 PDF sha `385158dd…`) — exit test per directive H-refined:
    0 genuinely-new-real findings across all legs. Pre-submission checklist
    carries: real mechanized enumeration (or keep downgraded framing); ST
-   Eq. 58 + quote verification; venue-length condensation; mint a version
-   DOI for the P1C script set at P-round (R2-SO-2).
-7. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
+   Eq. 58 + quote verification; venue-length condensation; mint the
+   version DOI / updated archival deposit for the P1C script set at
+   P-round (R2-SO-2; restated in-paper by the R5 closure).
+8. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 
