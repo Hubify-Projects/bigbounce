@@ -1,12 +1,83 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.8 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.9 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R5 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 6 GENUINELY-NEW-REAL
-FINDINGS CLOSED (v1C.0.8). NOT CONVERGED — R6 confirmation board on the
-exact v1C.0.8 PDF is REQUIRED (directive H-refined: the loop exits only at
-0 genuinely-new-real across all legs).** The R5 confirmation board ran on
+**Status: R6 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 9 GENUINELY-NEW-REAL
+FINDINGS CLOSED (v1C.0.9). NOT CONVERGED — R7 confirmation board on the
+exact v1C.0.9 PDF is REQUIRED (directive H-refined: the loop exits only at
+0 genuinely-new-real across all legs).** The R6 confirmation board ran on
+the exact v1C.0.8 PDF (sha `385158dd…`), three legs with raw receipts.
+
+**R6 verdict matrix (2026-08-06, exact v1C.0.8 PDF, round dir label 2026-08-07):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **MINOR REVISIONS** (1 MAJOR / 8 MINOR) — verification log again independently reproduced every load-bearing number (Route-3 1.38×10⁻⁶; R1 3.5/3.8×10⁻⁶⁹; Eq. (2) both contractions; hierarchy; Fierz chain; counts) |
+| Grok API | grok-4.3 | **REJECT** |
+| Gemini API | gemini-3.1-pro-preview | **MAJOR REVISIONS** |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+The verdict-first truth audit against the R1–R5 disposition ledgers
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.8-EXACTPDF-385158dd-R6CONF/P1C_v1C.0.8_R6_truth_audit.md`)
+deduplicated the board to **21 canonical items: 9 genuinely-new-real
+(closed in v1C.0.9), 10 re-flags of R1–R5-dispositioned content (one with a
+partial falsification — Grok attributed the Route-2/3 one-loop inputs to
+the unrefereed companion [1] when they are imported from published
+Shapiro–Teixeira and Benedetti–Speziale [2]/[3]), 2 freshly falsified with
+receipts** (Grok M4's "App. D only cites the theorem" — the full statement
+and 4-step proof have been carried self-contained since v1C.0.4; Gemini
+N4's "2026 dates are typos for 2024" — the current date is 2026-08-06).
+**Headline closure — the boards' five-round companion-dependency demand
+finally produced a bounded closable core (Claude M1 + Gemini M1) and was
+closed as new Appendix E**: the Cartan/Freidel–Minic–Takeuchi
+torsion-elimination chain fixing the −(3κ/16)[γ²/(1+γ²)] contact
+coefficient (bivector inverse, FMT Eq. 17 contorsion, Eq. 23
+back-substitution, 4πG = κ/2 bridge) and the R1 finite-density benchmark
+arithmetic (κn_ψ² ≃ 1.0×10⁻⁷⁹ eV⁴ at 100 cm⁻³; 3.6×10⁻⁶⁹ of ρ_Λ at the
+companion's (2.3 meV)⁴ normalization; 3/16-weighted value included), both
+carried by faithful extraction from the P1A source
+(`arxiv/paper1a_ech_nogo.tex` `sec:theory` + `sec:r1_njl`) with explicit
+credit — the App-D/B14 precedent; nothing invented. The companion pieces
+too long to carry (NJL gap analysis, tensor-sector B14 extension, R4
+spectator check) are dispositioned deferred-genuine behind the
+refereed-companion gate with honest not-peer-reviewed wording in Sec. I.
+The other 8 closures, all bounded, zero margin/count/headline changes:
+Eq. (2) LHS corrected to the double-normalized budget ratio its RHS
+displays (Gemini pass-2 M2 + Claude m5; motivation now at the display;
+both contractions still evaluated); the ∇·J⁵ disposal now routes the
+gravitational Kimura–Delbourgo–Salam RR̃ anomaly content (present within
+minimal field content) to O3 where it dies as a total derivative (Claude
+m2; two real refs added; coefficient deliberately not quoted —
+never-fabricate); the Data & Code pin moved to `c80b7487b01f` whose
+artifact copies are verified identical to head (git-diff receipts),
+retiring the R3-era drift footnote (Claude m4); the `theory_audit` prose
+tag removed and the third/fourth-files archive boundary stated (Gemini
+N2+N3); a β_obs detection-significance sentence (3.6σ WMAP+Planck / 2.9σ
+ACT DR6; a smaller true signal only widens the margin — Claude m6); the
+Fig. 1 caption attribution restated plainly via the in-figure edge labels
+(Claude m7 + Grok m4); M_Pl²κ² = κ tagged exact-for-reduced-mass at both
+App-A1/Table-III sites and the Route-3 1.4×10⁻⁶ tagged full-M_Pl (Claude
+m3); the α_em Thomson-limit convention stated (Grok m3). Re-flags:
+version stamp (directive G), abstract-tier framing, wholesale
+absorb-or-withdraw, venue length/abstract length, novelty accounting,
+O(1)-normalization labels, taxonomy vocabulary, abstract arithmetic trace,
+mint-the-DOI-now (deferred-genuine, Houston-gated), journal-version
+equation-number checks (deferred-genuine). v1C.0.9: 20 pp, 0 errors /
+0 undef / 0 overfull, visual audit pass on changed pages (1, 2, 4, 6–9,
+10, 11, 13, 16, 18–20), mirrors byte-identical (md5 `eab47932…`, SHA-256
+`b4d73f94…`).
+**Convergence read (directive H-refined): R6 surfaced 9 genuinely-new-real
+findings against a target of 0, so the paper is NOT converged and an R7
+confirmation board on the exact v1C.0.9 PDF (sha `b4d73f94…`) is
+required.** (Calibration context, not verdict-softening: the one
+MAJOR-grade closure resolves the boards' longest-running structural demand
+by faithful extraction; 6 of 9 are single-leg wording/tagging/caption
+items; 2 are closure-insufficiencies of earlier fixes; the only
+physics-content correction leaves the closure unchanged because RR̃ = O3;
+the GNR count is trending 15 → 7 → 8 → 10 → 6 → 9, with the R6 rise driven
+by the newly-closable companion-dependency core rather than regressions.)
+Prior-round record follows. The R5 confirmation board ran on
 the exact v1C.0.7 PDF (sha `f085023f…`), three legs with raw receipts.
 
 **R5 verdict matrix (2026-08-06, exact v1C.0.7 PDF, round dir label 2026-08-07):**
@@ -290,18 +361,21 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.8: 18 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
+v1C.0.9: 20 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
 clean 2026-08-06 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.8.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.8.pdf` (md5
-`992c02a29a85d989b8bb19b4b8ac846a`, sha256 `385158dd…`, all three copies
-match). Prior v1C.0.1–v1C.0.7 mirrors retained. `/latex-audit` visual pass
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.9.pdf` and
+`public/papers/paper1c_nogo_survey_v1C.0.9.pdf` (md5
+`eab47932a69723802f3644d45b4965f5`, sha256 `b4d73f94…`, all three copies
+match). Prior v1C.0.1–v1C.0.8 mirrors retained. `/latex-audit` visual pass
 on the recompile: changed pages rendered at 110 DPI — title block
-(v1C.0.8 stamp), Fig. 1 (harmonized R4 node label, no overflow), p. 7
-(10⁻³³ figure removed), p. 8 (lever-arm endpoints + β_obs re-attribution),
-p. 13 (neutralized Data & Code prose + planned-deposit sentence,
-footnote at column foot) — no overflow/overlap; no new URLs added (the
-four cited artifact paths unchanged and previously verified to resolve).
+(v1C.0.9 stamp), Sec. I companion paragraph, Fig. 1 caption (p. 4),
+Eq. (2) corrected LHS + Thomson-limit note (p. 6–7), Route-3 full-M_Pl
+tag (p. 8), β_obs significance (p. 9), Table II App-E pointer (p. 10),
+∇·J⁵ anomaly routing (p. 11), Data & Code repin + boundary (p. 13),
+Table III tagged caption (p. 16), new App. E Eqs. E1–E5 (p. 18–19),
+references incl. Kimura/Delbourgo–Salam (p. 19–20) — no
+overflow/overlap; the one new URL (commit tree `c80b7487b01f`) resolves
+(HEAD of origin/main at edit time).
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
@@ -357,14 +431,24 @@ four cited artifact paths unchanged and previously verified to resolve).
    `ROUND_2026-08-07-P1C-v1C.0.7-EXACTPDF-f085023f-R5CONF/P1C_v1C.0.7_R5_truth_audit.md`).
    R5 was NOT clean (6 genuinely-new-real vs a target of 0) → convergence
    NOT reached.
-7. R6 confirmation board (same three active legs, fresh, on the exact
-   v1C.0.8 PDF sha `385158dd…`) — exit test per directive H-refined:
+7. ~~R6 confirmation board~~ DONE 2026-08-06 (on the exact v1C.0.8 PDF
+   sha `385158dd…`: Claude MINOR REVISIONS (1 MAJOR / 8 MINOR) / Grok
+   REJECT / Gemini MAJOR / Perplexity FAILED; 9 genuinely-new-real closed
+   as v1C.0.9 — headline: new App. E carries the contact-coefficient
+   derivation and R1 benchmark self-contained by faithful extraction from
+   the P1A source; see
+   `ROUND_2026-08-07-P1C-v1C.0.8-EXACTPDF-385158dd-R6CONF/P1C_v1C.0.8_R6_truth_audit.md`).
+   R6 was NOT clean (9 genuinely-new-real vs a target of 0) → convergence
+   NOT reached.
+8. R7 confirmation board (same three active legs, fresh, on the exact
+   v1C.0.9 PDF sha `b4d73f94…`) — exit test per directive H-refined:
    0 genuinely-new-real findings across all legs. Pre-submission checklist
    carries: real mechanized enumeration (or keep downgraded framing); ST
    Eq. 58 + quote verification; venue-length condensation; mint the
    version DOI / updated archival deposit for the P1C script set at
-   P-round (R2-SO-2; restated in-paper by the R5 closure).
-8. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
+   P-round (R2-SO-2 / R6-RF-9); refereed-companion gate for the
+   cited-only companion results (R6-GNR-1 disposition).
+9. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 

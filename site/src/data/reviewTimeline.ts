@@ -58,6 +58,44 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r6-confirmation-board-truth-audit-closure-2026-08-06",
+    dateISO: "2026-08-06",
+    kind: "internal-api",
+    title:
+      "P1C R6 confirmation board on the exact v1C.0.8 PDF — Claude MINOR REVISIONS (1 MAJOR / 8 MINOR) / Grok REJECT / Gemini MAJOR REVISIONS; the recurring companion-dependency demand closed with a new self-contained Appendix E; 9 genuinely-new items truth-audited and closed as v1C.0.9; R7 confirmation required",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.8 PDF (sha 385158dd): Claude Opus INT MINOR REVISIONS (1 MAJOR / 8 MINOR, with an independent verification log that again reproduced every load-bearing number, including the Route-3 1.38e-6 integration and the R1 3.5e-69 benchmark), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. Verdict-first truth audit against the R1-R5 disposition ledgers deduplicated the board to a 21-item ledger: 9 genuinely-new-real, closed as v1C.0.9 with zero margin, count, or headline changes. The headline: Claude's M1 and Gemini's M1 sharpened the five-round companion-dependency re-flag into a bounded, closable demand — carry the SHORT load-bearing derivations in-appendix — and that core was closed by a new Appendix E carrying, by faithful extraction from the P1A companion source (arxiv/paper1a_ech_nogo.tex sec:theory and sec:r1_njl) exactly as R1 did for B14/App D, the Cartan/Freidel-Minic-Takeuchi torsion-elimination chain (bivector inverse, FMT Eq. 17 contorsion, Eq. 23 back-substitution, 4piG = kappa/2 normalization bridge) fixing the -(3kappa/16)[gamma^2/(1+gamma^2)] contact coefficient, and the R1 finite-density benchmark arithmetic (kappa n_psi^2 ~ 1.0e-79 eV^4 at 100 cm^-3, 3.6e-69 of rho_Lambda at the companion's (2.3 meV)^4 normalization, 3/16-weighted value included) — nothing invented, credit explicit, with the too-long-to-carry companion results (NJL gap analysis, tensor-sector B14 extension, R4 spectator check) dispositioned deferred-genuine behind honest not-peer-reviewed wording in Sec. I. Also closed: Eq. (2)'s left-hand side corrected to the double-normalized budget ratio its right-hand side actually displays (Gemini pass-2 M2 + Claude m5; the bookkeeping motivation now stated at the display; both contractions still evaluated, margins unchanged); the nabla.J5 disposal corrected to route the gravitational Kimura-Delbourgo-Salam R-Rtilde chiral-anomaly content (present within the minimal field content) to O3, where it is disposed as an exact total derivative (Claude m2; two real references added); the Data & Code commit pin moved to c80b7487b01f, whose copies of all four artifacts are verified identical to head (git-diff receipts), retiring the drift footnote (Claude m4), with the theory_audit prose tag removed and the third-and-fourth-files boundary stated explicitly (Gemini N2+N3); a beta_obs detection-significance sentence (3.6 sigma WMAP+Planck / 2.9 sigma ACT DR6, suppression conclusion insensitive — Claude m6); the Fig. 1 caption attribution restated plainly via the in-figure edge labels (Claude m7 + Grok m4); M_Pl^2 kappa^2 = kappa tagged exact-for-reduced-mass at both App-A1/Table-III sites and the Route-3 1.4e-6 tagged full-M_Pl (Claude m3, bounded); and the alpha_em Thomson-limit convention stated (Grok m3). 10 re-flags of R1-R5-dispositioned content (version stamp, abstract-tier framing, wholesale absorb-or-withdraw, venue length, novelty accounting, O(1)-normalization labels, taxonomy vocabulary, abstract arithmetic trace, mint-the-DOI-now, and journal-version equation-number checks — the last two carried deferred-genuine). 2 falsified with receipts: Grok M4's claim that the sole Tier-I theorem is 'only cited' (App. D has carried the full statement and 4-step proof since v1C.0.4 — compiled p. 18), and Gemini N4's claim that the 2026 dates are anachronistic typos for 2024 (the current date is 2026-08-06). Grok M3's attribution of the one-loop inputs to the unrefereed companion also falsified in part: the Route-2/3 loop structure is imported from published Shapiro-Teixeira (CQG 31, 185002) and Benedetti-Speziale (J. Phys. Conf. Ser. 360, 012011), not from [1]. All closures landed as v1C.0.9 (20 pp, 0 errors / 0 undef / 0 overfull, visual audit pass on changed pages, mirrors byte-identical). Because R6 surfaced genuinely-new-real findings, the paper is NOT converged: an R7 confirmation board on the exact v1C.0.9 PDF is required (directive H-refined).",
+    keyTakeaways: [
+      "P1C v1C.0.9 served PDF: 20 pages · SHA-256 b4d73f94621035ebf5f2e724e714c2f19283835748c7c577905a4e02cf890c47 · md5 eab47932a69723802f3644d45b4965f5",
+      "The five-round companion-dependency re-flag finally produced a closable core: new Appendix E carries the torsion-elimination contact coefficient and the R1 benchmark arithmetic self-contained, faithfully extracted from the P1A source with explicit credit (never invented) — the App-D/B14 precedent applied to the last load-bearing Tier-II imports",
+      "Eq. (2) now displays the ratio it computes: the left-hand side is the double-normalized budget ratio (observed angle x R4-fitted coupling strength), closing Gemini's as-written-false equality finding without touching any margin",
+      "The nabla.J5 anomaly disposal is now technically correct: the gravitational R-Rtilde (Kimura-Delbourgo-Salam) content routes to O3 and dies as a total derivative; F-Ftilde still requires non-minimal field content",
+      "Commit pin repinned to c80b7487b01f (artifact copies identical to head, verified) — the R3-era drift footnote is retired, not merely re-worded",
+      "Grok M4 falsified: App. D has carried the full B14 statement + proof since v1C.0.4; Gemini N4 falsified: 2026 is the current year",
+      "R6 was NOT clean (9 genuinely-new) — R7 confirmation board on the exact v1C.0.9 PDF is required before convergence can be claimed",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.8-EXACTPDF-385158dd-R6CONF/P1C_claude_r6_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.8-EXACTPDF-385158dd-R6CONF_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.8-EXACTPDF-385158dd-R6CONF_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "R6 truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.8-EXACTPDF-385158dd-R6CONF/P1C_v1C.0.8_R6_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.9 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.9.pdf" },
+    ],
+  },
+  {
     id: "p1c-r5-confirmation-board-truth-audit-closure-2026-08-06",
     dateISO: "2026-08-06",
     kind: "internal-api",
