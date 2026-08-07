@@ -88,6 +88,36 @@
 %   outside the integral; the full term is dim +4). (8) Ref. [12]
 %   rendering fixed (stray "arXiv preprint" journal field removed).
 %
+% v1C.0.7 (2026-08-06): R4 confirmation-board closures (Claude
+%   minor-revisions 0 MAJOR / Grok REJECT / Gemini ACCEPT-with-minor on
+%   the exact v1C.0.6 PDF sha fc23872d; Perplexity FAILED). 10
+%   genuinely-new items closed: Table II R3 attribution; Sec. V.a tier
+%   wording; benchmark rho_Lambda normalization flag (3.6 vs 3.9e-69
+%   both correct); branch letters I/K never-assigned note; acknowledgments
+%   rephrased builds-on-published-work; Fig. 1 per-barrier arrow labels;
+%   Zenodo-deposit boundary stated; audit-trail parenthetical -> footnote;
+%   App. C inline report path -> Data & Code list; abstract "one or more
+%   of the four routes".
+%
+% v1C.0.8 (2026-08-06): R5 confirmation-board closures (Claude ACCEPT
+%   0 MAJOR 3 MINOR / Grok REJECT / Gemini MAJOR on the exact v1C.0.7
+%   PDF sha f085023f; Perplexity FAILED). Genuinely-new items:
+%   (1) Data & Code process-prose neutralized (no revision/date
+%   narration; "adjudicates" -> "verifies"; planned pre-publication
+%   archival deposit for this survey's scripts stated; DOI minting
+%   deferred to packaging). (2) beta_obs = 0.342+-0.094 deg attributed
+%   to Eskilt-Komatsu WMAP+Planck [11], with Minami-Komatsu Planck-2018
+%   first extraction (0.35+-0.14 deg) cited separately. (3) Lever-arm
+%   lower edge motivated: ln(mu_GUT/mu_IR) = 30 from mu_IR ~ 1 TeV cut
+%   (ln 1e13 = 30); upper edge 36.8 from mu_IR ~ 1 GeV. (4) Unreconstructible
+%   ~1e-33 alternative-ordering figure removed (labeled loose/unused;
+%   no derivation exists in this paper or the frozen monolith --
+%   never-fabricate). (5) Fig. 1 R4 node label harmonized to
+%   "naturalness/expl. deficit" (matches Table I / Sec. IV C / Sec. VI).
+%   Gemini's Fierz (1,3)=1 claim re-falsified by exact-rational
+%   recomputation of the PDF-printed matrix: F_c^2 = identity on all 25
+%   entries (rasterization misread, same root cause as R3).
+%
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 \documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
@@ -127,7 +157,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.7}
+\newcommand{\paperVersion}{v1C.0.8}
 \newcommand{\paperTimestamp}{August 6, 2026}
 
 \begin{document}
@@ -459,7 +489,7 @@ the ECH analysis. \textbf{Structural/philosophical observations} (Barrier
 \node[route] (R1) at ( 1.6, 0.0) {R1 --- NJL\\(Planck-suppressed)};
 \node[route] (R2) at ( 4.8, 0.0) {R2 --- One-loop\\(parity $+$ Planck)};
 \node[route] (R3) at ( 8.0, 0.0) {R3 --- Immirzi\\(mass-lock)};
-\node[route] (R4) at (11.0, 0.0) {R4 --- CMB parity\\(naturalness)};
+\node[route] (R4) at (11.0, 0.0) {R4 --- CMB parity\\(naturalness / expl.~deficit)};
 
 %% --- Arrows: Foundations -> Routes (drawn before the branch row, so any
 %%     crossing segment passes cleanly beneath the branch boxes) ---
@@ -843,8 +873,8 @@ orders of magnitude leaves ${\gtrsim}\,48$ orders of suppression margin,
 so no plausible $\mathcal{O}(1)$--$\mathcal{O}(10^{10})$ normalization
 ambiguity reopens the route. We adopt this contraction as the canonical Route-2 estimate;
 an alternative ordering that contracts the $H_0$ factor with the
-dimensionful coupling differently yields a deliberately loose
-$\sim 10^{-33}$ upper bound, not used in the closure.
+dimensionful coupling differently yields only a far looser upper
+bound and is not used in the closure.
 The canonical-bound conclusion that the one-loop induced $\beta$ is
 amplitude-suppressed many orders of magnitude below the observed
 WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up) is robust
@@ -948,8 +978,11 @@ $\Delta\gamma/\gamma \approx (N_F^L-N_F^R)\,
 \ln(\mu_{\rm GUT}/\mu_{\rm IR})/(12\pi^2)$; with a net chiral count
 $(N_F^L-N_F^R)=\mathcal{O}(1)$ and a GUT-to-IR lever arm
 $\ln(\mu_{\rm GUT}/\mu_{\rm IR})\approx 30$--$37$
-($\mu_{\rm GUT}\sim 10^{16}$, $\mu_{\rm IR}\sim 1\,\text{GeV}$,
-$\ln 10^{16}\approx 36.8$),
+($\mu_{\rm GUT}\sim 10^{16}\,\text{GeV}$ throughout: the upper edge from
+running down to $\mu_{\rm IR}\sim 1\,\text{GeV}$, $\ln 10^{16}\approx
+36.8$; the lower edge from cutting the flow at $\mu_{\rm IR}\sim
+1\,\text{TeV}$, i.e.\ crediting only running above collider-probed
+scales, $\ln 10^{13}\approx 30$),
 this is numerically $\Delta\gamma/\gamma \approx 0.25$--$0.31$
 (a few$\,\times 10^{-1}$; e.g.\ $32/(12\pi^2)\approx 0.27$).
 We therefore adopt the larger $\Delta\gamma/\gamma \sim 0.3$ as the
@@ -1015,7 +1048,9 @@ axial current, $\mathcal{L}_{\rm CS}\supset
 -\tfrac14(\alpha/M)\,\phi\,\widetilde F_{\mu\nu}F^{\mu\nu}$, producing a
 rotation of the CMB polarization plane (cosmic birefringence). Fitting
 this coupling to the observed WMAP$+$Planck birefringence signal
-$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Minami2020,Eskilt2022}
+$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$ (WMAP$+$Planck~\cite{Eskilt2022};
+the first Planck-2018 extraction reported
+$0.35^\circ\pm0.14^\circ$~\cite{Minami2020})
 (comparable to the independent ACT~DR6 measurement
 $\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025}) gives the anchor value
 $\alpha/M\sim10^{-21}\,\text{GeV}^{-1}$ used above as a numerical input to
@@ -1490,24 +1525,27 @@ to the committed files):
 The first script verifies the two reduction identities of
 Appendix~\ref{app:dim4_completion} (Checks A and D); the second verifies
 the companion paper's Fierz convention (see the convention note in
-Appendix~\ref{app:fierz}); the third independently adjudicates the Fierz
+Appendix~\ref{app:fierz}); the third independently verifies the Fierz
 coefficient identity of Eq.~(\ref{eq:AAdecomp}) by explicit $4\times4$
 Dirac-matrix construction and exact Grassmann-algebra derivation, with
 the fourth file its human-readable report. None of
 the scripts performs the basis enumeration, which rests on the stated
 construction rule. These exact files are frozen at immutable repository
 commit
-\href{https://github.com/Hubify-Projects/bigbounce/tree/9b92721d5d7eb6601ebf48c49379318238b7100b}{\texttt{9b92721d5d7e}}\footnote{A
-later repository revision clarifies the first script's descriptive text
-only; the checks performed and their pass/fail results are identical.}.
+\href{https://github.com/Hubify-Projects/bigbounce/tree/9b92721d5d7eb6601ebf48c49379318238b7100b}{\texttt{9b92721d5d7e}}\footnote{The
+descriptive header text of the first script differs between the pinned
+commit and the current repository head; the checks performed and their
+pass/fail results are identical at both.}.
 The provenance boundary between the two archives is as follows: the
 companion paper and the companion's own verification scripts are
 preserved as an immutable archival deposit under
 \href{https://doi.org/10.5281/zenodo.21481838}{doi:10.5281/zenodo.21481838}
-(CC-BY-4.0, deposited 2026 July 22)~\cite{Golden2026P1a}, whereas the
-2026-08-05 adjudication artifacts listed above post-date that deposit
-and are available at the pinned repository commit only, not within the
-Zenodo deposit.
+(CC-BY-4.0)~\cite{Golden2026P1a}, whereas the two
+\texttt{theory\_audit} verification artifacts listed above are not part
+of that deposit and are available at the pinned repository commit. An
+updated archival deposit containing this survey's own verification
+scripts is planned prior to publication, so that every computational
+artifact cited here is backed by a frozen-release DOI.
 
 %% ============================================================
 %%  ACKNOWLEDGMENTS
