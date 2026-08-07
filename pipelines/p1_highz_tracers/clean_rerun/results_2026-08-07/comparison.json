@@ -1,0 +1,24 @@
+{
+  "comparison_version": 1,
+  "historical_generations": [
+    {
+      "generation_id": "historical-original-17_651_065",
+      "input_rows_reported": 17651065,
+      "status": "frozen release; distinct historical generation",
+      "threshold_count_reported": 195829
+    },
+    {
+      "generation_id": "historical-enhanced-22_504_897",
+      "input_rows_reported": 22504897,
+      "status": "summary-only; parent shards and calibration unrecovered",
+      "threshold_count_reported": 249905
+    }
+  ],
+  "new_generation": {
+    "contract_sha256": "6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf",
+    "generation_id": "clean-rerun-6699d09ff886",
+    "threshold": 5.0,
+    "threshold_count_after_dedup": 52188
+  },
+  "policy": "separate_generations_only_no_count_targeting_or_merging"
+}

@@ -1,0 +1,16 @@
+{
+  "comparison_policy": "new counts are a new generation; never merge or tune to historical counts",
+  "contract_sha256": "6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf",
+  "deduplication": {
+    "identity_column": "targetid",
+    "timing": "before threshold counts",
+    "winner_rule": "last row in deterministic lexical-shard then row order"
+  },
+  "duplicate_rows_removed": 878740,
+  "generation_id": "clean-rerun-6699d09ff886",
+  "raw_rows": 28425963,
+  "summary_version": 1,
+  "threshold": 5.0,
+  "threshold_count_after_dedup": 52188,
+  "unique_targetids": 27547223
+}
