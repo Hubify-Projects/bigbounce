@@ -1,11 +1,65 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.6 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.7 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R3 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 8 GENUINELY-NEW-REAL
-FINDINGS CLOSED (v1C.0.6). NOT CONVERGED — R4 confirmation board on the
-exact v1C.0.6 PDF is REQUIRED.** The R3 confirmation board ran 2026-08-06 on
+**Status: R4 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 10 GENUINELY-NEW-REAL
+FINDINGS CLOSED (v1C.0.7). NOT CONVERGED — R5 confirmation board on the
+exact v1C.0.7 PDF is REQUIRED (directive H-refined: the loop exits only at
+0 genuinely-new-real across all legs).** The R4 confirmation board ran on
+the exact v1C.0.6 PDF (sha `fc23872d…`), three legs with raw receipts.
+
+**R4 verdict matrix (2026-08-06/07, exact v1C.0.6 PDF):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **minor-revisions** (0 MAJOR / 8 MINOR) |
+| Grok API | grok-4.3 | **REJECT** |
+| Gemini API | gemini-3.1-pro-preview | **ACCEPT WITH MINOR CORRECTIONS** — Gemini's FIRST ACCEPT-class verdict on P1C (MAJOR→ACCEPT flip) |
+| Perplexity | (optional leg) | FAILED (quota) — failure record, never a verdict |
+
+The verdict-first truth audit against the R1+R2+R3 disposition ledgers
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.6-EXACTPDF-fc23872d-R4CONF/P1C_v1C.0.6_R4_truth_audit.md`)
+deduplicated the board to **21 canonical items: 10 genuinely-new-real
+(closed in v1C.0.7), 10 re-flags of R1/R2/R3-dispositioned content, 1
+falsified with source citation** (Gemini's floating-paths nit — the paths
+are monospace hyperlinked \artifact links in a set-off block). All 10
+closures are wording/attribution/provenance-grade; **zero numeric, margin,
+count, or headline changes**: (1) Table II R3 row re-attributed — the
+deliberately-loose bound is the DKS-motivated chiral-count ansatz, not
+Benedetti–Speziale, whose integrated flow is the separate far-smaller
+derived estimate; (2) §V.a "R2–R3 are Tier-III" aligned with Table II's
+(II)+(III) records via an amplitude-vs-structural-leg clause; (3) the R1
+benchmark mantissa dispute (Claude m3: recomputed 3.9×10⁻⁶⁹ vs quoted
+3.6×10⁻⁶⁹) **adjudicated with recomputation receipts — BOTH values
+correct**, a ρ_Λ-normalization difference (P1A's published (2.3 meV)⁴ vs
+this survey's App-A (2.25 meV)⁴; κn_ψ² = 9.954×10⁻⁸⁰ eV⁴ reproduces P1A's
+own 3.5571×10⁻⁶⁹/68.45-order ledger exactly), so the 3.6 quote is
+faithful to the cited P1A anchor and the §II convention flag now states
+both inputs (≈68 orders either way); (4) Fig. 1 Branch-H arrows labeled
+per-barrier in the drawing (B8/B14 vs B14 fan); (5) branch-letter gaps
+disclosed (I, K never assigned — verified against the frozen monolith);
+(6) Gemini's MAJOR Zenodo-timeline contradiction closed by stating the
+archive boundary explicitly (the 2026-08-05 adjudication artifacts
+post-date the 2026-07-22 deposit and live at pinned commit `9b92721d5d7e`
+only — contents verified by git ls-tree); (7) the version-history
+parenthetical moved to a footnote (disclosure preserved); (8) App-C
+inline audit-report tag relocated to Data & Code Availability (.md report
+now listed); (9) acknowledgments rephrased to builds-on-published-work
+form with citations + no-endorsement sentence; (10) abstract "each
+closing a specific route" → "one or more of the four routes" (B14 spans
+all four). Re-verified this round though only re-flagged: ST/BS one-loop
+coefficient transcriptions vs fresh ar5iv fetches of arXiv:1402.4854
+(Eqs. 41–42: α₄, Ω₄₄, Ω₂₄) and arXiv:1111.0884 (Eq. 7: 23γ²+5) — all
+exact. v1C.0.7: 18 pp, 0 errors / 0 undef / 0 overfull, visual audit
+pass, mirrors byte-identical (md5 `a75934be…`, SHA-256 `f085023f…`).
+**Convergence read (directive H-refined): R4 surfaced 10 genuinely-new-real
+findings against a target of 0, so the paper is NOT converged and an R5
+confirmation board on the exact v1C.0.7 PDF (sha `f085023f…`) is
+required.** (Calibration context, not verdict-softening: first ACCEPT-class
+verdict on the board; Claude's first 0-MAJOR report; all 10 items
+wording/attribution/provenance-grade; the only MAJOR-labeled item was
+administrative.) Prior-round record follows. The R3 confirmation board ran 2026-08-06 on
 the exact v1C.0.5 PDF (sha `a770491d…`), three legs with raw receipts:
 **Claude Opus INT minor-revisions (1 MAJOR / 7 MINOR) · Grok grok-4.3
 REJECT · Gemini gemini-3.1-pro-preview MAJOR REVISIONS**. The Perplexity leg
@@ -226,12 +280,23 @@ paths previously verified to resolve).
    `ROUND_2026-08-06-P1C-v1C.0.4-EXACTPDF-7ec5f221-R2CONF/P1C_v1C.0.4_R2_truth_audit.md`).
    R2 was NOT clean (7 genuinely-new-real vs a target of 0) → convergence
    NOT reached.
-4. R3 confirmation board (same three active legs, fresh, on the exact
-   v1C.0.5 PDF sha `a770491d…`) — exit test per directive H-refined:
-   0 genuinely-new-real findings. Pre-submission checklist carries: ST
+4. ~~R3 confirmation board~~ DONE 2026-08-06 (on the exact v1C.0.5 PDF sha
+   `a770491d…`: Claude minor-revisions / Grok REJECT / Gemini MAJOR /
+   Perplexity FAILED; 8 genuinely-new-real closed as v1C.0.6). NOT clean.
+5. ~~R4 confirmation board~~ DONE 2026-08-06/07 (on the exact v1C.0.6 PDF
+   sha `fc23872d…`: Claude minor-revisions 0 MAJOR / Grok REJECT / Gemini
+   **ACCEPT WITH MINOR CORRECTIONS** (first ACCEPT) / Perplexity FAILED;
+   10 genuinely-new-real closed as v1C.0.7 — see
+   `ROUND_2026-08-07-P1C-v1C.0.6-EXACTPDF-fc23872d-R4CONF/P1C_v1C.0.6_R4_truth_audit.md`).
+   R4 was NOT clean (10 genuinely-new-real vs a target of 0) → convergence
+   NOT reached.
+6. R5 confirmation board (same three active legs, fresh, on the exact
+   v1C.0.7 PDF sha `f085023f…`) — exit test per directive H-refined:
+   0 genuinely-new-real findings across all legs. Pre-submission checklist
+   carries: real mechanized enumeration (or keep downgraded framing); ST
    Eq. 58 + quote verification; venue-length condensation; mint a version
    DOI for the P1C script set at P-round (R2-SO-2).
-5. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
+7. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 

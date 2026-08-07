@@ -58,6 +58,44 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r4-confirmation-board-truth-audit-closure-2026-08-06",
+    dateISO: "2026-08-06",
+    kind: "internal-api",
+    title:
+      "P1C R4 confirmation board on the exact v1C.0.6 PDF — Gemini ACCEPT WITH MINOR CORRECTIONS (the board's first ACCEPT) / Claude minor-revisions (0 MAJOR) / Grok REJECT; 10 genuinely-new items truth-audited and closed as v1C.0.7; R5 confirmation required",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.6 PDF (sha fc23872d): Claude Opus INT minor-revisions (0 MAJOR / 8 MINOR), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview ACCEPT WITH MINOR CORRECTIONS — the board's first ACCEPT-class verdict on P1C. The Perplexity leg FAILED (quota) and is recorded as failed, never a verdict. Verdict-first truth audit against the R1+R2+R3 disposition ledgers deduplicated the board to a 21-item ledger: 10 genuinely-new-real, all wording/attribution/provenance-grade with zero numeric or margin changes — Table II's R3 row re-attributed (the deliberately-loose bound is the DKS-motivated chiral-count ansatz, not Benedetti-Speziale, whose integrated flow is the separate far-smaller derived estimate); Sec V.a's 'R2-R3 are Tier-III' aligned with Table II's (II)+(III) records via an explicit amplitude-vs-structural-leg clause; the R1 benchmark mantissa dispute ADJUDICATED WITH RECEIPTS — the reviewer's recomputed 3.9e-69 and the quoted 3.6e-69 are BOTH correct, differing only in rho_Lambda normalization ((2.25 meV)^4 vs P1A's published (2.3 meV)^4; kappa*n^2 = 9.954e-80 eV^4 reproduces P1A's comment-block 3.5571e-69 exactly), so the quote is faithful to P1A and the convention flag now states both inputs (~68 orders either way); Fig 1's Branch-H arrows labeled per-barrier in the drawing (B8/B14 on the R1 leg, B14 on the three-route fan) closing the caption-only attribution gap; the H,J,L,M,N,O branch-letter gaps disclosed (I and K never assigned in the historical catalog — verified against the frozen monolith); Gemini's MAJOR provenance-timeline contradiction closed by stating the archive boundary explicitly (the 2026-08-05 adjudication artifacts post-date the 2026-07-22 Zenodo deposit and live at the pinned commit only — commit contents verified by git ls-tree); the version-history parenthetical moved to a footnote; the App-C inline audit-report tag relocated to Data & Code Availability (with the .md report now listed); acknowledgments rephrased to builds-on-published-work form with citations (no involvement/endorsement implied); and the abstract's 'each closing a specific route' corrected to 'one or more of the four routes' (B14 spans all four). 10 re-flags of R1/R2/R3-dispositioned content (including Grok's four recurrent ESSENTIAL/MAJOR demands and the imported-coefficient due-diligence ask — re-verified anyway this round: ST alpha4/Omega44/Omega24 and BS (23gamma^2+5) all match arXiv:1402.4854 Eqs. 41-42 and arXiv:1111.0884 Eq. 7 exactly), 1 falsified with source citation (Gemini's floating-paths nit — the paths are monospace hyperlinked artifact links in a set-off block). All closures landed as v1C.0.7 (18 pp, 0 errors / 0 undef / 0 overfull, visual audit pass on changed pages, mirrors byte-identical). Because R4 surfaced genuinely-new-real findings, the paper is NOT converged: an R5 confirmation board on the exact v1C.0.7 PDF is required (directive H-refined).",
+    keyTakeaways: [
+      "P1C v1C.0.7 served PDF: 18 pages · SHA-256 f085023fea37f4d1fa053fc30d04d5006c23f5998e8edebe683900a955048397 · md5 a75934be584614d515c5c08952d477bd",
+      "Gemini flipped MAJOR REVISIONS -> ACCEPT WITH MINOR CORRECTIONS — the first ACCEPT-class verdict on P1C; Claude dropped to 0 MAJOR",
+      "The 3.6e-69 vs 3.9e-69 benchmark dispute was adjudicated with recomputation receipts: both values correct, rho_Lambda normalization difference ((2.3 meV)^4 companion vs (2.25 meV)^4 App-A); the paper now states both",
+      "ST/BS one-loop coefficient transcriptions re-verified against the arXiv sources this round — all exact (alpha4, Omega44, Omega24, 23gamma^2+5)",
+      "All 10 closures are wording/attribution/provenance-grade; no number, margin, count, or headline claim changed",
+      "Perplexity leg FAILED (quota) — preserved as a failure record, never counted as a verdict",
+      "R4 was NOT clean (10 genuinely-new) — R5 confirmation board on the exact v1C.0.7 PDF is required before convergence can be claimed",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.6-EXACTPDF-fc23872d-R4CONF/P1C_claude_r4_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.6-EXACTPDF-fc23872d-R4CONF_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.6-EXACTPDF-fc23872d-R4CONF_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "R4 truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.6-EXACTPDF-fc23872d-R4CONF/P1C_v1C.0.6_R4_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.7 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.7.pdf" },
+    ],
+  },
+  {
     id: "p1c-r3-confirmation-board-truth-audit-closure-2026-08-06",
     dateISO: "2026-08-06",
     kind: "internal-api",
