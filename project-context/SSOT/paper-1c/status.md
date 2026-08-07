@@ -1,12 +1,81 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.9 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.10 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R6 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 9 GENUINELY-NEW-REAL
-FINDINGS CLOSED (v1C.0.9). NOT CONVERGED — R7 confirmation board on the
-exact v1C.0.9 PDF is REQUIRED (directive H-refined: the loop exits only at
-0 genuinely-new-real across all legs).** The R6 confirmation board ran on
+**Status: R7 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 7 GENUINELY-NEW-REAL
+FINDINGS CLOSED (v1C.0.10). NOT CONVERGED — R8 confirmation board on the
+exact v1C.0.10 PDF is REQUIRED (directive H-refined: the loop exits only at
+0 genuinely-new-real across all legs).** The R7 confirmation board ran on
+the exact v1C.0.9 PDF (sha `b4d73f94…`), three legs with raw receipts.
+
+**R7 verdict matrix (2026-08-06, exact v1C.0.9 PDF, round dir label 2026-08-07):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **MINOR REVISIONS** (0 MAJOR / 8 MINOR) — 15-item verification log independently recomputed EVERY displayed equation and numeric (both Route-2 contractions; the full BS flow integration to 1.38×10⁻⁶; the ST ratio; B12 endpoints; the App. A hierarchy/e-fold chain; the Fierz involution by direct multiplication; the complete App. E chain E1–E5; counts; significances; citation spot-checks) — zero numeric errors found |
+| Grok API | grok-4.3 | **REJECT** |
+| Gemini API | gemini-3.1-pro-preview | **MAJOR REVISIONS** |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+The verdict-first truth audit against the R1–R6 disposition ledgers
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.9-EXACTPDF-b4d73f94-R7CONF/P1C_v1C.0.9_R7_truth_audit.md`)
+deduplicated the board to **21 canonical items: 7 genuinely-new-real
+(closed in v1C.0.10), 13 re-flags of R1–R6-dispositioned content (two with
+partial falsifications — the two load-bearing Tier-II inputs Grok demands
+are in App. E of the very PDF under review, and the R4 anchor's algebraic
+origin has been in-paper since v1C.0.6; one re-falsified — the Tier-I
+standalone claim, disproved against the compiled App. D proof; one closed
+by verification — the ACT DR6 citation checked against the live arXiv
+record: title, authors, 0.215°±0.074°, 2.9σ, exact match), 1 freshly
+falsified with receipts** (Gemini N2's "space before the colon" in App. A —
+the tex has no space and the 300-DPI render shows only the standard italic
+correction; pdftotext inserts the spurious space at the italic-to-upright
+transition, the same extraction-artifact family as the R3/R5
+stacked-fraction misreads). All 7 closures are wording/notation/
+presentation-grade; **zero numeric, margin, count, or headline changes**:
+(1) the B1 tuning ratio was literally INVERTED — δm_T²/m_T² with radiative
+δm_T² ∼ M_Pl² and m_T ∼ H₀ evaluates to 10⁺¹²², not 10⁻¹²² (inherited
+verbatim from the frozen monolith line 3714) — now stated as a
+cancellation to one part in (M_Pl/H₀)² ∼ 10¹²² with the residual
+m_T²/δm_T² ∼ 10⁻¹²²; (2) the Sec. V closure item (b) no longer calls
+κ²(J⁵·J⁵) "parity-odd" (its Fierz image is parity-even per the paper's
+own B8/App. B; the parity-odd label routed to the pre-reduction
+ε-contracted densities); (3) the |Ω₄₄/α₄| range floor corrected
+O(1)–O(5) → O(3)–O(5) (the printed formula is bounded below by
+378/120 ≈ 3.2 for all real γ — a strengthening); (4) the Route-2 one-loop
+numerator, previously asserted in prose, exhibited as an explicit
+unnumbered intermediate display assembling (α_em/4π)(H₀/M_Pl) from the
+stated ingredients (∂ϑ ∼ H₀², /M_Pl, Hubble-time accumulation; dropped
+conservative 1/16π² and β(γ) factors named; unnumbered so no downstream
+renumbering); (5) the 3.6σ/2.9σ values qualified as obtained from
+different datasets and distinct null procedures and not directly
+comparable as statistical weights (closure-insufficiency of the R6
+significance sentence — Gemini E1); (6) the Fig. 1 caption now states the
+entries' mixed evidentiary status (sole Tier-I theorem B14; five general
+naturalness/classification entries; Table II pointer) — the bounded
+kernel of Grok M3, whose wholesale tier-segregated redraw is a re-flag;
+(7) the Data & Code artifact block set footnotesize with unbreakable
+boxes so neither `theory_audit` path breaks mid-filename, and the
+App. E.2 whitespace gap closed by the reflow. Re-flags: version stamp +
+future-date kernel (re-falsified against the calendar), wholesale
+absorb-or-withdraw, Tier-I-standalone (re-falsified), sensitivity-table
+demand, Fig. 1 redraw, abstract endpoint pointer, concept-DOI claim
+(falsified in R2), mint-the-DOI-now (deferred-genuine, Houston-gated),
+R4-derivation self-containment, `theory_audit` paths, abstract length,
+App-A consolidation (D/P-round), ACT DR6 citation check (closed by
+verification). v1C.0.10: 20 pp, 0 errors / 0 undef / 0 overfull, visual
+audit pass on changed pages (1, 4, 5, 7, 9, 12, 13, 19, 20), mirrors
+byte-identical (md5 `049ca009…`, SHA-256 `d8b9db8e…`).
+**Convergence read (directive H-refined): R7 surfaced 7 genuinely-new-real
+findings against a target of 0, so the paper is NOT converged and an R8
+confirmation board on the exact v1C.0.10 PDF (sha `d8b9db8e…`) is
+required.** (Calibration context, not verdict-softening: the Claude leg's
+second 0-MAJOR report verified every recomputable equation with zero
+numeric errors; all 7 GNR items are wording/notation/presentation-grade;
+6 of 7 are single-leg items; 2 are closure-insufficiencies of earlier
+fixes; the GNR count is trending 15 → 7 → 8 → 10 → 6 → 9 → 7.)
+Prior-round record follows. The R6 confirmation board ran on
 the exact v1C.0.8 PDF (sha `385158dd…`), three legs with raw receipts.
 
 **R6 verdict matrix (2026-08-06, exact v1C.0.8 PDF, round dir label 2026-08-07):**

@@ -58,6 +58,43 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r7-confirmation-board-truth-audit-closure-2026-08-06",
+    dateISO: "2026-08-06",
+    kind: "internal-api",
+    title:
+      "P1C R7 confirmation board on the exact v1C.0.9 PDF — Claude MINOR REVISIONS (0 MAJOR / 8 MINOR, every recomputable equation verified) / Grok REJECT / Gemini MAJOR REVISIONS; 7 genuinely-new items truth-audited and closed as v1C.0.10; R8 confirmation required",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.9 PDF (sha b4d73f94): Claude Opus INT MINOR REVISIONS (0 MAJOR / 8 MINOR, with a 15-item verification log that independently recomputed every displayed equation and numeric — including the full Benedetti-Speziale flow integration to 1.38e-6, the complete App. E chain, the Fierz involution by direct row-column multiplication, and every headline margin), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. Verdict-first truth audit against the R1-R6 disposition ledgers deduplicated the board to a 21-item ledger: 7 genuinely-new-real, closed as v1C.0.10 with zero margin, count, or headline changes — all wording/notation/presentation-grade. Closed: (1) the B1 tuning ratio was literally inverted (delta-m_T^2/m_T^2 with radiative delta-m_T^2 ~ M_Pl^2 and m_T ~ H_0 evaluates to 1e+122, not 1e-122; inherited verbatim from the frozen monolith line 3714) — now stated as a cancellation to one part in (M_Pl/H_0)^2 ~ 1e122 with the residual m_T^2/delta-m_T^2 ~ 1e-122; (2) the Sec. V closure item (b) called kappa^2(J5.J5) 'parity-odd' though the paper's own B8 and App. B establish the Fierz image is parity-even — label corrected, with the parity-odd label routed to the pre-reduction epsilon-contracted densities; (3) the Omega44/alpha4 illustrative range floor corrected from O(1)-O(5) to O(3)-O(5) (the printed formula is bounded below by 378/120 ~ 3.2 for all real gamma); (4) the Route-2 one-loop numerator, previously asserted in prose, is now exhibited as an explicit unnumbered intermediate display assembling (alpha_em/4pi)(H_0/M_Pl) from the stated ingredients (partial-theta ~ H_0^2, division by M_Pl, Hubble-time accumulation), with the conservatively-dropped 1/16pi^2 and beta(gamma) factors named; (5) the 3.6/2.9-sigma detection-significance values are now qualified as obtained from different datasets and distinct null procedures and not directly comparable as statistical weights (closure-insufficiency of the R6 significance sentence, Gemini E1); (6) the Fig. 1 caption now states the entries' mixed evidentiary status (sole Tier-I theorem B14; five entries general naturalness/classification arguments) with a Table II pointer — the bounded kernel of Grok M3, whose wholesale tier-segregated redraw demand is a re-flag of the dispositioned taxonomy/novelty items; (7) the Data & Code artifact block set at footnotesize with unbreakable boxes so neither theory_audit path breaks mid-filename, and the App. E.2 whitespace gap closed by the reflow. 13 re-flags of R1-R6-dispositioned content (version stamp + the future-date kernel refalsified against the calendar, absorb-or-withdraw self-containment, Tier-I-standalone refalsified against the compiled App. D proof, sensitivity-table demand, Fig. 1 redraw, abstract endpoint pointer, concept-DOI claim falsified in R2, mint-the-DOI-now, R4-derivation self-containment (the two-sentence algebraic origin has been in-paper since v1C.0.6), theory_audit paths, abstract length, App-A consolidation, and the ACT DR6 citation check — the last CLOSED BY VERIFICATION this round against the live arXiv record: title, authors, 0.215+-0.074 deg, 2.9 sigma, exact match). 1 falsified with fresh receipts: Gemini N2's 'unnecessary space before the colon' in App. A — the tex has no space and the 300-DPI render shows only the standard italic correction (pdftotext inserts a spurious space at the italic-to-upright transition; same extraction-artifact family as the R3/R5 stacked-fraction misreads). All closures landed as v1C.0.10 (20 pp, 0 errors / 0 undef / 0 overfull, visual audit pass on pages 1, 4, 5, 7, 9, 12, 13, 19, 20, mirrors byte-identical). Because R7 surfaced genuinely-new-real findings, the paper is NOT converged: an R8 confirmation board on the exact v1C.0.10 PDF is required (directive H-refined).",
+    keyTakeaways: [
+      "P1C v1C.0.10 served PDF: 20 pages · SHA-256 d8b9db8e4b2441530feba1539498d90c08fce8ba861bcbfa84ab4e268528defd · md5 049ca0099b5eaef444a3c791b8b024a5",
+      "First round with a genuine inverted-formula catch: the B1 tuning ratio delta-m^2/m^2 ~ 1e-122 was upside-down as literally written (monolith-inherited) — now the cancellation statement it always meant",
+      "The Claude leg's 0-MAJOR report recomputed every checkable equation in the paper, including the full App. E extraction chain and the Fierz involution — zero numeric errors found anywhere",
+      "Gemini's colon-spacing nit falsified against the 300-DPI render (italic correction, extraction artifact); the ACT DR6 citation verified against the live arXiv record — exact match on authors, identifier, value, and significance",
+      "6 of the 7 closures are single-leg wording/caption/layout items; the only new display is a faithful assembly of already-stated ingredients (never-fabricate respected)",
+      "R7 was NOT clean (7 genuinely-new) — R8 confirmation board on the exact v1C.0.10 PDF is required before convergence can be claimed",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.9-EXACTPDF-b4d73f94-R7CONF/P1C_claude_r7_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.9-EXACTPDF-b4d73f94-R7CONF_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.9-EXACTPDF-b4d73f94-R7CONF_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "R7 truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.9-EXACTPDF-b4d73f94-R7CONF/P1C_v1C.0.9_R7_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.10 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.10.pdf" },
+    ],
+  },
+  {
     id: "p1c-r6-confirmation-board-truth-audit-closure-2026-08-06",
     dateISO: "2026-08-06",
     kind: "internal-api",
