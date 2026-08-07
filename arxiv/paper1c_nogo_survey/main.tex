@@ -118,6 +118,31 @@
 %   recomputation of the PDF-printed matrix: F_c^2 = identity on all 25
 %   entries (rasterization misread, same root cause as R3).
 %
+% v1C.0.9 (2026-08-06): R6 confirmation-board closures (Claude
+%   minor-revisions 1 MAJOR 8 MINOR / Grok REJECT / Gemini MAJOR on the
+%   exact v1C.0.8 PDF sha 385158dd; Perplexity FAILED). Genuinely-new
+%   items: (1) New App. E carries the two remaining load-bearing Tier-II
+%   companion inputs self-contained by faithful extraction from P1A
+%   (arxiv/paper1a_ech_nogo.tex sec:theory + sec:r1_njl): the
+%   Cartan/FMT torsion-elimination chain giving the -(3kappa/16)
+%   [gamma^2/(1+gamma^2)] contact coefficient, and the R1 finite-density
+%   benchmark arithmetic (kappa n_psi^2 ~ 1e-79 eV^4, ratio 3.6e-69);
+%   nothing invented, per the App-D/B14 precedent. (2) Eq. (2) LHS
+%   corrected to the double-normalized budget ratio it actually displays
+%   (Gemini pass-2 M2 + Claude m5); bookkeeping motivation stated at the
+%   display. (3) nabla.J5 disposal now routes the gravitational
+%   (Kimura-Delbourgo-Salam) R.Rtilde anomaly content to O3 (Claude m2;
+%   refs added). (4) Data & Code pin moved to commit c80b7487b01f whose
+%   artifact copies are identical to head (drift footnote retired);
+%   theory_audit prose tag removed; which-two-files clarified.
+%   (5) beta_obs detection-significance sentence (3.6 sigma / 2.9 sigma).
+%   (6) Fig. 1 caption attribution stated plainly via the edge labels.
+%   (7) M_Pl^2 kappa^2 = kappa tagged exact-for-reduced-mass at both
+%   sites; Route-3 1.4e-6 tagged full-M_Pl. (8) alpha_em Thomson-limit
+%   convention stated. Grok M4 ("App. D only cites the theorem")
+%   falsified against the compiled App. D proof; Gemini N4 (2026 dates
+%   "anachronistic") falsified against the calendar.
+%
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 \documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
@@ -157,7 +182,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.8}
+\newcommand{\paperVersion}{v1C.0.9}
 \newcommand{\paperTimestamp}{August 6, 2026}
 
 \begin{document}
@@ -261,7 +286,18 @@ Cartan elimination and the minimal contact operator, a regulated mean-field
 NJL check of the Route-1 condensate channel, the zero-spin-branch
 perturbation-transparency theorem, and a Fierz-rearrangement convention
 appendix with its released verification script; we cite those results
-rather than re-deriving them. The present survey contributes the material
+rather than re-deriving them, and the short derivations a referee needs
+in order to verify this survey's quantitative claims from this manuscript
+alone --- the torsion-elimination chain fixing the
+$-(3\kappa/16)[\gamma^2/(1+\gamma^2)]$ contact coefficient and the R1
+finite-density benchmark arithmetic --- are additionally carried
+self-contained in Appendix~\ref{app:companion_inputs}, following the same
+faithful-extraction convention as Appendix~\ref{app:transparency}. The
+companion results that remain cited-only (the mean-field NJL gap-equation
+analysis, the tensor-sector extension of the transparency theorem, and
+the R4 spectator-ALP consistency check) are used here only with explicit
+not-peer-reviewed labeling, and their refereeing is part of the
+companion's own publication path rather than of this survey's. The present survey contributes the material
 the companion does not publish: the systematic barrier catalog
 (Sec.~\ref{sec:barriers}, Table~\ref{tab:barriers},
 Fig.~\ref{fig:barrier_map}), the Route-2/Route-3 amplitude-budget closures
@@ -379,10 +415,11 @@ entirely by $\kappa$ and $\gamma$; the companion paper derives this
 elimination in full and obtains the resulting minimal contact operator,
 $-(3\kappa/16)[\gamma^2/(1+\gamma^2)]\,(J^5)^2$, together with its
 mean-field vacuum-condensate analysis (Route~1 of the four-route
-enumeration below)~\cite{Golden2026P1a}. We do not repeat that derivation
-here; this survey begins from its result and extends the same setup to
-the remaining routes and to the barrier catalog that constrains all of
-them.
+enumeration below)~\cite{Golden2026P1a}. The elimination chain and the
+resulting coefficient are carried compactly, faithful to the companion,
+in Appendix~\ref{app:companion_inputs}; this survey begins from that
+result and extends the same setup to the remaining routes and to the
+barrier catalog that constrains all of them.
 
 We enumerate four minimal-ECH channels through which the bounce-scale
 torsion sector could in principle source late-time dark energy: R1 (the
@@ -531,12 +568,12 @@ observational-channel barriers), grouped into four boxes --- Branch~H
 (B8, B14), Branch~J (B9), Branches~L/M (B10--B12), and Branches~N/O
 (B13). Bottom row: the four closed dark-energy routes R1--R4; all four
 routes are closed, giving 13 distinct mechanism-class constraints. Arrows
-indicate which barrier classes constrain each route; Branch~H carries
-arrows to all four routes because B14 (perturbation transparency)
-constrains R1--R4, while its co-resident B8 constrains R1 only --- the
-in-figure labels record this per-barrier attribution (the upper Branch-H
-arrow to R1 carries both B8 and B14; the lower three-route fan is B14
-alone), which is otherwise not resolved at box granularity. The branch
+indicate which barrier classes constrain each route. Branch~H carries
+arrows to all four routes; the italic in-figure edge labels give its
+per-barrier attribution directly: the upper Branch-H arrow to R1 is
+driven by B8 and B14 together (label ``B8, B14''), while the lower fan
+to R2, R3, and R4 is driven by B14 (perturbation transparency) alone
+(label ``B14''). The branch
 letters are inherited unchanged from the historical catalog, which never
 assigned the letters I or K; no branch entries have been removed. B14
 (the ECH perturbation-gate closure) sits in Branch~H and
@@ -828,15 +865,24 @@ $\partial_\mu\vartheta_{\rm NY} \sim H_0^2 \sim 10^{-66}\,\text{eV}^2$ at
 the present epoch is substituted (the cosmological Nieh--Yan pseudoscalar,
 of dimension $+1$ and Hubble-scale amplitude, evolving on the Hubble
 time), the induced birefringence accumulated between
-recombination and today is, in the dimensionless ratio
-$\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs}$,
+recombination and today is stated as the dimensionless budget ratio
 \begin{align}\label{eq:r2_ratio}
-\frac{\Delta\theta_{\rm one\text{-}loop}}{\Delta\theta_{\rm obs}}
+\frac{\Delta\theta_{\rm one\text{-}loop}}{\beta_{\rm obs}\,\bigl[M_{\rm Pl}(\alpha/M)\bigr]}
 &\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0/M_{\rm Pl}}{M_{\rm Pl}\,(\alpha/M)\,\beta_{\rm obs}}\nonumber\\
 &\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0}{M_{\rm Pl}}\,\frac{M}{\alpha\,M_{\rm Pl}\,\beta_{\rm obs}}\,,
 \end{align}
-where $\alpha_{\rm em}/(4\pi) \approx 6 \times 10^{-4}$ (more precisely
-$5.8\times 10^{-4}$), rounded \emph{up} to $10^{-3}$ in the explicit
+whose left-hand side normalizes the one-loop amplitude \emph{both} by
+the observed angle $\Delta\theta_{\rm obs}=\beta_{\rm obs}$ \emph{and}
+by the dimensionless strength $M_{\rm Pl}(\alpha/M)\sim10^{-2}$ of the
+R4-fitted coupling that reproduces that angle: the double normalization
+states the suppression relative to the fitted-coupling benchmark, the
+weaker (more conservative) of the two available normalizations, and both
+normalizations are evaluated explicitly below.
+Here $\alpha_{\rm em}/(4\pi) \approx 6 \times 10^{-4}$ (more precisely
+$5.8\times 10^{-4}$, using the Thomson-limit fine-structure constant
+$\alpha_{\rm em}\simeq1/137$; a running $\alpha_{\rm em}(\mu)$ evaluated
+at any higher scale differs by an $\mathcal{O}(1)$ factor immaterial at
+these margins), rounded \emph{up} to $10^{-3}$ in the explicit
 order-of-magnitude substitutions below --- an overestimate of the
 numerator and hence conservative for the suppression claim; the
 closure is robust to this factor. Here $H_0/M_{\rm Pl} \sim
@@ -844,22 +890,16 @@ closure is robust to this factor. Here $H_0/M_{\rm Pl} \sim
 (Sec.~\ref{sec:routes_summary}) gives $M_{\rm Pl}\cdot(\alpha/M) \sim 10^{19}\,\text{GeV} \cdot
 10^{-21}\,\text{GeV}^{-1} = 10^{-2}$. Plugging in $\beta_{\rm obs}
 = 0.342^\circ \approx 6\times 10^{-3}\,\text{rad}$
-($0.342\times\pi/180 = 5.97\times 10^{-3}$), the dimensionless ratio is
-$\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs} \sim
-10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\approx 10^{-60}$
+($0.342\times\pi/180 = 5.97\times 10^{-3}$), the dimensionless ratio
+Eq.~\eqref{eq:r2_ratio} evaluates to
+$10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\approx 10^{-60}$
 (canonical evaluation of the displayed contraction; we conservatively
 allow up to two orders of magnitude for unmodeled higher-order
 loop-ordering corrections, i.e.\ suppression by at least $10^{-58}$ ---
 an explicit conservatism allowance, \emph{not} a derived range; the
 $\mathrm{eV}$-vs-$\mathrm{GeV}$ unit conversion is exact
 $1\,\mathrm{GeV} = 10^9\,\mathrm{eV}$ and is not a source of
-ambiguity). The role of each denominator factor is stated explicitly so
-the contraction is not misread as a double division: the displayed ratio
-normalizes the one-loop amplitude \emph{both} by the observed angle
-$\beta_{\rm obs}$ \emph{and} by the dimensionless strength
-$M_{\rm Pl}(\alpha/M)\sim10^{-2}$ of the R4-fitted coupling that
-reproduces that angle --- i.e.\ it states the suppression relative to the
-fitted-coupling benchmark, the weaker (more conservative) normalization.
+ambiguity).
 Contracting directly against the observed angle alone gives
 $(\alpha_{\rm em}/4\pi)(H_0/M_{\rm Pl})/\beta_{\rm obs}\approx
 10^{-3}\cdot10^{-61}/(6\times10^{-3})\approx2\times10^{-62}$, \emph{two
@@ -950,7 +990,9 @@ numerically from a GUT-scale ultraviolet boundary
 $\mu_{\rm UV}\sim10^{16}\,$GeV down to $\mu_{\rm IR}\sim1\,$GeV (with
 $\gamma$ near the LQG value $\gamma\!\approx\!0.24$) gives, in agreement
 with a frozen-coefficient analytic estimate,
-$|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$. This is a genuine integrated
+$|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$ (evaluated with the full
+$\MPl\simeq1.22\times10^{19}\,$GeV, per the Sec.~\ref{sec:conventions}
+convention for order-of-magnitude numerics). This is a genuine integrated
 running, \emph{not} an ansatz bound: the explicit
 $\mu^2\tilde\kappa^2\simeq(\mu/M_{\rm Pl})^2$ prefactor makes the flow power-suppressed,
 so $|\Delta\gamma/\gamma|\sim(\mu_{\rm UV}/M_{\rm Pl})^2$ and the integral is
@@ -1054,7 +1096,12 @@ $0.35^\circ\pm0.14^\circ$~\cite{Minami2020})
 (comparable to the independent ACT~DR6 measurement
 $\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025}) gives the anchor value
 $\alpha/M\sim10^{-21}\,\text{GeV}^{-1}$ used above as a numerical input to
-the Route-2 amplitude estimate. The algebraic origin of that scale,
+the Route-2 amplitude estimate. Both measurements are statistical
+indications rather than established detections --- ${\approx}3.6\sigma$
+for WMAP$+$Planck and ${\approx}2.9\sigma$ for ACT~DR6 --- and the
+Route-2 suppression conclusion is insensitive to that status: a smaller
+or vanishing true birefringence signal only \emph{widens} the margin of
+Eq.~\eqref{eq:r2_ratio}. The algebraic origin of that scale,
 carried from the companion's derivation~\cite{Golden2026P1a}, is the
 standard small-rotation result $\beta=(\alpha/2M)\,
 \Delta\phi_{\rm rec\to today}$ (the rotation angle is half the coupling
@@ -1171,7 +1218,8 @@ torsion-elimination derivation: the companion's coefficient-one
 benchmark $\kappa n_\psi^2/\rho_\Lambda\simeq
 3.6\times10^{-69}\,(n_\psi/100\,\mathrm{cm}^{-3})^2$, i.e.\
 ${\approx}68$ orders below $\rho_\Lambda$ even at a deliberately
-elevated ISM-like normalization~\cite{Golden2026P1a}.\strut} \\[3pt]
+elevated ISM-like normalization~\cite{Golden2026P1a} (arithmetic carried
+self-contained in App.~\ref{app:companion_inputs}).\strut} \\[3pt]
 \parbox[t]{0.18\textwidth}{\raggedright R2 (one-loop graviton
 corrections)\strut} &
 \parbox[t]{0.40\textwidth}{\raggedright One-loop promotion of
@@ -1285,9 +1333,17 @@ diffeomorphism-covariant, parity-odd, and of dimension exactly four:
 $\sqrt{-g}\,\nabla_\mu J^{5\mu}$. It is an exact total derivative,
 $\sqrt{-g}\,\nabla_\mu J^{5\mu}=\partial_\mu(\sqrt{-g}\,J^{5\mu})$,
 contributing zero to the local equations of motion and zero to the
-vacuum energy, exactly as O2/O3 below; at the quantum level its anomalous
-content introduces $F\widetilde F$ only once electromagnetic fields ---
-outside the minimal field content --- are added. The rule-based
+vacuum energy, exactly as O2/O3 below. At the quantum level its anomalous
+content contains, already \emph{within} the minimal field content, the
+gravitational contribution to the chiral anomaly,
+$\nabla_\mu J^{5\mu}\supset c_{\rm grav}\,
+\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\alpha\beta}R_{\rho\sigma}{}^{\alpha\beta}$
+with a known pure-number coefficient
+(Kimura--Delbourgo--Salam~\cite{Kimura1969,DelbourgoSalam1972}) --- but
+that density is exactly the Pontryagin invariant O3, already a member of
+the basis below and disposed of as an exact total derivative; the
+$F\widetilde F$ anomaly content arises only once electromagnetic fields,
+outside the minimal field content, are added. The rule-based
 completeness assertion therefore survives this obvious derivative-order
 probe.
 Because the underlying schematic invariants carry different naive
@@ -1532,17 +1588,17 @@ the fourth file its human-readable report. None of
 the scripts performs the basis enumeration, which rests on the stated
 construction rule. These exact files are frozen at immutable repository
 commit
-\href{https://github.com/Hubify-Projects/bigbounce/tree/9b92721d5d7eb6601ebf48c49379318238b7100b}{\texttt{9b92721d5d7e}}\footnote{The
-descriptive header text of the first script differs between the pinned
-commit and the current repository head; the checks performed and their
-pass/fail results are identical at both.}.
+\href{https://github.com/Hubify-Projects/bigbounce/tree/c80b7487b01fe54da0ea410c81a1d25a25815e25}{\texttt{c80b7487b01f}},
+whose copies of all four files are identical to the current repository
+head.
 The provenance boundary between the two archives is as follows: the
 companion paper and the companion's own verification scripts are
 preserved as an immutable archival deposit under
 \href{https://doi.org/10.5281/zenodo.21481838}{doi:10.5281/zenodo.21481838}
-(CC-BY-4.0)~\cite{Golden2026P1a}, whereas the two
-\texttt{theory\_audit} verification artifacts listed above are not part
-of that deposit and are available at the pinned repository commit. An
+(CC-BY-4.0)~\cite{Golden2026P1a}, whereas the third and fourth files
+listed above (the independent Fierz-adjudication script and its
+human-readable report) are not part of that deposit and are available at
+the pinned repository commit. An
 updated archival deposit containing this survey's own verification
 scripts is planned prior to publication, so that every computational
 artifact cited here is backed by a frozen-release DOI.
@@ -1766,7 +1822,10 @@ $\varepsilon T T\to\kappa^2(J^5\!\cdot\!J^5)$ at dim~$+2$, O5's bare
 $\varepsilon T e J^5\to\kappa(J^5\!\cdot\!J^5)$ at dim~$+4$). Restoring each
 prefactor, the two \emph{genuine} dimension-$4$ densities land on the same
 member of the Fierz basis at the same power: $\mathcal{O}_4^{[4]}=\MPl^2\cdot
-\kappa^2(J^5\!\cdot\!J^5)=\kappa(J^5\!\cdot\!J^5)$ [using $\MPl^2\kappa^2=\kappa$]
+\kappa^2(J^5\!\cdot\!J^5)=\kappa(J^5\!\cdot\!J^5)$ [using
+$\MPl^2\kappa^2=\kappa$, exact in the reduced-mass convention
+$\kappa=\overline{M}_{\rm Pl}^{-2}$ of Sec.~\ref{sec:conventions} and an
+order-of-magnitude identity at the full mass]
 $=\mathcal{O}_5^{[4]}$, both at dimension~$+4$ and both
 $\MPl^{-2}$-suppressed --- consistent with the ``$+4$ throughout'' contract.
 
@@ -1780,7 +1839,8 @@ The ``Fate (bare)'' column records the reduction of the \emph{bare}
 invariant, prior to multiplication by the prefactor; the ``Final''
 column restores the prefactor, so the table itself shows the two
 genuine dimension-$4$ densities O4 and O5 landing on the same operator
-$\kappa(J^5\!\cdot\!J^5)$ [$\MPl^2\kappa^2=\kappa$; see text].
+$\kappa(J^5\!\cdot\!J^5)$ [$\MPl^2\kappa^2=\kappa$, exact for the
+reduced mass; see text].
 All entries are topological total derivatives ($\to$ zero equations of
 motion), reduce under the algebraic Cartan constraint to the Fierz-closed
 four-fermion basis (App.~\ref{app:fierz}, natural coefficient $\sim\MPl^4$
@@ -1953,7 +2013,8 @@ gap-equation convention. The Fierz rearrangement supplies only this
 channel factor; the full Sec.~\ref{sec:conventions} contact operator
 carries the additional finite-Holst prefactor $\gamma^2/(1+\gamma^2)<1$,
 which arises from the Cartan torsion elimination (not from the Fierz
-step) and which the companion's gap-equation bound conservatively omits
+step; the elimination chain is carried in
+App.~\ref{app:companion_inputs}) and which the companion's gap-equation bound conservatively omits
 because it can only reduce the coupling (equivalently, $G_s=-3\kappa/16$
 is the $\gamma\to\infty$ limit)~\cite{Golden2026P1a}. This
 coefficient set is independently verified by explicit $4\times4$
@@ -2062,6 +2123,109 @@ constraining R1--R4), and in particular minimal ECH produces no
 helicity-dependent tensor propagation from parity-symmetric initial
 data --- the observational content whose channel-level consequence B8
 records.
+
+\section{Companion-Imported Tier-II Inputs Carried Self-Contained:
+Contact Coefficient and R1 Benchmark}\label{app:companion_inputs}
+
+Following the same faithful-extraction convention as
+Appendix~\ref{app:transparency}, this appendix carries, from the
+companion paper's published derivations~\cite{Golden2026P1a}, the two
+remaining load-bearing companion inputs of this survey: the
+torsion-elimination chain that fixes the minimal contact operator and
+its $-(3\kappa/16)[\gamma^2/(1+\gamma^2)]$ coefficient
+(Sec.~\ref{sec:conventions}), and the R1 finite-density benchmark
+arithmetic quoted in Table~\ref{tab:evidentiary_status}. Nothing below
+is new to this survey; the derivations follow the companion, which in
+turn follows Freidel, Minic, and Takeuchi~\cite{Freidel2005}.
+
+\subsection{Torsion elimination and the contact
+coefficient}\label{app:contact_coeff}
+
+Define the internal dual on Lorentz bivectors by
+$(\star X)_{IJ}=\tfrac12\epsilon_{IJ}{}^{KL}X_{KL}$, so
+$\star^2=-\mathbb 1$. Acting on an antisymmetric bivector, the
+Holst-modified Cartan operator of the first-order ECH action and its
+inverse are
+\begin{equation}\label{eq:holst_cartan_inverse_p1c}
+\mathcal Q_\gamma=\star+\gamma^{-1}\mathbb 1,\qquad
+\mathcal Q_\gamma^{-1}
+=\frac{\gamma^2}{1+\gamma^2}\left(\gamma^{-1}\mathbb 1-\star\right),
+\end{equation}
+verified by direct multiplication; the inverse exists for every real
+finite nonzero $\gamma$ because $1+\gamma^2>0$ --- the same invertible
+bivector operator whose triviality of kernel drives Step~2 of
+Appendix~\ref{app:transparency}. Writing the Lorentz-connection source
+three-form as $\mathcal J^{IJ}\propto\delta S_{\rm
+matter}/\delta\omega_{IJ}$, the connection variation reads
+$\mathcal Q_\gamma(e^{[I}\wedge T^{J]})=\mathcal J^{IJ}$: an algebraic
+(non-dynamical) equation. For minimal (totally antisymmetric) Dirac
+coupling, whose spin current is dual to the axial current
+[$S^{IJK}=\tfrac14\epsilon^{IJKL}J_{5L}$, the Sec.~\ref{sec:conventions}
+convention; in the Einstein--Cartan limit the constraint reads
+$T^{IJK}=\kappa S^{IJK}=(\kappa/4)\epsilon^{IJKL}J_{5L}$], Freidel,
+Minic, and Takeuchi solve this equation explicitly [their Eq.~(17)],
+obtaining the contorsion
+\begin{equation}\label{eq:fmt_contorsion_p1c}
+e_I{}^\mu C_{\mu JK}=4\pi G\,\frac{\gamma^2}{1+\gamma^2}
+\left(\frac12\epsilon_{IJKL}J_5^L
+-\frac1\gamma\,\eta_{I[J}J^5_{K]}\right),
+\end{equation}
+and their direct back-substitution into the action [their Eq.~(23)]
+gives $\mathcal L_{\rm int}=-(3/2)\pi
+G\,[\gamma^2/(1+\gamma^2)]\,J_5^2$ for minimal coupling. The
+normalization bridge to this survey's $\kappa=8\pi G$ is
+\begin{equation}\label{eq:fmt_bridge_p1c}
+4\pi G=\frac{\kappa}{2},\qquad
+-\frac{3}{2}\pi G=-\frac{3\kappa}{16},
+\end{equation}
+so the eliminated-torsion contact operator is
+\begin{equation}\label{eq:4fermi_p1c}
+\mathcal L_{4\psi}=-\frac{3\kappa}{16}\,
+\frac{\gamma^2}{1+\gamma^2}\,(J_5^I J_{5I}),
+\end{equation}
+exactly the Sec.~\ref{sec:conventions} operator. The pure
+Einstein--Cartan coefficient $-(3\kappa/16)$ is recovered for
+$\gamma\to\infty$; because $\gamma^2/(1+\gamma^2)<1$ for real finite
+$\gamma$ can only reduce the coupling, the companion's gap-equation
+convention retains the maximal magnitude $G_s=-3\kappa/16$ --- the
+$\gamma$-independent channel factor of
+Appendix~\ref{app:fierz}~\cite{Golden2026P1a}. A vector--axial term is
+not generated by minimal coupling; it requires a non-minimal fermion
+coupling, outside the declared field content.
+
+\subsection{The R1 finite-density benchmark}\label{app:r1_benchmark}
+
+For a specified homogeneous fermion number density $n_\psi$ the
+companion defines the coefficient-one dimensional benchmark
+$\rho_{4f}^{(\rm dim)}\equiv\kappa n_\psi^2=8\pi n_\psi^2/\MPl^2$
+(mass dimension $+4$, since $[n_\psi]=+3$); the actual axial--axial
+operator Eq.~\eqref{eq:4fermi_p1c} adds the factor $3/16$. Using
+$\hbar c=1.9733\times10^{-5}\,$eV\,cm and
+$\MPl=1.2209\times10^{28}\,$eV,
+\begin{align}\label{eq:r1_benchmark_p1c}
+\kappa n_\psi^2 &\simeq 1.0\times10^{-79}
+\left(\frac{n_\psi}{100\,\mathrm{cm}^{-3}}\right)^2\!\mathrm{eV}^4,
+\nonumber\\
+\frac{\kappa n_\psi^2}{\rho_\Lambda}&\simeq3.6\times10^{-69}
+\left(\frac{n_\psi}{100\,\mathrm{cm}^{-3}}\right)^2,
+\end{align}
+with the companion's normalization
+$\rho_\Lambda\approx(2.3\,\text{meV})^4\approx2.8\times10^{-11}\,
+\text{eV}^4$ --- about $68.4$ orders below $\rho_\Lambda$ at the
+deliberately elevated ISM-like normalization $100\,\mathrm{cm}^{-3}$
+(neither a cosmological-density estimate nor a preferred state);
+including the $3/16$ coefficient gives
+$1.9\times10^{-80}\,\text{eV}^4=6.7\times10^{-70}\,\rho_\Lambda$.
+Under the $\rho_\Lambda=(2.25\,\text{meV})^4$ input of
+Appendix~\ref{app:dimensions} the same $\kappa n_\psi^2$ evaluates to
+$3.9\times10^{-69}$, identical at the order-of-magnitude precision
+quoted (Sec.~\ref{sec:conventions}). As in the companion, this
+comparison is a coefficient-scale illustration only: the number density
+does not determine the state-dependent coincident composite
+$\langle J^5\!\cdot\!J^5\rangle$ without specifying the ensemble, spin
+polarization, and a renormalized contact prescription, and no coherent
+order parameter, vacuum expectation value, or equation of state is
+inferred from it.
 
 \bibliography{references}
 
