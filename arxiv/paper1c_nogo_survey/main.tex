@@ -143,6 +143,30 @@
 %   falsified against the compiled App. D proof; Gemini N4 (2026 dates
 %   "anachronistic") falsified against the calendar.
 %
+% v1C.0.10 (2026-08-06): R7 confirmation-board closures (Claude
+%   minor-revisions 0 MAJOR 8 MINOR / Grok REJECT / Gemini MAJOR on the
+%   exact v1C.0.9 PDF sha b4d73f94; Perplexity FAILED). Genuinely-new
+%   items: (1) B1 tuning ratio un-inverted: cancellation to one part in
+%   (M_Pl/H_0)^2 ~ 1e122, residual m_T^2/delta m_T^2 ~ 1e-122 (the
+%   literal delta m^2/m^2 ~ 1e-122 was inverted; monolith-inherited).
+%   (2) Sec. V item (b) "parity-odd four-fermion contact operator"
+%   corrected to "four-fermion contact operator" -- (J5.J5) is
+%   parity-even per App. B; the parity-odd label belongs to the
+%   pre-reduction densities O4/O5. (3) Omega44/alpha4 range floor
+%   corrected O(1)-O(5) -> O(3)-O(5) (formula bounded below by
+%   378/120 ~ 3.2 for all real gamma). (4) Route-2 numerator exhibited
+%   as an explicit unnumbered intermediate display (accumulation over
+%   the Hubble time; dropped 1/16pi^2 and beta(gamma) factors named as
+%   conservative). (5) 3.6/2.9 sigma values qualified as not directly
+%   comparable (different datasets, distinct null procedures).
+%   (6) Fig. 1 caption states the entries' mixed evidentiary status
+%   (bounded kernel of Grok M3; Table II pointer). (7) Data & Code
+%   artifact block set \small so the theory_audit paths no longer break
+%   mid-filename. Gemini N2 ("space before colon" in App. A) falsified
+%   against the 300-DPI render (italic correction; pdftotext artifact).
+%   ACT DR6 ref [12] verified against the live arXiv record (title,
+%   authors, 0.215+-0.074 deg, 2.9 sigma -- exact match).
+%
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 \documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
@@ -182,7 +206,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.9}
+\newcommand{\paperVersion}{v1C.0.10}
 \newcommand{\paperTimestamp}{August 6, 2026}
 
 \begin{document}
@@ -579,7 +603,14 @@ assigned the letters I or K; no branch entries have been removed. B14
 (the ECH perturbation-gate closure) sits in Branch~H and
 subsumes B8 (parity-even interaction), so B8 is not counted separately;
 several entries share the scaling ansatz but each probes a distinct
-physical failure mode.
+physical failure mode. The diagram records channel structure only, not
+evidentiary weight: the entries differ in evidentiary status --- the
+sole Tier-I rigorous theorem is B14's perturbation transparency
+(Appendix~\ref{app:transparency}), the remainder are structural or
+ansatz-level arguments of mixed individual strength, and five entries
+(B5--B7, B10, B13) are general naturalness or classification arguments
+--- with the per-route classification recorded in
+Table~\ref{tab:evidentiary_status}.
 \label{fig:barrier_map}}
 \end{figure*}
 
@@ -629,8 +660,10 @@ $g_{\rm eff} \sim 1/(\MPl\sqrt{|t_3|}) \sim H_0/\MPl \sim 10^{-61}$, where $t_3$
 is the quadratic-torsion coupling controlling the tensor-torsion mode mass, with
 $\sqrt{|t_3|} \sim m_T^{-1}$ for an ultralight mode (a labeled scaling ansatz of
 the PGT mass spectrum, not a derived equality). Achieving $g_{\rm eff}\sim 1$
-needs $m_T\sim\MPl$; the required tuning
-$\delta m_T^2/m_T^2\sim (H_0/\MPl)^2 \sim 10^{-122}$ is the standard
+needs $m_T\sim\MPl$; keeping $m_T\sim H_0$ against a radiative
+contribution $\delta m_T^2\sim\MPl^2$ instead requires a cancellation to
+one part in $(\MPl/H_0)^2\sim10^{122}$ --- a residual
+$m_T^2/\delta m_T^2\sim (H_0/\MPl)^2 \sim 10^{-122}$ --- the standard
 cosmological-constant hierarchy.
 
 \medskip\noindent\textbf{B2 --- Topological-Shift Duality (Found.\ B) [R1].} In metric-affine
@@ -819,7 +852,9 @@ coefficient $\beta(\gamma)$ is an $\mathcal{O}(1)$ rational function of
 the Immirzi parameter [the $\alpha_4$/$\Omega_{4x}$ family, e.g.\
 $|\Omega_{44}/\alpha_4|=(378+783\gamma^2)/[120(1+\gamma^2)]$, which is
 ${\approx}3.3$ at the LQG value $\gamma\!\approx\!0.24$ and
-$\mathcal{O}(1)$--$\mathcal{O}(5)$ across $\gamma\lesssim\mathcal{O}(1)$],
+$\mathcal{O}(3)$--$\mathcal{O}(5)$ across $\gamma\lesssim\mathcal{O}(1)$
+(the ratio is bounded below by $378/120\approx3.2$ for all real
+$\gamma$)],
 not a free normalization; and (iii) the explicit
 $\tilde\kappa^2\sim M_{\rm Pl}^{-2}$ on every renormalized charge, i.e.\ the
 Planck suppression in the prefactor $\beta(\gamma)/M_{\rm Pl}$. What the
@@ -864,8 +899,25 @@ required. Once the dimension-$(+2)$ background value
 $\partial_\mu\vartheta_{\rm NY} \sim H_0^2 \sim 10^{-66}\,\text{eV}^2$ at
 the present epoch is substituted (the cosmological Nieh--Yan pseudoscalar,
 of dimension $+1$ and Hubble-scale amplitude, evolving on the Hubble
-time), the induced birefringence accumulated between
-recombination and today is stated as the dimensionless budget ratio
+time), the one-loop rotation accumulated between recombination and
+today --- over an elapsed time of order the Hubble time,
+$\Delta t\sim H_0^{-1}$ --- assembles from the stated ingredients as
+the explicit intermediate estimate
+\begin{align*}
+\Delta\theta_{\rm one\text{-}loop}
+&\sim \frac{\alpha_{\rm em}}{4\pi}\,
+\frac{\partial_\mu\vartheta_{\rm NY}}{M_{\rm Pl}}\,\Delta t\\
+&\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0^{2}}{M_{\rm Pl}}\,
+H_0^{-1}
+= \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0}{M_{\rm Pl}}
+\end{align*}
+(the anomaly-mediated photon chain of Appendix~\ref{app:parity}
+supplies the $\alpha_{\rm em}/4\pi$; the one-loop factor $1/16\pi^2$
+and the $\mathcal{O}(1)$ coefficient $\beta(\gamma)$, each of which
+could only suppress the estimate further, are conservatively dropped
+--- this Tier-III accumulation ansatz is exactly the bookkeeping the
+evidentiary label of Table~\ref{tab:evidentiary_status} records), and
+is stated as the dimensionless budget ratio
 \begin{align}\label{eq:r2_ratio}
 \frac{\Delta\theta_{\rm one\text{-}loop}}{\beta_{\rm obs}\,\bigl[M_{\rm Pl}(\alpha/M)\bigr]}
 &\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0/M_{\rm Pl}}{M_{\rm Pl}\,(\alpha/M)\,\beta_{\rm obs}}\nonumber\\
@@ -1098,7 +1150,9 @@ $\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025}) gives the anchor v
 $\alpha/M\sim10^{-21}\,\text{GeV}^{-1}$ used above as a numerical input to
 the Route-2 amplitude estimate. Both measurements are statistical
 indications rather than established detections --- ${\approx}3.6\sigma$
-for WMAP$+$Planck and ${\approx}2.9\sigma$ for ACT~DR6 --- and the
+for WMAP$+$Planck and ${\approx}2.9\sigma$ for ACT~DR6, significances
+obtained from different datasets and distinct null procedures and
+therefore not directly comparable as statistical weights --- and the
 Route-2 suppression conclusion is insensitive to that status: a smaller
 or vanishing true birefringence signal only \emph{widens} the margin of
 Eq.~\eqref{eq:r2_ratio}. The algebraic origin of that scale,
@@ -1421,8 +1475,10 @@ on the torsion-free branch. (b) The torsion-square and axial--torsion densities
 reduce under $T=\kappa S$, using
 $S_{abc}S^{abc}=-\tfrac38\,(J^5\!\cdot\!J^5)$ (from $S^{abc}=\tfrac14\varepsilon^{abcd}J^5_d$ and the
 Lorentzian $\varepsilon_{abcd}\varepsilon^{abce}=-3!\,\delta^e_d$, consistent with the
-companion paper's torsion-elimination normalization~\cite{Golden2026P1a}), to the parity-odd
-four-fermion contact operator $\kappa^{2}(J^5\!\cdot\!J^5)$, which the
+companion paper's torsion-elimination normalization~\cite{Golden2026P1a}), to the
+four-fermion contact operator $\kappa^{2}(J^5\!\cdot\!J^5)$ --- itself
+parity-even (Appendix~\ref{app:parity}); the parity-odd label belongs to
+the pre-reduction $\varepsilon$-contracted densities --- which the
 Fierz-by-Fierz projection lemma (Appendix~\ref{app:fierz}) shows closes onto
 the finite $\{SS,VV,AA,PP\}$ basis with \emph{no} escape operator and \emph{no}
 change of $\MPl^{-2}$ power. (c) O2 (Nieh--Yan) and O3 (Pontryagin) are exact
@@ -1572,11 +1628,11 @@ Appendices~\ref{app:dimensions}--\ref{app:fierz}) are publicly available
 in the companion papers' repository,
 \url{https://github.com/Hubify-Projects/bigbounce} (the paths below link
 to the committed files):
-\begin{center}
+\begin{center}\footnotesize
 \artifact{arxiv/scripts/dim4_parityodd_enumeration.py} \\
 \artifact{arxiv/scripts/fierz_lemma_check.py} \\
-\artifact{research/theory_audit/fierz_adjudication_2026_08_05.py} \\
-\artifact{research/theory_audit/fierz_adjudication_2026_08_05.md}
+\mbox{\artifact{research/theory_audit/fierz_adjudication_2026_08_05.py}} \\
+\mbox{\artifact{research/theory_audit/fierz_adjudication_2026_08_05.md}}
 \end{center}
 The first script verifies the two reduction identities of
 Appendix~\ref{app:dim4_completion} (Checks A and D); the second verifies
