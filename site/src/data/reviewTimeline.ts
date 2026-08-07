@@ -58,6 +58,44 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r8-confirmation-board-truth-audit-closure-2026-08-07",
+    dateISO: "2026-08-07",
+    kind: "internal-api",
+    title:
+      "P1C R8 confirmation board on the exact v1C.0.10 PDF — Claude MINOR REVISIONS (0 MAJOR / 7 MINOR) / Grok REJECT / Gemini MAJOR REVISIONS; correctness/presentation classification introduced; 4 genuinely-new items truth-audited and closed as v1C.0.11 (2 correctness-grade, 2 presentation-grade); Claude's headline formula finding falsified against the render; R9 is the correctness-convergence check",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.10 PDF (sha d8b9db8e): Claude Opus INT MINOR REVISIONS (0 MAJOR / 7 MINOR, with an 18-item verification log that independently recomputed every checkable displayed equation and numeric — both Route-2 contractions, the full Benedetti-Speziale integration to 1.4e-6, the complete App. E chain E1-E5, the Fierz involution, the B12 window, the App. A hierarchy/e-fold bookkeeping, and every headline margin — with zero numeric errors), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. NEW THIS ROUND (orchestrator decision, recorded verbatim in the audit doc): every genuinely-new-real item is classed CORRECTNESS-GRADE (wrong math/number/attribution/claim) or PRESENTATION-GRADE (length, repetition, layout, style); R-phase convergence = a full board with ZERO correctness-grade GNR, with presentation-grade items routing conceptually to the D-round stage; integrity unchanged — every finding still gets a source-cited disposition. Verdict-first truth audit against the R1-R7 disposition ledgers deduplicated the board to a 20-item ledger: 4 genuinely-new-real, closed as v1C.0.11 with zero margin, count, or headline changes. Correctness-grade closures: (1) the Benedetti-Speziale citation pointer harmonized — the same flow was credited to the JHEP paper a few lines before the Eq.-(7) pointer bound to the proceedings; the text now names the proceedings as the source of the equation numbering, companion to the full JHEP analysis (Claude m2); (2) B12's SU(2) black-hole-entropy value gamma ~ 0.274 now cites the primary Ghosh-Mitra state-counting (Phys. Lett. B 616, 114 (2005), gr-qc/0411035 — bibliographic identity verified against Crossref before the entry was added) alongside the companion, so the scheme-dependence claim is externally checkable (Claude m7). Presentation-grade closures: (3) the Eq.-(3) integration is relabeled Delta-ln-gamma (the equation is linear in gamma), with the identification Delta-gamma/gamma ~ Delta-ln-gamma stated and exponentiation (0.29-0.36) noted immaterial at the 60-order margins (Claude m3); (4) the App. A hierarchy quotient prints 1.2209e19 GeV, matching the quoted 8.7e122 exactly (1.22 exactly would give 8.6e122; Claude m6). THE ROUND'S HEADLINE FALSIFICATION: Claude MINOR-1 — the claim that the printed |Omega44/alpha4| carries a spurious (1+gamma^2)^2 power contradicting the paper's own 3.3 numeric — was FALSIFIED against the exact artifact: the 200-DPI render of p. 6 shows the printed form is (378+783gamma^2)/[120(1+gamma^2)], the correct one-power form, whose recomputed value at gamma=0.24 is 3.33 (matching the printed 3.3) and whose infimum is 378/120 (matching the printed bound) — the reviewer's own 'correct form' is what the paper prints. Also falsified with receipts: Grok M2 (the numerical inputs 0.342+-0.094 deg, 0.215+-0.074 deg, (2.25 meV)^4, H_0/M_Pl ~ 1.2e-61 are all printed and propagated in-body), Grok m3 (the c80b7487b01f commit pin on p. 13 covers all four scripts including the Fierz-adjudication script), and Gemini N1 (the 'filename spaces' are a pdftotext extraction artifact — the render shows underscores at every site; same family as the R3/R5/R7 extraction falsifications). Re-flags of R1-R7-dispositioned content: the version stamp (directive-G, stripped at P-round; Grok E1 + Gemini M1), the standalone/companion family (Grok E2/E3/M4/n1 — App. D self-contained since v1C.0.4, App. E since v1C.0.9, arithmetic chains displayed in-body, residual imports deferred-genuine behind the refereed-companion gate), abstract-vs-tier rhetoric (Grok E4 — the abstract itself prints the tier qualification), the 13-distinct count (Grok E5 — the abstract, Table I caption, and Sec. III all print the B8-subsumed-by-B14 disclosure and explicitly disclaim a thirteen-separately-decisive reading), the enumeration demand (Grok M1 — the downgraded asserted-not-proved framing IS the paper's existing text per the R3 adjudication), the M_Pl-convention complaint (Grok M3 — conversion displayed at both import sites, Sec. II states the reduced-vs-full distinction), the B9 table flag and caption-clause-in-main-text asks (Grok m1/n2 — tiering is Table II's job per the R6 taxonomy disposition; the requested main-text statement already exists in Sec. IV), the loop-factor justification (Grok m2 — 1/(16pi^2) is grounded in ST Eq. 46, printed on p. 6), Route-4 companion dependency (Gemini E1 — re-flag of the R6-GNR-1/R7-RF-9 deferred-genuine disposition behind the refereed-companion gate; the two-sentence algebraic origin of the R4 anchor has been in-paper since v1C.0.6), the mint-the-DOI-now demand (Gemini E2 — external Houston-gated side effect executed at P-round packaging; fabricating a DOI in-paper is prohibited), and abstract length/tier-disclaimer repetition (Claude m4/m5 — the R7-RF-11 D/P-round condensation family, now explicitly routed to the D-round under the presentation-grade rule). All closures landed as v1C.0.11 (20 pp, 0 errors / 0 undef / 0 overfull, visual audit pass on pages 1, 5, 8, 15, mirrors byte-identical, Ghosh-Mitra DOI Crossref-verified). CONVERGENCE READ UNDER THE NEW CLASSIFICATION: R8 surfaced 4 genuinely-new items (2 correctness-grade, 2 presentation-grade), so the literal 0-GNR gate is not yet met — but zero correctness-grade findings survive falsification-checking of the board's sharpest claims, and both correctness-grade closures are citation-precision fixes, not physics corrections. R9 on the exact v1C.0.11 PDF is the correctness-convergence check: a full board with zero correctness-grade GNR converges the R-phase, with any residual presentation-grade items routed to the D-round.",
+    keyTakeaways: [
+      "P1C v1C.0.11 served PDF: 20 pages · SHA-256 0868856032e2eee5f26cd207d9fe1cc9b1db2eae827eac41b70c9b2aea394b37 · md5 4723faef2f210e4b81c33b21d55bfdeb",
+      "Correctness/presentation classification introduced (orchestrator decision): R-phase convergence = zero correctness-grade GNR on a full board; presentation-grade items route to the D-round; every finding still source-cited",
+      "4 genuinely-new closed in v1C.0.11: 2 correctness-grade (Benedetti-Speziale Eq.-7 pointer bound to the proceedings; primary Ghosh-Mitra citation for gamma ~ 0.274, Crossref-verified) + 2 presentation-grade (Delta-ln-gamma relabel; 1.2209e19 quotient)",
+      "Claude's headline MINOR-1 (spurious squared power in the printed ratio) FALSIFIED against the 200-DPI render — the exact PDF prints the correct one-power form and its own numerics prove it",
+      "Grok's inputs-absent and missing-commit-hash claims falsified against the printed values and the p. 13 pin; Gemini's filename-spaces claim falsified as a pdftotext extraction artifact (fourth extraction-artifact falsification in the series)",
+      "Gemini's two ESSENTIALs (Route-4 companion dependency; mint-the-DOI-now) are re-flags of the R5/R6 deferred-genuine dispositions behind the refereed-companion and P-round/Zenodo gates — carried, not reopened",
+      "R9 on the exact v1C.0.11 PDF is the correctness-convergence check under the new classification",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.10-EXACTPDF-d8b9db8e-R8CONF/P1C_claude_r8_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.10-EXACTPDF-d8b9db8e-R8CONF_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.10-EXACTPDF-d8b9db8e-R8CONF_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "R8 truth audit + classification",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.10-EXACTPDF-d8b9db8e-R8CONF/P1C_v1C.0.10_R8_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.11 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.11.pdf" },
+    ],
+  },
+  {
     id: "p1c-r7-confirmation-board-truth-audit-closure-2026-08-06",
     dateISO: "2026-08-06",
     kind: "internal-api",

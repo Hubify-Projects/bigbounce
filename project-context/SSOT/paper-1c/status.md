@@ -1,12 +1,109 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.10 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.11 · 2026-08-07 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R7 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 7 GENUINELY-NEW-REAL
-FINDINGS CLOSED (v1C.0.10). NOT CONVERGED — R8 confirmation board on the
-exact v1C.0.10 PDF is REQUIRED (directive H-refined: the loop exits only at
-0 genuinely-new-real across all legs).** The R7 confirmation board ran on
+**Status: R8 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 4 GENUINELY-NEW-REAL
+FINDINGS CLOSED (v1C.0.11): 2 CORRECTNESS-GRADE + 2 PRESENTATION-GRADE under
+the classification rule introduced this round. NOT CONVERGED — R9 on the
+exact v1C.0.11 PDF is REQUIRED and is the CORRECTNESS-CONVERGENCE CHECK.**
+The R8 confirmation board ran on the exact v1C.0.10 PDF (sha `d8b9db8e…`),
+three legs with raw receipts.
+
+**Classification rule (NEW at R8 — orchestrator decision, recorded verbatim
+in the audit doc):** "every GNR item is classed CORRECTNESS-GRADE (wrong
+math/number/attribution/claim) or PRESENTATION-GRADE (length, repetition,
+layout, style). R-phase convergence = a full board with ZERO
+correctness-grade GNR; presentation-grade items route conceptually to the
+D-round stage. Integrity unchanged: every finding dispositioned with
+citations."
+
+**R8 verdict matrix (2026-08-07, exact v1C.0.10 PDF):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **MINOR REVISIONS** (0 MAJOR / 7 MINOR) — 18-item verification log independently recomputed EVERY checkable displayed equation and numeric (both Route-2 contractions; the full BS integration; Route-3 endpoints; the complete App. E chain E1–E5; the Fierz matrix; the App. D proof chain; B12 window; App. A hierarchy/e-folds; counts; significances; citation integrity) — zero numeric errors found |
+| Grok API | grok-4.3 | **REJECT** |
+| Gemini API | gemini-3.1-pro-preview | **MAJOR REVISIONS** |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+The verdict-first truth audit against the R1–R7 disposition ledgers
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.10-EXACTPDF-d8b9db8e-R8CONF/P1C_v1C.0.10_R8_truth_audit.md`)
+deduplicated the board to **20 canonical items: 4 genuinely-new-real
+(closed in v1C.0.11), 12 re-flags of R1–R7-dispositioned content (four with
+partial falsifications, one re-falsified), 4 freshly falsified with
+receipts.**
+
+**GNR by grade (all closed in v1C.0.11; zero margin, count, or headline
+changes):**
+
+- **Correctness-grade (2):** (1) the Benedetti–Speziale citation pointer
+  harmonized — the same flow was credited to the JHEP paper [9] a few
+  lines before the "(their Eq. 7)" pointer bound to the proceedings [3];
+  the credit line now names the proceedings as the source of the equation
+  numbering, companion to the full JHEP analysis (Claude m2). (2) B12's
+  SU(2) black-hole-entropy value γ ≈ 0.274 now cites the primary
+  Ghosh–Mitra state-counting — Phys. Lett. B 616, 114 (2005),
+  gr-qc/0411035, **Crossref-verified before the bib entry was added** —
+  alongside the companion, so the scheme-dependence claim is externally
+  checkable (Claude m7).
+- **Presentation-grade (2):** (3) the Eq. (3) integration relabeled
+  Δln γ (the equation is linear in γ), with the identification
+  Δγ/γ ≃ Δln γ stated and the exponentiated band (0.29–0.36) noted
+  immaterial at the ≳60-order margins (Claude m3). (4) the App. A
+  hierarchy quotient prints 1.2209×10¹⁹ GeV, matching the quoted
+  8.7×10¹²² exactly (1.22 exactly gives 8.6×10¹²²; Claude m6).
+
+**The round's headline falsification:** Claude MINOR-1 — the claim that
+the printed |Ω₄₄/α₄| carries a spurious (1+γ²)² power contradicting the
+paper's own ≈3.3 numeric — was **FALSIFIED against the exact artifact**:
+the 200-DPI render of p. 6 shows the printed form is
+(378+783γ²)/[120(1+γ²)], the correct one-power form; recomputation gives
+3.33 at γ = 0.24 (printed "≈3.3" ✓) and infimum 378/120 (printed bound ✓)
+— the reviewer's own "correct form" is what the paper prints (probable
+misread of the adjacent Ω₄₄ definition, which legitimately carries the
+squared denominator). The orchestrator's dispatch had pre-classed this
+correctness-grade GNR "verify by recomputation, fix"; the verification
+was performed and the truth-audit verdict controls — no edit owed, none
+made. Also falsified with receipts: Grok M2 (the numerical targets
+0.342°±0.094°, 0.215°±0.074°, (2.25 meV)⁴, H₀/M_Pl ≈ 1.2×10⁻⁶¹ are all
+printed and propagated in-body), Grok m3 (the c80b7487b01f pin on p. 13
+covers all four scripts including the Fierz-adjudication script), and
+Gemini N1 (the "filename spaces" are a pdftotext extraction artifact —
+the render shows underscores at every site; fourth
+extraction-artifact falsification in the series after R3/R5/R7).
+Re-flags: version stamp (directive G; Grok E1 + Gemini M1),
+headline-recompute/standalone/absorb-or-withdraw family (Grok E2/E3/n1;
+Tier-I half re-falsified against the compiled App. D), abstract-vs-tier
+rhetoric (Grok E4/M4), the 13-distinct count (Grok E5 — partially
+falsified: abstract, Table I caption, and Sec. III all print the
+B8-subsumed disclosure and disclaim a thirteen-separately-decisive
+reading), enumeration demand (Grok M1 — the downgraded framing IS the
+existing text), M_Pl-convention conversions (Grok M3 — displayed at both
+import sites), B9 table flag + caption-clause duplication (Grok m1/n2 —
+Table-II taxonomy disposition; the requested main-text statement already
+exists in Sec. IV), loop-factor justification (Grok m2 — grounded in ST
+Eq. 46, printed), **Route-4 companion dependency (Gemini E1 — RE-FLAG of
+the R6-GNR-1/R7-RF-9 deferred-genuine disposition behind the
+refereed-companion gate; coverage verified per orchestrator request)**,
+**mint-the-DOI-now (Gemini E2 — RE-FLAG of R5-GNR-2/R6-RF-9/R7-RF-8;
+external Houston-gated side effect executed at P-round packaging;
+coverage verified)**, and abstract length + tier-disclaimer repetition
+(Claude m4/m5 — the R7-RF-11 family, now explicitly routed to the
+D-round as presentation-grade). v1C.0.11: 20 pp, 0 errors / 0 undef /
+0 overfull, visual audit pass on changed pages (1, 5, 8, 15), mirrors
+byte-identical (md5 `4723faef…`, SHA-256 `0868856032…`).
+**Convergence read (directive H-refined + R8 classification): R8
+surfaced 4 genuinely-new-real findings against a target of 0, so the
+paper is NOT converged. R9 on the exact v1C.0.11 PDF (sha `0868856032…`)
+IS the correctness-convergence check: a full board whose truth audit
+yields ZERO correctness-grade GNR converges the R-phase, with residual
+presentation-grade items routed to the D-round per the classification
+rule. Both of R8's correctness-grade items were citation-precision
+fixes, not physics corrections; the board's sharpest correctness claims
+were all falsified with receipts; the GNR count is trending
+15 → 7 → 8 → 10 → 6 → 9 → 7 → 4.**
+Prior-round record follows. The R7 confirmation board ran on
 the exact v1C.0.9 PDF (sha `b4d73f94…`), three legs with raw receipts.
 
 **R7 verdict matrix (2026-08-06, exact v1C.0.9 PDF, round dir label 2026-08-07):**
@@ -430,21 +527,21 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.9: 20 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
-clean 2026-08-06 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.9.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.9.pdf` (md5
-`eab47932a69723802f3644d45b4965f5`, sha256 `b4d73f94…`, all three copies
-match). Prior v1C.0.1–v1C.0.8 mirrors retained. `/latex-audit` visual pass
+v1C.0.11: 20 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
+clean 2026-08-07 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.11.pdf` and
+`public/papers/paper1c_nogo_survey_v1C.0.11.pdf` (md5
+`4723faef2f210e4b81c33b21d55bfdeb`, sha256 `0868856032…`, all three copies
+match). Prior v1C.0.1–v1C.0.10 mirrors retained. `/latex-audit` visual pass
 on the recompile: changed pages rendered at 110 DPI — title block
-(v1C.0.9 stamp), Sec. I companion paragraph, Fig. 1 caption (p. 4),
-Eq. (2) corrected LHS + Thomson-limit note (p. 6–7), Route-3 full-M_Pl
-tag (p. 8), β_obs significance (p. 9), Table II App-E pointer (p. 10),
-∇·J⁵ anomaly routing (p. 11), Data & Code repin + boundary (p. 13),
-Table III tagged caption (p. 16), new App. E Eqs. E1–E5 (p. 18–19),
-references incl. Kimura/Delbourgo–Salam (p. 19–20) — no
-overflow/overlap; the one new URL (commit tree `c80b7487b01f`) resolves
-(HEAD of origin/main at edit time).
+(v1C.0.11 stamp, August 7, 2026, p. 1), B12 with the new Ghosh–Mitra
+citation (p. 5), the proceedings-summary credit line + Δln γ band with
+the identification note (p. 8), the 1.2209 hierarchy quotient (p. 15) —
+no overflow/overlap. New URLs both verified live for this round: the
+GhoshMitra2005 DOI (10.1016/j.physletb.2005.05.003, Crossref-resolved to
+the exact title/authors/volume/pages) and its arXiv abstract page
+(gr-qc/0411035). Reference numbering shifted by the insertion
+(Ghosh–Mitra is [5]; later entries renumber automatically).
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
@@ -509,15 +606,36 @@ overflow/overlap; the one new URL (commit tree `c80b7487b01f`) resolves
    `ROUND_2026-08-07-P1C-v1C.0.8-EXACTPDF-385158dd-R6CONF/P1C_v1C.0.8_R6_truth_audit.md`).
    R6 was NOT clean (9 genuinely-new-real vs a target of 0) → convergence
    NOT reached.
-8. R7 confirmation board (same three active legs, fresh, on the exact
-   v1C.0.9 PDF sha `b4d73f94…`) — exit test per directive H-refined:
-   0 genuinely-new-real findings across all legs. Pre-submission checklist
-   carries: real mechanized enumeration (or keep downgraded framing); ST
-   Eq. 58 + quote verification; venue-length condensation; mint the
-   version DOI / updated archival deposit for the P1C script set at
-   P-round (R2-SO-2 / R6-RF-9); refereed-companion gate for the
-   cited-only companion results (R6-GNR-1 disposition).
-9. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
+8. ~~R7 confirmation board~~ DONE 2026-08-06/07 (on the exact v1C.0.9 PDF
+   sha `b4d73f94…`: Claude MINOR REVISIONS (0 MAJOR / 8 MINOR) / Grok
+   REJECT / Gemini MAJOR / Perplexity FAILED; 7 genuinely-new-real closed
+   as v1C.0.10 — see
+   `ROUND_2026-08-07-P1C-v1C.0.9-EXACTPDF-b4d73f94-R7CONF/P1C_v1C.0.9_R7_truth_audit.md`).
+   R7 was NOT clean (7 genuinely-new-real vs a target of 0) → convergence
+   NOT reached.
+9. ~~R8 confirmation board~~ DONE 2026-08-07 (on the exact v1C.0.10 PDF
+   sha `d8b9db8e…`: Claude MINOR REVISIONS (0 MAJOR / 7 MINOR) / Grok
+   REJECT / Gemini MAJOR / Perplexity FAILED; correctness/presentation
+   classification introduced; 4 genuinely-new-real closed as v1C.0.11
+   (2 correctness-grade citation-precision + 2 presentation-grade
+   notation/display); Claude's headline formula finding + Grok M2/m3 +
+   Gemini N1 all falsified with receipts — see
+   `ROUND_2026-08-07-P1C-v1C.0.10-EXACTPDF-d8b9db8e-R8CONF/P1C_v1C.0.10_R8_truth_audit.md`).
+   R8 was NOT clean (4 genuinely-new-real vs a target of 0) → convergence
+   NOT reached under the literal gate.
+10. **R9 confirmation board — THE CORRECTNESS-CONVERGENCE CHECK** (same
+   three active legs, fresh, on the exact v1C.0.11 PDF sha
+   `0868856032…`). Exit test per the R8 classification rule: a full
+   board whose truth audit yields ZERO correctness-grade GNR converges
+   the R-phase; presentation-grade items route to the D-round.
+   Pre-submission checklist carries: real mechanized enumeration (or
+   keep downgraded framing); ST Eq. 58 + quote verification;
+   venue-length condensation + abstract compression + tier-disclaimer
+   consolidation (seven instances counted at R8); mint the version DOI /
+   updated archival deposit for the P1C script set at P-round (R2-SO-2 /
+   R5-GNR-2 / R6-RF-9 / R7-RF-8 / R8-RF-11); refereed-companion gate for
+   the cited-only companion results (R6-GNR-1 / R7-RF-9 / R8-RF-10).
+11. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 
