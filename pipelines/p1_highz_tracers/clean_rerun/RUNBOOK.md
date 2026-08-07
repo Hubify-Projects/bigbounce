@@ -445,6 +445,43 @@ already-completed groups are never re-downloaded). The FINAL merged
 `--output` is written ONLY once every group in the sample has a completed,
 checkpointed shard.
 
+### 16c. WISE photometry join (phase-3c: IR colors for taxonomy)
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/wise_join_flagship.py \
+  --input-enriched /workspace/flagship_sample_enriched.parquet \
+  --input-enriched-manifest /workspace/flagship_sample_enriched_manifest.json \
+  --checkpoint /workspace/wise_join_checkpoint.json \
+  --output /workspace/flagship_wise.parquet \
+  --output-manifest /workspace/flagship_wise_manifest.json
+```
+
+Step 16b's enriched output carries `target_ra`/`target_dec` straight through
+from the archived FIBERMAP columns, so this step needs no zcatalog re-join.
+For each enriched-sample row it cone-searches the AllWISE catalog
+(`II/328/allwise`) via `astroquery.vizier.Vizier` — the SAME VizieR catalog
+the historical `neowise_crossmatch.py`/`neowise_crossmatch_silver.py`
+queried by hand (raw `requests` against the VizieR TAP endpoint) for
+`w1w2_color`/`agn_ir_color`; only the client library changed (astroquery),
+matching the precedent step 17's SIMBAD/NED port already set. Default cone
+radius is 3 arcsec; when a cone search returns more than one AllWISE
+candidate, the nearest one by angular separation is kept. Fails closed if
+the enriched sample's SHA-256 doesn't match its manifest. Resumable: rerun
+the identical command to pick up from `--checkpoint`'s per-targetid JSON
+checkpoint (default: checkpoint + print progress every 50 queries, 1.0s
+sleep between queries — tune with `--checkpoint-every`/`--rate-limit-sleep`).
+For a bounded smoke run first, add `--limit 20`.
+
+Output: a Parquet keyed by `targetid` with `w1`/`w2`/`w1_w2`
+(`w1 - w2` color) /`match_separation_arcsec`/`match_flag`; unmatched rows
+carry `match_flag=False` and null `w1`/`w2`/`w1_w2`/
+`match_separation_arcsec` rather than a fabricated color. This output is
+directly usable as `taxonomy_flagship.py`'s `--extra-features` (a Parquet
+keyed by `targetid` with extra numeric feature columns) — e.g. add
+`w1_w2` (and/or `w1`/`w2` individually) to step 18's `--feature-columns` to
+cluster on IR color once this step has run, the new-generation analog of
+the historical "IR-bright AGN candidate" (`W1-W2 > 0.8`, Stern+2012) family.
+
 ### 17. Cross-match the flagship sample against SIMBAD/NED
 
 ```sh
@@ -499,6 +536,16 @@ Q1 needs the redrock/photometry columns too, and step 16b's `spectype`/`z`
 stay at their documented defaults since no redrock file is downloaded); it
 does make the taxonomy's cluster GEOMETRY meaningfully richer.
 
+**Step 16c (`wise_join_flagship.py`) now supplies the WISE-color half of
+that gap.** Its output (`flagship_wise.parquet`) is also `targetid`-keyed and
+can be passed as `--extra-features` (or joined into the same feature Parquet
+as step 16b's output before passing it here) to add `w1_w2` — e.g.
+`--feature-columns anomaly_score,ra,dec,w1_w2` — to the clustering feature
+set. `w1_w2` alone is still a color diagnostic, not a family label:
+Standing Directive Q1 labeling still requires GENERIC descriptors here
+(score tier + provenance), never an astrophysical class name, even once IR
+color is available as a feature.
+
 ### Recovery notes (phase 3)
 
 - All four phase-3 tools re-verify their upstream SHA-256 bindings before
@@ -515,5 +562,9 @@ does make the taxonomy's cluster GEOMETRY meaningfully richer.
 - `crossmatch_flagship.py` resume is automatic per `--checkpoint-dir`: rerun
   the exact same command after any interruption and already-queried
   targetids are skipped for that service.
+- `wise_join_flagship.py` (step 16c) resume is automatic per `--checkpoint`:
+  rerun the exact same command after any interruption (network drop, AllWISE
+  outage) and already-queried targetids are skipped; a query that raised
+  before being checkpointed is retried on the next incarnation.
 - Run the offline test suite before trusting a fresh phase-3 change:
   `python3 -m pytest pipelines/p1_highz_tracers/tests/ -q`.

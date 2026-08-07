@@ -40,6 +40,14 @@ the pure, locally-computable pieces of `pipelines/p1_highz_tracers/clean_rerun/`
     still-failing group keeps the run in `status: incomplete` with no final
     output written, until a later incarnation with the missing source
     available completes it.
+  - `wise_join_flagship.py` (phase-3c): pure nearest-match selection over
+    synthetic multi-candidate AllWISE cone-search results; unmatched
+    handling (no candidate within radius, or a candidate missing one band);
+    an end-to-end run with the network-calling `query_wise_cone` replaced by
+    a canned stub (never real astroquery/network); manifest completeness
+    (service/catalog/query-param/SHA/count fields all present and correct);
+    checkpoint resume across two incarnations; and the input-SHA256
+    fail-closed check.
 """
 
 from __future__ import annotations
@@ -50,6 +58,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 
@@ -823,6 +832,274 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
 
             table = pq.read_table(paths["output_path"]).to_pydict()
             self.assertEqual(sorted(table["targetid"]), [11, 13, 21])
+
+
+class WiseJoinFlagshipTest(unittest.TestCase):
+    """Phase-3c: AllWISE (`II/328/allwise`) W1/W2 cross-match join over
+    `enrich_flagship_sample.py`'s output (which carries `target_ra`/
+    `target_dec` straight through from the archived FIBERMAP columns — see
+    that module's docstring). The real network-calling `query_wise_cone` is
+    never exercised here; every test replaces it with a canned stub, per
+    `crossmatch_flagship.py`'s SIMBAD/NED testing precedent.
+    """
+
+    def setUp(self) -> None:
+        try:
+            import pyarrow  # noqa: F401
+            import pyarrow.parquet  # noqa: F401
+        except ImportError as exc:  # pragma: no cover - environment prerequisite
+            self.skipTest(f"pyarrow unavailable: {exc}")
+        import wise_join_flagship  # noqa: F401
+
+        self.mod = sys.modules["wise_join_flagship"]
+
+    # ---- pure nearest-match selection (no network, no mocks needed) ----
+
+    def test_select_nearest_match_picks_closest_of_several_candidates(self) -> None:
+        ra, dec = 150.0, 10.0
+        candidates = [
+            {"ra": 150.01, "dec": 10.01, "w1": 15.0, "w2": 14.0, "allwise_id": "far"},
+            {"ra": 150.0003, "dec": 10.0002, "w1": 16.5, "w2": 15.2, "allwise_id": "near"},
+            {"ra": 149.99, "dec": 9.99, "w1": 14.0, "w2": 13.0, "allwise_id": "farther"},
+        ]
+        nearest = self.mod.select_nearest_match(candidates, ra, dec)
+        self.assertEqual(nearest["allwise_id"], "near")
+        self.assertIn("separation_arcsec", nearest)
+        self.assertLess(nearest["separation_arcsec"], 3.0)
+
+    def test_select_nearest_match_empty_candidates_returns_none(self) -> None:
+        self.assertIsNone(self.mod.select_nearest_match([], 10.0, 20.0))
+
+    # ---- pure result-row construction ----
+
+    def test_build_result_row_matched_computes_color(self) -> None:
+        row = self.mod.build_result_row(42, {"found": True, "w1": 15.2, "w2": 14.1, "separation_arcsec": 1.23})
+        self.assertEqual(row["targetid"], 42)
+        self.assertAlmostEqual(row["w1"], 15.2)
+        self.assertAlmostEqual(row["w2"], 14.1)
+        self.assertAlmostEqual(row["w1_w2"], 1.1, places=6)
+        self.assertAlmostEqual(row["match_separation_arcsec"], 1.23)
+        self.assertTrue(row["match_flag"])
+
+    def test_build_result_row_unmatched_is_all_null(self) -> None:
+        row = self.mod.build_result_row(7, {"found": False})
+        self.assertEqual(row["targetid"], 7)
+        self.assertIsNone(row["w1"])
+        self.assertIsNone(row["w2"])
+        self.assertIsNone(row["w1_w2"])
+        self.assertIsNone(row["match_separation_arcsec"])
+        self.assertFalse(row["match_flag"])
+
+    def test_build_result_row_partial_band_yields_null_color(self) -> None:
+        # AllWISE can carry a null magnitude for one band even on a match.
+        row = self.mod.build_result_row(9, {"found": True, "w1": 15.0, "w2": None, "separation_arcsec": 0.5})
+        self.assertAlmostEqual(row["w1"], 15.0)
+        self.assertIsNone(row["w2"])
+        self.assertIsNone(row["w1_w2"])
+        self.assertTrue(row["match_flag"])
+
+    # ---- end-to-end with a mocked network-calling function ----
+
+    def _write_enriched_fixture(self, work: Path, rows: list[dict[str, Any]]):
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+
+        enriched_path = work / "flagship_sample_enriched.parquet"
+        table = pa.table(
+            {
+                "targetid": pa.array([r["targetid"] for r in rows], type=pa.int64()),
+                "target_ra": pa.array([r["target_ra"] for r in rows], type=pa.float64()),
+                "target_dec": pa.array([r["target_dec"] for r in rows], type=pa.float64()),
+                "anomaly_score": pa.array([6.0 + i for i in range(len(rows))], type=pa.float64()),
+            }
+        )
+        pq.write_table(table, enriched_path, compression="zstd")
+
+        manifest_path = work / "flagship_sample_enriched_manifest.json"
+        manifest_path.write_text(
+            json.dumps(
+                {
+                    "manifest_version": "flagship-enrichment/v1",
+                    "output": {"file_name": enriched_path.name, "sha256": self.mod.sha256_file(enriched_path)},
+                }
+            )
+        )
+        return enriched_path, manifest_path
+
+    def test_run_wise_join_end_to_end_matched_multi_candidate_and_unmatched(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            rows = [
+                {"targetid": 101, "target_ra": 150.0, "target_dec": 10.0},   # multi-candidate match
+                {"targetid": 102, "target_ra": 200.0, "target_dec": -5.0},   # single-candidate match
+                {"targetid": 103, "target_ra": 30.0, "target_dec": 60.0},    # no candidate -> unmatched
+            ]
+            enriched_path, manifest_path = self._write_enriched_fixture(work, rows)
+
+            canned = {
+                (150.0, 10.0): [
+                    {"ra": 150.01, "dec": 10.01, "w1": 15.0, "w2": 14.0, "allwise_id": "far"},
+                    {"ra": 150.0003, "dec": 10.0002, "w1": 16.5, "w2": 15.2, "allwise_id": "near"},
+                ],
+                (200.0, -5.0): [
+                    {"ra": 200.0001, "dec": -4.9999, "w1": 13.4, "w2": 13.0, "allwise_id": "only"},
+                ],
+                (30.0, 60.0): [],
+            }
+
+            def fake_query_fn(ra, dec, radius_arcsec, timeout):
+                candidates = canned[(ra, dec)]
+                nearest = self.mod.select_nearest_match(candidates, ra, dec)
+                if nearest is None:
+                    return {"found": False}
+                return {"found": True, **nearest}
+
+            output_path = work / "wise_join.parquet"
+            manifest_output_path = work / "wise_join_manifest.json"
+            manifest = self.mod.run_wise_join(
+                enriched_path, manifest_path, work / "checkpoint.json",
+                output_path, manifest_output_path,
+                rate_limit_sleep=0.0, query_fn=fake_query_fn,
+            )
+
+            self.assertEqual(manifest["n_input"], 3)
+            self.assertEqual(manifest["n_matched"], 2)
+            self.assertEqual(manifest["n_unmatched"], 1)
+
+            import pyarrow.parquet as pq
+
+            table = pq.read_table(output_path).to_pydict()
+            by_tid = {tid: i for i, tid in enumerate(table["targetid"])}
+
+            i101 = by_tid[101]
+            self.assertTrue(table["match_flag"][i101])
+            self.assertAlmostEqual(table["w1"][i101], 16.5)
+            self.assertAlmostEqual(table["w2"][i101], 15.2)
+            self.assertAlmostEqual(table["w1_w2"][i101], 1.3, places=6)
+
+            i102 = by_tid[102]
+            self.assertTrue(table["match_flag"][i102])
+            self.assertAlmostEqual(table["w1"][i102], 13.4)
+
+            i103 = by_tid[103]
+            self.assertFalse(table["match_flag"][i103])
+            self.assertIsNone(table["w1"][i103])
+            self.assertIsNone(table["w2"][i103])
+            self.assertIsNone(table["w1_w2"][i103])
+            self.assertIsNone(table["match_separation_arcsec"][i103])
+
+    def test_manifest_completeness(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            rows = [{"targetid": 1, "target_ra": 10.0, "target_dec": 1.0}]
+            enriched_path, manifest_path = self._write_enriched_fixture(work, rows)
+
+            def fake_query_fn(ra, dec, radius_arcsec, timeout):
+                return {"found": True, "ra": ra, "dec": dec, "w1": 15.0, "w2": 14.5, "separation_arcsec": 0.2, "allwise_id": "x"}
+
+            output_path = work / "wise_join.parquet"
+            manifest_output_path = work / "wise_join_manifest.json"
+            manifest = self.mod.run_wise_join(
+                enriched_path, manifest_path, work / "checkpoint.json",
+                output_path, manifest_output_path,
+                radius_arcsec=3.0, timeout=30.0, rate_limit_sleep=0.0,
+                checkpoint_every=50, query_fn=fake_query_fn,
+            )
+
+            for key in (
+                "manifest_version", "started_utc", "finished_utc", "service", "query_params",
+                "input_enriched_sha256", "input_enriched_manifest", "n_input", "n_matched",
+                "n_unmatched", "output",
+            ):
+                self.assertIn(key, manifest)
+
+            self.assertEqual(manifest["manifest_version"], "flagship-wise-join/v1")
+            self.assertEqual(manifest["service"]["catalog"], "II/328/allwise")
+            self.assertEqual(manifest["service"]["client"], "astroquery.vizier.Vizier")
+            self.assertEqual(manifest["query_params"]["radius_arcsec"], 3.0)
+            self.assertEqual(manifest["query_params"]["timeout_seconds"], 30.0)
+            self.assertEqual(manifest["n_input"], 1)
+            self.assertEqual(manifest["n_matched"], 1)
+            self.assertEqual(manifest["n_unmatched"], 0)
+            self.assertEqual(manifest["input_enriched_sha256"], self.mod.sha256_file(enriched_path))
+            self.assertEqual(manifest["output"]["sha256"], self.mod.sha256_file(output_path))
+            self.assertEqual(manifest["output"]["file_name"], output_path.name)
+
+    def test_checkpoint_resume_across_two_incarnations(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            rows = [
+                {"targetid": 1, "target_ra": 10.0, "target_dec": 1.0},
+                {"targetid": 2, "target_ra": 20.0, "target_dec": 2.0},
+            ]
+            enriched_path, manifest_path = self._write_enriched_fixture(work, rows)
+            checkpoint_path = work / "checkpoint.json"
+
+            calls: list[int] = []
+
+            def fake_query_fn(ra, dec, radius_arcsec, timeout):
+                calls.append(1)
+                if ra == 10.0:
+                    return {"found": True, "ra": ra, "dec": dec, "w1": 15.0, "w2": 14.0, "separation_arcsec": 0.1, "allwise_id": "a"}
+                raise RuntimeError("simulated transient service outage")
+
+            # First incarnation: targetid 1 resolves; targetid 2's query
+            # raises. run_wise_join itself does not catch query_fn
+            # exceptions (that fault barrier lives inside query_wise_cone,
+            # per the SIMBAD/NED precedent) so this incarnation propagates —
+            # but targetid 1's result must already be checkpointed.
+            with self.assertRaises(RuntimeError):
+                self.mod.run_wise_join(
+                    enriched_path, manifest_path, checkpoint_path,
+                    work / "wise_join.parquet", work / "wise_join_manifest.json",
+                    rate_limit_sleep=0.0, checkpoint_every=1, query_fn=fake_query_fn,
+                )
+            self.assertEqual(len(calls), 2)
+            checkpoint = json.loads(checkpoint_path.read_text())
+            self.assertIn("1", checkpoint)
+            self.assertNotIn("2", checkpoint)
+
+            # Second incarnation: targetid 2 now resolves; targetid 1 must
+            # NOT be re-queried (resume skips it via the checkpoint).
+            def fake_query_fn_round_two(ra, dec, radius_arcsec, timeout):
+                calls.append(1)
+                self.assertEqual(ra, 20.0)  # targetid 1 (ra=10.0) never re-queried
+                return {"found": True, "ra": ra, "dec": dec, "w1": 13.0, "w2": 12.5, "separation_arcsec": 0.3, "allwise_id": "b"}
+
+            output_path = work / "wise_join.parquet"
+            manifest_output_path = work / "wise_join_manifest.json"
+            manifest = self.mod.run_wise_join(
+                enriched_path, manifest_path, checkpoint_path,
+                output_path, manifest_output_path,
+                rate_limit_sleep=0.0, query_fn=fake_query_fn_round_two,
+            )
+            self.assertEqual(manifest["n_matched"], 2)
+            self.assertEqual(manifest["n_unmatched"], 0)
+
+            import pyarrow.parquet as pq
+
+            table = pq.read_table(output_path).to_pydict()
+            by_tid = dict(zip(table["targetid"], range(len(table["targetid"]))))
+            self.assertAlmostEqual(table["w1"][by_tid[1]], 15.0)
+            self.assertAlmostEqual(table["w1"][by_tid[2]], 13.0)
+
+    def test_input_sha256_mismatch_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            rows = [{"targetid": 1, "target_ra": 10.0, "target_dec": 1.0}]
+            enriched_path, manifest_path = self._write_enriched_fixture(work, rows)
+
+            tampered_manifest = json.loads(manifest_path.read_text())
+            tampered_manifest["output"]["sha256"] = "0" * 64
+            tampered_path = work / "tampered_manifest.json"
+            tampered_path.write_text(json.dumps(tampered_manifest))
+
+            with self.assertRaises(self.mod.WiseJoinError):
+                self.mod.run_wise_join(
+                    enriched_path, tampered_path, work / "checkpoint.json",
+                    work / "wise_join.parquet", work / "wise_join_manifest.json",
+                    rate_limit_sleep=0.0, query_fn=lambda *a, **k: {"found": False},
+                )
 
 
 if __name__ == "__main__":
