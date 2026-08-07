@@ -11,9 +11,11 @@ REAL-SCIENCE closure of the Gemini/ChatGPT MAJOR on the unified Paper 1
      dressing to reach +4.  Construct a fully gauge-invariant, diffeomorphism-
      covariant local DIMENSION-4 completion."
 
-This script performs the two symbolic algebra checks that make the enumeration
-of the genuine local dimension-4 parity-odd operator basis of minimal ECH
-rigorous rather than asserted:
+SCOPE (honest statement, its filename notwithstanding): this script verifies
+the TWO symbolic tensor identities used by the paper's operator-basis
+reduction. It performs NO basis enumeration: completeness of the six-member
+basis {O1-O6} is asserted from the paper's stated construction rule, not
+established by this script. The two checks are:
 
   CHECK A  --  Every parity-odd invariant built from ONE curvature and the
                Levi-Civita epsilon vanishes identically once the first
@@ -29,9 +31,10 @@ rigorous rather than asserted:
                fierz_lemma_check.py.
 
 Together with the structural facts that the Nieh-Yan (O2) and Pontryagin (O3)
-densities are exact total derivatives (Nieh & Yan 1982; Chern-Weil), CHECK A
-and CHECK D establish that EVERY admissible local dimension-4 parity-odd density
-in minimal ECH is one of:
+densities are exact total derivatives (Nieh & Yan 1982; Chern-Weil), and
+GRANTING the construction-rule-asserted completeness of the exhibited basis
+(not proved here), CHECK A and CHECK D establish that every member of that
+basis is one of:
 
     (i)   a topological total-derivative term  (O2, O3)  -> 0 EOM/vacuum,
     (ii)  a four-fermion contact term in the Fierz basis (O4, O5) -> M_Pl^4 NDA,
@@ -200,10 +203,11 @@ def main():
         print("  O4,O5 (torsion^2 / axial-torsion) collapse to (J5.J5) in the")
         print("        Fierz-closed basis (fierz_lemma_check.py), M_Pl^4 by NDA.")
         print("  O2,O3 (Nieh-Yan, Pontryagin) are exact total derivatives (0 EOM).")
-        print("  => every local dim-4 parity-odd operator in minimal ECH is")
-        print("     topological, Fierz-basis-reducible, or Bianchi-vanishing;")
-        print("     NONE gives meV^4 vacuum energy without a new light scale.")
-        print("     Single-scale NDA closure SURVIVES at genuine dimension 4.")
+        print("  => every member of the exhibited basis {O1-O6} is topological,")
+        print("     Fierz-basis-reducible, or Bianchi-vanishing; NONE gives meV^4")
+        print("     vacuum energy without a new light scale. Completeness of the")
+        print("     basis itself is asserted from the paper's construction rule,")
+        print("     NOT established by this script (no enumeration performed).")
     else:
         print("VERDICT: a check FAILED -- do not claim closure; investigate.")
     print("=" * 70)
