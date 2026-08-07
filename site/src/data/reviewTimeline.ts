@@ -58,6 +58,43 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r3-confirmation-board-truth-audit-closure-2026-08-06",
+    dateISO: "2026-08-06",
+    kind: "internal-api",
+    title:
+      "P1C R3 confirmation board on the exact v1C.0.5 PDF — Grok REJECT / Gemini MAJOR / Claude minor-revisions; 8 genuinely-new items truth-audited and closed as v1C.0.6; R4 confirmation required",
+    papers: ["P1C"],
+    summary:
+      "Three raw legs bound to the exact v1C.0.5 PDF (sha a770491d): Claude Opus INT minor-revisions (1 MAJOR / 7 MINOR), Grok grok-4.3 REJECT, Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. Verdict-first truth audit against the R1+R2 disposition ledgers deduplicated the board to a 20-item ledger: 8 genuinely-new-real (headline: the completeness framing exceeded what the released script verifies — adjudicated to the honest wording downgrade per never-fabricate: Sec V retitled 'The Operator-Basis Argument', every 'completeness argument' surface downgraded, App-A1 'enumerate' verbs changed to 'exhibit', and the released script's overclaiming docstring/output corrected in the same commit (re-run: both identities pass); a real mechanized enumeration is recorded as deferred-genuine because the literal construction rule admits mixed R*T*T / T^4 classes whose adjudication is real derivation work, not a bounded script extension. Also closed: the strict kappa = 8piG = M_Pl^-2 contradiction (two legs) resolved with an exact reduced-mass definition plus a declared factor-8pi order-of-magnitude abuse and a mixed-usage note; abstract/conclusions 61-67-order endpoints labeled honestly (67 derived flow, 61 pessimistic chiral-count bound); alpha_em/4pi rounding stated explicitly (5.8e-4 rounded UP to 1e-3 — conservative); Table III gains a 'Final (x prefactor)' column so the table itself shows O4 = O5 -> kappa(J5.J5); the R4 anchor alpha/M ~ 1e-21/GeV given its two-sentence algebraic origin carried from P1A's beta = (alpha/2M) Dphi derivation; integrand-dimension phrasing fixed; Ref [12] rendering fixed), 8 re-flags of R1/R2-dispositioned content, 1 scope-opinion, 3 falsified with source citations (Claude's Omega44/alpha4 exponent claim — the PDF prints the first-power denominator and recomputation confirms it; Gemini's Fierz (F_c)_13 = 1 claim — the matrix prints 1/2 and F^2 = identity verifies on all 25 entries, a stacked-fraction extraction artifact; Grok's no-operator-table claim — Table III exists). All closures landed as v1C.0.6 (18 pp, 0 errors / 0 undef / 0 overfull, visual audit pass, mirrors byte-identical). Because R3 surfaced genuinely-new-real findings, the paper is NOT converged: an R4 confirmation board on the exact v1C.0.6 PDF is required (directive H-refined).",
+    keyTakeaways: [
+      "P1C v1C.0.6 served PDF: 18 pages · SHA-256 fc23872dec25b16acfae57c84df40c56a357555aab777185f03efb1e5586f7ce · md5 a0dac49ca1ccba861b92f9bfda471615",
+      "Enumeration MAJOR adjudicated to option (b) — wording downgraded to exactly what the script verifies; script docstring de-overclaimed in the same commit; mechanized enumeration recorded deferred-genuine, never claimed without the artifact",
+      "kappa convention made exact (8piG = reduced-mass^-2; full-mass writing declared an explicit 8pi abuse) — a two-leg genuinely-new definitional error",
+      "3 findings falsified with recomputation receipts: Omega-ratio exponent, Fierz (F_c)_13, and the no-operator-table claim",
+      "Perplexity leg FAILED — preserved as a failure record, never counted as a verdict",
+      "R3 was NOT clean (8 genuinely-new) — R4 confirmation board on the exact v1C.0.6 PDF is required before convergence can be claimed",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-06-P1C-v1C.0.5-EXACTPDF-a770491d-R3CONF/P1C_claude_r3_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-06-P1C-v1C.0.5-EXACTPDF-a770491d-R3CONF_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-06-P1C-v1C.0.5-EXACTPDF-a770491d-R3CONF_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "R3 truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-08-06-P1C-v1C.0.5-EXACTPDF-a770491d-R3CONF/P1C_v1C.0.5_R3_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.6 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.6.pdf" },
+    ],
+  },
+  {
     id: "skills-autolog-2026-08-06",
     dateISO: "2026-08-06",
     kind: "skill-improvement",

@@ -1,11 +1,57 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.5 · 2026-08-06 ·
+**Current candidate:** draft v1C.0.6 · 2026-08-06 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R2 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 7 GENUINELY-NEW-REAL
-FINDINGS CLOSED (v1C.0.5). NOT CONVERGED — R3 confirmation board on the
-exact v1C.0.5 PDF is REQUIRED.** The R2 confirmation board ran 2026-08-06 on
+**Status: R3 CONFIRMATION BOARD RUN AND TRUTH-AUDITED → 8 GENUINELY-NEW-REAL
+FINDINGS CLOSED (v1C.0.6). NOT CONVERGED — R4 confirmation board on the
+exact v1C.0.6 PDF is REQUIRED.** The R3 confirmation board ran 2026-08-06 on
+the exact v1C.0.5 PDF (sha `a770491d…`), three legs with raw receipts:
+**Claude Opus INT minor-revisions (1 MAJOR / 7 MINOR) · Grok grok-4.3
+REJECT · Gemini gemini-3.1-pro-preview MAJOR REVISIONS**. The Perplexity leg
+FAILED — recorded as failed, never a verdict. The verdict-first truth audit
+against the R1+R2 disposition ledgers
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-06-P1C-v1C.0.5-EXACTPDF-a770491d-R3CONF/P1C_v1C.0.5_R3_truth_audit.md`)
+deduplicated the board to 20 canonical items: **8 genuinely-new-real (closed
+in v1C.0.6), 8 re-flags of R1/R2-dispositioned content, 1 scope-opinion, 3
+falsified with recomputation receipts** (Claude's Ω₄₄/α₄-exponent claim —
+the PDF prints the first-power denominator and recomputation confirms it;
+Gemini's Fierz (F_c)₁₃=1 claim — the matrix prints ½ and F² = 𝟙 verifies on
+all 25 entries, a stacked-fraction extraction artifact; Grok's
+no-operator-table claim — Table III exists). The 8 closures, headline
+first: (1) the completeness framing exceeded what the released script
+verifies — adjudicated to the honest **wording downgrade (option b)** per
+never-fabricate: Sec V retitled "The Operator-Basis Argument", every
+"completeness argument" surface downgraded with the rule-asserted
+disclosure, App-A1 "enumerate" → "exhibit", and the released script's
+overclaiming docstring/output corrected in the same commit (re-run: both
+identities pass); option (a) — actually mechanizing the enumeration — was
+examined and rejected for this round because the literal construction rule
+admits mixed R·T·T / T⁴ classes whose adjudication is real derivation work
+(days), not a bounded script extension; the mechanized enumeration is
+recorded as deferred-genuine, never claimed without the artifact. (2)
+Strict κ = 8πG = M_Pl⁻² contradiction (two legs) resolved: κ ≡ 8πG exactly
+(= reduced-mass M̄_Pl⁻²), full-mass κ ∼ M_Pl⁻² declared an explicit 8π
+order-of-magnitude abuse, mixed-usage note added (Table-II R1 benchmark =
+exact κ; App-A hierarchy = full mass). (3) Abstract/conclusions 61–67-order
+endpoints labeled honestly (67 = derived integrated flow; 61 = deliberately
+pessimistic chiral-count bound). (4) α_em/4π rounding stated explicitly
+(5.8×10⁻⁴ rounded UP to 10⁻³ — conservative direction). (5) Table III gains
+a "Final (×prefactor)" column so the table itself shows O4 = O5 →
+κ(J⁵·J⁵) (the R2 caption-only fix was judged insufficient by a fresh leg).
+(6) R4 anchor α/M ∼ 10⁻²¹ GeV⁻¹ given its two-sentence algebraic origin
+carried from P1A (β = (α/2M)Δφ, Δφ ∼ √(2ρ_θ)/m_θ ∼ M_Pl). (7)
+Integrand-dimension phrasing fixed (prefactor outside the integral). (8)
+Ref. [12] rendering fixed. v1C.0.6: 18 pp, 0 errors / 0 undef / 0
+overfull, visual audit pass, mirrors byte-identical (md5 `a0dac49c…`,
+SHA-256 `fc23872d…`). **Convergence read (directive H-refined): R3
+surfaced 8 genuinely-new-real findings against a target of 0, so the paper
+is NOT converged and an R4 confirmation board on the exact v1C.0.6 PDF
+(sha `fc23872d…`) is required.** (Calibration context, not
+verdict-softening: 1 of 8 was MAJOR-grade and resolved by an honest
+wording downgrade; 1 was a two-leg definitional error; 1 was an
+insufficiency of an R2 closure; 5 were single-leg minor/nit-grade labeling
+or formatting items.) Prior-round record follows. The R2 confirmation board ran 2026-08-06 on
 the exact v1C.0.4 PDF (sha `7ec5f221…`), three legs with raw receipts:
 **Claude Opus INT minor-revisions (1 MAJOR / 4 MINOR) · Grok grok-4.3
 REJECT · Gemini gemini-3.1-pro-preview MAJOR REVISIONS**. The Perplexity leg
