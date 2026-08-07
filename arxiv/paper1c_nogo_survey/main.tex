@@ -127,7 +127,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.6}
+\newcommand{\paperVersion}{v1C.0.7}
 \newcommand{\paperTimestamp}{August 6, 2026}
 
 \begin{document}
@@ -147,8 +147,9 @@ phenomenology. Working from the algebraic torsion-elimination setup
 established in a companion paper, we catalog thirteen distinct
 mechanism-class constraints --- fourteen historical catalog entries, one
 subsumed by another --- spanning seven foundational mechanism classes and
-six observational-channel branches, each closing a specific route by which
-the ECH bounce could plausibly source a $\Lambda$-like late-time density.
+six observational-channel branches, each closing one or more of the four
+routes by which the ECH bounce could plausibly source a $\Lambda$-like
+late-time density.
 Of the four parity-odd/dark-energy channels enumerated by this framework,
 we present amplitude-budget closures of the two historical quantum routes:
 Route~2 (one-loop graviton-sector corrections to the Holst term), whose
@@ -308,8 +309,16 @@ $\MPl\simeq1.22\times10^{19}\,$GeV; the reduced-versus-full distinction
 $\geq 58$-order margins quoted. Where a specific imported numeric
 depends on the choice, the usage is stated rather than hidden: the
 Table~\ref{tab:evidentiary_status} R1 benchmark
-$\kappa n_\psi^2/\rho_\Lambda\simeq3.6\times10^{-69}$ is computed with
-the exact $\kappa=8\pi G$ (equivalently the reduced-mass form), while
+$\kappa n_\psi^2/\rho_\Lambda\simeq3.6\times10^{-69}$ is the companion's
+published value~\cite{Golden2026P1a}, computed with the exact
+$\kappa=8\pi G$ (equivalently the reduced-mass form) \emph{and} the
+companion's dark-energy normalization
+$\rho_\Lambda\approx(2.3\,\text{meV})^4\approx2.8\times10^{-11}\,\text{eV}^4$;
+under the $\rho_\Lambda=(2.25\,\text{meV})^4$ input used in the
+Appendix~\ref{app:dimensions} hierarchy, the same $\kappa n_\psi^2$
+evaluates to $3.9\times10^{-69}$ --- identical at the order-of-magnitude
+precision quoted (${\approx}68$ orders below $\rho_\Lambda$ either way),
+while
 the Appendix~\ref{app:dimensions} hierarchy $\MPl^4/\rho_{\Lambda,\rm obs}$
 uses the full mass; each is quoted at order-of-magnitude precision
 only. Third, the symbol pair $(\alpha,M)$
@@ -478,6 +487,10 @@ the ECH analysis. \textbf{Structural/philosophical observations} (Barrier
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.7cm]R2.north);
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.7cm]R3.north);
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.6cm]R4.north);
+%% --- Per-barrier attribution labels for the Branch-H arrows (B14 fan vs
+%%     the shared B8/B14 leg to R1) ---
+\node[font=\scriptsize\itshape, fill=white, inner sep=1pt] at (1.55,1.62) {B8, B14};
+\node[font=\scriptsize\itshape, fill=white, inner sep=1pt] at (9.55,1.22) {B14};
 
 \end{tikzpicture}
 \caption{\textbf{Structure of the 14-entry barrier closure.} Top row: the
@@ -490,7 +503,12 @@ observational-channel barriers), grouped into four boxes --- Branch~H
 routes are closed, giving 13 distinct mechanism-class constraints. Arrows
 indicate which barrier classes constrain each route; Branch~H carries
 arrows to all four routes because B14 (perturbation transparency)
-constrains R1--R4, while its co-resident B8 constrains R1 only. B14
+constrains R1--R4, while its co-resident B8 constrains R1 only --- the
+in-figure labels record this per-barrier attribution (the upper Branch-H
+arrow to R1 carries both B8 and B14; the lower three-route fan is B14
+alone), which is otherwise not resolved at box granularity. The branch
+letters are inherited unchanged from the historical catalog, which never
+assigned the letters I or K; no branch entries have been removed. B14
 (the ECH perturbation-gate closure) sits in Branch~H and
 subsumes B8 (parity-even interaction), so B8 is not counted separately;
 several entries share the scaling ansatz but each probes a distinct
@@ -1070,8 +1088,12 @@ honest to a factor but not a first-principles derivation.
 Table~\ref{tab:evidentiary_status} classifies every leg on this scale.
 No leg is claimed at a level higher than this table records: in
 particular, the only Tier-I (rigorous) leg is the
-perturbation-transparency result for canonical scalar matter; R2--R3 are
-Tier-III ansatz-level estimates; and the R4 closure is a Tier-II
+perturbation-transparency result for canonical scalar matter; R2 is a
+Tier-III ansatz-level estimate, and the R1/R3 \emph{amplitude} legs are
+likewise Tier-III (their structural components --- the parity-even
+mean-field fact for R1 and the mass-dimension lock for R3 --- are the
+Tier-II entries Table~\ref{tab:evidentiary_status} records alongside
+them); and the R4 closure is a Tier-II
 \emph{naturalness/explanatory-deficit} objection, \emph{not} an amplitude
 exclusion and conditional on the on-shell scaling ansatz of
 Appendix~\ref{app:dimensions}. The aggregate ``four-route channel-level
@@ -1127,10 +1149,12 @@ explicitly-labeled scaling ansatz; exploratory, not load-bearing.\strut}
 \parbox[t]{0.40\textwidth}{\raggedright Quantum running of $\gamma_{\rm BI}$
 generating a dark-energy-relevant shift\strut} &
 \parbox[t]{0.32\textwidth}{\raggedright \textbf{(II)+(III)}: mass-dimension
-lock is structural; the chiral-asymmetry beta-function bound
-(Benedetti--Speziale) is a Tier-III order-of-magnitude upper bound,
-deliberately loose and non-load-bearing ($\gtrsim 60$ orders of
-margin).\strut} \\[3pt]
+lock is structural; the chiral-count ansatz bound (motivated by
+Date--Kaul--Sengupta~\cite{DateKaulSengupta2009}) is a Tier-III
+order-of-magnitude upper bound, deliberately loose and non-load-bearing
+($\gtrsim 60$ orders of margin); the integrated Benedetti--Speziale flow
+gives the far smaller derived primary estimate
+(Sec.~\ref{sec:routes}).\strut} \\[3pt]
 \parbox[t]{0.18\textwidth}{\raggedright R4 (parity-odd CMB / spectator-ALP
 coupling)\strut} &
 \parbox[t]{0.40\textwidth}{\raggedright Minimal ECH \emph{deriving} the single
@@ -1460,35 +1484,45 @@ to the committed files):
 \begin{center}
 \artifact{arxiv/scripts/dim4_parityodd_enumeration.py} \\
 \artifact{arxiv/scripts/fierz_lemma_check.py} \\
-\artifact{research/theory_audit/fierz_adjudication_2026_08_05.py}
+\artifact{research/theory_audit/fierz_adjudication_2026_08_05.py} \\
+\artifact{research/theory_audit/fierz_adjudication_2026_08_05.md}
 \end{center}
 The first script verifies the two reduction identities of
 Appendix~\ref{app:dim4_completion} (Checks A and D); the second verifies
 the companion paper's Fierz convention (see the convention note in
 Appendix~\ref{app:fierz}); the third independently adjudicates the Fierz
 coefficient identity of Eq.~(\ref{eq:AAdecomp}) by explicit $4\times4$
-Dirac-matrix construction and exact Grassmann-algebra derivation. None of
+Dirac-matrix construction and exact Grassmann-algebra derivation, with
+the fourth file its human-readable report. None of
 the scripts performs the basis enumeration, which rests on the stated
 construction rule. These exact files are frozen at immutable repository
 commit
-\href{https://github.com/Hubify-Projects/bigbounce/tree/9b92721d5d7eb6601ebf48c49379318238b7100b}{\texttt{9b92721d5d7e}}
-(a later revision clarifies the first script's descriptive text only;
-the checks performed and their pass/fail results are identical);
-the companion paper and its own verification scripts are additionally
+\href{https://github.com/Hubify-Projects/bigbounce/tree/9b92721d5d7eb6601ebf48c49379318238b7100b}{\texttt{9b92721d5d7e}}\footnote{A
+later repository revision clarifies the first script's descriptive text
+only; the checks performed and their pass/fail results are identical.}.
+The provenance boundary between the two archives is as follows: the
+companion paper and the companion's own verification scripts are
 preserved as an immutable archival deposit under
 \href{https://doi.org/10.5281/zenodo.21481838}{doi:10.5281/zenodo.21481838}
-(CC-BY-4.0)~\cite{Golden2026P1a}.
+(CC-BY-4.0, deposited 2026 July 22)~\cite{Golden2026P1a}, whereas the
+2026-08-05 adjudication artifacts listed above post-date that deposit
+and are available at the pinned repository commit only, not within the
+Zenodo deposit.
 
 %% ============================================================
 %%  ACKNOWLEDGMENTS
 %% ============================================================
 \begin{acknowledgments}
-We acknowledge the foundational contributions of Nikodem Pop\l{}awski, Simone
-Mercuri, Laurent Freidel, Djordje Minic, and Tatsu Takeuchi for their
-derivations connecting the Barbero--Immirzi parameter to parity-violating
-interactions in loop quantum gravity, and Ilya Shapiro, Poliane Teixeira,
-Dario Benedetti, and Simone Speziale for the one-loop renormalization results
-this survey's Route-2/Route-3 closures build on.
+This survey builds on the published spin-torsion cosmology of Nikodem
+Pop\l{}awski~\cite{Poplawski2010}, on the published derivations of Simone
+Mercuri~\cite{Mercuri2009} and of Laurent Freidel, Djordje Minic, and
+Tatsu Takeuchi~\cite{Freidel2005} connecting the Barbero--Immirzi
+parameter to parity-violating fermion interactions, and on the published
+one-loop renormalization results of Ilya Shapiro and Poliane
+Teixeira~\cite{ShapiroTeixeira2014} and of Dario Benedetti and Simone
+Speziale~\cite{BenedettiSpeziale2011run} that anchor the Route-2/Route-3
+budgets. None of the named researchers was involved in this work, and no
+endorsement is implied.
 
 \emph{AI-assisted methods.}---This work was carried out with an agentic AI
 research pipeline built on Anthropic Claude (Opus~4 family, 2026 releases),
@@ -1887,9 +1921,8 @@ is the $\gamma\to\infty$ limit)~\cite{Golden2026P1a}. This
 coefficient set is independently verified by explicit $4\times4$
 Dirac-matrix construction in both metric signatures and an exact
 Grassmann-algebra derivation of the operator row (the unique solution for
-identical fields); see the released verification artifact
-\artifact{research/theory_audit/fierz_adjudication_2026_08_05.py} (report:
-\artifact{research/theory_audit/fierz_adjudication_2026_08_05.md}). The
+identical fields); see the released verification artifact and its
+report listed in the Data and Code Availability statement. The
 released script \texttt{arxiv/scripts/fierz\_lemma\_check.py} independently
 checks the same convention's matrix involution and axial-row coefficients.
 None of this survey's conclusions depends on the convention-bound
