@@ -187,6 +187,62 @@
 %   falsified as a pdftotext extraction artifact (render shows
 %   underscores).
 %
+% v1C.0.13 (2026-08-07): R10 convergence-board closures (Claude
+%   MAJOR-REVISION 2 MAJOR / 7 MINOR, zero computational errors / Grok
+%   REJECT / Gemini MINOR-REVISIONS -- first sub-major verdict -- on the
+%   exact v1C.0.12 PDF sha c21fde9f; Perplexity FAILED). Both MAJORs are
+%   claim-scoping defects and are closed by scoping, not by weakening or
+%   by inventing coverage.
+%   (1) MAJOR-1 (B14 Tier-I scope). App. D proves the transparency
+%   theorem for canonical scalar matter and expressly excludes fermion
+%   sources, so it cannot subsume B8 (a fermionic (J5)^2 statement) nor
+%   constrain R1 (the NJL fermionic channel). B14's route tag narrowed
+%   [R1-R4] -> [R2-R4, zero-spin branch] with the honest content stated
+%   (it removes those routes' CLASSICAL zero-spin perturbative baseline,
+%   not their quantum/fermionic content); B8 restored as an independent
+%   constraint; headline RECOUNTED 13 -> 14 distinct mechanism-class
+%   constraints everywhere (abstract, intro, Sec. III preamble, Fig. 1
+%   caption + in-figure edge label "B8, B14" -> "B8", Table I caption,
+%   App. A, Sec. VI, Sec. VII). This also resolves Grok N2.
+%   (2) MAJOR-2 (Route-2 dimension basis). Eq. (1) is a dimension-5
+%   operator on a light pseudoscalar vartheta_NY, carried by a
+%   dimension-(-1) coefficient, with an extra derivative -- three
+%   independent reasons it is outside the Sec. V dimension-4
+%   construction rule, and its ~H_0^2 background is exactly the light
+%   scale App. A says EVADES the NDA bound. The false delegation is
+%   removed. Replaced by the in-scope argument extracted faithfully from
+%   the frozen monolith (paper1_unified.tex sec:jackiwpi_cs): constant
+%   coefficient -> operator vanishes and the Holst/NY content is O1/O2,
+%   exact total derivatives (Tier-I, inside the list); dynamical
+%   coefficient -> non-minimal dynamical-Immirzi completion, closed only
+%   at the R4-class naturalness level (Tier-II), reinforced by B7.
+%   Route 2's dark-energy leg is therefore REDUCED in claimed strength
+%   and said so in Sec. IV A, Table II, Sec. VI and Sec. VII; the
+%   "all four channels close" sentence is re-scoped per closure mode.
+%   (3) Claude MINOR-1 (beta(gamma) "could only suppress" -> net -1.5
+%   orders, stated as a pair), MINOR-5 (Mercuri [8] dropped from the RG
+%   citation, moved to the classical-structure clause), MINOR-6 (B9's
+%   [R2] tag motivated: it removes the vacuum-SELECTION step, not an
+%   amplitude), MINOR-2 ({O1-O6} "basis" -> "spanning list" at the four
+%   remaining sites; Fierz-sector "basis" left alone -- that set IS a
+%   basis), MINOR-3 (tautological D_inf parenthetical), MINOR-4 (Sec. II
+%   now states eta = diag(-,+,+,+) and eps^{0123} = +1 outright),
+%   MINOR-7 (abstract parity-odd qualifier).
+%   (4) Grok: E1/N1 version+date stamp removed from the printed title
+%   block (no \date; provenance moved to PDF metadata pdfkeywords);
+%   N3 beta(gamma) defined at first use; N4 defensive "companion does
+%   not retain" phrasing consolidated to a single statement in Sec. I.
+%   M5 (length): 7 redundant passages condensed (see the round record);
+%   no barrier entry, table row, equation or derivation deleted. Net
+%   22 -> 23 pp because the MAJOR-2 closure required new content.
+%   (5) Gemini: E1 version-history prose ("as earlier versions of this
+%   list did") removed; MINOR (R4 standalone) closed by stating the two
+%   checkable steps in-text and re-scoping the rest explicitly; MAJOR
+%   (frozen-release DOI) remains deferred-genuine to the P-round, as
+%   the paper already discloses. Gemini NIT (ref [13] "placeholder
+%   arXiv ID") falsified: 2509.13654 is the real ACT DR6 record,
+%   verified against the live arXiv listing in R7.
+%
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 \documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
@@ -226,8 +282,12 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.12}
+\newcommand{\paperVersion}{v1C.0.13}
 \newcommand{\paperTimestamp}{August 7, 2026}
+
+% Internal draft provenance is carried in the PDF metadata only; the printed
+% title block is kept free of version-control strings (R10 Grok E1/N1).
+\hypersetup{pdfkeywords={\paperVersion\ (\paperTimestamp)}}
 
 \begin{document}
 
@@ -237,18 +297,19 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{\paperTimestamp\ (\paperVersion)}
+% No \date: revtex leaves \@date empty and prints no "(Dated: ...)" line.
+% Draft version/timestamp live in the PDF metadata (pdfkeywords) only.
 
 \begin{abstract}
 We present a structural no-go survey of the minimal Einstein--Cartan--Holst
 (ECH) spin-torsion framework as a source of late-time dark energy and bounce
 phenomenology. Working from the algebraic torsion-elimination setup
-established in a companion paper, we catalog thirteen distinct
-mechanism-class constraints --- fourteen historical catalog entries, one
-subsumed by another --- spanning seven foundational mechanism classes and
-six observational-channel branches, each closing one or more of the four
-routes by which the ECH bounce could plausibly source a $\Lambda$-like
-late-time density.
+established in a companion paper, we catalog fourteen distinct
+mechanism-class constraints --- one per catalog entry, none a logical
+consequence of another --- spanning seven foundational mechanism classes
+and six observational-channel branches, each closing one or more of the
+four routes by which the ECH bounce could plausibly source a
+$\Lambda$-like late-time density.
 Of the four parity-odd or dark-energy channels enumerated by this
 framework,
 we present amplitude-budget closures of the two historical quantum routes:
@@ -262,13 +323,19 @@ one-loop renormalization-group flow that leaves the contribution
 $61$--$67$ orders of magnitude below the \emph{observed dark-energy
 density} (the ${\sim}67$-order endpoint from the derived integrated
 flow, the ${\sim}61$-order endpoint from a deliberately pessimistic
-chiral-count bound). Neither route is presented as a viable mapping: the
-companion paper does not retain these historical mappings as results, and
-this survey closes them as bounded amplitude budgets. We further present
+chiral-count bound). Neither route is presented as a viable mapping; both
+are closed as bounded amplitude budgets. Route~2's \emph{dark-energy}
+leg, as distinct from its birefringence leg, is closed within the minimal
+field content by the operator list below and, on the non-minimal
+dynamical-pseudoscalar branch that its phenomenological representative
+operator actually requires, only at the naturalness level. We further present
 an operator-list argument: a six-member \emph{spanning list}
 $\{$O1--O6$\}$ of local,
 gauge-invariant, diffeomorphism-covariant parity-odd densities of mass
-dimension exactly four, exhibited under stated construction rules for the
+dimension exactly four (parity-odd as $\varepsilon$-contracted densities
+before on-shell reduction; the single surviving member reduces to a
+parity-\emph{even} contact term), exhibited under stated construction
+rules for the
 minimal-coupling ECH field content, is shown to close --- every member is
 a topological total derivative, a Fierz-closed four-fermion contact term
 suppressed by $\MPl^{-2}$, or identically vanishing (the single-curvature
@@ -285,7 +352,9 @@ rule-admitted operator space is asserted from the construction rules, not
 proved by exhaustive symbolic enumeration. The
 catalog carries an explicit evidentiary classification (rigorous result /
 structural argument / ansatz-level estimate): only the
-perturbation-transparency result is a Tier-I rigorous theorem, and the
+perturbation-transparency result is a Tier-I rigorous theorem, and it is
+Tier-I strictly on the zero-spin (canonical-scalar-matter) branch its
+hypotheses cover; the
 survey is a channel-level, not operator-level, closure within a stated
 minimal-coupling scope --- non-minimal completions, an added light scale
 or non-minimal torsion coupling, lie explicitly outside it.
@@ -320,8 +389,8 @@ gravitational-wave, and relic-abundance channels) --- and show that each
 is closed by an explicit, individually labeled argument: an
 amplitude-suppression bound, a naturalness/fine-tuning objection, a
 decoupling identity, or a classification argument. The resulting
-fourteen-entry catalog collapses to thirteen distinct mechanism-class
-constraints (one entry is subsumed by a more complete result) and is
+fourteen-entry catalog yields fourteen distinct mechanism-class
+constraints and is
 presented alongside two amplitude-budget closures --- Route~2 (one-loop
 graviton-sector corrections to the Holst term) and Route~3 (quantum
 running of the Barbero--Immirzi parameter) --- together with an
@@ -329,9 +398,7 @@ operator-list argument establishing that the governing
 dimensional bound applies not to one representative operator but to the
 exhibited six-member local dimension-four parity-odd operator spanning
 list admitted by the minimal-coupling field content under stated
-construction rules (the list is rank-four, hence redundant by
-construction; that it \emph{spans} the rule-admitted space is asserted
-from those rules, not proved by exhaustive symbolic enumeration).
+construction rules.
 
 \emph{Relation to the companion paper.}---This survey builds on, and is a
 companion to, the paper establishing the algebraic torsion-elimination step
@@ -358,16 +425,14 @@ the companion does not publish: the systematic barrier catalog
 (Sec.~\ref{sec:barriers}, Table~\ref{tab:barriers},
 Fig.~\ref{fig:barrier_map}), the Route-2/Route-3 amplitude-budget closures
 (Sec.~\ref{sec:routes}), and the operator-list argument
-(Sec.~\ref{sec:completeness}) with its supporting appendices. On the
-Route-2/Route-3 mappings the two papers take one consistent position: the
-companion does not retain the historical one-loop Holst/Immirzi-running
-mappings to late-time dark energy as results, because the underlying
-calculations do not derive the required cosmological stress tensor and
-observable matching~\cite{ShapiroTeixeira2014,BenedettiSpeziale2011run};
-this survey does not reinstate them --- Sec.~\ref{sec:routes} treats them
-as historical candidate routes and closes them as bounded amplitude
-budgets, without supplying (or needing) the missing stress-tensor
-derivation.
+(Sec.~\ref{sec:completeness}) with its supporting appendices. Route~2 and
+Route~3 enter as historical candidate mappings, not as results of either
+paper: the underlying one-loop
+calculations~\cite{ShapiroTeixeira2014,BenedettiSpeziale2011run} do not
+derive the cosmological stress tensor and observable matching a
+dark-energy mapping would need, and Sec.~\ref{sec:routes} closes them as
+bounded amplitude budgets without supplying that derivation. This is
+stated once here and is not repeated at each route.
 
 \emph{Contributions.}---So that the publishable unit of this survey can
 be judged in one place: beyond the single-scale NDA argument of
@@ -379,9 +444,7 @@ explicit three-tier evidentiary classification
 Sec.~\ref{sec:completeness} / Appendix~\ref{app:dim4_completion} --- the
 six-member genuine dimension-4 parity-odd spanning list $\{$O1--O6$\}$
 with its script-verified reduction identities and its two exact
-rank-reducing relations (that the list spans the rule-admitted space is
-asserted from the stated construction rule, Sec.~\ref{sec:completeness},
-not proved); (iii)~the integrated Route-3 bound
+rank-reducing relations; (iii)~the integrated Route-3 bound
 $|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$ obtained from the
 Benedetti--Speziale one-loop flow; and (iv)~the one-loop-grounded Route-2
 amplitude budget. A self-contained statement and proof of the
@@ -410,7 +473,16 @@ relativity extended by promoting the spin connection to an independent
 field, with the Holst term $\gamma^{-1}\,e^a\!\wedge e^b\wedge R_{ab}$
 added to the first-order action with Barbero--Immirzi parameter $\gamma$.
 Signs, signature, and index conventions follow the companion paper's
-setup~\cite{Golden2026P1a}. We use natural units and
+setup~\cite{Golden2026P1a}; the two that are load-bearing for the
+identities used below are stated here outright, so that every
+coefficient in this manuscript can be checked from this manuscript: the
+metric signature is mostly-plus, $\eta_{ab}=\mathrm{diag}(-,+,+,+)$, and
+the spacetime Levi-Civita symbol is normalized to
+$\varepsilon^{0123}=+1$ (whence
+$\varepsilon_{abcd}\varepsilon^{abce}=-3!\,\delta^e_d$, which fixes the
+$-3/8$ and $-3/2$ coefficients of
+Sec.~\ref{sec:completeness} and Appendix~\ref{app:dim4_completion}).
+We use natural units and
 $\kappa\equiv8\pi G$ exactly; in terms of the \emph{reduced} Planck mass
 $\overline{M}_{\rm Pl}\equiv(8\pi G)^{-1/2}\simeq2.44\times10^{18}\,$GeV
 this is $\kappa=\overline{M}_{\rm Pl}^{-2}$, while order-of-magnitude
@@ -498,8 +570,8 @@ this survey.
 
 Before cataloguing the individual barriers we fix their collective status
 precisely, so that their joint force is not overstated. We describe the
-catalog as \emph{13 distinct mechanism-class constraints} (14 historical
-entries, with B8 subsumed by B14). Here `distinct' and `mechanism-class'
+catalog as \emph{14 distinct mechanism-class constraints}, one per
+catalog entry. Here `distinct' and `mechanism-class'
 mean that no barrier is a logical \emph{consequence} of another and each
 probes a separate physical failure mode (amplitude suppression, thermal
 washout, operator decoupling, naturalness deficit, and so on); they do
@@ -518,7 +590,7 @@ quantum bounces can violate. The catalog is therefore best read as a
 structured map of failure modes of mixed individual
 strength---quantitative amplitude bounds, naturalness arguments, and
 qualitative observations---whose collective value is the systematic
-coverage of the route space, not a claim that thirteen separately decisive
+coverage of the route space, not a claim that fourteen separately decisive
 theorems each independently exclude the framework. The two sharp,
 first-principles derivations behind the catalog are the Route-1
 torsion-elimination derivation (a companion-paper
@@ -529,14 +601,20 @@ only the perturbation-transparency theorem enters the closure table
 (Table~\ref{tab:evidentiary_status}) as a Tier-I leg: the
 torsion-elimination derivation is itself first-principles, but the
 Route-1 \emph{closure} it feeds rests on Tier-II$+$III arguments, which
-is why the abstract credits exactly one Tier-I rigorous theorem. The
+is why the abstract credits exactly one Tier-I rigorous theorem. That
+Tier-I status is moreover \emph{branch-scoped}: Appendix~\ref{app:transparency}
+proves the theorem for canonical scalar matter, i.e.\ on the zero-spin
+branch, and expressly excludes fermion sources, quantum loops and
+anomalies, non-minimal matter, a dynamical Immirzi field, and propagating
+torsion. Nothing outside that branch inherits Tier-I standing. The
 remaining entries are constraints of the weaker classes just described
 and are labeled as such below.
 
 We tested 7 foundation mechanism classes (Foundations A--G) and 6
 additional observational channels (Branches H, J, L, M, N, O; the ECH
-perturbation gates enter through Branch H, whose first-principles closure
-B14 subsumes B8) for the possibility of connecting the ECH bounce to
+perturbation gates enter through Branch H, which carries the two
+logically independent entries B8 and B14) for the possibility of
+connecting the ECH bounce to
 late-time dark energy. Each test yielded a named structural constraint.
 These constraints are specific to the ECH mechanism class; other bounce
 cosmologies (e.g., quintom scenarios) are not subject to them.
@@ -611,9 +689,9 @@ the ECH analysis. \textbf{Structural/philosophical observations} (Barrier
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.7cm]R2.north);
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.7cm]R3.north);
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.6cm]R4.north);
-%% --- Per-barrier attribution labels for the Branch-H arrows (B14 fan vs
-%%     the shared B8/B14 leg to R1) ---
-\node[font=\scriptsize\itshape, fill=white, inner sep=1pt] at (1.55,1.62) {B8, B14};
+%% --- Per-barrier attribution labels for the Branch-H arrows (B14 fan on
+%%     the zero-spin branch vs the fermionic B8 leg to R1) ---
+\node[font=\scriptsize\itshape, fill=white, inner sep=1pt] at (1.55,1.62) {B8};
 \node[font=\scriptsize\itshape, fill=white, inner sep=1pt] at (9.55,1.22) {B14};
 
 \end{tikzpicture}
@@ -624,22 +702,25 @@ branches (Branches H, J, L, M, N, O; Barriers~8--14,
 observational-channel barriers), grouped into four boxes --- Branch~H
 (B8, B14), Branch~J (B9), Branches~L/M (B10--B12), and Branches~N/O
 (B13). Bottom row: the four closed dark-energy routes R1--R4; all four
-routes are closed, giving 13 distinct mechanism-class constraints. Arrows
+routes are closed, giving 14 distinct mechanism-class constraints. Arrows
 indicate which barrier classes constrain each route. Branch~H carries
 arrows to all four routes; the italic in-figure edge labels give its
 per-barrier attribution directly: the upper Branch-H arrow to R1 is
-driven by B8 and B14 together (label ``B8, B14''), while the lower fan
-to R2, R3, and R4 is driven by B14 (perturbation transparency) alone
-(label ``B14''). The branch
+driven by B8 (label ``B8''), the fermionic parity argument, while the
+lower fan to R2, R3, and R4 is driven by B14 (perturbation transparency,
+label ``B14''), which removes the \emph{classical zero-spin} perturbative
+baseline of those three routes. B8 and B14 are logically independent:
+B8 is a statement about the fermionic $(J^5)^2$ sector, whereas B14's
+hypotheses require zero spin density and expressly exclude fermion
+sources, so neither implies the other and both are counted. The branch
 letters are inherited unchanged from the historical catalog, which never
-assigned the letters I or K; no branch entries have been removed. B14
-(the ECH perturbation-gate closure) sits in Branch~H and
-subsumes B8 (parity-even interaction), so B8 is not counted separately;
-several entries share the scaling ansatz but each probes a distinct
+assigned the letters I or K; no branch entries have been removed.
+Several entries share the scaling ansatz but each probes a distinct
 physical failure mode. The diagram records channel structure only, not
 evidentiary weight: the entries differ in evidentiary status --- the
-sole Tier-I rigorous theorem is B14's perturbation transparency
-(Appendix~\ref{app:transparency}), the remainder are structural or
+sole Tier-I rigorous theorem is B14's perturbation transparency, and
+only on its zero-spin branch
+(Appendix~\ref{app:transparency}); the remainder are structural or
 ansatz-level arguments of mixed individual strength, and five entries
 (B5--B7, B10, B13) are general naturalness or classification arguments
 --- with the per-route classification recorded in
@@ -648,14 +729,17 @@ Table~\ref{tab:evidentiary_status}.
 \end{figure*}
 
 \begin{table*}[tb]
-\caption{\label{tab:barriers} The 14 catalogue entries (13 distinct mechanism-class constraints;
-B8 subsumed by B14) on minimal ECH dark-energy routes. Note: Barriers 8 (parity-even
-interaction) and 14 (perturbation transparency) close the same
-observable channel (primordial-GW chirality / tensor parity violation)
-via related routes sharing the perturbation-transparency result; B14 is the first-principles theorem that
-subsumes B8 as the corresponding observational consequence. They are
-listed separately to preserve the historical mechanism-class catalog,
-but should not be counted as a separate mechanism-class constraint.}
+\caption{\label{tab:barriers} The 14 catalogue entries --- 14 distinct
+mechanism-class constraints --- on minimal ECH dark-energy routes. Note:
+Barriers 8 (parity-even interaction) and 14 (perturbation transparency)
+close the same
+observable channel (primordial-GW chirality / tensor parity violation) on
+\emph{disjoint matter branches}, and are therefore logically independent
+and separately counted: B8 argues from the parity of the fermionic
+$(J^5)^2$ contact interaction, while B14's hypotheses require zero spin
+density (canonical scalar matter) and expressly exclude fermion sources
+(Appendix~\ref{app:transparency}). Neither is a logical consequence of
+the other, so the criterion of Sec.~\ref{sec:barriers} counts both.}
 \centering
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}clll}
 \toprule
@@ -735,16 +819,26 @@ requires $\gamma$ to vary across cycles, but $\gamma$ is fixed by the LQG area
 spectrum at a universal value; LQG provides no landscape of $\gamma$ values for
 selection to operate on. (General classification argument.)
 
-\medskip\noindent\textbf{B8 --- Parity-Even Interaction (Branch H).} \emph{[R1; subsumed by B14.]}
+\medskip\noindent\textbf{B8 --- Parity-Even Interaction (Branch H) [R1].}
 The spin-torsion interaction $(J^5)^2$ is parity-\textit{even} (a product of two
 axial currents is a Lorentz scalar, not a pseudoscalar), so it cannot generate
-tensor chirality in primordial gravitational waves; independently confirmed by
-the perturbation-transparency result (B14).
+tensor chirality in primordial gravitational waves. B8 is the catalog's
+constraint on the \emph{fermionic} branch of this observable channel, and
+it is logically independent of B14: B14's hypotheses require zero spin
+density, which is precisely the condition the nonzero $J^5$ of B8
+violates, so B14 neither implies nor confirms B8 and the two are counted
+separately (Table~\ref{tab:barriers}).
 
 \medskip\noindent\textbf{B9 --- Liouville Conservation (Branch J) [R2].} Phase-space volume
 conservation prevents irreversible selection among post-bounce states, closing
 the ``vacuum selection at the bounce'' class: the time-symmetric bounce selects
-no net dark-energy state. This is a \emph{heuristic} closure under explicit
+no net dark-energy state. The $[$R2$]$ tag records which route this
+removes an escape from rather than which amplitude it bounds: R2's
+one-loop Holst-sector correction is a \emph{small} shift, so the only way
+it could reach $\rho_\Lambda$ is if the bounce additionally selected a
+vacuum on which that shift is amplified or frozen in; B9 removes exactly
+that selection step, as B3 and B4 remove the amplitude and coupling
+steps. It is not an independent bound on the one-loop amplitude. This is a \emph{heuristic} closure under explicit
 assumptions (closed non-dissipative evolution, no particle production, no entropy
 injection); dissipative/particle-producing bounces evade B9 and are constrained
 instead by B10--B11, so B9 is never used as a stand-alone closure.
@@ -799,7 +893,7 @@ which fixes the \emph{magnitude} of the coupling both invoke but not its
 \emph{universality} across sectors. They are counted separately for that
 reason.
 
-\medskip\noindent\textbf{B14 --- Perturbation Transparency (Branch H, ECH perturbation gates).} \emph{[R1--R4.]} For
+\medskip\noindent\textbf{B14 --- Perturbation Transparency (Branch H, ECH perturbation gates).} \emph{[R2--R4, zero-spin branch.]} For
 canonical scalar matter, torsion vanishes at all perturbation orders and the Holst sector
 decouples from all scalar/tensor perturbation observables. The statement
 and proof are carried self-contained in
@@ -807,7 +901,20 @@ Appendix~\ref{app:transparency}; the tensor-sector extension and the
 explicit second-order Holst-term verification are elaborated in the
 companion paper's zero-spin-branch analysis~\cite{Golden2026P1a}. This is
 the catalog's sole Tier-I closure leg
-(Table~\ref{tab:evidentiary_status}).
+(Table~\ref{tab:evidentiary_status}), and its route reach is fixed by its
+hypotheses rather than asserted. Because the theorem assumes zero spin
+density --- and explicitly excludes fermion sources, quantum loops and
+anomalies, non-minimal matter, a dynamical Immirzi field, and propagating
+torsion --- it does \emph{not} bear on R1, whose defining object is the
+nonzero fermionic axial current (R1 is constrained instead by B1, B2 and
+B8). What B14 does establish for R2, R3 and R4 is that their
+\emph{classical zero-spin} perturbative baseline is exactly inert: minimal
+ECH reproduces the Einstein--scalar perturbation sector at every order, so
+any signal in those routes must come entirely from the quantum or
+non-minimal ingredient that defines them --- which is what the amplitude
+budgets of Sec.~\ref{sec:routes} and the naturalness argument of
+Sec.~\ref{sec:routes_summary} then bound. B14 is not, and is not used as,
+a closure of the fermionic or one-loop content of any route.
 
 
 %% ============================================================
@@ -815,30 +922,43 @@ the catalog's sole Tier-I closure leg
 %% ============================================================
 \section{The Route-2/Route-3 Dark-Energy Route Closures}\label{sec:routes}
 
-The two routes closed in this section are \emph{historical} candidate
-mappings --- one-loop Holst-sector corrections (Route~2) and
-Immirzi-parameter running (Route~3) mapped onto a late-time dark-energy
-density --- that the companion paper explicitly does not retain as
-results, for the reason recorded in Sec.~\ref{sec:intro}. Nothing in
-this section reinstates them. The closures below are upper-bound
+The two routes closed in this section are the \emph{historical} candidate
+mappings of Sec.~\ref{sec:intro} --- one-loop Holst-sector corrections
+(Route~2) and Immirzi-parameter running (Route~3) mapped onto a late-time
+dark-energy density. The closures below are upper-bound
 \emph{amplitude budgets} demonstrating that any completion of these
 mappings falls short of the observed signal in its channel by tens of
 orders of magnitude --- for Route~2 the budget is evaluated against the
 \emph{observed birefringence amplitude} [Eq.~\eqref{eq:r2_ratio}], for
-Route~3 against the \emph{observed dark-energy density} --- which is
-precisely why the catalog closes the corresponding channels. The
+Route~3 against the \emph{observed dark-energy density}. The
 published one-loop inputs enter as normalization anchors for the
 budgets, not as derivations of a cosmological observable.
 We state the division of labour once, at the head of the section, because
-the two routes are closed against different observables. Every
+the two routes are closed against different observables and, for Route~2,
+against different observables by different arguments. Every
 quantitative object in Sec.~\ref{sec:r2_oneloop} is a CMB rotation angle:
 what is computed there is the closure of Route~2's \emph{birefringence}
-channel. Route~2's \emph{dark-energy} closure is not computed in that
-subsection; it is inherited from the operator-list argument of
-Sec.~\ref{sec:completeness} and the single-scale NDA bound of
-App.~\ref{app:dimensions}, which bound every local dimension-four
-parity-odd density admitted by the minimal-coupling field content.
-Route~3, by contrast, is bounded directly against $\rho_{\Lambda,\rm obs}$
+channel. Route~2's \emph{dark-energy} leg is not computed in that
+subsection and is not carried by that budget. It splits on whether the
+Nieh--Yan pseudoscalar coefficient is constant:
+\emph{(i)}~within the minimal field content the Immirzi parameter, and
+with it the Nieh--Yan coefficient, is a \emph{constant} fixed by the LQG
+area spectrum (B7), and the corresponding densities are the Holst dual and
+Nieh--Yan entries O1/O2 of the Sec.~\ref{sec:completeness} list, both
+exact total derivatives contributing zero to the equations of motion and
+zero to the vacuum energy --- so minimal Route~2 sources no dark energy,
+by the operator-list argument;
+\emph{(ii)}~the phenomenological representative
+Eq.~\eqref{eq:oneloop_parity_odd} used for the birefringence budget is
+\emph{not} in that list --- it promotes the coefficient to a dynamical
+light pseudoscalar $\vartheta_{\rm NY}(x)$ and is a dimension-five
+operator carried by a dimension-$(-1)$ coefficient --- so its dark-energy
+leg is \emph{not} closed by the single-scale NDA bound, which
+App.~\ref{app:dimensions} states explicitly can be evaded by exactly such
+a light scale. On that branch Route~2's dark-energy leg is closed only at
+the naturalness level, as a Tier-II R4-class objection reinforced by B7;
+this is set out at the end of Sec.~\ref{sec:r2_oneloop}. Route~3, by
+contrast, is bounded directly against $\rho_{\Lambda,\rm obs}$
 in Sec.~\ref{sec:r3_immirzi}.
 
 \subsection{Route 2 (one-loop graviton corrections to the Holst sector):
@@ -855,8 +975,11 @@ corrections from minimally coupled fermions, however, generate a
 parity-odd coupling between the gravitational field and the chiral
 fermion current at one loop, with the Holst sector developing
 running couplings analyzed via renormalization-group methods in
-Einstein--Cartan + Holst gravity~\cite{Mercuri2009,
-ShapiroTeixeira2014}. Motivated by (but \emph{not literally
+Einstein--Cartan + Holst gravity~\cite{ShapiroTeixeira2014}; the
+classical Holst-plus-fermion and Nieh--Yan structure on which that
+analysis rests is due to Mercuri~\cite{Mercuri2009}, which is a classical
+construction and not itself a renormalization-group
+computation. Motivated by (but \emph{not literally
 derived in}) the Holst$+$non-minimal-fermion construction of
 Mercuri and the one-loop analysis of Shapiro \& Teixeira---those
 works establish the classical structure of the Holst term coupled
@@ -875,8 +998,13 @@ where $\vartheta_{\rm NY}(x)$ is the Nieh--Yan pseudoscalar (mass dimension $+1$
 $\vartheta_{\rm NY}$ to distinguish it from a photon-sector spectator
 ALP $\theta$ of the R4 channel, Sec.~\ref{sec:routes_summary}; no identification
 between the two fields is assumed anywhere in this paper), $J^{5\mu}$
-is the fermion axial current, and $\beta(\gamma)$ is a slowly varying
-function of $\gamma$. The parity classification of
+is the fermion axial current, and $\beta(\gamma)$ is the slowly varying
+$\mathcal{O}(1)$ renormalization-group function of $\gamma$ supplied by
+the Shapiro--Teixeira one-loop $\alpha_4/\Omega_{4x}$ family --- fixed
+below, at Eq.~\eqref{eq:r2_ratio}'s discussion, as
+$|\Omega_{44}/\alpha_4|\approx3.3$ at the LQG value $\gamma\approx0.24$,
+so that no property of $\beta(\gamma)$ used here is left to a forward
+reference. The parity classification of
 Eq.~\eqref{eq:oneloop_parity_odd} --- the operator is intrinsically
 parity-even; the parity violation is background-induced --- and the
 anomaly-mediated photon chain used in the dimensionless ratio below are
@@ -931,21 +1059,7 @@ suppression are one-loop-grounded. This is strictly weaker than the
 Route-3 result below (whose Benedetti--Speziale $\beta$-function
 integrates cleanly to $|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$)
 but strictly stronger than a free ansatz: the residual freedom is a
-single $\mathcal{O}(1)$ normalization. Route~2's \emph{dark-energy}
-closure, as distinct from the birefringence closure computed in this
-subsection, is not carried by that normalization at all. It is inherited
-from the operator-list argument of Sec.~\ref{sec:completeness} and the
-single-scale NDA no-go of App.~\ref{app:dimensions}, which bound every
-local dimension-four parity-odd density admitted by the minimal-coupling
-field content --- the class into which
-Eq.~\eqref{eq:oneloop_parity_odd} falls --- regardless of that
-$\mathcal{O}(1)$ coefficient, and ST's explicit
-$\tilde\kappa^2\sim M_{\rm Pl}^{-2}$
-confirms the missing powers are Planck powers, not a light scale. (The
-dimension-$(+1)$ object bounded directly in App.~\ref{app:dimensions} is
-the phenomenological representative Eq.~\eqref{eq:Seff_comp}, not
-Eq.~\eqref{eq:oneloop_parity_odd}, which as shown below already carries
-dimension $+4$ with no deficit.) Because
+single $\mathcal{O}(1)$ normalization. Because
 the closure below retains ${\approx}\,60$ (conservatively $\geq 58$)
 orders of margin, it is insensitive to this residual $\mathcal{O}(1)$
 ambiguity in $\beta(\gamma)$.
@@ -980,9 +1094,12 @@ H_0^{-1}
 \end{align*}
 (the anomaly-mediated photon chain of Appendix~\ref{app:parity}
 supplies the $\alpha_{\rm em}/4\pi$; the one-loop factor $1/16\pi^2$
-and the $\mathcal{O}(1)$ coefficient $\beta(\gamma)$, each of which
-could only suppress the estimate further, are conservatively dropped
---- this Tier-III accumulation ansatz is exactly the bookkeeping the
+and the $\mathcal{O}(1)$ coefficient $\beta(\gamma)$ are conservatively
+dropped, their \emph{net} effect being a further suppression of roughly
+$1.5$ orders --- the loop factor supplies $-2.2$ orders against
+$\beta(\gamma)\approx3.3$'s $+0.5$, so the pair is dropped as a pair and
+not because each factor separately suppresses; this Tier-III accumulation
+ansatz is exactly the bookkeeping the
 evidentiary label of Table~\ref{tab:evidentiary_status} records), and
 is stated as the dimensionless budget ratio
 \begin{align}\label{eq:r2_ratio}
@@ -1033,20 +1150,71 @@ so no plausible $\mathcal{O}(1)$--$\mathcal{O}(10^{10})$ normalization
 ambiguity reopens the route. We adopt this contraction as the canonical Route-2 estimate;
 an alternative ordering that contracts the $H_0$ factor with the
 dimensionful coupling differently yields only a far looser upper
-bound and is not used in the closure.
-The canonical-bound conclusion that the one-loop induced $\beta$ is
-amplitude-suppressed many orders of magnitude below the observed
-WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up) is robust
-to this choice; Route~2 remains exploratory framing, not load-bearing
-for the no-go. The Route-2 amplitude is
-therefore far below not only the WMAP$+$Planck birefringence sensitivity but the
-observed central value itself; the one-loop Holst-sector parity-odd
-term cannot account for the observed birefringence amplitude. (A naive comparison of a rotation rate $\dot\beta$ in eV against an angle
+bound and is not used in the closure. The conclusion is therefore robust
+to the bookkeeping choice: the one-loop Holst-sector parity-odd term sits
+far below not merely the WMAP$+$Planck (and ACT~DR6) birefringence
+sensitivity but the observed central value itself, and cannot account for
+the observed angle. (A naive comparison of a rotation rate $\dot\beta$ in eV against an angle
 uncertainty in eV would silently treat $\mathrm{eV}\cdot\mathrm{s}$ as
 dimensionless; the dimensionless reduction above avoids this and recovers
 the standard R2 amplitude-suppression closure.)
-\emph{Closure: amplitude-suppressed by $M_{\rm Pl}^{-1}$ and one-loop
-factor $\alpha_{\rm em}/(4\pi)$.}
+\emph{Closure (birefringence channel): amplitude-suppressed by
+$M_{\rm Pl}^{-1}$ and one-loop factor $\alpha_{\rm em}/(4\pi)$.}
+
+\emph{Route~2's dark-energy leg, and the limits of its closure.}---The
+budget just computed is a bound on a CMB rotation angle and says nothing
+about $\rho_\Lambda$. Its dark-energy leg must be stated separately, and
+honestly, because Eq.~\eqref{eq:oneloop_parity_odd} is \emph{not} a member
+of the dimension-four operator list of Sec.~\ref{sec:completeness}. Three
+independent features of the operator put it outside that list's
+construction rule: it is a dimension-five operator, its
+dimension-$(+5)$ integrand
+$\partial_\mu\vartheta_{\rm NY}J^{5\mu}$ carried by the
+dimension-$(-1)$ coefficient $\beta(\gamma)/M_{\rm Pl}$ (whereas the list
+admits densities of operator dimension exactly four with
+\emph{dimensionless} Wilson coefficients); the field
+$\vartheta_{\rm NY}(x)$ is not among the admitted building blocks
+(tetrad, torsionful curvature two-form, algebraic torsion $T=\kappa S$,
+axial current $J^5$); and $\partial_\mu\vartheta_{\rm NY}$ carries a
+derivative beyond those internal to $R$ and $T$, which the rule excludes.
+Its Hubble-scale background
+$\langle\partial_\mu\vartheta_{\rm NY}\rangle\sim H_0^2$ moreover makes
+$\vartheta_{\rm NY}$ a new light scale $\mu\ll\MPl$ --- precisely the case
+App.~\ref{app:dimensions} names as able to \emph{evade} the single-scale
+NDA bound. We therefore do not claim the NDA bound covers it, and the
+Route-2 dark-energy leg splits:
+
+\emph{(i) Constant coefficient (minimal ECH).} In minimal ECH the Immirzi
+parameter, and with it the Nieh--Yan coefficient, is a constant fixed by
+the LQG area spectrum, with no landscape for it to vary over (B7). For
+constant $\vartheta_{\rm NY}$, $\partial_\mu\vartheta_{\rm NY}=0$ and
+Eq.~\eqref{eq:oneloop_parity_odd} vanishes identically; the surviving
+Holst/Nieh--Yan content is the pair O1/O2 of the
+Sec.~\ref{sec:completeness} list, which are exact total derivatives
+contributing zero to the equations of motion and zero to the vacuum
+energy. Minimal Route~2 therefore sources no dark energy, and this
+\emph{is} an operator-level (Tier-I) statement about the list.
+
+\emph{(ii) Dynamical coefficient (non-minimal).} The only way the
+Nieh--Yan sector can source dynamics is a non-constant
+$\vartheta_{\rm NY}$ carrying its own kinetic term or potential --- i.e.\
+a dynamical-Immirzi-type completion, which Sec.~\ref{sec:completeness},
+App.~\ref{app:dim4_completion} and Sec.~\ref{sec:scope} all place outside
+the minimal scope. A $\vartheta_{\rm NY}$ with an $\sim\!H_0$
+mass/potential tuned to yield $\rho_\Lambda$ is Route~4 in gravitational
+costume: it re-imports exactly the cosmological-constant fine-tuning that
+closes R4 at the naturalness / explanatory-deficit level
+(Sec.~\ref{sec:routes_summary}), and B7 denies minimal ECH the varying
+$\gamma$ such a field would require. On the scalar-matter branch the
+induced parity channel is additionally the channel shown inert by B14
+(App.~\ref{app:transparency}).
+
+We state the resulting strength plainly. Route~2's dark-energy leg is
+closed at Tier-I only in case~(i), inside the minimal field content; in
+case~(ii) it is closed at Tier-II, by the same naturalness objection that
+closes R4, and \emph{not} by an amplitude bound or by the single-scale NDA
+argument. No dark-energy amplitude is computed for Route~2 anywhere in
+this survey, and none is claimed.
 The evidentiary status of the estimate, stated once: Eq.~\eqref{eq:oneloop_parity_odd} is an \emph{illustrative
 upper-bound amplitude budget} constructed as the natural EFT operator at the
 $M_{\rm Pl}^{-1}\alpha_{\rm em}/(4\pi)$ scale, \emph{not} a result extracted from
@@ -1270,9 +1438,16 @@ minimal ECH does not derive either the required ultralight mass
 $m_\theta\sim H_0$ or the fitted $\alpha/M$ from first principles---so the
 channel closes as a naturalness/explanatory-deficit objection (it
 relocates rather than solves the cosmological-constant problem) rather
-than as an amplitude exclusion. Its full derivation, and the companion
-consistency check against a spectator-ALP birefringence benchmark, are
-outside the present survey's scope~\cite{Golden2026P1a,Golden2026P1b}.
+than as an amplitude exclusion. The two steps a referee needs are given
+above and are checkable here: the coupling estimate
+$\alpha/M\sim2\beta_{\rm obs}/\MPl$ and the observation that neither
+$m_\theta\sim H_0$ nor that value of $\alpha/M$ follows from the minimal
+ECH field content. What is \emph{not} reproduced here is the full
+spectator-ALP derivation and the companion's consistency check against a
+birefringence benchmark~\cite{Golden2026P1a,Golden2026P1b}; the R4 leg of
+this survey's accounting is scoped accordingly, and rests on those
+external, not-yet-peer-reviewed derivations for anything beyond the
+naturalness statement made here.
 
 Within the four-channel enumeration of Sec.~\ref{sec:conventions},
 Routes R1--R4 cover the four parity-odd or dark-energy channels of this
@@ -1290,7 +1465,10 @@ completion lies outside the established no-go. Within the four
 enumerated channels: R1 (NJL contact) is amplitude-suppressed by
 $M_{\rm Pl}^{-2}$ and parity-even. R2 (one-loop graviton corrections) is
 amplitude-suppressed by $M_{\rm Pl}^{-1}$ and the one-loop factor
-$\alpha_{\rm em}/(4\pi)$. R3 (Immirzi running) is mass-dimension-locked
+$\alpha_{\rm em}/(4\pi)$ \emph{in its birefringence channel}; its
+dark-energy leg is closed operator-level for constant Nieh--Yan
+coefficient and only at the R4-class naturalness level for a dynamical
+one (Sec.~\ref{sec:r2_oneloop}). R3 (Immirzi running) is mass-dimension-locked
 and additionally suppressed by the chiral-asymmetry beta function. R4
 (parity-odd CMB coupling) is closed by a naturalness objection: with
 $\alpha/M$ treated as a free parameter, a spectator-ALP fit reproduces
@@ -1300,9 +1478,13 @@ at the level of an explanatory deficit rather than an amplitude
 exclusion.
 
 \emph{Tiered closure structure:} R1--R3 achieve \emph{mathematical
-amplitude closure} (the predicted amplitude is suppressed by explicit
+amplitude closure} in the channel each is bounded against (the predicted
+amplitude is suppressed by explicit
 $M_{\rm Pl}$ powers and loop factors, placing it many orders below any
-observable threshold regardless of normalisation assumptions);
+observable threshold regardless of normalisation assumptions); the one
+exception, stated rather than absorbed, is R2's dark-energy leg on the
+dynamical-$\vartheta_{\rm NY}$ branch, which closes in the
+naturalness mode below rather than the amplitude mode.
 R4 achieves \emph{naturalness/explanatory closure} (the amplitude can
 be matched to observations but only at the cost of importing the
 cosmological-constant fine-tuning the channel was meant to resolve).
@@ -1376,10 +1558,16 @@ self-contained in App.~\ref{app:companion_inputs}).\strut} \\[3pt]
 \parbox[t]{0.18\textwidth}{\raggedright R2 (one-loop graviton
 corrections)\strut} &
 \parbox[t]{0.40\textwidth}{\raggedright One-loop promotion of
-$\gamma_{\rm BI}$ reaching the observed birefringence amplitude\strut} &
-\parbox[t]{0.32\textwidth}{\raggedright \textbf{(III) Ansatz-level}: amplitude
+$\gamma_{\rm BI}$ reaching the observed birefringence amplitude
+(and, separately, $\rho_\Lambda$)\strut} &
+\parbox[t]{0.32\textwidth}{\raggedright \textbf{(III) Ansatz-level} for the
+\emph{birefringence} leg: amplitude
 budget suppressed by $H_0/M_{\rm Pl}$ and $\alpha_{\rm em}/(4\pi)$ under an
-explicitly-labeled scaling ansatz; exploratory, not load-bearing.\strut}
+explicitly-labeled scaling ansatz; exploratory, not load-bearing.
+\emph{Dark-energy} leg: \textbf{(I)} for constant Nieh--Yan coefficient
+(O1/O2 total derivatives, B7 fixes $\gamma$); \textbf{(II)} R4-class
+naturalness only for a dynamical $\vartheta_{\rm NY}$, which is outside
+the minimal scope. No dark-energy amplitude is computed for R2.\strut}
 \\[3pt]
 \parbox[t]{0.18\textwidth}{\raggedright R3 (Immirzi running)\strut} &
 \parbox[t]{0.40\textwidth}{\raggedright Quantum running of $\gamma_{\rm BI}$
@@ -1476,12 +1664,12 @@ subset of \emph{bare} invariants that happen to sit at dimension $+4$
 before promotion (O3 and O5), nor to the subset that reduces onto the
 Fierz basis.
 The sum runs over the six named invariants, which span --- but do not
-independently span --- the rule-admitted space. The operators
-$\{$O1--O6$\}$ constitute the \emph{primary physical
-foundation} of the no-go: the single-scale NDA ceiling, the Fierz closure,
-and the Bianchi-vanishing results below are all derived properties of this
-off-shell dimension-$4$ operator space; none depends on the on-shell shorthand
-Eq.~\eqref{eq:Seff_comp} for its logical force.
+independently span --- the rule-admitted space. This off-shell
+dimension-$4$ operator space is the \emph{primary physical foundation} of
+the no-go: the single-scale NDA ceiling, the Fierz closure, and the
+Bianchi-vanishing results below are all derived properties of it, and
+none depends on the on-shell shorthand Eq.~\eqref{eq:Seff_comp} for its
+logical force.
 \emph{Construction rule.}---The admitted building blocks are the tetrad
 $e^I_\mu$ (with the invariant tensors $\varepsilon$ and $\eta$), the
 curvature two-form of the torsionful connection, the algebraically-fixed
@@ -1512,7 +1700,7 @@ $\nabla_\mu J^{5\mu}\supset c_{\rm grav}\,
 with a known pure-number coefficient
 (Kimura--Delbourgo--Salam~\cite{Kimura1969,DelbourgoSalam1972}) --- but
 that density is exactly the Pontryagin invariant O3, already a member of
-the basis below and disposed of as an exact total derivative; the
+the spanning list below and disposed of as an exact total derivative; the
 $F\widetilde F$ anomaly content arises only once electromagnetic fields,
 outside the minimal field content, are added. The rule-based
 completeness assertion therefore survives this obvious derivative-order
@@ -1524,20 +1712,15 @@ $[\kappa]=[\MPl^{-2}]=-2$), the operator \emph{definitions} include the
 explicit compensating $\MPl$ power that renders each density dimension-$4$;
 we do \emph{not} attach a dimensionless $c_n$ to a lower-dimension
 invariant.
-\emph{Shorthand and its relation to the basis.}---Eq.~\eqref{eq:Seff_comp}
+\emph{Shorthand and its relation to the spanning list.}---Eq.~\eqref{eq:Seff_comp}
 with its dimension-$+1$ integrand is a phenomenological on-shell
-representative of the dimension-$4$ basis in which the coefficient
+representative of the dimension-$4$ spanning list in which the coefficient
 $\alpha/M$ (mass dimension $-1$) stands in for the listed operators'
 $\MPl^{2}$ prefactor (mass dimension $+2$) --- exactly the three-unit
 coefficient substitution quantified in Appendix~\ref{app:dimensions}; it
 is a convenient dimensional-analysis shorthand, \emph{not} the
-fundamental action term and \emph{not} load-bearing for the no-go. To
-clarify the mass-dimension bookkeeping: the off-shell operators O1--O6 are
-genuinely dimension $+4$ (each carrying the compensating $\MPl^2$ factor that
-makes the Wilson coefficient dimensionless), while Eq.~\eqref{eq:Seff_comp}
-represents the same physics on the torsion-free branch with the
-phenomenological coefficient $\alpha/M$ in place of the list operators' prefactor
-$\MPl^{2}$; the apparent dimension-$+1$ deficit is entirely that
+fundamental action term and \emph{not} load-bearing for the no-go: the
+apparent dimension-$+1$ deficit is entirely that
 $\alpha/M$-for-$\MPl^{2}$ coefficient substitution
 (Appendix~\ref{app:dimensions}), not any ill-defined operator. The Case~II on-shell curvature dressing
 (inserting $R\sim\MPl^2$ to close the dimension count) is an
@@ -1576,9 +1759,8 @@ e_{I\nu}T^{I}{}_{\rho\sigma}\right).
 \end{equation}
 Stating Eq.~\eqref{eq:ny_norm} explicitly matters: the form-versus-density
 normalization of the Nieh--Yan entry is what fixes the rational
-coefficients in Eq.~\eqref{eq:dim4_relations} below, and leaving it
-schematic (as earlier versions of this list did) misstates them by a
-factor of two.
+coefficients in Eq.~\eqref{eq:dim4_relations} below, and a schematic
+normalization misstates them by a factor of two.
 Here the torsion two-form $T^I$ carries a single internal index
 (components $T^{I}{}_{\mu\nu}$; the component tensor $T^{abc}=\kappa
 S^{abc}$ of Sec.~\ref{sec:conventions} is obtained by converting the
@@ -1715,19 +1897,23 @@ Consistent with the evidentiary classification of Sec.~\ref{sec:barriers}
 and Table~\ref{tab:evidentiary_status}, we state explicitly what this
 survey does and does not establish.
 
-\emph{What is established.} Thirteen distinct mechanism-class constraints,
+\emph{What is established.} Fourteen distinct mechanism-class constraints,
 covering seven foundational classes and six observational branches,
 collectively close the four enumerated minimal-ECH dark-energy channels
 (R1--R4) under stated assumptions. Two of those channels (R2, R3) are
 closed here at the amplitude-budget level --- Route~2 with ${\approx}60$
 (conservatively $\geq 58$) orders of margin against the observed
 birefringence amplitude, Route~3 with $61$--$67$ orders against the
-observed dark-energy density; the closures are robust to
+observed dark-energy density. Route~2's amplitude budget is a
+birefringence bound and is not a dark-energy bound: no dark-energy
+amplitude is computed for Route~2 in this survey, and its dark-energy leg
+closes operator-level only for a constant Nieh--Yan coefficient, and at
+the R4-class naturalness level otherwise
+(Sec.~\ref{sec:r2_oneloop}). The amplitude closures are robust to
 $\mathcal{O}(1)$--$\mathcal{O}(10^{10})$
-rescalings of their ansatz-level normalizations. The explicit
-$\mathcal{O}(10^{10})$ stress test is displayed for Route~2, where it
-leaves ${\gtrsim}\,48$ orders; the same inflation applied to Route~3's
-pessimistic lower endpoint leaves ${\gtrsim}\,51$ orders. The
+rescalings of their ansatz-level normalizations (Sec.~\ref{sec:r2_oneloop}
+displays the stress test; applied to Route~3's pessimistic lower endpoint
+it leaves ${\gtrsim}\,51$ orders). The
 operator-list
 argument (Sec.~\ref{sec:completeness}) extends the governing dimensional bound
 from one representative operator to the exhibited six-member local
@@ -1757,14 +1943,19 @@ the fine-tuning the mechanism was meant to explain, so evading the no-go this
 way relocates rather than solves the cosmological-constant problem.
 
 The barrier catalog is a map of failure modes of mixed evidentiary strength,
-not thirteen independently decisive theorems: five entries (B5, B6, B7, B10,
+not fourteen independently decisive theorems: five entries (B5, B6, B7, B10,
 B13) are general naturalness or classification arguments rather than
 ECH-specific calculations, and one (B9) is an explicitly heuristic closure
 conditional on stated equilibrium assumptions that dissipative or
 particle-producing bounces can violate. Only the perturbation-transparency
 theorem (B14; stated and proved self-contained in
 Appendix~\ref{app:transparency}) enters the closure table as a Tier-I
-rigorous result within its stated scope; the Route-1 torsion-elimination
+rigorous result, and only within the zero-spin branch its hypotheses
+cover: it excludes fermion sources, quantum loops and anomalies,
+non-minimal matter, a dynamical Immirzi field, and propagating torsion, so
+it bears on R2--R4 as a statement that their classical zero-spin baseline
+is inert and does \emph{not} constrain the fermionic content of R1
+(that is B8's independent role). The Route-1 torsion-elimination
 derivation (companion-paper content) is likewise first-principles, but
 the closure it feeds rests on Tier-II$+$III arguments
 (Table~\ref{tab:evidentiary_status}). The R2/R3 amplitude estimates are
@@ -1791,8 +1982,8 @@ in this paper.
 We have presented a structural no-go survey of minimal Einstein--Cartan--Holst
 spin-torsion routes to late-time dark energy and bounce phenomenology.
 Through systematic analysis of 7 foundation classes and 6 observational
-branches, we catalog 13 distinct mechanism-class constraints (14 historical
-entries, B8 subsumed by B14) that map the minimal-ECH parameter space and
+branches, we catalog 14 distinct mechanism-class constraints --- one per
+catalog entry --- that map the minimal-ECH parameter space and
 identify which dark-energy pathways require phenomenological assumption or
 physics beyond the minimal framework. Two of the four enumerated dark-energy
 channels, Route~2 (one-loop graviton-sector corrections to the Holst term)
@@ -1824,8 +2015,12 @@ fine-tuning the closed channels were meant to avoid. Read together with the
 companion paper's torsion-elimination and perturbation-transparency
 results~\cite{Golden2026P1a}, this survey completes the channel-level
 accounting of minimal-ECH dark-energy routes: all four enumerated channels
-close, by amplitude suppression (R1--R3) or by naturalness/explanatory
-deficit (R4), under the stated minimal-coupling assumptions.
+close under the stated minimal-coupling assumptions --- R1 and R3 by
+amplitude suppression against $\rho_\Lambda$, R2 by amplitude suppression
+in its birefringence channel together with an operator-level disposal of
+its dark-energy leg for a constant Nieh--Yan coefficient, and R4 (and
+R2's dark-energy leg on the non-minimal dynamical-pseudoscalar branch) by
+naturalness / explanatory deficit rather than by an amplitude exclusion.
 
 \subsection*{Data and Code Availability}
 The symbolic verification scripts supporting the
@@ -2005,16 +2200,15 @@ reproduces the $\MPl^{4}$ NDA estimate, or (ii) requires an added light
 scale/symmetry that is itself the tuning being explained; that matching
 calculation is left to a companion treatment.
 For the minimal-ECH field content this matching is in fact immediate rather
-than deferred: the finite operator basis fixed by the algebraic Cartan
+than deferred: the finite operator spanning list fixed by the algebraic Cartan
 constraint and the totally-antisymmetric minimal spin current
 (Sec.~\ref{sec:conventions}) contains no operator of lower off-shell
 dimension than the $+1$ operator bounded above, so single-scale NDA applied to
-that ceiling bounds every member of the basis; only a non-minimal light scale
+that ceiling bounds every member of the list; only a non-minimal light scale
 or protected cancellation---case (ii)---evades it, and that is the tuning being
 explained.
 \par
-Inflationary dilution ($\Dinf\sim e^{-3N_{\rm tot}}$, with
-$\Dinf \equiv e^{-3N_{\rm tot}}$) then yields
+Inflationary dilution, $\Dinf \equiv e^{-3N_{\rm tot}}$, then yields
 $\rho_\Lambda = \Xi\,\MPl^4$ with $\Xi = (\alpha/M)\,\MPl\,\Dinf$ under
 Eq.~(\ref{eq:onshell_rho}). The genuine cosmological-constant hierarchy,
 evaluated at the exact values fixed above, is
@@ -2042,7 +2236,7 @@ $\rho_\Lambda^{\rm obs}$ is ${\sim}120$ orders of magnitude under
 \emph{any} non-cancellation assumption (whether the bounce-scale density
 is $\MPl^4$, $10^{-2}\,\MPl^4$, or $10^{-4}\,\MPl^4$ shifts the required
 e-fold count by $\mathcal{O}(\text{a few})$, not by orders of magnitude),
-and this scale separation is what drives the 13 mechanism-class
+and this scale separation is what drives the 14 mechanism-class
 structural barriers (Sec.~\ref{sec:barriers}). The barriers close the
 bounce-to-dark-energy route on amplitude-budget and operator-counting
 grounds whose qualitative conclusions are ansatz-independent; only the
@@ -2054,10 +2248,10 @@ on the precise e-fold value.
 \par
 The on-shell scaling of Case~II is labeled explicitly as a
 phenomenological ansatz rather than as a derivation. The controlled
-EFT-level construction it stands in for --- an \emph{operator-basis
+EFT-level construction it stands in for --- an \emph{operator-list
 closure} for the genuine local dimension-$+4$ parity-odd sector of
 minimal ECH --- is, however, not deferred: it is supplied in the next
-subsection, where we exhibit that basis and show that single-scale
+subsection, where we exhibit that spanning list and show that single-scale
 NDA closure survives without the Case~II dressing.
 
 \subsection{Genuine Dimension-Four Parity-Odd Completion: the Operator
@@ -2074,12 +2268,9 @@ tetrad $e^I_\mu$, Holst term, \emph{algebraic} torsion fixed by the
 Cartan constraint $T^{abc}=\kappa S^{abc}$ ($\kappa\sim\MPl^{-2}$), and
 minimally-coupled canonical matter (the construction rule of
 Sec.~\ref{sec:completeness}) --- and determine the fate of each.
-That the resulting six-member list \emph{spans} the rule-admitted
-densities is asserted from that
-construction rule, not established by an exhaustive symbolic enumeration;
-the list is explicitly redundant (rank four, two exact relations,
-Eq.~\eqref{eq:dim4_relations}) and is not claimed to be linearly
-independent.
+As in Sec.~\ref{sec:completeness}, spanning is asserted from the
+construction rule rather than proved by exhaustive enumeration, and the
+list is redundant by construction [Eq.~\eqref{eq:dim4_relations}].
 No new light scale $\mu\ll\MPl$, no dynamical Immirzi field, no
 propagating torsion, and no non-minimal (trace/tensor) torsion irreps are
 admitted, as these lie outside the stated minimal scope. Building-block
@@ -2446,13 +2637,19 @@ action at any order. No total-derivative argument is a load-bearing step
 in this proof; the operative statement is the pointwise algebraic
 Bianchi identity in Step~4. $\blacksquare$
 
-Consequences carried into the catalog: the Holst sector and the
+Consequences carried into the catalog, stated no more widely than the
+hypotheses permit: on the zero-spin branch the Holst sector and the
 Barbero--Immirzi parameter decouple from all scalar and tensor
-perturbation observables for canonical scalar matter (B14, Branch~H,
-constraining R1--R4), and in particular minimal ECH produces no
-helicity-dependent tensor propagation from parity-symmetric initial
-data --- the observational content whose channel-level consequence B8
-records.
+perturbation observables for canonical scalar matter, and in particular
+minimal ECH produces no helicity-dependent tensor propagation from
+parity-symmetric initial data. This is B14 (Branch~H). Its route reach is
+R2--R4, where it establishes that the \emph{classical zero-spin}
+perturbative baseline of each route is exactly inert; it does \emph{not}
+extend to R1, nor does it imply or confirm B8, because the exclusion list
+above rules out precisely the nonzero fermion spin density on which both
+R1 and B8 are built. B8 and B14 are therefore independent statements
+about the same observable channel on disjoint matter branches, and are
+counted separately in Table~\ref{tab:barriers}.
 
 \section{Companion-Imported Tier-II Inputs Carried Self-Contained:
 Contact Coefficient and R1 Benchmark}\label{app:companion_inputs}
