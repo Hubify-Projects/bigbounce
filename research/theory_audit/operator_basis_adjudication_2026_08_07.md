@@ -129,3 +129,86 @@ python3 research/theory_audit/operator_basis_adjudication_2026_08_07.py
 ```
 
 Runtime ≈ 3.5 min, pure sympy, exact rational arithmetic throughout, no external data. Emits `operator_basis_adjudication_2026_08_07.json` with the Gram certificate, null space, subset ranks, Γ-route certification, on-shell values, per-relation verdicts, and the complete tagged log.
+
+---
+
+# ADDENDUM — ERRATUM OF 2026-08-08 (scope of the on-shell branch)
+
+> **This addendum does not edit anything above it.** The original report of 2026-08-07 is
+> preserved verbatim, including its conclusions. What follows scopes them.
+
+**Raised by:** `project-context/peer-reviews/INT_v3/ROUND_2026-08-08-P1C-v1C.0.14-EXACTPDF-9dd5c708-R12CONV/P1C_claude_r12_leg.md`, MAJOR-2.
+**Adjudicated by:** `research/theory_audit/ech_torsion_onshell_2026_08_08.{py,json,md}` — an independent solve of the Einstein–Cartan–Holst connection equation.
+
+## What is wrong
+
+§1 above states, as an established fact, that "The paper's on-shell Cartan torsion
+`T^{abc} = κ S^{abc} = (κ/4) ε^{abcd} J^5_d` is verified to be **pure axial** — vector part
+zero, tensor part zero `[L09]`. **This fact turns out to decide MAJOR-2.**"
+
+Pure axiality was **imposed as an input**, not derived. The module substitutes
+`T = κS` and then verifies that this substituted tensor has zero vector and tensor
+parts — which is a tautology, since `κS ∝ ε J^5` is totally antisymmetric by
+construction. The Barbero–Immirzi parameter γ **never enters the module at any point**;
+the Holst-modified connection equation `Q_γ(e^{[I} ∧ T^{J]}) = J^{IJ}` was never solved.
+The "explicitly curved on-shell configuration" of §5 `[L90]`–`[L94]` is therefore an
+**Einstein–Cartan** configuration, not an Einstein–Cartan–**Holst** one.
+
+## What the 2026-08-08 solve finds
+
+Solving the ECH connection equation for minimally coupled Dirac matter, varying with
+respect to all 24 contorsion components with **no** irrep ansatz, and cross-checking
+against an independent differential-form route:
+
+- the on-shell torsion is `T_{abc} = α ε_{abcd} J^{5d} + β(η_{ab} J^5_c − η_{ac} J^5_b)`
+  with **`β/α = 1/(2γ)`** — a **nonzero trace-vector irrep** at every finite nonzero γ;
+- the **tensor irrep is identically zero** (so the "tensor part zero" half of `[L09]` is
+  right for the right reason);
+- pure axiality holds **only** in the γ → ∞ Einstein–Cartan limit;
+- consequently `O4 = −24 α β (J⁵·J⁵) ≠ 0` on the ECH branch — explicitly,
+  `O4(bare) = −192 π² G² γ³/(1+γ²)² (J⁵·J⁵)` in App. E's normalization
+  (one quarter of that in Sec. II's), so `O4^[4] = −3κ γ³/(1+γ²)² (J⁵·J⁵)`;
+- at the physical γ ≈ 0.2375 the non-axial coefficient is **2.11×** the axial one.
+
+## Which conclusions above are now scoped, and which stand
+
+**SCOPED to the γ → ∞ Einstein–Cartan branch (not valid for ECH at finite γ):**
+
+- §1's "pure axial" premise `[L09]` — as a statement about ECH.
+- §5's `O4 = 0` on shell `[L78]`, `[L81]`, `[L94]`, and everything derived from it:
+  the inference `O4 = 0 ⟹ O1 = −O2` `[L95]`, `[L97]`, and the conclusion that Table III's
+  `Final = 0` for O1 "survives" `[L98]`. On the ECH branch `O1 = O6 = −O2 + ½O4`, so
+  O1 and O6 are **not** exact total derivatives and their Final entries are **not** zero.
+- §6's recommendation that Table III's O4 row read "`0` (pure-axial torsion; `T_I∧T^I` is
+  supported only by the non-axial irreps)" — the parenthetical reason is correct, the
+  value `0` is not, at finite γ.
+- §6's "**This strengthens the no-go**: an operator contributing nothing at all is a
+  stronger disposal than one contributing a Planck-suppressed contact term" `[L89]` —
+  **withdrawn**. O4 contributes a Planck-suppressed contact term of exactly the same
+  Fierz-closed `(J⁵·J⁵)` form as O5, with `O4^[4]/O5^[4] = γ/(1+γ²) ≈ 0.22`.
+- §7's "Net on-shell picture" — O1, O4, O6 move from disposal classes (i)/(iii) into
+  class (ii). The single-operator statement "`O5` is the only member with nonzero
+  vacuum-energy content" is false on the ECH branch.
+- "What P1C must change" item 4 — the *diagnosis* (Check D's ε-free square
+  `T_{abc}T^{abc}` is a different invariant from O4, and P1C applied it to the wrong
+  contraction) is **correct and stands** `[L86]`, `[L87]`; the *replacement text* is not.
+
+**UNAFFECTED and independently re-confirmed at finite γ by the 2026-08-08 module:**
+
+- rank 4, nullity 2, and both null vectors `[1,0,0,0,0,−1]` and `[2,2,0,−1,0,0]`
+  `[L28]`–`[L33]` — re-verified exactly on six curved on-shell **ECH** configurations
+  at γ ∈ {19/80, 1, 3};
+- `O1 = O6` `[L49]`–`[L59]`, including the independent affine-connection (Γ) route —
+  re-certified at finite γ by an independent Γ-route computation;
+- the density-normalization cross-check `d(e_I∧T^I)_dens = ¼O4 − ½O1` `[L65]`;
+- the subset ranks `[L35]`–`[L38]`, the rank-modulo-total-derivatives result `[L40]`,
+  `[L41]`, and the Levi-Civita-`R̊` alternative reading `[L104]`–`[L106]`;
+- `S_{abc}S^{abc} = −(3/8)(J⁵·J⁵)` and `T_{abc}T^{abc} = −(3/8)κ²(J⁵·J⁵)` `[L87]`, as
+  statements about the ε-free square on the pure-axial branch;
+- "What P1C must change" items 1, 2, 3 (the "basis" → "spanning list" recount, stating
+  the two relations explicitly, and the branch-scoping of Table III's O1 reason).
+
+**Net:** the 2026-08-07 verdict `PARTIALLY-CORRECT` on the *off-shell* independence
+question is unchanged. Its *on-shell* branch is an Einstein–Cartan result that the
+manuscript, and this report, both described as an ECH result. The 2026-08-08 referee
+is correct on that point.
