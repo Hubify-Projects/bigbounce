@@ -98,6 +98,35 @@ a verdict matrix prints at the end.
 
 ---
 
+## 2a. P1C manuscript self-consistency check (`p1c_consistency_check.py`)
+
+Mechanical anti-regression guard for
+`arxiv/paper1c_nogo_survey/main.tex` — the failure mode it guards is R11
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV/`):
+iterative editing left the abstract, body text, Table II, and the barrier
+catalog asserting mutually contradictory things about the same quantity
+(barrier-catalog size, Tier-I leg count, whether the single-scale NDA bound
+covers Eq. (1), whether every entry closes a route).
+
+```bash
+python3 tools/p1c_consistency_check.py            # checks arxiv/paper1c_nogo_survey/main.tex
+python3 tools/p1c_consistency_check.py --json      # machine-readable
+python3 tools/p1c_consistency_check.py -v          # show evidence for PASSing rules too
+python3 tools/p1c_consistency_check.py --tex PATH  # check a different copy (e.g. a stashed/HEAD version)
+```
+
+**Run it** before every P1C version bump and before every round-closure
+commit that edits `main.tex` (R-round, D-round, P-round). It is deliberately
+**not** a git hook — nothing invokes it automatically; invoke it by hand as
+part of the closure. Exit 0 = the manuscript is self-consistent on the four
+checked axes (catalog-count agreement, Tier-I count agreement, assert-vs-
+disclaim NDA phrasing, universal-closure-claim vs self-declared non-closure
+entries); exit 1 = at least one rule failed, and the printed report names
+the rule, the conflicting values, and every source line involved. Tests:
+`python3 -m unittest tools.tests.test_p1c_consistency_check -v`.
+
+---
+
 ## 3. Recovery playbooks
 
 | Situation | Play |
