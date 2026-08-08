@@ -1,9 +1,285 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.13 · 2026-08-07 ·
+**Current candidate:** draft v1C.0.14 · 2026-08-07 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R10 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED →
+**Status: R11 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED →
+14 GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.14): 6 CORRECTNESS-GRADE +
+8 PRESENTATION-GRADE. ZERO COMPUTATIONAL ERRORS FOR THE SECOND
+CONSECUTIVE ROUND, THIS TIME QUANTIFIED — 30 DISPLAYED RELATIONS
+RECOMPUTED INDEPENDENTLY, ONE ROUNDING SLIP. ALL FOUR MAJORS WERE
+INTERNAL-CONSISTENCY DEFECTS LEFT IN THE SEAMS OF THE v1C.0.13 REVISION
+AND ARE CLOSED BY MAKING THE DOCUMENT AGREE WITH ITSELF AND WITH ITS OWN
+ARTIFACTS — NEVER BY WEAKENING A RESULT OR INVENTING COVERAGE. A
+MECHANICAL SELF-CONSISTENCY LINTER (`tools/p1c_consistency_check.py`) IS
+THE ROUND'S DURABLE OUTPUT AND THE STANDING ANTI-REGRESSION GUARD.
+R-PHASE NOT CONVERGED AT R11 — R12 on the exact v1C.0.14 PDF is REQUIRED
+and is the next CORRECTNESS-CONVERGENCE CHECK.**
+The R11 board ran on the exact v1C.0.13 PDF (sha `d3aea74d…`), three legs
+with raw receipts.
+
+**R11 verdict matrix (2026-08-07, exact v1C.0.13 PDF):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **MAJOR REVISION** (4 MAJOR / 6 MINOR; leg self-classes 6 correctness-grade) — with **ZERO computational errors** across a 30-item correctness ledger: the Fierz involution (all 25 entries), the Benedetti–Speziale flow integration, the O4/O5 tensor reductions and every App. A / App. E order-of-magnitude figure, each independently recomputed. One discrepancy, a rounding slip in a parenthetical. All four MAJORs are internal-consistency defects, not math |
+| Grok API | grok-4.3 | **REJECT** (4 ESSENTIAL / 3 MAJOR / 2 NIT) — complaints are scope, self-containment and length, not computation |
+| Gemini API | gemini-3.1-pro-preview | **MAJOR REVISIONS** (1 ESSENTIAL / 3 MAJOR / 2 MINOR / 1 NIT; pass-2 NO ADDITIONAL FINDINGS) — a regression from R10's MINOR REVISIONS driven mostly by a text-extraction artifact (see *Falsified with receipts*) |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+The verdict-first truth audit against the R1–R10 disposition ledgers and the
+released theory-audit artifacts
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV/P1C_v1C.0.13_R11_truth_audit.md`)
+deduplicated the board to **25 canonical items: 14 genuinely-new-real (all
+closed in v1C.0.14), 9 re-flags of R1–R10-dispositioned content, 1 freshly
+falsified with receipts, 1 deferred-genuine.**
+
+**GNR by grade (all 14 closed in v1C.0.14):**
+
+- **Correctness-grade (6)** — R11-GNR-1 (Table II's second Tier-(I) leg vs
+  six "exactly one" text sites, and the regrade), R11-GNR-2 (residual NDA
+  delegation at a fourth site), R11-GNR-3 (abstract's universal per-entry
+  closure claim), R11-GNR-4 (App. C Grassmann uniqueness inverted relative to
+  its own cited artifact), R11-GNR-5 (1.5 → 1.7 orders arithmetic),
+  R11-GNR-6 (App. D's kernel lemma asserted rather than proved or cited).
+  This matches the reviewing leg's own self-classification exactly.
+- **Presentation-grade (8)** — R11-GNR-7 … R11-GNR-14.
+
+**The defining feature of this round: all four MAJORs are
+internal-consistency defects, and three of them are the residue of R10's own
+closure sweep.** R10 correctly re-homed Route 2's dark-energy leg on the
+operator list; in doing so it promoted the leg to a tier the list cannot
+carry, did not propagate the change to the six "exactly one Tier-I"
+surfaces, and left one un-swept sentence still delegating the operator to the
+NDA bound the same revision had just concluded does not cover it. This is a
+mechanically detectable failure mode, and it is why the round's durable
+output is a linter rather than a longer checklist.
+
+**MAJOR-1 — Table II carried two Tier-(I) legs while six text sites assert
+exactly one, and the second (I) failed the paper's own Tier-I definition.**
+Table II's R2 row printed a second bold **(I)** ("for constant Nieh–Yan
+coefficient"), contradicted verbatim at six sites (abstract; Sec. III
+preamble's "exactly one Tier-I rigorous theorem"; the B14 entry's "sole
+Tier-I closure leg"; Sec. IV C's "the only Tier-I (rigorous) leg"; Sec. VI;
+App. D's preamble) — and by Table II's own caption, "no leg is asserted more
+strongly elsewhere". Independently, the grade over-reached: Sec. IV C defines
+Tier-I as "a deductive consequence of stated equations/identities", but
+"minimal Route 2 sources no dark energy" is not a statement about O1/O2 — it
+is the statement that O1/O2 *exhaust* the rule-admitted content, i.e. the
+spanning assertion the paper disclaims in six places as asserted-not-proved.
+**Closure:** Table II's R2 dark-energy leg **REGRADED (I) → (II)** in both
+branches, with the genuinely Tier-I ingredient (O1 and O2 are exact total
+derivatives) named as such and the inherited assumption stated plainly;
+Sec. IV A's "this *is* an operator-level (Tier-I) statement" and "closed at
+Tier-I only in case (i)" rewritten to match, and followed by the explicit
+sentence that the catalog's only Tier-I leg remains the
+perturbation-transparency theorem. Verified mechanically: the
+`tab:evidentiary_status` body now contains exactly one `\textbf{(I)}` marker
+against nine prose sites each implying 1. **Route 2's dark-energy leg is
+therefore stated at reduced strength — Tier-II in both branches rather than
+Tier-I in one — because the paper's own definitions required it.**
+
+**MAJOR-2 — a fourth site still delegated Eq. (1) to the single-scale NDA
+bound the same revision explicitly disclaims.** Sec. IV B's summary paragraph
+read "…and the operator is bounded by the single-scale NDA no-go regardless
+of that O(1) normalization", flatly contradicting p.6 ("its dark-energy leg
+is **not** closed by the single-scale NDA bound") and p.8 twice ("We
+therefore do not claim the NDA bound covers it"; "…*not* by an amplitude
+bound or by the single-scale NDA argument"). The v1C.0.13 note says "The
+false delegation is removed"; it was removed at three sites and survived at
+the fourth — the one a skimming referee consults for Route 2's headline
+status, and the stronger of the two claims. **Closure:** clause replaced with
+the accurate statement (the *birefringence* amplitude is bounded by the
+explicit budget of Eq. (2), with the non-claim restated inline), then the
+whole manuscript re-grepped for "NDA" — one sibling found and fixed ("the NDA
+one-loop operator (R2)" → "the one-loop parity-odd operator (R2)"), every
+other instance verified to attach the bound to the O1–O6 list or App. A's
+ceiling, never to Eq. (1). Encoded permanently as linter Rule C.
+
+**MAJOR-3 — the abstract's universal "each closing one or more of the four
+routes" is falsified by two of the catalog's own entries.** B14: "B14 is not,
+and is not used as, a closure of the fermionic or one-loop content of any
+route." B9: "…so B9 is **never used as a stand-alone closure**." Note the
+lineage: the phrase was *introduced* as the R4-GNR-10 closure (v1C.0.7), when
+B14 still spanned all four routes; R10-GNR-1 narrowed B14's tag and stated it
+closes none of them, and the abstract was not re-examined. **Closure:**
+restated to the joint claim the catalog supports, naming the two non-closure
+entries rather than papering over them. A sibling was caught in the same
+sweep — Sec. I's "each is closed by an explicit, *individually labeled*
+argument" now allows for more than one entry acting together. Encoded
+permanently as linter Rule D.
+
+**MAJOR-4 — App. C asserted Grassmann uniqueness for exactly the case its
+cited artifact declares non-unique.** App. C read "an exact Grassmann-algebra
+derivation of the operator row (the unique solution for **identical**
+fields)". The cited artifact
+(`research/theory_audit/fierz_adjudication_2026_08_05.{md,json}`) proves the
+opposite in both its report and its machine output: `[L07]` attaches
+uniqueness to **four distinct anticommuting fields**, and `[L10]` records
+that for a single identical species the five quartics have span rank 3 with a
+2-dimensional relation module — so identical-field rearrangement rows are
+**not** unique. The paper had transposed the qualifier. **Closure:** corrected
+to the artifact's actual result with the rank-3 caveat carried. Nothing
+downstream moves — the row is separately confirmed by the artifact ([L11]) as
+a valid identical-field Grassmann identity, and **G_s = −3κ/16 stands**,
+independently re-verified by the reviewing leg via the bridge 4πG = κ/2.
+
+**Arithmetic (MINOR-1, correctness-grade).** "Roughly 1.5 orders" was
+inconsistent with the two components printed in the same sentence:
+log₁₀(1/16π²) = −2.1982 against log₁₀(3.3) = +0.5185 sums to **−1.68**, not
+−1.5. Both components were already correct; only the sum was wrong. Corrected
+to **1.7** and verified in the recompiled PDF. The sentence exists
+specifically to show the arithmetic, and the conservative direction, the
+margins and every downstream number are unaffected.
+
+**Other correctness closure (MINOR-2).** App. D's proof step (2) asserted
+"whose invertible-tetrad kernel is trivial: T^I = 0" with no argument and no
+citation — inside the load-bearing step of the paper's *only* Tier-I result,
+in an appendix whose stated purpose is that the leg "can be refereed from
+this manuscript". Independently verified before closing (the linear map
+T^J_LM ↦ δ^[I_[K T^J]_LM] on the 24-dimensional torsion space was built
+explicitly; **rank 24, kernel trivial**), then closed by stating the
+condition in frame components and citing the standard Einstein–Cartan result
+(Hehl, von der Heyde, Kerlick & Nester, Rev. Mod. Phys. **48**, 393 (1976)) —
+a citation, not an invented derivation (`/never-fabricate-derivation`
+observed). Bibliography 25 → 26 entries, `\cite` / `.bbl` / `.bib` still in
+exact three-way agreement.
+
+**Presentation closures (8).** App. D no longer "defers" a tensor-sector
+extension its own Statement claims (the tensor conclusion is an immediate
+corollary of the reduced action being exactly the Einstein–scalar action);
+the branch→entry multiplicity is stated explicitly so 7 + 2 + 1 + 3 + 1 = 14
+across 7 + 6 = 13 tested classes is legible in one place; eight orphaned
+labels cross-referenced, including all four of App. E's previously
+unreferenced numbered displays; inline repository paths removed from the main
+text (they remain, correctly, in Data and Code Availability — Gemini M3, and
+the "three pre-existing raw `\texttt{}` script paths" R10's latex-audit had
+carried); the abstract's spanning-list "algebraic / zero-derivative"
+qualifier added (Gemini N1, which is also Grok E2's one genuine residue);
+Fig. 1 caption version-history prose removed (Gemini N2); the
+Lagrangian-density dimension wording made field-theoretically precise
+(Gemini N3); and a stale Fig. 1 source comment corrected, now carrying a
+standing warning against re-widening B14's route tag.
+
+**Falsified with receipts.** Gemini M1 (MAJOR) claimed the Planck-mass symbol
+is overloaded, quoting Sec. II as "the reduced Planck mass $M_{Pl} \equiv
+(8\pi G)^{-1/2}$". It is not: the source reads `\overline{M}_{\rm Pl}`, and
+page 2 was re-rendered at **300 DPI** and read directly — the printed reduced
+symbol carries a **visible overline**, distinct from the bare `M_Pl` used in
+order-of-magnitude prose. Corroborated by `pdftotext`, which extracts the two
+as `M Pl` (overline dropped, spacing artifact left behind) and `MPl`. The
+paper already does exactly what Gemini demands and states the relation
+exactly (κ = 8π M_Pl⁻² = M̄_Pl⁻²). **This is the fifth member of the
+rasterization/extraction-artifact family** (R3-FAL-2 → R5-RF-7/FAL-1 →
+R7-FAL-1 → R8-FAL-4 → R9-FAL-4 → R11-FAL-1) and the first in which the
+*reviewing vendor*, rather than the reviewing leg, was misled — it accounts
+for Gemini's verdict-word regression from MINOR REVISIONS to MAJOR REVISIONS,
+a concrete instance of the directive-H-refined rationale for not treating
+verdict words as the gate. The ≥300-DPI protocol stays.
+
+**Re-flags (9, all source-cited).** Grok E3 + Gemini M2 (not self-contained)
+→ the R1→R10 chain closed by App. D (v1C.0.4) and App. E (v1C.0.9), and
+falsified again this round by the opposing leg's 30 recomputations *from the
+PDF alone*; Grok E1 (61–67 orders not derived) → closed at R3, and the leg
+reproduced both endpoints from the printed inputs; Grok E2 (abstract
+overstates the spanning list) → the calibrated statement is already in the
+same abstract sentence, with the one genuine residue closed as GNR-11;
+Grok E4 (eight entries are general arguments) → the Fig. 1 caption already
+says five entries are, and names them; Grok M1 (≤12 pp) → the R1→R10-GNR-15
+chain, where real condensation was applied; Grok M2 (Fig. 1 implies tighter
+dependence) → closed at R10-GNR-1, which is the edit in the PDF Grok
+reviewed; Grok M3 (α/M is an external fit) → the paper's own headline
+conclusion, stated twice; Grok N1 (qualify "the companion paper" everywhere)
+→ would reverse the R10-GNR-12 consolidation this reviewer requested one
+round ago; Grok N2 ("none a logical consequence of another" is redundant) →
+declined with reason, that clause is the independence claim licensing the
+count of fourteen.
+
+**Deferred-genuine (carried, not closed):** the frozen-release Zenodo DOI for
+this survey's own verification scripts (Gemini E1), unchanged from R10-DEF-1.
+Real requirement, already disclosed in the paper as planned; DOI minting is
+P-round packaging work requiring Houston.
+
+**Self-withdrawn by the reviewing leg: none this round.** Unlike R8, R9 and
+R10 — each of which produced at least one low-DPI false positive the leg
+raised and self-withdrew — the R11 Claude leg's 300-DPI-first method produced
+no withdrawn candidates. The artifact family fired instead on the Gemini leg,
+which has no equivalent re-render step.
+
+**NEW STANDING ANTI-REGRESSION GUARD — `tools/p1c_consistency_check.py`.**
+A stdlib-only mechanical self-consistency linter for `main.tex`, written
+because three of this round's four MAJORs are the residue of the previous
+round's closure sweep and all are mechanically detectable. Four rules:
+**(A)** every asserted catalog-size claim agrees with every other and with
+the actual count of `\textbf{B<n> ---}` entries; **(B)** prose Tier-(I) count
+assertions ("sole" / "the only" / "exactly one" / "two") equal the counted
+`\textbf{(I)}` markers inside the `tab:evidentiary_status` body; **(C)** an
+extensible assert/disclaim paired-phrase list fails when a sentence asserts
+something a companion sentence explicitly disclaims (seeded with
+`nda_covers_eq1`, `nda_operator_label`, `route2_de_nda`); **(D)** a universal
+per-entry closure claim fails when any catalog entry declares itself a
+non-closure. LaTeX comments are stripped first, so the `%` changelog header
+cannot produce false positives. **Proof it works, recorded as evidence:**
+run against the pristine v1C.0.13 source it exits **1** and fires Rules B, C
+and D — i.e. it independently rediscovers MAJOR-1, MAJOR-2 and MAJOR-3 with
+no reviewer in the loop — while Rule A correctly passes. Against v1C.0.14 it
+exits **0**, 4/4 rules PASS. Deliberately **not** a git hook: documented in
+`ops/RUNBOOK.md` and in its own SKILL-style module docstring as the check to
+run before every P1C version bump and round-closure commit; covered by
+`tools/tests/test_p1c_consistency_check.py` (16 tests). **The generalizable
+lesson for the loop: "grep every instance and reconcile" silently
+under-performs, and its failures stay invisible until the next round's
+referee finds them. Where a claim-scoping closure touches N surfaces, the
+durable fix is a checker that counts them, not a more careful sweep.**
+
+v1C.0.14: **24 pp, 0 errors / 0 undef / 0 overfull** (41 underfull,
+badness-only), `/latex-audit` **PASS** (pages 1, 5, 10, 12, 21, 22 rendered
+and visually confirmed; all 6 `\artifact{}` paths resolve; no "(Dated:)"
+remnant; Table II placed cleanly at the top of p.12 with exactly one bold
+**(I)**), linter **4/4 PASS**, mirrors byte-identical across
+`site/public/papers/`, `public/papers/` and `site/out/papers/` (md5
+`fa485e592afe602d7258f17606e3278a`, SHA-256 `9dd5c70862d3cad1…`),
+`npx next build` passes. **A float regression was caught and fixed inside the
+round:** the first v1C.0.14 compile produced "Float too large for page" and
+"A float is stuck" warnings absent from v1C.0.13 (confirmed new by compiling
+pristine v1C.0.13 from `git show HEAD:` in a clean directory), caused by the
+MAJOR-1 regrade lengthening Table II's R2 cell; fixed by condensing the cell
+and setting `[!tb]` placement. **Page count 23 → 24 pp**, because four
+claim-scoping closures required new text — reported, not smoothed over.
+Grok's ~10–12 pp target remains unmet and unreachable without deleting
+catalog content.
+
+**Convergence read (directive H-refined + the R8 classification rule): R11
+surfaced 14 genuinely-new-real findings against a target of 0, of which 6
+are correctness-grade. The correctness-convergence gate is NOT met, so
+THE R-PHASE IS NOT CONVERGED AT R11.** Three things are worth recording
+honestly. (1) **Two consecutive rounds with zero computational errors**, and
+R11 quantified it: 30 independent recomputations, one rounding slip. The
+arithmetic spine has now been checked from the PDF alone, twice, by an
+adversarial leg. (2) **The remaining defects have changed kind** — R1–R9
+produced wrong numbers, coefficients and identity chains; R10 and R11 produce
+disagreements between two places in the same document. That is the failure
+mode of a manuscript revised repeatedly under pressure, not of one whose
+physics is unsettled. (3) **Three of R11's four MAJORs were created by R10's
+closure**, which is the signal that drove the linter: a closure touching six
+surfaces and landing on five is indistinguishable, to the closing agent, from
+one that lands on six — only a counter can tell them apart. Against that, R11
+moved two claims *down*: Route 2's dark-energy leg is now Tier-II in both
+branches, and the abstract no longer claims every entry closes a route. Both
+reductions were required by the paper's own definitions and entries.
+**R12 on the exact v1C.0.14 PDF is the next correctness-convergence check**,
+all active legs re-run fresh (Claude INT + Grok API + Gemini API per
+directives N/M-AMENDED; Perplexity optional), exit test = **zero
+correctness-grade genuinely-new-real findings**, and it is the first round
+that will run against a manuscript with a mechanical self-consistency gate in
+front of it. Residual presentation-grade items route to the D-round. GNR
+count trend: 15 → 7 → 8 → 10 → 6 → 9 → 7 → 4 → 16 → 15 → **14** (6
+correctness-grade). No readiness score has been computed and no venue/Zenodo
+kit exists for this draft.
+
+Prior-round record follows.
+
+**Status at R10 (superseded): R10 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED →
 15 GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.13): 5 CORRECTNESS-GRADE +
 10 PRESENTATION-GRADE. ZERO COMPUTATIONAL ERRORS FOUND BY ANY LEG — a
 first for this paper. BOTH MAJORS WERE CLAIM-SCOPING DEFECTS AND ARE
@@ -184,7 +460,6 @@ findings**. Residual presentation-grade items route to the D-round. GNR
 count trend: 15 → 7 → 8 → 10 → 6 → 9 → 7 → 4 → 16 → **15** (5
 correctness-grade, down from 10).
 
-Prior-round record follows.
 
 **Status at R9 (superseded): R9 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED, WITH AN
 INDEPENDENT SYMBOLIC ADJUDICATION → 16 GENUINELY-NEW-REAL FINDINGS CLOSED

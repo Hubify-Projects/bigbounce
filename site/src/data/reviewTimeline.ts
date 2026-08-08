@@ -58,6 +58,74 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r11-correctness-convergence-board-internal-consistency-closure-2026-08-07",
+    dateISO: "2026-08-07",
+    kind: "internal-api",
+    title:
+      "P1C R11 correctness-convergence board on the exact v1C.0.13 PDF — Claude Opus INT MAJOR REVISION with ZERO computational errors for the second consecutive round (4 MAJOR / 6 MINOR, all four internal-consistency defects) / Grok REJECT on scope-length not computation / Gemini MAJOR REVISIONS / Perplexity FAILED; v1C.0.14 regrades Table II to a single Tier-I marker, removes the residual NDA-delegation contradiction, restates the abstract's universal closure claim, and corrects Appendix C's inverted Fierz-uniqueness result; a new stdlib-only linter independently rediscovers three of the four MAJORs; R-phase NOT converged, R12 is the next correctness check",
+    papers: ["P1C"],
+    summary:
+      "Four raw legs bound to the exact v1C.0.13 PDF (sha256 d3aea74d, 23 pp): Claude Opus INT MAJOR REVISION (4 MAJOR / 6 MINOR) — the leg independently recomputed 30 checkable displayed relations and numerical claims (full Fierz involution across all 25 entries, the Benedetti-Speziale flow integration, the O4/O5 tensor reductions, every Appendix A and E order-of-magnitude figure) and, for the second consecutive round, found ZERO computational errors, turning up only a rounding slip in a parenthetical; Grok grok-4.3 REJECT, its complaints scope/self-containment/length rather than computation; Gemini gemini-3.1-pro-preview MAJOR REVISIONS. The Perplexity leg FAILED and is recorded as failed, never a verdict. All four MAJORs were internal-consistency defects left in the seams of the v1C.0.13 revision — the paper disagreeing with its own table, its own explicit non-claims, or one of its own released artifacts — none required new physics, new computation, or a weakened result. MAJOR-1: the v1C.0.13 closure re-homed Route 2's dark-energy leg onto the operator list and graded it Tier-(I) in Table II, creating a second Tier-(I) marker in a table whose own caption and six text sites say there is exactly one, and the grade did not meet the paper's own Tier-I bar since 'minimal Route 2 sources no dark energy' is the spanning assertion the paper itself discloses as asserted-not-proved in six places, not a statement about O1/O2 alone. Closed by regrading the leg (I) to (II), naming the genuinely Tier-I ingredient (O1 and O2 are exact total derivatives) as such, and restating the inherited spanning assertion plainly in Sec. IV A; Table II now carries exactly one Tier-(I) marker matching its own caption. MAJOR-2: Sec. IV B still delegated the operator to the single-scale NDA bound that the same revision explicitly disclaims on pp. 6 and 8 ('we do not claim the NDA bound covers it') — the R10 sweep removed the clause at three sites and missed the fourth, the summary paragraph a skimming referee consults for Route 2's headline status. Closed by replacing the clause with the accurate statement (the birefringence amplitude is bounded by the explicit budget of Eq. (2)), plus a re-grep that caught one sibling instance; every remaining NDA reference was checked and attaches to the O1-O6 list, not to Eq. (1). MAJOR-3: the abstract claimed the fourteen constraints were 'each closing one or more of the four routes', falsified by the paper's own B14 ('is not, and is not used as, a closure of the fermionic or one-loop content of any route') and B9 ('never used as a stand-alone closure'). Closed by restating the abstract to the joint claim the catalog actually supports and naming the two non-closure entries. MAJOR-4: Appendix C claimed the Grassmann derivation gives 'the unique solution for identical fields', inverting the cited artifact (research/theory_audit/fierz_adjudication_2026_08_05), which proves uniqueness for four distinct anticommuting fields and explicitly denies it for identical fields (span rank 3, two exact linear relations). Closed by correcting the appendix to the artifact's actual result and carrying the rank-3 caveat; G_s = -3*kappa/16 is unchanged. Also closed: the beta(gamma) arithmetic slip ('roughly 1.5 orders' corrected to 1.7: -2.2 + 0.5), Appendix D's invertible-tetrad kernel lemma now stated in components and cited to Hehl et al. (1976) instead of asserted bare, Appendix D no longer 'defers' a tensor-sector extension its own Statement already implies as an immediate corollary, the 7 + 6 to 14 branch-to-entry multiplicity stated explicitly, eight orphaned labels resolved, a stale Fig. 1 source comment corrected, Gemini's inline repository paths removed from the main text (retained correctly in Data and Code Availability), the abstract's algebraic/zero-derivative qualifier added, Fig. 1's caption version-history prose removed, and the Lagrangian-density dimension wording made field-theoretically precise. Falsified with receipts: Gemini's claim that the Planck-mass symbol is overloaded — verified at 300 DPI that the printed reduced mass carries its overline (M-bar_Pl), visibly distinct from M_Pl; Gemini's extraction dropped the overline, the fifth member of the R3/R5/R7/R8/R9 rasterization-artifact family the standing >=300 DPI re-render protocol continues to catch. Compile: v1C.0.14, 24 pp, 4-pass compile 0 LaTeX errors / 0 undefined references / 0 overfull hboxes, latex-audit PASS; page count moved 23 to 24 because the four claim-scoping closures added required text, reported rather than smoothed over, and Grok's <=12 pp target remains unmet and unreachable without deleting catalog content. Deferred-genuine: the frozen-release Zenodo DOI for this survey's own verification scripts, a P-round packaging item the paper already discloses. Because six correctness-grade genuinely-new-real items were found and closed (the four MAJORs plus the arithmetic slip and the uncited App. D kernel lemma), the R-phase is NOT converged at R11: R12 on the exact v1C.0.14 PDF is the next correctness-convergence check.",
+    keyTakeaways: [
+      "P1C v1C.0.14 served PDF: 24 pages, sha256 9dd5c708..., 4-pass compile 0 errors / 0 undefined refs / 0 overfull hboxes, latex-audit PASS",
+      "Claude leg found ZERO computational errors across 30 independently recomputed displayed relations for the second consecutive round — all four MAJORs were internal-consistency defects, not math errors",
+      "MAJOR-1 closed by regrading Table II's re-homed Route-2 dark-energy leg (I) to (II) so the table carries exactly one Tier-(I) marker, matching its own caption and six text sites",
+      "MAJOR-2 closed by removing the fourth (summary-paragraph) instance of a residual NDA delegation the paper explicitly disclaims twice elsewhere; every remaining NDA reference verified to attach to O1-O6, not Eq. (1)",
+      "MAJOR-3 closed by restating the abstract's universal closure claim to the joint claim the catalog supports, naming B14 and B9 as disclosed non-closure entries",
+      "MAJOR-4 closed by correcting Appendix C's inverted Fierz-uniqueness claim to the cited artifact's actual result (unique for distinct fields, rank-3 for identical fields); G_s = -3*kappa/16 unchanged",
+      "A new stdlib-only linter (tools/p1c_consistency_check.py) now runs before every version bump as the anti-regression guard — it independently rediscovered MAJOR-1, MAJOR-2, and MAJOR-3 with no reviewer in the loop and exits clean on v1C.0.14",
+      "R-phase NOT converged at R11 — R12 on the exact v1C.0.14 PDF is the next correctness-convergence check; no readiness score or venue/Zenodo kit exists yet",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV/P1C_claude_r11_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "Perplexity leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV_P1C_Perplexity_citations.md`,
+      },
+      {
+        label: "R11 truth audit (verdict-first ledger)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV/P1C_v1C.0.13_R11_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.14 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.14.pdf" },
+    ],
+  },
+  {
+    id: "p1c-consistency-linter-anti-regression-guard-2026-08-07",
+    dateISO: "2026-08-07",
+    kind: "skill-improvement",
+    title: "P1C consistency linter: a mechanical anti-regression guard for internal-consistency defects",
+    papers: ["P1C"],
+    summary:
+      "R11's four MAJORs were all internal-consistency defects that iterative editing introduced and that three prior rounds' greps missed, so the durable fix is mechanical, not procedural. tools/p1c_consistency_check.py is a new stdlib-only linter with four rules run against the paper's own .tex source: (A) constraint-count claims must agree across the abstract, body text, Table I, and the Fig. 1 caption, and must match the actual count of \\textbf{Bn ---} catalog entries; (B) prose Tier-(I) count assertions ('sole', 'the only', 'exactly one') must equal the counted \\textbf{(I)} markers inside Table II; (C) an extensible paired-phrase list fails whenever a sentence asserts something a companion sentence explicitly disclaims, seeded from R11 MAJOR-2's 'the operator is bounded by the single-scale NDA' versus 'we do not claim the NDA bound covers it'; (D) a universal per-entry closure claim in the abstract fails when any catalog entry declares itself not a closure (B9, B14). Proof it works: run against the pristine v1C.0.13 source it exits 1 and fires exactly Rules B, C, and D — it independently rediscovers Claude's MAJOR-1, MAJOR-2, and MAJOR-3 with no reviewer in the loop; run against v1C.0.14 it exits 0 on all four rules. The linter is deliberately NOT a git hook; it is documented in ops/RUNBOOK.md and run manually before every P1C version bump. Covered by tools/tests/test_p1c_consistency_check.py (16 tests).",
+    keyTakeaways: [
+      "tools/p1c_consistency_check.py: 4 stdlib-only rules (A count-agreement, B Tier-I count, C paired-disclaimer, D universal-closure) run directly against the .tex source",
+      "Against pristine v1C.0.13 it exits 1 and fires exactly Rules B, C, D — independently rediscovering MAJOR-1, MAJOR-2, and MAJOR-3 with zero reviewer input",
+      "Against v1C.0.14 it exits 0 on all four rules; serves as the standing anti-regression guard against re-introducing the same class of internal-consistency defect",
+      "Deliberately NOT a git hook — documented in ops/RUNBOOK.md and run manually before every P1C version bump; covered by 16 tests in tools/tests/test_p1c_consistency_check.py",
+    ],
+    links: [
+      {
+        label: "p1c_consistency_check.py",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/tools/p1c_consistency_check.py",
+      },
+      {
+        label: "RUNBOOK entry",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/ops/RUNBOOK.md",
+      },
+    ],
+  },
+  {
     id: "p1c-r10-correctness-convergence-board-scope-closure-2026-08-07",
     dateISO: "2026-08-07",
     kind: "internal-api",
