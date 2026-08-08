@@ -40,50 +40,46 @@ const TIER_DEF: Record<Tier, string> = {
 };
 
 const TIER_COLOR: Record<Tier, string> = {
-  N4: "#b91c1c",
-  N3: "#16a34a",
-  N2: "#2563eb",
-  N1: "#9333ea",
+  N4: "var(--tier-n4)",
+  N3: "var(--tier-n3)",
+  N2: "var(--tier-n2)",
+  N1: "var(--tier-n1)",
 };
 
 const contributions: Contribution[] = [
   {
     id: "perturbation-transparency",
-    tier: "N3",
-    title: "Perturbation-Transparency Theorem",
-    paper: "Paper 1A",
+    tier: "N2",
+    title: "Minimal-ECH Branch Clarification",
+    paper: "Paper 1A · focused boundary Note",
     oneLine:
-      "All-orders proof that the Barbero-Immirzi parameter γ is invisible in every perturbative observable for minimally-coupled scalar matter in ECH.",
-    why: "Tells you what the bounce CAN'T do: the bounce mechanism itself is invisible to telescopes. Every testable prediction must come from the contraction dynamics before the bounce, not from the bounce mechanism. This redirected the entire research program.",
-    what: "5-step proof chain: zero spin density for scalar matter → zero torsion → Levi-Civita connection at all perturbative orders → Holst term reduces to topological Nieh-Yan invariant → no perturbative dynamics from γ. Extended to scalar, vector, AND tensor perturbations.",
-    equation:
-      "|ε^{μνρσ} R_{μνρσ}| < 10^{-15}  (numerical confirmation of Holst topological identity across 1000 random Riemann tensors with FRW perturbation symmetries)",
+      "A convention-audited account of what follows when the non-propagating connection is eliminated in the stated minimal Einstein--Cartan--Holst setup, including the spin-sourced contact term and the zero-spin scalar branch.",
+    why: "It supplies a bounded theoretical baseline for the bounce program: which minimal branches are addressed here, and which cosmological mechanisms are outside the Note's scope.",
+    what: "The Note consolidates standard identities, gives the contact-interaction coefficient and a scale benchmark, and separates spin-sourced from zero-spin scalar statements. It does not claim an all-orders observable theorem or a complete cosmological no-go result.",
     prior:
       "Hehl et al. (1976); Freidel, Minic & Takeuchi (2005); Calcagni & Mercuri (2009); Mercuri (2009); de Berredo-Peixoto et al. (2012); Långvik et al.",
     ours:
-      "No prior work combined the known ingredients into an explicit all-orders perturbation theorem for minimally coupled scalar matter in ECH. We formalized it as a 5-step theorem, proved it extends to tensors, verified numerically to machine precision.",
+      "The contribution is careful convention and scope control for this narrow branch; novelty and broader significance are for independent review.",
     verify: [
       {
-        label: "verify_holst_vanishing.py",
-        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/transparency_verification/verify_holst_vanishing.py",
+        label: "P1A source Note",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",
       },
     ],
   },
   {
     id: "14-barriers",
-    tier: "N3",
-    title: "14-Constraint Channel-Level Closure Map",
-    paper: "Paper 1A",
+    tier: "N1",
+    title: "Archived ECH Route Map",
+    paper: "Legacy program archive · not current P1A",
     oneLine:
-      "Catalog of 14 independent structural constraints establishing channel-level closure, under stated assumptions, of the four enumerated minimal-ECH dark-energy routes.",
-    why: "Closes every enumerated minimal route from a nonsingular ECH bounce to late-time dark energy under stated assumptions. Instead of testing one or two mechanisms and hoping, we systematically closed each channel. Tells future researchers exactly where NOT to look.",
-    what: "7 foundation studies (A-G) + 17 research branches (H-W). Each barrier is named, quantified, and cross-referenced. Mass-coupling lock, Topological-Shift Duality, scalar-tensor universality, Planck suppression, attractor-sensitivity dilemma, parameter immunity, Liouville conservation, and 7 more.",
-    equation:
-      "g_eff ~ 10^{-61}  ·  Planck suppression 10^{-122}  ·  graviton-loop fine-tuning 10^{-57}  (across the barrier set)",
+      "Earlier route-mapping material is retained as provenance, not presented as a current universal closure result or as the scope of P1A.",
+    why: "It documents how the program narrowed; it is not a selected scientific claim.",
+    what: "The historical map contains exploratory constraints and branch notes. It must not be read as closing every minimal-ECH route to dark energy or as a replacement for a model-specific analysis.",
     prior:
       "Blagojević & Hehl (2013); Weinberg (1989); 't Hooft (1979); Shie, Nester & Yo (2008).",
     ours:
-      "No prior work tested and closed all standard mechanism classes for connecting a nonsingular bounce to late-time dark energy within a single theoretical framework. Each branch opened only after passing a 4-question filter.",
+      "Preserved for traceability only; no current novelty or closure claim is assigned.",
     verify: [
       {
         label: "research/foundation_A_pgt through foundation_G",
@@ -93,18 +89,18 @@ const contributions: Contribution[] = [
   },
   {
     id: "matter-bounce-fnl",
-    tier: "N3",
-    title: "f_NL = -35/8 Forecast Package",
+    tier: "N2",
+    title: "Exact Matter-Contraction Non-Gaussianity Derivation",
     paper: "Paper 2",
     oneLine:
-      "First comprehensive forecast for testing Cai et al.'s matter-bounce non-Gaussianity prediction with upcoming surveys.",
-    why: "Makes the bounce hypothesis testable. Cai et al. derived f_NL = -35/8 in 2009 but nobody built the full machinery to test it. We did: SPHEREx sensitivity, Bayesian model comparison, template mismatch quantification, robustness against systematics. SPHEREx data (~2028) will confirm or kill this at ~5σ.",
-    what: "Parameter-free local non-Gaussianity from matter-dominated contraction: 300× larger than standard inflation, opposite sign. Forecast: σ(f_NL) = 0.7 (Heinrich+2023 multi-tracer Fisher); 3-5σ after systematic budget; 5.2-5.5σ optimistic pre-GR/b_φ degradation; 4.4σ at MegaMapper even at the worst convention.",
-    equation: "f_NL^{local} = -35/8 = -4.375",
+      "A reproducible rederivation of the stated matter-contraction local amplitude, with explicit convention, bounce-transfer, and survey-mapping limits.",
+    why: "Makes a specific matter-contraction calculation inspectable and potentially testable. P2 rederives the squeezed value −35/16 and states the bounce-transmission and survey-mapping assumptions that must hold before it becomes an observational test.",
+    what: "A convention-pinned local non-Gaussian amplitude for the stated matter-contraction setup, paired with conditional sensitivity studies. The survey numbers are forecasting diagnostics, not a detection or a unique proof of a bounce.",
+    equation: "f_NL^{local} = -35/16 = -2.1875",
     prior:
       "Cai, Xue, Brandenberger & Zhang (2009); Heinrich, Doré & Krause (2023); Dalal et al. (2008); Li & Brandenberger (2014).",
     ours:
-      "First combination of (a) SPHEREx + MegaMapper sensitivity specific to bounce; (b) Bayesian model comparison with 600K+ MC realizations (bounce favored at 8-17:1 over tuned multifield); (c) GR-projection robustness; (d) template-mismatch (r ≈ 0.85-0.90); (e) ε-correction bounded [1-8%]; (f) cubic bounce transmission estimate; (g) Li-Brandenberger convention resolution.",
+      "A reproducible derivation plus explicit accounting of convention, template, transmission, projection, and survey-covariance boundaries. Novelty and venue significance remain for independent review.",
     verify: [
       {
         label: "research/bayesian_discrimination_program/",
@@ -118,15 +114,15 @@ const contributions: Contribution[] = [
   },
   {
     id: "physics-commutator",
-    tier: "N3",
-    title: "Physics-Derived Full-Commutator Polynomial",
+    tier: "N2",
+    title: "Exact Ordered Four-Vertex Polynomial",
     paper: "Paper 2",
     oneLine:
-      "Resolves a 15-year factor-of-2 ambiguity between Cai et al. (2009) and Li et al. (2017) by tracing it to the in-in commutator.",
-    what: "Using Cai et al.'s own intermediate vertex contributions (Eqs. 34-36), we derive the full-commutator shape polynomial algebraically: (6, 2, -18, 10, -66, 18). Proven by exact rational arithmetic. Published Eq. 37 coefficients (3, 1, -9, 5, -66, 9) are the single-time-ordering values. The factor of 2 is the in-in commutator: i⟨[ζ³, L]⟩ = -2 Im⟨ζ³ L⟩.",
-    why: "Two groups published different answers; nobody knew who was right. We proved both groups are correct at their respective levels. The exact polynomial determines how well SPHEREx can actually detect the signal.",
+      "Re-sums the four stated cubic vertices in an explicitly ordered symmetric basis and makes the coefficient convention independently checkable.",
+    what: "The exact rational re-summation gives the unique ordered-basis coefficients (3, 1, -9, 5, -33, 9) and the squeezed amplitude −35/16. Independent checks use the order-grouped expressions and the general-c_s formula; the result is algebraic and scoped to the stated contraction-phase action.",
+    why: "It makes the calculation's ordered-vertex convention inspectable and separates that derivation from conditional observational forecasts.",
     equation:
-      "Full-commutator polynomial: (6, 2, -18, 10, -66, 18)  ·  template overlap r ≈ 0.85-0.90",
+      "Ordered-basis coefficients: (3, 1, -9, 5, -33, 9)  ·  squeezed f_NL = −35/16",
     verify: [
       {
         label: "algebraic_commutator_proof.py",
@@ -136,15 +132,13 @@ const contributions: Contribution[] = [
   },
   {
     id: "alp-birefringence",
-    tier: "N2",
-    title: "ALP Birefringence Consistency",
-    paper: "Paper 1A / Paper 2",
+    tier: "N1",
+    title: "Archived ALP Birefringence Exploration",
+    paper: "Legacy program archive · not current P1A/P2 claim",
     oneLine:
-      "ECH parity structure motivates a Planck-scale ALP. Predicted β = 0.27° matches the 3.6σ Planck+ACT observation at 0.5σ.",
-    what: "Numerical ΛCDM ALP field evolution gives Δφ/f_a = 0.65-1.07 across the natural mass range m/H₀ ∈ [1, 3]. Fiducial β = 0.27° (at m ≈ 1.8H₀) is consistent with the published joint WMAP+Planck β = 0.342° ± 0.094° (3.6σ). NaMaster validation (synthetic ΛCDM skies, 500 MC): β = 0.27° recovered as 0.238° — a pipeline-validation figure, not a sky measurement.",
-    why: "Our benchmark value sits within 1σ of an actual published observation. LiteBIRD tests at 9σ in early 2030s. Bounce-mechanism independent — falsification target separate from f_NL.",
-    equation:
-      "β = 0.27°  ·  consistent with Eskilt+ β = 0.342° ± 0.094° (3.6σ published detection)",
+      "Earlier exploratory ALP calculations are retained as provenance; they are not a selected claim of P1A or P2.",
+    what: "The archive contains exploratory ALP evolution and synthetic-estimator checks. None is assigned to the selected P1A or P2 scientific claims, and the material is not presented as a sky measurement or an ECH prediction.",
+    why: "It records an exploratory line without implying a present ECH prediction or measurement.",
     verify: [
       {
         label: "alp_field_evolution/",
@@ -154,13 +148,13 @@ const contributions: Contribution[] = [
   },
   {
     id: "topological-shift-duality",
-    tier: "N2",
-    title: "Topological-Shift Duality (Barrier 2)",
-    paper: "Paper 1A",
+    tier: "N1",
+    title: "Archived Nieh--Yan Branch Note",
+    paper: "Legacy program archive · not current P1A",
     oneLine:
-      "Mass protection and geometric content are mutually exclusive for pseudoscalar fields coupled to the Nieh-Yan 4-form.",
-    what: "If Nieh-Yan is topological (standard EC), pseudoscalar mass is shift-symmetry protected but the coupling is a total derivative — no dynamics. If Nieh-Yan is non-topological (metric-affine), dynamics arise but shift symmetry breaks — no mass protection. Cannot have both.",
-    why: "Closes a loophole that keeps coming up — people repeatedly try to build light pseudoscalars for dark energy from Nieh-Yan. Applies beyond our framework: constrains any attempt to use topological gravity terms as sources for light pseudoscalars.",
+      "An earlier conceptual branch is preserved for traceability; it is not a general theorem or a current P1A conclusion.",
+    what: "The archive records a conditional discussion of topological and non-topological Nieh--Yan constructions. It does not establish universal mutual exclusivity across gravitational models.",
+    why: "The item explains prior exploration, not the present publication claim.",
     verify: [
       {
         label: "foundation_B_lock_breaking/",
@@ -170,17 +164,17 @@ const contributions: Contribution[] = [
   },
   {
     id: "chirality-catalog",
-    tier: "N3",
-    title: "3.2M-Spiral Galaxy Chirality Catalog (8.47M classified)",
+    tier: "N2",
+    title: "DESI Observed-Label Chirality Catalog and Dipole Null",
     paper: "Paper 4",
     oneLine:
-      "Largest chirality-labeled galaxy catalog to date: 8.47M DESI Legacy DR8 galaxies classified CW/CCW/NOT_SPIRAL (3,201,160 spirals) by a flip-equivariant ViT pipeline, with a null real-space chirality dipole.",
+      "An 8.47-million-row DESI observed-label catalog with a declared 890,069-object high-confidence sample and a primary dipole result consistent with zero.",
     what:
-      "8,474,531 galaxies from DESI Legacy Survey DR8 classified by a flip-equivariant Vision Transformer ensemble with test-time D4 averaging (equivariance suppresses the raw classifier asymmetry 2.98×: +1.576% → −0.529% in A-units). Headline: real-space ℓ=1 dipole at +0.43σ (p=0.30) plus a block-bootstrap WLS template fit disfavoring a clean 1.7% Shamir-class dipole at z≈−18; injection-recovery brackets A95 in (1.0%, 1.5%].",
+      "The release contains 8,474,531 DESI Legacy DR8 labels. Starting from 949,584 high-confidence rows, the declared safety quarantine removes 59,515, leaving 890,069 quality-controlled rows; 887,472 enter the supported-pixel fit. The primary result is null-consistent at z_mom=+0.635 with one-sided rank p=0.23768. Coverage-calibrated injection–recovery gives an observed-label sensitivity A95_obs≈0.98%, not a physical parity bound.",
     why:
-      "First chirality null at this scale with an honest falsification window. Constrains any cosmological parity-violating mechanism — including the early-universe consequences of ECH parity-odd structure beyond the ALP birefringence channel — and refutes the claimed ~3% parity signal.",
+      "It tests an observed-label chirality claim at scale while keeping label-transfer and training-composition limits explicit. It is not a physical primordial-parity constraint.",
     equation:
-      "Real-space dipole +0.43σ (p = 0.30)  ·  WLS exclusion of 1.7% dipole at z ≈ −18  ·  A50 ≈ 0.75%, A95 ∈ (1.0%, 1.5%]",
+      "N_selected=890,069  ·  N_support=887,472  ·  z_mom=+0.635  ·  rank p=0.23768  ·  A95_obs≈0.98%",
     verify: [
       {
         label: "bamfai/galaxy-chirality-catalog (HuggingFace)",
@@ -194,15 +188,15 @@ const contributions: Contribution[] = [
   },
   {
     id: "anomaly-catalog",
-    tier: "N3",
-    title: "Multi-Survey Anomaly Catalog (378,280 anomalies)",
-    paper: "Paper 3",
+    tier: "N2",
+    title: "Supporting DESI Public-ID Recovery (181 TARGETIDs)",
+    paper: "Paper 3 · integrated supporting data release",
     oneLine:
-      "First unified anomaly sweep across 7 surveys (37.3M sources) — roughly 141× larger than the biggest prior spectroscopic anomaly catalog — after Path-C native retrains and 5″ positional dedup.",
+      "A focused, reproducible public-ID recovery of a frozen historical DESI DR1 anomaly list: 181 warning-free global-primary TARGETIDs, split transparently into 170 high-coordinate-consistency core associations and 11 lower-confidence positional associations. This is an archive-recovery / provenance product — explicitly NOT a purity, novelty, or detection claim.",
     what:
-      "DESI DR1 (195,829), SDSS DR18 (77,905), LAMOST DR10 (44,075), eROSITA DR1 (298), Planck CMB (200), NEOWISE (436), Gaia DR3 (500). 388,493 raw → 378,280 unique after global friends-of-friends union-find at 5″ (637 multi-survey + 9,576 intra-survey collapses). Enrichment statistics (e.g. eROSITA) are reported descriptively, not as inferential significances.",
+      "A declared 1-arcsec positional join over 20,299,155 eligible DESI rows → 2,468 positional parents → 2,448 global-primary rows → 181 warning-free associations (170 at ≤0.1″, 11 between 0.1″ and 1″). Every released row and all 18 carried DESI fields are re-read exactly from the recorded FITS row; the release carries exact source-row provenance, quality tiers, warned-row auxiliary data, shift controls, checksums, and a clean-checkout validator. As of r10 every claim site states that the sub-0.1″ core excess is expected seed self-recovery (the single-member cluster centroid equals the seed member's own coordinates by construction), not independent association evidence.",
     why:
-      "Cross-survey continuity is the load-bearing falsification surface for any new physics claim. Population-level rare-class discovery (z>6 QSOs, ultra-rare AE candidates) is the byproduct.",
+      "Reproducible archive provenance — recovering public IDs from a surviving historical anomaly list, with exact source-row lineage — is a transparency contribution: a reviewer can replay the exact selection waterfall and coordinate-association quality tiers. The paper deliberately declines physical classification, purity, novelty, and anomaly-rate claims that the surviving lineage does not support.",
     verify: [
       {
         label: "pipelines/p3_anomaly_engine/",
@@ -213,16 +207,16 @@ const contributions: Contribution[] = [
   {
     id: "spherex-fisher",
     tier: "N2",
-    title: "SPHEREx f_NL Fisher Forecast",
+    title: "Conditional SPHEREx Sensitivity Mapping",
     paper: "Paper 2",
     oneLine:
-      "Multi-tracer Fisher forecast of σ(f_NL) = 0.7 → 4.7-12σ detection of bounce f_NL = -4.375 by 2027.",
+      "Conditional survey-sensitivity diagnostics for the stated matter-contraction amplitude; not a detection forecast guaranteed by P2.",
     equation:
-      "σ(f_NL) = 0.36 (Fisher ideal)  ·  σ(f_NL) = 0.93 (Munchmeyer+2019 conservative)  ·  detection 4.7-12σ",
+      "r=0.8354  ·  shape cosine=0.9817  ·  adopted arithmetic map=2.63σ  ·  nuisance ladder=3.5σ to 0.4σ",
     what:
-      "Externalized to Heinrich+2023 multi-tracer bispectrum forecast with the bounce template; noise-weighted shape mismatch, ε-correction, b_φ marginalization, GR projection all carried through.",
+      "The exact shape maps onto the published Heinrich et al. baseline with flat-grid recovery r=0.8354 (adopted r=0.84) and shape cosine 0.9817. The illustrative map is 2.63σ before additional nuisance marginalization; a channel-native surrogate spans 3.5σ with nuisances fixed, 3.1σ after A_GR marginalization, 2.3σ with a 30% b_φ prior, and 0.4σ when b_φ is free.",
     why:
-      "Sets a hard deadline on falsification — SPHEREx will report by ~2027-2028.",
+      "Illustrates what additional bounce-transfer and survey assumptions would be needed to turn the derivation into an observational test.",
     verify: [
       {
         label: "research/focused_paper_source_integration/02_full_draft.tex",
@@ -232,17 +226,17 @@ const contributions: Contribution[] = [
   },
   {
     id: "desi-environment",
-    tier: "N3",
+    tier: "N2",
     title: "DESI Chirality × Environment Null (z-shell corrected)",
     paper: "Paper 5",
     oneLine:
-      "Galaxy chirality is statistically independent of DESI large-scale-structure environment: 791,635 matched spirals + 56,981 void spirals, with a z-shell selection correction and full covariate robustness.",
+      "A catalog-native, exploratory chirality--environment comparison whose focal contrast is consistent with zero under declared controls and sensitivity checks.",
     what:
-      "Matched 2,232,212 deduped DESI DR1 rows against the Paper-4 chirality catalog (duplicate-TARGETID join root-caused and rebuilt; 100% GZ–DESI join). DESIVAST three-algorithm void test, V-Web + T-Web + Tempel + ASTRA cross-checks, 21-shell z-shell selection-corrected rebuild, omnibus χ² environment nulls (p=0.31/0.99), and covariate-robust regression over size/magnitude/morphology/inclination (Wald p=0.46/0.99).",
+      "The released DESIVAST GALZONE universe contains 694,642 unique TARGETIDs. Joining P4 yields 145,789 rows; 145,766 OUT=0 rows form the quality parent, split into 31,937 void and 113,829 non-void rows. The adjusted non-void-minus-void contrast is +0.00145442 with SE=0.00331502, 95% CI [−0.00504290,+0.00795174], normal p=0.66085, and wild-cluster p=0.67345.",
     why:
-      "Cosmic-web environment is the most natural place to look for spin alignment / handedness correlations. The controlled non-detection constrains the whole class of environment-coupled parity models at the ≳25 Mpc/h smoothing scale.",
+      "It asks a distinct environment-dependence question using P4 labels; it is not preregistered, independent of P4, or a physical-handedness constraint.",
     equation:
-      "Omnibus χ² nulls p = 0.31 / 0.99  ·  covariate-robust Wald p = 0.46 / 0.99  ·  no class clears Bonferroni significance under any classifier",
+      "Δf_CW=+0.00145442  ·  SE=0.00331502  ·  95% CI [−0.00504290,+0.00795174]  ·  p=0.66085  ·  wild-cluster p=0.67345",
     verify: [
       {
         label: "pipelines/p5_desi_chirality/",
@@ -253,12 +247,12 @@ const contributions: Contribution[] = [
   {
     id: "mcmc-verification",
     tier: "N2",
-    title: "MCMC Verification Infrastructure (309,189 frozen samples)",
-    paper: "Paper 1B",
+    title: "Archived MCMC Verification Infrastructure",
+    paper: "Program archive · not P1B's publication role",
     oneLine:
-      "309,189 frozen posterior samples across 2 converged dataset combinations (third accumulating). Honest null: ΔN_eff ≈ 0, H₀ = 67.68 (standard ΛCDM); DESI DR2 w0wa chain gives w_pivot = −0.952 ± 0.019 (+2.5σ from −1, twice-verified).",
+      "Frozen posterior records document earlier verification work. They are retained for provenance and are not a current lead result; P1B is namaster-proof research software.",
     what:
-      "Cobaya 3.6.1 + CAMB. Frozen combinations: 176,240 full-tension + 132,949 Planck+BAO+SN, Gelman-Rubin converged. A separate DESI DR2 BAO + Planck NPIPE + DES-Y5 + Pantheon+ w0wa chain reports w_pivot at the decorrelated pivot. Corrected our own earlier artifact (H₀ = 69.2 was a SH0ES prior artifact).",
+      "Cobaya/CAMB chain artifacts and diagnostics are preserved as historical research records. Their prior publication assignment and headline interpretations are superseded by the approved portfolio map.",
     why: "Demonstrates honest negative reporting — we found our own bug and disclosed it.",
     verify: [
       {
@@ -270,30 +264,28 @@ const contributions: Contribution[] = [
   {
     id: "pta-bounce",
     tier: "N2",
-    title: "NANOGrav Bounce GW Spectrum",
-    paper: "Paper 3, §6",
+    title: "Archived NANOGrav Slope Comparison",
+    paper: "Legacy program record · not current P3",
     oneLine:
-      "NANOGrav 15-yr real-KDE free-spectrum re-fit: γ = 2.567 ± 0.382. Matter-bounce γ = 3.0 consistent at +1.13σ; SMBHB γ = 4.33 excluded at +4.61σ.",
+      "A simplified historical power-law slope comparison is preserved for reproducibility; it does not identify a bounce origin or exclude complete astrophysical alternatives.",
     what:
-      "Real free-spectrum KDE likelihood (Zenodo chains, emcee re-fit; ESS = 5,507) replacing the earlier synthetic-power-law summary statistic γ = 3.20 ± 0.42. Savage-Dickey Bayes factor decisively favors the bounce slope over the SMBHB slope.",
+      "The archived computation uses a public summary likelihood and a simplified slope family. It is not part of the selected lead claims and would require a preregistered, multi-model physical analysis to revisit.",
     why:
-      "The PTA spectral slope is one of the few currently-measured observables that discriminates bounce-era tensor spectra from astrophysical SMBHB backgrounds.",
+      "It records an exploratory model-comparison path and, more importantly, the boundary that a single fitted slope cannot determine physical origin.",
     equation:
-      "γ_bounce = 3.0 (+1.13σ consistent)  ·  γ_obs = 2.567 ± 0.382  ·  γ_SMBHB = 4.33 (+4.61σ excluded)",
+      "Archived simplified comparison only · no bounce detection · no complete-source exclusion",
   },
   {
     id: "namaster-validation-suite",
     tier: "N2",
-    title: "NaMaster Pipeline Validation Suite",
-    paper: "Paper 1B / Paper 4",
+    title: "namaster-proof Verification Software",
+    paper: "Paper 1B",
     oneLine:
-      "End-to-end pseudo-C_ℓ validation harness: 500-MC birefringence recovery on synthetic ΛCDM skies (P1B) plus MASTER-deconvolved chirality-field nulls with harmonic completeness anchors (P4).",
+      "An installable verification library for exact NaMaster bandpower windows and content-bound execution receipts; it is software infrastructure, not a sky measurement.",
     what:
-      "P1B leg: synthetic ΛCDM polarization skies, ACT-like f_sky = 0.32 mask, 10 μK·arcmin noise, 500 MC — injected β = 0.27° recovered as 0.238° (bias −0.032°, sign-symmetric; σ_β(0.32) = 0.046° measured directly). Scope honestly declared: validates the E→B MASTER deconvolution, not the β–α foreground degeneracy. P4 leg: monopole-only generative nulls (99.3% of pre-MASTER ℓ=1 power), label-shuffle backgrounds, and injection completeness — a Shamir-class 1.7% dipole would recover at z ≈ 68–218 vs the observed +7.3.",
+      "The package exercises exact bandpower-window application, validates receipt/result byte binding, and ships tests and examples for the two failure modes described by P1B. Historical birefringence and chirality experiments remain program provenance and are not P1B headline results.",
     why:
-      "Mask-coupled pseudo-C_ℓ pipelines silently manufacture or destroy low-ℓ signals; a committed, rerunnable validation suite is what separates a believable null from an artifact.",
-    equation:
-      "β bias = −0.032° (500 MC, synthetic skies)  ·  monopole-only null reproduces 99.3% of pre-MASTER ℓ=1 power",
+      "It turns two reproducibility hazards into testable software contracts that other pseudo-C_ℓ analyses can reuse.",
   },
   {
     id: "provenance-audit",
@@ -301,9 +293,9 @@ const contributions: Contribution[] = [
     title: "Provenance-Audit Methodology (retract-and-rebuild)",
     paper: "Paper 4 / program-wide",
     oneLine:
-      "A data-provenance audit traced P4's previously-headlined −0.122σ subsample-mask null to a synthetic-footprint catalog; the result was withdrawn, the paper re-anchored on real-space estimators, and the audit trail published.",
+      "Artifact-level provenance checks caught unsupported intermediate claims, which were withdrawn before submission and replaced only when a current, reproducible result existed.",
     what:
-      "Artifact-level provenance tracing (file hashes, generation scripts, footprint geometry checks) applied to every load-bearing null. When the audit failed, the claim was withdrawn in-paper (P4 Appendix A), the headline was rebuilt on the real-space +0.43σ dipole + WLS template exclusion, and the corrected equivariance suppression factor (3.86× → 2.98×) was propagated through every surface. P2's irreproducible ~9.9σ SDB joint-Fisher claim was withdrawn the same way and replaced by a committed-code 1.4σ/0.6σ subordinate channel.",
+      "The workflow binds claims to file hashes, generators, footprint checks, exact inputs, and rerunnable outputs. Failed provenance does not become a caveat attached to a headline; it removes the headline until a supported replacement exists. Current paper values must come from each final candidate, not superseded audit-era numbers.",
     why:
       "Most published nulls and detections never face an artifact-level audit. Treating retraction-and-rebuild as a first-class, documented workflow is itself a transparency contribution — reviewers can replay the exact decision chain.",
   },
@@ -315,13 +307,92 @@ const contributions: Contribution[] = [
     oneLine:
       "All 12 load-bearing compute closures (fsky sweeps, continuous-prior MCMC, permutation rebuilds, sign-symmetry reruns) executed on a dedicated pod with committed scripts + JSON artifacts, for ~$0.55 total.",
     what:
-      "Each job ships its driver script, inputs, seeds, and output artifact in-repo; results are stamped into the papers via the \\artifact{} macro pointing at immutable release tags. The chain covers P1B (fsky sweep, Caγ continuous-prior MCMC, c9f sign-symmetry), P4 (10k-permutation Table III rebuild, harmonic completeness injections), and P5 (closure-recompute scripts 17–19).",
+      "Each archived job ships its driver, inputs, seeds, and output artifact. Earlier P1B/MCMC assignments are superseded; the current P1B contribution is namaster-proof. P4/P5 receipts remain supporting reproducibility evidence for their scoped claims.",
     why:
       "A reviewer can rerun any headline number from the committed chain — reproducibility as an artifact, not a promise.",
     verify: [
       {
         label: "h200_scripts/experiments/",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/h200_scripts/experiments",
+      },
+    ],
+  },
+  {
+    id: "bigae-anomaly-detector",
+    tier: "N2",
+    title: "Archived BigAE Multi-Survey Pipeline",
+    paper: "Legacy anomaly work · not current P3",
+    oneLine:
+      "Historical autoencoder pipeline artifacts are preserved, but their cross-survey counts and validation claims are not the current anomaly flagship and are not acceptance targets for the clean DESI rerun.",
+    why: "The archive records useful lessons about domain shift, native retraining, and provenance. Its scientific claims must be regenerated under the new fail-closed model/input/scaler contract.",
+    what:
+      "Legacy per-survey retrains exposed severe cross-transfer domain shift. The new flagship must regenerate the DESI sample with immutable inputs, the hash-bound model, a sealed scaler, shard receipts, deterministic deduplication, and independent candidate validation.",
+    prior:
+      "Autoencoder outlier detection (Baron & Poznanski 2017); single-survey spectral anomaly searches.",
+    ours:
+      "No current novelty claim is assigned to the unreconciled multi-survey catalog. The reusable contribution is the preserved failure analysis and the clean-rerun contract now governing the rebuild.",
+    verify: [
+      {
+        label: "6-way dedup artifact (EXACT-MATCH)",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/outputs/sixway_dedup_artifact.json",
+      },
+      {
+        label: "bamfai/desi-spectral-anomaly-detector (model)",
+        href: "https://huggingface.co/bamfai/desi-spectral-anomaly-detector",
+      },
+      {
+        label: "bamfai/bigbounce-anomaly-catalog (dataset)",
+        href: "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
+      },
+    ],
+  },
+  {
+    id: "chirality-equivariant-classifier",
+    tier: "N2",
+    title: "Z₂-Flip-Equivariant Chirality Classifier (released model)",
+    paper: "Papers 4 & 5",
+    oneLine:
+      "A released classifier/checkpoint used to produce observed chirality labels, with reflection-aware processing and documented training-composition limits.",
+    why: "Reflection-aware processing is a useful control for orientation-sensitive labels, but it does not calibrate true spin or remove every survey and training systematic.",
+    what:
+      "The released ViT-based checkpoint supports P4/P5 reproducibility. P4 documents unresolved historical training-composition conflicts and an unreproduced CE-included accuracy path; the released catalog labels remain observed classifier outputs, not calibrated physical handedness.",
+    prior:
+      "CNN/ViT galaxy-morphology classifiers (Galaxy Zoo DECaLS, Zoobot); standard non-equivariant chirality classifiers (Shamir et al.).",
+    ours:
+      "The reusable output is the released checkpoint plus its declared scope and provenance boundary; priority claims are left to independent review.",
+    verify: [
+      {
+        label: "bamfai/galaxy-chirality-v2 (model)",
+        href: "https://huggingface.co/bamfai/galaxy-chirality-v2",
+      },
+      {
+        label: "bamfai/galaxy-chirality-catalog (dataset)",
+        href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+      },
+    ],
+  },
+  {
+    id: "gz1-only-independence",
+    tier: "N2",
+    title: "Historical GZ1-Only Control",
+    paper: "Paper 4",
+    oneLine:
+      "A lower-power human-label control is preserved as supporting evidence; it neither proves a physical null nor replaces P4's current quality-controlled primary estimator.",
+    why: "The control probes sensitivity to one training path while leaving morphology transfer, footprint, and upstream imaging systematics unresolved.",
+    what:
+      "The archived GZ1-only run is null-consistent at lower power. It is a historical robustness control, not the current P4 headline and not a physical-parity constraint.",
+    prior:
+      "Self-training / pseudo-label validation typically checks classifier accuracy, not downstream-measurement independence.",
+    ours:
+      "Useful supporting control with a deliberately bounded interpretation.",
+    verify: [
+      {
+        label: "gz1only_dipole_result.json",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/gz1only_dipole_result.json",
+      },
+      {
+        label: "bamfai/galaxy-chirality-v2 (gz1only ckpt)",
+        href: "https://huggingface.co/bamfai/galaxy-chirality-v2/tree/main/gz1only",
       },
     ],
   },
@@ -466,6 +537,69 @@ export default function ContributionsPage() {
           self-claimed. Definitions, prior work, and verification links below.
         </p>
       </div>
+
+      <section id="program-arc" style={{ marginTop: 28 }}>
+        <p
+          className="eyebrow"
+          style={{ marginBottom: 8 }}
+        >
+          How the research outputs fit together
+        </p>
+        <p style={{ marginTop: 0, fontSize: 14, lineHeight: 1.7, maxWidth: "64ch" }}>
+          The portfolio now follows <strong>three scientific questions</strong>,
+          not a fixed paper count. Bounce theory contains the lead P2 calculation,
+          a focused P1A boundary Note, and P1B verification software. DESI anomaly
+          discovery is being rebuilt as a science-first flagship, with the current
+          P3 retained as its public-ID provenance release. Galaxy chirality contains
+          the lead P4 observed-label catalog/null result and the distinct P5
+          chirality–environment companion. These programs share methods and data,
+          but they do not constitute a single evidentiary chain from bounce theory
+          to a claimed survey detection.
+        </p>
+        <div style={{ display: "grid", gap: 0, marginTop: 16 }}>
+          {[
+            { n: "P1A", role: "Focused theory Note: derives the minimal ECH contact term and identifies the zero-spin scalar branch boundary under stated assumptions." },
+            { n: "P1B", role: "Research software: exact pseudo-Cℓ window inference and tamper-evident provenance for reproducible spin-2 analyses; it makes no cosmological detection claim." },
+            { n: "P2", role: "Lead theory paper: rederives f_NL^local = −35/16 for the stated matter-contraction setup and makes its bounce-transmission and survey-mapping conditions explicit." },
+            { n: "P3", role: "Supporting data release: recovers 181 DESI DR1 TARGETIDs from a frozen historical list. It is provenance support for the rebuilt anomaly flagship, not a replacement discovery paper." },
+            { n: "P4", role: "Lead catalog paper: releases 8.47M observed chirality labels and reports a declared primary dipole statistic consistent with zero, without converting it into a physical primordial-parity constraint." },
+            { n: "P5", role: "Standalone AJ companion: tests a distinct catalog-native void/non-void classifier-label contrast and finds no detected difference; it does not establish physical environment independence." },
+          ].map((p, i) => (
+            <div
+              key={p.n}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "56px 1fr",
+                gap: 14,
+                alignItems: "baseline",
+                padding: "10px 0",
+                borderTop: i === 0 ? "none" : "1px solid var(--border)",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-mono-stack)",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: "var(--accent)",
+                }}
+              >
+                {p.n}
+              </span>
+              <span style={{ fontSize: 13, lineHeight: 1.6 }}>{p.role}</span>
+            </div>
+          ))}
+        </div>
+        <p style={{ marginTop: 12, fontSize: 12.5, lineHeight: 1.6, color: "var(--text-muted)" }}>
+          Approved endpoint: six standalone works across the three programs, plus
+          P3 as a supporting data release integrated with the rebuilt anomaly
+          flagship. See the{" "}
+          <Link href="/paper" style={{ color: "var(--accent)" }}>
+            research programs and evidence library
+          </Link>{" "}
+          for full status and PDFs.
+        </p>
+      </section>
 
       <section
         id="tier-scale"
@@ -689,10 +823,8 @@ export default function ContributionsPage() {
                   color: "var(--text-muted)",
                 }}
               >
-                Standing rule (2026-06-03): no BigBounce / Hubify-published
-                paper self-annotates at N4. Site copy, paper abstracts, and
-                Convex novelty fields are all capped at N3 by the{" "}
-                <code>/never-claim-n4</code> audit.
+                No BigBounce paper self-annotates at N4. Site copy, paper abstracts,
+                and all contribution records are capped at N3 by internal review.
               </p>
             </Card>
           </section>

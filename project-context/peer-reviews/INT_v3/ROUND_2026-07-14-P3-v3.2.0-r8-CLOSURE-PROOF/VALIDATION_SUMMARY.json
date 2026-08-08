@@ -1,0 +1,71 @@
+{
+  "paper": "P3 ApJS",
+  "version": "v3.2.0-r8",
+  "status": "PASS",
+  "scope_boundary": "P3 manuscript/PDF, r7 bundle Git completeness, and this r8 proof freeze only; no SSOT, readiness tracker, site, Convex, new review wave, or push",
+  "frozen_sources": {
+    "tex": {
+      "path": "P3_v3.2.0-r8.tex",
+      "sha256": "2b9a5fd356e49ae7a9939cbf8e9197379bef71b1f66a0e364e0de41ae416d10b"
+    },
+    "pdf": {
+      "path": "P3_v3.2.0-r8.pdf",
+      "sha256": "b5f254f92b10bda43b687f07c5f58b828a6f7dc70d98c08f9e9b609edbba08b0",
+      "pages": 16,
+      "bytes": 468413
+    }
+  },
+  "reader_visible_closure": {
+    "status": "PASS",
+    "statement": "The 0.1-arcsec boundary is explicitly labeled post hoc and descriptive, not a predeclared selection cut; the predeclared 1-arcsec membership remains unchanged.",
+    "source_lines": "paper3_apjs.tex:301-303"
+  },
+  "primary_contract": {
+    "total_positional_associations": 181,
+    "high_coordinate_consistency_le_0p1arcsec": 170,
+    "lower_confidence_gt_0p1_le_1arcsec": 11,
+    "retain_all_181": true,
+    "secure_identity_claim": false,
+    "purity_claim": false
+  },
+  "submission_bundle": {
+    "version": "p3-apjs-v3.2.0-r7",
+    "manifest_sha256": "e59710a1c4f88fc816257d1441ae3eb69d954828c180a8541a1aa8f1c855007a",
+    "sha256sums_sha256": "bb37501f1912cc9199903ba39844a19f7ff0da0272ba5448986eac496e2d4a4f",
+    "manifest_payloads": 38,
+    "total_files": 41,
+    "clean_tree_equivalent_validation": "PASS",
+    "exact_newly_tracked_payload_copies": 3,
+    "scientific_bytes_changed": false
+  },
+  "validators": {
+    "bundle_contract_in_place": "PASS",
+    "bundle_contract_clean_tree_equivalent": "PASS: 41/41 files present and hash-matching",
+    "component_wrapper_self_check": "PASS: four unsafe in-place destinations rejected; two temporary destinations accepted",
+    "primary_rows": 181,
+    "core_rows": 170,
+    "lower_confidence_rows": 11,
+    "warned_auxiliary_rows": 2267,
+    "aas_rows": 181,
+    "coordinate_lineage": "PASS",
+    "doi_status": "pending"
+  },
+  "latex_audit": {
+    "compile_errors": 0,
+    "undefined_references_or_citations": 0,
+    "overfull_hboxes": 0,
+    "underfull_hboxes": 0,
+    "overfull_vboxes": 2,
+    "overfull_vbox_max_points": 4.23666,
+    "table_row_overflows": 0,
+    "raw_texttt_paths": 0,
+    "date_overflow_risks": 0,
+    "page1_version_timestamp_verified": true,
+    "visual_pages_reviewed": 16,
+    "visual_status": "PASS",
+    "url_annotations": 26,
+    "url_set_identical_to_r7_audited_pdf": true,
+    "broken_urls": 0
+  },
+  "truth_audit_receipt": "CODEX_TRUTH_AUDIT.md"
+}

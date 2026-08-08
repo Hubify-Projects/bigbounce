@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use NaMaster Proof, please cite this software."
+title: "NaMaster Proof"
+type: software
+authors:
+  - family-names: Golden
+    given-names: Houston
+version: 0.1.7
+date-released: 2026-07-16
+repository-code: "https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof"
+license: MIT
+keywords:
+  - cosmology
+  - NaMaster
+  - reproducibility
+  - provenance

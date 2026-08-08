@@ -6,7 +6,7 @@ v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
 round (2026-06-02), 1 P4 v1.0.149 external 3-reviewer round (2026-06-04),
 1 R39conf batch truth-audit (2026-06-13, 6 papers), and 1 EXT14 batch
 external round (2026-06-13, 6 papers)
-on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted — \\mbox{-} math subscript escape extends pattern-059). Patterns 053-060 all catalogued (053: in-prep citation leak; 054: sigma-mixing undeclared; 055: audit-artifact body leak; 056: pdftotext italic rendering artifact [filed 2026-06-13 SHIP_READINESS_FINAL QA]; 057: figure-regen text residual; 058: Gemini fresh-chat no-verdict; 059: math-mode subscript miss; 060: mbox-math-subscript-escape).
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-26 (R52; patterns 061-064 proposed). Patterns 053-060 all catalogued (053: in-prep citation leak; 054: sigma-mixing undeclared; 055: audit-artifact body leak; 056: pdftotext italic rendering artifact [filed 2026-06-13 SHIP_READINESS_FINAL QA]; 057: figure-regen text residual; 058: Gemini fresh-chat no-verdict; 059: math-mode subscript miss; 060: mbox-math-subscript-escape). Patterns 061-064 drafted 2026-06-26 R52: 061: dispatch-tag-vs-intext-mismatch; 062: stale-pdf-false-positive; 063: extraction-artifact-false-positive; 064: grok-harsh-outlier-false-positive.
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -51,6 +51,9 @@ Sorted by severity then frequency descending.
 | 055 | [Audit-artifact body leak (version tags / gate verdicts / ticket IDs in compiled PDF)](pattern-055-audit-artifact-body-leak.md) | high | 9 (multiple reviewers × P3/P4/P5, R39conf) |
 | 056 | [pdftotext italic rendering artifact (short-token glyph misread by text-layer extraction)](pattern-056-pdftotext-italic-rendering-artifact.md) | medium | 1 (P4, EXT11→EXT12 — Table I \\textit{NS} rendered as MS by pdftotext; auto-falsified) |
 | 057 | [Figure-regen text-residual (body text not swept after systematic rename)](pattern-057-figure-regen-text-residual.md) | medium | 3 (P5, EXT12 — 3 residual V-Web tokens in §VIII/§IX/App C post-figure-regen) |
+| 061 | [Dispatch tag vs in-text verdict mismatch (orchestrator brief conflicts reviewer in-text Recommendation)](pattern-061-dispatch-tag-vs-intext-mismatch-DRAFT.md) | high | 6 (P1A/P1B/P4/P5, R52) *(draft)* |
+| 063 | [PDF extraction artifact false positive (reviewer text-layer OCR mangles math notation)](pattern-063-extraction-artifact-false-positive-DRAFT.md) | high | 7 (P1A/P1B/P2/P3, R52) *(draft)* |
+| 064 | [Grok harsh-outlier false positive (grok-4.x REJECT/MAJOR consistently truth-audits false)](pattern-064-grok-harsh-outlier-false-positive-DRAFT.md) | high | 4 (P1A/P1B/P4/P5, R52) *(draft)* |
 
 ### Medium severity
 
@@ -67,6 +70,7 @@ Sorted by severity then frequency descending.
 | 022 | [Closure replaced derivation with narrative](pattern-022-closure-narrative-instead-of-derivation.md) | medium | 4+ |
 | 024 | [Figure violates its own cited threshold](pattern-024-figure-violates-cited-threshold.md) | medium | 1 (predicts a class) |
 | 037 | [Future-dated `\date{...}` block in title page across all papers](pattern-037-future-date-across-papers.md) | medium | 6 (all papers, R10v3p1 cross-paper) |
+| 062 | [Stale-PDF false positive (served PDF lags source; reviewer flags already-fixed items)](pattern-062-stale-pdf-false-positive-DRAFT.md) | medium | 4 (P1A/P1B/P5, R52) *(draft)* |
 
 ### Informational
 
@@ -126,6 +130,49 @@ Per the 2026-06-02 retro, no paper can hit 99% without ALL THREE of:
   edit; pattern-030 + pattern-032 together require this. The new
   `/r-round-closure-propagation-audit` rule (in
   `/paper-pre-review-check` SKILL.md) enforces.
+
+## Design patterns (D-round catalog, seeded 2026-06-19)
+
+Ingested by `/r-round-finding-archive` under category `design`; mined into `dpattern-*` by `/r-round-pattern-mine`.
+
+| ID | Title | Severity | Status |
+|----|-------|----------|--------|
+| [dpattern-single-col-wide-table](dpattern-single-col-wide-table.md) | Wide table squished into a single column | high | seeded |
+| [dpattern-cramped-multipanel-figure](dpattern-cramped-multipanel-figure.md) | Multi-panel figure cramped in one column | high | seeded |
+| [dpattern-figure-dir-desync](dpattern-figure-dir-desync.md) | Regenerated figure written to wrong directory (silent persistence) | high | seeded |
+| [dpattern-inline-artifact-path-clutter](dpattern-inline-artifact-path-clutter.md) | Raw file paths in \\texttt{} overflow the column | medium | seeded |
+| [dpattern-abstract-mega-paragraph](dpattern-abstract-mega-paragraph.md) | Abstract is one unbroken wall of text | medium | seeded |
+| [dpattern-missing-structure-schematic](dpattern-missing-structure-schematic.md) | Section with no figures reads as wall of text/equations | medium | seeded |
+| [dpattern-colorbar-label-overlap](dpattern-colorbar-label-overlap.md) | Colorbar tick labels overlap colorbar or adjacent panel | medium | seeded |
+| [dpattern-pdftotext-artifact](dpattern-pdftotext-artifact.md) | Vendor "visual" finding is a pdftotext render artifact (auto-FALSIFY) | informational | seeded |
+
+## Packaging patterns (P-round catalog, seeded 2026-06-19)
+
+Ingested by `/r-round-finding-archive` under category `packaging`; mined into `ppattern-*` by `/r-round-pattern-mine`.
+
+| ID | Title | Severity | Status |
+|----|-------|----------|--------|
+| [ppattern-stale-bbl](ppattern-stale-bbl.md) | Tarball ships a stale .bbl (not regenerated from current .bib) | high | seeded |
+| [ppattern-figure-only-in-build-dir](ppattern-figure-only-in-build-dir.md) | Figure exists in local build dir but missing from tarball | high | seeded |
+| [ppattern-dead-artifact-link](ppattern-dead-artifact-link.md) | \\artifact{} or repo URL in paper does not resolve | high | seeded |
+| [ppattern-unminted-doi-placeholder](ppattern-unminted-doi-placeholder.md) | Paper ships with TODO/TBD/placeholder DOI or arXiv ID | high | seeded |
+| [ppattern-cross-cite-submission-order](ppattern-cross-cite-submission-order.md) | Paper cites companion arXiv ID that doesn't exist yet | high | seeded |
+| [ppattern-mirror-md5-mismatch](ppattern-mirror-md5-mismatch.md) | PDF mirror does not byte-match the canonical source PDF | medium | seeded |
+
+## Site-cohesion patterns (spattern catalog, seeded 2026-06-19)
+
+Ingested by `/r-round-finding-archive` under category `site`; mined into `spattern-*` by `/r-round-pattern-mine`. Triggered by `/site-cohesion-sweep`, which runs as the final gate of every P-round.
+
+| ID | Title | Severity | Status |
+|----|-------|----------|--------|
+| [spattern-stale-version-on-surface](spattern-stale-version-on-surface.md) | Site surface shows an older paper version | high | seeded |
+| [spattern-dead-hf-link](spattern-dead-hf-link.md) | HuggingFace dataset or model link returns 404 / 403 | high | seeded |
+| [spattern-unpublished-hf-dataset](spattern-unpublished-hf-dataset.md) | Paper links a HuggingFace dataset/model that is still private | high | seeded |
+| [spattern-pdf-404-or-old-version](spattern-pdf-404-or-old-version.md) | Linked PDF is missing or is an older version | high | seeded |
+| [spattern-placeholder-doi-live](spattern-placeholder-doi-live.md) | Live site or paper shows a TODO/placeholder DOI or arXiv ID | high | seeded |
+| [spattern-number-drift-across-surfaces](spattern-number-drift-across-surfaces.md) | Headline numbers disagree across site surfaces | medium | seeded |
+| [spattern-stale-explorer-data](spattern-stale-explorer-data.md) | Explorer or data page shows counts/catalogs from an older run | medium | seeded |
+| [spattern-broken-image-or-link](spattern-broken-image-or-link.md) | Site page has a broken image or dead internal/external link | medium | seeded |
 
 ## How to add a new pattern
 

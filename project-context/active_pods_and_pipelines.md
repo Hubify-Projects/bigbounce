@@ -5,8 +5,8 @@
 
 | Pod | Name | SSH | Task | Status |
 |-----|------|-----|------|--------|
-| **Pod 1** | frail_tomato_koi | `ssh root@38.80.152.249 -p 30791 -i ~/.ssh/id_ed25519` | P1-M3 NaMaster 500MC + P3-M1 UMAP (`pod_b_namaster_umap.sh`) | **DONE 2026-04-29T12:31:52Z** — results pulled to `pipelines/h200_results/pod1_namaster_umap_2026-04-29/`. NaMaster: β=0.27→0.238 SNR=20.32 consistency 0.77σ. UMAP: trust PASS, kNN_pres FAIL, cross_seed FAIL. |
-| **Pod 2** | regular_green_pig | `ssh root@38.80.152.249 -p 31045 -i ~/.ssh/id_ed25519` | P4-M3/M4/M6/m4 chirality + WT-5 PDF compile (`pod_a_chirality_compile.sh`) | **DONE 2026-04-29T18:38Z** — all 4 GPU tasks committed in `caf858a`. Bias hardening 4/8 PASS, MASTER 8.47M galaxies, dipole pulled from HF, edge-on equivariance suppression 3.86×. Pod idle (0% GPU, 0 python procs); safe to pause. Results in `pipelines/h200_results/pod2_chirality_2026-04-29/`. |
+| **Pod 1** | frail_tomato_koi | `ssh root@<pod-ip> -p <port> -i ~/.ssh/id_ed25519` | P1-M3 NaMaster 500MC + P3-M1 UMAP (`pod_b_namaster_umap.sh`) | **DONE 2026-04-29T12:31:52Z** — results pulled to `pipelines/h200_results/pod1_namaster_umap_2026-04-29/`. NaMaster: β=0.27→0.238 SNR=20.32 consistency 0.77σ. UMAP: trust PASS, kNN_pres FAIL, cross_seed FAIL. |
+| **Pod 2** | regular_green_pig | `ssh root@<pod-ip> -p <port> -i ~/.ssh/id_ed25519` | P4-M3/M4/M6/m4 chirality + WT-5 PDF compile (`pod_a_chirality_compile.sh`) | **DONE 2026-04-29T18:38Z** — all 4 GPU tasks committed in `caf858a`. Bias hardening 4/8 PASS, MASTER 8.47M galaxies, dipole pulled from HF, edge-on equivariance suppression 3.86×. Pod idle (0% GPU, 0 python procs); safe to pause. Results in `pipelines/h200_results/pod2_chirality_2026-04-29/`. |
 
 **Note 2026-04-29:** Pods had been up ~9h with scripts staged but never launched — wasted ~$65 idle before launch. Pod 1 ran cleanly (~2.7h compute). Pod 2 crashed 2 min into Task 1 of 5 — burning $3.59/hr idle since 09:53Z.
 
@@ -28,7 +28,7 @@
 | Field | Value |
 |-------|-------|
 | **Pod ID** | `o76k3jfzbfh25e` (sleepy_blush_crane) |
-| **SSH (direct)** | `ssh root@205.196.19.52 -p 11452 -i ~/.ssh/id_ed25519` (when running) |
+| **SSH (direct)** | `ssh root@<pod-ip> -p <port> -i ~/.ssh/id_ed25519` (when running) |
 | **SSH (proxy)** | `ssh o76k3jfzbfh25e-64410a04@ssh.runpod.io -i ~/.ssh/id_ed25519` |
 | **Machine** | NVIDIA H200 SXM (143 GB VRAM), 24 vCPUs, 377 GB RAM |
 | **Status** | **STOPPED 2026-04-08** — RunPod infrastructure error. Full backup pulled before stop. |

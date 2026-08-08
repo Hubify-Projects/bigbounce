@@ -1,0 +1,35 @@
+{
+  "schema": "bigbounce-github-draft-release-receipt/v1",
+  "paper_id": "P2",
+  "paper_version": "v1.7.122",
+  "release_database_id": 354631968,
+  "release_url": "https://github.com/houstongolden/bigbounce/releases/tag/untagged-6699474bd428b390ff26",
+  "tag_name": "paper2-v1.7.122",
+  "target_commitish": "4599a4056fdd6e588c07c6c45ff0dc546bbb2cc7",
+  "is_draft": true,
+  "is_prerelease": false,
+  "published": false,
+  "doi_reserved": false,
+  "zenodo_published": false,
+  "verified_at_utc": "2026-07-15T18:27:00Z",
+  "assets": [
+    {"name": "02_full_draft.pdf", "size": 576647, "sha256": "4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9"},
+    {"name": "02_full_draft.tex", "size": 179655, "sha256": "9144e1be05ba38e37271f8ffbb44bf9d52b73235b352f6672abbbcdaf56aaf1a"},
+    {"name": "default.zenodo.json", "size": 996, "sha256": "6132259cb1f1b2b5a007d6e93f19ff29acf6c58b736bbba76ee6133d93a8d8bd", "note": "GitHub CLI normalized the local hidden filename .zenodo.json on upload."},
+    {"name": "manifest.json", "size": 3366, "sha256": "053278b9d0874ef5dd41074d25d7f7345b074905c93bc05e5f31f92c9ab00d97"},
+    {"name": "P2_v1.7.122_tracked_provenance.tar.gz", "size": 5424126, "sha256": "ce67844a70981c396ce5691b020ba7c66f2c398ddde9db9e6864323f9cb01ee2", "tracked_files": 46},
+    {"name": "paper2_arxiv_v1.7.122.proof.json", "size": 1200, "sha256": "d03689a77f83fed5f50a2f074b93a534725135d36bbf52012f8b08f1487fd814"},
+    {"name": "paper2_arxiv_v1.7.122.tar.gz", "size": 217988, "sha256": "dcf10d9fc16dc23ace30f66308d02d00fb65d9a3b1fb3dc42d9bcf5a1ba5c9ab"},
+    {"name": "SHA256SUMS", "size": 466, "sha256": "3bc5c8294e6e885239df2d8c355158af339bf173e828183f326b0ef2164ea31a"}
+  ],
+  "all_remote_digests_match": true,
+  "readiness_effect": "none; P2 remains 80",
+  "open_gates": [
+    "direct cubic transfer through a specified bounce",
+    "survey-native SPHEREx covariance and likelihood",
+    "model-specific torsion bound",
+    "DOI reservation and immutable archive publication",
+    "arXiv and PRD submission decisions",
+    "human journal review"
+  ]
+}

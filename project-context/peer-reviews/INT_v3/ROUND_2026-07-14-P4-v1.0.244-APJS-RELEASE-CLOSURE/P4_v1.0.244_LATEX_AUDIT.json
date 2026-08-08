@@ -1,0 +1,77 @@
+{
+  "exact_pdf": {
+    "bytes": 34064141,
+    "pages": 26,
+    "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sha256": "1b1a536dfbd7d07ea4958304d6694582ce3b5ec7d6ce16b08b5d17fdefc15669"
+  },
+  "isolated_compile": {
+    "canonical_copy_verified": true,
+    "engine": "/Users/houstongolden/Library/TinyTeX/bin/universal-darwin/pdflatex",
+    "halt_on_error": true,
+    "jobname": "p4_v244_final",
+    "passes": 3
+  },
+  "log_gates": {
+    "latex_errors": 0,
+    "overfull_hboxes": 0,
+    "undefined_references_or_citations": 0,
+    "underfull_hboxes_nonblocking": 259
+  },
+  "paper": "P4",
+  "paper_version": "v1.0.244",
+  "schema": "p4-v1.0.244-latex-visual-audit/v1",
+  "source_layout_gates": {
+    "date_macro": "\\paperTimestamp; Version \\paperVersion",
+    "paper_timestamp": "July 14, 2026, 15:14 PDT",
+    "paper_version": "v1.0.244",
+    "raw_texttt_path_count": 0,
+    "raw_texttt_paths_with_slash": []
+  },
+  "status": "PASS",
+  "structural_pdf_gate": {
+    "parseable": true,
+    "pdfinfo_exit": 0,
+    "stderr": ""
+  },
+  "uri_audit": "P4_v1.0.244_URI_AUDIT.json",
+  "visual_audit": {
+    "blank_padding_pages": false,
+    "column_or_gutter_overlap": false,
+    "contact_sheets_inspected": 5,
+    "date_or_title_overflow": false,
+    "margin_overflow": false,
+    "pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ],
+    "render_dpi": 110,
+    "rendered_page_count": 26,
+    "table_or_figure_collision": false,
+    "verdict": "PASS"
+  }
+}

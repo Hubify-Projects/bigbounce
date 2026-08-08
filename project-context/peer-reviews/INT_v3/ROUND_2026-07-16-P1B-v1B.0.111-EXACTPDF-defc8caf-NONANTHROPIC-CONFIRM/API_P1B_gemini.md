@@ -1,0 +1,22 @@
+# INT API Review — P1B v1B.0.111 — gemini (gemini-3.1-pro-preview)
+paper: P1B  version: v1B.0.111  model: gemini-3.1-pro-preview
+provenance: commit=59517e43ab185d3e185681fd61065f99a11d1616  pdf=arxiv/paper1b_mcmc_companion.pdf  sha256=defc8cafd0f71688838fd9bae8ee7a5f9e9d11b94f01a58b2787007bb5139533
+packet: key=2572678789564831587dc21c920dcb69fd6cadc0bcbc4380209ef9f8246584f4  profile=JCAP-COMPUTATIONAL
+modality: native-PDF (inline_data base64)
+UTC: 2026-07-16T13:39:45.253794Z  |  latency: 30.9s  |  attempt: 1
+provider_receipt: {"attempt": 1, "latency_seconds": 30.9, "modality": "native-PDF (inline_data base64)", "provider": "google", "provider_reported_cost": "unavailable", "request_id": "unavailable", "requested_model": "gemini-3.1-pro-preview", "resolved_model": "gemini-3.1-pro-preview", "response_id": "It9YaurdHZmsz7IPxuKX0As", "usage": {"candidatesTokenCount": 611, "promptTokenCount": 10515, "promptTokensDetails": [{"modality": "TEXT", "tokenCount": 115}, {"modality": "IMAGE", "tokenCount": 10400}], "serviceTier": "standard", "thoughtsTokenCount": 1891, "totalTokenCount": 13017}}
+PARSED VERDICT: MAJOR REVISIONS
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+VERDICT: MAJOR REVISIONS
+
+ISSUES:
+1. [MAJOR] **Lack of standalone scientific or computational novelty:** The manuscript functions more as an extended reproducibility appendix or data-release note for the unpublished companion "Paper I(a)" than as an independent research article. Running a standard $\Lambda$CDM+$\Delta N_{\rm eff}$ MCMC on public data with stock CAMB, performing a mathematical inversion check with NaMaster on synthetic skies, and integrating a standard ALP ODE are all routine exercises. To qualify as a standalone JCAP computational paper, the manuscript must introduce a novel computational method, a new physical module, or a significantly improved constraint. 
+2. [MAJOR] **Disconnect from the motivating physical theory:** The author explicitly states that the $\Delta N_{\rm eff}$ MCMC run does *not* test the ECH spin-torsion theory, but rather serves as a generic extra-radiation proxy. Furthermore, the parametric calculation in Eq. (3) shows the expected minimal contact operator contribution is 40 to 50 orders of magnitude below the sensitivity of this proxy. Using an unmodified Boltzmann code to constrain a generic parameter that is admitted to be physically detached from the companion paper's theory offers no scientific insight into the model in question. A true computational physics paper on this topic must actually implement the modified Boltzmann equations.
+3. [MAJOR] **Triviality of the NaMaster pipeline validation:** The $E-B$ mode coupling check (Study 2) is performed on noise-only, foreground-free mock skies without beam convolution or pixel window mismatch. Successfully recovering an injected angle under these idealized conditions merely verifies that the NaMaster mode-coupling matrix operates correctly at a purely mathematical level (which was already established by Alonso et al. 2019). Without demonstrating how the pipeline handles real-sky systematics (e.g., galactic foregrounds, $T \to P$ leakage, or beam asymmetries), this section does not advance the state of the art in CMB data analysis.
+4. [MINOR] **ALP posterior sensitivity to summary likelihoods:** In Section VI, the ALP model parameters ($m, \theta_i, C_{a\gamma}$) are constrained using a single Gaussian summary likelihood for the birefringence angle ($\beta = 0.342^\circ \pm 0.094^\circ$) rather than the full $C_\ell^{EB}$ power spectra. As the author partially acknowledges, compressing a non-linear parameter space into a single summary scalar can severely distort prior boundaries and posterior tails; a full joint re-fit to the spectra would be required to robustly claim the parameter boundaries (such as the required $C_{a\gamma} \gtrsim 8$ lower bound).
+
+The central claim—that these three specific computational pipelines are highly reproducible and yield null or accommodating results within their rigorously defined limits—is supported, but the analyses currently lack the physical relevance and methodological novelty required for independent publication.

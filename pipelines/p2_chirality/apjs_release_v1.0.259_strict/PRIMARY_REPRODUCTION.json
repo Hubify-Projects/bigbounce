@@ -1,0 +1,42 @@
+{
+  "amplitude": 0.004665198792857314,
+  "equatorial_dec_deg": -57.16150970329368,
+  "equatorial_ra_deg": 195.48198600769373,
+  "hard_gates": {
+    "amplitude": true,
+    "dec_deg": true,
+    "monopole": true,
+    "n_pixels": true,
+    "n_selected": true,
+    "n_support": true,
+    "null_mean": true,
+    "null_std": true,
+    "ra_deg": true,
+    "rank_k": true,
+    "rank_p": true,
+    "z": true
+  },
+  "interpretation_limits": [
+    "post-review corrective analysis; not preregistered before unblinding",
+    "observed-label descriptive isotropy null only",
+    "not a calibrated physical or primordial amplitude bound"
+  ],
+  "monopole": 0.02550645536278439,
+  "n_pixels": 23633,
+  "n_selected": 890069,
+  "n_support": 887472,
+  "null": {
+    "array_sha256": "3a03ca4b008844fd8bf16be4e1e7e918ceaf580992d9462d54233f417e32ce7d",
+    "definition": "10,000 fixed-occupancy galaxy-label randomizations using a multivariate-hypergeometric allocation over fixed pixel capacities",
+    "mean": 0.003620291387422168,
+    "rank_formula": "(k+1)/(N+1), k=count(A_null >= A_data)",
+    "rank_k": 2376,
+    "rank_p_one_sided_upper_tail": 0.23767623237676233,
+    "std_ddof0": 0.0016464287407124284,
+    "z_moment": 0.6346508534484177
+  },
+  "paper_version": "v1.0.259",
+  "schema": "p4-primary-null-reproduction/v2",
+  "selection": "primary_hc == True and raw_flip_qc_unsafe == False; HEALPix NSIDE=64; N_spiral(pixel) >= 10",
+  "status": "PASS"
+}

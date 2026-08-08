@@ -1,0 +1,71 @@
+{
+  "description": "Bounce bispectrum shape projected onto LOCAL/EQUIL/ORTHO standard templates; closes the non-local-tail MAJOR for P2.",
+  "committed_reference_coefficients": [
+    3.0,
+    1.0,
+    -9.0,
+    5.0,
+    -33.0,
+    9.0
+  ],
+  "N_tri": 23098,
+  "shape_cosines": {
+    "uniform(paper r_cos)": {
+      "LOCAL": -0.9816782504055879,
+      "EQUIL": -0.4565109419571186,
+      "ORTHO": 0.9364021637144607
+    },
+    "CMB_Fisher_k^2": {
+      "LOCAL": -0.9827679515705292,
+      "EQUIL": -0.10393027927118251,
+      "ORTHO": 0.7482092469530163
+    },
+    "LSS_k^1": {
+      "LOCAL": -0.9820844496768266,
+      "EQUIL": -0.18028233288152248,
+      "ORTHO": 0.8847652732166443
+    },
+    "joint": {
+      "uniform(paper r_cos)": {
+        "frac_local": 0.9636921873193586,
+        "frac_local_equil": 0.966347761283197,
+        "frac_full": 0.9680131866087518,
+        "r_local": 0.981678250405579,
+        "r_joint": 0.9838766114756219,
+        "delta_r": 0.002198361070042898,
+        "joint_coef_local_equil_ortho": [
+          -2.0541490628305556,
+          -726.2123811492457,
+          -25.93524870391239
+        ]
+      },
+      "CMB_Fisher_k^2": {
+        "frac_local": 0.9658328466341338,
+        "frac_local_equil": 0.9658891079473083,
+        "frac_full": 0.965942751194521,
+        "r_local": 0.9827679515705291,
+        "r_joint": 0.9828238658043063,
+        "delta_r": 5.591423377715454e-05,
+        "joint_coef_local_equil_ortho": [
+          -1.8504838839392306,
+          -4.402532476617924,
+          -1.089517480558481
+        ]
+      },
+      "LSS_k^1": {
+        "frac_local": 0.9644898662970386,
+        "frac_local_equil": 0.9647873975993367,
+        "frac_full": 0.9649320918401669,
+        "r_local": 0.9820844496768283,
+        "r_joint": 0.9823095702680327,
+        "delta_r": 0.00022512059120438632,
+        "joint_coef_local_equil_ortho": [
+          -1.8748180009836204,
+          -53.28966386658866,
+          -4.121554328837293
+        ]
+      }
+    }
+  },
+  "r_headline": 0.84
+}

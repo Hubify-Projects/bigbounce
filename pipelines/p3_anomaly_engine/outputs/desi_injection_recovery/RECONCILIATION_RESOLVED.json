@@ -1,0 +1,17 @@
+{
+ "status": "RESOLVED 2026-07-02 — DESI injection-recovery executed and PASSES; supersedes RECONCILIATION_history_2026-06-28.json",
+ "date_resolved": "2026-07-02",
+ "resolution_script": "pipelines/p3_anomaly_engine/desi_injection_recovery_corrected.py",
+ "resolution_artifact": "pipelines/p3_anomaly_engine/outputs/desi_injection_recovery/desi_injrec_CORRECTED.json",
+ "root_cause_confirmed": "The earlier wave14-EXACT fresh-repull '0% @5sigma' was a small-sample holdout-band artifact: on a 20k set the LITERAL wave14 index band [5000:30000] collapses to [5000:20000] and scoops up the entire high-MSE dirty tail (median-norm blow-ups, |flux| up to 6e4), inflating threshold T from wave14's ~0.13 to ~7.6 (~60x too high). The earlier lenient harness '99.5%' landed on the right answer via a wrong (too-lenient) threshold.",
+ "fix": "Reproduce wave14's clean-band INTENT (not its literal index range) via a FRACTION-based tail-excluded holdout band (cleanest 5% substrate; T = p99 of the 5%-30% ranked-MSE band), with wave14-EXACT inject() (A = snr*spec.std(), 5 types, rng 20260501). Cross-checked under a single global-gain rescale that matches the fresh MSE median (0.233) to the production OOD reference median (0.384, phase1_ensemble.json).",
+ "result_broad_emission_spike_recall": {
+   "native_scale_T=0.118":       {"3sigma": 0.23, "5sigma": 0.99, "8sigma": 1.00, "10sigma": 1.00},
+   "prod_scale_matched_T=0.192": {"3sigma": 0.74, "5sigma": 1.00, "8sigma": 1.00, "10sigma": 1.00}
+ },
+ "reproduces_original_wave14": "YES — original wave14 (100k) broad recall was 3sigma=0.39, 5sigma=0.99, 8sigma=1.0; the corrected fresh-repull curve matches within substrate/threshold tolerance and is robust to the 0.23-vs-0.38 MSE-scale offset (gate PASSES at both scales).",
+ "min_detectable_strength": "broad/extended anomalies: ~5x per-spectrum sigma for full (>=99%) recovery, ~3x sigma in the 25-75% turn-on region. Narrow single-pixel lines only recover at >=15sigma — a genuine, expected floor of a 496-bin resample-based scorer.",
+ "verdict": "DESI injection-recovery now SUPPORTS the validated / catalog-grade claim for the broad/extended anomaly population the catalog actually reports, at parity with SDSS/Planck. It does NOT extend to sub-resolution single-pixel features (honest expected floor, not a headline gap).",
+ "gate_criterion": "broad_emission_spike recall @5sigma >= 50% — PASS (99-100%).",
+ "note": "No paper .tex edited by this run (per task instructions: report the real result first). This means the paper's DESI 'no injection-recovery' framing can now be CLOSED in a subsequent edit round: DESI moves from a 2-Jaccard-gate to a 3-gate validation incl. a passing injection-recovery curve."
+}

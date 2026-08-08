@@ -1,0 +1,10 @@
+start_utc=2026-07-14T19:42:52Z
+review_commit=3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52
+pdf_sha256=4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9
+profile=PRD-RESEARCH
+vendors=openai,gemini,grok
+pids=55449,55454,55458
+end_utc=2026-07-14T19:43:51Z
+rc_openai=0
+rc_gemini=0
+rc_grok=0

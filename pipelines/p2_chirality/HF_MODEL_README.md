@@ -15,7 +15,6 @@ pipeline_tag: image-classification
 datasets:
   - bamfai/galaxy-chirality-catalog
 metrics:
-  - accuracy
   - calibrated_brier_score
 model-index:
   - name: bamfai/galaxy-chirality-v2
@@ -24,25 +23,31 @@ model-index:
           type: image-classification
           name: Spiral galaxy chirality (CW / CCW / NS)
         dataset:
-          name: DESI Legacy DR9 (Paper IV training split)
+          name: Historical mixed-source training reconstruction (not exactly reproducible)
           type: image-classification
         metrics:
-          - type: accuracy
-            value: 0.9210
-            name: validation accuracy (3-class)
           - type: equivariance_suppression
-            value: 3.86
+            value: 2.98
             name: raw → equivariant asymmetry suppression factor
 ---
 
 # Galaxy Chirality Classifier (bamfai/galaxy-chirality-v2)
 
-**Companion model for Paper IV `v1.0.125` —
-*A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals):
-A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity*.**
+> **CURRENT PUBLICATION ALIGNMENT (2026-08-04).** This checkpoint is a
+> reproducibility artifact for Paper 4 and its Paper 5 companion, not an
+> independent physical-parity claim. The current Paper 4 candidate is
+> v1.0.274 and explicitly records unresolved historical training-composition
+> limits; provider metadata must be frozen to the exact approved paper-linked
+> revision after Houston approval. Any older statistics below are retained as
+> release history, not as the current manuscript headline. See the
+> [publication and release master map](../../project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md).
 
-Source: [`Hubify-Projects/bigbounce`](https://github.com/Hubify-Projects/bigbounce)
-@ tag [`paper4-v1.0.125`](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.125).
+**Companion model for the current Paper IV manuscript —
+*An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI
+Spirals and an 8.5-Million-Galaxy Catalog*.**
+
+Current manuscript source: [`Hubify-Projects/bigbounce`](https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex).
+No immutable repository tag or DOI for the current Paper IV manuscript is claimed.
 
 ## Model overview
 
@@ -50,43 +55,40 @@ Source: [`Hubify-Projects/bigbounce`](https://github.com/Hubify-Projects/bigboun
   augmentation. Z₂ 2-fold flip is the production TTA mode (D₄ 8-fold
   tested on hold-outs only; see Paper IV §sec:tta).
 - Output classes: **CW**, **CCW**, **NS** (not-spiral).
-- Calibration: per-class Platt scaling (L-BFGS on a held-out 20% split).
-  Raw → calibrated → equivariant residuals reported in Paper IV
-  Table V (raw +0.79% / 28.8σ → calibrated +0.4% / 14.6σ → equivariant
-  −0.26% / 9.5σ).
-- Equivariance suppression factor **3.86×** (raw asymmetry +2.05% →
-  equivariant asymmetry −0.53%).
+- Production Catalog C uses raw softmax ranking scores with flip-swap averaging;
+  these scores are explicitly uncalibrated. Per-class Platt scaling and
+  Catalog B are retained only as a historical diagnostic and are not part of
+  the released production Catalog C transform.
+- Equivariance suppression factor **2.98×** (raw asymmetry +1.576% →
+  equivariant asymmetry −0.529%).
 
 ## Catalog scale
 
-Applied to the DESI Legacy DR9 8.47M-galaxy footprint via the canonical
+Applied to the DESI Legacy DR8 8.47M-galaxy footprint via the canonical
 Paper IV pipeline:
 
-- 8,474,531 galaxies classified (1,687,069 CW / 1,634,726 CCW / 5,152,736 NS)
-- 3,201,160 chirality-relevant spirals
+- 8,474,531 galaxies in the science-facing catalog
+- 1,592,107 CW + 1,609,053 CCW = 3,201,160 chirality-relevant spirals
 - Catalog-wide CW fraction (post-TTA equivariant) **0.4974 ± 0.000279**,
-  consistent with parity at ~1σ; the residual −0.0026 monopole is a
-  classifier-residual bias, not a cosmological dipole.
+  a **−9.47σ classifier-residual monopole** relative to 0.5 in raw-count
+  binomial units, not a cosmological dipole. The distinct primary
+  fixed-occupancy dipole statistic is consistent with its null
+  (`z=+0.7053169638`; one-sided empirical-rank `p=0.2246775322`).
 
-## Key results (v1.0.125)
+## Current Paper IV result
 
-- **−0.12σ MASTER-deconvolved ℓ=1 amplitude** on the subsample-mask
-  (load-bearing null).
-- **+3.64σ canonical-mask ℓ=1 amplitude** (post-MASTER) interpreted as a
-  coherent depth/PSF/morphology-correlated systematic on the canonical
-  footprint, NOT a primordial dipole, via three direct quantitative
-  anchors:
-  - ℓ=2 cross-spectrum quadrupole anti-alignment with pixel-density proxy
-    (`r = −0.65`, `σ = −2.89`)
-  - Leg-stratified ℓ=1 contribution: BASS+MzLS / DECaLS / DES
-    cross-power gives induced |a₁| = 25% of canonical |a₁_obs| = 7.04×10⁻³
-  - MASTER-decoupled monopole-only null × 500: data post-MASTER C₁ =
-    6.55×10⁻⁶ vs null mean 8.0×10⁻⁷ (σ = +4.84 Gaussian / empirical-rank
-    p = 0.006); monopole leakage accounts for ~12% of post-MASTER C₁
-- Family-level max-stat null on 15-cell leg×conf grid: observed max|σ| =
-  4.72 collapses to ~2.4σ family-corrected joint p = 0.0086.
+The primary high-confidence observed-label statistic is consistent with zero
+under fixed-occupancy label randomization (`z=0.7053169638`, one-sided
+empirical-rank `p=0.2246775322`). It is not a calibrated true-spin,
+physical-amplitude, or primordial-parity bound. WLS and harmonic results use
+different supports or nulls and are retained as systematics diagnostics rather
+than headline detection tests.
 
-## v1.0.125 changelog (Houston-shared 3-reviewer external review + 2 follow-up MAJOR closures)
+## Historical v1.0.123–v1.0.125 changelog
+
+The following entries document an older manuscript state. They are preserved
+for provenance and do not describe the current manuscript or establish a
+current clean-review verdict.
 
 - **v1.0.123** closed the Houston-shared external review on v1.0.122 (ChatGPT
   MAJOR REVISIONS + Grok MINOR REVISIONS + Gemini MAJOR REVISIONS; 9 BLOCKER +
@@ -112,53 +114,86 @@ Paper IV pipeline:
   depth-correlated systematic family (interpretation ii), not a separate
   DECaLS-specific physical signal.
 
-## R-round cross-vendor convergence
+## Historical R-round record
 
-Cascaded-loop exit confirmed at Paper IV `v1.0.125` per AGENT_RULES §4.4.1:
+At the historical Paper IV `v1.0.125` state, the project recorded:
 **3 consecutive 5/5 clean R-rounds (R23 + R24 + R25)** across DeepSeek-V4-Pro
 + Gemini-3.1-Pro + GPT-5 + Grok-4.3 + Perplexity-Sonar-Pro
-(45 of 45 reviewers returned 0 BLOCKER / 0 MAJOR).
+(45 of 45 reviewers returned 0 BLOCKER / 0 MAJOR). This historical record is
+not a review result for the current manuscript.
 
 ## Usage
 
 ```python
 from huggingface_hub import hf_hub_download
 import torch
+import torch.nn as nn
+import timm
 
 ckpt_path = hf_hub_download(
     repo_id="bamfai/galaxy-chirality-v2",
-    filename="model.safetensors",
-    revision="paper4-v1.0.125",
+    filename="chirality_model_v2_best.pt",
+    revision="237d021c451d75cf86a875e86d4de498b74e2f12",
 )
+
+class Head(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.h = nn.Sequential(
+            nn.LayerNorm(384), nn.Linear(384, 512), nn.GELU(), nn.Dropout(0.3),
+            nn.Linear(512, 256), nn.GELU(), nn.Dropout(0.2), nn.Linear(256, 3),
+        )
+    def forward(self, x):
+        return self.h(x)
+
 state = torch.load(ckpt_path, map_location="cpu", weights_only=True)
-# Then load into ViT-Small/16 + 3-class head as documented in
-# pipelines/p2_chirality/run_eq_dataloader.py
+encoder = timm.create_model("vit_small_patch16_224", pretrained=False,
+                            num_classes=0)
+head = Head()
+encoder.load_state_dict(state["enc"])
+head.load_state_dict(state["head"])
+encoder.eval()
+head.eval()
 ```
+
+The checkpoint is a PyTorch dictionary with `enc`, `head`, `val_acc`, `epoch`,
+and `n_classes` entries, not a standalone safetensors model. Exact production
+preprocessing and equivariant inference are documented in
+[`run_eq_dataloader.py`](https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/run_eq_dataloader.py).
+Because the historical environment and training realization are not fully
+pinned, this loading example does not claim standalone exact reproducibility.
 
 ## Companion catalog dataset
 
-Per-galaxy CW/CCW/NS labels + per-class probabilities + leg provenance:
+Per-galaxy CW/CCW/NS labels + per-class equivariant ranking scores:
 [`bamfai/galaxy-chirality-catalog`](https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog)
-(immutable revision `paper4-v1.0.125`).
+(see the dataset card for its pinned data/provider commits; no current manuscript tag is
+claimed here).
 
 ## Citation
 
 ```bibtex
 @misc{golden_chirality_2026,
   author = {Houston Golden},
-  title  = {A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals):
-            A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity},
+  title  = {An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence
+            DESI Spirals and an 8.5-Million-Galaxy Catalog},
   year   = {2026},
   url    = {https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex},
-  note   = {Paper IV, version v1.0.125; tag paper4-v1.0.125}
+  note   = {Paper IV, current manuscript; no DOI assigned}
 }
 ```
 
 ## Bias and limitations
 
-- Trained on DESI Legacy DR9 / DR8 imaging. Generalization to other
+- Applied to DESI Legacy DR8 imaging. Generalization to other
   surveys (HSC, KiDS, future LSST) requires re-validation.
-- A residual catalog-wide CW-fraction offset of −0.0026 (a ~5σ deviation
+- The historical training realization is not exactly reproducible: the
+  committed README reports 92.10% three-class validation accuracy, while an
+  immutable-repository audit reconstructs 93.6878% with 21,293 training and
+  5,323 validation rows. Conflicting total/non-spiral counts, absent retained
+  object/split membership, and missing random-state/run receipts prevent either
+  metric from being treated as a resolved, exactly replayable validation.
+- A residual catalog-wide CW-fraction offset of −0.002647 (a −9.47σ deviation
   from 0.5 at N = 3.2M chirality-relevant spirals) is attributable to
   classifier-residual bias and is documented in Paper IV §VI.E.
 - For environment-dependent chirality, see the companion Paper V
@@ -166,7 +201,9 @@ Per-galaxy CW/CCW/NS labels + per-class probabilities + leg provenance:
 
 ## Provenance
 
-- **Released**: 2026-05-21 (cron fire #3, autonomous drive-to-100 loop).
-- **Paper IV tag**: `paper4-v1.0.125`.
-- **Repository SHA**: see `git log paper4-v1.0.125` in `Hubify-Projects/bigbounce`.
-- **Prior model card revision**: `v1.0.104` (superseded).
+- **Current manuscript**: Paper IV source linked above.
+- **Audited model revision**: `237d021c451d75cf86a875e86d4de498b74e2f12`.
+- **Historical card state**: v1.0.125 framing is retained above only as a
+  labeled changelog; it is superseded by the current manuscript framing.
+- **Publication identifiers**: no immutable tag for the current manuscript, arXiv identifier, or
+  DOI is claimed.

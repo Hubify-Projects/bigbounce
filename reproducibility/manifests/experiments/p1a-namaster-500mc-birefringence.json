@@ -1,0 +1,50 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1a-namaster-500mc-birefringence",
+  "title": "500-MC NaMaster EB birefringence recovery (beta = 0.238 deg, SNR 20.3)",
+  "program": "bounce-theory",
+  "paper": "P1A",
+  "kind": "mcmc",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/physical_spectra.py",
+      "entrypoint": "python3 physical_spectra.py (checkpoint/resume harness)",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "reproducibility/p1_namaster_500mc/requirements.txt (pymaster, healpy, numpy)",
+    "hardware": "cpu-strong (NaMaster MC is CPU-bound)"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": null,
+    "pod_id_or_host": "budget launcher (runpod_budget_launcher.py); C1 companion ran on pod 5i2td3deu3hojr (A4000, jobs CPU-bound, $0.17/hr)",
+    "date": null,
+    "wall_clock": "~1.3h ETA at NSIDE=512 (C1 companion figure, project-context/SSOT/compute-queue.md)",
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod (CPU-bound instance, ~$0.17/hr class)",
+    "est_wall_clock": "~1.5-2h for 500 MC realizations at nside=512, lmax=1024",
+    "est_cost_usd": 0.3,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Checkpoint/resume harness supports partial-run recovery; zero-spend preflight contract (runpod_production_contract.json) documented but watchdog-deletion gates are open per inventory."
+  },
+  "outputs": [
+    {
+      "locator": "reproducibility/p1_namaster_500mc/results/summary.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run 500 MC realizations and confirm recovered beta=0.238 deg (input 0.27 deg) with SNR within numeric tolerance (+/-1 SNR unit) of 20.3, at f_sky=0.3226.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P1A \u2014 500-MC NaMaster bullet",
+    "project-context/SSOT/compute-queue.md"
+  ]
+}

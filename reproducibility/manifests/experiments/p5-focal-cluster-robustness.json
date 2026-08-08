@@ -1,0 +1,68 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p5-focal-cluster-robustness",
+  "title": "Focal cluster inference sensitivity + interaction clustering robustness",
+  "program": "galaxy-chirality",
+  "paper": "P5",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "P5 matched chirality x DESI DR1 catalog",
+      "type": "internal-artifact",
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/38_focal_cluster_inference_sensitivity.py",
+      "entrypoint": "python3 38_focal_cluster_inference_sensitivity.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/39_focal_interaction_clustering_robustness.py",
+      "entrypoint": "python3 39_focal_interaction_clustering_robustness.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, pandas, numpy, scipy, scikit-learn — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU",
+    "est_wall_clock": "~30 min - 1 hour across both robustness scripts",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "runnable-now (code present per inventory); part of the same r-conf family as p5-rconf-closures and shares the same venue-evidence gap — no RunPod pod ID, GPU class, cost, or runtime found in pipelines/p5_desi_chirality/ or in the reachable sections of paper-5/status.md, so all original_run fields stay null."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/38_focal_cluster_inference_sensitivity.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run both scripts and confirm the focal-cluster inference sensitivity and interaction-clustering robustness statistics match the committed JSONs within the numeric tolerance stated in each result file.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — r23conf/r24conf/r27conf closure recomputes + focal cluster inference bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (venue evidence missing for this r-conf family)",
+    "project-context/SSOT/paper-5/status.md"
+  ]
+}

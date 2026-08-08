@@ -1,0 +1,21 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P3",
+  "paper_version": "v3.2.0-r10",
+  "git_commit": "b680ca1c7e1832073d7f3c3c5ad935af5613f4ff",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_v3.2.0-r10.tar.gz",
+  "tarball_sha256": "a96c5b8c7cff3f8812a384ce840e5581a0fc3f1c50cabe3089a97471786c2448",
+  "tarball_md5": "9624f9101a90e59b56ca6e9cfbc50f5c",
+  "tarball_size_bytes": 145556,
+  "source_pdf": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+  "page_count": 17,
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 2,
+  "compiled_pdf_sha256": "9960850173443aa6e089997f22460a47d5973ce19c5aa691ac729cedf6dffe44",
+  "verification_mode": "isolated temp extraction; tectonic -X compile; generated-log scan; page-count via pypdf",
+  "verified_at_utc": "2026-07-20T06:41:48Z",
+  "verifier": "wave1-submission-kit"
+}

@@ -1,0 +1,23 @@
+# INT Codex-subscription Review — P4 v1.0.252 — gpt-5.6-sol (high)
+paper: P4  version: v1.0.252  tex: pipelines/p2_chirality/chirality_catalog_paper.tex
+modality: full-repo Codex CLI ChatGPT-subscription referee (read-only, ephemeral)
+binding: packet_key=8814f670d4ec9d3e6efa3c0b4d39dfe37df31d4abb67685f9a3c22fe28a70735  prompt_sha256=4e13a06fbcd23b690bdcdc18ebde1f0e14b0b090e55054c1e0e49147e48de1ff
+provenance: commit=69226adbf3da02fff16f7fb65c45953c020b0966  source_sha256=384bdf938fdce91b7bdc42422d8a0c9f4d56c6ed2abca113df9880d0f4fcd646
+pdf: snapshot=/Users/houstongolden/.cache/bigbounce/review-packets/pdf/a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292.pdf  sha256=a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292  pages=28
+venue: The Astrophysical Journal Supplement Series  article_type: Catalog + methods article  profile: APJS-CATALOG-METHODS
+source_tree: clean detached sparse tree at 69226adbf3da02fff16f7fb65c45953c020b0966 (scope=pipelines/p2_chirality)
+UTC: 2026-07-15T20:30:28Z
+context-note: Confirmation review after bounded release-contract closure. Recheck prior Codex findings 3-5 specifically: immutable morphology input retrieval + byte/SHA validation + executable derived b/a contract; current HF model-card DR/count/version consistency; current dataset-card version and immutable download pins. Also report any genuinely new major issue. Do not treat standing scientific gates as newly fixed.
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+(1) VERDICT: MAJOR REVISIONS
+
+(2) ISSUES:
+1. [MAJOR] Data Availability’s claim that HF revision `245ad7c5` publishes immutable retrieval, byte/SHA validation, and an executable derived-\(b/a\) contract is false (`pipelines/p2_chirality/chirality_catalog_paper.tex:1641`). The byte-verified publication receipt identifies the older 5,774-byte validator (`pipelines/p2_chirality/outputs/canonical_provenance/p4_hf_morphology_contract_receipt_v1_0_251.json:19-31`), which requires pre-existing local files, parses them before hashing, and contains neither immutable download sources nor the \(b/a\) derivation. Those features exist only in the later 10,733-byte repository validator (`pipelines/p2_chirality/apjs_release_v1.0.251_morphology_sidecar/validate_p4_morphology_join_v1_0_251.py:56-160`), whose SHA-256 differs from the immutable published artifact. Prior finding 3 therefore remains unresolved publicly.
+2. [MAJOR] The cited immutable dataset revision does not contain the current versioned, pinned dataset card claimed by the manuscript (`pipelines/p2_chirality/chirality_catalog_paper.tex:1641`). Its publication receipt binds `README.md` to 5,677 bytes and SHA-256 `7486b498...` (`pipelines/p2_chirality/outputs/canonical_provenance/p4_hf_morphology_contract_receipt_v1_0_251.json:14-16`); those exact bytes describe manuscript v1.0.251 and download both Parquets without `revision=` pins. The corrected local v1.0.252 card has different bytes/SHA and immutable pins (`pipelines/p2_chirality/HF_DATASET_README.md:30,70-95`) but no receipt showing its publication. Prior finding 5 remains unresolved.
+3. [MAJOR] Although the local model card now has the correct DR8 designation, v1.0.252 version, and class counts, it remains scientifically and operationally inconsistent with the manuscript (`pipelines/p2_chirality/HF_MODEL_README.md:36-74,114-128`). From its own counts, \(f_{\rm CW}=1{,}592{,}107/3{,}201{,}160=0.4973531\) and the binomial significance is \(-9.4715\sigma\), not “consistent with parity at \(\sim1\sigma\)”; its quoted \(3.86\times\) suppression also conflicts with the manuscript’s \(1.576\%/0.529\%=2.98\times\) values (`pipelines/p2_chirality/chirality_catalog_paper.tex:881-887,1005-1012`). Its usage example requests `model.safetensors` and loads it with `torch.load`, whereas the audited immutable checkpoint is `chirality_model_v2_best.pt` (`pipelines/p2_chirality/outputs/canonical_provenance/p4_public_artifact_inventory_v1_0_245.json:24-35`). Prior finding 4 is therefore only partially closed, and the broken executable model-card contract is a major release defect.
+
+(3) Yes—the narrowly stated central claim that the declared high-confidence observed-label dipole is consistent with zero is supported by the committed null array, whose independently recomputed \(z=0.7053169638\) and upper-tail \(p=0.2246775322\) match the manuscript.

@@ -1,0 +1,6 @@
+pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json
+pipelines/p3_anomaly_engine/outputs/desi_injection_recovery/RECONCILIATION_history_2026-06-28.json
+pipelines/p3_anomaly_engine/outputs/dp3_15_heldout_reinference.json
+pipelines/p3_anomaly_engine/outputs/p3_apjs_r6_science_controls.json
+pipelines/p3_anomaly_engine/pathc_positional_dedup.py
+pipelines/p3_anomaly_engine/scripts/p3_apjs_r6_science_controls.py

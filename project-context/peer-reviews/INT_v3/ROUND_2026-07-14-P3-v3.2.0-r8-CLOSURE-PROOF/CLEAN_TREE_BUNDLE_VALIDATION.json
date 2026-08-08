@@ -1,0 +1,45 @@
+{
+  "schema": "bigbounce.p3-clean-tree-bundle-validation.v1",
+  "status": "PASS",
+  "validated_utc": "2026-07-14T21:33:09Z",
+  "reviewed_artifact_commit": "ba2f5b93a30de41122dc2ed31b543ac0da9a37c8",
+  "method": "Extract the tracked r7 bundle from git archive into a fresh temporary directory, add exactly the three manifest-bound payloads identified by the referee, and run validate_p3_apjs_r7_submission_bundle.py against that isolated tree.",
+  "pre_closure_git_tree_files": 38,
+  "post_closure_clean_tree_files": 41,
+  "manifest_payload_files": 38,
+  "bundle_metadata_files": 3,
+  "added_payloads": [
+    {
+      "path": "coordinate_lineage/desi_dr1_anomalies.parquet",
+      "bytes": 10514503,
+      "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65"
+    },
+    {
+      "path": "primary_release/desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
+      "bytes": 58038,
+      "sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03"
+    },
+    {
+      "path": "warned_auxiliary/desi_dr1_warned_global_primary_aux_v3.2.0-r5.parquet",
+      "bytes": 352155,
+      "sha256": "e370f0ae6ec3f4dc3e24b443e2f9ee53a35b105341ef838f15067b6faea1e57c"
+    }
+  ],
+  "validator_result": {
+    "bundle": "p3-apjs-v3.2.0-r7",
+    "manifest_sha256": "e59710a1c4f88fc816257d1441ae3eb69d954828c180a8541a1aa8f1c855007a",
+    "primary_rows": 181,
+    "core_rows": 170,
+    "lower_confidence_rows": 11,
+    "warned_auxiliary_rows": 2267,
+    "aas_rows": 181,
+    "coordinate_lineage": "PASS",
+    "doi_status": "pending"
+  },
+  "component_wrapper_self_check": {
+    "status": "PASS",
+    "in_place_destinations_rejected": 4,
+    "temporary_destinations_accepted": 2
+  },
+  "scope": "Packaging completeness only; no scientific release bytes, bundle manifest, component version, readiness state, site state, SSOT, or Convex state changed."
+}

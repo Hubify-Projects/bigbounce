@@ -52,12 +52,10 @@ export function ExternalReviewPanel({
     `- Explicitly labeled conservatism allowances, scaling estimates, ansatz/heuristic status labels, and disclosed queued follow-up computations are deliberate scoping, not oversights — flag only if the label itself is inaccurate.`,
     `- PDF text extraction can mangle math (square roots, fractions, superscripts). Before flagging "garbled" or "wrong" math, consider extraction artifacts; flag only what is visibly wrong in the rendered PDF.`,
     ``,
-    `HONEST VERDICT CALIBRATION:`,
-    `- Apply MNRAS / Physical Review D referee standards rigorously.`,
-    `- Base the verdict on whether the paper requires substantial scientific rework before publication — not on whether polish items can be found.`,
-    `- If the remaining items are style preferences (label choices, abstract emphasis, paragraph ordering), future-work pointers, or submission-day actions (Zenodo DOI minting, tagged release, removing audit-trail correction notes), MINOR REVISIONS or ACCEPT is the appropriate verdict.`,
-    `- Catalog-class and methodology papers are extensive by nature and should NOT default to MAJOR REVISIONS for that reason alone. Default to MAJOR only when a load-bearing claim is unsupported, a critical control is missing, or the paper cannot be reproduced from its committed artifacts.`,
-    `- Truth-audit any claim that seems off by grepping the published .tex / on-disk artifacts before flagging — do not echo prompt context.`,
+    `VERDICT STANDARD (apply the SAME high bar a first-pass Physical Review D / MNRAS referee would — this is one of the most rigorous journals in the world):`,
+    `- Assign each finding's severity (BLOCKER / MAJOR / MINOR) by your own independent referee judgment. Do NOT default to any tier, and do NOT soften a finding because the rest of the paper is strong. Do not echo this prompt's context.`,
+    `- A reporting choice that headlines the more favorable of two numbers, an unstated assumption, an uncontrolled systematic, or an internal inconsistency IS a real finding — classify it honestly (MINOR at minimum), not as mere "style" or "opinion".`,
+    `- Truth-audit any claim that seems off by checking it against the published .tex / on-disk artifacts before flagging (this only filters out genuine extraction artifacts — it does not lower the bar on real defects).`,
   ].join("\n");
 
   async function handleCopy() {

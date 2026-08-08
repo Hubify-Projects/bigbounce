@@ -1,0 +1,80 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-gz1only-retrain-dipole-null",
+  "title": "GZ1-only classifier retrain + dipole null (pseudo-label independence check)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "GZ1 CW/CCW human-vote labels (S3-hosted)",
+      "type": "external-dataset",
+      "locator": "GZ1 CW/CCW label set, S3-hosted — exact bucket path not captured in the inventory",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/run_dipole_gz1only_fullN.py",
+      "entrypoint": "python3 run_dipole_gz1only_fullN.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p2_chirality/scripts/gz1_stratified_confusion.py",
+      "entrypoint": "python3 gz1_stratified_confusion.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p2_chirality/validate_p4_v1_0_244_claims.py",
+      "entrypoint": "python3 validate_p4_v1_0_244_claims.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, scipy, pandas — see requirements.txt",
+    "hardware": "gpu-16gb (for the original GZ1-only classifier retrain); cpu-only for the surviving downstream dipole-null recomputation"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "RTX A4000 16GB community",
+    "pod_id_or_host": "8ol1r8eew7h6br (\"bigbounce-p4-gz1only\", $0.17/hr)",
+    "date": "2026-07-01",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU for the surviving dipole-null recomputation; RunPod A4000 16GB would be needed to redo the full GZ1-only classifier retrain from scratch",
+    "est_wall_clock": "~10 min local for the dipole-null recomputation on the surviving JSON (per COMPUTE_CAMPAIGN's own note); full end-to-end retrain time not estimable without the lost training script",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "The downstream dipole-null re-computation from the surviving gz1only_dipole_result.json / gz1_stratified_confusion.json is runnable-now at $0 locally. Full end-to-end reproduction (retraining the GZ1-only classifier itself) requires restoring a training script that is not preserved in the repo — see provenance."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/gz1only_dipole_result.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/gz1only_fullN_dipole_result.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/gz1_stratified_confusion.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run the surviving dipole-null analysis and confirm dipole z=-0.04 sigma (pseudo-label independence check) within +/-0.02 sigma numeric tolerance.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — GZ1-only classifier retrain + dipole null bullet",
+    "project-context/SSOT/paper-4/status.md",
+    "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md (G2 spec section, lines 480-500)",
+    "Path correction: the inventory cites a script variant `train_chirality_gz1only.py` (\"staged from train_chirality_v2.py\"); verified via `find . -iname \"train_chirality_gz1only.py\"` that this file does NOT exist anywhere in the current repo. What does exist and is used here instead: `pipelines/p2_chirality/run_dipole_gz1only_fullN.py`, `pipelines/p2_chirality/scripts/gz1_stratified_confusion.py`, and `pipelines/p2_chirality/validate_p4_v1_0_244_claims.py` — downstream analysis scripts that operate on the GZ1-only model's surviving output, not the original training script itself. Status set to needs-data-restore because the training script/checkpoint that produced the GZ1-only model is not preserved in-repo, even though the downstream dipole-null recomputation on the surviving JSON is runnable-now."
+  ]
+}

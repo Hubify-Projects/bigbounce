@@ -1,0 +1,57 @@
+name: P1B RunPod external watchdog
+
+on:
+  schedule:
+    - cron: "3-58/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p1b-runpod-external-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watchdog:
+    if: ${{ vars.P1B_RUNPOD_INTENT != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the watchdog implementation
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+        with:
+          filter: blob:none
+          sparse-checkout: reproducibility/p1_namaster_500mc/scripts
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: "3.11"
+
+      - name: Validate independent watchdog configuration
+        env:
+          RUNPOD_API_KEY: ${{ secrets.RUNPOD_API_KEY }}
+          P1B_RUNPOD_INTENT: ${{ vars.P1B_RUNPOD_INTENT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${RUNPOD_API_KEY}" ]]; then
+            echo "RUNPOD_API_KEY secret is required for the P1B external watchdog" >&2
+            exit 1
+          fi
+          if [[ -z "${P1B_RUNPOD_INTENT}" ]]; then
+            echo "P1B_RUNPOD_INTENT repository variable is required for the P1B external watchdog" >&2
+            exit 1
+          fi
+          printf '%s' "${P1B_RUNPOD_INTENT}" > "${RUNNER_TEMP}/p1b-runpod-intent.json"
+          chmod 600 "${RUNNER_TEMP}/p1b-runpod-intent.json"
+
+      - name: Enforce the durable RunPod intent
+        env:
+          RUNPOD_API_KEY: ${{ secrets.RUNPOD_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python reproducibility/p1_namaster_500mc/scripts/runpod_external_watchdog.py \
+            --intent "${RUNNER_TEMP}/p1b-runpod-intent.json"

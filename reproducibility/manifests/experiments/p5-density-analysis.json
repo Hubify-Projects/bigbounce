@@ -1,0 +1,58 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p5-density-analysis",
+  "title": "P5 local-density-dependence analysis of spiral chirality",
+  "program": "galaxy-chirality",
+  "paper": "P5",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "P5 matched chirality x DESI DR1 catalog",
+      "type": "internal-artifact",
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/06_analysis_density.py",
+      "entrypoint": "python3 06_analysis_density.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, pandas, numpy, scipy, matplotlib — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU",
+    "est_wall_clock": "minutes to tens of minutes over the ~2.23M-row matched catalog",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p5_desi_chirality/results/analysis_density/",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the local-density-binned chirality fraction statistics in analysis_density/ match the committed outputs within the numeric tolerance stated in the result files.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
+    "project-context/SSOT/paper-5/status.md",
+    "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 06_analysis_density.py maps to this analysis."
+  ]
+}

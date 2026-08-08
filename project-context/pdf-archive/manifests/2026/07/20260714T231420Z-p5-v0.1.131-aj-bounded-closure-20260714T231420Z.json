@@ -1,0 +1,73 @@
+{
+  "build_command": "PATH=\"$HOME/Library/TinyTeX/bin/universal-darwin:$PATH\" latexmk -pdf -interaction=nonstopmode -halt-on-error p5_desi_chirality.tex",
+  "captured_at_local": "2026-07-14T16:14:20-07:00",
+  "captured_at_utc": "2026-07-14T23:14:20+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "5766b931dfa6040b5d0df7a34c8fdf8a901afe15",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "9df9499de26d0fe2428e7b546be93fa93d60eae4",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260714T231420Z-p5-v0.1.131-aj-bounded-closure-20260714T231420Z.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/4f/4f545606e290e0295b4284e8ba441f04155aa601100b213c1e3cfdb894d803a0.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P5/P5__v0.1.131-2026-07-14__2026-07-14T161420-0700-PDT__4f545606e290.pdf",
+      "git": {
+        "head_blob": "a54762a9dc56ce008b240bc237e63d35740603e3",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "e29180555c90c0e60d56e8d6b7b82c81",
+      "object_created": true,
+      "page_count": 39,
+      "paper_id": "P5",
+      "paper_version": "v0.1.131-2026-07-14",
+      "reference_created": true,
+      "sha256": "4f545606e290e0295b4284e8ba441f04155aa601100b213c1e3cfdb894d803a0",
+      "size_bytes": 1510954,
+      "source_mtime_ns": 1784070218605447062,
+      "source_pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+      "source_tex": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+    }
+  ],
+  "review_round": "P5-v0.1.131-AJ-bounded-closure",
+  "run_id": "p5-v0.1.131-aj-bounded-closure-20260714T231420Z",
+  "schema": "bigbounce-pdf-retention/v3"
+}

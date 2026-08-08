@@ -1,0 +1,244 @@
+{
+  "release_name": "BigBounce Multi-Survey Autoencoder Anomaly Catalog (Paper 3)",
+  "paper": "Golden (2026), Paper 3 (P3): A Multi-Survey Autoencoder Anomaly Catalog",
+  "paper_versions": {
+    "prd_variant": "v3.1.157",
+    "apjs_variant": "v3.1.161-apjs"
+  },
+  "author": "Houston Golden <houston@hubify.com>",
+  "license": "CC-BY-4.0",
+  "hf_repo": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
+  "hf_repo_type": "dataset",
+  "pinned_revision": null,
+  "manifest_frozen_utc": "2026-07-14T09:24:29Z",
+  "immutable_release": true,
+  "v3_1_161_hf_tag_created": true,
+  "sufficient_for_complete_six_survey_row_level_submission": false,
+  "local_submission_bundle": {
+    "directory": "apjs_submission_v3.1.161",
+    "manifest": "apjs_submission_v3.1.161/SUBMISSION_BUNDLE_MANIFEST.json",
+    "verified_utc": "2026-07-14T08:57:30Z",
+    "source_revision": null,
+    "file_count": 6,
+    "payload_bytes": 25835132,
+    "hashes_rows_and_schemas_verified": true,
+    "payloads_gitignored": true,
+    "state": "VERIFIED_COMPLETE_FOR_SCOPED_APJS_TABLE_PACKAGE; NOT A COMPLETE SIX-SURVEY NATIVE-DATA PACKAGE"
+  },
+  "submission_boundary": "The immutable p3-v3.1.161 tag lacks a per-object LAMOST table and the native Planck top-200/checkpoint/tensor/full-score bank. v3.1.161-apjs is scoped to the validated DESI+SDSS+geometry-gated-NEOWISE point-source product; released Planck rows are archival cross-transfer diagnostics, Gaia is quarantined synthetic output, and eROSITA is membership-only.",
+  "apjs_submission_package": [
+    {
+      "role": "validated DESI point sources",
+      "path": "desi_dr1_anomalies.parquet",
+      "rows": 195829,
+      "columns": ["tid", "ra", "dec", "score", "worst", "rB", "rR", "rZ"]
+    },
+    {
+      "role": "validated SDSS continuity slice",
+      "path": "sdss_dr18_pathc_native.parquet",
+      "rows": 77905,
+      "columns": ["plate", "mjd", "fiberid", "ra", "dec", "z", "class", "anomaly_score"],
+      "selection_note": "fixed-size continuity slice, not a uniform physical threshold"
+    },
+    {
+      "role": "geometry-gated NEOWISE point sources",
+      "path": "neowise_anomalies.parquet",
+      "rows_raw": 436,
+      "rows_after_ecliptic_mask": 419,
+      "columns": ["source_id", "ra", "dec", "n_epochs", "time_span", "w1_mean", "w1_std", "w1_amp", "w1_chi2", "w1_stetson_j", "w1_skew", "w1_kurt", "w2_mean", "w2_std", "w2_amp", "w2_chi2", "w2_stetson_j", "w1w2_color", "w1w2_color_var", "interband_corr", "anomaly_score"]
+    },
+    {
+      "role": "merged heterogeneous continuity catalog",
+      "path": "pathc_unique_objects.parquet",
+      "rows": 378480,
+      "columns": ["cluster_id", "n_detections", "n_surveys", "survey_list", "ra_mean", "dec_mean", "best_score", "member_ids", "best_survey"]
+    },
+    {
+      "role": "cross-survey coincidence catalog",
+      "path": "pathc_multi_survey_matches.parquet",
+      "rows": 637,
+      "columns": ["cluster_id", "n_detections", "n_surveys", "survey_list", "ra_mean", "dec_mean", "best_score", "member_ids", "best_survey"],
+      "selection_note": "5-arcsec union, ACT excluded"
+    },
+    {
+      "role": "archival Planck cross-transfer diagnostic",
+      "path": "planck_cmb_anomalies.parquet",
+      "rows": 200,
+      "columns": ["patch_idx", "ra", "dec", "anomaly_score"],
+      "selection_note": "not the unavailable native 200,000-patch top-200"
+    }
+  ],
+  "checksum_algo": "SHA-256",
+  "headline_counts": {
+    "validated_point_source": 268319,
+    "archival_planck_cross_transfer_regions": 200,
+    "validated_point_source_plus_archival_planck": 268519,
+    "headline_inclusive_no_act": 378280,
+    "headline_excised_no_act_gaia_erosita": 377482,
+    "multi_survey_coincidence_clusters": 637,
+    "note": "377,482 is a combined continuity count: 377,282 point-source rows (including exploratory LAMOST aggregate membership) plus 200 archival Planck cross-transfer regions. 268,519 likewise equals the validated 268,319 DESI+SDSS+NEOWISE point-source product plus the same non-overlapping 200-row archival Planck block. The released Planck parquet is not the unavailable native 200k-bank top-200."
+  },
+  "verification": "Filter pathc_unique_objects.parquet to exclude act_dr6, gaia_dr3, and erosita_dr1 for the 377,482 combined continuity count. Run scripts/reproduce_headline_dedup.py for 268,519, then separate its 200 non-overlapping released Planck cross-transfer regions to obtain the validated 268,319 point-source product. No per-object LAMOST table or native Planck top-200 table exists in the frozen tagged inventory.",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "390fc66bd1322dce636f0369d9ca4660d38a7da542e133098a0e94676dbdfb48",
+      "size_bytes": 1339
+    },
+    {
+      "path": "act_dr6_anomalies.parquet",
+      "sha256": "65fa89af6b01d1fea711a1d21a9a528a49193bf8e82231f1c58f3a26e47cde72",
+      "size_bytes": 8922,
+      "rows": 200,
+      "description": "ACT DR6 cross-transfer (200; quarantined/diagnostic, EXCLUDED from all headline counts)."
+    },
+    {
+      "path": "blocks/erosita_dr1/erosita_dr1_anomalies.parquet",
+      "sha256": "4ea1b032aa8a5e51ea10fd600aec7b52f80598830e04f54f2dfa2dd4e082d2de",
+      "size_bytes": 72095,
+      "rows": 298,
+      "description": "eROSITA DR1 (298, membership-list-only addendum; EXCLUDED from the 377,482 headline; S_BigAE axis irreproducible - see README warning)."
+    },
+    {
+      "path": "desi_dr1_anomalies.parquet",
+      "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+      "size_bytes": 10514503,
+      "rows": 195829,
+      "description": "DESI DR1 native-retrained anomalies (195,829); per-object canonical-S scores."
+    },
+    {
+      "path": "gaia_dr3_anomalies.parquet",
+      "sha256": "819c59789eb1b94de4d46a62777fd125fb084b8c70f3d627b734a45af7396ced",
+      "size_bytes": 122457,
+      "rows": 500,
+      "description": "QUARANTINED HISTORICAL ARTIFACT: 500-row synthetic-placeholder fallback, not real Gaia DR3. Present in the frozen inventory but excluded from every reported count and unsuitable for science use."
+    },
+    {
+      "path": "neowise_anomalies.parquet",
+      "sha256": "2740d936a2289ab32bc925f4507a449aa14445976e916459303874386aac42da",
+      "size_bytes": 91283,
+      "rows": 436,
+      "description": "NEOWISE raw anomalies (436 pre-mask; 419 survive the 80-deg ecliptic-pole mask used in the headline dedup); per-object canonical-S scores."
+    },
+    {
+      "path": "p3_compute_to_accept/SIXWAY_DEDUP_AND_HELDOUT_METHODS.md",
+      "sha256": "66802b37179852fec48e7b7810c8ca744a7c43658aee76fd7795ca6d05a6b838",
+      "size_bytes": 4077
+    },
+    {
+      "path": "p3_compute_to_accept/held_out_rescore.py",
+      "sha256": "a658c15f84057f4a175085cb4cee6e1eca96d69da3db5f7a1a7ecfc959fa2bee",
+      "size_bytes": 8577
+    },
+    {
+      "path": "p3_compute_to_accept/dp3_15_heldout_reinference.py",
+      "sha256": "9a9cbcf0fc9cfbecebc2e5ffbedf5b03a17922616a5a02e9c59a07ee667922a1",
+      "size_bytes": 15499,
+      "description": "DP3-15 held-out re-inference driver: (A) measures the exact re-pullable fraction of the released DESI catalog via SPARCL probe (~1.3% - the rest carry pod-lost/hashed tids); (B) full held-out re-inference on a fresh real DESI-DR1 SPARCL substrate with the committed r42_phase2 5-seed ensemble, reproducing the native-scale MSE axis (median 0.233) + the injection-recovery validation gate. Runs on CPU in seconds; 0 GPU-hours."
+    },
+    {
+      "path": "p3_compute_to_accept/dp3_15_heldout_reinference_result.json",
+      "sha256": "63ef0c7f5004cbc615bb1fa04373a685af1334a6036b46cd35eb2d70c8b3b069",
+      "size_bytes": 4797,
+      "description": "DP3-15 held-out re-inference result: recoverable-fraction bound (86.61% synthetic tids; 1.31% of released rows re-pullable), pipeline reproduction (native-scale median MSE 0.233 == reconciled reference), injection-recovery gate (broad 99-100% @5sigma, narrow >=15sigma), cross-seed agreement. Honest scope: establishes method-level reproducibility; exact per-released-row score reproduction is structurally bounded by pod-lost input linkage (NOT fabricated)."
+    },
+    {
+      "path": "p3_compute_to_accept/held_out_rescore_result.json",
+      "sha256": "70e1c453112c7f44703681e792316323bff903228d0cb5ca44a10870bcd78639",
+      "size_bytes": 3228
+    },
+    {
+      "path": "p3_compute_to_accept/sixway_dedup.py",
+      "sha256": "60c853b628b06cf1a393ca5c999ef8449b649d9eec398297bdb547d20ed53285",
+      "size_bytes": 13729
+    },
+    {
+      "path": "p3_compute_to_accept/sixway_dedup_artifact.csv",
+      "sha256": "7d689c1e687c751fdfe2843962d5d7f8348eab8f8aa1ef422430482fedc667f5",
+      "size_bytes": 23927312
+    },
+    {
+      "path": "p3_compute_to_accept/sixway_dedup_artifact.json",
+      "sha256": "f9273b1ff170053d78b0e401154205b8c2d4eb967d02abcf67b9c92fab37a066",
+      "size_bytes": 2058
+    },
+    {
+      "path": "pathc_dedup_summary.json",
+      "sha256": "0ece318a225a726b0d30a6006b54a32f9c4fd50709041ed61199bafe4329c6a9",
+      "size_bytes": 2433
+    },
+    {
+      "path": "pathc_dedup_summary_no_act.json",
+      "sha256": "edb1330a42e856b04789b53bca781f951c121761d9be6a3214a05236bc18e8f4",
+      "size_bytes": 2364
+    },
+    {
+      "path": "pathc_multi_survey_matches.parquet",
+      "sha256": "3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784",
+      "size_bytes": 37722,
+      "rows": 637,
+      "description": "637 multi-survey coincidence clusters (canonical, ACT-excluded; ACT contributes zero cross-survey overlaps)."
+    },
+    {
+      "path": "pathc_unique_objects.parquet",
+      "sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
+      "size_bytes": 12087824,
+      "rows": 378480,
+      "description": "Merged 8-way 5-arcsec deduplicated continuity table. 378,480 rows total; excluding ACT(200), Gaia(500), and eROSITA(298) gives 377,482 = 377,282 point-source rows plus 200 archival Planck cross-transfer regions. This is not a uniformly validated science catalog."
+    },
+    {
+      "path": "planck_cmb_anomalies.parquet",
+      "sha256": "9dd3576f8de7251b9ee2bed13e61acc66d3faa530c317ae61dfd2e6b05a92740",
+      "size_bytes": 7926,
+      "rows": 200,
+      "description": "ARCHIVAL CROSS-TRANSFER BASELINE: 200 of the original <20,000 patch indices, ranked by the cross-transfer score (observed range 0.306-62.999). This file is NOT the native 200k-bank top-200 and must not be labeled native or validated."
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/chain_real_freespec.npy",
+      "sha256": "50abc38a04e1bf886adc833b5eb653be4e986877fe2476f87a78927f4f3610fc",
+      "size_bytes": 5120128
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/emcee_freespec.log",
+      "sha256": "c1c830bb40f353e129a3e6d0223db9d1707f6a750d32d812d4508c0f458913f0",
+      "size_bytes": 1373
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/emcee_freespec.py",
+      "sha256": "2cf5b3535d2b997885b12cb9fb8460e6a893227af0b593337c2a4755bd224c97",
+      "size_bytes": 7083
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/gamma_posterior.png",
+      "sha256": "3e9926291aba95165c19025c621950f3edcc5b511e6910fdf02ce75533e29736",
+      "size_bytes": 103787
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/results.json",
+      "sha256": "80617e05030e241a4bf57854f86c2decc15217cfc6065687886ba45eae2d21c1",
+      "size_bytes": 1001
+    },
+    {
+      "path": "r42_results/B10_ood_results_100k.json",
+      "sha256": "b801666f44cad291974c0a765e2aa5eb96c03076c7dfc1094511e2d985e5bab2",
+      "size_bytes": 883
+    },
+    {
+      "path": "r42_results/wave_14_rr_nanograv_bayesian.json",
+      "sha256": "8855682d10a26eed1b88c0cc63709547b4bb59c996361daa31aa80e83c670dd3",
+      "size_bytes": 3781
+    },
+    {
+      "path": "sdss_dr18_pathc_native.parquet",
+      "sha256": "5139c663c12f40217ea646fa8140c91f40194b42ca891912db73301ab78a31e6",
+      "size_bytes": 3095874,
+      "rows": 77905,
+      "description": "SDSS DR18 native-retrained continuity slice (77,905); per-object canonical-S scores."
+    }
+  ],
+  "pinned_revision_note": "IMMUTABLE POINTER. Git tag p3-v3.1.161 is authoritative. The manifest intentionally does not embed its own commit SHA, avoiding an impossible self-referential hash; verify the tag target through the Hugging Face refs API and record it in the external release ledger.",
+  "tagged_file_count": 27,
+  "local_manifest_file_count": 27,
+  "manifest_files_are_complete": "The files[] array contains the 27 scientific-inventory paths published at tag p3-v3.1.161. Auxiliary cutouts and legacy repository files outside that enumerated inventory remain available but are not part of the scoped submission package. LAMOST DR10 contributes to aggregate/dedup accounting but has no released per-object table. The native Planck checkpoint, tensor, full scores, and top-200 table are also absent.",
+  "pinned_tag": "p3-v3.1.161"
+}

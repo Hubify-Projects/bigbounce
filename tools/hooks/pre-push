@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# pre-push — site-freshness gate. Blocks a push while any public surface is
+# stale (banner / skills chart / board / version chips). Kills the recurring
+# stale-surface failure class: surface sync no longer depends on remembering.
+#
+# INSTALL (hooks are NOT committed by git; install this copy):
+#   cp tools/hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+#
+# EMERGENCY OVERRIDE (logged): FRESHNESS_SKIP=1 git push ...
+#
+# The check itself is tools/site_freshness_check.sh (exit 1 = stale, with a
+# precise report of WHICH surface and WHY).
+
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+CHECK="$REPO_ROOT/tools/site_freshness_check.sh"
+
+if [ ! -x "$CHECK" ]; then
+  echo "pre-push: $CHECK missing/not executable — skipping freshness gate" >&2
+  exit 0
+fi
+
+if [ "${FRESHNESS_SKIP:-0}" = "1" ]; then
+  echo "pre-push: FRESHNESS_SKIP=1 — site-freshness gate BYPASSED $(date -u +%FT%TZ)" >&2
+  echo "$(date -u +%FT%TZ) FRESHNESS_SKIP=1 push by $(git config user.email 2>/dev/null)" \
+    >> "$REPO_ROOT/tools/.freshness_skip.log" 2>/dev/null || true
+  exit 0
+fi
+
+if "$CHECK" --report; then
+  exit 0
+else
+  echo "" >&2
+  echo "pre-push BLOCKED: a public surface is stale (see table above)." >&2
+  echo "Fix the flagged surface(s) in this commit, or override with:" >&2
+  echo "    FRESHNESS_SKIP=1 git push ..." >&2
+  exit 1
+fi

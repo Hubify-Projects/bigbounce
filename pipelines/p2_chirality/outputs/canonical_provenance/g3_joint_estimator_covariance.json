@@ -1,0 +1,99 @@
+{
+  "script": "scripts/g3_joint_estimator_covariance.py",
+  "gate": "G3 \u2014 joint covariance across estimators",
+  "date_utc": "2026-07-17T20:51:10Z",
+  "catalog_snapshot": "cc326f7469961ba2b17f8f4492d9a0988b48ca24",
+  "sample": "primary HC (class_eq in CW/CCW & confidence_eq>0.6)",
+  "n_galaxies": 949584,
+  "mask": "|b_gal| > 15.0 deg & n_total>0",
+  "nside_data": 64,
+  "nside_block": 8,
+  "lmax": 191,
+  "n_bootstrap": 2000,
+  "n_valid": 2000,
+  "seed": 42,
+  "smoke": false,
+  "estimator_names": [
+    "A_dipole_realspace",
+    "A_dipole_WLS",
+    "monopole",
+    "Cl1_pseudo"
+  ],
+  "full_sample": {
+    "A_dipole_realspace": 0.004385697201244419,
+    "A_dipole_WLS": 0.004668718451405743,
+    "monopole": -0.003948639221954653,
+    "Cl1_pseudo": 3.994314050173865e-06
+  },
+  "bootstrap_mean": {
+    "A_dipole_realspace": 0.005413046758881109,
+    "A_dipole_WLS": 0.0075571968680252675,
+    "monopole": -0.003956208911893941,
+    "Cl1_pseudo": 2.9614431121042035e-06
+  },
+  "bootstrap_sigma": {
+    "A_dipole_realspace": 0.001986940616149029,
+    "A_dipole_WLS": 0.003435525527036373,
+    "monopole": 0.0006012984462752306,
+    "Cl1_pseudo": 2.0409618120062104e-06
+  },
+  "z_full_over_bootstrap_sigma": {
+    "A_dipole_realspace": 2.2072613371528527,
+    "A_dipole_WLS": 1.3589532124458332,
+    "monopole": -6.566854190983978,
+    "Cl1_pseudo": 1.9570743688964773
+  },
+  "joint_covariance": [
+    [
+      3.947933012102683e-06,
+      1.8920378890677071e-06,
+      -4.369913203612219e-08,
+      3.4306325929039866e-09
+    ],
+    [
+      1.8920378890677071e-06,
+      1.1802835646918548e-05,
+      -1.9205414471049277e-07,
+      1.8212153740160581e-09
+    ],
+    [
+      -4.369913203612219e-08,
+      -1.9205414471049277e-07,
+      3.6155982149300637e-07,
+      -8.180651925213458e-11
+    ],
+    [
+      3.4306325929039866e-09,
+      1.8212153740160581e-09,
+      -8.180651925213458e-11,
+      4.165525118067668e-12
+    ]
+  ],
+  "joint_correlation": [
+    [
+      1.0,
+      0.27717353566571284,
+      -0.036576137539316406,
+      0.8459689885854786
+    ],
+    [
+      0.27717353566571284,
+      1.0,
+      -0.09296948444151597,
+      0.2597366585670592
+    ],
+    [
+      -0.036576137539316406,
+      -0.09296948444151597,
+      0.9999999999999998,
+      -0.06665963848215829
+    ],
+    [
+      0.8459689885854786,
+      0.2597366585670592,
+      -0.06665963848215829,
+      0.9999999999999998
+    ]
+  ],
+  "master_leg_note": "Cl1_pseudo is the mask-COUPLED anafast l=1 (NaMaster absent locally). MASTER-decoupled refinement is pod-bound; the 3x3 sub-block over estimators 1-3 (A_dipole_realspace, A_dipole_WLS, monopole) is NaMaster-independent and final."
+}

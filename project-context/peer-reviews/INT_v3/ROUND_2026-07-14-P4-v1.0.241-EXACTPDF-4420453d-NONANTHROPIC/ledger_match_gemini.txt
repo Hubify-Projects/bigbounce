@@ -1,0 +1,19 @@
+# ledger_match DRAFT — P4 — API_P4_gemini.md
+
+> DRAFT for the Opus truth-auditor, NOT a replacement. Conservative threshold (prefers UNMATCHED over a false match). Every UNMATCHED finding — and every low-score MATCHED — still needs a human/Opus source-cited disposition per §3.
+>
+> ledger: `project-context/peer-reviews/DISPOSITIONS/P4.md` (22 D-ids)  |  findings parsed: 7  |  threshold: 0.3
+
+| # | sev | finding (first 120 chars) | best match | score | status |
+|---|-----|---------------------------|-----------|-------|--------|
+| 1 | MINOR | REVISIONS ====================================================================== RAW RESPONSE (verbatim): ============== | — | 0.00 | **UNMATCHED** |
+| 2 | MINOR | REVISIONS ISSUES: 1. | — | 0.00 | **UNMATCHED** |
+| 3 | MAJOR | Sections III/IV/Appendices (Formatting and Readability): The manuscript includes dozens of explicit, inline filepath ref | DP4-09 | 0.12 | **UNMATCHED** |
+| 4 | MINOR | Section VI.A / Appendix D (Comparison with prior literature): The explanation contrasting the block-bootstrap WLS templa | DP4-14 | 0.54 | MATCHED |
+| 5 | MINOR | Section IV.C & IV.D (Harmonic vs. Real-Space estimators): The attribution of the $+7.28\sigma$ MASTER $\ell=1$ excess to | DP4-11 | 0.25 | **UNMATCHED** |
+| 6 | MINOR | Section II.B & VI.A (Pseudo-label independence): The author excellently bounds the CE-ResNet pseudo-label dependence usi | DP4-16 | 0.08 | **UNMATCHED** |
+| 7 | MINOR | limitation in the main Conclusions (Section VII) would perfectly round out the otherwise stellar bias-hardening discussi | DP4-19 | 0.08 | **UNMATCHED** |
+
+**Match rate: 1/7 = 14% MATCHED, 6 UNMATCHED.**
+
+Exit 2 — 6 finding(s) need a full §3 truth-audit (genuinely-new candidates or too-weak fingerprint overlap).

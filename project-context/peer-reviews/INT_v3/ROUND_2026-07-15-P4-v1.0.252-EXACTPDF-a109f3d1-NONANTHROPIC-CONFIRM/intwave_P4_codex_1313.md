@@ -1,0 +1,25 @@
+# INT Codex-subscription Review — P4 v1.0.252 — gpt-5.6-sol (high)
+paper: P4  version: v1.0.252  tex: pipelines/p2_chirality/chirality_catalog_paper.tex
+modality: full-repo Codex CLI ChatGPT-subscription referee (read-only, ephemeral)
+binding: packet_key=752bf0a62d9dad013a3a08722d98f12eb66b10ae521b077432d3f37401998e43  prompt_sha256=b9b57f913a8ae25866a2659b947100ed7fa15b131724cd69066ff9e3a999a52e
+provenance: commit=40d99073618cb6ce5ae6f6c3410e52ef0a1685be  source_sha256=384bdf938fdce91b7bdc42422d8a0c9f4d56c6ed2abca113df9880d0f4fcd646
+pdf: snapshot=/Users/houstongolden/.cache/bigbounce/review-packets/pdf/a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292.pdf  sha256=a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292  pages=28
+venue: The Astrophysical Journal Supplement Series  article_type: Catalog + methods article  profile: APJS-CATALOG-METHODS
+source_tree: clean detached sparse tree at 40d99073618cb6ce5ae6f6c3410e52ef0a1685be (scope=pipelines/p2_chirality)
+UTC: 2026-07-15T20:14:05Z
+context-note: Exact v1.0.252 full confirmation board; judge ApJS publication readiness and verify the morphology join contract, training-realization disclosure, spatial/systematics limitations, covariance scope, and data/release provenance against the exact artifact. Do not treat disclosed limits as automatically closed; identify genuinely new defects only with precise evidence.
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+(1) VERDICT: MAJOR REVISIONS
+
+(2) ISSUES:
+1. [MAJOR] The primary HC significance does not propagate the spatially correlated classifier and selection systematics known to affect this catalog. The fixed-occupancy randomization assumes spatial exchangeability, while the manuscript reports that systematic-template injections shift the fitted amplitude from 0.4597% to 0.6710% and admits that spatially varying pseudo-label systematics and joint covariance remain unmodeled (`pipelines/p2_chirality/chirality_catalog_paper.tex:1025`, `:1157`, `:1207`, `:1360`). A same-support spatial/systematics-preserving null or nuisance-marginalized covariance is required before calling this a primary cosmological estimator.
+2. [MAJOR] The catalog-generating model is not reproducible or independently validated: the exact training objects, split membership, random states, and training-overlap anti-join were not retained, while committed records disagree on sample size and validation accuracy (`pipelines/p2_chirality/chirality_catalog_paper.tex:780`, `:1443-1463`, `:1494-1509`). Disclosure is appropriate but does not resolve the provenance defect for an ApJS methods/catalog product; the model and catalog should be regenerated from a frozen manifest or supplied with equivalent independently held-out validation.
+3. [MAJOR] The morphology join and archival release are not independently executable from the manuscript-bound repository. The validator requires two Parquet inputs that are absent from the committed tree and consequently fails its own existence check (`pipelines/p2_chirality/apjs_release_v1.0.251_morphology_sidecar/validate_p4_morphology_join_v1_0_251.py:24-25`, `:57-58`); only a provider receipt attests to the 3,201,160-row equality. Moreover, the paper uses exact derived \(b/a\) results while the release contract explicitly excludes axial ratio because the shape-selection contract is not frozen (`pipelines/p2_chirality/chirality_catalog_paper.tex:1348`, `:1620`, `:1641`; `pipelines/p2_chirality/apjs_release_v1.0.251_morphology_sidecar/SCHEMA.json:23-30`). Publish the pinned inputs or retrieval-enabled validator, its full validation output, and the exact \(b/a\) derivation in the immutable archive.
+4. [MAJOR] The released model metadata materially contradict the manuscript’s provenance and counts. The manuscript specifies DR8 and Catalog-C counts of 1,592,107 CW plus 1,609,053 CCW (`pipelines/p2_chirality/chirality_catalog_paper.tex:745`, `:935`), whereas the committed model card says DR9 and lists 1,687,069 CW plus 1,634,726 CCW—3,321,795 spirals—while simultaneously claiming 3,201,160 (`pipelines/p2_chirality/HF_MODEL_README.md:27`, `:62-66`). The card also remains bound to superseded v1.0.125 results. This public release surface must be corrected and immutably pinned.
+5. [MINOR] The supposedly corrected dataset card still identifies paper/PDF version v1.0.251 rather than the manuscript-of-record v1.0.252 (`pipelines/p2_chirality/HF_DATASET_README.md:30`, `:98`, `:102`; `pipelines/p2_chirality/chirality_catalog_paper.tex:719`). Version and citation metadata should be synchronized before submission.
+
+(3) Yes—the narrow claim that the retained HC observed-label field is null-consistent under the declared fixed-occupancy randomization is supported (\(z=0.70531696\), \(p=0.22467753\)), but it does not establish a physical chirality or isotropy bound.

@@ -1,0 +1,47 @@
+{
+  "chunksize": 100,
+  "equation_source_path": "research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py",
+  "equation_source_sha256": "7ca8a746ff2c8ad872eff46aff05c306e3ae0f53f51063743876a85f33c6a02e",
+  "generator_path": "reproducibility/cosmology/alp_spectator_conditioned_prior_predictive.py",
+  "generator_sha256": "ce4795e4770b2d443113606a27e5480c5f9df44b5f53feaf6df10123d2fb4ade",
+  "n_draws_per_arm": 100000,
+  "repository_head_context": "1177bc05c0ef6078cf3ba215ebdfffb2b7118ef6",
+  "result_counts": {
+    "broad_C_agamma_uniform_4_60": {
+      "n_failed": 0,
+      "n_joint_within_1sigma_and_spectator": 863,
+      "n_spectator_omega_a_lt_0p01": 34947,
+      "n_valid": 100000,
+      "n_within_1sigma_unrestricted": 6137
+    },
+    "fixed_C_agamma_8": {
+      "n_failed": 0,
+      "n_joint_within_1sigma_and_spectator": 0,
+      "n_spectator_omega_a_lt_0p01": 34947,
+      "n_valid": 100000,
+      "n_within_1sigma_unrestricted": 11597
+    }
+  },
+  "result_path": "reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_result.json",
+  "result_sha256": "4caad79ef53a7453f354cee1c5c7880025c166223b81f5c880fc227e396e59be",
+  "runtime_seconds": 688.427818333,
+  "schema_version": 1,
+  "seed": 1234,
+  "software": {
+    "numpy": "1.26.4",
+    "platform": "macOS-26.5-arm64-arm-64bit",
+    "python": "3.9.6",
+    "scipy": "1.13.1"
+  },
+  "status": "pre-release execution receipt; immutable release tag/DOI pending",
+  "validation": {
+    "fast": "same _ode_rhs_lna with DOP853 rtol=1e-7, atol=1e-10",
+    "max_abs_beta_deg": 1.5237778150378745e-08,
+    "max_abs_omega_a": 2.782438374815399e-06,
+    "n": 40,
+    "reference": "alp_ode.compute_alp_birefringence (rtol=1e-10, max_step=0.05)",
+    "seed": 20260715,
+    "spectator_classification_mismatches": 0
+  },
+  "workers": 8
+}

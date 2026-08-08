@@ -1,0 +1,661 @@
+{
+  "job": "GZ1-overlap stratified human-vs-classifier CW/CCW confusion matrix (P4+P5 referee closure)",
+  "date_utc": "2026-07-11T01:10:33Z",
+  "label_sources": {
+    "human": "Galaxy Zoo 1 Table 2 P_CW/P_ACW human votes (Lintott+2011), confident spirals max(P_CW,P_ACW)>0.6",
+    "classifier": "catalog_production.parquet class_eq / p_cw_eq / p_ccw_eq / confidence_eq (equivariant CE-ResNet pipeline)"
+  },
+  "cross_match": {
+    "tol_arcsec": 1.0,
+    "method": "KDTree unit-vector nearest",
+    "n_confident_gz1": 48414,
+    "n_matched": 46017
+  },
+  "definitions": {
+    "imaging_leg": "BASS+MzLS = dec>+32.0 deg; DECaLS = dec<+32.0 deg (P4 split)",
+    "confidence_bin": "classifier confidence_eq>0.6 vs <=",
+    "error_asymmetry": "err(CW->CCW) - err(CCW->CW); nonzero => differential mislabelling that can bias f_CW",
+    "induced_delta_fCW": "(#CCW->CW - #CW->CCW)/N; first-order net bias the classifier adds to the CW fraction",
+    "ci": "Wilson 95% for single rates; unpooled two-proportion 95% for differences"
+  },
+  "classifier_not_spiral_on_matched": {
+    "n": 5030,
+    "of": 46017,
+    "note": "GZ1-confident spirals the classifier called NOT_SPIRAL; excluded from the CW/CCW confusion (completeness, not chirality-error)"
+  },
+  "overall": {
+    "n": 40987,
+    "n_human_cw": 19864,
+    "n_human_ccw": 21123,
+    "confusion_counts": {
+      "human_CW__clf_CW": 18120,
+      "human_CW__clf_CCW": 1744,
+      "human_CCW__clf_CW": 1853,
+      "human_CCW__clf_CCW": 19270
+    },
+    "accuracy": 0.9122404664893747,
+    "accuracy_ci95": [
+      0.9094624697101718,
+      0.9149411969954354
+    ],
+    "err_CW_to_CCW": 0.0877970197341925,
+    "err_CW_to_CCW_ci95": [
+      0.0839407888035561,
+      0.09181265004173056
+    ],
+    "err_CCW_to_CW": 0.08772428158878948,
+    "err_CCW_to_CW_ci95": [
+      0.08398386662507332,
+      0.09161462338355944
+    ],
+    "error_asymmetry_CWtoCCW_minus_CCWtoCW": 7.27381454030257e-05,
+    "error_asymmetry_ci95": [
+      -0.005408350384015087,
+      0.005553826674821139
+    ],
+    "induced_delta_fCW": 0.0026593798033522826,
+    "induced_delta_fCW_ci95": [
+      -0.0002084586135972107,
+      0.005527218220301765
+    ]
+  },
+  "stratified_by_imaging_leg": {
+    "BASS_MzLS_dec_gt_+32": {
+      "n": 14093,
+      "n_human_cw": 6790,
+      "n_human_ccw": 7303,
+      "confusion_counts": {
+        "human_CW__clf_CW": 6115,
+        "human_CW__clf_CCW": 675,
+        "human_CCW__clf_CW": 695,
+        "human_CCW__clf_CCW": 6608
+      },
+      "accuracy": 0.9027886184630668,
+      "accuracy_ci95": [
+        0.897787288056304,
+        0.9075704250998007
+      ],
+      "err_CW_to_CCW": 0.09941089837997054,
+      "err_CW_to_CCW_ci95": [
+        0.09251886833799129,
+        0.10675594062343242
+      ],
+      "err_CCW_to_CW": 0.0951663699849377,
+      "err_CCW_to_CW_ci95": [
+        0.08864747730553561,
+        0.1021109326963774
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": 0.004244528395032837,
+      "error_asymmetry_ci95": [
+        -0.005550652228941433,
+        0.014039709019007108
+      ],
+      "induced_delta_fCW": 0.0014191442560136237,
+      "induced_delta_fCW_ci95": [
+        -0.0037284039675176467,
+        0.006566692479544895
+      ]
+    },
+    "DECaLS_dec_lt_+32": {
+      "n": 26894,
+      "n_human_cw": 13074,
+      "n_human_ccw": 13820,
+      "confusion_counts": {
+        "human_CW__clf_CW": 12005,
+        "human_CW__clf_CCW": 1069,
+        "human_CCW__clf_CW": 1158,
+        "human_CCW__clf_CCW": 12662
+      },
+      "accuracy": 0.9171934260429836,
+      "accuracy_ci95": [
+        0.9138398460565114,
+        0.9204278417189022
+      ],
+      "err_CW_to_CCW": 0.08176533578093927,
+      "err_CW_to_CCW_ci95": [
+        0.07719043542133729,
+        0.08658593895702567
+      ],
+      "err_CCW_to_CW": 0.08379160636758322,
+      "err_CCW_to_CW_ci95": [
+        0.0792869964258069,
+        0.08852753369096132
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.0020262705866439523,
+      "error_asymmetry_ci95": [
+        -0.008614115028122593,
+        0.004561573854834688
+      ],
+      "induced_delta_fCW": 0.0033092883170967504,
+      "induced_delta_fCW_ci95": [
+        -0.0001296475664953325,
+        0.006748224200688837
+      ]
+    },
+    "compare_BASS_vs_DECaLS": {
+      "err_CW_to_CCW": {
+        "diff": 0.017645562599031273,
+        "se_pooled": 0.004233307892185323,
+        "se_unpooled": 0.004350632677802679,
+        "z": 4.168268183754114,
+        "p_two_sided": 3.0692269189107355e-05,
+        "ci95_diff": [
+          0.009118479240574968,
+          0.026172645957487577
+        ]
+      },
+      "err_CCW_to_CW": {
+        "diff": 0.011374763617354483,
+        "se_pooled": 0.004092569804327136,
+        "se_unpooled": 0.004164858018096152,
+        "z": 2.779369482061802,
+        "p_two_sided": 0.0054464535785627936,
+        "ci95_diff": [
+          0.0032117919011631565,
+          0.01953773533354581
+        ]
+      },
+      "induced_delta_fCW_diff": {
+        "bass": 0.0014191442560136237,
+        "decals": 0.0033092883170967504,
+        "diff": -0.0018901440610831267
+      }
+    }
+  },
+  "stratified_by_confidence": {
+    "confidence_eq_gt_0.6": {
+      "n": 32550,
+      "n_human_cw": 15764,
+      "n_human_ccw": 16786,
+      "confusion_counts": {
+        "human_CW__clf_CW": 15166,
+        "human_CW__clf_CCW": 598,
+        "human_CCW__clf_CW": 669,
+        "human_CCW__clf_CCW": 16117
+      },
+      "accuracy": 0.9610752688172043,
+      "accuracy_ci95": [
+        0.9589190959616551,
+        0.963122624920012
+      ],
+      "err_CW_to_CCW": 0.037934534382136516,
+      "err_CW_to_CCW_ci95": [
+        0.03506315982798658,
+        0.04103105141546111
+      ],
+      "err_CCW_to_CW": 0.039854640772071966,
+      "err_CCW_to_CW_ci95": [
+        0.03699913142885612,
+        0.04292070951256895
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.0019201063899354498,
+      "error_asymmetry_ci95": [
+        -0.006121370299604402,
+        0.0022811575197335026
+      ],
+      "induced_delta_fCW": 0.0021812596006144393,
+      "induced_delta_fCW_ci95": [
+        3.80785469029552e-05,
+        0.00432444065432592
+      ]
+    },
+    "confidence_eq_le_0.6": {
+      "n": 8437,
+      "n_human_cw": 4100,
+      "n_human_ccw": 4337,
+      "confusion_counts": {
+        "human_CW__clf_CW": 2954,
+        "human_CW__clf_CCW": 1146,
+        "human_CCW__clf_CW": 1184,
+        "human_CCW__clf_CCW": 3153
+      },
+      "accuracy": 0.723835486547351,
+      "accuracy_ci95": [
+        0.7141950352660031,
+        0.7332722010784289
+      ],
+      "err_CW_to_CCW": 0.27951219512195125,
+      "err_CW_to_CCW_ci95": [
+        0.26598716227267594,
+        0.2934500094255801
+      ],
+      "err_CCW_to_CW": 0.2729997694258704,
+      "err_CCW_to_CW_ci95": [
+        0.2599462745391346,
+        0.28645503528089006
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": 0.006512425696080848,
+      "error_asymmetry_ci95": [
+        -0.012578929220618464,
+        0.02560378061278016
+      ],
+      "induced_delta_fCW": 0.004503970605665521,
+      "induced_delta_fCW_ci95": [
+        -0.006709035308636107,
+        0.015716976519967132
+      ]
+    },
+    "compare_hi_vs_lo_conf": {
+      "err_CW_to_CCW": {
+        "diff": -0.24157766073981474,
+        "se_pooled": 0.0049612811904959486,
+        "se_unpooled": 0.00717171115895972,
+        "z": -48.69259601785758,
+        "p_two_sided": 0.0,
+        "ci95_diff": [
+          -0.2556339563188998,
+          -0.22752136516072968
+        ]
+      },
+      "err_CCW_to_CW": {
+        "diff": -0.23314512865379844,
+        "se_pooled": 0.004818728381530528,
+        "se_unpooled": 0.006931226913472865,
+        "z": -48.38312313833857,
+        "p_two_sided": 0.0,
+        "ci95_diff": [
+          -0.24673008377287997,
+          -0.2195601735347169
+        ]
+      }
+    }
+  },
+  "stratified_by_environment_void_P5": {
+    "status": "COMPUTED",
+    "join": {
+      "key": "dr8_id (GZ1 overlap) == dr8_id (P5 DESI-z matched, deduped primary)",
+      "desi_z_source": "materialized on-the-fly from desi_zall.fits + p4_chirality.parquet (03_crossmatch recipe: 1.0 arcsec nearest, ZWARN==0, SPECTYPE in {GALAXY,QSO}, primary-deduped)",
+      "n_gz1_overlap_cw_ccw": 40987,
+      "n_joined_to_p5_matched": 14695,
+      "n_z_leq_0p24": 14672
+    },
+    "voidfinder_meta": {
+      "n_holes": 101863,
+      "max_hole_radius_mpc_h": 24.516066393515842,
+      "cosmology": {
+        "H0": 67.66,
+        "Om0": 0.315,
+        "little_h": 0.6766
+      }
+    },
+    "desivast_voidfinder_footprint_restricted": {
+      "definition": "DESIVAST VoidFinder point-in-sphere; galaxies restricted to within r_max of a hole centre (footprint proxy); void = inside any hole sphere",
+      "void": {
+        "n": 933,
+        "n_human_cw": 448,
+        "n_human_ccw": 485,
+        "confusion_counts": {
+          "human_CW__clf_CW": 413,
+          "human_CW__clf_CCW": 35,
+          "human_CCW__clf_CW": 49,
+          "human_CCW__clf_CCW": 436
+        },
+        "accuracy": 0.909967845659164,
+        "accuracy_ci95": [
+          0.8898813708282635,
+          0.9266922263340461
+        ],
+        "err_CW_to_CCW": 0.078125,
+        "err_CW_to_CCW_ci95": [
+          0.05670818057864594,
+          0.10671520029795681
+        ],
+        "err_CCW_to_CW": 0.10103092783505155,
+        "err_CCW_to_CW_ci95": [
+          0.07726728543963432,
+          0.13106500099609805
+        ],
+        "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.02290592783505155,
+        "error_asymmetry_ci95": [
+          -0.05947002965150352,
+          0.013658173981400422
+        ],
+        "induced_delta_fCW": 0.015005359056806002,
+        "induced_delta_fCW_ci95": [
+          -0.004223891045084839,
+          0.03423460915869684
+        ]
+      },
+      "non_void": {
+        "n": 5778,
+        "n_human_cw": 2841,
+        "n_human_ccw": 2937,
+        "confusion_counts": {
+          "human_CW__clf_CW": 2600,
+          "human_CW__clf_CCW": 241,
+          "human_CCW__clf_CW": 264,
+          "human_CCW__clf_CCW": 2673
+        },
+        "accuracy": 0.9125995154032537,
+        "accuracy_ci95": [
+          0.9050405485752501,
+          0.9196102195162906
+        ],
+        "err_CW_to_CCW": 0.0848292854628652,
+        "err_CW_to_CCW_ci95": [
+          0.07513590635195236,
+          0.09564389486132713
+        ],
+        "err_CCW_to_CW": 0.0898876404494382,
+        "err_CCW_to_CW_ci95": [
+          0.08007211272998721,
+          0.10077458243118878
+        ],
+        "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.005058354986573005,
+        "error_asymmetry_ci95": [
+          -0.019617637420696186,
+          0.009500927447550178
+        ],
+        "induced_delta_fCW": 0.003980616130148841,
+        "induced_delta_fCW_ci95": [
+          -0.0036415229883895303,
+          0.011602755248687216
+        ]
+      },
+      "n_total_in_desivast_volume": 6711,
+      "asymmetry_diff_void_vs_nonvoid": {
+        "asymmetry_stratumA": -0.02290592783505155,
+        "asymmetry_stratumB": -0.005058354986573005,
+        "diff_A_minus_B": -0.017847572848478543,
+        "se_diff": 0.020080035422891742,
+        "z": -0.8888217810677697,
+        "p_two_sided": 0.3740988680624336,
+        "ci95_diff": [
+          -0.057203719085634874,
+          0.021508573388677787
+        ]
+      },
+      "induced_delta_fCW_void_vs_nonvoid": {
+        "void": 0.015005359056806002,
+        "non_void": 0.003980616130148841,
+        "diff_void_minus_nonvoid": 0.011024742926657161
+      },
+      "n_in_footprint": 6711,
+      "n_outside_footprint_dropped": 7961
+    },
+    "desivast_voidfinder_all_lowz": {
+      "definition": "DESIVAST VoidFinder point-in-sphere over ALL z<=0.24 GZ1-overlap galaxies (no footprint restriction; non-void includes non-covered sky)",
+      "void": {
+        "n": 933,
+        "n_human_cw": 448,
+        "n_human_ccw": 485,
+        "confusion_counts": {
+          "human_CW__clf_CW": 413,
+          "human_CW__clf_CCW": 35,
+          "human_CCW__clf_CW": 49,
+          "human_CCW__clf_CCW": 436
+        },
+        "accuracy": 0.909967845659164,
+        "accuracy_ci95": [
+          0.8898813708282635,
+          0.9266922263340461
+        ],
+        "err_CW_to_CCW": 0.078125,
+        "err_CW_to_CCW_ci95": [
+          0.05670818057864594,
+          0.10671520029795681
+        ],
+        "err_CCW_to_CW": 0.10103092783505155,
+        "err_CCW_to_CW_ci95": [
+          0.07726728543963432,
+          0.13106500099609805
+        ],
+        "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.02290592783505155,
+        "error_asymmetry_ci95": [
+          -0.05947002965150352,
+          0.013658173981400422
+        ],
+        "induced_delta_fCW": 0.015005359056806002,
+        "induced_delta_fCW_ci95": [
+          -0.004223891045084839,
+          0.03423460915869684
+        ]
+      },
+      "non_void": {
+        "n": 13739,
+        "n_human_cw": 6691,
+        "n_human_ccw": 7048,
+        "confusion_counts": {
+          "human_CW__clf_CW": 6125,
+          "human_CW__clf_CCW": 566,
+          "human_CCW__clf_CW": 600,
+          "human_CCW__clf_CCW": 6448
+        },
+        "accuracy": 0.9151321056845476,
+        "accuracy_ci95": [
+          0.9103552918201212,
+          0.9196768404852791
+        ],
+        "err_CW_to_CCW": 0.0845912419668211,
+        "err_CW_to_CCW_ci95": [
+          0.07815960359002168,
+          0.09149959832045555
+        ],
+        "err_CCW_to_CW": 0.0851305334846765,
+        "err_CCW_to_CW_ci95": [
+          0.07883904254847451,
+          0.09187402096132496
+        ],
+        "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.0005392915178553948,
+        "error_asymmetry_ci95": [
+          -0.009861698607593046,
+          0.008783115571882256
+        ],
+        "induced_delta_fCW": 0.002474707038357959,
+        "induced_delta_fCW_ci95": [
+          -0.0023963876576847355,
+          0.007345801734400646
+        ]
+      },
+      "n_total_in_desivast_volume": 14672,
+      "asymmetry_diff_void_vs_nonvoid": {
+        "asymmetry_stratumA": -0.02290592783505155,
+        "asymmetry_stratumB": -0.0005392915178553948,
+        "diff_A_minus_B": -0.022366636317196154,
+        "se_diff": 0.019252300337002284,
+        "z": -1.1617643567614733,
+        "p_two_sided": 0.24533119596471198,
+        "ci95_diff": [
+          -0.060100451597268977,
+          0.01536717896287667
+        ]
+      },
+      "induced_delta_fCW_void_vs_nonvoid": {
+        "void": 0.015005359056806002,
+        "non_void": 0.002474707038357959,
+        "diff_void_minus_nonvoid": 0.012530652018448043
+      }
+    },
+    "galzone_native_split": {
+      "V2_REVOLVER": {
+        "definition": "V2_REVOLVER GALZONE catalog-native: void = OUT==0 & ZONE>=0 & VOID0>=0",
+        "void": {
+          "n": 2401,
+          "n_human_cw": 1190,
+          "n_human_ccw": 1211,
+          "confusion_counts": {
+            "human_CW__clf_CW": 1077,
+            "human_CW__clf_CCW": 113,
+            "human_CCW__clf_CW": 131,
+            "human_CCW__clf_CCW": 1080
+          },
+          "accuracy": 0.8983756768013328,
+          "accuracy_ci95": [
+            0.885646295821672,
+            0.9098323387400062
+          ],
+          "err_CW_to_CCW": 0.0949579831932773,
+          "err_CW_to_CCW_ci95": [
+            0.07958096895305938,
+            0.11294162868543872
+          ],
+          "err_CCW_to_CW": 0.10817506193228736,
+          "err_CCW_to_CW_ci95": [
+            0.09190423565430977,
+            0.126923873059365
+          ],
+          "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.013217078739010055,
+          "error_asymmetry_ci95": [
+            -0.03737186700457988,
+            0.010937709526559768
+          ],
+          "induced_delta_fCW": 0.007496876301541024,
+          "induced_delta_fCW_ci95": [
+            -0.005250790929923725,
+            0.020244543533005782
+          ]
+        },
+        "non_void": {
+          "n": 1788,
+          "n_human_cw": 871,
+          "n_human_ccw": 917,
+          "confusion_counts": {
+            "human_CW__clf_CW": 820,
+            "human_CW__clf_CCW": 51,
+            "human_CCW__clf_CW": 59,
+            "human_CCW__clf_CCW": 858
+          },
+          "accuracy": 0.9384787472035794,
+          "accuracy_ci95": [
+            0.9263734755577339,
+            0.9487039439769073
+          ],
+          "err_CW_to_CCW": 0.05855338691159587,
+          "err_CW_to_CCW_ci95": [
+            0.04481337922237338,
+            0.07617020900785382
+          ],
+          "err_CCW_to_CW": 0.064340239912759,
+          "err_CCW_to_CW_ci95": [
+            0.05020647421453631,
+            0.08210887459342722
+          ],
+          "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.005786853001163134,
+          "error_asymmetry_ci95": [
+            -0.02804247267221813,
+            0.016468766669891863
+          ],
+          "induced_delta_fCW": 0.0044742729306487695,
+          "induced_delta_fCW_ci95": [
+            -0.007020654863247284,
+            0.01596920072454482
+          ]
+        },
+        "n_total_in_desivast_volume": 4189,
+        "asymmetry_diff_void_vs_nonvoid": {
+          "asymmetry_stratumA": -0.013217078739010055,
+          "asymmetry_stratumB": -0.005786853001163134,
+          "diff_A_minus_B": -0.007430225737846921,
+          "se_diff": 0.016757746452322662,
+          "z": -0.4433905095166943,
+          "p_two_sided": 0.6574832992741434,
+          "ci95_diff": [
+            -0.0402748052464532,
+            0.02541435377075936
+          ]
+        },
+        "induced_delta_fCW_void_vs_nonvoid": {
+          "void": 0.007496876301541024,
+          "non_void": 0.0044742729306487695,
+          "diff_void_minus_nonvoid": 0.003022603370892255
+        },
+        "n_joined_galzone": 4189
+      },
+      "V2_VIDE": {
+        "definition": "V2_VIDE GALZONE catalog-native: void = OUT==0 & ZONE>=0 & VOID0>=0",
+        "void": {
+          "n": 1633,
+          "n_human_cw": 814,
+          "n_human_ccw": 819,
+          "confusion_counts": {
+            "human_CW__clf_CW": 733,
+            "human_CW__clf_CCW": 81,
+            "human_CCW__clf_CW": 102,
+            "human_CCW__clf_CCW": 717
+          },
+          "accuracy": 0.8879363135333742,
+          "accuracy_ci95": [
+            0.8717172036436455,
+            0.9023345490000371
+          ],
+          "err_CW_to_CCW": 0.09950859950859951,
+          "err_CW_to_CCW_ci95": [
+            0.08078810108420129,
+            0.12199137045277991
+          ],
+          "err_CCW_to_CW": 0.12454212454212454,
+          "err_CCW_to_CW_ci95": [
+            0.10366558654804381,
+            0.1489243341379835
+          ],
+          "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.02503352503352503,
+          "error_asymmetry_ci95": [
+            -0.05559949596261181,
+            0.00553244589556175
+          ],
+          "induced_delta_fCW": 0.012859767299448868,
+          "induced_delta_fCW_ci95": [
+            -0.0033645625766780367,
+            0.029084097175575776
+          ]
+        },
+        "non_void": {
+          "n": 2556,
+          "n_human_cw": 1247,
+          "n_human_ccw": 1309,
+          "confusion_counts": {
+            "human_CW__clf_CW": 1164,
+            "human_CW__clf_CCW": 83,
+            "human_CCW__clf_CW": 88,
+            "human_CCW__clf_CCW": 1221
+          },
+          "accuracy": 0.9330985915492958,
+          "accuracy_ci95": [
+            0.9227480274867519,
+            0.9421492857320044
+          ],
+          "err_CW_to_CCW": 0.06655974338412189,
+          "err_CW_to_CCW_ci95": [
+            0.054013635773643105,
+            0.08176812747301354
+          ],
+          "err_CCW_to_CW": 0.06722689075630252,
+          "err_CCW_to_CW_ci95": [
+            0.05488844983692656,
+            0.08209797576106073
+          ],
+          "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.0006671473721806265,
+          "error_asymmetry_ci95": [
+            -0.020042861141123407,
+            0.018708566396762154
+          ],
+          "induced_delta_fCW": 0.0019561815336463224,
+          "induced_delta_fCW_ci95": [
+            -0.008070861432842776,
+            0.011983224500135422
+          ]
+        },
+        "n_total_in_desivast_volume": 4189,
+        "asymmetry_diff_void_vs_nonvoid": {
+          "asymmetry_stratumA": -0.02503352503352503,
+          "asymmetry_stratumB": -0.0006671473721806265,
+          "diff_A_minus_B": -0.024366377661344404,
+          "se_diff": 0.018464489401426407,
+          "z": -1.3196345228729731,
+          "p_two_sided": 0.18695707076362864,
+          "ci95_diff": [
+            -0.0605561118810617,
+            0.01182335655837289
+          ]
+        },
+        "induced_delta_fCW_void_vs_nonvoid": {
+          "void": 0.012859767299448868,
+          "non_void": 0.0019561815336463224,
+          "diff_void_minus_nonvoid": 0.010903585765802545
+        },
+        "n_joined_galzone": 4189
+      }
+    }
+  },
+  "wall_seconds": 871.1
+}

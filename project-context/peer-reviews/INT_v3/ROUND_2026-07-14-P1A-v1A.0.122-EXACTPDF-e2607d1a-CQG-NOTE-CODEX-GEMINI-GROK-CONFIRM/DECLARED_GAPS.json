@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "paper": "P1A",
+  "version": "v1A.0.122",
+  "source_commit": "0bb7fddf231f8dfb2778f332e2500d618fb6339e",
+  "source_sha256": "9f83351baa7a47dc11771927a12e05259c70a0d74040b46d43e56390cbfc9adc",
+  "pdf_sha256": "e2607d1a8476aa8df9e5e89b04595655b81048be34cabb4bec273e59c4c87e04",
+  "excluded_legs": [
+    {
+      "leg": "openai-api",
+      "status": "NOT_DISPATCHED",
+      "reason": "OpenAI-family review was routed only through ChatGPT-subscription-authenticated Codex CLI; OpenAI API billing was prohibited."
+    },
+    {
+      "leg": "anthropic-claude",
+      "status": "NOT_DISPATCHED",
+      "reason": "Anthropic/Claude was excluded by the campaign constraint."
+    }
+  ],
+  "truth_audited_internal_findings": [
+    {
+      "finding": "NJL artifact retains above-M_Pl legacy rows that the manuscript says were not evaluated",
+      "status": "VALID_MINOR",
+      "blocks": "reproducibility coherence, not the contact-term derivation"
+    },
+    {
+      "finding": "three active reader-facing artifact references still resolve through mutable blob/main",
+      "status": "VALID_MINOR",
+      "blocks": "uniform immutable provenance, not the contact-term derivation"
+    }
+  ],
+  "external_science_and_release_gates": [
+    {
+      "gate": "alternate-regulator calculation",
+      "status": "OPEN_DISCLOSED",
+      "scope": "Blocks regulator-independent condensation/no-go claims, not the stated hard-cutoff result."
+    },
+    {
+      "gate": "matched physical Lorentzian cosmological stress tensor and observable",
+      "status": "OPEN_DISCLOSED",
+      "scope": "Blocks phenomenological promotion of cited Euclidean running, not the local contact term."
+    },
+    {
+      "gate": "state-specific renormalized axial-current expectation value",
+      "status": "OPEN_DISCLOSED",
+      "scope": "Blocks a physical finite-density stress tensor/equation-of-state inference, not the coefficient benchmark."
+    },
+    {
+      "gate": "remote resolution of commit-pinned URLs",
+      "status": "OPEN_HTTP_404_PRE_PUSH",
+      "scope": "Blocks remote reproducibility/release status only; local commit and objects exist."
+    },
+    {
+      "gate": "immutable archive and DOI",
+      "status": "NOT_RUN",
+      "scope": "Submission/release packaging gate only."
+    },
+    {
+      "gate": "independent human CQG referee and editorial decision",
+      "status": "NOT_RUN",
+      "scope": "Automated verdicts are evidence and cannot be represented as journal acceptance."
+    }
+  ],
+  "readiness_uplift_authorized": false
+}

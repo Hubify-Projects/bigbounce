@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Catalog C (post-TTA equivariant) dipole analysis on 8.47M galaxy chirality catalog.
 
-Generator for the 0.43-sigma post-TTA dipole headline result cited in
+Generator for the canonical inclusive-mask post-TTA dipole result cited in
 `chirality_catalog_paper.tex` §V.B / Tables I-III.
 
 Pipeline (mirrors run_dipole_8M.py for Catalog A/B — same HEALPix NSIDE=64,
@@ -13,19 +13,19 @@ the input catalog and the class column differ):
   2. Filter to high-confidence spirals using `class_eq in {CW, CCW}` and
      `p_cw_eq > 0.6` (the equivariant confidence threshold).
   3. Pixelize to HEALPix NSIDE = 64 (49,152 pixels, 0.92 deg^2 each);
-     require >= 10 galaxies/pixel for the mask (same cut as Catalog A/B).
+     retain pixels with N_spiral >= 10 (inclusive, matching the paper contract).
   4. Fit dipole via healpy.fit_dipole on the per-pixel CW asymmetry.
-  5. Monte Carlo null: 1,000 shuffled realizations of the per-pixel labels
-     (N_MC = 1,000 canonical per `outputs/dipole/dipolar_analysis.log` and
-     fire #49 harmonization; tail-p precision is ~3% at N_MC=1,000,
-     immaterial since the result does not approach 3 sigma).
+  5. Monte Carlo null: 10,000 fixed-occupancy galaxy-label randomizations,
+     conditioning on support-pixel occupancies and the support-sample CW total.
   6. Angular power spectrum C_ell for ell = 1..5, reported as excess
      over the shot-noise floor.
-  7. Save to `outputs/dipole/catalog_c_summary.json`.
+  7. Save the primary JSON and exact 10,000-element label-randomization null
+     array to `outputs/dipole/catalog_c_summary.json` and
+     `outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.npy`.
 
-Expected result (paper L509, L716, L787, L801, L813, L972, L987):
+Expected result:
   - dipole amplitude ~ 10x smaller than Catalog A (raw)
-  - significance = 0.43 sigma (p ~ 0.33)
+  - significance = +0.705 sigma; one-sided upper-tail rank p = 0.22468
   - consistent with equivariant-TTA residual bias ~ 0.005% per pixel,
     far below the ~1% classifier CW bias that produced Catalog A's
     2.31-sigma pre-TTA signal.
@@ -38,12 +38,15 @@ Or with custom path:
 
     CAT_C_PATH=/path/to/catalog_production.parquet python run_dipole_catalog_c.py
 
-This script is the generator for the `P4-POST-TTA-043SIGMA-TRACE` queue row.
-It closes the audit trail: given the committed Catalog C parquet (produced
+This script closes the primary audit trail: given the committed Catalog C
+parquet (produced
 deterministically by `run_eq_fast.py` from the Catalog A v2 inference
 outputs + equivariant flip-averaging per `equivariant_postprocess.py`),
-this script reproduces the paper's 0.43-sigma headline.
+this script reproduces the paper's inclusive-mask headline.
 """
+from __future__ import annotations
+
+import hashlib
 import json
 import os
 import time
@@ -53,7 +56,24 @@ import healpy as hp
 import numpy as np
 import pandas as pd
 
+DATASET_REPO_ID = "bamfai/galaxy-chirality-catalog"
+DATASET_REPO_TYPE = "dataset"
+DATASET_FILENAME = "catalog_production.parquet"
+DATASET_REVISION = "a21eb596fd10edb9af9e7a1bcefb04f87327a724"
+DATASET_SHA256 = "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563"
+DATASET_BYTES = 952_115_239
+NULL_ARTIFACT = (
+    "pipelines/p2_chirality/outputs/canonical_provenance/"
+    "p4_primary_hc_label_shuffle_10k.npy"
+)
+PIXEL_NULL_ARTIFACT = (
+    "pipelines/p2_chirality/outputs/canonical_provenance/"
+    "c12_queue2_null_amps_10k.npy"
+)
+
 WORK = os.environ.get("WORK", "/workspace/chirality")
+
+
 def _default_cat_c() -> str:
     pod = f"{WORK}/catalog_production.parquet"
     if Path(pod).exists():
@@ -61,8 +81,11 @@ def _default_cat_c() -> str:
     try:
         from huggingface_hub import hf_hub_download
         return hf_hub_download(
-            "bamfai/galaxy-chirality-catalog", "catalog_production.parquet",
-            repo_type="dataset", local_files_only=True)
+            DATASET_REPO_ID,
+            DATASET_FILENAME,
+            repo_type=DATASET_REPO_TYPE,
+            revision=DATASET_REVISION,
+        )
     except Exception:
         return pod
 
@@ -72,9 +95,27 @@ OUT_PATH = os.environ.get(
     "OUT_PATH",
     str(Path(__file__).parent / "outputs" / "dipole" / "catalog_c_summary.json"),
 )
+NULL_PATH = os.environ.get(
+    "NULL_PATH",
+    str(
+        Path(__file__).parent
+        / "outputs"
+        / "canonical_provenance"
+        / "p4_primary_hc_label_shuffle_10k.npy"
+    ),
+)
 NSIDE = 64
 MIN_PIX_COUNT = 10
 N_MC = 10000  # upgraded from 1,000 at the 2026-06-09 regeneration (R23conf)
+MC_SEED = 20260715
+
+
+def sha256_file(path: str | Path, chunk_size: int = 8 * 1024 * 1024) -> str:
+    digest = hashlib.sha256()
+    with open(path, "rb") as fh:
+        while chunk := fh.read(chunk_size):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def main() -> int:
@@ -93,7 +134,25 @@ def main() -> int:
         )
         return 1
 
-    df = pd.read_parquet(CAT_C_PATH)
+    source_sha256 = sha256_file(CAT_C_PATH)
+    if source_sha256 != DATASET_SHA256:
+        raise ValueError(
+            "Catalog content hash mismatch: "
+            f"expected {DATASET_SHA256}, got {source_sha256}"
+        )
+    if Path(CAT_C_PATH).stat().st_size != DATASET_BYTES:
+        raise ValueError(
+            "Catalog byte-count mismatch: "
+            f"expected {DATASET_BYTES}, got {Path(CAT_C_PATH).stat().st_size}"
+        )
+
+    # Project only the five columns used by the primary estimator.  This keeps
+    # the exact calculation local and avoids materializing unrelated catalog
+    # columns from the 8,474,531-row Parquet release.
+    df = pd.read_parquet(
+        CAT_C_PATH,
+        columns=["ra", "dec", "class_eq", "p_cw_eq", "p_ccw_eq"],
+    )
     n_total = len(df)
     print(f"  {n_total:,} galaxies loaded", flush=True)
 
@@ -130,7 +189,10 @@ def main() -> int:
     np.add.at(ccw_map, pix, (~is_cw).astype(float))
 
     tot = cw_map + ccw_map
-    mask = tot > MIN_PIX_COUNT
+    # Canonical primary contract: inclusive N_spiral(p) >= 10.  Versions
+    # through v1.0.242 accidentally executed the strict >10 mask; that result
+    # is retained only in the explicitly historical sensitivity artifacts.
+    mask = tot >= MIN_PIX_COUNT
     asym = np.zeros(npix)
     asym[mask] = (cw_map[mask] - ccw_map[mask]) / tot[mask]
     n_pix = int(mask.sum())
@@ -142,51 +204,80 @@ def main() -> int:
     asym_full[mask] = asym[mask]
     mono, dip = hp.fit_dipole(asym_full, gal_cut=0)
     amp = float(np.sqrt(np.sum(dip ** 2)))
-    l_deg = float(np.degrees(np.arctan2(dip[1], dip[0])) % 360)
-    b_deg = float(np.degrees(np.arcsin(dip[2] / amp))) if amp > 0 else 0.0
+    ra_deg = float(np.degrees(np.arctan2(dip[1], dip[0])) % 360)
+    dec_deg = float(np.degrees(np.arcsin(dip[2] / amp))) if amp > 0 else 0.0
     print(f"  Monopole: {mono:.6f}", flush=True)
     print(f"  Dipole amplitude: {amp:.6f}", flush=True)
-    print(f"  Direction: (l, b) = ({l_deg:.1f}, {b_deg:.1f})", flush=True)
-
-    # MC null (shuffle per-pixel labels, re-fit dipole)
-    print(f"  Running {N_MC:,} MC null realizations...", flush=True)
-    t0 = time.time()
-    valid = asym[mask].copy()
-    boots = np.empty(N_MC)
-    rng = np.random.default_rng(20260418)
-    for i in range(N_MC):
-        rng.shuffle(valid)
-        asym_shuf = np.full(npix, hp.UNSEEN)
-        asym_shuf[mask] = valid
-        _, d = hp.fit_dipole(asym_shuf, gal_cut=0)
-        boots[i] = np.sqrt(np.sum(d ** 2))
-    mc_mean = float(np.mean(boots))
-    mc_std = float(np.std(boots))
-    sigma = (amp - mc_mean) / mc_std if mc_std > 0 else 0.0
-    pval = float(((boots >= amp).sum() + 1) / (N_MC + 1))  # (k+1)/(N+1) rank-p
-
-    # Second null (R23conf META-E1): per-galaxy label shuffle — binomial draw
-    # of per-pixel CW counts at the global CW rate, preserving N_spiral(p).
-    print(f"  Running {N_MC:,} per-galaxy label-shuffle nulls...", flush=True)
-    p_glob = cw_map[mask].sum() / tot[mask].sum()
-    n_tot_pix = tot[mask].astype(int)
-    boots2 = np.empty(N_MC)
-    for i in range(N_MC):
-        cws = rng.binomial(n_tot_pix, p_glob)
-        asym_shuf = np.full(npix, hp.UNSEEN)
-        asym_shuf[mask] = (2.0 * cws - n_tot_pix) / n_tot_pix
-        _, d = hp.fit_dipole(asym_shuf, gal_cut=0)
-        boots2[i] = np.sqrt(np.sum(d ** 2))
-    mc2_mean = float(np.mean(boots2)); mc2_std = float(np.std(boots2))
-    sigma2 = (amp - mc2_mean) / mc2_std if mc2_std > 0 else 0.0
-    pval2 = float(((boots2 >= amp).sum() + 1) / (N_MC + 1))
-    print(f"  shuffle null: {sigma2:.2f}sigma (rank-p = {pval2:.4f})", flush=True)
     print(
-        f"  MC null ({time.time()-t0:.0f}s): {sigma:.2f}sigma "
-        f"(p = {pval:.4f}, mean = {mc_mean:.6f}, std = {mc_std:.6f})",
+        f"  Equatorial direction: (RA, Dec) = ({ra_deg:.1f}, {dec_deg:.1f}) deg",
         flush=True,
     )
 
+    # MC null (shuffle per-pixel labels, re-fit dipole)
+    # Primary null: uniformly randomize CW/CCW labels among support galaxies
+    # while preserving every support-pixel occupancy and the support CW total.
+    reuse_primary_null = os.environ.get("REUSE_PRIMARY_NULL", "0") == "1"
+    print(f"  Running {N_MC:,} fixed-occupancy label randomizations...", flush=True)
+    t0 = time.time()
+    capacities = tot[mask].astype(np.int64)
+    n_cw_support = int(cw_map[mask].sum())
+    mask_idx = np.flatnonzero(mask)
+    theta_pix, phi_pix = hp.pix2ang(NSIDE, mask_idx)
+    design = np.column_stack([
+        np.ones(mask_idx.size),
+        np.sin(theta_pix) * np.cos(phi_pix),
+        np.sin(theta_pix) * np.sin(phi_pix),
+        np.cos(theta_pix),
+    ])
+    projector = np.linalg.inv(design.T @ design) @ design.T
+    if reuse_primary_null:
+        boots = np.load(NULL_PATH, allow_pickle=False)
+        if boots.shape != (N_MC,):
+            raise ValueError(
+                f"Reusable primary null has shape {boots.shape}; expected {(N_MC,)}"
+            )
+        print(f"  Reused completed exact primary null: {NULL_PATH}", flush=True)
+    else:
+        boots = np.empty(N_MC)
+        rng = np.random.default_rng(MC_SEED)
+        for i in range(N_MC):
+            shuffled_cw = rng.multivariate_hypergeometric(
+                capacities, n_cw_support, method="marginals"
+            )
+            asym_shuf = (2.0 * shuffled_cw - capacities) / capacities
+            coefficients = projector @ asym_shuf
+            boots[i] = np.linalg.norm(coefficients[1:])
+    mc_mean = float(np.mean(boots))
+    mc_std = float(np.std(boots))
+    sigma = (amp - mc_mean) / mc_std if mc_std > 0 else 0.0
+    rank_k = int((boots >= amp).sum())
+    pval = float((rank_k + 1) / (N_MC + 1))
+
+    Path(NULL_PATH).parent.mkdir(parents=True, exist_ok=True)
+    np.save(NULL_PATH, boots)
+    null_sha256 = sha256_file(NULL_PATH)
+
+    pixel_path = Path(__file__).parent / "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy"
+    pixel_robustness = {"status": "array_unavailable", "role": "robustness_only"}
+    if pixel_path.exists():
+        pixel_boots = np.load(pixel_path, allow_pickle=False)
+        pixel_k = int((pixel_boots >= amp).sum())
+        pixel_robustness = {
+            "status": "retained",
+            "role": "robustness_only; not primary",
+            "null_array": PIXEL_NULL_ARTIFACT,
+            "null_array_sha256": sha256_file(pixel_path),
+            "n_realizations": int(pixel_boots.size),
+            "significance_sigma": float(
+                (amp - pixel_boots.mean()) / pixel_boots.std(ddof=0)
+            ),
+            "rank_p": float((pixel_k + 1) / (pixel_boots.size + 1)),
+        }
+    print(
+        f"  primary null ({time.time()-t0:.0f}s): {sigma:.2f}sigma "
+        f"(p = {pval:.4f}, mean = {mc_mean:.6f}, std = {mc_std:.6f})",
+        flush=True,
+    )
     # Angular power spectrum C_ell for ell = 1..5
     print("  Computing C_ell (lmax = 5)...", flush=True)
     cl = hp.anafast(asym_full, lmax=5)
@@ -207,49 +298,60 @@ def main() -> int:
         "regeneration_note_2026_06_09": (
             "Anchor regenerated during R23conf after the selection-filter "
             "defect above was found; the values in dipole_fit/mc_null below "
-            "supersede the previously printed 0.43-sigma/p=0.30 pair, whose "
+            "supersede the previously printed 0.43-sigma/p=0.30 pair and the "
+            "later strict-mask +0.41-sigma result, whose "
             "generator could not be reproduced as committed."
         ),
         "paper_claim": {
-            "significance_sigma": 0.43,
-            "p_value": 0.33,
+            "role": "single primary observed-label estimator",
+            "significance_sigma": float(sigma),
+            "rank_p_one_sided_upper_tail": pval,
             "note": (
-                "Paper text in chirality_catalog_paper.tex §V.B / Tables I-III / "
-                "abstract L71 cites 0.43-sigma (p ~ 0.33). Reproduce by "
-                "running this script against the Catalog C parquet."
+                "Canonical inclusive-mask values for the post-v1.0.244 closure. Reproduce "
+                "by running this generator against the exact catalog release."
             ),
-            "locations_in_paper": [71, 509, 716, 787, 801, 813, 972, 987],
         },
         "catalog_c": {
-            "source": CAT_C_PATH,
+            "source": {
+                "provider": "huggingface",
+                "repo_id": DATASET_REPO_ID,
+                "repo_type": DATASET_REPO_TYPE,
+                "filename": DATASET_FILENAME,
+                "revision": DATASET_REVISION,
+                "sha256": source_sha256,
+                "bytes": DATASET_BYTES,
+            },
             "n_total": int(n_total),
             "n_spirals_highconf": int(n_spirals),
             "cw_eq_fraction": float(cw_eq_frac),
             "nside": NSIDE,
             "npix": int(npix),
             "min_pix_count": MIN_PIX_COUNT,
+            "min_pix_count_operator": ">=",
             "n_valid_pixels": n_pix,
             "f_sky": f_sky,
         },
         "dipole": {
             "amplitude": amp,
-            "l_deg": l_deg,
-            "b_deg": b_deg,
+            "direction_frame": "equatorial (catalog RA/Dec basis)",
+            "equatorial_ra_deg": ra_deg,
+            "equatorial_dec_deg": dec_deg,
             "monopole": float(mono),
             "significance_sigma": float(sigma),
-            "p_value": pval,
+            "rank_p_one_sided_upper_tail": pval,
+            "rank_formula": "(k+1)/(N+1), k = count(A_null >= A_data)",
+            "rank_k": rank_k,
+            "rank_N": N_MC,
             "mc_n_realizations": N_MC,
+            "mc_seed": MC_SEED,
             "mc_mean": mc_mean,
             "mc_std": mc_std,
+            "mc_std_ddof": 0,
+            "null_array": NULL_ARTIFACT,
+            "null_array_sha256": null_sha256,
             "consistent_with_null": bool(sigma < 2.0),
             "post_tta": True,
-            "shuffle_null": {
-                "description": "per-galaxy label shuffle (binomial per pixel at the global CW rate)",
-                "significance_sigma": float(sigma2),
-                "rank_p": pval2,
-                "mc_mean": mc2_mean,
-                "mc_std": mc2_std,
-            },
+            "pixel_permutation_robustness": pixel_robustness,
         },
         "multipole_decomposition": {
             "shot_noise_cl": float(shot_noise),
@@ -259,16 +361,19 @@ def main() -> int:
         "methodology": {
             "healpix_nside": NSIDE,
             "min_galaxies_per_pixel": MIN_PIX_COUNT,
+            "min_galaxies_per_pixel_operator": ">=",
             "dipole_estimator": "healpy.fit_dipole (gal_cut = 0)",
             "null_model": (
-                "Per-pixel label shuffle (preserves mask + footprint geometry); "
+                "Fixed-occupancy galaxy-label randomization preserving support-pixel "
+                "capacities and the observed support-sample CW total; "
                 "significance = (amp - mean(boots)) / std(boots)"
             ),
             "n_mc_realizations": N_MC,
+            "rng": "numpy.random.default_rng",
+            "rng_seed": MC_SEED,
             "n_mc_rationale": (
-                "Canonical per fire #49 / pipelines/p2_chirality/outputs/dipole/"
-                "dipolar_analysis.log; tail-p precision ~ 1/sqrt(N_MC) ~ 3%, "
-                "immaterial at non-3-sigma Catalog C significances."
+                "Exact 10,000-realization primary array retained for rank and "
+                "moment reproducibility; the result is far from a discovery tail."
             ),
         },
     }
@@ -282,7 +387,8 @@ def main() -> int:
     print("=" * 70, flush=True)
     print(
         f"  Cat C (equivariant): {sigma:.2f}sigma, "
-        f"amp = {amp:.6f}, (l,b) = ({l_deg:.1f}, {b_deg:.1f})",
+        f"amp = {amp:.6f}, equatorial (RA,Dec) = "
+        f"({ra_deg:.1f}, {dec_deg:.1f}) deg",
         flush=True,
     )
     if sigma > 3:
@@ -294,7 +400,7 @@ def main() -> int:
         print(
             "  No significant post-TTA dipole — "
             "equivariance correction successful; "
-            "result consistent with paper's 0.43-sigma null",
+            "result consistent with the canonical inclusive-mask null",
             flush=True,
         )
     print("=" * 70, flush=True)

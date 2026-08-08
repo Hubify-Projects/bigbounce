@@ -1,0 +1,68 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1b-sn-overlap-control-chains",
+  "title": "SN-overlap control chains A (Pantheon+) / B (DES-SN5YR)",
+  "program": "bounce-theory",
+  "paper": "P1B",
+  "kind": "mcmc",
+  "inputs": [
+    {
+      "name": "Pantheon+ supernova compilation",
+      "type": "external-dataset",
+      "locator": "used via Cobaya likelihood cobaya_control_pantheonplus.yaml",
+      "checksum": null
+    },
+    {
+      "name": "DES-SN5YR supernova compilation",
+      "type": "external-dataset",
+      "locator": "used via Cobaya likelihood cobaya_control_desy5.yaml",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "reproducibility/cosmology/cobaya_control_pantheonplus.yaml",
+      "entrypoint": "cobaya-run cobaya_control_pantheonplus.yaml",
+      "sha256": null
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_control_desy5.yaml",
+      "entrypoint": "cobaya-run cobaya_control_desy5.yaml",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "cobaya, numpy, scipy, astropy",
+    "hardware": "cpu-only (RTX A4000 pod used historically but job was CPU-bound)"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "RTX A4000 (job itself CPU-bound)",
+    "pod_id_or_host": "99srknm4s1cc3l (\"bigbounce-p1b-snctrl\"), EUR-IS-1, $0.17/hr, network volume bigbounce-paper1-canonical",
+    "date": "2026-07-01",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod (A4000-class, $0.17/hr)",
+    "est_wall_clock": "several hours per chain pair to R-1<0.01",
+    "est_cost_usd": 2.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "RunPod balance was ~$7.86 at launch per queue notes but explicit dollar total for this run was not logged, only the $/hr rate; estimate assumes a few hours at $0.17/hr."
+  },
+  "outputs": [
+    {
+      "locator": "reproducibility/cosmology/w0wa_control_chains_result.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm Control A w0=-0.874+/-0.059 / wa=-0.530+/-0.241 and Control B w0=-0.787+/-0.063 / wa=-0.785+/-0.263 within numeric tolerance (+/-0.02 on each parameter).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P1B \u2014 SN-overlap control chains bullet",
+    "project-context/SSOT/queue.md (RunPod balance note)"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-honest-negative-inin",
+  "title": "Honest-negative in-in bounce attempts (pathz / pathz2, superseded)",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/pathz_full_inin_bounce.py",
+      "entrypoint": "python3 pathz_full_inin_bounce.py",
+      "sha256": null
+    },
+    {
+      "path": "research/cubic_bounce_transmission/pathz2_calibrated_inin.py",
+      "entrypoint": "python3 pathz2_calibrated_inin.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "requirements.txt (repo root: numpy, scipy, astropy, sympy-adjacent research deps)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-07-02",
+    "wall_clock": null,
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Historical-negative result kept as provenance; not re-run for the headline result. Runnable if a full in-in retest is ever wanted."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/pathz_results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/pathz2_results.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the negative-result structure is reproduced (no positive in-in bounce closure); this is a historical-negative artifact, not a headline claim.",
+  "status": "superseded",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P2 \u2014 honest-negative in-in attempts bullet"
+  ]
+}

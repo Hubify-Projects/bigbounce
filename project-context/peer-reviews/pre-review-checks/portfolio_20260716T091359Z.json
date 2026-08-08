@@ -1,0 +1,280 @@
+{
+  "core_sha256": "2e8871e7d0964b17e94a7f5bc7f7f838cb626b8954abafffb187eb23a081f94a",
+  "generated_at": "2026-07-16T09:14:06.089387Z",
+  "generic_engine": {
+    "bytes": 10058,
+    "git_commit": "79a436e24ea4bdbb6887d12f896b4ba124e1c03d",
+    "path": "/Users/houstongolden/.claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py",
+    "sha256": "c81578ce3ecaa5b80103284f9560c45c89303d6b1e2e6e79f0cbefaa1b4d99f5"
+  },
+  "generic_rule_receipt": {
+    "catalog": {
+      "bytes": 7242,
+      "sha256": "b87aa2a69bcbfe357fe0635ac0baa90c5790dca68e654684471194c2056d8395"
+    },
+    "core_sha256": "7097b6841cf279fe7b70a6089bdda022625d37fbb319316205733673546b72a1",
+    "finding_count": 0,
+    "findings": [],
+    "project_root": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce",
+    "rule_count": 9,
+    "schema": "hubstack.paper-pre-review-receipt/v1",
+    "sources": [
+      {
+        "bytes": 334301,
+        "path": "arxiv/paper1a_ech_nogo.tex",
+        "sha256": "e08323215579b843a43d6288643f339442560da45bd3ffd91a762dcfb1702233"
+      },
+      {
+        "bytes": 228425,
+        "path": "arxiv/paper1b_mcmc_companion.tex",
+        "sha256": "1867608307746979f30fecaa247af2006394ba18b01784b09a8a1699451e17b2"
+      },
+      {
+        "bytes": 180262,
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "57583bd6a613fc18df1522145bd455c38d4e6dcf8fc64c5418684fb74fc441ab"
+      },
+      {
+        "bytes": 70278,
+        "path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "sha256": "2b9a5fd356e49ae7a9939cbf8e9197379bef71b1f66a0e364e0de41ae416d10b"
+      },
+      {
+        "bytes": 329636,
+        "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+        "sha256": "7ba4fd2c54e41a50e8d628f8a0688f9220f8366d77688ee50f190e8c314f44df"
+      },
+      {
+        "bytes": 179655,
+        "path": "research/focused_paper_source_integration/02_full_draft.tex",
+        "sha256": "9144e1be05ba38e37271f8ffbb44bf9d52b73235b352f6672abbbcdaf56aaf1a"
+      }
+    ],
+    "verdict": "PASS"
+  },
+  "generic_rule_receipt_sha256": "aec80e94c85a8948005d4522cf617360e16d7ade2e2e7fc23f0e34d687ff333b",
+  "paper_count": 6,
+  "papers": [
+    {
+      "pages": 7,
+      "paper_id": "P1A",
+      "pdf": {
+        "bytes": 149546,
+        "path": "arxiv/paper1a_ech_nogo.pdf",
+        "sha256": "4c450a6706b2f4e53faac5ffbc6ec720f21e45c7406aa7186ef830f3fef33f71"
+      },
+      "source": {
+        "bytes": 334301,
+        "path": "arxiv/paper1a_ech_nogo.tex",
+        "sha256": "e08323215579b843a43d6288643f339442560da45bd3ffd91a762dcfb1702233"
+      },
+      "verdict": "PASS",
+      "version": "v1A.0.123"
+    },
+    {
+      "pages": 20,
+      "paper_id": "P1B",
+      "pdf": {
+        "bytes": 714149,
+        "path": "arxiv/paper1b_mcmc_companion.pdf",
+        "sha256": "36b8fc984b5be164f5ece1e2f0c3f661dfb49c9f99faa76e2b050e2bd0674a78"
+      },
+      "source": {
+        "bytes": 228425,
+        "path": "arxiv/paper1b_mcmc_companion.tex",
+        "sha256": "1867608307746979f30fecaa247af2006394ba18b01784b09a8a1699451e17b2"
+      },
+      "verdict": "PASS",
+      "version": "v1B.0.109"
+    },
+    {
+      "pages": 10,
+      "paper_id": "P2",
+      "pdf": {
+        "bytes": 576647,
+        "path": "research/focused_paper_source_integration/02_full_draft.pdf",
+        "sha256": "4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9"
+      },
+      "source": {
+        "bytes": 179655,
+        "path": "research/focused_paper_source_integration/02_full_draft.tex",
+        "sha256": "9144e1be05ba38e37271f8ffbb44bf9d52b73235b352f6672abbbcdaf56aaf1a"
+      },
+      "verdict": "PASS",
+      "version": "v1.7.122"
+    },
+    {
+      "pages": 16,
+      "paper_id": "P3",
+      "pdf": {
+        "bytes": 468413,
+        "path": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+        "sha256": "b5f254f92b10bda43b687f07c5f58b828a6f7dc70d98c08f9e9b609edbba08b0"
+      },
+      "source": {
+        "bytes": 70278,
+        "path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "sha256": "2b9a5fd356e49ae7a9939cbf8e9197379bef71b1f66a0e364e0de41ae416d10b"
+      },
+      "verdict": "PASS",
+      "version": "v3.2.0-r8"
+    },
+    {
+      "pages": 25,
+      "paper_id": "P4",
+      "pdf": {
+        "bytes": 33925512,
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+        "sha256": "2a747d6af763879f404fca4a4a1305f0b37b8a1f7d883de980095d876fc596b5"
+      },
+      "source": {
+        "bytes": 180262,
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "57583bd6a613fc18df1522145bd455c38d4e6dcf8fc64c5418684fb74fc441ab"
+      },
+      "verdict": "PASS",
+      "version": "v1.0.260"
+    },
+    {
+      "pages": 41,
+      "paper_id": "P5",
+      "pdf": {
+        "bytes": 1517549,
+        "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+        "sha256": "948e0412a5f4052747037f38ab2e43f2d888c61c74fbdfe95d29241ef806d2a9"
+      },
+      "source": {
+        "bytes": 329636,
+        "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+        "sha256": "7ba4fd2c54e41a50e8d628f8a0688f9220f8366d77688ee50f190e8c314f44df"
+      },
+      "verdict": "PASS",
+      "version": "v0.1.139-2026-07-16"
+    }
+  ],
+  "portfolio_engine": [
+    {
+      "bytes": 7242,
+      "path": "project-context/pre-review-rules.json",
+      "sha256": "b87aa2a69bcbfe357fe0635ac0baa90c5790dca68e654684471194c2056d8395"
+    },
+    {
+      "bytes": 12271,
+      "path": "tools/bigbounce_preflight.py",
+      "sha256": "95b75887f2d08693f878f575c3792d6cdbe57b0879ec2a31989da040a8fc95cf"
+    },
+    {
+      "bytes": 6275,
+      "path": "tools/artifact_crosscheck.py",
+      "sha256": "7b78649869230d4226c860f2c141cc95d051e9efe23d3a047e9d9685b76a5afb"
+    },
+    {
+      "bytes": 6445,
+      "path": "tools/verify_analysis_artifact_manifest.py",
+      "sha256": "15834cdd601982bf15625da8d0b4c1743d6559e22b554c67c4acdffabbc65527"
+    },
+    {
+      "bytes": 13138,
+      "path": "tools/verify_p4_p5_science_contracts.py",
+      "sha256": "028da2710b891ad230007287e850d0c563df9e9f039306e930a879b015ae247b"
+    }
+  ],
+  "portfolio_validators": [
+    {
+      "artifact_count": 195,
+      "base_repository_commit": "97ceca7f524044427b991d27244e35585a5b2a58",
+      "core_sha256": "075faa44e39aef8546954d0b0ab87adf20891408a04b1066effcc5294a4e61a0",
+      "id": "p1b-analysis-manifest",
+      "manifest_bytes": 86359,
+      "manifest_path": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json",
+      "manifest_sha256": "ca55e8a0c26dc0df38434645e377aa44da29957266c4950f968ac3aa02d77301",
+      "paper_version": "v1B.0.108",
+      "schema": "bigbounce.analysis-artifact-manifest-verification/v1",
+      "storage_counts": {
+        "git-blob": 171,
+        "git-lfs-pointer": 24
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "artifact-crosscheck-six",
+      "paper_count": 6,
+      "papers": [
+        {
+          "output": "paper version: v1A.0.123 | candidate paths: 1\nOK       research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py\n\nPASS: 0 problems\n",
+          "output_sha256": "b6296fff6227e367fbfe50bd7bdffc39e0f60f9ec9a042f00cc93d074b01893f",
+          "paper_id": "P1A",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v1B.0.109 | candidate paths: 25\nRESOLVED c5_table_iv_recompute.py/json -> research/branch_R_alp_birefringence/phase2_mcmc/c5_table_iv_recompute.py, research/branch_R_alp_birefringence/phase2_mcmc/c5_table_iv_recompute.json\nWARN-RELATIVE diagnostics/parameter_summary_CORRECTED.json: resolves under 6 declared/possible base directories\nOK       reproducibility/cosmology/alp_prior_predictive.py\nOK       reproducibility/cosmology/alp_prior_predictive_result.json\nOK       reproducibility/cosmology/alp_spectator_conditioned_prior_predictive.py\nOK       reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_receipt.json\nOK       reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_result.json\nOK       reproducibility/cosmology/c13_s8_desy3_overlay.json\nOK       reproducibility/cosmology/convergence_latest.csv\nOK       reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/freeze_diagnostics_CORRECTED.json\nOK       reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/diagnostics/convergence_report.txt\nOK       reproducibility/docs/IMPLEMENTATION_MAP.md\nOK       reproducibility/docs/KNOWN_GAPS.md\nOK       reproducibility/galaxy_spins/spin_fit_stan.py\nOK       reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_negative_beta_fsky_0p32.json\nOK       reproducibility/p1_namaster_500mc/results/exact_window_500mc/summary.json\nOK       reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py\nHISTORICAL-LABEL reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json: explicitly versioned artifact contains ['v0.9.0', 'v1A.0.56', 'v1A.0.57', 'v1A.0.58', 'v1A.0.59', 'v1A.0.67', 'v1B.0.65']; paper is v1B.0.109\nOK       reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json\nOK       research/branch_R_alp_birefringence/02_birefringence_prediction.md\nOK       research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py\nOK       research/branch_R_alp_birefringence/phase2_mcmc/c10a_spectator_slice.json\nOK       research/branch_R_alp_birefringence/phase2_mcmc/c10b_alp_envelope_scan.json\nOK       research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14_summary.json\nOK       research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.input.yaml\nOK       research/data_build/build_galaxy_spin_dataset.py\n\nPASS: 0 problems\n",
+          "output_sha256": "a58a79864e059b6b31e1c0df8dfadfcc9996248483bd46ca955680d2b41c94c5",
+          "paper_id": "P1B",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v1.7.122 | candidate paths: 8\nOK       scripts/c13_independent_bounce_fisher.py\nOK       scripts/c14_rsd_multipole_fisher.py\nOK       scripts/c15_channel_native_fisher.py\nOK       scripts/caili_certification/cai_conv.py\nOK       scripts/caili_certification/cai_shape.py\nOK       scripts/caili_certification/cai_vertices.py\nOK       scripts/exact_shape_analysis.py\nOK       scripts/p2_vertex_check.py\n\nPASS: 0 problems\n",
+          "output_sha256": "29211851f83b791737c7b90044b26860389511785bf4489595a4b480d5192952",
+          "paper_id": "P2",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v3.2.0-r8 | candidate paths: 7\nOK       pipelines/p3_anomaly_engine/apjs_submission_bundle_v3.2.0-r7/coordinate_lineage/COORDINATE_LINEAGE_AUDIT.json\nOK       pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json\nOK       pipelines/p3_anomaly_engine/outputs/desi_injection_recovery/RECONCILIATION_history_2026-06-28.json\nOK       pipelines/p3_anomaly_engine/outputs/dp3_15_heldout_reinference.json\nOK       pipelines/p3_anomaly_engine/outputs/p3_apjs_r6_science_controls.json\nOK       pipelines/p3_anomaly_engine/pathc_positional_dedup.py\nOK       pipelines/p3_anomaly_engine/scripts/p3_apjs_r6_science_controls.py\n\nPASS: 0 problems\n",
+          "output_sha256": "883409a2c4afb1f580f99cb5870bfd5b51e1402142344cb1df308576c4d7ddf9",
+          "paper_id": "P3",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v1.0.260 | candidate paths: 14\nHISTORICAL-LABEL pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json: explicitly versioned artifact contains ['v1.0.259']; paper is v1.0.260\nOK       pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m4_slab_stats.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c16_r24conf_pod_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_flip_identity_qc.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/stage_b_hybrid_image_field_recovery.json\nOK       pipelines/p2_chirality/outputs/gz1_stratified_confusion.json\nOK       pipelines/p2_chirality/scripts/gz1_stratified_confusion.py\n\nPASS: 0 problems\n",
+          "output_sha256": "76c376b920659ccca3bfb99266933b64c0bc768a38ca35dc3305f03d13ad4b12",
+          "paper_id": "P4",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v0.1.139-2026-07-16 | candidate paths: 39\nOK       env_finder/01_compute_vweb.py\nOK       env_finder/03_tempel_cross_validation.py\nOK       env_finder/config.yaml\nOK       env_finder/reports/01_volume_fractions.json\nOK       env_finder/reports/02_phase2_sweep.csv\nOK       outputs/16_cosmic_web_zshell_corrected.json\nOK       outputs/17_v0151_closure_recomputes.json\nOK       outputs/18_v0151_stratified_and_density.json\nOK       outputs/19_v0151_zshell_geofootprint_check.json\nOK       outputs/20_v0151_covariate_regression.json\nOK       outputs/21_r23conf_meta_closures.json\nOK       outputs/22_r24conf_local_batch.json\nOK       outputs/23_unique_parent_rebuild.json\nOK       outputs/24_r24conf_pod_session.json\nOK       outputs/25_completeness_weighted_rebuild.json\nOK       outputs/26_r27conf_ess_recomputes.json\nOK       outputs/27_ext1_logistic_program_control.json\nOK       outputs/27_rsd_void_recon_bound.json\nOK       outputs/28_ext1_desivast_program_split.json\nOK       outputs/29_ext3_desivast_footprint_retabulation.json\nOK       outputs/30_ext4_galzone_complement_contrasts.json\nOK       outputs/31_ext5_appendixB_tables.json\nOK       outputs/35_desivast_cluster_bootstrap.json\nOK       outputs/36_desivast_native_selection_control.json\nOK       outputs/36_desivast_native_selection_manifest.json\nOK       outputs/36_desivast_native_selection_rows.parquet\nOK       outputs/38_focal_cluster_inference_sensitivity.json\nOK       outputs/39_focal_interaction_clustering_robustness.json\nOK       p2_chirality/outputs/gz1_stratified_confusion.json\nOK       p2_chirality/scripts/gz1_stratified_confusion.py\nOK       scripts/16_cosmic_web_zshell_corrected.py\nOK       scripts/27_rsd_void_recon_bound.py\nOK       scripts/31_ext5_appendixB_tables.py\nOK       scripts/35_desivast_cluster_bootstrap.py\nOK       scripts/36_desivast_native_selection_control.py\nOK       scripts/38_focal_cluster_inference_sensitivity.py\nOK       scripts/39_focal_interaction_clustering_robustness.py\nWARN-OLD-COMMIT 84d53b75: valid ancestor but not HEAD (b4593563) \u2014 update at restamp\n\nPASS: 0 problems\n",
+          "output_sha256": "98c7e39fb341c2e436a033174d86963bbe41b791bd744e1d46370be2c90b815e",
+          "paper_id": "P5",
+          "verdict": "PASS"
+        }
+      ],
+      "schema": "bigbounce.artifact-crosscheck-six/v1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "p4-p5-science-contracts",
+      "receipts": {
+        "p4_harmonics": {
+          "bytes": 7189,
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+          "sha256": "5b025a55c1a3dac86e61c005c604437298ce89f3b27056447f7bca2ba3e5ae06"
+        },
+        "p4_primary": {
+          "bytes": 2200,
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
+          "sha256": "cda8bbac0f9bc7765ab0a89ef41b2bfbe41e9725b228639d33c58185571ea397"
+        },
+        "p4_strict_release": {
+          "bytes": 3074,
+          "path": "pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json",
+          "sha256": "adc862fce8f521fe482490a14f8cbb3cb442d72f01095f77c4c52b7951863ed6"
+        },
+        "p5_robustness": {
+          "bytes": 13991,
+          "path": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json",
+          "sha256": "847e7da42322ce43573c901b40f20cd56ade13fbaa028a8d840fdf9deca5a637"
+        }
+      },
+      "schema": "bigbounce.p4-p5-science-contracts/v1",
+      "verdict": "PASS"
+    }
+  ],
+  "receipt_sha256": "ce89db3c5ef5369bc73f13f4852a02cb806f3ea817571887682e51703f02465f",
+  "registry": {
+    "bytes": 2440,
+    "path": "project-context/paper_registry.json",
+    "sha256": "c0d5f113f45f26901c9ac72f5d36aff6feb4ccf579658b768d118adf3836282e"
+  },
+  "repository_head": "b4593563591a0eb7aac4e68eafe302715377a439",
+  "schema": "bigbounce.pre-review-portfolio-receipt/v1",
+  "verdict": "PASS"
+}

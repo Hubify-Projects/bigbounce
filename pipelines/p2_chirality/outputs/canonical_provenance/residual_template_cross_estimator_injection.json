@@ -1,0 +1,94 @@
+{
+  "script": "scripts/residual_template_cross_estimator_injection.py",
+  "date_utc": "2026-07-14T08:38:16Z",
+  "purpose": "Observed 47%-remainder map-level cross-estimator stress test on the primary HC real-space estimator.",
+  "inputs": {
+    "catalog": "bamfai/galaxy-chirality-catalog/catalog_production.parquet",
+    "forward_model": "pipelines/p2_chirality/outputs/systematic_l1_forward_model_dr8morph.json",
+    "nside": 64,
+    "full_sample_mask": "|b|>15 degrees and occupied full-sample pixels, matching the forward-model reconstruction",
+    "primary_hc_mask": "p_eq>0.6 hard CW/CCW; pixels with N_spiral>=10"
+  },
+  "full_sample_l1": {
+    "observed_vector": [
+      -0.0027476051237800294,
+      -0.006195821074371623,
+      0.0025129232972615654
+    ],
+    "observed_amplitude": 0.007228576360513164,
+    "forward_model_vector": [
+      -0.00110187898638859,
+      -0.002039399123319735,
+      0.003051770884367276
+    ],
+    "forward_model_amplitude": 0.0038323089144162003,
+    "scalar_47pct_remainder_vector": [
+      -0.001290932179619511,
+      -0.0029110386841422276,
+      0.0011806694933249927
+    ],
+    "scalar_47pct_remainder_amplitude": 0.003396267446096963,
+    "scalar_remainder_fraction": 0.4698390494495459,
+    "vector_subtraction_remainder_vector": [
+      -0.0016457261373914393,
+      -0.004156421951051889,
+      -0.0005388475871057107
+    ],
+    "vector_subtraction_remainder_amplitude": 0.004502734133458135,
+    "vector_subtraction_fraction_of_observed_amplitude": 0.6229074590751755,
+    "remainder_definition_note": "The committed 47% is one minus the scalar forward-model/observed amplitude ratio. Direct vector subtraction leaves 62.3% because the two vectors are not parallel; both definitions are stress-tested below rather than conflated."
+  },
+  "hc_real_space": {
+    "baseline": {
+      "n_galaxies": 949584,
+      "n_pixels": 23682,
+      "monopole": -0.0077688924693038045,
+      "vector": [
+        0.0018185906384048382,
+        -0.0040267254414400756,
+        0.0012693708349156502
+      ],
+      "amplitude": 0.004597074287780103
+    },
+    "after_full_observed_l1_injection": {
+      "n_galaxies": 949584,
+      "n_pixels": 23682,
+      "monopole": -0.007768892469303804,
+      "vector": [
+        0.0008693091430813725,
+        -0.006167345373806676,
+        0.0024971914701770164
+      ],
+      "amplitude": 0.0067102766399593635,
+      "amplitude_change": 0.0021132023521792604,
+      "amplitude_ratio": 1.4596841860477552
+    },
+    "after_scalar_47pct_remainder_injection": {
+      "n_galaxies": 949584,
+      "n_pixels": 23682,
+      "monopole": -0.007768892469303805,
+      "vector": [
+        0.0013725811229820192,
+        -0.005032472275695949,
+        0.0018462489150813913
+      ],
+      "amplitude": 0.005533388762887907,
+      "amplitude_change": 0.0009363144751078035,
+      "amplitude_ratio": 1.2036761680351142
+    },
+    "after_vector_subtraction_remainder_injection": {
+      "n_galaxies": 949584,
+      "n_pixels": 23682,
+      "monopole": -0.007768892469303805,
+      "vector": [
+        0.0012500018863040362,
+        -0.005462744908262735,
+        0.0010060885503229726
+      ],
+      "amplitude": 0.005693531489295995,
+      "amplitude_change": 0.001096457201515892,
+      "amplitude_ratio": 1.2385119606247137
+    }
+  },
+  "scope_limit": "This is a deterministic pure-l=1 map injection of the observed full-sample remainder. It is not a joint real-space x harmonic covariance likelihood, does not assert estimator independence, and does not identify the remainder as cosmological or physical."
+}

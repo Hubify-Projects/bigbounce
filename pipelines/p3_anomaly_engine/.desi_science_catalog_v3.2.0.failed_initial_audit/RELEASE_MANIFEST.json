@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-07-14T10:08:00Z",
+  "files": [
+    {
+      "name": "COHORT_COUNTS.json",
+      "sha256": "d953cb95bb2c168231eedbc8e68d442f7b43670f25cc2951b9e1c724071e5ba6",
+      "size_bytes": 552
+    },
+    {
+      "name": "DATA_DICTIONARY.md",
+      "sha256": "a088397c59c51fd45b0d9edd010a346bb810a1c032ffcfb7ce04c5084bdcf1f1",
+      "size_bytes": 4119
+    },
+    {
+      "name": "PROVENANCE.json",
+      "sha256": "03810bf4b03803a8714994cb410dc7c468de5e75a08ad3dad7a6f017664b5c30",
+      "size_bytes": 2886
+    },
+    {
+      "name": "QC_REPORT.json",
+      "sha256": "bfe04d8f2e017d145a4fc6d66e4f59713688e9c1c4e6edc2a83f8c9037a9d5a0",
+      "size_bytes": 4065
+    },
+    {
+      "name": "README.md",
+      "sha256": "a548d192f1616433baad4d48f062c723a57619b050c21d7f758d23a2fc543b91",
+      "size_bytes": 1334
+    },
+    {
+      "name": "SELECTION_AUDIT.json",
+      "sha256": "78d28eb12ba3b1c4e1fcfb85d6775da3b703fee1910dbaf9e9949fc90e063325",
+      "size_bytes": 5631
+    },
+    {
+      "name": "SELECTION_AUDIT.md",
+      "sha256": "f32c5807778327c0437086e3ff88a6830c8eed7c9b8fba11816e93ef4a074712",
+      "size_bytes": 1892
+    },
+    {
+      "name": "build_desi_science_catalog_v320.py",
+      "sha256": "060ed80ffb9e34920f1b32a7d123d228b2c296ce6253dc3f770a483f538ac3db",
+      "size_bytes": 27079
+    },
+    {
+      "name": "desi_dr1_science_anomaly_candidates_v3.2.0.parquet",
+      "sha256": "14f5819dc2d4e0a868cd4db1f5747739b3de7d1edf9e248da23c71318ac2cd09",
+      "size_bytes": 56357
+    },
+    {
+      "name": "validate_desi_science_catalog_v320.py",
+      "sha256": "ee75e57832e0d57586edfa968a05e4f279f5251062070f8bc5ae52ebd582adf3",
+      "size_bytes": 14917
+    }
+  ],
+  "manifest_self_hash": "excluded (self-referential)",
+  "release": "p3-v3.2.0"
+}

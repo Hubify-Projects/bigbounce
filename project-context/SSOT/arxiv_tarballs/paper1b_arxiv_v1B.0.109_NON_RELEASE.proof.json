@@ -1,0 +1,40 @@
+{
+  "schema": "bigbounce-standalone-paper-proof/v1",
+  "paper_id": "P1B",
+  "paper_version": "v1B.0.109",
+  "git_commit": "df099aa496b4f469e39b35f6de27b23430d73e43",
+  "retention_status": "NON-RELEASE",
+  "release_eligible": false,
+  "release_blocker": "Scientifically obsolete pending corrected physical-spectrum 500-MC and robustness production, regeneration of every dependent artifact and claim, executed-provenance repair, and a new exact-PDF review.",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper1b_arxiv_v1B.0.109_NON_RELEASE.tar.gz",
+  "tarball_sha256": "ef4af8db4fba74d68fdfc83fe2ee29f24a8002dfd8e46acbedcdb5317f0100ee",
+  "canonical_pdf_sha256": "36b8fc984b5be164f5ece1e2f0c3f661dfb49c9f99faa76e2b050e2bd0674a78",
+  "canonical_tex_sha256": "1867608307746979f30fecaa247af2006394ba18b01784b09a8a1699451e17b2",
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "mode": "isolated-safe-extraction",
+  "page_count": 20,
+  "compiled_pdf_sha256": "24d6057c8cbd23532f35d425cce8ab4289bb362217e334172fb99b940ad0bc85",
+  "compiled_pdf_md5": "cf0d70d0b560aeef995e0824e09946bc",
+  "compiled_pdf_reproducibility": {
+    "byte_reproducible": false,
+    "observed_sha256": [
+      "ef630976feec1dc836eff32237de14f5b1925e073d065bab286d1fdafafd99d4",
+      "24d6057c8cbd23532f35d425cce8ab4289bb362217e334172fb99b940ad0bc85",
+      "e0abc69a59271d75df3eb797e221f1115edb65efe83bc88a4f7b8d5b41d9bca4"
+    ],
+    "note": "Three clean isolated Tectonic builds produced the same 20-page, zero-error, zero-undefined-reference, zero-overfull-box document but different PDF bytes. The compiled_pdf_sha256 field identifies the build whose 20 rendered pages received the visual audit; the deterministic source tarball, rather than generated PDF bytes, is the retention invariant."
+  },
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 0,
+  "overfull_vboxes": 0,
+  "visual_audit": {
+    "rendered_pages": 20,
+    "inspected_pages": 20,
+    "clipping_or_overlap_detected": false,
+    "result": "pass",
+    "note": "All 20 isolated-build pages were rendered at 110 dpi and inspected in a 4-by-5 contact sheet. No clipping, cross-column overlap, or missing figure was observed."
+  },
+  "external_state_mutated": false
+}

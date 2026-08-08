@@ -1,0 +1,73 @@
+{
+  "build_command": "tools/directive_g.sh paper=P1B version=v1B.0.110 source=arxiv/paper1b_mcmc_companion.tex pdflatex_passes=4 bibtex=1",
+  "captured_at_local": "2026-07-16T03:43:17.089251-07:00",
+  "captured_at_utc": "2026-07-16T10:43:17.089251+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "2f1af0564f8444cf4bcfdcee16f56b9b5d724821",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "8ec2b6631680e2e17832d13508ec3a5ee4ab682e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260716T104317Z-74812e2c5e45.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/a0/a06777841125b8576f0acbdee1f4c3147cec913dc8f3dfc091bd286b457f98f0.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.110__2026-07-16T034317-0700-PDT__a06777841125.pdf",
+      "git": {
+        "head_blob": "e467fffdee0c36d8480501f8e94127b06a3c3698",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "ca119ba7530c863e966b1b39c06d0cef",
+      "object_created": true,
+      "page_count": 20,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.110",
+      "reference_created": true,
+      "sha256": "a06777841125b8576f0acbdee1f4c3147cec913dc8f3dfc091bd286b457f98f0",
+      "size_bytes": 1008676,
+      "source_mtime_ns": 1784198596455205630,
+      "source_pdf": "arxiv/paper1b_mcmc_companion.pdf",
+      "source_tex": "arxiv/paper1b_mcmc_companion.tex"
+    }
+  ],
+  "review_round": "directive-g/JCAP-COMPUTATIONAL/P1B/v1B.0.110",
+  "run_id": "74812e2c5e45",
+  "schema": "bigbounce-pdf-retention/v3"
+}

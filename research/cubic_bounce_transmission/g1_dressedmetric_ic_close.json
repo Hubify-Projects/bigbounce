@@ -1,0 +1,417 @@
+{
+  "gate": "G1 -- direct cubic bounce transfer (DP2-13): per-mode IC placement close",
+  "scheme_label": "dressed-metric geometric prescription (z_tilde ~ a, c_s=1, bounded a''/a = x^(1/3)(1/6+x/3)); AAN quantum-mass U(eta) NOT included (disclosed; see remaining_open)",
+  "meta": {
+    "date_utc": "2026-07-18T06:53:28.611139+00:00",
+    "runtime_s": 1.74,
+    "numpy": "1.26.4",
+    "sympy": "1.14.0",
+    "eta_B_committed": 1.0593844057612563,
+    "f_NL_abs": 2.1875,
+    "ic_convention": "adiabatic/BD vacuum, WKB positive frequency at k|eta|>>1 (Mukhanov-Feldman-Brandenberger Phys.Rep.215(1992)203; Wilson-Ewing JCAP1303:026): implemented via the EXACT nu=3/2 matter-branch mode function (sympy-verified), so each mode carries its own adiabatic-epoch vacuum analytically"
+  },
+  "S_symbolic_checks": {
+    "S1_general_w_potential_reduces_to_phase2_form": true,
+    "S1_W_general_w": "x**(1 - 2/(3*(w + 1)))*(w*x - w/2 + x/3 + 1/6)",
+    "S2_matter_vacuum_mode_solves_eq": true,
+    "S2_mode_function": "mu = e^{-ik eta}(1 - i/(k eta))/sqrt(2k)  [MFB 1992; WilsonEwing JCAP1303:026]"
+  },
+  "B_background": {
+    "eta_B_from_table": 1.0601459575357077,
+    "eta_B_committed_diff": 0.0007615517744514744,
+    "matter_offset_eta_off": -2.5871095670713435,
+    "matter_offset_tail_spread": 2.51064307121851e-08,
+    "matter_seam_relerr_at_eta_far": 5.201737718341093e-08,
+    "regulator": "NONE (exact bounce traversal via s=sqrt(1-x)); phase-2 dcut eliminated by construction",
+    "matching_epochs_eta_m": [
+      6.000042874517326,
+      10.00001945182411,
+      14.000088196869012
+    ]
+  },
+  "T_transparency_and_parity": {
+    "statement_i_global_continuation": "The Weinberg constant branch (gradient expansion f_0=1, f_{n+1}=-int(1/a^2)int(a^2 f_n)) is a single smooth solution through ANY bounce with bounded potential and bounded basis integrals => the bounded dressed bounce is TRANSPARENT to the conserved mode, T_c(k)=1 identically; no scattering or mode conversion on top of smooth FRW superhorizon evolution. The scheme-specific content is FINITENESS itself (see F_scheme_contrast: fluid-z K diverges, no finite continuation).",
+    "statement_ii_parity_symmetric": "W(eta) even => even/odd solutions do not mix; the constant branch is even by induction => T_c=1 holds doubly for the symmetric bounce, at every k.",
+    "numeric_check_rows": [
+      {
+        "kEtaB": 0.002,
+        "dev_even_ratio": [
+          1.2285727990501982e-12,
+          5.619948950652542e-13,
+          1.2390088954816747e-13
+        ]
+      },
+      {
+        "kEtaB": 0.003,
+        "dev_even_ratio": [
+          1.4206413823103503e-12,
+          3.979039320256561e-13,
+          1.7141843500212417e-13
+        ]
+      },
+      {
+        "kEtaB": 0.005,
+        "dev_even_ratio": [
+          1.9984014443252818e-14,
+          1.6764367671839864e-14,
+          2.1094237467877974e-15
+        ]
+      },
+      {
+        "kEtaB": 0.007,
+        "dev_even_ratio": [
+          2.9976021664879227e-14,
+          2.55351295663786e-14,
+          5.551115123125783e-15
+        ]
+      },
+      {
+        "kEtaB": 0.01,
+        "dev_even_ratio": [
+          1.3586909375362666e-12,
+          3.594902153736257e-13,
+          1.6542323066914832e-13
+        ]
+      },
+      {
+        "kEtaB": 0.015,
+        "dev_even_ratio": [
+          1.1717293801893902e-12,
+          2.1083135237631723e-13,
+          1.48991929904696e-13
+        ]
+      },
+      {
+        "kEtaB": 0.02,
+        "dev_even_ratio": [
+          7.106537580625627e-13,
+          2.063904602778166e-13,
+          7.549516567451064e-14
+        ]
+      },
+      {
+        "kEtaB": 0.03,
+        "dev_even_ratio": [
+          2.353672812205332e-13,
+          7.771561172376096e-15,
+          3.26405569239796e-14
+        ]
+      }
+    ],
+    "max_deviation_even_solution": 1.4206413823103503e-12
+  },
+  "V_vacuum_transmission": {
+    "k_grid_kEtaB": [
+      0.002,
+      0.003,
+      0.005,
+      0.007,
+      0.01,
+      0.015,
+      0.02,
+      0.03
+    ],
+    "rows": [
+      {
+        "kEtaB": 0.002,
+        "k": 0.0018878888429198963,
+        "eta_cross_matter": 749.0978971970653,
+        "C2_over_C1_pre_abs": 0.5513217111640936,
+        "T_c_re": 1.000000000267592,
+        "T_c_im": -1.5344340101964418e-17,
+        "abs_T_c_minus_1": 2.6759194859948867e-10,
+        "abs_T_d_minus_1": 2.154419975752834e-10,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 5.402767122575388e-11,
+          "10.000": 2.6759194859948867e-10,
+          "14.000": 6.224609716554152e-10
+        },
+        "c_bound_this_k": 6.689798714987217e-05
+      },
+      {
+        "kEtaB": 0.003,
+        "k": 0.0028318332643798446,
+        "eta_cross_matter": 499.3985981313769,
+        "C2_over_C1_pre_abs": 0.5513127313825938,
+        "T_c_re": 1.000000000287613,
+        "T_c_im": -5.579618408918713e-17,
+        "abs_T_c_minus_1": 2.8761304449176893e-10,
+        "abs_T_d_minus_1": 2.474601634716626e-10,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 5.438338668284571e-11,
+          "10.000": 2.8761304449176893e-10,
+          "14.000": 9.319269800301022e-10
+        },
+        "c_bound_this_k": 3.195700494352988e-05
+      },
+      {
+        "kEtaB": 0.005,
+        "k": 0.004719722107299741,
+        "eta_cross_matter": 299.6391588788261,
+        "C2_over_C1_pre_abs": 0.5512839996438145,
+        "T_c_re": 1.000000000748596,
+        "T_c_im": -6.856993392246889e-16,
+        "abs_T_c_minus_1": 7.485960740186513e-10,
+        "abs_T_d_minus_1": 9.780743992497686e-10,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 6.276246189434284e-11,
+          "10.000": 7.485960740186513e-10,
+          "14.000": 7.882289265740447e-09
+        },
+        "c_bound_this_k": 2.994384296074605e-05
+      },
+      {
+        "kEtaB": 0.007,
+        "k": 0.006607610950219637,
+        "eta_cross_matter": 214.02797062773294,
+        "C2_over_C1_pre_abs": 0.5512409122141517,
+        "T_c_re": 1.0000000039152108,
+        "T_c_im": -9.938169341088377e-15,
+        "abs_T_c_minus_1": 3.915210822226635e-09,
+        "abs_T_d_minus_1": 5.992282892128219e-09,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 1.2042367103557814e-10,
+          "10.000": 3.915210822226635e-09,
+          "14.000": 5.548262271855178e-08
+        },
+        "c_bound_this_k": 7.990226167809458e-05
+      },
+      {
+        "kEtaB": 0.01,
+        "k": 0.009439444214599482,
+        "eta_cross_matter": 149.81957943941305,
+        "C2_over_C1_pre_abs": 0.5511493919918221,
+        "T_c_re": 1.0000000313021185,
+        "T_c_im": -2.320821364275754e-13,
+        "abs_T_c_minus_1": 3.13021184536743e-08,
+        "abs_T_d_minus_1": 4.9359496269410546e-08,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 6.189790902237436e-10,
+          "10.000": 3.13021184536743e-08,
+          "14.000": 4.667250852591995e-07
+        },
+        "c_bound_this_k": 0.00031302118453674295
+      },
+      {
+        "kEtaB": 0.015,
+        "k": 0.014159166321899222,
+        "eta_cross_matter": 99.87971962627539,
+        "C2_over_C1_pre_abs": 0.5509253111815484,
+        "T_c_re": 1.000000353380038,
+        "T_c_im": -8.839780114912164e-12,
+        "abs_T_c_minus_1": 3.5338003800909516e-07,
+        "abs_T_d_minus_1": 5.596237885960314e-07,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 6.540071597429952e-09,
+          "10.000": 3.5338003800909516e-07,
+          "14.000": 5.296443318695299e-06
+        },
+        "c_bound_this_k": 0.0015705779467070895
+      },
+      {
+        "kEtaB": 0.02,
+        "k": 0.018878888429198964,
+        "eta_cross_matter": 74.90978971970652,
+        "C2_over_C1_pre_abs": 0.5506121557988122,
+        "T_c_re": 1.000001979799633,
+        "T_c_im": -1.1732753865321306e-10,
+        "abs_T_c_minus_1": 1.9797996363772876e-06,
+        "abs_T_d_minus_1": 3.1388332527189017e-06,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 3.610293936835715e-08,
+          "10.000": 1.9797996363772876e-06,
+          "14.000": 2.9647820788064108e-05
+        },
+        "c_bound_this_k": 0.004949499090943219
+      },
+      {
+        "kEtaB": 0.03,
+        "k": 0.028318332643798443,
+        "eta_cross_matter": 49.939859813137694,
+        "C2_over_C1_pre_abs": 0.5497210222278055,
+        "T_c_re": 1.0000224070390729,
+        "T_c_im": -4.47296133846377e-09,
+        "abs_T_c_minus_1": 2.24070395193112e-05,
+        "abs_T_d_minus_1": 3.5607922533878214e-05,
+        "abs_T_c_minus_1_by_etam": {
+          "6.000": 4.0981077615312735e-07,
+          "10.000": 2.24070395193112e-05,
+          "14.000": 0.0003341824601331605
+        },
+        "c_bound_this_k": 0.024896710577012447
+      }
+    ],
+    "headline_eta_m": 10.00001945182411,
+    "T_c_at_kEtaB_0p01": {
+      "re": 1.0000000313021185,
+      "im": -2.320821364275754e-13,
+      "abs_minus_1": 3.13021184536743e-08
+    },
+    "delta_fNL_at_kEtaB_0p01": 6.847338411741253e-08,
+    "coefficient_bound_abs_c_over_kEtaB_le_0p01": 0.00031302118453674295,
+    "delta_fNL_bound_at_kEtaB_0p01_from_c_bound": 6.847338411741253e-08,
+    "note": "T_c consistent with EXACTLY 1 (transparency + parity, section T); |1-T_c| values are numerical/truncation residuals (growing ~k^6 at the large-k end of the grid, the O(k^6) basis-truncation scale -- cf. C_convergence basis_k2_vs_k4), quoted as honest UPPER BOUNDS on the scheme-specific transmission correction."
+  },
+  "D_state_diagnostics_beyond_constant_branch": {
+    "rows": [
+      {
+        "kEtaB": 0.002,
+        "abs_C2_over_C1": 0.5513217111640936,
+        "abs_D_pre_over_C1": 1.3030842997383893e-05,
+        "abs_T_D": 153481.01191221824
+      },
+      {
+        "kEtaB": 0.005,
+        "abs_C2_over_C1": 0.5512839996438145,
+        "abs_D_pre_over_C1": 8.143711893478859e-05,
+        "abs_T_D": 24557.82564906865
+      },
+      {
+        "kEtaB": 0.01,
+        "abs_C2_over_C1": 0.5511493919918221,
+        "abs_D_pre_over_C1": 0.00032566754541058326,
+        "abs_T_D": 6140.232408952332
+      }
+    ],
+    "I_40": 1.8131779226951108,
+    "I_60": 1.8136035789062361,
+    "I_inf_est": 1.8137993644051251,
+    "I_tail_estimate": 0.0001957854988890758,
+    "mode_conversion_gamma_2I_inf": 3.6275987288102503,
+    "note": "Diagnostics of the physical adiabatic-vacuum STATE, not bounce-induced corrections to the conserved branch: the vacuum carries an order-unity growing-mode component (|C2/C1| ~ 0.55), and the bounded bounce converts the pre-bounce growing mode into the post-bounce plateau with the FINITE scheme-specific constant gamma = 2*I_inf (finite precisely because the bounce is bounded). Which branch carries the contraction-phase f_NL into observables is part of the explicit third-order evolution the paper does NOT claim closed (tex L1119); these numbers quantify the inputs that calculation would need."
+  },
+  "F_scheme_contrast_fluid_z_breakdown": {
+    "rows": [
+      {
+        "dcut": 1e-05,
+        "K_fluid_half": 1096.8095007624345
+      },
+      {
+        "dcut": 1e-06,
+        "K_fluid_half": 3465.481475871605
+      },
+      {
+        "dcut": 1e-07,
+        "K_fluid_half": 10955.890557591545
+      },
+      {
+        "dcut": 1e-08,
+        "K_fluid_half": 34644.20353441366
+      }
+    ],
+    "fitted_power_of_dcut": -0.49983822365646957,
+    "analytic_power": -0.5,
+    "K_dressed_at_eta_m10": 440.13593620465804,
+    "note": "The k^2 gradient-expansion integral K = int z^2 deta DIVERGES ~ dcut^{-1/2} for the phase-1 fluid variable (z^2 ~ 4/eta^2 at the H=0 pole): the conserved-branch continuation does not exist in that scheme -- the identified MECHANISM of phase-1's 'no scheme-independent coefficient'. The bounded dressed a''/a gives finite K and hence the finite T_c=1 result: the closure is genuinely scheme-specific, as the paper discloses."
+  },
+  "P_phase2_postdiction": {
+    "rows": [
+      {
+        "x0": 0.01,
+        "eta_i": 4.8685904828012925,
+        "K_at_eta_i": 33.035852060324835,
+        "T_raw": {
+          "0.005": 0.9971954996458546,
+          "0.01": 0.9887876220136873,
+          "0.02": 0.9552403689612948
+        },
+        "c_replicated": 99.6745665229862,
+        "c_phase2": 99.52879973426768,
+        "ratio_rep_over_phase2": 1.001464568939922,
+        "constant_mode_abs_Tc_minus_1_same_runs": {
+          "0.005": 1.0973510988776525e-10,
+          "0.01": 9.966938385730373e-11,
+          "0.02": 4.426237154575574e-11
+        }
+      },
+      {
+        "x0": 0.001,
+        "eta_i": 8.366319887350166,
+        "K_at_eta_i": 220.23127188870708,
+        "T_raw": {
+          "0.005": 0.9804378777259791,
+          "0.01": 0.9218534430036089,
+          "0.02": 0.6890401942196724
+        },
+        "c_replicated": 692.1263031345469,
+        "c_phase2": 691.3210582166644,
+        "ratio_rep_over_phase2": 1.001164791536887,
+        "constant_mode_abs_Tc_minus_1_same_runs": {
+          "0.005": 5.006794978612561e-11,
+          "0.01": 6.246536621290488e-11,
+          "0.02": 5.445961459571436e-10
+        }
+      },
+      {
+        "x0": 0.0001,
+        "eta_i": 13.491715473849474,
+        "K_at_eta_i": 1493.9690115945298,
+        "T_raw": {
+          "0.005": 0.8655118455569555,
+          "0.01": 0.4636920982405348,
+          "0.02": -1.1190875625879082
+        },
+        "c_replicated": 4711.414597671329,
+        "c_phase2": 4723.754089021986,
+        "ratio_rep_over_phase2": 0.9973877786357817,
+        "constant_mode_abs_Tc_minus_1_same_runs": {
+          "0.005": 4.303890577261882e-12,
+          "0.01": 3.425917327604111e-10,
+          "0.02": 9.153863558264419e-07
+        }
+      }
+    ],
+    "scaling_c_ratios_per_decade": [
+      6.943860678590801,
+      6.807160161857693
+    ],
+    "scaling_K_ratios_per_decade": [
+      6.666432319849225,
+      6.7836370320264985
+    ],
+    "ten_to_5over6": 6.812920690579613,
+    "note": "Phase-2's absolute c (99.5/691/4724) is REPLICATED by this independent solver with the same misplaced fixed-epoch IC and REPRODUCED in scaling by the growing-mode-contamination law c ~ K(eta_i) ~ x0^(-5/6); the same runs' constant-mode component transmits at T_c = 1. The phase-2 x0-sensitivity is thereby fully explained and removed."
+  },
+  "A_asymmetric_null_check": {
+    "w_pre": 0.0,
+    "w_post": 0.05,
+    "rows": [
+      {
+        "kEtaB": 0.005,
+        "T_c_re": 1.0000000005085847,
+        "T_c_im": -6.183864862419447e-16,
+        "abs_T_c_minus_1": 5.08584729886173e-10
+      },
+      {
+        "kEtaB": 0.01,
+        "T_c_re": 1.000000024801565,
+        "T_c_im": -2.1311032841873997e-13,
+        "abs_T_c_minus_1": 2.4801565024850854e-08
+      },
+      {
+        "kEtaB": 0.02,
+        "T_c_re": 1.0000015649054905,
+        "T_c_im": -1.0766510817909937e-10,
+        "abs_T_c_minus_1": 1.564905494229014e-06
+      }
+    ],
+    "deviation_ratio_for_k_doubling": 63.097046200955404,
+    "note": "NULL check of statement (T-i): T_c=1 must hold for ANY smooth bounded bounce, symmetric or not. Confirmed -- the tiny deviations scale ~k^6 (basis truncation), NOT as a physical (k eta_B)^2 term. The scheme contrast that carries physical content is F_scheme_contrast (finite vs divergent basis), not background asymmetry."
+  },
+  "C_convergence": {
+    "grid_refinement_dTc": 7.357219278450235e-10,
+    "grid_refinement_dEtaB": 2.6727287050221094e-11,
+    "rtol_1e-9_vs_1e-11_dTc": 9.546512469428844e-10,
+    "eta_far_40_dTc": 2.5390800573187492e-11,
+    "eta_far_90_dTc": 2.898947748520564e-11,
+    "basis_k2_vs_k4_dTc": 0.00010533211395381438,
+    "emulated_dcut_1e-06_dTc": 3.458899833244588e-11,
+    "emulated_dcut_1e-07_dTc": 6.493872106716521e-11
+  },
+  "status": {
+    "RESULT": "With proper mode-by-mode adiabatic-vacuum IC placement and projection onto the Weinberg constant branch, the bounded dressed-metric bounce is TRANSPARENT to the conserved curvature mode: T(k) = 1 identically (global smooth continuation of the gradient-expansion branch, doubly protected by parity for the symmetric bounce), numerically bounded as reported. Under the paper's own Weinberg single-clock lifting the scheme-specific delta f_NL transmission correction on -35/16 at k eta_B = 1e-2 is consistent with ZERO with the quantified numerical upper bound above -- strictly stronger than the paper's disclosed OOM estimate delta f_NL <~ 1e-3, for this scheme. The scheme-specificity is demonstrated, not asserted: the fluid-z variable's basis integral diverges at the bounce (F_scheme_contrast), so no analogous finite statement exists there -- the mechanism of phase-1's finding. Phase-2's IC-epoch-sensitive absolute coefficients (99.5/691/4724) are replicated to 0.1-0.3% and fully explained as growing-mode contamination (P_phase2_postdiction); the same runs' constant-mode component transmits at 1.",
+    "REMAINING_OPEN_1_AAN_U": "Exact AAN quantum-mass U(eta) on a quasi-dust background not implemented (published closed form is for scalar-field matter; no form verifiable with certainty => not guessed, per /never-fabricate-derivation). Structural remark: any U(eta) EVEN about the bounce cannot alter the parity result; only an odd-parity component or an asymmetric completion contributes to c. Subleading disclosed open item.",
+    "REMAINING_OPEN_2_asymmetry_and_schemes": "Asymmetric bounce completions give finite c (control [A]); deformed-algebra scheme has different subleading structure -- both already disclosed in the paper (DP2-13).",
+    "gate_status": "Compute deliverable of the acceptance criterion produced (one concrete scheme-specific delta f_NL with proper IC placement + convergence evidence). Ledger/gate closure is a director decision; NO paper edit made here."
+  }
+}

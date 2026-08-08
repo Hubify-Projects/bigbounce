@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anomaly Explorer — DESI DR1 Spectral Anomalies</title>
-<meta name="description" content="Explore 2,145 SNR-filtered spectral anomalies from 22.5M DESI DR1 spectra. 120 gold, 12 z>6 QSOs, photo-z from unsupervised latent vectors. Interactive table with Legacy Survey image links.">
+<meta name="description" content="Explore the DESI DR1 autoencoder anomaly-detection pipeline: 22.5M spectra scored down to 2,145 high-significance exploratory candidates, with photo-z from unsupervised latent vectors. Interactive candidate table with Legacy Survey image links. These are exploratory pipeline candidates, not confirmed discoveries.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script src="nav.js" defer></script>
@@ -61,7 +61,7 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">DESI DR1 Spectral Anomaly Catalog</p>
   <h1>Anomaly Explorer</h1>
-  <p class="subtitle">22,504,897 unique DESI DR1 spectra scored &rarr; 2,145 SNR-filtered anomalies (score&gt;3, SNR&gt;0.5) &rarr; 120 gold (&gt;5&sigma;) &rarr; 12 reionization-era QSOs at z&gt;6. First full-DR1-scale autoencoder search (~90x prior EDR work). <strong>21 objects NOT in SIMBAD.</strong> Photo-z from unsupervised latent vectors: &sigma;<sub>NMAD</sub> = 0.028. UMAP clustering reveals two populations. Browse the top 1,000 by anomaly score below.</p>
+  <p class="subtitle">A full-DR1-scale autoencoder anomaly-detection pipeline &mdash; 22.5M DESI DR1 spectra scored down to 2,145 high-significance exploratory candidates. Photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub> = 0.028); UMAP reveals two populations. These are exploratory pipeline candidates, not confirmed detections. Browse the top 1,000 by anomaly score in the table.</p>
   <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
     <a href="/old/methodology-anomaly.html" class="btn btn-secondary" style="font-size:13px;">How It Works</a>
     <a href="/status" class="btn btn-secondary" style="font-size:13px;">Research Status</a>
@@ -70,22 +70,18 @@
 </div>
 
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid #22c55e; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
-  <strong style="color: var(--text);">Paper 3 Status &mdash; <span style="color: #16a34a;">in final review, Houston sign-off pending</span></strong><br>
-  <strong>Enhanced catalog COMPLETE</strong> &mdash; 22,504,897 unique spectra scored (deduplicated), 173 columns, 46 Parquet batches, 16 GB.
-  <strong>Tiered anomaly system:</strong> 2,145 silver (score&gt;3, SNR&gt;0.5), 120 gold (&gt;5&sigma;).
-  <strong>Key discoveries:</strong> 12 z&gt;6 reionization-era QSOs with Gunn-Peterson troughs; photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub>=0.028); spontaneous &ldquo;redshift neuron&rdquo; (lat_067); 2,575 red-anomaly cluster.
-  <strong>Multi-survey total:</strong> after per-survey native retrains, ecliptic/galactic masking, and 8-way positional dedup at 5&Prime;, the deduplicated catalog contains <strong>378,280 unique anomalies</strong> from 37,292,042 sources across DESI, SDSS, LAMOST, eROSITA, Planck, ACT, Gaia, and NEOWISE. Published at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>.
-  Paper 3 draft compiled at <code>pipelines/p3_anomaly_engine/paper3_draft.tex</code> (4.6 MB PDF, 26 pp, 0 undef refs) &mdash; see <a href="/paper">Papers page</a>.
+  <strong style="color: var(--text);">What Paper 3 actually is</strong> &mdash; Paper 3 (v3.2.0-r12, IN REVISION) is a <strong>public-ID recovery of a frozen historical DESI DR1 anomaly list</strong>: 181 warning-free global-primary TARGETIDs recovered by a declared 1-arcsec positional join, split transparently into 170 high-coordinate-consistency core associations (&le;0.1&Prime;) and 11 lower-confidence positional associations (0.1&ndash;1&Prime;). It is an <strong>archive-recovery / provenance product &mdash; explicitly NOT a purity, novelty, or detection claim</strong>, and it declines physical classification and anomaly-rate claims the surviving lineage does not support. See the <a href="/papers/paper-3">Paper 3 page</a> (17 pp).<br>
+  <strong>This explorer</strong> shows the separate exploratory <strong>autoencoder anomaly-detection pipeline</strong> that scored 22,504,897 unique DESI DR1 spectra (deduplicated, 173 columns) and produced the candidate list &mdash; 2,145 silver (score&gt;3, SNR&gt;0.5) and 120 gold (&gt;5&sigma;) <strong>exploratory candidates</strong>. The broader multi-survey candidate set (per-survey native retrains across DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, NEOWISE) is published as a dataset at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>. These are pipeline candidates, not confirmed detections.
   Click any row to view the Legacy Survey image, read AI analysis notes, and add your own review comments.
 </div>
 
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid #22c55e; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
-  <strong style="color: var(--text);">Key Findings from Complete 22.5M Catalog</strong><br>
+  <strong style="color: var(--text);">Pipeline characteristics (22.5M-spectra autoencoder)</strong><br>
   <strong>Photo-z from latent vectors:</strong> &sigma;<sub>NMAD</sub> = 0.028 (R&sup2; = 0.79) with zero redshift supervision &mdash; the autoencoder spontaneously learned spectral features correlated with redshift.
   <strong>Redshift neuron (lat_067):</strong> A single latent dimension that emergently encodes redshift, the strongest individual predictor of spectroscopic z.
-  <strong>UMAP clustering:</strong> Two distinct populations &mdash; 247K B-band noise cluster + 2,575 red-anomaly cluster with genuinely unusual spectra.
-  <strong>Anomaly rate uniform:</strong> ~1% across the footprint (Spearman r = 0.03 with depth), confirming anomalies are astrophysical, not depth artifacts.
-  <strong>12 z&gt;6 QSOs</strong> with Gunn-Peterson troughs identified from the gold anomaly catalog.
+  <strong>UMAP clustering:</strong> Two distinct populations &mdash; 247K B-band noise cluster + 2,575 red-anomaly cluster with unusual spectra.
+  <strong>Candidate rate uniform:</strong> ~1% across the footprint (Spearman r = 0.03 with depth), consistent with astrophysical candidates rather than depth artifacts.
+  <strong>High-z candidates:</strong> the gold tier includes candidate z&gt;6 objects flagged for Gunn-Peterson-like troughs &mdash; exploratory candidates for follow-up, not confirmed reionization-era QSO discoveries.
 </div>
 
 <div class="anomaly-stats">
@@ -103,7 +99,7 @@
   </div>
   <div class="anomaly-stat">
     <div class="num">12</div>
-    <div class="label">z&gt;6 QSOs</div>
+    <div class="label">z&gt;6 QSO candidates</div>
   </div>
   <div class="anomaly-stat">
     <div class="num">0.028</div>
@@ -405,7 +401,10 @@ function openPanel(dataIdx) {
   const cutoutUrl = `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${ra}&dec=${dec}&layer=ls-dr10&pixscale=0.5&size=128`;
 
   document.getElementById('modalTitle').textContent = `Anomaly #${rank}`;
-  document.getElementById('modalImage').src = cutoutUrl;
+  const hfCutout = `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/main/cutouts/ra${ra.toFixed(5)}_dec${dec.toFixed(5)}_s128.jpg`;
+  const _mi = document.getElementById('modalImage');
+  _mi.onerror = function() { this.onerror = null; this.src = cutoutUrl; };
+  _mi.src = hfCutout;
   document.getElementById('modalDetails').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;">
       <div><strong>Score:</strong> ${score}</div>
@@ -546,16 +545,19 @@ function escapeHtml(str) {
 // Legacy Survey cutout API often rate-limits on the first burst when many
 // thumbnails request at once. Retry with backoff before giving up.
 // Without this every cell shows "No img" even though the cutout is fine.
-window.handleThumbError = function(img, url) {
-  const n = parseInt(img.dataset.retry || '0', 10);
-  if (n >= 3) {
-    img.style.display = 'none';
-    img.insertAdjacentHTML('afterend', '<div class="anomaly-thumb-fail">no cutout</div>');
+// Two-stage thumbnail fallback: HuggingFace-hosted cutout (stable, CDN) first;
+// if that 404s (object not yet in the HF cutout set) fall back ONCE to the live
+// Legacy Survey cutout; if that also fails, show a graceful placeholder.
+window.handleThumbError = function(img) {
+  const stage = parseInt(img.dataset.stage || '0', 10);
+  const fallback = img.dataset.fallback;
+  if (stage === 0 && fallback) {
+    img.dataset.stage = '1';
+    img.src = fallback;
     return;
   }
-  img.dataset.retry = String(n + 1);
-  const delay = 800 + n * 1200 + Math.random() * 600;
-  setTimeout(() => { img.src = url + '&_r=' + n; }, delay);
+  img.style.display = 'none';
+  img.insertAdjacentHTML('afterend', '<div class="anomaly-thumb-fail">no cutout</div>');
 };
 
 // Close modal on Escape key
@@ -575,6 +577,9 @@ function renderTable(data) {
     const color = score > 15 ? '#ef4444' : score > 10 ? '#f97316' : score > 7 ? '#eab308' : '#3b82f6';
     const lsUrl = `https://www.legacysurvey.org/viewer?ra=${ra}&dec=${dec}&layer=ls-dr10&zoom=15`;
     const thumbUrl = `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${ra}&dec=${dec}&layer=ls-dr10&pixscale=0.5&size=64`;
+    // HuggingFace-hosted cutout (stable CDN) — keyed by ra/dec to 5dp, matching the
+    // generate_gallery_figures.py cache convention (ra{ra:.5f}_dec{dec:.5f}_s128.jpg).
+    const hfThumbUrl = `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/main/cutouts/ra${ra.toFixed(5)}_dec${dec.toFixed(5)}_s128.jpg`;
     const dataIdx = DATA.indexOf(d);
     return `<tr onclick="openPanel(${dataIdx})">
       <td>${i+1}</td>
@@ -585,7 +590,7 @@ function renderTable(data) {
       <td>${rB}</td>
       <td>${rR}</td>
       <td>${rZ}</td>
-      <td><img class="anomaly-thumb" loading="lazy" decoding="async" src="${thumbUrl}" alt="cutout ${ra.toFixed(2)}, ${dec.toFixed(2)}" data-retry="0" onerror="handleThumbError(this, '${thumbUrl}')"></td>
+      <td><img class="anomaly-thumb" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${hfThumbUrl}" data-fallback="${thumbUrl}" data-stage="0" alt="cutout ${ra.toFixed(2)}, ${dec.toFixed(2)}" onerror="handleThumbError(this)"></td>
       <td><a href="${lsUrl}" target="_blank" class="btn-img btn-ls" onclick="event.stopPropagation()">Full</a></td>
     </tr>`;
   }).join('');

@@ -1,0 +1,311 @@
+{
+  "schema_version": "truth-audit-event-batch/v1",
+  "paper": {
+    "id": "P4",
+    "version": "v1.0.258"
+  },
+  "source": {
+    "round_id": "ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM",
+    "round_type": "internal"
+  },
+  "pdf": {
+    "sha256": "e9b69665efdf757de69f27a0474d30ac4bc48bc7559424e077f41c7bcacbe061",
+    "pages": 25
+  },
+  "truth_audit": {
+    "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/P4_v1.0.258_truth_audit.md",
+    "sha256": "3461bae57ee90585277ad2761f3e88bba0391f7e1c716970aa44ad157fca106c",
+    "audited_at": "2026-07-16T08:50:43Z"
+  },
+  "catalog": {
+    "version": "34-patterns",
+    "updated_at": "2026-06-02T00:00:00Z"
+  },
+  "receipts": [
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "sha256": "51c639da7f866ec009f512c7268f3e8b464323ea14e506105ef084b30d5113ae",
+      "occurred_at": "2026-07-16T08:29:14.978121Z",
+      "reviewer": {
+        "provider": "xai-direct",
+        "model": "grok-4.3",
+        "reviewer_id": "grok-api"
+      },
+      "findings": [
+        {
+          "finding_id": "G-m1",
+          "severity": "MINOR",
+          "summary": "Conflicting historical training records remain unresolved without retained object, split, or random-state manifests.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed this as a disclosed historical reproducibility limitation rather than a defect that can be reconstructed from absent records.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Recover provable historical training identities and state, or retain the limitation without reconstructing them speculatively.",
+            "closed_in_version": null,
+            "evidence": "Standing training-record gate in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "G-m2",
+          "severity": "MINOR",
+          "summary": "The GZ1 agreement metrics remain overlap-contaminated because training objects cannot be anti-joined from evaluation.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that exact training membership is unavailable and the reported overlap metrics are descriptive rather than independent validation.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Obtain a provably training-disjoint validation set before claiming independent classifier validation.",
+            "closed_in_version": null,
+            "evidence": "Standing overlap-validation gate in the bound truth audit.",
+            "regression_of_event_id": "fev1_9184a6384a456199f5dea111"
+          }
+        },
+        {
+          "finding_id": "G-m3",
+          "severity": "MINOR",
+          "summary": "The manuscript should explicitly state whether the unsafe-row predicate was fixed before unblinding.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The predicate arose during post-review corrective closure and therefore was not preregistered or fixed before unblinding.",
+          "classification": "KNOWN",
+          "pattern_ids": [
+            "pattern-020-load-bearing-disclosure-buried"
+          ],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Disclose that the predicate was introduced and finalized during post-review corrective closure.",
+            "closed_in_version": null,
+            "evidence": "Verified disclosure gap in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "G-m4",
+          "severity": "MINOR",
+          "summary": "The scalar transfer discussion should say that it does not support a physical amplitude bound.",
+          "truth_verdict": "STALE",
+          "truth_evidence": "The audit verified that the operative manuscript interpretation already states that the illustrative scalar transfer does not support a physical amplitude bound.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Retain the existing limitation and do not treat the stale request as a new closure gate.",
+            "closed_in_version": null,
+            "evidence": "Standing interpretation already present in the audited PDF.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "sha256": "1284aed74833653303c65f543b68ee59a0e335ac2072ff087536188411129c2c",
+      "occurred_at": "2026-07-16T08:29:14.955479Z",
+      "reviewer": {
+        "provider": "google-direct",
+        "model": "gemini-3.1-pro-preview",
+        "reviewer_id": "gemini-api"
+      },
+      "findings": [
+        {
+          "finding_id": "Ge-M1",
+          "severity": "MAJOR",
+          "summary": "Inline repository artifact paths should be replaced by standalone scientific summaries and conventional repository references.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit classified artifact-path density as editorial presentation work rather than a contradiction in the central result.",
+          "classification": "KNOWN",
+          "pattern_ids": [
+            "dpattern-inline-artifact-path-clutter"
+          ],
+          "preflight_checked": true,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Handle selectively during venue-focused readability editing; retain exact artifact anchors where they materially support reproducibility.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m2",
+          "severity": "MINOR",
+          "summary": "Clarify that missing historical training state does not prevent exact inference-pass and catalog reproduction.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit confirmed the historical limitation is already disclosed and did not identify a contradictory inference-reproducibility claim.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Consider as optional explanatory polish without weakening the disclosed training limitation.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m3",
+          "severity": "MINOR",
+          "summary": "Dense audit and software terminology should be consolidated or defined in a glossary.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit classified terminology density as editorial work rather than a scientific or reproducibility contradiction.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Consider during final venue-specific copyediting.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m4",
+          "severity": "MINOR",
+          "summary": "The binomial-monopole null construction should be restated as an explicit formula in the main text.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit did not identify a mathematical inconsistency or missing computational artifact; this is an accessibility preference.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Consider only if required by venue-focused readability review.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m5",
+          "severity": "MINOR",
+          "summary": "Figure 8 is severely compressed and floats awkwardly.",
+          "truth_verdict": "FALSIFIED",
+          "truth_evidence": "The preceding all-page visual audit did not corroborate severe overflow or collision; final journal-layout review remains a separate gate.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": true,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Retain final journal-layout inspection without treating an uncorroborated severe-overflow claim as verified.",
+            "closed_in_version": null,
+            "evidence": "Visual-audit disposition in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/intwave_P4_codex_0128.md",
+      "sha256": "97041c15486497af53f125b58846a4e69d756463acfa4eb1110bee4637412545",
+      "occurred_at": "2026-07-16T08:28:58Z",
+      "reviewer": {
+        "provider": "openai-subscription",
+        "model": "gpt-5.6-sol (high)",
+        "reviewer_id": "codex-cli"
+      },
+      "findings": [
+        {
+          "finding_id": "C-M1",
+          "severity": "MAJOR",
+          "summary": "The primary-audit table retained the superseded unsafe-inclusive sample, null hash, and statistics after the strict primary changed.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The strict receipt proves 890,069 selected rows, 887,472 supported rows, z=0.6346508534, rank p=0.2376762324, and a different array hash.",
+          "classification": "KNOWN",
+          "pattern_ids": [
+            "pattern-030-round-to-round-regression-drift",
+            "pattern-046-artifact-paper-cross-check"
+          ],
+          "preflight_checked": true,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Replace the entire table from the strict computational receipt.",
+            "closed_in_version": null,
+            "evidence": "Verified artifact-to-manuscript synchronization defect in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M2",
+          "severity": "MAJOR",
+          "summary": "The manuscript described an immutable public release as containing the strict primary although the named release still contained the older unsafe-inclusive realization.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The public schema and dataset card retained the old primary while the strict product existed only in the repository closure layer.",
+          "classification": "KNOWN",
+          "pattern_ids": [
+            "pattern-027-headline-claim-without-on-disk-artifact",
+            "pattern-046-artifact-paper-cross-check",
+            "spattern-unpublished-hf-dataset"
+          ],
+          "preflight_checked": true,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Describe the strict product as a repository candidate and retain synchronized immutable publication as an explicit pre-submission gate.",
+            "closed_in_version": null,
+            "evidence": "Verified public-release overclaim in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m3",
+          "severity": "MINOR",
+          "summary": "The binomial-monopole table printed null moments incompatible with its z ratios and retained array.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The committed receipt gives (0.60414 ± 0.91749)e-6 for 500 draws and (0.57796 ± 0.89263)e-6 for 10,000 draws.",
+          "classification": "KNOWN",
+          "pattern_ids": [
+            "pattern-046-artifact-paper-cross-check"
+          ],
+          "preflight_checked": true,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Regenerate the table values from the retained null array.",
+            "closed_in_version": null,
+            "evidence": "Verified numerical synchronization defect in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m4",
+          "severity": "MINOR",
+          "summary": "The apodized-row caption described the wrong mask and null-family contract.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The exact artifact uses the 24,087-pixel FSC base mask and one 500-draw fixed-occupancy null.",
+          "classification": "KNOWN",
+          "pattern_ids": [
+            "pattern-046-artifact-paper-cross-check"
+          ],
+          "preflight_checked": true,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Bind the caption to the exact mask and null contract in the computational artifact.",
+            "closed_in_version": null,
+            "evidence": "Verified caption-to-artifact synchronization defect in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@ fig_theory_map.py — Paper 1 Sec II.0 navigational figure.
 
 Maps the bounce-mechanism layer (LQC, ECH/torsion, matter-bounce, quintom,
 Cuscuton, ekpyrotic) on the left to the observable-prediction layer
-(ALP β, f_NL = -35/8, PTA γ = 3.0, w0-wa, ΔNeff) on the right, with
+(ALP β, f_NL = -35/16, PTA γ = 3.0, w0-wa, ΔNeff) on the right, with
 arrows showing which mechanism produces which prediction.
 
 ECH is highlighted as "structurally closed (this paper)" with a
@@ -73,7 +73,7 @@ predictions = [
     (r"ALP $\beta$",
      r"$0.27^\circ$ spectator",
      "#eef4fb", "#3b6ea3"),
-    (r"$f_{\rm NL}=-35/8$",
+    (r"$f_{\rm NL}=-35/16$",
      "SPHEREx, mechanism-indep.",
      "#eaf6ec", "#3b8a4a"),
     (r"PTA $\gamma=3.0$",

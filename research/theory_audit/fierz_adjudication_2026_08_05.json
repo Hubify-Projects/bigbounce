@@ -1,0 +1,458 @@
+{
+  "date": "2026-08-05",
+  "task": "Independent Fierz adjudication: monolith vs published P1A",
+  "classes_order": [
+    "S",
+    "V",
+    "T",
+    "A",
+    "P"
+  ],
+  "signatures": {
+    "mostly-minus": {
+      "phys-Thalf": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/4",
+            "-1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "3/2",
+            "0",
+            "-1/2",
+            "0",
+            "3/2"
+          ],
+          [
+            "-1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/4",
+            "1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      },
+      "phys-Tfull": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/8",
+            "-1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "3",
+            "0",
+            "-1/2",
+            "0",
+            "3"
+          ],
+          [
+            "-1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/8",
+            "1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      },
+      "iA-Thalf": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/4",
+            "1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "1/2",
+            "-1"
+          ],
+          [
+            "3/2",
+            "0",
+            "-1/2",
+            "0",
+            "3/2"
+          ],
+          [
+            "1",
+            "1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/4",
+            "-1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      },
+      "iA-Tfull": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/8",
+            "1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "1/2",
+            "-1"
+          ],
+          [
+            "3",
+            "0",
+            "-1/2",
+            "0",
+            "3"
+          ],
+          [
+            "1",
+            "1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/8",
+            "-1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      }
+    },
+    "mostly-plus": {
+      "phys-Thalf": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/4",
+            "-1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "3/2",
+            "0",
+            "-1/2",
+            "0",
+            "3/2"
+          ],
+          [
+            "-1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/4",
+            "1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      },
+      "phys-Tfull": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/8",
+            "-1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "3",
+            "0",
+            "-1/2",
+            "0",
+            "3"
+          ],
+          [
+            "-1",
+            "-1/2",
+            "0",
+            "-1/2",
+            "1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/8",
+            "1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      },
+      "iA-Thalf": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/4",
+            "1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "1/2",
+            "-1"
+          ],
+          [
+            "3/2",
+            "0",
+            "-1/2",
+            "0",
+            "3/2"
+          ],
+          [
+            "1",
+            "1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/4",
+            "-1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      },
+      "iA-Tfull": {
+        "F_cnumber": [
+          [
+            "1/4",
+            "1/4",
+            "1/8",
+            "1/4",
+            "1/4"
+          ],
+          [
+            "1",
+            "-1/2",
+            "0",
+            "1/2",
+            "-1"
+          ],
+          [
+            "3",
+            "0",
+            "-1/2",
+            "0",
+            "3"
+          ],
+          [
+            "1",
+            "1/2",
+            "0",
+            "-1/2",
+            "-1"
+          ],
+          [
+            "1/4",
+            "-1/4",
+            "1/8",
+            "-1/4",
+            "1/4"
+          ]
+        ],
+        "involution_F2_eq_I": true
+      }
+    }
+  },
+  "mapping": {
+    "p1a_matrix_basis": [
+      "phys",
+      "full"
+    ],
+    "monolith_matrix_basis": [
+      "iA",
+      "half"
+    ],
+    "monolith_eqAAdecomp_matches_any_convention": [],
+    "monolith_internally_consistent": false,
+    "monolith_B1_equals_iA_Thalf_cnumber": true
+  },
+  "identical_field": {
+    "rank": 3,
+    "relations": [
+      [
+        "-4",
+        "-1",
+        "-2/3",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0",
+        "1/3",
+        "0",
+        "1"
+      ]
+    ],
+    "computed_operator_row_valid": true,
+    "p1a_row_SS+half.VV+half.AA-PP_valid": true,
+    "monolith_eqAAdecomp_quarter.SS+half.VV-half.AA-quarter.PP_valid": false,
+    "monolith_B1_axial_row_applied_as_physical_valid": false
+  },
+  "signature_independent": true,
+  "operator_map": {
+    "F_op_physical_Thalf": [
+      [
+        "-1/4",
+        "-1/4",
+        "-1/4",
+        "1/4",
+        "-1/4"
+      ],
+      [
+        "-1",
+        "1/2",
+        "0",
+        "1/2",
+        "1"
+      ],
+      [
+        "-3/2",
+        "0",
+        "1/2",
+        "0",
+        "-3/2"
+      ],
+      [
+        "1",
+        "1/2",
+        "0",
+        "1/2",
+        "-1"
+      ],
+      [
+        "-1/4",
+        "1/4",
+        "-1/4",
+        "-1/4",
+        "-1/4"
+      ]
+    ],
+    "F_op_equals_minus_F_c": true,
+    "mostly_plus_identical": true
+  },
+  "computed_axial_rows": {
+    "cnumber_physical": [
+      "-1",
+      "-1/2",
+      "0",
+      "-1/2",
+      "1"
+    ],
+    "operator_physical": [
+      "1",
+      "1/2",
+      "0",
+      "1/2",
+      "-1"
+    ]
+  },
+  "verdict": "P1A-CORRECT",
+  "verdict_detail": {
+    "p1a": "P1A's tabulated F_c equals the independently computed PHYSICAL-basis c-number Fierz matrix (Gamma_A = gamma^mu gamma5 acting on the physical (J5.J5), tensor full double sum) -- i.e. the Nieves-Pal normalization phases do land on the physical operator exactly as P1A asserts.  Its operator map F_op=-F_c, axial operator row SS+1/2VV+1/2AA-PP, and G_s=-3/16 kappa are each reproduced by the exact Grassmann computation.",
+    "monolith": "B1 matrix is a valid c-number matrix ONLY in the mixed basis (axial=i*gamma*gamma5, tensor half-sum), which the monolith does not state (it claims physical Dirac matrices, mostly-plus); its eq:AAdecomp (1/4,1/2,0,-1/2,-1/4) matches NO computed convention (c-number or operator, either signature), is internally inconsistent with B1's own axial row, fails the identical-field Grassmann test, and its downstream G_s=-3/64 kappa is wrong; the correct value is G_s=-3/16 kappa.",
+    "signature": "All Fierz matrices are identical under (+,-,-,-) and (-,+,+,+); the discrepancy is NOT a signature effect."
+  },
+  "log_lines": [
+    "[L01] Independent Fierz adjudication (explicit Dirac matrices; no remembered tables). Classes ordered (S,V,T,A,P).",
+    "[L02] mostly-minus: c-number Fierz matrix solved exactly in 4 basis variants (axial phys/iA x tensor half/full); F^2=I verified for all 4.",
+    "[L03] mostly-minus: PHYSICAL-basis (Gamma_A=gamma^mu gamma5, T half-sum) c-number axial row [(J5.J5)(1234) on e_Y(1432)]: (-1, -1/2, 0, -1/2, 1)",
+    "[L04] mostly-plus: c-number Fierz matrix solved exactly in 4 basis variants (axial phys/iA x tensor half/full); F^2=I verified for all 4.",
+    "[L05] mostly-plus: PHYSICAL-basis (Gamma_A=gamma^mu gamma5, T half-sum) c-number axial row [(J5.J5)(1234) on e_Y(1432)]: (-1, -1/2, 0, -1/2, 1)",
+    "[L06] Signature independence: identical 5x5 matrices under (+,-,-,-) and (-,+,+,+) in every basis variant: True",
+    "[L07] Grassmann engine (4 distinct anticommuting fields, exact): operator Fierz matrix solved; F_op == -F_c (single Grassmann exchange): True",
+    "[L08] COMPUTED operator axial row (anticommuting fields, physical basis): (J5.J5) -> (1, 1/2, 0, 1/2, -1)  i.e. 1*SS + 1/2*VV + 0*TT + 1/2*AA + -1*PP",
+    "[L09] Operator matrix re-derived in (-,+,+,+): identical to (+,-,-,-): True",
+    "[L10] Identical single-species field: span rank of {O_S,O_V,O_T,O_A,O_P} = 3; relation module dimension = 2; relations (coeffs on (S,V,T,A,P)): [['-4', '-1', '-2/3', '1', '0'], ['1', '0', '1/3', '0', '1']]",
+    "[L11] Identical-field operator identity tests -- computed row (1, 1/2, 0, 1/2, -1): True; P1A row (1, 1/2, 0, 1/2, -1): True; monolith eq:AAdecomp (1/4, 1/2, 0, -1/2, -1/4): False; monolith B1 axial row read as physical (1, 1/2, 0, -1/2, -1): False",
+    "[L12] P1A/script matrix F_c identified: equals computed c-number matrix in basis (axial=phys, tensor=full) -- EXACT MATCH",
+    "[L13] Monolith B1 matrix identified: equals computed c-number matrix in basis (axial=iA, tensor=half) -- EXACT MATCH",
+    "[L14] Computed c-number axial row in the i-normalized axial basis (axial=iA, tensor=full): (1, 1/2, 0, -1/2, -1) [e_A^iA = -(J5.J5), so this row is the sign-flipped presentation].",
+    "[L15] P1A chain under its stated convention: (F_c)_AS = -1; F_op=-F_c gives axial operator row (1, 1/2, 0, 1/2, -1) == P1A eq:AAdecomp: True; equals COMPUTED physical operator row: True",
+    "[L16] Scalar-channel coupling from the COMPUTED operator row: G_s = (-3/16 kappa) * (1) = -3/16 kappa  -> P1A's G_s=-3/16 kappa: True; monolith's G_s=-3/64 kappa: False",
+    "[L17] Monolith eq:AAdecomp (1/4,1/2,0,-1/2,-1/4) compared against the c-number AND operator axial rows of ALL 8 computed convention variants x both signatures: matches = NONE",
+    "[L18] Monolith internal consistency: B1 axial row (1, 1/2, 0, -1/2, -1) == its own eq:AAdecomp (1/4, 1/2, 0, -1/2, -1/4): False (the S,P entries of eq:AAdecomp carry a spurious extra 1/4).",
+    "[L19] VERDICT: P1A-CORRECT (p1a_all_checks=True, monolith_all_checks=False)"
+  ]
+}

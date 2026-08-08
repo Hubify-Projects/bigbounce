@@ -1,0 +1,78 @@
+{
+  "task": "P3 independent 6-way recommended-tier positional dedup (OpenAI E1)",
+  "generated_by": "pipelines/p3_anomaly_engine/sixway_dedup.py",
+  "data_source": "HuggingFace bamfai/bigbounce-anomaly-catalog (per-object released catalogs)",
+  "match_radius_arcsec": 5.0,
+  "neowise_ecliptic_pole_mask_deg": 80.0,
+  "surveys": [
+    "desi_dr1",
+    "sdss_dr18",
+    "erosita_dr1",
+    "planck_cmb",
+    "gaia_dr3",
+    "neowise_pathc"
+  ],
+  "survey_load_status": {
+    "desi_dr1": "loaded 195829 rows",
+    "sdss_dr18": "loaded 77905 rows",
+    "erosita_dr1": "loaded 298 rows",
+    "planck_cmb": "loaded 200 rows",
+    "gaia_dr3": "loaded 500 rows",
+    "neowise": "loaded 436 raw -> 419 after ecliptic-pole mask (17 rejected)"
+  },
+  "per_survey_input_detections": {
+    "desi_dr1": 195829,
+    "erosita_dr1": 298,
+    "gaia_dr3": 500,
+    "neowise_pathc": 419,
+    "planck_cmb": 200,
+    "sdss_dr18": 77905
+  },
+  "total_survey_level_detections": 275151,
+  "pairs_within_radius": 5835,
+  "per_survey_pair_match_counts": {
+    "desi_dr1|desi_dr1": 5814,
+    "desi_dr1|sdss_dr18": 9,
+    "sdss_dr18|sdss_dr18": 12
+  },
+  "per_survey_absorbed_in_dedup": {
+    "desi_dr1": 5814,
+    "sdss_dr18": 20
+  },
+  "n_unique_physical_objects": 269317,
+  "n_collapsed_detections": 5834,
+  "compression_pct": 2.1203,
+  "clusters_in_k_surveys": {
+    "1": 269309,
+    "2": 8
+  },
+  "n_multi_survey_clusters_ge2": 8,
+  "paper_claim": {
+    "input_sum": 275151,
+    "unique": 269317,
+    "collapsed": 5834,
+    "compression_pct": 2.12,
+    "per_survey_input": {
+      "desi_dr1": 195829,
+      "sdss_dr18": 77905,
+      "erosita_dr1": 298,
+      "planck_cmb": 200,
+      "gaia_dr3": 500,
+      "neowise": 419
+    }
+  },
+  "consistency_check": {
+    "input_sum_matches": true,
+    "unique_matches": true,
+    "collapsed_matches": true,
+    "per_survey_input_matches": {
+      "desi_dr1": true,
+      "sdss_dr18": true,
+      "erosita_dr1": true,
+      "planck_cmb": true,
+      "gaia_dr3": true,
+      "neowise": true
+    }
+  },
+  "verdict": "EXACT-MATCH to paper claim"
+}

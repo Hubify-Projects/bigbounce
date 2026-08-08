@@ -37,7 +37,10 @@ pipelines/pipeline_a_cmb/outputs/*.pt
 pipelines/pipeline_a_cmb/outputs/*.json
 pipelines/pipeline_a_cmb/*.fits
 *.parquet
-project-context/prompt-history.md
+# P4 v1.0.244 local ApJS payload bundle; compact receipts are retained under
+# project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.244-APJS-RELEASE-CLOSURE/.
+pipelines/p2_chirality/apjs_release_v1.0.244/
+project-context/prompt-history*.md
 pipelines/h200_results/phase1_3_queue_v2/outputs/gaia-dr3-expanded/gaia_anomalies.csv
 .gstack/
 site/public/old/
@@ -56,3 +59,57 @@ reproducibility/cosmology/iter2_converged_2026-05-18/chains_w0wa_dr2_iter2_chain
 reproducibility/cosmology/iter2_converged_2026-05-18/chains_w0wa_dr2_iter2_unpacked/
 reproducibility/cosmology/iter2_converged_2026-05-18/mcmc_iter2_omp6.log
 pipelines/p5_desi_chirality/data/
+# encrypted/plain env backups — never commit
+.env.local.bak*
+*.env.local.bak*
+*.env.local*bak*
+.env.local.preconsolidate.bak
+
+# LaTeX build artifacts (regenerable; keep out of git)
+*.aux
+*.bbl
+*.blg
+*.toc
+*.out
+*.log
+*.synctex.gz
+
+# arxiv build tarballs (regenerable)
+arxiv/*.tar.gz
+
+# REVTeX auto-generated bib control files (regenerable)
+*Notes.bib
+project-context/cron-logs/
+reproducibility/cosmology/w0wa_chains_backup/
+research/cubic_bounce_transmission/pathz_pid.txt
+pipelines/p2_chirality/outputs/spiral_morphology_dr8.parquet
+tools/.freshness_skip.log
+.deposit-staging/
+project-context/LOOP_HEARTBEAT.json
+# Watchdog log is now a best-effort runtime mirror; authoritative copy lives in
+# ~/Library/Application Support/bigbounce/ (launchd-writable). Don't track churn.
+project-context/LOOP_WATCHDOG_LOG.md
+pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_shards/
+
+# Superseded 2026-08-03 final-acceptance/reviewer snapshots. Canonical later
+# receipts are tracked; preserve these local copies without repo status churn.
+project-context/SSOT/final-acceptance/portfolio-preflight-2026-08-03-P3-r16-superseding.json
+project-context/SSOT/final-acceptance/portfolio-preflight-2026-08-03-P3-r16-superseding-head-f61aac73.json
+project-context/peer-reviews/FINALHASH4_2026-08-03_P3_v3.2.0-r16_P3_Gemini_cosmology.md
+
+# P4 G1 retrain checkpoint — 88MB, backed up to HF bamfai/galaxy-chirality-v2 (g1-retrain-2026-07-17) + pod; not committed
+pipelines/p2_chirality/outputs/g1_retrain/*.pt
+
+# P4 CE-ResNet catalog (Jia 2022 galaxy-spin-zs-catalog) — 363MB external artifact,
+# re-provisionable from Zenodo DOI 10.5281/zenodo.7167388; provenance file IS tracked.
+pipelines/p2_chirality/external_catalogs/*.fits
+.heartbeat.*
+
+# Scratch/build directories — never publication artifacts, and large enough to
+# matter in a repo this size (2026-07-25: tmp/ alone was 233MB across 622 files,
+# pipelines/p3_anomaly_engine/tmp/ another 19MB). Everything here is regenerated
+# by the pipelines; nothing in it is cited by a paper.
+/.next/
+tmp/
+pipelines/*/tmp/
+outputs_check

@@ -1,0 +1,73 @@
+{
+  "build_command": "tools/directive_g.sh paper=P5 version=v0.1.141-2026-07-16 source=pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex pdflatex_passes=2 bibtex=0",
+  "captured_at_local": "2026-07-16T16:40:08.786151-07:00",
+  "captured_at_utc": "2026-07-16T23:40:08.786151+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "405a6497c3b6562f56927716bbc7a9bc55579175",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "8ec2b6631680e2e17832d13508ec3a5ee4ab682e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260716T234008Z-01500bd1503d.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/4c/4cca09d0aa963ae18b908bc17f57e9b1bf8f91e4ec8555f4c18d2e413a7580ac.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P5/P5__v0.1.141-2026-07-16__2026-07-16T164008-0700-PDT__4cca09d0aa96.pdf",
+      "git": {
+        "head_blob": "48975ac89b493f6e9b9e057c8d1602fd45ab8947",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "6a4e79b4df61bf37b25a801d19d61b62",
+      "object_created": true,
+      "page_count": 42,
+      "paper_id": "P5",
+      "paper_version": "v0.1.141-2026-07-16",
+      "reference_created": true,
+      "sha256": "4cca09d0aa963ae18b908bc17f57e9b1bf8f91e4ec8555f4c18d2e413a7580ac",
+      "size_bytes": 1524292,
+      "source_mtime_ns": 1784245208497167025,
+      "source_pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+      "source_tex": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+    }
+  ],
+  "review_round": "directive-g/AJ-OBSERVATIONAL/P5/v0.1.141-2026-07-16",
+  "run_id": "01500bd1503d",
+  "schema": "bigbounce-pdf-retention/v3"
+}

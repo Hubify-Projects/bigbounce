@@ -1,0 +1,56 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-uncataloged-taxonomy",
+  "title": "Uncataloged taxonomy (1,127 objects, 10 families)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/outputs/uncataloged_taxonomy/classify_uncataloged.py",
+      "entrypoint": "python3 classify_uncataloged.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, pandas, pyarrow — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Recountable, described as the strongest candidate-science centerpiece per audit. The generating script (classify_uncataloged.py) lives alongside its own outputs rather than under scripts/ — the inventory's bare description did not name a script path, verified by directory listing."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/uncataloged_taxonomy/taxonomy_results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/uncataloged_taxonomy/taxonomy_summary.md",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the taxonomy classification reproduces 1,127 objects across 10 families (exact count equality expected on a deterministic classification pass over the same input catalog).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — uncataloged taxonomy (1,127 objects, 10 families) bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md",
+    "path correction: inventory did not name a generating script; verified via directory listing that pipelines/p1_highz_tracers/outputs/uncataloged_taxonomy/classify_uncataloged.py is the generator (co-located with its own outputs, not under scripts/)"
+  ]
+}

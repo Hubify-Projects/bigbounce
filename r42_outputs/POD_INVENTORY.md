@@ -4,10 +4,10 @@
 
 | Pod | GPU | $/hr | Status | SSH | Job |
 |---|---|---|---|---|---|
-| `r42-b10-ood` `cqlrp2iko5tk8t` | H200 NVL | $3.39 | RUNNING | `root@154.54.101.58 -p 11637` | B10 P3 100k OOD inference |
-| `r42-pod-b` `b5o3od0k592067` | H200 SXM | $3.99 | RUNNING | `root@103.196.86.10 -p 55951` | P4 cached-logit reanalysis (B19+B20+B21) |
-| `r42-pod-c` `bsr1burbl2me11` | H200 SXM | $3.99 | RUNNING | `root@213.181.111.130 -p 17385` | B6 chain rerun + P2 sympy (B8+B9) |
-| `regular_green_pig-migration` `kfmtdje25y88tf` | H200 SXM | $3.99 | RUNNING | `root@38.80.152.148 -p 33089` | NaMaster MCMC repro + P4 systematics (M14/M15/M17/M18/M19) |
+| `r42-b10-ood` `cqlrp2iko5tk8t` | H200 NVL | $3.39 | RUNNING | `root@<pod-ip> -p <port>` | B10 P3 100k OOD inference |
+| `r42-pod-b` `b5o3od0k592067` | H200 SXM | $3.99 | RUNNING | `root@<pod-ip> -p <port>` | P4 cached-logit reanalysis (B19+B20+B21) |
+| `r42-pod-c` `bsr1burbl2me11` | H200 SXM | $3.99 | RUNNING | `root@<pod-ip> -p <port>` | B6 chain rerun + P2 sympy (B8+B9) |
+| `regular_green_pig-migration` `kfmtdje25y88tf` | H200 SXM | $3.99 | RUNNING | `root@<pod-ip> -p <port>` | NaMaster MCMC repro + P4 systematics (M14/M15/M17/M18/M19) |
 
 ## Paused / EXITED ($0/hr, host-saturated, retry queue)
 

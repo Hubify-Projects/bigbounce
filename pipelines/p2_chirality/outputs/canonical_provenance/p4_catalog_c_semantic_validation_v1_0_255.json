@@ -1,0 +1,144 @@
+{
+  "catalog_payload_version": "v1.0.244",
+  "command_mode": "validate-only",
+  "created_at_utc": "2026-07-15T22:17:36.239322+00:00",
+  "paper": "P4",
+  "paper_version": "v1.0.253",
+  "provenance": {
+    "manifest": {
+      "bytes": 3032,
+      "path": "pipelines/p2_chirality/apjs_release_v1.0.244/MANIFEST.json",
+      "sha256": "9d2eb94eda21080d5dcc2310e81bbec0ff473866e3f03b19e77e941206404cd1"
+    },
+    "primary_parquet": {
+      "bytes": 386712994,
+      "manifest_bytes": 386712994,
+      "manifest_sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3",
+      "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+      "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+    },
+    "quarantine_parquet": {
+      "bytes": 16665663,
+      "manifest_bytes": 16665663,
+      "manifest_sha256": "fb98787dd4c5d1a7a0fdb64fcdacd1b02bc2080ab3716c0a803e0ccdfec03fbe",
+      "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_raw_flip_quarantine_v1.0.244.parquet",
+      "sha256": "fb98787dd4c5d1a7a0fdb64fcdacd1b02bc2080ab3716c0a803e0ccdfec03fbe"
+    },
+    "release_schema": {
+      "bytes": 4639,
+      "path": "pipelines/p2_chirality/apjs_release_v1.0.244/SCHEMA.json",
+      "sha256": "e432f944768ad1e1504f7548991502644b59346eb0a02ecd31970a1861adeb98"
+    },
+    "validator": {
+      "bytes": 38777,
+      "path": "pipelines/p2_chirality/build_apjs_release_v1_0_244.py",
+      "sha256": "157e0a1ad822760a550adbc83ec6320f36b0d4cc8e17689445bfd666a418636a"
+    },
+    "validator_schema_source": {
+      "bytes": 5662,
+      "path": "pipelines/p2_chirality/apjs_release_schema_v1_0_244.json",
+      "sha256": "2bf5a5314361a9cfbf20ef67a17e37276401c307de68d3925039fa2eb28a2830"
+    }
+  },
+  "schema": "p4-catalog-c-semantic-validation-receipt/v1",
+  "validation_result": {
+    "calibrated_probability_claim": false,
+    "counts": {
+      "catalog_rows": 8474531,
+      "primary_hc_rows": 949584,
+      "strict_primary_hc_rows": 890069,
+      "unsafe_catalog_rows": 249066,
+      "unsafe_primary_hc_rows": 59515
+    },
+    "primary_raw_score_columns_absent": true,
+    "primary_semantics": {
+      "batch_size": 250000,
+      "gates": {
+        "class_argmax_mismatch": true,
+        "class_not_allowed": true,
+        "coordinate_out_of_range": true,
+        "duplicate_object_id": true,
+        "is_spiral_mismatch": true,
+        "null_object_id": true,
+        "null_semantic_value": true,
+        "primary_hc_mismatch": true,
+        "score_eq_max_mismatch": true,
+        "score_nonfinite": true,
+        "score_out_of_bounds": true,
+        "score_simplex_mismatch": true
+      },
+      "rows_scanned": 8474531,
+      "score_contract": {
+        "argmax_tie_order": [
+          "CW",
+          "CCW",
+          "NOT_SPIRAL"
+        ],
+        "calibrated_probability_claim": false,
+        "simplex_atol": 2e-06,
+        "structural_softmax_simplex": true
+      },
+      "status": "PASS",
+      "uniqueness_backend": "temporary SQLite PRIMARY KEY (disk-backed)",
+      "violation_counts": {
+        "class_argmax_mismatch": 0,
+        "class_not_allowed": 0,
+        "coordinate_out_of_range": 0,
+        "duplicate_object_id": 0,
+        "is_spiral_mismatch": 0,
+        "null_object_id": 0,
+        "null_semantic_value": 0,
+        "primary_hc_mismatch": 0,
+        "score_eq_max_mismatch": 0,
+        "score_nonfinite": 0,
+        "score_out_of_bounds": 0,
+        "score_simplex_mismatch": 0
+      }
+    },
+    "quarantine_equivalence": {
+      "gates": {
+        "quarantine_duplicate_object_id": true,
+        "quarantine_extra_object_id": true,
+        "quarantine_missing_unsafe_object_id": true,
+        "quarantine_null_object_id": true,
+        "quarantine_null_primary_hc": true,
+        "quarantine_primary_hc_mismatch": true,
+        "quarantine_rows_equal_primary_unsafe_rows": true
+      },
+      "rows_scanned": {
+        "primary_unsafe_rows": 249066,
+        "quarantine_duplicate_object_id": 0,
+        "quarantine_extra_object_id": 0,
+        "quarantine_missing_unsafe_object_id": 0,
+        "quarantine_null_object_id": 0,
+        "quarantine_null_primary_hc": 0,
+        "quarantine_primary_hc_mismatch": 0,
+        "quarantine_rows": 249066
+      },
+      "status": "PASS",
+      "uniqueness_backend": "temporary SQLite PRIMARY KEY (disk-backed)"
+    },
+    "quarantine_reason_code": "RAW_EQ_PIPELINE_PASS_MISMATCH_GT_1E3",
+    "schema": "p4-apjs-release-manifest/v1",
+    "semantic_counts": {
+      "primary_hc_rows": 949584,
+      "quarantine_bad_reason_rows": 0,
+      "quarantine_primary_hc_rows": 59515,
+      "quarantine_science_enabled_rows": 0,
+      "strict_primary_hc_rows": 890069,
+      "unsafe_catalog_rows": 249066,
+      "unsafe_primary_hc_rows": 59515
+    },
+    "semantic_gates": {
+      "primary_hc_rows": true,
+      "primary_raw_score_columns_absent": true,
+      "quarantine_do_not_use": true,
+      "quarantine_primary_hc_rows": true,
+      "quarantine_reason_codes": true,
+      "strict_primary_hc_rows": true,
+      "unsafe_catalog_rows": true,
+      "unsafe_primary_hc_rows": true
+    },
+    "status": "PASS"
+  }
+}

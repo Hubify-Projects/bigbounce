@@ -1,0 +1,46 @@
+{
+  "affected_configs": [
+    "apod_fwhm_0p5",
+    "apod_fwhm_3p0",
+    "mask_b30"
+  ],
+  "invalid_evidence": "the failed pre-fix purify_b attempt is excluded",
+  "later_purification_fix_commit": "f2564cf4716e906f7b1b0521b0d79b0880aa576d",
+  "original_receipts_preserved": true,
+  "process_start_commit": "201f8ef69d2487ab5b109ec486d10f1b97319ad8",
+  "process_started_local": "2026-07-16T04:22:28-07:00",
+  "schema": "bigbounce.p1b-c10-source-correction/v1",
+  "scope": "non-purification runs only; field_harmonic_kwargs returns the same lmax argument for purify_b=False",
+  "shards": [
+    {
+      "config_name": "apod_fwhm_0p5",
+      "original_receipt_path": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/c10_apod_fwhm_0p5.json.receipt.json",
+      "original_receipt_sha256": "0d1d42d4bdd84f3160d6d41e32d35a3dbca62b48459a9b335f44f089d7a5496e",
+      "original_recorded_code_sha256": "b801bc1464939584ab03304d52ddc959535781f988976ad7b22273ae284d4460",
+      "result_path": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/c10_apod_fwhm_0p5.json",
+      "result_sha256": "c42617302ec327e0fabbc2d8499dbda80858bd721f5f04549465dace8432a7ce"
+    },
+    {
+      "config_name": "apod_fwhm_3p0",
+      "original_receipt_path": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/c10_apod_fwhm_3p0.json.receipt.json",
+      "original_receipt_sha256": "3f11002d9981eabd2a8ce09bcb724609b3df5214d751778642e33a023c1a9f56",
+      "original_recorded_code_sha256": "b801bc1464939584ab03304d52ddc959535781f988976ad7b22273ae284d4460",
+      "result_path": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/c10_apod_fwhm_3p0.json",
+      "result_sha256": "f34146211244c81dc938ecb0aeb95ed7cabda1d21600491cfe28361f296b8514"
+    },
+    {
+      "config_name": "mask_b30",
+      "original_receipt_path": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/c10_mask_b30.json.receipt.json",
+      "original_receipt_sha256": "540889cd759686d85010134abb917db883f1a3b84a94fc70d0c7ce966943d465",
+      "original_recorded_code_sha256": "b801bc1464939584ab03304d52ddc959535781f988976ad7b22273ae284d4460",
+      "result_path": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/c10_mask_b30.json",
+      "result_sha256": "12a2345e40ae545aa9299fb5dbca3792715b984e35cf1a765744c5d72651acd9"
+    }
+  ],
+  "source_diff_paths": [
+    "reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py",
+    "reproducibility/p1_namaster_500mc/scripts/multipole_contract.py"
+  ],
+  "source_diff_sha256": "4680faf42b7cfc78206b504f64f994236cf2c55ba9f803c7c56a196f4b8a8668",
+  "status": "CORRECTIVE_PROVENANCE_NOT_RESULT_REWRITE"
+}

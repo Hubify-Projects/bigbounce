@@ -1,0 +1,15 @@
+{
+  "schema": "bigbounce.declared-gaps.v1",
+  "paper": "P5",
+  "reviewed_version": "v0.1.131-2026-07-14",
+  "closure_version": "v0.1.132-2026-07-14",
+  "readiness_changed": false,
+  "open_gaps": [
+    {"id": "p5-paper-iv-final-contract", "gate": "Final Paper IV public labels, weights, provenance, and P5 re-verification", "status": "open"},
+    {"id": "p5-desivast-selection-function", "gate": "Exact DESIVAST/BGS angular-plus-radial selection function is unavailable; geometric footprint is not promoted to that selection function", "status": "open"},
+    {"id": "p5-label-validation-power", "gate": "Classifier-label bias validation remains weak/underpowered for a physical-handedness claim", "status": "open"},
+    {"id": "p5-redshift-space-scope", "gate": "Inference remains redshift-space and classifier-label scoped; no real-space or cosmological claim", "status": "open"},
+    {"id": "p5-immutable-release", "gate": "Public immutable Git tag, complete release artifact verification, and archival DOI", "status": "open"},
+    {"id": "p5-human-editorial", "gate": "Human AJ editorial and authorship review", "status": "open"}
+  ]
+}

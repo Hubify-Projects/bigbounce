@@ -1,0 +1,46 @@
+{
+  "method": "Independent recomputation from the four integer counts printed in Tables X/XIV; no manuscript analysis function imported",
+  "software": "Python 3 + SciPy/NumPy",
+  "counts": {
+    "void": {"n_cw": 28339, "n": 57081},
+    "nonvoid_footprint": {"n_cw": 126202, "n": 253276}
+  },
+  "fractions": {
+    "void": 0.49646992869781537,
+    "nonvoid": 0.49827855777886576,
+    "delta_nonvoid_minus_void": 0.0018086290810503947
+  },
+  "independent_binomial": {
+    "se_unpooled": 0.002316587264158612,
+    "ci95_normal": [-0.002731798523744661, 0.00634905668584545],
+    "z_pooled": 0.7807198172448644,
+    "p_two_sided": 0.43496730245682114
+  },
+  "conditional_label_permutation_exact": {
+    "method": "Fisher exact two-sided on fixed 2x2 margins",
+    "odds_ratio": 1.007260957576207,
+    "p_two_sided": 0.4363366724481047
+  },
+  "binomial_likelihood_ratio": {
+    "two_log_L_alt_over_null": 0.6095279811415821,
+    "df": 1,
+    "p_chi2": 0.4349655889434715,
+    "null_common_p": 0.4979459138991548
+  },
+  "jeffreys": {
+    "void_ci95": [0.4923685173966406, 0.5005716979750905],
+    "nonvoid_ci95": [0.49633135115072907, 0.5002258037502395],
+    "delta_posterior_ci95_mc": [-0.0027424867108788637, 0.0063594163803925696],
+    "posterior_probability_delta_le_zero_mc": 0.218222,
+    "mc_draws": 500000,
+    "seed": 20260714
+  },
+  "bonferroni5": {
+    "z": [0.31, -1.12, -0.05, -1.25, 0.72],
+    "two_sided_p_from_z": [0.7565609563559614, 0.2627137620854615, 0.960122388323255, 0.2112995473337107, 0.47152499555850236],
+    "max_abs_z": 1.25,
+    "min_raw_p": 0.2112995473337107,
+    "bonferroni_adjusted_min_p": 1.0,
+    "critical_abs_z_alpha_0p05": 2.575829303548901
+  }
+}

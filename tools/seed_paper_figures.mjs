@@ -32,6 +32,12 @@ const CONVEX_URL =
   process.env.CONVEX_URL || "https://brilliant-panther-471.convex.cloud";
 const client = new ConvexHttpClient(CONVEX_URL);
 
+const paperFlagIndex = process.argv.indexOf("--paper");
+const requestedPaper = paperFlagIndex >= 0 ? process.argv[paperFlagIndex + 1] : null;
+if (paperFlagIndex >= 0 && !requestedPaper) {
+  throw new Error("--paper requires a paper slug, for example --paper paper-1b");
+}
+
 // Per-paper config: slug, .tex source, version (read from papers.ts later if
 // we want, but the seed records the version-at-time-of-seed inline), and
 // the candidate public image roots to probe for each figure file.
@@ -204,7 +210,12 @@ function captionTitle(caption) {
 
 // Parse all \includegraphics + their nearest caption/label block from a .tex.
 function extractFigures(texPath) {
-  const src = readFileSync(texPath, "utf8");
+  // Strip \begin{comment}...\end{comment} blocks and %-commented lines so
+  // legacy manuscripts parked inside comment environments (e.g. P1A's old
+  // 29-page draft) can never seed stale figures/captions (2026-07-20 fix).
+  const src = readFileSync(texPath, "utf8")
+    .replace(/\\begin\{comment\}[\s\S]*?\\end\{comment\}/g, "")
+    .replace(/^[ \t]*%.*$/gm, "");
   const out = [];
   // Walk the file looking for figure/figure* environments OR bare
   // \includegraphics; for each, find the nearest \caption{...} after it.
@@ -346,7 +357,14 @@ async function main() {
   let totalUpserted = 0;
   const counts = {};
 
-  for (const paper of PAPERS) {
+  const selectedPapers = requestedPaper
+    ? PAPERS.filter((paper) => paper.slug === requestedPaper)
+    : PAPERS;
+  if (requestedPaper && selectedPapers.length === 0) {
+    throw new Error(`unknown paper slug: ${requestedPaper}`);
+  }
+
+  for (const paper of selectedPapers) {
     const texPath = join(REPO, paper.tex);
     if (!existsSync(texPath)) {
       console.warn(`✗ ${paper.label}: .tex not found at ${paper.tex}`);

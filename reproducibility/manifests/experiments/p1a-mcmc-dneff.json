@@ -1,0 +1,96 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1a-mcmc-dneff",
+  "title": "MCMC full-tension / Planck+BAO+SN / third-combo chains (delta N_eff)",
+  "program": "bounce-theory",
+  "paper": "P1A",
+  "kind": "mcmc",
+  "inputs": [
+    {
+      "name": "Cobaya full-tension config",
+      "type": "internal-artifact",
+      "locator": "reproducibility/cosmology/cobaya_full_tension.yaml",
+      "checksum": null
+    },
+    {
+      "name": "Cobaya Planck+BAO+SN config",
+      "type": "internal-artifact",
+      "locator": "reproducibility/cosmology/cobaya_planck_bao_sn.yaml",
+      "checksum": null
+    },
+    {
+      "name": "Cobaya Planck config",
+      "type": "internal-artifact",
+      "locator": "reproducibility/cosmology/cobaya_planck.yaml",
+      "checksum": null
+    },
+    {
+      "name": "Cobaya Planck+BAO config",
+      "type": "internal-artifact",
+      "locator": "reproducibility/cosmology/cobaya_planck_bao.yaml",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "reproducibility/cosmology/cobaya_full_tension.yaml",
+      "entrypoint": "cobaya-run cobaya_full_tension.yaml",
+      "sha256": null
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_planck_bao_sn.yaml",
+      "entrypoint": "cobaya-run cobaya_planck_bao_sn.yaml",
+      "sha256": null
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_planck.yaml",
+      "entrypoint": "cobaya-run cobaya_planck.yaml",
+      "sha256": null
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_planck_bao.yaml",
+      "entrypoint": "cobaya-run cobaya_planck_bao.yaml",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "cobaya, numpy, scipy, astropy (see reproducibility/cosmology/)",
+    "hardware": "cpu-32vcpu-64gb"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": null,
+    "pod_id_or_host": "RunPod CPU5 Compute-Optimized, 32 vCPU/64GB (manifests/MANIFEST.md) \u2014 no GPU used",
+    "date": "2026-03-11",
+    "wall_clock": ">=15h wall-clock observed from hourly manifest snapshots 2026-03-11 02:00 to 17:00 UTC",
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod (32-vCPU CPU-optimized instance)",
+    "est_wall_clock": "12-18 hours to R-1<0.01 convergence",
+    "est_cost_usd": 8.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Cobaya configs + covmats committed; dollar total was not explicitly logged in the original manifest, only the pod class \u2014 estimate based on typical CPU5-class RunPod hourly rate x observed wall-clock."
+  },
+  "outputs": [
+    {
+      "locator": "reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/full_tension/",
+      "type": "dataset",
+      "checksum": null
+    },
+    {
+      "locator": "reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/planck_bao_sn/",
+      "type": "dataset",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm sample counts (176,240 / 132,949 / ~114,992 = 424,181 total) and R-1<0.01 convergence; posterior means for delta N_eff within numeric tolerance (<0.02 absolute) of the committed chains.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P1A \u2014 MCMC bullet",
+    "reproducibility/cosmology/paper1_clean_restart_sync/manifests/MANIFEST.md",
+    "project-context/SSOT/paper-1/status.md"
+  ]
+}

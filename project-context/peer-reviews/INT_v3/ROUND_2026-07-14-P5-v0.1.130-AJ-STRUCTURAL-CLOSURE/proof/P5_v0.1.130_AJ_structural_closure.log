@@ -1,0 +1,1059 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.26)  14 JUL 2026 11:40
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**p5_desi_chirality.tex
+(./p5_desi_chirality.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+(/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/revtex/revtex4-2.cls
+Document Class: revtex4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+ Copyright (c) 2019 American Physical Society.
+ mailto:revtex@aps.org
+ Licensed under the LPPL:
+http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt
+ Arthur Ogawa <arthur_ogawa at sbcglobal dot net>
+ Based on work by David Carlisle <david at dcarlisle.demon.co.uk>
+ Version (4.2d--4.2f): Modified by Mark Doyle and Phelype Oleinik
+ .
+ltxutil[2022/06/05 4.2f utilities package (portions licensed from W. E. Baxter web at superscript.com)]
+LaTeX Info: Redefining \@centercr on input line 356.
+Class revtex4-2 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfootnote on input line 492.
+Class revtex4-2 Info: Repairing broken LateX \@sect on input line 814.
+\intertabularlinepenalty=\count276
+\@tbpen=\count277
+\@arstrutbox@hline=\box53
+Class revtex4-2 Info: Repairing broken LaTeX \@xbitor on input line 1845.
+Class revtex4-2 Info: Making \typeout \long on input line 2110.
+ltxfront[2022/06/05 4.2f frontmatter package (AO,DPC,MD)]
+\c@affil=\count278
+\c@collab=\count279
+\absbox=\box54
+ltxgrid[2022/06/05 4.2f page grid package (portions licensed from W. E. Baxter web at superscript.com)]
+\c@linecount=\count280
+\output@latex=\toks17
+\box@size@1=\box55
+\box@size@2=\box56
+\@protection@box=\box57
+\@topmark@saved=\toks18
+\footins@saved=\box58
+\footins@recovered=\box59
+\column@recovered=\box60
+\pagesofar=\box61
+\footsofar=\box62
+\pagegrid@col=\count281
+Class revtex4-2 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and \\  on input line 5676.
+\c@part=\count282
+\c@section=\count283
+\c@subsection=\count284
+\c@subsubsection=\count285
+\c@paragraph=\count286
+\c@subparagraph=\count287
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\c@figure=\count288
+\fbox@1=\box63
+\c@table=\count289
+\fbox@2=\box64
+\c@video=\count290
+\fbox@4=\box65
+\@bibdataout=\write3
+\widetext@top=\box66
+\widetext@bot=\box67
+Class revtex4-2 Info: Selecting society aps on input line 7669.
+(/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/revtex/aps4-2.rtx
+File: aps4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+Class revtex4-2 Info: RevTeX society APS selected on input line 40.
+)
+Class revtex4-2 Info: Selecting journal prd on input line 7671.
+Class revtex4-2 Info: APS journal PRD selected on input line 7672.
+
+
+Class revtex4-2 Warning: No type size specified, using default 10.
+
+(/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/revtex/aps10pt4-2.rtx
+File: aps10pt4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+Class revtex4-2 Info: RevTeX pointsize 10pt selected on input line 39.
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2025/02/16 v1.05 Text only upper/lower case changing (DPC)
+Package textcase Info: Defining Legacy names on input line 20.
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count291
+)
+Class revtex4-2 Info: Repairing natbib's \BibitemShut on input line 7676.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/revtex/revsymb4-2.sty
+Package: revsymb4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+LaTeX Info: Redefining \REV@mathfrak on input line 128.
+)) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2026/05/19 v2.18d AMS math features
+\@mathmargin=\skip53
+
+For additional information on amsmath, use the `?' option.
+(/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen150
+)
+LaTeX Info: Redefining \text on input line 28.
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen151
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count292
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count293
+\leftroot@=\count294
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count295
+\DOTSCASE@=\count296
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box68
+\strutbox@=\box69
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen152
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count297
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count298
+\dotsspace@=\muskip18
+\c@parentequation=\count299
+\dspbrk@lvl=\count300
+\tag@help=\toks20
+\row@=\count301
+\column@=\count302
+\maxfields@=\count303
+\andhelp@=\toks21
+\eqnshift@=\dimen153
+\alignsep@=\dimen154
+\tagshift@=\dimen155
+\tagwidth@=\dimen156
+\totwidth@=\dimen157
+\lineht@=\dimen158
+\@envbody=\toks22
+\multlinegap=\skip54
+\multlinetaggap=\skip55
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2965.
+LaTeX Info: Redefining \] on input line 2966.
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+LaTeX Info: Redefining \frak on input line 111.
+LaTeX Info: Redefining \Bbb on input line 113.
+)) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2025/10/21 v1.2g Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+LaTeX Info: Redefining \bm on input line 219.
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
+\KV@toks@=\toks24
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen159
+\Gin@req@width=\dimen160
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+
+Package nameref Warning: The definition of \label has changed! 
+(nameref)                Check your packages! 
+(nameref)                Replacing it with the kernel definition on input line 161.
+
+\c@section@level=\count304
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count305
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen161
+\Hy@linkcounter=\count306
+\Hy@pagecounter=\count307
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-06-17 v7.01r Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count308
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-06-17 v7.01r Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4466.
+LaTeX Info: Redefining \href on input line 4716.
+\c@Hy@tempcnt=\count309
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen162
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count310
+\Field@Width=\dimen163
+\Fld@charsize=\dimen164
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count311
+\c@Item=\count312
+\c@Hfootnote=\count313
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2026-06-17 v7.01r Hyperref driver for pdfTeX
+\Fld@listcount=\count314
+\c@bookmark@seq@number=\count315
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip56
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen165
+\lightrulewidth=\dimen166
+\cmidrulewidth=\dimen167
+\belowrulesep=\dimen168
+\belowbottomsep=\dimen169
+\aboverulesep=\dimen170
+\abovetopsep=\dimen171
+\cmidrulesep=\dimen172
+\cmidrulekern=\dimen173
+\defaultaddspace=\dimen174
+\@cmidla=\count316
+\@cmidlb=\count317
+\@aboverulesep=\dimen175
+\@belowrulesep=\dimen176
+\@thisruleclass=\count318
+\@lastruleclass=\count319
+\@thisrulewidth=\dimen177
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 14.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 14.
+Class revtex4-2 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 799.
+Class revtex4-2 Info: cite was not loaded (OK!) on input line 799.
+Class revtex4-2 Info: mcite was not loaded (OK!) on input line 799.
+Class revtex4-2 Info: multicol was not loaded (OK!) on input line 799.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count320
+) (./p5_desi_chirality.aux)
+\openout1 = `p5_desi_chirality.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 799.
+LaTeX Font Info:    ... okay on input line 799.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count321
+\scratchdimen=\dimen178
+\scratchbox=\box70
+\nofMPsegments=\count322
+\nofMParguments=\count323
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count324
+\MPscratchDim=\dimen179
+\MPnumerator=\count325
+\makeMPintoPDFobject=\count326
+\everyMPtoPDFconversion=\toks26
+) (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package hyperref Info: Link coloring ON on input line 799.
+ (./p5_desi_chirality.out) (./p5_desi_chirality.out)
+\@outlinefile=\write4
+\openout4 = `p5_desi_chirality.out'.
+
+Class revtex4-2 Info: Taking \maketitle back from hyperref on input line 799.
+\openout3 = `p5_desi_chiralityNotes.bib'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 815.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 815.
+ (/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+Class revtex4-2 Warning: The \footnote command is not legal on the title page; using \thanks instead might suit you: consult the manual for details.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 835.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 858--865
+[]\OT1/cmr/m/n/10 The present pa-per is a fo-cused, ex-ploratory
+ []
+
+
+Underfull \hbox (badness 3758) in paragraph at lines 858--865
+\OT1/cmr/m/n/10 con-straint and does not dis-crim-i-nate cos-mo-log-i-cal
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 875--882
+\OT1/cmr/m/n/10 ig-nated pri-mary was changed af-ter re-view from an
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 886.
+(/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 886.
+ [1{/Users/houstongolden/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 974.
+
+Underfull \hbox (badness 10000) in paragraph at lines 990--1006
+[]\OT1/cmr/m/n/10 We use the canon-i-cal \OT1/cmtt/m/n/10 zall-pix-iron.fits
+ []
+
+
+Underfull \hbox (badness 1253) in paragraph at lines 990--1006
+\OT1/cmr/m/n/10 HEALPix-coadded red-shift cat-a-log from DESI DR1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 990--1006
+[][]$\OT1/cmtt/m/n/10 https : / / data . desi . lbl . gov / public / dr1 / spectro /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 990--1006
+\OT1/cmtt/m/n/10 redux / iron / zcatalog/$[][]\OT1/cmr/m/n/10 ), re-stricted to \OT1/cmtt/m/n/10 ZWARN==0\OT1/cmr/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1017
+[]\OT1/cmr/m/n/10 We com-pute nearest-neighbour an-gu-lar sep-a-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1017
+\OT1/cmr/m/n/10 ra-tions on the ce-les-tial sphere us-ing \OT1/cmr/m/sc/10 as-tropy
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1017
+\OT1/cmtt/m/n/10 SkyCoord.match[]to[]catalog[]sky\OT1/cmr/m/n/10 . The pri-mary
+ []
+
+
+Underfull \hbox (badness 1642) in paragraph at lines 1020--1044
+\OT1/cmr/m/n/10 (DR8) Trac-tor as-trom-e-try, so matched pairs dif-fer
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 1020--1044
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0[]$ ac-cep-tance ra-dius is there-fore con-ser-va-tive for
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 1020--1044
+\OT1/cmr/m/n/10 small sub-set of ob-jects whose co-or-di-nates were re-
+ []
+
+[2{/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+<fig_z_histogram.png, id=280, 472.28445pt x 283.65974pt>
+File: fig_z_histogram.png Graphic file (type png)
+<use fig_z_histogram.png>
+Package pdftex.def Info: fig_z_histogram.png  used on input line 1060.
+(pdftex.def)             Requested size: 246.0pt x 147.75063pt.
+
+Underfull \hbox (badness 1057) in paragraph at lines 1142--1142
+ \OT1/cmr/m/n/8 has nu-mer-i-cal value $\OML/cmm/m/it/8 D=\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 h[] []\OT1/cmr/m/n/8 ) = \OML/cmm/m/it/8 h D=\OT1/cmr/m/n/8 (1 []) = \OML/cmm/m/it/8 h \OMS/cmsy/m/n/8 ^^A
+ []
+
+
+Underfull \hbox (badness 3199) in paragraph at lines 1142--1142
+ \OML/cmm/m/it/8 D\OT1/cmr/m/n/8 [[]]$, so mul-ti-ply-ing the value in Mpc by $\OML/cmm/m/it/8 h$ \OT1/cmr/m/n/8 yields
+ []
+
+
+Underfull \hbox (badness 1205) in paragraph at lines 1142--1142
+ \OT1/cmr/m/n/8 the value in $\OML/cmm/m/it/8 h[]$\OT1/cmr/m/n/8 Mpc. With Planck 2018 $\OML/cmm/m/it/8 h \OT1/cmr/m/n/8 = 0\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 6766$,
+ []
+
+
+Underfull \hbox (badness 3792) in paragraph at lines 1142--1142
+ \OT1/cmr/m/n/8 match-ing the san-ity an-chor. The pipeline im-ple-ments
+ []
+
+
+Underfull \hbox (badness 1983) in paragraph at lines 1142--1142
+ \OT1/cmr/m/n/8 this as \OT1/cmtt/m/n/8 chi = Planck18.comoving[]distance(z).value; chi =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1143--1146
+ []\OT1/cmr/m/n/10 Map to Carte-sian $(\OML/cmm/m/it/10 X; Y; Z\OT1/cmr/m/n/10 ) =
+ []
+
+[3 <./fig_z_histogram.png>]
+Underfull \hbox (badness 1067) in paragraph at lines 1171--1173
+ []\OT1/cmr/m/n/10 Gaussian-smooth $\OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 in Fourier space with ker-
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 1207--1215
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; N[]  \OT1/cmr/m/n/10 =  256[])$ the in-footprint vol-ume frac-tions
+ []
+
+<fig_p5_volume_fractions_pie.png, id=313, 383.031pt x 252.945pt>
+File: fig_p5_volume_fractions_pie.png Graphic file (type png)
+<use fig_p5_volume_fractions_pie.png>
+Package pdftex.def Info: fig_p5_volume_fractions_pie.png  used on input line 1218.
+(pdftex.def)             Requested size: 246.0pt x 162.45546pt.
+[4 <./fig_p5_volume_fractions_pie.png>]
+Underfull \hbox (badness 1337) in paragraph at lines 1288--1293
+[]\OT1/cmr/m/n/10 We ex-plic-itly com-pare each $\OML/cmm/m/it/10 ^^[[]$ \OT1/cmr/m/n/10 against the
+ []
+
+[5]
+Underfull \hbox (badness 6236) in paragraph at lines 1395--1401
+\OT1/cmr/m/n/10 4$ cluster-sandwich $[] = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00341274$, 95% CI
+ []
+
+[6]
+<fig_p5_cw_by_env_bar.png, id=373, 411.939pt x 296.307pt>
+File: fig_p5_cw_by_env_bar.png Graphic file (type png)
+<use fig_p5_cw_by_env_bar.png>
+Package pdftex.def Info: fig_p5_cw_by_env_bar.png  used on input line 1707.
+(pdftex.def)             Requested size: 246.0pt x 176.94461pt.
+
+Underfull \hbox (badness 3482) in paragraph at lines 1732--1747
+[]\OT1/cmr/m/n/10 The neg-a-tive $\OML/cmm/m/it/10 ^^[$ \OT1/cmr/m/n/10 val-ues in fil-a-ment and clus-ter
+ []
+
+[7]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1753.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1753.
+
+
+Class revtex4-2 Warning: Deferred float stuck during \clearpage processing.
+
+<fig_cw_vs_z.png, id=397, 449.88075pt x 311.4837pt>
+File: fig_cw_vs_z.png Graphic file (type png)
+<use fig_cw_vs_z.png>
+Package pdftex.def Info: fig_cw_vs_z.png  used on input line 1811.
+(pdftex.def)             Requested size: 246.0pt x 170.32321pt.
+[8 <./fig_p5_cw_by_env_bar.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1837.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1837.
+
+
+Class revtex4-2 Warning: Deferred float stuck during \clearpage processing.
+
+<fig_p5_cw_vs_density.png, id=414, 743.4174pt x 303.0522pt>
+File: fig_p5_cw_vs_density.png Graphic file (type png)
+<use fig_p5_cw_vs_density.png>
+Package pdftex.def Info: fig_p5_cw_vs_density.png  used on input line 1886.
+(pdftex.def)             Requested size: 484.49844pt x 197.50412pt.
+[9 <./fig_cw_vs_z.png>]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2025.
+ [10 <./fig_p5_cw_vs_density.png>]
+Underfull \hbox (badness 1997) in paragraph at lines 2035--2046
+ []\OT1/cmr/m/it/10 c. Filament-class within-class de-com-po-si-tion.[] \OT1/cmr/m/n/10 Re-
+ []
+
+
+Underfull \hbox (badness 2626) in paragraph at lines 2090--2173
+ []\OT1/cmr/m/it/10 d. T-Web class vs. target-program or-thog-o-nal-ity.[]
+ []
+
+
+Underfull \hbox (badness 2951) in paragraph at lines 2090--2173
+\OT1/cmr/m/n/10 re-lies on T-Web en-vi-ron-men-tal clas-si-fi-ca-tion be-ing
+ []
+
+
+Underfull \hbox (badness 2293) in paragraph at lines 2090--2173
+\OT1/cmr/m/n/10 ap-prox-i-mately or-thog-o-nal to the \OT1/cmtt/m/n/10 bright\OT1/cmr/m/n/10 /\OT1/cmtt/m/n/10 dark \OT1/cmr/m/n/10 tar-
+ []
+
+
+Underfull \hbox (badness 1389) in paragraph at lines 2090--2173
+\OT1/cmr/m/n/10 get split: if T-Web class were strongly cor-re-lated
+ []
+
+
+Underfull \hbox (badness 2503) in paragraph at lines 2090--2173
+\OT1/cmr/m/n/10 with tar-get pro-gram, then a gen-uine target-class-
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 2090--2173
+\OT1/cmr/m/n/10 ade as an environment-class sig-nal (or vice versa).
+ []
+
+[11]
+<fig_p5_healpix_skymap_nside32.png, id=463, 618.18646pt x 777.73639pt>
+File: fig_p5_healpix_skymap_nside32.png Graphic file (type png)
+<use fig_p5_healpix_skymap_nside32.png>
+Package pdftex.def Info: fig_p5_healpix_skymap_nside32.png  used on input line 2264.
+(pdftex.def)             Requested size: 433.50311pt x 545.40862pt.
+ [12] [13 <./fig_p5_healpix_skymap_nside32.png>]
+<fig_p5_phase2_sensitivity_heatmap.png, id=495, 364.2408pt x 281.853pt>
+File: fig_p5_phase2_sensitivity_heatmap.png Graphic file (type png)
+<use fig_p5_phase2_sensitivity_heatmap.png>
+Package pdftex.def Info: fig_p5_phase2_sensitivity_heatmap.png  used on input line 2394.
+(pdftex.def)             Requested size: 246.0pt x 190.35867pt.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2407.
+ [14 <./fig_p5_phase2_sensitivity_heatmap.png>]
+Underfull \hbox (badness 1424) in paragraph at lines 2490--2501
+ \OT1/cmr/m/n/10 label-shuffle per-mu-ta-tion null on the per-class
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 2503--2516
+[]\OT1/cmr/m/n/10 The com-bined frame-work con-verts the de-scrip-tive
+ []
+
+[15]
+Underfull \hbox (badness 7151) in paragraph at lines 2519--2529
+[]\OT1/cmr/m/n/10 The des-ig-nated pri-mary is the released-parent
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2519--2529
+\OT1/cmr/m/n/10 covariate-standardized anal-y-sis re-ported be-low:
+ []
+
+
+Underfull \hbox (badness 4739) in paragraph at lines 2519--2529
+\OML/cmm/m/it/10 N \OT1/cmr/m/n/10 = 145[]766$ GAL-ZONE rows with \OT1/cmtt/m/n/10 OUT$\OT1/cmr/m/n/10 = 0$,
+ []
+
+
+Underfull \hbox (badness 2134) in paragraph at lines 2530--2541
+\OT1/cmr/m/n/10 ApJ 982, 38 [[]]) is the pub-licly re-leased, peer-
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 2695.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 2695.
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 2695.
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 2691--2710
+[]\OT1/cmr/m/n/10 The DE-SI-VAST pub-lic re-lease at [][]$\OT1/cmtt/m/n/10 https : / / data .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2691--2710
+\OT1/cmtt/m/n/10 desi . lbl . gov / public / dr1 / vac / dr1 / desivast / v1 . 0/$[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2691--2710
+\OT1/cmr/m/n/10 pro-vides the VoidFinder NGC/SGC FITS files
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2691--2710
+\OT1/cmr/m/n/10 (\OT1/cmtt/m/n/10 DESIVAST[]BGS[]VOLLIM[]VoidFinder[]\OMS/cmtt/m/n/10 f\OT1/cmtt/m/n/10 NGC,SGC\OMS/cmtt/m/n/10 g\OT1/cmtt/m/n/10 .fits\OT1/cmr/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 2790) in paragraph at lines 2691--2710
+\OT1/cmr/m/n/10 con-sis-tent with the DE-SI-VAST hole cat-a-log) and
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 2691--2710
+\OT1/cmr/m/n/10 holes re-turns $0\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 6$ \OT1/cmr/bx/n/10 T-Web ``void'' spi-rals in-side
+ []
+
+[16]
+Underfull \hbox (badness 1147) in paragraph at lines 2747--2788
+\OT1/cmr/m/n/10 galax-ies ($8\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 39%$ of the low-$\OML/cmm/m/it/10 z$ \OT1/cmr/m/n/10 matched sam-ple) and
+ []
+
+[17]
+Underfull \hbox (badness 1137) in paragraph at lines 2895--2924
+\OT1/cmr/m/n/10 VoidFinder sen-si-tiv-ity as-sign-ment uses the \OT1/cmr/m/it/10 point-in-
+ []
+
+
+Underfull \hbox (badness 3861) in paragraph at lines 3039--3051
+[]\OT1/cmr/m/n/10 This DESIVAST-anchored re-analysis is a large
+ []
+
+[18]
+Underfull \hbox (badness 3460) in paragraph at lines 3052--3084
+[]\OT1/cmr/bx/n/10 DESIVAST target-program sen-si-tiv-ity. \OT1/cmr/m/n/10 A
+ []
+
+
+Underfull \hbox (badness 1603) in paragraph at lines 3114--3141
+\OT1/cmr/m/n/10 re-leased DE-SI-VAST GAL-ZONE TAR-GET uni-verse:
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 3114--3141
+\OT1/cmr/m/n/10 GETIDs ($694[]642$ to-tal), yield-ing $145[]789$ archived
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 3114--3141
+\OT1/cmr/m/n/10 matched rows and $145[]766$ pri-mary rows af-ter the
+ []
+
+[19]
+Underfull \hbox (badness 2237) in paragraph at lines 3238--3278
+\OT1/cmr/m/n/10 ana-logues (V2-REVOLVER catalog-native $\OMS/cmtt/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 52$ vs
+ []
+
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 3439--3488
+[]\OT1/cmr/m/n/10 The clean-est for-mu-la-tion of the environment-
+ []
+
+
+Underfull \hbox (badness 2875) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 chi-ral-ity sig-nal \OT1/cmr/m/it/10 af-ter sub-tract-ing \OT1/cmr/m/n/10 the P5 matched-
+ []
+
+
+Underfull \hbox (badness 1755) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 of the $812[]793$ env-labeled rows) over the $783[]820$
+ []
+
+
+Underfull \hbox (badness 1688) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 en-vi-ron-ment join | the T-Web en-vi-ron-ment ta-ble
+ []
+
+
+Underfull \hbox (badness 1210) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 coadd rows (bound-ary cells re-evaluated at slightly
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 dif-fer-ent pipeline red-shifts). The join-multiplicity
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 unique-galaxy monopole $0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 4972$ to 4 dec-i-mals, so
+ []
+
+
+Underfull \hbox (badness 1635) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 this di-ag-nos-tic con-clu-sion is in-vari-ant un-der ei-ther
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 3439--3488
+\OT1/cmr/m/n/10 un-der-ly-ing off-set), which is the prop-a-ga-tion of the
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 3501--3501
+\OT1/cmr/m/n/9 matched-spiral sub-sam-ple. All four classes fall within
+ []
+
+[22]
+<fig_p5_voids_vs_chirality_skymap.png, id=629, 906.2658pt x 1135.3617pt>
+File: fig_p5_voids_vs_chirality_skymap.png Graphic file (type png)
+<use fig_p5_voids_vs_chirality_skymap.png>
+Package pdftex.def Info: fig_p5_voids_vs_chirality_skymap.png  used on input line 3594.
+(pdftex.def)             Requested size: 458.99689pt x 575.02492pt.
+ [23] [24 <./fig_p5_voids_vs_chirality_skymap.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 3678--3711
+[]\OT1/cmr/m/n/10 To test whether the head-line environmental-
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 3678--3711
+\OT1/cmr/m/n/10 lie within $\OML/cmm/m/it/10 R[]$ \OT1/cmr/m/n/10 of the occupancy-footprint bound-ary
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 3678--3711
+\OT1/cmr/m/n/10 unique env-matched spi-rals and shifts the per-class
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 3766--3785
+ []\OT1/cmr/m/it/10 a. Grid-resolution con-ver-gence.[] \OT1/cmr/m/n/10 The canon-i-cal
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 3766--3785
+\OT1/cmr/m/n/10 (void $297\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 428\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 434$, fil-a-ment $415[]722\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 408[]187\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 407[]780$
+ []
+
+
+Underfull \hbox (badness 6775) in paragraph at lines 3835--3835
+[]\OT1/cmr/m/n/9 TABLE XVII. []Tempel+2014 FoF en-vi-ron-ment cross-
+ []
+
+[26]
+<fig_p5_vweb_vs_tempel_overlay.png, id=674, 778.5888pt x 316.5426pt>
+File: fig_p5_vweb_vs_tempel_overlay.png Graphic file (type png)
+<use fig_p5_vweb_vs_tempel_overlay.png>
+Package pdftex.def Info: fig_p5_vweb_vs_tempel_overlay.png  used on input line 3902.
+(pdftex.def)             Requested size: 484.49844pt x 196.97888pt.
+
+Underfull \hbox (badness 1735) in paragraph at lines 3948--3992
+\OMS/cmtt/m/n/10 f\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 06[]0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 16\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 45[]0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 48\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 37[]0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 40\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 04[]0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 06\OMS/cmtt/m/n/10 g$ \OT1/cmr/m/n/10 across the
+ []
+
+[27]
+Underfull \hbox (badness 6157) in paragraph at lines 4014--4020
+[]\OT1/cmr/m/n/10 A com-ple-men-tary pub-lic DR1 prod-uct, DE-SI-
+ []
+
+[28 <./fig_p5_vweb_vs_tempel_overlay.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 4116--4131
+[]\OT1/cmr/m/n/10 Despite this strong clas-si-fier dis-agree-ment on
+ []
+
+
+Underfull \hbox (badness 5817) in paragraph at lines 4116--4131
+\OT1/cmr/m/it/10 per-galaxy en-vi-ron-ment as-sign-ment\OT1/cmr/m/n/10 , a chirality-vs-
+ []
+
+[29]
+Underfull \hbox (badness 1558) in paragraph at lines 4249--4258
+[]\OT1/cmr/m/n/10 No pub-lished bounce or in-fla-tion model pre-dicts
+ []
+
+[30]
+Underfull \hbox (badness 2894) in paragraph at lines 4291--4299
+ []\OT1/cmr/m/n/10 T-Web is one of sev-eral cosmic-web find-ers;
+ []
+
+[31]
+Underfull \hbox (badness 1496) in paragraph at lines 4476--4483
+\OT1/cmr/m/n/10 GAL-ZONE rows with \OT1/cmtt/m/n/10 OUT$\OT1/cmr/m/n/10 = 0$, the ad-justed non-
+ []
+
+
+Underfull \hbox (badness 1281) in paragraph at lines 4582--4605
+\OT1/cmtt/m/n/10 lbl . gov / collaborating-[]institutions$[][]\OT1/cmr/m/n/10 . The DESI
+ []
+
+[32]
+Underfull \hbox (badness 1629) in paragraph at lines 4695--4762
+\OT1/cmr/m/n/10 confidence stra-tum ($[][] \OML/cmm/m/it/10 > \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6$: $\OMS/cmtt/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0019$,
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 4695--4762
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 24$, VoidFinder point-in-sphere footprint-restricted;
+ []
+
+[33]
+Underfull \hbox (badness 1377) in paragraph at lines 4784--4797
+[]\OT1/cmr/bx/n/10 Pseudo-label in-de-pen-dence (model-free con-
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 4805--4813
+\OT1/cmr/m/n/10 as the \OT1/cmtt/m/n/10 class[]eq \OT1/cmr/m/n/10 col-umn of [][]bamfai/galaxy-chirality-
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4827.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\chi' on input line 4827.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 4827.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4827.
+
+
+Underfull \hbox (badness 2503) in paragraph at lines 4848--4848
+[]\OT1/cmr/m/n/9 TABLE XX. []$4[]2$ con-tin-gency ta-ble CW/CCW $\OMS/cmsy/m/n/9 ^^B$ \OT1/cmr/m/n/9 T-
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 4848--4848
+\OT1/cmr/m/n/9 are ex-act in-te-gers $[] = \OML/cmm/m/it/9 n[]$\OT1/cmr/m/n/9 , $[] = \OML/cmm/m/it/9 n \OMS/cmsy/m/n/9 ^^@ \OML/cmm/m/it/9 n[]$
+ []
+
+[34]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 4897.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 4897.
+
+
+Class revtex4-2 Warning: Deferred float stuck during \clearpage processing.
+
+
+Underfull \hbox (badness 4739) in paragraph at lines 4900--4916
+[]\OT1/cmr/m/it/10 Data Avail-abil-ity State-ment. \OT1/cmr/m/n/10 All pri-mary in-
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 4900--4916
+\OT1/cmr/m/n/10 puts are pub-lic. (i) DESI Data Re-lease 1 red-
+ []
+
+
+Underfull \hbox (badness 1466) in paragraph at lines 4900--4916
+\OT1/cmr/m/n/10 shifts: the \OT1/cmtt/m/n/10 zall-pix-iron \OT1/cmr/m/n/10 healpix red-shift cat-a-log
+ []
+
+
+Underfull \hbox (badness 1210) in paragraph at lines 4900--4916
+\OT1/cmr/m/n/10 (Iron spec-tro-scopic re-duc-tion, DR1), avail-able from
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 4900--4916
+\OT1/cmr/m/n/10 REVOLVER, and V2-VIDE FITS files, NGC$+$SGC
+ []
+
+
+Underfull \hbox (badness 5231) in paragraph at lines 4917--4945
+\OT1/cmr/m/n/10 out this pa-per is the ver-sioned GitHub repos-i-
+ []
+
+
+Underfull \hbox (badness 2726) in paragraph at lines 4917--4945
+\OT1/cmr/m/n/10 sults quoted here cor-re-spond to re-lease can-di-date
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 4946--4976
+\OT1/cmtt/m/n/10 pipelines/p5[]desi[]chirality/\OT1/cmr/m/n/10 ), which is the per-
+ []
+
+
+Underfull \hbox (badness 2495) in paragraph at lines 4946--4976
+\OT1/cmr/m/n/10 ar-rays at the canon-i-cal $\OML/cmm/m/it/10 R[]  \OT1/cmr/m/n/10 =  25$Mpc/$\OML/cmm/m/it/10 h$\OT1/cmr/m/n/10 , $\OML/cmm/m/it/10 ^^U[]  \OT1/cmr/m/n/10 =
+ []
+
+
+Underfull \hbox (badness 1281) in paragraph at lines 4946--4976
+\OT1/cmr/m/n/10 and (iii) the per-cell Phase 2 sweep con-fig-u-ra-tions
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 4977--4993
+[]\OT1/cmr/m/it/10 Cluster-bootstrap prove-nance. \OT1/cmr/m/n/10 The DP5-10 re-sult
+ []
+
+
+Underfull \hbox (badness 1466) in paragraph at lines 4977--4993
+\OT1/cmtt/m/n/10 df5f00106dc5731d44476a58b128b49b \OT1/cmr/m/n/10 and re-pro-duces
+ []
+
+[35]
+Underfull \hbox (badness 1888) in paragraph at lines 5006--5018
+[]\OT1/cmr/m/it/10 Note on num-ber-ing: \OT1/cmr/m/n/10 the brack-eted \OT1/cmr/m/it/10 ar-ti-fact \OT1/cmr/m/n/10 IDs
+ []
+
+[36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 5090--5093
+[]\OT1/cmr/m/n/10 Paths A2--A30 and A33--A40 are within
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5090--5093
+\OT1/cmtt/m/n/10 pipelines/p5[]desi[]chirality/ \OT1/cmr/m/n/10 (the short names
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 5090--5093
+\OT1/cmr/m/n/10 in col-umn 2 omit this pre-fix for read-abil-ity; the
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 5126--5131
+ []\OT1/cmr/m/n/9 Y. Hoff-man, O. Metuki, G. Yepes, S. Gottl^^?ober,
+ []
+
+
+Underfull \hbox (badness 6078) in paragraph at lines 5139--5144
+ \OT1/cmr/m/n/9 041304 (2014), [][]doi:10.1103/PhysRevLett.112.041304[][],
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 5152--5157
+ \OT1/cmr/m/n/9 Soc. \OT1/cmr/bx/n/9 516\OT1/cmr/m/n/9 , 2281 (2022), doi:10.1093/mnras/stac2372,
+ []
+
+
+Underfull \hbox (badness 1117) in paragraph at lines 5159--5164
+ []\OT1/cmr/m/n/9 E. Tem-pel, A. Tamm, M. Gra-mann, T. Tu-vikene,
+ []
+
+(./p5_desi_chirality.bbl) [38] (./p5_desi_chirality.aux)
+ ***********
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+ ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `p5_desi_chirality.out' has not changed.
+(rerunfilecheck)             Checksum: 46A0B6125A54A362D577D775331C47C0;11555.
+ ) 
+Here is how much of TeX's memory you used:
+ 12749 strings out of 469115
+ 192753 string characters out of 5457526
+ 667666 words of memory out of 5000000
+ 41438 multiletter control sequences out of 15000+600000
+ 643521 words of font info for 99 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 74i,10n,79p,2159b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on p5_desi_chirality.pdf (38 pages, 1490643 bytes).
+PDF statistics:
+ 1062 PDF objects out of 1200 (max. 8388607)
+ 892 compressed objects within 9 object streams
+ 159 named destinations out of 1000 (max. 500000)
+ 454 words of extra memory for PDF output out of 10000 (max. 10000000)
+

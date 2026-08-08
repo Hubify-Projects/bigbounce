@@ -1,0 +1,144 @@
+{
+  "captured_at_local": "2026-07-14T17:40:00-07:00",
+  "captured_at_utc": "2026-07-15T00:40:00+00:00",
+  "classification_policy": {
+    "excluded": [
+      "figure PDFs",
+      "render artifacts",
+      "existing pdf-archive self-references",
+      "paths without a six-paper manuscript hint",
+      "ambiguous paper-hint matches"
+    ],
+    "scope": "reachable Git PDF object/path rows; only high-confidence six-paper manuscript paths are materialized",
+    "unknown_version_policy": "When no version token is present in the historical path, paper_version is recorded as unknown rather than inferred."
+  },
+  "coverage": {
+    "by_paper": {
+      "P1A": 0,
+      "P1B": 0,
+      "P2": 0,
+      "P3": 0,
+      "P4": 5,
+      "P5": 0
+    },
+    "classified_distinct_git_blobs": 5,
+    "classified_distinct_sha256": 5,
+    "classified_rows": 5,
+    "errors": 0,
+    "git_pdf_object_path_rows": 5,
+    "objects_created": 0,
+    "references_created": 0,
+    "unclassified_reasons": {},
+    "unclassified_rows": 0
+  },
+  "git_head": "a745b6ac4d4f951462fc4e7e2135843d831be613",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json",
+  "materialized": true,
+  "mode": "history-backfill",
+  "page_counts_recorded": true,
+  "row_selection": {
+    "limit": 5,
+    "offset": 104,
+    "selected_rows": 5,
+    "total_git_pdf_object_path_rows": 1357
+  },
+  "rows": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/23/23b6e46c7649ee0ae0b4705559eef7cbae13f8c7f5b658d241332894160e1f80.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-02T072428-0700-PDT__23b6e46c7649.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "42f04d07e4636c4dafff9248a370c2ec68b5098b",
+        "timestamp": "2026-05-02T07:24:28-07:00"
+      },
+      "git_blob": "07b1afc19dfb42e9bf310fad574c656a4db2a92a",
+      "git_blob_size_bytes": 25668020,
+      "md5": "db038cfbfa583df853d0050f12653cb9",
+      "object_created": false,
+      "page_count": 22,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "arxiv/p4_chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "23b6e46c7649ee0ae0b4705559eef7cbae13f8c7f5b658d241332894160e1f80"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/aa/aa7ec9aabe1c2a74e5c6f7d762c1c399f938dbd2a923a11bdcc2f941d928340f.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-09T022839-0700-PDT__aa7ec9aabe1c.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "5d0e0b94fc6d5af7c4a8df2aaa39d5b095348f14",
+        "timestamp": "2026-05-09T02:28:39-07:00"
+      },
+      "git_blob": "11b417e418d7c1885ba27a2e092bcd595010982e",
+      "git_blob_size_bytes": 25670190,
+      "md5": "965702a95ef3d8e05d5be0bda1d05d28",
+      "object_created": false,
+      "page_count": 24,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "arxiv/p4_chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "aa7ec9aabe1c2a74e5c6f7d762c1c399f938dbd2a923a11bdcc2f941d928340f"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/dc/dc8976b8c2c81d60087750290c34660ec3ef64d2af9bf8ad13078397ceba0ea1.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-09T031234-0700-PDT__dc8976b8c2c8.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "807be9c97f105926b1f247128ce1bf25fc39ca64",
+        "timestamp": "2026-05-09T03:12:34-07:00"
+      },
+      "git_blob": "131bad1790b09a7f2a8d69c33014fc0a54a8a90f",
+      "git_blob_size_bytes": 25676389,
+      "md5": "f51aba71bdf431745ed330e6b69c58c1",
+      "object_created": false,
+      "page_count": 25,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "arxiv/p4_chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "dc8976b8c2c81d60087750290c34660ec3ef64d2af9bf8ad13078397ceba0ea1"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/04/0495323175d5fbe85a1f8abce97c97ed3c57b2ad2697635e85b6d7c1fd7c1cfd.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-08T163823-0700-PDT__0495323175d5.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "b1cf4296af151bb97c37eeb69e0cab3fdf0beb3f",
+        "timestamp": "2026-05-08T16:38:23-07:00"
+      },
+      "git_blob": "2a76d96199296dbdeab529f8f1e7525082bb444f",
+      "git_blob_size_bytes": 25649979,
+      "md5": "0d341dc45fa697c417cad609e00cb8ac",
+      "object_created": false,
+      "page_count": 22,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "arxiv/p4_chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "0495323175d5fbe85a1f8abce97c97ed3c57b2ad2697635e85b6d7c1fd7c1cfd"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/1c/1c6e3f0d0f710521c8bc1c14694aca2d7741a2557e03ad7f8db3a56244d9f7bc.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-05T151110-0700-PDT__1c6e3f0d0f71.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "8758583467dbcc5c6004ce60be104bdeb8a206f2",
+        "timestamp": "2026-05-05T15:11:10-07:00"
+      },
+      "git_blob": "38bcb3f4e03f7330868f820b6e6cabf864faa8ea",
+      "git_blob_size_bytes": 25646644,
+      "md5": "8c84fd68db21e920e56cbbeb563c0103",
+      "object_created": false,
+      "page_count": 21,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "arxiv/p4_chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "1c6e3f0d0f710521c8bc1c14694aca2d7741a2557e03ad7f8db3a56244d9f7bc"
+    }
+  ],
+  "run_id": "history-backfill-0104-0108-20260714",
+  "schema": "bigbounce-pdf-retention-history/v1"
+}

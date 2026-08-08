@@ -1,0 +1,33 @@
+# INT API Review — P3 v3.1.138 — openai (gpt-5.2)
+UTC: 2026-07-07T02:02:01.359124Z  |  latency: 20.4s  |  usage: {"prompt_tokens": 49652, "completion_tokens": 1273, "total_tokens": 50925, "prompt_tokens_details": {"cached_tokens": 0, "audio_tokens": 0}, "completion_tokens_details": {"reasoning_tokens": 0, "audio_tokens": 0, "accepted_prediction_tokens": 0, "rejected_prediction_tokens": 0}}
+PARSED VERDICT: MAJOR REVISIONS
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+(1) **VERDICT: MAJOR REVISIONS**
+
+(2) **ISSUES:**
+
+1. [MAJOR] **Sec. II B / Eq. (2) and Sec. III/Table I: heterogeneous thresholding breaks interpretability of headline counts.** The manuscript mixes an absolute score cut (DESI \(S>5\)), fixed-percentile (Planck/NEOWISE top-1%), fixed-count (eROSITA top-298), and an SDSS “continuity slice” explicitly chosen to match an earlier cross-transfer count (77,905), then reports aggregated catalog sizes and “multipliers”; without a single, physically motivated selection function (or at least a uniform false-positive/false-negative calibration) the resulting multi-survey totals are not a well-defined statistical sample and cannot support quantitative comparative statements.
+
+2. [MAJOR] **Sec. II B (tabular preprocessing): normalization leakage and incomplete reproducibility.** eROSITA/NEOWISE scalers are fit on the full sample (not training split), explicitly leaking information; NEOWISE and Gaia “remain queued” for robustness checks, and several derived tables are said to have existed “only pod-side.” For a PRD-grade data product, the full preprocessing + training + scoring for each included tier must be reproducible from archived inputs, not partially reconstructed.
+
+3. [MAJOR] **Sec. III E (eROSITA): irreproducible score axis undermines any scientific use beyond a fixed membership list.** The paper concedes the production score axis is unrecoverable and non-monotone with committed artifacts, yet still includes eROSITA in the inclusive catalog and discusses cross-validation overlap with IsolationForest trained on BigAE latent vectors (non-independent). This tier should either be fully reproducible on a documented axis with archived code/weights, or excluded from the main catalog product (and any aggregated “total anomalies” claims).
+
+4. [MAJOR] **Sec. III A/VI D(i): DESI validation is incomplete for the dominant anomaly modes and selection population.** Injection–recovery is only demonstrated for a “broad/extended anomaly class,” while narrow features are stated to require \(\ge 15\sigma\); yet the DESI catalog is dominated by non-science-target spectra (sky/filler), for which astrophysical interpretability and instrument-systematics rates differ markedly. A catalog-grade claim requires explicit characterization of contamination/completeness across the actual selected population (including sky fibers), or restriction of the deliverable to science targets with clear selection criteria.
+
+5. [MAJOR] **Sec. II D and throughout: validation gates are heuristic and not tied to controlled error rates.** Jaccard overlap thresholds (0.70, 0.50), loss thresholds (0.30), and “\(\ge50\%\) at \(5\sigma\)” injection–recovery criteria are ad hoc and not linked to an expected false discovery rate, completeness, or a principled likelihood model; consequently “validated catalog-grade” is not yet substantiated at the level implied.
+
+6. [MAJOR] **Sec. IV C: 5″ deduplication and cross-survey association are not statistically justified for heterogeneous astrometry/PSF.** A uniform 5″ friends-of-friends match is used across DESI/SDSS/LAMOST and NEOWISE despite very different positional uncertainties and PSFs; the paper notes under-matching for NEOWISE, but does not quantify false-association probability with a geometry-preserving null (RA shifts are acknowledged as imperfect). A probabilistic cross-match (or at minimum per-survey error-aware radii and robust null tests) is required before interpreting “multi-survey coincidences.”
+
+7. [MAJOR] **Sec. V: cosmological “applications” are insufficiently connected to a well-defined tracer sample and contain internal normalization inconsistencies.** The \(f_{\rm NL}\) Fisher analysis uses multiple baselines (e.g., \(\sigma(f_{\rm NL})=8.98\) vs Appendix figure with 16.85) and relies on a bias measurement from a small, selection-defined subsample (5,384 QSO candidates; further “Gold+Silver” 1,122) with large uncertainty consistent with null; as written, this section does not meet PRD standards for a quantitative forecast tied to a reproducible, survey-selection-defined tracer catalog.
+
+8. [MAJOR] **Sec. V A: NANOGrav spectral-index analysis is not tied to the anomaly catalog and is oversold despite caveats.** The PTA analysis uses a KDE free-spectrum likelihood (not timing residual likelihood), assumes bin-factorization, and then reports decisive Bayes factors against an idealized SMBHB slope while simultaneously acknowledging environmental models can accommodate \(\gamma\sim2.5\!-\!3\). This reads as a largely disconnected side analysis; it should be either removed, substantially tightened, or reframed with a clear PRD-motivated objective and sensitivity to modeling assumptions.
+
+9. [MINOR] **Presentation/terminology: “validated,” “catalog-grade,” “anomaly,” and “novelty” are used in ways likely to confuse.** Even with disclaimers, the repeated use of “validated” alongside very heterogeneous gating and non-uniform thresholding risks misinterpretation; similarly, SIMBAD-unmatched fractions are repeatedly juxtaposed with “genuine novelty fraction” while being computed on different strata and radii.
+
+10. [MINOR] **Figures and score annotations: inconsistent “display score” vs catalog score.** Fig. 8 explicitly uses non-catalog “display scores,” while the paper elsewhere emphasizes canonical \(S\); this invites misuse and should be cleaned so all plotted scores correspond unambiguously to defined axes.
+
+(3) **Is the central claim supported?** The manuscript supports that a very large multi-survey autoencoder scan was executed and that a reproducible set of per-survey anomaly lists can be produced, but the stronger “validated catalog-grade” claim for the headline totals is not yet supported by principled, uniform selection/validation and reproducibility across all included tiers.

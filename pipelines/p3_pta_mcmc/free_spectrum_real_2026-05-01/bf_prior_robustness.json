@@ -1,0 +1,37 @@
+{
+ "method": "prior-reweighted Savage-Dickey on committed chain_real_freespec.npy (320k samples); subset-of-[0,7] sampling reproduces flat sub-prior posterior; fiducial row reproduces committed savage_dickey_2026-05-29.json exactly",
+ "rows": {
+  "[0,7]": {
+   "n": 320000,
+   "post_mb": 0.46108139263570574,
+   "post_smbhb": 6.459868290225041e-05,
+   "B_MB_free": 3.22756974844994,
+   "B_SMBHB_free": 0.00045219078031575287,
+   "B_MB_SMBHB": 7137.628383745935
+  },
+  "[0,5]": {
+   "n": 320000,
+   "post_mb": 0.46108139263570574,
+   "post_smbhb": 6.459868290225041e-05,
+   "B_MB_free": 2.3054069631785286,
+   "B_SMBHB_free": 0.000322993414511252,
+   "B_MB_SMBHB": 7137.628383745935
+  },
+  "[1,6]": {
+   "n": 318742,
+   "post_mb": 0.462542485785495,
+   "post_smbhb": 6.39097584855536e-05,
+   "B_MB_free": 2.312712428927475,
+   "B_SMBHB_free": 0.00031954879242776795,
+   "B_MB_SMBHB": 7237.431289777912
+  },
+  "[2,5]": {
+   "n": 300988,
+   "post_mb": 0.4886476000101682,
+   "post_smbhb": 5.624928627810175e-05,
+   "B_MB_free": 1.4659428000305046,
+   "B_SMBHB_free": 0.00016874785883430526,
+   "B_MB_SMBHB": 8687.178670930127
+  }
+ }
+}

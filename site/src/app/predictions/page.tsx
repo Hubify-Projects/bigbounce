@@ -2,15 +2,12 @@ import { predictions } from"@/data/predictions";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { MathText } from"@/components/MathText";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from"@/components/ui/card";
 import { Separator } from"@/components/ui/separator";
+
+// Shorten verbose badge labels: clip at first parenthesis
+function displayStatus(status: string): string {
+  return status.split("(")[0].trim();
+}
 import Link from"next/link";
 import type { Metadata } from"next";
 
@@ -76,51 +73,47 @@ export default function PredictionsIndexPage() {
 
       <section className="section">
         <h2>Observational Channels</h2>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="flat-item-list">
           {predictions.map((pred) => (
-            <Card
-              key={pred.slug}
-              className={`index-card flex flex-col ${pred.statusVariant === "purple" ? "index-card-primary" : ""}`}
-            >
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <div className="card-kicker">{pred.experiment}</div>
-                    <CardTitle
-                      className="mt-1 text-base"
-                      style={{ fontFamily:"var(--font-mono-stack)" }}
-                    >
-                      <MathText>{pred.name}</MathText>
-                    </CardTitle>
+            <div key={pred.slug} className="py-5">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex-1">
+                  <div className="card-kicker">{pred.experiment}</div>
+                  <div
+                    className="mt-1 text-base font-semibold"
+                    style={{ fontFamily: "var(--font-mono-stack)" }}
+                  >
+                    <MathText>{pred.name}</MathText>
                   </div>
-                  <Badge variant={statusVariantMap[pred.statusVariant]}>
-                    {pred.status}
-                  </Badge>
                 </div>
-                <CardDescription className="big-value">
-                  <MathText>{pred.value}</MathText>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <p className="text-sm text-muted-foreground">
-                  <MathText>{pred.description.slice(0, 220)}</MathText>
-                  {pred.description.length > 220 ?"…" :""}
-                </p>
-                <div className="chip-row mt-3 text-xs">
+                <Badge variant={statusVariantMap[pred.statusVariant]}>
+                  {displayStatus(pred.status)}
+                </Badge>
+              </div>
+              <div
+                className="big-value mb-3"
+                style={{ borderTop: "1px solid var(--border-subtle)", paddingTop: 12 }}
+              >
+                <MathText>{pred.value}</MathText>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3">
+                <MathText>{pred.description.slice(0, 220)}</MathText>
+                {pred.description.length > 220 ? "…" : ""}
+              </p>
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="chip-row text-xs">
                   <Badge variant="outline">{pred.bestModel}</Badge>
                   <Badge variant="outline">
                     {pred.nextSteps.length} next steps
                   </Badge>
                 </div>
-              </CardContent>
-              <CardFooter className="pt-0">
                 <Button asChild size="sm" variant="outline">
                   <Link href={`/predictions/${pred.slug}`}>
                     Open prediction &rarr;
                   </Link>
                 </Button>
-              </CardFooter>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </section>

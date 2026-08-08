@@ -1,0 +1,29 @@
+You are the bounded final-synthesis retry for a GPT-5.6-sol/high independent referee audit of P1B v1B.0.105 at exact commit 91ad88e36121da128175415f55be44d5e458f9f1. The initial 61-minute run reviewed all 21 rendered pages and exact source/artifacts, produced 66 logged tool items, but was interrupted after a 12-minute post-tool synthesis wait without a final report. Its complete 1.5 MB partial event log is preserved separately. Do not call any tools, do not browse, do not request more evidence, and do not discuss process. Write the final referee report now from the frozen audit evidence below.
+
+Required structure:
+- concise overall assessment;
+- labeled findings P1B-E/M/m/N with severity and whether real technical defect, reproducibility defect, disclosed limitation, or venue opinion;
+- exact-chain/artifact recomputations;
+- final recommendation;
+- a final bullet list titled “Genuinely new blockers only”.
+Do not invent ACCEPT. Distinguish real defects from submission metadata and venue taste.
+
+Frozen evidence already established:
+
+1. The stock-CAMB Delta-Neff means/errors, one-sided truncation procedure, sample-count reconciliation, estimator's 1/2 sin(4 beta) normalization, LiteBIRD uncertainty formula, and Figure 2 Delta-Neff label all check. Direct-vendor complaints otherwise are stale/misread.
+
+2. Frozen c5 chains: 8,955 rows, total MC weight 82,754. Direct weighted cuts reproduce Omega_a<0.1 = 44.0474%, Omega_a<0.01 = 13.3818%, theta_i<=0.1 = 0.32748%. Prior-predictive JSON reproduces 11.597% fixed coupling and 6.137% broad coupling from 100,000 draws/config, zero failures, integrator difference 2.49e-8 deg.
+
+3. However, the ALP likelihood/background is fixed LCDM and never feeds the derived Omega_a back into H(z), even when many full-chain samples have Omega_a~0.1-1. The conditional Omega_a<0.01 subset itself is within spectator control, but the claimed 13% “posterior mass/prior cost” uses a denominator dominated by points where the spectator fixed-background likelihood is internally inconsistent. That fraction is therefore only a diagnostic fraction of the surrogate chain, not a physical posterior probability. The paper discloses that only 13% is safe but does not acknowledge this normalization problem.
+
+4. Table IV is mixed/stale. From the exact c5 chain, beta mean/std are: full 0.32629/0.09899 (paper 0.326±0.099, correct); Omega_a<0.1 0.31471/0.10258 with median 0.31909 (paper 0.328±0.100, does not match); Omega_a<0.01 0.27595/0.09880 with median 0.28409 (paper 0.28±0.10, rounded okay). The table calls beta entries medians even where the full value is a mean. Its ESS values mix marker choices: a weight-expanded Sokal-style check gives approximately full beta ESS 2937/full theta 812, Omega_a<0.1 beta 1530 but w_a~1935 (paper 1989), Omega_a<0.01 beta 491 (paper 461). No compact committed artifact or script supports 1989/461; table wording only says “marker parameter”. Treat the Omega_a<0.1 row/ESS provenance as a real table/reproducibility defect, not evidence that the 44%/13% mass fractions are arithmetically false.
+
+5. NaMaster code forms decoupled broad bandpowers but fits them to C_ell^EE sampled at each bin's effective center rather than applying the same bandpower window/binning operator to the theory template. This is a methodological mismatch capable of producing a multiplicative recovery bias. The robustness battery changes weighting, lmax, BB template, masks, and apodization but does not repair/test proper theory bandpower binning. The paper currently attributes the ~12% bias mainly to unweighted noise-dominated bins. Require a rerun with correctly windowed/binned theory before interpreting the bias or carrying 0.040 deg as a pipeline floor. The raw synthetic recovery numbers remain descriptions of the current estimator, not real-sky measurements.
+
+6. Provenance: manuscript calls b22f8cc9 the current matching snapshot, but that commit contains v1B.0.47; reviewed source is v1B.0.105 at 91ad88e3. This is a verified major reproducibility defect. The three Hugging Face dataset URLs return HTTP 200. DOI and companion arXiv identifiers remain known submission metadata tasks.
+
+7. Other bounded real wording issues: c15 R-1=0.0147 is above the paper's <0.01 convention but honestly non-headline; “propagating torsion” is wrong for minimal algebraic ECH unless attributed to a UV completion; “systematic floor” must remain synthetic-estimator-specific; SNR definitions and mean/median wording need cleanup.
+
+8. Venue novelty/length and AI-disclosure objections are opinions. Requests for new noise levels, alternate binning ranges beyond correcting the actual template mismatch, or identical likelihood reruns are new-analysis requests/disclosed scope, not automatically blockers.
+
+Be blunt but calibrated. Decide whether the two consequential methodological issues (NaMaster binning mismatch and surrogate-posterior normalization) require major revision or rejection in the frozen version, while preserving the verified null MCMC and exact artifact results.

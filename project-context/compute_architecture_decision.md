@@ -161,7 +161,7 @@ Warming controls:
 - **Cold start on GPU is not zero.** Probably fine for us, but worth measuring before committing.
 - **Python ecosystem lock-in.** Porting off Modal means rewriting function decorators, volume mounts, and image definitions.
 - **Volume pricing not on public page** — unknown until we ask sales or read the deeper docs.
-- **ssh/interactive debugging story is weaker** than having a persistent RunPod pod. Modal Shells exist but are less flexible than `ssh -p 11452 root@205.196.19.52`.
+- **ssh/interactive debugging story is weaker** than having a persistent RunPod pod. Modal Shells exist but are less flexible than `ssh -p <port> root@<pod-ip>`.
 
 #### Fit
 

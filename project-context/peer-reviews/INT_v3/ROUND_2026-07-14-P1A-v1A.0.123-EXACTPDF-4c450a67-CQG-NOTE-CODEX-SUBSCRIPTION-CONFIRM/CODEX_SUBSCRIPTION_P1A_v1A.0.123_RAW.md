@@ -1,0 +1,13 @@
+(1) VERDICT: ACCEPT
+
+(2) ISSUES: None.
+
+(3) TWO-MINOR CLOSURE: item 1 CLOSED — manuscript pp. 3, 6–7 evaluates only \(N_fN_c=1,3,9\) at \(\Lambda=M_{\rm Pl}\) and explicitly excludes above-Planck cutoffs. The corrected JSON contains exactly three rows and zero rows with \(\Lambda/M_{\rm Pl}>1\). The correction preserved \(G_{\rm crit}=2\pi^2/(N_fN_c\Lambda^2)\), scalar ratios \(0.2387324, 0.7161972, 2.1485917\), \(G_{\rm scalar}=-3\kappa/16\), \(|G_A|=3\kappa/32\), and the repulsive-sign/no-nonzero-real-scalar-gap conclusion. item 2 CLOSED — active source macros and Data and Code Availability content target `7befce143848b925998a3e6ecc850aa510ab3a94`; PDF annotations on pp. 3, 6, and 7 use that exact commit. Zero active `blob/main` or `tree/main` artifact targets were found. The sole `tree/main` source occurrence is inside the inactive commented block at source lines 3988–4675.
+
+(4) CENTRAL CLAIM: The narrow sourced ECH axial–axial coefficient and classical zero-spin scalar-transparency claim are preserved and supported, with no new sign, coefficient, convention, dimensional, scope, logical, or internal-consistency defect identified.
+
+(5) ARTIFACT VERIFICATION: paper commit `bdbb2242199a8eb50bdee825b98d42ea8a3de523`; source SHA-256 `e08323215579b843a43d6288643f339442560da45bd3ffd91a762dcfb1702233`; PDF SHA-256 `4c450a6706b2f4e53faac5ffbc6ec720f21e45c7406aa7186ef830f3fef33f71`; artifact commit `7befce143848b925998a3e6ecc850aa510ab3a94`; script SHA-256 `69681ea3a420d562b28faaa534d1e729269a6cfa9c966f44b89a9326d5d8843c`; JSON SHA-256 `a53d19e1db2cf0de7102b4e864ca5dbf4924794469f848652b447ef7d4c31d3f`; version `v1A.0.123`; page count `7`.
+
+(6) INSPECTION: visually inspected original-resolution rendered raster pages 1, 2, 3, 4, 5, 6, and 7; inspected the exact committed TeX through bounded source-line reads and commit diff; statically inspected the corrected script/JSON through their exact commit diff and structured JSON queries; inspected PDF metadata and all embedded URL annotations. All seven pages are legible and free of clipping, overlap, gutter crossing, malformed equations/tables, and version/date defects.
+
+(7) REMAINING GAPS: External URL reachability and cited primary literature were not network-verified. Per instruction, the corrected script was not executed, the PDF was not rebuilt, and no derivation or numerical sweep was replayed. These are bounded verification gaps, not observed manuscript defects.

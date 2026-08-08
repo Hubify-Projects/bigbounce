@@ -1,9 +1,10 @@
 # BigBounce Manuscript Revision Tracker
 
-**Paper:** Geometric Dark Energy from Spin-Torsion Cosmology
+**Scope:** six-paper BigBounce portfolio
 **Author:** Houston Golden
-**Current version:** v1.6.0
-**Target:** arXiv-ready manuscript
+**Current versions:** P1A v1A.0.127 · P1B v2B.0.16 · P2 v1.7.130 · P3 v3.2.0-r14 · P4 v1.0.272 · P5 v0.1.146-2026-07-24
+**Target:** bounded final-hash acceptance, Houston sign-off, then journal submission
+**Reconciled:** 2026-08-03
 
 ---
 
@@ -19,6 +20,387 @@ This tracker logs each revision round and which issues have been addressed.
 ---
 
 ## Revision Rounds
+
+### Portfolio reconciliation and final-hash acceptance boundary (2026-08-03)
+
+Directive P supersedes the old verdict-derived cap model: each current paper is
+recorded at the four completed agent gates (**95**), with Houston's explicit
+per-paper sign-off providing the final five points. Venue/submission,
+independent human review, journal peer review, and arXiv endorsement are a
+separate publishing phase and do not subtract from readiness.
+
+Automated convergence is zero genuinely-new-real findings outstanding across
+the active Grok API, Gemini API, and Claude Opus INT legs. Verdict words remain
+verbatim diagnostics. Because final publication-compliance and completeness
+closures changed the exact PDFs after the last full portfolio board, one
+bounded final-hash confirmation remains due. It is a regression check, not a
+new unbounded verdict-harvesting campaign.
+
+Convex reconciliation also closed the lone stale open row
+`R57-paper-3-latitude` by artifact verification. The June finding concerned an
+imprecise “rate” label in the superseded multi-survey P3 draft and was correctly
+left unfixed then because its underlying computation was unavailable. The July
+14 focused-DESI rewrite (`3f5582c2`) removed that claim and computation from the
+canonical ApJS paper; the current r14 source contains neither the phrase nor a
+latitude/Spearman result. No replacement number or wording was fabricated.
+
+### July 23–24 MAJOR-completeness resweep and closure (2026-07-23 to 2026-07-24)
+
+The initial resweep incorrectly inferred closure from summary verdict labels.
+Per-item severity inspection recovered missed MAJOR findings; the correction is
+preserved in
+`INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md`. The new executable
+`tools/major_completeness_check.py` prevents a summary verdict from hiding an
+item-level MAJOR.
+
+- **P1B v2B.0.16:** closed the recovered Grok legibility gap.
+- **P4 v1.0.272:** closed the genuinely-new-real Gemini inline-provenance
+  density finding after the abstract cap and provenance relocation.
+- **P5 v0.1.145 → v0.1.146:** closed Grok hierarchy sensitivity and Gemini
+  target-program leakage framing; the systematic remains prominently disclosed.
+
+Detailed dispositions remain append-only in `DISPOSITIONS/P4.md` and
+`DISPOSITIONS/P5.md`; raw reports were not relabeled.
+
+### Six-paper active-leg confirmation and same-day closure (2026-07-22)
+
+Eighteen exact-PDF legs ran across the six papers using Grok API, Gemini API,
+and Claude Opus INT. Truth audit found **19** genuinely-new-real items (P1A 3,
+P1B 3, P2 5, P3 3, P4 3, P5 2), correcting an earlier summary-only count of
+16. All 19 received source-backed same-day closures. Subsequent
+publication-compliance and completeness work produced the current versions
+listed in the tracker header.
+
+### Historical revision rounds
+
+All rounds below are preserved evidence. Their old readiness caps, P1U
+identity, provider routing, and literal verdict-word objectives are not current
+program state unless restated above.
+
+### P4 v1.0.259 / P5 v0.1.139: Residual-confirmation closures (2026-07-16)
+
+The exact v1.0.258/v0.1.138 residual board used direct Grok/Gemini APIs plus subscription-backed Codex only. P4 returned MINOR/MINOR/MAJOR, with every reviewer supporting the strict central null; truth audit verified four manuscript/release synchronization defects and one unblinding disclosure gap. P5 returned unanimous MINOR, with four verified manuscript defects. P4 v1.0.259 closes the strict primary-audit table, binomial-null moments, apodized support/null caption, and public-release overclaim; its synchronized immutable catalog release remains open. P5 v0.1.139 closes interaction wording, pooled-reference covariance, T-Web parent-count provenance, and stable-ordering determinism. Exact PDFs: P4 25 pages, SHA-256 `55098cfb07897f4ae68ee469fd593f75fb204f57b7404ee8a7b33afe6b6c4c50`, MD5 `fd43e0aac408aa2b4719334cbce5f060`, Convex row `k57bvrg7492tgrw2nfh0amkkzd8anka3`; P5 41 pages, SHA-256 `948e0412a5f4052747037f38ab2e43f2d888c61c74fbdfe95d29241ef806d2a9`, MD5 `21a4a79fe55c151b5e8cecfe48fa81d2`, Convex row `k57e5x0n089m3q8kwqzwef6kad8am7ry`. Readiness holds P4 80 / P5 74.
+
+### P4 v1.0.258 / P5 v0.1.138: Computational closure releases (2026-07-16)
+
+P4 v1.0.258 closes the exact-board sample-contract and harmonic-support defects. Its strict primary rerun uses `N_selected=890,069`, `N_support=887,472`, with `z_mom=+0.63465` and one-sided empirical-rank `p=0.23768`. Its fixed-occupancy, apodized, and binomial harmonic diagnostics now use the exact checksummed 24,087-pixel FSC support (`z=6.923`, `p=0.001996`; `z=7.033`; and `z=7.207`, `p=0.00059994`, respectively). They remain systematics diagnostics rather than evidence of a physical signal. Exact PDF: 25 pages, SHA-256 `e9b69665efdf757de69f27a0474d30ac4bc48bc7559424e077f41c7bcacbe061`, MD5 `412d30361dbc17b04f618c28fa65f443`; Convex row `k575wenst372vbpg4xcwzkbcc58ams1p`.
+
+P5 v0.1.138 reports the focal K=13 adjusted contrast `+0.00145442`; cluster-robust 95% intervals at NSIDE=2, 4, and 8 and using 3-D nearest-VoidFinder clustering all span zero. The program-by-void interaction strata are sparse and not tightly bounded, so the analysis is reported as no robust interaction evidence—not proof of no leakage or physical environment independence. The patch from v0.1.137 only reflows the focal-model equation to eliminate the isolated arXiv-build overflow; no scientific result changes. Exact PDF: 41 pages, SHA-256 `3c47ccf75da20653c463557fc54fff50da01e1e6bde43a225f61c46cd50baaf0`, MD5 `83566c8d5c3c059e744ec1c595401734`; Convex row `k578gs6qddzfac7m4y6pmq6aq58an8tr`.
+
+No readiness uplift: P4 remains 80 and P5 remains 74. Exact non-Anthropic re-review, immutable public releases, standing external science/provenance gates, and human editorial decisions remain open.
+
+### P4 v1.0.252 → v1.0.253: Exact-PDF release-contract closure (2026-07-15)
+
+**v1.0.252 input:** exact 28-page PDF SHA-256 `a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292`. The valid non-Anthropic board was direct-API Grok 4.3 **MAJOR REVISIONS** / direct-API Gemini 3.1 Pro Preview **MINOR REVISIONS** / ChatGPT-subscription Codex CLI `gpt-5.6-sol` high **MAJOR REVISIONS**. The Codex leg used no OpenAI API.
+
+**Truth audit and bounded closure:** three release defects were verified as real: stale/internally inconsistent Hugging Face cards, a morphology-sidecar contract that was not independently retrievable/executable, and a broken public model-loading contract. Local closure commits are `88217bdf`, `69226adb`, and `359c9105`. Public immutable Hugging Face receipts bind dataset commit `2fc392e2` and model commit `3baeab86`. The release-confirmation Codex review remained **MAJOR REVISIONS** because it correctly observed those defects before the public mutations; its verdict is preserved and is not rewritten as acceptance.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Current release-card counts, version, and validation claims | **CLOSED** | Local card correction `88217bdf`; public immutable dataset receipt `2fc392e2` |
+| Morphology-sidecar retrieval and derived-`b/a` contract | **CLOSED** | Independently executable contract and tests at `69226adb`; public dataset receipt binds the immutable payload |
+| Public model loading and metadata | **CLOSED** | Local repair `359c9105`; public immutable model receipt `3baeab86` |
+| Exact v1.0.253 publication candidate | **COMPILED / MIRRORED; REVIEW PENDING** | Exact PDF SHA-256 `d9030a7bb41daa52a18928372bdcd60d7be91335d4a25bc4d7117083c4f02e43`; no v1.0.253 reviewer verdict is inferred |
+| Training realization/replay and spatially varying confusion transfer with joint covariance | **OPEN — SCIENCE GATES** | Exact reproducible training realization and the declared transfer/covariance analyses remain required |
+| Complete systematics metadata, immutable DOI archive, and human ApJS decision | **OPEN — RELEASE/HUMAN GATES** | Public provider commits are not a DOI, and automated review is not editor/referee acceptance |
+
+No readiness uplift; P4 remains capped at 80. The next valid acceptance evidence must review the exact v1.0.253 PDF, not the superseded v1.0.252 artifact. Evidence: `INT_v3/ROUND_2026-07-15-P4-v1.0.252-EXACTPDF-a109f3d1-NONANTHROPIC-CONFIRM/` and `INT_v3/ROUND_2026-07-15-P4-v1.0.252-RELEASE-CONTRACT-CONFIRM/`.
+
+### P5 v0.1.133: Exact-PDF MINOR closure and anti-loop stop (2026-07-14)
+
+**Input:** ChatGPT-subscription Codex CLI reviewed exact 39-page v0.1.132 at commit `a745b6ac4d4f951462fc4e7e2135843d831be613`, PDF SHA-256 `4b04d2fc1152b911d85c9db8fa315f9c135af2f7cd6c4f54c932d22d5eff1c18`. The final local candidate is v0.1.133 at commit `af1a6abe6b91e142a2eb981aef4a178c58b1391c`, PDF SHA-256 `db18dd937f5d45399636548aeb75c6f9e922ddef13895ff72dec7a4e9a668764`.
+
+**Raw verdict:** **MINOR REVISIONS**, preserved verbatim; it is not converted to ACCEPT. The receipt proves ChatGPT subscription auth, `gpt-5.6-sol` high, no OpenAI API, and no Anthropic/Claude.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Two residual environment-independence statements | **CLOSED v0.1.133** | Replaced with classifier-label non-detection / “consistent with, but does not establish” wording; no numerical change |
+| Arithmetic, A37, provenance, release, layout | **PASS on v0.1.132** | Exact all-page review found no regression; focal `N=145,766`, `K=78`, `G=50`, `SE=0.00341274`, `p=0.71277` unchanged |
+| Further automated confirmation | **STOPPED — ANTI-LOOP RULE** | Wording-only closure compiled, visually audited, retained, and packaged; no automated ACCEPT claimed |
+| Paper IV labels/weights and P5 rerun | **OPEN — EXTERNAL SCIENCE GATE** | Verify the final Paper IV release and rerun P5 on those final labels |
+| Public tag/archive/DOI and A1--A40 links | **OPEN — RELEASE GATE** | Publish and resolve a real immutable release; local retention is not a public DOI |
+| DESIVAST selection products / label-bias power | **OPEN — EXTERNAL DATA/POWER GATES** | Exact products remain unavailable and the environment-specific label test remains underpowered |
+| AJ decision | **OPEN — HUMAN GATE** | Automated evidence is not editor/referee acceptance |
+
+No readiness uplift; P5 remains capped at 74. Evidence: `INT_v3/ROUND_2026-07-14-P5-v0.1.132-EXACTPDF-4b04d2fc-AJ-CODEX-SUBSCRIPTION-CONFIRM/` and `INT_v3/PROOF_2026-07-14_P5_v0.1.133_db18dd937f5d/`.
+
+### P1A v1A.0.123: Exact-PDF CQG Note subscription confirmation (2026-07-14)
+
+**Input:** exact 7-page PDF from paper commit `bdbb2242199a8eb50bdee825b98d42ea8a3de523`, with the bounded artifact correction at commit `7befce143848b925998a3e6ecc850aa510ab3a94`; TeX SHA-256 `e08323215579b843a43d6288643f339442560da45bd3ffd91a762dcfb1702233`; PDF SHA-256 `4c450a6706b2f4e53faac5ffbc6ec720f21e45c7406aa7186ef830f3fef33f71`.
+
+**Valid route:** ChatGPT-subscription-authenticated Codex CLI `gpt-5.6-sol` high **ACCEPT** (0 MAJOR / 0 MINOR) in 322 seconds. The receipt records `Logged in using ChatGPT`, scrubbed API environment variables, and `openai_api_used: false`; no Anthropic/Claude was used. This is exact-artifact automated review evidence, not a human CQG decision.
+
+**Truth audit:** both v1A.0.122 reproducibility minors are closed. The commit-pinned NJL product now contains exactly the three `M_Pl` rows described by the manuscript, every active/PDF artifact link pins the correction commit, and the reviewer found the central ECH contact/transparency claims preserved.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| `M_Pl`-only three-row cutoff scope | **CLOSED** | Script/JSON SHA-256 `69681ea3…843c` / `a53d19e1…1d3f`; artifact and manuscript scopes agree |
+| Mutable active artifact links | **CLOSED** | Active/PDF links pin artifact commit `7befce14`; no `blob/main` artifact link remains in the exact PDF |
+| Exact seven-page visual/build proof | **CLOSED** | Two clean Tectonic builds; 0 errors, undefined references, or overfull boxes; all seven pages visually audited |
+| Human CQG/editorial decision | **OPEN — HUMAN GATE** | Automated ACCEPT cannot stand in for editor/referee acceptance |
+| Post-push route resolution | **OPEN — RELEASE GATE** | Verify public PDF and commit-pinned artifact URLs after the synchronization commit is pushed |
+| Immutable archive/DOI | **OPEN — RELEASE GATE** | Deposit the source/PDF/artifact bundle and record the real immutable identifier |
+| Alternate regulator | **OPEN — EXTERNAL SCIENCE GATE** | Demonstrate regulator robustness beyond the stated hard-cutoff convention |
+| Matched Lorentzian stress/observable | **OPEN — EXTERNAL SCIENCE GATE** | Evaluate a matched physical state and observable rather than infer one from the Euclidean benchmark |
+| Renormalized axial expectation | **OPEN — EXTERNAL SCIENCE GATE** | Supply a state-specific renormalized expectation value before making a phenomenological claim |
+
+No readiness uplift; P1A remains capped at 62. Exact receipt, prompt, raw, normalized result, auth record, dispatch log, and manifest: `INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-EXACTPDF-4c450a67-CQG-NOTE-CODEX-SUBSCRIPTION-CONFIRM/`.
+
+### P2 v1.7.122: Exact-PDF PRD automated-ACCEPT confirmation (2026-07-14)
+
+**Input:** exact 10-page PDF from manuscript/source commit `3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52`; TeX SHA-256 `9144e1be05ba38e37271f8ffbb44bf9d52b73235b352f6672abbbcdaf56aaf1a`; PDF SHA-256 `4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9`. Review evidence, this tracker entry, the P2 SSOT update, and the site board are frozen together in one commit.
+
+**Valid panel:** ChatGPT-subscription Codex CLI `gpt-5.6-sol` high **ACCEPT** (0 MAJOR / 0 MINOR) / Gemini 3.1 Pro Preview **ACCEPT** (0/0) / Grok 4.3 **ACCEPT** (0/0). No Anthropic/Claude. The OpenAI API `gpt-5.5` call started before the routing correction; its raw is retained as **NONCONFORMING / DIAGNOSTIC-ONLY** and excluded from the valid board, acceptance evidence, and readiness.
+
+**Truth audit:** all seven bounded v1.7.121 clarity findings are closed. The valid panel independently supports the exact four-vertex coefficient tuple `(3,1,-9,5,-33,9)`, squeezed limit `-35/16`, first squeezed correction `35 k_1^2/(64 k^2)`, equilateral value `-255/128`, and folded value `-9/8`.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Title, ordered sums/product, `K_9`, epsilon scope | **CLOSED** | Definitions and table scope are explicit in v1.7.122 |
+| Primordial-to-LSS convention bridge | **CLOSED** | The displayed `Phi=(3/5)zeta` conversion cancels exactly between the two local-template conventions |
+| General versus UMF `b_phi` response | **CLOSED** | General response and `b_phi^UMF=2 delta_c(b_1-1)` specialization are printed separately |
+| Exact four-vertex algebra | **CONFIRMED** | Three valid ACCEPT reports; subscription reviewer independently recomputed the central coefficients and limits |
+| Cubic bounce transfer | **OPEN — EXTERNAL SCIENCE GATE** | Direct third-order calculation through a specified nonsingular transition |
+| SPHEREx covariance/likelihood | **OPEN — EXTERNAL DATA GATE** | Actual per-triangle covariance, likelihood, and justified nuisance model |
+| Fermion/torsion applicability | **OPEN — MODEL GATE** | Model-specific bound for fermion-populated completions |
+| Archive/DOI and human PRD decision | **OPEN — WORKFLOW/HUMAN GATES** | Immutable release plus actual editor/referee decision; automated ACCEPT is not journal acceptance |
+
+Gemini and Grok concurrency saved 22.5 seconds (35.2%) versus serial dispatch. No readiness uplift; P2 remains capped at 74. Full audit/raws: `INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/`.
+
+### P3 v3.2.0-r7 → r8: Exact-PDF ApJS closure and subscription ACCEPT (2026-07-14)
+
+**r7 input:** exact 16-page PDF from commit `ba2f5b93a30de41122dc2ed31b543ac0da9a37c8`; TeX SHA-256 `01cb68b1d52d411c1f4b181d6504f2f1344bc45d1f0ad3793d74b58a5d7e75d8`; PDF SHA-256 `761e35ec840e93599163d68c6b4db9b8d75293545e49c45c978dc0be0f38cb2b`.
+
+**Valid r7 board:** ChatGPT-subscription-authenticated Codex CLI `gpt-5.6-sol` high **MAJOR REVISIONS** / xAI direct API Grok 4.3 **ACCEPT** / Google direct API Gemini 3.1 Pro Preview **MINOR REVISIONS**. Provider receipts are preserved. No OpenAI API review is counted and no Anthropic/Claude route was used. One Codex resource-budget failure and two pre-dispatch API failures are retained as typed, noncountable gaps rather than rewritten as zero-finding reviews.
+
+**r8 confirmation:** exact closure commit `d155eb27488b271be12942b1a1be8b3c39dd24f4`; TeX SHA-256 `2b9a5fd356e49ae7a9939cbf8e9197379bef71b1f66a0e364e0de41ae416d10b`; PDF SHA-256 `b5f254f92b10bda43b687f07c5f58b828a6f7dc70d98c08f9e9b609edbba08b0`; 16 pages. A read-only, ephemeral Codex CLI run authenticated through the ChatGPT subscription returned **ACCEPT** with zero in-scope blockers after inspecting all 16 pages and checking the package, threshold provenance, and catalog arithmetic. It used no API, no Anthropic/Claude route, no network, and did not rebuild the paper or catalog.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Three manifest-listed Parquet payloads absent from Git | **CLOSED IN r8** | All three are tracked at `d155eb27`; clean exact-tree validation passes 38/38 payloads and 41/41 bundle files |
+| 0.1-arcsec threshold provenance unstated | **CLOSED IN r8** | Source explicitly identifies it as a post-hoc descriptive tier; fixed 1-arcsec membership remains unchanged |
+| Candidate-only model testing overclaimed | **ALREADY CLOSED** | Text requires a representative control for model comparison and rejects rate/performance inference |
+| Recovery artifact could be mistaken for a validated detector/catalog | **ALREADY CLOSED** | Abstract and limitations consistently bound the work to public-ID recovery with no physical-anomaly, novelty, or purity claim |
+| Gemini requests physical-feature context and top-row classifications | **DECLINED — UNSUPPORTED/NEW SCIENCE** | Required production sensitivity and object-level physical review do not exist; inventing them would contradict the evidence |
+| Page whitespace and float flow | **OPTIONAL PRESENTATION** | All pages are legible, with no clipping, overlap, or obscured content |
+| Human ApJS/editorial decision | **OPEN — HUMAN GATE** | Automated ACCEPT is exact-artifact evidence, not journal acceptance |
+| Immutable public archive/DOI | **OPEN — RELEASE GATE** | Deposit the final source/data/PDF package and record the real identifier |
+
+No readiness uplift; P3 remains capped at 56. r7 evidence and normalized audit: `INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/`. Exact r8 receipt/raw/render evidence: `INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r8_b5f254f9/`.
+
+### P3 v3.2.0-r6: Exact-PDF ApJS control confirmation (2026-07-14)
+
+**Input:** exact 15-page PDF from closure commit `064b06bdbc2a5844837dbd92d5fafbc58c44328b`, reviewed at repository commit `c6277107cb8d705d6b2c1b675269f507fa54ab9a`; TeX SHA-256 `723d25080fa0e192c225105d42cf7ead233d5ec5cc3956b30630e5601268fc89`; PDF SHA-256 `a16c217930a31ba799b68a88b2477b020ad5e309ff79626e49b2b69a715fdd5a`.
+
+**Panel:** Grok 4.3 **ACCEPT** (4 hidden MINOR tags) / Gemini 3.1 Pro Preview **MINOR REVISIONS** (3 MINOR) / OpenAI GPT-5.5 **MAJOR REVISIONS** (5 MAJOR / 6 MINOR). Immutable `APJS-CATALOG` packets, all first-attempt concurrent native-PDF legs, no Anthropic/Claude. Evidence manifest 9/9 PASS.
+
+**Truth audit:** all three support the deterministic public-DESI positional-rejoin computation. The new chance, warned-population, and original-member controls are real and reproducible, but OpenAI identifies bounded catalog-contract and provenance work that prevents a minor-only board.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| 170 core versus 11 tail | **OPEN — ACCEPTANCE-RELEVANT CONTRACT** | Make the <0.1" core and chance-compatible 0.1–1" association tier explicit; preserve all 181 rows; infer no purity |
+| Shifted-position control | **CLOSED BY COMPUTE** | Parent 2,468 vs 86.69+/-14.42; strict 181 vs 76.19+/-13.30; tail 11 vs 75.56+/-13.01 |
+| Original-member sensitivity | **CLOSED BY COMPUTE** | 180/181 retained; only P3-DESI-000030 removed at 1.979009" |
+| Warning-population comparison | **CLOSED BY EXACT PRODUCT** | Exact warned `original_score` median is 5.841820; the prior audit's different value is superseded |
+| TARGET_RA/DEC coordinate lineage | **OPEN — BOUNDED PROVENANCE** | Recover immutable upstream semantics or explicitly bound the result to coordinate association |
+| Definitive submission bundle | **OPEN — WORKFLOW MAJOR** | One manifest-led checksum-bound primary/auxiliary/AAS-table bundle; DOI remains pending |
+| Legacy scores / warning-free / viewer hierarchy | **STALE/CLOSED** | Existing text already labels legacy metadata, ZWARN=0, and viewer evidence as subordinate |
+| Historical dataset name / example caption | **OPEN — PRESENTATION MINOR** | Name the prior catalog early and restate deterministic excerpt rule |
+
+Critical path was 59.7 seconds versus 100.6 seconds summed (40.7% reduction). No readiness uplift; P3 remains capped at 56. Full audit/raws: `INT_v3/ROUND_2026-07-14-P3-v3.2.0-r6-EXACTPDF-a16c2179-APJS-NONANTHROPIC-CONFIRM/`.
+
+### P4 v1.0.243: Exact-PDF ApJS confirmation panel (2026-07-14)
+
+**Input:** exact 27-page PDF from manuscript commit `22818453cbd9445b26f2e04de39aef03319a2609`, reviewed at repository commit `36badcbdf498123413031aa0a9504127d48f2054`; TeX SHA-256 `6affe4205a49a7954716f09ef11f31e1c17da1cbd778c195f8966c25c0127ed0`; PDF SHA-256 `9e73fd888699058d421043b0dd2de5d37d2aeb36fe37e8dd1c0bf5409e947d19`.
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** (12 MAJOR / 6 MINOR tags) / Gemini 3.1 Pro Preview **MINOR REVISIONS** (0/4) / Grok 4.3 **MAJOR REVISIONS** (3/2). Immutable `APJS-CATALOG-METHODS` packets, all first-attempt concurrent native-PDF legs, no Anthropic/Claude.
+
+**Truth audit:** all three reviewers support the narrow HC observed-label null (`+0.55 sigma`, `p=0.265`) under the declared estimator and isotropic pixel-permutation null. The panel does not support a physical/primordial upper bound.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| Immutable release/DOI/commit links | **OPEN — WORKFLOW GATE** | Freeze catalog, code, artifacts, and PDF; verify checksums/routes; insert real identifiers |
+| Reconstructed raw/flip probabilities | **OPEN — CATALOG-INTEGRITY GATE** | Rebuild/remove or machine-quarantine unsafe columns; never call them calibrated probabilities |
+| Catalog user contract | **OPEN — APJS UTILITY GATE** | Machine-readable schema, units, flags, filters, example query, and minimal reproduction |
+| DP4-15/16/17/21 | **OPEN — DISCLOSED SCIENCE/HISTORY GATES** | Preserve transfer, matched-estimator, covariance/selection, and no-formal-preregistration limits |
+| Pixel-null exchangeability | **OPEN — BOUNDED METHODS CLARITY** | Print existing per-galaxy shuffle and weight/mask cross-null results compactly |
+| Mask-count/harmonic contradictions | **MOSTLY STALE** | Distinct supports/nulls are already mapped; normalize terminology only |
+| Injection/calibration overclaim | **STALE/CLOSED** | v1.0.243 repeatedly rejects physical thresholds and labels scores as rankings |
+| DP/path/WLS/MASTER density | **OPEN — EDITORIAL** | Compress project language while preserving reproducibility mapping |
+
+Critical-path wall time was 86 seconds versus 183.0 seconds summed (53.0% reduction). No readiness uplift; P4 remains capped at 80. Full audit/raws: `INT_v3/ROUND_2026-07-14-P4-v1.0.243-EXACTPDF-9e73fd88-APJS-NONANTHROPIC-CONFIRM/`.
+
+### P2 v1.7.121: Exact-PDF PRD positioning confirmation (2026-07-14)
+
+**Input:** exact 10-page PDF from manuscript commit `86b38a0c2f31b1b4afae166c04f6658a5ed6d83f`, reviewed at repository commit `36badcbdf498123413031aa0a9504127d48f2054`; TeX SHA-256 `caf63ccd839e22935fd9737e243161e2fcf67a868b9f6a827e54e7b30f29169a`; PDF SHA-256 `d75d7bfa2f7b8b9ba006137ed7b3da3f099475ba60f1db4886168750866f127e`.
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** / Grok 4.3 **MINOR REVISIONS**. Immutable `PRD-RESEARCH` packets, three concurrent native-PDF legs, no Anthropic/Claude. Independent Codex is a typed `NOT_RUN` quota gap.
+
+**Truth audit:** v1.7.121 successfully demoted the survey arithmetic and removed UV-completion independence. All three reviewers support the central contraction-phase algebra in substance. OpenAI's MAJOR verdict retains real external gates but misreads several already printed appendix elements as absent.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| Central four-vertex derivation absent | **MOSTLY STALE** | Appendix already prints vertices, per-vertex limits, multiplicities, normalization, collapsed polynomial, epsilon grouping, and Li check |
+| Title/observational prominence | **OPEN — BOUNDED POSITIONING** | Remove `Testing`/SPHEREx prominence; retain conditional map as secondary material |
+| Ordered sums / product / epsilon scope | **OPEN — MINOR** | Define at first use and make the vertex-table caption internally consistent |
+| Polynomial `P` notation | **OPEN — MINOR** | Rename to a distinct degree-nine symbol |
+| Primordial-to-LSS convention | **OPEN — BOUNDED CLARITY** | Print the no-extra-factor convention bridge after checking the existing convention artifact |
+| UMF response versus free `b_phi` | **OPEN — BOUNDED CLARITY** | State `b_phi=2 delta_c(b_1-1)` as the specialization of the general response |
+| Cubic transfer / survey covariance | **OPEN — EXTERNAL SCIENCE/DATA GATES** | Direct third-order calculation and actual covariance/likelihood; text cannot substitute |
+| Fermion torsion / archive DOI | **OPEN — MODEL/WORKFLOW GATES** | Model-specific bound and verified immutable release before submission |
+| Future-date citation warning | **FALSIFIED** | Review date is 2026-07-14; 2025--2026 sources are not future-dated |
+
+Critical-path latency was 98.1 seconds versus 193.3 seconds summed (49.2% reduction). A first launch with an incorrect full commit id failed closed before any reviewer call. No readiness uplift; P2 remains capped at 74. Full audit/raws: `INT_v3/ROUND_2026-07-14-P2-v1.7.121-EXACTPDF-d75d7bfa-PRD-NONANTHROPIC-CONFIRM/`.
+
+### P1A v1A.0.121: Exact-PDF CQG Note minor-only confirmation panel (2026-07-14)
+
+**Input:** exact 7-page PDF from manuscript commit `b587cb7bb8e075aa9d0245ba8257fcef7ff196b8`, reviewed at repository commit `15f2e6af98daec7f9634e50961c7c1f7375c87fe`; TeX SHA-256 `4bf3a979fa214a06c29c474fe7a49f3d032150769d505de16647b0854701a650`; PDF SHA-256 `adfaf5e9fec12dc89857ea947b06d2923d49a8a0b3e45880b278b79bd22dab77`.
+
+**Panel:** OpenAI GPT-5.5 **MINOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** / Grok 4.3 **MINOR REVISIONS**. No report contains an internally MAJOR-tagged item. Immutable `CQG-NOTE` packets, three concurrent native-PDF legs, no Anthropic/Claude. Independent Codex is a typed `NOT_RUN` quota gap.
+
+**Truth audit:** all three reviewers support the central narrow result. Remaining work is bounded and does not require new science.
+
+| Finding | Status | Closure |
+|---|---|---|
+| "Observational consequence" density wording | **OPEN — MINOR** | Use dimensional coefficient benchmark and explicit non-constraint wording |
+| Cartan source/coefficient bridge | **OPEN — MINOR** | One convention-pinned intermediate line/cross-reference |
+| Coefficient-one vs contact/Holst/state factors | **OPEN — MINOR** | Tighten first benchmark statement; no numerical change |
+| Cutoff ceiling and `R_A` | **MOSTLY CLOSED — PRESENTATION** | Repeat existing non-threshold/regulator-bound caveat in table caption |
+| Boundary-data scope | **OPEN — MINOR** | Define matched background/initial/boundary data and boundary contribution assumption |
+| Fierz ordering reference | **OPEN — MINOR** | Cross-reference Appendix A at first scalar-coupling use |
+| Running/TB-EB/PACS/provenance | **OPEN — COPYEDIT/WORKFLOW** | Narrow Lorentzian barrier, expand cross-power terminology, remove PACS, bind immutable code version |
+
+This is the first exact three-vendor minor-only board of the current campaign. Critical-path latency was 63.5 seconds versus 103.4 seconds summed (38.6% reduction). Public readiness remains capped at 62 until the bounded v1A.0.122 closure, independent Codex gap, and external confirmation are resolved. Full audit/raws: `INT_v3/ROUND_2026-07-14-P1A-v1A.0.121-EXACTPDF-adfaf5e9-CQG-NOTE-NONANTHROPIC-CONFIRM/`.
+
+### P5 v0.1.130: Exact-PDF AJ confirmation panel (2026-07-14)
+
+**Input:** exact 38-page PDF from manuscript commit `0842dfc60dec137ee30c92e44af26600feaaf058`, reviewed at repository commit `b08f46b6d85cdf796d39b08c1e90d0cc58c4dee7`; TeX SHA-256 `ea5613818ad2f60386658acc76b3f60f108fee5237e68de9dafbf26dbf4981b4`; PDF SHA-256 `f5b7a1bb5e7bbd565baac6b21aeab4e18611aec03b18dbf8e298de04d719fe17`.
+
+**Panel:** OpenAI GPT-5.5 **REJECT** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (two internally MAJOR-tagged findings) / Grok 4.3 **MINOR REVISIONS** (two internally MAJOR-tagged findings). Immutable `AJ-OBSERVATIONAL` packets, three concurrent native-PDF legs, no Anthropic/Claude. Independent Codex is a typed `NOT_RUN` quota gap.
+
+**Truth audit:** the narrow catalog-specific exploratory non-detection is plausible/supported, but P5 is not submission-ready.
+
+| Finding | Status | Required evidence/action |
+|---|---|---|
+| Paper IV labels/weights/provenance | **OPEN — EXTERNAL PUBLICATION GATE** | Coordinated review or accepted Paper IV; final independently reviewable release; rerun P5 on final labels |
+| Immutable P5 tag/archive/DOI | **OPEN — WORKFLOW BLOCKER** | Public frozen bundle; A1--A40 verification; final identifier |
+| Post-hoc "designated primary" | **OPEN — POSITIONING MAJOR** | Rename focal estimate as descriptive/exploratory; no confirmatory language |
+| GALZONE parent / `OUT=0` / VoidFinder arm | **OPEN — CLARITY MAJOR** | One exact flow explaining released quality parent versus hole-union void membership |
+| Covariance/model specification | **OPEN — REPRODUCIBILITY MAJOR** | Print A37 formula, 50 sky clusters, 78 columns, finite-sample correction, and 3,750-region sensitivity |
+| DESIVAST selection matching | **OPEN — EXTERNAL-DATA/SCOPE GATE** | Exact mask/random products or continued non-selection-matched scope; do not substitute nonidentical products |
+| Environment-dependent label bias | **OPEN — POWER GATE** | Void-arm CI is +/-3.7 pp, too wide to exclude the observed contrast scale |
+| Secondary-analysis length/order | **OPEN — EDITORIAL MAJOR** | Focal result first; detailed T-Web/Tempel/ASTRA diagnostics moved/condensed |
+| Uniform monopole objection | **MOSTLY STALE** | Two-sample contrast is invariant; keep separate from environment-dependent label bias |
+| Match-radius dedup objection | **STALE/CLOSED** | Caption already distinguishes pre-dedup radius rows from deduped rows |
+
+Parallel dispatch took 37.6 seconds on the critical path versus 96.0 seconds summed (60.8% reduction). An earlier short-SHA launch failed closed before dispatch. No readiness uplift; verified cap remains 74. Full audit and raw reports: `INT_v3/ROUND_2026-07-14-P5-v0.1.130-EXACTPDF-f5b7a1bb-AJ-NONANTHROPIC-CONFIRM/`.
+
+### P2 v1.7.120: Exact-PDF PRD confirmation panel (2026-07-14)
+
+**Input:** exact 10-page PDF at source commit `411c59e01673ede79bf4a93fa97af011d032a426`, source SHA-256 `e9df08c5e46aa91bde70dd8ccc72a7adb5af23b7d4e2099780401b1092f2fa5c`, PDF SHA-256 `2111e62f6eb2423dc1880fad5fa90c8da1feac75ff4b44891573f6d90762cc06`
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** / Grok 4.3 **MAJOR REVISIONS**. All three successful native-PDF legs were concurrent. Grok required a second file-ingestion attempt; the failed first attempt was not scored. No Anthropic/Claude dispatch or fallback. Independent Codex `gpt-5.6-sol` high is a declared `NOT_RUN` gap because its weekly subscription allowance was exhausted.
+
+**Truth audit:** the central contraction-phase `-35/16` result is supported; the exact appendix already includes the four vertices, per-vertex limits, six-Wick convention, collapsed polynomial, epsilon-order grouping, in-in sign convention, and Li closed-form check. Real remaining gates are publication positioning and external evidence, not an invitation to invent missing calculations.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| `2.63 sigma` promoted as observational headline | **OPEN — POSITIONING MAJOR** | Demote to illustrative conditional mapping; no survey-level claim without external covariance and third-order transfer |
+| "UV-completion independence" | **OPEN — POSITIONING MAJOR** | Limit claim to the contraction-phase coefficient under the specified cubic action |
+| Cubic-order bounce transmission | **OPEN — EXTERNAL SCIENCE GATE** | Direct third-order calculation or keep every late-time statement explicitly conditional |
+| SPHEREx per-triangle covariance/likelihood | **OPEN — EXTERNAL DATA GATE** | Published covariance/likelihood and justified nuisance model; do not fabricate forecast precision |
+| Free-`b_phi` limit | **OPEN — INTERPRETIVE** | Center prior-sensitivity discussion on the evidenced `0.42 sigma` free limit |
+| Cai/Li expression provenance | **OPEN — BOUNDED CLARITY** | Compact trusted-expression summary; preserve disclosed printed-polynomial tension |
+| Prior-volume section | **OPEN — EDITORIAL** | Condense or move out of main narrative; no evidential language |
+| Rough FoG degradation percentage | **REJECTED — UNSAFE** | No paper-specific bound; keep omission explicit instead |
+| Immutable archive/DOI | **OPEN — WORKFLOW** | Verified citable bundle and final identifier before submission |
+
+The legacy manifest says `review_commit=worktree` because unrelated repository files were dirty; the reviewed P2 files were clean and exactly committed at `411c59e0`. The content-addressed packet migration is the closure for that harness ambiguity. No readiness uplift is inferred; P2 remains capped at 74. Full audit and typed gap record are in `INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-PRD-NONANTHROPIC-CONFIRM/`.
+
+### P1A v1A.0.120: Exact-PDF CQG Note and PRD venue-control panels (2026-07-14)
+
+**Input:** exact 8-page PDF at source commit `438ce8ec79cb13d7cfa5233671966a30f5b5e45c`, SHA-256 `6472db7741deebd4100fe3191d5ef23a9b0b7960c4284cf53e9e4761f62f535b`
+
+**CQG Note panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **ACCEPT**.
+
+**PRD venue-control panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **ACCEPT**.
+
+All six legs received the identical native PDF concurrently; the boards are not averaged. No Anthropic/Claude dispatch or fallback. Independent Codex `gpt-5.6-sol` high is a declared NOT_RUN gap because its weekly subscription allowance was exhausted; no substitute verdict was synthesized.
+
+**Truth audit:** the narrow central algebra is supported in essence by all six reports, but several real closures remain. CQG Note is the primary route; PRD's significance concern is an editorial venue-control result.
+
+| Finding | Status | Required evidence |
+|---|---|---|
+| Unify/focus the Note around algebraic Cartan elimination | **OPEN — STRUCTURAL MAJOR** | Shorter title/abstract/body; standard identities and actual contribution stated plainly |
+| Explicit zero-source connection and kernel step | **OPEN — MAJOR** | Display sourced Cartan equation and `e^[I]∧T^[J]=0 => T^I=0` proof for invertible tetrad |
+| Above-Planck NJL stress rows | **OPEN — MAJOR** | Delete uncontrolled rows and dependent prose; retain only controlled sub-Planck diagnostics |
+| Local all-orders/classical claim conditions | **OPEN — MAJOR** | Initial/boundary/global/quantum exclusions at each broad claim; reduced-vs-off-shell distinction |
+| Density motivation/precision | **OPEN — BOUNDED** | Parameterized scaling, illustrative normalization, honest rounding |
+| Fierz clarity bridge | **OPEN — BOUNDED** | One conventional-bilinear intermediate line; existing full matrix/sign audit retained |
+| Companion/running/NY material and notation | **OPEN — EDITORIAL** | Remove undefined Route-2/3 and pipeline detail; shorten; fix `R R e` artifacts |
+
+No readiness uplift is inferred; the verified external cap remains 62. Raw reports, manifests, declared-gap records, and the full audit are in the two `INT_v3/ROUND_2026-07-14-P1A-v1A.0.120-EXACTPDF-6472db77-*` directories.
+
+### P3 v3.2.0-r5: Venue-correct exact-PDF ApJS panel (2026-07-14)
+
+**Input:** exact 14-page PDF at source commit `7cf60218b521a8154f9ad6ed3b58c0bbc420ab59`, SHA-256 `024931a40e88124f75f2f6872549936e909db0a3b504dbd2e4e68e91878a39dc`
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **MINOR REVISIONS**. All three received the native PDF concurrently. No Anthropic/Claude dispatch or fallback. Independent Codex `gpt-5.6-sol` high is a declared NOT_RUN gap because its weekly subscription allowance was exhausted; no substitute verdict was synthesized.
+
+**Truth audit:** three substantive closure classes survive: chance-association/random-shift control; accepted-versus-warning-bearing population comparison using the exact 2,267-row auxiliary product; original-member-separation sensitivity. Final immutable archive/DOI packaging is a workflow gate. Grok's claimed 20,299,153 denominator is an OCR false positive (source/PDF use 20,299,155 throughout), and 7.33% correctly rounds `181/2468`.
+
+| Finding | Status | Required evidence |
+|---|---|---|
+| Chance-association/random-shift control | **OPEN — MAJOR** | Deterministic script, artifact, radius curve, and tail-row interpretation |
+| Warned-versus-accepted comparison | **OPEN — MAJOR** | Script-generated descriptive table/figure; no bias-correction claim |
+| Original-member 1-arcsec sensitivity | **OPEN — BOUNDED** | Explicit one-row counterfactual and machine-readable tier/expression |
+| Final citable package/DOI | **OPEN — WORKFLOW** | Immutable primary/auxiliary assets, manifests, dictionaries, and final identifier |
+| Denominator/7.33% Grok flags | **FALSE / CLOSED** | Direct exact-source/PDF inspection and arithmetic |
+
+No readiness uplift is inferred. Raw reports, manifest, and full source-cited audit are in `INT_v3/ROUND_2026-07-14-P3-v3.2.0-r5-EXACTPDF-024931a4-APJS-NONANTHROPIC-CONFIRM/`; SSOT and the Next.js review timeline were updated with this round.
+
+### P2 v1.7.119: Exact-PDF truth-audit scientific closure (2026-07-14)
+
+**Input:** exact v1.7.118 PDF at commit `9089d65c64752e3a2c69778b72d97ef7c45b4443`, SHA-256 `01107b3d731b945b2aa9ea04ce4e8188282770a87b495c4a1f7ad5b71a4db71a`
+
+**Panel:** OpenAI GPT-5 **MAJOR** / Grok 4.3 **MINOR** / Gemini 2.5 Pro **MINOR** / Codex ChatGPT-subscription `gpt-5.6-sol` high **MAJOR**. No Anthropic/Claude dispatch or fallback.
+
+**Truth audit:** Codex's mixed-orbit counterexample is source-invalid: it breaks Cai's own equal vertex forms and the six-Wick multiplicity. Two genuine manuscript defects were verified (Hamiltonian in-in sign presentation; unsupported `1--8%` quasi-dust band), along with an overstatement, an orbit-wording imprecision, and a stale webform abstract.
+
+| Closure | Status | Result |
+|---|---|---|
+| Define Hamiltonian integral and use `+2 Im` consistently | **DONE** | Sign-correct; equivalent Lagrangian convention stated |
+| Remove unsupported quasi-dust numeric band | **DONE** | Correction explicitly unquantified pending four-vertex calculation |
+| Constrain orbit statement to six-Wick convention | **DONE** | Mixed 3-term/6-term convention identified as source-inconsistent |
+| Neutralize prior-dependent Bayesian-preference wording | **DONE** | Illustration no longer promoted as established preference |
+| Sync `abstract_for_webform.txt` | **DONE** | `-35/16`, conditional `2.63 sigma` recast, no stale `3--5 sigma` claim |
+
+**Output:** v1.7.119, 10 pages, PDF SHA-256 `4434dc8b26ed84324e3fdcf486a9205e49989e5e4dda5efd18436a68ccfd0590`.
+
+Four-pass REVTeX compile and mandatory PDF audit passed: zero errors, undefined references/citations, overfull boxes, raw path-like `\texttt{}` strings, broken HTTP(S) links, or visual collisions across pages 1--10. Full matrix and reproducible SymPy evidence are in `INT_v3/ROUND_2026-07-14-P2-v1.7.118-EXACTPDF-9089d65c-NONANTHROPIC/`.
+
+No verdict improvement is inferred until v1.7.119 receives a fresh exact-PDF panel. Shared site/SSOT/Convex/root-version/mirror updates and git integration were outside this lane.
+
+### P2 v1.7.118: Fresh non-Anthropic editorial closure (2026-07-14)
+
+**Input:** exact 10-page v1.7.117 PDF, SHA-256 `be2a0ba90126feeb896b553f9f9be9128925f75f177260b5c74f829ab940f9cf`
+
+**Raw verdicts preserved:** Grok **REJECT** / Gemini **MAJOR REVISIONS** / OpenAI **MAJOR REVISIONS**
+
+**Truth-audit result:** 0 new scientific/numerical defects; 6 distinct non-scientific closures
+
+**Output:** v1.7.118 PDF, SHA-256 `01107b3d731b945b2aa9ea04ce4e8188282770a87b495c4a1f7ad5b71a4db71a`
+
+| Closure | Status | Scientific/numeric change |
+|---|---|---|
+| Define $A_{\rm GR}$ and $b_\phi$ | **DONE** | None |
+| Pin Cai source to arXiv:0903.0631v2 + retrieval provenance | **DONE** | None |
+| Remove Ref. 14 bibliography commentary | **DONE** | None |
+| Identify 34.7\% as bias-marginalized $0.687\to0.449$ | **DONE** | None |
+| Remove unused $r_t$ | **DONE** | None |
+| Clarify separate primordial-transfer-only run | **DONE** | None |
+
+Full BibTeX + three-pass compile and the mandatory 10-page PDF audit passed: zero compile errors, undefined references/citations, overfull boxes, raw `\texttt` paths, broken links, or visual collisions. Open gates remain direct cubic transfer, external Heinrich $\mathrm{Cov}_B$/likelihood, and the camera-ready DOI. No acceptance/minor verdict or readiness increase is inferred. Shared SSOT/site/Convex/version/mirror state and git integration were outside this scoped lane.
 
 ### Round 1: Comprehensive Audit (2026-03-02 19:17 PST)
 

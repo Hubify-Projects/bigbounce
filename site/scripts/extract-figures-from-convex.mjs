@@ -27,10 +27,10 @@ const CONVEX_URL =
 // Order is the canonical display order (P1A → P1B → P2 → P3 → P4 → P5).
 const SECTION_ORDER = [
   { slug: "paper-1a", title: "Paper 1A — ECH Channel-Level Closure (4 Dark-Energy Routes)" },
-  { slug: "paper-1b", title: "Paper 1B — Technical Verification Companion (MCMC + NaMaster)" },
+  { slug: "paper-1b", title: "Paper 1B — namaster-proof Software Verification (Exact pseudo-Cℓ Windows)" },
   { slug: "paper-2",  title: "Paper 2 — Matter-Bounce f_NL SPHEREx Forecast" },
-  { slug: "paper-3",  title: "Paper 3 — DESI Spectral Anomalies (Multi-Survey Catalog)" },
-  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (3.3M Spirals)" },
+  { slug: "paper-3",  title: "Paper 3 — Supporting Data Release · DESI Public-ID Recovery" },
+  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (8.47M Galaxies, 890,069 High-Confidence)" },
   { slug: "paper-5",  title: "Paper 5 — DESI Chirality × Cosmic-Web Environment" },
 ];
 

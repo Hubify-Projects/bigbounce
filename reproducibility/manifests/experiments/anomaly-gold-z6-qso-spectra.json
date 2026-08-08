@@ -1,0 +1,55 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-gold-z6-qso-spectra",
+  "title": "Gold anomalies — z6 QSO spectra (12 DESI Redrock z>6 QSO candidates)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/scripts/download_z6_qso_spectra.py",
+      "entrypoint": "python3 download_z6_qso_spectra.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p1_highz_tracers/scripts/replot_z6_spectra.py",
+      "entrypoint": "python3 replot_z6_spectra.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, pandas, pyarrow, healpy — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes to low hours (DESI spectra download-bound)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Downloads + replots the 12 candidate spectra from DESI Redrock catalogs; the z>6 classifications carry no independent redshift validation, so reproduction should reproduce the candidate list and spectra, not be read as a confirmed-redshift catalog."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/gold_anomalies/spectra/z6_qsos_detailed.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the same 12 DESI Redrock z>6 QSO candidates are recovered (exact object-id set equality expected); note these candidates have no independent redshift validation, so verification is limited to candidate-selection reproducibility, not redshift confirmation.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — gold anomalies, z6 QSO spectra bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md"
+  ]
+}

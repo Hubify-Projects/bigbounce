@@ -1,7 +1,7 @@
 # Pod 2 (regular_green_pig) — Paper 4 Chirality GPU-Blocked Tasks
 
 **Date:** 2026-04-29 PDT  
-**Pod:** `regular_green_pig` — H200 SXM, ssh `root@38.80.152.249 -p 31045`  
+**Pod:** `regular_green_pig` — H200 SXM, ssh `root@<pod-ip> -p <port>`  
 **Status:** All 4 GPU-blocked tasks for Paper 4 are DONE.
 
 ## Task results

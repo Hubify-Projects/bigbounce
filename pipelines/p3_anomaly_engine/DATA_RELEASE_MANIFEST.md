@@ -1,34 +1,80 @@
 # Data Release Manifest — BigBounce Multi-Survey Anomaly Catalog
-## Paper: Golden (2026), "Spectrally Unusual Sources at Scale" (Paper 3)
-## Frozen: 2026-06-10 (EXT1 closure wave, pre-submission staging)
-## Status: STAGED (not yet public; will flip to public on arXiv posting)
+
+> **SUPERSEDED PUBLICATION ROUTE — HISTORICAL DATASET RECORD (2026-08-04).**
+> This manifest preserves the earlier heterogeneous multi-survey release and
+> its audit trail. It is not the current Paper 3 publication plan, not the
+> submission sample for a new anomaly-discovery claim, and not a complete
+> rerunnable flagship catalog. Current P3 is the 181-TARGETID public-ID
+> recovery support release; the future anomaly flagship must be rebuilt under
+> [`pipelines/p1_highz_tracers/clean_rerun_contract.md`](../p1_highz_tracers/clean_rerun_contract.md).
+> See the [publication and release master map](../../project-context/PUBLICATION_AND_RELEASE_MASTER_MAP_2026-08-04.md).
+
+## Paper: Golden (2026), "A Multi-Survey Autoencoder Anomaly-Candidate Catalog: 268,319 Validated Point Sources plus 200 Archival CMB Map Patches" (Paper 3)
+## Frozen: 2026-07-12 (immutable reviewable release, v3.1.157)
+## Review-of-record paper: v3.1.161-apjs (local venue-fit source; no new HF tag uploaded)
+## Status: PUBLIC + IMMUTABLE. Released CC-BY-4.0 on HuggingFace and pinned by commit hash.
 ## HuggingFace: https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog
-## Zenodo DOI: [TO BE MINTED AT SUBMISSION — insert here before arxiv upload]
+## PINNED RELEASE (immutable pointer cited in the paper): git tag `p3-v3.1.161`
+## Inventory note: the frozen tag contains 25 files. The locally corrected RELEASE_MANIFEST.json has 27 entries because it also records two post-tag DP3-15 audit artifacts; it is not byte-identical to the tag's older manifest.
+## Submission warning: the pinned tag is immutable but is not sufficient for a complete six-survey row-level package; native Planck and per-object LAMOST products are absent. The scoped ApJS table bundle was downloaded and verified locally on 2026-07-14; its exact audit record is `apjs_submission_v3.1.161/SUBMISSION_BUNDLE_MANIFEST.json`.
 
 ---
 
-## Canonical Catalog Files (hf_staging/)
+## Released Catalog Files — authoritative list is RELEASE_MANIFEST.json
 
-| File | SHA-256 | Description |
-|------|---------|-------------|
-| pathc_unique_objects_no_act.parquet | e0b57f255f716845b56f398015858b1ed837c85c3b483433fa424a84ac455664 | PRIMARY: 378,280 unique anomalies (7-way 5″ dedup, ACT excluded) |
-| pathc_unique_objects.parquet | b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643 | Sensitivity check: 378,480 unique anomalies (8-way with ACT) |
-| pathc_multi_survey_matches_no_act.parquet | 3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784 | 637 multi-survey coincidence clusters (no ACT) — CANONICAL |
-| pathc_multi_survey_matches.parquet | 3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784 | Multi-survey coincidence clusters (with ACT sensitivity check) — **BYTE-IDENTICAL to _no_act variant**: ACT contributes zero multi-survey overlaps (§planck_act_null confirms disjoint footprints); both files staged for naming consistency only. The _no_act file is canonical. |
-| cmb_native_anomalies.parquet | ec1464cdd39fd4cc51aefb3573601e9283a10336a4a74e695caa6a8327114273 | Planck CMB native retrain: 200 anomaly patches |
-| gaia_dr3_anomalies.parquet | 819c59789eb1b94de4d46a62777fd125fb084b8c70f3d627b734a45af7396ced | Gaia DR3 anomalies: 500 objects (exploratory tier) |
-| lamost_dr10_pathc_native.parquet | 48c0e2f5420de010923dc69c5c439aaf4cf82c9a301ef55320571bd6d9516a40 | LAMOST DR10 native retrain: 113,342 objects (exploratory tier) |
-| neowise_anomalies.parquet | 2740d936a2289ab32bc925f4507a449aa14445976e916459303874386aac42da | NEOWISE raw anomalies: 436 objects (pre-ecliptic mask) |
-| neowise_pathc_masked_anomalies.parquet | fdee011e2266e007f3420bc5222df322a89ca5e64f0e0e5f46507c8c7e433b1b | NEOWISE Path-C masked: 419 objects (post ecliptic-pole mask) |
-| planck_cmb_anomalies.parquet | 9dd3576f8de7251b9ee2bed13e61acc66d3faa530c317ae61dfd2e6b05a92740 | Planck CMB cross-transfer baseline (200 patches; diagnostic only) |
-| sdss_dr18_pathc_native.parquet | 5139c663c12f40217ea646fa8140c91f40194b42ca891912db73301ab78a31e6 | SDSS DR18 native retrain continuity slice: 77,905 objects |
-| act_dr6_cross_transfer_anomalies.parquet | 9eed61687f10859dc8830acfd21f49ca5edc367a84ef953c6830b54dbde9b97f | ACT DR6 cross-transfer (quarantined; archived separately) |
+The corrected `RELEASE_MANIFEST.json` inside tag `p3-v3.1.161` is authoritative for the 27-file scientific inventory and checksums. The repository also contains auxiliary cutouts and legacy artifacts outside that enumerated submission inventory.
 
-## Staged from Pod (hf_staging_pod/)
+The released parquet catalog files (as verified against the pinned revision on 2026-07-12) and their row counts:
 
-| File | SHA-256 | Description |
-|------|---------|-------------|
-| erosita_dr1_anomalies.parquet | 4ea1b032aa8a5e51ea10fd600aec7b52f80598830e04f54f2dfa2dd4e082d2de | eROSITA DR1: 298 anomalies (membership-only canonical; score axis irreproducible — see §III.E and r24conf_erosita_axis_sweep.json) |
+Count interpretation after the M44 audit:
+
+- **268,319** — validated point-source science product (DESI + SDSS + geometry-gated NEOWISE, 5-arcsec dedup).
+- **268,519** — the validated point-source product plus 200 non-overlapping archival Planck cross-transfer rows; continuity count, not uniformly validated.
+- **377,482** — 377,282 point-source continuity rows (including exploratory LAMOST aggregate membership) plus the same 200 archival Planck rows.
+
+| File | Rows | SHA-256 (abbrev.) | Tier |
+|------|------|-------------------|------|
+| pathc_unique_objects.parquet | 378,480 | b14deb02…6138c643 | merged 8-way dedup (headline 377,482 = minus act/gaia/erosita; 378,280 = minus ACT only) |
+| pathc_multi_survey_matches.parquet | 637 | 3605b16a…c85e784 | multi-survey coincidence clusters (ACT-excluded, canonical) |
+| desi_dr1_anomalies.parquet | 195,829 | 0a36b8d6…f103ec65 | validated (canonical-S) |
+| sdss_dr18_pathc_native.parquet | 77,905 | 5139c663…b78a31e6 | validated continuity slice (canonical-S) |
+| planck_cmb_anomalies.parquet | 200 | 9dd3576f…b05a92740 | **archival cross-transfer baseline; NOT native top-200** |
+| neowise_anomalies.parquet | 436 | 2740d936…6aac42da | validated raw (419 survive the 80° ecliptic-pole mask) |
+| gaia_dr3_anomalies.parquet | 500 | 819c5978…7396ced | **quarantined synthetic placeholder; present but excluded from every count** |
+| blocks/erosita_dr1/erosita_dr1_anomalies.parquet | 298 | 4ea1b032…4d082d2de | membership-only addendum (EXCLUDED; S_BigAE irreproducible — see warning) |
+| act_dr6_anomalies.parquet | 200 | 65fa89af…e47cde72 | quarantined cross-transfer diagnostic (EXCLUDED) |
+
+**NOT released as per-object tables (documented in the paper, deliberately not in the release):**
+`lamost_dr10_pathc_native` (LAMOST DR10 is a failed-exploratory tier included only in aggregate/dedup continuity accounting, but no per-object LAMOST table is released), the native Planck top-200/checkpoint/tensor/full-score bank, and superseded staging variants (`*_no_act`, `cmb_native_anomalies`, `neowise_pathc_masked`).
+
+Reproducibility / provenance files also released (see RELEASE_MANIFEST.json for full SHA-256 + sizes): `scripts/`-side dedup + held-out rescore (`p3_compute_to_accept/`), dedup summaries, and top-anomaly cutouts. The frozen tag also contains a legacy PTA chain/fitter, but v3.1.161 removes that cosmology demonstration and the PTA files are not part of the ApJS submission package.
+
+---
+
+## ApJS Machine-Readable Table Inventory — Locally Verified
+
+All six files below were downloaded directly from immutable revision
+`573b5da7c75e4d33ab260bb5b0d57a2af0e15b23` into the gitignored
+`apjs_submission_v3.1.161/` directory. Their SHA-256 values, byte sizes, Parquet
+row counts, and schemas match the tracked
+`SUBMISSION_BUNDLE_MANIFEST.json`. At submission, attach the exact files with
+units, null conventions, score definitions, selection rules, and provenance in
+the machine-readable-table metadata. Do not describe the frozen tag as filling
+the missing native Planck or LAMOST row-level products.
+
+| Role | Exact file | Rows | Exact columns / schema boundary |
+|---|---|---:|---|
+| Validated DESI point sources | `desi_dr1_anomalies.parquet` | 195,829 | `tid, ra, dec, score, worst, rB, rR, rZ` |
+| Validated SDSS continuity slice | `sdss_dr18_pathc_native.parquet` | 77,905 | `plate, mjd, fiberid, ra, dec, z, class, anomaly_score`; fixed-size continuity slice, not a uniform threshold |
+| Geometry-gated NEOWISE | `neowise_anomalies.parquet` | 436 raw / 419 retained | `source_id, ra, dec, n_epochs, time_span`, W1/W2 variability features, `anomaly_score`; include the ecliptic-mask flag/definition |
+| Merged continuity table | `pathc_unique_objects.parquet` | 378,480 | `cluster_id, n_detections, n_surveys, survey_list, ra_mean, dec_mean, best_score, member_ids, best_survey`; heterogeneous tiers must remain identifiable |
+| Cross-survey coincidences | `pathc_multi_survey_matches.parquet` | 637 | same merged schema; 5-arcsec union, ACT excluded |
+| Archival CMB diagnostic | `planck_cmb_anomalies.parquet` | 200 | `patch_idx, ra, dec, anomaly_score`; label as cross-transfer, not native |
+
+The 298-row eROSITA membership list is an optional diagnostic MTR with an
+explicit non-comparable-score warning. The synthetic Gaia and quarantined ACT
+tables are provenance exhibits only. No LAMOST per-object or native Planck MTR
+can be included unless those products are independently recovered and audited.
 
 ---
 
@@ -54,40 +100,26 @@ this table before treating any score column as a continuous, cross-survey-compar
 |---|---|---|---|
 | DESI DR1 | canonical-S (Eq. score, DESI-trained BigAE) | no | per-object scores released |
 | SDSS DR18 native | canonical-S (native rescale; continuity slice S ≥ 0.1060) | no | per-object scores released |
-| LAMOST DR10 native | canonical-S (native rescale; top-1% slice S ≥ 0.4613) | no | exploratory tier; per-object scores released |
-| Gaia DR3 | canonical-S (feature-space BigAE) | no | exploratory tier; per-object scores released |
+| LAMOST DR10 native | canonical-S (native rescale; top-1% slice S ≥ 0.4613) | n/a | failed-exploratory; **NOT released as a per-object table**; enters aggregate 377,282 point-source continuity count only |
+| Gaia DR3 | INVALID synthetic-placeholder axis | n/a | quarantined historical file; excluded from every count and science use |
 | NEOWISE | canonical-S (post ecliptic-pole mask) | no | per-object scores released |
-| Planck CMB native | raw per-patch reconstruction MSE (survey-specific axis, NOT canonical-S) | no | 200 patches ranked by raw MSE |
+| Planck CMB released | cross-transfer reconstruction score | no | 200 archival rows from patch_idx < 20,000; **not the unavailable native 200k-bank top-200** |
 | eROSITA DR1 | NONE — S_BigAE axis irreproducible (see warning above) | **yes** | n=298 membership list only; ranked by committed raw score |
 
 ---
 
-## Gaia DR3 Feature Columns (20 features — lineage-inferred)
+## Gaia DR3 quarantine
 
-The Gaia DR3 anomaly table uses 20 astrometric/variability features from the published 50K-source
-run. The exact 20-feature production preprocessing script was NOT recovered from pod backups.
-The feature list is lineage-inferred from the 21-feature successor run (`gaia_expanded.py`).
-Features (robust median/IQR-scaled; NaN→0, ±∞ clipped to ±5):
-
-1. ra, dec (positional — 2 features)
-2. parallax, parallax_error (astrometric — 2)
-3. pmra, pmdec, pmra_error, pmdec_error (proper motion — 4)
-4. phot_g_mean_flux, phot_bp_mean_flux, phot_rp_mean_flux (photometry — 3)
-5. phot_g_mean_mag, bp_rp, bp_g (colors — 3)
-6. radial_velocity, radial_velocity_error (RV — 2)
-7. astrometric_excess_noise, astrometric_sigma5d_max (astrometry quality — 2)
-8. ipd_frac_multi_peak (image parameter — 1)
-9. ruwe (astrometric quality — 1)
-
-*Note: exact column selection may differ from the 21-feature successor by one dropped feature.
-Downstream users should verify against the gaia_expanded.py script for the closest lineage.*
+Do not interpret `gaia_dr3_anomalies.parquet` as Gaia DR3 data. The provenance audit identifies it as the synthetic fallback generated by `gaia_expanded.py`; its sequential fallback identifiers, duplicates, and nonphysical magnitudes are incompatible with a real Gaia catalog. The file remains only because the immutable tag cannot be rewritten. It is excluded from every reported count and should be ignored by downstream users.
 
 ---
 
 ## DESI DR1 Anomaly Files
 
-DESI DR1 native-retrained anomalies (195,829 objects) are hosted separately due to size.
-See companion GitHub repository: https://github.com/Hubify-Projects/bigbounce
+DESI DR1 native-retrained anomalies (195,829 objects) ARE included in the release as
+`desi_dr1_anomalies.parquet` (10.5 MB; SHA-256 `0a36b8d6…f103ec65`) at the pinned revision.
+The \BigAE{} model weights and training code are in the companion GitHub repository:
+https://github.com/Hubify-Projects/bigbounce
 
 ---
 
@@ -95,5 +127,5 @@ See companion GitHub repository: https://github.com/Hubify-Projects/bigbounce
 
 - All .parquet files use pandas/pyarrow schema; schema documented in companion-repo README.md.
 - The 7-way dedup was run with `pathc_positional_dedup.py` (deterministic, archived at same repo).
-- MCMC chain (320,000×2 float64 for NANOGrav γ/log10A) in companion repo at `wave_14_rr_nanograv_bayesian.py` outputs.
-- Checksums computed with `sha256sum` on 2026-06-10 (pre-public staging snapshot).
+- Legacy PTA chain remains in the frozen inventory for provenance but is outside the v3.1.161 paper and submission package.
+- Checksums (SHA-256) for the released files were recomputed and frozen into `RELEASE_MANIFEST.json`; the immutable public pointer is tag `p3-v3.1.161`. The abbreviated hashes in the table above are drawn from that JSON; use the JSON for full-length values.

@@ -1,0 +1,797 @@
+**
+(paper1a_ech_nogo.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (revtex4-2.cls
+Document Class: revtex4-2 2020/10/03 4.2e (https://journals.aps.org/revtex/ for
+ documentation)
+ Copyright (c) 2019 American Physical Society.
+ mailto:revtex@aps.org
+ Licensed under the LPPL:
+http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt
+ Arthur Ogawa <arthur_ogawa at sbcglobal dot net>
+ Based on work by David Carlisle <david at dcarlisle.demon.co.uk>
+ Version (4.2d,4.2e): Modified by Mark Doyle and Phelype Oleinik
+ .
+ltxutil[2020/10/03 4.2e utilities package (portions licensed from W. E. Baxter 
+web at superscript.com)]
+LaTeX Info: Redefining \@centercr on input line 356.
+Class revtex4-2 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfoot
+note on input line 481.
+Class revtex4-2 Info: Repairing broken LateX \@sect on input line 803.
+\intertabularlinepenalty=\count181
+\@tbpen=\count182
+\@arstrutbox@hline=\box50
+Class revtex4-2 Info: Repairing broken LaTeX \@xbitor on input line 1834.
+Class revtex4-2 Info: Making \typeout \long on input line 2099.
+ltxfront[2020/10/03 4.2e frontmatter package (AO,DPC,MD)]
+\c@affil=\count183
+\c@collab=\count184
+\absbox=\box51
+ltxgrid[2020/10/03 4.2e page grid package (portions licensed from W. E. Baxter 
+web at superscript.com)]
+\c@linecount=\count185
+\output@latex=\toks16
+\box@size@1=\box52
+\box@size@2=\box53
+\@protection@box=\box54
+\@topmark@saved=\toks17
+\footins@saved=\box55
+\footins@recovered=\box56
+\column@recovered=\box57
+\pagesofar=\box58
+\footsofar=\box59
+\pagegrid@col=\count186
+Class revtex4-2 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and
+ \\  on input line 5665.
+\c@part=\count187
+\c@section=\count188
+\c@subsection=\count189
+\c@subsubsection=\count190
+\c@paragraph=\count191
+\c@subparagraph=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\c@figure=\count193
+\fbox@1=\box60
+\c@table=\count194
+\fbox@2=\box61
+\c@video=\count195
+\fbox@4=\box62
+\@bibdataout=\write3
+\widetext@top=\box63
+\widetext@bot=\box64
+Class revtex4-2 Info: Selecting society aps on input line 7658.
+(aps4-2.rtx
+File: aps4-2 2020/10/03 4.2e (https://journals.aps.org/revtex/ for documentatio
+n)
+Class revtex4-2 Info: RevTeX society APS selected on input line 40.
+)
+Class revtex4-2 Info: Selecting journal prd on input line 7660.
+Class revtex4-2 Info: APS journal PRD selected on input line 7661.
+
+
+Class revtex4-2 Warning: No type size specified, using default 10.
+
+(aps10pt4-2.rtx
+File: aps10pt4-2 2020/10/03 4.2e (https://journals.aps.org/revtex/ for document
+ation)
+Class revtex4-2 Info: RevTeX pointsize 10pt selected on input line 39.
+) (textcase.sty
+Package: textcase 2019/09/14 v1.00 Text only upper/lower case changing (DPC)
+) (url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip49
+\bibsep=\skip50
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count196
+)
+Class revtex4-2 Info: Repairing natbib's \BibitemShut on input line 7665.
+ (revsymb4-2.sty
+Package: revsymb4-2 2020/10/03 4.2e (https://journals.aps.org/revtex/ for docum
+entation)
+LaTeX Info: Redefining \REV@mathfrak on input line 128.
+))
+(amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen138
+)
+LaTeX Info: Redefining \text on input line 28.
+) (amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen139
+) (amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count197
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count198
+\leftroot@=\count199
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count266
+\DOTSCASE@=\count267
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box65
+\strutbox@=\box66
+\big@size=\dimen140
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count268
+\c@MaxMatrixCols=\count269
+\dotsspace@=\muskip17
+\c@parentequation=\count270
+\dspbrk@lvl=\count271
+\tag@help=\toks19
+\row@=\count272
+\column@=\count273
+\maxfields@=\count274
+\andhelp@=\toks20
+\eqnshift@=\dimen141
+\alignsep@=\dimen142
+\tagshift@=\dimen143
+\tagwidth@=\dimen144
+\totwidth@=\dimen145
+\lineht@=\dimen146
+\@envbody=\toks21
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+LaTeX Info: Redefining \frak on input line 111.
+LaTeX Info: Redefining \Bbb on input line 113.
+)) (graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+) (graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 107.
+ (xetex.def
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen147
+\Gin@req@width=\dimen148
+) (bm.sty
+Package: bm 2021/04/25 v1.2e Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+LaTeX Info: Redefining \bm on input line 218.
+) (hyperref.sty
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
+ (ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+(pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+ (infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+) (kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+) (kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen149
+\Hy@linkcounter=\count275
+\Hy@pagecounter=\count276
+
+(pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
+) (intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count277
+ (puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4390.
+LaTeX Info: Redefining \href on input line 4660.
+\c@Hy@tempcnt=\count278
+LaTeX Info: Redefining \url on input line 4749.
+\XeTeXLinkMargin=\dimen150
+ (bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count279
+\Field@Width=\dimen151
+\Fld@charsize=\dimen152
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
+ (atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count280
+\c@Item=\count281
+\c@Hfootnote=\count282
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+ (hxetex.def
+File: hxetex.def 2022-02-21 v7.00n Hyperref driver for XeTeX
+ (stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box67
+\c@Hy@AnnotLevel=\count283
+\HyField@AnnotCount=\count284
+\Fld@listcount=\count285
+\c@bookmark@seq@number=\count286
+
+(rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+ (atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+) (uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip54
+) (xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+
+(color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen153
+\lightrulewidth=\dimen154
+\cmidrulewidth=\dimen155
+\belowrulesep=\dimen156
+\belowbottomsep=\dimen157
+\aboverulesep=\dimen158
+\abovetopsep=\dimen159
+\cmidrulesep=\dimen160
+\cmidrulekern=\dimen161
+\defaultaddspace=\dimen162
+\@cmidla=\count287
+\@cmidlb=\count288
+\@aboverulesep=\dimen163
+\@belowrulesep=\dimen164
+\@thisruleclass=\count289
+\@lastruleclass=\count290
+\@thisrulewidth=\dimen165
+) (multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip55
+\multirow@cntb=\count291
+\multirow@dima=\skip56
+\bigstrutjot=\dimen166
+) (dcolumn.sty
+Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
+ (array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen167
+\ar@mcellbox=\box68
+\extrarowheight=\dimen168
+\NC@list=\toks24
+\extratabsurround=\skip57
+\backup@length=\skip58
+\ar@cellbox=\box69
+))
+(enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip59
+\enit@outerparindent=\dimen169
+\enit@toks=\toks25
+\enit@inbox=\box70
+\enit@count@id=\count292
+\enitdp@description=\count293
+) (mathtools.sty
+Package: mathtools 2022/02/07 v1.28a mathematical typesetting tools
+ (calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count294
+\calc@Bcount=\count295
+\calc@Adimen=\dimen170
+\calc@Bdimen=\dimen171
+\calc@Askip=\skip60
+\calc@Bskip=\skip61
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count296
+\calc@Cskip=\skip62
+) (mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count297
+\l_MT_multwidth_dim=\dimen172
+\origjot=\skip63
+\l_MT_shortvdotswithinadjustabove_dim=\dimen173
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen174
+\l_MT_above_intertext_sep=\dimen175
+\l_MT_below_intertext_sep=\dimen176
+\l_MT_above_shortintertext_sep=\dimen177
+\l_MT_below_shortintertext_sep=\dimen178
+\xmathstrut@box=\box71
+\xmathstrut@dim=\dimen179
+) (bbold.sty
+Package: bbold 1994/04/06 Bbold symbol package
+LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
+)
+(inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks26
+\inpenc@posthook=\toks27
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count298
+\float@exts=\toks28
+\float@box=\box72
+\@float@everytoks=\toks29
+\@floatcapt=\box73
+) (comment.sty
+\CommentStream=\write4
+ Excluding comment 'comment') (slashed.sty
+Package: slashed 1997/01/16 v0.01 Feynman Slashed Character Notation (DPC)
+) (tikz.sty (pgf.sty (pgfrcs.sty (pgfutil-common.tex
+\pgfutil@everybye=\toks30
+\pgfutil@tempdima=\dimen180
+\pgfutil@tempdimb=\dimen181
+ (pgfutil-common-lists.tex))
+(pgfutil-latex.def
+\pgfutil@abb=\box74
+) (pgfrcs.code.tex (pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+))
+Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfcore.sty
+(pgfsys.sty (pgfsys.code.tex
+Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
+ (pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks33
+))
+\pgf@x=\dimen182
+\pgf@y=\dimen183
+\pgf@xa=\dimen184
+\pgf@ya=\dimen185
+\pgf@xb=\dimen186
+\pgf@yb=\dimen187
+\pgf@xc=\dimen188
+\pgf@yc=\dimen189
+\pgf@xd=\dimen190
+\pgf@yd=\dimen191
+\w@pgf@writea=\write5
+\r@pgf@reada=\read2
+\c@pgf@counta=\count299
+\c@pgf@countb=\count300
+\c@pgf@countc=\count301
+\c@pgf@countd=\count302
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
+\pgf@sys@id@count=\count303
+
+(pgf.cfg
+File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+)
+Driver file for pgf: pgfsys-xetex.def
+ (pgfsys-xetex.def
+File: pgfsys-xetex.def 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+)
+\pgfsys@objnum=\count304
+)))
+(pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count305
+\pgfsyssoftpath@bigbuffer@items=\count306
+) (pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)) (pgfcore.code.tex
+Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
+
+(pgfmath.code.tex (pgfmathcalc.code.tex (pgfmathutil.code.tex)
+(pgfmathparser.code.tex
+\pgfmath@dimen=\dimen192
+\pgfmath@count=\count307
+\pgfmath@box=\box75
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
+) (pgfmathfunctions.code.tex
+(pgfmathfunctions.basic.code.tex) (pgfmathfunctions.trigonometric.code.tex)
+(pgfmathfunctions.random.code.tex) (pgfmathfunctions.comparison.code.tex)
+(pgfmathfunctions.base.code.tex) (pgfmathfunctions.round.code.tex)
+(pgfmathfunctions.misc.code.tex) (pgfmathfunctions.integerarithmetics.code.tex)
+)) (pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count308
+)) (pgfint.code.tex) (pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@picminx=\dimen193
+\pgf@picmaxx=\dimen194
+\pgf@picminy=\dimen195
+\pgf@picmaxy=\dimen196
+\pgf@pathminx=\dimen197
+\pgf@pathmaxx=\dimen198
+\pgf@pathminy=\dimen199
+\pgf@pathmaxy=\dimen256
+\pgf@xx=\dimen257
+\pgf@xy=\dimen258
+\pgf@yx=\dimen259
+\pgf@yy=\dimen260
+\pgf@zx=\dimen261
+\pgf@zy=\dimen262
+)
+(pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@path@lastx=\dimen263
+\pgf@path@lasty=\dimen264
+) (pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@shorten@end@additional=\dimen265
+\pgf@shorten@start@additional=\dimen266
+)
+(pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfpic=\box76
+\pgf@hbox=\box77
+\pgf@layerbox@main=\box78
+\pgf@picture@serial@count=\count309
+) (pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgflinewidth=\dimen267
+)
+(pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@pt@x=\dimen268
+\pgf@pt@y=\dimen269
+\pgf@pt@temp=\dimen270
+) (pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowsep=\dimen271
+) (pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@max=\dimen272
+\pgf@sys@shading@range@num=\count310
+\pgf@shadingcount=\count311
+) (pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfexternal@startupbox=\box79
+)) (pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))) (pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfnodeparttextbox=\box80
+) (pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@nodesepstart=\dimen273
+\pgf@nodesepend=\dimen274
+) (pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
+)) (pgffor.sty (pgfkeys.sty (pgfkeys.code.tex)) (pgfmath.sty (pgfmath.code.tex)
+) (pgffor.code.tex
+Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
+
+(pgfmath.code.tex)
+\pgffor@iter=\dimen275
+\pgffor@skip=\dimen276
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+)) (tikz.code.tex
+Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
+ (pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@plot@mark@count=\count312
+\pgfplotmarksize=\dimen277
+)
+\tikz@lastx=\dimen278
+\tikz@lasty=\dimen279
+\tikz@lastxsaved=\dimen280
+\tikz@lastysaved=\dimen281
+\tikz@lastmovetox=\dimen282
+\tikz@lastmovetoy=\dimen283
+\tikzleveldistance=\dimen284
+\tikzsiblingdistance=\dimen285
+\tikz@figbox=\box81
+\tikz@figbox@bg=\box82
+\tikz@tempbox=\box83
+\tikz@tempbox@bg=\box84
+\tikztreelevel=\count313
+\tikznumberofchildren=\count314
+\tikznumberofcurrentchild=\count315
+\tikz@fig@count=\count316
+
+(pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfmatrixcurrentrow=\count317
+\pgfmatrixcurrentcolumn=\count318
+\pgf@matrix@numberofcolumns=\count319
+)
+\tikz@expandcount=\count320
+ (tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)))
+(pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowinset=\dimen286
+\pgfarrowlength=\dimen287
+\pgfarrowwidth=\dimen288
+\pgfarrowlinewidth=\dimen289
+) (tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 34.
+Class revtex4-2 Info: Unrecognized array package. Please update this document c
+lass! (Proceeding with fingers crossed.) on input line 1081.
+
+
+Class revtex4-2 Warning: Repair the float package.
+
+Class revtex4-2 Info: cite was not loaded (OK!) on input line 1081.
+Class revtex4-2 Info: mcite was not loaded (OK!) on input line 1081.
+Class revtex4-2 Info: multicol was not loaded (OK!) on input line 1081.
+(l3backend-xetex.def
+File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
+\c__kernel_sys_dvipdfmx_version_int=\count321
+\l__color_backend_stack_int=\count322
+\g__color_backend_stack_int=\count323
+\g__graphics_track_int=\count324
+\l__pdf_internal_box=\box85
+\g__pdf_backend_object_int=\count325
+\g__pdf_backend_annotation_int=\count326
+\g__pdf_backend_link_int=\count327
+) (paper1a_ech_nogo.aux)
+\openout1 = `paper1a_ech_nogo.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 1081.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
+081.
+ (ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 1081.
+LaTeX Font Info:    ... okay on input line 1081.
+Package hyperref Info: Link coloring ON on input line 1081.
+ (nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count328
+)
+LaTeX Info: Redefining \ref on input line 1081.
+LaTeX Info: Redefining \pageref on input line 1081.
+LaTeX Info: Redefining \nameref on input line 1081.
+ (paper1a_ech_nogo.out)
+(paper1a_ech_nogo.out)
+\@outlinefile=\write6
+\openout6 = `paper1a_ech_nogo.out'.
+
+Class revtex4-2 Info: Taking \maketitle back from hyperref on input line 1081.
+\openout3 = `paper1a_ech_nogoNotes.bib'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 110
+0.
+ (umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 110
+0.
+ (umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) Excluding 'comment' comment.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 1261.
+
+
+Class revtex4-2 Warning: If you want your keywords to appear in your output, us
+e document class option showkeys.
+
+(paper1a_ech_nogo.toc)
+\tf@toc=\write7
+\openout7 = `paper1a_ech_nogo.toc'.
+
+ [1] Excluding 'comment' comment.
+Underfull \hbox (badness 3148) in paragraph at lines 1684--1686
+[]\TU/lmr/m/n/10 For the conservative late-time and gap-equation
+ []
+
+Excluding 'comment' comment. [2] Excluding 'comment' comment. [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 3800--3813
+[]\TU/lmr/m/it/10 Quantum scope limitation.\TU/lmr/m/n/10 —The perturbation-
+ []
+
+
+Underfull \hbox (badness 7379) in paragraph at lines 3800--3813
+\TU/lmr/m/n/10 decoupling survives quantum loop corrections—in
+ []
+
+
+Underfull \hbox (badness 1019) in paragraph at lines 3816--3817
+[]\TU/lmr/m/n/10 The perturbation-transparency result establishes a
+ []
+
+
+Underfull \hbox (badness 4096) in paragraph at lines 3877--3886
+[]\TU/lmr/m/n/10 The algebraic checks used here are committed
+ []
+
+
+Underfull \hbox (badness 3758) in paragraph at lines 3877--3886
+\TU/lmr/m/n/10 at [][]$[][][][][] [] [][][][][] [] [][][][][] [] [][]$[][] and 
+[][]$[][][] [] [][][] [] [][][][][][][][] []
+ []
+
+
+Underfull \hbox (badness 4872) in paragraph at lines 3877--3886
+\TU/lmr/m/n/10 The repository and version history are available
+ []
+
+[5] Excluding 'comment' comment.
+Underfull \hbox (badness 6220) in paragraph at lines 4581--4585
+[]\TU/lmr/m/n/10 On the $\OT1/cmr/m/n/10 16$\TU/lmr/m/n/10 -dimensional Cliffor
+d basis, grouped
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4581--4585
+\TU/lmr/m/n/10 into the five Lorentz classes $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
+ S; V; T; A; P\OT1/cmr/m/n/10 ) =
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 4581--4585
+\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 1\OML/cmm/m/it/10 ; ^^M[]; ^^[[]; ^^M[]^^M[];
+ ^^M[]\OT1/cmr/m/n/10 )$\TU/lmr/m/n/10 , the Fierz rearrangement used
+ []
+
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 4
+589.
+(ubbold.fd)
+Underfull \hbox (badness 1248) in paragraph at lines 4601--4607
+\TU/lmr/m/n/10 assertion that one mean-field factorization is basis-
+ []
+
+Excluding 'comment' comment. (paper1a_ech_nogo.bbl [6]
+Underfull \hbox (badness 3792) in paragraph at lines 116--121
+ []\TU/lmr/m/n/9 H. Golden, Reproducible Cosmological Proxy and
+ []
+
+) [7] (paper1a_ech_nogo.aux)
+Package rerunfilecheck Info: File `paper1a_ech_nogo.out' has not changed.
+(rerunfilecheck)             Checksum: 8C039439365BA8A977BCA86C7C4A85A8;5013.
+ )
+Output written on paper1a_ech_nogo.xdv (7 pages, 301836 bytes).

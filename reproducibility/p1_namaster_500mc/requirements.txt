@@ -3,9 +3,10 @@
 # Tested on H200 pod (Ubuntu 22.04, Python 3.11.x, single GPU not strictly
 # required — workload is CPU-bound on healpy + pymaster).
 #
-# Pinned versions match the run that produced
-# pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json
+# Version ranges cover the isolated Python 3.11 environment used for the
+# 2026-07-14 exact-window run; frozen JSON/receipts record exact versions.
 
 numpy>=1.24,<2.0
 healpy>=1.16,<2.0
 pymaster>=2.6,<3.0
+camb==1.6.6

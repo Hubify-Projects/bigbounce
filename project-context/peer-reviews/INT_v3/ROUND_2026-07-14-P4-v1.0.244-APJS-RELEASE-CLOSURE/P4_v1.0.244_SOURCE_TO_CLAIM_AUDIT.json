@@ -1,0 +1,84 @@
+{
+  "evidence": {
+    "catalog_qc": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json",
+      "sha256": "c9b0b4c610ca9d829d31561cff1eaae8ed47569f172d49aadf832e8e14bc98be"
+    },
+    "hc_qc": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json",
+      "sha256": "62d1888ba66a1fcae061a351d70b8d4aa5cfab00030a4116a8b4ece7a6042e7b"
+    },
+    "master_support": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c6_depth_stratified_null.json",
+      "sha256": "b16b3f806b94aa53780422516546653d41008e1729e188b39a0ba618710764c5"
+    },
+    "primary_result": {
+      "path": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary.json",
+      "sha256": "84c2d1f97e8575780119db08e14293c32b4fa474a82030ef3f9841fff772658e"
+    },
+    "robustness_panel": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json",
+      "sha256": "357d36b59506b111950c1deae3855d3452cf12589fd1d60e5cced0fe9ba76799"
+    },
+    "secondary_null": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c11b_hc_dipole_nulls.json",
+      "sha256": "049cc9fa6c2dc47f2907c8007e4a306c3cf19f83b50f2249876f65569458bf32"
+    },
+    "source_receipt": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json",
+      "sha256": "1421d4041e4c8d280cfaf97c7782996547d767f3e7c1ee73a79686ffe4d02685"
+    }
+  },
+  "failed_gates": [],
+  "gates": {
+    "catalog_rows": true,
+    "full_spiral_support_pixels": true,
+    "hc_support_pixels": true,
+    "master_support_pixels": true,
+    "max_bound_excursion": true,
+    "panel_cell_1": true,
+    "panel_cell_2": true,
+    "panel_cell_3": true,
+    "panel_cell_4": true,
+    "panel_cell_5": true,
+    "panel_cell_6": true,
+    "panel_cells": true,
+    "panel_contract": true,
+    "paper_doi_gate_open": true,
+    "paper_names_three_supports": true,
+    "paper_no_false_public_qc_claim": true,
+    "paper_prints_all_panel_cells": true,
+    "paper_prints_catalog_and_hc_counts": true,
+    "paper_prints_secondary_null": true,
+    "paper_uncertainty_scales_one_over_g": true,
+    "paper_version": true,
+    "primary_amplitude": true,
+    "primary_hc_rows": true,
+    "primary_rank_p": true,
+    "primary_z": true,
+    "schema_archive_gate_open": true,
+    "schema_uncalibrated_scope": true,
+    "secondary_null_mean": true,
+    "secondary_null_rank_p": true,
+    "secondary_null_std": true,
+    "secondary_null_z": true,
+    "source_bytes": true,
+    "source_rows": true,
+    "source_sha256": true,
+    "strict_primary_hc_rows": true,
+    "unsafe_catalog_fraction": true,
+    "unsafe_catalog_rows": true,
+    "unsafe_primary_hc_rows": true
+  },
+  "paper": "P4",
+  "paper_version": "v1.0.244",
+  "schema": "p4-v1.0.244-source-to-claim-audit/v1",
+  "scope_guard": {
+    "calibrated_probability_claim": false,
+    "formal_preregistration_claim": false,
+    "immutable_archive_or_doi": "OPEN",
+    "matched_external_estimator_claim": false,
+    "physical_or_primordial_bound": false
+  },
+  "status": "PASS"
+}

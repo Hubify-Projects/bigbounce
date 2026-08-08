@@ -1,0 +1,62 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-g3-joint-estimator-covariance",
+  "title": "G3 — joint estimator covariance (local bootstrap leg + RunPod MASTER-leg refinement)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/scripts/g3_joint_estimator_covariance.py",
+      "entrypoint": "python3 g3_joint_estimator_covariance.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p2_chirality/scripts/g3_joint_estimator_covariance_master_v2.py",
+      "entrypoint": "python3 g3_joint_estimator_covariance_master_v2.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "pymaster (MASTER-leg only), numpy, scipy — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "RTX A4000 (MASTER-leg only; the local-bootstrap leg is CPU-only and ran off-pod)",
+    "pod_id_or_host": "580dgszgib3ti4 (shared with the p1b-namaster-window-regen phase-2 session)",
+    "date": "2026-07-18",
+    "wall_clock": "MASTER-leg ~62 min within a shared 2.1h/$0.36 phase-2 pod session; local-bootstrap leg ~573s (N=2000 bootstrap) separately on local CPU",
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU for the base bootstrap leg; RunPod A4000 (or a local pymaster install) for the MASTER-leg refinement",
+    "est_wall_clock": "~10-15 min local-bootstrap leg + ~1h MASTER-leg",
+    "est_cost_usd": 0.36,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "runnable-now, closed-by-artifact per the inventory's own reproducibility verdict — both leg outputs already exist and are treated as the terminal artifact. The MASTER-leg pod session (580dgszgib3ti4) was SHARED with p1b-namaster-window-regen — the $0.36/2.1h phase-2 total is a bundled figure across both experiments, not cleanly attributable to G3 alone."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/g3_joint_estimator_covariance.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/g3_joint_estimator_covariance_master_v2.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run both legs and confirm the joint estimator covariance matrix entries match the committed JSONs within a relative-difference tolerance of <1%; cross-check against the HF backup p4_compute_phase2_2026-07-18/ (sha256-verified) as the primary hash check.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — G3 joint estimator covariance bullet",
+    "project-context/SSOT/paper-4/status.md",
+    "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md",
+    "MASTER-leg pod session shared with reproducibility/manifests/experiments/p1b-namaster-window-regen.json (pod 580dgszgib3ti4, 2026-07-18) — cross-referenced there as 'shared with P4 G3 MASTER-leg session'"
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "cluster_pairs_bootstrap": {
+    "bias": 3.26914611390801e-05,
+    "ci95_percentile": [
+      -0.0027150629149493774,
+      0.006353867753478891
+    ],
+    "mean": 0.0018413205421894748,
+    "n_resamples": 20000,
+    "observed": 0.0018086290810503947,
+    "probability_delta_le_zero": 0.215,
+    "resampling": "sample nonempty maximal-void clusters with replacement; recompute pooled two-arm fractions",
+    "se": 0.002328068862960577,
+    "se_ratio_to_binomial": 1.0049562556868046,
+    "seed": 20260714,
+    "variance_design_effect_vs_binomial": 1.0099370758440422
+  },
+  "cluster_unit": {
+    "available_maximal_voids": 3765,
+    "cluster_size_primary_rows": {
+      "max": 2999,
+      "mean": 82.62965921192759,
+      "median": 34.0,
+      "min": 1,
+      "p95": 306.25
+    },
+    "definition": "nearest published DESIVAST VoidFinder MAXIMALS centre in 3-D comoving Mpc/h; NGC/SGC VOID ids namespaced; both arms share the same maximal-void-centred Voronoi partition",
+    "nonempty_primary_sample_clusters": 3756
+  },
+  "delete_one_cluster_jackknife": {
+    "n_delete_one_clusters": 3756,
+    "normal_ci95": [
+      -0.0027533448333468564,
+      0.006370602995447646
+    ],
+    "observed": 0.0018086290810503947,
+    "se": 0.002327580481264717
+  },
+  "determinism": "JSON contains no timestamp/runtime; fixed seed, sorted cluster ids, canonical row hash, and input hashes permit byte-identical reruns",
+  "disposition": "DP5-10",
+  "estimand": {
+    "control": "non-void within NSIDE=64 union-of-hole angular discs and hole radial span",
+    "definition": "f_CW(non-void, footprint restricted) - f_CW(void)",
+    "membership": "exact k-unbounded point-in-union of all 101,863 hole spheres",
+    "name": "primary DESIVAST footprint-restricted chirality contrast",
+    "sign_convention": "positive means higher CW fraction outside voids"
+  },
+  "footprint": {
+    "f_sky": 0.10325113932291667,
+    "nside": 64,
+    "pixels": 5075,
+    "radial_span_mpc_h": [
+      56.19935242275939,
+      684.5495004826456
+    ]
+  },
+  "honest_scope": "This quantifies sampling covariance among galaxies sharing published maximal-void neighbourhoods. It does not model classifier bias, DESI selection-function error, uncertainty in the published void catalog, or correlations extending across multiple maximal-void regions.",
+  "independent_binomial_comparison": {
+    "assumption": "independent Bernoulli galaxies (counting statistics only)",
+    "delta": 0.0018086290810503947,
+    "normal_ci95": [
+      -0.002731798523744661,
+      0.00634905668584545
+    ],
+    "p_two_sided": 0.43496730245682114,
+    "pooled_two_proportion_z": 0.7807198172448644,
+    "se_unpooled": 0.002316587264158612
+  },
+  "input_sha256": {
+    "pipelines/p5_desi_chirality/data/desi_zall.fits": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_VoidFinder_NGC.fits": "c69f2f7b2b1fed4554527475dd96584169b1ead5bbcd0c152164200e6a2f34c8",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_VoidFinder_SGC.fits": "47c43b9b446f4bcb47cbc023115ac5297f9afb0045aea96d853649a80d7219c1",
+    "pipelines/p5_desi_chirality/data/p4_chirality.parquet": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563"
+  },
+  "primary_counts": {
+    "delta_f_cw_nonvoid_minus_void": 0.0018086290810503947,
+    "nonvoid_footprint_restricted": {
+      "f_cw": 0.49827855777886576,
+      "n": 253276,
+      "n_cw": 126202
+    },
+    "void": {
+      "f_cw": 0.49646992869781537,
+      "n": 57081,
+      "n_cw": 28339
+    }
+  },
+  "reconstruction_validation": {
+    "canonical_primary_row_sha256": "f143419740d6b1e88641cff0e07d2136c204d940d6899ef9d3426b4920567c04",
+    "deduplication": "global nearest separation per unique P4 dr8_id before low-z selection",
+    "desi_quality_rows": 16361731,
+    "match_radius_arcsec": 1.0,
+    "matched_global_deduped": 2232212,
+    "matched_within_1arcsec": 2349908,
+    "primary_row_count": 678945,
+    "source": "raw rebuild using scripts/03 global-deduplication semantics",
+    "z_match_max": 4.0,
+    "z_primary_max": 0.24
+  },
+  "schema": "p5.dp5-10.desivast-cluster-bootstrap.v1",
+  "script": "pipelines/p5_desi_chirality/scripts/35_desivast_cluster_bootstrap.py",
+  "software": {
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "python": "3.9.6",
+    "scipy": "1.13.1"
+  },
+  "tie_break_sensitivity": {
+    "cluster_pairs_bootstrap": {
+      "bias": 3.269198667890487e-05,
+      "ci95_percentile": [
+        -0.0027344292108919684,
+        0.00636381630613595
+      ],
+      "mean": 0.0018103891855616155,
+      "n_resamples": 20000,
+      "observed": 0.0017776971988827106,
+      "probability_delta_le_zero": 0.2203,
+      "se": 0.0023311840525389836,
+      "se_ratio_to_binomial": 1.0061694906704632,
+      "seed": 20260714
+    },
+    "count_deltas_stable_minus_historical": {
+      "nonvoid_cw": 6,
+      "nonvoid_n": 15,
+      "void_cw": -8,
+      "void_n": -19
+    },
+    "delete_one_cluster_jackknife": {
+      "n_delete_one_clusters": 3756,
+      "normal_ci95": [
+        -0.002787499457620965,
+        0.006342893855386386
+      ],
+      "observed": 0.0017776971988827106,
+      "se": 0.0023292247676556122
+    },
+    "delta_cluster_bootstrap_se_stable_minus_historical": 3.1151895784065076e-06,
+    "delta_point_estimate_stable_minus_historical": -3.0931882167684055e-05,
+    "delta_rows_stable_minus_historical": -22,
+    "footprint": {
+      "f_sky": 0.10325113932291667,
+      "nside": 64,
+      "pixels": 5075,
+      "radial_span_mpc_h": [
+        56.19935242275939,
+        684.5495004826456
+      ]
+    },
+    "historical_primary_rows": 678945,
+    "historical_rule": "pandas sort_values(sep_arcsec) default quicksort, then first duplicate",
+    "independent_binomial_comparison": {
+      "assumption": "independent Bernoulli galaxies (counting statistics only)",
+      "delta": 0.0017776971988827106,
+      "normal_ci95": [
+        -0.0027633237987485628,
+        0.006318718196513984
+      ],
+      "p_two_sided": 0.4429224389640941,
+      "pooled_two_proportion_z": 0.7672675814728239,
+      "se_unpooled": 0.002316890021168893
+    },
+    "p4_ids_only_historical": 32,
+    "p4_ids_only_stable": 10,
+    "reason": "repeat DESI coadds can have exactly tied angular separations. The released parent inherits pandas default quicksort tie order; a stable-first sort is deterministic but is a different parent.",
+    "recommendation": "Future releases should specify a total deterministic ordering, for example (sep_arcsec, TARGETID, original_row_index), version it, and regenerate every dependent artifact together.",
+    "sensitivity_rule": "pandas stable mergesort by sep_arcsec, then first duplicate in FITS order",
+    "stable_counts": {
+      "delta_f_cw_nonvoid_minus_void": 0.0017776971988827106,
+      "nonvoid_footprint_restricted": {
+        "f_cw": 0.49827273768116515,
+        "n": 253291,
+        "n_cw": 126208
+      },
+      "void": {
+        "f_cw": 0.49649504048228243,
+        "n": 57062,
+        "n_cw": 28331
+      }
+    },
+    "stable_primary_row_sha256": "e296401cfcf0c8741a732f29784f4e72ebdd6e17ea1c472e5f974b53abc36aef",
+    "stable_primary_rows": 678923
+  }
+}

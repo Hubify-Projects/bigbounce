@@ -1,0 +1,5 @@
+utc	status	url	disposition
+2026-07-14T20:50:00Z	404	https://github.com/Hubify-Projects/bigbounce/tree/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8	PRE-PUSH: local commit exists; remote release gate remains open
+2026-07-14T20:50:00Z	404	https://github.com/Hubify-Projects/bigbounce/blob/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8/arxiv/scripts/fierz_lemma_check.py	PRE-PUSH: local commit/object exists; remote release gate remains open
+2026-07-14T20:50:00Z	404	https://github.com/Hubify-Projects/bigbounce/blob/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8/arxiv/scripts/njl_gap_equation_route1.py	PRE-PUSH: local commit/object exists; remote release gate remains open
+2026-07-14T20:50:00Z	404	https://github.com/Hubify-Projects/bigbounce/blob/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8/arxiv/scripts/njl_gap_equation_route1_results.json	PRE-PUSH: local commit/object exists; remote release gate remains open

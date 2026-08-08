@@ -28,7 +28,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import beta as beta_dist
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
+REPO = Path(__file__).resolve().parents[3]
 P5 = REPO / "pipelines/p5_desi_chirality"
 FIG_DIR = P5 / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
@@ -95,12 +95,17 @@ def main() -> int:
                                     sharey=True)
     ylim = (0.43, 0.53)
     _draw(ax1, vweb, VWEB_ORDER, VWEB_COLORS,
-          "V-Web (canonical $R_s=25$ Mpc/$h$, $\\lambda_{\\rm th}=0$)\n"
-          "$n=791{,}635$ chirality-relevant matched spirals", ylim)
+          "(a) T-Web (canonical $R_s=25$ Mpc/$h$, $\\lambda_{\\rm th}=0$)\n"
+          "$n=812{,}793$ environment-labelled rows", ylim)
     _draw(ax2, tempel.rename(columns={"tempel_class": "env_class"}),
           TEMPEL_ORDER, TEMPEL_COLORS,
-          "Tempel+2014 FoF cross-validation\n"
+          "(b) Tempel+2014 FoF cross-validation\n"
           "$n=96{,}753$ Tempel-overlap matched spirals (declared parent)", ylim)
+    # Add (a)/(b) text annotations top-left of each panel
+    ax1.text(0.02, 0.98, "(a)", transform=ax1.transAxes,
+             fontsize=12, fontweight="bold", va="top", ha="left")
+    ax2.text(0.02, 0.98, "(b)", transform=ax2.transAxes,
+             fontsize=12, fontweight="bold", va="top", ha="left")
     # concordance annotation: like-for-like overlap filament concordance 0.29pp
     ax1.annotate(
         "like-for-like filament concordance (overlap): $0.29$ pp ($\\sim$$0.5\\sigma$)",
@@ -113,7 +118,7 @@ def main() -> int:
                  fontsize=8.5, ha="left", color="#0369a1",
                  arrowprops=dict(arrowstyle="->", color="#0369a1", lw=0.8))
     ax2.legend(loc="upper right", fontsize=8.5, frameon=True)
-    fig.suptitle("V-Web vs Tempel FoF cross-validation: per-class CW fraction "
+    fig.suptitle("T-Web vs Tempel FoF cross-validation: per-class CW fraction "
                  "with 95% Jeffreys binomial CI",
                  fontsize=11.5, y=0.99)
     fig.tight_layout()

@@ -27,7 +27,8 @@ import json
 import math
 
 SQRT2 = math.sqrt(2.0)
-F0 = -35.0 / 8.0
+F0 = -35.0 / 16.0  # -2.1875 (H17 correction: was the superseded -35/8 center;
+# realigned to the corrected -35/16 center used by c9g and the tab:gr cells)
 SSFSR = 0.015
 FHAT = F0  # central mock detection, same as Table III closed-form cells
 

@@ -1,0 +1,186 @@
+{
+  "closed_findings": 30,
+  "closures": {
+    "fev1_09f86ba2c36f2d6c50c1c0c6": {
+      "closed_in_version": "v1.0.254",
+      "closure_commit": "96c3a97eaa33a543420c2e26702fb9e279b87461",
+      "closure_event_id": "fcev1_23c98faf091f238536931e7d",
+      "status": "CLOSED"
+    },
+    "fev1_0affcda4846018a4af7f9161": {
+      "closed_in_version": "v1.0.254",
+      "closure_commit": "96c3a97eaa33a543420c2e26702fb9e279b87461",
+      "closure_event_id": "fcev1_695b6a74e28af73bbcae36d6",
+      "status": "CLOSED"
+    },
+    "fev1_0e90ffada4cde9d093f536f4": {
+      "closed_in_version": "v1.0.259",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_35bf807090bb39130c1fe889",
+      "status": "CLOSED"
+    },
+    "fev1_13dbe0fbfa91785dbaddd32c": {
+      "closed_in_version": "v1.0.254",
+      "closure_commit": "96c3a97eaa33a543420c2e26702fb9e279b87461",
+      "closure_event_id": "fcev1_435342f23d50b90408bb55af",
+      "status": "CLOSED"
+    },
+    "fev1_28a69ad2e1877ff28789421f": {
+      "closed_in_version": "v1.0.255",
+      "closure_commit": "20ce8af633027561e9431fd9e2eb9fa7bee5f98f",
+      "closure_event_id": "fcev1_20ee1bd7b554bf74d314995d",
+      "status": "CLOSED"
+    },
+    "fev1_2fff0f9560874be03fcd0818": {
+      "closed_in_version": "v1.0.255",
+      "closure_commit": "20ce8af633027561e9431fd9e2eb9fa7bee5f98f",
+      "closure_event_id": "fcev1_77b43286a8c10b5afafe47a7",
+      "status": "CLOSED"
+    },
+    "fev1_32b6528829703bb68fc9b03a": {
+      "closed_in_version": "v1.0.256",
+      "closure_commit": "a52c784b4fc564d62d38e52dbaec8b396e55f4be",
+      "closure_event_id": "fcev1_98d5e5b877e8f8b331ef030d",
+      "status": "CLOSED"
+    },
+    "fev1_35520ebaee5a649b79dc6e11": {
+      "closed_in_version": "v1.0.254",
+      "closure_commit": "96c3a97eaa33a543420c2e26702fb9e279b87461",
+      "closure_event_id": "fcev1_5b89a22b94bdd161cdd15813",
+      "status": "CLOSED"
+    },
+    "fev1_3f81c9514a1302ee382f7db9": {
+      "closed_in_version": "v1.0.256",
+      "closure_commit": "a52c784b4fc564d62d38e52dbaec8b396e55f4be",
+      "closure_event_id": "fcev1_4c861713ecd6aa3c63ae4f1f",
+      "status": "CLOSED"
+    },
+    "fev1_486976991ed068dd3d30f1a4": {
+      "closed_in_version": "v1.0.256",
+      "closure_commit": "a52c784b4fc564d62d38e52dbaec8b396e55f4be",
+      "closure_event_id": "fcev1_752dc5e2bb2bbe23589f8165",
+      "status": "CLOSED"
+    },
+    "fev1_4a032ca2b87b430517910ebc": {
+      "closed_in_version": "v1.0.256",
+      "closure_commit": "a52c784b4fc564d62d38e52dbaec8b396e55f4be",
+      "closure_event_id": "fcev1_2d07bbb63f50913cd1f9b2f5",
+      "status": "CLOSED"
+    },
+    "fev1_64663fe9a87397d2f24b40a8": {
+      "closed_in_version": "v0.1.139-2026-07-16",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_2aa3aedbd053c0dbcb685065",
+      "status": "CLOSED"
+    },
+    "fev1_7841ca30dd7c5ac395a9a027": {
+      "closed_in_version": "v1.0.257",
+      "closure_commit": "3e5e27bf20ca4d916f822b8d2c9be045db85ecc8",
+      "closure_event_id": "fcev1_ccb8fcf2f297cd72178b5f9b",
+      "status": "CLOSED"
+    },
+    "fev1_7b4f15768a858484e161b7a7": {
+      "closed_in_version": "v1.0.259",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_f7d35dfe84396b4a3283cd77",
+      "status": "CLOSED"
+    },
+    "fev1_8961c10e37df7d7d2b06ea78": {
+      "closed_in_version": "v1.0.256",
+      "closure_commit": "a52c784b4fc564d62d38e52dbaec8b396e55f4be",
+      "closure_event_id": "fcev1_8112015426027736c9c58677",
+      "status": "CLOSED"
+    },
+    "fev1_98dd561423b02b0e6577ca08": {
+      "closed_in_version": "v1.0.255",
+      "closure_commit": "20ce8af633027561e9431fd9e2eb9fa7bee5f98f",
+      "closure_event_id": "fcev1_cb08b538232910ad60b297d2",
+      "status": "CLOSED"
+    },
+    "fev1_9c346086f43d9f217d6687d5": {
+      "closed_in_version": "v1.0.254",
+      "closure_commit": "96c3a97eaa33a543420c2e26702fb9e279b87461",
+      "closure_event_id": "fcev1_8d27e3e41e6712fb30810c9a",
+      "status": "CLOSED"
+    },
+    "fev1_b58ecc058c557326730d3aed": {
+      "closed_in_version": "v1.0.255",
+      "closure_commit": "20ce8af633027561e9431fd9e2eb9fa7bee5f98f",
+      "closure_event_id": "fcev1_1dc343e759915c38909e39db",
+      "status": "CLOSED"
+    },
+    "fev1_ba4b77f4f644c28483c413bc": {
+      "closed_in_version": "v1.0.256",
+      "closure_commit": "a52c784b4fc564d62d38e52dbaec8b396e55f4be",
+      "closure_event_id": "fcev1_0d470cc05544df49e7f4366f",
+      "status": "CLOSED"
+    },
+    "fev1_c3c3337d71ef261a27a7308d": {
+      "closed_in_version": "v1.0.259",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_cfa9a4ededca48085501eb66",
+      "status": "CLOSED"
+    },
+    "fev1_c6d3c77dd5b25b139f7fd2e1": {
+      "closed_in_version": "v1.0.259",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_14e185c753c1f48824dcb5f1",
+      "status": "CLOSED"
+    },
+    "fev1_c82e1014274ab90fdda188b5": {
+      "closed_in_version": "v1.0.256",
+      "closure_commit": "a52c784b4fc564d62d38e52dbaec8b396e55f4be",
+      "closure_event_id": "fcev1_9073fabacf0f1642aba38507",
+      "status": "CLOSED"
+    },
+    "fev1_ce24f5d739d8a1ccc560f855": {
+      "closed_in_version": "v1.0.257",
+      "closure_commit": "3e5e27bf20ca4d916f822b8d2c9be045db85ecc8",
+      "closure_event_id": "fcev1_a32af22b4df000ef05cced41",
+      "status": "CLOSED"
+    },
+    "fev1_daeeabe66f4bb8d2b7d0d797": {
+      "closed_in_version": "v1.0.259",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_e4c2a6f8c37c7a23cf535c56",
+      "status": "CLOSED"
+    },
+    "fev1_db626f735cd69e86d6dcf45e": {
+      "closed_in_version": "v1.0.254",
+      "closure_commit": "96c3a97eaa33a543420c2e26702fb9e279b87461",
+      "closure_event_id": "fcev1_595ab32379845f4330e0f3f9",
+      "status": "CLOSED"
+    },
+    "fev1_f5a2b569e31a96634790a5af": {
+      "closed_in_version": "v0.1.139-2026-07-16",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_88fc4419744377ac41f07e53",
+      "status": "CLOSED"
+    },
+    "fev1_f6f3906e33e1072eedfa78cd": {
+      "closed_in_version": "v1.0.255",
+      "closure_commit": "20ce8af633027561e9431fd9e2eb9fa7bee5f98f",
+      "closure_event_id": "fcev1_2ca1734677a64f705162a0e5",
+      "status": "CLOSED"
+    },
+    "fev1_fc3736a88abd5ec538e1d2bd": {
+      "closed_in_version": "v0.1.139-2026-07-16",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_8ec0813dab5a9c0380aa08af",
+      "status": "CLOSED"
+    },
+    "fev1_fe9fc13bf9347764adfa2e60": {
+      "closed_in_version": "v1.0.254",
+      "closure_commit": "96c3a97eaa33a543420c2e26702fb9e279b87461",
+      "closure_event_id": "fcev1_4713cac6432d0b98b982bca9",
+      "status": "CLOSED"
+    },
+    "fev1_ff6edb62d9f285dd3ec57274": {
+      "closed_in_version": "v0.1.139-2026-07-16",
+      "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+      "closure_event_id": "fcev1_f1b3aca46d85da3d4421c1ef",
+      "status": "CLOSED"
+    }
+  },
+  "schema_version": "finding-closure-projection/v1"
+}

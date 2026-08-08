@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import Script from "next/script";
+import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Sidebar } from "@/components/Shell/Sidebar";
@@ -65,10 +65,12 @@ export default function RootLayout({
             </div>
           </main>
         </div>
-        <Script
-          src="/old/astro/chat-widget.js"
-          strategy="afterInteractive"
-        />
+        {/* Astro chat widget REMOVED 2026-07-22 (site audit): its /api/chat
+            backend does not exist on this static deployment (and no Convex
+            HTTP route serves it), so the bubble and /chat mount were dead UI.
+            /chat now renders an honest offline state. Restore the <Script
+            src="/old/astro/chat-widget.js"> include only together with a
+            working backend. */}
       </body>
     </html>
   );

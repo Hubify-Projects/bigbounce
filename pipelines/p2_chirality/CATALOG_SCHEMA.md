@@ -1,153 +1,124 @@
-# Production Chirality Catalog Schema
+# P4 ApJS release-candidate schema (v1.0.244)
 
-## Overview
+This is the immutable **catalog payload v1.0.244** contract bound to the
+**P4 paper v1.0.245** closure. The payload filenames remain v1.0.244 because
+the paper-only closure does not alter any catalog row or column.
 
-The chirality pipeline produces three catalog tiers from Galaxy Zoo DESI imaging.
-This document specifies the **production catalog (Catalog C)**, which is the
-recommended output for all cosmology science analyses.
+This document is the human-readable data dictionary for the local P4 ApJS
+release candidate. The executable contract is
+`apjs_release_schema_v1_0_244.json`; the builder and validation tests are
+`build_apjs_release_v1_0_244.py` and
+`tests/test_apjs_release_v1_0_244.py`.
 
-## Catalog Tiers
+The current source catalog contains 8,474,531 DESI Legacy DR8 objects. Its
+equivariant scores are **uncalibrated ranking scores, not probabilities**. The
+paper's primary result consumes hard `class_eq` labels. No release field supports
+a physical-amplitude bound, primordial-parity bound, matched-external-estimator
+comparison, or formal-preregistration claim.
 
-| Tier | Name | Description | Use Case |
-|------|------|-------------|----------|
-| A | Raw | Direct v2 model output, no post-processing | Ablation studies, model diagnostics |
-| B | Calibrated | Platt-calibrated probabilities (bias=1.58, temp=4.65) | ML downstream tasks, transfer learning |
-| C | Production | Equivariant-averaged, QC-flagged | Cosmology science (dipole tests, parity analyses) |
+## Products and gates
 
-All three tiers share the same row set (one row per Galaxy Zoo DESI object).
-Catalog C is a strict superset of the information in A and B: it carries both the
-raw and equivariant columns so that users can reproduce calibration checks without
-needing a separate file.
+| Product | Rows | Purpose | Science policy |
+|---|---:|---|---|
+| `p4_catalog_primary_safe_v1.0.244.parquet` | 8,474,531 | Science-facing observed-label catalog | Raw-pass and reconstructed flip-pass columns absent by construction |
+| `p4_catalog_raw_flip_quarantine_v1.0.244.parquet` | 249,066 | Provenance-only quarantine of every catalog-wide bound violator | `do_not_use_for_science=True`; scores are uncalibrated |
+| `primary_label_shuffle_amps_10000.npy` | 10,000 draws | Historical unsafe-inclusive fixed-occupancy galaxy-label randomization | Superseded primary contract; provenance only |
+| `apjs_release_v1.0.259_strict/primary_strict_fixed_occupancy_amps_10000.npy` | 10,000 draws | Exact strict fixed-occupancy galaxy-label randomization; global strict-sample CW total preserved | Current primary descriptive observed-label null |
+| `pixel_permutation_amps_10000.npy` | 10,000 draws | Exact retained pixel-asymmetry permutation | Robustness diagnostic only; not primary |
 
-## File Format
+Exactly 59,515 of the 249,066 catalog-wide quarantined rows fall inside the
+949,584-row primary HC selection. Thus the strict HC diagnostic contains
+890,069 rows. The all-catalog and HC counts must not be conflated.
 
-- **Format:** Apache Parquet (Snappy compression)
-- **Filename convention:** `chirality_catalog_c_v{VERSION}_{YYYYMMDD}.parquet`
-- **Estimated size:** ~400 MB for the full Galaxy Zoo DESI footprint (~8M rows),
-  ~50 MB for the spiral-only subset (~1M rows with `is_spiral == True`)
-- **Row ordering:** Sorted by `(ra, dec)` ascending to enable efficient spatial
-  queries and deterministic reproducibility
+The local split, schema, row counts, and checksums are fail-closed gates. An
+immutable public archive/DOI and human ApJS editorial review remain **OPEN**.
+The generated Parquet files are local/ignored release payloads and are not
+committed to GitHub.
 
-## Column Definitions
+## Science-facing columns
 
-| Column | Type | Nullable | Description |
-|--------|------|----------|-------------|
-| `id_str` | string | No | Galaxy Zoo DESI identifier (unique primary key) |
-| `ra` | float64 | No | Right ascension in degrees (J2000, ICRS) |
-| `dec` | float64 | No | Declination in degrees (J2000, ICRS) |
-| `p_cw_raw` | float32 | No | Raw model probability of clockwise spiral morphology |
-| `p_ccw_raw` | float32 | No | Raw model probability of counter-clockwise spiral morphology |
-| `p_ns_raw` | float32 | No | Raw model probability of not-spiral morphology |
-| `p_cw_eq` | float32 | No | Equivariant-averaged probability of clockwise spiral |
-| `p_ccw_eq` | float32 | No | Equivariant-averaged probability of counter-clockwise spiral |
-| `p_ns_eq` | float32 | No | Equivariant-averaged probability of not-spiral |
-| `class_raw` | string | No | Raw classification label: `CW`, `CCW`, or `NOT_SPIRAL` |
-| `class_eq` | string | No | Equivariant classification label: `CW`, `CCW`, or `NOT_SPIRAL` |
-| `confidence_raw` | float32 | No | Maximum probability from the raw model (i.e., `max(p_cw_raw, p_ccw_raw, p_ns_raw)`) |
-| `confidence_eq` | float32 | No | Maximum probability from the equivariant model (i.e., `max(p_cw_eq, p_ccw_eq, p_ns_eq)`) |
-| `is_spiral` | bool | No | `True` if `class_eq != NOT_SPIRAL` (convenience flag for spiral-only cuts) |
-| `qc_flag` | int | No | Quality-control flag: `0` = good, `1` = low confidence, `2` = edge case |
+| Column | Type | Definition |
+|---|---|---|
+| `object_id` | string | Galaxy Zoo DESI / DR8 identifier |
+| `ra_deg` | float64 | ICRS right ascension in degrees |
+| `dec_deg` | float64 | ICRS declination in degrees |
+| `class_eq` | string | Equivariant hard argmax label: `CW`, `CCW`, or `NOT_SPIRAL` |
+| `score_cw_eq` | float64 | Uncalibrated CW ranking score |
+| `score_ccw_eq` | float64 | Uncalibrated CCW ranking score |
+| `score_ns_eq` | float64 | Uncalibrated non-spiral ranking score |
+| `score_eq_max` | float64 | Maximum uncalibrated equivariant ranking score |
+| `is_spiral` | bool | `class_eq in {CW, CCW}` |
+| `primary_hc` | bool | Spiral hard label and `max(score_cw_eq, score_ccw_eq) > 0.6` |
+| `raw_flip_qc_unsafe` | bool | Reconstructed raw/flip diagnostic exits `[0,1]` by more than `1e-3` |
 
-### Probability Triplet Invariants
+The science-facing file contains no raw-pass score, reconstructed flip-pass
+score, calibrated-confidence, or calibrated-probability field.
 
-For every row the following hold exactly:
+## Quarantine columns
 
-- `p_cw_raw + p_ccw_raw + p_ns_raw = 1.0` (to float32 precision)
-- `p_cw_eq + p_ccw_eq + p_ns_eq = 1.0` (to float32 precision)
-- `class_raw = argmax(p_cw_raw, p_ccw_raw, p_ns_raw)`
-- `class_eq = argmax(p_cw_eq, p_ccw_eq, p_ns_eq)`
+The quarantine retains object ID, coordinates, primary-HC membership, raw-source
+leg, the three raw diagnostic scores, the three reconstructed flip diagnostic
+scores, maximum bound excursion, reason code, and a mandatory
+`do_not_use_for_science` flag. Every row has reason code
+`RAW_EQ_PIPELINE_PASS_MISMATCH_GT_1E3`.
 
-### QC Flag Definitions
+The quarantine exists so the mismatch is auditable. Its score columns must never
+be used as probabilities, likelihood weights, or calibrated classifier outputs.
 
-| Value | Label | Criteria |
-|-------|-------|----------|
-| 0 | Good | `confidence_eq >= 0.6` and no edge-case trigger |
-| 1 | Low confidence | `confidence_eq < 0.6` |
-| 2 | Edge case | Raw and equivariant classifications disagree, OR the object lies within 5 arcsec of a bright star, OR the equivariant averaging changed the winning class |
+## Safe filters
 
-For cosmology parity analyses, the recommended cut is `qc_flag == 0` and
-`is_spiral == True`.
+Current primary observed-label reproduction:
+
+```python
+primary = catalog[catalog.primary_hc & ~catalog.raw_flip_qc_unsafe]
+```
+
+Historical unsafe-inclusive selection:
+
+```python
+historical_inclusive = catalog[catalog.primary_hc]
+```
+
+The declared primary result uses the first filter. Its exact null was regenerated
+under that selection and is retained in `apjs_release_v1.0.259_strict/`. The
+second filter is preserved only to reproduce the earlier public release history;
+it must not be described as the current primary analysis.
+
+## Named HEALPix supports
+
+| Stable name | Exact support | Pixels | Role |
+|---|---|---:|---|
+| `HC_REALSPACE_STRICT` | Primary HC rows excluding every `raw_flip_qc_unsafe` row; `N_spiral(pixel) >= 10` | 23,633 | Current primary real-space observed-label null |
+| `HC_REALSPACE_INCLUSIVE` | Historical primary HC rows; `N_spiral(pixel) >= 10` | 23,682 | Superseded unsafe-inclusive provenance |
+| `FULL_SPIRAL_CANONICAL` | All equivariant spiral labels; `N_spiral(pixel) >= 10` | 24,087 | Full-sample WLS and canonical harmonic diagnostics |
+| `MASTER_ALL_GALAXY_FOOTPRINT` | `N_all(pixel) >= 1` | 24,297 | Apodized, weighted MASTER diagnostic |
+
+These supports are distinct. “Canonical mask” without the stable name is
+deprecated because it previously obscured the 23,682-versus-24,087 distinction.
+
+## Minimal reproduction
+
+After building the local release candidate:
+
+```bash
+python3 pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py \
+  --output pipelines/p2_chirality/apjs_release_v1.0.244/PRIMARY_REPRODUCTION.json
+```
+
+The current hard gates are `N_selected=890,069`, `N_support=887,472`,
+23,633 strict pixels, `A_dip=0.0046651988`, `z_moment=+0.6346509`, and
+one-sided add-one upper-tail rank `p=0.2376762`. The strict fixed-occupancy
+array is pinned by SHA-256
+`3a03ca4b008844fd8bf16be4e1e7e918ceaf580992d9462d54233f417e32ce7d`.
+The unsafe-inclusive fixed-occupancy and pixel-permutation arrays remain
+separately checksummed as historical and robustness diagnostics. The script
+makes no physical or primordial inference.
 
 ## Provenance
 
-### Model
-
-- **Architecture:** ViT-Small (`vit_small_patch16_224`, ImageNet-pretrained, last 6
-  of 12 transformer blocks fine-tuned) with a custom 3-class classification head
-  (LayerNorm -> 384->512 GELU d=0.3 -> 512->256 GELU d=0.2 -> 256->3 softmax)
-- **Training data:** 26,626 images from Galaxy Zoo 1 (6,637 CW/CCW at >70% vote
-  confidence), CE-ResNet high-confidence spirals (17,153), CE-ResNet non-spirals
-  (846), and synthetic hard negatives (2,000 blank/noise/gradient images)
-- **Training:** AdamW (head lr=3e-4, encoder lr=2e-5, weight decay=0.02), cosine
-  annealing warm-restart (T_0=10, T_mult=2), batch size 64, early stopping
-  patience 15, max 80 epochs. Flip-equivariance consistency loss (lambda=0.5)
-  added to class-weighted cross-entropy.
-- **Calibration (Catalog B):** Platt scaling with `bias = 1.58`, `temperature = 4.65`,
-  fit against CE-ResNet consensus labels on a held-out overlap subset
-- **Equivariant post-processing (Catalog C):** Each galaxy is classified under 2
-  augmentations (original + horizontal reflection). The reflection swaps the CW/CCW
-  labels. The 2 probability vectors are averaged to produce `p_*_eq`. This removes
-  any orientation-dependent bias by construction.
-
-### Input Imaging
-
-- Smith42/galaxies dataset (DESI Legacy Imaging Surveys DR8, grz bands)
-- 224x224 pixel stamps, 0.262 arcsec/pixel native scale
-
-### Pipeline Scripts
-
-| Step | Script | Output |
-|------|--------|--------|
-| Inference | `run_v2_inference.py` | Catalog A (raw) |
-| Calibration | `calibrate_v2.py` | Catalog B (calibrated) |
-| Equivariant averaging + QC | `real_zoobot_chirality.py` | Catalog C (production) |
-
-## Recommended Usage
-
-### For cosmology (dipole / parity / spin-correlation tests)
-
-```python
-import pandas as pd
-
-cat = pd.read_parquet("chirality_catalog_c_v2_20260323.parquet")
-spirals = cat[(cat["qc_flag"] == 0) & (cat["is_spiral"])]
-
-# Use class_eq for CW/CCW assignment
-# Use p_cw_eq / p_ccw_eq for probabilistic weighting
-```
-
-### For ML / transfer learning
-
-Use Catalog B columns (`p_cw_raw`, `p_ccw_raw`, `p_ns_raw` after Platt
-calibration applied externally) or train on the raw logits directly.
-
-### For ablation / systematics studies
-
-Compare Catalog A vs. Catalog C to quantify the impact of equivariant averaging.
-The `class_raw` vs. `class_eq` disagreement rate is a direct measure of
-orientation-dependent misclassification.
-
-## Caveats
-
-1. **Not a redshift catalog.** The catalog contains sky coordinates only. Redshifts
-   must be obtained by cross-matching to a spectroscopic survey (DESI, SDSS, etc.)
-   or a photo-z catalog. The `cross_survey_holdout.py` script demonstrates this
-   workflow using the CE-ResNet external catalog.
-
-2. **Equivariant averaging is not bias-free in the statistical sense.** It eliminates
-   orientation bias but does not correct for morphological selection effects (e.g.,
-   face-on spirals are easier to classify than edge-on ones). The `qc_flag` helps
-   but does not fully mitigate this.
-
-3. **Catalog completeness depends on the DESI Legacy Survey footprint.** Coverage
-   is non-uniform: the galactic plane, bright-star masks, and survey-edge regions
-   are underrepresented. Any large-scale analysis must account for the angular
-   selection function.
-
-4. **Float32 precision.** Probabilities are stored as float32 to keep file size
-   manageable. For analyses requiring higher precision (e.g., extreme tails of the
-   probability distribution), rerun inference in float64 mode.
-
-5. **Version pinning.** Always record the catalog filename (including version and
-   date) in any analysis script. The schema is stable within a major version but
-   new QC flags or columns may be added in future versions.
+The source blob is pinned to upstream revision
+`a21eb596fd10edb9af9e7a1bcefb04f87327a724`, 952,115,239 bytes, 8,474,531
+rows, and SHA-256
+`e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563`.
+The builder validates the committed exact-SHA receipt plus current byte and
+Parquet-row counts before its single streaming catalog pass.

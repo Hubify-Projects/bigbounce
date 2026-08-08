@@ -1,0 +1,11 @@
+VERDICT: MINOR REVISIONS
+
+ISSUES:
+
+[MINOR] §V B (and abstract/headline result): Primary DESIVAST path is explicitly post-hoc with no timestamped pre-registration; while the analysis-tree table, Bonferroni-5 family, and disclosure of ~30–40 descriptive tests are commendable, the repeated emphasis on the “strictly quotable” family-wise null overstates robustness for an exploratory result—language must be tightened to “exploratory bound” throughout.
+[MINOR] Abstract/headline and §I: Phrasing “spiral galaxy chirality shows no void/non-void environment dependence” and “the null holds across all five DESIVAST void definitions” is too absolute for a bounded null (|Δf_CW| ≲ 0.004 classifier labels; de-attenuated physical ≲ 2.3 pp); must be qualified as “no evidence for dependence at current sensitivity” or “consistent with parity within the ~0.9 pp systematic envelope.”
+[MINOR] §VI A and §IX C: T-Web void bin (n=428, survey-shell dominated, negligible overlap with DESIVAST voids at z ≲ 0.24) is retained as a “secondary diagnostic” despite contributing essentially no independent constraining power; it should be removed or explicitly demoted to a pure methodological cross-check with no inferential weight.
+[MINOR] §II, §III, and Appendix A: Heavy reliance on concurrent Paper IV for per-galaxy class_eq labels and monopole; although labels are public (CC-BY-4.0) and the Δf_CW contrast is algebraically monopole-invariant, the manuscript must include a fully self-contained one-page summary of classifier architecture, GZ1 validation, and parity-equivariance tests so the environmental result stands alone.
+[MINOR] §IV, §VIII, and §XIII (RSD discussion): All classifications and the primary DESIVAST contrast are performed in redshift space; the first-order Zel’dovich bound on coherent outflow (0.024 pp shift) is reassuring but the unquantified anisotropic tidal-tensor RSD channel for T-Web and the lack of a full nonlinear void-catalog re-derivation must be stated more prominently as a limitation on real-space interpretation.
+
+The central claim of no significant redshift-space void/non-void dependence of classifier-labeled spiral chirality (bounded at |Δf_CW| ≲ 0.004 across the DESIVAST family) is supported by the reported two-sample contrasts, permutation tests, and systematic envelope.

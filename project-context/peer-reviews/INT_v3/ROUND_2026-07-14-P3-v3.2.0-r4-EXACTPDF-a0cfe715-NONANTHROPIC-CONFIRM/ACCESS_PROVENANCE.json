@@ -1,0 +1,68 @@
+{
+  "paper": "P3APJS",
+  "version": "v3.2.0-r4",
+  "manuscript_commit": "5898e0c34b23ccdbac6cb495665afa7eb7cb279d",
+  "pdf_sha256": "a0cfe715667b54122566122e976a3c7fedbc2881a747698cc0d431e5e0f086e8",
+  "source_sha256": "8f61e26219b976514e19d4192ac75d7611e58882b1c04994a3160171cad76fdb",
+  "api_runner": {
+    "path": "tools/int_api_review_2026-07-08.py",
+    "sha256": "8c0432d53fafa264fb6f3385480e0e19a2748dc204a389198b17b4eac88becd0",
+    "last_change_commit": "bfeb2813b82f36f182c1a80a047ce71a39bc1779",
+    "prompt_file": "dispatch_prompt.txt",
+    "timeout_seconds": 300,
+    "allowed_attempts": 2
+  },
+  "legs": {
+    "openai": {
+      "model": "gpt-5.5",
+      "access": "direct OpenAI API",
+      "endpoints": ["POST /v1/files", "POST /v1/responses"],
+      "modality": "native PDF by Files API input_file",
+      "attempt": 1,
+      "fallback": false,
+      "nominal_verdict": "MINOR REVISIONS",
+      "raw_file": "API_P3APJS_openai.md",
+      "raw_sha256": "f9057ef86dc96da162b9cfbf6201b1b5825cb519fe9205b17c2c3eae30368c66"
+    },
+    "gemini": {
+      "model": "gemini-3.1-pro-preview",
+      "access": "direct Google Generative Language API",
+      "endpoint": "POST /v1beta/models/gemini-3.1-pro-preview:generateContent",
+      "modality": "native PDF inline_data base64",
+      "attempt": 1,
+      "fallback": false,
+      "nominal_verdict": "MINOR REVISIONS",
+      "content_maximum_severity": "MAJOR",
+      "raw_file": "API_P3APJS_gemini.md",
+      "raw_sha256": "35b8946dc86c3b11a0f85f130e1597c325d9b7fbf051f60e1c80f45f00b66ec6"
+    },
+    "grok": {
+      "model": "grok-4.3",
+      "access": "direct xAI API",
+      "endpoints": ["POST /v1/files", "POST /v1/responses"],
+      "modality": "native PDF by file_id",
+      "attempt": 1,
+      "fallback": false,
+      "nominal_verdict": "MINOR REVISIONS",
+      "raw_file": "API_P3APJS_grok.md",
+      "raw_sha256": "3213ab669775822b8b5966c4ad405809153ee862fe0ba15c0d65722ba0c3b2cd"
+    },
+    "codex": {
+      "model": "model/reasoning identifier not exposed",
+      "access": "Codex in-app collaboration lane",
+      "modality": "exact frozen PDF plus 13 rendered pages; blinded read-only review",
+      "attempt": 1,
+      "fallback": false,
+      "nominal_verdict": "ACCEPT",
+      "raw_file": "CODEX_P3APJS_in_app.md",
+      "raw_sha256": "b73049faf39db869d0edd6dc9245a88bfc088475e7c1e13e427965b40a60f7b2",
+      "note": "The collaboration runtime exposed neither exact model identifier nor reasoning setting; neither is inferred."
+    }
+  },
+  "prohibited_routes_used": {
+    "anthropic": false,
+    "claude": false,
+    "subscription_cli": false,
+    "vendor_fallback": false
+  }
+}

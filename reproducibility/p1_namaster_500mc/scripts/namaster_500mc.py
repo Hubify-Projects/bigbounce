@@ -2,25 +2,26 @@
 NaMaster EB Birefringence Analysis — Production 500-MC Run
 ==========================================================
 
-Reproduces the canonical Paper 1 §VI birefringence numbers:
-  - β = 0.27° (Paper 1 prediction) recovered as 0.238° (bias 0.032°)
-  - SNR = 20.32σ at ACT sensitivity (f_sky = 0.32, n_side = 512, ℓ_max = 1024,
-    noise = 10 µK·arcmin)
-  - β = 0.342° (Planck+ACT observed) recovered as 0.302°, SNR = 25.71σ
-  - Null β = 0 returns SNR = 0.0
-  - Consistency P1-prediction vs observation = 0.77σ
+Recomputes the Paper 1 §VI birefringence validation using the exact
+NaMaster bandpower-window operator.  The pre-2026-07-14 result evaluated the
+theory at effective-ell bin centres; that approximation is retained only in
+the superseded-results directory and is not used here.
 
-Canonical ground-truth output:
+Historical output (superseded by the physical-spectrum audit):
   pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json
 
 Method:
-  1. Generate synthetic ΛCDM CMB Q/U maps (analytic EE fit + lensing BB).
+  1. Generate synthetic ΛCDM CMB Q/U maps from pinned raw CAMB lensed
+     EE/BB spectra (microkelvin-squared C_ell, never D_ell).
   2. Apply uniform birefringence rotation by angle β (E ↔ B mixing).
   3. Add ACT-like white noise (10 μK·arcmin).
-  4. Apply ACT-like survey mask (Galactic |b| > 20°, dec ∈ [-65°, +25°],
-     2° apodization → f_sky ≈ 0.32).
+  4. Apply a synthetic HEALPix native-coordinate latitude window
+     (|lat| > 20° and -65° < lat < +25° in the same native frame,
+     2° apodization → f_sky ≈ 0.32). This is not a Galactic/equatorial
+     or survey-footprint mask.
   5. Decouple pseudo-Cℓ with NaMaster (binned, 30 ≤ ℓ ≤ 3·NSIDE).
-  6. Estimate β by χ² fit of C_ℓ^EB to sin(2β)cos(2β) C_ℓ^EE.
+  6. Estimate β by fitting the fully rotated [EE,EB,BE,BB] theory after
+     contraction through the identical NaMaster bandpower-window tensor.
   7. Aggregate across 500 Monte Carlo realizations per β.
 
 Provenance:
@@ -39,8 +40,8 @@ Reproducing on a fresh GPU pod:
   # Output: results/namaster-birefringence/summary.json
 
 Random seeds are deterministic: seed_base=42, seeds 42..541 across the 500 MC
-realizations. Re-running the script will reproduce the canonical numbers to
-machine precision.
+realizations. Set NAMASTER_SMOKE=1 for a bounded NSIDE=128, LMAX=256,
+N_REAL=1 diagnostic run that writes to a caller-selected output directory.
 """
 
 import os
@@ -49,11 +50,21 @@ import json
 import time
 import numpy as np
 import subprocess
+from multiprocessing import get_context
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.environ.get(
     "NAMASTER_OUTPUT_DIR",
-    "results/namaster-birefringence",
+    os.path.join(SCRIPT_DIR, "..", "results", "physical_spectrum_v2"),
 )
+if (
+    os.path.exists(os.path.join(OUTPUT_DIR, "summary.json"))
+    and os.environ.get("NAMASTER_OVERWRITE") != "1"
+):
+    raise FileExistsError(
+        f"refusing to overwrite existing result at {OUTPUT_DIR}; choose a new "
+        "NAMASTER_OUTPUT_DIR (preferred) or set NAMASTER_OVERWRITE=1 explicitly"
+    )
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # -------------------------------------------------------------------------
@@ -71,9 +82,20 @@ def check_install(pkg, import_name=None):
 
 check_install("healpy")
 check_install("pymaster", "pymaster")
+check_install("camb==1.6.6", "camb")
 
 import healpy as hp
 import pymaster as nmt
+
+from windowed_rotation import (
+    build_rotation_response,
+    recover_beta_deg,
+    rotate_eb_spectra,
+    validate_window_equivalence,
+    windowed_bandpowers,
+)
+from physical_spectra import load_camb_lensed_spectra
+from multipole_contract import bandpower_edges
 
 print("=" * 70)
 print("NAMASTER EB BIREFRINGENCE ANALYSIS — PRODUCTION 500MC")
@@ -85,8 +107,9 @@ t0 = time.time()
 # -------------------------------------------------------------------------
 # Parameters (canonical Paper 1 §VI configuration)
 # -------------------------------------------------------------------------
-NSIDE = 512        # HEALPix resolution (≈7 arcmin pixels, ACT-level)
-LMAX = 2 * NSIDE   # Max multipole = 1024
+SMOKE_MODE = os.environ.get("NAMASTER_SMOKE") == "1"
+NSIDE = int(os.environ.get("NAMASTER_NSIDE", "128" if SMOKE_MODE else "512"))
+LMAX = int(os.environ.get("NAMASTER_LMAX", str(2 * NSIDE)))
 
 BETA_PAPER1 = np.deg2rad(0.27)     # Paper 1 prediction
 BETA_OBS = np.deg2rad(0.342)       # Minami+Komatsu 2020 / ACT measurement
@@ -94,7 +117,8 @@ BETA_OBS_ERR = np.deg2rad(0.094)   # 1σ uncertainty
 
 T_CMB_UK = 2.725e6
 F_SKY = 0.40                       # ACT survey coverage target
-N_REAL = 500                       # Production: 500 MC realizations
+N_REAL = int(os.environ.get("NAMASTER_NREAL", "1" if SMOKE_MODE else "500"))
+REALIZATION_WORKERS = int(os.environ.get("NAMASTER_REALIZATION_WORKERS", "1"))
 SEED_BASE = 42                     # Deterministic for reproducibility
 
 NOISE_LEVEL_UKARMIN = 10.0
@@ -106,46 +130,68 @@ NOISE_VAR = (NOISE_LEVEL_UKARMIN / np.sqrt(PIXEL_AREA_ARCMIN2)) ** 2
 # -------------------------------------------------------------------------
 print("\n[1/6] Generating ΛCDM CMB power spectrum...")
 
-def lcdm_cl_ee(lmax):
-    """Approximate ΛCDM EE power spectrum in μK². Semi-analytic fit to Planck 2018."""
-    ells = np.arange(lmax + 1, dtype=float)
-    ells[0] = 1
-    cl_ee = np.zeros(lmax + 1)
-    for amp, lc, sig in [(15.0, 5.0, 3.0),
-                         (40.0, 140.0, 40.0),
-                         (20.0, 400.0, 60.0),
-                         (8.0, 700.0, 80.0)]:
-        cl_ee += amp * np.exp(-0.5 * ((ells - lc) / sig) ** 2)
-    cl_ee *= np.exp(-ells * (ells + 1) / (2 * 2000 ** 2))
-    cl_ee[0:2] = 0
-    return cl_ee
-
-cl_ee = lcdm_cl_ee(LMAX)
-print(f"  EE power: ell_peak ~ {np.argmax(cl_ee)}, max = {cl_ee.max():.2f} μK²")
-
-cl_bb = 0.05 * cl_ee  # lensing BB only
+cl_ee, cl_bb, spectrum_metadata = load_camb_lensed_spectra(LMAX)
+print(
+    "  Raw CAMB lensed spectra: "
+    f"C_140^EE={cl_ee[140]:.6e} μK², "
+    f"D_140^EE={spectrum_metadata['validation']['d_ell_ee_at_ell_check_uK2']:.6f} μK²"
+)
+print(f"  EE SHA-256: {spectrum_metadata['sha256']['cl_ee_raw_uK2']}")
+print(f"  BB SHA-256: {spectrum_metadata['sha256']['cl_bb_raw_uK2']}")
 
 # -------------------------------------------------------------------------
 # [2/6] Sky mask
 # -------------------------------------------------------------------------
 print("\n[2/6] Generating sky mask...")
 
-def make_survey_mask(nside, f_sky, galactic_cut_deg=20.0):
+def make_native_latitude_window(nside, f_sky, latitude_cut_deg=20.0):
+    """Synthetic window in one HEALPix native coordinate frame.
+
+    ``hp.pix2ang(..., lonlat=True)`` supplies one native longitude/latitude
+    pair. No coordinate rotation is applied, so the two latitude conditions
+    below must not be interpreted as Galactic latitude plus equatorial
+    declination or as an ACT/other survey footprint.
+    """
     npix = hp.nside2npix(nside)
     mask = np.ones(npix, dtype=float)
     _, lat = hp.pix2ang(nside, np.arange(npix), lonlat=True)
-    mask[np.abs(lat) < galactic_cut_deg] = 0.0
-    ra, dec = hp.pix2ang(nside, np.arange(npix), lonlat=True)
-    mask[dec > 25.0] = 0.0
-    mask[dec < -65.0] = 0.0
+    mask[np.abs(lat) < latitude_cut_deg] = 0.0
+    mask[lat > 25.0] = 0.0
+    mask[lat < -65.0] = 0.0
     mask = hp.smoothing(mask, fwhm=np.deg2rad(2.0), verbose=False)
     mask = np.clip(mask, 0, 1)
     actual_fsky = mask.sum() / len(mask)
     print(f"  Mask f_sky = {actual_fsky:.3f} (target {f_sky:.2f})")
     return mask
 
-mask = make_survey_mask(NSIDE, F_SKY)
+mask = make_native_latitude_window(NSIDE, F_SKY)
 actual_fsky = mask.sum() / hp.nside2npix(NSIDE)
+
+n_ell_bins = int(os.environ.get("NAMASTER_NBINS", "6" if SMOKE_MODE else "20"))
+ells_bins = bandpower_edges(
+    nside=NSIDE, lmax=LMAX, n_bins=n_ell_bins, ell_min=30
+)
+bandpower_bin = nmt.NmtBin.from_edges(ells_bins[:-1], ells_bins[1:])
+f_dummy = nmt.NmtField(
+    mask,
+    [np.zeros(hp.nside2npix(NSIDE)), np.zeros(hp.nside2npix(NSIDE))],
+    lmax=LMAX,
+)
+workspace = nmt.NmtWorkspace()
+workspace.compute_coupling_matrix(f_dummy, f_dummy, bandpower_bin)
+rotation_response = build_rotation_response(workspace, cl_ee, cl_bb)
+window_equivalence_max_abs = validate_window_equivalence(
+    workspace, rotation_response, BETA_PAPER1
+)
+if not np.isfinite(window_equivalence_max_abs) or window_equivalence_max_abs > 1e-10:
+    raise RuntimeError(
+        "NaMaster window contraction failed equivalence check: "
+        f"max_abs={window_equivalence_max_abs:.6e}"
+    )
+print(
+    "  Exact bandpower-window response verified against "
+    f"decouple(couple(theory)); max|delta|={window_equivalence_max_abs:.3e}"
+)
 
 # -------------------------------------------------------------------------
 # [3/6] Birefringence simulation + EB measurement
@@ -156,57 +202,91 @@ def apply_birefringence(Q, U, beta):
     cos2b, sin2b = np.cos(2 * beta), np.sin(2 * beta)
     return cos2b * Q - sin2b * U, sin2b * Q + cos2b * U
 
-def simulate_and_measure(beta, n_real=N_REAL, seed_base=SEED_BASE):
-    n_ell_bins = 20
-    ell_min, ell_max = 30, 3 * NSIDE
-    ells_bins = np.linspace(ell_min, ell_max, n_ell_bins + 1, dtype=int)
-    b = nmt.NmtBin.from_edges(ells_bins[:-1], ells_bins[1:])
 
-    f_dummy = nmt.NmtField(mask, [np.zeros(hp.nside2npix(NSIDE)),
-                                  np.zeros(hp.nside2npix(NSIDE))])
-    wsp = nmt.NmtWorkspace()
-    wsp.compute_coupling_matrix(f_dummy, f_dummy, b)
+def _measure_realization(index):
+    """Return ordered EB bandpowers for one deterministic seed."""
+    np.random.seed(SEED_BASE + index)
+    maps = hp.synfast(
+        [np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
+        NSIDE, lmax=LMAX, new=True, verbose=False,
+    )
+    q, u = maps[1], maps[2]
+    q += np.random.normal(0, np.sqrt(NOISE_VAR), len(q))
+    u += np.random.normal(0, np.sqrt(NOISE_VAR), len(u))
+    field = nmt.NmtField(mask, [q, u], lmax=LMAX)
+    coupled = nmt.compute_coupled_cell(field, field)
+    return [
+        workspace.decouple_cell(rotate_eb_spectra(coupled, beta))[1]
+        for beta in _WORKER_BETAS
+    ]
 
-    all_cl_eb = []
-    for i in range(n_real):
-        np.random.seed(seed_base + i)
-        maps = hp.synfast([np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
-                          NSIDE, lmax=LMAX, new=True, verbose=False)
-        Q, U = maps[1], maps[2]
-        Q += np.random.normal(0, np.sqrt(NOISE_VAR), len(Q))
-        U += np.random.normal(0, np.sqrt(NOISE_VAR), len(U))
-        Q_rot, U_rot = apply_birefringence(Q, U, beta)
-        f_pol = nmt.NmtField(mask, [Q_rot, U_rot])
-        cl_coupled = nmt.compute_coupled_cell(f_pol, f_pol)
-        cl_decoupled = wsp.decouple_cell(cl_coupled)
-        all_cl_eb.append(cl_decoupled[1])
 
-    all_cl_eb = np.array(all_cl_eb)
-    mean_cl_eb = all_cl_eb.mean(axis=0)
-    std_cl_eb = all_cl_eb.std(axis=0)
-    ell_effs = b.get_effective_ells()
-    cl_ee_binned = np.array([cl_ee[int(l)] if int(l) < len(cl_ee) else 0
-                             for l in ell_effs])
-    cl_eb_theory = np.sin(2 * beta) * np.cos(2 * beta) * cl_ee_binned
-    snr_total = np.sqrt(np.sum((cl_eb_theory / (std_cl_eb + 1e-20)) ** 2))
-    return {
-        "ell_effs": ell_effs,
-        "cl_eb_mean": mean_cl_eb,
-        "cl_eb_std": std_cl_eb,
-        "cl_eb_theory": cl_eb_theory,
-        "snr_total": float(snr_total),
-        "beta_deg": float(np.rad2deg(beta)),
-    }
+def simulate_and_measure_all(betas, n_real=N_REAL, seed_base=SEED_BASE):
+    """Measure all betas from one identical-seed noisy map per realization.
+
+    Uniform Q/U rotation commutes with the scalar mask.  We therefore rotate
+    the four coupled spectra algebraically, which is numerically identical to
+    constructing a new rotated field but requires only one spherical harmonic
+    transform per realization.  ``windowed_rotation.rotate_eb_spectra`` is
+    regression-tested against the direct field route.
+    """
+    betas = [float(beta) for beta in betas]
+    if seed_base != SEED_BASE:
+        raise ValueError("canonical seed base must remain fixed")
+    if REALIZATION_WORKERS <= 0:
+        raise ValueError("NAMASTER_REALIZATION_WORKERS must be positive")
+    global _WORKER_BETAS
+    _WORKER_BETAS = tuple(betas)
+    all_cl_eb = {beta: [] for beta in betas}
+    indices = range(n_real)
+    pool = None
+    if REALIZATION_WORKERS == 1:
+        measured = map(_measure_realization, indices)
+    else:
+        pool = get_context("fork").Pool(processes=REALIZATION_WORKERS)
+        measured = pool.imap(_measure_realization, indices)
+    try:
+        for index, realization in enumerate(measured, start=1):
+            for beta, values in zip(betas, realization):
+                all_cl_eb[beta].append(values)
+            if index % 25 == 0 or index == n_real:
+                print(f"    completed {index}/{n_real} realizations")
+    finally:
+        if pool is not None:
+            pool.close()
+            pool.join()
+
+    ell_effs = bandpower_bin.get_effective_ells()
+    cl_eb_null_theory = windowed_bandpowers(rotation_response, 0.0)[1]
+    results = {}
+    for beta in betas:
+        ensemble = np.asarray(all_cl_eb[beta])
+        mean_cl_eb = ensemble.mean(axis=0)
+        std_cl_eb = ensemble.std(axis=0)
+        cl_eb_theory = windowed_bandpowers(rotation_response, beta)[1]
+        snr_total = np.sqrt(
+            np.sum(((cl_eb_theory - cl_eb_null_theory) /
+                    (std_cl_eb + 1e-20)) ** 2)
+        )
+        results[beta] = {
+            "ell_effs": ell_effs,
+            "cl_eb_mean": mean_cl_eb,
+            "cl_eb_std": std_cl_eb,
+            "cl_eb_theory": cl_eb_theory,
+            "all_cl_eb": ensemble,
+            "snr_total": float(snr_total),
+            "beta_deg": float(np.rad2deg(beta)),
+        }
+    return results
 
 print(f"  Running {N_REAL} MC realizations per β value (seed_base={SEED_BASE})...")
-print("  β=0.00° (null hypothesis)...")
-result_null = simulate_and_measure(0.0)
+print("  Joint identical-seed ensemble: β=0.00°, 0.27°, 0.342°...")
+joint_results = simulate_and_measure_all([0.0, BETA_PAPER1, BETA_OBS])
+result_null = joint_results[0.0]
 print(f"    SNR = {result_null['snr_total']:.2f}")
-print("  β=0.27° (Paper 1 prediction)...")
-result_paper1 = simulate_and_measure(BETA_PAPER1)
+result_paper1 = joint_results[BETA_PAPER1]
 print(f"    SNR = {result_paper1['snr_total']:.2f}")
-print("  β=0.342° (Minami+Komatsu observed)...")
-result_obs = simulate_and_measure(BETA_OBS)
+result_obs = joint_results[BETA_OBS]
 print(f"    SNR = {result_obs['snr_total']:.2f}")
 
 # -------------------------------------------------------------------------
@@ -214,28 +294,35 @@ print(f"    SNR = {result_obs['snr_total']:.2f}")
 # -------------------------------------------------------------------------
 print("\n[4/6] β recovery test (bias check)...")
 
-def recover_beta(cl_eb_measured, cl_ee_binned, ell_effs):
-    beta_grid = np.linspace(-1.0, 1.0, 2001)  # degrees
-    chi2 = np.zeros_like(beta_grid)
-    for j, bg in enumerate(beta_grid):
-        bg_rad = np.deg2rad(bg)
-        cl_theory = np.sin(2 * bg_rad) * np.cos(2 * bg_rad) * cl_ee_binned
-        chi2[j] = np.sum((cl_eb_measured - cl_theory) ** 2)
-    return beta_grid[np.argmin(chi2)]
-
-ell_effs = result_paper1["ell_effs"]
-cl_ee_binned = np.array([cl_ee[int(l)] if int(l) < len(cl_ee) else 0 for l in ell_effs])
-
-beta_recovered_paper1 = recover_beta(result_paper1["cl_eb_mean"], cl_ee_binned, ell_effs)
-beta_recovered_obs = recover_beta(result_obs["cl_eb_mean"], cl_ee_binned, ell_effs)
-beta_recovered_null = recover_beta(result_null["cl_eb_mean"], cl_ee_binned, ell_effs)
+beta_recovered_paper1 = float(
+    recover_beta_deg(result_paper1["cl_eb_mean"], rotation_response)
+)
+beta_recovered_obs = float(
+    recover_beta_deg(result_obs["cl_eb_mean"], rotation_response)
+)
+beta_recovered_null = float(
+    recover_beta_deg(result_null["cl_eb_mean"], rotation_response)
+)
+beta_per_real_paper1 = recover_beta_deg(
+    result_paper1["all_cl_eb"], rotation_response
+)
 
 print(f"  Input β=0.270°, recovered β={beta_recovered_paper1:.3f}°")
 print(f"  Input β=0.342°, recovered β={beta_recovered_obs:.3f}°")
 print(f"  Input β=0.000°, recovered β={beta_recovered_null:.3f}°")
 
-bias_paper1 = abs(beta_recovered_paper1 - 0.270)
-print(f"  Bias on Paper 1 value: {bias_paper1:.4f}°")
+bias_paper1_signed = beta_recovered_paper1 - 0.270
+bias_paper1 = abs(bias_paper1_signed)
+beta_scatter_paper1 = float(np.std(beta_per_real_paper1, ddof=1)) if N_REAL > 1 else None
+beta_mean_se_paper1 = (
+    beta_scatter_paper1 / np.sqrt(N_REAL) if beta_scatter_paper1 is not None else None
+)
+print(f"  Bias on Paper 1 value: {bias_paper1_signed:+.4f}°")
+if beta_scatter_paper1 is not None:
+    print(
+        f"  Per-realization beta scatter: {beta_scatter_paper1:.4f}°; "
+        f"MC mean SE: {beta_mean_se_paper1:.4f}°"
+    )
 
 # -------------------------------------------------------------------------
 # [5/6] Detection significance
@@ -263,6 +350,20 @@ summary = {
     "noise_level_ukarmin": NOISE_LEVEL_UKARMIN,
     "n_mc_realizations": N_REAL,
     "seed_base": SEED_BASE,
+    "run_mode": "bounded_smoke" if SMOKE_MODE else "production",
+    "physical_spectra": spectrum_metadata,
+    "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+    "window_shape": list(rotation_response["window_shape"]),
+    "window_equivalence_max_abs": window_equivalence_max_abs,
+    "software": {
+        "numpy": np.__version__,
+        "healpy": hp.__version__,
+        "pymaster": nmt.__version__,
+    },
+    "execution": {
+        "realization_workers": REALIZATION_WORKERS,
+        "ordered_seed_aggregation": True,
+    },
     "paper1_prediction_deg": 0.27,
     "observed_value_deg": 0.342,
     "observed_error_deg": 0.094,
@@ -271,6 +372,9 @@ summary = {
             "input_beta_deg": 0.27,
             "recovered_beta_deg": float(beta_recovered_paper1),
             "bias_deg": float(bias_paper1),
+            "signed_bias_deg": float(bias_paper1_signed),
+            "per_realization_beta_std_deg": beta_scatter_paper1,
+            "mc_mean_standard_error_deg": beta_mean_se_paper1,
             "snr_namaster": float(snr_paper1),
             "snr_ratio_to_observed": round(snr_paper1 / max(snr_obs, 0.001), 3),
         },
@@ -305,6 +409,19 @@ print(f"  β recovery bias: {bias_paper1:.4f}°")
 
 with open(os.path.join(OUTPUT_DIR, "summary.json"), "w") as f:
     json.dump(summary, f, indent=2)
+
+np.savez_compressed(
+    os.path.join(OUTPUT_DIR, "bandpowers.npz"),
+    ell_eff=result_paper1["ell_effs"],
+    input_cl_ee_raw_uK2=cl_ee,
+    input_cl_bb_raw_uK2=cl_bb,
+    null=result_null["all_cl_eb"],
+    beta_0p270=result_paper1["all_cl_eb"],
+    beta_0p342=result_obs["all_cl_eb"],
+    theory_null=result_null["cl_eb_theory"],
+    theory_0p270=result_paper1["cl_eb_theory"],
+    theory_0p342=result_obs["cl_eb_theory"],
+)
 
 print(json.dumps(summary, indent=2))
 print("\nCOMPLETE")

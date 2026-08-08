@@ -32,7 +32,10 @@ def Phi(x):
     return 0.5 * (1 + math.erf(x / SQRT2))
 
 
-F0 = -35.0 / 8.0  # -4.375
+F0 = -35.0 / 16.0  # -2.1875 (H17 correction: was the superseded -35/8 = -4.375;
+# the SSFSR column and P(BF>3) of tab:gr were left at the -35/8 center while the
+# Tuned column had already been hand-updated to -35/16 — this restores a single
+# consistent center for every generated cell.)
 SSFSR = 0.015
 
 

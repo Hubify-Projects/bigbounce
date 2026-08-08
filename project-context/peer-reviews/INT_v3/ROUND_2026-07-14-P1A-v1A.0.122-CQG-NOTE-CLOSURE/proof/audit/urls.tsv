@@ -1,0 +1,22 @@
+status	url	local_evidence_or_note
+200	https://arxiv.org/abs/1104.4028	resolved
+200	https://arxiv.org/abs/1111.0884	resolved
+200	https://arxiv.org/abs/1402.4854	resolved
+200	https://arxiv.org/abs/hep-ph/0306087	resolved
+200	https://arxiv.org/abs/hep-th/0507253	resolved
+200	https://doi.org/10.1007/JHEP06(2011)107	resolved to Springer
+200	https://doi.org/10.1016/0370-1573(94)90022-1	resolved to Elsevier
+200	https://doi.org/10.1016/j.physrep.2004.11.004	resolved to Elsevier
+403	https://doi.org/10.1063/1.1665738	DOI resolved to AIP; publisher bot protection
+200	https://doi.org/10.1088/0264-9381/31/18/185002	resolved to IOP
+200	https://doi.org/10.1088/1742-6596/360/1/012011	resolved to IOP
+403	https://doi.org/10.1103/PhysRevD.72.104002	DOI resolved to APS; publisher bot protection
+403	https://doi.org/10.1103/RevModPhys.48.393	DOI resolved to APS; publisher bot protection
+403	https://doi.org/10.1103/RevModPhys.64.649	DOI resolved to APS; publisher bot protection
+PRE-PUSH	https://github.com/Hubify-Projects/bigbounce/blob/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8/arxiv/scripts/fierz_lemma_check.py	git cat-file PASS; exact local path exists; remote resolves after ancestor push
+PRE-PUSH	https://github.com/Hubify-Projects/bigbounce/blob/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8/arxiv/scripts/njl_gap_equation_route1.py	git cat-file PASS; exact local path exists; remote resolves after ancestor push
+PRE-PUSH	https://github.com/Hubify-Projects/bigbounce/blob/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8/arxiv/scripts/njl_gap_equation_route1_results.json	git cat-file PASS; exact local path exists; remote resolves after ancestor push
+200	https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/scripts/fierz_lemma_check.py	resolved; mutable convenience link elsewhere in paper
+200	https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/scripts/njl_gap_equation_route1.py	resolved; mutable convenience link elsewhere in paper
+PRE-PUSH	https://github.com/Hubify-Projects/bigbounce/tree/b587cb7bb8e075aa9d0245ba8257fcef7ff196b8	local commit exists; remote resolves after ancestor push
+MAILTO	mailto:houston@hubify.com	author email

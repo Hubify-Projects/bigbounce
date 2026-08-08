@@ -1,5 +1,6 @@
 {
   "schema": 1,
+<<<<<<< HEAD
   "updated_at": "2026-08-05 18:00 PT",
   "project": "bigbounce",
   "objective": "Preserve a truthful, resumable BigBounce checkpoint across machines.",
@@ -35,5 +36,484 @@
     "Keep raw prompts raw; put audit conclusions in task and plan files.",
     "Read SSOT before paper work and never commit local environment backups.",
     "At handoff fetch, origin/main was 1,574 commits ahead while local main was 2 commits ahead; do not auto-reconcile divergent history."
+=======
+  "updated_at": "2026-08-04T02:55:00-07:00",
+  "project": "bigbounce",
+  "objective": "Ship the approved three-program public architecture, restore or rerun the DESI anomaly flagship evidence chain, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.",
+  "canonical_plan": "ops/PLAN.md",
+  "canonical_status": "project-context/SSOT/index.md",
+  "current_versions": {
+    "P1A": "v1A.0.127",
+    "P1B": "v2B.0.16",
+    "P2": "v1.7.130",
+    "P3_support": "v3.2.0-r17",
+    "P4": "v1.0.274",
+    "P5": "v0.1.147-2026-08-03"
+  },
+  "readiness_model": {
+    "directive": "P",
+    "agent_gates": 95,
+    "houston_signoff_points": 5,
+    "publishing_phase_separate": true,
+    "automated_convergence": "zero genuinely-new-real findings outstanding across active Grok API, Gemini API, and Claude Opus INT legs; verdict words are diagnostic",
+    "final_hash_confirmation": "bounded evidence-hygiene check required for post-board closure artifacts; it does not restart an unbounded review loop"
+  },
+  "tasks": [
+    {
+      "id": "AUG-001",
+      "status": "complete",
+      "title": "Synchronize canonical SSOT, Convex, site data, and production truth atomically"
+    },
+    {
+      "id": "AUG-002",
+      "status": "complete",
+      "title": "Complete bounded package acceptance across the six preserved candidate artifacts",
+      "depends_on": ["AUG-001"],
+      "completion_evidence": "Exact package, PDF, visual, link, mirror, and contract gates passed through P3 r17 and P4 v1.0.274; current PASS receipt generated 2026-08-04T08:04:33Z at manuscript-bearing head 8055a5b1 with zero later changes to the 12 canonical source/PDF paths"
+    },
+    {
+      "id": "AUG-003",
+      "status": "complete",
+      "title": "Close submission metadata gaps and assemble portal-ready journal packets",
+      "depends_on": ["AUG-002"],
+      "completion_evidence": "Six current portal kits and exact source packages; P2 bibliography omission fixed; P3/P4/P5 migrated to current venue shells and visually audited"
+    },
+    {
+      "id": "AUG-004",
+      "status": "pending",
+      "title": "Record Houston's explicit sign-offs for P1A, P1B, P2, P4, and P5",
+      "depends_on": ["AUG-002"]
+    },
+    {
+      "id": "AUG-005",
+      "status": "pending",
+      "title": "Execute journal submissions as a publishing phase separate from readiness",
+      "depends_on": ["AUG-003", "AUG-004"]
+    },
+    {
+      "id": "AUG-006",
+      "status": "complete",
+      "title": "Diff and consolidate stale local and remote branches without losing unique work",
+      "completion_evidence": "archival merge 556b8454; local, origin/main, and upstream/main aligned; both remotes expose only main; obsolete local worktrees and branches removed"
+    },
+    {
+      "id": "AUG-007",
+      "status": "blocked_external_auth",
+      "title": "Verify Hubify lab status after authentication is available",
+      "blocker": ".env.local lacks HUBIFY_TOKEN; Hubify CLI status/papers/tasks/agents/activity fail unauthenticated",
+      "critical_path": false
+    },
+    {
+      "id": "AUG-008",
+      "status": "complete",
+      "title": "Approve the three-program publication architecture and resolve P3/P5 editorial roles",
+      "completion_evidence": "Houston 2026-08-04 continue-all approval; P3 integrated supporting release; P5 standalone AJ companion"
+    },
+    {
+      "id": "AUG-009",
+      "status": "complete",
+      "title": "Rewrite production around bounce theory, DESI anomaly discovery, and galaxy chirality",
+      "depends_on": ["AUG-008"],
+      "completion_evidence": "Production deployment from commit 8055a5b1 verified at bigbounce.hubify.app: exact P3/P5 roles, desktop/mobile no-overflow browser QA, zero browser warnings/errors, and six byte-identical served PDF hashes"
+    },
+    {
+      "id": "AUG-010",
+      "status": "complete",
+      "title": "Restore and hash-verify the enhanced DESI parent/model lineage or select a clean rerun",
+      "depends_on": ["AUG-008"],
+      "completion_evidence": "Enhanced parent and calibration are absent; archived model SHA f5266ba48f476bca2f1b12610e0e81322caaa955af70ab83f0b05bf763885f07 verified locally and on Hugging Face; fail-closed clean rerun contract and two passing smoke tests committed in 2a0a2fea"
+    },
+    {
+      "id": "AUG-011",
+      "status": "pending",
+      "title": "Execute the clean DESI rerun and build the defensible anomaly flagship sample, validation, taxonomy, and manuscript",
+      "depends_on": ["AUG-010"]
+    },
+    {
+      "id": "AUG-012",
+      "status": "in_progress",
+      "title": "Regenerate approval, submission, archive, and endorser routing for six standalone works plus the P3 support release",
+      "depends_on": ["AUG-008", "AUG-009"],
+      "completion_evidence": "Canonical board regenerated for the selected portfolio; Houston decisions, post-approval archives, outreach, and submissions remain open"
+    },
+    {
+      "id": "AUG-013",
+      "status": "complete",
+      "title": "Bind current-hash evidence and create concise Houston visual-review decision packets",
+      "depends_on": ["AUG-002", "AUG-008"],
+      "completion_evidence": "project-context/SSOT/HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md binds exact versions, hashes, purposes, claim limits, provider coverage, live PDFs, portal kits, and APPROVE/REVISE/DEFER decisions; no 96 state"
+    }
+  ],
+  "historical_tasks": [
+    {
+      "id": "PUB-001",
+      "status": "active",
+      "title": "Close active science revisions across P1A, P1B, P3, P4, and P5",
+      "source_prompts": [
+        "2026-07-13 19:28 PT publication-readiness mandate",
+        "2026-07-14 10:39 PT acceleration mandate"
+      ],
+      "completion_criteria": [
+        "Every confirmed scientific finding has a source-backed closure or an explicit unresolved blocker",
+        "Every changed manuscript compiles and passes the full PDF visual audit",
+        "Compute-derived claims bind to reproducible immutable artifacts"
+      ]
+    },
+    {
+      "id": "PUB-002",
+      "status": "active",
+      "title": "Run fresh exact-PDF venue-correct subscription/direct-provider review boards",
+      "source_prompts": [
+        "2026-07-13 19:28 PT publication-readiness mandate"
+      ],
+      "completion_criteria": [
+        "Each review records the exact PDF SHA-256, version, source commit, venue, article type, prompt, and raw report",
+        "The OpenAI perspective is supplied only by Codex CLI authenticated through the ChatGPT subscription with OpenAI API credentials unset; OpenAI API billing is forbidden",
+        "Direct-provider Grok/xAI and Gemini legs are allowed; every result is truth-audited without fabricated or silently substituted legs",
+        "Re-review occurs only after a reader-visible PDF content-hash change, except one declared independent confirmation of a high-risk closure",
+        "Acceptance or minor-only status is claimed only when the exact board supports it"
+      ]
+    },
+    {
+      "id": "PUB-003",
+      "status": "active",
+      "title": "Implement safe acceleration controls",
+      "source_prompts": [
+        "2026-07-14 10:39 PT acceleration mandate"
+      ],
+      "completion_criteria": [
+        "One canonical registry defines the six source/PDF/venue/site mappings",
+        "Content-addressed review packets fail closed on stale paths, hash mismatch, ambiguous commits, or output reuse",
+        "Science gates and workflow gates are represented separately",
+        "Any compute parallelism passes a deterministic serial-equivalence regression before production use"
+      ]
+    },
+    {
+      "id": "PUB-004",
+      "status": "pending",
+      "title": "Synchronize exact public state and push main",
+      "source_prompts": [
+        "2026-07-13 19:28 PT publication-readiness mandate"
+      ],
+      "depends_on": [
+        "PUB-001",
+        "PUB-002"
+      ],
+      "completion_criteria": [
+        "Paper mirrors, versions, claims tables, SSOT, Convex/API, site papers, and review timeline agree",
+        "Site build and governed browser QA pass",
+        "Bisected commits are pushed to main only after the public state is honest and atomic"
+      ]
+    },
+    {
+      "id": "PUB-005",
+      "status": "active",
+      "title": "Retain an immutable complete PDF history",
+      "source_prompts": [
+        "2026-07-14 PDF-retention mandate"
+      ],
+      "completion_criteria": [
+        "Every compiled paper PDF is retained under a paper/version/PST-timestamped immutable name",
+        "An append-only manifest records source commit, PDF SHA-256, page count, build command, and review-round references",
+        "The canonical archive plus two independent mirrors are hash-verified before cleanup",
+        "No cleanup deletes the only copy of a historical PDF"
+      ],
+      "progress": [
+        "Current/future six-paper PDF snapshots are retained through Directive-G before mirror/Convex mutation.",
+        "Complete Git PDF inventory manifest project-context/pdf-archive/manifests/2026/07/20260714T235000Z-history-inventory-20260714-history.json records 1,356 reachable PDF object/path rows, 1,094 high-confidence manuscript rows, and 262 explicit unclassified rows.",
+        "Fast historical byte materialization covers row offsets 0-1357 with no gaps across 49 history-backfill-fast-* manifests: 1,095 classified manuscript rows processed, 837 new SHA-256 objects and 843 new refs created, zero row errors.",
+        "Archive verification after fast materialization: 1,097 objects, 1,106 refs, and 0 bad ref-to-object hardlinks.",
+        "First page-counted historical materialization proof project-context/pdf-archive/manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json verified five P4 manuscript rows with page counts 22, 24, 25, 22, 21."
+      ],
+      "next_action": "Run page-count completion tranches with tools/pdf_version_retention.py --history-backfill --history-offset <n> --history-limit <m> (without --history-skip-page-count), then mirror project-context/pdf-archive to two independent stores and hash-verify both mirrors."
+    },
+    {
+      "id": "PUB-006",
+      "status": "active",
+      "title": "Separate stable readiness gates from raw reviewer distributions",
+      "source_prompts": [
+        "2026-07-14 readiness-regression audit"
+      ],
+      "completion_criteria": [
+        "Scientific, reproducibility, venue-fit, release-integrity, and human/workflow gates are represented separately",
+        "Raw verdicts remain verbatim and are indexed by paper/PDF hash/commit/venue/prompt/provider/model/modality",
+        "Wrong-version, stale, missing, prompt-echo, and failed legs are gaps and never inferred verdicts",
+        "Historical EXT11/EXT17 arithmetic and relabeling inconsistencies are preserved and corrected in the normalized view without rewriting raw evidence",
+        "Two valid independent waves with zero genuinely new reader-visible findings on the same hash trigger the content-hash stop rule"
+      ]
+    },
+    {
+      "id": "PUB-007",
+      "status": "active",
+      "title": "Compile review learning into mandatory all-paper prevention gates",
+      "source_prompts": [
+        "2026-07-15 15:24 PT recursive-improvement mandate"
+      ],
+      "completion_criteria": [
+        "One canonical HubStack engine ingests machine-readable safe rules and emits content-addressed PASS/FAIL receipts",
+        "A BigBounce adapter runs the accumulated high-impact gate suite across all six current paper sources and exact PDFs",
+        "Review packets fail closed unless source commit, source/PDF hashes, rule-catalog hash, and preflight receipt all agree",
+        "Every truth-audited NEW-REAL blocker/major and recurrent minor adds or strengthens an executable regression fixture before the next review",
+        "Learning metrics report known-pattern escapes, preflight interception, closure regressions, claim-evidence coverage, and archive/catalog freshness"
+      ]
+    },
+    {
+      "id": "HO-001",
+      "status": "done",
+      "title": "Run receiving-machine bootstrap to READY",
+      "source_prompts": [
+        "2026-07-13 Codex handoff acceptance"
+      ],
+      "completion_criteria": [
+        "Second machine follows BOOTSTRAP_PROMPT.md",
+        "bootstrap.sh reports READY",
+        "Every WARN or FAIL is resolved or documented without exposing secrets"
+      ],
+      "evidence": [
+        "bootstrap READY: 21 PASS, 2 WARN, 0 FAIL",
+        "TinyTeX pdflatex and latexmk detected",
+        "Convex reachable",
+        "gstack healthy headed"
+      ]
+    },
+    {
+      "id": "HO-002",
+      "status": "active",
+      "title": "Verify one-lab coordination on two machines",
+      "source_prompts": [
+        "2026-07-13 Codex handoff acceptance"
+      ],
+      "depends_on": [
+        "HO-B01"
+      ],
+      "completion_criteria": [
+        "Lease claim, renew, release, denial, and expiry behavior are verified during an idle or handed-off window",
+        "Heartbeat contains the active machineId",
+        "Git and Convex converge without browser, manifest, ledger, or site-state collisions"
+      ]
+    },
+    {
+      "id": "HO-003",
+      "status": "done",
+      "title": "Verify Codex orchestrator portability",
+      "source_prompts": [
+        "2026-07-13 Codex handoff acceptance"
+      ],
+      "completion_criteria": [
+        "Fresh Codex session resumes from repository instructions alone",
+        "Claude-only assumptions are absent or explicitly mapped",
+        "Host capability gaps are recorded honestly"
+      ],
+      "evidence": [
+        "Codex receiving session followed AGENTS/onboarding/runbook",
+        "macOS launchd and gstack browser dependencies made explicit",
+        "Codex host is mapped as its own INT reviewer"
+      ]
+    },
+    {
+      "id": "HO-004",
+      "status": "done",
+      "title": "Close bootstrap prerequisite-detection gaps",
+      "source_prompts": [
+        "2026-07-13 Claude handoff report"
+      ],
+      "completion_criteria": [
+        "TinyTeX pdflatex is detected or its degraded state is documented",
+        "No prerequisite check is weakened to force READY"
+      ],
+      "evidence": [
+        "bootstrap exact-module checks pass",
+        "BigBounce env-key audit has zero missing key names",
+        "isolated lease CAS + cron routing test passes"
+      ]
+    },
+    {
+      "id": "CMUX-001",
+      "status": "done",
+      "title": "Build and harden the local mirrored launcher and evaluation contract",
+      "source_prompts": [
+        "2026-07-13 14:49 PT cmux architecture",
+        "2026-07-13 15:38 PT continue",
+        "2026-07-13 15:56 PT sync and continue",
+        "2026-07-13 18:10 PT continue"
+      ],
+      "completion_criteria": [
+        "Launch equivalent Codex and Claude orchestrator teams from an immutable task and repository snapshot",
+        "Use subscription-authenticated CLIs without injecting provider API keys",
+        "Keep each result sealed until both teams submit",
+        "Reject mutation while atomic You.md coordination primitives are unavailable",
+        "Deny target-repository writes for every run-owned surface and invalidate the seal before failure rollback"
+      ],
+      "evidence": [
+        "learning-cmux-with-agents code commit fb815f8 and documentation commit be65a6f contain the completed provider-route readiness gate and contract",
+        "all 37 local tests pass",
+        "before any CMUX create, one subscription-authenticated completed turn runs per unique provider/model/effort route with alternate API/cloud environment variables scrubbed, an exact sentinel bound to the absolute executable digest, and hash-only 0444 receipts",
+        "a route failure publishes typed pre-release invalidation and creates zero workspaces",
+        "every run-owned surface has process-enforced target-repository write denial; this is not hostile same-user or independently launched raw-CMUX isolation",
+        "route receipts prove one completed subscription-authenticated turn per unique route at launch time; per-surface caller-bound receipts plus bounded settle prove provider-auth preflight and short process liveness",
+        "readiness does not prove a completed turn for every interactive session, later quota availability, final submission, or hostile same-user isolation",
+        "abort invalidation is atomically published before rollback and supervisors terminate the complete provider process group",
+        "the result seal is atomic and one-way; capabilities use private token files and shared envelopes and receipts do not contain plaintext capability tokens",
+        "Houston-owned remote fork points to https://github.com/houstongolden/learning-cmux-with-agents, remote.pushDefault is fork, branch codex/youmd-cmux-lab is pushed, and draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 targets the fork's main; origin remains IndyDevDan's upstream repository"
+      ]
+    },
+    {
+      "id": "CMUX-002",
+      "status": "active",
+      "title": "Run a fresh clean post-reset mirrored read-only A/B",
+      "source_prompts": [
+        "2026-07-13 16:14 PT continue",
+        "2026-07-13 CMUX continuation"
+      ],
+      "depends_on": [
+        "CMUX-001"
+      ],
+      "completion_criteria": [
+        "Both orchestrator teams receive the same task envelope and repository snapshot",
+        "Neither team mutates BigBounce or sees the other team's result before dual submission",
+        "Both sealed results reveal successfully and are compared for quality, latency, and coordination behavior",
+        "Run artifacts record the exact models, CLI authentication path, snapshot hash, and outcome",
+        "Route readiness is treated as launch-time proof for each unique provider/model/effort route, not completed-turn proof for every interactive session, later quota availability, or final submission"
+      ],
+      "latest_attempt": {
+        "run_id": "20260714T000136Z-024658000-bfee86cfcc83",
+        "state": "incomplete-no-reveal",
+        "evidence": [
+          "launched from a clean bound snapshot",
+          "expected four-workspace topology verified before launch-barrier release",
+          "all Codex project-trust gates bypassed",
+          "Codex result submitted and remains sealed",
+          "Claude weekly subscription limit prevented submission",
+          "no reveal and no winner",
+          "legacy deadline-free contract cannot be retroactively expired"
+        ]
+      },
+      "next_action": "After the Claude reset at 2026-07-15 07:00 America/Los_Angeles, create a new clean envelope and rerun both arms; do not reuse the incomplete run as comparison evidence."
+    },
+    {
+      "id": "CMUX-003",
+      "status": "done",
+      "title": "Audit model-routing efficiency and provider authenticity",
+      "source_prompts": [
+        "2026-07-14 12:10 PT OpenRouter and CMUX routing audit"
+      ],
+      "completion_criteria": [
+        "Explain OpenRouter category ranks using OpenRouter's published methodology",
+        "Inspect live CMUX processes and surfaces without changing focus or state",
+        "Verify Grok and Gemini through real endpoint code, raw provider-shaped usage artifacts, and live key/model-list checks",
+        "Recommend a cost- and judgment-calibrated director, lead, worker, poller, and independent-review routing matrix"
+      ],
+      "evidence": [
+        "OpenRouter top-by-task ranks are share-of-spend popularity over real usage, not quality benchmarks",
+        "Live CMUX fleet is GPT-5.6 Sol high/medium/low only; no Terra/Luna/Grok/Gemini process evidence",
+        "The audit found that the then-current BigBounce INT pipeline called api.openai.com, api.x.ai, and generativelanguage.googleapis.com directly with native PDFs; the OpenAI leg was separately billed and is historical nonconforming behavior",
+        "Corrected policy routes the OpenAI perspective through Codex CLI/ChatGPT subscription with API credentials unset while retaining allowed direct Grok/xAI and Gemini legs",
+        "Recent Grok and Gemini raws preserve distinct token-usage schemas, latency, modality, exact model label, and verbatim response",
+        "Stored OpenRouter, xAI, and Gemini credentials passed secret-safe control-plane checks"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "id": "HO-B01",
+      "status": "blocked",
+      "title": "Live M41 owns browser and manifest",
+      "clear_when": "M41 is idle or explicitly hands off browser and ledger ownership"
+    },
+    {
+      "id": "HO-B02",
+      "status": "blocked",
+      "title": "Hubify CLI unauthenticated",
+      "clear_when": "Hubify authentication succeeds and lab/status claims can be queried"
+    },
+    {
+      "id": "HO-B03",
+      "status": "blocked",
+      "title": "Machine-sync shared repo dirty or conflicted",
+      "clear_when": "Shared-repo ownership is reconciled and sync can run without overwriting work"
+    },
+    {
+      "id": "CMUX-B01",
+      "status": "blocked",
+      "title": "CMUX mutation awaits You.md atomic coordination",
+      "clear_when": "You.md atomic work claims, heartbeats, overlap detection, and isolated worktrees are implemented and acceptance-tested"
+    },
+    {
+      "id": "CMUX-B02",
+      "status": "blocked",
+      "title": "Claude weekly subscription limit blocks dual submission",
+      "clear_when": "Claude allowance resets at 2026-07-15 07:00 America/Los_Angeles and a fresh clean mirrored run submits both arms"
+    }
+  ],
+  "completed": [
+    {
+      "id": "HO-D01",
+      "status": "done",
+      "title": "Verify handoff commits are reachable and pushed",
+      "evidence": [
+        "origin/main=b93528b6",
+        "HEAD divergence=0/0",
+        "e730850b",
+        "de4750f3",
+        "27596c56",
+        "df8d89a3",
+        "b93528b6"
+      ]
+    },
+    {
+      "id": "HO-D02",
+      "status": "done",
+      "title": "Verify lease and heartbeat files exist",
+      "evidence": [
+        "lease free at seq 0",
+        "heartbeat source=orchestrator",
+        "heartbeat machineId=Houstons-MacBook-Air.local"
+      ]
+    }
+  ],
+  "mvp_completion_criteria": [
+    "Second machine reaches bootstrap READY without secret exposure",
+    "Lease and heartbeat behavior is verified during an explicit idle or handoff window",
+    "Both machines converge on the same git and Convex state without write collisions",
+    "Codex resumes from repository instructions alone",
+    "Houston accepts the two-machine one-lab workflow"
+  ],
+  "gated_phases": [
+    {
+      "phase": 1,
+      "status": "pending-gated",
+      "title": "Second orchestrator, same lab",
+      "entry_gate": "Phase 0 green and Houston approval"
+    },
+    {
+      "phase": 2,
+      "status": "pending-gated",
+      "title": "Two blind labs on bounded P4 mirror-flip reproduction",
+      "entry_gate": "Phase 1 green; seal/reveal tooling tested; Convex labId and site support landed"
+    },
+    {
+      "phase": 3,
+      "status": "pending-gated",
+      "title": "Open-source Lab C",
+      "entry_gate": "Phase 2 blind/reveal/corroboration cycle succeeds"
+    }
+  ],
+  "watchpoints": [
+    "Never claim 95-99% readiness, acceptance, or minor-only status until every exact-PDF board and residual gate supports it.",
+    "Reviewer venue and article type are immutable review metadata; keep venue-fit boards separate and never relabel verdicts after the fact.",
+    "OpenAI perspective uses Codex CLI authenticated through the ChatGPT subscription with OpenAI API credentials unset; never incur OpenAI API billing. Direct-provider Grok/xAI and Gemini calls are allowed.",
+    "Stop repeated review after two valid independent zero-new waves on the same PDF hash; preserve the verdict spread and advance by stable gates rather than chasing a preferred verdict.",
+    "Retain every historical PDF immutably with version, PST timestamp, source commit, hash, build metadata, and review references; never delete the only copy.",
+    "Acceleration may remove duplicate work and stale-artifact risk, but may not remove truth audits, reproducibility checks, independent review, or all-page PDF inspection.",
+    "Do not call Anthropic or Claude in the current campaign; record unavailable legs honestly.",
+    "Do not publish partial readiness state; synchronize public surfaces only after their evidence packet is mutually consistent.",
+    "Do not implement multi-lab schema, site, branches, or seal/reveal during Phase 0.",
+    "Only the lease holder may drive browser, verdict, or ledger writes.",
+    "Do not modify live review manifests, prompts.md, SSOT, site state, or generated .agents skills in this lane.",
+    "CMUX dogfood stays read-only until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees pass acceptance; per-surface process enforcement is not hostile same-user/raw-CMUX broker isolation.",
+    "CMUX route receipts prove one completed subscription-authenticated launch-time turn per unique provider/model/effort route, while per-surface provider-auth and short-liveness receipts remain separate; neither proves completed turns for every interactive session, later quota, final submission, or hostile same-user isolation.",
+    "Do not reveal or declare a winner from a run with only one sealed result; a legacy deadline-free contract cannot be retroactively expired.",
+    "Publish CMUX lab changes through Houston's fork remote with remote.pushDefault=fork, never directly to the upstream origin; draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 tracks codex/youmd-cmux-lab against the fork's main."
+>>>>>>> origin/main
   ]
 }

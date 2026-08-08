@@ -1,0 +1,399 @@
+{
+ "schema": "bigbounce-paper-deposit-config/v1",
+ "papers": {
+  "P1A": {
+   "tex": "arxiv/paper1a_ech_nogo.tex",
+   "pdf": "arxiv/paper1a_ech_nogo.pdf",
+   "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper1a_arxiv_{version}.tar.gz",
+   "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper1a_arxiv_{version}.proof.json",
+   "tarball_main_tex": "paper1a_ech_nogo.tex",
+   "deposit_root": ".deposit-staging",
+   "bundle_assets": [
+    {
+     "source": "arxiv/paper1a_ech_nogo.tex",
+     "archive_name": "paper1a_ech_nogo.tex"
+    },
+    {
+     "source": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-CQG-NOTE-MINOR-CLOSURE/closure/P1A_v1A.0.123.bbl",
+     "archive_name": "paper1a_ech_nogo.bbl"
+    },
+    {
+     "source": "arxiv/references.bib",
+     "archive_name": "references.bib"
+    }
+   ],
+   "provenance_globs": [
+    "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-CQG-NOTE-MINOR-CLOSURE/**/*",
+    "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-EXACTPDF-4c450a67-CQG-NOTE-CODEX-SUBSCRIPTION-CONFIRM/**/*"
+   ],
+   "extra_assets": [
+    "arxiv/scripts/fierz_lemma_check.py",
+    "arxiv/scripts/njl_gap_equation_route1.py",
+    "arxiv/scripts/njl_gap_equation_route1_results.json",
+    "project-context/pdf-archive/manifests/2026/07/20260714T210548Z-p1a-v1A.0.123-cqg-minor-closure-20260714T140548-0700.json",
+    "project-context/peer-reviews/never-fabricate-derivation/p1a_v1A.0.123_2026-07-14_1408.md"
+   ],
+   "provenance_archive": "P1A_v1A.0.123_tracked_provenance.tar.gz",
+   "metadata_complete": true,
+   "metadata": {
+    "title": "Algebraic Cartan Elimination in Minimal Einstein--Cartan--Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches",
+    "creators": [
+     {
+      "name": "Golden, Houston"
+     }
+    ],
+    "description": "Current seven-page CQG Note deposit candidate. License selection remains unresolved, so Zenodo-ready metadata generation fails closed.",
+    "upload_type": "publication",
+    "publication_type": "article",
+    "access_right": "open",
+    "license": "cc-by-4.0"
+   },
+   "license_authorization": "Houston, 2026-07-21, chat: 'D2 i go with your recommendation' (rec was CC-BY-4.0)"
+  },
+  "P1B": {
+   "tex": "arxiv/paper1b_namaster_proof.tex",
+   "pdf": "arxiv/paper1b_namaster_proof.pdf",
+   "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_{version}.tar.gz",
+   "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_{version}.proof.json",
+   "tarball_main_tex": "paper1b_namaster_proof.tex",
+   "deposit_root": ".deposit-staging",
+   "bundle_assets": [
+    {
+     "source": "arxiv/paper1b_namaster_proof.tex",
+     "archive_name": "paper1b_namaster_proof.tex"
+    }
+   ],
+   "provenance_globs": [
+    "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v2B.0.10-EXACTPDF-c7883afc-CLAUDESTACK-CONFIRM/**/*",
+    "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-CLAUDESTACK-CONFIRM/**/*"
+   ],
+   "provenance_archive": "P1B_v2B.0.11_tracked_provenance.tar.gz",
+   "metadata_complete": true,
+   "metadata": {
+    "title": "namaster-proof: Exact pseudo-Cl window inference and content-bound validation for reproducible spin-2 analyses",
+    "creators": [
+     {
+      "name": "Golden, Houston"
+     }
+    ],
+    "description": "JORS software metapaper for namaster-proof 0.1.7: exact NaMaster bandpower-window inference with fail-closed, content-bound receipt validation for reproducible spin-2 pseudo-Cl analyses. 41-test suite (39 run + 2 monorepo-replay skips standalone); deterministic workspace regenerability verified.",
+    "upload_type": "publication",
+    "publication_type": "article",
+    "access_right": "open",
+    "license": "cc-by-4.0",
+    "related_identifiers": [
+     {
+      "identifier": "10.5281/zenodo.21481753",
+      "relation": "describes",
+      "scheme": "doi"
+     }
+    ]
+   },
+   "license_authorization": "Houston, 2026-07-21, chat: 'D2 i go with your recommendation' (rec was CC-BY-4.0)"
+  },
+  "P2": {
+   "tex": "research/focused_paper_source_integration/02_full_draft.tex",
+   "pdf": "research/focused_paper_source_integration/02_full_draft.pdf",
+   "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper2_arxiv_{version}.tar.gz",
+   "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper2_arxiv_{version}.proof.json",
+   "tarball_main_tex": "02_full_draft.tex",
+   "deposit_root": ".deposit-staging",
+   "bundle_assets": [
+    {
+     "source": "research/focused_paper_source_integration/02_full_draft.tex",
+     "archive_name": "02_full_draft.tex"
+    },
+    {
+     "source": "research/focused_paper_source_integration/focused_paper_refs.bib",
+     "archive_name": "focused_paper_refs.bib"
+    },
+    {
+     "source": "research/focused_paper_source_integration/fig1_shape_function.png",
+     "archive_name": "fig1_shape_function.png"
+    },
+    {
+     "source": "research/focused_paper_source_integration/fig5_inflation_comparison.png",
+     "archive_name": "fig5_inflation_comparison.png"
+    },
+    {
+     "source": "project-context/peer-reviews/INT_v3/ROUND_2026-07-24-P2-v1.7.129-COMPANION-STATUS-CLOSURE/P2_v1.7.129.bbl",
+     "archive_name": "02_full_draft.bbl"
+    }
+   ],
+   "provenance_globs": [
+    "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-CONVENTION-CLARITY-CLOSURE/**/*",
+    "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/**/*"
+   ],
+   "extra_assets": [
+    "research/focused_paper_source_integration/scripts/p2_vertex_check.py",
+    "research/focused_paper_source_integration/scripts/exact_shape_analysis.py",
+    "research/focused_paper_source_integration/phase3_bispectrum_shape_overlap.json",
+    "research/focused_paper_source_integration/scripts/c13_independent_bounce_fisher.py",
+    "research/focused_paper_source_integration/outputs/c13_independent_bounce_fisher.json",
+    "research/focused_paper_source_integration/scripts/c14_rsd_multipole_fisher.py",
+    "research/focused_paper_source_integration/outputs/c14_rsd_multipole_fisher.json",
+    "research/focused_paper_source_integration/outputs/c14_orientation_quadrature_convergence.json",
+    "research/focused_paper_source_integration/scripts/c15_channel_native_fisher.py",
+    "research/focused_paper_source_integration/outputs/c15_channel_native_fisher.json",
+    "project-context/pdf-archive/manifests/2026/07/20260714T204234Z-baseline-v3-20260714.json"
+   ],
+   "provenance_archive": "P2_v1.7.122_tracked_provenance.tar.gz",
+   "metadata": {
+    "title": "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping",
+    "creators": [
+     {
+      "name": "Golden, Houston"
+     }
+    ],
+    "description": "Exact v1.7.122 manuscript candidate and reproducibility record for a four-vertex derivation of the matter-contraction non-Gaussian amplitude f_NL = -35/16 and its explicitly conditional large-scale-structure mapping. The archive retains the symbolic certification, shape-overlap artifact, and Fisher sensitivity checks; it does not claim completed cubic transfer through a specified bounce, a survey-native SPHEREx likelihood, journal acceptance, or an observational detection.",
+    "upload_type": "publication",
+    "publication_type": "article",
+    "access_right": "open",
+    "license": "cc-by-4.0",
+    "keywords": [
+     "primordial non-Gaussianity",
+     "matter contraction",
+     "bouncing cosmology",
+     "large-scale structure",
+     "bispectrum"
+    ]
+   }
+  },
+  "P3": {
+   "tex": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+   "pdf": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+   "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_{version}.tar.gz",
+   "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_{version}.proof.json",
+   "tarball_main_tex": "paper3_apjs.tex",
+   "deposit_root": ".deposit-staging",
+   "bundle_assets": [
+    {
+     "source": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+     "archive_name": "paper3_apjs.tex"
+    },
+    {
+     "source": "pipelines/p3_anomaly_engine/figures/p3_v320_r6_chance_control.pdf",
+     "archive_name": "figures/p3_v320_r6_chance_control.pdf"
+    },
+    {
+     "source": "pipelines/p3_anomaly_engine/figures/p3_v320_selection_waterfall.pdf",
+     "archive_name": "figures/p3_v320_selection_waterfall.pdf"
+    },
+    {
+     "source": "pipelines/p3_anomaly_engine/figures/p3_v320_catalog_overview.pdf",
+     "archive_name": "figures/p3_v320_catalog_overview.pdf"
+    }
+   ],
+   "bundle_tar_members": [
+    {
+     "source_tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.252.tar.gz",
+     "member": "./aastex701.cls",
+     "archive_name": "aastex701.cls",
+     "expected_sha256": "c1bb436807f8bb37eb5203056db5a5a60e1c9ae6a3feb6501d7c414b9b08b062"
+    }
+   ],
+   "provenance_globs": [
+    "pipelines/p3_anomaly_engine/apjs_submission_bundle_v3.2.0-r7/**/*",
+    "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r8-CLOSURE-PROOF/**/*",
+    "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r8_b5f254f9/**/*"
+   ],
+   "extra_assets": [
+    "pipelines/p3_anomaly_engine/figures/p3_v320_r6_chance_control.pdf",
+    "pipelines/p3_anomaly_engine/figures/p3_v320_selection_waterfall.pdf",
+    "pipelines/p3_anomaly_engine/figures/p3_v320_catalog_overview.pdf",
+    "project-context/pdf-archive/manifests/2026/07/20260714T215214Z-p3-v3.2.0-r8-apjs-accept-20260714T145214-0700.json"
+   ],
+   "provenance_archive": "P3_v3.2.0-r8_tracked_provenance.tar.gz",
+   "metadata": {
+    "title": "Public-ID Recovery for a Historical DESI DR1 Anomaly List: 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations",
+    "creators": [
+     {
+      "name": "Golden, Houston"
+     }
+    ],
+    "description": "Anomaly searches become reusable catalogs only when rows trace public archive objects and the recovery from a declared input list is reconstructable. This record releases the exact v3.2.0-r8 ApJS manuscript candidate and its auditable DESI DR1 public-identifier recovery bundle. The 181 warning-free global-primary associations comprise 170 high-coordinate-consistency core and 11 lower-confidence positional associations; they are reproducible follow-up lists, not validated detections or unbiased anomaly-rate samples. Data and documentation are CC BY 4.0; bundled code retains the repository license.",
+    "upload_type": "publication",
+    "publication_type": "article",
+    "access_right": "open",
+    "license": "cc-by-4.0",
+    "keywords": [
+     "DESI DR1",
+     "astronomical catalogs",
+     "anomaly detection",
+     "public identifier recovery",
+     "reproducibility"
+    ]
+   }
+  },
+  "P4": {
+   "tex": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+   "pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+   "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_{version}.tar.gz",
+   "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_{version}.proof.json",
+   "tarball_main_tex": "chirality_catalog_paper.tex",
+   "deposit_root": ".deposit-staging",
+   "bundle_assets": [
+    {
+     "source": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+     "archive_name": "chirality_catalog_paper.tex"
+    },
+    {
+     "source": "pipelines/p2_chirality/chirality_catalog_paper.bbl",
+     "archive_name": "chirality_catalog_paper.bbl"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_raw_vs_eq.png",
+     "archive_name": "fig_raw_vs_eq.png"
+    },
+    {
+     "source": "pipelines/p2_chirality/fig_harmonic_completeness.pdf",
+     "archive_name": "fig_harmonic_completeness.pdf"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_class_pie.png",
+     "archive_name": "fig_class_pie.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_spiral_density.png",
+     "archive_name": "fig_spiral_density.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_confidence_dist.png",
+     "archive_name": "fig_confidence_dist.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_sky_map.png",
+     "archive_name": "fig_sky_map.png"
+    },
+    {
+     "source": "pipelines/p2_chirality/fig_bootstrap_null.png",
+     "archive_name": "fig_bootstrap_null.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_gallery_cw.png",
+     "archive_name": "fig_gallery_cw.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_equivariance_demo.png",
+     "archive_name": "fig_equivariance_demo.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_gallery_ccw.png",
+     "archive_name": "fig_gallery_ccw.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_gallery_notspi.png",
+     "archive_name": "fig_gallery_notspi.png"
+    },
+    {
+     "source": "arxiv/figures_p4/fig_multipoles.png",
+     "archive_name": "fig_multipoles.png"
+    }
+   ],
+   "bundle_tar_members": [
+    {
+     "source_tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.252.tar.gz",
+     "member": "./aastex701.cls",
+     "archive_name": "aastex701.cls",
+     "expected_sha256": "c1bb436807f8bb37eb5203056db5a5a60e1c9ae6a3feb6501d7c414b9b08b062"
+    }
+   ],
+   "provenance_globs": [
+    "pipelines/p2_chirality/outputs/canonical_provenance/**/*"
+   ],
+   "extra_assets": [
+    "project-context/pdf-archive/manifests/2026/07/20260715T140000Z-p4-v1.0.252-1ebd0cc4.json"
+   ],
+   "provenance_archive": "P4_v1.0.252_tracked_provenance.tar.gz",
+   "metadata": {
+    "title": "An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
+    "creators": [
+     {
+      "name": "Golden, Houston"
+     }
+    ],
+    "description": "Version-matched manuscript PDF and self-contained arXiv source bundle for the BigBounce galaxy-chirality catalog paper.",
+    "upload_type": "publication",
+    "publication_type": "article",
+    "access_right": "open",
+    "license": "cc-by-4.0",
+    "keywords": [
+     "galaxy morphology",
+     "galaxy chirality",
+     "parity violation",
+     "astronomical catalogs"
+    ]
+   }
+  },
+  "P5": {
+   "tex": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+   "pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+   "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper5_arxiv_{version}.tar.gz",
+   "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper5_arxiv_{version}.proof.json",
+   "tarball_main_tex": "p5_desi_chirality.tex",
+   "deposit_root": ".deposit-staging",
+   "bundle_assets": [
+    {
+     "source": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+     "archive_name": "p5_desi_chirality.tex"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/p5_desi_chiralityNotes.bib",
+     "archive_name": "p5_desi_chiralityNotes.bib"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_p5_vweb_vs_tempel_overlay.png",
+     "archive_name": "fig_p5_vweb_vs_tempel_overlay.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_cw_vs_z.png",
+     "archive_name": "fig_cw_vs_z.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_z_histogram.png",
+     "archive_name": "fig_z_histogram.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_p5_voids_vs_chirality_skymap.png",
+     "archive_name": "fig_p5_voids_vs_chirality_skymap.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_p5_cw_vs_density.png",
+     "archive_name": "fig_p5_cw_vs_density.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_p5_volume_fractions_pie.png",
+     "archive_name": "fig_p5_volume_fractions_pie.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_p5_phase2_sensitivity_heatmap.png",
+     "archive_name": "fig_p5_phase2_sensitivity_heatmap.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_p5_cw_by_env_bar.png",
+     "archive_name": "fig_p5_cw_by_env_bar.png"
+    },
+    {
+     "source": "pipelines/p5_desi_chirality/paper/fig_p5_healpix_skymap_nside32.png",
+     "archive_name": "fig_p5_healpix_skymap_nside32.png"
+    }
+   ],
+   "metadata_complete": true,
+   "metadata_blocker": "CLOSED 2026-07-24 (v0.1.143, commit eecec167): the Paper-IV provenance gate is satisfied by back-patching the PUBLISHED Zenodo record (version DOI 10.5281/zenodo.21461899, concept DOI 10.5281/zenodo.21461898, deposited 2026-07-20, CC-BY-4.0) throughout the P5 manuscript, and the tarball/proof were rebuilt at that commit. Note the substitution: Paper IV has NO arXiv identifier and is NOT peer reviewed, so the original 'P4 arXiv ID' wording is unreachable while arXiv endorsement is pending; the Zenodo record is a resolvable public permanent archive and is cited as exactly that. Staging only -- publication remains Houston-gated.",
+   "metadata": {
+    "title": "A Catalog-Native DESIVAST Test of Classifier-Labelled Spiral Chirality in DESI DR1",
+    "creators": [
+     {
+      "name": "Golden, Houston"
+     }
+    ],
+    "description": "Version-matched manuscript PDF and self-contained arXiv source bundle for the BigBounce DESI DR1 / DESIVAST spiral-chirality environment test. The manuscript reports an exploratory, post-hoc, catalog-specific non-detection: classifier-labelled spiral CW fraction shows no detectable difference between released DESIVAST void and non-void arms. It is a statement about classifier labels and released redshift-space environment assignments, not a physical-handedness, real-space, or cosmological constraint. Not peer reviewed.",
+    "upload_type": "publication",
+    "publication_type": "article",
+    "access_right": "open",
+    "license": "cc-by-4.0"
+   },
+   "license_authorization": "Houston, 2026-07-21, chat: 'D2 i go with your recommendation' (rec was CC-BY-4.0)"
+  }
+ }
+}

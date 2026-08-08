@@ -1,0 +1,23 @@
+{
+  "compiled_pdf_md5": "731598683541fcf124f16c324507241b",
+  "compiled_pdf_sha256": "a32d9df3ba38d8e64c6cdc95624a98df7c438dc5f246025d208520648f3eee54",
+  "compiled_pdf_size_bytes": 1435567,
+  "engine": "tectonic",
+  "errors": 0,
+  "git_commit": "f63965b3c04801a00a7879ed92a270391c4eaa47",
+  "mode": "isolated-safe-extraction",
+  "overfull_hboxes": 0,
+  "overfull_vboxes": 0,
+  "page_count": 43,
+  "paper_id": "P5",
+  "paper_version": "v0.1.146-2026-07-24",
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "source_pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+  "source_pdf_md5": "3717017920458a944a2a8bfa7de17d7d",
+  "source_pdf_sha256": "1dbe05786ca2f31fee8a1ec4e20006a461db1724d1ba6825b85c9fd076c143b3",
+  "status": "pass",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper5_arxiv_v0.1.146-2026-07-24.tar.gz",
+  "tarball_sha256": "d9f0ed843dabea9c05dd5a05527ff4d59f18a9bd8910b6cdfd907a048fcf789d",
+  "undefined_references": 0,
+  "verified_at_utc": "2026-07-25T02:07:45Z"
+}

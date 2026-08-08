@@ -119,7 +119,7 @@ export default async function PaperDetailPage({
       case "active-drive-to-100":
         return "active";
       case "paused-houston-external":
-        return "paused (houston review)";
+        return "paused (author review)";
       case "submitted-arxiv":
         return "submitted to arXiv";
       case "in-revision":
@@ -186,6 +186,9 @@ export default async function PaperDetailPage({
               Paper {paper.number}
             </h1>
             <p className="subtitle"><MathText>{paper.title}</MathText></p>
+            <p style={{ marginTop: 6, fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+              {paper.plainTitle}
+            </p>
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <Badge variant={statusVariantMap[paper.statusVariant]}>
                 {readiness}% · {statusLabel(liveStatus)}
@@ -194,7 +197,7 @@ export default async function PaperDetailPage({
               {liveSource === "convex" && (
                 <Badge
                   variant="outline"
-                  title="readiness + version live from Convex (computed from open findings + caveats)"
+                  title="readiness + version updated in real time (computed from open findings + caveats)"
                   style={{
                     borderColor: "color-mix(in srgb, var(--success) 45%, transparent)",
                     color: "var(--success)",
@@ -306,7 +309,7 @@ export default async function PaperDetailPage({
                   color: "var(--success)",
                   fontFamily: "var(--font-mono-stack)",
                 }}
-                title="computed from open findings + caveats; live from Convex"
+                title="computed from open findings + caveats; updated in real time"
               >
                 ● live
               </span>
@@ -366,7 +369,7 @@ export default async function PaperDetailPage({
               Focus areas
               {novelty && (
                 <span
-                  title="Novelty tier per /never-claim-n4 (N1 incremental · N2 substantive · N3 first-of-kind). N4 reserved for paradigm-shifting work awarded by the field."
+                  title="Novelty tier (N1 incremental · N2 substantive · N3 first-of-kind). N4 reserved for paradigm-shifting work awarded by the field."
                   style={{
                     marginLeft: 10,
                     padding: "2px 7px",

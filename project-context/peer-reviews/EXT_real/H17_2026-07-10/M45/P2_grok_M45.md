@@ -1,0 +1,9 @@
+VERDICT: MINOR REVISIONS
+
+ISSUES:
+
+[MINOR] Abstract, Sec. IV, and Table III: The channel-native surrogate Fisher ladder (3.47σ fixed → 0.42σ free-bϕ) is computed from an in-house leading-order Gaussian multi-tracer covariance; although repeatedly labeled “illustrative” and “not a replacement for the external per-triangle covariance,” the quantitative significances and reff values risk being read as survey-realistic without an additional explicit sentence quantifying the omitted effects (non-Gaussian covariance, full Fingers-of-God, higher-order bias marginalization, and photometric-redshift outliers).
+[MINOR] Appendix B (Eqs. B4–B5 and Table V): The mapping from the intermediate degree-9 polynomial coefficient −198 on the distinct (5,2,2) monomials to the ordered-basis coefficient −33 in Eq. (3) is explained in prose but would be clearer with a one-line footnote or parenthetical stating the exact multiplicity factor (each distinct monomial appears twice under the six-permutation convention) so readers can verify the arithmetic without re-deriving the orbit counting.
+[MINOR] Sec. II C and IX: The repeated emphasis on assumption (d) (“faithful cubic transmission … only linear order verified”) is scientifically necessary but creates minor redundancy across the abstract, introduction, assumptions list, discussion, and conclusion; tightening two of the later repetitions would improve conciseness without loss of caution.
+
+The central claim that the exact four-vertex sum of Cai et al.’s cubic interactions at ϵ = 3/2 yields f_NL^local = −35/16 (with ordered coefficients (3,1,−9,5,−33,9) and correcting the unreproduced −35/8 value) is supported by the explicit symbolic summation, per-vertex limits, ϵ-order-grouped cross-check, and independent Li et al. general-cs formula presented in Appendix B.

@@ -1,3 +1,10 @@
+> ⛔ **DEPRECATED / STALE (versions frozen 2026-06-11). DO NOT USE FOR SUBMISSION.**
+> The authoritative, current submission docs are **`ARXIV_SUBMISSION_RUNBOOK.md`** (step-by-step)
+> and **`FINAL_PUBLISH_PLAN.md`** (checklist). Current versions: P1A v1A.0.79 / P1B v1B.0.76 /
+> P2 v1.7.71 / P3 v3.1.113 / P4 v1.0.188 / P5 v0.1.83 — all readiness 99. This file is kept only for history.
+
+---
+
 # arXiv Submission Kit — Houston's 15-min web-form cheat sheet
 
 > **⚡ 2026-06-11 REFRESH (CURRENT — R26conf wave).**

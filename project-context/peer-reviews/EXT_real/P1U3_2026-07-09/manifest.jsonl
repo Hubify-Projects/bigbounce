@@ -1,0 +1,6 @@
+{"reviewer":"chatgpt","model":"Extended Thinking Pro","url":"https://chatgpt.com/c/6a4f5971-ca98-83e8-95a7-08dc9592cfe7","submitted":"2026-07-09","pdf":"v1U.0.3","status":"submitted"}
+{"reviewer":"grok","model":"Expert","url":"https://grok.com/chat/beb3c21d-d960-4ba3-9e02-4ccaa8dd838c","submitted":"2026-07-09","pdf":"v1U.0.3","status":"submitted"}
+{"reviewer":"gemini","model":"Ultra houston@bamf.com","url":"https://gemini.google.com/u/1/app/f551553e3c53f2db","submitted":"2026-07-09","pdf":"v1U.0.3","status":"submitted","note":"first-submit dropped (EXT7); resubmitted, held"}
+{"reviewer":"chatgpt","verdict":"MAJOR REVISIONS","baseline":"REJECT","status":"harvested"}
+{"reviewer":"grok","verdict":"MAJOR REVISIONS","baseline":"MAJOR REVISIONS","status":"harvested"}
+{"reviewer":"gemini","verdict":"MAJOR REVISIONS","baseline":"MINOR REVISIONS","status":"harvested"}

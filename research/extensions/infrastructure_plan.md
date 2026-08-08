@@ -34,7 +34,7 @@ The following infrastructure remains allocated for Paper-1 chains:
 
 | Resource | Status | Purpose |
 |----------|--------|---------|
-| RunPod CPU5 pod (157.157.221.30:36579) | ACTIVE | planck_only chains running |
+| RunPod CPU5 pod (<pod-ip>:<port>) | ACTIVE | planck_only chains running |
 | Network volume | ACTIVE | Chain storage + backups |
 | Hourly backup cron | RUNNING | On-volume tarballs |
 | Local sync | Manual | rsync every 12-24h |

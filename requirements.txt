@@ -5,4 +5,24 @@ python-dotenv
 anthropic
 requests
 
+# Review pipeline (tools/v3_native_pdf_review.py, tools/real_cross_vendor_review.py, etc.)
+openai
+google-generativeai
+pypdf
+certifi
 
+# Research agent tooling (research/agents/)
+numpy
+scipy
+matplotlib
+astropy
+astroquery
+healpy
+Pillow
+datasets
+huggingface_hub
+transformers
+timm
+astroML
+
+# Note: pdftoppm and pdftotext come from the system `poppler` package (macOS: brew install poppler), not pip.

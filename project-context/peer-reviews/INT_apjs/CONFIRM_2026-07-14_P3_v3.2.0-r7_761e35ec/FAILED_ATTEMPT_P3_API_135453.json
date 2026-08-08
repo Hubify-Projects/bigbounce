@@ -1,0 +1,16 @@
+{
+  "schema": "bigbounce.review-failed-attempt.v1",
+  "paper": "P3APJS",
+  "canonical_paper": "P3",
+  "providers": ["xai", "google"],
+  "status": "FAILED_PRE_DISPATCH_REGISTRY_PREFLIGHT",
+  "countable_reviews": false,
+  "provider_calls_made": false,
+  "review_commit": "ba2f5b93a30de41122dc2ed31b543ac0da9a37c8",
+  "pdf_sha256": "761e35ec840e93599163d68c6b4db9b8d75293545e49c45c978dc0be0f38cb2b",
+  "grok_diagnostic_log": ".intwave_P3apjs_grok_135453.log",
+  "gemini_diagnostic_log": ".intwave_P3apjs_gemini_135453.log",
+  "diagnostic_log_sha256": "58cfcc3a1123485f03ba7c4e4bd1f7e3b09ef796cd07ec01d950989e2e3f9820",
+  "failure_reason": "The sparse detached harness initially omitted non-P3 manuscript paths required by whole-registry validation. Registry loading failed before packet construction or either provider dispatch.",
+  "truth_audit_disposition": "INVALID_NONCOUNTABLE_PRE_DISPATCH_ATTEMPT"
+}

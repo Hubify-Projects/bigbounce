@@ -1,0 +1,286 @@
+{
+  "captured_at_local": "2026-07-14T17:50:48.812083-07:00",
+  "captured_at_utc": "2026-07-15T00:50:48.812083+00:00",
+  "classification_policy": {
+    "excluded": [
+      "figure PDFs",
+      "render artifacts",
+      "existing pdf-archive self-references",
+      "paths without a six-paper manuscript hint",
+      "ambiguous paper-hint matches"
+    ],
+    "scope": "reachable Git PDF object/path rows; only high-confidence six-paper manuscript paths are materialized",
+    "unknown_version_policy": "When no version token is present in the historical path, paper_version is recorded as unknown rather than inferred."
+  },
+  "coverage": {
+    "by_paper": {
+      "P1A": 0,
+      "P1B": 0,
+      "P2": 0,
+      "P3": 3,
+      "P4": 2,
+      "P5": 0
+    },
+    "classified_distinct_git_blobs": 5,
+    "classified_distinct_sha256": 5,
+    "classified_rows": 5,
+    "errors": 0,
+    "git_pdf_object_path_rows": 25,
+    "objects_created": 5,
+    "references_created": 5,
+    "unclassified_reasons": {
+      "unclassified.no-paper-hint": 20
+    },
+    "unclassified_rows": 20
+  },
+  "git_head": "2000eef2bb3dac88bfb4e1aeb4299af08960713f",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T005048Z-history-backfill-fast-1025-1049-history.json",
+  "materialized": true,
+  "mode": "history-backfill",
+  "page_counts_recorded": false,
+  "row_selection": {
+    "limit": 25,
+    "offset": 1025,
+    "selected_rows": 25,
+    "total_git_pdf_object_path_rows": 1357
+  },
+  "rows": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/77/7721b7a7c2e7f9e885ee3c0cea8cb971af0d6f708a105d77eb075f0fa4f33451.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P3/P3__v3.1.153__2026-07-11T080123-0700-PDT__7721b7a7c2e7.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "6251355a4ae3f1c6b505598e61b390c5b2256839",
+        "timestamp": "2026-07-11T08:01:23-07:00"
+      },
+      "git_blob": "fecf0e9eb683d9d52fdd5f9ddba2b52e6119e838",
+      "git_blob_size_bytes": 4714567,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P3",
+      "paper_version": "v3.1.153",
+      "path": "public/papers/paper3_draft_v3.1.153.pdf",
+      "reference_created": true,
+      "sha256": "7721b7a7c2e7f9e885ee3c0cea8cb971af0d6f708a105d77eb075f0fa4f33451"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/25/25cec50f9f64a6bc6ad1545c2b777467b64caf07d5dbe2dd0012961d25fe989a.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P3/P3__v3.1.155__2026-07-11T091822-0700-PDT__25cec50f9f64.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "236cc2b10dd8b7f7d37c5e433c919e7001fbdcf1",
+        "timestamp": "2026-07-11T09:18:22-07:00"
+      },
+      "git_blob": "4d0c1044a06702510f04d712ac8bb972af328fc8",
+      "git_blob_size_bytes": 4714566,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P3",
+      "paper_version": "v3.1.155",
+      "path": "public/papers/paper3_draft_v3.1.155.pdf",
+      "reference_created": true,
+      "sha256": "25cec50f9f64a6bc6ad1545c2b777467b64caf07d5dbe2dd0012961d25fe989a"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/4b/4b1ccc04a42bba1e4fbc78f3d5dba2a02a3ffa3e9ca7fd9f66a61b44d2e59fd7.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P3/P3__v3.1.157__2026-07-12T110646-0700-PDT__4b1ccc04a42b.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "24669de6a9e3217bf21d02849cd56257628f43a9",
+        "timestamp": "2026-07-12T11:06:46-07:00"
+      },
+      "git_blob": "303fc997e02ce6f92092708350ff97fcabccb443",
+      "git_blob_size_bytes": 4715986,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P3",
+      "paper_version": "v3.1.157",
+      "path": "public/papers/paper3_draft_v3.1.157.pdf",
+      "reference_created": true,
+      "sha256": "4b1ccc04a42bba1e4fbc78f3d5dba2a02a3ffa3e9ca7fd9f66a61b44d2e59fd7"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/36/36b2008ea022709f298679b69ba69fdc22a2697f4edcfff1a1de6e910c7d4702.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-20T100721-0700-PDT__36b2008ea022.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "075f3cc1422f0894c86aaf6ff349e181e9b48b8a",
+        "timestamp": "2026-05-20T10:07:21-07:00"
+      },
+      "git_blob": "20b7bd00f1b72bd16dcf4c34d57790f735b901ce",
+      "git_blob_size_bytes": 26247017,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "public/papers/paper4_chirality_catalog.pdf",
+      "reference_created": true,
+      "sha256": "36b2008ea022709f298679b69ba69fdc22a2697f4edcfff1a1de6e910c7d4702"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/00/006ddfb5d503ce3e5bd2a4b9c2dbb406e3ba92430de1d1bc0e0fd8a18aae7023.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-06-26T041944-0700-PDT__006ddfb5d503.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "5c92b92eaaba1a36f2cf247029d05a09154823c0",
+        "timestamp": "2026-06-26T04:19:44-07:00"
+      },
+      "git_blob": "7216902afff84a7605558124885c2351601a7722",
+      "git_blob_size_bytes": 33873162,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "public/papers/paper4_chirality_catalog.pdf",
+      "reference_created": true,
+      "sha256": "006ddfb5d503ce3e5bd2a4b9c2dbb406e3ba92430de1d1bc0e0fd8a18aae7023"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "b25b79b7fbca46f2ab70acd340fcd188f6316b33",
+      "git_blob_size_bytes": 1013479,
+      "paper_id": null,
+      "path": "public/papers/spin-torsion-paper.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "3819ab0231b5ca0c0324ad3e951ce5cda4e0c762",
+      "git_blob_size_bytes": 996050,
+      "paper_id": null,
+      "path": "public/papers/spin_torsion_paper1.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "ff08e1c6879396984ccc34f0a383df8a4218144f",
+      "git_blob_size_bytes": 521918,
+      "paper_id": null,
+      "path": "public/papers/spin_torsion_paper1.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "72a90be069f2c7557bc341e5cad16d57ffe8038b",
+      "git_blob_size_bytes": 123104,
+      "paper_id": null,
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/plots/full_tension_posteriors.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "d9631fc11824265900d5eb24aee2f0b7ae42b8d4",
+      "git_blob_size_bytes": 152710,
+      "paper_id": null,
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/plots/full_tension_triangle.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "263fc857436f4be67afcbf4ca96b8a8658725b94",
+      "git_blob_size_bytes": 26922,
+      "paper_id": null,
+      "path": "research/bphi_sensitivity/bphi_sensitivity.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "7b3db9be8b530e041b8f5b56c6c2b43491350505",
+      "git_blob_size_bytes": 26725,
+      "paper_id": null,
+      "path": "research/bphi_sensitivity/bphi_sensitivity.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "ffb7161bd77230fc602d7ded2c48ca83f8548597",
+      "git_blob_size_bytes": 26870,
+      "paper_id": null,
+      "path": "research/bphi_sensitivity/bphi_sensitivity.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "fc47d76c12e72dba25ad50f95c25ab18a333e503",
+      "git_blob_size_bytes": 39451,
+      "paper_id": null,
+      "path": "research/extensions/early_structure_program/track_A_smBH_seeds/outputs/growth_time_consistency.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "939845fb99074bcb7ad76ce6d2d3afa31142a5bf",
+      "git_blob_size_bytes": 37641,
+      "paper_id": null,
+      "path": "research/extensions/early_structure_program/track_A_smBH_seeds/outputs/minimum_seed_mass_vs_zseed.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "ae021cc78c50cdc3459b635de832fc837c53cac5",
+      "git_blob_size_bytes": 53653,
+      "paper_id": null,
+      "path": "research/extensions/early_structure_program/track_B_pbh_like_seeds/outputs/pbh_constraint_overlay.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "fa77ebadacb0bc3d8dc13c548d783f338ff9c399",
+      "git_blob_size_bytes": 32282,
+      "paper_id": null,
+      "path": "research/extensions/early_structure_program/track_B_pbh_like_seeds/outputs/pk_to_fpbh_mapping.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "b4183faea303683b4497270aaec2718d3b378a90",
+      "git_blob_size_bytes": 31217,
+      "paper_id": null,
+      "path": "research/extensions/early_structure_program/window_analysis/pk_feature_smbh_zoom.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "a7af5ea50fd2d7abc0a66fa7fd29a009533cf283",
+      "git_blob_size_bytes": 61313,
+      "paper_id": null,
+      "path": "research/extensions/track_C_parity_cmb/outputs/beta_posterior.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "ddf5e33c0e8941d1e9cb0c559d93eee6804f8e19",
+      "git_blob_size_bytes": 19802,
+      "paper_id": null,
+      "path": "research/extensions/track_C_parity_cmb/outputs/eb_ratio_diagnostic.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "98315811836979adf58ec41272a0f7af02610dc8",
+      "git_blob_size_bytes": 31481,
+      "paper_id": null,
+      "path": "research/extensions/track_C_parity_cmb/outputs/eb_shape_comparison.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "f78f3665829ca355d7b8566e030dee017a2178e7",
+      "git_blob_size_bytes": 34125,
+      "paper_id": null,
+      "path": "research/extensions/track_C_parity_cmb/outputs/geff_posterior.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "9d3c5367742f46e59f57cfe458627dfa3e156e81",
+      "git_blob_size_bytes": 41801,
+      "paper_id": null,
+      "path": "research/extensions/track_C_parity_cmb/v2/outputs/track_c_v2_beta_posterior.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "84ff6b172d08511316064d3c3c46ac3aa8e32f60",
+      "git_blob_size_bytes": 72026,
+      "paper_id": null,
+      "path": "research/extensions/track_C_parity_cmb/v2/outputs/track_c_v2_corner.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "5b855c4de426af990b2493dc4209f56956b6794c",
+      "git_blob_size_bytes": 46038,
+      "paper_id": null,
+      "path": "research/extensions/track_C_parity_cmb/v2/outputs/track_c_v2_degeneracy.pdf"
+    }
+  ],
+  "run_id": "history-backfill-fast-1025-1049",
+  "schema": "bigbounce-pdf-retention-history/v1"
+}

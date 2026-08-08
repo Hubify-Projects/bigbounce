@@ -18,21 +18,32 @@ import {
 import type { Metadata } from"next";
 import Link from"next/link";
 import { getLivePapers, getRunningPods, displayVersion, type LivePaperState } from "@/lib/livePapers";
+import { getPaperBySlug } from "@/data/papers";
+import { readinessBreakdown, readinessBreakdownNote, publishingPhase, type GateOwner } from "@/data/readinessBreakdown";
 import { SurveyQcTable } from "@/components/Cards/SurveyQcTable";
 
 export const metadata: Metadata = {
   title:"Research Status",
   description:
-"Master status page: papers, pipelines, MCMC chains, compute pods, and discoveries.",
+"Current research-program, artifact, and editorial status for BigBounce.",
 };
 
+// Taglines are the plain-English purpose label from data/papers.ts (directive
+// Q3) — never hand-write a second copy here. Role prefixes carried over from
+// the previous hardcoded strings (P3's "Integrated Supporting Data Release",
+// P5's "Standalone AJ companion") are preserved in front of the plain label.
+function taglineFor(slug: string, rolePrefix?: string): string {
+  const plainTitle = getPaperBySlug(slug)?.plainTitle ?? "";
+  return rolePrefix ? `${rolePrefix} · ${plainTitle}` : plainTitle;
+}
+
 const PAPER_DISPLAY_NAMES: Record<string, { number: string; tagline: string }> = {
-  "paper-1a": { number: "P1A", tagline: "ECH channel-level closure + perturbation transparency" },
-  "paper-1b": { number: "P1B", tagline: "MCMC companion + tension survey" },
-  "paper-2": { number: "P2", tagline: "f_NL = -35/8 forecast (SPHEREx)" },
-  "paper-3": { number: "P3", tagline: "Multi-survey anomaly catalogue" },
-  "paper-4": { number: "P4", tagline: "Galaxy chirality at 8.47M scale" },
-  "paper-5": { number: "P5", tagline: "DESI environmental chirality" },
+  "paper-1a": { number: "P1A", tagline: taglineFor("paper-1a") },
+  "paper-1b": { number: "P1B", tagline: taglineFor("paper-1b") },
+  "paper-2": { number: "P2", tagline: taglineFor("paper-2") },
+  "paper-3": { number: "P3", tagline: taglineFor("paper-3", "Integrated Supporting Data Release") },
+  "paper-4": { number: "P4", tagline: taglineFor("paper-4") },
+  "paper-5": { number: "P5", tagline: taglineFor("paper-5", "Standalone AJ companion") },
 };
 
 function statusBadgeVariant(state: LivePaperState): "default" | "secondary" | "outline" {
@@ -45,27 +56,30 @@ function statusLabel(state: LivePaperState): string {
   if (state.openBlockers > 0) return `${state.openBlockers} BLOCKER${state.openBlockers === 1 ? "" : "s"}`;
   if (state.openMajors > 0) return `${state.openMajors} MAJOR${state.openMajors === 1 ? "" : "s"}`;
   if (state.openMinors > 0) return `${state.openMinors} MINOR${state.openMinors === 1 ? "" : "s"}`;
-  return "clean";
+  return "no recorded open findings";
 }
 
 const stats: Array<{ value: string; label: string }> = [
-  { value:"6", label:"Papers (P1A, P1B, P2–P5)" },
+  { value:"3", label:"Question-first research programs" },
   {
-    value:"424K+",
-    label:"MCMC Samples (309,189 frozen · 3rd chain accumulating)",
+    value:"P2",
+    label:"Lead bounce-theory result" ,
   },
   {
-    value:"37.3M+",
-    label:"Sources Scored (8 Surveys)",
+    value:"P4",
+    label:"Lead galaxy-chirality result",
   },
   {
-    value:"378K+",
-    label:"Anomalies Found",
+    value:"P3",
+    label:"Integrated DESI Public-ID Recovery release",
   },
-  { value:"8.47M", label:"Galaxy Chirality Labels" },
-  { value:"6", label:"AI Pipelines" },
-  { value:"6", label:"Bounce Channels" },
+  { value:"P5", label:"Standalone AJ chirality companion" },
+  { value:"Legacy", label:"Survey-pipeline records preserved as archive evidence" },
 ];
+
+// Status is statically rendered, so use one stable build timestamp for every
+// pod row instead of calling an impure clock during React render.
+const BUILD_NOW = Date.now();
 
 export const dynamic = "force-static";
 
@@ -76,7 +90,7 @@ export default async function StatusPage() {
   ]);
   const isLive = livePapers.length > 0 && livePapers[0].source === "convex";
   // Display in PT so the date doesn't read one day ahead for PT-anchored audience
-  const renderedAt = new Date().toLocaleString("en-US", {
+  const renderedAt = new Date(BUILD_NOW).toLocaleString("en-US", {
     timeZone: "America/Los_Angeles",
     year: "numeric",
     month: "2-digit",
@@ -88,7 +102,7 @@ export default async function StatusPage() {
 
   const totalOpenBlockers = livePapers.reduce((s, p) => s + p.openBlockers, 0);
   const totalOpenMajors = livePapers.reduce((s, p) => s + p.openMajors, 0);
-  const cleanCount = livePapers.filter(
+  const noMajorFindingCount = livePapers.filter(
     (p) => p.openBlockers === 0 && p.openMajors === 0,
   ).length;
   const totalReadiness =
@@ -102,7 +116,7 @@ export default async function StatusPage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Rendered at build · {renderedAt} ·{" "}
           {isLive ? (
-            <span className="tone-success">live Convex data</span>
+            <span className="tone-success">live data</span>
           ) : (
             <span className="text-muted-foreground">static fallback</span>
           )}
@@ -112,8 +126,8 @@ export default async function StatusPage() {
         </h1>
         <p className="subtitle">
           Comprehensive source of truth for the entire BigBounce spin-torsion
-          cosmology research program. Paper versions, readiness, and open
-          findings counts come from Convex on every build.
+          cosmology research program. The three research questions lead; artifact
+          versions and review evidence below document their supporting work.
         </p>
       </div>
 
@@ -125,14 +139,14 @@ export default async function StatusPage() {
               Live portfolio status
             </CardTitle>
             <CardDescription className="font-mono text-xs">
-              {renderedAt} · {livePapers.length} papers tracked
+              {renderedAt} · {livePapers.length} versioned artifacts tracked
             </CardDescription>
           </div>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div className="flex items-center gap-4 flex-wrap">
             <span>
-              <strong>{cleanCount}</strong>/{livePapers.length} papers clean
+              <strong>{noMajorFindingCount}</strong>/{livePapers.length} with no recorded open BLOCKER/MAJOR
             </span>
             <span className="text-muted-foreground">avg readiness {totalReadiness}%</span>
             <span className="text-muted-foreground">
@@ -152,7 +166,7 @@ export default async function StatusPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Paper</TableHead>
+                <TableHead>Artifact</TableHead>
                 <TableHead>Version</TableHead>
                 <TableHead>Readiness</TableHead>
                 <TableHead>Open findings</TableHead>
@@ -206,10 +220,61 @@ export default async function StatusPage() {
           </Table>
           </div>
           <p className="text-xs text-muted-foreground">
-            EXT17 complete — 18/18 ACCEPT. All papers at 99% readiness (hard cap).
-            The final 1% is never awarded automatically — only by Houston sign-off
-            (ORCID public + coordinated arXiv drop authorization).
+            Readiness follows <strong>directive P</strong> (2026-07-23): the headline % is
+            package and review evidence, not a scientific endorsement, standalone-submission
+            decision, journal acceptance, or proof that every tracked artifact is a flagship.
+            P3 is an integrated Supporting Data Release; P5 is the standalone AJ companion.
           </p>
+        </CardContent>
+      </Card>
+
+      {/* Readiness breakdown — Houston 2026-07-23: one clear publication-readiness
+          number per paper, decomposed into named gates with explicit owners so it
+          is obvious what KIND of work remains (none of it is science/compute). */}
+      <Card className="mt-6">
+        <CardContent className="pt-6">
+          <h2 className="mb-1 font-mono text-lg font-semibold" style={{ fontFamily: "var(--font-mono-stack)" }}>
+            What &ldquo;ready&rdquo; means — five gates per paper (directive P)
+          </h2>
+          <p className="mb-4 text-sm text-muted-foreground">{readinessBreakdownNote}</p>
+          <div className="space-y-5">
+            {readinessBreakdown.map((p) => (
+              <div key={p.code}>
+                <div className="mb-1 flex items-baseline gap-3">
+                  <span className="font-mono font-bold" style={{ fontFamily: "var(--font-mono-stack)" }}>{p.code}</span>
+                  <span className="text-sm text-muted-foreground">publication readiness (evidence-capped): <strong>{p.publicationReadiness}%</strong></span>
+                </div>
+                <div className="grid gap-x-6 gap-y-1 text-xs md:grid-cols-2">
+                  {p.gates.map((g) => (
+                    <div key={g.dimension} className="flex items-baseline gap-2">
+                      <span className="whitespace-nowrap font-mono" style={{ fontFamily: "var(--font-mono-stack)" }}>
+                        {g.score}% <span className="text-muted-foreground">(×{g.weight})</span>
+                      </span>
+                      <span className="whitespace-nowrap font-semibold">{g.dimension}</span>
+                      <span className="whitespace-nowrap uppercase tracking-wide" style={{ color: ({ done: "var(--success)", agent: "var(--text-secondary)", houston: "var(--warn)", external: "var(--text-muted)" } as Record<GateOwner, string>)[g.owner] }}>
+                        {g.owner === "done" ? "complete" : `owner: ${g.owner}`}
+                      </span>
+                      <span className="text-muted-foreground">{g.status}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <h3 className="mb-1 mt-6 font-mono text-base font-semibold" style={{ fontFamily: "var(--font-mono-stack)" }}>
+            Publishing phase — next steps, NOT part of the readiness score
+          </h3>
+          <div className="space-y-1 text-xs">
+            {publishingPhase.map((s) => (
+              <div key={s.step} className="flex items-baseline gap-2">
+                <span className="whitespace-nowrap font-semibold">{s.step}</span>
+                <span className="whitespace-nowrap uppercase tracking-wide" style={{ color: ({ done: "var(--success)", agent: "var(--text-secondary)", houston: "var(--warn)", external: "var(--text-muted)" } as Record<GateOwner, string>)[s.owner] }}>
+                  owner: {s.owner}
+                </span>
+                <span className="text-muted-foreground">{s.status}</span>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
@@ -242,13 +307,13 @@ export default async function StatusPage() {
               <p className="compute-idle-title">0 pods running · $0/hr</p>
               <p className="compute-idle-note">
                 All compute jobs idle. Job history + cost accounting live in
-                the Convex pods table.
+                the live research log.
               </p>
             </div>
           </div>
         ) : (
           runningPods.map((pod) => {
-            const hoursUp = Math.max(0, (Date.now() - pod.startedAt) / 3.6e6);
+            const hoursUp = Math.max(0, (BUILD_NOW - pod.startedAt) / 3.6e6);
             return (
               <Card key={pod.podId} style={{ marginBottom: 12 }}>
                 <CardHeader>
@@ -320,10 +385,12 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>Paper Portfolio</h2>
+        <h2>Research programs and artifacts</h2>
         <p className="text-sm text-muted-foreground">
-          The live paper table above is the canonical source of truth.
-          Per-paper detail and current PDF mirrors live at{" "}
+          The live artifact table above preserves version and review evidence. The
+          portfolio is organized around three question-first programs; P3 is an
+          integrated Supporting Data Release rather than a standalone anomaly
+          flagship. Current PDFs and artifact detail live at{" "}
           <a href="/paper" className="underline">
             /paper
           </a>
@@ -332,7 +399,7 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>Bounce Channels &amp; Predictions</h2>
+        <h2>Predictions and boundaries</h2>
         <Card>
           <CardContent className="p-0">
             <Table>
@@ -351,10 +418,10 @@ export default async function StatusPage() {
                   </TableCell>
                   <TableCell>Matter bounce</TableCell>
                   <TableCell className="font-mono">
-                    f<sub>NL</sub> = -35/8 (parameter-free)
+                    f<sub>NL</sub> = -35/16 (stated P2 assumptions)
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary">FLAGSHIP</Badge>
+                    <Badge variant="secondary">P2 lead result</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -364,7 +431,7 @@ export default async function StatusPage() {
                   <TableCell>Quintom bounce</TableCell>
                   <TableCell className="font-mono">w(z) crosses -1</TableCell>
                   <TableCell>
-                    <Badge variant="outline">DESI DR2 chain: w_pivot = -0.952 ± 0.019 (+2.5σ from -1)</Badge>
+                    <Badge variant="outline">theoretical program; no in-house free-w0–wa result</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -374,7 +441,7 @@ export default async function StatusPage() {
                     γ = 3.0 vs 2.567 ± 0.382
                   </TableCell>
                   <TableCell>
-                    <Badge variant="default">+1.13σ consistent</Badge>
+                    <Badge variant="default">legacy consistency comparison; not a detection</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -382,7 +449,7 @@ export default async function StatusPage() {
                   <TableCell>Asymmetric matter bounce</TableCell>
                   <TableCell className="font-mono">Asteroid-mass PBHs</TableCell>
                   <TableCell>
-                    <Badge variant="outline">Viable</Badge>
+                    <Badge variant="outline">theoretical possibility</Badge>
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -392,99 +459,81 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>Completed Surveys (8 total)</h2>
+        <h2>Legacy survey-pipeline records</h2>
+        <p className="mb-4 text-sm text-muted-foreground">
+          These are preserved methodology and archive records. Their historic candidate counts
+          are superseded as current portfolio results; no survey result here proves a bounce.
+        </p>
         {/* Single-sourced from data/surveys.ts via SurveyQcTable — never
             hardcode QC verdicts here (previously contradicted /surveys). */}
         <SurveyQcTable />
       </section>
 
       <section className="section">
-        <h2>Key Discoveries</h2>
-        <div className="grid gap-3 md:grid-cols-2">
-          <Card className="border-l-4 border-tone-success">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
-                f_NL = -35/8 Mechanism Independence
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
-                Paper 2 · quintom_fnl_verification.py
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Verified across 3 bounce models: f_NL = -4.375 is parameter-free
-                and mechanism-independent. SPHEREx (~2028) will measure to σ ~
-                0.7-2.
+        <h2>Program evidence and boundaries</h2>
+        <div className="grid md:grid-cols-2 gap-x-10">
+          <div className="flat-item-list">
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
+                f_NL = -35/16 Mechanism Independence
               </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-l-4 border-tone-caution">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
+                Paper 2 · quintom_fnl_verification.py
+              </p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                P2 presents the matter-contraction prediction f_NL = -2.1875 under
+                its stated assumptions. A future measurement may test that prediction;
+                it is not a present observational detection of a bounce.
+              </p>
+            </div>
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
+                NANOGrav Consistency
+              </p>
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
+                nanograv real-KDE free-spectrum re-fit (Zenodo chains, emcee)
+              </p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                This legacy model-comparison note reports a compatible simplified slope
+                comparison. It is neither a bounce detection nor a basis for selecting a
+                publication flagship.
+              </p>
+            </div>
+          </div>
+          <div className="flat-item-list">
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
                 Quintom w-Crossing — Theoretical Only
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
+              </p>
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
                 Paper 1A model-discrimination table · zero free-w0–wa samples in our chains
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Whether w(z) crosses -1 is a quintom-bounce signature, but our
-                program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{""}
+                program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{" "}
                 MCMC. External DESI DR2 (Adame et al.) reports 2.8–4.2σ for
                 w-crossing depending on dataset combination. (An earlier
                 in-house claim of P(quintom-B) = 98.6% was traced to a
                 bookkeeping error in an automated run and retracted.)
               </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-l-4 border-tone-muted">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
-                NANOGrav Consistency
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
-                nanograv real-KDE free-spectrum re-fit (Zenodo chains, emcee)
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Matter bounce γ = 3.0 vs NANOGrav real-KDE free-spectrum 2.567 ± 0.382 (+1.13σ consistent); SMBHB γ = 4.33 excluded at +4.61σ. Savage-Dickey decisively favors the bounce slope.
+            </div>
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
+                Public-ID Recovery of a Historical DESI DR1 Anomaly List
               </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-l-4 border-tone-success">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
-                378,280 Anomalies Across 7 Surveys
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
-                Pipeline B · 37.3M sources · Paper 3 Table 1 canonical totals
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                First multi-survey AI anomaly sweep. Central 9.4% multi-tracer
-                f_NL forecast (consistent with no improvement at &lt;1σ).
-                SPHEREx 2.6–5σ conditional forecast for f_NL = −35/8.
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
+                P3 · Integrated Supporting Data Release · 181 TARGETIDs recovered
               </p>
-            </CardContent>
-          </Card>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                P3 preserves 181 public DESI DR1 TARGETIDs from a frozen
+                historical anomaly list (170 high-coordinate-consistency core + 11
+                lower-confidence) — an archive-recovery / provenance product,
+                explicitly not a purity, novelty, or detection claim. The
+                exploratory autoencoder pipeline that produced the candidate list
+                is browsable separately.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </>

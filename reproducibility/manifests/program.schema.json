@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bigbounce.hubify.app/schemas/program.schema.json",
+  "title": "BigBounce program manifest",
+  "description": "One JSON file per research program, rolling up its papers, ordered experiment DAG, external data, and full-reproduction estimate. See reproducibility/manifests/SCHEMA.md (directive Q2).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "id",
+    "title",
+    "question",
+    "papers",
+    "experiments",
+    "external_data",
+    "full_reproduction",
+    "hubify"
+  ],
+  "properties": {
+    "manifest_version": {
+      "const": "bigbounce-program/v1"
+    },
+    "id": {
+      "type": "string",
+      "enum": ["bounce-theory", "anomaly-discovery", "galaxy-chirality"]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "question": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The program's research question, one sentence"
+    },
+    "papers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["paper", "role"],
+        "properties": {
+          "paper": {
+            "type": "string",
+            "enum": ["P1A", "P1B", "P2", "P3-support", "P4", "P5", "anomaly-flagship"]
+          },
+          "role": {
+            "type": "string",
+            "enum": ["lead", "support"]
+          },
+          "title": { "type": "string" }
+        }
+      }
+    },
+    "experiments": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Ordered reproduction DAG: each entry names an experiment manifest id and its dependencies.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "depends_on"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "depends_on": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "external_data": {
+      "type": "array",
+      "description": "Deduplicated union of external sources referenced by this program's experiments.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "link"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "link": { "type": "string", "minLength": 1 },
+          "kind": { "type": "string" },
+          "license": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "full_reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["est_wall_clock", "est_cost_usd", "order"],
+      "properties": {
+        "est_wall_clock": { "type": "string", "minLength": 1 },
+        "est_cost_usd": { "type": "number", "minimum": 0 },
+        "order": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Notes on execution order across the DAG"
+        }
+      }
+    },
+    "hubify": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lab_slug"],
+      "properties": {
+        "lab_slug": { "type": "string", "minLength": 1 },
+        "module_notes": { "type": "string" }
+      }
+    }
+  }
+}

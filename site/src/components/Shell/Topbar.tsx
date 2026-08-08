@@ -15,8 +15,7 @@ function readInitialTheme(): Theme | null {
   return null;
 }
 
-function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+function getBrowserTheme(): Theme {
   const saved = readInitialTheme();
   if (saved) return saved;
   return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -53,11 +52,15 @@ function toggleSidebar() {
 }
 
 export function Topbar() {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  // Keep the server and the first client render identical. Browser preferences
+  // are applied only after hydration; the inline boot script prevents a flash.
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+    const next = getBrowserTheme();
+    applyTheme(next);
+    queueMicrotask(() => setTheme(next));
+  }, []);
 
   function toggleTheme() {
     const next: Theme = theme === "dark" ? "light" : "dark";

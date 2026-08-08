@@ -49,8 +49,8 @@ print(f"[OK] Vertex symmetry factors S_v = {S_v}")
 # Eq.(37) coefficients are not transplantable into this paper's basis.
 print("[OK] single-ordering / full ratio = 1/2 exactly, by the -2 Im identity above.")
 
-print("\nAll symbolic checks pass. The factor-of-two between the single "
-      "time-ordered correlator (Li & Brandenberger 2014) and the full "
-      "in-in commutator result (Cai et al. 2009) is exactly the -2 Im "
-      "doubling of the operator-algebra identity above, applied to the "
-      "Wick expansion summed over 6 permutations and 4 vertex types.")
+print("\nAll symbolic checks pass. The -2 Im commutator identity and the "
+      "Wick-pairing count are verified. This identity is shared by both "
+      "calculations and therefore does not adjudicate the Cai--Li local-"
+      "amplitude discrepancy; that result comes from the independent exact "
+      "four-vertex re-summation in scripts/p2_vertex_check.py.")

@@ -1,0 +1,100 @@
+{
+  "paper": "P1A",
+  "closure": "cutoff-scope alignment for P1A v1A.0.123",
+  "planck_convention": {
+    "M_Pl_definition": "unreduced M_Pl=G_N^(-1/2)",
+    "M_Pl_GeV": 1.22089e+19,
+    "kappa_definition": "8*pi*G_N=8*pi/M_Pl^2",
+    "kappa_GeV^-2": 1.6861134260852614e-37
+  },
+  "gap_derivation": {
+    "interaction": "G_s*(psi_bar psi)^2",
+    "regulator": "hard four-dimensional Euclidean ball, p_E^2 <= Lambda^2",
+    "I4": "[Lambda^2 - M^2*ln(1+Lambda^2/M^2)]/(16*pi^2)",
+    "condensate": "-(N_f*N_c*M)/(4*pi^2)*[Lambda^2-M^2*ln(1+Lambda^2/M^2)]",
+    "gap_equation": "M=(G_s*N_f*N_c*M)/(2*pi^2)*[Lambda^2-M^2*ln(1+Lambda^2/M^2)]",
+    "G_crit": "2*pi^2/(N_f*N_c*Lambda^2)",
+    "symbolic_check": true
+  },
+  "fierz_coefficients": {
+    "G_scalar_over_kappa": "-3/16",
+    "G_axial_abs_over_kappa": "3/32",
+    "axial_note": "only |G_A| is reported because its sign depends on the declared operator ordering; the axial column uses the scalar-channel G_crit only as a coefficient benchmark and is not an axial critical threshold"
+  },
+  "scan_inputs": {
+    "gamma_BI": 0.274,
+    "N_f_times_N_c": [
+      1,
+      3,
+      9
+    ],
+    "cutoffs": [
+      "M_Pl"
+    ],
+    "Holst_factor_gamma2_over_1_plus_gamma2": 0.0698332024898705
+  },
+  "ratios": [
+    {
+      "N_f_times_N_c": 1,
+      "cutoff": "M_Pl",
+      "Lambda_over_M_Pl": 1.0,
+      "scalar_abs_G_over_scalar_Gcrit": 0.238732414637843,
+      "axial_coefficient_over_scalar_Gcrit": 0.1193662073189215,
+      "scalar_magnitude_subcritical": true,
+      "axial_benchmark_below_one": true,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.016671449052300214,
+      "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.008335724526150107
+    },
+    {
+      "N_f_times_N_c": 3,
+      "cutoff": "M_Pl",
+      "Lambda_over_M_Pl": 1.0,
+      "scalar_abs_G_over_scalar_Gcrit": 0.716197243913529,
+      "axial_coefficient_over_scalar_Gcrit": 0.3580986219567645,
+      "scalar_magnitude_subcritical": true,
+      "axial_benchmark_below_one": true,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.050014347156900646,
+      "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.025007173578450323
+    },
+    {
+      "N_f_times_N_c": 9,
+      "cutoff": "M_Pl",
+      "Lambda_over_M_Pl": 1.0,
+      "scalar_abs_G_over_scalar_Gcrit": 2.148591731740587,
+      "axial_coefficient_over_scalar_Gcrit": 1.0742958658702935,
+      "scalar_magnitude_subcritical": false,
+      "axial_benchmark_below_one": false,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.15004304147070194,
+      "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.07502152073535097
+    }
+  ],
+  "scalar_sign_result": {
+    "G_scalar_over_kappa": "-3/16",
+    "G_scalar_GeV^-2": -3.161462673909865e-38,
+    "sign": "negative (repulsive in the declared +G_s convention)",
+    "derived_consequence": "no nonzero real homogeneous scalar-mass solution for G_s<0",
+    "scope": "direct-channel standard mean field only; no global-potential, Fierz-independent, axial-condensation, or beyond-mean-field claim"
+  },
+  "magnitude_result": {
+    "all_scalar_rows_subcritical": false,
+    "scalar_supercritical_rows": 1,
+    "maximum_scalar_ratio": 2.148591731740587,
+    "maximum_axial_coefficient_benchmark": 1.0742958658702935,
+    "verdict": "blanket magnitude-subcritical claim is false; the scalar sign result remains independently valid in the declared model"
+  },
+  "density_bound": {
+    "hbar_c_eV_cm": 1.973269804e-05,
+    "n_cm^-3": 100.0,
+    "n_eV^3": 7.683505569453846e-13,
+    "M_Pl_eV_unreduced": 1.22089e+28,
+    "kappa_eV^-2": 1.686113426085261e-55,
+    "rho_4f_conservative_bound_eV^4": 9.954182696282124e-80,
+    "rho_Lambda_eV^4": 2.7984099999999998e-11,
+    "rho_bound_over_rho_Lambda": 3.557085164890822e-69,
+    "orders_below_rho_Lambda": 68.4489057366699,
+    "rho_with_3_over_16_contact_coefficient_eV^4": 1.866409255552898e-80,
+    "contact_rho_over_rho_Lambda": 6.66953468417029e-70,
+    "contact_orders_below_rho_Lambda": 69.17590446460616,
+    "equation_of_state_claim": "none inferred from <J5>=0; composite stress tensor is state-dependent"
+  }
+}

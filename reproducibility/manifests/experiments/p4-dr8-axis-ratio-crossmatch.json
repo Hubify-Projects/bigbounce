@@ -1,0 +1,80 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-dr8-axis-ratio-crossmatch",
+  "title": "Empirical b/a (axis-ratio) DR8 morphology cross-match",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "ls_dr8.tractor (Legacy Survey DR8 Tractor catalog, via NOIRLab Astro Data Lab TAP)",
+      "type": "external-dataset",
+      "locator": "ls_dr8.tractor table, NOIRLab Astro Data Lab TAP service",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "NOIRLab Astro Data Lab TAP",
+      "endpoint": "https://datalab.noirlab.edu/tap",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/scripts/pull_dr8_final.py",
+      "entrypoint": "python3 pull_dr8_final.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p2_chirality/scripts/pull_dr8_datalab.py",
+      "entrypoint": "python3 pull_dr8_datalab.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p2_chirality/scripts/edge_on_contamination_metric.py",
+      "entrypoint": "python3 edge_on_contamination_metric.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, pandas, pyarrow, requests — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": null,
+    "pod_id_or_host": "spot A4000 that is now EXITED (exact pod ID not recorded)",
+    "date": "2026-07-02",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU or any RunPod instance (TAP pull + metric computation are CPU-bound, network-bound on the TAP query)",
+    "est_wall_clock": "~30-60 minutes depending on TAP query throughput for the full catalog cross-match",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "This is gap #5 in the inventory's Top-5-gaps list: the original spot-A4000 pod is EXITED with no dollar figure recorded, and the NOIRLab TAP query parameters were not captured as a standalone provenance artifact. The script itself is runnable-now; only the previously TAP-pulled data has not been re-fetched."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/spiral_morphology_dr8.parquet",
+      "type": "catalog",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/edge_on_contamination_metric.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run the TAP pull + edge-on metric computation and confirm f_edge=15.8% (edge-on contamination fraction, 505,889 of 3,201,160 objects per the v1.0.240 regeneration) within +/-0.5 percentage-point numeric tolerance.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — empirical b/a (axis-ratio) DR8 morphology cross-match bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 5 (P4 empirical b/a DR8 morphology cross-match)",
+    "project-context/SSOT/paper-4/status.md (DP4-22 finding + v1.0.240 regeneration: edge_on_contamination_metric.json regenerated from the parquet on disk, script-reproducible)"
+  ]
+}

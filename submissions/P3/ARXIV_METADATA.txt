@@ -1,0 +1,96 @@
+ARXIV SUBMISSION METADATA — P3
+================================
+Updated: 2026-07-09 (v3.1.146 bundle rebuild — R9 EXT closure)
+
+--- BUNDLE ---
+version: v3.1.146
+date_in_tex: July 9, 2026
+bundle: arxiv_p3_v3.1.146.tar.gz
+bundle_md5: 25807ecb660c8c642fefef9c8f2b7121
+bundle_size: 3.9 MB
+bundle_path: submissions/P3/arxiv_p3_v3.1.146.tar.gz
+main_file: paper3_draft.tex
+bibliography: embedded (\begin{thebibliography} in tex; no external .bib required)
+bbl_file: paper3_draft.bbl (pre-built, included for arXiv)
+supplemental_bib: paper3_draftNotes.bib (included for reference)
+
+--- COMPILE VERIFICATION ---
+standalone_compile_result: PASS (verified 2026-07-09)
+  - 3x pdflatex passes, all exit 0
+  - 0 undefined references
+  - 0 undefined citations
+  - 0 errors
+  - Page count: 35 pages (matches reference)
+  - Served/source PDF md5 (pipelines/p3_anomaly_engine/paper3_draft.pdf): 341f18910c40ffa44e0a93c93fa1c814
+  - Float placement warnings present (revtex "float is stuck") — cosmetic only,
+    do not affect content or page integrity.
+
+--- FIGURES (12 total, all in figures/ subdir) ---
+  1. figures/umap_by_anomaly_score.png
+  2. figures/fig_skymap_all_surveys.pdf
+  3. figures/fig_score_distributions.pdf
+  4. figures/fig_sdss_umap.png
+  5. figures/fig_neowise_top_anomaly.pdf
+  6. figures/fig_novelty_fractions.pdf
+  7. figures/anomaly_sky_distribution.png
+  8. figures/fig_cross_survey_matches.pdf
+  9. figures/fig_fnl_improvement.png
+ 10. figures/fig_injection_recovery.pdf  (tex uses no extension; pdf chosen)
+ 11. figures/B11_sigma_fnl_vs_ndensity.pdf
+ 12. figures/fig_gallery_top10.pdf
+
+--- ARXIV SUBMISSION FORM (PASTE-READY) ---
+
+TITLE (plain text):
+A Multi-Survey Autoencoder Anomaly-Candidate Catalog: 268,519 Reconstruction-Outlier Sources from a Native-Trained Scan of 37.3 Million Spectra and Map Patches
+
+AUTHORS:
+Houston Golden (Independent Researcher, Los Angeles, California, USA)
+
+CATEGORIES:
+  primary:   astro-ph.IM
+  cross-list: astro-ph.CO, astro-ph.GA
+
+LICENSE: CC BY 4.0
+
+COMMENTS:
+34 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
+
+ABSTRACT — PASTE THIS ONE (arXiv-form-safe, 1559 chars, < 1920 limit):
+We present a multi-survey autoencoder anomaly catalog produced by applying the BigAE framework to 37.3 million sources and CMB map patches across six archives (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck, NEOWISE; ACT DR6 quarantined). The primary deliverable is a validated subset of 268,519 unique anomaly candidates (a process-volume figure, i.e. candidates surviving per-survey validation gates, not confirmed physical detections); its like-for-like science-target benchmark is 2,468 DESI anomaly clusters (~0.92x the largest published single-survey catalog). The full inclusive Path-C catalog contains 377,482 anomalies; the validated subset excludes a LAMOST exploratory tier (98% blue-excess training-bias artifact), eROSITA (irreproducible score axis), and synthetic Gaia. DESI clears three independent gates: 5-fold cross-validation Jaccard 0.862, OOD Jaccard 0.732, and injection-recovery 99-100% at 5 sigma for the broad/extended class; SDSS and Planck likewise pass injection-recovery gates. An archival cross-match of DESI top-1,000 anomalies against 18 all-sky catalogs yields a genuine novelty fraction of 17.8% +/- 1.2%. Two cosmological applications are secondary demonstrations: a multi-tracer f_NL bias measurement yields sigma(f_NL) = 8.14 (envelope [3.92, 8.98]), and a NANOGrav 15-yr KDE MCMC yields gamma = 2.567 +/- 0.382, placing the matter-bounce prediction gamma = 3.0 at +1.14 sigma. The catalog, model weights, and reproducibility scripts are released at https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog.
+
+------------------------------------------------------------------------
+
+FULL ABSTRACT (from the paper — reference only; ~5500 chars, DO NOT paste, exceeds the 1920 limit):
+We present a multi-survey autoencoder anomaly catalog produced by applying the BigAE framework to 37.3 million sources and CMB map patches across six astronomical archives (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck, NEOWISE; ACT DR6 quarantined). The primary deliverable is a validated catalog-grade subset of 268,519 unique anomalies (268,319 point-source), a process-volume figure (anomaly candidates surviving per-survey validation gates across a full-instrument-stream scan, not confirmed physical detections) whose like-for-like science-target benchmark is 2,468 DESI anomaly clusters on validated science-target spectra (~0.92x the largest published single-survey catalog). The full inclusive Path-C unique catalog contains 377,482 anomalies (377,282 point-source + 200 Planck CMB map-patch sky regions); the 268,519 validated subset excludes the LAMOST exploratory tier (~113,000 objects; 98% blue-excess training-bias artifact). eROSITA (298 objects; 1.2% injection-recovery, irreproducible score axis) and synthetic Gaia DR3 (500 objects) are excluded from all counts. DESI clears three independent validation gates: 5-fold cross-validation Jaccard 0.862 (PASS), OOD Jaccard 0.732 (PASS), and injection-recovery 99-100% at 5-sigma for the broad/extended anomaly class. SDSS and Planck likewise pass detector-sensitivity injection-recovery gates. An archival cross-match of DESI top-1,000 anomalies against 18 all-sky catalogs yields a genuine novelty fraction of 17.8% +/- 1.2% (Wilson 68% CI). Two cosmological applications are secondary demonstrations: multi-tracer f_NL bias measurement yields sigma(f_NL) = 8.14 (central forecast, envelope [3.92, 8.98]); NANOGrav 15-yr KDE MCMC yields gamma = 2.567 +/- 0.382, placing the matter-bounce prediction gamma=3.0 at +1.14 sigma. The catalog, model weights, and reproducibility scripts are publicly released at https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog with the arXiv posting.
+
+--- DATASET ---
+HuggingFace dataset: bamfai/bigbounce-anomaly-catalog
+URL: https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog
+visibility: PUBLIC (private: False, gated: False) — no flip needed at submission time
+Files present: .gitattributes, README.md, act_dr6_anomalies.parquet,
+  desi_dr1_anomalies.parquet, gaia_dr3_anomalies.parquet, neowise_anomalies.parquet,
+  pathc_dedup_summary.json, pathc_dedup_summary_no_act.json,
+  pathc_multi_survey_matches.parquet, pathc_unique_objects.parquet,
+  planck_cmb_anomalies.parquet, sdss_dr18_pathc_native.parquet,
+  + directories: blocks/, cutouts/, p3_compute_to_accept/, pta_real_kde_2026-05-01/, r42_results/
+
+ACTION NEEDED AT SUBMISSION: Mint Zenodo DOI and replace "(DOI inserted at submission)" placeholder
+  in paper3_draft.tex line ~1542 before final arXiv upload.
+  Search: \emph{DOI inserted at submission}
+  Replace with: [Zenodo DOI URL]
+
+--- PLACEHOLDERS REMAINING ---
+1. Line 46 (COMMENTED OUT): %\preprint{arXiv:XXXX.XXXXX} — fill in after arXiv assigns ID
+2. Line ~1542 (ACTIVE): "A Zenodo DOI will be minted at submission and cited here in place of this sentence (\emph{DOI inserted at submission})."
+   — Houston must mint Zenodo DOI and replace before final upload.
+All other XXXX/TODO-SUBMISSION/arXiv:XX patterns: NONE in active body text.
+Cross-citations: "companion data repository" refers to https://github.com/Hubify-Projects/bigbounce (not a dangling arXiv cross-paper placeholder).
+
+--- HISTORY ---
+arxiv_p3_v3.1.140.tar.gz — earlier bundle
+arxiv_p3_v3.1.142.tar.gz — earlier bundle
+arxiv_p3_v3.1.143.tar.gz — earlier bundle
+arxiv_p3_v3.1.144.tar.gz — earlier bundle
+arxiv_p3_v3.1.145.tar.gz — STALE (source moved to v3.1.146, R9 EXT closure)
+arxiv_p3_v3.1.146.tar.gz — CURRENT (rebuilt 2026-07-09; verified 35 pages, 0 errors, standalone re-extract compile PASS)

@@ -1,0 +1,45 @@
+{
+  "schema": "p4-catalog-c-semantic-contract/v1",
+  "paper": "P4",
+  "paper_version": "v1.0.253",
+  "catalog_payload_version": "v1.0.244",
+  "dataset": {
+    "repo_id": "bamfai/galaxy-chirality-catalog",
+    "repo_type": "dataset",
+    "path_prefix": "apjs-release/v1.0.244",
+    "data_revision": "db11023306ab4eed1d7727670bd78e127b7af17a",
+    "provider_receipt_revision": "e535b26247c892971963be6029435544cf29d19b",
+    "provider_receipt": {
+      "path": "apjs-release/v1.0.244/PROVIDER_RECEIPT.json",
+      "bytes": 2992,
+      "sha256": "0943d7bb327bd5628a033445de953b0dd2b604d638da70948d1615e0ab9d0002"
+    }
+  },
+  "validator_source": {
+    "repository": "Hubify-Projects/bigbounce",
+    "git_commit": "5ec77d8b2f348f1b939627b8d24b20784ae93bee",
+    "path": "pipelines/p2_chirality/build_apjs_release_v1_0_244.py",
+    "bytes": 38777,
+    "sha256": "157e0a1ad822760a550adbc83ec6320f36b0d4cc8e17689445bfd666a418636a"
+  },
+  "validator_schema_source": {
+    "repository": "Hubify-Projects/bigbounce",
+    "git_commit": "5ec77d8b2f348f1b939627b8d24b20784ae93bee",
+    "path": "pipelines/p2_chirality/apjs_release_schema_v1_0_244.json",
+    "bytes": 5662,
+    "sha256": "2bf5a5314361a9cfbf20ef67a17e37276401c307de68d3925039fa2eb28a2830"
+  },
+  "validator_reproducer_source": {
+    "repository": "Hubify-Projects/bigbounce",
+    "git_commit": "5ec77d8b2f348f1b939627b8d24b20784ae93bee",
+    "path": "pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py",
+    "bytes": 8333,
+    "sha256": "784f89ed89ed70f676666ad7eed3b12263a15564faa3dd1c0f802cc787246baa"
+  },
+  "execution": {
+    "entrypoint": "validate_p4_catalog_c_semantics_v1_0_253.py",
+    "dependencies": ["numpy", "pyarrow"],
+    "network": "Public immutable GitHub and Hugging Face downloads only",
+    "semantic_receipt": "SEMANTIC_VALIDATION_RECEIPT.json"
+  }
+}

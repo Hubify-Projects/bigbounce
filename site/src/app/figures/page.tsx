@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 // any extras fall through to the "X" cross-cutting group below.
 const SECTION_ORDER: Array<{ slug: string; title: string }> = [
   { slug: "paper-1a", title: "Paper 1A — ECH Channel-Level Closure (4 Dark-Energy Routes)" },
-  { slug: "paper-1b", title: "Paper 1B — Technical Verification Companion (MCMC + NaMaster)" },
+  { slug: "paper-1b", title: "Paper 1B — namaster-proof Software Verification (Exact pseudo-Cℓ Windows)" },
   { slug: "paper-2",  title: "Paper 2 — Matter-Bounce f_NL SPHEREx Forecast" },
-  { slug: "paper-3",  title: "Paper 3 — DESI Spectral Anomalies (Multi-Survey Catalog)" },
-  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (3.3M Spirals)" },
+  { slug: "paper-3",  title: "Paper 3 — Supporting Data Release · DESI Public-ID Recovery" },
+  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (8.47M Galaxies, 890,069 High-Confidence)" },
   { slug: "paper-5",  title: "Paper 5 — DESI Chirality × Cosmic-Web Environment" },
 ];
 
@@ -48,7 +48,7 @@ function sectionsFromConvex(
             : r.citationLabel
               ? `Figure ${r.ordinal} (${r.citationLabel})`
               : `Figure ${r.ordinal}`,
-          title: isCandidate ? `[candidate] ${r.title}` : r.title,
+          title: r.title,
           desc: r.desc,
           source: `${title.split("—")[0].trim()} · ${isCandidate ? "candidate pool" : r.paperVersion}`,
         };

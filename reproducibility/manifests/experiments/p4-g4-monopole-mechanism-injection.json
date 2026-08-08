@@ -1,0 +1,63 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-g4-monopole-mechanism-injection",
+  "title": "G4 — per-pixel confusion + generative parity-null (monopole mechanism)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Banked e2e mirror-flip per-galaxy pair record",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_mirror_pairs.parquet (banked record from the e2e mirror-flip A100 run, pod 0hh3humgpacgz1, 2026-07-11/12 — not confirmed present in git; large-shard data, see p4-e2e-mirror-flip)",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/scripts/g4_monopole_mechanism_injection.py",
+      "entrypoint": "python3 g4_monopole_mechanism_injection.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, healpy, pandas, pyarrow — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU or RunPod aggregation-only instance (no GPU inference required, reuses banked e2e mirror-pair record)",
+    "est_wall_clock": "tens of minutes for per-pixel confusion + generative parity-null aggregation over the banked record",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "No new GPU inference required — this experiment reuses the banked e2e_mirror_pairs.parquet record, so it ran as aggregation-only on the RunPod pod ($0 H200 spend) with an avoided cost of an estimated $20-50 had fresh GPU inference been required (per inventory); that avoided-cost figure is NOT an actual_cost and is recorded here, not in original_run."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/g4_monopole_mechanism_injection.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/g4_perpixel_confusion_nside64.npz",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run against the banked e2e_mirror_pairs.parquet record and confirm the per-pixel confusion map (nside=64) and generative parity-null statistics match the committed JSON/NPZ within numeric tolerance stated in the result file.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — G4 per-pixel confusion + generative parity-null bullet",
+    "project-context/SSOT/paper-4/status.md",
+    "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md (line 533: banked per-galaxy record e2e_mirror_pairs.parquet, A100 pod 0hh3humgpacgz1, 2026-07-11/12)"
+  ]
+}

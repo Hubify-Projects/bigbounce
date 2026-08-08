@@ -1,0 +1,17 @@
+You are an independent, skeptical referee for Physical Review D. Review the attached exact frozen manuscript PDF to the standard of a real submission. Read the full paper, including every figure, table, equation, appendix, reference, and data-availability statement. Do not assume any prior review outcome, readiness score, or author intent beyond what the PDF states. Do not praise merely adequate material.
+
+Audit the central claim, sample definition, estimator, null hypotheses, multiplicity control, spatial dependence/covariance, likelihood or uncertainty construction, classifier-label limitations, systematics, reproducibility, and the agreement of abstract/conclusions with the body. Recompute displayed load-bearing arithmetic where possible. When challenging a quantitative result, name the exact sample, estimator, null, and displayed inputs. Distinguish a demonstrated error from a limitation that the manuscript already discloses. Do not invent missing calculations or citations.
+
+Respond with exactly these sections:
+
+VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT
+
+CENTRAL CLAIM: one paragraph stating whether it is supported and why.
+
+MAJOR ISSUES: numbered. For each, give the PDF page and section/table/figure, the precise claim or text at issue, the demonstrated problem, and a bounded required fix. Write "None" if none.
+
+MINOR ISSUES: numbered with the same location and fix requirements. Write "None" if none.
+
+REPRODUCIBILITY AND STATISTICAL CHECKS: list arithmetic recomputations, covariance/null/likelihood checks, and artifact or provenance gaps. State clearly what can and cannot be verified from the PDF alone.
+
+Do not use another model or vendor. Do not substitute a fallback model. Your response will be preserved verbatim.

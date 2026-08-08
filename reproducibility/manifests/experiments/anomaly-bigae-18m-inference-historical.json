@@ -1,0 +1,58 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-bigae-18m-inference-historical",
+  "title": "BigAE enhanced 18M/22.5M-row DESI inference (historical, unreconciled)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "inference-scan",
+  "inputs": [
+    {
+      "name": "best_model_47k.pt (archived BigAE checkpoint, 496->512->256->128)",
+      "type": "model",
+      "locator": "best_model_47k.pt",
+      "checksum": "f5266ba48f476bca2f1b12610e0e81322caaa955af70ab83f0b05bf763885f07",
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/scripts/enhanced_18M_inference.py",
+      "entrypoint": "python3 enhanced_18M_inference.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, torch, astropy (fits I/O), urllib.request — see requirements.txt",
+    "hardware": "gpu-24gb (historical run architecture; inference itself is a small 3.5MB BigAE, plausibly cpu-only at reduced throughput)"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": "historical pod, unlogged",
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "not recommended for reproduction — superseded by the clean_rerun campaign (see anomaly-clean-rerun-scan)",
+    "est_wall_clock": "n/a",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "The 2026-08-04 restoration gate (project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md) found this run cannot be truthfully reconstructed: the claimed 46 enhanced Parquets are absent locally (surviving corpus ~2.35GB vs claimed ~16GB parent), the enhanced checkpoint's 23,798,995 spectra / 22,748,720 rows differs from the summary's 22,504,897 rows by 243,823, and no batch manifest or shard hashes bind either count to a specific run. The archived best_model_47k.pt checkpoint itself is preserved (4 byte-identical local copies, sha256 confirmed to match live HF revision 8100e0933242e5e74df912cb1414d922cd60596e) and its architecture matches the inference code, but no run manifest proves it produced this specific historical output. Primary blocker for this manifest is the failed restoration gate (missing Parquets + unbindable provenance); this experiment is also effectively superseded by the clean_rerun campaign (anomaly-clean-rerun-scan), which is the approved forward path (clean public-ID-first DESI rerun with immutable input/model/scaler/shard/schema/checkpoint/dedup receipts). Do not attempt to reproduce this historical run — reproduce clean_rerun instead."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/enhanced_18M_deduped/catalog_summary.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "NOT independently verifiable as a reproduction target: the surviving catalog_summary.json (catalog_total=22,504,897; anomalies_score_gt5=249,905) cannot be checked against the 46 absent enhanced Parquets, and the enhanced checkpoint's own row counts (23,798,995 spectra / 22,748,720 rows) disagree with the summary by 243,823 rows with no batch manifest to reconcile them — there is no fresh-run tolerance test that can pass honestly for this historical artifact.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — BigAE enhanced 18M/22.5M-row DESI inference (historical, unreconciled) bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md §Restoration gate result — 2026-08-04"
+  ]
+}

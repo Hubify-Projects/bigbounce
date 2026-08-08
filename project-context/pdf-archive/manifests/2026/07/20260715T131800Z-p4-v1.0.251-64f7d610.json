@@ -1,0 +1,73 @@
+{
+  "build_command": "/opt/homebrew/bin/tectonic chirality_catalog_paper.tex (isolated AASTeX 7.0.1 build, twice)",
+  "captured_at_local": "2026-07-15T06:18:00-07:00",
+  "captured_at_utc": "2026-07-15T13:18:00+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "64f7d61078358158c2bc5ba04b04ea7e7ea59045",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "ff75f4f3adc9e2748ac6a7207f4a15d49d366bc8",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T131800Z-p4-v1.0.251-64f7d610.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/4f/4f8046df52a2e3e383403522eca21d0f8dbca8241992c743a2ab211398b468ec.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__v1.0.251__2026-07-15T061800-0700-PDT__4f8046df52a2.pdf",
+      "git": {
+        "head_blob": "b93c9862d0c2f8c4bedacc7129e387335d985f7b",
+        "index_dirty": false,
+        "overall_dirty": false,
+        "tracked": true,
+        "worktree_dirty": false
+      },
+      "md5": "ba522525e2c6afc79f40b963f0eca50e",
+      "object_created": true,
+      "page_count": 28,
+      "paper_id": "P4",
+      "paper_version": "v1.0.251",
+      "reference_created": true,
+      "sha256": "4f8046df52a2e3e383403522eca21d0f8dbca8241992c743a2ab211398b468ec",
+      "size_bytes": 25168142,
+      "source_mtime_ns": 1784122501360138459,
+      "source_pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "source_tex": "pipelines/p2_chirality/chirality_catalog_paper.tex"
+    }
+  ],
+  "review_round": "P4-v1.0.251-bounded-exact-board-closure",
+  "run_id": "p4-v1.0.251-64f7d610",
+  "schema": "bigbounce-pdf-retention/v3"
+}

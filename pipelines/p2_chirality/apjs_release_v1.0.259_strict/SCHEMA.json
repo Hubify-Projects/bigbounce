@@ -1,0 +1,32 @@
+{
+  "base_catalog": {
+    "bytes": 386712994,
+    "path": "apjs-release/v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+    "repo_id": "bamfai/galaxy-chirality-catalog",
+    "revision": "db11023306ab4eed1d7727670bd78e127b7af17a",
+    "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+  },
+  "paper": "P4",
+  "paper_version": "v1.0.259",
+  "primary_selection": "primary_hc == true and raw_flip_qc_unsafe == false",
+  "release_gates": {
+    "doi_archive": "OPEN",
+    "human_apjs_review": "OPEN",
+    "immutable_provider_revision": "OPEN until provider receipt is published"
+  },
+  "schema": "p4-apjs-strict-primary-release/v1",
+  "strict_primary": {
+    "n_draws": 10000,
+    "n_pixels": 23633,
+    "n_selected": 890069,
+    "n_support": 887472,
+    "null_type": "fixed-occupancy multivariate-hypergeometric galaxy-label randomization",
+    "rank_p_one_sided_upper_tail": 0.23767623237676233,
+    "seed": 20260715,
+    "z_moment": 0.6346508534484177
+  },
+  "supersedes_primary_contract": {
+    "reason": "The catalog bytes remain authoritative, but the prior release's named primary filter and retained null included quarantined rows.",
+    "release": "apjs-release/v1.0.244"
+  }
+}

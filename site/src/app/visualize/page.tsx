@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegacyVisualizeClient } from "./LegacyVisualizeClient";
 
 export const metadata: Metadata = {
@@ -49,9 +50,12 @@ export default async function VisualizePage() {
         dangerouslySetInnerHTML={{ __html: LEGACY_VISUALIZE_OVERRIDES }}
         suppressHydrationWarning
       />
-      <a href="/" className="visualize-escape-hatch" aria-label="Back to overview">
+      {/* Screen-reader heading — the visual design is a full-canvas animation so
+          the heading is sr-only to preserve the existing aesthetic. */}
+      <h1 className="sr-only">Bounce Visualization</h1>
+      <Link href="/" className="visualize-escape-hatch" aria-label="Back to overview">
         ← back to BigBounce
-      </a>
+      </Link>
       <LegacyVisualizeClient body={body} script={script} />
     </div>
   );

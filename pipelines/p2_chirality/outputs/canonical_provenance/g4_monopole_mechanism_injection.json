@@ -1,0 +1,83 @@
+{
+  "script": "scripts/g4_monopole_mechanism_injection.py",
+  "gate": "G4 \u2014 monopole mechanism: per-pixel confusion + generative parity-null",
+  "date_utc": "2026-07-18T07:45:46Z",
+  "inference_provenance": {
+    "source": "e2e_mirror_pairs.parquet (HF bamfai/galaxy-chirality-catalog)",
+    "inference_run": "pod 0hh3humgpacgz1 A100-80GB 2026-07-11/12, 192/192 shards, 16,949,062 ViT forward passes (RUN_SUMMARY.md)",
+    "model": "bamfai/galaxy-chirality-v2 production checkpoint",
+    "note": "this script aggregates the banked per-galaxy inference; no forward passes were re-run"
+  },
+  "n_e2e_catalog_joined": 8474531,
+  "e2e_vs_catalog_class_eq_agreement": 0.3772233531271524,
+  "nside": 64,
+  "conf_thresh": 0.6,
+  "gal_lat_cut_deg": 15.0,
+  "n_realizations": 500,
+  "seed": 42,
+  "smoke": false,
+  "observed": {
+    "n_hc_galmask": 948428,
+    "f_cw": 0.49605136077804535,
+    "monopole": -0.003948639221954653,
+    "binomial_z_paper": -9.47
+  },
+  "generative_null_monopole": {
+    "eq_mode_production_labels": {
+      "mean": 7.880408423200813e-06,
+      "std": 0.0005227152045127426,
+      "z_observed_vs_null": -7.569168825050703,
+      "fraction_of_observed_monopole_explained_mean": -0.001995727636848995,
+      "fraction_of_observed_monopole_explained_2sigma_bound": 0.26675286300967166
+    },
+    "raw_mode_no_antisymmetrization": {
+      "mean": 0.012854441923930473,
+      "std": 0.00015784804380950966,
+      "z_observed_vs_null": -106.45099388221126,
+      "fraction_of_observed_monopole_explained_mean": -3.2554105861226987,
+      "fraction_of_observed_monopole_explained_2sigma_bound": 3.335361189323855
+    },
+    "definition": "each galaxy independently mirrored with p=1/2; labels = classifier's recorded outputs for that parity state; HC selection re-applied per realization"
+  },
+  "confusion_propagated_bias_field": {
+    "eq_mode": {
+      "monopole_weighted": 0.0,
+      "dipole_amp_uniform": 0.0,
+      "monopole_north_dec_ge32": 0.0,
+      "monopole_south_dec_lt32": 0.0,
+      "n_pixels": 24080
+    },
+    "raw_mode": {
+      "monopole_weighted": 0.012890391474028958,
+      "dipole_amp_uniform": 0.15084974389281888,
+      "monopole_north_dec_ge32": -0.14520838855320753,
+      "monopole_south_dec_lt32": 0.07947361293756193,
+      "n_pixels": 24178
+    },
+    "definition": "b_p = 0.5*(f_CW_orig,p + f_CW_mirror,p) - 0.5 (HC sel)"
+  },
+  "mechanism_candidates": {
+    "classifier_confusion_eq_pipeline": {
+      "monopole_generated_mean": 7.880408423200813e-06,
+      "monopole_generated_std": 0.0005227152045127426,
+      "fraction_of_observed_2sigma_bound": 0.26675286300967166
+    },
+    "residual_orientation_bias_raw_channel": {
+      "monopole_generated_mean": 0.012854441923930473,
+      "monopole_generated_std": 0.00015784804380950966,
+      "fraction_of_observed_2sigma_bound": 3.335361189323855
+    },
+    "training_prior_gz1_cw_excess_raw_prior_asym": 0.007336969980335006,
+    "desi_photometric_asymmetry_ns_split": {
+      "eq_bias_monopole_north": 0.0,
+      "eq_bias_monopole_south": 0.0,
+      "raw_bias_monopole_north": -0.14520838855320753,
+      "raw_bias_monopole_south": 0.07947361293756193
+    }
+  },
+  "eq_antisym_dev": {
+    "mean": 0.0,
+    "max": 0.0
+  },
+  "perpixel_artifact": "g4_perpixel_confusion_nside64.npz"
+}

@@ -1,0 +1,17 @@
+VERDICT: MAJOR REVISIONS
+
+ISSUES:
+
+[MAJOR] Abstract, §3 (three-tier structure), and Table 2: The headline "validated catalog-grade subset" of 268,519 (including 268,319 point sources) is presented as the primary deliverable, yet it incorporates the NEOWISE tier (419 objects) that passes only a masking-geometry QA gate by construction and explicitly fails any detector-sensitivity injection-recovery test; the uniform "validated" label and "the 268,519 subset is real" claim are therefore unsupported for the full subset, as only DESI/SDSS/Planck components clear the stated 5σ gate.
+
+[MAJOR] §2.4 (Path-C steps 5–6), §3.5, and §3.7: eROSITA is correctly excised for an irreproducible production score axis (non-monotone on committed raw scores; 0.259 fails all 16 monotone rescalings and 3 IsolationForest retrains) and 1.2% recovery, and the synthetic Gaia tier is removed; however, the paper's own provenance audit and pod-lost artifacts (exited nodes, non-committed feature tables, blocked full per-object re-inference for DESI) demonstrate that the "directly recomputable via committed standalone script" and "immutable pinned HF revision" claims do not hold for the full released catalog.
+
+[MAJOR] §3.1, Table 3, and abstract: The like-for-like science-target benchmark is only 2,468 DESI anomaly clusters (≈0.92× the Liang et al. 2023 single-survey benchmark), with ~98.7% of the 195,829 DESI detections on non-primary science-target spectra (sky/filler fibers); foregrounding the 268k/377k process-volume multipliers (~141×, ~73×) as the central result without equal prominence given to this scope limitation misrepresents the effective catalog yield relative to prior work.
+
+[MAJOR] §2.2 (scoring), §6.4(i), and DESI injection-recovery artifact: The production-ensemble sensitivity gate for DESI certifies only the broad/continuum-dominated class at 99–100% recovery (5σ per-spectrum strength); narrow single-pixel lines recover only at ≥15σ, establishing an explicit sensitivity floor for the 496-bin mean-reconstruction scorer that is not reflected in the catalog-grade claim or per-object validity flags for the full 268k set.
+
+[MINOR] §5 (cosmological applications): The multi-tracer fNL (§5) and NANOGrav γ (§5.1) analyses are explicitly disclaimed as non-detections (central fNL shift lies inside the 1σ envelope; NANOGrav result is only decisive against an idealized circular-orbit reference); their inclusion as "secondary demonstrations" adds ~2 pages and complexity without strengthening the primary catalog deliverable and should be condensed or appendix-only.
+
+[MINOR] §2.4 and throughout: The six-step Path-C protocol and three-tier catalog structure (validated / separately-released membership / methodological lesson) are internally consistent but create an unnecessarily fragmented data product; downstream users must cross-reference multiple validity flags, excision rationales, and footnotes to interpret even the headline 268,519 count.
+
+One sentence on central claim support: The evidence supports production of a large set of reconstruction-outlier candidates via native-retrained autoencoders with partial per-survey validation (injection-recovery PASS for broad-class DESI/SDSS/Planck; geometry QA for NEOWISE), but does not support the headline claim of a uniformly validated 268,519-object multi-survey catalog-grade product, given inconsistent gates, process-volume vs. science-target scope distinctions, and documented reproducibility gaps.

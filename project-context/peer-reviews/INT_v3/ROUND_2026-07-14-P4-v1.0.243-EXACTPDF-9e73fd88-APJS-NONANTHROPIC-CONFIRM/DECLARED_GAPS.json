@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "paper": "P4",
+  "version": "v1.0.243",
+  "pdf_sha256": "9e73fd888699058d421043b0dd2de5d37d2aeb36fe37e8dd1c0bf5409e947d19",
+  "source_commit": "22818453cbd9445b26f2e04de39aef03319a2609",
+  "review_commit": "36badcbdf498123413031aa0a9504127d48f2054",
+  "gaps": [
+    {
+      "leg": "anthropic-claude",
+      "requested_model": null,
+      "status": "EXCLUDED_BY_INSTRUCTION",
+      "reason": "This confirmation panel was explicitly non-Anthropic. No Claude or Anthropic request was dispatched and no synthesized Anthropic verdict was substituted.",
+      "required_before_final_board": false
+    },
+    {
+      "leg": "codex-subscription-independent",
+      "requested_model": null,
+      "status": "NOT_REQUESTED",
+      "reason": "The assigned confirmation board was exactly the three native-PDF API vendors OpenAI, Gemini, and Grok. No fourth subscription leg was requested or inferred.",
+      "required_before_final_board": false
+    }
+  ]
+}

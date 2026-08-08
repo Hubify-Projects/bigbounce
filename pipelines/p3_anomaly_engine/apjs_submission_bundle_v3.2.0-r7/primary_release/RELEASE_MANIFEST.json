@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-07-14T14:10:16Z",
+  "files": [
+    {
+      "name": "COHORT_COUNTS.json",
+      "sha256": "d953cb95bb2c168231eedbc8e68d442f7b43670f25cc2951b9e1c724071e5ba6",
+      "size_bytes": 552
+    },
+    {
+      "name": "DATA_DICTIONARY.md",
+      "sha256": "346b02d53cd143011d90106a1279a75141bfe4afdd26bb53129eb5a7bad7c273",
+      "size_bytes": 4862
+    },
+    {
+      "name": "PROVENANCE.json",
+      "sha256": "105979e52eb833726a205936e870366f363560af259a2e325376caa3dff77f34",
+      "size_bytes": 5763
+    },
+    {
+      "name": "QC_REPORT.json",
+      "sha256": "3cdda75b1309a9aa4649065dbbf1b5a89a6616792c0def89db1f884a5bf8d75a",
+      "size_bytes": 4316
+    },
+    {
+      "name": "README.md",
+      "sha256": "188cd6aac0334dcba4fcf10f6f4a9a3a4d5f32c9a18f6852c16320f2bf984e65",
+      "size_bytes": 5230
+    },
+    {
+      "name": "SELECTION_AUDIT.json",
+      "sha256": "52ca78be53430aa6a2a2e383a3ef097ab2af1bf1e1ecb5b47d9699f75218ea17",
+      "size_bytes": 14837
+    },
+    {
+      "name": "SELECTION_AUDIT.md",
+      "sha256": "16bc7e91bcae35d1f439845d3862bad8cb5c2bc38c143cf073416258cf328b70",
+      "size_bytes": 3562
+    },
+    {
+      "name": "build_desi_science_catalog_v320_r2.py",
+      "sha256": "06709cad6edd84820328bcfe888300b34b3133e851d24143a875d05ca52dbff6",
+      "size_bytes": 37401
+    },
+    {
+      "name": "desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
+      "sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03",
+      "size_bytes": 58038
+    },
+    {
+      "name": "validate_desi_science_catalog_v320_r2.py",
+      "sha256": "428958dfc99f9cb7f9bdcb38d52dc1673d0146e9969809dbc9dad858c4496f06",
+      "size_bytes": 34387
+    }
+  ],
+  "manifest_self_hash": "excluded (self-referential)",
+  "release": "p3-v3.2.0-r2"
+}

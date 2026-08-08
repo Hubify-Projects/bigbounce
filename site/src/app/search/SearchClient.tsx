@@ -24,87 +24,89 @@ interface SearchItem {
 }
 
 const STATIC_PAGES: SearchItem[] = [
-  { category: "Page", title: "Overview", blurb: "Research overview, key results, 4-route ECH channel-level closure, MCMC table, claims table", href: "/" },
+  { category: "Page", title: "Overview", blurb: "Three question-first research programs: bounce theory, DESI anomaly discovery, and galaxy chirality", href: "/" },
   { category: "Page", title: "Explainer", blurb: "Non-technical explanation of the research program", href: "/explained" },
-  { category: "Page", title: "Surveys", blurb: "7 retained surveys with anomaly sweep results (DESI, SDSS, eROSITA, LAMOST, Planck, NEOWISE, Gaia)", href: "/surveys" },
-  { category: "Page", title: "Predictions", blurb: "f_NL = -35/8, ALP birefringence beta = 0.27 deg, NANOGrav gamma = 3.0, SPHEREx forecast sigma(f_NL) = 0.7", href: "/predictions" },
-  { category: "Page", title: "Papers", blurb: "6-paper portfolio with version history and readiness", href: "/paper" },
-  { category: "Page", title: "Data Explorer", blurb: "Interactive MCMC posterior data with 15 embedded datasets and equation calculators", href: "/data-explorer" },
+  { category: "Page", title: "Surveys", blurb: "Legacy and superseded survey-pipeline records retained for methodology and archive context", href: "/surveys" },
+  { category: "Page", title: "Predictions", blurb: "Conditional matter-contraction non-Gaussianity, birefringence and SGWB diagnostics, and future-survey context", href: "/predictions" },
+  { category: "Page", title: "Research Programs", blurb: "Three scientific programs with versioned papers, supporting releases, and evidence readiness", href: "/paper" },
+  { category: "Page", title: "Publication Map", blurb: "The definitive three-program plan for manuscripts, data, models, software, releases, and submission order", href: "/publish" },
+  { category: "Page", title: "Final Author Review · P2", blurb: "The exact P2 PDF, five reader checks, evidence links, and APPROVE / REVISE / DEFER decision block", href: "/final-review" },
+  { category: "Page", title: "Data Explorer", blurb: "Interactive research data and equation calculators; historic MCMC records are not P1B's publication role", href: "/data-explorer" },
   { category: "Page", title: "Galaxy Explorer", blurb: "8.47M-galaxy DESI Legacy DR8 chirality catalog explorer", href: "/galaxy-explorer" },
-  { category: "Page", title: "Anomaly Explorer", blurb: "DESI DR1 spectral anomalies, sortable, sky-mapped, with cutout previews", href: "/anomaly-explorer" },
+  { category: "Page", title: "Anomaly Explorer", blurb: "Legacy DESI candidate records; candidate flags are not confirmed discoveries or bounce evidence", href: "/anomaly-explorer" },
   { category: "Page", title: "Visualize", blurb: "Interactive cosmic simulation of the Big Bounce from parent universe through SPHEREx 2028", href: "/visualize" },
-  { category: "Page", title: "Figures", blurb: "Gallery of research figures spanning all 6 papers, sortable and filterable", href: "/figures" },
+  { category: "Page", title: "Figures", blurb: "Gallery of research figures across the retained evidence library, sortable and filterable", href: "/figures" },
   { category: "Page", title: "Glossary", blurb: "Searchable glossary of terms, parameters, and equations", href: "/glossary" },
   { category: "Page", title: "Timeline", blurb: "Visual cosmological timeline parent universe through bounce to SPHEREx 2028", href: "/timeline" },
   { category: "Page", title: "Articles", blurb: "Deep-dive companion articles to the research program", href: "/articles" },
   { category: "Page", title: "Speculations", blurb: "Speculative extensions and open lines of inquiry", href: "/speculations" },
   { category: "Page", title: "Contributions", blurb: "Novel contributions, first computations, and independent verifications ranked by novelty", href: "/contributions" },
   { category: "Page", title: "Activity", blurb: "Research status, priority queue, and chronological feed", href: "/activity" },
-  { category: "Page", title: "Status", blurb: "Live status of MCMC chains, papers, and active pods", href: "/status" },
+  { category: "Page", title: "Status", blurb: "Live status of research programs, selected artifacts, editorial decisions, and active pods", href: "/status" },
   { category: "Page", title: "Astro Chat", blurb: "AI research assistant trained on the BigBounce program", href: "/chat" },
 ];
 
 const CONTRIBUTIONS: SearchItem[] = [
   {
     category: "Contribution",
-    title: "Perturbation-Transparency Theorem",
+    title: "Minimal-ECH Branch Clarification",
     blurb:
-      "Formal all-orders proof that the Barbero-Immirzi parameter gamma is invisible in all perturbative observables when scalar matter is minimally coupled in ECH. Paper 1A.",
+      "A narrow, convention-audited account of the stated minimal Einstein–Cartan–Holst branch; not a universal no-go theorem or dark-energy model. Paper 1A.",
     href: "/contributions#perturbation-transparency",
   },
   {
     category: "Contribution",
-    title: "14-Constraint Channel-Level Closure Map",
+    title: "Archived ECH Route Map",
     blurb:
-      "Systematic test of the four enumerated minimal Einstein-Cartan-Holst bounce-to-dark-energy routes across 7 foundations and 17 branches — channel-level closure via a 14-constraint catalog.",
+      "Historical route-mapping material preserved for provenance; it is not a selected P1A claim and does not close every minimal-ECH route.",
     href: "/contributions#14-barriers",
   },
   {
     category: "Contribution",
-    title: "Matter-bounce f_NL = -35/8 prediction",
+    title: "Matter-bounce f_NL = -35/16 prediction",
     blurb:
-      "Parameter-free non-Gaussianity from matter-dominated contraction: f_NL = -4.375, ~300x larger than inflation, opposite sign. Testable by SPHEREx ~2028 at 4-12 sigma.",
+      "P2's conditional matter-contraction prediction: f_NL = -2.1875. SPHEREx may test it; no current survey result establishes a bounce.",
     href: "/contributions#matter-bounce-fnl",
   },
   {
     category: "Contribution",
-    title: "ALP birefringence beta = 0.27 deg prediction",
+    title: "Archived ALP birefringence exploration",
     blurb:
-      "Planck-scale axion-like particle prediction matches observed 0.342 +/- 0.094 deg signal at 3.6 sigma. LiteBIRD tests at ~9 sigma by 2030. Bounce-mechanism independent.",
+      "Exploratory ALP calculations retained as program provenance; they are not a selected scientific claim of P1A or P2.",
     href: "/contributions#alp-birefringence",
   },
   {
     category: "Contribution",
     title: "8.47M-galaxy chirality catalog (Paper 4)",
     blurb:
-      "Largest survey-scale spiral-galaxy chirality catalog: CW/CCW/NOT_SPIRAL classification with equivariant DL ensemble, hemispheric asymmetry analysis, null result for large-scale parity violation.",
+      "An 8,474,531-row observed-label catalog with a 890,069-row quality-controlled primary dipole result consistent with zero; not a physical parity bound.",
     href: "/contributions#chirality-catalog",
   },
   {
     category: "Contribution",
-    title: "Multi-survey anomaly catalog (Paper 3)",
+    title: "Integrated Supporting Data Release: DESI Public-ID Recovery (P3)",
     blurb:
-      "378,280 anomalies across 7 surveys (37.3M sources) after Path-C native retrains and 5″ positional deduplication. First-of-kind cross-survey unified anomaly hunt.",
+      "P3 is the integrated Supporting Data Release: reproducible recovery of 181 DESI DR1 TARGETIDs from a frozen historical list, not a standalone discovery paper, purity claim, novelty claim, or detection claim.",
     href: "/contributions#anomaly-catalog",
   },
   {
     category: "Contribution",
-    title: "SPHEREx f_NL Fisher forecast (Paper 2)",
+    title: "Conditional SPHEREx sensitivity map (Paper 2)",
     blurb:
-      "Multi-tracer Fisher forecast of sigma(f_NL) = 0.7 from SPHEREx galaxy bispectrum, giving 4.7-12 sigma detection of bounce f_NL = -4.375 by 2027.",
+      "An illustrative map of the exact P2 shape into published survey sensitivity, with explicit covariance and nuisance dependence; not a guaranteed detection forecast.",
     href: "/contributions#spherex-fisher",
   },
   {
     category: "Contribution",
     title: "DESI environmental chirality study (Paper 5)",
     blurb:
-      "Cross-match of 2.23M DESI LSS galaxies with the chirality catalog to test environmental dependence of spiral spin direction across cosmic-web environments.",
+      "Standalone AJ companion testing an exploratory DESI environment-label contrast alongside P4's lead chirality catalog result.",
     href: "/contributions#desi-environment",
   },
   {
     category: "Equation",
-    title: "f_NL_local = -35/8 = -4.375 (matter bounce)",
-    blurb: "Closed-form, parameter-free local non-Gaussianity from matter-dominated contraction.",
+    title: "f_NL_local = -35/16 = -2.1875 (matter bounce)",
+    blurb: "Closed-form local non-Gaussianity for P2's stated matter-contraction assumptions.",
     href: "/contributions#matter-bounce-fnl",
   },
   {
@@ -119,11 +121,11 @@ const GLOSSARY_ITEMS: SearchItem[] = [
   { category: "Glossary", title: "Big Bounce", blurb: "Cosmological model where the universe transitions from contraction to expansion at finite density, avoiding the Big Bang singularity.", href: "/glossary" },
   { category: "Glossary", title: "Einstein-Cartan-Holst (ECH)", blurb: "Spin-torsion extension of general relativity with the Holst term; foundation for the specific bounce model in this program.", href: "/glossary" },
   { category: "Glossary", title: "Barbero-Immirzi parameter gamma", blurb: "Dimensionless parameter controlling the Holst term; invisible perturbatively when scalar matter is minimally coupled.", href: "/glossary" },
-  { category: "Glossary", title: "f_NL", blurb: "Local non-Gaussianity amplitude; matter bounce predicts -35/8 = -4.375.", href: "/glossary" },
+  { category: "Glossary", title: "f_NL", blurb: "Local non-Gaussianity amplitude; P2 derives -35/16 = -2.1875 conditionally for matter contraction.", href: "/glossary" },
   { category: "Glossary", title: "Cosmic birefringence", blurb: "Rotation of CMB polarization plane induced by axion-like particles or other parity-violating physics.", href: "/glossary" },
   { category: "Glossary", title: "Spin density", blurb: "Source of torsion in Einstein-Cartan theory; vanishes identically for scalar matter, which is the load-bearing step in the perturbation-transparency theorem.", href: "/glossary" },
   { category: "Glossary", title: "Holst term", blurb: "Parity-odd term in the gravitational action; reduces to the topological Nieh-Yan invariant in the absence of torsion.", href: "/glossary" },
-  { category: "Glossary", title: "NANOGrav gamma", blurb: "Spectral index of the stochastic gravitational-wave background; bounce predicts 3.0 vs real-KDE free-spectrum 2.567 +/- 0.382 (+1.13 sigma consistent).", href: "/glossary" },
+  { category: "Glossary", title: "NANOGrav gamma", blurb: "A legacy simplified slope comparison; it is not a bounce detection or current portfolio flagship.", href: "/glossary" },
 ];
 
 export function SearchClient() {

@@ -1,11 +1,4 @@
 import { Badge } from"@/components/ui/badge";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from"@/components/ui/card";
 import { Separator } from"@/components/ui/separator";
 import type { Metadata } from"next";
 
@@ -15,41 +8,35 @@ export const metadata: Metadata = {
     "Future research directions spanning dark energy, black holes, SETI, and particle physics.",
 };
 
-interface SpecCardProps {
+interface SpecItemProps {
   title: string;
   children: React.ReactNode;
   tag: string;
 }
 
-function SpecCard({ title, children, tag }: SpecCardProps) {
+function SpecItem({ title, children, tag }: SpecItemProps) {
   return (
-    <Card className="border-l-4 border-tone-muted">
-      <CardHeader className="pb-2">
-        <CardTitle
-          className="text-base"
-          style={{ fontFamily:"var(--font-mono-stack)" }}
-        >
-          {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {children}
-        </p>
-      </CardContent>
-      <CardFooter className="pt-0">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-          {tag}
-        </span>
-      </CardFooter>
-    </Card>
+    <div className="py-4">
+      <p
+        className="font-semibold text-sm mb-1"
+        style={{ fontFamily: "var(--font-mono-stack)" }}
+      >
+        {title}
+      </p>
+      <p className="text-sm leading-relaxed text-muted-foreground mb-2">
+        {children}
+      </p>
+      <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground opacity-70">
+        {tag}
+      </span>
+    </div>
   );
 }
 
 const sections: Array<{
   heading: string;
   badge: string;
-  cards: SpecCardProps[];
+  cards: SpecItemProps[];
 }> = [
   {
     heading:"Cosmology & Dark Energy",
@@ -59,19 +46,19 @@ const sections: Array<{
         title:"What Is Dark Energy?",
         tag:"ACTIONABLE · w0-wa MCMC · DESI DR2 · Quintom",
         children:
-"73% of the universe is dark energy. The quintom branch of bounce cosmology can unify bounce + dark energy through phantom fields, predicting w-crossing (quintom-B). External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing. Our own program treats this theoretically — Paper 1A's model-discrimination table is explicit that there are zero free-w0–wa samples in our 309,189-sample frozen posterior (Paper 1B). The actionable next step is standing up an in-house quintom MCMC.",
+"The quintom branch of bounce cosmology is a theoretical possibility that predicts w-crossing. External DESI analyses are not a BigBounce result, and our program has not run a free-w0–wa analysis. P1B is namaster-proof research software, not an MCMC paper. The actionable next step would be a separately scoped in-house analysis.",
       },
       {
-        title:"fNL = −35/8: The Decisive Test",
-        tag:"ACTIONABLE (forecast) · SPHEREx ~2028 · Parameter-free",
+        title:"fNL = −35/16: A Conditional Future Test",
+        tag:"ACTIONABLE (forecast) · SPHEREx ~2028 · scoped assumptions",
         children:
-"SPHEREx will measure primordial non-Gaussianity to σ ≈ 1. The matter-bounce prediction is −4.375, parameter-free. Inflation predicts |fNL| < 1. One measurement, one answer.",
+"P2 derives a conditional matter-contraction prediction fNL = −2.1875. SPHEREx may provide a future test, but no present measurement proves a bounce or resolves the model landscape by itself.",
       },
       {
         title:"What Is Dark Matter?",
         tag:"Future · LISA ~2035 · PBH dark matter",
         children:
-"Certain bounce scenarios can produce asteroid-mass primordial black holes as dark matter candidates. The matter-bounce f_NL prediction constrains the primordial power spectrum in a way that naturally regulates PBH overproduction.",
+"Some bounce scenarios motivate asteroid-mass primordial black holes as dark-matter candidates. This remains a theoretical research direction, not a conclusion from the program's surveys or current artifacts.",
       },
     ],
   },
@@ -89,7 +76,7 @@ const sections: Array<{
         title:"Supermassive Black Hole Formation",
         tag:"ACTIONABLE · JWST data · Cross-match with anomaly catalog",
         children:
-"JWST found SMBHs at z > 10 that are too massive too early. PBHs from a bounce-era transition could seed them. Our anomaly catalog might contain their host galaxies.",
+"Early massive black holes motivate several formation hypotheses, including speculative primordial seeds. The legacy anomaly archive is not a discovery catalog and should not be treated as evidence for any such mechanism.",
       },
     ],
   },
@@ -98,10 +85,10 @@ const sections: Array<{
     badge:"Astrophysics",
     cards: [
       {
-        title:"378,280 Uncharacterized Objects",
-        tag:"ACTIONABLE · 37.3M sources · 7 surveys · Paper 3",
+        title:"Exploratory anomaly candidates",
+        tag:"SPECULATIVE · autoencoder pipeline candidates",
         children:
-"Our AI pipeline found 378,280 objects absent from standard catalogs across seven sky surveys. What are they? Full classification and follow-up underway.",
+"Historic exploratory autoencoder runs flagged archival candidates for possible follow-up. They are not confirmed detections and are now legacy/superseded pipeline records. P3 is the integrated Supporting Data Release recovering 181 DESI DR1 TARGETIDs from a frozen historical list, not a standalone discovery claim.",
       },
       {
         title:"Galaxy Morphology: What Shapes Don't Fit?",
@@ -113,7 +100,7 @@ const sections: Array<{
         title:"Time-Domain: What Changed?",
         tag:"ACTIONABLE · NEOWISE/unTimely · ZTF · $200-400",
         children:
-"Cross-matching spectral anomalies with variability data finds objects that are BOTH spectrally AND temporally unusual — the strongest discovery candidates.",
+"A future cross-match could identify candidates that are unusual in more than one modality. Such candidates would still require independent validation and would not by themselves support a bounce claim.",
       },
     ],
   },
@@ -161,13 +148,13 @@ const sections: Array<{
         title:"Multi-Messenger Astronomy",
         tag:"ACTIONABLE · Cross-survey architecture exists",
         children:
-"Combining anomalies across electromagnetic + GW + neutrino data simultaneously. An object anomalous in 2+ surveys is the strongest discovery candidate.",
+"Combining heterogeneous data could prioritize future follow-up candidates. Agreement across pipelines is not a discovery confirmation or evidence for a bounce without independent validation.",
       },
       {
         title:"The Hubify Lab Scaling Vision",
         tag:"ACTIONABLE · This is the plan",
         children:
-"Run anomaly detection on every major public dataset simultaneously. 5+ papers and 10+ public data releases within 12 months. See The Window article.",
+"Build reproducible discovery infrastructure around explicit parent-catalog, model, score, and selection lineage. Any future outputs should be scoped as question-first programs rather than a paper-count target.",
       },
     ],
   },
@@ -196,11 +183,11 @@ export default function SpeculationsPage() {
             <h2 className="m-0">{section.heading}</h2>
             <Badge variant="outline">{section.badge}</Badge>
           </div>
-          <div className="grid gap-3 md:grid-cols-2">
+          <div className="flat-item-list">
             {section.cards.map((card) => (
-              <SpecCard key={card.title} title={card.title} tag={card.tag}>
+              <SpecItem key={card.title} title={card.title} tag={card.tag}>
                 {card.children}
-              </SpecCard>
+              </SpecItem>
             ))}
           </div>
         </section>

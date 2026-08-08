@@ -1,0 +1,29 @@
+{
+  "config_names": [
+    "fsky_0p85"
+  ],
+  "configs": [
+    {
+      "beta_deg": 0.27,
+      "fsky_target": 0.85,
+      "gal_cut_deg": 8.62692655867864,
+      "name": "fsky_0p85"
+    }
+  ],
+  "n_real": 500,
+  "result_bytes": 1021,
+  "result_file": "declared_fsky_0p85.json",
+  "result_sha256": "d1f87ebc580bd2b9acbe3509cff5aa6449a9910db7b2967c24a0e466ee3ff456",
+  "runtime_s": 11167.653421163559,
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "suite": "declared_fsky_sign",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_equivalence_max_abs": 4.973799150320701e-14
+}

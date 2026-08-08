@@ -1,0 +1,38 @@
+{
+  "schema": "p4-computational-closure-sha256/v1",
+  "review_basis": "P4 v1.0.257 exact-PDF truth-audit findings 1-2",
+  "files": [
+    {
+      "path": "pipelines/p2_chirality/scripts/p4_fsc_exact_support_harmonics_v1_0_257.py",
+      "sha256": "7b4aaf5ecbe6461b52f22c78ffa688c408f10effa7edce170925c99f22b7156d"
+    },
+    {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+      "sha256": "5b025a55c1a3dac86e61c005c604437298ce89f3b27056447f7bca2ba3e5ae06"
+    },
+    {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonic_nulls_v1_0_257.npz",
+      "sha256": "51049a3daab996039145b2ea201e28264f0919ec3758f3f8a9056e0230607231"
+    },
+    {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_mask_nspiral_ge10_nside64_v1_0_257.npy",
+      "sha256": "499fa89e8748bb31ef7c539f3c6aee4ed34fb7dc87c75f1120bdc59b1dcf5852"
+    },
+    {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_mask_indices_nspiral_ge10_nside64_v1_0_257.npy",
+      "sha256": "a964f7a4760a4b91a254dfa3b98cdb04f54b94515fa16ccb976306247b2b10d0"
+    },
+    {
+      "path": "pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+      "sha256": "5fd29348633ba3b42adc0eba969c731695b2c315f2d458f23fd6a1fe4faf5b57"
+    },
+    {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
+      "sha256": "cda8bbac0f9bc7765ab0a89ef41b2bfbe41e9725b228639d33c58185571ea397"
+    },
+    {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.npy",
+      "sha256": "3a03ca4b008844fd8bf16be4e1e7e918ceaf580992d9462d54233f417e32ce7d"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "job": "GZ1-HUMAN-LABEL-ONLY full-N dipole (referee underpowered-independence closure)",
+  "date_utc": "2026-07-15T11:10:28Z",
+  "label_source": "Galaxy Zoo 1 Table 2 HUMAN votes P_CW/P_ACW (Lintott+2011); NO CE-ResNet, NO learned model in the chirality label chain",
+  "position_source": "DESI chirality catalog_production.parquet (ra,dec footprint ONLY)",
+  "cross_match": {
+    "tol_arcsec": 1.0,
+    "method": "KDTree unit-vector nearest"
+  },
+  "estimator": {
+    "source": "run_dipole_catalog_c.py (byte-identical recipe)",
+    "nside": 64,
+    "min_pix_count": 10,
+    "conf_cut": 0.6,
+    "n_mc": 10000,
+    "mc_seed": 20260418
+  },
+  "selection": {
+    "n_gz1_total": 667944,
+    "n_gz1_spirals": 190225,
+    "n_gz1_confident": 48414,
+    "n_matched_to_desi": 46017,
+    "cw_fraction_human_matched": 0.4835821544211922,
+    "n_pix": 394,
+    "n_support_galaxies": 4963,
+    "n_excluded_matched_by_pixel_cut": 41054,
+    "f_sky": 0.008015950520833334
+  },
+  "dipole": {
+    "amplitude": 0.05461859956457883,
+    "l_deg": 105.77716229984561,
+    "b_deg": 51.803743234510996,
+    "monopole": -0.05577095881112934
+  },
+  "null_per_pixel_permutation": {
+    "mean": 0.07297725487299808,
+    "std": 0.0340462475236528,
+    "z_sigma": -0.53922698222954,
+    "rank_p": 0.6659334066593341,
+    "k": 6659
+  },
+  "null_per_galaxy_binomial": {
+    "mean": 0.07346791958672981,
+    "std": 0.034188247654991136,
+    "z_sigma": -0.5513391681366029,
+    "rank_p": 0.675032496750325,
+    "k": 6750
+  },
+  "comparison": {
+    "prior_gz1only_model_N": 14964,
+    "prior_gz1only_model_z": -0.0442,
+    "prior_gz1only_model_source": "outputs/gz1only_dipole_result.json (pod, 20k stream cap)",
+    "headline_ceresnet_N": 949584,
+    "headline_ceresnet_sigma": 0.41,
+    "headline_source": "outputs/canonical_provenance/catalog_c_post_tta_dipole_summary.json"
+  },
+  "wall_seconds": 74.2
+}

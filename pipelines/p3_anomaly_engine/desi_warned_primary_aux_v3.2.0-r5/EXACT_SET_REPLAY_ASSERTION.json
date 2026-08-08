@@ -1,0 +1,29 @@
+{
+  "all_carried_source_fields_exact": true,
+  "boundary": "Secondary warning-bearing follow-up list only; not the primary catalog, not physically validated, and not a purity/rate/selection-efficiency result.",
+  "checkpoint_parts": 143,
+  "exact_key_set_and_order": true,
+  "exact_set_sha256_cluster_target_fits_zwarn": "2cc02e4b839073a3d2664c57614a6b20205a3d1d9d68d71851b72ccb4794ee78",
+  "exact_zwarn_mask_counts": {
+    "2": 787,
+    "2048": 3,
+    "2050": 10,
+    "2052": 2,
+    "2054": 19,
+    "4": 152,
+    "6": 1294
+  },
+  "global_primary_rows": 2448,
+  "pre_post_dedup_rows_equal": true,
+  "product_role": "SECONDARY_WARNING_BEARING_NOT_PRIMARY_NOT_PHYSICALLY_VALIDATED",
+  "raw_matches": 2468,
+  "scope": "P3 v3.2.0-r5 warned-primary secondary product exact checkpoint replay",
+  "status": "PASS",
+  "validated_utc": "2026-07-14T17:21:41Z",
+  "warned_primary_rows": 2267,
+  "zwarn_set_bit_counts_nonexclusive": {
+    "1": 2110,
+    "11": 34,
+    "2": 1467
+  }
+}

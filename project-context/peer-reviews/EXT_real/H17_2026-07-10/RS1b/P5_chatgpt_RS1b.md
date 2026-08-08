@@ -1,0 +1,44 @@
+VERDICT: REJECT
+
+ISSUES:
+
+[MAJOR] Section VIII A/B/E, primary VoidFinder sample: the analysis uses 101,863 hole spheres associated with all 3,765 maximal voids, but it never documents mapping each hole to the maximal-sphere EDGE flag and excluding edge voids. DESIVAST reports that more than 60% of its detected DR1 voids are edge voids, whose shapes are substantially affected by the survey boundary; therefore the claimed “clean” primary void sample may be dominated by boundary-defined structures. The analysis must be repeated using interior voids and the catalog’s official fiducial-volume or boundary cuts. 
+arXiv
+ 
+
+ext_P5_RS1b
+
+[MAJOR] Section VIII B, “footprint-restricted” control: the footprint is an author-defined union of projected hole-sphere discs intersected with a radial span, not the published DESIVAST/BGS angular-completeness mask, veto mask, or random catalog. The manuscript itself acknowledges that this does not match fiber completeness, imaging depth, or radial selection, but later calls it a matched selection function. Void and non-void samples must be balanced or standardized in redshift, sky position, apparent magnitude, size, morphology, confidence, and imaging conditions using the official mask/randoms or per-void matched controls.
+
+[MAJOR] Section V B and Tables X/XIV, multiplicity bookkeeping: the designated primary estimator—exact membership with the footprint-restricted control—is absent from the stated Bonferroni-5 family; Table XIV instead includes the approximate k=20, unrestricted-control VoidFinder result. Membership, geometry, and control-volume variants therefore add uncounted post-hoc choices. Moreover, Bonferroni non-rejection is not evidence of equivalence; a scientifically motivated equivalence margin and simultaneous confidence intervals for the actual prespecified estimands are required.
+
+[MAJOR] Table XI, claimed 0.9 percentage-point “effective 2σ” envelope: the root-sum-square combines a 95% statistical half-width with maximum excursions from correlated alternative definitions, different parent samples, confidence cuts, and footprint choices as though they were independent Gaussian uncertainties. Several entries are changes of estimand rather than nuisance uncertainties. The manuscript’s own Bonferroni simultaneous interval permits approximately 1.1 percentage points, so the 0.9-point number cannot be presented as the stronger calibrated upper bound.
+
+[MAJOR] Section VIII, RSD bound: the reported reconstruction shift −0.069→−0.045 percentage points does not correspond to the declared exact footprint-restricted primary contrast, which is +0.18 percentage points under the manuscript’s stated sign convention; it corresponds to an unrestricted any-hole contrast with the opposite sign convention. In addition, displacing galaxies and already-published holes without rerunning VoidFinder cannot quantify the RSD-induced change in the void catalog itself. The 0.02-point term should not enter the primary systematic budget without a consistent full-catalog reconstruction.
+
+[MAJOR] Appendix A and Sections XII–XIII, classifier error and de-attenuation: dividing by 2a−1 using the overall 69.91% accuracy assumes equal sensitivity and specificity, environment-independent errors, and environment-independent selection into the CW/CCW rather than NS classes. The void validation contains only 933 human-labelled objects, permits several-percentage-point differential error, and tests only CW-to-CCW versus CCW-to-CW asymmetry—not NS rejection, completeness, or morphology-dependent selection. Consequently the claimed 2.26-percentage-point physical-chirality bound is unsupported.
+
+[MAJOR] Sections V and VIII, uncertainty calculation: the two-proportion binomial analysis treats all galaxies as independent Bernoulli trials, although galaxies share voids, HEALPix regions, imaging calibration, target-selection systematics, and potentially physical spin correlations. At sub-percent precision, inference must use void-level and sky-region block bootstrap or jackknife errors, cluster-robust regression, and stratified permutations preserving redshift, imaging leg, and classifier-quality structure.
+
+[MAJOR] Sections VIII C–D, V2 membership: a sphere centered on a watershed void with its effective radius is not a valid representation of its irregular, hierarchical GALZONE membership. The REVOLVER and VIDE sphere-PIS rows are author-created geometric proxies, while the catalog-native rows use a much smaller tracer-only parent of 145,789 objects. Combining these as five measurements of one common estimand does not demonstrate algorithmic robustness; official memberships must be evaluated on a common, clearly defined parent.
+
+[MAJOR] Sections IV, VI, VII, and IX, T-Web analysis: the canonical field is derived from a strongly redshift-dependent, initially unweighted selection function using a masked, zero-padded FFT, with a 25.9 h
+−1
+ Mpc cell comparable to the nominal 25 h
+−1
+ Mpc smoothing scale. The random-weighted rebuild changes roughly 73% of galaxy assignments and reduces the void-volume fraction by about a factor of 23, demonstrating that the canonical classes largely encode survey geometry and selection. Obtaining a null result under two mutually inconsistent classifiers is not meaningful cross-validation; this analysis must be rebuilt with proper randoms and boundary treatment or removed.
+
+[MAJOR] Section XII and Appendix B, fundamental-physics interpretation: the empirical observable is projected classifier-labelled arm winding in one coarse void-versus-complement contrast, with no demonstrated transfer from primordial parity violation or bounce physics. The proposed operator is also misclassified: for pseudoscalar ϕ, both ∇ϕ⋅∇ρ and 
+L
+^
+⋅
+∇ρ
+	​
+
+ are pseudoscalars, so their product is parity-even, not parity-odd. The EFT coupling estimate and bounce/inflation constraints should be removed.
+
+[MAJOR] Sections II/XIII and Appendices A/D/E, external dependency and reproducibility: the central labels, accuracy calibration, and monopole interpretation come from an unpublished companion manuscript with an unresolved arXiv identifier, while the archival DOI is deferred until acceptance. Publication requires coordinated review of Paper IV, immutable exact catalog/model revisions, a demonstrably held-out validation set, and a complete archived pipeline capable of regenerating the primary sample and all uncertainty calculations.
+
+[MINOR] Title, abstract, and conclusions: a binary void-versus-complement non-rejection does not establish general “environment independence,” particularly because opposing effects among walls, filaments, and clusters could cancel in the complement. The manuscript should say “no detected difference in the specified redshift-space classifier-label contrast” and should be shortened substantially, with the invalid or non-load-bearing T-Web, Tempel, ASTRA, EFT, and repeated defensive material moved to supplementary material or removed.
+
+The central claim is not supported: the raw counts show only a non-rejection for the current classifier labels, not a controlled environmental null or a calibrated 0.9-percentage-point classifier-label and 2.26-percentage-point physical-chirality bound.

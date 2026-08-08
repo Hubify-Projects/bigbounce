@@ -1,0 +1,60 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-dipole-8m-fullcatalog",
+  "title": "Dipole analysis (8.47M full-catalog)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/run_dipole_8M.py",
+      "entrypoint": "python3 run_dipole_8M.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, healpy, pandas, matplotlib — see requirements.txt",
+    "hardware": "gpu-40gb"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "H200",
+    "pod_id_or_host": "historical pod, terminated 2026-04-17",
+    "date": "2026-04-17",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod A100/H200-class GPU for the full 8.47M-galaxy dipole computation",
+    "est_wall_clock": "several hours, scaling with catalog size and TTA passes",
+    "est_cost_usd": 10.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Only the termination date and 'H200 pod' venue are evidenced; the full dipole JSON is only partially reconstructed from a log, not re-run from scratch, so this experiment needs-data-restore rather than being cleanly runnable-now."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/dipole/summary.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/dipole/fig_dipolar_skymap.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/dipole/fig_dipolar_power_spectrum.png",
+      "type": "figure",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run the full 8.47M-galaxy dipole analysis and confirm 2.31 sigma raw dipole significance and 0.43 sigma post-TTA (test-time-augmentation-corrected) significance, within +/-0.1 sigma numeric tolerance.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — dipole analysis (8.47M full-catalog) bullet",
+    "project-context/SSOT/paper-4/status.md"
+  ]
+}

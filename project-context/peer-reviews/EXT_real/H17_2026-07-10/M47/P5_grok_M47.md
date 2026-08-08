@@ -1,0 +1,11 @@
+VERDICT: MAJOR REVISIONS
+
+ISSUES:
+
+[MAJOR] Section V.B (and abstract, §I, Table IV): The focal analysis hierarchy (released GALZONE + OUT=0 + VoidFinder hole-union) was explicitly changed after data inspection and venue review; designating one post-hoc path as focal while labeling the study "exploratory" and "not preregistered" creates selective-reporting risk and violates standard practice for even descriptive claims in cosmology/LSS papers.
+[MAJOR] Abstract, §I, §VI.A, §VIII: The central result is presented as a catalog-native "test" of environment dependence, yet the text simultaneously states no model predicts a signal, the result is purely classifier-label non-detection (not physical or real-space), and the 95% CI width (~0.013) only constrains differences at the ~1% level; this mismatch between framing and actual scientific reach requires major re-scoping.
+[MINOR] §III.C–D, §VIII.A–B: Cross-match and parent construction (694k → 145k quality rows) introduce implicit selection via the Paper IV imaging classifier (morphology, magnitude, leg-dependent systematics); while sensitivities are shown, quantitative assessment of how matching affects void vs. non-void representativeness (e.g., via randoms or completeness weights) is missing.
+[MINOR] §V, §VI.A, §VIII: The logistic standardization + coarse NSIDE=4 cluster-sandwich is appropriate in principle, but the paper provides no balance diagnostics, effective degrees of freedom after splines, or robustness to knot placement/spline order; the reported SE and p-value therefore rest on an unvalidated model specification.
+[MINOR] §II, Appendix A: Heavy dependence on the companion Paper IV catalog (monopole, labels, equivariance) that is still "in preparation"; the summary here is helpful but insufficient for a standalone PRD submission—key validation numbers (e.g., per-leg residuals, TTA performance on DESI imaging) must be either reproduced or the submission deferred until the catalog paper is public.
+
+The central claim (no statistically significant difference in classifier-labelled CW fraction between the focal DESIVAST void and non-void arms after covariate standardization) is supported by the reported ∆f_CW = +0.0013, p = 0.71, and CI containing zero.

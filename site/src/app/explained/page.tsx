@@ -1,9 +1,3 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from"@/components/ui/card";
 import { Separator } from"@/components/ui/separator";
 import type { Metadata } from"next";
 
@@ -18,7 +12,7 @@ export default function ExplainedPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Non-Technical Explainer &middot; June 2026
+          Non-Technical Explainer &middot; July 2026
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           The Big Bounce, Explained
@@ -87,36 +81,33 @@ export default function ExplainedPage() {
           should see in the sky today. Our research program has identified the
           key discriminators:
         </p>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
+        <div
+          className="mt-4 rounded-lg p-5"
+          style={{ background: "color-mix(in srgb, var(--surface-2) 55%, transparent)" }}
+        >
+          <div className="grid gap-5 md:grid-cols-2">
+            <div>
+              <p
+                className="font-semibold text-sm mb-1"
+                style={{ fontFamily: "var(--font-mono-stack)" }}
               >
-                f<sub>NL</sub> = &minus;35/8
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+                f<sub>NL</sub> = &minus;35/16
+              </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 The matter-bounce scenario predicts a specific pattern in how
                 galaxies cluster — a &ldquo;non-Gaussianity&rdquo; signal of
-                &minus;4.375. Inflation predicts this number should be nearly
+                &minus;2.1875. Inflation predicts this number should be nearly
                 zero. NASA&apos;s SPHEREx mission (~2028) will measure this
                 directly.
               </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
+            </div>
+            <div>
+              <p
+                className="font-semibold text-sm mb-1"
+                style={{ fontFamily: "var(--font-mono-stack)" }}
               >
                 Dark Energy Dynamics
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+              </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Whether dark energy&apos;s strength changes over time is one of
                 the open questions the bounce can speak to. The quintom branch
@@ -127,45 +118,38 @@ export default function ExplainedPage() {
                 theoretically — we have not yet run a free-w<sub>0</sub>&ndash;w
                 <sub>a</sub> MCMC ourselves; that&apos;s a planned next step.
               </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
+            </div>
+            <div>
+              <p
+                className="font-semibold text-sm mb-1"
+                style={{ fontFamily: "var(--font-mono-stack)" }}
               >
                 Gravitational Wave Hum
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+              </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 NANOGrav detected a cosmic gravitational wave background. The
                 bounce predicts a specific spectral shape (&gamma; = 3.0). The
                 measured spectral slope (our real free-spectrum re-fit) is 2.567 &plusmn; 0.382 — consistent at +1.13σ, while the black-hole-binary value 4.33 is excluded at +4.61σ.
               </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
+            </div>
+            <div>
+              <p
+                className="font-semibold text-sm mb-1"
+                style={{ fontFamily: "var(--font-mono-stack)" }}
               >
-                378,280 Anomalies
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Our AI pipelines have scanned 37.3 million astronomical sources
-                across seven surveys, finding 378,280 objects that do not match
-                known patterns. These anomalies supply candidate high-bias
-                tracers that could sharpen the f<sub>NL</sub> measurement
-                (central forecast improvement 9.4%, consistent with zero
-                improvement at current signal-to-noise).
+                Anomaly-detection pipeline &amp; public-ID recovery
               </p>
-            </CardContent>
-          </Card>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                An exploratory autoencoder anomaly-detection pipeline scored
+                millions of archival survey spectra to build a candidate list.
+                Paper 3 is the reproducible <strong>public-ID recovery</strong> of
+                181 DESI DR1 TARGETIDs from a frozen historical anomaly list (170
+                high-coordinate-consistency core + 11 lower-confidence) — an
+                archive-recovery / provenance product, explicitly not a purity,
+                novelty, or detection claim.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -174,7 +158,7 @@ export default function ExplainedPage() {
         <p>
           SPHEREx launches around 2028 and will measure f<sub>NL</sub> to a
           precision of about &plusmn;1. If it finds f<sub>NL</sub> near
-          &minus;4.375, that&apos;s strong evidence for the bounce. If it
+          &minus;2.1875, that&apos;s strong evidence for the bounce. If it
           finds f<sub>NL</sub> near zero, the bounce (in its simplest form) is
           ruled out.
         </p>

@@ -300,7 +300,7 @@
 <!-- ═══════════════════════════════ KEY FINDINGS ═══════════════════════════════ -->
 <div class="callout callout-info" style="margin: 32px 0; padding: 22px 24px;">
   <h2 style="border: none; margin: 0 0 12px; padding: 0;">Key Science Findings</h2>
-  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Comprehensive analysis of 8,474,531 galaxies &mdash; the largest galaxy chirality catalog ever produced. 100% coordinate match with GZ DESI Zenodo catalog. 949,584 high-confidence spirals (confidence &gt; 0.6).</p>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Comprehensive analysis of 8,474,531 galaxies &mdash; the largest galaxy chirality catalog ever produced. 100% coordinate match with GZ DESI Zenodo catalog. 949,584 pre-quarantine high-confidence spirals (confidence &gt; 0.6); the released quality-controlled catalog carries 890,069 rows after label quarantine.</p>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 14px;">
 
@@ -438,7 +438,7 @@
       </a>
       <div class="gx-fig-caption">
         <div class="gx-fig-title">Fig 8. Confidence Distribution</div>
-        <div class="gx-fig-desc">Distribution of classifier confidence across all 8.47M galaxies, broken down by class. The model is highly confident on NOT_SPIRAL classifications. Among spirals, 949,584 exceed the 0.6 confidence threshold.</div>
+        <div class="gx-fig-desc">Distribution of classifier confidence across all 8.47M galaxies, broken down by class. The model is highly confident on NOT_SPIRAL classifications. Among spirals, 949,584 exceed the 0.6 confidence threshold pre-quarantine (890,069 rows remain in the released quality-controlled catalog).</div>
         <span class="gx-fig-ref">Context: Classifier performance</span>
       </div>
     </div>
@@ -652,7 +652,7 @@
     <div class="gx-pipeline-item"><strong>Status:</strong> <span class="chip chip-sm chip-novel">COMPLETE</span> &mdash; Catalog C production run</div>
     <div class="gx-pipeline-item"><strong>Dipole:</strong> +0.41&sigma; (null &mdash; A<sub>dip</sub> &lt; 6.8&times;10<sup>&minus;3</sup> at 95% UL)</div>
     <div class="gx-pipeline-item"><strong>Runtime:</strong> 4.1 hours on H200 (32&times; DataLoader speedup)</div>
-    <div class="gx-pipeline-item"><strong>High-confidence spirals:</strong> 949,584 (confidence &gt; 0.6)</div>
+    <div class="gx-pipeline-item"><strong>High-confidence spirals:</strong> 949,584 pre-quarantine (confidence &gt; 0.6) &rarr; 890,069 released quality-controlled rows</div>
     <div class="gx-pipeline-item"><strong>Cutout size:</strong> 150 &times; 150 px</div>
     <div class="gx-pipeline-item"><strong>Coordinate match:</strong> 100% vs GZ DESI Zenodo catalog</div>
     <div class="gx-pipeline-item"><strong>Dataset:</strong> <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">bamfai/galaxy-chirality-catalog</a></div>

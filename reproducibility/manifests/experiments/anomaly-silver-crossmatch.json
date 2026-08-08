@@ -1,0 +1,50 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-silver-crossmatch",
+  "title": "Silver crossmatch (2,145-row SNR-filtered slice)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "crossmatch",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/scripts/silver_crossmatch.py",
+      "entrypoint": "python3 silver_crossmatch.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "pandas, numpy, requests, xml.etree.ElementTree — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes to low hours (depends on external crossmatch service throughput)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Result JSON is preserved and recountable per audit; the 2,145-row SNR-filtered slice can be re-derived locally without GPU."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/silver_crossmatch/silver_crossmatch_summary.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the silver-tier crossmatch summary reproduces the 2,145-row SNR-filtered slice count (exact row-count equality expected; no numeric tolerance needed for a deterministic filter pass).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — silver crossmatch (2,145-row SNR-filtered slice) bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md"
+  ]
+}

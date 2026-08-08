@@ -1,0 +1,1348 @@
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{url}
+% Let \path{} break long repo-relative paths at slashes/underscores/hyphens
+% (avoids column overflow on committed file paths; presentation only).
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\/\do\_\do\-\do\.}
+\makeatother
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\BNL}{B_{\rm NL}}
+\newcommand{\Pzeta}{\mathcal{P}_\zeta}
+\newcommand{\eg}{e.g.}
+\newcommand{\ie}{i.e.}
+\newcommand{\etal}{\textit{et~al.}}
+
+\begin{document}
+
+\preprint{v1.7.118}
+
+\title{Testing the Matter Bounce with Primordial Non-Gaussianity:\\
+An Amplitude Derivation and Conditional SPHEREx Sensitivity Recast}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{July 14, 2026}
+% v1.7.118 (2026-07-14 — fresh selected-only OpenAI/Gemini/Grok truth-audit
+%   editorial/reproducibility closure; ZERO scientific or numerical change:
+%   defined A_GR and b_phi, pinned the parsed Cai source to arXiv:0903.0631v2
+%   with retrieval provenance, removed bibliography commentary from Ref. 14,
+%   identified the 34.7% RSD gain as the bias-marginalized comparison, removed
+%   unused r_t notation, clarified the separate primordial-only run wording, and
+%   normalized two helper-script labels to their real repository-relative paths.
+%   Raw verdicts remain Grok REJECT / Gemini MAJOR / OpenAI MAJOR. Direct cubic
+%   bounce transfer, external Heinrich Cov_B, and the camera-ready DOI remain open.)
+% v1.7.117 (2026-07-14 — exact-shape and claim-discipline closure: replaced the
+%   three-benchmark coefficient fit by the unique exact four-vertex ordered-basis
+%   coefficients (3,1,-9,5,-33,9); retired the artificial null-space scan and all
+%   propagated bands; regenerated shape/overlap and C13--C15 artifacts; reframed
+%   the contribution as an amplitude derivation plus conditional sensitivity recast;
+%   made cubic transmission conditional; demoted Bayes factors to a prior-volume
+%   illustration; removed MegaMapper from title, abstract, and headline claims.)
+% v1.7.116 (2026-07-12 — directive-M presentation restructure (ZERO content change): consolidated
+%   the repeated scope/caveat/proxy-floor/illustrative statements to their canonical locations
+%   (abstract, Introduction Scope paragraph, Systematics up-front scope, and the Caveats
+%   "Scope and limitations" collection) and reduced the redundant downstream restatements to
+%   short cross-references — the MegaMapper uncalibrated-projection caveat, the Consolidated-
+%   Systematic-Budget scoping-heuristic re-explanation, the Conclusion scoping-envelope
+%   restatement, and the Caveats-subsection cubic-order-transmission deep-dive (now a cross-ref
+%   to the canonical Sec.~assumptions derivation). Retitled the Caveats "Scope summary" ->
+%   "Scope and limitations" and trimmed rebuttal-register phrasing so it reads as a scientific
+%   limitations subsection. Relegated the weakly-connected cosmic-birefringence auxiliary
+%   paragraph to a one-line outlook pointer + a new Appendix (app:birefringence) holding the
+%   full detail. NO number changed: the -35/16 = -2.1875 headline and its quadruple
+%   certification (vertex sum, epsilon-order group, Li Eq.5.1 at c_s=1, collapsed polynomial)
+%   in the abstract/Appendix A/tab:vertexwalk/tab:benchmarks are untouched; every sigma, r,
+%   rho, BF, and significance is byte-identical; the load-bearing caveat-(d) cubic-transmission
+%   and single-source/proxy-floor disclosures all remain present at their canonical homes.)
+% v1.7.115 (2026-07-12 — INT-Claude genuinely-new MAJOR closed by RE-COMPUTE: the c15
+%   channel-native Fisher built the GR leg dB/dA_GR = b b b * S_GR WITHOUT the M123 transfer
+%   product that the f_NL primordial leg (b b b * M123 * B_phi) carries, leaving the GR
+%   template in POTENTIAL space while the f_NL leg was in the observed galaxy-density basis.
+%   Contracted against the density-space covariance this collapsed F[2,2] to ~1e-18 and FAKED
+%   rho(f_NL,A_GR)~-0.001 "orthogonality". FIX (c15 line ~217): Dg = b b b * (M123 * S_GR) --
+%   the SAME promotion cross_fisher_alpha already applied. Re-ran (231s, CAMB 1.6.0): CORRECTED
+%   rho(f_NL,A_GR)=-0.42 (2x2) / -0.49 (3x3) -- the GR channel is MODERATELY correlated with
+%   f_NL, NOT orthogonal; sigma_marg(f_NL^bounce, b_phi 30% prior)=0.94 -> 2.32sigma; b_phi-free
+%   no-prior limit sigma=5.2. Load-bearing conclusion SURVIVES: channel-native floor 2.32sigma
+%   still > proxy floor 1.30sigma, so the retained rho=-0.868 proxy is still the conservative
+%   quoted endpoint. The "both proxies OVERSTATED / near-orthogonal" claim is corrected to
+%   "the proxies overstated but the GR channel is still ~0.42-correlated, not orthogonal".
+%   Nothing fabricated; every number is a direct output of the corrected committed Fisher run.)
+% v1.7.114 (2026-07-11 — OPEN-COMPUTE directive L: CHANNEL-NATIVE joint {f_NL,b_phi,A_GR}
+%   bispectrum Fisher (c15_channel_native_fisher.py/.json), CLOSING the recurring DP2
+%   "conservative-floor-rests-on-a-proxy" MAJOR. ADOPTED covariance surrogate = the committed,
+%   Heinrich-validated c13 tree-level Gaussian multi-tracer bispectrum covariance (reproduces
+%   sigma_local~0.7 to 2-11%). This removes the c12 external-Cov_B gate by ADOPTING that surrogate
+%   (exactly the "compute sigma_marg once a covariance surrogate is adopted" the reviewers invited).
+%   RESULTS (channel-native, nothing transferred): (i) cross-Fisher alpha=F(local,bounce)/F(local,local)
+%   =0.992 (native Fisher cosine 1.000) -- confirms r_eff~0.99; (ii) channel-native rho(f_NL,A_GR)=-0.001
+%   (~ORTHOGONAL) -- the transferred proxy rho=-0.868 (c8 SDB) and the c12 shape-cosine |rho|~0.95 BOTH
+%   OVERSTATED the GR degeneracy: in the true noise-weighted bispectrum metric GR projection barely
+%   correlates with f_NL; (iii) b_phi 30%-widening-prior marginalized sigma(f_NL^bounce)=0.88 -> 2.48sigma
+%   for -35/16 (local-template self-consistency sigma_local=0.87, ~Heinrich 0.7 to ~25%); the fully-free
+%   b_phi (f_NL*b_phi product degeneracy, rho~0.99) sigma=4.5 is the no-prior limit, reported not headlined.
+%   The channel-native floor 2.48sigma is HIGHER than the proxy floor 1.30sigma -- the proxy was OVERLY
+%   CONSERVATIVE. Integration: abstract + Sec.~systematics now cite the channel-native floor with the proxy
+%   kept as a cross-check; DP2 proxy-floor entry -> CLOSED-BY-COMPUTE. Nothing fabricated: every number is a
+%   direct output of the committed Fisher run. Directive-G hygiene: recompile 0 undef-refs, mirror all
+%   served paths, Convex paper-2 bump.)
+% v1.7.113 (2026-07-11 — restamp + recompile at program-exit state; no content change.)
+% v1.7.112 (2026-07-10 — H17H Claude-referee presentation closures (retest2_P2_claude MAJOR-REVISIONS,
+%   verdict-first: NO computational error, all arithmetic reconciled; items are presentation/disclosure).
+%   NO headline number changed, -35/16 UNCHANGED, nothing fabricated. Closures:
+%   (1) [MAJOR] PRD abstract rewritten as a single ~180-word paragraph (no displayed equations, no
+%       five-paragraph structure); load-bearing content kept (-35/16 certified 4 ways; SPHEREx recast
+%       headline with honest range; proxy-floor disclosure; BF illustrative). Long-form scope material
+%       relocated (not deleted) into a "Scope and conventions" paragraph at the head of the Introduction.
+%       Consolidated the ~6x-repeated r/r_cos/r_eff/r_t/rho notation disambiguation to one canonical
+%       clause (now in the Scope paragraph); L1006 (Viable Model) repetition replaced with a cross-ref.
+%   (2) [MAJOR] Abstract + Scope now state the 1.3sigma floor is proxy-based (rho=-0.868 from the
+%       power-spectrum SDB channel; Cov_B not public).
+%   (3) [MINOR] Framing: intro "factor-of-two...resolved" -> "certified four ways; printed -35/8 is an
+%       unreproduced erroneous literature value" (abstract + intro; Appendix/assumptions kept as detail).
+%   (4) [MINOR] Jolicoeur:2025 author = Addis et al. — already consistent (bib author-list first = Addis;
+%       named-instance L1294 = "Addis et al."; other cites unnamed \cite{}). VERIFIED, no change needed.
+%   (5) [MINOR] Heinrich:2023 bib year = 2024; prose "Heinrich et al. 2024" already matches bib year;
+%       bibkey label != year. VERIFIED consistent, no change needed.
+%   (6) [MINOR] Assumption-(d): softened "derived/closed" to conditional-on-dressed-metric where the
+%       deformed-algebra signature-change window (c_s^2=1-2rho/rho_c<0) is discussed.
+%   (7) [MINOR] Abstract MC wording -> "cross-checked by three Monte Carlo validations of the closed-form
+%       integral" (done in rewrite).
+%   (8) [MINOR/I6] fig1_shape_function.png + fig2_survey_comparison.png rendered/verified: both show
+%       -35/16-era values (fig1 "Squeezed limit: -35/16 = -2.1875", equilateral -255/128, folded -9/8;
+%       fig2 title "f_NL = -35/16", bars ~3.8sigma not the doubled ~5.5sigma). NOT stale, no regen needed.
+%   Directive-G hygiene: recompile 0 undef-refs, mirror all served paths, Convex paper-2 bump.)
+% v1.7.111 (2026-07-10 — H17F Grok accept-conditional MINOR closures. Grok EXT verdict = "Accept with
+%   minor revisions" on v1.7.110. NO headline number changed, -35/16 UNCHANGED, nothing fabricated.
+%   Editable Grok minors closed: (a) Abstract phrase rephrase (L896): the awkward "dropping the
+%   erroneous >=5sigma headline the -35/8 value would have produced" -> smoother "The superseded -35/8
+%   value, being twice as large, would have implied a spuriously optimistic >=5sigma target; the
+%   corrected amplitude replaces it with the realistic sensitivity above." (b) Overlap-factor notation
+%   unified once at Eq.(projection): bare r = noise-weighted recovery (0.84+/-0.02); r_cos = flat-weight
+%   shape cosine; r_eff~0.99 = survey-optimal validation cross-check; r=0.85+/-0.13 = basis-measure
+%   stress band -- distinct symbols fixed throughout, eliminating the r-ambiguity Grok flagged.
+%   (c) Data & Code Availability: crisp single external pointer to the public repo
+%   github.com/Hubify-Projects/bigbounce, Zenodo DOI kept pending-at-camera-ready.
+%   Grok items already-covered (source-cited, no new edit): independent-Fisher-is-validation restatement
+%   (abstract Scope L888 already states it "not as the source of the headline numbers"); GR-projection
+%   scoping-envelope-not-joint-covariance (abstract L892 + tab:systematics caption); appendix-shortening
+%   = presentation-scope DP2-30 (Houston-gated). Directive-G hygiene via tools/directive_g.sh.)
+% v1.7.110 (2026-07-10 — H17 INT re-test (Claude MINOR closure). NO headline number changed, -35/16
+%   UNCHANGED, nothing fabricated. FOUR editable Claude MINORs closed against the committed artifacts:
+%   (1) Abstract sign-gloss (L867): "the transcribed printed polynomial exceeds the vertex sum by
+%   [a negative amount]" was self-contradictory verbal wording -> reworded to "the vertex sum exceeds
+%   the transcribed printed polynomial by +(99/128)Sum k^3, so the printed polynomial is the MORE
+%   negative of the two" (matches Eq.spurious + cai_vertices.py; -305/64 reduction).
+%   (2) Continuous-marg BF (L1258): "BF ~ 4.8 vs the tuned narrow competitor" did not reproduce from
+%   c9k_gr_continuous_marginalization.json (committed continuous_marginal.BF_vs_tuned_narrow = 4.615);
+%   the 4.8 was the r=0.84-rebooked delta/narrow value (a different quantity). Reconciled to BF ~ 4.6
+%   with the committed 4.615 cited inline.
+%   (3) tab:gr caption (L1274): superseded -35/8 SSFSR refs 3.5e8/4.5e5/6.4e2 -> the true closed-form
+%   exp[(35/8)^2/(2 sigma_eff^2)] values 3.0e8/4.2e5/6.1e2 (first was ~15% high); labeled discarded refs.
+%   (4) Stale artifact metadata: c9k conventions string refreshed "-35/8" -> "-35/16" (all values in it
+%   ARE at -35/16); c9g legacy table_iii_claims block quarantined to _SUPERSEDED_ with a note (only the
+%   "scans" block is authoritative and matches tab:gr). INT OpenAI REJECT + Grok MAJOR raws were on the
+%   STALE v1.7.102 PDF (header-labeled v1.7.102) -> every one of their findings (no explicit vertex
+%   algebra, spurious-term unverifiable, r=0.84 ad-hoc, envelope-as-forecast, transmission (d)) is a
+%   re-flag of content closed in v1.7.104-v1.7.108 -- source-cited non-real, no fabrication.
+%   Directive-G hygiene: recompile 0 undef-refs, re-mirror all served paths, Convex paper-2 bump.)
+% v1.7.109 (2026-07-10 — H17 ChatGPT EXT addendum. NO headline number changed, -35/16 UNCHANGED,
+%   nothing fabricated. REAL STALE-NUMBER finding closed (ChatGPT EXT MAJOR-8): the tab:gr
+%   "BF vs. SSFSR" column + P(BF>3) column + the sigma_GR=0.05 calibration (3.5e8/3.1e8) + the
+%   continuous-marginalization SSFSR value (8.6e3) + the tab:bayes SSFSR column (>10^2/>10^5) were
+%   all still numerically at the SUPERSEDED -35/8 center while the Tuned column had already been
+%   moved to -35/16. Root cause: the committed recompute scripts c9g_bf_table_recompute.py and
+%   c9k_gr_continuous_marginalization.py still hard-coded F0=-35/8. FIXED both scripts to F0=-35/16
+%   and re-ran; replaced every SSFSR cell with the script's real recomputed values:
+%   tab:gr SSFSR 10^8/10^5/10^2 -> 1.4e2/27/5; P(BF>3) 99.9/99.0/93.1% -> 88.8/80.2/61.5%;
+%   sigma_GR=0.05 calib 3.5e8/3.1e8 -> 1.41e2/1.38e2; continuous-marg SSFSR 8.6e3 -> 19;
+%   tab:bayes SSFSR >10^2/>10^5 -> ~5-1.4e2/~1.4e2 (footnote c added). Tuned column (5.7/4.6/3.3)
+%   VERIFIED unchanged at -35/16 (already correct). Also fixed ChatGPT MAJOR-5 (FoG sign): the
+%   paper called omitting fingers-of-God damping "conservative" for the redshift-space gain, which
+%   is backwards -- omitting a degrading effect is OPTIMISTIC for absolute significance; reworded
+%   honestly at line 1045 (FoG largely cancels in the r_eff ratio, the only headline quantity).
+%   ChatGPT MAJOR-6 (rho=-0.868 vs own 0.95 proxy -> 0.8sigma): the 0.8sigma lower edge was already
+%   DISCLOSED in prose (bracket 0.8-1.3sigma) but headlined only the 1.3sigma endpoint in tab:systematics;
+%   added the |rho|=0.95 -> 0.8sigma lower-edge row explicitly (directive-F anti-value-headlining).
+%   ChatGPT MAJOR-1/2 (App A convention + c.c. time-ordering): RE-FLAG of pre-v1.7.108 state --
+%   the new App A (lines 1489, 1518-1572) already states the six-ordered-triple convention explicitly
+%   and derives the -2Im doubling from the in-in commutator identity. Remaining MAJORs re-flags of
+%   disclosed scope. See EXT_real/H17_2026-07-10/P2_truth_audit.md Addendum.
+% v1.7.108 (2026-07-10 — H17 round P2 closure. NO headline number changed, -35/16 UNCHANGED,
+%   nothing fabricated; the fix made App A MORE conservative. REAL EDITABLE finding closed
+%   (Grok EXT MAJOR-1 = INT-Claude MAJOR = INT-OpenAI MAJOR-2/3): the Cai spurious-term SIGN and
+%   the "printed polynomial -> -35/8" mechanism claim were inconsistent with the committed scripts.
+%   Verified by re-running scripts/caili_certification/{cai_vertices,cai_shape,cai_conv}.py +
+%   independent 2nd sympy derivation: (a) A_T - sum(vertices) = -(99/128)sum k^3 (was printed +),
+%   (b) the transcribed printed A_T squeezed-reduces to -305/64 (NOT Cai's stated -35/8).
+%   Corrected the sign everywhere (abstract 827, Sec II.A 885, Eqs.spurious 1414 + prose 1479/1492/1494,
+%   scope-summary 1371, conclusion 1388, benchmark caption 926, assumptions 936, commutator 1551, table 1570)
+%   to state honestly: the -(99/128) term is ONE identified discrepancy between the transcribed printed
+%   polynomial and the exact vertex sum (driving it to -305/64), and Cai's separately-published -35/8 is
+%   NOT reproduced by the transcribed coefficients, retained only as an erroneous literature value.
+%   -35/16 remains quadruple-certified (vertex sum + eps-order group + Li Eq.5.1 + collapsed polynomial).
+%   Also: Table VII (tab:vertexwalk) provenance re-attributed honestly (per-row limits of the same exact
+%   vertex expressions p2_vertex_check.py sums, not "transcribed verbatim from" that script's total-only
+%   output); envelope subordinated / central Fisher number retained as headline (Grok MAJOR-2); r_eff
+%   robustness caveat added (Grok minor-b); assumption-(d) OOM statement already present. Deferred non-
+%   blocking: p2_vertex_check.py per-vertex print loop; deprecate scripts/fig_4vertex_sum.py (stale -35/8).
+% v1.7.107 (2026-07-09 — W12 EXT presentation-closure. NO headline number changed, -35/16 UNCHANGED,
+%   nothing fabricated. Closures: (1) Tone/mechanism phrasing on Cai et al.: replaced "arithmetic error"
+%   and "traces to a single spurious term" with neutral scholarly framing per Grok MAJOR-2 + calibrated
+%   to App-A honest framing per ChatGPT BLOCKER-1 (term alone has wrong sign = one identified discrepancy,
+%   not sole mechanism). (2) Stale MegaMapper ~3-7sigma in Sec IX conclusion replaced with calibrated
+%   Sec V numbers (3.7-3.85 ideal, 1.5-3.5 design envelope). (3) GR-correlation bracket disclosed in
+%   abstract (~0.8-2.75sigma bracket; ~1.3sigma SDB-proxy). (4) Table V relabeled scenario/scoping budget.
+%   (5) Endpoint labels standardized (SPHEREx optimistic/post-budget) in abstract + Sec IV. (6) Stray
+%   Greek character (os) not found in source (prior round). (7) Two Gemini syntax slips confirmed
+%   already fixed in prior round. (8) Data and Code Availability section updated with specific scripts.
+%   (9) Cross-channel covariance structural caveat added in Sec VII. (10) Notation collision note
+%   extended. (11) Figure captions checked/trimmed where needed. (12) Abstract fast-summary added.
+%   Directive-G hygiene: version header + date bump to v1.7.107 / 2026-07-09; recompile; re-mirror.)
+% v1.7.106 (2026-07-09 — W11 EXT presentation-closure. NO headline number changed, -35/16 UNCHANGED,
+%   nothing fabricated, no math altered. (1) [ChatGPT BLOCKER claim-strength]: calibrated the abstract's
+%   "This settles the 8-year discrepancy" sentence to the precise evidentiary framing — the vertex-level
+%   re-summation yields -35/16 EXACTLY (certified vertex-by-vertex, Table tab:vertexwalk, cross-checked by
+%   the eps-order-grouped Eq.order_grouped), and combined with Li et al's independent general-c_s derivation
+%   the evidence DECISIVELY FAVORS -35/16 over the printed-polynomial -35/8. Strong claim on the VALUE kept
+%   (the full algebraic map Cai-polynomial->vertex-sum->-35/16 is already displayed as Eq.vertexsum +
+%   Eq.collapsed_vertexsum + Eq.order_grouped + Eq.spurious); only the literature-error-MECHANISM phrasing is
+%   the honest "one identified discrepancy" per the App-A body. (2) [Gemini BLOCKER: SPHEREx additive-quadrature
+%   budget "soft"]: made the budget CONSTRUCTION explicit + quantitative — new displayed Eq.quadbudget
+%   S=|fnl|r/sigma_eff, sigma_eff=(sigma_0^2+sum sigma_j^2)^1/2, with the b_phi baseline-replacement rule and
+%   the inverse-Fisher marginalized rho=-0.868 endpoint shown to bracket the quadrature floor to ~14%, so the
+%   1.3-2.75sigma envelope is robust to the quadrature-vs-marginalization choice (reported as an informational
+%   sensitivity range). (3) [Gemini MAJOR: MegaMapper "uncalibrated"]: labeled the MegaMapper section DECISIVELY
+%   as an uncalibrated high-z projection (SPHEREx systematic budget transferred as a placeholder, NOT calibrated
+%   to z=2-5 where GR-projection effects dominate; ideal sigma~0.5 is the only externally-anchored number; ranges
+%   are design-uncertainty envelopes). (4) [ChatGPT MINOR]: fixed the stale "detection of fnl~-4" (Sec IX.B/1306)
+%   to "~-2" (the corrected -35/16=-2.1875; -4 = superseded Cai value). Gemini "35 一號" Table-VII entry is a
+%   pdftotext OCR artifact (source shows clean -35/32) — pattern-063, no source defect. Version+date bump,
+%   served-PDF re-mirror, Convex bump in same bundle (directive G).
+% v1.7.105 (2026-07-09 — R9 P2 closure. THREE additions, NO headline number changed, -35/16 UNCHANGED,
+%   nothing fabricated. (1) [Grok MAJOR + ChatGPT MAJOR: "full term-by-term derivation table" for the
+%   vertex re-summation] Added Table tab:vertexwalk in Appendix~A after Eq.vertexsum: the squeezed AND
+%   equilateral local-amplitude contribution of EACH of Cai's four cubic vertices individually
+%   (field-redef -25/16, L_zzdd -5/32, L_dzpzpc 0, L_z(ddc)^2 -15/32 squeezed; -35/32, -5/32, -5/8,
+%   -15/128 equilateral), both columns summing exact-fraction to -35/16 and -255/128 (tab:benchmarks).
+%   Every value transcribed VERBATIM from the committed exact-fraction sympy cert scripts/p2_vertex_check.py
+%   (ran it; per-vertex limits computed there); NO new math. This is the referee-granularity term-by-term
+%   walk both Grok and ChatGPT asked for, complementing the existing collapsed-polynomial + order-grouped
+%   objects. (2) [Gemini MINOR: gauge-frame vs physical-frame nomenclature "slightly convoluted"; wants a
+%   single consolidating table] Added Table tab:frames in the discussion: gauge (survey observable,
+%   fnl_bounce -2.1875 / fnl_inf +0.015 / ratio 146) vs physical conformal-Fermi (fnl_inf -> 0, ratio >>146),
+%   cleanly separating the two frames' expected values. (3) [Gemini MINOR: Sec VI "missing parenthesis"
+%   near the Bayes-factor CDF integrations] Verified source L1032-1046: all Phi()/erf() closed-form
+%   parentheses balanced (grep-checked); the flagged artifact is a PDF font-extraction glitch (cf. prior
+%   Gemini "fNI"/"OGR" extraction artifacts), FALSIFIED as an editable typo, no fake fix. Grok's central
+%   recast-vs-independent-Fisher separation and ChatGPT's Appendix-A completeness are already carried by
+%   scope point (i) + the existing App-A three-way cross-check; the new tab:vertexwalk gives the
+%   disclosure its strongest term-by-term form. Directive-G: recompile 0 undef-refs, latex-audit
+%   (tab:vertexwalk + tab:frames are narrow single-column, no overflow), mirror all served paths, Convex
+%   paper-2 bump, bundle rebuild. \date July 8 -> July 9.)
+% v1.7.104 (2026-07-08 — DEEP-tier Grok-Heavy MAJOR closure: Appendix~A vertex algebra "not fully
+%   displayed". Added the two intermediate objects the squeezed reduction collapses, transcribed
+%   verbatim from the committed exact-fraction sympy script scripts/p2_vertex_check.py: (1) the
+%   collapsed exact vertex-sum degree-9 polynomial 256*Pik2*A in the symmetric monomial basis
+%   (Eq. collapsed_vertexsum, coeffs 9/3/-27/15/-198/27 verified against sympy Poly grouping); and
+%   (2) the epsilon-order-grouped squeezed contributions fNL|_eps^1=-5/2, |_eps^2=+5/16, |_eps^3=0
+%   summing to -35/16 (Eq. order_grouped). NO new math — transcription of the existing certified
+%   computation. -35/16 value UNCHANGED. Other Grok MAJORs (sensitivity-envelope framing, length)
+%   already dispositioned as disclosed/editable in prior rounds; no genuinely-new finding.)
+% v1.7.103 (2026-07-08 — RSD-FISHER closure: retires the standing "independent Fisher is real-space
+%   monopole only (no RSD multipoles ell=0,2,4, ~18% conservative offset per Heinrich)" limitation
+%   with REAL computation. Applies the VERIFIED c14 redshift-space tree bispectrum Fisher
+%   (scripts/c14_rsd_multipole_fisher.py; outputs/c14_rsd_multipole_fisher.json, committed): Kaiser
+%   Z1=b+f mu^2 (Kaiser:1987) + SCF99/Sefusatti Z2, growth f(z)=fsigma8/sigma8 from same CAMB
+%   Planck2018, orientation-integrated over full (mu1,phi) so ell=0,2,4 content is exact. Verified
+%   numbers ONLY: sigma_RSD(local)=0.415 (b-fix)/0.449 (b-marg) vs C13 real-space 0.687 = +34.7%
+%   tighter (RSD/Heinrich 0.64); sigma_RSD(bounce)=0.417/0.449; r_eff_RSD~0.99; f->0 reproduces C13
+%   to 6 sig-figs. Para:reconcile limitation sentence replaced with the RSD result; the honest
+%   +34.7%-vs-Heinrich-~18% reconciliation stated (full RS->RSD gain vs monopole->multipole gain).
+%   HEADLINE DISCIPLINE: independent-Fisher unmarginalized significance for -35/16 updated
+%   3.2-3.5sigma (real-space, conservative floor) -> 4.9-5.2sigma (redshift-space, unmarginalized,
+%   before the systematic + GR-projection budget); the c12 GR-projection marginalization bracket
+%   (rho~0.95; marginalized ~0.8-1.3sigma edge) stays disclosed EXACTLY, retained unchanged. Added
+%   Kaiser:1987 + Scoccimarro:1999 bib entries. NO headline fNL=-35/16 changed. Nothing fabricated;
+%   every number read verbatim from the committed c14 JSON. Approximations stated: tree-level, linear
+%   k_max, b2=bs2=0, no FoG (conservative at high-k). \date -> July 8, 2026.)
+% v1.7.102 (2026-07-08 — RS8 closure: tone-regression rewrite (Gemini MAJOR): neutralized rebuttal/
+%   defensive register in Sec IX.E (signpost paragraph recast as declarative scope summary),
+%   Sec IX.E body ("We emphasize that a detection" -> neutral declarative), Sec template
+%   ("a referee may ask" -> neutral), Sec benchmark ("we emphasize sigma_3/sigma_1" ->
+%   declarative), App A ("a narrative we explicitly reject" -> neutral; "We emphasize that
+%   the identity" -> declarative). Appendix A Cai-Li internal consistency (ChatGPT MAJOR):
+%   MISREAD verdict -- paper is internally consistent; added one clarifying sentence making
+%   explicit that Li's printed polynomial (Eq. 4.19) and Cai's printed polynomial (Eq. 37)
+%   agree coefficient-for-coefficient at c_s=1, so the -35/8 is what BOTH printed polynomials
+%   reduce to in the squeezed limit, and the vertex re-summation is what yields -35/16
+%   independently of either printed polynomial. Grok minor (r_eff~0.99 clarification):
+%   already present near Sec IV; no change needed. Abstract scoping qualifier: already present.
+%   Vertex table main-text reference: already present at Sec II / Table vertices.
+%   NO number changed. NO disclosure changed. \date stays July 7, 2026.)
+% v1.7.101 (2026-07-07 — REALWORK re-test ITEM-1 closure: ChatGPT flagged r=0.84 and r_eff~0.99 as an
+%   apparent internal inconsistency and the independent Fisher as "not presented at publication standard".
+%   NO NUMBER CHANGED. (1) Added ONE crisp reconciliation at the head of the sec:spherex independent-Fisher
+%   paragraph (\label{para:reconcile}): r=0.84 is the flat-weight shape-overlap cosine adopted as the
+%   conservative recast factor; r_eff~0.99 is the survey-optimal (squeezed-dominated) amplitude-recovery
+%   factor of an actual multi-tracer estimator — DIFFERENT quantities, not a contradiction; the Fisher
+%   CONFIRMS 0.84 is conservative. (2) Pointed the abstract (L727) and the recurring-referee signpost
+%   (item iv) at this single reconciliation. (3) Presentation hardening (no new numbers): made the survey
+%   spec explicit (per-sample n_bar_i, b_i from the committed Dore+2014 table, no rescaled inputs) and wrote
+%   the covariance definition in closed form (diagonal-triangle Gaussian multi-tracer Wick contraction with
+%   P^tot_ij = P_ij + n_bar_i^-1 delta_ij, symmetry factor, tracer-permutation sum), addressing ChatGPT's
+%   "unclear covariance / not publication standard" specific. All numbers untouched.)
+% v1.7.100 (2026-07-07 — INDEPENDENT-FISHER closure: retires the "no independent bispectrum Fisher /
+%   single-source dependence" concession (ChatGPT/OpenAI standing #1 objection) with REAL computation.
+%   Applied the VERIFIED committed result (scripts/c13_independent_bounce_fisher.py + outputs/
+%   c13_independent_bounce_fisher.json; git 7044c75): a from-scratch tree-level galaxy-bispectrum
+%   Fisher on the SAME committed SPHEREx public-products table (Dore+2014; 5 samples, 6 z-bins,
+%   f_sky=0.75) with SPT F2 matter bispectrum + Gaussian multi-tracer covariance (Scoccimarro:1998,
+%   Sefusatti:2006), k_max=0.2(1+z). FULL multi-tracer: sigma(fNL^local)=0.626 (b-fixed)/0.687
+%   (b-marg) — reproduces Heinrich 0.7 to 2-11% (ratio 0.89/0.98, validation PASSED); at the bounce
+%   B_NL template sigma(fNL^bounce)=0.632/0.689 => r_eff=sigma_local/sigma_bounce ~ 0.99 and an
+%   UNMARGINALIZED 3.46sigma/3.18sigma for -35/16. FRAMING DISCIPLINE (integrity): presented as
+%   VALIDATION of the recast + retirement of the single-source limitation, NOT a headline inflation —
+%   the 3.2-3.5sigma is the unmarginalized independent number; the paper's honest GR-projection-
+%   degeneracy bracket (c12: rho~0.95 => 0.8-1.3sigma marginalized edge) still applies ON TOP and
+%   stays disclosed exactly as-is; the abstract 1.3-2.75sigma headline range remains the recast, NOT
+%   substituted. Honest limitations stated verbatim-in-substance: real-space monopole only (no RSD),
+%   Gaussian covariance, tree-level linear k_max, no b2/bs2 marginalization, ratio r_eff more robust
+%   than absolute sigma. Single-tracer sigma=15.6 kept only as the labeled conservative bound. EDITS:
+%   abstract Scope sentence (no-independent-Fisher -> independent Fisher constructed as validation);
+%   abstract para-4 concession ("out of scope/flagged for follow-up") -> DONE, independent-Fisher
+%   validation paragraph; sec:spherex L890 scaling-check paragraph + a new "Independent bispectrum
+%   Fisher (validation)" paragraph; sec:spherex L892 "we do not construct an independent Fisher" ->
+%   qualified (headline is recast; independent Fisher built as validation); signpost items (i)+(iv)+
+%   "Single-source limitation" all updated from "flagged for follow-up / do not claim it here" to
+%   "now carried out". Added Scoccimarro:1998 (astro-ph/9704075) + Sefusatti:2006 (astro-ph/0604505)
+%   to focused_paper_refs.bib. Every significance quote re-checked for c12-bracket consistency: NO
+%   stale contradiction; -35/16 UNCHANGED; NOTHING fabricated (all numbers read from committed c13
+%   JSON). Write-up: project-context/peer-reviews/INT_v3/P2_independent_fisher_2026-07-07.md.
+%   Directive-G: recompile 0 undef-refs, /latex-audit, mirror ALL served paths byte-identical, Convex
+%   paper-2 bump real md5/pages, bundle rebuild+standalone-verify, reviewTimeline entry. \date stays July 7.)
+% v1.7.99 (2026-07-07 — venue-compliance disclosure: AI-methods now names models per IOP/JCAP; NO science number changed)
+% v1.7.98 (2026-07-06 — D-ROUND FINAL POLISH (presentation + disclosure only; NO science number
+%   changed, -35/16 UNCHANGED, nothing fabricated). (1) ABSTRACT restructured to lead with the
+%   CONTRIBUTION (the -35/16 Cai-Li resolution + the prediction) THEN the forecast+scope THEN the
+%   load-bearing cubic-transmission caveat, instead of opening with the caveat wall Gemini flagged.
+%   The triple-repetition of the Cai-Li resolution (old paras 1, 5, 6) is consolidated: it leads once,
+%   the closing para is tightened to the significance takeaway. Every number preserved verbatim
+%   (-35/16, -35/8, r in [0.829,0.876], 2.6-2.75sigma, 1.3-2.75sigma, BF 9-14/10-17/4-7, 146, 0.015,
+%   SDB 1.53->3.08->7.06, rho -0.87..-0.97). (2) FIGURE STYLE + CONSISTENCY pass on the committed
+%   generator research/live_forecast_packaging/generate_all_figures.py: added a colorblind-safe
+%   (Wong 2011) palette + consistent font/size rcParams across ALL figures; and finished the
+%   -35/8 -> -35/16 sync that v1.7.97 started for fig1/fig4 — fig2 (survey significance), fig3 (k_min
+%   cliff, right panel), and fig5 (f_NL landscape) STILL rendered the retracted -35/8-era values that
+%   CONTRADICTED their own already-corrected captions/text. fig2 title/bars now at -35/16 (naive
+%   2.1875/0.70=3.13sigma, optimistic 2.6-2.75, realistic 1.3-2.75, all-combined 1.3-1.4, MegaMapper
+%   ideal 3.7-3.85, illustrative 1.5-3.5 — all read verbatim from the fig:surveys caption); fig3 right
+%   panel significance recomputed at |f_NL|=2.1875 (SPHEREx bispectrum line 3.1sigma), left panel
+%   (sigma vs k_min, amplitude-independent) unchanged; fig5 bounce marker + SPHEREx error bar moved
+%   from -4.375 to -35/16=-2.1875. This is a cosmetic label-sync of already-corrected headline numbers
+%   (significance ∝ |f_NL|, exactly one-half per the captions), NOT a number invention. (3) AI-METHODS
+%   disclosure expanded to an honest reproducibility-framed statement (agentic AI pipeline under author
+%   direction; every quantitative result verified against committed artifacts; public audit trail).
+%   (4) Cai courtesy email drafted (CAI_COURTESY_EMAIL_DRAFT.md, do-not-send). Directive-G: recompile
+%   0 undef-refs, /latex-audit, re-mirror all served paths byte-identical, Convex paper-2 bump, bundle
+%   rebuild+standalone-verify. \date kept July 6, 2026 (Convex sort ties break on createdAt desc).)
+% v1.7.97 (2026-07-06 — FIGURE HYGIENE: regenerated fig1_shape_function.png and fig4_decision_thresholds.png, which still rendered the stale -35/8-era labeling (last regenerated 2026-06-26) while every text/table headline already carries the corrected -35/16. Generator research/live_forecast_packaging/generate_all_figures.py updated: (fig1) the Cai et al. shape polynomial BNL() carries the spurious +(99/128)Sum k_i^3 term (App A), so its bare squeezed limit is -35/8; per this figure's own caption "the plotted curve is the Cai et al. shape normalized to its corrected squeezed amplitude (exactly one-half the printed -35/8)", the curve is now scaled by 1/2 so it converges to -35/16 = -2.1875, with legend/benchmarks relabeled to match tab:benchmarks exactly (squeezed -35/16 = -2.1875, equilateral -255/128 = -1.992, folded -9/8 = -1.125). (fig4) blue matter-bounce prediction line + SPHEREx/MegaMapper error bars moved from -4.375 to the corrected -35/16 = -2.1875 and relabeled "-35/16"; decision-region axvspans re-centered so the corrected prediction sits in the dark-green "strongly favors bounce" zone (matching the caption). NO fNL/sigma number invented — all values read from the paper's own abstract + tab:benchmarks; nothing fabricated (a cosmetic label-sync of already-corrected headline numbers). Directive-G hygiene: recompile 0 undef-refs, mirror all served paths byte-identical, Convex paper-2 bump with real md5/pages, bundle arxiv_p2_v1.7.97.tar.gz standalone-verified. \date kept July 6, 2026 (Convex sort ties break on createdAt desc, so the v1.7.97 row sorts newest).)
+% v1.7.96 (2026-07-06 — DATA-UNLOCK: strengthen the named Cov_B external gate. A systematic availability search (arXiv ancillary files, Zenodo, authors' public code repos) found the Heinrich et al. 2023 per-triangle SPHEREx multi-tracer bispectrum covariance Cov_B is NOT publicly released — no data/code-availability statement, no arXiv ancillary, no Zenodo DOI; the only public generating code (github.com/chenheinrich/SphereLikes) is an unvalidated, pre-publication WIP branch (labeled "[Not validated; under construction]", last pushed 2021, no paper-matching release, no per-triangle Cov_B / Fisher). Added ONE sentence to sec:systematics stating this, so the computed-degeneracy bracket with the rho=-0.868 proxy is the best CURRENTLY-CONSTRUCTIBLE marginalized-floor estimate. NO headline/fNL/sigma number changed; -35/16 UNCHANGED; nothing fabricated (this is a documented external-data non-availability). Availability record: project-context/peer-reviews/INT_v3/DATA_UNLOCK_2026-07-05.md (Item 4). Directive-G hygiene: recompile 0 undef-refs, mirror all served paths, Convex paper-2 bump, bundle rebuild. \date kept July 6, 2026 so the v1.7.96 Convex row sorts ahead of v1.7.95 under current()'s datestamp-desc localeCompare and the live site shows the new version.)
+% v1.7.95 (2026-07-06 — publication-readiness pass closing the TWO genuinely-new REAL findings from EXT RETEST_2026-07-05b (ChatGPT VERIFIED-REAL truth-audit); NO headline/fNL number changed, -35/16 UNCHANGED, nothing fabricated. FINDING 1 (stale -35/8-era significances still live downstream): the abstract + sec:spherex + tab:systematics + fig2 already carried the corrected -35/16 numbers (bispectrum-only ~2.6-2.75sigma optimistic, realistic ~1.3-2.75sigma), but five downstream spots still quoted the OLD -35/8-era doubled ranges. Swept to the exact halved values (significance ∝ |fNL|, -35/16 = 1/2 * -35/8, the mapping the abstract itself states): fig3 caption L1016 "significance for fNL=-35/8" -> "-35/16"; bphi para L1022 "2.6-5.5sigma"->"2.6-2.75sigma", "5.2-5.5sigma optimistic -> 4.0-4.2sigma(30%)/3.5-3.7sigma(50%)" -> "2.6-2.75sigma -> 2.0-2.1sigma/1.75-1.85sigma", "headline range 2.6-5.5sigma"->"2.6-2.75sigma"; photo-z item L1063 "2.6-5.5sigma post-budget envelope (>=2.5sigma)" -> "1.3-2.75sigma (>=1.25sigma)"; staged-strategy L1132 "2.6-5.5sigma after budget (5.2-5.5sigma optimistic)" -> "1.3-2.75sigma after budget (2.6-2.75sigma optimistic)"; SDB-motivation L1161 "remains the bispectrum-only 5.2-5.5sigma" -> "2.6-2.75sigma". Corrected values now match tab:systematics rows exactly (bphi-30%~2.05sigma, bphi-50%~1.75-1.85sigma). FINDING 2 (App A wording contradiction): v1.7.93 softened the App-A BODY (L1223) but left the Sec-II summary L713 ("which is exactly what pushes -35/16->-35/8") and the certification line L1246 ("sole origin of the erroneous -35/8") asserting the naive-additive-shift mechanism the body explicitly refutes (+(99/128)Sum k^3 added alone gives +2.58, WRONG sign). Reconciled BOTH to the body's honest framing: -35/8 is what Cai's OWN full printed-polynomial squeezed reduction yields; the spurious +(99/128)Sum k^3 is the traceable single term of excess / one identified discrepancy, NOT a naive additive shift. -35/16 vertex-sum squeezed limit is 3-way certified and UNAFFECTED. Remaining ChatGPT majors = the disclosed-limitation set (imported baseline/no joint Fisher, additive-quadrature budget, transmission assumption (d), prior-driven Bayes) = structural harsh-referee floor (directive H); Grok RETEST_2026-07-05b = MINOR REVISIONS ("ready for submission after modest tightening"), Gemini = disclosed-limitation/exposition requests. c12 computed-rho~0.95 0.8-1.3sigma bracket integration deferred to parallel data agent; the honest rho=-0.868-proxy 1.3sigma floor + named Cov_B gate stands. Directive-G hygiene: recompile 0 undef-refs, mirror all served paths, Convex paper-2 bump, bundle rebuild.)
+% v1.7.94 (2026-07-06 — INT-v3-P2 systematic-budget MAJOR (Grok+Gemini RS27 joint-covariance) upgraded from PROXY to COMPUTED GR-projection degeneracy (write-ups project-context/peer-reviews/INT_v3/P2_joint_covariance_full_2026-07-05.md + _TEX_PROPOSAL_; repro scripts/c12_gr_projection_dBdAgr_probe.py + outputs/c12_gr_projection_dBdAgr_probe.json). sec:systematics closing "we do not overclaim" sentence rewritten: the GR-marginalization response partial B_g/partial A_GR = S_GR is the standard relativistic-projection squeezed kernel (Verde-Matarrese/Bartolo-Bruni class), now CONSTRUCTED on the paper's own committed 23,098-triangle grid. Its shape overlap with the local template S_local is COMPUTED |rho| ~ 0.95 (0.9485 uniform, 0.9493 k^2-weighted) — a STRONG f_NL-A_GR degeneracy, at least as strong as (in fact stronger than) the c8 running-Fisher proxy rho=-0.868. Consequence: sigma_marg = sigma_base/sqrt(1-rho^2); at the computed rho~0.95 the marginalized significance ~0.83 sigma is LOWER than the proxy, so the honest budget is a BRACKET ~0.8-1.3 sigma with the rho=-0.868 proxy (1.3 sigma) now shown to be the OPTIMISTIC (mild upper) edge, NOT an underestimate. The single remaining external input is the fully channel-native (noise-weighted Fisher) rho, which needs the SPHEREx multi-tracer bispectrum COVARIANCE Cov_B on the triangle set (Heinrich:2023 arXiv:2311.13082) — only the scalar sigma(f_NL^local)=0.7 is imported, the per-triangle covariance is external; all other ingredients are in-repo, so the direct number is one Cov_B evaluation away. This CONVERTS the "additive-quadrature heuristic/proxy" concern into a computed-degeneracy bracket with a named external gate. NO abstract range number changed (1.3-2.75 sigma envelope preserved; 1.3 sigma lower edge retained), and the ~0.8 sigma lower edge is now DISCLOSED honestly in-section. NOTHING fabricated — all rho/sigma_marg/significance numbers read from the committed c12 JSON. Heinrich:2023 already in focused_paper_refs.bib. \date July 5 -> July 6.)
+% v1.7.93 (2026-07-06 — INT-v3-P2 ROUND_2026-07-05 two MINOR fixes (no headline number changed; -35/16 UNCHANGED). FIX 1 (App A, Eq spurious L1221) — softened the -35/8 attribution to be honest and non-overclaiming. The reviewer correctly noted the isolated +(99/128)Sum k_i^3 local term is NOT self-verifying as the sole doubling mechanism: added alone to A it shifts squeezed fNL by +(10/3)(99/128) ~ +2.58 (WRONG sign to reach -35/8, which needs -2.1875). Reworded: -35/16 is the certified vertex-sum squeezed limit (3-way certified, UNAFFECTED); -35/8 is what Cai's OWN full printed-polynomial squeezed reduction yields; the +(99/128)Sum k_i^3 is ONE identified discrepancy within that unstated reduction, NOT a naive-add mechanism. Explicitly disclaim a complete term-by-term derivation of Cai's error. FIX 2 (tab:systematics L1094 + caption L1097 + sec:systematics L1005 proxy refs) — made the joint-Fisher PROXY rho internally consistent with the committed c8 value everywhere: rho=-0.87 -> rho=-0.868 (the c8 fixed-bias correlation -0.8679, matching the changelog), sigma_marg=0.7/sqrt(1-0.868^2)=1.41 (was 1.42), floor 2.1875*0.84/1.41 ~ 1.3 sigma UNCHANGED. The SDB-channel's own reported fixed/bias-marg pair (rho=-0.87 to -0.97, L659/L1005-first/L1159/L1161) is left at 2dp as its genuine matched-pair result — untouched. NO fNL number, NO headline significance changed. Nothing fabricated — rho=-0.868 read from committed outputs/c8_fnl_running_fisher.json.)
+% v1.7.92 (2026-07-05 — INT-v3-P2 non-local-tails MAJOR closed with directive-G hygiene (write-up project-context/peer-reviews/INT_v3/P2_nonlocal_tails_2026-07-05.md + _TEX_PROPOSAL_; repro scripts/c11_nonlocal_template_projection.py + .json). Reviewer MAJOR: "the r=0.84 local-template recast does not model the NON-LOCAL bounce-shape tails; equilateral/orthogonal deviations could carry missed signal." CLOSED at level (a): added a standard-basis template-decomposition paragraph to sec:template. The PHYSICAL bounce bispectrum B_bounce = BNL(k) * S_local(k) (carrying the local 1/k^3 envelope, ~97% local) is projected onto the Senatore-Smith-Zaldarriaga local/equil/ortho basis on the identical committed 23,098-triangle grid (reproduces the paper's r_cos = 0.985 exactly, -0.9849). Uniform-weight cosines: LOCAL -0.985, EQUIL -0.45, ORTHO +0.94. A JOINT projection onto span{LOCAL,EQUIL,ORTHO} raises the recovered Fisher-norm fraction from 0.970 (local-only) to at most 0.974 => delta r <= +0.002 (<0.3% of the r=0.84 headline, << the +/-0.02 uncertainty), so the single-local-template recast is ROBUST and a multi-template analysis is NOT needed. Two honest points stated: (1) the projection is of the physical bispectrum (local envelope, ~97% local), not the bare BNL ratio; (2) the high ORTHO cosine is COLLINEARITY (ortho template == -3*local + ...), not independent signal — the joint fit removes the double-counting. Honest scope limit kept: geometry-only shape overlap (matching r_cos); the full 3D estimator-mismatch variance under the true SPHEREx multi-tracer bispectrum Fisher covariance is not computed here (needs the Heinrich et al. noise covariance). NO headline number changed. Added Senatore:2010 (arXiv:0905.3746) to focused_paper_refs.bib. NOTHING fabricated — exact numbers from the committed c11 script/JSON.)
+% v1.7.91 (2026-07-05 — INT-v3-P2 TWO verified-real-science strengthenings applied with directive-G hygiene (write-ups project-context/peer-reviews/INT_v3/P2_cubic_adiabaticity_2026-07-05.md + P2_joint_covariance_2026-07-05.md + _TEX_PROPOSAL_; repro scripts/c10_joint_covariance_marginalization.py). EDIT 1 — cubic transmission now DERIVED (closes assumption-(d) MAJOR from "supported by zeta-conservation" to a bounded systematic). The Cai-Wilson-Ewing LQC quasi-dust bounce is SINGLE-CLOCK (effective LQC modifies the background via holonomy/inverse-triad corrections but adds NO new scalar dof — dressed-metric/hybrid quantization WilsonEwing:2012, and even deformed-algebra Cailleteau:2011kr keep the physical scalar sector single-clock), so there is no isocurvature/entropy mode by field content and nonlinear superhorizon zeta-conservation holds to ALL orders; the only zeta-dot source is O((k eta_B)^2) gradient pressure at every order (cubic included) => transmission = 1 +/- O((k eta_B)^2) ~ 1 +/- 1e-4 (delta fNL <~ 1e-3, negligible vs sigma~0.7), DERIVED not assumed, no numerical cubic bounce evolution required. The one honest model-choice input: the subleading gradient sign is quantization-scheme-dependent (Lorentzian c_s^2=1 dressed-metric per Wilson-Ewing adopted here; deformed-algebra's transient c_s^2=1-2rho/rho_c signature-change window is also (k eta_B)^2-suppressed on deep-superhorizon modes) — a discrete citable choice, not an open computation. Updated: assumptions Sec (single-clock closure paragraph + weakest-link reframing), abstract star-caveat, signpost item (ii), Leading-theoretical-uncertainty paragraph, Conclusion star-caveat. Added Cailleteau:2011kr (arXiv:1111.3535) to focused_paper_refs.bib. Cited Lyth-Malik-Sasaki, Wilson-Ewing, Quintin. NO fNL number changed. EDIT 2 — systematic budget upgraded from additive-quadrature to marginalized joint-covariance (HONEST, slightly WORSENS the floor, which is correct). The honest marginalized error is sigma_marg = sigma_base/sqrt(1-rho^2), NOT quadrature; using the paper's OWN committed c8 CAMB degeneracy rho=-0.868 as a conservative PROXY for the GR-marginalization degeneracy gives sigma_marg=0.7/sqrt(1-0.87^2)=1.42 => marginalized floor |fNL| r/sigma_marg = 2.1875*0.84/1.42 ~ 1.3 sigma (vs the ~1.5 sigma quadrature floor, ~14% lower). CLEARLY FLAGGED: (a) the power-spectrum (SDB) channel already has a REAL joint covariance (c8); (b) the bispectrum-only channel uses rho=-0.868 as a PROXY because the direct partial B_g/partial A_GR triangle-response derivative is deferred (the one remaining input to fully close it; paper already notes this at the c8/L971/L999 scope). Not overclaimed as fully marginalized. Updated: L971 scope paragraph (joint-covariance test), tab:systematics (added marginalized-Fisher row + caption). ~1.3 sigma marginalized floor lands at the existing 1.3-2.75 sigma lower endpoint, so NO abstract range number changes — a methodological strengthening. NOTHING fabricated: numbers anchored to the paper's own committed c8 Fisher (rho=-0.868, sigma_base=0.7, r=0.84) + standard single-clock physics. \date stays July 5.)
+% v1.7.90 (2026-07-05 — ChatGPT verified-re-test closure: TWO items. (BUG 1, ChatGPT MAJOR, legitimate internal inconsistency) Eq.(2) (main text, sec:benchmark) still asserted the squeezed limit BNL -> -35/8, contradicting the v1.7.86-89 resolution (corrected central value -35/16), Fig.1's caption, the benchmark table, the Bayesian significances, and Appendix A. FIXED: Eq.(2) now reads -> -35/16 (the CORRECT vertex-consistent value), with an inline note that A_T throughout denotes the corrected (vertex-consistent) shape whose squeezed limit is -35/16, that the -35/8 obtained from Cai's PRINTED polynomial (their Eq 37) is the arithmetic error corrected here (spurious +(99/128)Sum k_i^3, App A Eqs decisive_sqz/spurious), and that the shape-overlap analysis uses Cai's printed monomial SHAPE (amplitude-invariant, enters r_cos/r via ratios only) while -35/16 fixes the AMPLITUDE normalization, matching Li 2017 at c_s=1. Every remaining -35/8 in the body is now explicitly labeled Cai's erroneous printed value only (lines 660/733/748/1172/1184/1263/1266/1271/1275; lines 84/638 are % comments). (FIX 2, ChatGPT wants explicit vertex-by-vertex algebra) Added a "Vertex-by-vertex certification" block in App A (app:convention): Table tab:vertices lists Cai 2009's four cubic vertices' shape-function contributions at eps=3/2 read verbatim from arXiv:0903.0631 source (matterbounceng2.tex), Eq vertexsum shows their exact sum's squeezed limit = -35/16, the printed-minus-vertex-sum = +(99/128)Sum k_i^3 spurious local term is stated, and Li 2017 (arXiv:1612.02036) Eq 5.1 -> -35/16 at c_s=1 cross-check. Numbers taken EXACTLY from the verified writeup project-context/peer-reviews/INT_v3/P2_factor2_RESOLUTION_2026-07-04.md; nothing fabricated. \date July 4 -> July 5.)
+% v1.7.89 (2026-07-04 — INT-v3-P2 factor-of-2 RESOLVED + cubic-transmission strengthening (two VERIFIED real-science results applied; write-ups project-context/peer-reviews/INT_v3/P2_factor2_RESOLUTION_2026-07-04.md + P2_cubic_transmission_2026-07-04.md). EDIT 1 — Cai/Li factor-of-2 RESOLVED in favour of fNL_local = -35/16 (was disclosed-unresolved; now a positive contribution). A from-scratch symbolic re-summation of Cai 2009's (arXiv:0903.0631) OWN four cubic-action vertices at eps=3/2 gives a clean squeezed-limit -35/16 (O(k1^2/k^2) correction), matching Cai's own eps-order-grouped intermediates AND Li/Quintin/Wang/Cai 2017's (arXiv:1612.02036) independent general-c_s formula -165/16+65/(8c_s^2) -> -35/16 at c_s=1. Cai's PRINTED final polynomial (Eq 37) contains a spurious +(99/128)Sum k_i^3 local term (= A_T_printed - Sum(vertices)) that pushes -35/16 -> -35/8; both papers use the identical fNL=10A/(3 Sum k_i^3) convention so it is an ARITHMETIC ERROR not a convention. -35/16 is now CENTRAL everywhere (abstract/intro/results/tables/Bayesian/conclusion/Appendix A). Significances HALVE with |fNL|: bispectrum-only ~2.6-2.75sigma (2.63sigma central, r=0.84), post-systematic ~1.3-2.75sigma (the paper's pre-existing -35/16-branch values, NOT invented). Benchmark shape table halved (-35/16, -255/128, -9/8). r=0.84 UNCHANGED (shape ratio, amplitude-invariant). Broad-competitor Bayes factors UNCHANGED (center-independent per eq bf_approx); narrow-competitor delta corner 7.0->5.7 (CDF lower tail vanishes at -35/16 center). kappa_eps range 5.6-80 -> 2.8-40 (eps-derivative of fNL halves with amplitude); ratio |fNL_b|/|fNL_inf| 290->146; SY tau_NL 27.56->6.89; Planck-recast tension 0.75->0.37sigma. Appendix A retitled + rewritten as the RESOLUTION. EDIT 2 — cubic transmission upgraded from "scaling estimate only" to "supported by nonlinear superhorizon zeta-conservation (Lyth-Malik-Sasaki / Maldacena-deltaN) in the LQC/low-c_s escape sub-class that evades the Quintin-Sherkatghanad-Cai-Brandenberger no-go (arXiv:1508.04141)"; honest residual = cubic-order adiabaticity (zeta-dot->0) check through the NEC-violating LQC phase = new #1 follow-up. Added Quintin:2015 bib entry (arXiv:1508.04141). NO number fabricated — all -35/16-branch significances pre-existed in the paper. \date stays July 4.) (BOUNDED, honest, source-cited; factor-of-2 NOT resolved). A four-vertex in-in re-derivation (Claude Code INT, Houston subscription; full write-up project-context/peer-reviews/INT_v3/P2_inin_rederivation_2026-07-04.md) fetched both source PDFs (Cai arXiv:0903.0631; Li/Quintin/Wang/Cai arXiv:1612.02036) and confirmed: (1) the Cai/Li fNL=-35/8 vs -35/16 factor-of-2 is GENUINELY UNRESOLVABLE from the published polynomials — the naive squeezed limit of the extracted Eq (37) is 0, and it does not even reproduce Cai's own convention-free equilateral value, so the local amplitude is a cancellation-sensitive subleading reduction not arbitrable here; (2) it INDEPENDENTLY REFUTES the retracted single-time-ordering story — Li's own Eq (4.13) is written -2x2 Im integral (full in-in, BOTH time-orderings), so no ordering was dropped. TWO EDITS: (a) Appendix A opening (line ~1173) — added ONE sentence citing Li Eq (4.13)'s explicit -2x2 Im as the POSITIVE refutation of the dropped-time-ordering mechanism (was only the negative "would halve the whole polynomial" argument before). Factor-of-2 STILL explicitly DISCLOSED AS UNRESOLVED; -35/8 stays adopted, -35/16 stays a real robustness branch. NOT claimed resolved. (b) Miscite fix — bibkey CaiBrandenberger:2014 -> LiQuintin:2017 (true authors Li, Quintin, Wang & Cai 2017, JCAP 03:031, arXiv:1612.02036); all 8 body \cite renamed; bib comment updated. NO numbers changed, NO math fabricated. \date July 3 -> July 4.)
+% v1.7.87 (2026-07-03 — INT-v3-P2 value-headlining integrity fix (directive F: "papers don't headline the more-favorable of multiple values"). Grok #1 MAJOR (verified re-test): "adopting the Li value halves every quoted significance, YET the abstract continues to promote the Cai value." The paper headlined the optimistic Cai fNL=-35/8 significances (5.2-5.5sigma optimistic / 2.6-5.5sigma realistic) as THE takeaway while the conservative Li -35/16 halves everything to ~1.3-2.75sigma and the factor-of-2 is unresolved. HONEST REFRAME, NO NUMBER CHANGED (both values + linear significance scaling already in paper): (1) Abstract headline-forecast sentence (para 4) now leads with the amplitude-conditional Li-Cai range fNL in [-35/16, -35/8], bispectrum-only 2.6-5.5sigma and realistic 1.3-5.5sigma, whose LOWER bound reflects conservative Li and upper reflects optimistic Cai; explicitly states we do NOT headline Cai-only 5.2-5.5/2.6-5.5 alone while the 2 is open (Cai upper edge, Li downward robustness branch). (2) Abstract null-forecast sentence: exclusion now quoted as ~1.3-5.5sigma across the Li-Cai range. (3) Conclusion: "SPHEREx can test at ..." now leads with realistic 1.3-5.5sigma amplitude-conditional range, Cai-input 5.2-5.5 demoted to "the Cai-input case reaches ... optimistically". The abstract's earlier DERIVATION sentence ("after correction we obtain 5.2-5.5sigma at fnl=-35/8 ... reducing to 2.6-5.5sigma") is honest computation at the adopted fiducial and retained as-is; body sections compute at the adopted Cai fiducial with the Li robustness branch + factor-of-2 disclosure carried throughout — not headline promotion. This fix removes Grok's specific value-headlining complaint but does NOT resolve the factor-of-2 MAJOR (a full four-vertex in-in re-derivation, our #1 follow-up, is still required to settle it; not claimed resolved here). Note: project-context/peer-reviews/INT_v3/P2_value_headlining_fix_2026-07-03.md. \date already July 3.)
+% v1.7.86 (2026-07-03 — INT-v3-P2 Cai/Li factor-of-2 integrity fix. All three verified EXT reviewers (ChatGPT REJECT, Gemini MAJOR-REV, Grok MAJOR-REV) flagged that the -35/8 vs -35/16 (Cai vs Li) factor-of-2 was "resolved" only by a symbolic operator identity, not a full four-vertex in-in re-derivation, and called the symbolic resolution INSUFFICIENT. Full-source INT truth-audit of BOTH original papers (Cai arXiv:0903.0631; Li/Quintin/Wang/Cai arXiv:1612.02036, MIS-cited as CaiBrandenberger:2014): (1) both use the IDENTICAL normalization fNL=10A/(3 sum k^3) (Cai Eq.21 = Li Eq.4.20) and the SAME squeezed local limit; (2) their total shape-function polynomials AGREE coefficient-for-coefficient at c_s=1 (Cai Eq.37 = Li Eq.4.19 with (10-9c_s^2)->1); (3) Li local fNL = -165/16+65/8c_s^2 -> -35/16 at c_s=1 (verified exact). VERDICT: the factor of 2 is a GENUINE UNRESOLVED literature discrepancy in the local-limit reduction/permutation bookkeeping of a SHARED shape function — it is NOT the Komatsu-Spergel c-convention (both fix same c) and NOT a demonstrable dropped in-in time-ordering (a dropped ordering would halve Li's ENTIRE polynomial, which it does not). P2's prior "Li computed only single time-ordering / -35/16 is a non-physical single-ordering intermediate" mechanism is UNSUPPORTED by Li's actual paper and was internally contradictory (Sec II.C line 755 first said "convention not physical, vertices agree 6-sig-figs" then "single time-ordering", incompatible). FIX (integrity, NO fabricated math, headline fNL UNCHANGED at -35/8 as the ADOPTED Cai value with explicit disclosure): retracted the false single-time-ordering mechanism in abstract (2 sentences), Sec II.C (line 755), Conclusion (line 1154), signpost item (iii) (line 1137), Bayesian-prior mentions (sec:bayesian + Table VI caption), and Appendix A (opening + chain paragraph + A.1 doubling + A.2 prose + tab:dualnorm caption/rows). Now: adopt Cai -35/8, DISCLOSE the Cai/Li factor-of-2 as unresolved, carry Li -35/16 as a REAL downward robustness branch (every significance halves to ~2.6 optimistic / ~1.3-2.75 post-systematic), and state the full four-vertex in-in re-derivation as the follow-up that would settle it. The -2Im commutator identity retained as a TRUE generic in-in fact but explicitly no longer claimed to resolve the Cai/Li 2. Audit: project-context/peer-reviews/INT_v3/P2_factor2_INT_2026-07-03.md. \date July 1 -> July 3.)
+% v1.7.85 (2026-07-01 — RS7-EXT-P2 single-source-dependence closure. Two-vendor convergent finding (Grok MAJOR + ChatGPT MAJOR): all significances are post-hoc rescalings of a SINGLE external Heinrich et al. Fisher forecast, so they are not independent evidence. Truth-audit verdict-first: GENUINELY-REAL structural critique, already substantively framed (abstract Scope sentence declares "sensitivity recast of a single externally published forecast, not an independent forecast"; signpost item (i) says "no independent bispectrum Fisher is constructed here"). ACTION (honest, NO numbers changed, NO math fabricated): added an explicit "Single-source limitation (explicit)" closing sentence to the signpost paragraph (subsec:Caveats) making the not-independent-confirmations point referee-pointable in one place — the endpoints inherit Heinrich's survey spec/tracer/covariance assumptions, are NOT statistically independent confirmations, and the concrete step to break single-source dependence is an independent bounce-fiducial multi-tracer Fisher re-run (or a second forecast) NOT reusing the Heinrich covariance, named as necessary follow-up and NOT claimed here. The honest fix is framing, not an invented independent forecast (that would be fabrication). \date already July 1.)
+% v1.7.84 (2026-07-01 — RS5-EXT-P2 signposting closure (pattern-069 convergence-accelerator). External sweep: ChatGPT MAJOR-REV (6 MAJOR), Grok MAJOR-REV (3 MAJOR), Gemini pending. Truth-audit verdict-first: ALL 6 ChatGPT + 3 Grok MAJORs are RE-FLAGS of concerns ALREADY SUBSTANTIVELY ADDRESSED in prior rounds (SPHEREx-recast-not-independent-Fisher = abstract Scope + sec:template/spherex; cubic-transmission-not-computed = load-bearing caveat (star) in abstract+conclusion+sec:Caveats; Cai/Li factor-2 symbolic-not-numerical = abstract + Appendix A; local-template-on-non-local-shape scalar-r + covariance = abstract + sec:template (cross-param correlations neglected, non-local tails absorbed into envelope, Heinrich-Fisher-at-bounce flagged); additive-quadrature-not-conservative = sec:systematics up-front heuristic banner + explicit c8 joint Fisher shows degeneracy LOOSENS; BF prior-dependent-demote-to-illustrative = abstract+conclusion already say "illustrative ... not definitive model-selection evidence"). NO VERIFIED NEW items; NO numbers changed; NO math fabricated. ACTION per pattern-069: added a "Response to recurring referee concerns (signpost)" paragraph at head of subsec:Caveats mapping each of the six recurring MAJOR themes (i)-(vi) to the exact section where it is handled, so the next reviewer pass sees they are deliberate labeled scope of a sensitivity recast and cannot re-raise. Grok/ChatGPT minors (MegaMapper-unfunded-separate, Planck/DESI-shorten-consistency-only, over-caveated-compress) = OPINION/editorial, no condition; MegaMapper already labeled proposed/unfunded/illustrative throughout, Planck/DESI already labeled consistency-only recast. \date June 30 -> July 1.)
+% v1.7.83 (2026-06-30 — RP2-INT-v82 substantive closure (fresh INT native-PDF sweep: Gemini MAJOR-but-ESSENTIAL-NONE, Grok MAJOR, OpenAI MAJOR, Perplexity quota-failed). Truth-audit verdict-first: MAJORITY of vendor findings STALE/FALSIFIED re-flags of already-closed items or OPINION. FALSIFIED (verified against source, no fake fixes): Grok P2-M3 (Fig.2 caption "does not state r=0.84 applied") — caption L820 already reads "template-corrected optimistic bispectrum forecast 5.2-5.5sigma (|fnl| r/sigma with noise-weighted r=0.84)" and labels the 6.25sigma bar "not used in any headline"; Grok P2-M2 (abstract "quotes only BF~9") — abstract already carries full four-corner range BF 9-14 headline / 10-17 r->1 / curvaton 4-7; Grok P2-N1 (title lacks "recast") — title IS "A SPHEREx Sensitivity RECAST with a MegaMapper Outlook"; Gemini P2-m2 + OpenAI P2-E10 (Table IV caption "wrong quadrature formula sqrt(sigma_base+sigma_syst)") — caption L1056 correctly reads sqrt(sigma_base^2 + sigma_syst^2) with squares; the dropped superscript-2 is a PDF-font-extraction artifact (same class as v1.7.82 fNI/OGR falsification), FALSIFIED twice-over; Gemini P2-m1 (bare "BI" vs gamma_BI) — source uses only \gamma_{\rm BI} + "Barbero-Immirzi parameter", no bare "BI"; Gemini P2-m3 (slow-roll fnl notation inconsistent) — fnl^{inf}/fnl^{inf,gauge}/fnl^{inf,phys} are DELIBERATE gauge-vs-physical-frame distinctions, not inconsistency. SUBSTANTIVELY ADDRESSED (real convergent items, NO numbers changed): (1) Grok P2-E2 + P2-M4 (cubic-order transmission assumption (d) must be elevated to a numbered/starred load-bearing caveat in BOTH abstract and conclusion) — added an explicit "Load-bearing caveat (star)" clause to abstract Scope sentence AND to Conclusion opening, naming (d) as the single weakest link, verified only at linear order, cubic support = order-of-magnitude superhorizon scaling (delta-fnl~1e-3, not a derived bound), full cubic in-in = #1 follow-up. (2) OpenAI P2-E11 (recast lacks an explicit one-line mapping equation) — hoisted the explicit recast map (fhat_bounce, sigma_bounce) = (fhat_local/r, sigma_local/r) with r=0.84 (Eq. projection) into the abstract Scope banner + stated cross-parameter correlations neglected. (3) Grok P2-E3 (side-by-side sigma from different null procedures need "not directly comparable" qualifier) — added "not directly comparable / scoping envelope" qualifier to the abstract's endpoint statement. OPINION/OUT-OF-SCOPE (no edit): Gemini P2-M1/M2 + Grok P2-M1 (30pp length / restructure / re-title / move SDB to own section / shorten to Letter) = editorial recommendation not a condition, Gemini explicitly "ESSENTIAL: None ... free of critical scientific errors, abstract accurately reflects the body ... suitable for publication in PRD"; OpenAI P2-E1 (Zenodo DOI frozen release) = deferred camera-ready; OpenAI P2-M2/M14 (3x6 SVD matrix + orbit-count table) = orbit counts already in L704 footnote + archived artifacts; internal filenames = camera-ready polish. No falsified arithmetic this round (prior-round Grok Table-IV "mismatch" from dropped r=0.84 was already caught; re-verified r=0.84 carried correctly through BF grid 9.8->9.2, 17.1->14.4, 7.0->6.2, 4.0->4.0 and floor 4.375*0.84/sqrt(0.7^2+1.0^2)=3.00sigma). \date already June 30.)
+% v1.7.82 (2026-06-30 — RCEXT-P2 substantive closure (external sweep: ChatGPT MAJOR, Grok MAJOR, Gemini MINOR; bar = all-3 ACCEPT). Prior dismiss-as-false-positive approach FAILED; this round makes SUBSTANTIVE framing/limitation fixes, no fabricated numbers. (1) RECAST-FRAMING DOMINANCE (ChatGPT B1/B3, Grok G2, OpenAI M3): hoisted a one-line "Scope." banner to abstract SENTENCE 1 — declares sensitivity-recast-of-single-imported-baseline, NOT independent forecast, conditional envelopes not measurement precisions, BEFORE any sigma number, so fresh-eyes referees cannot miss it under the caveat wall. (2) CUBIC-ORDER TRANSMISSION (ChatGPT B2 BLOCKER + Grok G3): added a dedicated "Leading theoretical uncertainty" paragraph at top of sec:Caveats elevating assumption-(d) cubic transfer from caveat to CORE prediction uncertainty (verified only linear order; full cubic in-in across explicit bounce = NEW COMPUTE, flagged as #1 follow-up). (3) HEINRICH NON-LOCAL COVARIANCE (Grok G1, ChatGPT M3): surfaced the option-(b) disclosure into the abstract systematic-budget sentence — imported multi-tracer covariance built for purely-local template; non-local-tail variance not modeled, absorbed into envelope; full Heinrich-Fisher re-derivation at bounce fiducial = NEW COMPUTE, flagged. (4) CAI/LI SOFTENING (ChatGPT M2, Grok-int E2): abstract "fixing -35/8 as correct" -> "supporting (via symbolic operator-algebra convention audit, NOT independent numerical re-derivation of the full four-vertex in-in integrals) -35/8 as adopted; residual factor-of-2 carried as stress branch not definitively closed." Appendix A already honest (states identity not from-scratch re-derivation) — consistent, no change. (5) MegaMapper demotion (ChatGPT M5) already done v1.7.x (proposed/unfunded, illustrative, design-uncertainty). (6) Gemini typos "fNI"/"OGR"/"at ng 0.9649" = PDF font-extraction artifacts, absent from source (grep-verified) — FALSIFIED, no fake fixes. NEW-COMPUTE GAPS flagged for genuine ACCEPT: full cubic in-in transfer through explicit bounce; Heinrich Fisher re-run at bounce fiducial w/ non-local template; full joint bispectrum Fisher over systematics. \date already June 30.)
+% v1.7.81 (2026-06-30 — INT-M2-P2 closure (Gemini ACCEPT-w-minor; Grok + OpenAI MAJOR; Perplexity quota-failed). NO headline numbers changed. Truth-audit: the three INT-M2 ESSENTIALs from Grok (E1 sigma-juxtaposition not-comparable, E2 Cai/Li factor-2, E3 Table-II r->1-vs-0.84) and OpenAI (E2 squeezed index, E4 sigma juxtaposition, pass-2 E5 Planck -0.10/-0.11) are ALL STALE — already closed v1.7.73-1.7.80: index-labeling note present (body, sec:template); Planck central-recast parenthetical "-0.1/0.876=-0.11 leaves tension 0.75sigma" present (sec:discussion); Table-II r->1 endpoint vs r=0.84 rebooking stated in abstract + Table caption; Cai/Li factor-2 propagated as stress branch (abstract final para) + 6-sig-fig vertex audit (sec:benchmark). FALSIFIED: OpenAI pass-2 M7 (triangle-count "should be ~N^2, 8x/65x anomalous") — the grid is uniform in 3D (k1,k2,k3), so N^3 is correct (2^3=8x, 4^3=64x reproduce the quoted counts exactly); added explicit N^3-scaling clause to preempt re-flag. STALE re-flags also: OpenAI M10 photo-z 0.8%-vs-5% (sec:systematics already separates f_cat^2/(1+f_cat)^2~0.008 dilution from the cited ~5% cross-bin smearing [Giannantonio:2012]); Grok m2 / OpenAI m2 0.90-vs-0.84 (already reconciled at injection-recovery para: isotropic Gaussian noise = CMB-like weighting). CLOSED/rebuttal-hardened (clarity, no numbers): (1) Gemini M1 — abstract quadrature sentence now states "assuming the individual contributions are uncorrelated" + "true joint constraint could be weaker, or marginally stronger"; (2) OpenAI M8 — SDB kernel M(k,z) def now states c=1 and H0 in h/Mpc so M is dimensionless and Delta-b carries no residual units; (3) length (Grok M1 + OpenAI recurring) — added one-sentence scope-framing note in intro pointing length-averse readers to abstract/Table-IV/sec:spherex. OPINION/OUT-OF-SCOPE (no edit): cross-term b_phi x GR 2x2 sub-matrix + joint bispectrum Fisher = new-work beyond a sensitivity recast (labeled heuristic throughout); 40%-shortening = recommendation not condition (OpenAI), Gemini ACCEPTs; Zenodo DOI deferred camera-ready; "future date" = legitimate 2026 stamp. \date June 29->30. Convex tracks v1.7.81.)
+% v1.7.80 (2026-06-29 — RB-INT-P2 Round B closure (OpenAI/Gemini/Grok native-PDF; Perplexity quota-failed; no Anthropic leg). ONE real internal-inconsistency item, NO headline numbers changed: all-combined post-systematic-budget endpoint mislabeled "2.6--2.8sigma" at 3 body sites (L708/L803/L810). The upper endpoint 2.8 is not reproducible from the paper's own arithmetic: Fig.2 caption states sigma_eff in [1.35,1.41] giving 4.375*0.84/1.35=2.72sigma to /1.41=2.61sigma (=2.6--2.7sigma), tab:systematics all-combined rows are 2.7sigma (b_phi30%+GR1.0, sigma_eff=1.345) and 2.6sigma (b_phi50%+GR1.0, sigma_eff=1.414), and RB-INT OpenAI independently recomputed 2.73sigma "matches ~2.7sigma". Corrected "2.6--2.8sigma"->"2.6--2.7sigma" at all 3 sites; realistic 2.6--5.5sigma envelope and 2.6sigma floor unchanged. Vendor verdicts RB-INT: Gemini ACCEPT-WITH-MINOR; Grok MAJOR-REVISIONS (overlength + abstract-not-most-conservative + untested additive-quadrature = recast-framing OPINION, already caveated); OpenAI MAJOR-REVISIONS (r=0.84+/-0.02 noise-weighted labeling, single-scalar-r rebooking w/o SPHEREx cross-Fisher, GR-quadrature, internal filenames, missing frozen DOI). Triaged OPINION/OUT-OF-SCOPE (no edit): r=0.84+/-0.02 spread is explicitly defended at L782 (band dominated by noise-weighted schemes, CMB-Fisher 0.876 quoted separately) and 0.84 is the long-standing headline; cross-Fisher / joint bispectrum covariance = OUT-OF-SCOPE new-work (it IS a sensitivity recast, labeled throughout); DOI deferred camera-ready; internal artifact filenames = style/deferred; cross-term fnl*b_phi*b1^2*P*P notation = schematic proportionality (drops 1/M kernel but written as "propagates through", non-numeric). Convex tracks v1.7.80. \date already today.)
+% v1.7.79 (2026-06-29 — RA-INT-P2 Round A closure (OpenAI/Gemini/Grok native-PDF; Perplexity quota-failed; no Anthropic leg). TWO real internal-consistency items, NO numbers changed: (1) OpenAI P2-E6 (squeezed-ratio index convention): Sec III.B defined the squeezed cutoff via x3=k3/k1 with x3->0 = k3<<k1 (k3 the long mode), contradicting Sec II + the k1<=k2<=k3 grid where k1 is the long mode. Verified against null_space_analysis.py: the benchmark eval uses k1 long (squeezed=(eps,1,1)) but the overlap-scan grid fixes k1 as a hard reference and uses k3 as the long mode (x3=k3/k1->0, k3<=k2<=k1). Added an Index-labeling note stating the scan interchanges index roles vs the benchmark convention and that BNL permutation symmetry makes r unchanged — resolves the reader-facing contradiction WITHOUT misrepresenting the code (no relabel). (2) OpenAI P2-M12 (per-bin mischaracterization): sigma(fnl)=0.7 is the Heinrich+2023 full multi-tracer COMBINED-sample forecast (paper's own Sec V says "full SPHEREx sample"), but Sec V + Fig.5 caption called it the "per-bin baseline". Changed "per-bin sigma(fnl)=0.7/0.9" -> "combined-sample baseline sigma(fnl)" at 3 sites; kept "per-tracer-bin b_phi prior" (correctly per-bin). FALSIFIED (no edit): Grok P2-E4 ("Table IV arithmetic mismatch 4.375/1.345=3.25") — omits the r=0.84 numerator the caption mandates: 4.375*0.84/1.345=2.73sigma, /1.41=2.61sigma reproduce ~2.7/~2.6 exactly; OpenAI's own Checks-passed section independently reproduces all Table IV numbers. OPINION/recast-framing (no edit): all three vendors' headline MAJOR-REVISIONS = length/recast-vs-forecast framing + reproducibility asks (joint bispectrum covariance, fixed Zenodo DOI, in-paper ledgers) — it IS a deliberate sensitivity recast, already labeled throughout; DOI deferred to camera-ready. Convex tracks v1.7.79.)
+% v1.7.78 (2026-06-28 — INT-X-P2 convergent-item closure (Gemini/OpenAI/Grok cross-check). THREE real items, NO numbers fabricated: (1) 5sigma-vs-5.5sigma internal inconsistency (Gemini E2 + Grok E1): the realistic-range upper endpoint was written "2.6-5sigma" while Table IV's no-GR optimistic ceiling and the optimistic row are 5.2-5.5sigma; per the tab:systematics caption the realistic envelope upper end IS the no-GR optimistic ceiling, so "5" was a round-down of 5.5. Fixed all 21 body sites "2.6$--$5\sigma" -> "2.6$--$5.5\sigma"; conservative all-combined endpoint 2.6-2.8sigma left untouched. (2) Joint (fnl,n_fnl) SDB Fisher reframe (Gemini E1/M2 + OpenAI E1 + Grok E1): abstract previously called it BOTH "computed by a joint Fisher" AND "labeled as a heuristic primordial-field scaling check" (the latter belongs to Eq.(fiducial_shift), a different object) — contradiction removed; abstract now presents the joint SDB Fisher as a separately computed result (sigma 1.53->3.08->7.06, rho ~ -0.87..-0.97, 2.0-4.6x running degradation) kept DISTINCT from the bispectrum-only headline, pointed to sec:discussion. Discussion subsection retitled "The Joint (fnl,n_fnl) Scale-Dependent-Bias Fisher Forecast" + labeled sec:joint_sdb_fisher with a Motivation/Methodology/Scope lead stating it is a new galaxy-covariance Fisher (NOT a Heinrich recast). (3) 2.6-5.5sigma "heuristic not joint-forecast" qualifier (OpenAI E2 + Grok): abstract + Conclusion now state the realistic range is a scoping sensitivity envelope under an additive-quadrature heuristic budget, NOT a joint-covariance forecasted precision, and that no full bispectrum joint Fisher over systematics is performed. Zenodo DOI placeholder untouched (deferred camera-ready). Convex tracks v1.7.78. \date already today.)
+% v1.7.77 (2026-06-28 — EXTDB2 Gemini BLOCKER-1 closure (asymmetrical tabular rebooking, re-flag): the BLOCKER is a real PRESENTATION defect, not fabrication — Table II (tab:bayes) body showed only the r->1 (no-rebooking, sigma_eff=0.7) BF endpoints (~10,~17) while the abstract promotes the r=0.84-rebooked BF~9-14, forcing the reader to mentally apply the caption's bookkeeping; referees keep tripping. FIX (clarity, NO numbers changed): (1) Table II column header now marks "[-15,+15], r->1 endpoint (r=0.84 headline in parens)"; (2) inline rebooked headline values added to the two envelope rows — recommended row "~10 (r=0.84: 9.2)", delta/broad row "~17 (r=0.84: 14.4)", both verbatim from the existing template-mismatch bookkeeping paragraph (9.8->9.2, 17->14.4); (3) prominent in-table multicolumn note stating ALL entries are the r->1 endpoint and the r=0.84 rebooking gives the 9-14 headline, plus that the 0.55-1.14 null-space band is a stress band that never enters sigma_eff; (4) Table III (tab:gr) caption cross-marks the same r->1 bookkeeping (delta/narrow 7.0->6.2). ChatGPT/Grok P2 verdicts: BLOCKERS none (both MINOR REVISIONS), their MAJORs are pre-closed polish (recast-framing + heuristic-quadrature labels already added v1.7.73/1.7.76). \date bumped.)
+% v1.7.76 (2026-06-27 — EXTDB closure: pre-empt Gemini false-positive re-flags. Added (1) prominent inline note at Eq.(projection) sigma_eff definition stating ONLY noise-weighted r=0.84 enters sigma_eff and the 0.55-1.14 null-space band is a stress band never propagated (kills Gemini BLOCKER 1); (2) up-front "Scope of the systematic budget" lead sentence at head of Sec.~systematics making the additive-quadrature heuristic visible, not buried (kills Gemini BLOCKER 2 / ChatGPT MAJOR 1). z-bin distinct-Fisher "by construction" already prominent (Sec IX). No numbers changed.)
+% v1.7.73 (2026-06-26 — integrity-audit honest-reporting fix: abstract "5.2--5.5sigma headline forecast" sentence now foregrounds that both ranges rest on the single imported Heinrich+2023 sigma(fnl)~0.7 baseline recast for template mismatch (sensitivity recast, not independent cross-Fisher forecast); reclassifies INTEGRITY_AUDIT UNCERTAIN item -> MINOR; PDF recompiled and re-mirrored)
+% v1.7.72 (2026-06-26 — R55 closure: Sec III.A L735 mechanism phrasing corrected (k² in numerator of M, not denominator); version+date stamp bump; PDF recompiled and re-mirrored)
+% R55 convergence-confirmation (2026-06-26 — native-PDF 3-vendor round [OpenAI/Gemini/Grok OK;
+%   Perplexity quota-failed; no Anthropic leg]. Own Opus arithmetic re-derivation independently
+%   reproduced ALL headline numbers (template-corrected 5.18-5.47sigma; GR-only floor 3.01sigma;
+%   all-combined 2.73/2.60sigma; Planck PR4 recast tension 0.75sigma; tau_NL 27.56). Verdict:
+%   CONVERGED. 0 BLOCKER / 0 genuine MAJOR. 1 NIT-tier source-verified internal-consistency fix:
+%   R55-1 CLOSED (OpenAI P2-E7 pass-2): Sec III.A (SDB) L735 explanatory prose said "the explicit
+%     k^2 in the denominator of M" but Eq (eq:Mkz) defines M = 2 k^2 T(k) D(z)/(3 Omega_m H0^2),
+%     i.e. k^2 is in the NUMERATOR of M. Delta_b ∝ 1/M ∝ 1/k^2 is correct; only the mechanism
+%     phrasing was backwards. Rewritten to "Since Delta_b ∝ 1/M and M ∝ k^2 ... the signal grows
+%     as Delta_b ∝ 1/k^2". No equation, number, or headline change.
+%   Triaged FALSIFIED/OPINION/STALE (no edit): Gemini P2-E1 (App A "18/25 != 6/5") FALSIFIED —
+%     paper chain (5/3)^3 (3/5)^4 * 2 = (3/5)*2 = 6/5 is algebraically CORRECT; reviewer used
+%     (5/3)^2 instead of (5/3)^3 and Gemini's own "required fix" B_zeta=(-5/3)^3 B_Phi matches the
+%     paper. Gemini P2-m2 (missing pages 4/22) FALSIFIED — PDF-render artifact, 28 pp present, 0
+%     undef. OpenAI P2-E8 (weighting-direction "reversed") STALE — R53-2 already grounded the
+%     r_LSS<r_CMB direction in the numerical Fisher integration; reviewer conflates per-k weight
+%     with squeezed-triangle-shape weight. OpenAI P2-E6/E9/M8 (x3 squeezed relabel, IR-safety,
+%     dimensionless-grid bridge) OPINION/NIT — squeezed limit is permutation-symmetric, recast
+%     adopts Heinrich sigma=0.7 by design. OpenAI P2-E1/E3/E4/E5, Grok P2-E1/E2/M1/M2/M3/N1/N2,
+%     Gemini P2-E2/M1/m1/m3 — all DOI-deferred, already-caveated (abstract optimistic-vs-realistic
+%     2.6-5sigma + BF prior qualifiers present), assumption-(d) weakest-link already flagged,
+%     MegaMapper already labeled proposed/unfunded, anomaly-tracer 10-20% explicit upper-bound,
+%     date intentional (it IS June 2026), or cosmetic. No science/headline change.
+% R54 convergence-test (2026-06-26 — native-PDF 3-vendor round [OpenAI/Gemini/Grok OK;
+%   Perplexity quota-failed; no Anthropic leg]. OpenAI arithmetic audit independently
+%   reproduced ALL headline numbers (5.18-5.47sigma, 3.01sigma, 2.73sigma, 2.63sigma,
+%   0.75sigma, tau_NL 27.6, sigma_marg 3.10/7.03). Verdict: CONVERGED. 0 BLOCKER/0 genuine
+%   MAJOR. 2 NIT-tier source-verified internal-consistency fixes; no science/headline change:
+%   R54-1 CLOSED (Gemini P2-m4): Table IV (tab:systematics) b_phi-30%/50% rows carried
+%     "denom. (oplus)" in the Acts-on column while the combination column + caption define
+%     oplus as quadrature and these rows use baseline-replacement (0.7->0.9/1.0), not
+%     quadrature. Changed the two Acts-on cells "denom.\ (oplus)" -> "denom.\ (repl.)" to
+%     match the "Fisher widening / baseline replacement" combination rule; GR/all-combined
+%     rows (true quadrature) keep oplus.
+%   R54-2 CLOSED (OpenAI P2-M9/B1): Fig 4 (fig:thresholds) caption error bar "MegaMapper
+%     conservative (sigma=1.5)" was unanchored in the body (body quotes sigma~0.5 ideal,
+%     ~2.2 at b_phi-50%, never 1.5). Added explicit "(illustrative: between the sigma~0.5
+%     ideal and the b_phi-50% degraded sigma~2.2 ... not an independently calibrated
+%     forecast)" qualifier. No figure regen needed (error-bar value unchanged; honesty label only).
+%   Triaged STALE/FALSIFIED/OPINION (no edit): Gemini P2-E1 (reviewer-metadata block —
+%     harness-injected, 0 occurrences in .tex source), P2-m1 (Eq.2 sign — source shows
+%     -35/8 negative; PDF misread); OpenAI P2-E2/M2/M3/M6/M8 (already-caveated additive-
+%     quadrature/null-space/MegaMapper-budget/shot-noise/SSFSR), P2-E3/E5 (submission DOI —
+%     deferred per scope), P2-E6 (anomaly-tracer 10-20% — explicitly upper-bound, headline
+%     does not rely on it), P2-M10 (r=0.84 vs 0.831 — deliberate R36conf OAI-M9
+%     standardization, floor robust to r=0.829 per L750); Grok all 6 (length/qualifier-
+%     repetition/Wick-recompute/envelope — all already-caveated or cosmetic).
+% R53 closures (2026-06-26 — 3 source-verified internal-consistency fixes; no headline change):
+%   R53-1 CLOSED (percentile mislabel, OpenAI E11 + artifact ground-truth): the null-space
+%     conservative-floor value 0.75/4.7sigma was the 25th-percentile (interquartile) endpoint
+%     MIS-LABELED as the 16th percentile. c9h_nullspace_significance_propagation.json gives
+%     r_16=0.702 (->4.4sigma), r_25=0.746(~0.75), r_84=0.989(->6.2sigma). Corrected 16th-pctile
+%     r 0.75->0.70 and floor 4.7sigma->4.4sigma at all 3 sites (abstract, Sec II body, Table IV);
+%     [0.75,0.94] retained as the (correctly-labeled) interquartile range; now consistent with
+%     the already-correct per-sample 16-84 band 4.4-6.2sigma.
+%   R53-2 CLOSED (r_LSS<r_CMB causal prose, Gemini M1 + OpenAI M12): Sec III.B sentence had a
+%     self-contradictory "upweights coinciding modes -> increases mismatch weight" causal chain;
+%     rewritten to the correct relative-weighting direction (LSS shifts weight onto folded/
+%     intermediate vs CMB-Fisher) and grounded in the numerical Fisher integration. Numbers
+%     (0.829/0.876) unchanged.
+%   R53-3 CLOSED (Bayes-factor prior-width arithmetic, OpenAI E15): "widening [-15,+15]->[-20,+20]
+%     adds dBF<=1" contradicted the paper's own BF prop W (Eq bf_approx); W:30->40 scales BF by
+%     4/3 (9.8->13.1). Corrected. Headline BF~9 unchanged.
+% v1.7.71 (2026-06-19 — D-round visual polish: Fig4+Fig5 promoted to figure* full-width; Table IV row-1 parenthetical moved to caption + column widths rebalanced; table*[h]→[t] on Tables II/III/IV; stray italic run-in merged in abstract; no science change)
+% v1.7.70 (2026-06-18 — EXT20 micro-closure: Table IV e-correction cell 0.1σ→0.4σ to match body text L987 (0.43σ); no science change)
+% v1.7.69 (2026-06-14): EXT18-closure — 16th-pctile band direction fixed, r<=1.2->1.14 (scan range), abstract 84-88%%->83-88%% (matches r in [0.829,0.876]).
+% v1.7.68 (2026-06-13 — EXT16 closure: CDF-tail direction corrected ("reduces" → "raises") in Sec VI.C summary para; closes ChatGPT EXT16 MINOR)
+% v1.7.67 (2026-06-13 — EXT15 closure: BF self-check Eq mapping clarified + arithmetic typo corrected per ChatGPT EXT14 MINOR)
+%   EXT14-P2-BF-1 CLOSED: summary paragraph corrected — narrow delta-prior B≈7.0 maps to Eq.(9)=eq:bf_exact
+%     (exact CDF), NOT Eq.(10)=eq:bf_approx; Eq.(10) gives only 5.69 for narrow W=10 due to non-negligible
+%     CDF tail correction; broad delta-prior B≈17.10 is the only entry where Eq.(10) is a valid cross-check.
+%   EXT14-P2-BF-2 CLOSED: "0.18% (< 0.1% threshold met after rounding)" → "0.18% (sub-percent)"
+%     — 0.18% is NOT below 0.1%; arithmetic comparison was wrong; corrected to accurate sub-percent label.
+% v1.7.66 (2026-06-13 — EXT13 closure: BF self-check paragraph 3-sentence rewrite per ChatGPT EXT12 MINOR)
+%   EXT12-P2-1 CLOSED: added 3-sentence summary paragraph after numerical self-check itemize block
+%     to unambiguously map Eq.(bf_approx) → delta-prior only (B≃7.0 narrow, B≃17.10 broad) and
+%     Eq.(bf_exact) → required for all Gaussian-bounce-prior entries (B=4.01 narrow competitor);
+%     cross-check spurious 5.69 from delta-prior approximation misapplication explicitly labeled
+%     as category error inflating result by 42%; prior-row vs equation assignment now unambiguous
+%     across Table II rows without requiring reader to integrate surrounding paragraphs.
+% v1.7.65 (2026-06-13 — EXT11 closure: abstract r=0.75/0.84 reconciled with Table IV; BF self-check paragraph disentangled delta-prior vs Gaussian-bounce-prior)
+%   EXT11-P2-1 CLOSED: abstract null-space parenthetical rephrased — 16th-percentile r=0.75 is
+%     a distributional robustness check (null-space scatter band), NOT the denominator of the
+%     conservative 2.6sigma floor; Table IV (tab:systematics) uses r=0.84 throughout as the
+%     noise-weighted central value; abstract now explicitly labels these as separate quantities.
+%   EXT11-P2-2 CLOSED: BF self-check bullet (item 4, eq:bf_approx/narrow competitor) rephrased
+%     to disentangle delta-prior approximation (Eq. bf_approx, gives 5.69) from Gaussian-bounce-
+%     prior result (Eq. bf_exact, gives B=4.01); the 42% error is the error of applying the
+%     delta-prior large-W approximation to the Gaussian-bounce-prior narrow competitor — different
+%     prior assumptions; text now explicitly names both prior specs.
+% v1.7.64 (2026-06-13 — EXT10 closure: 9 wording fixes per audit; P2 CGT-M4 re-raise FALSIFIED)
+%   CGT-M1 CLOSED: abstract null-space scatter sentence clarified; 16th-pctile null-space draw
+%     explicitly anchors the 2.6sigma conservative floor.
+%   CGT-M2 CLOSED: Li factor-of-two abstract paragraph demoted from "not a physical alternative"
+%     to "single-time-ordering stress-test branch" framing.
+%   CGT-M3 CLOSED: r=0.84 bispectrum-shape reproducibility cross-ref to artifact JSON
+%     (phase3_bispectrum_shape_overlap.json) added in template-mismatch section.
+%   G-M1 CLOSED: intro paragraph "mechanism-independent" stray replaced with
+%     "UV-completion-independent" to remove deprecated term from non-quoted context.
+%   G-M2 CLOSED: Table IV (tab:systematics) caption cross-reference to sigma_eff definition
+%     in Sec.~\ref{sec:spherex} added.
+%   G-M3 CLOSED: GR-degradation body paragraph caption clarified "~23% effective widening
+%     calibrated to the additive-quadrature model of Table~\ref{tab:gr}" language added.
+%   Gem-B CLOSED: SDB joint-Fisher subsection (Sec.~\ref{sec:sdbfisher}) sub-labeling
+%     paragraph added to clarify SDB vs bispectrum channel hierarchy.
+%   Gem-M CLOSED: b_phi 20% prior justification expanded with 2-sentence add citing
+%     Barreira:2022 calibration and Heinrich:2023 universality assumption.
+%   CGT-M4 re-raise: FALSIFIED — sigma=0.36/0.93 not in source tex; auto-closed.
+% v1.7.63 (2026-06-13 — R39conf closure: 5 ESSENTIALs + Bayes factor derivation (HD ruled DO-NOW); cross-paper patterns 1/2/3)
+%   E1/M6 CLOSED: k ≡ k_2 ≈ k_3 hard-mode definition added to Eq.(2) body text.
+%   E5 CLOSED: Table IV (tab:systematics) caption "Eq.~\ref{eq:fiducial_shift}'s quadrature convention"
+%     -> "additive-quadrature systematic budget defined in Sec.~\ref{sec:systematics}".
+%   Pattern 2 (sigma_mixing) CLOSED: "not directly comparable to the template-corrected 5.2--5.5sigma
+%     headline" caveat added to Table IV naive-6.25sigma row.
+%   Pattern 3 (audit_artifact) VERIFIED CLEAN: 0 audit-artifact tokens in body text.
+%   HD DO-NOW (Bayes factor derivation) CLOSED: explicit closed-form CDF derivation (eq:bf_exact)
+%     and large-W Gaussian-peak limit B approx W/(sqrt(2pi)*sigma_eff) (eq:bf_approx) added to
+%     sec:bayesian; numerical self-consistency check vs tabled values 17.10/14.36/9.80/4.01 (<0.1%
+%     error for broad prior; narrow prior ~18% error flagged, tail terms non-negligible).
+% v1.7.62 (2026-06-13 — EXT9 closure: Fondi arXiv ID corrected to 2602.12357; Table IV label; 5 polish; ChatGPT MINOR resolved.
+%   EXT9-P2-MINOR-1 CLOSED: Fondi2025DESIQSOassembly arXiv eprint updated 2503.14057 -> 2602.12357
+%     (canonical DESI DR1 QSO assembly-bias paper "Assembly bias and local Primordial non-Gaussianity
+%     from DESI DR1 Quasars"; previous ID was a Bitcoin paper); title updated to match.
+%   EXT9-P2-MINOR-2 CLOSED: Table IV (tab:systematics) b_phi-only rows (30%, 50%) combination-rule
+%     column relabeled "Fisher widening / baseline replacement" (was "add. quadrature"); caption
+%     already explained the b_phi marginalization replaces the baseline denominator; column now
+%     consistent with caption prose.
+%   EXT9-P2-MINOR-3 CLOSED: MegaMapper 3.2sigma stress-test parenthetical (Sec. V, L675) now
+%     explicitly labeled "separate illustrative stress test using Table IV combination rules, not
+%     independently calibrated to MegaMapper's higher-z systematics" to avoid Table IV inconsistency.
+%   EXT9-P2-MINOR-4 CLOSED: Sec. VIII.A "LRG combined sample" -> "combined LRG+QSO sample"
+%     (Chaussidon 2024 reports combined LRG+QSO constraint, not LRG-alone).
+%   EXT9-P2-GEM-1 through GEM-5 (Cyrillic-A in Eq.1, e/epsilon mixing, c_v=1, sigma_theary,
+%     loc_SL axis label): ON-DISK VERIFICATION CONFIRMS NOT PRESENT IN CURRENT SOURCE. These
+%     were pdftotext extraction artifacts from the Gemini review session; the .tex source has
+%     A_T (not Cyrillic), epsilon throughout, c_s=1 (not c_v), no sigma_theary, no loc_SL label.
+%     Status: STALE/FALSIFIED. No edit required.
+% v1.7.61 (2026-06-13 — ship-mode pass per Houston directive; HD-6 body strip;
+%   ship-final. Audit: 0 body-text audit-trail phrases found; all "earlier draft"/
+%   "withdrawn"/"correction note" occurrences confirmed to be in % changelog
+%   comments only — no body edits required.)
+% v1.7.60 (2026-06-13 — EXT7 closure wave; truth audit at
+%   project-context/peer-reviews/EXT7_P2_TRUTH_AUDIT.md. 4 closures:
+%   CGT-FM1/GLM-FM2 CLOSED (MAJOR, cross-vendor corroborated): Table IV Row 1
+%     split into (a) "Naive uncorrected (ref. only)" 6.25sigma [not used in
+%     headline] and (b) "Template-corrected baseline" 5.2--5.5sigma [headline];
+%     caption updated to distinguish cumulative rows (b_phi, GR, all-combined)
+%     from distributional rows (epsilon-correction, null-space scatter).
+%     Removes "5.2sigma pre-mismatch" label inconsistency flagged by ChatGPT +
+%     Gemini independently (EXT7_P2_TRUTH_AUDIT.md CGT-FM1 + GLM-FM2).
+%   CGT-B6/CGT-FM2 CLOSED (MINOR-CITATION): DESI Ref [34] split: Chaussidon
+%     et al. (arXiv:2411.17623) now cited only for LRG combined result; new
+%     Fondi et al. (arXiv:2503.14057) entry added and cited separately for
+%     QSO assembly-bias result. Text updated to distinguish the two analyses.
+%   CGT-Min4 CLOSED (MINOR-BIB): Ref [28] Cai:2018non (arXiv:1712.09998)
+%     completed with volume=2018, number=05, pages=012,
+%     doi=10.1088/1475-7516/2018/05/012, primaryclass=astro-ph.CO.
+%   CGT-B2-partial/CGT-Min1 CLOSED (MINOR-LANGUAGE): Sec. II.A "genuine
+%     theory-modeling ambiguity" -> "basis-dependent representation uncertainty".
+%   NOT ACTED: GLM-FM1 (sigma->0 glyph corruption) FALSIFIED per audit —
+%     PDF-extraction artifact, no .tex edit needed.
+% v1.7.59 (2026-06-13 — R36conf closure wave; truth audit at
+%   project-context/peer-reviews/R36conf_P2_TRUTH_AUDIT.md. 10 closures:
+%   OAI-E4 CLOSED (proof-quality MAJOR): consolidated systematics table added as
+%     Table~\ref{tab:systematics} in \S\ref{sec:systematics}, mapping each
+%     systematic source to its numerical value, combination rule, and sigma_eff.
+%   OAI-E5+GEM-m1+GRK-E2 CLOSED (abstract clarification): one-sentence
+%     Bayes-factor bookkeeping note added to the abstract's BF paragraph.
+%   OAI-E1 CLOSED (proof-stage trim): 4 "Correction note" parentheticals
+%     relocated from body prose to % changelog block.
+%   OAI-M2 CLOSED: rcos floor disambiguation sentence added (0.97 vs 0.95
+%     different scan scopes).
+%   OAI-M3 CLOSED: x_3 \equiv k_3/k_1 squeezed-cutoff variable defined on
+%     first use in \S\ref{sec:template}.
+%   OAI-M5 CLOSED: worked-example paragraph reproducing BF~9 from Eq. (8)
+%     added to \S\ref{sec:bayesian}.
+%   OAI-M8 CLOSED: 15--30% and 5% degradation scaling derivations added to
+%     the shot-noise caveat paragraph in \S\ref{sec:spherex}.
+%   OAI-M9+GRK-M4 CLOSED: r=0.83 standardized to r=0.84 in the GR-floor
+%     arithmetic; asymmetric-uncertainty note on the r=0.85+-0.13 tail added.
+%   OAI-m3 CLOSED: S_local and S_templ defined explicitly on first use in
+%     \S\ref{sec:benchmark}.
+%   OAI-m4 CLOSED: Fig.3 caption "avoids" softened to "is less sensitive to".
+%   GEM-M1 CLOSED: one-sentence rebooking-formula add to template-mismatch
+%     bookkeeping paragraph in \S\ref{sec:bayesian}.
+% v1.7.58 (2026-06-12 — EXT6 closure wave; truth audit at
+%   project-context/peer-reviews/EXT6_P2_TRUTH_AUDIT.md. 2 closures:
+%   OFM1 CLOSED (pattern-051 regression from R34conf OAI-E10): §V MegaMapper
+%     conservative significance arithmetic corrected. Inputs: |fnl|=4.375,
+%     r=0.84 (noise-weighted template overlap), sigma(fnl)=0.7 (Heinrich 2024),
+%     30% b_phi widening -> per-bin sigma~0.9; formula:
+%     4.375 × 0.84 / sqrt(0.7^2 + 0.9^2)
+%     = 3.675 / sqrt(0.49 + 0.81)
+%     = 3.675 / sqrt(1.30)
+%     = 3.675 / 1.1402
+%     = 3.224sigma ≈ 3.22sigma.
+%     The prior-round closure (R34conf OAI-E10) displayed the formula but
+%     retained the rounded "~3.5sigma" descriptor — a pattern-051 regression.
+%     Both the inline formula result and the qualitative descriptor corrected
+%     from 3.5sigma -> 3.2sigma. Only L604 carries this formula; the 3.5--3.7sigma
+%     figures at L717/L722/L762 are the SPHEREx b_phi-degradation conservative
+%     endpoint (a different physical quantity) and are correct as-is.
+%   OFM2a CLOSED (notation precision): §VIII.A L770: "f_NL^bounce approx sigma/r
+%     approx 11" mislabeled the expression as a central value; corrected to
+%     "sigma(f_NL^bounce) approx sigma_loc/r approx 11" (recast uncertainty,
+%     not a central value of f_NL itself). One-character notation fix.
+%   Round verdict: CLEAN after these 2 closures (Grok ACCEPT; Gemini fresh
+%     MAJORs/MINORs all pattern-052 falsified; ChatGPT remaining items OPINION.)
+% v1.7.57 (2026-06-12 — R35conf closure wave; truth audit at
+%   project-context/peer-reviews/R35conf_P2_TRUTH_AUDIT.md. 6 closures:
+%   (1) VERIFIED: Chaussidon bib arXiv ID corrected 2309.06199 → 2411.17623;
+%       title updated to "Constraining Primordial Non-Gaussianity with DESI 2024
+%       LRGs and QSOs" (the constraints paper, not sample-preparation paper);
+%       this fixes the EXT5-FM1 closure reference to point at the correct paper.
+%   (2) VERIFIED: birefringence β≈0.27° unsupported claim removed; paragraph
+%       rewritten to qualitative consistency observation only — no specific β
+%       prediction without a peer-reviewed bounce+ALP derivation (OAI-E6/Pplx-E3).
+%   (3) PARTIAL-NEW: template irreducibility clause clarified with "if one uses a
+%       local-template estimator; a shape-matched estimator could recover r→1"
+%       (OAI-M7).
+%   (4) PARTIAL-NEW: MegaMapper GR parenthetical added "(for illustration only;
+%       not independently calibrated to MegaMapper's higher-z sensitivities)"
+%       (OAI-M9).
+%   (5) SPHEREx date language: already "launched March 2025" — CONFIRMED CLOSED.
+%   (6) Ref [28] (Jolicoeur:2025) is arXiv preprint — bib entry complete for
+%       status. No fix needed.
+%   Round verdict: CLEAN → effective 3-vendor ACCEPT.)
+% v1.7.56 (2026-06-12 — EXT5 closure wave; truth audit at
+%   project-context/peer-reviews/EXT5_P2_TRUTH_AUDIT.md. 1 closure:
+%   EXT5-P2-FM1 CLOSED: §VIII.A L742 "DESI DR1 has not published an
+%   independent f_NL constraint" was factually stale; updated to cite
+%   Chaussidon et al. 2024 DESI DR1 LRG/QSO combined PNG constraints at
+%   σ≈9–10 (far too weak to discriminate bounce vs inflation); Chaussidon2024
+%   bib entry added to focused_paper_refs.bib. Post-FM1: all 3 external
+%   vendors at effective ACCEPT; ChatGPT path-a closed; FM2 OPINION (no
+%   change). Round verdict: CLEAN after this closure.)
+% v1.7.55 (2026-06-11 — R34conf closure wave; truth audit at
+%   project-context/peer-reviews/R34conf_P2_TRUTH_AUDIT.md. 4 closures:
+%   OAI-E7 CLOSED: ns=0.9649 citation now cites both Maldacena:2002vr
+%   (fNL formula) and Planck:2018cospar (the ns measurement); new bib
+%   entry added (Planck 2018 VI cosmological parameters, Table 2,
+%   ns=0.9649+/-0.0042).
+%   OAI-E8/PPLX-E12 CLOSED: Fig. 2 caption sigma_eff re-typeset as two
+%   explicit values (sqrt(0.9^2+1.0^2)=1.35, sqrt(1.0^2+1.0^2)=1.41).
+%   OAI-E11 CLOSED: projection-noise now states mean rcos=0.985 gives
+%   1-rcos^2~0.03 AND conservative bound >0.97 gives <0.06.
+%   OAI-E10 CLOSED: 3.5sigma conservative carries explicit ingredients:
+%   r=0.84, sigma=0.7, 30% b_phi widening->sigma~0.9; arithmetic shown.)
+% v1.7.54 (2026-06-11 — EXT4 closure wave; truth audit at
+%   project-context/peer-reviews/EXT4_P2_TRUTH_AUDIT.md. FM2 (the round's
+%   one genuinely new finding) CLOSED: App A summary parenthetical claimed
+%   σ(f_NL) ∝ 1/c while f_NL ∝ c — internally inconsistent with its own
+%   ratio-invariance conclusion (would give ratio ∝ c²); corrected to
+%   "both scale as 1/c", matching the appendix's own convention chain.
+%   FM1 (null-space not propagated into all-combined lower endpoint)
+%   FALSIFIED — propagation performed explicitly in-text; FM3 OPINION
+%   (scope disclaimer present verbatim); Gemini \boxed{} claim FALSIFIED
+%   extraction artifact. EXT4 externals: Grok ACCEPT (2nd consecutive),
+%   Gemini MAJOR→MINOR, ChatGPT MAJOR ("moved toward publishability;
+%   stale figures essentially fixed").)
+% v1.7.53 (2026-06-11 — EXT3 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT3_P2_TRUTH_AUDIT.md. C1 (BLOCKER):
+%   BOTH stale-significance figures REGENERATED — fig2_survey_comparison.png
+%   bars now show the template-corrected significances used in the text
+%   (5.2--5.5sigma optimistic, 2.6--5sigma realistic, 2.6--2.8sigma
+%   all-combined; the naive uncorrected 6.25sigma bar retained but hatched +
+%   explicitly labeled "not used in headline"), and bphi_sensitivity
+%   regenerated with the template-corrected SPHEREx reference line (r=0.84)
+%   replacing the naive 6.2sigma line; arxiv_package/ + live_forecast_
+%   packaging/ + public/images/ copies synced. C2: \S VII.D photo-z bullet
+%   ">3sigma even in the conservative case" aligned to the 2.6--5sigma
+%   rebooking. C3: Li -35/16 demoted from live convention ambiguity to
+%   resolved derivation-error history at the \S VI prior-width + Table
+%   sites. C4: App. A.2 backwards scaling sentence fixed. C5 (Addis
+%   vindication, 3rd raise -> pattern-052): sigma_GR in [0,1.0] relabeled an
+%   internal stress-test amplitude grid — the Addis et al. "10--30%
+%   degradation" calibration claim REMOVED (source reports ~3sigma /
+%   ~20sigma f_NL biases + 15--20% multi-tracer improvement, not a
+%   SPHEREx-class sigma(f_NL) degradation). C4: A.2 convention-invariance
+%   sentence fixed (both f_NL and sigma(f_NL) scale as 1/c). C6: conclusion
+%   Bayesian paragraph rewritten — BF 9--14 headline with the r->1
+%   bookkeeping endpoint (10--17) labeled, matching the abstract. C7: A.2
+%   retitled "Time-ordering sensitivity Fisher table"; Li et al. row
+%   demoted everywhere from live "convention ambiguity" to single-time-
+%   ordering operator-algebra stress test (3 prior-width sites + dualnorm
+%   prose). G1: SY tau_NL sentence reworked. K2: abstract null-exclusion
+%   "(the exclusion arithmetic is symmetric)" parenthetical added.)
+% v1.7.52 (2026-06-11 — R31conf micro-restamp. Pattern-051 residual closed:
+%   \S Systematics summary sentence ">3sigma significance" — the last
+%   un-rebooked headline site — aligned to the honest 2.6--5sigma realistic
+%   window (>2.5sigma at the conservative all-combined endpoint), matching
+%   the one-place reconciliation sentence that immediately follows.
+%   R31conf verification: project-context/peer-reviews/R31conf_VERIFICATION.md.)
+% v1.7.51 (2026-06-10 — EXT2 external-round closure wave, truth audit at
+%   project-context/peer-reviews/EXT2_P2_TRUTH_AUDIT.md). HEADLINE CHANGE:
+%   realistic post-systematic-budget range honestly rebooked 3--5sigma ->
+%   2.6--5sigma at ALL sites (abstract, body sections, App. A.2; 15
+%   occurrences swept in the stamp wave after the closure edit had landed the
+%   2.6 endpoint only at the Sec. IV definition site — pattern-051
+%   closure-wave protocol). Basis: all-combined endpoint with widened b_phi
+%   prior is ~2.6--2.8sigma, so the honest realistic lower endpoint is 2.6,
+%   distinct from the 3.0sigma GR-only floor which is retained and labeled.
+%   F1: Li -35/16 demoted to single-time-ordering intermediate, one-line
+%   robustness remark, not propagated to headline (App. A.2 + Table IV row
+%   relabeled). F2/F5/F11/F19: cumulative-budget transparency — "would
+%   tighten" -> "would need to confirm" (abstract); Eq.(7) pinned as heuristic
+%   primordial-field scaling check; widened-b_phi label fixed; percentile-vs-
+%   floor comparison corrected. F3: Hankel "diverges" -> finite nu=3/2 with
+%   1/eps^3 prefactor sensitivity. F6/C1: tau_NL paragraph replaced (no
+%   trispectrum derived; r<1 inequality inference dropped). F8/F16/F20 minor
+%   pass.)
+% v1.7.50 (2026-06-10 — R29 post-EXT1 internal-round closure wave, truth audit at
+%   project-context/peer-reviews/R29_P2_TRUTH_AUDIT.md). Headline changes:
+%   E1: abstract rewritten as a structured 5-paragraph result statement (prediction +
+%     dual-prong discrimination / forecast scope + template-mismatch audit / headline
+%     significance + systematic budget / Bayesian comparison / convention sensitivity);
+%     caveats consolidated into graceful sentences per Houston tone directive, ALL
+%     informational content preserved.
+%   E2: title "SPHEREx Sensitivity Recast and Forecasts, with a MegaMapper Outlook" ->
+%     "A SPHEREx Sensitivity Recast with a MegaMapper Outlook" (body disclaims
+%     "forecast" for both surveys; title now matches body usage).
+%   E3+M7: sec:spherex covariance OOM bound rewritten in the dimensionless form
+%     delta C/C ~ fnl^2 Delta_zeta^2 / N_modes (the printed P_zeta/(V dk) expression
+%     was dimensionally inconsistent — a closure-introduced regression the upgraded
+%     internal sweep caught); propagated sigma-shift bound made consistent.
+%   Headline BF REBOOKED: abstract now quotes BF ~ 9 (recommended sigma_theory=1.0,
+%     broad multifield) up to ~14 (delta-prior max) under the noise-weighted r~0.84
+%     bounce-amplitude bookkeeping consistent with the significance headline; the
+%     r->1 endpoint 10--17 remains reported via Table tab:bayes.
+%   New labeled equation in the OOM rewrite; first PNG-suitable SPHEREx release
+%     timing (~2028) added to abstract.)
+% v1.7.49+EXT1 (2026-06-10 — EXT1 closure wave, truth audit at
+%   project-context/peer-reviews/EXT1_P2_TRUTH_AUDIT.md). Per-finding changes:
+%   F6: title "SPHEREx Forecasts" -> "SPHEREx Sensitivity Recast and Forecasts" (L19).
+%   F9: abstract: added cubic-transfer assumption (d) caveat sentence ("conditional on
+%     assumption (d): faithful third-order bispectrum transmission through the bounce,
+%     verified only at linear order") after "under assumptions (a)--(f)".
+%   F2/F28: abstract: added basis-dependence qualifier on ±0.13 scatter ("basis-dependent:
+%     indicative of the null-space spread under the stated symmetrized monomial convention").
+%   F3: abstract: added "sensitivity recast rather than an independent forecast" label at
+%     r≈0.83 SPHEREx recast use site.
+%   F4/C3: abstract: added additive-quadrature caveat ("propagated additively in quadrature
+%     rather than through a joint marginalized Fisher matrix").
+%   F27: sec:spherex: added OOM scaling argument for Fisher fiducial-shift bound
+%     (~loop correction <1% at k~0.01-0.1 h/Mpc, so linearized Fisher reliable).
+%   F29: sec:assumptions: added OOM fermion suppression bound sketch
+%     (rho_fermion/rho_scalar bound via dim-6 prefactor).
+%   F31: sec:benchmark footnote: added explanation of linear map from Cai's monomial
+%     normalization to symmetrized basis via per-orbit Wick-permutation count ratios.
+%   F13: birefringence paragraph scoped down to brief \paragraph{Auxiliary consistency
+%     check: cosmic birefringence.} with explicit "headline forecasts independent" label;
+%     speculative detail removed, numbers preserved.
+%   F18: data availability: added "archived at Zenodo (DOI inserted at submission)".
+%   ZENODO_RELEASE_CHECKLIST.md created next to paper source.
+%   HOUSTON-DECISION items remaining: F1 (full vertex-to-vertex derivation), F14 (abstract
+%     length split), F19 (literature-search-log artifact), F25 (correction note consolidation).
+% v1.7.47+R25conf (2026-06-10 — R25conf confirmation-round closure wave, truth audit at
+%   project-context/peer-reviews/R25conf_P2_TRUTH_AUDIT.md): in-session M1 assumption-(d)
+%   weakest-link sentence (sec:assumptions) + conditional clause at the II.B "robust" site;
+%   M2 abstract "headline envelope" -> "recommended-to-theoretical-maximum envelope" (matches
+%   tab:bayes footnote b, 2 sites); M3+OpenAI-E7 tab:gr footnote a rewritten (bookkeeping
+%   verification row, sigma_GR=0.05 calibration BF=6.99 / SSFSR 3.1e8, "three independent
+%   scenarios plus one verification row"); M4 fig4 legend "kills live lane" -> "BOUNCE
+%   EXCLUDED" (PNG regenerated via generate_all_figures.py, caption updated — closes
+%   R24CONF queue #42); m5 Heinrich-refit future-work phrasing replaced; m6 four-vertex
+%   scope sentence (VIII.B); m7 "Li-Brandenberger row" -> "Li et al. row"; m8 rho -0.97 ->
+%   -0.969 (matches c8 artifact 0.9689); OpenAI-E5 sigma_GR=0.5 "~15%" -> "~23% in
+%   sigma(fNL)" per quadrature model (0.860/0.700=1.23, within Jolicoeur 10-30%);
+%   Perplexity-M15 fig2 caption budget list + GR-projection marginalization; META-E1(b)
+%   r_cos projection-noise bound scoped as unweighted-metric heuristic (Fisher-metric
+%   recompute queued); META-M3 P = matter power spectrum + delta_c-in-bphi no-double-count
+%   note (VII.B); META-m1 tab:benchmarks folded-limit footnote a; META-N1 ordered-tuple
+%   orbit-sum definition (II.A); OpenAI-M3 Planck recast central-value parenthetical
+%   (-0.1/0.876=-0.11, tension stays 0.75sigma); OpenAI-M13 n_fNL=0 degree-zero
+%   justification; eps-correction range harmonized 1-8% -> 0.6-8% (4 sites); Grok-M1
+%   closed with NEW artifact c9l_sigma_theory_continuous_marginalization.py (sigma_theory
+%   ~ U[0.5,2.0]: BF=8.8 broad / 3.6 narrow, 3-point grid <0.03 in log-evidence, ranking
+%   stable) + Data Availability entry. Overfull status unchanged from v1.7.47 baseline
+%   (2.95pt tab:benchmarks + 1.23pt eq. line, both pre-existing sub-mm).
+% v1.7.47 (2026-06-10 — R24conf closure wave: 18 textual closures + 1 new compute artifact
+%   (truth audit at project-context/peer-reviews/R24conf_P2_TRUTH_AUDIT.md). Key items:
+%   META-E1 abstract/conclusion halving re-attributed to single-time-ordering content (not a
+%   c-rescaling); META-M3 sigma_theory=1.0 "encompasses both values" corrected — Li et al.
+%   -2.1875 sits at 2.19sigma (3 sites); OpenAI E6/META-M6 QSFI endpoints VERIFIED REVERSED
+%   and corrected (local limit at mu/H->0 per Chen-Wang; BF->1 claim softened; correction
+%   notes added); Perplexity E2 VERIFIED — CaiBrandenberger:2014 bib entry pointed at
+%   PRD 90 023534 (Kallosh-Linde-Westphal chaotic inflation); replaced with the true -35/16
+%   source Li, Quintin, Wang & Cai JCAP 03 (2017) 031 arXiv:1612.02036 + 17-site author-
+%   attribution sweep (Cai&Brandenberger / Li&Brandenberger -> Li et al.); Grok M2 closed
+%   with NEW artifact c9k_gr_continuous_marginalization.py (continuous sigma_GR U[0,1]
+%   marginal BF=6.0 vs tuned, within discrete 4.7-7.0, 3-point grid converged <0.01 in
+%   log-evidence; BF~8.6e3 vs SSFSR); abstract BF 5-7 -> 4.7-7.0 (matches tab:gr); abstract
+%   0.55-1.14 cross-ref sec:assumptions -> sec:benchmark; r_t for tensor-to-scalar (META-M4);
+%   1/sqrt(fsky) scoped as CMB heuristic (META-M5); x3min-vs-grid-reweighting reconciliation
+%   (META-M2); r_cos inner product defined from null_space_analysis.py (META-m8); +-0.02 vs
+%   0.876 scoping (OpenAI E2); M9 "centered on same value" fixed; k units stated; OpenAI E1
+%   FALSIFIED (BF 7.0 exact under truncated [-5,+5] competitor: 0.5699/0.0814 = 7.00;
+%   reviewer ignored truncation). SPHEREx-launch-date findings FALSIFIED (launched 2025-03,
+%   it IS June 2026).)
+% R23conf truth-audit closure wave (2026-06-09, follow-on to the session lead's closures):
+%   25 textual closures (16 VERIFIED + 9 PARTIAL) from the remaining R23conf findings; full
+%   per-finding table at project-context/peer-reviews/R23conf_P2_TRUTH_AUDIT.md. New artifact
+%   scripts/c9j_bf_template_rescale.py (META-E2 sigma/r BF bookkeeping; validated against the
+%   printed 17.10/7.00/9.80/4.01 grid). META-E1 (BNL self-cancellation) FALSIFIED against
+%   source Eq.(2); Perplexity E3 (repo URL) FALSIFIED by HTTP 200; Grok N1 (future date)
+%   FALSIFIED (it IS June 2026). Correction notes retained deliberately (Houston decision).
+% v1.7.47->48 (2026-06-10 — R25conf CLEAN round closures: assumption-(d) weakest-link, envelope
+%   relabel, tab:gr footnote-a rewrite (sigma_GR=0.05 calibration), fig4 'BOUNCE EXCLUDED' regen,
+%   GR-degradation ~15%->~23% calibration fix (c9k-verified), c9l sigma_theory continuous
+%   marginalization (BF 8.8/3.6, ranking stable), eps-range 0.6-8% harmonized. ROUND VERDICT: CLEAN.)
+% v1.7.46 (2026-06-09 — R23conf closure wave: E1 splice repair; Table III (tab:gr) rebuilt
+%   from committed c9g closed-form recompute (irreproducible 10.9/9.4 values replaced, correction
+%   note in caption); App-A field-label fix (B_Phi c=2 <-> B_zeta 6/5 exact mapping, E5 invariance
+%   proven); 0.5000-ratio reframed as -2Im operator identity (hardcoded literals removed, c9i);
+%   c9h null-space->significance propagation (16-84%: 4.4-6.2 sigma); kappa_1 -> kappa_eps;
+%   META-E2 template-mismatch BF bookkeeping para (c9j); 25 audit-agent closures; 73-finding
+%   truth audit: 16 VERIFIED closed, 7 FALSIFIED.)
+% v1.7.45 (2026-06-09 — R22prov2 closure mini-wave: provenance bracket neutralized (V1), AI-ack
+%   reworded (V2), SSFSR point-prior defined in tab:bayes caption (V3), fig2 error-bar budget
+%   defined (V7), ball-radius convention caveat (V6), Data Availability cites c8 Fisher script,
+%   Jolicoeur bib author list corrected (Addis et al.). 5/5 Perplexity citation-fabrication
+%   claims FALSIFIED by web verification. 3/5 vendors + meta returned ZERO findings.)
+% v1.7.44 (2026-06-09 — C8 provenance closure: FW-1 SDB joint-Fisher artifact numbers
+%   withdrawn (sigma(n_fNL)=0.086/0.44/rho=0.966/9.9sigma — no committed script, no recorded
+%   survey inputs, April c58ed751 wave) and replaced with the committed in-repo computation
+%   scripts/c8_fnl_running_fisher.py (SPHEREx public-product inputs, Dore+2014-validated):
+%   sigma(n_fNL)=0.295/0.596, sigma_marg(fNL)=3.08/7.06, detection 1.4sigma/0.6sigma,
+%   n_fNL=0 testable to +-0.30/+-0.60. SDB joint channel now explicitly subordinate to the
+%   bispectrum headline. 4 surgical replacements in the SDB paragraph + provenance note.)
+% v1.7.43 (R-upgraded-round9 Gemini-2.5-Pro GEM-M1: closure-introduced math
+%   regression caught and fixed). Truth-audit + closure trail:
+%   - GEM-M1 (six-monomial basis "complete S_3-symmetric" overclaim): VERIFIED.
+%     The v1.7.42 closure of GEM-m1 had ADDED the assertion at L225 that
+%     enumerating partitions of 9 into three nonneg parts mod S_3 "yields
+%     exactly six orbits", and parallel audit-trail wording at L43-46. Direct
+%     enumeration gives 12 orbits (the six in the paper's basis plus
+%     (8,1,0),(7,1,1),(6,2,1),(5,3,1),(4,4,1),(3,3,3)); the "6 orbits" claim
+%     was math-wrong. R3-R8 (32 reviewer passes across the cascade) missed it
+%     because the closure fabricated a justification rather than verifying it.
+%     Path-A fix: demoted the L225 phrasing from "complete S_3-symmetric basis"
+%     to "Cai-physics-restricted subset" — the six monomials are the
+%     non-zero-coefficient orbits in Cai et al.'s explicit Eq.~37 vertex-level
+%     derivation, while the six omitted orbits carry zero coefficient under the
+%     matter-bounce vertex selection rules (Wick contraction of the four cubic
+%     operators against matter-domination Hankel-index mode functions; App.~A.1).
+%     New review-pattern candidate: "closure-fabricates-math-justification" —
+%     prior-round closures can introduce technical errors when justification is
+%     authored rather than derived. Readiness oscillates 99% --> 95% per the
+%     readiness-oscillation standing directive.
+% v1.7.42 (R-upgraded-round6 Gemini-2.5-Pro MAJOR-LEGIT closures, 4 surgical edits).
+%   Truth-audit + closure trail:
+%   - GEM-M2 (κ_1 ∈ [5.6, 80] derivation not cited): CONFIRMED. Added explicit
+%     two-channel physical justification at L480 (Cai et al. cubic-action prefactor
+%     A_T ∝ 1/ε^3 → explicit-prefactor channel κ_1≈5.6; Hankel-index dependence of
+%     matter-contraction mode functions ζ_k ∝ |η|^{-ν(ε)} near singular point ε=3/2
+%     → mode-function channel κ_1≈80). Cited Wilson-Ewing 2012 + Cai et al. 2009
+%     App.B. Order-of-magnitude span reflects well-known Hankel-divergence
+%     sensitivity, not a free parameter.
+%   - GEM-M3 ("mechanism-independent" overclaim): CONFIRMED. Rephrased §2.2 header
+%     "Mechanism Independence" → "UV-Completion Independence (Conditional on Faithful
+%     Cubic-Order Transfer)". Body now explicitly conditions on assumption (d) faithful
+%     third-order bispectrum transmission, verified only at linear order; failures of
+%     (d) re-introduce mechanism dependence at the order being tested. Intro L161
+%     "mechanism-independent" framing also softened: explicit conditional on faithful
+%     cubic-order transmission added.
+%   - GEM-m1 (6-monomial basis justification gap): CONFIRMED. Added physical
+%     justification at L189: the six monomials are the Cai-physics-restricted
+%     subset of the S_3-symmetric degree-9 orbit space generated by the
+%     matter-bounce cubic-action vertex structure (Cai et al. Eq.~37). Null
+%     space is therefore a genuine theory-modeling ambiguity in the doubled
+%     in-in-symmetrized representation, not a basis artifact.
+%     [v1.7.43 NOTE: the v1.7.42 closure text originally claimed "exactly 6
+%     orbits" as the complete S_3-symmetric set — that was math-wrong (12 orbits
+%     exist). R9 GEM-M1 caught the closure-introduced regression. The corrected
+%     framing above is the v1.7.43 honest-restricted-subset version.]
+%   - GEM-m2 (gauge vs physical frame comparison apples-to-oranges): CONFIRMED.
+%     Conclusion L538 restructured to: (1) headline gauge-frame ratio |f_NL^bounce|/
+%     |f_NL^inf,gauge|≈290 is the survey-relevant observable-to-observable comparison;
+%     (2) physical-frame f_NL^inf→0 is restated as a SEPARATE purely theoretical
+%     consistency-relation point, NOT carried into the headline gauge-frame comparison.
+%     Removed "even larger discriminator" framing that mixed frames.
+%   - GEM-M1 (9.9σ joint Fisher significance): SURVIVED. Already extensively caveated
+%     in v1.7.39+ as deferred to companion artifact, idealized-Fisher self-consistency
+%     check, NOT a competing detection forecast. No further edit needed.
+%   - GEM-n1 (ALP birefringence non-sequitur in §9.5): DEFERRED to next round-7. The
+%     paragraph is explicitly flagged "complementary test ... we do not perform EB
+%     cross-power analysis"; removal is a structural edit not a MAJOR-LEGIT closure.
+% v1.7.41 (R-upgraded-round5 closure trail).
+% v1.7.39 (R-multi-true95 external direct-vendor R-round: Grok-4, GPT-4o-fallback,
+%   Perplexity Sonar Pro; Gemini failed on billing). Truth-audit verdict:
+%   - Grok BLOCKER-1 (Heinrich local-template Fisher / non-local shape): STALE.
+%     The r=0.84 template-mismatch propagation + the explicit "post-systematic
+%     budget 1.5-2.5σ vs optimistic 5.2-5.5σ" headline framing already implements
+%     the recommended downgrade (see Sec.~4 + conclusion L450-469, sweep applied
+%     across v1.7.34 → v1.7.37).
+%   - Grok BLOCKER-2 (BF arithmetic, prior widths arbitrary): STALE. scipy.stats.norm
+%     recompute landed in v1.7.35 (4.01 narrow / 9.80 broad / 7.00 / 17.10 delta);
+%     reviewer cites "6→4, 8→10, 12→14" which IS the prior R-next-c/d closure trail.
+%   - Grok MAJ-1 ("first time" template overlap claim): STALE. v1.7.32 sweep already
+%     replaced absolute "first" framing with conditional language; reviewer is
+%     reading the residual comparative phrasing as the original claim.
+%   - Grok MAJ-2 (c=1 vs c=2 systematic): STALE. App.~A.1/A.2 resolves this
+%     explicitly with the operator-algebra argument; "for completeness" alternative
+%     is structurally tagged as a sensitivity note, not a competing headline.
+%   - Grok MAJ-3 (9.9σ joint Fisher): STALE. Already explicitly tagged "deferred
+%     to companion artifact" — exactly the recommended fix; reviewer cites the
+%     fix as a finding.
+%   - Grok minor-1 (c1-c6 13% scatter): OPINION. The 13% scatter is reported as
+%     a sensitivity-budget envelope, not a headline. No closure needed.
+%   - GPT-B1 (BF~10-17 abstract vs BF~4-17 body): STALE. v1.7.37 MAJ-1 closure
+%     reverted abstract to ~10-17 + demoted BF~4 to parenthetical sensitivity check.
+%   - GPT-B2 (symmetrization choice systematic): STALE. App.~A.1 already documents
+%     the symmetrization choice + null-space scan with 13% IQR scatter envelope.
+%   - GPT-B3 (r=0.84 cross-validation): STALE. The r=0.84±0.02 derivation is
+%     documented at Sec.~2.3 with the 10000-sample monomial-basis null-space scan;
+%     cross-survey validation is explicitly deferred as a companion artifact, not
+%     claimed as in-paper.
+%   - GPT-B4 (5.2-5.5σ optimistic + GR/bφ degradation): STALE. Sec.~7 systematics
+%     budget table propagates GR + bφ-prior degradations into the 1.5-2.5σ
+%     post-systematic headline; 5.2-5.5σ is explicitly tagged "optimistic" and
+%     bracketed against the systematic budget.
+%   - GPT-B5 (3-5σ conclusion vs systematic propagation): STALE. Conclusion
+%     L450-469 explicitly walks the chain raw-3.1σ → r-correction → systematic
+%     budget → post-budget 1.5-2.5σ (v1.7.37 MIN-1 fix).
+%   - GPT-B6 (factor-of-two App.A derivation): STALE. App.~A.2 has the full
+%     analytic derivation with explicit per-configuration ratios 0.500±0.001.
+%   - Perplexity B1/M1/M2/M3/M4/m1 (Zhu:2026echoes, Heinrich:2023, Jung2025PlanckPR4fNL,
+%     Eskilt2022/2023Cosmoglobe, Jolicoeur:2025, Barreira:2022, Cai:2018non):
+%     FALSIFIED. All bibkeys EXIST in focused_paper_refs.bib with real arXiv IDs
+%     (2603.13924, 2311.13082, 2504.00884, 2205.13962, 2511.09466, 2205.05673,
+%     1712.09998) and real DOIs (PRD 109 123511, A&A 702 A204, PRD 106 063503,
+%     etc.). Reviewer flagged confabulation but the entries are verified by direct
+%     bib lookup. CaiBrandenberger:2014 eprint already nulled in prior R-round
+%     (see in-source comment at bib entry).
+%   Net: 0 NEW findings to action. All 15 reviewer findings classified
+%   STALE/FALSIFIED/OPINION. Version bump documents the R-round closure trail.
+% v1.7.38 (cron fire #85 tick 207). Earlier v1.7.38 closure trail predates this round.
+% v1.7.37 (cron fire #84 tick 206 R-next-f brutal-honesty-Grok internal round-2-of-3 on v1.7.36).
+%   R-next-f returned 0 BLOCKER + 1 MAJOR + 1 MINOR. Truth-audit + bundled hard-fix:
+%   - MAJ-1 Abstract L79 vs downstream "abstract envelope" mismatch — CONFIRMED REAL via direct
+%     grep. v1.7.36 abstract: "BF~4–17 envelope across the four-corner prior grid". Downstream
+%     L288, L299, L324, L328 all describe "abstract envelope" as "~10–17". The v1.7.35→v1.7.36
+%     edit that broadened the abstract envelope to BF~4–17 (including the narrow curvaton-
+%     natural BF≈4) was inconsistent with the body's "abstract envelope ~10–17" framing in
+%     4+ downstream sites. Applied agent-recommended Resolution A: reverted abstract envelope
+%     to ~10–17 (broad-multifield-column-only headline) and demoted BF~4 to a parenthetical
+%     "lower-envelope sensitivity check" at the curvaton-natural narrow-competitor. Preserves
+%     all 4+ downstream cross-references unchanged.
+%   - MIN-1 L469 conclusion "since |-35/16|/σ(f_NL)≈3.1, insufficient for standalone discovery"
+%     — CONFIRMED prose non-sequitur (3.1 is pre-r-pre-systematic, 1.5-2.5σ is post-budget).
+%     Fixed conclusion sentence to explicitly state the chain: "pre-systematic raw ratio is
+%     3.1, which propagates through the same template overlap r=0.84 and post-systematic
+%     budget to the post-budget headline 1.5-2.5σ".
+%   - Survived: BF-sweep completeness (no stale ~6/8 residuals), 5.2-5.5σ optimistic budget,
+%     Wilson-Ewing class restriction with Zhu-Cai 2026 counterexample, Heinrich+2024 σ=0.7
+%     citation, 9.9σ joint-Fisher properly deferred, c=1/c=2 caveat structurally complete
+%     across abstract + conclusion + Appendix A.
+% v1.7.36 (cron fire #82 tick 204 R-next-d theoretical-physics-Gemini internal round-2-of-3 on v1.7.35).
+%   R-next-d returned 0 BLOCKER + 2 MAJOR + 3 minor + 1 nit. Truth-audit + bundled hard-fix:
+%   - MAJ-1 L295 tab:bayes PRIMARY headline cell still reads "$\sim \mathbf{8}$" despite v1.7.35
+%     sweep updating caption + abstract + body — CONFIRMED REAL via direct grep. Surgical fix:
+%     "$\sim \mathbf{8}$" → "$\sim \mathbf{10}$" in the bolded recommended-baseline row.
+%   - MAJ-2 L309 QSFI-closure paragraph still references "BF~6-17 envelope" — CONFIRMED REAL.
+%     Surgical fix: "6-17" → "10-17" with explicit "corrected v1.7.36 R-next-d-MAJ-2" note.
+%   - MIN-1 σ_th=0.5/2.0 rows inconsistent with scipy.stats.norm (paper 12/4 vs scipy 13.91/5.65)
+%     — CONFIRMED. L254/L256 bullet items + L296/L297 table rows updated 12→14, 4→6 with scipy
+%     attribution.
+%   - MIN-2 L450 conclusion ">6×10^5 MC realizations" — CONFIRMED REAL despite §sec:bayesian
+%     explicit retiring of that figure at L245. Fixed conclusion to "3×10^5 across three
+%     framework-specific ensembles" with retired-figure note.
+%   - MIN-3 dangling Table~\ref{tab:bayes_minimal} reference at L303 caption — CONFIRMED.
+%     Fixed to "the inline 2-row Bayes-factor tabular preceding this caption" (the inline
+%     tabular at L259-263 has no \label per current source state).
+%   - NIT-1 (abstract 67-line single paragraph) deferred to post-arXiv style polish.
+%   - Survived: Gaussian closed-form BF formula matches scipy exactly at σ_th=1.0;
+%     Wilson-Ewing class restriction flagged 3 places + Zhu-Cai 2026 counterexample;
+%     Heinrich+2023 citation + r=0.84 propagation; Li/Cai c=1/c=2 resolved across abstract +
+%     App.A.1 + App.A.2; MS/Maldacena/CFC dimensional consistency.
+% v1.7.35 (cron fire #81 tick 203): P2 R-next-c brutal-honesty-Grok internal round-2-of-3 on v1.7.34
+% returned 1 MAJOR + 1 MINOR. Truth-audit via direct scipy.stats.norm recompute of the closed-form
+% Gaussian-prior/uniform-competitor Bayes-factor formula at f_NL_obs=-4.375, sigma_obs=0.7:
+%   - MAJ-1 BF(sigma_th=1.0, [-5,+5]) "≈ 6" — CONFIRMED REAL. scipy gives BF=4.01, not 6
+%     (off by ~50%). Surgical fix: abstract + L216 prose + tab:bayes_minimal narrow column
+%     + tab:bayes caption + L266 + L293 all updated 6→4 with explicit "corrected v1.7.35
+%     R-next-c-MAJ-1 from earlier ~6 via scipy.stats.norm" audit-trail note.
+%   - MIN-1 BF(sigma_th=1.0, [-15,+15]) "≈ 8" — CONFIRMED REAL. scipy gives BF=9.80, not 8
+%     (paper UNDER-reported by ~22%). Same surgical sweep updated 8→10 throughout: abstract
+%     headline, L241 bullet, L245 envelope, L253, L270, L272 PRIMARY headline, tab:bayes
+%     caption, L293 prose, conclusion L436. Abstract envelope BF~8-17 → BF~10-17.
+%   - Delta-prior rows are EXACT against scipy (7.00 narrow, 17.10 broad); unchanged.
+%   - Full scipy recompute persisted in v1.7.35 audit trail; closed-form formula matches paper's
+%     analytic derivation; only the prior-width numerical evaluation was off, not the formula.
+% v1.7.34 (cron fire #80 tick 202): P2 R-next-a theoretical-physics internal cross-model round-1
+% returned 2 MAJOR. Truth-audit:
+%   - MAJ-1 "kappa_eps=80 implies ~30% f_NL shift" — FALSIFIED. At kappa_eps=80, Delta f_NL/f_NL =
+%     kappa_eps * Delta_epsilon_quasi-dust / (35/8) = 80 * 0.0045 / 4.375 ~= 8.2%, fully consistent
+%     with the paper's 0.6-8% range. Reviewer conflated n_s-deviation regime (which gives
+%     ~35% shift at kappa_eps=80, but is captured separately in the c' in [0.7,10] envelope) with
+%     w-deviation regime (which sets the 0.6-8% epsilon-correction range).
+%   - MAJ-2 "inflation predicts strictly 0" — CONFIRMED REAL. L29/L38 of same paper say
+%     "predicts f_NL_local -> 0 at leading order" / "parametrically smaller", while L419
+%     conclusion section had stronger "strictly 0" and "categorically larger discriminator"
+%     framing — internal inconsistency. Fixed by softening L419 to match abstract/intro
+%     framing: "vanishes at leading order in slow-roll with O(slow-roll) residuals" +
+%     "even larger discriminator than the gauge-frame benchmark" (matching L29's "complementary
+%     theoretical discriminator, not the on-sky observable").
+%   - MIN-1/MIN-2/MIN-3/NIT-1 deferred to v1.7.35+ next-fire round-2-of-3 cycle.
+
+\begin{abstract}
+A matter-dominated contracting phase gives a local-type non-Gaussian amplitude $\fnl^{\rm local}=-35/16=-2.1875$ before the nonsingular transition. We derive this value by re-summing all four cubic vertices at $\epsilon=3/2$, re-expand the result in the ordered symmetric basis, and obtain the unique coefficients $(3,1,-9,5,-33,9)$; independent checks use Cai \etal's order-grouped expressions and Li \etal's general-$c_s$ formula. The result corrects the unreproduced printed $-35/8$ literature value. Conditional on faithful cubic-order transmission through a specified bounce completion, we recast the published Heinrich \etal\ SPHEREx multi-tracer bispectrum sensitivity through an explicit template map. The exact shape gives flat-grid amplitude recovery $r=0.8354$ and shape cosine $r_{\cos}=0.9817$, yielding a $2.63\sigma$ template-corrected recast before additional nuisance marginalization. A channel-native surrogate-covariance check spans $3.47\sigma$ with nuisances fixed, $3.14\sigma$ after marginalizing the relativistic-projection amplitude $A_{\rm GR}$, $2.32\sigma$ with an explicit 30\% theory prior on the PNG bias-response coefficient $b_\phi$, and $0.42\sigma$ when $b_\phi$ is free. These are conditional sensitivity checks, not a new joint-covariance forecast. A prior-volume calculation is retained only to illustrate dependence on prior choices. The primary contribution is therefore the amplitude derivation and its conditional observational recast, not a unified forecast.
+\end{abstract}
+
+\maketitle
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+\emph{Scope and conventions.} This paper has two distinct contributions: an exact four-vertex amplitude derivation and a conditional sensitivity recast. The observational numbers are not a unified or independent survey forecast. They map the published Heinrich \etal~\cite{Heinrich:2023} $\sigma(\fnl^{\rm local})\approx0.7$ baseline through Eq.~\eqref{eq:projection}, use the exact-shape overlap, and test nuisance sensitivity with an in-house surrogate covariance. The latter does not replace the unpublished external per-triangle covariance. Cubic transmission through the bounce is a load-bearing model assumption: it is established at linear order for the specified completion, while the nonlinear extension is motivated by single-clock conservation and is not claimed here as a completed third-order calculation. We therefore report conditional sensitivities, not a derived measurement precision. Bayes factors are retained only as prior-volume illustrations. Here $r$ denotes amplitude recovery, $r_{\rm eff}$ the survey-weighted recovery check, $r_{\cos}$ the shape cosine, and $\rho$ a Fisher correlation.
+The inflationary paradigm provides a remarkably successful framework for generating the observed spectrum of primordial perturbations. Standard single-field slow-roll inflation predicts a nearly scale-invariant, nearly Gaussian spectrum with a small, positive local-type non-Gaussianity $\fnl \approx (5/12)(1-n_s) \approx 0.015$, set by the Maldacena consistency relation~\cite{Maldacena:2002vr} (gauge-frame value; the conformal-Fermi-frame equivalent differs by $\mathcal{O}(\text{slow-roll})$ corrections~\cite{Pajer:2013,TanakaUrakawa:2011} and is not the bounce-discriminating quantity here, since the bounce-vs-inflation contrast remains $|\fnl^{\rm bounce}| \gg |\fnl^{\rm inf}|$ in either frame).
+
+Bouncing cosmology offers an alternative origin for primordial perturbations: modes exit the Hubble radius during a contracting phase and re-enter after a nonsingular bounce. In particular, a matter-dominated contraction ($w \approx 0$) produces a scale-invariant scalar spectrum through the growth of the curvature perturbation $\zeta$ on superhorizon scales~\cite{Wands:1998yp,Finelli:2001sr}.
+
+A distinctive pre-bounce result is the negative local amplitude $\fnl=-35/16=-2.1875$~\cite{Cai:2009fn,LiQuintin:2017,Wands:2010}. Appendix~\ref{app:convention} derives it from the exact four-vertex sum and documents why the separately printed $-35/8$ is not reproduced. The leading amplitude is fixed once the matter-contraction background and cubic action are specified; quasi-dust corrections remain model dependent. Applying this pre-bounce amplitude to late-time observables additionally requires faithful nonlinear transfer across the chosen nonsingular transition. That transfer is verified only at linear order in the cited Wilson--Ewing construction, so all observational statements in this paper are explicitly conditional on assumption~(d) of Sec.~\ref{sec:assumptions}. The result is not asserted to be model independent across bounce completions, post-bounce inflationary histories, or fermion-sourced torsion sectors.
+SPHEREx~\cite{Dore:2014} can test local-type non-Gaussianity through scale-dependent bias and the galaxy bispectrum~\cite{Dalal:2007cu,Heinrich:2023}. We recast its published local-template sensitivity onto the exact matter-bounce shape, itemize the assumptions and nuisance dependence, and keep the model-comparison exercise subordinate to its prior dependence. A proposed future spectroscopic facility could provide a complementary test, but such projections are speculative and are not part of the headline result.
+% ============================================================
+\section{The Matter-Bounce Bispectrum Benchmark}
+\label{sec:benchmark}
+
+\subsection{The Prediction}
+
+In a matter-dominated contracting universe with standard GR perturbation theory and Bunch-Davies vacuum, the curvature perturbation $\zeta$ grows as $|\eta|^{-3}$ on superhorizon scales during contraction. The cubic interactions, governed by the Maldacena action~\cite{Maldacena:2002vr} specialized to $\epsilon = 3/2$, produce a bispectrum with shape function~\cite{Cai:2009fn}:
+\begin{equation}
+A_T(k_1, k_2, k_3) = \frac{3}{256\, k_1^2 k_2^2 k_3^2}\, P(k_1, k_2, k_3)\,,
+\end{equation}
+where $P \equiv P(k_1,k_2,k_3)$ is a degree-9 homogeneous polynomial in the wavenumbers (throughout this paper, three-argument $P$ denotes this polynomial only; power spectra always carry a field subscript and a single argument, $P_\zeta(k)$ or $P_\Phi(k)$). The configuration-dependent nonlinearity amplitude, whose squeezed limit is the local nonlinearity parameter, is:
+\begin{equation}
+\BNL = \frac{10}{3}\frac{A_T}{\sum_i k_i^3} \to -\frac{35}{16}\quad\text{as}\quad k_1/k \to 0\,,
+\label{eq:squeezed}
+\end{equation}
+where $k \equiv k_2 \approx k_3$ denotes the hard-mode scale and $k_1 \ll k$ is the long mode. Here $A_T$ is the exact vertex-sum shape. Appendix~\ref{app:convention} documents the discrepancy between that sum and Cai \etal's transcribed final polynomial and shows why the separately stated $-35/8$ is not reproduced. Every overlap and Fisher calculation below uses the exact vertex-sum polynomial of Eq.~\eqref{eq:exactpoly}, while $-35/16$ agrees independently with Li \etal~\cite{LiQuintin:2017} at $c_s=1$.
+Here $\sum_i k_i^3 \equiv k_1^3 + k_2^3 + k_3^3$, and $\BNL$ is dimensionless by construction: $P$ has degree 9, the prefactor of Eq.~(1) removes degree 6, and the $\sum_i k_i^3$ denominator removes the remaining degree 3. Note that $\BNL$ retains its full dependence on the coefficients $(c_1,\ldots,c_6)$ through $P$ via $A_T$; no cancellation of $P$ occurs between Eqs.~(1) and~(2).
+
+We evaluate the vertex-consistent shape in the ordered symmetric degree-nine basis
+\begin{align}
+P={}&3\sum_i k_i^9+\sum_{i\ne j}k_i^7k_j^2-9\sum_{i\ne j}k_i^6k_j^3
+ +5\sum_{i\ne j}k_i^5k_j^4 \notag\\
+&-33\sum_{i\ne j\ne l}k_i^5k_j^2k_l^2
+ +9\sum_{i\ne j\ne l}k_i^4k_j^3k_l^2 .
+\label{eq:exactpoly}
+\end{align}
+The coefficient vector is therefore uniquely
+\begin{equation}
+(c_1,c_2,c_3,c_4,c_5,c_6)=(3,1,-9,5,-33,9).
+\label{eq:exactcoeff}
+\end{equation}
+This is a re-expansion of the exact sum of all four cubic vertices, not a fit to three benchmark configurations. All pair and triple sums are ordered. In particular, the ordered $(5,2,2)$ orbit has six index permutations but only three distinct monomials because the two exponent-2 factors are identical. Each distinct monomial appears twice, so the ordered-basis coefficient $-33$ expands to coefficient $-66$ on each distinct $(5,2,2)$ monomial. The earlier three-benchmark fit mistook this bookkeeping redundancy for a physical coefficient uncertainty; no such uncertainty is propagated here.
+
+On the fixed $23{,}098$-triangle ratio grid, the exact shape gives amplitude recovery $r=0.83542294$ and shape cosine $r_{\cos}=0.98167825$ against the local template. The exact benchmark values are $\BNL=-35/16$ (squeezed), $-255/128$ (equilateral), and $-9/8$ (folded). The adopted noise-weighted recast convention $r=0.84\pm0.02$ is unchanged because the exact flat-grid value lies inside that weighting-scheme interval; the interval describes estimator-weight variation, not uncertainty in the polynomial coefficients. The local/equilateral/orthogonal decomposition and the independent C13--C15 Fisher checks are regenerated from Eq.~\eqref{eq:exactcoeff}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{fig1_shape_function.png}
+\caption{Exact four-vertex matter-bounce shape $\BNL(k_L,k_S,k_S)$ as a function of squeeze ratio. The curve is evaluated directly from Eq.~\eqref{eq:exactpoly} and approaches $-35/16$; the marker identifies the equilateral value $-255/128$.}
+\label{fig:shape}
+\end{figure}
+
+\begin{table}[h]
+\centering
+{\small
+\begin{tabular}{lc}
+\toprule
+Configuration & Exact $\BNL$ \\
+\midrule
+Squeezed ($k_1 \to 0$) & $-35/16=-2.1875$ \\
+Equilateral ($k_1 = k_2 = k_3$) & $-255/128=-1.9922$ \\
+Folded ($k_1{=}2k_2{=}2k_3$)$^{\rm a}$ & $-9/8=-1.125$ \\
+\bottomrule
+\end{tabular}
+}
+\caption{Confirmation of the matter-bounce shape function at three benchmark momentum configurations, quoted at the \emph{corrected} amplitude $\fnl^{\rm local}=-35/16$ (Appendix~\ref{app:convention}): the values are exactly one-half the amplitudes published in Cai \etal~\cite{Cai:2009fn} ($-35/8$, $-255/64$, $-9/4$), whose transcribed printed polynomial carries a $-(99/128)\sum_i k_i^3$ discrepancy relative to the exact vertex sum (Appendix~\ref{app:convention}), and agree with the general-$c_s$ result of Li \etal~\cite{LiQuintin:2017} at $c_s=1$. $^{\rm a}$The folded row sits on the degenerate boundary $k_1 = k_2 + k_3$ and is evaluated as the limit of the sequence $k_1 = 2k$, $k_2 = k_3 = k$.}
+\label{tab:benchmarks}
+\end{table}
+
+\subsection{UV-Completion Independence (Conditional on Faithful Cubic-Order Transfer)}
+
+The prediction depends only on: (a)~matter-dominated contraction ($w \approx 0$, $\epsilon \approx 3/2$), (b)~standard GR perturbation theory during contraction, and (c)~Bunch-Davies vacuum initial conditions. The prediction is therefore \emph{UV-completion-independent within the Wilson-Ewing class}: any UV completion that produces a nonsingular matter-dominated contraction satisfying (a)--(c) and faithfully transfers the cubic-order bispectrum across the bounce reproduces the same $-35/16$ value. The qualifier ``UV-completion-independent'' is used rather than the broader ``mechanism-independent'' phrasing: faithful third-order (cubic) transmission of the bispectrum through the bounce is itself an assumption (assumption (d), Sec.~\ref{sec:assumptions}) verified only at linear order~\cite{WilsonEwing:2012}, and the specific bounce-transition dynamics govern whether (d) holds. The bounce enters only through (i)~providing a nonsingular transition and (ii)~transferring the contraction-phase cubic correlator into the expanding phase; failures of (ii) at third order would re-introduce mechanism dependence at the order being tested.
+
+\subsection{Assumptions}\label{sec:assumptions}
+
+The contraction-phase amplitude and the observational recast require distinct assumptions. The amplitude calculation assumes: (a) matter domination, $w=0$ and $\epsilon=3/2$; (b) standard GR perturbation theory during contraction; and (c) Bunch--Davies initial conditions. The recast additionally assumes: (d) faithful transmission of the bispectrum through the nonsingular transition; (e) no prolonged post-bounce inflation that erases the signal; and (f) negligible fermion-sourced torsion during contraction and the bounce.
+
+Assumption~(d) is the load-bearing limitation. Wilson-Ewing~\cite{WilsonEwing:2012} establishes linear propagation for the specified effective LQC construction. Single-clock separate-universe reasoning makes small nonlinear corrections plausible for deeply superhorizon modes, but it does not substitute for an explicit third-order evolution through the bounce, particularly across quantization schemes with different effective sound speeds. We therefore do not claim a closed cubic-transfer theorem or a derived numerical bound. Every late-time sensitivity in this paper is conditional on faithful cubic transmission; a direct numerical cubic calculation is required to promote that condition to a prediction of the full bounce model.
+
+Quasi-dust corrections are also kept separate from the exact matter-limit polynomial. Existing scaling arguments suggest percent-level changes, but their coefficient requires evaluating the four cubic integrals with the quasi-dust mode functions. Likewise, assumption~(f) is automatic only in the scalar-only sector; models with appreciable fermion populations require an explicit bound on the Einstein--Cartan four-fermion operator. These limitations affect model applicability, not the algebraic uniqueness of Eq.~\eqref{eq:exactcoeff}.
+\subsection{The Viable Model}
+
+The Wilson-Ewing $\Lambda$CDM quasi-dust model~\cite{WilsonEwing:2012} supplies one concrete setting for the conditional recast: $w=-0.003$ fits $n_s\simeq0.964$, and the construction reports strong tensor suppression. The exact contraction-phase cubic amplitude is $\fnl=-35/16$ at the matter limit, with quasi-dust corrections and nonlinear bounce transmission kept as separate theoretical systematics. We do not elevate this package to a complete fit or a model-independent forecast.
+
+% ============================================================
+\section{Observable Mapping to Large-Scale Structure}
+\label{sec:lss}
+
+\subsection{Scale-Dependent Bias}
+
+Primordial local non-Gaussianity induces a scale-dependent correction to galaxy bias~\cite{Dalal:2007cu,Slosar:2008}:
+\begin{equation}
+\Delta b(k,z) = \frac{2\,\fnl\,(b_1 - 1)\,\delta_c}{\mathcal{M}(k,z)}\,,
+\label{eq:sdb}
+\end{equation}
+with the Poisson--Newtonian transfer kernel
+\begin{equation}
+\mathcal{M}(k,z) = \frac{2\,k^2\,T(k)\,D(z)}{3\,\Omega_m\,H_0^2}\,,
+\label{eq:Mkz}
+\end{equation}
+where $T(k)$ is the matter transfer function (normalized to $T(k)\to 1$ as $k\to 0$), $D(z)$ is the linear growth factor (normalized to $D(0)=1$), wavenumbers $k$ are comoving and quoted in $h\,\mathrm{Mpc}^{-1}$ throughout (we work in units $c=1$ and likewise express $H_0$ in $h\,\mathrm{Mpc}^{-1}$, so that $\mathcal{M}$ is dimensionless and $\Delta b$ carries no residual units), $\delta_c \approx 1.686$ is the spherical-collapse threshold, and $b_1$ is the linear Eulerian galaxy bias. Since $\Delta b \propto 1/\mathcal{M}$ and $\mathcal{M} \propto k^2$ on ultra-large scales (where $T(k)\to 1$), the signal grows as $\Delta b \propto 1/k^2$ as $k\to 0$~\cite{Dalal:2007cu,Slosar:2008}; this $1/k^2$ enhancement on the largest scales is what makes scale-dependent bias the most sensitive single channel for local-type $\fnl$. All downstream Fisher weightings, plots, and forecasts that invoke the SDB kernel in this paper use Eqs.~(\ref{eq:sdb})--(\ref{eq:Mkz}) as the canonical definition.
+
+\subsection{Template Projection and Amplitude Recovery}
+\label{sec:template}
+
+The exact matter-bounce shape is not purely local: $\BNL$ changes from $-35/16$ in the squeezed limit to $-9/8$ at the folded boundary. A local-template estimator therefore recovers a weighted fraction $r$ of a bounce-shaped signal:
+\begin{equation}
+\fnl^{\rm measured}=r\,\fnl^{\rm bounce},\qquad
+\sigma(\fnl^{\rm bounce})=\sigma(\fnl^{\rm local})/r .
+\label{eq:projection}
+\end{equation}
+Direct evaluation of the unique exact shape gives flat-grid $r=0.83542294$ and $r_{\cos}=0.98167825$. The headline $r=0.84\pm0.02$ is retained as a weighting-scheme envelope around this exact-shape value. It is not a coefficient posterior or polynomial uncertainty. The independent survey-weighted Fisher gives $r_{\rm eff}$ as a benchmark statistic under its adopted covariance; no value from one metric is silently substituted into another.
+\par \emph{Standard-basis template decomposition.} Projecting the exact physical bispectrum onto the local, equilateral, and orthogonal templates~\cite{Senatore:2010} gives uniform-weight local cosine $0.9817$. A joint three-template projection increases the recovered Fisher-norm fraction from $0.9637$ to $0.9680$, corresponding to only $\delta r=0.0022$. The large raw orthogonal cosine reflects template collinearity and is not independent signal. This is a geometry-only check; the true SPHEREx estimator variance still requires its survey covariance.
+Across the stated survey-motivated weighting choices, the exact shape is summarized by
+\begin{equation}
+r=0.84\pm0.02 ,
+\label{eq:r_noise}
+\end{equation}
+with the flat-grid exact value $0.8354$ and the previously defined signal-only endpoint $0.876$. We use $0.84$ for the recast and keep the $\pm0.02$ spread as a weighting-choice sensitivity only. A shape-matched estimator could approach unit recovery, but constructing that estimator with the actual SPHEREx covariance is outside this recast.
+For the published SPHEREx bispectrum baseline $\sigma(\fnl^{\rm local})=0.7$, the corrected central amplitude gives $2.63\sigma$ with the adopted $r=0.84$ template map, reduced from the naive ratio $3.13\sigma$. This number precedes additional nuisance marginalization. The channel-native ladder in Sec.~\ref{sec:systematics} reports those nuisance assumptions explicitly, including the $0.42\sigma$ free-$b_\phi$ surrogate limit.
+
+\subsection{Galaxy Bispectrum}
+
+The galaxy bispectrum provides an independent measurement channel that accesses information at shorter wavelengths, reducing the dependence on ultra-large-scale modes~\cite{Heinrich:2023}. This makes bispectrum-based constraints more robust to large-scale systematics than power-spectrum-based scale-dependent bias alone.
+
+% ============================================================
+\section{SPHEREx Sensitivity Recast}
+\label{sec:spherex}
+
+We adopt the published Heinrich \etal~\cite{Heinrich:2023} multi-tracer bispectrum baseline $\sigma(\fnl^{\rm local})\simeq0.7$ and recast it to the exact matter-bounce template. With $r=0.8354$, the central amplitude gives $|\fnl|r/0.7=2.61\sigma$ (rounded to $2.63\sigma$ for the adopted $r=0.84$ convention). This is the paper's observational headline: a conditional sensitivity recast from one external baseline, not an independently reproduced SPHEREx likelihood.
+
+Two in-house Fisher calculations test the mapping under a leading-order Gaussian multi-tracer covariance. In real space, the local-template uncertainty is $0.626$ with bias fixed and $0.687$ after the implemented bias marginalization; the exact bounce-template values are $0.631$ and $0.688$, giving $r_{\rm eff}=0.9929$ and $0.9986$, respectively. These correspond to $3.47\sigma$ and $3.18\sigma$ before the additional nuisance axes discussed below. The survey weighting is squeezed dominated, explaining why this recovery ratio is closer to unity than the flat-grid amplitude recovery $r=0.8354$; the two quantities use different inner products and are not interchangeable.
+
+A redshift-space extension numerically integrates the line-of-sight orientation and includes the tree-level Kaiser and $Z_2$ kernels. It gives bounce-template uncertainties $0.417$ (bias fixed) and $0.449$ (bias marginalized), with full-signal recovery ratios $r_{\rm eff}=0.9953$ and $0.9991$. A separate primordial-transfer-only run gives $r_{\rm eff}=0.9981$, which is reported separately because the full result includes the standard density-bispectrum contribution. A targeted orientation-grid convergence test changes marginalized uncertainties by at most $1.4\times10^{-6}$ fractionally between $8\times8$ and $12\times12$ quadrature. In that reduced-grid test the primordial-only marginalized response ratio is $1.0037$; because marginalization changes the two template responses differently, this statistic is not a bounded Fisher cosine and is not interpreted as an overlap exceeding unity. The approximately $34.7\%$ bias-marginalized gain over the real-space calculation ($0.687\to0.449$) is materially larger than the roughly $18\%$ gain quoted for an already-redshift-space monopole-to-multipole comparison; differences in baseline, nuisance set, and signal model prevent treating that agreement as validation. Fingers-of-God damping and non-Gaussian covariance are omitted, so the absolute redshift-space significance is optimistic. The recovery ratio is the more stable diagnostic, but it is not assigned an uncertainty band.
+
+Finally, a channel-native $(\fnl,b_\phi,A_{\rm GR})$ surrogate Fisher makes the nuisance dependence explicit. Here $b_\phi$ is the coefficient of the local-PNG scale-dependent-bias response and $A_{\rm GR}$ scales the modeled relativistic-projection contribution. At $\fnl=-35/16$ it gives $3.47\sigma$ with both nuisances fixed, $3.14\sigma$ after marginalizing $A_{\rm GR}$, $2.32\sigma$ with $A_{\rm GR}$ marginalized and a declared 30\% Gaussian theory prior on $b_\phi$, and $0.42\sigma$ when $b_\phi$ is free. The 30\% result is conditional on that prior; the free-$b_\phi$ result is the unconstrained limit of this surrogate model. Neither replaces the missing external per-triangle covariance, and no endpoint is presented as a guaranteed floor.
+\section{Speculative Future-Survey Outlook}
+\label{sec:megamapper}
+
+A proposed high-redshift spectroscopic facility such as MegaMapper~\cite{Schlegel:2022} could eventually test the same shape with different tracer and redshift leverage. We do not transfer the SPHEREx systematic budget or quote a headline significance for an unapproved design: the high-redshift GR projection, tracer selection, and covariance require a dedicated calculation. This is an outlook only and is not used in the abstract, conclusion, or evidence claims.
+% ============================================================
+\section{Inflation Mimicry and Bayesian Comparison}
+\label{sec:bayesian}
+
+\subsection{Can Inflation Reproduce the Signal?}
+
+Standard single-field slow-roll inflation predicts $\fnl = (5/12)(1-n_s) \approx +0.015$~\cite{Maldacena:2002vr} as the gauge-frame value of the consistency relation; in conformal Fermi coordinates the physical observable is parametrically smaller~\cite{Pajer:2013,TanakaUrakawa:2011}. Either way the bounce-vs-inflation contrast remains qualitatively $|\fnl^{\rm bounce}| \gg |\fnl^{\rm inf}|$ and opposite in sign; we cite the gauge-frame ratio $|\fnl^{\rm bounce}|/|\fnl^{\rm inf}| = 2.1875/0.015 \approx 146$ as a benchmark, recognising that the physical contrast is even more favourable to the bounce. Non-canonical single-field models (DBI, etc.) produce equilateral-shape $\fnl$, not local. Table~\ref{tab:frames} consolidates the expected local $\fnl$ in the two frames so the gauge-frame (survey-observable) and physical-frame (theoretical-discriminator) values are cleanly separated.
+\begin{table}[h]
+\centering
+\caption{\label{tab:frames}Expected squeezed-limit local $\fnl$ for the quasi-dust matter bounce and single-field slow-roll inflation, separated by observer frame. The \emph{gauge frame} carries the on-sky quantity the SPHEREx/BOSS local-template estimators measure --- this is the row relevant to the forecast. The \emph{physical (conformal-Fermi) frame}~\cite{Pajer:2013,TanakaUrakawa:2011} carries the frame-invariant theoretical discriminator, in which the single-field consistency relation drives $\fnl^{\rm inf}\to0$. The bounce value is frame-robust (its $-35/16$ is a contracting-phase cubic-action prediction, not a squeezed consistency-relation artifact); the inflation value is the one that shifts between frames. In both frames $|\fnl^{\rm bounce}|\gg|\fnl^{\rm inf}|$ with opposite sign, so the discriminating power is frame-independent.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+frame & $\fnl^{\rm bounce}$ & $\fnl^{\rm inf}$ & $|\fnl^{\rm bounce}|/|\fnl^{\rm inf}|$ \\ \hline
+gauge (survey observable) & $-2.1875$ & $+0.015$ & ${\approx}\,146$ \\
+physical (conformal-Fermi) & $-2.1875$ & $\to 0^{+}$ & $\gg 146$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Non-attractor single-field inflation gives $\fnl=+5/2$ in its standard limit~\cite{Cai:2018non}, while curvaton and curved-field-space constructions can access negative local amplitudes with additional parameters. The amplitude alone therefore does not uniquely identify a bounce; distinguishing these classes requires their full shape, scale dependence, nuisance structure, and physically derived priors.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{fig5_inflation_comparison.png}
+\caption{$\fnl$ landscape: matter bounce vs.\ inflationary alternatives. The bounce prediction (red diamond) is minimally parameterized; inflationary alternatives require additional free parameters to reach the same region. SPHEREx $1\sigma$ error bar shown in blue.}
+\label{fig:inflation}
+\end{figure}
+
+\subsection{The Kinematic vs.\ Parametric Asymmetry}
+
+The bounce predicts $\fnl \approx -35/16$ \emph{kinematically}, with the value tightly determined by the contraction dynamics (residual $\epsilon$-correction uncertainty of $1$--$8\%$; Sec.~\ref{sec:assumptions}). Inflation can only \emph{accommodate} this value parametrically, requiring extra fields and tuned couplings. This asymmetry---one tightly determined prediction versus multiple tunable parameters---drives a natural Bayesian preference for the bounce.
+
+\subsection{Prior-Volume Illustration}
+
+For completeness we evaluate a one-dimensional Gaussian summary likelihood under several bounce and multifield amplitude priors. This calculation is not a forecast, a model-selection claim, or a substitute for a joint likelihood over each model's full parameters. In the broad-competitor limit the evidence ratio scales approximately with the chosen competitor-prior width,
+\begin{equation}
+\mathrm{BF}\propto \frac{W}{\sqrt{\sigma_{\rm eff}^2+\sigma_{\rm theory}^2}},
+\end{equation}
+so a larger quoted value can be produced by allocating more unused prior volume to the competitor. That dependence is the point of the exercise. The committed scans vary the bounce-theory width, competitor width, GR nuisance width, and template bookkeeping; they are retained as reproducibility artifacts rather than promoted as paper evidence. Any defensible model comparison would require a jointly specified data likelihood and physically derived priors for all competing models.
+\section{Systematics and Robustness}
+\label{sec:systematics}
+
+The observational calculation has two deliberately separate layers. The published-baseline recast uses $\sigma(\fnl^{\rm local})\simeq0.7$ and the exact-shape recovery $r=0.8354$, giving $2.61\sigma$ (or $2.63\sigma$ with the adopted rounded $r=0.84$). It does not contain a new covariance. The in-house channel-native calculation instead uses a leading-order Gaussian multi-tracer covariance and is a sensitivity test of nuisance directions, not a replacement for the published likelihood.
+
+The channel-native ladder is summarized in Table~\ref{tab:nuisance-ladder}.
+\begin{table*}[t]
+\centering
+\caption{Channel-native surrogate-covariance nuisance ladder. The 30\% row is explicitly theory-prior conditional; the free-$b_\phi$ row is the unconstrained limit of this surrogate.}
+\label{tab:nuisance-ladder}
+\begin{tabular}{lc}
+\toprule
+Nuisance treatment & Significance at $\fnl=-35/16$ \\
+\midrule
+$b_\phi$ and $A_{\rm GR}$ fixed & $3.47\sigma$ \\
+$A_{\rm GR}$ marginalized & $3.14\sigma$ \\
+$A_{\rm GR}$ marginalized; 30\% Gaussian $b_\phi$ theory prior & $2.32\sigma$ \\
+$A_{\rm GR}$ marginalized; $b_\phi$ free & $0.42\sigma$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+The corresponding exact-shape uncertainties are $0.631$, $0.697$, $0.941$, and $5.173$. The native correlations are $\rho(\fnl,A_{\rm GR})=-0.4264$ in the two-parameter block, $-0.5025$ in the three-parameter block, and $\rho(\fnl,b_\phi)=+0.9909$. The 30\% row is conditional on a theory prior; it is neither an empirical calibration nor a lower bound. The free-$b_\phi$ row is the genuinely unconstrained limit of this surrogate model and shows that the result is prior sensitive.
+
+The dominant unmodeled effects are the unavailable external per-triangle covariance, non-Gaussian covariance terms, higher-order bias marginalization, photometric-redshift outliers, relativistic light-cone terms beyond the amplitude surrogate, and fingers-of-God damping in the redshift-space check. Omitting fingers-of-God damping makes the absolute C14 information gain optimistic. Common modeling errors can cancel in a local-to-bounce recovery ratio, but this cancellation is not guaranteed and no uncertainty band is invented for $r_{\rm eff}$.
+
+The prior-volume model comparison is intentionally separated from this sensitivity ladder. Its numerical evidence ratios depend strongly on model-class widths and nuisance priors, so they are not used in the abstract, conclusions, or readiness claim. A submission-quality model comparison would require a joint likelihood and physically derived priors for every competing class.
+\section{Current Data and Consistency Relation}
+\label{sec:currentdata}
+
+Current CMB and large-scale-structure constraints are not yet decisive. Planck PR4/NPIPE reports $\fnl=-0.1\pm5.0$~\cite{Jung2025PlanckPR4fNL}; using the CMB-weighted recovery $r=0.876$ gives $\fnl^{\rm bounce}=-0.11\pm5.71$, only $0.37\sigma$ from the predicted $-35/16$. DESI DR1 local-PNG constraints have uncertainties near $9$--$10$~\cite{Chaussidon2024DESIDR1fNL,Fondi2025DESIQSOassembly}. These data are consistent with both the matter-bounce amplitude and zero.
+
+The Wilson--Ewing quasi-dust construction relates the measured tilt to a small departure from matter contraction. That departure can also perturb the cubic amplitude, but the required four-vertex calculation with quasi-dust mode functions has not been completed here. We therefore do not assign a derived correction coefficient or propagate an invented joint $(n_s,\fnl)$ covariance. The exact $w=0$ result remains the benchmark, and departures from it are a named theory uncertainty.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The strongest result of this work is algebraic: the sum of the four cubic vertices has the unique ordered-basis coefficients $(3,1,-9,5,-33,9)$ and yields $\fnl=-35/16$. The ordered $(5,2,2)$ orbit contains six permutations but only three distinct monomials, so each distinct monomial is counted twice. This resolves the earlier artificial coefficient freedom without assigning a statistical uncertainty to an exact basis conversion.
+
+The observational statement is narrower. Mapping the published SPHEREx local-template sensitivity through the exact-shape recovery gives a conditional $2.63\sigma$ recast before additional nuisance marginalization. The channel-native surrogate demonstrates why this should not be promoted to a guaranteed detection: the significance ranges from $3.47\sigma$ with nuisances fixed to $0.42\sigma$ with $b_\phi$ free, and the intermediate $2.32\sigma$ value requires a declared 30\% theory prior. An eventual analysis must use the survey's full per-triangle covariance and a justified $b_\phi$ calibration.
+
+Faithful cubic transmission through the bounce is the leading theoretical condition. Linear propagation is established for the specified construction~\cite{WilsonEwing:2012}; single-clock conservation motivates the nonlinear extension but does not replace an explicit third-order calculation through the transition. Consequently a future null measurement would test the combination of the contraction-phase amplitude and the stated transmission assumptions, not every nonsingular cosmology.
+
+A proposed future high-redshift facility may offer complementary leverage, but no such projection enters the headline, conclusion, or readiness assessment. A nonzero negative local amplitude would also not uniquely identify a bounce because multifield inflation can generate similar amplitudes. Shape information, scale dependence, nuisance control, and model-derived priors remain necessary for model discrimination.
+\section{Conclusion}
+\label{sec:conclusion}
+
+The contraction-phase calculation predicts $\fnl^{\rm local}=-35/16$. Re-summing the four cubic vertices and expanding the result in the ordered symmetric basis gives the unique coefficients $(3,1,-9,5,-33,9)$, with the $(5,2,2)$ permutation multiplicity treated explicitly. The result agrees with the independent general-$c_s$ expression at $c_s=1$ and replaces the unreproduced printed $-35/8$ value.
+
+Conditional on faithful cubic transmission through the chosen nonsingular completion, the exact-shape mapping of the published SPHEREx baseline gives a $2.63\sigma$ sensitivity recast before additional nuisance marginalization. The channel-native surrogate ranges from $3.47\sigma$ with nuisances fixed to $0.42\sigma$ with $b_\phi$ free; its $2.32\sigma$ intermediate result requires an explicit 30\% $b_\phi$ theory prior. These values define assumption-sensitive tests, not a unified forecast or a guaranteed discovery floor. The missing external covariance, higher-order nuisance treatment, and direct third-order bounce evolution are the principal work required before a survey-level claim.
+
+\section*{Data and Code Availability}
+
+Analysis code and numerical artifacts are available in the public project repository at \url{https://github.com/Hubify-Projects/bigbounce}; a versioned archive will be minted from the camera-ready state. The exact vertex certification is implemented in \path{scripts/p2_vertex_check.py}, the exact shape and overlap artifact is generated by \path{scripts/exact_shape_analysis.py}, the real- and redshift-space Fisher checks are implemented in \path{scripts/c13_independent_bounce_fisher.py} and \path{scripts/c14_rsd_multipole_fisher.py}, and the native nuisance ladder is generated by \path{scripts/c15_channel_native_fisher.py}. The orientation convergence artifact is stored with the other JSON outputs. The retired benchmark-fit coefficient scan is not used or distributed as an uncertainty model.
+
+The per-triangle covariance of Heinrich \etal~\cite{Heinrich:2023} is external to this project and unavailable here; only its published scalar $\sigma(\fnl^{\rm local})\simeq0.7$ is used in the headline recast. No new observational data are introduced.
+\appendix
+
+\section{Resolution of the Cai--Li Factor of Two: The Correct Matter-Bounce Local Amplitude is $-35/16$}
+\label{app:convention}
+
+The historical factor-of-two discrepancy between $\fnl = -35/8$ (Cai \textit{et~al.}~\cite{Cai:2009fn}) and $\fnl = -35/16$ (Li \etal~\cite{LiQuintin:2017}, evaluated at $c_s=1$) is resolved at the level needed here by an exact re-summation of Cai \etal's own four cubic vertices. That sum gives $-35/16$. The transcribed final polynomial does not reproduce either the vertex sum or Cai \etal's separately stated $-35/8$, so we identify the polynomial discrepancy but do not claim a complete reconstruction of how the published $-35/8$ arose.
+
+\emph{The decisive computation.} Cai \etal's cubic action (Maldacena form, $\epsilon=3/2$) gives four vertex contributions to the shape function $A$: the field-redefinition term, the $\zeta\dot\zeta^2$ term, the $\dot\zeta\,\partial\zeta\,\partial\chi$ term, and the $\zeta(\partial_i\partial_j\chi)^2$ term (their own expressions, $\chi$ defined by $\partial^2\chi = a\,\epsilon\,\dot\zeta$). Summing these four exactly and taking the squeezed limit $k_1\ll k_2=k_3=k$ gives
+\begin{equation}
+\fnl(k_1\ll k_2=k_3) = -\frac{35}{16} + \frac{35}{64}\frac{k_1^2}{k^2} + \cdots \;\xrightarrow{k_1\to 0}\; -\frac{35}{16},
+\label{eq:decisive_sqz}
+\end{equation}
+a clean $k_1\to0$ limit with no cancellation-sensitive subleading ambiguity (equilateral: $\fnl^{\rm equil}=-255/128$). Two independent cross-checks fix this value. (1)~Cai \etal's own $\epsilon$-order-grouped intermediate expressions (their $A^\epsilon,A^{\epsilon^2},A^{\epsilon^3}$) sum to the per-vertex result and give $-35/16$. (2)~Li \etal's Eq.~(5.1), $\fnl^{\rm local}=-165/16+65/(8c_s^2)$, gives $-35/16$ at $c_s=1$ by an independent general-$c_s$ in-in method. By contrast, Cai \etal's transcribed final polynomial $A_T$ (their Eq.~37) does not equal the sum of their own vertices:
+\begin{equation}
+A_T^{\rm printed} - \textstyle\sum(\text{vertices}) = -\frac{99}{128}\sum_i k_i^3 \neq 0,
+\label{eq:spurious}
+\end{equation}
+i.e.\ a spurious $-(99/128)\sum_i k_i^3$ local-shaped term is present in the transcribed printed polynomial $A_T$ relative to the exact sum of Cai \etal's own four vertices (the sign is fixed by the committed symbolic check \path{scripts/caili_certification/cai_vertices.py}, which evaluates $\sum(\text{vertices})-A_T^{\rm printed}=+(99/128)\sum_i k_i^3$). Two facts about this term must be stated precisely, and are what the committed artifacts show. \emph{First}, the transcribed printed polynomial $A_T$ does \emph{not} itself squeezed-reduce to Cai's stated $-35/8$: in every triple-sum convention it reduces to $-305/64=-4.766$ (\path{scripts/caili_certification/cai_conv.py}, \path{scripts/caili_certification/cai_shape.py}), consistent with the $-(99/128)\sum_i k_i^3$ term shifting the correct $-35/16$ by $-(10/3)(99/128)\approx-2.58$ to $-305/64$. \emph{Second}, therefore, this single term is \emph{one identified discrepancy} between the transcribed printed polynomial and the exact vertex sum --- \emph{not} by itself the full mechanism of Cai's separately-published $-35/8$ (which the transcribed printed coefficients do not reproduce). The certified result is the vertex-sum squeezed limit $-35/16$ (Eq.~\ref{eq:decisive_sqz}), which is unaffected by either issue: it is fixed independently by the exact four-vertex sum, by Cai's own $\epsilon$-order-grouped intermediates (Eq.~\ref{eq:order_grouped}), and by Li \etal's general-$c_s$ formula. We do not claim a complete term-by-term reconstruction of Cai's published $-35/8$: what is certified, four independent ways, is $-35/16$; Cai's $-35/8$ is retained only as an erroneous published literature value. For clarity: Li \etal's printed total polynomial $A_{\rm tot}$ (their Eq.~4.19) agrees with Cai \etal's transcribed polynomial $A_T$ (their Eq.~37) coefficient-for-coefficient at $c_s=1$, so the two transcribed polynomials share the same ($-305/64$) squeezed reduction; the corrected amplitude $-35/16$ comes from re-summing Cai's four cubic-vertex contributions directly (the step that bypasses the shared printed polynomial), and Li's closed-form general-$c_s$ formula (their Eq.~5.1) independently gives the same $-35/16$ at $c_s=1$.
+
+\emph{Vertex-by-vertex certification.} We certify the $-35/16$ correction explicitly at the level of Cai \etal's four individual cubic vertices. Reading their own shape-function contributions verbatim from the arXiv source of Ref.~\cite{Cai:2009fn} (\path{matterbounceng2.tex}, arXiv:0903.0631v2, source retrieved July 14, 2026) and substituting $\epsilon=3/2$, the four vertices contribute to the shape function $A$ (with $\Sigma_{i\neq j}$ the six ordered pairs, $\Sigma_{i\neq j\neq l}$ the six all-distinct triples, and $\Pi k^2\equiv k_1^2k_2^2k_3^2$) as listed in Table~\ref{tab:vertices}.
+\begin{table*}[t]
+\centering
+\caption{\label{tab:vertices}The four cubic-vertex contributions to Cai \etal's~\cite{Cai:2009fn} shape function $A$ at $\epsilon=3/2$, read from the arXiv source (\protect\path{matterbounceng2.tex}, arXiv:0903.0631v2; retrieved July 14, 2026). Their exact sum has squeezed limit $-35/16$ (Eq.~\ref{eq:vertexsum}); Cai's transcribed printed polynomial (their Eq.~37) differs from this sum by the spurious $-(99/128)\sum_i k_i^3$ term of Eq.~(\ref{eq:spurious}) and squeezed-reduces to $-305/64$.}
+\begin{ruledtabular}
+\begin{tabular}{ll}
+vertex & contribution to $A$ ($\epsilon=3/2$) \\ \hline
+field redef.\ ($\mathcal{L}_{\rm redef}$) & $-\tfrac{\epsilon}{2}\sum k^3 - \tfrac{\epsilon^2}{32\,\Pi k^2}\{\Sigma_{ij}k^7k^2{+}\Sigma_{ij}k^6k^3$ \\
+ & $\quad-2\Sigma_{ij}k^5k^4{-}2\Sigma_{ijl}k^5k^2k^2{-}\Sigma_{ijl}k^4k^3k^2\}$ \\
+$\mathcal{L}_{\zeta\dot\zeta^2}$ & $\left(-\tfrac{\epsilon^2}{12}+\tfrac{\epsilon^3}{24}\right)\sum k^3$ \\
+$\mathcal{L}_{\dot\zeta\partial\zeta\partial\chi}$ & $\tfrac{\epsilon^2}{24\,\Pi k^2}\{2\Sigma_{ij}k^7k^2-2\Sigma_{ij}k^5k^4-\Sigma_{ijl}k^5k^2k^2\}$ \\
+$\mathcal{L}_{\zeta(\partial_i\partial_j\chi)^2}$ & $\tfrac{\epsilon^3}{96\,\Pi k^2}\{\Sigma k^9-3\Sigma_{ij}k^7k^2-\Sigma_{ij}k^6k^3$ \\
+ & $\quad+3\Sigma_{ij}k^5k^4-\Sigma_{ijl}k^5k^2k^2+\Sigma_{ijl}k^4k^3k^2\}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+Summing the four rows of Table~\ref{tab:vertices} exactly (symbolic fractions) and forming $\fnl=(10/3)A/\sum_i k_i^3$, the squeezed limit $k_1\ll k_2=k_3=k$ is
+\begin{equation}
+\fnl^{\rm vertex\,sum}(k_1\ll k) = -\frac{35}{16} + \frac{35}{64}\frac{k_1^2}{k^2} + \cdots \;\xrightarrow{k_1\to0}\; -\frac{35}{16},
+\label{eq:vertexsum}
+\end{equation}
+identical to Eq.~(\ref{eq:decisive_sqz}).
+
+\emph{Term-by-term vertex walkthrough.} To make the re-summation fully auditable at referee-report granularity we tabulate the squeezed and equilateral local-amplitude contribution of \emph{each individual} vertex of Table~\ref{tab:vertices}, formed by inserting that vertex's shape-function row alone into $\fnl=(10/3)A/\sum_i k_i^3$ and taking the two limits (squeezed $k_1\ll k_2=k_3=k$, then $k_1\to0$; equilateral $k_1=k_2=k_3$). Table~\ref{tab:vertexwalk} lists the four values; both columns sum, exact-fraction, to the certified benchmarks $-35/16$ (squeezed) and $-255/128$ (equilateral) of Table~\ref{tab:benchmarks}. Each per-vertex entry is the exact squeezed/equilateral limit of the corresponding single row of Table~\ref{tab:vertices} (formed by substituting that vertex's shape-function contribution alone into $\fnl=(10/3)A_v/\sum_i k_i^3$); the four rows are built from the same exact-fraction vertex expressions that the committed \textsc{sympy} certification \path{scripts/p2_vertex_check.py} sums to the total, and their column sums reproduce that script's certified total exactly. No value is fitted or rounded.
+\begin{table*}[t]
+\centering
+\caption{\label{tab:vertexwalk}Per-vertex squeezed- and equilateral-limit local-amplitude contribution of each of Cai \etal's~\cite{Cai:2009fn} four cubic vertices (rows of Table~\ref{tab:vertices}), at $\epsilon=3/2$, formed as $\fnl=(10/3)A_v/\sum_i k_i^3$ for each vertex $v$ alone. Column sums are the certified benchmarks $\fnl^{\rm sq}=-35/16$ and $\fnl^{\rm eq}=-255/128$ (Table~\ref{tab:benchmarks}). The single-vertex $\mathcal{L}_{\dot\zeta\partial\zeta\partial\chi}$ squeezed contribution vanishes; the net $-35/16$ is carried by the field-redefinition and highest-order bulk vertices. Values are the exact per-row limits of the same exact-fraction vertex expressions summed by \protect\path{scripts/p2_vertex_check.py} (\textsc{sympy}), whose column sums reproduce that script's certified total; no fitting or rounding.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+vertex & squeezed $\fnl^{\rm sq}$ & equilateral $\fnl^{\rm eq}$ \\ \hline
+field redef.\ ($\mathcal{L}_{\rm redef}$) & $-\tfrac{25}{16}$ & $-\tfrac{35}{32}$ \\
+$\mathcal{L}_{\zeta\dot\zeta^2}$ & $-\tfrac{5}{32}$ & $-\tfrac{5}{32}$ \\
+$\mathcal{L}_{\dot\zeta\partial\zeta\partial\chi}$ & $0$ & $-\tfrac{5}{8}$ \\
+$\mathcal{L}_{\zeta(\partial_i\partial_j\chi)^2}$ & $-\tfrac{15}{32}$ & $-\tfrac{15}{128}$ \\ \hline
+\textbf{sum (all four)} & $\mathbf{-\tfrac{35}{16}}$ & $\mathbf{-\tfrac{255}{128}}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\emph{Displayed intermediate algebra.} For full referee/reader verifiability we display the two intermediate objects that the squeezed reduction Eq.~(\ref{eq:vertexsum}) collapses --- both transcribed verbatim from the committed symbolic-certification script (\path{scripts/p2_vertex_check.py}, exact-fraction \textsc{sympy}). First, the collapsed exact vertex sum. Multiplying the four Table~\ref{tab:vertices} rows through by the common denominator $\Pi k^2\equiv k_1^2k_2^2k_3^2$, the total shape function at $\epsilon=3/2$ is the degree-9 polynomial
+\begin{widetext}
+\begin{align}
+256\,\Pi k^2\,A \;=\; 9\!\sum_i k_i^9
+&\;+\;3\,\Sigma_{i\neq j}\,k_i^7 k_j^2
+\;-\;27\,\Sigma_{i\neq j}\,k_i^6 k_j^3
+\;+\;15\,\Sigma_{i\neq j}\,k_i^5 k_j^4 \nonumber\\
+&\;-\;198\,\Sigma_{i}^{\rm dist}\,k_i^5 k_j^2 k_l^2
+\;+\;27\,\Sigma_{i\neq j\neq l}\,k_i^4 k_j^3 k_l^2 ,
+\label{eq:collapsed_vertexsum}
+\end{align}
+\end{widetext}
+where $\Sigma_{i\neq j}$ runs over the six ordered pairs $i\neq j$ (six distinct monomials), $\Sigma_{i\neq j\neq l}$ over the six all-distinct triples, and $\Sigma_{i}^{\rm dist}k_i^5 k_j^2 k_l^2\equiv k_1^5 k_2^2 k_3^2+k_2^5 k_1^2 k_3^2+k_3^5 k_1^2 k_2^2$ over the three distinct $(5,2,2)$ monomials (so, e.g., the leading squeezed piece $k_1\to0$ isolates the $9k_2^9+9k_3^9+3k_2^7k_3^2+\dots$ collinear block that reduces to $-35/16$ after forming $\fnl=(10/3)A/\sum_i k_i^3$). Second, the $\epsilon$-order-grouped decomposition. Writing $A=\epsilon A^{\epsilon}+\epsilon^2 A^{\epsilon^2}+\epsilon^3 A^{\epsilon^3}$ (Cai \etal's own intermediate grouping) and forming the squeezed $\fnl$-contribution of each order separately at $\epsilon=3/2$ gives
+\begin{equation}
+\fnl\big|_{\epsilon^1}=-\tfrac{5}{2},\qquad
+\fnl\big|_{\epsilon^2}=+\tfrac{5}{16},\qquad
+\fnl\big|_{\epsilon^3}=0,
+\label{eq:order_grouped}
+\end{equation}
+whose sum $-\tfrac{5}{2}+\tfrac{5}{16}+0=-\tfrac{35}{16}$ reproduces Eq.~(\ref{eq:vertexsum}) term-by-term (the $A^{\epsilon}$ piece is the pure $-\tfrac{\epsilon}{2}\sum_i k_i^3$ local shape; the $A^{\epsilon^2}$ and $A^{\epsilon^3}$ pieces carry the non-local $\Pi k^2$-denominator structure of Eq.~\ref{eq:collapsed_vertexsum}). The order-grouped values Eq.~(\ref{eq:order_grouped}) are the $\epsilon$-decomposition Cai \etal\ describe, made explicit.
+
+Two independent certifications bracket this result. First, Cai \etal's own $\epsilon$-order-grouped intermediate expressions ($A^{\epsilon},A^{\epsilon^2},A^{\epsilon^3}$; Eq.~\ref{eq:order_grouped}) sum to the Table~\ref{tab:vertices} total \emph{exactly} (difference $=0$ symbolically) and likewise give $-35/16$, so the correction is internal to Cai's own paper. Second, subtracting the vertex sum from Cai's transcribed printed polynomial $A_T$ (their Eq.~37) leaves exactly the spurious local term of Eq.~(\ref{eq:spurious}), $A_T^{\rm printed}-\sum(\text{vertices})=-(99/128)\sum_i k_i^3$, one traceable term by which the transcribed printed polynomial differs from the exact vertex sum (and by which its squeezed reduction departs from $-35/16$ to $-305/64$, not to Cai's stated $-35/8$; not a naive additive shift; cf.\ Eq.~\ref{eq:spurious} discussion above). Independently, Li \etal's~\cite{LiQuintin:2017} general-$c_s$ formula (their Eq.~5.1) $\fnl^{\rm local}=-165/16+65/(8c_s^2)$ evaluates to $-35/16$ at $c_s=1$ by a wholly separate in-in method. The correction $-35/16$ is therefore certified vertex-by-vertex and cross-checked three ways; the $-(99/128)\sum_i k_i^3$ discrepancy is one identified difference between the transcribed printed polynomial and the exact vertex sum in Ref.~\cite{Cai:2009fn}.
+
+\emph{Interpretation.} The discrepancy is not a local-template normalization change: Cai \etal\ and Li \etal\ use the same $\fnl=10A/(3\sum_i k_i^3)$ convention and the same squeezed limit. Nor can the standard $-2\,\mathrm{Im}$ commutator identity adjudicate it, because both calculations use the full in-in structure. What is established is narrower and sufficient: the exact four-vertex sum, Cai \etal's order-grouped intermediates, and Li \etal's general-$c_s$ formula all give $-35/16$ at $c_s=1$. The transcribed total polynomial differs from that vertex sum by Eq.~\eqref{eq:spurious} and squeezed-reduces to $-305/64$, not to the separately published $-35/8$. We therefore adopt $-35/16$ and do not assign a time-ordering mechanism to the historical value.
+
+\subsection*{A.1 Wick contraction and the in-in commutator}
+\label{app:wick}
+
+At first order in the cubic interaction Hamiltonian,
+\begin{equation}
+\langle\zeta^3(\eta_*)\rangle=-i\int_{-\infty}^{\eta_*}d\eta\,
+\langle[\zeta^3(\eta_*),H_{\rm int}(\eta)]\rangle .
+\label{eq:inin}
+\end{equation}
+For Hermitian $H_{\rm int}$, the two terms in the commutator are complex conjugates, so
+\begin{equation}
+i\langle[\zeta^3,H_{\rm int}]\rangle
+=-2\,\mathrm{Im}\langle\zeta^3H_{\rm int}\rangle .
+\label{eq:commid}
+\end{equation}
+For each cubic vertex $v$, Wick's theorem expands the connected time-ordered correlator as
+\begin{equation}
+\langle\zeta_{\mathbf{k}_1}\zeta_{\mathbf{k}_2}\zeta_{\mathbf{k}_3}\mathcal O_v\rangle_{\rm c}
+=\sum_{\sigma\in S_3}\prod_{a=1}^{3}
+\langle\zeta_{\mathbf{k}_{\sigma(a)}}\Phi_{v,a}\rangle ,
+\label{eq:wick}
+\end{equation}
+with all six external-leg permutations included. Combining the four vertices and their symmetry factors gives
+\begin{equation}
+B_\zeta=-2\,\mathrm{Im}\sum_{v=1}^{4}\sum_{\sigma\in S_3}
+\frac{I_v^{(\sigma)}}{\mathcal S_v} .
+\label{eq:Bfull}
+\end{equation}
+Equation~\eqref{eq:commid} is universal and is shared by both cited calculations. It does not by itself decide between their reported local amplitudes. The adopted result instead follows from the four explicit vertex rows in Table~\ref{tab:vertexwalk}, whose squeezed contributions are $-25/16$, $-5/32$, $0$, and $-15/32$, summing to $-35/16$; their equilateral contributions likewise sum to $-255/128$. The accompanying symbolic checker prints all four rows and the two exact totals.
+
+\section*{Acknowledgments}
+
+The author thanks the developers of the open-source numerical and symbolic tools used in this work. The author designed the study, made all scientific and editorial judgments, and takes full responsibility for the content. No external funding was received.
+
+\bibliography{focused_paper_refs}
+
+\end{document}

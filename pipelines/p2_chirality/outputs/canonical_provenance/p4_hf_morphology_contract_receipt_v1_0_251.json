@@ -1,0 +1,57 @@
+{
+  "schema": "p4-hf-morphology-contract-receipt/v1",
+  "paper": "P4",
+  "paper_version": "v1.0.251",
+  "repo_id": "bamfai/galaxy-chirality-catalog",
+  "repo_type": "dataset",
+  "parent_commit": "e535b26247c892971963be6029435544cf29d19b",
+  "publication_commit": "245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9",
+  "published_at_utc": "2026-07-15T13:58:54Z",
+  "status": "published_and_byte_verified",
+  "remote_verification": "all four published files matched local bytes at publication_commit; dataset HEAD matched publication_commit",
+  "published_files": [
+    {
+      "path": "README.md",
+      "bytes": 5677,
+      "sha256": "7486b49889a746fa1e0c7021989d1dc30b40b3df057c61dcd7fe88dd1feb0105"
+    },
+    {
+      "path": "apjs-release/v1.0.251-morphology-sidecar/MANIFEST.json",
+      "bytes": 1112,
+      "sha256": "cec663276323a44dcd937fa6b7e86e7a1d4b6de3851d535156e48d4b15737c81"
+    },
+    {
+      "path": "apjs-release/v1.0.251-morphology-sidecar/SCHEMA.json",
+      "bytes": 1714,
+      "sha256": "108e2c959b54efb714422e435baa4ac60eeafe1f7798c7fff28cfcd087d21b41"
+    },
+    {
+      "path": "apjs-release/v1.0.251-morphology-sidecar/validate_p4_morphology_join_v1_0_251.py",
+      "bytes": 5774,
+      "sha256": "1945f43f6c728d051c01870eb97e8e331d8e1db2c7c1578b5f741923e9751879"
+    }
+  ],
+  "morphology_sidecar": {
+    "path": "spiral_morphology_dr8.parquet",
+    "rows": 3201160,
+    "bytes": 105317121,
+    "sha256": "d49090fce3033c5905df359f63036fd831c4b6378c271b95afd8d86a91bd5620",
+    "join_key": "safe.object_id == f'{morphology.BRICKID}_{morphology.OBJID}'",
+    "safe_spiral_rows": 3201160,
+    "unique_non_null_keys": true,
+    "missing_rows": 0,
+    "extra_rows": 0,
+    "exact_one_to_one_coverage": true
+  },
+  "explicitly_unavailable_full_catalog_fields": [
+    "redshift",
+    "imaging_leg",
+    "depth",
+    "seeing",
+    "PSF fields"
+  ],
+  "open_release_gates": [
+    "freeze and validate any future imaging-leg/depth/PSF join before publication",
+    "mint immutable DOI-backed paper/source/figure archive"
+  ]
+}

@@ -355,7 +355,7 @@ const phases = [
   { start: 0.48, end: 0.58, label: 'RAPID EXPANSION \u2014 92 e-FOLDS', sub: 'Space-time inflates exponentially' },
   { start: 0.58, end: 0.70, label: 'FIRST LIGHT \u2014 CMB RELEASED', sub: 'Recombination at z \u2248 1100 \u2014 photons decouple' },
   { start: 0.70, end: 0.84, label: 'COSMIC STRUCTURE FORMS', sub: 'Dark matter filaments \u2014 galaxies ignite' },
-  { start: 0.84, end: 1.00, label: 'TODAY \u2014 TESTING THE BOUNCE', sub: 'f_NL = \u221235/8 \u00B7 SPHEREx 2028 \u00B7 LiteBIRD 2032' },
+  { start: 0.84, end: 1.00, label: 'TODAY \u2014 TESTING THE BOUNCE', sub: 'f_NL = \u221235/16 \u00B7 SPHEREx 2028 \u00B7 LiteBIRD 2032' },
 ];
 
 const pipLabels = ['COLLAPSE','INTERIOR','DENSITY','BOUNCE','INFLATE','CMB','STRUCTURE','TODAY'];
@@ -1347,7 +1347,7 @@ function drawToday(time) {
     const fSize = Math.min(22, W * 0.026);
     ctx.font = `600 ${fSize}px 'IBM Plex Mono', monospace`;
     ctx.fillStyle = `rgba(255, 200, 70, ${labA})`;
-    ctx.fillText('f\u2099\u2097 = \u221235/8', rightZone, cy - H * 0.20);
+    ctx.fillText('f\u2099\u2097 = \u221235/16', rightZone, cy - H * 0.20);
     ctx.font = `400 ${Math.min(10, W * 0.013)}px 'IBM Plex Mono', monospace`;
     ctx.fillStyle = `rgba(255, 200, 70, ${labA * 0.5})`;
     ctx.fillText('minimally parameterized matter bounce prediction', rightZone, cy - H * 0.20 + 18);

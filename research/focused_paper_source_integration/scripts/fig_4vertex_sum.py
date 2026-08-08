@@ -50,7 +50,18 @@ total at Eq.~37):
 These individual numbers are illustrative of the cancellation pattern
 ("partial cancellations leave the -35/8 residual"); they are not
 themselves used in the forecast (which uses the fully summed -35/8).
+DEPRECATED / NON-LIVE ARTIFACT.
+
+This script used illustrative, non-derived vertex curves normalized to the
+superseded -35/8 value.  It is intentionally blocked.  Use
+``p2_vertex_check.py`` for exact vertex rows and ``exact_shape_analysis.py``
+for the live shape figure.
 """
+
+raise RuntimeError(
+    "DEPRECATED: fig_4vertex_sum.py used illustrative non-derived curves; "
+    "use p2_vertex_check.py and exact_shape_analysis.py"
+)
 
 import numpy as np
 import matplotlib

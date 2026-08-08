@@ -1,127 +1,61 @@
-# Zenodo Deposition Record — P4
-## Paper: Survey-Scale Galaxy Chirality with Equivariant TTA
+# P4 deposit record — v1.0.252
 
-**Version:** v1.0.188 (EXT11-closure submission version | PDF md5: c47abc18 | 23pp)
-**Prepared:** 2026-06-13 (HD-11 DO-NOW directive) | **Updated:** EXT11-closure-wave 2026-06-13
-**Submission order:** FIRST (P4 → P1A+P1B → P3 → P2 → P5 per PUBLISH_PLAN.md)
+> **SUPERSEDED DRAFT — DO NOT PUBLISH AS CURRENT.** The reversible GitHub draft
+> below remains bound to v1.0.252. The current v1.0.255 source bundle and isolated
+> 29-page proof are recorded in
+> [`../arxiv_tarballs/paper4_arxiv_v1.0.255.proof.json`](../arxiv_tarballs/paper4_arxiv_v1.0.255.proof.json).
+> No current-version Zenodo draft, DOI, arXiv submission, or journal submission
+> exists.
 
----
+**State:** verified deposit candidate in a reversible GitHub draft. **No DOI has been reserved, no Zenodo record has been published, and no arXiv or journal submission has occurred.** Publication readiness remains 80.
 
-## 1. Title
+## Exact release identity
 
-Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)
+| Field | Verified value |
+|---|---|
+| Version | `v1.0.252` |
+| Science commit | `8cb975c37ac27bea5c1c7fda2a10274b80623128` |
+| PDF | 28 pages; 25,168,862 bytes |
+| PDF SHA-256 | `a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292` |
+| PDF MD5 | `7231d1d1e773b48c37718d7636303f00` |
+| arXiv bundle SHA-256 | `1fe38151c4f096846b68c0c3de77c4a9f18a640241d7f52f360f1b87312ae2f1` |
+| Standalone compile | Tectonic 0.16.9; 28 pages; 0 errors; 0 undefined references |
+| Draft release | database ID `354600688`; tag intent `paper4-v1.0.252`; exact science target above |
 
----
+The machine-readable draft-release receipt is [`../github-releases/P4_v1.0.252_draft_release_receipt.json`](../github-releases/P4_v1.0.252_draft_release_receipt.json). The standalone proof is [`../arxiv_tarballs/paper4_arxiv_v1.0.252.proof.json`](../arxiv_tarballs/paper4_arxiv_v1.0.252.proof.json).
 
-## 2. Authors
+## Deposit metadata
 
-| Name | Email | Affiliation |
-|------|-------|-------------|
-| Houston Golden | houston@hubify.com | Independent Researcher, Los Angeles, California, USA |
+**Title:** An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog
 
----
+**Creator:** Houston Golden, Independent Researcher, Los Angeles, California, USA (`houston@hubify.com`)
 
-## 3. Description (Abstract)
+The previously listed ORCID is deliberately omitted: the public ORCID API did not verify that record on 2026-07-15. It may be added only after a public-registry check succeeds.
 
-We present, to our knowledge, the largest chirality-labeled galaxy catalog to date: 8,474,531 DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer pipeline into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, with N_spiral = 3,201,160 spirals, publicly released with model weights and reproducibility scripts. The primary scientific result is a real-space chirality dipole consistent with null: the equivariant-catalog high-confidence dipole fit (confidence > 0.6; N ~ 9.5 x 10^5 spirals) gives +0.41 sigma (moment-z against the isotropic-bootstrap null; empirical-rank p = 0.31, 10^4 isotropic-null realizations), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the 1.7% reference amplitude at z ~ -18. This l=1 observable is parity-even (isotropy-breaking axial-vector channel), not a direct parity-violation test. The MASTER pseudo-C_ell channel on the patchy footprint is a systematics diagnostic, not an independent cosmological null: a monopole-only generative null reproduces 99.32% of the raw pre-MASTER l=1 power (monopole-mask leakage), and MASTER deconvolution substantially reduces but does not remove this leakage — the post-MASTER harmonic diagnostics carry systematics-attributed residuals (+3.64 sigma moment-z, ~1.9 sigma Gaussian-equivalent, canonical mask; +7.28 sigma, apodized footprint), characterized by an eight-anchor systematic battery. Falsification criterion: a future >= 5 sigma real-space dipole detection at amplitude A >= A_95, where injection-recovery brackets A_95 between 1.0% and 1.5% (A_50 ~ 0.75%), would be in tension with the present null.
+**Abstract:** We release observed chirality labels for 8,474,531 DESI Legacy DR8 galaxies and test one primary high-confidence observed-label dipole. Of 949,584 selected spirals, 947,326 enter the supported-pixel fit and fixed-occupancy label-randomization null; the result is consistent with zero (`z=+0.71`, one-sided rank `p=0.225`). The content-addressed release includes the science catalog, unsafe-row quarantine, retained primary-null array, schema, checksums, and reproducer. WLS and harmonic analyses use different supports or nulls and are retained only as systematics diagnostics. Spatial transfer calibration, joint covariance, an independent matched-footprint estimator, a complete systematics-metadata sidecar, and a DOI-backed archive remain open. The parity-even morphology observable supports no primordial-parity bound.
 
----
+**Upload type:** publication / article. **Access:** open. **License:** CC BY 4.0.
 
-## 4. Keywords
+No placeholder DOI, arXiv identifier, or unverified related identifier is present in the generated metadata.
 
-- galaxies: spiral
-- galaxies: statistics
-- methods: data analysis
-- cosmology: observations
-- large-scale structure of universe
-- galaxy chirality
-- handedness
-- Vision Transformer
-- equivariant neural network
-- DESI Legacy Survey
-- parity violation
-- dipole asymmetry
-- machine learning
+## Verified draft assets
 
----
+| Asset | SHA-256 |
+|---|---|
+| `chirality_catalog_paper.pdf` | `a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292` |
+| `chirality_catalog_paper.tex` | `384bdf938fdce91b7bdc42422d8a0c9f4d56c6ed2abca113df9880d0f4fcd646` |
+| `paper4_arxiv_v1.0.252.tar.gz` | `1fe38151c4f096846b68c0c3de77c4a9f18a640241d7f52f360f1b87312ae2f1` |
+| `paper4_arxiv_v1.0.252.proof.json` | `d30af5f7af4b2c5482b1a814696fbb760b13e0a44ac60e1dda5d5f9e37d09594` |
+| `P4_v1.0.252_tracked_provenance.tar.gz` (90 tracked files) | `72e1f56edf7962eb329f91eaa1459cacbf60d5deaa6369be2118abc05e956e0e` |
+| `manifest.json` | `f73a70a503ac05ba59bb97d50767c2eeb3488b10a74cbf8d8ff944df3d657dc5` |
+| `SHA256SUMS` | `9dfb2ed87739cd677a155cf97c2cf89741002339cd301313aec4956c9524726c` |
+| `default.zenodo.json` | `5e9422edf15a3645f1d4873823e9093f8275ff29a64dd6c132ec26799c61a194` |
 
-## 5. License
+## Remaining irreversible/external steps
 
-**CC-BY-4.0** (Creative Commons Attribution 4.0 International)
+1. Houston authenticates Zenodo or supplies a narrowly scoped deposit token.
+2. Create a Zenodo **draft** and reserve (but do not publish) a DOI.
+3. Insert the real reserved DOI into the manuscript and artifact links, bump the paper, recompile, run the full LaTeX/PDF visual audit, rebuild the source bundle, and repeat exact multi-model confirmation.
+4. After Houston's explicit publish decision, publish the immutable archive and only then update public DOI/arXiv links.
 
----
-
-## 6. Related Identifiers
-
-| Relation | Identifier | Note |
-|----------|-----------|------|
-| isSupplementedBy | arXiv:XXXX.XXXXX | **PLACEHOLDER — insert real P4 arXiv ID after submission (minted first)** |
-| isReferencedBy | arXiv:XXXX.XXXXX (P5) | DESI environment follow-up paper; P5 cites P4 |
-| hasVersion | https://huggingface.co/bamfai/galaxy-chirality-v2 | Model weights (HuggingFace) — tag v2026.04 on submission day |
-
-*Note: The Gemini EXT7 MAJOR finding was entirely driven by the absence of this Zenodo DOI placeholder (HD-11). Minting this Zenodo record resolves that finding and satisfies the release-bundle gate.*
-
----
-
-## 7. File Manifest
-
-Files Houston should upload to Zenodo:
-
-**Paper source files:**
-
-| File | Path | Description |
-|------|------|-------------|
-| `paper4_arxiv_v1.0.188.tar.gz` | `project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.188.tar.gz` | **PRIMARY — arXiv submission tarball (EXT11-closure; PDF md5 c47abc18)** |
-| `chirality_catalog_paper.pdf` | `pipelines/p2_chirality/chirality_catalog_paper.pdf` | Compiled PDF (23pp; v1.0.188) |
-| `chirality_catalog_paper.tex` | `pipelines/p2_chirality/chirality_catalog_paper.tex` | LaTeX source |
-
-**Canonical provenance JSON artifacts:**
-
-| File | Path | Description |
-|------|------|-------------|
-| `boundary_distance_variance.json` | `pipelines/p2_chirality/outputs/canonical_provenance/boundary_distance_variance.json` | Boundary-distance variance (Gemini-Major1 closure) |
-| `block_bootstrap_nside_sensitivity.json` | `pipelines/p2_chirality/outputs/canonical_provenance/block_bootstrap_nside_sensitivity.json` | Block-bootstrap NSIDE sensitivity |
-| `c11b_hc_dipole_nulls.json` | `pipelines/p2_chirality/outputs/canonical_provenance/c11b_hc_dipole_nulls.json` | HC dipole nulls |
-| `c12_queue2_null_amps_10k.npy` | `pipelines/p2_chirality/outputs/canonical_provenance/c12_queue2_null_amps_10k.npy` | 10k null amplitude distribution |
-| `c12b_wls_conditioning.json` | `pipelines/p2_chirality/outputs/canonical_provenance/c12b_wls_conditioning.json` | WLS conditioning |
-| `c12_r24conf_local_batch.json` | `pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json` | R24conf local batch |
-| `c16_r24conf_pod_batch.json` | `pipelines/p2_chirality/outputs/canonical_provenance/c16_r24conf_pod_batch.json` | R24conf pod batch |
-
-*Additional canonical provenance files exist in `outputs/canonical_provenance/`; see `README_CANONICAL.md` for the full provenance index.*
-
-**Model weights:**
-
-| Resource | URL | Description |
-|----------|-----|-------------|
-| Galaxy chirality ViT model | https://huggingface.co/bamfai/galaxy-chirality-v2 | Tag v2026.04 on submission day (5-min task) |
-
-**Manifest count: 3 paper files + 7 canonical JSON/npy artifacts + HF model link = 10 local files**
-
----
-
-## 8. Communities
-
-- `astrophysics`
-- `cosmology-and-nongalactic-astrophysics`
-
----
-
-## 9. Funding
-
-**None** — Independent research, no grant funding.
-
----
-
-## 10. Version
-
-`v1.0.188` (EXT11-closure | PDF md5: c47abc18 | 23pp)
-
----
-
-## 11. Click-Publish Steps
-
-1. **Log into zenodo.org** → click "New upload". (P4 is submitted FIRST; all other papers wait for P4's arXiv ID.)
-2. **Drop files:** drag in `paper4_arxiv_v1.0.188.tar.gz` + `chirality_catalog_paper.pdf` + the canonical provenance JSONs (zip as `p4_provenance.zip`).
-3. **Paste metadata:** Title, Description, Keywords, License (CC-BY-4.0), Authors, Communities, and Related Identifiers from sections 1-9 above. Set Upload type = "Publication" → "Preprint".
-4. **Reserve DOI:** click "Reserve DOI" — copy the DOI and re-point all `\artifact{}` blob/main links in the paper to this Zenodo DOI before the final compile. Also tag the HuggingFace model repo `bamfai/galaxy-chirality-v2` with `v2026.04`.
-5. **Publish:** click "Publish". The Zenodo DOI and the P4 arXiv ID (assigned ~1 hour after upload) are what P5 depends on for its companion-reference insertion. Hold the P5 upload until P4's arXiv ID is in hand.
+The GitHub draft is a reversible preparation artifact. It is not evidence that the scientific, DOI, human-review, arXiv, or journal-acceptance gates are closed.

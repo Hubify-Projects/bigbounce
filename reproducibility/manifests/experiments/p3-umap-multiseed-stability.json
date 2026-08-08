@@ -1,0 +1,51 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-umap-multiseed-stability",
+  "title": "UMAP multi-seed stability (Pod 1 production)",
+  "program": "anomaly-discovery",
+  "paper": "P3-support",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/umap/",
+      "entrypoint": "no generating script preserved in repo — historical result artifact only; full reproduction requires restoring the lost UMAP pipeline script from the pod1_namaster_umap production run",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "unknown — generating script not preserved; committed artifact is umap_stability.json only",
+    "hardware": "unknown (implied H200 pod per directory naming convention pod1_namaster_umap_2026-04-29; no logged hardware spec in the artifact itself)"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "unknown — blocked until the UMAP pipeline script is restored",
+    "est_wall_clock": "unknown",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "No .py script exists anywhere under pipelines/h200_results/pod1_namaster_umap_2026-04-29/ (verified via find — only the results/umap/umap_stability.json JSON and a sibling results/namaster/summary.json and results/namaster-birefringence/summary.json survive). The venue is only inferable from the directory name pattern ('pod1_namaster_umap_2026-04-29', implying an H200 pod), not from any $/hr or wall-clock receipt in the artifact itself — this is one of the ~28 sibling h200_results/ subdirectories flagged in the inventory's Top-5-gaps item 4. Full reproduction requires restoring the lost UMAP pipeline script from the original pod1_namaster_umap production run."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/umap/umap_stability.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Cannot currently define a fresh-run numeric tolerance test — no generating script survives to re-run. Verification is limited to inspecting the committed umap_stability.json for internal consistency until the pipeline script is restored.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — UMAP multi-seed stability (Pod 1 production) bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps, item 4 (dozens of historical H200-pod artifact directories with no accompanying $/hr or wall-clock manifest; venue inferable only from directory naming, not a receipt)",
+    "project-context/SSOT/paper-3/status.md"
+  ]
+}

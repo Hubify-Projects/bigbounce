@@ -1,0 +1,73 @@
+{
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error chirality_catalog_paper.tex",
+  "captured_at_local": "2026-07-15T05:55:00.566191-07:00",
+  "captured_at_utc": "2026-07-15T12:55:00.566191+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "fb3d70a508ae0ad64744d45cbf96994de5f44e5c",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "ff75f4f3adc9e2748ac6a7207f4a15d49d366bc8",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T125500Z-p4-v10250-aastex-presentation.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/1c/1c8af85c038a50d59dc31d5db991eb5768cbe8f0dd1c91b411a54ebba68647df.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__v1.0.250__2026-07-15T055500-0700-PDT__1c8af85c038a.pdf",
+      "git": {
+        "head_blob": "ff75f4f3adc9e2748ac6a7207f4a15d49d366bc8",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "c1cd3f7b2ae5f39d31914234c5a986b1",
+      "object_created": true,
+      "page_count": 29,
+      "paper_id": "P4",
+      "paper_version": "v1.0.250",
+      "reference_created": true,
+      "sha256": "1c8af85c038a50d59dc31d5db991eb5768cbe8f0dd1c91b411a54ebba68647df",
+      "size_bytes": 34068187,
+      "source_mtime_ns": 1784119525112584898,
+      "source_pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "source_tex": "pipelines/p2_chirality/chirality_catalog_paper.tex"
+    }
+  ],
+  "review_round": "P4/v1.0.250/aastex-presentation-pre-confirmation",
+  "run_id": "p4-v10250-aastex-presentation",
+  "schema": "bigbounce-pdf-retention/v3"
+}

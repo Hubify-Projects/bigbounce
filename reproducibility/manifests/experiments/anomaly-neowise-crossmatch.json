@@ -1,0 +1,56 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-neowise-crossmatch",
+  "title": "NEOWISE crossmatch (IR variability, 16/283 meet variability rule)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "crossmatch",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/neowise_crossmatch.py",
+      "entrypoint": "python3 neowise_crossmatch.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p1_highz_tracers/neowise_crossmatch_silver.py",
+      "entrypoint": "python3 neowise_crossmatch_silver.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, requests — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes to low hours (depends on external IRSA/NEOWISE query throughput)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Both the gold-tier and silver-tier NEOWISE crossmatch scripts are committed and runnable locally; result JSON is preserved."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/neowise_crossmatch/crossmatch_summary.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm 16/283 objects meet the IR-variability rule (exact count equality expected on a deterministic threshold pass over the same crossmatched sample).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — NEOWISE crossmatch (IR variability) bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md",
+    "path correction: neowise_crossmatch.py and neowise_crossmatch_silver.py live directly under pipelines/p1_highz_tracers/, not under scripts/"
+  ]
+}

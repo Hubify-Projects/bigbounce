@@ -30,9 +30,9 @@ The non-destructive "report truth audit" of the global monitor is COMPLETE.
 
 | Pod | ID | SSH | Processes | Role |
 |-----|-----|-----|-----------|------|
-| GPU | 47htajss1ng2ig | `ssh -i ~/.ssh/id_ed25519 -p 38115 root@195.26.233.79` | 32 cobaya | 28 chains (4 datasets × 7) |
-| CPU#1 | m4xpnxzgokd93f | `ssh -i ~/.ssh/id_ed25519 -p 30194 root@157.157.221.30` | 16 cobaya | 16 chains (4 datasets × 4) |
-| CPU#2 | eblghcn6u43wfk | `ssh -i ~/.ssh/id_ed25519 -p 40204 root@157.157.221.30` | 16 cobaya | 17 ΛCDM control chains |
+| GPU | 47htajss1ng2ig | `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>` | 32 cobaya | 28 chains (4 datasets × 7) |
+| CPU#1 | m4xpnxzgokd93f | `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>` | 16 cobaya | 16 chains (4 datasets × 4) |
+| CPU#2 | eblghcn6u43wfk | `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>` | 16 cobaya | 17 ΛCDM control chains |
 
 **Chain file locations:**
 - GPU: `/workspace/bigbounce/reproducibility/chains/*/spin_torsion.1.txt`
@@ -65,10 +65,10 @@ The non-destructive "report truth audit" of the global monitor is COMPLETE.
 
 | Pod | ID | SSH | Python | Track |
 |-----|-----|-----|--------|-------|
-| Track A | bpou58tmt95jjb | `ssh -i ~/.ssh/id_ed25519 -p 22055 root@69.30.85.227` | python3.11 | WP4 ΔNeff microphysics |
-| Track B | mz3srzbzxxv1yj | `ssh -i ~/.ssh/id_ed25519 -p 22157 root@69.30.85.228` | python3.11 | WP5 spin amplitude |
-| Track C | pkysk4lbaqnhm0 | `ssh -i ~/.ssh/id_ed25519 -p 22183 root@69.30.85.244` | python3 | P7 CNN spin classifier |
-| Track D | uktt3hghbs1djo | `ssh -i ~/.ssh/id_ed25519 -p 22128 root@69.30.85.234` | python3.11 | P6 CMB EB birefringence |
+| Track A | bpou58tmt95jjb | `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>` | python3.11 | WP4 ΔNeff microphysics |
+| Track B | mz3srzbzxxv1yj | `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>` | python3.11 | WP5 spin amplitude |
+| Track C | pkysk4lbaqnhm0 | `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>` | python3 | P7 CNN spin classifier |
+| Track D | uktt3hghbs1djo | `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>` | python3.11 | P6 CMB EB birefringence |
 
 **First-run results:**
 - Track A: Reheating (24k rows) + decay (32k rows) scans. Best ΔNeff~0.15 fits found.

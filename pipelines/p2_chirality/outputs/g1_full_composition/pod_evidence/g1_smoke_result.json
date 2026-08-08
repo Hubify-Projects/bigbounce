@@ -1,0 +1,24 @@
+{
+  "smoke_pass": true,
+  "n_total": 560,
+  "n_train": 448,
+  "n_val": 112,
+  "batch": 32,
+  "logits_shape": [
+    32,
+    3
+  ],
+  "loss": 1.0949925184249878,
+  "fwd_bwd_sec": 0.32,
+  "peak_gpu_gb": 1.13,
+  "class_counts": {
+    "0": 234,
+    "1": 228,
+    "2": 98
+  },
+  "gz_desi_rev": "b7583bb2ac445e93c5447a08063acd7c1477fd13",
+  "gz1_sha256": "5121e43f502856c9f73e31934a6e7d7282669c3ae065564a31f5d5115f45541d",
+  "ce_resnet_present": true,
+  "manifest_path": "/workspace/g1/out/g1_smoke_manifest.json",
+  "manifest_objects_logged": 560
+}

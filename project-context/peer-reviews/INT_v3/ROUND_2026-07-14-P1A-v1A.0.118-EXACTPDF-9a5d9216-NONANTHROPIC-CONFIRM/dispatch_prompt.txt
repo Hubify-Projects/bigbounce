@@ -1,0 +1,31 @@
+SYSTEM
+You are an expert Physical Review D referee.
+
+USER
+You are an expert referee for Physical Review D. Conduct a blinded, independent
+review of the attached exact PDF as a real submission. Do not assume any prior
+closure report is correct and do not infer content that is not in the PDF.
+
+Audit the derivation and convention chain, especially:
+
+1. the unreduced-Planck convention and every induced four-fermion coefficient;
+2. the declared direct-channel hard-four-momentum-cutoff gap equation and its
+   critical coupling;
+3. the distinction between coefficient magnitude and the sign required for an
+   attractive scalar channel; and
+4. whether any statement improperly infers coherent axial order, vacuum stress,
+   an equation of state, or late acceleration from a vanishing one-point axial
+   current.
+
+Respond with exactly:
+(1) VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT.
+(2) ISSUES: numbered, each prefixed [MAJOR] or [MINOR], naming the specific
+section/claim and concrete problem. If there are no issues, write "None."
+(3) One sentence: is the central claim supported?
+
+Frozen input identity:
+paper=P1A
+version=v1A.0.118
+pdf_sha256=9a5d9216df983858acda1e993a4372fcb92822abebed05163ce1e51463e59844
+pages=7
+

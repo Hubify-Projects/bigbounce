@@ -143,6 +143,9 @@ DISAMBIGUATION_CONTEXT_RE = re.compile(
     r"differential-form language|"  # disambiguation in my P1A footnote
     r"in differential-form|"
     r"differential[- ]form decomposition|"
+    r"pure Einstein--Cartan|"
+    r"maximal Einstein--Cartan contact coefficient|"
+    r"physical contact term.{0,120}identical|"
     r"correction preserves|"
     r"the headline conclusion|"
     r"this is the|"  # "This is the Bianchi-vanishing of the Holst..."
@@ -184,8 +187,8 @@ def search_pattern(tex: str, lines: list[str], pattern: str) -> list[tuple]:
         if m:
             # Build a ±300-char window from the source text
             # (use line-level neighborhood for simplicity)
-            start_line = max(0, i - 4)
-            end_line = min(len(lines), i + 4)
+            start_line = max(0, i - 8)
+            end_line = min(len(lines), i + 8)
             window = "\n".join(lines[start_line:end_line])
             if is_disambiguation_context(window):
                 continue

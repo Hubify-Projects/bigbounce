@@ -1,0 +1,55 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-injection-recovery-test",
+  "title": "Injection recovery test (per-class completeness / false-positive rates)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "validation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/scripts/injection_recovery_test.py",
+      "entrypoint": "python3 injection_recovery_test.py --n-per-class 200 --seed 42",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, scipy (signal, optimize.nnls), matplotlib — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "The CODE runs cleanly and is fully reproducible locally — what is flagged is the SCIENCE claim, not reproducibility. Per audit, the headline '0% FP / 10-1,377x enrichment' figure is contradicted/overstated and needs independent re-derivation before it can be cited as verified. Do not re-headline the 0%/10-1377x numbers from a fresh run without first completing that re-derivation."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/injection_recovery/false_positive_analysis.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/injection_recovery/injection_recovery_results.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Verification requires an independent re-derivation of the completeness/false-positive claim per the audit finding — do NOT treat the existing 0% FP / 10-1,377x enrichment figures in the committed JSON as verified facts; a reproduction is confirmed only when the re-derived per-class completeness and false-positive rates are recomputed from the injected-source recovery statistics and cross-checked, not by matching the existing headline numbers.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — injection recovery (per-class completeness/false-positive) bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md"
+  ]
+}

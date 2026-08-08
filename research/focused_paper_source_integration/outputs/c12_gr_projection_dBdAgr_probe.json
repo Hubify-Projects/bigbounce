@@ -1,0 +1,24 @@
+{
+  "experiment": "C12: dB_g/dA_GR computability probe for P2 joint {f_NL,A_GR} covariance",
+  "shape_derivative_computable": true,
+  "cross_fisher_rho_computable_in_repo": false,
+  "external_gate": "SPHEREx multi-tracer galaxy-bispectrum NOISE COVARIANCE Cov_B(k1,k2,k3) on the triangle set (Heinrich et al. 2023 arXiv:2311.13082); only the scalar sigma(f_NL^local)=0.7 is imported, not the per-triangle covariance.",
+  "triangle_grid_n_valid": 23098,
+  "uniform_measure": {
+    "rho_flat_shape_cosine": 0.948500958329811,
+    "inflation": 3.156822144450363,
+    "sigma_marg": 2.209775501115254,
+    "significance": 0.8315324335312027
+  },
+  "k2_weighted_measure": {
+    "rho": 0.9492584895703525,
+    "sigma_marg": 2.2257768826685926,
+    "significance": 0.8255544454199432
+  },
+  "c8_sdb_proxy_currently_used": {
+    "rho": -0.868,
+    "sigma_marg": 1.4096868173381965,
+    "significance": 1.303481012519937
+  },
+  "note": "Shape dB/dA_GR = S_GR is a standard relativistic-projection squeezed kernel (Verde-Matarrese/Bartolo-Bruni/Jolicoeur class), constructible from repo machinery. The Fisher rho(f_NL,A_GR) that sets sigma_marg=sigma_base/sqrt(1-rho^2) is NOISE-weighted and needs Cov_B, which is external. Uniform vs k^2 rho differ by O(1) and neither is the calibrated value; therefore the direct channel-native marginalization remains external-data-gated. The rho=-0.868 c8 proxy stays the best-available in-repo bound. NOTHING FABRICATED."
+}

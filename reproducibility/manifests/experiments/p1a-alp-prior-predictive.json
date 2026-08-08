@@ -1,0 +1,59 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1a-alp-prior-predictive",
+  "title": "ALP prior-predictive / spectator-conditioned prior-predictive",
+  "program": "bounce-theory",
+  "paper": "P1A",
+  "kind": "mcmc",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "reproducibility/cosmology/alp_prior_predictive.py",
+      "entrypoint": "python3 alp_prior_predictive.py",
+      "sha256": null
+    },
+    {
+      "path": "reproducibility/cosmology/alp_spectator_conditioned_prior_predictive.py",
+      "entrypoint": "python3 alp_spectator_conditioned_prior_predictive.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "requirements.txt (repo root: numpy, scipy, astropy, sympy-adjacent research deps)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Local CPU prior-predictive checks; no external data or GPU required."
+  },
+  "outputs": [
+    {
+      "locator": "reproducibility/cosmology/alp_prior_predictive_result.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_receipt.json",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm prior-predictive coverage statistics match the committed receipt to numeric tolerance (<1% relative).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P1A \u2014 ALP prior-predictive bullet"
+  ]
+}

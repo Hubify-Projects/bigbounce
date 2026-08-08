@@ -1,0 +1,91 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-g1-vit-retrain-manifest",
+  "title": "G1 — regenerable ViT-Small retrain with manifest (supersedes historical v2 training)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "training",
+  "inputs": [
+    {
+      "name": "Smith42/galaxies (HF)",
+      "type": "external-dataset",
+      "locator": "https://huggingface.co/datasets/Smith42/galaxies",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "GZ1 CW/CCW human-vote labels (S3-hosted)",
+      "type": "external-dataset",
+      "locator": "GZ1 CW/CCW label set, S3-hosted — exact bucket path not captured in the inventory",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "GZ×DESI crossmatch",
+      "type": "external-dataset",
+      "locator": "GZ×DESI crossmatch (HF revision b7583bb2…; exact HF repo id not captured in the inventory)",
+      "checksum": "b7583bb2… (HF revision, partial per inventory)",
+      "license": null
+    },
+    {
+      "name": "CE-ResNet Zenodo release (pre_desi.fits)",
+      "type": "external-dataset",
+      "locator": "https://doi.org/10.5281/zenodo.7167388",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/train_g1_manifest.py",
+      "entrypoint": "python3 train_g1_manifest.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "torch, timm, huggingface_hub, datasets, pillow, numpy — see requirements.txt (repo root)",
+    "hardware": "gpu-16gb"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "RTX A4000 16GB",
+    "pod_id_or_host": "smoke test: 580dgszgib3ti4; full retrain: fresh on-demand pod th0o0l1tp1se4e ($0.17/hr)",
+    "date": "2026-07-17",
+    "wall_clock": "smoke ~1.5h; full G1 lane running total <1h of billed uptime across the lane, with one recorded pod window at ~4.2h uptime (fragmentary — see reproduction.notes)",
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod A4000 16GB on-demand",
+    "est_wall_clock": "~1.5h smoke test + ~4-5h full retrain",
+    "est_cost_usd": 1.0,
+    "parallelizable": false,
+    "resume_support": true,
+    "notes": "Evidenced-but-fragmentary cost figures: smoke test ~$0.26 (1.5h); one full-retrain pod window ~$0.71 (~4.2h uptime at $0.17/hr) — these don't sum to one clean run-total, so original_run.actual_cost_usd is left null per directive. best_val_acc=0.9931 @ epoch 47, early-stop epoch 62."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p2_chirality/outputs/g1_retrain/g1_ckpt_best.pt",
+      "type": "model",
+      "checksum": "aed109dc… (sha256, partial per inventory)"
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/g1_retrain/g1_training_manifest.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p2_chirality/outputs/g1_retrain/g1_training_result.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm best_val_acc=0.9931 at epoch 47 (early-stop epoch 62) within +/-0.001 tolerance; for a byte-identical reproduction, sha256 of g1_ckpt_best.pt should match aed109dc…, otherwise fall back to the accuracy tolerance for a fresh-seed retrain.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — G1 regenerable ViT-Small retrain bullet",
+    "project-context/SSOT/paper-4/status.md",
+    "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md",
+    "3-location backup verified: local + HF g1-retrain-2026-07-17/ + pod, hash round-trip MATCH (per inventory)"
+  ]
+}

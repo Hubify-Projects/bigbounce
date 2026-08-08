@@ -205,7 +205,7 @@ Migration: copy verbatim. Each standup becomes a `standup` entity in the new lab
 
 ### 1.10 Compute resources
 
-**The H200 pod** (`o76k3jfzbfh25e` "sleepy_blush_crane", `root@205.196.19.52:11452`):
+**The H200 pod** (`o76k3jfzbfh25e` "sleepy_blush_crane", `root@<pod-ip>:<port>`):
 - Currently active per `project-context/active_pods_and_pipelines.md`
 - Migrated as a `compute_resource` entity registered to the new lab
 - The lab's `gpu-manager-lead` agent takes over pod monitoring duties from the current Claude session
@@ -264,9 +264,9 @@ cd ~/Desktop/CODE_2025/bigbounce
 b2 sync . b2://bigbounce-bb/pre-migration-2026-04-08/
 
 # 0.4 — H200 pod state snapshot
-ssh -p 11452 root@205.196.19.52 'tar czf /workspace/pre-migration-snapshot-$(date +%F).tar.gz /workspace/bigbounce/'
+ssh -p <port> root@<pod-ip> 'tar czf /workspace/pre-migration-snapshot-$(date +%F).tar.gz /workspace/bigbounce/'
 # Pull it back to local for safety
-scp -P 11452 root@205.196.19.52:/workspace/pre-migration-snapshot-2026-04-08.tar.gz ~/Desktop/CODE_2025/
+scp -P <port> root@<pod-ip>:/workspace/pre-migration-snapshot-2026-04-08.tar.gz ~/Desktop/CODE_2025/
 
 # 0.5 — Verification gate
 echo "All 4 backups exist:"
@@ -800,7 +800,7 @@ curl -I https://bigbounce2.hubify.app/  # should return 200
        name: sleepy_blush_crane
        provider: runpod
        gpu: H200
-       host: 205.196.19.52
+       host: <pod-ip>
        ssh_port: 11452
        ssh_user: root
        status: active
@@ -809,7 +809,7 @@ curl -I https://bigbounce2.hubify.app/  # should return 200
        primary_workdir: /workspace/bigbounce
    ```
 2. **Migrate SSH credentials** from `~/.ssh/id_ed25519` to the lab's secrets store. Decision pending (per PRD §40.16): Convex env vars vs HashiCorp Vault vs 1Password CLI integration. **Default for v1: Convex env vars** (simplest, secure enough for solo-researcher use case).
-3. **Test SSH connectivity** from the orchestrator agent: orchestrator runs `ssh -p 11452 root@205.196.19.52 'nvidia-smi'` and parses the output. If success, the pod is handed off.
+3. **Test SSH connectivity** from the orchestrator agent: orchestrator runs `ssh -p <port> root@<pod-ip> 'nvidia-smi'` and parses the output. If success, the pod is handed off.
 4. **Stop any local cron / watchdog** that was monitoring the pod from a Claude Code session. The lab's `gpu-manager-lead` heartbeat cron takes over.
 5. **First in-lab experiment dispatch:** orchestrator dispatches a no-op experiment to the pod (just `python -c 'print("hello from in-lab dispatch")'`) to verify the dispatch path works end-to-end.
 

@@ -10,15 +10,15 @@ finding CG-G-6 (raw vs canonical output disambiguation).
 | Total catalog: 8,474,531 galaxies | Abstract, §IV.A | `outputs/canonical_provenance/global_cw_fraction.json` (n_total field) |
 | Equivariant spirals: 3,201,160 (CW 1,592,107 + CCW 1,609,053) | Abstract, §IV.A | `outputs/canonical_provenance/global_cw_fraction.json` + `outputs/canonical_provenance/spiral_count_verification.json` |
 | CW fraction 0.4974 ± 0.000279, 9.5σ deficit | §IV.B | `outputs/canonical_provenance/global_cw_fraction.json` |
-| Real-space dipole, σ = 0.43, p = 0.30 (Catalog C, post-TTA) | Abstract, §IV.C | `outputs/canonical_provenance/catalog_c_post_tta_dipole_summary.json` (v1.0.67+) |
+| Primary HC real-space dipole, fixed occupancy: z = 0.705317, p = 0.224678 | Abstract, §IV.C | `outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.json` + retained null array (v1.0.256) |
 | MASTER-deconvolved C_1 on subsample mask: −0.122σ | Abstract, §IV.C, Table IV | `master_results/master_power_spectrum.json` |
 | Canonical-N direct-MC ℓ=1: +1.85σ | §VII, Table VII | `outputs/canonical_provenance/canonical_n_master_l1_direct.json` + `outputs/canonical_provenance/canonical_n_master_l1_direct_null_distribution.npy` |
-| Hemisphere max-statistic: 3.05σ local, p_LEE ≤ 10⁻⁴ | Abstract, §IV.D | `r42_results/wave_12_hemisphere_GPU_v4.json` |
+| Hemisphere max-statistic: 3.05σ local; zero/10,000 gives add-one p=1/10001 and 95% upper limit ≈3×10⁻⁴ | Abstract, §IV.D | `r42_results/wave_12_hemisphere_GPU_v4.json` |
 | Empirical injection-recovery floor: >0.5% | §VI.C | `outputs/canonical_provenance/wave_14_nn_injection_recovery.json` |
 | Fisher Poisson floor: 0.29% (full-amp, 3σ) | §VI.C | `outputs/canonical_provenance/fisher_sensitivity_floor.json` |
 | MC seed manifest (all randomized analyses) | §IV.C / §IV.D / §VI.B | `outputs/canonical_provenance/mc_seed_manifest.json` |
 | Validation accuracy: 93.7% internal three-class | §II.B / Table I | `r42_results/B20_B21_results.json` |
-| Independent GZ1 CW/CCW agreement: 69.91%, κ = 0.40 | Abstract, §II.B, §III.F | `r42_results/B20_B21_results.json` |
+| Full-overlap GZ1 CW/CCW agreement: 69.91%, κ = 0.40 (overlap-contaminated) | Abstract, §II.B, §III.F | `r42_results/B20_B21_results.json` |
 | Per-imaging-leg systematics (BASS+MzLS / DECaLS / DES) | §IV.E (new in v1.0.69), Table | `outputs/canonical_provenance/per_imaging_leg_systematics.json` (v1.0.69) |
 | Face-on (HC-spiral) robustness rerun | §VI.D | `outputs/canonical_provenance/face_on_robustness_results.json` (v1.0.69) |
 | Monopole+mask leakage null simulation | §VI.B (new in v1.0.69) | `outputs/canonical_provenance/monopole_mask_null_results.json` + `*.npy` distributions (v1.0.69) |
@@ -29,6 +29,7 @@ finding CG-G-6 (raw vs canonical output disambiguation).
 | File | Why it is NOT canonical |
 |---|---|
 | `outputs/dipole/summary.json` | PRE-TTA (Catalog A) 2.31σ pipeline run, retained for historical comparison only |
+| `outputs/dipole/catalog_c_summary.json` pixel-permutation z=0.549120, p=0.265173 fields | Historical v1.0.243 pixel-permutation diagnostic; the fixed-occupancy record above is primary |
 | `outputs/chirality_summary.json` | Raw Catalog A counts; status "100% COMPLETE" refers to pipeline-run completeness, not to canonical analysis |
 | `outputs/canonical_provenance/canonical_n_master_l1_projection.json` | v1.0.55-era analytic projection, superseded by canonical_n_master_l1_direct.json |
 | All `r42_results/wave_14_oo_*.json` | Wave-14 OO sweep diagnostics; canonical bin-by-bin flatness summary lives in `wave_14_oo_bin_flatness.json` |
@@ -61,12 +62,15 @@ robustness checks against the pre-TTA pipeline only.
 
 ## Catalog usage limitations
 
-The catalog labels carry a measured spatially-uniform CW-bias residual
+The catalog labels carry a measured CW-bias residual with bounded slab variation and documented low-ℓ spatial structure
 of 0.26% (9.5σ) attributed to GZ1 human-handedness training bias
 propagating through CE-ResNet pseudo-labels. The catalog labels are
 **not** ground-truth chirality and should not be used for precision
 parity tests below the empirical >0.5% amplitude floor without local
-re-normalization of the per-region monopole. The independent GZ1
-CW/CCW agreement on the 234,282-galaxy disjoint cross-match is 69.91%
-(Cohen's κ = 0.40); per-galaxy labels are probabilistic classifier
+re-normalization of the per-region monopole. The full $1''$ GZ1 cross-match
+contains 240,919 rows; 117,205 are chirality-evaluable GZ1 spirals that the
+classifier labels CW or CCW. Agreement on that subset is 69.91% (Cohen's
+κ = 0.40). Because no retained object-level anti-join excludes the 6,637 GZ1
+training rows, this result is overlap-contaminated and descriptive rather than
+an independent validation. Per-galaxy labels are probabilistic classifier
 outputs, not deterministic visual classifications.

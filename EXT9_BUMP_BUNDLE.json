@@ -1,0 +1,56 @@
+[
+  {
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.71",
+    "datestamp": "2026-06-13",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.71.pdf",
+    "changelog": "EXT9 closure: Fig 3 caption rewritten (prediction-horizon framing per ChatGPT MAJOR)"
+  },
+  {
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.68",
+    "datestamp": "2026-06-13",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.68.pdf",
+    "changelog": "EXT9 closure: repo-sync wave (IMPLEMENTATION_MAP/KNOWN_GAPS/JSON/CHANGELOG SHAs); ChatGPT MAJOR→MINOR"
+  },
+  {
+    "paperSlug": "paper-2",
+    "version": "v1.7.62",
+    "datestamp": "2026-06-13",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.62.pdf",
+    "changelog": "EXT9 closure: Fondi arXiv 2503.14057→2602.12357; Table IV label; ChatGPT MAJOR→MINOR"
+  },
+  {
+    "paperSlug": "paper-3",
+    "version": "v3.1.105",
+    "datestamp": "2026-06-13",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.105.pdf",
+    "changelog": "EXT9 closure: Table II \\begin{table}→table* (LaTeX rendering bug); denominator row added; Table V row(h) shortened"
+  },
+  {
+    "paperSlug": "paper-4",
+    "version": "v1.0.185",
+    "datestamp": "2026-06-13",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v185.pdf",
+    "changelog": "EXT9 closure: WLS pixel arithmetic 24,061→24,087; Fig 9 σ unified to +7.28σ; ChatGPT MAJOR→MINOR"
+  },
+  {
+    "paperSlug": "paper-5",
+    "version": "v0.1.74",
+    "datestamp": "2026-06-13",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.74.pdf",
+    "changelog": "EXT9 closure: abstract n=428 reword; VoidFinder primary/cross-check split; ChatGPT MAJOR→MINOR"
+  }
+]

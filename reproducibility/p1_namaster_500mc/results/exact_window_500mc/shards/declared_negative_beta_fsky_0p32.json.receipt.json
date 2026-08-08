@@ -1,0 +1,29 @@
+{
+  "config_names": [
+    "negative_beta_fsky_0p32"
+  ],
+  "configs": [
+    {
+      "beta_deg": -0.27,
+      "fsky_target": 0.32,
+      "gal_cut_deg": 42.84364304359634,
+      "name": "negative_beta_fsky_0p32"
+    }
+  ],
+  "n_real": 500,
+  "result_bytes": 1037,
+  "result_file": "declared_negative_beta_fsky_0p32.json",
+  "result_sha256": "626199121860c4bbb0fe6a172a0a728861bdd7560ad3d957034d78eddfde3870",
+  "runtime_s": 4262.1822509765625,
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "suite": "declared_fsky_sign",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_equivalence_max_abs": 3.552713678800501e-14
+}

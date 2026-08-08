@@ -9,6 +9,8 @@ import {
   Code2,
   Database,
   FileText,
+  Files,
+  FlaskConical,
   Gauge,
   Globe,
   Home,
@@ -18,8 +20,10 @@ import {
   Map,
   MessageSquare,
   Orbit,
+  Rocket,
   Search,
   ShieldCheck,
+  SquareCheckBig,
   Sparkle,
   Telescope,
 } from "lucide-react";
@@ -50,8 +54,13 @@ const sections: SidebarSection[] = [
     links: [
       { href: "/surveys", label: "surveys", icon: Database },
       { href: "/predictions", label: "predictions", icon: Orbit },
-      { href: "/paper", label: "papers", icon: FileText },
+      { href: "/paper", label: "research programs", icon: FileText },
+      { href: "/papers", label: "all papers", icon: Files },
+      { href: "/status", label: "status", icon: Gauge },
       { href: "/reviews", label: "reviews", icon: ShieldCheck },
+      { href: "/reproduce", label: "reproduce", icon: FlaskConical },
+      { href: "/publish", label: "command center", icon: Rocket },
+      { href: "/final-review", label: "final review", icon: SquareCheckBig },
       { href: "/contributions", label: "contributions", icon: Sparkle },
     ],
   },
@@ -108,7 +117,11 @@ function NavLink({
   );
   if (link.external) {
     return (
-      <a href={link.href} className={className}>
+      <a
+        href={link.href}
+        className={className}
+        onClick={() => document.documentElement.removeAttribute("data-sidebar")}
+      >
         <Icon />
         {link.label}
       </a>
@@ -119,6 +132,7 @@ function NavLink({
       href={link.href}
       className={className}
       aria-current={active ? "page" : undefined}
+      onClick={() => document.documentElement.removeAttribute("data-sidebar")}
     >
       <Icon />
       {link.label}

@@ -1,5 +1,8 @@
 # BigBounce Research Tools Integration Plan
 
+> ⚠️ Parts of this doc may be dated — the current operational truth is `project-context/AGENT_ONBOARDING.md` + the SSOT.
+> References below to `arxiv/main.tex` / `arxiv/main.pdf` are from the single-paper era (March 2026). There are now 6 papers at distinct paths — see `AGENTS.md`. The active review tool is `tools/v3_native_pdf_review.py`; DeepSeek was removed.
+
 **Created:** 2026-03-03
 **Updated:** 2026-03-03
 **Status:** Phase 1 COMPLETE, Phase 2 in progress

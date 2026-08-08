@@ -9,29 +9,35 @@ got pdftotext extraction which strips figures, tables, equations, and 2-column
 layout. Internal reviews missed what external (web-app) reviews catch because
 external reviewers see the rendered document.
 
-v3 fixes:
-  1. ALL major reviewers receive native PDF rendering:
-     - Anthropic Claude Opus 4.7   — document content block (NEW reviewer)
-     - OpenAI o3                   — Files API + Responses API input_file
+v3 current routing:
+  1. API reviewers receive the best available document rendering:
      - Gemini 2.5 Pro              — File API / inline PDF
      - Grok 4                      — rasterized to per-page PNG images
      - Perplexity sonar-pro        — text + web search (citation forensics only)
-  2. Max reasoning on every vendor:
-     - Anthropic: extended thinking 16K budget
-     - OpenAI: reasoning effort "high"
+     OpenAI review is intentionally absent: use Codex CLI with Houston's
+     ChatGPT subscription. Anthropic review likewise uses the host subscription
+     agent by default.
+  2. High-effort vendor settings:
      - Gemini: temperature 0.2, max thinking
      - Grok: temperature 0.1
   3. DeepSeek removed (always timed out — 2.75 hr on R9 P3).
-  4. Adds Claude as the "matches Houston's web Claude review" baseline.
+  4. Keeps the historical Claude config only for explicit legacy recovery;
+     it is excluded by default.
 
 Usage:
     python tools/v3_native_pdf_review.py <pdf_path> <round_label> <paper_tag> [round_context]
+
+Optional environment:
+    V3_REVIEWERS=Gemini_cosmology[,Grok_brutal,Perplexity_citations]
+        Comma-separated reviewer allowlist. Select one reviewer per invocation
+        when running provider legs sequentially.
 
 Keys read from bigbounce/.env.local then youmd/.env.local.
 """
 from __future__ import annotations
 
 import base64
+import json
 import os
 import re
 import subprocess
@@ -41,12 +47,26 @@ import time
 import traceback
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Optional
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
-ENV_PATHS = [
-    REPO / ".env.local",
-    Path("/Users/houstongolden/Desktop/CODE_2025/youmd/.env.local"),
-]
+from bigbounce_preflight import DEFAULT_RULES, PortfolioError, verify_receipt
+from paper_registry import CANONICAL_IDS, load_registry, repo_root
+from review_packet import (
+    build_packet,
+    publish_packet,
+    resolve_pdf_snapshot,
+    review_cache_root,
+)
+
+REPO = repo_root()
+REGISTRY = load_registry(REPO)
+# Draft papers not yet in the canonical six (e.g. P1C) live in an auxiliary
+# registry so preflight/freshness tooling keyed to CANONICAL_IDS is untouched.
+_DRAFTS_PATH = REPO / "project-context" / "draft_paper_registry.json"
+if _DRAFTS_PATH.is_file():
+    import json as _json
+    REGISTRY = {**REGISTRY, **_json.loads(_DRAFTS_PATH.read_text())}
+ENV_PATHS = [REPO / ".env.local"]
 
 # ---------------------------------------------------------------------------
 # THE REVIEW PROMPT — pass 1 (initial brutal review)
@@ -57,9 +77,9 @@ Paper tag: {paper_tag}  |  Round: {round_label}  |  Pages: {page_count}
 Round context (not in paper): {round_context}
 [END REVIEWER METADATA]
 
-You are a {persona} for a cosmology methods paper submitted to Physical Review D.
-This is one of the most rigorous physics journals in the world. The acceptance
-bar is HIGH. Reject anything that doesn't meet PRD standards.
+You are a {persona} for a {article_type} submitted to {target_journal}, using
+the canonical review profile {review_profile}. The acceptance bar is HIGH.
+Reject anything that does not meet that venue's standards.
 
 YOUR ROLE: {focus}
 
@@ -197,45 +217,10 @@ of why your initial review was already complete.
 # Reviewers
 # ---------------------------------------------------------------------------
 REVIEWERS = {
-    "Claude_brutal": {
-        "vendor": "anthropic",
-        "model": "claude-opus-4-7",
-        "fallback": "claude-sonnet-4-6",
-        "persona": "Brutal-honesty PRD referee with full PDF access (figures, tables, equations)",
-        "focus": (
-            "BRUTAL HONESTY. Cut through narrative inflation. Is the central claim "
-            "actually new and significant? Are 'first', 'novel', 'survey-scale', "
-            "'unprecedented' framings honest given the literature? Is every headline "
-            "sigma value earned by the methodology? Does the abstract match what the "
-            "body proves? Audit every figure caption against the body claim. Audit every "
-            "table for arithmetic consistency — recompute the numbers. Flag overclaims, "
-            "false confidence, weak hedges presented as strong conclusions, internal "
-            "audit tags ('R7', 'superseded'), and duplicate phrases. Treat as a real "
-            "PRD submission you would reject on first pass."
-        ),
-        "native_pdf": True,
-    },
-    "OpenAI_methodology": {
-        "vendor": "openai",
-        "model": "gpt-5",
-        "fallback": "o3",
-        "persona": "Physical Review D methodology referee with full PDF access",
-        "focus": (
-            "Methodology rigor: statistical-method validity, derivation chains, "
-            "dimensional analysis, internal arithmetic consistency, error propagation. "
-            "Audit every scalar in the abstract and conclusions for a traceable source "
-            "in the body. Flag overclaims of statistical significance. Check sigma "
-            "values from different null procedures are kept distinct. Flag if the "
-            "primary estimator is not pre-declared. Check N_MC sample sizes against "
-            "claimed sub-sigma precision. Audit figure axes and tables for arithmetic "
-            "consistency. Recompute every quoted ratio and percentage."
-        ),
-        "native_pdf": True,
-    },
     "Gemini_cosmology": {
         "vendor": "gemini",
-        "model": "gemini-2.5-pro",
-        "fallback": "gemini-2.0-flash",
+        "model": "gemini-3.1-pro-preview",
+        "fallback": "gemini-3.5-flash",
         "persona": "Physical Review D cosmology-physics referee with full PDF access",
         "focus": (
             "Theoretical physics + observational rigor. Gauge-frame vs physical-frame, "
@@ -278,6 +263,40 @@ REVIEWERS = {
         "native_pdf": False,  # text + web search is the right modality for this role
     },
 }
+
+VENDOR_KEY_VARS = {
+    "gemini": "GOOGLE_GEMINI_API_KEY",
+    "xai": "XAI_API_KEY",
+    "perplexity": "PERPLEXITY_API_KEY",
+}
+
+
+def select_reviewers(selection: Optional[str]) -> dict[str, dict]:
+    """Return the configured reviewers, or a validated V3_REVIEWERS subset."""
+    if selection is None:
+        return REVIEWERS
+
+    names = [name.strip() for name in selection.split(",")]
+    if not selection.strip() or any(not name for name in names):
+        raise ValueError(
+            "V3_REVIEWERS must be a non-empty comma-separated list of reviewer keys"
+        )
+    unknown = [name for name in names if name not in REVIEWERS]
+    if unknown:
+        raise ValueError(
+            "V3_REVIEWERS contains unknown reviewer key(s): "
+            + ", ".join(unknown)
+            + "; available: "
+            + ", ".join(REVIEWERS)
+        )
+    if len(set(names)) != len(names):
+        raise ValueError("V3_REVIEWERS must not contain duplicate reviewer keys")
+    return {name: REVIEWERS[name] for name in names}
+
+
+def all_selected_reviewers_succeeded(results: list[dict], active: dict[str, dict]) -> bool:
+    """A run succeeds only when every explicitly selected reviewer succeeded."""
+    return len(results) == len(active) and all(result["ok"] for result in results)
 
 # ---------------------------------------------------------------------------
 # Key loading
@@ -350,110 +369,6 @@ def rasterize_pdf_to_images(pdf_path: Path, dpi: int = 150, max_pages: int = 25)
 # ---------------------------------------------------------------------------
 # Vendor SDK calls — ALL native-PDF where the vendor supports it
 # ---------------------------------------------------------------------------
-def call_anthropic(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
-    """Claude with native PDF document block + extended thinking (streaming)."""
-    import anthropic
-    client = anthropic.Anthropic(api_key=keys["ANTHROPIC_API_KEY"], timeout=900.0)
-    pdf_b64 = base64.standard_b64encode(pdf_path.read_bytes()).decode("utf-8")
-
-    text_chunks: list[str] = []
-    model_used = model
-    with client.messages.stream(
-        model=model,
-        max_tokens=32000,
-        thinking={"type": "adaptive"},
-        output_config={"effort": "high"},
-        temperature=1.0,  # required when thinking enabled
-        messages=[{
-            "role": "user",
-            "content": [
-                {
-                    "type": "document",
-                    "source": {
-                        "type": "base64",
-                        "media_type": "application/pdf",
-                        "data": pdf_b64,
-                    },
-                },
-                {"type": "text", "text": prompt},
-            ],
-        }],
-    ) as stream:
-        for text_event in stream.text_stream:
-            text_chunks.append(text_event)
-        final_msg = stream.get_final_message()
-        model_used = getattr(final_msg, "model", model)
-    return "".join(text_chunks), model_used
-
-
-def call_openai_responses(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
-    """OpenAI Responses API with native PDF via Files API + reasoning effort high.
-    Handles both reasoning models (o3, o3-pro) and gpt-5 family."""
-    from openai import OpenAI
-    client = OpenAI(api_key=keys["OPENAI_API_KEY"], timeout=900.0)
-
-    with open(pdf_path, "rb") as f:
-        upload = client.files.create(file=f, purpose="user_data")
-
-    common_input = [
-        {
-            "role": "user",
-            "content": [
-                {"type": "input_file", "file_id": upload.id},
-                {"type": "input_text", "text": prompt},
-            ],
-        }
-    ]
-
-    # gpt-5 with reasoning_effort=high can consume tens of thousands of tokens
-    # before producing visible output. Cap output at 64000 (max), use medium
-    # reasoning for gpt-5 family to balance depth and output room.
-    is_gpt5 = "gpt-5" in model.lower()
-    effort = "medium" if is_gpt5 else "high"
-    max_out = 64000 if is_gpt5 else 32000
-
-    try:
-        # Try with reasoning param first (works for o3, o3-pro, gpt-5)
-        try:
-            resp = client.responses.create(
-                model=model,
-                reasoning={"effort": effort},
-                input=common_input,
-                max_output_tokens=max_out,
-            )
-        except Exception as e:
-            err_msg = str(e).lower()
-            # Some models don't accept reasoning param; retry without
-            if "reasoning" in err_msg or "unsupported parameter" in err_msg or "unknown parameter" in err_msg:
-                resp = client.responses.create(
-                    model=model,
-                    input=common_input,
-                    max_output_tokens=max_out,
-                )
-            else:
-                raise
-
-        # output_text is the convenience getter when present
-        text = getattr(resp, "output_text", "") or ""
-        if not text:
-            for item in (resp.output or []):
-                if getattr(item, "type", "") == "message":
-                    for c in (item.content or []):
-                        if hasattr(c, "text") and c.text:
-                            text += c.text
-        model_used = getattr(resp, "model", model)
-
-        # Detect silent downgrade only — gpt-5 → gpt-4o / gpt-3.5 / gpt-4.1 is a regression
-        if "gpt-4o" in model_used.lower() or "gpt-3.5" in model_used.lower():
-            raise RuntimeError(f"silent fallback: requested {model}, got {model_used}")
-        return text, model_used
-    finally:
-        try:
-            client.files.delete(upload.id)
-        except Exception:
-            pass
-
-
 def call_gemini(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
     """Gemini 2.5 Pro with native PDF via inline data (or Files API for big PDFs)."""
     import google.generativeai as genai
@@ -552,9 +467,15 @@ def call_perplexity(keys: dict, model: str, prompt: str, paper_text: str) -> tup
 # ---------------------------------------------------------------------------
 def _dispatch_one_call(vendor: str, keys: dict, model: str, prompt: str, pdf_path: Path, paper_text: str) -> tuple[str, str]:
     if vendor == "anthropic":
-        return call_anthropic(keys, model, prompt, pdf_path)
+        raise RuntimeError(
+            "Anthropic/Claude review dispatch is disabled for the active "
+            "BigBounce campaign"
+        )
     elif vendor == "openai":
-        return call_openai_responses(keys, model, prompt, pdf_path)
+        raise RuntimeError(
+            "OpenAI API review dispatch is disabled; use the Codex CLI with "
+            "ChatGPT subscription authentication"
+        )
     elif vendor == "gemini":
         return call_gemini(keys, model, prompt, pdf_path)
     elif vendor == "xai":
@@ -575,6 +496,9 @@ def run_reviewer(
     paper_tag: str,
     keys: dict,
     out_dir: Path,
+    entry: dict,
+    allowed_context: bytes,
+    cache_root: Path,
     enable_pass2: bool = True,
 ) -> dict:
     t0 = time.time()
@@ -584,16 +508,30 @@ def run_reviewer(
     fallback_used = False
     pass2_added = 0
     vendor = cfg["vendor"]
+    packet_keys: list[str] = []
+
+    def packetized_dispatch(model: str, dispatch_prompt: str) -> tuple[str, str]:
+        packet = build_packet(
+            REPO, paper_tag, entry, dispatch_prompt.encode(), allowed_context,
+            model, os.environ.get("V3_REVIEW_EFFORT", "high"),
+            os.environ.get("V3_EXPECTED_PDF_SHA256") or None, cache_root,
+        )
+        publish_packet(
+            packet, cache_root / "packets", dispatch_prompt.encode(), allowed_context,
+        )
+        packet_keys.append(packet["packet_key"])
+        snapshot = resolve_pdf_snapshot(packet, cache_root)
+        return _dispatch_one_call(vendor, keys, model, dispatch_prompt, snapshot, paper_text)
 
     try:
         primary_model = cfg["model"]
         fallback_model = cfg["fallback"]
         try:
-            content, model_used = _dispatch_one_call(vendor, keys, primary_model, prompt, pdf_path, paper_text)
+            content, model_used = packetized_dispatch(primary_model, prompt)
         except Exception as e:
             print(f"[{name}] primary {primary_model} failed: {e!r} — trying fallback {fallback_model}", file=sys.stderr)
             fallback_used = True
-            content, model_used = _dispatch_one_call(vendor, keys, fallback_model, prompt, pdf_path, paper_text)
+            content, model_used = packetized_dispatch(fallback_model, prompt)
 
         # PASS 2 — self-critique to catch what initial review missed
         if enable_pass2 and content and len(content) > 500 and "FAILED" not in content[:60]:
@@ -604,10 +542,9 @@ def run_reviewer(
                 )
                 # Perplexity gets paper text again since it's text-mode
                 # Others get the PDF again
-                p2_content, _ = _dispatch_one_call(
-                    vendor, keys,
+                p2_content, _ = packetized_dispatch(
                     primary_model if not fallback_used else fallback_model,
-                    p2_prompt, pdf_path, paper_text,
+                    p2_prompt,
                 )
                 if p2_content and "NO ADDITIONAL FINDINGS" not in p2_content[:200].upper():
                     content += "\n\n---\n\n## PASS 2 — self-critique findings (what initial review missed)\n\n" + p2_content
@@ -621,11 +558,7 @@ def run_reviewer(
     dt = time.time() - t0
     fb = f" [FALLBACK from {cfg['model']}]" if fallback_used else ""
 
-    if vendor == "anthropic":
-        input_note = "NATIVE PDF (document block) + extended thinking 16K"
-    elif vendor == "openai":
-        input_note = "NATIVE PDF (Files API + Responses) + reasoning_effort=high"
-    elif vendor == "gemini":
+    if vendor == "gemini":
         input_note = "NATIVE PDF (inline or Files API)"
     elif vendor == "xai":
         input_note = f"NATIVE PDF (rasterized to PNG images, 150 DPI)"
@@ -637,16 +570,17 @@ def run_reviewer(
     # input PDF identity into every reviewer artifact.
     try:
         import hashlib, subprocess as _sp
-        _md5 = hashlib.md5(pdf_path.read_bytes()).hexdigest()[:8]
+        _sha256 = hashlib.sha256(pdf_path.read_bytes()).hexdigest()
         _pages = _sp.check_output(["pdfinfo", str(pdf_path)]).decode()
         _pages = next((l.split()[1] for l in _pages.splitlines() if l.startswith("Pages")), "?")
     except Exception:
-        _md5, _pages = "?", "?"
+        _sha256, _pages = "?", "?"
     header = (
         f"# {paper_tag} {round_label} — {cfg['persona']}\n\n"
         f"**Reviewer**: `{name}`\n"
         f"**Model**: `{model_used}`{fb}\n"
-        f"**Input PDF**: `{pdf_path}` md5={_md5} pages={_pages}\n"
+        f"**Input PDF**: `{entry['pdf_path']}` sha256={_sha256} pages={_pages}\n"
+        f"**Review packet(s)**: `{', '.join(packet_keys) or 'packet-build-failed'}`\n"
         f"**Input format**: {input_note}{p2_note}\n"
         f"**Wall time**: {dt:.1f}s\n\n---\n\n"
     )
@@ -662,6 +596,7 @@ def run_reviewer(
         "out": str(out_path),
         "ok": ok,
         "fallback": fallback_used,
+        "packet_keys": packet_keys,
         "error": error_msg,
     }
 
@@ -677,19 +612,49 @@ def main() -> int:
         )
         return 1
 
-    pdf_path = Path(sys.argv[1]).resolve()
+    supplied_pdf = Path(sys.argv[1]).resolve()
     round_label = sys.argv[2]
     paper_tag = sys.argv[3]
     round_context = sys.argv[4] if len(sys.argv) >= 5 else (
         "Full adversarial peer review — treat this as a real PRD/MNRAS submission."
     )
 
+    if paper_tag not in REGISTRY:
+        print(f"ERROR: paper_tag must be one of {CANONICAL_IDS}", file=sys.stderr)
+        return 1
+    entry = REGISTRY[paper_tag]
+    pdf_path = (REPO / entry["pdf_path"]).resolve()
+    if supplied_pdf != pdf_path:
+        print(
+            f"ERROR: supplied PDF is not canonical for {paper_tag}: "
+            f"expected {pdf_path}, got {supplied_pdf}", file=sys.stderr,
+        )
+        return 1
     if not pdf_path.exists():
         print(f"ERROR: PDF not found: {pdf_path}", file=sys.stderr)
         return 1
 
+    try:
+        active = select_reviewers(os.environ.get("V3_REVIEWERS"))
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
+    preflight_value = os.environ.get("BIGBOUNCE_PREFLIGHT_RECEIPT", "").strip()
+    if not preflight_value:
+        print(
+            "ERROR: BIGBOUNCE_PREFLIGHT_RECEIPT is required before native-PDF review dispatch",
+            file=sys.stderr,
+        )
+        return 2
+    try:
+        verify_receipt(REPO, REPO / DEFAULT_RULES, Path(preflight_value).expanduser())
+    except (PortfolioError, FileNotFoundError, OSError, subprocess.CalledProcessError) as exc:
+        print(f"ERROR: portfolio preflight verification failed: {exc}", file=sys.stderr)
+        return 2
+
     keys = load_keys()
-    required = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GOOGLE_GEMINI_API_KEY", "XAI_API_KEY", "PERPLEXITY_API_KEY"]
+    required = sorted({VENDOR_KEY_VARS[cfg["vendor"]] for cfg in active.values()})
     missing = [k for k in required if k not in keys]
     if missing:
         print(f"[warn] Missing keys: {missing}", file=sys.stderr)
@@ -698,20 +663,51 @@ def main() -> int:
     paper_text = extract_pdf_text(pdf_path)  # only used by Perplexity
     print(f"[v3 native-PDF review] {pdf_path.name}: {page_count} pages, {len(paper_text):,} chars extracted (Perplexity only)", flush=True)
 
-    # The Anthropic/Claude reviewer leg is supplied by a Claude Code sub-agent
-    # (the Opus subscription), NOT the pay-as-you-go ANTHROPIC_API_KEY. Houston
-    # directive 2026-06-14: never burn the API key on reviews. This tool runs the
-    # 4 API vendors (OpenAI/Gemini/Grok/Perplexity); the orchestrator spawns an
-    # Opus Agent to produce EXT{N}_P{X}_Claude_brutal.md. Set V3_USE_ANTHROPIC_API=1
-    # to fall back to the API leg if ever needed.
-    use_anthropic_api = os.environ.get("V3_USE_ANTHROPIC_API", "0") == "1"
-    active = {
-        n: c for n, c in REVIEWERS.items()
-        if use_anthropic_api or c["vendor"] != "anthropic"
-    }
-    if not use_anthropic_api:
-        print("[v3 native-PDF review] Anthropic API leg DISABLED — Claude review comes from a Claude Code sub-agent (subscription, not the API key).", flush=True)
-    print(f"[v3 native-PDF review] Dispatching {len(active)} reviewers in parallel...", flush=True)
+    # Active APIs are Gemini/Grok plus optional Perplexity. OpenAI-family review
+    # is supplied by Codex CLI/ChatGPT subscription; Anthropic/Claude is disabled.
+    # V3_REVIEWERS may select a single provider for a sequential review run.
+    print("[v3 native-PDF review] OpenAI API and Anthropic/Claude routes DISABLED.", flush=True)
+    print(
+        f"[v3 native-PDF review] Dispatching {len(active)} selected reviewer(s) in parallel: "
+        + ", ".join(active),
+        flush=True,
+    )
+
+    cache_root = review_cache_root()
+    allowed_context = round_context.encode()
+
+    if os.environ.get("V3_REVIEW_DRY_RUN", "0") == "1":
+        packets = []
+        for name, cfg in active.items():
+            prompt = REVIEW_PROMPT_TEMPLATE.format(
+                persona=cfg["persona"],
+                paper_tag=paper_tag,
+                round_label=round_label,
+                round_context=round_context,
+                page_count=page_count,
+                target_journal=entry["target_journal"],
+                article_type=entry["article_type"],
+                review_profile=entry["review_profile"],
+                focus=cfg["focus"],
+            )
+            packet = build_packet(
+                REPO, paper_tag, entry, prompt.encode(), allowed_context,
+                cfg["model"], os.environ.get("V3_REVIEW_EFFORT", "high"),
+                os.environ.get("V3_EXPECTED_PDF_SHA256") or None, cache_root,
+            )
+            path, reused = publish_packet(
+                packet, cache_root / "packets", prompt.encode(), allowed_context,
+            )
+            resolve_pdf_snapshot(packet, cache_root)
+            packets.append({
+                "reviewer": name, "packet_key": packet["packet_key"],
+                "packet_path": str(path), "reused": reused,
+            })
+        print(json.dumps({
+            "paper": paper_tag, "profile": entry["review_profile"],
+            "dispatch": False, "packets": packets,
+        }, indent=2))
+        return 0
 
     out_dir = REPO / "project-context" / "peer-reviews"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -726,12 +722,16 @@ def main() -> int:
                 round_label=round_label,
                 round_context=round_context,
                 page_count=page_count,
+                target_journal=entry["target_journal"],
+                article_type=entry["article_type"],
+                review_profile=entry["review_profile"],
                 focus=cfg["focus"],
             )
             futures[pool.submit(
                 run_reviewer,
                 name, cfg, prompt, pdf_path, paper_text,
                 round_label, paper_tag, keys, out_dir,
+                entry, allowed_context, cache_root,
             )] = name
 
         for fut in as_completed(futures):
@@ -743,7 +743,7 @@ def main() -> int:
 
     ok_count = sum(1 for r in results if r["ok"])
     print(f"\n[v3 native-PDF review] Complete: {ok_count}/{len(results)} reviewers OK", flush=True)
-    return 0 if ok_count >= 3 else 2
+    return 0 if all_selected_reviewers_succeeded(results, active) else 2
 
 
 if __name__ == "__main__":

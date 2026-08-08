@@ -1,0 +1,31 @@
+{
+  "source_assertions": {
+    "pipelines/p1_highz_tracers/outputs/desi_dr1/13_desi_dr1_gpu_inference.py": [
+      "'ra': float(fm['TARGET_RA'][i])",
+      "'dec': float(fm['TARGET_DEC'][i])"
+    ],
+    "pipelines/p1_highz_tracers/outputs/desi_dr1/run_dr1_parallel.py": [
+      "'ra':float(fm['TARGET_RA'][i])",
+      "'dec':float(fm['TARGET_DEC'][i])"
+    ],
+    "pipelines/p1_highz_tracers/scripts/enhanced_18M_inference.py": [
+      "TARGET_RA",
+      "TARGET_DEC",
+      "MEAN_FIBER_RA",
+      "MEAN_FIBER_DEC"
+    ],
+    "pipelines/p3_anomaly_engine/pathc_positional_dedup.py": [
+      "ra_mean",
+      "dec_mean",
+      "SkyCoord"
+    ]
+  },
+  "status": "PASS",
+  "supported_claim": "Historical DESI anomaly ra/dec fields were copied from coadd FIBERMAP TARGET_RA/TARGET_DEC; frozen cluster coordinates were then computed from member-coordinate means.",
+  "unsupported_claims_explicitly_excluded": [
+    "secure object identity for any positional association",
+    "a purity estimate for the 181-row catalog or 11-row tail",
+    "recovery of the unavailable production object-to-spectrum mapping",
+    "reproduction of historical score normalization or spectral preprocessing"
+  ]
+}

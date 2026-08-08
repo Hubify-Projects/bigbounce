@@ -1,0 +1,309 @@
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 1/192 shards already done
+  S  1: 44,139 in 126s (350 gal/s) T_raw(shard)=0.227 | 2/192 ETA=6.7h
+  S  2: 44,138 in 134s (328 gal/s) T_raw(shard)=0.233 | 3/192 ETA=7.1h
+  S  3: 44,139 in 124s (355 gal/s) T_raw(shard)=0.231 | 4/192 ETA=6.5h
+  S  4: 44,139 in 133s (332 gal/s) T_raw(shard)=0.233 | 5/192 ETA=6.9h
+  S  5: 44,139 in 130s (339 gal/s) T_raw(shard)=0.225 | 6/192 ETA=6.7h
+  S  6: 44,138 in 132s (334 gal/s) T_raw(shard)=0.236 | 7/192 ETA=6.8h
+  S  7: 44,139 in 134s (329 gal/s) T_raw(shard)=0.226 | 8/192 ETA=6.9h
+  S  8: 44,139 in 126s (349 gal/s) T_raw(shard)=0.230 | 9/192 ETA=6.4h
+  S  9: 44,139 in 130s (339 gal/s) T_raw(shard)=0.225 | 10/192 ETA=6.6h
+  S 10: 44,139 in 131s (337 gal/s) T_raw(shard)=0.229 | 11/192 ETA=6.6h
+  S 11: 44,139 in 136s (325 gal/s) T_raw(shard)=0.232 | 12/192 ETA=6.8h
+  S 12: 44,138 in 139s (317 gal/s) T_raw(shard)=0.231 | 13/192 ETA=6.9h
+  S 13: 44,138 in 137s (323 gal/s) T_raw(shard)=0.233 | 14/192 ETA=6.8h
+SUPERVISOR: pass 1 starting (done=14/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 14/192 shards already done
+  S 14: 44,138 in 84s (528 gal/s) T_raw(shard)=0.232 | 15/192 ETA=4.1h
+  S 15: 44,138 in 125s (354 gal/s) T_raw(shard)=0.229 | 16/192 ETA=6.1h
+  S 16: 44,139 in 128s (344 gal/s) T_raw(shard)=0.232 | 17/192 ETA=6.2h
+  S 17: 44,139 in 126s (349 gal/s) T_raw(shard)=0.225 | 18/192 ETA=6.1h
+  S 18: 44,139 in 122s (362 gal/s) T_raw(shard)=0.227 | 19/192 ETA=5.9h
+  S 19: 44,139 in 126s (351 gal/s) T_raw(shard)=0.227 | 20/192 ETA=6.0h
+  S 20: 44,139 in 124s (357 gal/s) T_raw(shard)=0.232 | 21/192 ETA=5.9h
+  S 21: 44,139 in 126s (351 gal/s) T_raw(shard)=0.233 | 22/192 ETA=5.9h
+  S 22: 44,139 in 124s (356 gal/s) T_raw(shard)=0.233 | 23/192 ETA=5.8h
+  S 23: 44,139 in 127s (347 gal/s) T_raw(shard)=0.230 | 24/192 ETA=5.9h
+PROC_RECYCLE: 10 shards this process, 24/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 1 exited rc=0
+SUPERVISOR: pass 2 starting (done=24/192)
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 24/192 shards already done
+  S 24: 44,139 in 125s (353 gal/s) T_raw(shard)=0.232 | 25/192 ETA=5.8h
+  S 25: 44,139 in 119s (371 gal/s) T_raw(shard)=0.233 | 26/192 ETA=5.5h
+  S 26: 44,138 in 205s (216 gal/s) T_raw(shard)=0.229 | 27/192 ETA=9.4h
+  [WARN] throughput 216 gal/s < abort floor 300.0 gal/s
+  S 27: 44,139 in 124s (356 gal/s) T_raw(shard)=0.230 | 28/192 ETA=5.6h
+  S 28: 44,139 in 124s (357 gal/s) T_raw(shard)=0.235 | 29/192 ETA=5.6h
+  S 29: 44,139 in 126s (351 gal/s) T_raw(shard)=0.228 | 30/192 ETA=5.7h
+  S 30: 44,139 in 124s (356 gal/s) T_raw(shard)=0.232 | 31/192 ETA=5.6h
+  S 31: 44,139 in 125s (353 gal/s) T_raw(shard)=0.233 | 32/192 ETA=5.6h
+  S 32: 44,139 in 126s (350 gal/s) T_raw(shard)=0.228 | 33/192 ETA=5.6h
+  S 33: 44,139 in 125s (353 gal/s) T_raw(shard)=0.229 | 34/192 ETA=5.5h
+PROC_RECYCLE: 10 shards this process, 34/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 2 exited rc=0
+SUPERVISOR: pass 3 starting (done=34/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 34/192 shards already done
+  S 34: 44,139 in 127s (347 gal/s) T_raw(shard)=0.229 | 35/192 ETA=5.6h
+  S 35: 44,139 in 123s (359 gal/s) T_raw(shard)=0.227 | 36/192 ETA=5.3h
+  S 36: 44,138 in 120s (367 gal/s) T_raw(shard)=0.232 | 37/192 ETA=5.2h
+  S 37: 44,139 in 121s (366 gal/s) T_raw(shard)=0.231 | 38/192 ETA=5.2h
+  S 38: 44,138 in 123s (360 gal/s) T_raw(shard)=0.230 | 39/192 ETA=5.2h
+  S 39: 44,139 in 121s (364 gal/s) T_raw(shard)=0.235 | 40/192 ETA=5.1h
+  S 40: 44,139 in 127s (347 gal/s) T_raw(shard)=0.230 | 41/192 ETA=5.3h
+  S 41: 44,138 in 163s (270 gal/s) T_raw(shard)=0.232 | 42/192 ETA=6.8h
+  [WARN] throughput 270 gal/s < abort floor 300.0 gal/s
+  S 42: 44,139 in 124s (355 gal/s) T_raw(shard)=0.231 | 43/192 ETA=5.1h
+  S 43: 44,137 in 125s (354 gal/s) T_raw(shard)=0.228 | 44/192 ETA=5.1h
+PROC_RECYCLE: 10 shards this process, 44/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 3 exited rc=0
+SUPERVISOR: pass 4 starting (done=44/192)
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 44/192 shards already done
+  S 44: 44,139 in 124s (357 gal/s) T_raw(shard)=0.225 | 45/192 ETA=5.1h
+  S 45: 44,139 in 123s (359 gal/s) T_raw(shard)=0.231 | 46/192 ETA=5.0h
+  S 46: 44,138 in 124s (355 gal/s) T_raw(shard)=0.228 | 47/192 ETA=5.0h
+  S 47: 44,139 in 125s (352 gal/s) T_raw(shard)=0.234 | 48/192 ETA=5.0h
+  S 48: 44,139 in 144s (306 gal/s) T_raw(shard)=0.233 | 49/192 ETA=5.7h
+  S 49: 44,139 in 123s (360 gal/s) T_raw(shard)=0.226 | 50/192 ETA=4.8h
+  S 50: 44,139 in 124s (357 gal/s) T_raw(shard)=0.231 | 51/192 ETA=4.8h
+  S 51: 44,138 in 124s (355 gal/s) T_raw(shard)=0.228 | 52/192 ETA=4.8h
+  S 52: 44,139 in 125s (352 gal/s) T_raw(shard)=0.229 | 53/192 ETA=4.8h
+  S 53: 44,139 in 125s (353 gal/s) T_raw(shard)=0.225 | 54/192 ETA=4.8h
+PROC_RECYCLE: 10 shards this process, 54/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 4 exited rc=0
+SUPERVISOR: pass 5 starting (done=54/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 54/192 shards already done
+  S 54: 44,139 in 128s (344 gal/s) T_raw(shard)=0.229 | 55/192 ETA=4.9h
+  S 55: 44,139 in 125s (353 gal/s) T_raw(shard)=0.232 | 56/192 ETA=4.7h
+  S 56: 44,138 in 124s (357 gal/s) T_raw(shard)=0.235 | 57/192 ETA=4.6h
+  S 57: 44,138 in 124s (357 gal/s) T_raw(shard)=0.230 | 58/192 ETA=4.6h
+  S 58: 44,139 in 125s (354 gal/s) T_raw(shard)=0.233 | 59/192 ETA=4.6h
+  S 59: 44,139 in 124s (356 gal/s) T_raw(shard)=0.230 | 60/192 ETA=4.5h
+  S 60: 44,139 in 132s (335 gal/s) T_raw(shard)=0.231 | 61/192 ETA=4.8h
+  S 61: 44,139 in 130s (338 gal/s) T_raw(shard)=0.234 | 62/192 ETA=4.7h
+  S 62: 44,138 in 147s (299 gal/s) T_raw(shard)=0.228 | 63/192 ETA=5.3h
+  [WARN] throughput 299 gal/s < abort floor 300.0 gal/s
+  S 63: 44,139 in 131s (336 gal/s) T_raw(shard)=0.233 | 64/192 ETA=4.7h
+PROC_RECYCLE: 10 shards this process, 64/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 5 exited rc=0
+SUPERVISOR: pass 6 starting (done=64/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 64/192 shards already done
+  S 64: 44,139 in 133s (333 gal/s) T_raw(shard)=0.228 | 65/192 ETA=4.7h
+  S 65: 44,139 in 124s (357 gal/s) T_raw(shard)=0.230 | 66/192 ETA=4.3h
+  S 66: 44,139 in 121s (365 gal/s) T_raw(shard)=0.235 | 67/192 ETA=4.2h
+  S 67: 44,139 in 117s (377 gal/s) T_raw(shard)=0.235 | 68/192 ETA=4.0h
+  S 68: 44,139 in 118s (375 gal/s) T_raw(shard)=0.221 | 69/192 ETA=4.0h
+  S 69: 44,139 in 123s (360 gal/s) T_raw(shard)=0.227 | 70/192 ETA=4.2h
+  S 70: 44,138 in 121s (365 gal/s) T_raw(shard)=0.230 | 71/192 ETA=4.1h
+  S 71: 44,138 in 125s (353 gal/s) T_raw(shard)=0.230 | 72/192 ETA=4.2h
+  S 72: 44,138 in 125s (353 gal/s) T_raw(shard)=0.231 | 73/192 ETA=4.1h
+  S 73: 44,138 in 126s (349 gal/s) T_raw(shard)=0.227 | 74/192 ETA=4.1h
+PROC_RECYCLE: 10 shards this process, 74/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 6 exited rc=0
+SUPERVISOR: pass 7 starting (done=74/192)
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 74/192 shards already done
+  S 74: 44,138 in 125s (353 gal/s) T_raw(shard)=0.229 | 75/192 ETA=4.1h
+  S 75: 44,138 in 125s (353 gal/s) T_raw(shard)=0.232 | 76/192 ETA=4.0h
+  S 76: 44,138 in 120s (366 gal/s) T_raw(shard)=0.228 | 77/192 ETA=3.8h
+  S 77: 44,138 in 126s (351 gal/s) T_raw(shard)=0.230 | 78/192 ETA=4.0h
+  S 78: 44,138 in 169s (262 gal/s) T_raw(shard)=0.231 | 79/192 ETA=5.3h
+  [WARN] throughput 262 gal/s < abort floor 300.0 gal/s
+  S 79: 44,138 in 133s (332 gal/s) T_raw(shard)=0.230 | 80/192 ETA=4.1h
+  S 80: 44,138 in 130s (340 gal/s) T_raw(shard)=0.227 | 81/192 ETA=4.0h
+  S 81: 44,138 in 130s (339 gal/s) T_raw(shard)=0.226 | 82/192 ETA=4.0h
+  S 82: 44,138 in 140s (315 gal/s) T_raw(shard)=0.227 | 83/192 ETA=4.2h
+  S 83: 44,138 in 129s (343 gal/s) T_raw(shard)=0.229 | 84/192 ETA=3.9h
+PROC_RECYCLE: 10 shards this process, 84/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 7 exited rc=0
+SUPERVISOR: pass 8 starting (done=84/192)
+[3s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[3s] resuming: 84/192 shards already done
+  S 84: 44,138 in 132s (333 gal/s) T_raw(shard)=0.228 | 85/192 ETA=3.9h
+  S 85: 44,138 in 126s (350 gal/s) T_raw(shard)=0.233 | 86/192 ETA=3.7h
+  S 86: 44,138 in 126s (351 gal/s) T_raw(shard)=0.230 | 87/192 ETA=3.7h
+  S 87: 44,138 in 122s (361 gal/s) T_raw(shard)=0.235 | 88/192 ETA=3.5h
+  S 88: 44,137 in 124s (356 gal/s) T_raw(shard)=0.230 | 89/192 ETA=3.5h
+  S 89: 44,138 in 124s (356 gal/s) T_raw(shard)=0.237 | 90/192 ETA=3.5h
+  S 90: 44,138 in 123s (360 gal/s) T_raw(shard)=0.228 | 91/192 ETA=3.4h
+  S 91: 44,137 in 125s (352 gal/s) T_raw(shard)=0.231 | 92/192 ETA=3.5h
+  S 92: 44,138 in 136s (323 gal/s) T_raw(shard)=0.229 | 93/192 ETA=3.8h
+  S 93: 44,138 in 126s (350 gal/s) T_raw(shard)=0.234 | 94/192 ETA=3.4h
+PROC_RECYCLE: 10 shards this process, 94/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 8 exited rc=0
+SUPERVISOR: pass 9 starting (done=94/192)
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 94/192 shards already done
+  S 94: 44,138 in 120s (367 gal/s) T_raw(shard)=0.238 | 95/192 ETA=3.2h
+  S 95: 44,137 in 122s (361 gal/s) T_raw(shard)=0.233 | 96/192 ETA=3.3h
+  S 96: 44,138 in 131s (337 gal/s) T_raw(shard)=0.227 | 97/192 ETA=3.5h
+  S 97: 44,137 in 121s (364 gal/s) T_raw(shard)=0.224 | 98/192 ETA=3.2h
+  S 98: 44,138 in 122s (361 gal/s) T_raw(shard)=0.233 | 99/192 ETA=3.2h
+  S 99: 44,138 in 125s (352 gal/s) T_raw(shard)=0.232 | 100/192 ETA=3.2h
+  S100: 44,138 in 137s (323 gal/s) T_raw(shard)=0.231 | 101/192 ETA=3.5h
+  S101: 44,138 in 127s (346 gal/s) T_raw(shard)=0.237 | 102/192 ETA=3.2h
+  S102: 44,138 in 144s (307 gal/s) T_raw(shard)=0.236 | 103/192 ETA=3.6h
+  S103: 44,137 in 128s (344 gal/s) T_raw(shard)=0.235 | 104/192 ETA=3.1h
+PROC_RECYCLE: 10 shards this process, 104/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 9 exited rc=0
+SUPERVISOR: pass 10 starting (done=104/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 104/192 shards already done
+  S104: 44,138 in 163s (272 gal/s) T_raw(shard)=0.224 | 105/192 ETA=3.9h
+  [WARN] throughput 272 gal/s < abort floor 300.0 gal/s
+  S105: 44,138 in 125s (354 gal/s) T_raw(shard)=0.229 | 106/192 ETA=3.0h
+  S106: 44,138 in 122s (360 gal/s) T_raw(shard)=0.232 | 107/192 ETA=2.9h
+  S107: 44,138 in 121s (364 gal/s) T_raw(shard)=0.229 | 108/192 ETA=2.8h
+  S108: 44,138 in 124s (355 gal/s) T_raw(shard)=0.233 | 109/192 ETA=2.9h
+  S109: 44,138 in 129s (342 gal/s) T_raw(shard)=0.231 | 110/192 ETA=2.9h
+  S110: 44,138 in 128s (345 gal/s) T_raw(shard)=0.232 | 111/192 ETA=2.9h
+  S111: 44,138 in 133s (332 gal/s) T_raw(shard)=0.225 | 112/192 ETA=3.0h
+  S112: 44,137 in 137s (321 gal/s) T_raw(shard)=0.230 | 113/192 ETA=3.0h
+  S113: 44,138 in 134s (329 gal/s) T_raw(shard)=0.232 | 114/192 ETA=2.9h
+PROC_RECYCLE: 10 shards this process, 114/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 10 exited rc=0
+SUPERVISOR: pass 11 starting (done=114/192)
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 114/192 shards already done
+  S114: 44,138 in 132s (334 gal/s) T_raw(shard)=0.228 | 115/192 ETA=2.8h
+  S115: 44,138 in 127s (349 gal/s) T_raw(shard)=0.232 | 116/192 ETA=2.7h
+  S116: 44,138 in 128s (346 gal/s) T_raw(shard)=0.229 | 117/192 ETA=2.7h
+  S117: 44,138 in 125s (352 gal/s) T_raw(shard)=0.228 | 118/192 ETA=2.6h
+  S118: 44,138 in 128s (344 gal/s) T_raw(shard)=0.231 | 119/192 ETA=2.6h
+  S119: 44,137 in 125s (352 gal/s) T_raw(shard)=0.230 | 120/192 ETA=2.5h
+  S120: 44,138 in 136s (324 gal/s) T_raw(shard)=0.227 | 121/192 ETA=2.7h
+  S121: 44,138 in 129s (343 gal/s) T_raw(shard)=0.228 | 122/192 ETA=2.5h
+  S122: 44,138 in 134s (329 gal/s) T_raw(shard)=0.234 | 123/192 ETA=2.6h
+  S123: 44,137 in 133s (332 gal/s) T_raw(shard)=0.230 | 124/192 ETA=2.5h
+PROC_RECYCLE: 10 shards this process, 124/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 11 exited rc=0
+SUPERVISOR: pass 12 starting (done=124/192)
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 124/192 shards already done
+  S124: 44,137 in 127s (349 gal/s) T_raw(shard)=0.233 | 125/192 ETA=2.4h
+  S125: 44,138 in 127s (346 gal/s) T_raw(shard)=0.233 | 126/192 ETA=2.3h
+  S126: 44,137 in 120s (368 gal/s) T_raw(shard)=0.231 | 127/192 ETA=2.2h
+  S127: 44,138 in 119s (370 gal/s) T_raw(shard)=0.236 | 128/192 ETA=2.1h
+  S128: 44,138 in 121s (364 gal/s) T_raw(shard)=0.232 | 129/192 ETA=2.1h
+  S129: 44,138 in 119s (371 gal/s) T_raw(shard)=0.229 | 130/192 ETA=2.0h
+  S130: 44,138 in 135s (328 gal/s) T_raw(shard)=0.231 | 131/192 ETA=2.3h
+  S131: 44,138 in 145s (304 gal/s) T_raw(shard)=0.228 | 132/192 ETA=2.4h
+  S132: 44,138 in 129s (341 gal/s) T_raw(shard)=0.226 | 133/192 ETA=2.1h
+  S133: 44,138 in 123s (358 gal/s) T_raw(shard)=0.232 | 134/192 ETA=2.0h
+PROC_RECYCLE: 10 shards this process, 134/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 12 exited rc=0
+SUPERVISOR: pass 13 starting (done=134/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 134/192 shards already done
+  S134: 44,138 in 127s (346 gal/s) T_raw(shard)=0.228 | 135/192 ETA=2.0h
+  S135: 44,138 in 123s (358 gal/s) T_raw(shard)=0.226 | 136/192 ETA=1.9h
+  S136: 44,138 in 119s (369 gal/s) T_raw(shard)=0.232 | 137/192 ETA=1.8h
+  S137: 44,138 in 120s (369 gal/s) T_raw(shard)=0.229 | 138/192 ETA=1.8h
+  S138: 44,138 in 128s (345 gal/s) T_raw(shard)=0.223 | 139/192 ETA=1.9h
+  S139: 44,138 in 125s (354 gal/s) T_raw(shard)=0.233 | 140/192 ETA=1.8h
+  S140: 44,137 in 123s (359 gal/s) T_raw(shard)=0.227 | 141/192 ETA=1.7h
+  S141: 44,138 in 136s (326 gal/s) T_raw(shard)=0.228 | 142/192 ETA=1.9h
+  S142: 44,138 in 125s (353 gal/s) T_raw(shard)=0.230 | 143/192 ETA=1.7h
+  S143: 44,138 in 130s (340 gal/s) T_raw(shard)=0.227 | 144/192 ETA=1.7h
+PROC_RECYCLE: 10 shards this process, 144/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 13 exited rc=0
+SUPERVISOR: pass 14 starting (done=144/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 144/192 shards already done
+  S144: 44,137 in 125s (354 gal/s) T_raw(shard)=0.229 | 145/192 ETA=1.6h
+  S145: 44,138 in 125s (353 gal/s) T_raw(shard)=0.230 | 146/192 ETA=1.6h
+  S146: 44,138 in 127s (349 gal/s) T_raw(shard)=0.223 | 147/192 ETA=1.6h
+  S147: 44,138 in 123s (358 gal/s) T_raw(shard)=0.236 | 148/192 ETA=1.5h
+  S148: 44,138 in 123s (359 gal/s) T_raw(shard)=0.232 | 149/192 ETA=1.5h
+  S149: 44,138 in 125s (354 gal/s) T_raw(shard)=0.232 | 150/192 ETA=1.5h
+  S150: 44,138 in 131s (338 gal/s) T_raw(shard)=0.231 | 151/192 ETA=1.5h
+  S151: 44,138 in 130s (340 gal/s) T_raw(shard)=0.226 | 152/192 ETA=1.4h
+  S152: 44,137 in 130s (339 gal/s) T_raw(shard)=0.229 | 153/192 ETA=1.4h
+  S153: 44,138 in 129s (341 gal/s) T_raw(shard)=0.231 | 154/192 ETA=1.4h
+PROC_RECYCLE: 10 shards this process, 154/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 14 exited rc=0
+SUPERVISOR: pass 15 starting (done=154/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 154/192 shards already done
+  S154: 44,138 in 126s (352 gal/s) T_raw(shard)=0.229 | 155/192 ETA=1.3h
+  S155: 44,138 in 121s (365 gal/s) T_raw(shard)=0.231 | 156/192 ETA=1.2h
+  S156: 44,138 in 123s (359 gal/s) T_raw(shard)=0.229 | 157/192 ETA=1.2h
+  S157: 44,137 in 122s (361 gal/s) T_raw(shard)=0.228 | 158/192 ETA=1.2h
+  S158: 44,138 in 122s (363 gal/s) T_raw(shard)=0.228 | 159/192 ETA=1.1h
+  S159: 44,138 in 122s (362 gal/s) T_raw(shard)=0.231 | 160/192 ETA=1.1h
+  S160: 44,138 in 134s (329 gal/s) T_raw(shard)=0.231 | 161/192 ETA=1.2h
+  S161: 44,138 in 129s (343 gal/s) T_raw(shard)=0.232 | 162/192 ETA=1.1h
+  S162: 44,138 in 129s (341 gal/s) T_raw(shard)=0.231 | 163/192 ETA=1.0h
+  S163: 44,138 in 139s (317 gal/s) T_raw(shard)=0.232 | 164/192 ETA=1.1h
+PROC_RECYCLE: 10 shards this process, 164/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 15 exited rc=0
+SUPERVISOR: pass 16 starting (done=164/192)
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 164/192 shards already done
+  S164: 44,138 in 128s (344 gal/s) T_raw(shard)=0.229 | 165/192 ETA=1.0h
+  S165: 44,138 in 123s (360 gal/s) T_raw(shard)=0.229 | 166/192 ETA=0.9h
+  S166: 44,138 in 119s (372 gal/s) T_raw(shard)=0.237 | 167/192 ETA=0.8h
+  S167: 44,138 in 121s (365 gal/s) T_raw(shard)=0.230 | 168/192 ETA=0.8h
+  S168: 44,138 in 123s (359 gal/s) T_raw(shard)=0.228 | 169/192 ETA=0.8h
+SUPERVISOR: pass 16 exited rc=143
+SUPERVISOR: pass 17 starting (done=169/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 169/192 shards already done
+  S169: 44,138 in 124s (357 gal/s) T_raw(shard)=0.232 | 170/192 ETA=0.8h
+  S170: 44,138 in 126s (351 gal/s) T_raw(shard)=0.224 | 171/192 ETA=0.7h
+  S171: 44,138 in 125s (353 gal/s) T_raw(shard)=0.235 | 172/192 ETA=0.7h
+  S172: 44,138 in 123s (359 gal/s) T_raw(shard)=0.231 | 173/192 ETA=0.6h
+  S173: 44,138 in 135s (327 gal/s) T_raw(shard)=0.230 | 174/192 ETA=0.7h
+  S174: 44,138 in 144s (306 gal/s) T_raw(shard)=0.233 | 175/192 ETA=0.7h
+  S175: 44,138 in 128s (344 gal/s) T_raw(shard)=0.231 | 176/192 ETA=0.6h
+  S176: 44,137 in 126s (351 gal/s) T_raw(shard)=0.228 | 177/192 ETA=0.5h
+  S177: 44,138 in 128s (345 gal/s) T_raw(shard)=0.234 | 178/192 ETA=0.5h
+  S178: 44,138 in 131s (337 gal/s) T_raw(shard)=0.233 | 179/192 ETA=0.5h
+PROC_RECYCLE: 10 shards this process, 179/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 17 exited rc=0
+SUPERVISOR: pass 18 starting (done=179/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 179/192 shards already done
+  S179: 44,136 in 125s (352 gal/s) T_raw(shard)=0.227 | 180/192 ETA=0.4h
+  S180: 44,137 in 119s (372 gal/s) T_raw(shard)=0.230 | 181/192 ETA=0.4h
+  S181: 44,138 in 124s (356 gal/s) T_raw(shard)=0.235 | 182/192 ETA=0.3h
+  S182: 44,138 in 132s (334 gal/s) T_raw(shard)=0.236 | 183/192 ETA=0.3h
+  S183: 44,138 in 127s (347 gal/s) T_raw(shard)=0.236 | 184/192 ETA=0.3h
+  S184: 44,138 in 129s (342 gal/s) T_raw(shard)=0.228 | 185/192 ETA=0.3h
+  S185: 44,138 in 127s (349 gal/s) T_raw(shard)=0.226 | 186/192 ETA=0.2h
+  S186: 44,138 in 124s (357 gal/s) T_raw(shard)=0.229 | 187/192 ETA=0.2h
+  S187: 44,138 in 126s (352 gal/s) T_raw(shard)=0.233 | 188/192 ETA=0.1h
+  S188: 44,138 in 130s (341 gal/s) T_raw(shard)=0.233 | 189/192 ETA=0.1h
+PROC_RECYCLE: 10 shards this process, 189/192 total — exiting for fresh heap (supervisor restarts)
+SUPERVISOR: pass 18 exited rc=0
+SUPERVISOR: pass 19 starting (done=189/192)
+[2s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[2s] resuming: 189/192 shards already done
+  S189: 44,138 in 130s (340 gal/s) T_raw(shard)=0.227 | 190/192 ETA=0.1h
+  S190: 44,138 in 122s (361 gal/s) T_raw(shard)=0.228 | 191/192 ETA=0.0h
+  S191: 44,138 in 124s (357 gal/s) T_raw(shard)=0.227 | 192/192 ETA=0.0h
+
+[396s] DONE 192/192 shards, 132,414 new galaxies
+FINAL SUMMARY:
+  n_total=8,474,531 n_pairs_raw=3,322,550
+  T_raw=0.2303 +/- 0.0002
+  g_img=-0.4534 (paper 0.398)
+  T_eq=0.9997375984825695 antisym_maxdev=0.0
+SUPERVISOR: pass 19 exited rc=0
+SUPERVISOR: all 192 shards present — final summary pass
+[1s] model loaded val_acc=0.9369 device=NVIDIA A100 80GB PCIe
+[1s] resuming: 192/192 shards already done
+
+[0s] DONE 192/192 shards, 0 new galaxies
+FINAL SUMMARY:
+  n_total=8,474,531 n_pairs_raw=3,322,550
+  T_raw=0.2303 +/- 0.0002
+  g_img=-0.4534 (paper 0.398)
+  T_eq=0.9997375984825695 antisym_maxdev=0.0
+SUPERVISOR_DONE

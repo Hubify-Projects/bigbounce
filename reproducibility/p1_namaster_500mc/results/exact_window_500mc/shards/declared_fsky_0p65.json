@@ -1,0 +1,36 @@
+{
+  "experiment": "declared NaMaster f_sky and sign checks with exact bandpower windows",
+  "results": [
+    {
+      "beta_deg": 0.27,
+      "fsky_actual_apodized": 0.6503906222283445,
+      "fsky_target": 0.65,
+      "gal_cut_deg": 20.487315114722662,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.0015816318682719648,
+      "n_real": 500,
+      "name": "fsky_0p65",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.035366363728361064,
+      "recovered_beta_deg": 0.268,
+      "runtime_s": 4269.383631944656,
+      "seed_base": 42,
+      "signed_bias_deg": -0.0020000000000000018,
+      "snr_exact_window": 29.096974628007512,
+      "window_equivalence_max_abs": 6.394884621840902e-14,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1536
+      ]
+    }
+  ],
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "status_of_historical_outputs": "superseded effective-ell-template evidence preserved at top-level results",
+  "total_runtime_s": 4269.505260705948
+}

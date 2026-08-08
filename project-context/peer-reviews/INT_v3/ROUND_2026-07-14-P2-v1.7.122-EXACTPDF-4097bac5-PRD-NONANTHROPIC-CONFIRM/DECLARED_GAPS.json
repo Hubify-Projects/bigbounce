@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "paper": "P2",
+  "version": "v1.7.122",
+  "pdf_sha256": "4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9",
+  "source_commit": "3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52",
+  "review_commit": "3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52",
+  "excluded_legs": [
+    {
+      "leg": "openai-api-gpt-5.5",
+      "status": "NONCONFORMING_DIAGNOSTIC_ONLY",
+      "reason": "The call began before the routing correction. It is preserved honestly but excluded from the valid board and cannot support acceptance or readiness."
+    },
+    {
+      "leg": "anthropic-claude",
+      "status": "NOT_DISPATCHED",
+      "reason": "Anthropic/Claude was excluded by the campaign constraint."
+    }
+  ],
+  "external_science_and_release_gates": [
+    {
+      "gate": "direct third-order/cubic transfer through a specified bounce",
+      "status": "OPEN_DISCLOSED",
+      "scope": "Blocks a full late-time bounce prediction, not the contraction-phase algebra."
+    },
+    {
+      "gate": "actual SPHEREx per-triangle covariance/likelihood",
+      "status": "OPEN_DISCLOSED",
+      "scope": "Blocks a survey-level forecast/likelihood claim, not the exact amplitude derivation."
+    },
+    {
+      "gate": "model-specific fermion/torsion bound",
+      "status": "OPEN_DISCLOSED",
+      "scope": "Limits applicability to fermion-populated completions, not the scalar-sector algebra."
+    },
+    {
+      "gate": "immutable archive and DOI",
+      "status": "OPEN_DISCLOSED",
+      "scope": "Submission packaging gate only."
+    },
+    {
+      "gate": "independent human PRD referee and editorial decision",
+      "status": "NOT_RUN",
+      "scope": "Automated ACCEPT verdicts are evidence, not journal acceptance."
+    }
+  ],
+  "readiness_uplift_authorized": false
+}

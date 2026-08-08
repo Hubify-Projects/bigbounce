@@ -1,0 +1,45 @@
+{
+  "task": "P3 DESI ranking-stability and native-Planck held-out-membership evidence",
+  "generated_by": "pipelines/p3_anomaly_engine/held_out_rescore.py",
+  "desi": {
+    "method": "Five proxy models: each trains on four folds and scores the full 47,000-row pool. Pairwise top-1% Jaccard measures fold-model ranking stability; it is not fully out-of-sample.",
+    "source": "pipelines/p3_anomaly_engine/pathc_desi_kfold/results/kfold_stability_summary.json",
+    "n_folds": 5,
+    "rows_per_fold": 47000,
+    "top_frac": 0.01,
+    "mean_pairwise_jaccard": 0.8625,
+    "min_pairwise_jaccard": 0.7769,
+    "gate_required": 0.7,
+    "gate_pass": true,
+    "union_top": 546,
+    "consensus_ge3": 464,
+    "all_5_folds": 399,
+    "consensus_fraction_of_union": 0.8498,
+    "result": "Model-ranking stability PASSES: the DESI proxy-model top-1% sets agree (mean pairwise Jaccard 0.862 >= 0.7 gate; 464/546 objects in >=3 model lists). This does not constitute a fully out-of-sample re-score of the released 195,829-row catalog.",
+    "status": "DONE"
+  },
+  "planck": {
+    "method": "Held-out membership test of the native CMB top-200. The native retrain (N=200,000 patches, torch random_split seed=42, val_frac=0.15) defines a 30,000-patch held-out split the model never trained on. If the top anomalies were an in-sample memorization artifact they would be UNDER-represented in the held-out split; the test asks the opposite.",
+    "source": "pipelines/p3_anomaly_engine/ext3_fm2_planck_top200_train_overlap.json",
+    "n_top": 200,
+    "val_frac_held_out": 0.15,
+    "expected_in_held_out_if_random": 30.0,
+    "observed_in_held_out": 48,
+    "observed_in_train": 152,
+    "over_representation_factor": 1.6,
+    "binomial_p_one_sided_ge": 0.0005488,
+    "binomial_p_two_sided": 0.0009791,
+    "result": "Held-out membership test PASSES: 48/200 top anomalies fall in the held-out split vs 30 expected under random \u2014 a 1.60x over-representation (binomial one-sided p=5.49e-04). The top anomalies are MORE common out-of-sample, not less, ruling out the in-sample memorization-inflation concern.",
+    "full_native_reinference": {
+      "status": "BLOCKED (pod-side data gone)",
+      "needs": [
+        "best_cmb_native.pt (native CMB autoencoder checkpoint)",
+        "cmb_native_patches.npy (200k masked SMICA patch tensor)",
+        "cmb_native_all_scores.parquet (full 200k native scores)"
+      ],
+      "why_blocked": "These live on a now-EXITED pod and are NOT in the HuggingFace release (bamfai/bigbounce-anomaly-catalog carries only the cross-transfer Planck baseline, patch_idx < 20k, not the native 200k rescore). The one RUNNING pod (bigbounce-c123-namaster) refused SSH (key mismatch) and hosts a different job. A full re-inference over held-out patches therefore cannot be run from committed/available data without re-staging the native CMB tensor + checkpoint."
+    },
+    "status": "PARTIAL \u2014 held-out membership test DONE from committed data; full native re-inference pod-blocked"
+  },
+  "headline": "DESI: five-model ranking stability PASSES (mean Jaccard 0.8625, gate 0.7). Planck: held-out membership test PASSES (top anomalies 1.6x over-represented in held-out, p=5.5e-04); full native re-inference pod-blocked."
+}

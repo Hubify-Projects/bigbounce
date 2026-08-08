@@ -1,0 +1,58 @@
+name: namaster-proof
+
+on:
+  push:
+    paths:
+      - "packages/namaster-proof/**"
+      - "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py"
+      - "reproducibility/p1_namaster_500mc/scripts/multipole_contract.py"
+      - ".github/workflows/namaster-proof.yml"
+  pull_request:
+    paths:
+      - "packages/namaster-proof/**"
+      - "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py"
+      - "reproducibility/p1_namaster_500mc/scripts/multipole_contract.py"
+      - ".github/workflows/namaster-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python-version: "3.10"
+          - os: ubuntu-latest
+            python-version: "3.11"
+          - os: ubuntu-latest
+            python-version: "3.12"
+          - os: ubuntu-latest
+            python-version: "3.13"
+          - os: windows-latest
+            python-version: "3.12"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: packages/namaster-proof/pyproject.toml
+      - name: Install package
+        run: python -m pip install './packages/namaster-proof[test]'
+      - name: Run package tests
+        run: python -m pytest packages/namaster-proof/tests
+      - name: Run independent example
+        shell: bash
+        run: |
+          python packages/namaster-proof/examples/synthetic_window.py \
+            --output "${RUNNER_TEMP}/synthetic_result.json"
+          namaster-proof validate "${RUNNER_TEMP}/synthetic_result.json" \
+            --expect suite=namaster-proof-synthetic-window-v1 \
+            --expect deterministic=true
+      - name: Build wheel
+        run: python -m pip wheel --no-deps --wheel-dir dist packages/namaster-proof

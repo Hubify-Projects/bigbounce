@@ -1,0 +1,401 @@
+{
+  "schema_version": "truth-audit-event-batch/v1",
+  "paper": {"id": "P4", "version": "v1.0.255"},
+  "source": {
+    "round_id": "ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE",
+    "round_type": "internal"
+  },
+  "pdf": {
+    "sha256": "f9b011a84351781b0b0e48e02e811a60ba1666296fa1f80413c918fe131c7dce",
+    "pages": 29
+  },
+  "truth_audit": {
+    "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE/P4_v1.0.255_truth_audit.md",
+    "sha256": "10ccdc4e3e3594f90d7e664d538aa3a182064e78f428c3b3602ab877850fea15",
+    "audited_at": "2026-07-16T06:08:44Z"
+  },
+  "catalog": {
+    "version": "34-patterns",
+    "updated_at": "2026-06-02T00:00:00Z"
+  },
+  "receipts": [
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE/API_P4_grok.md",
+      "sha256": "88fc47096c1ae993744aab7625e441b72bf36e1707bc5577aeddccbe72ff9ca1",
+      "occurred_at": "2026-07-16T00:34:27.899562Z",
+      "reviewer": {
+        "provider": "xai-direct",
+        "model": "grok-4.3",
+        "reviewer_id": "grok-api"
+      },
+      "findings": [
+        {
+          "finding_id": "G-M1",
+          "severity": "MAJOR",
+          "summary": "Conflicting training records and absent object, split, and seed manifests prevent exact training replay and independence proof.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that exact training realization, split, seed, and training-disjoint validation evidence do not exist in the retained release.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Recover or regenerate checkpoint-bound object, split, and seed evidence; otherwise retain the limitation and avoid reproducibility or independence claims.",
+            "closed_in_version": null,
+            "evidence": "Standing training-provenance gate in the bound P4 v1.0.255 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "G-M2",
+          "severity": "MAJOR",
+          "summary": "Primary and diagnostic estimators lack a joint covariance model.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that no joint likelihood or real-space, harmonic, and nuisance covariance is defined, although the paper correctly marks the non-primary rows non-commensurable.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Construct joint estimator and nuisance covariance or retain the single-primary hierarchy and prohibit combined-significance interpretation.",
+            "closed_in_version": null,
+            "evidence": "Standing covariance gate in the bound P4 v1.0.255 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "G-M3",
+          "severity": "MAJOR",
+          "summary": "No training-disjoint held-out human labels, spatial confusion model, or object-level physical transfer calibration are available.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that g=0.398 is illustrative and overlap-contaminated and that the required transfer-calibration program remains undone.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Obtain a training-disjoint human-label validation set and spatially resolved transfer model before making physical-spin or primordial-parity claims.",
+            "closed_in_version": null,
+            "evidence": "Standing transfer-calibration gate in the bound P4 v1.0.255 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "G-m4",
+          "severity": "MINOR",
+          "summary": "Standalone framing allegedly conflicts with disclosed CE-ResNet dependence and training conflicts.",
+          "truth_verdict": "FALSIFIED",
+          "truth_evidence": "The audit verified that standalone is scoped to independence from unpublished companion work, while external pseudo-label dependence and training conflicts are explicitly disclosed.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Retain the explicitly scoped standalone definition and the external-training-source disclosures.",
+            "closed_in_version": null,
+            "evidence": "Falsified finding in the bound P4 v1.0.255 truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE/API_P4_gemini.md",
+      "sha256": "cde9f29756571ca2defca27339fbae332f6c86843c3a0e93ba6db29cedb10bbf",
+      "occurred_at": "2026-07-16T00:34:27.906089Z",
+      "reviewer": {
+        "provider": "google-direct",
+        "model": "gemini-3.1-pro-preview",
+        "reviewer_id": "gemini-api"
+      },
+      "findings": [
+        {
+          "finding_id": "Ge-m1",
+          "severity": "MINOR",
+          "summary": "The illustrative g=0.398 derivation needs a forward reference.",
+          "truth_verdict": "STALE",
+          "truth_evidence": "The audit confirmed that v1.0.255 already labels g illustrative, gives g=2a-1, and routes the interpretation to Appendix D before the later confusion-matrix derivation.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "No scientific correction required; retain optional readability editing for venue copy preparation.",
+            "closed_in_version": null,
+            "evidence": "Already-closed readability finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m2",
+          "severity": "MINOR",
+          "summary": "The support and mask acronyms need a centralized glossary.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit confirmed that Section III expands the acronyms together and points to the consolidated support table; a separate glossary is optional presentation polish.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Consider only as optional venue-focused readability editing.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m3",
+          "severity": "MINOR",
+          "summary": "The paper should speculate about the technical origin of conflicting historical training records.",
+          "truth_verdict": "FALSIFIED",
+          "truth_evidence": "The audit found no retained evidence identifying the cause; attributing it to augmentation or overwritten manifests would fabricate provenance.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Do not invent a causal explanation; retain the explicit unresolved training-provenance limitation.",
+            "closed_in_version": null,
+            "evidence": "False requested remedy in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m4",
+          "severity": "MINOR",
+          "summary": "The binary CW and CCW denominator for A=2(f_CW-1/2) is allegedly unstated.",
+          "truth_verdict": "STALE",
+          "truth_evidence": "The audit verified that f_CW=N_CW/(N_CW+N_CCW) and the NOT_SPIRAL exclusion are explicit before downstream amplitude use.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "No correction required; preserve the existing denominator definition.",
+            "closed_in_version": null,
+            "evidence": "Already-closed finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m5",
+          "severity": "MINOR",
+          "summary": "The diagnostic injection figure needs stronger grayscale differentiation.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit verified distinct marker and line encodings and a passed exact-PDF visual audit; no inaccessible scientific information was identified.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Treat further grayscale styling as optional presentation polish.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE/intwave_P4_codex_1733.md",
+      "sha256": "c19960725297f28f51e9c834c54b79aca71e975507b335f7e75dc10db1665363",
+      "occurred_at": "2026-07-16T00:34:03Z",
+      "reviewer": {
+        "provider": "openai-subscription",
+        "model": "gpt-5.6-sol (high)",
+        "reviewer_id": "codex-cli"
+      },
+      "findings": [
+        {
+          "finding_id": "C-M1",
+          "severity": "MAJOR",
+          "summary": "The catalog classifier lacks reproducible independent validation.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed conflicting training totals, absent object and split manifests, and no training-disjoint human-label validation; high confidence remains a ranking term rather than calibrated purity.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Recover exact training provenance and obtain training-disjoint human-label validation, or retain the explicit limitation and bounded observed-label interpretation.",
+            "closed_in_version": null,
+            "evidence": "Standing validation gate in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M2",
+          "severity": "MAJOR",
+          "summary": "Table bias metrics conflict with committed audit values.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit verified that v1.0.255 printed 94.4%, 91.2%, and less than 0.4% while retained evidence supports 89.8%, 84%, and 3.6%.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Correct the table to the checkpoint-bound historical audit values and label their scope.",
+            "closed_in_version": null,
+            "evidence": "Verified new finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M3",
+          "severity": "MAJOR",
+          "summary": "No byte-complete v1.0.255 reproduction package allegedly exists.",
+          "truth_verdict": "STALE",
+          "truth_evidence": "The audit verified that commit aaf33368 already retained the v1.0.255 source bundle and isolated proof; only the separate DOI-backed archival deposit remains open.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Retain the source-bundle proof and keep the distinct DOI-backed deposit as a standing release gate.",
+            "closed_in_version": null,
+            "evidence": "Stale finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M4",
+          "severity": "MAJOR",
+          "summary": "Machine-readable records identify stale pixel-permutation values as primary and canonical.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit verified that two JSON pointers retained z=0.549120 and p=0.265173 as primary despite the fixed-occupancy artifact reproducing z=0.705317 and p=0.224678.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Point machine-readable canonical records to the fixed-occupancy primary artifact and demote the pixel-permutation result to historical diagnostic status.",
+            "closed_in_version": null,
+            "evidence": "Verified new finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M5",
+          "severity": "MAJOR",
+          "summary": "Complete imaging, depth, seeing, PSF, redshift metadata and covariance propagation are unavailable.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that the morphology join exists but the complete full-catalog systematics sidecar and covariance propagation do not.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Publish complete systematics metadata and propagate its covariance, or preserve the explicit release limitation and bounded interpretation.",
+            "closed_in_version": null,
+            "evidence": "Standing metadata gate in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M6",
+          "severity": "MAJOR",
+          "summary": "The raw-to-equivariant comparison overstates TTA causality.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed different memberships, inference-pass provenance, and null conventions, so the comparison cannot isolate TTA causally.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Describe the result as an observed pipeline change and structural mitigation rather than a controlled causal TTA demonstration.",
+            "closed_in_version": null,
+            "evidence": "Verified new finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m7",
+          "severity": "MINOR",
+          "summary": "The D4 validation overstates sign reversal as confirmation of sample noise.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed different preprocessing and no overlap or uncertainty analysis capable of excluding a D4-dependent systematic.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Replace confirms with compatible with and state that a D4-dependent systematic is not excluded.",
+            "closed_in_version": null,
+            "evidence": "Verified new finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m8",
+          "severity": "MINOR",
+          "summary": "Zero exceedances in 10,000 simulations is incorrectly described as p less than or equal to 1e-4.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit verified that the add-one estimate is 1/10001 and the approximate 95% binomial upper limit is 3.0e-4.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Report the add-one estimate and finite-Monte-Carlo upper limit separately.",
+            "closed_in_version": null,
+            "evidence": "Verified new finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m9",
+          "severity": "MINOR",
+          "summary": "The NGP and SGP diagnostic null generator is described as the primary-style pixel permutation.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit verified that the diagnostic uses independent per-pixel binomial draws at p=0.5 rather than the primary fixed-occupancy randomization.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "State the independent-binomial generator and distinguish it explicitly from the primary fixed-occupancy null.",
+            "closed_in_version": null,
+            "evidence": "Verified new finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m10",
+          "severity": "MINOR",
+          "summary": "Spatially uniform classifier artifact is stronger than the retained spatial evidence.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit verified bounded sub-percent slab variation together with significant low-ell structure; the evidence does not establish strict spatial uniformity or one causal mechanism.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Use spatially structured or bounded-variation language and avoid unique causal attribution.",
+            "closed_in_version": null,
+            "evidence": "Verified new finding in the bound truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    }
+  ]
+}

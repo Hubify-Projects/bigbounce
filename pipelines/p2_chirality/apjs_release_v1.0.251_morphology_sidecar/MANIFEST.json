@@ -1,0 +1,48 @@
+{
+  "manifest_version": "v1.0.252",
+  "paper_version": "v1.0.252",
+  "contract": {
+    "exact_spiral_rows": 3201160,
+    "join_key": "object_id == f'{BRICKID}_{OBJID}'",
+    "required_properties": [
+      "safe spiral object_id is non-null and unique",
+      "morphology BRICKID/OBJID is non-null and unique",
+      "both key sets are exactly equal with no misses or extras"
+    ],
+    "axis_ratio_derivation": {
+      "storage": "derived_on_demand_not_stored",
+      "shape_choice": "DEV for TYPE in {DEV,COMP,SER} or FRACDEV >= 0.5; EXP otherwise",
+      "ellipticity": "e = clip(hypot(selected_E1, selected_E2), 0, 0.999)",
+      "axis_ratio": "b/a = (1-e)/(1+e)"
+    }
+  },
+  "inputs": {
+    "safe_catalog": {
+      "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+      "bytes": 386712994,
+      "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3",
+      "huggingface": {
+        "repo_id": "bamfai/galaxy-chirality-catalog",
+        "repo_type": "dataset",
+        "revision": "db11023306ab4eed1d7727670bd78e127b7af17a",
+        "path": "apjs-release/v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet"
+      }
+    },
+    "morphology_sidecar": {
+      "path": "pipelines/p2_chirality/outputs/spiral_morphology_dr8.parquet",
+      "bytes": 105317121,
+      "sha256": "d49090fce3033c5905df359f63036fd831c4b6378c271b95afd8d86a91bd5620",
+      "rows": 3201160,
+      "huggingface": {
+        "repo_id": "bamfai/galaxy-chirality-catalog",
+        "repo_type": "dataset",
+        "revision": "245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9",
+        "path": "spiral_morphology_dr8.parquet"
+      }
+    }
+  },
+  "schema": "SCHEMA.json",
+  "validator": "validate_p4_morphology_join_v1_0_251.py",
+  "large_files_created": false,
+  "publication_state": "public companion contract for the existing root spiral_morphology_dr8.parquet"
+}

@@ -1,0 +1,80 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4-v2-vit-production-training",
+  "title": "v2 ViT-Small production training (26,616-object historical realization)",
+  "program": "galaxy-chirality",
+  "paper": "P4",
+  "kind": "training",
+  "inputs": [
+    {
+      "name": "Smith42/galaxies (HF)",
+      "type": "external-dataset",
+      "locator": "https://huggingface.co/datasets/Smith42/galaxies",
+      "checksum": "bdd1b063… (HF revision, partial per inventory)",
+      "license": null
+    },
+    {
+      "name": "GZ1 CW/CCW human-vote labels (S3-hosted)",
+      "type": "external-dataset",
+      "locator": "GZ1 CW/CCW label set, S3-hosted — exact bucket path not captured in the inventory",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "CE-ResNet Zenodo release (pre_desi.fits)",
+      "type": "external-dataset",
+      "locator": "https://doi.org/10.5281/zenodo.7167388",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Galaxy Zoo DESI morphology predictions (Walmsley 2023)",
+      "type": "external-dataset",
+      "locator": "Galaxy Zoo DESI predictions, Walmsley et al. 2023 — exact data locator not captured in the inventory",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p2_chirality/train_chirality_v2.py",
+      "entrypoint": "python3 train_chirality_v2.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "torch, timm, huggingface_hub, datasets, pillow, numpy — see requirements.txt (repo root)",
+    "hardware": "gpu-24gb"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "H200",
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "runpod (A100/H200-class GPU, ViT-Small image classifier training)",
+    "est_wall_clock": "3-6 hours for a 26,616-object realization at typical ViT-Small batch throughput",
+    "est_cost_usd": 5.0,
+    "parallelizable": false,
+    "resume_support": true,
+    "notes": "The original run's exact labels/split manifest were not retained, so a byte-identical reproduction of THIS checkpoint is not possible — see p4-g1-vit-retrain-manifest for the regenerable, manifest-bound successor that supersedes this training. This estimate covers reproducing an equivalent training run against the same input datasets, not an exact checkpoint match."
+  },
+  "outputs": [
+    {
+      "locator": "HF bamfai/galaxy-chirality-v2 (checkpoint SHA 618d170f…)",
+      "type": "model",
+      "checksum": "618d170f… (partial SHA quoted in inventory)"
+    }
+  ],
+  "verification": "No numeric target is defined for this historical realization since its labels/manifest were not retained; status is superseded. Use p4-g1-vit-retrain-manifest's best_val_acc=0.9931 (epoch 47) as the current verifiable production-training benchmark instead.",
+  "status": "superseded",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — v2 ViT-Small production training bullet",
+    "project-context/SSOT/paper-4/status.md",
+    "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-fnl-tracer-selection",
+  "title": "f_NL tracer selection / step4-6 bias validation + alpha empirical calibration (negative result)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "validation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/scripts/step4_bias_validation.py",
+      "entrypoint": "python3 step4_bias_validation.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p1_highz_tracers/scripts/wave_14_vvv_alpha_empirical.py",
+      "entrypoint": "python3 wave_14_vvv_alpha_empirical.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, pandas, scipy (spatial.cKDTree) — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "This is explicitly a NEGATIVE result per audit: the empirical alpha (tracer bias amplitude) is statistically consistent with zero — jackknife alpha_internal_jk=0.1936 +/- 0.650 in the committed alpha_empirical_results.json, well within 1-sigma of 0 against the fiducial alpha=0.15. Not a headline discovery; do not present this as a positive f_NL tracer-selection signal."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/fnl_tracer_selection/fnl_forecast.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/step6_alpha_empirical/alpha_empirical_results.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "The reproduction target is confirming alpha remains statistically consistent with 0 (jackknife alpha_internal_jk = 0.1936 +/- 0.650, i.e. within ~0.3-sigma of zero), not reproducing a positive detection — a re-run passes if the recomputed alpha_internal_jk stays within its own jackknife standard error of 0.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — f_NL tracer selection / step4-6 (bias validation, alpha empirical) bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md"
+  ]
+}

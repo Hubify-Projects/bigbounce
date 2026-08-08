@@ -1,6 +1,20 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
+/** Sort mixed human-readable and ISO datestamps newest-first. */
+function sortVersions<T extends { datestamp: string; createdAt?: number }>(vs: T[]): T[] {
+  return vs.sort((a, b) => {
+    const ta = Date.parse(a.datestamp);
+    const tb = Date.parse(b.datestamp);
+    if (!Number.isNaN(ta) && !Number.isNaN(tb) && ta !== tb) return tb - ta;
+    if (Number.isNaN(ta) || Number.isNaN(tb)) {
+      const d = b.datestamp.localeCompare(a.datestamp);
+      if (d !== 0) return d;
+    }
+    return (b.createdAt ?? 0) - (a.createdAt ?? 0);
+  });
+}
+
 // ──────────────────────────────────────────────────────────────────────
 // Paper-level CRUD
 // ──────────────────────────────────────────────────────────────────────
@@ -151,9 +165,13 @@ export const setHoustonSignOff = mutation({
 // "I forgot to bump readiness after 5 closures" drift.
 //
 // Formula (per DATA_MODEL_ARCHITECTURE.md):
-//   readiness = 95 − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats
-//   capped at the 95-floor pre-Houston-sign-off (per feedback_99_pct_readiness_cap).
-//   Once Houston signs off → readiness = 100.
+//   readiness = CEILING − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats
+//   Phase ladder (per feedback_99_pct_readiness_cap + the R→D→P round protocol):
+//     science R-rounds pass (clean internal+external)      → ceiling 96
+//     D-round passes (design/visual presentation clean)    → ceiling 98
+//     P-round passes (final packaging/addenda clean)       → ceiling 99
+//     Houston sign-off                                     → 100
+//   EXTERNAL ROUND 2026-06-21 (Houston) found open BLOCKER/MAJOR/MINOR — papers regressed to IN-REVISION. Ceiling rolled to 92 pending intake of those findings (next agent enters them; formula then refines per-paper). signoff=100.
 //   readiness is clamped to [0, 100].
 // ──────────────────────────────────────────────────────────────────────
 
@@ -170,11 +188,7 @@ export const getPaperState = query({
       .query("paper_versions")
       .withIndex("by_paper", (q) => q.eq("paperSlug", args.slug))
       .collect();
-    versions.sort((a, b) => {
-      const d = b.datestamp.localeCompare(a.datestamp);
-      if (d !== 0) return d;
-      return (b.createdAt ?? 0) - (a.createdAt ?? 0);
-    });
+    sortVersions(versions);
     const currentVersion = versions[0] ?? null;
 
     const findings = await ctx.db
@@ -206,7 +220,7 @@ export const getPaperState = query({
     const lastRRound = rRounds[0] ?? null;
 
     // Computed readiness — the source of truth that the site reads.
-    // Formula: 95 - penalties, capped at an optional manual override (readinessCap).
+    // Formula: ceiling - penalties (96 in D-round), capped at an optional manual override (readinessCap).
     // Houston sign-off overrides everything → 100.
     let readinessComputed: number;
     if (paper.houstonSignOff) {
@@ -217,13 +231,20 @@ export const getPaperState = query({
         1 * openMajors +
         0.2 * openMinors +
         1 * openCaveats;
-      const formulaValue = Math.max(0, Math.min(95, 95 - penalty));
-      // readinessCap lets agents/Houston pin a ceiling lower than the formula
-      // (e.g. 94 after a review round with known-but-unentered issues).
-      readinessComputed =
+      // Phase ceiling is DATA-DRIVEN via paper.readinessCap so the review loop can
+      // advance the ladder with a plain mutation (papers:upsert/setReadinessCap) and
+      // NO redeploy. Ladder (per feedback_99_pct_readiness_cap + R→D→P protocol):
+      //   science R-rounds converge (clean internal+external) → 96  (DEFAULT)
+      //   D-round (design/visual) clean                       → 98
+      //   P-round (packaging/addenda) clean                   → 99
+      //   Houston sign-off                                    → 100 (houstonSignOff above)
+      // The 2026-06-21 external rollback set this to 92; R52/R53 + EXT21–23 re-converged
+      // (0 BLOCKER / 0 genuine MAJOR across 3 passes) so the default ceiling is restored to 96.
+      const ceiling =
         paper.readinessCap !== undefined && paper.readinessCap !== null
-          ? Math.min(formulaValue, paper.readinessCap)
-          : formulaValue;
+          ? paper.readinessCap
+          : 96;
+      readinessComputed = Math.max(0, Math.min(ceiling, ceiling - penalty));
     }
 
     // Last-updated date is max of (current version datestamp, latest closed finding date)
@@ -279,11 +300,7 @@ export const listAllPaperStates = query({
         .query("paper_versions")
         .withIndex("by_paper", (q) => q.eq("paperSlug", paper.slug))
         .collect();
-      versions.sort((a, b) => {
-        const d = b.datestamp.localeCompare(a.datestamp);
-        if (d !== 0) return d;
-        return (b.createdAt ?? 0) - (a.createdAt ?? 0);
-      });
+      sortVersions(versions);
       const currentVersion = versions[0] ?? null;
 
       const findings = await ctx.db
@@ -309,13 +326,17 @@ export const listAllPaperStates = query({
       if (paper.houstonSignOff) {
         readinessComputed = 100;
       } else {
+        // SINGLE SOURCE OF TRUTH: this MUST match getPaperState's formula exactly
+        // (data-driven ceiling = readinessCap ?? 96, restored after the 2026-06-21
+        // rollback). Previously hardcoded 92 here, which drifted from getPaperState's
+        // 96 and showed conflicting readiness on home vs /paper. Keep them identical.
         const penalty =
           2 * openBlockers + 1 * openMajors + 0.2 * openMinors + 1 * openCaveats;
-        const formulaValue = Math.max(0, Math.min(95, 95 - penalty));
-        readinessComputed =
+        const ceiling =
           paper.readinessCap !== undefined && paper.readinessCap !== null
-            ? Math.min(formulaValue, paper.readinessCap)
-            : formulaValue;
+            ? paper.readinessCap
+            : 96;
+        readinessComputed = Math.max(0, Math.min(ceiling, ceiling - penalty));
       }
 
       results.push({

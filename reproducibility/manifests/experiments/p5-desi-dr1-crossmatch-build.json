@@ -1,0 +1,91 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p5-desi-dr1-crossmatch-build",
+  "title": "P4xDESI DR1 crossmatch + matched catalog build",
+  "program": "galaxy-chirality",
+  "paper": "P5",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "DESI DR1 public data release",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "P4 galaxy-chirality catalog",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/ (P4 catalog release, see p4-* manifests)",
+      "checksum": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI DR1 public data portal",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/01_fetch_p4_catalog.py",
+      "entrypoint": "python3 01_fetch_p4_catalog.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/02_fetch_desi_dr1.py",
+      "entrypoint": "python3 02_fetch_desi_dr1.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/03_crossmatch.py",
+      "entrypoint": "python3 03_crossmatch.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, pandas, pyarrow, numpy, requests — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU (implied local/CPU-bound crossmatch — no venue was explicitly logged for the original run)",
+    "est_wall_clock": "~1-3 hours for the DESI DR1 fetch + 2,232,212-row crossmatch, dominated by DESI DR1 download bandwidth",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "No venue was explicitly logged in the inventory for this run; 'implied local' is a reproduction-side inference only, not an original_run fact, so all original_run fields stay null. The matched parquet itself (1.3GB, 2,232,212 rows) is not checked into git — only its provenance/summary JSONs are — consistent with the repo's pattern of keeping large derived artifacts out of git."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "type": "catalog",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi_summary.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the matched catalog contains 2,232,212 rows (1.3GB parquet) via p5_matched_chirality_desi_summary.json's row count, exact integer match.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — P4xDESI DR1 crossmatch + matched catalog build bullet",
+    "project-context/SSOT/paper-5/status.md",
+    "Verified via `find` that the 1.3GB parquet itself is not present in the repo tree; only p5_matched_chirality_desi_summary.json and p5_matched_chirality_desi.parquet.provenance.json are — noted in reproduction.notes rather than fabricating a checksum for the missing parquet."
+  ]
+}

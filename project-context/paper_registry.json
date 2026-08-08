@@ -1,0 +1,151 @@
+{
+  "schema_version": 2,
+  "papers": {
+    "P1A": {
+      "tex_path": "arxiv/paper1a_ech_nogo.tex",
+      "pdf_path": "arxiv/paper1a_ech_nogo.pdf",
+      "site_slug": "paper-1a",
+      "target_journal": "Classical and Quantum Gravity",
+      "article_type": "Note",
+      "review_profile": "CQG-NOTE",
+      "served_aliases": [],
+      "review_paths": [
+        "arxiv"
+      ]
+    },
+    "P1B": {
+      "tex_path": "arxiv/paper1b_namaster_proof.tex",
+      "pdf_path": "arxiv/paper1b_namaster_proof.pdf",
+      "site_slug": "paper-1b",
+      "target_journal": "Journal of Open Research Software",
+      "article_type": "Software metapaper",
+      "review_profile": "JORS-SOFTWARE",
+      "served_aliases": [
+        "paper1b_namaster_proof.pdf"
+      ],
+      "review_paths": [
+        "arxiv",
+        "packages/namaster-proof",
+        "reproducibility/p1_namaster_500mc",
+        ".github/workflows"
+      ]
+    },
+    "P2": {
+      "tex_path": "research/focused_paper_source_integration/02_full_draft.tex",
+      "pdf_path": "research/focused_paper_source_integration/02_full_draft.pdf",
+      "site_slug": "paper-2",
+      "target_journal": "Physical Review D",
+      "article_type": "Research Article",
+      "review_profile": "PRD-RESEARCH",
+      "served_aliases": [
+        "fnl-forecast-paper.pdf",
+        "focused_paper_bounce_fnl_forecast.pdf",
+        "paper2_fnl_forecast.pdf"
+      ],
+      "review_paths": [
+        "research/focused_paper_source_integration"
+      ]
+    },
+    "P3": {
+      "tex_path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+      "pdf_path": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+      "site_slug": "paper-3",
+      "target_journal": "The Astrophysical Journal Supplement Series",
+      "article_type": "Catalog article",
+      "review_profile": "APJS-CATALOG",
+      "publication_role": "Supporting Data Release · DESI Public-ID Recovery",
+      "standalone_submission": false,
+      "integration_target": "Rebuilt DESI anomaly-science flagship",
+      "served_aliases": [],
+      "review_paths": [
+        "pipelines/p3_anomaly_engine"
+      ]
+    },
+    "P4": {
+      "tex_path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+      "pdf_path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "site_slug": "paper-4",
+      "target_journal": "The Astrophysical Journal Supplement Series",
+      "article_type": "Catalog + methods article",
+      "review_profile": "APJS-CATALOG-METHODS",
+      "served_aliases": [
+        "p4-chirality.pdf",
+        "paper4_chirality_catalog.pdf"
+      ],
+      "review_paths": [
+        "pipelines/p2_chirality"
+      ]
+    },
+    "P5": {
+      "tex_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+      "pdf_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+      "site_slug": "paper-5",
+      "target_journal": "The Astronomical Journal",
+      "article_type": "Observational research article",
+      "review_profile": "AJ-OBSERVATIONAL",
+      "publication_role": "Standalone Companion · Chirality–Environment Null Test",
+      "standalone_submission": true,
+      "served_aliases": [
+        "p5-chirality.pdf"
+      ],
+      "review_paths": [
+        "pipelines/p5_desi_chirality"
+      ]
+    }
+  },
+  "companion_manuscripts": {
+    "P1B-MCMC": {
+      "tex_path": "arxiv/paper1b_mcmc_companion.tex",
+      "pdf_path": "arxiv/paper1b_mcmc_companion.pdf",
+      "served_aliases": [
+        "paper1b_mcmc_companion.pdf"
+      ],
+      "owner": "bounce-theory research program",
+      "surfaced": "2026-08-05",
+      "site_surface": "site/src/data/papers.ts researchPrograms[bounce-theory].supportingLinks (program-level supporting link, not a papers[] entry)",
+      "note": "P1B's MCMC companion manuscript. Not one of the six campaign papers, but its PDF is mirrored under served roots. Canonical-owner resolution: surfaced 2026-08-05 as a first-class supporting validation dossier under the bounce-theory research program on /paper and /papers, per project-context/PAPER_LINEAGE_2026-08-05.md §Decision record item 2. Modeled as a program-level supporting link rather than a papers[] entry so it does not pick up version-chip/PDF-mirror/publication-path machinery it doesn't have."
+    },
+    "P1C": {
+      "tex_path": "arxiv/paper1c_nogo_survey/main.tex",
+      "pdf_path": "arxiv/paper1c_nogo_survey/main.pdf",
+      "status": "draft-extraction",
+      "venue_candidate": "Classical and Quantum Gravity or Physical Review D",
+      "source_path": "arxiv/paper1_unified.tex (sec:barriers barrier catalog + tab:barriers + fig:barrier_map, Route-2/Route-3 closures, operator-basis-completeness argument + Appendices dim4_completion/fierz)",
+      "served_aliases": [],
+      "note": "\"A Structural No-Go Survey of Minimal Spin-Torsion Routes to Dark Energy and Bounce Phenomenology.\" Standalone specialist paper resurrecting the 13-mechanism-class no-go catalog retired from the P1 split (2026-07-14), extracted per project-context/PAPER_LINEAGE_2026-08-05.md Sec. 4(a) and its Decision record, under directive Q1 pure-contribution framing. Companion to P1A: cites P1A's torsion-elimination (Route 1) and zero-spin-branch transparency results rather than duplicating them. Compiled clean (15 pages, 0 undefined refs, 0 overfull hboxes >50pt, /latex-audit PASS) but not yet wired into the six-paper campaign roster, SSOT, Convex, or the review-round pipeline."
+    }
+  },
+  "served_pdf_policy": {
+    "schema": "bigbounce.served-pdf-policy/v1",
+    "description": "Reverse-direction directive-G data. Directive G pushes each paper OUT to its known mirrors; this block lets tools/verify_pdf_mirror_integrity.py walk the served tree back IN and prove every served PDF, and every site reference to one, is accounted for.",
+    "served_roots": [
+      "public",
+      "site/public"
+    ],
+    "site_href_prefix": "/papers/",
+    "site_href_root": "site/public",
+    "non_manuscript_path_patterns": [
+      "(?:^|/)figures/"
+    ],
+    "immutable_archive_name_patterns": [
+      "_v[0-9]+[A-Za-z]?\\.[0-9]+\\.[0-9]+(?:[.\\-][0-9A-Za-z][0-9A-Za-z\\-]*)*\\.pdf$",
+      "_v[0-9]{2,}\\.pdf$"
+    ],
+    "site_data_sources": [
+      {
+        "path": "site/src/data/papers.ts",
+        "kind": "current-paper-artifacts"
+      },
+      {
+        "path": "site/src/data/live-status.ts",
+        "kind": "current-paper-artifacts"
+      },
+      {
+        "path": "site/src/data/reviewTimeline.ts",
+        "kind": "historical-archive-links"
+      }
+    ],
+    "retired_served_pdfs": [],
+    "retired_served_pdfs_note": "Empty by design: every path this list carried was remediated on 2026-07-24. The five documents whose bytes existed at no version-pinned path were retained first by `python3 tools/pdf_version_retention.py --retire-archive` (manifest project-context/pdf-archive/manifests/2026/07/20260725T024720Z-retire-orphans-20260724-retire.json); the remaining paths were byte-identical duplicates of a version-pinned archive that is still on disk. Re-add a row here only while a newly-discovered served orphan is being dispositioned; `retain` is the only disposition the gate passes."
+  }
+}

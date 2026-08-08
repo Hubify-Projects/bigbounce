@@ -1,0 +1,76 @@
+{
+  "script": "scripts/edge_on_contamination_metric.py",
+  "date_utc": "2026-07-13T18:42:12Z",
+  "git_head": "e70e418e519bd3356f778f3964ac1aa5c7fde749",
+  "purpose": "EMPIRICAL edge-on contamination metric replacing the qualitative 5-8% sensitivity-penalty bound in Appendix E. Measures the axis-ratio (b/a) distribution of the classified-spiral catalog directly.",
+  "input": {
+    "file": "outputs/spiral_morphology_dr8.parquet",
+    "n_classified_spirals": 3201160,
+    "n_with_finite_ba": 3201160,
+    "ba_convention": "b/a=(1-|e|)/(1+|e|), |e|=hypot(e1,e2) clip[0,0.999]; DEV shape if TYPE in {DEV,COMP,SER} or FRACDEV>=0.5 else EXP"
+  },
+  "ba_distribution_percentiles": {
+    "p1": 0.10989958257555768,
+    "p5": 0.1889709347100112,
+    "p10": 0.2451593492149304,
+    "p25": 0.3795464737068558,
+    "p50": 0.5772745557083199,
+    "p75": 0.7650650150608609,
+    "p90": 0.9518303059052917,
+    "p95": 1.0,
+    "p99": 1.0
+  },
+  "edge_on_fraction_sweep": {
+    "b_over_a_lt_0.20": {
+      "n_edge": 187704,
+      "f_edge": 0.05863624436141899,
+      "f_edge_pct": 5.863624436141899,
+      "neff_dilution_pct": 5.863624436141899,
+      "sensitivity_floor_inflation_fisher_pct": 3.067386442062814,
+      "physical_amplitude_penalty_linear_pct": 6.228861479975145
+    },
+    "b_over_a_lt_0.25": {
+      "n_edge": 335629,
+      "f_edge": 0.10484605580477077,
+      "f_edge_pct": 10.484605580477076,
+      "neff_dilution_pct": 10.484605580477076,
+      "sensitivity_floor_inflation_fisher_pct": 5.694194958700516,
+      "physical_amplitude_penalty_linear_pct": 11.712628479677933
+    },
+    "b_over_a_lt_0.30": {
+      "n_edge": 505889,
+      "f_edge": 0.15803302552824602,
+      "f_edge_pct": 15.803302552824603,
+      "neff_dilution_pct": 15.803302552824603,
+      "sensitivity_floor_inflation_fisher_pct": 8.981422301428088,
+      "physical_amplitude_penalty_linear_pct": 18.76950406842206
+    },
+    "b_over_a_lt_0.35": {
+      "n_edge": 688414,
+      "f_edge": 0.215051418860663,
+      "f_edge_pct": 21.5051418860663,
+      "neff_dilution_pct": 21.5051418860663,
+      "sensitivity_floor_inflation_fisher_pct": 12.870226254885896,
+      "physical_amplitude_penalty_linear_pct": 27.396879748291326
+    },
+    "b_over_a_lt_0.40": {
+      "n_edge": 879225,
+      "f_edge": 0.27465824888477924,
+      "f_edge_pct": 27.465824888477925,
+      "neff_dilution_pct": 27.465824888477925,
+      "sensitivity_floor_inflation_fisher_pct": 17.416373248581074,
+      "physical_amplitude_penalty_linear_pct": 37.866047068501054
+    }
+  },
+  "primary": {
+    "definition": "edge-on := b/a < 0.30 (paper Appendix E convention)",
+    "f_edge": 0.15803302552824602,
+    "f_edge_pct": 15.803302552824603,
+    "n_edge_on_spirals": 505889,
+    "neff_dilution_pct": 15.803302552824603,
+    "sensitivity_floor_inflation_pct": 8.981422301428088,
+    "note": "f_edge is the fraction of the CLASSIFIED-SPIRAL catalog (galaxies assigned CW/CCW) that are edge-on by b/a<0.3. Because equivariant TTA forces <p_CW>=<p_CCW> for flip-symmetric edge-on morphologies, this contamination is a pure sensitivity dilution (N_eff loss), not a directional bias on the l=1 dipole (see Appendix E equivariance argument). The empirical floor inflation supersedes the prior qualitative 5-8% estimate."
+  },
+  "fabrication_disclaimer": "Every number computed from spiral_morphology_dr8.parquet on disk. No values fabricated.",
+  "penalty_note": "Correction (M24, 2026-07-13): the primary dipole uses the NAIVE per-pixel f_CW estimator with edge-on systems RETAINED in N_spiral. Flip-symmetric edge-on contaminants carry zero mean asymmetry and dilute the recovered amplitude LINEARLY (E[A_p]=(1-delta)A_phys), so the physical-amplitude sensitivity-floor penalty is (1-delta)^-1 - 1, NOT the Fisher-optimal (1-delta)^-1/2 - 1. The sqrt value is the Cramer-Rao bound for an optimal estimator that excludes/down-weights the zero-information edge-on population; the naive estimator incurs the full linear dilution. Paper adopts the conservative linear value. Neither changes the null verdict (injection-recovery floors are measured on the same contaminated observed field); largely subsumed by the primary g=2a-1 GZ1-accuracy dilution."
+}

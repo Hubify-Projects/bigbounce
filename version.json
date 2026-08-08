@@ -6,28 +6,32 @@
   "author": "Houston Golden",
   "papers": {
     "p1a": {
-      "version": "v1A.0.61",
-      "date": "2026-06-11 PT"
+      "version": "v1A.0.123",
+      "date": "2026-07-14 13:59 PT"
     },
     "p1b": {
-      "version": "v1B.0.58",
-      "date": "2026-06-11 PT"
+      "version": "v2B.0.8",
+      "date": "2026-07-16 13:31 PT"
     },
     "p2": {
-      "version": "v1.7.53",
-      "date": "2026-06-11 PT"
+      "version": "v1.7.122",
+      "date": "2026-07-14 12:23 PT"
     },
     "p3": {
-      "version": "v3.1.90",
-      "date": "2026-06-10 PT"
+      "version": "v3.2.0-r17",
+      "date": "2026-08-03 23:46 PT"
+    },
+    "p3_apjs": {
+      "version": "v3.2.0-r17",
+      "date": "2026-08-03 23:46 PT"
     },
     "p4": {
-      "version": "v1.0.174",
-      "date": "2026-06-10 PT"
+      "version": "v1.0.274",
+      "date": "2026-08-03 23:21 PT"
     },
     "p5": {
-      "version": "v0.1.63-2026-06-10",
-      "date": "2026-06-10 PT"
+      "version": "v0.1.139-2026-07-16",
+      "date": "2026-07-16 01:43 PT"
     }
   }
 }

@@ -1,0 +1,419 @@
+{
+  "captured_at_local": "2026-07-14T17:32:20.210531-07:00",
+  "captured_at_utc": "2026-07-15T00:32:20.210531+00:00",
+  "classification_policy": {
+    "excluded": [
+      "figure PDFs",
+      "render artifacts",
+      "existing pdf-archive self-references",
+      "paths without a six-paper manuscript hint",
+      "ambiguous paper-hint matches"
+    ],
+    "scope": "reachable Git PDF object/path rows; only high-confidence six-paper manuscript paths are materialized",
+    "unknown_version_policy": "When no version token is present in the historical path, paper_version is recorded as unknown rather than inferred."
+  },
+  "coverage": {
+    "by_paper": {
+      "P1A": 0,
+      "P1B": 0,
+      "P2": 0,
+      "P3": 0,
+      "P4": 16,
+      "P5": 0
+    },
+    "classified_distinct_git_blobs": 16,
+    "classified_distinct_sha256": 16,
+    "classified_rows": 16,
+    "errors": 0,
+    "git_pdf_object_path_rows": 25,
+    "objects_created": 0,
+    "references_created": 0,
+    "unclassified_reasons": {
+      "excluded.figure-or-render-artifact": 8,
+      "unclassified.no-paper-hint": 1
+    },
+    "unclassified_rows": 9
+  },
+  "git_head": "a745b6ac4d4f951462fc4e7e2135843d831be613",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T003220Z-history-backfill-fast-0250-0274-history.json",
+  "materialized": true,
+  "mode": "history-backfill",
+  "page_counts_recorded": false,
+  "row_selection": {
+    "limit": 25,
+    "offset": 250,
+    "selected_rows": 25,
+    "total_git_pdf_object_path_rows": 1357
+  },
+  "rows": [
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "01feefb1da25749f76aa6e801a5635b8b533a13d",
+      "git_blob_size_bytes": 379307,
+      "paper_id": null,
+      "path": "arxiv_v2/main.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "5dc13c11f69dba4f98e3f035018ec869efb4fc14",
+      "git_blob_size_bytes": 35629,
+      "paper_id": null,
+      "path": "paper/figures/cosmology_dataset_comparison_framework.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "ed1958d5720a9dbf2beda950d15f3846b426a34c",
+      "git_blob_size_bytes": 50866,
+      "paper_id": null,
+      "path": "paper/figures/dneff_posterior_full_tension.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "e722609bf5e5c93abb6e97d246617c5a49706666",
+      "git_blob_size_bytes": 69615,
+      "paper_id": null,
+      "path": "paper/figures/fig_dneff_viability.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "f57ac32ac571960f3fdf32840ac5be5876006fd1",
+      "git_blob_size_bytes": 49609,
+      "paper_id": null,
+      "path": "paper/figures/fig_dneff_viability_draft.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "4f07c59314fbaa25e0a5022c089d690acd4dc19f",
+      "git_blob_size_bytes": 59253,
+      "paper_id": null,
+      "path": "paper/figures/fig_dneff_viability_two_frozen.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "e1fb863fa781767932bc875a40c9ea91d82d45a1",
+      "git_blob_size_bytes": 114536,
+      "paper_id": null,
+      "path": "paper/figures/full_tension_posteriors.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "43a7b915d7ef60b2670acb91b59634722b824919",
+      "git_blob_size_bytes": 185390,
+      "paper_id": null,
+      "path": "paper/figures/full_tension_triangle.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "483d7a48a18355a82a1a89f163827fc1af0fd26d",
+      "git_blob_size_bytes": 48179,
+      "paper_id": null,
+      "path": "paper/figures/pk_feature_window_analysis.pdf"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/d1/d18c3505aa25f44ec5b3a9bb6ca5603951f8551754b9068d9a079e895545bc22.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-15T195751-0700-PDT__d18c3505aa25.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "837881471b35700c64fba66fdb6ea4d9cd5dafe1",
+        "timestamp": "2026-05-15T19:57:51-07:00"
+      },
+      "git_blob": "016e8e3a530d5e0cba4ad0c8b108eb4b2ecf5974",
+      "git_blob_size_bytes": 26170780,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "d18c3505aa25f44ec5b3a9bb6ca5603951f8551754b9068d9a079e895545bc22"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/87/8724416e1b3a1ae848dc83c10bb1ad414505f36ba6f26d6882c20714303d0b28.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-07-10T155436-0700-PDT__8724416e1b3a.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "22c4d9bbe2f07786c7c9a04620ac30b36514af42",
+        "timestamp": "2026-07-10T15:54:36-07:00"
+      },
+      "git_blob": "0434c9ff3eb8c6159355c877dd6af67468172afd",
+      "git_blob_size_bytes": 32032812,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "8724416e1b3a1ae848dc83c10bb1ad414505f36ba6f26d6882c20714303d0b28"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/8e/8ec75f6e545cd956821303c4e9fa5e26740094551f7d39a4f298d0a97cf160d3.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-01T191343-0700-PDT__8ec75f6e545c.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "f75558e5f683571be63390319febdf92bc9b42df",
+        "timestamp": "2026-05-01T19:13:43-07:00"
+      },
+      "git_blob": "0c79534659565bb3fefa7d7367d5dce85d0ca01c",
+      "git_blob_size_bytes": 25840512,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "8ec75f6e545cd956821303c4e9fa5e26740094551f7d39a4f298d0a97cf160d3"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/9f/9f6c4d30b55e174df2d594335aae06d2596fc066f6b33dd8cfa339e3dcc04d49.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-14T201255-0700-PDT__9f6c4d30b55e.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "dd4c5059616f7ffe6f3bf688d375038f16ddad54",
+        "timestamp": "2026-05-14T20:12:55-07:00"
+      },
+      "git_blob": "105529ce60ded6e212159931c1beb5a9e03d2b0d",
+      "git_blob_size_bytes": 25899597,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "9f6c4d30b55e174df2d594335aae06d2596fc066f6b33dd8cfa339e3dcc04d49"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/68/6890ba40b6d55d1790d11236eb1de3614c810a3f12dd67c828ad345334baa50c.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-01T012005-0700-PDT__6890ba40b6d5.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "95b58a80c0439cd69ea2a8d39f3809270f087ed5",
+        "timestamp": "2026-05-01T01:20:05-07:00"
+      },
+      "git_blob": "1397fc57c6b31ce0166884e540969b8deb2adc57",
+      "git_blob_size_bytes": 25785212,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "6890ba40b6d55d1790d11236eb1de3614c810a3f12dd67c828ad345334baa50c"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/61/6113ed0f0c634353c72a873ef119589993c374ad2b788a477c539a6b487b8009.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-04-30T195346-0700-PDT__6113ed0f0c63.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "2b027ad20cc7fe16944b955d417577f178af3df4",
+        "timestamp": "2026-04-30T19:53:46-07:00"
+      },
+      "git_blob": "148d45ad296e3a5a0e5e8d6a74e8180444af3b77",
+      "git_blob_size_bytes": 25768670,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "6113ed0f0c634353c72a873ef119589993c374ad2b788a477c539a6b487b8009"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/82/82204b207c4faea86b7b1e2e3cea879d42b9eeedf549ded803835cb97dc1e0b8.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-18T234315-0700-PDT__82204b207c4f.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "f176107465bca1b2d5bdaf1d64daedf89bdc1bca",
+        "timestamp": "2026-05-18T23:43:15-07:00"
+      },
+      "git_blob": "17c74f9f503857e06be6b2ebca1986f14b3701d1",
+      "git_blob_size_bytes": 26217807,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "82204b207c4faea86b7b1e2e3cea879d42b9eeedf549ded803835cb97dc1e0b8"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/c5/c53a03dfe76045dbffcddb007beaef6ce2ca13fd4db52a8e92a829d69f473d29.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-04-28T001323-0700-PDT__c53a03dfe760.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "d06090b7fe66c35d39646207eeed0bd12bd48c37",
+        "timestamp": "2026-04-28T00:13:23-07:00"
+      },
+      "git_blob": "17d13c848a84a39a8c906db9a03c917ae45ca284",
+      "git_blob_size_bytes": 421049,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "c53a03dfe76045dbffcddb007beaef6ce2ca13fd4db52a8e92a829d69f473d29"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/67/678ddb96fe6205f42bd0aadec3b1923b8ed4d366ee1429884d7d278fc170ccfd.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-15T003727-0700-PDT__678ddb96fe62.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "486bffe7b605faffc7555b5015266514610a9143",
+        "timestamp": "2026-05-15T00:37:27-07:00"
+      },
+      "git_blob": "196474054f9c0f4c7c26f286cc590e4a932a9df5",
+      "git_blob_size_bytes": 25995224,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "678ddb96fe6205f42bd0aadec3b1923b8ed4d366ee1429884d7d278fc170ccfd"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/dd/dda4c8f89a5c06953da27c05358e3a8e0bfbdd46204d498bebb0b0dda39d7bb9.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-15T185602-0700-PDT__dda4c8f89a5c.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "3b10af9ac50b2a629819033c9395ca37b56e0ebb",
+        "timestamp": "2026-05-15T18:56:02-07:00"
+      },
+      "git_blob": "196dbd961982b78e6cd2a14a3c035e0cad3a641b",
+      "git_blob_size_bytes": 26159949,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "dda4c8f89a5c06953da27c05358e3a8e0bfbdd46204d498bebb0b0dda39d7bb9"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/87/879b7be76ee51849fa826fa69ce4c5e78915fbd31a22f243e426af347192298e.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-06-05T001154-0700-PDT__879b7be76ee5.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "4d6822feaca5f968c15027cab17c36ffce188b1d",
+        "timestamp": "2026-06-05T00:11:54-07:00"
+      },
+      "git_blob": "1b296c867144410a36f81a914d8acc51a1cf5b00",
+      "git_blob_size_bytes": 423109,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "879b7be76ee51849fa826fa69ce4c5e78915fbd31a22f243e426af347192298e"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/1e/1e96e4b1374ca5619f0df5c7217d6fec6a705477b57947d89b583363e357e4c2.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-13T113244-0700-PDT__1e96e4b1374c.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "0435a2c48a7344a7728a3b2a5ba17586ff8570b7",
+        "timestamp": "2026-05-13T11:32:44-07:00"
+      },
+      "git_blob": "1dd70841abf29a89d1069604de5ccd5f6114a7b8",
+      "git_blob_size_bytes": 25702490,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "1e96e4b1374ca5619f0df5c7217d6fec6a705477b57947d89b583363e357e4c2"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/de/de89a9fc55146711e8165dd48e694f565966104e865d7adf636b85d88791b0c8.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-26T130347-0700-PDT__de89a9fc5514.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "d14c6d7e9279411c5720ba698ca798e4532faa5a",
+        "timestamp": "2026-05-26T13:03:47-07:00"
+      },
+      "git_blob": "22adc00d6fcaf5e06a399eb024eaa873fbfa4e3e",
+      "git_blob_size_bytes": 26248125,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "de89a9fc55146711e8165dd48e694f565966104e865d7adf636b85d88791b0c8"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/e6/e677e8d324a43a3bbb01505175a3c165d6b29673e2f587972d88ab84b3693975.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-14T154845-0700-PDT__e677e8d324a4.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "bacad15e5ffec03149aeb74f67526cce98f8d446",
+        "timestamp": "2026-05-14T15:48:45-07:00"
+      },
+      "git_blob": "230e7ad640e03c492bb1a2f97c6d9136fcea7cde",
+      "git_blob_size_bytes": 25903818,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "e677e8d324a43a3bbb01505175a3c165d6b29673e2f587972d88ab84b3693975"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/50/50c8172cf93b3c94ea7e497b0e54a666406b239d4d974a6f5e806750531ddcbe.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-01T034612-0700-PDT__50c8172cf93b.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "6c91fc01bed9de1e5844fb890c329355a458369b",
+        "timestamp": "2026-05-01T03:46:12-07:00"
+      },
+      "git_blob": "232a94a89fcf9ca88504fe89f7a4f59c272aec73",
+      "git_blob_size_bytes": 25788257,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "50c8172cf93b3c94ea7e497b0e54a666406b239d4d974a6f5e806750531ddcbe"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/11/111b9bc3e5f4dd33194c5667738c56a194f0edcca363b74d6c7968fa91df4e78.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__unknown__2026-05-15T155524-0700-PDT__111b9bc3e5f4.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "23831991de9f7c5836edd0e82b5444551f4d30f4",
+        "timestamp": "2026-05-15T15:55:24-07:00"
+      },
+      "git_blob": "232bb29b920f62274842a158ae7cd98837caf56d",
+      "git_blob_size_bytes": 26140048,
+      "md5": null,
+      "object_created": false,
+      "page_count": null,
+      "paper_id": "P4",
+      "paper_version": "unknown",
+      "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "reference_created": false,
+      "sha256": "111b9bc3e5f4dd33194c5667738c56a194f0edcca363b74d6c7968fa91df4e78"
+    }
+  ],
+  "run_id": "history-backfill-fast-0250-0274",
+  "schema": "bigbounce-pdf-retention-history/v1"
+}

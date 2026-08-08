@@ -1,0 +1,107 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p5-cosmic-web-desivast-void",
+  "title": "Cosmic-web / DESIVAST void analysis (16, 27, 35-39 series)",
+  "program": "galaxy-chirality",
+  "paper": "P5",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "DESI DR1 DESIVAST Value-Added Catalog",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "P5 matched chirality x DESI DR1 catalog",
+      "type": "internal-artifact",
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "checksum": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI DR1 public data portal",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/16_cosmic_web_zshell_corrected.py",
+      "entrypoint": "python3 16_cosmic_web_zshell_corrected.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/08_analysis_cosmic_web.py",
+      "entrypoint": "python3 08_analysis_cosmic_web.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/27_rsd_void_recon_bound.py",
+      "entrypoint": "python3 27_rsd_void_recon_bound.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/35_desivast_cluster_bootstrap.py",
+      "entrypoint": "python3 35_desivast_cluster_bootstrap.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p5_desi_chirality/scripts/36_desivast_native_selection_control.py",
+      "entrypoint": "python3 36_desivast_native_selection_control.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, pandas, numpy, scipy, healpy — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-07-12",
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU (no RunPod hit found for the p5 script family per the inventory's own grep)",
+    "est_wall_clock": "~1-2 hours across the cluster-bootstrap and RSD/void-reconstruction steps over DESIVAST VAC + the ~2.23M-row matched catalog",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "reproducibility: runnable-now, gap = no venue/cost evidence — the code runs, just no compute-receipt exists for the original run. Lineage note: the earlier '187-DESI-attribute cosmic-web catalog' blocker (SSOT: 'Houston-mediated, confirmed not in repo') was later resolved via this DESIVAST VAC approach, superseding the earlier env_finder/ 'run our own cosmic-web finder' fallback plan."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/27_rsd_void_recon_bound.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/16_cosmic_web_zshell_corrected.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/35_desivast_cluster_bootstrap.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p5_desi_chirality/outputs/36_desivast_native_selection_control.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the DP5-12 closure result in 27_rsd_void_recon_bound.json (RSD void-reconstruction bound, 2026-07-12) matches the committed JSON within the numeric tolerance stated in the result file.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — cosmic-web / DESIVAST void analysis bullet (16, 27, 35-39 series) + its lineage Note",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
+    "project-context/SSOT/paper-5/status.md",
+    "Added `08_analysis_cosmic_web.py` to code[] beyond the inventory's explicit list: verified via `ls pipelines/p5_desi_chirality/scripts/` that this script (within the same 05-09 numbered range referenced by the redshift/density/healpix/systematics bullet) is the cosmic-web analysis, not a HEALPix/systematics script, and its output directory `results/analysis_cosmic_web/` matches this experiment's scope rather than the 16a-16d split."
+  ]
+}

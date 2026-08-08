@@ -1,0 +1,11 @@
+Wick multiplicity identity T522_six - 2*T522_distinct =
+0
+Cai field-redefinition equality with six-Wick T522 =
+0
+Cai field-redefinition equality with mixed distinct T522/six T432 =
+-epsilon**2*(k1**3 + k2**3 + k3**3)/16
+In-in sign algebra:
+<Q H_int> - <H_int Q> = z - z* = 2 i Im(z)
+-i <[Q,H_int]> = +2 Im(z)
+Therefore a displayed -2 Im(I_v) requires I_v=<Q L_int>=-<Q H_int>,
+or another explicit extra-minus definition; v1.7.118 defines neither.

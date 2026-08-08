@@ -2,7 +2,7 @@
 
 ## RunPod Connection
 ```bash
-ssh -i ~/.ssh/id_ed25519 -p 38115 root@195.26.233.79
+ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>
 ```
 
 ## Check if chains are still running
@@ -34,28 +34,28 @@ ls -lt /workspace/backups/chains_*.tar.gz | head -1
 ```bash
 # Full chain data (will be large after 48+ hrs):
 scp -r -i ~/.ssh/id_ed25519 -P 38115 \
-  root@195.26.233.79:/workspace/bigbounce/reproducibility/chains/ \
+  root@<pod-ip>:/workspace/bigbounce/reproducibility/chains/ \
   ~/Desktop/CODE_2026/bigbounce/reproducibility/cosmology/chains/
 
 # Configs, scripts, analysis:
 scp -r -i ~/.ssh/id_ed25519 -P 38115 \
-  root@195.26.233.79:/workspace/bigbounce/reproducibility/configs/ \
+  root@<pod-ip>:/workspace/bigbounce/reproducibility/configs/ \
   ~/Desktop/CODE_2026/bigbounce/reproducibility/cosmology/configs/
 
 # Backups:
 scp -r -i ~/.ssh/id_ed25519 -P 38115 \
-  root@195.26.233.79:/workspace/backups/ \
+  root@<pod-ip>:/workspace/backups/ \
   ~/Desktop/CODE_2026/bigbounce/reproducibility/cosmology/runpod_backups/
 
 # Logs:
 scp -r -i ~/.ssh/id_ed25519 -P 38115 \
-  root@195.26.233.79:/workspace/outputs/ \
+  root@<pod-ip>:/workspace/outputs/ \
   ~/Desktop/CODE_2026/bigbounce/reproducibility/cosmology/logs/
 ```
 
 ## Generate triangle plots (after chains converge)
 ```bash
-ssh -i ~/.ssh/id_ed25519 -p 38115 root@195.26.233.79
+ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>
 cd /workspace/bigbounce/reproducibility
 python3 generate_plots.py   # Claude will create this script
 ```

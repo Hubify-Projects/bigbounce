@@ -1,0 +1,10 @@
+VERDICT: MINOR REVISIONS
+
+ISSUES:
+
+[MINOR] Abstract and §V B (Primary vs. secondary analysis paths): The DESIVAST-anchored path is explicitly designated post-hoc/exploratory ("not pre-registered") with a full analysis-tree disclosure (Table IV) and DR2 pre-registration commitment; however, this status should be stated even more prominently in the abstract to eliminate any residual perception of selective emphasis on the most favorable void definition.
+[MINOR] §VIII (DESIVAST-anchored void cross-validation) and Table XI: The ≈0.9 pp "honest effective 2σ systematic envelope" is obtained by quadrature summation of counting, geometry (0.60 pp co-dominant), footprint, confidence, and match-radius terms; the text should explicitly justify the independence assumption or demonstrate that correlations (e.g., between hole-union geometry and footprint mask) would not inflate the envelope.
+[MINOR] §II, §VIII F, and Table XVI: The internal P5 matched-sample monopole (f^P5_CW = 0.49719) is reconciled with the Paper IV value (Δf^P4_CW = −0.0026) to within ~8 %, but a short dedicated paragraph or supplementary table quantifying how this small offset propagates into the per-class σ_vs monopole residuals would improve traceability.
+[MINOR] §VI A and §IX C (T-Web vs. DESIVAST comparison): The low-z T-Web void-class purity issue (only 6 galaxies, survey-shell contamination) is correctly flagged as rendering the T-Web void bin diagnostic rather than load-bearing; a one-sentence quantitative statement that the ~2.1σ filament bright/dark sign-flip remains <0.01 pp leakage into the primary DESIVAST Δf_CW (via the observed 0.12 pp dark-fraction difference) would further insulate the headline result.
+
+The central claim—that spiral chirality shows no significant redshift-space environmental dependence on ≳25 Mpc/h scales, with a robust null Δf_CW across five DESIVAST definitions and a de-attenuated physical bound of ≈2.26 pp—is supported by the data, permutation tests, systematic budget, and transparent multiplicity accounting.

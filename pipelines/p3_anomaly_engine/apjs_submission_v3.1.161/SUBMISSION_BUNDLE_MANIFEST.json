@@ -1,0 +1,84 @@
+{
+  "bundle": "P3 ApJS v3.1.161 machine-readable submission tables",
+  "verified_utc": "2026-07-14T08:57:30Z",
+  "paper_version": "v3.1.161-apjs",
+  "source_repository": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
+  "source_revision": null,
+  "source_tag": "p3-v3.1.161",
+  "source_tag_is_immutable": true,
+  "new_huggingface_tag_created": true,
+  "local_bundle_state": "VERIFIED_COMPLETE_FOR_SCOPED_APJS_TABLE_PACKAGE",
+  "public_archive_state": "CORRECTED_V3.1.161_MANIFEST_AND_SCOPED_TABLES_AVAILABLE_AT_IMMUTABLE_TAG",
+  "scope": "Validated DESI+SDSS+geometry-gated-NEOWISE point-source product, released archival Planck cross-transfer diagnostic, merged continuity catalog, and cross-survey coincidence table. This is not a complete six-survey native-data package.",
+  "excluded_or_unavailable": {
+    "lamost_dr10": "No released per-object table; aggregate/dedup contribution is exploratory and fails the detector-sensitivity gate.",
+    "planck_native": "Native checkpoint, 200000-patch tensor, full score bank, and native top-200 table are unavailable; the bundled Planck table is the archival cross-transfer diagnostic.",
+    "erosita_dr1": "Separate membership-only addendum, outside the scoped ApJS machine-readable table package.",
+    "gaia_dr3": "Synthetic historical placeholder, quarantined and excluded from all reported counts.",
+    "act_dr6": "Cross-transfer historical artifact, quarantined and excluded from all reported counts."
+  },
+  "files": [
+    {
+      "path": "desi_dr1_anomalies.parquet",
+      "bytes": 10514503,
+      "rows": 195829,
+      "columns": ["tid", "ra", "dec", "score", "worst", "rB", "rR", "rZ"],
+      "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+      "role": "Validated DESI per-object anomaly table."
+    },
+    {
+      "path": "sdss_dr18_pathc_native.parquet",
+      "bytes": 3095874,
+      "rows": 77905,
+      "columns": ["plate", "mjd", "fiberid", "ra", "dec", "z", "class", "anomaly_score"],
+      "sha256": "5139c663c12f40217ea646fa8140c91f40194b42ca891912db73301ab78a31e6",
+      "role": "Validated fixed-size SDSS continuity slice; not a uniform physical threshold."
+    },
+    {
+      "path": "neowise_anomalies.parquet",
+      "bytes": 91283,
+      "rows": 436,
+      "columns": ["source_id", "ra", "dec", "n_epochs", "time_span", "w1_mean", "w1_std", "w1_amp", "w1_chi2", "w1_stetson_j", "w1_skew", "w1_kurt", "w2_mean", "w2_std", "w2_amp", "w2_chi2", "w2_stetson_j", "w1w2_color", "w1w2_color_var", "interband_corr", "anomaly_score"],
+      "sha256": "2740d936a2289ab32bc925f4507a449aa14445976e916459303874386aac42da",
+      "role": "Raw top-1-percent NEOWISE table; the documented ecliptic-pole mask retains 419 rows."
+    },
+    {
+      "path": "planck_cmb_anomalies.parquet",
+      "bytes": 7926,
+      "rows": 200,
+      "columns": ["patch_idx", "ra", "dec", "anomaly_score"],
+      "sha256": "9dd3576f8de7251b9ee2bed13e61acc66d3faa530c317ae61dfd2e6b05a92740",
+      "role": "Archival 20000-patch cross-transfer diagnostic, not the unavailable native top-200."
+    },
+    {
+      "path": "pathc_unique_objects.parquet",
+      "bytes": 12087824,
+      "rows": 378480,
+      "columns": ["cluster_id", "n_detections", "n_surveys", "survey_list", "ra_mean", "dec_mean", "best_score", "member_ids", "best_survey"],
+      "sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
+      "role": "Merged continuity catalog; excluding ACT, Gaia, and eROSITA yields 377482 rows, comprising 377282 point sources plus 200 archival Planck patches."
+    },
+    {
+      "path": "pathc_multi_survey_matches.parquet",
+      "bytes": 37722,
+      "rows": 637,
+      "columns": ["cluster_id", "n_detections", "n_surveys", "survey_list", "ra_mean", "dec_mean", "best_score", "member_ids", "best_survey"],
+      "sha256": "3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784",
+      "role": "Canonical ACT-excluded cross-survey coincidence-cluster table."
+    }
+  ],
+  "verification": {
+    "all_hashes_match_frozen_release_manifest": true,
+    "all_row_counts_match_parquet_metadata": true,
+    "all_schemas_match_parquet_metadata": true,
+    "validated_headline_reproducer": "scripts/reproduce_headline_dedup.py",
+    "validated_headline_inputs": 274353,
+    "validated_headline_combined_unique": 268519,
+    "validated_headline_point_source_unique": 268319,
+    "neowise_raw_rows": 436,
+    "neowise_rows_after_geometry_mask": 419,
+    "merged_rows_after_act_exclusion": 378280,
+    "merged_rows_after_act_gaia_erosita_exclusion": 377482
+  },
+  "submission_note": "The Parquet payloads are intentionally gitignored; this tracked manifest makes the local bundle auditable and reproducible from the immutable source revision. Do not describe this package as containing native LAMOST or native Planck row-level products."
+}

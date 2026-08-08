@@ -1,0 +1,35 @@
+{
+  "code_sha256": "b801bc1464939584ab03304d52ddc959535781f988976ad7b22273ae284d4460",
+  "config_names": [
+    "apod_fwhm_3p0"
+  ],
+  "configs": [
+    {
+      "apod_fwhm": 3.0,
+      "name": "apod_fwhm_3p0"
+    }
+  ],
+  "execution": [
+    {
+      "mode": "serial",
+      "realization_workers": 1,
+      "result_order": "ordered indices 0..N-1; seeds 42--541"
+    }
+  ],
+  "n_real": 500,
+  "result_bytes": 2709,
+  "result_file": "c10_apod_fwhm_3p0.json",
+  "result_sha256": "f34146211244c81dc938ecb0aeb95ed7cabda1d21600491cfe28361f296b8514",
+  "runtime_s": 5102.1,
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "suite": "c10",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_equivalence_max_abs": 8.673617379884035e-19
+}

@@ -1,0 +1,106 @@
+{
+  "schema": "bigbounce.claim-dependency-graph/v1",
+  "scope": "Initial fail-closed graph for headline claims shared by Papers 4 and 5. Coverage is explicit and intentionally incomplete.",
+  "claims": [
+    {
+      "id": "P4-CATALOG-ROW-COUNT",
+      "description": "The released Paper 4 science-facing Catalog C contains 8,474,531 rows, and Paper 5 identifies that same upstream catalog.",
+      "anchors": [
+        {
+          "surface": "P4-manuscript",
+          "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+          "kind": "literal",
+          "expected": "8,474,531",
+          "min_occurrences": 4
+        },
+        {
+          "surface": "P5-manuscript",
+          "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+          "kind": "literal",
+          "expected": "8{,}474{,}531",
+          "min_occurrences": 1
+        }
+      ]
+    },
+    {
+      "id": "P4-CATALOG-C-MONOPOLE",
+      "description": "Paper 5's imported Paper 4 Catalog C monopole agrees with the value stated by Paper 4.",
+      "anchors": [
+        {
+          "surface": "P4-manuscript",
+          "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+          "kind": "literal",
+          "expected": "0.4974",
+          "min_occurrences": 1
+        },
+        {
+          "surface": "P5-manuscript",
+          "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+          "kind": "literal",
+          "expected": "0.4974",
+          "min_occurrences": 4
+        }
+      ]
+    },
+    {
+      "id": "P4-STRICT-PRIMARY-N",
+      "description": "Paper 4's strict release-safe primary sample size is bound to its retained computational receipt.",
+      "anchors": [
+        {
+          "surface": "P4-manuscript",
+          "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+          "kind": "literal",
+          "expected": "890,069",
+          "min_occurrences": 4
+        },
+        {
+          "surface": "P4-science-receipt",
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
+          "kind": "literal",
+          "expected": "890069",
+          "min_occurrences": 1
+        }
+      ]
+    },
+    {
+      "id": "P4-FSC-PIXEL-SUPPORT",
+      "description": "Paper 4's harmonic statements use the same 24,087-pixel support as the retained harmonic receipt.",
+      "anchors": [
+        {
+          "surface": "P4-manuscript",
+          "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+          "kind": "literal",
+          "expected": "24,087",
+          "min_occurrences": 10
+        },
+        {
+          "surface": "P4-science-receipt",
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+          "kind": "literal",
+          "expected": "24087",
+          "min_occurrences": 1
+        }
+      ]
+    },
+    {
+      "id": "P5-FOCAL-ROBUSTNESS-N",
+      "description": "Paper 5's released-GALZONE/VoidFinder focal sample size is bound to the retained robustness receipt.",
+      "anchors": [
+        {
+          "surface": "P5-manuscript",
+          "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+          "kind": "literal",
+          "expected": "145,766",
+          "min_occurrences": 1
+        },
+        {
+          "surface": "P5-science-receipt",
+          "path": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json",
+          "kind": "literal",
+          "expected": "145766",
+          "min_occurrences": 1
+        }
+      ]
+    }
+  ]
+}

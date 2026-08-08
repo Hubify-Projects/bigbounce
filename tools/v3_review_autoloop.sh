@@ -11,6 +11,15 @@
 # Compatible with macOS bash 3.2 (no associative arrays).
 
 set -eu
+
+# Retired 2026-07-15: hourly portfolio-wide rereview is the incremental loop we
+# are replacing.  It spent provider calls on unchanged artifacts, included a
+# non-canonical seventh manuscript, and used stale mirror paths.  Reviews now
+# launch only per changed canonical paper through int_wave.sh after the
+# accumulated six-paper prevention gate passes.
+echo "ERROR: v3_review_autoloop.sh is retired; use tools/int_wave.sh for one changed canonical paper after preflight" >&2
+exit 2
+
 cd /Users/houstongolden/Desktop/CODE_2025/bigbounce
 
 TS=$(date +%Y-%m-%d_%H%Mpt)

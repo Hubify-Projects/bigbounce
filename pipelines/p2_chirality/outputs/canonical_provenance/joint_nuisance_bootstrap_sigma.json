@@ -36,8 +36,12 @@
     "naive_WLS_sigma_A_dipole_A_p_units": 0.000111,
     "naive_WLS_sigma_A_dipole_pct_fCW": 0.006,
     "inflation_factor_boot_over_naive": 14.677742268769345,
-    "z_vs_1pct7_reference_naive": -265.2920727944549,
-    "z_vs_1pct7_reference_bootstrap": -18.074446869048227
+    "A_ref_A_p_units": 0.017,
+    "A_ref_note": "Shamir 1.7% asymmetry (N_CW-N_CCW)/(N_CW+N_CCW) == A_p directly; NOT doubled. Corrected H17 2026-07-10.",
+    "z_vs_shamir_1p7_asymmetry_bootstrap": -7.64,
+    "z_vs_shamir_1p7_asymmetry_naive": -112.14,
+    "z_vs_1pct7_reference_bootstrap_SUPERSEDED_doubled": -18.074446869048227,
+    "z_vs_1pct7_reference_naive_SUPERSEDED_doubled": -265.2920727944549
   },
   "interpretation": "If inflation_factor > ~3 and z_bootstrap < ~10, the 'formally excluded at 264.5\u03c3' rhetoric collapses to a more modest 'excluded at z_bootstrap \u03c3' and the paper text should be revised."
 }

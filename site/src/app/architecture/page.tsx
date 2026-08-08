@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { papers } from "@/data/papers";
+
+// Readiness caps sourced from papers.ts (canonical static mirror of Convex) so
+// this board can never drift out of sync with the paper pages.
+const capBySlug = new Map(papers.map((p) => [p.slug, p.readiness]));
+const capOf = (slug: string) => capBySlug.get(slug) ?? 0;
+const avgCap = Math.round(
+  papers.reduce((acc, p) => acc + p.readiness, 0) / Math.max(1, papers.length),
+);
 
 export const metadata: Metadata = {
   title: "Architecture — API & MCP",
@@ -147,10 +156,16 @@ export default function ApiDocsPage() {
         </div>
         <p style={{ color: "var(--text-muted)", fontSize: "0.82rem", marginTop: 10 }}>
           The load-bearing query is{" "}
-          <code>papers.getPaperState(slug)</code> — it computes readiness from
-          open findings + caveats. Readiness is never hand-set. Formula:{" "}
-          <code>95 − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>,
-          capped at 99 (final 1% requires Houston sign-off; the system never auto-awards 100%).
+          <code>papers.getPaperState(slug)</code> — it computes readiness as{" "}
+          <code>ceiling − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>.
+          The ceiling is the evidence-backed <code>readinessCap</code>. The retained package records are
+          P1A {capOf("paper-1a")}, P1B {capOf("paper-1b")}, P2 {capOf("paper-2")},
+          P3 {capOf("paper-3")}, P4 {capOf("paper-4")}, and P5 {capOf("paper-5")} (average{" "}
+          {avgCap}%). They are not six equal submission targets: P2 and P4 are lead scientific
+          results; P1A is a focused Note; P1B is research software; P5 is a standalone companion;
+          and P3 is an integrated supporting data release for the anomaly flagship being rebuilt.
+          Automated-model verdicts and final-hash audits are evidence, not journal acceptance or a
+          replacement for the role-aware author decision and venue-specific checks.
         </p>
       </section>
 
@@ -221,7 +236,7 @@ export default function ApiDocsPage() {
             <code>closeFinding</code> + <code>closePathcCaveat</code> require an
             explicit <code>closureMethod</code> enum. The value{" "}
             <code>text-only-no-real-action</code> is permitted but raises a ⚠️ flag
-            (Houston 2026-05-29: "simply disclosing deferred items and caveats IS NOT REAL SCIENCE").
+            (Houston 2026-05-29: &ldquo;simply disclosing deferred items and caveats IS NOT REAL SCIENCE&rdquo;).
           </li>
           <li>
             <strong>Truth-audit before close.</strong> Findings must have{" "}
@@ -229,11 +244,11 @@ export default function ApiDocsPage() {
             <code>feedback_peer_review_truth_audit_protocol</code>).
           </li>
           <li>
-            <strong>No OpenRouter excuse.</strong> Direct vendor keys
-            (Anthropic/OpenAI/Gemini/Grok/Perplexity) live in{" "}
-            <code>youmd/.env.local</code>; <code>tools/cross_vendor_review_direct.py</code>{" "}
-            calls them directly. OpenRouter weekly cap is no longer a blocker (per{" "}
-            <code>feedback_no_openrouter_excuse</code>).
+            <strong>Provider routes are explicit and auditable.</strong> OpenAI-family review
+            uses subscription-backed Codex/ChatGPT CLI sessions, never the OpenAI API.
+            Direct Gemini and Grok API legs retain sanitized raw receipts. Anthropic is not
+            part of the active review route. Provider failures remain failures rather than
+            being silently replaced or relabeled.
           </li>
           <li>
             <strong>No hand-set readiness.</strong>{" "}

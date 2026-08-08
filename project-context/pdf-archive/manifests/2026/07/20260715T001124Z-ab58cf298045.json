@@ -1,0 +1,73 @@
+{
+  "build_command": "TinyTeX pdflatex x4; exact-PDF confirmation bounded wording/provenance/layout closure",
+  "captured_at_local": "2026-07-14T17:11:24.606017-07:00",
+  "captured_at_utc": "2026-07-15T00:11:24.606017+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "d7af90db5899ef2906d3953d9c0eb09317ce5229",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "9df9499de26d0fe2428e7b546be93fa93d60eae4",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T001124Z-ab58cf298045.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/4b/4b04d2fc1152b911d85c9db8fa315f9c135af2f7cd6c4f54c932d22d5eff1c18.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P5/P5__v0.1.132-2026-07-14__2026-07-14T171124-0700-PDT__4b04d2fc1152.pdf",
+      "git": {
+        "head_blob": "ddf935fdae173eae611953cb539b35902600206d",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "fbdb7e6a37665fa3110a0c5561e74ccf",
+      "object_created": true,
+      "page_count": 39,
+      "paper_id": "P5",
+      "paper_version": "v0.1.132-2026-07-14",
+      "reference_created": true,
+      "sha256": "4b04d2fc1152b911d85c9db8fa315f9c135af2f7cd6c4f54c932d22d5eff1c18",
+      "size_bytes": 1510730,
+      "source_mtime_ns": 1784073803434552927,
+      "source_pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+      "source_tex": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+    }
+  ],
+  "review_round": "ROUND_2026-07-14-P5-v0.1.131-EXACTPDF-4f545606-AJ-NONANTHROPIC-CONFIRM/v0.1.132-closure",
+  "run_id": "ab58cf298045",
+  "schema": "bigbounce-pdf-retention/v3"
+}

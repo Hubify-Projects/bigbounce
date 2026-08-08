@@ -1,0 +1,14 @@
+{
+  "gz1": {
+    "n": 1350,
+    "binary_agree_with_label": 0.5170370370370371,
+    "binary_anti_agree": 0.482962962962963,
+    "3class_acc": 0.5170370370370371
+  },
+  "ce_spiral": {
+    "n": 3407,
+    "binary_agree_with_label": 0.5086586439683005,
+    "binary_anti_agree": 0.4913413560316994,
+    "3class_acc": 0.5071910771940124
+  }
+}

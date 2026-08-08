@@ -1,5 +1,214 @@
 {
- "table_iii_claims": {
+ "scans": [
+  {
+   "sigma_eff": 0.7,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 5.699,
+    "bf_vs_ssfsr": "1.412e+02"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 4.03,
+     "median": 4.54,
+     "geo_mean": 3.46
+    },
+    "bf_vs_ssfsr": {
+     "mean": "1.935e+04",
+     "median": "1.399e+02",
+     "geo_mean": "1.406e+02"
+    },
+    "P_bf_ssfsr_gt3": 0.8882
+   }
+  },
+  {
+   "sigma_eff": 0.74,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 5.392,
+    "bf_vs_ssfsr": "8.388e+01"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 3.81,
+     "median": 4.3,
+     "geo_mean": 3.27
+    },
+    "bf_vs_ssfsr": {
+     "mean": "6.929e+03",
+     "median": "8.316e+01",
+     "geo_mean": "8.358e+01"
+    },
+    "P_bf_ssfsr_gt3": 0.8676
+   }
+  },
+  {
+   "sigma_eff": 0.8,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 4.988,
+    "bf_vs_ssfsr": "4.425e+01"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 3.53,
+     "median": 3.98,
+     "geo_mean": 3.04
+    },
+    "bf_vs_ssfsr": {
+     "mean": "1.952e+03",
+     "median": "4.390e+01",
+     "geo_mean": "4.410e+01"
+    },
+    "P_bf_ssfsr_gt3": 0.8349
+   }
+  },
+  {
+   "sigma_eff": 0.86,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 4.641,
+    "bf_vs_ssfsr": "2.656e+01"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 3.29,
+     "median": 3.71,
+     "geo_mean": 2.84
+    },
+    "bf_vs_ssfsr": {
+     "mean": "7.074e+02",
+     "median": "2.637e+01",
+     "geo_mean": "2.648e+01"
+    },
+    "P_bf_ssfsr_gt3": 0.8021
+   }
+  },
+  {
+   "sigma_eff": 0.9,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 4.437,
+    "bf_vs_ssfsr": "1.997e+01"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 3.15,
+     "median": 3.54,
+     "geo_mean": 2.72
+    },
+    "bf_vs_ssfsr": {
+     "mean": "4.008e+02",
+     "median": "1.984e+01",
+     "geo_mean": "1.992e+01"
+    },
+    "P_bf_ssfsr_gt3": 0.7803
+   }
+  },
+  {
+   "sigma_eff": 1.0,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 3.999,
+    "bf_vs_ssfsr": "1.131e+01"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 2.85,
+     "median": 3.21,
+     "geo_mean": 2.48
+    },
+    "bf_vs_ssfsr": {
+     "mean": "1.287e+02",
+     "median": "1.124e+01",
+     "geo_mean": "1.128e+01"
+    },
+    "P_bf_ssfsr_gt3": 0.7271
+   }
+  },
+  {
+   "sigma_eff": 1.22,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 3.305,
+    "bf_vs_ssfsr": "5.102e+00"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 2.39,
+     "median": 2.68,
+     "geo_mean": 2.1
+    },
+    "bf_vs_ssfsr": {
+     "mean": "2.618e+01",
+     "median": "5.076e+00",
+     "geo_mean": "5.091e+00"
+    },
+    "P_bf_ssfsr_gt3": 0.615
+   }
+  },
+  {
+   "sigma_eff": 0.8602325267042626,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 4.64,
+    "bf_vs_ssfsr": "2.651e+01"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 3.29,
+     "median": 3.7,
+     "geo_mean": 2.84
+    },
+    "bf_vs_ssfsr": {
+     "mean": "7.049e+02",
+     "median": "2.632e+01",
+     "geo_mean": "2.643e+01"
+    },
+    "P_bf_ssfsr_gt3": 0.802
+   }
+  },
+  {
+   "sigma_eff": 1.2206555615733703,
+   "closed_form_at_central": {
+    "bf_vs_tuned": 3.303,
+    "bf_vs_ssfsr": "5.093e+00"
+   },
+   "realization_marginalized": {
+    "bf_vs_tuned": {
+     "mean": 2.39,
+     "median": 2.68,
+     "geo_mean": 2.1
+    },
+    "bf_vs_ssfsr": {
+     "mean": "2.608e+01",
+     "median": "5.067e+00",
+     "geo_mean": "5.082e+00"
+    },
+    "P_bf_ssfsr_gt3": 0.6147
+   }
+  }
+ ],
+ "table_iii_replacement": [
+  {
+   "row": "ideal_no_gr",
+   "sigma_eff": 0.7,
+   "bf_vs_ssfsr_closed_form": "1.41e+02",
+   "bf_vs_tuned_narrow_closed_form": 5.7,
+   "bf_vs_tuned_broad_closed_form": 17.1,
+   "P_bf_ssfsr_gt3_mc": 0.8882
+  },
+  {
+   "row": "sigma_gr_0.5",
+   "sigma_eff": 0.8602,
+   "bf_vs_ssfsr_closed_form": "2.65e+01",
+   "bf_vs_tuned_narrow_closed_form": 4.64,
+   "bf_vs_tuned_broad_closed_form": 13.91,
+   "P_bf_ssfsr_gt3_mc": 0.802
+  },
+  {
+   "row": "sigma_gr_1.0",
+   "sigma_eff": 1.2207,
+   "bf_vs_ssfsr_closed_form": "5.09e+00",
+   "bf_vs_tuned_narrow_closed_form": 3.3,
+   "bf_vs_tuned_broad_closed_form": 9.8,
+   "P_bf_ssfsr_gt3_mc": 0.6147
+  }
+ ],
+ "verdict": "Original Table III values (3.3e6/10.9, 4.1e4/9.4, 329/7.9) are irreproducible: SSFSR column matches an obsolete sigma=0.8 baseline; the 10.9 Tuned cell matches no tested mechanism (closed form max 7.0 at sigma=0.7; realization marginalization and GR inflation both lower it). Replaced by the closed-form values above on the paper's sigma=0.7 convention.",
+ "_SUPERSEDED_table_iii_claims": {
   "ideal_no_gr": {
    "bf_vs_ssfsr": 3300000.0,
    "bf_vs_tuned": 10.9,
@@ -16,213 +225,5 @@
    "p_gt3": 0.96
   }
  },
- "scans": [
-  {
-   "sigma_eff": 0.7,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 7.001,
-    "bf_vs_ssfsr": "3.472e+08"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 5.85,
-     "median": 6.63,
-     "geo_mean": 5.18
-    },
-    "bf_vs_ssfsr": {
-     "mean": "9.715e+15",
-     "median": "3.410e+08",
-     "geo_mean": "3.446e+08"
-    },
-    "P_bf_ssfsr_gt3": 0.9985
-   }
-  },
-  {
-   "sigma_eff": 0.74,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 6.732,
-    "bf_vs_ssfsr": "4.388e+07"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 5.68,
-     "median": 6.45,
-     "geo_mean": 5.01
-    },
-    "bf_vs_ssfsr": {
-     "mean": "2.766e+14",
-     "median": "4.314e+07",
-     "geo_mean": "4.356e+07"
-    },
-    "P_bf_ssfsr_gt3": 0.9972
-   }
-  },
-  {
-   "sigma_eff": 0.8,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 6.371,
-    "bf_vs_ssfsr": "3.458e+06"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 5.45,
-     "median": 6.19,
-     "geo_mean": 4.78
-    },
-    "bf_vs_ssfsr": {
-     "mean": "3.193e+12",
-     "median": "3.405e+06",
-     "geo_mean": "3.436e+06"
-    },
-    "P_bf_ssfsr_gt3": 0.9944
-   }
-  },
-  {
-   "sigma_eff": 0.86,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 6.054,
-    "bf_vs_ssfsr": "4.553e+05"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 5.24,
-     "median": 5.95,
-     "geo_mean": 4.57
-    },
-    "bf_vs_ssfsr": {
-     "mean": "8.388e+10",
-     "median": "4.487e+05",
-     "geo_mean": "4.525e+05"
-    },
-    "P_bf_ssfsr_gt3": 0.9903
-   }
-  },
-  {
-   "sigma_eff": 0.9,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 5.861,
-    "bf_vs_ssfsr": "1.467e+05"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 5.12,
-     "median": 5.79,
-     "geo_mean": 4.45
-    },
-    "bf_vs_ssfsr": {
-     "mean": "1.064e+10",
-     "median": "1.447e+05",
-     "geo_mean": "1.459e+05"
-    },
-    "P_bf_ssfsr_gt3": 0.9863
-   }
-  },
-  {
-   "sigma_eff": 1.0,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 5.435,
-    "bf_vs_ssfsr": "1.531e+04"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 4.83,
-     "median": 5.41,
-     "geo_mean": 4.16
-    },
-    "bf_vs_ssfsr": {
-     "mean": "1.601e+08",
-     "median": "1.512e+04",
-     "geo_mean": "1.523e+04"
-    },
-    "P_bf_ssfsr_gt3": 0.9738
-   }
-  },
-  {
-   "sigma_eff": 1.22,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 4.7,
-    "bf_vs_ssfsr": "6.481e+02"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 4.32,
-     "median": 4.69,
-     "geo_mean": 3.65
-    },
-    "bf_vs_ssfsr": {
-     "mean": "3.811e+05",
-     "median": "6.415e+02",
-     "geo_mean": "6.453e+02"
-    },
-    "P_bf_ssfsr_gt3": 0.9316
-   }
-  },
-  {
-   "sigma_eff": 0.8602325267042626,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 6.052,
-    "bf_vs_ssfsr": "4.521e+05"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 5.24,
-     "median": 5.95,
-     "geo_mean": 4.57
-    },
-    "bf_vs_ssfsr": {
-     "mean": "8.282e+10",
-     "median": "4.456e+05",
-     "geo_mean": "4.493e+05"
-    },
-    "P_bf_ssfsr_gt3": 0.9902
-   }
-  },
-  {
-   "sigma_eff": 1.2206555615733703,
-   "closed_form_at_central": {
-    "bf_vs_tuned": 4.698,
-    "bf_vs_ssfsr": "6.436e+02"
-   },
-   "realization_marginalized": {
-    "bf_vs_tuned": {
-     "mean": 4.32,
-     "median": 4.69,
-     "geo_mean": 3.65
-    },
-    "bf_vs_ssfsr": {
-     "mean": "3.760e+05",
-     "median": "6.371e+02",
-     "geo_mean": "6.409e+02"
-    },
-    "P_bf_ssfsr_gt3": 0.9314
-   }
-  }
- ],
- "table_iii_replacement": [
-  {
-   "row": "ideal_no_gr",
-   "sigma_eff": 0.7,
-   "bf_vs_ssfsr_closed_form": "3.47e+08",
-   "bf_vs_tuned_narrow_closed_form": 7.0,
-   "bf_vs_tuned_broad_closed_form": 17.1,
-   "P_bf_ssfsr_gt3_mc": 0.9985
-  },
-  {
-   "row": "sigma_gr_0.5",
-   "sigma_eff": 0.8602,
-   "bf_vs_ssfsr_closed_form": "4.52e+05",
-   "bf_vs_tuned_narrow_closed_form": 6.05,
-   "bf_vs_tuned_broad_closed_form": 13.91,
-   "P_bf_ssfsr_gt3_mc": 0.9902
-  },
-  {
-   "row": "sigma_gr_1.0",
-   "sigma_eff": 1.2207,
-   "bf_vs_ssfsr_closed_form": "6.44e+02",
-   "bf_vs_tuned_narrow_closed_form": 4.7,
-   "bf_vs_tuned_broad_closed_form": 9.8,
-   "P_bf_ssfsr_gt3_mc": 0.9314
-  }
- ],
- "verdict": "Original Table III values (3.3e6/10.9, 4.1e4/9.4, 329/7.9) are irreproducible: SSFSR column matches an obsolete sigma=0.8 baseline; the 10.9 Tuned cell matches no tested mechanism (closed form max 7.0 at sigma=0.7; realization marginalization and GR inflation both lower it). Replaced by the closed-form values above on the paper's sigma=0.7 convention."
+ "_SUPERSEDED_table_iii_claims_note": "QUARANTINED 2026-07-10 H17: these are the pre-correction -35/8-era claims (bf_vs_ssfsr 3.3e6, bf_vs_tuned 10.9, p_gt3 0.98) that are NOT reproducible from sigma(fnl)=0.7 and are SUPERSEDED. The authoritative -35/16 values live in the \"scans\" block and match the paper tab:gr exactly. Retained only as a historical record."
 }

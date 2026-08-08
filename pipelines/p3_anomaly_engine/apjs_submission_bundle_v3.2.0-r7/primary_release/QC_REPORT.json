@@ -1,0 +1,227 @@
+{
+  "assertions": {
+    "all_main_survey": true,
+    "all_original_member_separations_finite": true,
+    "all_within_1arcsec": true,
+    "all_zcat_primary": true,
+    "all_zwarn0": true,
+    "candidate_id_unique": true,
+    "cluster_id_unique": true,
+    "targetid_unique": true
+  },
+  "catalog": "desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
+  "created_utc": "2026-07-14T12:27:40Z",
+  "deduplication": "Nearest angular row per cluster; ties prefer higher DELTACHI2, smaller TARGETID, then lower FITS row. A second pass enforces unique TARGETID using separation, DELTACHI2, cluster_id, then FITS row.",
+  "match_separation_arcsec": {
+    "max": 0.9905735599323949,
+    "median": 0.0012693997648472865,
+    "min": 0.00012520823674900356
+  },
+  "program_counts": {
+    "bright": 19,
+    "dark": 162
+  },
+  "schema": [
+    {
+      "dtype": "object",
+      "name": "candidate_id"
+    },
+    {
+      "dtype": "int64",
+      "name": "fits_row"
+    },
+    {
+      "dtype": "int64",
+      "name": "cluster_table_row"
+    },
+    {
+      "dtype": "float64",
+      "name": "match_separation_arcsec"
+    },
+    {
+      "dtype": "object",
+      "name": "match_quality_tier"
+    },
+    {
+      "dtype": "float64",
+      "name": "original_member_separation_arcsec"
+    },
+    {
+      "dtype": "int64",
+      "name": "targetid"
+    },
+    {
+      "dtype": "float64",
+      "name": "target_ra"
+    },
+    {
+      "dtype": "float64",
+      "name": "target_dec"
+    },
+    {
+      "dtype": "object",
+      "name": "survey"
+    },
+    {
+      "dtype": "object",
+      "name": "program"
+    },
+    {
+      "dtype": "int64",
+      "name": "desi_target"
+    },
+    {
+      "dtype": "int64",
+      "name": "bgs_target"
+    },
+    {
+      "dtype": "int64",
+      "name": "mws_target"
+    },
+    {
+      "dtype": "int64",
+      "name": "scnd_target"
+    },
+    {
+      "dtype": "float64",
+      "name": "z"
+    },
+    {
+      "dtype": "int64",
+      "name": "zwarn"
+    },
+    {
+      "dtype": "object",
+      "name": "spectype"
+    },
+    {
+      "dtype": "float64",
+      "name": "deltachi2"
+    },
+    {
+      "dtype": "int32",
+      "name": "coadd_fiberstatus"
+    },
+    {
+      "dtype": "int16",
+      "name": "main_nspec"
+    },
+    {
+      "dtype": "bool",
+      "name": "main_primary"
+    },
+    {
+      "dtype": "int16",
+      "name": "zcat_nspec"
+    },
+    {
+      "dtype": "bool",
+      "name": "zcat_primary"
+    },
+    {
+      "dtype": "int64",
+      "name": "cluster_id"
+    },
+    {
+      "dtype": "int64",
+      "name": "n_detections"
+    },
+    {
+      "dtype": "int64",
+      "name": "n_surveys"
+    },
+    {
+      "dtype": "object",
+      "name": "survey_list"
+    },
+    {
+      "dtype": "float64",
+      "name": "cluster_ra_deg"
+    },
+    {
+      "dtype": "float64",
+      "name": "cluster_dec_deg"
+    },
+    {
+      "dtype": "float64",
+      "name": "cluster_best_score"
+    },
+    {
+      "dtype": "object",
+      "name": "member_ids"
+    },
+    {
+      "dtype": "object",
+      "name": "best_survey"
+    },
+    {
+      "dtype": "int64",
+      "name": "desi_source_row"
+    },
+    {
+      "dtype": "int64",
+      "name": "original_internal_tid"
+    },
+    {
+      "dtype": "float64",
+      "name": "original_ra_deg"
+    },
+    {
+      "dtype": "float64",
+      "name": "original_dec_deg"
+    },
+    {
+      "dtype": "float64",
+      "name": "original_score"
+    },
+    {
+      "dtype": "object",
+      "name": "original_worst_band"
+    },
+    {
+      "dtype": "float64",
+      "name": "original_residual_b"
+    },
+    {
+      "dtype": "float64",
+      "name": "original_residual_r"
+    },
+    {
+      "dtype": "float64",
+      "name": "original_residual_z"
+    },
+    {
+      "dtype": "object",
+      "name": "science_target_class"
+    }
+  ],
+  "science_class_counts_nonexclusive": {
+    "BGS_ANY": 18,
+    "ELG": 157,
+    "LRG": 1,
+    "MWS_ANY": 1,
+    "QSO": 7
+  },
+  "selection": {
+    "desi_target_any_bit": {
+      "BGS_ANY": 60,
+      "ELG": 1,
+      "LRG": 0,
+      "MWS_ANY": 61,
+      "QSO": 2
+    },
+    "positional_radius_arcsec": 1.0,
+    "redshift_cut": null,
+    "spectype_cut": null,
+    "survey": "main",
+    "zcat_primary": true,
+    "zwarn": 0
+  },
+  "spectype_counts_not_selection": {
+    "GALAXY": 157,
+    "QSO": 23,
+    "STAR": 1
+  },
+  "status": "PASS",
+  "version": "3.2.0-r2"
+}

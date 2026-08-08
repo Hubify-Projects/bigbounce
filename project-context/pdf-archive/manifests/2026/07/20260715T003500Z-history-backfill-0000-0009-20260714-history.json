@@ -1,0 +1,122 @@
+{
+  "captured_at_local": "2026-07-14T17:35:00-07:00",
+  "captured_at_utc": "2026-07-15T00:35:00+00:00",
+  "classification_policy": {
+    "excluded": [
+      "figure PDFs",
+      "render artifacts",
+      "existing pdf-archive self-references",
+      "paths without a six-paper manuscript hint",
+      "ambiguous paper-hint matches"
+    ],
+    "scope": "reachable Git PDF object/path rows; only high-confidence six-paper manuscript paths are materialized",
+    "unknown_version_policy": "When no version token is present in the historical path, paper_version is recorded as unknown rather than inferred."
+  },
+  "coverage": {
+    "by_paper": {
+      "P1A": 0,
+      "P1B": 0,
+      "P2": 0,
+      "P3": 0,
+      "P4": 0,
+      "P5": 0
+    },
+    "classified_distinct_git_blobs": 0,
+    "classified_distinct_sha256": 0,
+    "classified_rows": 0,
+    "errors": 0,
+    "git_pdf_object_path_rows": 10,
+    "objects_created": 0,
+    "references_created": 0,
+    "unclassified_reasons": {
+      "excluded.figure-or-render-artifact": 8,
+      "unclassified.no-paper-hint": 2
+    },
+    "unclassified_rows": 10
+  },
+  "git_head": "a745b6ac4d4f951462fc4e7e2135843d831be613",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T003500Z-history-backfill-0000-0009-20260714-history.json",
+  "materialized": true,
+  "mode": "history-backfill",
+  "page_counts_recorded": true,
+  "row_selection": {
+    "limit": 10,
+    "offset": 0,
+    "selected_rows": 10,
+    "total_git_pdf_object_path_rows": 1357
+  },
+  "rows": [
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "9a6e666aff34c18e0b48f0d82c2e9e300d81369c",
+      "git_blob_size_bytes": 26806,
+      "paper_id": null,
+      "path": "arxiv/figures/consistency_window_birefringence.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "2aa8e4f26eeeb4cf08b0eefd2cab713e6b82bc04",
+      "git_blob_size_bytes": 40119,
+      "paper_id": null,
+      "path": "arxiv/figures/cosmology_dataset_comparison_two_frozen.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "41b3036463ca222c5563b8c3de94d0c10f96093c",
+      "git_blob_size_bytes": 39855,
+      "paper_id": null,
+      "path": "arxiv/figures/cosmology_dataset_comparison_two_frozen.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "38333db0ba643ebda99b23a26f0cbba99ae79a37",
+      "git_blob_size_bytes": 59253,
+      "paper_id": null,
+      "path": "arxiv/figures/fig_dneff_viability_two_frozen.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "8b2c62f322c6819922a6b0d3c7bab71f3a834cca",
+      "git_blob_size_bytes": 56404,
+      "paper_id": null,
+      "path": "arxiv/figures/fig_dneff_viability_two_frozen.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "e59692a481cb82a84cdec35159bf63f0ddfab995",
+      "git_blob_size_bytes": 59253,
+      "paper_id": null,
+      "path": "arxiv/figures/fig_dneff_viability_two_frozen.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "7c1b6a8190c277ab6189aea60e02e324289e20ef",
+      "git_blob_size_bytes": 225731,
+      "paper_id": null,
+      "path": "arxiv/figures/paper1_corner_full_tension.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "09bb79c610852f4110ccbbfd8a442653957f5899",
+      "git_blob_size_bytes": 357820,
+      "paper_id": null,
+      "path": "arxiv/figures/vacuum_scale_sensitivity.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "37e6b455baf21a336e8fdfab3a2428f2700f176d",
+      "git_blob_size_bytes": 31186,
+      "paper_id": null,
+      "path": "arxiv/figures_p3/fig_injection_recovery.pdf"
+    },
+    {
+      "classification_reason": "unclassified.no-paper-hint",
+      "git_blob": "b35da72fd2915418c29ce627c574b16a6019cc07",
+      "git_blob_size_bytes": 31186,
+      "paper_id": null,
+      "path": "arxiv/figures_p3/fig_injection_recovery.pdf"
+    }
+  ],
+  "run_id": "history-backfill-0000-0009-20260714",
+  "schema": "bigbounce-pdf-retention-history/v1"
+}

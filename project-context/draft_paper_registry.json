@@ -1,0 +1,17 @@
+{
+  "P1C": {
+    "tex_path": "arxiv/paper1c_nogo_survey/main.tex",
+    "pdf_path": "arxiv/paper1c_nogo_survey/main.pdf",
+    "site_slug": "paper-1c",
+    "target_journal": "Classical and Quantum Gravity (candidate; PRD alternate)",
+    "article_type": "survey/no-go structural catalog (draft, not yet in canonical portfolio)",
+    "review_profile": "CQG-NOTE",
+    "served_aliases": [
+      "paper1c_nogo_survey_v1C.0.15.pdf"
+    ],
+    "version": "v1C.0.15",
+    "pages": 25,
+    "date": "2026-08-07",
+    "review_paths": []
+  }
+}

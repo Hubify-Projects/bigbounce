@@ -1,0 +1,21 @@
+# INT API Review — P3 v3.1.155 — gemini (gemini-3.1-pro-preview)
+paper: P3  version: v3.1.155  model: gemini-3.1-pro-preview
+modality: native-PDF (inline_data base64)
+UTC: 2026-07-11T16:50:28.869407Z  |  latency: 36.4s  |  attempt: 1
+usage: {"promptTokenCount": 19334, "candidatesTokenCount": 724, "totalTokenCount": 21866, "promptTokensDetails": [{"modality": "IMAGE", "tokenCount": 19240}, {"modality": "TEXT", "tokenCount": 94}], "thoughtsTokenCount": 1808, "serviceTier": "standard"}
+PARSED VERDICT: MAJOR REVISIONS
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+VERDICT: MAJOR REVISIONS
+
+ISSUES:
+1. [MAJOR] Section V.A (NANOGrav Bounce Consistency): This section is entirely disjoint from the manuscript's primary focus (the autoencoder anomaly catalog). Analyzing pulsar timing array (PTA) data to test a matter-bounce cosmology has zero methodological or data overlap with scanning optical/X-ray/IR/CMB catalogs for object anomalies. This section feels artificially appended to force a cosmological connection and should be removed entirely (and perhaps submitted as a separate, standalone short paper).
+2. [MAJOR] Cosmological Relevance and Journal Fit (Section V): To meet the criteria for *Physical Review D*, a manuscript must contribute significantly to fields such as fundamental physics, cosmology, or astrophysics. Because the $f_{\rm NL}$ multi-tracer forecast yields an empirical bias with massive uncertainties ($\alpha = 0.19 \pm 0.65$) and results in no statistically significant improvement in $\sigma(f_{\rm NL})$, the cosmological payoff of the catalog is currently null. Without the NANOGrav section (see Issue 1), this manuscript reads strictly as an astronomical data-mining and software-release paper, which is better suited for journals like *ApJS*, *MNRAS*, or *A&A*. To remain in PRD, the cosmological utility of the selected high-bias tracers must be demonstrated more robustly than a null-improvement forecast.
+3. [MAJOR] Presentation, Tone, and Formatting: The manuscript is severely cluttered with inline repository file paths (e.g., `pipelines/p3_anomaly_engine/...`) and defensive structural signposts (e.g., "Honest limitation:", "Methodological lesson:", "Candid scope:", "What this appendix is not."). This reads like a software release log or a defensive rebuttal rather than a standard scientific article, disrupting readability. All literal file paths and Git repository pointers must be moved to footnotes, an appendix, or the Data Availability section, and the prose should be rewritten to focus objectively on the physics, methodology, and results.
+4. [MINOR] Section III & Table II (Threshold Definitions): The use of vastly different threshold criteria across surveys (absolute score cuts for DESI, fixed-size continuity slices for SDSS, top 1% for Planck/NEOWISE, and an irreproducible top-298 for eROSITA) makes the "multi-survey" claim feel disjointed. While the author acknowledges that these scores are not cross-comparable, standardizing the anomaly selection criteria (e.g., a uniform false-discovery rate, a uniform percentile, or a unified latent-space density metric) would make the catalog significantly more scientifically coherent. 
+5. [MINOR] Section IV.A (SIMBAD Novelty Metric): The author correctly admits that the 58.8% "SIMBAD-unmatched" figure heavily overstates true catalog novelty because SIMBAD does not index major wide-field photometric surveys. However, this 58.8% figure is still foregrounded prominently in the text and abstract. The manuscript should de-emphasize the SIMBAD metric and instead center the 17.8% CDS X-Match figure as the true baseline for genuine astrophysical novelty to avoid misleading downstream readers.
+
+The central claim that the pipeline produces a massive, reproducible, multi-wavelength anomaly catalog is heavily supported by rigorous data provenance, but its concrete utility for fundamental cosmology remains unproven and the manuscript's presentation requires profound restructuring.

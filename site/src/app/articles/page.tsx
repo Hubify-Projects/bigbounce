@@ -4,6 +4,11 @@ import { articles } from"@/data/articles";
 import { Card, CardContent, CardHeader, CardTitle } from"@/components/ui/card";
 import { Badge } from"@/components/ui/badge";
 
+// Ensure display labels are consistently Title Case (e.g. "theory" → "Theory")
+function toDisplayLabel(s: string): string {
+  return s.replace(/\b([a-z])/g, (c) => c.toUpperCase());
+}
+
 export const metadata: Metadata = {
   title: "Articles",
   description:
@@ -39,11 +44,11 @@ export default function ArticlesPage() {
                 <CardHeader className="pb-2">
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge variant="outline" className="font-mono text-[10px]">
-                      {article.type}
+                      {toDisplayLabel(article.type)}
                     </Badge>
                     {article.category && (
                       <Badge variant="secondary" className="font-mono text-[10px]">
-                        {article.category}
+                        {toDisplayLabel(article.category)}
                       </Badge>
                     )}
                     {article.isNew && (

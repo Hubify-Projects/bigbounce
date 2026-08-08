@@ -1,0 +1,23 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P1B",
+  "paper_version": "v2B.0.16",
+  "git_commit": "c4eba285f13f5aa5b616b0e90fec726250fd6758",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_v2B.0.16.tar.gz",
+  "tarball_sha256": "4fa8cc9a6d22b09bc83d3baed61b56b4e5bac3b0cae93810546458e09c8bdddf",
+  "tarball_md5": "feabaaf990d1e13c220962c16aef1c57",
+  "tarball_size_bytes": 11277,
+  "source_tex_sha256": "03109e0d2ab86058c8ef57b798e1eb988afc260a20cdf314f7112176f2628946",
+  "source_pdf": "arxiv/paper1b_namaster_proof.pdf",
+  "source_pdf_sha256": "2fb957101604066382ddb604da41b9fe3bc2a48ae4a799ca25c2b34eaac6267a",
+  "page_count": 6,
+  "status": "pass",
+  "engine": "pdfTeX (pdflatex; isolated three-pass compile)",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 0,
+  "compiled_pdf_sha256": "c4c637f6875bc8a0f3c08337a0acc5941e0a451d57e2ba4dd993a097c64ef072",
+  "verification_mode": "self-contained staged tar extraction; inline thebibliography; three-pass pdflatex; log, link, and all-six-page visual audit",
+  "verified_at_utc": "2026-08-04T02:18:49Z",
+  "verifier": "publication-finalization/P1A-P1B"
+}

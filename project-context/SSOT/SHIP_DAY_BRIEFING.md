@@ -16,7 +16,7 @@
 2. Profile settings → "Visibility" → set Names, Employment, Education to **PUBLIC**
 3. Verify externally:
    ```bash
-   curl -s -o /dev/null -w "%{http_code}" https://pub.orcid.org/v3.0/0009-0008-3617-8729/person
+   curl -s -o /dev/null -w "%{http_code}" https://pub.orcid.org/v3.0/0009-0008-5616-5994/person
    ```
    - Expected: `200`
    - Current: `404` (blocker — do not proceed until 200)
@@ -49,7 +49,7 @@ Submit in this order at https://arxiv.org/submit:
 | 5 | **P2** | `paper2_arxiv_v1.7.68.tar.gz` | `astro-ph.CO` | `astro-ph.IM` |
 | 6 | **P5** | `paper5_arxiv_v0.1.80-2026-06-13.tar.gz` | `astro-ph.CO` | `astro-ph.GA` |
 
-For each: upload tarball → copy abstract from `abstract_for_webform.txt` → link ORCID `0009-0008-3617-8729` → submit. P4 must upload FIRST because P5 needs P4's arXiv ID. Wait ~60 min for P4's ID before submitting P5.
+For each: upload tarball → copy abstract from `abstract_for_webform.txt` → link ORCID `0009-0008-5616-5994` → submit. P4 must upload FIRST because P5 needs P4's arXiv ID. Wait ~60 min for P4's ID before submitting P5.
 
 Pre-submission per-paper: Zenodo one-click publish (see zenodo/ below) → tag HF repos → get live Zenodo DOI → insert into paper before uploading tarball.
 

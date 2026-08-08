@@ -30,7 +30,7 @@ export const articles: Article[] = [
   {
     "slug": "matter-bounce-blueprint",
     "title": "The Matter-Bounce Blueprint: Predictive Precision in Branch V Cosmology",
-    "summary": "Why Branch V is the program's flagship — a strongly constrained prediction of fₙₗ = −35/8 (conditional on bounce-transition assumptions) testable by SPHEREx at 2.6–5σ, and the clearest route to a genuinely novel bouncing-cosmology observable.",
+    "summary": "Why Branch V is the program's flagship — a strongly constrained prediction of fₙₗ = −35/16 (conditional on bounce-transition assumptions) testable by SPHEREx at 2.6–5σ, and the clearest route to a genuinely novel bouncing-cosmology observable.",
     "type": "Research",
     "category": "Branch V",
     "isNew": false

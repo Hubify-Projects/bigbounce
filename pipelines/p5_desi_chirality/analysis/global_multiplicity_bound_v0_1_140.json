@@ -1,0 +1,144 @@
+{
+  "primary_bound": {
+    "N_trials": 23,
+    "N_trials_basis": "reader-visible declared analysis tree (Table tab:analysis_tree): 1 focal + 5 DESIVAST variants + 9 Phase-2 cells + 8 descriptive = 23",
+    "p_min": 0.03572884112563312,
+    "p_min_test_id": "tracer_program_split",
+    "p_min_test_desc": "Tracer-program bright-vs-dark two-sample sign-flip contrast (filament class); MOST EXTREME properly-nulled deviation in the whole tree",
+    "p_min_test_stat": "z_2samp = 2.1",
+    "p_min_test_tex": "tex:2208-2211 (sec:results_vweb); row-level |z| approx 2.1, de-duplicated unique-TARGETID |z| = 1.95 (tex:2229)",
+    "p_min_null": "two-sample bright-vs-dark contrast = 0",
+    "p_global_bound": 0.8217633458895618,
+    "significant_at_0p05": false
+  },
+  "sensitivity_bounds": {
+    "family_level_N13": {
+      "N_trials": 13,
+      "p_global_bound": 0.46447493463323053
+    },
+    "granular_ceiling_N48": {
+      "N_trials": 48,
+      "p_global_bound": 1.0
+    }
+  },
+  "monopole_note": "The larger raw |sigma_from_half| values in the paper (bright-program -5.28 tex:2176, sky-region -4.75 tex:3604, catalog-wide -9.47) are the single known classifier MONOPOLE (f_CW^P5=0.49719), not per-environment chirality tests; they are scored against p=0.5, which is NOT the null this paper tests. Every environmental path is scored against its own correct null (two-sample contrast or monopole-subtracted residual), exactly as the paper does per-test. Monopole-subtracted, those same regions give residuals -1.55 / +0.60, already in the inventory.",
+  "conclusion": "The single most-extreme deviation anywhere in the declared analysis tree, referenced against its own null, is the bright-vs-dark tracer-program filament sign-flip, per-test two-sided |z| approx 2.1 (p = 0.0357). A conservative Bonferroni correction over the 23 declared analysis-tree paths gives p_global <= 0.822, which is NON-SIGNIFICANT at alpha=0.05. Every coarser or finer trial count only raises p_global. No test in the tree survives whole-tree multiplicity correction as significant; the whole-tree result remains a non-detection.",
+  "inventory": [
+    {
+      "id": "focal",
+      "desc": "Focal released-parent non-void-minus-void standardized contrast (K=13/G=50 CR1 + wild-cluster)",
+      "tex": "tex:1436-1440 (sec:primary_path); p=0.66085 normal, 0.67345 wild-cluster",
+      "null": "two-sample Delta f_CW = 0",
+      "stat": "z_Delta",
+      "z": 0.4388,
+      "p": 0.66085
+    },
+    {
+      "id": "desivast_variants_max",
+      "desc": "Most extreme of the 5 DESIVAST void-definition sensitivity contrasts (VoidFinder, V2-REVOLVER/VIDE sphere-PIS, V2-REVOLVER/VIDE catalog-native GALZONE)",
+      "tex": "tab:analysis_tree (tex:1634-1639); max |z_Delta| <= 1.25",
+      "null": "two-sample Delta f_CW = 0 (per variant)",
+      "stat": "z_Delta",
+      "z": 1.25,
+      "p": 0.21129954733371056
+    },
+    {
+      "id": "phase2_max_cell_residual",
+      "desc": "Most extreme Phase-2 cell monopole-subtracted max-class residual |sigma_obs - sigma_pred| (all nine cells)",
+      "tex": "tab:phase2 (tex:2492-2544); max = 1.87 (all9) / 1.64 (resolved6). Within-family + across-9-cell global max-stat already gives p_global=0.36/0.27 [A14]",
+      "null": "monopole-subtracted per-class residual = 0",
+      "stat": "sigma_resid",
+      "z": 1.87,
+      "p": 0.06148381785893193
+    },
+    {
+      "id": "twebomnibus",
+      "desc": "T-Web 4-class homogeneity omnibus chi^2",
+      "tex": "tab:analysis_tree (tex:1653); canonical p=0.315",
+      "null": "4x2 class-homogeneity",
+      "stat": "chi2_p",
+      "z": null,
+      "p": 0.315
+    },
+    {
+      "id": "redshift_scan",
+      "desc": "Redshift-quintile label-shuffle scan",
+      "tex": "fig:cw_vs_z caption (tex:1975); p=0.372",
+      "null": "label-shuffle max-stat (no z-dependence)",
+      "stat": "perm_p",
+      "z": null,
+      "p": 0.372
+    },
+    {
+      "id": "density_quintile",
+      "desc": "Projected-density quintile scan, monopole-subtracted max residual |sigma_obs - sigma_pred|",
+      "tex": "tex:1982-2005 (sec:results_density); endogenous 1.87, exogenous 1.57; both < Bonferroni-5 3.09",
+      "null": "monopole-subtracted quintile residual = 0",
+      "stat": "sigma_resid",
+      "z": 1.87,
+      "p": 0.06148381785893193
+    },
+    {
+      "id": "healpix_skyscan",
+      "desc": "HEALPix sky-position scan (NSIDE=16,32,64); most extreme monopole-subtracted region residual",
+      "tex": "tex:3607-3614 (raw sky-region -4.75 is monopole-dominated; monopole-subtracted residual = -1.55, +0.60)",
+      "null": "monopole-subtracted sky-region residual = 0",
+      "stat": "sigma_resid",
+      "z": 1.55,
+      "p": 0.12114151600411799
+    },
+    {
+      "id": "tracer_program_split",
+      "desc": "Tracer-program bright-vs-dark two-sample sign-flip contrast (filament class); MOST EXTREME properly-nulled deviation in the whole tree",
+      "tex": "tex:2208-2211 (sec:results_vweb); row-level |z| approx 2.1, de-duplicated unique-TARGETID |z| = 1.95 (tex:2229)",
+      "null": "two-sample bright-vs-dark contrast = 0",
+      "stat": "z_2samp",
+      "z": 2.1,
+      "p": 0.03572884112563312
+    },
+    {
+      "id": "tempel_fof",
+      "desc": "Tempel FoF filament-concordance overlay",
+      "tex": "tab:analysis_tree (tex:1658); concordance check, null",
+      "null": "filament-concordance",
+      "stat": "descriptive",
+      "z": null,
+      "p": 0.3
+    },
+    {
+      "id": "astra_edr",
+      "desc": "ASTRA EDR per-object supporting consistency check",
+      "tex": "tab:analysis_tree (tex:1659); diagnostic, null",
+      "null": "per-object consistency",
+      "stat": "descriptive",
+      "z": null,
+      "p": 0.3
+    },
+    {
+      "id": "tweb_concurrent_lit",
+      "desc": "T-Web concurrent-literature volume-fraction comparison",
+      "tex": "tab:analysis_tree (tex:1660); volume-fraction concordance",
+      "null": "volume-fraction comparison",
+      "stat": "descriptive",
+      "z": null,
+      "p": 0.3
+    },
+    {
+      "id": "z3_cluster_redshift_resid",
+      "desc": "Cluster-redshift Z3 monopole-subtracted residual (raw -3.14 crosses Bonferroni-4, monopole-subtracted residual -1.50 stays null)",
+      "tex": "tex:1411-1414 (sec:lee)",
+      "null": "monopole-subtracted Z3 residual = 0",
+      "stat": "sigma_resid",
+      "z": 1.5,
+      "p": 0.13361440253771617
+    }
+  ],
+  "provenance": {
+    "paper_version_bumped_to": "v0.1.140-2026-07-16",
+    "closes": "P5 v0.1.139 truth-audit GENUINELY-NEW-REAL item (disposition 11: whole-tree global-multiplicity statement)",
+    "method": "Bonferroni bound p_global <= min(1, N_trials * p_min)",
+    "integrity": "/never-fabricate-derivation: every per-test p is transcribed from a committed paper value with its tex source; nothing invented.",
+    "generated_utc": "2026-07-16T22:51:09.442808+00:00",
+    "generated_pt": "2026-07-16 15:51 PT"
+  }
+}

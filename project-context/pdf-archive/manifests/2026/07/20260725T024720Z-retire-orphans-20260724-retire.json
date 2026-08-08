@@ -1,0 +1,220 @@
+{
+  "captured_at_local": "2026-07-24T19:47:20.785595-07:00",
+  "captured_at_utc": "2026-07-25T02:47:20.785595+00:00",
+  "distinct_document_count": 5,
+  "documents": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/22/22166e566d951513dd3468ecd16fdc3a7d06949054e6b08713f6e0e505c0ac74.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1-LEGACY/P1-LEGACY__v2.3.18__2026-07-24T194720-0700-PDT__22166e566d95.pdf",
+      "identified_paper": "P1-LEGACY",
+      "identified_version": "v2.3.18",
+      "md5": "b7f4bdda49647c4aea77ae131b811da2",
+      "object_created": true,
+      "page_count": 34,
+      "reference_created": true,
+      "retention_verified": true,
+      "served_paths": [
+        {
+          "git": {
+            "head_blob": "ef7080403c54f2ad5ccb8f7a07d3fa2eef6de662",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "public/papers/paper1_spin_torsion.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "ef7080403c54f2ad5ccb8f7a07d3fa2eef6de662",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "public/papers/spin-torsion-paper.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "ef7080403c54f2ad5ccb8f7a07d3fa2eef6de662",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "site/public/arxiv_v2/main.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "ef7080403c54f2ad5ccb8f7a07d3fa2eef6de662",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "site/public/papers/paper1_spin_torsion.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "ef7080403c54f2ad5ccb8f7a07d3fa2eef6de662",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "site/public/papers/spin-torsion-paper.pdf"
+        }
+      ],
+      "sha256": "22166e566d951513dd3468ecd16fdc3a7d06949054e6b08713f6e0e505c0ac74",
+      "size_bytes": 1239876
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/46/46f55ddf5990babd8078cd6cfa4e55d6c121ad5704686d606da6d2ed64e634be.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1-LEGACY/P1-LEGACY__2026-03-19-barriers__2026-07-24T194720-0700-PDT__46f55ddf5990.pdf",
+      "identified_paper": "P1-LEGACY",
+      "identified_version": "2026-03-19-barriers",
+      "md5": "19d240a7df966efa72c61c65095507c1",
+      "object_created": true,
+      "page_count": 10,
+      "reference_created": true,
+      "retention_verified": true,
+      "served_paths": [
+        {
+          "git": {
+            "head_blob": "3958b677732b5b1a552b69110f56df5979b51c7c",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "public/paper3_barriers_ech_transparency.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "3958b677732b5b1a552b69110f56df5979b51c7c",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "site/public/paper3_barriers_ech_transparency.pdf"
+        }
+      ],
+      "sha256": "46f55ddf5990babd8078cd6cfa4e55d6c121ad5704686d606da6d2ed64e634be",
+      "size_bytes": 107088
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/6e/6e22bec639d61b7accde02f8c392f1ea5fcb473a6d029b42dde2f05ff6a24b80.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1-LEGACY/P1-LEGACY__v2.1.0__2026-07-24T194720-0700-PDT__6e22bec639d6.pdf",
+      "identified_paper": "P1-LEGACY",
+      "identified_version": "v2.1.0",
+      "md5": "c061a7f26374f0be0a22ca99998e8826",
+      "object_created": true,
+      "page_count": 24,
+      "reference_created": true,
+      "retention_verified": true,
+      "served_paths": [
+        {
+          "git": {
+            "head_blob": "51fc1164aebd7744efdfa94c19b2610d73441062",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "51fc1164aebd7744efdfa94c19b2610d73441062",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "site/public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf"
+        }
+      ],
+      "sha256": "6e22bec639d61b7accde02f8c392f1ea5fcb473a6d029b42dde2f05ff6a24b80",
+      "size_bytes": 495770
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/87/87ae4e6c5101986ed07345728d46b3a6d2aebbda4444ae57657de0c6f0276d46.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1-LEGACY/P1-LEGACY__2026-03-09-HUBIFY-2026-001__2026-07-24T194720-0700-PDT__87ae4e6c5101.pdf",
+      "identified_paper": "P1-LEGACY",
+      "identified_version": "2026-03-09-HUBIFY-2026-001",
+      "md5": "df9d96596496aab582fa67e79d02db46",
+      "object_created": true,
+      "page_count": 33,
+      "reference_created": true,
+      "retention_verified": true,
+      "served_paths": [
+        {
+          "git": {
+            "head_blob": "93d5431459134e49df51c9bdf7451c1801671a79",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "public/downloads/bigbounce_latest.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "93d5431459134e49df51c9bdf7451c1801671a79",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "site/public/downloads/bigbounce_latest.pdf"
+        }
+      ],
+      "sha256": "87ae4e6c5101986ed07345728d46b3a6d2aebbda4444ae57657de0c6f0276d46",
+      "size_bytes": 1545959
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/e4/e4854638c6f86c73454b375b8176bb19d6d9978cd25a6da879f4b853ec683da9.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1-LEGACY/P1-LEGACY__v2.3.18-variant__2026-07-24T194720-0700-PDT__e4854638c6f8.pdf",
+      "identified_paper": "P1-LEGACY",
+      "identified_version": "v2.3.18-variant",
+      "md5": "c2d15691791b899a56daa925571ca080",
+      "object_created": true,
+      "page_count": 34,
+      "reference_created": true,
+      "retention_verified": true,
+      "served_paths": [
+        {
+          "git": {
+            "head_blob": "b799751a70a4c1908629fba9f292b515d35bbfcb",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "public/papers/spin_torsion_paper1.pdf"
+        },
+        {
+          "git": {
+            "head_blob": "b799751a70a4c1908629fba9f292b515d35bbfcb",
+            "index_dirty": false,
+            "overall_dirty": false,
+            "tracked": true,
+            "worktree_dirty": false
+          },
+          "path": "site/public/papers/spin_torsion_paper1.pdf"
+        }
+      ],
+      "sha256": "e4854638c6f86c73454b375b8176bb19d6d9978cd25a6da879f4b853ec683da9",
+      "size_bytes": 1239876
+    }
+  ],
+  "git_head": "64e035eb30a5ffeac029f6cecb811a4e44a94180",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260725T024720Z-retire-orphans-20260724-retire.json",
+  "materialized": true,
+  "mode": "archive-then-remove-retention",
+  "policy": "Captures the exact served bytes of every registry row dispositioned archive-then-remove, verifies the stored object and reference re-read byte-for-byte, and only then may the served copies be removed.",
+  "run_id": "retire-orphans-20260724",
+  "schema": "bigbounce-pdf-retention-retire/v1",
+  "served_path_count": 13
+}

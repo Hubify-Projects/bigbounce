@@ -1,0 +1,81 @@
+{
+  "description": "Targeted numerical orientation-quadrature convergence; not a full forecast rerun.",
+  "selected_z_bins": [
+    0.30000000000000004,
+    0.7,
+    1.3
+  ],
+  "triangle_shells": 8,
+  "runs": {
+    "8x8": {
+      "full": {
+        "local": {
+          "sigma_fixed": 0.5327266257884304,
+          "sigma_bias_marginalized": 0.562734720334715,
+          "n_triangles": 122
+        },
+        "bounce": {
+          "sigma_fixed": 0.533562173386329,
+          "sigma_bias_marginalized": 0.5628608619227866,
+          "n_triangles": 122
+        },
+        "r_eff_bias_marginalized": 0.9997758920603563
+      },
+      "primordial_only": {
+        "local": {
+          "sigma_fixed": 3.325991143948129,
+          "sigma_bias_marginalized": 3.663020976061878,
+          "n_triangles": 122
+        },
+        "bounce": {
+          "sigma_fixed": 3.3520713031705895,
+          "sigma_bias_marginalized": 3.6495727890421272,
+          "n_triangles": 122
+        },
+        "r_eff_bias_marginalized": 1.0036848660917599
+      }
+    },
+    "12x12": {
+      "full": {
+        "local": {
+          "sigma_fixed": 0.5327260346463425,
+          "sigma_bias_marginalized": 0.5627340582626128,
+          "n_triangles": 122
+        },
+        "bounce": {
+          "sigma_fixed": 0.5335615794873474,
+          "sigma_bias_marginalized": 0.5628601985664642,
+          "n_triangles": 122
+        },
+        "r_eff_bias_marginalized": 0.9997758940778321
+      },
+      "primordial_only": {
+        "local": {
+          "sigma_fixed": 3.325995060095032,
+          "sigma_bias_marginalized": 3.663026257736343,
+          "n_triangles": 122
+        },
+        "bounce": {
+          "sigma_fixed": 3.3520752756829184,
+          "sigma_bias_marginalized": 3.6495779402225623,
+          "n_triangles": 122
+        },
+        "r_eff_bias_marginalized": 1.0036848966466956
+      }
+    }
+  },
+  "fractional_deltas": {
+    "full": {
+      "local_sigma_marg_fractional_change_12x12_vs_8x8": -1.176526129149128e-06,
+      "bounce_sigma_marg_fractional_change_12x12_vs_8x8": -1.1785440546741467e-06,
+      "r_eff_fractional_change_12x12_vs_8x8": 2.017927975703141e-09
+    },
+    "primordial_only": {
+      "local_sigma_marg_fractional_change_12x12_vs_8x8": 1.4418903138727883e-06,
+      "bounce_sigma_marg_fractional_change_12x12_vs_8x8": 1.4114475125852512e-06,
+      "r_eff_fractional_change_12x12_vs_8x8": 3.044275820525576e-08
+    }
+  },
+  "runtime_seconds": 459.15,
+  "date_utc": "2026-07-14T08:56:59.345848+00:00"
+}

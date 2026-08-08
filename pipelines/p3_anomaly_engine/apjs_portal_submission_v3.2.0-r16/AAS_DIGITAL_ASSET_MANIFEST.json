@@ -1,0 +1,31 @@
+{
+  "aas_policy": {
+    "data_guide": "https://journals.aas.org/data-guide/",
+    "digital_asset_doi": "https://journals.aas.org/news/digital_asset_doi_landingpage/"
+  },
+  "files": {
+    "ReadMe": {
+      "bytes": 7060,
+      "sha256": "3ccef65389a96c6bb5f94332276113ac56b0c14f0e8dc3e4e205af7c6c12e3bd"
+    },
+    "tab3.tsv": {
+      "bytes": 86927,
+      "sha256": "8d13592e8b9bb007b24c496c138e53787ad98df476f9ff487dabc851732faa45"
+    }
+  },
+  "journal_asset_doi": null,
+  "journal_asset_doi_status": "To be assigned by AAS during the publication workflow; not yet claimed.",
+  "source_release": {
+    "immutable_revision": "1a9e85ee004894956665444b4f110111f1090b79",
+    "parquet_sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03",
+    "path": "releases/p3-v3.2.0-r2/",
+    "tag": "p3-v3.2.0-r2"
+  },
+  "status": "PASS",
+  "validation": {
+    "columns": 43,
+    "null_cells": 0,
+    "rows": 181,
+    "tsv_roundtrip": "exact by column after typed parse"
+  }
+}

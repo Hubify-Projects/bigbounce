@@ -1,0 +1,79 @@
+{
+  "commit": "91ad88e36121da128175415f55be44d5e458f9f1",
+  "generated_at_utc": "2026-07-14T09:55:56.329245+00:00",
+  "provider_policy": {
+    "allowed": [
+      "openai",
+      "gemini",
+      "xai"
+    ],
+    "codex_subscription": "separate CLI leg",
+    "forbidden": [
+      "anthropic",
+      "perplexity"
+    ]
+  },
+  "results": [
+    {
+      "duration_s": 131.9180669784546,
+      "error": "",
+      "fallback": false,
+      "model": "gemini-2.5-pro",
+      "name": "Gemini_cosmology",
+      "ok": true,
+      "out": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1-EXACTPDF-91ad88e3-NONANTHROPIC/P1A/raw/P1EXACT91ad88e3_P1A_Gemini_cosmology.md",
+      "paper": "P1A"
+    },
+    {
+      "duration_s": 69.40023684501648,
+      "error": "",
+      "fallback": false,
+      "model": "grok-4.3",
+      "name": "Grok_brutal",
+      "ok": true,
+      "out": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1-EXACTPDF-91ad88e3-NONANTHROPIC/P1A/raw/P1EXACT91ad88e3_P1A_Grok_brutal.md",
+      "paper": "P1A"
+    },
+    {
+      "duration_s": 408.6799831390381,
+      "error": "",
+      "fallback": false,
+      "model": "gpt-5-2025-08-07",
+      "name": "OpenAI_methodology",
+      "ok": true,
+      "out": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1-EXACTPDF-91ad88e3-NONANTHROPIC/P1A/raw/P1EXACT91ad88e3_P1A_OpenAI_methodology.md",
+      "paper": "P1A"
+    },
+    {
+      "duration_s": 142.5044400691986,
+      "error": "",
+      "fallback": false,
+      "model": "gemini-2.5-pro",
+      "name": "Gemini_cosmology",
+      "ok": true,
+      "out": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1-EXACTPDF-91ad88e3-NONANTHROPIC/P1B/raw/P1EXACT91ad88e3_P1B_Gemini_cosmology.md",
+      "paper": "P1B"
+    },
+    {
+      "duration_s": 140.72981595993042,
+      "error": "",
+      "fallback": false,
+      "model": "grok-4.3",
+      "name": "Grok_brutal",
+      "ok": true,
+      "out": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1-EXACTPDF-91ad88e3-NONANTHROPIC/P1B/raw/P1EXACT91ad88e3_P1B_Grok_brutal.md",
+      "paper": "P1B"
+    },
+    {
+      "duration_s": 454.2807631492615,
+      "error": "",
+      "fallback": false,
+      "model": "gpt-5-2025-08-07",
+      "name": "OpenAI_methodology",
+      "ok": true,
+      "out": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1-EXACTPDF-91ad88e3-NONANTHROPIC/P1B/raw/P1EXACT91ad88e3_P1B_OpenAI_methodology.md",
+      "paper": "P1B"
+    }
+  ],
+  "round": "P1EXACT91ad88e3"
+}

@@ -1,0 +1,72 @@
+{
+  "candidate_receipts": 271,
+  "completed_fraction": 0.95572,
+  "cutoff_exclusive": "2026-06-10",
+  "explicit_findings": 1574,
+  "failed_receipts": 6,
+  "gaps": [
+    {
+      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1255.md",
+      "reason": "no explicit tagged findings or clean-review statement",
+      "status": "parse_error"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0032.md",
+      "reason": "no explicit tagged findings or clean-review statement",
+      "status": "parse_error"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0927.md",
+      "reason": "no explicit tagged findings or clean-review statement",
+      "status": "parse_error"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_2332.md",
+      "reason": "no explicit tagged findings or clean-review statement",
+      "status": "parse_error"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0022.md",
+      "reason": "no explicit tagged findings or clean-review statement",
+      "status": "parse_error"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/API_P3APJS_codex_132618.md",
+      "reason": "no explicit tagged findings or clean-review statement",
+      "status": "parse_error"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_apjs/PROOF_2026-07-14_P3_v3.1.161_913f5033/API_P3APJS_codex_022451.md",
+      "reason": "explicit provider failure in raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE/intwave_P5_codex_1733.md",
+      "reason": "explicit provider failure in raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
+    }
+  ],
+  "parse_gap_receipts": 6,
+  "parseable_receipts": 259,
+  "schema_version": "finding-receipt-inventory-report/v1"
+}

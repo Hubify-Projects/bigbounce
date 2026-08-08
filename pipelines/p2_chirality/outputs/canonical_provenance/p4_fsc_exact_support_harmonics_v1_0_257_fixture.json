@@ -1,0 +1,190 @@
+{
+  "apodized_fsc_c2_2deg": {
+    "apodization": "NaMaster C2, 2 degrees, applied to exact FSC binary mask",
+    "f_sky_effective": 0.4839859227875432,
+    "f_sky_mean_weight": 0.477926472046118,
+    "moment_z_ddof0": 22.339037735132365,
+    "n_draws": 8,
+    "null_mean": 2.240644420502514e-07,
+    "null_std_ddof0": 2.9447342230332905e-07,
+    "null_std_ddof1": 3.148053302199581e-07,
+    "observed": 6.802317334877888e-06,
+    "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+    "rank_k_upper": 0,
+    "rank_p_upper_add_one": 0.1111111111111111
+  },
+  "arrays": {
+    "members": {
+      "binomial_monopole_binary_c1": [
+        500
+      ],
+      "fixed_occupancy_apodized_c1": [
+        8
+      ],
+      "fixed_occupancy_binary_c1_to_c5": [
+        8,
+        5
+      ]
+    },
+    "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonic_nulls_v1_0_257_fixture.npz",
+    "sha256": "beb2f0363ee363008e0b7a28ed3f8b6fcca25fead74ed67bd5eb87b9aa103374"
+  },
+  "catalog": {
+    "n_spirals": 3201160,
+    "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+    "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+  },
+  "common_support_invariants": {
+    "all_data_fields_use_mask_sha256": "499fa89e8748bb31ef7c539f3c6aee4ed34fb7dc87c75f1120bdc59b1dcf5852",
+    "all_null_fields_use_mask_sha256": "499fa89e8748bb31ef7c539f3c6aee4ed34fb7dc87c75f1120bdc59b1dcf5852",
+    "apodized_nonzero_pixels_subset_of_support": true,
+    "apodized_weight_derived_from_same_binary_mask": true,
+    "binomial_monopole_pixel_capacities_unchanged": true,
+    "fixed_occupancy_pixel_capacities_unchanged": true
+  },
+  "fixed_occupancy_direct_mc_binary": {
+    "moment_z_ddof0": 18.05457542152659,
+    "n_draws": 8,
+    "null_mean": 2.1925456873871078e-07,
+    "null_std_ddof0": 3.7619353780584645e-07,
+    "null_std_ddof1": 4.0216780845367635e-07,
+    "observed": 7.01126917014528e-06,
+    "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+    "rank_k_upper": 0,
+    "rank_p_upper_add_one": 0.1111111111111111
+  },
+  "generator": {
+    "path": "pipelines/p2_chirality/scripts/p4_fsc_exact_support_harmonics_v1_0_257.py",
+    "sha256": "7b4aaf5ecbe6461b52f22c78ffa688c408f10effa7edce170925c99f22b7156d"
+  },
+  "interpretation_limits": [
+    "systematics diagnostic, not a cosmological detection",
+    "moment-z values are not Gaussian-equivalent tail significances",
+    "fixed-occupancy and binomial-monopole nulls answer different questions"
+  ],
+  "master_monopole_only_binary_10000": {
+    "moment_z_ddof0": 6.983338664234629,
+    "n_draws": 500,
+    "null_mean": 6.041366819078272e-07,
+    "null_std_ddof0": 9.174884387394482e-07,
+    "null_std_ddof1": 9.184073057085882e-07,
+    "observed": 7.01126917014528e-06,
+    "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+    "rank_k_upper": 1,
+    "rank_p_upper_add_one": 0.003992015968063872
+  },
+  "master_monopole_only_binary_500": {
+    "moment_z_ddof0": 6.983338664234629,
+    "n_draws": 500,
+    "null_mean": 6.041366819078272e-07,
+    "null_std_ddof0": 9.174884387394482e-07,
+    "null_std_ddof1": 9.184073057085882e-07,
+    "observed": 7.01126917014528e-06,
+    "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+    "rank_k_upper": 1,
+    "rank_p_upper_add_one": 0.003992015968063872
+  },
+  "multipole_spectrum_binary": {
+    "ell_1": {
+      "moment_z_ddof0": 18.05457542152659,
+      "n_draws": 8,
+      "null_mean": 2.1925456873871078e-07,
+      "null_std_ddof0": 3.7619353780584645e-07,
+      "null_std_ddof1": 4.0216780845367635e-07,
+      "observed": 7.01126917014528e-06,
+      "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+      "rank_k_upper": 0,
+      "rank_p_upper_add_one": 0.1111111111111111
+    },
+    "ell_2": {
+      "moment_z_ddof0": 2.5850919727291055,
+      "n_draws": 8,
+      "null_mean": 5.192778777203763e-07,
+      "null_std_ddof0": 7.038436645713969e-07,
+      "null_std_ddof1": 7.524405276221736e-07,
+      "observed": 2.3387784850601314e-06,
+      "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+      "rank_k_upper": 0,
+      "rank_p_upper_add_one": 0.1111111111111111
+    },
+    "ell_3": {
+      "moment_z_ddof0": 3.5250458442203634,
+      "n_draws": 8,
+      "null_mean": 7.176991455586396e-07,
+      "null_std_ddof0": 4.6478448990782756e-07,
+      "null_std_ddof1": 4.968755199775947e-07,
+      "observed": 2.3560857801663084e-06,
+      "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+      "rank_k_upper": 0,
+      "rank_p_upper_add_one": 0.1111111111111111
+    },
+    "ell_4": {
+      "moment_z_ddof0": -0.7090296431703751,
+      "n_draws": 8,
+      "null_mean": 8.186328846608477e-07,
+      "null_std_ddof0": 5.64746347038018e-07,
+      "null_std_ddof1": 6.037392402995427e-07,
+      "observed": 4.1821098373870903e-07,
+      "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+      "rank_k_upper": 5,
+      "rank_p_upper_add_one": 0.6666666666666666
+    },
+    "ell_5": {
+      "moment_z_ddof0": 1.7600583306835318,
+      "n_draws": 8,
+      "null_mean": 5.624162640338475e-07,
+      "null_std_ddof0": 4.1739401340427655e-07,
+      "null_std_ddof1": 4.4621296955695227e-07,
+      "observed": 1.2970540745034782e-06,
+      "rank_formula": "(k+1)/(N+1), k=count(null >= observed)",
+      "rank_k_upper": 0,
+      "rank_p_upper_add_one": 0.1111111111111111
+    }
+  },
+  "nulls": {
+    "binomial_monopole": {
+      "definition": "independent Binomial(N_spiral(pixel), p_CW_support) draws on the exact support",
+      "n_draws": 500,
+      "seed": 42
+    },
+    "fixed_occupancy": {
+      "definition": "multivariate-hypergeometric allocation of the fixed observed support CW total over fixed pixel capacities",
+      "n_draws": 8,
+      "seed": 42
+    }
+  },
+  "review_basis": "P4 v1.0.257 exact-PDF truth-audit finding 1",
+  "runtime": {
+    "healpy": "1.19.0",
+    "numpy": "2.5.1",
+    "platform": "macOS-26.5-arm64-arm-64bit",
+    "pyarrow": "25.0.0",
+    "pymaster": "3.0",
+    "python": "3.12.13",
+    "wall_seconds": 39.1659460067749
+  },
+  "schema": "p4-fsc-exact-support-harmonics/v1",
+  "shared_field": {
+    "definition": "f_CW(pixel)-0.5",
+    "master_binning": "single-ell bins ell=1..191; reported ell=1..5",
+    "monopole_subtraction": "N_spiral-weighted support mean, applied identically to data and every null realization"
+  },
+  "status": "complete",
+  "support": {
+    "definition": "class_eq in {CW,CCW}; HEALPix NSIDE=64; N_spiral(pixel) >= 10",
+    "expected_n_pixels": 24087,
+    "f_sky": 0.49005126953125,
+    "indices": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_mask_indices_nspiral_ge10_nside64_v1_0_257_fixture.npy",
+      "sha256": "a964f7a4760a4b91a254dfa3b98cdb04f54b94515fa16ccb976306247b2b10d0"
+    },
+    "mask": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_mask_nspiral_ge10_nside64_v1_0_257_fixture.npy",
+      "sha256": "499fa89e8748bb31ef7c539f3c6aee4ed34fb7dc87c75f1120bdc59b1dcf5852"
+    },
+    "n_cw_in_support": 1591751,
+    "n_pixels": 24087,
+    "n_spirals_in_support": 3200420,
+    "p_cw_in_support": 0.49735690940564053
+  }
+}

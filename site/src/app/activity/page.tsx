@@ -5,7 +5,7 @@ import { getRecentActivity, type ActivityEvent } from "@/lib/liveActivity";
 export const metadata: Metadata = {
   title: "Activity",
   description:
-    "Time-stamped activity feed for the BigBounce research program — version bumps, R-rounds, finding closures, and pod lifecycle events from the Convex live source-of-truth.",
+    "Time-stamped activity feed for the BigBounce research program — version bumps, review rounds, finding closures, and compute events from the live research database.",
 };
 
 function relativeTime(ms: number, now: number): string {
@@ -49,16 +49,32 @@ function clampTimestamp(
   return ms > now + 60_000 ? { ms: now, skewed: true } : { ms, skewed: false };
 }
 
+/** Strip internal "(subagent)" suffix before public display. */
+function publicHeadline(raw: string): string {
+  return raw.replace(/\s*\(subagent\)\s*$/i, "").trim();
+}
+
+/**
+ * Normalize a Convex paperSlug to a human-readable label.
+ * "paper-1a" → "Paper 1A", "paper-2" → "Paper 2", etc.
+ */
+function paperLabel(slug: string): string {
+  return slug.replace(
+    /^paper-(\d+)([a-zA-Z]?)$/,
+    (_, n, l) => `Paper ${n}${l.toUpperCase()}`,
+  );
+}
+
 function kindLabel(kind: string): string {
   switch (kind) {
     case "version_bump": return "VERSION";
-    case "r_round": return "R-ROUND";
-    case "r_round_done": return "R-ROUND ✓";
+    case "r_round": return "REVIEW ROUND";
+    case "r_round_done": return "REVIEW ROUND ✓";
     case "finding_real_close": return "FINDING ✓";
-    case "finding_audit_close": return "FINDING (audit)";
+    case "finding_audit_close": return "FINDING (verified)";
     case "caveat_close": return "CAVEAT ✓";
-    case "pod_start": return "POD START";
-    case "pod_stop": return "POD STOP";
+    case "pod_start": return "COMPUTE START";
+    case "pod_stop": return "COMPUTE STOP";
     default: return kind.toUpperCase();
   }
 }
@@ -86,17 +102,17 @@ export default async function ActivityPage() {
             }}
             title={
               live
-                ? "Reading from Convex — every R-round / closure / pod event lands here within seconds."
-                : "Convex unreachable; feed empty. Set NEXT_PUBLIC_CONVEX_URL."
+                ? "Live data — every review round, finding closure, and compute event lands here within seconds."
+                : "Live feed temporarily unavailable."
             }
           >
             ● {live ? "LIVE" : "OFFLINE"}
           </span>
         </h1>
         <p className="subtitle">
-          Every paper-orchestration event from the Convex source-of-truth:
-          version bumps, cross-vendor R-rounds, finding truth-audits, caveat closures,
-          pod lifecycle. Time-sorted descending. See{" "}
+          Every research event from the live database:
+          version bumps, review rounds, finding closures, caveat resolutions,
+          compute runs. Time-sorted descending. See{" "}
           <Link href="/docs">/docs</Link> for how the pipeline writes here.
         </p>
         <p
@@ -135,12 +151,12 @@ export default async function ActivityPage() {
         >
           {[
             { label: "Versions", v: summary.paperVersions },
-            { label: "R-Rounds", v: summary.rRounds },
+            { label: "Review Rounds", v: summary.rRounds },
             { label: "Findings (open)", v: summary.findings.open },
             { label: "Findings (closed)", v: summary.findings.closed },
             { label: "Caveats (open)", v: summary.caveats.open },
             { label: "Caveats (closed)", v: summary.caveats.closed },
-            { label: "Pods (running)", v: summary.pods.running },
+            { label: "Compute (running)", v: summary.pods.running },
           ].map((s) => (
             <div
               key={s.label}
@@ -180,8 +196,7 @@ export default async function ActivityPage() {
               fontSize: "0.85rem",
             }}
           >
-            No activity in the feed yet. Run an R-round or close a finding via
-            the bigbounce-mcp tools to populate this.
+            No activity in the feed yet. Activity will appear as research events are recorded.
           </p>
         )}
         {events.map((e: ActivityEvent) => {
@@ -229,7 +244,7 @@ export default async function ActivityPage() {
                     textDecoration: "none",
                   }}
                 >
-                  {e.paperSlug}
+                  {paperLabel(e.paperSlug)}
                 </Link>
               )}
               <span
@@ -256,7 +271,7 @@ export default async function ActivityPage() {
               </span>
             </div>
             <div style={{ fontSize: "0.88rem", marginBottom: 4 }}>
-              {e.headline}
+              {publicHeadline(e.headline)}
             </div>
             {e.detail && (
               <div

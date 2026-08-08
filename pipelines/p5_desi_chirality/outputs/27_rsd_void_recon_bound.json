@@ -1,0 +1,49 @@
+{
+  "written_utc": "2026-07-12T07:00:04Z",
+  "script": "pipelines/p5_desi_chirality/scripts/27_rsd_void_recon_bound.py",
+  "closes": "DP5 recurring RSD MAJOR (ChatGPT-M4/Grok-M3): fixed-redshift-space classification -> computed linear-theory consistent-reconstruction bound (galaxies AND voids displaced together by the coherent void-outflow field)",
+  "method": {
+    "name": "void-velocity-profile (Zel'dovich / coherent-outflow) reconstruction",
+    "reference": "Hamaus, Sutter, Lavaux & Wandelt 2014 (PRL 112, 041304); linear continuity v_r = -(1/3) f(z) Delta(<r) r",
+    "profile": {
+      "form": "HSW: delta(r)=delta_c*(1-(r/rs)^alpha)/(1+(r/Rv)^beta)",
+      "delta_c": -0.7,
+      "rs_over_rv": 0.8,
+      "alpha": 2.0,
+      "beta": 9.0,
+      "delta_c_scatter_mc": 0.15
+    },
+    "growth_rate_f": "Omega_m(z)^0.55 (Linder), per-galaxy",
+    "consistency": "galaxy LOS positions mapped s->r by the void-outflow LOS displacement (chi -> chi - xi*los_comp), each published HOLE CENTER displaced by the SAME s->r map (evaluated at its offset from the parent maximal void), and each hole radius contracted by the volume-equivalent LOS factor (1-eps)^(1/3), eps = (1/3) f |Delta(<R)| -- the z-space void is LOS-elongated by outflow, so the real-space void contracts. Galaxies AND voids move consistently under one physical field; the exact scripts/26 VoidFinder any-hole membership test is re-run",
+    "sample_rebuild": "z<=0.24 matched CW/CCW spirals rebuilt from raw desi_zall.fits + p4_chirality.parquet via scripts/03 convention (radius 1.0\", ZWARN==0, GALAXY/QSO, dedupe=nearest); intermediate matched parquet not materialized on this host",
+    "cosmology": {
+      "H0": 67.66,
+      "Om0": 0.315,
+      "little_h": 0.6766
+    },
+    "n_mc": 200,
+    "seed": 20260711
+  },
+  "sample": {
+    "n_gal_zle024_cwccw": 678987,
+    "n_void_zspace": 57058,
+    "n_void_recon": 42864,
+    "published_exact_rerun_ref_n_void": 57081
+  },
+  "delta_fcw_pp": {
+    "zspace": -0.06945945645352447,
+    "reconstructed": -0.04548992105362082,
+    "shift_recon_minus_zspace": 0.023969535399903652,
+    "shift_mc_mean": 0.02604408365226174,
+    "shift_mc_std": 0.04851510113676916,
+    "shift_mc_min": -0.0921408418799674,
+    "shift_mc_max": 0.11475613763551329,
+    "abs_shift_reported": 0.023969535399903652
+  },
+  "two_sample_z": {
+    "zspace": -0.3175900705812813,
+    "reconstructed": -0.1823219425721989
+  },
+  "verdict": "Computed RSD systematic on the footprint-restricted primary Delta f_CW: |Delta_recon - Delta_zspace| = 0.024 pp (MC +0.026 +/- 0.049 pp). The consistent linear void-outflow reconstruction moves the estimand by well under the ~0.9 pp effective 2sigma systematic envelope; the null verdict is preserved (|two-sample z| 0.18 in the reconstructed frame vs 0.32 in redshift space).",
+  "honest_scope": "FIRST-ORDER linear/Zel'dovich reconstruction using the analytic universal void velocity profile keyed to each published DESIVAST void's own center + R_eff. Galaxies AND void walls are displaced by the SAME coherent outflow field (the consistency the reviewers required), and the exact primary membership test is re-run. It is NOT a full nonlinear iterative reconstruction and does NOT re-derive the void catalog by re-running VoidFinder on the reconstructed density field. It bounds the DOMINANT coherent, physically-directed RSD term the fixed-void-geometry MC (scripts/26 [A13]) cannot see; residual small-scale stochastic FoG scatter remains bounded by that MC and both fold into the same ~0.9 pp systematic envelope."
+}

@@ -1,0 +1,325 @@
+{
+  "aas_relationship": {
+    "digital_asset_doi": null,
+    "digital_asset_doi_status": "pending AAS publication workflow; not claimed",
+    "tab3_tsv": "exact typed serialization of the primary 181-row, 43-column Parquet table"
+  },
+  "bundle": "p3-apjs-v3.2.0-r7",
+  "component_versions": {
+    "aas_machine_readable_table": "v3.2.0-r4",
+    "primary_release": "v3.2.0-r2",
+    "science_controls": "r6",
+    "warned_auxiliary": "v3.2.0-r5"
+  },
+  "coordinate_lineage": {
+    "source_assertions": {
+      "pipelines/p1_highz_tracers/outputs/desi_dr1/13_desi_dr1_gpu_inference.py": [
+        "'ra': float(fm['TARGET_RA'][i])",
+        "'dec': float(fm['TARGET_DEC'][i])"
+      ],
+      "pipelines/p1_highz_tracers/outputs/desi_dr1/run_dr1_parallel.py": [
+        "'ra':float(fm['TARGET_RA'][i])",
+        "'dec':float(fm['TARGET_DEC'][i])"
+      ],
+      "pipelines/p1_highz_tracers/scripts/enhanced_18M_inference.py": [
+        "TARGET_RA",
+        "TARGET_DEC",
+        "MEAN_FIBER_RA",
+        "MEAN_FIBER_DEC"
+      ],
+      "pipelines/p3_anomaly_engine/pathc_positional_dedup.py": [
+        "ra_mean",
+        "dec_mean",
+        "SkyCoord"
+      ]
+    },
+    "status": "PASS",
+    "supported_claim": "Historical DESI anomaly ra/dec fields were copied from coadd FIBERMAP TARGET_RA/TARGET_DEC; frozen cluster coordinates were then computed from member-coordinate means.",
+    "unsupported_claims_explicitly_excluded": [
+      "secure object identity for any positional association",
+      "a purity estimate for the 181-row catalog or 11-row tail",
+      "recovery of the unavailable production object-to-spectrum mapping",
+      "reproduction of historical score normalization or spectral preprocessing"
+    ]
+  },
+  "created_utc": "2026-07-14T20:30:00Z",
+  "manifest_self_hash": "excluded (self-referential)",
+  "payload_files": [
+    {
+      "bytes": 988,
+      "path": "aas_machine_readable_table/AAS_DIGITAL_ASSET_MANIFEST.json",
+      "role": "aas_machine_readable_table",
+      "sha256": "52a3d6ffbb57e3f0cf36f7d053673c7c13a5cdeac8a68f5fa35b099e7ecc2c92",
+      "source_repo_path": "pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4/AAS_DIGITAL_ASSET_MANIFEST.json"
+    },
+    {
+      "bytes": 7060,
+      "path": "aas_machine_readable_table/ReadMe",
+      "role": "aas_machine_readable_table",
+      "sha256": "3ccef65389a96c6bb5f94332276113ac56b0c14f0e8dc3e4e205af7c6c12e3bd",
+      "source_repo_path": "pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4/ReadMe"
+    },
+    {
+      "bytes": 6574,
+      "path": "aas_machine_readable_table/prepare_p3_v320_r4_aas_package.py",
+      "role": "aas_table_builder",
+      "sha256": "266de2bcea1ee688b28596a739c1ffd95728928b2d9a919bf15be6bb57798f10",
+      "source_repo_path": "pipelines/p3_anomaly_engine/scripts/prepare_p3_v320_r4_aas_package.py"
+    },
+    {
+      "bytes": 86927,
+      "path": "aas_machine_readable_table/tab3.tsv",
+      "role": "aas_machine_readable_table",
+      "sha256": "8d13592e8b9bb007b24c496c138e53787ad98df476f9ff487dabc851732faa45",
+      "source_repo_path": "pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4/tab3.tsv"
+    },
+    {
+      "bytes": 8305,
+      "path": "coordinate_lineage/13_desi_dr1_gpu_inference.py",
+      "role": "upstream_coordinate_lineage",
+      "sha256": "0c8bb3f39d02816fc412ec0ff1eb7430a95fdb2ded1c4ab0e832c67758d8d23e",
+      "source_repo_path": "pipelines/p1_highz_tracers/outputs/desi_dr1/13_desi_dr1_gpu_inference.py"
+    },
+    {
+      "bytes": 1189,
+      "path": "coordinate_lineage/COORDINATE_LINEAGE_AUDIT.json",
+      "role": "coordinate_lineage_audit",
+      "sha256": "a09d382ce3ac7c5df61ac7ad5b2346692367714dd58408397e28cb054897ebf7",
+      "source_repo_path": null
+    },
+    {
+      "bytes": 10514503,
+      "path": "coordinate_lineage/desi_dr1_anomalies.parquet",
+      "role": "frozen_historical_anomaly_table",
+      "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+      "source_repo_path": "pipelines/p3_anomaly_engine/apjs_submission_v3.1.161/desi_dr1_anomalies.parquet"
+    },
+    {
+      "bytes": 40336,
+      "path": "coordinate_lineage/enhanced_18M_inference.py",
+      "role": "upstream_coordinate_lineage",
+      "sha256": "f9aa536e976132d780cadcb0d319bd2f0dd9ee91d4b24a4fb1973802afd25595",
+      "source_repo_path": "pipelines/p1_highz_tracers/scripts/enhanced_18M_inference.py"
+    },
+    {
+      "bytes": 11640,
+      "path": "coordinate_lineage/pathc_positional_dedup.py",
+      "role": "cluster_coordinate_lineage",
+      "sha256": "c5ab3517a655c03f5b7b371e340b10dc289c27f6dacffed4862bf4f38ba0ab62",
+      "source_repo_path": "pipelines/p3_anomaly_engine/pathc_positional_dedup.py"
+    },
+    {
+      "bytes": 6698,
+      "path": "coordinate_lineage/run_dr1_parallel.py",
+      "role": "upstream_coordinate_lineage",
+      "sha256": "4e400eb04968091516a6aaf145dab3b4e7e1ec6018f538653c75fa78820aa83a",
+      "source_repo_path": "pipelines/p1_highz_tracers/outputs/desi_dr1/run_dr1_parallel.py"
+    },
+    {
+      "bytes": 552,
+      "path": "primary_release/COHORT_COUNTS.json",
+      "role": "primary_release",
+      "sha256": "d953cb95bb2c168231eedbc8e68d442f7b43670f25cc2951b9e1c724071e5ba6",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/COHORT_COUNTS.json"
+    },
+    {
+      "bytes": 4862,
+      "path": "primary_release/DATA_DICTIONARY.md",
+      "role": "primary_release",
+      "sha256": "346b02d53cd143011d90106a1279a75141bfe4afdd26bb53129eb5a7bad7c273",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/DATA_DICTIONARY.md"
+    },
+    {
+      "bytes": 5763,
+      "path": "primary_release/PROVENANCE.json",
+      "role": "primary_release",
+      "sha256": "105979e52eb833726a205936e870366f363560af259a2e325376caa3dff77f34",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/PROVENANCE.json"
+    },
+    {
+      "bytes": 4316,
+      "path": "primary_release/QC_REPORT.json",
+      "role": "primary_release",
+      "sha256": "3cdda75b1309a9aa4649065dbbf1b5a89a6616792c0def89db1f884a5bf8d75a",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/QC_REPORT.json"
+    },
+    {
+      "bytes": 5230,
+      "path": "primary_release/README.md",
+      "role": "primary_release",
+      "sha256": "188cd6aac0334dcba4fcf10f6f4a9a3a4d5f32c9a18f6852c16320f2bf984e65",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/README.md"
+    },
+    {
+      "bytes": 1790,
+      "path": "primary_release/RELEASE_MANIFEST.json",
+      "role": "primary_release",
+      "sha256": "d962f4d62cd9fe94bb821e97ae9e697a058b5b1d9ca2024fe88fce1f654aafb6",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/RELEASE_MANIFEST.json"
+    },
+    {
+      "bytes": 14837,
+      "path": "primary_release/SELECTION_AUDIT.json",
+      "role": "primary_release",
+      "sha256": "52ca78be53430aa6a2a2e383a3ef097ab2af1bf1e1ecb5b47d9699f75218ea17",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/SELECTION_AUDIT.json"
+    },
+    {
+      "bytes": 3562,
+      "path": "primary_release/SELECTION_AUDIT.md",
+      "role": "primary_release",
+      "sha256": "16bc7e91bcae35d1f439845d3862bad8cb5c2bc38c143cf073416258cf328b70",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/SELECTION_AUDIT.md"
+    },
+    {
+      "bytes": 37401,
+      "path": "primary_release/build_desi_science_catalog_v320_r2.py",
+      "role": "primary_release",
+      "sha256": "06709cad6edd84820328bcfe888300b34b3133e851d24143a875d05ca52dbff6",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/build_desi_science_catalog_v320_r2.py"
+    },
+    {
+      "bytes": 58038,
+      "path": "primary_release/desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
+      "role": "primary_release",
+      "sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet"
+    },
+    {
+      "bytes": 34387,
+      "path": "primary_release/validate_desi_science_catalog_v320_r2.py",
+      "role": "primary_release",
+      "sha256": "428958dfc99f9cb7f9bdcb38d52dc1673d0146e9969809dbc9dad858c4496f06",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/validate_desi_science_catalog_v320_r2.py"
+    },
+    {
+      "bytes": 13477,
+      "path": "science_controls/p3_apjs_r6_original_member_sensitivity.csv",
+      "role": "original_member_sensitivity",
+      "sha256": "8b3f9f4c0f24bb720f323fbf4568400a3648fa1d792683dc88832e2fdca4ebe2",
+      "source_repo_path": "pipelines/p3_anomaly_engine/outputs/p3_apjs_r6_original_member_sensitivity.csv"
+    },
+    {
+      "bytes": 1071,
+      "path": "science_controls/p3_apjs_r6_positional_tail.csv",
+      "role": "positional_tail_rows",
+      "sha256": "e8e214b2fb0876764e5747b5a0bef75028782b3cd24f54b855dd054755342739",
+      "source_repo_path": "pipelines/p3_anomaly_engine/outputs/p3_apjs_r6_positional_tail.csv"
+    },
+    {
+      "bytes": 20431,
+      "path": "science_controls/p3_apjs_r6_science_controls.json",
+      "role": "science_control_result",
+      "sha256": "359240e5571be12a54e5600af732ab3fb6ffc28407bd67f83ce0d4f9b452c6f1",
+      "source_repo_path": "pipelines/p3_anomaly_engine/outputs/p3_apjs_r6_science_controls.json"
+    },
+    {
+      "bytes": 14746,
+      "path": "science_controls/p3_apjs_r6_science_controls.py",
+      "role": "science_control_code",
+      "sha256": "9513ba5506381d381f43d21a73cf9553cb46c08ed93609bf4b62ec8eedb00ce3",
+      "source_repo_path": "pipelines/p3_anomaly_engine/scripts/p3_apjs_r6_science_controls.py"
+    },
+    {
+      "bytes": 18367,
+      "path": "science_controls/p3_v320_r6_chance_control.pdf",
+      "role": "science_control_figure",
+      "sha256": "06ccd371d9f22690dfdf1e188e9087dc691e0a3f037d07a5db17da70dad50e2a",
+      "source_repo_path": "pipelines/p3_anomaly_engine/figures/p3_v320_r6_chance_control.pdf"
+    },
+    {
+      "bytes": 4724,
+      "path": "validation/run_p3_apjs_r7_component_validators.py",
+      "role": "non_mutating_component_validator_wrapper",
+      "sha256": "87a2736696ff224993ec61a30ef73ff20d87c01e775de59f6820698a03acd52b",
+      "source_repo_path": "pipelines/p3_anomaly_engine/scripts/run_p3_apjs_r7_component_validators.py"
+    },
+    {
+      "bytes": 23825,
+      "path": "warned_auxiliary/CHECKPOINT_MANIFEST.json",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "be02aca1a0b340b027d5ada2e4de2dc8d6000bc93767b690ec0abb42df47f8cf",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/CHECKPOINT_MANIFEST.json"
+    },
+    {
+      "bytes": 4249,
+      "path": "warned_auxiliary/DATA_DICTIONARY.md",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "f9a6c77f8705ad1380dcb1444e45859f3b13eebb4fd842939e4a53fd09c89d26",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/DATA_DICTIONARY.md"
+    },
+    {
+      "bytes": 972,
+      "path": "warned_auxiliary/EXACT_SET_REPLAY_ASSERTION.json",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "d5187e0565c6f5ab9a03c1b2ddcfab953ea784b38a5f9c8b4818829cb88a89ac",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/EXACT_SET_REPLAY_ASSERTION.json"
+    },
+    {
+      "bytes": 327,
+      "path": "warned_auxiliary/LICENSE.md",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "df67c7e8aa7b4f1904aa26ba940c993d9c646969138109f1e4c75aab14e25fb4",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/LICENSE.md"
+    },
+    {
+      "bytes": 1779,
+      "path": "warned_auxiliary/PROVENANCE.json",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "fe41d334b8cee6027eed53fb9d5543e21c2c8300c9e3c96c5d664cfd93853952",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/PROVENANCE.json"
+    },
+    {
+      "bytes": 1049,
+      "path": "warned_auxiliary/QC_REPORT.json",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "f73cac62417f8508f26d20268cf034f6df555c19f919037cad97ccc7a0c303b4",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/QC_REPORT.json"
+    },
+    {
+      "bytes": 1483,
+      "path": "warned_auxiliary/README.md",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "29191eda7f7d86db4e2beb68a5bdda2c6469e1540aeb95a4fd51b844f4aa1258",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/README.md"
+    },
+    {
+      "bytes": 1741,
+      "path": "warned_auxiliary/RELEASE_MANIFEST.json",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "8d0fc845116e5f273afa81d45fb876b5421972d5e190429766c608c7a10b472f",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/RELEASE_MANIFEST.json"
+    },
+    {
+      "bytes": 19038,
+      "path": "warned_auxiliary/build_desi_warned_primary_aux_v320_r5.py",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "a4b47f0eb4ba64d41c4ffd7b315b02c09b82f46f55fc75c4badc43fccd0b7ccc",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/build_desi_warned_primary_aux_v320_r5.py"
+    },
+    {
+      "bytes": 352155,
+      "path": "warned_auxiliary/desi_dr1_warned_global_primary_aux_v3.2.0-r5.parquet",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "e370f0ae6ec3f4dc3e24b443e2f9ee53a35b105341ef838f15067b6faea1e57c",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/desi_dr1_warned_global_primary_aux_v3.2.0-r5.parquet"
+    },
+    {
+      "bytes": 8694,
+      "path": "warned_auxiliary/validate_desi_warned_primary_aux_v320_r5.py",
+      "role": "secondary_warned_auxiliary",
+      "sha256": "4fb3ef7f4fb37d0ff130d3ba698d692c68ac2d209f53762f6b89f483deeb7133",
+      "source_repo_path": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/validate_desi_warned_primary_aux_v320_r5.py"
+    }
+  ],
+  "primary_contract": {
+    "columns": 43,
+    "core_coordinate_consistent_le_0p1arcsec": 170,
+    "lower_confidence_positional_gt_0p1_le_1arcsec": 11,
+    "purity_claim": false,
+    "retain_all_181": true,
+    "rows": 181,
+    "secure_identity_claim": false
+  },
+  "status": "PASS"
+}

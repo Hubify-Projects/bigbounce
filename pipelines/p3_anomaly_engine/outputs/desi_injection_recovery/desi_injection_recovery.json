@@ -1,0 +1,161 @@
+{
+  "task": "P3 DESI injection-recovery validation (real re-pull)",
+  "date_utc": "2026-06-28T08:08:44.877247Z",
+  "git_hash": "5d2f0723168df335f88008719b4f1a8e47c3fa99",
+  "provenance": {
+    "sparcl_constraints": {
+      "data_release": [
+        "DESI-DR1"
+      ],
+      "spectype": [
+        "GALAXY",
+        "QSO",
+        "STAR"
+      ],
+      "redshift": [
+        0.0,
+        5.0
+      ]
+    },
+    "find_candidates": 60000,
+    "find_limit": 60000,
+    "pick_seed": 20260628,
+    "n_requested": 20000,
+    "n_retrieved": 20000,
+    "n_nonfinite_dropped": 0,
+    "acquire_wall_s": 1951.4
+  },
+  "models": {
+    "dir": "pipelines/p3_anomaly_engine/r42_phase2",
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "arch": "BigAE n_in=496 n_lat=128"
+  },
+  "qc_gate": {
+    "101": {
+      "repull_median": 0.28008776903152466,
+      "repull_p99": 6.855529136657708,
+      "ref_ood_median": 0.41457462310791016,
+      "ref_ood_p99": 61.58289112090975,
+      "median_in_band": true,
+      "pass": true
+    },
+    "202": {
+      "repull_median": 0.20083549618721008,
+      "repull_p99": 6.113449077606184,
+      "ref_ood_median": 0.33963340520858765,
+      "ref_ood_p99": 59.14362377166748,
+      "median_in_band": true,
+      "pass": true
+    },
+    "303": {
+      "repull_median": 0.1749575436115265,
+      "repull_p99": 6.069766855239858,
+      "ref_ood_median": 0.3384571671485901,
+      "ref_ood_p99": 57.03517425537096,
+      "median_in_band": true,
+      "pass": true
+    },
+    "404": {
+      "repull_median": 0.2666155695915222,
+      "repull_p99": 7.192336149215667,
+      "ref_ood_median": 0.47350290417671204,
+      "ref_ood_p99": 62.98584148406975,
+      "median_in_band": true,
+      "pass": true
+    },
+    "505": {
+      "repull_median": 0.25697556138038635,
+      "repull_p99": 6.600186805725092,
+      "ref_ood_median": 0.3839563727378845,
+      "ref_ood_p99": 61.16300762176506,
+      "median_in_band": true,
+      "pass": true
+    },
+    "overall_pass": true,
+    "note": "median anchor reproduced; production heavy tail (p99~60, max~4e10) is pathological norm blow-ups discarded by the cleanest-substrate injection protocol"
+  },
+  "injection_recovery": {
+    "protocol": "wave14 production (5-seed ensemble, cleanest-5% substrate, p99 clean-holdout threshold, no post-clip)",
+    "n_finite": 20000,
+    "n_substrate": 1000,
+    "n_holdout": 5000,
+    "n_inj_per_level": 200,
+    "threshold_T": 0.11834195524454116,
+    "base_median_mse": 0.23271770775318146,
+    "base_p99_mse": 6.512003087997436,
+    "by_type": {
+      "broad_emission_spike": {
+        "1.0x": 0.0,
+        "2.0x": 0.005,
+        "3.0x": 0.285,
+        "5.0x": 0.995,
+        "8.0x": 1.0,
+        "10.0x": 1.0
+      },
+      "narrow_line": {
+        "1.0x": 0.0,
+        "2.0x": 0.0,
+        "3.0x": 0.0,
+        "5.0x": 0.0,
+        "8.0x": 0.0,
+        "10.0x": 0.035
+      }
+    },
+    "ensemble_curve": {
+      "1.0x": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "broad_emission_spike": 0.0
+      },
+      "2.0x": {
+        "mean": 0.0025,
+        "min": 0.0,
+        "max": 0.005,
+        "broad_emission_spike": 0.005
+      },
+      "3.0x": {
+        "mean": 0.1425,
+        "min": 0.0,
+        "max": 0.285,
+        "broad_emission_spike": 0.285
+      },
+      "5.0x": {
+        "mean": 0.4975,
+        "min": 0.0,
+        "max": 0.995,
+        "broad_emission_spike": 0.995
+      },
+      "8.0x": {
+        "mean": 0.5,
+        "min": 0.0,
+        "max": 1.0,
+        "broad_emission_spike": 1.0
+      },
+      "10.0x": {
+        "mean": 0.5175,
+        "min": 0.035,
+        "max": 1.0,
+        "broad_emission_spike": 1.0
+      }
+    }
+  },
+  "gate": {
+    "amp_sigma": 5.0,
+    "recovery_required": 0.5,
+    "recovery_at_5x_broad_emission_spike": 0.995,
+    "recovery_at_5x_both_types": {
+      "mean": 0.4975,
+      "min": 0.0,
+      "max": 0.995,
+      "broad_emission_spike": 0.995
+    },
+    "PASS": true
+  }
+}

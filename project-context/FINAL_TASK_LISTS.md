@@ -10,6 +10,16 @@ Houston standing rule: **eat the frog, do the hard thing, no deferrals** — ite
 
 ---
 
+## Research-node context tasks — 2026-06-16
+
+This is a docs/context track, not a paper-readiness track. It must not mutate papers, PDFs, tarballs, pods, GPU runs, or generated artifacts.
+
+| # | Task | Owner | Status |
+|---|------|-------|---|
+| RN-2026-06-16 | Implement the Mac mini research-node setup safely: capture the direct BigBounce repo + `bigbounce.hubify.app` source-of-truth contract, inventory Hermes/OpenClaw/Claude Code/Codex/Pi runners, define You.md/h.computer/SMS routing contract, add approved h.computer status hooks, add local fake-SMS no-live-runs smoke test, and draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper. See `project-context/mac-mini-research-node-2026-06-16.md`. | agent | complete; source-of-truth contract captured in `project-context/bigbounce-source-of-truth-contract-2026-06-16.md`; runtime inventory captured in `project-context/agent-runtime-inventory-2026-06-16.md`; MCP config inventory captured in `project-context/mcp-config-inventory-2026-06-16.md`; SMS/iMessage -> You.md -> BigBounce proposal schema captured in `project-context/sms-imessage-youmd-bigbounce-proposal-schema-2026-06-16.md`; approved h.computer status-event shape captured in `project-context/h-computer-research-node-status-event-shape-2026-06-16.md`; no-live-runs smoke-test spec and machine fixture captured in `project-context/no-live-runs-fake-capture-smoke-test-2026-06-16.md` and `project-context/fixtures/research-node/no-live-runs-fake-capture-smoke-test-2026-06-16.json`; multi-model/multi-UI review-method workflow-paper draft captured in `project-context/multi-model-multi-ui-review-method-protocol-draft-2026-06-16.md`; OpenClaw/Hermes/Pi remain not runnable or authorized for BigBounce; Hubify auth restored via `RTW6-E8D9` but current research truth remains local `bigbounce` plus `bigbounce.hubify.app`; no live runs started |
+
+---
+
 ## P1A — ECH Structural Closure (no-go theorem) — v1A.0.35
 
 **Status: 95% / 99% cap · external-review-ready · §4.4.1 SATISFIED (tick 102 + R-ext-strict + R-ext-strict-v2 today, all 5/5 PERFECTLY CLEAN).**

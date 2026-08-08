@@ -3,11 +3,11 @@
   "replaces": "pipelines/p2_fnl_forecast/fw1_results/fw1_scale_dependent_fnl.json (FW-1, SUSPECT per C7 audit)",
   "provenance": {
     "script": "research/focused_paper_source_integration/scripts/c8_fnl_running_fisher.py",
-    "git_hash_at_run": "1877852b4ad8f021329fa13c23de5107d4464c43",
-    "date_utc": "2026-06-09T19:56:04.724022+00:00",
-    "camb_version": "1.6.6",
-    "python": "3.10.6",
-    "runtime_seconds": 1.32
+    "git_hash_at_run": "86d22a7b435aaa8b37b35c26fa99960aa95cee9a",
+    "date_utc": "2026-07-07T18:28:31.864957+00:00",
+    "camb_version": "1.6.0",
+    "python": "3.9.6",
+    "runtime_seconds": 112.24
   },
   "inputs": {
     "cosmology": {
@@ -177,85 +177,85 @@
   },
   "results": {
     "A_fnl_only_biases_fixed": {
-      "sigma_fnl_only": 1.5286830998967673,
-      "fnl_detection_sigma": 2.8619404507680146
+      "sigma_fnl_only": 1.528683099800401,
+      "fnl_detection_sigma": 2.8619404509484276
     },
     "B_joint_fnl_nfnl_biases_fixed": {
-      "sigma_fnl_marginalized": 3.077547488865408,
-      "sigma_fnl_unmarginalized": 1.5286830998967673,
-      "sigma_nfnl_marginalized": 0.2945886317020602,
-      "sigma_nfnl_unmarginalized": 0.1463284203847251,
-      "correlation": -0.8679101587175053,
-      "fnl_detection_sigma_marg": 1.4215865119315902,
-      "degradation_factor": 2.0132017480099287,
+      "sigma_fnl_marginalized": 3.0775474876407283,
+      "sigma_fnl_unmarginalized": 1.528683099800401,
+      "sigma_nfnl_marginalized": 0.29458863160171067,
+      "sigma_nfnl_unmarginalized": 0.1463284203838849,
+      "correlation": -0.8679101586222986,
+      "fnl_detection_sigma_marg": 1.4215865124972966,
+      "degradation_factor": 2.0132017473357045,
       "fisher_2x2_fNL_nfNL": [
         [
-          0.42792244995877743,
-          3.8799722812724253
+          0.427922450012729,
+          3.8799722811136728
         ],
         [
-          3.8799722812724253,
-          46.70276906350654
+          3.8799722811136728,
+          46.70276906404283
         ]
       ]
     },
     "C_joint_fnl_nfnl_bias_marginalized_free": {
-      "sigma_fnl_marginalized": 7.059476032180931,
-      "sigma_fnl_unmarginalized": 1.5286830998967673,
-      "sigma_nfnl_marginalized": 0.5958864201907231,
-      "sigma_nfnl_unmarginalized": 0.1463284203847251,
-      "correlation": -0.9689485721862755,
-      "fnl_detection_sigma_marg": 0.6197343797268198,
-      "degradation_factor": 4.61801143262306,
+      "sigma_fnl_marginalized": 7.059476012071804,
+      "sigma_fnl_unmarginalized": 1.528683099800401,
+      "sigma_nfnl_marginalized": 0.5958864186932624,
+      "sigma_nfnl_unmarginalized": 0.1463284203838849,
+      "correlation": -0.9689485720300457,
+      "fnl_detection_sigma_marg": 0.6197343814921515,
+      "degradation_factor": 4.618011419759632,
       "fisher_2x2_fNL_nfNL": [
         [
-          0.42792244995877743,
-          3.8799722812724253
+          0.427922450012729,
+          3.8799722811136728
         ],
         [
-          3.8799722812724253,
-          46.70276906350654
+          3.8799722811136728,
+          46.70276906404283
         ]
       ],
       "n_nuisance_params": 30,
-      "sigma_fnl_only_bias_marg_nfnl_fixed": 1.7455425582643778
+      "sigma_fnl_only_bias_marg_nfnl_fixed": 1.7455425576141463
     },
     "D_sensitivity_flat_kmin_1e-4": {
       "biases_fixed": {
-        "sigma_fnl_marginalized": 2.628668610147838,
-        "sigma_fnl_unmarginalized": 0.8220327762730332,
-        "sigma_nfnl_marginalized": 0.16550066743645703,
-        "sigma_nfnl_unmarginalized": 0.051755087196091794,
-        "correlation": -0.9498459167153301,
-        "fnl_detection_sigma_marg": 1.6643406411559605,
-        "degradation_factor": 3.1977661791854652,
+        "sigma_fnl_marginalized": 2.6286686094674896,
+        "sigma_fnl_unmarginalized": 0.8220327762580419,
+        "sigma_nfnl_marginalized": 0.1655006673965214,
+        "sigma_nfnl_unmarginalized": 0.051755087196054525,
+        "correlation": -0.9498459166905605,
+        "fnl_detection_sigma_marg": 1.6643406415867228,
+        "degradation_factor": 3.197766178416141,
         "fisher_2x2_fNL_nfNL": [
           [
-            1.479863748655521,
-            22.32600313022581
+            1.479863748709497,
+            22.32600313006684
           ],
           [
-            22.32600313022581,
-            373.3308772198473
+            22.32600313006684,
+            373.33087722038505
           ]
         ]
       },
       "bias_marginalized": {
-        "sigma_fnl_marginalized": 4.234303667233755,
-        "sigma_fnl_unmarginalized": 0.8220327762730332,
-        "sigma_nfnl_marginalized": 0.257767497057596,
-        "sigma_nfnl_unmarginalized": 0.051755087196091794,
-        "correlation": -0.9795950914067315,
-        "fnl_detection_sigma_marg": 1.0332277379761383,
-        "degradation_factor": 5.151015615741527,
+        "sigma_fnl_marginalized": 4.234303661696756,
+        "sigma_fnl_unmarginalized": 0.8220327762580419,
+        "sigma_nfnl_marginalized": 0.2577674967416959,
+        "sigma_nfnl_unmarginalized": 0.051755087196054525,
+        "correlation": -0.979595091356362,
+        "fnl_detection_sigma_marg": 1.0332277393272415,
+        "degradation_factor": 5.151015609099725,
         "fisher_2x2_fNL_nfNL": [
           [
-            1.479863748655521,
-            22.32600313022581
+            1.479863748709497,
+            22.32600313006684
           ],
           [
-            22.32600313022581,
-            373.3308772198473
+            22.32600313006684,
+            373.33087722038505
           ]
         ]
       },
@@ -263,8 +263,8 @@
     },
     "validation_vs_Dore2014": {
       "config": "f_NL-only, all 11 SPHEREx z-bins (z=0-4.6), full Dore+2014 sample set",
-      "sigma_fnl_biases_fixed": 1.021433645140495,
-      "sigma_fnl_bias_marginalized": 1.1451457890478647,
+      "sigma_fnl_biases_fixed": 1.021433645112953,
+      "sigma_fnl_bias_marginalized": 1.1451457888707042,
       "published_benchmark": "Dore+2014 sigma(f_NL) ~ 0.9 (multi-tracer SDB)"
     }
   },
@@ -291,9 +291,9 @@
       "literature_SDB_range": "sigma(f_NL) ~ 0.5-2 (Dore+2014, Munchmeyer+2019, Heinrich+2024)"
     },
     "artifact_vs_real": {
-      "sigma_nfnl: artifact / real(C)": 0.14352231751250008,
-      "sigma_fnl_marg: artifact / real(C)": 0.06276584805729725,
-      "detection_sigma: artifact 9.87 vs real(C)": 0.6197343797268198
+      "sigma_nfnl: artifact / real(C)": 0.1435223178731712,
+      "sigma_fnl_marg: artifact / real(C)": 0.06276584823608763,
+      "detection_sigma: artifact 9.87 vs real(C)": 0.6197343814921515
     }
   }
 }

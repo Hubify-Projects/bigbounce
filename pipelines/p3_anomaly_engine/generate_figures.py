@@ -441,11 +441,11 @@ def fig2_skymap():
                        marker=marker, alpha=alpha, zorder=3, linewidths=0.3)
         handles.append(mpatches.Patch(color=SURVEY_COLORS[survey], label=survey))
 
-    # EXT3 Cm3 closure: title carries the cross-transfer-baseline qualifier
-    # (319,443 is the superseded baseline incl. quarantined ACT, not the
-    # canonical Path-C catalog; see fig:skymap caption).
-    ax.set_title('Cross-transfer baseline: 319,443 detections across 8 archives\n'
-                 '(superseded by the Path-C native catalog)',
+    # Title carries the cross-transfer-baseline qualifier (319,443 detections
+    # include quarantined ACT; the released catalog uses the Path-C native
+    # re-score; see fig:skymap caption).
+    ax.set_title('Cross-transfer baseline sky distribution: 319,443 detections across 8 archives\n'
+                 '(the released catalog uses the Path-C native re-score)',
                  fontsize=9, pad=8)
     ax.grid(True, linewidth=0.3, alpha=0.4, color='0.6')
     ax.set_xlabel('Right Ascension', fontsize=8)
@@ -645,11 +645,15 @@ def fig4_score_distributions():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def fig5_novelty_fractions():
+    # Gaia DR3 tier removed from the catalog (synthetic-placeholder excision,
+    # \S sec:gaia); it is excluded from this science figure per the
+    # five-surveys-with-coordinate-cross-matching caption. Only the five
+    # real coordinate-cross-matched surveys are plotted.
     surveys = ['DESI DR1\n(top 10K)', 'SDSS DR18', 'eROSITA DR1',
-               'LAMOST DR10', 'NEOWISE', 'Gaia DR3']
-    novelty = [99, 90, 68, 50, 45, 27]
+               'LAMOST DR10', 'NEOWISE']
+    novelty = [99, 90, 68, 50, 45]
     colors = [SURVEY_COLORS[k.split('\n')[0].strip()] for k in
-              ['DESI DR1', 'SDSS DR18', 'eROSITA DR1', 'LAMOST DR10', 'NEOWISE', 'Gaia DR3']]
+              ['DESI DR1', 'SDSS DR18', 'eROSITA DR1', 'LAMOST DR10', 'NEOWISE']]
 
     fig, ax = plt.subplots(figsize=(3.375, 2.6))
 

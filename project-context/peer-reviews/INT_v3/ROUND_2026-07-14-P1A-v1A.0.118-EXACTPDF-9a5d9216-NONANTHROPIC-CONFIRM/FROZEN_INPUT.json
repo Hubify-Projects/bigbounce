@@ -1,0 +1,17 @@
+{
+  "paper": "P1A",
+  "version": "v1A.0.118",
+  "manuscript_commit": "e2214288b70c8bafd87d9c0a7e5bb536fca3a070",
+  "pdf_path": "arxiv/paper1a_ech_nogo.pdf",
+  "pdf_sha256": "9a5d9216df983858acda1e993a4372fcb92822abebed05163ce1e51463e59844",
+  "pdf_bytes": 151772,
+  "pdf_pages": 7,
+  "source_path": "arxiv/paper1a_ech_nogo.tex",
+  "source_sha256": "7cfe09cfb6cd136d6b1e8804be5ac7f7cfd181390ae6e9353c8b321287915dd2",
+  "proof_pdf": "proof/paper1a_ech_nogo.v1A.0.118.pdf",
+  "proof_source": "proof/paper1a_ech_nogo.v1A.0.118.tex",
+  "review_scope": "Blinded exact-PDF non-Anthropic confirmation; manuscript frozen pending truth audit.",
+  "vendors": ["openai", "gemini", "grok"],
+  "codex_reviewer": "excluded from this lane because this Codex agent performed the closure",
+  "anthropic_or_claude": false
+}

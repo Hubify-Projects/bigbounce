@@ -28,7 +28,7 @@ export interface Survey {
   connections: { label: string; href: string }[];
 }
 
-export const surveys: Survey[] = [
+const legacySurveys: Survey[] = [
   {
     slug: "desi-dr1",
     name: "DESI DR1",
@@ -38,7 +38,7 @@ export const surveys: Survey[] = [
     anomalyRate: "0.87%",
     qcStatus: "pass",
     qcNote: "Gold standard. 2,145 SNR-filtered, 1,127 uncataloged, 10 taxonomy families.",
-    description: "The Dark Energy Spectroscopic Instrument first data release. Our flagship anomaly catalog — the first full-DR1-scale autoencoder search (~90x prior EDR work).",
+    description: "LEGACY / SUPERSEDED: historical DESI DR1 exploratory autoencoder run. This unreconciled pipeline record is not the current anomaly-discovery flagship.",
     wavelength: "Optical spectroscopy (3600-9800 Å)",
     cost: "~$200",
     runtime: "~24h",
@@ -46,7 +46,7 @@ export const surveys: Survey[] = [
     paperRefs: ["Paper 3 — primary dataset", "Paper 2 — f_NL tracers"],
     figures: ["DESI anomaly sky map", "Score distribution", "Taxonomy UMAP", "Latent space t-SNE"],
     keyFindings: [
-      "195,829 anomalies from 22.5M spectra (0.87%)",
+      "HISTORICAL / UNRECONCILED: 195,829 pipeline candidate flags from 22.5M spectra (0.87%)",
       "2,145 pass SNR filter, 120 gold (>5σ)",
       "1,127 not in SIMBAD or NED (52.5% uncataloged)",
       "10 taxonomy families: 76 AGN, 27 post-starburst, 363 blue compact",
@@ -320,6 +320,26 @@ export const surveys: Survey[] = [
     ],
   },
 ];
+
+// These records document exploratory pipeline history only. Candidate counts
+// are deliberately suppressed from current-facing summary surfaces: they are
+// not the active DESI discovery flagship and do not establish a bounce signal.
+export const surveys: Survey[] = legacySurveys.map((survey) => ({
+  ...survey,
+  anomalies: 0,
+  anomalyRate: "Legacy / superseded",
+  qcStatus: "caution",
+  qcNote: "LEGACY / SUPERSEDED — Historical pipeline-quality note retained for audit context; it is not a current catalog-quality assertion.",
+  description: "Legacy/superseded pipeline record retained for methodology and archive context. Historical candidate counts and classifications are unreconciled, are not current discovery results, and do not provide evidence for a bounce.",
+  paperRefs: survey.paperRefs.map((reference) =>
+    reference.startsWith("Paper 3")
+      ? "P3 — Integrated Supporting Data Release · DESI Public-ID Recovery"
+      : reference,
+  ),
+  keyFindings: survey.keyFindings.map((finding) => `Historical, unreconciled pipeline output — ${finding}`),
+  followUpTasks: ["No current follow-up is implied by this legacy/superseded record."],
+  topAnomalies: [],
+}));
 
 export function getSurveyBySlug(slug: string): Survey | undefined {
   return surveys.find((s) => s.slug === slug);

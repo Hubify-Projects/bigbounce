@@ -179,7 +179,7 @@ main { max-width: none; padding: 0; }
 <!-- ═════════════ Left Sidebar ═════════════ -->
 <aside class="de-sidebar" id="sidebar" role="navigation" aria-label="Dataset navigation">
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
-  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all six papers. MCMC chains &amp; birefringence checks back Papers 1A/1B; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; the 8-survey anomaly catalog (378,280 unique objects, 637 multi-survey clusters) backs Paper 3; the 8.47 M-galaxy chirality catalog backs Paper 4 and the DESI void-spiral cross-match backs Paper 5.</div>
+  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all six papers. MCMC chains &amp; birefringence checks back Papers 1A/1B; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; the exploratory autoencoder anomaly-detection pipeline (candidate list) underlies Paper 3, which is a public-ID recovery of 181 DESI DR1 TARGETIDs from a frozen historical list (an archive-recovery product, not a detection claim); the 8.47 M-galaxy chirality catalog backs Paper 4 and the DESI void-spiral cross-match backs Paper 5.</div>
 
   <div class="de-sidebar-group"><span class="dot green"></span> Paper 2 &mdash; Predictions</div>
   <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
@@ -2133,11 +2133,11 @@ branches: {
     ["Branch S","Does ECH generate photon rotation via loops?","\u03B2~10\u207B\u00B3\u2070\u00B0 (28\u201340 OOM too weak)","CLOSED","N1","LOW"],
     ["Branch T","Can axion kicked by bounce amplify fields?","Requires free parameter (n5)","CLOSED","N1","LOW"],
     ["Branch U","Can two-field ALP resolve rolling tension?","Reintroduces fine-tuning","DEFERRED","N1","LOW"],
-    ["Branch V","Can matter contraction produce testable signals?","f_NL = \u221235/8 = \u22124.375 (strongly constrained, SPHEREx)","PAPER DRAFT COMPLETE","N3","FLAGSHIP"],
+    ["Branch V","Can matter contraction produce testable signals?","f_NL = \u221235/16 = \u22122.1875 (SPHEREx-testable; the earlier \u221235/8 = \u22124.375 single-ordering value is SUPERSEDED)","PAPER DRAFT COMPLETE","N3","FLAGSHIP"],
     ["Branch W","Can ALP curvaton generate red tilt?","n_s=1.000 (8.3\u03C3 excluded)","SUPERSEDED","N1","LOW"],
     ["Chiral GW","Can chiral GW reach detectors?","GHz signals; gap to LIGO 10\u2076","CLOSED","N1","LOW"],
     ["Bounce Evidence Audit","Do any bounce claims reach STRONG?","No claim reaches STRONG; ECH perturbation-transparent","COMPLETE","N2","HIGH"],
-    ["f_NL Derivation","Is f_NL = \u221235/8 correct?","Algebraically verified via Cai action audit; 3 mismatches resolved","COMPLETE","N3","FLAGSHIP"],
+    ["f_NL Derivation","Is f_NL = \u221235/16 correct?","Algebraically verified via Cai action audit; the corrected squeezed value is \u221235/16 (the earlier \u221235/8 was a single-time-ordering convention)","COMPLETE","N3","FLAGSHIP"],
     ["Viable Bounce Model","Does a minimal viable model exist?","Wilson-Ewing quasi-dust survives; curvaton tilt killed","PASS","N3","FLAGSHIP"],
     ["DESI DR1 Spectral Anomaly","Can autoencoder find uncataloged objects in 18M spectra?","195,829 anomalies (score>5); 101 extreme outliers (score>15); ~90\u00d7 prior EDR scale","COMPLETE","N3","HIGH"]
   ]
@@ -2151,7 +2151,7 @@ bounceAudit: {
   columns: ["#","Claim","Evidence","Bounce-Specific?","Status","Assessment"],
   data: [
     ["1","Cosmic birefringence \u03B2 \u2248 0.30\u00B0","2.4\u20133.9\u03C3 detection","No (bounce-independent)","MODERATE","Strongest data match but ALP needs no bounce"],
-    ["2","f_NL = \u221235/8","Planck: \u22120.9 \u00B1 5.1","Yes (matter contraction)","MODERATE","Strongly constrained, MegaMapper 8.75\u03C3 by ~2032"],
+    ["2","f_NL = \u221235/16","Planck: \u22120.9 \u00B1 5.1","Yes (matter contraction)","MODERATE","Canonical \u221235/16 = \u22122.1875 (\u221235/8 superseded); SPHEREx/MegaMapper testable"],
     ["3","PTA/NANOGrav signal","Bayesian-favored","Partially (generic bounce)","MODERATE","Trans-Planckian scale; SMBH binaries not ruled out"],
     ["4","Low-\u2113 CMB deficit","Qualitative","LQC-specific","WEAK","Durrer challenge to bispectrum prediction"],
     ["5","CMB parity asymmetry","~2.5\u03C3","Qualitative only","WEAK","No quantitative bounce prediction exists"],
@@ -2171,7 +2171,7 @@ bounceAudit: {
 
 fnlDerivation: {
   name: "f_NL Derivation Status",
-  description: "Independent verification of f_NL = \u221235/8 from matter contraction. Algebraically verified via direct Cai action audit. All 3 implementation mismatches resolved.",
+  description: "Independent verification of the matter-contraction non-Gaussian amplitude. The canonical corrected squeezed-limit value is f_NL = \u221235/16 = \u22122.1875; the earlier \u221235/8 = \u22124.375 figure was a single-time-ordering convention and is SUPERSEDED (the factor of 2 is the in-in commutator). Algebraically verified via direct Cai action audit.",
   source: "research/fnl_derivation_execution/",
   status: "COMPLETE", statusClass: "frozen",
   columns: ["Step","Status","Result","Confidence"],
@@ -2183,7 +2183,7 @@ fnlDerivation: {
     ["Field redefinition","\u2713 CONFIRMED","+5/4 contribution","100%"],
     ["Superhorizon hierarchy","\u2713 CONFIRMED","Horizon-crossing dominates, not late-time","100%"],
     ["In-in time integral","\u2713 CONFIRMED","Shape function reproduces all special cases exactly","100%"],
-    ["Overall f_NL = \u221235/8","\u2713 VERIFIED","Algebraically confirmed via Cai action audit","100%"]
+    ["Overall f_NL = \u221235/16","\u2713 VERIFIED","Algebraically confirmed via Cai action audit (corrected squeezed value; \u221235/8 was the superseded single-ordering convention)","100%"]
   ]
 },
 
@@ -2223,7 +2223,7 @@ templateOverlap: {
 
 normAudit: {
   name: "Normalization Audit: Cai vs Li Vertex Match",
-  description: "Independent cross-check of all cubic action vertices between Cai et al. (2009) and Li (2014). All momentum-space coefficients match exactly; the \u00D72 discrepancy in A_T is a convention difference, not a physics error. Physics-derived full-commutator polynomial (6,2,-18,10,-66,18) from 2\u00D7(Eqs. 34+35+36) at \u03B5 = 3/2 using exact rational arithmetic. Published (3,1,-9,5,-66,9) are single-ordering coefficients. No independent -35/8 verification found in 2020\u20132024 literature.",
+  description: "Independent cross-check of all cubic action vertices between Cai et al. (2009) and Li (2014). All momentum-space coefficients match exactly; the \u00D72 discrepancy in A_T is a convention difference, not a physics error. Physics-derived full-commutator polynomial (6,2,-18,10,-66,18) from 2\u00D7(Eqs. 34+35+36) at \u03B5 = 3/2 using exact rational arithmetic. Published (3,1,-9,5,-66,9) are single-ordering coefficients. The \u00d72 resolution makes the canonical squeezed value f_NL = \u221235/16 = \u22122.1875; the \u221235/8 column below is the superseded single-ordering (Cai-convention) value, retained only to show the convention difference.",
   source: "research/branch_V_matter_bounce/normalization_audit/",
   status: "COMPLETE", statusClass: "frozen",
   columns: ["Vertex","Cai (Eq.)","Li (Eq.)","Cai value","Li value","Match"],
@@ -2235,16 +2235,16 @@ normAudit: {
     ["\u03B6\u0307\u00B3 (c_s\u22601 only)","\u2014","Eq.4.18","0","0","N/A"],
     ["TOTAL \u03A3k\u00B3 coeff","\u2014","\u2014","-0.773438","-0.773438","EXACT"],
     ["A_T squeezed","Eq.44","Eq.4.23","-21/8 k\u00B3","-21/16 k\u00B3","\u00D72 DISCREPANCY"],
-    ["f_NL (Planck conv.)","Eq.38","Eq.5.1","-35/8","-35/16","\u00D72 (convention)"]
+    ["f_NL (Planck conv.)","Eq.38","Eq.5.1","-35/8 (superseded)","-35/16 (canonical)","\u00D72 (convention)"]
   ]
 },
 
 forecastCorrected: {
   name: "Forecast Significance (Template-Corrected)",
-  description: "Detection significance for matter-bounce f_NL across current and future surveys, with and without template mismatch correction. Shows impact of the \u00D72 normalization ambiguity.",
+  description: "Detection significance for matter-bounce f_NL across current and future surveys, with and without template mismatch correction. The canonical value is f_NL = \u221235/16 = \u22122.1875 (rightmost column); the \u221235/8 columns are the SUPERSEDED single-ordering convention, retained only to show the impact of the \u00D72 normalization ambiguity.",
   source: "research/branch_V_matter_bounce/forecasts/",
   status: "COMPLETE", statusClass: "frozen",
-  columns: ["Survey","\u03C3(f_NL)_local","Signif naive (\u221235/8)","Signif corrected (\u221235/8)","Signif corrected (\u221235/16)"],
+  columns: ["Survey","\u03C3(f_NL)_local","Signif naive (\u221235/8, superseded)","Signif corrected (\u221235/8, superseded)","Signif corrected (\u221235/16, canonical)"],
   data: [
     ["Planck 2018","5.1","0.9\u03C3","0.8\u03C3","0.4\u03C3"],
     ["Planck+DESI (now)","4.1","1.1\u03C3","0.9\u03C3","0.5\u03C3"],
@@ -2316,7 +2316,7 @@ w0waQuintomChains: {
 
 modelDiscrimination: {
   name: "Bounce vs Inflation \u2014 Bayesian Discrimination",
-  description: "Bayes factors comparing the matter bounce (f_NL = -35/8, minimally parameterized \u2014 Cai 2009) against five inflation competitor classes. SPHEREx scenario (\u03C3=0.7) and MegaMapper scenario (\u03C3=0.5). The bounce wins DECISIVELY against standard models and STRONGLY against exotic loopholes via Occam penalty.",
+  description: "Bayes factors comparing the matter bounce (f_NL = -35/16 = -2.1875, minimally parameterized \u2014 Cai 2009; the earlier -35/8 is superseded) against five inflation competitor classes. SPHEREx scenario (\u03C3=0.7) and MegaMapper scenario (\u03C3=0.5). The bounce wins DECISIVELY against standard models and STRONGLY against exotic loopholes via Occam penalty.",
   source: "Bayesian discrimination program",
   status: "FROZEN", statusClass: "frozen",
   columns: ["Bounce vs...", "SPHEREx BF", "MegaMapper BF", "SPHEREx Verdict", "MegaMapper Verdict"],
@@ -2331,7 +2331,7 @@ modelDiscrimination: {
 
 pbhNanograv: {
   name: "PBH Regulation & NANOGrav Consistency",
-  description: "Two independent consistency checks for f_NL = -35/8. (1) Negative f_NL naturally suppresses PBH overproduction by reducing the tail of the curvature PDF \u2014 positive f_NL of equal magnitude would overproduce. (2) Scalar-induced GW from matter bounce give spectral index \u03B3=3.0 vs combined PTA GPU MCMC \u03B3=3.20\u00B10.42 \u2014 a 0.48\u03C3 match.",
+  description: "Two independent consistency checks for f_NL = -35/16 = -2.1875 (canonical; -35/8 superseded). (1) Negative f_NL naturally suppresses PBH overproduction by reducing the tail of the curvature PDF \u2014 positive f_NL of equal magnitude would overproduce. (2) Scalar-induced GW from matter bounce give spectral index \u03B3=3.0 vs combined PTA GPU MCMC \u03B3=3.20\u00B10.42 \u2014 a 0.48\u03C3 match.",
   source: "pbh_nanograv_consistency.py",
   status: "VERIFIED", statusClass: "frozen",
   columns: ["Test", "Prediction", "Observation", "Tension", "Status"],
@@ -2362,22 +2362,22 @@ nanoGravComparison: {
 
 quintomFnlVerification: {
   name: "f_NL Mechanism Independence \u2014 Quintom Verification",
-  description: "Verification that f_NL = -35/8 is mechanism-independent across bounce models. The prediction depends only on the matter-dominated contraction phase (Cai 2009), not on the specific bounce mechanism (dust, quintom-B, or asymmetric). This makes the prediction robust \u2014 it works for ANY bounce model with matter contraction. (Minimally parameterized, not parameter-free: requires matter contraction assumption.)",
+  description: "Verification that f_NL = -35/16 = -2.1875 (canonical; -35/8 superseded) is mechanism-independent across bounce models. The prediction depends only on the matter-dominated contraction phase (Cai 2009), not on the specific bounce mechanism (dust, quintom-B, or asymmetric). This makes the prediction robust \u2014 it works for ANY bounce model with matter contraction. (Minimally parameterized, not parameter-free: requires matter contraction assumption.)",
   source: "quintom_fnl_verification.py",
   status: "VERIFIED", statusClass: "frozen",
   columns: ["Bounce mechanism", "f_NL value", "Contraction phase", "Parameters", "Status"],
   data: [
-    ["Dust (standard)", "-35/8 = -4.375", "Matter-dominated", "Minimally parameterized", "Exact"],
-    ["Quintom-B", "-35/8 = -4.375", "Matter-dominated", "Minimally parameterized", "Verified"],
-    ["Asymmetric bounce", "-35/8 = -4.375", "Matter-dominated", "Minimally parameterized", "Verified"],
+    ["Dust (standard)", "-35/16 = -2.1875", "Matter-dominated", "Minimally parameterized", "Exact"],
+    ["Quintom-B", "-35/16 = -2.1875", "Matter-dominated", "Minimally parameterized", "Verified"],
+    ["Asymmetric bounce", "-35/16 = -2.1875", "Matter-dominated", "Minimally parameterized", "Verified"],
     ["Ekpyrotic", "\u2248 +0.02 (different)", "Ekpyrotic (w\u226B1)", "0 free", "Distinct prediction"],
     ["Slow-roll inflation", "\u2248 -0.015 (tiny)", "de Sitter expansion", "0 free", "Undetectable"]
   ]
 },
 
 p3AnomalyCatalog: {
-  name: "Paper 3 \u2014 Multi-Survey Anomaly Catalog",
-  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 survey-level anomalies retained after QC. After per-survey native BigAE retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,280 unique physical objects + 637 multi-survey clusters. 58.8% of top-ranked anomalies are SIMBAD-unmatched (no cataloged counterpart within 2\u2033). PATH-C COMPLETE: native BigAEs per survey (SDSS val_loss 0.0311, LAMOST 0.0329, CMB val_loss 0.4437 with 100% injection-recovery @ 5\u03C3). Continuum-dip injection-recovery on SDSS-native PASSES strict Path-C 5\u03C3 gate at 64% (vs 7.2% emission-line).",
+  name: "Anomaly-Detection Pipeline \u2014 Multi-Survey Candidate List",
+  description: "The exploratory autoencoder anomaly-detection pipeline behind Paper 3: across 8 surveys, ~37.3 M sources scanned, 319,443 survey-level candidates retained after QC; after per-survey native BigAE retrains and positional dedup the candidate list holds ~378,280 exploratory candidates + 637 multi-survey clusters. These are exploratory pipeline candidates, NOT confirmed physical objects or discoveries. Paper 3 itself is the reproducible public-ID recovery of 181 DESI DR1 TARGETIDs from a frozen historical anomaly list (an archive-recovery / provenance product, explicitly not a purity, novelty, or detection claim). Native BigAEs per survey (SDSS val_loss 0.0311, LAMOST 0.0329, CMB val_loss 0.4437 with 100% injection-recovery @ 5\u03C3).",
   source: "pipelines/p3_anomaly_engine/",
   rows: 8, totalSamples: 378480,
   status: "PATH-C COMPLETE", statusClass: "frozen",
@@ -2395,8 +2395,8 @@ p3AnomalyCatalog: {
 },
 
 p3SimbadNovelty: {
-  name: "Paper 3 \u2014 Top-Ranked Anomaly SIMBAD Crossmatch",
-  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-unmatched means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. After per-survey native retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,280 unique physical objects + 637 multi-survey clusters.",
+  name: "Anomaly Pipeline \u2014 Top-Ranked Candidate SIMBAD Crossmatch",
+  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked exploratory candidates in each QC-passing survey. SIMBAD-unmatched means no cataloged counterpart within the match radius \u2014 a descriptive pipeline statistic, NOT a novelty or detection claim. Overall SIMBAD-unmatched fraction across combined top-rank lists is 58.8%. The full candidate list holds ~378,280 exploratory candidates + 637 multi-survey clusters. Paper 3 itself makes no purity, novelty, or detection claim; it is the public-ID recovery of 181 DESI DR1 TARGETIDs from a frozen historical anomaly list.",
   source: "pipelines/p3_anomaly_engine/simbad_crossmatch/",
   rows: 6, totalSamples: 0,
   status: "FROZEN", statusClass: "frozen",
@@ -2891,7 +2891,7 @@ function showTree() {
       </g>
       <g class="tree-node" transform="translate(560,395)">
         <rect x="-55" y="-15" width="110" height="30" fill="#3b82f6" stroke="#2563eb"/>
-        <text y="2" font-size="9">f_NL = &minus;35/8</text>
+        <text y="2" font-size="9">f_NL = &minus;35/16</text>
       </g>
 
       <!-- Legend -->

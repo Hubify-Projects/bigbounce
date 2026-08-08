@@ -1,0 +1,68 @@
+{
+  "counts": {
+    "catalog_rows": 8474531,
+    "primary_hc_rows": 949584,
+    "strict_primary_hc_rows": 890069,
+    "unsafe_catalog_rows": 249066,
+    "unsafe_primary_hc_rows": 59515
+  },
+  "created_at_utc": "2026-07-15T07:49:42.453140+00:00",
+  "max_reconstructed_bound_excursion": 0.09009438753128052,
+  "paper": "P4",
+  "paper_version": "v1.0.244",
+  "products": {
+    "claim_audit_script": {
+      "bytes": 7693,
+      "filename": "validate_p4_v1_0_244_claims.py",
+      "sha256": "551efdbd16c365301492766e28fae0e27c44d1d1f2000688b2bbbb2ae7a10399"
+    },
+    "data_dictionary": {
+      "bytes": 5205,
+      "filename": "CATALOG_SCHEMA.md",
+      "sha256": "88ec41873ddfb8fdf41ea3ff335c70e5104377b0c0a08840a77e4a0097d71b73"
+    },
+    "primary": {
+      "bytes": 386712994,
+      "filename": "p4_catalog_primary_safe_v1.0.244.parquet",
+      "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+    },
+    "primary_null": {
+      "bytes": 80128,
+      "filename": "primary_null_amps_10000.npy",
+      "sha256": "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492"
+    },
+    "quarantine": {
+      "bytes": 16665663,
+      "filename": "p4_catalog_raw_flip_quarantine_v1.0.244.parquet",
+      "sha256": "fb98787dd4c5d1a7a0fdb64fcdacd1b02bc2080ab3716c0a803e0ccdfec03fbe"
+    },
+    "reproduction_script": {
+      "bytes": 6517,
+      "filename": "reproduce_p4_primary_null_v1_0_244.py",
+      "sha256": "218ccc263c3c3f68e5f7560857b3d58408e652d1c78c24518573120170f8b269"
+    },
+    "schema": {
+      "bytes": 4639,
+      "filename": "SCHEMA.json",
+      "sha256": "e432f944768ad1e1504f7548991502644b59346eb0a02ecd31970a1861adeb98"
+    }
+  },
+  "release_gate": "LOCAL_RELEASE_CANDIDATE_ONLY; immutable archive/DOI and human ApJS review remain open",
+  "schema": "p4-apjs-release-manifest/v1",
+  "science_scope": "Observed-label catalog and descriptive null test only; no calibrated label probabilities, physical amplitude bound, primordial parity bound, matched-external-estimator claim, or formal preregistration claim.",
+  "source": {
+    "bytes": 952115239,
+    "identity_validation": {
+      "bytes": 952115239,
+      "content_sha256": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563",
+      "receipt_path": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json",
+      "receipt_sha256": "1421d4041e4c8d280cfaf97c7782996547d767f3e7c1ee73a79686ffe4d02685",
+      "rows": 8474531,
+      "upstream_revision": "a21eb596fd10edb9af9e7a1bcefb04f87327a724",
+      "verification_basis": "current full SHA-256 pass plus committed exact receipt, byte count, and Parquet-row checks"
+    },
+    "path": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p5_desi_chirality/data/p4_chirality.parquet",
+    "sha256": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563"
+  },
+  "unsafe_score_policy": "Quarantine only; never calibrated; never use as science weights or likelihood inputs."
+}

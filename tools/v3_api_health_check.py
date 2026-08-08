@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""
-v3 API health check — pre-flight verification that all 5 reviewer keys +
-meta-reviewer key have working credits before launching a fire.
+"""BigBounce direct-API health preflight.
+
+Required direct APIs are Google/Gemini and xAI/Grok. Perplexity is optional.
+OpenAI-family review runs through Codex/ChatGPT subscription, and Anthropic/
+Claude is disabled for the active campaign; neither route is pinged here.
 
 Catches the failure mode documented in AUTOLOOP_IMPROVEMENTS.md fire-18 entry:
 gpt-5-pro/gpt-5/o3 all hit 429 insufficient_quota; the autoloop ran
@@ -12,14 +14,14 @@ Runs a minimal-cost ping per provider (1-5 tokens).
 Usage:
     python tools/v3_api_health_check.py
 
-Exit code = number of UNHEALTHY providers (0 = all healthy).
+Exit code = number of unhealthy REQUIRED providers (0 = launchable).
 """
 from __future__ import annotations
 
 import sys
 from pathlib import Path
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
+REPO = Path(__file__).resolve().parents[1]
 ENV_LOCAL = REPO / ".env.local"
 
 
@@ -49,38 +51,6 @@ def classify_error(msg: str) -> str:
     if "401" in msg or "unauthorized" in msg_low or "invalid api key" in msg_low:
         return "KEY_INVALID"
     return "UNREACHABLE"
-
-
-def check_anthropic(key: str) -> tuple[str, str]:
-    if not key:
-        return ("KEY_MISSING", "ANTHROPIC_API_KEY not in .env.local")
-    try:
-        import anthropic
-        c = anthropic.Anthropic(api_key=key, timeout=15.0)
-        r = c.messages.create(
-            model="claude-opus-4-7",
-            max_tokens=5,
-            messages=[{"role": "user", "content": "ping"}],
-        )
-        return ("HEALTHY", f"claude-opus-4-7 returned {len(r.content)} content blocks")
-    except Exception as e:
-        return (classify_error(str(e)), str(e)[:200])
-
-
-def check_openai(key: str) -> tuple[str, str]:
-    if not key:
-        return ("KEY_MISSING", "OPENAI_API_KEY not in .env.local")
-    try:
-        from openai import OpenAI
-        c = OpenAI(api_key=key, timeout=15.0)
-        r = c.chat.completions.create(
-            model="gpt-5",
-            max_completion_tokens=5,
-            messages=[{"role": "user", "content": "ping"}],
-        )
-        return ("HEALTHY", f"gpt-5 returned {len(r.choices)} choices")
-    except Exception as e:
-        return (classify_error(str(e)), str(e)[:200])
 
 
 def check_gemini(key: str) -> tuple[str, str]:
@@ -132,26 +102,26 @@ def check_perplexity(key: str) -> tuple[str, str]:
 def main():
     keys = load_keys()
     checks = [
-        ("Anthropic (claude-opus-4-7)", check_anthropic, keys.get("ANTHROPIC_API_KEY", "")),
-        ("OpenAI (gpt-5)", check_openai, keys.get("OPENAI_API_KEY", "")),
-        ("Google (gemini-2.5-pro)", check_gemini, keys.get("GOOGLE_GEMINI_API_KEY", "") or keys.get("GEMINI_API_KEY", "")),
-        ("xAI (grok-4)", check_grok, keys.get("XAI_API_KEY", "") or keys.get("GROK_API_KEY", "")),
-        ("Perplexity (sonar-pro)", check_perplexity, keys.get("PERPLEXITY_API_KEY", "")),
+        ("Google (gemini-2.5-pro)", check_gemini, keys.get("GOOGLE_GEMINI_API_KEY", "") or keys.get("GEMINI_API_KEY", ""), True),
+        ("xAI (grok-4)", check_grok, keys.get("XAI_API_KEY", "") or keys.get("GROK_API_KEY", ""), True),
+        ("Perplexity (sonar-pro)", check_perplexity, keys.get("PERPLEXITY_API_KEY", ""), False),
     ]
     unhealthy = 0
-    print("# v3 API health check")
+    print("# BigBounce direct-API health check")
     print("")
-    for name, fn, key in checks:
+    for name, fn, key, required in checks:
         status, detail = fn(key)
-        flag = "OK" if status == "HEALTHY" else "FAIL"
-        print(f"  [{flag:>4}] {name}: {status}")
+        flag = "OK" if status == "HEALTHY" else ("FAIL" if required else "SKIP")
+        tier = "required" if required else "optional"
+        print(f"  [{flag:>4}] {name} ({tier}): {status}")
         if status != "HEALTHY":
             print(f"          {detail[:160]}")
+        if required and status != "HEALTHY":
             unhealthy += 1
     print("")
-    print(f"# Summary: {5 - unhealthy} / 5 providers healthy")
+    print(f"# Required summary: {2 - unhealthy} / 2 providers healthy")
     if unhealthy > 0:
-        print("# Recommendation: top up degraded provider budgets before next fire")
+        print("# Recommendation: restore required Gemini/Grok access before next API wave")
     sys.exit(unhealthy)
 
 

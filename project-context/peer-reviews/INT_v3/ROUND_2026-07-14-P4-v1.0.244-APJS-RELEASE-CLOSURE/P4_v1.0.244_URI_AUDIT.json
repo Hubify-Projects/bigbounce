@@ -1,0 +1,292 @@
+{
+  "annotation_count": 115,
+  "external_links": [
+    {
+      "curl_exit": 0,
+      "http_code": 200,
+      "page": 1,
+      "uri": "mailto:houston@hubify.com"
+    },
+    {
+      "curl_exit": 0,
+      "http_code": 200,
+      "page": 2,
+      "uri": "https://huggingface.co/datasets/Smith42/galaxies"
+    },
+    {
+      "curl_exit": 0,
+      "http_code": 200,
+      "page": 24,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance"
+    },
+    {
+      "curl_exit": 0,
+      "http_code": 200,
+      "page": 24,
+      "uri": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog"
+    },
+    {
+      "curl_exit": 0,
+      "http_code": 200,
+      "page": 24,
+      "uri": "https://huggingface.co/bamfai/galaxy-chirality-v2"
+    },
+    {
+      "curl_exit": 0,
+      "http_code": 200,
+      "page": 24,
+      "uri": "https://github.com/Hubify-Projects/bigbounce"
+    },
+    {
+      "curl_exit": 0,
+      "http_code": 200,
+      "page": 26,
+      "uri": "https://github.com/rwightman/pytorch-image-models"
+    }
+  ],
+  "failures": [],
+  "local_repository_links": [
+    {
+      "exists": true,
+      "page": 5,
+      "path": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/dipole/catalog_c_summary.json"
+    },
+    {
+      "exists": true,
+      "page": 7,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json"
+    },
+    {
+      "exists": true,
+      "page": 7,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m4_slab_stats.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m4_slab_stats.json"
+    },
+    {
+      "exists": true,
+      "page": 9,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c11b_hc_dipole_nulls.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c11b_hc_dipole_nulls.json"
+    },
+    {
+      "exists": true,
+      "page": 10,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json"
+    },
+    {
+      "exists": true,
+      "page": 11,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/monopole_mask_null_results.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/monopole_mask_null_results.json"
+    },
+    {
+      "exists": true,
+      "page": 11,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/master_decoupled_monopole_null.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/master_decoupled_monopole_null.json"
+    },
+    {
+      "exists": true,
+      "page": 12,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/master_decoupled_monopole_null_10k.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/master_decoupled_monopole_null_10k.json"
+    },
+    {
+      "exists": true,
+      "page": 13,
+      "path": "pipelines/p2_chirality/outputs/gz1only_fullN_dipole_result.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/gz1only_fullN_dipole_result.json"
+    },
+    {
+      "exists": true,
+      "page": 14,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json"
+    },
+    {
+      "exists": true,
+      "page": 14,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/stage_b_hybrid_image_field_recovery.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/stage_b_hybrid_image_field_recovery.json"
+    },
+    {
+      "exists": true,
+      "page": 17,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c3_wp_invariance_fsky.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c3_wp_invariance_fsky.json"
+    },
+    {
+      "exists": true,
+      "page": 17,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m3_fsky_normalization.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m3_fsky_normalization.json"
+    },
+    {
+      "exists": true,
+      "page": 18,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c6_depth_stratified_null.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c6_depth_stratified_null.json"
+    },
+    {
+      "exists": true,
+      "page": 18,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c17_item13_training_semantics.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c17_item13_training_semantics.json"
+    },
+    {
+      "exists": true,
+      "page": 18,
+      "path": "pipelines/p2_chirality/train_v2_fast.py",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/train_v2_fast.py"
+    },
+    {
+      "exists": true,
+      "page": 19,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json"
+    },
+    {
+      "exists": true,
+      "page": 19,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_flip_identity_qc.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_flip_identity_qc.json"
+    },
+    {
+      "exists": true,
+      "page": 19,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json"
+    },
+    {
+      "exists": true,
+      "page": 19,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c16_r24conf_pod_batch.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c16_r24conf_pod_batch.json"
+    },
+    {
+      "exists": true,
+      "page": 20,
+      "path": "pipelines/p2_chirality/scripts/gz1_stratified_confusion.py",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/scripts/gz1_stratified_confusion.py"
+    },
+    {
+      "exists": true,
+      "page": 20,
+      "path": "pipelines/p2_chirality/outputs/gz1_stratified_confusion.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/gz1_stratified_confusion.json"
+    },
+    {
+      "exists": true,
+      "page": 21,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json"
+    },
+    {
+      "exists": true,
+      "page": 22,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/joint_nuisance_bootstrap_sigma.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/joint_nuisance_bootstrap_sigma.json"
+    },
+    {
+      "exists": true,
+      "page": 22,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c12b_wls_conditioning.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/c12b_wls_conditioning.json"
+    },
+    {
+      "exists": true,
+      "page": 23,
+      "path": "pipelines/p2_chirality/outputs/edge_on_contamination_metric.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/edge_on_contamination_metric.json"
+    },
+    {
+      "exists": true,
+      "page": 23,
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/edgeon_isolated_tiebreak_coherence.json",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/canonical_provenance/edgeon_isolated_tiebreak_coherence.json"
+    },
+    {
+      "exists": true,
+      "page": 24,
+      "path": "pipelines/p2_chirality/apjs_release_schema_v1_0_244.json",
+      "tracked": false,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/apjs_release_schema_v1_0_244.json"
+    },
+    {
+      "exists": true,
+      "page": 24,
+      "path": "pipelines/p2_chirality/CATALOG_SCHEMA.md",
+      "tracked": true,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/CATALOG_SCHEMA.md"
+    },
+    {
+      "exists": true,
+      "page": 24,
+      "path": "pipelines/p2_chirality/build_apjs_release_v1_0_244.py",
+      "tracked": false,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/build_apjs_release_v1_0_244.py"
+    },
+    {
+      "exists": true,
+      "page": 24,
+      "path": "pipelines/p2_chirality/tests/test_apjs_release_v1_0_244.py",
+      "tracked": false,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/tests/test_apjs_release_v1_0_244.py"
+    },
+    {
+      "exists": true,
+      "page": 24,
+      "path": "pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py",
+      "tracked": false,
+      "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py"
+    }
+  ],
+  "note": "Repository artifact links are validated against this exact local worktree; newly added targets become remotely resolvable only after the same commit is pushed.",
+  "paper": "P4",
+  "paper_version": "v1.0.244",
+  "pdf": {
+    "bytes": 34064141,
+    "pages": 26,
+    "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sha256": "1b1a536dfbd7d07ea4958304d6694582ce3b5ec7d6ce16b08b5d17fdefc15669"
+  },
+  "schema": "p4-v1.0.244-exact-pdf-uri-audit/v1",
+  "status": "PASS",
+  "unique_uri_count": 39,
+  "untracked_local_targets": [
+    "pipelines/p2_chirality/apjs_release_schema_v1_0_244.json",
+    "pipelines/p2_chirality/build_apjs_release_v1_0_244.py",
+    "pipelines/p2_chirality/tests/test_apjs_release_v1_0_244.py",
+    "pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "code_sha256": "e582efb572bdfb7d57d6763bb2701ff4b2f5b09238061902c1922c81997fcc0c",
+  "config_names": [
+    "purify_b"
+  ],
+  "configs": [
+    {
+      "name": "purify_b",
+      "purify_b": true
+    }
+  ],
+  "execution": [
+    {
+      "mode": "serial",
+      "realization_workers": 1,
+      "result_order": "ordered indices 0..N-1; seeds 42--541"
+    }
+  ],
+  "n_real": 500,
+  "result_bytes": 1230,
+  "result_file": "c10_purify_b.json",
+  "result_sha256": "208d168546c73f5521e96ead1c2be211534a21f2096fac45647f6d5999f02e7f",
+  "runtime_s": 22610.2,
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "suite": "c10",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_equivalence_max_abs": 2.842170943040401e-14
+}

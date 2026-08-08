@@ -1,0 +1,40 @@
+chat: https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=26a8e851-56cb-4409-8cef-6ef5d63b40b0
+reviewer: Grok (Expert) | paper: P4 v1.0.227 (33pp) | date: 2026-07-09 | round: CV
+baseline (CA): ACCEPT-track (ready for journal submission; 0 majors)
+verdict (from raw): MINOR REVISIONS (report recommends publication; 0 blockers, 0 majors; minor abstract-clarity + readability polish). Movement vs CA: HELD accept-track; formal verdict word MINOR REVISIONS this round.
+---RAW---
+Thought for 1m 18sReferee report on:
+"A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning"
+Houston Golden (Independent Researcher)
+MNRAS / Phys. Rev. D / JCAP format
+Date of report: 9 July 2026 (paper dated 9 July 2026, v1.0.227)
+1. Recommendation
+MINOR REVISIONS
+The paper presents a high-quality, large-scale observational null result on the projected chirality dipole of spiral galaxies using the largest dedicated catalog to date. The primary real-space estimator on the high-confidence subsample returns a clean null (+0.41σ, empirical rank p = 0.31 against isotropic pixel-permutation), and the block-bootstrap WLS template fit disfavors a clean 1.7% reference dipole. The harmonic-channel residuals are correctly treated as systematics diagnostics rather than detections, with quantitative closure via generative nulls, an eight-anchor battery, and forward modeling. The work is methodologically rigorous, transparent about limitations and open items, and includes a decisive fully model-free GZ1 human-label cross-check.
+No blockers to publication exist. The science is sound, the primary claims are well-supported, and previous concerns around mask definition, monopole leakage, and residual interpretation appear addressed in this version. Minor revisions are requested for abstract clarity and readability.
+2. BLOCKERS (must fix before publication)
+None.
+3. MAJORS (should fix)
+None.
+The residual interpretation is appropriately bounded: even interpreting the entire canonical-mask ℓ=1 residual amplitude as a coherent cosmological dipole places it below the empirical real-space A50 ≈ 0.75% floor (and the real-space estimator itself returns null). The eight-anchor battery and harmonic-channel completeness check further disfavor a clean primordial dipole interpretation. These points are already handled correctly and conservatively.
+4. MINORS (polish)
+M1. Abstract clarity on the template-fit statistic (abstract, ~lines 12–18)
+The abstract states that the block-bootstrap WLS template fit “disfavors a clean cosmological dipole at the 1.7% reference amplitude … at z ≈−18.” The body (Sec. III B, Sec. VI B, Appendix D, Table I) correctly qualifies this as a model-dependent template-disfavor statistic under the adopted NSIDE=8 block-bootstrap spatial covariance — not a calibrated frequentist exclusion significance. The clean frequentist falsification for the primary real-space estimator is the injection-recovery bracket A95 ∈ (1.0%, 1.5%].
+Abstract-only readers could misinterpret the quoted z value as a formal exclusion significance.
+Proposed fix: Add a concise parenthetical qualifier in the abstract, e.g.:
+“… at z ≈−18 (block-bootstrap template-disfavor under adopted spatial covariance; the clean frequentist falsification boundary of the primary real-space estimator is the injection-recovery A95 bracket in Sec. VI B).”
+M2. Readability of dense technical sections (abstract; Sec. IV C–D; Appendix D)
+Several paragraphs are extremely long and pack multiple technical points, null procedures, numerical results, and caveats into single blocks. This is common in technical cosmology papers but reduces accessibility for a broad readership.
+Proposed fix: Break the longest paragraphs (especially the abstract and the monopole+mask leakage / residual discussion in Sec. IV D) into shorter units. Consider adding 1–2 short subheadings or a 2–3 sentence “Key takeaway” box immediately after the abstract or at the opening of Sec. IV that summarizes: (i) the two primary estimators and their roles, (ii) that harmonic residuals are diagnostics only, and (iii) the explicit falsification criterion.
+M3. Minor notation / consistency items (scattered throughout)
+A few instances of spacing/punctuation around symbols in the extracted text (e.g., “z ≈−18 . This ℓ= 1”) — verify in the rendered PDF and standardize en-dashes/em-dashes and spacing in math mode.
+Table V and related captions already note that σ/z values derive from distinct null procedures and are not directly comparable; reinforce this reminder in one additional footnote if space allows, for readers who jump to tables.
+The edge-on contamination quantification (15.80%, 8.98% sensitivity penalty) and its directional-bias-null result via equivariance are excellent; the text is already clear, but a single sentence in Sec. IV B or VI B cross-referencing Appendix E would help readers who skim.
+These are all polish-level and do not affect scientific conclusions.
+5. Strengths (≥3 bullet points)
+Largest and best-controlled chirality catalog to date with exemplary public release. The work delivers an 8.47 million galaxy catalog (3.20 million spirals) from DESI Legacy DR8 with a dedicated non-spiral class, flip-equivariant ViT + 2-fold TTA post-processing, and full public release of catalog (three tiers), model weights, and reproducibility scripts/artifacts on Hugging Face + GitHub. The raw-to-equivariant comparison (2.31σ spurious dipole → 0.41σ null) provides a clear methodological demonstration that future studies must adopt comparable bias controls.
+Outstanding statistical hygiene and transparency. The paper implements an explicit pre-specified analysis hierarchy (Table I decision tree) that cleanly separates the two primary cosmological estimators (HC real-space dipole at +0.41σ; block-bootstrap WLS template-fit disfavor) from diagnostics. It deploys multiple independent null constructions (isotropic pixel-permutation, per-galaxy label-shuffle, generative monopole-only, depth-stratified, block-bootstrap, and injection-recovery) plus a decisive fully model-free GZ1 human-label-only dipole null (z = −0.54σ) that directly rebuts pseudo-label independence concerns. All quantitative claims are tied to committed, checksummed artifacts.
+Thorough, quantitative systematics audit with bounded residual interpretation. The +3.64σ canonical-mask MASTER residual is never claimed as a detection. The eight-anchor battery, generative null showing 99.32% pre-MASTER reproduction from monopole+mask leakage, imaging+morphology forward model (~53% closure), and explicit demonstration that even the full residual amplitude lies below the real-space A50 ≈ 0.75% floor (with the real-space estimator returning null) close the cosmological loophole without overclaiming. The ~47% open item is honestly labeled as queued follow-up (per-galaxy confidence-vs-depth response map). Edge-on contamination is empirically quantified (15.8%) rather than qualitatively bounded, with directional bias shown to be absent due to equivariance.
+Clear scientific framing and appropriate conservatism. The observable is correctly identified as parity-even (isotropy-breaking axial-vector channel, not a direct parity-violation test). Amplitude-level tension with Shamir claims is stated without claiming a formal frequentist exclusion of the Ganalyzer estimator. The falsification criterion is explicitly tied to the empirical injection-recovery bracket with disclosed grid/MC limitations. The paper advances open science while avoiding over-interpretation.
+This version (v1.0.227) shows clear incorporation of prior feedback on mask definitions, leakage quantification, and residual attribution. With the minor abstract clarity and readability polish requested above, the paper meets the high bar for MNRAS, Phys. Rev. D, or JCAP and is recommended for publication.
+I am happy to review a revised manuscript.

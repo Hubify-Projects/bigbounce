@@ -1,0 +1,492 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{seqsplit}
+\usepackage{titlesec}
+
+\titlespacing*{\section}{0pt}{2.0ex plus 0.5ex minus 0.2ex}{0.8ex}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\newcommand{\software}{\texttt{namaster-proof}}
+\newcommand{\Cl}{C_\ell}
+% v2B.0.9 (2026-07-16): closes GENUINELY-NEW-REAL items 2-4 from truth-audit
+% round INT_v3/ROUND_2026-07-16-P1B-v2B.0.8-EXACTPDF-cf7ede29-CLAUDESTACK —
+% software 0.1.6->0.1.7 (skip-guarded 2 monorepo-coupled tests; standalone
+% install now runs 39 + skips 2 cleanly), honest test contract, JORS
+% Availability template completion (system requirements / macOS / repo date),
+% and codemeta.json added to the package.
+% v2B.0.10 (2026-07-16): closes the 4 optional GENUINELY-NEW-REAL items from
+% truth-audit round INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-
+% CLAUDESTACK-CONFIRM — adds examples/rebuild_workspace_check.py + a Sec 7
+% sentence stating the workspace tensor is deterministically regenerable and
+% the recheck script verifies the <1e-10 gate; adds approximate per-example
+% and 500-realization campaign wall-times (Availability); lifts the local
+% pip-install one-liner into the Code-repository prose; macOS stays honestly
+% untested (no CI change).
+% v2B.0.11 (2026-07-16 18:40 PT — two one-sentence closures from the exact
+%   v2B.0.10 board truth audit (ROUND_2026-07-16-P1B-v2B.0.10-EXACTPDF-c7883afc):
+%   explicit pytest invocation command in Sec 7 QC; explicit non-affiliation
+%   sentence (independent downstream verification layer, not an official
+%   NaMaster release) in Sec 11. No number changed.)
+% v2B.0.12 (2026-07-21): Archive paragraph closure — namaster-proof 0.1.7 is
+%   now bound to a published immutable archive (Zenodo DOI
+%   10.5281/zenodo.21481753, commit-pinned source at 0a587b58, Houston-
+%   authorized publish 2026-07-21); the previously disclosed persistent-
+%   identifier submission blocker is closed in-paper. No number changed.
+% v2B.0.13 (2026-07-21 19:58 PT): embeds the manuscript's own published
+%   archival deposit DOI 10.5281/zenodo.21481842 (Houston explicit publish-go)
+%   in the Archive paragraph alongside the 0.1.7 software DOI. No number changed.
+% v2B.0.14 (2026-07-22): closes the 3 GENUINELY-NEW-REAL items from the
+%   2026-07-22 confirmation-board truth audit (INT_v3/ROUND_2026-07-22-P1B-
+%   v2B.0.13-EXACTPDF-a84bea85-CLAUDESTACK-CONFIRM) — removes the empty
+%   Sec 1 Overview stub and relocates the Keywords paragraph to sit directly
+%   under the abstract; anchors Sec 8's null-injection sentence to state it
+%   was also run with 500 realizations (ground-truth verified: 500 at each
+%   of the three injected angles, per summary.json and namaster_500mc.py);
+%   deletes the Sec 11 Archive-paragraph review-response remnant sentence
+%   referencing the previously disclosed persistent-identifier submission
+%   blocker. No number changed.
+% v2B.0.15 (2026-07-24): JORS-route prep closure — embeds Houston's verified
+%   ORCID (0009-0008-5616-5994) in the author block (no house-style precedent
+%   found across the other five papers' current .tex sources; a stale legacy
+%   P2 draft at research/focused_paper_source_integration/arxiv_package/
+%   main.tex has an unlinked \orcidicon placeholder with no numeric ID, so a
+%   clean \href to orcid.org is used per spec). JORS template conformance
+%   investigated: the JORS "Submission Preparation Checklist" (fetched
+%   2026-07-24 from openresearchsoftware.metajnl.com/about/submissions) states
+%   "The submission conforms to the article template. For LaTex submissions,
+%   a PDF should be provided along with the original LaTex file(s)" as one of
+%   the items "All submissions must meet" — i.e. required AT INITIAL
+%   SUBMISSION, not camera-ready-only. The downloadable LaTeX template
+%   (jors.cls + jors_template.tex, JORS_Template.zip via the submissions
+%   page's "LaTex Template" link) is a thin article-class wrapper
+%   (\LoadClass[a4paper]{article}) but mandates jors.cls itself plus an exact
+%   Title/Paper Authors/Paper Author Roles and Affiliations/Abstract/Keywords/
+%   Introduction/.../(2) Availability/.../(3) Reuse potential heading
+%   structure. This manuscript currently uses plain
+%   \documentclass[11pt]{article} with a different (though overlapping)
+%   section structure. Per task instruction this is reported, NOT
+%   auto-restructured by this agent — see JOURNAL_ROUTE_PREP_2026-07-22.md
+%   for the disposition. No number/science changed.
+% v2B.0.16 (2026-07-24): closes the previously UNDISPOSITIONED Grok [MAJOR]
+%   from the 2026-07-23 re-sweep (INT_v3/ROUND_2026-07-23-P1B-v2B.0.14-
+%   EXACTPDF-4b7c752f-CLAUDESTACK-RESWEEP/API_P1B_grok.md L17), which was
+%   missed in the original 07-23 truth-audit pass and adjudicated 2026-07-24.
+%   The literal claim ("irreconcilable internal contradiction" between the
+%   title-page manuscript stamp and the body's "Version 0.1.7") is FALSIFIED:
+%   every software-version string agrees with the released package
+%   (pyproject.toml / codemeta.json / CITATION.cff / __init__.py all 0.1.7)
+%   AND the Zenodo software record 10.5281/zenodo.21481753 (metadata
+%   version "0.1.7"). But the legibility gap underneath it is REAL and is
+%   what closes here: nothing in the manuscript told a reader that the
+%   title-page stamp is a DOCUMENT revision and 0.1.7 is the SOFTWARE
+%   release. Two independent referee passes (07-22 Grok MINOR-1, 07-23 Grok
+%   MAJOR) stumbled on the same ambiguity, and JORS assesses metadata
+%   correctness as a formal review criterion. Fix: (a) the title-page \date
+%   now labels the stamp "manuscript revision"; (b) a new Sec 10 "Software
+%   version" paragraph states the two-namespace distinction explicitly and
+%   binds the document stamp to the \paperVersion macro so it can never
+%   drift (same root-cause fix as the P2/P3/P4 stamp-drift closures of the
+%   same re-sweep); (c) all three bare "Version 0.1.7" body occurrences are
+%   qualified as "\software{} version 0.1.7". No number/science changed.
+\newcommand{\paperVersion}{v2B.0.16}
+\newcommand{\paperTimestamp}{2026-07-24 18:20 PT}
+
+\title{\software: Exact pseudo-\(\Cl\) window inference and
+content-bound validation for reproducible spin-2 analyses}
+\author{Houston Golden\\Independent researcher\\[2pt]\href{https://orcid.org/0009-0008-5616-5994}{\footnotesize ORCID: 0009-0008-5616-5994}}
+\date{July 24, 2026 --- manuscript revision \paperVersion}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\software{} is a focused Python verification layer for two error-prone steps
+in cut-sky spin-2 analyses.  First, it evaluates a uniformly rotated
+\(EE,EB,BE,BB\) spectrum through the complete NaMaster bandpower-window
+operator, avoiding replacement of the operator by bin-centre or
+effective-multipole templates.  Second, it writes JSON results and
+content-bound sidecar receipts with atomic per-file replacement and fails
+closed when result bytes or caller-asserted execution metadata change.  The package also supplies explicit
+multipole-support contracts, fixed-grid rotation-angle recovery, command-line
+receipt verification, and compatibility tests against the production helpers
+from which it was extracted.  The software is intended for method validation
+and reproducibility checks; it is not a sky-analysis pipeline, foreground
+model, or cosmological inference engine.
+\end{abstract}
+
+\paragraph{Keywords.}
+Python; cosmology; pseudo-\(\Cl\); NaMaster; reproducibility; provenance.
+
+\section{Introduction}
+
+Pseudo-\(\Cl\) estimators make masked spin-2 analyses computationally
+practical by relating full-sky spectra to coupled and decoupled
+bandpowers~\cite{Hivon2002,Alonso2019}.  Reproducible use of these estimators
+requires more than recording a best-fit number: the same window operator must
+be used in simulation and inference, harmonic limits must agree across fields
+and bins, and intermediate results must remain bound to their execution
+metadata.
+
+\software{} packages these checks behind a small public API.  Its numerical
+module constructs exact windowed responses for uniform polarization rotation,
+evaluates them at one or many angles, recovers an angle on a declared grid,
+and compares the window contraction with NaMaster's couple--decouple operator.
+Its provenance module publishes a JSON result and a SHA-256-bound receipt using
+atomic replacement for each file, then verifies the pair and caller-asserted
+metadata.  A third module defines
+deterministic multipole and binning contracts.  NumPy is the only required
+dependency; a NaMaster workspace is supplied by the user when exercising the
+physical window operator.
+
+\section{Statement of Need}
+
+For two spin-2 fields, NaMaster exposes a bandpower-window tensor with spectrum
+ordering \([EE,EB,BE,BB]\).  A common shortcut is to evaluate a theory
+spectrum at a representative multipole for each bin.  That shortcut is not
+generally identical to applying the complete mode-coupling and binning
+operator, and a mismatch between the simulation and fitting operators can
+appear as a parameter-recovery bias.
+
+A separate reproducibility risk arises in long or sharded calculations.
+Ordinary filenames do not prove that a summary corresponds to the intended
+seeds, realization count, configuration, or result bytes.  A process can also
+terminate between writing a result and its metadata, leaving a plausible but
+incomplete artifact.  These problems are usually addressed with analysis-local
+helpers.  \software{} provides a reusable, tested implementation with explicit
+failure behavior, while remaining narrow enough to audit.
+
+\section{Implementation and Architecture}
+
+The package is divided into three modules:
+
+\begin{description}[leftmargin=2.8cm,style=nextline]
+\item[\texttt{windows}]
+  Rotation of \(EE,EB,BE,BB\) spectra, exact contraction with a
+  \nolinkurl{get_bandpower_windows()} tensor, fixed-grid angle recovery, and
+  an equivalence check against \nolinkurl{couple_cell()} followed by
+  \nolinkurl{decouple_cell()}.
+\item[Multipoles]
+  Validation of a common harmonic cutoff and construction of integer
+  bandpower edges whose final exclusive edge is \(\ell_{\max}+1\).
+\item[\texttt{receipts}]
+  Atomic JSON publication, streaming SHA-256 calculation, sidecar-receipt
+  construction, and fail-closed content and metadata validation.
+\end{description}
+
+The functions accept array-like inputs and return NumPy arrays or plain Python
+dictionaries.  NaMaster is deliberately not an installation dependency:
+window functions require a workspace exposing
+\nolinkurl{get_bandpower_windows()}, \nolinkurl{couple_cell(cls)}, and
+\nolinkurl{decouple_cell(coupled)}. The first must return a finite
+\([4,n_b,4,n_\ell]\) tensor and the couple--decouple route must return a finite
+\([4,n_b]\) array. This small protocol makes the algebra testable with synthetic
+linear operators and permits users to pin PyMaster independently.
+
+\section{Exact-Window Inference}
+
+For an initially vanishing \(EB\) spectrum and a uniform rotation angle
+\(\beta\), the rotated spectra can be decomposed into angle-independent,
+\(\cos(4\beta)\), and \(\sin(4\beta)\) components.  In particular,
+\begin{align}
+ C_\ell^{EE}(\beta)
+   &= \tfrac12(C_\ell^{EE}+C_\ell^{BB})
+    + \tfrac12(C_\ell^{EE}-C_\ell^{BB})\cos(4\beta),\\
+ C_\ell^{BB}(\beta)
+   &= \tfrac12(C_\ell^{EE}+C_\ell^{BB})
+    - \tfrac12(C_\ell^{EE}-C_\ell^{BB})\cos(4\beta),\\
+ C_\ell^{EB}(\beta)=C_\ell^{BE}(\beta)
+   &= \tfrac12(C_\ell^{EE}-C_\ell^{BB})\sin(4\beta).
+\end{align}
+Let \(W_{b\ell}^{ij}\) be the workspace tensor mapping input spectrum \(j\)
+to output spectrum \(i\) in band \(b\).  The package precontracts each of the
+three components,
+\begin{equation}
+ R_{b}^{i,k}=\sum_{j,\ell}W_{b\ell}^{ij}C_\ell^{j,k},
+\end{equation}
+and subsequently evaluates
+\begin{equation}
+ C_b^i(\beta)=R_b^{i,0}
+ +\cos(4\beta)R_b^{i,c}+\sin(4\beta)R_b^{i,s}.
+\end{equation}
+This retains the full window tensor while making repeated grid evaluation
+inexpensive.  The recovery function minimizes a declared weighted or
+unweighted squared residual over a user-provided grid; its default is 2001
+points spanning \(-1^\circ\) to \(+1^\circ\).
+
+\section{Content Validation}
+
+\texttt{publish\_json} serializes a mapping with sorted keys, derives the
+receipt digest and byte count from that immutable serialized snapshot, writes and
+flushes a process-specific temporary file, atomically replaces the result,
+and synchronizes the containing directory.  It then separately publishes a sidecar receipt
+containing schema version, result filename, byte count, SHA-256 digest, and
+caller-supplied execution metadata.  The content-binding fields are protected
+from metadata override.
+
+\texttt{verify\_json\_receipt} requires both files, reads each through one file
+handle, parses those immutable byte snapshots as JSON objects, and recomputes
+every protected field from the same result bytes it returns.
+\texttt{validate\_json\_receipt}
+additionally checks caller-asserted metadata such as a suite identifier, seed range,
+or realization count using recursive JSON-type-strict equality, so booleans,
+integers, and floating-point numbers are not interchangeable. Missing files,
+malformed objects, changed bytes,
+changes to protected receipt fields, or asserted-contract mismatches raise an exception. The two
+files are not one filesystem transaction, and coordinated replacement of both
+requires an external receipt anchor or trusted expected metadata to detect. The
+\texttt{namaster-proof verify} and \texttt{namaster-proof validate} commands
+expose the same behavior to shell workflows and return a nonzero status on
+failure.
+
+\section{Quality Control}
+
+\software{} version 0.1.7 contains 41 automated tests covering numerical behavior, invalid
+inputs, the CLI, receipt mutation, protected fields, and compatibility with
+the original production helpers.  All 41 run in a monorepo checkout; in a
+standalone package install 39 run and the 2 replay-equivalence tests skip
+cleanly, because those two tests replay against production helper modules that
+reside elsewhere in the monorepo rather than inside the package.  The window suite uses an exactly represented
+synthetic linear workspace to compare the precontracted response with the
+couple--decouple route and to recover an injected grid angle.  Rotation tests
+check conservation of total \(EE+BB\) auto-power.  Receipt tests mutate result
+bytes and receipt digests independently and require rejection.
+
+Compatibility tests load the pre-package production modules and compare
+windowed bandpowers at negative, zero, and positive angles with zero requested
+absolute or relative tolerance.  They also compare algebraic spectrum rotation,
+bandpower edges, and harmonic keyword contracts.  In the associated physical
+production artifact, a workspace of shape
+\([4,20,4,1025]\) gave a maximum absolute difference of
+\(1.41\times10^{-18}\) between direct window contraction and the
+couple--decouple operator. This recorded execution check used IEEE-754
+double-precision arrays and the production driver's \(10^{-10}\) acceptance
+threshold; the package's separate synthetic legacy-helper comparison uses
+zero requested absolute and relative tolerance. Because
+the original workspace tensor was not retained, the scalar is not a
+self-contained reproducibility claim or a universal error bound.
+The tensor is nonetheless deterministically regenerable from committed,
+RNG-free code---the mask is a pure function of \(N_{\rm side}\) and fixed
+latitude cuts and the \(10^{-10}\)-gated equivalence check is committed---so
+the \nolinkurl{examples/rebuild_workspace_check.py} script rebuilds the
+\([4,20,4,1025]\) workspace and re-verifies \(\max|\Delta|<10^{-10}\) whenever
+PyMaster is installed (only the last digits of the \(\sim10^{-18}\) value are
+platform-dependent). The full suite runs with
+\texttt{python -m pytest packages/namaster-proof/tests} from the repository
+root (or \texttt{pytest} from within the installed package's test extra).
+
+\section{Worked Examples}
+
+\paragraph{Minimal synthetic operator.}
+The documentation constructs an identity-like workspace, builds a response
+from synthetic \(EE\) and \(BB\) arrays, evaluates a known rotation, and checks
+operator equivalence.  This example has no dependency on a paper-specific
+dataset and is suitable for installation tests.
+The minimal call sequence is
+\texttt{response = build\_rotation\_response(workspace, ee, bb)} followed by
+\texttt{windowed\_bandpowers(response, beta\_rad=np.deg2rad(0.25))}; the complete executable
+example also calls \texttt{validate\_window\_equivalence}.
+
+\paragraph{Real PyMaster integration.}
+The optional \nolinkurl{examples/pymaster_integration.py} example constructs a
+real PyMaster workspace, verifies the exact operator equivalence, recovers a
+declared grid injection, and records the result beside an effective-multipole
+shortcut comparison. It requires separately installed PyMaster and healpy.
+
+\paragraph{Synthetic CMB recovery campaign.}
+The production use case employed CAMB 1.6.6 raw \(EE/BB\) spectra, PyMaster
+2.6, \(N_{\rm side}=512\), \(\ell_{\max}=1024\), and deterministic seeds.
+For each of two nonzero injected angles, a 500-realization, foreground-free
+synthetic run recovered the injection from the mean bandpowers on the declared
+\(0.001^\circ\) grid: \(0.270^\circ\mapsto0.270^\circ\) and
+\(0.342^\circ\mapsto0.342^\circ\).  The null injection, also run with 500
+realizations, recovered \(0.000^\circ\).  These are software-recovery checks under the stated
+simulation contract, not measurements, detection significances, or evidence
+for a physical birefringence model.
+
+\paragraph{Sharded result validation.}
+Production shards record fields such as suite, realization count, and seed
+range alongside the content digest.  Aggregation can therefore reject a shard
+whose bytes were altered or whose declared range does not match the requested
+campaign, rather than silently combining it with valid results.
+
+\section{Author Contributions}
+
+Houston Golden: conceptualization, methodology, software, validation, formal
+analysis, investigation, data curation, writing---original draft,
+writing---review and editing, visualization, project administration, and
+funding acquisition. Correspondence metadata remain author-supplied submission
+metadata and are not inferred by the software release process.
+
+\section{Limitations}
+
+\software{} does not create masks or maps, estimate covariance matrices,
+separate cosmic rotation from instrumental polarization calibration, model
+foregrounds, choose a likelihood, or infer cosmological parameters.  Uniform
+rotation and initially vanishing \(EB\) are assumptions of the optimized
+three-component response; the general algebraic rotation helper accepts all
+four input spectra, but spatially varying rotation requires another model.
+Fixed-grid recovery inherits the range and resolution selected by the caller.
+Receipt validation establishes file integrity and agreement with caller-asserted
+metadata, not the scientific correctness of that metadata. SHA-256 sidecars
+are content bindings, not digital signatures, an authorization system, or
+protection against coordinated replacement without an external anchor.
+Schema version 1 has no migration requirement yet; a future incompatible
+schema will require an explicit reader or conversion path.
+
+\section{Availability}
+
+\paragraph{Software version.}
+This paper documents \software{} version 0.1.7. Every version number of the
+form 0.x.y in this paper refers to a release of the \software{} software
+package, and matches the released artifact: \texttt{pyproject.toml},
+\texttt{codemeta.json}, \texttt{CITATION.cff}, and the package
+\texttt{\_\_version\_\_} all declare 0.1.7, as does the Zenodo software record
+cited under Archive below. The separate stamp on the title page
+(\paperVersion) is the revision number of this manuscript as a document; it
+tracks editorial revisions of the metapaper and is deliberately independent of
+the software release line. The two numbers are not expected to agree.
+
+\paragraph{Operating system.}
+The package supports Linux and Windows where Python and NumPy are available;
+CI covers Linux with Python 3.10--3.13 and Windows with Python 3.12. Directory
+metadata are synchronized on POSIX systems after atomic replacement. macOS is
+expected to work as a POSIX platform wherever Python and NumPy are available,
+but is not currently exercised in continuous integration and is therefore
+listed as untested.
+
+\paragraph{Additional system requirements.}
+The package has no special hardware requirements: it is pure Python with a
+single NumPy runtime dependency, requires no GPU, and its full test suite
+completes in under one second with a negligible memory footprint on a commodity
+CPU. The optional PyMaster integration example (\(N_{\rm side}=16\)) completes
+in a few seconds, whereas the retained physical validation campaign
+(\(N_{\rm side}=512\), \(\ell_{\max}=1024\); 500 realizations at each of three
+injected angles) recorded a wall time of order \(7\times10^{2}\,\mathrm{s}\)
+with eight parallel realization workers on a commodity multi-core CPU
+(correspondingly of order a couple of hours single-worker). These campaign
+timings are environment-dependent; both workloads depend on the user-supplied
+PyMaster and healpy stacks and correspondingly more memory, but lie outside the
+self-contained packaged code path.
+
+\paragraph{Programming language and dependencies.}
+\software{} version 0.1.7 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
+is optional and is supplied by the user for physical NaMaster workspaces;
+the retained physical validation used PyMaster 2.6 and healpy 1.19.0.
+
+\paragraph{Code repository.}
+\begingroup\sloppy
+The source, issue tracker, installation instructions, API documentation, tests,
+and examples are available at
+\url{https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof}.
+From a checkout of that repository the package installs locally with
+\texttt{python -m pip install ./packages/namaster-proof} (append
+\texttt{-e '.[test]'} from within the package directory for the test extra).
+\texttt{namaster-proof} is an independent downstream verification layer and is
+not an official release of, or affiliated with, the NaMaster project.
+Citation metadata are supplied in \texttt{CITATION.cff} and machine-readable
+metadata in \texttt{codemeta.json}. The package directory was first published
+to the repository on 2026-07-16.
+\par\endgroup
+
+\paragraph{License.}
+The software is released under the MIT License.
+
+\paragraph{Archive.}
+\software{} version 0.1.7 is bound to an immutable archive: the commit-pinned source tree
+(\texttt{packages/namaster-proof} at repository commit
+\texttt{\seqsplit{0a587b583f8e86c4ce1ee4a20526fcdcd8035fe6}}), together with
+its license, citation metadata, and checksums, is published on Zenodo under
+\href{https://doi.org/10.5281/zenodo.21481753}{doi:10.5281/zenodo.21481753}
+(deposited July 21, 2026). The manuscript itself, with its
+exact source, arXiv bundle, and provenance manifest, is separately archived
+under \href{https://doi.org/10.5281/zenodo.21481842}{doi:10.5281/zenodo.21481842}
+(CC-BY-4.0, deposited July 21, 2026).
+
+\paragraph{Validation artifacts.}
+The corrected physical example is bound to the
+\href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json}
+{repository summary artifact} (SHA-256
+\texttt{\seqsplit{745b0a2f060773ce69c005ea84b74b305ec26a85f6aaafe58f0b3244b7f39914}})
+and the
+\href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/bandpowers.npz}
+{repository bandpower artifact} (SHA-256
+\texttt{\seqsplit{b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331}}).
+
+\section{Reuse Potential}
+
+Researchers can reuse the window layer to test uniform spin-2 rotation models
+against any workspace exposing the small NaMaster protocol, reuse the multipole
+contracts to prevent field/bin support drift, or use the receipt layer for
+sharded JSON calculations outside cosmology. The receipt primitive remains in
+the same package because it authenticates the exact validation artifacts
+produced by the window workflows; it is a small reusable module rather than a
+claim that the package is a general provenance framework. Extensions can add other
+angle-dependent spectrum bases, signed receipt anchors, or schema migrations.
+Questions, bug reports, and contributions are handled through the public
+repository issue tracker and pull-request workflow.
+
+\section{AI Usage Disclosure}
+
+AI coding and review agents assisted with implementation review, test
+generation, documentation, and manuscript editing. Their outputs were checked
+against committed source and retained numerical artifacts; executable claims
+were accepted only after local tests or direct recomputation.
+
+\section*{Acknowledgements}
+
+The exact-window operations build on NaMaster~\cite{Alonso2019} and the MASTER
+pseudo-\(\Cl\) method~\cite{Hivon2002}.  The production example used
+CAMB~\cite{Lewis2000} and HEALPix~\cite{Gorski2005}.
+
+\paragraph{Funding Statement.}
+No external funding supported this software release.
+
+\paragraph{Competing Interests.}
+The author declares no competing interests.
+
+\footnotesize
+\begin{thebibliography}{9}
+
+\bibitem{Hivon2002}
+E.~Hivon, K.~M. G\'orski, C.~B. Netterfield, B.~P. Crill, S.~Prunet, and
+F.~Hansen, ``MASTER of the CMB anisotropy power spectrum:
+A fast method for statistical analysis of large and complex cosmic microwave
+background data sets,'' \emph{Astrophysical Journal} 567, 2 (2002),
+\href{https://doi.org/10.1086/338126}{doi:10.1086/338126}.
+
+\bibitem{Alonso2019}
+D.~Alonso, J.~Sanchez, and A.~Slosar, ``A unified pseudo-\(C_\ell\) framework,''
+\emph{Monthly Notices of the Royal Astronomical Society} 484, 4127--4151
+(2019), \href{https://doi.org/10.1093/mnras/stz093}{doi:10.1093/mnras/stz093}.
+
+\bibitem{Lewis2000}
+A.~Lewis, A.~Challinor, and A.~Lasenby, ``Efficient computation of cosmic
+microwave background anisotropies in closed Friedmann--Robertson--Walker
+models,'' \emph{Astrophysical Journal} 538, 473--476 (2000),
+\href{https://doi.org/10.1086/309179}{doi:10.1086/309179}.
+
+\bibitem{Gorski2005}
+K.~M. G\'orski, E.~Hivon, A.~J. Banday, B.~D. Wandelt, F.~K. Hansen,
+M.~Reinecke, and M.~Bartelmann, ``HEALPix: A framework for high-resolution
+discretization and fast analysis of data distributed on the sphere,''
+\emph{Astrophysical Journal} 622, 759--771 (2005),
+\href{https://doi.org/10.1086/427976}{doi:10.1086/427976}.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,87 @@
+{
+  "paper": "P3",
+  "version": "v3.2.0-r5",
+  "audit_timestamp": "2026-07-14T10:33:00-07:00",
+  "status": "PASS_WITH_EXTERNAL_INTEGRATION_GATES",
+  "scope": "Manuscript, figures, compiled PDF, auxiliary data references, and immutable proof freeze. This is an integrity/format audit, not an external scientific review or physical classification.",
+  "compile": {
+    "command": "PATH=$HOME/Library/TinyTeX/bin/universal-darwin:$PATH latexmk -pdf -interaction=nonstopmode -halt-on-error paper3_apjs.tex",
+    "result": "PASS",
+    "pages": 14,
+    "page_size": "612 x 792 points (letter)",
+    "log_scan": {
+      "fatal_errors": 0,
+      "undefined_references": 0,
+      "overfull_hboxes": 0,
+      "underfull_hboxes": 0,
+      "stuck_floats": 0
+    },
+    "fonts": "PASS: all listed PDF fonts embedded",
+    "pdf_sha256": "024931a40e88124f75f2f6872549936e909db0a3b504dbd2e4e68e91878a39dc",
+    "source_sha256": "0418bf289445b7cd9898e3d4291436661746b3fd4c568d1202a9308a72948f7a"
+  },
+  "visual_audit": {
+    "render_command": "pdftoppm -png -r 110 paper3_apjs.pdf /tmp/p3_r5_render/page",
+    "pages_inspected": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "result": "PASS",
+    "checks": {
+      "text_or_paths_outside_columns": 0,
+      "cross_column_overlaps": 0,
+      "clipped_tables_or_figures": 0,
+      "unreadable_figure_labels": 0,
+      "broken_date_or_title_layout": 0
+    }
+  },
+  "figures": {
+    "generator_sha256": "fdc3ae31c5fef44c947266152aa64d6de5ec45b81573edd270eb82a059cef0cb",
+    "catalog_overview_pdf_sha256": "3301fa18e45afbca0cd505eefb8690c4005c9715c326333e2275ae04ec7de5a6",
+    "catalog_overview_png_sha256": "fd87908b4590af510ee01274caad9373f6bf8f66426ba66551d3fdae91003d7a",
+    "selection_waterfall_pdf_sha256": "624e5f2f3e775965145762bd323d91befd55243bb51fc43c7a7f723d7cb43f66",
+    "selection_waterfall_png_sha256": "f3267c3c030c9da92610d8b742bff0cb8f2cf1a797c5305614efe8e1b2bda1aa",
+    "source_release": "desi_science_catalog_v3.2.0-r2"
+  },
+  "link_audit": {
+    "method": "Unique PDF URI annotations extracted with pdfinfo -url and checked with curl -L -I; repository links additionally mapped to tracked local files.",
+    "published_external_urls_2xx": 18,
+    "bot_protected_doi": {
+      "url": "https://doi.org/10.1093/mnras/stag010",
+      "head_status": 403,
+      "interpretation": "Publisher/bot-policy response; DOI is bibliographic metadata, not claimed data availability."
+    },
+    "github_main_pending_push": [
+      {
+        "url": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json",
+        "local_tracked_target": "pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json",
+        "local_status": "PASS"
+      },
+      {
+        "url": "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4",
+        "local_tracked_target": "pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4/ReadMe",
+        "local_status": "PASS"
+      },
+      {
+        "url": "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5",
+        "local_tracked_target": "pipelines/p3_anomaly_engine/desi_warned_primary_aux_v3.2.0-r5/README.md",
+        "local_status": "PASS"
+      }
+    ]
+  },
+  "raw_path_and_metadata_audit": {
+    "result": "PASS",
+    "raw_texttt_filesystem_paths": 0,
+    "date_overflow": 0,
+    "unresolved_pdf_tokens": 0,
+    "access_dates_added": "2026-07-14"
+  },
+  "scientific_boundaries": {
+    "physical_classifications_added": 0,
+    "selection_bias_estimates_added": 0,
+    "upstream_score_reproduction_claimed": false,
+    "warning_bearing_rows_admitted_to_primary": 0,
+    "journal_doi_claimed": false
+  },
+  "external_integration_gates": [
+    "Push the committed tracked files before the three GitHub main links can resolve publicly.",
+    "AAS assigns the digital-asset DOI only during publication workflow; DOI remains null."
+  ]
+}

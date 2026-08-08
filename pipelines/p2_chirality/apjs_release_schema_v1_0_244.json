@@ -1,0 +1,70 @@
+{
+  "schema": "p4-apjs-release/v1.0.244",
+  "paper": "P4",
+  "paper_version": "v1.0.253",
+  "catalog_payload_version": "v1.0.244",
+  "scientific_scope": "Observed-label catalog and descriptive null test only; no calibrated label probabilities, physical amplitude bound, primordial parity bound, matched-external-estimator claim, or formal preregistration claim.",
+  "primary_product": {
+    "filename": "p4_catalog_primary_safe_v1.0.244.parquet",
+    "description": "Science-facing catalog with equivariant hard labels and uncalibrated ranking scores. Raw-pass and reconstructed flip-pass score columns are absent by construction.",
+    "columns": [
+      {"name": "object_id", "type": "string", "unit": null, "description": "Galaxy Zoo DESI / DR8 identifier."},
+      {"name": "ra_deg", "type": "float64", "unit": "deg", "description": "ICRS right ascension."},
+      {"name": "dec_deg", "type": "float64", "unit": "deg", "description": "ICRS declination."},
+      {"name": "class_eq", "type": "string", "unit": null, "allowed": ["CW", "CCW", "NOT_SPIRAL"], "description": "Equivariant hard argmax observed label. Ties use deterministic first-maximum order CW, CCW, NOT_SPIRAL."},
+      {"name": "score_cw_eq", "type": "float64", "unit": null, "description": "Finite uncalibrated equivariant CW softmax ranking score in [0,1]; not a calibrated probability."},
+      {"name": "score_ccw_eq", "type": "float64", "unit": null, "description": "Finite uncalibrated equivariant CCW softmax ranking score in [0,1]; not a calibrated probability."},
+      {"name": "score_ns_eq", "type": "float64", "unit": null, "description": "Finite uncalibrated equivariant non-spiral softmax ranking score in [0,1]; not a calibrated probability."},
+      {"name": "score_eq_max", "type": "float64", "unit": null, "description": "Maximum equivariant ranking score; not a calibrated confidence or probability."},
+      {"name": "is_spiral", "type": "bool", "unit": null, "description": "True for class_eq in {CW, CCW}."},
+      {"name": "primary_hc", "type": "bool", "unit": null, "description": "True for the declared primary sample: spiral hard label and max(CW,CCW) ranking score > 0.6."},
+      {"name": "raw_flip_qc_unsafe", "type": "bool", "unit": null, "description": "True when a reconstructed flip-pass score from mismatched raw/equivariant pipeline passes exits [0,1] by more than 1e-3. The unsafe source scores are not included in this product."}
+    ]
+  },
+  "semantic_validation_contract": {
+    "scope": "Full-catalog streamed validation over the exact Parquet bytes; uncalibrated score structure only.",
+    "object_id": "non-null and unique over all rows",
+    "coordinates": "finite; 0 <= ra_deg < 360 and -90 <= dec_deg <= 90",
+    "scores": "all three uncalibrated softmax ranking scores and score_eq_max are finite and in [0,1]; the score triplet sums to 1 within absolute tolerance 2e-6; no calibration claim",
+    "score_eq_max": "equals max(score_cw_eq, score_ccw_eq, score_ns_eq) within absolute tolerance 1e-12",
+    "class_eq": "argmax of the score triplet with first-maximum tie order CW, CCW, NOT_SPIRAL",
+    "is_spiral": "class_eq in {CW, CCW}",
+    "primary_hc": "is_spiral and max(score_cw_eq, score_ccw_eq) > 0.6 with finite valid coordinates"
+  },
+  "quarantine_product": {
+    "filename": "p4_catalog_raw_flip_quarantine_v1.0.244.parquet",
+    "description": "Machine-readable quarantine of every catalog-wide raw/flip reconstruction violator. These diagnostic scores are retained only for provenance and must not be used as calibrated probabilities or science weights.",
+    "required_reason_code": "RAW_EQ_PIPELINE_PASS_MISMATCH_GT_1E3",
+    "columns": [
+      {"name": "object_id", "type": "string"},
+      {"name": "ra_deg", "type": "float64"},
+      {"name": "dec_deg", "type": "float64"},
+      {"name": "is_primary_hc", "type": "bool"},
+      {"name": "raw_source_leg", "type": "string", "allowed": ["raw_y", "raw_x_fallback"]},
+      {"name": "unsafe_raw_score_cw", "type": "float64", "calibrated": false},
+      {"name": "unsafe_raw_score_ccw", "type": "float64", "calibrated": false},
+      {"name": "unsafe_raw_score_ns", "type": "float64", "calibrated": false},
+      {"name": "unsafe_reconstructed_flip_score_cw", "type": "float64", "calibrated": false},
+      {"name": "unsafe_reconstructed_flip_score_ccw", "type": "float64", "calibrated": false},
+      {"name": "unsafe_reconstructed_flip_score_ns", "type": "float64", "calibrated": false},
+      {"name": "unsafe_max_bound_excursion", "type": "float64"},
+      {"name": "unsafe_reason_code", "type": "string"},
+      {"name": "do_not_use_for_science", "type": "bool", "required_value": true}
+    ]
+  },
+  "recommended_filters": {
+    "primary_observed_label": "primary_hc == True",
+    "strict_raw_flip_qc": "primary_hc == True and raw_flip_qc_unsafe == False",
+    "warning": "The primary estimator consumes class_eq hard labels. Never use quarantine columns as probabilities, likelihood weights, or calibrated classifier outputs."
+  },
+  "named_supports": {
+    "HC_REALSPACE_INCLUSIVE": {"selection": "primary_hc; per-pixel N_spiral >= 10", "n_pixels": 23682, "role": "primary real-space observed-label null"},
+    "FULL_SPIRAL_CANONICAL": {"selection": "all class_eq spirals; per-pixel N_spiral >= 10", "n_pixels": 24087, "role": "full-sample WLS/canonical diagnostic support"},
+    "MASTER_ALL_GALAXY_FOOTPRINT": {"selection": "N_all >= 1", "n_pixels": 24297, "role": "apodized weighted MASTER diagnostic footprint"}
+  },
+  "release_gates": {
+    "local_split_and_validation": "required",
+    "immutable_archive_or_doi": "OPEN",
+    "human_apjs_editorial_review": "OPEN"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-photoz-latent-vectors",
+  "title": "Photo-z from latent vectors (supervised MLP, sigma_NMAD=0.0279)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "training",
+  "inputs": [
+    {
+      "name": "22.5M-row enhanced DESI catalog latent features (BigAE encoder output)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/outputs/enhanced_18M_deduped/ (parent latent-feature Parquets absent locally — see anomaly-bigae-18m-inference-historical)",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/outputs/photo_z/train_photo_z.py",
+      "entrypoint": "python3 train_photo_z.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, pandas, pyarrow, scikit-learn (MLPRegressor, HistGradientBoostingRegressor), matplotlib — see requirements.txt",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local (blocked pending data restore)",
+    "est_wall_clock": "n/a until parent latent features are restored",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "This training run consumes latent feature vectors derived from the 22.5M-row enhanced-inference parent, which is the same absent-Parquet artifact flagged in anomaly-bigae-18m-inference-historical (46 enhanced Parquets missing locally, restoration gate FAILED 2026-08-04). The committed metrics.json (800k train / 200k test split, sigma_NMAD=0.0279) cannot be honestly re-derived until that parent is restored or a fresh clean_rerun-derived latent feature set is substituted."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/outputs/photo_z/metrics.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm sigma_NMAD=0.0279 on the same 800k train / 200k test split, within a small numeric tolerance (<=0.001 absolute) — currently blocked because the input latent-feature parent is absent locally.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — photo-z from latent vectors bullet",
+    "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md §Restoration gate result — 2026-08-04"
+  ]
+}

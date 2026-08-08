@@ -1,107 +1,357 @@
-# Paper 1 §VI — NaMaster 500-MC Birefringence Pipeline
+# Paper 1B NaMaster 500-MC birefringence validation
 
-**Closes:** R42 finding `P1-OA-B1` (GPT-5 cross-model peer review,
-2026-05-01) — "No CMB polarization map analysis code is provided."
+This directory reproduces the foreground-free synthetic-CMB validation used
+in Paper 1B. It is a pipeline test, not a Planck/ACT map analysis, a real-sky
+systematics budget, or evidence for Einstein--Cartan--Holst gravity.
 
-## What this directory reproduces
+## Current status: corrected physical-spectrum production complete
 
-The canonical Paper 1 §VI birefringence-pipeline numbers, headlined in the
-abstract:
+The canonical corrected production is
+`results/physical_spectrum_v2/summary.json` (SHA-256
+`745b0a2f060773ce69c005ea84b74b305ec26a85f6aaafe58f0b3244b7f39914`)
+with bandpowers in `results/physical_spectrum_v2/bandpowers.npz` (SHA-256
+`b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331`).
+It uses CAMB 1.6.6 raw lensed EE/BB spectra and recovers the declared
+0.000, 0.270, and 0.342 degree injections at the 0.001 degree grid
+resolution. The older recovery table and template-SNR values belong only to the
+superseded July 14 semi-analytic run and are intentionally not repeated here;
+`results/SUPERSEDED.md` records their disposition.
 
-| Quantity | Value | Source |
-|---|---:|---|
-| Paper 1 prediction recovered β | 0.238° (input 0.27°) | `results/summary.json` |
-| Recovery bias | 0.032° | `results/summary.json` |
-| SNR at ACT sensitivity (β = 0.27°) | 20.32σ | `results/summary.json` |
-| SNR (β = 0.342°, Planck+ACT joint observed) | 25.71σ | `results/summary.json` |
-| Consistency: P1 prediction vs observation | 0.77σ | `results/summary.json` |
+Superseded exact-window artifacts:
 
-These values match Eq. (38) and the §VI "Independent verification (April 2026,
-production 500-realization run)" passages in `arxiv/main.tex`.
+- `results/exact_window_500mc/summary.json`
+- `results/exact_window_500mc/bandpowers.npz`
 
-## Files
-
-```
-p1_namaster_500mc/
-├── README.md                       # this file
-├── requirements.txt                # pip install dependencies
-├── scripts/
-│   └── namaster_500mc.py           # production 500-MC pipeline (single file)
-└── results/
-    ├── summary.json                # canonical pod output, 2026-04-29 05:31 PDT
-    └── namaster_500mc.log          # stdout of the production pod run
-```
-
-The script is fully self-contained: it generates the synthetic ΛCDM E-mode
-spectrum, the ACT-like survey mask (Galactic |b| > 20°, dec ∈ [-65°, +25°],
-2° apodization), Q/U realizations, applies birefringence, adds white noise
-(10 µK·arcmin), and decouples pseudo-C_ℓ via NaMaster. No external CMB
-polarization data is read — Paper 1's birefringence claim is a
-literature-cited observation (Minami+ 2020, ACT 2025), and this script
-provides the **NaMaster pipeline-validation** of recoverability at ACT
-sensitivity, not a re-analysis of Planck/ACT maps.
-
-## How to reproduce
-
-```bash
-# 1. install
-pip install -r requirements.txt
-
-# 2. run (≈ 7 200 s = 2 h on a single H200; CPU-bound on healpy+pymaster)
-python scripts/namaster_500mc.py
-
-# 3. compare
-diff <(jq -S . results/summary.json) <(jq -S . NEW_OUTPUT/summary.json)
-```
-
-The script writes to `./results/namaster-birefringence/summary.json` by
-default (override with `NAMASTER_OUTPUT_DIR=...`).
-
-## Determinism
-
-- `seed_base = 42`; per-realization seeds are `42, 43, …, 541` for each of
-  the three β values (0.0°, 0.27°, 0.342°), giving 1 500 fixed seeds.
-- NaMaster's coupling-matrix computation is deterministic.
-- Re-running the script reproduces every digit of `summary.json` to machine
-  precision (modulo NumPy / NaMaster ABI changes — see `requirements.txt`).
-
-## Configuration (matches Paper 1 §VI)
+## Configuration
 
 | Parameter | Value |
 |---|---:|
-| `NSIDE` (HEALPix) | 512 |
-| `LMAX` | 1024 |
-| Mask `f_sky` | 0.323 (target 0.40) |
-| Noise level | 10 µK·arcmin (white) |
-| Bandpower bins | 20 linear from ℓ = 30 to 3·NSIDE |
-| MC realizations per β | 500 |
-| β values tested | 0.000°, 0.270°, 0.342° |
-| Beam | None (point-spread of 7 arcmin pixels only) |
+| `NSIDE` | 512 |
+| simulated `LMAX` | 1024 |
+| canonical apodized `f_sky` | 0.3226 |
+| polarization white noise | 10 uK-arcmin |
+| bins | 20 integer-edge bins from ell 30 through the simulated `LMAX=1024` |
+| realizations per injection/configuration | 500 |
+| seed range per injection/configuration | 42--541 |
+| corrected sky spectra | CAMB 1.6.6 `lensed_scalar`, raw C-ell in microkelvin-squared |
+| corrected `BB` model | physical CAMB lensed BB |
 
-## Caveats
+The canonical synthetic window applies both cuts to the single native HEALPix
+latitude returned by `hp.pix2ang(..., lonlat=True)`: absolute latitude greater
+than 20 degrees and native latitude between -65 and +25 degrees. It does not
+combine Galactic latitude with equatorial declination and is not an ACT or
+other survey footprint. The window is Gaussian-smoothed at 2 degrees FWHM and
+clipped to `[0, 1]`. The corrected sky model uses raw CAMB lensed EE and BB with the
+parameters, units, resolved version, validation readout, and array SHA-256
+recorded in every new result. No beam, foreground, anisotropic noise, or real
+CMB map enters the calculation.
 
-- The CMB EE template is a 4-Gaussian semi-analytic fit to Planck 2018 EE,
-  not a CAMB call. This is intentional: the test is *whether NaMaster
-  recovers β at the SNR claimed in §VI given ACT-like noise + mask*. A
-  CAMB-driven EE would change the 1-σ amplitude per bin by < 5% and the
-  recovered β by < 0.005°.
-- `cl_bb = 0.05 * cl_ee` is a lensing BB approximation; substituting a
-  proper CAMB lensing BB does not move the recovered β within sampling
-  variance.
-- The script does **not** read or write Planck or ACT maps — it generates
-  Gaussian random fields. The β = 0.342° comparison number is from
-  literature (Minami+Komatsu 2020 / ACT 2025) and is not re-derived here.
+## Files and execution
 
-## Provenance
+```text
+scripts/namaster_500mc.py              canonical three-injection run
+scripts/physical_spectra.py            pinned raw CAMB EE/BB + fail-closed contract
+scripts/test_physical_spectra.py       D-ell/C-ell and physical-BB regressions
+scripts/multipole_contract.py          shared field/bin harmonic support
+scripts/test_multipole_contract.py     off-by-one and support regressions
+scripts/windowed_rotation.py           exact bandpower-window response
+scripts/test_windowed_rotation.py      algebra/operator regression
+scripts/test_canonical_parallel.py     serial/parallel science equivalence
+scripts/c10_robustness_battery.py      five robustness configurations
+scripts/test_c10_checkpoint_resume.py  crash/resume and receipt regression
+scripts/declared_fsky_sign_battery.py  two f_sky and one negative-sign check
+scripts/checkpoint_io.py               atomic result/receipt publication
+scripts/merge_c10_partials.py          strict eight-shard validator/merger
+scripts/plot_exact_window_results.py   paper figure generator
+```
 
-- Production output (`results/summary.json`) was generated on H200 pod
-  `pod1_namaster_umap_2026-04-29` at 2026-04-29 05:31 PDT.
-- Runtime: 7 322 s (~2.03 h) on a single H200 (workload is CPU-bound;
-  GPU not used).
-- Pod-side script lived at `/root/namaster_500mc.py`. The mirror in this
-  directory adds an env-var-configurable `OUTPUT_DIR` and
-  `NAMASTER_OUTPUT_DIR` defaulting to `results/namaster-birefringence/`,
-  making it portable; the algorithm is byte-identical to the pod-side
-  version (and to the 50-MC pilot at
-  `pipelines/h200_results/pod_final_backup_20260414/experiments/namaster_birefringence.py`,
-  which differs only in `N_REAL = 50` vs 500).
+Create an isolated Python 3.11 environment and install the dependencies in
+`requirements.txt`. The corrected production contract pins CAMB 1.6.6. New
+output metadata records exact resolved versions and raw-spectrum hashes.
+
+Run the regression and canonical ensemble:
+
+```bash
+python scripts/test_windowed_rotation.py
+python scripts/test_physical_spectra.py
+OMP_NUM_THREADS=1 NAMASTER_REALIZATION_WORKERS=8 \
+  NAMASTER_OUTPUT_DIR=results/physical_spectrum_v2 \
+  python scripts/namaster_500mc.py
+```
+
+The canonical realization loop preserves seed order under process-level
+parallelism. A bounded `NSIDE=256`, `N=8` benchmark on Apple Silicon measured
+23.11 s serial versus 17.20 s with four workers (25.6% lower wall time), with
+identical scientific JSON after removing runtime/execution metadata. The
+production contract uses eight workers and one OpenMP thread per worker.
+
+### Apple Silicon local runtime
+
+NaMaster requires OpenMP. Apple Clang does not accept the package's required
+`-fopenmp` build flag, so use Homebrew GCC:
+
+```bash
+brew install gcc gsl fftw cfitsio
+python3.12 -m venv /tmp/p1b-namaster-local
+export CC=/opt/homebrew/bin/gcc-16
+export CXX=/opt/homebrew/bin/g++-16
+export CPPFLAGS=-I/opt/homebrew/include
+export LDFLAGS=-L/opt/homebrew/lib
+export PKG_CONFIG_PATH=/opt/homebrew/lib/pkgconfig
+/tmp/p1b-namaster-local/bin/pip install -r requirements.txt 'astropy<7'
+```
+
+Run `scripts/test_canonical_parallel.py` in that environment before production.
+This local route avoids provider mutation and is the preferred fallback while
+the RunPod watchdog-deletion and network-volume retention gates remain open.
+
+For a deterministic bounded route (one realization at NSIDE 128/LMAX 256):
+
+```bash
+NAMASTER_SMOKE=1 NAMASTER_OUTPUT_DIR=/tmp/p1b-namaster-smoke \
+  python scripts/namaster_500mc.py
+```
+
+Production refuses a CAMB version other than 1.6.6 and refuses to overwrite an
+existing `summary.json` unless `NAMASTER_OVERWRITE=1` is explicitly set. The
+unversioned-CAMB override is for bounded tests only.
+
+Long robustness work is one configuration per atomic shard. For example:
+
+```bash
+C10_NREAL=500 python scripts/c10_robustness_battery.py \
+  --only-config apod_fwhm_0p5
+
+DECLARED_NREAL=500 python scripts/declared_fsky_sign_battery.py \
+  --only-config fsky_0p65
+```
+
+Each production shard records the exact configuration object, `N=500`, seed
+range, operator, equivalence residual, core software versions, byte count,
+and SHA-256 in a sidecar `*.json.receipt.json`. The c10 driver also atomically
+checkpoints ordered per-realization bandpowers every 25 realizations. Resume
+requires an exact config, seed range, theory operator, and combined source-code
+fingerprint match; a mismatch fails closed. The checkpoint is removed only
+after the final result and receipt publish successfully. Restarting skips a shard only
+after all receipt fields and the result hash validate. Historical final-shard
+receipts without a source fingerprint remain valid under their original strict
+config/N/seed/operator checks; only new resumable checkpoints require one.
+When all five c10 and
+all three declared shards exist, validate and merge them with:
+
+```bash
+python scripts/merge_c10_partials.py
+python scripts/plot_exact_window_results.py
+python scripts/test_c10_checkpoint_resume.py
+```
+
+The merger rejects missing, duplicated, reordered, parameter-mismatched,
+mixed-operator, mixed-software, wrong-ensemble, or failed-equivalence inputs.
+Merged outputs record every child SHA-256 and are themselves written
+atomically.
+
+## Zero-spend RunPod production preflight
+
+`runpod_production_contract.json` freezes the container by immutable registry
+digest (while retaining its human-readable source tag), the PyMaster build recipe,
+one canonical command, eight independently receipted robustness commands,
+output paths, and merge acceptance gates. Generate a manifest against an exact
+clean commit (the API key is checked but never printed or stored):
+
+```bash
+RUNPOD_API_KEY=... python scripts/prepare_runpod_production.py \
+  --expected-commit "$(git rev-parse HEAD)" --manifest /tmp/p1b-runpod-manifest.json
+```
+
+This is deliberately a **manifest-only, zero-spend** operation. The default
+never launches anything. Even `--launch` fails closed after requiring both a
+positive `--max-budget-usd` and the literal confirmation
+`LAUNCH-P1B-500MC`, because provider mutation is not implemented in this
+contract. Tests never contact RunPod.
+
+### Prospective RunPod lifecycle primitives (launch disabled)
+
+`scripts/runpod_budget_launcher.py` uses RunPod's official REST v1 pod routes
+(`GET/POST /v1/pods`, `GET/DELETE /v1/pods/{id}`). Its default is a
+non-mutating dry run. **Actual launch is disabled** by the contract's
+`provider_mutation_ready: false` gate and refuses before listing or creating a
+pod. The retained REST methods and mocked tests are prospective primitives, not
+an approved production launcher. RunPod's documented REST v1 pod API does not expose the
+account's console credit balance, so launch requires a recent, user-supplied
+JSON receipt copied from the RunPod console:
+
+```json
+{"source":"runpod-console","amount_usd":10.0,"observed_at":"2026-07-15T20:00:00Z"}
+```
+
+The prospective code rejects stale/future/insufficient receipts, dirty or
+hash-mismatched manifest inputs, duplicate deterministic pod names, mutable
+images, more than one GPU, and inconsistent rate/runtime/budget ceilings. Those
+guards are not sufficient for useful production. Before mutation can be enabled,
+an independently reviewed lifecycle must add the remaining contract blockers.
+The exact-commit bootstrap generator and resumable offline production runner now
+close the former checkout/bootstrap and nine-job execution gaps: they verify the
+manifest-bound commit and every required input hash, install and import-check the
+pinned scientific runtime, run one canonical plus exactly eight robustness jobs,
+write atomic log/output-hash receipts, run the strict merger, and promote a final
+completion receipt only after every receipt and merged output verifies. They do
+not trust executable fields in the transported manifest: commands, dependency
+installation, outputs, acceptance rules, and merge semantics are re-derived
+from the hash-verified exact-commit contract. Before rerunning an unverified job,
+all of its declared outputs are removed so stale files cannot satisfy a no-op.
+The evidence set includes all eight scientific shard receipts and both merged
+result receipts, in addition to their result files. They do not contact RunPod
+or any other provider. The runner now requires an explicit absolute
+`--retention-root` intended for an attached RunPod network volume, separate
+from its repository, ephemeral workspace, and state directory. The recommended
+topology is retention at `/workspace/p1b-retention` (RunPod's persistent network
+volume mount), with the clone and state under separate ephemeral paths outside
+`/workspace`; this also keeps the retained tree addressable through RunPod's
+supported direct network-volume access. After strict merge it
+copies the bound manifest, final production receipt, every orchestration
+status/receipt/log, canonical outputs, all eight result/scientific-receipt
+pairs, and both merged result/scientific-receipt pairs into a commit-scoped
+staging directory. Every source and destination is size/hash checked, files
+and directories are fsynced, and the directory is atomically promoted only
+after `RETENTION_COMPLETE.json` is written last and the inventory re-verifies.
+
+```bash
+python scripts/retain_remote_production.py \
+  --validate /runpod-volume/p1b-retention/CONTRACT--COMMIT
+```
+
+Partial staging is preserved for inspection; a completed inconsistent set is
+never overwritten; an identical completed set is idempotent. A prospective
+in-process supervisor begins in the same call frame immediately after pod
+creation and first writes an atomic recovery ledger. It requires a RunPod
+network volume mounted at `/workspace`, uses only
+an allowlisted direct-S3 endpoint for the chosen datacenter, and receives S3
+credentials solely through boto3's standard environment/provider chain. It
+polls the exact commit-scoped `RETENTION_COMPLETE.json`, downloads the marker
+and every declared object to local staging, rejects missing and extra objects,
+and reruns the complete retention inventory/hash validator. Only an atomically
+written local verification receipt permits deletion on the successful path.
+Terminal pods with absent, corrupt, or ambiguous S3 evidence are retained for
+manual review; active pods crossing a price, budget, or deadline ceiling are
+deleted for cost safety and explicitly recorded as unverified. Pod status alone
+is never treated as scientific success.
+
+The pod command also wraps the complete clone/install/production/retention
+lifecycle in a container-local GNU `timeout` using the same operator-supplied
+runtime ceiling. At the deadline it sends `TERM`, escalates to `KILL` after 60
+seconds, and atomically writes a commit-bound status record under
+`/workspace/p1b-container-status/`. This guard survives loss of the launching
+computer and limits the running container, but it is not evidence that RunPod
+has deleted the pod or stopped billing; the independent deletion watchdog and
+bounded live recovery drill below are still required.
+
+This closes the in-process implementation gap prospectively, but does not
+authorize any provider mutation. Before RunPod creation, the launcher now
+publishes a strict non-secret `P1B_RUNPOD_INTENT` repository variable through
+the GitHub API and reads the exact value back. The intent binds the full commit,
+deterministic pod name, conservative start time, deadline, hourly ceiling, and
+total budget outside the launching host. If publication or read-back fails,
+creation is refused. The launcher token is supplied only as
+`P1B_WATCHDOG_GITHUB_TOKEN`; it is never persisted or printed.
+
+`.github/workflows/p1b-runpod-watchdog.yml` runs independently every five
+minutes (and on manual dispatch). It reads the durable intent, finds the exact
+deterministic pod name, rejects conflicting commit metadata, and confirmed-
+deletes live pods at the deadline/budget ceiling or when live price is absent,
+invalid, or excessive. Duplicate live matches are also deleted fail-closed.
+Scheduled GitHub workflows can be delayed or dropped, so the container-local
+hard timeout remains a separate defense.
+
+The independent path is implemented and its encrypted `RUNPOD_API_KEY` Actions
+secret is configured. A valid `active:false` baseline intent exercises the
+workflow without listing or mutating pods. It is still not operationally proven:
+no bounded live drill has demonstrated confirmed provider deletion after
+launcher SIGKILL. Therefore `provider_mutation_ready` remains false and launch
+still fails before RunPod HTTP. Static/mocked/inactive tests do not satisfy this
+last gate.
+
+### Independent deletion drill (not production)
+
+`scripts/runpod_watchdog_deletion_drill.py` is the only approved path for the
+remaining live safety proof. It is separate from the production mutation gate
+and never changes `provider_mutation_ready`. The crash mode requires a fresh
+human-observed RunPod console-balance receipt, one exact GPU type, a pinned
+image, a runtime of at most 10 minutes, a total ceiling of at most $0.10, and
+the literal confirmation `CRASH-P1B-WATCHDOG-DELETION-DRILL`. It publishes and
+reads back the active commit-bound intent, creates one inert sleeping pod, then
+SIGKILLs itself before writing a local pod-id ledger.
+
+The drill passes only when a later **scheduled** watchdog run records confirmed
+deletion after the intent deadline, within the documented ten-minute schedule
+allowance. Verification additionally requires the scheduled-run receipt, zero
+remaining matching pods, fresh before/after console-balance receipts whose
+delta stays within the declared budget, and the durable intent restored to
+`active:false`. A manual workflow dispatch, an ambiguous/late deletion, a
+terminal pod still returned by inventory, or mocked/inactive evidence cannot
+close the blocker. The resulting evidence must be audited and committed before
+production enablement is considered.
+
+Until that exists and `provider_mutation_ready` is deliberately changed,
+even a fully confirmed command fails before provider HTTP:
+
+```bash
+RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
+  --manifest /tmp/p1b-runpod-manifest.json \
+  --expected-commit "$(git rev-parse HEAD)" \
+  --receipt /tmp/p1b-runpod-events.jsonl \
+  --launch --confirm LAUNCH-P1B-500MC-WITH-BUDGET-GUARD
+```
+
+For an independently created existing pod, the prospective watchdog requires
+the immutable original creation time. Restarting it accrues budget from that
+time, not from watchdog invocation:
+
+```bash
+RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
+  --manifest /tmp/p1b-runpod-manifest.json --expected-commit "$(git rev-parse HEAD)" \
+  --receipt /tmp/p1b-runpod-events.jsonl --watchdog --pod-id POD_ID \
+  --created-at ORIGINAL_ISO_TIMESTAMP --deadline ISO_TIMESTAMP \
+  --cost-per-hour-usd RETURNED_RATE \
+  --max-total-budget-usd 1.00
+```
+
+Emergency termination is explicit and receipted:
+
+```bash
+RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
+  --manifest /tmp/p1b-runpod-manifest.json --expected-commit "$(git rev-parse HEAD)" \
+  --receipt /tmp/p1b-runpod-events.jsonl --terminate --pod-id POD_ID \
+  --confirm TERMINATE-P1B-POD
+```
+
+To stop without deleting, replace `--terminate` with `--stop` and confirm with
+`STOP-P1B-POD`. Stopping is not a substitute for deletion at the watchdog's
+hard deadline; the watchdog always calls `DELETE /v1/pods/{id}`.
+
+After creation, any returned price, image, GPU-count, or status mismatch causes
+an immediate `DELETE` and a sanitized receipt. The API key is used only in the
+Authorization header and is never printed or stored. All launcher tests mock HTTP.
+
+## Determinism and numerical checks
+
+- Every configuration uses exactly 500 seeds, `42, 43, ..., 541`.
+- The canonical three injections reuse the same noisy realization per seed;
+  uniform Q/U rotation is applied algebraically to the coupled spectra.
+- Direct rotated-field and algebraic-rotation paths agree to `8.67e-19` in
+  the committed regression.
+- Direct bandpower-window contraction and
+  `decouple_cell(couple_cell(theory))` agree to `3.19e-16` in the regression;
+  every production workspace separately enforces a `1e-10` ceiling.
+- Package/ABI changes may alter low-order floating-point digits; receipts and
+  the analysis manifest identify the frozen outputs exactly.
+
+## Superseded artifacts and scope
+
+See `results/SUPERSEDED.md` before using any top-level historical JSON. The
+pre-July-2026 outputs are retained for provenance but must not be cited as the
+current calibration result.
+
+The validation cannot break the cosmic-rotation/instrument-angle degeneracy
+because it contains no unrotated Galactic foreground. Its results must not be
+treated as a real-sky detection, foreground residual, beam/calibration bound,
+or systematic floor.

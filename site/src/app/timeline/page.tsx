@@ -19,19 +19,19 @@ const events: Array<{
     time:"∞ — ?",
     label:"Parent Universe",
     desc:"A previous universe contracts under gravity. Density increases toward Planck scale (~10⁹³ g/cm³).",
-    color:"#7a6d5d",
+    color:"var(--text-tertiary)",
   },
   {
     time:"t → 0⁻",
     label:"Contraction Phase",
-    desc:"Matter-dominated contraction. Perturbations grow, imprinting f_NL = -35/8 on the bispectrum. PBH seeds form.",
+    desc:"Matter-dominated contraction. Perturbations grow, imprinting f_NL = -35/16 on the bispectrum. PBH seeds form.",
     color:"#8d806b",
   },
   {
     time:"t = 0",
     label:"THE BOUNCE",
     desc:"Torsion (or quantum gravity) prevents singularity. Density reaches maximum but stays finite. Expansion begins.",
-    color:"#8b4639",
+    color:"var(--crit)",
   },
   {
     time:"10⁻³⁶ s",
@@ -43,18 +43,18 @@ const events: Array<{
     time:"3 min",
     label:"Nucleosynthesis",
     desc:"Light elements form (H, He, Li). Identical to standard cosmology. ΔNeff ≈ 0 confirmed by our MCMC.",
-    color:"#2f6f4e",
+    color:"var(--accent)",
   },
   {
     time:"380,000 yr",
     label:"CMB Release",
     desc:"Universe becomes transparent. CMB carries bounce imprint: f_NL, birefringence β = 0.27°, spectral index.",
-    color:"#2f6f4e",
+    color:"var(--accent)",
   },
   {
     time:"~1 Gyr",
     label:"First Galaxies",
-    desc:"Galaxies form from bounce-era perturbations. Our 195K DESI anomalies trace structure at z > 2.",
+    desc:"Galaxies form from primordial perturbations. BigBounce's historical DESI pipeline records are unreconciled and do not establish a high-redshift population or a bounce connection; the anomaly flagship is being rebuilt.",
     color:"#9c927e",
   },
   {
@@ -66,26 +66,26 @@ const events: Array<{
   {
     time:"13.8 Gyr",
     label:"NOW (2026)",
-    desc:"BigBounce research program: 6 papers, 8 surveys, 37.3M sources, 378,280 anomalies, 309,189 frozen MCMC samples, 8.47M-galaxy chirality catalog. 17-round external review campaign complete — 18/18 ACCEPT; awaiting arXiv drop.",
-    color:"#554c43",
+    desc:"BigBounce is organized around three research programs. The retained evidence library contains six exact candidate packages at 95% evidence readiness; the selected endpoint is six standalone works plus P3 as a supporting public-ID recovery release. The DESI anomaly flagship is being rebuilt, and final author review remains separate from endorsement, submission, and independent peer review.",
+    color:"var(--text-secondary)",
   },
   {
     time:"2028",
     label:"SPHEREx Launch",
-    desc:"NASA's SPHEREx will measure f_NL to σ ≈ 0.7–1.0. If f_NL ≈ -4.375: bounce confirmed at >4σ.",
-    color:"#554c43",
+    desc:"SPHEREx is a relevant future probe of primordial non-Gaussianity. Whether the paper's conditional f_NL = −35/16 result maps to a survey-level test depends on the stated bounce-transmission and covariance assumptions; it would not by itself prove a unique bounce origin.",
+    color:"var(--text-secondary)",
   },
   {
     time:"~2032",
     label:"LiteBIRD",
     desc:"JAXA's LiteBIRD will measure birefringence to ~0.03°. Tests β = 0.27° prediction at ~9σ.",
-    color:"#7a6d5d",
+    color:"var(--text-tertiary)",
   },
   {
     time:"~2035",
     label:"LISA",
     desc:"ESA's LISA will detect induced gravitational waves from PBH formation. Tests bounce GW spectrum directly.",
-    color:"#7a6d5d",
+    color:"var(--text-tertiary)",
   },
 ];
 

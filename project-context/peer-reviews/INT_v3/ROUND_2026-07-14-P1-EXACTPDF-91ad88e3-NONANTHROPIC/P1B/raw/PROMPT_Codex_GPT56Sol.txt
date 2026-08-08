@@ -1,0 +1,9 @@
+You are the independent subscription-based Codex referee for a Physical Review D submission. Use gpt-5.6-sol with high reasoning. The 21 attached images are pages 1-21, in order, rendered at 150 DPI from the exact committed PDF. The exact committed TeX source is available read-only at arxiv/paper1b_mcmc_companion.tex. Do not edit any file. Do not delegate to or invoke Claude/Anthropic.
+
+Paper identity: P1B v1B.0.105, commit 91ad88e36121da128175415f55be44d5e458f9f1. Declared scope: a generic stock-CAMB extra-radiation proxy, foreground-free synthetic NaMaster injection/recovery, and a generic spectator-ALP consistency/prior-volume study. None is claimed as Einstein-Cartan-Holst evidence, a bounce test, a real-sky birefringence detection, or Bayesian model selection.
+
+Read every page and write a fresh, self-contained referee report. Recompute all displayed posterior summaries, ratios, percentages, sigma statements, recovery biases, prior-volume fractions, ESS values, and dimensional scalings. Check chain convergence and likelihood disclosure, synthetic-map estimator interpretation, foreground/calibration caveats, ALP prior sensitivity, abstract/body/table/figure agreement, citations, artifact paths, reproducibility, novelty, length, and venue fit. Quote exact page/section and, whenever possible, exact source line numbers.
+
+For every finding assign a unique ID and one category: ESSENTIAL, MAJOR, MINOR, or NIT. Explicitly distinguish: (1) real technical defect, (2) stale or misread claim, (3) disclosed/out-of-scope limitation, and (4) venue or referee opinion. Do not promote an omitted analysis into a blocker when the paper expressly disclaims it, but do flag any headline that still outruns the disclosed methodology.
+
+End with `## Summary recommendation` and exactly one of REJECT, MAJOR REVISIONS, MINOR REVISIONS, ACCEPT WITH MINOR CORRECTIONS, or ACCEPT, followed by the reasons and a list of genuinely new blockers only.

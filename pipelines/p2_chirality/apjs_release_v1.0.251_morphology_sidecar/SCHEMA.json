@@ -1,0 +1,38 @@
+{
+  "schema_version": "v1.0.252",
+  "paper_version": "v1.0.252",
+  "product_role": "raw_morphology_sidecar",
+  "join": {
+    "catalog_key": "object_id",
+    "sidecar_key_expression": "f'{BRICKID}_{OBJID}'",
+    "cardinality": "one_to_one",
+    "coverage": "exactly every is_spiral=true row in p4_catalog_primary_safe_v1.0.244.parquet"
+  },
+  "columns": [
+    {"name": "BRICKID", "type": "int64", "description": "DESI Legacy Surveys DR8 brick identifier"},
+    {"name": "OBJID", "type": "int64", "description": "Object identifier within the DR8 brick"},
+    {"name": "TYPE", "type": "string", "description": "Raw Tractor morphology type"},
+    {"name": "FRACDEV", "type": "float64", "description": "Raw Tractor de Vaucouleurs fraction"},
+    {"name": "SHAPEDEV_R", "type": "float64", "description": "Raw Tractor de Vaucouleurs radius"},
+    {"name": "SHAPEDEV_E1", "type": "float64", "description": "Raw Tractor de Vaucouleurs ellipticity component 1"},
+    {"name": "SHAPEDEV_E2", "type": "float64", "description": "Raw Tractor de Vaucouleurs ellipticity component 2"},
+    {"name": "SHAPEEXP_R", "type": "float64", "description": "Raw Tractor exponential radius"},
+    {"name": "SHAPEEXP_E1", "type": "float64", "description": "Raw Tractor exponential ellipticity component 1"},
+    {"name": "SHAPEEXP_E2", "type": "float64", "description": "Raw Tractor exponential ellipticity component 2"}
+  ],
+  "explicitly_not_in_this_product": [
+    "axial_ratio_ba",
+    "imaging_leg",
+    "depth",
+    "PSF fields",
+    "redshift"
+  ],
+  "derived_on_demand": {
+    "name": "axial_ratio_ba",
+    "stored_column": false,
+    "shape_choice": "DEV for TYPE in {DEV,COMP,SER} or FRACDEV >= 0.5; EXP otherwise",
+    "ellipticity": "e = clip(hypot(selected_E1, selected_E2), 0, 0.999)",
+    "formula": "b/a = (1-e)/(1+e)"
+  },
+  "scope_note": "Axial ratio may be deterministically derived on demand by the declared contract, but is not stored. Consumers must not infer that other omitted fields are available."
+}

@@ -1,0 +1,23 @@
+{
+  "mode": "smoke",
+  "source_counts": {
+    "ce_not_spiral": 38,
+    "ce_spiral": 200,
+    "gz1": 262,
+    "synthetic": 60
+  },
+  "prov_counts": {
+    "gz1": 262,
+    "ce_spiral": 200,
+    "ce_not_spiral": 38,
+    "synthetic": 60,
+    "total": 560
+  },
+  "class_counts": {
+    "0": 234,
+    "1": 228,
+    "2": 98
+  },
+  "ce_sha256": "894dbe887140c165488a0f6053e2cd21f4ab72be9b06ece733e6ce177c0e304b",
+  "gz_desi_rev": "b7583bb2ac445e93c5447a08063acd7c1477fd13"
+}

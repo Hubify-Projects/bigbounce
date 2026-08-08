@@ -1,0 +1,27 @@
+{
+  "artifacts": {
+    "pipelines/p5_desi_chirality/outputs/36_desivast_native_selection_control.json": "b57919ffe4ea1aafe0d16b397303a2fa08d4d578e6db079e39038a9b02c418ab",
+    "pipelines/p5_desi_chirality/outputs/36_desivast_native_selection_rows.parquet": "fe863dcd3d569d22a3792ac0f1ee273ee3148ef311302e2d7984ab714634e9fc"
+  },
+  "command": "nice -n 5 python3 pipelines/p5_desi_chirality/scripts/36_desivast_native_selection_control.py",
+  "official_provenance": {
+    "desi_lss_v1_5_context_only": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+    "desivast_documentation": "https://data.desi.lbl.gov/doc/releases/dr1/vac/desivast/",
+    "desivast_public_code": "https://github.com/hbrincon/DESIVAST",
+    "desivast_public_code_commit": "11bebc66a5ba62e4f51c6afcc06bd3a62aa6c048",
+    "desivast_vac": "https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/"
+  },
+  "release_state": "No immutable tag/DOI is asserted by this computation. Root integration must commit, tag, push, and archive the exact script/rows/result/PDF atomically.",
+  "schema": "p5.desivast-native-selection-manifest.v1",
+  "source_sha256": {
+    "pipelines/p5_desi_chirality/data/desi_zall.fits": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_V2_REVOLVER_NGC.fits": "08d94b3e1740e154bde865b470c1f1a8d05d6e30ea4800fae2df2f5adec317b8",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_V2_REVOLVER_SGC.fits": "297e51d92b7955d81d68c674af78f43f2bc6c04247f7510c0224d1f81a984ad2",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_VoidFinder_NGC.fits": "c69f2f7b2b1fed4554527475dd96584169b1ead5bbcd0c152164200e6a2f34c8",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_VoidFinder_SGC.fits": "47c43b9b446f4bcb47cbc023115ac5297f9afb0045aea96d853649a80d7219c1",
+    "pipelines/p5_desi_chirality/data/p4_chirality.parquet": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563",
+    "pipelines/p5_desi_chirality/outputs/35_exact_primary_rows_cache.parquet": "902add75983efb47f694a3b8a0414ae4523d637ffab050676bf29dd9e1c6ca1f",
+    "pipelines/p5_desi_chirality/scripts/35_desivast_cluster_bootstrap.py": "4d5f878b328318cd8fccda2e74940b20db1835309510d602a9d22bbf51d6906d",
+    "pipelines/p5_desi_chirality/scripts/36_desivast_native_selection_control.py": "c81b0424c464b9f8beacde53830c03d9f5f0aa87d6ed2b50533d7c334d50688c"
+  }
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "schema_version": "finding-closure-event/v1",
+    "finding_event_id": "fev1_c6d3c77dd5b25b139f7fd2e1",
+    "status": "CLOSED",
+    "closed_in_version": "v1.0.259",
+    "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+    "occurred_at": "2026-07-16T08:50:43Z",
+    "action": "Disclosed that the unsafe-row quarantine predicate was introduced and finalized during post-review corrective closure and was not preregistered.",
+    "evidence": [
+      {
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "d09410183f84dcb0978774d13f5e39e0366780a31c56bea92ed6f7a9da2926f8"
+      }
+    ]
+  },
+  {
+    "schema_version": "finding-closure-event/v1",
+    "finding_event_id": "fev1_c3c3337d71ef261a27a7308d",
+    "status": "CLOSED",
+    "closed_in_version": "v1.0.259",
+    "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+    "occurred_at": "2026-07-16T08:50:43Z",
+    "action": "Replaced the complete primary-audit table with the strict-sample counts, statistics, and exact null-array hash from the computational receipt.",
+    "evidence": [
+      {
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "d09410183f84dcb0978774d13f5e39e0366780a31c56bea92ed6f7a9da2926f8"
+      }
+    ]
+  },
+  {
+    "schema_version": "finding-closure-event/v1",
+    "finding_event_id": "fev1_0e90ffada4cde9d093f536f4",
+    "status": "CLOSED",
+    "closed_in_version": "v1.0.259",
+    "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+    "occurred_at": "2026-07-16T08:50:43Z",
+    "action": "Recast the strict product as a repository candidate and made synchronized immutable public publication an explicit pre-submission gate.",
+    "evidence": [
+      {
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "d09410183f84dcb0978774d13f5e39e0366780a31c56bea92ed6f7a9da2926f8"
+      }
+    ]
+  },
+  {
+    "schema_version": "finding-closure-event/v1",
+    "finding_event_id": "fev1_7b4f15768a858484e161b7a7",
+    "status": "CLOSED",
+    "closed_in_version": "v1.0.259",
+    "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+    "occurred_at": "2026-07-16T08:50:43Z",
+    "action": "Corrected the binomial-monopole null moments to the values recomputed from the retained arrays.",
+    "evidence": [
+      {
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "d09410183f84dcb0978774d13f5e39e0366780a31c56bea92ed6f7a9da2926f8"
+      }
+    ]
+  },
+  {
+    "schema_version": "finding-closure-event/v1",
+    "finding_event_id": "fev1_daeeabe66f4bb8d2b7d0d797",
+    "status": "CLOSED",
+    "closed_in_version": "v1.0.259",
+    "closure_commit": "81b7bd56c51553b6798fff6ce39c59b36fef6930",
+    "occurred_at": "2026-07-16T08:50:43Z",
+    "action": "Corrected the apodized-row caption to identify the 24,087-pixel FSC base mask and its single fixed-occupancy null.",
+    "evidence": [
+      {
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "d09410183f84dcb0978774d13f5e39e0366780a31c56bea92ed6f7a9da2926f8"
+      }
+    ]
+  }
+]

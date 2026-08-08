@@ -1,0 +1,71 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-kfold-cv-gate",
+  "title": "DESI 5-fold cross-validation reproducibility gate (mean pairwise Jaccard 0.862)",
+  "program": "anomaly-discovery",
+  "paper": "P3-support",
+  "kind": "validation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p3_anomaly_engine/pathc_desi_kfold/train_desi_kfold.py",
+      "entrypoint": "python3 train_desi_kfold.py --training-shards <shards> --output-dir outputs/desi_kfold --n-folds 5 --seed 20260420",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p3_anomaly_engine/pathc_desi_kfold/fetch_desi_47k_training.py",
+      "entrypoint": "python3 fetch_desi_47k_training.py",
+      "sha256": null
+    },
+    {
+      "path": "pipelines/p3_anomaly_engine/pathc_desi_kfold/heldout_tail_preservation.py",
+      "entrypoint": "python3 heldout_tail_preservation.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy, torch — see requirements.txt",
+    "hardware": "cpu-only (5-fold BigAE proxy training over 47,000-row pool)"
+  },
+  "original_run": {
+    "venue": null,
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": null,
+    "actual_cost_usd": null
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "1-3 hours (5-fold model training, 47,000-row pool)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Each of the 5 proxy models trains on 4 folds and scores the full 47,000-row pool; pairwise top-1% Jaccard measures fold-model ranking stability. This is a ranking-stability gate over the training pool, not a fully out-of-sample re-score of the released 195,829-row catalog (per held_out_rescore.py's own framing)."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p3_anomaly_engine/pathc_desi_kfold/results/kfold_stability_summary.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p3_anomaly_engine/pathc_desi_kfold/results/training_summary.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p3_anomaly_engine/pathc_desi_kfold/results/scoring_summary.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm mean pairwise Jaccard >= 0.70 gate (committed value 0.8625) with 464/546 objects appearing in >=3 of 5 fold-model top-1% lists (consensus_fraction_of_union=0.8498), within a small numeric tolerance (<=0.02 absolute on mean Jaccard given training-seed variance).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — DESI 5-fold cross-validation reproducibility gate bullet",
+    "pipelines/p3_anomaly_engine/held_out_rescore.py (desi.source field cites kfold_stability_summary.json and reproduces mean_pairwise_jaccard=0.8625, gate_pass=true)",
+    "project-context/SSOT/paper-3/status.md"
+  ]
+}

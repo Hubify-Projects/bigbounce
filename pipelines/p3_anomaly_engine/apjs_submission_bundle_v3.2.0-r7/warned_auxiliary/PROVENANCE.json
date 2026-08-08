@@ -1,0 +1,29 @@
+{
+  "boundary": "This is a warning-bearing secondary follow-up list, not the primary catalog, not physically validated, and not an anomaly-rate or selection-efficiency measurement.",
+  "command_contract": "python3 build_desi_warned_primary_aux_v320_r5.py --parts-dir .desi_science_catalog_v3.2.0-r2.build/match_parts --clusters pathc_unique_objects.parquet --anomalies desi_dr1_anomalies.parquet --output-dir desi_warned_primary_aux_v3.2.0-r5",
+  "created_utc": "2026-07-14T17:17:47Z",
+  "exact_set_sha256_cluster_target_fits_zwarn": "2cc02e4b839073a3d2664c57614a6b20205a3d1d9d68d71851b72ccb4794ee78",
+  "inputs": {
+    "anomalies": {
+      "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+      "url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/desi_dr1_anomalies.parquet"
+    },
+    "checkpoint_parts": 143,
+    "clean_replay_sha256": "3dbf44cc72f4f7a3a344f31136beab44a7c430d1281c0c3d6d27b92a7fb57e7b",
+    "clusters": {
+      "sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
+      "url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/pathc_unique_objects.parquet"
+    },
+    "desi_zall_fits_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "historical_dataset_commit": "cdaaa03a72c69d86f011be128d93f261dc5b39a8",
+    "primary_provenance_sha256": "a63fb5c06574bb872d5a2a39c949c600728a15df86d66431fda8fcef0fee1aed"
+  },
+  "product_role": "SECONDARY_WARNING_BEARING_NOT_PRIMARY_NOT_PHYSICALLY_VALIDATED",
+  "release": "p3-v3.2.0-r5",
+  "runtime": {
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "pyarrow": "21.0.0",
+    "python": "3.9.6"
+  }
+}

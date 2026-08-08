@@ -1,0 +1,213 @@
+{
+  "schema": "hubstack.paper-pre-review-rules/v1",
+  "sources": [
+    "arxiv/paper1a_ech_nogo.tex",
+    "arxiv/paper1b_namaster_proof.tex",
+    "research/focused_paper_source_integration/02_full_draft.tex",
+    "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+    "pipelines/p2_chirality/chirality_catalog_paper.tex",
+    "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+  ],
+  "portfolio_validators": [
+    "p1b-analysis-manifest",
+    "p1b-science-contracts",
+    "artifact-crosscheck-six",
+    "p4-p5-science-contracts",
+    "claim-dependency-graph",
+    "ci-shell-portability",
+    "companion-status",
+    "pdf-mirror-integrity"
+  ],
+  "ci_shell_portability_paths": [
+    ".github/workflows/namaster-proof.yml"
+  ],
+  "claim_dependency_graph": "project-context/claim-dependency-graph.json",
+  "companion_status_ledger": "project-context/companion-status-ledger.json",
+  "p1b_science_contract_paths": {
+    "manuscript": "arxiv/paper1b_mcmc_companion.tex",
+    "namaster_summary": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json",
+    "namaster_c10_receipt": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/c10_robustness_battery.json.receipt.json",
+    "namaster_declared_receipt": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/declared_fsky_sign_battery.json.receipt.json",
+    "bbn_execution_receipt": "reproducibility/cosmology/frozen/bbn_execution_receipt.json",
+    "s8_overlay_receipt": "reproducibility/cosmology/c13_s8_desy3_overlay_postburn.json.receipt.json",
+    "analysis_manifest": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.112.json"
+  },
+  "p4_p5_science_contract_paths": {
+    "p4_primary": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
+    "p4_harmonics": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+    "p4_strict_release": "pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json",
+    "p5_robustness": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json"
+  },
+  "portfolio_engine_paths": [
+    "project-context/pre-review-rules.json",
+    "tools/bigbounce_preflight.py",
+    "tools/artifact_crosscheck.py",
+    "tools/verify_analysis_artifact_manifest.py",
+    "tools/verify_p1b_science_contracts.py",
+    "tools/verify_p4_p5_science_contracts.py",
+    "tools/verify_claim_dependency_graph.py",
+    "tools/verify_ci_shell_portability.py",
+    "project-context/claim-dependency-graph.json",
+    "tools/verify_companion_status.py",
+    "project-context/companion-status-ledger.json",
+    "tools/verify_pdf_mirror_integrity.py"
+  ],
+  "rules": [
+    {
+      "id": "latex-document-begin",
+      "detector": "literal_require",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "\\begin{document}",
+      "severity": "BLOCKER",
+      "message": "canonical paper source has no LaTeX document start"
+    },
+    {
+      "id": "latex-document-end",
+      "detector": "literal_require",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "\\end{document}",
+      "severity": "BLOCKER",
+      "message": "canonical paper source has no LaTeX document end"
+    },
+    {
+      "id": "unresolved-merge-marker",
+      "detector": "regex_forbid",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "^(?:<<<<<<< |>>>>>>> )",
+      "flags": [
+        "MULTILINE"
+      ],
+      "severity": "BLOCKER",
+      "message": "unresolved version-control conflict marker"
+    },
+    {
+      "id": "editorial-control-macro",
+      "detector": "regex_forbid",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "\\\\(?:todo|fixme|missingfigure)\\b",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "severity": "MAJOR",
+      "message": "executable editorial-control macro remains in canonical source"
+    },
+    {
+      "id": "future-dated-manuscript",
+      "detector": "regex_forbid",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "\\\\date\\{[^}]*20(?:2[7-9]|[3-9][0-9])\\b",
+      "severity": "MAJOR",
+      "message": "manuscript date is implausibly future-dated (pattern 037)"
+    },
+    {
+      "id": "compiled-review-round-language",
+      "detector": "regex_forbid",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "^(?!\\s*%).*\\b(?:R[0-9]+conf|EXT[0-9]+|FB[0-9]+-[0-9]+)\\s+(?:closure|round|audit)\\b",
+      "flags": [
+        "IGNORECASE",
+        "MULTILINE"
+      ],
+      "severity": "MAJOR",
+      "message": "internal review-round bookkeeping appears in compiled manuscript prose (patterns 017/055)"
+    },
+    {
+      "id": "compiled-process-artifact-language",
+      "detector": "regex_forbid",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "^(?!\\s*%).*\\b(?:gate-(?:PASS|FAIL)|closure-wave|cross-vendor R-round|multi-vendor adversarial-review|OpenRouter unified API|convergent BLOCKER closure)\\b",
+      "flags": [
+        "IGNORECASE",
+        "MULTILINE"
+      ],
+      "severity": "BLOCKER",
+      "message": "internal review-system process language appears in compiled manuscript prose (patterns 017/055)"
+    },
+    {
+      "id": "compiled-local-machine-path",
+      "detector": "regex_forbid",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "^(?!\\s*%).*(?:/Users/[^/]+/|CODE_20[0-9]{2}|/tmp/)",
+      "flags": [
+        "MULTILINE"
+      ],
+      "severity": "BLOCKER",
+      "message": "local-machine-only path appears in compiled manuscript prose"
+    },
+    {
+      "id": "compiled-submission-placeholder",
+      "detector": "regex_forbid",
+      "paths": [
+        "arxiv/paper1a_ech_nogo.tex",
+        "arxiv/paper1b_namaster_proof.tex",
+        "research/focused_paper_source_integration/02_full_draft.tex",
+        "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+      ],
+      "pattern": "^(?!\\s*%).*\\b(?:TODO-SUBMISSION|TBD-SUBMISSION|INSERT-(?:ARXIV|DOI)|ARXIV-ID-PENDING)\\b",
+      "flags": [
+        "IGNORECASE",
+        "MULTILINE"
+      ],
+      "severity": "BLOCKER",
+      "message": "submission placeholder appears in compiled manuscript prose"
+    }
+  ]
+}

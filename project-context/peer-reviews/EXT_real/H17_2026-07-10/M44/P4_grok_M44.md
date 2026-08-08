@@ -1,0 +1,11 @@
+VERDICT: MINOR REVISIONS
+
+ISSUES:
+
+[MINOR] Section II.B (Training Labels) and VI.A: 66.5% of training labels derive from CE-ResNet pseudo-labels; while the model-free GZ1-human-only dipole test (N≈4.6×10^4) returns a clean null at z=−0.54σ, its sensitivity floor (A95≈4.5–6.8%) is ~4–5× coarser than the headline HC sample, so sub-percent survey-correlated inheritance cannot be excluded at full headline power by the shuffle/permutation nulls alone (template regressions and block-bootstrap bound it but do not eliminate the channel).
+[MINOR] Section IV.D and Appendix D: The forward model of imaging+morphology templates accounts for only ~52–54% of the post-MASTER canonical ℓ=1 residual amplitude (|a1|=6.95×10^{-3}); the remaining ~47% is explicitly left as an open item (per-galaxy confidence-vs-depth selection) even though it lies below A50/A95 and does not affect the primary real-space conclusion—requires clearer quantification or a dedicated follow-up statement.
+[MINOR] Section V.A and Abstract: Amplitude-level tension (~3.7–8.8×) with Shamir’s 1.7%–4.0% range is reported under the present ViT+TTA pipeline, but the text correctly notes that a matched-footprint Ganalyzer reanalysis is still required for a likelihood-level exclusion; this caveat should be elevated in the abstract and conclusions to avoid any implication of direct statistical refutation.
+[MINOR] Sections III.B, IV.C and throughout: The multi-null hierarchy and “not directly comparable” disclaimers are scientifically sound but make the manuscript unusually dense and defensive for PRD; several diagnostic tables/figures and internal artifact paths could be condensed or moved to supplementary material without loss of rigor.
+[MINOR] Section VI.B (Injection-recovery): The primary A50≈0.75% and A95∈(1.0%,1.5%] floors are derived under a specific axis-draw convention and HC subsample; the text should explicitly restate that these are recovery-efficiency thresholds (not frequentist upper limits) and confirm the axis-averaged nature of the falsification criterion.
+
+The central claim that the real-space chirality dipole on the pre-specified high-confidence subsample is consistent with null (+0.41σ, p=0.31) at sub-percent sensitivity is supported by the primary estimator, injection-recovery calibration, and cross-checks.

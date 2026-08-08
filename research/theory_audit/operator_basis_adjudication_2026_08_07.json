@@ -1,0 +1,308 @@
+{
+  "generated": "2026-08-07",
+  "target": "arxiv/paper1c_nogo_survey/main.tex Sec. V (eq:dim4_defs, Table III), P1C v1C.0.11",
+  "claim_source": "project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.11-EXACTPDF-08688560-R9CONV/P1C_claude_r9_leg.md (MAJOR-1, MAJOR-2)",
+  "conventions": {
+    "signature": "mostly-plus diag(-1,+1,+1,+1)",
+    "epsilon": "Levi-Civita SYMBOL, eps^{0123}=+1; identical single factor in all six operators, hence irrelevant to rank/null space",
+    "curvature": "curvature of the FULL torsionful connection (paper's construction rule)",
+    "O2_normalisation": "O2 := d_mu ( eps^{mnrs} e_{I n} T^I_{rs} ); the paper leaves the form-vs-density normalisation of 'NY' unfixed",
+    "O5_reading": "eps^{mnrs} T^I_{mn} e_{I r} J^5_s (unique zero-derivative contraction)"
+  },
+  "operator_order": [
+    "O1",
+    "O2",
+    "O3",
+    "O4",
+    "O5",
+    "O6"
+  ],
+  "coefficient_matrix": {
+    "shape": [
+      6,
+      1368
+    ],
+    "note": "full 6 x N matrix over the common jet-monomial basis; the exact Gram matrix G = M M^T is given as a compact certificate (rank G = rank M)",
+    "gram": [
+      [
+        "6912",
+        "-2304",
+        "0",
+        "9216",
+        "0",
+        "6912"
+      ],
+      [
+        "-2304",
+        "7680",
+        "0",
+        "10752",
+        "0",
+        "-2304"
+      ],
+      [
+        "0",
+        "0",
+        "92160",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "9216",
+        "10752",
+        "0",
+        "39936",
+        "0",
+        "9216"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "2688",
+        "0"
+      ],
+      [
+        "6912",
+        "-2304",
+        "0",
+        "9216",
+        "0",
+        "6912"
+      ]
+    ],
+    "rank": 4
+  },
+  "null_space": [
+    [
+      "2",
+      "2",
+      "0",
+      "-1",
+      "0",
+      "0"
+    ],
+    [
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "-1"
+    ]
+  ],
+  "subset_ranks": {
+    "O2_O3_O4_O5": 4,
+    "O1_O4_O5_O6_densities_no_quotient": 3,
+    "O1_O2_O3_O4_O5_O6_minus_O6": 4,
+    "total_derivative_subspace_O2_O3": 2,
+    "rank_modulo_total_derivatives": 2
+  },
+  "numeric_independent_rank": 4,
+  "gamma_route_certification": [
+    {
+      "seed": 11,
+      "riemann_identity_all_256_components": true,
+      "O6_gamma_route": "-2162/147",
+      "O1_tetrad_form": "-2162/147",
+      "difference": "0"
+    },
+    {
+      "seed": 23,
+      "riemann_identity_all_256_components": true,
+      "O6_gamma_route": "21170/441",
+      "O1_tetrad_form": "21170/441",
+      "difference": "0"
+    },
+    {
+      "seed": 47,
+      "riemann_identity_all_256_components": true,
+      "O6_gamma_route": "4588/441",
+      "O1_tetrad_form": "4588/441",
+      "difference": "0"
+    }
+  ],
+  "onshell": {
+    "kappa_numeric": "1/5",
+    "values_O1_to_O6": [
+      "91/405",
+      "-91/405",
+      "4352237895231517377719/435108999297024000",
+      "0",
+      "-198016/98415",
+      "91/405"
+    ],
+    "O4_eps_contracted_bare": "0",
+    "O5_bare_coefficient_of_kappa_J5J5": "-3/2",
+    "eps_free_square_TabcTabc_over_kappa2_J5J5": "-3/8",
+    "eps_TT_on_irreps": {
+      "vector": "0",
+      "axial": "0",
+      "tensor_nonzero": true,
+      "generic_nonzero": true
+    },
+    "O1_plus_O2_onshell": "0"
+  },
+  "torsion_free_branch": {
+    "values_O1_to_O6": [
+      "0",
+      "0",
+      "68751794822921/12257155224",
+      "0",
+      "0",
+      "0"
+    ],
+    "checkA_eps_R_vanishes": true
+  },
+  "alternative_O6_reading_levi_civita": {
+    "O6_value": "0",
+    "rank_of_remaining_five": 4
+  },
+  "verdicts": {
+    "relation_a_O1_minus_O6_offshell": true,
+    "relation_a_O1_minus_O6_onshell": true,
+    "relation_b_schematic_O1_minus_O4_plus_O2_offshell": false,
+    "relation_b_exists_offshell": true,
+    "relation_b_coefficients": {
+      "O2_eq_alpha_O4_plus_beta_O1": [
+        "1/2",
+        "-1"
+      ]
+    },
+    "relation_b_onshell": true,
+    "rank_offshell": 4,
+    "nullity_offshell": 2,
+    "rank_modulo_total_derivatives": 2,
+    "O1_zero_on_torsion_free_branch": true,
+    "O1_pointwise_zero_on_shell": false,
+    "O1_equals_minus_O2_on_shell_hence_pure_total_derivative": true,
+    "O4_eps_contracted_vanishes_on_shell": true,
+    "O5_onshell_coefficient_of_kappa_J5J5": "-3/2",
+    "TableIII_O4_fate_reproduced": false,
+    "TableIII_O5_fate_reproduced": true,
+    "referee_MAJOR1_a_O1_equals_O6": true,
+    "referee_MAJOR1_b_three_operator_relation_exists": true,
+    "referee_MAJOR1_b_literal_coefficients_correct": false,
+    "referee_MAJOR2_internal_contradiction_claim": "FALSIFIED (O4 = 0 on shell, so O1 = -O2 = exact total derivative -> Final = 0 stands; only the stated reason is branch-restricted)"
+  },
+  "headline_verdict": "PARTIALLY-CORRECT",
+  "log": [
+    "[L01] ==============================================================================",
+    "[L02] SEC 1 - torsion irreducible decomposition (vector / axial / tensor)",
+    "[L03] ==============================================================================",
+    "[L04] generic torsion T_[abc] (antisym in last two): 24 free components (expected 4*6 = 24) -> True",
+    "[L05] reconstruction T = T^(V) + T^(A) + q exact for all 64 components: True",
+    "[L06] axial part traceless: True;  vector part has no totally-antisym part: True",
+    "[L07] tensor part q traceless: True;  q has no totally-antisym part: True",
+    "[L08] irrep dimensions: vector=4, axial=4, tensor=16, total=24 (expected 4 + 4 + 16 = 24) -> True",
+    "[L09] on-shell T^abc = kappa S^abc: vector part V = [0, 0, 0, 0] (expect all 0); pure totally-antisymmetric (q = 0): True",
+    "[L10] ==============================================================================",
+    "[L11] SEC 2 - formal jet algebra (independent coordinates on the 2-jet)",
+    "[L12] ==============================================================================",
+    "[L13] jet coordinates: e(16) de(64) dde(160) w(24) dw(96) J5(4)",
+    "[L14] Cartan structure equations built: T^I_{mn} = de - de + we - we ; R^{IJ}_{mn} = dw - dw + ww - ww  (torsionful connection)",
+    "[L15] ==============================================================================",
+    "[L16] SEC 3 - the six operators, transcribed EXACTLY as printed in main.tex",
+    "[L17] ==============================================================================",
+    "[L18] O1 (bare invariant) expanded: 432 monomial terms",
+    "[L19] O2 (bare invariant) expanded: 480 monomial terms",
+    "[L20] O3 (bare invariant) expanded: 360 monomial terms",
+    "[L21] O4 (bare invariant) expanded: 624 monomial terms",
+    "[L22] O5 (bare invariant) expanded: 240 monomial terms",
+    "[L23] O6 (bare invariant) expanded: 432 monomial terms",
+    "[L24] ==============================================================================",
+    "[L25] SEC 4 - coefficient matrix over a COMMON monomial basis; exact rank/null space",
+    "[L26] ==============================================================================",
+    "[L27] common monomial basis in the jet coordinates: 1368 independent monomials",
+    "[L28] RANK of the 6 x 1368 coefficient matrix (OFF-SHELL, exact over Q) = 4",
+    "[L29] dim null space (linear relations among O1..O6, off-shell) = 2",
+    "[L30]   null vector (O1..O6) = [2, 2, 0, -1, 0, 0]   <=>   (2)*O1 + (2)*O2 + (-1)*O4 = 0",
+    "[L31]   null vector (O1..O6) = [1, 0, 0, 0, 0, -1]   <=>   (1)*O1 + (-1)*O6 = 0",
+    "[L32]   symbolic verification of null vector [2, 2, 0, -1, 0, 0]: residual == 0 -> True",
+    "[L33]   symbolic verification of null vector [1, 0, 0, 0, 0, -1]: residual == 0 -> True",
+    "[L34] Gram matrix G = M M^T (exact integers) rank = 4 (must equal 4)",
+    "[L35] rank of the reviewer's proposed independent subset ['O2', 'O3', 'O4', 'O5'] = 4 (independent: True)",
+    "[L36] rank of alternative subset ['O1', 'O3', 'O4', 'O5'] = 4",
+    "[L37] rank of alternative subset ['O1', 'O2', 'O3', 'O5'] = 4",
+    "[L38] rank of alternative subset ['O1', 'O2', 'O3', 'O4'] = 3",
+    "[L39] rank of the total-derivative subspace span{O2,O3} = 2",
+    "[L40] RANK MODULO TOTAL DERIVATIVES = 4 - 2 = 2",
+    "[L41] => in the EFT sense (the sense in which 'operator basis' is normally used) the six-member list spans only a 2-dimensional space: O2 ~ 0, O3 ~ 0, O6 = O1, and O1 ~ (rational)*O4 because their difference is the exact form O2.",
+    "[L42] (for reference, rank of {O1,O4,O5,O6} as densities, i.e. WITHOUT quotienting, = 3)",
+    "[L43] ==============================================================================",
+    "[L44] SEC 5 - INDEPENDENT numeric certification (Gamma-route Riemann; relation tests)",
+    "[L45] ==============================================================================",
+    "[L46] [progress] gamma-route seed 11 done",
+    "[L47] [progress] gamma-route seed 23 done",
+    "[L48] [progress] gamma-route seed 47 done",
+    "[L49] seed 11: Gamma-route R_(rho sig mu nu) == e^I_rho e^J_sig R_(IJ mu nu) for all 256 components: True",
+    "[L50] seed 11: O6 from Gamma-route Riemann = -2162/147 ; O1 (tetrad form) = -2162/147 ; difference = 0",
+    "[L51] seed 11: [L-eps-pairorder] eps^(mnrs)R_(rsmn) = -2162/147, equals eps^(mnrs)R_(mnrs): True",
+    "[L52] seed 23: Gamma-route R_(rho sig mu nu) == e^I_rho e^J_sig R_(IJ mu nu) for all 256 components: True",
+    "[L53] seed 23: O6 from Gamma-route Riemann = 21170/441 ; O1 (tetrad form) = 21170/441 ; difference = 0",
+    "[L54] seed 23: [L-eps-pairorder] eps^(mnrs)R_(rsmn) = 21170/441, equals eps^(mnrs)R_(mnrs): True",
+    "[L55] seed 47: Gamma-route R_(rho sig mu nu) == e^I_rho e^J_sig R_(IJ mu nu) for all 256 components: True",
+    "[L56] seed 47: O6 from Gamma-route Riemann = 4588/441 ; O1 (tetrad form) = 4588/441 ; difference = 0",
+    "[L57] seed 47: [L-eps-pairorder] eps^(mnrs)R_(rsmn) = 4588/441, equals eps^(mnrs)R_(mnrs): True",
+    "[L58] independent numeric evaluation matrix 6 x 8 (exact rationals) rank = 4  [Schwartz-Zippel: agrees with the symbolic rank 4]",
+    "[L59] RELATION (a)  O1 - O6 : symbolic residual == 0 -> True  [EXACT IDENTITY]",
+    "[L60] RELATION (b) as literally written by the referee, O1 - (O4 - O2): residual == 0 -> False",
+    "[L61]     ... but the residual is EXACTLY (-1/2)*O4 -- i.e. the three-operator relation the referee reports does exist; only the O4 coefficient differs.",
+    "[L62] Nieh-Yan relation read off the null space: O2 = alpha*O4 + beta*O1 with alpha = 1/2, beta = -1",
+    "[L63] EXACT Nieh-Yan relation in this module's normalisation: O2 = (1/2)*O4 + (-1)*O1 ; residual == 0 -> True",
+    "[L64] equivalently  O1 = (-1)*O2 + (1/2)*O4 -- same three-operator relation the referee reports, with the normalisation-dependent rational coefficients made explicit",
+    "[L65] cross-check in the STRICT 4-form normalisation: d(e_I^T^I)_dens = (1/4)O4 - (1/2)O1 = (1/2)*[this module's O2] -> consistent with alpha=1/2, beta=-1: True",
+    "[L66] => the EXISTENCE of the O1-O2-O4 relation is normalisation-independent; the referee's literal coefficients (1,-1,+1) carry a factor-2 slip on O4 (the paper never fixes the form-vs-density normalisation of 'NY').",
+    "[L67] ==============================================================================",
+    "[L68] SEC 5b - Check A reproduction and the torsion-free branch",
+    "[L69] ==============================================================================",
+    "[L70] Check A: generic R with pair antisymmetry, first Bianchi imposed (20 free components remain, expected 20): eps^(mnrs) R_(mnrs) = 0  -> vanishes: True",
+    "[L71] => Check A is CORRECT, but it uses the TORSION-FREE first Bianchi identity R_{a[bcd]} = 0, which is exactly what T = kappa S != 0 violates.",
+    "[L72] torsion-free branch (omega = Levi-Civita spin connection of a random tetrad): max|T^I_(mn)| at x=0 = 0",
+    "[L73] torsion-free branch operator values (O1..O6) = [0, 0, 68751794822921/12257155224, 0, 0, 0]",
+    "[L74] => on the torsion-free branch O1 = 0 and O6 = 0: Table III's 'Final = 0' for O1/O6 is CORRECT there.",
+    "[L75] ==============================================================================",
+    "[L76] SEC 6 - ON-SHELL substitution  T^abc = kappa S^abc = (kappa/4) eps^abcd J^5_d",
+    "[L77] ==============================================================================",
+    "[L78] ON-SHELL bare O4 = eps^(mnrs) T^I_(mn) T_(I rs)  ->  0",
+    "[L79] ON-SHELL bare O5 = eps^(mnrs) T^I_(mn) e_(I r) J^5_s -> 3*kappa*(J5_0**2 - J5_1**2 - J5_2**2 - J5_3**2)/2 =  (-3/2) * kappa (J5.J5)",
+    "[L80] Table III row O5 'Fate (bare) -> kappa (J5.J5)': REPRODUCED, with the exact rational factor c5 = -3/2",
+    "[L81] Table III row O4 'Fate (bare) -> kappa^2 (J5.J5)': NOT reproduced -- the epsilon-contracted torsion-square VANISHES IDENTICALLY under T = kappa S: c4 = 0",
+    "[L82] eps-contracted torsion-square on a GENERIC torsion: nonzero -> True (12 terms)",
+    "[L83]   ... restricted to the pure VECTOR irrep T^(V): 0  (zero: True)",
+    "[L84]   ... restricted to the pure AXIAL  irrep T^(A): 0  (zero: True)",
+    "[L85]   ... restricted to the pure TENSOR irrep q    : nonzero -> True",
+    "[L86] => O4 = T_I ^ T^I is supported only by the NON-axial torsion irreps (vector x axial cross terms and the tensor irrep q). Minimal ECH torsion T = kappa S is PURE AXIAL (Sec 1), so O4 vanishes on shell. The identity the paper's Check D actually proves, S_abc S^abc = -3/8 (J5.J5), concerns the epsilon-FREE (parity-even) square T_abc T^abc, which is a DIFFERENT invariant from O4 as defined in Eq. (8).",
+    "[L87] for contrast, the epsilon-FREE square T_abc T^abc on shell = -3/8 * kappa^2 (J5.J5) -- reproduces the paper's Check D value -3/8 (J5.J5) for S_abc S^abc [T = kappa S, so T_abc T^abc = kappa^2 S_abc S^abc]: True",
+    "[L88] promoted (M_Pl^2 kappa^2 = kappa): O4^[4] = 0 ; O5^[4] = 3*(J5_0**2 - J5_1**2 - J5_2**2 - J5_3**2)/(2*M_Pl**2)",
+    "[L89] => Table III's 'Final' column claim that O4 and O5 land on the SAME operator kappa (J5.J5) is FALSE as printed: O4^[4] = 0 on shell, O5^[4] = (-3/2) kappa (J5.J5).  The no-go is UNAFFECTED (O4 contributing nothing is strictly stronger than O4 contributing a Planck-suppressed contact term).",
+    "[L90] on-shell EC configuration built (Cartan solved for omega with T = kappa S, kappa = 1/5); max|T^I_(mn)| at x=0 = 121/972 (nonzero: True)",
+    "[L91] ON-SHELL operator values (O1..O6) at x=0 = [91/405, -91/405, 4352237895231517377719/435108999297024000, 0, -198016/98415, 91/405]",
+    "[L92] ON-SHELL: O1 = 91/405 -> vanishes: False",
+    "[L93] ON-SHELL: O1 - O6 = 0 -> relation (a) still exact on shell: True",
+    "[L94] ON-SHELL: O4 = 0 -> the epsilon-contracted torsion-square vanishes in a genuine CURVED on-shell EC configuration too: True",
+    "[L95] ON-SHELL: O2 - (1/2)O4 - (-1)O1 = 0 -> Nieh-Yan relation holds on shell too: True",
+    "[L96] ON-SHELL, MODULO TOTAL DERIVATIVES (O2 ~ 0): O1 ~ (1/2)*O4 = 0 -> nonzero: False",
+    "[L97] ON-SHELL: O1 + O2 = 0 -> O1 is EXACTLY minus the Nieh-Yan total derivative: True",
+    "[L98] => CRUCIAL for the referee's MAJOR-2: because O4 = 0 on shell, the Nieh-Yan relation gives O1 = -O2 = -(exact total derivative).  O1 is NOT pointwise zero once T = kappa S != 0 (value above), but it contributes ZERO to the equations of motion and ZERO to the vacuum energy -- exactly like the O2 and O3 rows, which Table III itself labels '0 (EOM)'.  Table III's 'Final = 0' for O1 therefore SURVIVES; only the stated REASON ('vanishes (Bianchi, Check A)') is branch-restricted.",
+    "[L99] => the referee's inference 'Table III then reads 0 = kappa(J5.J5) - 0, an internal contradiction' is FALSIFIED: it presumes O4 -> kappa(J5.J5) != 0, and the epsilon-contracted O4 is identically zero for the minimal totally-antisymmetric torsion.",
+    "[L100] on-shell rank of the 6-vector at a single generic on-shell point = 1 (a single point only bounds rank from below)",
+    "[L101] ==============================================================================",
+    "[L102] SEC 7 - alternative reading: O6 built from the LEVI-CIVITA curvature Rring",
+    "[L103] ==============================================================================",
+    "[L104] if O6 were eps^(mnrs) Rring_(mnrs) (Levi-Civita curvature): O6 = 0 -> identically zero: True",
+    "[L105] => under that alternative reading O6 is the ZERO operator, so it is still not an independent sixth member; the rank of the list is 4 under BOTH readings ({O1,O3,O4,O5} instead of {O2,O3,O4,O5}).",
+    "[L106] rank of {O1,O2,O3,O4,O5} (the list with O6 deleted / set to zero) = 4",
+    "[L107] ==============================================================================",
+    "[L108] SEC 8 - VERDICTS",
+    "[L109] ==============================================================================",
+    "[L110] verdict dict: {\"relation_a_O1_minus_O6_offshell\": true, \"relation_a_O1_minus_O6_onshell\": true, \"relation_b_schematic_O1_minus_O4_plus_O2_offshell\": false, \"relation_b_exists_offshell\": true, \"relation_b_coefficients\": {\"O2_eq_alpha_O4_plus_beta_O1\": [\"1/2\", \"-1\"]}, \"relation_b_onshell\": true, \"rank_offshell\": 4, \"nullity_offshell\": 2, \"rank_modulo_total_derivatives\": 2, \"O1_zero_on_torsion_free_branch\": true, \"O1_pointwise_zero_on_shell\": false, \"O1_equals_minus_O2_on_shell_hence_pure_total_derivative\": true, \"O4_eps_contracted_vanishes_on_shell\": true, \"O5_onshell_coefficient_of_kappa_J5J5\": \"-3/2\", \"TableIII_O4_fate_reproduced\": false, \"TableIII_O5_fate_reproduced\": true, \"referee_MAJOR1_a_O1_equals_O6\": true, \"referee_MAJOR1_b_three_operator_relation_exists\": true, \"referee_MAJOR1_b_literal_coefficients_correct\": false, \"referee_MAJOR2_internal_contradiction_claim\": \"FALSIFIED (O4 = 0 on shell, so O1 = -O2 = exact total derivative -> Final = 0 stands; only the stated reason is branch-restricted)\"}",
+    "[L111] HEADLINE VERDICT = PARTIALLY-CORRECT",
+    "[L112]   MAJOR-1 (basis is not independent): REVIEWER-CORRECT. rank = 4 < 6 as densities, = 2 modulo total derivatives. Two exact relations, both verified symbolically: O1 = O6, and 2*O1 + 2*O2 - O4 = 0.",
+    "[L113]   MAJOR-1 literal coefficients ('O1 = O4 - O2'): OFF BY A FACTOR 2 on O4 (exact relation in this module's normalisation: O1 = 1/2*O4 + -1*O2).",
+    "[L114]   MAJOR-2 (Table III O1 'Final = 0' is contradicted): REVIEWER-INCORRECT. O4 vanishes identically on shell, so O1 = -O2 is a pure total derivative -> zero EOM / zero vacuum energy, exactly as the 'Final' column asserts. Only the REASON needs a branch qualifier.",
+    "[L115]   NEW (neither party): Table III's O4 row 'Fate (bare) -> kappa^2 (J5.J5)' / 'Final -> kappa(J5.J5)' is WRONG for O4 as DEFINED in Eq. (8); the epsilon-contracted torsion-square is identically zero for the minimal totally-antisymmetric torsion. Check D's identity concerns the epsilon-free square T_abc T^abc, a different invariant. The no-go is strengthened, not weakened."
+  ]
+}

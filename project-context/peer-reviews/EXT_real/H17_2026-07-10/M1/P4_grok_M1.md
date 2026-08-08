@@ -1,0 +1,10 @@
+(1) VERDICT: MINOR REVISIONS
+
+(2) ISSUES:
+
+[MINOR] Abstract & Sec. IV C: The primary real-space dipole result (+0.41σ, empirical rank p=0.31) and the block-bootstrap WLS exclusion (z≈−7.6 vs. A_ref=0.017) are correctly caveated as non-Gaussian and model-dependent, respectively, but the abstract presents both without immediately reminding readers that significances from distinct nulls (pixel-permutation vs. block-bootstrap) are incommensurable; a single clarifying clause would prevent misinterpretation.
+[MINOR] Sec. II B & VI A: The 66.5% CE-ResNet pseudo-label fraction in training is acknowledged, and the fully human-label GZ1-only cross-check (N≈4.6×10^4, z=−0.54σ) is performed, but the text does not explicitly quantify that this independent test has ~4.5× coarser sensitivity (A_50≈3.4%) than the headline HC sample and therefore corroborates rather than independently tightens the sub-percent null; adding one sentence on Fisher scaling would close the loop.
+[MINOR] Sec. IV D & Appendix D (implied): The forward-modeling of the post-MASTER ℓ=1 residual attributes ~53% to imaging+morphology templates and leaves ~47% as an explicit open item, correctly noting it lies below the real-space A_95 recovery threshold; however, the claim that this remainder “does not affect the primary null” would be strengthened by a short statement that the per-galaxy morphology-purity map computation (flagged as GPU/pod-bound) is not required for the headline conclusion.
+[MINOR] Sec. III B & Table I: The declared analysis hierarchy and decision tree are exemplary, but the caption and surrounding text could more prominently flag that rows (iii)–(vi) are diagnostics only and carry zero cosmological weight, to forestall any reader treating the +3.64σ/+7.28σ MASTER values as competing detection significances.
+
+(3) The central claim that the large-scale chirality dipole is consistent with null (and that a genuine Shamir-scale signal would have been recovered) is supported by the pre-specified HC real-space estimator, the empirical injection-recovery calibration, the template-fit disfavor, and the model-independent GZ1 cross-check.

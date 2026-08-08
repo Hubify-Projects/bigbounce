@@ -1,0 +1,49 @@
+# P1B (v1B.0.104) — Gemini EXT (CW2 2026-07-08)
+
+- Reviewer: Gemini (houston@bamf.com Ultra, /u/1/, Pro)
+- Attachment chip verified: PDF cw2_P1B
+- URL: https://gemini.google.com/u/1/app/e8e0b842bf6c282d
+- Baseline: MAJOR
+
+## RAW RESPONSE
+
+VERDICT: REJECT
+
+ISSUES:
+
+[MAJOR] Section I (Introduction) / Overall Scope: The manuscript explicitly defines itself as a "technical reproducibility and consistency-check companion" that defers all primary structural derivations to an unpublished "Paper I(a)". Physical Review D requires submissions to represent self-contained, substantial physical advances; pipeline validations and numerical cross-checks of this nature should be integrated as appendices into the primary theoretical manuscript rather than fragmented into a standalone publication.  
+PDF
++ 2
+
+[MAJOR] Section III (Stock-CAMB MCMC Proxy): The derivation of the Einstein-Cartan-Holst (ECH) contribution to the effective number of relativistic species correctly yields a strictly negligible theoretical value of ΔN
+eff
+(ECH)
+	​
+
+∼10
+−44
+. Consequently, running a stock CAMB MCMC to set a data-driven upper bound of 0.31 provides no meaningful physical insight, as the observational envelope is forty orders of magnitude above the theoretical prediction, rendering the numerical exercise disconnected from testing the actual physical theory.  
+PDF
++ 3
+
+[MAJOR] Section VI (Spectator-ALP Consistency Check): The analysis rigorously demonstrates that accommodating the joint WMAP+Planck birefringence signal requires significant fine-tuning of the spectator ALP model, specifically a non-minimal photon coupling of 8 or greater and a misalignment tuning near 0.1. However, as the author explicitly concedes, this is not a distinctive ECH prediction and identical birefringence arises in standard General Relativity, heavily diluting the section's relevance to the paper's overarching spin-torsion framework.  
+PDF
++ 4
+
+[MINOR] Section IV (CMB E-B Analysis): The pseudo-C
+l
+	​
+
+ pipeline validation on synthetic, foreground-free skies quantifies an expected algebraic deconvolution bias of -0.040°. This represents standard software verification rather than a novel cosmological methodology or physical measurement, further reinforcing that this material is best suited for a technical appendix or code repository.  
+PDF
++ 1
+
+The central claims regarding numerical null-consistency and parameter accommodation are rigorously supported by the presented MCMC and pipeline evidence, but the manuscript ultimately fails to deliver a self-contained, substantive physical advance independent of its primary companion paper.
+
+
+
+
+Pro
+
+
+## VERDICT: REJECT (baseline: MAJOR — regression/hardening)

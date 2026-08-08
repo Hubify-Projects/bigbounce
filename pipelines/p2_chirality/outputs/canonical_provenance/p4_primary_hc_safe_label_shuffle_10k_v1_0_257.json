@@ -1,0 +1,53 @@
+{
+  "array": {
+    "dtype": "float64",
+    "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.npy",
+    "sha256": "3a03ca4b008844fd8bf16be4e1e7e918ceaf580992d9462d54233f417e32ce7d",
+    "shape": [
+      10000
+    ]
+  },
+  "catalog": {
+    "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+    "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+  },
+  "estimator": "unweighted healpy.fit_dipole amplitude of per-pixel asymmetry",
+  "interpretation_limits": [
+    "observed-label descriptive isotropy null only",
+    "not an independent classifier validation",
+    "not a calibrated physical or primordial amplitude bound"
+  ],
+  "n_draws": 10000,
+  "null_definition": "fixed-occupancy galaxy-label randomization: multivariate-hypergeometric allocation of the observed support-sample CW count among fixed support-pixel capacities",
+  "null_mean": 0.003620291387422168,
+  "null_std_ddof0": 0.0016464287407124284,
+  "null_std_ddof1": 0.0016465110683240864,
+  "numpy_bit_generator": "PCG64",
+  "observed_amplitude": 0.004665198792857314,
+  "rank_formula": "(k+1)/(N+1), k=count(A_null >= A_data)",
+  "rank_k": 2376,
+  "rank_p_one_sided_upper_tail": 0.23767623237676233,
+  "review_basis": "P4 v1.0.257 exact-PDF truth-audit finding 2",
+  "runtime_versions": {
+    "healpy": "1.17.3",
+    "numpy": "1.26.4",
+    "pyarrow": "21.0.0",
+    "python": "3.9.6"
+  },
+  "schema": "p4-primary-hc-safe-label-shuffle/v1",
+  "seed": 20260715,
+  "selection": "primary_hc == True and raw_flip_qc_unsafe == False; HEALPix NSIDE=64; N_spiral(pixel) >= 10",
+  "selection_counts": {
+    "expected_selected_rows": 890069,
+    "n_catalog_rows": 8474531,
+    "n_cw_in_support": 454968,
+    "n_galaxies_in_support": 887472,
+    "n_pixels_inclusive": 23633,
+    "n_primary_hc_before_qc_exclusion": 949584,
+    "n_raw_flip_qc_unsafe_excluded_from_primary_hc": 59515,
+    "n_selected_rows": 890069,
+    "n_unsafe_rows_selected": 0,
+    "selected_row_mask_packbits_little_sha256": "8fd6107e9d92e525e45cec236fcac79f4e7369f31895cec5e457b8be33c6269d"
+  },
+  "significance_sigma_ddof0": 0.6346508534484177
+}

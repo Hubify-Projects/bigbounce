@@ -1,0 +1,41 @@
+========================================================================
+P5 SUBMISSION NOTE — COORDINATED SUBMISSION WITH PAPER IV
+========================================================================
+
+Paper IV = the companion galaxy-chirality catalog paper in THIS repo:
+  source:  pipelines/p2_chirality/chirality_catalog_paper.tex
+  bundle:  submissions/P4/arxiv_p4_v1.0.220.tar.gz  (or latest)
+It is NOT an unwritten / unvettable manuscript. It is a finished companion
+paper at the Grok+Gemini external gate, submitting in the first wave.
+
+P5 consumes only Paper IV's PUBLIC per-galaxy class_eq labels (HuggingFace,
+CC-BY-4.0) + one monopole scalar. The headline P5 result (void/non-void
+Delta f_CW) is algebraically monopole-shift invariant, so it rests only on
+those public labels joined to public DESI DR1 / DESIVAST data and is
+refereeable independently of Paper IV's internals. The labels' pseudo-label
+provenance is additionally validated model-independently in Paper IV
+(GZ1-human-only null: z = -0.54 sigma, N = 46,017).
+
+------------------------------------------------------------------------
+SAME-DAY SUBMISSION PROCEDURE
+------------------------------------------------------------------------
+1. Submit Paper IV (submissions/P4/) to arXiv FIRST. Note its arXiv ID
+   (e.g. arXiv:2601.NNNNN) once assigned.
+2. In pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex, replace the
+   ONE placeholder line:
+       \newcommand{\paperIVarxiv}{arXiv:XXXX.XXXXX}
+   with Paper IV's real ID:
+       \newcommand{\paperIVarxiv}{arXiv:2601.NNNNN}
+   Every Paper-IV reference in the text (abstract, intro, Sec. "Relation to
+   Paper IV", Data, limitations, Appendix A, bibliography, arXiv COMMENTS)
+   resolves through this single macro.
+3. Recompile (3-pass pdflatex, expect 0 undefined refs, 37 pages) and
+   rebuild the tarball:
+       submissions/P5/arxiv_p5_v0.1.10X.tar.gz
+   (or re-run the packet rebuild). Standalone-compile-verify the tarball.
+4. Submit P5 to arXiv the SAME DAY, immediately after P4.
+
+Until step 2 is done, the placeholder stands and P5 cites Paper IV as a
+concurrently-posted companion (arXiv:XXXX.XXXXX), which is honest and
+correct for a coordinated submission.
+========================================================================

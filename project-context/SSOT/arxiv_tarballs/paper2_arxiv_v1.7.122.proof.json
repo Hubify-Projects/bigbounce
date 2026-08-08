@@ -1,0 +1,29 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P2",
+  "paper_version": "v1.7.122",
+  "git_commit": "4599a4056fdd6e588c07c6c45ff0dc546bbb2cc7",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper2_arxiv_v1.7.122.tar.gz",
+  "tarball_sha256": "dcf10d9fc16dc23ace30f66308d02d00fb65d9a3b1fb3dc42d9bcf5a1ba5c9ab",
+  "source_pdf": "research/focused_paper_source_integration/02_full_draft.pdf",
+  "source_pdf_sha256": "4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9",
+  "source_pdf_md5": "273447e3ae24c621e0d0345a44bb91fe",
+  "page_count": 10,
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 0,
+  "overfull_vboxes": 0,
+  "compiled_pdf_size_bytes": 346658,
+  "compiled_pdf_sha256": "25ccdc604d43faf65018db835aa2572e7f9252db21ec58c185925f7489ac421c",
+  "compiled_pdf_md5": "fa0995164e4bf8a9dd3aa2e46af40630",
+  "verification_mode": "isolated safe extraction; Tectonic reruns; generated-log scan; all-page raster audit",
+  "visual_audit": {
+    "pages_rendered": 10,
+    "pages_inspected": 10,
+    "clipping_or_overlap": false,
+    "result": "pass"
+  },
+  "verified_at_utc": "2026-07-15T18:25:34Z"
+}

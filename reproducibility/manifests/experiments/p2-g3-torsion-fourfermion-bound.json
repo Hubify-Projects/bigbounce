@@ -1,0 +1,55 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-g3-torsion-fourfermion-bound",
+  "title": "G3 torsion four-fermion bound (Einstein-Cartan estimate)",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.py",
+      "entrypoint": "python3 g3_torsion_fourfermion_bound.py",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "sympy, numpy \u2014 requirements.txt (repo root: numpy, scipy, astropy, sympy-adjacent research deps)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": null,
+    "wall_clock": "seconds",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Sympy estimate; folded into paper v1.7.123 Eq. 5 (commit 275846c5)."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.log",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm the bound coefficient matches paper Eq. 5 (v1.7.123, commit 275846c5) exactly.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: bounce-theory / P2 \u2014 G3 torsion bullet",
+    "commit 275846c5 (v1.7.123)"
+  ]
+}

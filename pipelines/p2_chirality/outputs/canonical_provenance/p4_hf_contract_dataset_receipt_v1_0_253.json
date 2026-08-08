@@ -1,0 +1,58 @@
+{
+  "published": true,
+  "published_at_utc": "2026-07-15T21:39:47.631731+00:00",
+  "repositories": [
+    {
+      "commit_oid": "85232df765c7350803c026a4cbe3ca180b304d18",
+      "files": [
+        {
+          "bytes": 6474,
+          "path": "README.md",
+          "sha256": "203b66ba63316042a3324b843a429bfc0651d7d045ce37c09d21893359178f53"
+        },
+        {
+          "bytes": 1897,
+          "path": "apjs-release/v1.0.251-morphology-sidecar/MANIFEST.json",
+          "sha256": "4d999fd9cb33bbb7ee0f9f95134569cbbb1eaf6589255e5beeab8208f8ab862c"
+        },
+        {
+          "bytes": 1998,
+          "path": "apjs-release/v1.0.251-morphology-sidecar/SCHEMA.json",
+          "sha256": "91026accb2515d098ad5f41936bcd00d31833ff7b138693b300f6e65d12bfeb7"
+        },
+        {
+          "bytes": 10733,
+          "path": "apjs-release/v1.0.251-morphology-sidecar/validate_p4_morphology_join_v1_0_251.py",
+          "sha256": "31c663b274308f72e19bd694c7e401630cf44d7d2a1d02ac261525998d89347f"
+        },
+        {
+          "bytes": 1841,
+          "path": "apjs-release/v1.0.253-semantic-contract/README.md",
+          "sha256": "78a2849063a068c8849016989ed423cecf2401599b21fa32e7d3a655b1b46479"
+        },
+        {
+          "bytes": 1509,
+          "path": "apjs-release/v1.0.253-semantic-contract/SEMANTIC_CONTRACT.json",
+          "sha256": "04f4aff9cc1a6b5e91a7ffe22816cb0fcb65c4db80616b7dfec88cc234eb07a7"
+        },
+        {
+          "bytes": 813,
+          "path": "apjs-release/v1.0.253-semantic-contract/SEMANTIC_VALIDATION_RECEIPT.json",
+          "sha256": "a38428c49e36d364a71b24f5d85381064102bbffa13d696b1e04bcdadd466915"
+        },
+        {
+          "bytes": 5355,
+          "path": "apjs-release/v1.0.253-semantic-contract/validate_p4_catalog_c_semantics_v1_0_253.py",
+          "sha256": "901034ebc8281d4bacec0d2d8841ff3e41a5b62885e1ab326326502acf0ccde5"
+        }
+      ],
+      "parent_commit": "2fc392e22b3155107f6f56a60aa8ac75f57c866b",
+      "repo_id": "bamfai/galaxy-chirality-catalog",
+      "repo_type": "dataset",
+      "target": "dataset",
+      "verification": "immutable downloads matched bytes and SHA-256"
+    }
+  ],
+  "schema": "p4-hf-contract-update-receipt/v1",
+  "status": "published"
+}

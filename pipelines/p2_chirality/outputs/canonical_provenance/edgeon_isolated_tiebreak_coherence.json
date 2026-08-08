@@ -1,0 +1,84 @@
+{
+  "script": "pipelines/p2_chirality/scripts/edgeon_isolated_tiebreak_coherence.py",
+  "date_utc": "2026-07-07T01:36:07Z",
+  "purpose": "Direct spatial-coherence of the argmax tie-break ISOLATED to edge-on (b/a<0.30) borderline (p_eq in [0.5,0.6]) systems -- closes the pod-gated piece of Gemini App E MAJOR (v1.0.215).",
+  "config": {
+    "nside": 64,
+    "n_mc": 2000,
+    "seed": 42,
+    "ba_edgeon_cut": 0.3,
+    "borderline_band": [
+      0.5,
+      0.6
+    ],
+    "ba_definition": "(1-|e|)/(1+|e|), |e|=sqrt(e1^2+e2^2), deV shape if TYPE in {DEV,COMP,SER} or FRACDEV>=0.5 else EXP",
+    "join": "catalog_production.dr8_id == f'{BRICKID}_{OBJID}' of spiral_morphology_dr8"
+  },
+  "population": {
+    "n_spirals_with_ba": 3201160,
+    "n_edgeon": 505889,
+    "n_borderline_band": 1874152,
+    "n_edgeon_tiebreak": 295170,
+    "p_CW_edgeon_tiebreak": 0.4978588609953586
+  },
+  "cells": {
+    "ALL_edgeon_borderline": {
+      "label": "ALL edge-on tie-break",
+      "N": 295170,
+      "valid": true,
+      "p_CW": 0.4978588609953586,
+      "A_obs": 0.009200135963224951,
+      "A_null_mean": 0.005792620168133114,
+      "A_null_std": 0.00257219102923914,
+      "z": 1.3247522273257395,
+      "p_emp_one_sided": 0.095952023988006
+    },
+    "BASS+MzLS": {
+      "label": "BASS+MzLS edge-on tie-break",
+      "N": 80258,
+      "valid": true,
+      "p_CW": 0.5002367365247078,
+      "A_obs": 0.024681790092315855,
+      "A_null_mean": 0.028329331620343238,
+      "A_null_std": 0.015677066860094006,
+      "z": -0.23266734527440236,
+      "p_emp_one_sided": 0.5132433783108445
+    },
+    "DECaLS": {
+      "label": "DECaLS edge-on tie-break",
+      "N": 154793,
+      "valid": true,
+      "p_CW": 0.4973351508143133,
+      "A_obs": 0.01268530311887017,
+      "A_null_mean": 0.009330678129277022,
+      "A_null_std": 0.004736986195384623,
+      "z": 0.7081770668577531,
+      "p_emp_one_sided": 0.22088955522238882
+    },
+    "DES": {
+      "label": "DES edge-on tie-break",
+      "N": 60119,
+      "valid": true,
+      "p_CW": 0.49603286814484604,
+      "A_obs": 0.07275086651774625,
+      "A_null_mean": 0.042754908030183156,
+      "A_null_std": 0.025579950134981825,
+      "z": 1.1726355340522012,
+      "p_emp_one_sided": 0.12643678160919541
+    }
+  },
+  "family_wise": {
+    "legs": [
+      "BASS+MzLS",
+      "DECaLS",
+      "DES"
+    ],
+    "obs_max_abs_z": 1.1726355340522012,
+    "joint_p_value": 0.4867566216891554,
+    "null_max_abs_z_p99": 3.5440839415403658,
+    "argmax_leg": "DES"
+  },
+  "verdict": "EDGEON_TIEBREAK_ISOTROPIC",
+  "verdict_text": "The edge-on-isolated argmax tie-break shows NO spatially-coherent l=1 dipole (family-wise joint p=0.487); it is consistent with an isotropic label-shuffle null. The argmax step on edge-on systems does not introduce a directional bias.",
+  "integrity_note": "All numbers computed from committed spiral_morphology_dr8.parquet + HF-cached catalog_production.parquet. No pod, no fabrication. b/a from real DR8-sweep ellipticities."
+}

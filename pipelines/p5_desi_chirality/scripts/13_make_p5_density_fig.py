@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import beta as beta_dist
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
+REPO = Path(__file__).resolve().parents[3]
 P5 = REPO / "pipelines/p5_desi_chirality"
 FIG_DIR = P5 / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
@@ -77,10 +77,12 @@ def main() -> int:
     )
     ax_f.set_xlabel("density quintile (k=5 NN density range)", fontsize=8.5)
     ax_f.set_ylabel("$f_{\\rm CW}$", fontsize=10)
-    ax_f.set_title("CW fraction per projected-density quintile\n"
+    ax_f.set_title("(a) CW fraction per projected-density quintile\n"
                    "($k\\!=\\!5$ NN density proxy; $n\\!=\\!158{,}327$/bin)",
                    fontsize=10.5)
     ax_f.legend(loc="upper right", fontsize=8.5, frameon=True)
+    ax_f.text(0.02, 0.98, "(a)", transform=ax_f.transAxes,
+              fontsize=12, fontweight="bold", va="top", ha="left")
 
     # RIGHT panel: sigma_from_half per quintile + monopole prediction band
     sigma_obs = df["sigma_from_half"].to_numpy()
@@ -89,7 +91,7 @@ def main() -> int:
              linewidth=0.7, alpha=0.85, label="observed $\\sigma$")
     ax_s.plot(xs, sigma_pred, marker="D", linestyle="-",
               color="#dc2626", linewidth=1.5, markersize=8,
-              label="Paper IV monopole prediction\n($\\sigma_{\\rm pred}=-2 \\Delta f_{\\rm CW} \\sqrt{N}$)")
+              label="Paper IV monopole prediction\n($\\sigma_{\\rm pred}=2 \\Delta f_{\\rm CW} \\sqrt{N}$)")
     ax_s.axhline(0.0, linestyle="-", color="black", linewidth=0.5)
     ax_s.axhline(-3.29, linestyle=":", color="#0369a1", linewidth=0.8,
                  label="Bonferroni-5 $\\alpha\\!=\\!0.01$")
@@ -97,10 +99,12 @@ def main() -> int:
     ax_s.set_xticks(xs)
     ax_s.set_xticklabels([r["q_label"] for _, r in df.iterrows()], fontsize=10)
     ax_s.set_ylabel("$\\sigma_{\\rm from\\,half}$", fontsize=10)
-    ax_s.set_title("Observed vs Paper IV-monopole-predicted $\\sigma$\n"
+    ax_s.set_title("(b) Observed vs Paper IV-monopole-predicted $\\sigma$\n"
                    "(deviation from monopole = density-correlated signal)",
                    fontsize=10.5)
     ax_s.legend(loc="lower right", fontsize=8.0, frameon=True)
+    ax_s.text(0.02, 0.98, "(b)", transform=ax_s.transAxes,
+              fontsize=12, fontweight="bold", va="top", ha="left")
     ax_s.set_ylim(-5.5, +1.5)
 
     fig.suptitle("Density-quintile null: observed deviation tracks the Paper IV "

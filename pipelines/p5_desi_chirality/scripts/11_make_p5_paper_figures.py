@@ -2,7 +2,7 @@
 """P5 paper figure generation — cron fire #4, 2026-05-21.
 
 Builds three figures backed by on-disk Phase 1 + Phase 2 artifacts:
-    fig_p5_volume_fractions_pie.png   — V-Web canonical run volume fractions
+    fig_p5_volume_fractions_pie.png   — T-Web canonical run volume fractions
     fig_p5_cw_by_env_bar.png          — CW fraction per env class + 95% binomial CI
     fig_p5_phase2_sensitivity_heatmap.png — per-cell range of CW fraction across
                                             the 9 (R_s, lambda_th) sweep cells
@@ -29,6 +29,17 @@ import numpy as np
 import pandas as pd
 from scipy.stats import beta as beta_dist
 
+# Publication-quality defaults (D-round style pass): serif fonts to match the
+# revtex body, print-resolution output. No plotted value is affected — all
+# numbers are read from the committed JSON/CSV artifacts below.
+plt.rcParams.update({
+    "font.family": "serif",
+    "font.serif": ["DejaVu Serif", "Times New Roman", "Computer Modern Roman"],
+    "savefig.dpi": 300,
+    "figure.dpi": 300,
+})
+SAVE_DPI = 300
+
 REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
 P5 = REPO / "pipelines/p5_desi_chirality"
 FIG_DIR = P5 / "figures"
@@ -48,26 +59,44 @@ ENV_COLORS = {
 
 
 def fig_volume_fractions_pie() -> None:
+    """Horizontal bar chart replacing the former pie chart (D-round visual fix).
+
+    A horizontal bar chart allows precise visual comparison of volume fractions
+    across the four T-Web classes without the label-cramping issues of a pie.
+    Value labels are placed at the right end of each bar for direct readout.
+    The output filename is preserved (fig_p5_volume_fractions_pie.png) so the
+    LaTeX \includegraphics call in the paper needs no change.
+    """
     data = json.loads(VOLFRAC.read_text())
     frac = data["volume_fractions_in_footprint"]
-    fig, ax = plt.subplots(figsize=(5.2, 4.4))
-    sizes = [frac[e] for e in ENV_ORDER]
-    colors = [ENV_COLORS[e] for e in ENV_ORDER]
-    labels = [f"{e.title()}\n{100*frac[e]:.1f}%" for e in ENV_ORDER]
-    wedges, texts = ax.pie(
-        sizes, labels=labels, colors=colors,
-        startangle=90, counterclock=False,
-        wedgeprops=dict(linewidth=1.5, edgecolor="white"),
-        textprops=dict(fontsize=10),
-    )
+    # Display order: most volume at top → void, wall, filament, cluster
+    display_order = list(reversed(ENV_ORDER))
+    sizes = [100 * frac[e] for e in display_order]
+    colors = [ENV_COLORS[e] for e in display_order]
+    labels = [e.title() for e in display_order]
+
+    fig, ax = plt.subplots(figsize=(5.4, 3.6))
+    ys = np.arange(len(display_order))
+    bars = ax.barh(ys, sizes, color=colors, edgecolor="black", linewidth=0.8,
+                   alpha=0.88, height=0.55)
+    # Value labels at bar ends
+    for bar, val in zip(bars, sizes):
+        ax.text(bar.get_width() + 0.4, bar.get_y() + bar.get_height() / 2,
+                f"{val:.1f}%", va="center", ha="left", fontsize=10)
+    ax.set_yticks(ys)
+    ax.set_yticklabels(labels, fontsize=11)
+    ax.set_xlabel("In-footprint volume fraction (%)", fontsize=10)
+    ax.set_xlim(0, max(sizes) * 1.18)
     ax.set_title(
-        "V-Web volume fractions, in-footprint mask\n"
+        "T-Web volume fractions, in-footprint mask\n"
         f"($R_s=25$ Mpc/$h$, $\\lambda_{{\\rm th}}=0$, $N_{{\\rm grid}}=256^3$)",
         fontsize=11,
     )
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
     fig.tight_layout()
     out = FIG_DIR / "fig_p5_volume_fractions_pie.png"
-    fig.savefig(out, dpi=150, bbox_inches="tight")
+    fig.savefig(out, dpi=SAVE_DPI, bbox_inches="tight")
     plt.close(fig)
     print(f"wrote {out.relative_to(REPO)}")
 
@@ -101,13 +130,13 @@ def fig_cw_by_env_bar() -> None:
     ax.set_xticklabels([f"{e.title()}\n$n$={int(df.loc[e,'n']):,}" for e in ENV_ORDER],
                        fontsize=9)
     ax.set_ylabel("CW fraction $f_{\\rm CW}$", fontsize=10)
-    ax.set_title("CW fraction per cosmic-web class (canonical V-Web,\n"
+    ax.set_title("CW fraction per cosmic-web class (canonical T-Web,\n"
                  "$n=812{,}793$ env-labeled rows)",
                  fontsize=11)
     ax.legend(loc="upper right", fontsize=8.5, frameon=True)
     fig.tight_layout()
     out = FIG_DIR / "fig_p5_cw_by_env_bar.png"
-    fig.savefig(out, dpi=150, bbox_inches="tight")
+    fig.savefig(out, dpi=SAVE_DPI, bbox_inches="tight")
     plt.close(fig)
     print(f"wrote {out.relative_to(REPO)}")
 
@@ -142,7 +171,7 @@ def fig_phase2_sensitivity_heatmap() -> None:
                  "across {void, wall, filament, cluster}", fontsize=11)
     fig.tight_layout()
     out = FIG_DIR / "fig_p5_phase2_sensitivity_heatmap.png"
-    fig.savefig(out, dpi=150, bbox_inches="tight")
+    fig.savefig(out, dpi=SAVE_DPI, bbox_inches="tight")
     plt.close(fig)
     print(f"wrote {out.relative_to(REPO)}")
 

@@ -16,6 +16,48 @@ block at the top of the corresponding `.tex` source file.
 
 ## Paper I(b) — `arxiv/paper1b_mcmc_companion.tex`
 
+### v1B.0.108 (2026-07-15) — exact-PDF confirmation closure
+
+- Science commit: `97ceca7f` (`paper(p1b): close v1B.0.108 confirmation findings`).
+- Confirmation inputs: v1B.0.107 science commit `29ccead9`, review-routing
+  isolation `902cb712`, and preserved truth audit `75477aa4`. No further
+  review wave was launched under the anti-loop stop rule.
+- Closure: relabeled the canonical NaMaster mask as the executed synthetic
+  HEALPix native-coordinate latitude window; added the rendered
+  `N=100,000`/seed-1234 prior-predictive method, exact priors, signed-band rule,
+  DOP853 equivalence check, and 0.101/0.076 percentage-point MC errors;
+  separated Git LFS pointer hashes from scientific payload OIDs/sizes and
+  HuggingFace mirrors; pinned the authoritative integrated-autocorrelation ESS
+  artifacts (4,761.37 at `delta_neff`; 4,692 at `sigma8`); and removed the
+  naive cross-dataset 3.9-sigma combination. No Monte Carlo or MCMC rerun.
+- Provenance manifest:
+  `reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json` (schema 2;
+  171 ordinary Git blobs and 24 validated Git LFS pointer records).
+- HuggingFace scientific-payload mirrors:
+  [MCMC diagnostics/chains](https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics),
+  [NaMaster artifacts](https://huggingface.co/datasets/bamfai/p1b-namaster-artifacts),
+  and [ALP chains](https://huggingface.co/datasets/bamfai/p1b-alp-chains).
+- Compiled PDF: 19 pages; SHA-256
+  `a85f43f93ed7bb53e73304cd21fb0fe68ed0d6627103ccbcf970036d31d9a9fb`;
+  source and all tracked public/site mirrors are byte-identical.
+
+### v1B.0.107 (2026-07-14) — truth-audited exact-PDF confirmation target
+
+- Science commit: `29ccead9` (`paper(p1b): close v1B.0.107 truth audit`).
+- Confirmation audit commit: `75477aa4` (`review(p1b): preserve v107 confirmation audit`).
+- Exact reviewed PDF: 19 pages; SHA-256
+  `c7156aa29f381c5d891f5594ac7e0fcaa478dfff30b8f6806ea45055265866c5`.
+- Board: Grok ACCEPT; Gemini and Codex subscription MAJOR REVISIONS. The truth
+  audit retained the real coordinate/provenance findings, kept readiness at
+  56, and authorized the bounded one-pass v1B.0.108 closure rather than another
+  verdict loop.
+- Provenance manifest:
+  `reproducibility/p1b_analysis_artifact_manifest_v1B.0.107.json`.
+- HuggingFace payload mirrors:
+  [MCMC diagnostics/chains](https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics),
+  [NaMaster artifacts](https://huggingface.co/datasets/bamfai/p1b-namaster-artifacts),
+  and [ALP chains](https://huggingface.co/datasets/bamfai/p1b-alp-chains).
+
 ### v1B.0.67 (2026-06-13) — c15 ΛCDM+ΔNeff independent replication
 
 - Commit: `ffc4590e` (`feat(P1B): c15 pod chain CONVERGED → v1B.0.67 — independent ΛCDM+ΔN_eff replication`).

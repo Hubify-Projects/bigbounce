@@ -1,0 +1,21 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P4",
+  "paper_version": "v1.0.252",
+  "git_commit": "8cb975c37ac27bea5c1c7fda2a10274b80623128",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.252.tar.gz",
+  "tarball_sha256": "1fe38151c4f096846b68c0c3de77c4a9f18a640241d7f52f360f1b87312ae2f1",
+  "source_pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+  "source_pdf_sha256": "a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292",
+  "source_pdf_md5": "7231d1d1e773b48c37718d7636303f00",
+  "page_count": 28,
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "errors": 0,
+  "undefined_references": 0,
+  "compiled_pdf_size_bytes": 25168863,
+  "compiled_pdf_sha256": "cb37386cffebafeea3fd8a38154568e6bf53bd78a16e6d679dffb5e6870c4064",
+  "compiled_pdf_md5": "62c1fe0f8c698c0228a10421c3db7aef",
+  "verification_mode": "isolated safe extraction with normalized tar-member checks",
+  "verified_at_utc": "2026-07-15T17:21:17Z"
+}

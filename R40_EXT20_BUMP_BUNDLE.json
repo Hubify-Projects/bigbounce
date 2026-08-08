@@ -1,0 +1,57 @@
+[
+  {
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.78",
+    "datestamp": "2026-06-18",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.78.pdf",
+    "pdfMd5": "198cb9946ddb39863f605b7c66d62313",
+    "pdfPages": 29,
+    "changelog": "R40+EXT20 final round: 2 prose artifacts stripped (cosmetic/labeling only). EXT20 UNANIMOUS ACCEPT. Readiness 99."
+  },
+  {
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.74",
+    "datestamp": "2026-06-18",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.74.pdf",
+    "pdfMd5": "a29137f51d0cc6cf85a88d6a6aaed8c4",
+    "pdfPages": 21,
+    "changelog": "R40+EXT20 final round: UNCHANGED from v1B.0.74 — R40+EXT20 ACCEPT; EXT19 ALP-relic fixes re-verified correct. Readiness 98→99 earned this round."
+  },
+  {
+    "paperSlug": "paper-2",
+    "version": "v1.7.70",
+    "datestamp": "2026-06-18",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.70.pdf",
+    "pdfMd5": "99e6426c3a1f55b7eba80b4c49185bdc",
+    "pdfPages": 29,
+    "changelog": "R40+EXT20 final round: EXT20 micro-fix Table IV 0.1σ→0.4σ. EXT20 UNANIMOUS ACCEPT. Readiness 99."
+  },
+  {
+    "paperSlug": "paper-3",
+    "version": "v3.1.112",
+    "datestamp": "2026-06-18",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.112.pdf",
+    "pdfMd5": "62d7b29428a591d9311b85a49ef22f0e",
+    "pdfPages": 30,
+    "changelog": "R40+EXT20 final round: R40 repro-path fix. EXT20 UNANIMOUS ACCEPT. Readiness 99."
+  },
+  {
+    "paperSlug": "paper-5",
+    "version": "v0.1.82",
+    "datestamp": "2026-06-18",
+    "texCommit": "HEAD",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.82.pdf",
+    "pdfMd5": "401a73f9fc5f207d86b033246ccd13be",
+    "pdfPages": 32,
+    "changelog": "R40+EXT20 final round: R40 2 label fixes + EXT20 χ² rounding fix. UNANIMOUS ACCEPT. Readiness 99."
+  }
+]

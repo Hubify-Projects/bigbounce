@@ -1,0 +1,128 @@
+{
+  "schema": "bigbounce.companion-status-ledger/v1",
+  "description": "Single source of truth for (a) which six-paper companions are publicly archived with a resolvable DOI, and (b) which quantitative values a paper has superseded. tools/verify_companion_status.py reads ONLY this file, so minting a new DOI or retiring a value is a data edit, never a code edit. Every doi listed here was verified HTTP 200 via doi.org and title-matched against the Zenodo API on verified_on.",
+  "verified_on": "2026-07-24",
+  "papers": {
+    "P1A": {
+      "labels": ["Paper I A", "Paper IA", "Paper~I A"],
+      "cite_keys": ["Golden2026P1a", "golden_ech_2026", "Golden:2026ech"],
+      "archive": "Zenodo",
+      "published_doi": "10.5281/zenodo.21481838",
+      "concept_doi": "10.5281/zenodo.21481837",
+      "deposited": "2026-07-22",
+      "license": "cc-by-4.0",
+      "archived_title": "Algebraic Cartan Elimination in Minimal Einstein--Cartan--Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches",
+      "arxiv_id": null,
+      "peer_reviewed": false
+    },
+    "P1B": {
+      "labels": ["Paper I B", "Paper IB", "Paper~I B"],
+      "cite_keys": ["Golden2026P1b", "golden_namaster_2026"],
+      "archive": "Zenodo",
+      "published_doi": "10.5281/zenodo.21481842",
+      "concept_doi": "10.5281/zenodo.21481841",
+      "deposited": "2026-07-22",
+      "license": "cc-by-4.0",
+      "archived_title": "namaster-proof: Exact pseudo-Cl window inference and content-bound validation for reproducible spin-2 analyses",
+      "arxiv_id": null,
+      "peer_reviewed": false
+    },
+    "P2": {
+      "labels": ["Paper II", "Paper~II"],
+      "cite_keys": ["Golden2026P2", "golden_fnl_2026", "Golden:2026forecast"],
+      "archive": "Zenodo",
+      "published_doi": "10.5281/zenodo.21461881",
+      "concept_doi": "10.5281/zenodo.21461880",
+      "deposited": "2026-07-20",
+      "license": "cc-by-4.0",
+      "archived_title": "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping",
+      "arxiv_id": null,
+      "peer_reviewed": false
+    },
+    "P3": {
+      "labels": ["Paper III", "Paper~III"],
+      "cite_keys": ["Golden2026P3", "golden_anomaly_2026", "Golden:2026anomaly"],
+      "archive": "Zenodo",
+      "published_doi": "10.5281/zenodo.21461888",
+      "concept_doi": "10.5281/zenodo.21461887",
+      "deposited": "2026-07-20",
+      "license": "cc-by-4.0",
+      "archived_title": "Public-ID Recovery for a Historical DESI DR1 Anomaly List: 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations",
+      "arxiv_id": null,
+      "peer_reviewed": false
+    },
+    "P4": {
+      "labels": ["Paper IV", "Paper~IV"],
+      "cite_keys": ["Golden2026P4", "golden_chirality_2026", "Golden:2026chirality"],
+      "archive": "Zenodo",
+      "published_doi": "10.5281/zenodo.21461899",
+      "concept_doi": "10.5281/zenodo.21461898",
+      "deposited": "2026-07-20",
+      "license": "cc-by-4.0",
+      "archived_title": "An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
+      "arxiv_id": null,
+      "peer_reviewed": false
+    },
+    "P5": {
+      "labels": ["Paper V", "Paper~V"],
+      "cite_keys": ["Golden2026P5", "golden_desi_chirality_2026"],
+      "archive": null,
+      "published_doi": null,
+      "concept_doi": null,
+      "deposited": null,
+      "license": null,
+      "archived_title": null,
+      "arxiv_id": null,
+      "peer_reviewed": false,
+      "no_doi_reason": "Zenodo deposit staged 2026-07-24 but never published: blocked on a missing ZENODO_TOKEN and on Houston's explicit publish-go. Statements that Paper V has no public archive, tag, or DOI are TRUE and MUST NOT be 'fixed'. The moment a DOI is minted, filling published_doi here arms every companion-status check for Paper V with no code change."
+    }
+  },
+  "unpublished_status_phrases": [
+    "in preparation",
+    "in prep\\.",
+    "in-preparation",
+    "forthcoming",
+    "in press",
+    "to appear in",
+    "not yet public",
+    "not yet available",
+    "not yet a verified public preprint",
+    "no persistent identifier",
+    "lacks a persistent identifier",
+    "available upon request",
+    "arXiv:XXXX\\.XXXXX",
+    "XXXX\\.XXXXX",
+    "ID inserted at",
+    "will be inserted",
+    "identifier will be inserted",
+    "pending arXiv",
+    "awaiting arXiv"
+  ],
+  "status_phrase_notes": "DELIBERATELY ABSENT and must stay absent: any phrase about PEER REVIEW ('not peer reviewed', 'has not been refereed', 'not refereed', 'not-yet-refereed') and any phrase denying an ARXIV IDENTIFIER ('not an arXiv preprint', 'carries no arXiv identifier'). A Zenodo deposit is a public permanent archive; it is NOT peer review and NOT an arXiv preprint. Those caveats are TRUE for every paper in this portfolio and every manuscript is REQUIRED to keep stating them. Flagging them would push the papers into overclaiming, which is the opposite of the defect this ledger exists to prevent.",
+  "superseded_values": [
+    {
+      "id": "P2-fnl-35-8",
+      "owner": "P2",
+      "quantity": "matter-contraction local non-Gaussian amplitude f_NL",
+      "superseded_patterns": ["-35/8", "−35/8", "− 35/8", "-35\\}\\{8\\}"],
+      "current_value": "-35/16",
+      "rationale": "P2 Appendix B derives the exact four-vertex sum, obtains f_NL = -35/16 = -2.1875, and documents why Cai et al. (arXiv:0903.0631)'s separately printed -35/8 is not reproduced. Another portfolio paper stating -35/8 as Paper II's result cites our own companion by a number that companion retracts.",
+      "legitimate_attribution_patterns": [
+        "Cai",
+        "Li~?\\\\?etal",
+        "LiQuintin",
+        "0903\\.0631",
+        "literature value",
+        "printed",
+        "published",
+        "historical",
+        "separately stated",
+        "not reproduce",
+        "unreproduced",
+        "discrepancy",
+        "superseded"
+      ],
+      "legitimate_attribution_notes": "-35/8 legitimately appears in historical or comparative discussion (e.g. 'the result corrects the unreproduced printed -35/8 literature value'). A hit is a violation ONLY when the superseded value co-occurs with a reference to the OWNING paper (a ledger cite key or label) and no legitimate-attribution marker is present on the same line. The owner paper's own source is exempt outright: P2 is required to discuss -35/8 to disown it."
+    }
+  ]
+}

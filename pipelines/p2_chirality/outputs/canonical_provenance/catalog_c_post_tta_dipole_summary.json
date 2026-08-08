@@ -1,52 +1,39 @@
 {
-  "_comment": "Canonical post-TTA Catalog C real-space dipole summary. Anchors the abstract headline 0.43-sigma null. The earlier outputs/dipole/summary.json is the PRE-TTA Catalog A pipeline run (2.31 sigma) and must NOT be quoted as the headline.",
-  "version": "v1.0.67",
-  "date_utc": "2026-05-15T05:00:00Z",
+  "_comment": "Compatibility provenance pointer. The canonical primary is the fixed-occupancy record in p4_primary_hc_label_shuffle_10k.json; the v1.0.243 pixel-permutation result is retained as a diagnostic in outputs/dipole/catalog_c_summary.json.",
+  "version": "v1.0.256",
+  "date_local": "2026-07-15",
   "catalog": "Catalog C (equivariant, post-TTA)",
-  "catalog_source_file": "pipelines/p2_chirality/catalog_production.parquet",
-  "catalog_source_column": "class_eq",
-  "n_spiral": 3201160,
-  "n_cw": 1592107,
-  "n_ccw": 1609053,
-  "cw_fraction": 0.49735314698421823,
-  "sigma_binomial": 0.000279453934,
-  "deviation_from_parity_sigma": 9.4715,
-  "_dipole_block": "real-space weighted-mean dipole fit on Catalog C pixel map",
-  "nside_pixelization": 64,
-  "n_mc_isotropic_null": 10000,
-  "mc_seed": 42,
-  "mc_seed_manifest": "pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json",
-  "sigma_dipole": 0.41,
-  "p_value_one_sided": 0.3085,
-  "p_value_two_sided_equivalent": 0.617,
-  "amplitude_convention": "p_CW(n_hat) = 0.5 * (1 + A * cos(theta)); A is the full-amplitude",
-  "headline_status": "Superseded as numeric anchor by the 2026-06-09 regeneration block below / outputs/dipole/catalog_c_summary.json; retained for provenance history.",
-  "supersedes_note": "Earlier outputs/dipole/summary.json is the PRE-TTA Catalog A diagnostic run (2.31 sigma) and is retained on-disk as a historical pipeline output, NOT as a headline anchor.",
-  "addendum_v1_0_67": {
-    "purpose": "Created in v1.0.67 to close ChatGPT-B-4 / Gemini-DR-G-2 external-review BLOCKER on cited-artifact-vs-headline mismatch. The 0.43-sigma headline is now anchored by THIS file, not by the pre-TTA outputs/dipole/summary.json."
+  "canonical_primary": {
+    "artifact": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.json",
+    "mask_contract": "N_spiral >= 10 (inclusive)",
+    "n_hc": 949584,
+    "n_pix": 23682,
+    "f_sky": 0.4818115234375,
+    "amplitude": 0.004597074287780104,
+    "equatorial_ra_deg": 294.30537030397005,
+    "equatorial_dec_deg": 16.029115977736286,
+    "null_mean": 0.00348994,
+    "null_std_ddof0": 0.00156969,
+    "z_mom_ddof0": 0.7053170,
+    "rank_formula": "(k+1)/(N+1), one-sided upper tail; k=count(A_null>=A_data)",
+    "rank_k": 2246,
+    "rank_N": 10000,
+    "rank_p_one_sided_upper_tail": 0.2246775322467753,
+    "mc_seed": 20260715,
+    "null_array": "pipelines/p2_chirality/apjs_release_v1.0.244/primary_null_amps_10000.npy",
+    "null_array_sha256": "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0"
   },
-  "regeneration_2026_06_09": {
-    "reason": "R23conf META-E1: the committed generator run_dipole_catalog_c.py carried a selection-filter defect (p_cw_eq.abs()>0.6 selected an all-CW sample) and could not reproduce the previously printed 0.43-sigma/p=0.30 as committed. The generator was repaired (winning-class confidence > 0.6) and the anchor regenerated from the released catalog at N_MC=10^4.",
-    "regenerated_values": {
-      "n_hc": 949584,
-      "cw_fraction": 0.4961,
-      "f_sky": 0.4801,
-      "n_pix": 23600,
-      "amplitude": 0.004423,
-      "l_deg": 293.0,
-      "b_deg": 12.0,
-      "pixel_perm_null": {
-        "sigma": 0.41,
-        "rank_p": 0.3085,
-        "mc_mean": 0.003737,
-        "mc_std": 0.001682
-      },
-      "per_galaxy_shuffle_null": {
-        "sigma": 0.58,
-        "rank_p": 0.2572
-      }
-    },
-    "full_output": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary.json",
-    "verdict": "prior and regenerated values agree within MC noise; null verdict unchanged"
-  }
+  "historical_strict_mask_sensitivity": {
+    "status": "SUPERSEDED-HISTORICAL-SENSITIVITY-ONLY",
+    "artifact": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary_strict_gt10_historical.json",
+    "mask_contract": "N_spiral > 10 (strict)",
+    "n_pix": 23600,
+    "amplitude": 0.00442297186793267,
+    "z_mom_ddof1": 0.407958,
+    "rank_k": 3084,
+    "rank_N": 10000,
+    "rank_p_one_sided_upper_tail": 0.3084691530846915,
+    "note": "Retained solely to document the prior mask mismatch and bounded sensitivity of the null verdict; it is not a primary result."
+  },
+  "supersedes_note": "The pre-TTA outputs/dipole/summary.json remains a historical Catalog A diagnostic and is not a P4 primary anchor."
 }

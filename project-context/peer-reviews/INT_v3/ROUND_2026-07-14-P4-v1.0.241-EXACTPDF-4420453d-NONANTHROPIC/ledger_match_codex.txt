@@ -1,0 +1,20 @@
+# ledger_match DRAFT — P4 — RAW_P4_codex_gpt-5.6-sol_high.md
+
+> DRAFT for the Opus truth-auditor, NOT a replacement. Conservative threshold (prefers UNMATCHED over a false match). Every UNMATCHED finding — and every low-score MATCHED — still needs a human/Opus source-cited disposition per §3.
+>
+> ledger: `project-context/peer-reviews/DISPOSITIONS/P4.md` (22 D-ids)  |  findings parsed: 8  |  threshold: 0.3
+
+| # | sev | finding (first 120 chars) | best match | score | status |
+|---|-----|---------------------------|-----------|-------|--------|
+| 1 | MAJOR | REVISIONS (2) ISSUES: 1. | — | 0.00 | **UNMATCHED** |
+| 2 | MAJOR | The Stage-B \(A_{95}=1.5\%\) claim is statistically unsupported. Abstract and Sec. VI.B, lines 676 and 1187–1218, derive | DP4-09 | 0.12 | **UNMATCHED** |
+| 3 | MAJOR | The primary-sample choice is not demonstrably pre-specified and determines the verdict. Sec. IV.C, line 976, reports \(z | DP4-07 | 0.67 | MATCHED |
+| 4 | MAJOR | The physical chirality interpretation exceeds the demonstrated calibration. Sec. VI.B, lines 1212–1240, concedes that St | DP4-07 | 0.40 | MATCHED |
+| 5 | MAJOR | The unresolved harmonic residual is load-bearing for the real-space conclusion. Sec. IV.D, line 1071, finds the 0.695% r | DP4-17 | 0.18 | **UNMATCHED** |
+| 6 | MINOR | The inherited-power ceiling contains a factor-of-two unit error. Sec. VI.A, line 1121, identifies \(A_{95}\le1.5\%\) as  | DP4-02 | 0.11 | **UNMATCHED** |
+| 7 | MAJOR | PRD suitability and novelty are not yet established at the claimed physics level. The Introduction, line 693, defines no | DP4-12 | 0.18 | **UNMATCHED** |
+| 8 | MINOR | The reproducibility record is not immutable in the manuscript. Data Availability, lines 1564–1571, points to a mutable ` | DP4-21 | 0.50 | MATCHED |
+
+**Match rate: 3/8 = 38% MATCHED, 5 UNMATCHED.**
+
+Exit 2 — 5 finding(s) need a full §3 truth-audit (genuinely-new candidates or too-weak fingerprint overlap).

@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "scope": "P3 v3.2.0-r4 clean-room catalog rebuild and validator closure",
+  "base_revision_before_closure": "14876eee97afc99215f8b36f22f10d2f5a699bb9",
+  "exact_closure_script_bytes": {
+    "committed_revision": "36fda4770669ed8c2dddf03ec9623aa77289ebf8",
+    "builder_sha256": "0a62fa8019b0893b0e7d9f33654904660a3777671749b0d4b2ad8f7b9c98d969",
+    "validator_sha256": "428958dfc99f9cb7f9bdcb38d52dc1673d0146e9969809dbc9dad858c4496f06",
+    "note": "The replay used these closure script bytes while they were uncommitted; they are frozen without byte changes in commit 36fda477."
+  },
+  "command_contract": {
+    "workspace": "fresh mktemp directory outside the repository",
+    "build": "python3 pipelines/p3_anomaly_engine/scripts/build_desi_science_catalog_v320_r2.py --clusters <fresh>/pathc_unique_objects.parquet --anomalies <fresh>/desi_dr1_anomalies.parquet --fits pipelines/p5_desi_chirality/data/desi_zall.fits --output-dir <fresh>/desi_science_catalog_v3.2.0-r2 --chunk-rows 200000 --fits-sha256 2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "validate": "python3 pipelines/p3_anomaly_engine/scripts/validate_desi_science_catalog_v320_r2.py --release-dir <fresh>/desi_science_catalog_v3.2.0-r2 --fits pipelines/p5_desi_chirality/data/desi_zall.fits --upstream-provenance pipelines/p5_desi_chirality/data/desi_zall.parquet.provenance.json --clusters <fresh>/pathc_unique_objects.parquet",
+    "parts_dir_was_omitted": true,
+    "derived_parts_dir": "<fresh>/.desi_science_catalog_v3.2.0-r2.build/match_parts"
+  },
+  "inputs": {
+    "historical_dataset_commit": "cdaaa03a72c69d86f011be128d93f261dc5b39a8",
+    "clusters_sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
+    "anomalies_sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+    "desi_fits_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "desi_fits_matches_current_official_checksum": true,
+    "desi_remote_http_range_parity": "PASS"
+  },
+  "replay": {
+    "checkpoint_parts": 143,
+    "fits_rows_scanned": 28425963,
+    "main_science_rows": 20299155,
+    "raw_match_rows_before_deduplication": 2468,
+    "zcat_primary_rows": 2448,
+    "strict_zwarn0_rows": 181,
+    "catalog_sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03"
+  },
+  "all_neighbor_proof": {
+    "desi_containing_clusters": 190015,
+    "minimum_cluster_nearest_neighbor_arcsec": 5.022937707894432,
+    "clusters_with_nearest_neighbor_le_2arcsec": 0,
+    "parent_all_pairs_within_1arcsec": 2468,
+    "strict_all_pairs_within_1arcsec": 181,
+    "rows_with_multiple_clusters_within_1arcsec": 0,
+    "stored_nearest_cluster_present_in_all_neighbor_set": true
+  },
+  "zwarn_rejected_primary_rows": {
+    "rows": 2267,
+    "exact_mask_counts": {
+      "2": 787,
+      "4": 152,
+      "6": 1294,
+      "2048": 3,
+      "2050": 10,
+      "2052": 2,
+      "2054": 19
+    },
+    "set_bit_counts_nonexclusive": {
+      "bit_1_LITTLE_COVERAGE": 2110,
+      "bit_2_SMALL_DELTA_CHI2": 1467,
+      "bit_11_POORDATA": 34
+    },
+    "official_definition_url": "https://desidatamodel.readthedocs.io/en/25.3/bitmasks.html#zwarn"
+  },
+  "publication_boundary": {
+    "aas_digital_asset_doi": null,
+    "doi_status": "not yet assigned; remains an external publication-workflow gate",
+    "readiness_claim": "This evidence proves reproducibility and exact selection accounting; it does not by itself constitute peer-review acceptance."
+  }
+}

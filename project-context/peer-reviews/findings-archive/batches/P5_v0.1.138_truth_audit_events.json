@@ -1,0 +1,260 @@
+{
+  "schema_version": "truth-audit-event-batch/v1",
+  "paper": {
+    "id": "P5",
+    "version": "v0.1.138-2026-07-16"
+  },
+  "source": {
+    "round_id": "ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM",
+    "round_type": "internal"
+  },
+  "pdf": {
+    "sha256": "3c47ccf75da20653c463557fc54fff50da01e1e6bde43a225f61c46cd50baaf0",
+    "pages": 41
+  },
+  "truth_audit": {
+    "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/P5_v0.1.138_truth_audit.md",
+    "sha256": "6a91f88b8d3061d425e55db3544938dee38d25ac6802621e9530337329ad2748",
+    "audited_at": "2026-07-16T08:50:43Z"
+  },
+  "catalog": {
+    "version": "34-patterns",
+    "updated_at": "2026-06-02T00:00:00Z"
+  },
+  "receipts": [
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "sha256": "2ccf60607f3c763b54ade7e575eb790085457fb64c58f4306ba85f776c19cbfb",
+      "occurred_at": "2026-07-16T08:29:12.029455Z",
+      "reviewer": {
+        "provider": "xai-direct",
+        "model": "grok-4.3",
+        "reviewer_id": "grok-api"
+      },
+      "findings": [
+        {
+          "finding_id": "G-m1",
+          "severity": "MINOR",
+          "summary": "The post-review reporting-hierarchy change should be foregrounded.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit confirmed the post-review hierarchy change and retained it as an already disclosed standing reporting gate.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Retain explicit disclosure of the post-review hierarchy and obtain final author/venue acceptance of the exploratory framing.",
+            "closed_in_version": null,
+            "evidence": "Standing gate in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "G-m2",
+          "severity": "MINOR",
+          "summary": "The fixed-geometry RSD sensitivity is not a reconstructed-catalog analysis.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit retained the fixed-geometry RSD limitation as a disclosed standing scientific gate rather than a hidden contradiction.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Preserve the quantitative fixed-geometry limitation or run a full reconstructed-density-field void-catalog analysis.",
+            "closed_in_version": null,
+            "evidence": "Standing gate in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "G-m3",
+          "severity": "MINOR",
+          "summary": "The referenced reproducibility artifacts need a public archive.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit retained public artifact archival and immutable release identifiers as standing submission gates.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Publish the artifact bundle at an immutable public endpoint and bind it in the submission manuscript.",
+            "closed_in_version": null,
+            "evidence": "Standing release gate in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
+      "sha256": "8e119932e02c751f088d77b7fda74b77f09c025c9010ecb0063dcea5fda66d29",
+      "occurred_at": "2026-07-16T08:29:12.032741Z",
+      "reviewer": {
+        "provider": "google-direct",
+        "model": "gemini-3.1-pro-preview",
+        "reviewer_id": "gemini-api"
+      },
+      "findings": [
+        {
+          "finding_id": "Ge-M1",
+          "severity": "MAJOR",
+          "summary": "The manuscript depends on the unpublished Paper IV companion.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit retained Paper IV availability as an already disclosed standing submission gate; it is real but not a newly hidden defect.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Make the companion catalog paper and immutable label release available to reviewers and keep linked-version changes synchronized.",
+            "closed_in_version": null,
+            "evidence": "Standing companion-paper gate in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m2",
+          "severity": "MINOR",
+          "summary": "Inline artifact identifiers interrupt manuscript readability.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The truth audit classified inline artifact-ID streamlining as editorial rather than a new scientific defect.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Treat as optional AJ copy-editing while preserving reproducibility bindings.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m3",
+          "severity": "MINOR",
+          "summary": "The secondary T-Web discussion should be shortened.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The truth audit classified T-Web section length as an editorial streamlining request.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Consider shortening only during venue-focused narrative editing.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m4",
+          "severity": "MINOR",
+          "summary": "The unit-conversion footnote uses an unnecessarily defensive tone.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The truth audit classified the unit-conversion-footnote request as editorial and not a scientific defect.",
+          "classification": "UNMATCHED",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED",
+            "action": "Treat as optional tone editing during final AJ copy preparation.",
+            "closed_in_version": null,
+            "evidence": "Editorial disposition in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/intwave_P5_codex_0128.md",
+      "sha256": "a259086e7852a0889eca3018dfa522c1123245912427026c2766709f0511b227",
+      "occurred_at": "2026-07-16T08:28:53Z",
+      "reviewer": {
+        "provider": "openai-subscription",
+        "model": "gpt-5.6-sol (high)",
+        "reviewer_id": "codex-cli"
+      },
+      "findings": [
+        {
+          "finding_id": "C-m1",
+          "severity": "MINOR",
+          "summary": "The systematics prose incorrectly denies an existing interaction calculation.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit verified that A43-A44 calculate program-by-void interactions and that only the weak sparse-strata bounds remain.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "State that no robust interaction evidence is found and preserve the weak bounds from sparse program strata.",
+            "closed_in_version": null,
+            "evidence": "Verified minor in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m2",
+          "severity": "MINOR",
+          "summary": "Same-sample monopole residuals omit shared-reference covariance.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit recomputed pooled class-versus-rest values near +1.40 and -1.56 and confirmed the omnibus null is unchanged.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Replace fixed-reference residuals with pooled class-versus-rest values or qualify the printed values as approximate.",
+            "closed_in_version": null,
+            "evidence": "Verified minor in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m3",
+          "severity": "MINOR",
+          "summary": "The T-Web void-count explanation confuses the full parent and low-redshift subset.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit verified that 428 is the full T-Web void parent while only six remain after the z<=0.24 cut.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Correct the causal explanation of the 428-object T-Web void parent.",
+            "closed_in_version": null,
+            "evidence": "Verified minor in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m4",
+          "severity": "MINOR",
+          "summary": "Seed-only deterministic reconstruction omits stable tie-breaking.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The truth audit verified that unstable sorting changes 22 rows and shifts the focal contrast by 3.09e-5.",
+          "classification": "NEW_REAL",
+          "pattern_ids": [],
+          "preflight_checked": false,
+          "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN",
+            "action": "Specify the complete stable ordering or restrict byte-identical determinism to frozen archived artifacts.",
+            "closed_in_version": null,
+            "evidence": "Verified minor in the bound P5 v0.1.138 truth audit.",
+            "regression_of_event_id": null
+          }
+        }
+      ]
+    }
+  ]
+}

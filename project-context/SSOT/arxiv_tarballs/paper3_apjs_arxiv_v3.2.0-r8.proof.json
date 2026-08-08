@@ -1,0 +1,30 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P3",
+  "paper_version": "v3.2.0-r8",
+  "git_commit": "05746dc56fb09f0800c13db56905af570eee2cfe",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_v3.2.0-r8.tar.gz",
+  "tarball_sha256": "8354213e1d674af9662ee438db1c2d00ad333d40cf7f007c997f8f0632f4ebd2",
+  "source_pdf": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+  "source_pdf_sha256": "b5f254f92b10bda43b687f07c5f58b828a6f7dc70d98c08f9e9b609edbba08b0",
+  "source_pdf_md5": "8faac098b5f4cde3133937460b8df4c5",
+  "page_count": 16,
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 1,
+  "overfull_vboxes": 0,
+  "compiled_pdf_size_bytes": 241054,
+  "compiled_pdf_sha256": "f72f748ecefb9a3a68d3b12ce3f562b288d43faa197d1786e032299e9365099d",
+  "compiled_pdf_md5": "045f0681e01c761da4bb2d711013d74a",
+  "verification_mode": "isolated safe extraction; Tectonic reruns; generated-log scan; all-page raster audit",
+  "visual_audit": {
+    "pages_rendered": 16,
+    "pages_inspected": 16,
+    "clipping_or_overlap": false,
+    "result": "pass",
+    "note": "One 1.82327 pt overfull hbox at source lines 167--178 is retained as an explicit minor typesetting warning; all-page inspection found no visible clipping or column overlap."
+  },
+  "verified_at_utc": "2026-07-15T18:01:59Z"
+}
