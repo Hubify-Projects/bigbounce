@@ -1,7 +1,181 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.14 · 2026-08-07 ·
+**Current candidate:** draft v1C.0.15 · 2026-08-07 ·
 `arxiv/paper1c_nogo_survey/main.tex`
+
+**Status: R12 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED →
+15 GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.15): 11 CORRECTNESS-GRADE +
+4 PRESENTATION-GRADE. THE ROUND'S HEADLINE IS A CORRECTION TO THE
+MANUSCRIPT'S ON-SHELL TORSION: THE REFEREE CHALLENGED A LOAD-BEARING
+PHYSICAL PREMISE, THE CHALLENGE WAS ADJUDICATED BY SOLVING THE
+EINSTEIN–CARTAN–HOLST CONNECTION EQUATION FROM SCRATCH, AND **THE REFEREE
+WAS CORRECT**. THE MINIMAL-ECH ON-SHELL TORSION IS NOT PURELY AXIAL AT
+FINITE γ; O4 IS NOT IDENTICALLY ZERO; O1 AND O6 ARE NOT EXACT TOTAL
+DERIVATIVES. THE PHYSICS CONCLUSION SURVIVES — EVERY AFFECTED OPERATOR
+LANDS IN THE κ-SUPPRESSED FIERZ-CLOSED (J⁵·J⁵) CLASS THE PAPER ALREADY
+BOUNDS. THIS ROUND ALSO OVERTURNS A RESULT ONE OF THIS REPOSITORY'S OWN
+RELEASED ARTIFACTS ASSERTED; THAT ARTIFACT NOW CARRIES A DATED ERRATUM
+ADDENDUM THAT SCOPES ITS CONCLUSIONS WITHOUT EDITING THEM.
+R-PHASE NOT CONVERGED AT R12 — R13 on the exact v1C.0.15 PDF is REQUIRED
+and is the next CORRECTNESS-CONVERGENCE CHECK.**
+The R12 board ran on the exact v1C.0.14 PDF (sha `9dd5c708…`), three legs
+with raw receipts.
+
+**R12 verdict matrix (2026-08-08, exact v1C.0.14 PDF):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **MAJOR REVISIONS** (2 MAJOR / 9 MINOR; 5 candidate findings withdrawn by the leg after 300-DPI re-render or artifact cross-check). Both MAJORs trace to a single premise — that the ECH torsion is purely axial — and **both are confirmed correct** by independent computation |
+| Grok API | grok-4.3 | **REJECT** (3 ESSENTIAL / 3 MAJOR / 2 NIT) — every complaint is scope, self-containment or length; none is computational, and none touches the defect this round found |
+| Gemini API | gemini-3.1-pro-preview | **ACCEPT WITH MINOR CORRECTIONS** (1 MINOR / 2 NIT; pass-2 NO_NEW) — Gemini's second ACCEPT-class verdict on P1C (after R4) and the board's third overall (Gemini R4, Claude R5, Gemini R12). It calls the Cartan derivations "flawless" and "exact" on the exact PDF whose Cartan branch this round corrects |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+The verdict-first truth audit against the R1–R11 disposition ledgers and the
+released theory-audit artifacts
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-08-P1C-v1C.0.14-EXACTPDF-9dd5c708-R12CONV/P1C_v1C.0.14_R12_truth_audit.md`)
+deduplicated the board to **24 canonical items: 15 genuinely-new-real (14 GNR
++ 1 adjudication-driven, all closed in v1C.0.15), 6 re-flags of
+R1–R11-dispositioned content, 2 freshly falsified with receipts, 1
+deferred-genuine** — plus the 5 candidates the reviewing leg withdrew before
+the board.
+
+**GNR by grade (all 15 closed in v1C.0.15):**
+
+- **Correctness-grade (11)** — R12-GNR-1 (on-shell torsion irreps, O4 ≠ 0,
+  O1 = O6 not total derivatives), R12-GNR-2 (the cited artifact evaluated an
+  Einstein–Cartan configuration and was reported as an ECH verification),
+  R12-ADJ-1 (Sec. II vs App. E torsion normalizations differed by a factor
+  two — raised by neither party, surfaced by the adjudication),
+  R12-GNR-3 (App. C's "trace-vector irreps appear only when minimal coupling
+  is relaxed" is false), R12-GNR-4 (Levi-Civita "symbol" printed with the
+  Lorentzian tensor identity), R12-GNR-5 (the stated explanation for the
+  Nieh–Yan factor of two does not account for it), R12-GNR-6 (`M_Pl` printed
+  inside an identity exact only for `M̄_Pl`), R12-GNR-7 (six branches vs four
+  constrained channels, qualifier absent from the abstract), R12-GNR-8
+  (abstract's 61–67 orders carried by an unlabelled Tier-III scaling
+  relation), R12-GNR-9 (Table II's "exploratory, not load-bearing" vs the
+  abstract's headline), R12-GNR-10 (abstract's flat "none a logical
+  consequence of another"). Four of these are graded **above** the reviewing
+  leg's own `[presentation]`/`[scope]` tags, deliberately and auditably, per
+  the standing rule that a wrong claim is correctness-grade.
+- **Presentation-grade (4)** — R12-GNR-11 (Case I referent), R12-GNR-12
+  (Shapiro–Teixeira arXiv-version note), R12-GNR-13 (abstract sentence
+  split, Gemini N1), R12-GNR-14 (density-symbol gloss, Gemini N2).
+
+**The round's headline, stated once and precisely.** The adjudicating module
+`research/theory_audit/ech_torsion_onshell_2026_08_08.{py,json,md}` (commit
+`2d7db648`) sets up the first-order ECH action in explicit components and
+**solves** the connection equation — varying with respect to all 24
+independent contorsion components with no irrep ansatz, cross-checked against
+an independent differential-form route, under both Holst sign conventions,
+in exact symbolic arithmetic. The on-shell torsion is
+
+> `T_{abc} = α ε_{abcd}J^{5d} + β(η_{ab}J⁵_c − η_{ac}J⁵_b)`,  `β/α = 1/(2γ)`
+
+with the **axial (4) and trace-vector (4) irreps both nonzero** at every
+finite nonzero γ and the **tensor (16) irrep identically zero**. Pure
+axiality is the γ → ∞ Einstein–Cartan limit only; at γ = 0.2375 the
+trace-vector coefficient is **2.11×** the axial one (1.82× at γ = 0.274), so
+the non-axial piece is the larger of the two. Consequences landed in
+v1C.0.15:
+
+- `O4(bare) = −24αβ(J⁵·J⁵) = −192π²G²γ³/(1+γ²)²(J⁵·J⁵)`, i.e.
+  `O4^[4] = −3κγ³/(1+γ²)²(J⁵·J⁵)` — **not zero**. The paper's "strictly
+  stronger disposal" claim is **withdrawn**. The referee's independently
+  claimed value is confirmed *exactly* (difference 0, ratio 1, sign
+  included) in App. E's normalization.
+- `O1^[4] = O6^[4] = −O2^[4] + ½O4^[4]` on shell — O1 and O6 are a total
+  derivative **plus** a contact term, not exact total derivatives.
+- `O1 = O6` and the Nieh–Yan relation `2O1 + 2O2 − O4 = 0` **survive**,
+  re-verified at finite γ on six explicitly curved on-shell ECH
+  configurations (γ ∈ {19/80, 1, 3}); `O1 = −O2` **fails** — it required
+  `O4 = 0`.
+- **The no-go holds.** O1, O4 and O6 join O5 in the κ-suppressed
+  Fierz-closed `(J⁵·J⁵)` class, at the same `M̄_Pl^{-2}` power, with
+  `O4^[4]/O5^[4] = γ/(1+γ²) ≈ 0.22`. No new light scale appears; the "no
+  (meV)⁴ vacuum energy without a new light scale" conclusion is unchanged.
+  Disposal class (i) loses O1 and O6 to class (ii); class (iii) loses O4.
+
+**Convention fixed in the same round.** Sec. II's `T = κS` and App. E's
+Eq. (E2) fixed the same object in normalizations differing by a factor two in
+torsion amplitude (four in any quadratic-in-`T` density). The survey now uses
+**one** normalization throughout — **App. E's, i.e. Eq. (E2)**, the
+Freidel–Minic–Takeuchi solution of the connection equation — stated as such
+in both Sec. II and App. E. It is chosen because it is the paper's only
+*derived* on-shell torsion and the normalization in which the independently
+solved connection equation and the referee's O4 both land exactly.
+Consequently O5 reduces to `−3κ[γ²/(1+γ²)](J⁵·J⁵)`, and Check D's ε-free
+square is restated in the normalization-independent form
+`T_{abc}T^{abc} = −6α²(J⁵·J⁵)`.
+
+**Integrity note — recorded here, and deliberately kept out of the paper.**
+This round changes a result `operator_basis_adjudication_2026_08_07.md`
+asserted. That artifact's premise — "the paper's on-shell Cartan torsion … is
+verified to be pure axial" — was an **imposed input**, not a solved output:
+the module substitutes a totally antisymmetric tensor and then verifies it is
+totally antisymmetric, and γ never enters it, so its "curved on-shell
+configuration" is Einstein–Cartan, not Einstein–Cartan–Holst. A dated
+**ADDENDUM — ERRATUM OF 2026-08-08** is appended to that report; it edits
+nothing above it, scopes the affected conclusions item by item, and lists
+what is unaffected and independently re-confirmed at finite γ (rank 4,
+nullity 2, both null vectors, `O1 = O6` including the Γ route, the
+density-normalization cross-check, the subset ranks, the Fierz results).
+Per directive Q1 **no mistake-narration goes into the manuscript**: the paper
+states only the correct physics; the process record lives in
+`project-context/`.
+
+**Durable lesson.** A released verification artifact can be internally
+correct and still carry a premise it never solved for. Two rules: (1)
+re-derive the premise from the governing equation rather than inheriting it —
+the mechanically detectable tell here was that γ, the one parameter
+distinguishing ECH from EC, appeared nowhere in a module whose conclusions
+were reported as ECH results; (2) erratum by dated addendum, never by edit,
+so the original text and its provenance survive. Also recorded: the
+mechanical self-consistency linter passed 4/4 on v1C.0.14 — correctly, since
+the manuscript was self-consistent. Its four claims about torsion irreps, O4,
+O1/O6 and App. C's scope all agreed with each other. They were agreed and
+wrong. A self-consistency linter is the right tool for the R10/R11 failure
+mode and structurally the wrong tool for this one.
+
+**Falsified with receipts (2).** Grok M2's "the two-order conservative
+allowance is unquantified and unreferenced" — the two orders are the explicit
+computed difference between two index-contraction orderings both printed in
+the text (`1.7×10⁻⁶⁰` vs `≈2×10⁻⁶²`), with the paper adopting the *less*
+favourable and saying so; both reproduced by this round's opposing leg. Grok
+N1's "Table II mixes three tiers without repeating the label on every row" —
+verified at the exact PDF, p. 12: all five rows open with their own bold tier
+marker.
+
+**Deferred-genuine (1).** R12-DEF-1, the frozen-release Zenodo DOI for this
+survey's own verification scripts — now **eight** files rather than six.
+Carried unchanged from R11-DEF-1; a P-round packaging item requiring Houston.
+
+**Closure evidence (v1C.0.15).** 4-pass compile: **0 LaTeX errors, 0
+undefined references, 0 overfull hboxes**, 25 pp (24 → 25; the correction
+required new text, reported rather than smoothed). Two float regressions
+introduced by the correction were caught and fixed inside the round (Table III
+overflowing its full-width float by 28.5 pt; Table II becoming too large for
+the page by 22 pt), both confirmed new against a pristine v1C.0.14 compile.
+`/latex-audit`: **PASS** — pages 1, 2, 3, 13, 15, 17, 21, 22 rendered and
+visually confirmed; all **8** `\artifact{}` targets resolve.
+`tools/p1c_consistency_check.py`: **4/4 rules PASS, exit 0**. Served PDF md5
+`3a46b8c270906e0b943d7c0082f36922`, sha256
+`f3e29c45df35f7ac358d8f4e6a854d1b9f79fa20c71a725922732db82bd967d4`, mirrored
+byte-identical to `site/public/papers/`, `public/papers/` and
+`site/out/papers/` as `paper1c_nogo_survey_v1C.0.15.pdf` (all four copies
+md5-match). `draft_paper_registry.json`, `site/src/data/papers.ts` and
+`site/src/data/reviewTimeline.ts` (R12 round entry + a `skill-improvement`
+entry for the solve-don't-inherit / erratum-by-addendum lesson) updated in
+the same bundle; `cd site && npx next build` PASS.
+
+**Next gate: R13** on the exact v1C.0.15 PDF — the first round that will
+review an on-shell operator disposal derived from the solved connection
+equation rather than from a substituted ansatz. No readiness percentage is
+computed or claimed.
+
+---
+
+## Prior round — R11 (closed as v1C.0.14)
 
 **Status: R11 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED →
 14 GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.14): 6 CORRECTNESS-GRADE +
@@ -1134,25 +1308,46 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.13: **23 pp, 0 errors, 0 undefined refs, 0 overfull hboxes**, 4-pass
-compile clean 2026-08-07 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.13.pdf`,
-`public/papers/paper1c_nogo_survey_v1C.0.13.pdf` and
-`site/out/papers/paper1c_nogo_survey_v1C.0.13.pdf` (md5
-`c5957263410453ba7b3fb96a0678138d`, sha256
-`d3aea74da62a433c186e3c809b4acadcd82453c3686aebc34fec9f5c2c15efbb`, all
-four copies match). Prior v1C.0.1–v1C.0.12 mirrors retained.
-`/latex-audit`: **PASS.** Log scan clean; pages 1 (title block), 5 (Fig. 1 +
-Table I), 8 (the new Route-2 dark-energy passage), 9, 12 (Table II) and 19
-(Table III) rendered at 110 DPI and visually confirmed — no column-gutter
-crossings, no right-margin overruns, no float escapes. All 6 `\artifact{}`
-targets resolve to existing repo paths. No `\date` overflow risk: the
-`\date` call was removed entirely this round (an empty `\date{}` still
-renders "(Dated:)" in revtex4-2, confirmed at 110 DPI), and the title block
-now carries no version or date string at all — draft provenance lives in the
-PDF metadata (`pdfinfo` → `Keywords: v1C.0.13 (August 7, 2026)`). Three
-pre-existing raw `\texttt{}` script paths remain and wrap cleanly at 0
-overfull.
+v1C.0.15: **25 pp, 0 errors, 0 undefined refs, 0 overfull hboxes** (45
+underfull, badness-only revtex float artifacts), 4-pass compile clean
+2026-08-07 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored byte-identical to
+`site/public/papers/paper1c_nogo_survey_v1C.0.15.pdf`,
+`public/papers/paper1c_nogo_survey_v1C.0.15.pdf` and
+`site/out/papers/paper1c_nogo_survey_v1C.0.15.pdf` (md5
+`3a46b8c270906e0b943d7c0082f36922`, sha256
+`f3e29c45df35f7ac358d8f4e6a854d1b9f79fa20c71a725922732db82bd967d4`, all
+four copies match). Prior v1C.0.1–v1C.0.14 mirrors retained. The
+pre-existing `Warning--missing journal in DiegoPalazuelos2025` bibtex
+diagnostic is unchanged from v1C.0.14 and is not introduced by this round.
+Two float regressions created by the R12 correction were caught and fixed
+inside the round, both confirmed new against a pristine v1C.0.14 compile:
+Table III overflowed its full-width float by 28.5 pt once the O4/O5 cells
+carried γ-dependent values (fixed by compacting the rational expressions,
+abbreviating `(J⁵)² ≡ J⁵·J⁵` in the table body with a caption note, and
+setting `\footnotesize` on the tabular), and Table II became "too large for
+page by 22 pt" and stuck once the R2 cell lengthened (fixed by moving the
+R12-GNR-9 reconciliation sentence out of the cell and into Sec. IV A prose).
+`/latex-audit`: **PASS.** Log scan clean; pages 1 (title block + abstract),
+2 and 3 (conventions + the new on-shell torsion equation), 13 (Table II), 15
+(Sec. V collapse bullets + the new O4 equation), 17 (Data & Code artifact
+block), 21 (Table III) and 22 (App. C scope) rendered at 130 DPI and
+visually confirmed — no column-gutter crossings, no right-margin overruns,
+no float escapes. All **8** `\artifact{}` targets resolve to existing repo
+paths. No `\date` overflow risk: there is no `\date` call (an empty
+`\date{}` still renders "(Dated:)" in revtex4-2), and the title block
+carries no version or date string — draft provenance lives in the PDF
+metadata (`pdfinfo` → `Keywords: v1C.0.15 (August 7, 2026)`). Two raw
+`\texttt{}` filenames remain and are bare functional filenames rather than
+directory paths (the R11-GNR-10 disposition), both wrapping at 0 overfull.
+`tools/p1c_consistency_check.py`: **4/4 rules PASS, exit 0**, run before the
+version bump and again after every table fix.
+
+Note: v1C.0.15 adds two numbered equations in Sec. II and Sec. V
+(`eq:ech_onshell_torsion`, `eq:o4_onshell`), so equation numbering downstream
+of Sec. II shifts by one relative to v1C.0.14. Every cross-reference in the
+source is `\eqref`-driven and no hard-coded equation number exists (verified
+by grep), but reviewer reports written against v1C.0.14 equation numbers must
+be read with that offset in mind.
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 
@@ -1234,19 +1429,44 @@ overfull.
    `ROUND_2026-08-07-P1C-v1C.0.10-EXACTPDF-d8b9db8e-R8CONF/P1C_v1C.0.10_R8_truth_audit.md`).
    R8 was NOT clean (4 genuinely-new-real vs a target of 0) → convergence
    NOT reached under the literal gate.
-10. **R9 confirmation board — THE CORRECTNESS-CONVERGENCE CHECK** (same
-   three active legs, fresh, on the exact v1C.0.11 PDF sha
-   `0868856032…`). Exit test per the R8 classification rule: a full
-   board whose truth audit yields ZERO correctness-grade GNR converges
-   the R-phase; presentation-grade items route to the D-round.
-   Pre-submission checklist carries: real mechanized enumeration (or
-   keep downgraded framing); ST Eq. 58 + quote verification;
-   venue-length condensation + abstract compression + tier-disclaimer
-   consolidation (seven instances counted at R8); mint the version DOI /
-   updated archival deposit for the P1C script set at P-round (R2-SO-2 /
-   R5-GNR-2 / R6-RF-9 / R7-RF-8 / R8-RF-11); refereed-companion gate for
-   the cited-only companion results (R6-GNR-1 / R7-RF-9 / R8-RF-10).
-11. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
+10. ~~R9 correctness-convergence board~~ DONE 2026-08-07 (exact v1C.0.11 PDF
+   sha `08688560…`; closures landed as v1C.0.12). NOT clean.
+11. ~~R10 correctness-convergence board~~ DONE 2026-08-07 (exact v1C.0.12 PDF
+   sha `c21fde9f…`; closures landed as v1C.0.13). NOT clean.
+12. ~~R11 correctness-convergence board~~ DONE 2026-08-07 (exact v1C.0.13 PDF
+   sha `d3aea74d…`: Claude MAJOR REVISION 4 MAJOR / 6 MINOR with zero
+   computational errors across 30 recomputed relations / Grok REJECT /
+   Gemini MAJOR REVISIONS / Perplexity FAILED; 14 genuinely-new-real closed
+   as v1C.0.14, 6 correctness-grade; `tools/p1c_consistency_check.py`
+   introduced as the anti-regression guard — see
+   `ROUND_2026-08-07-P1C-v1C.0.13-EXACTPDF-d3aea74d-R11CONV/P1C_v1C.0.13_R11_truth_audit.md`).
+   NOT clean.
+13. ~~R12 correctness-convergence board~~ DONE 2026-08-08 (exact v1C.0.14 PDF
+   sha `9dd5c708…`: Claude MAJOR REVISIONS 2 MAJOR / 9 MINOR + 5 withdrawn /
+   Grok REJECT / Gemini **ACCEPT WITH MINOR CORRECTIONS** / Perplexity
+   FAILED; 15 genuinely-new-real closed as v1C.0.15, 11 correctness-grade;
+   the on-shell ECH torsion corrected after both MAJORs were confirmed by an
+   independent solve of the connection equation, and the 2026-08-07
+   operator-basis artifact given a dated erratum addendum — see
+   `ROUND_2026-08-08-P1C-v1C.0.14-EXACTPDF-9dd5c708-R12CONV/P1C_v1C.0.14_R12_truth_audit.md`).
+   NOT clean, and the defect class regressed from internal-consistency to a
+   wrong physical premise.
+14. **R13 correctness-convergence board — NEXT** (same three active legs,
+   fresh, on the exact v1C.0.15 PDF sha `f3e29c45…`). Exit test per the R8
+   classification rule: a full board whose truth audit yields ZERO
+   correctness-grade GNR converges the R-phase; presentation-grade items
+   route to the D-round. R13 is the first board to review an on-shell
+   operator disposal derived from the solved connection equation rather than
+   from a substituted ansatz, so the operator-list sections
+   (Sec. II Eq. (1), Sec. V, App. A 1, Table III, App. C, App. E) are the
+   priority read. Pre-submission checklist carries: real mechanized
+   enumeration (or keep downgraded framing); ST Eq. 58 + quote verification;
+   venue-length condensation (24 → 25 pp at R12, target still unmet); mint
+   the version DOI / updated archival deposit for the P1C script set — now
+   **eight** files — at P-round (R2-SO-2 / R5-GNR-2 / R6-RF-9 / R7-RF-8 /
+   R8-RF-11 / R11-DEF-1 / R12-DEF-1); refereed-companion gate for the
+   cited-only companion results (R6-GNR-1 / R7-RF-9 / R8-RF-10).
+15. D/P rounds (visual + packaging) only after INT/EXT convergence, per the
    standard readiness ladder (R-rounds converge -> 96 -> D-round -> 98 ->
    P-round -> 99 -> Houston sign-off -> 100)
 
