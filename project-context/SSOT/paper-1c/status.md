@@ -1,9 +1,192 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.12 · 2026-08-07 ·
+**Current candidate:** draft v1C.0.13 · 2026-08-07 ·
 `arxiv/paper1c_nogo_survey/main.tex`
 
-**Status: R9 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED, WITH AN
+**Status: R10 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED →
+15 GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.13): 5 CORRECTNESS-GRADE +
+10 PRESENTATION-GRADE. ZERO COMPUTATIONAL ERRORS FOUND BY ANY LEG — a
+first for this paper. BOTH MAJORS WERE CLAIM-SCOPING DEFECTS AND ARE
+CLOSED BY SCOPING, NEVER BY WEAKENING THE SCIENCE OR FABRICATING
+COVERAGE. R-PHASE NOT CONVERGED AT R10 — R11 on the exact v1C.0.13 PDF
+is REQUIRED and is the next CORRECTNESS-CONVERGENCE CHECK.**
+The R10 board ran on the exact v1C.0.12 PDF (sha `c21fde9f…`), three legs
+with raw receipts.
+
+**R10 verdict matrix (2026-08-07, exact v1C.0.12 PDF):**
+
+| Leg | Model | Verdict |
+|---|---|---|
+| Claude INT (Opus-tier) | claude opus | **MAJOR REVISION** (2 MAJOR / 7 MINOR; leg self-classes 5 correctness-grade) — but with **ZERO computational errors** across Eqs. (1)–(5), (9)–(11), (A1)–(A4), (C1)–(C2), (E1)–(E5), Tables II/III and the B1/B12/App. A/App. E numerics, independently re-derived; both MAJORs are claim-scoping, not math |
+| Grok API | grok-4.3 | **REJECT** (4 ESSENTIAL / 5 MAJOR / 4 NIT) — complaints are scope, length and style, not computation |
+| Gemini API | gemini-3.1-pro-preview | **MINOR REVISIONS** (1 ESSENTIAL / 1 MAJOR / 1 MINOR / 1 NIT; pass-2 NO ADDITIONAL FINDINGS) — **the first sub-major verdict this paper has received across R1–R10** |
+| Perplexity | (optional leg) | FAILED — failure record, never a verdict |
+
+The verdict-first truth audit against the R1–R9 disposition ledgers and the
+operator-basis adjudication
+(`project-context/peer-reviews/INT_v3/ROUND_2026-08-07-P1C-v1C.0.12-EXACTPDF-c21fde9f-R10CONV/P1C_v1C.0.12_R10_truth_audit.md`)
+deduplicated the board to **21 canonical items: 15 genuinely-new-real (all
+closed in v1C.0.13), 4 re-flags of R1–R9-dispositioned content, 1 freshly
+falsified with receipts, 1 deferred-genuine.**
+
+**GNR by grade (all 15 closed in v1C.0.13):**
+
+- **Correctness-grade (5)** — R10-GNR-1 (B14 Tier-I scope + headline
+  recount), R10-GNR-2 (Route-2 dimension basis), R10-GNR-3 (β(γ)
+  suppression claim), R10-GNR-4 (Mercuri RG citation), R10-GNR-5 (B9 route
+  tag). This matches the reviewing leg's own self-classification exactly.
+- **Presentation-grade (10)** — R10-GNR-6 … R10-GNR-15.
+
+**MAJOR-1 — B14's Tier-I claim was asserted outside the branch App. D
+proves; the headline count depended on it.** App. D's statement is scoped to
+*canonical scalar matter* and its exclusion list rules out *fermion sources*;
+proof step (1) is "A canonical scalar field has zero spin density". B8 is a
+statement about the **fermionic** `(J⁵)²` sector, where `T = κS ≠ 0` and
+App. D's hypotheses fail — so B14 could not "independently confirm" or
+subsume B8, and its `[R1–R4]` tag over-reached (R1 is the fermionic NJL
+channel). Not a re-flag: R1's `FAL-1` and its R2/R3/R8/R9 re-flags all
+concerned whether the 13/14 accounting was *internally consistent* (it was);
+R10 asks whether the subsumption is *logically valid* (it is not).
+**Closure:** B14's tag narrowed `[R1–R4]` → `[R2–R4, zero-spin branch]` with
+the honest content stated (it removes those routes' *classical zero-spin*
+perturbative baseline, not their quantum or fermionic content); B8 restored
+as an independent constraint; **the headline count RECOUNTED 13 → 14
+distinct mechanism-class constraints at every instance** — abstract,
+introduction, Sec. III preamble, Fig. 1 caption, the **in-figure edge label**
+`B8, B14` → `B8` on the H→R1 arrow, Table I caption (rewritten to
+"disjoint matter branches, therefore logically independent"), App. A,
+Sec. VI, Sec. VII; Tier-I status branch-scoped in five places including
+App. D's own consequences paragraph. Grep-verified: `13 distinct`,
+`thirteen`, `subsumed by B14`, `subsumes B8` all return nothing in
+`main.tex`. This also resolves Grok N2's "14 entries (13 distinct)" wording
+inconsistency.
+
+**MAJOR-2 — Route 2's dark-energy closure was delegated to an operator list
+that excludes the operator in question.** Eq. (1) is a **dimension-5**
+operator (the paper itself prints "the dimension-(+5) integrand
+`∂_μϑ_NY J^{5μ}` times the dimension-(−1) prefactor `β(γ)/M_Pl`"), built on
+a pseudoscalar `ϑ_NY` that is **not** among Sec. V's admitted building
+blocks, and carrying an **extra derivative** the zero-derivative rule
+excludes — three independent reasons it lies outside the dimension-4 list.
+Worse, its assigned background `⟨∂_μϑ_NY⟩ ∼ H₀²` makes `ϑ_NY` precisely the
+"new light scale `μ ≪ M_Pl`" that App. A's *Residual assumption* names as
+able to **evade** the single-scale NDA bound: the delegation pointed the
+wrong way. Not a re-flag: R9's `GNR-4` fixed a bridge sentence that
+mis-*identified* Eq. (1) within the list; R10 shows it is not in the list at
+all. **Closure — extracted faithfully, not invented.** The in-scope argument
+exists in the frozen monolith this paper is an extraction of
+(`arxiv/paper1_unified.tex` §`sec:jackiwpi_cs`: "total derivative for
+constant `ϑ` (Tier-I, operator-level); R4-class naturalness closure for any
+dynamical `ϑ` (Tier-II), reinforced by Barrier 7"). The false delegation and
+the defending parenthetical are deleted; a new Sec. IV A passage states the
+three exclusion reasons, states "We therefore do not claim the NDA bound
+covers it", and splits the leg: **(i) constant coefficient (minimal ECH)** —
+γ and hence the Nieh–Yan coefficient are constants fixed by the LQG area
+spectrum (B7), `∂_μϑ_NY = 0`, the operator vanishes, and the surviving
+Holst/Nieh–Yan content is O1/O2, exact total derivatives → **Tier-I, inside
+the list**; **(ii) dynamical coefficient** — a non-minimal
+dynamical-Immirzi completion, R4 in gravitational costume, closed only at
+the naturalness / explanatory-deficit level → **Tier-II**. Propagated to
+Sec. IV head, Table II's R2 row, the tiered-closure paragraph, Sec. VI and
+Sec. VII, whose "all four enumerated channels close" sentence is now
+re-scoped by closure mode.
+**Route 2's dark-energy strength was REDUCED, and the paper says so:** "No
+dark-energy amplitude is computed for Route 2 anywhere in this survey, and
+none is claimed."
+
+**Other correctness closures:** the β(γ) "each of which could only suppress
+the estimate further" claim corrected to the net effect (≈1.5 orders,
+dropped as a *pair*; the `1/16π²` supplies −2.2 orders against β(γ)'s +0.5)
+— no downstream number moves, the ≥58-order margin is unaffected
+(R10-GNR-3); Mercuri [8] dropped from the "analyzed via
+renormalization-group methods" citation and moved to an explicit
+classical-structure clause (R10-GNR-4); B9's `[R2]` tag motivated as a
+vacuum-*selection* constraint rather than an amplitude bound, and explicitly
+stated not to be one (R10-GNR-5).
+
+**Presentation closures:** remaining `{O1–O6}` "basis" → "spanning list" at
+the four sites named (Fierz-sector "basis" left alone — that set genuinely
+*is* a basis); tautological `𝒟_inf` parenthetical; Sec. II now states
+`η = diag(−,+,+,+)` and `ε^{0123} = +1` outright with the contraction
+identity they fix; abstract's parity-odd label qualified; **version/date
+stamp removed from the printed title block** (Grok E1/N1 — no `\date` is
+issued at all, since an empty `\date{}` still renders "(Dated:)"; provenance
+moved to `pdfkeywords`, verified `Keywords: v1C.0.13 (August 7, 2026)`);
+β(γ) defined at first use (Grok N3); defensive "companion does not retain"
+phrasing consolidated to one statement in Sec. I (Grok N4); Gemini's
+version-history prose removed; R4 standalone-reader gap closed by stating
+its two checkable steps in-text and re-scoping the rest explicitly.
+
+**Directive-G note (recorded, not hidden):** for this paper only, directive
+G's page-1 verification ("page 1 shows new version+date") is replaced by
+PDF-metadata verification, because a journal referee must not see a
+version-control string in the title block. `\paperVersion` and
+`\paperTimestamp` are still bumped in the `.tex` exactly as directive G
+requires.
+
+**Length (Grok M5) — real condensation applied, and the outcome reported
+honestly.** Seven redundant passages were condensed (companion-relation
+block, two spanning-assertion restatements, the Sec. IV head preamble, three
+consecutive restatements of the same Route-2 birefringence conclusion, the
+Sec. V "To clarify the mass-dimension bookkeeping" sentence, the Sec. VI
+stress-test restatement, and App. A 1's duplicate redundancy statement). **No
+barrier entry, table row, equation, derivation, appendix or citation was
+deleted.** Net page count **22 → 23 pp**: the condensation recovered roughly
+a page and the MAJOR-2 closure spent slightly more than that on required new
+content. Grok's ~10–12 pp target is not met and is not reachable without
+deleting catalog content, which would be dishonest scoping.
+
+**Falsified with receipts.** Gemini NIT 4 ("Ref. [13] carries a
+simulated/placeholder arXiv ID") is **FALSIFIED**: `arXiv:2509.13654` is the
+real ACT DR6 record (Diego-Palazuelos & Komatsu), verified against the live
+arXiv listing during R7 — title, authors, `0.215° ± 0.074°` and `2.9σ` all
+matched exactly. The same "2026 dates are anachronistic" inference was made
+and falsified at R6.
+
+**Deferred-genuine (carried, not closed):** the frozen-release Zenodo DOI for
+this survey's own verification scripts (Gemini MAJOR 2). Real requirement,
+already disclosed in the paper as planned; DOI minting is P-round packaging
+work requiring Houston.
+
+**Self-withdrawn by the reviewing leg** (recorded so the board can
+distinguish "checked and clean" from "not checked"; never counted): four
+candidate findings raised from low-DPI text extraction and withdrawn after
+re-rendering at 300–400 DPI — the missing `√3` in `ρ_crit`, `|t₃|` vs
+`√|t₃| ∼ m_T⁻¹`, `−(8/3)κ²` vs the printed `−(3/8)κ²`, and an apparent
+`ε_{0123}` / `ε^{0123}` clash. None is a defect. Third consecutive round
+(R8/R9/R10) in which a rasterization artifact produced a candidate finding;
+the ≥300-DPI accuracy protocol stays.
+
+v1C.0.13: **23 pp, 0 errors / 0 undef / 0 overfull**, `/latex-audit` **PASS**
+(pages 1, 5, 8, 9, 12, 19 rendered at 110 DPI and visually confirmed; all 6
+`\artifact{}` paths resolve; no "(Dated:)" remnant), mirrors byte-identical
+across `site/public/papers/`, `public/papers/` and `site/out/papers/` (md5
+`c5957263410453ba7b3fb96a0678138d`, SHA-256 `d3aea74da62a433c…`),
+`npx next build` passes.
+
+**Convergence read (directive H-refined + the R8 classification rule): R10
+surfaced 15 genuinely-new-real findings against a target of 0, of which 5
+are correctness-grade. The correctness-convergence gate is NOT met, so
+THE R-PHASE IS NOT CONVERGED AT R10.** Two signals are nonetheless worth
+recording, both firsts for this paper: (1) **zero computational errors** —
+for the first time across R1–R10 no leg found a wrong number, coefficient or
+identity chain, and the reviewing leg said so explicitly after re-deriving
+the quantitative spine independently; (2) **Gemini returned MINOR
+REVISIONS**, the first sub-major verdict. Against that, R10's two MAJORs are
+the kind of defect that only surfaces once the arithmetic is clean:
+over-reaching *claims* rather than wrong *computations*. Closing them
+narrowed one Tier-I claim and reduced one route's asserted closure strength
+— the honest direction of travel. **R11 on the exact v1C.0.13 PDF is the
+next correctness-convergence check**, all active legs re-run fresh (Claude
+INT + Grok API + Gemini API per directives N/M-AMENDED; Perplexity
+optional), exit test = **zero correctness-grade genuinely-new-real
+findings**. Residual presentation-grade items route to the D-round. GNR
+count trend: 15 → 7 → 8 → 10 → 6 → 9 → 7 → 4 → 16 → **15** (5
+correctness-grade, down from 10).
+
+Prior-round record follows.
+
+**Status at R9 (superseded): R9 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED, WITH AN
 INDEPENDENT SYMBOLIC ADJUDICATION → 16 GENUINELY-NEW-REAL FINDINGS CLOSED
 (v1C.0.12): 10 CORRECTNESS-GRADE + 6 PRESENTATION-GRADE. R-PHASE NOT
 CONVERGED AT R9 — a STRUCTURAL correctness item was found and fixed, so
@@ -676,21 +859,25 @@ readiness contract table.
 
 ## Compile state
 
-v1C.0.11: 20 pp, 0 errors, 0 undefined refs, 0 overfull hboxes, compiled
-clean 2026-08-07 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
-byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.11.pdf` and
-`public/papers/paper1c_nogo_survey_v1C.0.11.pdf` (md5
-`4723faef2f210e4b81c33b21d55bfdeb`, sha256 `0868856032…`, all three copies
-match). Prior v1C.0.1–v1C.0.10 mirrors retained. `/latex-audit` visual pass
-on the recompile: changed pages rendered at 110 DPI — title block
-(v1C.0.11 stamp, August 7, 2026, p. 1), B12 with the new Ghosh–Mitra
-citation (p. 5), the proceedings-summary credit line + Δln γ band with
-the identification note (p. 8), the 1.2209 hierarchy quotient (p. 15) —
-no overflow/overlap. New URLs both verified live for this round: the
-GhoshMitra2005 DOI (10.1016/j.physletb.2005.05.003, Crossref-resolved to
-the exact title/authors/volume/pages) and its arXiv abstract page
-(gr-qc/0411035). Reference numbering shifted by the insertion
-(Ghosh–Mitra is [5]; later entries renumber automatically).
+v1C.0.13: **23 pp, 0 errors, 0 undefined refs, 0 overfull hboxes**, 4-pass
+compile clean 2026-08-07 (`arxiv/paper1c_nogo_survey/main.pdf`). Mirrored
+byte-identical to `site/public/papers/paper1c_nogo_survey_v1C.0.13.pdf`,
+`public/papers/paper1c_nogo_survey_v1C.0.13.pdf` and
+`site/out/papers/paper1c_nogo_survey_v1C.0.13.pdf` (md5
+`c5957263410453ba7b3fb96a0678138d`, sha256
+`d3aea74da62a433c186e3c809b4acadcd82453c3686aebc34fec9f5c2c15efbb`, all
+four copies match). Prior v1C.0.1–v1C.0.12 mirrors retained.
+`/latex-audit`: **PASS.** Log scan clean; pages 1 (title block), 5 (Fig. 1 +
+Table I), 8 (the new Route-2 dark-energy passage), 9, 12 (Table II) and 19
+(Table III) rendered at 110 DPI and visually confirmed — no column-gutter
+crossings, no right-margin overruns, no float escapes. All 6 `\artifact{}`
+targets resolve to existing repo paths. No `\date` overflow risk: the
+`\date` call was removed entirely this round (an empty `\date{}` still
+renders "(Dated:)" in revtex4-2, confirmed at 110 DPI), and the title block
+now carries no version or date string at all — draft provenance lives in the
+PDF metadata (`pdfinfo` → `Keywords: v1C.0.13 (August 7, 2026)`). Three
+pre-existing raw `\texttt{}` script paths remain and wrap cleanly at 0
+overfull.
 
 ## What has NOT happened (explicit, so nobody assumes otherwise)
 

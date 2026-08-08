@@ -58,6 +58,48 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r10-correctness-convergence-board-scope-closure-2026-08-07",
+    dateISO: "2026-08-07",
+    kind: "internal-api",
+    title:
+      "P1C R10 correctness-convergence board on the exact v1C.0.12 PDF — Claude MAJOR REVISION with ZERO computational errors (2 MAJOR / 7 MINOR, both MAJORs claim-scoping) / Grok REJECT / Gemini MINOR REVISIONS (first sub-major verdict) / Perplexity FAILED; v1C.0.13 scopes B14's Tier-I claim to its zero-spin branch, restores B8 as independent and recounts 13 → 14 distinct constraints, and replaces Route 2's false dimension-4 delegation with the honest constant-vs-dynamical split; R-phase NOT converged, R11 is the next correctness check",
+    papers: ["P1C"],
+    summary:
+      "Four raw legs bound to the exact v1C.0.12 PDF (sha c21fde9f): Claude Opus INT MAJOR REVISION — notable because the leg independently re-derived every checkable displayed equation and found ZERO computational errors, raising 4 candidate findings from low-DPI text extraction and self-withdrawing all four after re-rendering at 300-400 DPI; Grok grok-4.3 REJECT; Gemini gemini-3.1-pro-preview MINOR REVISIONS, the first sub-major verdict this paper has received. The Perplexity leg FAILED and is recorded as failed, never a verdict. Both Claude MAJORs were genuine correctness-grade claim-scoping defects and are closed by scoping the claim, never by weakening the science or fabricating coverage. MAJOR-1: Appendix D's transparency theorem is proved for canonical scalar matter and its own exclusion list rules out fermion sources, so B14 could not subsume B8 (a fermionic (J5)^2 statement) nor constrain R1 (the fermionic NJL channel) — yet the headline '13 distinct constraints' count rested on exactly that subsumption. Closure: B14's route tag narrowed from [R1-R4] to [R2-R4, zero-spin branch] with its honest content stated (it removes those routes' classical zero-spin perturbative baseline, not their quantum or fermionic content), B8 restored as an independent constraint, and the count RECOUNTED 13 → 14 at every site — abstract, introduction, Sec. III preamble, Fig. 1 caption plus its in-figure edge label 'B8, B14' → 'B8', Table I caption, App. A, Sec. VI, Sec. VII — which also resolves Grok's '14 entries (13 distinct)' wording inconsistency. MAJOR-2: Eq. (1) is a dimension-5 operator built on a light pseudoscalar theta_NY, carried by a dimension-(-1) coefficient and carrying an extra derivative — three independent reasons it falls outside the Sec. V dimension-4 construction rule — while its assigned ~H0^2 background makes theta_NY precisely the new light scale App. A names as able to EVADE the single-scale NDA bound, so the delegation pointed the wrong way. Closure: the false delegation is deleted and replaced by the in-scope argument extracted faithfully from the frozen monolith (paper1_unified.tex sec:jackiwpi_cs) — for a constant Nieh-Yan coefficient the operator vanishes and the surviving Holst/Nieh-Yan content is O1/O2, exact total derivatives (Tier-I, inside the list); for a dynamical coefficient the completion is a non-minimal dynamical-Immirzi extension closed only at the R4-class naturalness level (Tier-II), reinforced by B7. Route 2's dark-energy leg is therefore stated at REDUCED strength in Sec. IV A, Table II, Sec. VI and Sec. VII, and the 'all four enumerated channels close' sentence is re-scoped by closure mode rather than left unqualified. Claude's three correctness minors also closed (the beta(gamma) 'each of which could only suppress' claim corrected to a net -1.5 orders stated as a pair, Mercuri [8] dropped from the RG citation, B9's [R2] tag motivated as a vacuum-selection rather than an amplitude constraint), plus the four presentation minors, plus Grok's concrete items (version/date stamp removed from the printed title block, beta(gamma) defined at first use, defensive companion phrasing consolidated to a single statement) and Gemini's version-history prose and R4 standalone-reader gap. Grok's length complaint was answered with real condensation — 7 redundant passages cut, no barrier entry, table row, equation or derivation deleted — though the paper still moved 22 → 23 pp because the MAJOR-2 closure required new content, which is recorded rather than hidden. Falsified with receipts: Gemini's claim that ACT DR6 ref [13] carries a placeholder arXiv ID (2509.13654 is the real record, verified against the live listing in R7). Deferred-genuine: the frozen-release Zenodo DOI for this survey's own scripts, a P-round packaging item the paper already discloses. Because two correctness-grade MAJORs were found and closed, the R-phase is NOT converged at R10: R11 on the exact v1C.0.13 PDF is the next correctness-convergence check.",
+    keyTakeaways: [
+      "P1C v1C.0.13 served PDF: 23 pages, 4-pass compile 0 errors / 0 undefined refs / 0 overfull hboxes, latex-audit PASS",
+      "Claude leg found ZERO computational errors across every checkable displayed equation, and self-withdrew 4 low-DPI false positives after re-rendering — both MAJORs were claim-scoping, not math",
+      "MAJOR-1 closed by scoping B14 to the zero-spin branch its Appendix-D hypotheses actually cover: B8 restored as independent, headline RECOUNTED 13 → 14 distinct constraints at every site, Fig. 1 R1 edge label 'B8, B14' → 'B8'",
+      "MAJOR-2 closed by deleting the false dimension-4 delegation for Route 2's dark-energy leg and replacing it with the constant-coefficient (Tier-I, O1/O2 total derivatives) vs dynamical-coefficient (Tier-II R4-class naturalness) split — Route 2's dark-energy strength is REDUCED and said so",
+      "Gemini returned MINOR REVISIONS — the first sub-major verdict on this paper across R1-R10",
+      "Grok's length complaint answered with 7 real condensations and no content deleted; net 22 → 23 pp because the MAJOR-2 closure added required content, recorded honestly",
+      "R-phase NOT converged at R10 — R11 on the exact v1C.0.13 PDF is the next correctness-convergence check; no readiness score or venue/Zenodo kit exists yet",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.12-EXACTPDF-c21fde9f-R10CONV/P1C_claude_r10_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.12-EXACTPDF-c21fde9f-R10CONV_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.12-EXACTPDF-c21fde9f-R10CONV_P1C_Gemini_cosmology.md`,
+      },
+      {
+        label: "Perplexity leg (raw)",
+        href: `${PR}/ROUND_2026-08-07-P1C-v1C.0.12-EXACTPDF-c21fde9f-R10CONV_P1C_Perplexity_citations.md`,
+      },
+      {
+        label: "R10 truth audit (verdict-first ledger)",
+        href: `${PR}/INT_v3/ROUND_2026-08-07-P1C-v1C.0.12-EXACTPDF-c21fde9f-R10CONV/P1C_v1C.0.12_R10_truth_audit.md`,
+      },
+      { label: "P1C v1C.0.13 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.13.pdf" },
+    ],
+  },
+  {
     id: "p1c-r9-correctness-convergence-board-adjudication-closure-2026-08-07",
     dateISO: "2026-08-07",
     kind: "internal-api",
