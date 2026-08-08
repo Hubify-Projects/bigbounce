@@ -243,6 +243,76 @@
 %   arXiv ID") falsified: 2509.13654 is the real ACT DR6 record,
 %   verified against the live arXiv listing in R7.
 %
+% v1C.0.14 (2026-08-07): R11 convergence-board closures (Claude
+%   MAJOR-REVISION 4 MAJOR / 6 MINOR, ZERO computational errors across 30
+%   independently recomputed relations / Grok REJECT / Gemini
+%   MAJOR-REVISIONS, on the exact v1C.0.13 PDF sha d3aea74d; Perplexity
+%   FAILED). All four MAJORs are internal-consistency defects left in the
+%   seams of the v1C.0.13 revision: the document disagreed with its own
+%   table, with its own non-claims, and with one released artifact. Each
+%   is closed by making the document agree with itself -- never by
+%   weakening a result and never by inventing coverage.
+%   (1) MAJOR-1 (two Tier-(I) legs in Table II vs six "sole/only/exactly
+%   one Tier-I" statements in the text). The v1C.0.13 MAJOR-2 closure
+%   re-homed R2's dark-energy leg on the operator list and graded it (I)
+%   in Table II, but that grading does not meet this paper's own Tier-I
+%   definition: "minimal Route 2 sources no dark energy" is not a
+%   statement about O1/O2, it is the statement that O1/O2 EXHAUST the
+%   rule-admitted Holst/Nieh-Yan content -- the spanning assertion this
+%   paper disclaims in six places as asserted, not proved. Table II's R2
+%   dark-energy leg REGRADED (I) -> (II), with the genuinely Tier-I
+%   ingredient (O1 and O2 are exact total derivatives) named as such and
+%   the inherited spanning assertion stated plainly. Sec. IV A's "this is
+%   an operator-level (Tier-I) statement" and "closed at Tier-I only in
+%   case (i)" rewritten to match. The six "sole/only/exactly one Tier-I"
+%   sites and Table II's caption are now true as written.
+%   (2) MAJOR-2 (residual NDA delegation). Sec. IV B still said the
+%   operator "is bounded by the single-scale NDA no-go", contradicting
+%   pp. 6/8's explicit non-claim ("We therefore do not claim the NDA
+%   bound covers it"). The clause is replaced by the accurate statement
+%   (the BIREFRINGENCE amplitude is bounded by the explicit budget of
+%   Eq. (2)). Re-grep found one sibling: "the NDA one-loop operator (R2)"
+%   -> "the one-loop parity-odd operator (R2)". Every remaining "NDA"
+%   instance was checked and attaches to the O1-O6 list, not to Eq. (1).
+%   (3) MAJOR-3 (abstract's universal "each closing one or more of the
+%   four routes"). Falsified by two of the paper's own entries: B14 ("is
+%   not, and is not used as, a closure of the fermionic or one-loop
+%   content of any route") and B9 ("never used as a stand-alone
+%   closure"). Abstract restated to the joint claim the catalog actually
+%   supports, with the two non-closure entries named.
+%   (4) MAJOR-4 (App. C Grassmann uniqueness INVERTED relative to its own
+%   cited artifact). fierz_adjudication_2026_08_05 proves uniqueness for
+%   four DISTINCT anticommuting fields [L07] and explicitly denies it for
+%   IDENTICAL fields (rank 3, two exact relations [L10]); the appendix
+%   claimed "the unique solution for identical fields". Corrected to the
+%   artifact's actual result, with the rank-3 caveat carried. No
+%   coefficient moves: G_s = -3kappa/16 stands.
+%   (5) Claude MINOR-1 (arithmetic: -2.2 + 0.5 = -1.7, not -1.5 orders;
+%   both components were already correct, only the sum was wrong),
+%   MINOR-2 (App. D step 2's invertible-tetrad kernel lemma now cited to
+%   Hehl et al. 1976 and stated in components rather than asserted bare),
+%   MINOR-3 (App. D no longer "defers" a tensor-sector extension its own
+%   Statement claims -- the tensor conclusion is an immediate corollary
+%   of the reduced action being the Einstein-scalar action), MINOR-4
+%   (branch->entry multiplicity stated explicitly so 7+6 -> 14 is legible
+%   in one place), MINOR-5 (orphaned labels cross-referenced or
+%   unnumbered), MINOR-6 (stale Fig. 1 source comment corrected).
+%   (6) Gemini: M3 inline repository paths removed from the main text
+%   (they remain, correctly, in Data and Code Availability); N1 abstract
+%   spanning-list qualifier ("algebraic, zero-derivative") added; N2
+%   Fig. 1 caption version-history prose removed; N3 dimension wording
+%   made field-theoretically precise. Gemini M1 (Planck-mass symbol
+%   overloading) FALSIFIED at 300 DPI: the printed reduced mass is
+%   \overline{M}_Pl, visibly distinct from M_Pl -- an overline dropped by
+%   text extraction, the fifth member of the R3/R5/R7/R8/R9 artifact
+%   family. Gemini E1/M2 re-flags; Grok E1-E4, M1-M3, N1-N2 re-flags or
+%   scope-opinions, all dispositioned in the R11 round record.
+%   (7) NEW GUARD: tools/p1c_consistency_check.py, a mechanical
+%   self-consistency linter that fails loudly on exactly the four defect
+%   classes above (constraint-count disagreement, Tier-count vs Table II,
+%   assert-vs-disclaim phrase pairs, universal closure claim vs
+%   self-declared non-closure entries). Run before every version bump.
+%
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 \documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
@@ -282,7 +352,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1C.0.13}
+\newcommand{\paperVersion}{v1C.0.14}
 \newcommand{\paperTimestamp}{August 7, 2026}
 
 % Internal draft provenance is carried in the PDF metadata only; the printed
@@ -307,9 +377,13 @@ phenomenology. Working from the algebraic torsion-elimination setup
 established in a companion paper, we catalog fourteen distinct
 mechanism-class constraints --- one per catalog entry, none a logical
 consequence of another --- spanning seven foundational mechanism classes
-and six observational-channel branches, each closing one or more of the
+and six observational-channel branches, which \emph{jointly} close the
 four routes by which the ECH bounce could plausibly source a
-$\Lambda$-like late-time density.
+$\Lambda$-like late-time density. The entries bear on the routes with
+differing individual force, and two of them (B9, B14) are explicitly
+\emph{not} used as stand-alone closures of any route; the closure claimed
+here is that of the catalog taken together, at channel-amplitude
+granularity.
 Of the four parity-odd or dark-energy channels enumerated by this
 framework,
 we present amplitude-budget closures of the two historical quantum routes:
@@ -334,7 +408,9 @@ $\{$O1--O6$\}$ of local,
 gauge-invariant, diffeomorphism-covariant parity-odd densities of mass
 dimension exactly four (parity-odd as $\varepsilon$-contracted densities
 before on-shell reduction; the single surviving member reduces to a
-parity-\emph{even} contact term), exhibited under stated construction
+parity-\emph{even} contact term), \emph{algebraic} in the sense of the
+zero-additional-derivative construction rule stated in the text,
+exhibited under those construction
 rules for the
 minimal-coupling ECH field content, is shown to close --- every member is
 a topological total derivative, a Fierz-closed four-fermion contact term
@@ -386,7 +462,8 @@ bounce-scale torsion sector to a late-time $\Lambda$-like density ---
 seven structural ``foundations'' (parameter-space, symmetry, and
 naturalness arguments) and six observational branches (CMB,
 gravitational-wave, and relic-abundance channels) --- and show that each
-is closed by an explicit, individually labeled argument: an
+is closed by an explicit, labeled argument, in some cases by more than
+one catalog entry acting together: an
 amplitude-suppression bound, a naturalness/fine-tuning objection, a
 decoupling identity, or a classification argument. The resulting
 fourteen-entry catalog yields fourteen distinct mechanism-class
@@ -616,6 +693,14 @@ perturbation gates enter through Branch H, which carries the two
 logically independent entries B8 and B14) for the possibility of
 connecting the ECH bounce to
 late-time dark energy. Each test yielded a named structural constraint.
+The branch-to-entry multiplicity, stated once so the count is legible in
+one place: the seven foundations carry one entry each (B1--B7); Branch~H
+carries two (B8, B14); Branch~J carries one (B9); Branches~L/M carry
+three between them (B10--B12); and Branches~N/O carry one between them
+(B13). That is $7+2+1+3+1=14$ entries across $7+6=13$ tested classes and
+channels --- the two grouped branch pairs (L/M and N/O) are treated as
+single observational channels, and neither N nor O carries a dedicated
+constraint of its own.
 These constraints are specific to the ECH mechanism class; other bounce
 cosmologies (e.g., quintom scenarios) are not subject to them.
 
@@ -684,8 +769,11 @@ the ECH analysis. \textbf{Structural/philosophical observations} (Barrier
 \draw[arr] (J.south)  -- ++(0,-0.45) -| ([xshift=0.4cm]R2.north);
 \draw[arr] (LM.south) -- ++(0,-0.45) -| ([xshift=0.4cm]R3.north);
 \draw[arr] (NO.south) -- ++(0,-0.45) -| ([xshift=0.3cm]R4.north);
-%% --- B14 (Branch H) constrains all four routes [R1--R4]; its H->R1 leg is
-%%     drawn above, the R2/R3/R4 legs drop lower to stay visually distinct ---
+%% --- Branch H fans to all four routes, but with DIFFERENT attribution:
+%%     the H->R1 leg drawn above is B8 (fermionic parity); the R2/R3/R4
+%%     legs below are B14 [R2--R4, zero-spin branch] and drop lower to
+%%     stay visually distinct. B14 does NOT constrain R1 (v1C.0.13
+%%     MAJOR-1); do not re-widen this tag when editing the figure. ---
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.7cm]R2.north);
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.7cm]R3.north);
 \draw[arr] (H.south)  -- ++(0,-0.7) -| ([xshift=0.6cm]R4.north);
@@ -712,9 +800,7 @@ label ``B14''), which removes the \emph{classical zero-spin} perturbative
 baseline of those three routes. B8 and B14 are logically independent:
 B8 is a statement about the fermionic $(J^5)^2$ sector, whereas B14's
 hypotheses require zero spin density and expressly exclude fermion
-sources, so neither implies the other and both are counted. The branch
-letters are inherited unchanged from the historical catalog, which never
-assigned the letters I or K; no branch entries have been removed.
+sources, so neither implies the other and both are counted.
 Several entries share the scaling ansatz but each probes a distinct
 physical failure mode. The diagram records channel structure only, not
 evidentiary weight: the entries differ in evidentiary status --- the
@@ -897,8 +983,9 @@ reason.
 canonical scalar matter, torsion vanishes at all perturbation orders and the Holst sector
 decouples from all scalar/tensor perturbation observables. The statement
 and proof are carried self-contained in
-Appendix~\ref{app:transparency}; the tensor-sector extension and the
-explicit second-order Holst-term verification are elaborated in the
+Appendix~\ref{app:transparency}, scalar and tensor sectors alike; the
+explicit order-by-order second-order Holst-term verification is
+elaborated in the
 companion paper's zero-spin-branch analysis~\cite{Golden2026P1a}. This is
 the catalog's sole Tier-I closure leg
 (Table~\ref{tab:evidentiary_status}), and its route reach is fixed by its
@@ -1075,7 +1162,8 @@ so the full term --- the dimension-$(+5)$ integrand
 $\partial_\mu\vartheta_{\rm NY}J^{5\mu}$ times the dimension-$(-1)$
 prefactor $\beta(\gamma)/M_{\rm Pl}$ written outside the integral in
 Eq.~\eqref{eq:oneloop_parity_odd} ---
-carries dimension $-1+2+3=+4$ and the action is dimensionless, as
+is a Lagrangian density of mass dimension $-1+2+3=+4$, so that the
+action, obtained by integrating it over $d^4x$, is dimensionless, as
 required. Once the dimension-$(+2)$ background value
 $\partial_\mu\vartheta_{\rm NY} \sim H_0^2 \sim 10^{-66}\,\text{eV}^2$ at
 the present epoch is substituted (the cosmological Nieh--Yan pseudoscalar,
@@ -1096,7 +1184,7 @@ H_0^{-1}
 supplies the $\alpha_{\rm em}/4\pi$; the one-loop factor $1/16\pi^2$
 and the $\mathcal{O}(1)$ coefficient $\beta(\gamma)$ are conservatively
 dropped, their \emph{net} effect being a further suppression of roughly
-$1.5$ orders --- the loop factor supplies $-2.2$ orders against
+$1.7$ orders --- the loop factor supplies $-2.2$ orders against
 $\beta(\gamma)\approx3.3$'s $+0.5$, so the pair is dropped as a pair and
 not because each factor separately suppresses; this Tier-III accumulation
 ansatz is exactly the bookkeeping the
@@ -1192,8 +1280,17 @@ Eq.~\eqref{eq:oneloop_parity_odd} vanishes identically; the surviving
 Holst/Nieh--Yan content is the pair O1/O2 of the
 Sec.~\ref{sec:completeness} list, which are exact total derivatives
 contributing zero to the equations of motion and zero to the vacuum
-energy. Minimal Route~2 therefore sources no dark energy, and this
-\emph{is} an operator-level (Tier-I) statement about the list.
+energy. Minimal Route~2 therefore sources no dark energy. The
+operator-level input to that conclusion --- that O1 and O2 are exact
+total derivatives --- is rigorous (Tier-I) about the list. The conclusion
+itself needs one step more: that O1/O2 exhaust the rule-admitted
+Holst/Nieh--Yan content. That is the spanning assertion, which this
+survey states from its construction rules and does \emph{not} prove by
+exhaustive symbolic enumeration, so the conclusion inherits it and the
+leg is recorded at Tier-II in
+Table~\ref{tab:evidentiary_status}. The catalog's only Tier-I leg remains
+the perturbation-transparency theorem of
+Appendix~\ref{app:transparency}.
 
 \emph{(ii) Dynamical coefficient (non-minimal).} The only way the
 Nieh--Yan sector can source dynamics is a non-constant
@@ -1210,11 +1307,13 @@ induced parity channel is additionally the channel shown inert by B14
 (App.~\ref{app:transparency}).
 
 We state the resulting strength plainly. Route~2's dark-energy leg is
-closed at Tier-I only in case~(i), inside the minimal field content; in
-case~(ii) it is closed at Tier-II, by the same naturalness objection that
-closes R4, and \emph{not} by an amplitude bound or by the single-scale NDA
-argument. No dark-energy amplitude is computed for Route~2 anywhere in
-this survey, and none is claimed.
+closed at Tier-II in both cases: in case~(i) by an operator-level
+argument whose rigorous ingredient (O1 and O2 are exact total
+derivatives) is Tier-I but whose conclusion inherits the unproved
+spanning assertion, and in case~(ii) by the same naturalness objection
+that closes R4 --- and in neither case by an amplitude bound or by the
+single-scale NDA argument. No dark-energy amplitude is computed for
+Route~2 anywhere in this survey, and none is claimed.
 The evidentiary status of the estimate, stated once: Eq.~\eqref{eq:oneloop_parity_odd} is an \emph{illustrative
 upper-bound amplitude budget} constructed as the natural EFT operator at the
 $M_{\rm Pl}^{-1}\alpha_{\rm em}/(4\pi)$ scale, \emph{not} a result extracted from
@@ -1381,14 +1480,19 @@ $\tilde\kappa^2\sim M_{\rm Pl}^{-2}$ Planck suppression are fixed by the Shapiro
 Holst${+}$fermion sector (their Eqs.~41--42,~46); only the single
 absolute normalization remains a bounded EFT input, because the
 Shapiro--Teixeira $\lambda_4$--$\gamma$ flow has no fixed point and is
-not perturbatively solvable in closed form, and the operator is bounded by the single-scale
-NDA no-go regardless of that $\mathcal{O}(1)$ normalization. The kept ansatz value
+not perturbatively solvable in closed form, and the \emph{birefringence}
+amplitude is bounded by the explicit budget of
+Eq.~\eqref{eq:r2_ratio} regardless of that $\mathcal{O}(1)$
+normalization. (The single-scale NDA bound is \emph{not} claimed to cover
+Eq.~\eqref{eq:oneloop_parity_odd}, whose $H_0$-scale pseudoscalar
+background is exactly the light scale App.~\ref{app:dimensions} names as
+able to evade it; see Sec.~\ref{sec:r2_oneloop}.) The kept ansatz value
 Eq.~\eqref{eq:gamma_running} ($\Delta\gamma/\gamma\sim0.3$) is retained
 only as a deliberately pessimistic upper bound; even under it the
 amplitude suppression is $\sim 3\times 10^{-62}$ vs
 $\rho_\Lambda$, and the derived $1.4\times10^{-6}$ value only widens
 that margin.
-\emph{Strict theoretical limitation:} the NDA one-loop operator (R2) and
+\emph{Strict theoretical limitation:} the one-loop parity-odd operator (R2) and
 Immirzi-running (R3) inputs used here are bounded EFT inputs, not UV-complete
 flow derivations---the R2 absolute normalization requires a controlled solution
 to the ST Riccati system (no real fixed point; ST explicitly state they could
@@ -1519,7 +1623,7 @@ statement whose individual legs sit at the levels tabulated, reinforced
 but not promoted by the mechanism-class catalog of
 Sec.~\ref{sec:barriers}.
 
-\begin{table*}[tb]
+\begin{table*}[!tb]
 \caption{\label{tab:evidentiary_status} Evidentiary status of each closure
 leg, on the three-tier scale of the text: (I)~rigorous result within
 stated scope, (II)~structural argument, (III)~ansatz-level dimensional
@@ -1554,7 +1658,8 @@ benchmark $\kappa n_\psi^2/\rho_\Lambda\simeq
 3.6\times10^{-69}\,(n_\psi/100\,\mathrm{cm}^{-3})^2$, i.e.\
 ${\approx}68$ orders below $\rho_\Lambda$ even at a deliberately
 elevated ISM-like normalization~\cite{Golden2026P1a} (arithmetic carried
-self-contained in App.~\ref{app:companion_inputs}).\strut} \\[3pt]
+self-contained in App.~\ref{app:r1_benchmark},
+Eq.~\eqref{eq:r1_benchmark_p1c}).\strut} \\[3pt]
 \parbox[t]{0.18\textwidth}{\raggedright R2 (one-loop graviton
 corrections)\strut} &
 \parbox[t]{0.40\textwidth}{\raggedright One-loop promotion of
@@ -1564,10 +1669,13 @@ $\gamma_{\rm BI}$ reaching the observed birefringence amplitude
 \emph{birefringence} leg: amplitude
 budget suppressed by $H_0/M_{\rm Pl}$ and $\alpha_{\rm em}/(4\pi)$ under an
 explicitly-labeled scaling ansatz; exploratory, not load-bearing.
-\emph{Dark-energy} leg: \textbf{(I)} for constant Nieh--Yan coefficient
-(O1/O2 total derivatives, B7 fixes $\gamma$); \textbf{(II)} R4-class
-naturalness only for a dynamical $\vartheta_{\rm NY}$, which is outside
-the minimal scope. No dark-energy amplitude is computed for R2.\strut}
+\emph{Dark-energy} leg: \textbf{(II)} in both branches. Constant
+Nieh--Yan coefficient (B7 fixes $\gamma$): O1/O2 are exact total
+derivatives, a Tier-I fact about the list, but the step to ``R2 sources
+no dark energy'' inherits the unproved spanning assertion
+(Sec.~\ref{sec:r2_oneloop}). Dynamical $\vartheta_{\rm NY}$, outside the
+minimal scope: R4-class naturalness. No dark-energy amplitude is computed
+for R2.\strut}
 \\[3pt]
 \parbox[t]{0.18\textwidth}{\raggedright R3 (Immirzi running)\strut} &
 \parbox[t]{0.40\textwidth}{\raggedright Quantum running of $\gamma_{\rm BI}$
@@ -1807,11 +1915,13 @@ $\{$O1,\,O3,\,O4,\,O5$\}$. The redundancy is deliberate and is retained
 so that each entry remains a separately recognizable invariant of the
 literature (Holst dual, Nieh--Yan, Pontryagin, torsion-square,
 axial--torsion, single-curvature); the no-go statement is a statement
-about the space these six \emph{span}, and a bound holding on every
+about the space these six \emph{span} in
+Eq.~\eqref{eq:Seff_dim4}, and a bound holding on every
 member of a spanning list holds on every density in the span. These
 relations, the rank, and the null space were obtained by independent
 symbolic computation
-[\artifact{research/theory_audit/operator_basis_adjudication_2026_08_07.py}],
+(the independent operator-basis adjudication script, listed with its
+repository location in the Data and Code Availability statement),
 not by rearranging the identities quoted above.
 
 The physics
@@ -1828,7 +1938,7 @@ the non-axial torsion irreps).
 \emph{Main-text closure argument.}---The collapse is closed by the
 exhibited spanning list plus two tensor identities; the identities are
 verified symbolically in the released script
-\texttt{arxiv/scripts/dim4\_parityodd\_enumeration.py} (which, its
+\texttt{dim4\_parityodd\_enumeration.py} (which, its
 filename notwithstanding, verifies the two identities and performs no
 basis enumeration; the enumeration rests on the
 construction rule above). (a) The single-curvature
@@ -2304,8 +2414,8 @@ $T^{abc}=\kappa S^{abc}=\tfrac{\kappa}{4}\varepsilon^{abcd}J^5_d$ is
 so $\mathcal{O}_4^{[4]}\equiv0$ on shell, both as an algebraic identity
 and when evaluated in an explicitly curved on-shell Einstein--Cartan
 configuration obtained by solving the Cartan equation for $\omega$ at
-$T=\kappa S\neq0$
-[\artifact{research/theory_audit/operator_basis_adjudication_2026_08_07.py}].
+$T=\kappa S\neq0$ (independent operator-basis adjudication
+script; see the Data and Code Availability statement).
 This \emph{strengthens} the closure: an operator contributing nothing at
 all is a stronger disposal than one contributing a Planck-suppressed
 contact term, and the physics conclusion of this appendix is unchanged.
@@ -2354,7 +2464,7 @@ O6 & $2$ & $\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ & $\MPl^{2}$ & $
 
 Two tensor identities carry the reduction; both are verified symbolically
 in the released script
-\texttt{arxiv/scripts/dim4\_parityodd\_enumeration.py} (whose printed
+\texttt{dim4\_parityodd\_enumeration.py} (whose printed
 output tags \texttt{[CHECK A]} and \texttt{[CHECK D]} label the two
 identities; the script contains no other checks).
 
@@ -2409,7 +2519,8 @@ member of the Fierz-closed basis
 dimensionless Wilson coefficient. Both statements are confirmed by
 independent exact-rational symbolic computation, off shell and in an
 explicitly curved on-shell Einstein--Cartan configuration
-[\artifact{research/theory_audit/operator_basis_adjudication_2026_08_07.py}].
+(independent operator-basis adjudication script; see the Data and Code
+Availability statement).
 
 \textit{Structural entries.}---O2 (Nieh--Yan) is an exact 4-form,
 $d(e_I\wedge T^I)=T_I\wedge T^I-e_I\wedge e_J\wedge R^{IJ}$~\cite{NiehYan1982},
@@ -2538,10 +2649,15 @@ because it can only reduce the coupling (equivalently, $G_s=-3\kappa/16$
 is the $\gamma\to\infty$ limit)~\cite{Golden2026P1a}. This
 coefficient set is independently verified by explicit $4\times4$
 Dirac-matrix construction in both metric signatures and an exact
-Grassmann-algebra derivation of the operator row (the unique solution for
-identical fields); see the released verification artifact and its
-report listed in the Data and Code Availability statement. The
-released script \texttt{arxiv/scripts/fierz\_lemma\_check.py} independently
+Grassmann-algebra derivation of the operator row: the \emph{unique}
+solution on four \emph{distinct} anticommuting fields, and an exact
+identical-field Grassmann identity. Uniqueness is a statement about the
+distinct-field construction only --- for a single species the five
+quartics obey two exact linear relations (span rank three), so
+identical-field rearrangement rows are \emph{not} unique, and it is the
+declared direct-channel convention that fixes the mean-field $G_s$. See
+the released verification artifact and its report listed in the Data and
+Code Availability statement. A further released script independently
 checks the same convention's matrix involution and axial-row coefficients.
 None of this survey's conclusions depends on the convention-bound
 coefficients beyond this identity: the produced classes close on
@@ -2586,10 +2702,14 @@ Perturbation-Transparency Theorem (B14)}\label{app:transparency}
 So that the catalog's sole Tier-I leg can be refereed from this
 manuscript, we carry here, faithfully from the companion paper's
 zero-spin-branch analysis~\cite{Golden2026P1a}, the statement and proof
-of the perturbation-transparency theorem. The tensor-sector extension,
-the explicit second-order Holst-term verification, and the discussion of
-what would break the transparency are given in full in the companion;
-nothing below is new to this survey.
+of the perturbation-transparency theorem. Nothing below is new to this
+survey. Both halves of the Statement are established here: because
+Steps~1--4 reduce the action \emph{exactly} to the Einstein--scalar
+action, the tensor conclusion is an immediate corollary of the scalar
+one and nothing about it is deferred. What the companion carries in
+addition, and what this survey does not need, is the explicit
+order-by-order second-order Holst-term verification and the discussion of
+what would break the transparency.
 
 \emph{Statement.}---Consider the classical ECH action with an invertible
 tetrad, canonical scalar matter, and a real finite nonzero constant
@@ -2618,8 +2738,14 @@ has zero spin density. (2)~\emph{Zero torsion.} The Holst-modified
 connection equation acts through an algebraic bivector operator whose
 inverse exists for real finite nonzero $\gamma$ (because
 $1+\gamma^2>0$); the zero scalar source therefore gives
-$e^{[I}\wedge T^{J]}=0$, whose invertible-tetrad kernel is trivial:
-$T^I=0$. This holds at every classical field configuration in the stated
+$e^{[I}\wedge T^{J]}=0$. In frame components this reads
+$\delta^{[I}_{[K}T^{J]}_{LM]}=0$, and for invertible tetrad the linear
+map it defines on the $24$ independent components $T^J{}_{LM}$
+($T^J{}_{LM}=-T^J{}_{ML}$) has trivial kernel, so $T^I=0$. This is the
+standard algebraic-torsion property of Einstein--Cartan
+theory~\cite{Hehl1976}: torsion is not an independent propagating field
+but is fixed algebraically by --- and vanishes with --- the spin source.
+It holds at every classical field configuration in the stated
 local domain, hence before any perturbative expansion. (3)~\emph{The
 connection reduces to Levi-Civita},
 $\Gamma^\lambda{}_{\mu\nu}=\mathring\Gamma^\lambda{}_{\mu\nu}$.
@@ -2660,8 +2786,13 @@ companion paper's published derivations~\cite{Golden2026P1a}, the two
 remaining load-bearing companion inputs of this survey: the
 torsion-elimination chain that fixes the minimal contact operator and
 its $-(3\kappa/16)[\gamma^2/(1+\gamma^2)]$ coefficient
-(Sec.~\ref{sec:conventions}), and the R1 finite-density benchmark
-arithmetic quoted in Table~\ref{tab:evidentiary_status}. Nothing below
+(Sec.~\ref{sec:conventions}), carried in
+App.~\ref{app:contact_coeff} as
+Eqs.~\eqref{eq:holst_cartan_inverse_p1c},
+\eqref{eq:fmt_contorsion_p1c} and \eqref{eq:fmt_bridge_p1c}; and the R1
+finite-density benchmark arithmetic quoted in
+Table~\ref{tab:evidentiary_status}, carried in
+App.~\ref{app:r1_benchmark} as Eq.~\eqref{eq:r1_benchmark_p1c}. Nothing below
 is new to this survey; the derivations follow the companion, which in
 turn follows Freidel, Minic, and Takeuchi~\cite{Freidel2005}.
 
