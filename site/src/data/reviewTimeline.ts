@@ -58,6 +58,38 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1c-r13-convergence-board-partial-closure-2026-08-10",
+    dateISO: "2026-08-10",
+    kind: "internal-api",
+    title:
+      "P1C R13 convergence board on the exact v1C.0.15 PDF — Claude Opus INT MAJOR REVISIONS (4 MAJOR / 8 MINOR) / Gemini API MAJOR / Grok API leg captured (verdict token not machine-extractable from the raw) / Perplexity FAILED (401 quota, optional leg); three of Claude's four MAJORs closed with real text/math edits in v1C.0.16 — MAJOR-4 (artifact scoping note) and all 8 MINORs remain OPEN; PARTIAL closure, not convergence",
+    papers: ["P1C"],
+    summary:
+      "Board bound to the exact v1C.0.15 PDF (sha256 f3e29c45...): Claude Opus INT MAJOR REVISIONS (4 MAJOR / 8 MINOR). MAJOR-1: Sec. IV A's opening sentence still carried the pre-erratum O4 = 0 physics and self-contradicted within one sentence. MAJOR-2: Sec. VI declared the trace-vector torsion irrep out of scope, contradicting five other sections and voiding Eq. (13)'s standing. MAJOR-3: the construction rule equated 'carries one epsilon' with 'parity-odd' — one listed member is parity-EVEN, and one genuinely parity-odd dimension-4 density (the epsilon-free torsion-trace times axial-current density) was silently excluded. MAJOR-4 [presentation]: the DOI-frozen artifact the paper points referees to prints conclusions the manuscript now contradicts, with no scoping note. Gemini API returned MAJOR. The Grok API leg was captured (raw saved) but its verdict token is not machine-extractable from the raw response — it is recorded as captured-unparsed, not assigned a verdict. Perplexity FAILED (401 quota); it is an optional leg per directive N and does not block the round. Closure shipped as v1C.0.16: MAJOR-1, MAJOR-2, and MAJOR-3 were closed with real text/math edits. The Nieh-Yan on-shell reduction now states the epsilon-contracted torsion-square remainder explicitly, closing MAJOR-1's self-contradiction. Sec. VI's excluded set is corrected to the tensor (16) irrep and non-minimal couplings, with the trace-vector (4) irrep stated as in-scope and carried, closing MAJOR-2 and restoring Eq. (13)'s standing. A new Eq. (14) [eq:vj5_onshell] adds the epsilon-free density T^a_{ab} J^{5b} = 3*beta*(J5.J5), showing it joins the same bounded Fierz-closed class and enlarges neither the closure argument's scope nor its conclusion, closing MAJOR-3. During pre-commit review of the draft closure text a sign error was caught: the new equation had restated beta with a flipped sign, contradicting its own definition at Eq. (1) [eq:ech_onshell_torsion] (beta = +kappa*gamma/[4*(1+gamma^2)]); corrected before commit. MAJOR-4 (the artifact scoping note) and all 8 MINORs remain OPEN after this bundle — this is a PARTIAL closure, not a converged round. No physics conclusion of the survey changed; the no-go result stands. Compile: v1C.0.16, 25 pp, sha256 285948c6..., md5 0b46380e34d130c2c9824eb62b08a170.",
+    keyTakeaways: [
+      "P1C v1C.0.16 served PDF: 25 pages, sha256 285948c6248e79951d1f961142bee844baab23dd03012d009ac78afb02ac409c, md5 0b46380e34d130c2c9824eb62b08a170",
+      "Claude Opus INT: 4 MAJOR / 8 MINOR on the exact v1C.0.15 PDF (sha256 f3e29c45...) — Gemini API MAJOR, Grok API leg captured but its verdict token is not machine-extractable from the raw, Perplexity FAILED (401 quota, optional leg)",
+      "MAJOR-1 (Sec. IV A pre-erratum O4=0 self-contradiction), MAJOR-2 (Sec. VI trace-vector scope contradiction voiding Eq. 13), and MAJOR-3 (parity-odd construction rule excluding the epsilon-free torsion-trace x axial-current density) closed with real text/math edits in v1C.0.16, including a new Eq. (14) [eq:vj5_onshell]",
+      "A sign error in the new equation's restated beta (flipped vs. its own definition at Eq. 1 [eq:ech_onshell_torsion]) was caught during pre-commit review and corrected before commit",
+      "MAJOR-4 (artifact scoping note) and all 8 MINORs remain OPEN — this is a PARTIAL closure, not a converged round; no physics conclusion of the survey changed",
+    ],
+    links: [
+      {
+        label: "Claude INT leg (raw)",
+        href: `${PR}/INT_v3/ROUND_2026-08-08-P1C-v1C.0.15-EXACTPDF-f3e29c45-R13CONV/P1C_claude_r13_leg.md`,
+      },
+      {
+        label: "Grok leg (raw)",
+        href: `${PR}/ROUND_2026-08-08-P1C-v1C.0.15-EXACTPDF-f3e29c45-R13CONV_P1C_Grok_brutal.md`,
+      },
+      {
+        label: "Gemini leg (raw)",
+        href: `${PR}/ROUND_2026-08-08-P1C-v1C.0.15-EXACTPDF-f3e29c45-R13CONV_P1C_Gemini_cosmology.md`,
+      },
+      { label: "P1C v1C.0.16 PDF", href: "/papers/paper1c_nogo_survey_v1C.0.16.pdf" },
+    ],
+  },
+  {
     id: "p1c-r12-onshell-torsion-correction-2026-08-08",
     dateISO: "2026-08-08",
     kind: "internal-api",
