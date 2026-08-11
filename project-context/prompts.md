@@ -123,19 +123,6 @@ Switched to Opus 4.7 + xhigh effort for this.
 >
 > -- also continue next best scoped steps too - and now that you are running on Fable 5 I want you to really understand my whole primary goal of this bigbounce project and our research for all the papers and also I need you to improve our api/mcp and our website to be more clear and working and ensure if any of our papers actuall require additional GPU/CPU runs via Runpod that you properly spin those up and track them on our website too so I can see and you should be able to do everything and access all apis - huggingface, runpod, et all - and help me with your most advanced scientific brain be my true bigbounce hubify labs research partner and get all my research clearly reviewed with a plan to get all papers fully publishable within next 3-4 days max (unless a long running cobaya/mcmc or something needs to run then we can extend timeline just for that -- only if hasn't been run yet etc etc for that specific paper) ensure none of our papers are too strongly cross-dependent on each other however I think that might be impossible for paper 5 so that one will need to be published after paper 4 etc... look at all my skills and houston-methodlogy and claude.md and all agentic preferences and loops and IMPROVE EVERYTHING i have been working on these papers for months now and need to get them all to the finish line and get them truly publishable so I can move on to next papers and additional on-going research from there
 
-<<<<<<< HEAD
-## 2026-08-05 - cross-machine checkpoint
-
-### Houston messages, verbatim
-
-**17:45 PT - Commit and push local BigBounce work for cross-machine resumption.**
-
-- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
-- `session`: cross-machine checkpoint
-- `agent`: Codex subagent
-
-> Commit and push everything to main and update the project context and everything that's been done across all the different work trees locally on this machine. Push everything so that I can resume all of these different work trees and things that we've been working on on this computer and this project when I get home on my other computer.
-=======
 
 ## 2026-06-18 PST — Final review + publishing plan directive
 
@@ -954,4 +941,31 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex GPT-5.6
 
 > continue all best next steps
->>>>>>> origin/main
+
+## 2026-08-05 - cross-machine checkpoint
+
+### Houston messages, verbatim
+
+**17:45 PT - Commit and push local BigBounce work for cross-machine resumption.**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: cross-machine checkpoint
+- `agent`: Codex subagent
+
+> Commit and push everything to main and update the project context and everything that's been done across all the different work trees locally on this machine. Push everything so that I can resume all of these different work trees and things that we've been working on on this computer and this project when I get home on my other computer.
+
+## 2026-08-11 - 2026-08-11 session close + cross-machine sync + publish-drive handoff
+
+### Houston messages, verbatim
+
+**16:49 PT - sync remote main, commit codex/cloud sessions, PR to close session, robust handoff prompt for publish-ready drive**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: 2026-08-11 session close + cross-machine sync + publish-drive handoff
+- `agent`: Claude Code / claude-fable-5
+
+> You definitely need to pull down from remote main to make sure you have the latest working version of everything. There's probably some codex sessions as well that need to be committed, pushed, and merged as well so that all remote computers working on bigbounce are all in sync from this point going forward.  And any other cloud sessions within Cloud, make sure that everything that we've worked on in Big Bounce has been pushed and merged.
+>
+> Continue and commit and create PR to finish this session
+>
+> Hey, I need you to please continue. Make sure everything has been committed and pushed to main, and then give me the prompt to run in a new local branch of bigbounce to finish all of our research until everything is ready to publish on the site and everything is all good to go. Based on everything we've worked on in the history of my prompts and where we're at now, what we need you next is to make sure you have a robust prompt. That prompt will also make sure that the Claude Code creates a goal for it and everything as well. You definitely need to pull down from remote main to make sure you have the latest working version of everything. There's probably some codec sessions as well that need to be committed, pushed, and merged as well so that all remote computers working on bigbounce are all in sync from this point going forward.
