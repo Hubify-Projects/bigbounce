@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-# Tasks
-
-## Active
-
-- [ ] Reconcile the divergent local and `origin/main` histories before publishing this checkpoint. Do not force-push, reset, rebase, or discard the local context commits. (observed: 2026-08-05 18:00 PT)
-- [ ] Run the final independent confirmation spot-check for Paper 1B before raising its 98% readiness; preserve the current honesty language and SSOT evidence trail. (source: `project-context/SSOT/index.md`, EXT19 status)
-
-## Done
-
-- [x] Captured the cross-machine handoff request, migrated the legacy prompt log to `prompts.md`, and created a resumable main-branch context checkpoint. (source: 2026-08-05 17:45 PT)
-
-## Watchpoints
-
-- Read `project-context/SSOT/index.md`, the relevant per-paper status file, and `project-context/SSOT/queue.md` before touching paper work.
-- Do not claim a PDF, scientific, or site validation that was not actually run during the resumed work.
-- Local environment backup files contain secrets and remain outside Git; use the encrypted environment-vault workflow to restore them on another machine.
-- At the handoff fetch, `origin/main...HEAD` was 1,574 commits behind / 2 local commits ahead. A normal fast-forward merge was correctly refused.
-=======
 # Tasks — BigBounce publication program
 
 ## Current authoritative queue — 2026-08-04
@@ -40,6 +21,12 @@ preserved audit history and must not be read as the active queue.
 - [ ] **AUG-005 — Journal submissions:** execute CQG/JORS/PRD/ApJS/AJ portal
   work. Track accounts, reviewer suggestions, fees/waivers, and clicks as
   publishing tasks separate from readiness.
+- [ ] **AUG-012 — Publish-drive handoff (2026-08-11):** run the handoff prompt
+  in [`HANDOFF_PROMPT_2026-08-11.md`](HANDOFF_PROMPT_2026-08-11.md) on a fresh
+  `publish-drive/2026-08` branch: harvest the AUG-011 full scan + flagship
+  phase 3, drive P1C through the review ladder to 95, run the bounded six-
+  candidate final-hash confirmation, keep site/Convex truthful, and refresh
+  Houston's sign-off + publishing packets. (source: 2026-08-11 16:49 PT)
 - [x] **AUG-006 — Repository consolidation:** audited all local/remote tips,
   preserved their history in archival merge `556b8454`, then removed obsolete
   branch refs and linked worktrees. Both remotes now expose only `main`.
@@ -234,4 +221,3 @@ but are not the current scientific critical path.
 - CMUX lab code lives in `/Users/houstongolden/Desktop/CODE_YOU/learning-cmux-with-agents`; push publication through Houston's `fork` remote (`remote.pushDefault=fork`), never directly to the upstream `origin`. Draft PR `https://github.com/houstongolden/learning-cmux-with-agents/pull/1` tracks `codex/youmd-cmux-lab` against the fork's `main`.
 - The live mirrored run is an evaluation lane only: no review manifest, SSOT, site, Convex, lease, or source mutation is authorized by CMUX participation.
 - A single sealed result is not a comparison outcome. Never reveal or name a winner until the same fresh-run contract has accepted both arms; do not retroactively expire a legacy contract that has no deadline.
->>>>>>> origin/main
