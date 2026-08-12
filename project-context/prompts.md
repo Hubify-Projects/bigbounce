@@ -969,3 +969,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 > Continue and commit and create PR to finish this session
 >
 > Hey, I need you to please continue. Make sure everything has been committed and pushed to main, and then give me the prompt to run in a new local branch of bigbounce to finish all of our research until everything is ready to publish on the site and everything is all good to go. Based on everything we've worked on in the history of my prompts and where we're at now, what we need you next is to make sure you have a robust prompt. That prompt will also make sure that the Claude Code creates a goal for it and everything as well. You definitely need to pull down from remote main to make sure you have the latest working version of everything. There's probably some codec sessions as well that need to be committed, pushed, and merged as well so that all remote computers working on bigbounce are all in sync from this point going forward.
+
+**17:34 PT - continue: commit/PR at good stopping point incl. project context + handoff prompt for local agent**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: 2026-08-11 session close + cross-machine sync + publish-drive handoff
+- `agent`: Claude Code / claude-fable-5
+
+> continue and commit or submit the poll request when you get to a good stopping point, including your project context, the prompt and context for handing off to my local agent to continue from there.
