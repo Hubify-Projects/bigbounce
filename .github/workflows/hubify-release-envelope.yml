@@ -41,3 +41,50 @@ jobs:
       - run: npm run test:hubify-envelope
       - run: npm run test:hubify-manifest
       - run: node scripts/check-hubify-lab-manifest.mjs
+
+  signed-release-verification:
+    # Fork PRs do not receive repository secrets; structural validation above
+    # remains the required no-secret gate for those builds.
+    if: ${{ github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    env:
+      BIGBOUNCE_MANIFEST_PRIVATE_KEY: ${{ secrets.BIGBOUNCE_MANIFEST_PRIVATE_KEY }}
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Materialize signing key without logging it
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${BIGBOUNCE_MANIFEST_PRIVATE_KEY}" || {
+            echo "BIGBOUNCE_MANIFEST_PRIVATE_KEY repository secret is required on push" >&2
+            exit 1
+          }
+          umask 077
+          printf '%s' "${BIGBOUNCE_MANIFEST_PRIVATE_KEY}" | base64 --decode > "${RUNNER_TEMP}/bigbounce-manifest-private.pem"
+          openssl pkey -in "${RUNNER_TEMP}/bigbounce-manifest-private.pem" -pubout -out "${RUNNER_TEMP}/derived-public.pem" >/dev/null 2>&1
+          cmp -s "${RUNNER_TEMP}/derived-public.pem" project-context/hubify-lab/manifest-signing-public.pem || {
+            echo "signing key does not match the checked-in public key" >&2
+            exit 1
+          }
+      - name: Regenerate and compare the signed release envelope
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/publish-hubify-release-envelope.mjs \
+            --manifest project-context/hubify-lab/lab.yaml \
+            --manifest-version 2026-08-19.1 \
+            --private-key "${RUNNER_TEMP}/bigbounce-manifest-private.pem" \
+            --output "${RUNNER_TEMP}/lab.release.json" >/dev/null
+          cmp -s "${RUNNER_TEMP}/lab.release.json" project-context/hubify-lab/lab.release.json || {
+            echo "checked-in release envelope is not deterministic for the pinned source" >&2
+            exit 1
+          }
+          node scripts/publish-hubify-release-envelope.mjs \
+            --check \
+            --manifest project-context/hubify-lab/lab.release.json \
+            --public-key project-context/hubify-lab/manifest-signing-public.pem >/dev/null
