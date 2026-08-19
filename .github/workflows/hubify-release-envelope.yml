@@ -1,0 +1,33 @@
+name: Hubify release envelope
+
+on:
+  push:
+    paths:
+      - "scripts/publish-hubify-release-envelope.mjs"
+      - "scripts/test-publish-hubify-release-envelope.test.mjs"
+      - "project-context/HUBIFY_RELEASE_ENVELOPE.md"
+      - "package.json"
+      - "package-lock.json"
+  pull_request:
+    paths:
+      - "scripts/publish-hubify-release-envelope.mjs"
+      - "scripts/test-publish-hubify-release-envelope.test.mjs"
+      - "project-context/HUBIFY_RELEASE_ENVELOPE.md"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  structural-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run test:hubify-envelope
