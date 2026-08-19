@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:hubify-envelope": "node --test scripts/test-publish-hubify-release-envelope.test.mjs",
+    "test:hubify-manifest": "node --test scripts/test-check-hubify-lab-manifest.test.mjs",
     "hubify:envelope": "node scripts/publish-hubify-release-envelope.mjs",
     "build:data": "python3 scripts/build_data.py",
     "build:all": "npm run build:data"
