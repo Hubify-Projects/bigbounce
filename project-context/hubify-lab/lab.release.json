@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "hubify-lab/v1",
+  "manifestVersion": "2026-08-19.1",
+  "payload": {
+    "hubify_lab": 0.1,
+    "lab": {
+      "slug": "bigbounce",
+      "title": "Big Bounce Cosmology",
+      "tagline": "Observational tests of bounce cosmology across galaxy chirality, dark-energy closure, non-Gaussianity forecasts, and multi-survey anomalies.",
+      "homepage": "https://bigbounce.hubify.app",
+      "author": "Houston Golden",
+      "license": "TBD"
+    },
+    "source": {
+      "authoritative_repo": "https://github.com/Hubify-Projects/bigbounce",
+      "science_snapshot_commit": "d957c0cd5d8d589b413f99f3bf1cacd32e595aae",
+      "current_commit": "d957c0cd5d8d589b413f99f3bf1cacd32e595aae",
+      "snapshot_date": "2026-08-04",
+      "snapshot_scope": "six-program-served-paper-projection",
+      "safety_baseline_tag": "safety/pre-hubify-lab-2026-07-23",
+      "baseline_commit": "130cc061",
+      "note": "d957c0cd is the truthful unified six-program science snapshot. Commits after it may update documentation or supporting work without changing this projection; do not call the current branch HEAD the science snapshot."
+    },
+    "reproducibility": {
+      "level": 3,
+      "levels": {
+        "0": {
+          "name": "archived",
+          "status": "complete",
+          "note": "740 publication-critical files hashed at baseline commit 130cc061."
+        },
+        "1": {
+          "name": "environment_reconstructed",
+          "status": "complete",
+          "scope": "packages/namaster-proof (P1B) only"
+        },
+        "2": {
+          "name": "artifacts_verified",
+          "status": "complete",
+          "scope": "740/740 local-against-source; 663/740 remote-verified"
+        },
+        "3": {
+          "name": "lightweight_reproduction",
+          "status": "complete",
+          "scope": "P1B NaMaster synthetic-window smoke test only"
+        },
+        "4": {
+          "name": "partial_computational",
+          "status": "not_started"
+        },
+        "5": {
+          "name": "full_reproduction",
+          "status": "not_started"
+        }
+      }
+    },
+    "programs": [
+      {
+        "id": "p1a",
+        "title": "ECH No-Go Theorem",
+        "version": "v1A.0.127",
+        "paper_pdf": "site/public/papers/paper1a_ech_nogo_v1A.0.127.pdf",
+        "paper_sha256": "210be8f0b285034d88b9854c532eaac4a32147cea2621dedbaaac94540bbc7f0"
+      },
+      {
+        "id": "p1b",
+        "title": "NaMaster Proof / MCMC Companion",
+        "version": "v2B.0.16",
+        "paper_pdf": "site/public/papers/paper1b_namaster_proof_v2B.0.16.pdf",
+        "paper_sha256": "2fb957101604066382ddb604da41b9fe3bc2a48ae4a799ca25c2b34eaac6267a"
+      },
+      {
+        "id": "p2",
+        "title": "Bounce f_NL Forecast",
+        "version": "v1.7.130",
+        "paper_pdf": "site/public/papers/02_full_draft_v1.7.130.pdf",
+        "paper_sha256": "d3afe79fe70ce13cee5ec8149e84c4b42c78224ca6a90569058ec501222f5c2f"
+      },
+      {
+        "id": "p3",
+        "title": "P3 Provenance Recovery Archive — 181 Recovered IDs, Not Detections",
+        "version": "v3.2.0-r17",
+        "paper_pdf": "site/public/papers/paper3_apjs_v3.2.0-r17.pdf",
+        "paper_sha256": "9a3769269ada4d2a5371aa447e6ce93aa55518ae2a3b13fdc3d83f0b8b779a0b"
+      },
+      {
+        "id": "p4",
+        "title": "Galaxy Chirality Catalog",
+        "version": "v1.0.274",
+        "paper_pdf": "site/public/papers/chirality_catalog_paper_v1.0.274.pdf",
+        "paper_sha256": "2641a228af1e3decf17d18341570c4e779483a823267421fe041aade1375e0d7"
+      },
+      {
+        "id": "p5",
+        "title": "DESI Chirality",
+        "version": "v0.1.147-2026-08-03",
+        "paper_pdf": "site/public/papers/p5_desi_chirality_v0.1.147-2026-08-03.pdf",
+        "paper_sha256": "3c1c484118d21ecab9a26655135df9d982c27d375095c2693b4376a86317b18e"
+      }
+    ],
+    "surfaces": {
+      "api": {
+        "status": "exists_in_source",
+        "notes": "Convex-backed BigBounce lab API"
+      },
+      "mcp": {
+        "status": "exists_in_source",
+        "notes": "BigBounce MCP surface"
+      },
+      "site": {
+        "status": "live",
+        "url": "https://bigbounce.hubify.app"
+      }
+    }
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "canonicalization": "jcs-lite-v1",
+    "digest": "1bff3b1fa78fe9650d4310d4b138ede865916c5d66befd2d4201ac4b6a89b0b9"
+  },
+  "signature": {
+    "algorithm": "ed25519",
+    "value": "5Gf77HIWR7it6kQUJWgixK6mZf22zuNzfmHHCkkkaqcsG43qt3E8u+boTuEjvvEk8ELj/LMnLxkybUTfCmdnCA=="
+  }
+}
