@@ -6,8 +6,9 @@ SHA-256 digest over Hubify's `jcs-lite-v1` canonical JSON and an Ed25519
 signature over the canonical object containing `schemaVersion`,
 `manifestVersion`, `payload`, and `integrity`.
 
-The publisher is `scripts/publish-hubify-release-envelope.mjs`. It accepts JSON
-or YAML source, requires an explicit manifest version, and never generates or
+The publisher is `scripts/publish-hubify-release-envelope.mjs`. The checked-in
+source projection is `project-context/hubify-lab/lab.yaml`; it accepts JSON or
+YAML source, requires an explicit manifest version, and never generates or
 stores keys. A signing key is supplied by path (recommended for CI):
 
 ```sh
@@ -28,6 +29,7 @@ CI and local validation do not need a signing key:
 
 ```sh
 npm run test:hubify-envelope
+node scripts/check-hubify-lab-manifest.mjs
 node scripts/publish-hubify-release-envelope.mjs \
   --manifest /path/to/lab.yaml --manifest-version 2026-08-19.1 \
   --unsigned --dry-run

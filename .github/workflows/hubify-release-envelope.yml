@@ -5,6 +5,10 @@ on:
     paths:
       - "scripts/publish-hubify-release-envelope.mjs"
       - "scripts/test-publish-hubify-release-envelope.test.mjs"
+      - "scripts/check-hubify-lab-manifest.mjs"
+      - "scripts/test-check-hubify-lab-manifest.test.mjs"
+      - "project-context/hubify-lab/lab.yaml"
+      - "site/src/data/papers.ts"
       - "project-context/HUBIFY_RELEASE_ENVELOPE.md"
       - "package.json"
       - "package-lock.json"
@@ -12,6 +16,10 @@ on:
     paths:
       - "scripts/publish-hubify-release-envelope.mjs"
       - "scripts/test-publish-hubify-release-envelope.test.mjs"
+      - "scripts/check-hubify-lab-manifest.mjs"
+      - "scripts/test-check-hubify-lab-manifest.test.mjs"
+      - "project-context/hubify-lab/lab.yaml"
+      - "site/src/data/papers.ts"
       - "project-context/HUBIFY_RELEASE_ENVELOPE.md"
       - "package.json"
       - "package-lock.json"
@@ -31,3 +39,5 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run test:hubify-envelope
+      - run: npm run test:hubify-manifest
+      - run: node scripts/check-hubify-lab-manifest.mjs
