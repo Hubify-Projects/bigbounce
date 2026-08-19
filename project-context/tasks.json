@@ -1,43 +1,6 @@
 {
   "schema": 1,
-<<<<<<< HEAD
-  "updated_at": "2026-08-05 18:00 PT",
-  "project": "bigbounce",
-  "objective": "Preserve a truthful, resumable BigBounce checkpoint across machines.",
-  "tasks": [
-    {
-      "id": "T000",
-      "status": "active",
-      "title": "Reconcile divergent local and origin/main histories before publishing the checkpoint",
-      "source_prompts": [
-        "2026-08-05 cross-machine checkpoint"
-      ],
-      "completion_criteria": [
-        "Local checkpoint commits are preserved",
-        "Reconciliation does not use force-push, reset, rebase, stash, or clean",
-        "A normal main-branch push is possible after an explicit history-resolution decision"
-      ]
-    },
-    {
-      "id": "T001",
-      "status": "active",
-      "title": "Run Paper 1B's final independent confirmation spot-check",
-      "source_prompts": [
-        "project-context/SSOT/index.md (EXT19 status)"
-      ],
-      "completion_criteria": [
-        "The check uses the canonical Paper 1B source/PDF and is recorded in SSOT",
-        "Any findings are truth-audited and reflected in the paper/site state before readiness changes",
-        "No readiness claim exceeds the available evidence"
-      ]
-    }
-  ],
-  "watchpoints": [
-    "Keep raw prompts raw; put audit conclusions in task and plan files.",
-    "Read SSOT before paper work and never commit local environment backups.",
-    "At handoff fetch, origin/main was 1,574 commits ahead while local main was 2 commits ahead; do not auto-reconcile divergent history."
-=======
-  "updated_at": "2026-08-04T02:55:00-07:00",
+  "updated_at": "2026-08-18T17:30:00-07:00",
   "project": "bigbounce",
   "objective": "Ship the approved three-program public architecture, restore or rerun the DESI anomaly flagship evidence chain, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.",
   "canonical_plan": "ops/PLAN.md",
@@ -60,6 +23,31 @@
   },
   "tasks": [
     {
+      "id": "T000",
+      "status": "done",
+      "title": "Reconcile divergent local and origin/main histories before publishing the checkpoint",
+      "resolved_at": "2026-08-18",
+      "resolution": "Reconciled on Houston's MacBook Air: fast-forward only, no force-push/reset/rebase/stash/clean. bigbounce local main and origin/main are now identical (0 ahead / 0 behind). Recorded in youmd/project-context/FLEET_SYNC_2026-08-18.md.",
+      "source_prompts": [
+        "2026-08-05 cross-machine checkpoint",
+        "preserved from the 2026-08-05 conflicted tasks.json HEAD side"
+      ]
+    },
+    {
+      "id": "T001",
+      "status": "active",
+      "title": "Run Paper 1B's final independent confirmation spot-check",
+      "source_prompts": [
+        "project-context/SSOT/index.md (EXT19 status)",
+        "preserved from the 2026-08-05 conflicted tasks.json HEAD side"
+      ],
+      "completion_criteria": [
+        "The check uses the canonical Paper 1B source/PDF and is recorded in SSOT",
+        "Any findings are truth-audited and reflected in the paper/site state before readiness changes",
+        "No readiness claim exceeds the available evidence"
+      ]
+    },
+    {
       "id": "AUG-001",
       "status": "complete",
       "title": "Synchronize canonical SSOT, Convex, site data, and production truth atomically"
@@ -68,27 +56,36 @@
       "id": "AUG-002",
       "status": "complete",
       "title": "Complete bounded package acceptance across the six preserved candidate artifacts",
-      "depends_on": ["AUG-001"],
+      "depends_on": [
+        "AUG-001"
+      ],
       "completion_evidence": "Exact package, PDF, visual, link, mirror, and contract gates passed through P3 r17 and P4 v1.0.274; current PASS receipt generated 2026-08-04T08:04:33Z at manuscript-bearing head 8055a5b1 with zero later changes to the 12 canonical source/PDF paths"
     },
     {
       "id": "AUG-003",
       "status": "complete",
       "title": "Close submission metadata gaps and assemble portal-ready journal packets",
-      "depends_on": ["AUG-002"],
+      "depends_on": [
+        "AUG-002"
+      ],
       "completion_evidence": "Six current portal kits and exact source packages; P2 bibliography omission fixed; P3/P4/P5 migrated to current venue shells and visually audited"
     },
     {
       "id": "AUG-004",
       "status": "pending",
       "title": "Record Houston's explicit sign-offs for P1A, P1B, P2, P4, and P5",
-      "depends_on": ["AUG-002"]
+      "depends_on": [
+        "AUG-002"
+      ]
     },
     {
       "id": "AUG-005",
       "status": "pending",
       "title": "Execute journal submissions as a publishing phase separate from readiness",
-      "depends_on": ["AUG-003", "AUG-004"]
+      "depends_on": [
+        "AUG-003",
+        "AUG-004"
+      ]
     },
     {
       "id": "AUG-006",
@@ -113,34 +110,46 @@
       "id": "AUG-009",
       "status": "complete",
       "title": "Rewrite production around bounce theory, DESI anomaly discovery, and galaxy chirality",
-      "depends_on": ["AUG-008"],
+      "depends_on": [
+        "AUG-008"
+      ],
       "completion_evidence": "Production deployment from commit 8055a5b1 verified at bigbounce.hubify.app: exact P3/P5 roles, desktop/mobile no-overflow browser QA, zero browser warnings/errors, and six byte-identical served PDF hashes"
     },
     {
       "id": "AUG-010",
       "status": "complete",
       "title": "Restore and hash-verify the enhanced DESI parent/model lineage or select a clean rerun",
-      "depends_on": ["AUG-008"],
+      "depends_on": [
+        "AUG-008"
+      ],
       "completion_evidence": "Enhanced parent and calibration are absent; archived model SHA f5266ba48f476bca2f1b12610e0e81322caaa955af70ab83f0b05bf763885f07 verified locally and on Hugging Face; fail-closed clean rerun contract and two passing smoke tests committed in 2a0a2fea"
     },
     {
       "id": "AUG-011",
       "status": "pending",
       "title": "Execute the clean DESI rerun and build the defensible anomaly flagship sample, validation, taxonomy, and manuscript",
-      "depends_on": ["AUG-010"]
+      "depends_on": [
+        "AUG-010"
+      ]
     },
     {
       "id": "AUG-012",
       "status": "in_progress",
       "title": "Regenerate approval, submission, archive, and endorser routing for six standalone works plus the P3 support release",
-      "depends_on": ["AUG-008", "AUG-009"],
+      "depends_on": [
+        "AUG-008",
+        "AUG-009"
+      ],
       "completion_evidence": "Canonical board regenerated for the selected portfolio; Houston decisions, post-approval archives, outreach, and submissions remain open"
     },
     {
       "id": "AUG-013",
       "status": "complete",
       "title": "Bind current-hash evidence and create concise Houston visual-review decision packets",
-      "depends_on": ["AUG-002", "AUG-008"],
+      "depends_on": [
+        "AUG-002",
+        "AUG-008"
+      ],
       "completion_evidence": "project-context/SSOT/HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md binds exact versions, hashes, purposes, claim limits, provider coverage, live PDFs, portal kits, and APPROVE/REVISE/DEFER decisions; no 96 state"
     }
   ],
@@ -513,7 +522,9 @@
     "CMUX dogfood stays read-only until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees pass acceptance; per-surface process enforcement is not hostile same-user/raw-CMUX broker isolation.",
     "CMUX route receipts prove one completed subscription-authenticated launch-time turn per unique provider/model/effort route, while per-surface provider-auth and short-liveness receipts remain separate; neither proves completed turns for every interactive session, later quota, final submission, or hostile same-user isolation.",
     "Do not reveal or declare a winner from a run with only one sealed result; a legacy deadline-free contract cannot be retroactively expired.",
-    "Publish CMUX lab changes through Houston's fork remote with remote.pushDefault=fork, never directly to the upstream origin; draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 tracks codex/youmd-cmux-lab against the fork's main."
->>>>>>> origin/main
-  ]
+    "Publish CMUX lab changes through Houston's fork remote with remote.pushDefault=fork, never directly to the upstream origin; draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 tracks codex/youmd-cmux-lab against the fork's main.",
+    "Keep raw prompts raw; put audit conclusions in task and plan files.",
+    "Read SSOT before paper work and never commit local environment backups."
+  ],
+  "conflict_resolution_note": "Resolved a merge conflict that had been committed unresolved since 2026-08-05 (markers landed in a0bb9e6a, 2026-08-07), leaving this file invalid JSON for 13 days. Kept the canonical origin/main register; preserved T000/T001 and two watchpoints from the HEAD side; dropped one stale watchpoint describing the now-resolved 1,574-commit divergence."
 }
