@@ -4,6 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:hubify-envelope": "node --test scripts/test-publish-hubify-release-envelope.test.mjs",
+    "hubify:envelope": "node scripts/publish-hubify-release-envelope.mjs",
     "build:data": "python3 scripts/build_data.py",
     "build:all": "npm run build:data"
   },
@@ -13,6 +15,7 @@
   "description": "",
   "dependencies": {
     "convex": "^1.34.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "yaml": "^2.9.0"
   }
 }
