@@ -977,3 +977,19 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Claude Code / claude-fable-5
 
 > continue and commit or submit the poll request when you get to a good stopping point, including your project context, the prompt and context for handing off to my local agent to continue from there.
+
+## 2026-08-14 - branch and cross-project recovery audit
+
+### Houston messages, verbatim
+
+**13:37 PT - Recover Claude branch/worktrees and reconcile BigBounce plus Hubify next steps**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: branch and cross-project recovery audit
+- `agent`: Codex GPT-5
+
+> claude/audit-product-architecture-2wbGX
+>
+> Was this branch committed or submitted via PR yet?
+>
+> Um, I need you to pull down from Maine and try to pull down any other. Any other branches or work trees on this computer related to the BigBounce project and/or this specific work tree that my Claude code was starting in it. You might be able to find it even if you can like open up and use the computer using Codex to manage the Claude desktop app and see if you can somehow try to recover it if it wasn't committed, or if it was all committed, then great. And maybe just scroll through, scan the context. But yeah, I don't know what the most recent sessions were that we were working on in the BigBounce repo to continue the research, as well as the Hubify repo to continue building Hubify out. So yeah, you might need to open up a Hubify session in Codex as well as a new one in BigBounce. And let's just try to get all of our computers and machines, just, we need to get aligned on where we're at, and I need to know concisely, what are the next steps, what are the blockers, why haven't we, why aren't we ready to publish yet, what should I look at and visually provide my feedback on next, most concisely.
