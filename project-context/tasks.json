@@ -194,19 +194,19 @@
         "Any auth gap is recorded explicitly rather than inferred away",
         "No public claim is made until the canonical surfaces are reconciled"
       ],
-      "progress_evidence": "2026-08-26: Hubify main at dd22f327 passed npm run test:bigbounce-public-truth, npm run test:bigbounce-parity, and npm run check:bigbounce-parity against BigBounce's live Convex public query. The registry agrees on all six canonical IDs, versions, and PDF paths; the source query exposes no commit metadata, so the pinned d957 science snapshot remains intentionally distinct from later operations-only commits.",
-      "blocker": "The authenticated Hubify product REST surface cannot be inspected from this machine because HUBIFY_TOKEN is unavailable; no live product rows or mutations were guessed."
+      "progress_evidence": "2026-08-26: Hubify main at dd22f327 passed npm run test:bigbounce-public-truth, npm run test:bigbounce-parity, and npm run check:bigbounce-parity against BigBounce's live Convex public query. The registry agrees on all six canonical IDs, versions, and PDF paths; the source query exposes no commit metadata, so the pinned d957 science snapshot remains intentionally distinct from later operations-only commits. A credential-less Hubify Lab metadata read then showed live slug bigbounce at 5 experiments, 2 papers, and 3 surveys, while its three reproduced labs are 0-experiment/0-paper/0-survey Level-0 shells. Source/registry parity therefore does not prove the live product lab is fully seeded.",
+      "blocker": "Authenticated Hubify product REST access is required to read/reconcile the canonical lab records and verify a clean fork; HUBIFY_TOKEN is unavailable. No live product rows or mutations were guessed."
     },
     {
       "id": "AUG-017",
       "status": "completed",
       "title": "Reconcile BigBounce's linked Vercel deployment configuration and deploy the current reproducibility projection",
       "completion_criteria": [
-        "The linked Vercel project uses the repository's site/out build contract rather than stale root-static settings",
+        "The linked Vercel project scopes builds to the site/ Next.js app and uses native Next output handling",
         "Production /reproduce renders the completed AUG-011 status",
         "The deployed artifact is verified against the pushed main commit"
       ],
-      "completion_evidence": "2026-08-26: linked Vercel project was updated to Next.js with installCommand 'cd site && npm install', buildCommand 'cd site && npm run build', and outputDirectory 'site/out'; root vercel.json now records the same contract. Production https://bigbounce.hubify.app/reproduce returned the completed AUG-011 markers 36,634 verified receipts, 45.5 hours, and 52,188 S>5 candidates, with no stale 'has not yet executed' text."
+      "completion_evidence": "2026-08-26: linked Vercel project root was corrected to site/ and the conflicting output-directory override was removed so Vercel uses native Next.js build output. The successful production deployment is e5542692. Production https://bigbounce.hubify.app/reproduce visibly returned both the 3,810-row selected-cohort record and the 52,188-candidate completed scan summary."
     },
     {
       "id": "AUG-018",
@@ -219,6 +219,20 @@
         "The new snapshot is listed successfully after creation"
       ],
       "blocker": "2026-08-26 preflight passed (12 .env.local files; provider/runtime credentials excluded by policy), but creation requires an interactive AES passphrase. The noninteractive prompt failed safely and wrote no new vault."
+    },
+    {
+      "id": "AUG-019",
+      "status": "active",
+      "title": "Stage and execute anomaly flagship enrichment, cross-match, and taxonomy",
+      "depends_on": [
+        "AUG-014"
+      ],
+      "completion_criteria": [
+        "The selected sample is enriched under its checkpointed, contract-bound MSE reproduction gate",
+        "Cross-match and taxonomy are run only on a zero-skipped enriched output",
+        "Any named object is independently validated before manuscript use"
+      ],
+      "execution_gate": "2026-08-26 preflight: 3,810 selected targets span 3,128 coadd groups; the archived model matches the sealed SHA-256; local free space is 161 GiB; required public zall-pix-iron.fits is 22,371,272,640 bytes and not locally staged. No RunPod spend has been made. Stage/checksum the zcatalog, then run the resumable enrichment; use a bounded RunPod volume only if local throughput is unsuitable."
     }
   ],
   "historical_tasks": [
