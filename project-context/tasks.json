@@ -168,18 +168,17 @@
     },
     {
       "id": "AUG-015",
-      "status": "active",
+      "status": "completed",
       "title": "Re-verify 2026-08-26 backup and compute receipts against the completed rerun",
       "depends_on": [
         "AUG-011"
       ],
       "completion_criteria": [
         "The recorded backup and compute receipts match the clean rerun outputs",
-        "No fresh remote backup verification is claimed",
+        "Fresh remote retention evidence is recorded with its exact verification scope",
         "Any mismatch is truth-audited before the queue is advanced"
       ],
-      "progress_evidence": "2026-08-26 local audit: summary.json and comparison.json match their manifest byte SHA-256 values; training/validation manifests match; calibration and contract semantic hashes are internally consistent when interpreted as canonical JSON-payload hashes, and their manifest entries now carry raw file SHA-256 values. The full 36,634 shard/receipt corpus is absent from this checkout, so fresh remote storage integrity remains unverified.",
-      "blocker": "Remote proof requires authorized access to the retained shard/receipt corpus and backup provider account(s); no credentials are available in the current environment."
+      "completion_evidence": "2026-08-26 local audit: summary.json and comparison.json match their manifest byte SHA-256 values; training/validation manifests match; calibration and contract semantic hashes are internally consistent when interpreted as canonical JSON-payload hashes, and their manifest entries carry raw file SHA-256 values. Authenticated B2 audit then counted exactly 36,634 receipt objects and 36,634 shard objects under aug-011-clean-rerun/. Authenticated Hugging Face audit found a partial private mirror of 10,000 receipt files plus sealed inputs/checkpoints. RunPod REST authentication succeeded and the historical pod is absent, as expected. This is a structural-retention audit, not a fresh multi-TB byte re-download."
     },
     {
       "id": "AUG-016",
@@ -193,7 +192,9 @@
         "Lab/status projections agree with the current repo state",
         "Any auth gap is recorded explicitly rather than inferred away",
         "No public claim is made until the canonical surfaces are reconciled"
-      ]
+      ],
+      "progress_evidence": "2026-08-26: Hubify main at dd22f327 passed npm run test:bigbounce-public-truth, npm run test:bigbounce-parity, and npm run check:bigbounce-parity against BigBounce's live Convex public query. The registry agrees on all six canonical IDs, versions, and PDF paths; the source query exposes no commit metadata, so the pinned d957 science snapshot remains intentionally distinct from later operations-only commits.",
+      "blocker": "The authenticated Hubify product REST surface cannot be inspected from this machine because HUBIFY_TOKEN is unavailable; no live product rows or mutations were guessed."
     },
     {
       "id": "AUG-017",

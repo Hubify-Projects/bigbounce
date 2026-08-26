@@ -69,7 +69,7 @@
     "est_cost_usd": 7.74,
     "parallelizable": true,
     "resume_support": true,
-    "notes": "The AUG-011 clean rerun is complete and receipt-verified: 36,634/36,634 shard groups scored, 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above the sealed anomaly_score>5.0 threshold. The full corpus and derived sample artifacts are not in this checkout; the Hugging Face remote returned unauthenticated/private 401, so do not describe that corpus as publicly available from this repository. Remaining active work is downstream sample selection, validation, taxonomy, external-catalog joins, and manuscript drafting."
+    "notes": "The AUG-011 clean rerun is complete and receipt-verified: 36,634/36,634 shard groups scored, 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above the sealed anomaly_score>5.0 threshold. The full corpus and derived sample artifacts are not in this checkout. A 2026-08-26 authenticated audit found B2 retains exactly 36,634 shard objects and 36,634 receipt objects under aug-011-clean-rerun/; Hugging Face exposes a partial private mirror (10,000 receipt files plus sealed inputs/checkpoints). Do not describe the corpus as anonymously public or forkable from this repository. Remaining active work is downstream sample selection, validation, taxonomy, external-catalog joins, and manuscript drafting."
   },
   "outputs": [
     {
@@ -103,7 +103,7 @@
       "checksum": "4e303b0ba2379960486638535f00be87a4dd923c8a3207f784c7a5394cd3d0af"
     }
   ],
-  "verification": "Full-scan verification passed: verify-receipts covered 36,634/36,634 groups, summarize-after-dedup produced 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above anomaly_score>5.0. Output checksums are raw file SHA-256 values. Separately, run-contract.json's internal calibration_sha256 is the canonical JSON-payload SHA-256 25498638fd23bb0033960e8199608e890feacd9e0eb220b24b300efcc954eb2f, and summary.json's contract_sha256 is the canonical contract-payload SHA-256 6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf; those are semantic bindings, not file-byte hashes. The completed run is recorded in pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/{complete.log,summary.json,comparison.json}; no further full-scan verification remains for AUG-011.",
+  "verification": "Full-scan verification passed: verify-receipts covered 36,634/36,634 groups, summarize-after-dedup produced 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above anomaly_score>5.0. Output checksums are raw file SHA-256 values. Separately, run-contract.json's internal calibration_sha256 is the canonical JSON-payload SHA-256 25498638fd23bb0033960e8199608e890feacd9e0eb220b24b300efcc954eb2f, and summary.json's contract_sha256 is the canonical contract-payload SHA-256 6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf; those are semantic bindings, not file-byte hashes. The completed run is recorded in pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/{complete.log,summary.json,comparison.json}. A 2026-08-26 authenticated B2 structural-retention audit counted exactly 36,634 receipt objects and 36,634 shard objects; it proves retained corpus cardinality but does not assert a fresh full-byte re-download of the multi-TB shard corpus.",
   "status": "runnable-now",
   "provenance": [
     "commit 0663e42cbb7e391b96053bd55d07ee500b22db92 (AUG-011 scan COMPLETE; wall ~45.5h on RunPod A4000 tc291bka0r6fl3 at $0.17/hr)",
@@ -112,6 +112,7 @@
     "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md §0 (honest scale estimates)",
     "pipelines/p1_highz_tracers/clean_rerun_contract.py",
     "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/calibration.json and run-contract.json (created_utc 2026-08-05T09:19:13Z, stability_check.passed=true)",
+    "2026-08-26 authenticated provider audit: B2 aug-011-clean-rerun/ contains 36,634 receipts and 36,634 shards; Hugging Face bamfai/bigbounce-aug-011-clean-rerun exposes 10,000 receipt files plus sealed inputs/checkpoints, so it is a partial private mirror rather than the complete corpus",
     "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md §Restoration gate result — 2026-08-04 (motivation for the clean rerun)"
   ]
 }

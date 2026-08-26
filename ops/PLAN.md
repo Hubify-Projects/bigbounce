@@ -175,9 +175,10 @@ contract after proving the enhanced parent/calibration unrecoverable.
    bounded visual-review packet; P3 receives integration feedback only.
 2. Complete the rebuilt anomaly flagship follow-on from the finished clean
    rerun: selected sample, validation contract, taxonomy, and manuscript.
-3. Re-verify the 2026-08-26 backup and compute receipts against the completed
-   rerun outputs, then align Hubify canonical-lab surfaces once authenticated
-   access is available.
+3. The 2026-08-26 local/provider structural-retention audit is complete: B2
+   retains 36,634 receipt objects and 36,634 shard objects, while Hugging Face
+   is a partial private mirror. Next, align Hubify canonical-lab surfaces once
+   authenticated access is available.
 4. After each approval, run that work's archive/portal/endorsement checklist
    and preserve external receipts; do not wait for every paper to be approved.
 
