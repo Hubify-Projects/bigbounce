@@ -195,14 +195,14 @@
     },
     {
       "id": "AUG-017",
-      "status": "active",
+      "status": "completed",
       "title": "Reconcile BigBounce's linked Vercel deployment configuration and deploy the current reproducibility projection",
       "completion_criteria": [
         "The linked Vercel project uses the repository's site/out build contract rather than stale root-static settings",
         "Production /reproduce renders the completed AUG-011 status",
         "The deployed artifact is verified against the pushed main commit"
       ],
-      "blocker": "Local .vercel/project.json declares buildCommand echo static and outputDirectory ., conflicting with root vercel.json (site/out); direct CLI deploy was stopped before it uploaded a stale 5.3GB root artifact."
+      "completion_evidence": "2026-08-26: linked Vercel project was updated to Next.js with installCommand 'cd site && npm install', buildCommand 'cd site && npm run build', and outputDirectory 'site/out'; root vercel.json now records the same contract. Production https://bigbounce.hubify.app/reproduce returned the completed AUG-011 markers 36,634 verified receipts, 45.5 hours, and 52,188 S>5 candidates, with no stale 'has not yet executed' text."
     }
   ],
   "historical_tasks": [

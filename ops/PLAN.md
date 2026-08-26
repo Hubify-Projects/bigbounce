@@ -72,6 +72,12 @@ records 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate
 rows removed, and 52,188 S>5 after dedup. That closes the scan stage, not the
 flagship follow-on work.
 
+The public reproducibility projection was re-verified on production on
+2026-08-26 after the linked Vercel project was reconciled to the repository's
+Next.js static-export build contract. `/reproduce` now displays the completed
+AUG-011 receipt/candidate markers; this public projection is not a substitute
+for authenticated access to the full shard/receipt corpus.
+
 The July 22 active-leg confirmation wave produced 19 genuinely-new-real
 findings across the portfolio; all were closed. The July 23–24 completeness
 resweep caught MAJOR items hidden beneath summary verdict labels and closed the
