@@ -17,6 +17,12 @@ This is not a rescan of 36,634 groups and does not change the selected sample. I
 
 Do not start a paid RunPod pod yet. The public zcatalog has now been staged and checksum-verified in a non-temporary cache. Run the enrichment script with its checkpoint/audit-log contract. A local run is technically possible but may be network- and CPU-bound over 3,128 groups. If local throughput is unsuitable, the exact same checkpointed command can be moved to a bounded RunPod volume; that is the first downstream compute action that may require credits.
 
+## Local transport observation — 2026-08-26
+
+The first local enrichment incarnation checkpointed 57 groups, then hung in the archived downloader's TLS read for a 214,104,960-byte coadd. The archived inference/model source remains untouched and checksum-bound. Commit `9d35c039` replaced only the enrichment wrapper's transport with an atomic, 120-second socket-timeout downloader; its focused phase-3 tests and all manifest validation pass.
+
+The official DESI endpoint delivered a sampled 1 MiB range at roughly **124 KB/s** from this machine. At that observed rate, serial local transfer is not a viable completion route for 3,128 groups. The restarted run remains checkpointed and safe, but a bounded GPU/CPU host with materially better archive throughput (or an approved official mirror) is now the practical execution gate. RunPod inventory currently shows no active pods; no new paid compute has been started.
+
 ## Completion evidence
 
 The gate closes only when the enrichment manifest binds the selected-sample SHA, contract SHA, zcatalog SHA, every completed group, and a zero-skipped final merge. Cross-match, taxonomy, named-object validation, public archival release, and manuscript drafting remain separate gates.
