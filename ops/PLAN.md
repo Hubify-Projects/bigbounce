@@ -66,6 +66,12 @@ two specialist outputs (P1A and P1B), one standalone companion (P5), and one
 supporting data release (current P3). See the architecture reset for the
 rationale.
 
+The clean DESI rerun scan/provenance stage is complete: the post-dedup summary
+at `pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json`
+records 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate
+rows removed, and 52,188 S>5 after dedup. That closes the scan stage, not the
+flagship follow-on work.
+
 The July 22 active-leg confirmation wave produced 19 genuinely-new-real
 findings across the portfolio; all were closed. The July 23–24 completeness
 resweep caught MAJOR items hidden beneath summary verdict labels and closed the
@@ -87,6 +93,9 @@ No exact artifact requires scientific reopening. The usable provider coverage
 is uneven and travels with each decision packet—especially P5, whose completed
 leg covered pages 1–25 of 46—so this evidence advances the work to Houston's
 visual review without being mislabeled as multi-provider or human consensus.
+Houston's decision in Phase C is publication authorization on the bound
+evidence packet, not a request that Houston independently re-audit the
+technical science.
 
 ## Phase plan
 
@@ -101,7 +110,8 @@ visual review without being mislabeled as multi-provider or human consensus.
 
 The initial claim audit is complete at
 `project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md`. Its next gate
-is artifact restoration or a clean rerun—not manuscript polishing.
+is the completed rerun's follow-on validation, taxonomy, and manuscript work,
+not another scan.
 
 ### Phase A — truth reconciliation and production sync (complete 2026-08-03)
 
@@ -157,9 +167,11 @@ contract after proving the enhanced parent/calibration unrecoverable.
 
 1. Collect Houston's decisions in order P2 → P1A → P4 → P1B → P5 using the
    bounded visual-review packet; P3 receives integration feedback only.
-2. Execute the clean public-ID-first DESI rerun from immutable inputs.
-3. Architect the rebuilt anomaly flagship around the defensible selected
-   sample, validation, taxonomy, and named follow-up objects.
+2. Complete the rebuilt anomaly flagship follow-on from the finished clean
+   rerun: selected sample, validation contract, taxonomy, and manuscript.
+3. Re-verify the 2026-08-26 backup and compute receipts against the completed
+   rerun outputs, then align Hubify canonical-lab surfaces once authenticated
+   access is available.
 4. After each approval, run that work's archive/portal/endorsement checklist
    and preserve external receipts; do not wait for every paper to be approved.
 

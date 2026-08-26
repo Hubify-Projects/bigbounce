@@ -28,8 +28,10 @@ galaxy chirality—with primary science separated from theory notes, software,
 technical data products, and companions. Preserve all finished candidate
 packages while removing the old six-equal-papers framing.
 
-The immediate scientific task is to reconcile the surviving original DESI
-anomaly artifacts and claims. Current P3 r17 is the integrated supporting
+The immediate scientific task is the DESI anomaly follow-on from the completed
+clean rerun: turn the scan/provenance result into the defensible selected
+sample, validation contract, taxonomy, and manuscript while keeping the
+publication state honest. Current P3 r17 is the integrated supporting
 public-ID/provenance release, not the anomaly flagship. P5 is a standalone AJ
 companion to P4.
 

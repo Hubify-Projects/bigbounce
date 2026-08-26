@@ -1,6 +1,6 @@
 # Tasks — BigBounce publication program
 
-## Current authoritative queue — 2026-08-04
+## Current authoritative queue — 2026-08-26
 
 The executable program plan is [`../ops/PLAN.md`](../ops/PLAN.md); the canonical
 paper queue is [`SSOT/queue.md`](SSOT/queue.md). This section is the current
@@ -48,12 +48,11 @@ preserved audit history and must not be read as the active queue.
   model was hash-bound and a fail-closed public-ID-first rerun contract with
   tests was selected and committed. Completed 2026-08-04; the full scan is not
   implied by this gate.
-- [ ] **AUG-011 — Rebuilt anomaly flagship:** execute the clean rerun and reproduce one defensible sample,
-  validation contract, taxonomy, and named follow-up set before drafting.
+- [x] **AUG-011 — Rebuilt anomaly flagship scan/provenance stage:** the clean rerun and post-dedup summary are complete; the scan stage produced `pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json` with 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 S>5 after dedup. Remaining flagship work is validation, taxonomy, named follow-up set, and manuscript assembly.
   *2026-08-05 progress:* campaign assets committed (`ac176614`, `9729c287`;
   15/15 offline tests) and the phase-1 chain (zcatalog SHA-verify → inventory →
-  sealed manifest/calibration → contract → 5-group smoke) is running on RunPod
-  pod `tc291bka0r6fl3`; full scan gated on smoke review.
+  sealed manifest/calibration → contract → 5-group smoke) was running on RunPod
+  pod `tc291bka0r6fl3`; that scan stage is now complete.
 - [ ] **AUG-012 — Selected-portfolio execution board:** maintain six standalone
   works (including the rebuilt anomaly flagship and P5, excluding P3) plus the
   integrated P3 release; then resume sign-off, archives, endorsers, and venues.
@@ -61,15 +60,21 @@ preserved audit history and must not be read as the active queue.
   five exact PDFs to the current preflight and final-hash audits, documented
   every provider/page limitation, and created one concise review packet in the
   recommended order. Completed 2026-08-04; Houston decisions remain AUG-004.
+- [ ] **AUG-014 — Anomaly flagship follow-on validation/taxonomy/manuscript:** turn the completed clean rerun into the defensible selected sample, validation contract, taxonomy, and manuscript draft.
+- [ ] **AUG-015 — 2026-08-26 backup/compute receipt re-verification:** re-check backup receipts, compute receipts, and the post-dedup run artifacts against the recorded clean rerun outputs without claiming any fresh remote backup verification.
+- [ ] **AUG-016 — Hubify canonical-lab alignment:** align the canonical lab/status surfaces with the current repo and SSOT truth once authenticated access is available.
 
 ## Current state
 
-The approved portfolio has three lead science stories: P2, a rebuilt DESI
-anomaly flagship, and P4. P1A and P1B are specialist Note/software works. P5 is
-a standalone AJ companion. Current P3 r17 is the integrated public-ID/provenance
+The approved portfolio has three lead science stories: P2, the completed DESI
+anomaly scan/provenance stage with active validation/taxonomy/manuscript
+follow-on, and P4. P1A and P1B are specialist Note/software works. P5 is a
+standalone AJ companion. Current P3 r17 is the integrated public-ID/provenance
 release for the rebuilt anomaly program and is not a standalone submission.
 Preserved candidate readiness remains evidence; it does not replace Houston's
-selected-manuscript review or the anomaly rebuild.
+selected-manuscript review, which is publication authorization based on the
+bound evidence packet rather than a request to independently re-audit the
+technical science.
 
 ## Historical task ledger
 

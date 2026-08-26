@@ -1,6 +1,6 @@
 # BigBounce current queue — authoritative entry point
 
-**Reconciled 2026-08-04 · progressed 2026-08-05.** The older chronological
+**Reconciled 2026-08-26.** The older chronological
 ledger below begins with historical entries and is retained for provenance.
 The active work is:
 
@@ -11,31 +11,13 @@ The active work is:
 2. **HOUSTON — final sign-off:** decide P2, P1A, P4, P1B, and P5 in that order;
    only explicit `APPROVE` moves that manuscript from Directive-P 95 to 100.
    There is no 96 state. P3 receives support-release integration feedback only.
-3. **ACTIVE — anomaly flagship (AUG-011) — FULL SCAN RUNNING since
-   2026-08-05 09:43Z:** phase 1 sealed and committed (`568a33bf`:
-   input manifest with official zcatalog SHA `2d95ad99…`, 36,634-group
-   locator inventory `f3299a31…`, two-stage PPS calibration sealed —
-   mse_mean 0.8771 / mse_std 1.3605, stability gate PASSED at deviation
-   0.0054 vs bound 0.0481 — run contract binding model `f5266ba4…` +
-   inference code `3e7efb24…`); sealed inputs mirrored to GitHub + HF
-   dataset `bamfai/bigbounce-aug-011-clean-rerun` + local (3 locations).
-   Public-ID-first filter added (`b5518a5d`, 26/26 tests): every shard keeps
-   only zcatalog-vouched TARGETIDs with a per-group JSON audit line
-   (smoke: kept == zcat_rows exactly, 0 surplus, on all 5 groups; the
-   group-targetids export `013990ca…` agrees with the inventory on all
-   36,634 groups / 28,425,963 rows). Full scan: 12 parallel workers +
-   auto-restart babysitter + 2-hourly backup loop (B2 `$B2_BUCKET`
-   aug-011-clean-rerun/ + HF receipts/state) on RunPod pod `tc291bka0r6fl3`
-   (ssh -p 1349 root@193.183.22.56, A4000, $0.17/hr). Observed rate
-   ~12 groups/min → ~2 days wall-clock. On completion: verify-receipts →
-   summarize-after-dedup → compare-generations → commit receipts/summary,
-   then build the defensible selected sample + taxonomy (flagship phase 3).
-   *Incident 2026-08-05 17:2xZ (resolved):* duplicate supervisor launches had
-   spawned extra same-range workers; full stop + fail-closed reconcile found
-   **all 11,200 shards receipt-verified intact** (0 bad / 0 orphans),
-   checkpoints rebuilt from verified receipts, singleton babysitter + backup
-   loop relaunched under flock; huggingface_hub installed to fix the failing
-   HF backup leg (B2 leg had 3 good cycles throughout).
+3. **DONE — anomaly flagship scan/provenance stage (AUG-011):** the clean rerun
+   completed and the post-dedup summary at
+   `pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json`
+   records 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate
+   rows removed, and 52,188 S>5 after dedup. The scan/provenance stage is
+   closed; remaining work is the defended selected sample, validation contract,
+   taxonomy, named follow-up set, and manuscript assembly.
 4. **HOUSTON + AGENT — publishing:** PRD/CQG/ApJS/JORS/AJ portal work, tracked
    separately from readiness. arXiv endorsement remains a parallel channel.
    2026-08-04/05 hygiene pass: WAVE1/WAVE2 kits + May sign-off brief marked
@@ -45,8 +27,10 @@ The active work is:
    publishing items are Houston-only (approvals, accounts, reviewer picks,
    fee/waiver, endorsement emails, submit clicks) + post-approval Zenodo
    P4 refresh / P5 mint.
-5. **WATCHPOINT — Hubify auth:** restore `HUBIFY_TOKEN` through an approved
-   secret source before CLI verification; this is not on the repo/site path.
+5. **ACTIVE — Hubify canonical-lab alignment / auth gap:** restore
+   `HUBIFY_TOKEN` through an approved secret source before CLI verification;
+   then align the canonical lab/status surfaces with the current repo and SSOT
+   truth. This is not on the repo/site path.
 
 Completed this pass: atomic truth/production synchronization, repository
 consolidation, the three-program architecture, current-hash acceptance, and the

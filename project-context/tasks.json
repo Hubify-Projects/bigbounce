@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "updated_at": "2026-08-18T17:30:00-07:00",
+  "updated_at": "2026-08-26T00:00:00-07:00",
   "project": "bigbounce",
-  "objective": "Ship the approved three-program public architecture, restore or rerun the DESI anomaly flagship evidence chain, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.",
+  "objective": "Ship the approved three-program public architecture, complete the DESI anomaly flagship follow-on work after the clean rerun and post-dedup scan/provenance stage, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.",
   "canonical_plan": "ops/PLAN.md",
   "canonical_status": "project-context/SSOT/index.md",
   "current_versions": {
@@ -126,11 +126,12 @@
     },
     {
       "id": "AUG-011",
-      "status": "pending",
-      "title": "Execute the clean DESI rerun and build the defensible anomaly flagship sample, validation, taxonomy, and manuscript",
+      "status": "complete",
+      "title": "Complete the clean DESI rerun and post-dedup scan/provenance stage",
       "depends_on": [
         "AUG-010"
-      ]
+      ],
+      "completion_evidence": "The clean rerun completed and produced pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json with 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 S>5 after dedup. The remaining flagship work is validation, taxonomy, named follow-up selection, and manuscript assembly."
     },
     {
       "id": "AUG-012",
@@ -151,6 +152,46 @@
         "AUG-008"
       ],
       "completion_evidence": "project-context/SSOT/HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md binds exact versions, hashes, purposes, claim limits, provider coverage, live PDFs, portal kits, and APPROVE/REVISE/DEFER decisions; no 96 state"
+    },
+    {
+      "id": "AUG-014",
+      "status": "active",
+      "title": "Build the anomaly flagship follow-on sample, validation contract, taxonomy, and manuscript",
+      "depends_on": [
+        "AUG-011"
+      ],
+      "completion_criteria": [
+        "The defensible selected sample is derived from the completed clean rerun",
+        "Validation and taxonomy are written against the recorded post-dedup artifacts",
+        "The manuscript draft reflects the completed scan/provenance stage without overstating readiness"
+      ]
+    },
+    {
+      "id": "AUG-015",
+      "status": "active",
+      "title": "Re-verify 2026-08-26 backup and compute receipts against the completed rerun",
+      "depends_on": [
+        "AUG-011"
+      ],
+      "completion_criteria": [
+        "The recorded backup and compute receipts match the clean rerun outputs",
+        "No fresh remote backup verification is claimed",
+        "Any mismatch is truth-audited before the queue is advanced"
+      ]
+    },
+    {
+      "id": "AUG-016",
+      "status": "active",
+      "title": "Align the Hubify canonical lab surfaces with current repo and SSOT truth",
+      "depends_on": [
+        "AUG-007"
+      ],
+      "critical_path": false,
+      "completion_criteria": [
+        "Lab/status projections agree with the current repo state",
+        "Any auth gap is recorded explicitly rather than inferred away",
+        "No public claim is made until the canonical surfaces are reconciled"
+      ]
     }
   ],
   "historical_tasks": [
