@@ -71,17 +71,22 @@ TARGETIDs, 878,740 removed duplicates, and 52,188 rows above the sealed `S>5`
 threshold. That threshold count is a generation summary, not the still-pending
 scientific selected-sample cut.
 
-### (b) Filtered candidate slice — PLACEHOLDER thresholds
+### (b) Filtered candidate slice — selected 2026-08-26
 
-Analog of the historical 2,145-row rule (`anomaly_score > 3.0` and
-`max_snr > 0.5`, per the inventory's claim table), rebuilt on the new score
-distribution. **The exact thresholds are PLACEHOLDER and must be derived from
-the new run's score distribution, never copied from the historical rule or
-tuned to reproduce 2,145 rows.** Note the codebase also carries a distinct
-`S>5` selection threshold used by `summarize-after-dedup` for
-generation-comparison purposes (RUNBOOK step 13) — that is a different cut
-than the silver-slice rule and the two must not be conflated in the
-manuscript.
+The deterministic first characterization slice is `anomaly_score >= 8.0`:
+3,810 post-dedup TARGETIDs (0.0138% of 27,547,223 unique targets), with no
+survey/program exclusions. It was selected from the RUNBOOK's fixed
+3/4/5/6/8/10-sigma ladder after the completed generation's receipt-verified
+distribution was observed; it was not copied from the historical 2,145-row
+score/SNR rule or tuned to reproduce that count. The nested >=10 tier has 337
+rows and is only a priority-review subset. The decision and output binding are
+recorded in `ANOMALY_FLAGSHIP_SELECTION_DECISION_2026-08-26.md`.
+
+The codebase also carries a distinct `S>5` threshold used by
+`summarize-after-dedup` for generation comparison. That 52,188-row count is
+not the characterization rule and must not be conflated with it in the
+manuscript. The new shard schema has no SNR column, so SNR-aware filtering
+begins only after the enrichment stage.
 
 ### (c) SIMBAD/NED cross-match + unmatched-candidate taxonomy, rebuilt on the new slice
 

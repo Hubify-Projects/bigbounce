@@ -165,7 +165,7 @@
         "Validation and taxonomy are written against the recorded post-dedup artifacts",
         "The manuscript draft reflects the completed scan/provenance stage without overstating readiness"
       ],
-      "execution_gate": "2026-08-26 RunPod inventory: no BigBounce workspace is running; two stopped BigBounce pods are visible and one has a network volume. The full corpus is structurally retained in B2 but not locally mounted. Do not start or provision paid compute until the downstream sample-selection run is explicitly authorized; then mount the retained corpus, run build_flagship_sample.py --describe, choose the threshold from the observed distribution, and proceed through cross-match/taxonomy under the existing fail-closed contract."
+      "execution_gate": "2026-08-26 closure: the full B2 shard/receipt corpus was fetched locally and fresh receipt verification passed for all 36,634 groups. The observed fixed-ladder distribution selected the deterministic anomaly_score>=8.0, 3,810-row characterization sample; its Parquet, complete receipt-binding manifest, and bound parent summary are in the authenticated private rerun archive. No paid RunPod compute was required for selection. Remaining execution is enrichment (coordinates/per-band SNR/latents), fail-closed cross-match/taxonomy, independent validation of named objects, and manuscript assembly; a later bounded rerun is permitted only if retained inputs prove insufficient."
     },
     {
       "id": "AUG-015",
@@ -179,7 +179,7 @@
         "Fresh remote retention evidence is recorded with its exact verification scope",
         "Any mismatch is truth-audited before the queue is advanced"
       ],
-      "completion_evidence": "2026-08-26 local audit: summary.json and comparison.json match their manifest byte SHA-256 values; training/validation manifests match; calibration and contract semantic hashes are internally consistent when interpreted as canonical JSON-payload hashes, and their manifest entries carry raw file SHA-256 values. Authenticated B2 audit then counted exactly 36,634 receipt objects and 36,634 shard objects under aug-011-clean-rerun/. Authenticated Hugging Face audit found a partial private mirror of 10,000 receipt files plus sealed inputs/checkpoints. RunPod REST authentication succeeded and the historical pod is absent, as expected. This is a structural-retention audit, not a fresh multi-TB byte re-download."
+      "completion_evidence": "2026-08-26 local audit: summary.json and comparison.json match their manifest byte SHA-256 values; training/validation manifests match; calibration and contract semantic hashes are internally consistent when interpreted as canonical JSON-payload hashes, and their manifest entries carry raw file SHA-256 values. Authenticated B2 audit counted exactly 36,634 receipt objects and 36,634 shard objects under aug-011-clean-rerun/; every object was then freshly fetched locally and receipt-verified. The selected S>=8 sample (3,810 rows), its complete 36,634-receipt manifest, and parent summary were additively uploaded to the authenticated private rerun archive. RunPod REST authentication succeeded and the historical pod is absent, as expected. This does not claim a fresh multi-TB byte re-download of original DESI coadds or a public archival release."
     },
     {
       "id": "AUG-016",
