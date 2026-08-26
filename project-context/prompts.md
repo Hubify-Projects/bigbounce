@@ -993,3 +993,29 @@ Switched to Opus 4.7 + xhigh effort for this.
 > Was this branch committed or submitted via PR yet?
 >
 > Um, I need you to pull down from Maine and try to pull down any other. Any other branches or work trees on this computer related to the BigBounce project and/or this specific work tree that my Claude code was starting in it. You might be able to find it even if you can like open up and use the computer using Codex to manage the Claude desktop app and see if you can somehow try to recover it if it wasn't committed, or if it was all committed, then great. And maybe just scroll through, scan the context. But yeah, I don't know what the most recent sessions were that we were working on in the BigBounce repo to continue the research, as well as the Hubify repo to continue building Hubify out. So yeah, you might need to open up a Hubify session in Codex as well as a new one in BigBounce. And let's just try to get all of our computers and machines, just, we need to get aligned on where we're at, and I need to know concisely, what are the next steps, what are the blockers, why haven't we, why aren't we ready to publish yet, what should I look at and visually provide my feedback on next, most concisely.
+
+## 2026-08-26 - publication readiness and Hubify canonical-lab alignment
+
+### Houston messages, verbatim
+
+**11:39 PT - Synchronize branches, update plans, verify reproducibility and publishing readiness**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: publication readiness and Hubify canonical-lab alignment
+- `agent`: Codex GPT-5.6
+
+> Sync branches, update plans. Let me know what's remaining to be done for the Big Bounce research project and papers and how to get this ready for publishing. Also I would say if you can look into the Hubify project as well and make sure that the two are properly aligned with each other. That way we can have Big Bounce as sort of the canonical example lab that users can fork and run the lab themselves to reproduce the results and all that. Figure all that out and do whatever you need to do. 
+>
+> Create a goal that will continue with the highest level of helping me get these as well as everything that you can do without me ideally, as much as possible.
+>
+> I'm not even really qualified to be analyzing and assessing these, doing the human scientific review of these papers. All the science is really, frankly, above my head at this point so I kind of need to rely on you for this.
+>
+> I would love to make sure that we're moving everything forward properly and that: 
+>
+> - all of these papers are at a good stopping point
+> - all data from run pod and our other backups and everything is all safe and secure
+> - everything is ready for publishing
+>
+> Anything that needs to be rerun on run pod, we can rerun. You can let me know and I can add more credits to the run pod account if necessary. If not then just let me know what else needs to be done.
+>
+> I have been working on this for almost a year now. I need to get these scientific papers published and the hubify platform launched, as well as a joint sort of release, I guess.
