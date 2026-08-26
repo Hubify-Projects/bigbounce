@@ -277,13 +277,13 @@ export const reproPrograms: ReproProgram[] = [
       }
     ],
     "full_reproduction": {
-      "est_wall_clock": "Highly uncertain — the single most consequential open run (clean_rerun's run_scan.py full DESI DR1 iron scan, AUG-011) has not yet executed and has no wall-clock estimate beyond a qualitative 'download-bound, ~200GB volume' note. Of the legs that ARE runnable-now: most P3 legs (dedup, kfold gate, DP3-15 held-out, eROSITA control) are minutes-to-an-hour local-CPU; the NANOGrav PTA MCMC (192,000 samples) is hours-scale; the historical flagship legs (silver crossmatch, taxonomy, injection recovery, NEOWISE, gold z6 QSO, fnl tracer selection) are each minutes-to-an-hour on their preserved result JSONs.",
-      "est_cost_usd": 5,
-      "order": "Rollup estimate for the runnable-now legs only (local CPU-scale, ~$0 dominant); excludes the not-yet-executed clean_rerun full scan and the needs-data-restore legs (BigAE 18M inference, photo-z, Planck held-out native re-inference, multi-survey H200 snapshots, UMAP stability), none of which have a truthful cost/time estimate yet. Order: clean_rerun calibration (sealed, already done) should precede any full-scan attempt; P3 legs are independently parallelizable; the historical flagship legs are comparison-only and do not gate the clean_rerun path."
+      "est_wall_clock": "The completed AUG-011 scan ran about 45.5 hours on a RunPod A4000 and verified 36,634 shard receipts. Full independent reruns remain download-bound and multi-day; downstream sample selection, validation, taxonomy, and manuscript work are still pending because the full shard corpus is not in this checkout.",
+      "est_cost_usd": 7.74,
+      "order": "The scan is complete: retain its sealed result as a distinct generation, acquire its verified shard/receipt corpus through an authorized source, then derive a threshold from the observed distribution before sample selection. Do not tune toward historical counts. Historical BigAE/H200 legs remain comparison-only or needs-data-restore."
     },
     "hubify": {
       "lab_slug": "bigbounce",
-      "module_notes": "This program has the lab's largest reproducibility gap: the flagship-defining clean_rerun full scan (AUG-011) is sealed at calibration but not yet executed, so Hubify should NOT surface a run-cost estimate for the full scan until a real receipt exists. Historical BigAE/H200 legs are flagged needs-data-restore/superseded and should be shown as lineage, not offered as live reproduction targets."
+      "module_notes": "AUG-011 is complete and receipt-verified (36,634 groups; 27,547,223 unique TARGETIDs; 52,188 at the sealed S>5 threshold). Its corpus is not present in this checkout and its named Hugging Face mirror returned unauthenticated/private 401, so Hubify must not present the completed corpus as anonymously forkable. Historical BigAE/H200 legs remain lineage, not live reproduction targets."
     }
   },
   {
@@ -717,7 +717,7 @@ export const reproExperiments: ReproExperiment[] = [
   {
     "manifest_version": "bigbounce-experiment/v1",
     "id": "anomaly-clean-rerun-scan",
-    "title": "clean_rerun campaign (AUG-011) — calibration stage, sealed 2026-08-05",
+    "title": "clean_rerun campaign (AUG-011) — completed sealed generation, 2026-08-07",
     "program": "anomaly-discovery",
     "paper": "anomaly-flagship",
     "kind": "inference-scan",
@@ -773,21 +773,31 @@ export const reproExperiments: ReproExperiment[] = [
     },
     "original_run": {
       "venue": "runpod",
-      "gpu": null,
-      "pod_id_or_host": null,
+      "gpu": "RTX A4000",
+      "pod_id_or_host": "tc291bka0r6fl3",
       "date": "2026-08-05T09:19:13Z",
-      "wall_clock": null,
-      "actual_cost_usd": null
+      "wall_clock": "45.5h",
+      "actual_cost_usd": 7.74
     },
     "reproduction": {
       "recommended_venue": "runpod (A4000-class GPU or CPU-strong instance, ~200GB volume)",
-      "est_wall_clock": "calibration stage: hours (bounded ~25GB two-stage PPS-cluster download over ~200 coadd groups). Full DESI DR1 scan (run_scan.py): NOT YET EXECUTED anywhere — no wall-clock evidence exists; download-bound across tens of thousands of healpix groups, so this is a multi-day estimate pending a real run, not a recorded fact",
-      "est_cost_usd": 15,
+      "est_wall_clock": "Completed run recorded at 45.5h on RunPod A4000 tc291bka0r6fl3; no separate estimate remains for the sealed generation.",
+      "est_cost_usd": 7.74,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "This manifest covers the CALIBRATION STAGE ONLY, which is sealed and runnable-now (n_fit=20,000 / n_validation=20,000, two-stage PPS-cluster sample over 200 groups / 40,000 rows, stability check PASS: observed_deviation=0.00543 <= bound 0.0481). The full DESI-DR1-scale scan via run_scan.py is the pending, not-yet-executed, single most consequential open experiment in the repo — it has no wall-clock or dollar figure recorded anywhere (Top-5-gaps #1). run_scan.py exists, is contract-validated against the sealed calibration, and is ready to execute, but until it actually runs this manifest cannot claim a full-scan reproduction cost with any evidence; the $15 estimate above is for the calibration stage only (bounded ~25GB download at typical RunPod A4000-class hourly rates), not for the full multi-TB scan. Per RUNBOOK.md §0, the scan is download-bound (DESI archive throughput + per-pixel HTTP overhead across tens of thousands of healpix groups), not GPU-bound, so --start/--end parallel workers matter more than GPU class."
+      "notes": "The AUG-011 clean rerun is complete and receipt-verified: 36,634/36,634 shard groups scored, 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above the sealed anomaly_score>5.0 threshold. The full corpus and derived sample artifacts are not in this checkout; the Hugging Face remote returned unauthenticated/private 401, so do not describe that corpus as publicly available from this repository. Remaining active work is downstream sample selection, validation, taxonomy, external-catalog joins, and manuscript drafting."
     },
     "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json",
+        "type": "result-json",
+        "checksum": "cdf9938e5c284a567d85db0d1181124c5f75fe6469e112cad864dc6acde91cbd"
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/comparison.json",
+        "type": "result-json",
+        "checksum": "2c35419d911797e220adcf23dac93e930f94897c825f2270aca51a894eed494e"
+      },
       {
         "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/calibration.json",
         "type": "result-json",
@@ -809,11 +819,12 @@ export const reproExperiments: ReproExperiment[] = [
         "checksum": null
       }
     ],
-    "verification": "Re-run the calibration stage and confirm n_fit=20,000 / n_validation=20,000 over the same 200-group / 40,000-row two-stage PPS-cluster sample, with the stability check passing under the committed rule abs(validation_mse_mean - mse_mean) <= 5*(mse_std/sqrt(n_fit)) (observed deviation 0.00543 against a bound of 0.0481 in the sealed calibration.json). Full-scan verification (row counts, anomaly rates at DESI-DR1 scale) is not yet possible since run_scan.py has not been executed.",
+    "verification": "Full-scan verification passed: verify-receipts covered 36,634/36,634 groups, summarize-after-dedup produced 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above anomaly_score>5.0. The completed run is recorded in pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/{complete.log,summary.json,comparison.json}; no further full-scan verification remains for AUG-011.",
     "status": "runnable-now",
     "provenance": [
+      "commit 0663e42cbb7e391b96053bd55d07ee500b22db92 (AUG-011 scan COMPLETE; wall ~45.5h on RunPod A4000 tc291bka0r6fl3 at $0.17/hr)",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/{complete.log,summary.json,comparison.json}",
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — clean_rerun campaign (AUG-011) bullet",
-      "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps, item 1 (full-scan wall-clock/cost evidence missing)",
       "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md §0 (honest scale estimates)",
       "pipelines/p1_highz_tracers/clean_rerun_contract.py",
       "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/calibration.json and run-contract.json (created_utc 2026-08-05T09:19:13Z, stability_check.passed=true)",

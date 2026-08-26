@@ -246,13 +246,13 @@ Per `project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md`, these are h
   outputs: `outputs/fnl_tracer_selection/fnl_forecast.json`, `step6_alpha_empirical/alpha_empirical_results.json` — **"not a result," α consistent with 0** per audit
   reproducibility: runnable-now (negative result — do not headline)
 
-- **exp: clean_rerun campaign (AUG-011) — calibration stage SEALED 2026-08-05**
+- **exp: clean_rerun campaign (AUG-011) — completed sealed generation 2026-08-07**
   scripts: `pipelines/p1_highz_tracers/clean_rerun/{derive_locator_inventory.py,build_calibration.py,run_scan.py}`, contract `clean_rerun_contract.py`
   inputs: DESI DR1 `iron` zcatalog `https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits` (sha256-pinned, ~27GB), full coadd corpus (multi-TB, streamed/deleted per-pixel), archived `best_model_47k.pt`
   venue: **RunPod, "A4000-class GPU or CPU-strong instance," ~200GB volume** (download-bound not GPU-bound, per RUNBOOK.md §0)
-  outputs (calibration only, so far): `sealed_2026-08-05/{calibration,training_manifest,validation_manifest,run-contract}.json` — n_fit=20,000/n_validation=20,000, PPS-cluster sample over 200 groups/40,000 rows, created_utc `2026-08-05T09:19:13Z`, stability check PASS
-  cost/time: not dollar-logged; calibration is a bounded ~25GB download step; full scan (`run_scan.py`) **has not yet been executed** — this is the single most consequential open experiment in the repo right now
-  reproducibility: runnable-now for calibration (sealed); full scan is needs-data-restore/pending (AUG-011 not yet executed)
+  outputs: sealed calibration/contract plus `clean_rerun/results_2026-08-07/{summary,comparison}.json`. The full scan receipt check verified 36,634/36,634 shards; the independent post-dedup generation has 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 `S>5` candidates.
+  cost/time: completed in about 45.5h on RunPod A4000 `tc291bka0r6fl3` at $0.17/hr (about $7.74); this is a recorded run, not a prospective estimate.
+  reproducibility: scan completed and provenance-bound. The full shard/receipt corpus and downstream selected sample are not in this checkout; the named HF mirror was not anonymously accessible at this audit. Sample selection, validation, taxonomy, and manuscript work remain pending.
 
 ### P3 — DESI Public-ID Recovery Catalog (supporting release, not standalone paper). HF `bamfai/bigbounce-anomaly-catalog`, GitHub `Hubify-Projects/bigbounce`, Zenodo `10.5281/zenodo.21461888`.
 - **exp: DP3-15 held-out re-inference (structural-ceiling demonstration)**

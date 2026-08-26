@@ -37,12 +37,12 @@
     { "name": "P3 Zenodo archive", "link": "https://doi.org/10.5281/zenodo.21461888", "kind": "zenodo-archive", "license": null }
   ],
   "full_reproduction": {
-    "est_wall_clock": "Highly uncertain — the single most consequential open run (clean_rerun's run_scan.py full DESI DR1 iron scan, AUG-011) has not yet executed and has no wall-clock estimate beyond a qualitative 'download-bound, ~200GB volume' note. Of the legs that ARE runnable-now: most P3 legs (dedup, kfold gate, DP3-15 held-out, eROSITA control) are minutes-to-an-hour local-CPU; the NANOGrav PTA MCMC (192,000 samples) is hours-scale; the historical flagship legs (silver crossmatch, taxonomy, injection recovery, NEOWISE, gold z6 QSO, fnl tracer selection) are each minutes-to-an-hour on their preserved result JSONs.",
-    "est_cost_usd": 5.0,
-    "order": "Rollup estimate for the runnable-now legs only (local CPU-scale, ~$0 dominant); excludes the not-yet-executed clean_rerun full scan and the needs-data-restore legs (BigAE 18M inference, photo-z, Planck held-out native re-inference, multi-survey H200 snapshots, UMAP stability), none of which have a truthful cost/time estimate yet. Order: clean_rerun calibration (sealed, already done) should precede any full-scan attempt; P3 legs are independently parallelizable; the historical flagship legs are comparison-only and do not gate the clean_rerun path."
+    "est_wall_clock": "The completed AUG-011 scan ran about 45.5 hours on a RunPod A4000 and verified 36,634 shard receipts. Full independent reruns remain download-bound and multi-day; downstream sample selection, validation, taxonomy, and manuscript work are still pending because the full shard corpus is not in this checkout.",
+    "est_cost_usd": 7.74,
+    "order": "The scan is complete: retain its sealed result as a distinct generation, acquire its verified shard/receipt corpus through an authorized source, then derive a threshold from the observed distribution before sample selection. Do not tune toward historical counts. Historical BigAE/H200 legs remain comparison-only or needs-data-restore."
   },
   "hubify": {
     "lab_slug": "bigbounce",
-    "module_notes": "This program has the lab's largest reproducibility gap: the flagship-defining clean_rerun full scan (AUG-011) is sealed at calibration but not yet executed, so Hubify should NOT surface a run-cost estimate for the full scan until a real receipt exists. Historical BigAE/H200 legs are flagged needs-data-restore/superseded and should be shown as lineage, not offered as live reproduction targets."
+    "module_notes": "AUG-011 is complete and receipt-verified (36,634 groups; 27,547,223 unique TARGETIDs; 52,188 at the sealed S>5 threshold). Its corpus is not present in this checkout and its named Hugging Face mirror returned unauthenticated/private 401, so Hubify must not present the completed corpus as anonymously forkable. Historical BigAE/H200 legs remain lineage, not live reproduction targets."
   }
 }

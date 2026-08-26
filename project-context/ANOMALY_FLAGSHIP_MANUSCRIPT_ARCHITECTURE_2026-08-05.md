@@ -6,10 +6,10 @@ architecture" (`PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`, step 2)**
 This document is derived from `ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md`
 (the "Recommended flagship scope," "Claim-by-claim audit," and "Required
 closure gates" sections), the reset doc's survey-discovery program row, and
-`SSOT/queue.md` item 3 (AUG-011, the clean rerun now running). No number below
+`SSOT/queue.md` item 3 (AUG-011, the completed clean rerun). No number below
 was invented for this document — every historical figure is lifted from the
-inventory, every AUG-011 figure is lifted from queue item 3, and every
-new-generation quantity that does not exist yet is marked **PLACEHOLDER**.
+inventory, every AUG-011 figure is bound to the completed-run receipts, and
+every downstream quantity that does not exist yet is marked **PLACEHOLDER**.
 
 It does not itself contain new science. It is the skeleton the manuscript gets
 written into once AUG-011's remaining phases land.
@@ -17,8 +17,9 @@ written into once AUG-011's remaining phases land.
 ## 0. What changed since the inventory
 
 The inventory's fallback route ("rerun a clean DESI survey") is the route
-Houston chose and it is now executing: AUG-011 sealed its contract 2026-08-05
-(commit `568a33bf`) and is mid-scan. That means this architecture is written
+Houston chose and it completed: AUG-011 sealed its contract 2026-08-05
+(commit `568a33bf`) and completed its receipt-verified scan on 2026-08-07
+(commit `0663e42c`). That means this architecture is written
 against the fallback route, not the preferred route — **the primary sample is
 the new sealed-contract generation, not the 2,145/1,127 historical slice.**
 The historical slice remains real, preserved, and useful, but only as a
@@ -60,14 +61,15 @@ for every scored candidate. The provenance chain to publish:
   with the inventory on all 36,634 groups / 28,425,963 rows;
 - per-group JSON audit line for every scored group (`kept`, `surplus_dropped`,
   `zcat_missing_from_coadd`), not just the groups that dropped rows;
-- shard-level receipts (11,200 shards receipt-verified intact as of the
-  2026-08-05 incident reconciliation — 0 bad, 0 orphans).
+- shard-level receipts (36,634/36,634 receipt-verified by the completed-run
+  log).
 
 The catalog is the `summarize-after-dedup` output: last-TARGETID-occurrence
-deduplication in lexical shard-then-row order, streamed through SQLite. **Row
-count is PLACEHOLDER** — the scan is still running (queue item 3: "FULL SCAN
-RUNNING since 2026-08-05 09:43Z," observed rate ~12 groups/min → ~2 days
-wall-clock as of that entry).
+deduplication in lexical shard-then-row order, streamed through SQLite. The
+completed generation contains 28,425,963 raw rows, 27,547,223 unique
+TARGETIDs, 878,740 removed duplicates, and 52,188 rows above the sealed `S>5`
+threshold. That threshold count is a generation summary, not the still-pending
+scientific selected-sample cut.
 
 ### (b) Filtered candidate slice — PLACEHOLDER thresholds
 
