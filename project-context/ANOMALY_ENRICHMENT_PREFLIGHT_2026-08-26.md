@@ -23,6 +23,10 @@ The first local enrichment incarnation checkpointed 57 groups, then hung in the 
 
 The official DESI endpoint delivered a sampled 1 MiB range at roughly **124 KB/s** from this machine. At that observed rate, serial local transfer is not a viable completion route for 3,128 groups. The restarted run remains checkpointed and safe, but a bounded GPU/CPU host with materially better archive throughput (or an approved official mirror) is now the practical execution gate. RunPod inventory currently shows no active pods; no new paid compute has been started.
 
+## Portable partial checkpoint — 2026-08-26
+
+The first 57 completed group shards, their checkpoint, audit log, and a SHA-256-bound resume manifest are preserved in the existing private dataset archive at `phase3/2026-08-26/partial-enrichment-s8/`. The archive holds 60 files: 57 Parquet shards plus `checkpoint.json`, `audit.jsonl`, and `partial_enrichment_resume_manifest.json`. It is explicitly marked partial and is not a candidate catalogue or public release. A faster host must restore this bundle alongside the immutable S8 sample/manifest, exact contract/model, and checksum-verified zcatalog, then rerun the identical enrichment command.
+
 ## Completion evidence
 
 The gate closes only when the enrichment manifest binds the selected-sample SHA, contract SHA, zcatalog SHA, every completed group, and a zero-skipped final merge. Cross-match, taxonomy, named-object validation, public archival release, and manuscript drafting remain separate gates.
