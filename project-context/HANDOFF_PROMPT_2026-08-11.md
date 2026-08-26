@@ -43,9 +43,10 @@ packet. Commit the goal contract before starting execution.
 STEP 3 — WORK STREAMS (run in parallel with subagents; never idle):
 
 A. AUG-011 ANOMALY FLAGSHIP (highest science value):
-   Check RunPod pod tc291bka0r6fl3 (ssh -p 1349 root@193.183.22.56) — the
-   36,634-group full scan started 2026-08-05 09:43Z at ~12 groups/min (~2 days
-   ETA), so it should be COMPLETE. Harvest: verify-receipts →
+   Check the authorized RunPod workspace for pod tc291bka0r6fl3 — the
+   36,634-group full scan completed 2026-08-07 with 36,634/36,634 verified
+   receipts, 45.5h wall-clock, about $7.74 total cost, and 52,188 S>5
+   candidates. Harvest: verify-receipts →
    summarize-after-dedup → compare-generations → commit receipts + summary.
    /backup-3plus before anything destructive (local + HF
    bamfai/bigbounce-aug-011-clean-rerun + B2 aug-011-clean-rerun/). Then
@@ -118,5 +119,6 @@ responds.
 **Provenance:** Written at session close 2026-08-11 after full sync verification
 (local main == origin/main, no open PRs, no unmerged branches, bigbounce-lab
 also clean/synced). State basis: SSOT board 2026-08-03 (six candidates at 95),
-queue.md 2026-08-05 (AUG-011 scan running), P1C R13 closed at v1C.0.16
+queue.md 2026-08-05 (AUG-011 scan later completed; follow-on sample/taxonomy
+still pending), P1C R13 closed at v1C.0.16
 (commits `2d445855`…`09ce16c9`).

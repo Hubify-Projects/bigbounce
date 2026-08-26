@@ -303,14 +303,14 @@ Per `project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md`, these are h
 |---|---|---|
 | bounce-theory | P1A, P1B, P2 | 13 (P2: 6 · P1A: 4 · P1B: 2, minus double-count of shared pod session) |
 | chirality | P4, P5 | 20 (P4: 13 · P5: 7) |
-| anomaly | P3 + rebuilt flagship (p1_highz_tracers) | 18 (flagship/historical: 9 · clean_rerun in-progress: 1 · P3: 8) |
+| anomaly | P3 + rebuilt flagship (p1_highz_tracers) | 18 (flagship/historical: 9 · clean_rerun complete: 1 · P3: 8) |
 | **Total** | 6 papers + 1 supporting release | **~51 discrete experiments/runs** inventoried (not exhaustive — h200_results/ alone holds 30+ additional per-survey artifact directories not individually itemized above, e.g. `taxonomy-retuned`, `spatial-clustering`, `emission_lines`, `desi-taxonomy`, each with its own JSON but no dedicated compute-manifest doc) |
 
 ---
 
 ## Top 5 gaps — venue/cost/time evidence missing
 
-1. **P1 highz_tracers `clean_rerun` full scan (AUG-011)** — the single highest-priority gap: calibration is sealed (2026-08-05) but `run_scan.py`'s full DESI DR1 `iron` scan has not executed, so there is no wall-clock or dollar figure for the actual flagship-defining run yet. RUNBOOK gives a qualitative venue note ("A4000-class or CPU-strong, download-bound") but no cost estimate.
+1. **P1 highz_tracers `clean_rerun` full scan (AUG-011)** — the single highest-priority gap is now the follow-on work: the completed scan verified 36,634/36,634 shards, produced the post-dedup summary with 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 `S>5` candidates, and ran for about 45.5h on RunPod A4000 `tc291bka0r6fl3` at $0.17/hr (about $7.74). RUNBOOK's venue note ("A4000-class or CPU-strong, download-bound") remains useful for provenance; the open gap is the defensible selected sample, validation contract, taxonomy, named follow-up set, and manuscript.
 
 2. **P3 NANOGrav PTA MCMC (`free_spectrum_real_2026-05-01/emcee_freespec.py`)** — 192,000-sample run with a full results JSON and chain file, but no RunPod pod ID, GPU/CPU class, $/hr, or wall-clock anywhere in `pipelines/p3_pta_mcmc/` or the referencing SSOT sections found.
 

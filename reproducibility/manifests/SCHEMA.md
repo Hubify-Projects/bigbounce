@@ -99,9 +99,9 @@ numeric tolerance). Reproductions get appended to the experiment's
 | anomaly-discovery | 17 | 12 | 5 | 0 |
 | **Total** | **52** | **41** | **9** | **2** |
 
-**Open evidence gaps carried over verbatim from the inventory (TODOs — not yet closed):**
+**Open evidence gaps carried over from the inventory (TODOs — not yet closed):**
 
-1. **P1 highz_tracers `clean_rerun` full scan (AUG-011)** — the single highest-priority gap: calibration is sealed (2026-08-05) but `run_scan.py`'s full DESI DR1 `iron` scan has not executed, so there is no wall-clock or dollar figure for the actual flagship-defining run yet. RUNBOOK gives a qualitative venue note ("A4000-class or CPU-strong, download-bound") but no cost estimate.
+1. **P1 highz_tracers `clean_rerun` full scan (AUG-011)** — scan-stage venue/cost evidence is closed: 36,634/36,634 shard receipts verified, 45.5h on RunPod A4000, and about $7.74. The open reproducibility gap is retention/access: the full shard and receipt corpus is absent from this checkout, so a fresh remote integrity check and the downstream selected-sample, validation, taxonomy, and manuscript stages require an authorized corpus source. The completed scan must remain a distinct generation and must never be tuned toward historical counts.
 2. **P3 NANOGrav PTA MCMC (`free_spectrum_real_2026-05-01/emcee_freespec.py`)** — 192,000-sample run with a full results JSON and chain file, but no RunPod pod ID, GPU/CPU class, $/hr, or wall-clock anywhere in `pipelines/p3_pta_mcmc/` or the referencing SSOT sections found.
 3. **P5 cosmic-web / DESIVAST + r24conf "pod session" scripts (`24_r24conf_pod_session.py`, `36_desivast_native_selection_control.py`, etc.)** — script names imply RunPod use but no pod ID, GPU class, cost, or runtime was found in `pipelines/p5_desi_chirality/` or in the reachable sections of `paper-5/status.md`.
 4. **P3 multi-survey raw per-survey outputs (`pipelines/h200_results/pod_backup_20260408_full/…`, `pod1_namaster_umap_2026-04-29/`, and ~28 sibling `h200_results/` subdirectories)** — dozens of historical H200-pod artifact directories exist with result JSONs but essentially no accompanying $/hr or wall-clock manifest; venue is inferable only from directory naming convention ("h200_results"), not from a receipt.

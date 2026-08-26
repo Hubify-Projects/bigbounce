@@ -169,7 +169,7 @@ they do not have allowed wording yet because they do not have numbers yet.
 | Historical `z=5.65` QSO, `W2=5.5 mag` | Retired until a named TARGETID and independently checked photometry/redshift support it. | Inventory claim table |
 | Historical 12 `z>6` QSO candidates | "Twelve anomaly-selected spectra are DESI-pipeline `z>6` QSO candidates." Not "discoveries." | Inventory claim table |
 | Historical exact per-object score reproducibility | State the successful bounded pipeline validation and the exact per-object reproduction failure together — never one without the other. | Inventory claim table |
-| New-generation candidate count | **PLACEHOLDER.** No wording until `summarize-after-dedup` runs on the completed scan; never described as matching or targeting the historical 2,145. | AUG-011 status (queue item 3) |
+| New-generation candidate count | 52,188 `S>5` candidates after dedup in the completed AUG-011 scan; this is the verified post-dedup count and must not be tuned toward the historical 2,145 slice. | AUG-011 status (queue item 3) |
 | New-generation SIMBAD/NED-unmatched count and taxonomy | **PLACEHOLDER.** No wording until the new cross-match/taxonomy rerun (§2c) completes. | AUG-011 status (queue item 3) |
 
 ## 5. Dependency gates

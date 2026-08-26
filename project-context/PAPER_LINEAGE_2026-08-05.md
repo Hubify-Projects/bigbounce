@@ -147,13 +147,15 @@ plus a new `P3_structural_recovery_closure.md`). This is the live P3 today.
 and `projects/desi-dr1-anomalies/` hold the working pipeline and catalog code
 for the genuine anomaly-discovery program, and it is being actively rebuilt
 under a sealed-contract clean rerun ("AUG-011," contract sealed 2026-08-05,
-commit `568a33bf`, scan running as of this writing). The plan for the rebuilt
-flagship manuscript is `project-context/ANOMALY_FLAGSHIP_MANUSCRIPT_ARCHITECTURE_2026-08-05.md`,
+commit `568a33bf`, completed 2026-08-07 with 36,634 verified receipts,
+45.5h wall-clock, about $7.74 total cost, and 52,188 `S>5` candidates). The
+plan for the rebuilt flagship manuscript is
+`project-context/ANOMALY_FLAGSHIP_MANUSCRIPT_ARCHITECTURE_2026-08-05.md`,
 itself derived from `project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md`
 and `project-context/SSOT/queue.md` item 3. That architecture doc is explicit
 that no number in it was invented — every historical figure is lifted from
-the inventory and every new-generation number is marked PLACEHOLDER pending
-the scan finishing.
+the inventory and every new-generation number is reserved for the follow-on
+selected sample, cross-match, and taxonomy stages.
 
 **Disposition verdict.** Correctly narrowed. This is not a case of losing
 viable content — the old draft's headline numbers had real, disclosed
@@ -324,10 +326,11 @@ actively rebuilt. The old 268,519-outlier draft
 provenance problems and was replaced by a narrow, defensible P3 at commit
 `3f5582c2`. The genuine discovery-science program lives on in
 `pipelines/p1_highz_tracers/` and `projects/desi-dr1-anomalies/`, and is
-mid-scan under a sealed AUG-011 contract as of 2026-08-05, with a full
+completed under a sealed AUG-011 contract as of 2026-08-07, with a full
 manuscript architecture already drafted
 (`project-context/ANOMALY_FLAGSHIP_MANUSCRIPT_ARCHITECTURE_2026-08-05.md`)
-waiting only on the scan's numbers to fill in its placeholders.
+waiting only on the follow-on sample-selection, cross-match, and taxonomy
+numbers to fill in its remaining placeholders.
 
 ## Decision record — 2026-08-05 (agent-executed under Houston's explicit full delegation)
 
