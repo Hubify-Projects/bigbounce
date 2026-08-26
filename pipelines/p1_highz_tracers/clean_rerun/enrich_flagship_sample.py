@@ -69,10 +69,12 @@ import argparse
 import importlib.util
 import json
 import os
+import shutil
 import sys
 import types
+import urllib.request
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from derive_locator_inventory import (  # noqa: E402
@@ -96,6 +98,8 @@ DESI_HEALPIX_BASE_URL = "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron
 # `(per_spectrum_mean_mse_recomputed - sample_mean_mse) / |sample_mean_mse|`
 # must not exceed this for ANY enriched row, or the run fails closed.
 MSE_RELATIVE_TOLERANCE = 1e-6
+COADD_DOWNLOAD_TIMEOUT_SECONDS = 120
+COADD_DOWNLOAD_RETRIES = 3
 
 # Fields in `process_healpix()`'s row dict that are deliberately NOT carried
 # into the enriched output under their archived names: `targetid` is already
@@ -130,6 +134,41 @@ BOOL_COLUMNS = {"is_point_source", "is_star_candidate"}
 
 class EnrichmentError(RuntimeError):
     """Raised when enrichment inputs cannot be trusted or produced safely."""
+
+
+def download_coadd(url: str, destination: Path) -> None:
+    """Fetch one coadd atomically with a real socket timeout.
+
+    The archived inference module remains checksum-bound and unmodified; this
+    is transport only. Its historical ``download_file`` helper declares a
+    timeout but calls ``urlretrieve`` without passing it, which can hang
+    indefinitely on a stalled TLS stream. A completed download is first
+    written to a sibling ``.part`` file and atomically promoted, so retries
+    never mistake a partial coadd for a scientific input.
+    """
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    partial = destination.with_name(f"{destination.name}.part")
+    last_error: Exception | None = None
+    for attempt in range(COADD_DOWNLOAD_RETRIES):
+        try:
+            if partial.exists():
+                partial.unlink()
+            request = urllib.request.Request(url, headers={"User-Agent": "bigbounce-phase3-enrichment/1"})
+            with urllib.request.urlopen(request, timeout=COADD_DOWNLOAD_TIMEOUT_SECONDS) as response:
+                expected_size = response.headers.get("Content-Length")
+                with partial.open("wb") as handle:
+                    shutil.copyfileobj(response, handle, length=1024 * 1024)
+                if expected_size is not None and partial.stat().st_size != int(expected_size):
+                    raise EnrichmentError(
+                        f"incomplete coadd download: expected {expected_size} bytes, got {partial.stat().st_size}"
+                    )
+            os.replace(partial, destination)
+            return
+        except Exception as exc:  # noqa: BLE001 — bounded transport retry barrier
+            last_error = exc
+            if partial.exists():
+                partial.unlink()
+    raise EnrichmentError(f"download failed after {COADD_DOWNLOAD_RETRIES} bounded attempt(s): {url}: {last_error}")
 
 
 def load_contract_module(path: Path = CONTRACT_MODULE_PATH) -> types.ModuleType:
@@ -307,6 +346,7 @@ def run_enrichment(
     manifest_output_path: Path,
     base_url: str = DESI_HEALPIX_BASE_URL,
     inference_module: types.ModuleType | None = None,
+    coadd_downloader: Callable[[str, Path], None] = download_coadd,
 ) -> dict[str, Any]:
     import pyarrow.parquet as pq
     import torch
@@ -375,9 +415,7 @@ def run_enrichment(
         # the whole run; a skipped group has no checkpoint entry, so a
         # later incarnation retries it.
         try:
-            ok = module.download_file(coadd_url, str(coadd_path))
-            if not ok:
-                raise EnrichmentError(f"download failed after retries: {coadd_url}")
+            coadd_downloader(coadd_url, coadd_path)
             try:
                 enriched_rows = enrich_group(module, model, device, coadd_path, group_rows)
                 shard_path = write_group_shard(enriched_rows, survey, program, healpix, shard_dir)

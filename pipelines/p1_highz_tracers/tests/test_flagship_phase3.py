@@ -483,17 +483,16 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
         )
         hdul.writeto(path, overwrite=True)
 
-    def _install_fake_download(self, inference_module, coadd_sources: dict[str, Path]) -> None:
+    def _fake_downloader(self, coadd_sources: dict[str, Path]):
         import shutil
 
-        def _fake_download_file(url, dest, retries=3, timeout=60):
+        def _download(url, dest):
             source = coadd_sources.get(Path(url).name)
             if source is None or not Path(source).is_file():
-                return False
+                raise self.mod.EnrichmentError(f"synthetic source unavailable: {url}")
             shutil.copy(source, dest)
-            return True
+        return _download
 
-        inference_module.download_file = _fake_download_file
 
     def _score_ground_truth(self, inference_module, model, device, coadd_path: Path) -> dict[int, float]:
         _n_obj, rows = inference_module.process_healpix(str(coadd_path), None, model, device)
@@ -647,7 +646,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
             work = Path(temporary)
             fixture = self._build_fixture(work)
             paths = self._run_paths(work)
-            self._install_fake_download(fixture["inference_module"], fixture["coadd_paths"])
+            downloader = self._fake_downloader(fixture["coadd_paths"])
 
             manifest = self.mod.run_enrichment(
                 fixture["sample_path"],
@@ -662,6 +661,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
                 paths["output_path"],
                 paths["manifest_output_path"],
                 inference_module=fixture["inference_module"],
+                coadd_downloader=downloader,
             )
 
             self.assertEqual(manifest["mse_cross_check"]["offenders"], 0)
@@ -713,7 +713,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
             work = Path(temporary)
             fixture = self._build_fixture(work)
             paths = self._run_paths(work)
-            self._install_fake_download(fixture["inference_module"], fixture["coadd_paths"])
+            downloader = self._fake_downloader(fixture["coadd_paths"])
 
             # Tamper ONE row's mean_mse after the fixture computed it
             # honestly, then re-seal the sample manifest's own sha256 (as a
@@ -751,6 +751,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
                     paths["output_path"],
                     paths["manifest_output_path"],
                     inference_module=fixture["inference_module"],
+                    coadd_downloader=downloader,
                 )
             self.assertIn("MSE cross-check gate failed", str(ctx.exception))
             self.assertFalse(paths["output_path"].exists())
@@ -779,7 +780,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
             # must report status "incomplete", and NO final output/manifest
             # may be written for an incomplete enrichment.
             only_a_sources = {group_a_fname: fixture["coadd_paths"][group_a_fname]}
-            self._install_fake_download(fixture["inference_module"], only_a_sources)
+            downloader = self._fake_downloader(only_a_sources)
 
             result = self.mod.run_enrichment(
                 fixture["sample_path"],
@@ -794,6 +795,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
                 paths["output_path"],
                 paths["manifest_output_path"],
                 inference_module=fixture["inference_module"],
+                coadd_downloader=downloader,
             )
             self.assertEqual(result["status"], "incomplete")
             self.assertEqual(result["skipped_groups"], 1)
@@ -810,7 +812,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
             # output because the "download" would fail with no source);
             # group B's source is now available and gets retried.
             only_b_sources = {group_b_fname: fixture["coadd_paths"][group_b_fname]}
-            self._install_fake_download(fixture["inference_module"], only_b_sources)
+            downloader = self._fake_downloader(only_b_sources)
 
             manifest = self.mod.run_enrichment(
                 fixture["sample_path"],
@@ -825,6 +827,7 @@ class EnrichFlagshipSampleTest(unittest.TestCase):
                 paths["output_path"],
                 paths["manifest_output_path"],
                 inference_module=fixture["inference_module"],
+                coadd_downloader=downloader,
             )
             self.assertEqual(manifest["groups"]["skipped"], 0)
             self.assertEqual(manifest["row_counts"]["output_rows"], 3)
