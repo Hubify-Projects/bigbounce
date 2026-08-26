@@ -164,7 +164,8 @@
         "The defensible selected sample is derived from the completed clean rerun",
         "Validation and taxonomy are written against the recorded post-dedup artifacts",
         "The manuscript draft reflects the completed scan/provenance stage without overstating readiness"
-      ]
+      ],
+      "execution_gate": "2026-08-26 RunPod inventory: no BigBounce workspace is running; two stopped BigBounce pods are visible and one has a network volume. The full corpus is structurally retained in B2 but not locally mounted. Do not start or provision paid compute until the downstream sample-selection run is explicitly authorized; then mount the retained corpus, run build_flagship_sample.py --describe, choose the threshold from the observed distribution, and proceed through cross-match/taxonomy under the existing fail-closed contract."
     },
     {
       "id": "AUG-015",

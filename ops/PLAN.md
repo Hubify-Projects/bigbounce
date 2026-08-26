@@ -174,7 +174,10 @@ contract after proving the enhanced parent/calibration unrecoverable.
 1. Collect Houston's decisions in order P2 → P1A → P4 → P1B → P5 using the
    bounded visual-review packet; P3 receives integration feedback only.
 2. Complete the rebuilt anomaly flagship follow-on from the finished clean
-   rerun: selected sample, validation contract, taxonomy, and manuscript.
+   rerun: selected sample, validation contract, taxonomy, and manuscript. The
+   retained B2 corpus is not mounted locally and no BigBounce RunPod workspace
+   is running; starting/provisioning downstream compute is an explicit spend
+   decision, not evidence that the scan must be rerun.
 3. The 2026-08-26 local/provider structural-retention audit is complete: B2
    retains 36,634 receipt objects and 36,634 shard objects, while Hugging Face
    is a partial private mirror. Next, align Hubify canonical-lab surfaces once
