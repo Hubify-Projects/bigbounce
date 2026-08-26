@@ -801,7 +801,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/calibration.json",
         "type": "result-json",
-        "checksum": "25498638fd23bb0033960e8199608e890feacd9e0eb220b24b300efcc954eb2f"
+        "checksum": "65b35bd94a111409483c2aa352becc2939a7da6e1d207483c3a1d3edb0f658b4"
       },
       {
         "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/training_manifest.json",
@@ -816,10 +816,10 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/run-contract.json",
         "type": "receipt",
-        "checksum": null
+        "checksum": "4e303b0ba2379960486638535f00be87a4dd923c8a3207f784c7a5394cd3d0af"
       }
     ],
-    "verification": "Full-scan verification passed: verify-receipts covered 36,634/36,634 groups, summarize-after-dedup produced 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above anomaly_score>5.0. The completed run is recorded in pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/{complete.log,summary.json,comparison.json}; no further full-scan verification remains for AUG-011.",
+    "verification": "Full-scan verification passed: verify-receipts covered 36,634/36,634 groups, summarize-after-dedup produced 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 candidates above anomaly_score>5.0. Output checksums are raw file SHA-256 values. Separately, run-contract.json's internal calibration_sha256 is the canonical JSON-payload SHA-256 25498638fd23bb0033960e8199608e890feacd9e0eb220b24b300efcc954eb2f, and summary.json's contract_sha256 is the canonical contract-payload SHA-256 6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf; those are semantic bindings, not file-byte hashes. The completed run is recorded in pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/{complete.log,summary.json,comparison.json}; no further full-scan verification remains for AUG-011.",
     "status": "runnable-now",
     "provenance": [
       "commit 0663e42cbb7e391b96053bd55d07ee500b22db92 (AUG-011 scan COMPLETE; wall ~45.5h on RunPod A4000 tc291bka0r6fl3 at $0.17/hr)",

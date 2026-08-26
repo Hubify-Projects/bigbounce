@@ -177,7 +177,9 @@
         "The recorded backup and compute receipts match the clean rerun outputs",
         "No fresh remote backup verification is claimed",
         "Any mismatch is truth-audited before the queue is advanced"
-      ]
+      ],
+      "progress_evidence": "2026-08-26 local audit: summary.json and comparison.json match their manifest byte SHA-256 values; training/validation manifests match; calibration and contract semantic hashes are internally consistent when interpreted as canonical JSON-payload hashes, and their manifest entries now carry raw file SHA-256 values. The full 36,634 shard/receipt corpus is absent from this checkout, so fresh remote storage integrity remains unverified.",
+      "blocker": "Remote proof requires authorized access to the retained shard/receipt corpus and backup provider account(s); no credentials are available in the current environment."
     },
     {
       "id": "AUG-016",

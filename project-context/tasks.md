@@ -61,7 +61,7 @@ preserved audit history and must not be read as the active queue.
   every provider/page limitation, and created one concise review packet in the
   recommended order. Completed 2026-08-04; Houston decisions remain AUG-004.
 - [ ] **AUG-014 — Anomaly flagship follow-on validation/taxonomy/manuscript:** turn the completed clean rerun into the defensible selected sample, validation contract, taxonomy, and manuscript draft.
-- [ ] **AUG-015 — 2026-08-26 backup/compute receipt re-verification:** re-check backup receipts, compute receipts, and the post-dedup run artifacts against the recorded clean rerun outputs without claiming any fresh remote backup verification.
+- [ ] **AUG-015 — 2026-08-26 backup/compute receipt re-verification:** local integrity pass complete: committed summary/comparison and sealed-manifest byte hashes verify; the calibration/contract's canonical JSON-payload bindings are internally consistent and are now distinguished from file-byte hashes. The 36,634-shard/receipt corpus itself is absent locally, so authorized remote backup verification remains required and must not be implied.
 - [ ] **AUG-016 — Hubify canonical-lab alignment:** align the canonical lab/status surfaces with the current repo and SSOT truth once authenticated access is available.
 - [x] **AUG-017 — Production deployment configuration reconciliation:** completed 2026-08-26. The linked Vercel project now uses the Next.js static-export contract (`cd site && npm install`, `cd site && npm run build`, `site/out`), mirrored in root `vercel.json`. Production `/reproduce` was verified with 36,634 receipt, 45.5-hour, and 52,188-candidate markers and no stale “has not yet executed” text.
 
