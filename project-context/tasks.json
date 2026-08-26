@@ -232,7 +232,7 @@
         "Cross-match and taxonomy are run only on a zero-skipped enriched output",
         "Any named object is independently validated before manuscript use"
       ],
-      "execution_gate": "2026-08-26 preflight: 3,810 selected targets span 3,128 coadd groups; the archived model matches the sealed SHA-256; local free space is 161 GiB; required public zall-pix-iron.fits is 22,371,272,640 bytes and not locally staged. No RunPod spend has been made. Stage/checksum the zcatalog, then run the resumable enrichment; use a bounded RunPod volume only if local throughput is unsuitable."
+      "execution_gate": "2026-08-26 preflight: 3,810 selected targets span 3,128 coadd groups; the archived model matches the sealed SHA-256; the public 22,371,272,640-byte zall-pix-iron.fits is persistently staged and exactly matches its sealed SHA-256 (2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b). No RunPod spend has been made. Run the resumable enrichment; use a bounded RunPod volume only if local throughput is unsuitable."
     }
   ],
   "historical_tasks": [
