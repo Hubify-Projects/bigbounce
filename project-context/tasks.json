@@ -207,6 +207,18 @@
         "The deployed artifact is verified against the pushed main commit"
       ],
       "completion_evidence": "2026-08-26: linked Vercel project was updated to Next.js with installCommand 'cd site && npm install', buildCommand 'cd site && npm run build', and outputDirectory 'site/out'; root vercel.json now records the same contract. Production https://bigbounce.hubify.app/reproduce returned the completed AUG-011 markers 36,634 verified receipts, 45.5 hours, and 52,188 S>5 candidates, with no stale 'has not yet executed' text."
+    },
+    {
+      "id": "AUG-018",
+      "status": "active",
+      "title": "Refresh the encrypted BigBounce/Hubify environment backup",
+      "critical_path": false,
+      "completion_criteria": [
+        "A fresh encrypted environment vault snapshot exists for the active CODE_YOU projects",
+        "No plaintext secret is printed, committed, or copied into the repository",
+        "The new snapshot is listed successfully after creation"
+      ],
+      "blocker": "2026-08-26 preflight passed (12 .env.local files; provider/runtime credentials excluded by policy), but creation requires an interactive AES passphrase. The noninteractive prompt failed safely and wrote no new vault."
     }
   ],
   "historical_tasks": [
