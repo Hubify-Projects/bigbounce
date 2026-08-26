@@ -192,6 +192,17 @@
         "Any auth gap is recorded explicitly rather than inferred away",
         "No public claim is made until the canonical surfaces are reconciled"
       ]
+    },
+    {
+      "id": "AUG-017",
+      "status": "active",
+      "title": "Reconcile BigBounce's linked Vercel deployment configuration and deploy the current reproducibility projection",
+      "completion_criteria": [
+        "The linked Vercel project uses the repository's site/out build contract rather than stale root-static settings",
+        "Production /reproduce renders the completed AUG-011 status",
+        "The deployed artifact is verified against the pushed main commit"
+      ],
+      "blocker": "Local .vercel/project.json declares buildCommand echo static and outputDirectory ., conflicting with root vercel.json (site/out); direct CLI deploy was stopped before it uploaded a stale 5.3GB root artifact."
     }
   ],
   "historical_tasks": [

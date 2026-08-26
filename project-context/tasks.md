@@ -63,6 +63,7 @@ preserved audit history and must not be read as the active queue.
 - [ ] **AUG-014 — Anomaly flagship follow-on validation/taxonomy/manuscript:** turn the completed clean rerun into the defensible selected sample, validation contract, taxonomy, and manuscript draft.
 - [ ] **AUG-015 — 2026-08-26 backup/compute receipt re-verification:** re-check backup receipts, compute receipts, and the post-dedup run artifacts against the recorded clean rerun outputs without claiming any fresh remote backup verification.
 - [ ] **AUG-016 — Hubify canonical-lab alignment:** align the canonical lab/status surfaces with the current repo and SSOT truth once authenticated access is available.
+- [ ] **AUG-017 — Production deployment configuration reconciliation:** the BigBounce Git commit is pushed, but the direct Vercel CLI deployment was stopped before uploading a stale 5.3GB root artifact because local `.vercel/project.json` still declares `buildCommand: "echo static"` and `outputDirectory: "."`, while `vercel.json` correctly declares `site/out`. Reconcile the linked project settings, then deploy and verify `/reproduce` renders the completed AUG-011 status.
 
 ## Current state
 
