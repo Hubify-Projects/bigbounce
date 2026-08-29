@@ -1,231 +1,79 @@
-# Tasks — BigBounce publication program
+# Tasks — project
 
-## Current authoritative queue — 2026-08-26
+<!-- generated from tasks.json (you-md/tasks/v1). Do not edit;
+     regenerate with `you tasks`; manual changes are rejected. -->
 
-The executable program plan is [`../ops/PLAN.md`](../ops/PLAN.md); the canonical
-paper queue is [`SSOT/queue.md`](SSOT/queue.md). This section is the current
-project-context task projection. Everything below **Historical task ledger** is
-preserved audit history and must not be read as the active queue.
+## Active (9)
 
-- [x] **AUG-001 — Atomic truth synchronization:** reconciled SSOT, Convex, site
-  data, production PDFs, and both GitHub remotes. Completed 2026-08-03.
-- [x] **AUG-002 — Preserved-candidate package acceptance:** deterministic
-  compile, link, mirror, visual-PDF, source-package, and science-contract gates
-  pass on the six preserved candidate packages. Completed 2026-08-03.
-- [x] **AUG-003 — Submission metadata and packets:** current CQG, JORS, PRD,
-  ApJS, and AJ portal kits and exact source packages now exist for all six
-  candidates. P4/P5 archive publication remains intentionally post-sign-off.
-- [ ] **AUG-004 — Houston sign-off:** collect one explicit decision for P1A,
-  P1B, P2, P4, and P5; 95 becomes 100 only after the corresponding quote is
-  recorded. P3 is reviewed as supporting release infrastructure, not a paper.
-- [ ] **AUG-005 — Journal submissions:** execute CQG/JORS/PRD/ApJS/AJ portal
-  work. Track accounts, reviewer suggestions, fees/waivers, and clicks as
-  publishing tasks separate from readiness.
-- [ ] **AUG-012 — Publish-drive handoff (2026-08-11):** run the handoff prompt
-  in [`HANDOFF_PROMPT_2026-08-11.md`](HANDOFF_PROMPT_2026-08-11.md) on a fresh
-  `publish-drive/2026-08` branch: harvest the AUG-011 full scan + flagship
-  phase 3, drive P1C through the review ladder to 95, run the bounded six-
-  candidate final-hash confirmation, keep site/Convex truthful, and refresh
-  Houston's sign-off + publishing packets. (source: 2026-08-11 16:49 PT)
-- [x] **AUG-006 — Repository consolidation:** audited all local/remote tips,
-  preserved their history in archival merge `556b8454`, then removed obsolete
-  branch refs and linked worktrees. Both remotes now expose only `main`.
-  Completed 2026-08-03.
-- [ ] **AUG-007 — Hubify lab verification (external auth gap, non-critical):**
-  `hubify status`, `papers`, `tasks`, `agents`, and `activity` currently fail
-  unauthenticated. `.env.local` lacks `HUBIFY_TOKEN` although `.env.example`
-  declares it. This does not block repo/site synchronization; do not print or
-  fabricate a token.
-- [x] **AUG-008 — Publication architecture:** Houston approved the three-program
-  map on 2026-08-04. Current P3 is an integrated supporting data/provenance
-  release; P5 remains a standalone AJ companion.
-- [x] **AUG-009 — Production program-map rewrite:** production now leads with
-  bounce theory, DESI anomaly discovery, and galaxy chirality; P3/P5 roles are
-  explicit, legacy pipeline claims are demoted, desktop/mobile QA passes, and
-  all six served PDFs are byte-identical to local mirrors. Completed 2026-08-04.
-- [x] **AUG-010 — Anomaly artifact restoration:** the enhanced parent and score
-  calibration are not recoverable from current artifacts; the exact archived
-  model was hash-bound and a fail-closed public-ID-first rerun contract with
-  tests was selected and committed. Completed 2026-08-04; the full scan is not
-  implied by this gate.
-- [x] **AUG-011 — Rebuilt anomaly flagship scan/provenance stage:** the clean rerun and post-dedup summary are complete; the scan stage produced `pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json` with 28,425,963 raw rows, 27,547,223 unique TARGETIDs, 878,740 duplicate rows removed, and 52,188 S>5 after dedup. Remaining flagship work is validation, taxonomy, named follow-up set, and manuscript assembly.
-  *2026-08-05 progress:* campaign assets committed (`ac176614`, `9729c287`;
-  15/15 offline tests) and the phase-1 chain (zcatalog SHA-verify → inventory →
-  sealed manifest/calibration → contract → 5-group smoke) was running on RunPod
-  pod `tc291bka0r6fl3`; that scan stage is now complete.
-- [ ] **AUG-012 — Selected-portfolio execution board:** maintain six standalone
-  works (including the rebuilt anomaly flagship and P5, excluding P3) plus the
-  integrated P3 release; then resume sign-off, archives, endorsers, and venues.
-- [x] **AUG-013 — Current-hash Houston decision packets:** bound the selected
-  five exact PDFs to the current preflight and final-hash audits, documented
-  every provider/page limitation, and created one concise review packet in the
-  recommended order. Completed 2026-08-04; Houston decisions remain AUG-004.
-- [ ] **AUG-014 — Anomaly flagship follow-on validation/taxonomy/manuscript:** the complete B2 shard/receipt corpus was fetched locally and fresh receipt verification passed (36,634/36,634). The observed distribution selected the deterministic `S>=8` 3,810-row characterization sample, bound to all receipts and privately archived; see [`ANOMALY_FLAGSHIP_SELECTION_DECISION_2026-08-26.md`](ANOMALY_FLAGSHIP_SELECTION_DECISION_2026-08-26.md). Next: enrich it with coordinates/SNR/latents, fail-closed cross-match and taxonomy, independently validate any named object, then draft the manuscript. No RunPod credit is required for completed selection; later enrichment may require retained inputs or a bounded rerun.
-- [x] **AUG-015 — 2026-08-26 backup/compute receipt re-verification:** local summary/comparison and sealed-manifest byte hashes verify; semantic contract bindings are internally consistent. Authenticated B2 lists exactly 36,634 receipt objects and 36,634 shard objects, all of which were freshly downloaded locally and receipt-verified. The resulting 3,810-row S>=8 selected sample, its 36,634-receipt manifest, and parent summary were uploaded to the authenticated private rerun archive. This does not claim a fresh multi-TB re-download of original DESI coadds or a public archival release.
-- [ ] **AUG-016 — Hubify canonical-lab alignment:** Hubify source work is consolidated on `main` and source/registry parity is verified for the six pinned IDs, versions, and PDFs. The live credential-less lab metadata still reports only 5 experiments and 2 papers; the three reproduction forks are empty Level-0 shells. This is a real product-projection gap, not a solved parity gate. Authenticated inspection/reseed and one clean fork verification remain required; no rows were guessed or mutated. One unrelated, unreviewed deletion set is safely retained on an explicit recovery branch rather than merged. See [`HUBIFY_CANONICAL_LAB_GAP_2026-08-26.md`](HUBIFY_CANONICAL_LAB_GAP_2026-08-26.md).
-- [x] **AUG-017 — Production deployment configuration reconciliation:** completed 2026-08-26. The Vercel project is scoped to `site/` (the Next.js app), uses native Next output handling, and serves production from the successful `e5542692` deployment. Production `/reproduce` was visibly verified with the 3,810-row selected-cohort record and the 52,188-candidate scan summary.
-- [ ] **AUG-018 — Encrypted environment backup refresh:** preflight passed for 12 local environment files, with provider/runtime credentials excluded by policy. The only remaining action is entering an AES passphrase interactively when the vault tool prompts; the attempted noninteractive run failed safely and wrote no new snapshot.
-- [ ] **AUG-019 — Anomaly enrichment execution:** preflight is complete: the 3,810-row selected cohort spans 3,128 coadd groups, the contract-bound model hash verifies, and the official 22.37-GB public zcatalog is persistently staged with an exact sealed SHA-256 match. The checkpointed enrichment transport is timeout-bounded; 57 verified groups plus hashes/checkpoint/audit are safely preserved in the private archive for exact resume. Measured local DESI transfer (~124 KB/s) is not viable for all 3,128 groups. Move the exact checkpointed command to a bounded host with better official-archive throughput once compute funding/host access is confirmed, then continue cross-match → taxonomy. See [`ANOMALY_ENRICHMENT_PREFLIGHT_2026-08-26.md`](ANOMALY_ENRICHMENT_PREFLIGHT_2026-08-26.md).
+- [ ] Record Houston's explicit sign-offs for P1A, P1B, P2, P4, and P5 <!-- id:t-aug-004 -->
+      open · agent:Codex · #legacy-migration
+      evidence: legacy-id:AUG-004
+- [ ] Execute journal submissions as a publishing phase separate from readiness <!-- id:t-aug-005 -->
+      open · agent:Codex · #legacy-migration
+      evidence: legacy-id:AUG-005
+- [ ] Verify Hubify lab status after authentication is available <!-- id:t-aug-007 -->
+      snoozed · agent:Codex · #legacy-migration
+      blockers: External authentication required; preserved from legacy ledger
+      evidence: legacy-id:AUG-007 | legacy-status:blocked_external_auth
+- [ ] Regenerate approval, submission, archive, and endorser routing for six standalone works plus the P3 support release <!-- id:t-aug-012 -->
+      in_progress · agent:Codex · #legacy-migration
+      evidence: legacy-id:AUG-012
+- [ ] Build the anomaly flagship follow-on sample, validation contract, taxonomy, and manuscript <!-- id:t-aug-014 -->
+      in_progress · agent:Codex · #legacy-migration
+      success: legacy-successCriteria:8bb12d7e84c42bbf
+      evidence: legacy-id:AUG-014 | full-successCriteria:The defensible selected sample is derived from the completed clean rerun | Validation and taxonomy are written against the recorded post-dedup artifacts | The manuscript draft reflects the completed scan/provenance stage without overstating readiness | full-verify:The defensible selected sample is derived from the completed clean rerun | Validation and taxonomy are written against the recorded post-dedup artifacts | The manuscript draft reflects the completed scan/provenance stage without overstating readiness
+      verify: legacy-verify:8bb12d7e84c42bbf
+- [ ] Align the Hubify canonical lab surfaces with current repo and SSOT truth <!-- id:t-aug-016 -->
+      in_progress · agent:Codex · #legacy-migration
+      success: legacy-successCriteria:ba2cf9baa0c9ce93
+      evidence: legacy-id:AUG-016 | full-successCriteria:Lab/status projections agree with the current repo state | Any auth gap is recorded explicitly rather than inferred away | No public claim is made until the canonical surfaces are reconciled | full-verify:Lab/status projections agree with the current repo state | Any auth gap is recorded explicitly rather than inferred away | No public claim is made until the canonical surfaces are reconciled
+      verify: legacy-verify:ba2cf9baa0c9ce93
+- [ ] Refresh the encrypted BigBounce/Hubify environment backup <!-- id:t-aug-018 -->
+      in_progress · agent:Codex · #legacy-migration
+      success: legacy-successCriteria:73fbc939cbdcf1a1
+      evidence: legacy-id:AUG-018 | full-successCriteria:A fresh encrypted environment vault snapshot exists for the active CODE_YOU projects | No plaintext secret is printed, committed, or copied into the repository | The new snapshot is listed successfully after creation | full-verify:A fresh encrypted environment vault snapshot exists for the active CODE_YOU projects | No plaintext secret is printed, committed, or copied into the repository | The new snapshot is listed successfully after creation
+      verify: legacy-verify:73fbc939cbdcf1a1
+- [ ] Stage and execute anomaly flagship enrichment, cross-match, and taxonomy <!-- id:t-aug-019 -->
+      in_progress · agent:Codex · #legacy-migration
+      success: legacy-successCriteria:08705d5b03a59f7b
+      evidence: legacy-id:AUG-019 | full-successCriteria:The selected sample is enriched under its checkpointed, contract-bound MSE reproduction gate | Cross-match and taxonomy are run only on a zero-skipped enriched output | Any named object is independently validated before manuscript use | full-verify:The selected sample is enriched under its checkpointed, contract-bound MSE reproduction gate | Cross-match and taxonomy are run only on a zero-skipped enriched output | Any named object is independently validated before manuscript use
+      verify: legacy-verify:08705d5b03a59f7b
+- [ ] Run Paper 1B's final independent confirmation spot-check <!-- id:t-t001 -->
+      in_progress · agent:Codex · #legacy-migration
+      success: legacy-successCriteria:feaedb24494b9943
+      evidence: legacy-id:T001 | source-prompt:project-context/SSOT/index.md (EXT19 status) | source-prompt:preserved from the 2026-08-05 conflicted tasks.json HEAD side | full-successCriteria:The check uses the canonical Paper 1B source/PDF and is recorded in SSOT | Any findings are truth-audited and reflected in the paper/site state before readiness changes | No readiness claim exceeds the available evidence | full-verify:The check uses the canonical Paper 1B source/PDF and is recorded in SSOT | Any findings are truth-audited and reflected in the paper/site state before readiness changes | No readiness claim exceeds the available evidence
+      verify: legacy-verify:feaedb24494b9943
 
-## Current state
+## Done (12)
 
-The approved portfolio has three lead science stories: P2, the completed DESI
-anomaly scan/provenance stage with active validation/taxonomy/manuscript
-follow-on, and P4. P1A and P1B are specialist Note/software works. P5 is a
-standalone AJ companion. Current P3 r17 is the integrated public-ID/provenance
-release for the rebuilt anomaly program and is not a standalone submission.
-Preserved candidate readiness remains evidence; it does not replace Houston's
-selected-manuscript review, which is publication authorization based on the
-bound evidence packet rather than a request to independently re-audit the
-technical science.
+- [x] Synchronize canonical SSOT, Convex, site data, and production truth atomically <!-- id:t-aug-001 -->
+      evidence: legacy-id:AUG-001 | legacy-status:complete
+- [x] Complete bounded package acceptance across the six preserved candidate artifacts <!-- id:t-aug-002 -->
+      evidence: legacy-id:AUG-002 | legacy-status:complete
+- [x] Close submission metadata gaps and assemble portal-ready journal packets <!-- id:t-aug-003 -->
+      evidence: legacy-id:AUG-003 | legacy-status:complete
+- [x] Diff and consolidate stale local and remote branches without losing unique work <!-- id:t-aug-006 -->
+      evidence: legacy-id:AUG-006 | legacy-status:complete
+- [x] Approve the three-program publication architecture and resolve P3/P5 editorial roles <!-- id:t-aug-008 -->
+      evidence: legacy-id:AUG-008 | legacy-status:complete
+- [x] Rewrite production around bounce theory, DESI anomaly discovery, and galaxy chirality <!-- id:t-aug-009 -->
+      evidence: legacy-id:AUG-009 | legacy-status:complete
+- [x] Restore and hash-verify the enhanced DESI parent/model lineage or select a clean rerun <!-- id:t-aug-010 -->
+      evidence: legacy-id:AUG-010 | legacy-status:complete
+- [x] Complete the clean DESI rerun and post-dedup scan/provenance stage <!-- id:t-aug-011 -->
+      evidence: legacy-id:AUG-011 | legacy-status:complete
+- [x] Bind current-hash evidence and create concise Houston visual-review decision packets <!-- id:t-aug-013 -->
+      evidence: legacy-id:AUG-013 | legacy-status:complete
+- [x] Re-verify 2026-08-26 backup and compute receipts against the completed rerun <!-- id:t-aug-015 -->
+      success: legacy-successCriteria:a5238140ac2bed31
+      evidence: legacy-id:AUG-015 | full-successCriteria:The recorded backup and compute receipts match the clean rerun outputs | Fresh remote retention evidence is recorded with its exact verification scope | Any mismatch is truth-audited before the queue is advanced | full-verify:The recorded backup and compute receipts match the clean rerun outputs | Fresh remote retention evidence is recorded with its exact verification scope | Any mismatch is truth-audited before the queue is advanced
+- [x] Reconcile BigBounce's linked Vercel deployment configuration and deploy the current reproducibility projection <!-- id:t-aug-017 -->
+      success: legacy-successCriteria:086f8050e24a2d21
+      evidence: legacy-id:AUG-017 | full-successCriteria:The linked Vercel project scopes builds to the site/ Next.js app and uses native Next output handling | Production /reproduce renders the completed AUG-011 status | The deployed artifact is verified against the pushed main commit | full-verify:The linked Vercel project scopes builds to the site/ Next.js app and uses native Next output handling | Production /reproduce renders the completed AUG-011 status | The deployed artifact is verified against the pushed main commit
+- [x] Reconcile divergent local and origin/main histories before publishing the checkpoint <!-- id:t-t000 -->
+      evidence: legacy-id:T000 | source-prompt:2026-08-05 cross-machine checkpoint | source-prompt:preserved from the 2026-08-05 conflicted tasks.json HEAD side | resolution:Reconciled on Houston's MacBook Air: fast-forward only, no force-push/reset/rebase/stash/clean. bigbounce local main and origin/main are now identical (0 ahead / 0 behind). Recorded in youmd/project-context/FLEET_SYNC_2026-08-18.md.
 
-## Historical task ledger
-
-The campaign log below is retained verbatim enough for provenance. Its old
-readiness caps, all-verdict-word objectives, P1U framing, CMUX lanes, and stale
-OPEN rows are superseded by the authoritative queue above.
-
-# Historical snapshot — publication-readiness campaign
-
-## Objective
-
-Drive all six canonical papers through exact-artifact, venue-correct,
-non-Anthropic multi-model review; truth-audit and close every real finding;
-then synchronize PDFs, versions, SSOT, Convex, API, and the public site without
-overstating readiness. The previous handoff/CMUX tracks remain preserved below
-but are not the current scientific critical path.
-
-## Active
-
-- [ ] **PUB-008 — D4/D5 decision gate (2026-07-22 update; confirmation wave complete):**
-  2026-07-22 pre-arXiv confirmation wave COMPLETE: 18 exact-PDF INT legs (6
-  papers × Grok-API + Gemini-API + Claude-Opus subagent), each individually
-  truth-audited. Verdict matrix (grok/gemini/claude): P1A accept/minor/minor;
-  P1B minor/minor/minor; P2 major/minor/minor; P3 accept/major/minor; P4
-  minor/minor/minor; P5 accept/minor/minor. 19 genuinely-new-real findings
-  [corrected from "16" on 2026-07-24 — the per-paper breakdown that follows
-  has always summed to 19; verified by counting GENUINELY-NEW-REAL verdict
-  rows across the six TRUTH_AUDIT_2026-07-22.md files. Only the sum was
-  wrong; every individual disposition and same-day closure stands.]
-  across all six papers (P1A 3, P1B 3, P2 5, P3 3, P4 3, P5 2), every one
-  closed same-day in new version bumps: P1A v1A.0.126, P1B v2B.0.14, P2
-  v1.7.127, P3 v3.2.0-r12, P4 v1.0.270, P5 v0.1.142-2026-07-22 (all
-  directive-G PASS). Every MAJOR-verdict leg's majors dispositioned non-real
-  with source citations. Site (papers.ts, live-status.ts, reviewTimeline.ts),
-  Convex (18 externalReviews rows + 1 activityFeed row), and SSOT synced in
-  the same bundle. Wave-1/Wave-2 submission kits' tarball references updated
-  to the new versions. No science number changed on any paper; readiness
-  caps hold (62/56/80/56/80/74) — no uplift claimed.
-  D2 DONE — Houston chose CC-BY-4.0 ("D2 i go with your recommendation",
-  2026-07-21); applied via d2_authorize_deposits.py. namaster-proof 0.1.7
-  PUBLISHED on Houston's explicit go: DOI 10.5281/zenodo.21481753 (record
-  HTTP 200). P1A + P1B deposits PUBLISHED on Houston's explicit go 2026-07-21
-  19:58 PT ('publish the paper drafts'): DOIs 10.5281/zenodo.21481838 /
-  21481842, both doi.org-resolving 200. ALL current papers carry published
-  DOIs. STILL OPEN, UNCHANGED by this wave: D4 arXiv endorsement
-  (Houston must log in at arxiv.org — no live session in Chrome, agent
-  cannot enter credentials; THE schedule risk) and D5 ORCID
-  0009-0008-5616-5994 confirm (Houston: sign in at orcid.org, compare the
-  iD under your name, say "yes that's me" or give the real iD — public
-  record shows no name so it is unverifiable from outside). P5 remains
-  gated only on the Paper-IV (P4 arXiv ID) back-patch.
-  **D5 RESOLVED 2026-07-24 — externally verified, no Houston action left.**
-  `https://pub.orcid.org/v3.0/0009-0008-5616-5994/record` returns HTTP 200 with
-  `name: Houston Golden`, name `visibility: public`, 1 employment entry. That
-  independently confirms both (a) the iD is correct — it superseded the wrong
-  …3617-8729 on 2026-07-22, read then from Houston's signed-in record — and
-  (b) the record is PUBLIC, which closes the older "ORCID public flip" blocker
-  in `SSOT/SHIP_DAY_BRIEFING.md` §A that required exactly this 200 (it was 404
-  at the time that doc was written). The earlier note here that the public
-  record "shows no name so it is unverifiable from outside" is now stale.
-  Residual (optional, not a blocker): the ORCID record lists **0 works** —
-  adding the six archived Zenodo DOIs would make the iD link credible to an
-  endorser who clicks it. Remaining arXiv-side ORCID step is unchanged:
-  associate the iD with the arXiv account via arxiv.org/user (Houston's OAuth).
-  D4 CHECKED 2026-07-22 (Houston logged in; agent read+drove the live session
-  with his go): ENDORSEMENT REQUIRED for BOTH gr-qc and astro-ph — submit flow
-  rejects both archives. Four endorsement codes generated, each emailed to
-  houston@bamf.ai: gr-qc HYEJ7S (P1A), astro-ph.IM L8TIPN (P1B/P3),
-  astro-ph.CO LRZHC4 (P2), astro-ph.GA CLVMAQ (P4/P5). One endorser with 4+
-  astro-ph.* papers (3mo–5yr window) can clear all three astro-ph codes;
-  gr-qc needs 4+ gr-qc papers specifically. Houston action: find endorser(s),
-  forward the code emails. Draft submission 7859751 parked at Start (agreement
-  accepted, CC BY 4.0, author-radio set) — resumes the moment endorsement
-  lands. Parallel path: Zenodo DOIs are live (papers citable now); journal
-  routes (CQG/JORS/ApJS/PRD/AJ) do not require arXiv. arXiv creds stored in
-  gitignored .env.local per Houston (agent never authenticates with them).
-  (source: 2026-07-20 decision brief; 2026-07-21 continue + D2/D5 message;
-  2026-07-22 confirmation-wave sync)
-
-- [ ] **HO-007 — Claude-stack routing (supersedes HO-005/HO-006):** Codex is
-  PAUSED entirely (Houston 2026-07-16: burning too much Codex usage; resumed in
-  Claude Code desktop). Orchestrator = Fable 5/Opus 4.8; workers/leads =
-  cheaper Claude models via subagents/terminal/CMUX (CMUX read-only). INT
-  review legs = Claude reviewer subagent + direct Grok/xAI API + direct Gemini
-  API, all with raw receipts; missing Codex legs recorded absent, never faked.
-  Documented as CLAUDE.md standing directive N. (source: 2026-07-16 15:18 +
-  routing corrections)
-
-- [ ] **PUB-001 — Close active science revisions:** [2026-07-20 status: compute campaigns COMPLETE, all six papers converged to human/DOI gates — P1A v1A.0.124 (62), P1B v2B.0.11 (56), P2 v1.7.125 dressed-metric transmission closure (80), P3 v3.2.0-r10 (56), P4 v1.0.268 CE-composition adjudication + honest-negative (80), P5 v0.1.141-2026-07-16 (74); see SSOT/index.md] originally: finish P1A v1A.0.120, P1B exact-window robustness, P3 r5, P4 portability/provenance closure, and P5 AJ-oriented structural closure with reproducible evidence and full PDF audits. (source: 2026-07-13 19:28 PT; 2026-07-14 10:39 PT)
-  - 2026-07-16 (Claude-stack session) progress: P4 climbed v1.0.260→263 (immutable HF provider overlay PUBLISHED at revision 911316f3 + byte-verified; delivered per-region monopole correction map; gloss + stability-sentence closures) and P5 v0.1.139→141 (whole-tree multiplicity bound [A45]/[A46]; forward-leakage injection [A47]/[A48] reproducing 77–88% of every large raw deviation). Six exact boards + six truth audits under directive-N routing (Claude+Grok+Gemini legs, Codex absent); final boards → 0 genuinely-new-real on both papers — CONVERGED to standing compute/human gates. Vercel Git auto-deploy stopped triggering after f2380597 (4 pushes, 0 builds) — Houston dashboard check required.
-- [ ] **PUB-002 — Re-review exact immutable PDFs:** [SUPERSEDED 2026-07-16 by standing directive N (Claude-stack routing) — see CLAUDE.md: Codex/OpenAI is PAUSED entirely (never invoked, never faked/back-filled); the current INT board is a Claude reviewer subagent (Opus-tier, exact-PDF-bound) + direct Grok/xAI API + direct Gemini API, each with raw receipts saved before any verdict; the prior "no Anthropic/Claude leg" rule is reversed.] Originally: run fresh Codex/ChatGPT-subscription, Grok, and Gemini boards against the correct journal/article type; retain raw reports, exact PDF SHA-256, source commit, prompt hash, provider/model, and normalized truth-audit. The OpenAI perspective is Codex CLI authenticated by ChatGPT subscription with OpenAI API credentials unset — never separately billed OpenAI API. Grok/xAI and Gemini direct-provider API legs are allowed. No Anthropic/Claude leg in this campaign. Re-review only after a reader-visible content-hash change, except one declared independent confirmation of a high-risk closure. (source: 2026-07-13 19:28 PT; 2026-07-14 readiness-regression audit)
-- [ ] **PUB-003 — Implement safe acceleration controls:** centralize the six-paper registry, generate content-addressed review packets, fail closed on stale/wrong PDFs or ambiguous commits, separate science gates from workflow gates, and add deterministic bounded inner parallelism only where serial-equivalence tests pass. (source: 2026-07-14 10:39 PT)
-- [ ] **PUB-004 — Atomic release synchronization:** only after the exact boards close, update paper mirrors, version data, claims tables, SSOT, Convex/API, review timeline, and site in the same bisected release sequence; then perform browser QA and push `main`. (source: 2026-07-13 19:28 PT)
-- [ ] **PUB-005 — Immutable PDF history:** retain every paper PDF under a version-and-PST-timestamped immutable name with source commit, SHA-256, page count, build command, and review references in an append-only manifest; verify the canonical archive plus two mirrors before cleanup. Never delete the only copy of any historical PDF. (source: 2026-07-14 PDF-retention mandate)
-  - 2026-07-14/15 progress: current/future six-paper snapshot retention is gated through Directive-G; full Git PDF history inventory exists at `project-context/pdf-archive/manifests/2026/07/20260714T235000Z-history-inventory-20260714-history.json` with 1,356 reachable PDF object/path rows, 1,094 high-confidence manuscript rows, and 262 explicit unclassified rows. Fast historical byte materialization now covers offsets 0-1357 with no gaps across 49 `history-backfill-fast-*` manifests, processed 1,095 classified manuscript rows, created 837 new SHA-256 objects and 843 new refs, and reported zero row errors. Archive state after verification: 1,097 objects, 1,106 refs, 0 bad hardlinks. Remaining work is full page-counted tranche completion plus two independent mirrors.
-- [ ] **PUB-006 — Normalize readiness instrumentation:** separate stable scientific/reproducibility/venue/release/human gates from the raw reviewer-verdict distribution; migrate historical EXT11/EXT17 and exact-artifact rows without relabeling provider verdicts; mark wrong/stale/missing legs invalid rather than scoring them. (source: 2026-07-14 readiness-regression audit)
-- [ ] **PUB-007 — Compile review learning into mandatory prevention:** replace the prose-only archive→mine→preflight loop with one canonical HubStack engine, a machine-readable rule catalog, a BigBounce all-six-paper adapter, content-addressed PASS receipts bound into review packets, and learning-efficiency metrics. Every truth-audited NEW-REAL blocker/major or recurrent minor must add or strengthen an executable regression gate and sweep all six papers before another review wave. (source: 2026-07-15 15:24 PT recursive-improvement mandate)
-
-- [ ] **HO-002 — One-lab coordination acceptance:** while the live review loop is idle or explicitly handed off, verify lease claim/renew/release, heartbeat `machineId`, git synchronization, and collision-free shared-state writes. (source: 2026-07-13 handoff prompt)
-- [ ] **CMUX-002 — Fresh post-reset mirrored read-only A/B:** after the Claude allowance resets, launch a new clean, bounded task envelope through the Codex GPT-5.6 Sol high and Claude Opus 4.8 high orchestrator teams; reveal only after both fresh-run results submit, then compare quality, latency, and coordination without allowing either team to mutate BigBounce. The first diagnostic run was inconclusive. Clean run `20260714T000136Z-024658000-bfee86cfcc83` launched from a clean snapshot with verified four-workspace topology and every Codex trust gate bypassed; Codex sealed its result, but Claude hit its weekly subscription limit before submission, so nothing was revealed and there is no winner. The next clean run must exercise the new pre-create route gate: one completed subscription-authenticated launch-time turn per unique provider/model/effort route, with typed invalidation and zero workspaces on failure. This is not completed-turn proof for every interactive session, later quota, or final submission. (source: 2026-07-13 CMUX continuation)
-
-## Blocked
-
-- **HO-B01 — Browser/manifest ownership:** live M41 owns the headed browser and review manifest; acceptance must not claim the lease or write browser/ledger state until M41 is idle or explicitly handed off.
-- **HO-B02 — Hubify verification:** Hubify CLI is unauthenticated, so Hubify-backed lab/status claims cannot yet be independently verified.
-- **HO-B03 — Shared-stack sync:** the machine-sync/shared configuration repo is dirty/conflicted; do not pull, overwrite, or sync it until ownership is reconciled.
-- **CMUX-B01 — Mutation/coordination gate:** keep CMUX dogfood read-only until You.md provides atomic work claims, heartbeats, overlap detection, and isolated worktrees. Every run-owned surface now has a process-enforced target-repository write denial, but this is not hostile isolation against the same OS user or independently launched raw-CMUX processes; a stronger broker/identity boundary remains required.
-- **CMUX-B02 — Claude comparison allowance:** Claude Opus 4.8 could not submit the clean-run result because the weekly subscription limit was reached; the CLI reports reset at **2026-07-15 07:00 America/Los_Angeles**. This legacy run predates deadline-aware contracts and has no deadline, so it cannot be retroactively marked expired; its lone Codex result remains sealed and unrevealed. Use a fresh envelope after reset rather than declaring a winner from this run.
-
-## Done
-
-- [x] **CMUX-003 — Audit model-routing efficiency and provider authenticity:** OpenRouter category ranks were confirmed as usage/spend popularity, not capability scores; live cmux was GPT-5.6 Sol-only (high/medium/low), with no Terra/Luna/Grok/Gemini runtime evidence. The audit also found that the then-current BigBounce INT pipeline made separately billed direct OpenAI/xAI/Gemini native-PDF calls. That finding triggered the corrected standing policy: OpenAI review now uses Codex CLI/ChatGPT subscription only with API credentials unset; direct Grok/xAI and Gemini calls remain allowed. Recommended routing is Sol/Fable for director checkpoints, Terra for leads, Luna/mini/spark for mechanical workers/pollers, and real Grok/Gemini calls as independent reviewers. (source: 2026-07-14 12:10 PT; corrected 2026-07-14)
-- [x] **HO-001 — Receiving-machine bootstrap:** Codex acceptance run reached `READY` with 21 PASS / 2 WARN / 0 FAIL; warnings are Hubify authentication and per-machine reviewer-login confirmation. (source: 2026-07-13 handoff prompt)
-- [x] **HO-003 — Portability acceptance:** this Codex receiving session loaded the repository instructions, mapped host-specific gaps, and completed bootstrap/tool hardening without hidden Claude context. (source: 2026-07-13 handoff prompt)
-- [x] **HO-004 — Close bootstrap gaps:** TinyTeX and exact SDK detection fixed; `.env.example` now covers every BigBounce local key name; isolated lease/cron regression tests pass. (source: 2026-07-13 Claude report)
-- [x] **CMUX-001 — Local mirrored launcher and hardened evaluation contract:** code commit `fb815f8` and documentation commit `be65a6f` in the separate `learning-cmux-with-agents` lab add a fail-closed provider-route gate before any CMUX create: one subscription-authenticated completed turn per unique provider/model/effort route, alternate API/cloud environment scrubbing, an exact sentinel bound to the absolute executable digest, hash-only `0444` receipts, and typed pre-release invalidation with zero workspaces on failure. Existing per-surface caller-bound provider-auth/short-liveness receipts, immutable snapshot binding, atomic seal/reveal, target-repository write denial, process-group cleanup, and deadline adjudication remain. **37 tests pass.** This is route-level launch-time proof—not completed-turn proof for every interactive session, later quota, final submission, or hostile same-user isolation. Houston's fork is configured as local remote `fork`, `remote.pushDefault=fork`, branch `codex/youmd-cmux-lab` is pushed, and draft PR `https://github.com/houstongolden/learning-cmux-with-agents/pull/1` targets the fork's `main`; `origin` remains IndyDevDan's upstream repository. (sources: 2026-07-13 CMUX prompts and acceptance runs)
-- [x] Handoff/ops commits `e730850b`, `de4750f3`, and `27596c56` exist, are reachable from `main`, and are pushed; M40 adjudication `df8d89a3` is also pushed. (verified 2026-07-13 13:52 PT)
-- [x] Current repo is synchronized with `origin/main` at `b93528b6`; the prior lease/heartbeat acceptance evidence remains recorded. (verified 2026-07-13 16:15 PT)
-
-## Phase 0 completion criteria
-
-- A second machine reaches bootstrap `READY` with secrets restored without exposure.
-- Lease and heartbeat behavior is exercised during an explicit idle/handoff window.
-- Both machines converge on the same git commit and Convex deployment without browser, manifest, ledger, or site-state collisions.
-- Codex can resume from repository instructions alone; all remaining warnings and host-specific gaps are recorded.
-- Houston accepts the two-machine one-lab workflow.
-
-## Gated — not active
-
-- **Phase 1:** second orchestrator (Codex), same lab; requires Phase 0 green plus Houston approval.
-- **Phase 2:** two blind labs on the bounded P4 end-to-end mirror-flip target with seal/reveal, `labId`, and site support; requires Phase 1 green and tested scaffolding.
-- **Phase 3:** open-source Lab C; requires a successful two-lab blind/reveal/corroboration cycle.
-
-## Watchpoints
-
-- Readiness is evidence, not a target to manufacture: never claim 95--99%, acceptance, or minor-only status until every exact-PDF board and residual gate supports it.
-- Reviewer venue/article type is part of the review artifact. Keep PRD, CQG Note, AJ, ApJS, JCAP, or MNRAS boards separate; never relabel a verdict after the fact.
-- Stop repeated review on unchanged content: after two valid independent waves on the same PDF hash yield zero genuinely new reader-visible findings, preserve the verdict spread and advance by stable gates. Never repeat solely to obtain a preferred verdict word.
-- Acceleration may remove duplicate compute, stale-path risk, and repeated review work; it may not remove truth audits, reproducibility checks, independent review, or all-page PDF visual inspection.
-- Review models are residual-novelty detectors, not the first-line linter. No new review packet may dispatch unless its exact source/PDF hash is bound to a current strict portfolio-preflight PASS receipt.
-- Measure known-pattern escape rate, preflight interception precision/recall, closure-regression rate, claim-evidence coverage, and archive/catalog freshness; round count and favorable verdict volume are not convergence metrics.
-- Current provider policy (2026-07-16, CLAUDE.md directive N): Codex/OpenAI PAUSED entirely — never invoke Codex CLI, never OpenAI API billing. Claude Code orchestrates (Fable 5/Opus 4.8) with cheaper Claude workers; INT review legs = Claude reviewer subagent + Grok/xAI + Gemini direct APIs, all raw-receipted. A missing vendor leg is recorded as absent, never silently replaced or fabricated.
-- Historical PDFs are append-only evidence. Alias paths may advance, but immutable versioned/timestamped PDFs and their manifests must remain retained.
-- Do not publish partial readiness state. Public PDF/version/SSOT/Convex/API/site changes land only after their exact evidence packet is complete and mutually consistent.
-
-- MVP first: do not implement `labId`, site lab views, lab branches, or seal/reveal tooling during Phase 0.
-- Git is the sync bus, Convex is shared live state, and only the lease holder may drive browser/verdict/ledger writes.
-- Preserve current M41, prompt-history, and generated-skill working-tree ownership; do not fold those files into handoff acceptance work.
-- CMUX lab code lives in `/Users/houstongolden/Desktop/CODE_YOU/learning-cmux-with-agents`; push publication through Houston's `fork` remote (`remote.pushDefault=fork`), never directly to the upstream `origin`. Draft PR `https://github.com/houstongolden/learning-cmux-with-agents/pull/1` tracks `codex/youmd-cmux-lab` against the fork's `main`.
-- The live mirrored run is an evaluation lane only: no review manifest, SSOT, site, Convex, lease, or source mutation is authorized by CMUX participation.
-- A single sealed result is not a comparison outcome. Never reveal or name a winner until the same fresh-run contract has accepted both arms; do not retroactively expire a legacy contract that has no deadline.
+<!-- notes:start -->
+Lossless legacy BigBounce metadata:
+{"schema":1,"updated_at":"2026-08-26T00:00:00-07:00","project":"bigbounce","objective":"Ship the approved three-program public architecture, complete the DESI anomaly flagship follow-on work after the clean rerun and post-dedup scan/provenance stage, integrate current P3 as supporting provenance, retain P5 as a standalone companion, and resume selected-portfolio sign-off and submission without conflating workflow with readiness.","canonical_plan":"ops/PLAN.md","canonical_status":"project-context/SSOT/index.md","current_versions":{"P1A":"v1A.0.127","P1B":"v2B.0.16","P2":"v1.7.130","P3_support":"v3.2.0-r17","P4":"v1.0.274","P5":"v0.1.147-2026-08-03"},"readiness_model":{"directive":"P","agent_gates":95,"houston_signoff_points":5,"publishing_phase_separate":true,"automated_convergence":"zero genuinely-new-real findings outstanding across active Grok API, Gemini API, and Claude Opus INT legs; verdict words are diagnostic","final_hash_confirmation":"bounded evidence-hygiene check required for post-board closure artifacts; it does not restart an unbounded review loop"},"historical_tasks":[{"id":"PUB-001","status":"active","title":"Close active science revisions across P1A, P1B, P3, P4, and P5","source_prompts":["2026-07-13 19:28 PT publication-readiness mandate","2026-07-14 10:39 PT acceleration mandate"],"completion_criteria":["Every confirmed scientific finding has a source-backed closure or an explicit unresolved blocker","Every changed manuscript compiles and passes the full PDF visual audit","Compute-derived claims bind to reproducible immutable artifacts"]},{"id":"PUB-002","status":"active","title":"Run fresh exact-PDF venue-correct subscription/direct-provider review boards","source_prompts":["2026-07-13 19:28 PT publication-readiness mandate"],"completion_criteria":["Each review records the exact PDF SHA-256, version, source commit, venue, article type, prompt, and raw report","The OpenAI perspective is supplied only by Codex CLI authenticated through the ChatGPT subscription with OpenAI API credentials unset; OpenAI API billing is forbidden","Direct-provider Grok/xAI and Gemini legs are allowed; every result is truth-audited without fabricated or silently substituted legs","Re-review occurs only after a reader-visible PDF content-hash change, except one declared independent confirmation of a high-risk closure","Acceptance or minor-only status is claimed only when the exact board supports it"]},{"id":"PUB-003","status":"active","title":"Implement safe acceleration controls","source_prompts":["2026-07-14 10:39 PT acceleration mandate"],"completion_criteria":["One canonical registry defines the six source/PDF/venue/site mappings","Content-addressed review packets fail closed on stale paths, hash mismatch, ambiguous commits, or output reuse","Science gates and workflow gates are represented separately","Any compute parallelism passes a deterministic serial-equivalence regression before production use"]},{"id":"PUB-004","status":"pending","title":"Synchronize exact public state and push main","source_prompts":["2026-07-13 19:28 PT publication-readiness mandate"],"depends_on":["PUB-001","PUB-002"],"completion_criteria":["Paper mirrors, versions, claims tables, SSOT, Convex/API, site papers, and review timeline agree","Site build and governed browser QA pass","Bisected commits are pushed to main only after the public state is honest and atomic"]},{"id":"PUB-005","status":"active","title":"Retain an immutable complete PDF history","source_prompts":["2026-07-14 PDF-retention mandate"],"completion_criteria":["Every compiled paper PDF is retained under a paper/version/PST-timestamped immutable name","An append-only manifest records source commit, PDF SHA-256, page count, build command, and review-round references","The canonical archive plus two independent mirrors are hash-verified before cleanup","No cleanup deletes the only copy of a historical PDF"],"progress":["Current/future six-paper PDF snapshots are retained through Directive-G before mirror/Convex mutation.","Complete Git PDF inventory manifest project-context/pdf-archive/manifests/2026/07/20260714T235000Z-history-inventory-20260714-history.json records 1,356 reachable PDF object/path rows, 1,094 high-confidence manuscript rows, and 262 explicit unclassified rows.","Fast historical byte materialization covers row offsets 0-1357 with no gaps across 49 history-backfill-fast-* manifests: 1,095 classified manuscript rows processed, 837 new SHA-256 objects and 843 new refs created, zero row errors.","Archive verification after fast materialization: 1,097 objects, 1,106 refs, and 0 bad ref-to-object hardlinks.","First page-counted historical materialization proof project-context/pdf-archive/manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json verified five P4 manuscript rows with page counts 22, 24, 25, 22, 21."],"next_action":"Run page-count completion tranches with tools/pdf_version_retention.py --history-backfill --history-offset <n> --history-limit <m> (without --history-skip-page-count), then mirror project-context/pdf-archive to two independent stores and hash-verify both mirrors."},{"id":"PUB-006","status":"active","title":"Separate stable readiness gates from raw reviewer distributions","source_prompts":["2026-07-14 readiness-regression audit"],"completion_criteria":["Scientific, reproducibility, venue-fit, release-integrity, and human/workflow gates are represented separately","Raw verdicts remain verbatim and are indexed by paper/PDF hash/commit/venue/prompt/provider/model/modality","Wrong-version, stale, missing, prompt-echo, and failed legs are gaps and never inferred verdicts","Historical EXT11/EXT17 arithmetic and relabeling inconsistencies are preserved and corrected in the normalized view without rewriting raw evidence","Two valid independent waves with zero genuinely new reader-visible findings on the same hash trigger the content-hash stop rule"]},{"id":"PUB-007","status":"active","title":"Compile review learning into mandatory all-paper prevention gates","source_prompts":["2026-07-15 15:24 PT recursive-improvement mandate"],"completion_criteria":["One canonical HubStack engine ingests machine-readable safe rules and emits content-addressed PASS/FAIL receipts","A BigBounce adapter runs the accumulated high-impact gate suite across all six current paper sources and exact PDFs","Review packets fail closed unless source commit, source/PDF hashes, rule-catalog hash, and preflight receipt all agree","Every truth-audited NEW-REAL blocker/major and recurrent minor adds or strengthens an executable regression fixture before the next review","Learning metrics report known-pattern escapes, preflight interception, closure regressions, claim-evidence coverage, and archive/catalog freshness"]},{"id":"HO-001","status":"done","title":"Run receiving-machine bootstrap to READY","source_prompts":["2026-07-13 Codex handoff acceptance"],"completion_criteria":["Second machine follows BOOTSTRAP_PROMPT.md","bootstrap.sh reports READY","Every WARN or FAIL is resolved or documented without exposing secrets"],"evidence":["bootstrap READY: 21 PASS, 2 WARN, 0 FAIL","TinyTeX pdflatex and latexmk detected","Convex reachable","gstack healthy headed"]},{"id":"HO-002","status":"active","title":"Verify one-lab coordination on two machines","source_prompts":["2026-07-13 Codex handoff acceptance"],"depends_on":["HO-B01"],"completion_criteria":["Lease claim, renew, release, denial, and expiry behavior are verified during an idle or handed-off window","Heartbeat contains the active machineId","Git and Convex converge without browser, manifest, ledger, or site-state collisions"]},{"id":"HO-003","status":"done","title":"Verify Codex orchestrator portability","source_prompts":["2026-07-13 Codex handoff acceptance"],"completion_criteria":["Fresh Codex session resumes from repository instructions alone","Claude-only assumptions are absent or explicitly mapped","Host capability gaps are recorded honestly"],"evidence":["Codex receiving session followed AGENTS/onboarding/runbook","macOS launchd and gstack browser dependencies made explicit","Codex host is mapped as its own INT reviewer"]},{"id":"HO-004","status":"done","title":"Close bootstrap prerequisite-detection gaps","source_prompts":["2026-07-13 Claude handoff report"],"completion_criteria":["TinyTeX pdflatex is detected or its degraded state is documented","No prerequisite check is weakened to force READY"],"evidence":["bootstrap exact-module checks pass","BigBounce env-key audit has zero missing key names","isolated lease CAS + cron routing test passes"]},{"id":"CMUX-001","status":"done","title":"Build and harden the local mirrored launcher and evaluation contract","source_prompts":["2026-07-13 14:49 PT cmux architecture","2026-07-13 15:38 PT continue","2026-07-13 15:56 PT sync and continue","2026-07-13 18:10 PT continue"],"completion_criteria":["Launch equivalent Codex and Claude orchestrator teams from an immutable task and repository snapshot","Use subscription-authenticated CLIs without injecting provider API keys","Keep each result sealed until both teams submit","Reject mutation while atomic You.md coordination primitives are unavailable","Deny target-repository writes for every run-owned surface and invalidate the seal before failure rollback"],"evidence":["learning-cmux-with-agents code commit fb815f8 and documentation commit be65a6f contain the completed provider-route readiness gate and contract","all 37 local tests pass","before any CMUX create, one subscription-authenticated completed turn runs per unique provider/model/effort route with alternate API/cloud environment variables scrubbed, an exact sentinel bound to the absolute executable digest, and hash-only 0444 receipts","a route failure publishes typed pre-release invalidation and creates zero workspaces","every run-owned surface has process-enforced target-repository write denial; this is not hostile same-user or independently launched raw-CMUX isolation","route receipts prove one completed subscription-authenticated turn per unique route at launch time; per-surface caller-bound receipts plus bounded settle prove provider-auth preflight and short process liveness","readiness does not prove a completed turn for every interactive session, later quota availability, final submission, or hostile same-user isolation","abort invalidation is atomically published before rollback and supervisors terminate the complete provider process group","the result seal is atomic and one-way; capabilities use private token files and shared envelopes and receipts do not contain plaintext capability tokens","Houston-owned remote fork points to https://github.com/houstongolden/learning-cmux-with-agents, remote.pushDefault is fork, branch codex/youmd-cmux-lab is pushed, and draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 targets the fork's main; origin remains IndyDevDan's upstream repository"]},{"id":"CMUX-002","status":"active","title":"Run a fresh clean post-reset mirrored read-only A/B","source_prompts":["2026-07-13 16:14 PT continue","2026-07-13 CMUX continuation"],"depends_on":["CMUX-001"],"completion_criteria":["Both orchestrator teams receive the same task envelope and repository snapshot","Neither team mutates BigBounce or sees the other team's result before dual submission","Both sealed results reveal successfully and are compared for quality, latency, and coordination behavior","Run artifacts record the exact models, CLI authentication path, snapshot hash, and outcome","Route readiness is treated as launch-time proof for each unique provider/model/effort route, not completed-turn proof for every interactive session, later quota availability, or final submission"],"latest_attempt":{"run_id":"20260714T000136Z-024658000-bfee86cfcc83","state":"incomplete-no-reveal","evidence":["launched from a clean bound snapshot","expected four-workspace topology verified before launch-barrier release","all Codex project-trust gates bypassed","Codex result submitted and remains sealed","Claude weekly subscription limit prevented submission","no reveal and no winner","legacy deadline-free contract cannot be retroactively expired"]},"next_action":"After the Claude reset at 2026-07-15 07:00 America/Los_Angeles, create a new clean envelope and rerun both arms; do not reuse the incomplete run as comparison evidence."},{"id":"CMUX-003","status":"done","title":"Audit model-routing efficiency and provider authenticity","source_prompts":["2026-07-14 12:10 PT OpenRouter and CMUX routing audit"],"completion_criteria":["Explain OpenRouter category ranks using OpenRouter's published methodology","Inspect live CMUX processes and surfaces without changing focus or state","Verify Grok and Gemini through real endpoint code, raw provider-shaped usage artifacts, and live key/model-list checks","Recommend a cost- and judgment-calibrated director, lead, worker, poller, and independent-review routing matrix"],"evidence":["OpenRouter top-by-task ranks are share-of-spend popularity over real usage, not quality benchmarks","Live CMUX fleet is GPT-5.6 Sol high/medium/low only; no Terra/Luna/Grok/Gemini process evidence","The audit found that the then-current BigBounce INT pipeline called api.openai.com, api.x.ai, and generativelanguage.googleapis.com directly with native PDFs; the OpenAI leg was separately billed and is historical nonconforming behavior","Corrected policy routes the OpenAI perspective through Codex CLI/ChatGPT subscription with API credentials unset while retaining allowed direct Grok/xAI and Gemini legs","Recent Grok and Gemini raws preserve distinct token-usage schemas, latency, modality, exact model label, and verbatim response","Stored OpenRouter, xAI, and Gemini credentials passed secret-safe control-plane checks"]}],"blockers":[{"id":"HO-B01","status":"blocked","title":"Live M41 owns browser and manifest","clear_when":"M41 is idle or explicitly hands off browser and ledger ownership"},{"id":"HO-B02","status":"blocked","title":"Hubify CLI unauthenticated","clear_when":"Hubify authentication succeeds and lab/status claims can be queried"},{"id":"HO-B03","status":"blocked","title":"Machine-sync shared repo dirty or conflicted","clear_when":"Shared-repo ownership is reconciled and sync can run without overwriting work"},{"id":"CMUX-B01","status":"blocked","title":"CMUX mutation awaits You.md atomic coordination","clear_when":"You.md atomic work claims, heartbeats, overlap detection, and isolated worktrees are implemented and acceptance-tested"},{"id":"CMUX-B02","status":"blocked","title":"Claude weekly subscription limit blocks dual submission","clear_when":"Claude allowance resets at 2026-07-15 07:00 America/Los_Angeles and a fresh clean mirrored run submits both arms"}],"completed":[{"id":"HO-D01","status":"done","title":"Verify handoff commits are reachable and pushed","evidence":["origin/main=b93528b6","HEAD divergence=0/0","e730850b","de4750f3","27596c56","df8d89a3","b93528b6"]},{"id":"HO-D02","status":"done","title":"Verify lease and heartbeat files exist","evidence":["lease free at seq 0","heartbeat source=orchestrator","heartbeat machineId=Houstons-MacBook-Air.local"]}],"mvp_completion_criteria":["Second machine reaches bootstrap READY without secret exposure","Lease and heartbeat behavior is verified during an explicit idle or handoff window","Both machines converge on the same git and Convex state without write collisions","Codex resumes from repository instructions alone","Houston accepts the two-machine one-lab workflow"],"gated_phases":[{"phase":1,"status":"pending-gated","title":"Second orchestrator, same lab","entry_gate":"Phase 0 green and Houston approval"},{"phase":2,"status":"pending-gated","title":"Two blind labs on bounded P4 mirror-flip reproduction","entry_gate":"Phase 1 green; seal/reveal tooling tested; Convex labId and site support landed"},{"phase":3,"status":"pending-gated","title":"Open-source Lab C","entry_gate":"Phase 2 blind/reveal/corroboration cycle succeeds"}],"watchpoints":["Never claim 95-99% readiness, acceptance, or minor-only status until every exact-PDF board and residual gate supports it.","Reviewer venue and article type are immutable review metadata; keep venue-fit boards separate and never relabel verdicts after the fact.","OpenAI perspective uses Codex CLI authenticated through the ChatGPT subscription with OpenAI API credentials unset; never incur OpenAI API billing. Direct-provider Grok/xAI and Gemini calls are allowed.","Stop repeated review after two valid independent zero-new waves on the same PDF hash; preserve the verdict spread and advance by stable gates rather than chasing a preferred verdict.","Retain every historical PDF immutably with version, PST timestamp, source commit, hash, build metadata, and review references; never delete the only copy.","Acceleration may remove duplicate work and stale-artifact risk, but may not remove truth audits, reproducibility checks, independent review, or all-page PDF inspection.","Do not call Anthropic or Claude in the current campaign; record unavailable legs honestly.","Do not publish partial readiness state; synchronize public surfaces only after their evidence packet is mutually consistent.","Do not implement multi-lab schema, site, branches, or seal/reveal during Phase 0.","Only the lease holder may drive browser, verdict, or ledger writes.","Do not modify live review manifests, prompts.md, SSOT, site state, or generated .agents skills in this lane.","CMUX dogfood stays read-only until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees pass acceptance; per-surface process enforcement is not hostile same-user/raw-CMUX broker isolation.","CMUX route receipts prove one completed subscription-authenticated launch-time turn per unique provider/model/effort route, while per-surface provider-auth and short-liveness receipts remain separate; neither proves completed turns for every interactive session, later quota, final submission, or hostile same-user isolation.","Do not reveal or declare a winner from a run with only one sealed result; a legacy deadline-free contract cannot be retroactively expired.","Publish CMUX lab changes through Houston's fork remote with remote.pushDefault=fork, never directly to the upstream origin; draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 tracks codex/youmd-cmux-lab against the fork's main.","Keep raw prompts raw; put audit conclusions in task and plan files.","Read SSOT before paper work and never commit local environment backups."],"conflict_resolution_note":"Resolved a merge conflict that had been committed unresolved since 2026-08-05 (markers landed in a0bb9e6a, 2026-08-07), leaving this file invalid JSON for 13 days. Kept the canonical origin/main register; preserved T000/T001 and two watchpoints from the HEAD side; dropped one stale watchpoint describing the now-resolved 1,574-commit divergence."}
+<!-- notes:end -->
