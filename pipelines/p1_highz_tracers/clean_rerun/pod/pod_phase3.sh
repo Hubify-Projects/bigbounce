@@ -14,7 +14,7 @@ mark "enrich sample (per-band SNR + latents, mse cross-check gate)"
 python3 "$R/clean_rerun/enrich_flagship_sample.py" --sample /workspace/flagship_sample_s8.parquet \
   --sample-manifest /workspace/flagship_sample_s8_manifest.json --contract /workspace/run-contract.json \
   --model /workspace/bigbounce/best_model_47k.pt --zcatalog /workspace/zall-pix-iron.fits \
-  --coadd-cache-dir /workspace/enrich_cache --shard-dir /workspace/shards \
+  --coadd-cache-dir /workspace/enrich_cache --shard-dir /workspace/enrich_shards \
   --checkpoint /workspace/enrich_checkpoint.json --audit-log /workspace/enrich_audit.jsonl \
   --output /workspace/flagship_sample_s8_enriched.parquet \
   --manifest-output /workspace/flagship_enriched_manifest.json 2>&1 | tail -6 | tee -a "$LOG"
