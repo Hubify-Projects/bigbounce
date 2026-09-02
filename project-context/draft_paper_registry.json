@@ -25,13 +25,14 @@
       "paper4prime_chirality_test_v4P.0.1.pdf",
       "paper4prime_chirality_test_v4P.0.2.pdf",
       "paper4prime_chirality_test_v4P.0.3.pdf",
-      "paper4prime_chirality_test_v4P.0.4.pdf"
+      "paper4prime_chirality_test_v4P.0.4.pdf",
+      "paper4prime_chirality_test_v4P.0.5.pdf"
     ],
-    "version": "v4P.0.4",
+    "version": "v4P.0.5",
     "pages": 11,
     "date": "2026-09-02",
-    "sha256": "fbf6915390b474883fc98f08322093232312b429bb90e501cf1bfdecad0e951a",
-    "md5": "ed6b8f661b407e6845cb5d42c3efd8d2",
+    "sha256": "b60781c761ea10eb26e3ce1b9ccb06a0a17c05d44588972a9c42f6602991a5fb",
+    "md5": "f0d874e93cebf95f86e408f780f002e0",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.1-EXACTPDF-a9cc2618-R1/",
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2/",
@@ -66,13 +67,14 @@
       "paper1bc_ech_note_v1N.0.1.pdf",
       "paper1bc_ech_note_v1N.0.2.pdf",
       "paper1bc_ech_note_v1N.0.3.pdf",
-      "paper1bc_ech_note_v1N.0.4.pdf"
+      "paper1bc_ech_note_v1N.0.4.pdf",
+      "paper1bc_ech_note_v1N.0.5.pdf"
     ],
-    "version": "v1N.0.4",
-    "pages": 12,
+    "version": "v1N.0.5",
+    "pages": 11,
     "date": "2026-09-02",
-    "pdf_sha256": "ba672666905066763b1b7ac076a367cfe9a37809d400e186a1fbc845425dd462",
-    "pdf_md5": "dcdeb0e1326fd3ef5b396e7d84a60d28",
+    "pdf_sha256": "014a96ebffc21d75e92dfa7e05592132ef4ba0a5fa950a6ec50c4b33a6e8e3d9",
+    "pdf_md5": "6836eb995effef298cca6830b1beda7c",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.1-EXACTPDF-2287537b-R1/P1N_v1N.0.1_R1_truth_audit.md",
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2/P1N_v1N.0.2_R2_truth_audit.md",
@@ -119,22 +121,16 @@
     "pdf_path": "research/track_a3_multichannel/paper/main.pdf",
     "site_slug": "paper-a3m",
     "target_journal": "PRD (regular article)",
-    "article_type": "multi-channel consistency test (theory: exact matter-contraction f_NL + transmission bound, folded from P2L per lineage decision; observational: PTA + PBH + LSS survey reach)",
-    "review_profile": "PRD-REGULAR",
+    "article_type": "Multi-channel consistency of the matter-bounce prediction f_NL = -35/16 (exact amplitude, pulsar timing, primordial black holes, survey reach) -- Track A flagship submission candidate",
+    "review_profile": "PRD-STANDARD",
     "served_aliases": [
-      "a3_multichannel_arxiv_v3M.0.1.pdf",
       "a3_multichannel_arxiv_v3M.0.2.pdf"
     ],
     "version": "v3M.0.2",
     "pages": 6,
     "date": "2026-09-02",
-    "sha256": "0cbb10215ef286eadf6c21fc9b91b0d551763cfba2c76c0c03a4973319b85e4a",
     "md5": "8f17a2dc877c0b58982e91a8dea0fa1b",
-    "lineage": {
-      "folded_from": "arxiv/paper2prime_fnl_letter/main.tex v2L.0.2 (exact-amplitude theory record: per-vertex in-in table, Cai et al. 2009 factor-2 location, delta-N/comoving reconciliation, consistency with Li et al. 2016 Eq. 4.19, linear transmission bound)",
-      "skeleton_from": "research/track_a3_multichannel/paper/main.tex (PTA/PBH/LSS channel skeleton with real numbers, pre-merge)",
-      "decision_doc": "project-context/PAPER_LINEAGE_2026-08-05.md, section 'Decision record \u2014 2026-09-02 (evening): P2\u2032 Letter \u2192 theory section of the A3 multi-channel paper'"
-    },
+    "lineage": "A3 skeleton (research/track_a3_multichannel/) + P2' v2L.0.2 exact-amplitude theory (f_NL=-35/16, ledger #1 CLOSED independent re-derivation) folded in per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. Status: draft -- PBH compaction-function row pending; one INT board pending.",
     "review_paths": []
   }
 }

@@ -69,9 +69,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1n",
       number: "1N",
       shortTitle: "The ECH Note (P1A + P1C merged, grown to CQG Paper form)",
-      version: "v1N.0.3",
-      readiness: 20,
-      pendingWork: "R2 board closed (Claude major-revisions, Grok reject, Gemini major-revisions) — 23/23 findings closed this round, incl. two errors inherited from P1C (8π coefficient, O5 parity); R3 verification pass dispatched, verdicts pending.",
+      version: "v1N.0.4",
+      readiness: 95,
+      pendingWork: "R3 verification pass closed (Claude major-revisions, Grok reject, Gemini major-revisions) with machine-checked regressions; automated review converged; final author review APPROVE; Houston sign-off (95→100) not yet sought.",
     },
     {
       slug: "paper-1a",
@@ -104,6 +104,14 @@ export const liveStatus: LiveStatus = {
       version: "v2L.0.2",
       readiness: 20,
       pendingWork: "R1 (Fable major / Grok reject / Gemini major) truth-audited; scope decision recorded — archived theory record, content folded into the A3 multi-channel paper.",
+    },
+    {
+      slug: "paper-a3m",
+      number: "A3",
+      shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
+      version: "v3M.0.2",
+      readiness: 20,
+      pendingWork: "A3 skeleton + P2′ v2L.0.2 exact-amplitude theory folded in per PAPER_LINEAGE_2026-08-05.md. PBH compaction-function row pending; one INT board pending.",
     },
     {
       slug: "paper-3",

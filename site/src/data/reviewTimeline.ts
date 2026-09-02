@@ -21,9 +21,11 @@ export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
  * portfolio restructure (directive R3): they are the current review
  * targets for their tracks but are not new columns in the historical
  * six-paper verdict/gap matrices. "P2L" (the P2′ Letter, Track A A1) is
- * added on the same basis after ledger #1 closed 2026-09-02.
+ * added on the same basis after ledger #1 closed 2026-09-02. "A3" (the
+ * multi-channel consistency flagship paper, paper-a3m) is added on the same
+ * basis after its 2026-09-02 registration.
  */
-export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P" | "P2L";
+export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P" | "P2L" | "A3";
 
 export interface ReviewRoundLink {
   label: string;
@@ -64,6 +66,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "a3m-registered-v3m-0-2-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "restructure",
+    title: "A3 multi-channel paper registered (v3M.0.2 draft) — Track A flagship submission candidate",
+    papers: ["A3"],
+    summary:
+      "Registered paper-a3m: the A3 multi-channel consistency skeleton (NANOGrav 15-yr free-spectrum γ, PBH abundance, SPHEREx/MegaMapper reach) folds in the P2′ v2L.0.2 exact-amplitude theory (f_NL = −35/16, ledger #1 CLOSED) per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record, making A3 the Track A flagship submission candidate rather than a supporting research brief. Draft status: PBH compaction-function row pending, one INT board pending. PDF: research/track_a3_multichannel/paper/main.pdf, 6pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b.",
+    keyTakeaways: [
+      "v3M.0.2: A3 skeleton + P2′ exact-amplitude theory folded in",
+      "Now the Track A flagship submission candidate (readiness 20)",
+      "PBH compaction-function row and one INT board remain open",
+    ],
+    links: [
+      { label: "Paper lineage decision", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+    ],
+  },
+  {
+    id: "p1n-r3-verification-converged-v1n-0-4-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "ECH Note R3 verification (Claude major / Grok reject / Gemini major) → v1N.0.4 with machine-checked regressions; automated review converged; final author review APPROVE; readiness 95",
+    papers: ["P1N"],
+    summary:
+      "P1N's R3 verification board returned Claude major-revisions, Grok reject, Gemini major-revisions — every reject/major-tier item truth-audited as a source-cited re-flag or disclosed limitation, closed with machine-checked regressions against the prior R2 closure. Recompiled to v1N.0.4 (12pp, md5 dcdeb0e1326fd3ef5b396e7d84a60d28). Automated review convergence criterion met (directive P); final author (Houston) review recorded APPROVE. Publication readiness set to 95 — the remaining 5 points require Houston's explicit per-paper sign-off (directive P), tracked separately from this score. arXiv tarball assembled: SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.4.tar.gz (sha256 67eac435…).",
+    keyTakeaways: [
+      "v1N.0.4: R3 verification closed with machine-checked regressions — Claude major, Grok reject, Gemini major",
+      "Automated review convergence criterion met; final author review APPROVE",
+      "Readiness cap set to 95; 100 requires Houston's explicit per-paper sign-off",
+      "arXiv tarball assembled and sha256-verified",
+    ],
+    links: [
+      { label: "P1N SSOT", href: `${GH}/project-context/SSOT/paper-1n/status.md` },
+    ],
+  },
   {
     id: "p4p-r3-verification-converged-v4p-0-4-2026-09-02",
     dateISO: "2026-09-02",
