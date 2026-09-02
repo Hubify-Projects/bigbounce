@@ -394,6 +394,40 @@ class TestFetchReferenceClassNoNetwork(unittest.TestCase):
         self.assertEqual(result.n_rows, 0)
         self.assertIsNotNone(result.error)
 
+    def test_per_class_wall_guard_times_out_and_skips(self):
+        """A class whose VizieR query never returns is recorded as status
+        'timeout' (never hangs the sweep, never fabricates a row count)."""
+        import tempfile
+        import time
+        import unittest.mock as mock
+
+        baron = next(r for r in mod.REFERENCE_CLASSES if r.class_id == "baron_poznanski_weird")
+
+        class _HangingVizier:
+            def __init__(self, *args, **kwargs):
+                pass
+
+            def get_catalogs(self, vizier_id):
+                # Simulate the real hang: sleep well past the wall guard.
+                time.sleep(5)
+                raise AssertionError("should have been interrupted by the wall guard")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch("astroquery.vizier.Vizier", _HangingVizier):
+                result = mod.fetch_reference_class(
+                    baron,
+                    Path(tmp),
+                    row_limit=10,
+                    timeout_sec=1.0,
+                    wall_guard_sec=0.5,
+                    max_retries=0,
+                    retry_backoff_sec=0.0,
+                )
+        self.assertEqual(result.status, "timeout")
+        self.assertEqual(result.n_rows, 0)
+        self.assertIsNotNone(result.error)
+        self.assertIsNone(result.cache_path)
+
 
 if __name__ == "__main__":
     unittest.main()

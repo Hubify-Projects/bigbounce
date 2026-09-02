@@ -59,6 +59,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import signal
 import sys
 import time
 import traceback
@@ -152,11 +153,11 @@ REFERENCE_CLASSES: tuple[ReferenceClass, ...] = (
         class_id="cv_white_dwarf_binaries",
         name="Cataclysmic variables / white-dwarf binaries",
         citation="Ritter & Kolb 2003 (7th ed. catalog of CVs)",
-        vizier_id="B/cb/cb",
+        vizier_id="B/cb",
         ra_col_candidates=("RA1950", "RAJ2000", "RA_ICRS"),
         dec_col_candidates=("DE1950", "DEJ2000", "DE_ICRS"),
         z_col_candidates=(),
-        notes="Galactic; expected to be a LOW-recovery class relative to DESI's extragalactic-dominated footprint (sanity-check class).",
+        notes="Galactic; expected to be a LOW-recovery class relative to DESI's extragalactic-dominated footprint (sanity-check class). VizieR id corrected 2026-09-02 from the invalid 'B/cb/cb' (a doubled-segment typo) to the real Ritter & Kolb catalogue id 'B/cb' (table 'cb.dat').",
     ),
     ReferenceClass(
         class_id="carbon_stars",
@@ -234,7 +235,7 @@ REFERENCE_CLASSES: tuple[ReferenceClass, ...] = (
 @dataclass
 class FetchResult:
     class_id: str
-    status: str  # "fetched" | "unavailable" | "no_catalog_id_known"
+    status: str  # "fetched" | "unavailable" | "timeout" | "no_catalog_id_known"
     n_rows: int
     vizier_id: Optional[str]
     cache_path: Optional[str]
@@ -269,12 +270,32 @@ def _pick_column(colnames: list[str], candidates: tuple[str, ...]) -> Optional[s
     return None
 
 
+class _PerClassTimeout(RuntimeError):
+    """Raised by the SIGALRM handler when one class's fetch exceeds its wall guard."""
+
+
+def _alarm_handler(signum, frame):  # noqa: ANN001, ARG001
+    raise _PerClassTimeout("per-class wall guard fired (signal.alarm)")
+
+
+DEFAULT_PER_CLASS_WALL_GUARD_SEC = 180
+DEFAULT_FETCH_RETRIES = 2
+DEFAULT_RETRY_BACKOFF_SEC = 5.0
+
+
 def fetch_reference_class(
-    ref: ReferenceClass, cache_dir: Path, row_limit: int, timeout_sec: float
+    ref: ReferenceClass,
+    cache_dir: Path,
+    row_limit: int,
+    timeout_sec: float,
+    wall_guard_sec: float = DEFAULT_PER_CLASS_WALL_GUARD_SEC,
+    max_retries: int = DEFAULT_FETCH_RETRIES,
+    retry_backoff_sec: float = DEFAULT_RETRY_BACKOFF_SEC,
 ) -> FetchResult:
     now = datetime.now(timezone.utc).isoformat()
     cache_dir.mkdir(parents=True, exist_ok=True)
     if ref.vizier_id is None:
+        print(f"  [{ref.class_id}] no VizieR id known -- skipping fetch", flush=True)
         return FetchResult(
             class_id=ref.class_id,
             status="no_catalog_id_known",
@@ -305,19 +326,98 @@ def fetch_reference_class(
             fetched_at=now,
         )
 
-    vizier = Vizier(row_limit=row_limit, timeout=timeout_sec)
-    try:
-        catalogs = vizier.get_catalogs(ref.vizier_id)
-        if not catalogs:
-            raise BenchmarkError(f"VizieR returned zero tables for {ref.vizier_id}")
-        table = catalogs[0]
-        for candidate in catalogs[1:]:
-            if len(candidate) > len(table):
-                table = candidate
-    except Exception as exc:  # noqa: BLE001 - record every failure mode honestly
+    # Only request the columns this class actually needs -- large catalogues
+    # (Roma-BZCAT, BAL quasars, LAEs) can carry hundreds of columns; pulling
+    # all of them with row_limit=-1 is what stalls the chunked HTTP read.
+    # astroquery's Vizier(columns=[...]) chokes (TypeError: unhashable type:
+    # 'slice') on VizieR's special dotted/underscore-prefixed pseudo-columns
+    # (e.g. "_RA.icrs", "_DE.icrs") -- those are query-time computed columns,
+    # not real table columns, so drop them from the explicit column request
+    # (VizieR still returns the real RAJ2000/DEJ2000-style columns).
+    wanted_columns = [
+        c
+        for c in dict.fromkeys(
+            [*ref.ra_col_candidates, *ref.dec_col_candidates, *ref.z_col_candidates]
+        )
+        if not c.startswith("_")
+    ]
+    vizier = Vizier(
+        columns=wanted_columns if wanted_columns else ["*"],
+        row_limit=row_limit,
+        timeout=timeout_sec,
+    )
+
+    print(
+        f"  [{ref.class_id}] querying VizieR id={ref.vizier_id!r} "
+        f"columns={wanted_columns or ['*']} row_limit={row_limit} "
+        f"timeout={timeout_sec}s wall_guard={wall_guard_sec}s",
+        flush=True,
+    )
+
+    last_exc: Optional[Exception] = None
+    table = None
+    have_alarm = hasattr(signal, "SIGALRM")
+    for attempt in range(1, max_retries + 2):  # first try + max_retries retries
+        old_handler = None
+        try:
+            if have_alarm:
+                old_handler = signal.signal(signal.SIGALRM, _alarm_handler)
+                signal.alarm(int(math.ceil(wall_guard_sec)))
+            t0 = time.monotonic()
+            try:
+                catalogs = vizier.get_catalogs(ref.vizier_id)
+                if not catalogs:
+                    raise BenchmarkError(f"VizieR returned zero tables for {ref.vizier_id}")
+            except (TypeError, BenchmarkError) as col_exc:
+                # The requested column subset didn't match this catalogue's
+                # real column names (a real astroquery quirk: an explicit
+                # `columns=[...]` that misses can raise TypeError internally
+                # or come back with zero tables) -- fall back to the full,
+                # unrestricted column set for this same attempt rather than
+                # burning a retry or reporting a false failure.
+                print(
+                    f"  [{ref.class_id}] restricted-column query failed ({type(col_exc).__name__}: {col_exc}) "
+                    "-- retrying with full column set",
+                    flush=True,
+                )
+                fallback_vizier = Vizier(row_limit=row_limit, timeout=timeout_sec)
+                catalogs = fallback_vizier.get_catalogs(ref.vizier_id)
+                if not catalogs:
+                    raise BenchmarkError(f"VizieR returned zero tables for {ref.vizier_id}") from col_exc
+            elapsed = time.monotonic() - t0
+            if have_alarm:
+                signal.alarm(0)
+            # astroquery's TableList does NOT support slice indexing
+            # (`catalogs[1:]` raises "TypeError: unhashable type: 'slice'" --
+            # it is dict-like internally, not a plain list) -- iterate by
+            # integer index instead.
+            table = catalogs[0]
+            for i in range(1, len(catalogs)):
+                candidate = catalogs[i]
+                if len(candidate) > len(table):
+                    table = candidate
+            print(f"  [{ref.class_id}] fetched {len(table)} rows in {elapsed:.1f}s (attempt {attempt})", flush=True)
+            last_exc = None
+            break
+        except _PerClassTimeout as exc:
+            last_exc = exc
+            print(f"  [{ref.class_id}] TIMEOUT after {wall_guard_sec}s wall guard (attempt {attempt})", flush=True)
+        except Exception as exc:  # noqa: BLE001 - record every failure mode honestly
+            last_exc = exc
+            print(f"  [{ref.class_id}] error on attempt {attempt}: {type(exc).__name__}: {exc}", flush=True)
+        finally:
+            if have_alarm:
+                signal.alarm(0)
+                if old_handler is not None:
+                    signal.signal(signal.SIGALRM, old_handler)
+        if attempt <= max_retries:
+            time.sleep(retry_backoff_sec * attempt)
+
+    if table is None:
+        status = "timeout" if isinstance(last_exc, _PerClassTimeout) else "unavailable"
         return FetchResult(
             class_id=ref.class_id,
-            status="unavailable",
+            status=status,
             n_rows=0,
             vizier_id=ref.vizier_id,
             cache_path=None,
@@ -325,7 +425,7 @@ def fetch_reference_class(
             ra_col=None,
             dec_col=None,
             z_col=None,
-            error=f"{type(exc).__name__}: {exc}",
+            error=f"{type(last_exc).__name__}: {last_exc}" if last_exc else "unknown fetch failure",
             fetched_at=now,
         )
 
@@ -367,12 +467,29 @@ def fetch_reference_class(
 
 
 def fetch_all_reference_classes(
-    cache_dir: Path, row_limit: int, timeout_sec: float
+    cache_dir: Path,
+    row_limit: int,
+    timeout_sec: float,
+    wall_guard_sec: float = DEFAULT_PER_CLASS_WALL_GUARD_SEC,
+    max_retries: int = DEFAULT_FETCH_RETRIES,
+    retry_backoff_sec: float = DEFAULT_RETRY_BACKOFF_SEC,
 ) -> list[FetchResult]:
     results = []
-    for ref in REFERENCE_CLASSES:
+    n = len(REFERENCE_CLASSES)
+    for i, ref in enumerate(REFERENCE_CLASSES, start=1):
+        print(f"[{i}/{n}] class={ref.class_id} ({ref.name})", flush=True)
         try:
-            results.append(fetch_reference_class(ref, cache_dir, row_limit, timeout_sec))
+            results.append(
+                fetch_reference_class(
+                    ref,
+                    cache_dir,
+                    row_limit,
+                    timeout_sec,
+                    wall_guard_sec=wall_guard_sec,
+                    max_retries=max_retries,
+                    retry_backoff_sec=retry_backoff_sec,
+                )
+            )
         except Exception as exc:  # noqa: BLE001 - a class failing must never abort the sweep
             results.append(
                 FetchResult(
@@ -401,6 +518,7 @@ def write_reference_manifest(results: list[FetchResult], out_path: Path) -> None
             "n_classes": len(results),
             "n_fetched": sum(1 for r in results if r.status == "fetched"),
             "n_unavailable": sum(1 for r in results if r.status == "unavailable"),
+            "n_timeout": sum(1 for r in results if r.status == "timeout"),
             "n_no_catalog_id_known": sum(1 for r in results if r.status == "no_catalog_id_known"),
         },
     }
@@ -795,7 +913,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--reference-cache-dir", type=Path, default=None, help="where to cache fetched reference tables (outside the repo)")
     parser.add_argument("--reference-manifest", type=Path, default=None, help="path to write/read the reference fetch manifest JSON")
     parser.add_argument("--row-limit", type=int, default=200_000)
-    parser.add_argument("--vizier-timeout", type=float, default=30.0)
+    parser.add_argument("--vizier-timeout", type=float, default=180.0)
+    parser.add_argument("--per-class-wall-guard-sec", type=float, default=DEFAULT_PER_CLASS_WALL_GUARD_SEC, help="hard wall-clock guard per reference class (SIGALRM); the class is recorded as status='timeout' and the sweep continues")
+    parser.add_argument("--fetch-retries", type=int, default=DEFAULT_FETCH_RETRIES, help="retries per class after the first attempt, with linear backoff")
 
     parser.add_argument("--crossmatch", action="store_true", help="run the positional cross-match + recovery computation")
     parser.add_argument("--catalogs-config", type=Path, default=None, help="JSON: list of catalogue specs (see catalogs_config_example.json)")
@@ -811,7 +931,13 @@ def build_parser() -> argparse.ArgumentParser:
 def run_fetch_references(args: argparse.Namespace) -> dict[str, Any]:
     if args.reference_cache_dir is None:
         raise BenchmarkError("--reference-cache-dir is required with --fetch-references")
-    results = fetch_all_reference_classes(args.reference_cache_dir, args.row_limit, args.vizier_timeout)
+    results = fetch_all_reference_classes(
+        args.reference_cache_dir,
+        args.row_limit,
+        args.vizier_timeout,
+        wall_guard_sec=args.per_class_wall_guard_sec,
+        max_retries=args.fetch_retries,
+    )
     manifest_path = args.reference_manifest or (args.reference_cache_dir / "reference_manifest.json")
     write_reference_manifest(results, manifest_path)
     print(f"wrote reference manifest: {manifest_path}")

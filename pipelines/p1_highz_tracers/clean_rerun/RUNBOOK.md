@@ -630,3 +630,51 @@ error); it demonstrates the pipeline mechanics end-to-end on real (not
 synthetic) catalogue data, not a real recovery result. Re-run stage 1 from
 a networked host, then re-run stage 2 against the full phase-3 outputs, to
 get the real answer to ledger item #8.
+
+## §19. Fetch-references hardening + first real networked fetch (2026-09-02)
+
+`--fetch-references` previously hung with no output on the pod (astroquery
+`Vizier.get_catalogs` stuck in a chunked `socket.readinto`, confirmed via a
+faulthandler dump). Root causes found and fixed in
+`benchmark_known_object_recovery.py`:
+
+1. **`astroquery.utils.commons.TableList` does not support slice indexing**
+   (`catalogs[1:]` raised `TypeError: unhashable type: 'slice'` — it is
+   dict-like internally, not a plain list). This was the actual crash/hang
+   trigger, not a VizieR server issue. Fixed by iterating with integer
+   indices (`range(1, len(catalogs))`).
+2. Added a hard per-class wall guard (`signal.alarm`, default 180s, CLI
+   `--per-class-wall-guard-sec`) so one stalled class can never hang the
+   whole sweep — it is recorded `status: "timeout"` and the sweep continues.
+3. Added `--fetch-retries` (default 2) with linear backoff per class.
+4. Added a progress line (flushed) before every class query and a result
+   line after every attempt, so a running fetch is observable via `tail -f`
+   on the log instead of appearing silent.
+5. Requests only RA/Dec/z candidate columns per class via
+   `Vizier(columns=[...])`, with an automatic fallback to the unrestricted
+   column set (`columns=["*"]`) within the same attempt if the restricted
+   set returns zero tables or raises — some catalogues' real column names
+   don't match every candidate name.
+6. Fixed the cataclysmic-variable class's VizieR id: `B/cb/cb` (invalid,
+   doubled segment) → `B/cb` (Ritter & Kolb, table `cb.dat`).
+
+First real (networked) fetch run against RunPod, all 11 classes:
+`fetched`: bal_quasars (5604 rows), roma_bzcat_blazars (3561),
+cv_white_dwarf_binaries (1429), lyman_alpha_emitters (84),
+superluminous_sn_hosts (32). `unavailable` (genuine, honest failures):
+baron_poznanski_weird and grb_hosts (catalogue has no RA/Dec columns —
+plate/fiber IDs only), carbon_stars and changing_look_quasars (VizieR
+returned zero tables for the cited id — id likely stale/needs
+re-verification). `timeout`: extreme_emission_line_galaxies (hit the 180s
+wall guard on all 3 attempts — a genuinely slow/large query, now safely
+skipped instead of hanging the process). `no_catalog_id_known`:
+little_red_dots (by design, no VizieR table exists).
+
+Full `.ecsv` cache + fetch log mirrored to
+`~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/`
+(outside the repo, per the phase-3 intermediates convention). The manifest
+alone is committed at
+`results_2026-08-07/phase3/recovery_benchmark_preview/reference_manifest_2026-09-02.json`.
+Next step: re-verify the 4 unavailable/timeout VizieR ids by hand at
+vizier.cds.unistra.fr, then run `--crossmatch` against the full phase-3
+enrichment output once it completes.
