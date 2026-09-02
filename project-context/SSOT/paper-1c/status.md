@@ -1478,3 +1478,20 @@ is adjudicated in favor of published P1A (see Status above and
 Eq.~(B2) and convention note now state and cite the adjudicated identity
 directly, no unresolved alternative presented. Until the INT board runs,
 this file should not grow a readiness number or a "converged" claim.
+
+## R13 outcome — recorded 2026-08-28 (PARTIAL closure at v1C.0.16; NOT converged)
+
+Board on exact v1C.0.15 (sha f3e29c45…): Claude MAJOR REVISIONS (4 MAJOR / 8 MINOR;
+20 relations re-derived correct; 5 candidates self-withdrawn at ≥300 DPI) /
+Gemini MAJOR REVISIONS / Grok captured (verdict not machine-extractable) /
+Perplexity FAILED. Claude MAJOR-1/2/3 (surviving pre-erratum on-shell claims;
+parity-rule scope gap) closed in v1C.0.16 (`2d445855`, 25 pp, 0/0/0, linter
+4/4); MAJOR-4 (frozen script erratum) closed 2026-08-28. **Still OPEN: the 8
+Claude MINORs and the Gemini/Grok R13 ledgers** — carried to R14 on the exact
+v1C.0.16 PDF (sha 285948c6248e7995…). Truth-audit record:
+peer-reviews/INT_v3/ROUND_2026-08-08-P1C-v1C.0.15-EXACTPDF-f3e29c45-R13CONV/P1C_v1C.0.15_truth_audit.md.
+Round history to date: R1 15 GNR → R2 7 → R3 8 → R4 10 → R5 6 → R6 9 → R7 7 →
+R8 4 → R9 16 (operator-basis adjudication) → R10 15 → R11 14 → R12 15 (on-shell
+torsion correction; prior artifact erratum'd) → R13 partial. Math has been
+re-verified clean every round since R5; remaining findings are claim-scoping,
+consistency, and presentation. No readiness score is claimed.
