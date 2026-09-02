@@ -74,6 +74,14 @@ export const liveStatus: LiveStatus = {
       pendingWork: "Fresh merged draft — no INT/EXT review board run yet; one INT board is the next step before submission.",
     },
     {
+      slug: "paper-1a",
+      number: "1A",
+      shortTitle: "ECH channel-level closure (archived — see P1N)",
+      version: "v1A.0.127",
+      readiness: 95,
+      pendingWork: "Archived lineage: merged into P1N (Track B ECH Note) 2026-09-02. Frozen on disk, not an independent submission target.",
+    },
+    {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "NaMaster verification companion",
@@ -104,6 +112,22 @@ export const liveStatus: LiveStatus = {
       version: "v4P.0.1",
       readiness: 20,
       pendingWork: "Fresh folded draft — no INT/EXT review board run yet; first review board is the next step.",
+    },
+    {
+      slug: "paper-4",
+      number: "4",
+      shortTitle: "Galaxy chirality null (archived — see P4′)",
+      version: "v1.0.274",
+      readiness: 95,
+      pendingWork: "Archived lineage: folded into P4′ (Track C1) 2026-09-02. Frozen on disk, not an independent submission target.",
+    },
+    {
+      slug: "paper-5",
+      number: "5",
+      shortTitle: "DESI environmental chirality (archived — see P4′)",
+      version: "v0.1.147-2026-08-03",
+      readiness: 95,
+      pendingWork: "Archived lineage: folded into P4′ (Track C1) 2026-09-02. Frozen on disk, not an independent submission target.",
     },
   ],
   blockerTally: {
