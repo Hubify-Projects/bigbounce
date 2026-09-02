@@ -1,35 +1,73 @@
 # Portal kits — 2026-09-02 lineup (CQG / ApJS / PRD Letters / JCAP)
 
-Field-by-field paste sheets for the three near-term works
-(`INTENT.md` Track A1/B1/C1): the **ECH Note** → CQG, **P4′** → ApJS, **P2′
-Letter** → PRD Letters (primary) or JCAP (alternate). Reuses and re-labels
-verified facts already on file (`CQG_SUBMISSION_KIT_P1A_2026-07-24.md`,
-`PRD_SUBMISSION_KIT_P2_2026-07-24.md`, `pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md`)
-where those facts are archive-level and still current; adds fresh fetches
-(2026-09-02) for ApJS and JCAP specifics not covered by the existing kits.
-**None of these manuscripts exist in their new (merged/condensed) form yet.**
-This is a paste-sheet for when they do — not a submission record.
+## CLICK-LIST (ordered) — everything Houston must click/send, nothing agent-doable left
+
+1. **ECH Note → CQG** (§1): confirm the Zenodo DOI is minted (see
+   `ENDORSER_OUTREACH_2026-09-02.md` click-list step 1) and the gr-qc
+   endorsement has cleared, then create a ScholarOne account at
+   `https://mc04.manuscriptcentral.com/cqg-iop` and paste the fields in §1
+   below — Article type **Paper** (not Note; the ≤2500-word Note form does
+   not fit the manuscript, per the final-review recommendation), title and
+   abstract already final (v1N.0.4).
+2. **P4′ → ApJS** (§2): confirm the P5 Zenodo DOI is minted (see
+   `ENDORSER_OUTREACH_2026-09-02.md` click-list step 2) and the
+   astro-ph.GA endorsement has cleared, then submit at
+   `journals.aas.org/submission/` and paste the fields in §2 below — title
+   and abstract already final (v4P.0.4); abstract runs over the 250-word
+   AAS working cap and needs a portal-side length check before pasting.
+3. **P2′**: no action — DEFERRED, no submission planned (§3).
+4. **A3 → PRD Letters / JCAP** (§3a note below): wait for the PBH
+   compaction-function row + pending INT board to close before doing
+   anything in this section; not yet actionable.
+5. **arXiv form fields** (§4): use once each paper's endorsement clears.
+6. **Post-approval Zenodo/tarball commands** (§5): the exact commands are
+   documented; run only after Houston's explicit go-ahead per manuscript.
 
 ---
 
-## 1. ECH Note → Classical and Quantum Gravity (IOP), article type **Note**
+Field-by-field paste sheets for the near-term works
+(`INTENT.md` Track A1/B1/C1): the **ECH Note** (v1N.0.4, APPROVE, readiness
+95) → CQG, **P4′** (v4P.0.4, APPROVE, readiness 95, P5 folded in) → ApJS.
+**P2′ is DEFERRED** (archived theory record, folded into the A3 paper) — no
+PRD Letters / JCAP submission is planned for it. **A3**
+(`research/track_a3_multichannel/paper/main.tex` v3M.0.2) is the paper that
+would eventually use the PRD Letters / JCAP venue rows below, but it is
+**not yet reviewable** (PBH compaction-function row pending, then one INT
+board) — §3/§3b below are retained as a venue-mechanics reference for A3,
+not as an active P2′ submission plan. Reuses and re-labels verified facts
+already on file (`CQG_SUBMISSION_KIT_P1A_2026-07-24.md`,
+`PRD_SUBMISSION_KIT_P2_2026-07-24.md`, `pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md`)
+where those facts are archive-level and still current; adds fresh fetches
+(2026-09-02) for ApJS and JCAP specifics not covered by the existing kits.
+This is a paste-sheet for when each manuscript is ready — not a submission
+record.
+
+---
+
+## 1. ECH Note → Classical and Quantum Gravity (IOP), article type **Paper**
 
 Source: `CQG_SUBMISSION_KIT_P1A_2026-07-24.md` §1 (live-fetched 2026-07-24,
 6 weeks old — IOP policy pages change rarely; re-fetch only if Houston wants
-a hard re-check before clicking submit). Reused verbatim below; the only
-change from the 2026-07-24 kit is the manuscript target (merged P1A+P1C
-Note, not standalone P1A) and title.
+a hard re-check before clicking submit). Reused verbatim below; the manuscript
+target is now the final `arxiv/paper1bc_ech_note/main.tex` v1N.0.4
+(APPROVE, readiness 95), submitted as a **Paper** not a Note (per the
+2026-09-02 final-review recommendation — the manuscript exceeds the Note
+form).
 
 | Field | Value to paste | Source |
 |---|---|---|
 | Portal | `https://mc04.manuscriptcentral.com/cqg-iop` (ScholarOne) | iopscience.iop.org/journal/0264-9381/page/submission-options |
 | Account | New ScholarOne account required (first-time author) | publishingsupport.iopscience.iop.org how-to-submit page |
-| Article type | **Note** — "brief articles that make a short, interesting point... not normally merit publication as a full Paper but still make a useful and novel addition" | CQG About page |
-| Length limit | **None published** for Note (verified-by-absence); target ≤12 pp per `INTENT.md` Track B1 self-imposed cap | CQG About/guidelines pages |
-| Title | *Minimal Einstein–Cartan–Holst gravity: what spin-torsion does for the bounce and cannot do for dark energy* (working — pending merged manuscript's actual title) | — |
+| Article type | **Paper** (not Note — the final v1N.0.4 manuscript exceeds the ≤2500-word Note form; per the 2026-09-02 final-review recommendation, submit as a regular CQG Paper) | Final-review recommendation, `FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md` |
+| Length limit | N/A for Paper article type (Note's implicit length cap no longer applies) | — |
+| Title | **"What Minimal Einstein–Cartan Torsion Does for the Bounce and Cannot Do for Dark Energy"** (FINAL — `arxiv/paper1bc_ech_note/main.tex` v1N.0.4) | arxiv/paper1bc_ech_note/main.tex |
 | Abstract cap | **300 words hard cap** — "we may rescind the manuscript and ask you to re-write it" if over | CQG guidelines page |
-| Keywords | Free-text, no PACS required | CQG guidelines page |
-| Author info | Houston Golden, Independent Researcher, Los Angeles, CA, USA; `houston@hubify.com`; ORCID `0009-0008-5616-5994` (recommended, not mandatory) | CQG guidelines page |
+| Abstract | Final v1N.0.4 abstract, verbatim — see `ENDORSER_OUTREACH_2026-09-02.md` §1 for the full text (word-count check before pasting: the compiled abstract runs close to 300 words; trim if the ScholarOne counter flags it over) | arxiv/paper1bc_ech_note/main.tex |
+| Keywords | Free-text, no PACS required. Use: Einstein–Cartan gravity, Holst action, torsion bounce, Popławski cosmology, four-fermion interaction, dark energy, no-go (verbatim `\keywords{}` from v1N.0.4) | CQG guidelines page + arxiv/paper1bc_ech_note/main.tex |
+| Author/ORCID | Houston Golden, Independent Researcher, Los Angeles, CA, USA; `houston@hubify.com`; ORCID `0009-0008-5616-5994` (recommended, not mandatory) | CQG guidelines page |
+| Data-availability statement text | No dedicated data-availability section exists in v1N.0.4 (theory/no-go paper, not a data release) — use: "This paper derives analytic results; no new observational or simulation data were generated. All derivations, symbolic cross-checks, and the theory-audit machine-checkable assertions are available at the pinned commit `\repoSHA` (`research/theory_audit/p1n_r3_checks_2026_09_02.py`) in the public repository https://github.com/Hubify-Projects/bigbounce." | arxiv/paper1bc_ech_note/main.tex (repoSHA macro + acknowledgments) |
+| Suggested reviewers | Endorser candidates NOT approached for the gr-qc endorsement (§1 of `ENDORSER_OUTREACH_2026-09-02.md` lists 6; only Popławski + one of Iosifidis/Agullo are asked to endorse) — suggest the remaining confirmed-eligible names: **Jérôme Quintin** (ÉTS/McGill, jquintin@physics.mcgill.ca), **Edward Wilson-Ewing** (UNB), **Christian Böhmer** (UCL), plus whichever of Iosifidis/Agullo was not the endorser | `ENDORSER_OUTREACH_2026-09-02.md` §1 table |
+| Cover letter draft | "Dear Editors, I submit 'What Minimal Einstein–Cartan Torsion Does for the Bounce and Cannot Do for Dark Energy' for consideration as a CQG Paper. The manuscript derives a channel-level no-go result for minimal Einstein–Cartan–Holst gravity as a dark-energy source, complementing the published Einstein–Cartan bounce literature (Popławski et al.) that CQG regularly publishes. I am an independent researcher and the sole author; there are no conflicts of interest and no external funding. Thank you for your consideration. — Houston Golden" | drafted this session from the final abstract |
 | Format at initial submission | Single PDF only — "You can format your paper in the way that you choose" | publishingsupport how-to-submit page |
 | Source files | Required only **at revision** (TeX + figures) | publishingsupport "what files to submit at revision" page |
 | arXiv/preprint | Permitted anywhere/anytime, **never required**, no declaration needed | IOP preprint policy page |
@@ -74,8 +112,13 @@ guideline URLs.
 |---|---|---|
 | Portal | AAS journals general submission system (eJournalPress) at `journals.aas.org/submission/`; select ApJS at manuscript-type step | journals.aas.org/manuscript-preparation/ (fetched 2026-09-02) |
 | Article type | Regular Article — **confirm current label in the live portal**, unverified this session (existing kit flags the same) | pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md |
-| Title | *[UPDATE FOR MERGE]* — the 2026-08-03 kit's title is P4-only ("An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog"); per Track C1 framing this should foreground the rotating-black-hole-universe spin-axis test and note P5's environment cross-check is folded in | INTENT.md Track C1 |
-| Abstract cap | **250 words** for standard AAS-journal articles (general AASTeX guideline; ApJS-specific page did not publish a different number this session — treat 250 as the working cap and confirm on ApJS's own About page before finalizing) | journals.aas.org/manuscript-preparation/ (fetched 2026-09-02) — **existing kit's abstract (§ above, 890,069/8,474,531 language) runs well over 250 words; it will need cutting or the portal's "extended abstract" convention confirmed** |
+| Title | **FINAL — "The Largest Test of a Preferred Galaxy-Spin Axis: An 8.47-Million-Galaxy DESI Chirality Catalog, a Void-Environment Contrast, and a Sensitivity Confrontation with the Rotating-Black-Hole-Universe Prediction"** (`pipelines/p4prime_chirality_test/paper/main.tex` v4P.0.4 — P5 folded in as the void-environment contrast) | pipelines/p4prime_chirality_test/paper/main.tex |
+| Abstract | Final v4P.0.4 abstract, verbatim — see `ENDORSER_OUTREACH_2026-09-02.md` §2 for the full text | pipelines/p4prime_chirality_test/paper/main.tex |
+| Abstract cap | **250 words** for standard AAS-journal articles (general AASTeX guideline; ApJS-specific page did not publish a different number this session — treat 250 as the working cap and confirm on ApJS's own About page before finalizing) | journals.aas.org/manuscript-preparation/ (fetched 2026-09-02) — **the final v4P.0.4 abstract (≈330 words) runs over 250 words; trim for the portal field or confirm the "extended abstract" convention before pasting as-is** |
+| Data-availability statement text | Verbatim from the manuscript's `Data Availability` section: "The 8,474,531-row catalog, quarantine, exact null arrays, generator scripts, and full provenance register are archived under Zenodo DOI 10.5281/zenodo.21461899 (concept DOI 10.5281/zenodo.21461898), published under CC-BY-4.0, and mirrored at huggingface.co/datasets/bamfai/galaxy-chirality-catalog. The black-hole-universe exclusion analysis is fully reproducible from the committed script `research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py` and its output JSON. The catalog is a single Apache Parquet file (952,115,239 bytes) with one row per DESI Legacy DR8 galaxy... This manuscript is served alongside its git-tracked source at github.com/Hubify-Projects/bigbounce." (full text, pipelines/p4prime_chirality_test/paper/main.tex `\section*{Data Availability}`) — **P5's own Zenodo DOI is still pending (residual item, click-list step 2); add it to this statement once minted.** | pipelines/p4prime_chirality_test/paper/main.tex |
+| Software/facilities line (for ApJS) | Verbatim: "Software: NumPy, healpy, HEALPix, NaMaster (pymaster), PyTorch, pandas, SciPy. Facilities: DESI Legacy Imaging Surveys DR8 (data products); no proprietary telescope time was used in this analysis, which is entirely based on public archival imaging and catalog data." | pipelines/p4prime_chirality_test/paper/main.tex `\section*{Software, Facilities, and Acknowledgements}` |
+| Suggested reviewers | Endorser candidates NOT approached for the astro-ph.GA endorsement (§2 of `ENDORSER_OUTREACH_2026-09-02.md` lists 6; only Desmond + Smethurst are asked to endorse) — suggest: **Karen Masters** (Haverford, Galaxy Zoo PI), **Brooke Simmons** (Lancaster), **Mike Walmsley** (Toronto/Dunlap, Zoobot) | `ENDORSER_OUTREACH_2026-09-02.md` §2 table |
+| Cover letter draft | "Dear Editors, I submit '[final title above]' for consideration in ApJS. We release the largest chirality catalog to date (8.47M DESI Legacy DR8 galaxies) and confront the rotating-black-hole-universe spin-axis prediction, confirming the independent non-detections of Iye et al. (2021) and Patel & Desmond (2024) at higher statistical power than any prior sample except Shamir (2022). The catalog, quarantine set, and full provenance are Zenodo-archived under CC-BY-4.0. I am an independent researcher and sole author; no conflicts of interest, no external funding. Thank you for your consideration. — Houston Golden" | drafted this session from the final abstract |
 | Running head | ≤44 characters | journals.aas.org/manuscript-preparation/ |
 | Keywords | Unified Astronomy Thesaurus (UAT) concepts, 1–12 per the 2026-08-03 kit's own list: Spiral galaxies; Catalogs; Galaxy classification systems; Galaxy properties; Large-scale structure of the universe; Observational cosmology; Astrostatistics techniques; Sky surveys — **add "Galaxy dynamics" or similar if the merged version foregrounds the spin-axis prediction test more explicitly** | pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md |
 | ORCID | Not mandated by the fetched general guideline; AASTeX 7+ supports it — **enter it anyway** (`0009-0008-5616-5994`) since ApJS's own submission form commonly requests it | journals.aas.org/manuscript-preparation/ |
@@ -87,16 +130,26 @@ guideline URLs.
 | Suggested reviewers | Portal has a reviewer-suggestion field per the 2026-08-03 kit's checklist; format not independently verified this session | pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md checklist |
 | Upload format | AASTeX (currently `aastex701.cls`/`aastex702.cls` per the two source `.tex` files — **confirm both P4 and P5 sources are on the same AASTeX version before merging**, and that the merge doesn't silently mix class versions) | repo grep, `pipelines/p2_chirality/` + `pipelines/p5_desi_chirality/paper/` |
 
-**Open item before this kit is submission-ready:** the 2026-08-03 kit's
-abstract, title, and UAT list all need a pass reflecting P5 as a folded-in
-section (void/non-void environment cross-check) rather than a separate
-paper, and a word-count check against the 250-word AAS cap (the current
-abstract text is materially longer). Do not paste the 2026-08-03 abstract
-into the live portal unverified against that cap.
+**Open item before this kit is submission-ready:** the title and abstract
+above are now FINAL (v4P.0.4, P5 folded in as the void-environment
+cross-check section) — the remaining open item is the **word-count trim**
+against the 250-word AAS abstract cap (current abstract ≈330 words) and
+minting P5's Zenodo DOI (click-list step 2). Do not paste the abstract into
+the live portal without a portal-side length check.
 
 ---
 
-## 3. P2′ Letter → Physical Review D Letters (primary) or JCAP (alternate)
+## 3. P2′ Letter → Physical Review D Letters (primary) or JCAP (alternate) — **DEFERRED; retained as A3's venue reference**
+
+**Status:** P2′ is not being submitted (archived theory record, folded into
+the A3 multi-channel paper per the 2026-09-02 final-review recommendation).
+The venue-mechanics rows below (portal, length limits, ORCID/DAS
+requirements, arXiv-first gate for JCAP) remain valid and reusable for
+**A3** (`research/track_a3_multichannel/paper/main.tex` v3M.0.2) once it
+clears its remaining PBH compaction-function row and pending INT board —
+A3 would submit as a PRD Letter or Research Article (confirm article type
+once final) rather than a standalone P2′ Letter. Do not act on this section
+as a live P2′ submission plan.
 
 ### 3a. PRD Letters (APS)
 
@@ -121,12 +174,11 @@ type with different limits — pulling those rows out below.
 | Cover letter | Where suggested/excluded referees go | existing PRD kit §8 |
 | Author info | Houston Golden, Independent Researcher, Los Angeles, CA, USA; ORCID `0009-0008-5616-5994` (required, verification email will fire) | — |
 
-**Gate before this section is actionable:** P2′ does not exist as a
-condensed ≤4,500-word Letter yet — the current source
-(`research/focused_paper_source_integration/02_full_draft.tex`) is a full
-Research Article, and per the portfolio decision an **independent
-second-method f_NL derivation** (Salopek–Bond or δN) must land before any
-submission regardless of venue.
+**Gate — superseded:** P2′ itself will not be submitted (DEFERRED). The
+independent second-method f_NL derivation gate that used to block P2′ is
+inherited by A3's own remaining board work (PBH compaction-function row +
+pending INT board) — do not treat this row table as actionable until A3
+clears those and Houston confirms its target venue/article type.
 
 ### 3b. JCAP (SISSA) — alternate route
 
@@ -247,10 +299,19 @@ works.
 
 ## 6. What is NOT done here
 
-- No manuscript was compiled, merged, or condensed.
-- No Zenodo deposit command was run (draft or publish).
-- No arXiv tarball was built.
+- ECH Note (v1N.0.4) and P4′ (v4P.0.4) manuscripts ARE compiled, merged
+  where applicable, APPROVE at agent gates, readiness 95 — titles/abstracts
+  above are final, not draft.
+- No Zenodo deposit command was run (draft or publish) this session — both
+  new-version mints (ECH Note theory-audit artifacts; P5 under P4) are
+  click-list items, not yet executed.
+- No arXiv tarball upload was clicked — tarballs are built and
+  standalone-recompile-verified on disk (sha256 in §1/§2 above); the
+  upload click itself is Houston's.
 - No endorsement email was sent (see `ENDORSER_OUTREACH_2026-09-02.md`).
+- P2′ is DEFERRED — no submission planned; its content lives in A3, which
+  is not yet reviewable.
 - The JCAP field table (§3b) is search-derived, not independently
   live-fetched from `jcap.sissa.it` itself — treat as directional and
-  re-verify before relying on any specific limit.
+  re-verify before relying on any specific limit; also not yet actionable
+  since it is retained only as A3's future venue reference.

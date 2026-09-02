@@ -1,5 +1,40 @@
 # arXiv endorser outreach — 2026-09-02 lineup (refresh of ENDORSER_SHORTLIST_2026-07-22 / ENDORSEMENT_REQUEST_DRAFTS_2026-07-24)
 
+## CLICK-LIST (ordered) — everything Houston must click/send, nothing agent-doable left
+
+**Refreshed 2026-09-02** against the final manuscripts (P4′ v4P.0.4, ECH
+Note v1N.0.4 — both APPROVE at agent gates, readiness 95; P2′ DEFERRED, its
+content lives in the not-yet-reviewable A3 paper).
+
+1. **Mint the Zenodo new-version DOI for the ECH Note** (P1C survey +
+   theory-audit artifacts) via the Zenodo UI "New version" on the published
+   P1A record (`10.5281/zenodo.21481838`), then run
+   `tools/zenodo_deposit.py --deposition-id <new draft id>` per
+   `PORTAL_KITS_2026-09-02.md` §5a. Insert the resulting DOI link into the
+   ECH Note endorsement email template (§1 below) in place of the
+   `[DOI/PDF link]` placeholder.
+2. **Mint the Zenodo new-version DOI for P5** (folded into P4′) via the
+   Zenodo UI "New version" on the published P4 record
+   (`10.5281/zenodo.21461899`), then run `tools/zenodo_deposit.py
+   --deposition-id <new draft id>` per `PORTAL_KITS_2026-09-02.md` §5a.
+   Insert the resulting DOI link into the P4′ endorsement email template
+   (§2 below).
+3. **Send the ECH Note endorsement emails first** (§1 below): Popławski,
+   then Iosifidis or Agullo in parallel — from Houston's own mail client,
+   subject/body as drafted, DOI link from step 1 pasted in.
+4. **Send the P4′ endorsement emails second** (§2 below): Desmond first,
+   then Smethurst — from Houston's own mail client, DOI link from step 2
+   pasted in.
+5. **Do NOT send any P2′-framed email** (§3 is archived/deferred). **Do NOT
+   send any A3 email yet** (§3a) — A3's PBH compaction-function row and its
+   pending INT board must close first; this file will be refreshed with a
+   go-ahead when that happens.
+6. Once each endorsement clears and arXiv admin confirms submission
+   eligibility, proceed to the portal-kit click-list in
+   `PORTAL_KITS_2026-09-02.md`.
+
+---
+
 **Why this file exists.** The 2026-09-02 portfolio decision
 (`project-context/PORTFOLIO_DECISION_2026-09-02.md` + Addendum, `INTENT.md`)
 retired "six equal papers" for Track A/B/C. Three works are now the near-term
@@ -28,26 +63,50 @@ from his own mail client, under his own name. Nothing below has been sent.
 
 ## 1. ECH Note — gr-qc `HYEJ7S` (cross-list astro-ph.CO `LRZHC4`)
 
-**Draft framing (condensed from `arxiv/paper1a_ech_nogo.tex` +
-`arxiv/paper1c_nogo_survey/main.tex`, per Track B / INTENT.md — "what minimal
-ECH does for the bounce and cannot do for dark energy"):**
+**FINAL manuscript** (`arxiv/paper1bc_ech_note/main.tex`, v1N.0.4,
+2026-09-02, ApproveD at agent gates, readiness 95): title **"What Minimal
+Einstein–Cartan Torsion Does for the Bounce and Cannot Do for Dark Energy."**
+Tarball `SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.4.tar.gz` sha256
+`67eac435…`; residual before submission: no Zenodo DOI yet for the P1C
+survey / theory-audit artifacts (mint a new version under the P1A concept
+DOI `21481837` — click-list item below).
 
-> DRAFT abstract (pending the merged manuscript — do not cite page/section
-> numbers from this draft in a sent email):
-> We consolidate the algebraic torsion-elimination result in minimal
-> Einstein–Cartan–Holst (ECH) gravity and the fourteen-entry structural
-> no-go catalog it supports. On the spin-sourced branch, eliminating the
-> non-propagating connection gives a minimal axial–axial contact
-> interaction whose declared-convention scalar gap equation has no nonzero
-> solution; on the zero-spin branch, the classical reduced action equals
-> the Einstein–scalar action on-shell. Fourteen mechanism-class entries
-> across seven foundational classes and four observational channels
-> jointly close the routes by which the ECH framework could plausibly
-> source a Λ-like late-time density, including amplitude-budget closures
-> against the observed birefringence amplitude (≥58 orders of suppression
-> margin) and the observed dark-energy density (61–67 orders). The paper
-> is a transparency theorem for a closed line, not a claim that ECH
-> torsion is excluded as a bounce mechanism generally.
+> FINAL abstract (v1N.0.4, verbatim from the compiled manuscript):
+> Popławski's Einstein–Cartan black-hole cosmology replaces the classical
+> singularity with a torsion-supported bounce: eliminating the
+> non-propagating spin connection from the minimal Einstein–Cartan–Holst
+> (ECH) action generates a spin–spin four-fermion contact term that, in
+> the Einstein–Cartan limit γ→∞, reduces to the Hehl–Datta term underlying
+> that bounce mechanism. We ask whether the same mechanism can also
+> source late-time dark-energy density and answer, systematically, no.
+> We (i) derive the minimal axial–axial contact interaction
+> −(3κ/16)[γ²/(1+γ²)]J₅² and show its declared direct-channel,
+> hard-cutoff, mean-field NJL scalar projection is repulsive,
+> G_s = −(3κ/16)[γ²/(1+γ²)], so the gap equation for this condensate
+> channel has no nonzero solution; (ii) prove a perturbation-transparency
+> theorem for canonical scalar matter: torsion vanishes at every classical
+> perturbation order and the Holst sector decouples identically, by the
+> algebraic Bianchi identity on the torsion-free branch; and (iii) catalog
+> fourteen mechanism-class constraints — two derived here, several argued
+> in-paper naturalness statements, the rest self-labelled heuristics —
+> jointly bounding the four channels (NJL contact, one-loop Holst
+> correction, Immirzi running, parity-odd CMB coupling) by which minimal
+> ECH could connect bounce-scale torsion to a late-time Λ-like density,
+> including a rebuttal of Popławski's own proposed torsion dark-energy
+> mechanism. A six-member generating list of dimension-four,
+> construction-rule-admitted local densities (mixed parity, spanning five
+> distinct densities at rank four) is either an exact total derivative on
+> the torsion-free branch, a Fierz-closed M_Pl⁻²-suppressed contact term
+> on-shell, or identically vanishing; the on-shell torsion's trace-vector
+> irrep is the larger contribution (β/α = 1/(2γ) ≃ 2.11 at the programme's
+> benchmark γ=0.2375), with the tensor irrep vanishing identically. The
+> result is a structural dichotomy: the same contact term that supplies
+> Popławski's bounce mechanism as γ→∞ is, at the programme's finite
+> physical γ, parity-even, Planck-suppressed, and classically transparent
+> to perturbations — unable to generate the late-time acceleration
+> attributed to dark energy. No ECH dark-energy or birefringence
+> prediction is made; this is a channel-level, not operator-level,
+> closure within the stated minimal-coupling scope.
 
 ### Endorsers (2 needed max; several submissions in gr-qc in the last 5 years required by arXiv rule)
 
@@ -120,36 +179,60 @@ instead (§3).
 > Independent Researcher, Los Angeles, California
 > houston@hubify.com · ORCID 0009-0008-5616-5994
 
-**Gate before sending:** the ECH Note manuscript must exist as a compiled,
-merged PDF (P1A into P1C, per Track B) with a DOI or arXiv-ready PDF link to
-paste. Do not send this draft against the draft abstract above.
+**Gate before sending:** the manuscript now exists and compiles clean
+(v1N.0.4, APPROVE at agent gates, readiness 95) — insert the final PDF/DOI
+link once the Zenodo new-version mint completes (click-list item below);
+do not send with the `[DOI/PDF link]` placeholder still in place.
 
 ---
 
 ## 2. P4′ — astro-ph.GA `CLVMAQ` (cross-list astro-ph.CO `LRZHC4`)
 
-**Draft framing (condensed from `pipelines/p2_chirality/chirality_catalog_paper.tex`
-+ `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`, P5 folded into a
-section per Track C1 — "largest test of the rotating-black-hole-universe
-galaxy-spin-axis prediction, confirms Iye+2021 / Patel & Desmond 2024"):**
+**FINAL manuscript** (`pipelines/p4prime_chirality_test/paper/main.tex`,
+v4P.0.4, 2026-09-02, APPROVE at agent gates, readiness 95; P5 folded in as
+the void-environment cross-check section per Track C1): title **"The
+Largest Test of a Preferred Galaxy-Spin Axis: An 8.47-Million-Galaxy DESI
+Chirality Catalog, a Void-Environment Contrast, and a Sensitivity
+Confrontation with the Rotating-Black-Hole-Universe Prediction."** Tarball
+`SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.4.tar.gz` sha256
+`db108413…`; residual before submission: P5 has no Zenodo DOI (mint a new
+version under the P4 concept DOI `21461898` or as its own record — click-list
+item below).
 
-> DRAFT abstract (pending the P5-folded-into-P4 merge — do not cite section
-> numbers from this draft):
-> We release observed chirality labels for 8,474,531 DESI Legacy DR8
-> galaxies and test the galaxy-spin-axis dipole predicted by the
-> rotating-black-hole-universe hypothesis (Popławski's Einstein–Cartan
-> black-hole cosmology; cf. the JWST rotation-direction result reported by
-> Shamir). Starting from 949,584 high-confidence spirals we retain 890,069
-> quality-controlled rows; the primary dipole test is null
-> (z=+0.635, one-sided rank p=0.238), consistent with the independent
-> non-detections reported by Iye et al. 2021 and Patel & Desmond 2024. A
-> coverage-calibrated injection–recovery places a 95% sensitivity limit of
-> ≈0.98%. A DESI DR1 void/non-void environment cross-check (folded in from
-> the companion P5 analysis) is likewise a non-detection. Classifier-
-> injection and retrain controls (1.7×10⁷ banked passes) rule out
-> classifier confusion as the origin of a small residual handedness
-> monopole. The catalog and full provenance/reproducibility manifest are
-> released.
+> FINAL abstract (v4P.0.4, verbatim from the compiled manuscript):
+> Two independent literatures motivate a search for a preferred axis in
+> galaxy spin directions: observational claims of a handedness dipole or
+> asymmetry (Longo 2011; Shamir 2012–2025) and Popławski's rotating
+> black-hole-universe model, in which Einstein–Cartan torsion resolves the
+> central singularity of a collapsing black hole into a bounce, and the
+> resulting daughter universe inherits a preferred axis from the parent
+> black hole's spin, toward which galaxies are predicted to tend to align.
+> We report the largest test of that observable claim to date: an
+> 8,474,531-galaxy DESI Legacy DR8 chirality catalog and two independent
+> null tests built on it. The primary, quality-controlled, high-confidence
+> real-space dipole (N_support=887,472 of 890,069 quality-controlled rows)
+> is null-consistent (z_mom=+0.635, one-sided p=0.238), with a
+> coverage-calibrated observed-label 95% detection-power sensitivity floor
+> A₉₅^obs≃0.98% (full-amplitude; the corresponding Neyman 95% CL upper
+> limit on the measured amplitude is A₉₅^CL≃0.75%, and we confront the
+> model with the more conservative floor). A companion DESIVAST
+> void/non-void environment contrast on 145,766 classifier-labelled
+> galaxies likewise finds no significant effect (ΔfCW=+0.00145, two-sided
+> p=0.66). We derive what the black-hole-universe model implies for a
+> spin-axis dipole and find that the cited mechanism papers give only a
+> qualitative alignment tendency, not a computed amplitude; under the
+> minimal closure needed to make the claim quantitative, our sensitivity
+> floor disfavors an alignment-driven observed dipole above ~1% at ≥95%
+> detection power, a factor of 2–20× below the ~2–33% amplitudes reported
+> in the literature that motivates the model, though under an
+> illustrative, not-adopted-for-strengthening observed-to-physical bridge
+> the two largest comparison samples drop below this floor and that
+> should not go unstated. This null is measured on 887,472 primary-channel
+> spirals: a factor of 4–3,400× larger than every comparison catalog
+> except Shamir (2022)'s same-survey DESI Legacy sample (N=1.3 million),
+> which exceeds it. This confirms the independent reanalyses of Iye et al.
+> (2021) and Patel & Desmond (2024) that report no significant
+> galaxy-spin anisotropy.
 
 ### Endorsers (astro-ph.GA; several submissions in astro-ph.GA in the last 5 years required)
 
@@ -222,34 +305,50 @@ Violeta Gonzalez-Perez, Claire Lamman, Willem Elbers, John F. Suárez-Pérez.
 > Independent Researcher, Los Angeles, California
 > houston@hubify.com · ORCID 0009-0008-5616-5994
 
-**Gate before sending:** the merged P4′ manuscript (P5 folded in as one
-section, per Track C1) must be compiled; the ApJS staging kit currently on
-disk (`pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md`) is bound to the
-**pre-merge P4-only** framing and abstract — do not paste that abstract into
-an endorsement email without re-checking it reflects the folded-in P5
-section.
+**Gate before sending:** the manuscript now exists and compiles clean
+(v4P.0.4, APPROVE at agent gates, readiness 95, P5 folded in) — insert the
+final PDF/DOI link once the Zenodo new-version mint for P5 completes
+(click-list item below); do not send with the `[DOI/PDF link]` placeholder
+still in place. The pre-merge ApJS staging kit
+(`pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md`) is superseded by
+`PORTAL_KITS_2026-09-02.md` §2 — do not paste its old abstract into an
+endorsement email.
 
 ---
 
-## 3. P2′ Letter — astro-ph.CO `LRZHC4` (cross-list gr-qc `HYEJ7S`)
+## 3. P2′ Letter — astro-ph.CO `LRZHC4` (cross-list gr-qc `HYEJ7S`) — **DEFERRED — no submission planned; the astro-ph.CO endorsement will be used for the A3 multi-channel paper instead**
 
-**Draft framing (condensed from `research/focused_paper_source_integration/02_full_draft.tex`,
-per Track A1 — exact matter-contraction amplitude, gated on an independent
-second-method derivation before submission per the portfolio decision):**
+**Status (2026-09-02 final-review recommendation):** P2′
+(`arxiv/paper2prime_fnl_letter/main.tex`, v2L.0.2) is an **archived theory
+record**, not a submission candidate. The R1 board + truth-audit found the
+Letter's −35/16 result is already printed by Li et al. (2016, Eq. 4.19) and
+quoted by Quintin et al. (2015); its genuine contribution (independent
+from-scratch confirmation, locating the ×2 discrepancy in Cai et al. 2009,
+the δN reconciliation) is a confirmation, not a standalone Letter's worth of
+new science. This scope decision is recorded in `PAPER_LINEAGE`. **P2′'s
+content is now §II–III of the A3 multi-channel paper** (§3a below) — do
+**not** send any P2′-framed endorsement email, and do not use codes
+`LRZHC4`/`HYEJ7S` under the P2′ framing below. The astro-ph.CO endorsement
+ask for these same recipients (Brandenberger, Cai, Meerburg, Chaussidon,
+Ferraro, Quintin, Ross, Noriega — table retained below since the eligibility
+research is still valid and reusable) is redirected to the **A3 paper**
+once it clears its remaining INT board (see §3a).
 
-> DRAFT abstract (pending: (1) the independent second-method derivation gate
-> — ledger #1 — and (2) the Letter-length condensation to ≤6 pp; the current
-> source is a full Research Article, not yet cut to Letter form):
+**Retained below for reference only** — the eligibility/contact research in
+the table and the draft framing that follows describes what P2′ *was*; do
+not act on it as a live outreach plan.
+
+**Superseded draft framing (archived, condensed from
+`research/focused_paper_source_integration/02_full_draft.tex`; P2′ is now
+folded into A3, §3a below, not submitted standalone):**
+
+> ARCHIVED draft abstract (P2′, not submitted — superseded by A3 §3a):
 > A matter-dominated contracting phase gives a local-type non-Gaussian
 > amplitude f_NL^local = −35/16 = −2.1875 before the nonsingular
 > transition, correcting the unreproduced printed −35/8 in Cai, Xue,
 > Brandenberger & Zhang (2009). We derive the coefficient by re-summing all
 > four cubic vertices for the ε=3/2 background, cross-checked against Cai
 > et al.'s order-grouped expressions and Li et al.'s general-c_s formula.
-> [PENDING: independent second-method cross-check via Salopek–Bond gradient
-> expansion or δN, per the 2026-09-02 portfolio decision's submission gate
-> — do not cite this abstract as final until that derivation is in the
-> manuscript.]
 
 ### Endorsers (astro-ph.CO; several submissions in astro-ph.CO in the last 5 years required)
 
@@ -285,7 +384,7 @@ send Cai/Brandenberger a version that reads as "your paper is wrong."
 Quintin is worth sending regardless, since he can clear the Note (§1) and
 P2′ (§3) with one endorsement each.
 
-### Draft email
+### Draft email — ARCHIVED, DO NOT SEND (P2′ deferred; use §3a's A3 framing instead)
 
 **Subject:** `arXiv endorsement request — exact matter-contraction f_NL correction (astro-ph.CO)`
 
@@ -316,12 +415,81 @@ P2′ (§3) with one endorsement each.
 > Independent Researcher, Los Angeles, California
 > houston@hubify.com · ORCID 0009-0008-5616-5994
 
-**Gate before sending — the hard one:** per `PORTFOLIO_DECISION_2026-09-02.md`
-§3 (A1) and `INTENT.md`, P2′ is not submission-ready until an **independent
-second-method derivation** (Salopek–Bond gradient expansion or δN) reproduces
-−35/16. Do not send any P2′ endorsement email, and do not paste the draft
-abstract above into a real message, until that gate closes and the Letter is
-condensed to ≤6 pp.
+**Gate — superseded, do not act on this section:** P2′ is DEFERRED per the
+2026-09-02 final-review recommendation (above) — no gate closes it into a
+submission because no submission is planned. Route the astro-ph.CO
+endorsement ask to A3 instead (§3a).
+
+---
+
+### 3a. A3 multi-channel paper — astro-ph.CO `LRZHC4` (cross-list gr-qc `HYEJ7S`) — **DRAFT, not yet submission-ready**
+
+**Status (2026-09-02 final-review recommendation):**
+`research/track_a3_multichannel/paper/main.tex` v3M.0.2 is the Track-A
+flagship absorbing P2′'s content (§II–III) plus pulsar-timing, PBH, and
+LSS/SPHEREx channel confrontations. **Not yet reviewable**: the PBH
+compaction-function row is pending, then one INT board (Fable leg) remains
+before an APPROVE verdict. Do not send any A3 endorsement email yet — this
+entry documents the current DRAFT abstract so the ask is ready the moment
+the paper clears its board, not to authorize sending now.
+
+> DRAFT abstract (v3M.0.2, current manuscript text — will change when the
+> PBH compaction-function row lands and the INT board closes; do not treat
+> as final):
+> A dust-dominated contracting phase preceding a nonsingular bounce
+> predicts a parameter-free local non-Gaussianity of the primordial
+> curvature perturbation. We report a from-scratch, vertex-by-vertex in-in
+> computation of this amplitude, validated against the de Sitter and
+> ultra-slow-roll limits before use. It independently confirms the value
+> already printed by Li et al. (2016), f_NL^local = −35/16 = −2.1875,
+> exactly half the value originally printed by Cai et al. (2009),
+> f_NL^local = −35/8; we locate that factor of two at Cai et al.'s
+> amplitude-normalization step, and show the squeezed limit is orientation
+> dependent, −35/16+(15/16)μ². A separate-universe cross-check returns a
+> related but distinct quantity, −55/16 on uniform-density slices,
+> reconciled by ζ_ρ=2ζ_c at linear order; the factor of two between −35/16
+> and −35/8 itself has not been settled by an independent second method.
+> Survival of this amplitude through an explicit nonsingular bounce is
+> bounded, not resolved: linear transfer across three bounce backgrounds
+> obeys a universal suppression 0<T_fNL≤1/2, while the bounce's own cubic
+> term — found in the loop-quantum-cosmology literature to potentially
+> enhance non-Gaussianity by orders of magnitude — is not computed here.
+> We then ask what the exact amplitude does to three independent
+> observational channels, and state each channel's result at exactly the
+> strength its evidence supports. (i) Pulsar timing: refitting the
+> NANOGrav 15-yr Hellings–Downs-correlated Ceffyl free-spectrum
+> posteriors, we obtain a characteristic-strain spectral index
+> γ=2.567±0.382, consistent at 1.14σ with the matter-bounce
+> scalar-induced gravitational-wave prediction γ=3, and disfavouring the
+> SMBH-binary value γ=13/3 by a Savage–Dickey factor
+> log10 B=+3.85. A scale-invariant primordial tensor background is
+> excluded at 6.37σ by the same posterior. (ii) Primordial black holes:
+> within a Press–Schechter treatment, negative f_NL imposes a ceiling
+> ζ_max≃−5/(12 f_NL) that doubles from 0.0952 at −35/8 to 0.1905 at
+> −35/16; f_PBH rises from 3.8×10⁻⁶ to 7.3×10⁻³, a suppression weaker by
+> three orders of magnitude. (iii) Large-scale structure: the prediction
+> is consistent with the DESI DR1 constraint f_NL^local=−3.6⁺⁹·⁰₋₉·₁ at
+> 0.16σ, and is the only channel sensitive to the value of f_NL: SPHEREx
+> reaches 3.13σ (2.63σ after shape projection) at its bispectrum-only
+> forecast, and 4.38σ (3.68σ) at its combined target. The three channels
+> are mutually consistent; only the bispectrum channel depends on which
+> of −35/16 or −35/8 is correct, and it depends on it strongly.
+
+**Endorsers for A3** (astro-ph.CO `LRZHC4`, cross-list gr-qc `HYEJ7S`):
+reuse the table above (Brandenberger, Cai, Meerburg, Chaussidon, Ferraro,
+Quintin, Ross, Noriega) — the eligibility/contact research was verified
+2026-09-02 and is unaffected by the P2′→A3 fold-in (same archive, same
+authors, expanded content). **Recommendation unchanged:** lead with
+Meerburg, Chaussidon, or Ferraro (not authors of the value under
+discussion), send Cai/Brandenberger with the diplomatic "independent
+confirmation, not correction" framing (A3 confirms Li et al. 2016's value
+rather than disputing Cai et al. 2009's, a softer opening than P2′'s
+framing was). Quintin remains a dual-purpose contact (Note §1 + A3 §3a).
+
+**Gate before sending:** do not send any A3 endorsement email until (1) the
+PBH compaction-function row lands, (2) the pending INT board (Fable leg)
+closes with an APPROVE verdict, and (3) a DOI/PDF link exists to paste.
+This entry is prepared-ahead, not a go-ahead.
 
 ---
 
