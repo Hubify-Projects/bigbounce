@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.3",
+      version: "v3M.0.4",
       readiness: 20,
-      pendingWork: "A3 skeleton + P2′ v2L.0.2 exact-amplitude theory folded in per PAPER_LINEAGE_2026-08-05.md. v3M.0.3: PBH compaction-function channel (item A3-1) integrated (ratio-level result). R1 INT board dispatched (Fable + Grok + Gemini) — verdicts pending.",
+      pendingWork: "A3 skeleton + P2′ v2L.0.2 exact-amplitude theory folded in per PAPER_LINEAGE_2026-08-05.md. v3M.0.4: R1 closed (official NANOGrav posterior primary; handoff-conditional transmission bound; PBH ratio with regime disclosed). R2 verification pass running (Fable + Grok + Gemini) — verdicts pending.",
     },
     {
       slug: "paper-3",

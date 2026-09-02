@@ -119,7 +119,7 @@ export const researchPrograms: ResearchProgram[] = [
     question:
       "Does a nonsingular matter-bounce produce a distinctive, reproducible, and observationally testable primordial non-Gaussian signature that beats inflation-from-a-singularity as the origin of structure?",
     result:
-      "A1 \u00b7 P2\u2032 derives the exact matter-contraction amplitude f_NL = \u221235/16, confirmed by an independent from-scratch in-in computation; Cai et al. 2009's \u221235/8 located as a uniform factor 2 (ledger #1 CLOSED, 2026-09-02). A3 (paper-a3m, v3M.0.3) is now the flagship submission candidate: it folds the P2\u2032 exact-amplitude theory together with the multi-channel consistency checks (NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach) into one manuscript. A2 (nonlinear transmission through an explicit bounce) remains a research brief in progress.",
+      "A1 \u00b7 P2\u2032 derives the exact matter-contraction amplitude f_NL = \u221235/16, confirmed by an independent from-scratch in-in computation; Cai et al. 2009's \u221235/8 located as a uniform factor 2 (ledger #1 CLOSED, 2026-09-02). A3 (paper-a3m, v3M.0.4) is now the flagship submission candidate: it folds the P2\u2032 exact-amplitude theory together with the multi-channel consistency checks (NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach) into one manuscript. A2 (nonlinear transmission through an explicit bounce) remains a research brief in progress.",
     limitation:
       "A3 is a draft (readiness 20): the PBH compaction-function row is pending and one INT review board has not yet run. A2 is not yet a complete manuscript. The archived P2\u2032 Letter (paper-2l) is kept as a theory record, not a separate live submission target.",
     leadSlug: "paper-2l",
@@ -544,17 +544,17 @@ export const papers: Paper[] = [
     standaloneSubmission: true,
     title: "Multi-Channel Consistency of the Matter-Bounce Prediction f_NL = \u221235/16: Exact Amplitude, Pulsar Timing, Primordial Black Holes, and Survey Reach",
     plainTitle: "Multi-channel consistency of the matter-bounce prediction at f_NL = \u221235/16 (exact amplitude, pulsar timing, primordial black holes, survey reach)",
-    version: "v3M.0.3",
+    version: "v3M.0.4",
     lastUpdated: "2026-09-02",
-    tldr: "Track A's flagship submission candidate: folds the A3 multi-channel skeleton (NANOGrav 15-yr free-spectrum \u03b3, PBH abundance, SPHEREx/MegaMapper reach) together with the P2\u2032 v2L.0.2 exact matter-contraction theory (f_NL = \u221235/16, ledger #1 CLOSED independent re-derivation, orientation-dependent squeezed limit, \u03b4N cross-check) per the 2026-09-02 lineage decision. v3M.0.3: PBH compaction-function channel (item A3-1) integrated, replacing the Press-Schechter placeholder row \u2014 first-pass ordering reversed (ratio-level result, not a quotable abundance). R1 INT board dispatched (Fable + Grok + Gemini) \u2014 verdicts pending.",
+    tldr: "Track A's flagship submission candidate: folds the A3 multi-channel skeleton (NANOGrav 15-yr free-spectrum \u03b3, PBH abundance, SPHEREx/MegaMapper reach) together with the P2\u2032 v2L.0.2 exact matter-contraction theory (f_NL = \u221235/16, ledger #1 CLOSED independent re-derivation, orientation-dependent squeezed limit, \u03b4N cross-check) per the 2026-09-02 lineage decision. v3M.0.4: R1 closed (official NANOGrav posterior primary; handoff-conditional transmission bound; PBH ratio with regime disclosed); R2 verification pass running (Fable + Grok + Gemini) — verdicts pending.",
     path: publicationPath({}),
-    pages: "7",
+    pages: "8",
     refs: "\u2014",
     readiness: 20,
     statusVariant: "blue",
     target: "PRD (regular article)",
     description:
-      "Track A's flagship line (2026-09-02 portfolio decision): the A3 skeleton (research/track_a3_multichannel/) folds in the P2\u2032 v2L.0.2 exact-amplitude theory per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record, so the exact matter-contraction derivation and its multi-channel observational consistency checks live in one submission-track manuscript rather than split across a Letter and a research brief. v3M.0.3 integrates the real PBH compaction-function channel (item A3-1) in place of the Press-Schechter placeholder; the ordering reverses (f_PBH(−35/16) < f_PBH(−35/8) at every grid point — the first pass had it backwards). R1 INT board running (Fable + Grok + Gemini) — verdicts pending.",
+      "Track A's flagship line (2026-09-02 portfolio decision): the A3 skeleton (research/track_a3_multichannel/) folds in the P2\u2032 v2L.0.2 exact-amplitude theory per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record, so the exact matter-contraction derivation and its multi-channel observational consistency checks live in one submission-track manuscript rather than split across a Letter and a research brief. v3M.0.4: R1 closed (official NANOGrav posterior primary; handoff-conditional transmission bound; PBH ratio with regime disclosed). R2 verification pass running (Fable + Grok + Gemini) — verdicts pending.",
     keyResults: [
       "f_NL = \u221235/16 = \u22122.1875 for the stated matter-dominated-contraction background and cubic action, folded in from P2\u2032 v2L.0.2",
       "Ledger #1 CLOSED: independent from-scratch in-in re-derivation reproduces \u221235/16 by a second method; Cai et al. (2009)'s \u221235/8 located as a uniform factor-2 discrepancy, not a competing derivation",
@@ -567,19 +567,20 @@ export const papers: Paper[] = [
     predictions: ["f_NL = -35/16", "NANOGrav \u03b3 consistency with matter-bounce prediction 3"],
     figures: ["NANOGrav free-spectrum \u03b3 posterior vs. matter-bounce prediction", "Squeezed-limit orientation dependence"],
     remainingWork: [
-      "R1 INT board running (Fable + Grok + Gemini) \u2014 verdicts pending",
+      "R2 verification pass running (Fable + Grok + Gemini) \u2014 verdicts pending",
       "See project-context/PAPER_LINEAGE_2026-08-05.md for the recorded scope decision folding P2\u2032 theory into A3",
     ],
     preprintId: "HUBIFY-2026-A3M",
-    pdfMeta: "PDF \u00b7 7 pp \u00b7 v3M.0.3 \u00b7 created Sep 2, 2026 \u00b7 md5 9f7afea9e22a7816168fc7638fc8a753 \u2014 PBH compaction-function channel (item A3-1) integrated; R1 INT board running (Fable + Grok + Gemini), verdicts pending.",
+    pdfMeta: "PDF \u00b7 8 pp \u00b7 v3M.0.4 \u00b7 created Sep 2, 2026 \u00b7 md5 b98ee16e11d106c96ac593480857112b \u2014 R1 closed; R2 verification pass running (Fable + Grok + Gemini), verdicts pending.",
     changelog: [
+      "v3M.0.4: R1 closed (official NANOGrav posterior primary; handoff-conditional transmission bound; PBH ratio with regime disclosed). R2 verification pass dispatched (Fable + Grok + Gemini) \u2014 verdicts pending.",
       "v3M.0.3: PBH compaction-function channel (item A3-1) integrated, replacing the Press-Schechter placeholder row; ordering reverses (f_PBH(\u221235/16) < f_PBH(\u221235/8) at every grid point). R1 INT board dispatched (Fable + Grok + Gemini) \u2014 verdicts pending.",
       "v3M.0.2: A3 skeleton + P2\u2032 v2L.0.2 exact-amplitude theory folded in per PAPER_LINEAGE_2026-08-05.md; ledger #1 stated as closed.",
       "v3M.0.1 and earlier: A3 multi-channel first-pass skeleton (research/track_a3_multichannel/) \u2014 NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach; not yet registered as a site paper.",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.3.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.3.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.4.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.4.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/research/track_a3_multichannel/paper",

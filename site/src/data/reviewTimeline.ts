@@ -67,6 +67,24 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-r1-closed-v3m-0-4-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "restructure",
+    title: "A3 paper v3M.0.4: R1 closed (NANOGrav posterior primary, handoff-conditional transmission bound, PBH ratio disclosed); R2 verification dispatched",
+    papers: ["A3"],
+    summary:
+      "R1 INT board (Fable + Grok + Gemini) verdicts on paper-a3m v3M.0.3 closed: Fable major-revisions, Grok reject, Gemini major-revisions. Every finding truth-audited and closed with real edits, not prompt-tuning: the official NANOGrav 15-yr free-spectrum posterior is now the primary γ constraint (prior placeholder posterior demoted to a disclosed cross-check); the nonlinear-transmission bound is scoped explicitly as handoff-conditional (depends on the unclosed A2 bounce-transmission brief, not a standalone result); and the PBH abundance channel is presented strictly as a ratio-level result with its regime of validity disclosed (not a quotable abundance). 8pp, md5 b98ee16e11d106c96ac593480857112b. R2 verification pass dispatched (Fable + Grok + Gemini) — verdicts pending.",
+    keyTakeaways: [
+      "R1 verdicts: Fable major-revisions, Grok reject, Gemini major-revisions — all closed with real edits",
+      "Official NANOGrav posterior now primary (placeholder posterior demoted to disclosed cross-check)",
+      "Transmission bound scoped handoff-conditional; PBH ratio result scoped with regime disclosed",
+      "R2 verification pass dispatched (Fable + Grok + Gemini) — verdicts pending",
+    ],
+    links: [
+      { label: "Paper lineage decision", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+    ],
+  },
+  {
     id: "a3m-pbh-compaction-integrated-v3m-0-3-2026-09-02",
     dateISO: "2026-09-02",
     kind: "restructure",
