@@ -389,3 +389,6 @@ subtracted from the score.
   citation-style conversion) with reasons recorded above. See "R1 closure"
   section for the full item→edit mapping.
 - **2026-09-02 (draft creation, v4P.0.1):** first entry for P4'.
+
+## Final review 2026-09-02 (orchestrator)
+APPROVE at the agent gates; readiness cap 95 (Convex). See `SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`. 100 awaits Houston sign-off.
