@@ -31,7 +31,7 @@ before acting. Re-plan:
 | Site sync v1N.0.4 + A3M registration | sonnet | DONE — live, both remotes | 7d00b0b6, a91622ed; A3M Convex k9796y9e…/k574k79v… |
 | Abstract-cap REVISE (final review) | sonnet | DONE — P4′ v4P.0.5 (246 words), ECH Note v1N.0.5 (298 words); tarballs fbab0380…/26f215d6… | ae038b67, b1842272 |
 | PBH compaction-function redo (A3-1) | opus | DONE — ordering of first pass REVERSED; f_PBH not quotable; robust ratio A(−35/16)/A(−35/8)=1.73±0.05 | 51b0e389; ledger a2537563 |
-| A3 paper v3M.0.3 (PBH integrated) + R1 board | sonnet / fable | v3M.0.3 done (2263b200; Convex k579e572…); R1 board running (Fable leg + Grok/Gemini) | — |
+| A3 paper v3M.0.3 (PBH integrated) + R1 board | sonnet / fable | v3M.0.3 done (2263b200; Convex k579e572…); R1 board: Fable major-revisions 7M/16m (af3c156a: PTA refit vs official NANOGrav γ=3.2±0.6 absent; γ=5 exclusion is tail extrapolation; 'universal' T bound is handoff-scheme-dependent; PBH ratio regime uncontrolled; ref id wrong), Grok REJECT, Gemini major-revisions (26412f83); truth-audit running → science decisions → closure | — |
 | Site sync v4P.0.5 + v1N.0.5 + A3M v3M.0.3 | sonnet | running | — |
 | Site sync v4P.0.4 + P2L v2L.0.2 | sonnet | DONE — live, freshness PASS | 42c12dd6, be21f98b |
 | Final-review recommendations | orchestrator | P4′ APPROVE, ECH Note APPROVE, P2′ DEFER (→A3), A3M pending | d0755cbd, d188e716 |
