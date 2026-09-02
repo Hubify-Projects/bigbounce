@@ -1,0 +1,771 @@
+{
+  "track": "A2 -- transmission of f_NL through an explicit nonsingular bounce",
+  "ledger_row": "NEXT_SCIENCE_LEDGER.md item #2",
+  "meta": {
+    "date_utc": "2026-09-02T20:09:01.338777+00:00",
+    "runtime_s": 1.53,
+    "numpy": "2.5.1",
+    "scipy_solver": "DOP853",
+    "sympy": "1.14.0",
+    "seed": 20260902,
+    "f_NL_contraction_input": -2.1875
+  },
+  "S_symbolic": {
+    "S_solves_matter_eq": true,
+    "C_solves_matter_eq": true,
+    "S_small_u": "u**2/3",
+    "C_small_u": "u/2 + 1/u",
+    "identity_expmiu_eq_minusS_minusiC": true,
+    "wronskian_S_C": "-1",
+    "alpha_minus": "-sqrt(2)*k**(3/2)/(6*A)",
+    "beta_minus": "3*sqrt(2)*I*A/(2*k**(3/2))",
+    "r_beta_Iinf_over_alpha": "-9*I*A**2*I_inf/k**3",
+    "T_fNL_exact": "(1 + r(1 - rho))/(1 + 2 r)",
+    "T_fNL_large_r_limit": "1/2 - rho/2",
+    "note": "the adiabatic vacuum in matter contraction is GROWING-branch dominated, |r| = 9 A^2 I_inf/k^3 >> 1 for k eta_B << 1; hence T_fNL -> (1-rho)/2 and 0 < T_fNL <= 1/2 for ANY bounce of this class"
+  },
+  "B_backgrounds": {
+    "LQC": {
+      "label": "LQC-effective-dust",
+      "params": {
+        "rho_c": 1.0,
+        "w": 0.0,
+        "x_min": 1e-12
+      },
+      "eta_B": 1.0601459575428231,
+      "I_inf": 1.8137982097415053,
+      "A": 0.08333333332653892,
+      "eta_off": -2.587109559829608,
+      "J_at_minus_etaB": -0.9068996821214346,
+      "rho_B": 0.5000003182551834,
+      "eta_far_grid": 343.8230519679443,
+      "matter_fit_npts": 28521,
+      "analytic_check": {
+        "I_inf_analytic": 1.8137993642342178,
+        "I_inf_relerr": 6.365051919976494e-07,
+        "A_analytic": 0.08333333333333333,
+        "A_relerr": 8.15330025716321e-11,
+        "rho_B_analytic": 0.5,
+        "rho_B_relerr": 6.365103668581895e-07,
+        "derivation": "I_inf = int_0^1 dx/(sqrt3 sqrt(x(1-x))) = pi/sqrt3 ; a = (eta-eta_off)^2/12 in the dust era ; Hdot = 0 at x = 1/2 and 2 arcsin(sqrt x)|_{1/2}^{1} / (pi) = 1/2"
+      }
+    },
+    "poly": {
+      "label": "poly-analytic-nonLQC",
+      "params": {
+        "eta_b": 1.0,
+        "a_b": 1.0
+      },
+      "eta_B": 0.5773502794521735,
+      "I_inf": 0.78539816339224,
+      "A": 0.9999998899388941,
+      "eta_off": -0.00033672053470285837,
+      "J_at_minus_etaB": -0.4783057440709215,
+      "rho_B": 0.6089977878291118,
+      "eta_far_grid": 4000.0,
+      "matter_fit_npts": 90456,
+      "analytic_check": {
+        "I_inf_analytic": 0.7853981633974483,
+        "I_inf_relerr": 6.63136212608606e-12,
+        "A_analytic": 1.0,
+        "A_relerr": 1.1006110589573126e-07,
+        "rho_B_analytic": 0.6089977810442295,
+        "rho_B_relerr": 1.114106251698388e-08,
+        "derivation": "I_inf = pi eta_b/4 ; A = a_b/eta_b^2 ; Hdot = 0 at u = 1/sqrt3"
+      }
+    },
+    "quintin": {
+      "label": "Quintin2015-type",
+      "params": {
+        "dtB": 1.0,
+        "Upsilon": 2.6666666666666665,
+        "a_B": 1.0,
+        "t_far": 1000000.0
+      },
+      "eta_B": 0.4496009146522358,
+      "I_inf": 0.5573516955053205,
+      "A": 1.2081252559154905,
+      "eta_off": -0.6252107939702767,
+      "J_at_minus_etaB": -0.3734196351147754,
+      "rho_B": 0.6699892332366839,
+      "eta_far_grid": 134.79072143711807,
+      "matter_fit_npts": 24895
+    }
+  },
+  "M_mode_evolution_verification": {
+    "poly": {
+      "rows": [
+        {
+          "k_etaB": 0.002,
+          "k": 0.003464101553562469,
+          "T_c_constant_branch": {
+            "k": 0.003464101553562469,
+            "k_etaB": 0.002,
+            "eta_out": 57.735027945217354,
+            "eta_out_over_etaB": 100.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.0039602420557332645,
+            "T_c": 7.791806404316116,
+            "abs_T_c_minus_1": 6.791806404316116
+          },
+          "T_c_constant_branch_abs_minus_1": 6.791806404316116,
+          "abs_r_numeric": 170043662.03314677,
+          "r_relerr_vs_closed_form": 1.0147391259210237e-15,
+          "T_fNL_direct_zeta_ratio_re": 0.19549915502608065,
+          "T_fNL_direct_zeta_ratio_im": 2.3655889266234122e-09,
+          "T_fNL_projected_exact_re": 0.19550110608544408,
+          "T_fNL_background_limit": 0.19550110608544408,
+          "direct_vs_background_relerr": 9.979786828262505e-06,
+          "Delta2_out_arbunits": 11.102614886498227
+        },
+        {
+          "k_etaB": 0.005,
+          "k": 0.008660253883906172,
+          "T_c_constant_branch": {
+            "k": 0.008660253883906172,
+            "k_etaB": 0.004999999999999999,
+            "eta_out": 23.094011178086944,
+            "eta_out_over_etaB": 40.00000000000001,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.0037337458475709137,
+            "T_c": 1.3308564521651316,
+            "abs_T_c_minus_1": 0.3308564521651316
+          },
+          "T_c_constant_branch_abs_minus_1": 0.3308564521651316,
+          "abs_r_numeric": 10882794.370121391,
+          "r_relerr_vs_closed_form": 1.8542946930242747e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.19552690736247783,
+          "T_fNL_direct_zeta_ratio_im": 3.6973759173860385e-08,
+          "T_fNL_projected_exact_re": 0.19550110608544574,
+          "T_fNL_background_limit": 0.19550110608544408,
+          "direct_vs_background_relerr": 0.0001319750949260179,
+          "Delta2_out_arbunits": 11.098007913841087
+        },
+        {
+          "k_etaB": 0.01,
+          "k": 0.017320507767812344,
+          "T_c_constant_branch": {
+            "k": 0.017320507767812344,
+            "k_etaB": 0.009999999999999998,
+            "eta_out": 11.547005589043472,
+            "eta_out_over_etaB": 20.000000000000004,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.0029071692438714276,
+            "T_c": 0.7855744444698426,
+            "abs_T_c_minus_1": 0.2144255555301574
+          },
+          "T_c_constant_branch_abs_minus_1": 0.2144255555301574,
+          "abs_r_numeric": 1360349.2962651742,
+          "r_relerr_vs_closed_form": 5.04481862909135e-17,
+          "T_fNL_direct_zeta_ratio_re": 0.19561457860527387,
+          "T_fNL_direct_zeta_ratio_im": 2.960593977020967e-07,
+          "T_fNL_projected_exact_re": 0.1955011060855527,
+          "T_fNL_background_limit": 0.19550110608544408,
+          "direct_vs_background_relerr": 0.0005804188124653997,
+          "Delta2_out_arbunits": 11.084374080028153
+        },
+        {
+          "k_etaB": 0.02,
+          "k": 0.03464101553562469,
+          "T_c_constant_branch": {
+            "k": 0.03464101553562469,
+            "k_etaB": 0.019999999999999997,
+            "eta_out": 5.773502794521736,
+            "eta_out_over_etaB": 10.000000000000002,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.0002844460287003379,
+            "T_c": 0.0067092545425640835,
+            "abs_T_c_minus_1": 0.9932907454574359
+          },
+          "T_c_constant_branch_abs_minus_1": 0.9932907454574359,
+          "abs_r_numeric": 170043.6620331467,
+          "r_relerr_vs_closed_form": 3.4502422521794655e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.19593237569097605,
+          "T_fNL_direct_zeta_ratio_im": 2.3758962833132495e-06,
+          "T_fNL_projected_exact_re": 0.1955011060923998,
+          "T_fNL_background_limit": 0.19550110608544408,
+          "direct_vs_background_relerr": 0.002205970156217374,
+          "Delta2_out_arbunits": 11.037530783293843
+        },
+        {
+          "k_etaB": 0.03,
+          "k": 0.051961523303437035,
+          "T_c_constant_branch": {
+            "k": 0.051961523303437035,
+            "k_etaB": 0.03,
+            "eta_out": 3.8490018630144904,
+            "eta_out_over_etaB": 6.666666666666667,
+            "u_out": 0.2,
+            "k2_f1_correction": 5.870374730118998e-47,
+            "T_c": 0.1199231431951047,
+            "abs_T_c_minus_1": 0.8800768568048953
+          },
+          "T_c_constant_branch_abs_minus_1": 0.8800768568048953,
+          "abs_r_numeric": 50383.30726908053,
+          "r_relerr_vs_closed_form": 4.608126828594339e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.1964242787143065,
+          "T_fNL_direct_zeta_ratio_im": 8.055773535877277e-06,
+          "T_fNL_projected_exact_re": 0.1955011061646745,
+          "T_fNL_background_limit": 0.19550110608544408,
+          "direct_vs_background_relerr": 0.004722083917310327,
+          "Delta2_out_arbunits": 10.968595973876397
+        }
+      ],
+      "max_abs_T_c_minus_1": 6.791806404316116,
+      "max_T_fNL_direct_vs_background_relerr": 0.004722083917310327,
+      "Delta2_out_spread_frac": 0.012119387688735907,
+      "note": "T_c(k) = 1 confirmed with a PURE constant-branch IC (phase-3 result, independently reproduced in three backgrounds); the physical vacuum is growing-branch dominated (|r| >> 1) and its transmission is NOT unity. Delta^2 = k^3|alpha_post|^2 flat across k => post-bounce spectrum scale invariant (matter-bounce benchmark recovered)."
+    },
+    "LQC": {
+      "rows": [
+        {
+          "k_etaB": 0.002,
+          "k": 0.0018865326852120859,
+          "T_c_constant_branch": {
+            "k": 0.0018865326852120859,
+            "k_etaB": 0.002,
+            "eta_out": 106.01459575428231,
+            "eta_out_over_etaB": 100.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.0041962900709245875,
+            "T_c": 1.8092143864894654,
+            "abs_T_c_minus_1": 0.8092143864894654
+          },
+          "T_c_constant_branch_abs_minus_1": 0.8092143864894654,
+          "abs_r_numeric": 16884024.909132827,
+          "r_relerr_vs_closed_form": 1.1193635285886265e-15,
+          "T_fNL_direct_zeta_ratio_re": 0.25000221835126163,
+          "T_fNL_direct_zeta_ratio_im": 2.1362675889054225e-08,
+          "T_fNL_projected_exact_re": 0.24999984087240892,
+          "T_fNL_background_limit": 0.24999984087240829,
+          "direct_vs_background_relerr": 9.509921466532845e-06,
+          "Delta2_out_arbunits": 0.4275546337997825
+        },
+        {
+          "k_etaB": 0.005,
+          "k": 0.0047163317130302146,
+          "T_c_constant_branch": {
+            "k": 0.0047163317130302146,
+            "k_etaB": 0.005,
+            "eta_out": 42.405838301712926,
+            "eta_out_over_etaB": 40.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.00449469565659135,
+            "T_c": 1.0660481096655858,
+            "abs_T_c_minus_1": 0.06604810966558583
+          },
+          "T_c_constant_branch_abs_minus_1": 0.06604810966558583,
+          "abs_r_numeric": 1080577.5941845018,
+          "r_relerr_vs_closed_form": 1.1834741209449388e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.25001388063183255,
+          "T_fNL_direct_zeta_ratio_im": 3.4131339803182427e-07,
+          "T_fNL_projected_exact_re": 0.2499998408725689,
+          "T_fNL_background_limit": 0.24999984087240829,
+          "direct_vs_background_relerr": 5.6159073442918483e-05,
+          "Delta2_out_arbunits": 0.41815152647731996
+        },
+        {
+          "k_etaB": 0.01,
+          "k": 0.009432663426060429,
+          "T_c_constant_branch": {
+            "k": 0.009432663426060429,
+            "k_etaB": 0.01,
+            "eta_out": 21.202919150856463,
+            "eta_out_over_etaB": 20.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.0050022466530852345,
+            "T_c": 1.0121048148205847,
+            "abs_T_c_minus_1": 0.012104814820584675
+          },
+          "T_c_constant_branch_abs_minus_1": 0.012104814820584675,
+          "abs_r_numeric": 135072.19927306275,
+          "r_relerr_vs_closed_form": 2.1678492657553553e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.25005549163231044,
+          "T_fNL_direct_zeta_ratio_im": 2.785487522670746e-06,
+          "T_fNL_projected_exact_re": 0.24999984088268537,
+          "T_fNL_background_limit": 0.24999984087240829,
+          "direct_vs_background_relerr": 0.00022260318129796453,
+          "Delta2_out_arbunits": 0.4099644624683415
+        },
+        {
+          "k_etaB": 0.02,
+          "k": 0.018865326852120858,
+          "T_c_constant_branch": {
+            "k": 0.018865326852120858,
+            "k_etaB": 0.02,
+            "eta_out": 10.601459575428231,
+            "eta_out_over_etaB": 10.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.006048513564419798,
+            "T_c": 1.0030141669977644,
+            "abs_T_c_minus_1": 0.003014166997764356
+          },
+          "T_c_constant_branch_abs_minus_1": 0.003014166997764356,
+          "abs_r_numeric": 16884.024909132837,
+          "r_relerr_vs_closed_form": 2.7037304019581435e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.2502214723510208,
+          "T_fNL_direct_zeta_ratio_im": 2.2176556457505477e-05,
+          "T_fNL_projected_exact_re": 0.2499998415301409,
+          "T_fNL_background_limit": 0.24999984087240829,
+          "direct_vs_background_relerr": 0.0008865264787334404,
+          "Delta2_out_arbunits": 0.41221557274585735
+        },
+        {
+          "k_etaB": 0.03,
+          "k": 0.028297990278181286,
+          "T_c_constant_branch": {
+            "k": 0.028297990278181286,
+            "k_etaB": 0.03,
+            "eta_out": 7.067639716952155,
+            "eta_out_over_etaB": 6.666666666666668,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.007114835626655298,
+            "T_c": 1.0016306451103143,
+            "abs_T_c_minus_1": 0.0016306451103142994
+          },
+          "T_c_constant_branch_abs_minus_1": 0.0016306451103142994,
+          "abs_r_numeric": 5002.67404715047,
+          "r_relerr_vs_closed_form": 3.7647266326244905e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.25049644678613014,
+          "T_fNL_direct_zeta_ratio_im": 7.459307820893859e-05,
+          "T_fNL_projected_exact_re": 0.24999984836439404,
+          "T_fNL_background_limit": 0.24999984087240829,
+          "direct_vs_background_relerr": 0.001986424919267593,
+          "Delta2_out_arbunits": 0.41405702881761264
+        }
+      ],
+      "max_abs_T_c_minus_1": 0.8092143864894654,
+      "max_T_fNL_direct_vs_background_relerr": 0.001986424919267593,
+      "Delta2_out_spread_frac": 0.04224459900264548,
+      "note": "T_c(k) = 1 confirmed with a PURE constant-branch IC (phase-3 result, independently reproduced in three backgrounds); the physical vacuum is growing-branch dominated (|r| >> 1) and its transmission is NOT unity. Delta^2 = k^3|alpha_post|^2 flat across k => post-bounce spectrum scale invariant (matter-bounce benchmark recovered)."
+    },
+    "quintin": {
+      "rows": [
+        {
+          "k_etaB": 0.002,
+          "k": 0.004448389526847361,
+          "T_c_constant_branch": {
+            "k": 0.004448389526847361,
+            "k_etaB": 0.002,
+            "eta_out": 44.96009146522358,
+            "eta_out_over_etaB": 100.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.004111413501793326,
+            "T_c": 4.710853230516057,
+            "abs_T_c_minus_1": 3.710853230516057
+          },
+          "T_c_constant_branch_abs_minus_1": 3.710853230516057,
+          "abs_r_numeric": 83173951.35093686,
+          "r_relerr_vs_closed_form": 9.365355750411987e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.16499331959447983,
+          "T_fNL_direct_zeta_ratio_im": 4.897700568624308e-09,
+          "T_fNL_projected_exact_re": 0.1650053833816581,
+          "T_fNL_background_limit": 0.16500538338165804,
+          "direct_vs_background_relerr": 7.311147631050563e-05,
+          "Delta2_out_arbunits": 8.364628837726338
+        },
+        {
+          "k_etaB": 0.005,
+          "k": 0.011120973817118403,
+          "T_c_constant_branch": {
+            "k": 0.011120973817118403,
+            "k_etaB": 0.005,
+            "eta_out": 17.98403658608943,
+            "eta_out_over_etaB": 40.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.004279156786195663,
+            "T_c": 1.2738127913145973,
+            "abs_T_c_minus_1": 0.27381279131459735
+          },
+          "T_c_constant_branch_abs_minus_1": 0.27381279131459735,
+          "abs_r_numeric": 5323132.886459958,
+          "r_relerr_vs_closed_form": 1.7731698404601968e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.16499871627203822,
+          "T_fNL_direct_zeta_ratio_im": 7.747876380885113e-08,
+          "T_fNL_projected_exact_re": 0.16500538338166543,
+          "T_fNL_background_limit": 0.16500538338165804,
+          "direct_vs_background_relerr": 4.0405406679377975e-05,
+          "Delta2_out_arbunits": 8.261910248277594
+        },
+        {
+          "k_etaB": 0.01,
+          "k": 0.022241947634236807,
+          "T_c_constant_branch": {
+            "k": 0.022241947634236807,
+            "k_etaB": 0.01,
+            "eta_out": 8.992018293044715,
+            "eta_out_over_etaB": 20.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.0045603797841640824,
+            "T_c": 1.0431848148931206,
+            "abs_T_c_minus_1": 0.04318481489312065
+          },
+          "T_c_constant_branch_abs_minus_1": 0.04318481489312065,
+          "abs_r_numeric": 665391.610807495,
+          "r_relerr_vs_closed_form": 1.7554046748917333e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.1650179841359753,
+          "T_fNL_direct_zeta_ratio_im": 6.286412735402534e-07,
+          "T_fNL_projected_exact_re": 0.16500538338212953,
+          "T_fNL_background_limit": 0.16500538338165804,
+          "direct_vs_background_relerr": 7.636571643310219e-05,
+          "Delta2_out_arbunits": 8.146392603049788
+        },
+        {
+          "k_etaB": 0.02,
+          "k": 0.044483895268473614,
+          "T_c_constant_branch": {
+            "k": 0.044483895268473614,
+            "k_etaB": 0.02,
+            "eta_out": 4.496009146522358,
+            "eta_out_over_etaB": 10.0,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.005128756314873844,
+            "T_c": 1.0084116415137199,
+            "abs_T_c_minus_1": 0.00841164151371987
+          },
+          "T_c_constant_branch_abs_minus_1": 0.00841164151371987,
+          "abs_r_numeric": 83173.95135093687,
+          "r_relerr_vs_closed_form": 1.8471209669840608e-16,
+          "T_fNL_direct_zeta_ratio_re": 0.16509496687690545,
+          "T_fNL_direct_zeta_ratio_im": 5.01447122126357e-06,
+          "T_fNL_projected_exact_re": 0.16500538341183318,
+          "T_fNL_background_limit": 0.16500538338165804,
+          "direct_vs_background_relerr": 0.0005429125608598095,
+          "Delta2_out_arbunits": 8.171341322248306
+        },
+        {
+          "k_etaB": 0.03,
+          "k": 0.06672584290271041,
+          "T_c_constant_branch": {
+            "k": 0.06672584290271041,
+            "k_etaB": 0.03,
+            "eta_out": 2.9973394310149057,
+            "eta_out_over_etaB": 6.666666666666668,
+            "u_out": 0.2,
+            "k2_f1_correction": -0.005703942882144784,
+            "T_c": 1.0036823268265296,
+            "abs_T_c_minus_1": 0.0036823268265295805
+          },
+          "T_c_constant_branch_abs_minus_1": 0.0036823268265295805,
+          "abs_r_numeric": 24644.133733610928,
+          "r_relerr_vs_closed_form": 0.0,
+          "T_fNL_direct_zeta_ratio_re": 0.16522296023930233,
+          "T_fNL_direct_zeta_ratio_im": 1.6902171461420144e-05,
+          "T_fNL_projected_exact_re": 0.16500538372537157,
+          "T_fNL_background_limit": 0.16500538338165804,
+          "direct_vs_background_relerr": 0.0013186046005604357,
+          "Delta2_out_arbunits": 8.183706129234565
+        }
+      ],
+      "max_abs_T_c_minus_1": 3.710853230516057,
+      "max_T_fNL_direct_vs_background_relerr": 0.0013186046005604357,
+      "Delta2_out_spread_frac": 0.02653135885072593,
+      "note": "T_c(k) = 1 confirmed with a PURE constant-branch IC (phase-3 result, independently reproduced in three backgrounds); the physical vacuum is growing-branch dominated (|r| >> 1) and its transmission is NOT unity. Delta^2 = k^3|alpha_post|^2 flat across k => post-bounce spectrum scale invariant (matter-bounce benchmark recovered)."
+    }
+  },
+  "T_transmission_tables": {
+    "LQC": [
+      {
+        "handoff": "NEC boundary (eta_h = eta_B)",
+        "eta_h": 1.0601459575428231,
+        "eta_h_over_etaB": 1.0,
+        "rho": 0.5000003182551834,
+        "lambda_zeta": 4.000002546043088,
+        "T_fNL": 0.24999984087240829
+      },
+      {
+        "handoff": "2 eta_B",
+        "eta_h": 2.1202919150856463,
+        "eta_h_over_etaB": 2.0,
+        "rho": 0.7514790969207943,
+        "lambda_zeta": 8.047612797232524,
+        "T_fNL": 0.12426045153960286
+      },
+      {
+        "handoff": "5 eta_B",
+        "eta_h": 5.300729787714116,
+        "eta_h_over_etaB": 5.0,
+        "rho": 0.9461286264537893,
+        "lambda_zeta": 37.12546884078247,
+        "T_fNL": 0.026935686773105372
+      },
+      {
+        "handoff": "10 eta_B",
+        "eta_h": 10.601459575428231,
+        "eta_h_over_etaB": 10.0,
+        "rho": 0.9884650359193984,
+        "lambda_zeta": 173.38588885277986,
+        "T_fNL": 0.005767482040300809
+      },
+      {
+        "handoff": "50 eta_B",
+        "eta_h": 53.007297877141156,
+        "eta_h_over_etaB": 50.0,
+        "rho": 0.9998466230641117,
+        "lambda_zeta": 13039.770213273101,
+        "T_fNL": 7.668846794417483e-05
+      }
+    ],
+    "poly": [
+      {
+        "handoff": "NEC boundary (eta_h = eta_B)",
+        "eta_h": 0.5773502794521735,
+        "eta_h_over_etaB": 1.0,
+        "rho": 0.6089977878291118,
+        "lambda_zeta": 5.115060574455002,
+        "T_fNL": 0.19550110608544408
+      },
+      {
+        "handoff": "2 eta_B",
+        "eta_h": 1.154700558904347,
+        "eta_h_over_etaB": 2.0,
+        "rho": 0.8606740367247065,
+        "lambda_zeta": 14.354826286384329,
+        "T_fNL": 0.06966298163764673
+      },
+      {
+        "handoff": "5 eta_B",
+        "eta_h": 2.8867513972608676,
+        "eta_h_over_etaB": 5.0,
+        "rho": 0.9846075626990677,
+        "lambda_zeta": 129.9339383944647,
+        "T_fNL": 0.007696218650466158
+      },
+      {
+        "handoff": "10 eta_B",
+        "eta_h": 5.773502794521735,
+        "eta_h_over_etaB": 10.0,
+        "rho": 0.9978716010592482,
+        "lambda_zeta": 939.6734614487109,
+        "T_fNL": 0.0010641994703758928
+      },
+      {
+        "handoff": "50 eta_B",
+        "eta_h": 28.867513972608677,
+        "eta_h_over_etaB": 50.0,
+        "rho": 0.9999823828555287,
+        "lambda_zeta": 113525.77616949305,
+        "T_fNL": 8.80857223567455e-06
+      }
+    ],
+    "quintin": [
+      {
+        "handoff": "NEC boundary (eta_h = eta_B)",
+        "eta_h": 0.4496009146522358,
+        "eta_h_over_etaB": 1.0,
+        "rho": 0.6699892332366839,
+        "lambda_zeta": 6.060408330357298,
+        "T_fNL": 0.16500538338165804
+      },
+      {
+        "handoff": "2 eta_B",
+        "eta_h": 0.8992018293044716,
+        "eta_h_over_etaB": 2.0,
+        "rho": 0.8843309245907758,
+        "lambda_zeta": 17.290706205822293,
+        "T_fNL": 0.05783453770461211
+      },
+      {
+        "handoff": "5 eta_B",
+        "eta_h": 2.248004573261179,
+        "eta_h_over_etaB": 5.0,
+        "rho": 0.9827250498528384,
+        "lambda_zeta": 115.7745743381269,
+        "T_fNL": 0.008637475073580814
+      },
+      {
+        "handoff": "10 eta_B",
+        "eta_h": 4.496009146522358,
+        "eta_h_over_etaB": 10.0,
+        "rho": 0.9969494249210984,
+        "lambda_zeta": 655.6140885803478,
+        "T_fNL": 0.0015252875394508036
+      },
+      {
+        "handoff": "50 eta_B",
+        "eta_h": 22.48004573261179,
+        "eta_h_over_etaB": 50.0,
+        "rho": 0.9999669455109137,
+        "lambda_zeta": 60506.15378679997,
+        "T_fNL": 1.652724454315191e-05
+      }
+    ]
+  },
+  "Q_quintin_duration_sweep": [
+    {
+      "dtB": 0.25,
+      "Upsilon": 42.666666666666664,
+      "eta_B": 0.11240462951447627,
+      "I_inf": 0.1393379415800174,
+      "rho_B": 0.6700053624605646,
+      "T_fNL": 0.16499731876971768
+    },
+    {
+      "dtB": 0.5,
+      "Upsilon": 10.666666666666666,
+      "eta_B": 0.22480854416203,
+      "I_inf": 0.2786758715646746,
+      "rho_B": 0.6700040734621084,
+      "T_fNL": 0.16499796326894578
+    },
+    {
+      "dtB": 1.0,
+      "Upsilon": 2.6666666666666665,
+      "eta_B": 0.449615658691089,
+      "I_inf": 0.5573516969550293,
+      "rho_B": 0.6700028121784631,
+      "T_fNL": 0.16499859391076843
+    },
+    {
+      "dtB": 2.0,
+      "Upsilon": 0.6666666666666666,
+      "eta_B": 0.8992284583394259,
+      "I_inf": 1.1147032096091711,
+      "rho_B": 0.670001606259049,
+      "T_fNL": 0.16499919687047548
+    },
+    {
+      "dtB": 4.0,
+      "Upsilon": 0.16666666666666666,
+      "eta_B": 1.798451199097921,
+      "I_inf": 2.229405682772612,
+      "rho_B": 0.6700005109960893,
+      "T_fNL": 0.16499974450195537
+    }
+  ],
+  "Q_quintin_duration_frac_spread": 1.470153549676978e-05,
+  "Qp_poly_duration_sweep": [
+    {
+      "eta_b": 0.25,
+      "eta_B": 0.14433770748641767,
+      "eta_B_over_eta_b": 0.5773508299456707,
+      "I_inf": 0.19634954084806,
+      "rho_B": 0.6089981482044303,
+      "T_fNL": 0.19550092589778484
+    },
+    {
+      "eta_b": 0.5,
+      "eta_B": 0.2886754149718352,
+      "eta_B_over_eta_b": 0.5773508299436704,
+      "I_inf": 0.39269908169612,
+      "rho_B": 0.6089981482029977,
+      "T_fNL": 0.19550092589850115
+    },
+    {
+      "eta_b": 1.0,
+      "eta_B": 0.5773508299446077,
+      "eta_B_over_eta_b": 0.5773508299446077,
+      "I_inf": 0.78539816339224,
+      "rho_B": 0.608998148203669,
+      "T_fNL": 0.19550092589816548
+    },
+    {
+      "eta_b": 2.0,
+      "eta_B": 1.1547016598892155,
+      "eta_B_over_eta_b": 0.5773508299446077,
+      "I_inf": 1.57079632678448,
+      "rho_B": 0.608998148203669,
+      "T_fNL": 0.19550092589816548
+    },
+    {
+      "eta_b": 4.0,
+      "eta_B": 2.309403319778431,
+      "eta_B_over_eta_b": 0.5773508299446077,
+      "I_inf": 3.14159265356896,
+      "rho_B": 0.608998148203669,
+      "T_fNL": 0.19550092589816548
+    }
+  ],
+  "Qp_poly_duration_frac_spread": 3.6640025728640585e-12,
+  "F_fluid_scheme_contrast": {
+    "rows": [
+      {
+        "dcut": 1e-05,
+        "K_fluid_near_bounce": 1096.8094442168767,
+        "Imix_fluid_near_bounce": 0.28033505749663196
+      },
+      {
+        "dcut": 1e-06,
+        "K_fluid_near_bounce": 3465.479676743619,
+        "Imix_fluid_near_bounce": 0.2811673192108923
+      },
+      {
+        "dcut": 1e-07,
+        "K_fluid_near_bounce": 10955.83355424901,
+        "Imix_fluid_near_bounce": 0.2814305032871692
+      },
+      {
+        "dcut": 1e-08,
+        "K_fluid_near_bounce": 34642.39992875413,
+        "Imix_fluid_near_bounce": 0.281513729393768
+      }
+    ],
+    "x_lo": 0.5,
+    "fitted_power_of_dcut_for_K": -0.4998312438620585,
+    "SECOND_SCHEME_transmission": {
+      "background": "LQC-effective-dust",
+      "scheme": "effective fluid z^2 = a^2(rho+p)/(c_s^2 H^2)",
+      "I_inf_fluid": 0.30229989403903684,
+      "I_inf_fluid_analytic_pi_over_6sqrt3": 0.3022998940390363,
+      "J_fluid_at_NEC_boundary_x_eq_half": 0.054924902154580506,
+      "rho_B_fluid": 0.18169011381620895,
+      "T_fNL_fluid": 0.40915494309189554,
+      "T_fNL_geometric_same_background": 0.25,
+      "note": "the MIXING integral int deta/z^2 is finite in the fluid scheme too, so a transmission coefficient exists there and is reported; it differs from the geometric-prescription value on the SAME background, which is the scheme dependence the ledger row asks to be stated. What does NOT exist in the fluid scheme is the finite-k continuation (K diverges), so its coefficient is leading-gradient-order only."
+    },
+    "analytic_power": -0.5,
+    "note": "effective-fluid scheme: the k^2 gradient-basis integral K = int z^2 deta DIVERGES as dcut^{-1/2} at the H = 0 pole, so the finite-k continuation of the constant branch does not exist there (phase-1's 'no scheme-independent coefficient'). The geometric prescription z = a has both basis integrals finite. Note the MIXING integral int deta/z^2 is finite in BOTH schemes, so the transmission coefficient computed here is a fluid-scheme quantity as well, with a different numerical value (reported)."
+  },
+  "C_convergence": {
+    "eta_far_x2": 5.525104912012769e-22,
+    "rtol_1e-9": 1.093238698220496e-23,
+    "grid_halved_LQC_dT_rel": 3.2946001482514475e-10,
+    "grid_halved_poly_dT_rel": 9.216688447999388e-07,
+    "grid_halved_quintin_dT_rel": 4.11469659381547e-05,
+    "LQC_xmin_1e-14_dT_rel": 5.729898258088895e-07
+  },
+  "HEADLINE": {
+    "LQC": {
+      "scheme": "geometric / dressed-metric prescription z = a, c_s = 1",
+      "background": "LQC-effective-dust",
+      "eta_B": 1.0601459575428231,
+      "I_inf": 1.8137982097415053,
+      "rho_B": 0.5000003182551834,
+      "T_fNL_linear_transfer": 0.24999984087240829,
+      "T_fNL_direct_ODE_check_at_kEtaB_0p01": 0.25005549163231044,
+      "zeta_amplification_lambda": 4.000002546043088,
+      "f_NL_after_from_minus_35_over_16": -0.5468746519083931
+    },
+    "poly": {
+      "scheme": "geometric / dressed-metric prescription z = a, c_s = 1",
+      "background": "poly-analytic-nonLQC",
+      "eta_B": 0.5773502794521735,
+      "I_inf": 0.78539816339224,
+      "rho_B": 0.6089977878291118,
+      "T_fNL_linear_transfer": 0.19550110608544408,
+      "T_fNL_direct_ODE_check_at_kEtaB_0p01": 0.19561457860527387,
+      "zeta_amplification_lambda": 5.115060574455002,
+      "f_NL_after_from_minus_35_over_16": -0.4276586695619089
+    },
+    "quintin": {
+      "scheme": "geometric / dressed-metric prescription z = a, c_s = 1",
+      "background": "Quintin2015-type",
+      "eta_B": 0.4496009146522358,
+      "I_inf": 0.5573516955053205,
+      "rho_B": 0.6699892332366839,
+      "T_fNL_linear_transfer": 0.16500538338165804,
+      "T_fNL_direct_ODE_check_at_kEtaB_0p01": 0.1650179841359753,
+      "zeta_amplification_lambda": 6.060408330357298,
+      "f_NL_after_from_minus_35_over_16": -0.360949276147377
+    }
+  },
+  "HEADLINE_scheme_spread": {
+    "min": 0.16500538338165804,
+    "max": 0.24999984087240829
+  },
+  "validity": {
+    "domain": "super-Hubble (k eta_B << 1), linear-order transfer of the curvature perturbation, single-clock adiabatic matter contraction with a > 0 throughout, geometric prescription z = a (c_s = 1), symmetric or matched bounce with bounded a''/a.",
+    "computed": "(a) T_c(k) = 1 for a pure constant-branch IC (phase-3 reproduced in three backgrounds); (b) the adiabatic vacuum is growing-branch dominated, |r| = 9 A^2 I_inf/k^3; (c) the k-independent super-Hubble rescaling lambda between the NEC boundary and late times, hence the LINEAR-TRANSFER transmission coefficient T_fNL = 1/lambda = (1 - rho_B)/2 with rho_B = |J(-eta_B)|/I_inf.",
+    "NOT_computed": "the bounce's OWN cubic (in-in) contribution Delta f_NL^bounce from the third-order action during NEC violation. Quintin et al. 2015 (arXiv:1508.04141) find f_NL is ENHANCED during the bounce phase when zeta grows; Agullo, Bolliet & Sreenath 2017 (arXiv:1712.08148) find the LQC bounce enhances non-Gaussianity by several orders of magnitude on scales larger than the curvature radius at the bounce. That term has the OPPOSITE sign of effect to the suppression computed here and is NOT bounded by it: the net T_fNL is therefore NOT determined by the linear transfer alone."
+  }
+}

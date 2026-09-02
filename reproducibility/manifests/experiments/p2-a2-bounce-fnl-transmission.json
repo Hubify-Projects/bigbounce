@@ -1,0 +1,77 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-a2-bounce-fnl-transmission",
+  "title": "Track A2: transmission coefficient of the matter-contraction f_NL through explicit nonsingular bounces (linear-transfer term, scheme-labeled)",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "entrypoint": "python3 a2_transmission_linear.py",
+      "sha256": "bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+    },
+    {
+      "path": "research/cubic_bounce_transmission/a2_transmission_figures.py",
+      "entrypoint": "python3 a2_transmission_figures.py",
+      "sha256": "707cd5f7f5c7c2de1e1118023e7aff9e52820944891b43503b6bdf73383d2626"
+    }
+  ],
+  "environment": {
+    "python": "numpy 2.5.1, scipy 1.18.0, sympy 1.14.0, matplotlib 3.11.1 (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-02",
+    "wall_clock": "1.5 s (a2_transmission_linear.py) + 4 s (a2_transmission_figures.py), measured",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 10 s total",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic (seed 20260902 set; no stochastic step is used). Run a2_transmission_linear.py first, then a2_transmission_figures.py which reads its JSON."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.log",
+      "type": "run-log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/a2_transmission_summary.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md",
+      "type": "brief",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm, in HEADLINE: T_fNL = 0.250000 (LQC / geometric dressed-metric prescription; analytic value exactly 1/4), 0.195501 (analytic non-LQC poly bounce), 0.165005 (Quintin+2015-type), and in F_fluid_scheme_contrast.SECOND_SCHEME_transmission T_fNL = 0.409155 (LQC background, effective-fluid scheme). Tolerance 1e-5 relative. Also confirm the analytic cross-checks in B_backgrounds (LQC: I_inf = pi/sqrt3, A = 1/12, rho_B = 1/2; poly: I_inf = pi*eta_b/4, rho_B = [pi/6+sqrt3/4]/(pi/2)) at <1e-6 relative, the fluid-scheme K ~ dcut^-0.4998, and that the direct ODE value matches the super-Hubble formula to <5e-3 over k*eta_B <= 0.03.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item #2 (ranked #1 in research/remaining_live_paths_audit/)",
+    "extends research/cubic_bounce_transmission/ phases 1-3 (g1_gradient_transmission_scheme.py, g1_dressedmetric_transmission.py, g1_dressedmetric_ic_close.py)",
+    "literature engaged: arXiv:1508.04141 (Quintin, Sherkatghanad, Cai & Brandenberger 2015), arXiv:1712.08148 (Agullo, Bolliet & Sreenath 2017), arXiv:1211.1354 / 1302.0254 (Agullo, Ashtekar & Nelson), arXiv:1206.2382 (Cai, Easson & Brandenberger 2012)",
+    "brief: research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md"
+  ],
+  "open_items": [
+    "Delta f_NL^bounce: the intrinsic cubic (in-in) contribution of the NEC-violating phase is NOT computed here; two published determinations (1508.04141, 1712.08148) find it ENHANCES non-Gaussianity and it is not bounded by the linear term computed here.",
+    "AAN quantum-mass U(eta) for quasi-dust: no verifiable published closed form; not guessed.",
+    "Hybrid-LQC scheme: not implemented (effective mass for quasi-dust not verifiable)."
+  ]
+}
