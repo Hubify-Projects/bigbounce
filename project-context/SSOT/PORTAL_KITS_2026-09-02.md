@@ -190,8 +190,7 @@ printed.
   this is the correct concept ID for the P4/P5-merged record before running,
   since the existing Zenodo reference table in
   `ENDORSEMENT_REQUEST_DRAFTS_2026-07-24.md` lists P4's concept-adjacent DOI
-  as `10.5281/zenodo.21461899`, one digit off from `21461898` — **reconcile
-  this discrepancy before running any Zenodo command**):
+  as `10.5281/zenodo.21461899`, which is the *version* DOI of the same record; see the DOI note below):
   ```bash
   python3 tools/zenodo_deposit.py \
     --staging-dir <path-to-staged-P4-prime-files> \
@@ -208,8 +207,7 @@ printed.
   ```
 - **ECH Note new version** (concept DOI `21481837` per Houston's brief —
   cross-check against `ENDORSEMENT_REQUEST_DRAFTS_2026-07-24.md`'s P1A row,
-  `10.5281/zenodo.21481838`, same one-digit-off pattern — **reconcile before
-  running**):
+  `10.5281/zenodo.21481838`, its version DOI; see the DOI note below):
   ```bash
   python3 tools/zenodo_deposit.py \
     --staging-dir <path-to-staged-ECH-note-files> \
@@ -219,13 +217,15 @@ printed.
   # verify draft, then --publish --confirm PUBLISH only on explicit go-ahead
   ```
 
-**Discrepancy flagged, not resolved:** the concept IDs Houston supplied
-(`21461898`, `21481837`) each differ by 1 from the DOI numbers recorded in
-`ENDORSEMENT_REQUEST_DRAFTS_2026-07-24.md` (`21461899`, `21481838`). This may
-simply be "concept DOI" vs. "version DOI" (Zenodo mints a stable concept DOI
-one below/above the first version DOI, which is the normal pattern) rather
-than an error — but confirm which is the *concept* record in the Zenodo web
-UI before pointing `--deposition-id` at either number.
+**DOI note (resolved by the orchestrator, 2026-09-02):** there is no
+discrepancy. `21461898` (P4) and `21481837` (P1A) are the Zenodo *concept*
+DOIs; `21461899` and `21481838` are the *version* DOIs of the archived
+releases (both pairs recorded in `SSOT/index.md`, DOI-COMPLETE 2026-07-21).
+`tools/zenodo_deposit.py --deposition-id` takes a *draft deposition id*, not a
+concept id: the new-version flow is (1) Houston clicks **New version** on the
+published record (21461899 / 21481838) in the Zenodo UI, (2) copy the new
+draft's deposition id from the URL, (3) run the commands above with that id.
+Never pass the concept id.
 
 ### 5b. arXiv tarballs via bib-tarball-rebuild
 
