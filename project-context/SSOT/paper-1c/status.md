@@ -1495,3 +1495,21 @@ R8 4 → R9 16 (operator-basis adjudication) → R10 15 → R11 14 → R12 15 (o
 torsion correction; prior artifact erratum'd) → R13 partial. Math has been
 re-verified clean every round since R5; remaining findings are claim-scoping,
 consistency, and presentation. No readiness score is claimed.
+
+## Internal erratum note — 2026-09-02 (frozen manuscript, not re-issued)
+
+v1C.0.16 `main.tex:2118–2123` (Eq.~o4_onshell) carries an $8\pi$ substitution
+error inherited from an earlier draft: it prints $-3\kappa\gamma^3/(1+\gamma^2)^2$
+where the paper's own conventions ($\alpha=\kappa\gamma^2/[2(1+\gamma^2)]$,
+$\beta=\kappa\gamma/[4(1+\gamma^2)]$, $\kappa=8\pi G$) give
+$-24\pi\kappa\gamma^3/(1+\gamma^2)^2$; the same passage also prints the bare
+invariant as $-192\pi^2G^2\gamma^3/(1+\gamma^2)^2$ (dimensionally impossible —
+a mass-dim-6 $(J^5\!\cdot\!J^5)$ density needs exactly one power of $G$, not
+two). `main.tex:2096–2100` additionally misstates $\mathcal O_5$ as
+parity-odd off shell; it is parity-even off shell as well as on shell.
+Independently verified in `research/theory_audit/p1n_r2_checks_2026_09_02.py`
+(checks C1, C2, C6). Corrected in the ECH Note v1N.0.3
+(DP1N-21, DP1N-23; `project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2/P1N_v1N.0.2_R2_truth_audit.md`).
+**P1C v1C.0.16 remains FROZEN and is not re-issued** — this note is internal
+process record only; no P1C manuscript text is edited or narrates this
+correction (directive Q1).
