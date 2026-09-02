@@ -142,3 +142,83 @@ restatement — changes what the operator enumeration claims), and **DP1N-25** (
 Note engages Popławski's Λ or narrows its channel claim). Take those, close the ledger,
 then R3 is permitted. A board run before them would return the same findings: remaining
 verdict movement on P1N is gated by content additions, not by more referee passes.
+
+---
+
+## R3 board — `ROUND_2026-09-02-P1N-v1N.0.3-EXACTPDF-c758664b-R3VERIFY` (verification round)
+
+**Exact PDF sha256:** `c758664b4485a45752cd79e2ab695c6b09d9f82f2b283dd8db5a2af6721f7027` (re-verified, 11 pp).
+**Legs:** Claude INT `major-revisions` (5 MAJOR / 9 MINOR), Grok API `REJECT` (6 ESSENTIAL / 3 MAJOR / 2 MINOR),
+Gemini API `MAJOR REVISIONS` (3 ESSENTIAL / 2 MAJOR / 2 NIT), **Perplexity ABSENT** (401 insufficient_quota — recorded absent, not clean).
+**BLOCKERs: 0** across all legs. Round not degraded. Completeness table: 32/32 tagged items dispositioned, gap `no` on every leg.
+**Audit:** `INT_v3/ROUND_2026-09-02-P1N-v1N.0.3-EXACTPDF-c758664b-R3VERIFY/P1N_v1N.0.3_R3_truth_audit.md`
+**Round permitted under directive R2** by the three intervening science decisions taken at R2 closure (DP1N-21, DP1N-22, DP1N-25) — all three independently re-verified closed and correct this round.
+
+32 leg findings audited → **7 REGRESSION-FROM-CLOSURE, 11 GENUINELY-NEW-REAL, 5 RE-FLAG-OF-DISCLOSED,
+7 FALSIFIED, 2 OPINION/GENRE, 0 OUT-OF-SCOPE.** **15 canonical real items opened (DP1N-44 … DP1N-58)**
+— 6 MAJOR, 8 MINOR, 1 archival; **12 SUBSTANTIVE / 3 GENRE-LENGTH-VENUE**; **6 are regressions introduced by the R2 closure**.
+**No fabricated result found.** Clean-wave count for P1N: **0**.
+
+### R2 closure record — independent verification
+
+The four headline R2 science decisions are **genuinely and correctly closed**:
+**DP1N-21** (the 8π correction) re-derived from scratch from the paper's own α, β, κ → `−24πκγ³/(1+γ²)²` exactly as printed, with `O4/O5 = 8πγ/(1+γ²) = 5.65031` at γ=0.2375 and the ordering propagated completely;
+**DP1N-22** (five distinct densities, rank 4, O6 retained) restored in full and propagated to abstract + Conclusions;
+**DP1N-23** (O5 P-even off *and* on shell, ε-construction-rule-admitted) correct in the operative statement;
+**DP1N-25** (Popławski's Λ mapped to Route 1 and closed on amplitude + sign) closed at correct evidential strength.
+Also closed: DP1N-26, 31, 34, 36, 38, 39, 41, 43.
+**Recorded closed in SSOT but NOT closed: DP1N-29** (Table I caption still "the Barbero–Immirzi symbol κ") **and DP1N-37** (abstract 444 words, SSOT records "~380"). The SSOT closure record for this paper requires line-level re-verification rather than trust.
+
+### Open items (R3 board) — ★ = regression introduced by the R2 closure
+
+| ID | Issue | Verdict | Sev | Class | Closure instruction |
+|---|---|---|---|---|---|
+| **DP1N-44** ★ | ρ+3p repulsion chain (`main.tex:225–236`): paper prints `ρ+3p = −2L` (its own `ρ=−L`, `p=+L` give `+2L`) and concludes `L>0` (a negative coefficient × positive `(J⁵·J⁵)` gives `L<0`). Recomputed κ=1: `L=−0.010011`, `ρ+3p=−0.020023<0` — conclusion correct, **every displayed step wrong**. Added by the DP1N-35 closure | REGRESSION-FROM-CLOSURE | MAJOR | SUBSTANTIVE | Rewrite three lines: `ρ+3p=2L`, requirement `L<0`, Eq. (3) supplies it |
+| **DP1N-45** ★ | Eq. (11) (`729–733`) gives `1.4e−6 × 3.9e−69 = 5.46e−75` = **74.26 orders**, outside the retained `61–67` window (`743–754`, `1032–1034`) — which reproduces **exactly** from P1C's *different* relation `(Δγ/γ)(H₀/M_Pl)`, `H₀/M_Pl=1.18e−61` (`paper1c/main.tex:1563–1583`): `3.54e−62`→**61.45**, `1.652e−67`→**66.78**. `μ_UV→M_Pl` reaches only 68.41. Compounded by the DP1N-30 deletion of the chiral-count input that generates the 61 endpoint | REGRESSION-FROM-CLOSURE | MAJOR | SUBSTANTIVE — **scope decision** | **Decision:** restore P1C's `H₀/M_Pl` relation (keeps 61–67), or keep Eq. (11) and re-quote ≈68–74 everywhere. Not both |
+| **DP1N-46** ★ | Directive-Q1 leaks printed in the PDF: "(SSOT)" erratum notice (`948–950`), "~4.5×" reference to a superseded draft (`953–954`), "This manuscript is internally tracked as v1N.0.3" (`1104`, **created by the DP1N-40 closure**), "(P1A)" tag (`627`). Claude MAJOR 3 = Gemini E1 + E2 | GENUINELY-NEW-REAL | MAJOR | GENRE (Q1 hard gate) | State Eq. (15) as the result; delete the comparison, `(SSOT)`, the version sentence (delete the macro instead of using it), the P1A tag |
+| **DP1N-47** | B2 attaches `BlagojevicHehl2013`+`BoehmerBurnett2008` to a biconditional neither states; B5/B6/B10 each attach `Weinberg1989`, which contains nothing on the bounce density, the `N_tot≈92–94` transfer, or a UV→IR bridge — while the abstract (`92`) now asserts the barriers are "literature-sourced". B1/B3/B4/B11/B12/B13 *are* fairly supported. Residual of DP1N-24 | GENUINELY-NEW-REAL | MAJOR | SUBSTANTIVE — **scope decision** | **Decision:** supply the 2–4-line derivations for B2/B5/B6/B10, or downgrade the abstract wording and demote them out of the headline count |
+| **DP1N-48** ★ | `main.tex:720–722` calls `M_Pl=1.22×10¹⁹ GeV` the "reduced-Planck-mass convention"; reduced = `1.22e19/√(8π) = 2.4335e18 GeV`. Numerics correct, label wrong — in the one sentence the DP1N-42 closure added to prevent an 8π ambiguity | REGRESSION-FROM-CLOSURE | MAJOR | SUBSTANTIVE | Delete "reduced-" |
+| **DP1N-49** | Signature-independence (`225–236`) rests on an unjustified parenthetical "spacelike-normalized `J⁵`" premise that fixes the sign of `(J⁵·J⁵)`; a spin-aligned axial current is naturally timelike. Refines DP1N-04/DP1N-35 | GENUINELY-NEW-REAL | MAJOR | SUBSTANTIVE | Justify the premise for the configurations of interest, or drop the signature-independence claim |
+| **DP1N-50** | Table I caption (`486`) still calls κ "the Barbero–Immirzi symbol" — **DP1N-29 not closed** | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | "…the gravitational coupling κ" |
+| **DP1N-51** | Residual "parity-odd" language at `850`, `852`, `909`, and the section's own summary at `978–979`, contradicting the mixed-parity statement established at `936`. Residual of DP1N-23 | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | Use "ε-contracted"/"construction-rule-admitted" uniformly |
+| **DP1N-52** ★ | Discussion `1032–1033` restates "≥58 orders of margin against the observed birefringence amplitude" — the exact misdescription DP1N-33 removed at `692–695`. Incomplete propagation | REGRESSION-FROM-CLOSURE | MINOR | SUBSTANTIVE | Fix the Discussion sentence to match `692–695` |
+| **DP1N-53** ★ | Table II R3 row (`798–800`) credits a "mass-dimension lock" occurring exactly once in the manuscript; the argument is P1C's `H₀/M_Pl` dimension count (`paper1c/main.tex:1555–1560`), absent from the Note. Same defect class as the "chiral-count bound" removed under DP1N-30, recurring in the same table | REGRESSION-FROM-CLOSURE | MINOR | SUBSTANTIVE | Import the argument or rename the row's basis; resolves with DP1N-45 |
+| **DP1N-54** | Gap-equation loop-integral prefactor `N_cN_f/(4π²)` (`313–317`) printed without derivation or citation; only `I>0` is load-bearing and the three-line argument is verified sound. Residual of DP1N-28 | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | Derive/cite, or write `I ∝ ∫₀^Λ p²dp/√(p²+M²) > 0` and use positivity only |
+| **DP1N-55** | `954–956`: "vanishes only in the γ→∞ limit" — `O4 ∝ γ³/(1+γ²)²` vanishes as γ→0 as well | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | "…(and, degenerately, as γ→0)" |
+| **DP1N-56** | `938–941`: "supported only by the **non-axial** torsion irreps … carried entirely by the **axial×trace-vector** cross term" — the cross term requires the axial irrep. Intended statement (needs both, vanishes on either alone) is correct | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | Repair the "non-axial" clause |
+| **DP1N-57** | Abstract measured at **444 words** (Claude leg: 433) vs CQG ≈300; SSOT records "435 → ~380". **DP1N-37 not closed** | GENUINELY-NEW-REAL | MINOR | **GENRE/LENGTH** | Cut to ~250–300; lead with the structural dichotomy |
+| **DP1N-58** | Archival residual of DP1N-06/DP1N-31: P1C v1C.0.16 and the three theory-audit `.md` artifacts are commit-SHA-pinned only, no DOI (`Golden2026P1a` already carries Zenodo `10.5281/zenodo.21481838`). Gemini E3+M1+M2, Grok E1 | RE-FLAG-OF-DISCLOSED with real archival residual | MINOR | **VENUE/ARCHIVAL** | Mint Zenodo version DOIs for P1C + the three artifacts; cite the DOIs |
+
+### R3 additions to "Falsified — do not re-litigate"
+
+| Finding | Leg | Settled evidence |
+|---|---|---|
+| "Typo: 'brauch' for 'branch' (Sec. VI, p. 8)" (N1) | Gemini | `grep -n "brauch" main.tex` → **0 hits**; `main.tex:906` reads "ECH branch". PDF text-extraction mangling (skill **Rule 7**). |
+| "Abstract quotes β/α = 2.11 with no finite-γ caveat — abstract–body drift" (E2) | Grok | `main.tex:108–109` reads "…evaluates to **2.11 at the programme's benchmark γ=0.2375** (Ref. [Ashtekar2011])". The benchmark and its citation are in the abstract itself. Premise false. |
+| "The two operator relations are on-shell statements sold as an off-shell basis result" (E5) | Grok | `main.tex:~884`: "both relations hold identically **off shell and on shell**"; the first follows from the metric-compatible tetrad conversion (off-shell). Section is titled "Rank, **Not** Basis" and states the list is "*not* a linearly independent basis". |
+| "Abstract's 'no ECH dark-energy or birefringence prediction is made' overstates the body, since R2/R3 are nonzero" (E6) | Grok | A claim-policy statement (the paper declines to *predict*), not an assertion that the contributions vanish; the body quantifies them as suppressed and says so. Consistent. |
+| "`κn_ψ²/ρ_Λ ≃ 3.884e−69` is taken from the companion; neither `n_ψ=100 cm⁻³` nor the conversion is in-paper" (M2) | Grok | `main.tex:267` prints `M_Pl=1.22089e28 eV` **and** `n_ψ=100 cm⁻³`; `273` prints the result with its explicit `(n_ψ/100 cm⁻³)²` scaling; `737`, `828` repeat it. Independently recomputed → `3.884e−69`. Chain fully in-paper. |
+| "'(Dated: September 2, 2026)' is an internal bookkeeping tag; remove" (N1) | Grok | `date` = 2026-09-02 — current, not future. Standard revtex front matter; the `\paperVersion`-in-`\date` defect closed at DP1N-08. **Third consecutive round**; auto-FALSIFY **Rule 3**. |
+| "Self-citations carry future DOIs / non-peer-reviewed disclaimers" (N2) | Grok | Zenodo `10.5281/zenodo.21481838` deposited 2026-07-22 — past. Grok's own text concedes the entries are acceptable given the disclaimers. Self-withdrawn. |
+
+### R3 additions to "Re-flag of disclosed" / "Opinion–genre"
+
+- Grok E1 (all steps producing `−3κ/16` must be in main text) and Grok E4 (13 of 14 barriers are naturalness/single-branch) — both conceded in-paper (Sec. IV head; abstract tiering); real remainders are **DP1N-58** and **DP1N-47** respectively.
+- Grok E3 (Theorem 1 conditional on H1–H5 ⇒ circular) — the claim policy is channel-level closure of **minimal-coupling** ECH routes; H1–H5 and the excluded-cases list (`351–367`, added under DP1N-38) state the scope openly. A theorem scoped to minimal ECH is not circular for not covering non-minimal ECH.
+- Grok M1 (11 pp too long; 4–5 pp Letter) — directly opposes the R2 Claude leg's 13.5–14.5 pp Paper recommendation on unchanged content: pattern-066 referee variance on form, already settled by DP1N-20's adopted CQG-Paper decision.
+- Grok M3 (no γ scan behind "trace-vector is larger") — the claim is analytic (`β/α = 1/(2γ)`, monotone); a scan would be presentational. Optional one clause noting `β/α>1` for all `γ<0.5`.
+- Grok's **REJECT** dispatch word against a body whose surviving items are two sourcing/scope objections — skill **Rule 6**; four of its six ESSENTIALs FALSIFIED.
+
+### R3 process finding (the one that most wants recording)
+
+The R2 closure converted six "assert it" items into "display the derivation" items. **Three of the newly displayed derivations are wrong** (the sign chain DP1N-44, the substituted scaling relation DP1N-45, the convention label DP1N-48), two closures propagated incompletely (DP1N-52, DP1N-53), one closure *created* a directive-Q1 violation (DP1N-46 via DP1N-40), and two items were recorded closed in SSOT without being closed (DP1N-50, DP1N-57). **The remedy is arithmetic and grep verification of every newly displayed step and every SSOT closure claim before the next bump — not another review board.** Extend `research/theory_audit/p1n_r2_checks_2026_09_02.py` with assertions for the sign chain, the Eq. (11) order count, and the 61.45/66.78 endpoints so this class cannot recur silently.
+
+### R3 convergence statement (directive R2)
+
+**This round did not bottom out in genre/length/venue** — 12 of 15 canonical items are substantive and 6 are regressions the R2 closure introduced, so the round was productive rather than variance-driven and the convergence budget was correctly spent.
+
+**After v1N.0.4 closes DP1N-44 … DP1N-58 — including taking both PART 4 decisions in that same version rather than deferring them — rounds stop.** What would remain is only: abstract length and the 11 pp-vs-Letter disagreement (opposing recommendations on unchanged content — pattern-066, settled by DP1N-20); Zenodo DOIs (packaging, closed by minting); and the standalone-reader objection, disclosed openly every round and structurally bounded by the companion architecture — a venue judgment, not a defect.
+
+**No science decision would be outstanding after v1N.0.4.** The physics — Cartan elimination, the contact term, the transparency theorem, the operator rank/count, the Popławski mapping — is verified sound and correctly scoped at v1N.0.3; every remaining defect is in a displayed step, a label, or a cross-reference.
+
+**Condition on stopping:** v1N.0.4 must ship machine-checkable assertions for the three regressed derivations and a line-level re-verification of every SSOT-recorded closure. Absent that, the closure record is not trustworthy enough to declare convergence on — and this round is the demonstration.

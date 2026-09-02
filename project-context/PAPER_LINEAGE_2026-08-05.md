@@ -448,3 +448,26 @@ ledger #8's known-object recovery benchmark is earned.
 (`PORTFOLIO_DECISION_2026-09-02.md` §3 Track C2; Addendum "The anomaly line is
 redirected.")
    per directive Q2.
+
+## Decision record — 2026-09-02 (evening): P2′ Letter → theory section of the A3 multi-channel paper
+
+The R1 board and truth-audit establish that −35/16 is already printed by Li et al. 2016
+(Eq. 4.19) and quoted by Quintin et al. 2015, and that the μ² orientation dependence is
+contained in Li's polynomial. The Letter's genuine contribution — an independent
+from-scratch in-in confirmation with a per-vertex table, the location of the uniform
+factor 2 in Cai et al. 2009, and the δN/comoving reconciliation — is a confirmation, not
+a discovery, and does not carry a standalone PRD Letter. Decision: close the Letter's real
+defects to an honest v2L.0.2 as the archived theory record, and fold that content into the
+A3 multi-channel paper (`research/track_a3_multichannel/paper/`) as its theory section,
+where the positive near-term test lives. A standalone Comment on Cai et al. 2009 stays as
+an option if a referee or the authors request it.
+
+**ORIGINAL CLAIM:** "exact matter-contraction f_NL = −35/16 correcting Cai et al.'s
+−35/8, with a new orientation-dependent squeezed limit."
+
+**NEW CLAIM:** "independent confirmation of −35/16 with the ×2 in Cai et al. 2009
+located, δN reconciliation, consistent with Li et al. 2016."
+
+**Convergence budget:** one round run (`ROUND_2026-09-02-P2L-v2L.0.1-EXACTPDF-e1501145-R1`);
+rounds stop here for the Letter (directive R2). Closure detail:
+`project-context/SSOT/paper-2l/status.md` §"R1 closure — 2026-09-02 (evening)".

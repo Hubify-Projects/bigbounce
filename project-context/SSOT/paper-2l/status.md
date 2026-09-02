@@ -84,3 +84,56 @@ plus three self-cite `@misc` entries pointing at the committed theory-audit/A2/A
 **Open (not done this session, directive-scoped out):** no INT/EXT review board has been
 run on P2L yet (out of scope for this drafting task); no site/Convex wiring (explicitly
 excluded from this task); Houston sign-off pending.
+
+---
+
+## R1 closure — 2026-09-02 (evening)
+
+**Round:** `ROUND_2026-09-02-P2L-v2L.0.1-EXACTPDF-e1501145-R1` (Fable INT MAJOR REVISIONS
+5 MAJOR/13 MINOR; Grok API REJECT 4E/4M/2N/1NIT/1STALE/1ARITH; Gemini API MAJOR REVISIONS
+4E/4M/3N; Perplexity ABSENT). Truth-audit: 18 canonical items dispositioned
+GENUINELY-NEW-REAL (5 MAJOR, 12 MINOR, 1 NIT), plus 5 leg claims FALSIFIED and 1
+OUT-OF-SCOPE, all source-cited. Full audit:
+`project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P2L-v2L.0.1-EXACTPDF-e1501145-R1/P2L_v2L.0.1_R1_truth_audit.md`.
+
+**Scope decision (Houston-orchestrator, recorded verbatim in
+`project-context/PAPER_LINEAGE_2026-08-05.md`):** the Letter's genuine contribution is a
+confirmation (independent in-in reproduction of −35/16, already printed by Li et al. 2016
+Eq. 4.19 and quoted by Quintin et al. 2015), not a discovery, and does not carry a
+standalone PRD Letter. Closed to an honest v2L.0.2 as the archived theory record; content
+folds into the theory section of `research/track_a3_multichannel/paper/` (the A3
+multi-channel paper). A standalone Comment on Cai et al. 2009 remains an option if a
+referee/authors request it. Convergence budget: **one round run; rounds stop here for the
+Letter** (directive R2).
+
+**Item → edit table (all 18 GNR items closed in `main.tex`):**
+
+| id | sev | edit |
+|---|---|---|
+| DP2L-01 | MAJOR | `f_{\rm NL}^\rho` corrected to `5(\epsilon-7)/8=-55/16` (boxed eq. in §III cross-check) |
+| DP2L-02 | MAJOR | Title/abstract/§III/Summary reframed as independent *confirmation* consistent with Li+2016 Eq. 4.19; "new result" language removed |
+| DP2L-03 | MAJOR | Table II rewritten: bare vs. `r=0.84`-projected columns, `r` defined+sourced+caveated (A3-4 not-yet-re-derived note), DESI DR1 σ≈9.0 row added |
+| DP2L-04 | MAJOR | references.bib: Li:2016 → correct authors/title/JCAP 1703 031; Chen:2013aj → correct EPL 102 59001 paper; Choudhury:2025 given names fixed; unused `CaiEassonBrandenberger:2012` removed |
+| DP2L-05 | MAJOR | `\zeta_\rho=2\zeta_c` and `T_{f_{\rm NL}}=(1-\rho)/2` derived in-text (§IV, §III cross-check); artifact links pinned to commit `68309c8` |
+| DP2L-06/07 | MINOR | Abstract states 2.6–4.4σ by channel; DESI row filled σ≈9.0, cited Chaussidon+2024 (arXiv:2411.17623), 0.24 discriminating power printed |
+| DP2L-08 | MINOR | isoceles → isosceles (all instances) |
+| DP2L-09 | MINOR | `(§ 2311.13082)` → `arXiv:2311.13082` |
+| DP2L-10 | MINOR | "This supersedes an earlier, narrower statement…" deleted |
+| DP2L-11 | MINOR | μ²-vertex attribution named explicitly (field-redefinition −15/16μ², ζ′∂ζ·∂χ̃ +15/8μ²) |
+| DP2L-12 | MINOR | "amplitude-normalization step" reworded to not over-localize the factor 2 |
+| DP2L-13 | MINOR | δK sign convention stated (Maldacena ADM, used throughout) |
+| DP2L-14 | MINOR | "not an independent check" reworded; states Li+2016 print −35/16 directly |
+| DP2L-15 | MINOR | Table I caption defines `f^{\rm sq}(\mu)` |
+| DP2L-16 | MINOR | Title/abstract "exact local" → "independent...confirmation"; μ-dependence disclosed |
+| DP2L-17 | MINOR | Both 1.64× (same-background) and 2.48× (full-range) now stated |
+| DP2L-18 | NIT | Retained (house-style preprint stamp is required for the repo/arXiv build per directive G) |
+
+DP2L-F1…F5 (FALSIFIED leg claims) and DP2L-O1 (OUT-OF-SCOPE) recorded, no edit required.
+
+**Hygiene:** `\paperVersion` v2L.0.2, `\date` September 2, 2026; 4-pass pdflatex, bibtex,
+0 undefined refs/citations, 0 overfull hbox after `table*` fix for Table II; `pdftoppm -r
+60` all 4 pages visually verified. md5 `718521c10032511339b334ff6f277629`, 4 pp, byte-identical
+across `arxiv/paper2prime_fnl_letter/main.pdf`, `site/public/papers/paper2prime_fnl_letter_v2L.0.2.pdf`,
+`public/papers/paper2prime_fnl_letter_v2L.0.2.pdf`.
+
+**Readiness:** unchanged pending Convex/site sync + Houston review; content gate (R1) closed.

@@ -11,40 +11,40 @@ Class counts: **18 GENUINELY-NEW-REAL** (5 MAJOR / 12 MINOR / 1 NIT), 5 FALSIFIE
 2 OPINION/GENRE, 1 OUT-OF-SCOPE, 0 RE-FLAG-OF-DISCLOSED. Clean-wave count: **0** (not converged).
 No P2 (parent) fingerprint matched any R1 item.
 
-## Open — genuinely-new-real
+## Closed 2026-09-02 (v2L.0.2, this round) — formerly genuinely-new-real
 
 ### DP2L-01: δN uniform-density formula misprinted
-- **class:** OPEN (MAJOR). `main.tex` L170 prints `f_{\rm NL}^\rho=(5\epsilon-7)\cdot 5/8`, which at
+- **class:** CLOSED (MAJOR) — v2L.0.2. `main.tex` L170 prints `f_{\rm NL}^\rho=(5\epsilon-7)\cdot 5/8`, which at
   ε=3/2 gives +5/16, not −55/16. Committed value (`fnl_matter_contraction_adjudication_2026_09_02.py`
   L537, JSON `uniform_density_slicing_fNL_general_eps`, brief L33) is `5(ε−7)/8 = (5ε−35)/8`.
 - **fingerprint:** 5 epsilon 7, delta N, uniform density, −55/16, general epsilon formula
 
 ### DP2L-02: μ² orientation dependence is contained in the published shape function
-- **class:** OPEN (MAJOR). `A_total − A_Li(Eq. 4.19, c_s=1) = 0`; the auditor's own fixed-angle
+- **class:** CLOSED (MAJOR) — v2L.0.2. `A_total − A_Li(Eq. 4.19, c_s=1) = 0`; the auditor's own fixed-angle
   expansion of the committed total polynomial returns `−35/16 + (15/16)μ²`. The abstract's
   "We report a new result" overstates. New content = the observation, per-vertex attribution, shear
   interpretation.
 - **fingerprint:** orientation dependence, mu squared, 15/16, new result, Li 4.19, Cai Eq 37, novelty
 
 ### DP2L-03: forecast never states which amplitude each survey row tests; r=0.84 undefined
-- **class:** OPEN (MAJOR). Table II's 2.6/3.7 are r-projected (r=0.84), 3.1/4.4 bare
+- **class:** CLOSED (MAJOR) — v2L.0.2. Table II's 2.6/3.7 are r-projected (r=0.84), 3.1/4.4 bare
   (`track_a3_multichannel/outputs/survey_reach_fnl.json`); r is defined only in the A3 brief and
   A3-4 flags it not yet re-derived at the −35/16 fiducial. DESI σ≈9.0 absent and uncited.
 - **fingerprint:** r=0.84, shape overlap, SPHEREx separation, which amplitude, Table II, DESI sigma
 
 ### DP2L-04: reference metadata defects
-- **class:** OPEN (MAJOR). [2] Li+2016 wrong authors/title/journal (real: Y.-B. Li, J. Quintin,
+- **class:** CLOSED (MAJOR) — v2L.0.2. [2] Li+2016 wrong authors/title/journal (real: Y.-B. Li, J. Quintin,
   D.-G. Wang, Y.-F. Cai, JCAP 03 (2017) 031, arXiv:1612.02036). [6] 1301.5699 is Chen, Firouzjahi,
   Namjoo, Sasaki, EPL 102 59001 — *Quantum Primordial Standard Clocks* is 1411.2349, JCAP 02 (2015) 006.
   [12] Choudhury given names wrong. [8] CaiEassonBrandenberger:2012 uncited. All verified live on arXiv.
 - **fingerprint:** references, 1612.02036, 1301.5699, 1411.2349, bibliography metadata, uncited entry
 
 ### DP2L-05: load-bearing claims on mutable blob/main links, underived
-- **class:** OPEN (MAJOR). `ζ_ρ=2ζ_c`, `T=[1−ρ]/2`, `0<T≤1/2`, 0.165–0.409 carry no derivation and no
+- **class:** CLOSED (MAJOR) — v2L.0.2. `ζ_ρ=2ζ_c`, `T=[1−ρ]/2`, `0<T≤1/2`, 0.165–0.409 carry no derivation and no
   frozen artifact. Refs [13]–[15] are `blob/main` URLs.
 - **fingerprint:** blob/main, mutable link, zeta_rho = 2 zeta_c, transmission bound, DOI pin, self-contained
 
-### DP2L-06…DP2L-18 (MINOR/NIT, all open)
+### DP2L-06…DP2L-18 (MINOR/NIT) — CLOSED v2L.0.2, DP2L-18 retained as intentional house style
 abstract 2.6–3.7 composite (06) · DESI row σ/citation/0.24σ (07) · "isoceles" (08) ·
 "§ 2311.13082" (09) · version-history prose (10) · μ²-source sentence vs Table I (11) ·
 "amplitude-normalization step" over-localised (12) · δK sign convention (13) ·
@@ -76,3 +76,8 @@ correction/confirmation once DP2L-02 is stated honestly; Li+2016 already prints 
 Quintin+2015 §III.3 already quotes −35/16 (verified live, ar5iv 1508.04141); the most interesting
 physics (§IV bounce transmission) is explicitly uncomputed; and closing DP2L-02/03/05 needs 2–4 pages
 a Letter does not have. Full reasoning in the R1 audit §4.
+
+
+## Closure note — 2026-09-02
+
+All 18 GENUINELY-NEW-REAL items (DP2L-01…18) closed in `main.tex`/`references.bib` for v2L.0.2. See `project-context/SSOT/paper-2l/status.md` ("R1 closure — 2026-09-02 (evening)") for the item-by-item edit table, and `project-context/PAPER_LINEAGE_2026-08-05.md` ("Decision record — 2026-09-02 (evening)") for the scope decision folding this Letter's content into the A3 multi-channel paper's theory section. Convergence budget spent: one round run (directive R2) — no further review rounds planned for this Letter.
