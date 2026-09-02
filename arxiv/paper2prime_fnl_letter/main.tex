@@ -1,0 +1,269 @@
+\documentclass[aps,prd,reprint,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{url}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\/\do\_\do\-\do\.}
+\makeatother
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\Pzeta}{\mathcal{P}_\zeta}
+\newcommand{\eg}{e.g.}
+\newcommand{\ie}{i.e.}
+\newcommand{\etal}{\textit{et~al.}}
+
+\newcommand{\paperVersion}{v2L.0.1}
+\newcommand{\paperTimestamp}{September 2, 2026}
+
+\begin{document}
+
+\preprint{\paperVersion}
+
+\title{The exact local non-Gaussianity of a matter-dominated contraction: \\
+$f_{\rm NL}=-35/16$ and its orientation dependence}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\altaffiliation[ORCID: ]{\href{https://orcid.org/0009-0008-5616-5994}{0009-0008-5616-5994}}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{\paperTimestamp}
+
+\begin{abstract}
+A matter-dominated cosmological contraction ($w=0$, $\epsilon=3/2$) generates local
+primordial non-Gaussianity through the cubic self-interaction of the comoving-gauge
+curvature perturbation $\zeta$. We report a from-scratch in-in computation of every
+cubic vertex in Maldacena's action for this background, validated against the de~Sitter
+and ultra-slow-roll limits before use. The isoceles squeezed-limit amplitude is
+$f_{\rm NL}^{\rm local}=-35/16$, confirming the value obtained by Li, Quintin, Wang and
+Cai (2016) at unit sound speed. We trace the long-standing discrepancy with $-35/8$,
+originally reported by Cai, Xue, Brandenberger and Zhang (2009), to a uniform factor of
+two in that work's amplitude-normalization step; the underlying shape function is
+correct term by term. We report a new result: the squeezed limit is orientation
+dependent, $f_{\rm NL}(\mu)=-35/16+(15/16)\mu^2$ with $\mu$ the cosine between the long
+and short wavevectors (monopole $-15/8$, quadrupole $15/16$), sourced by the shear of
+the non-attractor growing mode and analogous to the consistency-relation violation
+identified by Namjoo, Firouzjahi and Sasaki in ultra-slow-roll inflation. A separate
+$\delta N$ calculation on uniform-density slices returns $(5\epsilon-35)/8=-55/16$; this
+is a different physical quantity, not a discrepancy, reconciled by $\zeta_\rho=2\zeta_c$
+at linear order in a non-attractor phase. Survival of this amplitude through an explicit
+nonsingular bounce is bounded, not resolved: linear transfer across three bounce
+backgrounds obeys a universal suppression $0<T_{\fnl}\le1/2$, scheme-dependent at the
+$1.6\times$ level, while the bounce's own cubic term -- found in the loop-quantum-cosmology
+literature to enhance non-Gaussianity by orders of magnitude -- is not computed here. Only
+a survey-scale bispectrum measurement can currently distinguish $-35/16$ from $-35/8$:
+both fit DESI DR1 ($0.16\sigma$), while SPHEREx reaches $2.6$--$3.7\sigma$ between them.
+\end{abstract}
+
+\maketitle
+
+\section{Setup}
+
+We work in conformal time $\eta<0$ with $M_{\rm Pl}=1$, unit sound speed, and a matter
+contraction $a(\eta)=c\,\eta^2$, for which the Hubble slow-roll parameter is fixed,
+$\epsilon\equiv1-\mathcal H'/\mathcal H^2=3/2$, with $\mathcal H\equiv a'/a<0$. The
+quadratic action for the comoving-gauge curvature perturbation $\zeta$
+($h_{ij}=a^2e^{2\zeta}\delta_{ij}$, uniform-field gauge $\delta\phi=0$) is
+$S_2=\int d\eta\,d^3x\,a^2\epsilon\,[\zeta'^2-(\partial\zeta)^2]$, with Bunch--Davies mode
+functions fixed by the Wronskian normalization (not assumed). On super-Hubble scales the
+physical mode is the growing, non-attractor solution $\zeta'=-3\zeta/\eta$
+(equivalently $\dot\zeta=-\tfrac32H\zeta$), the analogue of the growing mode used by
+Cai \etal~\cite{Cai:2009fn}.
+
+We define the local bispectrum amplitude in the isoceles squeezed configuration
+$k_1\ll k_2=k_3\equiv k$ exactly as in Refs.~\cite{Cai:2009fn,Li:2016}:
+\begin{equation}
+f_{\rm NL}^{\rm local}\equiv\lim_{k_1\to0}\frac{10}{3}\,\frac{\mathcal A(k_1,k,k)}{2k^3},
+\end{equation}
+where $\langle\zeta_{\mathbf k_1}\zeta_{\mathbf k_2}\zeta_{\mathbf k_3}\rangle
+=(2\pi)^7\delta^3(\textstyle\sum\mathbf k_i)\,\Pzeta^2\,\mathcal A/\prod k_i^3$, equivalent
+to the local template $\zeta=\zeta_g+\tfrac35\fnl\zeta_g^2$. This limit is independent of
+the end-of-contraction time $\eta_B$ at leading order ($\mathcal O(k^2\eta_B^2)$
+corrections) but, as we show below, is not independent of the orientation of the short
+pair relative to the long mode.
+
+We use the cubic action derived by Maldacena~\cite{Maldacena:2002vr} in comoving gauge
+for a canonical field, retaining every term at $\eta_{\rm sr}=0$: two bulk pieces
+proportional to $\epsilon^2$, one boundary/field-redefinition term, and the two
+$\epsilon^3$ pieces that involve $\tilde\chi\equiv\partial^{-2}\zeta'$. All four bulk
+vertices and the field redefinition are evaluated by first-order in-in perturbation
+theory, $\langle\zeta^3(\eta_*)\rangle=-2\,{\rm Im}\int^{\eta_*}\!d\eta\,\langle
+\zeta^3(\eta_*)L_{\rm int}(\eta)\rangle$, with every Wick contraction summed explicitly
+(no symmetry factor inserted by hand) and every time integral performed exactly before
+taking $|k\eta_B|\to0$.
+
+\section{Validation}
+
+Before applying this pipeline to the matter contraction we reproduce two independent
+literature results with the same code: (i) the de~Sitter, constant-$\epsilon$ bispectrum
+of Ref.~\cite{Maldacena:2002vr}, matched term by term; and (ii) the ultra-slow-roll
+result of Namjoo, Firouzjahi and Sasaki~\cite{Namjoo:2012}, $f_{\rm NL}=5/2$, which
+depends on the same field-redefinition structure that we use below. Both match exactly.
+
+\section{Result}
+
+Table~\ref{tab:vertices} gives the squeezed-limit contribution of each vertex, from
+scratch, at $\epsilon=3/2$. The total reproduces the isoceles squeezed value
+\begin{equation}
+\boxed{\,f_{\rm NL}^{\rm local}\big|_{k_1\ll k_2=k_3}=-\frac{35}{16}\,}
+\end{equation}
+and, at general orientation $\mu\equiv\hat{\mathbf k}_1\!\cdot\!\hat{\mathbf k}$,
+\begin{equation}
+f_{\rm NL}^{\rm sq}(\mu)=-\frac{35}{16}+\frac{15}{16}\mu^2,
+\label{eq:orientation}
+\end{equation}
+i.e.\ a monopole $-15/8$ and a quadrupole $15/16$ under angular averaging. The
+equilateral and folded values are $-255/128$ and $-9/8$, matching
+Ref.~\cite{Li:2016}'s $c_s=1$ limit exactly.
+
+\begin{table}[t]
+\caption{Squeezed-limit contribution of each cubic vertex at $\epsilon=3/2$, from a
+from-scratch in-in computation. $\mu$-dependence is shown where nonzero.}
+\label{tab:vertices}
+\begin{ruledtabular}
+\begin{tabular}{lc}
+vertex & $f^{\rm sq}(\mu)$ \\
+\hline
+field redefinition (local + non-local part) & $-\dfrac{25}{16}-\dfrac{15}{16}\mu^2$ \\
+$\zeta\zeta'^2\ (\epsilon^2-\epsilon^3/2)$ & $-\dfrac{5}{32}$ \\
+$\zeta(\partial\zeta)^2$ & $0$ \\
+$\zeta'\partial\zeta\!\cdot\!\partial\tilde\chi$ & $\dfrac{15}{8}\mu^2$ \\
+$\zeta(\partial_i\partial_j\tilde\chi)^2$ & $-\dfrac{15}{32}$ \\
+\hline
+\textbf{total} & $-\dfrac{35}{16}+\dfrac{15}{16}\mu^2$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\textit{Origin of the discrepancy with Cai \etal~\cite{Cai:2009fn}.} Reading their
+printed shape function (their Eq.~37) as the sum of three distinct $(5,2,2)$-type
+monomials, it is identical to our vertex sum, and to Li \etal's Eq.~4.19 at $c_s=1$
+(difference zero, checked symbolically). Cai \etal's three quoted amplitudes -- local
+$-35/8$, equilateral $-255/64$, folded $-9/4$ -- are each exactly twice the values in
+this Letter, in all three configurations. The origin is a uniform factor of two carried
+into their amplitude-normalization step, not an error in any vertex, commutator, or Wick
+contraction. Li \etal~\cite{Li:2016} inherit Cai \etal's correct polynomial and are
+therefore not an independent check; Quintin \etal~\cite{Quintin:2015} cite $-35/16$
+without an independent computation. The present result is, to our knowledge, the first
+computation of this amplitude that does not transcribe a per-vertex expression from
+either.
+
+\textit{Orientation dependence and its origin.} Equation~(\ref{eq:orientation}) arises
+because the growing, non-attractor mode is not locally an FRW patch as $k_1\to0$: its
+extrinsic-curvature perturbation carries both a trace, $\delta K\to\epsilon\dot\zeta$,
+and a shear of the same order, $\sigma^i{}_j=(\hat k_i\hat k_j-\tfrac13\delta_{ij})\,
+\epsilon\dot\zeta$, sourced by the comoving-gauge shift $\partial\tilde\chi_L\propto
+\hat{\mathbf k}_1\zeta_L'/k_1$. The $\mu^2$ term comes entirely from the two vertices in
+which the long mode enters through $\partial\tilde\chi$. This is the matter-contraction
+analogue of the consistency-relation violation Namjoo, Firouzjahi and
+Sasaki~\cite{Namjoo:2012} found in ultra-slow-roll inflation, and is consistent with the
+general non-attractor clock argument of Chen, Namjoo and Wang~\cite{Chen:2013aj}: a
+squeezed-limit amplitude that survives the $k_1\to0$ limit is the generic signature of a
+non-attractor background, not an artifact of this one.
+
+\textit{Cross-check by a different route.} A separate-universe ($\delta N$) calculation
+on the same background but evaluated on \emph{uniform-density} slices gives, for general
+$\epsilon$, $f_{\rm NL}^\rho=(5\epsilon-7)\cdot 5/8$ reduced at $\epsilon=3/2$ to
+$(5\epsilon-35)/8=-55/16$, while the comoving-slice $\delta N$ (an isotropic, shear-free
+approximation) gives $f_{\rm NL}^c=-5$ for all $\epsilon$. Neither equals the in-in
+result above, and this is expected rather than alarming: at linear order
+$\zeta_\rho=2\zeta_c$ in a non-attractor phase, so uniform-density and comoving slices
+differ already at $\mathcal O(1)$; and the isotropic separate-universe approximation
+discards the shear that produces Eq.~(\ref{eq:orientation}) by construction, keeping
+only the trace. The $\delta N$ values are correct for their own variables and are not
+forced to agree with the in-in result; they instead confirm that the gap between $-35/16$
+and Cai \etal's $-35/8$ is a clean factor of two rather than a definitional mismatch, and
+they leave a single well-posed open calculation -- an anisotropic (Bianchi-I)
+separate-universe treatment of the long mode's shear response -- as the remaining
+independent check of the monopole and quadrupole in Eq.~(\ref{eq:orientation}).
+
+\section{Transmission through the bounce: stated honestly}
+
+Equation~(\ref{eq:orientation}) is a statement about the contraction phase alone. Whether
+it survives into an observable post-bounce spectrum depends on physics this Letter does
+not compute in full, and we state the current evidence precisely. Linear mode-mixing
+across three explicit nonsingular bounce backgrounds -- an LQC effective quasi-dust
+bounce, an analytic non-LQC bounce, and the Quintin \etal~\cite{Quintin:2015}-type
+parametrization -- gives a transmission coefficient
+$T_{\fnl}=[1-\rho(\eta_h)]/2$ for the growing-mode-dominated adiabatic vacuum, obeying a
+universal bound $0<T_{\fnl}\le1/2$: linear transfer can only suppress the amplitude, by
+scheme- and background-dependent factors in the range $0.165$--$0.409$ (a $1.64\times$
+spread between two mode-function conventions on the same background). This supersedes an
+earlier, narrower statement about the transfer of the sub-dominant constant branch alone.
+What this Letter does not compute is the bounce's own cubic self-interaction term, which
+the loop-quantum-cosmology literature finds can \emph{enhance} non-Gaussianity by orders
+of magnitude through gravitational self-interactions in the third-order Hamiltonian, even
+in the absence of a potential~\cite{AgulloBollietSreenath:2017}. Any assumption that the
+bounce transmits $\fnl$ with a coefficient near unity is therefore not supported by
+either calculation reported here.
+
+\section{Observational reach}
+
+Table~\ref{tab:reach} compares the two candidate amplitudes against current and
+near-future large-scale-structure constraints, using the scale-dependent-bias signature
+of local non-Gaussianity~\cite{Dalal:2007cu}. DESI DR1 cannot currently distinguish
+$-35/16$ from $-35/8$; SPHEREx is the first instrument projected to.
+
+\begin{table}[t]
+\caption{Discriminating power of current and near-future bispectrum/scale-dependent-bias
+constraints on $f_{\rm NL}^{\rm local}=-35/16$ vs.\ $-35/8$.}
+\label{tab:reach}
+\begin{ruledtabular}
+\small
+\begin{tabular}{lccc}
+survey & $\sigma_{f_{\rm NL}}$ & tension, $-35/16$ & separation \\
+\hline
+DESI DR1 & -- & $0.16\sigma$ & $\lesssim0.2\sigma$ \\
+SPHEREx, bispectrum & $0.7$ & -- & $2.6$--$3.1\sigma$ \\
+SPHEREx, target ($P{+}B$) & $0.5$ & -- & $3.7$--$4.4\sigma$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+SPHEREx sensitivities are quoted from Ref.~\cite{Heinrich:2023}
+(\S~2311.13082, abstract) and Ref.~\cite{Dore:2014}; DESI DR1 comparison uses the
+public headline scale-dependent-bias constraint. Full construction of both channels,
+plus a Press--Schechter-level primordial-black-hole comparison against
+Ref.~\cite{Choudhury:2025} and a PTA free-spectrum consistency check against the
+induced-gravitational-wave slope of Ref.~\cite{Papanikolaou:2025}, are given in
+Ref.~\cite{Golden2026Multichannel}.
+
+\section{Summary}
+
+A from-scratch in-in computation, validated against two independent literature limits,
+gives $f_{\rm NL}^{\rm local}=-35/16$ for a canonical matter-dominated contraction, with
+a new orientation-dependent squeezed limit $-35/16+(15/16)\mu^2$ sourced by the
+non-attractor shear. The long-discussed factor-of-two discrepancy with
+Ref.~\cite{Cai:2009fn} is traced to a single normalization step, not to the underlying
+shape function, which is correct. What remains open is not the amplitude at the end of
+the contraction but its fate through the bounce: the linear transfer is bounded,
+$T_{\fnl}\le1/2$, and the bounce's intrinsic nonlinear contribution is not yet computed.
+Only a survey-scale bispectrum measurement, at the sensitivity SPHEREx targets, can
+currently discriminate the corrected amplitude from the value it replaces.
+
+\section*{Data and Code Availability}
+The from-scratch symbolic derivation, its two literature validation checks, the
+separate-universe cross-check, the bounce-transmission computation, and the
+multi-channel reach calculation are committed at
+\url{https://github.com/Hubify-Projects/bigbounce} under
+\texttt{research/theory\_audit/}, \texttt{research/cubic\_bounce\_transmission/}, and
+\texttt{research/track\_a3\_multichannel/} (commits referenced in
+Refs.~\cite{Golden2026TheoryAudit,Golden2026Transmission,Golden2026Multichannel}). The
+parent forecast paper and its own code/data are permanently archived at Zenodo,
+DOI~10.5281/zenodo.21461881~\cite{Golden2026P2Zenodo}.
+
+\section*{AI Usage Disclosure}
+Symbolic derivations reported here were performed by deterministic sympy scripts written
+and executed under the author's direction; every intermediate result is printed by the
+committed scripts and independently checked against the cited literature limits before
+use. Claude (Anthropic, Opus-tier) assisted with literature cross-checks, prose drafting,
+and LaTeX formatting under the author's direction; all physics content, equations, and
+numerical results were verified by the author against the committed script output.
+
+\bibliography{references}
+
+\end{document}

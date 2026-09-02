@@ -19,7 +19,7 @@
     "pdf_path": "pipelines/p4prime_chirality_test/paper/main.pdf",
     "site_slug": "paper-4p",
     "target_journal": "ApJS (candidate; matches P4's venue fit)",
-    "article_type": "catalog + dipole null + black-hole-universe spin-axis exclusion (Track C1, P4' — P5 folded into P4)",
+    "article_type": "catalog + dipole null + black-hole-universe spin-axis exclusion (Track C1, P4' \u2014 P5 folded into P4)",
     "review_profile": "ApJS-CATALOG",
     "served_aliases": [
       "paper4prime_chirality_test_v4P.0.1.pdf",
@@ -87,5 +87,22 @@
       "date": "2026-09-02",
       "decision": "project-context/PORTFOLIO_DECISION_2026-09-02.md Sec.3 Track B (B1) + Addendum"
     }
+  },
+  "P2L": {
+    "tex_path": "arxiv/paper2prime_fnl_letter/main.tex",
+    "pdf_path": "arxiv/paper2prime_fnl_letter/main.pdf",
+    "site_slug": "paper-2l",
+    "target_journal": "PRD Letters (JCAP alternate)",
+    "article_type": "Letter \u2014 exact matter-contraction f_NL derivation",
+    "review_profile": "PRD-LETTER",
+    "served_aliases": [
+      "paper2prime_fnl_letter_v2L.0.1.pdf"
+    ],
+    "version": "v2L.0.1",
+    "pages": 4,
+    "date": "2026-09-02",
+    "md5": "66a28438cc0f0b8dc347a3016389363f",
+    "lineage": "Rescoped from P2 (research/focused_paper_source_integration/02_full_draft.tex v1.7.130, 11pp) per PORTFOLIO_DECISION_2026-09-02.md \u00a73 Track A A1, unblocked by NEXT_SCIENCE_LEDGER.md #1 (CLOSED 2026-09-02: independent in-in derivation reproduces f_NL=-35/16). P2 itself is unedited; the Letter carries only the exact matter-contraction result, its Cai(2009) factor-2 resolution, the new orientation-dependent squeezed limit, the delta-N cross-check, an honest statement of bounce-transmission (not assumed T=1), and survey reach. Full forecast machinery (b_phi nuisance ladder, torsion bound, dressed-metric transmission closure) stays in P2/A2.",
+    "review_paths": []
   }
 }
