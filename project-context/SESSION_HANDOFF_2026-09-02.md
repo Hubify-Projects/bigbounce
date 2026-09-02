@@ -27,8 +27,12 @@ before acting. Re-plan:
 | f_NL three-value reconciliation (in-in from scratch) | fable | DONE — VERDICT −35/16 (comoving squeezed limit); Cai ×2 located; Li not independent; δN −55/16 = uniform-density-slice value (ζ_ρ=2ζ_c); NEW orientation-dependent squeezed limit f(μ)=−35/16+(15/16)μ²; ledger #1 CLOSED, P2′ unblocked | aa2987cf; ledger 8d1f109b |
 | P2′ Letter rescope (v2L.0.1, 4 pp PRD-L) | sonnet | DONE (6d4faded); registered live (paper-2l; Convex k976bfne…/k577nt8c…); R1 board: Fable major-revisions 5M/13m (66cf1cb0: μ² term already in Li+2016 Eq. 4.19 → novelty cut back; δN formula transcription error; two bad refs; forecast amplitude unstated), Grok REJECT, Gemini major-revisions (2fae3790); truth-audit d73189c9 → 18 canonical (5 MAJOR); VENUE VERDICT: not a Letter (−35/16 already in Li+2016/Quintin+2015). SCOPE DECISION: closed to honest v2L.0.2 as archived theory record (a0881c77 — message mislabeled by a commit race; content verified) and FOLDED into the A3 paper (lineage recorded); rounds stop | Convex k57bzqv0… |
 | A3 paper v3M.0.2 (P2′ theory folded; ledger #1 stated closed) | sonnet | DONE — 6 pp draft; PBH compaction row placeholder | 73a08b3d, 0f6cf5b8 |
-| Endorsement emails + portal kits refreshed to final lineup | sonnet | running | — |
-| Site sync v1N.0.4 + A3M registration | sonnet | running | — |
+| Endorsement emails + portal kits refreshed to final lineup (ordered CLICK-LIST at top of both files) | sonnet | DONE | f9185bcd; abstracts re-synced ae038b67/b1842272 |
+| Site sync v1N.0.4 + A3M registration | sonnet | DONE — live, both remotes | 7d00b0b6, a91622ed; A3M Convex k9796y9e…/k574k79v… |
+| Abstract-cap REVISE (final review) | sonnet | DONE — P4′ v4P.0.5 (246 words), ECH Note v1N.0.5 (298 words); tarballs fbab0380…/26f215d6… | ae038b67, b1842272 |
+| PBH compaction-function redo (A3-1) | opus | DONE — ordering of first pass REVERSED; f_PBH not quotable; robust ratio A(−35/16)/A(−35/8)=1.73±0.05 | 51b0e389; ledger a2537563 |
+| A3 paper v3M.0.3 (PBH integrated) + R1 board | sonnet / fable | v3M.0.3 done (2263b200; Convex k579e572…); R1 board running (Fable leg + Grok/Gemini) | — |
+| Site sync v4P.0.5 + v1N.0.5 + A3M v3M.0.3 | sonnet | running | — |
 | Site sync v4P.0.4 + P2L v2L.0.2 | sonnet | DONE — live, freshness PASS | 42c12dd6, be21f98b |
 | Final-review recommendations | orchestrator | P4′ APPROVE, ECH Note APPROVE, P2′ DEFER (→A3), A3M pending | d0755cbd, d188e716 |
 | PBH compaction-function redo at −35/16 (A3-1) | opus | running | — |
