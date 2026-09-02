@@ -27,11 +27,11 @@ before acting. Re-plan:
 | f_NL three-value reconciliation (in-in from scratch) | fable | running | — |
 | A2 transmission coefficient | opus | running | — |
 | A3 multi-channel + NANOGrav reclaim | opus | DONE — PTA reproduced, PBH new, reach table, 4-pp skeleton | d7dac953 (swept), 9a1c1e2e; ledger 86a2300c |
-| ECH Note merge | sonnet (re-issued) | running | — |
-| P4′ + ledger #5 | sonnet (re-issued) | running | — |
+| ECH Note merge (P1N v1N.0.1) | sonnet (re-issued) | DONE — 6 pp, 0 undef, 0 overfull, consistency 4/4, sha 2287537b | 51d8af1b; board R1 dispatched (Grok/Gemini API; Claude leg queued for an Opus slot) |
+| P4′ + ledger #5 (P4P v4P.0.1) | sonnet (re-issued) | DONE — 6 pp, 0 undef, 0 overfull, md5 d3e6f077; exclusion: A_95^obs≈0.98% excludes alignment fraction >0.98%, 2–20× below Longo/Shamir claims; Popławski gives only a qualitative axis | ac065a61; board R1 running (Grok/Gemini API + Claude Opus leg) |
 | Endorser outreach + portal kits | sonnet (re-issued) | DONE — 4 codes × 5-6 endorsers; CQG 'Note' ≤2500 words → submit as CQG Paper; JCAP needs arXiv ID first → PRD-L primary | a4ee4ac4; DOI note fix 86a2300c |
-| Hubify reconciliation + lab surfaces + repro import | sonnet | running | — |
-| Pod 8ofv5d4ynu7hku phase 3 | monitor | enrichment ~22% at 19:46Z | PHASE3_DONE watch armed |
+| Hubify reconciliation + lab surfaces + repro import | sonnet | children done (surfaces aligned, build clean; importer dry-run 3 programs/52 experiments/0 errors; parity check waits on bigbounce Convex migration); parent finalizing | — |
+| Pod 8ofv5d4ynu7hku phase 3 | monitor | 747 shards at 20:02Z (~3/min → many hours) | PHASE3_DONE watch armed |
 
 ## Blockers recorded
 - `HUBIFY_TOKEN`: not in hubify `.env.local`, not in Keychain; the You.md
