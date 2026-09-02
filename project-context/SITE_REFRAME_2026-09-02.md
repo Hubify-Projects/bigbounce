@@ -154,3 +154,71 @@ public/papers/paper4prime_chirality_test_v4P.0.1.pdf           d3e6f077ad5d772ed
 - Screenshots: see `project-context/site-qa/2026-09-02/` for browser-QA
   captures (overview, /papers, /paper tracks page, /reviews, paper-1n,
   paper-4p, /reproduce).
+
+## Browser QA (headed, this session, post-deploy)
+
+Deploy verified live at bigbounce.hubify.app (Vercel auto-deploy from
+`origin main` push; a "Vercel Security Checkpoint" JS challenge gates the
+first hit per browser session — expected, passes automatically after ~4s;
+plain `curl` without a browser session sees it as 403, which is not a site
+defect).
+
+- **Overview (`/`)**: Track A/B/C copy live, sidebar reads "research tracks".
+- **`/papers`** (flat list): P1N and P4′ render as LEAD entries under their
+  track badges; P1A/P4/P5 render with the new "Archived — see current
+  version" note, successor link, and Zenodo DOI link where published.
+  Found and fixed one stale copy miss: the page's own "See research
+  programs" link text hadn't been swept in the earlier commit — now "See
+  research tracks".
+- **`/paper`** (tracks page): Track A/B/C sections render with question /
+  result / boundary; A2 and A3 render as supportingLinks under Track A
+  with their "research brief in progress" / "first pass done" labels; no
+  nested-box clutter.
+- **`/papers/paper-1n`** and **`/papers/paper-4p`**: render live from Convex
+  (20% readiness, LIVE badge, correct md5/page-count/artifact panel). Both
+  PDFs (`paper1bc_ech_note_v1N.0.1.pdf`, `paper4prime_chirality_test_v4P.0.1.pdf`)
+  open correctly in-browser.
+- **`/reviews`**: found and fixed a stale hardcoded intro block and a stale
+  readiness-average table row, both still asserting the retired "six
+  candidate packages / five standalone manuscripts / P3 support" framing;
+  now names P1N/P4′ as fresh Track B/C1 drafts and P1A/P4/P5 as archived
+  lineage, with their readiness caps included. The `ProgressViz` verdict
+  grid (P1A/P1B/P2/P3/P4/P5 columns) was deliberately left untouched — it
+  is historical review-round data for those exact papers, not stale copy;
+  restructuring its `PaperId` type to add P1N/P4P columns would touch
+  hundreds of dated historical entries and was out of scope for this pass.
+- **`/reproduce`**: loads clean (3 programs, 52 experiment manifests, 41
+  runnable now, $36.04 total) — confirms the `sync-repro-manifests.mjs`
+  type-widening fix works at runtime, not just at build time, against the
+  concurrent Track A2/A3 lane's newly committed manifests.
+- Console: two transient 403s observed during PDF-tab navigation, tied to
+  the Vercel bot-checkpoint token on a fresh navigation context, not a page
+  or asset defect — no 403 on any same-session in-app navigation.
+- Sitewide copy sweep for the retired "research program(s)" phrase: fixed
+  remaining stale instances in `status/page.tsx` (stat tile + body text),
+  `timeline/page.tsx` (hero desc), `docs/DocsClient.tsx`, `search/SearchClient.tsx`,
+  `chat/page.tsx`. Left generic singular uses ("the BigBounce research
+  program" meaning "the lab") alone — those aren't claims about program
+  count/structure and reads correctly either way.
+
+## Correction to the earlier live-status.ts push
+
+The first push attempt included a version of `live-status.ts` that had
+dropped paper-1a/paper-4/paper-5 entirely (not just re-labeled); the
+pre-push `site_freshness_check.sh` gate caught this (STALE — Convex versions
+not represented) and blocked the push before anything reached origin. Fixed
+by re-adding those three as explicit archived rows (see commit `56b58bb2`)
+before any push succeeded. No `FRESHNESS_SKIP` override was used at any
+point.
+
+## Newer drafts in flight — not registered this session
+
+While this session was running, a concurrent closure lane started producing
+v1N.0.2 and v4P.0.2 (`pipelines/p4prime_chirality_test/paper/main.tex`
+already shows `\paperVersion{v4P.0.2}` as an **uncommitted** working-tree
+edit; `arxiv/paper1bc_ech_note/main.tex` is still at v1N.0.1 with no pending
+edit as of this check). Per instruction, this session registers only what
+exists committed on disk — v1N.0.1 and v4P.0.1, exactly what is in Convex
+and on the live site right now. The v4P.0.2 bump (and any v1N.0.2 that
+lands) is the next `paperVersions:bump` + site-data update, owned by
+whichever lane closes it.

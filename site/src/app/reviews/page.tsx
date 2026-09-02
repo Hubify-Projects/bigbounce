@@ -79,10 +79,11 @@ export default async function ReviewsPage() {
       >
         This feed preserves internal and external automated-review rounds, raw evidence,
         per-finding truth audits, and subsequent closures. It is a review history, not a
-        journal decision. <strong>Current status: six candidate packages retain their review evidence; five are selected standalone manuscripts, P3 is an integrated support release, and the rebuilt anomaly flagship is new work.</strong>{" "}
-        The canonical readiness caps are P1A {cap("paper-1a")}, P1B {cap("paper-1b")},
-        P2 {cap("paper-2")}, P3 {cap("paper-3")}, P4 {cap("paper-4")}, and P5{" "}
-        {cap("paper-5")} (average {avgCap}%). Automated ACCEPT labels are retained exactly
+        journal decision. <strong>Current status (2026-09-02 restructure): P1N (Track B) and P4′ (Track C1) are freshly merged/folded drafts under their first review round; P1A, P4, and P5 are archived lineage whose review evidence is retained but who are no longer independent submission targets; P1B and P2 continue on their own tracks; P3 remains provenance support for the redirected anomaly map.</strong>{" "}
+        The canonical readiness caps are P1N {cap("paper-1n")}, P4′ {cap("paper-4p")}, P1A{" "}
+        {cap("paper-1a")} (archived), P1B {cap("paper-1b")}, P2 {cap("paper-2")}, P3{" "}
+        {cap("paper-3")}, P4 {cap("paper-4")} (archived), and P5 {cap("paper-5")} (archived).
+        Automated ACCEPT labels are retained exactly
         as returned, but they are not journal acceptance. Under directive P the only thing
         between a paper at 95% and 100% is Houston&apos;s own final read; independent human
         review, venue-specific checks and submission belong to the separate Publishing phase.
@@ -273,7 +274,7 @@ export default async function ReviewsPage() {
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Canonical readiness</td>
-                <td className="eta-td">Evidence-capped average {avgCap}% across six retained artifact records: P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")}. Five are selected standalone manuscripts; P3 is integrated support for the rebuilt anomaly flagship. No automated score converts into journal acceptance.</td>
+                <td className="eta-td">Evidence-capped average {avgCap}% across the six historical artifact records (P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")}); P1N {cap("paper-1n")} and P4′ {cap("paper-4p")} are fresh Track B/C1 drafts under their first review round. P1A/P4/P5 are archived lineage. No automated score converts into journal acceptance.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Remaining before 100%</td>

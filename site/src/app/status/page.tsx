@@ -60,7 +60,7 @@ function statusLabel(state: LivePaperState): string {
 }
 
 const stats: Array<{ value: string; label: string }> = [
-  { value:"3", label:"Question-first research programs" },
+  { value:"3", label:"Question-first research tracks (A/B/C)" },
   {
     value:"P2",
     label:"Lead bounce-theory result" ,
@@ -126,7 +126,7 @@ export default async function StatusPage() {
         </h1>
         <p className="subtitle">
           Comprehensive source of truth for the entire BigBounce spin-torsion
-          cosmology research program. The three research questions lead; artifact
+          cosmology research program. The three research tracks lead; artifact
           versions and review evidence below document their supporting work.
         </p>
       </div>

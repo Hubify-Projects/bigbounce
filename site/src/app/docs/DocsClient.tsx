@@ -144,7 +144,7 @@ const SECTIONS: DocSection[] = [
       <>
         <p>
           BigBounce is an end-to-end research orchestration stack for three
-          research programs — bounce theory, DESI anomaly discovery, and
+          research tracks — Track A (bounce vs. inflation), Track B (the ECH Note), and
           galaxy chirality — spanning six versioned manuscripts and releases:
           P2 (lead theory result) with specialist support from P1A and P1B;
           P3 as an integrated supporting data release, not a standalone

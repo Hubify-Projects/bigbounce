@@ -66,7 +66,7 @@ const events: Array<{
   {
     time:"13.8 Gyr",
     label:"NOW (2026)",
-    desc:"BigBounce is organized around three research programs. The retained evidence library contains six exact candidate packages at 95% evidence readiness; the selected endpoint is six standalone works plus P3 as a supporting public-ID recovery release. The DESI anomaly flagship is being rebuilt, and final author review remains separate from endorsement, submission, and independent peer review.",
+    desc:"BigBounce is organized around three research tracks (A: bounce vs. inflation flagship, B: the ECH Note closed line, C: DESI data products). P1N and P4\u2032 are the current submission targets for Tracks B and C1, with P1A/P4/P5 retained as archived lineage; final author review remains separate from endorsement, submission, and independent peer review.",
     color:"var(--text-secondary)",
   },
   {

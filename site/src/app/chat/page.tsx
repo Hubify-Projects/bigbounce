@@ -18,7 +18,7 @@ export default function ChatPage() {
           astro
         </h1>
         <p className="subtitle">
-          Ask anything about spin-torsion cosmology, the three research programs,
+          Ask anything about spin-torsion cosmology, the three research tracks,
           MCMC verification, anomaly surveys, the chirality catalog, or the
           14 structural barriers. Astro grounds answers in the published research.
         </p>
@@ -45,7 +45,7 @@ export default function ChatPage() {
           answer Astro would give is grounded in the published materials, which
           are all here: start with the{" "}
           <Link href="/explained">plain-language explainer</Link>, the{" "}
-          <Link href="/paper">research programs and evidence library</Link>, or the{" "}
+          <Link href="/paper">research tracks and evidence library</Link>, or the{" "}
           <Link href="/reviews">open review record</Link>. Questions are welcome at{" "}
           <a href="mailto:houston@hubify.com">houston@hubify.com</a>.
         </p>

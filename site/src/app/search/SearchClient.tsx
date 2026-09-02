@@ -24,7 +24,7 @@ interface SearchItem {
 }
 
 const STATIC_PAGES: SearchItem[] = [
-  { category: "Page", title: "Overview", blurb: "Three question-first research programs: bounce theory, DESI anomaly discovery, and galaxy chirality", href: "/" },
+  { category: "Page", title: "Overview", blurb: "Three question-first research tracks: bounce vs. inflation (flagship), the ECH Note (closed line), and DESI data products", href: "/" },
   { category: "Page", title: "Explainer", blurb: "Non-technical explanation of the research program", href: "/explained" },
   { category: "Page", title: "Surveys", blurb: "Legacy and superseded survey-pipeline records retained for methodology and archive context", href: "/surveys" },
   { category: "Page", title: "Predictions", blurb: "Conditional matter-contraction non-Gaussianity, birefringence and SGWB diagnostics, and future-survey context", href: "/predictions" },

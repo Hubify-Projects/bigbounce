@@ -59,10 +59,10 @@ export default async function PapersIndexPage() {
         </h1>
         <p className="subtitle">
           Every paper, dataset, and research-software release in the portfolio,
-          in one flat list — no grouping by research program. Prefer the
+          in one flat list — no grouping by research track. Prefer the
           question-first view?{" "}
           <Link href="/paper" style={{ color: "var(--accent-link)" }}>
-            See research programs
+            See research tracks
           </Link>
           .
         </p>
