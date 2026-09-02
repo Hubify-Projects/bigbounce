@@ -39,11 +39,30 @@
     },
     "program": {
       "type": "string",
-      "enum": ["bounce-theory", "anomaly-discovery", "galaxy-chirality", "lab-infra"]
+      "enum": [
+        "bounce-theory",
+        "anomaly-discovery",
+        "galaxy-chirality",
+        "lab-infra"
+      ]
     },
     "paper": {
       "type": "string",
-      "enum": ["P1A", "P1B", "P2", "P3-support", "P4", "P5", "anomaly-flagship", "none"]
+      "enum": [
+        "P1A",
+        "P1B",
+        "P2",
+        "P3-support",
+        "P4",
+        "P5",
+        "anomaly-flagship",
+        "none",
+        "A2",
+        "A3",
+        "P1N",
+        "P4P",
+        "P2-support"
+      ]
     },
     "kind": {
       "type": "string",
@@ -64,12 +83,23 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["name", "type", "locator"],
+        "required": [
+          "name",
+          "type",
+          "locator"
+        ],
         "properties": {
-          "name": { "type": "string", "minLength": 1 },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
           "type": {
             "type": "string",
-            "enum": ["external-dataset", "internal-artifact", "model"]
+            "enum": [
+              "external-dataset",
+              "internal-artifact",
+              "model"
+            ]
           },
           "locator": {
             "type": "string",
@@ -77,11 +107,17 @@
             "description": "URL for external data (HF/DESI/Zenodo/etc.) or repo-relative path for internal artifacts"
           },
           "checksum": {
-            "type": ["string", "null"],
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "sha256/md5/HF revision when known; null if not evidenced"
           },
           "license": {
-            "type": ["string", "null"],
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "Required context for external inputs; null/omitted for internal artifacts"
           }
         }
@@ -93,11 +129,23 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["name", "endpoint", "auth_required"],
+        "required": [
+          "name",
+          "endpoint",
+          "auth_required"
+        ],
         "properties": {
-          "name": { "type": "string", "minLength": 1 },
-          "endpoint": { "type": "string", "minLength": 1 },
-          "auth_required": { "type": "boolean" }
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "endpoint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "auth_required": {
+            "type": "boolean"
+          }
         }
       }
     },
@@ -107,7 +155,10 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["path", "entrypoint"],
+        "required": [
+          "path",
+          "entrypoint"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -120,7 +171,10 @@
             "description": "Exact command used to run this code"
           },
           "sha256": {
-            "type": ["string", "null"],
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "Optional pin of the script content"
           }
         }
@@ -129,7 +183,10 @@
     "environment": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["python", "hardware"],
+      "required": [
+        "python",
+        "hardware"
+      ],
       "properties": {
         "python": {
           "type": "string",
@@ -146,36 +203,94 @@
     "original_run": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["venue", "gpu", "pod_id_or_host", "date", "wall_clock", "actual_cost_usd"],
+      "required": [
+        "venue",
+        "gpu",
+        "pod_id_or_host",
+        "date",
+        "wall_clock",
+        "actual_cost_usd"
+      ],
       "description": "NEVER fabricate: any value not actually evidenced in the inventory/SSOT MUST be null.",
       "properties": {
         "venue": {
-          "type": ["string", "null"],
-          "enum": ["local", "runpod", null]
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "local",
+            "runpod",
+            null
+          ]
         },
-        "gpu": { "type": ["string", "null"] },
-        "pod_id_or_host": { "type": ["string", "null"] },
-        "date": { "type": ["string", "null"] },
-        "wall_clock": { "type": ["string", "null"] },
-        "actual_cost_usd": { "type": ["number", "null"] }
+        "gpu": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pod_id_or_host": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "wall_clock": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "actual_cost_usd": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
       }
     },
     "reproduction": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["recommended_venue", "est_wall_clock", "est_cost_usd", "parallelizable", "resume_support", "notes"],
+      "required": [
+        "recommended_venue",
+        "est_wall_clock",
+        "est_cost_usd",
+        "parallelizable",
+        "resume_support",
+        "notes"
+      ],
       "description": "Forward-looking engineering estimate, not a recorded fact.",
       "properties": {
-        "recommended_venue": { "type": "string", "minLength": 1 },
-        "est_wall_clock": { "type": "string", "minLength": 1 },
+        "recommended_venue": {
+          "type": "string",
+          "minLength": 1
+        },
+        "est_wall_clock": {
+          "type": "string",
+          "minLength": 1
+        },
         "est_cost_usd": {
           "type": "number",
           "minimum": 0,
           "description": "0 for local CPU-scale runs"
         },
-        "parallelizable": { "type": "boolean" },
-        "resume_support": { "type": "boolean" },
-        "notes": { "type": "string" }
+        "parallelizable": {
+          "type": "boolean"
+        },
+        "resume_support": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     },
     "outputs": {
@@ -183,14 +298,32 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["locator", "type"],
+        "required": [
+          "locator",
+          "type"
+        ],
         "properties": {
-          "locator": { "type": "string", "minLength": 1 },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
           "type": {
             "type": "string",
-            "enum": ["dataset", "catalog", "model", "figure", "result-json", "receipt"]
+            "enum": [
+              "dataset",
+              "catalog",
+              "model",
+              "figure",
+              "result-json",
+              "receipt"
+            ]
           },
-          "checksum": { "type": ["string", "null"] }
+          "checksum": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         }
       }
     },
@@ -201,12 +334,19 @@
     },
     "status": {
       "type": "string",
-      "enum": ["runnable-now", "needs-data-restore", "superseded"]
+      "enum": [
+        "runnable-now",
+        "needs-data-restore",
+        "superseded"
+      ]
     },
     "provenance": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "minLength": 1 },
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "description": "Pointers into SSOT/status docs/inventory sections/commits backing every claim above"
     }
   }

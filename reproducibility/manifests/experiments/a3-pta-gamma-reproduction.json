@@ -1,9 +1,9 @@
 {
   "manifest_version": "bigbounce-experiment/v1",
   "id": "a3-pta-gamma-reproduction",
-  "title": "Track A3 channel 1 \u2014 reproduction of the NANOGrav 15-yr free-spectrum gamma posterior and Savage-Dickey Bayes factors from the committed chain",
+  "title": "Track A3 channel 1 — reproduction of the NANOGrav 15-yr free-spectrum gamma posterior and Savage-Dickey Bayes factors from the committed chain",
   "program": "bounce-theory",
-  "paper": "A3 (Track A3 portfolio paper)",
+  "paper": "A3",
   "kind": "analysis",
   "inputs": [
     {
@@ -13,7 +13,7 @@
       "checksum": "sha256:50abc38a04e1bf886adc833b5eb653be4e986877fe2476f87a78927f4f3610fc"
     },
     {
-      "name": "NANOGrav 15-yr KDE Free Spectra v1.0.0 (30f_fs{hd}_ceffyl) \u2014 upstream source of the chain",
+      "name": "NANOGrav 15-yr KDE Free Spectra v1.0.0 (30f_fs{hd}_ceffyl) — upstream source of the chain",
       "type": "external-dataset",
       "locator": "https://doi.org/10.5281/zenodo.8060824",
       "checksum": null
@@ -61,7 +61,7 @@
     }
   ],
   "verification": "Script asserts REPRODUCED=true: gamma mean/std match the committed results.json to 0 (exact), Savage-Dickey B_MB/free matches savage_dickey_2026-05-29.json to 3.1e-15 absolute, B_MB/SMBHB to 3.1e-11, z(SMBHB) exactly. Any drift beyond those tolerances means the chain or the KDE bandwidth rule changed.",
-  "status": "reproduced",
+  "status": "runnable-now",
   "provenance": [
     "project-context/NEXT_SCIENCE_LEDGER.md item 3",
     "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
