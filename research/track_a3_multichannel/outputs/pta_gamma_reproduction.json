@@ -51,6 +51,22 @@
     "B_mb_over_smbhb": 3.092281986027956e-11,
     "z_smbhb": 0.0
   },
+  "tail_census": {
+    "n_ge_5": 0,
+    "n_ge_13_3": 9,
+    "n_ge_4": 34,
+    "n_gt_3": 28719,
+    "p_gt_3_pct": 8.9746875,
+    "chain_max": 4.704804568588508
+  },
+  "official_nanograv_posterior_comparison": {
+    "gamma_official_median": 3.2,
+    "gamma_official_sigma_equiv": 0.364741641337386,
+    "z_mb_vs_official": -0.5483333333333338,
+    "z_smbhb_vs_official": 3.1072222222222208,
+    "z_infl_vs_official": 4.935,
+    "z_refit_vs_official": -1.1997839380554087
+  },
   "REPRODUCED": true,
-  "wall_seconds": 0.02
+  "wall_seconds": 0.01
 }

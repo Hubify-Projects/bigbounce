@@ -1,5 +1,12 @@
 # Canonical dispositions — A3M (Track A3 multi-channel)
 
+**R1 CLOSED 2026-09-02 → v3M.0.4.** All 8 canonical MAJOR/ESSENTIAL items and
+13 MINOR items below are closed by real edits in
+`research/track_a3_multichannel/paper/main.tex` (v3M.0.4, 8 pp, md5
+`b98ee16e11d106c96ac593480857112b`). Item→edit table:
+`project-context/SSOT/paper-a3m/status.md` § "R1 closure (2026-09-02)". R2
+verification pass on the new exact PDF is authorized next per directive R2.
+
 Paper: `research/track_a3_multichannel/paper/main.tex` + `main.pdf`, v3M.0.3, 7 pp,
 sha256 `7e35caa05825af0e2cac5cadb21b50b68e913c32583914ca4b07ca23c1e469bd`.
 Ledger opened 2026-09-02 at round `ROUND_2026-09-02-A3M-v3M.0.3-EXACTPDF-7e35caa0-R1`.

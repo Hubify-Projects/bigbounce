@@ -125,13 +125,17 @@
     "review_profile": "PRD-STANDARD",
     "served_aliases": [
       "a3_multichannel_arxiv_v3M.0.2.pdf",
-      "a3_multichannel_arxiv_v3M.0.3.pdf"
+      "a3_multichannel_arxiv_v3M.0.3.pdf",
+      "a3_multichannel_arxiv_v3M.0.4.pdf"
     ],
-    "version": "v3M.0.3",
-    "pages": 7,
+    "version": "v3M.0.4",
+    "pages": 8,
     "date": "2026-09-02",
-    "md5": "9f7afea9e22a7816168fc7638fc8a753",
-    "lineage": "A3 skeleton (research/track_a3_multichannel/) + P2' v2L.0.2 exact-amplitude theory (f_NL=-35/16, ledger #1 CLOSED independent re-derivation) folded in per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. v3M.0.3: PBH compaction-function channel (item A3-1) integrated, replacing the Press-Schechter placeholder row; first-pass ordering reversed (ratio-level result, not a quotable abundance). Status: draft -- one INT board pending.",
-    "review_paths": []
+    "md5": "b98ee16e11d106c96ac593480857112b",
+    "sha256": "d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c",
+    "lineage": "A3 skeleton (research/track_a3_multichannel/) + P2' v2L.0.2 exact-amplitude theory (f_NL=-35/16, ledger #1 CLOSED independent re-derivation) folded in per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. v3M.0.3: PBH compaction-function channel integrated, replacing the Press-Schechter placeholder row; first-pass ordering reversed (ratio-level result, not a quotable abundance). v3M.0.4: R1 closure (INT_v3 ROUND_2026-09-02-A3M-v3M.0.3-EXACTPDF-7e35caa0-R1) -- PTA channel now states NANOGrav's official 14-bin posterior as primary comparison with the lab's 30-bin refit as secondary; gamma=5 tail Bayes factor/6.37sigma dropped from the abstract (0 of 320,000 samples support it); transmission bound relabelled scheme-conditional (handoff assumption A4 explicit, 'universal' removed); PBH amplitude ratio kept as a result with its regime of validity and the 55-decade f_PBH(f_NL) non-monotonicity disclosed; four contradictory factor-of-two statements unified; Ref. [7] fixed to arXiv:1712.08148, PRD 97, 066021 (2018); r=0.84 sourced to the P2 forecast with r-projected significances dropped pending re-derivation (item A3-4); internal issue-tracker tags stripped from body text. Status: draft -- R1 closed, R2 verification pass next.",
+    "review_paths": [
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-A3M-v3M.0.3-EXACTPDF-7e35caa0-R1/A3M_v3M.0.3_R1_truth_audit.md"
+    ]
   }
 }

@@ -50,6 +50,15 @@ GAMMA_SMBHB = 13.0 / 3.0  # 4.3333, GW-driven SMBHB inspiral
 GAMMA_INFL = 5.0          # scale-invariant primordial tensors, n_T = 0
 G_LO, G_HI = 0.0, 7.0     # sampling prior on gamma
 
+# NANOGrav 15-yr official HD free-spectrum power-law posterior, Agazie et al.
+# 2023 (arXiv:2306.16213), Sec. IV: gamma_HD = 3.2 (+0.6/-0.6), stated
+# explicitly as posterior medians and 5-95% quantiles on 14 frequency bins.
+# A 90% interval of half-width 0.6 corresponds to a Gaussian-equivalent
+# sigma of 0.6/1.645 (added 2026-09-02, A3M R1 closure item A3M-R1-01).
+GAMMA_OFFICIAL_MEDIAN = 3.2
+GAMMA_OFFICIAL_90_HALFWIDTH = 0.6
+GAMMA_OFFICIAL_SIGMA = GAMMA_OFFICIAL_90_HALFWIDTH / 1.645  # ~0.3647
+
 
 def main():
     t0 = time.time()
@@ -68,6 +77,36 @@ def main():
 
     z = {k: float((v - g_mu) / g_sd) for k, v in
          [("mb", GAMMA_MB), ("smbhb", GAMMA_SMBHB), ("infl", GAMMA_INFL)]}
+
+    # --- A3M R1 closure additions (2026-09-02, item A3M-R1-01/02) ---
+    # (a) tail census: how many of the 320,000 posterior samples actually
+    # populate the region a Bayes factor at gamma=5 would be extrapolating
+    # into. This is what licenses dropping B(gamma=5)/"6.37 sigma" from the
+    # abstract in favor of an honest "0 samples" statement.
+    tail_census = {
+        "n_ge_5": int(np.sum(g >= 5.0)),
+        "n_ge_13_3": int(np.sum(g >= GAMMA_SMBHB)),
+        "n_ge_4": int(np.sum(g >= 4.0)),
+        "n_gt_3": int(np.sum(g > 3.0)),
+        "p_gt_3_pct": float(100.0 * np.sum(g > 3.0) / n),
+        "chain_max": float(g.max()),
+    }
+
+    # (b) tension against NANOGrav's *official* HD free-spectrum posterior
+    # (14 bins, gamma_HD = 3.2 +0.6/-0.6 at 5-95%), not just against this
+    # lab's own 30-bin refit. Both are reported in the paper per directive
+    # D1 of the 2026-09-02 R1 closure.
+    official_tension = {
+        "gamma_official_median": GAMMA_OFFICIAL_MEDIAN,
+        "gamma_official_sigma_equiv": GAMMA_OFFICIAL_SIGMA,
+        "z_mb_vs_official": float((GAMMA_MB - GAMMA_OFFICIAL_MEDIAN) / GAMMA_OFFICIAL_SIGMA),
+        "z_smbhb_vs_official": float((GAMMA_SMBHB - GAMMA_OFFICIAL_MEDIAN) / GAMMA_OFFICIAL_SIGMA),
+        "z_infl_vs_official": float((GAMMA_INFL - GAMMA_OFFICIAL_MEDIAN) / GAMMA_OFFICIAL_SIGMA),
+        "z_refit_vs_official": float(
+            (g_mu - GAMMA_OFFICIAL_MEDIAN)
+            / np.sqrt(g_sd ** 2 + GAMMA_OFFICIAL_SIGMA ** 2)
+        ),
+    }
 
     ref_r = json.loads(REF_RESULTS.read_text())
     ref_s = json.loads(REF_SD.read_text())
@@ -113,6 +152,8 @@ def main():
             "scale_invariant_tensors_gamma5": 5.0 - GAMMA_INFL,
         },
         "diff_vs_committed": diffs,
+        "tail_census": tail_census,
+        "official_nanograv_posterior_comparison": official_tension,
         "REPRODUCED": bool(reproduced),
         "wall_seconds": round(time.time() - t0, 2),
     }
