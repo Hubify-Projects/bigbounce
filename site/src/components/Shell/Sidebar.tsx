@@ -54,7 +54,7 @@ const sections: SidebarSection[] = [
     links: [
       { href: "/surveys", label: "surveys", icon: Database },
       { href: "/predictions", label: "predictions", icon: Orbit },
-      { href: "/paper", label: "research programs", icon: FileText },
+      { href: "/paper", label: "research tracks", icon: FileText },
       { href: "/papers", label: "all papers", icon: Files },
       { href: "/status", label: "status", icon: Gauge },
       { href: "/reviews", label: "reviews", icon: ShieldCheck },

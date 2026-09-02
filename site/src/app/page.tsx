@@ -191,7 +191,7 @@ export default async function HomePage() {
             marginTop: 4,
           }}
         >
-          Three research programs connect theory, discovery, and observation.
+          Three tracks — flagship, closed line, and data products — connect theory, discovery, and observation.
           Their lead results, candidate packages, data, and review evidence are
           public — but a finished package is not automatically a flagship paper.
         </p>
@@ -210,9 +210,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2 — Research programs */}
+      {/* 2 — Research tracks */}
       <section className="section" style={{ marginTop: 8 }}>
-        <p style={sectionLabel}>Research programs</p>
+        <p style={sectionLabel}>Research tracks</p>
         <h2 style={{ marginTop: 0 }}>Three questions, three lead results</h2>
         <p style={{ marginTop: 4, fontSize: 14, lineHeight: 1.7, maxWidth: "66ch" }}>
           The portfolio is organized around scientific questions, not a fixed

@@ -20,7 +20,7 @@ export default function PublishPage() {
 
       <section className="pub-section pub-summary" aria-label="Publication strategy summary">
         <p>
-          <strong>The rule:</strong> paper count follows distinct scientific questions and publishable contributions—not the number of files already in the repository. There are three programs, six eventual standalone works, and one integrated supporting data release (P3).
+          <strong>The rule:</strong> paper count follows distinct scientific questions and publishable contributions—not the number of files already in the repository. There are three tracks (flagship + closed line + data products), P1N and P4′ as the current submission targets for two of them, P1A/P4/P5 retained as archived lineage, and P3 as provenance support for the redirected anomaly map.
         </p>
         <p>
           <strong>Execution order:</strong> {publicationExecution.selectedOrder.join(" → ")}. The anomaly rerun proceeds in parallel; its flagship is drafted only if its regenerated evidence is scientifically and reproducibly strong enough.
@@ -33,7 +33,7 @@ export default function PublishPage() {
       <section className="pub-section">
         <div className="pub-section-head">
           <span className="pub-section-index">01</span>
-          <h2 className="pub-section-title">Research programs</h2>
+          <h2 className="pub-section-title">Research tracks</h2>
         </div>
         <p className="pub-section-sub">
           Each program starts with its question, lead result, and boundary. Specialist outputs and technical candidates remain linked as evidence rather than being treated as equal flagships.
@@ -145,7 +145,7 @@ export default function PublishPage() {
           </table>
         </div>
         <p className="pub-note">
-          Detailed package paths and review state are retained in <Link href="/paper">research programs</Link> and <Link href="/reviews">the review record</Link>.
+          Detailed package paths and review state are retained in <Link href="/paper">research tracks</Link> and <Link href="/reviews">the review record</Link>.
         </p>
       </section>
     </>

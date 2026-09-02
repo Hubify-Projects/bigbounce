@@ -137,6 +137,41 @@ export default async function PapersIndexPage() {
                   {paper.plainTitle}
                 </p>
 
+                {paper.archivedInto && (
+                  <p
+                    style={{
+                      margin: "6px 0 0",
+                      fontSize: 12,
+                      lineHeight: 1.5,
+                      color: "var(--text-tertiary)",
+                      maxWidth: "78ch",
+                    }}
+                  >
+                    Archived —{" "}
+                    <Link
+                      href={`/papers/${paper.archivedInto.successorSlug}`}
+                      style={{ color: "var(--accent-link)" }}
+                    >
+                      see current version
+                    </Link>
+                    . {paper.archivedInto.note}
+                    {paper.archivedInto.zenodoDoi && (
+                      <>
+                        {" "}
+                        <a
+                          href={paper.archivedInto.zenodoDoi}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ color: "var(--accent-link)" }}
+                        >
+                          Zenodo DOI (archived version)
+                        </a>
+                        .
+                      </>
+                    )}
+                  </p>
+                )}
+
                 <div
                   style={{
                     display: "flex",

@@ -43,6 +43,17 @@ export interface Paper {
   pdfMeta: string;
   /** Ordered list of per-version change notes, most recent first. */
   changelog?: string[];
+  /**
+   * Set when this paper has been superseded/merged/folded into a successor
+   * paper (directive R3, 2026-09-02 portfolio restructure). The original
+   * entry stays listed (never deleted) with a pointer to its successor slug
+   * and, where published, its own Zenodo DOI for the archived version.
+   */
+  archivedInto?: {
+    note: string;
+    successorSlug: string;
+    zenodoDoi?: string;
+  };
   artifacts: Array<{
     label: string;
     href: string;
@@ -53,9 +64,9 @@ export interface Paper {
 }
 
 export type ResearchProgramId =
-  | "bounce-theory"
-  | "desi-anomaly-discovery"
-  | "galaxy-chirality";
+  | "track-a-bounce-vs-inflation"
+  | "track-b-ech-note"
+  | "track-c-desi-data-products";
 
 /**
  * A program-level supporting link — for real, registered manuscripts that
@@ -92,71 +103,74 @@ export interface ResearchProgram {
 }
 
 /**
- * Public-facing portfolio hierarchy. It deliberately separates the three
- * scientific questions from completed candidate packages and review evidence.
+ * Public-facing portfolio structure (2026-09-02 restructure, directive R3;
+ * see project-context/PORTFOLIO_DECISION_2026-09-02.md and
+ * project-context/PAPER_LINEAGE_2026-08-05.md). Three tracks replace the
+ * retired "three research programs" framing: Track A is the flagship
+ * bounce-vs-inflation line, Track B is one closed-line Note, Track C is
+ * DESI data products framed on-vision. Archived-lineage papers (P1A, P1C,
+ * P4, P5) stay listed on the flat /papers page with an "archived into"
+ * label — never deleted.
  */
 export const researchPrograms: ResearchProgram[] = [
   {
-    id: "bounce-theory",
-    title: "Bounce theory",
+    id: "track-a-bounce-vs-inflation",
+    title: "Track A \u2014 Bounce vs. inflation (flagship)",
     question:
-      "Does matter-dominated contraction produce a distinctive, reproducible primordial non-Gaussian amplitude?",
+      "Does a nonsingular matter-bounce produce a distinctive, reproducible, and observationally testable primordial non-Gaussian signature that beats inflation-from-a-singularity as the origin of structure?",
     result:
-      "P2 rederives the stated matter-contraction amplitude f_NL^local = −35/16; its survey mapping remains conditional, not a detection forecast.",
+      "A1 \u00b7 P2\u2032 derives the exact matter-contraction amplitude f_NL = \u221235/16, GATED before submission on an independent second-method re-derivation (ledger #1) \u2014 stated honestly as \u201camplitude under independent re-derivation,\u201d not yet a submission-ready number. A2 (nonlinear transmission through an explicit bounce) and A3 (multi-channel consistency: NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach) are the two new-science computations that make this the vision line \u2014 A2 is a research brief in progress, A3's first pass is done.",
     limitation:
-      "Nonlinear transmission through a specified bounce completion and survey-native covariance remain open scientific conditions.",
+      "P2\u2032 does not yet have an independently-verified derivation route; A2 and A3 are not yet complete manuscripts. Until the ledger #1 gate passes, the flagship amplitude is reported as gated, not final.",
     leadSlug: "paper-2",
-    supportSlugs: ["paper-1a", "paper-1b"],
+    supportSlugs: [],
     supportingLinks: [
       {
-        title:
-          "Reproducible Cosmological Proxy and Pipeline Checks: Stock-CAMB ΛCDM+ΔN_eff MCMC, Synthetic NaMaster Recovery, and a Generic Spectator-ALP Birefringence Fit",
-        plainTitle:
-          "The MCMC validation dossier behind the bounce-theory papers — chains, configs, and controls",
-        role: "Supporting validation dossier · P1A/P1B companion",
+        title: "Nonlinear transmission of f_NL through an explicit nonsingular bounce",
+        plainTitle: "A2 \u2014 does the bounce itself distort the predicted non-Gaussian amplitude? (research brief in progress)",
+        role: "Track A2 \u00b7 research brief in progress",
         description:
-          "Three self-contained reproducibility checks, none of which tests or measures torsion: a stock-CAMB/Cobaya ΛCDM+ΔN_eff MCMC proxy (309,189 frozen samples, ΔN_eff consistent with zero), a 500-realization synthetic NaMaster E→B pseudo-Cℓ pipeline-recovery validation, and a generic spectator-ALP birefringence consistency fit with a quantified prior-predictive accommodation cost. Frozen chains, configs, and scripts are publicly archived.",
-        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.pdf",
+          "Turns the matter-contraction coefficient into an observable prediction by tracing f_NL through an explicit nonsingular bounce completion (LQC dressed-metric/hybrid, plus one non-LQC bounce), rather than assuming lossless transmission. The dressed-metric scheme-specific transparency result already computed for P2\u2032 (|\u03b4f_NL| \u2264 6.8e-8 at k\u00b7\u03b7_B=1e-2) is the seed of this line; the full paper is not yet drafted.",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/research/cubic_bounce_transmission",
         external: true,
       },
       {
-        title:
-          "A Structural No-Go Survey of Minimal Spin-Torsion Routes to Dark Energy and Bounce Phenomenology",
-        plainTitle:
-          "Which minimal spin-torsion routes to dark energy or a bounce are structurally closed — a 14-barrier survey (draft)",
-        role: "In preparation · structural no-go survey (14-barrier catalog)",
+        title: "Multi-channel consistency at f_NL = \u221235/16: NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach",
+        plainTitle: "A3 \u2014 does the corrected amplitude show up consistently across independent observational channels? (first pass done)",
+        role: "Track A3 \u00b7 first pass done",
         description:
-          "A systematic survey of 7 foundation mechanism classes and 6 observational branches, extracted from the retired P1U barrier catalog, giving 14 distinct mechanism-class constraints across 14 catalog entries and closing four candidate dark-energy routes (R1-R4). Draft v1C.0.16, compiled 25 pp, 0 undefined refs, 0 overfull boxes — closes the R12 correctness-convergence board on the exact v1C.0.14 PDF (sha256 9dd5c708..., 24 pp). Four legs: Claude Opus INT MAJOR REVISIONS (2 MAJOR / 9 MINOR, five candidate findings withdrawn after 300-DPI re-render or artifact cross-check), Grok grok-4.3 REJECT (3 ESSENTIAL / 3 MAJOR / 2 NIT, all scope, self-containment, and length, none computational), and Gemini gemini-3.1-pro-preview ACCEPT WITH MINOR CORRECTIONS (1 MINOR + 2 NIT) — Gemini's second ACCEPT-class verdict on P1C after its R4 ACCEPT, and the board's third ACCEPT-class verdict overall (Gemini R4, Claude R5, Gemini R12); the Perplexity leg FAILED and is recorded as failed, never a verdict. The headline of the round: both of Claude's MAJORs were CONFIRMED CORRECT by an independent computation that solved the Einstein-Cartan-Holst connection equation directly (research/theory_audit/ech_torsion_onshell_2026_08_08.py and .md) — varying the first-order ECH action with respect to all 24 independent contorsion components with no irrep ansatz, cross-checked against an independent differential-form route, gives on-shell torsion T_abc = alpha*eps_abcd*J5^d + beta*(eta_ab*J5_c - eta_ac*J5_b) with beta/alpha = 1/(2*gamma); both the axial and the trace-vector irreps are nonzero at every finite nonzero gamma, and the tensor irrep is identically zero. Pure axiality is only the gamma -> infinity Einstein-Cartan limit; at the LQG value gamma = 0.2375 the trace-vector coefficient is 2.11x the axial one. The referee was right, and the correction overturns a result one of this repository's own prior released artifacts had asserted as pure-axial torsion; that artifact now carries a dated erratum addendum stating the corrected result while leaving its original text and provenance intact. Consequences landed in v1C.0.15: O4 is NOT identically zero on shell - O4(bare) = -24*alpha*beta*(J5.J5) = -192*pi^2*G^2*gamma^3/(1+gamma^2)^2*(J5.J5), i.e. O4^[4] = -3*kappa*gamma^3/(1+gamma^2)^2*(J5.J5), so the paper's 'strictly stronger disposal' claim is WITHDRAWN; O1 = O6 = -O2 + (1/2)O4 on shell, so O1 and O6 are NOT exact total derivatives on the ECH branch; O1 = O6 and the Nieh-Yan relation 2*O1 + 2*O2 - O4 = 0 both SURVIVE, re-verified at finite gamma on six curved on-shell ECH configurations at gamma in {19/80, 1, 3}, while O1 = -O2 FAILS. The physics conclusion survives intact: O1, O4 and O6 join O5 in the kappa-suppressed Fierz-closed (J5.J5) disposal class, with O4^[4]/O5^[4] = gamma/(1+gamma^2) ~ 0.22 at gamma = 0.2375 — no new light scale, and the 'no (meV)^4 vacuum energy without a new light scale' conclusion is unchanged. A genuine manuscript convention inconsistency was also fixed: Sec. II's T = kappa*S and App. E's Eq. (E2) normalizations differed by a factor of two in torsion amplitude; the survey now uses Eq. (E2)'s normalization (the Freidel-Minic-Takeuchi solution of the connection equation) throughout, stated as such in both Sec. II and App. E, and O5 reduces to -3*kappa*[gamma^2/(1+gamma^2)]*(J5.J5). Appendix C's claim that the trace-vector and tensor torsion irreps 'appear only when the minimal coupling assumption is relaxed' was FALSE for the trace-vector and is corrected: only the tensor irrep is outside minimal coupling, while the trace-vector irrep is generated by the Holst term under minimal coupling and is inside the Fierz lemma's reach via O4. Data and Code Availability now cites two additional artifacts via the \\artifact convention (research/theory_audit/ech_torsion_onshell_2026_08_08.py and .md), with the frozen-commit provenance sentence restated accordingly. Also closed this round: Levi-Civita 'symbol' -> 'tensor' with eps_0123 = -1; the form-to-density Nieh-Yan conversion given in one line so Eq. (11)'s coefficients are reproducible from the quoted identity; M_Pl -> reduced M-bar_Pl inside the App. A 1 identity; the abstract gained a branch-vs-channel qualifier, a Tier-III qualifier on the 61-67 orders claim, and a softened independence claim; Table II's R2 birefringence register reconciled with the abstract's headline; App. A Case I's dimension-(+1) referent named; the Shapiro-Teixeira arXiv-version parenthetical explained; App. A density symbols glossed; and the abstract's long spanning-list sentence split. Deferred-genuine, carried unchanged: the frozen-release Zenodo DOI for this survey's own verification scripts (P-round packaging item the paper already discloses as planned). Page count moved 24 -> 25 because the correction required new text, reported rather than smoothed over; Grok's <=15 pp target remains unmet. DRAFT: R-phase NOT converged at R12 - two correctness-grade MAJORs plus several correctness-grade minors were found and closed, and the round overturned a result one of the paper's own released artifacts had asserted, so R13 on the exact v1C.0.15 PDF is the next correctness-convergence check; no readiness score has been computed and no venue/Zenodo kit exists yet.",
-        href: "/papers/paper1c_nogo_survey_v1C.0.16.pdf",
+          "The portfolio-consistency paper the March-2026 strategy called for, redone at the corrected \u221235/16 amplitude: reclaims the orphaned NANOGrav 15-yr free-spectrum MCMC (\u03b3 = 2.57 \u00b1 0.38 vs. the matter-bounce prediction 3, Savage\u2013Dickey B \u2248 3.2 for matter bounce over free spectrum), PBH abundance at \u221235/16, and SPHEREx/MegaMapper reach. First pass complete at research/track_a3_multichannel/; not yet a submitted manuscript.",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/research/track_a3_multichannel",
         external: true,
       },
     ],
-    status: "Primary theory result with a boundary Note and reusable research software.",
+    status: "Flagship line \u2014 A1 gated on an independent derivation, A2/A3 the active new-science work.",
   },
   {
-    id: "desi-anomaly-discovery",
-    title: "DESI anomaly discovery",
+    id: "track-b-ech-note",
+    title: "Track B \u2014 The ECH Note (closed line)",
     question:
-      "What unusual spectra emerge from a full-scale DESI anomaly search, and which candidates survive scientific validation?",
+      "What does minimal Einstein\u2013Cartan\u2013Holst spin-torsion gravity do for the bounce, and what can it not do for dark energy?",
     result:
-      "A discovery-focused flagship is being rebuilt around the preserved 2,145-row filtered slice and 1,127 SIMBAD/NED-unmatched candidate taxonomy.",
+      "P1N (v1N.0.1) merges P1A and P1C into one \u226412 pp gr-qc/CQG Note: the derived axial spin-spin contact term is identified with Po\u0142awski's torsion-bounce repulsion mechanism (the positive result), while the same algebraic elimination closes four candidate dark-energy routes (the negative result).",
     limitation:
-      "The enhanced parent catalog, exact model, score lineage, and selection reproducibility must be restored or regenerated before a flagship manuscript is drafted.",
-    supportSlugs: ["paper-3"],
-    status: "Flagship rebuild active. Current P3 is technical provenance support, not the discovery paper.",
+      "P1N has not yet been through any INT/EXT review board. P1A and P1C remain on disk, frozen and unedited, as this Note's archived lineage \u2014 not separate live submission targets.",
+    leadSlug: "paper-1n",
+    supportSlugs: [],
+    status: "One closed-line Note. P1A + P1C review churn stopped after R13; single INT board runs on the merged Note before submission.",
   },
   {
-    id: "galaxy-chirality",
-    title: "Galaxy chirality",
+    id: "track-c-desi-data-products",
+    title: "Track C \u2014 DESI data products (on-vision)",
     question:
-      "Is there a large-scale observed-label chirality dipole in the released DESI imaging catalog?",
+      "What do DESI's public galaxy and spectral data show when tested directly against the rotating-black-hole-universe spin-axis prediction and scanned for early-universe anomalies \u2014 and what does that say about bounce vs. inflation?",
     result:
-      "P4 releases the catalog and reports a declared primary observed-label dipole consistent with zero.",
+      "C1 \u00b7 P4\u2032 (v4P.0.1) folds P5 into P4 as the largest test of Po\u0142awski's galaxy-spin-axis prediction: a null so far, excluding alignment fractions \u03b7 > 0.98% at \u226595% coverage, a factor of 2\u201320\u00d7 below literature claims. C2 (early-universe anomaly map) redirects the anomaly line from a bare data product to an explicit bounce-vs-inflation discriminator; P3 stands as its provenance/public-ID release until the map's autoencoder catalogue is earned. C3 (namaster-proof) is an optional software note.",
     limitation:
-      "The result is not a physical primordial-parity constraint; morphology transfer and systematics remain open.",
-    leadSlug: "paper-4",
-    supportSlugs: ["paper-5"],
-    status: "Primary catalog result with a distinct standalone AJ environment companion.",
+      "P4\u2032's exclusion bears on the black-hole-universe model's spin-axis claim only \u2014 it is not itself a bounce-cosmology detection. C2's catalogue is contingent on ledger #8 (known-object recovery benchmark) passing before it is drafted.",
+    leadSlug: "paper-4p",
+    supportSlugs: ["paper-3", "paper-1b"],
+    status: "P4\u2032 fresh draft, review board not yet run. P3 is provenance support for the redirected anomaly map. P1B (namaster-proof) is an optional JOSS note.",
   },
 ];
 
@@ -202,6 +216,11 @@ export const papers: Paper[] = [
     number: "1",
     publicationRole: "Focused Theory Note · ECH Boundary Result",
     standaloneSubmission: true,
+    archivedInto: {
+      note: "Merged into P1N, the Track B ECH Note (v1N.0.1) — 2026-09-02 portfolio restructure, directive R3. Frozen on disk unedited; no longer an independent submission target.",
+      successorSlug: "paper-1n",
+      zenodoDoi: "https://doi.org/10.5281/zenodo.21481838",
+    },
     title: "Algebraic Cartan Elimination in Minimal Einstein–Cartan–Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches",
     plainTitle: "What minimal spin-torsion gravity can and cannot change — a boundary-setting theory note",
     version: "v1A.0.127",
@@ -327,6 +346,70 @@ export const papers: Paper[] = [
       },
       { label: "Zenodo DOI (manuscript archive)", href: "https://doi.org/10.5281/zenodo.21481842", kind: "secondary", external: true },
       { label: "Zenodo DOI (namaster-proof 0.1.7 software)", href: "https://doi.org/10.5281/zenodo.21481753", kind: "secondary", external: true },
+    ],
+  },
+  {
+    slug: "paper-1n",
+    number: "1N",
+    publicationRole: "Track B · The ECH Note (closed line)",
+    standaloneSubmission: true,
+    title: "What Minimal Einstein–Cartan–Holst Torsion Does for the Bounce and Cannot Do for Dark Energy",
+    plainTitle: "One closed-line Note: spin-torsion gravity's contact repulsion powers a bounce mechanism, but not dark energy",
+    version: "v1N.0.1",
+    lastUpdated: "2026-09-02",
+    tldr: "Merges P1A and P1C into a single ≤12 pp gr-qc/CQG Note. The derived axial spin-spin contact term is identified with Popławski's torsion-bounce repulsion mechanism (the positive result) while the same algebraic elimination closes four candidate dark-energy routes (the negative result). Fresh draft — no INT/EXT review board has run yet.",
+    path: publicationPath({}),
+    pages: "6",
+    refs: "—",
+    readiness: 35,
+    statusVariant: "amber",
+    target: "Classical and Quantum Gravity — Note",
+    description:
+      "Track B of the 2026-09-02 portfolio restructure (directive R3): P1A's algebraic Cartan elimination (spin-sourced axial contact term, zero-spin scalar branch) merged with P1C's 14-entry structural no-go survey (Route-2/Route-3 amplitude-budget closures, six-member dimension-4 parity-odd operator list) into one Note that states both readings of the same result — what minimal ECH gravity does for the bounce, and what it cannot do for dark energy. The Introduction and Discussion explicitly identify the derived contact term with Popławski's spin-spin repulsion mechanism (arXiv:1007.0587; arXiv:1102.5667).",
+    keyResults: [
+      "Minimal ECH Cartan elimination yields the axial contact term −(3κ/16)[γ²/(1+γ²)]J₅² in the stated convention",
+      "The derived contact term is identified with Popławski's torsion-bounce spin-spin repulsion mechanism — the positive result",
+      "14-entry barrier catalog across 7 foundation mechanism classes and 6 observational branches closes four candidate dark-energy routes (R1–R4) — the negative result",
+      "Six-member dimension-4 parity-odd operator list corrected to a rank-4 spanning/generating list (rank 2 modulo total derivatives), matching the settled theory-audit record",
+      "On-shell ECH torsion at finite Barbero–Immirzi γ carries both an axial and a trace-vector irrep (β/α = 1/2γ); pure axiality holds only in the strict γ→∞ Einstein–Cartan limit",
+      "4-pass compile: 0 undefined references, 0 undefined citations; overflow audit 0 overfull hboxes >10pt after two fixes; every page visually rendered and checked",
+      "tools/p1c_consistency_check.py: 4/4 rules PASS (constraint-count agreement, Tier-I count agreement, assert-vs-disclaim pairs, universal-closure claim vs self-declared non-closures)",
+    ],
+    surveys: ["No survey likelihood — algebraic and field-theory Note"],
+    predictions: ["Axial contact coefficient in the stated ECH convention", "Identification of the contact term with the Popławski torsion-bounce mechanism"],
+    figures: ["Table I: 14-entry barrier catalog", "Table II: six-member operator list with rank-4 spanning status"],
+    remainingWork: [
+      "No INT or EXT review board has run on v1N.0.1 — this session's first task",
+      "Convex paperVersions:bump / activityFeed:add registration (this session)",
+      "Houston review of the merged framing before any review board runs",
+      "P1A and P1C's own SSOT entries should be annotated to point readers to P1N as the current submission target, without altering their historical record",
+    ],
+    preprintId: "HUBIFY-2026-001N",
+    pdfMeta: "PDF · 6 pp · v1N.0.1 · created Sep 2, 2026 · md5 66423305a369626b7f3c71bbcc77b09c — first merged draft (P1A + P1C), 2026-09-02 portfolio restructure. No review board run yet.",
+    changelog: [
+      "v1N.0.1: first merged draft. Compiled 4-pass, 0 undef refs, 0 overfull hboxes, 4/4 consistency-check rules PASS. Superseded P1A (v1A.0.127, archived, Zenodo 10.5281/zenodo.21481838) and P1C (v1C.0.16, frozen, not independently submitted).",
+    ],
+    artifacts: [
+      { label: "Read PDF", href: "/papers/paper1bc_ech_note_v1N.0.1.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1bc_ech_note_v1N.0.1.pdf", kind: "secondary", download: true },
+      {
+        label: "LaTeX source",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/arxiv/paper1bc_ech_note",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Archived lineage: P1A (Zenodo DOI)",
+        href: "https://doi.org/10.5281/zenodo.21481838",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Archived lineage: P1C (LaTeX source, frozen v1C.0.16)",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1c_nogo_survey/main.tex",
+        kind: "secondary",
+        external: true,
+      },
     ],
   },
   {
@@ -469,6 +552,11 @@ export const papers: Paper[] = [
     number: "4",
     publicationRole: "Lead Catalog Paper · Observed-Label Chirality Null",
     standaloneSubmission: true,
+    archivedInto: {
+      note: "Folded into P4′, the Track C1 chirality test (v4P.0.1), with P5 folded in as one section — 2026-09-02 portfolio restructure, directive R3. Every P4′ number is quoted verbatim from this reviewed v1.0.274 source; the catalog pipeline was not re-run.",
+      successorSlug: "paper-4p",
+      zenodoDoi: "https://doi.org/10.5281/zenodo.21461899",
+    },
     title: "An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
     plainTitle: "Do spiral galaxies' apparent handedness directions cluster? An 8.5M-galaxy test (result: no dipole)",
     version: "v1.0.274",
@@ -556,6 +644,10 @@ export const papers: Paper[] = [
     number: "5",
     publicationRole: "Standalone Companion · Chirality–Environment Null Test",
     standaloneSubmission: true,
+    archivedInto: {
+      note: "Folded into P4′ (v4P.0.1) as one condensed section rather than kept as a standalone 46-pp paper — 2026-09-02 portfolio restructure, directive R3. Every quoted number is verbatim from this reviewed v0.1.147 source.",
+      successorSlug: "paper-4p",
+    },
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Catalog-Native Void Non-Detection with Secondary Cosmic-Web Cross-Checks",
     plainTitle: "Does galaxy handedness differ inside cosmic voids? A null test companion to P4",
     version: "v0.1.147-2026-08-03",
@@ -607,6 +699,77 @@ export const papers: Paper[] = [
       },
       {
         label: "LaTeX source",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+        kind: "secondary",
+        external: true,
+      },
+      { label: "Chirality catalog (HuggingFace)", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog", kind: "secondary", external: true },
+    ],
+  },
+  {
+    slug: "paper-4p",
+    number: "4P",
+    publicationRole: "Track C1 · DESI Data Products (on-vision)",
+    standaloneSubmission: true,
+    title: "The Largest Test of the Rotating-Black-Hole-Universe Galaxy-Spin-Axis Prediction: A Chirality-Dipole Null in 8.47M DESI Spirals with Void-Environment Cross-Check",
+    plainTitle: "Testing the 'universe born inside a rotating black hole' prediction against 8.5M DESI galaxies (result: null, excludes the literature amplitudes)",
+    version: "v4P.0.1",
+    lastUpdated: "2026-09-02",
+    tldr: "Folds P4 (8.47M-galaxy chirality catalog, observed-label dipole null) and P5 (DESIVAST void/non-void environment contrast) into one ≤15 pp ApJS paper, adding a new section reading Popławski's rotating-black-hole-universe papers for a computed dipole prediction. Under the minimal closure needed to make the claim testable, the catalog's own A₉₅ᵒᵇˢ≈0.98% sensitivity floor excludes alignment fractions η>0.98% at ≥95% coverage — a factor of 2–20× below the ~7–33% amplitudes reported by Longo (2011) and Shamir (2012–2025). Confirms the independent reanalyses of Iye, Yagi & Fukumoto (2021) and Patel & Desmond (2024).",
+    path: publicationPath({}),
+    pages: "6",
+    refs: "—",
+    readiness: 35,
+    statusVariant: "amber",
+    target: "ApJS (candidate; matches P4's venue fit)",
+    description:
+      "Track C1 of the 2026-09-02 portfolio restructure (directive R3): P4′ is the largest test to date of Popławski's galaxy-spin-axis prediction (the observational claim the black-hole-universe / torsion-bounce model is invoked to explain), not a detached data product. Every quantitative result is quoted verbatim from the reviewed P4 v1.0.274 and P5 v0.1.147 sources, or is a deterministic output of the new committed exclusion script; the catalog pipeline was not re-run.",
+    keyResults: [
+      "8,474,531 DESI Legacy DR8 galaxies catalogued; primary real-space chirality-dipole null on 890,069 quality-controlled high-confidence rows (887,472 support the fit): z_mom=+0.635, one-sided rank p=0.238",
+      "New Sec. 5 — 'The black-hole-universe prediction and its exclusion': Popławski's papers (arXiv:1007.0587, 1111.4595, 1410.3881, 1910.10819) state only a qualitative preferred-axis alignment tendency, not a computed dipole amplitude",
+      "Under the minimal closure A_pred≈η, the catalog's A₉₅ᵒᵇˢ≈0.98% sensitivity floor excludes η>0.98% at ≥95% coverage — 2–20× below the ~7–33% amplitudes reported by Longo (2011) and Shamir (2012, 2020, 2022, 2025)",
+      "Confirms the independent reanalyses of Iye, Yagi & Fukumoto (2021, arXiv:2011.00662) and Patel & Desmond (2024, arXiv:2404.06617)",
+      "DESIVAST void/non-void environment contrast (145,766 classifier-labelled galaxies, folded in from P5): Δf_CW=+0.00145, p=0.66 — null across NSIDE=2/4/8 and 3,750 nearest-VoidFinder-MAXIMALS clusters",
+      "No bounce-cosmology claim is made beyond this test — Sec. 6 is explicit this bears on the black-hole-universe model's spin-axis claim only",
+      "4-pass compile: 0 undefined references/citations, 0 overfull hboxes, 0 LaTeX warnings; every page visually rendered and checked",
+    ],
+    surveys: ["DESI Legacy DR8 (8.47M galaxies)", "DESI DR1 zall-pix-iron.fits (matched subset)", "DESIVAST void catalogs (3 algorithms)"],
+    predictions: ["Chirality-dipole null (real-space, harmonic, WLS)", "Black-hole-universe spin-axis alignment exclusion η>0.98%", "Void/non-void chirality-environment null"],
+    figures: ["Fig. 1: per-pixel HC CW-fraction sky map", "Fig. 2: T-Web secondary cosmic-web diagnostic", "Table 1: literature amplitude vs. A₉₅ᵒᵇˢ comparison"],
+    remainingWork: [
+      "No INT or EXT review board has run on v4P.0.1 — this session's first task",
+      "Convex paperVersions:bump / activityFeed:add registration (this session)",
+      "Whether/when P5's standalone 42-pp paper is formally retired (vs. kept as an archived companion) is a Houston-gated decision",
+      "Houston sign-off (readiness 95→100) has not been sought",
+    ],
+    preprintId: "HUBIFY-2026-004P",
+    pdfMeta: "PDF · 6 pp · v4P.0.1 · created Sep 2, 2026 · md5 d3e6f077ad5d772ed25d9f5d0b4c2140 — first draft folding P4+P5, 2026-09-02 portfolio restructure. No review board run yet.",
+    changelog: [
+      "v4P.0.1: first folded draft (P4 catalog + P5 environment section + new black-hole-universe exclusion section). Compiled 4-pass, 0 undef refs, 0 overfull hboxes. Superseded P4 (v1.0.274, archived, Zenodo 10.5281/zenodo.21461899) and P5 (v0.1.147, archived, not independently DOI'd).",
+    ],
+    artifacts: [
+      { label: "Read PDF", href: "/papers/paper4prime_chirality_test_v4P.0.1.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper4prime_chirality_test_v4P.0.1.pdf", kind: "secondary", download: true },
+      {
+        label: "LaTeX source",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p4prime_chirality_test/paper",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Exclusion computation script",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Archived lineage: P4 (Zenodo DOI)",
+        href: "https://doi.org/10.5281/zenodo.21461899",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Archived lineage: P5 (LaTeX source, v0.1.147)",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
         kind: "secondary",
         external: true,

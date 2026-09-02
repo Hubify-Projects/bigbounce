@@ -16,24 +16,24 @@ export interface PublicationMapGroup {
 }
 
 export const publicationArchitecture = {
-  lastUpdatedDisplay: "August 4, 2026",
+  lastUpdatedDisplay: "September 2, 2026",
   headline:
-    "Publication follows three research programs, not a six-paper quota. Candidate-package readiness preserves evidence and packaging state; it does not establish a scientific flagship, journal acceptance, or a submission decision.",
+    "Publication follows a flagship line + one closed-line note + data products (Track A/B/C), not the retired three-research-programs framing and not a paper-count quota. Candidate-package readiness preserves evidence and packaging state; it does not establish a scientific flagship, journal acceptance, or a submission decision.",
   decisions: [
     {
-      title: "DESI anomaly flagship",
+      title: "Track A — bounce vs. inflation (flagship)",
       detail:
-        "Rebuild the discovery paper only after the enhanced parent, model, score lineage, and selection reproducibility are restored or regenerated. Current P3 is technical provenance support.",
+        "A1 · P2′ is gated before submission on an independent second-method re-derivation of f_NL = −35/16 (ledger #1). A2 (transmission through an explicit bounce) and A3 (multi-channel consistency: NANOGrav γ, PBH abundance, SPHEREx/MegaMapper) are the active new-science work — A2 a research brief in progress, A3's first pass done.",
     },
     {
-      title: "P3 role approved",
+      title: "Track B — the ECH Note (closed line)",
       detail:
-        "The public-ID recovery is a citable supporting data release integrated with the rebuilt anomaly flagship, not a standalone ApJS submission.",
+        "P1A merged into P1C as one ≤12 pp gr-qc/CQG Note (P1N, v1N.0.1): what minimal Einstein–Cartan torsion does for the bounce (Popławski's spin-spin repulsion mechanism) and cannot do for dark energy. P1A and P1C stay listed as P1N's archived lineage, frozen on disk, not separate submission targets.",
     },
     {
-      title: "P5 role approved",
+      title: "Track C — DESI data products (on-vision)",
       detail:
-        "The chirality–environment null test remains a standalone AJ companion because it asks a distinct environment-dependence question with its own joins and controlled null.",
+        "P5 folded into P4 as P4′ (v4P.0.1): the largest test of the rotating-black-hole-universe galaxy-spin-axis prediction, excluding literature alignment amplitudes by 2–20×. The anomaly line (P3) is redirected to an early-universe anomaly map with explicit bounce-vs-inflation discriminators; namaster-proof (P1B) is an optional software note.",
     },
   ],
 } as const;
@@ -46,15 +46,17 @@ export const publicationArchitecture = {
 export const publicationMap: readonly PublicationMapGroup[] = [
   {
     title: "Manuscripts and releases",
-    detail: "Six standalone works are the endpoint; P3 is an integrated supporting data release, not a seventh discovery paper.",
+    detail: "P1N and P4′ are the current submission targets for Tracks B and C1; P1A/P1C/P4/P5 remain listed as their archived lineage, never deleted. P3 is an integrated supporting/provenance release, not a standalone discovery paper.",
     rows: [
-      { name: "P2 · bounce-theory lead", role: "Lead theory paper", status: "Selected standalone manuscript", destination: "Physical Review D", dependency: "Stated bounce-transmission and survey-covariance conditions", nextGate: "Houston visual approval, then independent review", href: "/papers/paper-2" },
-      { name: "P1A · ECH boundary Note", role: "Focused theory Note", status: "Selected standalone manuscript", destination: "CQG Note", dependency: "Narrow algebraic scope and venue fit", nextGate: "Houston visual approval, then independent review", href: "/papers/paper-1a" },
+      { name: "P2′ · Track A1 flagship Letter", role: "Lead theory paper (Letter)", status: "Gated before submission — ledger #1 independent re-derivation", destination: "Physical Review D — Letter / JCAP", dependency: "Independent second-method re-derivation of f_NL = −35/16", nextGate: "Close ledger #1, then Houston visual approval + independent review", href: "/papers/paper-2" },
+      { name: "P1N · Track B ECH Note", role: "Closed-line theory Note (P1A + P1C merged)", status: "Fresh draft — no review board run", destination: "Classical and Quantum Gravity — Note", dependency: "Narrow algebraic scope and venue fit", nextGate: "One INT board, then Houston visual approval + independent review", href: "/papers/paper-1n" },
       { name: "P1B · namaster-proof", role: "Research-software metapaper", status: "Selected standalone manuscript", destination: "JORS software paper", dependency: "Installable package and independent software review", nextGate: "Houston visual approval, then independent review", href: "/papers/paper-1b" },
-      { name: "Rebuilt DESI anomaly flagship", role: "Discovery paper", status: "New work; rebuild in parallel", destination: "Venue chosen after reproducible result exists", dependency: "Immutable parent catalog, model, score/selection lineage, and candidate validation", nextGate: "Complete the fail-closed DESI rerun before drafting", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p1_highz_tracers/clean_rerun_contract.md", external: true },
-      { name: "P4 · chirality catalog", role: "Lead catalog/null-result paper", status: "Selected standalone manuscript", destination: "Astrophysical Journal Supplement Series", dependency: "Released labels, stated observed-label scope, and systematic boundary", nextGate: "Houston visual approval, then independent review", href: "/papers/paper-4" },
-      { name: "P5 · chirality × environment", role: "Independent companion null test", status: "Selected standalone manuscript", destination: "Astronomical Journal", dependency: "Catalog-native joins and controlled environment null", nextGate: "Houston visual approval, then independent review", href: "/papers/paper-5" },
-      { name: "P3 · DESI Public-ID Recovery", role: "Integrated supporting data release", status: "Citable provenance support", destination: "Bundle with rebuilt anomaly flagship", dependency: "Frozen historical list and transparent match-confidence split", nextGate: "Maintain versioned release; do not submit as a discovery paper", href: "/papers/paper-3" },
+      { name: "P4′ · Track C1 chirality test", role: "Lead catalog/null-result paper (P4 + P5 folded)", status: "Fresh draft — no review board run", destination: "Astrophysical Journal Supplement Series", dependency: "Released labels, stated observed-label scope, and the black-hole-universe exclusion", nextGate: "First review board, then Houston visual approval + independent review", href: "/papers/paper-4p" },
+      { name: "Early-universe anomaly map", role: "Discovery paper (Track C2)", status: "New work; redirected in parallel", destination: "Venue chosen after a bounce-vs-inflation discriminator is earned per candidate channel", dependency: "Known-object recovery benchmark (ledger #8) before the autoencoder catalogue is drafted", nextGate: "Complete the fail-closed DESI rerun before drafting", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p1_highz_tracers/clean_rerun_contract.md", external: true },
+      { name: "P3 · DESI Public-ID Recovery", role: "Provenance support for the anomaly map (Track C2)", status: "Citable provenance support", destination: "Bundle with the redirected anomaly map", dependency: "Frozen historical list and transparent match-confidence split", nextGate: "Maintain versioned release; do not submit as a discovery paper", href: "/papers/paper-3" },
+      { name: "P1A · archived into P1N", role: "Superseded theory Note", status: "Archived lineage — frozen on disk", destination: "See P1N", dependency: "—", nextGate: "None — not an independent submission target", href: "/papers/paper-1a" },
+      { name: "P4 · archived into P4′", role: "Superseded catalog paper", status: "Archived lineage — frozen on disk", destination: "See P4′", dependency: "—", nextGate: "None — not an independent submission target", href: "/papers/paper-4" },
+      { name: "P5 · archived into P4′", role: "Superseded companion null test", status: "Archived lineage — frozen on disk", destination: "See P4′", dependency: "—", nextGate: "None — not an independent submission target", href: "/papers/paper-5" },
     ],
   },
   {
@@ -84,6 +86,6 @@ export const publicationMap: readonly PublicationMapGroup[] = [
 ] as const;
 
 export const publicationExecution = {
-  selectedOrder: ["P2", "P1A", "P4", "P1B", "P5"],
-  detail: "Review and submit the five selected manuscripts in this order. The clean DESI rerun proceeds in parallel; only a reproducible, scientifically validated result earns the rebuilt anomaly flagship its own submission.",
+  selectedOrder: ["P4′", "P1N", "P2′", "P1B"],
+  detail: "P4′ (condensed, model-tested null) and the P1N ECH Note are the fastest honest candidates; P2′ follows once ledger #1's independent re-derivation closes. The redirected early-universe anomaly map proceeds in parallel; only an earned, scientifically validated result draws its own submission. P1A, P4, and P5 remain archived lineage, not separate submissions.",
 } as const;

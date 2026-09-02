@@ -16,9 +16,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Research Programs",
+  title: "Research Tracks",
   description:
-    "BigBounce research programs, their lead scientific results, and their supporting papers and artifacts.",
+    "BigBounce research tracks — flagship, closed line, and data products — their lead scientific results, and their supporting papers and artifacts.",
 };
 
 function readinessColor(pct: number) {
@@ -39,10 +39,10 @@ export default async function PaperPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Research programs &middot; evidence library
+          Research tracks &middot; evidence library
         </p>
         <h1 style={{ fontFamily: "var(--font-mono-stack)", fontWeight: 600 }}>
-          Research programs
+          Research tracks
         </h1>
         <p className="subtitle">
           Three research questions lead this portfolio. The PDFs, software, data
