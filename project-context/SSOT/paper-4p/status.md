@@ -339,6 +339,10 @@ and standalone-recompiling 4 passes: 0 undefined refs, 11 pages. Stored at
 `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.4.tar.gz`,
 sha256 `db10841372689d9531b576a7ddfbc6aea3833b0e9d092b7be3808620b8665548`.
 
+Git commit `d87b69b030d0d8e114027551fc894a8fb8d65d84`. Convex
+`paperVersions:bump` id `k576j98mgmh32egg4rme7xe7jh8dmnp0`; `activityFeed:add`
+id `j5766j1vgb1b6m45edz0aaqdyh8dnf1p`.
+
 **CONVERGENCE STATEMENT (directive R2):** Rounds stop after v4P.0.4. R3 was
 authorized as a verification pass and functioned as one: 21/21 R2 closures
 verified real, the Neyman inversion byte-reproduced, and R3 returned no
