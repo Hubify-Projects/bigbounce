@@ -274,6 +274,12 @@ exists to exclude).
 JSON), `reproducibility/manifests/experiments/p4prime-a95-neyman-cl-2026-09-02.json`.
 No P4/P5 source repo file was touched.
 
+Git commit `a47ca06104bfb140e4982b346c0440cfb7d04501`. Convex
+`paperVersions:bump` id `k578hqea3a00ddg6qf4gr0f0y18dnze3`; `activityFeed:add`
+id `j57dptwy56ktbenejeeewkq6r18dnpx3` (first `paperVersions:bump` call used a
+malformed `texCommit` string and was superseded by the corrected call above —
+recorded here so the earlier id is not mistaken for the authoritative one).
+
 ## Open gates (this draft has NOT been through a fresh review board)
 
 - No INT or EXT review board has been run on v4P.0.3 yet — this closure
