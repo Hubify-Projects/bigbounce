@@ -199,3 +199,42 @@ gate on this string before parsing anything else:**
   numeric-tolerance vs. named-tool verification, or a follow-up schema field
   (e.g. `verification_command`) — neither exists yet. Do not build a
   fake/partial automatic verifier against the current free-text field.
+
+---
+
+## Status 2026-09-02
+
+**A dev-machine dry-run importer now exists on the Hubify side** —
+`hubify/cli/src/repro-manifest-import.ts` + `commands-repro-import.ts`
+(invoked as `hubify repro-import`), implementing this spec's §1–§5
+contract: `manifest_version` gate (reject unknown/missing, no
+best-effort parse), program→experiment DAG join (missing DAG id or
+unresolvable `code[].path` is a hard error, not a skip), the
+status→offerability mapping (§"Status → offerability"), and the
+non-fabrication rule for `null` fields (reported as honest "gaps", never
+inferred). 7 tests pass (`cli/test/repro-manifest-import.test.mjs`),
+including a real-checkout integration test against this repo.
+
+A dry run against this repo's current `reproducibility/manifests/`
+(commit-pinned, per §4) produced: **3 programs, 52 experiments, 0 import
+errors, 317 honest gaps** (mostly `checksum: null` and unset
+`original_run` fields — expected, not a defect) — written to
+`hubify/data/imports/bigbounce-manifests-2026-09-02.json`.
+
+**What this is not yet:** per §4's stricter safety constraint, this
+dry-run reads a live local checkout of this repo directly, which is
+*not* the sanctioned Hubify-side read path (the isolated
+`bigbounce-lab` mirror workspace, or the public GitHub mirror at a
+pinned SHA — neither of which yet mirrors `reproducibility/manifests/`).
+It also does not write to Convex — this remains a local validated
+loader/CLI producing a JSON payload, not a live import.
+
+**Remaining step (token-gated, not attempted):** pushing the validated
+payload into Hubify's live Convex tables requires `HUBIFY_TOKEN`, which
+is absent from `hubify/.env.local` (`.env.example` declares it but no
+value is set) and is only obtainable via the You.md encrypted vault or
+`hubify auth login` — both require Houston. No agent attempted to
+acquire it. Once available, the remaining work is: (1) extend the
+`bigbounce-lab` mirror to include `reproducibility/manifests/` (closing
+the §4 read-path gap), and (2) wire the existing dry-run payload builder
+to a real Convex mutation instead of a JSON file write.
