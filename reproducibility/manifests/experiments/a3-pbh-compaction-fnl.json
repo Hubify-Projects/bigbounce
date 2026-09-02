@@ -1,0 +1,64 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-pbh-compaction-fnl",
+  "title": "Track A3 item A3-1 \u2014 compaction-function PBH abundance with local non-Gaussianity at f_NL = -35/16 vs -35/8 vs 0 (Choudhury et al. 2025 formalism)",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+      "entrypoint": "python3 research/track_a3_multichannel/pbh_compaction_fnl.py",
+      "sha256": "27e4021f84b8607acc5da0811f4cacf030d5068464457b5534a647ba6a39de38"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + scipy 1.18.0 + matplotlib (repo requirements.txt subset)",
+    "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation (Apple M5)",
+    "date": "2026-09-02",
+    "wall_clock": "215 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~4 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Pure numpy/scipy, deterministic (no RNG). Implements Choudhury et al. 2025 (arXiv:2409.18983, EPJC 85:472) Eqs. 30/31/34/35/40/41/48-56/60-66. NOT a full reproduction: their regularized-renormalized-resummed EFT-of-bounce + USR curvature spectrum is not reconstructible from the published paper (no closed-form Delta^2_zeta(k), no loop-counterterm normalisation, no tabulated EFT coefficients or k_s/k_e/Delta N_USR values), so a lognormal stand-in is used and the amplitude is scanned. Supersedes a3-pbh-abundance-fnl (Press-Schechter quadratic map), whose conclusion this run REVERSES."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/outputs/pbh_compaction_fnl.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/outputs/pbh_compaction_fnl.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) the 2-D grid reproduces the exact 1-D Gaussian quadrature to <3% at A = 0.05, 0.1314, 0.2; (b) f(w) = 2/3, C_max = 2/3, and C_lin- = 0.666667 at C_th = 0.5; (c) at C_th = 0.5, Delta = 0.5, r_p k_p = 1 with A* = 0.131446 (Gaussian f_PBH = 1): f_PBH = 3.62e-14 at -35/16 and 1.57e-2 at -35/8, i.e. f_PBH(-35/16) < f_PBH(-35/8), the REVERSE of the Press-Schechter first pass; (d) the amplitude ratio A(-35/16)/A(-35/8) for f_PBH = 1e-3 is 1.732 with range [1.610, 1.809] and std 0.050 over the 27-point (Delta, r_p k_p, C_th) grid.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 3, open sub-item A3-1",
+    "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md section 2.5",
+    "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md",
+    "supersedes reproducibility/manifests/experiments/a3-pbh-abundance-fnl.json",
+    "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025, arXiv:2409.18983, EPJC 85:472",
+    "Young, Byrnes & Sasaki 2019, arXiv:1904.00984; Musco 2019, arXiv:1809.02127"
+  ]
+}

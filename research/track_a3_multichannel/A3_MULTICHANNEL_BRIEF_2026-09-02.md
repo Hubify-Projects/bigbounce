@@ -217,6 +217,68 @@ Equivalently, the amplitude needed to *reach* f_PBH = 1 (*new*):
   their USR power spectrum, neither of which is implemented here. **That is the single
   largest open item in this track.**
 
+### 2.5 SAME-DAY UPDATE (2026-09-02, later) — compaction-function redo: §2.4 IS REVERSED
+
+Open item **A3-1 is now closed**. `pbh_compaction_fnl.py` implements the
+Choudhury et al. 2025 compaction-function criterion (their Eqs. 30, 31, 34, 35,
+40, 41, 48-56, 60-66, read from the published PDF) in place of the
+Press-Schechter quadratic map above. Full write-up:
+**`PBH_COMPACTION_NOTE_2026-09-02.md`**. Nothing in §2.1-§2.4 is deleted; it is
+the record of what the first pass computed. But its conclusion does not survive.
+
+**What changed.**
+
+1. **The ζ ceiling was an artefact.** In the compaction formalism the quadratic
+   non-linearity bounds **C** (at C_max = f(w) = 2/3), not ζ. The map ζ_G → C_lin
+   is unbounded, so every threshold C_th < 2/3 is reachable at every f_NL and
+   β > 0 throughout. §2.2's "halving |f_NL| exactly doubles the ceiling" remains
+   arithmetically true but is **without physical content** and is superseded as
+   "the single sharpest thing this channel says."
+2. **The ordering flips.** §2.4 said −35/16 is the *weaker* suppressor and "the
+   halved value is the one that sits in the sizeable-abundance band." Under the
+   compaction criterion the opposite holds: at fixed curvature amplitude
+   **f_PBH(−35/16) < f_PBH(−35/8) at every point** of a 27-point
+   (Δ, r_p k_p, C_th) grid spanning γ_cr ∈ [0.766, 0.968].
+
+| | first pass (§2.3) | compaction redo |
+|---|---|---|
+| f_PBH at −35/16 | 7.32 × 10⁻³ | 3.62 × 10⁻¹⁴ |
+| f_PBH at −35/8 | 3.75 × 10⁻⁶ | 1.57 × 10⁻² |
+| ratio (−35/16)/(−35/8) | 1.95 × 10³ | 2.3 × 10⁻¹² |
+
+3. **The robust number.** f_PBH itself is exponentially sensitive to γ_cr (>100
+   decades across the grid), so it is *not* quotable. The stable observable is
+   the amplitude required to reach the floor of the Choudhury+ band:
+   **A(−35/16)/A(−35/8) = 1.732, range [1.610, 1.809], std 0.050 (n = 27)** —
+   ±6% while f_PBH moves by 100+ dex. K, Ω_DM, g_*, M_H all cancel in it.
+4. **Unforced agreement with Choudhury et al.** at the one comparable point:
+   −35/8 lands at f_PBH = 1.6 × 10⁻², inside their reported 10⁻³ ≤ f_PBH ≤ 1,
+   with the amplitude fixed only by requiring the *Gaussian* case to give
+   f_PBH = 1. Their qualitative "negative f_NL mitigates overproduction" is
+   reproduced for γ_cr ≳ 0.85.
+5. **A disagreement, recorded not resolved.** For γ_cr ≲ 0.85 our implementation
+   of their equations gives *enhancement*, not suppression, at fixed amplitude.
+   Which side their setup sits on cannot be determined — see next point.
+6. **What is missing from their paper.** Their Δ²_ζ is the regularized-
+   renormalized-resummed one-loop EFT-of-bounce + USR spectrum (their Sec. III B,
+   Eq. 55). The paper describes the construction but prints no closed-form
+   Δ²_ζ(k) and no complete parameter set (loop-counterterm normalisation,
+   tabulated EFT coefficients, k_s/k_e/ΔN_USR). **This is the single ingredient
+   that cannot be reproduced from the paper**, and it is what fixes γ_cr. A
+   lognormal stand-in is used and the amplitude is scanned, never adopted.
+7. **Perturbativity caveat, shared with them.** At the amplitudes PBH formation
+   needs, 1.2|f_NL|σ_r ≈ 0.5-1.0 at −35/16 and 1.1-2.0 at −35/8 — the quadratic
+   truncation of the local map is not perturbatively controlled. Same class of
+   statement as their own |f_NL| ≲ 60 bound.
+
+**Revised verdict for channel 2.** The channel *is* sensitive to which f_NL value
+is right (factor 1.73 in required amplitude), but it **cannot yet be turned into a
+constraint**, because the absolute f_PBH depends exponentially on γ_cr and hence on
+a curvature spectrum this lab has not yet computed. That prerequisite is the same
+one as **A3-3**, so A3-1b and A3-3 should be done together.
+
+---
+
 ---
 
 ## 3. Channel 3 — Survey reach for f_NL^local = −2.1875 (NEW arithmetic on CITED σ)
@@ -306,7 +368,10 @@ depends on it strongly. **Ledger item #1 gates the scientific content of this tr
 
 | # | item | why | cost |
 |---|---|---|---|
-| A3-1 | Redo the PBH channel with the **compaction-function** criterion (Choudhury et al. setup) at −35/16 | the Press–Schechter ceiling blocks the standard thresholds; without this we cannot claim consistency with their result | days, local, $0 |
+| ~~A3-1~~ | ~~Redo the PBH channel with the **compaction-function** criterion (Choudhury et al. setup) at −35/16~~ | **CLOSED 2026-09-02** — `pbh_compaction_fnl.py` + `PBH_COMPACTION_NOTE_2026-09-02.md`; §2.4's conclusion is reversed (see §2.5) | done, local, $0 |
+| A3-1b | Compute the matter-bounce curvature spectrum Δ²_ζ(k) in-lab so γ_cr is **predicted** rather than scanned | f_PBH depends exponentially on γ_cr; without it channel 2 is not a constraint. Couples to A3-3 | weeks |
+| A3-1c | Assess a resummed / exact-δN NG map | 1.2\|f_NL\|σ_r ≈ 0.5–2 at the required amplitudes — the quadratic truncation is non-perturbative | days |
+| A3-1d | Resolve the γ_cr ≲ 0.85 *enhancement* branch against Choudhury et al.'s suppression claim | our implementation of their equations flips sign across γ_cr ≈ 0.85 | blocked on their spectrum |
 | A3-2 | Settle **ledger #1** (independent −35/16 derivation) | it is the only thing channel 3 actually discriminates on | see ledger |
 | A3-3 | Propagate the matter-bounce *scalar* spectrum through the SIGW kernel to get Ω_GW amplitude (not just slope) at the nHz band | would upgrade channel 1 from slope-consistency to an amplitude test, which *is* discriminating | weeks |
 | A3-4 | Re-derive the r = 0.84 shape overlap at the −35/16 fiducial rather than importing P2's | P2's r was computed for a shape whose normalisation the factor-of-2 audit changed | hours, local, $0 |
