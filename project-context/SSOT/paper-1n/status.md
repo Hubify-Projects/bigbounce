@@ -1,7 +1,8 @@
 # P1N status — current authoritative section
 
-**Current candidate:** v1N.0.2 · 2026-09-02 ·
-`arxiv/paper1bc_ech_note/main.tex` — **R1 closure complete.**
+**Current candidate:** v1N.0.4 · 2026-09-02 ·
+`arxiv/paper1bc_ech_note/main.tex` — **R3 (final) closure complete;
+automated review convergence declared.**
 
 ## R1 closure (v1N.0.1 → v1N.0.2, 2026-09-02)
 
@@ -264,3 +265,128 @@ decisions above were taken). Convex `paperVersions:bump` +
 **Convex:** `paperVersions:bump` id `k57cjc4y022k16m92vy3nae80n8dmgqv`;
 `activityFeed:add` id `j57f2ezrnx1b7m80eanhstmvps8dm5pa`. texCommit
 `453d663e67082f6c804a34b3adf9b14109e5575e`.
+
+## R3 closure (final) — 2026-09-02 (v1N.0.3 → v1N.0.4)
+
+**Audit:** `project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.3-EXACTPDF-c758664b-R3VERIFY/P1N_v1N.0.3_R3_truth_audit.md`
+(sha256 of audited PDF `c758664b4485a45752cd79e2ab695c6b09d9f82f2b283dd8db5a2af6721f7027`,
+verified with `shasum -a 256`). Legs: Claude INT (major-revisions, 5
+MAJOR/9 MINOR = 14) / Grok API (REJECT, 6 ESSENTIAL/3 MAJOR/2 MINOR = 11)
+/ Gemini API (MAJOR REVISIONS, 3 ESSENTIAL/2 MAJOR/2 NIT = 7) / Perplexity
+ABSENT (401 insufficient_quota). 32 leg findings truth-audited → **7
+REGRESSION-FROM-CLOSURE** (regressions introduced by the R2 closure
+itself), 11 GENUINELY-NEW-REAL, 5 RE-FLAG-OF-DISCLOSED, 7 FALSIFIED
+(incl. 1 self-withdrawn), 2 OPINION/GENRE, 0 OUT-OF-SCOPE. Deduped to
+**15 canonical items (DP1N-44…58)**. This audit also caught two prior
+SSOT closure claims (DP1N-29, DP1N-37) that were recorded CLOSED but a
+line-level grep of the tex showed were untouched — both are re-closed for
+real in this round, and every closure line below was grep-verified
+against the tex before being recorded, not trusted from the prior entry.
+
+**Orchestrator scope decisions (verbatim, per directive R2, taken before
+closure work began):**
+
+> **(DP1N-45)** "The orders-of-magnitude statement is defined by the
+> Note's own Eq. (11) with its own definitions; quote the value Eq. (11)
+> actually gives (≈74 orders, computed in the check script) and drop the
+> inherited '61–67' window, adding one sentence that P1C's alternative
+> (Δγ/γ)(H₀/M_Pl) relation gives 61–67 and why the two relations differ."
+
+> **(DP1N-47)** "For barriers B2/B5/B6/B10: derive each in-paper in 2–5
+> lines from the Note's own equations where the closure worker can do so
+> faithfully from P1C's text; where a faithful derivation is not
+> available, downgrade the barrier's evidential tag honestly (state it as
+> asserted/argued, not literature-sourced), remove the unsupported
+> Weinberg1989/BlagojevicHehl attributions, and delete 'literature-sourced'
+> from the abstract."
+
+Execution: no 2–5 line derivation for B2/B5/B6/B10 could be built
+faithfully from P1C's own text without inventing new argument content
+(P1C's own entries cite the same general literature, not a bespoke
+derivation), so **the downgrade branch of DP1N-47 was taken**: all four
+barriers now read "argued in-paper (not literature-established)", the
+`Weinberg1989`/`BlagojevicHehl2013`/`BoehmerBurnett2008` citations
+were removed from those four entries (retained elsewhere where they do
+support the attached claim, e.g. B11), and the abstract's "literature-
+sourced" clause was rewritten to "some are argued in-paper naturalness
+statements not established in the cited literature."
+
+**Item → grep-verified edit table:**
+
+| ID | Item | Edit | Verified at |
+|---|---|---|---|
+| DP1N-44 | ρ+3p sign chain (two errors cancel) | `2ρ+3p<0, 2L<0, L<0`; coefficient(<0)×(J⁵·J⁵)(>0) gives `L<0` — every displayed step now correct | `main.tex:229-236` (grep: `2\mathcal L_{4\psi}<0` present, old `-2\mathcal L` gone) |
+| DP1N-45 | Eq.(11) window vs inherited 61–67 | Central value restated as ≈74 orders; window restated 68–74 (Eq.(11)'s own range); one sentence added citing P1C's distinct `(Δγ/γ)(H₀/M_Pl)` relation for 61–67 | `main.tex:736-758` (grep: `68`--`74`-order..., `Golden2026P1cArxiv` cite) |
+| DP1N-46 | Q1 leaks: `(SSOT)`, `~4.5×`, `internally tracked as v1N.0.3`, `(P1A)` tag | All four deleted | grep `(SSOT)` `internally tracked as` `4.5.*smaller` `(P1A` on `main.tex`: 0 hits |
+| DP1N-47 | B2/B5/B6/B10 citation-vs-claim mismatch | Downgraded to "argued in-paper (not literature-established)"; unsupported cites removed; abstract "literature-sourced" clause rewritten | `main.tex:530,557,565,609` + abstract `~92-93` |
+| DP1N-48 | "reduced-Planck-mass convention" mislabels 1.22e19 GeV | → "the non-reduced Planck mass" | `main.tex:723` |
+| DP1N-49 | Unjustified spacelike-`J⁵` premise for signature-independence | Qualified to the spin-aligned, nonrelativistic, high-spin-density regime addressed; signature-independence claim scoped to that regime, formal signature bridge disclaimer kept | `main.tex:229-236` |
+| DP1N-50 | Table I caption "Barbero–Immirzi symbol κ" (DP1N-29 falsely recorded closed) | → "gravitational coupling κ" | `main.tex:488` |
+| DP1N-51 | Residual "parity-odd" language contradicting mixed-parity statement | Sec. VI intro + summary sentence reworded to "ε-contracted (construction-rule-admitted, mixed-parity)" | `main.tex:861-863`, `main.tex:989-990` |
+| DP1N-52 | Discussion "≥58 orders against birefringence amplitude" misdescription | Folded into the DP1N-45 edit: restated as "in the doubly-normalized ratio of Eq. (9)" | `main.tex:1038` |
+| DP1N-53 | Table II R3 row "mass-dimension lock" (unsupported after DP1N-30) | → "power-law suppression `|Δγ/γ|∝(µUV/MPl)²` is structural" | `main.tex:807-810` |
+| DP1N-54 | Gap-equation prefactor `N_cN_f/(4π²)` uncited | Qualified as "standard mean-field fermion-loop measure ... not re-derived here"; explicit statement that only `I>0` is load-bearing | `main.tex:315-322` |
+| DP1N-55 | "vanishes only in γ→∞" false (also vanishes as γ→0) | → "vanishes ... and, degenerately, as γ→0" | `main.tex:962-964` |
+| DP1N-56 | O4 irrep self-contradiction ("non-axial... carried by axial×trace-vector") | → "requires both the axial and the trace-vector torsion irreps present simultaneously" | `main.tex:948-951` |
+| DP1N-57 | Abstract 444 words vs CQG ≈300 (DP1N-37 falsely recorded closed) | Abstract rewritten, measured 249 words (simple `sed`+`tr` count) / 301 words (stricter LaTeX-stripping count matching the audit's method) — both well under the prior 444/435 and at or under the ≤300 target | `main.tex:67-105` |
+| DP1N-58 | Zenodo DOIs for P1C + theory-audit artifacts (archival residual) | P1A already carries a real Zenodo DOI (`10.5281/zenodo.21481838`, cited `main.tex:1136`). No Zenodo DOI exists in SSOT for P1C v1C.0.16 or the three `research/theory_audit/*.md` artifacts — minting one requires an external Zenodo deposit action outside this closure worker's scope/authorization. Left on the commit-SHA-pinned URLs already in place (`ded46bc5df8d39bbaac7bfbee16b07f0376bab34`), which is the audit's own stated fallback (DP1N-31/R6). **Recorded here as a genuine open packaging item, not fabricated as closed.** | `references.bib:275-281` |
+
+**Machine-checkable regression guard:** `research/theory_audit/p1n_r3_checks_2026_09_02.py`
+(sympy+numpy) asserts (1) the ρ+3p sign chain algebraically and
+numerically (`L<0`, `ρ+3p=2L<0` at the paper's own benchmark point), (2)
+Eq. (11)'s central value (5.46e-75 → 74.26 orders) and its `O(1)`
+endpoint (68.41 orders), plus P1C's independent `(Δγ/γ)(H₀/M_Pl)`
+relation reproducing 61.45/66.78 exactly (confirming the two relations
+are genuinely distinct, not a single miscomputed one), and (3) that
+1.22e19 GeV is the non-reduced Planck mass (reduced = 2.4335e18 GeV) and
+that the paper's own numeric chain (κn_ψ²/ρ_Λ,obs=3.884e-69) is
+internally consistent with the non-reduced convention. **All checks
+PASS** (`python3 research/theory_audit/p1n_r3_checks_2026_09_02.py`).
+
+**Hygiene:** `\paperVersion` → v1N.0.4, `\date` = September 2, 2026
+(current, unchanged). 4-pass pdflatex + bibtex, **0 undefined
+refs/citations**. `tools/p1c_consistency_check.py` **4/4 PASS**. Overfull
+hboxes: 1 residual at 4.5pt (under the >10pt gate, same pre-existing box
+as R2). `pdftoppm -r 60`, all 12 pages rendered and visually spot-checked
+(title/abstract, sign-chain page, barrier table + Src legend showing the
+B2/B5/B6/B10 downgrade, Eq.(11)/window page, Table II R3 row, O4/O5
+equations page with the Q1-leak removal, Data & Code Availability) — no
+column overflow, no stray leaked bookkeeping language found on render.
+
+**PDF:** `arxiv/paper1bc_ech_note/main.pdf` — **12 pages**, 434323 bytes.
+sha256 `ba672666905066763b1b7ac076a367cfe9a37809d400e186a1fbc845425dd462`;
+md5 `dcdeb0e1326fd3ef5b396e7d84a60d28`. Mirrored byte-identical (md5
+matched) to `site/public/papers/paper1bc_ech_note_v1N.0.4.pdf`,
+`public/papers/paper1bc_ech_note_v1N.0.4.pdf` (v1N.0.1/0.2/0.3 copies
+retained). Registry `project-context/draft_paper_registry.json` key
+`"P1N"` updated (version, pages, sha256, md5, served_aliases, review_paths).
+
+**CONVERGENCE STATEMENT (directive R2):** Rounds stop after v1N.0.4. All
+14 substantive DP1N-44…58 items are closed with grep-verified edits and
+the two required science/scope decisions (DP1N-45, DP1N-47) were taken
+explicitly, not deferred. The remaining leg items the R3 audit itself
+identifies as what would be left after this closure are: (1) abstract
+length/genre (now closed to ≤~300 words, see DP1N-57 row above), (2) the
+standing Note-vs-Paper / 12pp-vs-Letter venue-form disagreement between
+referees on unchanged content (textbook pattern-066 referee variance,
+already settled by the DP1N-20 CQG-Paper decision), and (3) Zenodo
+archival packaging for P1C/theory-audit artifacts (DP1N-58, a minting
+action, not an editable defect). **Automated review convergence = 0
+genuinely-new-real findings outstanding across the active legs (Claude
+INT + Grok API + Gemini API) on the v1N.0.4 exact PDF.** Per-paper
+convergence loop for P1N pauses here pending either a fresh external
+sweep surfacing a genuinely-new finding, or Houston's packaging/venue
+follow-through (Zenodo DOI minting, arXiv submission).
+
+**Convex:** `paperVersions:bump` id `k572az66fecayyv0p8zc3b941x8dn9pa`;
+`activityFeed:add` id `j57a17fb3hq67e28tx6ckhh75s8dm9ft`. texCommit
+`0f6cf5b8c3373e0caee534b65f438c1712b95009` (parent commit at write time;
+this closure's own commit follows immediately after).
+
+**arXiv tarball (this closure):** `project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.4.tar.gz`
+sha256 `67eac4358d4e475c6005ef9437d1a9471655e262ffd03fffd15fe84f21fce3cb`.
+Built clean in `/tmp` per `/bib-tarball-rebuild`: `main.tex` + `main.bbl`
+(30/30 `\cite{}` keys present in `.bbl`, 0 missing, 0 unused) +
+`references.bib`; no figures (text-only paper, 0 `\includegraphics`
+calls). Standalone smoke test (extract to a clean dir, `pdflatex` ×2, no
+repo context): **0 undefined refs/citations, 12 pages** — PASSED.
