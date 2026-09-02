@@ -1,0 +1,75 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4prime-a95-neyman-cl-2026-09-02",
+  "title": "P4' R2 closure (DP4P-22) — genuine 95% CL upper limit on the primary real-space chirality dipole amplitude via Neyman inversion of the injection-recovery null",
+  "program": "galaxy-chirality",
+  "paper": "P4P",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Strict-primary catalog (887,472-galaxy / 23,633-pixel support)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+      "checksum": null
+    },
+    {
+      "name": "Committed fixed-occupancy 10^4-draw detection null",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.npy (SHA-256 3a03ca4b...)",
+      "checksum": null
+    },
+    {
+      "name": "Committed strict-primary generator (estimator/selection, imported verbatim)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+      "checksum": null
+    },
+    {
+      "name": "Committed detection-power A_95^obs script (injection model + estimator, imported verbatim)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.py",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/bh_universe_dipole/a95_upper_limit_2026_09_02.py",
+      "entrypoint": "python3 research/bh_universe_dipole/a95_upper_limit_2026_09_02.py",
+      "sha256": "c553b5fcca3999c463601a226e7e453e98e03986d2d01a899bc4f39a1d66aeeb"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy + healpy + pyarrow",
+    "hardware": "cpu-only; Apple M-series, macOS arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation",
+    "date": "2026-09-02",
+    "wall_clock": "77.7 s (measured, N_AXES=2000/amplitude x 8 amplitudes)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~80 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Injection Monte Carlo with a fixed seed (20260902); reruns are deterministic given numpy's Generator PCG64 and the same numpy/healpy versions. No GPU or network access required; catalog + null array + generator are all committed to the repo."
+  },
+  "outputs": [
+    {
+      "locator": "research/bh_universe_dipole/a95_upper_limit_2026_09_02.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Headline reproduction gate (A_obs=0.00466520, z_mom=+0.63465, p=0.23768) checked against the committed null receipt before any injection is run (hard RuntimeError on mismatch). Estimator/injection model imported verbatim from the committed v1.0.265 script; only the target statistic (5th percentile of recovered_amp, inverted against the observed A_dip) and the amplitude grid differ from v1.0.265's P_det=95% coverage inversion.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2/P4P_v4P.0.2_R2_truth_audit.md finding DP4P-22",
+    "pipelines/p4prime_chirality_test/paper/main.tex Sec. 3 (statistical significance / CL statement)"
+  ]
+}

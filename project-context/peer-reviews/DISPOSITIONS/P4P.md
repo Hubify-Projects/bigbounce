@@ -236,3 +236,19 @@ by either (1) **the monopole resolution** — adopt DP4P-21's settled answer (+2
 decision** (DP4P-22: re-run for a genuine 95% inversion, or withdraw the claim). Remaining items
 are presentation/venue/packaging; if a verification pass returns only those, rounds stop and P4′
 moves to the publication phase under directive P.
+
+### R2 closure confirmation (v4P.0.2 → v4P.0.3, 2026-09-02)
+All 21 canonical R2 items (DP4P-21–24, DP4P-25–41, DP4P-42/43) CLOSED in
+`pipelines/p4prime_chirality_test/paper/main.tex` v4P.0.3
+(SHA-256 `e8b517d22f61ed733dca043ae2b8253eceffd856ffdfc09e65b422c90b3a8200`).
+Both R2-budget science decisions taken: (1) monopole disclosure —
+$f_{\rm CW}=0.5126562$ on the primary channel stated with the 75.2%-CCW
+quarantine cause, alongside both other narrated monopoles, non-propagation
+to $A_{95}^{\rm obs}$/dipole stated; (2) CL decision — re-run executed
+(`research/bh_universe_dipole/a95_upper_limit_2026_09_02.py`), genuine
+95% CL upper limit $A_{95}^{\rm CL}\simeq0.75\%$ computed and reported as
+Eq. 2, the prior mislabelled "genuine 95% CL" (null 95th pct) relabelled a
+critical value. Full item→edit mapping in
+`project-context/SSOT/paper-4p/status.md` §"R2 closure". Per directive
+R2's third-round budget note above, a subsequent round on v4P.0.3 is
+authorized only as a verification pass on this changed text.

@@ -23,15 +23,17 @@
     "review_profile": "ApJS-CATALOG",
     "served_aliases": [
       "paper4prime_chirality_test_v4P.0.1.pdf",
-      "paper4prime_chirality_test_v4P.0.2.pdf"
+      "paper4prime_chirality_test_v4P.0.2.pdf",
+      "paper4prime_chirality_test_v4P.0.3.pdf"
     ],
-    "version": "v4P.0.2",
-    "pages": 10,
+    "version": "v4P.0.3",
+    "pages": 11,
     "date": "2026-09-02",
-    "sha256": "78936e3610b2d9274e2ba19b8567207b7cd1cb99d9368585d6ff3d78ac9d1db1",
-    "md5": "413705f8cf6ce69da4fe6744b3014ea2",
+    "sha256": "e8b517d22f61ed733dca043ae2b8253eceffd856ffdfc09e65b422c90b3a8200",
+    "md5": "cb7429779c820f03daf125a49b395ec5",
     "review_paths": [
-      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.1-EXACTPDF-a9cc2618-R1/"
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.1-EXACTPDF-a9cc2618-R1/",
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2/"
     ],
     "lineage": {
       "folds": [

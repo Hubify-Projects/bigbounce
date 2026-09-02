@@ -1,0 +1,185 @@
+{
+  "artifact": "Genuine 95% CL upper limit on A_dip via Neyman inversion of the 5th percentile of recovered_amp (closes P4' DP4P-22)",
+  "closes": "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2/P4P_v4P.0.2_R2_truth_audit.md finding DP4P-22",
+  "status": "complete",
+  "date_utc": "2026-09-02T21:17:08Z",
+  "method": "Neyman inversion: for each injected full amplitude A, draw N_AXES random-axis observed-label injections (identical model/estimator/support as the committed a95_observed_label_upper_limit_v1_0_265.py) and record the 5th percentile of the recovered dipole amplitude, p5(A). The 95% CL upper limit on the true amplitude given the observed A_dip is the A where p5(A) crosses A_dip from below (linear interpolation).",
+  "A_obs_observed_dipole": 0.004665198792857318,
+  "headline_reproduction_gate": {
+    "A_obs_committed": 0.004665198792857314,
+    "A_obs_recomputed": 0.004665198792857318,
+    "z_mom_committed": 0.6346508534484177,
+    "z_mom_recomputed": 0.6346508534484198,
+    "rank_p_committed": 0.23767623237676233,
+    "rank_p_recomputed": 0.23767623237676233,
+    "passed": true
+  },
+  "n_axes_per_amplitude": 2000,
+  "n_axes_note": "Matches the committed v1.0.265 script's N_AXES=2000 per amplitude (measured wall time for the full grid was well inside the ~60-minute closure budget \u2014 no precision tradeoff was needed; estimator/catalog/selection are byte-identical to v1.0.265).",
+  "injection_seed": 20260902,
+  "detection_alpha": 0.05,
+  "amplitude_grid_full_amp": [
+    0.004,
+    0.005,
+    0.006,
+    0.0065,
+    0.007,
+    0.0075,
+    0.008,
+    0.009
+  ],
+  "rows": [
+    {
+      "A_injected_full_amp": 0.004,
+      "n_axes": 2000,
+      "detection_fraction": 0.227,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.0021755193050819813,
+        0.0032132491610436056,
+        0.005178131219179883,
+        0.007205260075774827,
+        0.008732960728424983
+      ]
+    },
+    {
+      "A_injected_full_amp": 0.005,
+      "n_axes": 2000,
+      "detection_fraction": 0.3755,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.0027167498858454305,
+        0.003944824521035858,
+        0.006017172784562453,
+        0.008129528504418436,
+        0.00961974386169337
+      ]
+    },
+    {
+      "A_injected_full_amp": 0.006,
+      "n_axes": 2000,
+      "detection_fraction": 0.5225,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.00358005864764069,
+        0.0048019379158966416,
+        0.006813412190057825,
+        0.008967808471768993,
+        0.010545610879435414
+      ]
+    },
+    {
+      "A_injected_full_amp": 0.0065,
+      "n_axes": 2000,
+      "detection_fraction": 0.604,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.00398975638476848,
+        0.005169309992321014,
+        0.0072564249623651815,
+        0.009481185152163105,
+        0.011062828489929302
+      ]
+    },
+    {
+      "A_injected_full_amp": 0.007,
+      "n_axes": 2000,
+      "detection_fraction": 0.69,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.004312580746154057,
+        0.005645387066506279,
+        0.007757694828248124,
+        0.009926690362723896,
+        0.011415944896862217
+      ]
+    },
+    {
+      "A_injected_full_amp": 0.0075,
+      "n_axes": 2000,
+      "detection_fraction": 0.755,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.004660805742109575,
+        0.006115083318001813,
+        0.008129433460476548,
+        0.010283348522078305,
+        0.012006663281209284
+      ]
+    },
+    {
+      "A_injected_full_amp": 0.008,
+      "n_axes": 2000,
+      "detection_fraction": 0.809,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.004929060364025223,
+        0.006382891909535627,
+        0.00862820721176991,
+        0.01066955965783083,
+        0.012164110813104175
+      ]
+    },
+    {
+      "A_injected_full_amp": 0.009,
+      "n_axes": 2000,
+      "detection_fraction": 0.9065,
+      "recovered_amp_p5_p16_p50_p84_p95": [
+        0.005942949275998917,
+        0.007311542679078539,
+        0.009406800073504609,
+        0.011680022098200859,
+        0.01343341294324187
+      ]
+    }
+  ],
+  "inversion": {
+    "A95CL_full_amp": 0.007508188210731228,
+    "bracket_[A_lo,A_hi,p5_lo,p5_hi]": [
+      0.0075,
+      0.008,
+      0.004660805742109575,
+      0.004929060364025223
+    ],
+    "grid_p5": [
+      [
+        0.004,
+        0.0021755193050819813
+      ],
+      [
+        0.005,
+        0.0027167498858454305
+      ],
+      [
+        0.006,
+        0.00358005864764069
+      ],
+      [
+        0.0065,
+        0.00398975638476848
+      ],
+      [
+        0.007,
+        0.004312580746154057
+      ],
+      [
+        0.0075,
+        0.004660805742109575
+      ],
+      [
+        0.008,
+        0.004929060364025223
+      ],
+      [
+        0.009,
+        0.005942949275998917
+      ]
+    ]
+  },
+  "A95CL_full_amp": 0.007508188210731228,
+  "A95CL_pct": 0.7508188210731228,
+  "comparison": {
+    "A95_obs_detection_power_floor_pct": 0.98,
+    "A95CL_neyman_pct": 0.7508188210731228,
+    "null_95th_percentile_pct": 0.66932
+  },
+  "sample": {
+    "n_galaxies_in_support": 887472,
+    "n_pixels_support": 23633,
+    "p_cw_global": 0.5126561739412624
+  },
+  "elapsed_s": 77.7
+}

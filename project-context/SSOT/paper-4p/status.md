@@ -1,8 +1,9 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.2 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** not yet scored (R1 closure just landed; no fresh
-review board run yet on v4P.0.2)
+**Current candidate:** v4P.0.3 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** not yet scored (R2 closure just landed; a fresh
+verification round on v4P.0.3 is the natural next step, per directive R2's
+"third round justified only as a verification pass")
 
 ## Lineage
 
@@ -51,38 +52,49 @@ The catalog pipeline was NOT re-run.
 
 ## Current build
 
-- **Version:** v4P.0.2, dated 2026-09-02.
-- **Pages:** 10 (target 13–15 per the R1 truth-audit closure plan; landed
-  short — see "R1 closure" below for what was and was not restored within
-  this wave).
+- **Version:** v4P.0.3, dated 2026-09-02.
+- **Pages:** 11 (up from 10 in v4P.0.2; target 12–15 per the R2 truth-audit
+  closure plan — landed just under the 12–13pp estimate. The added schema
+  table, completeness/purity table, expanded monopole disclosure, and
+  expanded bootstrap-z/CL paragraphs account for the growth; R17 citation
+  style is still deferred, so no further mechanical page growth from it).
 - **Compile:** 4-pass `pdflatex`, 0 undefined references/citations, 0
   overfull hboxes >10pt (one 5.9pt residual overfull hbox in the
-  bias-hardening table, under the hygiene threshold), 0 LaTeX warnings in
-  the final pass log.
+  bias-hardening table, unchanged from v4P.0.2, under the hygiene
+  threshold). One soft `aastex702` "float is stuck (cannot be placed)"
+  warning on the Fig. 3 (T-Web bar) float — the float still places cleanly
+  by the next page break; not a hard-gate item (0 undef refs / 0 hboxes
+  >10pt are the hygiene gates), tried `[tbp]` placement without eliminating
+  it, left as a known cosmetic AASTeX two-column float-queue warning.
 - **Visual audit:** every page rendered via `pdftoppm -r 60` and inspected.
-  Figure 1 (full 8.47M-galaxy chirality asymmetry map, honestly recaptioned
-  per R3 — no longer mislabelled as the 887,472-galaxy HC sample or as a
-  CW-fraction map), Figure 2 (observed-label injection–recovery curve, new,
-  plotted from the committed A95 JSON), and Figure 3 (T-Web bar chart,
-  regenerated per R16 — "Paper IV" legend replaced with "catalog global") all
-  render cleanly.
+  Figure 1 (full 8.47M-galaxy chirality asymmetry map; body text at
+  §3 now matches its own caption — DP4P-26 fixed), Figure 2
+  (observed-label injection–recovery curve), Table 1 (new catalog schema,
+  DP4P-42), Table 2 (new completeness/purity vs. threshold, DP4P-43),
+  Table 4 (bias-hardening battery with T5 restored as an explicit
+  "removed" row, DP4P-27), and Figure 3 (T-Web bar chart, per-class N now
+  stated in-text, DP4P-31) all render cleanly.
 - **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf`
-  — MD5 `413705f8cf6ce69da4fe6744b3014ea2`,
-  SHA-256 `78936e3610b2d9274e2ba19b8567207b7cd1cb99d9368585d6ff3d78ac9d1db1`.
+  — MD5 `cb7429779c820f03daf125a49b395ec5`,
+  SHA-256 `e8b517d22f61ed733dca043ae2b8253eceffd856ffdfc09e65b422c90b3a8200`.
   Mirrored byte-identically to
-  `site/public/papers/paper4prime_chirality_test_v4P.0.2.pdf`,
-  `public/papers/paper4prime_chirality_test_v4P.0.2.pdf`, and
-  `site/out/papers/paper4prime_chirality_test_v4P.0.2.pdf` (v4P.0.1 files
-  kept in place).
+  `site/public/papers/paper4prime_chirality_test_v4P.0.3.pdf`,
+  `public/papers/paper4prime_chirality_test_v4P.0.3.pdf`, and
+  `site/out/papers/paper4prime_chirality_test_v4P.0.3.pdf` (v4P.0.1/v4P.0.2
+  files kept in place).
 - **Registry:** `project-context/draft_paper_registry.json`, id `P4P`
-  (version/pages/sha256/md5/served-aliases updated to v4P.0.2).
+  (version/pages/sha256/md5/served-aliases updated to v4P.0.3;
+  `review_paths` extended with the R2 audit directory).
 - **Bibliography:** manual `\begin{thebibliography}` in `main.tex` (matching
   the house style of both folded-in sources, neither of which uses
   bibtex/biber); a deduplicated `references.bib` documentation copy is
   co-located at `pipelines/p4prime_chirality_test/paper/references.bib`.
   R17 (non-AASTeX-author-year numeric citation style) was **not** closed
-  this wave — deferred as low-risk/low-value relative to recompile risk
-  this late in the closure pass; still OPEN in the disposition ledger.
+  this wave either — still OPEN, deferred to packaging as low-risk/
+  low-value relative to recompile risk; this is now the sole remaining R1
+  residue (both R1's page-target shortfall and R17 were carried into R2's
+  own item list as DP4P-42/43 (page target — now substantially closed) and
+  a residual R17 line item, respectively).
 
 ## R1 closure (v4P.0.1 → v4P.0.2)
 
@@ -178,23 +190,118 @@ New committed artifacts this wave:
 touches the P4/P5 source repos — all write only into
 `pipelines/p4prime_chirality_test/paper/` or `research/bh_universe_dipole/`.
 
+## R2 closure (v4P.0.2 → v4P.0.3)
+
+Closes `ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2`
+(`project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2/P4P_v4P.0.2_R2_truth_audit.md`,
+dispositions in `project-context/peer-reviews/DISPOSITIONS/P4P.md`). 21
+canonical items (DP4P-21 through DP4P-24, DP4P-25 through DP4P-41,
+DP4P-42/43; 6 MAJOR/15 MINOR), all four closure waves.
+
+**The monopole science decision (DP4P-21, MAJOR)** — the audit's preferred
+R2-budget-satisfying decision: the primary $887{,}472$-galaxy channel's own
+monopole was never previously stated. Recomputed directly from the
+committed strict-primary catalog: $f_{\rm CW}=0.5126562$
+($454{,}968/887{,}472$), the opposite sign from the two narrated monopoles
+(catalog-wide $0.497353$; HC-with-unsafe $0.496051$). Cause: the 59,515
+quarantined `raw_flip_qc_unsafe` rows are 75.2% CCW ($44{,}739$ CCW /
+$14{,}776$ CW), so removing them for the release-safety cut flips the HC
+monopole's sign. All three values are now stated together in §2.2 with the
+quarantine asymmetry disclosed as a previously unstated, checkable property
+of the QC flag. This does **not** propagate to the primary null: the
+injection-recovery generator draws its baseline CW probability from the
+same strict sample/support it injects into (correct by construction), and
+the real-space estimator absorbs any constant monopole into its fitted
+monopole term (confirmed generatively: binomial nulls at the global $f_{\rm
+CW}$ and at $p=0.5$ give statistically identical dipole-amplitude nulls,
+$0.39\sigma$ apart) — both facts are now stated in-paper.
+
+**The CL decision (DP4P-22, MAJOR)** — re-run chosen and executed, not
+dropped. `research/bh_universe_dipole/a95_upper_limit_2026_09_02.py`
+performs the Neyman inversion (5th percentile of `recovered_amp` vs.
+injected amplitude, same estimator/support/null as the committed
+detection-power script, `N_AXES=2000` matching the committed script — no
+precision tradeoff was needed, full grid ran in 77.7s, well inside the
+~60-min budget) and finds a genuine 95% CL upper limit
+$A_{95}^{\rm CL}\simeq0.75\%$ (bracket $[0.75\%,0.80\%]$), reported in §3
+as Eq. 2 alongside the existing detection-power floor
+$A_{95}^{\rm obs}=0.98\%$. The paper's prior "genuine 95% CL statement"
+(the null's own 95th percentile, $0.669\%$) is now correctly relabelled as
+the same no-signal critical value already reported as the rank test
+($p=0.238$), not a CL bound on $A_{\rm dip}$ — the audit's finding that
+this label was itself wrong is fixed, not just supplemented.
+
+**Wave 1 (science, transcribe-only):** DP4P-23 (withheld per-estimator
+bootstrap $z$'s: $+2.21$ real-space, $+0.81$ WLS, $-0.61$ MASTER $\ell=1$,
+now printed alongside the monopole's $z=-6.57$, with the block-bootstrap
+$z=+2.21$ explicitly distinguished from the primary null's fixed-occupancy
+$z_{\rm mom}=+0.635$); DP4P-24 (abstract now carries the g-bridge caveat).
+
+**Wave 2:** DP4P-22, above.
+
+**Wave 3 (venue, ~1 pp):** DP4P-42 (new catalog schema table, Table 1);
+DP4P-43 (new completeness/purity-vs-threshold table, Table 2).
+
+**Wave 4 (editorial, all 15 MINORs closed):** DP4P-25 (intro N corrected
+890,069→887,472); DP4P-26 (Fig. 1 body sentence no longer contradicts its
+own caption); DP4P-27 (T5 restored as an explicit "removed" row with P4's
+circular-RA disposition); DP4P-28 (DOI-sharing between [15]/[17] explained
+as one Zenodo concept record, versioned vs. concept DOI distinguished);
+DP4P-29 ("four rows" → "five rows / four statistic families"); DP4P-30
+(catalog-wide monopole now stated with its own $\sigma$/significance,
+$-9.47\sigma$, in the same sentence as its value); DP4P-31 (T-Web per-class
+$N$ stated: Void 428, Wall 6,673, Filament 408,187, Cluster 397,505, with
+the Void bin's power limitation noted); DP4P-32 (keywords converted to UAT
+terms with identifiers); DP4P-35 (T5 row-width overfull hbox fixed;
+residual 5.9pt hbox and one soft stuck-float warning remain, both
+documented above as non-hard-gate); DP4P-36 (Poplawski 2020's preprint
+status and arXiv-date/year mismatch stated explicitly in the
+bibliography); DP4P-37 (949,584 sample renamed "pre-support-cut HC sample"
+to stop colliding with the paper's own 887,472 "primary channel"); DP4P-38
+(internal "on-vision" governance framing removed from §1 body); DP4P-39
+(internal "post-review" qualifier removed from the nuisance-basis
+description; the legitimate exploratory/not-preregistered disclosure a few
+lines later is unchanged); DP4P-40 (Data Availability now states the
+manuscript's own version + git-tracked source URL and the catalog's
+versioned Zenodo DOI as the reproducibility pin); DP4P-41 (title changed
+from "...and an Exclusion of the Rotating-Black-Hole-Universe Dipole" to
+"...and a Sensitivity Confrontation with the Rotating-Black-Hole-Universe
+Prediction", matching the abstract's own caveat that no computed amplitude
+exists to exclude).
+
+**All 21 canonical R2 items closed.** New committed artifacts this wave:
+`research/bh_universe_dipole/a95_upper_limit_2026_09_02.py` (+ its output
+JSON), `reproducibility/manifests/experiments/p4prime-a95-neyman-cl-2026-09-02.json`.
+No P4/P5 source repo file was touched.
+
 ## Open gates (this draft has NOT been through a fresh review board)
 
-- No INT or EXT review board has been run on v4P.0.2 yet — this closure
-  addressed the R1 truth-audit's findings on v4P.0.1; a fresh round on
-  v4P.0.2 is the natural next step.
+- No INT or EXT review board has been run on v4P.0.3 yet — this closure
+  addressed the R2 truth-audit's findings on v4P.0.2; per directive R2, a
+  fresh round on v4P.0.3 is justified only as a **verification pass** on
+  the changed text (the monopole/CL science decisions are settled; if the
+  verification pass returns only genre/length/venue items, rounds stop
+  under directive R2 and the paper moves to the publication phase).
 - Site/Convex sync (`papers.ts`, `live-status.ts`, review timeline, Convex
-  `paperVersions:bump`) has NOT been done — out of scope for this closure
-  worker; site code and Convex were intentionally not touched per the
-  closure mandate.
+  `paperVersions:bump`) — the version bump itself is done as part of this
+  closure (see Convex ids below); the review-timeline entry for this R2
+  round and any papers.ts/live-status.ts text sync remain out of scope for
+  this closure worker (site code was not touched per the closure mandate).
 - `PAPER_LINEAGE` has not been updated by this closure — P4 and P5
   originals were left untouched, as instructed.
 - Whether/when P5's standalone 42-pp paper is formally retired (vs. kept as
   an archived companion with its own diagnostics) remains Houston-gated.
+- R17 (citation style) remains the sole open R1-era item, still deferred to
+  packaging.
 - Houston sign-off (readiness 95→100) has not been sought.
 
 ## Historical status ledger
 
+- **2026-09-02 (R2 closure, v4P.0.2 → v4P.0.3):** 21/21 canonical R2
+  truth-audit items closed across all four closure waves, including both
+  R2-budget-satisfying science decisions (monopole disclosure; genuine 95%
+  CL upper limit computed via Neyman inversion, $A_{95}^{\rm CL}\simeq
+  0.75\%$). See "R2 closure" section for the full item→edit mapping.
 - **2026-09-02 (R1 closure, v4P.0.1 → v4P.0.2):** 18/20 canonical R1
   truth-audit items closed (both waves); 2 deferred (page-target shortfall,
   citation-style conversion) with reasons recorded above. See "R1 closure"
