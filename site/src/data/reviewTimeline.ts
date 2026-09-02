@@ -65,6 +65,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1n-r2-closed-v1n-0-3-r3-dispatch-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "ECH Note R2 closed → v1N.0.3 (23/23 incl. two errors inherited from P1C: 8π coefficient, O5 parity); R3 verification pass dispatched",
+    papers: ["P1N"],
+    summary:
+      "P1N's R2 board (Claude major-revisions, Grok reject, Gemini major-revisions) closed all 23 findings this round, including two real errors inherited from P1C (an 8π coefficient mistake and an O5 parity error). Recompiled to v1N.0.3 (11pp, md5 8725f40c69027c53c7a0f6a38f05587d). R3 verification pass dispatched — verdicts PENDING, none fabricated or assumed.",
+    keyTakeaways: [
+      "v1N.0.3: 23/23 R2 findings closed, incl. two errors inherited from P1C (8π coefficient, O5 parity)",
+      "R2 verdicts: Claude major-revisions, Grok reject, Gemini major-revisions",
+      "R3 verification pass dispatched on the new PDF — verdicts pending",
+    ],
+    links: [
+      { label: "P1N SSOT", href: `${GH}/project-context/SSOT/paper-1n/status.md` },
+      { label: "P1N dispositions", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P1N.md` },
+    ],
+  },
+  {
+    id: "p4p-r2-closed-v4p-0-3-r3-dispatch-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "P4′ R2 closed → v4P.0.3 (21/21; monopole disclosed; genuine 95% CL limit ≈0.75% by Neyman inversion); R3 verification pass dispatched",
+    papers: ["P4P"],
+    summary:
+      "P4′'s R2 board (Claude major-revisions, Grok reject, Gemini major-revisions) closed all 21 findings this round: the dipole monopole term is now disclosed, and the genuine 95% CL limit is stated as ≈0.75% by Neyman inversion. Recompiled to v4P.0.3 (11pp, md5 cb7429779c820f03daf125a49b395ec5). R3 verification pass dispatched — verdicts PENDING, none fabricated or assumed.",
+    keyTakeaways: [
+      "v4P.0.3: 21/21 R2 findings closed; monopole disclosed; genuine 95% CL limit ≈0.75% by Neyman inversion",
+      "R2 verdicts: Claude major-revisions, Grok reject, Gemini major-revisions",
+      "R3 verification pass dispatched on the new PDF — verdicts pending",
+    ],
+    links: [
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+    ],
+  },
+  {
     id: "p1n-p4p-r2-claude-legs-2026-09-02",
     dateISO: "2026-09-02",
     kind: "internal-api",

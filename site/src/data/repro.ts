@@ -1186,6 +1186,91 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "anomaly-known-object-recovery-benchmark",
+    "title": "Known-object recovery benchmark for the anomaly flagship catalogue (ledger item #8)",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "crossmatch",
+    "inputs": [
+      {
+        "name": "Sealed locator inventory (HEALPix footprint definition)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl",
+        "checksum": null
+      },
+      {
+        "name": "Partial S>8 enrichment bundle (preview run only)",
+        "type": "external-dataset",
+        "locator": "https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/tree/main/phase3/2026-08-26/partial-enrichment-s8",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Reference 'unusual object' classes (Baron & Poznanski 2017, Roma-BZCAT, BALQSO, CV, carbon-star, LAE, EELG, changing-look-QSO, SLSN-host, GRB-host catalogues)",
+        "type": "external-dataset",
+        "locator": "VizieR (astroquery.vizier) -- see REFERENCE_CLASSES in benchmark_known_object_recovery.py for per-class catalogue IDs and source papers",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "VizieR (CDS)",
+        "endpoint": "https://vizier.cds.unistra.fr/viz-bin/votable",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
+        "entrypoint": "python3 benchmark_known_object_recovery.py --fetch-references --reference-cache-dir <cache> && python3 benchmark_known_object_recovery.py --crossmatch --reference-cache-dir <cache> --catalogs-config <config.json> --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir <out>",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "astropy, astroquery, healpy, pandas, pyarrow, numpy -- see clean_rerun's phase-3 pip install line in RUNBOOK.md",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-02",
+      "wall_clock": "under 5 minutes (fetch-references + crossmatch stages combined) for the PREVIEW run",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local CPU or the phase-3 RunPod pod (same host, no extra GPU need)",
+      "est_wall_clock": "minutes for --fetch-references (VizieR query latency dominates, ~10-30s per class with checkpointless single-shot fetch); seconds to low minutes for --crossmatch once the flagship sample carries target_ra/target_dec (via enrich_flagship_sample.py) for the full S>5/S>8 samples",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "The PREVIEW run committed under results_2026-08-07/phase3/recovery_benchmark_preview/ used the 57/3810-group PARTIAL S>8 enrichment bundle (not the full sample) and returned 0 fetched reference classes because this build environment's outbound route to vizier.cds.unistra.fr's VizieR TAP/query endpoint (not just the raw TCP port) times out/resets on every attempt, though the TCP port itself is reachable -- see reference_manifest.json's per-class error field for the exact honest failure mode of each attempt. Re-run --fetch-references from a host with working VizieR access (Houston's machine or the RunPod pod) to get real reference-class row counts, then re-run --crossmatch once build_flagship_sample.py's S>5 output has been joined to target_ra/target_dec (it currently is not -- only the S>8 enriched sample carries coordinates) and the full (not partial) S>8 sample has landed from phase 3."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.md",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "pipelines/p1_highz_tracers/tests/test_recovery_benchmark.py (26 offline unit tests, pytest -q) covers the pure/offline matching, HEALPix footprint-restriction, Wilson-score CI, and enrichment/closed-loop-candidate arithmetic against hand-verified synthetic fixtures. The committed PREVIEW recovery_benchmark.json/.md are the actual output of a real run against real (partial) data -- not synthetic -- and are honest about their 0-fetched-classes outcome; do not treat the preview's empty results table as evidence against any reference class, only as evidence this build environment could not reach VizieR's query endpoint on 2026-09-02.",
+    "status": "needs-data-restore",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 8",
+      "project-context/SESSION_HANDOFF_2026-08-05_to_2026-08-28.md (Anomaly flagship section: S>5=52188, S>8=3810, unique_targetids=27547223)",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json (threshold=5.0, threshold_count_after_dedup=52188, unique_targetids=27547223)",
+      "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md Section 19",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.json (this run's own committed output)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "anomaly-neowise-crossmatch",
     "title": "NEOWISE crossmatch (IR variability, 16/283 meet variability rule)",
     "program": "anomaly-discovery",
@@ -1923,6 +2008,103 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: bounce-theory / P2 — channel-native Fisher bullet",
       "DP2-26/DP2-29 gap tracking in project-context/SSOT/paper-2/status.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-fnl-adjudication-inin-from-scratch",
+    "title": "Adjudication of the matter-contraction local f_NL: from-scratch in-in (validated on de Sitter and USR), delta-N on both slicings, long-mode shear — NEXT_SCIENCE_LEDGER #1 closure",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Cai, Xue, Brandenberger & Zhang 2009 (arXiv source matterbounceng2.tex, v2)",
+        "locator": "https://arxiv.org/e-print/0903.0631",
+        "used_for": "Eqs. 14-15 (mode function, cubic action), 20-21 (f_NL convention), 25-36 (per-vertex rows, read only for COMPARISON after the from-scratch computation), 37 (printed total), 38-40 (quoted amplitudes -35/8, -255/64, -9/4)"
+      },
+      {
+        "name": "Li, Quintin, Wang & Cai 2016 (arXiv source)",
+        "locator": "https://arxiv.org/e-print/1612.02036",
+        "used_for": "Eq. 4.19 total shape function and Eq. 5.1 f_NL^local = -165/16 + 65/(8 c_s^2), independence audit"
+      },
+      {
+        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv source)",
+        "locator": "https://arxiv.org/e-print/1508.04141",
+        "used_for": "independence audit: the -35/16 there is a quotation attributed to Cai 2009, not a computation"
+      },
+      {
+        "name": "Maldacena 2003 (arXiv source)",
+        "locator": "https://arxiv.org/e-print/astro-ph/0210603",
+        "used_for": "cubic action; de Sitter three-point benchmark A_eps used to VALIDATE the machinery before use"
+      },
+      {
+        "name": "Namjoo, Firouzjahi & Sasaki 2012",
+        "locator": "https://arxiv.org/abs/1210.3692",
+        "used_for": "ultra-slow-roll benchmark f_NL = 5/2 used to VALIDATE the field-redefinition term in a non-attractor phase"
+      },
+      {
+        "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013",
+        "locator": "https://arxiv.org/abs/1301.5699",
+        "used_for": "non-attractor in-in context (field-redefinition dominance, consistency-relation violation)"
+      },
+      {
+        "name": "lab second-method delta-N (uniform-density slices)",
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py (commit d7dac953)",
+        "used_for": "separate-universe system and the -55/16 result, reproduced here for general eps and compared with the comoving-slice delta-N"
+      },
+      {
+        "name": "BigBounce Paper 2 Appendix A + scripts/p2_vertex_check.py",
+        "locator": "research/focused_paper_source_integration/02_full_draft.tex",
+        "used_for": "per-vertex table tab:vertexwalk and Eq. vertexsum, reproduced exactly; 'spurious term' narrative corrected"
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+        "entrypoint": "python3 research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+        "sha256": "67dd4842aaa7978310c7ead714d666bff6ab8fc523e7d0bb815844fa517264fc"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 with sympy 1.14.0 (in repo requirements.txt); multiprocessing fork context (8 worker processes for the vertex integrals)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-02",
+      "wall_clock": "131.6 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "2-5 minutes (exact sympy; eight parallel vertex integrations)",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Fully deterministic exact-rational computation. No network access at run time (the arXiv sources were read once during authorship; only the f_NL convention and, for comparison AFTER the computation, Cai's rows / Eq. 37 / quoted numbers and Li's Eq. 4.19 are transcribed into the script). The script asserts: mode functions solve the EOM; de Sitter total equals Maldacena's A_eps identically; USR redefinition gives f_NL = 5/2; the eps^3 kernel identity holds; divergent imaginary parts cancel; no logarithm at leading order; the delta-N ODE residual vanishes."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
+        "type": "writeup",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required exact values: validation_deSitter_Maldacena == PASS; validation_USR_Namjoo == PASS; in_in_from_scratch.f_local_squeezed_isoceles == '-35/16'; f_equilateral == '-255/128'; f_folded == '-9/8'; f_squeezed_fixed_angle_mu == '15*mu**2/16 - 35/16'; every cai_row_differences value == '0'; cai_eq37_minus_total_distinct_monomial_reading == '0'; li_eq419_minus_total_at_cs1 == '0'; paper2_vertexwalk_table_reproduced == true; delta_N.comoving_slicing_fNL_eps_3_2 == '-5'; delta_N.uniform_density_slicing_fNL_general_eps == '5*(epsilon - 7)/8'; delta_N.linear_ratio_zeta_rho_over_zeta_c == '2'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 1 (independent derivation of the matter-contraction f_NL) — adjudication step",
+      "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md §8 items 1-2 (the two open computations named there)",
+      "directive R (vision governance) and directive Q2 (reproducibility manifests)"
     ]
   },
   {
@@ -3728,6 +3910,81 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — v2 ViT-Small production training bullet",
       "project-context/SSOT/paper-4/status.md",
       "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p4prime-a95-neyman-cl-2026-09-02",
+    "title": "P4' R2 closure (DP4P-22) — genuine 95% CL upper limit on the primary real-space chirality dipole amplitude via Neyman inversion of the injection-recovery null",
+    "program": "galaxy-chirality",
+    "paper": "P4P",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Strict-primary catalog (887,472-galaxy / 23,633-pixel support)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+        "checksum": null
+      },
+      {
+        "name": "Committed fixed-occupancy 10^4-draw detection null",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.npy (SHA-256 3a03ca4b...)",
+        "checksum": null
+      },
+      {
+        "name": "Committed strict-primary generator (estimator/selection, imported verbatim)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+        "checksum": null
+      },
+      {
+        "name": "Committed detection-power A_95^obs script (injection model + estimator, imported verbatim)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.py",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/bh_universe_dipole/a95_upper_limit_2026_09_02.py",
+        "entrypoint": "python3 research/bh_universe_dipole/a95_upper_limit_2026_09_02.py",
+        "sha256": "c553b5fcca3999c463601a226e7e453e98e03986d2d01a899bc4f39a1d66aeeb"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy + healpy + pyarrow",
+      "hardware": "cpu-only; Apple M-series, macOS arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation",
+      "date": "2026-09-02",
+      "wall_clock": "77.7 s (measured, N_AXES=2000/amplitude x 8 amplitudes)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~80 s",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Injection Monte Carlo with a fixed seed (20260902); reruns are deterministic given numpy's Generator PCG64 and the same numpy/healpy versions. No GPU or network access required; catalog + null array + generator are all committed to the repo."
+    },
+    "outputs": [
+      {
+        "locator": "research/bh_universe_dipole/a95_upper_limit_2026_09_02.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Headline reproduction gate (A_obs=0.00466520, z_mom=+0.63465, p=0.23768) checked against the committed null receipt before any injection is run (hard RuntimeError on mismatch). Estimator/injection model imported verbatim from the committed v1.0.265 script; only the target statistic (5th percentile of recovered_amp, inverted against the observed A_dip) and the amplitude grid differ from v1.0.265's P_det=95% coverage inversion.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2/P4P_v4P.0.2_R2_truth_audit.md finding DP4P-22",
+      "pipelines/p4prime_chirality_test/paper/main.tex Sec. 3 (statistical significance / CL statement)"
     ]
   },
   {

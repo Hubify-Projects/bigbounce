@@ -69,9 +69,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1n",
       number: "1N",
       shortTitle: "The ECH Note (P1A + P1C merged, grown to CQG Paper form)",
-      version: "v1N.0.2",
+      version: "v1N.0.3",
       readiness: 20,
-      pendingWork: "R1 board closed (Claude INT major-revisions, Grok API REJECT, Gemini API REJECT) — 19/19 canonical real findings closed this round; R2 board dispatched, verdicts pending.",
+      pendingWork: "R2 board closed (Claude major-revisions, Grok reject, Gemini major-revisions) — 23/23 findings closed this round, incl. two errors inherited from P1C (8π coefficient, O5 parity); R3 verification pass dispatched, verdicts pending.",
     },
     {
       slug: "paper-1a",
@@ -117,9 +117,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.2",
+      version: "v4P.0.3",
       readiness: 20,
-      pendingWork: "R1 board closed on v4P.0.1; R2 board (Grok/Gemini/Claude) dispatched on v4P.0.2 — verdicts pending.",
+      pendingWork: "R2 board closed (Claude major-revisions, Grok reject, Gemini major-revisions) — 21/21 findings closed this round; monopole disclosed; genuine 95% CL limit ≈0.75% by Neyman inversion; R3 verification pass dispatched, verdicts pending.",
     },
     {
       slug: "paper-4",
