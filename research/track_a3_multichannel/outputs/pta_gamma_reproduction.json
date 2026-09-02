@@ -1,0 +1,56 @@
+{
+  "task": "Track A3 channel 1 \u2014 reproduce committed NANOGrav 15-yr free-spectrum gamma posterior + Savage-Dickey BFs",
+  "chain": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/chain_real_freespec.npy",
+  "chain_sha256_note": "see manifest",
+  "n_samples": 320000,
+  "gamma_marginal": {
+    "mean": 2.5664653285376198,
+    "std": 0.38182515155555247,
+    "median": 2.5912911949892523,
+    "q16": 2.304064217104656,
+    "q84": 2.8822047461925235
+  },
+  "log10A_marginal": {
+    "mean": -14.025158939341168,
+    "std": 0.3796089202787413
+  },
+  "sampling_priors": {
+    "gamma": "U[0,7]",
+    "log10A": "U[-18,-11]"
+  },
+  "savage_dickey_1d": {
+    "prior_density": 0.14285714285714285,
+    "posterior_at_gamma": {
+      "mb": 0.46108139263570713,
+      "smbhb": 6.459868290225102e-05,
+      "infl": 2.653521991213308e-25
+    },
+    "B_vs_free": {
+      "mb": 3.22756974844995,
+      "smbhb": 0.00045219078031575715,
+      "infl": 1.8574653938493155e-24
+    },
+    "B_mb_over_smbhb": 7137.628383745889,
+    "log10_B_mb_over_smbhb": 3.8535539329317974
+  },
+  "z_distance_sigma": {
+    "mb": 1.1354272228955153,
+    "smbhb": 4.627426971736953,
+    "infl": 6.373426846157673
+  },
+  "omega_gw_slope_5_minus_gamma": {
+    "matter_bounce_gamma3": 2.0,
+    "smbhb_gamma13_3": 0.666666666666667,
+    "scale_invariant_tensors_gamma5": 0.0
+  },
+  "diff_vs_committed": {
+    "gamma_mean": 0.0,
+    "gamma_std": 0.0,
+    "B_mb": 3.1086244689504383e-15,
+    "B_smbhb": 2.3852447794681098e-18,
+    "B_mb_over_smbhb": 3.092281986027956e-11,
+    "z_smbhb": 0.0
+  },
+  "REPRODUCED": true,
+  "wall_seconds": 0.02
+}

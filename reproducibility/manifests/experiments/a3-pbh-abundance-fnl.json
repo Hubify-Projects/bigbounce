@@ -1,0 +1,58 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-pbh-abundance-fnl",
+  "title": "Track A3 channel 2 \u2014 Press-Schechter PBH abundance with local quadratic non-Gaussianity at f_NL = -35/16 vs -35/8 vs 0",
+  "program": "bounce-theory",
+  "paper": "A3 (Track A3 portfolio paper)",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "none (analytic/numerical; no external data)",
+      "type": "none",
+      "locator": null,
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/pbh_abundance_fnl.py",
+      "entrypoint": "python3 research/track_a3_multichannel/pbh_abundance_fnl.py",
+      "sha256": "41305cae3ceea8be88cb975d006eee3ac6ab392d3db4115b49b9b409abe858f1"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + scipy 1.18.0 (repo requirements.txt subset)",
+    "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation (Apple M5)",
+    "date": "2026-09-02",
+    "wall_clock": "0.03 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "0.03 s (measured)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Pure numpy/scipy; sub-second. NOT a reproduction of Choudhury et al. 2025 arXiv:2409.18983 \u2014 that paper uses the compaction-function criterion, which this Press-Schechter quadratic-map calculation does not implement."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/outputs/pbh_abundance_fnl.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) the analytic ceiling -5/(12 f_NL) = 0.19048 at -35/16 and 0.09524 at -35/8, ratio exactly 2; (b) at zeta_c = 0.05 with sigma calibrated so the Gaussian case gives f_PBH = 1 (sigma* = 0.0063248), f_PBH = 7.32e-3 at -35/16 and 3.75e-6 at -35/8; (c) beta = 0 identically at zeta_c = 0.45 and 1.00 for both negative f_NL in the rare-tail regime.",
+  "status": "reproduced",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 3",
+    "project-context/bounce_portfolio_strategy.md (Track C, Choudhury+ 2025)",
+    "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
+  ]
+}

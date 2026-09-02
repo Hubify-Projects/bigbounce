@@ -1,0 +1,303 @@
+{
+  "task": "Track A3 channel 2 \u2014 Press-Schechter PBH abundance with local quadratic NG at f_NL = -35/16 vs -35/8 vs 0",
+  "label": "NEW computation (not a reproduction of Choudhury et al. 2025)",
+  "convention": "zeta = zeta_G + (3/5) f_NL (zeta_G^2 - sigma^2)",
+  "f_NL_values": {
+    "matter_bounce_Li_-35/16": -2.1875,
+    "matter_bounce_Cai_-35/8": -4.375,
+    "gaussian_0": 0.0
+  },
+  "PBH_mass_g": 1e+20,
+  "f_PBH_relation": "Sasaki et al. 2018 arXiv:1801.05235; gamma_c=0.2, g_*=106.75",
+  "analytic_ceiling_leading_term_-5_over_12_fNL": {
+    "matter_bounce_Li_-35/16": 0.19047619047619047,
+    "matter_bounce_Cai_-35/8": 0.09523809523809523,
+    "gaussian_0": Infinity
+  },
+  "ceiling_ratio_-35/16_over_-35/8": 2.0,
+  "fixed_amplitude_comparison": {
+    "zeta_c=0.05": {
+      "zeta_c": 0.05,
+      "sigma_star_gaussian_fPBH1": 0.006324750945626435,
+      "perturbativity_0.6_absfNL_sigma": {
+        "matter_bounce_Li_-35/16": 0.008301235616134696,
+        "matter_bounce_Cai_-35/8": 0.016602471232269392,
+        "gaussian_0": 0.0
+      },
+      "matter_bounce_Li_-35/16": {
+        "beta": 9.777598605829237e-18,
+        "f_PBH": 0.007324888323804452,
+        "zeta_ceiling_at_sigma_star": 0.1905286937240035,
+        "threshold_below_ceiling": true
+      },
+      "matter_bounce_Cai_-35/8": {
+        "beta": 5.006676086150738e-21,
+        "f_PBH": 3.7507515580208514e-06,
+        "zeta_ceiling_at_sigma_star": 0.09534310173372126,
+        "threshold_below_ceiling": true
+      },
+      "gaussian_0": {
+        "beta": 1.3348410697159714e-15,
+        "f_PBH": 0.999996232190177,
+        "zeta_ceiling_at_sigma_star": Infinity,
+        "threshold_below_ceiling": true
+      },
+      "suppression_vs_gaussian": {
+        "matter_bounce_Li_-35/16": 0.007324915922694619,
+        "matter_bounce_Cai_-35/8": 3.7507656901926627e-06
+      },
+      "ratio_-35/16_over_-35/8": 1952.9121592019162
+    },
+    "zeta_c=0.08": {
+      "zeta_c": 0.08,
+      "sigma_star_gaussian_fPBH1": 0.01011960033446619,
+      "perturbativity_0.6_absfNL_sigma": {
+        "matter_bounce_Li_-35/16": 0.013281975438986874,
+        "matter_bounce_Cai_-35/8": 0.02656395087797375,
+        "gaussian_0": 0.0
+      },
+      "matter_bounce_Li_-35/16": {
+        "beta": 1.6532826898008255e-19,
+        "f_PBH": 0.000123855678256727,
+        "zeta_ceiling_at_sigma_star": 0.1906105987592852,
+        "threshold_below_ceiling": true
+      },
+      "matter_bounce_Cai_-35/8": {
+        "beta": 1.496078457648683e-29,
+        "f_PBH": 1.1207872267729295e-14,
+        "zeta_ceiling_at_sigma_star": 0.09550691180428472,
+        "threshold_below_ceiling": true
+      },
+      "gaussian_0": {
+        "beta": 1.3348312034784076e-15,
+        "f_PBH": 0.9999888408979748,
+        "zeta_ceiling_at_sigma_star": Infinity,
+        "threshold_below_ceiling": true
+      },
+      "suppression_vs_gaussian": {
+        "matter_bounce_Li_-35/16": 0.00012385706039030043,
+        "matter_bounce_Cai_-35/8": 1.1207997338915098e-14
+      },
+      "ratio_-35/16_over_-35/8": 11050775320.962866
+    },
+    "zeta_c=0.1": {
+      "zeta_c": 0.1,
+      "sigma_star_gaussian_fPBH1": 0.01264950209020421,
+      "perturbativity_0.6_absfNL_sigma": {
+        "matter_bounce_Li_-35/16": 0.016602471493393025,
+        "matter_bounce_Cai_-35/8": 0.03320494298678605,
+        "gaussian_0": 0.0
+      },
+      "matter_bounce_Li_-35/16": {
+        "beta": 5.006683062306556e-21,
+        "f_PBH": 3.750756784208217e-06,
+        "zeta_ceiling_at_sigma_star": 0.1906862034740487,
+        "threshold_below_ceiling": true
+      },
+      "matter_bounce_Cai_-35/8": {
+        "beta": 0.0,
+        "f_PBH": 0.0,
+        "zeta_ceiling_at_sigma_star": 0.09565812123381169,
+        "threshold_below_ceiling": false
+      },
+      "gaussian_0": {
+        "beta": 1.3348424021547745e-15,
+        "f_PBH": 0.999997230386751,
+        "zeta_ceiling_at_sigma_star": Infinity,
+        "threshold_below_ceiling": true
+      },
+      "suppression_vs_gaussian": {
+        "matter_bounce_Li_-35/16": 3.7507671723826714e-06,
+        "matter_bounce_Cai_-35/8": 0.0
+      },
+      "ratio_-35/16_over_-35/8": null
+    },
+    "zeta_c=0.12": {
+      "zeta_c": 0.12,
+      "sigma_star_gaussian_fPBH1": 0.01517940317100007,
+      "perturbativity_0.6_absfNL_sigma": {
+        "matter_bounce_Li_-35/16": 0.019922966661937592,
+        "matter_bounce_Cai_-35/8": 0.039845933323875184,
+        "gaussian_0": 0.0
+      },
+      "matter_bounce_Li_-35/16": {
+        "beta": 5.728152023128938e-23,
+        "f_PBH": 4.291245280429013e-08,
+        "zeta_ceiling_at_sigma_star": 0.19077860921951442,
+        "threshold_below_ceiling": true
+      },
+      "matter_bounce_Cai_-35/8": {
+        "beta": 0.0,
+        "f_PBH": 0.0,
+        "zeta_ceiling_at_sigma_star": 0.09584293272474312,
+        "threshold_below_ceiling": false
+      },
+      "gaussian_0": {
+        "beta": 1.3348461010578996e-15,
+        "f_PBH": 1.0000000014201513,
+        "zeta_ceiling_at_sigma_star": Infinity,
+        "threshold_below_ceiling": true
+      },
+      "suppression_vs_gaussian": {
+        "matter_bounce_Li_-35/16": 4.291245274334795e-08,
+        "matter_bounce_Cai_-35/8": 0.0
+      },
+      "ratio_-35/16_over_-35/8": null
+    },
+    "zeta_c=0.15": {
+      "zeta_c": 0.15,
+      "sigma_star_gaussian_fPBH1": 0.018974253963319882,
+      "perturbativity_0.6_absfNL_sigma": {
+        "matter_bounce_Li_-35/16": 0.024903708326857347,
+        "matter_bounce_Cai_-35/8": 0.049807416653714694,
+        "gaussian_0": 0.0
+      },
+      "matter_bounce_Li_-35/16": {
+        "beta": 2.4301917678628122e-27,
+        "f_PBH": 1.8205782444793175e-12,
+        "zeta_ceiling_at_sigma_star": 0.1909487197626127,
+        "threshold_below_ceiling": true
+      },
+      "matter_bounce_Cai_-35/8": {
+        "beta": 0.0,
+        "f_PBH": 0.0,
+        "zeta_ceiling_at_sigma_star": 0.0961831538109397,
+        "threshold_below_ceiling": false
+      },
+      "gaussian_0": {
+        "beta": 1.33484609913709e-15,
+        "f_PBH": 0.9999999999811767,
+        "zeta_ceiling_at_sigma_star": Infinity,
+        "threshold_below_ceiling": true
+      },
+      "suppression_vs_gaussian": {
+        "matter_bounce_Li_-35/16": 1.8205782445135866e-12,
+        "matter_bounce_Cai_-35/8": 0.0
+      },
+      "ratio_-35/16_over_-35/8": null
+    }
+  },
+  "sigma_required_for_fPBH_1": {
+    "matter_bounce_Li_-35/16": {
+      "zeta_c=0.05": {
+        "sigma_required": 0.006796349186540457,
+        "P_zeta_required": 4.619036226538913e-05,
+        "perturbativity_0.6_absfNL_sigma": 0.00892020830733435
+      },
+      "zeta_c=0.08": {
+        "sigma_required": 0.01146062949301733,
+        "P_zeta_required": 0.00013134602837621865,
+        "perturbativity_0.6_absfNL_sigma": 0.015042076209585246
+      },
+      "zeta_c=0.1": {
+        "sigma_required": 0.014923288747422036,
+        "P_zeta_required": 0.00022270454703893314,
+        "perturbativity_0.6_absfNL_sigma": 0.01958681648099142
+      },
+      "zeta_c=0.12": {
+        "sigma_required": 0.018780500328604986,
+        "P_zeta_required": 0.000352707192592732,
+        "perturbativity_0.6_absfNL_sigma": 0.024649406681294044
+      },
+      "zeta_c=0.15": {
+        "sigma_required": 0.02573743592795322,
+        "P_zeta_required": 0.0006624156081454973,
+        "perturbativity_0.6_absfNL_sigma": 0.0337803846554386
+      }
+    },
+    "matter_bounce_Cai_-35/8": {
+      "zeta_c=0.05": {
+        "sigma_required": 0.007461644368966492,
+        "P_zeta_required": 5.5676136688929354e-05,
+        "perturbativity_0.6_absfNL_sigma": 0.019586816468537042
+      },
+      "zeta_c=0.08": {
+        "sigma_required": 0.014288557006134357,
+        "P_zeta_required": 0.00020416286131755122,
+        "perturbativity_0.6_absfNL_sigma": 0.03750746214110269
+      },
+      "zeta_c=0.1": {
+        "sigma_required": 0.04259177582720619,
+        "P_zeta_required": 0.0018140593681149856,
+        "perturbativity_0.6_absfNL_sigma": 0.11180341154641625
+      },
+      "zeta_c=0.12": {
+        "sigma_required": 0.0971241814000333,
+        "P_zeta_required": 0.009433106612626575,
+        "perturbativity_0.6_absfNL_sigma": 0.25495097617508744
+      },
+      "zeta_c=0.15": {
+        "sigma_required": 0.14443572529700763,
+        "P_zeta_required": 0.020861678742072648,
+        "perturbativity_0.6_absfNL_sigma": 0.379143778904645
+      }
+    },
+    "gaussian_0": {
+      "zeta_c=0.05": {
+        "sigma_required": 0.006324750945626435,
+        "P_zeta_required": 4.0002474524202485e-05,
+        "perturbativity_0.6_absfNL_sigma": 0.0
+      },
+      "zeta_c=0.08": {
+        "sigma_required": 0.01011960033446619,
+        "P_zeta_required": 0.00010240631092932823,
+        "perturbativity_0.6_absfNL_sigma": 0.0
+      },
+      "zeta_c=0.1": {
+        "sigma_required": 0.01264950209020421,
+        "P_zeta_required": 0.0001600099031300807,
+        "perturbativity_0.6_absfNL_sigma": 0.0
+      },
+      "zeta_c=0.12": {
+        "sigma_required": 0.01517940317100007,
+        "P_zeta_required": 0.00023041428062776695,
+        "perturbativity_0.6_absfNL_sigma": 0.0
+      },
+      "zeta_c=0.15": {
+        "sigma_required": 0.018974253963319882,
+        "P_zeta_required": 0.00036002231346456023,
+        "perturbativity_0.6_absfNL_sigma": 0.0
+      }
+    }
+  },
+  "hard_ceiling_at_standard_thresholds": {
+    "zeta_c=0.45": {
+      "matter_bounce_Li_-35/16": {
+        "beta_at_sigma_0.02": 0.0,
+        "zeta_ceiling_at_sigma_0.02": 0.19100119047619046
+      },
+      "matter_bounce_Cai_-35/8": {
+        "beta_at_sigma_0.02": 0.0,
+        "zeta_ceiling_at_sigma_0.02": 0.09628809523809523
+      },
+      "gaussian_0": {
+        "beta_at_sigma_0.02": 2.075310799066296e-112,
+        "zeta_ceiling_at_sigma_0.02": Infinity
+      }
+    },
+    "zeta_c=1.0": {
+      "matter_bounce_Li_-35/16": {
+        "beta_at_sigma_0.02": 0.0,
+        "zeta_ceiling_at_sigma_0.02": 0.19100119047619046
+      },
+      "matter_bounce_Cai_-35/8": {
+        "beta_at_sigma_0.02": 0.0,
+        "zeta_ceiling_at_sigma_0.02": 0.09628809523809523
+      },
+      "gaussian_0": {
+        "beta_at_sigma_0.02": 0.0,
+        "zeta_ceiling_at_sigma_0.02": Infinity
+      }
+    }
+  },
+  "cited_not_computed": {
+    "Choudhury_2025_arXiv_2409.18983": "EPJC 85:472. Uses f_NL = (-39.95, -35/8) with the compaction-function criterion in an EFT non-singular bounce + USR setup; reports 1e-3 <= f_PBH <= 1, PBH overproduction completely mitigated, and a perturbativity bound f_NL >~ -60. Their -35/16 case is NOT in that paper.",
+    "Papanikolaou_2025_arXiv_2504.11641": "Matter-bounce induced GW background with universal IR scaling Omega_GW ~ f^2; asteroid-mass PBH window."
+  },
+  "caveats": [
+    "The quadratic local map has an absolute ceiling zeta_max = -5/(12 f_NL) + (3/5)|f_NL| sigma^2 for f_NL < 0; for the standard curvature thresholds zeta_c ~ 0.45-1 in the rare-tail regime beta = 0 identically at BOTH -35/16 and -35/8. This is a property of the truncated quadratic map, not a physical no-PBH theorem; Choudhury et al. avoid it via the compaction-function criterion.",
+    "Results are quoted only where 0.6|f_NL|sigma << 1 (perturbativity of the local expansion) and zeta_c < zeta_max.",
+    "Critical-collapse mass function, non-spherical effects, and the window-function/transfer choice are not modelled."
+  ],
+  "wall_seconds": 0.008
+}

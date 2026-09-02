@@ -1,0 +1,96 @@
+{
+  "task": "Track A3 channel 3 \u2014 survey reach for f_NL^local = -35/16",
+  "f_NL_matter_bounce_Li_-35/16": -2.1875,
+  "f_NL_matter_bounce_Cai_-35/8": -4.375,
+  "bounce_to_local_template_overlap_r": 0.84,
+  "r_source": "this lab's P2 forecast (noise-weighted shape overlap); research/focused_paper_source_integration/02_full_draft.tex",
+  "forecast_reach": [
+    {
+      "survey": "SPHEREx (bispectrum only, fiducial)",
+      "sigma": 0.7,
+      "status": "cited",
+      "source": "Heinrich, Dore & Krause 2023, arXiv:2311.13082 (abstract)",
+      "significance_bare_-35/16": 3.125,
+      "significance_projected_r0.84_-35/16": 2.625,
+      "significance_bare_-35/8": 6.25,
+      "significance_projected_r0.84_-35/8": 5.25,
+      "derivation": "significance = |f_NL| (x r) / sigma"
+    },
+    {
+      "survey": "SPHEREx (target, P + B combined)",
+      "sigma": 0.5,
+      "status": "cited",
+      "source": "Heinrich, Dore & Krause 2023, arXiv:2311.13082 (abstract)",
+      "significance_bare_-35/16": 4.375,
+      "significance_projected_r0.84_-35/16": 3.675,
+      "significance_bare_-35/8": 8.75,
+      "significance_projected_r0.84_-35/8": 7.35,
+      "derivation": "significance = |f_NL| (x r) / sigma"
+    },
+    {
+      "survey": "MegaMapper-class z>2 spectroscopy",
+      "sigma": 1.0,
+      "status": "cited",
+      "source": "Ferraro et al. 2019, arXiv:1903.09208 (abstract: 'sigma(f_NL^local) of order unity')",
+      "significance_bare_-35/16": 2.1875,
+      "significance_projected_r0.84_-35/16": 1.8375,
+      "significance_bare_-35/8": 4.375,
+      "significance_projected_r0.84_-35/8": 3.675,
+      "derivation": "significance = |f_NL| (x r) / sigma"
+    },
+    {
+      "survey": "Illustrative next-generation floor",
+      "sigma": 0.3,
+      "status": "ILLUSTRATIVE \u2014 not a published forecast",
+      "source": "none",
+      "significance_bare_-35/16": 7.291666666666667,
+      "significance_projected_r0.84_-35/16": 6.125,
+      "significance_bare_-35/8": 14.583333333333334,
+      "significance_projected_r0.84_-35/8": 12.25,
+      "derivation": "significance = |f_NL| (x r) / sigma"
+    },
+    {
+      "survey": "Illustrative cosmic-variance-limited floor",
+      "sigma": 0.1,
+      "status": "ILLUSTRATIVE \u2014 not a published forecast",
+      "source": "none",
+      "significance_bare_-35/16": 21.875,
+      "significance_projected_r0.84_-35/16": 18.374999999999996,
+      "significance_bare_-35/8": 43.75,
+      "significance_projected_r0.84_-35/8": 36.74999999999999,
+      "derivation": "significance = |f_NL| (x r) / sigma"
+    }
+  ],
+  "current_constraints": [
+    {
+      "measurement": "DESI DR1 LRG+QSO (merger-model QSO bias)",
+      "central": -3.6,
+      "err_plus": 9.0,
+      "err_minus": 9.1,
+      "source": "Chaussidon et al. 2024, arXiv:2411.17623 (abstract)",
+      "sigma_symmetrised": 9.05,
+      "tension_with_-35/16_sigma": 0.15694444444444444,
+      "tension_with_-35/8_sigma": 0.08516483516483515,
+      "discriminating_power_absfNL_over_sigma_-35/16": 0.24171270718232044,
+      "derivation": "tension = |f_NL_pred - central| / (1-sigma error on that side)"
+    },
+    {
+      "measurement": "DESI DR1 LRG+QSO (universality QSO bias)",
+      "central": 3.5,
+      "err_plus": 10.7,
+      "err_minus": 7.4,
+      "source": "Chaussidon et al. 2024, arXiv:2411.17623 (abstract)",
+      "sigma_symmetrised": 9.05,
+      "tension_with_-35/16_sigma": 0.768581081081081,
+      "tension_with_-35/8_sigma": 1.064189189189189,
+      "discriminating_power_absfNL_over_sigma_-35/16": 0.24171270718232044,
+      "derivation": "tension = |f_NL_pred - central| / (1-sigma error on that side)"
+    }
+  ],
+  "notes": [
+    "MegaMapper is a proposed, unapproved facility. Consistent with this lab's P2 policy we quote it as an outlook at the published order-unity level only, and do not transfer any systematic budget or headline a significance for it.",
+    "The two illustrative rows (sigma = 0.3, 0.1) are NOT published forecasts and must never be quoted as such.",
+    "DESI DR1 currently has essentially no discriminating power on a |f_NL| ~ 2 signal: |f_NL|/sigma < 0.3."
+  ],
+  "wall_seconds": 0.0
+}

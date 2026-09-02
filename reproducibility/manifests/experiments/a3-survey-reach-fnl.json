@@ -1,0 +1,58 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-survey-reach-fnl",
+  "title": "Track A3 channel 3 \u2014 survey reach and current-constraint tension table for f_NL^local = -35/16",
+  "program": "bounce-theory",
+  "paper": "A3 (Track A3 portfolio paper)",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "published sigma(f_NL) forecasts and DESI DR1 measurement (literature values, quoted verbatim from abstracts)",
+      "type": "external-literature",
+      "locator": "arXiv:2311.13082 (SPHEREx sigma=0.7 bispectrum / 0.5 target); arXiv:1903.09208 (MegaMapper-class order unity); arXiv:1412.4872 (SPHEREx mission); arXiv:2106.09713 (FishLSS); arXiv:2411.17623 (DESI DR1 f_NL^loc = -3.6 +9.0/-9.1)",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/survey_reach_fnl.py",
+      "entrypoint": "python3 research/track_a3_multichannel/survey_reach_fnl.py",
+      "sha256": "eda632fe3fd683825122ecdf12d1313db5b58cd74ea4028a09f979eddb8996cf"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + scipy 1.18.0 (repo requirements.txt subset)",
+    "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation (Apple M5)",
+    "date": "2026-09-02",
+    "wall_clock": "0.01 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "0.01 s (measured)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Arithmetic only. If any cited sigma is superseded upstream, update ROWS and re-run."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/outputs/survey_reach_fnl.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: SPHEREx bispectrum-only bare 3.13 sigma / r-projected 2.63 sigma; SPHEREx target bare 4.38 / projected 3.68; MegaMapper-class bare 2.19 / projected 1.84; DESI DR1 (merger-model) tension 0.16 sigma with |f_NL|/sigma = 0.24. Two rows are flagged ILLUSTRATIVE and must not be quoted as published forecasts.",
+  "status": "reproduced",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 3",
+    "research/focused_paper_source_integration/02_full_draft.tex (P2, r = 0.84 shape overlap)",
+    "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "second_method": {
+    "method": "separate-universe / Salopek-Bond gradient expansion (nonlinear delta-N)",
+    "fnl_local_general_epsilon": "5*epsilon/8 - 35/8",
+    "fnl_local_matter_epsilon_3_2": "-55/16",
+    "fnl_local_matter_float": -3.4375,
+    "zeta2_over_zeta1sq": "-33/16",
+    "convention": "zeta = zeta_g + (3/5) f_NL zeta_g^2"
+  },
+  "numerical_validation": {
+    "Sigma": 12.0,
+    "u_i": 1e-09,
+    "fnl_numeric": -3.4375109272218465,
+    "fnl_exact": -3.4375,
+    "relative_difference": 3.1788281735074633e-06
+  },
+  "cai_eq37_orbit_audit": {
+    "all-6-ordered-permutations": "-305/64",
+    "distinct-monomials for the (5,2,2) orbit": "-35/16"
+  },
+  "cai_over_p2_ratio": "2",
+  "consistency_relation": {
+    "n_s": 1,
+    "maldacena_prediction": 0.0,
+    "actual": -3.4375,
+    "status": "violated as required for a non-attractor (growing-mode) phase"
+  },
+  "verdict": "OTHER",
+  "reconciliation_table": [
+    {
+      "source": "Cai, Xue, Brandenberger & Zhang 2009 (0903.0631) Eq.(39)",
+      "method": "in-in, cubic action, four vertices",
+      "value": "-35/8",
+      "float": -4.375
+    },
+    {
+      "source": "Li, Quintin, Wang & Cai 2017 (1612.02036) Eq.(5.1), c_s=1",
+      "method": "in-in, generalised single field",
+      "value": "-35/16",
+      "float": -2.1875
+    },
+    {
+      "source": "BigBounce Paper 2, four-vertex re-summation",
+      "method": "in-in, re-summation of Cai's own vertices",
+      "value": "-35/16",
+      "float": -2.1875
+    },
+    {
+      "source": "THIS WORK (2026-09-02)",
+      "method": "separate-universe / nonlinear delta-N (independent)",
+      "value": "-55/16",
+      "float": -3.4375
+    }
+  ],
+  "provenance": {
+    "script": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py",
+    "script_sha256": "033fa555994aefcf2e5c2a4d25eb93a90f45b5140e89c0be77a503d1e9d8d592",
+    "wall_clock_seconds": 2.873,
+    "sympy_version": "1.14.0",
+    "mpmath_version": "1.3.0",
+    "date": "2026-09-02",
+    "ledger_item": 1,
+    "sources_checked": [
+      "arXiv:0903.0631 (Cai, Xue, Brandenberger, Zhang 2009) Eqs. (14),(20),(21),(37),(39)",
+      "arXiv:1612.02036 (Li, Quintin, Wang, Cai) Eq. (5.1) and f_NL definition",
+      "research/focused_paper_source_integration/02_full_draft.tex (BigBounce Paper 2)"
+    ]
+  }
+}

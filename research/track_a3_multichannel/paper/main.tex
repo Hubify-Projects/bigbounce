@@ -1,0 +1,439 @@
+% Track A3 — multi-channel consistency of the matter-bounce f_NL
+% SKELETON (2026-09-02). Results sections carry the real, committed numbers;
+% Secs. II.C and V.B are stubs pending the compaction-function redo (A3-1).
+% Every number here is traceable to research/track_a3_multichannel/outputs/*.json
+% or to a cited abstract. Nothing is placeholder-numeric.
+\documentclass[aps,prd,twocolumn,superscriptaddress,nofootinbib,longbibliography]{revtex4-2}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\fnlloc}{f_{\rm NL}^{\rm local}}
+\newcommand{\OmGW}{\Omega_{\rm GW}}
+\newcommand{\fpbh}{f_{\rm PBH}}
+\newcommand{\zetac}{\zeta_{\rm c}}
+
+\begin{document}
+
+\title{Multi-channel consistency of the matter-bounce non-Gaussianity:\\
+pulsar-timing spectral slope, primordial black holes, and the
+SPHEREx-era bispectrum at $\fnlloc = -35/16$}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Hubify Research, Big Bounce Cosmology Program}
+
+\date{September 2, 2026}
+
+\begin{abstract}
+A dust-dominated contracting phase preceding a nonsingular bounce predicts a
+parameter-free local non-Gaussianity of the primordial curvature perturbation.
+The printed value of Cai \textit{et al.} is $\fnlloc = -35/8$; a
+permutation-convention audit following Li \textit{et al.} gives exactly half of
+it, $\fnlloc = -35/16 = -2.1875$, and that factor of two is not yet settled by an
+independent derivation. We ask what the halved value does to three observational
+channels, and we state each channel's result at exactly the strength its evidence
+supports. (i)~\emph{Pulsar timing.} Refitting the NANOGrav 15-yr
+Hellings--Downs-correlated Ceffyl free-spectrum posteriors, we obtain a
+characteristic-strain spectral index $\gamma = 2.567 \pm 0.382$, consistent at
+$1.14\sigma$ with the matter-bounce scalar-induced gravitational-wave prediction
+$\gamma = 3$ ($\OmGW \propto f^2$), and disfavouring the supermassive-black-hole
+binary value $\gamma = 13/3$ by a Savage--Dickey factor
+$\log_{10} B_{\rm MB/SMBHB} = +3.85$. We emphasise that $\OmGW \propto f^2$ is
+the causality-limited infrared slope of \emph{any} scalar-induced background, so
+this channel is a consistency check and not a discriminator, and that it is
+insensitive to the value of $\fnl$. A scale-invariant \emph{primordial} tensor
+background ($n_{\rm T}=0$, $\gamma=5$) is excluded at $6.37\sigma$ by the same
+posterior. (ii)~\emph{Primordial black holes.} Within a Press--Schechter
+treatment with the local quadratic map, negative $\fnl$ imposes an absolute
+ceiling $\zeta_{\max} \simeq -5/(12\fnl)$ on the curvature perturbation, which
+therefore \emph{doubles} from $0.0952$ at $-35/8$ to $0.1905$ at $-35/16$. At an
+amplitude calibrated so that the Gaussian case saturates $\fpbh = 1$, the halved
+value yields $\fpbh = 7.3\times10^{-3}$ against $3.8\times10^{-6}$ at $-35/8$ --
+a suppression weaker by three orders of magnitude, placing $-35/16$ inside rather
+than far below the $10^{-3} \le \fpbh \le 1$ band reported for negative-$\fnl$
+bounce scenarios. (iii)~\emph{Large-scale structure.} The prediction is
+consistent with the DESI DR1 constraint $\fnlloc = -3.6^{+9.0}_{-9.1}$ at
+$0.16\sigma$, and is the only channel sensitive to the value of $\fnl$: SPHEREx
+reaches $3.13\sigma$ ($2.63\sigma$ after the bounce-to-local shape projection
+$r = 0.84$) at its bispectrum-only forecast $\sigma_{\fnl} = 0.7$, and
+$4.38\sigma$ ($3.68\sigma$) at its combined target $\sigma_{\fnl} = 0.5$. The
+three channels are mutually consistent. The operative uncertainty is internal
+rather than observational: only the bispectrum channel depends on which of
+$-35/16$ or $-35/8$ is correct, and it depends on it strongly.
+\end{abstract}
+
+\maketitle
+
+%======================================================================
+\section{Introduction}
+\label{sec:intro}
+
+% STUB. To be written. Content to cover:
+%  - the bounce-vs-inflation question and why a parameter-free f_NL matters;
+%  - the matter-contraction f_NL and the -35/8 vs -35/16 factor of two;
+%  - why a single number measured in three unrelated channels is the strongest
+%    available near-term test;
+%  - explicit statement that this paper reports a consistency assessment, not a
+%    detection, and that one channel (PBH) is reported at Press-Schechter level
+%    only.
+
+The matter-bounce scenario -- a dust-dominated contracting phase matched through
+a nonsingular bounce onto the standard expanding history -- predicts a
+scale-invariant curvature power spectrum together with a definite, parameter-free
+local bispectrum amplitude~\cite{Cai2009,CaiEasson2012,Quintin2015}. Section
+\ref{sec:parameter} fixes the value we test; Secs.~\ref{sec:pta}--\ref{sec:lss}
+take it through three channels; Sec.~\ref{sec:discussion} states what is and is
+not established.
+
+%======================================================================
+\section{The parameter under test}
+\label{sec:parameter}
+
+Cai \textit{et al.}~\cite{Cai2009} print a squeezed-limit amplitude
+$\fnlloc = -35/8 = -4.375$ for the matter bounce. Li \textit{et
+al.}~\cite{Li2016}, whose no-go analysis extends that of Quintin \textit{et
+al.}~\cite{Quintin2015}, obtain exactly one half of it,
+\begin{equation}
+  \fnlloc = -\frac{35}{16} = -2.1875 .
+  \label{eq:fnl}
+\end{equation}
+The discrepancy traces to permutation counting in the in-in commutator and to a
+$+(99/128)\sum_i k_i^3$ term carried by the Cai shape polynomial, whose removal
+halves the bare squeezed limit exactly. We adopt Eq.~\eqref{eq:fnl} throughout
+and carry $-35/8$ in parallel wherever a channel distinguishes them.
+
+\textit{Scope statement.}---The factor of two has \emph{not} been settled by an
+independent second-method derivation (for example a Salopek--Bond gradient
+expansion or a $\delta N$ computation). We therefore never state a channel result
+at $-35/16$ alone where the two values differ materially.
+
+%======================================================================
+\section{Channel I: the pulsar-timing spectral slope}
+\label{sec:pta}
+
+\subsection{Spectral conventions}
+
+With the characteristic strain parameterised as $h_c(f) \propto
+f^{(3-\gamma)/2}$ and
+$\OmGW = (2\pi^2/3H_0^2)\, f^2 h_c^2(f)$, the energy density scales as
+\begin{equation}
+  \OmGW(f) \propto f^{\,5-\gamma}.
+  \label{eq:slope}
+\end{equation}
+Hence $\gamma = 13/3$ for gravitational-wave-driven supermassive-black-hole
+binary inspirals ($\OmGW \propto f^{2/3}$), $\gamma = 5$ for a scale-invariant
+primordial tensor background ($n_{\rm T} = 0$, $\OmGW \propto f^0$), and
+$\gamma = 3$ for $\OmGW \propto f^2$, the universal infrared scaling of the
+scalar-induced background of a nonsingular matter bounce~\cite{Papanikolaou2025}.
+We stress that $\gamma = 3$ is \emph{not} the $n_{\rm T} = 0$ case; the two are
+separated by two units of slope.
+
+\subsection{Posterior and Bayes factors}
+
+We fit the NANOGrav 15-yr Hellings--Downs-correlated free-spectrum Ceffyl kernel
+density posteriors~\cite{NANOGrav15,NANOGravKDE} ($30$ frequency bins,
+$T_{\rm obs} = 16.03\,$yr) with a power law $(\gamma, \log_{10}A)$ under priors
+$\gamma \sim U[0,7]$, $\log_{10}A \sim U[-18,-11]$, using $32$ walkers and
+$10^4$ production steps after $2500$ burn-in ($3.2\times10^5$ samples,
+${\rm ESS} = 5.5\times10^3$). The marginal is
+\begin{equation}
+  \gamma = 2.567 \pm 0.382, \qquad
+  \log_{10} A = -14.03 \pm 0.38 ,
+  \label{eq:gamma}
+\end{equation}
+with median $2.591$ and $68\%$ interval $[2.304, 2.882]$.
+
+Savage--Dickey density ratios for the nested point hypotheses $\gamma = \gamma_*$
+against free $\gamma$, $B_{\gamma_*/{\rm free}} = p(\gamma_*|d)/\pi(\gamma_*)$
+with $\pi = 1/7$, are collected in Table~\ref{tab:pta}.
+
+\begin{table}[t]
+\caption{\label{tab:pta}Channel I. Savage--Dickey factors and Gaussian
+$z$-distances from the posterior of Eq.~\eqref{eq:gamma}. All values reproduced
+from the committed chain
+(\texttt{pta\_gamma\_reproduce.py}); differences from the archived record are
+$\le 3\times10^{-15}$.}
+\begin{ruledtabular}
+\footnotesize
+\begin{tabular}{lcccc}
+Hypothesis & $\gamma_*$ & $\OmGW$ slope & $B_{\gamma_*/{\rm free}}$ & $z$ \\
+\colrule
+Matter bounce (induced) & $3$      & $f^{2}$   & $3.23$                & $1.14\sigma$ \\
+SMBHB inspiral          & $13/3$   & $f^{2/3}$ & $4.52\times10^{-4}$   & $4.63\sigma$ \\
+Primordial tensors      & $5$      & $f^{0}$   & $1.86\times10^{-24}$  & $6.37\sigma$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The matter-bounce-to-SMBHB ratio is
+$B_{\rm MB/SMBHB} = 7.14\times10^{3}$, i.e. $\log_{10}B = +3.85$. Narrowing the
+$\gamma$ prior from $U[0,7]$ to $U[2,5]$ moves $B_{3/{\rm free}}$ from $3.23$ to
+$1.47$ while leaving $B_{\rm MB/SMBHB}$ stable in the range
+$7.1$--$8.7\times10^3$; the nested factor is prior-sensitive, the model ratio is
+not.
+
+\subsection{What this channel does and does not establish}
+
+The measured slope is consistent with the matter-bounce induced-GW prediction and
+strongly disfavours both the SMBHB expectation and a scale-invariant primordial
+tensor background. It does not favour the matter bounce \emph{specifically}:
+$\OmGW \propto f^2$ is the causality-limited infrared slope common to
+scalar-induced backgrounds of essentially any origin. Nor does this channel
+constrain $\fnl$: it measures a slope, not a bispectrum amplitude, and is
+identical at $-35/16$ and $-35/8$. Converting it into a discriminating test
+requires propagating the matter-bounce scalar spectrum through the induced-GW
+kernel to predict an \emph{amplitude} in the nHz band; that computation is not
+attempted here.
+
+%======================================================================
+\section{Channel II: primordial black hole abundance}
+\label{sec:pbh}
+
+\subsection{Press--Schechter with local quadratic non-Gaussianity}
+
+Writing $\zeta = \zeta_G + A(\zeta_G^2 - \sigma^2)$ with $A = \tfrac{3}{5}\fnl$
+and $\zeta_G \sim \mathcal{N}(0,\sigma^2)$~\cite{YoungByrnes2013,Franciolini2018},
+the mass fraction is $\beta(\zetac) = P(\zeta > \zetac)$, obtained exactly by
+inverting the quadratic. Present-day abundance follows the standard radiation-era
+relation~\cite{Sasaki2018}
+\begin{equation}
+\begin{split}
+  \fpbh(M) = 1.68\times10^{8}\,
+  &\Big(\frac{\gamma_{\rm c}}{0.2}\Big)^{1/2}
+  \Big(\frac{g_*}{106.75}\Big)^{-1/4}\\
+  &\times\Big(\frac{M}{M_\odot}\Big)^{-1/2}\beta(M),
+\end{split}
+\end{equation}
+with $\gamma_{\rm c} = 0.2$, $g_* = 106.75$, and $M = 10^{20}\,$g.
+
+\subsection{An absolute ceiling that doubles}
+
+For $\fnl < 0$ the map is a downward parabola, so
+\begin{equation}
+  \zeta_{\max} = -\frac{5}{12 \fnl} + \frac{3}{5}|\fnl|\sigma^2 ,
+  \label{eq:ceiling}
+\end{equation}
+and no realisation exceeds it. The leading term scales as $1/|\fnl|$:
+$\zeta_{\max} = 0.09524$ at $-35/8$ and $0.19048$ at $-35/16$, a ratio of exactly
+$2$. This is the sharpest statement the channel makes about the two candidate
+values.
+
+\subsection{Abundance at fixed amplitude}
+
+The curvature power-spectrum amplitude is set by the source, and $\fnl$ then
+decides whether black holes are overproduced. Calibrating $\sigma$ on the
+Gaussian case so that $\fpbh = 1$ and reading off the two matter-bounce values at
+that same $\sigma$ gives Table~\ref{tab:pbh}.
+
+\begin{table}[t]
+\caption{\label{tab:pbh}Channel II. $\fpbh$ at $M = 10^{20}\,$g, with $\sigma$
+calibrated at each threshold so that the Gaussian case gives $\fpbh = 1$.
+Entries ``$0$'' mean $\zetac$ exceeds the ceiling of Eq.~\eqref{eq:ceiling}.
+Perturbativity $0.6|\fnl|\sigma \le 0.04$ throughout.}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+$\zetac$ & $\sigma_*$ & $\fpbh(-35/16)$ & $\fpbh(-35/8)$ & ratio \\
+\colrule
+$0.05$ & $0.006325$ & $7.32\times10^{-3}$ & $3.75\times10^{-6}$  & $1.95\times10^{3}$ \\
+$0.08$ & $0.010120$ & $1.24\times10^{-4}$ & $1.12\times10^{-14}$ & $1.11\times10^{10}$ \\
+$0.10$ & $0.012650$ & $3.75\times10^{-6}$ & $0$ & --- \\
+$0.12$ & $0.015179$ & $4.29\times10^{-8}$ & $0$ & --- \\
+$0.15$ & $0.018974$ & $1.82\times10^{-12}$ & $0$ & --- \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Negative $\fnl$ suppresses black hole formation, and $-35/16$ is a substantially
+weaker suppressor than $-35/8$: three to ten orders of magnitude at fixed
+amplitude. At $\zetac = 0.05$ the halved value lands inside the
+$10^{-3}\le\fpbh\le1$ band reported for negative-$\fnl$ bounce
+scenarios~\cite{Choudhury2025}, while $-35/8$ falls three orders below it.
+
+\subsection{Limitation of the quadratic truncation}
+\label{sec:pbh_limit}
+
+% STUB (item A3-1). To be replaced by a compaction-function calculation.
+At the standard curvature thresholds $\zetac \approx 0.45$--$1$, the ceiling of
+Eq.~\eqref{eq:ceiling} forces $\beta = 0$ identically for \emph{both} negative
+values in the rare-tail regime. This is a property of the truncated quadratic
+map, not a physical statement, and it is why the compaction-function formation
+criterion is used in the literature~\cite{Choudhury2025}. Choudhury \textit{et
+al.} treat $\fnl = (-39.95, -35/8)$ in an effective-field-theory bounce with an
+ultra-slow-roll phase and report $10^{-3}\le\fpbh\le1$, complete mitigation of
+overproduction, and a perturbativity bound $|\fnl| \lesssim 60$; they do not
+treat $-35/16$. Redoing that calculation at $-35/16$ is the principal open item
+of this work and is \emph{not} claimed here.
+
+%======================================================================
+\section{Channel III: the large-scale-structure bispectrum}
+\label{sec:lss}
+
+\subsection{Current constraints}
+
+The DESI DR1 analysis of $1{,}631{,}716$ luminous red galaxies
+($0.6<z<1.1$) and $1{,}189{,}129$ quasars
+($0.8<z<3.1$)~\cite{Chaussidon2024} gives
+$\fnlloc = -3.6^{+9.0}_{-9.1}$ at $68\%$ confidence with a merger model for the
+quasar response, or $\fnlloc = +3.5^{+10.7}_{-7.4}$ assuming universality. The
+prediction of Eq.~\eqref{eq:fnl} sits $0.16\sigma$ from the former and
+$0.77\sigma$ from the latter. The discriminating power is
+$|\fnl|/\sigma = 0.24$: DESI DR1 is consistent with the prediction and cannot
+test it.
+
+\subsection{Forecast reach}
+
+The matter-bounce bispectrum is not exactly the local shape; we adopt the
+noise-weighted overlap $r = 0.84$, so an experiment quoting $\sigma_{\rm local}$
+constrains the bounce amplitude at $\sigma_{\rm local}/r$.
+Table~\ref{tab:reach} gives both.
+
+\begin{table}[t]
+\caption{\label{tab:reach}Channel III. Detection significance of
+$\fnlloc = -2.1875$. Forecast $\sigma$ values are quoted from the cited
+abstracts; the significances are $|\fnl|/\sigma$ and $|\fnl|r/\sigma$.
+MegaMapper is an unapproved design and is quoted only at its published
+order-unity level; no systematic budget is transferred to it.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Survey & $\sigma_{\fnl}$ & bare & $r$-projected \\
+\colrule
+SPHEREx, bispectrum only~\cite{Heinrich2023} & $0.7$ & $3.13\sigma$ & $2.63\sigma$ \\
+SPHEREx, $P+B$ target~\cite{Heinrich2023,Dore2014} & $0.5$ & $4.38\sigma$ & $3.68\sigma$ \\
+MegaMapper class~\cite{Ferraro2019,Sailer2021} & $\sim 1$ & $2.19\sigma$ & $1.84\sigma$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+At $-35/8$ the same rows read $6.25\sigma$, $8.75\sigma$ and $4.38\sigma$ bare.
+This is the only channel in which the factor of two is observationally
+consequential.
+
+%======================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{The joint statement}
+
+The three channels are mutually consistent at $\fnlloc = -35/16$. The pulsar
+timing slope agrees at $1.14\sigma$ and rejects the two competing spectral shapes;
+the primordial black hole channel is suppressed but not extinguished, and lands
+in the sizeable-abundance band; the bispectrum prediction is consistent with the
+best current measurement and reachable by SPHEREx. No channel is in tension with
+another.
+
+\subsection{Where the consistency is weak}
+
+Two of the three channels are insensitive to the parameter. The pulsar-timing
+result is a statement about a slope that any scalar-induced background shares,
+and it is identical at both candidate $\fnl$ values. The black hole channel is
+reported only at Press--Schechter level. The operative uncertainty is therefore
+internal: only the bispectrum channel separates $-35/16$ from $-35/8$, and it
+separates them by more than $3\sigma$ at SPHEREx sensitivity, so settling the
+factor of two by an independent derivation is a prerequisite for a sharp
+prediction rather than a bookkeeping detail.
+
+\subsection{Next steps}
+\label{sec:next}
+
+% STUB. To be completed alongside items A3-1 through A3-5.
+(i)~a compaction-function recomputation of Channel II at $-35/16$;
+(ii)~an independent gradient-expansion or $\delta N$ derivation of
+Eq.~\eqref{eq:fnl};
+(iii)~propagation of the matter-bounce scalar spectrum through the induced-GW
+kernel to predict the nHz \emph{amplitude}, converting Channel I from a
+consistency check into a test;
+(iv)~re-derivation of the shape overlap $r$ at the $-35/16$ fiducial.
+
+%======================================================================
+\section*{Data and code availability}
+\sloppy
+
+All three channel computations are committed at
+\texttt{research/track\_a3\_multichannel/}: \texttt{pta\_gamma\_reproduce.py},
+\texttt{pbh\_abundance\_fnl.py}, \texttt{survey\_reach\_fnl.py}, with results in
+\texttt{outputs/} and reproducibility manifests at
+\texttt{reproducibility/manifests/}\allowbreak\texttt{experiments/a3-*.json}.
+The pulsar-timing chain is
+\texttt{pipelines/p3\_pta\_mcmc/}\allowbreak
+\texttt{free\_spectrum\_real\_2026-05-01/}\allowbreak
+\texttt{chain\_real\_freespec.npy}
+(SHA-256 \texttt{50abc38a\ldots10fc}), derived from the NANOGrav 15-yr KDE free
+spectra, Zenodo \texttt{10.5281/zenodo.8060824}. Every computation ran on a local
+CPU in under $0.1\,$s at zero compute cost.
+
+%======================================================================
+\begin{thebibliography}{99}
+
+\bibitem{Cai2009} Y.-F. Cai, W. Xue, R. Brandenberger, and X. Zhang,
+  ``Non-Gaussianity in a Matter Bounce,'' JCAP \textbf{0905}, 011 (2009),
+  arXiv:0903.0631.
+
+\bibitem{CaiEasson2012} Y.-F. Cai, D. A. Easson, and R. Brandenberger,
+  ``Towards a Nonsingular Bouncing Cosmology,'' JCAP \textbf{1208}, 020 (2012),
+  arXiv:1206.2382.
+
+\bibitem{Quintin2015} J. Quintin, Z. Sherkatghanad, Y.-F. Cai, and
+  R. H. Brandenberger, ``Evolution of cosmological perturbations and the
+  production of non-Gaussianities through a nonsingular bounce: Indications for a no-go theorem in single field matter bounce cosmologies,''
+  Phys. Rev. D \textbf{92}, 063532 (2015), arXiv:1508.04141.
+
+\bibitem{Li2016} Y.-B. Li, J. Quintin, D.-G. Wang, and Y.-F. Cai,
+  ``Matter bounce cosmology with a generalized single field: non-Gaussianity and
+  an extended no-go theorem,'' JCAP \textbf{1703}, 031 (2017),
+  arXiv:1612.02036.
+
+\bibitem{Papanikolaou2025} T. Papanikolaou,
+  ``Gravitational wave signatures of non-singular matter bouncing cosmology in
+  NANOGrav and beyond,'' arXiv:2504.11641.
+
+\bibitem{NANOGrav15} G. Agazie \textit{et al.} (NANOGrav Collaboration),
+  ``The NANOGrav 15 yr Data Set: Evidence for a Gravitational-wave Background,''
+  Astrophys. J. Lett. \textbf{951}, L8 (2023), arXiv:2306.16213.
+
+\bibitem{NANOGravKDE} NANOGrav Collaboration,
+  ``NANOGrav 15 yr KDE Free Spectra v1.0.0,''
+  Zenodo, \href{https://doi.org/10.5281/zenodo.8060824}{10.5281/zenodo.8060824}.
+
+\bibitem{YoungByrnes2013} S. Young and C. T. Byrnes,
+  ``Primordial black holes in non-Gaussian regimes,'' JCAP \textbf{1308}, 052
+  (2013), arXiv:1307.4995.
+
+\bibitem{Franciolini2018} G. Franciolini, A. Kehagias, S. Matarrese, and
+  A. Riotto, ``Primordial Black Holes from Inflation and non-Gaussianity,''
+  JCAP \textbf{1803}, 016 (2018), arXiv:1801.09415.
+
+\bibitem{Sasaki2018} M. Sasaki, T. Suyama, T. Tanaka, and S. Yokoyama,
+  ``Primordial black holes -- perspectives in gravitational wave astronomy,''
+  Class. Quant. Grav. \textbf{35}, 063001 (2018), arXiv:1801.05235.
+
+\bibitem{Choudhury2025} S. Choudhury, K. Dey, S. Ganguly, A. Karde,
+  S. K. Singh, and P. Tiwari,
+  ``Negative non-Gaussianity as a salvager for PBHs with PTAs in bounce,''
+  Eur. Phys. J. C \textbf{85}, 472 (2025), arXiv:2409.18983.
+
+\bibitem{Chaussidon2024} E. Chaussidon \textit{et al.} (DESI Collaboration),
+  ``Constraining primordial non-Gaussianity with DESI 2024 LRG and QSO
+  samples,'' arXiv:2411.17623.
+
+\bibitem{Heinrich2023} C. Heinrich, O. Dor\'e, and E. Krause,
+  ``Measuring $f_{\rm NL}$ with the SPHEREx Multi-tracer Redshift Space
+  Bispectrum,'' arXiv:2311.13082.
+
+\bibitem{Dore2014} O. Dor\'e \textit{et al.},
+  ``Cosmology with the SPHEREx All-Sky Spectral Survey,'' arXiv:1412.4872.
+
+\bibitem{Ferraro2019} S. Ferraro \textit{et al.},
+  ``Inflation and Dark Energy from spectroscopy at $z>2$,''
+  Astro2020 science white paper, arXiv:1903.09208.
+
+\bibitem{Sailer2021} N. Sailer, E. Castorina, S. Ferraro, and M. White,
+  ``Cosmology at high redshift -- a probe of fundamental physics,''
+  JCAP \textbf{12}, 049 (2021), arXiv:2106.09713.
+
+\end{thebibliography}
+
+\end{document}

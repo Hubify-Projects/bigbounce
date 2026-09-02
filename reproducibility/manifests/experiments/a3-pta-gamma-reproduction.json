@@ -1,0 +1,69 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-pta-gamma-reproduction",
+  "title": "Track A3 channel 1 \u2014 reproduction of the NANOGrav 15-yr free-spectrum gamma posterior and Savage-Dickey Bayes factors from the committed chain",
+  "program": "bounce-theory",
+  "paper": "A3 (Track A3 portfolio paper)",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "NANOGrav 15-yr HD-correlated free-spectrum emcee chain (320,000 samples)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/chain_real_freespec.npy",
+      "checksum": "sha256:50abc38a04e1bf886adc833b5eb653be4e986877fe2476f87a78927f4f3610fc"
+    },
+    {
+      "name": "NANOGrav 15-yr KDE Free Spectra v1.0.0 (30f_fs{hd}_ceffyl) \u2014 upstream source of the chain",
+      "type": "external-dataset",
+      "locator": "https://doi.org/10.5281/zenodo.8060824",
+      "checksum": null
+    },
+    {
+      "name": "committed reference summaries for the diff",
+      "type": "internal-artifact",
+      "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/{results.json,savage_dickey_2026-05-29.json}",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/pta_gamma_reproduce.py",
+      "entrypoint": "python3 research/track_a3_multichannel/pta_gamma_reproduce.py",
+      "sha256": "d515372eab1e4e6a042a555b6a93d679ec7824d8a1a2aa421fbc7265ad87d4b0"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + scipy 1.18.0 (repo requirements.txt subset)",
+    "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation (Apple M5)",
+    "date": "2026-09-02",
+    "wall_clock": "0.02 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "0.02 s (measured)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "No re-fit is performed; the emcee fit itself (pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py) requires the Zenodo KDE pack and emcee, and took 25 s of production sampling originally. Reproduction of the SUMMARIES needs only numpy+scipy and the committed chain."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/outputs/pta_gamma_reproduction.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Script asserts REPRODUCED=true: gamma mean/std match the committed results.json to 0 (exact), Savage-Dickey B_MB/free matches savage_dickey_2026-05-29.json to 3.1e-15 absolute, B_MB/SMBHB to 3.1e-11, z(SMBHB) exactly. Any drift beyond those tolerances means the chain or the KDE bandwidth rule changed.",
+  "status": "reproduced",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 3",
+    "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
+  ]
+}
