@@ -9026,6 +9026,33 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P5 disposition ledger", href: `${PR}/DISPOSITIONS/P5.md` },
     ],
   },
+  {
+    id: "skill-improvement-2026-09-02",
+    kind: "skill-improvement",
+    dateISO: "2026-09-02",
+    title: "P1N/P4P/A3M closure wave — routing directive, manifest schema, machine-checkable regressions, fetch hardening",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Six process/tooling improvements landed during the 2026-09-02 P1N/P4P/A3M closure wave, spanning the model-routing directive, manifest schema, closure verification, and data-fetch reliability lanes.",
+    keyTakeaways: [
+      "N-AMENDED routing directive: CLAUDE.md updated for the Fable 5.1 era — retires directive J's blanket all-subagents-Opus rule, formalizes Sonnet-body/Opus-judgment/Haiku-polling worker routing for both internal reviews and external API/CLI legs (bigbounce b3c5efd9).",
+      "Manifest schema enum extensions: reproducibility manifests moved to schema v1 conformance across the six 2026-09-02 manifests — additive paper-code enum entries for A2/A3/P1N/P4P plus status/id-slug fields, so new papers validate without breaking existing manifests (bigbounce f297cc6e, 7e420e8b, ae21546c).",
+      "Machine-checkable closure assertions (p1n_r3_checks): P1N's R3 final closure replaced prose-only regression claims with machine-checked assertions before the arXiv tarball rebuild, catching regressions that a text diff alone would have missed (bigbounce af204341).",
+      "Merge-regression lesson from the drift audit: P1N's R1 closure found and restored 3 regressions introduced by the P1A+P1C merge (content silently dropped when the two source papers were combined into the ECH Note) — now a standing check on any future paper merge (bigbounce 82bb7752).",
+      "Recovery-benchmark fetch hardening: the anomaly-catalog known-object recovery benchmark's reference-catalog fetch was hardened with timeouts, column subsets, and progress reporting after flaky full-catalog pulls stalled pod runs (bigbounce 80dcf196).",
+      "Codex launchd tick retirement under directive N: the Codex CLI launchd watchdog/tick was unloaded now that directive N pauses the Codex/OpenAI lane for quota protection, removing a background process that no longer does useful work (bigbounce 0b3cfaba).",
+    ],
+    links: [
+      { label: "commit b3c5efd9 — N-AMENDED routing", href: `${GH_COMMIT}/b3c5efd9` },
+      { label: "commit f297cc6e — manifest enum extension", href: `${GH_COMMIT}/f297cc6e` },
+      { label: "commit 7e420e8b — manifest schema v1", href: `${GH_COMMIT}/7e420e8b` },
+      { label: "commit ae21546c — manifest schema v1 conformance", href: `${GH_COMMIT}/ae21546c` },
+      { label: "commit af204341 — P1N R3 machine-checked closure", href: `${GH_COMMIT}/af204341` },
+      { label: "commit 82bb7752 — P1N R1 merge-regression restore", href: `${GH_COMMIT}/82bb7752` },
+      { label: "commit 80dcf196 — recovery-benchmark fetch hardening", href: `${GH_COMMIT}/80dcf196` },
+      { label: "commit 0b3cfaba — Codex launchd tick retirement", href: `${GH_COMMIT}/0b3cfaba` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
@@ -10487,6 +10514,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "skills-autolog-2026-08-06", dateISO: "2026-08-06", patterns: 79, promptRules: 41, tooling: 40, note: "Draft-paper review infrastructure wave: auxiliary draft registry merged into the review engine (bigbounce 84d53b75), first-class draft-paper records in portfolio preflight receipts with back-compat verification (d5e247bc), and a concurrency fix — the artifact-crosscheck validator captured process-global stdout during parallel leg verification, corrupting the hashed report into false receipt-stale failures; now uses a private stream with regression tests (9b92721d). Counters unchanged: extensions to existing tools, no new standalone tool/pattern/prompt rule." },
   { id: "skills-autolog-2026-08-05", dateISO: "2026-08-05", patterns: 79, promptRules: 41, tooling: 40, note: "Directive-Q wave: standing directive text (pure-contribution framing + mandatory reproducibility manifests; bigbounce 946c6655), reproducibility manifest schema v1 (a0fac40e), JSON schemas + tools/validate_repro_manifests.py validator (44b87570 — tooling 39→40), canonical paper-lineage disposition record confirming the retired 14-barrier no-go catalog is intact with resurrection recommended (03f1fde2), and the flat All-Papers site index with plain-English purpose subtitles (30e4676c). patterns/promptRules unchanged — process/tooling wave." },
   { id: "finalization-maintenance-autolog-2026-08-04", dateISO: "2026-08-04", patterns: 79, promptRules: 41, tooling: 39, note: "Maintenance autolog for all five skill/process/tooling-matched commits since 2026-07-27: publication-finalization prompt provenance (bigbounce bd89100b); P3 directive-G disclosure correction (bigbounce a59d53c2); duplicate project skill-mirror topology record (bigbounce c4eba285); existing native-PDF provider-routing and test repair (bigbounce b75c566d); generated SciStack skill-index refresh (scistack 90eb090). Counters intentionally unchanged: no new catalog pattern, reviewer-prompt instruction rule, or standalone tool was added." },
+  { id: "skill-improvement-2026-09-02", dateISO: "2026-09-02", patterns: 79, promptRules: 42, tooling: 42, note: "P1N/P4P/A3M closure wave (promptRules 41→42, tooling 41→42): prompt rule 42 = N-AMENDED routing directive, Sonnet-body/Opus-judgment/Haiku-polling worker split for the Fable 5.1 era across both internal and external API/CLI legs (bigbounce b3c5efd9). +1 tooling: p1n_r3_checks machine-checkable closure assertions replaced prose-only regression claims for P1N's R3 final closure (bigbounce af204341), paired with the P1N R1 merge-regression lesson — 3 regressions from the P1A+P1C merge caught and restored (bigbounce 82bb7752) — and recovery-benchmark fetch hardening for the anomaly-catalog known-object benchmark (bigbounce 80dcf196). Also landed: reproducibility manifest schema v1 additive paper-code enum extensions for A2/A3/P1N/P4P (bigbounce f297cc6e, 7e420e8b, ae21546c) and Codex launchd tick retirement now that directive N pauses the Codex/OpenAI lane (bigbounce 0b3cfaba). patterns unchanged at 79." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
