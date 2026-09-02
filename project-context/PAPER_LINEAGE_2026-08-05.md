@@ -348,3 +348,103 @@ Decisions taken:
 3. **Reproducibility surface: build.** Public per-program reproduce view from
    `reproducibility/manifests/` + Hubify import spec — the lab-level final test
    per directive Q2.
+
+---
+
+## Decision record — 2026-09-02 (portfolio restructure, directive R3)
+
+Source: `project-context/PORTFOLIO_DECISION_2026-09-02.md` §3, §5 and
+Addendum; `project-context/PAPER_GENEALOGY_2026-09-02.md`. Each row below is a
+directive-R3 lineup-change record: original claim beside new claim, source
+file(s), and the decision-doc citation.
+
+| # | Change | Original claim | New claim | Source file(s) |
+|---|---|---|---|---|
+| a | P1A → merge into P1C | Standalone algebraic no-go result (torsion elimination, axial contact operator, transparency identity), `arxiv/paper1a_ech_nogo.tex` v1A.0.126 | Merged into P1C as one ≤12 pp Note (id **P1N**), `arxiv/paper1bc_ech_note/` (new); P1C frozen at v1C.0.16, review churn stopped after R13 | `arxiv/paper1a_ech_nogo.tex`, `arxiv/paper1c_nogo_survey/main.tex` |
+| b | P5 → fold into P4 | Standalone 46-pp DESIVAST chirality-environment companion, `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` v0.1.142 | One section inside P4′ (id **P4P**), `pipelines/p4prime_chirality_test/paper/` (new), reframed as the largest test of the black-hole-universe spin-axis prediction | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`, `pipelines/p2_chirality/chirality_catalog_paper.tex` |
+| c | P2 → rescope to P2′ | Full-length four-vertex derivation paper, `research/focused_paper_source_integration/02_full_draft.tex` v1.7.130, f_NL = −35/16 | ≤6 pp Letter (id **P2′**), gated on the ledger-#1 independent second-method derivation before submission | `research/focused_paper_source_integration/02_full_draft.tex` |
+| d | MCMC companion → retire to Zenodo | First-class supporting-validation-dossier manuscript, `arxiv/paper1b_mcmc_companion.tex` (registry id `P1B-MCMC`, per `PAPER_LINEAGE_2026-08-05.md` §3.4 and `project-context/SSOT/index.md` line 217) | Retired to a Zenodo dataset deposit, cited (not carried as a manuscript) by the P1N ECH Note | `arxiv/paper1b_mcmc_companion.tex`, `project-context/paper_registry.json` → `companion_manuscripts.P1B-MCMC` |
+| e | `arxiv/main.tex` → retired | Stale June monolith, v2.3.18, f_NL = −35/8, mis-cited this session as "P1A" | Moved to `arxiv/_retired/main.tex` (already executed on disk as of 2026-09-02; this row formalizes the decision) | `arxiv/_retired/main.tex` |
+| f | NANOGrav free-spectrum MCMC → reclaimed into A3 | Filed as "P3 support," appears in no paper (γ = 2.57 ± 0.38 vs. matter-bounce prediction 3, Savage–Dickey B ≈ 3.2) | Reclaimed into Track A3 (multi-channel consistency paper) as one of three channels alongside PBH abundance and SPHEREx/MegaMapper reach | `pipelines/p3_pta_mcmc/` |
+| g | "Three research programs" → retired framing | Public site/CLAUDE.md framing: bounce theory / survey discovery / galaxy chirality, three co-equal programs (`PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`) | Retired in favour of "flagship line (Track A) + closed-line note (Track B) + data products (Track C)" | `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`, site copy |
+| h | Anomaly line (P3 / AUG-011) → redirected | Supporting-release DESI public-ID recovery note plus an unwritten discovery-flagship characterization cohort (3,810 TARGETIDs, `anomaly_score >= 8.0`) | Redirected to the early-universe anomaly map (Track C2); catalogue paper contingent on ledger #8 (known-object recovery benchmark) | `pipelines/p3_anomaly_engine/paper3_apjs.tex`, `project-context/ANOMALY_FLAGSHIP_SELECTION_DECISION_2026-08-26.md` |
+
+### (a) P1A → merged into P1C
+
+`arxiv/paper1a_ech_nogo.tex` (v1A.0.126, standalone algebraic no-go result)
+is merged into `arxiv/paper1c_nogo_survey/main.tex` (frozen at v1C.0.16) to
+form a single ≤12 pp gr-qc/CQG Note at the new path
+`arxiv/paper1bc_ech_note/` (working id **P1N**), stating what minimal ECH
+does for the bounce and cannot do for dark energy. P1C's review churn (R10–
+R13, genre/length rejections per `PORTFOLIO_DECISION_2026-09-02.md` §3) stops
+after R13; one INT board runs on the merged Note before submission.
+(`PORTFOLIO_DECISION_2026-09-02.md` §3 Track B, §5.2; Addendum "The ECH Note
+is on-vision.")
+
+### (b) P5 → folded into P4
+
+`pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` (v0.1.142, a
+46-page post-hoc chirality-vs-void-environment null that no model predicts)
+is folded into `pipelines/p2_chirality/chirality_catalog_paper.tex`
+(v1.0.270) as one section of a new ≤15 pp paper at
+`pipelines/p4prime_chirality_test/paper/` (working id **P4P**), reframed as
+the largest test of the rotating-black-hole-universe galaxy-spin-axis
+prediction (Popławski torsion bounce; Shamir/JWST claim), not as a bare data
+product. (`PORTFOLIO_DECISION_2026-09-02.md` §3 Track C1, §5.3; Addendum
+"P4′ is on-vision.")
+
+### (c) P2 → rescoped to P2′
+
+`research/focused_paper_source_integration/02_full_draft.tex` (v1.7.130,
+full-length four-vertex derivation, f_NL^local = −35/16) is rescoped to a
+≤6 pp Letter (PRD-L/JCAP), working id **P2′**. Submission is gated on ledger
+item #1 (`project-context/NEXT_SCIENCE_LEDGER.md`) — an independent
+second-method derivation (Salopek–Bond gradient expansion or δN) reproducing
+−35/16 by a route no reviewer has verified. (`PORTFOLIO_DECISION_2026-09-02.md`
+§3 Track A1, §5.5.)
+
+### (d) MCMC companion → retired to Zenodo
+
+`arxiv/paper1b_mcmc_companion.tex` (registry id `P1B-MCMC`; supporting
+validation dossier, per `PAPER_LINEAGE_2026-08-05.md` §3.4 and
+`project-context/SSOT/index.md` line 217 "the MCMC companion, P1A/P1B are
+P1U") retires from manuscript status to a Zenodo dataset deposit, cited by
+the P1N ECH Note rather than carried as a paper of its own.
+(`PORTFOLIO_DECISION_2026-09-02.md` §3 Track B, §5.2.)
+
+### (e) `arxiv/main.tex` → retired
+
+The stale June monolith (v2.3.18, still f_NL = −35/8, the pre-correction
+value) that this session's P1C reviewer prompts mis-cited as "P1A" is retired
+to `arxiv/_retired/main.tex` — already executed on disk as of 2026-09-02;
+this row is the directive-R3 record of that decision.
+(`PORTFOLIO_DECISION_2026-09-02.md` §1 "Two process errors surfaced today," (a).)
+
+### (f) NANOGrav free-spectrum MCMC → reclaimed into Track A3
+
+`pipelines/p3_pta_mcmc/` (γ = 2.57 ± 0.38 vs. the matter-bounce prediction 3,
+Savage–Dickey B ≈ 3.2 for matter bounce over free spectrum) — the one
+genuinely on-vision positive result filed as "P3 support" and appearing in no
+paper — is reclaimed into Track A3, the multi-channel consistency paper, at
+−35/16. (`PORTFOLIO_DECISION_2026-09-02.md` §1 "Two process errors," (b); §3
+Track A3.)
+
+### (g) "Three research programs" → retired public framing
+
+The `PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md` framing of bounce theory /
+survey discovery / galaxy chirality as three co-equal research programs is
+retired in favour of "flagship line + closed-line note + data products" (site
+copy update pending). (`PORTFOLIO_DECISION_2026-09-02.md` §2, §5.1.)
+
+### (h) Anomaly line (P3 / AUG-011) → redirected
+
+`pipelines/p3_anomaly_engine/paper3_apjs.tex` (supporting-release DESI
+public-ID recovery note) and the unwritten AUG-011 discovery-flagship
+characterization cohort (3,810 TARGETIDs at `anomaly_score >= 8.0`, per
+`project-context/ANOMALY_FLAGSHIP_SELECTION_DECISION_2026-08-26.md`) are
+redirected to the early-universe anomaly map (Track C2, ledger #4/#6/#8); the
+autoencoder catalogue is one instrument of that map, publishable only when
+ledger #8's known-object recovery benchmark is earned.
+(`PORTFOLIO_DECISION_2026-09-02.md` §3 Track C2; Addendum "The anomaly line is
+redirected.")
+   per directive Q2.
