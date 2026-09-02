@@ -38,5 +38,14 @@ before acting. Re-plan:
 - `HUBIFY_TOKEN`: not in hubify `.env.local`, not in Keychain; the You.md
   encrypted vault (`~/.you/secret-vault/env-vault-2026-08-21T1804Z.tar.enc`)
   needs Houston's passphrase; `hubify auth login` is interactive. → click-list.
-- launchd `com.bigbounce.cron-tick` points at the dead `CODE_2025` path (exit
-  78); not a concurrent driver. Repair or retire at session end.
+- launchd `com.bigbounce.cron-tick` (hourly) and `com.bigbounce.loopwatchdog`
+  (15 min) are Codex-driven review-loop drivers (`codex exec`, gpt-5.6-sol,
+  CODEX_ENABLED=1 by default) — forbidden under directive N and a review-as-
+  product loop under R2. Both were dying on TCC (exit 78 / EPERM) but retried
+  every fire. **Unloaded 2026-09-02 ~20:35Z via `launchctl bootout`; plists kept
+  in ~/Library/LaunchAgents (reversible).** `com.bigbounce.caffeinate` left
+  loaded. Click-list: confirm permanent retirement (delete plists) or ask for a
+  Claude-native watcher instead.
+- Reproducibility manifests: 6 new manifests today needed schema-v1 conformance
+  (paper-code enum predates A2/A3/P1N/P4P); Sonnet worker fixing with additive
+  enum extensions; 61 manifests total.

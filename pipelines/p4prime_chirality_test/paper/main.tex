@@ -54,8 +54,11 @@
 \newcommand{\NS}{\textsc{not\_spiral}}
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\sigmaunit}{\sigma}
+\newcommand{\nside}{\texttt{NSIDE}}
+\newcommand{\HCRI}{\textsc{HC-RI}}
+\newcommand{\FSC}{\textsc{FSC}}
 
-\newcommand{\paperVersion}{v4P.0.1}
+\newcommand{\paperVersion}{v4P.0.2}
 \newcommand{\paperTimestamp}{September 2, 2026}
 
 \begin{document}
@@ -92,12 +95,16 @@ galaxies likewise finds no significant effect
 black-hole-universe model implies for a spin-axis dipole and find that the
 cited mechanism papers give only a qualitative alignment tendency, not a
 computed amplitude; under the minimal closure needed to make the claim
-quantitative, our sensitivity floor excludes an alignment-driven observed
-dipole above $\sim\!1\%$, more than an order of magnitude below the
-$\sim\!7$--$33\%$ amplitudes reported in the literature that motivates the
-model. This null confirms, on a sample 6--3,400$\times$ larger than the
-comparison catalogs, the independent reanalyses of Iye \etal\ (2021) and
-Patel \& Desmond (2024) that report no significant galaxy-spin anisotropy.
+quantitative, our sensitivity floor disfavors an alignment-driven observed
+dipole above $\sim\!1\%$ at $\geq\!95\%$ detection power, a factor of
+$2$--$20\times$ below the $\sim\!2$--$33\%$ amplitudes reported in the
+literature that motivates the model. This null is measured on
+$887{,}472$ primary-channel spirals: a factor of $4$--$3{,}400\times$ larger
+than every comparison catalog in Table~\ref{tab:bh_exclusion} except
+Shamir (2022)'s same-survey DESI Legacy sample ($N=1.3$ million), which
+exceeds it. This confirms the independent reanalyses of Iye \etal\ (2021)
+and Patel \& Desmond (2024) that report no significant galaxy-spin
+anisotropy.
 \end{abstract}
 
 \keywords{galaxies: spiral, galaxies: statistics, methods: data analysis,
@@ -111,7 +118,7 @@ cosmology: observations, large-scale structure of universe}
 Whether spiral galaxies show a statistically preferred handedness on the sky
 is a two-decade observational question with a specific theoretical stake.
 Longo~(2011)~\cite{Longo:2011} reported a $\sim\!7\%$ left-handed excess with
-a $>5\sigma$ dipole signal in 15,158 SDSS spirals at $z<0.085$. Shamir and
+a $\sim\!5\sigma$ dipole signal in 15,158 SDSS spirals at $z<0.085$. Shamir and
 collaborators subsequently reported handedness asymmetries of order
 $2$--$20\%$ across several independent samples --
 SDSS~\cite{Shamir:2012,Shamir:2020}, DESI Legacy~\cite{Shamir:2022DESI}, and
@@ -137,8 +144,7 @@ clockwise/counterclockwise sky asymmetry that Longo and Shamir report~\cite{Popl
 This is the same torsion mechanism this research program's own bounce papers
 adopt for gravitational-collapse avoidance (P1A/P1C), which is why the
 present catalog is an on-vision test of the model's one directly observable
-astrophysical claim rather than a detached data product (see
-project-context/PORTFOLIO\_DECISION\_2026-09-02.md, Track C1 Addendum).
+astrophysical claim rather than a detached data product.
 
 This paper is the largest single test of that claim to date. We release an
 8,474,531-object DESI Legacy DR8 chirality catalog (Sec.~\ref{sec:catalog})
@@ -158,30 +164,173 @@ develops (Sec.~\ref{sec:discussion}).
 \label{sec:catalog}
 % ============================================================
 
+\subsection{Selection, schema, and release contract}
+\label{sec:catalog_schema}
+
 The catalog assigns an observed chirality label (\CW, \CCW, or \NS) to
 $8{,}474{,}531$ DESI Legacy Imaging Survey DR8~\cite{Dey:2019} galaxy cutouts
 using a ViT-Small encoder with test-time-augmentation (TTA) equivariance
 correction, trained on a Galaxy Zoo~1-derived label set and refined against
-Galaxy Zoo DESI morphology~\cite{Walmsley:2023}. Full architecture,
-training-data provenance, bias-hardening audit (rotation/flip/leg/depth
-covariates), and per-region calibration are described in the archived
-release paper~\cite{Golden:P4v274} and are not reproduced here; this section
-gives only what the black-hole-universe test in Sec.~\ref{sec:bh} needs.
-
-The primary sample begins from 949,584 high-confidence (HC) classifier
-spirals. We exclude 59,515 rows flagged \texttt{raw\_flip\_qc\_unsafe} (a
-release-safety quality-control flag on the classifier's chirality
-prediction), leaving 890,069 quality-controlled rows, of which 887,472
-occupy a HEALPix pixel with sufficient coverage to enter the supported-pixel
-dipole fit and its matched null. A forward classifier-injection model over
-$1.7\times10^{7}$ banked network passes rules out classifier label confusion
-as the source of any residual handedness monopole ($0.0\%$ of the observed
-value); a from-scratch, manifest-retained retrain of the GZ1-core
-classifier component validates at Cohen's $\kappa=0.97$ on a provably
-training-disjoint held-out GZ1 sample. The catalog, its quarantine, exact
-null arrays, and full provenance register are archived under Zenodo DOI
+Galaxy Zoo DESI morphology~\cite{Walmsley:2023}. The parent sample is drawn
+from the Smith42/galaxies DESI Legacy DR8 cutout release (8,474,566 images,
+$224\times224$~px $grz$ cutouts at $0.262''$/pixel); the parent-sample
+selection function inherits Galaxy Zoo DESI's photometric-type cut
+(REX/DEV/EXP/SER), $r\!\leq\!19.0$, and half-light radius $\geq\!3''$, across
+the three DR8 imaging campaigns (BASS+MzLS at $\delta\!>\!+32^\circ$,
+DECaLS at $\delta\!<\!+32^\circ$, and a DES overlap region). The released
+per-galaxy class counts are $N_{\rm CW}=1{,}592{,}107$, $N_{\rm
+CCW}=1{,}609{,}053$, $N_{\rm NS}=5{,}273{,}371$; the classified-spiral
+sub-catalog is $N_{\rm spiral}=N_{\rm CW}+N_{\rm CCW}=3{,}201{,}160$. The
+catalog's high-confidence (HC) selection ($p_{\rm eq}>0.6$) yields
+$N_{\rm HC}=949{,}584$ spirals, corresponding to an integrated chirality
+purity of $\sim\!70\%$ and a completeness of $\sim\!30\%$ relative to the
+full spiral sub-catalog, both against the GZ1 cross-match; a stricter
+$p_{\rm eq}>0.9$ cut roughly halves completeness to $\sim\!15\%$ at higher
+purity. We exclude 59,515 HC rows flagged \texttt{raw\_flip\_qc\_unsafe} (a
+release-safety quality-control flag identifying a raw/equivariant
+pipeline-pass mismatch, not float32 rounding), leaving 890,069
+quality-controlled rows, of which 887,472 occupy one of the 23,633
+supported HEALPix ($\nside=64$) pixels with $N_{\rm spiral}(p)\!\geq\!10$
+(the \HCRI{} support, $f_{\rm sky}=0.4808$) to enter the
+supported-pixel dipole fit and its matched null; the wider full-spiral
+\FSC{} support ($N_{\rm spiral}(p)\!\geq\!10$ on all classified spirals, not
+only HC) covers 24,087 pixels, $f_{\rm sky}=0.49005$, and underlies
+Fig.~\ref{fig:skymap} and the harmonic diagnostic in
+Sec.~\ref{sec:dipole}. The catalog, its quarantine, exact null arrays, and
+full provenance register are archived under Zenodo DOI
 \href{https://doi.org/10.5281/zenodo.21461899}{10.5281/zenodo.21461899}~\cite{Golden:P4Zenodo}
-and are the single primary contract this paper's tests draw on.
+and are the single primary contract this paper's tests draw on; each row
+carries \texttt{dr8\_id}, sky coordinates, the observed chirality label,
+per-class probabilities, and quality-control flags including
+\texttt{raw\_flip\_qc\_unsafe}, in a single Parquet file with a committed
+schema sidecar. Full architecture, per-region calibration, and the complete
+systematics appendix are described in the archived release
+paper~\cite{Golden:P4v274} and are not reproduced here beyond what
+Sec.~\ref{sec:bh} needs.
+
+\subsection{Classifier quality and label provenance}
+\label{sec:catalog_classifier}
+
+The \emph{released} classifier -- the one that produced every label in this
+catalog -- achieves $69.91\%$ chirality agreement (Cohen's $\kappa=0.40$)
+against a full Galaxy Zoo~1 cross-match ($N=117{,}205$). A separate,
+manifest-retained, from-scratch retrain of the GZ1-core classifier
+component -- which does \emph{not} alter the released Catalog labels --
+validates at Cohen's $\kappa=0.97$ on a provably training-disjoint held-out
+GZ1 sample; the archived release paper is explicit that this retrain
+figure is ``neither comparable to, nor a replacement for'' the released
+classifier's $\kappa=0.40$/$69.91\%$ figure~\cite{Golden:P4v274}. A separate,
+composition-faithful retrain that additionally includes the historical
+CE-ResNet-derived training component collapses to chance-level chirality
+performance (best three-class validation accuracy $0.5617$, i.e.\ no better
+than the $0.106$ \NS-only baseline plus chance on the CW/CCW split; binary
+CW/CCW accuracy $0.517$ on a clean held-out GZ1 sample), so the historical
+CE-included training accuracy is not reproducible under honest,
+manifest-retained ingestion; the released catalog labels are unaffected by
+either retrain. A forward classifier-injection model over
+$1.7\times10^{7}$ banked network passes rules out classifier label
+confusion as the source of any residual handedness monopole ($0.0\%$ of the
+observed value) and localizes the monopole's origin upstream of the
+classifier, in the input image distribution -- without resolving whether
+that origin is a true sky asymmetry or a DESI imaging systematic, which
+remains an open attribution in the archived release~\cite{Golden:P4v274}.
+
+\begin{table}[t]
+\caption{Three-class confusion matrix, released (equivariant) classifier
+vs.\ Galaxy Zoo~1 human labels ($1''$ cross-match, $N=240{,}919$; overlap
+with the 6,637 GZ1 training rows is not object-level excluded, so this
+evaluation is overlap-contaminated rather than fully independent). Rows:
+GZ1 label; columns: catalog prediction. Three-class accuracy $58.7\%$;
+restricted to the $117{,}205$ GZ1 spirals the classifier labels \CW/\CCW,
+chirality agreement is $69.91\%$ (Cohen's $\kappa=0.40$).
+\label{tab:gz1_confusion}}
+\begin{tabular}{lrrr}
+\toprule
+GZ1 $\backslash$ pred. & \CW & \CCW & \NS \\
+\midrule
+\CW & $39{,}011$ & $18{,}889$ & $13{,}715$ \\
+\CCW & $16{,}377$ & $42{,}928$ & $13{,}720$ \\
+\NS & $17{,}056$ & $19{,}724$ & $59{,}499$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The exact historical training realization for the released classifier is
+not fully recoverable: the production-script reconstruction supports
+$26{,}616$ labeled rows ($6{,}637$ Galaxy Zoo~1 confident \CW/\CCW,
+$17{,}153$ CE-ResNet high-confidence spirals, $826$ CE-selected \NS,
+$2{,}000$ synthetic \NS), a $21{,}293$/$5{,}323$ train/validation split, and
+$93.6878\%$ validation accuracy, while the committed benchmark report gives
+$26{,}626$ total rows and $846$ CE non-spirals and the committed Hugging
+Face README reports $92.10\%$; no retained object-ID manifest or
+random-state record resolves the conflict or ties the named objects to the
+historical checkpoint. This does not affect the released labels (fixed
+historical production outputs) but does mean the released classifier's own
+training provenance cannot be independently audited beyond the confusion
+matrix above; the manifest-retained retrain
+(Sec.~\ref{sec:catalog_schema}) exists precisely to provide a fully
+regenerable, audit-clean realization going forward. That retrain is
+deliberately scoped to the $6{,}637$ Galaxy Zoo~1 confident CW/CCW spirals
+plus $2{,}000$ synthetic \NS{} rows only ($n_{\rm total}=8{,}637$),
+reaching $99.31\%$ best-epoch three-class validation accuracy with every
+object ID, split index, and random state retained in a committed manifest;
+on $3{,}000$ held-out GZ1-confident spirals provably disjoint from that
+manifest along both object identity and a $3''$ proximity cut, it reaches
+accuracy $0.9867$ and $\kappa=0.9733$ (confusion $[[1460,10],[30,1500]]$ for
+[\CW,\CCW]; zero \NS{} predictions). A separate composition-faithful
+retrain that also includes the historical CE-ResNet-derived $17{,}153$-row
+component (${\sim}67$--$72\%$ of the historical training composition, by
+either committed count) collapses to chance-level chirality performance
+under honest, manifest-retained ingestion, discussed above.
+
+\begin{table}[t]
+\caption{Bias-hardening test results from the archived release, quoted
+verbatim~\cite{Golden:P4v274}. All seven tabulated tests pass; these are
+necessary, not sufficient, checks for sub-percent-level bias control and
+are not calibrated against a physical sensitivity bound.
+\label{tab:bias_tests}}
+\footnotesize
+\begin{tabular}{lcc}
+\toprule
+Test & Threshold & Result \\
+\midrule
+T1: Flip-swap $r$ & $>0.80$ & $1.000$ \\
+T2: Rotation stability & $>80\%$ & $89.8\%$ \\
+T3: Artifact rejection & $>70\%$ \NS & $100\%$ \\
+T4: Perturbation robustness & $>80\%$ & $84\%$ \\
+T6: Hemispheric diff. & $<10\%$ & $3.6\%$ \\
+T7: Calibration proxy & $>30\%$ @ $p{>}0.9$ & $73.6\%$ \\
+T8: \CW/\CCW\ balance & $50\pm10\%$ & $49.7\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Estimator and null specification}
+\label{sec:estimator_spec}
+
+The primary real-space estimator fits $A_p=m+\bm{a}\cdot\hat n_p$
+(\texttt{healpy.fit\_dipole}, a uniform-pixel-weight full-sky least-squares
+fit for both a monopole $m$ and a dipole vector $\bm{a}$) on the
+$887{,}472$-galaxy, $23{,}633$-pixel \HCRI{} support after applying the
+selection predicate \texttt{primary\_hc \&\& !raw\_flip\_qc\_unsafe}. The
+matched null preserves the observed per-pixel occupancy exactly: each of
+$10{,}000$ draws redistributes the observed \CW/\CCW label totals across
+the fixed pixel capacities of the \HCRI{} support (a fixed-occupancy
+label-randomization, equivalent to a multivariate-hypergeometric
+reshuffle per pixel), so that the null differs from the data only in which
+galaxies within each pixel are labeled \CW{} vs.\ \CCW, not in how many
+galaxies occupy each pixel. The observed statistic and each null draw are
+reduced to the same fitted dipole amplitude $A_p$; $z_{\rm mom}$ is the
+observed value's offset from the null mean in units of the null's
+population standard deviation, and the add-one rank $p$ is the
+upper-tail empirical rank of the observed value within the $10{,}001$-value
+pool (data plus null draws). The distinct \FSC{} harmonic diagnostic
+(Sec.~\ref{sec:dipole}, above) uses a different support (24,087 pixels),
+a different field convention ($f_{\rm CW}-\tfrac12=A_p/2$ with
+$N_{\rm spiral}$-weighted mean subtraction), a NaMaster pseudo-$C_\ell$
+MASTER-decoupling estimator rather than a real-space fit, and its own
+500- and $10^4$-draw null families; the two diagnostics are not
+interchangeable and are not combined into a single detection statistic.
 
 % ============================================================
 \section{Primary real-space dipole null}
@@ -199,34 +348,131 @@ CW-fraction sky map underlying this fit.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_sky_map.png}
-\caption{Per-pixel HEALPix CW-fraction map of the 887,472-galaxy
-supported-pixel high-confidence real-space sample used for the primary
-dipole fit (Sec.~\ref{sec:dipole}). No coherent large-scale structure is
-visually apparent; the fitted full-sky dipole is null-consistent.}
+\caption{\textbf{Equivariant chirality asymmetry map of the full 8.47\,M-galaxy
+catalog} (Mollweide projection, equatorial coordinates; per-pixel asymmetry
+$A_p=(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})=2(f_{{\rm CW},p}-\tfrac12)$
+at HEALPix $\nside=64$, color scale $[-0.08,+0.08]$) on the 24,087-pixel
+\FSC{} support ($f_{\rm sky}=0.49005$; Sec.~\ref{sec:catalog_schema}). This
+is the full-catalog map, a broader footprint than the 23,633-pixel,
+887,472-galaxy \HCRI{} support used for the primary dipole fit below; no
+coherent large-scale structure is visually apparent in either support.}
 \label{fig:skymap}
 \end{figure}
 
 To make this null quantitative against a specific alternative amplitude, we
 use a coverage-calibrated observed-label injection--recovery: signal
 injections at fixed pixel occupancy on 2,000 isotropically random axes per
-amplitude are passed through the exact committed primary estimator and null.
-Recovered detection probability crosses $95\%$ coverage at
+amplitude are passed through the exact committed primary estimator and the
+exact committed $10^4$-draw null. Recovered detection probability rises
+monotonically with amplitude (e.g.\ $0.24$ at $A=0.40\%$, $0.91$ at
+$0.90\%$, saturating to unit coverage by $1.5\%$) and crosses $95\%$
+coverage at
 \begin{equation}
 A_{95}^{\rm obs}\simeq0.98\%\quad(\text{full-amplitude, observed-label}),
 \label{eq:a95_obs}
 \end{equation}
-i.e., the primary channel is demonstrably sensitive, at $95\%$ coverage, to
-any real dipole in the observed labels at or above $\sim\!1\%$. The observed
-amplitude $A_{\rm dip}=0.467\%$ lies below this floor. $A_{95}^{\rm obs}$ is
-an \emph{observed-label} sensitivity floor on the classifier's chirality
-labels, not a physical parity-amplitude bound on deprojected spin: the
-physical bound additionally requires a spatially resolved morphology
-transfer function, which remains an open gate in the archived release
-paper~\cite{Golden:P4v274}. This distinction matters directly for
-Sec.~\ref{sec:bh}, which uses Eq.~\ref{eq:a95_obs} as the sensitivity floor
-against which the black-hole-universe claim is confronted. Full harmonic,
-weighted-least-squares, and GZ1 human-vote diagnostics are retained as
-systematics cross-checks in the archived release and are not repeated here.
+i.e., $A_{95}^{\rm obs}$ is a \emph{detection-power} threshold: the
+amplitude at which an injected signal, run through the exact primary
+estimator and null, is recovered at $\geq\!95\%$ power. It is not itself a
+confidence-level bound on the measured value. A genuine $95\%$
+confidence-level statement is available directly from the same committed
+null distribution used for $z_{\rm mom}$ and rank $p$ above: its $95$th
+percentile is $0.669\%$
+(\artifact{research/bh\_universe\_dipole/a95\_null\_cl\_2026\_09\_02.py}), so
+values of $A_{\rm dip}$ at or above $0.669\%$ occur in fewer than $5\%$ of
+null draws. The observed $A_{\rm dip}=0.467\%$ lies below both this $95\%$
+CL null threshold and the detection-power floor $A_{95}^{\rm obs}=0.98\%$.
+$A_{95}^{\rm obs}$ is additionally an \emph{observed-label} sensitivity
+floor on the classifier's chirality labels, not a physical parity-amplitude
+bound on deprojected spin: the physical bound additionally requires a
+spatially resolved morphology transfer function, which remains an open gate
+in the archived release paper~\cite{Golden:P4v274}. This distinction
+matters directly for Sec.~\ref{sec:bh}, which uses Eq.~\ref{eq:a95_obs} as
+the sensitivity floor against which the black-hole-universe claim is
+confronted.
+
+A distinct harmonic diagnostic on the wider, 24,087-pixel \FSC{} support
+(Fig.~\ref{fig:skymap}) gives a fixed-occupancy $\ell=1$ moment
+$z=+6.923$ (add-one rank $p=0.001996$ on 500 draws; a separate
+binomial-monopole null gives $+6.983$ at 500 draws and $+7.207$ at $10^4$
+draws). This diagnostic uses a different support, estimator (NaMaster
+MASTER-decoupled harmonic power, not the real-space uniform-pixel dipole
+fit), and null family than the primary \HCRI{} result above, and does not
+by itself overturn the primary null: the archived release attributes it to
+classifier- and footprint-systematic structure rather than a
+dipole-aligned axis, on the strength of the classifier-injection forward
+model (Sec.~\ref{sec:catalog_classifier}) and a battery of
+declination/RA/equal-area partition checks~\cite{Golden:P4v274}. Full
+weighted-least-squares and GZ1 human-vote diagnostics are retained as
+systematics cross-checks in the archived release and are not repeated
+here.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_injection_recovery.png}
+\caption{Observed-label injection--recovery curve underlying
+Eq.~\ref{eq:a95_obs}: recovered one-sided detection probability
+($p<0.05$ against the exact committed $10^4$-draw null) vs.\ injected
+full-amplitude $A$, on 2,000 isotropically random axes per amplitude, run
+through the exact committed primary \HCRI{} estimator. The curve crosses
+$95\%$ coverage at $A_{95}^{\rm obs}=0.98\%$ (red dotted); the observed
+amplitude $A_{\rm dip}=0.467\%$ (green dash-dot) sits well inside the
+sub-detection-power region. Plotted directly from the committed
+\artifact{pipelines/p2\_chirality/analysis/a95\_observed\_label\_upper\_limit\_v1\_0\_265.json}
+(no re-inference).}
+\label{fig:injrecovery}
+\end{figure}
+
+\begin{center}
+\footnotesize
+\begin{tabular}{rr@{\hspace{1.2em}}rr}
+\toprule
+$A$ (\%) & Det.\ frac. & $A$ (\%) & Det.\ frac. \\
+\midrule
+$0.40$ & $0.236$ & $0.96$ & $0.947$ \\
+$0.50$ & $0.348$ & $0.98$ & $0.950$ \\
+$0.60$ & $0.533$ & $1.00$ & $0.954$ \\
+$0.70$ & $0.675$ & $1.10$ & $0.982$ \\
+$0.80$ & $0.818$ & $1.20$ & $0.998$ \\
+$0.90$ & $0.911$ & $1.50$ & $1.000$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Detection fraction is monotonic in injected amplitude across all 18
+grid points (2,000 axes each); the tabulated crossing between the $0.96\%$
+and $0.98\%$ rows brackets $A_{95}^{\rm obs}$ (linear interpolation
+$0.980\%$; a logistic fit to the full curve gives $0.955\%$, consistent to
+better than $0.03$ percentage points).
+
+To characterize how the real-space dipole, its nuisance-marginalized
+weighted-least-squares (WLS) variant, the global monopole, and the
+NaMaster MASTER-decoupled $\ell=1$ power co-vary, the archived release
+evaluates all four estimators on one shared $\nside=8$ block bootstrap
+($N_{\rm boot}=2{,}000$ resamples, all valid, seed 42, primary HC sample
+$N=949{,}584$). The resulting correlation matrix, computed directly from
+the committed $4\times4$ joint covariance
+(\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/g3\_joint\_estimator\_covariance\_master\_v2.json}),
+is
+\begin{center}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+ & real-space & WLS & monopole & $C_1^{\rm master}$ \\
+\midrule
+real-space & $1.000$ & $0.158$ & $-0.037$ & $0.794$ \\
+WLS & $0.158$ & $1.000$ & $-0.020$ & $0.129$ \\
+monopole & $-0.037$ & $-0.020$ & $1.000$ & $-0.061$ \\
+$C_1^{\rm master}$ & $0.794$ & $0.129$ & $-0.061$ & $1.000$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The monopole is the only channel with $|z|>3$ against its own bootstrap
+scatter ($z=-6.57$; the FSC harmonic diagnostic above is the same
+structure seen through a different estimator, consistent with its
+$0.79$ correlation to the real-space channel here) and is nearly
+uncorrelated with the other three; the primary real-space dipole and its
+WLS variant are only weakly correlated ($0.16$), consistent with them
+answering related but non-identical questions on different supports.
 
 % ============================================================
 \section{Void/non-void environment contrast}
@@ -240,10 +486,31 @@ catalog in Sec.~\ref{sec:catalog}. The DESIVAST GALZONE TARGET universe
 ($694{,}642$ unique TARGETIDs) joined against the catalog yields $145{,}789$
 rows; retaining the $145{,}766$ rows with \texttt{OUT}$=0$ as the quality
 parent, $31{,}937$ fall inside the union of released VoidFinder holes
-(``void'') and $113{,}829$ do not (``non-void''). A 13-column linear nuisance
-model standardizing for redshift, imaging leg, magnitude, size, morphology,
-extinction, classifier confidence, and the GALZONE edge flag (coarse sky
-blocks as clusters) gives an adjusted non-void-minus-void contrast
+(``void'') and $113{,}829$ do not (``non-void'').
+\begin{center}
+\footnotesize
+\begin{tabular}{lr}
+\toprule
+Stage & $N$ \\
+\midrule
+DESIVAST GALZONE TARGET universe & $694{,}642$ \\
+$\quad\to$ joined against the chirality catalog & $145{,}789$ \\
+$\quad\to$ quality parent (\texttt{OUT}$=0$) & $145{,}766$ \\
+$\qquad$ void (VoidFinder hole union) & $31{,}937$ \\
+$\qquad$ non-void & $113{,}829$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The focal fit is an unpenalized Newton--Cholesky logistic MLE on a
+declared, post-review $13$-column linear nuisance basis (void indicator,
+linear redshift, magnitude, log-size, classifier confidence, extinction,
+imaging leg, morphology, and the GALZONE edge flag standing in for coarse
+sky blocks), with cluster-robust (CR1) inference on $50$ occupied
+$\nside=4$ HEALPix clusters; a null-imposed Rademacher wild-cluster
+efficient-score test provides a second, non-asymptotic inference path on
+the same clustering. The basis was declared after review and inspection of
+the data and is exploratory, not preregistered. It gives an adjusted
+non-void-minus-void contrast
 \begin{equation}
 \Delta f_{\rm CW} = +0.00145\,,\quad \mathrm{SE}=0.00332\ (\mathrm{cluster\text{-}sandwich})\,,
 \label{eq:void_contrast}
@@ -269,9 +536,46 @@ archived companion study and are not repeated here.
 cosmic-web class (Void/Wall/Filament/Cluster) on 812,793 env-labelled rows
 (Sec.~\ref{sec:void}). This four-class T-Web run is a secondary cross-check;
 the primary void/non-void DESIVAST result (Eq.~\ref{eq:void_contrast}) uses
-the two-category VoidFinder-hole membership test, not this classification.}
+the two-category VoidFinder-hole membership test, not this classification.
+The Filament ($\bar f_{\rm CW}\approx0.4980$) and Cluster
+($\bar f_{\rm CW}\approx0.4958$) bars sit slightly off the reference line at
+different offsets; both are consistent with the same catalog-wide residual
+monopole discussed in Sec.~\ref{sec:catalog_classifier}, not an
+environment-dependent chirality effect (both are within a few tenths of a
+percentage point of the 0.4974 reference and neither individually clears
+the null threshold used in the primary contrast).}
 \label{fig:voidbar}
 \end{figure}
+
+\subsection{Robustness: clustering scale and void-definition sensitivity}
+\label{sec:void_robust}
+
+The focal contrast (Eq.~\ref{eq:void_contrast}) clusters standard errors on
+$\nside=4$ HEALPix superpixels. Repeating the identical $N=145{,}766$,
+$13$-column fit and contrast at $\nside=2$ and $\nside=8$, and separately
+clustering by the $3{,}750$ nearest VoidFinder-MAXIMALS 3-D clusters, holds
+the point estimate fixed at $+0.00145$ throughout while the $95\%$ CI
+half-width varies mildly with the clustering scale: $\nside=2$
+$[-0.00622,+0.00912]$, $\nside=4$ (focal) $[-0.00504,+0.00795]$, $\nside=8$
+$[-0.00496,+0.00787]$, and the 3-D-cluster scheme $[-0.00476,+0.00767]$ --
+every interval contains zero. A separate, wider sensitivity family repeats
+the void/non-void contrast under three void-finding algorithms spanning two
+algorithmic families -- VoidFinder (sphere-growing) and the ZOBOV/V2
+watershed as V2-REVOLVER and V2-VIDE -- plus two catalog-native GALZONE
+zone definitions, five correlated statistics in total, none of which
+approaches the Bonferroni-5 per-test threshold ($|z|\leq1.25$ across all
+five rows against $|z|^{\rm Bonf}_{0.05,5}\approx2.58$); the simultaneous
+descriptive interval across all five, inflated to hold jointly at
+family-wise $95\%$ confidence, has a maximum half-width of $0.75$
+percentage points and remains centered near zero. Full per-algorithm tables
+and the catalog-native GALZONE construction are in the archived companion
+study~\cite{Golden:P5v147}. We report one multiplicity note across this
+paper's three headline tests (the primary real-space dipole,
+Sec.~\ref{sec:dipole}; the DESIVAST void/non-void contrast,
+Sec.~\ref{sec:void}; and the T-Web four-class diagnostic above): none is
+independently significant at even an uncorrected $\alpha=0.05$, so no
+multiple-comparison correction changes the qualitative null verdict on any
+of the three.
 
 % ============================================================
 \section{The black-hole-universe prediction and its exclusion}
@@ -286,16 +590,27 @@ establish that Einstein--Cartan torsion, sourced by fermion spin, generates
 a repulsive spin--spin contact interaction that grows faster than the
 attractive curvature term at high density, halting collapse before a
 singularity and driving a bounce into an expanding daughter universe inside
-the black hole's interior. Poplawski~(2020)~\cite{Poplawski:2020} extends
-this picture: if the parent black hole is rotating, its spin axis defines a
-preferred, non-inertial axis for the daughter universe, and ``galaxies tend
-to align their axes of rotation with the preferred axis, resulting in
-clockwise-counterclockwise asymmetry.'' This is the paper's only
-statement connecting the model to an observable galaxy-spin signature. We
-read it in full and find \emph{no computed dipole amplitude, alignment
-fraction, or relaxation timescale} anywhere in it or in the mechanism papers
-it builds on: the claim is qualitative -- a preferred axis exists, and
-galaxies tend toward it -- not quantitative.
+the black hole's interior. Poplawski~(2010)~\cite{Poplawski:2010} first
+proposes torsion as an alternative to inflation for generating a nonsingular
+early universe; Poplawski~(2012)~\cite{Poplawski:2012} develops the
+spinor--torsion coupling that produces a nonsingular bounce; Poplawski~(2016)~\cite{Poplawski:2016}
+extends the mechanism specifically to a universe originating inside a black
+hole, arguing the Einstein--Cartan interior bounces into an expanding
+daughter universe rather than terminating in a singularity. None of these
+three mechanism papers addresses rotation or a preferred axis for the
+daughter universe -- they establish only that the bounce itself occurs.
+Poplawski~(2020)~\cite{Poplawski:2020} extends this picture: if the parent
+black hole is rotating, its spin axis defines a preferred, non-inertial
+axis for the daughter universe, and ``galaxies tend to align their axes of
+rotation with the preferred axis, resulting in clockwise-counterclockwise
+asymmetry.'' This is the paper's only statement connecting the model to an
+observable galaxy-spin signature. We read it in full and find \emph{no
+computed dipole amplitude, alignment fraction, or relaxation timescale}
+anywhere in it or in the mechanism papers it builds on: the claim is
+qualitative -- a preferred axis exists, and galaxies tend toward it -- not
+quantitative. No torque strength, relaxation timescale, or coupling
+constant is given from which an amplitude could in principle be derived
+without further modeling assumptions beyond what the cited papers state.
 
 To confront the model with data at all, a quantitative closure must be
 supplied that the cited literature does not provide. We adopt the minimal
@@ -329,15 +644,34 @@ in the first place, using the committed, deterministic script
 closed-form function of inputs). Table~\ref{tab:bh_exclusion} lists the
 result: every literature amplitude that has been offered as evidence for a
 preferred spin axis (Longo 2011; Shamir 2012, 2020, 2022, 2025) exceeds
-$A_{95}^{\rm obs}$ by a factor of $2$--$20$, on samples $6$ to $3{,}400$
-times smaller than the present catalog's supported-pixel sample.
+$A_{95}^{\rm obs}$ by a factor of $2$--$20$ at face value. The present
+catalog's $887{,}472$-galaxy \HCRI{} supported-pixel sample is $4$--$3{,}400\times$
+larger than every comparison sample in Table~\ref{tab:bh_exclusion} except
+Shamir (2022)'s same-survey DESI Legacy sample ($N=1.3$ million), which is
+larger than the primary channel. Under the committed script's illustrative
+observed-to-physical bridge $g=0.398$ (Assumption~2 below; not an
+established calibration), the two lowest-amplitude, largest-$N$ rows --
+Shamir (2020) and same-survey Shamir (2022), both $2$--$4\%$ -- drop below
+$A_{95}^{\rm obs}$ (\texttt{exceeds\_A95\_obs\_after\_g\_bridge=false} in the
+committed output json); the other three rows remain above it under the
+bridge. We do not use this bridge to strengthen the exclusion (Assumption~2);
+we report it because it weakens the exclusion for exactly the two claims
+made on the largest comparison samples, and that should not go unstated.
 
 \begin{deluxetable}{lrrr}[t]
 \tablewidth{\columnwidth}
 \tablecaption{Literature spin-axis amplitude claims vs.\ $A_{95}^{\rm obs}=0.98\%$
 (Eq.~\ref{eq:a95_obs}). Ratio is the claim's low-end amplitude over
 $A_{95}^{\rm obs}$; all exceed 1, i.e.\ all lie above this catalog's
-sensitivity floor. Computed by
+detection-power floor at face value (two of five drop below it under the
+illustrative $g=0.398$ bridge; \S\ref{sec:bh_exclusion}). The four rows pool
+non-commensurable statistics -- Longo's dipole amplitude, Shamir (2012)'s
+per-bin asymmetry, Shamir (2020/2022)'s global asymmetry fraction, and
+Shamir (2025)'s clockwise:counterclockwise count ratio, each from a distinct
+label space (visual/algorithmic handedness classification vs.\ the Ganalyzer
+algorithm vs.\ a small-$N$ visual/algorithmic count) -- against this paper's
+observed-label ViT+TTA amplitude; the ratio column is not a like-for-like
+statistical comparison across rows. Computed by
 \artifact{research/bh\_universe\_dipole/poplawski\_dipole\_exclusion\_2026\_09\_02.py}.
 \label{tab:bh_exclusion}}
 \tablehead{\colhead{Source} & \colhead{Amplitude} & \colhead{$N$} & \colhead{Ratio}}
@@ -354,12 +688,16 @@ Shamir 2025~\cite{Shamir:2025JWST} & $20$--$33\%$ & 263 & $20.4$ \\
 \label{sec:bh_statement}
 
 Under the closure of Eq.~\ref{eq:bh_dipole_prediction}, the DESI Legacy DR8
-catalog's coverage-calibrated observed-label sensitivity excludes any
-preferred-axis alignment mechanism that would produce an observed-label
-dipole above $\sim\!1\%$ on this sample at $\geq\!95\%$ coverage, more than
-an order of magnitude below the amplitudes the model's own observational
-motivation reports (Table~\ref{tab:bh_exclusion}). This statement rests on
-five explicit assumptions:
+catalog's coverage-calibrated observed-label sensitivity disfavors, at
+$\geq\!95\%$ detection power (not a confidence-level exclusion; a genuine
+$95\%$ CL statement is given in Sec.~\ref{sec:dipole}), any preferred-axis
+alignment mechanism that would produce an observed-label dipole above
+$\sim\!1\%$ on this sample -- a factor of $2$--$20$ below the amplitudes the
+model's own observational motivation reports at face value
+(Table~\ref{tab:bh_exclusion}), though two of those amplitudes, on the two
+largest comparison samples, drop below the floor under the (not adopted for
+strengthening) illustrative bridge. This statement rests on five explicit
+assumptions:
 
 \begin{enumerate}[leftmargin=*,itemsep=1pt]
 \item The closure $A_{\rm pred}\approx\eta$ (Eq.~\ref{eq:bh_dipole_prediction})
@@ -375,17 +713,23 @@ paper; an illustrative bridge factor $g=0.398$ used there for a different
 comparison is explicitly not an established calibration and is not used to
 strengthen this statement.
 \item The preferred axis is a free direction in the model (inherited from
-an unobserved parent black hole); this analysis, like the tests in
+an unobserved parent black hole); \texttt{healpy.fit\_dipole} fits both
+amplitude and direction, which is the correct match to a model with no
+predicted axis. This analysis, like the tests in
 Secs.~\ref{sec:dipole}--\ref{sec:void}, tests amplitude only (a full-sky
 real-space dipole and a void/non-void contrast), not a search matched to a
 specific predicted axis.
-\item The $N$-scaling comparison in Table~\ref{tab:bh_exclusion} uses a
-simple $1/\sqrt{N}$ sensitivity-floor ansatz calibrated to this catalog's
-own anchor point; it illustrates statistical reach and is not a
-re-derivation of any other paper's estimator, mask, or null.
+\item The committed script also reports an illustrative $1/\sqrt{N}$
+sensitivity-floor ansatz calibrated to this catalog's own anchor point,
+used only to compare statistical reach across sample sizes; it is not a
+re-derivation of any other paper's estimator, mask, or null and is not the
+basis of the Ratio column in Table~\ref{tab:bh_exclusion}.
 \item Literature amplitude ranges are reported as published, with no
 re-analysis of their pipelines performed here (cross-reference only, as in
-Iye \etal~\cite{Iye:2021} and Patel \& Desmond~\cite{Patel:2024}).
+Iye \etal~\cite{Iye:2021} and Patel \& Desmond~\cite{Patel:2024}). Shamir
+(2025)'s $20$--$33\%$ is that paper's reported clockwise:counterclockwise
+count-ratio range (${\sim}2$:$1$ to $1.5$:$1$), not an asymmetry fraction
+in the same sense as the other rows (Table~\ref{tab:bh_exclusion} caption).
 \end{enumerate}
 
 We emphasize what this section does \emph{not} claim: it does not test, and
@@ -411,11 +755,13 @@ reanalyses of Iye, Yagi \& Fukumoto (2021)~\cite{Iye:2021}, who found no
 significant dipole in Shamir's own SDSS catalog after correcting known
 systematics, and Patel \& Desmond (2024)~\cite{Patel:2024}, who found
 consistency with isotropy across every public spin-classification dataset to
-within $3\sigma$. At $8{,}474{,}531$ total catalog objects and $887{,}472$
-in the primary supported-pixel test, this is the largest single sample
-brought to the question, and its sensitivity floor (Eq.~\ref{eq:a95_obs})
-is $2$--$20\times$ tighter than the amplitudes the disputed claims report
-(Table~\ref{tab:bh_exclusion}).
+within $3\sigma$. At $8{,}474{,}531$ total catalog objects, this is the largest single catalog
+release brought to the question; the $887{,}472$-galaxy primary
+supported-pixel test is itself larger than every comparison sample in
+Table~\ref{tab:bh_exclusion} except Shamir (2022)'s same-survey $1.3$-million-galaxy
+DESI Legacy catalog. Its detection-power floor (Eq.~\ref{eq:a95_obs}) is
+$2$--$20\times$ tighter, at face value, than the amplitudes the disputed
+claims report (Table~\ref{tab:bh_exclusion}).
 
 Section~\ref{sec:bh} adds the piece the literature comparison alone does
 not supply: a direct confrontation with the theoretical claim that motivates
@@ -442,14 +788,72 @@ $\Delta f_{\rm CW}=+0.00145$, $p=0.66$). Reading Poplawski's rotating
 black-hole-universe papers in full, we find the model predicts only a
 qualitative preferred-axis alignment tendency, not a computed amplitude;
 under the minimal closure that makes the claim testable, our sensitivity
-floor excludes an alignment-driven dipole above $\sim\!1\%$, well below the
-$\sim\!7$--$33\%$ amplitudes reported in the observational literature the
-model is invoked to explain. This confirms, on the largest sample assembled
-for the question, the independent reanalyses of Iye \etal\ (2021) and
-Patel \& Desmond (2024). We make no claim beyond this stated test: the
+floor disfavors an alignment-driven dipole above $\sim\!1\%$ at
+$\geq\!95\%$ detection power, well below the $\sim\!2$--$33\%$ amplitudes
+reported in the observational literature the model is invoked to explain.
+This confirms, on the largest catalog release assembled for the question,
+the independent reanalyses of Iye \etal\ (2021) and Patel \& Desmond
+(2024). We make no claim beyond this stated test: the
 result bears on the black-hole-universe model's spin-axis prediction only,
 not on the separate matter-bounce cosmology this research program develops
 from the same torsion mechanism.
+
+\appendix
+
+% ============================================================
+\section{Supplementary systematics diagnostics}
+\label{sec:app_systematics}
+% ============================================================
+
+This appendix condenses the systematics checks the archived release uses
+to attribute the \FSC{} harmonic residual (Sec.~\ref{sec:dipole}) to
+classifier- and footprint-level structure rather than a dipole-aligned
+axis, restoring self-containedness beyond the primary channel's own
+null result.
+
+\textbf{Sample-purity ladder.} Stratifying the full spiral sample by
+equivariant max-class probability into five confidence bins, a
+$+3.29\sigma$ excess appears in the $1.87$M-galaxy $[0.5,0.6)$ bin under a
+confidence-stratified dipole estimator and null; this signal does not
+survive the sample-purity cut used for the primary channel ($p_{\rm
+eq}>0.6$ gives $-0.03\sigma$ under the same statistic). This is a distinct
+diagnostic from the primary \HCRI{} real-space dipole and illustrates why
+the release adopted the high-confidence cut as the primary science sample
+rather than the full spiral catalog.
+
+\textbf{Fixed-support multipole vector.} On the checksummed 24,087-pixel
+\FSC{} support, the binary-mask fixed-occupancy null gives the multipole
+vector $z_{\ell=1,\ldots,5}=(+6.923,+2.931,+3.089,-0.317,+1.606)$: only
+$\ell=1$ is a $>5\sigma$ outlier, and its rank-$p$ significance
+($p=0.001996$, Sec.~\ref{sec:dipole}) does not by itself distinguish a
+primordial dipole from a low-$\ell$ classifier or footprint systematic,
+which is why the release cross-checks with directional partitions.
+
+\textbf{Directional partition checks.} Splitting the \FSC{} support into
+four RA quadrants gives per-quadrant dipole deviations ranging from
+$-0.82\sigma$ to $+2.49\sigma$ -- scatter, not the consistent projection a
+primordial dipole would produce. A Galactic-hemisphere split gives
+$\sigma_{\rm iso}=+0.47$ (north, $b>0$) and $+2.02$ (south, $b<0$) against
+an independent per-pixel binomial null, consistent with dust-correlated
+foreground structure in the south rather than a primordial signal. Seven
+equal-spiral-count declination slabs ($N=457{,}308$--$457{,}309$ each) span
+$f_{\rm CW}$ deviations of $-0.110\%$ to $-0.463\%$ from $0.5$, all within
+$0.5\%$; an independent equal-area declination partition gives a compatible
+verdict (deviations up to $0.49\%$ on the full spiral sample, $0.56\%$ on
+the HC subsample). All partition checks are consistent with a bounded,
+spatially structured residual entering upstream of the classifier
+(Sec.~\ref{sec:catalog_classifier}), not a coherent dipole-aligned
+gradient.
+
+\textbf{Statistical-only scale reference.} For the full-amplitude dipole
+convention $p_{\rm CW}(\hat n)=\tfrac12(1+A\cos\theta)$, the idealized
+full-sky Fisher floor at $N_{\rm spiral}=3{,}201{,}160$ is
+$\sigma(A)=\sqrt{3/N_{\rm spiral}}=9.7\times10^{-4}$ (a $3\sigma$ ideal
+floor of $\approx0.29\%$); this full-sky idealization omits the realized
+footprint, classifier transfer, and orientation dependence and is a scale
+reference only, not a calibrated detection threshold or a substitute for
+the injection-recovery-calibrated $A_{95}^{\rm obs}$ of
+Sec.~\ref{sec:dipole}.
 
 % ============================================================
 \section*{Data Availability}
@@ -473,6 +877,26 @@ the classifier bias-hardening audit, and the void/non-void secondary
 diagnostic paths (author VoidFinder, T-Web, Tempel, ASTRA) are not
 reproduced in this condensed manuscript; they remain available in the
 archived source papers~\cite{Golden:P4v274,Golden:P5v147} referenced above.
+The catalog is a single Apache Parquet file (952,115,239 bytes for the
+pinned source revision) with one row per DESI Legacy DR8 galaxy: a
+\texttt{dr8\_id} identifier, sky coordinates, the observed chirality label
+(\CW/\CCW/\NS), per-class probabilities, and quality-control flags
+including \texttt{raw\_flip\_qc\_unsafe}; a separate quarantine Parquet
+contains the 249,066 catalog-wide flagged rows (59,515 within the HC
+selection), and a machine-readable schema and validation report accompany
+both files at the Zenodo DOI and Hugging Face mirror above.
+
+% ============================================================
+\section*{Software, Facilities, and Acknowledgements}
+% ============================================================
+
+\textit{Software:} NumPy, healpy, HEALPix, NaMaster (pymaster), PyTorch, pandas, SciPy.
+\textit{Facilities:} DESI Legacy Imaging Surveys DR8 (data products); no
+proprietary telescope time was used in this analysis, which is entirely
+based on public archival imaging and catalog data.
+\textit{Acknowledgements:} We thank the DESI, DESIVAST, Galaxy Zoo, and
+Galaxy Zoo DESI collaborations for public data products without which this
+analysis would not be possible.
 
 \begin{thebibliography}{99}
 
@@ -544,20 +968,24 @@ M.~Walmsley, C.~Lintott, T.~G{\'e}ron \textit{et~al.},
 Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023), arXiv:2309.11425.
 
 \bibitem{DESIVAST:2025}
-{DESI Collaboration},
-``DESIVAST: A Cosmic Void Catalog from the DESI Data Release 1,''
-DESI Collaboration public release (2025).
+H.~Rinc\'on, S.~BenZvi, K.~A.~Douglass \textit{et~al.},
+``DESIVAST: Catalogs of Low-redshift Voids Using Data from the DESI Data
+Release 1 Bright Galaxy Survey,'' Astrophys.\ J.\ \textbf{982}, 38 (2025),
+DOI:10.3847/1538-4357/adb559, arXiv:2411.00148.
 
 \bibitem{Golden:P4v274}
 H.~Golden,
 ``An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog,''
-\paperVersion{} archived release,
-\href{https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex}{pipelines/p2\_chirality/chirality\_catalog\_paper.tex} (v1.0.274, 2026).
+v1.0.274 archived release,
+Zenodo \href{https://doi.org/10.5281/zenodo.21461899}{doi:10.5281/zenodo.21461899} (2026).
 
 \bibitem{Golden:P5v147}
 H.~Golden,
 ``A Catalog-Native DESIVAST Test of Classifier-Labelled Spiral Chirality in DESI DR1,''
-\href{https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex}{pipelines/p5\_desi\_chirality/paper/p5\_desi\_chirality.tex} (v0.1.147, 2026).
+v0.1.147 archived manuscript, served at
+\url{https://bigbounce.hubify.app/papers/p5_desi_chirality_v0.1.147-2026-08-03.pdf}
+(2026). No independent DOI has been minted for this manuscript as of this
+writing.
 
 \bibitem{Golden:P4Zenodo}
 H.~Golden,
