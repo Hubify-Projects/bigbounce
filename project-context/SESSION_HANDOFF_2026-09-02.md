@@ -33,7 +33,8 @@ before acting. Re-plan:
 | P4′ + ledger #5 (P4P v4P.0.1) | sonnet (re-issued) | DONE — 6 pp, 0 undef, 0 overfull, md5 d3e6f077; exclusion: A_95^obs≈0.98% excludes alignment fraction >0.98%, 2–20× below Longo/Shamir claims; Popławski gives only a qualitative axis | ac065a61; board R1 running (Grok/Gemini API + Claude Opus leg) |
 | Endorser outreach + portal kits | sonnet (re-issued) | DONE — 4 codes × 5-6 endorsers; CQG 'Note' ≤2500 words → submit as CQG Paper; JCAP needs arXiv ID first → PRD-L primary | a4ee4ac4; DOI note fix 86a2300c |
 | Hubify reconciliation + lab surfaces + repro import | sonnet | DONE — surfaces on Track A/B/C; `hubify repro-import` CLI + 7 tests; dry-run 3 programs/52 experiments/0 errors; topology: hubify.com runs on scintillating-cow-269 (bigbounce prod-tier), documented; parity check waits on bigbounce Convex migration; HUBIFY_TOKEN push step blocked | hubify b8338b46, ece557b7, 50d3dfd3, 8a3d90b2 (pushed); bigbounce 9ece5591 |
-| Pod 8ofv5d4ynu7hku phase 3 | monitor | 747 shards at 20:02Z (~3/min → many hours) |
+| Pod 8ofv5d4ynu7hku phase 3 | monitor | 1237 shards at 21:17Z (~7/min); ledger-#8 reference-catalog fetch running on the pod (VizieR unreachable from the sandbox) |
+| Site sync v1N.0.3 + v4P.0.3 | sonnet | running | — |
 | Site reframe + Convex migration + deploy | sonnet | DONE — Track A/B/C live at bigbounce.hubify.app, flat /papers kept, P1N/P4P v0.1 registered in Convex, stale 'programs/six packages' copy fixed, headed QA PASS, freshness gate PASS | 6 commits on origin/main; project-context/SITE_REFRAME_2026-09-02.md | PHASE3_DONE watch armed |
 
 ## Blockers recorded
