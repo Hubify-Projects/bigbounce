@@ -283,3 +283,58 @@ byte-identical local mirror check (source/`site/public/papers/`/
 working tree on arrival (25 changed lines, not authored by this pass) and
 was deliberately left uncommitted — it belongs to a concurrent lane and its
 content wasn't inspected beyond `git diff --stat`.
+
+## P2L registration (later same-day pass)
+
+Registered the P2′ Letter (`P2L` in `project-context/draft_paper_registry.json`,
+already committed by the concurrent A1/ledger lane at `6d4faded`): source
+`arxiv/paper2prime_fnl_letter/main.tex` v2L.0.1, PDF md5
+`66a28438cc0f0b8dc347a3016389363f`, 4 pp, served at
+`site/public/papers/paper2prime_fnl_letter_v2L.0.1.pdf` (also
+`public/papers/`) — verified byte-identical to
+`arxiv/paper2prime_fnl_letter/main.pdf` (343174 bytes) before touching site
+data.
+
+**Site data (this session):** `site/src/data/papers.ts` — new `paper-2l`
+entry (slug `paper-2l`, readiness 20) plus `archivedInto` on `paper-2`
+(successor `paper-2l`, Zenodo DOI `10.5281/zenodo.21461881`); Track A's
+`leadSlug` moved `paper-2` → `paper-2l` and its `result`/`limitation` copy
+rewritten to state the ledger-#1 closure honestly ("confirmed by an
+independent from-scratch in-in computation; Cai et al. 2009's −35/8 located
+as a uniform factor 2"). `site/src/data/live-status.ts` — `paper-2` row
+relabeled archived, new `paper-2l` row added. `site/src/data/publish.ts` —
+A1 row updated to point at `/papers/paper-2l` with drafted/dispatched
+status. `site/src/data/reviewTimeline.ts` — `RoundPaperId` widened with
+`"P2L"`; two new entries: ledger #1 closure + P2′ R1 dispatch
+(`ledger1-closed-p2l-r1-dispatch-2026-09-02`), and the P1N/P4P R2
+Claude-leg major-revisions verdicts (`p1n-p4p-r2-claude-legs-2026-09-02`,
+7M/13m and 3M/13m; Grok/Gemini pending, never faked).
+`site/src/lib/reproLab.ts` — `PAPER_CODE_TO_SLUG` extended with
+`P2L -> paper-2l`.
+
+**Convex writes** (public HTTP API, no `npx convex deploy`): `papers:upsert`
+(slug `paper-2l`, number `2L`, targetJournal `PRD`, status
+`active-drive-to-100`, texPath `arxiv/paper2prime_fnl_letter/main.tex`,
+sitePdfPath `/papers/paper2prime_fnl_letter_v2L.0.1.pdf`) →
+`k976bfne5zr72w0aqaper6wkc58dmknc`; `papers:setReadinessCap` (`paper-2l`,
+cap 20); `paperVersions:bump` (`paper-2l` v2L.0.1, md5
+`66a28438cc0f0b8dc347a3016389363f`, 4 pp, 343174 bytes, texCommit
+`6d4fadedd787556a268d8f69a1c0e7f0f595ac53`) →
+`k577nt8c2c95d5nnzeg6yta7xs8dnvpr`; `activityFeed:add` × 2 (ledger #1
+closure + P2′ drafted/dispatched → `j574yvwmqk13nvd80a3dqx1p4d8dmp4g`; P1N/P4P
+R2 Claude-leg verdicts → `j578zgbje5n2avhjfjbcs6d2ax8dnpzv`).
+
+**Build/deploy/freshness:** `npx tsc --noEmit` clean; `npm run build`
+clean, 9 static paper pages generated including `/papers/paper-2l`.
+`tools/site_freshness_check.sh` PASS (no `FRESHNESS_SKIP`) both before and
+as the pre-push hook. Committed `f676559c` (`chore(site): register P2′
+Letter v2L.0.1; timeline for ledger #1 closure and R2 boards`), pushed to
+`origin main` and `upstream main` cleanly (`ae8715c3..f676559c`).
+
+**Live verification** (headed browser, post-deploy — Vercel took ~4-5 min
+to finish the build queued behind concurrent-lane deploys): `/papers/paper-2l`
+renders `V2L.0.1 · LIVE`, readiness 20%, target "PRD Letters (JCAP
+alternate)", correct md5/page-count/focus-areas from Convex. `fetch()` from
+the live page's own origin against
+`/papers/paper2prime_fnl_letter_v2L.0.1.pdf` returned `200` with 343174
+bytes, matching the source PDF exactly.
