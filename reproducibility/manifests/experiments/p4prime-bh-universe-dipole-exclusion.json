@@ -2,8 +2,8 @@
   "manifest_version": "bigbounce-experiment/v1",
   "id": "p4prime-bh-universe-dipole-exclusion",
   "title": "P4' (Track C1) \u2014 confront the DESI chirality catalog's coverage-calibrated observed-label 95% sensitivity floor with Poplawski's rotating-black-hole-universe spin-axis claim",
-  "program": "black-hole-cosmology-test",
-  "paper": "P4' (pipelines/p4prime_chirality_test/paper/main.tex, v4P.0.1)",
+  "program": "galaxy-chirality",
+  "paper": "P4P",
   "kind": "analysis",
   "inputs": [
     {
@@ -14,13 +14,13 @@
     },
     {
       "name": "Literature spin-axis amplitude claims (as published, cited by arXiv id, no re-analysis)",
-      "type": "external-reference",
+      "type": "external-literature",
       "locator": "arXiv:1104.2815 (Longo 2011); arXiv:1207.5464 (Shamir 2012); arXiv:2007.16116 (Shamir 2020); arXiv:2208.13866 (Shamir 2022); arXiv:2502.18781 (Shamir 2025)",
       "checksum": null
     },
     {
       "name": "Poplawski black-hole-universe mechanism and preferred-axis papers",
-      "type": "external-reference",
+      "type": "external-literature",
       "locator": "arXiv:1007.0587; arXiv:1111.4595; arXiv:1410.3881 (ApJ 832, 96, 2016); arXiv:1910.10819",
       "checksum": null
     }
@@ -61,7 +61,7 @@
     }
   ],
   "verification": "Manual inspection: every field in the output JSON traces to either (a) a literal constant copied verbatim from the cited source with a section/equation pointer (A_95_obs, N_support, A_dip_observed, g_bridge), (b) a literal published literature amplitude with its arXiv citation, or (c) a closed-form arithmetic function of (a) and (b) (ratio, 1/sqrt(N) scaling). No fitting, optimization, or random draws occur in this script.",
-  "status": "reproduced",
+  "status": "runnable-now",
   "provenance": [
     "project-context/NEXT_SCIENCE_LEDGER.md item 5",
     "project-context/PORTFOLIO_DECISION_2026-09-02.md Track C1 Addendum",

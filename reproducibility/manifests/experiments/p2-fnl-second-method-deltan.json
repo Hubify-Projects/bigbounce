@@ -1,25 +1,28 @@
 {
   "manifest_version": "bigbounce-experiment/v1",
-  "id": "p2-fnl-second-method-deltaN",
+  "id": "p2-fnl-second-method-deltan",
   "title": "Independent second-method matter-contraction f_NL (separate-universe / nonlinear delta-N) — NEXT_SCIENCE_LEDGER #1",
   "program": "bounce-theory",
   "paper": "P2",
   "kind": "analysis",
   "inputs": [
     {
-      "name": "Cai, Xue, Brandenberger & Zhang 2009",
+      "name": "Cai, Xue, Brandenberger & Zhang 2009 — Eqs. (14),(20),(21),(37),(39): f_NL convention, printed shape function, published -35/8",
+      "type": "external-literature",
       "locator": "https://arxiv.org/abs/0903.0631",
-      "used_for": "Eqs. (14),(20),(21),(37),(39) — f_NL convention, printed shape function, published -35/8"
+      "checksum": null
     },
     {
-      "name": "Li, Quintin, Wang & Cai",
+      "name": "Li, Quintin, Wang & Cai — Eq. (5.1) f_NL^local = -165/16 + 65/(8 c_s^2) -> -35/16 at c_s=1",
+      "type": "external-literature",
       "locator": "https://arxiv.org/abs/1612.02036",
-      "used_for": "Eq. (5.1) f_NL^local = -165/16 + 65/(8 c_s^2) -> -35/16 at c_s=1"
+      "checksum": null
     },
     {
-      "name": "BigBounce Paper 2 manuscript",
+      "name": "BigBounce Paper 2 manuscript — Appendix A four-vertex re-summation (-35/16) for the reconciliation table",
+      "type": "internal-artifact",
       "locator": "research/focused_paper_source_integration/02_full_draft.tex",
-      "used_for": "Appendix A four-vertex re-summation (-35/16) for the reconciliation table"
+      "checksum": null
     }
   ],
   "apis": [],
@@ -58,7 +61,7 @@
     },
     {
       "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md",
-      "type": "writeup",
+      "type": "document",
       "checksum": null
     }
   ],

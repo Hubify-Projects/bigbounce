@@ -3,16 +3,9 @@
   "id": "a3-pbh-abundance-fnl",
   "title": "Track A3 channel 2 \u2014 Press-Schechter PBH abundance with local quadratic non-Gaussianity at f_NL = -35/16 vs -35/8 vs 0",
   "program": "bounce-theory",
-  "paper": "A3 (Track A3 portfolio paper)",
+  "paper": "A3",
   "kind": "analysis",
-  "inputs": [
-    {
-      "name": "none (analytic/numerical; no external data)",
-      "type": "none",
-      "locator": null,
-      "checksum": null
-    }
-  ],
+  "inputs": [],
   "apis": [],
   "code": [
     {
@@ -49,7 +42,7 @@
     }
   ],
   "verification": "Re-run and confirm: (a) the analytic ceiling -5/(12 f_NL) = 0.19048 at -35/16 and 0.09524 at -35/8, ratio exactly 2; (b) at zeta_c = 0.05 with sigma calibrated so the Gaussian case gives f_PBH = 1 (sigma* = 0.0063248), f_PBH = 7.32e-3 at -35/16 and 3.75e-6 at -35/8; (c) beta = 0 identically at zeta_c = 0.45 and 1.00 for both negative f_NL in the rare-tail regime.",
-  "status": "reproduced",
+  "status": "runnable-now",
   "provenance": [
     "project-context/NEXT_SCIENCE_LEDGER.md item 3",
     "project-context/bounce_portfolio_strategy.md (Track C, Choudhury+ 2025)",

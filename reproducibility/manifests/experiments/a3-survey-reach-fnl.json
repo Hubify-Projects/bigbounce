@@ -3,7 +3,7 @@
   "id": "a3-survey-reach-fnl",
   "title": "Track A3 channel 3 \u2014 survey reach and current-constraint tension table for f_NL^local = -35/16",
   "program": "bounce-theory",
-  "paper": "A3 (Track A3 portfolio paper)",
+  "paper": "A3",
   "kind": "analysis",
   "inputs": [
     {
@@ -49,7 +49,7 @@
     }
   ],
   "verification": "Re-run and confirm: SPHEREx bispectrum-only bare 3.13 sigma / r-projected 2.63 sigma; SPHEREx target bare 4.38 / projected 3.68; MegaMapper-class bare 2.19 / projected 1.84; DESI DR1 (merger-model) tension 0.16 sigma with |f_NL|/sigma = 0.24. Two rows are flagged ILLUSTRATIVE and must not be quoted as published forecasts.",
-  "status": "reproduced",
+  "status": "runnable-now",
   "provenance": [
     "project-context/NEXT_SCIENCE_LEDGER.md item 3",
     "research/focused_paper_source_integration/02_full_draft.tex (P2, r = 0.84 shape overlap)",

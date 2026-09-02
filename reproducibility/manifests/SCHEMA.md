@@ -32,15 +32,15 @@ scan, or analysis. Required fields:
 | `id` | stable kebab-case id, e.g. `p4-g1-vit-retrain` |
 | `title` | plain-English one-liner |
 | `program` | `bounce-theory` \| `anomaly-discovery` \| `galaxy-chirality` \| `lab-infra` |
-| `paper` | `P1A` \| `P1B` \| `P2` \| `P3-support` \| `P4` \| `P5` \| `anomaly-flagship` \| `none` |
+| `paper` | `P1A` \| `P1B` \| `P2` \| `P3-support` \| `P4` \| `P5` \| `anomaly-flagship` \| `none` \| `A2` \| `A3` \| `P1N` \| `P4P` \| `P2-support` |
 | `kind` | `derivation` \| `training` \| `inference-scan` \| `validation` \| `crossmatch` \| `mcmc` \| `analysis` \| `figure-generation` \| `packaging` |
-| `inputs[]` | each: `name`, `type` (`external-dataset` \| `internal-artifact` \| `model`), `locator` (URL for external — HF/DESI/Zenodo/etc. — or repo path), `checksum` (sha256/md5/revision when known), `license` if external |
+| `inputs[]` | each: `name`, `type` (`external-dataset` \| `internal-artifact` \| `model` \| `external-literature`), `locator` (URL for external — HF/DESI/Zenodo/etc. — or repo path), `checksum` (sha256/md5/revision when known), `license` if external |
 | `apis[]` | services called at run time: `name`, `endpoint`, `auth_required` (bool). Empty list = fully offline. |
 | `code[]` | each: `path` (repo-relative), `entrypoint` (exact command), `sha256` optional pin |
 | `environment` | `python` deps list or requirements path; `hardware` minimum (`cpu-only`, `gpu-24gb`, …) |
 | `original_run` | `venue` (`local` \| `runpod`), `gpu` (or null), `pod_id`/host if recorded, `date`, `wall_clock` if recorded, `actual_cost_usd` if recorded — `null` for any value NOT actually evidenced; never invent |
 | `reproduction` | the forward-looking estimate: `recommended_venue`, `est_wall_clock`, `est_cost_usd` (0 for local CPU-scale), `parallelizable` (bool), `resume_support` (bool), `notes` |
-| `outputs[]` | each: `locator` (repo path or public URL), `type` (`dataset` \| `catalog` \| `model` \| `figure` \| `result-json` \| `receipt`), `checksum` when fixed |
+| `outputs[]` | each: `locator` (repo path or public URL), `type` (`dataset` \| `catalog` \| `model` \| `figure` \| `result-json` \| `receipt` \| `document` \| `log`), `checksum` when fixed |
 | `verification` | how to confirm a reproduction matches: exact hashes, receipt tooling command, or numeric tolerances (state which) |
 | `status` | `runnable-now` \| `needs-data-restore` \| `superseded` |
 | `provenance` | pointers into SSOT / status docs / commits backing every claim above |
@@ -84,6 +84,29 @@ An experiment counts as REPRODUCED only when its `verification` block passes
 on a fresh run (hash-identical outputs, receipt verification, or documented
 numeric tolerance). Reproductions get appended to the experiment's
 `provenance` — never overwrite the original-run record.
+
+## Schema v1 additive extensions (2026-09-02)
+
+Six new manifests (Track A2/A3, P1N, P4P/P4', P2-support) required three
+additive-only enum extensions — `additionalProperties: false` still holds
+everywhere, no existing value was removed or renamed:
+
+- `paper` enum gained `A2`, `A3`, `P1N`, `P4P`, `P2-support` for the four new
+  portfolio codes surfaced by directive R's ledger-driven science work.
+- `inputs[].type` enum gained `external-literature` — a manifest whose input
+  is a set of cited published values/equations (not a downloadable dataset,
+  not an internal repo artifact) now records that explicitly rather than
+  overloading `external-dataset` or dropping the citation.
+- `outputs[].type` enum gained `document` (a markdown brief/writeup output,
+  e.g. a `_BRIEF_*.md`) and `log` (a raw run-log file, distinct from a
+  `receipt`, which implies a verification record).
+
+**Hubify importer note:** `site/src/lib/reproLab.ts::paperSlugForCode`
+(referenced by `project-context/HUBIFY_REPRO_IMPORT_SPEC_2026-08-05.md` §`paper`)
+does not yet have slug entries for `A2`, `A3`, `P1N`, or `P4P` — manifests
+using those codes will import with `paper` set but no linked paper page until
+`PAPER_CODE_TO_SLUG` is extended. Tracked as a follow-up, not blocking schema
+conformance.
 
 ## Current population (directive Q2, first full pass — 2026-08-05)
 
