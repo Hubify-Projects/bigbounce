@@ -414,3 +414,18 @@ derail research is clearly a major problem we want to solve." Rules:
 - **R6 — Declared motivation, evidence-graded claims.** The lab's guiding bet
   is stated in `VISION.md`; every claim is stated at exactly its evidential
   strength and nulls are published as nulls.
+
+## Standing directive (2026-09-02 — Houston explicit): N-AMENDED — MODEL ROUTING FOR THE FABLE 5.1 ERA (supersedes directive J's "all subagents = Opus")
+
+Orchestrator = **Fable 5.1 at medium** (Houston's setting; do not raise).
+Every Agent call passes an explicit `model`. **`fable`** only for: independent
+derivations/adjudications of contested math (e.g. the f_NL second-method
+derivation, torsion/operator adjudications), the referee leg on Track-A
+flagship-line papers, and portfolio-level scientific-value audits — max 1
+concurrent. **`opus`** for truth-audits, closure decisions, referee legs on
+non-flagship papers, cross-model reconciliation — max 2 concurrent.
+**`sonnet`** for all specified work (reconciliation, hygiene, docs, site,
+compiles/mirrors, manifests, pipelines, tests) — unlimited fan-out.
+**`haiku`** for watchers/polls. Directive J's "all subagents = Opus" is
+RETIRED. Canonical table: `/loop-model-routing` (2026-09-02 amendment) and
+`~/.claude/CLAUDE.md`.

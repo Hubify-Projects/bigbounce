@@ -11,8 +11,13 @@ BigBounce reproducible cosmology lab (`~/Desktop/CODE_YOU/bigbounce`, GitHub
 `Hubify-Projects/bigbounce`, https://bigbounce.hubify.app) and its platform
 Hubify (`~/Desktop/CODE_YOU/hubify`). I delegate all decisions to you: make
 them, record them in the repo, keep going without asking me anything; fan out
-sub-agents per independent lane (Sonnet for specified execution, Opus for
-science/math/truth-audits, Haiku for watchers); never idle while a lane is
+sub-agents per independent lane with an EXPLICIT model each — Sonnet for all
+specified work (reconciliation, hygiene, docs, site, compiles, manifests,
+pipelines; unlimited), Opus only for truth-audits/closure decisions and
+non-flagship referee legs (max 2 concurrent), Fable only for contested-math
+derivations/adjudications, Track-A flagship referee legs, and portfolio-level
+science audits (max 1 concurrent), Haiku for watchers — see directive
+N-AMENDED in CLAUDE.md; never idle while a lane is
 open; report only results with receipts and end with the ordered list of
 what I must click. Every standing directive in `CLAUDE.md` applies (Q, G, E,
 N, P). **This leg: internal (INT) review boards only — no external browser
