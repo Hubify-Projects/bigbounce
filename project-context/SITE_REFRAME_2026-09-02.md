@@ -628,3 +628,48 @@ site-data + SSOT-doc propagation, build/deploy, and live verification.
     were already live sooner, since those files pre-existed from the
     concurrent lane's earlier commit); confirmed via a polling loop against
     `/papers/paper-a3m` rather than a single spot-check.
+
+## Receipt — A3M v3M.0.3 → v3M.0.4 site sync (Sonnet worker, R1-closed bump)
+
+Convex bump already done by a prior lane (paperVersions row
+`k5732z2y722d0rmxer1r44nvr18dmbwa`); this session's scope was site-data
+propagation, build/deploy, and live verification only.
+
+- **Source PDF confirmed at target version** (byte-identical across source
+  + both mirrors, verified by `md5`): `research/track_a3_multichannel/paper/main.pdf`
+  v3M.0.4, md5 `b98ee16e11d106c96ac593480857112b`, 8 pp — already mirrored
+  byte-identical at `site/public/papers/a3_multichannel_arxiv_v3M.0.4.pdf`
+  and `public/papers/a3_multichannel_arxiv_v3M.0.4.pdf` (pre-existing from a
+  concurrent lane; verified, not re-copied).
+- **Site data updated:** `site/src/data/papers.ts` (version v3M.0.3→v3M.0.4,
+  pages 7→8, tldr/description/pdfMeta/changelog/artifact hrefs rewritten to
+  the R1-closed status copy), `live-status.ts` (version + pendingWork),
+  `publish.ts` (Track A decision detail + A3 manuscript row status/dependency/
+  nextGate), `reviewTimeline.ts` (new 2026-09-02 `restructure` entry
+  `a3m-r1-closed-v3m-0-4-2026-09-02` with the R1 verdict cells — Fable
+  major-revisions, Grok reject, Gemini major-revisions — all closed with
+  real edits: official NANOGrav posterior primary, transmission bound
+  scoped handoff-conditional, PBH ratio result with regime disclosed; R2
+  verification pass dispatched).
+- **Build + typecheck:** `npx tsc --noEmit` clean; `npm run build` clean —
+  65 static pages generated including `/papers/paper-a3m`.
+- **Freshness gate:** `tools/site_freshness_check.sh` — PASS (no
+  `FRESHNESS_SKIP`); ran again via the pre-push hook on both remotes, same
+  PASS result.
+- **Commit:** `a6bde472` — `feat(site): bump A3M v3M.0.3 -> v3M.0.4 (R1
+  closed)` (4 files: papers.ts, live-status.ts, publish.ts,
+  reviewTimeline.ts). Untracked concurrent-lane R2-verify review raws in
+  `project-context/peer-reviews/` were left untouched, not staged.
+- **Push:** `origin main` `09220c2e..a6bde472` and `upstream main`
+  `09220c2e..a6bde472`, both with the pre-push freshness hook reporting
+  `OVERALL: PASS`.
+- **Deploy verification (live, post-propagation):**
+  - `curl -sI https://bigbounce.hubify.app/papers/a3_multichannel_arxiv_v3M.0.4.pdf`
+    → 200, `etag: "b98ee16e11d106c96ac593480857112b"` (matches source md5
+    exactly); took ~6 polling attempts (~75s) for Vercel to serve the new
+    filename.
+  - `/papers/paper-a3m` rendered HTML contains `v3M.0.4`.
+  - `/reviews` rendered HTML contains "R1 closed".
+- **Not fabricated / explicitly flagged:** none — the PDF md5/page count and
+  the Convex row id were confirmed present on disk / in the task brief
+  before use; no value was invented.
