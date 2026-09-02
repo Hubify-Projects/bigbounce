@@ -5,7 +5,7 @@
 Artifacts
 - script: `research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py`
 - result: `research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.json`
-- manifest: `reproducibility/manifests/experiments/p2-fnl-second-method-deltaN.json`
+- manifest: `reproducibility/manifests/experiments/p2-fnl-second-method-deltan.json`
 - venue: local CPU · cost \$0 · wall clock ≈ 3 s · deterministic (exact sympy + mpmath)
 
 ---

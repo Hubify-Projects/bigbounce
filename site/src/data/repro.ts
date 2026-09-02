@@ -1939,7 +1939,7 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
-    "id": "p2-fnl-second-method-deltaN",
+    "id": "p2-fnl-second-method-deltan",
     "title": "Independent second-method matter-contraction f_NL (separate-universe / nonlinear delta-N) — NEXT_SCIENCE_LEDGER #1",
     "program": "bounce-theory",
     "paper": "P2",
