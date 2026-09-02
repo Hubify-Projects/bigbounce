@@ -260,3 +260,7 @@ md5 `8725f40c69027c53c7a0f6a38f05587d`. Mirrored byte-identical to
 Next: R3 is now permitted per directive R2 (the three science/scope
 decisions above were taken). Convex `paperVersions:bump` +
 `activityFeed:add` recorded below.
+
+**Convex:** `paperVersions:bump` id `k57cjc4y022k16m92vy3nae80n8dmgqv`;
+`activityFeed:add` id `j57f2ezrnx1b7m80eanhstmvps8dm5pa`. texCommit
+`453d663e67082f6c804a34b3adf9b14109e5575e`.
