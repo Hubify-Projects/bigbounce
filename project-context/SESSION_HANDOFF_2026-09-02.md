@@ -25,7 +25,7 @@ before acting. Re-plan:
 | Backup verification sweep | sonnet | DONE | 7d2acdda — B2/HF/local/Zenodo/Convex/RunPod all PASS; gaps: Convex P4 title count stale (890,069 vs 949,584), no P1C Convex row |
 | Ledger #1 f_NL second method | opus (fable-class) | DONE — VERDICT OTHER: f_NL=(5ε−35)/8 → −55/16; P2′ BLOCKED | d7dac953; ledger 8d08af2b |
 | f_NL three-value reconciliation (in-in from scratch) | fable | DONE — VERDICT −35/16 (comoving squeezed limit); Cai ×2 located; Li not independent; δN −55/16 = uniform-density-slice value (ζ_ρ=2ζ_c); NEW orientation-dependent squeezed limit f(μ)=−35/16+(15/16)μ²; ledger #1 CLOSED, P2′ unblocked | aa2987cf; ledger 8d1f109b |
-| P2′ Letter rescope (v2L.0.1, ≤6 pp PRD-L) | sonnet | running | — |
+| P2′ Letter rescope (v2L.0.1, 4 pp PRD-L) | sonnet | DONE (6d4faded); registered live (paper-2l; Convex k976bfne…/k577nt8c…); R1 board: Fable leg running, Grok REJECT, Gemini major-revisions (2fae3790) | — |
 | Ledger #8 recovery benchmark tool | sonnet | DONE — tool + 26 tests + RUNBOOK §19 + preview; VizieR unreachable from sandbox → fetch running on the pod | 179d99d2 |
 | A2 transmission coefficient | opus | DONE — linear-transfer half: T=(1−ρ)/2, 0<T≤1/2; LQC 1/4, non-LQC 0.196, Quintin-type 0.165; P2 assumption (d) unsupported; bounce's own cubic term OPEN | ea1da739 (swept), 9c7f50c0; ledger 868fd46d |
 | A3 multi-channel + NANOGrav reclaim | opus | DONE — PTA reproduced, PBH new, reach table, 4-pp skeleton | d7dac953 (swept), 9a1c1e2e; ledger 86a2300c |
