@@ -338,3 +338,62 @@ alternate)", correct md5/page-count/focus-areas from Convex. `fetch()` from
 the live page's own origin against
 `/papers/paper2prime_fnl_letter_v2L.0.1.pdf` returned `200` with 343174
 bytes, matching the source PDF exactly.
+
+## v1N.0.3 + v4P.0.3 site sync (later same-day pass, Sonnet worker)
+
+Picked up a partial edit killed mid-turn by a usage limit (`site/src/data/papers.ts`
+was already correctly updated for both papers — reviewed and kept as-is) and
+finished the remaining surfaces.
+
+**P1N v1N.0.3** — R2 board closed (Claude major-revisions, Grok reject,
+Gemini major-revisions), 23/23 findings closed incl. two errors inherited
+from P1C (8π coefficient, O5 parity). PDF `arxiv/paper1bc_ech_note/main.pdf`,
+11 pp, 433339 bytes, md5 `8725f40c69027c53c7a0f6a38f05587d` — verified
+byte-identical across source / `site/public/papers/` / `public/papers/`
+before touching site data. Convex row `k57cjc4y022k16m92vy3nae80n8dmgqv`,
+source commit `453d663e` (already done, not repeated).
+
+**P4′ v4P.0.3** — R2 board closed (same verdict pattern), 21/21 findings
+closed; monopole term disclosed; genuine 95% CL limit ≈0.75% by Neyman
+inversion. PDF `pipelines/p4prime_chirality_test/paper/main.pdf`, 11 pp,
+1089951 bytes, md5 `cb7429779c820f03daf125a49b395ec5` — same three-way
+byte-identical mirror check. Convex row `k578hqea3a00ddg6qf4gr0f0y18dnze3`,
+source commit `a47ca061` (already done, not repeated).
+
+**Site data updated this pass:** `site/src/data/live-status.ts` (version +
+pendingWork for both rows) and `site/src/data/reviewTimeline.ts` (two new
+`internal-api` entries, R2-closed-and-R3-dispatched, honest R2 verdict
+cells: Claude major-revisions / Grok reject / Gemini major-revisions on
+both papers). `site/src/data/repro.ts` regenerated via
+`sync-repro-manifests.mjs` (61 experiments, 3 programs) rather than
+hand-edited, since it was already dirty in the working tree from a
+concurrent lane.
+
+**Commit:** `dbb7caf1` — `feat(site): sync v1N.0.3 + v4P.0.3 R2 closures to
+site data` (papers.ts, live-status.ts, reviewTimeline.ts, repro.ts — site
+data committed first, before build/deploy, per protocol).
+
+**Build/deploy:** `npx tsc --noEmit` clean; `npm run build` clean (all
+routes prerendered, including `/papers/paper-1n` and `/papers/paper-4p`
+SSG paths). `tools/site_freshness_check.sh` PASS pre-push (no
+`FRESHNESS_SKIP`). Pushed to `origin main` and `upstream main` at
+`dbb7caf1`; Vercel auto-deployed.
+
+**Live verification (headed browser, post-deploy):**
+- `/papers/paper-1n` renders `V1N.0.3 · LIVE`, 11 pp, tldr/pdfMeta/changelog
+  all match the R2-closure wording above.
+- `/papers/paper-4p` renders `V4P.0.3 · LIVE`, 11 pp, same pattern.
+- In-page `fetch()` against both PDF URLs from the live origin: both
+  return `200` with byte counts exactly matching the local source files
+  (`paper1bc_ech_note_v1N.0.3.pdf` = 433339 bytes;
+  `paper4prime_chirality_test_v4P.0.3.pdf` = 1089951 bytes). Plain `curl`
+  hits the Vercel Security Checkpoint (expected false negative, not a
+  defect — same as every prior pass this session).
+- `tools/site_freshness_check.sh` PASS again post-deploy (re-run after the
+  push, all surfaces FRESH except the pre-existing non-blocking
+  `skillslog` WARN, unrelated to this pass).
+
+**Not touched this pass:** `research/bh_universe_dipole/a95_upper_limit_2026_09_02.json`
+(modified) and `project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.3-EXACTPDF-c758664b-R3VERIFY/`
+(untracked) were present in the working tree on arrival — both belong to
+the concurrent R3-verification lane and were left alone.
