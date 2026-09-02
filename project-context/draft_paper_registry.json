@@ -19,7 +19,7 @@
     "pdf_path": "pipelines/p4prime_chirality_test/paper/main.pdf",
     "site_slug": "paper-4p",
     "target_journal": "ApJS (candidate; matches P4's venue fit)",
-    "article_type": "catalog + dipole null + black-hole-universe spin-axis exclusion (Track C1, P4' — P5 folded into P4)",
+    "article_type": "catalog + dipole null + black-hole-universe spin-axis exclusion (Track C1, P4' \u2014 P5 folded into P4)",
     "review_profile": "ApJS-CATALOG",
     "served_aliases": [
       "paper4prime_chirality_test_v4P.0.1.pdf",
@@ -109,7 +109,29 @@
     "pages": 4,
     "date": "2026-09-02",
     "md5": "718521c10032511339b334ff6f277629",
-    "lineage": "Rescoped from P2 (research/focused_paper_source_integration/02_full_draft.tex v1.7.130, 11pp) per PORTFOLIO_DECISION_2026-09-02.md §3 Track A A1, unblocked by NEXT_SCIENCE_LEDGER.md #1 (CLOSED 2026-09-02: independent in-in derivation reproduces f_NL=-35/16). P2 itself is unedited; the Letter carries only the exact matter-contraction result, its Cai(2009) factor-2 resolution, the new orientation-dependent squeezed limit, the delta-N cross-check, an honest statement of bounce-transmission (not assumed T=1), and survey reach. Full forecast machinery (b_phi nuisance ladder, torsion bound, dressed-metric transmission closure) stays in P2/A2.",
+    "lineage": "Rescoped from P2 (research/focused_paper_source_integration/02_full_draft.tex v1.7.130, 11pp) per PORTFOLIO_DECISION_2026-09-02.md \u00a73 Track A A1, unblocked by NEXT_SCIENCE_LEDGER.md #1 (CLOSED 2026-09-02: independent in-in derivation reproduces f_NL=-35/16). P2 itself is unedited; the Letter carries only the exact matter-contraction result, its Cai(2009) factor-2 resolution, the new orientation-dependent squeezed limit, the delta-N cross-check, an honest statement of bounce-transmission (not assumed T=1), and survey reach. Full forecast machinery (b_phi nuisance ladder, torsion bound, dressed-metric transmission closure) stays in P2/A2.",
+    "review_paths": []
+  },
+  "A3M": {
+    "tex_path": "research/track_a3_multichannel/paper/main.tex",
+    "pdf_path": "research/track_a3_multichannel/paper/main.pdf",
+    "site_slug": "paper-a3m",
+    "target_journal": "PRD (regular article)",
+    "article_type": "multi-channel consistency test (theory: exact matter-contraction f_NL + transmission bound, folded from P2L per lineage decision; observational: PTA + PBH + LSS survey reach)",
+    "review_profile": "PRD-REGULAR",
+    "served_aliases": [
+      "a3_multichannel_arxiv_v3M.0.1.pdf"
+    ],
+    "version": "v3M.0.1",
+    "pages": 6,
+    "date": "2026-09-02",
+    "sha256": "a1c5c5276c0c7ae9ee173148a2cb942da91e61e2e791e649c4e2197079d67c2a",
+    "md5": "1fa835c4f8344c14de9f7518217a4542",
+    "lineage": {
+      "folded_from": "arxiv/paper2prime_fnl_letter/main.tex v2L.0.2 (exact-amplitude theory record: per-vertex in-in table, Cai et al. 2009 factor-2 location, delta-N/comoving reconciliation, consistency with Li et al. 2016 Eq. 4.19, linear transmission bound)",
+      "skeleton_from": "research/track_a3_multichannel/paper/main.tex (PTA/PBH/LSS channel skeleton with real numbers, pre-merge)",
+      "decision_doc": "project-context/PAPER_LINEAGE_2026-08-05.md, section 'Decision record \u2014 2026-09-02 (evening): P2\u2032 Letter \u2192 theory section of the A3 multi-channel paper'"
+    },
     "review_paths": []
   }
 }
