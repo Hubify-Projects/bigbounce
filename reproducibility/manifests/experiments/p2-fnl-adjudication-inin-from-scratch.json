@@ -1,0 +1,97 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-fnl-adjudication-inin-from-scratch",
+  "title": "Adjudication of the matter-contraction local f_NL: from-scratch in-in (validated on de Sitter and USR), delta-N on both slicings, long-mode shear — NEXT_SCIENCE_LEDGER #1 closure",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Cai, Xue, Brandenberger & Zhang 2009 (arXiv source matterbounceng2.tex, v2)",
+      "locator": "https://arxiv.org/e-print/0903.0631",
+      "used_for": "Eqs. 14-15 (mode function, cubic action), 20-21 (f_NL convention), 25-36 (per-vertex rows, read only for COMPARISON after the from-scratch computation), 37 (printed total), 38-40 (quoted amplitudes -35/8, -255/64, -9/4)"
+    },
+    {
+      "name": "Li, Quintin, Wang & Cai 2016 (arXiv source)",
+      "locator": "https://arxiv.org/e-print/1612.02036",
+      "used_for": "Eq. 4.19 total shape function and Eq. 5.1 f_NL^local = -165/16 + 65/(8 c_s^2), independence audit"
+    },
+    {
+      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv source)",
+      "locator": "https://arxiv.org/e-print/1508.04141",
+      "used_for": "independence audit: the -35/16 there is a quotation attributed to Cai 2009, not a computation"
+    },
+    {
+      "name": "Maldacena 2003 (arXiv source)",
+      "locator": "https://arxiv.org/e-print/astro-ph/0210603",
+      "used_for": "cubic action; de Sitter three-point benchmark A_eps used to VALIDATE the machinery before use"
+    },
+    {
+      "name": "Namjoo, Firouzjahi & Sasaki 2012",
+      "locator": "https://arxiv.org/abs/1210.3692",
+      "used_for": "ultra-slow-roll benchmark f_NL = 5/2 used to VALIDATE the field-redefinition term in a non-attractor phase"
+    },
+    {
+      "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013",
+      "locator": "https://arxiv.org/abs/1301.5699",
+      "used_for": "non-attractor in-in context (field-redefinition dominance, consistency-relation violation)"
+    },
+    {
+      "name": "lab second-method delta-N (uniform-density slices)",
+      "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py (commit d7dac953)",
+      "used_for": "separate-universe system and the -55/16 result, reproduced here for general eps and compared with the comoving-slice delta-N"
+    },
+    {
+      "name": "BigBounce Paper 2 Appendix A + scripts/p2_vertex_check.py",
+      "locator": "research/focused_paper_source_integration/02_full_draft.tex",
+      "used_for": "per-vertex table tab:vertexwalk and Eq. vertexsum, reproduced exactly; 'spurious term' narrative corrected"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+      "entrypoint": "python3 research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+      "sha256": "67dd4842aaa7978310c7ead714d666bff6ab8fc523e7d0bb815844fa517264fc"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 with sympy 1.14.0 (in repo requirements.txt); multiprocessing fork context (8 worker processes for the vertex integrals)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local macOS workstation",
+    "date": "2026-09-02",
+    "wall_clock": "131.6 s",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "2-5 minutes (exact sympy; eight parallel vertex integrations)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Fully deterministic exact-rational computation. No network access at run time (the arXiv sources were read once during authorship; only the f_NL convention and, for comparison AFTER the computation, Cai's rows / Eq. 37 / quoted numbers and Li's Eq. 4.19 are transcribed into the script). The script asserts: mode functions solve the EOM; de Sitter total equals Maldacena's A_eps identically; USR redefinition gives f_NL = 5/2; the eps^3 kernel identity holds; divergent imaginary parts cancel; no logarithm at leading order; the delta-N ODE residual vanishes."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
+      "type": "writeup",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and diff the JSON. Required exact values: validation_deSitter_Maldacena == PASS; validation_USR_Namjoo == PASS; in_in_from_scratch.f_local_squeezed_isoceles == '-35/16'; f_equilateral == '-255/128'; f_folded == '-9/8'; f_squeezed_fixed_angle_mu == '15*mu**2/16 - 35/16'; every cai_row_differences value == '0'; cai_eq37_minus_total_distinct_monomial_reading == '0'; li_eq419_minus_total_at_cs1 == '0'; paper2_vertexwalk_table_reproduced == true; delta_N.comoving_slicing_fNL_eps_3_2 == '-5'; delta_N.uniform_density_slicing_fNL_general_eps == '5*(epsilon - 7)/8'; delta_N.linear_ratio_zeta_rho_over_zeta_c == '2'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 1 (independent derivation of the matter-contraction f_NL) — adjudication step",
+    "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md §8 items 1-2 (the two open computations named there)",
+    "directive R (vision governance) and directive Q2 (reproducibility manifests)"
+  ]
+}

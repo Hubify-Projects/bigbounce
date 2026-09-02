@@ -1,0 +1,113 @@
+{
+  "validation_deSitter_Maldacena": "PASS (difference identically 0)",
+  "validation_USR_Namjoo": "PASS (f_NL = 5/2 exactly)",
+  "cubic_action_rewriting_check": "PASS (kernel identity exact)",
+  "in_in_from_scratch": {
+    "convention": "comoving-gauge zeta (Maldacena), zeta = zeta_g + (3/5) f_NL zeta_g^2, f_NL = (10/3) A / sum k^3, evaluated at eta_* with |k eta_*|<<1",
+    "per_vertex": {
+      "field redefinition (a+b+c)": {
+        "A": "-3*(3*k1**7*k2**2 + 3*k1**7*k3**2 + 3*k1**6*k2**3 + 3*k1**6*k3**3 - 6*k1**5*k2**4 + 20*k1**5*k2**2*k3**2 - 6*k1**5*k3**4 - 6*k1**4*k2**5 - 3*k1**4*k2**3*k3**2 - 3*k1**4*k2**2*k3**3 - 6*k1**4*k3**5 + 3*k1**3*k2**6 - 3*k1**3*k2**4*k3**2 - 3*k1**3*k2**2*k3**4 + 3*k1**3*k3**6 + 3*k1**2*k2**7 + 20*k1**2*k2**5*k3**2 - 3*k1**2*k2**4*k3**3 - 3*k1**2*k2**3*k3**4 + 20*k1**2*k2**2*k3**5 + 3*k1**2*k3**7 + 3*k2**7*k3**2 + 3*k2**6*k3**3 - 6*k2**5*k3**4 - 6*k2**4*k3**5 + 3*k2**3*k3**6 + 3*k2**2*k3**7)/(128*k1**2*k2**2*k3**2)",
+        "f_squeezed": "-25/16",
+        "f_equilateral": "-35/32",
+        "f_folded": "-5/2",
+        "f_squeezed_fixed_mu": "-15*mu**2/16 - 25/16"
+      },
+      "zeta zeta'^2 [eps^2 - eps^3/2]": {
+        "A": "-3*(k1**3 + k2**3 + k3**3)/64",
+        "f_squeezed": "-5/32",
+        "f_equilateral": "-5/32",
+        "f_folded": "-5/32",
+        "f_squeezed_fixed_mu": "-5/32"
+      },
+      "zeta (d zeta)^2 [eps^2]": {
+        "A": "0",
+        "f_squeezed": "0",
+        "f_equilateral": "0",
+        "f_folded": "0",
+        "f_squeezed_fixed_mu": "0"
+      },
+      "zeta' d zeta . d chi~ [-2 eps^2]": {
+        "A": "3*(k1**7*k2**2 + k1**7*k3**2 - k1**5*k2**4 - k1**5*k2**2*k3**2 - k1**5*k3**4 - k1**4*k2**5 - k1**4*k3**5 + k1**2*k2**7 - k1**2*k2**5*k3**2 - k1**2*k2**2*k3**5 + k1**2*k3**7 + k2**7*k3**2 - k2**5*k3**4 - k2**4*k3**5 + k2**2*k3**7)/(16*k1**2*k2**2*k3**2)",
+        "f_squeezed": "0",
+        "f_equilateral": "-5/8",
+        "f_folded": "2",
+        "f_squeezed_fixed_mu": "15*mu**2/8"
+      },
+      "zeta (d_i d_j chi~)^2 [eps^3/2]": {
+        "A": "9*(k1**9 - 3*k1**7*k2**2 - 3*k1**7*k3**2 - k1**6*k2**3 - k1**6*k3**3 + 3*k1**5*k2**4 - 2*k1**5*k2**2*k3**2 + 3*k1**5*k3**4 + 3*k1**4*k2**5 + k1**4*k2**3*k3**2 + k1**4*k2**2*k3**3 + 3*k1**4*k3**5 - k1**3*k2**6 + k1**3*k2**4*k3**2 + k1**3*k2**2*k3**4 - k1**3*k3**6 - 3*k1**2*k2**7 - 2*k1**2*k2**5*k3**2 + k1**2*k2**4*k3**3 + k1**2*k2**3*k3**4 - 2*k1**2*k2**2*k3**5 - 3*k1**2*k3**7 + k2**9 - 3*k2**7*k3**2 - k2**6*k3**3 + 3*k2**5*k3**4 + 3*k2**4*k3**5 - k2**3*k3**6 - 3*k2**2*k3**7 + k3**9)/(256*k1**2*k2**2*k3**2)",
+        "f_squeezed": "-15/32",
+        "f_equilateral": "-15/128",
+        "f_folded": "-15/32",
+        "f_squeezed_fixed_mu": "-15/32"
+      }
+    },
+    "A_total_times_256_prodk2": "9*k1**9 + 3*k1**7*k2**2 + 3*k1**7*k3**2 - 27*k1**6*k2**3 - 27*k1**6*k3**3 + 15*k1**5*k2**4 - 198*k1**5*k2**2*k3**2 + 15*k1**5*k3**4 + 15*k1**4*k2**5 + 27*k1**4*k2**3*k3**2 + 27*k1**4*k2**2*k3**3 + 15*k1**4*k3**5 - 27*k1**3*k2**6 + 27*k1**3*k2**4*k3**2 + 27*k1**3*k2**2*k3**4 - 27*k1**3*k3**6 + 3*k1**2*k2**7 - 198*k1**2*k2**5*k3**2 + 27*k1**2*k2**4*k3**3 + 27*k1**2*k2**3*k3**4 - 198*k1**2*k2**2*k3**5 + 3*k1**2*k3**7 + 9*k2**9 + 3*k2**7*k3**2 - 27*k2**6*k3**3 + 15*k2**5*k3**4 + 15*k2**4*k3**5 - 27*k2**3*k3**6 + 3*k2**2*k3**7 + 9*k3**9",
+    "f_local_squeezed_isoceles": "-35/16",
+    "f_squeezed_isoceles_series_in_k1_over_k": "-35/16 + 35*k1**2/(64*k**2)",
+    "f_squeezed_fixed_angle_mu": "15*mu**2/16 - 35/16",
+    "f_equilateral": "-255/128",
+    "f_folded": "-9/8",
+    "cai_row_differences": {
+      "field redefinition (a+b+c)": "0",
+      "zeta zeta'^2 [eps^2 - eps^3/2]": "0",
+      "zeta' d zeta . d chi~ [-2 eps^2]": "0",
+      "zeta (d_i d_j chi~)^2 [eps^3/2]": "0"
+    },
+    "cai_eq37_minus_total_distinct_monomial_reading": "0",
+    "cai_eq37_minus_total_six_permutation_reading": "99*(k1**3 + k2**3 + k3**3)/128",
+    "li_eq419_minus_total_at_cs1": "0",
+    "li_eq51_at_cs1": "-35/16",
+    "cai_quoted_over_from_scratch": {
+      "local": "2",
+      "equilateral": "2",
+      "folded": "2"
+    },
+    "paper2_vertexwalk_table_reproduced": true
+  },
+  "delta_N": {
+    "comoving_slicing_fNL_general_eps": "-5",
+    "comoving_slicing_fNL_eps_3_2": "-5",
+    "uniform_density_slicing_fNL_general_eps": "5*(epsilon - 7)/8",
+    "uniform_density_slicing_fNL_eps_3_2": "-55/16",
+    "linear_ratio_zeta_rho_over_zeta_c": "2",
+    "second_method_2026_09_02_reproduced": true
+  },
+  "long_mode_shear": {
+    "deltaK_k_to_0": "eps*zetadot (O(k^0))",
+    "shear_k_to_0": "(khat_i khat_j - delta_ij/3) eps zetadot (O(k^0))",
+    "squeezed_fNL_mu": "15*mu**2/16 - 35/16",
+    "monopole_isoceles": "-35/16",
+    "quadrupole": "15/16",
+    "angle_averaged": "-15/8"
+  },
+  "verdict": {
+    "value": "-35/16",
+    "definition": "f_NL^local = lim_{k1->0} (10/3) A(k1,k,k)/(2k^3) of the comoving-gauge (Maldacena zeta, h_ij = a^2 e^{2 zeta} delta_ij) three-point function at the end of the matter contraction (|k eta_B| << 1), Bunch-Davies vacuum, canonical field, eps = 3/2, eta_sr = 0, c_s = 1, with <zeta^3> = (2 pi)^7 delta P^2 A/prod k^3 and zeta = zeta_g + (3/5) f_NL zeta_g^2; the same definition used by Cai 2009 (Eqs. 20-21) and Li 2016 (Sec. 5). The limit is end-time independent at leading order (corrections O(k^2 eta_B^2)) but ORIENTATION dependent: f(mu) = -35/16 + (15/16) mu^2.",
+    "which_published_number_is_correct": "-35/16 (Li 2016 Eq. 5.1 at c_s=1; Paper 2). Cai 2009's -35/8 is exactly a factor 2 too large.",
+    "discrepancy_origins": {
+      "Cai_-35/8": "uniform factor 2 in the amplitude-parameter evaluation (their Eqs. 38-40 are each 2x their own Eq. 37 evaluated correctly); no vertex error; Eq. (37) itself is right under the distinct-monomial reading of sum_(i!=j!=k)",
+      "deltaN_-55/16": "(c) slicing: uniform-density zeta_rho vs comoving zeta_c differ by a factor 2 at linear order and by 5(eps+1)/8 in f_NL; f_rho = 5(eps-7)/8 reproduced",
+      "deltaN_comoving_-5": "(b') not an O(k^2) gradient term: the k->0 limit of a non-attractor comoving mode carries traceless shear (k-hat k-hat - delta/3) eps zetadot of the same order as its expansion perturbation eps zetadot; an isotropic separate universe cannot represent it, and the in-in squeezed limit is correspondingly anisotropic (quadrupole 15/16 mu^2)",
+      "end_time_(d)": "excluded: leading Im part is the pure S^-12 term; next term is O(k^2 S^2)"
+    },
+    "remaining_single_computation": "a second-order anisotropic (Bianchi-I) separate-universe calculation of the comoving zeta response to a long mode carrying shear (k-hat k-hat - delta/3) eps zetadot, to reproduce the in-in monopole -15/8 and quadrupole 15/16 from a gradient-expansion route; until then the in-in is the only complete route and its result stands"
+  },
+  "provenance": {
+    "script": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+    "script_sha256": "67dd4842aaa7978310c7ead714d666bff6ab8fc523e7d0bb815844fa517264fc",
+    "wall_clock_seconds": 131.6,
+    "sympy_version": "1.14.0",
+    "python": "3.14.6",
+    "date": "2026-09-02",
+    "sources_read_2026_09_02": [
+      "arXiv:0903.0631v2 source matterbounceng2.tex (Cai, Xue, Brandenberger, Zhang 2009): Eqs. 14-15, 20-21, 25-39",
+      "arXiv:1612.02036 source (Li, Quintin, Wang, Cai 2016): Secs. 3-5, Eqs. 4.1-4.19, 5.1",
+      "arXiv:1508.04141 source (Quintin, Sherkatghanad, Cai, Brandenberger 2015): f_NL^local quotation, App. cubic action",
+      "arXiv:astro-ph/0210603 source (Maldacena 2003): cubic action, dS three-point function, integral I",
+      "arXiv:1210.3692 (Namjoo, Firouzjahi, Sasaki 2012): USR f_NL = 5/2, delta-N with N(phi, phidot)",
+      "arXiv:1301.5699 (Chen, Firouzjahi, Namjoo, Sasaki 2013): non-attractor in-in, field-redefinition dominance",
+      "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.{py,md,json} (commit d7dac953)",
+      "research/focused_paper_source_integration/02_full_draft.tex App. A + scripts/p2_vertex_check.py"
+    ]
+  }
+}
