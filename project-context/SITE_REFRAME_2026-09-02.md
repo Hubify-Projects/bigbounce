@@ -569,3 +569,62 @@ ahead of `7d00b0b6`, from a concurrent ledger-#3 lane).
 **Not fabricated / explicitly flagged:** none — the tarball sha256, A3M PDF
 md5/pages/bytes, and the `0f6cf5b8` commit SHA were all confirmed present on
 disk / in git history before use; no value was invented or truncated.
+
+## Receipt — P4P v4P.0.5 / P1N v1N.0.5 / A3M v3M.0.3 site sync (Sonnet worker, this session)
+
+Convex bumps were already done by a prior lane; this session's scope was the
+site-data + SSOT-doc propagation, build/deploy, and live verification.
+
+- **Source PDFs confirmed at target versions** (byte-identical across source +
+  both mirrors, verified by `md5`):
+  - `pipelines/p4prime_chirality_test/paper/main.pdf` v4P.0.5,
+    md5 `f0d874e93cebf95f86e408f780f002e0`
+  - `arxiv/paper1bc_ech_note/main.pdf` v1N.0.5,
+    md5 `6836eb995effef298cca6830b1beda7c`
+  - `research/track_a3_multichannel/paper/main.pdf` v3M.0.3,
+    md5 `9f7afea9e22a7816168fc7638fc8a753`
+  - All three already mirrored byte-identical at
+    `site/public/papers/` and `public/papers/` (pre-existing from the
+    concurrent lane; verified, not re-copied).
+- **Tarball sha256 (verified against SSOT):**
+  `paper4prime_chirality_test_arxiv_v4P.0.5.tar.gz` =
+  `fbab03801b63483b86006095a3f86d0e4511f64766b90649a76548583fd51c92`;
+  `paper1bc_ech_note_arxiv_v1N.0.5.tar.gz` =
+  `26f215d635b2e577c32b7869a5129681109b601250fa054c90ba7c817659a33a`.
+- **Site data updated:** `site/src/data/papers.ts` (version/pdfMeta/changelog/
+  artifacts hrefs for paper-4p, paper-1n, paper-a3m), `live-status.ts`
+  (version + pendingWork for the three), `publish.ts` (rows for A3/P1N/P4′),
+  `reviewTimeline.ts` (two new 2026-09-02 entries: A3 PBH compaction-function
+  integration + R1 dispatch (`kind: "restructure"`), and the P4′/ECH-Note
+  abstract-cap REVISE (`kind: "skill-improvement"`)).
+- **SSOT doc updated:** `project-context/SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`
+  — P4′ and ECH Note section headers, packaging lines (version/sha256/md5),
+  and a `REVISE (abstract cap) executed 2026-09-02` line added to each.
+- **Build + typecheck:** `npm run build` in `site/` — compiled clean,
+  TypeScript finished with no errors, 65 static pages generated.
+- **Freshness gate:** `tools/site_freshness_check.sh` — PASS (no
+  `FRESHNESS_SKIP`); only WARN was the pre-existing non-blocking
+  `skillslog` backlog notice (unrelated to this bundle).
+- **Commit:** `4dec27d3` — `feat(site): version bumps P4P v4P.0.5, P1N
+  v1N.0.5, A3M v3M.0.3` (5 files: the four site-data files +
+  `FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`). Only these explicit paths
+  were staged — other concurrent-lane changes in the working tree were left
+  untouched.
+- **Push:** `origin main` `eada7433..26412f83` and `upstream main`
+  `ea374119..26412f83`, both with the pre-push freshness hook reporting
+  `OVERALL: PASS`.
+- **Deploy verification (live, post-propagation):**
+  - PDFs: all three return HTTP 200 with `content-length` matching the
+    source byte counts exactly (1,090,759 / 433,652 / 501,468 bytes for
+    P4′/P1N/A3M respectively).
+  - Paper pages (`/papers/paper-4p`, `/papers/paper-1n`, `/papers/paper-a3m`)
+    render the new version/md5/status strings live: `v4P.0.5 ·
+    f0d874e93cebf95f86e408f780f002e0`, `v1N.0.5 ·
+    6836eb995effef298cca6830b1beda7c`, `v3M.0.3 ·
+    9f7afea9e22a7816168fc7638fc8a753` — each with the correct "REVISE
+    (abstract cap) executed" / "R1 INT board running" copy.
+  - Propagation lag observed: Vercel took several minutes past the push to
+    serve the updated `papers.ts` data (PDF binaries at the new filenames
+    were already live sooner, since those files pre-existed from the
+    concurrent lane's earlier commit); confirmed via a polling loop against
+    `/papers/paper-a3m` rather than a single spot-check.
