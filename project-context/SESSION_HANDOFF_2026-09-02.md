@@ -26,7 +26,11 @@ before acting. Re-plan:
 | Ledger #1 f_NL second method | opus (fable-class) | DONE — VERDICT OTHER: f_NL=(5ε−35)/8 → −55/16; P2′ BLOCKED | d7dac953; ledger 8d08af2b |
 | f_NL three-value reconciliation (in-in from scratch) | fable | DONE — VERDICT −35/16 (comoving squeezed limit); Cai ×2 located; Li not independent; δN −55/16 = uniform-density-slice value (ζ_ρ=2ζ_c); NEW orientation-dependent squeezed limit f(μ)=−35/16+(15/16)μ²; ledger #1 CLOSED, P2′ unblocked | aa2987cf; ledger 8d1f109b |
 | P2′ Letter rescope (v2L.0.1, 4 pp PRD-L) | sonnet | DONE (6d4faded); registered live (paper-2l; Convex k976bfne…/k577nt8c…); R1 board: Fable major-revisions 5M/13m (66cf1cb0: μ² term already in Li+2016 Eq. 4.19 → novelty cut back; δN formula transcription error; two bad refs; forecast amplitude unstated), Grok REJECT, Gemini major-revisions (2fae3790); truth-audit d73189c9 → 18 canonical (5 MAJOR); VENUE VERDICT: not a Letter (−35/16 already in Li+2016/Quintin+2015). SCOPE DECISION: closed to honest v2L.0.2 as archived theory record (a0881c77 — message mislabeled by a commit race; content verified) and FOLDED into the A3 paper (lineage recorded); rounds stop | Convex k57bzqv0… |
-| A3 paper v3M.0.1 (P2′ theory folded) | sonnet | running | — |
+| A3 paper v3M.0.2 (P2′ theory folded; ledger #1 stated closed) | sonnet | DONE — 6 pp draft; PBH compaction row placeholder | 73a08b3d, 0f6cf5b8 |
+| Endorsement emails + portal kits refreshed to final lineup | sonnet | running | — |
+| Site sync v1N.0.4 + A3M registration | sonnet | running | — |
+| Site sync v4P.0.4 + P2L v2L.0.2 | sonnet | DONE — live, freshness PASS | 42c12dd6, be21f98b |
+| Final-review recommendations | orchestrator | P4′ APPROVE, ECH Note APPROVE, P2′ DEFER (→A3), A3M pending | d0755cbd, d188e716 |
 | PBH compaction-function redo at −35/16 (A3-1) | opus | running | — |
 | Ledger #8 recovery benchmark tool | sonnet | DONE — tool + 26 tests + RUNBOOK §19 + preview; VizieR unreachable from sandbox → fetch running on the pod | 179d99d2 |
 | A2 transmission coefficient | opus | DONE — linear-transfer half: T=(1−ρ)/2, 0<T≤1/2; LQC 1/4, non-LQC 0.196, Quintin-type 0.165; P2 assumption (d) unsupported; bounce's own cubic term OPEN | ea1da739 (swept), 9c7f50c0; ledger 868fd46d |
