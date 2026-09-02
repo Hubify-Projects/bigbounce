@@ -1,4 +1,4 @@
-# New-session prompt — BigBounce + Hubify (v4, 2026-09-02, post-portfolio-decision + governance)
+# New-session prompt — BigBounce + Hubify (v5, 2026-09-02, + pre-authorization and terminal goal)
 
 > Paste everything below the line into a fresh session started inside
 > `~/Desktop/CODE_YOU/bigbounce`. It supersedes v2: the portfolio structure
@@ -17,6 +17,60 @@ open; report only results with receipts and end with the ordered list of
 what I must click. Every standing directive in `CLAUDE.md` applies (Q, G, E,
 N, P). **This leg: internal (INT) review boards only — no external browser
 rounds.**
+
+## PRE-AUTHORIZATION (standing for this whole session; do not ask again)
+I pre-authorize, without further confirmation:
+- All git operations on both repos (commit, bisected commits, push to `main`,
+  branch archival/deletion after unique work is proven and recorded, worktree
+  cleanup), all site builds and production deploys with verification, all
+  Convex/SSOT/timeline writes.
+- RunPod spend up to the current balance (~$150): creating, resizing, and
+  stopping pods; stopping is allowed ONLY after three-location backup
+  verification (directive E). Stop idle pods promptly.
+- API review spend on the active INT legs (Grok API, Gemini API, Claude Opus
+  sub-agents); unlimited sub-agent fan-out per the model-routing rules.
+- Reading every secret in `.env.local` / the env vault to do the work (never
+  print or commit one); HF/B2/Zenodo *reads* and dataset uploads to our own
+  private/lab repos; DESI/IRSA/VizieR/SIMBAD/NED queries.
+- Rescoping, merging, splitting, and retiring manuscripts per the decided
+  structure, with each change recorded in `PAPER_LINEAGE`.
+- Executing REVISE recommendations from your own final review immediately.
+NOT pre-authorized (the only things that still need my word, because they are
+irreversible public acts): minting a new Zenodo DOI, submitting to arXiv or a
+journal, and sending endorsement emails. Prepare each to one-click readiness
+and put it on my click-list. Everything else: decide and do.
+
+## TERMINAL GOAL AND STOP CONDITION (run until done; never stop early)
+Pursue this goal continuously, across as many turns and wake-ups as needed,
+without ending a turn to ask whether to continue. Use ScheduleWakeup /
+watchers to keep yourself running while compute or reviews are in flight;
+when a lane blocks, record the blocker and advance every other lane. You are
+DONE only when ALL of the following are true, verified with receipts:
+1. Both repos reconciled to a single `main` truth; stale `arxiv/main.tex`
+   retired; every review prompt/tool points at the registered sources.
+2. Phase 3 landed: all `flagship_*` artifacts committed, in three verified
+   locations, pod stopped, ledger #8 answered (paper vs data release).
+3. Ledger #1 executed: the independent second-method f_NL derivation
+   committed with a written verdict; P2′ Letter either drafted and past one
+   INT board, or the discrepancy documented as the top ledger item.
+4. Ledger #2 and #3 each have a committed computation and a research brief
+   (transmission coefficient with scheme dependence; multi-channel
+   consistency at −35/16 with the NANOGrav MCMC reclaimed).
+5. The ECH Note (P1A merged into P1C, ≤12 pp) compiled, linter-clean, past one
+   INT board, truth-audited, closed, kit refreshed.
+6. P4′ (P5 folded in, ≤15 pp, ledger #5 exclusion statement included)
+   compiled, past one INT board, truth-audited, closed, kit refreshed.
+7. Final-review recommendations written for P2′, the Note, and P4′;
+   endorser outreach file and portal field lists ready; post-approval
+   scripts staged.
+8. Site reframed to the decided structure and deployed; reproducibility
+   manifests current for every new computation; `VISION.md` drift audit
+   committed; `NEXT_SCIENCE_LEDGER.md` updated; `SESSION_HANDOFF_<date>.md`
+   and the next-session prompt written.
+Only when every item is complete — or every remaining item is one of the
+three Houston-only acts — stop and give me the ordered click-list. If you
+find yourself about to end with "say continue" or "want me to proceed?",
+that is a violation: continue instead.
 
 ## 0. The structure you are executing (decided; do not re-litigate)
 Read `project-context/VISION.md` and `project-context/NEXT_SCIENCE_LEDGER.md`
