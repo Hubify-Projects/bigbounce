@@ -44,5 +44,38 @@
       "date": "2026-09-02",
       "decision": "project-context/PORTFOLIO_DECISION_2026-09-02.md Track C1 Addendum; project-context/NEXT_SCIENCE_LEDGER.md item 5"
     }
+  },
+  "P1N": {
+    "tex_path": "arxiv/paper1bc_ech_note/main.tex",
+    "pdf_path": "arxiv/paper1bc_ech_note/main.pdf",
+    "site_slug": "paper-1n",
+    "target_journal": "Classical and Quantum Gravity (Note; gr-qc)",
+    "article_type": "ECH Note -- what minimal Einstein-Cartan torsion does for the bounce (Poplawski spin-spin contact repulsion) and cannot do for dark energy (Track B closed-line merge)",
+    "review_profile": "CQG-NOTE",
+    "served_aliases": [
+      "paper1bc_ech_note_v1N.0.1.pdf"
+    ],
+    "version": "v1N.0.1",
+    "pages": 6,
+    "date": "2026-09-02",
+    "pdf_sha256": "2287537b1cf2420b2aa043b6d07da1281fb2844a82e296e7658467c7362747ba",
+    "review_paths": [],
+    "lineage": {
+      "merges": [
+        {
+          "paper": "P1A",
+          "version": "v1A.0.127",
+          "path": "arxiv/paper1a_ech_nogo.tex",
+          "zenodo_doi": "10.5281/zenodo.21481838"
+        },
+        {
+          "paper": "P1C",
+          "version": "v1C.0.16",
+          "path": "arxiv/paper1c_nogo_survey/main.tex"
+        }
+      ],
+      "date": "2026-09-02",
+      "decision": "project-context/PORTFOLIO_DECISION_2026-09-02.md Sec.3 Track B (B1) + Addendum"
+    }
   }
 }
