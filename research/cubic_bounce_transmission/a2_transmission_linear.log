@@ -1,0 +1,77 @@
+[   0.00s] ==============================================================================
+[   0.00s] TRACK A2 -- f_NL transmission through explicit nonsingular bounces
+[   0.00s] ==============================================================================
+[   0.00s] [S] symbolic branch basis + vacuum decomposition ...
+[   0.12s]     S_solves_matter_eq: True
+[   0.12s]     C_solves_matter_eq: True
+[   0.12s]     identity_expmiu_eq_minusS_minusiC: True
+[   0.12s]     alpha_- = -sqrt(2)*k**(3/2)/(6*A) ; beta_- = 3*sqrt(2)*I*A/(2*k**(3/2))
+[   0.12s]     r = -9*I*A**2*I_inf/k**3 ; T_fNL -> 1/2 - rho/2
+[   0.12s] [B] building backgrounds ...
+[   0.35s]     LQC      eta_B=1.06015 I_inf=1.8137982 A=0.083333333 eta_off=-2.58711 rho_B=0.50000032
+[   0.35s]     LQC      analytic: I_inf 6.37e-07, A 8.15e-11, rho_B 6.37e-07 (rel. err)
+[   0.35s]     poly     eta_B=0.57735 I_inf=0.78539816 A=0.99999989 eta_off=-0.000336721 rho_B=0.60899779
+[   0.35s]     poly     analytic: I_inf 6.63e-12, A 1.10e-07, rho_B 1.11e-08 (rel. err)
+[   0.35s]     quintin  eta_B=0.449601 I_inf=0.5573517 A=1.2081253 eta_off=-0.625211 rho_B=0.66998923
+[   0.35s] [M] mode-evolution verification ...
+[   0.39s]     poly     k*etaB=0.002 |T_c-1|=6.79e+00 |r|=1.700e+08 (rel 1.01e-15) T_fNL_direct=+0.195499 (bg +0.195501, rel 9.98e-06)
+[   0.42s]     poly     k*etaB=0.005 |T_c-1|=3.31e-01 |r|=1.088e+07 (rel 1.85e-16) T_fNL_direct=+0.195527 (bg +0.195501, rel 1.32e-04)
+[   0.45s]     poly     k*etaB=0.01 |T_c-1|=2.14e-01 |r|=1.360e+06 (rel 5.04e-17) T_fNL_direct=+0.195615 (bg +0.195501, rel 5.80e-04)
+[   0.48s]     poly     k*etaB=0.02 |T_c-1|=9.93e-01 |r|=1.700e+05 (rel 3.45e-16) T_fNL_direct=+0.195932 (bg +0.195501, rel 2.21e-03)
+[   0.51s]     poly     k*etaB=0.03 |T_c-1|=8.80e-01 |r|=5.038e+04 (rel 4.61e-16) T_fNL_direct=+0.196424 (bg +0.195501, rel 4.72e-03)
+[   0.51s]     poly     max|T_c-1|=6.79e+00  Delta^2 spread=1.21e-02
+[   0.55s]     LQC      k*etaB=0.002 |T_c-1|=8.09e-01 |r|=1.688e+07 (rel 1.12e-15) T_fNL_direct=+0.250002 (bg +0.250000, rel 9.51e-06)
+[   0.59s]     LQC      k*etaB=0.005 |T_c-1|=6.60e-02 |r|=1.081e+06 (rel 1.18e-16) T_fNL_direct=+0.250014 (bg +0.250000, rel 5.62e-05)
+[   0.63s]     LQC      k*etaB=0.01 |T_c-1|=1.21e-02 |r|=1.351e+05 (rel 2.17e-16) T_fNL_direct=+0.250055 (bg +0.250000, rel 2.23e-04)
+[   0.67s]     LQC      k*etaB=0.02 |T_c-1|=3.01e-03 |r|=1.688e+04 (rel 2.70e-16) T_fNL_direct=+0.250221 (bg +0.250000, rel 8.87e-04)
+[   0.71s]     LQC      k*etaB=0.03 |T_c-1|=1.63e-03 |r|=5.003e+03 (rel 3.76e-16) T_fNL_direct=+0.250496 (bg +0.250000, rel 1.99e-03)
+[   0.71s]     LQC      max|T_c-1|=8.09e-01  Delta^2 spread=4.22e-02
+[   0.77s]     quintin  k*etaB=0.002 |T_c-1|=3.71e+00 |r|=8.317e+07 (rel 9.37e-16) T_fNL_direct=+0.164993 (bg +0.165005, rel 7.31e-05)
+[   0.83s]     quintin  k*etaB=0.005 |T_c-1|=2.74e-01 |r|=5.323e+06 (rel 1.77e-16) T_fNL_direct=+0.164999 (bg +0.165005, rel 4.04e-05)
+[   0.88s]     quintin  k*etaB=0.01 |T_c-1|=4.32e-02 |r|=6.654e+05 (rel 1.76e-16) T_fNL_direct=+0.165018 (bg +0.165005, rel 7.64e-05)
+[   0.94s]     quintin  k*etaB=0.02 |T_c-1|=8.41e-03 |r|=8.317e+04 (rel 1.85e-16) T_fNL_direct=+0.165095 (bg +0.165005, rel 5.43e-04)
+[   1.00s]     quintin  k*etaB=0.03 |T_c-1|=3.68e-03 |r|=2.464e+04 (rel 0.00e+00) T_fNL_direct=+0.165223 (bg +0.165005, rel 1.32e-03)
+[   1.00s]     quintin  max|T_c-1|=3.71e+00  Delta^2 spread=2.65e-02
+[   1.00s] [T] transmission coefficient T_fNL(handoff epoch) ...
+[   1.00s]     LQC      NEC boundary (eta_h = eta_B) rho=0.500000 lambda=  4.0000 T_fNL=+0.250000
+[   1.00s]     LQC      2 eta_B                      rho=0.751479 lambda=  8.0476 T_fNL=+0.124260
+[   1.00s]     LQC      5 eta_B                      rho=0.946129 lambda= 37.1255 T_fNL=+0.026936
+[   1.00s]     LQC      10 eta_B                     rho=0.988465 lambda=173.3859 T_fNL=+0.005767
+[   1.00s]     LQC      50 eta_B                     rho=0.999847 lambda=13039.7702 T_fNL=+0.000077
+[   1.00s]     poly     NEC boundary (eta_h = eta_B) rho=0.608998 lambda=  5.1151 T_fNL=+0.195501
+[   1.00s]     poly     2 eta_B                      rho=0.860674 lambda= 14.3548 T_fNL=+0.069663
+[   1.00s]     poly     5 eta_B                      rho=0.984608 lambda=129.9339 T_fNL=+0.007696
+[   1.00s]     poly     10 eta_B                     rho=0.997872 lambda=939.6735 T_fNL=+0.001064
+[   1.00s]     poly     50 eta_B                     rho=0.999982 lambda=113525.7762 T_fNL=+0.000009
+[   1.00s]     quintin  NEC boundary (eta_h = eta_B) rho=0.669989 lambda=  6.0604 T_fNL=+0.165005
+[   1.00s]     quintin  2 eta_B                      rho=0.884331 lambda= 17.2907 T_fNL=+0.057835
+[   1.00s]     quintin  5 eta_B                      rho=0.982725 lambda=115.7746 T_fNL=+0.008637
+[   1.00s]     quintin  10 eta_B                     rho=0.996949 lambda=655.6141 T_fNL=+0.001525
+[   1.00s]     quintin  50 eta_B                     rho=0.999967 lambda=60506.1538 T_fNL=+0.000017
+[   1.00s] [Q] bounce-duration sweeps (self-similarity test) ...
+[   1.04s]     quintin dtB=0.25  eta_B=0.112405 I_inf=0.139338 rho_B=0.67000536 T_fNL=+0.16499732
+[   1.08s]     quintin dtB=0.5   eta_B=0.224809 I_inf=0.278676 rho_B=0.67000407 T_fNL=+0.16499796
+[   1.12s]     quintin dtB=1     eta_B=0.449616 I_inf=0.557352 rho_B=0.67000281 T_fNL=+0.16499859
+[   1.17s]     quintin dtB=2     eta_B=0.899228 I_inf=1.1147 rho_B=0.67000161 T_fNL=+0.16499920
+[   1.21s]     quintin dtB=4     eta_B=1.79845 I_inf=2.22941 rho_B=0.67000051 T_fNL=+0.16499974
+[   1.22s]     poly    eta_b=0.25  eta_B=0.144338 I_inf=0.19635 rho_B=0.60899815 T_fNL=+0.19550093
+[   1.24s]     poly    eta_b=0.5   eta_B=0.288675 I_inf=0.392699 rho_B=0.60899815 T_fNL=+0.19550093
+[   1.26s]     poly    eta_b=1     eta_B=0.577351 I_inf=0.785398 rho_B=0.60899815 T_fNL=+0.19550093
+[   1.28s]     poly    eta_b=2     eta_B=1.1547 I_inf=1.5708 rho_B=0.60899815 T_fNL=+0.19550093
+[   1.30s]     poly    eta_b=4     eta_B=2.3094 I_inf=3.14159 rho_B=0.60899815 T_fNL=+0.19550093
+[   1.30s]     duration dependence: quintin frac-spread 1.47e-05, poly 3.66e-12 -> T_fNL is DURATION-INDEPENDENT within each self-similar family
+[   1.30s] [F] effective-fluid scheme contrast ...
+[   1.30s]     K_fluid ~ dcut^-0.4998 (analytic -0.5)
+[   1.30s]     SECOND SCHEME (effective fluid, LQC bg): I_inf=0.302300 rho_B=0.181690 T_fNL=0.409155 (geometric on same bg: 0.250000)
+[   1.30s] [C] convergence checks ...
+[   1.34s]     eta_far_x2: dT_fNL/T = 5.525e-22
+[   1.35s]     rtol_1e-9: dT_fNL/T = 1.093e-23
+[   1.45s]     grid halved LQC: dT_fNL/T = 3.295e-10
+[   1.45s]     grid halved poly: dT_fNL/T = 9.217e-07
+[   1.45s]     grid halved quintin: dT_fNL/T = 4.115e-05
+[   1.53s]     LQC x_min 1e-12 -> 1e-14: dT_fNL/T = 5.730e-07
+[   1.53s]   HEADLINE LQC     : T_fNL = 0.250000  (lambda_zeta = 4.0000)  =>  f_NL: -2.1875 -> -0.5469   [LINEAR-TRANSFER TERM ONLY]
+[   1.53s]   HEADLINE poly    : T_fNL = 0.195501  (lambda_zeta = 5.1151)  =>  f_NL: -2.1875 -> -0.4277   [LINEAR-TRANSFER TERM ONLY]
+[   1.53s]   HEADLINE quintin : T_fNL = 0.165005  (lambda_zeta = 6.0604)  =>  f_NL: -2.1875 -> -0.3609   [LINEAR-TRANSFER TERM ONLY]
+[   1.53s]   SCHEME/BACKGROUND SPREAD: T_fNL in [0.1650, 0.2500] (+/-20.5%)
+[   1.53s] DONE (1.5 s) -> /Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/cubic_bounce_transmission/a2_transmission_linear.json
