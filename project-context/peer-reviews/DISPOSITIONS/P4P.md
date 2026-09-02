@@ -125,3 +125,114 @@ layer** — every headline number traces correctly to P4/P5/the committed script
 ### Verified-correct register (no leg disputed these successfully, and the audit re-checked them)
 8,474,531 catalog objects; 949,584 − 59,515 = 890,069; $N_{\rm support}=887{,}472$; $A_{\rm dip}=0.467\%$, $z_{\rm mom}=+0.635$, $p=0.238$; $A_{95}^{\rm obs}=0.98\%$; $10^4$-draw fixed-occupancy null; DESIVAST 694,642 → 145,789 → 145,766 = 31,937 + 113,829; $\Delta f_{\rm CW}=+0.00145$, SE $0.00332$, CI, $p=0.661$ / wild-cluster $0.673$ (matches P5 to 6 s.f.); 812,793 = 428 + 6,673 + 408,187 + 397,505; Table 1 ratios vs the committed JSON (7.143/5.102/2.041/2.041/20.408); Iye 2021 = arXiv:2011.00662, Patel & Desmond 2024 = arXiv:2404.06617. `main.log`: 0 overfull/underfull, 0 undefined refs.
 **§5.1's central finding — that Popławski's papers (arXiv:1007.0587, 1111.4595, 1410.3881, 1910.10819) contain no computed dipole amplitude, alignment fraction or relaxation timescale — is confirmed against the committed script's `quantitative_amplitude_predicted: false` and its verbatim reading note, is the paper's genuine contribution, and is stated at the correct evidential strength.** The bounce-scope disclaimer appears in the abstract, §1, §5.2, §6 and §7; no bounce claim is smuggled in.
+
+---
+
+## R2 wave (2026-09-02) — `ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2`
+
+PDF sha256 `78936e3610b2d9274e2ba19b8567207b7cd1cb99d9368585d6ff3d78ac9d1db1` (verified), 10 pp.
+Legs: Claude INT (major-revisions, 3 MAJOR / 13 MINOR), Grok API `grok-4.3` (REJECT, 10),
+Gemini API `gemini-3.1-pro-preview` (MAJOR REVISIONS, 7), **Perplexity ABSENT** (401
+insufficient_quota — optional leg, recorded absent, never as zero findings).
+33 findings audited. **21 canonical GENUINELY-NEW-REAL (6 MAJOR, 15 MINOR); 8
+RE-FLAG-OF-DISCLOSED; 2 FALSIFIED; 2 OPINION/GENRE.** R1 status: 16/20 closed, R3 and R9
+partial (→ DP4P-26, DP4P-22), R5 page target and R17 open (→ DP4P-42/43, DP4P-34).
+Truth audit: `INT_v3/ROUND_2026-09-02-P4P-v4P.0.2-EXACTPDF-78936e36-R2/P4P_v4P.0.2_R2_truth_audit.md`.
+
+### DP4P-21: primary channel's own monopole unreported; sign-flipped vs both narrated monopoles
+- **class:** OPEN — GENUINELY-NEW-REAL (MAJOR, disclosure) — **science question RESOLVED in-audit**
+- Recomputed from `pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet`
+  under the committed selection + support: 454,968 / 887,472 = **0.5126562** (A_p = **+2.53%**).
+  Cause: the 59,515 quarantined `raw_flip_qc_unsafe` HC rows are **75.2% CCW** (44,739 CCW /
+  14,776 CW), so the safe cut flips HC 0.4960583 → 0.5126562. Catalog-wide 0.497353 (P4 l.1283)
+  and HC-with-unsafe −3.9486e−3 (P4 l.1289, `g4_monopole_mechanism_injection.json`) are each
+  correct for their own samples.
+- **Eq. 1 baseline branch FALSIFIED:** the generator computes `p_cw_global` from the same strict
+  sample/support it injects into (`a95_observed_label_upper_limit_v1_0_265.py` ll.128, 139–141),
+  so A_95^obs = 0.98% and §5's confrontation are unaffected; the uniform-weight estimator absorbs
+  a constant monopole into its fitted `m` (P4 l.1289 generative test, 0.39σ).
+- **Closure:** state the primary channel's f_CW, its A_p, and the parity-asymmetric quarantine in
+  §2.2. No new computation needed.
+- **fingerprint:** p_cw_global, 0.512656, 454968, 887472, quarantine 59515 CCW, monopole sign flip, Eq.1 baseline
+
+### DP4P-22: the "genuine 95% CL statement" is the null's 95th percentile, not an upper limit
+- **class:** OPEN — GENUINELY-NEW-REAL (MAJOR, statistics) — R1 DP4P-09 partial-closure residue
+- §3 l.377–384, cited as authoritative at §5.3 l.691–693. Null re-reduced: mean 0.00362029,
+  sd 0.00164643, 95th pct 0.0066932 ✓ — a critical value of the no-signal law, equivalent to the
+  reported rank p = 0.238, for a positive-definite estimator with null mean 0.362%.
+- Correct construction = Neyman inversion of `per_amplitude`; only p16/p50/p84 are stored, so a
+  true 95% limit is **not yet computable** (p16 inversion gives ≈0.58%, an ~84% limit).
+- **Closure:** re-run the injection storing `recovered_amp` p5 and quote the inverted limit, **or**
+  drop the CL claim and rest on detection power.
+- **fingerprint:** 95th percentile, 0.669, critical value, upper limit, Neyman inversion, recovered_amp p5, 0.58
+
+### DP4P-23: 4×4 bootstrap matrix imported without per-estimator z's; headline z = +2.21 withheld
+- **class:** OPEN — GENUINELY-NEW-REAL (MAJOR) · §3 l.447–475
+- P4 l.1436 verbatim: "z = +2.21 real-space dipole, +0.81 WLS dipole, −0.61 MASTER ℓ=1"; P4′
+  prints only the monopole's −6.57 while headlining z_mom = +0.635 from the label-randomization null.
+- **Closure:** print all four z's with P4's own one-sentence reconciliation.
+- **fingerprint:** joint covariance, z=+2.21, +0.81, -0.61, -6.57, block bootstrap, selective import
+
+### DP4P-24: abstract omits the g-bridge caveat the body says "should not go unstated"
+- **class:** OPEN — GENUINELY-NEW-REAL (MAJOR) · abstract l.99–101 vs §5.3 l.652–659 (Gemini E1)
+- **Closure:** one clause in the abstract noting the exclusion weakens on the two largest
+  comparison samples under the illustrative bridge.
+- **fingerprint:** abstract-body drift, g-bridge, 2-20x, should not go unstated, pattern-045
+
+### DP4P-42 / DP4P-43: DP4P-05 residue — no column-by-column schema table (§2.1 l.170–209); completeness/purity only as two integrated scalars (l.185–188)
+- **class:** OPEN — GENUINELY-NEW-REAL (MAJOR, venue). ≈1.0–1.25 pp → ~12–13 pp, inside the ≤15 pp allowance.
+- **fingerprint:** schema table, dtype, flag semantics, completeness function, purity, magnitude, half-light radius
+
+### MINOR items (all GENUINELY-NEW-REAL, all OPEN)
+| ID | Item | Evidence |
+|---|---|---|
+| DP4P-25 | §1 l.152 gives the primary N as 890,069, not 887,472 | abstract l.87–88, §3 l.341 correct |
+| DP4P-26 | §3 l.345–346 still calls Fig. 1 the HC CW-fraction map, contradicting the corrected caption (R1 DP4P-03 residue) | l.345–346 vs caption l.351–358 |
+| DP4P-27 | Table 2 omits T5; caption says "all seven" | P4 l.1792/1794 carries the honest disposition |
+| DP4P-28 | [15] (paper) and [17] (dataset) share DOI 10.5281/zenodo.21461899 | p.10; l.200–201; l.863–864 |
+| DP4P-29 | Table 3 caption "The four rows" — five rows, four statistic families | caption l.668 |
+| DP4P-30 | Catalog-wide monopole value/σ/significance never together in body text | only in Fig. 3 caption; P5 l.1037/1171 |
+| DP4P-31 | T-Web Void bin N = 428 (no power); per-class N absent from text | 300-DPI Fig. 3, sums to 812,793 ✓ |
+| DP4P-32 | Keywords not UAT terms with identifiers | l.110–111 |
+| DP4P-35 | Draft-mode artifacts; 3 stuck-float warnings + 5.88 pt overfull hbox | `main.log` ll.758/778/799/767 |
+| DP4P-36 | [11] Popławski publication status unstated; year vs identifier | p.10; §5.1 l.602–613 |
+| DP4P-37 | "primary HC sample N = 949,584" (§3 l.450–451) collides with the paper's own 887,472 | rename "pre-QC HC sample" |
+| DP4P-38 | "on-vision test" promotional framing survives at l.146 (DP4P-08 residue) | l.146 |
+| DP4P-39 | Internal audit prose "post-review 13-column basis" at l.505 | l.505 (keep the exploratory disclosure l.511–512) |
+| DP4P-40 | No frozen commit-hash/DOI revision pin (directive Q2) | Data Availability l.859–887 |
+| DP4P-41 | Title asserts "an Exclusion" of a model with no computed amplitude | title l.67 vs §5.1 |
+
+### FALSIFIED / RE-FLAG / OPINION — do not re-open without new evidence
+| Finding | Verdict | Source-cited basis |
+|---|---|---|
+| Grok E2 — abstract omits the support size of z_mom/p | **FALSIFIED** | abstract l.87–89 verbatim "(N_support = 887,472 of 890,069 …) … (z_mom = +0.635, one-sided p = 0.238)" |
+| Gemini M1 — SE 0.00332 vs CI inconsistent | **FALSIFIED** (repeat of R1 Gemini N1) | P5 l.1004–1006: 0.00145442 ± 1.959964 × 0.00331502 → [−0.00504302, +0.00795186]; Gemini re-derived from the rounded SE |
+| Grok E3 — not standalone / withdraw catalog claim | **RE-FLAG-OF-DISCLOSED** | R1 DP4P-05 Route A executed (l.170–209, §2.3 l.308–333, injection table, 4×4 covariance, P5 ladder + void family); residue is DP4P-42/43 only |
+| Grok E4 / Gemini E4 — nulls juxtaposed without "not directly comparable" | **RE-FLAG-OF-DISCLOSED** | l.396–399 names the different support, estimator and null family |
+| Grok M1 — relabel A_95^obs as observed-label floor | **RE-FLAG-OF-DISCLOSED** | abstract l.90, §3 l.385–390, assumption l.708; CL half → DP4P-22 |
+| Grok M2 — remove the ratio column | **RE-FLAG-OF-DISCLOSED** | R1 DP4P-10 closure: caption l.668–673 + g-bridge flip l.652–659 |
+| Grok M3 — declare exploratory / preregister | **RE-FLAG-OF-DISCLOSED** | l.511–512 "exploratory, not preregistered"; multiplicity l.572–578 |
+| Gemini E3 — [16] has no DOI | **RE-FLAG-OF-DISCLOSED** | the paper states this itself; blocker tracked under DP4P-28 |
+| DP4P-33 — no ORCID | **RE-FLAG-OF-DISCLOSED** (submission-kit) | R1 R15 residue, SSOT-recorded, correctly not fabricated |
+| DP4P-34 — numeric citation style | **RE-FLAG-OF-DISCLOSED** (submission-kit) | R1 DP4P-17; l.27, l.901; mechanical at submission |
+| Grok N1 — draft header/date | **OPINION/GENRE** (NIT) | R1 precedent; typographic half → DP4P-35 |
+| Gemini N2 — "brackets" imprecise | **OPINION/GENRE** (NIT) | detection fraction 0.9465 → 0.9500 across the 0.96/0.98% rows; the crossing is attained at the endpoint, which is why linear interp returns 0.0098 |
+
+### Verified-correct register (R2 additions)
+Cohen's κ from both printed confusion matrices (0.3978 and 0.97333); three-class 58.7%; 69.91% on
+117,205; all five Table 3 ratios; count ladders 949,584 − 59,515 = 890,069, 694,642 → 145,789 →
+145,766 = 31,937 + 113,829, 812,793 = 428 + 6,673 + 408,187 + 397,505, 3,201,160 = 1,592,107 +
+1,609,053; the twelve printed injection-recovery rows and both interpolations (0.0098 linear,
+0.0095478 logistic); the null array's mean/sd/95th percentile; P5's four clustering-scale CIs and
+five-way void family; f_sky 23,633/49,152 = 0.4808 and 24,087/49,152 = 0.49005; the Parquet byte
+count and quarantine split. **No arithmetic or transcription error in the measurement layer.**
+The §5.1 finding (Popławski supplies no computed amplitude) remains the paper's genuine
+contribution, stated at its correct evidential strength; no bounce claim is smuggled in.
+
+### R2-budget note (directive R2)
+Second consecutive round. A third round requires an intervening science/scope decision. Satisfied
+by either (1) **the monopole resolution** — adopt DP4P-21's settled answer (+2.53% A_p from a
+75%-CCW quarantine; no propagation to A_95^obs or the dipole) and disclose it — or (2) **the CL
+decision** (DP4P-22: re-run for a genuine 95% inversion, or withdraw the claim). Remaining items
+are presentation/venue/packaging; if a verification pass returns only those, rounds stop and P4′
+moves to the publication phase under directive P.
