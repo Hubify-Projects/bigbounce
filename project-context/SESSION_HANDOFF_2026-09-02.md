@@ -63,3 +63,11 @@ before acting. Re-plan:
 - Reproducibility manifests: 6 new manifests today needed schema-v1 conformance
   (paper-code enum predates A2/A3/P1N/P4P); Sonnet worker fixing with additive
   enum extensions; 61 manifests total.
+
+## Phase-3 landing runbook (when `/workspace/PHASE3_DONE` appears on pod 8ofv5d4ynu7hku)
+1. `ssh -p 8489 root@205.196.17.124 'ls -la /workspace/flagship_* /workspace/PHASE3_DONE; tail -20 /workspace/phase3.log'` — confirm the chain reached taxonomy and the enrichment manifest binds sample/contract/zcatalog SHAs with zero skipped groups.
+2. `rsync -avz -e 'ssh -p 8489' root@205.196.17.124:/workspace/flagship_* pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/` (parquet + json + manifests; enrich_shards are large — pack them: `tar` ≤9,000 files per part) ; commit the small artifacts + manifests; large shards go to HF/B2 only.
+3. HF: `bamfai/bigbounce-aug-011-clean-rerun/phase3/2026-09-0X/` PACKED (HF caps 10,000 files/dir); B2: `b2://$B2_BUCKET/aug-011-clean-rerun/phase3/`; local: `~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/phase3/`. Verify three locations by checksum (backup-3plus) BEFORE any stop.
+4. `python3 pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py --crossmatch …` per RUNBOOK §19 using the cached refs; commit results under `results_2026-08-07/phase3/recovery_benchmark/`; answer ledger #8.
+5. Stop the pod (`/pod-backup-before-stop`): RunPod GraphQL `podStop`; confirm desiredStatus EXITED; record balance.
+6. Reproducibility manifests for phase 3 + benchmark; SSOT/paper-3 + anomaly program status; site/Convex activity row.
