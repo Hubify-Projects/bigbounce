@@ -2,10 +2,10 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-02 — CREATED. v3M.0.1, 6 pp, md5 1fa835c4f8344c14de9f7518217a4542, sha256 a1c5c5276c0c7ae9ee173148a2cb942da91e61e2e791e649c4e2197079d67c2a, 0 undef refs, 0 overfull hboxes >10pt.
+last_updated: 2026-09-02 — CREATED. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b, sha256 0cbb10215ef286eadf6c21fc9b91b0d551763cfba2c76c0c03a4973319b85e4a, 0 undef refs, 0 overfull hboxes >10pt. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (6 pp / 0 undef refs / md5 1fa835c4f8344c14de9f7518217a4542)
-version: v3M.0.1 (2026-09-02, created)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (6 pp / 0 undef refs / md5 8f17a2dc877c0b58982e91a8dea0fa1b)
+version: v3M.0.2 (2026-09-02, ledger #1 wording fix)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
@@ -28,8 +28,13 @@ rather than standing as its own PRD Letter.
    the located ×2 discrepancy with Cai et al. 2009, consistency with
    Li et al. 2016 Eq. 4.19, and the δN/comoving reconciliation
    (ζ_ρ = 2ζ_c at linear order). Ledger item #1 (independent second-method
-   adjudication of the factor of two) remains explicitly OPEN — no new-claim
-   language is used.
+   adjudication of the factor of two) is CLOSED per NEXT_SCIENCE_LEDGER.md
+   row 1 — the from-scratch in-in computation of Table I IS the independent
+   route and reproduces −35/16; the δN cross-check reconciles a distinct
+   uniform-density quantity, not a second adjudication. The one remaining
+   open sub-item is a Bianchi-I separate-universe cross-check of the shear
+   response (v3M.0.2 fix, 2026-09-02, corrects v3M.0.1's erroneous "OPEN"
+   wording).
 2. §III "Transmission through the bounce" — the linear bound
    0 < T_fNL ≤ 1/2 across three bounce backgrounds/two mode-function
    conventions, with the bounce's own (uncomputed) cubic term flagged via

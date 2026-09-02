@@ -65,16 +65,18 @@
     "served_aliases": [
       "paper1bc_ech_note_v1N.0.1.pdf",
       "paper1bc_ech_note_v1N.0.2.pdf",
-      "paper1bc_ech_note_v1N.0.3.pdf"
+      "paper1bc_ech_note_v1N.0.3.pdf",
+      "paper1bc_ech_note_v1N.0.4.pdf"
     ],
-    "version": "v1N.0.3",
-    "pages": 11,
+    "version": "v1N.0.4",
+    "pages": 12,
     "date": "2026-09-02",
-    "pdf_sha256": "c758664b4485a45752cd79e2ab695c6b09d9f82f2b283dd8db5a2af6721f7027",
-    "pdf_md5": "8725f40c69027c53c7a0f6a38f05587d",
+    "pdf_sha256": "ba672666905066763b1b7ac076a367cfe9a37809d400e186a1fbc845425dd462",
+    "pdf_md5": "dcdeb0e1326fd3ef5b396e7d84a60d28",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.1-EXACTPDF-2287537b-R1/P1N_v1N.0.1_R1_truth_audit.md",
-      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2/P1N_v1N.0.2_R2_truth_audit.md"
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2/P1N_v1N.0.2_R2_truth_audit.md",
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.3-EXACTPDF-c758664b-R3VERIFY/P1N_v1N.0.3_R3_truth_audit.md"
     ],
     "lineage": {
       "merges": [
@@ -120,13 +122,14 @@
     "article_type": "multi-channel consistency test (theory: exact matter-contraction f_NL + transmission bound, folded from P2L per lineage decision; observational: PTA + PBH + LSS survey reach)",
     "review_profile": "PRD-REGULAR",
     "served_aliases": [
-      "a3_multichannel_arxiv_v3M.0.1.pdf"
+      "a3_multichannel_arxiv_v3M.0.1.pdf",
+      "a3_multichannel_arxiv_v3M.0.2.pdf"
     ],
-    "version": "v3M.0.1",
+    "version": "v3M.0.2",
     "pages": 6,
     "date": "2026-09-02",
-    "sha256": "a1c5c5276c0c7ae9ee173148a2cb942da91e61e2e791e649c4e2197079d67c2a",
-    "md5": "1fa835c4f8344c14de9f7518217a4542",
+    "sha256": "0cbb10215ef286eadf6c21fc9b91b0d551763cfba2c76c0c03a4973319b85e4a",
+    "md5": "8f17a2dc877c0b58982e91a8dea0fa1b",
     "lineage": {
       "folded_from": "arxiv/paper2prime_fnl_letter/main.tex v2L.0.2 (exact-amplitude theory record: per-vertex in-in table, Cai et al. 2009 factor-2 location, delta-N/comoving reconciliation, consistency with Li et al. 2016 Eq. 4.19, linear transmission bound)",
       "skeleton_from": "research/track_a3_multichannel/paper/main.tex (PTA/PBH/LSS channel skeleton with real numbers, pre-merge)",
