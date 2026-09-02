@@ -1,17 +1,16 @@
 % What Minimal Einstein--Cartan Torsion Does for the Bounce and Cannot Do
 % for Dark Energy
-% Paper 1N -- gr-qc / Classical and Quantum Gravity Note
-% Merges paper1a_ech_nogo.tex (v1A.0.127) and paper1c_nogo_survey/main.tex
-% (v1C.0.16) into a single publishable Note, per
-% project-context/PORTFOLIO_DECISION_2026-09-02.md Sec.3 Track B and Addendum.
+% Paper 1N -- gr-qc / Classical and Quantum Gravity Paper
+% Internal build note (not printed in the compiled document): drafted from
+% paper1a_ech_nogo.tex (v1A.0.127) and paper1c_nogo_survey/main.tex
+% (v1C.0.16); see project-context/PORTFOLIO_DECISION_2026-09-02.md Sec.3
+% Track B and project-context/SSOT/paper-1n/status.md for the internal
+% closure record. That provenance history stays in the SSOT/audit trail
+% and is not restated in the manuscript body (directive Q1).
 % Houston Golden -- 2026
 % arXiv submission: gr-qc (cross-list astro-ph.CO, hep-th)
-%
-% Provenance: this Note supersedes paper1a_ech_nogo.tex and
-% paper1c_nogo_survey/main.tex as the single publication target for the
-% closed ECH dark-energy line. The two source papers remain archived
-% (P1A: Zenodo doi:10.5281/zenodo.21481838; P1C: repository history) and
-% are not further submitted independently.
+% Venue form: CQG Paper (4144+ words exceeds the CQG Note ceiling of
+% 2500 words; recorded in SSOT).
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 \documentclass[aps,prd,twocolumn,superscriptaddress,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
@@ -47,8 +46,9 @@
 \newcommand{\cf}{cf.}
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
-\newcommand{\artifact}[1]{\href{https://github.com/Hubify-Projects/bigbounce/blob/main/#1}{repository artifact}}
-\newcommand{\paperVersion}{v1N.0.1}
+\newcommand{\repoSHA}{ded46bc5df8d39bbaac7bfbee16b07f0376bab34}
+\newcommand{\artifactbase}[2]{\href{https://github.com/Hubify-Projects/bigbounce/blob/\repoSHA/#1}{\texttt{#2}}}
+\newcommand{\paperVersion}{v1N.0.2}
 \newcommand{\paperTimestamp}{September 2, 2026}
 
 \begin{document}
@@ -60,53 +60,61 @@ Do for Dark Energy}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{\paperTimestamp\ (\paperVersion)}
+\date{\paperTimestamp}
 
 \begin{abstract}
 Pop{\l}awski's Einstein--Cartan black-hole cosmology replaces the classical
 singularity with a torsion-supported bounce: eliminating the
 non-propagating spin connection from the minimal Einstein--Cartan--Holst
 (ECH) action generates an effective spin--spin four-fermion contact term
-that is repulsive at high spin density, the same mechanism that produces
-Pop{\l}awski's torsion-induced avoidance of gravitational
-singularities~\cite{Poplawski2010,Poplawski2011}. We ask whether the
-identical algebraic mechanism can also source the observed late-time
-dark-energy density and answer, systematically, no. Consolidating two
-companion papers into a single Note, we (i)~derive the minimal
-axial--axial contact interaction
+that, in the Einstein--Cartan limit $\gamma\to\infty$, reduces to the
+Hehl--Datta term underlying Pop{\l}awski's torsion-induced avoidance of
+gravitational singularities~\cite{HehlDattaNJL1971,Poplawski2010,Poplawski2011}.
+We ask whether the same algebraic mechanism can also source the observed
+late-time dark-energy density and answer, systematically, no. We
+(i)~derive the minimal axial--axial contact interaction
 $-(3\kappa/16)[\gamma^2/(1+\gamma^2)]J_5^2$ from the same Cartan equation
 that produces the bounce term, and show its declared direct-channel,
 hard-cutoff, standard mean-field NJL scalar projection is repulsive,
-$G_s=-3\kappa/16$, so the real homogeneous gap equation for this
-condensate channel has no nonzero solution; (ii)~prove, for canonical
-scalar matter, a perturbation-transparency theorem: torsion vanishes at
-every classical perturbation order and the Holst sector decouples
-identically from the scalar and tensor equations of motion, because the
-Holst dual contraction vanishes pointwise by the algebraic Bianchi
-identity on the torsion-free branch; and (iii)~catalog fourteen distinct
-mechanism-class constraints -- amplitude suppressions, naturalness
-deficits, decoupling identities, and classification arguments spanning
-seven structural foundations and six observational branches -- that
-jointly close the four enumerated channels (NJL contact, one-loop Holst
-correction, Immirzi running, parity-odd CMB coupling) by which minimal
-ECH could plausibly connect its bounce-scale torsion to a late-time
-$\Lambda$-like density. A six-member spanning list of dimension-four
-parity-odd local densities admitted by the minimal field content is
-shown to have rank four as a set of operators and rank two modulo total
-derivatives -- a generating set, not an independent basis -- with every
-member either an exact total derivative or a Fierz-closed,
-$\MPl^{-2}$-suppressed contact term; the on-shell ECH torsion itself
-carries both an axial and a trace-vector irrep at finite Barbero--Immirzi
-parameter $\gamma$ (ratio $\beta/\alpha=1/2\gamma$; the tensor irrep
-vanishes identically), a correction to the purely-axial reading used in
-an earlier catalog draft. The result is a clean structural dichotomy: the
-same contact term that plausibly supports Pop{\l}awski's bounce mechanism
-is, under minimal coupling, parity-even, Planck-suppressed, and
-classically transparent to perturbations -- exactly the properties that
-make it unable to generate the late-time acceleration independently
-attributed to dark energy. No ECH dark-energy or birefringence prediction
-is made; this is a channel-level, not operator-level, closure within the
-stated minimal-coupling scope.
+$G_s=-(3\kappa/16)[\gamma^2/(1+\gamma^2)]$, so the real homogeneous gap
+equation for this condensate channel has no nonzero solution;
+(ii)~prove, for canonical scalar matter, a perturbation-transparency
+theorem: torsion vanishes at every classical perturbation order and the
+Holst sector decouples identically from the scalar and tensor equations
+of motion, because the Holst dual contraction vanishes pointwise by the
+algebraic Bianchi identity on the torsion-free branch; and (iii)~catalog
+fourteen distinct mechanism-class constraints -- amplitude suppressions,
+naturalness deficits, decoupling identities, and classification
+arguments spanning seven structural foundations and six observational
+branches -- that jointly close the four enumerated channels (NJL
+contact, one-loop Holst correction, Immirzi running, parity-odd CMB
+coupling) by which minimal ECH could plausibly connect its bounce-scale
+torsion to a late-time $\Lambda$-like density. A six-member spanning
+list of dimension-four parity-odd local densities admitted by the
+minimal field content is shown to have rank four as a set of operators
+and rank two modulo total derivatives -- a generating set, not an
+independent basis -- with every member either an exact total derivative
+on the torsion-free branch, a Fierz-closed $\MPl^{-2}$-suppressed
+contact term on the on-shell ECH branch, or identically vanishing; the
+on-shell ECH torsion itself carries both an axial irrep (coefficient
+$\alpha\propto\gamma^2/(1+\gamma^2)$) and a trace-vector irrep
+(coefficient $\beta\propto\gamma/(1+\gamma^2)$) at finite
+Barbero--Immirzi parameter $\gamma$, ratio $\beta/\alpha=1/(2\gamma)$ --
+$2.11$ at the programme's benchmark $\gamma=0.2375$, i.e.\ the
+trace-vector piece is the \emph{larger} of the two -- with the tensor
+irrep vanishing identically. The result is a clean structural
+dichotomy: the same contact term that, in the $\gamma\to\infty$
+reduction, supplies Pop{\l}awski's bounce mechanism is, under minimal
+coupling at the programme's finite physical $\gamma$, parity-even,
+suppressed by $\gamma^2/(1+\gamma^2)=0.053$ relative to its
+Einstein--Cartan magnitude, Planck-suppressed, and classically
+transparent to perturbations -- exactly the properties that make it
+unable to generate the late-time acceleration independently attributed
+to dark energy. No ECH dark-energy or birefringence prediction is made;
+this is a channel-level, not operator-level, closure within the stated
+minimal-coupling scope, and no signature bridge between this paper's
+mostly-plus conventions and Pop{\l}awski's papers is asserted beyond the
+repulsive-sign identification stated above.
 \end{abstract}
 
 \keywords{Einstein--Cartan gravity, Holst action, torsion bounce,
@@ -129,29 +137,28 @@ The physical content of that mechanism is a spin--spin four-fermion
 contact interaction: eliminating the non-propagating Cartan connection in
 favor of the fermionic spin current generates an effective interaction
 that grows with spin density and becomes repulsive well before the
-classical curvature singularity is reached, halting collapse. This is the
-same contact term this Note derives below, and the same sign.
+classical curvature singularity is reached, halting collapse. Sec.~\ref{sec:theory}
+derives this contact term explicitly and identifies exactly the sense --
+Einstein--Cartan limit, repulsive sign -- in which it coincides with
+Pop{\l}awski's mechanism.
 
 Because the ECH bounce and Pop{\l}awski's proposed link from bounce-scale
 torsion to a late-time vacuum energy~\cite{Poplawski2011,Poplawski2012}
 are built from the same minimal field content, a natural question is
 whether the contact term responsible for the bounce can \emph{also} source
 the dark-energy density observed today, $\rho_{\Lambda,\rm
-obs}\approx(2.25\,\text{meV})^4$. This Note answers that question
-systematically for the minimal-coupling ECH action: it merges the
-algebraic derivation and rigorous transparency theorem of an earlier
-companion paper~\cite{Golden2026P1a} with the systematic no-go survey of a
-second companion~\cite{Golden2026P1cArxiv} into a single, self-contained
-Classical and Quantum Gravity Note. Sec.~\ref{sec:theory} derives the
-contact term from the same Cartan equation that produces Pop{\l}awski's
-bounce interaction and states its conditional-sign gap-equation result.
-Sec.~\ref{sec:transparency} proves the perturbation-transparency theorem,
-the Note's sole Tier-I rigorous result. Sec.~\ref{sec:barriers} catalogs
-the fourteen mechanism-class constraints that jointly close the four
-enumerated dark-energy channels; Sec.~\ref{sec:routes} summarizes the two
-amplitude-budget route closures; Sec.~\ref{sec:completeness} states the
-corrected operator-list argument. Sec.~\ref{sec:discussion} draws the
-positive/negative dichotomy this Note is organized around, and
+obs}\approx(2.25\,\text{meV})^4$. This paper answers that question
+systematically for the minimal-coupling ECH action. Sec.~\ref{sec:theory}
+derives the contact term from the same Cartan equation that produces
+Pop{\l}awski's bounce interaction and states its conditional-sign
+gap-equation result. Sec.~\ref{sec:transparency} proves the
+perturbation-transparency theorem, this paper's sole Tier-I rigorous
+result. Sec.~\ref{sec:barriers} catalogs the fourteen mechanism-class
+constraints that jointly close the four enumerated dark-energy channels;
+Sec.~\ref{sec:routes} derives the two amplitude-budget route closures;
+Sec.~\ref{sec:completeness} states the operator-list argument with the
+six densities defined explicitly. Sec.~\ref{sec:discussion} draws the
+positive/negative dichotomy this paper is organized around, and
 Sec.~\ref{sec:conclusions} concludes.
 
 This is a channel-level assessment of the minimal-coupling theory, not an
@@ -181,58 +188,123 @@ finite nonzero $\gamma$~\cite{Freidel2005}. For minimal fermion coupling
 the spin current is dual to $J_5^I=\bar\psi\gamma^I\gamma^5\psi$, and
 solving the connection equation and back-substituting
 (Freidel--Minic--Takeuchi~\cite{Freidel2005}, Eqs.~17 and 23, in the
-normalization bridge $4\pi G=\kappa/2$) gives the minimal axial--axial
-contact interaction
+normalization bridge $4\pi G=\kappa/2$) gives the on-shell torsion
+\begin{equation}\label{eq:ech_onshell_torsion}
+T_{abc}=\alpha\,\varepsilon_{abcd}J^{5d}
++\beta\left(\eta_{ab}J^5_c-\eta_{ac}J^5_b\right),
+\qquad
+\frac{\beta}{\alpha}=\frac{s_H}{2\gamma},
+\end{equation}
+with $\alpha=\kappa\gamma^2/[2(1+\gamma^2)]$,
+$\beta=\kappa\gamma/[4(1+\gamma^2)]$, and $s_H=+1$ fixed by the Holst-sign
+convention of Eq.~\eqref{eq:ECH} (the ratio would carry the opposite sign
+under $s_H=-1$). This is the paper's single normalization, used
+throughout (READING-I; the Freidel--Minic--Takeuchi Eq.~17/23 solution
+above): every occurrence of $\alpha$, $\beta$, and every four-fermion
+coefficient below is stated in this normalization, and none is restated
+in a second, silently different one. Back-substituting
+Eq.~\eqref{eq:ech_onshell_torsion} into the torsion-squared term of
+Eq.~\eqref{eq:ECH} gives the minimal axial--axial contact interaction
 \begin{equation}\label{eq:4fermi}
 \mathcal L_{4\psi}=-\frac{3\kappa}{16}\frac{\gamma^2}{1+\gamma^2}\,
 (J_5^I J_{5I}).
 \end{equation}
-This is Pop{\l}awski's torsion-bounce interaction restricted to minimal
-coupling: it is generated by the identical elimination of the
-non-propagating connection, grows quadratically with the fermionic spin
-density, and carries the same repulsive sign that halts gravitational
-collapse in the black-hole-cosmology mechanism~\cite{Poplawski2010}. The
-Einstein--Cartan coefficient ($\gamma\to\infty$) is the maximal magnitude,
-since $\gamma^2/(1+\gamma^2)<1$.
+This is the Hehl--Datta four-fermion contact
+term~\cite{HehlDattaNJL1971,Hehl1976}, the Einstein--Cartan generalization
+of general relativity introduced by Kibble and
+Sciama~\cite{Kibble1961,Sciama1964} and reviewed comprehensively by
+Shapiro~\cite{Shapiro2002}; torsion-sourced cosmological scenarios built
+on the same contact structure are also studied by
+B\"ohmer and Burnett~\cite{BoehmerBurnett2008}. In the Einstein--Cartan limit
+$\gamma\to\infty$ (where $\gamma^2/(1+\gamma^2)\to1$),
+Eq.~\eqref{eq:4fermi} reduces exactly to that term, generated by the
+identical elimination of the non-propagating connection that underlies
+Pop{\l}awski's black-hole-cosmology bounce
+mechanism~\cite{Poplawski2010}, and it carries the same repulsive sign at
+every finite $\gamma$: a positive spin-density correction to the
+effective energy density would deepen, not halt, gravitational collapse,
+so the sign identification with Pop{\l}awski's mechanism is
+signature-independent even though no formal signature bridge between
+this paper's mostly-plus conventions and Pop{\l}awski's papers is
+asserted. The Einstein--Cartan coefficient ($\gamma\to\infty$) is the
+maximal magnitude, since $\gamma^2/(1+\gamma^2)<1$; at the programme's
+benchmark $\gamma=0.2375$ the coefficient is suppressed by
+$\gamma^2/(1+\gamma^2)=0.053$ relative to that maximum.
 
-At finite $\gamma$ the connection solution
-$e_I{}^\mu C_{\mu JK}\propto\left(\tfrac12\epsilon_{IJKL}J_5^L
--\gamma^{-1}\eta_{I[J}J^5_{K]}\right)$ carries two irreducible pieces: an
+Eq.~\eqref{eq:ech_onshell_torsion} carries two irreducible pieces: an
 axial part with coefficient $\alpha\propto\gamma^2/(\gamma^2+1)$ and a
-trace-vector part with coefficient $\beta\propto\gamma/(\gamma^2+1)$,
-ratio $\beta/\alpha=1/(2\gamma)$; the tensor irrep vanishes identically
-for minimal coupling. This corrects an earlier catalog draft's
-``purely-axial'' reading of the on-shell torsion, which holds only in the
-strict Einstein--Cartan limit $\gamma\to\infty$, not at the finite
-physical $\gamma$ used elsewhere in this programme
-(theory-audit record~\cite{TorsionOnshell2026}).
+trace-vector part with coefficient $\beta\propto\gamma/(\gamma^2+1)$; the
+tensor irrep vanishes identically for minimal coupling. Because
+$\alpha\propto\gamma^2/(\gamma^2+1)$ and $\beta\propto\gamma/(\gamma^2+1)$
+share the same denominator, the ratio of the two proportionality
+statements alone gives $\beta/\alpha=1/\gamma$; the correct ratio
+$\beta/\alpha=s_H/(2\gamma)$ (Eq.~\eqref{eq:ech_onshell_torsion}) follows
+only from the explicit constants $\alpha=\kappa\gamma^2/[2(1+\gamma^2)]$,
+$\beta=\kappa\gamma/[4(1+\gamma^2)]$ quoted above, whose ratio carries the
+additional factor of $1/2$ that the two bare $\propto$ statements do not
+display. At the programme's benchmark $\gamma=0.2375$ this gives
+$\beta/\alpha=2.11$: the trace-vector irrep's coefficient is
+\emph{larger} than the axial one, so the finite-$\gamma$ on-shell torsion
+is not well approximated by its purely-axial, Einstein--Cartan reading.
+That purely-axial reading holds only in the strict limit
+$\gamma\to\infty$, not at the finite physical $\gamma$ used elsewhere in
+this programme (independent on-shell symbolic
+evaluation~\cite{TorsionOnshell2026}).
 
 \subsection{Finite-density benchmark and the NJL sign result}
 
 A deliberately elevated homogeneous normalization illustrates only the
-scale of Eq.~\eqref{eq:4fermi}:
+scale of Eq.~\eqref{eq:4fermi}. With
+$\kappa n_\psi^2=(8\pi/\MPl^2)\,n_\psi^2$,
+$\MPl=1.22089\times10^{28}\,\mathrm{eV}$, and $n_\psi=100\,\mathrm{cm}^{-3}$,
+$\kappa n_\psi^2=9.954\times10^{-80}\,\mathrm{eV}^4$; dividing by
+$\rho_{\Lambda,\rm obs}=(2.25\,\mathrm{meV})^4=2.563\times10^{-11}\,\mathrm{eV}^4$
+gives
 \begin{equation}
 \frac{\kappa n_\psi^2}{\rho_\Lambda}\simeq
-3.6\times10^{-69}\left(\frac{n_\psi}{100\,\mathrm{cm}^{-3}}\right)^2,
+3.884\times10^{-69}\left(\frac{n_\psi}{100\,\mathrm{cm}^{-3}}\right)^2,
 \end{equation}
+($3.884\times10^{-69}$ is the value consistent with this paper's single
+$\rho_{\Lambda,\rm obs}=(2.25\,\mathrm{meV})^4$ used throughout; the
+alternative $3.6\times10^{-69}$ corresponds instead to
+$\rho_\Lambda=(2.29\,\mathrm{meV})^4$, an 8\%-different normalization of
+the same observed density, and is not used here),
 ${\approx}68$ orders of magnitude below $\rho_{\Lambda,\rm obs}$ even at
 an ISM-like number density. This coefficient-one benchmark omits the
 actual $3/16$ and finite-$\gamma$ factors; number density also does not
 fix the renormalized composite $\langle J_5^I J_{5I}\rangle$, a vacuum
 stress tensor, or an equation of state.
 
-In the declared direct-channel, hard-four-momentum-cutoff, standard
-mean-field NJL convention, Fierz rearrangement of Eq.~\eqref{eq:4fermi}
-projects onto the scalar channel $G_s(\bar\psi\psi)^2$ with
-\begin{equation}
-G_s=-\frac{3\kappa}{16}<0,
+The Fierz rearrangement of the axial--axial bilinear $(J_5^IJ_{5I})$
+closes onto the finite $\{SS,VV,AA,PP\}$ operator basis with the
+exchange row
+\begin{equation}\label{eq:fierz_row}
+(J_5^IJ_{5I})\;\to\;(\bar\psi\psi)^2+\tfrac12(\bar\psi\gamma^\mu\psi)^2
++\tfrac12(\bar\psi\gamma^\mu\gamma^5\psi)^2-(\bar\psi\gamma^5\psi)^2,
 \end{equation}
-repulsive. The real homogeneous scalar gap equation of this convention
-therefore has no nonzero solution: this specific truncation admits no
-condensate. This conditional-sign result does not exclude other
-truncations, species structures, non-minimal couplings, or propagating
-torsion; the full regulated derivation is carried in the archived
-companion~\cite{Golden2026P1a}.
+an independently re-derived result, built from explicit $4\times4$ Dirac
+matrices in both metric signatures and an exact Grassmann anticommutation
+map (rather than a remembered coefficient
+table)~\cite{FierzAdj2026}; the scalar-channel coefficient is exactly
+$+1$, unique, and signature-independent, with the single Grassmann
+exchange that maps the ordering $(12)(34)\to(14)(32)$ supplying the
+overall minus sign relative to the c-number Nieves--Pal identity for the
+same index structure. The declared direct-channel,
+hard-four-momentum-cutoff, standard mean-field NJL truncation inserts the
+scalar row of Eq.~\eqref{eq:fierz_row} into the explicitly declared
+interaction $+G_s(\bar\psi\psi)^2$~\cite{Golden2026P1a}, giving
+\begin{equation}\label{eq:Gs}
+G_s=-\frac{3\kappa}{16}\frac{\gamma^2}{1+\gamma^2}<0
+\end{equation}
+at every finite $\gamma$ (Einstein--Cartan limit
+$\gamma\to\infty$: $G_s\to-3\kappa/16$, the value used for the
+order-of-magnitude benchmark above), repulsive. The real homogeneous
+scalar gap equation of this convention therefore has no nonzero
+solution, at finite $\gamma$ or in the Einstein--Cartan limit alike: this
+specific truncation admits no condensate. This conditional-sign result
+does not exclude other truncations, species structures, non-minimal
+couplings, or propagating torsion; the full regulated derivation is
+carried in the archived companion~\cite{Golden2026P1a}.
 
 %% ============================================================
 \section{Perturbation Transparency}\label{sec:transparency}
@@ -274,9 +346,58 @@ in the stated domain. The theorem is an on-connection-shell equality of
 local classical reduced actions -- not an off-shell equality of the
 original first-order ECH and Einstein--scalar actions -- and its
 all-orders content follows from the algebraic Cartan constraint and the
-pointwise Bianchi identity, not an order-by-order calculation. A full
-self-contained statement and second-order Holst-term verification is
-carried in the archived companion~\cite{Golden2026P1a}.
+pointwise Bianchi identity, not an order-by-order calculation. The
+matched-data hypothesis means: background, initial, and boundary data
+that are themselves compatible with the zero-spin, torsion-free branch
+(standard falloff at the boundary, vanishing first-order boundary
+variation, so no surface term reintroduces torsion-dependent content);
+data that source torsion on the boundary or at the initial slice are
+outside the theorem's hypotheses, not a counterexample to it. An
+extended statement and its own independent second-order verification are
+also carried in a companion manuscript~\cite{Golden2026P1a}.
+
+\subsection{Explicit second-order verification}
+On the torsion-free branch established above ($T^I=0$,
+$\Gamma^\lambda{}_{\mu\nu}=\mathring\Gamma^\lambda{}_{\mu\nu}$), expand
+the Holst dual contraction to second order in metric perturbations. Since
+it evaluates on the Levi-Civita connection,
+\begin{equation}
+\mathcal R_{\rm H}(\mathring\Gamma)\equiv\tfrac12\,
+\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}(\mathring\Gamma)=0
+\end{equation}
+identically, by the first algebraic Bianchi identity -- at every
+perturbative order, not only linear order, since the identity is
+pointwise in the curvature tensor and does not depend on an expansion
+parameter. The equivalent Nieh--Yan identity
+$d(e_I\wedge T^I)=T_I\wedge T^I-e_I\wedge e_J\wedge R^{IJ}$ likewise
+gives zero pointwise when $T^I=0$; this is not a separate boundary
+assumption but the same statement in form language. This one-curvature
+Holst contraction must not be confused with the Pontryagin density
+$R\widetilde R$, which contains two curvature factors and can be nonzero
+pointwise even on a torsion-free connection -- the distinction is what
+keeps O3 in the topological disposal class of
+Sec.~\ref{sec:completeness} while O1, O6 require the on-shell branch
+qualifier. Because the Holst contraction vanishes identically rather than
+merely at leading order, the cubic action for the curvature perturbation
+$\zeta$ -- which determines the primordial bispectrum -- receives zero
+contribution from the Holst term in the stated matched-data domain, and
+the resulting bispectrum is the standard GR one at this order. On an FRW
+background the tensor mode equation
+$h_{ij}''+2\mathcal H h_{ij}'+k^2h_{ij}=0$ (primes: conformal-time
+derivatives, $\mathcal H=a'/a$) inherits no parity-dependent
+modification, giving the identical evolution operators
+$\mathcal E_R=\mathcal E_L$ quoted above for both helicities.
+
+\subsection{What would break the transparency}
+The statement need not survive fermionic spin sources, torsion kinetic
+terms, non-minimal matter couplings, a dynamical Immirzi field,
+nonstandard boundary terms, nontrivial global or topological sectors, or
+quantum loops and anomalies. Each of these changes either the Cartan
+source, the algebraic character of the connection equation, or the local
+classical action, and is outside the scope analyzed here; none of them
+is excluded by assumption elsewhere in this paper, and Sec.~\ref{sec:barriers}'s
+B14 entry states explicitly which routes this theorem does and does not
+bound.
 
 %% ============================================================
 \section{The Barrier Catalog}\label{sec:barriers}
@@ -304,7 +425,16 @@ the zero-spin branch its hypotheses cover.
 distinct mechanism-class constraints -- on minimal-ECH dark-energy
 routes. B8 and B14 close the same observable channel (tensor parity
 violation) on disjoint matter branches and are logically independent
-(Sec.~\ref{sec:transparency}).}
+(Sec.~\ref{sec:transparency}). \emph{Src.} legend: the seven structural
+foundations are A (mass-coupling), B (topological shift), C
+(scalar-tensor universality), D (Planck suppression), E (scale
+separation), F (attractor sensitivity), G (parameter immunity); the six
+observational branches are H (parity/tensor-chirality, entered by both
+B8 and B14), J (Liouville/phase-space), L (UV$\to$IR specificity), L/M
+(decoupling universality, spanning both), M (vacuum-amplification
+ceiling), N/O (gravitational democracy). Sequence letters I and K are
+not used, to avoid confusion with the imaginary unit and the
+Barbero--Immirzi symbol $\kappa$.}
 \centering
 \footnotesize
 \begin{ruledtabular}
@@ -330,85 +460,217 @@ violation) on disjoint matter branches and are logically independent
 \normalsize
 \end{table}
 
-\medskip\noindent\textbf{B1--B2 [R1, Founds.\ A--B].} Ultralight torsion
-modes require $g_{\rm eff}\sim H_0/\MPl\sim10^{-61}$; reaching $g_{\rm
-eff}\sim1$ needs $m_T\sim\MPl$, the standard CC hierarchy
-$\sim10^{-122}$. In metric-affine gravity, mass protection $\iff$ no
-geometric fingerprint: configurations protecting the pseudoscalar mass
-eliminate the geometric content and vice versa.
+\medskip\noindent\textbf{B1 -- Mass-Coupling Lock (Found.\ A) [R1].} In
+Poincar\'e gauge theory, an ultralight torsion mode ($m_T\sim H_0$)
+requires effective coupling $g_{\rm eff}\sim1/(\MPl\sqrt{|t_3|})\sim
+H_0/\MPl\sim10^{-61}$, with $\sqrt{|t_3|}\sim m_T^{-1}$ (a labeled
+scaling ansatz of the Poincar\'e-gauge-theory mass spectrum, not a
+derived equality). Reaching $g_{\rm eff}\sim1$ needs $m_T\sim\MPl$;
+keeping $m_T\sim H_0$ against a radiative contribution
+$\delta m_T^2\sim\MPl^2$ requires a residual
+$m_T^2/\delta m_T^2\sim(H_0/\MPl)^2\sim10^{-122}$ -- the standard
+cosmological-constant hierarchy.
 
-\medskip\noindent\textbf{B3--B4 [R2, Founds.\ C--D].} Diffeomorphism
-invariance forces the torsion fluctuation to couple like any other FRW
-scalar, with no ECH-specific observable. Disformal torsion couplings are
-Planck-suppressed, $\mathcal O(10^{-122})$ at $H_0$.
+\medskip\noindent\textbf{B2 -- Topological-Shift Duality (Found.\ B)
+[R1].} In metric-affine gravity, mass protection $\iff$ no geometric
+fingerprint: configurations protecting the pseudoscalar mass through
+topological structure eliminate the geometric content (the field reduces
+to a standard axion-like particle after torsion elimination), while
+configurations preserving geometric content cannot protect the mass.
 
-\medskip\noindent\textbf{B5--B7 [R3, Founds.\ E--G]; general naturalness
-arguments.} No mechanism transfers the global vacuum integral across
-$N_{\rm tot}\approx92$--94 $e$-folds; an inflationary attractor washes out
-bounce initial data while sensitivity to them destabilizes inflation;
-$\gamma$ is fixed by the LQG area spectrum with no landscape for cyclic
-selection.
+\medskip\noindent\textbf{B3 -- Scalar-Tensor Universality (Found.\ C)
+[R2].} On an FRW background, diffeomorphism invariance forces the
+torsion fluctuation to couple to the curvature invariants like any other
+scalar, with no ECH-specific observable; torsion decouples from the FRW
+background precisely at the bounce density, yielding no distinctive
+perturbation signal.
 
-\medskip\noindent\textbf{B8 [R1, Branch H].} $(J_5)^2$ is parity-\emph{even}
-(product of two axial currents), so it cannot generate tensor chirality.
-Logically independent of B14: B14's hypotheses require zero spin density,
-precisely the condition B8's nonzero $J^5$ violates.
+\medskip\noindent\textbf{B4 -- Planck Suppression (Found.\ D) [R2].}
+Disformal torsion couplings are Planck-suppressed by $m_\phi^2/\MPl^2$ or
+$(\partial\phi)^2/\MPl^4$; at cosmological scales ($m_\phi\sim H_0$)
+these are $\mathcal O(10^{-122})$ -- observationally inaccessible.
 
-\medskip\noindent\textbf{B9 [R2, Branch J]; heuristic.} Phase-space
-conservation prevents irreversible post-bounce state selection under
-closed non-dissipative evolution with no particle production; scenarios
-that break these assumptions evade B9 and are constrained instead by
+\medskip\noindent\textbf{B5 -- Scale Separation (Found.\ E) [R3]; general
+naturalness argument.} No mechanism connects the global vacuum integral
+$\int d^4x\,\sqrt{-g}\,\rho_\Lambda$ to the local bounce density without
+a means to store and transfer the integrated vacuum energy across
+$N_{\rm tot}\approx92$--94 $e$-folds of inflation; none exists within
+minimal ECH, whose only algebraic output is the local contact term of
+Eq.~\eqref{eq:4fermi}.
+
+\medskip\noindent\textbf{B6 -- Attractor Sensitivity (Found.\ F) [R3];
+general naturalness argument.} If post-bounce inflation converges to an
+attractor, bounce initial conditions are washed out before observable
+scales exit the horizon; if instead the dynamics remain sensitive to
+those initial conditions, generic inflationary attractor behavior is
+destabilized. The bounce cannot simultaneously seed a late-time
+dark-energy value \emph{and} preserve standard inflationary dynamics
+without a fine-tuned intermediate regime that minimal ECH does not
+supply.
+
+\medskip\noindent\textbf{B7 -- Parameter Immunity (Found.\ G) [R4];
+general classification argument.} Cyclic-universe vacuum-selection
+proposals require the Barbero--Immirzi parameter $\gamma$ to vary across
+cycles so that different cycles sample different vacua; but $\gamma$ is
+fixed at a single universal value by the loop-quantum-gravity area
+spectrum (Sec.~\ref{sec:theory}), so minimal ECH provides no landscape
+of $\gamma$ values for a selection mechanism to operate on.
+
+\medskip\noindent\textbf{B8 -- Parity-Even Interaction (Branch H) [R1].}
+$(J_5)^2$ is parity-\emph{even} (a Lorentz-scalar product of two axial
+currents, not a pseudoscalar), so it cannot generate tensor chirality in
+primordial gravitational waves. B8 is the catalog's constraint on the
+\emph{fermionic} branch of this observable channel and is logically
+independent of B14: B14's hypotheses require zero spin density,
+precisely the condition B8's nonzero $J^5$ violates, so B14 neither
+implies nor confirms B8.
+
+\medskip\noindent\textbf{B9 -- Liouville Conservation (Branch J) [R2];
+heuristic.} Phase-space volume conservation prevents irreversible
+selection among post-bounce states, closing the ``vacuum selection at
+the bounce'' escape from Route~2's small one-loop shift: the
+time-symmetric bounce selects no net dark-energy state. This is a
+heuristic closure under explicit assumptions (closed non-dissipative
+evolution, no particle production, no entropy injection); scenarios that
+break these assumptions evade B9 and are constrained instead by
 B10--B11, so B9 is never used as a stand-alone closure.
 
-\medskip\noindent\textbf{B10--B11 [R3, Branch L/M]; B10 general
-naturalness.} A Planck-to-$H_0$ bridge must be either generic or
-bounce-specific, never both; gauge fields decouple from the
-Planck-suppressed torsion sector universally, so ECH cannot preferentially
-couple to photons or dark-energy degrees of freedom without new
-non-minimal couplings.
+\medskip\noindent\textbf{B10 -- UV$\to$IR Specificity Dilemma (Branch L)
+[R3]; general naturalness argument.} Any bridge from Planck-scale bounce
+physics to the late-time $H_0$ scale must be either generic (in which
+case it explains \emph{any} vacuum energy indiscriminately, undermining
+its predictive content) or bounce-specific (requiring free parameters
+tuned to reproduce $\Lambda$, which is the tuning problem restated, not
+solved); no ECH mechanism identified in this paper achieves a
+non-generic, non-fine-tuned bridge of this kind.
 
-\medskip\noindent\textbf{B12 [R3, Branch M].} Bounce-epoch
-$\Omega_{\rm GW}^{\rm ECH}\lesssim(\rhocrit/\rhoPl)^2\simeq0.07$--$0.17$
-using the LQG-bounce window; an order-of-magnitude ceiling, not directly
-comparable to the nHz PTA spectral density without propagating through
-the transfer function (deferred).
+\medskip\noindent\textbf{B11 -- Decoupling Universality (Branches L/M)
+[R3].} At low energies all Standard Model gauge fields decouple from the
+Planck-suppressed torsion sector with the same universal suppression;
+minimal ECH cannot preferentially couple to photons, or to whatever
+degrees of freedom carry the dark-energy density, without introducing
+new non-minimal, species- or sector-selective couplings outside the
+scope of this paper.
 
-\medskip\noindent\textbf{B13 [R4, Branch N/O]; structural observation.}
-Torsion couples democratically to all spin-$\tfrac12$ species and cannot
-preferentially source baryogenesis or relic abundances without
-species-dependent non-minimal couplings; logically independent of B11 (gauge
-universality) and B4 (coupling magnitude).
+\medskip\noindent\textbf{B12 -- Vacuum Amplification Ceiling (Branch M)
+[R3].} Bounce-epoch gravitational-wave production is bounded above by
+$\Omega_{\rm GW}^{\rm ECH}|_{\rm bounce}\lesssim(\rhocrit/\rhoPl)^2
+\simeq0.07$--$0.17$, using the LQG-bounce critical-density window
+$\rhocrit/\rhoPl\simeq0.27$--$0.41$ (P1A~\cite{Golden2026P1a}): the
+$0.41$ endpoint is the canonical effective-LQC value at the standard
+area-gap choice $\gamma=0.2375$~\cite{Ashtekar2011}, and the $0.27$
+endpoint substitutes the SU(2) black-hole-entropy value
+$\gamma\approx0.274$~\cite{GhoshMitra2005} into the same
+$\rhocrit=\sqrt3/(32\pi^2\gamma^3)\,\rhoPl$ relation -- an internal
+extrapolation across entropy-counting schemes, not a range quoted
+directly in Ref.~\cite{Ashtekar2011}, so the window is scheme-dependent
+rather than a single published LQC value; the quadratic scaling is an
+order-of-magnitude ceiling ansatz, used only as a global bound. This
+bounce-epoch fraction is not directly comparable to the present-day PTA
+spectral density $\Omega_{\rm GW}(f_{\rm nHz})\sim10^{-9}$ without
+propagating the bounce spectrum through the transfer function to the
+nHz band, deferred to a dedicated bounce-GW analysis; B12 closes as a
+global energy-density-fraction ceiling, not a direct NANOGrav exclusion.
+
+\medskip\noindent\textbf{B13 -- Gravitational Democracy (Branches N/O)
+[R4]; structural observation.} Torsion couples democratically to all
+spin-$\tfrac12$ species and cannot preferentially source baryogenesis or
+relic abundances without species-dependent non-minimal couplings;
+logically independent of B11 (which bounds the universal gauge-sector
+magnitude, not species-relative fermion couplings) and of B4 (which
+fixes the coupling magnitude, not its universality across sectors).
 
 \medskip\noindent\textbf{B14 [R2--R4, zero-spin branch, Branch H].} Sole
 Tier-I leg; Sec.~\ref{sec:transparency}. Because its hypotheses assume
-zero spin density, it does not bear on R1; what it establishes for
-R2--R4 is that their classical zero-spin baseline is exactly inert, so
-any signal must come entirely from the quantum or non-minimal ingredient
-defining each route -- bounded by Sec.~\ref{sec:routes}.
+zero spin density, it does not bear on R1 (constrained instead by B1,
+B2, B8); what it establishes for R2--R4 is that their classical
+zero-spin baseline is exactly inert, so any signal must come entirely
+from the quantum or non-minimal ingredient defining each route --
+bounded by Sec.~\ref{sec:routes}.
 
 %% ============================================================
 \section{Route 2--4: Amplitude and Naturalness Closures}\label{sec:routes}
 
 Route~1 (NJL contact) is closed by Sec.~\ref{sec:theory}: amplitude
-suppressed by $\MPl^{-2}$ and parity-even. Route~2 (one-loop graviton
-corrections to the Holst term) is anchored in the published one-loop
-renormalization of the Holst-plus-fermion sector~\cite{ShapiroTeixeira2014}
-and closes against the observed birefringence amplitude with
-${\gtrsim}58$ orders of suppression margin; its dark-energy leg is closed
-operator-level for constant Nieh--Yan coefficient (Sec.~\ref{sec:completeness})
-and only at the naturalness level for a dynamical one. Route~3 (Immirzi
-running) is bounded by the integrated Benedetti--Speziale one-loop
-flow~\cite{BenedettiSpeziale2011run}, leaving the contribution
-$61$--$67$ orders below $\rho_{\Lambda,\rm obs}$. Route~4 (parity-odd CMB
-coupling via a spectator ALP or the fermion axial current) is not
-amplitude-suppressed: a free-normalization ALP fit reproduces both the
-WMAP+Planck birefringence signal $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022,Minami2020}
-(comparable to ACT DR6, $\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025})
-\emph{and} $\rho_\Lambda$, but minimal ECH derives neither the required
-ultralight mass $m_\theta\sim H_0$ nor the fitted coupling from first
-principles -- it relocates rather than solves the cosmological-constant
-problem, so R4 closes as a naturalness/explanatory-deficit objection, not
-an amplitude exclusion.
+suppressed by $\MPl^{-2}$ and parity-even.
+
+\subsection{Route 2 (one-loop graviton corrections to the Holst term)}
+Route~2 is anchored in the published one-loop renormalization of the
+Holst-plus-fermion sector~\cite{ShapiroTeixeira2014}. The induced
+one-loop birefringence shift is bounded, relative to the observed angle
+$\beta_{\rm obs}$ and the dimensionless strength
+$\MPl(\alpha/M)\sim10^{-2}$ of the R4-fitted spectator-ALP coupling
+(defined below) that reproduces it, by
+\begin{equation}\label{eq:r2_ratio}
+\frac{\Delta\theta_{\rm one\text{-}loop}}{\beta_{\rm obs}\,[\MPl(\alpha/M)]}
+\sim\frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0/\MPl}{\MPl(\alpha/M)\,\beta_{\rm obs}}.
+\end{equation}
+With $\alpha_{\rm em}/(4\pi)\approx6\times10^{-4}$ rounded up to
+$10^{-3}$ (conservative for the suppression claim), $H_0/\MPl\sim
+10^{-61}$, $\MPl(\alpha/M)\sim10^{-2}$ (from the R4-fitted
+$\alpha/M\sim10^{-21}\,\mathrm{GeV}^{-1}$ below and
+$\MPl\sim10^{19}\,\mathrm{GeV}$), and
+$\beta_{\rm obs}=0.342^\circ\approx6\times10^{-3}\,\mathrm{rad}$,
+Eq.~\eqref{eq:r2_ratio} evaluates to
+$10^{-3}\cdot10^{-61}/(10^{-2}\cdot6\times10^{-3})\approx10^{-60}$;
+allowing two additional orders for unmodeled higher-order corrections
+gives the quoted suppression of ${\gtrsim}58$ orders of magnitude
+relative to the observed birefringence amplitude, robust to
+$\mathcal O(1)$--$\mathcal O(10^{10})$ rescalings of the ansatz-level
+normalization (leaving ${\gtrsim}48$ orders even under a
+ten-order-of-magnitude inflation of the one-loop coefficient). Route~2's
+\emph{dark-energy} leg is a separate calculation from this birefringence
+bound: for a constant Nieh--Yan coefficient it is closed at the operator
+level \emph{modulo the spanning assertion of Sec.~\ref{sec:completeness}}
+(Tier-II, per Table~\ref{tab:evidentiary_status} -- not a Tier-I closure)
+and only at the naturalness level for a dynamical Nieh--Yan coefficient.
+
+\subsection{Route 3 (quantum running of the Immirzi parameter)}
+A second route is the quantum running of $\gamma$ itself. The
+fermion-coupled one-loop $\beta$-function of
+Benedetti--Speziale~\cite{BenedettiSpeziale2011run} is
+\begin{equation}\label{eq:bs_beta}
+\mu\,\frac{\partial\gamma^2}{\partial\mu}=
+-(\gamma^2-1)\,\frac{\mu^2\tilde\kappa^2}{(8\pi)^2}\,(23\gamma^2+5),
+\qquad\tilde\kappa^2\equiv16\pi G,
+\end{equation}
+whose only fixed point is the ultraviolet-attractive $\gamma^2=1$
+(formally outside perturbative control). The explicit
+$\mu^2\tilde\kappa^2\simeq(\mu/\MPl)^2$ prefactor makes the running
+power-suppressed, not logarithmic, so
+$|\Delta\gamma/\gamma|\sim(\mu_{\rm UV}/\MPl)^2$, dominated by the
+ultraviolet endpoint. Integrating Eq.~\eqref{eq:bs_beta} from a
+GUT-scale boundary $\mu_{\rm UV}\sim10^{16}\,$GeV down to
+$\mu_{\rm IR}\sim1\,$GeV at $\gamma\approx0.24$ gives
+$|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$. Propagated to the
+dark-energy channel through the mass-dimension scaling relation between
+$\gamma$-running and $\rho_\Lambda$, this leaves the derived
+torsion/Immirzi contribution $61$--$67$ orders of magnitude below
+$\rho_{\Lambda,\rm obs}$; only a literal Planck-scale UV boundary would
+push $|\Delta\gamma/\gamma|\to\mathcal O(1)$, the regime the
+$\beta$-function itself flags as outside perturbative control, so the
+closure holds for any sub-Planckian UV boundary.
+
+\subsection{Route 4 (parity-odd CMB coupling)}
+Route~4 (a spectator axion-like particle, or the fermion axial current
+directly, coupled to $R\widetilde R$) is not amplitude-suppressed: a
+free-normalization fit reproduces both the WMAP+Planck birefringence
+signal $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022,Minami2020}
+(comparable to ACT~DR6, $\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025})
+\emph{and} $\rho_\Lambda$, giving the anchor value
+$\alpha/M\sim10^{-21}\,\mathrm{GeV}^{-1}$ used in Eq.~\eqref{eq:r2_ratio}
+above. Both birefringence measurements are statistical indications
+rather than established detections -- ${\approx}3.6\sigma$ for
+WMAP+Planck and ${\approx}2.9\sigma$ for ACT~DR6, significances obtained
+from different datasets and distinct null procedures and therefore not
+directly comparable as statistical weights -- and the Route-2 suppression
+conclusion above is insensitive to that status: a smaller or vanishing
+true birefringence signal only widens the margin of
+Eq.~\eqref{eq:r2_ratio}. Minimal ECH derives neither the required
+ultralight mass $m_\theta\sim H_0$ nor the fitted coupling $\alpha/M$
+from first principles -- it relocates rather than solves the
+cosmological-constant problem, so R4 closes as a
+naturalness/explanatory-deficit objection, not an amplitude exclusion.
 
 \begin{table*}[tb]
 \caption{\label{tab:evidentiary_status} Evidentiary status of each leg: (I)
@@ -459,48 +721,135 @@ the conclusion survives the full local operator space. Under the
 construction rule of zero additional derivative order, parity-odd
 $\varepsilon$ contraction, full index contraction to a scalar density,
 and mass dimension exactly four, the admitted densities built from the
-tetrad, the torsionful curvature, the algebraically-fixed torsion, and
-the minimal axial current $J^5$ are spanned by a six-member list
-$\{$O1--O6$\}$. Independent symbolic adjudication~\cite{OperatorBasisAdj2026}
-establishes that this list has \textbf{rank four} as a set of densities
-(two exact relations, $\mathrm{O1}=\mathrm{O6}$ and
-$\mathrm{O1}=\tfrac12\mathrm{O4}-\mathrm{O2}$) and \textbf{rank two}
-modulo total derivatives -- a deliberately redundant generating set of
-recognizable invariants, \emph{not} a linearly independent basis; the
-list is asserted to span the rule-admitted space from the construction
-rule itself, not by exhaustive enumeration.
+tetrad $e^I_\mu$, the curvature two-form of the torsionful connection,
+the algebraically-fixed torsion of Eq.~\eqref{eq:ech_onshell_torsion},
+and the minimal axial current $J^5$ are spanned by the six-member list
+\begin{align}\label{eq:dim4_defs}
+\mathcal O_1^{[4]}&=\MPl^2\,\varepsilon^{\mu\nu\rho\sigma}
+e^I_\mu e^J_\nu R_{IJ\rho\sigma},
+&\mathcal O_2^{[4]}&=\MPl^2\,\mathrm{NY},\notag\\
+\mathcal O_3^{[4]}&=R^{IJ}\!\wedge R_{IJ},
+&\mathcal O_4^{[4]}&=\MPl^2\,\varepsilon^{\mu\nu\rho\sigma}
+T^I{}_{\mu\nu}T_{I\rho\sigma},\notag\\
+\mathcal O_5^{[4]}&=\varepsilon^{\mu\nu\rho\sigma}
+T^I{}_{\mu\nu}e_{I\rho}J^5_\sigma,
+&\mathcal O_6^{[4]}&=\MPl^2\,\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma},
+\end{align}
+where $\mathrm{NY}\equiv\partial_\mu(\varepsilon^{\mu\nu\rho\sigma}
+e_{I\nu}T^I{}_{\rho\sigma})$ is the Nieh--Yan density and $R$ is the
+curvature of the full torsionful connection; the explicit $\MPl^2$
+prefactors on four of the six entries promote densities that would
+otherwise sit at naive dimension $+2$ to genuine dimension $4$ (O3 and
+O5 already sit at dimension $4$ with a bare dimensionless coefficient).
+Independent symbolic adjudication~\cite{OperatorBasisAdj2026}, expanding
+all six over a common basis of independent jet monomials in exact
+rational arithmetic, establishes that this list has \textbf{rank four}
+as a set of densities, with a two-dimensional null space
+\begin{equation}\label{eq:dim4_relations}
+\mathcal O_1^{[4]}-\mathcal O_6^{[4]}=0,\qquad
+2\,\mathcal O_1^{[4]}+2\,\mathcal O_2^{[4]}-\mathcal O_4^{[4]}=0,
+\end{equation}
+the second equivalently $\mathcal O_1^{[4]}=\tfrac12\mathcal
+O_4^{[4]}-\mathcal O_2^{[4]}$; both relations hold identically off shell
+and on shell. \textbf{Rank two} modulo total derivatives follows because
+O2 and O3 are themselves total derivatives on any connection. This is a
+deliberately redundant generating set of recognizable invariants,
+\emph{not} a linearly independent basis; the list is asserted to span
+the rule-admitted space from the construction rule itself, not by
+exhaustive enumeration.
 
-Every member reduces to one of three classes: an exact total derivative
-(O2, the Nieh--Yan density; O3, the Pontryagin density; and O1=O6 on the
-torsion-free branch), a Fierz-closed four-fermion contact term suppressed
-by $\MPl^{-2}$ (O5, the surviving vacuum-energy content,
-$\mathrm{O5}^{[4]}=-\tfrac32\kappa(J^5\!\cdot\!J^5)$), or identically
-vanishing. On the on-shell ECH branch the single-curvature pair (O1, O6)
-vanishes by the algebraic Bianchi identity on the torsion-free connection,
-exactly as in Sec.~\ref{sec:transparency}; the $\varepsilon$-contracted
-torsion-square O4 was reported vanishing under a purely-axial reading of
-the on-shell torsion in an earlier catalog draft, but independent on-shell
-symbolic evaluation~\cite{TorsionOnshell2026} shows the finite-$\gamma$
-ECH torsion carries a genuine trace-vector irrep alongside the axial one
-(Sec.~\ref{sec:theory}), so O4 is nonzero on the axial$\times$trace-vector
-cross term and joins O5 in the Fierz-closed disposal class rather than
-vanishing outright. This does not change the closure: O4's surviving
-content is still $\MPl^{-2}$-suppressed and inside the same Fierz-closed
-basis as O5, so Route~2's dark-energy leg for constant Nieh--Yan
-coefficient is unaffected, only its stated mechanism is corrected.
+Every member reduces to one of three classes, evaluated on the on-shell
+ECH branch of Eq.~\eqref{eq:ech_onshell_torsion}: an exact total
+derivative (O2, the Nieh--Yan density; O3, the Pontryagin density),
+identically vanishing on the \emph{torsion-free} branch only (O1, O6:
+the single-curvature parity-odd densities vanish identically for any
+Riemann tensor obeying the algebraic Bianchi identity
+$R_{\mu[\nu\rho\sigma]}=0$, but the on-shell ECH torsion is nonzero, so
+that identity does not apply on shell), or a Fierz-closed four-fermion
+contact term suppressed by $\MPl^{-2}$ (O4, O5, and the O1$=$O6
+remainder). Concretely: (a)~\emph{O1, O6, on shell.} The torsion-free
+first Bianchi identity used to kill O1 and O6 is violated by a nonzero
+on-shell torsion; on the ECH branch Eq.~\eqref{eq:dim4_relations} instead
+gives $\mathcal O_1^{[4]}=\mathcal O_6^{[4]}=-\mathcal
+O_2^{[4]}+\tfrac12\mathcal O_4^{[4]}$ exactly -- minus the Nieh--Yan
+total derivative (zero equation-of-motion and vacuum-energy content)
+plus half the Fierz-closed $\mathcal O_4^{[4]}$ below. O1 and O6 are
+therefore \emph{not} exact total derivatives on shell; their remainder
+sits in the same disposal class as O5. (b)~\emph{O5.} Using
+$S^{abc}=\tfrac14\varepsilon^{abcd}J^5_d$, O5 reduces under
+Eq.~\eqref{eq:ech_onshell_torsion} to the single-normalization value
+\begin{equation}
+\mathcal O_5^{[4]}=-3\kappa\,\frac{\gamma^2}{1+\gamma^2}\,(J^5\!\cdot\!J^5),
+\end{equation}
+which the Fierz-by-Fierz projection lemma closes onto the finite
+$\{SS,VV,AA,PP\}$ basis with no escape operator and no change of
+$\MPl^{-2}$ power. This density is parity-\emph{even} off shell -- a
+Lorentz-scalar product of two axial currents is P-even (B8) -- the
+parity-odd label belongs to the pre-reduction $\varepsilon$-contracted
+density, not to its on-shell value; only the axial irrep of
+Eq.~\eqref{eq:ech_onshell_torsion} contributes, the trace-vector part
+dropping out of O5 entirely. (c)~\emph{O4.} $T_I\wedge T^I$ is supported
+only by the non-axial torsion irreps -- it vanishes on a pure axial or a
+pure trace-vector torsion alike and is carried entirely by the
+axial$\times$trace-vector cross term -- and the on-shell torsion of
+Eq.~\eqref{eq:ech_onshell_torsion} populates exactly that channel:
+\begin{equation}
+\mathcal O_4^{[4]}=-24\,\MPl^2\,\alpha\beta\,(J^5\!\cdot\!J^5)
+=-\frac{3\kappa\gamma^3}{(1+\gamma^2)^2}\,(J^5\!\cdot\!J^5),
+\end{equation}
+the same Fierz-closed $(J^5\!\cdot\!J^5)$ structure as O5 at the same
+$\MPl^{-2}$ power, with
+$\mathcal O_4^{[4]}/\mathcal O_5^{[4]}=\gamma/(1+\gamma^2)\simeq0.22$ at
+$\gamma=0.2375$; it vanishes only in the $\gamma\to\infty$
+Einstein--Cartan limit, where the trace-vector irrep switches off.
+(d)~\emph{The $\varepsilon$-free companion.} The same on-shell torsion
+also renders the torsion--current density, which carries no
+$\varepsilon$ tensor and so is not itself in the construction rule's
+$\{$O1--O6$\}$ span,
+\begin{equation}\label{eq:vj5_onshell}
+T^a{}_{ab}\,J^{5b}=3\beta\,(J^5\!\cdot\!J^5),
+\qquad\beta=\frac{\kappa\gamma}{4(1+\gamma^2)},
+\end{equation}
+nonzero (the axial irrep drops out of the trace; only the trace-vector
+irrep survives). Before torsion elimination this density is parity-odd
+-- a polar torsion trace vector contracted with the axial current -- and
+it is precisely the trace-vector content that is \emph{not} in the
+excluded (non-minimal-only) set: it is generated by the Holst term
+under strictly minimal coupling and is carried throughout, entering the
+operator list through $\mathcal O_4^{[4]}$, through the
+$\mathrm{O1}=\mathrm{O6}$ remainder, and through
+Eq.~\eqref{eq:vj5_onshell} itself. Its value is the same Fierz-closed
+$(J^5\!\cdot\!J^5)$ structure at the same $\MPl^{-2}$ power as O4 and O5,
+so it joins that bounded class and enlarges neither the closure
+argument's scope nor its conclusion. Hence every admissible local
+dimension-4 parity-odd density in minimal ECH is topological,
+Fierz-basis-reducible, or (on the torsion-free branch only) identically
+vanishing -- and the Fierz-basis-reducible class, carrying O4, O5, and
+the O1$=$O6 remainder, is bounded uniformly at $\MPl^{-2}$, so none
+produces a $(\text{meV})^4$ vacuum energy without a new light scale
+$\mu\ll\MPl$ or a protected symmetry -- either of which is itself the
+tuning to be explained. This does not change the closure stated in
+Sec.~\ref{sec:routes}: O4's and the O1$=$O6 remainder's surviving content
+is still $\MPl^{-2}$-suppressed and inside the same Fierz-closed basis as
+O5, so Route~2's dark-energy leg for constant Nieh--Yan coefficient is
+unaffected, only its stated mechanism is corrected relative to a
+purely-axial ($\gamma\to\infty$) reading of the on-shell torsion.
 
 %% ============================================================
 \section{Discussion}\label{sec:discussion}
 
-The two halves of this Note's title are the same calculation read in two
-directions. Eliminating the non-propagating ECH connection in favor of
-the fermionic spin current generates exactly one interaction --
+The two halves of this paper's title are the same calculation read in
+two directions. Eliminating the non-propagating ECH connection in favor
+of the fermionic spin current generates exactly one interaction --
 Eq.~\eqref{eq:4fermi} -- and that interaction is simultaneously
-(a)~repulsive at high spin density, which is the physical content of
-Pop{\l}awski's torsion-avoided singularity and bounce mechanism, and
-(b)~parity-even, Planck-suppressed, and (on the zero-spin branch)
-classically transparent to every scalar and tensor perturbation --
-exactly the properties a viable dark-energy source cannot have. Minimal
+(a)~repulsive at high spin density at every finite $\gamma$, and
+identical in the $\gamma\to\infty$ reduction to the Hehl--Datta term that
+is the physical content of Pop{\l}awski's torsion-avoided singularity
+and bounce mechanism, and (b)~parity-even, suppressed at the programme's
+finite $\gamma$ by $\gamma^2/(1+\gamma^2)=0.053$ relative to that
+Einstein--Cartan magnitude, Planck-suppressed, and (on the zero-spin
+branch) classically transparent to every scalar and tensor perturbation
+-- exactly the properties a viable dark-energy source cannot have. Minimal
 ECH is not a two-purpose mechanism with one purpose realized and the
 other merely unproven; the barrier catalog of Sec.~\ref{sec:barriers}
 shows that every distinct route from the bounce-scale torsion sector to a
@@ -516,57 +865,121 @@ DESI-scale chirality survey~\cite{Golden2026P4}. Nor does it bear on
 bounce cosmology generally: the matter-bounce $\fnl=-35/16$ signature and
 NANOGrav-band gravitational-wave forecasts are properties of the
 matter-bounce class, not of ECH torsion, and are pursued in a separate
-research line~\cite{Golden2026P2}. What this Note closes is narrower and
+research line~\cite{Golden2026P2}. What this paper closes is narrower and
 more useful to state cleanly: the specific claim that the same minimal
 spin-torsion sector producing the ECH bounce also supplies the observed
 dark-energy density.
+
+\subsection{What is established and what is not}
+Fourteen distinct mechanism-class constraints, covering seven
+foundational classes and six observational branches, collectively close
+the four enumerated minimal-ECH dark-energy channels (R1--R4) under
+stated assumptions. Two of those channels (R2, R3) are closed at the
+amplitude-budget level -- Route~2 with ${\approx}60$ (conservatively
+$\geq58$) orders of margin against the observed birefringence amplitude,
+Route~3 with $61$--$67$ orders against the observed dark-energy density
+-- and both amplitude closures are robust to
+$\mathcal O(1)$--$\mathcal O(10^{10})$ rescalings of their ansatz-level
+normalizations. The operator-list argument (Sec.~\ref{sec:completeness})
+extends the governing dimensional bound from one representative operator
+to the exhibited six-member spanning list $\{$O1--O6$\}$, with no escape
+operator identified within its span; that the list \emph{spans} the
+rule-admitted space is asserted from the stated construction rule, not
+proved by exhaustive symbolic enumeration.
+
+What is \emph{not} established is a fully operator-level no-go over the
+entire space of diffeomorphism-invariant gravitational operators: the
+argument is scoped to local, gauge-invariant, mass-dimension-exactly-four
+densities built from the minimal-ECH field content. It does not
+enumerate derivative four-fermion terms suppressed by additional
+momentum powers, curvature-torsion mixed invariants of higher order,
+multi-species chiral structures beyond the single-species minimal
+content, dynamical-Immirzi-field completions, or the tensor ($16$)
+torsion irrep and the other torsion couplings that only a relaxation of
+minimal coupling admits -- any of these is a genuine escape from the
+minimal-coupling scope, not a loophole within it. The trace-vector ($4$)
+irrep is explicitly \emph{not} in that excluded set (Sec.~\ref{sec:completeness}):
+it is generated by the Holst term under strictly minimal coupling and is
+carried throughout this paper's closure. A non-minimal completion
+introducing a new light scale $\mu\ll\MPl$, or a protected symmetry
+zeroing the Planck-scale piece, would itself evade the single-scale
+bound -- but such a scale or symmetry is itself the fine-tuning the
+mechanism was meant to explain, so evading the no-go this way relocates
+rather than solves the cosmological-constant problem.
+
+The barrier catalog is a map of failure modes of mixed evidentiary
+strength, not fourteen independently decisive theorems: five entries
+(B5, B6, B7, B10, B13) are general naturalness or classification
+arguments rather than ECH-specific calculations, and one (B9) is an
+explicitly heuristic closure conditional on stated equilibrium
+assumptions that dissipative or particle-producing bounces can violate.
+Only the perturbation-transparency theorem (B14, Sec.~\ref{sec:transparency})
+enters the closure table as a Tier-I result, and its route reach is
+fixed by its zero-spin-density hypotheses, not asserted beyond them.
 
 %% ============================================================
 \section{Conclusions}\label{sec:conclusions}
 
 Minimal Einstein--Cartan--Holst torsion, under strictly minimal fermion
 coupling, generates one physical interaction: a spin--spin four-fermion
-contact term, repulsive at high density, algebraically identical to the
-mechanism underlying Pop{\l}awski's torsion-avoided singularity and
-black-hole-cosmology bounce. This Note shows, at channel-amplitude
+contact term, repulsive at high density at every finite $\gamma$, and
+identical in the Einstein--Cartan limit $\gamma\to\infty$ to the
+Hehl--Datta term underlying Pop{\l}awski's torsion-avoided singularity
+and black-hole-cosmology bounce. This paper shows, at channel-amplitude
 granularity and within a stated minimal-coupling scope, that the same
 interaction cannot additionally source the observed late-time dark-energy
 density: its NJL scalar projection admits no condensate in the declared
-truncation (Sec.~\ref{sec:theory}), it decouples identically from
-classical perturbations on the zero-spin branch by a rigorous
-Bianchi-identity theorem (Sec.~\ref{sec:transparency}), fourteen
+truncation at any finite $\gamma$ (Sec.~\ref{sec:theory}), it decouples
+identically from classical perturbations on the zero-spin branch by a
+rigorous Bianchi-identity theorem (Sec.~\ref{sec:transparency}), fourteen
 mechanism-class constraints jointly close all four enumerated dark-energy
-channels (Sec.~\ref{sec:barriers}--\ref{sec:routes}), and a rank-four
-spanning list of the admissible dimension-four parity-odd operators shows
-this conclusion is not an artifact of an incomplete operator basis
-(Sec.~\ref{sec:completeness}). The positive result -- what minimal ECH
-does for the bounce -- and the negative result -- what it cannot do for
-dark energy -- are two readings of the same algebraic elimination, and
-this Note's contribution is to state both precisely, with the closure
-scope and evidentiary strength of every claim recorded explicitly rather
-than implied.
+channels with explicit amplitude budgets (Sec.~\ref{sec:barriers}--\ref{sec:routes}),
+and a rank-four spanning list of the explicitly defined dimension-four
+parity-odd operators, including the on-shell trace-vector content the
+purely-axial reading omits, shows this conclusion is not an artifact of
+an incomplete operator basis (Sec.~\ref{sec:completeness}). The positive
+result -- what minimal ECH does for the bounce -- and the negative
+result -- what it cannot do for dark energy -- are two readings of the
+same algebraic elimination, and this paper's contribution is to state
+both precisely, with the closure scope and evidentiary strength of every
+claim recorded explicitly rather than implied.
 
 \subsection*{Data and Code Availability}
 The symbolic verification scripts supporting the transparency theorem,
 the on-shell torsion-irrep computation, and the operator-list adjudication
-are publicly available in the companion papers' repository,
-\url{https://github.com/Hubify-Projects/bigbounce}:
-\begin{center}\footnotesize
-\artifact{arxiv/scripts/dim4_parityodd_enumeration.py} \\
-\artifact{research/theory_audit/operator_basis_adjudication_2026_08_07.py} \\
-\artifact{research/theory_audit/ech_torsion_onshell_2026_08_08.py}
-\end{center}
-The earlier version of the algebraic torsion-elimination derivation and
-its regulated NJL check is archived, with its own verification scripts,
-as an immutable deposit at
+are publicly available in the repository
+\url{https://github.com/Hubify-Projects/bigbounce}, pinned to commit
+\texttt{\repoSHA}:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \artifactbase{arxiv/scripts/dim4_parityodd_enumeration.py}{dim4\_parityodd\_enumeration.py}
+-- verifies the two reduction identities and the two exact rank-four
+relations of Eq.~\eqref{eq:dim4_relations}.
+\item \artifactbase{research/theory_audit/operator_basis_adjudication_2026_08_07.py}{operator\_basis\_adjudication\_2026\_08\_07.py}
+(report: \artifactbase{research/theory_audit/operator_basis_adjudication_2026_08_07.md}{...adjudication\_2026\_08\_07.md})
+-- re-derives O1--O6 from the Cartan structure equations on an
+algebraically independent 2-jet and certifies the rank-four/null-space
+result.
+\item \artifactbase{research/theory_audit/ech_torsion_onshell_2026_08_08.py}{ech\_torsion\_onshell\_2026\_08\_08.py}
+(report: \artifactbase{research/theory_audit/ech_torsion_onshell_2026_08_08.md}{...torsion\_onshell\_2026\_08\_08.md})
+-- solves Eq.~\eqref{eq:ech_onshell_torsion} on six explicitly curved
+on-shell ECH configurations and verifies $\mathcal O_1^{[4]}=\mathcal
+O_6^{[4]}$ and Eq.~\eqref{eq:vj5_onshell} on shell.
+\item \artifactbase{research/theory_audit/fierz_adjudication_2026_08_05.py}{fierz\_adjudication\_2026\_08\_05.py}
+(report: \artifactbase{research/theory_audit/fierz_adjudication_2026_08_05.md}{...fierz\_adjudication\_2026\_08\_05.md})
+-- builds explicit $4\times4$ Dirac matrices in both signatures, solves
+the full $5\times5$ Fierz matrix, and certifies the scalar-channel
+coefficient of Eq.~\eqref{eq:Gs}.
+\end{itemize}
+The full regulated NJL derivation and its own verification scripts are
+carried in a companion manuscript, archived as an immutable deposit at
 \href{https://doi.org/10.5281/zenodo.21481838}{doi:10.5281/zenodo.21481838}
-(CC-BY-4.0)~\cite{Golden2026P1a}. This Note supersedes that paper and the
-companion no-go survey~\cite{Golden2026P1cArxiv} as the single submission
-target for the closed ECH dark-energy line; both source manuscripts
-remain archived and are not independently resubmitted.
+(CC-BY-4.0)~\cite{Golden2026P1a}; a companion systematic no-go survey
+carrying the barrier-catalog and route derivations in full detail is
+\artifactbase{arxiv/paper1c_nogo_survey/main.tex}{paper1c\_nogo\_survey/main.tex},
+pinned to the same commit~\cite{Golden2026P1cArxiv}.
 
 \begin{acknowledgments}
-This Note builds on the published spin-torsion cosmology of Nikodem
+This paper builds on the published spin-torsion cosmology of Nikodem
 Pop\l{}awski~\cite{Poplawski2010,Poplawski2011,Poplawski2012,Poplawski2016},
 on the published derivations of Simone Mercuri~\cite{Mercuri2009} and of
 Laurent Freidel, Djordje Minic, and Tatsu Takeuchi~\cite{Freidel2005}

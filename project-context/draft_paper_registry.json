@@ -54,17 +54,22 @@
     "tex_path": "arxiv/paper1bc_ech_note/main.tex",
     "pdf_path": "arxiv/paper1bc_ech_note/main.pdf",
     "site_slug": "paper-1n",
-    "target_journal": "Classical and Quantum Gravity (Note; gr-qc)",
-    "article_type": "ECH Note -- what minimal Einstein-Cartan torsion does for the bounce (Poplawski spin-spin contact repulsion) and cannot do for dark energy (Track B closed-line merge)",
-    "review_profile": "CQG-NOTE",
+    "target_journal": "Classical and Quantum Gravity (Paper; gr-qc)",
+    "article_type": "ECH Paper -- what minimal Einstein-Cartan torsion does for the bounce (Poplawski spin-spin contact repulsion) and cannot do for dark energy (Track B closed-line merge)",
+    "review_profile": "CQG-PAPER",
+    "venue_form": "CQG Paper (not Note): 7725 words exceeds the CQG Note ceiling of 2500 words; recorded 2026-09-02 R1 closure",
     "served_aliases": [
-      "paper1bc_ech_note_v1N.0.1.pdf"
+      "paper1bc_ech_note_v1N.0.1.pdf",
+      "paper1bc_ech_note_v1N.0.2.pdf"
     ],
-    "version": "v1N.0.1",
-    "pages": 6,
+    "version": "v1N.0.2",
+    "pages": 10,
     "date": "2026-09-02",
-    "pdf_sha256": "2287537b1cf2420b2aa043b6d07da1281fb2844a82e296e7658467c7362747ba",
-    "review_paths": [],
+    "pdf_sha256": "790795fe3d0cd5c3ba68234ddf3a5336d11fbfa1d402c9bc9d4b3be3013f125d",
+    "pdf_md5": "5f41629b370a55991a4c25937925a281",
+    "review_paths": [
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.1-EXACTPDF-2287537b-R1/P1N_v1N.0.1_R1_truth_audit.md"
+    ],
     "lineage": {
       "merges": [
         {

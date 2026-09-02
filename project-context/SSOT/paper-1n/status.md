@@ -1,5 +1,80 @@
 # P1N status — current authoritative section
 
+**Current candidate:** v1N.0.2 · 2026-09-02 ·
+`arxiv/paper1bc_ech_note/main.tex` — **R1 closure complete.**
+
+## R1 closure (v1N.0.1 → v1N.0.2, 2026-09-02)
+
+**Audit:** `project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.1-EXACTPDF-2287537b-R1/P1N_v1N.0.1_R1_truth_audit.md`
+(Claude INT major-revisions, Grok API REJECT, Gemini API REJECT, Perplexity
+ABSENT/401). 42 finding-rows audited → 3 REGRESSION, 16 distinct
+GENUINELY-NEW-REAL (29 rows deduped), 3 RE-FLAG-OF-DISCLOSED, 3 FALSIFIED,
+4 OPINION/GENRE → **19 canonical real items (R1–R19), all closed this
+round.** Disposition ledger: `project-context/peer-reviews/DISPOSITIONS/P1N.md`
+(all 19 rows update from OPEN to CLOSED in this commit bundle).
+
+**Item → edit closure table:**
+
+| ID | Item | Closure |
+|---|---|---|
+| R1 | (O1,O6) on-shell-branch regression | Restored branch split + `O1=O6=−O2+½O4` on shell, verbatim content from P1C v1C.0.16 `main.tex:2087–2098`, in Sec. VI (operator-list section). |
+| R2 | Dual O5 normalization regression | Single READING-I/Eq.(E2) normalization stated once in Sec. II; `O5^{[4]}=−3κ[γ²/(1+γ²)](J⁵·J⁵)` used consistently throughout (no `−3/2κ` value anywhere). |
+| R3 | R13-M3 P-even/trace-vector regression | Restored P-even-off-shell clause + `T^a{}_{ab}J^{5b}=3β(J⁵·J⁵)`, `β=κγ/[4(1+γ²)]`, and the not-excluded statement, in Sec. VI. |
+| R4 | Poplawski over-claim, no signature bridge | Replaced "identical"/"algebraically identical" language with the audit's drafted γ→∞-scoped sentence (abstract, Intro, Sec. II, Discussion, Conclusions): exact only as γ→∞, 0.053 suppression and 2.11× trace-vector ratio stated at γ=0.2375, no formal signature bridge asserted. |
+| R5 | Hehl–Datta uncited | Cited `HehlDattaNJL1971`+`Hehl1976` at Eq. (3); added Kibble1961, Sciama1964, Shapiro2002 (torsion review), BoehmerBurnett2008 (torsion cosmology). |
+| R6 | Standalone evaluability | Route-2/Route-3 arithmetic (Eq. r2_ratio, Benedetti–Speziale β-function, numeric evaluation) brought in-paper; O1–O6 defined explicitly (Eq. dim4_defs); Fierz exchange row displayed (Eq. fierz_row); all `\artifact{}` links pinned to commit SHA `ded46bc5df8d39bbaac7bfbee16b07f0376bab34` (no Zenodo DOI existed for P1C to mint in this session — SHA-pin is the audit's stated fallback); P1C source linked directly as a pinned artifact. |
+| R7 | O1–O6 never defined | Explicit Eq. (dim4\_defs) added in Sec. VI. |
+| R8 | Version-history/meta language, directive Q1 | Stripped "consolidating/merges/supersedes/earlier catalog draft/earlier draft" language from abstract, Intro, Sec. II, VI, Data Availability; `\date` no longer prints `\paperVersion`; "this Note" → "this paper" throughout; header comment block rewritten to keep provenance internal-only. |
+| R9 | Eq.(4) drops γ-factor | `G_s=−(3κ/16)[γ²/(1+γ²)]` now the primary stated result (Eq. Gs) with explicit γ→∞ limit clause; P1A's declared-interaction clause cited. |
+| R10 | `∝` pair mis-divides | Added explicit derivation clause showing the two `∝` statements alone give `1/γ`, and the correct `1/(2γ)` requires the explicit constants. |
+| R11 | `s_H` unfixed | `s_H=+1` fixed explicitly in Eq. (ech\_onshell\_torsion) clause. |
+| R12 | Trace-vector 2.11× understated | Stated at γ=0.2375 in abstract, Sec. II, Discussion. |
+| R13 | `3.6e-69` inconsistent | Recomputed to `3.884e-69` with full arithmetic shown (κn²=9.954e-80 eV⁴ / ρ_Λ=2.563e-11 eV⁴); old value's 2.29 meV normalization noted, not used. |
+| R14 | `ρ_crit` undefined | Restored `0.27–0.41 ρ_Pl` window (P1A `main.tex:1527–1529`) inline at B12. |
+| R15 | Table I Src legend missing | Legend added to Table I caption (7 foundations, 6 branches, I/K skip explained). |
+| R16 | "closed operator-level" contradicts Table II | Restated "closed at the operator level modulo the spanning assertion (Tier-II)". |
+| R17 | `\artifact{}` filename-invisible | Macro changed to print the artifact filename as link text (`\artifactbase`); un-floated into an `itemize` list in Data & Code Availability. |
+| R18 | 95 unused bib entries | `references.bib` pruned from 113 to 26 entries (exactly the cited set, incl. 4 new R5 citations). |
+| R19 | `β_obs` significance/caveat dropped | Restored ≈3.6σ/2.9σ + "statistical indications rather than established detections" caveat in Route 4. |
+
+**Venue form:** CQG **Paper**, not Note (7725 words / 10 pp, well above
+the CQG Note ceiling of 2500 words) — per audit closure plan (3), Option
+A (grow and submit as a Paper). Recorded in
+`project-context/draft_paper_registry.json` `P1N.target_journal` and
+`P1N.venue_form`.
+
+**Page target:** audit recommended 12–16 pp; this closure reached **10
+pp / 7725 words** (up from 6 pp / 4144 words, +86% by word count) via
+real added content only (explicit operator definitions, in-paper
+Route-2/Route-3 derivations, explicit Fierz row, second-order Holst
+verification, expanded per-barrier entries, "what is/is not established"
+subsection) — no padding. Short of the audit's upper recommendation;
+flagged as a residual open item for a future round if a referee still
+finds a barrier/route step insufficiently self-contained.
+
+**Compile/QA (this closure):** 4-pass pdflatex+bibtex, **0 undefined
+refs/citations**, **0 `Overfull \hbox` > 10pt** (one 4.5pt overfull,
+under the gate), `tools/p1c_consistency_check.py` **4/4 PASS**, all 10
+pages visually spot-checked via `pdftoppm -r 100` (title/date, barrier
+table + Src legend, theory section, operator-list equations, Data &
+Code Availability artifact list, references) — no column overflow, no
+floated/detached artifact block.
+
+**PDF:** `arxiv/paper1bc_ech_note/main.pdf`, **v1N.0.2**, 10 pages,
+sha256 `790795fe3d0cd5c3ba68234ddf3a5336d11fbfa1d402c9bc9d4b3be3013f125d`,
+md5 `5f41629b370a55991a4c25937925a281` — verified byte-identical across
+`arxiv/paper1bc_ech_note/main.pdf`, `site/public/papers/paper1bc_ech_note_v1N.0.2.pdf`,
+`public/papers/paper1bc_ech_note_v1N.0.2.pdf` (v1N.0.1 kept alongside,
+not deleted).
+
+**Not done in this closure (out of scope per work order):** no review
+board was run; site code/Convex untouched; P1A/P1C source files
+untouched (frozen, read-only, used only as restoration sources).
+
+---
+
+## Pre-R1 record (v1N.0.1, superseded by the closure above)
+
 **Current candidate:** draft v1N.0.1 · 2026-09-02 ·
 `arxiv/paper1bc_ech_note/main.tex`
 
