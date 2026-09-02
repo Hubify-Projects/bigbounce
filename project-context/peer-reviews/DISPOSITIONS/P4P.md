@@ -252,3 +252,69 @@ critical value. Full item→edit mapping in
 `project-context/SSOT/paper-4p/status.md` §"R2 closure". Per directive
 R2's third-round budget note above, a subsequent round on v4P.0.3 is
 authorized only as a verification pass on this changed text.
+
+---
+
+## R3 wave (2026-09-02, VERIFICATION PASS) — `ROUND_2026-09-02-P4P-v4P.0.3-EXACTPDF-e8b517d2-R3VERIFY`
+
+PDF sha256 `e8b517d22f61ed733dca043ae2b8253eceffd856ffdfc09e65b422c90b3a8200` (verified), 11 pp.
+Legs: Claude INT (minor-revisions, 0 MAJOR / 5 MINOR + 1 NIT), Grok API `grok-4.3` (REJECT, 8 items),
+Gemini API `gemini-3.1-pro-preview` (MINOR REVISIONS, 5 items), **Perplexity ABSENT** (401
+insufficient_quota — optional leg, recorded absent per skill Rule 4, never as zero-findings).
+**0 BLOCKERs across the round.** 19 raw findings → 12 canonical after dedup:
+**7 GENUINELY-NEW-REAL (1 MAJOR-by-Rule-8.4, 6 MINOR); 4 RE-FLAG-OF-DISCLOSED; 2 FALSIFIED;
+3 OPINION/GENRE.** Part A independently confirmed **21/21 R2 closures real, 0 overstated**;
+the Neyman inversion was re-run and reproduced $A_{95}^{\rm CL}=0.7508188\%$ exactly.
+No arithmetic, transcription or derivation error found. Truth audit:
+`INT_v3/ROUND_2026-09-02-P4P-v4P.0.3-EXACTPDF-e8b517d2-R3VERIFY/P4P_v4P.0.3_R3_truth_audit.md`.
+
+### Canonical items → v4P.0.4 (all SUBSTANTIVE, none requiring new computation)
+| ID | Item | Evidence | Closure |
+|---|---|---|---|
+| DP4P-44 (MINOR) | Monopoles quoted as $f_{\rm CW}-\tfrac12$ (+1.2656% primary) while every other amplitude uses $A_p=2(f-\tfrac12)$; the primary monopole is $A_p=+2.53\%$, $2.6\times$ the 0.98% floor | ll.288–301 vs Fig. 1 caption l.439 and the estimator $A_p=m+\bm a\cdot\hat n_p$ (ll.305–309) | state both conventions in the same sentence |
+| DP4P-45 (MINOR) | Data Availability names a `dr8_id` column | l.1000 vs Table 1 l.221 and the pyarrow schema of `apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet` (no `dr8_id`) | l.1000 → `object_id` |
+| DP4P-46 (MINOR) | Table 1 typesets `raw_flip_qc_unsafe` as two rows (`raw_flip_` / `qc_unsafe`), misstating the schema | source ll.230–231 | one row, `\allowbreak` |
+| DP4P-47 (MINOR) | Cited CL script's docstring claims N_AXES was reduced from 2000; code sets `N_AXES = 2000` and the JSON says no tradeoff (directive Q2) | `a95_upper_limit_2026_09_02.py` ll.32–36 vs l.72 | delete the stale paragraph |
+| DP4P-48 (**MAJOR**, disclosure; 3-leg convergent) | Abstract calls $A_{95}^{\rm obs}=0.98\%$ a "95% sensitivity upper limit" and omits $A_{95}^{\rm CL}=0.75\%$; the CL limit sitting below the power floor is unremarked | abstract ll.90–92 vs §3 l.462 "not itself a confidence-level bound" | see CL ruling below |
+| DP4P-49 (MINOR) | "DR1 companion" undefined — §2 builds a DR8 catalog; `grep DR1` → only l.599 and the P5 reference title | l.599 | define the DR1 TARGETID cross-match in one clause |
+| DP4P-50 (MINOR) | Table 1 caption "release v1.0.244" vs ref [15] "v1.0.274 archived release" reads as a mismatch (both strings individually **correct** — catalog release vs release-paper version; the mismatch premise is FALSIFIED, the ambiguity is real) | l.213 vs l.1106; parquet path `apjs_release_v1.0.244/` | one clarifying parenthetical; renumber nothing |
+| DP4P-51 (GENRE, optional) | Table 5 Ratio column uses each row's lower amplitude endpoint, so "2–20×" pairs with "2–33%" | abstract l.100, §5.2 l.771 | optional caption clause |
+
+### CL-vs-floor ruling (DP4P-48) — binding
+$A_{95}^{\rm CL}=0.75\%<A_{95}^{\rm obs}=0.98\%$ is **correct and requires no repair**: the
+floor is a realization-independent 95%-*detection-power* amplitude, the CL limit is a Neyman
+inversion conditioned on $A_{\rm dip}=0.4665\%$, a low draw of a positive-definite estimator
+with null mean $0.362\%$. A median expected limit tracks the ~50%-power scale ($\sim0.6$–$0.7\%$
+from the paper's own curve), so $0.75\%$ is ordinary, not pathological; no empty interval.
+**Wording correction:** the one-sided Neyman construction does **not** undercover — it has exact
+frequentist coverage; what it lacks is a *sensitivity* interpretation (a downward fluctuation can
+make a classical limit stronger than the experiment's reach — the standard motivation for
+unified/$\mathrm{CL_s}$). **Headline: keep the floor.** Grok E1's "make the Neyman limit the
+primary bound" is REJECTED — §5's confrontation is a sensitivity argument, and headlining the
+tighter fluctuation-dependent limit would strengthen the exclusion on a lucky draw (directive-F
+self-favoring). Gemini E1's terminology half is ACCEPTED: the abstract drops "upper limit" for
+$A_{95}^{\rm obs}$, calls it a detection-power sensitivity floor, and reports $A_{95}^{\rm CL}$
+alongside with the "we confront with the more conservative floor" clause.
+
+### FALSIFIED / RE-FLAG / OPINION — do not re-open without new evidence
+| Finding | Verdict | Source-cited basis |
+|---|---|---|
+| Grok E2 — "largest" unqualified; supply $N_{\rm eff}$ comparison | **RE-FLAG-OF-DISCLOSED** (+ demand OUT-OF-SCOPE) | abstract ll.106–110 concedes Shamir 2022 "which exceeds it"; "largest single catalog" scoped at l.876 — the executed DP4P-01 closure |
+| Grok E3 — §5 closure is an author-supplied assumption; relocate | **RE-FLAG-OF-DISCLOSED** (relocation OPINION) | ll.310–313 italic "Eq. 3 is *not* derived from Popławski's papers"; abstract l.96–97; R1 Grok E4 precedent |
+| Grok M1 — programmatic first-person voice | **OPINION/GENRE** | every hit (ll.147/160/162/855/916) is inside the required bounce-scope disclaimer (directive R6); deleting it would weaken honest scoping |
+| Grok M2 — end-to-end purity for the 8.47 M parent / 887k support | **RE-FLAG-OF-DISCLOSED-IN-SOURCE** / OUT-OF-SCOPE | Table 2 + P4 l.563; the resolved curve is recorded in P4 as an uncomputed extension; no external truth set exists at 8.47 M |
+| Grok M3 — no "not directly comparable" qualifier | **FALSIFIED** | ll.581–588 verbatim "a **distinct statistic** … neither supersedes the other"; ll.396–399 names support/estimator/null |
+| Gemini E3 — Table 4 caption "supersedes" is version-history prose | **RE-FLAG-OF-DISCLOSED** | ll.363–371 is a methodological supersession (circular-RA Pearson → $Y_{\ell m}$, $|z|\le1.25$) and is the executed DP4P-27 closure |
+| Gemini N1 — "in- jects" typo p. 3 | **FALSIFIED** | l.305 has no hyphen; `pdftotext -layout | grep injects` → no match, i.e. ordinary justified-line hyphenation (skill Rule 7) |
+| Grok N1 — draft header / version strings | **OPINION/GENRE** (packaging) | skill Rule 3; R1/R2 precedent (DP4P-35); mechanical at submission |
+
+### R3 convergence statement (directive R2)
+R3 was authorized only as a verification pass on changed text and behaved as one: 21/21 R2
+closures verified real, the CL re-run byte-reproduced, **zero** genuinely-new findings touching a
+number, derivation, selection or scope. All remaining items are presentation/terminology/
+provenance/script-documentation. Directive R2's stopping rule is satisfied literally:
+**rounds stop after v4P.0.4** — no further review round on P4′ is authorized. Once the v4P.0.4
+bundle verifies (directive-G hygiene: version+date bump, 0 undef refs, `/latex-audit`,
+byte-identical mirrors, Convex `paperVersions:bump`, three-way md5), P4′ moves to the publication
+phase under directive P at readiness **95**, the final 5 reserved for Houston's explicit
+per-paper sign-off; venue/submission/endorsement tracked separately and never subtracted.
