@@ -18,6 +18,20 @@ The active work is:
    rows removed, and 52,188 S>5 after dedup. The scan/provenance stage is
    closed; remaining work is the defended selected sample, validation contract,
    taxonomy, named follow-up set, and manuscript assembly.
+3b. **OPEN — anomaly flagship phase 3 (enrichment → cross-match → WISE →
+   taxonomy):** NOT complete. Pod `tc291bka0r6fl3` was terminated after the
+   scan; enrichment reached ~78 % of 3,128 groups on-pod, then a local attempt
+   (2026-08-26) checkpointed 57 groups and stalled on DESI throughput. Corpus:
+   B2 complete (36,634 shards + receipts, 0.63 GB, verified 2026-08-28), HF
+   full mirror started at close-out, local pull at
+   `~/Desktop/CODE_YOU/bigbounce_datasets/`. Resume on a fast host per
+   `project-context/SESSION_HANDOFF_2026-08-05_to_2026-08-28.md` §2 using
+   `clean_rerun/pod/pod_phase3.sh`. Threshold decision recorded: catalog
+   S>5 = 52,188; follow-up sample S>8 = 3,810.
+3c. **ACTIVE — P1C no-go survey (bounce-theory specialist, resurrected
+   2026-08-05):** v1C.0.16, 13 review boards, R-phase NOT converged; R13
+   partial (MAJOR-1..4 closed; 8 MINORs + Gemini/Grok ledgers open) → R14 on
+   the exact v1C.0.16 PDF. See `SSOT/paper-1c/status.md`.
 4. **HOUSTON + AGENT — publishing:** PRD/CQG/ApJS/JORS/AJ portal work, tracked
    separately from readiness. arXiv endorsement remains a parallel channel.
    2026-08-04/05 hygiene pass: WAVE1/WAVE2 kits + May sign-off brief marked
