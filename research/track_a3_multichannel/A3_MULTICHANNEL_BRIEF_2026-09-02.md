@@ -29,6 +29,19 @@ squeezed limit exactly. **Ledger item #1 (an independent second-method derivatio
 remains OPEN**, so the factor of two is *adopted*, not *settled*; both values are
 carried in parallel throughout this brief.
 
+**Same-day update (commit `d7dac953`).** The parallel theory-audit lane completed
+its independent second-method (separate-universe / non-attractor δN) derivation on
+2026-09-02 and returned verdict **OTHER**: it obtains
+f_NL^local(ε) = (5ε − 35)/8, i.e. **−55/16 = −3.4375** at ε = 3/2, which is not a
+rational multiple of either candidate and therefore **does not adjudicate the factor
+of two**. It does establish three narrower things that this brief relies on: the two
+published values use identical f_NL conventions (so the gap is not definitional);
+the gap is exactly a factor of 2 (so it is not a single vertex coefficient); and
+Cai et al.'s *printed* shape function does not reduce to their own stated −35/8 —
+under the distinct-monomial reading of the (5,2,2) orbit it reduces to exactly
+−35/16. See `research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md`.
+Item #1 stays OPEN; open item A3-2 below is unchanged.
+
 ---
 
 ## 1. Channel 1 — PTA free-spectrum slope (REPRODUCED)
