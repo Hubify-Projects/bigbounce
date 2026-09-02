@@ -390,3 +390,6 @@ Built clean in `/tmp` per `/bib-tarball-rebuild`: `main.tex` + `main.bbl`
 `references.bib`; no figures (text-only paper, 0 `\includegraphics`
 calls). Standalone smoke test (extract to a clean dir, `pdflatex` ×2, no
 repo context): **0 undefined refs/citations, 12 pages** — PASSED.
+
+## Final review 2026-09-02 (orchestrator)
+APPROVE at the agent gates; readiness cap 95 (Convex). See `SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`. 100 awaits Houston sign-off.

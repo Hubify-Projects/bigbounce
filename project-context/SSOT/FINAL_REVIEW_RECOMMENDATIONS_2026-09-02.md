@@ -31,3 +31,43 @@ separate phase and never subtract from the score.
 - Next phase: astro-ph.GA endorsement (CLVMAQ) → arXiv → ApJS portal
   (fields in `SSOT/PORTAL_KITS_2026-09-02.md`).
 
+## ECH Note (P1N) — `arxiv/paper1bc_ech_note/` v1N.0.4 (CQG, article type Paper) — **APPROVE** (agent gates), readiness → 95
+- Boards: R1 (Claude major / Grok reject / Gemini reject; Gemini's sign and
+  Fierz claims FALSIFIED against the settled theory-audit artifacts) → 19
+  closed incl. three regressions vs P1C v1C.0.16; R2 (Claude major / Grok
+  reject / Gemini major) → 23 closed incl. two errors INHERITED from the
+  frozen P1C (8π coefficient, O5 parity), four science/scope decisions
+  recorded; R3 verification (Claude major / Grok reject / Gemini major) →
+  15 closed, seven of them regressions the R2 closure had introduced, now
+  guarded by machine-checkable assertions
+  (`research/theory_audit/p1n_r3_checks_2026_09_02.py`). Rounds stop (R2).
+- Visual pass (pages 1, 6 at 55 dpi + full render): revtex two-column clean,
+  equations legible, no overflow; no directive-Q1 language in the PDF (the
+  three matching strings are tex comments).
+- Framing check: the Popławski identification is stated as the γ→∞
+  reduction with the finite-γ suppression and trace-vector dominance made
+  explicit; the fourteen barriers carry honest tags (derived / argued /
+  heuristic); the abstract promises a channel-level, not operator-level,
+  closure. No mistake-narration.
+- Packaging: tarball `SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.4.tar.gz`
+  sha256 67eac435…, standalone recompile PASS; PDF md5 dcdeb0e1…; Convex
+  k572az66….
+- Residual for Houston's read: (i) DP1N-58 — no Zenodo DOI exists yet for
+  the P1C survey or the theory-audit artifacts; mint a new version under the
+  P1A concept (21481837) before CQG submission (click-list); (ii) the
+  internal erratum note on P1C v1C.0.16 (8π) stays internal; P1C is not
+  re-issued.
+- Next phase: gr-qc endorsement (HYEJ7S) → arXiv → CQG ScholarOne as a
+  Paper (the ≤2500-word Note form does not fit).
+
+## P2′ — `arxiv/paper2prime_fnl_letter/` v2L.0.2 — **DEFER** (archived theory record; content folded into A3)
+- R1 board (Fable major / Grok reject / Gemini major) and truth-audit: the
+  Letter's −35/16 is already printed by Li+2016 (Eq. 4.19) and quoted by
+  Quintin+2015; its genuine contribution (independent from-scratch
+  confirmation, the located ×2 in Cai+2009, δN reconciliation) is a
+  confirmation and does not carry a standalone Letter. Defects closed
+  honestly in v2L.0.2; scope decision recorded in PAPER_LINEAGE; content now
+  §II–III of the A3 multi-channel paper (`research/track_a3_multichannel/paper/`
+  v3M.0.2). No submission; optional future Comment on Cai+2009.
+
+## A3 multi-channel paper (A3M) v3M.0.2 — **not yet reviewable**: PBH compaction-function row pending; then one INT board (Fable leg, Track-A flagship).

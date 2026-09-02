@@ -137,3 +137,6 @@ across `arxiv/paper2prime_fnl_letter/main.pdf`, `site/public/papers/paper2prime_
 `public/papers/paper2prime_fnl_letter_v2L.0.2.pdf`.
 
 **Readiness:** unchanged pending Convex/site sync + Houston review; content gate (R1) closed.
+
+## Final review 2026-09-02 (orchestrator)
+DEFER — archived theory record; content folded into A3 (see FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md).
