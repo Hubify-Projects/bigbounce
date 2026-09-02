@@ -13,5 +13,36 @@
     "pages": 25,
     "date": "2026-08-10",
     "review_paths": []
+  },
+  "P4P": {
+    "tex_path": "pipelines/p4prime_chirality_test/paper/main.tex",
+    "pdf_path": "pipelines/p4prime_chirality_test/paper/main.pdf",
+    "site_slug": "paper-4p",
+    "target_journal": "ApJS (candidate; matches P4's venue fit)",
+    "article_type": "catalog + dipole null + black-hole-universe spin-axis exclusion (Track C1, P4' — P5 folded into P4)",
+    "review_profile": "ApJS-CATALOG",
+    "served_aliases": [
+      "paper4prime_chirality_test_v4P.0.1.pdf"
+    ],
+    "version": "v4P.0.1",
+    "pages": 6,
+    "date": "2026-09-02",
+    "review_paths": [],
+    "lineage": {
+      "folds": [
+        {
+          "paper": "P4",
+          "version": "v1.0.274",
+          "path": "pipelines/p2_chirality/chirality_catalog_paper.tex"
+        },
+        {
+          "paper": "P5",
+          "version": "v0.1.147",
+          "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+        }
+      ],
+      "date": "2026-09-02",
+      "decision": "project-context/PORTFOLIO_DECISION_2026-09-02.md Track C1 Addendum; project-context/NEXT_SCIENCE_LEDGER.md item 5"
+    }
   }
 }

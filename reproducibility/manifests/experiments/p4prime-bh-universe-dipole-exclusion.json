@@ -1,0 +1,70 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4prime-bh-universe-dipole-exclusion",
+  "title": "P4' (Track C1) \u2014 confront the DESI chirality catalog's coverage-calibrated observed-label 95% sensitivity floor with Poplawski's rotating-black-hole-universe spin-axis claim",
+  "program": "black-hole-cosmology-test",
+  "paper": "P4' (pipelines/p4prime_chirality_test/paper/main.tex, v4P.0.1)",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "A_95^obs and N_support (verbatim, not re-derived)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/chirality_catalog_paper.tex (v1.0.274), Sec. 'Coverage-calibrated observed-label upper limit', Eq. eq:a95_obs",
+      "checksum": null
+    },
+    {
+      "name": "Literature spin-axis amplitude claims (as published, cited by arXiv id, no re-analysis)",
+      "type": "external-reference",
+      "locator": "arXiv:1104.2815 (Longo 2011); arXiv:1207.5464 (Shamir 2012); arXiv:2007.16116 (Shamir 2020); arXiv:2208.13866 (Shamir 2022); arXiv:2502.18781 (Shamir 2025)",
+      "checksum": null
+    },
+    {
+      "name": "Poplawski black-hole-universe mechanism and preferred-axis papers",
+      "type": "external-reference",
+      "locator": "arXiv:1007.0587; arXiv:1111.4595; arXiv:1410.3881 (ApJ 832, 96, 2016); arXiv:1910.10819",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py",
+      "entrypoint": "python3 research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py",
+      "sha256": "9dba968880d61d0deb3fbba4f329e85391d1f247f2a691e90c24d744bb2abf49"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy (stdlib json/math otherwise)",
+    "hardware": "cpu-only; Apple M-series, macOS arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation",
+    "date": "2026-09-02",
+    "wall_clock": "0.03 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "< 0.1 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Pure arithmetic over literal, cited constants; no data download, no GPU, no network access required. Re-running reproduces the output JSON byte-for-byte given the same numpy/python version (values are exact closed-form arithmetic, not floating-point-sensitive iteration)."
+  },
+  "outputs": [
+    {
+      "locator": "research/bh_universe_dipole/outputs/poplawski_dipole_exclusion_2026_09_02.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Manual inspection: every field in the output JSON traces to either (a) a literal constant copied verbatim from the cited source with a section/equation pointer (A_95_obs, N_support, A_dip_observed, g_bridge), (b) a literal published literature amplitude with its arXiv citation, or (c) a closed-form arithmetic function of (a) and (b) (ratio, 1/sqrt(N) scaling). No fitting, optimization, or random draws occur in this script.",
+  "status": "reproduced",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 5",
+    "project-context/PORTFOLIO_DECISION_2026-09-02.md Track C1 Addendum",
+    "pipelines/p4prime_chirality_test/paper/main.tex Sec. 5 (The black-hole-universe prediction and its exclusion)"
+  ]
+}

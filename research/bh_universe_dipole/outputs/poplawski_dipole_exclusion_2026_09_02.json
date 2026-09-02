@@ -1,0 +1,105 @@
+{
+  "script": "poplawski_dipole_exclusion_2026_09_02.py",
+  "generated_for": "P4' (Track C1, Next-Science-Ledger item #5)",
+  "inputs": {
+    "A_95_obs": 0.0098,
+    "N_support": 887472,
+    "A_dip_observed": 0.00467,
+    "g_bridge_illustrative": 0.398,
+    "source": "pipelines/p2_chirality/chirality_catalog_paper.tex (v1.0.274), Sec. Coverage-calibrated observed-label upper limit, Eq. eq:a95_obs; abstract (A_dip=0.467%); Sec. parity translation (g=0.398)"
+  },
+  "sensitivity_floor_calibration_constant_C": 9.232161766347035,
+  "model": {
+    "model": "Poplawski rotating black-hole-universe (Einstein-Cartan torsion bounce)",
+    "mechanism_refs": [
+      "Poplawski, arXiv:1007.0587 (torsion avoids the singularity; spin-torsion coupling)",
+      "Poplawski, arXiv:1111.4595 (nonsingular, cyclic universes from torsion)",
+      "Poplawski, arXiv:1410.3881 = ApJ 832, 96 (2016), 'Universe in a black hole in Einstein-Cartan gravity' (the bounce mechanism itself)",
+      "Poplawski, arXiv:1910.10819, 'Universe in a rotating black hole and preferred axis'"
+    ],
+    "quantitative_amplitude_predicted": false,
+    "finding": "arXiv:1910.10819 states only that 'galaxies tend to align their axes of rotation with the preferred axis, resulting in clockwise-counterclockwise asymmetry' -- a qualitative alignment tendency with a stated preferred-axis direction (inherited from the parent black hole's spin axis), not a derived dipole amplitude, alignment fraction, or timescale. The mechanism papers (1007.0587, 1111.4595, 1410.3881) supply the torsion-repulsion bounce itself but likewise contain no galaxy-spin observable. No Poplawski paper we could locate gives a closed-form or numerically evaluated amplitude for the preferred-axis dipole.",
+    "assumption_needed_for_quantitative_amplitude": "An alignment efficiency parameter (call it eta, 0<=eta<=1: the fraction of galaxies whose spin axis relaxes toward the preferred axis within a Hubble time under the small non-inertial forces from Poplawski 1910.10819) is not computed in the cited literature. Under the simplest toy closure -- an observed dipole amplitude equal to eta itself -- the model becomes quantitatively testable and eta is exactly what A_95^obs bounds (see below)."
+  },
+  "literature_claims_vs_A95_obs": [
+    {
+      "id": "longo2011",
+      "citation": "Longo 2011, arXiv:1104.2815 (Phys. Lett. B; SDSS z<0.085, 15158 spirals)",
+      "amplitude_note": "~7% left-handed excess / dipole reported at ~5 sigma",
+      "label_type": "physical (visual/algorithmic handedness classification)",
+      "n_claim": 15158,
+      "amplitude_frac_low": 0.07,
+      "amplitude_frac_high": 0.07,
+      "exceeds_A95_obs_face_value": true,
+      "exceeds_A95_obs_after_g_bridge": true,
+      "illustrative_sensitivity_floor_at_this_N": 0.07498639137653154,
+      "ratio_claim_low_to_A95_obs": 7.142857142857144
+    },
+    {
+      "id": "shamir2012",
+      "citation": "Shamir 2012 (SDSS, ~1.27e5 galaxies)",
+      "amplitude_note": "2-4 sigma dipole, per-bin asymmetry ~5-20% (as reported)",
+      "label_type": "algorithmic (Ganalyzer)",
+      "n_claim": 127000,
+      "amplitude_frac_low": 0.05,
+      "amplitude_frac_high": 0.2,
+      "exceeds_A95_obs_face_value": true,
+      "exceeds_A95_obs_after_g_bridge": true,
+      "illustrative_sensitivity_floor_at_this_N": 0.02590607062288896,
+      "ratio_claim_low_to_A95_obs": 5.102040816326531
+    },
+    {
+      "id": "shamir2020",
+      "citation": "Shamir 2020 (SDSS + Pan-STARRS)",
+      "amplitude_note": "~2-4% asymmetry reported",
+      "label_type": "algorithmic (Ganalyzer)",
+      "n_claim": 200000,
+      "amplitude_frac_low": 0.02,
+      "amplitude_frac_high": 0.04,
+      "exceeds_A95_obs_face_value": true,
+      "exceeds_A95_obs_after_g_bridge": false,
+      "illustrative_sensitivity_floor_at_this_N": 0.0206437412888265,
+      "ratio_claim_low_to_A95_obs": 2.0408163265306123
+    },
+    {
+      "id": "shamir2022desi",
+      "citation": "Shamir 2022, arXiv:2208.13866 (DESI Legacy, ~1.3e6 spirals)",
+      "amplitude_note": "~2-4% amplitude reported on a DESI Legacy sample",
+      "label_type": "algorithmic (Ganalyzer)",
+      "n_claim": 1300000,
+      "amplitude_frac_low": 0.02,
+      "amplitude_frac_high": 0.04,
+      "exceeds_A95_obs_face_value": true,
+      "exceeds_A95_obs_after_g_bridge": false,
+      "illustrative_sensitivity_floor_at_this_N": 0.008097141512714415,
+      "ratio_claim_low_to_A95_obs": 2.0408163265306123
+    },
+    {
+      "id": "shamir2025_jwst_jades",
+      "citation": "Shamir 2025, MNRAS 538, 76; arXiv:2502.18781 (JWST JADES, 263 galaxies)",
+      "amplitude_note": "~2:1 to 1.5:1 CW:CCW imbalance reported (small-N, high-z)",
+      "label_type": "algorithmic/visual",
+      "n_claim": 263,
+      "amplitude_frac_low": 0.2,
+      "amplitude_frac_high": 0.33,
+      "exceeds_A95_obs_face_value": true,
+      "exceeds_A95_obs_after_g_bridge": true,
+      "illustrative_sensitivity_floor_at_this_N": 0.5692794821713608,
+      "ratio_claim_low_to_A95_obs": 20.408163265306126
+    }
+  ],
+  "exclusion_statement": {
+    "target": "A_95^obs = 0.98% (full-amplitude, observed-label; P4 Eq. eq:a95_obs, N_support=887472)",
+    "observed_dipole": 0.00467,
+    "statement": "Under the toy closure above (observed dipole amplitude == alignment efficiency eta), the DESI Legacy DR8 catalog's coverage-calibrated observed-label sensitivity excludes eta > 0.98% at >=95% coverage on the primary HC real-space channel -- i.e. any preferred-axis alignment mechanism that would produce an observed-label dipole above ~1% on this sample is disfavored, while the model's own literature motivation (Longo 2011 ~7%; Shamir 2012/2020/2022 ~2-20%; Shamir 2025 JWST/JADES ~20-33%, N=263) sits 2-30x above that floor.",
+    "numbered_assumptions": [
+      "1. The toy closure 'observed amplitude = alignment efficiency eta' is adopted for lack of any quantitative prediction in the cited Poplawski papers; a real closure would require a computed relaxation timescale and torque strength, which do not exist in the literature we could find.",
+      "2. A_95^obs is an OBSERVED-LABEL sensitivity floor (classifier-labelled chirality, not deprojected physical spin), exactly as defined in P4; it is NOT a physical parity-amplitude bound. The observed-to-physical bridge requires the spatially resolved morphology transfer function, which remains an open gate in P4 (the scalar g=0.398 used below is illustrative only, not an established calibration).",
+      "3. The preferred axis itself is a free direction in the model (inherited from an unobserved parent black hole's spin); this analysis follows P4/P5 in testing amplitude only (a full-sky real-space dipole fit and, separately, a DESIVAST void/non-void environment contrast), not a axis-matched search against a specific predicted direction.",
+      "4. Sample-size sensitivity-floor scaling in this script uses a simple 1/sqrt(N) ansatz calibrated to the single P4 anchor point; it is a bookkeeping illustration of statistical reach, not a re-derivation of any other paper's actual estimator or null.",
+      "5. Literature amplitude ranges (Longo, Shamir 2012/2020/2022/2025) are reported as published; no re-analysis of those papers' pipelines is performed here (cross-references only, as in P4 Sec. comparison-to-Shamir and P5 Sec. Comparison-to-Shamir-2022)."
+    ],
+    "illustrative_g_bridge_used": 0.398,
+    "A_95_obs_after_g_bridge_illustrative_only": 0.024623115577889446
+  }
+}
