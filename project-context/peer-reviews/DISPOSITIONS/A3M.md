@@ -195,3 +195,103 @@ but are the same defect class; fix them together across both papers.
 
 No new science is required to close R1. Open science (A3-1b/c/d, A3-2, A3-3, A3-4) belongs on
 `project-context/NEXT_SCIENCE_LEDGER.md`, not in this round's closure (directive R1/R2).
+
+---
+
+# R2 (verification pass) — 2026-09-02
+
+Round `ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY`; paper v3M.0.4, 8 pp,
+sha256 `d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c` (verified).
+Full evidence: `INT_v3/ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY/A3M_v3M.0.4_R2_truth_audit.md`.
+
+Verdicts (verbatim, diagnostic only): Claude Fable INT **MINOR REVISIONS** (0 MAJOR / 9 MINOR) ·
+Grok API `grok-4.3` **REJECT** · Gemini API `gemini-3.1-pro-preview` **MAJOR REVISIONS** ·
+Perplexity **ABSENT** (leg not run — recorded absent, never as clean, Rule 4). **0 BLOCKER** all legs.
+
+R1 closure verification on the exact PDF: **17 of 20 canonical items CLOSED as specified**
+(7 MAJOR + 10 MINOR), **1 MAJOR PARTIAL** (DA3M-02, precision residual → DA3M-R2-04),
+**5 MINOR unaddressed** (m04, m09, m11, m12, m15 — omissions, not mis-closures). Decisions D1/D2/D3
+implemented faithfully; no closure introduced a new factual error; no number failed recomputation.
+
+Class counts (29 raw findings → canonical): **16 GENUINELY-NEW-REAL** (1 MAJOR + 10 new MINOR +
+5 carried R1 minors), **6 RE-FLAG-OF-DISCLOSED**, **3 FALSIFIED**, **6 OPINION/GENRE**, 0 OUT-OF-SCOPE,
+0 BLOCKER. Clean-wave count: **0**. Convergence budget (directive R2): **2 of 2 consumed — this is the
+last review round**; after v3M.0.5 the remaining ledger is genre/length/venue only.
+
+## OPEN — genuinely-new-real (v3M.0.5 closure list)
+
+### DA3M-R2-01 (MAJOR): §IV C "refit validation by injection" misdescribes its own artifact
+- **evidence:** `main.tex:416–419` claims "the identical pipeline" recovers γ=3.19±0.42 "consistent with
+  the injected γ=13/3", showing the 30-bin refit "approximately unbiased". Source check:
+  `h200_scripts/experiments/nanograv_ptarcade.py:97–108` builds the mock from NANOGrav's **published
+  power law at γ = GAMMA_NANO = 3.2** plus a noise-floor bias and seeded scatter, and fits **6** signal
+  bins with a Gaussian χ² likelihood (`nanograv_ptarcade_summary.json`: n_bins_signal 6, τ≈32,
+  recovery 3.19255 ± 0.42326 → **−0.018σ** of the true injection). `emcee_freespec.py:176–183` merely
+  **hard-codes** those two constants. Nothing was injected at 13/3; it is not the same pipeline; the
+  unbiasedness claim for the 30-bin refit is unsupported.
+- **closure (science decision):** (a) restate §IV C truthfully (γ=3.2 injection, earlier 6-bin pipeline,
+  −0.02σ) and drop the 30-bin unbiasedness claim, **or** (b) run a genuine γ=13/3 injection through
+  `emcee_freespec.py` at 30 bins (~minutes) and report the recovered value whatever it is. (b) is the
+  stronger close and the only one that supports the intended statement.
+- **fingerprint:** injection validation, synthetic power law, injected gamma 13/3, identical pipeline,
+  approximately unbiased, 3.19 +/- 0.42, 30-bin refit, nanograv_ptarcade
+
+| id | item | evidence | fingerprint |
+|---|---|---|---|
+| DA3M-R2-02 | Eq. (8) quoted ζ_max values drop the (3/5)\|f_NL\|σ² term; "scales as 1/\|f_NL\|" and "exactly a factor of 2" hold for the leading term only | `main.tex:449–454`, repeated `470`; 0.09524 / 0.19048 = 5·8/(12·35), 5·16/(12·35); at σ=0.1 full values 0.1215 / 0.2036 (ratio 1.68). Confined to the superseded first pass | zeta_max sigma squared term, exactly factor of 2, 1/f_NL scaling, Eq 8 ceiling |
+| DA3M-R2-03 | "Ω_DM = 0.674" is numerically Planck *h*; Ω_DM ≈ 0.264 | carried as printed from Choudhury Eq. (66) (`pbh_compaction_fnl.py:156`, note L108–111); cancels in the ratio (`main.tex:518`) and is absorbed by the Gaussian calibration, so no result changes. Fix = footnote, not a silent value change | Omega_DM 0.674, Planck h confusion, Choudhury Eq 66, cancels in ratio |
+| DA3M-R2-04 | 13/3 Savage–Dickey precision inconsistent with the paper's own one-s.f. rule (residual of DA3M-02) | `main.tex:379–380` vs Table II `398` (4.5e−4) and `409–410` (7.1e3, +3.85); 9 tail samples ⇒ ~±0.2 dex | one significant figure, 4.5e-4, log10 B 3.85, KDE bandwidth precision |
+| DA3M-R2-05 | Duplicated clause in §VII C (ii) | `main.tex:715–718` (introduced by the R1 rewrite); Gemini N3 concurs | duplicate phrase, settling the factor of two twice |
+| DA3M-R2-06 | "(deviation D1 above)" and "deviations (D1–D5)" never defined in the paper | `main.tex:516` precedes `603–605`; D1–D5 live only in `PBH_COMPACTION_NOTE_2026-09-02.md`; directive-Q1 leakage | deviation D1, D1-D5 undefined, dangling internal reference |
+| DA3M-R2-07 | "the refit's 3.1–4.6σ" spans two conditionings; L370's 1.20σ uses the quadrature σ=0.53 unlabelled | `main.tex:427`, `370` | refit 3.1-4.6 sigma range, quadrature combined sigma |
+| DA3M-R2-08 | "3.13–4.38σ bare once a shape-overlap projection is derived" is logically inverted | `main.tex:683–684` | bare significance does not depend on projection |
+| DA3M-R2-09 | Abstract quotes only the DESI merger-prior constraint; universality (+3.5 / 0.77σ) and the "not directly comparable" caveat omitted | abstract `main.tex:80–83` vs body `619–625` | abstract DESI drift, mutually exclusive priors, 0.16 sigma only |
+| DA3M-R2-10 | r = 0.84 numeral still printed with no derivation and no public source (residual of DA3M-06) | `main.tex:627–637`, Table IV caption `644–646`; **no result depends on it** — projected column dropped | r = 0.84 numeral, companion Fisher draft, standalone reader |
+| DA3M-R2-11 | No frozen-release DOI for this work's code/data (GitHub commit hash only) | `main.tex:763, 826` — only NANOGrav's Zenodo 8060824; directive Q2 | Zenodo DOI, frozen release, commit hash only |
+| carried | **DA3M-m04, m09, m11, m12, m15** remain OPEN, verified unaddressed on the exact PDF (`387–388`, `225–227`, `197–207`, `283–288`, `410–411`) | not in the SSOT item→edit table | (see R1 fingerprints) |
+
+## RE-FLAG-OF-DISCLOSED (R2)
+
+| id | item | where the paper already says it |
+|---|---|---|
+| DA3M-R2-R1 | "abstract's 'no channel is in tension' contradicts the scheme-dependent bound" (Grok E1) | same abstract, `main.tex:50–56` — "within a handoff scheme … no bound on the physical post-bounce f_NL follows" |
+| DA3M-R2-R2 | "withdraw the 1.732 ratio / replace with the full curve" (Grok M1) | `main.tex:525–544` (R1 decision D3; demotion explicitly rejected at R1) |
+| DA3M-R2-R3 | "SPHEREx forecasts are un-re-derived imports" (Grok M3) | abstract `84–86` "pending a shape-overlap projection this paper has not yet re-derived" |
+| DA3M-R2-R4 | "Gaussian σ's need a not-directly-comparable tag at every juxtaposition" (Grok M2) | `404–406`, `427–430`; substantive half folded into DA3M-R2-07 |
+| DA3M-R2-R5 | "the 55-decade non-monotonicity is unsupported / lives in a JSON" (Gemini M2) | `535–544` + committed `outputs/pbh_compaction_fnl.json`; a figure inset is a presentation preference |
+| DA3M-R2-R6 | "internal-audit prose and commit hashes in the body" (Grok N1) | R1 DA3M-08 closed the tags (0 body hits); repo URLs consolidated at `733–737` (standard Data Availability) |
+
+## FALSIFIED (R2)
+
+| id | item | why false |
+|---|---|---|
+| DA3M-R2-F1 | "severe numerical inconsistency in the PBH abundance formula; exponent should be (M_H/M_⊙)^{−1/2}; 7.9e−10 gives f_PBH = 6.6e6" (Gemini M1) | (M_⊙/M_H)^{1/2} ≡ (M_H/M_⊙)^{−1/2} — the "correction" is the same expression, and `pbh_abundance_fnl.py:98–100` carries the same Sasaki sign. 7.9×10⁻¹⁰ is the **reference normalisation in the denominator**, not β at M_H=10²⁰ g. Printed Eq. (10) is term-by-term identical to `pbh_compaction_fnl.py:265–271`; auditor re-ran it: f_PBH(0,A*=0.131446) = **1.000032**, f_PBH(−35/16,A*) = **3.62e−14**, f_PBH(−35/8,A*) = **1.569e−2**, exactly Table III. **No recomputation required.** |
+| DA3M-R2-F2 | "the paper labels the in-in result method-independent while a cross-check remains open" (Grok E3) | all four occurrences (`main.tex:48, 260, 671, 703`) say such a confirmation **remains open**; R1 DA3M-05 removed every "CLOSED". Sentence inverted by the reviewer |
+| DA3M-R2-F3 | "the abstract quotes 1.732[1.610,1.809] stripped of its regime-of-validity caveat" (Grok E2) | abstract `main.tex:73–82` carries the perturbativity range (1.2\|f_NL\|σ_r≈0.5–2) and the ~55-decade non-monotonicity verbatim |
+
+## OPINION/GENRE (R2 — venue pass only, not review items)
+
+| id | item |
+|---|---|
+| DA3M-R2-G1 | Abstract ≈500 words vs PRD ≈250 (= G2; now unblocked, content stable) |
+| DA3M-R2-G2 | Bibliography style + missing DOIs (= G1, Grok N3) |
+| DA3M-R2-G3 | AI-usage disclosure placement (venue-dependent; move to cover letter, never silently delete) |
+| DA3M-R2-G4 | `.tex` header comment still reads "SKELETON … stubs pending" (source hygiene, not in the PDF) |
+| DA3M-R2-G5 | Fig. 1 / Table III notation and the (dimensionless) x-axis units (Grok N2) |
+| DA3M-R2-G6 | Optional Fig. 1 inset showing the continuity scan (Gemini M2 presentation half) |
+
+## Correction to an R1 disposition (dated 2026-09-02, R2 pass — never backfilled silently)
+
+**DA3M-F1** cited "the lab's own synthetic power-law injection recovers γ = 3.1925 ± 0.4233 **with the
+same 30-bin pipeline**". DA3M-R2-01 establishes that the injection was at **γ = 3.2** through a different
+**6-bin** pipeline. F1's second leg — NANOGrav's ±0.6 is a 5–95 % half-width (1σ ≈ 0.365 < the refit's
+0.382), so the refit error is not narrower — is unaffected, so F1's FALSIFIED verdict **stands on that leg
+alone**; the bin-choice-bias half is downgraded to **unproven pending DA3M-R2-01's closure**.
+
+## Convergence statement (directive R2)
+
+**NOT converged at v3M.0.4.** Budget 2 of 2 consumed → **this is the last review round**. One MAJOR
+(DA3M-R2-01) carries an outstanding **science decision**: restate §IV C truthfully, or run a genuine
+γ = 13/3 30-bin injection (~minutes) — (b) preferred. Everything else on the list is a one-clause edit.
+After v3M.0.5 closes the 15 substantive items, rounds STOP; the residue is genre/length/venue and belongs
+to the P-round. Re-testing is warranted only if closure (b) changes a reported number.
