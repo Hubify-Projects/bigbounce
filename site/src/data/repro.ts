@@ -664,16 +664,9 @@ export const reproExperiments: ReproExperiment[] = [
     "id": "a3-pbh-abundance-fnl",
     "title": "Track A3 channel 2 — Press-Schechter PBH abundance with local quadratic non-Gaussianity at f_NL = -35/16 vs -35/8 vs 0",
     "program": "bounce-theory",
-    "paper": "A3 (Track A3 portfolio paper)",
+    "paper": "A3",
     "kind": "analysis",
-    "inputs": [
-      {
-        "name": "none (analytic/numerical; no external data)",
-        "type": "none",
-        "locator": null,
-        "checksum": null
-      }
-    ],
+    "inputs": [],
     "apis": [],
     "code": [
       {
@@ -710,7 +703,7 @@ export const reproExperiments: ReproExperiment[] = [
       }
     ],
     "verification": "Re-run and confirm: (a) the analytic ceiling -5/(12 f_NL) = 0.19048 at -35/16 and 0.09524 at -35/8, ratio exactly 2; (b) at zeta_c = 0.05 with sigma calibrated so the Gaussian case gives f_PBH = 1 (sigma* = 0.0063248), f_PBH = 7.32e-3 at -35/16 and 3.75e-6 at -35/8; (c) beta = 0 identically at zeta_c = 0.45 and 1.00 for both negative f_NL in the rare-tail regime.",
-    "status": "reproduced",
+    "status": "runnable-now",
     "provenance": [
       "project-context/NEXT_SCIENCE_LEDGER.md item 3",
       "project-context/bounce_portfolio_strategy.md (Track C, Choudhury+ 2025)",
@@ -722,7 +715,7 @@ export const reproExperiments: ReproExperiment[] = [
     "id": "a3-pta-gamma-reproduction",
     "title": "Track A3 channel 1 — reproduction of the NANOGrav 15-yr free-spectrum gamma posterior and Savage-Dickey Bayes factors from the committed chain",
     "program": "bounce-theory",
-    "paper": "A3 (Track A3 portfolio paper)",
+    "paper": "A3",
     "kind": "analysis",
     "inputs": [
       {
@@ -780,7 +773,7 @@ export const reproExperiments: ReproExperiment[] = [
       }
     ],
     "verification": "Script asserts REPRODUCED=true: gamma mean/std match the committed results.json to 0 (exact), Savage-Dickey B_MB/free matches savage_dickey_2026-05-29.json to 3.1e-15 absolute, B_MB/SMBHB to 3.1e-11, z(SMBHB) exactly. Any drift beyond those tolerances means the chain or the KDE bandwidth rule changed.",
-    "status": "reproduced",
+    "status": "runnable-now",
     "provenance": [
       "project-context/NEXT_SCIENCE_LEDGER.md item 3",
       "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
@@ -791,7 +784,7 @@ export const reproExperiments: ReproExperiment[] = [
     "id": "a3-survey-reach-fnl",
     "title": "Track A3 channel 3 — survey reach and current-constraint tension table for f_NL^local = -35/16",
     "program": "bounce-theory",
-    "paper": "A3 (Track A3 portfolio paper)",
+    "paper": "A3",
     "kind": "analysis",
     "inputs": [
       {
@@ -837,7 +830,7 @@ export const reproExperiments: ReproExperiment[] = [
       }
     ],
     "verification": "Re-run and confirm: SPHEREx bispectrum-only bare 3.13 sigma / r-projected 2.63 sigma; SPHEREx target bare 4.38 / projected 3.68; MegaMapper-class bare 2.19 / projected 1.84; DESI DR1 (merger-model) tension 0.16 sigma with |f_NL|/sigma = 0.24. Two rows are flagged ILLUSTRATIVE and must not be quoted as published forecasts.",
-    "status": "reproduced",
+    "status": "runnable-now",
     "provenance": [
       "project-context/NEXT_SCIENCE_LEDGER.md item 3",
       "research/focused_paper_source_integration/02_full_draft.tex (P2, r = 0.84 shape overlap)",
@@ -1831,7 +1824,7 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "locator": "research/cubic_bounce_transmission/a2_transmission_linear.log",
-        "type": "run-log",
+        "type": "log",
         "checksum": null
       },
       {
@@ -1841,7 +1834,7 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "locator": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md",
-        "type": "brief",
+        "type": "document",
         "checksum": null
       }
     ],
@@ -1851,12 +1844,7 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/NEXT_SCIENCE_LEDGER.md item #2 (ranked #1 in research/remaining_live_paths_audit/)",
       "extends research/cubic_bounce_transmission/ phases 1-3 (g1_gradient_transmission_scheme.py, g1_dressedmetric_transmission.py, g1_dressedmetric_ic_close.py)",
       "literature engaged: arXiv:1508.04141 (Quintin, Sherkatghanad, Cai & Brandenberger 2015), arXiv:1712.08148 (Agullo, Bolliet & Sreenath 2017), arXiv:1211.1354 / 1302.0254 (Agullo, Ashtekar & Nelson), arXiv:1206.2382 (Cai, Easson & Brandenberger 2012)",
-      "brief: research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md"
-    ],
-    "open_items": [
-      "Delta f_NL^bounce: the intrinsic cubic (in-in) contribution of the NEC-violating phase is NOT computed here; two published determinations (1508.04141, 1712.08148) find it ENHANCES non-Gaussianity and it is not bounded by the linear term computed here.",
-      "AAN quantum-mass U(eta) for quasi-dust: no verifiable published closed form; not guessed.",
-      "Hybrid-LQC scheme: not implemented (effective mass for quasi-dust not verifiable)."
+      "brief: research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md (see §open for the intrinsic-cubic, AAN quantum-mass, and hybrid-LQC open items)"
     ]
   },
   {
@@ -1946,19 +1934,22 @@ export const reproExperiments: ReproExperiment[] = [
     "kind": "analysis",
     "inputs": [
       {
-        "name": "Cai, Xue, Brandenberger & Zhang 2009",
+        "name": "Cai, Xue, Brandenberger & Zhang 2009 — Eqs. (14),(20),(21),(37),(39): f_NL convention, printed shape function, published -35/8",
+        "type": "external-literature",
         "locator": "https://arxiv.org/abs/0903.0631",
-        "used_for": "Eqs. (14),(20),(21),(37),(39) — f_NL convention, printed shape function, published -35/8"
+        "checksum": null
       },
       {
-        "name": "Li, Quintin, Wang & Cai",
+        "name": "Li, Quintin, Wang & Cai — Eq. (5.1) f_NL^local = -165/16 + 65/(8 c_s^2) -> -35/16 at c_s=1",
+        "type": "external-literature",
         "locator": "https://arxiv.org/abs/1612.02036",
-        "used_for": "Eq. (5.1) f_NL^local = -165/16 + 65/(8 c_s^2) -> -35/16 at c_s=1"
+        "checksum": null
       },
       {
-        "name": "BigBounce Paper 2 manuscript",
+        "name": "BigBounce Paper 2 manuscript — Appendix A four-vertex re-summation (-35/16) for the reconciliation table",
+        "type": "internal-artifact",
         "locator": "research/focused_paper_source_integration/02_full_draft.tex",
-        "used_for": "Appendix A four-vertex re-summation (-35/16) for the reconciliation table"
+        "checksum": null
       }
     ],
     "apis": [],
@@ -1997,7 +1988,7 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md",
-        "type": "writeup",
+        "type": "document",
         "checksum": null
       }
     ],
@@ -3743,8 +3734,8 @@ export const reproExperiments: ReproExperiment[] = [
     "manifest_version": "bigbounce-experiment/v1",
     "id": "p4prime-bh-universe-dipole-exclusion",
     "title": "P4' (Track C1) — confront the DESI chirality catalog's coverage-calibrated observed-label 95% sensitivity floor with Poplawski's rotating-black-hole-universe spin-axis claim",
-    "program": "black-hole-cosmology-test",
-    "paper": "P4' (pipelines/p4prime_chirality_test/paper/main.tex, v4P.0.1)",
+    "program": "galaxy-chirality",
+    "paper": "P4P",
     "kind": "analysis",
     "inputs": [
       {
@@ -3755,13 +3746,13 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "name": "Literature spin-axis amplitude claims (as published, cited by arXiv id, no re-analysis)",
-        "type": "external-reference",
+        "type": "external-literature",
         "locator": "arXiv:1104.2815 (Longo 2011); arXiv:1207.5464 (Shamir 2012); arXiv:2007.16116 (Shamir 2020); arXiv:2208.13866 (Shamir 2022); arXiv:2502.18781 (Shamir 2025)",
         "checksum": null
       },
       {
         "name": "Poplawski black-hole-universe mechanism and preferred-axis papers",
-        "type": "external-reference",
+        "type": "external-literature",
         "locator": "arXiv:1007.0587; arXiv:1111.4595; arXiv:1410.3881 (ApJ 832, 96, 2016); arXiv:1910.10819",
         "checksum": null
       }
@@ -3802,7 +3793,7 @@ export const reproExperiments: ReproExperiment[] = [
       }
     ],
     "verification": "Manual inspection: every field in the output JSON traces to either (a) a literal constant copied verbatim from the cited source with a section/equation pointer (A_95_obs, N_support, A_dip_observed, g_bridge), (b) a literal published literature amplitude with its arXiv citation, or (c) a closed-form arithmetic function of (a) and (b) (ratio, 1/sqrt(N) scaling). No fitting, optimization, or random draws occur in this script.",
-    "status": "reproduced",
+    "status": "runnable-now",
     "provenance": [
       "project-context/NEXT_SCIENCE_LEDGER.md item 5",
       "project-context/PORTFOLIO_DECISION_2026-09-02.md Track C1 Addendum",
