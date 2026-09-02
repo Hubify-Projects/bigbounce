@@ -58,7 +58,7 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FSC}}
 
-\newcommand{\paperVersion}{v4P.0.3}
+\newcommand{\paperVersion}{v4P.0.4}
 \newcommand{\paperTimestamp}{September 2, 2026}
 
 \begin{document}
@@ -87,8 +87,11 @@ catalog and two independent null tests built on it. The primary, quality-control
 high-confidence real-space dipole ($N_{\rm support}=887{,}472$ of
 $890{,}069$ quality-controlled rows) is null-consistent
 ($z_{\rm mom}=+0.635$, one-sided $p=0.238$), with a coverage-calibrated
-observed-label $95\%$ sensitivity upper limit
-$A_{95}^{\rm obs}\simeq0.98\%$ (full-amplitude). A companion DESIVAST
+observed-label $95\%$ detection-power sensitivity floor
+$A_{95}^{\rm obs}\simeq0.98\%$ (full-amplitude; the corresponding Neyman
+$95\%$ CL upper limit on the measured amplitude is
+$A_{95}^{\rm CL}\simeq0.75\%$, and we confront the model with the more
+conservative floor). A companion DESIVAST
 void/non-void environment contrast on $145{,}766$ classifier-labelled
 galaxies likewise finds no significant effect
 ($\Delta f_{\rm CW}=+0.00145$, two-sided $p=0.66$). We derive what the
@@ -210,7 +213,7 @@ described in the archived release paper~\cite{Golden:P4v274} and are not
 reproduced here beyond what Sec.~\ref{sec:bh} needs.
 
 \begin{table}[t]
-\caption{Catalog Parquet column schema (release v1.0.244). One row per
+\caption{Catalog Parquet column schema (catalog release v1.0.244, documented in the v1.0.274 archived release paper~\cite{Golden:P4v274}). One row per
 DESI Legacy DR8 galaxy cutout.
 \label{tab:schema}}
 \scriptsize
@@ -227,8 +230,7 @@ Column & Description \\
 \texttt{score\_eq\_max} & $\max$ eq.\ class score ($p_{\rm eq}$) \\
 \texttt{is\_spiral} & \CW{} or \CCW{} (boolean) \\
 \texttt{primary\_hc} & HC flag, $p_{\rm eq}>0.6$ (boolean) \\
-\texttt{raw\_flip\_} & Release-safety QC flag: raw/eq \\
-\texttt{qc\_unsafe} & pipeline-pass mismatch (boolean) \\
+\texttt{raw\_flip\_qc\_unsafe} & Release-safety QC flag: raw/eq pipeline-pass mismatch (boolean) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -294,7 +296,11 @@ the HC selection \emph{including} the 59,515
 (monopole $-0.395\%$); and the primary $887{,}472$-galaxy supported-pixel
 sample used for the dipole fit above -- the strict HC selection with those
 59,515 rows removed -- gives $f_{\rm CW}=0.5126562$
-($454{,}968/887{,}472$, monopole $+1.2656\%$). The quarantined rows
+($454{,}968/887{,}472$, monopole $f_{\rm CW}-\tfrac12=+1.2656\%$, equivalently
+$A_p=2(f_{\rm CW}-\tfrac12)=+2.53\%$ in the amplitude convention of
+Fig.~\ref{fig:skymap} and Eqs.~\ref{eq:a95_obs}--\ref{eq:a95_cl}). The
+catalog-wide and HC-with-unsafe monopoles are likewise
+$A_p=-0.53\%$ and $A_p=-0.79\%$ in this same convention. The quarantined rows
 themselves are strongly parity-asymmetric ($14{,}776$ \CW{} /
 $44{,}739$ \CCW{}, $75.2\%$ \CCW{}), which is why removing them for the
 release-safety cut flips the HC monopole's sign; this asymmetry of the
@@ -484,7 +490,17 @@ A_{95}^{\rm CL}\simeq0.75\%\quad(\text{full-amplitude, Neyman 95\% CL}),
 Eq.~\ref{eq:a95_obs}). The observed $A_{\rm dip}=0.467\%$ lies below this
 genuine $95\%$ CL upper limit, below the detection-power floor
 $A_{95}^{\rm obs}=0.98\%$, and below the null's own $95$th-percentile
-critical value $0.669\%$. $A_{95}^{\rm obs}$ and $A_{95}^{\rm CL}$ are
+critical value $0.669\%$. Because $A_{\rm dip}$ is a low realization of a
+positive-definite estimator whose no-signal distribution has mean
+$0.362\%$, this classical one-sided limit falls below the $95\%$-detection
+sensitivity $A_{95}^{\rm obs}$. The limit retains exact frequentist
+coverage, but it is a statement about this realization, not about the
+experiment's reach; a downward fluctuation can make a classical limit
+stronger than the amplitude the experiment is guaranteed to detect (the
+standard motivation for unified/$\mathrm{CL_s}$ constructions). We
+therefore confront the model in Sec.~\ref{sec:bh} with the
+realization-independent floor $A_{95}^{\rm obs}=0.98\%$, the more
+conservative of the two. $A_{95}^{\rm obs}$ and $A_{95}^{\rm CL}$ are
 additionally both \emph{observed-label} statements on the classifier's
 chirality labels, not physical parity-amplitude bounds on deprojected
 spin: the physical bound additionally requires a
@@ -596,7 +612,7 @@ answering related but non-identical questions on different supports.
 
 A second, independent probe tests whether classifier-labelled chirality
 depends on large-scale environment, using the released DESIVAST
-void catalog~\cite{DESIVAST:2025} intersected with the DR1 companion of the
+void catalog~\cite{DESIVAST:2025} intersected with the DESI DR1 spectroscopic TARGETID cross-match of the DR8 chirality catalog, as constructed in~\cite{Golden:P5v147} (joined on TARGETID), hereafter the DR1 companion of the
 catalog in Sec.~\ref{sec:catalog}. The DESIVAST GALZONE TARGET universe
 ($694{,}642$ unique TARGETIDs) joined against the catalog yields $145{,}789$
 rows; retaining the $145{,}766$ rows with \texttt{OUT}$=0$ as the quality
@@ -997,7 +1013,7 @@ reproduced in this condensed manuscript; they remain available in the
 archived source papers~\cite{Golden:P4v274,Golden:P5v147} referenced above.
 The catalog is a single Apache Parquet file (952,115,239 bytes for the
 pinned source revision) with one row per DESI Legacy DR8 galaxy: a
-\texttt{dr8\_id} identifier, sky coordinates, the observed chirality label
+\texttt{object\_id} identifier, sky coordinates, the observed chirality label
 (\CW/\CCW/\NS), per-class probabilities, and quality-control flags
 including \texttt{raw\_flip\_qc\_unsafe}; a separate quarantine Parquet
 contains the 249,066 catalog-wide flagged rows (59,515 within the HC

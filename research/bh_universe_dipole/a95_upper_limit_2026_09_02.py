@@ -28,10 +28,7 @@ selection (887,472 galaxies / 23,633-pixel support), and injection model
 (p_pix = p_CW_global + (A/2)(n_hat.u), Binomial at fixed occupancy) from
 `pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.py`,
 imported verbatim so the estimator/injection machinery is byte-identical.
-No new physics; N_AXES is reduced from the committed 2000 to keep local
-wall time inside the ~60-minute closure budget (this is a statistical
-precision tradeoff on the injection Monte Carlo, stated explicitly in the
-output JSON, not a change to the estimator, catalog, or selection).
+No new physics; N_AXES = 2000, matching the committed v1.0.265 script.
 
 Run:
   python3 research/bh_universe_dipole/a95_upper_limit_2026_09_02.py

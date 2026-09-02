@@ -280,14 +280,86 @@ id `j57dptwy56ktbenejeeewkq6r18dnpx3` (first `paperVersions:bump` call used a
 malformed `texCommit` string and was superseded by the corrected call above —
 recorded here so the earlier id is not mistaken for the authoritative one).
 
-## Open gates (this draft has NOT been through a fresh review board)
+## R3 closure (v4P.0.3 → v4P.0.4) — FINAL, automated review converged
 
-- No INT or EXT review board has been run on v4P.0.3 yet — this closure
-  addressed the R2 truth-audit's findings on v4P.0.2; per directive R2, a
-  fresh round on v4P.0.3 is justified only as a **verification pass** on
-  the changed text (the monopole/CL science decisions are settled; if the
-  verification pass returns only genre/length/venue items, rounds stop
-  under directive R2 and the paper moves to the publication phase).
+Truth audit: `project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P4P-v4P.0.3-EXACTPDF-e8b517d2-R3VERIFY/P4P_v4P.0.3_R3_truth_audit.md`
+(sha256 of reviewed manuscript `e8b517d22f61ed733dca043ae2b8253eceffd856ffdfc09e65b422c90b3a8200`,
+verified this session). Dispositions: `project-context/peer-reviews/DISPOSITIONS/P4P.md`.
+
+**R3 verdicts (verdict words diagnostic only, per directive H):** Claude INT
+`minor-revisions` (0 MAJOR / 5 MINOR + 1 NIT, 6 items); Grok API `grok-4.3`
+`REJECT` (0 BLOCKER / 3 ESSENTIAL / 3 MAJOR / 2 NIT, 8 items); Gemini API
+`gemini-3.1-pro-preview` `MINOR REVISIONS` (0 BLOCKER / 3 ESSENTIAL / 1 MAJOR /
+1 MINOR, 5 items); Perplexity **ABSENT** (401 insufficient_quota, optional
+leg). **0 BLOCKER across the round.** 19 raw findings → 12 canonical after
+dedup: 7 GENUINELY-NEW-REAL (1 MAJOR-by-Rule-8.4, 6 MINOR), 4
+RE-FLAG-OF-DISCLOSED, 2 FALSIFIED, 3 OPINION/GENRE. Part A independently
+re-verified 21/21 R2 closures real (0 overstated); the Neyman inversion was
+re-run and byte-reproduced $A_{95}^{\rm CL}=0.7508188\%$. No arithmetic,
+transcription, or derivation error found in v4P.0.3.
+
+**Item → edit table (all 7 SUBSTANTIVE items closed, no new computation):**
+
+| ID | Item | Edit in v4P.0.4 |
+|---|---|---|
+| DP4P-44 | Monopoles quoted only as $f_{\rm CW}-\tfrac12$ (primary +1.2656%) while every other amplitude uses $A_p=2(f-\tfrac12)$; primary is actually $A_p=+2.53\%$ | `main.tex` §2.2 (ll.~295-303): added "$f_{\rm CW}-\tfrac12=+1.2656\%$, equivalently $A_p=2(f_{\rm CW}-\tfrac12)=+2.53\%$ in the amplitude convention of Fig.~1 and Eqs.~1-2" plus the catalog-wide ($A_p=-0.53\%$) and HC-with-unsafe ($A_p=-0.79\%$) equivalents |
+| DP4P-45 | Data Availability names a `dr8_id` column; Table 1 and the released parquet (verified with pyarrow) both say `object_id` | `main.tex` l.~1000: `\texttt{dr8\_id}` → `\texttt{object\_id}` |
+| DP4P-46 | Table 1 typesets `raw_flip_qc_unsafe` as two rows | `main.tex` Table 1 source: merged into one `\texttt{raw\_flip\_qc\_unsafe}` row |
+| DP4P-47 | `a95_upper_limit_2026_09_02.py` docstring claims N_AXES was reduced from 2000 for a wall-time tradeoff; code sets `N_AXES = 2000` (no tradeoff happened) | `research/bh_universe_dipole/a95_upper_limit_2026_09_02.py` docstring: deleted the stale tradeoff paragraph, kept "No new physics; N_AXES = 2000, matching the committed v1.0.265 script." No numbers changed. |
+| DP4P-48 (MAJOR, 3-leg convergent) | Abstract calls $A_{95}^{\rm obs}=0.98\%$ a "sensitivity upper limit," omits $A_{95}^{\rm CL}=0.75\%$; the CL-below-floor relationship unremarked | Abstract: "detection-power sensitivity floor $A_{95}^{\rm obs}\simeq0.98\%$ (full-amplitude; the corresponding Neyman $95\%$ CL upper limit on the measured amplitude is $A_{95}^{\rm CL}\simeq0.75\%$, and we confront the model with the more conservative floor)." §3 after Eq. 2: added the full CL-vs-floor remark (realization-independent floor vs. Neyman inversion conditioned on the observation; exact coverage retained; the standard unified/CL$_s$ motivation named) per the CL-vs-floor ruling recorded in the truth audit and DISPOSITIONS/P4P.md |
+| DP4P-49 | "DR1 companion" undefined; §2 builds a DR8 catalog | `main.tex` §4 l.~599: defined as "the DESI DR1 spectroscopic TARGETID cross-match of the DR8 chirality catalog, as constructed in \cite{Golden:P5v147} (joined on TARGETID)" |
+| DP4P-50 | Table 1 caption "release v1.0.244" vs. ref [15] "v1.0.274 archived release" reads as a mismatch (both strings individually correct — catalog release vs. release-paper version; premise FALSIFIED, ambiguity real) | `main.tex` Table 1 caption: "catalog release v1.0.244, documented in the v1.0.274 archived release paper \cite{Golden:P4v274})"; no renumbering |
+
+RE-FLAG/FALSIFIED/OPINION items (Grok E2/E3/M1/M2/M3, Gemini E3/N1, Grok N1) —
+no edits required; source-cited dispositions recorded in
+`DISPOSITIONS/P4P.md`. Grok's REJECT rests entirely on this bucket plus
+DP4P-48; the audit found no science defect behind it.
+
+**Hygiene (directive G), same bundle:** `\paperVersion` v4P.0.3 → v4P.0.4;
+`\paperTimestamp` unchanged (September 2, 2026 — already current); 4-pass
+`pdflatex`, 0 undefined refs/citations; one residual overfull hbox
+(5.88pt, ll.381-395, below the 10pt hard-gate, pre-existing); `pdftoppm -r 60`
+render of all 11 pages spot-checked (abstract, monopole ¶, Eq. 2/CL remark,
+Table 1 schema, DR1 companion sentence, references) — all edits render
+clean, no new overflow. Pages: 11 (unchanged). md5 `ed6b8f661b407e6845cb5d42c3efd8d2`,
+sha256 `fbf6915390b474883fc98f08322093232312b429bb90e501cf1bfdecad0e951a`.
+Mirrored byte-identical (md5-matched) to
+`pipelines/p4prime_chirality_test/paper/main.pdf`,
+`site/public/papers/paper4prime_chirality_test_v4P.0.4.pdf`,
+`public/papers/paper4prime_chirality_test_v4P.0.4.pdf`.
+`project-context/draft_paper_registry.json` P4P entry bumped (version,
+pages, sha256, md5, served_aliases, review_paths).
+
+**arXiv submission tarball (v4P.0.4):** rebuilt clean in `/tmp` per
+`/bib-tarball-rebuild` (bibliography is inline `\bibitem`, no `.bbl`/bibtex
+step needed) — `main.tex`, `aastex702.cls`, and the 3 referenced figures
+(`fig_sky_map.png`, `fig_injection_recovery.png`,
+`fig_p5_cw_by_env_bar.png`); smoke-tested by re-extracting to a clean dir
+and standalone-recompiling 4 passes: 0 undefined refs, 11 pages. Stored at
+`project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.4.tar.gz`,
+sha256 `db10841372689d9531b576a7ddfbc6aea3833b0e9d092b7be3808620b8665548`.
+
+**CONVERGENCE STATEMENT (directive R2):** Rounds stop after v4P.0.4. R3 was
+authorized as a verification pass and functioned as one: 21/21 R2 closures
+verified real, the Neyman inversion byte-reproduced, and R3 returned no
+substantive science finding — zero genuinely-new findings touch a number,
+derivation, selection, or the paper's scope. The 7 items closed are
+presentation, terminology, provenance-labelling, and script-documentation;
+remaining leg verdict words (Grok REJECT, Claude/Gemini minor-revisions) are
+genre/venue, not science. Automated review convergence = 0 genuinely-new-real
+findings outstanding across the active legs on the current exact PDF, per
+directive H-refined. No further review round on P4' is authorized. P4' now
+moves to the publication phase under directive P: agent gates complete →
+publication readiness **95**; the final 5 reserved for Houston's explicit
+per-paper sign-off; venue/submission/endorsement tracked separately and never
+subtracted from the score.
+
+## Open gates (as of v4P.0.2 closure — SUPERSEDED, kept for history; see R3 closure above for current state)
+
+- ~~No INT or EXT review board has been run on v4P.0.3 yet~~ — SUPERSEDED:
+  R3 (verification pass) ran on v4P.0.3 and returned only presentation/
+  genre/venue items (see "R3 closure" section above). Rounds now stop per
+  directive R2; v4P.0.4 is the final closed version pending Houston sign-off.
 - Site/Convex sync (`papers.ts`, `live-status.ts`, review timeline, Convex
   `paperVersions:bump`) — the version bump itself is done as part of this
   closure (see Convex ids below); the review-timeline entry for this R2
