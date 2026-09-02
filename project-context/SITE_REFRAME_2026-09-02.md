@@ -465,3 +465,107 @@ correct throughout, ruling out a data bug).
   states P4′ 95.
 - `tools/site_freshness_check.sh` PASS again post-deploy (all FRESH except
   the pre-existing non-blocking `skillslog` WARN, unrelated to this pass).
+
+## v1N.0.4 site sync + A3 multi-channel paper registration (later same-day pass)
+
+**P1N v1N.0.4** — Convex `paperVersions:bump` was already done by a prior
+lane (row `k572az66fecayyv0p8zc3b941x8dn9pa`, readiness cap already set to
+95); this pass only synced static site data. Source PDF
+`arxiv/paper1bc_ech_note/main.pdf`, 12 pp, md5 `dcdeb0e1326fd3ef5b396e7d84a60d28`.
+The working tree had an uncommitted concurrent-lane edit to that file
+(same size, different bytes, md5 `7aa6aa6750eb69605c8c908c6f77b6c1`) at the
+time of this pass — rather than mirror the dirty working copy, the committed
+version at HEAD `af204341` (`fix(P1N): R3 final closure (v1N.0.4)…`) was
+extracted via `git show af204341:arxiv/paper1bc_ech_note/main.pdf` and
+verified byte-identical to the target md5 before mirroring to
+`site/public/papers/paper1bc_ech_note_v1N.0.4.pdf` and
+`public/papers/paper1bc_ech_note_v1N.0.4.pdf`. arXiv tarball
+`project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.4.tar.gz`
+confirmed on disk, sha256 `67eac4358d4e475c6005ef9437d1a9471655e262ffd03fffd15fe84f21fce3cb`
+(full hash computed via `shasum -a 256`, not truncated/invented).
+`site/src/data/papers.ts` updated: version v1N.0.4, readiness 95 with a
+directive-P composition note (95 = science + evidence + review convergence +
+packaging; 100 requires Houston's explicit per-paper sign-off, tracked
+separately), target "Classical and Quantum Gravity — Paper", tarball path +
+sha256 referenced in `remainingWork`. `live-status.ts` and `publish.ts` also
+synced to v1N.0.4 / readiness 95. `reviewTimeline.ts` gained one new
+`internal-api` entry for the R3 verification closure (Claude major-revisions
+/ Grok reject / Gemini major-revisions, machine-checked regressions,
+automated review converged, final author review APPROVE).
+
+**A3M registration** — new paper `paper-a3m` registered as Track A's
+flagship submission candidate (folds the A3 multi-channel skeleton — NANOGrav
+15-yr free-spectrum γ, PBH abundance, SPHEREx/MegaMapper reach — together
+with the P2′ v2L.0.2 exact-amplitude theory, per
+`PAPER_LINEAGE_2026-08-05.md`'s 2026-09-02 decision record). Source
+`research/track_a3_multichannel/paper/main.tex` v3M.0.2, git commit
+`0f6cf5b8` confirmed present in history (`fix(a3m): ledger #1 stated as
+closed; v3M.0.2`). PDF `research/track_a3_multichannel/paper/main.pdf`
+already compiled on disk (not built fresh this pass) — md5
+`8f17a2dc877c0b58982e91a8dea0fa1b`, 6 pp, 402039 bytes (via `pdfinfo`);
+mirrored byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.2.pdf`
+and `public/papers/a3_multichannel_arxiv_v3M.0.2.pdf`. Slug `paper-a3m`.
+Status: draft, note "PBH compaction-function row pending; one INT board
+pending." The Track A `researchProgram` entry in `papers.ts` was updated:
+A3's `supportingLinks` entry was promoted to a full `paper-a3m` in
+`supportSlugs`, and `result`/`limitation`/`status` copy rewritten to state
+A3 is now the flagship submission candidate in draft.
+
+**Convex writes** (public HTTP API, no `npx convex deploy`): `papers:upsert`
+(slug `paper-a3m`, number `A3`, targetJournal `PRD`, status
+`active-drive-to-100`, texPath `research/track_a3_multichannel/paper/main.tex`,
+sitePdfPath `/papers/a3_multichannel_arxiv_v3M.0.2.pdf`, readinessCap 20) →
+`k9796y9efabw41ckngfjy74mk18dny9q`; `paperVersions:bump` (paperSlug
+`paper-a3m`, version `v3M.0.2`, datestamp `2026-09-02`, pdfMd5
+`8f17a2dc877c0b58982e91a8dea0fa1b`, pdfPages 6, pdfSizeBytes 402039,
+texCommit `0f6cf5b8`) → `k574k79vc7ncnd71h2408qtt7x8dnt7v`;
+`papers:setReadinessCap` (slug `paper-a3m`, cap 20) → success (note: the
+mutation args required `paperSlug`/`slug` field names, not `paperId`, as
+initially assumed from the SITE_REFRAME doc's summary table — corrected
+after one validation error on each call, no bad data written);
+`activityFeed:add` (A3 registration announcement) →
+`j57cpmx1ksz0d9y0ecw9khgrhs8dm0a9`.
+
+**Static mirrors updated:** `site/src/data/papers.ts` (new `paper-a3m` full
+entry; Track A `researchProgram` rewritten), `live-status.ts` (new
+`paper-a3m` row), `publish.ts` (new A3 row, Track A decision text rewritten),
+`reviewTimeline.ts` (`RoundPaperId` widened with `"A3"`; one new
+`restructure`-kind entry for the registration), `reproLab.ts`
+(`PAPER_CODE_TO_SLUG` extended with both `A3M -> paper-a3m` and
+`A3 -> paper-a3m`), `project-context/draft_paper_registry.json` (new `A3M`
+entry matching the `P2L` entry's schema).
+
+**Build/deploy:** `npx tsc --noEmit` clean; `npm run build` clean —
+confirmed `.next/server/app/papers/paper-a3m.html` generated. Commit
+`7d00b0b6` — `feat(site): sync P1N v1N.0.4 + register A3 multi-channel paper
+(paper-a3m v3M.0.2)` (papers.ts, live-status.ts, publish.ts,
+reviewTimeline.ts, reproLab.ts, draft_paper_registry.json — the two PDF
+pairs staged identically but produced no diff since a concurrent lane
+(`af204341`) had already committed byte-identical copies at those exact
+paths). `tools/site_freshness_check.sh` PASS (10 paper blocks fresh,
+version chip == pdfMeta == href for all; only the pre-existing non-blocking
+`skillslog` WARN). Pushed to `origin main` and `upstream main` — both
+already at the pushed commit (`Everything up-to-date`, a concurrent lane's
+own push had already carried it to both remotes) at `a2537563` (one commit
+ahead of `7d00b0b6`, from a concurrent ledger-#3 lane).
+
+**Live verification (2026-09-02, ~15:5x PT):**
+- `curl -sI` / `-w '%{http_code} %{size_download}'`:
+  `https://bigbounce.hubify.app/papers/paper1bc_ech_note_v1N.0.4.pdf` → 200,
+  434323 bytes (matches source exactly);
+  `https://bigbounce.hubify.app/papers/a3_multichannel_arxiv_v3M.0.2.pdf` →
+  200, 402039 bytes (matches source exactly).
+- `/papers/paper-1n` rendered HTML contains `v1N.0.4`.
+- `/papers/paper-a3m` initially 404 (deploy still propagating); polled via
+  Monitor until 200, then confirmed rendered HTML contains `v3M.0.2` and
+  "Multi-Channel Consistency".
+- `/reviews` rendered HTML contains both `A3 multi-channel` / `paper-a3m`
+  and `v1N.0.4`.
+- `/paper` (tracks page) rendered HTML contains "paper-a3m" and "flagship
+  submission candidate", confirming the Track A copy rewrite is live.
+- `tools/site_freshness_check.sh` PASS, run again after push (same result
+  as pre-push).
+
+**Not fabricated / explicitly flagged:** none — the tarball sha256, A3M PDF
+md5/pages/bytes, and the `0f6cf5b8` commit SHA were all confirmed present on
+disk / in git history before use; no value was invented or truncated.
