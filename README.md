@@ -96,10 +96,10 @@ Using Docker (recommended — no local TeX install needed):
 ```bash
 cd arxiv
 docker run --rm -v "$(pwd):/work" -w /work texlive/texlive:latest \
-  sh -c "pdflatex -interaction=nonstopmode main.tex && \
-         bibtex main && \
-         pdflatex -interaction=nonstopmode main.tex && \
-         pdflatex -interaction=nonstopmode main.tex"
+  sh -c "pdflatex -interaction=nonstopmode paper1a_ech_nogo.tex && \
+         bibtex paper1a_ech_nogo && \
+         pdflatex -interaction=nonstopmode paper1a_ech_nogo.tex && \
+         pdflatex -interaction=nonstopmode paper1a_ech_nogo.tex"
 ```
 
 Or with a native texlive installation:
@@ -108,13 +108,16 @@ Or with a native texlive installation:
 # macOS: brew install --cask mactex (then reopen terminal)
 # Ubuntu: apt install texlive-full
 cd arxiv
-pdflatex main && bibtex main && pdflatex main && pdflatex main
+pdflatex paper1a_ech_nogo && bibtex paper1a_ech_nogo && pdflatex paper1a_ech_nogo && pdflatex paper1a_ech_nogo
 ```
 
-The output is `arxiv/main.pdf`. Verify 0 undefined references:
+The output is `arxiv/paper1a_ech_nogo.pdf` (registered P1A source; see
+`project-context/paper_registry.json`). The retired v2.3.18 monolith
+(`arxiv/_retired/main.tex`) is historical only — do not compile it. Verify 0
+undefined references:
 
 ```bash
-grep -c "undefined" arxiv/main.log  # should be 0
+grep -c "undefined" arxiv/paper1a_ech_nogo.log  # should be 0
 ```
 
 ### Preview the Website Locally
@@ -214,7 +217,7 @@ See `project-context/peer-reviews/REVISION_TRACKER.md` for the full issue-by-iss
 
 1. Save the review to `project-context/peer-reviews/YYYY-MM-DD_HHMMtz_description.md`
 2. Add a new section to `REVISION_TRACKER.md`
-3. Address issues in `arxiv/main.tex` (canonical source)
+3. Address issues in the paper's registered `.tex` source (e.g. `arxiv/paper1a_ech_nogo.tex` for P1A; see `project-context/paper_registry.json` — `arxiv/main.tex` was retired 2026-09-02 to `arxiv/_retired/`)
 4. Recompile PDF
 5. Sync website pages
 6. Update tracker with resolution status
