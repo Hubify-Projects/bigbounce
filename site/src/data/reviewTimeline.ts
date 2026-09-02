@@ -4,7 +4,8 @@ export type ReviewRoundKind =
   | "internal-cc"
   | "skill-improvement"
   | "closure-wave"
-  | "ext-closure";
+  | "ext-closure"
+  | "restructure";
 
 export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
 /**
@@ -15,8 +16,13 @@ export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
  * widen `PaperId` (that would require a P1U column in every one of those
  * matrices). "P1C" (the no-go-survey draft companion) is added on the same
  * basis: an active review target that is not one of the six roster papers.
+ * "P1N" (the merged ECH Note, Track B) and "P4P" (the folded chirality
+ * test, Track C1) are added on the same basis after the 2026-09-02
+ * portfolio restructure (directive R3): they are the current review
+ * targets for their tracks but are not new columns in the historical
+ * six-paper verdict/gap matrices.
  */
-export type RoundPaperId = PaperId | "P1U" | "P1C";
+export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P";
 
 export interface ReviewRoundLink {
   label: string;
@@ -57,6 +63,44 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "r1-p1n-p4p-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "R1 boards dispatched: P1N and P4′ (INT-only)",
+    papers: ["P1N", "P4P"],
+    summary:
+      "First review round on the freshly merged/folded drafts: P1N v1N.0.1 (Track B ECH Note, P1A+P1C merged) and P4′ v4P.0.1 (Track C1 chirality test, P4+P5 folded). INT-only per directive N (OpenAI/Codex paused; Claude INT + Grok API + Gemini API legs). Results are PENDING — no verdict fabricated or assumed; this entry records dispatch only.",
+    keyTakeaways: [
+      "P1N v1N.0.1: 6pp, 4-pass compile clean, 4/4 consistency-check rules PASS — INT board dispatched, results pending",
+      "P4′ v4P.0.1: 6pp, 4-pass compile clean — INT board dispatched, results pending",
+      "OpenAI/ChatGPT leg absent per directive N (Codex paused); recorded as absent, never faked",
+    ],
+    links: [
+      { label: "P1N SSOT", href: `${GH}/project-context/SSOT/paper-1n/status.md` },
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+    ],
+  },
+  {
+    id: "portfolio-restructure-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "restructure",
+    title: "Portfolio restructure: Track A/B/C replaces three research programs",
+    papers: ["P1A", "P1C", "P1N", "P2", "P4", "P5", "P4P"],
+    summary:
+      "Directive R3 restructure per PORTFOLIO_DECISION_2026-09-02.md Sec.3+Addendum and PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. Track A (bounce vs. inflation, the flagship): A1 P2′ gated on ledger #1's independent second-method re-derivation, A2 (transmission through an explicit bounce, research brief in progress), A3 (multi-channel consistency — NANOGrav γ, PBH abundance, SPHEREx/MegaMapper — first pass done). Track B (the closed ECH line): P1A merged into P1C as P1N v1N.0.1, one ≤12pp Note. Track C (DESI data products, on-vision): P4′ v4P.0.1 folds P5 into P4 with a new black-hole-universe spin-axis exclusion section; P3 redirected to provenance support for an early-universe anomaly map; P1B remains an optional namaster-proof software note. P1A, P1C, P4, and P5 stay listed on the flat /papers page as archived lineage with successor pointers and Zenodo DOIs — never deleted.",
+    keyTakeaways: [
+      "Track A/B/C replaces the 2026-08-03 three-research-programs framing (PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md retired)",
+      "P1N (v1N.0.1) and P4′ (v4P.0.1) registered in Convex; readiness cap 20 (fresh drafts, no review board run)",
+      "Backup-verification gap checked and closed: P4/P4′'s 890,069-spiral title figure is the current quality-controlled count per the reviewed .tex; the Zenodo 21461899 record's 949,584 figure is the pre-QC count from an earlier published version, not an error to fix on the live site",
+      "NANOGrav free-spectrum MCMC (γ=2.57±0.38 vs. matter-bounce prediction 3, Savage–Dickey B≈3.2) reclaimed into Track A3 after being filed as 'P3 support' with no paper for six months",
+    ],
+    links: [
+      { label: "Portfolio decision", href: `${GH}/project-context/PORTFOLIO_DECISION_2026-09-02.md` },
+      { label: "Paper lineage decision record", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+      { label: "INTENT.md", href: `${GH}/project-context/INTENT.md` },
+    ],
+  },
   {
     id: "session-closeout-2026-08-28",
     dateISO: "2026-08-28",

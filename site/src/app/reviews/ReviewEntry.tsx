@@ -14,10 +14,11 @@ export const KIND_LABEL: Record<ReviewRoundKind, string> = {
   "skill-improvement": "SKILL-UPGRADE",
   "closure-wave": "CLOSURES",
   "ext-closure": "CLOSURES",
+  restructure: "DECISION",
 };
 
 /** Filterable kind groups (internal-api + internal-cc collapse into INTERNAL). */
-export const KIND_GROUPS = ["EXTERNAL", "INTERNAL", "SKILL-UPGRADE", "CLOSURES"] as const;
+export const KIND_GROUPS = ["EXTERNAL", "INTERNAL", "SKILL-UPGRADE", "CLOSURES", "DECISION"] as const;
 export type KindGroup = (typeof KIND_GROUPS)[number];
 
 export function kindGroupOf(kind: ReviewRoundKind): KindGroup {

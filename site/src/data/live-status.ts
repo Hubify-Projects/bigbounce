@@ -41,12 +41,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-08-04T03:23:00Z",
-  lastUpdatedDisplay: "August 3, 2026 · 8:23 PM PT",
+  lastUpdatedISO: "2026-09-02T20:00:00Z",
+  lastUpdatedDisplay: "September 2, 2026",
   headline:
-    "Candidate-package evidence is recorded at 95% under Directive P. The portfolio is organized around three research programs; this score records evidence, packaging, and review disposition, not a decision to submit every package.",
+    "Portfolio restructured to Track A (bounce vs. inflation, flagship) / Track B (the ECH Note) / Track C (DESI data products), replacing the retired three-research-programs framing (directive R3). P1N and P4′ are freshly merged/folded drafts, not yet scored — P1A, P1C, P4, and P5 remain listed as their archived lineage.",
   summary:
-    "The exact candidate packages remain available as versioned evidence. P3 is the supporting DESI public-ID recovery release while its discovery-focused flagship is rebuilt; P5 is the selected standalone AJ chirality–environment companion.",
+    "P1N (Track B) merges P1A into P1C as one closed-line ECH Note. P4′ (Track C1) folds P5 into P4 and adds the Poplawski black-hole-universe spin-axis exclusion. Both are fresh drafts (readiness cap 20, no review board run yet). P2 remains gated toward P2′ pending the ledger #1 independent re-derivation. P3 is provenance support for the redirected early-universe anomaly map.",
   currentlyRunning: [
     "Deterministic preflight, clean-room package compiles, link checks, mirror checks, and all-page visual audits pass; bounded reviewer confirmation remains version-specific.",
     "Houston's final review applies only after a program-level scientific and editorial decision; it is not implied by an automated review result.",
@@ -66,12 +66,12 @@ export const liveStatus: LiveStatus = {
   ],
   papers: [
     {
-      slug: "paper-1a",
-      number: "1A",
-      shortTitle: "ECH channel-level closure",
-      version: "v1A.0.127",
-      readiness: 95,
-      pendingWork: "Current-hash bounded confirmation and Houston's CQG review remain distinct from prior review evidence.",
+      slug: "paper-1n",
+      number: "1N",
+      shortTitle: "The ECH Note (P1A + P1C merged)",
+      version: "v1N.0.1",
+      readiness: 20,
+      pendingWork: "Fresh merged draft — no INT/EXT review board run yet; one INT board is the next step before submission.",
     },
     {
       slug: "paper-1b",
@@ -98,20 +98,12 @@ export const liveStatus: LiveStatus = {
       pendingWork: "Exact r17 bounded confirmation and integration review remain; the served package is supporting provenance for the anomaly flagship, not a standalone submission.",
     },
     {
-      slug: "paper-4",
-      number: "4",
-      shortTitle: "Galaxy chirality null",
-      version: "v1.0.274",
-      readiness: 95,
-      pendingWork: "Current-hash bounded confirmation and Houston's visual review remain; the ApJS package is clean and line-numbered.",
-    },
-    {
-      slug: "paper-5",
-      number: "5",
-      shortTitle: "DESI environmental chirality",
-      version: "v0.1.147-2026-08-03",
-      readiness: 95,
-      pendingWork: "Current-hash bounded confirmation and Houston review remain; after sign-off, mint the immutable tag/Zenodo snapshot and back-patch identifiers.",
+      slug: "paper-4p",
+      number: "4P",
+      shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
+      version: "v4P.0.1",
+      readiness: 20,
+      pendingWork: "Fresh folded draft — no INT/EXT review board run yet; first review board is the next step.",
     },
   ],
   blockerTally: {
