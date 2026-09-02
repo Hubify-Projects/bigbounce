@@ -388,3 +388,29 @@ Houston's core points (verbatim source: project-context/prompt-history.md,
   must preserve a documented disposition trail; periodically audit history for
   viable unpublished science (e.g. the no-go-pathways survey) and either
   resurrect it under a program or record explicitly why not.
+
+## Standing directive (2026-09-02 — Houston explicit): R — VISION GOVERNANCE; REVIEW CONVERGENCE IS A GATE, NOT A PRODUCT
+
+Root cause recorded in `project-context/PORTFOLIO_DECISION_2026-09-02.md` and
+`PAPER_GENEALOGY_2026-09-02.md`: from 2026-03 to 07 the campaign optimized for
+review convergence while the lab's own ranked next-science list went
+unpursued and the lineup grew by splits/rescues. Houston: "allowing it to
+derail research is clearly a major problem we want to solve." Rules:
+
+- **R1 — Read the ledger first.** Every session starts with
+  `project-context/VISION.md` and `project-context/NEXT_SCIENCE_LEDGER.md`
+  and ends by updating the ledger. Running review rounds while the top
+  ledger item is untouched requires a written reason in the session record.
+- **R2 — Convergence budget.** At most two consecutive review rounds on a
+  paper without an intervening science or scope decision; stop rounds when
+  the remaining findings are genre/length/venue. Verdict words are never a
+  goal (directive P stands).
+- **R3 — Lineup changes are decisions.** Any split/merge/retire/rescope is
+  recorded in `PAPER_LINEAGE` with the original claim beside the new claim.
+- **R4 — Drift audit.** Re-run the vision-vs-lineup audit at any lineup change
+  and at least every 30 days; commit the result.
+- **R5 — Hubify inherits R1–R4** as platform rules
+  (`HUBIFY_RESEARCH_GOVERNANCE_2026-09-02.md`).
+- **R6 — Declared motivation, evidence-graded claims.** The lab's guiding bet
+  is stated in `VISION.md`; every claim is stated at exactly its evidential
+  strength and nulls are published as nulls.

@@ -1,4 +1,4 @@
-# New-session prompt — BigBounce + Hubify (v3, 2026-09-02, post-portfolio-decision)
+# New-session prompt — BigBounce + Hubify (v4, 2026-09-02, post-portfolio-decision + governance)
 
 > Paste everything below the line into a fresh session started inside
 > `~/Desktop/CODE_YOU/bigbounce`. It supersedes v2: the portfolio structure
@@ -19,16 +19,31 @@ N, P). **This leg: internal (INT) review boards only — no external browser
 rounds.**
 
 ## 0. The structure you are executing (decided; do not re-litigate)
-Read `project-context/PORTFOLIO_DECISION_2026-09-02.md`, then
+Read `project-context/VISION.md` and `project-context/NEXT_SCIENCE_LEDGER.md`
+FIRST (directive R: the ledger, not the review queue, defines what to do next;
+end the session by updating it). Then `project-context/PORTFOLIO_DECISION_2026-09-02.md`
+(including its addendum), then
 `PAPER_GENEALOGY_2026-09-02.md`, `PORTFOLIO_SCIENTIFIC_VALUE_ASSESSMENT_2026-09-02.md`,
 and `SESSION_HANDOFF_2026-08-05_to_2026-08-28.md`. The lab is organized as
 **one flagship line + one closed-line note + program-agnostic data products**:
 - **Track A (bounce vs inflation):** A1 P2′ Letter (−35/16), A2 transmission
   through an explicit bounce, A3 multi-channel consistency (NANOGrav γ, PBH,
   SPHEREx reach) at −35/16, A4 contingent chiral-GW/birefringence.
-- **Track B:** one structural no-go Note (P1A merged into P1C, ≤12 pp).
-- **Track C:** P4′ (P5 folded in, ≤15 pp) and the anomaly catalogue only if
-  earned; namaster-proof optional JOSS note.
+- **Track B:** one structural Note (P1A merged into P1C, ≤12 pp) positioned as
+  "what minimal ECH does for the bounce (Popławski torsion repulsion — the
+  contact term we derive) and cannot do for dark energy."
+- **Track C:** P4′ (P5 folded in, ≤15 pp) framed as the largest test of the
+  rotating-black-hole-universe spin-axis prediction (ledger #5: derive the
+  model's predicted dipole and confront it); the anomaly line redirected to
+  an early-universe anomaly map with explicit bounce-vs-inflation
+  discriminators from public data (ledger #4, #6, #8); the autoencoder
+  catalogue publishable only when earned; namaster-proof optional JOSS note.
+- **Publication cadence:** continuous; near-term milestone = the first 1–3
+  genuinely valuable papers out soon (fastest honest: P4′, the ECH Note, then
+  P2′ after ledger #1). Never rush; never publish for its own sake.
+- **Convergence budget (R2):** at most two consecutive review rounds on any
+  paper without a science/scope decision in between; stop when remaining
+  findings are genre/length.
 Retire the "three research programs" public framing accordingly; never
 restore "six equal papers." Write `project-context/INTENT.md` (one page:
 mission, the structure above, publication standard, integrity rules).

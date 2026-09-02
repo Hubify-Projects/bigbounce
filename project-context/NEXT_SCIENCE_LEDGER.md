@@ -1,0 +1,17 @@
+# NEXT_SCIENCE_LEDGER.md — ranked open science (read at session start, update at session end)
+
+Directive R: this list, not the review queue, defines what the lab does next.
+Each item: question · why it matters to the vision · first cheap test ·
+kill/success condition · status (with dates). Add, re-rank, or close with a
+reason; never let an item silently vanish.
+
+| # | Item | Why it matters | First cheap test | Success / kill | Status |
+|---|---|---|---|---|---|
+| 1 | Independent second-method derivation of the matter-contraction f_NL (Salopek–Bond gradient expansion or δN) vs P2's −35/16 and Cai et al. 2009's −35/8 | The whole flagship line rests on a factor of two no one has verified by an independent route (March-2026 item #2, never done) | Exact symbolic script under `research/theory_audit/` | Reproduces −35/16 → P2′ Letter proceeds; disagrees → resolve before anything else | OPEN (2026-09-02) |
+| 2 | Nonlinear transmission of f_NL through an explicit nonsingular bounce (LQC dressed-metric + hybrid; one non-LQC bounce) | Turns a contraction coefficient into an observable prediction; the item every P2 reviewer asked for (March #1) | Extend `research/cubic_bounce_transmission/`; formalism-dependence check | A scheme-labeled transmission coefficient with stated validity | OPEN |
+| 3 | Multi-channel consistency at −35/16: NANOGrav free-spectrum γ (reclaim `pipelines/p3_pta_mcmc/`: γ = 2.57 ± 0.38 vs 3; SD ≈ 3.2), PBH abundance (Choudhury+ 2025 redone), SPHEREx/MegaMapper reach | The March portfolio paper; the first place a *positive* near-term test lives | Re-run PBH channel at −35/16; assemble the three channels | A consistent multi-channel statement or an honest tension | OPEN |
+| 4 | Direct f_NL measurement attempt from DESI DR1 public clustering (scale-dependent bias, LRG/QSO), or an independent re-analysis of the DESI PNG constraint | Uses data that exists now to confront the flagship parameter | Reproduce the published DESI PNG pipeline on DR1 public products | A constraint with our own systematics budget, or a reasoned "not yet" | OPEN |
+| 5 | Black-hole-cosmology observable audit: what does Popławski's torsion bounce predict for a galaxy-spin axis, and does P4′'s null exclude it? | Makes the chirality catalog a stated test of a stated model, not a bare null | Derive the predicted dipole amplitude/axis from the model; compare to A_95^obs | Exclusion statement with the model's assumptions listed | OPEN |
+| 6 | Early-universe anomaly map from public data: z>10 massive-galaxy abundance, isolated early SMBHs, hemispherical asymmetry — each paired with an explicit bounce-vs-inflation discriminator | Houston's original intent for the anomaly line; evidence now, not LiteBIRD-later | Literature scan + one discriminator derived and confronted with a public catalog | At least one discriminator with a current-data verdict | OPEN |
+| 7 | Chiral GWs from the torsion bounce (circular polarization of the SGWB) — March "single best next theory" | A distinctive, parity-odd, bounce-specific observable | Analytic Δ_h estimate at the bounce scale | O(1) → open a branch; O(ε) → close with reason | OPEN (gate via four-question test) |
+| 8 | Anomaly catalogue known-object recovery benchmark + closed-loop confirmation of at least one class (S>8 sample) | Decides whether the anomaly catalogue is a paper or a data release | Cross-match recovery of published unusual-object classes (Baron & Poznanski-style) | Recovery rates + one confirmed class → paper; else release | OPEN (phase 3 running) |

@@ -107,3 +107,30 @@ repo's research directive. Keep the review loop as a gate, not a product.
 4. Reclaim the NANOGrav MCMC into Track A3.
 5. Independent second-method f_NL derivation before any P2 submission.
 6. INT-only reviews for the next leg (Houston, 2026-09-02).
+
+## Addendum — 2026-09-02, after Houston's response (corrections to §3, adopted)
+- **P4′ is on-vision.** The chirality survey was designed to test the
+  "universe born in a rotating black hole" claim (Popławski's Einstein–Cartan
+  black-hole cosmology; Shamir's JWST rotation-direction result). P4′ is
+  therefore framed as **the largest test of that hypothesis's galaxy-spin
+  prediction** (null so far), with the model's predicted dipole derived and
+  confronted (ledger #5) — not as a detached data product. Scale (8.47M
+  galaxies; 27.5M spectra with sealed provenance) and the receipted
+  methodology are genuinely new even where the questions are not.
+- **The ECH Note is on-vision.** Popławski's bounce is torsion-induced
+  spin–spin repulsion in Einstein–Cartan gravity — the contact term P1A/P1C
+  derive. The Note is repositioned as "what minimal ECH does for the bounce
+  and cannot do for dark energy," bridging Track B to the black-hole-cosmology
+  test.
+- **The anomaly line is redirected**, not retired: an early-universe anomaly
+  map from public data (z>10 massive galaxies, PNG in clustering, isolated
+  early SMBHs, asymmetries/voids), each paired with an explicit
+  bounce-vs-inflation discriminator (ledger #4, #6, #8). The autoencoder
+  catalogue is one instrument of that map, publishable when earned.
+- **Publication cadence.** Continuous, never for its own sake. Near-term
+  milestone: the first 1–3 genuinely valuable papers out soon. Fastest
+  honest candidates: (i) P4′ (condensed, model-tested null), (ii) the ECH
+  Note (P1A+P1C merged), (iii) P2′ once ledger #1 passes.
+- **Governance:** directive R added to `CLAUDE.md`; `VISION.md`,
+  `NEXT_SCIENCE_LEDGER.md`, and `HUBIFY_RESEARCH_GOVERNANCE_2026-09-02.md`
+  created.
