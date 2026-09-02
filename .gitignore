@@ -113,3 +113,4 @@ pipelines/p2_chirality/external_catalogs/*.fits
 tmp/
 pipelines/*/tmp/
 outputs_check
+.vercel_python_packages/
