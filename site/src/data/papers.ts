@@ -119,10 +119,10 @@ export const researchPrograms: ResearchProgram[] = [
     question:
       "Does a nonsingular matter-bounce produce a distinctive, reproducible, and observationally testable primordial non-Gaussian signature that beats inflation-from-a-singularity as the origin of structure?",
     result:
-      "A1 \u00b7 P2\u2032 derives the exact matter-contraction amplitude f_NL = \u221235/16, GATED before submission on an independent second-method re-derivation (ledger #1) \u2014 stated honestly as \u201camplitude under independent re-derivation,\u201d not yet a submission-ready number. A2 (nonlinear transmission through an explicit bounce) and A3 (multi-channel consistency: NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach) are the two new-science computations that make this the vision line \u2014 A2 is a research brief in progress, A3's first pass is done.",
+      "A1 \u00b7 P2\u2032 derives the exact matter-contraction amplitude f_NL = \u221235/16, confirmed by an independent from-scratch in-in computation; Cai et al. 2009's \u221235/8 located as a uniform factor 2 (ledger #1 CLOSED, 2026-09-02). The P2\u2032 Letter (v2L.0.1) is drafted and dispatched to its R1 INT board. A2 (nonlinear transmission through an explicit bounce) and A3 (multi-channel consistency: NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach) are the two new-science computations that make this the vision line \u2014 A2 is a research brief in progress, A3's first pass is done.",
     limitation:
-      "P2\u2032 does not yet have an independently-verified derivation route; A2 and A3 are not yet complete manuscripts. Until the ledger #1 gate passes, the flagship amplitude is reported as gated, not final.",
-    leadSlug: "paper-2",
+      "P2\u2032's Letter has not yet been through any INT/EXT review board (R1 dispatched, verdicts pending); A2 and A3 are not yet complete manuscripts.",
+    leadSlug: "paper-2l",
     supportSlugs: [],
     supportingLinks: [
       {
@@ -418,6 +418,11 @@ export const papers: Paper[] = [
     number: "2",
     publicationRole: "Lead Theory Paper · Matter-Contraction Non-Gaussianity",
     standaloneSubmission: true,
+    archivedInto: {
+      note: "Rescoped into P2′, the Track A A1 Letter (v2L.0.1) — 2026-09-02 portfolio decision, directive R3, ledger #1 CLOSED. P2 itself is unedited and stays listed as the archived full-length source (Zenodo DOI below); the Letter carries only the exact matter-contraction result plus the ledger-#1 closure and Cai(2009) factor-2 resolution.",
+      successorSlug: "paper-2l",
+      zenodoDoi: "https://doi.org/10.5281/zenodo.21461881",
+    },
     title: "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping",
     plainTitle: "The bounce program's core prediction: an exact primordial non-Gaussianity amplitude (f_NL = −35/16)",
     version: "v1.7.130",
@@ -479,6 +484,63 @@ export const papers: Paper[] = [
         external: true,
       },
       { label: "Zenodo DOI", href: "https://doi.org/10.5281/zenodo.21461881", kind: "secondary", external: true },
+    ],
+  },
+  {
+    slug: "paper-2l",
+    number: "2L",
+    publicationRole: "Track A · A1 Letter (flagship) · Exact Non-Gaussianity",
+    standaloneSubmission: true,
+    title: "The Exact Non-Gaussianity of a Matter-Dominated Contraction (−35/16) and Its Orientation Dependence",
+    plainTitle: "The exact non-Gaussianity of a matter-dominated contraction (−35/16) and its orientation dependence",
+    version: "v2L.0.1",
+    lastUpdated: "2026-09-02",
+    tldr: "A short Letter carrying only the flagship result: f_NL = −35/16 for a matter-dominated contraction, confirmed by an independent from-scratch in-in computation that also locates Cai et al. (2009)'s −35/8 as a uniform factor-2 discrepancy (ledger #1 CLOSED, 2026-09-02). Adds the new orientation-dependent squeezed limit and a δN cross-check; states bounce-transmission honestly as not assumed T=1. Rescoped from P2 (v1.7.130), which stays listed as the archived full-length source.",
+    path: publicationPath({}),
+    pages: "4",
+    refs: "—",
+    readiness: 20,
+    statusVariant: "amber",
+    target: "PRD Letters (JCAP alternate)",
+    description:
+      "Track A's A1 Letter (2026-09-02 portfolio decision, directive R3 §3, unblocked by NEXT_SCIENCE_LEDGER.md item 1): the exact matter-contraction non-Gaussianity amplitude f_NL = −35/16, carried alone rather than inside P2's full forecast-machinery manuscript. The ledger-#1 gate — an independent second, from-scratch in-in derivation — is closed: it reproduces −35/16 and identifies Cai et al. (2009)'s published −35/8 as the same physics under a uniform missing factor of 2, not a competing result. The Letter adds a new orientation-dependent squeezed-limit calculation and a δN-formalism cross-check, and states the bounce-transmission question honestly (not assumed lossless, T=1) rather than asserting it. P2's full forecast machinery (b_φ nuisance ladder, torsion bound, dressed-metric transmission closure) stays in P2/A2, not duplicated here.",
+    keyResults: [
+      "f_NL = −35/16 = −2.1875 for the stated matter-dominated-contraction background and cubic action",
+      "Ledger #1 CLOSED: independent from-scratch in-in re-derivation reproduces −35/16 by a second method",
+      "Cai et al. (2009)'s −35/8 located as the same physics under a uniform missing factor of 2, not a competing derivation",
+      "New orientation-dependent squeezed-limit result not carried in P2's original manuscript",
+      "δN-formalism cross-check against the in-in result",
+      "Bounce-transmission stated honestly as an open question (T=1 not assumed), consistent with A2's in-progress transmission work",
+    ],
+    surveys: ["DESI DR1 (current constraint σ ≈ 4.1 combined)"],
+    predictions: ["f_NL = -35/16"],
+    figures: ["Squeezed-limit orientation dependence"],
+    remainingWork: [
+      "R1 INT board dispatched (Fable Opus-tier referee leg + Grok API + Gemini API) — verdicts pending, never faked",
+      "Independent human scientific review and venue-specific scope/format check",
+      "Immutable archive/DOI for the Letter itself (P2's own Zenodo DOI 10.5281/zenodo.21461881 covers the archived full-length source, not this rescoped Letter)",
+      "Author arXiv endorsement and journal-submission decision",
+    ],
+    preprintId: "HUBIFY-2026-002L",
+    pdfMeta: "PDF · 4 pp · v2L.0.1 · created Sep 2, 2026 · md5 66a28438cc0f0b8dc347a3016389363f — first drafted Letter, rescoped from P2 after ledger #1 closed. R1 INT board dispatched, verdicts pending.",
+    changelog: [
+      "v2L.0.1: first draft. Rescoped from P2 v1.7.130 (research/focused_paper_source_integration/02_full_draft.tex, 11pp) per PORTFOLIO_DECISION_2026-09-02.md §3 Track A A1, unblocked by NEXT_SCIENCE_LEDGER.md #1 (CLOSED 2026-09-02). Carries only the exact matter-contraction result, the ledger-#1 closure, the Cai(2009) factor-2 resolution, the new orientation-dependent squeezed limit, the δN cross-check, and an honest bounce-transmission statement.",
+    ],
+    artifacts: [
+      { label: "Read PDF", href: "/papers/paper2prime_fnl_letter_v2L.0.1.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper2prime_fnl_letter_v2L.0.1.pdf", kind: "secondary", download: true },
+      {
+        label: "LaTeX source",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/arxiv/paper2prime_fnl_letter",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Archived lineage: P2 full-length source (Zenodo DOI)",
+        href: "https://doi.org/10.5281/zenodo.21461881",
+        kind: "secondary",
+        external: true,
+      },
     ],
   },
   {

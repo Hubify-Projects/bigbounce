@@ -22,6 +22,7 @@ const PAPER_CODE_TO_SLUG: Record<string, string> = {
   P5: "paper-5",
   P1N: "paper-1n",
   P4P: "paper-4p",
+  P2L: "paper-2l",
   // A2/A3 have no standalone paper page yet (Track A supportingLinks only) —
   // intentionally absent so paperSlugForCode falls through to null, same as
   // the pre-existing "none" behavior.

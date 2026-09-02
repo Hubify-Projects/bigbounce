@@ -92,10 +92,18 @@ export const liveStatus: LiveStatus = {
     {
       slug: "paper-2",
       number: "2",
-      shortTitle: "Matter-contraction f_NL forecast",
+      shortTitle: "Matter-contraction f_NL forecast (archived — see P2′)",
       version: "v1.7.130",
       readiness: 95,
-      pendingWork: "Current-hash bounded confirmation and Houston's PRD review remain open; the published archive is not journal acceptance.",
+      pendingWork: "Archived lineage: rescoped into P2′ (Track A A1 Letter) 2026-09-02 after ledger #1 closed. Unedited on disk, not an independent submission target.",
+    },
+    {
+      slug: "paper-2l",
+      number: "2L",
+      shortTitle: "Exact f_NL Letter (Track A A1, rescoped from P2)",
+      version: "v2L.0.1",
+      readiness: 20,
+      pendingWork: "Ledger #1 closed (independent from-scratch in-in reproduces −35/16); R1 INT board dispatched (Fable referee leg + Grok + Gemini) — verdicts pending.",
     },
     {
       slug: "paper-3",

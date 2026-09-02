@@ -20,9 +20,10 @@ export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
  * test, Track C1) are added on the same basis after the 2026-09-02
  * portfolio restructure (directive R3): they are the current review
  * targets for their tracks but are not new columns in the historical
- * six-paper verdict/gap matrices.
+ * six-paper verdict/gap matrices. "P2L" (the P2′ Letter, Track A A1) is
+ * added on the same basis after ledger #1 closed 2026-09-02.
  */
-export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P";
+export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P" | "P2L";
 
 export interface ReviewRoundLink {
   label: string;
@@ -63,6 +64,43 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "p1n-p4p-r2-claude-legs-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "P1N v1N.0.2 and P4′ v4P.0.2 R2 Claude legs: major-revisions",
+    papers: ["P1N", "P4P"],
+    summary:
+      "R2 Claude INT legs on the fresh v1N.0.2 and v4P.0.2 PDFs both returned major-revisions: P1N 7 MAJOR / 13 minor, P4′ 3 MAJOR / 13 minor. Grok and Gemini legs are dispatched and pending — no verdict fabricated or assumed; this entry records the Claude leg only, truth-audits next.",
+    keyTakeaways: [
+      "P1N v1N.0.2 Claude R2: major-revisions, 7 MAJOR / 13 minor",
+      "P4′ v4P.0.2 Claude R2: major-revisions, 3 MAJOR / 13 minor",
+      "Grok API and Gemini API R2 legs pending on both papers; truth-audit of the Claude findings is the next step",
+    ],
+    links: [
+      { label: "P1N SSOT", href: `${GH}/project-context/SSOT/paper-1n/status.md` },
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+    ],
+  },
+  {
+    id: "ledger1-closed-p2l-r1-dispatch-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "Ledger #1 closed: independent in-in reproduces −35/16; P2′ Letter drafted, R1 dispatched",
+    papers: ["P2L", "P2"],
+    summary:
+      "Ledger #1 closed: an independent from-scratch in-in computation reproduces f_NL = −35/16 for the matter-dominated contraction, locating Cai et al. (2009)'s published −35/8 as the same physics under a uniform missing factor of 2. This unblocks Track A's A1 Letter — P2′ v2L.0.1 drafted (4pp, rescoped from P2 v1.7.130) and dispatched to its R1 INT board (Fable referee leg + Grok API + Gemini API) — verdicts PENDING, none fabricated.",
+    keyTakeaways: [
+      "Ledger #1 CLOSED: independent second-method in-in re-derivation confirms −35/16",
+      "Cai et al. (2009)'s −35/8 identified as a uniform factor-2 discrepancy, not a competing derivation",
+      "P2′ Letter v2L.0.1: 4pp, md5 66a28438cc0f0b8dc347a3016389363f, R1 INT board dispatched, results pending",
+    ],
+    links: [
+      { label: "Next-science ledger", href: `${GH}/project-context/NEXT_SCIENCE_LEDGER.md` },
+      { label: "Portfolio decision", href: `${GH}/project-context/PORTFOLIO_DECISION_2026-09-02.md` },
+      { label: "P2′ SSOT", href: `${GH}/project-context/SSOT/paper-2/status.md` },
+    ],
+  },
   {
     id: "p1n-v1n0-2-r1-closure-2026-09-02",
     dateISO: "2026-09-02",
