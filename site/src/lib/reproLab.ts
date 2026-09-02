@@ -95,4 +95,5 @@ export const STATUS_LABEL: Record<ReproExperiment["status"], string> = {
   "runnable-now": "runnable now",
   "needs-data-restore": "needs data restore",
   superseded: "superseded",
+  reproduced: "reproduced",
 };

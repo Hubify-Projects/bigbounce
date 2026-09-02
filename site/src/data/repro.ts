@@ -6,10 +6,11 @@
 
 export interface ReproInput {
   name: string;
-  type: "external-dataset" | "internal-artifact" | "model";
-  locator: string;
-  checksum: string | null;
+  type?: "external-dataset" | "internal-artifact" | "model" | "none" | "external-literature" | string;
+  locator: string | null;
+  checksum?: string | null;
   license?: string | null;
+  used_for?: string;
 }
 
 export interface ReproApi {
@@ -49,18 +50,18 @@ export interface ReproReproduction {
 
 export interface ReproOutput {
   locator: string;
-  type: "dataset" | "catalog" | "model" | "figure" | "result-json" | "receipt";
+  type: "dataset" | "catalog" | "model" | "figure" | "result-json" | "receipt" | string;
   checksum?: string | null;
 }
 
-export type ReproStatus = "runnable-now" | "needs-data-restore" | "superseded";
+export type ReproStatus = "runnable-now" | "needs-data-restore" | "superseded" | "reproduced";
 
 export interface ReproExperiment {
   manifest_version: string;
   id: string;
   title: string;
-  program: "bounce-theory" | "anomaly-discovery" | "galaxy-chirality" | "lab-infra";
-  paper: "P1A" | "P1B" | "P2" | "P3-support" | "P4" | "P5" | "anomaly-flagship" | "none";
+  program: "bounce-theory" | "anomaly-discovery" | "galaxy-chirality" | "lab-infra" | "track-a" | "track-b" | "track-c" | string;
+  paper: "P1A" | "P1B" | "P1N" | "P2" | "P3-support" | "P4" | "P4P" | "P5" | "anomaly-flagship" | "anomaly-map" | "none" | string;
   kind:
     | "derivation"
     | "training"
@@ -70,7 +71,8 @@ export interface ReproExperiment {
     | "mcmc"
     | "analysis"
     | "figure-generation"
-    | "packaging";
+    | "packaging"
+    | string;
   inputs: ReproInput[];
   apis: ReproApi[];
   code: ReproCode[];
@@ -81,6 +83,7 @@ export interface ReproExperiment {
   verification: string;
   status: ReproStatus;
   provenance: string[];
+  open_items?: string[];
 }
 
 export interface ReproProgramPaper {
@@ -656,6 +659,191 @@ export const reproPrograms: ReproProgram[] = [
 ];
 
 export const reproExperiments: ReproExperiment[] = [
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-pbh-abundance-fnl",
+    "title": "Track A3 channel 2 — Press-Schechter PBH abundance with local quadratic non-Gaussianity at f_NL = -35/16 vs -35/8 vs 0",
+    "program": "bounce-theory",
+    "paper": "A3 (Track A3 portfolio paper)",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "none (analytic/numerical; no external data)",
+        "type": "none",
+        "locator": null,
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/pbh_abundance_fnl.py",
+        "entrypoint": "python3 research/track_a3_multichannel/pbh_abundance_fnl.py",
+        "sha256": "41305cae3ceea8be88cb975d006eee3ac6ab392d3db4115b49b9b409abe858f1"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + scipy 1.18.0 (repo requirements.txt subset)",
+      "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation (Apple M5)",
+      "date": "2026-09-02",
+      "wall_clock": "0.03 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "0.03 s (measured)",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Pure numpy/scipy; sub-second. NOT a reproduction of Choudhury et al. 2025 arXiv:2409.18983 — that paper uses the compaction-function criterion, which this Press-Schechter quadratic-map calculation does not implement."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/outputs/pbh_abundance_fnl.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) the analytic ceiling -5/(12 f_NL) = 0.19048 at -35/16 and 0.09524 at -35/8, ratio exactly 2; (b) at zeta_c = 0.05 with sigma calibrated so the Gaussian case gives f_PBH = 1 (sigma* = 0.0063248), f_PBH = 7.32e-3 at -35/16 and 3.75e-6 at -35/8; (c) beta = 0 identically at zeta_c = 0.45 and 1.00 for both negative f_NL in the rare-tail regime.",
+    "status": "reproduced",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 3",
+      "project-context/bounce_portfolio_strategy.md (Track C, Choudhury+ 2025)",
+      "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-pta-gamma-reproduction",
+    "title": "Track A3 channel 1 — reproduction of the NANOGrav 15-yr free-spectrum gamma posterior and Savage-Dickey Bayes factors from the committed chain",
+    "program": "bounce-theory",
+    "paper": "A3 (Track A3 portfolio paper)",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "NANOGrav 15-yr HD-correlated free-spectrum emcee chain (320,000 samples)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/chain_real_freespec.npy",
+        "checksum": "sha256:50abc38a04e1bf886adc833b5eb653be4e986877fe2476f87a78927f4f3610fc"
+      },
+      {
+        "name": "NANOGrav 15-yr KDE Free Spectra v1.0.0 (30f_fs{hd}_ceffyl) — upstream source of the chain",
+        "type": "external-dataset",
+        "locator": "https://doi.org/10.5281/zenodo.8060824",
+        "checksum": null
+      },
+      {
+        "name": "committed reference summaries for the diff",
+        "type": "internal-artifact",
+        "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/{results.json,savage_dickey_2026-05-29.json}",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/pta_gamma_reproduce.py",
+        "entrypoint": "python3 research/track_a3_multichannel/pta_gamma_reproduce.py",
+        "sha256": "d515372eab1e4e6a042a555b6a93d679ec7824d8a1a2aa421fbc7265ad87d4b0"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + scipy 1.18.0 (repo requirements.txt subset)",
+      "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation (Apple M5)",
+      "date": "2026-09-02",
+      "wall_clock": "0.02 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "0.02 s (measured)",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "No re-fit is performed; the emcee fit itself (pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py) requires the Zenodo KDE pack and emcee, and took 25 s of production sampling originally. Reproduction of the SUMMARIES needs only numpy+scipy and the committed chain."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/outputs/pta_gamma_reproduction.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Script asserts REPRODUCED=true: gamma mean/std match the committed results.json to 0 (exact), Savage-Dickey B_MB/free matches savage_dickey_2026-05-29.json to 3.1e-15 absolute, B_MB/SMBHB to 3.1e-11, z(SMBHB) exactly. Any drift beyond those tolerances means the chain or the KDE bandwidth rule changed.",
+    "status": "reproduced",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 3",
+      "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-survey-reach-fnl",
+    "title": "Track A3 channel 3 — survey reach and current-constraint tension table for f_NL^local = -35/16",
+    "program": "bounce-theory",
+    "paper": "A3 (Track A3 portfolio paper)",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "published sigma(f_NL) forecasts and DESI DR1 measurement (literature values, quoted verbatim from abstracts)",
+        "type": "external-literature",
+        "locator": "arXiv:2311.13082 (SPHEREx sigma=0.7 bispectrum / 0.5 target); arXiv:1903.09208 (MegaMapper-class order unity); arXiv:1412.4872 (SPHEREx mission); arXiv:2106.09713 (FishLSS); arXiv:2411.17623 (DESI DR1 f_NL^loc = -3.6 +9.0/-9.1)",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/survey_reach_fnl.py",
+        "entrypoint": "python3 research/track_a3_multichannel/survey_reach_fnl.py",
+        "sha256": "eda632fe3fd683825122ecdf12d1313db5b58cd74ea4028a09f979eddb8996cf"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + scipy 1.18.0 (repo requirements.txt subset)",
+      "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation (Apple M5)",
+      "date": "2026-09-02",
+      "wall_clock": "0.01 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "0.01 s (measured)",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Arithmetic only. If any cited sigma is superseded upstream, update ROWS and re-run."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/outputs/survey_reach_fnl.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: SPHEREx bispectrum-only bare 3.13 sigma / r-projected 2.63 sigma; SPHEREx target bare 4.38 / projected 3.68; MegaMapper-class bare 2.19 / projected 1.84; DESI DR1 (merger-model) tension 0.16 sigma with |f_NL|/sigma = 0.24. Two rows are flagged ILLUSTRATIVE and must not be quoted as published forecasts.",
+    "status": "reproduced",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 3",
+      "research/focused_paper_source_integration/02_full_draft.tex (P2, r = 0.84 shape overlap)",
+      "research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md"
+    ]
+  },
   {
     "manifest_version": "bigbounce-experiment/v1",
     "id": "anomaly-bigae-18m-inference-historical",
@@ -1596,6 +1784,83 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-a2-bounce-fnl-transmission",
+    "title": "Track A2: transmission coefficient of the matter-contraction f_NL through explicit nonsingular bounces (linear-transfer term, scheme-labeled)",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "analysis",
+    "inputs": [],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "entrypoint": "python3 a2_transmission_linear.py",
+        "sha256": "bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+      },
+      {
+        "path": "research/cubic_bounce_transmission/a2_transmission_figures.py",
+        "entrypoint": "python3 a2_transmission_figures.py",
+        "sha256": "707cd5f7f5c7c2de1e1118023e7aff9e52820944891b43503b6bdf73383d2626"
+      }
+    ],
+    "environment": {
+      "python": "numpy 2.5.1, scipy 1.18.0, sympy 1.14.0, matplotlib 3.11.1 (repo requirements.txt)",
+      "hardware": "cpu-only; no GPU, no network"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-02",
+      "wall_clock": "1.5 s (a2_transmission_linear.py) + 4 s (a2_transmission_figures.py), measured",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 10 s total",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic (seed 20260902 set; no stochastic step is used). Run a2_transmission_linear.py first, then a2_transmission_figures.py which reads its JSON."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.log",
+        "type": "run-log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/a2_transmission_summary.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md",
+        "type": "brief",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm, in HEADLINE: T_fNL = 0.250000 (LQC / geometric dressed-metric prescription; analytic value exactly 1/4), 0.195501 (analytic non-LQC poly bounce), 0.165005 (Quintin+2015-type), and in F_fluid_scheme_contrast.SECOND_SCHEME_transmission T_fNL = 0.409155 (LQC background, effective-fluid scheme). Tolerance 1e-5 relative. Also confirm the analytic cross-checks in B_backgrounds (LQC: I_inf = pi/sqrt3, A = 1/12, rho_B = 1/2; poly: I_inf = pi*eta_b/4, rho_B = [pi/6+sqrt3/4]/(pi/2)) at <1e-6 relative, the fluid-scheme K ~ dcut^-0.4998, and that the direct ODE value matches the super-Hubble formula to <5e-3 over k*eta_B <= 0.03.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item #2 (ranked #1 in research/remaining_live_paths_audit/)",
+      "extends research/cubic_bounce_transmission/ phases 1-3 (g1_gradient_transmission_scheme.py, g1_dressedmetric_transmission.py, g1_dressedmetric_ic_close.py)",
+      "literature engaged: arXiv:1508.04141 (Quintin, Sherkatghanad, Cai & Brandenberger 2015), arXiv:1712.08148 (Agullo, Bolliet & Sreenath 2017), arXiv:1211.1354 / 1302.0254 (Agullo, Ashtekar & Nelson), arXiv:1206.2382 (Cai, Easson & Brandenberger 2012)",
+      "brief: research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md"
+    ],
+    "open_items": [
+      "Delta f_NL^bounce: the intrinsic cubic (in-in) contribution of the NEC-violating phase is NOT computed here; two published determinations (1508.04141, 1712.08148) find it ENHANCES non-Gaussianity and it is not bounded by the linear term computed here.",
+      "AAN quantum-mass U(eta) for quasi-dust: no verifiable published closed form; not guessed.",
+      "Hybrid-LQC scheme: not implemented (effective mass for quasi-dust not verifiable)."
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p2-channel-native-fisher",
     "title": "Channel-native Fisher surrogate (c15) + covariance chain (c8-c15)",
     "program": "bounce-theory",
@@ -1670,6 +1935,78 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: bounce-theory / P2 — channel-native Fisher bullet",
       "DP2-26/DP2-29 gap tracking in project-context/SSOT/paper-2/status.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-fnl-second-method-deltaN",
+    "title": "Independent second-method matter-contraction f_NL (separate-universe / nonlinear delta-N) — NEXT_SCIENCE_LEDGER #1",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Cai, Xue, Brandenberger & Zhang 2009",
+        "locator": "https://arxiv.org/abs/0903.0631",
+        "used_for": "Eqs. (14),(20),(21),(37),(39) — f_NL convention, printed shape function, published -35/8"
+      },
+      {
+        "name": "Li, Quintin, Wang & Cai",
+        "locator": "https://arxiv.org/abs/1612.02036",
+        "used_for": "Eq. (5.1) f_NL^local = -165/16 + 65/(8 c_s^2) -> -35/16 at c_s=1"
+      },
+      {
+        "name": "BigBounce Paper 2 manuscript",
+        "locator": "research/focused_paper_source_integration/02_full_draft.tex",
+        "used_for": "Appendix A four-vertex re-summation (-35/16) for the reconciliation table"
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py",
+        "entrypoint": "python3 research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py",
+        "sha256": "033fa555994aefcf2e5c2a4d25eb93a90f45b5140e89c0be77a503d1e9d8d592"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy 1.14.0 and mpmath 1.3.0 (both in repo requirements.txt)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-02",
+      "wall_clock": "2.9 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 1 minute",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic: exact sympy rationals plus a 40-digit mpmath ODE cross-check. No external data download, no GPU, no network access required at run time (the arXiv sources were read once during authorship and their equations are transcribed into the script and the .md)."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md",
+        "type": "writeup",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required exact values: second_method.fnl_local_general_epsilon == '5*epsilon/8 - 35/8'; fnl_local_matter_epsilon_3_2 == '-55/16'; the mpmath cross-check must agree with -3.4375 to better than 1e-5 relative; cai_eq37_orbit_audit must give '-305/64' (6-permutation reading) and '-35/16' (distinct-monomial (5,2,2) reading). The script asserts its own O(u_i^2) ODE residual is exactly 0.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 1 (Independent second-method derivation of the matter-contraction f_NL)",
+      "project-context/VISION.md route 1 (bounce vs inflation signatures — flagship line)",
+      "directive R (vision governance: ledger item worked before review rounds)"
     ]
   },
   {
@@ -3400,6 +3737,76 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — v2 ViT-Small production training bullet",
       "project-context/SSOT/paper-4/status.md",
       "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p4prime-bh-universe-dipole-exclusion",
+    "title": "P4' (Track C1) — confront the DESI chirality catalog's coverage-calibrated observed-label 95% sensitivity floor with Poplawski's rotating-black-hole-universe spin-axis claim",
+    "program": "black-hole-cosmology-test",
+    "paper": "P4' (pipelines/p4prime_chirality_test/paper/main.tex, v4P.0.1)",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "A_95^obs and N_support (verbatim, not re-derived)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/chirality_catalog_paper.tex (v1.0.274), Sec. 'Coverage-calibrated observed-label upper limit', Eq. eq:a95_obs",
+        "checksum": null
+      },
+      {
+        "name": "Literature spin-axis amplitude claims (as published, cited by arXiv id, no re-analysis)",
+        "type": "external-reference",
+        "locator": "arXiv:1104.2815 (Longo 2011); arXiv:1207.5464 (Shamir 2012); arXiv:2007.16116 (Shamir 2020); arXiv:2208.13866 (Shamir 2022); arXiv:2502.18781 (Shamir 2025)",
+        "checksum": null
+      },
+      {
+        "name": "Poplawski black-hole-universe mechanism and preferred-axis papers",
+        "type": "external-reference",
+        "locator": "arXiv:1007.0587; arXiv:1111.4595; arXiv:1410.3881 (ApJ 832, 96, 2016); arXiv:1910.10819",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py",
+        "entrypoint": "python3 research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py",
+        "sha256": "9dba968880d61d0deb3fbba4f329e85391d1f247f2a691e90c24d744bb2abf49"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy (stdlib json/math otherwise)",
+      "hardware": "cpu-only; Apple M-series, macOS arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation",
+      "date": "2026-09-02",
+      "wall_clock": "0.03 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "< 0.1 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Pure arithmetic over literal, cited constants; no data download, no GPU, no network access required. Re-running reproduces the output JSON byte-for-byte given the same numpy/python version (values are exact closed-form arithmetic, not floating-point-sensitive iteration)."
+    },
+    "outputs": [
+      {
+        "locator": "research/bh_universe_dipole/outputs/poplawski_dipole_exclusion_2026_09_02.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Manual inspection: every field in the output JSON traces to either (a) a literal constant copied verbatim from the cited source with a section/equation pointer (A_95_obs, N_support, A_dip_observed, g_bridge), (b) a literal published literature amplitude with its arXiv citation, or (c) a closed-form arithmetic function of (a) and (b) (ratio, 1/sqrt(N) scaling). No fitting, optimization, or random draws occur in this script.",
+    "status": "reproduced",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 5",
+      "project-context/PORTFOLIO_DECISION_2026-09-02.md Track C1 Addendum",
+      "pipelines/p4prime_chirality_test/paper/main.tex Sec. 5 (The black-hole-universe prediction and its exclusion)"
     ]
   },
   {

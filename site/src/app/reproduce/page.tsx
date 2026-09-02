@@ -21,6 +21,7 @@ const STATUS_VARIANT: Record<ReproStatus, "green" | "amber" | "neutral"> = {
   "runnable-now": "green",
   "needs-data-restore": "amber",
   superseded: "neutral",
+  reproduced: "green",
 };
 
 export default function ReproducePage() {

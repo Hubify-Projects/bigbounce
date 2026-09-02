@@ -54,10 +54,11 @@ function main() {
   const types = `
 export interface ReproInput {
   name: string;
-  type: "external-dataset" | "internal-artifact" | "model";
-  locator: string;
-  checksum: string | null;
+  type?: "external-dataset" | "internal-artifact" | "model" | "none" | "external-literature" | string;
+  locator: string | null;
+  checksum?: string | null;
   license?: string | null;
+  used_for?: string;
 }
 
 export interface ReproApi {
@@ -97,18 +98,18 @@ export interface ReproReproduction {
 
 export interface ReproOutput {
   locator: string;
-  type: "dataset" | "catalog" | "model" | "figure" | "result-json" | "receipt";
+  type: "dataset" | "catalog" | "model" | "figure" | "result-json" | "receipt" | string;
   checksum?: string | null;
 }
 
-export type ReproStatus = "runnable-now" | "needs-data-restore" | "superseded";
+export type ReproStatus = "runnable-now" | "needs-data-restore" | "superseded" | "reproduced";
 
 export interface ReproExperiment {
   manifest_version: string;
   id: string;
   title: string;
-  program: "bounce-theory" | "anomaly-discovery" | "galaxy-chirality" | "lab-infra";
-  paper: "P1A" | "P1B" | "P2" | "P3-support" | "P4" | "P5" | "anomaly-flagship" | "none";
+  program: "bounce-theory" | "anomaly-discovery" | "galaxy-chirality" | "lab-infra" | "track-a" | "track-b" | "track-c" | string;
+  paper: "P1A" | "P1B" | "P1N" | "P2" | "P3-support" | "P4" | "P4P" | "P5" | "anomaly-flagship" | "anomaly-map" | "none" | string;
   kind:
     | "derivation"
     | "training"
@@ -118,7 +119,8 @@ export interface ReproExperiment {
     | "mcmc"
     | "analysis"
     | "figure-generation"
-    | "packaging";
+    | "packaging"
+    | string;
   inputs: ReproInput[];
   apis: ReproApi[];
   code: ReproCode[];
@@ -129,6 +131,7 @@ export interface ReproExperiment {
   verification: string;
   status: ReproStatus;
   provenance: string[];
+  open_items?: string[];
 }
 
 export interface ReproProgramPaper {
