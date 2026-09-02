@@ -222,3 +222,64 @@ exists committed on disk — v1N.0.1 and v4P.0.1, exactly what is in Convex
 and on the live site right now. The v4P.0.2 bump (and any v1N.0.2 that
 lands) is the next `paperVersions:bump` + site-data update, owned by
 whichever lane closes it.
+
+## v4P.0.2 + v1N.0.2 sync (later same-day, follow-up pass)
+
+Both bumps landed and were synced in one pass by a Sonnet site worker.
+
+**P4′ v4P.0.2** — commit `0b3cfaba`, PDF at
+`pipelines/p4prime_chirality_test/paper/main.pdf`, md5
+`413705f8cf6ce69da4fe6744b3014ea2`, 10 pp, 1051506 bytes. Convex
+`paperVersions:bump` (`k5741xaqq5p0dsg371t7pxtfgd8dm89v`) and
+`activityFeed:add` already existed from the closure lane. R1 board closed;
+R2 board (Grok/Gemini/Claude) dispatched — verdicts pending, never faked.
+
+**P1N v1N.0.2** — landed mid-session (coordinator commit `82bb7752`): R1
+board (Claude INT major-revisions, Grok API REJECT, Gemini API REJECT,
+Perplexity absent/401) audited 42 finding-rows, closed 19 canonical real
+items (R1-R19) via real edits — restored on-shell branch splits, single-
+normalization statements, explicit operator definitions/derivations,
+γ-scoped Popławski identification, pruned `references.bib` 113→26. Venue
+form grown from Note to Paper (7725 words / 10 pp, above the CQG Note
+ceiling). PDF: `arxiv/paper1bc_ech_note/main.pdf`, md5
+`5f41629b370a55991a4c25937925a281`, 10 pp, 402962 bytes. Convex
+`paperVersions:bump` was written twice — once by this session before the
+coordinator's "don't repeat it" note landed (`k574x3rb8b40tz3myd6qs3cke98dmkkr`)
+and once by the coordinator's own closure lane — both carry identical
+version/md5/page data, so the duplicate is a harmless extra version-history
+row, not a data conflict. R2 board dispatched — verdicts pending.
+
+**Static mirrors updated** (`site/src/data/papers.ts`, `live-status.ts`,
+`reviewTimeline.ts`, `site/src/lib/reproLab.ts`): version/pages/md5/pdfMeta/
+href/tldr/remainingWork/changelog bumped for both papers; `paper-1n` target
+field updated to "CQG — Paper (grown from Note form...)"; two new
+`internal-api` timeline entries recording each R1-closure-to-R2-dispatch
+transition (verdicts PENDING, none fabricated); `reproLab.ts`
+`PAPER_CODE_TO_SLUG` extended with `P1N -> paper-1n`, `P4P -> paper-4p`
+(A2/A3 left unmapped by design — no standalone paper page, falls through to
+`null` same as the pre-existing "none" behavior).
+
+**Build/deploy:** `npm run build` + `npx tsc --noEmit` both clean (two
+passes — a second small fix landed after the first push). Pushed to
+`origin main` and `upstream main`: commits `8b097bcb` (main site-data +
+reproLab bundle), `30fc87de` (P1N tldr wording fix). `tools/
+site_freshness_check.sh` pre-push hook PASSed on every push, no
+`FRESHNESS_SKIP` used.
+
+**Live verification** (headed browser session, since plain `curl` always
+hits the Vercel Security Checkpoint page regardless of deploy state — a
+known false negative, not a site defect): `/papers/paper-4p` renders
+`V4P.0.2 · LIVE`, 10 pages, target "APJS..."; `/papers/paper-1n` renders
+`V1N.0.2 · LIVE`, 10 pages, target "Classical and Quantum Gravity —
+Paper...". `fetch()` from the live page's own origin against both PDF URLs
+returned `200` with byte counts matching the source files exactly
+(`paper4prime_chirality_test_v4P.0.2.pdf` = 1051506 bytes;
+`paper1bc_ech_note_v1N.0.2.pdf` = 402962 bytes) — browser `SubtleCrypto`
+has no MD5 digest, so byte-count match plus the earlier three-way
+byte-identical local mirror check (source/`site/public/papers/`/
+`public/papers/`) stands in for a live md5 check.
+
+**Not done this pass:** `site/src/data/repro.ts` was left dirty in the
+working tree on arrival (25 changed lines, not authored by this pass) and
+was deliberately left uncommitted — it belongs to a concurrent lane and its
+content wasn't inspected beyond `git diff --stat`.
