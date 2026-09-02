@@ -357,7 +357,7 @@ export const papers: Paper[] = [
     plainTitle: "One closed-line Note: spin-torsion gravity's contact repulsion powers a bounce mechanism, but not dark energy",
     version: "v1N.0.2",
     lastUpdated: "2026-09-02",
-    tldr: "Merges P1A and P1C into a single gr-qc/CQG paper. The derived axial spin-spin contact term is identified with Popławski's torsion-bounce repulsion mechanism (the positive result) while the same algebraic elimination closes four candidate dark-energy routes (the negative result). R1 board (Claude INT major-revisions, Grok API REJECT, Gemini API REJECT) closed all 19 canonical real findings this round; no new board dispatched yet.",
+    tldr: "Merges P1A and P1C into a single gr-qc/CQG paper. The derived axial spin-spin contact term is identified with Popławski's torsion-bounce repulsion mechanism (the positive result) while the same algebraic elimination closes four candidate dark-energy routes (the negative result). R1 board (Claude INT major-revisions, Grok API REJECT, Gemini API REJECT) closed all 19 canonical real findings this round; R2 board dispatched, verdicts pending.",
     path: publicationPath({}),
     pages: "10",
     refs: "—",
