@@ -1,0 +1,30 @@
+[
+  {
+    "name": "s5_sealed_full",
+    "path": "/PATH/OUTSIDE/REPO/flagship_sample.parquet",
+    "id_col": "targetid",
+    "ra_col": "target_ra",
+    "dec_col": "target_dec",
+    "score_col": "anomaly_score",
+    "z_col": "z",
+    "threshold": 5.0,
+    "parent_total": 27547223,
+    "catalog_total_at_threshold": 52188,
+    "catalog_total_note": "sealed S>5 count from results_2026-08-07/summary.json (threshold_count_after_dedup=52188, unique_targetids=27547223); requires build_flagship_sample.py's output joined to target_ra/target_dec (e.g. via enrich_flagship_sample.py or a zcatalog coordinate join like crossmatch_flagship.py's) -- build_flagship_sample.py's own narrow shard schema has no ra/dec.",
+    "is_partial_preview": false
+  },
+  {
+    "name": "s8_deep_full",
+    "path": "/PATH/OUTSIDE/REPO/flagship_sample_enriched_s8.parquet",
+    "id_col": "targetid",
+    "ra_col": "target_ra",
+    "dec_col": "target_dec",
+    "score_col": "anomaly_score",
+    "z_col": "z",
+    "threshold": 8.0,
+    "parent_total": 27547223,
+    "catalog_total_at_threshold": 3810,
+    "catalog_total_note": "documented S>8 count from SESSION_HANDOFF_2026-08-05_to_2026-08-28.md's threshold table (S>8 = 3,810; pre-declared grid point per the sealed threshold decision); parent_total = unique_targetids from summary.json.",
+    "is_partial_preview": false
+  }
+]

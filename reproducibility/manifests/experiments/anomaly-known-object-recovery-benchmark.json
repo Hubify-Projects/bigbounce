@@ -1,0 +1,85 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-known-object-recovery-benchmark",
+  "title": "Known-object recovery benchmark for the anomaly flagship catalogue (ledger item #8)",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "Sealed locator inventory (HEALPix footprint definition)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl",
+      "checksum": null
+    },
+    {
+      "name": "Partial S>8 enrichment bundle (preview run only)",
+      "type": "external-dataset",
+      "locator": "https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/tree/main/phase3/2026-08-26/partial-enrichment-s8",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Reference 'unusual object' classes (Baron & Poznanski 2017, Roma-BZCAT, BALQSO, CV, carbon-star, LAE, EELG, changing-look-QSO, SLSN-host, GRB-host catalogues)",
+      "type": "external-dataset",
+      "locator": "VizieR (astroquery.vizier) -- see REFERENCE_CLASSES in benchmark_known_object_recovery.py for per-class catalogue IDs and source papers",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "VizieR (CDS)",
+      "endpoint": "https://vizier.cds.unistra.fr/viz-bin/votable",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
+      "entrypoint": "python3 benchmark_known_object_recovery.py --fetch-references --reference-cache-dir <cache> && python3 benchmark_known_object_recovery.py --crossmatch --reference-cache-dir <cache> --catalogs-config <config.json> --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir <out>",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, astroquery, healpy, pandas, pyarrow, numpy -- see clean_rerun's phase-3 pip install line in RUNBOOK.md",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-02",
+    "wall_clock": "under 5 minutes (fetch-references + crossmatch stages combined) for the PREVIEW run",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU or the phase-3 RunPod pod (same host, no extra GPU need)",
+    "est_wall_clock": "minutes for --fetch-references (VizieR query latency dominates, ~10-30s per class with checkpointless single-shot fetch); seconds to low minutes for --crossmatch once the flagship sample carries target_ra/target_dec (via enrich_flagship_sample.py) for the full S>5/S>8 samples",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "The PREVIEW run committed under results_2026-08-07/phase3/recovery_benchmark_preview/ used the 57/3810-group PARTIAL S>8 enrichment bundle (not the full sample) and returned 0 fetched reference classes because this build environment's outbound route to vizier.cds.unistra.fr's VizieR TAP/query endpoint (not just the raw TCP port) times out/resets on every attempt, though the TCP port itself is reachable -- see reference_manifest.json's per-class error field for the exact honest failure mode of each attempt. Re-run --fetch-references from a host with working VizieR access (Houston's machine or the RunPod pod) to get real reference-class row counts, then re-run --crossmatch once build_flagship_sample.py's S>5 output has been joined to target_ra/target_dec (it currently is not -- only the S>8 enriched sample carries coordinates) and the full (not partial) S>8 sample has landed from phase 3."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.md",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "pipelines/p1_highz_tracers/tests/test_recovery_benchmark.py (26 offline unit tests, pytest -q) covers the pure/offline matching, HEALPix footprint-restriction, Wilson-score CI, and enrichment/closed-loop-candidate arithmetic against hand-verified synthetic fixtures. The committed PREVIEW recovery_benchmark.json/.md are the actual output of a real run against real (partial) data -- not synthetic -- and are honest about their 0-fetched-classes outcome; do not treat the preview's empty results table as evidence against any reference class, only as evidence this build environment could not reach VizieR's query endpoint on 2026-09-02.",
+  "status": "needs-data-restore",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 8",
+    "project-context/SESSION_HANDOFF_2026-08-05_to_2026-08-28.md (Anomaly flagship section: S>5=52188, S>8=3810, unique_targetids=27547223)",
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json (threshold=5.0, threshold_count_after_dedup=52188, unique_targetids=27547223)",
+    "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md Section 19",
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.json (this run's own committed output)"
+  ]
+}

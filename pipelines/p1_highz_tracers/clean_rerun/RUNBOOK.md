@@ -568,3 +568,65 @@ color is available as a feature.
   before being checkpointed is retried on the next incarnation.
 - Run the offline test suite before trusting a fresh phase-3 change:
   `python3 -m pytest pipelines/p1_highz_tracers/tests/ -q`.
+
+### 19. Known-object recovery benchmark (ledger #8)
+
+Answers `project-context/NEXT_SCIENCE_LEDGER.md` row 8: does the flagship
+catalogue recover published "unusual object" classes above the base rate an
+untargeted cut would give? Runs once step 16b (`enrich_flagship_sample.py`)
+has produced a `target_ra`/`target_dec`-bearing sample for BOTH the S>5
+catalogue and the S>8 deep sample (step 16's raw `flagship_sample.parquet`
+has no ra/dec — see `benchmark_known_object_recovery.py`'s docstring).
+Tooling: `benchmark_known_object_recovery.py` in this directory; offline
+tests in `pipelines/p1_highz_tracers/tests/test_recovery_benchmark.py`.
+
+Stage 1 — fetch reference "unusual object" classes from VizieR (network
+required; run from a host that can reach `vizier.cds.unistra.fr`'s query
+endpoint, not just its TCP port — verified to be the working combination
+from Houston's machine, not from every sandbox):
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py \
+  --fetch-references \
+  --reference-cache-dir /path/outside/repo/reference_catalogs \
+  --row-limit 200000
+```
+
+Stage 2 — cross-match against the full S>5 and S>8 samples (edit
+`catalogs_config_example.json`'s `path`/`catalog_total_at_threshold` to the
+real `flagship_sample_enriched.parquet` paths and counts once phase 3 has
+completed and the S>5 sample has been ra/dec-joined; the S>5 raw sample
+needs a coordinate join like `crossmatch_flagship.py`'s or a run through
+`enrich_flagship_sample.py`):
+
+```sh
+python3 pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py \
+  --crossmatch \
+  --reference-cache-dir /path/outside/repo/reference_catalogs \
+  --catalogs-config pipelines/p1_highz_tracers/clean_rerun/catalogs_config_example.json \
+  --locator-inventory pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl \
+  --radius-arcsec 1.5 \
+  --out-dir pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark
+```
+
+Fails closed if a required column is missing from a catalogue, or if the
+locator inventory is absent/empty; never fabricates a matched-row count.
+A class that could not be fetched (no network, bad VizieR ID, no known
+catalogue ID) is recorded `status: "unavailable"`/`"no_catalog_id_known"`
+with the raw error, and is simply excluded from the cross-match rather than
+faked. Per ledger #8's exit rule: >=1 class with recovery enrichment > 10x
+over the catalogue's base rate and >=5 matches is a "confirmed class"
+signal (`is_closed_loop_candidate: true` in the output JSON) worth writing
+up as a paper section; otherwise the catalogue's own honest recovery table
+stands as the headline result for a data-release framing.
+
+A PREVIEW run (2026-09-02, before phase 3 completed) is committed at
+`results_2026-08-07/phase3/recovery_benchmark_preview/` against the
+57/3810-group PARTIAL S>8 enrichment bundle
+(HF `phase3/2026-08-26/partial-enrichment-s8/`) — it returned 0 fetched
+reference classes because this build's environment could not reach
+VizieR's query endpoint (see that run's manifest for the exact per-class
+error); it demonstrates the pipeline mechanics end-to-end on real (not
+synthetic) catalogue data, not a real recovery result. Re-run stage 1 from
+a networked host, then re-run stage 2 against the full phase-3 outputs, to
+get the real answer to ledger item #8.

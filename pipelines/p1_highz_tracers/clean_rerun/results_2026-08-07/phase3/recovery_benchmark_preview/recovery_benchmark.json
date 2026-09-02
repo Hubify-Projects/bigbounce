@@ -1,0 +1,32 @@
+{
+  "benchmark_version": "bigbounce-recovery-benchmark/v1",
+  "catalogs": [
+    {
+      "catalog_total_at_threshold": 3810,
+      "catalog_total_note": "PREVIEW ONLY: this is the 57/3810-group PARTIAL S>8 enrichment bundle (HF phase3/2026-08-26/partial-enrichment-s8/, 61 rows), NOT the full sealed S>8 deep sample. catalog_total_at_threshold=3810 is the documented FULL S>8 count from SESSION_HANDOFF_2026-08-05_to_2026-08-28.md -- base_rate/enrichment computed here use the full-sample denominator even though the matched rows come from the partial bundle; recompute against the true full-sample file once phase 3 completes on the pod.",
+      "is_partial_preview": true,
+      "name": "s8_deep_partial_preview",
+      "parent_total": 27547223,
+      "threshold": 8.0
+    }
+  ],
+  "closed_loop_candidates": [],
+  "generated_at": "2026-09-02T20:53:04.816651+00:00",
+  "ledger_item": "NEXT_SCIENCE_LEDGER.md #8 -- anomaly catalogue known-object recovery benchmark",
+  "parameters": {
+    "catalogs_config": "/tmp/catalogs_config_preview.json",
+    "footprint_restriction": true,
+    "healpix_nest": true,
+    "healpix_nside": 64,
+    "locator_inventory": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl",
+    "radius_arcsec": 1.5,
+    "z_tol": 0.05
+  },
+  "reference_manifest_summary": {
+    "n_classes": 11,
+    "n_fetched": 0,
+    "n_no_catalog_id_known": 1,
+    "n_unavailable": 10
+  },
+  "results": []
+}
