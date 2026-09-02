@@ -3,6 +3,23 @@ r"""
 dim4_parityodd_enumeration.py
 =============================
 
+ERRATUM ADDENDUM — 2026-08-28 (P1C R13 MAJOR-4; original text and output
+below are preserved verbatim and are NOT rewritten):
+  * This script's printed statements "T = kappa S" (pure-axial on-shell
+    torsion), "O1, O6 vanish by Bianchi", and its use of the word "basis"
+    reflect the pre-2026-08-08 understanding.  Solving the Einstein--Cartan--
+    Holst connection equation with no irrep ansatz
+    (research/theory_audit/ech_torsion_onshell_2026_08_08.{py,json,md})
+    shows the on-shell torsion carries BOTH an axial and a trace-vector
+    irrep (beta/alpha = 1/(2 gamma)); pure axiality is only the gamma -> inf
+    limit.  Consequently O4 is not identically zero on shell, O1 = O6 =
+    -O2 + O4/2 (O1 and O6 are not exact total derivatives on the ECH
+    branch), and {O1..O6} is a rank-4 SPANNING LIST, not a basis
+    (research/theory_audit/operator_basis_adjudication_2026_08_07.md,
+    with its own dated erratum addendum).  The two identities this script
+    actually verifies remain correct as verified; its narrative labels are
+    superseded by the artifacts above, which the manuscript now cites.
+
 REAL-SCIENCE closure of the Gemini/ChatGPT MAJOR on the unified Paper 1
 (arxiv/paper1_unified.tex, App.~\ref{app:dimensions}):
 
