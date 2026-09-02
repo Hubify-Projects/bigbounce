@@ -2,9 +2,11 @@
 
 ## CLICK-LIST (ordered) — everything Houston must click/send, nothing agent-doable left
 
-**Refreshed 2026-09-02** against the final manuscripts (P4′ v4P.0.4, ECH
-Note v1N.0.4 — both APPROVE at agent gates, readiness 95; P2′ DEFERRED, its
-content lives in the not-yet-reviewable A3 paper).
+**Refreshed 2026-09-02** against the final manuscripts (P4′ v4P.0.5, ECH
+Note v1N.0.5 — both APPROVE at agent gates, readiness 95; P2′ DEFERRED, its
+content lives in the not-yet-reviewable A3 paper). Both abstracts were
+trimmed 2026-09-02 (final-review REVISE) to satisfy their venue word caps —
+presentation-only, no science change.
 
 1. **Mint the Zenodo new-version DOI for the ECH Note** (P1C survey +
    theory-audit artifacts) via the Zenodo UI "New version" on the published
@@ -63,15 +65,17 @@ from his own mail client, under his own name. Nothing below has been sent.
 
 ## 1. ECH Note — gr-qc `HYEJ7S` (cross-list astro-ph.CO `LRZHC4`)
 
-**FINAL manuscript** (`arxiv/paper1bc_ech_note/main.tex`, v1N.0.4,
+**FINAL manuscript** (`arxiv/paper1bc_ech_note/main.tex`, v1N.0.5,
 2026-09-02, ApproveD at agent gates, readiness 95): title **"What Minimal
 Einstein–Cartan Torsion Does for the Bounce and Cannot Do for Dark Energy."**
-Tarball `SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.4.tar.gz` sha256
-`67eac435…`; residual before submission: no Zenodo DOI yet for the P1C
+Tarball `SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.5.tar.gz` sha256
+`26f215d6…`; residual before submission: no Zenodo DOI yet for the P1C
 survey / theory-audit artifacts (mint a new version under the P1A concept
 DOI `21481837` — click-list item below).
 
-> FINAL abstract (v1N.0.4, verbatim from the compiled manuscript):
+> FINAL abstract (v1N.0.5, trimmed to 298 words for the 300-word cap —
+> verbatim from the compiled manuscript; no science change from v1N.0.4,
+> presentation-only trim):
 > Popławski's Einstein–Cartan black-hole cosmology replaces the classical
 > singularity with a torsion-supported bounce: eliminating the
 > non-propagating spin connection from the minimal Einstein–Cartan–Holst
@@ -80,33 +84,29 @@ DOI `21481837` — click-list item below).
 > that bounce mechanism. We ask whether the same mechanism can also
 > source late-time dark-energy density and answer, systematically, no.
 > We (i) derive the minimal axial–axial contact interaction
-> −(3κ/16)[γ²/(1+γ²)]J₅² and show its declared direct-channel,
-> hard-cutoff, mean-field NJL scalar projection is repulsive,
+> −(3κ/16)[γ²/(1+γ²)]J₅², show its direct-channel, hard-cutoff,
+> mean-field NJL scalar projection is repulsive,
 > G_s = −(3κ/16)[γ²/(1+γ²)], so the gap equation for this condensate
 > channel has no nonzero solution; (ii) prove a perturbation-transparency
-> theorem for canonical scalar matter: torsion vanishes at every classical
-> perturbation order and the Holst sector decouples identically, by the
-> algebraic Bianchi identity on the torsion-free branch; and (iii) catalog
-> fourteen mechanism-class constraints — two derived here, several argued
-> in-paper naturalness statements, the rest self-labelled heuristics —
-> jointly bounding the four channels (NJL contact, one-loop Holst
-> correction, Immirzi running, parity-odd CMB coupling) by which minimal
-> ECH could connect bounce-scale torsion to a late-time Λ-like density,
-> including a rebuttal of Popławski's own proposed torsion dark-energy
-> mechanism. A six-member generating list of dimension-four,
-> construction-rule-admitted local densities (mixed parity, spanning five
-> distinct densities at rank four) is either an exact total derivative on
-> the torsion-free branch, a Fierz-closed M_Pl⁻²-suppressed contact term
-> on-shell, or identically vanishing; the on-shell torsion's trace-vector
-> irrep is the larger contribution (β/α = 1/(2γ) ≃ 2.11 at the programme's
-> benchmark γ=0.2375), with the tensor irrep vanishing identically. The
-> result is a structural dichotomy: the same contact term that supplies
-> Popławski's bounce mechanism as γ→∞ is, at the programme's finite
-> physical γ, parity-even, Planck-suppressed, and classically transparent
-> to perturbations — unable to generate the late-time acceleration
-> attributed to dark energy. No ECH dark-energy or birefringence
-> prediction is made; this is a channel-level, not operator-level,
-> closure within the stated minimal-coupling scope.
+> theorem: torsion vanishes at every classical perturbation order and the
+> Holst sector decouples identically via the algebraic Bianchi identity;
+> and (iii) catalog fourteen mechanism-class constraints — two derived
+> here, the rest argued or self-labelled heuristics — jointly bounding
+> four channels (NJL contact, one-loop Holst correction, Immirzi running,
+> parity-odd CMB coupling) by which minimal ECH could connect bounce-scale
+> torsion to a late-time Λ-like density, rebutting Popławski's own
+> proposed mechanism. A six-member generating list of dimension-four,
+> rule-admitted local densities (mixed parity, five distinct densities at
+> rank four) is either an exact total derivative on the torsion-free
+> branch, a Fierz-closed M_Pl⁻²-suppressed contact term on-shell, or
+> identically vanishing; the on-shell trace-vector irrep is the larger
+> contribution (β/α = 1/(2γ) ≃ 2.11 at benchmark γ=0.2375), the tensor
+> irrep vanishing identically. The result is a structural dichotomy: the
+> same contact term supplying Popławski's bounce mechanism as γ→∞ is, at
+> finite physical γ, parity-even, Planck-suppressed, and classically
+> transparent to perturbations — unable to generate late-time
+> acceleration. No ECH dark-energy or birefringence prediction is made;
+> this is a channel-level, not operator-level, closure.
 
 ### Endorsers (2 needed max; several submissions in gr-qc in the last 5 years required by arXiv rule)
 
@@ -180,7 +180,7 @@ instead (§3).
 > houston@hubify.com · ORCID 0009-0008-5616-5994
 
 **Gate before sending:** the manuscript now exists and compiles clean
-(v1N.0.4, APPROVE at agent gates, readiness 95) — insert the final PDF/DOI
+(v1N.0.5, APPROVE at agent gates, readiness 95) — insert the final PDF/DOI
 link once the Zenodo new-version mint completes (click-list item below);
 do not send with the `[DOI/PDF link]` placeholder still in place.
 
@@ -189,50 +189,43 @@ do not send with the `[DOI/PDF link]` placeholder still in place.
 ## 2. P4′ — astro-ph.GA `CLVMAQ` (cross-list astro-ph.CO `LRZHC4`)
 
 **FINAL manuscript** (`pipelines/p4prime_chirality_test/paper/main.tex`,
-v4P.0.4, 2026-09-02, APPROVE at agent gates, readiness 95; P5 folded in as
+v4P.0.5, 2026-09-02, APPROVE at agent gates, readiness 95; P5 folded in as
 the void-environment cross-check section per Track C1): title **"The
 Largest Test of a Preferred Galaxy-Spin Axis: An 8.47-Million-Galaxy DESI
 Chirality Catalog, a Void-Environment Contrast, and a Sensitivity
 Confrontation with the Rotating-Black-Hole-Universe Prediction."** Tarball
-`SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.4.tar.gz` sha256
-`db108413…`; residual before submission: P5 has no Zenodo DOI (mint a new
+`SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.5.tar.gz` sha256
+`fbab0380…`; residual before submission: P5 has no Zenodo DOI (mint a new
 version under the P4 concept DOI `21461898` or as its own record — click-list
 item below).
 
-> FINAL abstract (v4P.0.4, verbatim from the compiled manuscript):
-> Two independent literatures motivate a search for a preferred axis in
-> galaxy spin directions: observational claims of a handedness dipole or
-> asymmetry (Longo 2011; Shamir 2012–2025) and Popławski's rotating
-> black-hole-universe model, in which Einstein–Cartan torsion resolves the
-> central singularity of a collapsing black hole into a bounce, and the
-> resulting daughter universe inherits a preferred axis from the parent
-> black hole's spin, toward which galaxies are predicted to tend to align.
-> We report the largest test of that observable claim to date: an
-> 8,474,531-galaxy DESI Legacy DR8 chirality catalog and two independent
-> null tests built on it. The primary, quality-controlled, high-confidence
-> real-space dipole (N_support=887,472 of 890,069 quality-controlled rows)
-> is null-consistent (z_mom=+0.635, one-sided p=0.238), with a
-> coverage-calibrated observed-label 95% detection-power sensitivity floor
-> A₉₅^obs≃0.98% (full-amplitude; the corresponding Neyman 95% CL upper
-> limit on the measured amplitude is A₉₅^CL≃0.75%, and we confront the
-> model with the more conservative floor). A companion DESIVAST
-> void/non-void environment contrast on 145,766 classifier-labelled
+> FINAL abstract (v4P.0.5, trimmed to the ApJS 250-word single-paragraph
+> cap — 246 words, verbatim from the compiled manuscript; no science
+> change from v4P.0.4, presentation-only trim):
+> Two literatures motivate a search for a preferred axis in galaxy spin
+> directions: handedness-dipole claims from Longo and from Shamir, and
+> Popławski's rotating black-hole-universe model, in which Einstein-Cartan
+> torsion halts a collapsing black hole's singularity, bouncing into a
+> daughter universe that inherits a preferred axis from the parent's spin,
+> toward which galaxies are predicted to align. We report the largest test
+> of that claim to date: an 8,474,531-galaxy DESI Legacy DR8 chirality
+> catalog and two independent null tests. The primary, quality-controlled
+> real-space dipole (N_support=887,472 of 890,069 rows) is null-consistent
+> (z_mom=+0.635, one-sided p=0.238), with a 95% sensitivity floor
+> A₉₅^obs≃0.98% (Neyman 95% CL limit A₉₅^CL≃0.75%, the floor used below).
+> A companion DESIVAST void/non-void contrast on 145,766 classifier-labelled
 > galaxies likewise finds no significant effect (ΔfCW=+0.00145, two-sided
-> p=0.66). We derive what the black-hole-universe model implies for a
-> spin-axis dipole and find that the cited mechanism papers give only a
-> qualitative alignment tendency, not a computed amplitude; under the
-> minimal closure needed to make the claim quantitative, our sensitivity
-> floor disfavors an alignment-driven observed dipole above ~1% at ≥95%
-> detection power, a factor of 2–20× below the ~2–33% amplitudes reported
-> in the literature that motivates the model, though under an
-> illustrative, not-adopted-for-strengthening observed-to-physical bridge
-> the two largest comparison samples drop below this floor and that
-> should not go unstated. This null is measured on 887,472 primary-channel
-> spirals: a factor of 4–3,400× larger than every comparison catalog
-> except Shamir (2022)'s same-survey DESI Legacy sample (N=1.3 million),
-> which exceeds it. This confirms the independent reanalyses of Iye et al.
-> (2021) and Patel & Desmond (2024) that report no significant
-> galaxy-spin anisotropy.
+> p=0.66). We derive the model's spin-axis-dipole implication; the cited
+> mechanism papers give only a qualitative tendency, not a computed
+> amplitude, so under the minimal closure needed to quantify the claim, our
+> floor disfavors a dipole above ~1% at ≥95% power, 2–20× below the
+> ~2–33% literature amplitudes, though under an illustrative,
+> not-adopted-for-strengthening bridge the two largest comparison samples
+> drop below this floor. This null is measured on 887,472 primary-channel
+> spirals, 4–3,400× larger than every comparison catalog except Shamir's
+> DESI Legacy sample (N=1.3 million), and confirms independent reanalyses
+> by Iye et al. and Patel & Desmond finding no significant galaxy-spin
+> anisotropy.
 
 ### Endorsers (astro-ph.GA; several submissions in astro-ph.GA in the last 5 years required)
 
@@ -306,7 +299,7 @@ Violeta Gonzalez-Perez, Claire Lamman, Willem Elbers, John F. Suárez-Pérez.
 > houston@hubify.com · ORCID 0009-0008-5616-5994
 
 **Gate before sending:** the manuscript now exists and compiles clean
-(v4P.0.4, APPROVE at agent gates, readiness 95, P5 folded in) — insert the
+(v4P.0.5, APPROVE at agent gates, readiness 95, P5 folded in) — insert the
 final PDF/DOI link once the Zenodo new-version mint for P5 completes
 (click-list item below); do not send with the `[DOI/PDF link]` placeholder
 still in place. The pre-merge ApJS staging kit

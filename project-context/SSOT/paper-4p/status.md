@@ -1,9 +1,41 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.3 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** not yet scored (R2 closure just landed; a fresh
-verification round on v4P.0.3 is the natural next step, per directive R2's
-"third round justified only as a verification pass")
+**Current candidate:** v4P.0.5 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** not yet scored.
+
+## Final-review REVISE executed (v4P.0.4 → v4P.0.5, 2026-09-02)
+
+Final-review found the ApJS abstract exceeded the 250-word single-paragraph
+cap (v4P.0.4 abstract measured 311 words). Trimmed to **246 words**
+(pdftotext, page-1 abstract block) with **no science change** — every
+required quantitative fact preserved verbatim: $N_{\rm support}=887{,}472$
+of $890{,}069$ rows (parent 8,474,531); $z_{\rm mom}=+0.635$, one-sided
+$p=0.238$; $A_{95}^{\rm obs}\simeq0.98\%$; Neyman $A_{95}^{\rm
+CL}\simeq0.75\%$; $\Delta f_{\rm CW}=+0.00145$, two-sided $p=0.66$ on
+145,766 DESIVAST-classified galaxies; the black-hole-universe mechanism
+papers' qualitative-only alignment claim; the $2$–$20\times$ /
+$\sim2$–$33\%$ literature-amplitude comparison; the
+not-adopted-for-strengthening observed-to-physical bridge caveat; and the
+confirmation of Iye et al. (2021) and Patel & Desmond (2024). No
+parenthetical (Author Year) citations remain in the abstract. Convergence
+statement unchanged — this is a presentation-only revision.
+
+- **Version:** v4P.0.5, dated 2026-09-02.
+- **Compile:** 4-pass `pdflatex`, 0 undefined refs, no new overfull hboxes
+  >10pt, 11 pages (unchanged from v4P.0.4).
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `f0d874e93cebf95f86e408f780f002e0`, SHA-256
+  `b60781c761ea10eb26e3ce1b9ccb06a0a17c05d44588972a9c42f6602991a5fb`.
+  Mirrored byte-identically to
+  `site/public/papers/paper4prime_chirality_test_v4P.0.5.pdf` and
+  `public/papers/paper4prime_chirality_test_v4P.0.5.pdf`.
+- **Registry:** `project-context/draft_paper_registry.json` id `P4P` updated
+  (version/pages/sha256/md5/served_aliases).
+- **arXiv tarball:** rebuilt per `bib-tarball-rebuild`,
+  `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.5.tar.gz`.
+- **Kits:** `project-context/SSOT/PORTAL_KITS_2026-09-02.md` and
+  `ENDORSER_OUTREACH_2026-09-02.md` paste-ready abstracts updated to the
+  trimmed v4P.0.5 text; "needs trim" note removed.
 
 ## Lineage
 
