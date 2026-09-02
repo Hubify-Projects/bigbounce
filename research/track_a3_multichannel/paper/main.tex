@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.2}
+\newcommand{\paperVersion}{v3M.0.3}
 \newcommand{\paperTimestamp}{September 2, 2026}
 
 \begin{document}
@@ -64,15 +64,20 @@ the causality-limited infrared slope of \emph{any} scalar-induced background, so
 this channel is a consistency check and not a discriminator, and that it is
 insensitive to the value of $\fnl$. A scale-invariant \emph{primordial} tensor
 background ($n_{\rm T}=0$, $\gamma=5$) is excluded at $6.37\sigma$ by the same
-posterior. (ii)~\emph{Primordial black holes.} Within a Press--Schechter
-treatment with the local quadratic map, negative $\fnl$ imposes an absolute
-ceiling $\zeta_{\max} \simeq -5/(12\fnl)$ on the curvature perturbation, which
-therefore \emph{doubles} from $0.0952$ at $-35/8$ to $0.1905$ at $-35/16$. At an
-amplitude calibrated so that the Gaussian case saturates $\fpbh = 1$, the halved
-value yields $\fpbh = 7.3\times10^{-3}$ against $3.8\times10^{-6}$ at $-35/8$ --
-a suppression weaker by three orders of magnitude, placing $-35/16$ inside rather
-than far below the $10^{-3} \le \fpbh \le 1$ band reported for negative-$\fnl$
-bounce scenarios. (iii)~\emph{Large-scale structure.} The prediction is
+posterior. (ii)~\emph{Primordial black holes.} A Press--Schechter treatment with
+the truncated local quadratic map imposes a spurious ceiling on $\zeta$ that
+forces $\beta \equiv 0$ at standard thresholds; replacing it with the
+compaction-function formation criterion of Choudhury \textit{et al.} (2025)
+removes the ceiling and \emph{reverses} the first pass's ordering: at fixed
+curvature amplitude, $\fpbh(-35/16) < \fpbh(-35/8)$ at every point of a
+27-point $(\Delta,r_p,C_{\rm th})$ grid, because $-35/16$ needs $1.73\times$
+(range $1.61$--$1.81$) more amplitude than $-35/8$ to reach the same abundance.
+This amplitude ratio is the one robust output of the channel; $\fpbh$ itself
+moves by more than 100 decades across the grid because it is exponentially
+sensitive to the curvature-compaction correlation $\gamma_{\rm cr}$, which is
+fixed by the primordial spectrum shape -- an ingredient not reconstructible
+from the published EFT-of-bounce-plus-USR spectrum this channel is compared
+against. (iii)~\emph{Large-scale structure.} The prediction is
 consistent with the DESI DR1 constraint $\fnlloc = -3.6^{+9.0}_{-9.1}$ at
 $0.16\sigma$, and is the only channel sensitive to the value of $\fnl$: SPHEREx
 reaches $3.13\sigma$ ($2.63\sigma$ after the bounce-to-local shape projection
@@ -111,10 +116,11 @@ bispectrum -- each stated at exactly the strength its evidence supports.
 Every claim below is graded honestly: a reproduction is labeled reproduced, a
 first computation is labeled new, and a quoted number is labeled cited and never
 recomputed silently. This paper reports a multi-channel \emph{consistency
-assessment}, not a detection; the primordial-black-hole channel in particular is
-reported only at Press--Schechter level, with the compaction-function
-calculation needed to compare directly against the literature explicitly listed
-as an open item (Sec.~\ref{sec:pbh_limit}) rather than assumed.
+assessment}, not a detection; the primordial-black-hole channel is now
+evaluated with the compaction-function formation criterion used in the
+literature it is compared against, but yields only a ratio-level result -- not
+a quotable abundance -- because the primordial spectrum shape needed to fix the
+abundance is not reconstructible from the published source (Sec.~\ref{sec:pbh_limit}).
 
 %======================================================================
 \section{The exact matter-contraction amplitude}
@@ -380,82 +386,149 @@ attempted here.
 \section{Channel II: primordial black hole abundance}
 \label{sec:pbh}
 
-\subsection{Press--Schechter with local quadratic non-Gaussianity}
+\subsection{Press--Schechter with local quadratic non-Gaussianity: the first
+pass, and why it had to be redone}
+\label{sec:pbh_limit}
 
 Writing $\zeta = \zeta_G + A(\zeta_G^2 - \sigma^2)$ with $A = \tfrac{3}{5}\fnl$
 and $\zeta_G \sim \mathcal{N}(0,\sigma^2)$~\cite{YoungByrnes2013,Franciolini2018},
 the mass fraction is $\beta(\zetac) = P(\zeta > \zetac)$, obtained exactly by
-inverting the quadratic. Present-day abundance follows the standard radiation-era
-relation~\cite{Sasaki2018}
-\begin{equation}
-\begin{split}
-  \fpbh(M) = 1.68\times10^{8}\,
-  &\Big(\frac{\gamma_{\rm c}}{0.2}\Big)^{1/2}
-  \Big(\frac{g_*}{106.75}\Big)^{-1/4}\\
-  &\times\Big(\frac{M}{M_\odot}\Big)^{-1/2}\beta(M),
-\end{split}
-\end{equation}
-with $\gamma_{\rm c} = 0.2$, $g_* = 106.75$, and $M = 10^{20}\,$g.
-
-\subsection{An absolute ceiling that doubles}
-
-For $\fnl < 0$ the map is a downward parabola, so
+inverting the quadratic. For $\fnl < 0$ this map is a downward parabola with an
+absolute ceiling
 \begin{equation}
   \zeta_{\max} = -\frac{5}{12 \fnl} + \frac{3}{5}|\fnl|\sigma^2 ,
   \label{eq:ceiling}
 \end{equation}
-and no realisation exceeds it. The leading term scales as $1/|\fnl|$:
-$\zeta_{\max} = 0.09524$ at $-35/8$ and $0.19048$ at $-35/16$, a ratio of exactly
-$2$. This is the sharpest statement the channel makes about the two candidate
-values.
+that scales as $1/|\fnl|$: $\zeta_{\max} = 0.09524$ at $-35/8$ and $0.19048$ at
+$-35/16$, exactly a factor of $2$. At the standard curvature thresholds
+$\zetac \approx 0.45$--$1$ this ceiling forces $\beta \equiv 0$ identically for
+\emph{both} candidate values, so a first pass restricted to the low-threshold
+regime ($\zetac \lesssim 0.15$) is the only place the quadratic map produces a
+nonzero answer at all -- and there it reported $\fpbh(-35/16) > \fpbh(-35/8)$ by
+three to ten orders of magnitude, with the halved value landing inside the
+$10^{-3}\le\fpbh\le1$ band reported by Choudhury \textit{et
+al.}~\cite{Choudhury2025} for negative-$\fnl$ bounce scenarios. That ordering
+was flagged in the prior version of this paper as the sharpest statement the
+channel could make, but the ceiling that produced it is an artefact of
+truncating the local map at quadratic order, not a physical statement: it is
+exactly why the literature this comparison is drawn against uses the
+compaction-function formation criterion instead~\cite{Choudhury2025}, and
+redoing the calculation on that criterion is item A3-1 of this program.
 
-\subsection{Abundance at fixed amplitude}
+\subsection{The compaction-function result}
+\label{sec:pbh_compaction}
 
-The curvature power-spectrum amplitude is set by the source, and $\fnl$ then
-decides whether black holes are overproduced. Calibrating $\sigma$ on the
-Gaussian case so that $\fpbh = 1$ and reading off the two matter-bounce values at
-that same $\sigma$ gives Table~\ref{tab:pbh}.
+Following Young, Byrnes \& Sasaki (2019)~\cite{YoungByrnesSasaki2019} and Choudhury
+\textit{et al.} (2025)~\cite{Choudhury2025}, formation is set by the peak
+compaction $C(r_p) = \delta_p$ exceeding a threshold $C_{\rm th}$, with the
+radiation-era compaction function $C = C_{\rm lin} - C_{\rm lin}^2/(4f(w))$,
+$f(w) = 2/3$, and $C_{\rm lin} = J\,C_G$ carrying the same quadratic local map
+($J = 1 + \tfrac{6}{5}\fnl\zeta_G$) applied to the linear compaction $C_G$
+rather than to $\zeta$ itself. Because $C_G$ is an unbounded Gaussian variable,
+the map $\zeta_G \to C_{\rm lin}$ has \emph{no} ceiling, so every threshold
+$C_{\rm th} < C_{\max} = f(w) = 2/3$ is reachable at every $\fnl$: the
+Eq.~\eqref{eq:ceiling} artefact is removed by construction. We integrate the
+joint Gaussian PDF of $(C_G,\zeta_G)$ over the type-I formation domain (Musco
+2019~\cite{Musco2019}; $C_{\rm th}$ scanned over $\{0.4,0.5,0.6\}$) with a
+critical-scaling mass function ($\gamma_{\rm crit} = 0.36$, $K = 4$), using the
+Gaussian window for $C_G$ and the spherical window (with radiation transfer
+function) for $\zeta_G$, exactly as in Choudhury \textit{et al.}
+Eqs.~(30--66). The one ingredient of their calculation that is not
+reconstructible from the published paper is the regularized-renormalized-
+resummed one-loop curvature spectrum sourced by their EFT-of-bounce-plus-USR
+mode history: no closed-form $\Delta_\zeta^2(k)$, loop-counterterm
+normalisation, or EFT parameter set is printed. We use a lognormal stand-in
+spectrum, scanned over width $\Delta\in\{0.35,0.5,0.8\}$ and peak-scale
+$r_pk_p\in\{0.75,1.0,1.5\}$, and scan the amplitude $A$ rather than adopting
+theirs.
+
+At fixed curvature amplitude, calibrated so the Gaussian case gives
+$\fpbh = 1$, this criterion \emph{reverses} the first-pass ordering: across the
+full $27$-point $(\Delta, r_pk_p, C_{\rm th})$ grid,
+$\fpbh(-35/16) < \fpbh(-35/8)$ at \emph{every} point (Table~\ref{tab:pbh},
+Fig.~\ref{fig:pbh}), because the correlation $\gamma_{\rm cr} \equiv
+\sigma_{cr}^2/(\sigma_c\sigma_r)$ that governs the sign of the non-Gaussian
+correction is large and positive ($0.766$--$0.968$) at these spectrum shapes:
+the Gaussian-case formation channel rides a correlated ridge that negative
+$\fnl$ destroys, forcing the system into an anti-correlated, probability-costly
+regime whose leverage \emph{grows} with $|\fnl|$. $-35/8$ therefore always
+out-produces $-35/16$ here -- the opposite of the truncated-quadratic-map
+result. The one analytic statement of the first pass, that
+Eq.~\eqref{eq:ceiling}'s ceiling exactly doubles when $|\fnl|$ is halved,
+remains arithmetically true but is now physically empty: it described a
+truncation artefact that the compaction criterion does not share.
+
+$\fpbh$ itself is not a quotable constraint: because it depends exponentially
+on $\gamma_{\rm cr}$, it moves by more than $100$ decades across the grid at
+fixed target amplitude (Table~\ref{tab:pbh}), tracking the unreproducible
+spectrum shape (deviation D1 above). What \emph{is} robust is the ratio of
+curvature amplitudes needed to reach a fixed target abundance, since $K$,
+$\Omega_{\rm DM}$, $g_*$, and $M_H$ all cancel in it: reaching the floor of the
+Choudhury \textit{et al.} band, $\fpbh = 10^{-3}$, requires
+\begin{equation}
+  \frac{A(-35/16)}{A(-35/8)} = 1.732~[1.610,\,1.809],\quad {\rm std}=0.050,\ n=27,
+  \label{eq:pbh_ratio}
+\end{equation}
+i.e.\ stable to $\pm6\%$ while $\fpbh$ itself moves by more than $100$ dex. This
+is the one number this channel supports as a comparison of the two candidate
+amplitudes. A non-perturbative caveat applies at the amplitudes formation
+actually requires: $1.2|\fnl|\sigma_r \approx 0.5$--$2$ across the grid, so the
+quadratic truncation of the local map is not always perturbatively controlled
+there -- the same class of limitation Choudhury \textit{et al.} report as their
+own $|\fnl|\lesssim60$ perturbativity bound, and a limitation of the shared
+quadratic ansatz rather than of either calculation specifically. Reproducing
+Choudhury \textit{et al.}'s reported band at $-35/8$
+($10^{-3}\le\fpbh\le1$) is not forced by construction -- the amplitude was
+fixed by the unrelated Gaussian-case normalisation -- and it lands there
+unforced for $\gamma_{\rm cr}\gtrsim0.85$; for $\gamma_{\rm cr}\lesssim0.85$
+our implementation instead finds \emph{enhancement} relative to Gaussian where
+they report suppression, a genuine discrepancy left unresolved because it
+depends on which side of that crossover their (unreproducible) spectrum falls.
 
 \begin{table}[t]
-\caption{\label{tab:pbh}Channel II. $\fpbh$ at $M = 10^{20}\,$g, with $\sigma$
-calibrated at each threshold so that the Gaussian case gives $\fpbh = 1$.
-Entries ``$0$'' mean $\zetac$ exceeds the ceiling of Eq.~\eqref{eq:ceiling}.
-Perturbativity $0.6|\fnl|\sigma \le 0.04$ throughout.}
+\caption{\label{tab:pbh}Channel II. Compaction-function criterion: amplitude
+ratio $A(-35/16)/A(-35/8)$ required to reach $\fpbh=10^{-3}$, and $\fpbh$ at
+the Gaussian-calibrated amplitude, for representative points of the
+$(\Delta,r_pk_p,C_{\rm th})$ grid (full 27-point grid in
+\texttt{outputs/pbh\_compaction\_fnl.json}).}
 \begin{ruledtabular}
-\begin{tabular}{ccccc}
-$\zetac$ & $\sigma_*$ & $\fpbh(-35/16)$ & $\fpbh(-35/8)$ & ratio \\
+\begin{tabular}{ccccccc}
+$\Delta$ & $r_pk_p$ & $C_{\rm th}$ & $\gamma_{\rm cr}$ & $\fpbh(-35/16)$ & $\fpbh(-35/8)$ & ratio $A$ \\
 \colrule
-$0.05$ & $0.006325$ & $7.32\times10^{-3}$ & $3.75\times10^{-6}$  & $1.95\times10^{3}$ \\
-$0.08$ & $0.010120$ & $1.24\times10^{-4}$ & $1.12\times10^{-14}$ & $1.11\times10^{10}$ \\
-$0.10$ & $0.012650$ & $3.75\times10^{-6}$ & $0$ & --- \\
-$0.12$ & $0.015179$ & $4.29\times10^{-8}$ & $0$ & --- \\
-$0.15$ & $0.018974$ & $1.82\times10^{-12}$ & $0$ & --- \\
+$0.35$ & $0.75$ & $0.5$ & $0.897$ & $5.8\times10^{-21}$ & $4.5\times10^{-7}$ & $1.767$ \\
+$0.35$ & $1.5$  & $0.5$ & $0.968$ & $5.3\times10^{-107}$ & $7.0\times10^{-59}$ & $1.673$ \\
+$0.50$ & $1.0$  & $0.5$ & $0.888$ & $3.6\times10^{-14}$ & $1.6\times10^{-2}$ & $1.734$ \\
+$0.80$ & $0.75$ & $0.6$ & $0.766$ & $3.5\times10^{3}$   & $2.2\times10^{8}$  & $1.809$ \\
+$0.80$ & $1.5$  & $0.4$ & $0.857$ & $5.8\times10^{-9}$  & $1.6\times10^{1}$  & $1.677$ \\
 \colrule
-\multicolumn{5}{c}{\footnotesize compaction-function criterion (in progress)} \\
+\multicolumn{6}{l}{\footnotesize mean ratio $1.732\,[1.610,1.809]$, std $0.050$, $n=27$} & \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
-Negative $\fnl$ suppresses black hole formation, and $-35/16$ is a substantially
-weaker suppressor than $-35/8$: three to ten orders of magnitude at fixed
-amplitude. At $\zetac = 0.05$ the halved value lands inside the
-$10^{-3}\le\fpbh\le1$ band reported for negative-$\fnl$ bounce
-scenarios~\cite{Choudhury2025}, while $-35/8$ falls three orders below it.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{pbh_compaction_fnl.png}
+  \caption{\label{fig:pbh}Channel II, compaction-function criterion:
+  $\fpbh(\fnl)$ at the Gaussian-calibrated amplitude (top) and the required
+  amplitude ratio $A(-35/16)/A(-35/8)$ across the $(\Delta,r_pk_p,C_{\rm th})$
+  grid (bottom), from \texttt{pbh\_compaction\_fnl.py}.}
+\end{figure}
 
-\subsection{Limitation of the quadratic truncation}
-\label{sec:pbh_limit}
-
-% STUB (item A3-1). To be replaced by a compaction-function calculation.
-At the standard curvature thresholds $\zetac \approx 0.45$--$1$, the ceiling of
-Eq.~\eqref{eq:ceiling} forces $\beta = 0$ identically for \emph{both} negative
-values in the rare-tail regime. This is a property of the truncated quadratic
-map, not a physical statement, and it is why the compaction-function formation
-criterion is used in the literature~\cite{Choudhury2025}. Choudhury \textit{et
-al.} treat $\fnl = (-39.95, -35/8)$ in an effective-field-theory bounce with an
-ultra-slow-roll phase and report $10^{-3}\le\fpbh\le1$, complete mitigation of
-overproduction, and a perturbativity bound $|\fnl| \lesssim 60$; they do not
-treat $-35/16$. Redoing that calculation at $-35/16$ is the principal open item
-of this work and is \emph{not} claimed here.
+Present-day abundance uses~\cite{Sasaki2018}
+\begin{equation}
+\begin{split}
+  \fpbh = \frac{1}{\Omega_{\rm DM}}&\Big(\frac{M_\odot}{M_H}\Big)^{1/2}
+  \Big(\frac{g_*}{106.75}\Big)^{3/4}\Big(\frac{g_{*s}}{106.75}\Big)^{-1}\\
+  &\times\frac{\beta_{\rm NG}}{7.9\times10^{-10}},
+\end{split}
+\end{equation}
+with $\Omega_{\rm DM}=0.674$, $g_*=g_{*s}=106.75$, and a single horizon mass
+$M_H = 10^{20}\,$g (matching the first pass, rather than the mass-integrated
+Eq.~66 of Choudhury \textit{et al.}, an $O(1)$ width-factor deviation for a
+narrow peak). Full formalism, deviations (D1--D5), and validation are recorded
+in \texttt{research/track\_a3\_multichannel/}\allowbreak
+\texttt{PBH\_COMPACTION\_NOTE\_2026-09-02.md}.
 
 %======================================================================
 \section{Channel III: the large-scale-structure bispectrum}
@@ -507,30 +580,43 @@ consequential.
 
 \subsection{The joint statement}
 
-The three channels are mutually consistent at $\fnlloc = -35/16$. The pulsar
-timing slope agrees at $1.14\sigma$ and rejects the two competing spectral shapes;
-the primordial black hole channel is suppressed but not extinguished, and lands
-in the sizeable-abundance band; the bispectrum prediction is consistent with the
-best current measurement and reachable by SPHEREx. No channel is in tension with
-another.
+Pulsar timing is consistent with $\fnlloc = -35/16$ and insensitive to its
+value, agreeing at $1.14\sigma$ and rejecting the two competing spectral
+shapes regardless of which candidate amplitude is used. The primordial black
+hole channel, evaluated with the compaction-function criterion, gives a
+comparison of the two candidate amplitudes rather than an abundance: $-35/16$
+requires $1.73\times$ more curvature amplitude than $-35/8$ to reach the same
+$\fpbh$, and that ratio is robust while $\fpbh$ itself is not quotable until
+the source spectrum is predicted in-lab rather than borrowed as a stand-in.
+The bispectrum prediction is consistent with the best current measurement and
+reachable by SPHEREx. No channel is in tension with another, and only the
+survey channel currently separates the two candidate amplitudes at all.
 
 \subsection{Where the consistency is weak}
 
-Two of the three channels are insensitive to the parameter. The pulsar-timing
-result is a statement about a slope that any scalar-induced background shares,
-and it is identical at both candidate $\fnl$ values. The black hole channel is
-reported only at Press--Schechter level. The operative uncertainty is therefore
-internal: only the bispectrum channel separates $-35/16$ from $-35/8$, and it
-separates them by more than $3\sigma$ at SPHEREx sensitivity, so settling the
-factor of two by an independent derivation is a prerequisite for a sharp
-prediction rather than a bookkeeping detail.
+The pulsar-timing result is a statement about a slope that any scalar-induced
+background shares, and it is identical at both candidate $\fnl$ values. The
+black hole channel now uses the literature's own formation criterion, but its
+headline abundance depends on an unreconstructible primordial spectrum shape,
+so it supplies an amplitude ratio rather than an abundance test; that ratio
+does not by itself separate $-35/16$ from $-35/8$ observationally, only
+compares how hard each is to produce. The operative uncertainty is therefore
+still internal to the survey channel: only the bispectrum channel separates
+$-35/16$ from $-35/8$ against real or forecast data, and it separates them by
+more than $3\sigma$ at SPHEREx sensitivity, so settling the factor of two by
+an independent derivation is a prerequisite for a sharp prediction rather than
+a bookkeeping detail.
 
 \subsection{Next steps}
 \label{sec:next}
 
-In priority order: (i)~a compaction-function recomputation of Channel II at
-$-35/16$, replacing the placeholder row of Table~\ref{tab:pbh} (item A3-1,
-in progress in a concurrent lane); (ii)~an independent gradient-expansion or
+In priority order: (i)~an in-lab prediction of the primordial curvature
+spectrum sourced by the matter-bounce contraction phase, to replace the
+lognormal stand-in used in Sec.~\ref{sec:pbh_compaction} and turn the
+Channel~II amplitude ratio into a quotable abundance (item A3-1b), together
+with resolving the $\gamma_{\rm cr}\lesssim0.85$ enhancement-branch
+discrepancy against Choudhury \textit{et al.} (item A3-1c) and extending the
+grid to a mass-integrated abundance (item A3-1d); (ii)~an independent gradient-expansion or
 anisotropic (Bianchi-I) separate-universe derivation of Eq.~\eqref{eq:fnl},
 settling the factor of two with the contraction phase's own cubic term
 (item A3-2); (iii)~propagation of the matter-bounce scalar spectrum through
@@ -553,10 +639,12 @@ manifest; nothing is quoted from memory. The exact-amplitude derivation
 respectively, pinned to commit \texttt{68309c8}. The three channel computations
 of Secs.~\ref{sec:pta}--\ref{sec:lss} are committed at
 \texttt{research/track\_a3\_multichannel/}: \texttt{pta\_gamma\_reproduce.py},
-\texttt{pbh\_abundance\_fnl.py}, \texttt{survey\_reach\_fnl.py}, with results in
-\texttt{outputs/*.json} and manifests at
-\texttt{reproducibility/manifests/}\allowbreak\texttt{experiments/a3-*.json}
-(PTA/PBH/reach), \texttt{reproducibility/manifests/}\allowbreak
+\texttt{pbh\_abundance\_fnl.py} (first-pass Press--Schechter, superseded),
+\texttt{pbh\_compaction\_fnl.py} (compaction-function criterion, item A3-1),
+\texttt{survey\_reach\_fnl.py}, with results in \texttt{outputs/*.json} and
+manifests at \texttt{reproducibility/manifests/}\allowbreak
+\texttt{experiments/a3-*.json} (PTA/PBH/reach, including
+\texttt{a3-pbh-compaction-fnl.json}), \texttt{reproducibility/manifests/}\allowbreak
 \texttt{experiments/p2-fnl-*.json} (exact-amplitude derivation and validation),
 and \texttt{reproducibility/manifests/}\allowbreak
 \texttt{experiments/p2-a2-*.json} (bounce-transmission computation). The
@@ -646,6 +734,14 @@ against the committed script output.
   S. K. Singh, and P. Tiwari,
   ``Negative non-Gaussianity as a salvager for PBHs with PTAs in bounce,''
   Eur. Phys. J. C \textbf{85}, 472 (2025), arXiv:2409.18983.
+
+\bibitem{YoungByrnesSasaki2019} S. Young, C. T. Byrnes, and M. Sasaki,
+  ``Calculating the mass fraction of primordial black holes,''
+  JCAP \textbf{07}, 045 (2019), arXiv:1904.00984.
+
+\bibitem{Musco2019} I. Musco, ``Threshold for primordial black holes:
+  Dependence on the shape of the cosmological perturbations,''
+  Phys. Rev. D \textbf{100}, 123524 (2019), arXiv:1809.02127.
 
 \bibitem{Chaussidon2024} E. Chaussidon \textit{et al.} (DESI Collaboration),
   ``Constraining primordial non-Gaussianity with DESI 2024 LRG and QSO

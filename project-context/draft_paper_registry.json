@@ -124,13 +124,14 @@
     "article_type": "Multi-channel consistency of the matter-bounce prediction f_NL = -35/16 (exact amplitude, pulsar timing, primordial black holes, survey reach) -- Track A flagship submission candidate",
     "review_profile": "PRD-STANDARD",
     "served_aliases": [
-      "a3_multichannel_arxiv_v3M.0.2.pdf"
+      "a3_multichannel_arxiv_v3M.0.2.pdf",
+      "a3_multichannel_arxiv_v3M.0.3.pdf"
     ],
-    "version": "v3M.0.2",
-    "pages": 6,
+    "version": "v3M.0.3",
+    "pages": 7,
     "date": "2026-09-02",
-    "md5": "8f17a2dc877c0b58982e91a8dea0fa1b",
-    "lineage": "A3 skeleton (research/track_a3_multichannel/) + P2' v2L.0.2 exact-amplitude theory (f_NL=-35/16, ledger #1 CLOSED independent re-derivation) folded in per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. Status: draft -- PBH compaction-function row pending; one INT board pending.",
+    "md5": "9f7afea9e22a7816168fc7638fc8a753",
+    "lineage": "A3 skeleton (research/track_a3_multichannel/) + P2' v2L.0.2 exact-amplitude theory (f_NL=-35/16, ledger #1 CLOSED independent re-derivation) folded in per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. v3M.0.3: PBH compaction-function channel (item A3-1) integrated, replacing the Press-Schechter placeholder row; first-pass ordering reversed (ratio-level result, not a quotable abundance). Status: draft -- one INT board pending.",
     "review_paths": []
   }
 }
