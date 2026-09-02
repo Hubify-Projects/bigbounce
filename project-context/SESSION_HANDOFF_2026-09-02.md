@@ -20,15 +20,16 @@ before acting. Re-plan:
 ## Lane ledger (updated as lanes land)
 | Lane | Model | Status | Receipt |
 |---|---|---|---|
-| Repo reconciliation (both repos) | sonnet | running | f4478028, 2d93d0e4 landed |
+| Repo reconciliation (both repos) | sonnet | DONE | f4478028, 2d93d0e4, a657dbb0, f5f2c845; scistack 55b065e; hubify recovery branch deleted (7d45ecc7, pure-deletion snapshot); ours-merge fb3311ee; origin+upstream both at fb3311ee |
 | INTENT.md + PAPER_LINEAGE decisions | sonnet | DONE | 3c9c3684 |
-| Backup verification sweep | sonnet | running | — |
+| Backup verification sweep | sonnet | DONE | 7d2acdda — B2/HF/local/Zenodo/Convex/RunPod all PASS; gaps: Convex P4 title count stale (890,069 vs 949,584), no P1C Convex row |
 | Ledger #1 f_NL second method | opus (fable-class) | running | — |
 | A2 transmission coefficient | opus | running | — |
 | A3 multi-channel + NANOGrav reclaim | opus | running | — |
-| ECH Note merge | sonnet (re-issued) | pending | — |
-| P4′ + ledger #5 | sonnet (re-issued) | pending | — |
-| Endorser outreach + portal kits | sonnet (re-issued) | pending | — |
+| ECH Note merge | sonnet (re-issued) | running | — |
+| P4′ + ledger #5 | sonnet (re-issued) | running | — |
+| Endorser outreach + portal kits | sonnet (re-issued) | running | — |
+| Hubify reconciliation + lab surfaces + repro import | sonnet | running | — |
 | Pod 8ofv5d4ynu7hku phase 3 | monitor | enrichment ~22% at 19:46Z | PHASE3_DONE watch armed |
 
 ## Blockers recorded
