@@ -397,3 +397,71 @@ SSG paths). `tools/site_freshness_check.sh` PASS pre-push (no
 (modified) and `project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.3-EXACTPDF-c758664b-R3VERIFY/`
 (untracked) were present in the working tree on arrival — both belong to
 the concurrent R3-verification lane and were left alone.
+
+## v4P.0.4 + v2L.0.2 site sync (later same-day pass, Sonnet worker)
+
+Picked up after Convex bumps were already done by a prior lane (paperVersions
+row `k576j98mgmh32egg4rme7xe7jh8dmnp0` for v4P.0.4, `k57bzqv0fyydrm23byqyqpjw218dny02`
+for v2L.0.2) and PDF mirrors already byte-identical
+(`pipelines/p4prime_chirality_test/paper/main.pdf` md5 `ed6b8f661b407e6845cb5d42c3efd8d2`,
+11pp; `arxiv/paper2prime_fnl_letter/main.pdf` md5 `718521c10032511339b334ff6f277629`,
+4pp — verified across source / `site/public/papers/` / `public/papers/` before
+touching site data).
+
+**P4′ v4P.0.4** — R3 verification pass closed: Claude minor-revisions, Grok
+reject, Gemini minor-revisions; automated review convergence criterion met
+(directive P — 0 genuinely-new real findings across active legs); final
+author review recorded APPROVE. Readiness cap set to 95 (100 requires
+Houston's explicit per-paper sign-off, tracked separately per directive P).
+arXiv tarball `SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.4.tar.gz`
+verified sha256 `db108413…` on disk before referencing it in site copy.
+
+**P2′ v2L.0.2** — R1 board (Fable major-revisions, Grok reject, Gemini
+major-revisions) truth-audited; per the recorded scope decision
+(`project-context/SSOT/paper-2l/status.md` + the 2026-09-02 evening decision
+record in `PAPER_LINEAGE_2026-08-05.md`), the Letter is archived as a theory
+record rather than closed round-by-round — its content (exact matter-
+contraction amplitude, ledger-#1 independent re-derivation, orientation-
+dependent squeezed limit, δN cross-check) is folded into Track A's A3
+multi-channel paper. Title updated to "An independent confirmation of
+f_NL = −35/16 for matter-dominated contraction" per the decision record's
+stated NEW CLAIM; `statusVariant` set to `blue` (archived, not amber/active).
+
+**Site data updated this pass:** `site/src/data/papers.ts` (both paper
+blocks: version/readiness/pages/pdfMeta/changelog/artifacts hrefs/title),
+`site/src/data/live-status.ts` (both rows), `site/src/data/publish.ts` (P2′
+and P4′ rows relabeled), `site/src/data/reviewTimeline.ts` (two new
+`internal-api` entries, newest-first: P4′ R3-converged and P2′ R1-fold-
+into-A3). `/reviews`' readiness-cap sentence and verdict-trajectory `cap()`
+calls read live from `papers.ts`, so no separate hardcoded readiness mirror
+needed editing there.
+
+**Commit:** `42c12dd6` — `feat(site): sync v4P.0.4 + v2L.0.2 to site data`
+(papers.ts, live-status.ts, publish.ts, reviewTimeline.ts — site data
+committed first, before build/deploy, per protocol).
+
+**Build/deploy:** `npx tsc --noEmit` clean; `npm run build` clean, all
+static paper pages generated including `/papers/paper-4p` and
+`/papers/paper-2l`. `tools/site_freshness_check.sh` PASS (no
+`FRESHNESS_SKIP`) pre-push. Pushed to `origin main` and `upstream main` at
+`42c12dd6` cleanly; Vercel auto-deployed (took a few minutes to propagate —
+an early post-push check saw stale `Paper Artifacts` panel text (v4P.0.3)
+while the version chip already showed v4P.0.4, resolved once the deploy
+fully propagated; confirmed the local `.next` build output was already
+correct throughout, ruling out a data bug).
+
+**Live verification (headed browser, post-deploy):**
+- `/papers/paper-4p` renders `V4P.0.4 · LIVE`, readiness 95%, 11 pp, correct
+  md5/changelog/artifact hrefs.
+- `/papers/paper-2l` renders `V2L.0.2 · LIVE`, readiness 20%, 4 pp, new title
+  "An Independent Confirmation of f_NL = −35/16 for Matter-Dominated
+  Contraction", archived-theory-record copy.
+- In-page `fetch()` against both PDF URLs from the live origin: both
+  `200`, byte counts exactly matching local source files
+  (`paper4prime_chirality_test_v4P.0.4.pdf` = 1091040 bytes;
+  `paper2prime_fnl_letter_v2L.0.2.pdf` = 347144 bytes).
+- `/reviews` renders both new timeline entries ("P4′ R3 verification…" and
+  the P2′ R1 fold-into-A3 entry) and the readiness-cap sentence correctly
+  states P4′ 95.
+- `tools/site_freshness_check.sh` PASS again post-deploy (all FRESH except
+  the pre-existing non-blocking `skillslog` WARN, unrelated to this pass).
