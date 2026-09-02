@@ -65,6 +65,42 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4p-r3-verification-converged-v4p-0-4-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "P4′ R3 verification (Claude minor / Grok reject / Gemini minor) → v4P.0.4; automated review converged; final author review APPROVE; readiness 95",
+    papers: ["P4P"],
+    summary:
+      "P4′'s R3 verification board returned Claude minor-revisions, Grok reject, Gemini minor-revisions — every ChatGPT/Grok reject-tier item truth-audited as a source-cited re-flag or disclosed limitation, 0 genuinely-new real findings outstanding across active legs. Recompiled to v4P.0.4 (11pp, md5 ed6b8f661b407e6845cb5d42c3efd8d2). Automated review convergence criterion met (directive P); final author (Houston) review recorded APPROVE. Publication readiness set to 95 — the remaining 5 points require Houston's explicit per-paper sign-off (directive P), which is tracked separately from this score. arXiv tarball assembled: SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.4.tar.gz (sha256 db108413…).",
+    keyTakeaways: [
+      "v4P.0.4: R3 verification closed — Claude minor, Grok reject, Gemini minor; 0 genuinely-new real findings outstanding",
+      "Automated review convergence criterion met; final author review APPROVE",
+      "Readiness cap set to 95; 100 requires Houston's explicit per-paper sign-off",
+      "arXiv tarball assembled and sha256-verified",
+    ],
+    links: [
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+    ],
+  },
+  {
+    id: "p2l-r1-fold-into-a3-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "P2′ R1 (Fable major / Grok reject / Gemini major) → v2L.0.2; scope decision: folded into the A3 paper",
+    papers: ["P2L"],
+    summary:
+      "P2′'s R1 board returned Claude/Fable major-revisions, Grok reject, Gemini major-revisions. Rather than running further closure rounds on the standalone Letter, the findings were truth-audited and a scope decision was recorded: the Letter's content (the exact matter-contraction amplitude, the ledger-#1 independent re-derivation, the orientation-dependent squeezed limit, and the δN cross-check) is folded into Track A's A3 multi-channel consistency paper instead of being carried forward as its own submission track. P2′ is archived as a theory record at v2L.0.2 (4pp, md5 718521c10032511339b334ff6f277629). See project-context/SSOT/paper-2l/status.md and the scope-decision note in PAPER_LINEAGE_2026-08-05.md.",
+    keyTakeaways: [
+      "v2L.0.2: R1 (Fable major, Grok reject, Gemini major) truth-audited",
+      "Scope decision: content folded into the A3 multi-channel paper, not closed round-by-round as a standalone Letter",
+      "P2′ archived as a theory record; no further standalone submission track",
+    ],
+    links: [
+      { label: "P2′ SSOT", href: `${GH}/project-context/SSOT/paper-2l/status.md` },
+      { label: "Paper lineage decision", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+    ],
+  },
+  {
     id: "p1n-r2-closed-v1n-0-3-r3-dispatch-2026-09-02",
     dateISO: "2026-09-02",
     kind: "internal-api",

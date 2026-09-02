@@ -100,10 +100,10 @@ export const liveStatus: LiveStatus = {
     {
       slug: "paper-2l",
       number: "2L",
-      shortTitle: "Exact f_NL Letter (Track A A1, rescoped from P2)",
-      version: "v2L.0.1",
+      shortTitle: "Exact f_NL Letter (archived theory record — folded into A3)",
+      version: "v2L.0.2",
       readiness: 20,
-      pendingWork: "Ledger #1 closed (independent from-scratch in-in reproduces −35/16); R1 INT board dispatched (Fable referee leg + Grok + Gemini) — verdicts pending.",
+      pendingWork: "R1 (Fable major / Grok reject / Gemini major) truth-audited; scope decision recorded — archived theory record, content folded into the A3 multi-channel paper.",
     },
     {
       slug: "paper-3",
@@ -117,9 +117,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.3",
-      readiness: 20,
-      pendingWork: "R2 board closed (Claude major-revisions, Grok reject, Gemini major-revisions) — 21/21 findings closed this round; monopole disclosed; genuine 95% CL limit ≈0.75% by Neyman inversion; R3 verification pass dispatched, verdicts pending.",
+      version: "v4P.0.4",
+      readiness: 95,
+      pendingWork: "R3 verification pass closed — automated review converged (Claude minor, Grok reject, Gemini minor); final author review APPROVE; readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P).",
     },
     {
       slug: "paper-4",
