@@ -135,3 +135,19 @@ Reviewer projects: Grok `grok.com/project/e6c9ce77…`, ChatGPT `chatgpt.com/g/g
 - `git pull --rebase` before every push.
 
 **Stall recovery:** if an adjudicator or the whole loop stalls, a **fresh agent audits Convex FIRST** (the source of truth) before acting — it reconciles what's already recorded so it does not double-post a verdict or re-drive a leg that already landed. The launchd watchdog is the outer guarantee: a stale (`>45m`) `LOOP_HEARTBEAT.json` triggers a headless recovery tick that writes a fresh heartbeat, runs `site_freshness_check`, and harvests any submitted-unharvested manifests.
+
+## Remote policy (recorded 2026-09-02)
+
+- **`origin` = `github.com/Hubify-Projects/bigbounce` is canonical.** `main`
+  tracks it; the pre-push freshness gate runs against it; every paper, the
+  site, the Zenodo records, and the reproducibility manifests cite it (45
+  citations as of 2026-09-02). All work is committed and pushed here first.
+- **`upstream` = `github.com/houstongolden/bigbounce` is a fast-forward-only
+  mirror** (Houston's original repo; both are public). It receives the same
+  `main` after `origin`, never a different history. Nobody — human or agent —
+  commits or pushes to it directly; if that happens (as with `54057420`, the
+  2026-08-28 research-watch brief found only on upstream), the reconciliation
+  step brings the commit into `origin` first, then re-mirrors.
+- Divergence between the two is a defect to fix in the same session it is
+  found (`REPO_RECONCILIATION_<date>.md`), because two public histories with
+  different content undermine the provenance the papers cite.
