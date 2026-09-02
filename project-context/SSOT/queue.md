@@ -18,8 +18,9 @@ The active work is:
    rows removed, and 52,188 S>5 after dedup. The scan/provenance stage is
    closed; remaining work is the defended selected sample, validation contract,
    taxonomy, named follow-up set, and manuscript assembly.
-3b. **OPEN — anomaly flagship phase 3 (enrichment → cross-match → WISE →
-   taxonomy):** NOT complete. Pod `tc291bka0r6fl3` was terminated after the
+3b. **RUNNING (since 2026-08-28) — anomaly flagship phase 3 (enrichment → cross-match →
+   WISE → taxonomy)** on fresh pod `8ofv5d4ynu7hku` (ssh -p 8489 root@205.196.17.124;
+   markers BOOTSTRAP_DONE / PHASE3_DONE); previously NOT complete: Pod `tc291bka0r6fl3` was terminated after the
    scan; enrichment reached ~78 % of 3,128 groups on-pod, then a local attempt
    (2026-08-26) checkpointed 57 groups and stalled on DESI throughput. Corpus:
    B2 complete (36,634 shards + receipts, 0.63 GB, verified 2026-08-28), HF
