@@ -65,3 +65,80 @@
 - **No fabricated result was found** in v1N.0.1. Every traced value (`3κ/16`, `γ²/(1+γ²)`, `G_s = −3κ/16`, `β/α = 1/(2γ)`, rank 4 / rank 2, `O1 = ½O4 − O2`, `f_NL = −35/16`, `3.6e-69`, `0.07–0.17`, `β_obs`) reproduces its cited source or frozen artifact.
 - **The ECH dark-energy no-go conclusion survives all 19 open items unchanged** — every operator the corrections touch is the same Fierz-closed `(J⁵·J⁵)` structure at the same `MPl^{-2}` power (`ech_torsion_onshell_2026_08_08.md` §6).
 - Clean-wave count for P1N: **0**. Not converged.
+
+---
+
+## R2 board — `ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2`
+
+**Exact PDF sha256:** `790795fe3d0cd5c3ba68234ddf3a5336d11fbfa1d402c9bc9d4b3be3013f125d` (re-verified).
+**Legs:** Claude INT `major-revisions` (7 MAJOR / 13 MINOR), Grok API `REJECT`,
+Gemini API `MAJOR REVISIONS`, **Perplexity ABSENT** (not run; recorded absent).
+Round not degraded (no FALLBACK tags; real wall times + packet hashes).
+**Audit:** `INT_v3/ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2/P1N_v1N.0.2_R2_truth_audit.md`
+**Independent recomputation:** `research/theory_audit/p1n_r2_checks_2026_09_02.py` (6 checks, all assert-pass).
+
+35 leg findings audited → **21 GENUINELY-NEW-REAL, 2 INHERITED-ERROR, 2 RE-FLAG-OF-DISCLOSED,
+6 FALSIFIED, 2 OPINION/GENRE, 0 OUT-OF-SCOPE.** **23 canonical real items opened**
+(8 MAJOR, 14 MINOR, 1 NIT). R1's 19 items independently spot-verified as honestly closed;
+the two closed-with-defect and two partial R1 items are carried forward as new IDs rather
+than reopened. **No fabricated result found.** Clean-wave count for P1N: **0**.
+
+### Open items (R2 board)
+
+| ID | Issue | Verdict | Sev | Closure instruction |
+|---|---|---|---|---|
+| DP1N-21 | Eq. (13) wrong by exactly `8π`: `-24 M_Pl²αβ = -24πκγ³/(1+γ²)²`, not the printed `-3κγ³/(1+γ²)²`; `O4/O5` inverts from `0.22` to `8πγ/(1+γ²) = 5.65` (O4 is the *larger*). `main.tex:796–804` | **INHERITED-ERROR** — verbatim in **P1C v1C.0.16 `main.tex:2118–2123`**, which also prints a dimensionally impossible `-192π²G²` (correct: `-192π²G`). Structural `-24αβ` independently confirmed correct; only the κ substitution fails. No-go conclusion unaffected | MAJOR | Correct Note **and P1C**; re-run/re-commit `dim4_parityodd_enumeration.py` + `operator_basis_adjudication_2026_08_07.*`; record in P1C's ledger. **Science decision.** |
+| DP1N-22 | `O1 ≡ O6` identically for the metric-compatible ECH connection (tetrad conversion), so `O1-O6=0` is a tautology and "six-member spanning list, rank four" is partly presentational | **GENUINELY-NEW-REAL** (disclosure regression) — **P1C `main.tex:2041–2043` and `2690` state it openly** ("literally the same density"); the Note dropped the clause. Consistent with `operator_basis_adjudication_2026_08_07` (rank-4 spanning list) | MAJOR | Restore P1C's clause: five distinct densities, rank 4, one null direction is the duplication, only `2O1+2O2-O4=0` carries content, redundancy deliberate. Fix abstract + Conclusions. **Do not delete O6. Science decision.** |
+| DP1N-23 | `O5` parity: the Note says "parity-even off shell" and advertises a strictly parity-odd list | **INHERITED-ERROR** — `O5` is P-even **both** off and on shell (ε odd × T even × e even × J⁵ odd). Gemini P1N-M2 **CORRECT**; Claude MINOR 1's "O5 is P-odd off shell" **FALSIFIED**. Wording inherited from P1C `2096–2100` | MAJOR | State the list is ε-construction-rule-admitted and mixed-parity; drop the "parity-odd label belongs to the pre-reduction density" claim in Note **and** P1C. No rank/closure change |
+| DP1N-24 | Barrier catalog: **12 of 14** entries carry no citation and no derivation (only B12 sourced, only B14 derived; 4 `\cite` instances in Sec. IV, all in B12) | GENUINELY-NEW-REAL (Claude MAJOR 3 = Grok M1; residual of DP1N-06) | MAJOR | Citation or 2–4-line derivation per B1–B11, B13; demote unsupportable entries out of the "fourteen mechanism-class constraints" headline |
+| DP1N-25 | Popławski's dark-energy claim (Ref. [10], GRG 44, 491) is never stated, quantified, mapped to R1–R4, or closed | GENUINELY-NEW-REAL — **yes, the Note must engage it** to be a "what ECH cannot do for dark energy" paper | MAJOR | ~0.5 pp: state the mechanism with its equation, map to R1–R4 (closest R1, where Sec. II already does the work), name closing barrier + tier — or weaken "the four enumerated channels". **Scope decision** |
+| DP1N-26 | B7 ("γ fixed at a single universal value") contradicts B12 ("scheme-dependent"); B7's `Sec.~\ref{sec:theory}` cross-reference is empty ("area" occurs only at `515`, `561`) | GENUINELY-NEW-REAL | MAJOR | Cite `Ashtekar2011`/`GhoshMitra2005`; restate B7 as "fixed parameter, not a cycle-varying field"; repoint the cross-reference |
+| DP1N-27 | Route 3's "mass-dimension scaling relation" never displayed; one input → a six-order-wide 61–67 output | GENUINELY-NEW-REAL (Claude MAJOR 6 = Gemini P1N-M1). Eq. (9) itself reproduces (`1.38e-6`) | MAJOR | Display the relation with inputs; state what varies across 61–67; label the tier |
+| DP1N-28 | "No nonzero solution" asserted; gap equation, regulator, and argument deferred to a non-refereed deposit | GENUINELY-NEW-REAL (`G_s<0` **is** in-paper; the step from it is not) | MAJOR | Write `M = 2G_s M I(M,Λ)`, `I>0`; state the regulator; three-line no-solution argument |
+| DP1N-29 | Table I caption calls `κ` "the Barbero–Immirzi symbol" (`435–439`) | GENUINELY-NEW-REAL (closes DP1N-15's residual defect) | MINOR | "…the gravitational coupling `κ`" |
+| DP1N-30 | Table II R3 row cites a "chiral-count bound" appearing nowhere else (`696–698`) | GENUINELY-NEW-REAL | MINOR | Import or delete |
+| DP1N-31 | SHA pin applied to `\artifactbase` but not the `.bib`: 4 entries still on mutable `tree/main`/`blob/main` (`references.bib:279,287,295,303`) | GENUINELY-NEW-REAL (residual of DP1N-06) | MINOR | Pin to `ded46bc5…`; mint Zenodo DOIs for P1C + the three artifacts |
+| DP1N-32 | Provenance language survives in the `.bib` (ref. [26], `TorsionOnshell2026`) and as in-text tags "READING-I" (`202`) and "(P1A [15])" (`559`) | GENUINELY-NEW-REAL (residual of DP1N-08) | MINOR | Rewrite both `note` fields; drop the two tags |
+| DP1N-33 | "≳58 orders relative to the observed birefringence amplitude" misdescribes Eq. (8)'s own normalization (`β_obs` **and** `M_Pl(α/M)`); Eq. (8) carries a common factor on both sides | GENUINELY-NEW-REAL (Claude MINOR 6 = Gemini P1N-N5) | MINOR | Say which ratio the count refers to; cancel the common factor |
+| DP1N-34 | Eq. (8) "anchored in" Shapiro–Teixeira, but that result is never stated | GENUINELY-NEW-REAL | MINOR | One or two sentences quoting it |
+| DP1N-35 | One sentence both asserts "signature-independent" and disclaims the signature bridge (`223–231`) | GENUINELY-NEW-REAL (refines DP1N-04) | MINOR | Show the `ρ+3p<0` line or end at the disclaimer |
+| DP1N-36 | `[R1]`–`[R4]` used on p. 4 before Routes 1–4 are defined on p. 5 | GENUINELY-NEW-REAL (Claude MINOR 9 = Grok N1) | MINOR | One-line R1–R4 definition at the head of Sec. IV |
+| DP1N-37 | Abstract 435 words (CQG ≈300) | GENUINELY-NEW-REAL | MINOR | Cut to ~250–300; lead with the structural dichotomy |
+| DP1N-38 | Sole Tier-I result runs as prose with an italic "*Proof.*"; hypotheses unenumerated | GENUINELY-NEW-REAL (content re-checked **correct**) | MINOR | `Theorem` environment, (H1)–(H5), excluded cases |
+| DP1N-39 | No novelty-positioning sentence vs the standard Holst statement; Holst (1996) absent from the bibliography | GENUINELY-NEW-REAL (the "standard result" half re-flags R1 Gemini N1) | MINOR | One sentence + add Holst 1996 |
+| DP1N-40 | `\paperVersion` defined and never used (`main.tex:51`) | GENUINELY-NEW-REAL (residual of DP1N-08) | MINOR | Delete the dead macro |
+| DP1N-41 | γ = 0.2375 load-bearing from the abstract but first cited only inside B12 on p. 5 | GENUINELY-NEW-REAL (Grok E1 — real, **severity mislabeled** ESSENTIAL→MINOR; the value *is* sourced in-paper) | MINOR | Cite `Ashtekar2011` at first use |
+| DP1N-42 | Eq. (9)'s integration does not state the `G`/`M_Pl` normalization (an `8π` trap, cf. DP1N-21) | GENUINELY-NEW-REAL (Gemini P1N-N4) | MINOR | State `G = 1/M_Pl²`, `M_Pl = 1.22×10^19` GeV |
+| DP1N-43 | Abstract `1/(2γ) -- 2.11` en-dash reads as a minus | GENUINELY-NEW-REAL (Gemini P1N-N3) | NIT | ", which evaluates to" |
+
+### R2 additions to "Falsified — do not re-litigate"
+
+| Finding | Leg | Settled evidence |
+|---|---|---|
+| "The `3.884e-69` coefficient is an uncomputed arithmetic step" (M2) | Grok | Full chain displayed at `main.tex:256–266`; independently reproduced (`3.885e-69`), including the `(2.29/2.25)⁴` cross-check. |
+| "Dated September 2, 2026 — a future date" (M3) | Grok | Auto-FALSIFY **Rule 3**; identical claim already falsified at R1 (Grok N1). |
+| "Duplicated phrasing ('the the', 'finite finite'); 'programme'/'program' alternate" (N2) | Grok | Perl doubled-word scan over `main.tex`: **zero** hits. `programme` 7×, bare `program` **0×**. Confabulated text. |
+| "No frozen release hash; commit hashes pre-date the submission version" (E3) | Grok | `\repoSHA = ded46bc5…` printed at `main.tex:950`, all 8 `\artifactbase` targets resolve at it; immutable Zenodo deposit `doi:10.5281/zenodo.21481838` at `main.tex:975`. A pinned commit necessarily predates what it pins. Real remainder = DP1N-31. |
+| "The transparency theorem's proof is deferred to the companion" (E2, first half) | Grok | Statement + `*Proof.*` in-paper at `main.tex:312–357`; key step re-checked correct. Real remainder (NJL) = DP1N-28. |
+| "`O5` is parity-odd off shell; the 'off shell' qualifier is an introduced error" (MINOR 1 premise) | Claude | `O5` is parity-**even** off shell too. The sentence is defective for a different reason — carried as DP1N-23. |
+
+### R2 additions to "Re-flag of disclosed" / "Opinion–genre"
+
+- Grok M1 ("five barriers are only naturalness arguments") — the paper concedes exactly this at
+  the head of Sec. IV; the non-disclosed remainder is DP1N-24.
+- Gemini N2 (superseded draft carries load-bearing detail) — same substance as DP1N-24/31/32.
+- Grok's **REJECT** dispatch word against a body whose surviving findings are one inherited
+  coefficient error plus sourcing items — skill **Rule 6** (judge by the written findings).
+  Two of three ESSENTIALs FALSIFIED, the third MINOR. Referee variance (pattern-066).
+- Claude PART C's 13.5–14.5 pp recommendation — scope guidance under DP1N-20, not a finding.
+
+### R2 budget note (directive R2)
+
+Second consecutive review round with no intervening science or scope decision — the cap.
+**A third board requires an intervening decision first.** Three are available and are
+recorded as decisions, not findings: **DP1N-21** (the 8π correction — changes a printed
+coefficient in two papers and inverts a stated size ordering), **DP1N-22** (the O1≡O6
+restatement — changes what the operator enumeration claims), and **DP1N-25** (whether the
+Note engages Popławski's Λ or narrows its channel claim). Take those, close the ledger,
+then R3 is permitted. A board run before them would return the same findings: remaining
+verdict movement on P1N is gated by content additions, not by more referee passes.
