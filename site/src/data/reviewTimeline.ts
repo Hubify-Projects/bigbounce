@@ -64,6 +64,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1n-v1n0-2-r1-closure-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "ECH Note R1 closed → v1N.0.2 (19/19), R2 board dispatched, verdicts pending",
+    papers: ["P1N"],
+    summary:
+      "P1N's R1 board (Claude INT major-revisions, Grok API REJECT, Gemini API REJECT; Perplexity absent/401) audited 42 finding-rows; 19 canonical real items (R1-R19) closed this round via real edits (restored operator/branch splits, explicit derivations, citations, γ-scoped Popławski identification, pruned bib 113→26). Venue form grown from Note to Paper (7725 words / 10pp, above the CQG Note ceiling) per the audit's closure plan. R2 board dispatched on v1N.0.2 — verdicts PENDING, none fabricated or assumed.",
+    keyTakeaways: [
+      "v1N.0.2: 10pp/7725 words (+86% by word count), 4-pass compile clean, 0 undef refs, 0 overfull hboxes >10pt, 4/4 consistency-check rules PASS",
+      "Page target: audit recommended 12-16pp; this closure reached 10pp — short of the upper bound, flagged as residual open item",
+      "OpenAI/ChatGPT leg absent per directive N (Codex paused); Perplexity absent/401 (optional leg); R2 board dispatched, results pending",
+    ],
+    links: [
+      { label: "P1N SSOT", href: `${GH}/project-context/SSOT/paper-1n/status.md` },
+      { label: "P1N dispositions", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P1N.md` },
+    ],
+  },
+  {
+    id: "p4p-v4p0-2-r2-dispatch-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "internal-api",
+    title: "P4′ R1 closed → v4P.0.2, R2 board dispatched",
+    papers: ["P4P"],
+    summary:
+      "P4′'s R1 board (dispatched on v4P.0.1) closed; the paper recompiled to v4P.0.2 (10pp, md5 413705f8cf6ce69da4fe6744b3014ea2). R2 board (Grok/Gemini/Claude INT per directive N) dispatched on the new PDF — verdicts PENDING, none fabricated or assumed; this entry records dispatch only.",
+    keyTakeaways: [
+      "v4P.0.2: 10pp, 4-pass compile clean, 0 undef refs",
+      "R2 board (Grok API + Gemini API + Claude INT) dispatched; OpenAI/ChatGPT leg absent per directive N (Codex paused)",
+      "Directive-G hygiene applied same bundle: static mirrors, Convex paperVersions:bump, live md5 verification",
+    ],
+    links: [
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+    ],
+  },
+  {
     id: "r1-p1n-p4p-2026-09-02",
     dateISO: "2026-09-02",
     kind: "internal-api",

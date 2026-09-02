@@ -68,10 +68,10 @@ export const liveStatus: LiveStatus = {
     {
       slug: "paper-1n",
       number: "1N",
-      shortTitle: "The ECH Note (P1A + P1C merged)",
-      version: "v1N.0.1",
+      shortTitle: "The ECH Note (P1A + P1C merged, grown to CQG Paper form)",
+      version: "v1N.0.2",
       readiness: 20,
-      pendingWork: "Fresh merged draft — no INT/EXT review board run yet; one INT board is the next step before submission.",
+      pendingWork: "R1 board closed (Claude INT major-revisions, Grok API REJECT, Gemini API REJECT) — 19/19 canonical real findings closed this round; R2 board dispatched, verdicts pending.",
     },
     {
       slug: "paper-1a",
@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.1",
+      version: "v4P.0.2",
       readiness: 20,
-      pendingWork: "Fresh folded draft — no INT/EXT review board run yet; first review board is the next step.",
+      pendingWork: "R1 board closed on v4P.0.1; R2 board (Grok/Gemini/Claude) dispatched on v4P.0.2 — verdicts pending.",
     },
     {
       slug: "paper-4",
