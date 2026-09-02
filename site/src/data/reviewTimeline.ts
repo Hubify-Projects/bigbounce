@@ -67,6 +67,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-pbh-compaction-integrated-v3m-0-3-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "restructure",
+    title: "A3 paper v3M.0.3: PBH compaction-function channel integrated (ratio-level result); R1 board dispatched",
+    papers: ["A3"],
+    summary:
+      "Integrated the real PBH compaction-function channel (item A3-1) into paper-a3m, replacing the Press-Schechter placeholder row: f_PBH(−35/16) < f_PBH(−35/8) at every grid point (a ratio-level result, not a quotable abundance) — the first-pass ordering was backwards. 7pp, md5 9f7afea9e22a7816168fc7638fc8a753. R1 INT board dispatched (Fable + Grok + Gemini) — verdicts pending.",
+    keyTakeaways: [
+      "v3M.0.3: PBH compaction-function channel (A3-1) replaces the Press-Schechter placeholder",
+      "First-pass ordering reverses: f_PBH(−35/16) < f_PBH(−35/8) at every grid point",
+      "R1 INT board running (Fable + Grok + Gemini) — verdicts pending",
+    ],
+    links: [
+      { label: "Paper lineage decision", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+    ],
+  },
+  {
+    id: "p4p-p1n-abstract-cap-revise-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "skill-improvement",
+    title: "P4′ and ECH Note abstracts trimmed to venue caps (v4P.0.5 / v1N.0.5) — final-review REVISE executed; tarballs rebuilt",
+    papers: ["P4P", "P1N"],
+    summary:
+      "Final-review REVISE action executed on both converged Track B/C1 papers: P4′'s abstract trimmed to 246 words (v4P.0.4 → v4P.0.5, md5 f0d874e93cebf95f86e408f780f002e0) and the ECH Note's abstract trimmed to CQG's word cap at 298 words (v1N.0.4 → v1N.0.5, md5 6836eb995effef298cca6830b1beda7c), both 11pp, no science change. arXiv tarballs rebuilt for both (paper4prime_chirality_test_arxiv_v4P.0.5.tar.gz, paper1bc_ech_note_arxiv_v1N.0.5.tar.gz) and mirrored to all served PDF paths.",
+    keyTakeaways: [
+      "v4P.0.5: abstract trimmed to 246 words, no science change",
+      "v1N.0.5: abstract trimmed to 298 words (CQG cap), no science change",
+      "Both arXiv tarballs rebuilt and re-verified; readiness stays 95",
+    ],
+    links: [
+      { label: "P4′ status", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+      { label: "ECH Note status", href: `${GH}/project-context/SSOT/paper-1n/status.md` },
+    ],
+  },
+  {
     id: "a3m-registered-v3m-0-2-2026-09-02",
     dateISO: "2026-09-02",
     kind: "restructure",

@@ -6,7 +6,7 @@ agent gates hold; 100 only with Houston's per-paper sign-off (quote in SSOT).
 Publishing mechanics (endorsement, venue submission, journal review) are a
 separate phase and never subtract from the score.
 
-## P4′ — `pipelines/p4prime_chirality_test/paper/` v4P.0.4 (ApJS) — **APPROVE** (agent gates), readiness → 95
+## P4′ — `pipelines/p4prime_chirality_test/paper/` v4P.0.5 (ApJS) — **APPROVE** (agent gates), readiness → 95
 - Boards: R1 (Claude major / Grok reject / Gemini reject) → 20 items closed;
   R2 (Claude major / Grok reject / Gemini major) → 21 closed incl. the
   primary-support monopole resolved from committed artifacts and a real
@@ -21,9 +21,12 @@ separate phase and never subtract from the score.
   CL limit (0.75%) with their exact meanings, concedes Shamir 2022's larger
   primary sample, and states that Popławski's papers give no quantitative
   amplitude. No bounce claim. Directive Q1 clean.
-- Packaging: arXiv tarball `SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.4.tar.gz`
-  sha256 db108413…, standalone recompile PASS; PDF md5 ed6b8f66… mirrored;
+- Packaging: arXiv tarball `SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.5.tar.gz`
+  sha256 fbab03801b63483b86006095a3f86d0e4511f64766b90649a76548583fd51c92,
+  standalone recompile PASS; PDF md5 f0d874e93cebf95f86e408f780f002e0 mirrored;
   Convex k576j98m….
+- REVISE (abstract cap) executed 2026-09-02 → v4P.0.5: abstract trimmed to
+  246 words, no science change; tarball rebuilt and re-verified.
 - Residual (not blocking, for Houston's read): (i) P5 has no Zenodo DOI —
   mint one as a new version under the P4 concept or as its own record before
   ApJS submission (click-list); (ii) the "Draft version" AASTeX header is
@@ -31,7 +34,7 @@ separate phase and never subtract from the score.
 - Next phase: astro-ph.GA endorsement (CLVMAQ) → arXiv → ApJS portal
   (fields in `SSOT/PORTAL_KITS_2026-09-02.md`).
 
-## ECH Note (P1N) — `arxiv/paper1bc_ech_note/` v1N.0.4 (CQG, article type Paper) — **APPROVE** (agent gates), readiness → 95
+## ECH Note (P1N) — `arxiv/paper1bc_ech_note/` v1N.0.5 (CQG, article type Paper) — **APPROVE** (agent gates), readiness → 95
 - Boards: R1 (Claude major / Grok reject / Gemini reject; Gemini's sign and
   Fierz claims FALSIFIED against the settled theory-audit artifacts) → 19
   closed incl. three regressions vs P1C v1C.0.16; R2 (Claude major / Grok
@@ -49,9 +52,12 @@ separate phase and never subtract from the score.
   explicit; the fourteen barriers carry honest tags (derived / argued /
   heuristic); the abstract promises a channel-level, not operator-level,
   closure. No mistake-narration.
-- Packaging: tarball `SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.4.tar.gz`
-  sha256 67eac435…, standalone recompile PASS; PDF md5 dcdeb0e1…; Convex
+- Packaging: tarball `SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.5.tar.gz`
+  sha256 26f215d635b2e577c32b7869a5129681109b601250fa054c90ba7c817659a33a,
+  standalone recompile PASS; PDF md5 6836eb995effef298cca6830b1beda7c; Convex
   k572az66….
+- REVISE (abstract cap) executed 2026-09-02 → v1N.0.5: abstract trimmed to
+  298 words (CQG word cap), no science change; tarball rebuilt and re-verified.
 - Residual for Houston's read: (i) DP1N-58 — no Zenodo DOI exists yet for
   the P1C survey or the theory-audit artifacts; mint a new version under the
   P1A concept (21481837) before CQG submission (click-list); (ii) the
