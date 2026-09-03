@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-09-03T15:17:59Z",
+  "input_crossmatch_manifest": "flagship_crossmatch_manifest.json",
+  "input_unmatched_sha256": "73c25be2dad0319078bbda7b348634ffdb56ca6c706a9cd5579e3f6a3c4d395e",
+  "manifest_version": "flagship-taxonomy/v1",
+  "n_clusters": 115,
+  "n_families": 8,
+  "n_objects": 3718,
+  "output_results": {
+    "file_name": "flagship_taxonomy.json",
+    "sha256": "606f75cea26aa90ceefabc46addd51410ec7cecefd82a3529c79fbe32abf9b40"
+  },
+  "params": {
+    "feature_columns": [
+      "anomaly_score",
+      "ra",
+      "dec"
+    ],
+    "min_cluster_size": 15,
+    "min_samples": 3,
+    "pca_components": 10,
+    "random_state": 42,
+    "score_tier_labels": [
+      "low",
+      "elevated",
+      "high",
+      "extreme"
+    ],
+    "score_tier_quantiles": [
+      0.5,
+      0.8,
+      0.95
+    ],
+    "umap_min_dist": 0.05,
+    "umap_neighbors": 15
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "sklearn": "1.9.0",
+    "umap_learn": "0.5.12"
+  }
+}

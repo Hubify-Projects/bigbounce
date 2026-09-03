@@ -1,0 +1,32 @@
+== 2026-09-02T17:59:40Z build sealed sample (S>8)
+      }
+    ]
+  },
+  "unique_targetids_considered": 27547223
+}
+== 2026-09-02T18:08:35Z enrich sample (per-band SNR + latents, mse cross-check gate)
+  "row_counts": {
+    "input_sample_rows": 3810,
+    "output_rows": 3810
+  },
+  "zcatalog_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b"
+}
+== 2026-09-03T03:50:54Z SIMBAD/NED crossmatch
+  "unmatched_output": {
+    "file_name": "flagship_crossmatch_unmatched.parquet",
+    "sha256": "73c25be2dad0319078bbda7b348634ffdb56ca6c706a9cd5579e3f6a3c4d395e"
+  }
+}
+== 2026-09-03T13:19:37Z WISE photometry join
+    "historical_precedent": "same catalog neowise_crossmatch.py/neowise_crossmatch_silver.py queried via raw requests.get() for w1w2_color; only the client library changed, matching the raw-requests -> astroquery precedent crossmatch_flagship.py set for SIMBAD/NED",
+    "name": "AllWISE (VizieR)"
+  },
+  "started_utc": "2026-09-03T13:19:38Z"
+}
+== 2026-09-03T15:17:09Z taxonomy (descriptive families, Q1 labels)
+    "numpy": "2.4.6",
+    "sklearn": "1.9.0",
+    "umap_learn": "0.5.12"
+  }
+}
+== 2026-09-03T15:18:00Z PHASE3-DONE
