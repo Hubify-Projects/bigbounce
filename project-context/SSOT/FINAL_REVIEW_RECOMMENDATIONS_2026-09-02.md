@@ -76,4 +76,30 @@ separate phase and never subtract from the score.
   §II–III of the A3 multi-channel paper (`research/track_a3_multichannel/paper/`
   v3M.0.2). No submission; optional future Comment on Cai+2009.
 
-## A3 multi-channel paper (A3M) v3M.0.2 — **not yet reviewable**: PBH compaction-function row pending; then one INT board (Fable leg, Track-A flagship).
+## A3 multi-channel paper (A3M) — `research/track_a3_multichannel/paper/` v3M.0.5 (PRD regular article) — **REVISE then DEFER submission**, readiness → 70
+- Boards: R1 (Fable major / Grok reject / Gemini major) → 20 items closed with
+  decisions D1–D3 (official NANOGrav posterior primary, tail Bayes factors
+  dropped; transmission bound handoff-conditional; PBH ratio kept with regime
+  and non-monotonicity disclosed); R2 verification (Fable minor 0 MAJOR /
+  Grok reject / Gemini major) → 16 items closed incl. a real γ=13/3 and γ=3
+  injection through the 30-bin likelihood (pulls −0.03σ / +0.07σ) replacing
+  a misdescribed validation; Gemini's PBH-formula claim FALSIFIED by re-run.
+  Automated review CONVERGED; rounds stopped (R2 budget 2/2).
+- Visual pass (pages 1, 5 at 55 dpi + full render): two-column clean, tables
+  and equations legible, no overflow.
+- Framing: honest to a fault — every channel stated at its evidential
+  strength; the joint statement claims consistency, not detection.
+- Packaging: tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.5.tar.gz`
+  sha256 cd2ce1ef…, standalone recompile PASS; Convex k57fxwc5….
+- REVISE (agent-doable next session): abstract ~600 words → PRD length;
+  re-run the 30-bin injection on the real NANOGrav KDE grids (restore from
+  HF/B2) so the validation no longer relies on a synthetic per-bin density.
+- DEFER submission until the science gate closes: the method-independent
+  f_NL cross-check (Bianchi-I separate universe), the bounce's own cubic term
+  (ledger #2 second half), and an in-lab Δ²_ζ for the PBH channel (A3-1b).
+  Readiness 70 = evidence 25 + convergence 25 + packaging 20 + science 0 of
+  25 (gate open) — the science items are the vision's next work, not
+  editorial.
+- This is the Track-A submission candidate; the astro-ph.CO endorsement
+  (LRZHC4) is reserved for it.
+

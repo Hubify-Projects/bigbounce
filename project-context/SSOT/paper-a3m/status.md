@@ -217,3 +217,6 @@ supports until the primordial spectrum is predicted in-lab (open items below).
 (`arxiv/paper2prime_fnl_letter/main.tex`), P2
 (`research/focused_paper_source_integration/`), and the A3 brief
 (`research/track_a3_multichannel/A3_MULTICHANNEL_BRIEF_2026-09-02.md`).
+
+## Final review 2026-09-02 (orchestrator)
+REVISE then DEFER submission; readiness cap 70 (Convex). See `SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`.
