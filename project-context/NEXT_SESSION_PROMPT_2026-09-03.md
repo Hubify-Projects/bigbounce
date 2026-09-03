@@ -53,9 +53,13 @@ endorsement emails. INT boards only; no browser EXT rounds.
    answer ledger #8 (paper vs data release) with the recovery table, and draft
    the corresponding document under Q1. If not, keep the watcher and do
    everything else.
-2. A3M REVISE items (agent-doable, no new round): abstract to PRD length;
-   re-run `research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py`
-   on the real NANOGrav KDE grids (restore from HF/B2) and restate §IV C.
+2. A3M: both REVISE items are DONE (v3M.0.7: abstract 307 words; injection
+   on the real NANOGrav KDE grids, now mirrored on HF under
+   `external/nanograv15yr_kde/`). What remains is the science gate: the
+   method-independent f_NL check (Bianchi-I separate universe), the bounce's
+   own cubic term (ledger #2 second half — a Fable lane was running at
+   close-out; read `research/cubic_bounce_transmission/A2B_*` first), and an
+   in-lab Δ²_ζ for the PBH channel (A3-1b).
 3. Ledger #2 second half: the bounce's own cubic in-in term (Quintin+2015 /
    Agullo–Bolliet–Sreenath 2017 structure) — Fable-tier computation, committed
    with manifest; then A2 brief + A3M §3 updated.
