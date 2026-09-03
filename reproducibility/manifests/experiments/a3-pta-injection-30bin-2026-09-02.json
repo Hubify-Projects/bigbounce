@@ -1,0 +1,51 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-pta-injection-30bin-2026-09-02",
+  "title": "Track A3 §IV C closure (DA3M-R2-01) — injection-recovery test at gamma=13/3 and gamma=3 through the same 30-bin free-spectrum interpolated-density likelihood/priors as emcee_freespec.py",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "validation",
+  "inputs": [],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py",
+      "entrypoint": "python3 research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py",
+      "sha256": "e3c893046297a17ef0aa7e29ae0db379a7c72011cdc756bcbcfb3050ad8d07aa"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.2 + emcee 3.1.6 (emcee imported for parity with pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py; the recovery itself uses a dense 2D grid marginalization of the identical log_prior/log_likelihood, not emcee sampling — see 'method' note below)",
+    "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation (Apple M5)",
+    "date": "2026-09-02",
+    "wall_clock": "5.8 s (measured, 10 realizations)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "6 s (measured)",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "model_log10rho(theta), log_prior(theta) and the 30-bin/T_obs=16.03yr geometry and gamma~U[0,7], log10_A~U[-18,-11] priors are copied verbatim from pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py. The ONE substitution: the real NANOGrav 15-yr KDE density grids (Zenodo 8060824) live only on the RunPod workspace that built emcee_freespec.py's inputs and are not present in this repo or on this machine, so this script synthesizes a per-bin Gaussian log-density (sigma=0.22 dex, representative of the real KDE per-bin posterior width) centered on a noisy injected observation at the chosen true (gamma, log10_A). Recovery is by exact dense 2D grid (1200x900) posterior marginalization of the identical log_prior+log_likelihood rather than emcee ensemble sampling: a preliminary emcee run on this strongly-degenerate 2D ridge showed near-zero acceptance (a known ensemble-sampler failure mode on ridge-shaped 2D posteriors, not evidence of pipeline bias), while the dense grid is an exact, faster, and more reliable computation of the same posterior for a 2-parameter problem. 5 realizations per gamma_true (10 total)."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/pta_injection_30bin_2026_09_02.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: mean recovered gamma at gamma_true=13/3=4.3333 is 4.328 +/- (realization scatter 0.48), mean pull -0.026sigma over 5 realizations; at gamma_true=3.0, mean recovered 3.015, mean pull +0.068sigma over 5 realizations. Both consistent with unbiased recovery at the <0.1sigma level, replacing the paper's prior unverified claim of a -0.018sigma pull from a different (6-bin, Gaussian chi-squared, gamma=3.2-injected) pipeline that DA3M-R2-01 found was misdescribed as 'the identical pipeline' injected at 13/3.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY/A3M_v3M.0.4_R2_truth_audit.md finding #1 / DA3M-R2-01",
+    "project-context/peer-reviews/DISPOSITIONS/A3M.md DA3M-R2-01",
+    "research/track_a3_multichannel/paper/main.tex §IV C"
+  ]
+}

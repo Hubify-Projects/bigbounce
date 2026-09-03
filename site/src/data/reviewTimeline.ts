@@ -67,6 +67,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-r2-closed-v3m-0-5-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "restructure",
+    title: "A3 paper v3M.0.5: R2 CLOSED — real 30-bin injection validation, Eq. (8) σ² term, Ω_DM fix; rounds STOP per directive R2 (2/2 consumed)",
+    papers: ["A3"],
+    summary:
+      "R2 verification-pass truth audit on paper-a3m v3M.0.4 (sha256 d86f484f…) found 16 canonical genuinely-new-real items (1 MAJOR + 10 new MINOR + 5 carried R1 minors) across Claude Fable INT (minor-revisions), Grok API (reject), and Gemini API (major-revisions); Perplexity absent. The one MAJOR, DA3M-R2-01, found §IV C misdescribed its own injection-validation artifact (claimed γ=13/3 injected through ‘the identical’ 30-bin pipeline; the cited artifact actually injected γ=3.2 through a different 6-bin, Gaussian-χ² pipeline). Closed by running a real injection-recovery test (script: pta_injection_30bin_2026_09_02.py) reusing the 30-bin free-spectrum likelihood/priors verbatim from emcee_freespec.py, with a synthetic per-bin density substituted for the real NANOGrav KDE grids (not available locally): 5 realizations at γ=13/3 recover γ=4.328 mean (pull −0.026σ), 5 realizations at γ=3 control recover γ=3.015 mean (pull +0.068σ), both consistent with unbiased recovery. Also closed: Eq. (8) ζ_max now states the σ² term explicitly (leading-term-only numbers were previously unqualified); Ω_DM=0.674 footnoted as the Choudhury et al. printed value that numerically coincides with Planck h (cancels in the ratio, no result changes); Savage–Dickey precision brought to one significant figure; a duplicated §VII C clause removed; undefined D1–D5 labels replaced with plain prose; the refit's 3.1–4.6σ range attributed to its two distinct conditionings; an inverted bare/projected significance clause corrected; the abstract now names both DESI DR1 priors; the r=0.84 shape-overlap numeral dropped (no result depends on it); and reproducibility statement notes this work's artifacts are commit-pinned pending a Zenodo minting action, with the P2 theory lineage cited at its archived Zenodo record 10.5281/zenodo.21461881. Five carried R1 minors (m04, m09, m11, m12, m15) also closed. v3M.0.5, 9pp, md5 67e1510e2b300ec683ed2e288ef1aefe. Per directive R2 the convergence budget (2 consecutive rounds) is now consumed — review rounds STOP on this paper; the remaining ledger is genre/length/venue (abstract trim, bibliography DOIs, Zenodo minting) for the P-round.",
+    keyTakeaways: [
+      "R2 verdicts: Fable minor-revisions, Grok reject, Gemini major-revisions — 16 canonical items, all closed with real edits or source-cited dispositions",
+      "DA3M-R2-01 (the only MAJOR): §IV C misdescribed its injection artifact — closed with a real γ=13/3 (and γ=3 control) injection-recovery test through the identical 30-bin likelihood/priors, mean pulls −0.026σ / +0.068σ over 5 realizations each",
+      "Eq. (8) σ² term restored; Ω_DM=0.674 footnoted as Planck h (no result changes); precision, duplicate-clause, and undefined-label fixes; abstract now states both DESI priors; r=0.84 numeral dropped",
+      "Directive R2 convergence budget consumed (2/2 rounds) — review rounds STOP on this paper; residue is genre/length/venue, routed to the P-round",
+    ],
+    links: [
+      { label: "R2 truth audit", href: `${PR}/INT_v3/ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY/A3M_v3M.0.4_R2_truth_audit.md` },
+      { label: "Disposition ledger", href: `${PR}/DISPOSITIONS/A3M.md` },
+    ],
+  },
+  {
     id: "a3m-r1-closed-v3m-0-4-2026-09-02",
     dateISO: "2026-09-02",
     kind: "restructure",

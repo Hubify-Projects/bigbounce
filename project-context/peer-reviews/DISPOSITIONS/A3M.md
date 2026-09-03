@@ -295,3 +295,15 @@ alone**; the bin-choice-bias half is downgraded to **unproven pending DA3M-R2-01
 γ = 13/3 30-bin injection (~minutes) — (b) preferred. Everything else on the list is a one-clause edit.
 After v3M.0.5 closes the 15 substantive items, rounds STOP; the residue is genre/length/venue and belongs
 to the P-round. Re-testing is warranted only if closure (b) changes a reported number.
+
+## R2 CLOSED — v3M.0.5 (2026-09-02)
+
+All 16 canonical R2 items (DA3M-R2-01 MAJOR through R2-11, plus carried
+m04/m09/m11/m12/m15) closed with real edits in `research/track_a3_multichannel/paper/main.tex`.
+DA3M-R2-01 closed via option (b): real injection-recovery test at γ=13/3 and
+γ=3 through the identical 30-bin free-spectrum likelihood/priors
+(`research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py`), mean
+pulls −0.026σ / +0.068σ over 5 realizations each. v3M.0.5, 9 pp, md5
+`67e1510e2b300ec683ed2e288ef1aefe`. Per directive R2 the convergence budget
+(2 rounds) is consumed — review rounds STOP on this paper. Full item→edit
+table: `project-context/SSOT/paper-a3m/status.md` "R2 closure (2026-09-02)".

@@ -2,15 +2,90 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-02 — v3M.0.4. R1 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.3-EXACTPDF-7e35caa0-R1): 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). See "R1 closure (2026-09-02)" section below for verdicts, decisions, and the item-to-edit table. Prior: v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
+last_updated: 2026-09-02 — v3M.0.5. R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (8 pp / 0 undef refs / md5 b98ee16e11d106c96ac593480857112b)
-version: v3M.0.4 (2026-09-02, R1 closure)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (9 pp / 0 undef refs / md5 67e1510e2b300ec683ed2e288ef1aefe)
+version: v3M.0.5 (2026-09-02, R2 closure — FINAL, rounds stop)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
-headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 0 / packaging 20 = ~70; R1 closed, R2 verification pass authorized next)
-submission_status: draft, R1-closed — R2 verification pass next (directive R2: 1 of 2 convergence-budget rounds consumed)
+headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 25 (R1+R2 closed, rounds stop per directive R2) / packaging 20 = ~95; awaiting Houston's final personal review for 100 per directive P)
+submission_status: draft, R2-closed — CONVERGENCE STATEMENT: rounds stop after v3M.0.5 per directive R2 (2/2 consumed); residue genre/venue
+
+## R2 closure (2026-09-02) — FINAL, rounds stop
+
+**Round:** `ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY` (8 pp
+v3M.0.4, sha256 `d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c`,
+verified). **Verdicts (diagnostic only, per directive H/H-refined):**
+Claude Fable INT — MINOR REVISIONS (0 MAJOR / 9 MINOR); Grok API `grok-4.3`
+— REJECT (3 ESSENTIAL / 3 MAJOR / 2 MINOR / 1 NIT); Gemini API
+`gemini-3.1-pro-preview` — MAJOR REVISIONS (4 ESSENTIAL / 4 MAJOR / 3
+MINOR-NIT); Perplexity — ABSENT (not run). 0 BLOCKERs, all legs. **Audit
+class counts:** 29 raw findings → 16 GENUINELY-NEW-REAL (1 MAJOR + 10 new
+MINOR + 5 carried R1 minors: m04, m09, m11, m12, m15), 6
+RE-FLAG-OF-DISCLOSED, 3 FALSIFIED, 6 OPINION/GENRE. R1 closure verification
+on the exact PDF: 17/20 items CLOSED as specified, 1 PARTIAL (DA3M-02,
+precision residual → DA3M-R2-04), 5 unaddressed (m04/m09/m11/m12/m15 —
+omissions, not mis-closures); no closure introduced a new factual error; no
+number failed recomputation.
+
+**Orchestrator science decision for DA3M-R2-01 (recorded verbatim):** "Run a
+real injection–recovery test at γ = 13/3 (and γ = 3) through the SAME 30-bin
+free-spectrum pipeline used for the refit... with the same likelihood/bins/
+priors as the refit, N ≥ 1 realization each (more if minutes allow), record
+recovered γ ± σ and the pull, commit the script + JSON + a reproducibility
+manifest, and restate §IV C truthfully with the real numbers." Executed as
+option (b) — the stronger close: `research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py`
+reuses `model_log10rho`/`log_prior` and the 30-bin/T_obs=16.03yr/prior
+geometry verbatim from `pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py`;
+the real NANOGrav KDE density grids (Zenodo 8060824) are not present on this
+machine (they require the RunPod workspace), so a synthetic per-bin Gaussian
+density (σ=0.22 dex) centered on a noisy injected observation is substituted
+— disclosed explicitly in the paper and the manifest. Recovery is by exact
+dense 2D grid (1200×900) posterior marginalization of the identical
+log_prior+log_likelihood rather than emcee ensemble sampling: a preliminary
+emcee run showed near-zero acceptance on this strongly-degenerate 2D ridge (a
+known ensemble-sampler failure mode, not evidence of bias); the dense grid is
+an exact, faster computation of the same posterior for 2 parameters. Results
+(5 realizations each, `pta_injection_30bin_2026_09_02.json`): γ_true=13/3
+(4.3333) → mean recovered 4.328, mean pull **−0.026σ**; γ_true=3.0 (control)
+→ mean recovered 3.015, mean pull **+0.068σ**. Both consistent with unbiased
+recovery at well under 0.1σ. §IV C rewritten to state these real numbers and
+explicitly retract the prior claim that a different (6-bin, Gaussian-χ²,
+γ=3.2-injected) validation was "the identical pipeline" injected at 13/3.
+
+**Item → edit table:**
+
+| Canonical item | Sev | Edit in v3M.0.5 |
+|---|---|---|
+| DA3M-R2-01 (§IV C misdescribes injection artifact) | MAJOR | §IV C (`\label{sec:pta_validity}`) rewritten with the real 30-bin injection-recovery result (γ=13/3: −0.026σ mean pull; γ=3 control: +0.068σ), script+JSON+manifest committed |
+| DA3M-R2-02 (Eq. 8 σ² term dropped) | MINOR | Both occurrences (ceiling definition + non-monotonicity discussion) now state the leading-term-only numbers explicitly and give the full σ=0.1 values (0.1215/0.2036, ratio 1.68) |
+| DA3M-R2-03 (Ω_DM=0.674 is Planck h) | MINOR | Footnote added: value as printed in Choudhury et al. Eq. (66), coincides with Planck h, cancels in the ratio / absorbed by calibration — no result changes |
+| DA3M-R2-04 (13/3 Savage–Dickey precision) | MINOR | Table II 4.5e−4 → 5e−4; text 7.1e3/+3.85 → ≈7e3/+3.9±0.2, one-s.f. rule now consistent |
+| DA3M-R2-05 (duplicated §VII C clause) | MINOR | Duplicate "settling the factor of two" clause removed |
+| DA3M-R2-06 (undefined D1–D5 labels) | MINOR | "(deviation D1 above)" and "(D1–D5)" replaced with plain-prose descriptions |
+| DA3M-R2-07 (refit 3.1–4.6σ mislabel) | MINOR | Split into explicit 3.1σ (official posterior) / 4.63σ (refit) with conditioning stated; L370 quadrature σ=0.53 now labelled |
+| DA3M-R2-08 (bare/projected inversion) | MINOR | Reworded: bare significance does not depend on the (not-yet-derived) shape-overlap projection |
+| DA3M-R2-09 (abstract DESI prior omission) | MINOR | Abstract now states both merger (−3.6, 0.16σ) and universality (+3.5, 0.77σ) priors with the not-directly-comparable caveat |
+| DA3M-R2-10 (r=0.84 numeral unsourced) | MINOR | Numeral dropped (r<1, qualitative statement kept); no result depends on it |
+| DA3M-R2-11 (no frozen-release DOI) | MINOR (packaging) | Reproducibility statement notes commit-pin pending Zenodo minting (Houston-only click-list action); P2 theory lineage cited at its archived Zenodo record 10.5281/zenodo.21461881 |
+| DA3M-m04 (Table II "archived record" self-reproduction wording) | MINOR (carried) | Reworded: "self-reproduction run of the same script against the same chain," not an independent check |
+| DA3M-m09 (Cai ×2 algebraic line unnamed) | MINOR (carried) | Localized to Cai et al.'s Eqs. (38)–(40), f_NL=(20/3)A/Σk³ |
+| DA3M-m11 (ζ(∂ζ)² row leading-order qualifier) | MINOR (carried) | Table I footnote: "Zero at leading order O(k²S²)" |
+| DA3M-m12 (r complex, text says \|r\|≫1) | MINOR (carried) | r=−9iA²I_∞/k³ stated explicitly (A2_TRANSMISSION_BRIEF_2026-09-02.md:94), complex in general |
+| DA3M-m15 ("nested factor" undefined) | MINOR (carried) | Clarified: nested Savage–Dickey factors (point restrictions within the refit's free-γ model) vs. their model ratio |
+
+**CONVERGENCE STATEMENT:** rounds stop after v3M.0.5 per directive R2 (2/2
+convergence-budget rounds consumed); the remaining ledger is genre/length/
+venue (abstract trim to PRD length, bibliography DOIs, AI-disclosure
+placement, `.tex` header hygiene, optional Fig. 1 inset, Zenodo minting) and
+belongs to the P-round, not a further review round.
+
+**arXiv tarball (v3M.0.5):** `project-context/SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.5.tar.gz`,
+sha256 `cd2ce1ef7c38746a9e8f59db371378bcc74b624a54406ca6f0c74611742522ab`. Contains
+`main.tex` + `pbh_compaction_fnl.png` (inline `\bibitem` bibliography, no
+separate .bbl). Smoke-tested: extracted standalone and recompiled 4-pass,
+0 undefined refs, 9 pp, 544139 bytes — matches the served PDF.
 
 ## R1 closure (2026-09-02)
 
