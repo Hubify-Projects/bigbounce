@@ -94,6 +94,17 @@ separate phase and never subtract from the score.
 - REVISE (agent-doable next session): abstract ~600 words → PRD length;
   re-run the 30-bin injection on the real NANOGrav KDE grids (restore from
   HF/B2) so the validation no longer relies on a synthetic per-bin density.
+- **REVISE executed 2026-09-02 → v3M.0.6:** abstract cut 450→307 words, no
+  quantitative claim or qualifier dropped. KDE-grid restore attempted and
+  FAILED: the real NANOGrav 15-yr KDE grids (Zenodo 8060824,
+  `/workspace/p3_realfreespec/kde/30f_fs{hd}_ceffyl/*.npy`) were an ephemeral
+  RunPod artifact never mirrored — checked local disk, HF `bamfai/*` (7
+  repos), and B2 bucket `bigbounce` (74,388 objects); zero matches in any.
+  §IV.C injection stays on the disclosed synthetic-density proxy; see
+  `SSOT/paper-a3m/status.md` REVISE-executed section for the restore path
+  (re-download Zenodo 8060824 directly, back up per ALWAYS-backup). Hygiene
+  done: 4-pass compile, 0 undef refs, tarball
+  `a3_multichannel_arxiv_v3M.0.6.tar.gz` smoke-tested, Convex bumped.
 - DEFER submission until the science gate closes: the method-independent
   f_NL cross-check (Bianchi-I separate universe), the bounce's own cubic term
   (ledger #2 second half), and an in-lab Δ²_ζ for the PBH channel (A3-1b).

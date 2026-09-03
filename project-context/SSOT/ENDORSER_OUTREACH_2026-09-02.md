@@ -418,7 +418,7 @@ endorsement ask to A3 instead (§3a).
 ### 3a. A3 multi-channel paper — astro-ph.CO `LRZHC4` (cross-list gr-qc `HYEJ7S`) — **DRAFT, not yet submission-ready**
 
 **Status (2026-09-02, updated after R2 verification closure):**
-`research/track_a3_multichannel/paper/main.tex` v3M.0.5 is the Track-A
+`research/track_a3_multichannel/paper/main.tex` v3M.0.6 is the Track-A
 flagship absorbing P2′'s content (§II–III) plus pulsar-timing, PBH, and
 LSS/SPHEREx channel confrontations. Automated review has converged: R2
 verification (Fable minor-revisions / Grok reject / Gemini major-revisions)
@@ -429,61 +429,40 @@ still pending — do not send any A3 endorsement email yet.** This entry
 documents the current, real abstract so the ask is ready the moment final
 author review clears.
 
-> Abstract (v3M.0.5, current manuscript text — automated review converged;
+> Abstract (v3M.0.6, current manuscript text — automated review converged;
 > final author review pending, do not treat as submission-authorized):
-> A dust-dominated contracting phase preceding a nonsingular bounce predicts
-> a parameter-free local non-Gaussianity of the primordial curvature
-> perturbation. We report a from-scratch, vertex-by-vertex in-in
-> computation of this amplitude, validated against the de Sitter and
-> ultra-slow-roll limits before use. It independently confirms
-> f_NL^local = −35/16 = −2.1875, the value printed by Li et al. (2017) and
-> by Quintin et al. (2015), exactly half the value originally printed by
-> Cai et al. (2009), f_NL^local = −35/8; we locate Cai et al.'s factor of
-> two at their amplitude-normalization step, and show the squeezed limit is
-> orientation dependent, −35/16+(15/16)μ². This from-scratch computation,
-> agreeing with two independent published results, is what adjudicates the
-> factor of two within the in-in method; a method-independent
-> (gradient-expansion or Bianchi-I separate-universe) confirmation remains
-> open. Survival of this amplitude through an explicit nonsingular bounce
-> is bounded, not resolved: within a handoff scheme that freezes the
-> contraction-phase bispectrum at the NEC boundary and evolves it linearly
-> thereafter, transfer across three bounce backgrounds obeys
-> 0<T_fNL≤1/2 (scheme-dependent, 0.165–0.409), while the bounce's own
-> cubic term — found in the loop-quantum-cosmology literature to
-> potentially enhance non-Gaussianity by orders of magnitude — is not
-> computed here, so no bound on the physical post-bounce f_NL follows. We
-> then take the exact amplitude through three observational channels,
-> stated at exactly the strength their evidence supports. (i) Pulsar
-> timing. Refitting the NANOGrav 15-yr Hellings–Downs free-spectrum
-> posteriors (30 bins) gives γ=2.567±0.382, consistent with the
-> matter-bounce induced-GW prediction γ=3 at 1.14σ (refit) and 0.55σ
-> (against NANOGrav's official 14-bin posterior, γ_HD=3.2⁺⁰·⁶₋₀·₆, 5–95%).
-> The supermassive-black-hole-binary value γ=13/3 is disfavoured at 3.1σ
-> against the official posterior (matching NANOGrav's own characterization
-> of "moderate tension ... at the 99% credible boundary") and more
-> strongly by the refit. A scale-invariant primordial-tensor slope (γ=5)
-> has no posterior support: zero of 320,000 chain samples reach γ≥5. This
-> channel measures a slope common to any scalar-induced background and is
-> insensitive to f_NL. (ii) Primordial black holes. Replacing a truncated
-> Press–Schechter map with the compaction-function formation criterion of
-> Choudhury et al. (2025) gives a reproducible amplitude ratio,
-> A(−35/16)/A(−35/8) = 1.732 [1.610, 1.809] across a 27-point grid, within
-> a quadratic local map that is not always perturbatively controlled at the
-> curvature excursions formation requires (1.2|f_NL|σ_r≈0.5–2); f_PBH(f_NL)
-> at fixed amplitude is itself strongly non-monotonic (a ~55-decade minimum
-> near f_NL≈−0.35, with both candidate values on the rising,
-> anti-correlated branch beyond it) and is not quotable because the
-> primordial spectrum shape it depends on is not reconstructible from the
-> published source. (iii) Large-scale structure. The prediction is
-> consistent with the DESI DR1 constraint under either of its two mutually
-> exclusive theoretical priors on the quasar response: f_NL^local =
-> −3.6⁺⁹·⁰₋₉·₁ (merger model) at 0.16σ, or +3.5⁺¹⁰·⁷₋₇·₄ (universality) at
-> 0.77σ; the two are not directly comparable to each other. Large-scale
-> structure is the only channel that both discriminates the two candidate
-> amplitudes and depends on which is correct: SPHEREx reaches 3.13σ at its
-> bispectrum-only forecast σ_fNL=0.7, pending a shape-overlap projection
-> this paper has not yet re-derived at the −35/16 fiducial. No channel is
-> in tension with another.
+> A dust-dominated contraction before a nonsingular bounce predicts a
+> parameter-free local non-Gaussianity. A from-scratch, vertex-by-vertex in-in
+> computation, validated against the de Sitter and ultra-slow-roll limits,
+> confirms f_NL^local = -35/16 = -2.1875 (Li et al. 2017; Quintin et al. 2015),
+> exactly half the value Cai et al. (2009) print, f_NL^local = -35/8, locating
+> the discrepancy at Cai et al.'s amplitude-normalization step; the squeezed
+> limit is orientation dependent, -35/16+(15/16)mu^2. This adjudicates the
+> factor of two within the in-in method; a method-independent confirmation
+> (gradient-expansion or Bianchi-I separate-universe) remains open. Survival
+> through the bounce is bounded, not resolved: a handoff scheme freezing the
+> contraction-phase bispectrum at the NEC boundary gives transfer across three
+> bounce backgrounds obeying 0<T_fNL<=1/2 (0.165-0.409); the bounce's own cubic
+> term -- able to enhance non-Gaussianity by orders of magnitude in the
+> loop-quantum-cosmology literature -- is not computed, so no bound on the
+> physical post-bounce f_NL follows. We take the amplitude through three
+> channels, each stated at the strength its evidence supports. (i) Pulsar
+> timing. Refitting NANOGrav's 15-yr free-spectrum posteriors gives gamma =
+> 2.567 +/- 0.382, consistent with the bounce prediction gamma=3 at 1.14sigma
+> (refit) and 0.55sigma (official 14-bin posterior, gamma_HD = 3.2(+0.6/-0.6));
+> gamma=13/3 is disfavoured at 3.1sigma (official posterior); gamma=5 has zero
+> support in 320,000 chain samples. This channel is insensitive to f_NL. (ii)
+> Primordial black holes. The compaction-function criterion of Choudhury et al.
+> (2025) gives A(-35/16)/A(-35/8) = 1.732 [1.610, 1.809] across a 27-point
+> grid, not always perturbatively controlled; f_PBH(f_NL) is strongly
+> non-monotonic (a ~55-decade minimum near f_NL~-0.35) and not quotable, the
+> primordial spectrum shape being unreconstructible from the published source.
+> (iii) Large-scale structure. Consistent with DESI DR1 under either prior:
+> f_NL^local = -3.6(+9.0/-9.1) (merger, 0.16sigma) or +3.5(+10.7/-7.4)
+> (universality, 0.77sigma), not directly comparable; this channel alone
+> discriminates the two candidate amplitudes, with SPHEREx reaching 3.13sigma
+> at sigma_fNL=0.7 pending a shape-overlap projection not yet re-derived at
+> -35/16. No channel is in tension with another.
 
 **Endorsers for A3** (astro-ph.CO `LRZHC4`, cross-list gr-qc `HYEJ7S`):
 reuse the table above (Brandenberger, Cai, Meerburg, Chaussidon, Ferraro,

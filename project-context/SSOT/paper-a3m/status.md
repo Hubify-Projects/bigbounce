@@ -220,3 +220,58 @@ supports until the primordial spectrum is predicted in-lab (open items below).
 
 ## Final review 2026-09-02 (orchestrator)
 REVISE then DEFER submission; readiness cap 70 (Convex). See `SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`.
+
+## REVISE executed 2026-09-02 → v3M.0.6
+
+Both agent-doable items from `FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`
+§A3M were executed:
+
+1. **Abstract cut to PRD length.** 450 words → 307 words. No quantitative
+   claim or evidential-strength qualifier was dropped — every number
+   (γ=2.567±0.382, 1.14σ/0.55σ, γ=13/3 at 3.1σ, γ=5 zero of 320,000 samples,
+   A(-35/16)/A(-35/8)=1.732[1.610,1.809], the PBH non-monotonicity note, the
+   DESI DR1 dual-prior numbers, SPHEREx 3.13σ at σ_fNL=0.7) and every
+   qualifier ("not quotable", "not directly comparable", "pending... not yet
+   re-derived", "no channel is in tension") survives verbatim or
+   near-verbatim; explanatory framing (why the bounce is a testable
+   alternative, grading conventions) was already present in the Introduction
+   and was left there rather than duplicated in the abstract.
+2. **30-bin injection on real NANOGrav KDE grids — NOT RESTORED.**
+   `pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py`
+   loads the real grids from `/workspace/p3_realfreespec/kde/30f_fs{hd}_ceffyl/
+   {freqs,log10rhogrid,density}.npy` (Zenodo 10.5281/zenodo.8060824), an
+   ephemeral RunPod `/workspace` path — those exact files were never mirrored
+   to a durable store. Searched: (a) local disk —
+   `~/Desktop/CODE_YOU/bigbounce_datasets` and a repo-wide find for
+   `ceffyl`/`30f_fs*` — zero hits; (b) HuggingFace `bamfai/*` datasets (7
+   repos: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog,
+   astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts,
+   p1b-alp-chains) — no file matching kde/ceffyl/freespec/pta/30f_fs in any
+   repo's file list; (c) Backblaze B2 bucket `bigbounce`
+   (`s3.us-west-004.backblazeb2.com`, 74,388 objects scanned) — zero keys
+   matching kde/ceffyl/freespec/30f_fs; the only `mcmc/` prefix hits are the
+   unrelated `w0wa_quintom` cosmological-parameter chains. **Conclusion: the
+   real KDE grids are not restorable from any of the three checked stores**
+   (they predate the 2026-06-26 ALWAYS-backup directive). §IV.C of the paper
+   is left as-is (synthetic-per-bin-density injection, disclosed as such in
+   the script and paper text); this is recorded as the missing artifact for
+   ledger row A3-3. **Next action if this is to be closed:** re-download the
+   Zenodo 8060824 KDE pack directly (no RunPod dependency needed — it is a
+   public Zenodo record) to `pipelines/p3_pta_mcmc/kde_real/`, back it up to
+   HF+B2 immediately per the ALWAYS-backup directive, then re-run
+   `pta_injection_30bin_2026_09_02.py` against the real grids.
+
+**Hygiene (this commit):** `\paperVersion` v3M.0.6, `\date`/`\paperTimestamp`
+September 2, 2026 (unchanged, already current); 4-pass pdflatex, 0 undefined
+refs, 0 overfull hboxes >10pt; pdftoppm -r 60 all 9 pages visually spot-checked
+(pp. 1, 5) — clean two-column layout, no overflow; PDF md5
+`3888085edc5c493fcd2a45c8c386576d` (sha256
+`db87efa9fcc74f31e3dc8ae5aa3a6296f63536a5c2adaf59f7d28a133b3b2e20`), 9 pages,
+mirrored byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.6.pdf`
+and `public/papers/a3_multichannel_arxiv_v3M.0.6.pdf`; arXiv tarball
+`SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.6.tar.gz` sha256
+`c762345fbddd6c38844490c0d975536fc6d50cf4c53a258c5798398becc838b4`, standalone
+extract+recompile smoke test PASS (0 undefined refs, 9 pages). Readiness
+composition unchanged at this step (still capped by the open DEFER-submission
+science gate per the 2026-09-02 final review; abstract/injection were
+editorial-hygiene REVISE items, not science-gate closures).
