@@ -33,10 +33,10 @@ endorsement emails. INT boards only; no browser EXT rounds.
   (Fable adjudication); Cai 2009's ×2 located; δN value reconciled; the μ²
   orientation term is Li+2016's, not new. **P2′ Letter DEFERRED** (v2L.0.2
   archived theory record) and folded into the **A3 multi-channel paper**
-  v3M.0.3 (7 pp; PTA reproduced; PBH at ratio level after the
-  compaction-function redo reversed the first pass; survey reach). A3M's
-  R1 INT board (Fable + Grok + Gemini) was dispatched at close-out — its
-  truth-audit and closure are the first Track-A task.
+  v3M.0.5 (9 pp): two INT boards run and truth-audited, rounds stopped
+  (R2 budget 2/2), final author review REVISE/DEFER at readiness 70 —
+  automated review converged; the SCIENCE gate is open (see
+  `SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`).
 - **A2** first half done (linear transmission bound T ≤ 1/2, scheme-labelled);
   second half (the bounce's own cubic term) is ledger #2's open item.
 - **Phase 3** (pod `8ofv5d4ynu7hku`, $0.17/hr): enrichment was ~55 % at
@@ -53,8 +53,9 @@ endorsement emails. INT boards only; no browser EXT rounds.
    answer ledger #8 (paper vs data release) with the recovery table, and draft
    the corresponding document under Q1. If not, keep the watcher and do
    everything else.
-2. A3M: truth-audit R1 → close → one verification round only if the audit
-   names a science/scope decision → final author review → kit.
+2. A3M REVISE items (agent-doable, no new round): abstract to PRD length;
+   re-run `research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py`
+   on the real NANOGrav KDE grids (restore from HF/B2) and restate §IV C.
 3. Ledger #2 second half: the bounce's own cubic in-in term (Quintin+2015 /
    Agullo–Bolliet–Sreenath 2017 structure) — Fable-tier computation, committed
    with manifest; then A2 brief + A3M §3 updated.
