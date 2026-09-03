@@ -981,8 +981,24 @@ def run_crossmatch(args: argparse.Namespace) -> None:
             ra_col = class_entry["ra_col"]
             dec_col = class_entry["dec_col"]
             z_col = class_entry.get("z_col")
-            ref_ra = np.asarray(ref_table[ra_col], dtype=float)
-            ref_dec = np.asarray(ref_table[dec_col], dtype=float)
+            try:
+                ref_ra = np.asarray(ref_table[ra_col], dtype=float)
+                ref_dec = np.asarray(ref_table[dec_col], dtype=float)
+            except (ValueError, TypeError):
+                # Some VizieR catalogues (e.g. ROMA-BZCAT, CV/WD binaries)
+                # return sexagesimal RA (hourangle) / Dec (deg) strings
+                # rather than decimal degrees -- parse via SkyCoord and
+                # convert to decimal degrees rather than dropping the class.
+                from astropy import units as u
+                from astropy.coordinates import SkyCoord
+
+                sc = SkyCoord(
+                    ra=[str(v) for v in ref_table[ra_col]],
+                    dec=[str(v) for v in ref_table[dec_col]],
+                    unit=(u.hourangle, u.deg),
+                )
+                ref_ra = sc.ra.deg
+                ref_dec = sc.dec.deg
             ref_z = np.asarray(ref_table[z_col], dtype=float) if z_col and z_col in ref_table.colnames else None
             result = compute_class_recovery(
                 class_id=ref_class.class_id,
