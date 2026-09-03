@@ -57,3 +57,21 @@ science-target-only rerun on pod `8ofv5d4ynu7hku`.
 5. Continue per the assigned step list (build sample at chosen threshold →
    provenance gate → enrichment → crossmatch → WISE → taxonomy, all under
    `/workspace/phase3_v2/`).
+
+## Unattended v2 chain launched (2026-09-03 ~16:12Z)
+
+- Deployed `pipelines/p1_highz_tracers/clean_rerun/pod/pod_phase3_v2.sh`
+  (idempotent, stage markers, resumable) to the pod and launched detached:
+  `setsid nohup .../pod_phase3_v2.sh > /workspace/phase3_v2/phase3_v2_stdout.log
+  2>&1 < /dev/null &` — wrapper PID 79542, running bash PID 79545.
+- Threshold-choice rule (pre-declared, encoded in the script): from grid
+  `{3,4,5,6,8,10}`, take the largest threshold whose science-only post-dedup
+  count is >= 300; if that count exceeds 1,500, step to the next-larger grid
+  point unless it would drop below 300. Written to
+  `/workspace/phase3_v2/threshold_choice.json` at stage 3.
+- Stage 1 correctly detected the already-running describe pass (PID 79216)
+  and is waiting on it rather than relaunching.
+- Markers: `/workspace/phase3_v2/STAGE_{01_DESCRIBE,02_SKY_FRACTION,
+  03_CHOOSE_THRESHOLD_AND_BUILD,04_ENRICH,05_CROSSMATCH,06_WISE,
+  07_TAXONOMY,08_PACK_SHARDS}_DONE`; log `/workspace/phase3_v2/phase3_v2.log`;
+  terminal markers `/workspace/PHASE3_V2_DONE` / `/workspace/PHASE3_V2_FAILED`.

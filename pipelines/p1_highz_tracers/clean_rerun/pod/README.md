@@ -20,3 +20,31 @@ Lessons encoded: never `pkill -f` a pattern that appears in your own SSH
 command line; never trust `comm` for torch workers; make skipped groups
 audited-and-retried rather than fatal; mint the preflight receipt AFTER the
 last commit/push of a dispatch, never before.
+
+## pod_phase3_v2.sh — science-target-only rerun (2026-09-03)
+
+Supersedes `pod_phase3.sh`'s sample-build step: the v1 S>8 sample was found
+84.8% sky fibers (`project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`).
+`pod_phase3_v2.sh` is unattended and idempotent — stage markers under
+`/workspace/phase3_v2/STAGE_*_DONE` let it resume after any interruption
+without redoing completed work; a full log is appended to
+`/workspace/phase3_v2/phase3_v2.log`.
+
+Stages: (1) wait-for/run the science-only `--describe` pass ->
+`science_target_summary.json`; (2) `sky_fraction_by_score.py` diagnostic;
+(3) apply the **pre-declared threshold rule** — from grid `{3,4,5,6,8,10}`,
+take the largest threshold with science-only count >= 300; if that count
+exceeds 1,500, step to the next-larger grid point unless it would drop below
+300 — build the sample with `--science-targets-only --zcatalog`, then run
+`gates/check_sample_provenance.py` (abort on FAIL); (4)-(7) enrichment ->
+SIMBAD/NED crossmatch -> WISE join -> taxonomy, same commands/flags/contract
+as `pod_phase3.sh` but entirely under `/workspace/phase3_v2/`; (8) pack
+`enrich_shards/` into <=9,000-file tar parts with `PACKED_SHA256SUMS.json`.
+
+On success: `/workspace/PHASE3_V2_DONE`. On failure: `/workspace/PHASE3_V2_FAILED`
+names the failing stage. Launch detached exactly like v1:
+
+```
+setsid nohup /workspace/bigbounce/pipelines/p1_highz_tracers/clean_rerun/pod/pod_phase3_v2.sh \
+  > /workspace/phase3_v2/phase3_v2_stdout.log 2>&1 < /dev/null &
+```
