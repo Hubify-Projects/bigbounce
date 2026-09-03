@@ -76,7 +76,7 @@ separate phase and never subtract from the score.
   §II–III of the A3 multi-channel paper (`research/track_a3_multichannel/paper/`
   v3M.0.2). No submission; optional future Comment on Cai+2009.
 
-## A3 multi-channel paper (A3M) — `research/track_a3_multichannel/paper/` v3M.0.5 (PRD regular article) — **REVISE then DEFER submission**, readiness → 70
+## A3 multi-channel paper (A3M) — `research/track_a3_multichannel/paper/` v3M.0.5 (PRD regular article) — **REVISE then DEFER submission**, readiness → 70 (raised to 75 after the real-KDE injection REVISE closed in v3M.0.7)
 - Boards: R1 (Fable major / Grok reject / Gemini major) → 20 items closed with
   decisions D1–D3 (official NANOGrav posterior primary, tail Bayes factors
   dropped; transmission bound handoff-conditional; PBH ratio kept with regime
