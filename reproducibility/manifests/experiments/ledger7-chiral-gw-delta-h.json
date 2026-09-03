@@ -1,0 +1,158 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger7-chiral-gw-delta-h",
+  "title": "Ledger #7 gate - net helicity asymmetry Delta_h of the SGWB from the minimal Einstein-Cartan-Holst torsion bounce (symbolic parity-operator check + super-Hubble k-odd estimate)",
+  "program": "bounce-theory",
+  "paper": "none",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Freidel, Minic & Takeuchi 2005 - minimal fermion coupling in Einstein-Cartan-Holst, gamma^2/(1+gamma^2) four-fermion term",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/hep-th/0507253",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Mercuri 2006 - Nieh-Yan formulation; Immirzi parameter unobservable at constant gamma",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/gr-qc/0601013",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Alexander & Yunes 2009 - Chern-Simons modified gravity review",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/0907.2562",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Taveras & Yunes 2008 - dynamical Barbero-Immirzi field",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/0807.2652",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai, Li, Wang & Zhu 2021 - chiral GWs in Nieh-Yan modified teleparallel gravity",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2104.08376",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Poplawski 2010 - torsion spin-fluid bounce (Hehl-Datta term, parity-even)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1007.0587",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Seto & Taruya 2007/2008 - circular-polarisation sensitivity of a planar GW detector",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/0707.0535",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Domcke et al. 2020 - measuring SGWB chirality with LISA via the kinematic dipole",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1910.08052",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Kato & Soda 2016 - PTA probe of circular polarisation",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1512.09139",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Gluscevic & Kamionkowski 2010 - CMB TB/EB from chiral GWs",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1002.1308",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "On-shell ECH torsion irreps and O4 coefficient (in-lab adjudication, 2026-08-08)",
+      "type": "internal-artifact",
+      "locator": "research/theory_audit/ech_torsion_onshell_2026_08_08.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "ECH Note four-fermion contact term L_4psi = -(3 kappa/16) gamma^2/(1+gamma^2) (J5.J5)",
+      "type": "internal-artifact",
+      "locator": "arxiv/paper1bc_ech_note/main.tex",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Branch M PGT bounce GW spectrum (amplitude/frequency gap)",
+      "type": "internal-artifact",
+      "locator": "research/branch_M_pgt_bounce_gw/phase1_results.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Branch Q sourced-parity screening (BRANCH_Q_WEAK)",
+      "type": "internal-artifact",
+      "locator": "research/branch_Q_sourced_parity/phase1_results.md",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/chiral_gw_gate/chiral_gw_delta_h.py",
+      "entrypoint": "python3 research/chiral_gw_gate/chiral_gw_delta_h.py",
+      "sha256": "93eba1315977ed33ffc53031be619844679cb140d9eeefba4a7c12e0e02e5fb2"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy 2.5.1 + sympy",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-03",
+    "wall_clock": "< 3 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~3 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no external data files, no network). Part (A) is exact sympy algebra on the solved on-shell ECH contorsion coefficients; part (B) is a closed-form redshift/parametric evaluation. The Delta_h numbers are CEILINGS at the perturbative-unitarity value xi_B = 1 with an O(1) matching constant set to 1; in minimal ECH the parity-odd coefficient is exactly zero. Unfixed conventions (Holst sign s_H; no committed rho_c/T_B) are listed in the output JSON under convention_flags."
+  },
+  "outputs": [
+    {
+      "locator": "research/chiral_gw_gate/outputs/ledger7_chiral_gw_delta_h.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/chiral_gw_gate/LEDGER7_CHIRAL_GW_GATE_2026-09-03.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) symbolic.beta_over_alpha_onshell == 's_H/(2*gamma)'; (b) symbolic.O4_onshell simplifies to -3*J5sq*gamma**3*kappa**2*lambda_src**2*s_H/(gamma**2 + s_H**2)**2, i.e. -3 kappa^2 gamma^3/(1+gamma^2)^2 (J5.J5) at s_H=+1, matching research/theory_audit/ech_torsion_onshell_2026_08_08.md READING-I; (c) symbolic.xi_gamma_numeric['gamma=0.2375'] == 0.053394 +/- 1e-6 (the ECH Note's 0.053) and ['gamma=0.274'] == 0.069833 +/- 1e-6; (d) symbolic.beta_over_alpha_numeric_sH_plus1 == {2.10526, 1.82482} +/- 1e-4 (the 40/19 and 250/137 of the 2026-08-08 adjudication); (e) symbolic.parity_odd_tensor_coefficient_minimal_ECH == '0'; (f) numeric rows: f_B(T_B=1e16 GeV) == 1.668e9 Hz +/- 1e6 and Delta_h_max for LISA == 5.995e-13 (rel. 1e-3), PTA == 5.995e-18, CMB == 1.798e-26; (g) verdict.gate == 'CLOSE WITH REASON (O(epsilon), and requires an ad-hoc ingredient)'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 7 (four-question gate)",
+    "research/project_nextgen_bounce_signals/07_single_best_theory.md (March-2026 'single best next theory' call, REVERSED by this gate)",
+    "research/branch_M_pgt_bounce_gw/ and research/branch_Q_sourced_parity/ (prior partial work, not redone)",
+    "research/theory_audit/ech_torsion_onshell_2026_08_08.md and operator_basis_adjudication_2026_08_07.md",
+    "arxiv/paper1bc_ech_note/main.tex v1N.0.5 Eq. (4fermi)",
+    "directive Q2 (per-experiment reproducibility manifests), directive Q4 (nothing viable gets lost - salvage recorded)"
+  ]
+}
