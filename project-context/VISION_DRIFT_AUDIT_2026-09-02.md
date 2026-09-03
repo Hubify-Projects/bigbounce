@@ -14,6 +14,7 @@ due ≤ 2026-10-02 or at the next lineup change.
 | ECH Note P1N (P1A+P1C merged) | Route 2 (bounce mechanism = torsion contact term; DE closed) | `arxiv/paper1bc_ech_note/`; R1 board + audit | No lineup drift. **Process drift:** the first merge over-condensed (6 pp) and regressed three P1C v1C.0.16 corrections — caught by the R1 board, closing in v1N.0.2 |
 | P4′ (P5 folded into P4) + ledger #5 exclusion | Route 2 (black-hole-cosmology test) | `pipelines/p4prime_chirality_test/`; `research/bh_universe_dipole/` | No lineup drift. **Process drift:** 6 pp not self-contained for ApJS; closing in v4P.0.2 at 13–15 pp |
 | Anomaly line: phase 3 running (S>8 sample), ledger #8 pending | Route 3 (early-universe anomaly map) | pod `8ofv5d4ynu7hku` | No; paper-vs-release decided only by the recovery benchmark |
+| Ledger #6 first discriminator (PNG high-z abundance) → honest null | Route 3 | `research/anomaly_map/LEDGER6_DISCRIMINATOR_BRIEF_2026-09-02.md` | No; the null is published as a null in the ledger; the anomaly cannot be cited as bounce evidence |
 | Site/Hubify reframed to flagship line + Note + data products | governance | `SITE_REFRAME_2026-09-02.md`, Hubify commits | No |
 
 ## Convergence-budget check (R2)

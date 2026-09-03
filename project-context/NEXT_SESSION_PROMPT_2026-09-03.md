@@ -59,8 +59,12 @@ endorsement emails. INT boards only; no browser EXT rounds.
 3. Ledger #2 second half: the bounce's own cubic in-in term (Quintin+2015 /
    Agullo–Bolliet–Sreenath 2017 structure) — Fable-tier computation, committed
    with manifest; then A2 brief + A3M §3 updated.
-4. Ledger #6 and #4: first discriminator derived and confronted with a public
-   catalogue; DESI DR1 PNG reproduction plan.
+4. Ledger #6's first discriminator is DONE (honest null: PNG at −35/16
+   suppresses z>10 massive galaxies by 5–15%, wrong sign and below the
+   systematics floor — `research/anomaly_map/`). Next: ledger #7 (chiral GWs
+   from the torsion bounce, four-question gate + analytic Δ_h estimate) is
+   promoted; ledger #4 (DESI DR1 scale-dependent-bias PNG reproduction plan)
+   is the remaining place −35/16 can be measured.
 5. Hygiene every round: directive G bundle, Convex/site/timeline sync with
    headed QA, manifests validated, ledger + handoff updated, next prompt
    written, ordered click-list for Houston.
