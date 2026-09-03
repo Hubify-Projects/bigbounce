@@ -182,14 +182,49 @@ def _dedup_scores_into_sqlite(shards: list[Path], connection: sqlite3.Connection
     return raw_rows
 
 
+def _quantiles_and_counts(scores: np.ndarray) -> tuple[dict[str, float], dict[str, dict[str, Any]]]:
+    """Shared quantile + candidate-threshold-count computation over a 1-D score array."""
+    n = int(scores.shape[0])
+    quantiles = {f"q{int(q * 100):02d}": float(np.quantile(scores, q)) for q in QUANTILES}
+    counts_above = {}
+    for threshold in CANDIDATE_THRESHOLDS:
+        count = int(np.sum(scores >= threshold))
+        counts_above[f"sigma_{threshold:g}"] = {
+            "threshold": threshold,
+            "count": count,
+            "fraction_of_unique": (count / n) if n else 0.0,
+        }
+    return quantiles, counts_above
+
+
 def describe_distribution(
     contract_module: types.ModuleType,
     contract_path: Path,
     shard_dir: Path,
     receipt_dir: Path,
     summary_path: Path,
+    science_targets_only: bool = False,
+    zcatalog_path: Path | None = None,
 ) -> dict[str, Any]:
-    """Fail-closed post-dedup score-distribution report. Writes nothing to disk."""
+    """Fail-closed post-dedup score-distribution report. Writes nothing to disk.
+
+    Default behaviour (`science_targets_only=False`) is byte-identical to the
+    original raw-table-only report. When `science_targets_only=True` (and
+    `zcatalog_path` given), the RAW table is still computed exactly as
+    before (top-level `quantiles`/`counts_above_threshold` keys are
+    unchanged) and an ADDITIONAL `science_only` block is appended, joining
+    the same post-dedup scored rows to the zcatalog via
+    `load_science_target_flags`/the `OBJTYPE=='TGT' AND
+    COADD_FIBERSTATUS==0` rule (see `apply_science_target_filter`) before
+    computing its own quantiles/counts. This is what makes the science-only
+    threshold-choice grid in `pod_phase3_v2.sh` stage 03 possible from
+    `--describe` alone — describe mode previously emitted only the raw
+    (sky-fiber-contaminated) table even when `--science-targets-only` was
+    passed, which is what caused the v2 chain's stage-3 failure.
+    """
+    if science_targets_only and zcatalog_path is None:
+        raise SampleError("--science-targets-only requires --zcatalog")
+
     contract = contract_module.read_json(contract_path)
     contract_module.verify_contract(contract)
     shards = contract_module.verify_receipts(contract_path, shard_dir, receipt_dir)
@@ -209,33 +244,55 @@ def describe_distribution(
             # fixed-size cursor batches into one preallocated float64 array
             # rather than materializing Python list objects for every row.
             scores = np.empty(unique_rows, dtype=np.float64)
-            cursor = connection.execute("SELECT anomaly_score FROM scored")
+            targetids: list[int] | None = [] if science_targets_only else None
+            cursor = connection.execute(
+                "SELECT targetid, anomaly_score FROM scored" if science_targets_only else "SELECT anomaly_score FROM scored"
+            )
             offset = 0
             while True:
                 batch = cursor.fetchmany(200_000)
                 if not batch:
                     break
                 take = len(batch)
-                scores[offset : offset + take] = [row[0] for row in batch]
+                if science_targets_only:
+                    scores[offset : offset + take] = [row[1] for row in batch]
+                    targetids.extend(int(row[0]) for row in batch)
+                else:
+                    scores[offset : offset + take] = [row[0] for row in batch]
                 offset += take
 
-            quantiles = {
-                f"q{int(q * 100):02d}": float(np.quantile(scores, q)) for q in QUANTILES
-            }
-            counts_above = {}
-            for threshold in CANDIDATE_THRESHOLDS:
-                count = connection.execute(
-                    "SELECT COUNT(*) FROM scored WHERE anomaly_score >= ?", (threshold,)
-                ).fetchone()[0]
-                counts_above[f"sigma_{threshold:g}"] = {
-                    "threshold": threshold,
-                    "count": int(count),
-                    "fraction_of_unique": count / unique_rows,
-                }
+            quantiles, counts_above = _quantiles_and_counts(scores)
+
+            science_only_block = None
+            if science_targets_only:
+                assert targetids is not None
+                flags = load_science_target_flags(zcatalog_path, set(targetids))
+                science_scores = [
+                    scores[i]
+                    for i, tid in enumerate(targetids)
+                    if (info := flags.get(tid)) is not None
+                    and info["objtype"] == "TGT"
+                    and info["fiberstatus"] == 0
+                ]
+                sci_unique = len(science_scores)
+                if sci_unique == 0:
+                    science_only_block = {
+                        "unique_targetids": 0,
+                        "quantiles": {},
+                        "counts_above_threshold": {},
+                        "note": "zero rows survive the science-target join (OBJTYPE=='TGT' AND COADD_FIBERSTATUS==0)",
+                    }
+                else:
+                    sci_quantiles, sci_counts = _quantiles_and_counts(np.array(science_scores, dtype=np.float64))
+                    science_only_block = {
+                        "unique_targetids": sci_unique,
+                        "quantiles": sci_quantiles,
+                        "counts_above_threshold": sci_counts,
+                    }
         finally:
             connection.close()
 
-    return {
+    report = {
         "contract_sha256": contract_sha,
         "generation_id": summary.get("generation_id"),
         "raw_rows": raw_rows,
@@ -244,6 +301,12 @@ def describe_distribution(
         "counts_above_threshold": counts_above,
         "note": "describe mode emits no sample; use --score-threshold to select one",
     }
+    if science_targets_only:
+        report["science_targets_only"] = True
+        report["science_target_rule"] = "OBJTYPE == 'TGT' AND COADD_FIBERSTATUS == 0 (TARGETID > 0 asserted)"
+        report["zcatalog_path"] = str(zcatalog_path)
+        report["science_only"] = science_only_block
+    return report
 
 
 ZCAT_SCIENCE_COLUMNS = ["TARGETID", "OBJTYPE", "COADD_FIBERSTATUS", "ZWARN", "SPECTYPE", "Z", "DELTACHI2"]
@@ -547,7 +610,12 @@ def main() -> None:
     args = build_parser().parse_args()
     contract_module = load_contract_module()
     if args.describe:
-        report = describe_distribution(contract_module, args.contract, args.shard_dir, args.receipt_dir, args.summary)
+        if args.science_targets_only and args.zcatalog is None:
+            raise SystemExit("--science-targets-only requires --zcatalog")
+        report = describe_distribution(
+            contract_module, args.contract, args.shard_dir, args.receipt_dir, args.summary,
+            science_targets_only=args.science_targets_only, zcatalog_path=args.zcatalog,
+        )
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.score_threshold is None:

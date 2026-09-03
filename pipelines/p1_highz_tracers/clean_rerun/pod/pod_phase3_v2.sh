@@ -110,10 +110,26 @@ import json, re, sys, datetime
 describe_log, out_path = sys.argv[1], sys.argv[2]
 text = open(describe_log).read()
 
+# describe_distribution() (build_flagship_sample.py, fixed 2026-09-03: the
+# describe-mode report now honours --science-targets-only) prints ONE JSON
+# object to stdout. Parse it structurally instead of regexing raw text --
+# it carries BOTH the raw (sky-fiber-contaminated) table (top-level
+# `quantiles`/`counts_above_threshold`) and, since --science-targets-only
+# was passed, a `science_only` block with the real science-target-join
+# counts. Stage 03 needs `science_only`, never the raw table.
+json_start = text.index("{")
+report = json.loads(text[json_start:])
+
 payload = {
     "generated_utc": datetime.datetime.utcnow().isoformat() + "Z",
     "source_log": describe_log,
     "raw_describe_output": text,
+    "raw": {
+        "unique_targetids": report.get("unique_targetids"),
+        "quantiles": report.get("quantiles"),
+        "counts_above_threshold": report.get("counts_above_threshold"),
+    },
+    "science_only": report.get("science_only"),
 }
 with open(out_path, "w") as f:
     json.dump(payload, f, indent=2)
@@ -156,33 +172,30 @@ if stage_done "$STAGE"; then
 else
   mark "start $STAGE: threshold choice + science-only sample build"
 
-  # Get per-threshold science-only counts for the grid by running
-  # build_flagship_sample.py --describe's structured counts. The --describe
-  # pass already reports fractions/counts above 3/4/5/6/8/10 in its stdout;
-  # parse science_target_summary.json's raw text for those counts.
+  # Get per-threshold science-only counts for the grid directly from
+  # science_target_summary.json's `science_only.counts_above_threshold`
+  # block (structured JSON from the fixed describe_distribution(), which
+  # now honours --science-targets-only and emits real science-target-join
+  # counts -- never the raw/sky-fiber-contaminated table, and never a
+  # text-regex parse of stdout).
   python3 - "$V2/science_target_summary.json" "$CHOICE_JSON" <<'PYEOF'
-import json, re, sys
+import json, sys
 
 summary_path, out_path = sys.argv[1], sys.argv[2]
-raw = json.load(open(summary_path))["raw_describe_output"]
+payload = json.load(open(summary_path))
+science_only = payload.get("science_only")
+if not science_only or not science_only.get("counts_above_threshold"):
+    print(f"FATAL: {summary_path} has no science_only.counts_above_threshold "
+          f"(describe pass did not run with --science-targets-only, or fixture "
+          f"is stale)", file=sys.stderr)
+    sys.exit(2)
 
 GRID = [3, 4, 5, 6, 8, 10]
+counts_table = science_only["counts_above_threshold"]
 counts = {}
 for g in GRID:
-    # Accept a few common describe-output phrasings:
-    #   ">= 8.0: 1234 (12.3%)" / "score>=8: 1234" / "threshold 8.0 -> count=1234"
-    patterns = [
-        rf">=\s*{g}\.0[^0-9]*?(\d[\d,]*)",
-        rf">=\s*{g}[^0-9]*?(\d[\d,]*)",
-        rf"threshold\s*{g}\.0.*?count[=:\s]+(\d[\d,]*)",
-    ]
-    n = None
-    for p in patterns:
-        m = re.search(p, raw, re.IGNORECASE)
-        if m:
-            n = int(m.group(1).replace(",", ""))
-            break
-    counts[str(g)] = n
+    entry = counts_table.get(f"sigma_{g:g}")
+    counts[str(g)] = int(entry["count"]) if entry else None
 
 rule_text = (
     "From grid {3,4,5,6,8,10}: take the LARGEST threshold whose science-only "

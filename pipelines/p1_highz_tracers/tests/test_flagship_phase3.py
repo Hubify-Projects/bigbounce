@@ -1239,6 +1239,55 @@ class ScienceTargetsOnlyTest(unittest.TestCase):
             sealed_table = pq.read_table(output_sample_sealed).to_pydict()
             self.assertNotIn("zwarn", sealed_table)
 
+    def test_describe_science_targets_only_emits_both_raw_and_science_only_tables(self) -> None:
+        """Regression test for the v2-chain stage-3 failure: `--describe
+        --science-targets-only` must NOT just emit the raw (sky-fiber
+        contaminated) threshold table — it must also emit a `science_only`
+        block whose counts are computed after the OBJTYPE/FIBERSTATUS join,
+        and those counts must genuinely differ from the raw ones.
+        """
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            contract_tool, contract_path, shard_dir, receipt_dir, summary_path = _build_fixture(work)
+            zcatalog_path = work / "zall-pix-iron-synthetic.fits"
+            self._write_synthetic_zcatalog(zcatalog_path)
+
+            # Post-dedup fixture scores: {1:2.0, 2:6.0, 3:11.0, 4:3.5, 5:7.0}.
+            # Science-target join (per _write_synthetic_zcatalog) keeps only
+            # {1,4,5} (2=bad fiber, 3=SKY) -> science-only scores {2.0,3.5,7.0}.
+            report = self.mod.describe_distribution(
+                contract_tool, contract_path, shard_dir, receipt_dir, summary_path,
+                science_targets_only=True, zcatalog_path=zcatalog_path,
+            )
+
+            # Raw (top-level) table is unchanged/byte-identical in shape to
+            # the non-science-only describe report: all 5 post-dedup rows.
+            self.assertEqual(report["unique_targetids"], 5)
+            self.assertTrue(report["science_targets_only"])
+
+            science_only = report["science_only"]
+            self.assertEqual(science_only["unique_targetids"], 3)
+            expected_science_scores = np.array([2.0, 3.5, 7.0])
+            self.assertAlmostEqual(science_only["quantiles"]["q50"], float(np.quantile(expected_science_scores, 0.50)))
+            for threshold in (3.0, 4.0, 5.0, 6.0, 8.0, 10.0):
+                expected_count = int((expected_science_scores >= threshold).sum())
+                key = f"sigma_{threshold:g}"
+                self.assertEqual(science_only["counts_above_threshold"][key]["count"], expected_count)
+
+            # The whole point of this fix: science-only counts must differ
+            # from the raw (contaminated) counts for at least one threshold
+            # where the two populations actually diverge.
+            self.assertNotEqual(
+                science_only["counts_above_threshold"]["sigma_3"]["count"],
+                report["counts_above_threshold"]["sigma_3"]["count"],
+            )
+
+            # Default (flag absent) describe output stays byte-identical:
+            # no science_targets_only/science_only keys at all.
+            plain_report = self.mod.describe_distribution(contract_tool, contract_path, shard_dir, receipt_dir, summary_path)
+            self.assertNotIn("science_targets_only", plain_report)
+            self.assertNotIn("science_only", plain_report)
+
     def test_science_targets_only_requires_zcatalog(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             work = Path(temporary)

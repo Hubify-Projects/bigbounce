@@ -75,3 +75,44 @@ science-target-only rerun on pod `8ofv5d4ynu7hku`.
   03_CHOOSE_THRESHOLD_AND_BUILD,04_ENRICH,05_CROSSMATCH,06_WISE,
   07_TAXONOMY,08_PACK_SHARDS}_DONE`; log `/workspace/phase3_v2/phase3_v2.log`;
   terminal markers `/workspace/PHASE3_V2_DONE` / `/workspace/PHASE3_V2_FAILED`.
+
+## Stage-3 fix + relaunch (2026-09-03 16:44 UTC)
+
+Root cause: `build_flagship_sample.py --describe` ignored
+`--science-targets-only` and always emitted the RAW (sky-fiber-contaminated)
+threshold table, so `science_target_summary.json` had no science-only counts
+and stage 03's chooser failed on the same S>5=52,188/S>8=3,810 sealed
+sky-fiber numbers.
+
+Fix: `describe_distribution()` now accepts `science_targets_only`/`zcatalog_path`;
+default output stays byte-identical (verified by test), and with the flag it
+additionally joins the post-dedup rows to the zcatalog
+(`OBJTYPE=='TGT' AND COADD_FIBERSTATUS==0`, via `load_science_target_flags`)
+and appends a `science_only` block (`unique_targetids`, `quantiles`,
+`counts_above_threshold`) alongside the unchanged raw table. `main()` now
+passes the flag/zcatalog through in `--describe` mode.
+
+`pod_phase3_v2.sh` stage 01 now parses the describe pass's structured JSON
+(not raw stdout text) into `science_target_summary.json`'s `raw` + `science_only`
+keys; stage 03 reads `science_only.counts_above_threshold` directly instead of
+regexing stdout text.
+
+Tests: added `test_describe_science_targets_only_emits_both_raw_and_science_only_tables`
+to `tests/test_flagship_phase3.py` (synthetic zcatalog fixture; asserts
+science-only counts differ from raw and match the OBJTYPE/FIBERSTATUS filter,
+and that the flag-absent report carries no `science_only`/`science_targets_only`
+keys). Full clean_rerun suite: `python3 -m pytest pipelines/p1_highz_tracers/tests/ -q`
+-> 87 passed.
+
+Relaunch receipt: scp'd both files to
+`root@205.196.17.124:8489:/workspace/bigbounce/.../clean_rerun/{build_flagship_sample.py,pod/pod_phase3_v2.sh}`,
+md5 verified local==remote (`3ba9e8c5...` / `53a9519d...`). Removed
+`/workspace/PHASE3_V2_FAILED`, `/workspace/phase3_v2/STAGE_01_DESCRIBE_DONE`,
+and the stale `describe_science.log` (kept `STAGE_02_SKY_FRACTION_DONE`,
+inputs unchanged). Relaunched detached:
+`setsid nohup bash pod_phase3_v2.sh > /workspace/phase3_v2/phase3_v2_stdout.log 2>&1 < /dev/null &`
+-> script PID 79900, describe-pass PID 79912 confirmed running against the
+fixed code (`--describe --science-targets-only --zcatalog ...`); first log
+line: `== 2026-09-03T16:44:47Z start 01_DESCRIBE: science-only describe pass`.
+Chain now streams the ~25-min zcatalog describe pass before stage 03 retries
+with real science-only counts.
