@@ -121,7 +121,7 @@ export const researchPrograms: ResearchProgram[] = [
     result:
       "A1 \u00b7 P2\u2032 derives the exact matter-contraction amplitude f_NL = \u221235/16, confirmed by an independent from-scratch in-in computation; Cai et al. 2009's \u221235/8 located as a uniform factor 2 (ledger #1 CLOSED, 2026-09-02). A3 (paper-a3m, v3M.0.4) is now the flagship submission candidate: it folds the P2\u2032 exact-amplitude theory together with the multi-channel consistency checks (NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach) into one manuscript. A2 (nonlinear transmission through an explicit bounce) remains a research brief in progress.",
     limitation:
-      "A3 is a draft (readiness 20): the PBH compaction-function row is pending and one INT review board has not yet run. A2 is not yet a complete manuscript. The archived P2\u2032 Letter (paper-2l) is kept as a theory record, not a separate live submission target.",
+      "A3 is at readiness 70 (R2 verification closed; final author review pending, per directive P's readiness composition). A2 is not yet a complete manuscript. The archived P2\u2032 Letter (paper-2l) is kept as a theory record, not a separate live submission target.",
     leadSlug: "paper-2l",
     supportSlugs: ["paper-a3m"],
     supportingLinks: [
@@ -550,7 +550,7 @@ export const papers: Paper[] = [
     path: publicationPath({}),
     pages: "9",
     refs: "\u2014",
-    readiness: 20,
+    readiness: 70,
     statusVariant: "blue",
     target: "PRD (regular article)",
     description:

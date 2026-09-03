@@ -79,14 +79,25 @@ export default async function ReviewsPage() {
       >
         This feed preserves internal and external automated-review rounds, raw evidence,
         per-finding truth audits, and subsequent closures. It is a review history, not a
-        journal decision. <strong>Current status (2026-09-02 restructure): P1N (Track B) and P4′ (Track C1) are freshly merged/folded drafts under their first review round; P1A, P4, and P5 are archived lineage whose review evidence is retained but who are no longer independent submission targets; P1B and P2 continue on their own tracks; P3 remains provenance support for the redirected anomaly map.</strong>{" "}
-        The canonical readiness caps are P1N {cap("paper-1n")}, P4′ {cap("paper-4p")}, P1A{" "}
-        {cap("paper-1a")} (archived), P1B {cap("paper-1b")}, P2 {cap("paper-2")}, P3{" "}
+        journal decision. <strong>Current lineup (flagship line + closed-line note + data
+        products, per the 2026-09-02 portfolio decision): A3 (paper-a3m) is the Track A
+        flagship submission candidate, converged with final author review pending; P4′
+        (Track C1) is a converged chirality-test + black-hole-universe-exclusion data-product
+        paper; the ECH Note (P1N, Track B) is the converged closed line. P2′ (paper-2l) is
+        archived into A3 as a theory record, not an independent submission target. P1A, P2,
+        P4, and P5 are archived lineage — review evidence retained, no longer independent
+        submission targets. P1B and P3 continue as supporting releases.</strong>{" "}
+        The canonical readiness caps are A3 {cap("paper-a3m")}, P4′ {cap("paper-4p")}, P1N{" "}
+        {cap("paper-1n")}, P2′ {cap("paper-2l")} (archived into A3), P1A {cap("paper-1a")}{" "}
+        (archived), P1B {cap("paper-1b")}, P2 {cap("paper-2")} (archived), P3{" "}
         {cap("paper-3")}, P4 {cap("paper-4")} (archived), and P5 {cap("paper-5")} (archived).
         Automated ACCEPT labels are retained exactly
-        as returned, but they are not journal acceptance. Under directive P the only thing
-        between a paper at 95% and 100% is Houston&apos;s own final read; independent human
-        review, venue-specific checks and submission belong to the separate Publishing phase.
+        as returned, but they are not journal acceptance. Per directive P, readiness 95 (P4′,
+        P1N) is the four agent gates complete — science closure, evidence &amp; reproducibility,
+        automated review convergence, and packaging &amp; PDF hygiene; A3&apos;s 70 reflects an
+        open science gate (final author review pending) under the same composition; 100
+        requires Houston&apos;s own final per-paper read. Independent human review, venue-specific
+        checks, and submission belong to the separate Publishing phase.
       </p>
       <div
         style={{
@@ -135,13 +146,17 @@ export default async function ReviewsPage() {
             <h3 className="progress-block-title">External automated-review evidence</h3>
             <p className="progress-block-sub">
               The matrices below preserve the historical automated-model labels and their raw
-              provenance. They are useful diagnostics, not an acceptance scoreboard. The current
-              canonical board is P1A {ver("paper-1a")}/{cap("paper-1a")},
+              provenance for the six-paper board that pre-dates the 2026-09-02 restructure
+              (P1A, P1B, P2, P3, P4, P5). They are useful diagnostics, not an acceptance
+              scoreboard, and are shown newest-round-left. Historical board versions/caps: P1A{" "}
+              {ver("paper-1a")}/{cap("paper-1a")},
               P1B {ver("paper-1b")}/{cap("paper-1b")}, P2 {ver("paper-2")}/{cap("paper-2")},
               P3 {ver("paper-3")}/{cap("paper-3")}, P4 {ver("paper-4")}/{cap("paper-4")}, and
-              P5 {ver("paper-5")}/{cap("paper-5")}; all are IN REVISION. Older verdict cells
+              P5 {ver("paper-5")}/{cap("paper-5")}. Older verdict cells
               reference the paper version current at that round and must not be read as verdicts
-              on the latest PDFs.
+              on the latest PDFs. The live-lineup papers (A3, P4′, P1N) are not yet columns in
+              this historical grid; their round-by-round evidence is in the feed below and their
+              readiness is reported in the table above.
             </p>
             <AllAMeter />
             <ChartShell title="External referee verdicts — every paper × reviewer per round">
@@ -274,7 +289,7 @@ export default async function ReviewsPage() {
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Canonical readiness</td>
-                <td className="eta-td">Evidence-capped average {avgCap}% across the six historical artifact records (P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")}); P1N {cap("paper-1n")} and P4′ {cap("paper-4p")} are fresh Track B/C1 drafts under their first review round. P1A/P4/P5 are archived lineage. No automated score converts into journal acceptance.</td>
+                <td className="eta-td">Active lineup: A3 (Track A flagship) {cap("paper-a3m")} — converged, final author review pending; P4′ (Track C1) {cap("paper-4p")} and the ECH Note (P1N, Track B) {cap("paper-1n")} — both converged, 95. P2′ {cap("paper-2l")} is archived into A3 (theory record, not an independent target). Historical archived lineage: P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")} (evidence-capped average {avgCap}%). No automated score converts into journal acceptance.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Remaining before 100%</td>
