@@ -1,0 +1,95 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-2-fnl-bianchi-separate-universe",
+  "title": "A3-2: second-order Bianchi-I (anisotropic) separate-universe cross-check of the matter-contraction squeezed f_NL, including the long mode's shear",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "lab in-in adjudication (2026-09-02)",
+      "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md (commit aa2987cf)",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "lab second-method delta-N (2026-09-02)",
+      "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md (commit d7dac953)",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "Maldacena 2003",
+      "locator": "https://arxiv.org/abs/astro-ph/0210603",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Namjoo, Firouzjahi & Sasaki 2012",
+      "locator": "https://arxiv.org/abs/1210.3692",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Pajer, Schmidt & Zaldarriaga 2013; Dai, Pajer & Schmidt 2015",
+      "locator": "https://arxiv.org/abs/1305.0824 ; https://arxiv.org/abs/1504.00351",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.py",
+      "entrypoint": "python3 research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.py",
+      "sha256": "cc393a1236869745236923a90e168b6126a21f9011eeb38f5d6a47079fa2aac4"
+    }
+  ],
+  "environment": {
+    "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local macOS workstation",
+    "date": "2026-09-03",
+    "wall_clock": "4 s",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 minute",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic exact-rational sympy. No network access at run time. The script self-validates: eps recovered from H; the growing mode solves d/dt(a^3 eps zetadot)=0; the isotropic projection response equals (1-n_s) zeta_L (consistency relation); the attractor limit gives (5/12)(1-n_s) with no quadrupole; the shear vanishes as eps -> 0 (USR); the second-order delta-N ODE residual is identically zero."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and diff the JSON. Required exact values: growing_mode.zetadot_over_H_zeta == 'epsilon - 3'; anisotropy['beta_z / zeta_L'] == '2*epsilon*s_conv/3'; delta_N_comoving.f_NL_comoving_general_eps == '-5'; projection.isotropic_part == '1 - n_s'; result['f_total(mu)_eps_3_2_sconv_+1'] == '15*mu**2/8 - 45/8'; result.monopole == '-5'; result.mu2_coefficient == '15/8'; comparison.ratio_mu2_coefficients == '2'; comparison.monopole_gap == '-25/8'; comparison.shear_monopole_contribution == '0'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 1 (open item: 'second-order Bianchi-I separate-universe check of the shear response') and row 3 (A3-2 method-independent f_NL check)",
+    "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md, 'What remains open'",
+    "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+    "input 'lab in-in adjudication (2026-09-02)' (research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md (commit aa2987cf)) used for: the open item this work executes; the comparison values f(mu) = -35/16 + (15/16) mu^2, monopole -15/8, comoving delta-N -5, and the quoted shear sign convention \u2014 all used only AFTER the computation",
+    "input 'lab second-method delta-N (2026-09-02)' (research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md (commit d7dac953)) used for: separate-universe system (exponential potential, x/Y variables) and the -55/16 uniform-density value",
+    "input 'Maldacena 2003' (https://arxiv.org/abs/astro-ph/0210603) used for: comoving gauge ADM variables, psi = -zeta/H + a^2 eps grad^{-2} zetadot; consistency-relation normalisation used as a VALIDATION",
+    "input 'Namjoo, Firouzjahi & Sasaki 2012' (https://arxiv.org/abs/1210.3692) used for: ultra-slow-roll non-attractor benchmark: f_NL = 5/2 with no angular dependence, used to VALIDATE that the shear term vanishes as eps -> 0",
+    "input 'Pajer, Schmidt & Zaldarriaga 2013; Dai, Pajer & Schmidt 2015' (https://arxiv.org/abs/1305.0824 ; https://arxiv.org/abs/1504.00351) used for: conformal-Fermi-coordinate / separate-universe-with-shear framework; their attractor-only validity is recorded as the identified incompleteness"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "background": {
+    "H": "1/(epsilon*t)",
+    "eps_from_H": "epsilon"
+  },
+  "growing_mode": {
+    "zeta_D(t)": "(-t)**(1 - 3/epsilon)",
+    "zetadot_over_H_zeta": "epsilon - 3",
+    "at_eps_3_2": "-3/2"
+  },
+  "shear": {
+    "K^i_j anisotropic part": "(k_i k_j psi)/a^2 |_traceless = s_conv*eps*zetadot*(khat_i khat_j - delta/3)",
+    "order_in_kL": "k_L^0  (the 1/k_L^2 of grad^{-2} exactly cancels the k_i k_j)",
+    "coefficient": "epsilon*s_conv*zetadot",
+    "trace_part_deltaK": "epsilon*s_conv*zetadot",
+    "sigma_zz": "2*epsilon*s_conv*zetadot/3"
+  },
+  "anisotropy": {
+    "beta_z / zeta_L": "2*epsilon*s_conv/3",
+    "at_eps_3_2": "s_conv"
+  },
+  "delta_N_comoving": {
+    "c1": "sqrt(2)*(epsilon - 3)/(2*sqrt(epsilon))",
+    "c2": "sqrt(6)*(epsilon + 3)/(2*epsilon)",
+    "A2": "sqrt(3)*(epsilon + 3)/(sqrt(epsilon)*(epsilon - 3))",
+    "P1": "-sqrt(6)/(2*epsilon)",
+    "P2": "3*sqrt(2)/(2*epsilon**(3/2))",
+    "zeta1_leading_coeff": "-sqrt(3)/(sqrt(epsilon)*(epsilon - 3))",
+    "zeta2_leading_coeff": "-9/(epsilon*(epsilon - 3)**2)",
+    "f_NL_comoving_general_eps": "-5"
+  },
+  "projection": {
+    "dlnP_over_zetaL": "-epsilon*mu**2*n_s*s_conv + 4*epsilon*mu**2*s_conv + epsilon*n_s*s_conv/3 - 4*epsilon*s_conv/3 - n_s + 1",
+    "isotropic_part": "1 - n_s",
+    "shear_part": "epsilon*s_conv*(-3*mu**2*n_s + 12*mu**2 + n_s - 4)/3"
+  },
+  "validation": {
+    "attractor_gives_consistency_relation": "PASS  f=(5/12)(1-n_s)",
+    "USR_shear_vanishes_as_eps_to_0": "PASS (pure monopole, consistent with Namjoo+ 5/2)",
+    "shear_is_O(kL^0)": "PASS (see out[\"shear\"])"
+  },
+  "result": {
+    "f_shear(mu)_general": "5*epsilon*s_conv*(3*mu**2 - 1)/12",
+    "f_total(mu)_general_eps": "5*epsilon*s_conv*(3*mu**2 - 1)/12 - 5",
+    "f_total(mu)_eps_3_2_sconv_+1": "15*mu**2/8 - 45/8",
+    "f_total(mu)_eps_3_2_sconv_-1": "-15*mu**2/8 - 35/8",
+    "monopole": "-5",
+    "mu2_coefficient": "15/8",
+    "P2_coefficient": "5/8",
+    "isoceles_mu_0": "-45/8"
+  },
+  "comparison": {
+    "in_in_f(mu)": "15*mu**2/16 - 35/16",
+    "in_in_monopole": "-15/8",
+    "in_in_mu2_coefficient": "15/16",
+    "this_work_minus_in_in": "15*mu**2/16 - 55/16",
+    "ratio_mu2_coefficients": "2",
+    "monopole_gap": "-25/8",
+    "shear_monopole_contribution": "0"
+  },
+  "verdict": "DISAGREES, and FALSIFIES the reconciliation mechanism. The long mode's shear IS O(k_L^0) - beta_z = (2 eps/3) zeta_L, i.e. exactly zeta_L at eps=3/2 - so the adjudication is right that it is not an O(k^2) effect. But it is TRACELESS: its squeezed response is proportional to (3 mu^2 - 1) and contributes exactly ZERO monopole, so it cannot carry the -25/8 monopole residual between the comoving delta-N (-5) and the in-in monopole (-15/8). This route gives f(mu) = -45/8 + (15/8) mu^2 (s_conv=+1): monopole -5 (unchanged from delta-N) vs in-in -15/8; mu^2 coefficient 15/8, exactly 2x the in-in 15/16 (sign matches only for s_conv=+1, the sign convention of the 09-02 adjudication); isoceles -45/8 vs -35/16. The in-in -35/16 is NOT overturned - this route is a gradient-expansion response, not a complete computation of the bispectrum - but it does not confirm it, and the shear-carries-the-residual explanation does not survive."
+}
