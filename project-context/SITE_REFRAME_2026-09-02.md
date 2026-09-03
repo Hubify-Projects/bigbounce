@@ -788,3 +788,47 @@ A3 readiness mirror 70` (3 files: `site/src/app/reviews/page.tsx`,
 `site/src/data/repro.ts` diff produced as a side effect of `npm run
 build`'s repro-manifest sync script was reverted (`git checkout --`)
 before commit — out of scope for this pass, not touched.
+
+## Follow-up receipt — A3 v3M.0.6 site sync (2026-09-02, Sonnet site worker)
+
+Synced site data to paper-a3m v3M.0.6 as committed on disk at session start
+(commit `83e8d253` — main.pdf/main.tex/tarball already mirrored; PDF md5
+`3888085edc5c493fcd2a45c8c386576d`, tarball sha256
+`c762345fbddd6c38844490c0d975536fc6d50cf4c53a258c5798398becc838b4`, both
+verified byte-identical to the brief). Updated `site/src/data/papers.ts`
+(version, tldr, pdfMeta, changelog entry), `live-status.ts`
+(version/readiness/pendingWork), `publish.ts` (Track A decision + publication
+map row), and added a new `reviewTimeline.ts` entry
+(`a3m-final-review-revise-v3m-0-6-2026-09-02`) for the final-review REVISE
+round: abstract cut 450→307 words (no claim/qualifier dropped); real-KDE
+injection NOT restored this pass (checked local disk, all 7 HF `bamfai/*`
+repos, and the full B2 bucket — 74,388 objects, zero hits; next action is a
+direct Zenodo 10.5281/zenodo.8060824 re-download). Readiness held at 70 per
+directive P (science gate still open).
+
+Reverted an unrelated `site/src/data/repro.ts` diff produced as a side
+effect of `npm run build`'s repro-manifest sync script (out of scope, not
+touched), matching the prior pass's precedent.
+
+Committed as `aa83cc3f` (`site/src/data/{papers,live-status,publish,
+reviewTimeline}.ts` only), `npm run build` + `npx tsc --noEmit` clean,
+`tools/site_freshness_check.sh` → OVERALL PASS (no `FRESHNESS_SKIP`), pushed
+to `origin main` and `upstream main` (`e1287e0c..aa83cc3f`).
+
+Live verification: `bigbounce.hubify.app/papers/a3_multichannel_arxiv_v3M.0.6.pdf`
+→ HTTP 200, content-length 542362 (byte-identical to the committed PDF, after
+~2 min ISR propagation delay); `/papers/paper-a3m` → HTTP 200, version chip
+`V3M.0.6`; `/reviews` → new "final-review REVISE" round text confirmed live
+via page-text extraction. Headed-browser QA (Claude in Chrome, not
+Playwright) of `/papers/paper-a3m`: zero console errors; page renders
+correctly.
+
+**Concurrent-lane note:** a parallel session advanced past this sync to
+v3M.0.7 (real-KDE injection closure, Zenodo 8060824) while this pass was
+running — `site/src/data/{live-status,papers,publish}.ts`,
+`research/track_a3_multichannel/paper/{main.pdf,main.tex}`, and new
+`v3M.0.7` PDF/output/script files are present as **uncommitted** working-tree
+changes as of this receipt. This pass did not touch, commit, or revert any
+of that concurrent work — it belongs to the other lane per the task's own
+warning ("a concurrent lane may produce v3M.0.7 within the hour — sync only
+what is committed on disk when you start").
