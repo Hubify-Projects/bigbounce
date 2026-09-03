@@ -246,6 +246,125 @@ def describe_distribution(
     }
 
 
+ZCAT_SCIENCE_COLUMNS = ["TARGETID", "OBJTYPE", "COADD_FIBERSTATUS", "ZWARN", "SPECTYPE", "Z", "DELTACHI2"]
+
+
+def find_zcat_science_hdu(hdul: Any) -> Any:
+    """Find the zcatalog HDU exposing TARGETID/OBJTYPE/COADD_FIBERSTATUS.
+
+    Mirrors `crossmatch_flagship.find_zcat_coordinate_hdu`'s pattern.
+    """
+    required = {"TARGETID", "OBJTYPE", "COADD_FIBERSTATUS"}
+    for hdu in hdul:
+        columns = getattr(hdu, "columns", None)
+        if columns is not None and required <= set(columns.names):
+            return hdu
+    raise SampleError("no HDU in the zcatalog exposes TARGETID/OBJTYPE/COADD_FIBERSTATUS columns")
+
+
+def load_science_target_flags(
+    zcatalog_path: Path, targetids: set[int], chunk_rows: int = 500_000
+) -> dict[int, dict[str, Any]]:
+    """Stream OBJTYPE/COADD_FIBERSTATUS/ZWARN/SPECTYPE/Z/DELTACHI2 for `targetids`.
+
+    Returns a mapping from targetid -> {objtype, fiberstatus, zwarn,
+    spectype, z, deltachi2}, containing ONLY the requested targetids and
+    ONLY rows where TARGETID > 0 (a negative TARGETID in the DESI zcatalog
+    denotes a sky/blank fiber row and is never a real target, per
+    `project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`). Peak
+    memory is bounded by one chunk plus the requested targetid set.
+    """
+    try:
+        from astropy.io import fits
+    except ImportError as exc:  # pragma: no cover - runtime prerequisite
+        raise SampleError("astropy is required to read the zcatalog FITS file") from exc
+
+    remaining = set(targetids)
+    found: dict[int, dict[str, Any]] = {}
+    with fits.open(zcatalog_path, memmap=True) as hdul:
+        table_hdu = find_zcat_science_hdu(hdul)
+        data = table_hdu.data
+        available = set(data.columns.names)
+        n_rows = len(data)
+        for start in range(0, n_rows, chunk_rows):
+            if not remaining:
+                break
+            stop = min(start + chunk_rows, n_rows)
+            targetid_chunk = data["TARGETID"][start:stop]
+            objtype_chunk = data["OBJTYPE"][start:stop]
+            fiberstatus_chunk = data["COADD_FIBERSTATUS"][start:stop]
+            zwarn_chunk = data["ZWARN"][start:stop] if "ZWARN" in available else None
+            spectype_chunk = data["SPECTYPE"][start:stop] if "SPECTYPE" in available else None
+            z_chunk = data["Z"][start:stop] if "Z" in available else None
+            deltachi2_chunk = data["DELTACHI2"][start:stop] if "DELTACHI2" in available else None
+            for i, targetid_raw in enumerate(targetid_chunk):
+                targetid = int(targetid_raw)
+                if targetid not in remaining:
+                    continue
+                if targetid <= 0:
+                    # Sanity check per the contamination finding: a real
+                    # science target never has TARGETID <= 0. Do not add it
+                    # to `found`; the caller's science-only join then simply
+                    # excludes it (as any non-TGT row would be excluded).
+                    remaining.discard(targetid)
+                    continue
+                objtype_raw = objtype_chunk[i]
+                objtype = objtype_raw.decode("utf-8").strip() if isinstance(objtype_raw, bytes) else str(objtype_raw).strip()
+                found[targetid] = {
+                    "objtype": objtype,
+                    "fiberstatus": int(fiberstatus_chunk[i]),
+                    "zwarn": int(zwarn_chunk[i]) if zwarn_chunk is not None else None,
+                    "spectype": (
+                        (spectype_chunk[i].decode("utf-8").strip() if isinstance(spectype_chunk[i], bytes) else str(spectype_chunk[i]).strip())
+                        if spectype_chunk is not None
+                        else None
+                    ),
+                    "z": float(z_chunk[i]) if z_chunk is not None else None,
+                    "deltachi2": float(deltachi2_chunk[i]) if deltachi2_chunk is not None else None,
+                }
+                remaining.discard(targetid)
+    return found
+
+
+def apply_science_target_filter(
+    selected: dict[str, list[Any]], zcatalog_path: Path
+) -> dict[str, list[Any]]:
+    """Keep only rows joining to a zcatalog TGT row with COADD_FIBERSTATUS==0.
+
+    Rule (per `project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`):
+    `OBJTYPE == 'TGT' AND COADD_FIBERSTATUS == 0`, with `TARGETID > 0`
+    asserted as a sanity check (rows with TARGETID <= 0 are never emitted
+    by `load_science_target_flags` in the first place, so any row that
+    survives the join already satisfies this). Adds `zwarn`, `spectype`,
+    `z`, `deltachi2` columns carried from the zcatalog.
+    """
+    targetids = {int(t) for t in selected["targetid"]}
+    flags = load_science_target_flags(zcatalog_path, targetids)
+
+    kept: dict[str, list[Any]] = {name: [] for name in SHARD_COLUMNS}
+    kept["zwarn"] = []
+    kept["spectype"] = []
+    kept["z"] = []
+    kept["deltachi2"] = []
+
+    n = len(selected["targetid"])
+    for i in range(n):
+        targetid = int(selected["targetid"][i])
+        info = flags.get(targetid)
+        if info is None:
+            continue
+        assert targetid > 0, f"science-target join must never carry TARGETID <= 0, got {targetid}"
+        if info["objtype"] != "TGT" or info["fiberstatus"] != 0:
+            continue
+        for name in SHARD_COLUMNS:
+            kept[name].append(selected[name][i])
+        kept["zwarn"].append(info["zwarn"])
+        kept["spectype"].append(info["spectype"])
+        kept["z"].append(info["z"])
+        kept["deltachi2"].append(info["deltachi2"])
+    return kept
+
+
 def _shard_receipt_binding(receipt_dir: Path, shards: list[Path]) -> dict[str, Any]:
     entries = []
     for shard in shards:
@@ -273,9 +392,14 @@ def build_sample(
     output_manifest: Path,
     exclude_survey: list[str] | None = None,
     exclude_program: list[str] | None = None,
+    science_targets_only: bool = False,
+    zcatalog_path: Path | None = None,
 ) -> dict[str, Any]:
     import pyarrow as pa
     import pyarrow.parquet as pq
+
+    if science_targets_only and zcatalog_path is None:
+        raise SampleError("--science-targets-only requires --zcatalog")
 
     exclude_survey = set(exclude_survey or [])
     exclude_program = set(exclude_program or [])
@@ -314,23 +438,38 @@ def build_sample(
         finally:
             connection.close()
 
+    science_filtered_from = None
+    if science_targets_only:
+        science_filtered_from = len(selected["targetid"])
+        selected = apply_science_target_filter(selected, zcatalog_path)
+
     row_count = len(selected["targetid"])
     if row_count == 0:
         raise SampleError(
             f"selection rule (score >= {score_threshold}, exclude_survey={sorted(exclude_survey)}, "
-            f"exclude_program={sorted(exclude_program)}) selected zero rows out of {unique_rows} unique targetids"
+            f"exclude_program={sorted(exclude_program)}, science_targets_only={science_targets_only}) "
+            f"selected zero rows out of {unique_rows} unique targetids"
         )
 
-    table = pa.table(
-        {
-            "targetid": pa.array(selected["targetid"], type=pa.int64()),
-            "anomaly_score": pa.array(selected["anomaly_score"], type=pa.float64()),
-            "mean_mse": pa.array(selected["mean_mse"], type=pa.float64()),
-            "survey": pa.array(selected["survey"], type=pa.string()),
-            "program": pa.array(selected["program"], type=pa.string()),
-            "healpix": pa.array(selected["healpix"], type=pa.int64()),
-        }
-    )
+    if selected["targetid"]:
+        assert min(int(t) for t in selected["targetid"]) > 0 or not science_targets_only, (
+            "science-target sample must never contain TARGETID <= 0"
+        )
+
+    columns = {
+        "targetid": pa.array(selected["targetid"], type=pa.int64()),
+        "anomaly_score": pa.array(selected["anomaly_score"], type=pa.float64()),
+        "mean_mse": pa.array(selected["mean_mse"], type=pa.float64()),
+        "survey": pa.array(selected["survey"], type=pa.string()),
+        "program": pa.array(selected["program"], type=pa.string()),
+        "healpix": pa.array(selected["healpix"], type=pa.int64()),
+    }
+    if science_targets_only:
+        columns["zwarn"] = pa.array(selected["zwarn"], type=pa.int64())
+        columns["spectype"] = pa.array(selected["spectype"], type=pa.string())
+        columns["z"] = pa.array(selected["z"], type=pa.float64())
+        columns["deltachi2"] = pa.array(selected["deltachi2"], type=pa.float64())
+    table = pa.table(columns)
     output_sample.parent.mkdir(parents=True, exist_ok=True)
     tmp_output = output_sample.with_suffix(output_sample.suffix + ".tmp")
     pq.write_table(table, tmp_output, compression="zstd")
@@ -346,6 +485,14 @@ def build_sample(
             "score_threshold": score_threshold,
             "exclude_survey": sorted(exclude_survey),
             "exclude_program": sorted(exclude_program),
+            "science_targets_only": science_targets_only,
+            "science_target_rule": (
+                "OBJTYPE == 'TGT' AND COADD_FIBERSTATUS == 0 (TARGETID > 0 asserted)"
+                if science_targets_only
+                else None
+            ),
+            "zcatalog_path": str(zcatalog_path) if science_targets_only else None,
+            "rows_before_science_target_filter": science_filtered_from,
         },
         "row_count": row_count,
         "unique_targetids_considered": unique_rows,
@@ -382,6 +529,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--exclude-program", action="append", default=[], help="repeatable; drop rows with this program value")
     parser.add_argument("--output-sample", type=Path, default=None, help="required unless --describe")
     parser.add_argument("--output-manifest", type=Path, default=None, help="required unless --describe")
+    parser.add_argument(
+        "--science-targets-only",
+        action="store_true",
+        help=(
+            "default off (sealed behaviour unchanged). Join the scan corpus to --zcatalog by "
+            "TARGETID and keep only OBJTYPE=='TGT' AND COADD_FIBERSTATUS==0 rows (TARGETID>0 "
+            "asserted); carries ZWARN/SPECTYPE/Z/DELTACHI2 per row. See "
+            "project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md."
+        ),
+    )
+    parser.add_argument("--zcatalog", type=Path, default=None, help="zall-pix-iron.fits; required with --science-targets-only")
     return parser
 
 
@@ -396,6 +554,8 @@ def main() -> None:
         raise SystemExit("--score-threshold is required unless --describe")
     if args.output_sample is None or args.output_manifest is None:
         raise SystemExit("--output-sample and --output-manifest are required unless --describe")
+    if args.science_targets_only and args.zcatalog is None:
+        raise SystemExit("--science-targets-only requires --zcatalog")
     manifest = build_sample(
         contract_module,
         args.contract,
@@ -407,6 +567,8 @@ def main() -> None:
         args.output_manifest,
         exclude_survey=args.exclude_survey,
         exclude_program=args.exclude_program,
+        science_targets_only=args.science_targets_only,
+        zcatalog_path=args.zcatalog,
     )
     print(json.dumps(manifest, indent=2, sort_keys=True))
 

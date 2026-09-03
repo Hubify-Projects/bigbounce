@@ -1105,5 +1105,241 @@ class WiseJoinFlagshipTest(unittest.TestCase):
                 )
 
 
+class ScienceTargetsOnlyTest(unittest.TestCase):
+    """Offline tests for `build_flagship_sample.py --science-targets-only`.
+
+    Covers the finding in
+    `project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`: the rule
+    `OBJTYPE == 'TGT' AND COADD_FIBERSTATUS == 0`, the TARGETID > 0 sanity
+    assertion, and the carried ZWARN/SPECTYPE/Z/DELTACHI2 columns, against a
+    synthetic zcatalog fixture (no real DESI file needed).
+    """
+
+    def setUp(self) -> None:
+        _require_pyarrow_astropy_torch(self)
+        import build_flagship_sample  # noqa: F401
+
+        self.mod = sys.modules["build_flagship_sample"]
+
+    def _write_synthetic_zcatalog(self, path: Path) -> None:
+        from astropy.io import fits
+
+        # targetid 1: TGT, fiberstatus 0 -> kept
+        # targetid 2: TGT, fiberstatus 1 (bad fiber) -> dropped
+        # targetid 3: SKY, fiberstatus 0 -> dropped (the contamination case)
+        # targetid 4: TGT, fiberstatus 0 -> kept
+        # targetid 5: TGT, fiberstatus 0 -> kept
+        targetid = np.array([1, 2, 3, 4, 5], dtype=np.int64)
+        objtype = np.array(["TGT", "TGT", "SKY", "TGT", "TGT"])
+        fiberstatus = np.array([0, 1, 0, 0, 0], dtype=np.int32)
+        zwarn = np.array([0, 0, 0, 4, 0], dtype=np.int64)
+        spectype = np.array(["GALAXY", "GALAXY", "", "STAR", "QSO"])
+        z = np.array([0.5, 0.6, 0.0, 0.1, 2.0], dtype=np.float64)
+        deltachi2 = np.array([100.0, 50.0, 0.0, 25.0, 200.0], dtype=np.float64)
+        columns = [
+            fits.Column(name="TARGETID", format="K", array=targetid),
+            fits.Column(name="OBJTYPE", format="3A", array=objtype),
+            fits.Column(name="COADD_FIBERSTATUS", format="J", array=fiberstatus),
+            fits.Column(name="ZWARN", format="K", array=zwarn),
+            fits.Column(name="SPECTYPE", format="6A", array=spectype),
+            fits.Column(name="Z", format="D", array=z),
+            fits.Column(name="DELTACHI2", format="D", array=deltachi2),
+        ]
+        hdu = fits.BinTableHDU.from_columns(columns)
+        fits.HDUList([fits.PrimaryHDU(), hdu]).writeto(path, overwrite=True)
+
+    def test_science_target_filter_keeps_only_tgt_fiberstatus0(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            zcatalog_path = work / "zall-pix-iron-synthetic.fits"
+            self._write_synthetic_zcatalog(zcatalog_path)
+
+            flags = self.mod.load_science_target_flags(zcatalog_path, {1, 2, 3, 4, 5})
+            self.assertEqual(set(flags.keys()), {1, 2, 3, 4, 5})
+            self.assertEqual(flags[1]["objtype"], "TGT")
+            self.assertEqual(flags[1]["fiberstatus"], 0)
+            self.assertEqual(flags[3]["objtype"], "SKY")
+
+    def test_science_target_filter_excludes_negative_targetid(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            zcatalog_path = work / "zall-pix-iron-synthetic.fits"
+            self._write_synthetic_zcatalog(zcatalog_path)
+            # No negative TARGETID in the fixture itself, but requesting one
+            # that isn't present (as a stand-in for a sky-fiber TARGETID<0
+            # row that would never legitimately appear in a real sample)
+            # must never be returned as "found".
+            flags = self.mod.load_science_target_flags(zcatalog_path, {-999, 1})
+            self.assertNotIn(-999, flags)
+            self.assertIn(1, flags)
+
+    def test_apply_science_target_filter_end_to_end_with_carried_columns(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            zcatalog_path = work / "zall-pix-iron-synthetic.fits"
+            self._write_synthetic_zcatalog(zcatalog_path)
+
+            selected = {
+                "targetid": [1, 2, 3, 4, 5],
+                "anomaly_score": [9.0, 9.5, 12.0, 6.0, 7.0],
+                "mean_mse": [0.1, 0.2, 0.3, 0.4, 0.5],
+                "survey": ["main"] * 5,
+                "program": ["dark"] * 5,
+                "healpix": [10, 10, 10, 10, 10],
+            }
+            kept = self.mod.apply_science_target_filter(selected, zcatalog_path)
+
+            # Only targetid 1, 4, 5 pass OBJTYPE=='TGT' AND FIBERSTATUS==0.
+            self.assertEqual(kept["targetid"], [1, 4, 5])
+            self.assertEqual(kept["zwarn"], [0, 4, 0])
+            self.assertEqual(kept["spectype"], ["GALAXY", "STAR", "QSO"])
+            self.assertEqual(kept["z"], [0.5, 0.1, 2.0])
+            self.assertEqual(kept["deltachi2"], [100.0, 25.0, 200.0])
+
+    def test_build_sample_science_targets_only_end_to_end(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            contract_tool, contract_path, shard_dir, receipt_dir, summary_path = _build_fixture(work)
+            zcatalog_path = work / "zall-pix-iron-synthetic.fits"
+            self._write_synthetic_zcatalog(zcatalog_path)
+
+            # Post-dedup fixture scores: {1:2.0, 2:6.0, 3:11.0, 4:3.5, 5:7.0};
+            # score>=2.0 selects all 5, then the science-target join keeps
+            # only {1,4,5} ({2,3} are dropped: 2=bad fiber, 3=SKY).
+            output_sample = work / "flagship_sample_science.parquet"
+            output_manifest = work / "flagship_sample_science_manifest.json"
+            manifest = self.mod.build_sample(
+                contract_tool, contract_path, shard_dir, receipt_dir, summary_path,
+                score_threshold=2.0, output_sample=output_sample, output_manifest=output_manifest,
+                science_targets_only=True, zcatalog_path=zcatalog_path,
+            )
+
+            self.assertTrue(manifest["rule"]["science_targets_only"])
+            self.assertEqual(manifest["rule"]["rows_before_science_target_filter"], 5)
+            self.assertEqual(manifest["row_count"], 3)
+
+            import pyarrow.parquet as pq
+
+            table = pq.read_table(output_sample).to_pydict()
+            self.assertEqual(sorted(table["targetid"]), [1, 4, 5])
+            self.assertIn("zwarn", table)
+            self.assertIn("spectype", table)
+            self.assertIn("z", table)
+            self.assertIn("deltachi2", table)
+
+            # Sealed (non-science) behaviour is unchanged when the flag is off.
+            output_sample_sealed = work / "flagship_sample_sealed.parquet"
+            output_manifest_sealed = work / "flagship_sample_sealed_manifest.json"
+            sealed_manifest = self.mod.build_sample(
+                contract_tool, contract_path, shard_dir, receipt_dir, summary_path,
+                score_threshold=2.0, output_sample=output_sample_sealed, output_manifest=output_manifest_sealed,
+            )
+            self.assertFalse(sealed_manifest["rule"]["science_targets_only"])
+            self.assertEqual(sealed_manifest["row_count"], 5)
+            sealed_table = pq.read_table(output_sample_sealed).to_pydict()
+            self.assertNotIn("zwarn", sealed_table)
+
+    def test_science_targets_only_requires_zcatalog(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            contract_tool, contract_path, shard_dir, receipt_dir, summary_path = _build_fixture(work)
+            with self.assertRaises(self.mod.SampleError):
+                self.mod.build_sample(
+                    contract_tool, contract_path, shard_dir, receipt_dir, summary_path,
+                    score_threshold=2.0, output_sample=work / "s.parquet", output_manifest=work / "m.json",
+                    science_targets_only=True, zcatalog_path=None,
+                )
+
+
+class CheckSampleProvenanceTest(unittest.TestCase):
+    """Offline tests for `clean_rerun/gates/check_sample_provenance.py`."""
+
+    def setUp(self) -> None:
+        try:
+            import pyarrow  # noqa: F401
+        except ImportError as exc:  # pragma: no cover - environment prerequisite
+            self.skipTest(f"pyarrow unavailable: {exc}")
+        gates_dir = CLEAN_RERUN_DIR / "gates"
+        sys.path.insert(0, str(gates_dir))
+        import check_sample_provenance  # noqa: F401
+
+        self.mod = sys.modules["check_sample_provenance"]
+
+    def _write_sample(self, path: Path, rows: dict[str, list[Any]]) -> None:
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+
+        pq.write_table(pa.table(rows), path)
+
+    def test_clean_sample_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            sample_path = work / "clean.parquet"
+            self._write_sample(sample_path, {
+                "targetid": [1, 2, 3],
+                "objtype": ["TGT", "TGT", "TGT"],
+                "fiberstatus": [0, 0, 0],
+            })
+            report = self.mod.check_sample_provenance(sample_path)
+            self.assertEqual(report["status"], "clean")
+            self.assertEqual(report["row_count"], 3)
+
+    def test_negative_targetid_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            sample_path = work / "contaminated.parquet"
+            self._write_sample(sample_path, {
+                "targetid": [1, -2, 3],
+                "objtype": ["TGT", "SKY", "TGT"],
+                "fiberstatus": [0, 0, 0],
+            })
+            with self.assertRaises(self.mod.ProvenanceGateError):
+                self.mod.check_sample_provenance(sample_path)
+
+    def test_non_tgt_objtype_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            sample_path = work / "sky_contaminated.parquet"
+            self._write_sample(sample_path, {
+                "targetid": [1, 2, 3],
+                "objtype": ["TGT", "SKY", "TGT"],
+                "fiberstatus": [0, 0, 0],
+            })
+            with self.assertRaises(self.mod.ProvenanceGateError):
+                self.mod.check_sample_provenance(sample_path)
+
+    def test_bad_fiberstatus_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            sample_path = work / "bad_fiber.parquet"
+            self._write_sample(sample_path, {
+                "targetid": [1, 2, 3],
+                "objtype": ["TGT", "TGT", "TGT"],
+                "fiberstatus": [0, 1, 0],
+            })
+            with self.assertRaises(self.mod.ProvenanceGateError):
+                self.mod.check_sample_provenance(sample_path)
+
+    def test_sample_without_objtype_columns_only_checks_targetid(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            work = Path(temporary)
+            sample_path = work / "legacy.parquet"
+            self._write_sample(sample_path, {
+                "targetid": [1, 2, 3],
+                "anomaly_score": [5.0, 6.0, 7.0],
+            })
+            report = self.mod.check_sample_provenance(sample_path)
+            self.assertEqual(report["status"], "clean")
+            self.assertFalse(report["checked_objtype"])
+
+            sample_path_bad = work / "legacy_bad.parquet"
+            self._write_sample(sample_path_bad, {
+                "targetid": [1, -2, 3],
+                "anomaly_score": [5.0, 6.0, 7.0],
+            })
+            with self.assertRaises(self.mod.ProvenanceGateError):
+                self.mod.check_sample_provenance(sample_path_bad)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -67,6 +67,23 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "anomaly-sample-provenance-gate-2026-09-03",
+    dateISO: "2026-09-03",
+    kind: "skill-improvement",
+    title: "Anomaly sample provenance: S>8 sample found 84.8% sky fibers; science-target rerun launched",
+    papers: [],
+    summary:
+      "A provenance check of the AUG-011 clean-rerun's 3,810-row anomaly_score>=8.0 characterization sample found 3,232 rows (84.8%) with negative TARGETID, and cross-referencing zall-pix-iron.fits showed TARGETID<0 rows are OBJTYPE=SKY or blank — the autoencoder's high-score tail is dominated by sky fibers, not science targets. The sealed scan's row counts (36,634 groups; 27,547,223 unique TARGETIDs; 52,188 rows above the sealed anomaly_score>5.0 threshold) stand as accurate raw-row counts over all fibers, but are not science-candidate counts and are restated as such everywhere they are cited on the public site. build_flagship_sample.py is gaining a science-target selection contract (OBJTYPE=='TGT' AND COADD_FIBERSTATUS==0, TARGETID>0 sanity check, ZWARN/SPECTYPE carried per row) with linter-style gates so this cannot recur, and a provenance-filtered rerun is in progress to produce the first science-only candidate counts.",
+    keyTakeaways: [
+      "S>=8 characterization sample: 84.8% of rows are sky fibers (negative TARGETID / OBJTYPE=SKY), not science candidates",
+      "Public site restated: 52,188 and 3,810 are raw-row counts over all fibers (incl. sky), never science-candidate counts, pending the provenance-filtered rerun",
+      "Pipeline gains a science-target selection contract (OBJTYPE=='TGT' AND COADD_FIBERSTATUS==0) with linter-style provenance gates",
+    ],
+    links: [
+      { label: "Provenance finding", href: `${GH}/project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md` },
+    ],
+  },
+  {
     id: "a3m-real-kde-injection-v3m-0-7-2026-09-02",
     dateISO: "2026-09-02",
     kind: "closure-wave",

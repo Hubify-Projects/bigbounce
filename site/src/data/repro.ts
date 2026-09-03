@@ -845,6 +845,57 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-pta-injection-30bin-2026-09-02",
+    "title": "Track A3 §IV C closure (DA3M-R2-01) — injection-recovery test at gamma=13/3 and gamma=3 through the same 30-bin free-spectrum interpolated-density likelihood/priors as emcee_freespec.py",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "validation",
+    "inputs": [],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py",
+        "entrypoint": "python3 research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py",
+        "sha256": "e3c893046297a17ef0aa7e29ae0db379a7c72011cdc756bcbcfb3050ad8d07aa"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.2 + emcee 3.1.6 (emcee imported for parity with pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py; the recovery itself uses a dense 2D grid marginalization of the identical log_prior/log_likelihood, not emcee sampling — see 'method' note below)",
+      "hardware": "cpu-only; Apple M5, 24 GB RAM, macOS 26.5 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation (Apple M5)",
+      "date": "2026-09-02",
+      "wall_clock": "5.8 s (measured, 10 realizations)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "6 s (measured)",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "model_log10rho(theta), log_prior(theta) and the 30-bin/T_obs=16.03yr geometry and gamma~U[0,7], log10_A~U[-18,-11] priors are copied verbatim from pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py. The ONE substitution: the real NANOGrav 15-yr KDE density grids (Zenodo 8060824) live only on the RunPod workspace that built emcee_freespec.py's inputs and are not present in this repo or on this machine, so this script synthesizes a per-bin Gaussian log-density (sigma=0.22 dex, representative of the real KDE per-bin posterior width) centered on a noisy injected observation at the chosen true (gamma, log10_A). Recovery is by exact dense 2D grid (1200x900) posterior marginalization of the identical log_prior+log_likelihood rather than emcee ensemble sampling: a preliminary emcee run on this strongly-degenerate 2D ridge showed near-zero acceptance (a known ensemble-sampler failure mode on ridge-shaped 2D posteriors, not evidence of pipeline bias), while the dense grid is an exact, faster, and more reliable computation of the same posterior for a 2-parameter problem. 5 realizations per gamma_true (10 total)."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/pta_injection_30bin_2026_09_02.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: mean recovered gamma at gamma_true=13/3=4.3333 is 4.328 +/- (realization scatter 0.48), mean pull -0.026sigma over 5 realizations; at gamma_true=3.0, mean recovered 3.015, mean pull +0.068sigma over 5 realizations. Both consistent with unbiased recovery at the <0.1sigma level, replacing the paper's prior unverified claim of a -0.018sigma pull from a different (6-bin, Gaussian chi-squared, gamma=3.2-injected) pipeline that DA3M-R2-01 found was misdescribed as 'the identical pipeline' injected at 13/3.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY/A3M_v3M.0.4_R2_truth_audit.md finding #1 / DA3M-R2-01",
+      "project-context/peer-reviews/DISPOSITIONS/A3M.md DA3M-R2-01",
+      "research/track_a3_multichannel/paper/main.tex §IV C"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "a3-survey-reach-fnl",
     "title": "Track A3 channel 3 — survey reach and current-constraint tension table for f_NL^local = -35/16",
     "program": "bounce-theory",
@@ -1331,6 +1382,106 @@ export const reproExperiments: ReproExperiment[] = [
       "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json (threshold=5.0, threshold_count_after_dedup=52188, unique_targetids=27547223)",
       "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md Section 19",
       "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.json (this run's own committed output)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "anomaly-map-png-highz-abundance",
+    "title": "Ledger #6 first discriminator - local-PNG correction to the z=8-14 massive-galaxy abundance at f_NL = -35/16 vs -35/8 vs 0 (LoVerde+2008 Edgeworth mass function)",
+    "program": "anomaly-discovery",
+    "paper": "none",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Eisenstein & Hu 1998 no-wiggle transfer function",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/9709112",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "LoVerde, Miller, Shandera & Verde 2008 non-Gaussian mass function Eq. (45)/(46)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/0711.4126",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2018 VI cosmological parameters (TT,TE,EE+lowE+lensing+BAO, Table 2)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1807.06209",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2018 IX local f_NL constraint (KSW T+E)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1905.05697",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "f_NL = -35/16 matter-contraction squeezed value (ledger #1, closed in-lab)",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/anomaly_map/ledger6_png_highz_abundance.py",
+        "entrypoint": "python3 research/anomaly_map/ledger6_png_highz_abundance.py",
+        "sha256": "f1121e2b79c4d43a98117d022876e72d9c972754d26b9e090b7b96e446742365"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy 2.5.1 + scipy 1.18.0 + matplotlib 3.11.1",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-02",
+      "wall_clock": "2.4 s (measured, `time` on the full script)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~3 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no external data files, no network). All cosmology is analytic: Eisenstein & Hu 1998 no-wiggle transfer function normalised to sigma_8, local-bispectrum skewness by 3-D Gauss-Legendre/Simpson quadrature, LoVerde+2008 Eq. (45) Edgeworth mass-function ratio. The Edgeworth expansion is a linear-response result; the reported fnl_for_factor_N entries lie outside its validity and are labelled order-of-magnitude scale indicators in the JSON and the brief."
+    },
+    "outputs": [
+      {
+        "locator": "research/anomaly_map/outputs/ledger6_png_highz_abundance.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/anomaly_map/outputs/ledger6_png_highz_abundance.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/anomaly_map/LEDGER6_DISCRIMINATOR_BRIEF_2026-09-02.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) sigma8_check == 0.8111 to 4 decimals (self-consistency of the normalisation); (b) S_3/f_NL at R = 8 Mpc/h equals 8.784e-4 and at M_h = 2.15e11 Msun/h equals 3.366e-4, stable to 5 significant figures under refinement (n_k, n_mu, k_max) = 140/48/60 -> 300/96/300; (c) threshold_cases.eps_0.20.z11.0.lab_matter_contraction == 0.93158 +/- 1e-4 and .cai2009 == 0.86316 +/- 1e-4; (d) threshold_cases.eps_0.05.z12.0.lab_matter_contraction == 0.84720 +/- 1e-4; (e) confrontation.cases.eps_0.20.z11.0.dR_dfnl == 0.031277 +/- 1e-5 and fnl_for_factor_2 == 31.97 +/- 0.01.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 6 (first cheap test)",
+      "project-context/VISION.md route 3 (early-universe anomaly map)",
+      "project-context/PORTFOLIO_DECISION_2026-09-02.md Addendum (anomaly line redirected, not retired)",
+      "research/anomaly_map/LEDGER6_DISCRIMINATOR_BRIEF_2026-09-02.md",
+      "f_NL = -35/16 from ledger #1 (CLOSED 2026-09-02), commits d7dac953 / aa2987cf / 66cf1cb0",
+      "ledger #3 A3-1 compaction-function PBH result, reproducibility/manifests/experiments/a3-pbh-compaction-fnl.json"
     ]
   },
   {
