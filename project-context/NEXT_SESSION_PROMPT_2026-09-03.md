@@ -20,7 +20,54 @@ verbatim (git/deploy/Convex/RunPod-to-balance/API review spend/env reads);
 Houston-only acts remain: Zenodo DOI minting, arXiv/journal submission,
 endorsement emails. INT boards only; no browser EXT rounds.
 
-## Where things stand (2026-09-02 close-out)
+
+## The story so far (read this before the documents; it is the context the prior orchestrator carried)
+- **2025-07 → 2026-03 (origin and the best lineup).** The lab began as one
+  spin-torsion dark-energy paper. By 2026-03-20/24 it had the most
+  vision-aligned lineup it ever had — framework + 14 barriers, ALP
+  birefringence, and the f_NL forecast as "the decisive test" — and a written
+  mission: *bounce cosmology vs inflation via a portfolio of testable
+  channels*, with a ranked next-science list (LQC formalism audit,
+  independent f_NL derivation, PBH + induced GW, NANOGrav γ=3, chiral GWs).
+  (`bounce_portfolio_strategy.md`, `research/project_nextgen_bounce_signals/`.)
+- **2026-04 → 07 (the derailment).** The lineup grew by splits and rescues
+  (4 → 5 → 6 papers), review convergence became the product (13 boards on
+  one resurrected paper), and the ranked science list went unpursued. The
+  flagship amplitude was corrected −35/8 → −35/16 in that period.
+  (`PAPER_GENEALOGY_2026-09-02.md` §3, `PORTFOLIO_DECISION_2026-09-02.md` §1.)
+- **2026-08 (Q: reproducibility-first, no mistake narration; the anomaly
+  scan re-run under a sealed contract).**
+- **2026-09-02 (the refocus).** Houston asked for the architecture to be
+  challenged; the decision: **one flagship line + one closed-line note +
+  data products** (Track A bounce-vs-inflation: P2′/A2/A3; Track B the ECH
+  Note = P1A merged into P1C; Track C P4′ = P5 folded into P4 as the
+  black-hole-universe spin-axis test, plus the anomaly map). Directive R
+  made `VISION.md` + `NEXT_SCIENCE_LEDGER.md` the session's first read,
+  capped review rounds (≤2 without a science decision), and required lineup
+  changes to be recorded in `PAPER_LINEAGE`. Directive N-AMENDED fixed model
+  routing. In that single session: ledger #1 closed (−35/16 confirmed by an
+  independent from-scratch in-in route; Cai's ×2 located; the μ² term is
+  Li+2016's), A2 first half and A3 computed, P4′ and the ECH Note converged
+  through three truth-audited boards each (readiness 95, kits ready), P2′
+  deferred into the A3 paper (v3M.0.7, readiness 75, science gate open),
+  ledger #5 and #6 answered (a qualitative-only Popławski prediction excluded
+  at 0.98 %; a PNG high-z discriminator that is an honest null), and the
+  anomaly phase-3 sample found to be 85 % sky fibers — corrected
+  science-target run launched.
+- **What the vision needs next** is science, not rounds: ledger #2's second
+  half (the bounce's own cubic term), #7 (chiral GWs gate), #4 (DESI PNG
+  reproduction), and the honest paper-vs-release call on the anomaly
+  catalogue from the corrected run. Publishing is Houston's click-list.
+
+## Reading order for a cold start (15 minutes)
+`VISION.md` → `NEXT_SCIENCE_LEDGER.md` → `INTENT.md` →
+`SESSION_HANDOFF_2026-09-02.md` (lane ledger + click-list + phase-3 runbooks)
+→ `SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md` →
+`ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md` → `VISION_DRIFT_AUDIT_2026-09-02.md`
+→ (background) `PORTFOLIO_DECISION_2026-09-02.md`, `PAPER_GENEALOGY_2026-09-02.md`,
+`PORTFOLIO_SCIENTIFIC_VALUE_ASSESSMENT_2026-09-02.md`, `PAPER_LINEAGE_2026-08-05.md`.
+
+## Where things stand (2026-09-03 close-out)
 - **P4′** v4P.0.5 (11 pp, ApJS) and **ECH Note** v1N.0.5 (11 pp, CQG Paper):
   automated review CONVERGED (three boards each, every finding
   truth-audited, rounds stopped under R2), final author review APPROVE,
@@ -43,7 +90,8 @@ endorsement emails. INT boards only; no browser EXT rounds.
   fibers (`ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`); v1 artifacts are
   landed/backed up as SAMPLE-V1-CONTAMINATED (provenance only). A corrected
   science-target run (OBJTYPE=TGT, FIBERSTATUS=0; threshold re-chosen on
-  the science-only distribution; sky-fraction-by-score curve recorded) runs
+  the science-only distribution; sky-fraction-by-score curve recorded) (science-only S>3 = 1,244 objects; threshold chosen by the pre-declared
+  rule; sky fraction >99.5 % per score bin) runs
   UNATTENDED on pod `8ofv5d4ynu7hku` via `clean_rerun/pod/pod_phase3_v2.sh`
   (stage markers `/workspace/phase3_v2/STAGE_*_DONE`, log
   `/workspace/phase3_v2/phase3_v2.log`, terminal `/workspace/PHASE3_V2_DONE`

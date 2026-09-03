@@ -1,4 +1,13 @@
-# Session handoff / running log — 2026-09-02 (orchestrator: Fable 5.1, medium)
+# Session handoff / running log — 2026-09-02 → 2026-09-03 (orchestrator: Fable 5.1, medium)
+
+**SESSION CLOSED 2026-09-03 ~20:00Z for the account switch.** Nothing is
+lost by closing: the only in-session processes were watchers; the phase-3 v2
+chain runs detached on pod `8ofv5d4ynu7hku` and writes `/workspace/PHASE3_V2_DONE`
+or `PHASE3_V2_FAILED` (at close: stage 05 SIMBAD/NED cross-match of 1,244
+science targets, started 19:49Z). No cron/launchd loop is active (the Codex
+tick + watchdog were unloaded under directive N). Restart on the research
+account with `project-context/NEXT_SESSION_PROMPT_2026-09-03.md`; its first task
+is landing v2 and stopping the pod.
 
 Running log; finalized at session end. Canonical truth stays in `SSOT/`.
 
