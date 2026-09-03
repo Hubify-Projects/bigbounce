@@ -736,3 +736,55 @@ v3M.0.5 abstract.
   table (visible during this pass's browser check) are pre-existing and out
   of this task's explicit scope (papers.ts/live-status.ts/publish.ts/kits),
   not touched.
+
+## Follow-up receipt — /reviews reframe to live lineup + A3 readiness mirror fix (2026-09-02, later session)
+
+Sonnet site worker pass. Fixed two items left open by the first reframe pass:
+
+1. **`/reviews` still framed around the six historical papers only.** Rewrote
+   the intro paragraph, the "Canonical readiness" ETA-table row, and the
+   "External automated-review evidence" scoping paragraph in
+   `site/src/app/reviews/page.tsx` to name the live lineup per the
+   2026-09-02 portfolio decision: A3 (paper-a3m, Track A flagship,
+   converged, final author review pending), P4′ (Track C1, converged),
+   the ECH Note (P1N, Track B, converged), and P2′ (paper-2l, archived
+   into A3, theory record only) — with the historical six (P1A/P1B/P2/P3/
+   P4/P5) explicitly relabeled archived lineage and their own caps kept
+   visible, never deleted. The verdict-grid/`AllAMeter` component
+   (`ProgressViz.tsx`) was left untouched by design (per the first pass's
+   documented reasoning) — it is the pre-restructure six-paper historical
+   board; the intro/evidence paragraph now says so explicitly and points
+   readers to the readiness table above for the live-lineup numbers. The
+   all-A meter already counts ACTIVE legs only (Grok API + Gemini API +
+   Claude/Fable INT; GPT frozen) per directive M-AMENDED — unchanged.
+
+2. **`paper-a3m` readiness mirror was stale at 20.** Convex
+   (`papers:listAllPaperStates`) reports paper-a3m at `readinessComputed:
+   70.0` (R2 verification closed, final author review pending — directive
+   P composition: science/evidence/review-convergence/packaging gates
+   open on the science-gate leg). `site/src/data/papers.ts` (readiness
+   field + intro description text) and `site/src/data/live-status.ts`
+   (readiness field + pendingWork text) still read 20; both corrected to
+   70 with a directive-P note. `publish.ts` was checked and needed no
+   change — it carries status text ("Converged (v3M.0.5)...") not a bare
+   numeric readiness field.
+
+Verification: `npm run build` (site/) clean; `npx tsc --noEmit` clean;
+`tools/site_freshness_check.sh` → OVERALL PASS (no `FRESHNESS_SKIP`).
+Pushed to both `origin main` and `upstream main`
+(`14f1cad5`, `95fee959..14f1cad5`). Headed-browser QA (Claude Browser,
+not Playwright) post-deploy: `/reviews` renders the new intro/table text
+live (confirmed via page-text extraction — "Current lineup (flagship
+line + closed-line note + data products, per the 2026-09-02 portfolio
+decision)" and "A3 70" both present); `/papers`, `/paper` (tracks), and
+`/` (overview) all load with zero console errors. Deploy confirmed live
+via a background poll against `bigbounce.hubify.app/reviews` (ISR
+`revalidate=60` — first fetch after push served the prior build; the poll
+waited for the new text to appear rather than trusting a bare 200).
+
+Commit: `14f1cad5` — `feat(site): /reviews reframed to the live lineup;
+A3 readiness mirror 70` (3 files: `site/src/app/reviews/page.tsx`,
+`site/src/data/live-status.ts`, `site/src/data/papers.ts`). An unrelated
+`site/src/data/repro.ts` diff produced as a side effect of `npm run
+build`'s repro-manifest sync script was reverted (`git checkout --`)
+before commit — out of scope for this pass, not touched.
