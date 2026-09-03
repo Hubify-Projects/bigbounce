@@ -673,3 +673,66 @@ propagation, build/deploy, and live verification only.
 - **Not fabricated / explicitly flagged:** none — the PDF md5/page count and
   the Convex row id were confirmed present on disk / in the task brief
   before use; no value was invented.
+
+## Receipt — A3M v3M.0.5 site sync (live-status/publish + kits) (Sonnet worker)
+
+Convex bump was already done by a prior lane
+(`k57fxwc5ze57ez9fpd8wyk8e2n8dpw9e`, not repeated). `papers.ts` and
+`reviewTimeline.ts` already carried v3M.0.5's real R2-CLOSED status from
+that same prior lane; this pass found `live-status.ts` and `publish.ts`
+still stale at v3M.0.4/R2-running and brought them into sync, and replaced
+the DRAFT v3M.0.2 abstract in the endorser/portal kits with the real
+v3M.0.5 abstract.
+
+- **PDF confirmed at target version** (byte-identical across source + both
+  mirrors, verified by `md5` before touching site data):
+  `research/track_a3_multichannel/paper/main.pdf`, 9 pp, md5
+  `67e1510e2b300ec683ed2e288ef1aefe`; mirrored at
+  `site/public/papers/a3_multichannel_arxiv_v3M.0.5.pdf` and
+  `public/papers/a3_multichannel_arxiv_v3M.0.5.pdf` (pre-existing, verified
+  not re-copied).
+- **Tarball sha256 verified on disk:**
+  `project-context/SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.5.tar.gz`
+  = `cd2ce1ef7c38746a9e8f59db371378bcc74b624a54406ca6f0c74611742522ab`
+  (full hash via `shasum -a 256`, matches the task brief's `cd2ce1ef…`
+  prefix).
+- **Site data updated:** `site/src/data/live-status.ts` (paper-a3m row:
+  version v3M.0.4→v3M.0.5, pendingWork rewritten to the R2-closed status
+  line), `site/src/data/publish.ts` (Track A decision detail + A3
+  manuscript row status/dependency/nextGate).
+- **SSOT docs updated:** `project-context/SSOT/ENDORSER_OUTREACH_2026-09-02.md`
+  §3a — DRAFT v3M.0.2 abstract replaced with the real v3M.0.5 abstract text
+  (verbatim from `research/track_a3_multichannel/paper/main.tex`'s
+  `\begin{abstract}`), status/gate language updated to "automated review
+  converged; final author review + science gate pending (method-independent
+  f_NL check; bounce cubic term; real NANOGrav KDE-grid injection); do not
+  send its endorsement email yet." `project-context/SSOT/PORTAL_KITS_2026-09-02.md`
+  — click-list item 4, §3 intro, and the §3a gate paragraph updated to the
+  same status language, plus the arXiv tarball path + full sha256 added to
+  the A3 PRD kit reference.
+- **Build + typecheck:** `npx tsc --noEmit` clean; `npm run build` clean
+  (all routes prerendered, including `/papers/paper-a3m`).
+- **Freshness gate:** `tools/site_freshness_check.sh` — PASS (no
+  `FRESHNESS_SKIP`); only non-blocking rows are pre-existing (banner lag,
+  skillslog already logged).
+- **Commit:** `454448a5` — `feat(site): sync A3M v3M.0.5 R2-closed status to
+  live-status/publish + kits` (4 files: live-status.ts, publish.ts,
+  ENDORSER_OUTREACH_2026-09-02.md, PORTAL_KITS_2026-09-02.md).
+- **Push:** `origin main` and `upstream main`, both `d7378ca7..454448a5`,
+  pre-push freshness hook `OVERALL: PASS` on both.
+- **Live verification (headed browser + curl, post-deploy):**
+  - `curl -sI` (with a browser UA to clear the Vercel bot checkpoint) on
+    `https://bigbounce.hubify.app/papers/a3_multichannel_arxiv_v3M.0.5.pdf`
+    → HTTP 200, `etag: "67e1510e2b300ec683ed2e288ef1aefe"` (matches source
+    md5 exactly); took ~7 polling attempts (~105s) for Vercel to serve the
+    new deploy.
+  - `/papers/paper-a3m` renders `V3M.0.5 · LIVE`, "R2 CLOSED — real 30-bin
+    injection-recovery validation..." tldr/pdfMeta text live.
+  - `/reviews` renders the `v3M.0.5: R2 CLOSED` timeline heading.
+- **Not fabricated / explicitly flagged:** none — the PDF md5, tarball
+  sha256, and Convex row id were confirmed present on disk / in the task
+  brief before use; no value was invented or truncated. The `/reviews`
+  page's hardcoded intro paragraph and P1A/P1B/P2/P3/P4/P5-only readiness
+  table (visible during this pass's browser check) are pre-existing and out
+  of this task's explicit scope (papers.ts/live-status.ts/publish.ts/kits),
+  not touched.
