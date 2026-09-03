@@ -34,3 +34,21 @@ landed and backed up as SAMPLE-V1-CONTAMINATED (provenance value only).
 5. Ledger #8 and the manuscript architecture are filled only from the
    corrected run. Directive Q1: this record stays internal; the eventual
    paper/release describes the science-target selection as its method.
+
+## Science-target numbers (v2 stage 01–03, 2026-09-03 16:57Z; `/workspace/phase3_v2/science_target_summary.json`, `sky_fraction_by_score.json`, `threshold_choice.json`)
+| threshold | raw rows (all fibers) | science-only (OBJTYPE=TGT, FIBERSTATUS=0) |
+|---|---|---|
+| S>3 | 320,418 | **1,244** |
+| S>4 | 86,053 | 152 |
+| S>5 | 52,188 | 44 |
+| S>6 | 27,180 | 20 |
+| S>8 | 3,810 | 2 |
+| S>10 | 337 | 1 |
+Sky-or-nonscience fraction by score bin: [3,4) 99.53%; [4,5) 99.68%; [5,6) 99.90%;
+[6,8) 99.92%; [8,10) 99.97%; [10,24.4] 99.70% (rows with TARGETID≤0 or not
+joining the zcatalog counted as non-science). Pre-declared rule chose
+threshold 3 → 1,244 science objects for v2 characterisation (enrichment →
+SIMBAD/NED → AllWISE → taxonomy running unattended). Method result for the
+eventual validation section: the archived autoencoder's anomaly score is
+dominated by sky fibers; among science targets the S>3 tail is 5.7e−5 of
+unique TARGETIDs.
