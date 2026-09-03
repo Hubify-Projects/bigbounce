@@ -418,7 +418,7 @@ endorsement ask to A3 instead (§3a).
 ### 3a. A3 multi-channel paper — astro-ph.CO `LRZHC4` (cross-list gr-qc `HYEJ7S`) — **DRAFT, not yet submission-ready**
 
 **Status (2026-09-02, updated after R2 verification closure):**
-`research/track_a3_multichannel/paper/main.tex` v3M.0.6 is the Track-A
+`research/track_a3_multichannel/paper/main.tex` v3M.0.7 is the Track-A
 flagship absorbing P2′'s content (§II–III) plus pulsar-timing, PBH, and
 LSS/SPHEREx channel confrontations. Automated review has converged: R2
 verification (Fable minor-revisions / Grok reject / Gemini major-revisions)
@@ -429,7 +429,7 @@ still pending — do not send any A3 endorsement email yet.** This entry
 documents the current, real abstract so the ask is ready the moment final
 author review clears.
 
-> Abstract (v3M.0.6, current manuscript text — automated review converged;
+> Abstract (v3M.0.7, current manuscript text — automated review converged;
 > final author review pending, do not treat as submission-authorized):
 > A dust-dominated contraction before a nonsingular bounce predicts a
 > parameter-free local non-Gaussianity. A from-scratch, vertex-by-vertex in-in

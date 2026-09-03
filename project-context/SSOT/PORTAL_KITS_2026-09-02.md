@@ -17,7 +17,7 @@
    AAS working cap and needs a portal-side length check before pasting.
 3. **P2′**: no action — DEFERRED, no submission planned (§3).
 4. **A3 → PRD Letters / JCAP** (§3a note below): automated review converged
-   (v3M.0.6, R2 verification closed, rounds stopped per directive R2). Wait
+   (v3M.0.7, R2 verification closed, rounds stopped per directive R2). Wait
    for final author review (Houston's personal sign-off) and the science
    gate (method-independent f_NL check; bounce cubic term; real NANOGrav
    KDE-grid injection) before doing anything in this section; still not
@@ -33,7 +33,7 @@ Field-by-field paste sheets for the near-term works
 95) → CQG, **P4′** (v4P.0.5, APPROVE, readiness 95, P5 folded in) → ApJS.
 **P2′ is DEFERRED** (archived theory record, folded into the A3 paper) — no
 PRD Letters / JCAP submission is planned for it. **A3**
-(`research/track_a3_multichannel/paper/main.tex` v3M.0.6) is the paper that
+(`research/track_a3_multichannel/paper/main.tex` v3M.0.7) is the paper that
 would eventually use the PRD Letters / JCAP venue rows below. Automated
 review converged 2026-09-02 (R2 verification closed: Fable minor-revisions
 / Grok reject / Gemini major-revisions → 16 items closed incl. a real
@@ -43,8 +43,8 @@ consumed); status is now **automated review converged; final author review
 real NANOGrav KDE-grid injection); do not send its endorsement email yet**
 — §3/§3b below are retained as a venue-mechanics reference for A3, not yet
 an active submission plan. arXiv tarball:
-`project-context/SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.6.tar.gz`,
-sha256 `cd2ce1ef7c38746a9e8f59db371378bcc74b624a54406ca6f0c74611742522ab`.
+`project-context/SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.7.tar.gz`,
+sha256 `f4ecb9aec805527688961130ac41b35aaccbed02d62fea9cf25c5c9993ec2681`.
 Reuses and re-labels verified facts
 already on file (`CQG_SUBMISSION_KIT_P1A_2026-07-24.md`,
 `PRD_SUBMISSION_KIT_P2_2026-07-24.md`, `pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md`)
@@ -156,9 +156,9 @@ the live portal without a portal-side length check.
 the A3 multi-channel paper per the 2026-09-02 final-review recommendation).
 The venue-mechanics rows below (portal, length limits, ORCID/DAS
 requirements, arXiv-first gate for JCAP) remain valid and reusable for
-**A3** (`research/track_a3_multichannel/paper/main.tex` v3M.0.6) — automated
+**A3** (`research/track_a3_multichannel/paper/main.tex` v3M.0.7) — automated
 review converged; final author review + science gate (method-independent
-f_NL check; bounce cubic term; real NANOGrav KDE-grid injection) pending —
+f_NL check; bounce cubic term; in-lab PBH spectrum) pending — the real-KDE injection is DONE in v3M.0.7 —
 A3 would submit as a PRD Letter or Research Article (confirm article type
 once final) rather than a standalone P2′ Letter. Do not act on this section
 as a live P2′ submission plan; do not send its endorsement email yet.
@@ -188,7 +188,7 @@ type with different limits — pulling those rows out below.
 
 **Gate — superseded:** P2′ itself will not be submitted (DEFERRED). The
 independent second-method f_NL derivation gate that used to block P2′ is
-inherited by A3, which has now converged automated review (v3M.0.6, R2
+inherited by A3, which has now converged automated review (v3M.0.7, R2
 verification closed, rounds stopped per directive R2) — do not treat this
 row table as actionable until final author review + the science gate
 (method-independent f_NL check; bounce cubic term; real NANOGrav KDE-grid
