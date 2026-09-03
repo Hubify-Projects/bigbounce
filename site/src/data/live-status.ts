@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.5",
+      version: "v3M.0.6",
       readiness: 70,
-      pendingWork: "R2 verification closed (Fable minor / Grok reject / Gemini major → 16 items closed incl. a real 30-bin injection test); automated review converged, rounds stopped (R2 budget 2/2); final author review pending (readiness 70 per directive P — four agent gates open, no Houston sign-off yet).",
+      pendingWork: "final-review REVISE executed (abstract 307 words); injection on real NANOGrav KDE grids in progress (v3M.0.7 pending).",
     },
     {
       slug: "paper-3",

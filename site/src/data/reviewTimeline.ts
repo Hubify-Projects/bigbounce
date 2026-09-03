@@ -67,6 +67,24 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-final-review-revise-v3m-0-6-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "restructure",
+    title: "A3 v3M.0.6 — final-review REVISE (abstract); readiness 70",
+    papers: ["A3"],
+    summary:
+      "Final-review REVISE items from FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md §A3M executed on paper-a3m: the abstract was cut from 450 to 307 words to meet PRD length, with every quantitative claim and evidential-strength qualifier preserved verbatim or near-verbatim. The second item — replacing the synthetic-per-bin-density injection test in §IV C with a real 30-bin injection on the actual NANOGrav KDE grids — was NOT restorable this pass: the real grids (Zenodo 10.5281/zenodo.8060824) lived only on an ephemeral RunPod /workspace path and were checked against local disk, all 7 HuggingFace bamfai/* dataset repos, and the full Backblaze B2 bucket (74,388 objects) with zero matches in any store. §IV C is left as-is (disclosed synthetic injection); the next action is a direct Zenodo re-download to pipelines/p3_pta_mcmc/kde_real/, immediate HF+B2 backup, then re-running pta_injection_30bin_2026_09_02.py against the real grids (v3M.0.7, in progress). v3M.0.6: 9pp, md5 3888085edc5c493fcd2a45c8c386576d, sha256 db87efa9…, tarball sha256 c762345f…, mirrored byte-identical to site/public/papers/ and public/papers/. Readiness cap unchanged at 70 (still capped by the open DEFER-submission science gate; abstract/injection were editorial-hygiene REVISE items, not science-gate closures).",
+    keyTakeaways: [
+      "Abstract cut 450 → 307 words for PRD length; every quantitative claim and qualifier preserved",
+      "Real-KDE injection NOT restored this pass — real NANOGrav grids absent from local disk, all 7 HF bamfai/* repos, and the full B2 bucket (74,388 objects); next action is a direct Zenodo 8060824 re-download",
+      "v3M.0.6, 9pp, md5 3888085edc5c493fcd2a45c8c386576d; readiness holds at 70 pending v3M.0.7 (real-KDE injection) and final author review",
+    ],
+    links: [
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "Final-review recommendations", href: `${GH}/project-context/SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md` },
+    ],
+  },
+  {
     id: "a3m-r2-closed-v3m-0-5-2026-09-02",
     dateISO: "2026-09-02",
     kind: "restructure",
