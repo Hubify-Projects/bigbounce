@@ -832,3 +832,41 @@ changes as of this receipt. This pass did not touch, commit, or revert any
 of that concurrent work — it belongs to the other lane per the task's own
 warning ("a concurrent lane may produce v3M.0.7 within the hour — sync only
 what is committed on disk when you start").
+
+## Receipt — A3M v3M.0.7 verification pass (Sonnet site worker, later same-day)
+
+Arrived to find the v3M.0.6→v3M.0.7 sync already fully done and committed by
+the concurrent lane noted above (`a28a3084` real-KDE fix, `c2ac2a76`
+docs-session commit) — `papers.ts`, `live-status.ts`, `publish.ts`, and
+`reviewTimeline.ts` all already carried v3M.0.7 / readiness 75 (not 70 — the
+science item genuinely closed with real Zenodo KDE data during that lane, so
+readiness is honestly higher than the task brief's stale "70" figure; SSOT
+`project-context/SSOT/paper-a3m/status.md` confirms 70→75 with the real-KDE
+closure recorded). This pass's scope was verification + push + live-check
+only, no content edits.
+
+- **PDF/tarball verified byte-identical, not re-copied:** `research/track_a3_multichannel/paper/main.pdf`
+  = `site/public/papers/a3_multichannel_arxiv_v3M.0.7.pdf` =
+  `public/papers/a3_multichannel_arxiv_v3M.0.7.pdf`, md5
+  `f27a62098e5a673fa16b24d68e70da96` all three; tarball
+  `project-context/SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.7.tar.gz`
+  sha256 `f4ecb9aec805527688961130ac41b35aaccbed02d62fea9cf25c5c9993ec2681`.
+- **Build + typecheck:** `npx tsc --noEmit` clean; `npm run build` clean, all
+  routes prerendered including `/papers/paper-a3m`.
+- **Freshness gate:** `tools/site_freshness_check.sh` → OVERALL PASS (no
+  `FRESHNESS_SKIP`), all 8 surface rows FRESH.
+- **Push:** local `main` was 1 commit ahead of `origin/main` (a stray
+  `docs(prompt)` commit, `3d96d32e`) — pushed to `origin main`
+  (`c2ac2a76..3d96d32e`) and `upstream main` (`c2ac2a76..92dab090`, same
+  content, different commit hash on that remote). A `site/src/data/repro.ts`
+  diff produced as a `npm run build` side effect was reverted
+  (`git checkout --`) before push, matching prior-pass precedent — out of
+  scope, not authored by this task.
+- **Live verification (post-deploy, ~7 polling attempts / ~105s propagation):**
+  `curl -A "Mozilla/5.0" https://bigbounce.hubify.app/papers/a3_multichannel_arxiv_v3M.0.7.pdf`
+  → HTTP 200, 543,764 bytes (byte-identical to source); `/papers/paper-a3m`
+  live HTML contains `v3M.0.7`.
+- **Not fabricated / explicitly flagged:** the task brief's readiness-70 copy
+  target was superseded by the concurrent lane's genuine science closure to
+  75 before this pass started; reported the real current value (75) rather
+  than reverting to the stale brief figure.
