@@ -275,3 +275,65 @@ extract+recompile smoke test PASS (0 undefined refs, 9 pages). Readiness
 composition unchanged at this step (still capped by the open DEFER-submission
 science gate per the 2026-09-02 final review; abstract/injection were
 editorial-hygiene REVISE items, not science-gate closures).
+
+## v3M.0.7 (2026-09-02) — REVISE item CLOSED: real-KDE injection validation
+
+**Closure of the "30-bin injection on real NANOGrav KDE grids — NOT
+RESTORED" item above.** The grids were never on an ephemeral RunPod path
+alone — they are a public Zenodo data product. Queried
+`https://zenodo.org/api/records/8060824`: one file,
+`NANOGrav15yr_KDE-FreeSpectra_v1.0.0.zip` (6,571,028 bytes, sha256
+`b461125ff9d384761ec4647756587c42067723c6980ef3c633b178012a4d91d8`),
+containing five KDE variants; `30f_fs{hd}_ceffyl/` matches
+`emcee_freespec.py`'s `ROOT` exactly (`freqs.npy`, `log10rhogrid.npy`,
+`density.npy` shape `(1,30,10000)`, `bandwidths.npy`). Downloaded and
+extracted to
+`~/Desktop/CODE_YOU/bigbounce_datasets/nanograv15yr_kde_2026-09-02/`
+(outside the repo); per-file sha256 recorded in
+`outputs/pta_injection_30bin_realkde_2026_09_02.manifest.json`. Packed
+cache uploaded to HuggingFace `bamfai/bigbounce-aug-011-clean-rerun` under
+`external/nanograv15yr_kde/` (zip + sha256 manifest) so this artifact is
+mirrored this time, closing the ALWAYS-backup gap that caused the original
+loss:
+<https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/external/nanograv15yr_kde/NANOGrav15yr_KDE-FreeSpectra_v1.0.0.zip>.
+
+`research/track_a3_multichannel/pta_injection_30bin_realkde_2026_09_02.py`
+reuses `model_log10rho`/`log_prior` verbatim from `emcee_freespec.py` and
+builds the injection by re-centering each bin's REAL observed KDE curve
+(shape/width/skew preserved exactly) along the log10_rho axis onto the
+model prediction for a chosen injected `(gamma_true, log10_A_true)` — since
+a real dataset's true signal is unknown, this re-centering is the only way
+to get a ground-truth injection test out of the real KDE data without
+simulating an entirely new PTA dataset from scratch. 5 realizations per
+gamma_true (1 full 30-bin + 4 bootstrap bin-resamples), dense 2D grid
+posterior marginalization (identical to the prior script's method).
+
+**Results** (`outputs/pta_injection_30bin_realkde_2026_09_02.json`):
+γ_true=13/3 (4.3333) → mean recovered 4.336, mean pull **+0.016σ**;
+γ_true=3.0 (control) → mean recovered 3.005, mean pull **+0.033σ**. Both
+well under 0.1σ, consistent with unbiased recovery, and tighter than the
+prior synthetic-Gaussian-density result (−0.026σ / +0.068σ, retained as a
+secondary cross-check line per Houston's science decision). §IV C
+(`\label{sec:pta_validity}`) restated with the real-KDE numbers as the
+primary line; the synthetic-density result is now the secondary
+cross-check sentence.
+
+**Hygiene (this commit):** `\paperVersion` v3M.0.7, `\date`/`\paperTimestamp`
+September 2, 2026; 4-pass pdflatex, 0 undefined refs, 0 overfull hboxes
+>10pt (one pre-existing 2.7pt hbox unrelated to this edit); pdftoppm all 9
+pages rendered and pp. 4–5 (the edited section + neighboring page) visually
+spot-checked — clean two-column layout, no overflow, real-Zenodo citation
+and pull numbers render correctly. PDF md5 `f27a62098e5a673fa16b24d68e70da96`
+(sha256 `b0f2ab22558b3c80a777362f8891c13e0af6ff6a7fb0190f90d47679f820e31f`), 9
+pages, 543,764 bytes, mirrored byte-identical to
+`site/public/papers/a3_multichannel_arxiv_v3M.0.7.pdf` and
+`public/papers/a3_multichannel_arxiv_v3M.0.7.pdf`. Convex `paperVersions:bump`
++ `activityFeed:add` written for `paper-a3m`. Readiness raised 70 → 75
+(science item genuinely closed with real data; still short of Houston's
+final personal review for 100 per directive P).
+
+arXiv tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.7.tar.gz` sha256
+`f4ecb9aec805527688961130ac41b35aaccbed02d62fea9cf25c5c9993ec2681`, rebuilt
+from scratch in /tmp (main.tex + pbh_compaction_fnl.png, inline
+`thebibliography` — no .bbl staleness risk), standalone extract+recompile
+smoke test PASS (0 undefined refs, 9 pages).

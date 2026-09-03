@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.6}
+\newcommand{\paperVersion}{v3M.0.7}
 \newcommand{\paperTimestamp}{September 2, 2026}
 
 \begin{document}
@@ -395,20 +395,37 @@ $B_{\rm MB/SMBHB}$ (the model ratio) is not.
 
 The refit's likelihood/prior construction (30 bins, $T_{\rm obs}=16.03$\,yr,
 $\gamma\sim U[0,7]$, $\log_{10}A\sim U[-18,-11]$) is validated by an
-injection-recovery test that reuses that construction verbatim, with a
-synthetic per-bin density substituted for the real KDE grids (which require
-the RunPod workspace and are not available locally): at $\gamma_{\rm
-true}=13/3$, five realizations recover $\gamma=4.328$ on average with a mean
-pull of $-0.026\sigma$; at a $\gamma_{\rm true}=3$ control, five realizations
-recover $\gamma=3.015$ with a mean pull of $+0.068\sigma$ (script and JSON:
+injection-recovery test that reuses that construction verbatim, using the
+REAL NANOGrav 15-yr HD-correlated free-spectrum KDE density grids from the
+public Zenodo record\allowbreak\
+\href{https://doi.org/10.5281/zenodo.8060824}{10.5281/zenodo.8060824}
+(\texttt{30f\_fs\{hd\}\_ceffyl/*.npy}, sha256-verified). Each bin's real
+observed KDE curve (shape/width/skew preserved exactly) is re-centered along
+the $\log_{10}\rho$ axis to the model prediction at a chosen injected
+$(\gamma_{\rm true},\log_{10}A_{\rm true})$, since a real dataset's true
+signal is unknown and a ground-truth injection test requires a known
+target; this is the strongest injection achievable from real data without
+simulating a full new PTA dataset. At $\gamma_{\rm true}=13/3$, five
+realizations (the full 30-bin recovery plus four bootstrap bin-resamples)
+recover $\gamma=4.336$ on average with a mean pull of $+0.016\sigma$; at a
+$\gamma_{\rm true}=3$ control, five realizations recover $\gamma=3.005$ with
+a mean pull of $+0.033\sigma$ (script, JSON, and data manifest:
 \texttt{research/track\_a3\_multichannel/}\allowbreak
-\texttt{pta\_injection\_30bin\_2026\_09\_02.py}). Both are consistent with
-unbiased recovery at well under $0.1\sigma$. This supersedes an earlier,
-misdescribed claim in this section that a $6$-bin, Gaussian-$\chi^2$
-validation against NANOGrav's published $\gamma=3.2$ power law (which
-recovered $3.19\pm0.42$, a $-0.018\sigma$ pull) was "the identical pipeline"
-injected at $\gamma=13/3$; it was neither the same pipeline nor the same
-injected value.
+\texttt{pta\_injection\_30bin\_realkde\_2026\_09\_02.py},
+\texttt{outputs/pta\_}\allowbreak\texttt{injection\_30bin\_}\allowbreak\texttt{realkde\_2026\_09\_02.json}). Both
+are consistent with unbiased recovery at well under $0.1\sigma$, tightening
+the earlier synthetic-density result quoted below. An earlier version of
+this validation substituted a synthetic per-bin Gaussian density for the
+real KDE grids (unavailable on this machine at the time): $\gamma_{\rm
+true}=13/3\to$ mean pull $-0.026\sigma$; $\gamma_{\rm true}=3\to$ mean pull
+$+0.068\sigma$ (\texttt{pta\_injection\_30bin\_2026\_09\_02.py}), retained
+here as a secondary cross-check -- both runs agree the pipeline is unbiased
+at well under $0.1\sigma$. This also supersedes an earlier, misdescribed
+claim in this section that a $6$-bin, Gaussian-$\chi^2$ validation against
+NANOGrav's published $\gamma=3.2$ power law (which recovered
+$3.19\pm0.42$, a $-0.018\sigma$ pull) was "the identical pipeline" injected
+at $\gamma=13/3$; it was neither the same pipeline nor the same injected
+value.
 
 \subsection{What this channel does and does not establish}
 

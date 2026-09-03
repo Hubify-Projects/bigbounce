@@ -1,0 +1,30 @@
+{
+  "paper": "A3",
+  "purpose": "DA3M-R2-01 real-KDE upgrade manifest: injection-recovery validation of the 30-bin free-spectrum pipeline using REAL NANOGrav 15-yr KDE grids",
+  "data_source": {
+    "name": "NANOGrav 15-yr KDE Representations of the Gravitational Wave Background Free Spectra",
+    "zenodo_doi": "10.5281/zenodo.8060824",
+    "zenodo_api": "https://zenodo.org/api/records/8060824",
+    "file_used": "NANOGrav15yr_KDE-FreeSpectra_v1.0.0.zip -> 30f_fs{hd}_ceffyl/",
+    "license": "public Zenodo record, NANOGrav collaboration data product"
+  },
+  "local_cache": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce_datasets/nanograv15yr_kde_2026-09-02",
+  "hf_mirror": {
+    "repo": "bamfai/bigbounce-aug-011-clean-rerun",
+    "path": "external/nanograv15yr_kde/",
+    "url": "https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/external/nanograv15yr_kde/NANOGrav15yr_KDE-FreeSpectra_v1.0.0.zip"
+  },
+  "sha256": {
+    "zip_full": "b461125ff9d384761ec4647756587c42067723c6980ef3c633b178012a4d91d8",
+    "30f_fs{hd}_ceffyl/freqs.npy": "1189fd8c985ffa30d977a309fe82ae08f2300dd893f981233058f5b70e933aaa",
+    "30f_fs{hd}_ceffyl/log10rhogrid.npy": "f06912fdb1ff7644bfb5a6ee09b866fb21c63e6e1986b76fdf65adfb93758615",
+    "30f_fs{hd}_ceffyl/density.npy": "ed02380bfb7c57249caf1d0357cd556a436e7b0870f8c3db46a529ef0b4f1173",
+    "30f_fs{hd}_ceffyl/bandwidths.npy": "6a5578208f2c6baf6204f5ef53679127795d9812611fbec62eded8768dfd98ea",
+    "30f_fs{hd}_ceffyl/log10rholabels.txt": "20b41728c87e43cf9a79f0125bc5f06d4fea5b1e3879fcf6adefab72daabf682",
+    "30f_fs{hd}_ceffyl/pulsar_list.txt": "e45bcaad685a4fe3a29c6cf738398b24db567770351dee32bde6dcd1c19136b4"
+  },
+  "used_by": "research/track_a3_multichannel/pta_injection_30bin_realkde_2026_09_02.py",
+  "output": "research/track_a3_multichannel/outputs/pta_injection_30bin_realkde_2026_09_02.json",
+  "supersedes_synthetic_run": "research/track_a3_multichannel/pta_injection_30bin_2026_09_02.py (synthetic per-bin Gaussian density, retained as secondary line)",
+  "date": "2026-09-02"
+}

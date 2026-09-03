@@ -126,14 +126,17 @@
     "served_aliases": [
       "a3_multichannel_arxiv_v3M.0.2.pdf",
       "a3_multichannel_arxiv_v3M.0.3.pdf",
-      "a3_multichannel_arxiv_v3M.0.4.pdf"
+      "a3_multichannel_arxiv_v3M.0.4.pdf",
+      "a3_multichannel_arxiv_v3M.0.5.pdf",
+      "a3_multichannel_arxiv_v3M.0.6.pdf",
+      "a3_multichannel_arxiv_v3M.0.7.pdf"
     ],
-    "version": "v3M.0.4",
-    "pages": 8,
+    "version": "v3M.0.7",
+    "pages": 9,
     "date": "2026-09-02",
-    "md5": "b98ee16e11d106c96ac593480857112b",
-    "sha256": "d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c",
-    "lineage": "A3 skeleton (research/track_a3_multichannel/) + P2' v2L.0.2 exact-amplitude theory (f_NL=-35/16, ledger #1 CLOSED independent re-derivation) folded in per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. v3M.0.3: PBH compaction-function channel integrated, replacing the Press-Schechter placeholder row; first-pass ordering reversed (ratio-level result, not a quotable abundance). v3M.0.4: R1 closure (INT_v3 ROUND_2026-09-02-A3M-v3M.0.3-EXACTPDF-7e35caa0-R1) -- PTA channel now states NANOGrav's official 14-bin posterior as primary comparison with the lab's 30-bin refit as secondary; gamma=5 tail Bayes factor/6.37sigma dropped from the abstract (0 of 320,000 samples support it); transmission bound relabelled scheme-conditional (handoff assumption A4 explicit, 'universal' removed); PBH amplitude ratio kept as a result with its regime of validity and the 55-decade f_PBH(f_NL) non-monotonicity disclosed; four contradictory factor-of-two statements unified; Ref. [7] fixed to arXiv:1712.08148, PRD 97, 066021 (2018); r=0.84 sourced to the P2 forecast with r-projected significances dropped pending re-derivation (item A3-4); internal issue-tracker tags stripped from body text. Status: draft -- R1 closed, R2 verification pass next.",
+    "md5": "f27a62098e5a673fa16b24d68e70da96",
+    "sha256": "b0f2ab22558b3c80a777362f8891c13e0af6ff6a7fb0190f90d47679f820e31f",
+    "lineage": "A3 skeleton (research/track_a3_multichannel/) + P2' v2L.0.2 exact-amplitude theory (f_NL=-35/16, ledger #1 CLOSED independent re-derivation) folded in per PAPER_LINEAGE_2026-08-05.md's 2026-09-02 decision record. v3M.0.3: PBH compaction-function channel integrated. v3M.0.4: R1 closure. v3M.0.5: R2 closure, rounds stop per directive R2. v3M.0.6: final-review REVISE (abstract cut to 307 words). v3M.0.7: DA3M-R2-01 real-KDE upgrade closed -- NANOGrav 15-yr HD free-spectrum KDE grids fetched from public Zenodo 10.5281/zenodo.8060824 (sha256-verified), mirrored to HuggingFace bamfai/bigbounce-aug-011-clean-rerun/external/nanograv15yr_kde/; Sec. IV C injection-recovery re-run on real per-bin KDE curves re-centered on the injected truth: gamma=13/3 mean pull +0.016sigma, gamma=3 control mean pull +0.033sigma (5 realizations each), superseding the synthetic-density placeholder (retained as secondary cross-check). Status: draft, review rounds stopped (R2 budget consumed), readiness 75, Houston final review pending.",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-A3M-v3M.0.3-EXACTPDF-7e35caa0-R1/A3M_v3M.0.3_R1_truth_audit.md"
     ]

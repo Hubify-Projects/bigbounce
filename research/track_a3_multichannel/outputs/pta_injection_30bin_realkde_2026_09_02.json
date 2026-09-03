@@ -1,0 +1,200 @@
+{
+  "summary": {
+    "13_3": {
+      "gamma_true": 4.333333333333333,
+      "n_realizations": 5,
+      "mean_of_recovered_means": 4.336290220434372,
+      "mean_pull_sigma": 0.01547015956235542,
+      "std_pull_sigma": 0.09934688189081219
+    },
+    "3_0": {
+      "gamma_true": 3.0,
+      "n_realizations": 5,
+      "mean_of_recovered_means": 3.004912354226334,
+      "mean_pull_sigma": 0.03263996730273444,
+      "std_pull_sigma": 0.12026922959184173
+    }
+  },
+  "purpose": "DA3M-R2-01 real-KDE upgrade: injection-recovery through the identical 30-bin free-spectrum interpolated-density likelihood/priors as emcee_freespec.py, using the REAL NANOGrav 15-yr HD free-spectrum KDE grids from Zenodo 10.5281/zenodo.8060824 (30f_fs{hd}_ceffyl), re-centered per bin to the injected true (gamma, log10_A) while preserving each bin's real observed density shape.",
+  "data_source": {
+    "zenodo_record": "10.5281/zenodo.8060824",
+    "zenodo_file": "NANOGrav15yr_KDE-FreeSpectra_v1.0.0.zip -> 30f_fs{hd}_ceffyl/",
+    "cache_path": "~/Desktop/CODE_YOU/bigbounce_datasets/nanograv15yr_kde_2026-09-02/",
+    "sha256": {
+      "freqs.npy": "1189fd8c985ffa30d977a309fe82ae08f2300dd893f981233058f5b70e933aaa",
+      "log10rhogrid.npy": "f06912fdb1ff7644bfb5a6ee09b866fb21c63e6e1986b76fdf65adfb93758615",
+      "density.npy": "ed02380bfb7c57249caf1d0357cd556a436e7b0870f8c3db46a529ef0b4f1173",
+      "bandwidths.npy": "6a5578208f2c6baf6204f5ef53679127795d9812611fbec62eded8768dfd98ea"
+    }
+  },
+  "pipeline_reused_verbatim": "model_log10rho, log_prior, likelihood-interpolation construction copied from pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py",
+  "supersedes": "pta_injection_30bin_2026_09_02.json (synthetic-Gaussian per-bin density; retained as secondary cross-check)",
+  "results": [
+    {
+      "label": "gamma=13_3 realization 1/5 (full 30-bin)",
+      "gamma_true": 4.333333333333333,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "dense_2d_grid_posterior_marginalization_on_shifted_real_KDE",
+      "grid_shape": [
+        1200,
+        900
+      ],
+      "grid_seconds": 0.6803300380706787,
+      "gamma_recovered_mean": 4.342479178635003,
+      "gamma_recovered_std": 0.16820915834262007,
+      "gamma_recovered_median": 4.340903673413935,
+      "gamma_recovered_q16": 4.1771986491884725,
+      "gamma_recovered_q84": 4.501971547977127,
+      "pull_sigma": 0.05437186293412657
+    },
+    {
+      "label": "gamma=13_3 realization 2/5 (bootstrap bins)",
+      "gamma_true": 4.333333333333333,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.56771993637085,
+      "gamma_recovered_mean": 4.337103583897622,
+      "gamma_recovered_std": 0.1737355688250209,
+      "pull_sigma": 0.021701086253016724
+    },
+    {
+      "label": "gamma=13_3 realization 3/5 (bootstrap bins)",
+      "gamma_true": 4.333333333333333,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.628087043762207,
+      "gamma_recovered_mean": 4.318050578641913,
+      "gamma_recovered_std": 0.16054175813568555,
+      "pull_sigma": -0.09519488803967767
+    },
+    {
+      "label": "gamma=13_3 realization 4/5 (bootstrap bins)",
+      "gamma_true": 4.333333333333333,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.888220310211182,
+      "gamma_recovered_mean": 4.363469263565887,
+      "gamma_recovered_std": 0.1698082499671406,
+      "pull_sigma": 0.17747035399272557
+    },
+    {
+      "label": "gamma=13_3 realization 5/5 (bootstrap bins)",
+      "gamma_true": 4.333333333333333,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.610899925231934,
+      "gamma_recovered_mean": 4.320348497431435,
+      "gamma_recovered_std": 0.16031133174263326,
+      "pull_sigma": -0.08099761732841408
+    },
+    {
+      "label": "gamma=3_0 realization 1/5 (full 30-bin)",
+      "gamma_true": 3.0,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "dense_2d_grid_posterior_marginalization_on_shifted_real_KDE",
+      "grid_shape": [
+        1200,
+        900
+      ],
+      "grid_seconds": 0.7573277950286865,
+      "gamma_recovered_mean": 3.0091457317270427,
+      "gamma_recovered_std": 0.1682079736010765,
+      "gamma_recovered_median": 3.0075701229496676,
+      "gamma_recovered_q16": 2.843881923618138,
+      "gamma_recovered_q84": 3.1686469245668336,
+      "pull_sigma": 0.05437157068863329
+    },
+    {
+      "label": "gamma=3_0 realization 2/5 (bootstrap bins)",
+      "gamma_true": 3.0,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.673817873001099,
+      "gamma_recovered_mean": 3.029561232284981,
+      "gamma_recovered_std": 0.16385666196205603,
+      "pull_sigma": 0.18040909616373507
+    },
+    {
+      "label": "gamma=3_0 realization 3/5 (bootstrap bins)",
+      "gamma_true": 3.0,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.643063068389893,
+      "gamma_recovered_mean": 2.9713081703667297,
+      "gamma_recovered_std": 0.16653745584950755,
+      "pull_sigma": -0.1722845439598756
+    },
+    {
+      "label": "gamma=3_0 realization 4/5 (bootstrap bins)",
+      "gamma_true": 3.0,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.661211729049683,
+      "gamma_recovered_mean": 3.01626262305548,
+      "gamma_recovered_std": 0.1463061517866626,
+      "pull_sigma": 0.11115474542173277
+    },
+    {
+      "label": "gamma=3_0 realization 5/5 (bootstrap bins)",
+      "gamma_true": 3.0,
+      "log10_A_true": -14.6,
+      "n_bins": 30,
+      "T_obs_yr": 16.029777268872294,
+      "method": "bootstrap_bin_resample_grid_posterior",
+      "grid_shape": [
+        600,
+        450
+      ],
+      "grid_seconds": 5.8713438510894775,
+      "gamma_recovered_mean": 2.9982840136974382,
+      "gamma_recovered_std": 0.16419300364877834,
+      "pull_sigma": -0.01045103180055336
+    }
+  ]
+}

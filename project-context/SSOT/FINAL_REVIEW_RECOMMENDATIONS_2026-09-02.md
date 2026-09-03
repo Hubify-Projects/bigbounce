@@ -105,6 +105,22 @@ separate phase and never subtract from the score.
   (re-download Zenodo 8060824 directly, back up per ALWAYS-backup). Hygiene
   done: 4-pass compile, 0 undef refs, tarball
   `a3_multichannel_arxiv_v3M.0.6.tar.gz` smoke-tested, Convex bumped.
+- **REVISE (real-KDE injection) executed → v3M.0.7:** the Zenodo record is
+  public and needed no RunPod dependency — queried
+  `zenodo.org/api/records/8060824` directly, downloaded
+  `NANOGrav15yr_KDE-FreeSpectra_v1.0.0.zip` (6.57MB, sha256 recorded),
+  extracted `30f_fs{hd}_ceffyl/*.npy` (matches `emcee_freespec.py`'s ROOT
+  exactly), cached outside the repo, and mirrored to HuggingFace
+  `bamfai/bigbounce-aug-011-clean-rerun/external/nanograv15yr_kde/` so the
+  artifact is not lost again. §IV.C injection-recovery re-run on the REAL
+  per-bin KDE curves (re-centered on the injected truth, shape/width/skew
+  preserved): γ=13/3 mean pull +0.016σ, γ=3 control mean pull +0.033σ (5
+  realizations each), superseding the synthetic-density proxy (retained as
+  secondary cross-check). Hygiene: 4-pass compile, 0 undef refs, 0 overfull
+  >10pt, tarball `a3_multichannel_arxiv_v3M.0.7.tar.gz` sha256
+  `f4ecb9aec805527688961130ac41b35aaccbed02d62fea9cf25c5c9993ec2681`
+  smoke-tested, Convex bumped, md5 `f27a62098e5a673fa16b24d68e70da96`,
+  readiness 70 → 75.
 - DEFER submission until the science gate closes: the method-independent
   f_NL cross-check (Bianchi-I separate universe), the bounce's own cubic term
   (ledger #2 second half), and an in-lab Δ²_ζ for the PBH channel (A3-1b).

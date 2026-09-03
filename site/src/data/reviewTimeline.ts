@@ -67,6 +67,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-real-kde-injection-v3m-0-7-2026-09-02",
+    dateISO: "2026-09-02",
+    kind: "closure-wave",
+    title: "A3 v3M.0.7 — real-KDE injection validation closed; readiness 75",
+    papers: ["A3"],
+    summary:
+      "DA3M-R2-01's synthetic-density placeholder replaced with a real-data injection: the NANOGrav 15-yr HD-correlated free-spectrum KDE grids (public Zenodo record 10.5281/zenodo.8060824, file 30f_fs{hd}_ceffyl/*.npy) were fetched directly (6.57MB zip, sha256 recorded in the manifest), cached to ~/Desktop/CODE_YOU/bigbounce_datasets/nanograv15yr_kde_2026-09-02/, and mirrored to HuggingFace bamfai/bigbounce-aug-011-clean-rerun under external/nanograv15yr_kde/ so the artifact survives this time. research/track_a3_multichannel/pta_injection_30bin_realkde_2026_09_02.py reuses emcee_freespec.py's model_log10rho/log_prior verbatim and re-centers each bin's REAL observed KDE curve (shape/width/skew preserved) on the injected true (γ, log10_A) — the strongest injection test obtainable from a real dataset with an unknown true signal. Results (5 realizations each): γ_true=13/3 → mean recovered 4.336, mean pull +0.016σ; γ_true=3 control → mean recovered 3.005, mean pull +0.033σ. Both well under 0.1σ, tightening the prior synthetic-density result (−0.026σ / +0.068σ, retained as a secondary cross-check). §IV C restated with the real numbers. v3M.0.7: 9pp, 0 undef refs, 0 overfull hbox >10pt, md5 f27a62098e5a673fa16b24d68e70da96, mirrored byte-identical to site/public/papers/ and public/papers/.",
+    keyTakeaways: [
+      "Real NANOGrav 15-yr KDE grids fetched from public Zenodo 10.5281/zenodo.8060824 and mirrored to HF (previously lost as an ephemeral RunPod artifact)",
+      "Injection-recovery re-run on real per-bin KDE curves: γ=13/3 mean pull +0.016σ, γ=3 control mean pull +0.033σ (5 realizations each) — both well under 0.1σ",
+      "v3M.0.7, 9pp, md5 f27a62098e5a673fa16b24d68e70da96; readiness 75, DA3M-R2-01 real-KDE upgrade closed",
+    ],
+    links: [
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "Injection script", href: `${GH}/research/track_a3_multichannel/pta_injection_30bin_realkde_2026_09_02.py` },
+      { label: "Results JSON", href: `${GH}/research/track_a3_multichannel/outputs/pta_injection_30bin_realkde_2026_09_02.json` },
+      { label: "Data manifest", href: `${GH}/research/track_a3_multichannel/outputs/pta_injection_30bin_realkde_2026_09_02.manifest.json` },
+    ],
+  },
+  {
     id: "a3m-final-review-revise-v3m-0-6-2026-09-02",
     dateISO: "2026-09-02",
     kind: "restructure",
