@@ -1,0 +1,466 @@
+{
+  "date": "2026-09-03",
+  "units": "M_Pl^2 = 1, a_B = 1, t_B = 0",
+  "literature": {
+    "cubic_action": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)",
+    "field_redefinition": "Chen et al. 2007 Eq. (4.29) [Maldacena 2003 Eq. (3.10) at c_s=1]: zeta = zeta_n + f(zeta_n), f = eta_sr/(4 c_s^2) zeta^2 + zeta zetadot/(c_s^2 H) + [-(d zeta)^2 + d^-2 d_i d_j(d_i zeta d_j zeta)]/(4 a^2 H^2) + [(d zeta)(d chi) - d^-2 d_i d_j(d_i zeta d_j chi)]/(2 a^2 H)",
+    "boundary_terms": "Arroja & Tanaka 2011 (arXiv:1103.1102); Burrage, Ribeiro & Seery 2011 (arXiv:1103.4126): the total-derivative terms dropped from the bulk cubic action are equivalent, for the correlator at eta_*, to the field-redefinition terms above (literature; equivalence used, not re-derived)",
+    "bounce_background": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv:1508.04141): bounce phase H = Upsilon (t - t_B), a = a_B exp[Upsilon (t-t_B)^2/2]; f_NL enhanced during the bounce if zeta grows (their Sec. 5, literature)",
+    "lqc_background": "Ashtekar & Singh 2011 (arXiv:1108.0893) effective LQC Friedmann equation H^2 = (rho/3)(1 - rho/rho_c); Agullo, Bolliet & Sreenath 2017 (arXiv:1712.08148): bounce enhances f_NL by orders of magnitude on scales larger than the curvature radius at the bounce (literature)",
+    "in_in_conventions": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md Sec. 1 (lab convention: <zeta^3> = -2 Im int d eta <zeta^3(eta_*) L_int(eta)>, 3! leg attachments each counted once, no hand symmetry factors)",
+    "prior_lab_result": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md Sec. 2.1: effective-fluid z^2 = a^2 (rho+p)/(c_s^2 H^2) has an H=0 pole; dressed-metric a''/a bounded; super-Hubble zeta = C1 + C2 J, J = int d eta / z^2"
+  },
+  "vertices": {
+    "V1": {
+      "operator": "zetadot^3",
+      "coefficient": "-a**3*(H**2*epsilon*(1 - 1/c_s**2)/c_s**2 + 2*lambda)/H",
+      "n_time_derivs": 3,
+      "explicit_gradients": 0,
+      "note": "vanishes for canonical c_s=1, lambda=0; Sigma written as eps H^2/c_s^2",
+      "source": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)"
+    },
+    "V2": {
+      "operator": "zeta zetadot^2",
+      "coefficient": "a**3*epsilon*(3*c_s**2 + epsilon - 3)/c_s**4",
+      "n_time_derivs": 2,
+      "explicit_gradients": 0,
+      "note": "Maldacena a^3 eps^2 zeta zetadot^2 at c_s=1",
+      "source": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)"
+    },
+    "V3": {
+      "operator": "zeta (d zeta)^2 / a^2",
+      "coefficient": "a*epsilon*(-c_s**2 + epsilon - 2*s + 1)/c_s**2",
+      "n_time_derivs": 0,
+      "explicit_gradients": 2,
+      "note": "gradient vertex; carries an explicit k^2 relative to V2 on super-Hubble scales",
+      "source": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)"
+    },
+    "V4": {
+      "operator": "zetadot (d zeta)(d chit)",
+      "coefficient": "-2*a**3*epsilon**2/c_s**4",
+      "n_time_derivs": 2,
+      "explicit_gradients": 0,
+      "note": "Chen's -2 a eps/c_s^2 zetadot d zeta d chi with chi = a^2 eps chit/c_s^2; the d^-2 in chit cancels the two gradients: not k^2 suppressed",
+      "source": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)"
+    },
+    "V5": {
+      "operator": "zeta^2 zetadot",
+      "coefficient": "a**3*detasr_cs2_dt*epsilon/(2*c_s**2)",
+      "n_time_derivs": 1,
+      "explicit_gradients": 0,
+      "note": "coefficient (a^3 eps/2c_s^2) d/dt(eta_sr/c_s^2); zero for constant eps",
+      "source": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)"
+    },
+    "V6": {
+      "operator": "(d zeta)(d chit) d^2 chit",
+      "coefficient": "a**3*epsilon**3/(2*c_s**4)",
+      "n_time_derivs": 2,
+      "explicit_gradients": 0,
+      "note": "Chen's eps/(2a) d zeta d chi d^2 chi; with the lab's verified rewrite V6+V7 = -(a^3 eps^3/2) zeta zetadot^2 + (a^3 eps^3/2) zeta (d_i d_j chit)^2 + total deriv.",
+      "source": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)"
+    },
+    "V7": {
+      "operator": "d^2 zeta (d chit)^2",
+      "coefficient": "a**3*epsilon**3/(4*c_s**4)",
+      "n_time_derivs": 2,
+      "explicit_gradients": 0,
+      "note": "Chen's eps/(4a) d^2 zeta (d chi)^2",
+      "source": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28); Seery & Lidsey 2005 (astro-ph/0503692) Eq. (51); c_s=1, lambda=0 limit: Maldacena 2003 (astro-ph/0210603) Eq. (3.9)"
+    }
+  },
+  "redefinition": {
+    "R1": {
+      "operator": "zeta^2",
+      "coefficient": "eta_sr/(4*c_s**2)",
+      "note": "local; gives (5/12) eta_sr-type piece",
+      "source": "Chen et al. 2007 Eq. (4.29) [Maldacena 2003 Eq. (3.10) at c_s=1]: zeta = zeta_n + f(zeta_n), f = eta_sr/(4 c_s^2) zeta^2 + zeta zetadot/(c_s^2 H) + [-(d zeta)^2 + d^-2 d_i d_j(d_i zeta d_j zeta)]/(4 a^2 H^2) + [(d zeta)(d chi) - d^-2 d_i d_j(d_i zeta d_j chi)]/(2 a^2 H)"
+    },
+    "R2": {
+      "operator": "zeta zetadot",
+      "coefficient": "1/(H*c_s**2)",
+      "note": "local; gives (5/3) zetadot/(H zeta) at eta_*",
+      "source": "Chen et al. 2007 Eq. (4.29) [Maldacena 2003 Eq. (3.10) at c_s=1]: zeta = zeta_n + f(zeta_n), f = eta_sr/(4 c_s^2) zeta^2 + zeta zetadot/(c_s^2 H) + [-(d zeta)^2 + d^-2 d_i d_j(d_i zeta d_j zeta)]/(4 a^2 H^2) + [(d zeta)(d chi) - d^-2 d_i d_j(d_i zeta d_j chi)]/(2 a^2 H)"
+    },
+    "R3": {
+      "operator": "[-(d zeta)^2 + d^-2 d_i d_j(d_i zeta d_j zeta)]",
+      "coefficient": "1/(4*H**2*a**2)",
+      "note": "non-local; O(k^2/(aH)^2) at fixed zeta",
+      "source": "Chen et al. 2007 Eq. (4.29) [Maldacena 2003 Eq. (3.10) at c_s=1]: zeta = zeta_n + f(zeta_n), f = eta_sr/(4 c_s^2) zeta^2 + zeta zetadot/(c_s^2 H) + [-(d zeta)^2 + d^-2 d_i d_j(d_i zeta d_j zeta)]/(4 a^2 H^2) + [(d zeta)(d chi) - d^-2 d_i d_j(d_i zeta d_j chi)]/(2 a^2 H)"
+    },
+    "R4": {
+      "operator": "[(d zeta)(d chit) - d^-2 d_i d_j(d_i zeta d_j chit)]",
+      "coefficient": "epsilon/(2*H*c_s**2)",
+      "note": "non-local; from (d zeta d chi)/(2 a^2 H) with chi = a^2 eps chit/c_s^2",
+      "source": "Chen et al. 2007 Eq. (4.29) [Maldacena 2003 Eq. (3.10) at c_s=1]: zeta = zeta_n + f(zeta_n), f = eta_sr/(4 c_s^2) zeta^2 + zeta zetadot/(c_s^2 H) + [-(d zeta)^2 + d^-2 d_i d_j(d_i zeta d_j zeta)]/(4 a^2 H^2) + [(d zeta)(d chi) - d^-2 d_i d_j(d_i zeta d_j chi)]/(2 a^2 H)"
+    }
+  },
+  "backgrounds": {
+    "quintin": {
+      "label": "Quintin+2015-type bounce phase",
+      "H": "Upsilon*t",
+      "a": "exp(Upsilon*t**2/2)",
+      "Hdot": "Upsilon",
+      "eps": "-1/(Upsilon*t**2)",
+      "eta_sr": "-2/(Upsilon*t**2)",
+      "eps_pole": {
+        "order": -2,
+        "coeff": "-1/Upsilon"
+      },
+      "eta_sr_pole": {
+        "order": -2,
+        "coeff": "-2/Upsilon"
+      },
+      "eta_sr_over_eps_at_bounce": "2",
+      "Upsilon_eff_at_bounce": "Upsilon"
+    },
+    "lqc": {
+      "label": "LQC effective, dust (rho_c bounce)",
+      "H": "rho_c*t/(2*(3*rho_c*t**2/4 + 1))",
+      "a": "(3*rho_c*t**2/4 + 1)**(1/3)",
+      "Hdot": "2*rho_c*(-3*rho_c*t**2 + 4)/(9*rho_c**2*t**4 + 24*rho_c*t**2 + 16)",
+      "eps": "3/2 - 2/(rho_c*t**2)",
+      "eta_sr": "4*(3*rho_c*t**2 + 4)/(rho_c*t**2*(3*rho_c*t**2 - 4))",
+      "eps_pole": {
+        "order": -2,
+        "coeff": "-2/rho_c"
+      },
+      "eta_sr_pole": {
+        "order": -2,
+        "coeff": "-4/rho_c"
+      },
+      "eta_sr_over_eps_at_bounce": "2",
+      "Upsilon_eff_at_bounce": "rho_c/2"
+    }
+  },
+  "scheme_pole_table": {
+    "quintin": {
+      "V1": {
+        "S2_pole_order": 5,
+        "S2_lead": "Upsilon**2*c_s**2*(-Upsilon*(c_s**2 - 1) + 2*c_s**4*lambda)/8",
+        "S2_verdict": "FINITE",
+        "S1_pole_order": null,
+        "S1_lead": "0"
+      },
+      "V2": {
+        "S2_pole_order": 0,
+        "S2_lead": "1/4",
+        "S2_verdict": "FINITE",
+        "S1_pole_order": 0,
+        "S1_lead": "1/4"
+      },
+      "V3": {
+        "S2_pole_order": -4,
+        "S2_lead": "1/(Upsilon**2*c_s**2)",
+        "S2_verdict": "NON-INTEGRABLE even pole",
+        "S1_pole_order": 0,
+        "S1_lead": "1/4"
+      },
+      "V4": {
+        "S2_pole_order": 0,
+        "S2_lead": "-1/2",
+        "S2_verdict": "FINITE",
+        "S1_pole_order": 0,
+        "S1_lead": "-1/2"
+      },
+      "V5": {
+        "S2_pole_order": -3,
+        "S2_lead": "1/(Upsilon*c_s**2)",
+        "S2_verdict": "odd pole (PV-finite, scheme-dependent)",
+        "S1_pole_order": null,
+        "S1_lead": "0"
+      },
+      "V6": {
+        "S2_pole_order": -2,
+        "S2_lead": "-1/(8*Upsilon)",
+        "S2_verdict": "NON-INTEGRABLE even pole",
+        "S1_pole_order": 0,
+        "S1_lead": "1/16"
+      },
+      "V7": {
+        "S2_pole_order": -2,
+        "S2_lead": "-1/(16*Upsilon)",
+        "S2_verdict": "NON-INTEGRABLE even pole",
+        "S1_pole_order": 0,
+        "S1_lead": "1/32"
+      },
+      "redefinition": {
+        "R1": {
+          "S2_pole_order": -2,
+          "S2_lead": "-1/(2*Upsilon*c_s**2)"
+        },
+        "R2": {
+          "S2_pole_order": 1,
+          "S2_lead": "-1/2"
+        },
+        "R3": {
+          "S2_pole_order": -2,
+          "S2_lead": "1/(4*Upsilon**2)"
+        },
+        "R4": {
+          "S2_pole_order": -1,
+          "S2_lead": "1/(4*Upsilon)"
+        }
+      }
+    },
+    "lqc": {
+      "V1": {
+        "S2_pole_order": 5,
+        "S2_lead": "c_s**2*rho_c**2*(4*c_s**4*lambda - c_s**2*rho_c + rho_c)/64",
+        "S2_verdict": "FINITE",
+        "S1_pole_order": null,
+        "S1_lead": "0"
+      },
+      "V2": {
+        "S2_pole_order": 0,
+        "S2_lead": "1/4",
+        "S2_verdict": "FINITE",
+        "S1_pole_order": 0,
+        "S1_lead": "1/4"
+      },
+      "V3": {
+        "S2_pole_order": -4,
+        "S2_lead": "4/(c_s**2*rho_c**2)",
+        "S2_verdict": "NON-INTEGRABLE even pole",
+        "S1_pole_order": 0,
+        "S1_lead": "1/4"
+      },
+      "V4": {
+        "S2_pole_order": 0,
+        "S2_lead": "-1/2",
+        "S2_verdict": "FINITE",
+        "S1_pole_order": 0,
+        "S1_lead": "-1/2"
+      },
+      "V5": {
+        "S2_pole_order": -3,
+        "S2_lead": "2/(c_s**2*rho_c)",
+        "S2_verdict": "odd pole (PV-finite, scheme-dependent)",
+        "S1_pole_order": null,
+        "S1_lead": "0"
+      },
+      "V6": {
+        "S2_pole_order": -2,
+        "S2_lead": "-1/(4*rho_c)",
+        "S2_verdict": "NON-INTEGRABLE even pole",
+        "S1_pole_order": 0,
+        "S1_lead": "1/16"
+      },
+      "V7": {
+        "S2_pole_order": -2,
+        "S2_lead": "-1/(8*rho_c)",
+        "S2_verdict": "NON-INTEGRABLE even pole",
+        "S1_pole_order": 0,
+        "S1_lead": "1/32"
+      },
+      "redefinition": {
+        "R1": {
+          "S2_pole_order": -2,
+          "S2_lead": "-1/(c_s**2*rho_c)"
+        },
+        "R2": {
+          "S2_pole_order": 1,
+          "S2_lead": "-1/2"
+        },
+        "R3": {
+          "S2_pole_order": -2,
+          "S2_lead": "rho_c**(-2)"
+        },
+        "R4": {
+          "S2_pole_order": -1,
+          "S2_lead": "1/(2*rho_c)"
+        }
+      }
+    }
+  },
+  "super_hubble_reduction": {
+    "statement": "Delta f_NL^{bounce}_V = int_{-eta_B}^{+eta_B} d eta  c_V(eta) * K_V(J(eta); A, I_inf, k); K_V listed per vertex; c_V is the conformal-time coefficient (c_V^{conf} = c_V^{cosmic}/a^{n_dot-1}); mode functions zeta = C1 + C2 J with the brief's vacuum C1, C2; valid for k eta_B << 1.",
+    "kernels": {
+      "zeta zeta'^2": {
+        "squeezed_kernel": "5*(-162*A**4*I_inf**2 - 486*A**4*I_inf*J - k**6)/(6*I_inf*(324*A**4*I_inf**2 + k**6))",
+        "leading": "5*(-I_inf - 3*J)/(12*I_inf**2)"
+      },
+      "zeta^2 zeta'": {
+        "squeezed_kernel": "5*(81*A**4*I_inf**3 - 162*A**4*I_inf**2*J - 243*A**4*I_inf*J**2 - J*k**6)/(3*I_inf*(324*A**4*I_inf**2 + k**6))",
+        "leading": "5*(I_inf**2 - 2*I_inf*J - 3*J**2)/(12*I_inf**2)"
+      }
+    },
+    "wronskian": "Im(C1 C2*) = 1/2 (z = a)"
+  },
+  "S1_numerical_estimate": {
+    "note": "S1 (z = a, eps_eff = 1/2, c_s = 1) evaluation of the V2 vertex only, leading |r|>>1 kernel, bounce window |eta| <= eta_B, post-bounce eta_* -> +inf.  Order-of-magnitude anchor for lane (b); the full sum over V2, V4, V6, V7 with angular kernels is lane (b).",
+    "values": {
+      "quintin dtB=0.5": {
+        "background": "quintin dtB=0.5",
+        "params": {
+          "dtB": 0.5,
+          "Upsilon": 10.666666666666666,
+          "a_B": 1.0,
+          "t_far": 1000000.0
+        },
+        "eta_B": 0.22480854416203,
+        "I_inf": 0.2786758715646746,
+        "A": 4.83250100769035,
+        "rho_B": 0.6700040734621084,
+        "dfnl_V2_S1_numeric": -0.1395782492101473,
+        "dfnl_V2_S1_closed_form": -0.1395841819712726,
+        "rel_diff": 4.25031048755149e-05
+      },
+      "quintin dtB=1.0": {
+        "background": "quintin dtB=1.0",
+        "params": {
+          "dtB": 1.0,
+          "Upsilon": 2.6666666666666665,
+          "a_B": 1.0,
+          "t_far": 1000000.0
+        },
+        "eta_B": 0.449615658691089,
+        "I_inf": 0.5573516969550293,
+        "A": 1.2081252523833725,
+        "rho_B": 0.6700028121784631,
+        "dfnl_V2_S1_numeric": -0.13957826077363722,
+        "dfnl_V2_S1_closed_form": -0.1395839192038465,
+        "rel_diff": 4.053783732073816e-05
+      },
+      "quintin dtB=2.0": {
+        "background": "quintin dtB=2.0",
+        "params": {
+          "dtB": 2.0,
+          "Upsilon": 0.6666666666666666,
+          "a_B": 1.0,
+          "t_far": 1000000.0
+        },
+        "eta_B": 0.8992284583394259,
+        "I_inf": 1.1147032096091711,
+        "A": 0.30203131320564625,
+        "rho_B": 0.670001606259049,
+        "dfnl_V2_S1_numeric": -0.13957828385098828,
+        "dfnl_V2_S1_closed_form": -0.13958366797063523,
+        "rel_diff": 3.857270499646746e-05
+      },
+      "LQC dust (rho_B = 1/2 exact)": {
+        "background": "LQC dust (rho_B = 1/2 exact)",
+        "params": {
+          "rho_c": 1.0,
+          "w": 0.0,
+          "x_min": 1e-12
+        },
+        "eta_B": 1.0601459575428231,
+        "I_inf": 1.8137982097415053,
+        "A": 0.08333333332653892,
+        "rho_B": 0.5000003182551834,
+        "dfnl_V2_S1_numeric": -0.10416655636453992,
+        "dfnl_V2_S1_closed_form": -0.10416673296982988,
+        "rel_diff": 1.6954097044850377e-06
+      },
+      "poly eta_b=1": {
+        "background": "poly eta_b=1",
+        "params": {
+          "eta_b": 1.0,
+          "a_b": 1.0
+        },
+        "eta_B": 0.5773502794521735,
+        "I_inf": 0.78539816339224,
+        "A": 0.9999998899388941,
+        "rho_B": 0.6089977878291118,
+        "dfnl_V2_S1_numeric": -0.1242379157837877,
+        "dfnl_V2_S1_closed_form": -0.12687453913106497,
+        "rel_diff": 0.020781343249283143
+      }
+    },
+    "contraction_reference": -2.1875
+  },
+  "coefficient_poles": {
+    "quintin": {
+      "V1": {
+        "pole_order": -1,
+        "lead": "c_s**(-2) - 1/c_s**4 - 2*lambda/Upsilon"
+      },
+      "V2": {
+        "pole_order": -4,
+        "lead": "1/(Upsilon**2*c_s**4)"
+      },
+      "V3": {
+        "pole_order": -4,
+        "lead": "1/(Upsilon**2*c_s**2)"
+      },
+      "V4": {
+        "pole_order": -4,
+        "lead": "-2/(Upsilon**2*c_s**4)"
+      },
+      "V5": {
+        "pole_order": -5,
+        "lead": "-2/(Upsilon**2*c_s**4)"
+      },
+      "V6": {
+        "pole_order": -6,
+        "lead": "-1/(2*Upsilon**3*c_s**4)"
+      },
+      "V7": {
+        "pole_order": -6,
+        "lead": "-1/(4*Upsilon**3*c_s**4)"
+      },
+      "R1": {
+        "pole_order": -2,
+        "lead": "-1/(2*Upsilon*c_s**2)"
+      },
+      "R2": {
+        "pole_order": -1,
+        "lead": "1/(Upsilon*c_s**2)"
+      },
+      "R3": {
+        "pole_order": -2,
+        "lead": "1/(4*Upsilon**2)"
+      },
+      "R4": {
+        "pole_order": -3,
+        "lead": "-1/(2*Upsilon**2*c_s**2)"
+      }
+    },
+    "lqc": {
+      "V1": {
+        "pole_order": -1,
+        "lead": "-4*lambda/rho_c + c_s**(-2) - 1/c_s**4"
+      },
+      "V2": {
+        "pole_order": -4,
+        "lead": "4/(c_s**4*rho_c**2)"
+      },
+      "V3": {
+        "pole_order": -4,
+        "lead": "4/(c_s**2*rho_c**2)"
+      },
+      "V4": {
+        "pole_order": -4,
+        "lead": "-8/(c_s**4*rho_c**2)"
+      },
+      "V5": {
+        "pole_order": -5,
+        "lead": "-8/(c_s**4*rho_c**2)"
+      },
+      "V6": {
+        "pole_order": -6,
+        "lead": "-4/(c_s**4*rho_c**3)"
+      },
+      "V7": {
+        "pole_order": -6,
+        "lead": "-2/(c_s**4*rho_c**3)"
+      },
+      "R1": {
+        "pole_order": -2,
+        "lead": "-1/(c_s**2*rho_c)"
+      },
+      "R2": {
+        "pole_order": -1,
+        "lead": "2/(c_s**2*rho_c)"
+      },
+      "R3": {
+        "pole_order": -2,
+        "lead": "rho_c**(-2)"
+      },
+      "R4": {
+        "pole_order": -3,
+        "lead": "-2/(c_s**2*rho_c**2)"
+      }
+    }
+  }
+}

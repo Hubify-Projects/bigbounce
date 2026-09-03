@@ -139,9 +139,13 @@ def pole_order(expr, var=t):
     expr = sp.simplify(expr)
     if expr == 0:
         return None, sp.Integer(0)
-    n = sp.nsimplify(sp.limit(var * sp.diff(expr, var) / expr, var, 0))
-    lead_coeff = sp.limit(expr / var**n, var, 0)
-    return int(n), sp.simplify(lead_coeff)
+    lt = sp.simplify(expr.as_leading_term(var))
+    n, c = sp.Integer(0), lt
+    for fac, pw in lt.as_powers_dict().items():
+        if fac == var:
+            n = pw
+    c = sp.simplify(lt / var**n)
+    return int(n), c
 
 
 def main():
@@ -258,8 +262,9 @@ def main():
             verdict = ("FINITE" if (n2 is not None and n2 >= 0) else
                        ("odd pole (PV-finite, scheme-dependent)" if parity == "odd" else
                         "NON-INTEGRABLE even pole"))
-            log(f"    {key}: S2 integrand ~ t^{n2} [{verdict}];  S1 integrand ~ t^{n1 if n1 is not None else '-'}"
-                f"{' (finite)' if (n1 is None or n1 >= 0) else ''}")
+            s1txt = ("coefficient == 0 in S1" if n1 is None else
+                     f"~ t^{n1}" + (" (finite)" if n1 >= 0 else " (POLE)"))
+            log(f"    {key}: S2 integrand ~ t^{n2} [{verdict}];  S1 integrand {s1txt}")
             scheme[bkey][key] = dict(S2_pole_order=n2, S2_lead=str(l2), S2_verdict=verdict,
                                      S1_pole_order=n1, S1_lead=str(l1))
         # field redefinition evaluated AT the bounce point (eta_* = t_B): pole orders of F_j o_j
@@ -318,7 +323,9 @@ def main():
         integrand_im = sp.simplify(sp.im(sp.expand(pref * T)))   # multiplies  c(eta) / a^4 or /a^2  and d eta
         # dimensionless ratio to (P1 P2 + P1 P3 + P2 P3), then squeezed limit k1 -> 0 at k2 = k3 = k
         Psum = P[0] * P[1] + P[0] * P[2] + P[1] * P[2]
-        fnl_kernel = sp.simplify(sp.Rational(5, 18) * (-2) * integrand_im / Psum)
+        # f_NL = (5/6) B / (P1P2 + P1P3 + P2P3)  [zeta = zeta_g + (3/5) f_NL zeta_g^2; checked below on the
+        # local redefinition zeta = zeta_n + F zeta_n^2 -> B = 2F sum PP -> f_NL = (5/3) F]
+        fnl_kernel = sp.simplify(sp.Rational(5, 6) * (-2) * integrand_im / Psum)
         sq = sp.simplify(sp.limit(fnl_kernel.subs({k2: k, k3: k}), k1, 0))
         # leading term for k^3 << A^2 I_inf (|r| >> 1)
         eps_ = sp.Symbol("epsilon_k", positive=True)
@@ -333,8 +340,17 @@ def main():
                   "mode functions zeta = C1 + C2 J with the brief's vacuum C1, C2; valid for k eta_B << 1.",
         kernels=red, wronskian="Im(C1 C2*) = 1/2 (z = a)")
 
+    # normalisation check: local redefinition zeta = zeta_n + F zeta_n^2 gives B = 2 F (P1P2+P1P3+P2P3)
+    # and must return f_NL = (5/3) F  (slow-roll: F = eta_sr/4 -> 5 eta_sr/12; end of matter
+    # contraction: F = zetadot/(H zeta) = -3/2 -> -5/2, the lab adjudication's redefinition row).
+    Fsym = sp.Symbol("F")
+    Psum = P[0] * P[1] + P[0] * P[2] + P[1] * P[2]
+    assert sp.simplify(sp.Rational(5, 6) * 2 * Fsym * Psum / Psum - sp.Rational(5, 3) * Fsym) == 0
+    log("  normalisation: local redefinition F zeta^2 -> f_NL = (5/3) F  (-> -5/2 at end of matter "
+        "contraction, 5 eta_sr/12 in slow roll): OK")
+
     # ---------------- [F] numerical S1 estimate on the Quintin background ----------------
-    log("\n[F] Numerical S1-scheme bounce-window estimate (Quintin+2015-type, dtB sweep)")
+    log("\n[F] Numerical S1-scheme bounce-window estimate (Quintin+2015-type dtB sweep, LQC, poly)")
     sys.path.insert(0, os.path.join(HERE, ".."))
     import a2_transmission_linear as a2
     est = {}
@@ -346,8 +362,12 @@ def main():
         kern[name] = sp.lambdify((Jn,), expr.subs(J, Jn), "numpy")
     # check A, I_inf scaling analytically: the leading kernel must be a function of J/I_inf only,
     # times powers of I_inf (record the exponent)
-    for dtB in [0.5, 1.0, 2.0]:
-        b = a2.bg_quintin(dtB=dtB, N=200001)
+    runs = [("quintin dtB=0.5", a2.bg_quintin(dtB=0.5, N=200001)),
+            ("quintin dtB=1.0", a2.bg_quintin(dtB=1.0, N=200001)),
+            ("quintin dtB=2.0", a2.bg_quintin(dtB=2.0, N=200001)),
+            ("LQC dust (rho_B = 1/2 exact)", a2.bg_lqc()),
+            ("poly eta_b=1", a2.bg_poly(eta_b=1.0))]
+    for dtB, b in runs:
         eta, aa, JJ, eB, Ii = b["eta"], b["a"], b["J"], b["eta_B"], b["I_inf"]
         m = np.abs(eta) <= eB
         e_, a_, J_ = eta[m], aa[m], JJ[m]
@@ -360,11 +380,18 @@ def main():
         lead_expr = sp.sympify(red["zeta zeta'^2"]["leading"])
         f = sp.lambdify((J, A, Iinf), lead_expr, "numpy")
         integrand = (a_**2 / 4.0) * a_**-4 * f(J_, b["A"], Ii)
-        val = float(np.trapz(integrand, e_))
-        est[str(dtB)] = dict(dtB=dtB, Upsilon=b["params"]["Upsilon"], eta_B=eB, I_inf=Ii, A=b["A"],
-                             dfnl_V2_S1=val)
-        log(f"  dtB={dtB}: eta_B={eB:.5f}  I_inf={Ii:.5f}  A={b['A']:.5f}  "
-            f"Delta f_NL^bounce[V2, S1] = {val:+.5e}")
+        val = float(np.trapezoid(integrand, e_))
+        # closed form: with c = a^2/4 and the leading kernel (5/12)(-I_inf - 3J)/I_inf^2, the J term
+        # integrates to zero by parity (a even, J odd), leaving
+        #   Delta f_NL[V2, S1] = -(5/48) (1/I_inf) int_{-eta_B}^{eta_B} d eta / a^2 = -(5/24) rho_B
+        rho_B = abs(b["J_at_minus_etaB"]) / Ii
+        closed = -5.0 / 24.0 * rho_B
+        est[str(dtB)] = dict(background=dtB, params=b["params"], eta_B=eB, I_inf=Ii, A=b["A"],
+                             rho_B=rho_B, dfnl_V2_S1_numeric=val, dfnl_V2_S1_closed_form=closed,
+                             rel_diff=abs(val - closed) / abs(closed))
+        log(f"  {dtB}: eta_B={eB:.5f}  I_inf={Ii:.5f}  A={b['A']:.5f}  rho_B={rho_B:.6f}  "
+            f"Delta f_NL^bounce[V2, S1] = {val:+.6f}  (closed form -(5/24) rho_B = {closed:+.6f}, "
+            f"rel diff {abs(val-closed)/abs(closed):.1e})")
     out["S1_numerical_estimate"] = dict(
         note="S1 (z = a, eps_eff = 1/2, c_s = 1) evaluation of the V2 vertex only, leading |r|>>1 "
              "kernel, bounce window |eta| <= eta_B, post-bounce eta_* -> +inf.  Order-of-magnitude "
