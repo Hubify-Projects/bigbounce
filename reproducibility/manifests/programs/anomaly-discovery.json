@@ -43,6 +43,6 @@
   },
   "hubify": {
     "lab_slug": "bigbounce",
-    "module_notes": "AUG-011 is complete and receipt-verified (36,634 groups; 27,547,223 unique TARGETIDs; 52,188 at the sealed S>5 threshold). Its corpus is not present in this checkout and its named Hugging Face mirror returned unauthenticated/private 401, so Hubify must not present the completed corpus as anonymously forkable. Historical BigAE/H200 legs remain lineage, not live reproduction targets."
+    "module_notes": "AUG-011 is complete and receipt-verified (36,634 groups; 27,547,223 unique TARGETIDs; 52,188 raw rows above the sealed S>5 threshold, all fibers including sky — NOT a science-candidate count; ~85% of the S>=8 tail are sky fibers per the 2026-09-03 provenance finding; science-target counts pending the provenance-filtered rerun). Its corpus is not present in this checkout and its named Hugging Face mirror returned unauthenticated/private 401, so Hubify must not present the completed corpus as anonymously forkable. Historical BigAE/H200 legs remain lineage, not live reproduction targets."
   }
 }

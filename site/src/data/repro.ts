@@ -2810,6 +2810,287 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-s8-allwise-photometry",
+    "title": "AllWISE (VizieR) photometry join for the S>8 enriched sample [SAMPLE-V1, provenance under review]",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "crossmatch",
+    "inputs": [
+      {
+        "name": "flagship_sample_s8_enriched.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8_enriched.parquet",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "VizieR AllWISE (astroquery)",
+        "endpoint": "https://vizier.cds.unistra.fr",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py",
+        "entrypoint": "python3 build_flagship_sample.py --wise-join (pod-side; see phase3.log)",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "pandas, pyarrow, numpy (RunPod bootstrap.log for exact pins)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-03",
+      "wall_clock": "2026-09-03T13:19Z to 2026-09-03T15:17Z (~1h58m)",
+      "actual_cost_usd": 0.34
+    },
+    "reproduction": {
+      "recommended_venue": "local-cpu",
+      "est_wall_clock": "~2h",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Network-bound VizieR query; no GPU required."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_wise.parquet",
+        "type": "catalog",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_wise_manifest.json",
+        "type": "receipt",
+        "checksum": null
+      }
+    ],
+    "verification": "Row count in flagship_wise.parquet cross-checked against flagship_wise_manifest.json at commit time.",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_wise_manifest.json"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-s8-enrichment",
+    "title": "S>8 flagship anomaly sample enrichment (photometry/spectroscopy/morphology join) [SAMPLE-V1, provenance under review]",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "flagship_sample_s8.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8.parquet",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "DESI zcatalog/target coordinates",
+        "type": "external-dataset",
+        "locator": "DESI internal zcatalog (pod-local, bound by input_sample_sha256 in flagship_enriched_manifest.json)",
+        "checksum": "b5144115aba9ba18201496d166f2e501ba7657759ca56539aa548dd731090fae",
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py",
+        "entrypoint": "python3 build_flagship_sample.py --enrich (pod-side; see phase3.log)",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "pandas, pyarrow, numpy (RunPod bootstrap.log for exact pins)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-02",
+      "wall_clock": "2026-09-02T18:08Z to 2026-09-03T03:50Z (~9h42m)",
+      "actual_cost_usd": 1.65
+    },
+    "reproduction": {
+      "recommended_venue": "runpod-a4000-or-equivalent",
+      "est_wall_clock": "~10h",
+      "est_cost_usd": 1.7,
+      "parallelizable": false,
+      "resume_support": true,
+      "notes": "enrich_checkpoint.json supports resume; contract_sha256/model_sha256/inference_code_sha256 in flagship_enriched_manifest.json bind exact reproduction inputs."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8_enriched.parquet",
+        "type": "catalog",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_enriched_manifest.json",
+        "type": "receipt",
+        "checksum": null
+      }
+    ],
+    "verification": "flagship_enriched_manifest.json MSE cross-check: 0 offenders / 3810 rows checked (tolerance 1e-6); groups 3128/3128 completed, 0 skipped.",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_enriched_manifest.json",
+      "project-context/PHASE3_LANDING_2026-09-03.md",
+      "project-context/SESSION_HANDOFF_2026-09-02.md#Phase-3-landing-runbook"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-s8-simbad-ned-crossmatch",
+    "title": "SIMBAD/NED positional cross-match of the S>8 enriched sample [SAMPLE-V1, provenance under review]",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "crossmatch",
+    "inputs": [
+      {
+        "name": "flagship_sample_s8_enriched.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8_enriched.parquet",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "SIMBAD (astroquery)",
+        "endpoint": "http://simbad.u-strasbg.fr/simbad/sim-tap",
+        "auth_required": false
+      },
+      {
+        "name": "NED (astroquery)",
+        "endpoint": "https://ned.ipac.caltech.edu",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py",
+        "entrypoint": "python3 build_flagship_sample.py --crossmatch-simbad-ned (pod-side; see phase3.log)",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "pandas, pyarrow, numpy (RunPod bootstrap.log for exact pins)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-03",
+      "wall_clock": "2026-09-03T03:50Z to 2026-09-03T13:19Z (~9h29m)",
+      "actual_cost_usd": 1.61
+    },
+    "reproduction": {
+      "recommended_venue": "local-cpu-or-runpod",
+      "est_wall_clock": "~9-10h (network-bound VizieR/SIMBAD/NED rate limits)",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Network-bound; can run on any host with internet access, no GPU required despite pod venue used originally."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_matched.parquet",
+        "type": "catalog",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_unmatched.parquet",
+        "type": "catalog",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_manifest.json",
+        "type": "receipt",
+        "checksum": null
+      }
+    ],
+    "verification": "92/3810 matched (2.4%), 3718 unmatched, counts sum to input row count 3810 (see PHASE3_BENCHMARK_SUMMARY.md).",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_manifest.json",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-s8-taxonomy",
+    "title": "Descriptive taxonomy (UMAP + clustering, Q1 labels) of the S>8 unmatched population [SAMPLE-V1, provenance under review]",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "flagship_crossmatch_unmatched.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_unmatched.parquet",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py",
+        "entrypoint": "python3 build_flagship_sample.py --taxonomy (pod-side; see phase3.log; sklearn 1.9.0, umap_learn 0.5.12, numpy 2.4.6)",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "numpy==2.4.6, scikit-learn==1.9.0, umap-learn==0.5.12",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-03",
+      "wall_clock": "2026-09-03T15:17Z to 2026-09-03T15:18Z (~1min)",
+      "actual_cost_usd": 0.003
+    },
+    "reproduction": {
+      "recommended_venue": "local-cpu",
+      "est_wall_clock": "~1-5min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fast, CPU-only clustering step; deterministic given the pinned sklearn/umap-learn versions and fixed input."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_taxonomy.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_taxonomy_manifest.json",
+        "type": "receipt",
+        "checksum": null
+      }
+    ],
+    "verification": "8 families with sizes 1589/1032/556/239/142/80/47/33 summing to 3718 (matches SIMBAD/NED-unmatched row count).",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_taxonomy_manifest.json",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p3-kfold-cv-gate",
     "title": "DESI 5-fold cross-validation reproducibility gate (mean pairwise Jaccard 0.862)",
     "program": "anomaly-discovery",
@@ -2877,6 +3158,88 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / P3 — DESI 5-fold cross-validation reproducibility gate bullet",
       "pipelines/p3_anomaly_engine/held_out_rescore.py (desi.source field cites kfold_stability_summary.json and reproduces mean_pairwise_jaccard=0.8625, gate_pass=true)",
       "project-context/SSOT/paper-3/status.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-ledger8-known-object-recovery-benchmark",
+    "title": "Ledger #8 known-object recovery benchmark (VizieR reference classes vs S>8 sample) [SAMPLE-V1, deferred]",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "flagship_sample_s8_enriched.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8_enriched.parquet",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "VizieR reference class cache (5 fetched classes)",
+        "type": "external-dataset",
+        "locator": "~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/ (outside repo per phase-3 intermediates convention)",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "sealed_2026-08-05/locator_inventory.jsonl (DESI footprint)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
+        "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-manifest <local manifest> --catalogs-config <s8 config> --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir results_2026-08-07/phase3/recovery_benchmark",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "astropy, astroquery, numpy, pandas, pyarrow",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "houstongolden-mac",
+      "date": "2026-09-03",
+      "wall_clock": "<5min",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local-cpu",
+      "est_wall_clock": "<5min (given cached VizieR reference classes)",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "This session fixed a real bug: 4/5 fetched VizieR classes returned sexagesimal RA/Dec strings the script could not parse; patched to convert via astropy SkyCoord(unit=(hourangle, deg)) before the existing crossmatch_positional() call."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/recovery_benchmark.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/recovery_benchmark.md",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "0/0/0/0/0 matches across 5 fetched reference classes (BAL quasars, Roma-BZCAT, CV/WD binaries, LAEs, SLSN hosts) at 1.5 arcsec radius; footprint-restricted reference counts 27-5285 per class.",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md",
+      "project-context/NEXT_SCIENCE_LEDGER.md#8"
     ]
   },
   {
