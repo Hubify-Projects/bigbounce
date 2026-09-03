@@ -43,10 +43,18 @@ endorsement emails. INT boards only; no browser EXT rounds.
   fibers (`ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`); v1 artifacts are
   landed/backed up as SAMPLE-V1-CONTAMINATED (provenance only). A corrected
   science-target run (OBJTYPE=TGT, FIBERSTATUS=0; threshold re-chosen on
-  the science-only distribution; sky-fraction-by-score curve recorded) was
-  launched under `/workspace/phase3_v2/` on pod `8ofv5d4ynu7hku` — check
-  `PHASE3_V2_LANDING_2026-09-03.md`; if it did not finish, resume per that
-  lane's notes, back up three ways, then stop the pod. Ledger #8 is answered
+  the science-only distribution; sky-fraction-by-score curve recorded) runs
+  UNATTENDED on pod `8ofv5d4ynu7hku` via `clean_rerun/pod/pod_phase3_v2.sh`
+  (stage markers `/workspace/phase3_v2/STAGE_*_DONE`, log
+  `/workspace/phase3_v2/phase3_v2.log`, terminal `/workspace/PHASE3_V2_DONE`
+  or `PHASE3_V2_FAILED`; pre-declared threshold rule in
+  `threshold_choice.json`). On DONE: pull `/workspace/phase3_v2/` artifacts +
+  manifests + tar parts to `results_2026-08-07/phase3_v2/`, back up three
+  ways (HF `phase3_v2/2026-09-03/` packed, B2, local), verify checksums,
+  run the recovery benchmark (RUNBOOK §19), THEN stop the pod (RunPod
+  `podStop`), write `PHASE3_V2_LANDING_2026-09-03.md`. On FAILED: read the
+  failing stage in the log, fix, relaunch the script (it resumes from
+  markers). Ledger #8 is answered
   ONLY from v2. Public candidate counts must be science-target counts.
 
 ## TERMINAL GOAL (run until done; never stop early)
