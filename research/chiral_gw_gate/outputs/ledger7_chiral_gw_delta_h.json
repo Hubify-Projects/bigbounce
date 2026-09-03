@@ -1,0 +1,121 @@
+{
+  "id": "ledger7-chiral-gw-delta-h",
+  "date": "2026-09-03",
+  "symbolic": {
+    "xi_gamma_gamma2_over_1plusgamma2": "Mul(Pow(Symbol('gamma', positive=True), Integer(2)), Pow(Add(Pow(Symbol('gamma', positive=True), Integer(2)), Integer(1)), Integer(-1)))",
+    "beta_over_alpha_onshell": "s_H/(2*gamma)",
+    "O4_onshell": "-3*J5sq*gamma**3*kappa**2*lambda_src**2*s_H/(gamma**2 + s_H**2)**2",
+    "L4psi": "-3*J5sq*gamma**2*kappa/(16*(gamma**2 + 1))",
+    "parity_of_J5sq": "even (axial x axial = true scalar)",
+    "parity_odd_tensor_coefficient_minimal_ECH": "0",
+    "superhubble_suppression_factor": "eta_B*k*lambda_hel*xi_B",
+    "conclusion": "minimal ECH + Dirac/Weyssenhoff spin fluid has NO parity-odd operator at O(h^2); and ANY parity-odd tensor operator is linear in lambda*k, hence O(k*eta_B) suppressed super-Hubble",
+    "xi_gamma_numeric": {
+      "gamma=0.2375": 0.053394468273923974,
+      "gamma=0.274": 0.06983320248987049
+    },
+    "beta_over_alpha_numeric_sH_plus1": {
+      "gamma=0.2375": 2.1052631578947367,
+      "gamma=0.274": 1.8248175182481752
+    }
+  },
+  "numeric": {
+    "formula": "Delta_h(f) = C * xi_B * (f/f_B),  C = O(1), xi_B <= 1",
+    "f_B_definition": "horizon-scale mode at the bounce redshifted to today, f_0 = 1.65e-7 Hz (T_*/GeV)(g_*/100)^(1/6)",
+    "rows": [
+      {
+        "bounce_scale": "T_B = 1e16 GeV (GUT boundary, ECH note mu_UV)",
+        "f_B_today_Hz": 1668060985.9682643,
+        "band": "PTA (nHz)",
+        "f_Hz": 1e-08,
+        "k_eta_B": 5.994984646316915e-18,
+        "Delta_h_max": 5.994984646316915e-18,
+        "detectable_threshold": "O(1); circular polarisation only accessible through the anisotropic/dipole component (Kato & Soda 2016; Belgacem & Kamionkowski 2020)",
+        "orders_of_magnitude_short": 17.222211924830084
+      },
+      {
+        "bounce_scale": "T_B = 1e16 GeV (GUT boundary, ECH note mu_UV)",
+        "f_B_today_Hz": 1668060985.9682643,
+        "band": "LISA (mHz)",
+        "f_Hz": 0.001,
+        "k_eta_B": 5.994984646316915e-13,
+        "Delta_h_max": 5.994984646316915e-13,
+        "detectable_threshold": "O(1); an isotropic V-mode is BLIND to a single planar constellation (Seto & Taruya 2007, 2008) - needs the kinematic dipole (Domcke et al. 2020) or a second detector",
+        "orders_of_magnitude_short": 12.222211924830082
+      },
+      {
+        "bounce_scale": "T_B = 1e16 GeV (GUT boundary, ECH note mu_UV)",
+        "f_B_today_Hz": 1668060985.9682643,
+        "band": "LIGO/ET (100 Hz)",
+        "f_Hz": 100.0,
+        "k_eta_B": 5.994984646316916e-08,
+        "Delta_h_max": 5.994984646316916e-08,
+        "detectable_threshold": "O(1) with a network of >=2 detectors (Seto 2008)",
+        "orders_of_magnitude_short": 7.222211924830083
+      },
+      {
+        "bounce_scale": "T_B = 1e16 GeV (GUT boundary, ECH note mu_UV)",
+        "f_B_today_Hz": 1668060985.9682643,
+        "band": "CMB B-mode (k ~ 0.005 Mpc^-1)",
+        "f_Hz": 3e-17,
+        "k_eta_B": 1.7984953938950745e-26,
+        "Delta_h_max": 1.7984953938950745e-26,
+        "detectable_threshold": "O(1) chirality AND r >~ 1e-2 for a TB/EB detection (Gluscevic & Kamionkowski 2010; Gerbino et al. 2016; LiteBIRD forecast)",
+        "orders_of_magnitude_short": 25.74509067011042
+      },
+      {
+        "bounce_scale": "T_B = 1.22e19 GeV (M_Pl, ECH note)",
+        "f_B_today_Hz": 2035034402881.2825,
+        "band": "PTA (nHz)",
+        "f_Hz": 1e-08,
+        "k_eta_B": 4.9139218412433736e-21,
+        "Delta_h_max": 4.9139218412433736e-21,
+        "detectable_threshold": "O(1); circular polarisation only accessible through the anisotropic/dipole component (Kato & Soda 2016; Belgacem & Kamionkowski 2020)",
+        "orders_of_magnitude_short": 20.308571755504833
+      },
+      {
+        "bounce_scale": "T_B = 1.22e19 GeV (M_Pl, ECH note)",
+        "f_B_today_Hz": 2035034402881.2825,
+        "band": "LISA (mHz)",
+        "f_Hz": 0.001,
+        "k_eta_B": 4.913921841243374e-16,
+        "Delta_h_max": 4.913921841243374e-16,
+        "detectable_threshold": "O(1); an isotropic V-mode is BLIND to a single planar constellation (Seto & Taruya 2007, 2008) - needs the kinematic dipole (Domcke et al. 2020) or a second detector",
+        "orders_of_magnitude_short": 15.30857175550483
+      },
+      {
+        "bounce_scale": "T_B = 1.22e19 GeV (M_Pl, ECH note)",
+        "f_B_today_Hz": 2035034402881.2825,
+        "band": "LIGO/ET (100 Hz)",
+        "f_Hz": 100.0,
+        "k_eta_B": 4.913921841243373e-11,
+        "Delta_h_max": 4.913921841243373e-11,
+        "detectable_threshold": "O(1) with a network of >=2 detectors (Seto 2008)",
+        "orders_of_magnitude_short": 10.30857175550483
+      },
+      {
+        "bounce_scale": "T_B = 1.22e19 GeV (M_Pl, ECH note)",
+        "f_B_today_Hz": 2035034402881.2825,
+        "band": "CMB B-mode (k ~ 0.005 Mpc^-1)",
+        "f_Hz": 3e-17,
+        "k_eta_B": 1.474176552373012e-29,
+        "Delta_h_max": 1.474176552373012e-29,
+        "detectable_threshold": "O(1) chirality AND r >~ 1e-2 for a TB/EB detection (Gluscevic & Kamionkowski 2010; Gerbino et al. 2016; LiteBIRD forecast)",
+        "orders_of_magnitude_short": 28.83145050078517
+      }
+    ]
+  },
+  "verdict": {
+    "Q1": "NO parity-odd O(h^2) operator in minimal ECH + Dirac/Weyssenhoff spin fluid",
+    "Q2": "coefficient identically zero; a nonzero one needs a dynamical Immirzi/Nieh-Yan pseudoscalar (ad-hoc w.r.t. the minimal model)",
+    "Q3": "Delta_h = O(k eta_B) -> <= 1e-12 (LISA), 1e-17 (PTA), 1e-27 (CMB) even at the unitarity ceiling",
+    "Q4": "every band needs Delta_h = O(1); short by >=12 orders of magnitude",
+    "gate": "CLOSE WITH REASON (O(epsilon), and requires an ad-hoc ingredient)"
+  },
+  "convention_flags": [
+    "Holst sign s_H is not fixed by the lab's artifacts; both signs flip O4's sign only.",
+    "The ECH note fixes gamma^2/(1+gamma^2) but no committed numerical rho_c / T_B: a two-point range (1e16 GeV, M_Pl) is scanned instead of inventing one.",
+    "C = O(1) matching constant is set to its maximum (1.0); it is model-dependent and is NOT computed here.",
+    "xi_B is bounded above by perturbative unitarity, not derived from ECH (in minimal ECH it is exactly 0)."
+  ]
+}
