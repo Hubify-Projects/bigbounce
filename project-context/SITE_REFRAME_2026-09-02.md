@@ -870,3 +870,34 @@ only, no content edits.
   target was superseded by the concurrent lane's genuine science closure to
   75 before this pass started; reported the real current value (75) rather
   than reverting to the stale brief figure.
+
+## Receipt — 2026-09-03: anomaly candidate-count correction
+
+Task: restate public anomaly-scan counts (52,188 above S>5, 3,810 S>8 sample) as
+raw-row counts over all fibers (incl. sky), not science-candidate counts, per
+project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md (S>8 sample found
+84.8% sky fibers 2026-09-03).
+
+- Surfaces changed: `site/src/data/repro.ts` (3 occurrences: module_notes,
+  reproduction.notes, verification) restated with "raw rows ... not a
+  science-candidate count ... pending the 2026-09-03 provenance-filtered
+  rerun." grep of site/src + public/*.html + Convex `papers:listAllPaperStates`
+  found no other public surface carrying the raw count.
+- `site/src/data/reviewTimeline.ts`: added
+  `anomaly-sample-provenance-gate-2026-09-03` (kind: skill-improvement,
+  2026-09-03) describing the method fix (provenance gate added to
+  build_flagship_sample.py), no blame narrative (directive Q1).
+- Convex: `activityFeed:add` doc id `j57fh3qekr44htfz7s443sxmwd8dq6da`
+  (type: decision, date 2026-09-03, tags: program/anomaly). No `papers`/
+  `programs` rows carried the count — nothing to upsert there.
+- Commits: `b2cce5d3` (repro.ts fix, after a concurrent-session race required
+  cherry-picking + reapplying onto a live-updated repro.ts — reviewTimeline.ts
+  edit landed via the concurrent session's own commit, verified present).
+  Pushed to origin/main and upstream/main (both fast-forwarded through the
+  concurrent session's later commits, confirmed `b2cce5d3` is an ancestor of
+  both remote tips).
+- Build: `npx tsc --noEmit` clean; `npm run build` clean (all routes
+  prerendered). `tools/site_freshness_check.sh` → OVERALL: PASS.
+- QA: headed-browser /reproduce pre-deploy still showed old "52,188
+  candidates" text (Vercel deploy lag); see Monitor poll for propagation
+  confirmation before final sign-off.
