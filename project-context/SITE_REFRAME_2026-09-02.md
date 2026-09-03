@@ -901,3 +901,22 @@ project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md (S>8 sample found
 - QA: headed-browser /reproduce pre-deploy still showed old "52,188
   candidates" text (Vercel deploy lag); see Monitor poll for propagation
   confirmation before final sign-off.
+
+## Correction to the above receipt — repro.ts is generated, not hand-edited
+
+The first pass hand-edited `site/src/data/repro.ts` directly (commit
+`b2cce5d3`). That file is auto-generated at build time by
+`site/scripts/sync-repro-manifests.mjs` from
+`reproducibility/manifests/{programs,experiments}/*.json` (directive Q2
+source of truth) — a concurrent session's build/commit regenerated it and
+silently reverted the hand-edit. Root-caused and fixed properly in commit
+`ff09cdb6`: patched the two source manifests
+(`reproducibility/manifests/programs/anomaly-discovery.json` module_notes;
+`reproducibility/manifests/experiments/anomaly-clean-rerun-scan.json`
+reproduction.notes + verification) with the same raw-row restatement, then
+regenerated `repro.ts` via `node scripts/sync-repro-manifests.mjs` so the
+fix survives future resyncs. `npx tsc --noEmit` + `npm run build` clean;
+`tools/site_freshness_check.sh` → PASS. Pushed to origin/main and
+upstream/main (`b09f9db6..ff09cdb6`, both fast-forwards). Live-site
+propagation confirmed via Monitor poll of https://bigbounce.hubify.app/reproduce
+for "not a science-candidate count" before final QA below.
