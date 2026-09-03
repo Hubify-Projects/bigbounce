@@ -1,0 +1,589 @@
+{
+  "generated": "2026-09-03",
+  "script": "inlab_delta2_zeta_2026-09-03.py",
+  "spectrum": {
+    "A_s": 2.1e-09,
+    "k_star_Mpc-1": 0.05,
+    "n_s_planck2018": 0.9649,
+    "n_s_sigma": 0.0042,
+    "branches": {
+      "MB_anchored_ns0.9649": {
+        "n_s": 0.9649,
+        "implied_w_matter_bounce": -0.002916469327217889,
+        "delta2_zeta_at_k": {
+          "k=5e-02": 2.1e-09,
+          "k=1e+02": 1.6082484514015058e-09,
+          "k=1e+04": 1.3682112022196266e-09,
+          "k=1e+05": 1.2619819459421936e-09,
+          "k=1e+08": 9.902689043450828e-10,
+          "k=1e+13": 6.610786657462005e-10,
+          "k=1e+15": 5.624101395739784e-10
+        }
+      },
+      "pure_dust_ns1": {
+        "n_s": 1.0,
+        "implied_w_matter_bounce": 0.0,
+        "delta2_zeta_at_k": {
+          "k=5e-02": 2.1e-09,
+          "k=1e+02": 2.1e-09,
+          "k=1e+04": 2.1e-09,
+          "k=1e+05": 2.1e-09,
+          "k=1e+08": 2.1e-09,
+          "k=1e+13": 2.1e-09,
+          "k=1e+15": 2.1e-09
+        }
+      }
+    },
+    "tilt_1sigma_band": {
+      "k=1e+13": {
+        "lo": 5.756901726939877e-10,
+        "hi": 7.591322955187573e-10
+      },
+      "k=1e+15": {
+        "lo": 4.803843117541137e-10,
+        "hi": 6.584419127690492e-10
+      }
+    }
+  },
+  "a2_validity": {
+    "note": "eta_B values from research/cubic_bounce_transmission/ A2_TRANSMISSION_BRIEF_2026-09-02.md section 4.1 (a2_transmission_linear.py); k_B = 1/eta_B in the same (bounce) units. Converting k_B to Mpc^-1 requires the bounce energy scale, which the lab has NOT committed (no rho_c/T_B in the repo) -- so k_B is reported in bounce units and the Mpc^-1 mapping is given as a function of the bounce temperature.",
+    "eta_B_bounce_units": {
+      "LQC_effective_dust": 1.06015,
+      "analytic_non_LQC_poly": 0.57735,
+      "Quintin2015_type": 0.4496
+    },
+    "k_B_bounce_units": {
+      "LQC_effective_dust": 0.9432627458378532,
+      "analytic_non_LQC_poly": 1.732051615138131,
+      "Quintin2015_type": 2.224199288256228
+    },
+    "k_B_Mpc-1_if_T_B_GeV": {
+      "T_B=1e+16": 1.7142705068355392e+23,
+      "T_B=1e+14": 1.7142705068355394e+21,
+      "T_B=1e+10": 1.7142705068355395e+17
+    }
+  },
+  "literature_enhancement_candidates": [
+    {
+      "ref": "Quintin, Sherkatghanad, Cai & Brandenberger 2015, arXiv:1508.04141",
+      "claim": "growth of the curvature/bispectrum amplitude through a non-singular bounce; the bounce's own cubic vertices ENHANCE f_NL",
+      "produces_small_scale_bump_in_Delta2_zeta_in_this_model": false,
+      "why": "the enhancement acts on the BISPECTRUM (cubic) amplitude, not on the power spectrum; A2's linear transfer of the same bounce backgrounds gives a k-INDEPENDENT factor for k eta_B << 1 (A2 brief section 4.3, post-bounce spectrum flat to 1.2-4.2%), so no small-scale bump"
+    },
+    {
+      "ref": "Agullo, Bolliet & Sreenath 2017, arXiv:1712.08148",
+      "claim": "LQC bounce strongly enhances primordial non-Gaussianity; the power spectrum acquires oscillatory structure and a rise near the bounce curvature scale k ~ k_B",
+      "produces_small_scale_bump_in_Delta2_zeta_in_this_model": false,
+      "why": "the structure sits at k ~ k_B, i.e. exactly where the A2 super-Hubble transfer analysis stops being valid (k eta_B ~ 1). PBH scales 1e5-1e15 Mpc^-1 are many orders BELOW k_B for any bounce above the BBN scale, so within this lab's stated validity domain the effect does not reach PBH scales"
+    },
+    {
+      "ref": "Chen, Zhu, Yan, Wang & Cai 2022/2023, arXiv:2207.14532 (JCAP 01 (2023) 015) -- 'Enhance primordial black hole abundance through the non-linear processes around bounce point'. THIS is the reference the A3 task pointer 'Chen-Wang-Xu et al 2023, arXiv:2210.xxxx' was reaching for; the id is 2207.14532, not a 2210 one. Predecessor: Chen, Yeom & Cai et al 2016, arXiv:1609.02571, 'Tracing primordial black holes in nonsingular bouncing cosmology'.",
+      "claim": "non-linear processes in the BOUNCE PHASE itself amplify density fluctuations and can enhance the PBH abundance relative to the linear expectation",
+      "produces_small_scale_bump_in_Delta2_zeta_in_this_model": false,
+      "why": "the amplification is a bounce-phase effect operating on modes that are NOT deep super-Hubble at the bounce, i.e. k eta_B ~ 1. The lab's committed transfer result (A2) is derived for k eta_B << 1 and is explicitly not defended at k eta_B ~ 1. For any bounce above the BBN scale, k_B >= 1e17 Mpc^-1, so PBH scales 1e5-1e15 Mpc^-1 sit at k eta_B <= 1e-2 -- far outside the regime where this enhancement operates. Importing it would be importing an effect from outside the model's validated domain"
+    },
+    {
+      "ref": "Papanikolaou, Banerjee, Cai, Capozziello & Saridakis 2024, arXiv:2404.03779 (JCAP 06 (2024)); see also arXiv:2405.00207, arXiv:2602.12057",
+      "claim": "PBHs in non-singular matter bouncing cosmology form by DIRECT gravitational collapse during the pressureless CONTRACTING phase, not from a radiation-era threshold crossing",
+      "produces_small_scale_bump_in_Delta2_zeta_in_this_model": false,
+      "why": "this is a different formation channel altogether and is OUT OF SCOPE of the compaction-function criterion used here, which assumes radiation-era (w = 1/3) collapse at horizon re-entry. It is recorded as an untested alternative channel for the matter bounce, not as an enhancement of Delta^2_zeta. Flagged as new open item A3-1e"
+    }
+  ],
+  "k_mass_anchor_check_Msun_at_k2.9e5": 166.18035051989068,
+  "required_amplitudes_powerlaw_shape": {
+    "M_H=1e15 g (evaporating)|f_PBH=0.001|gaussian_0": 0.05686078289593369,
+    "M_H=1e15 g (evaporating)|f_PBH=0.001|matter_bounce_Li_-35/16": 0.005560992480321191,
+    "M_H=1e15 g (evaporating)|f_PBH=0.001|matter_bounce_Cai_-35/8": 0.0029678190379596116,
+    "M_H=1e15 g (evaporating)|f_PBH=0.01|gaussian_0": 0.059839877799855265,
+    "M_H=1e15 g (evaporating)|f_PBH=0.01|matter_bounce_Li_-35/16": 0.005854071643092041,
+    "M_H=1e15 g (evaporating)|f_PBH=0.01|matter_bounce_Cai_-35/8": 0.0031242281421835884,
+    "M_H=1e15 g (evaporating)|f_PBH=1|gaussian_0": 0.06683224893073667,
+    "M_H=1e15 g (evaporating)|f_PBH=1|matter_bounce_Li_-35/16": 0.006542644975341022,
+    "M_H=1e15 g (evaporating)|f_PBH=1|matter_bounce_Cai_-35/8": 0.0034917091519693307,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=0.001|gaussian_0": 0.06493681516398778,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=0.001|matter_bounce_Li_-35/16": 0.006355902181714326,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=0.001|matter_bounce_Cai_-35/8": 0.0033920462453126787,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=0.01|gaussian_0": 0.06884041570407123,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=0.01|matter_bounce_Li_-35/16": 0.006740572989851567,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=0.01|matter_bounce_Cai_-35/8": 0.00359733991681142,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=1|gaussian_0": 0.07822671300976425,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=1|matter_bounce_Li_-35/16": 0.00766673376546899,
+    "M_H=1e20 g (asteroid window; the A3-1 mass)|f_PBH=1|matter_bounce_Cai_-35/8": 0.0040916139542153665,
+    "M_H=1 Msun|f_PBH=0.001|gaussian_0": 0.10396100454576761,
+    "M_H=1 Msun|f_PBH=0.001|matter_bounce_Li_-35/16": 0.010214703202162527,
+    "M_H=1 Msun|f_PBH=0.001|matter_bounce_Cai_-35/8": 0.0054513878958870445,
+    "M_H=1 Msun|f_PBH=0.01|gaussian_0": 0.114197064612646,
+    "M_H=1 Msun|f_PBH=0.01|matter_bounce_Li_-35/16": 0.011231737624978347,
+    "M_H=1 Msun|f_PBH=0.01|matter_bounce_Cai_-35/8": 0.005994110352496867,
+    "M_H=1 Msun|f_PBH=1|gaussian_0": 0.14201369018449972,
+    "M_H=1 Msun|f_PBH=1|matter_bounce_Li_-35/16": 0.014005792007358218,
+    "M_H=1 Msun|f_PBH=1|matter_bounce_Cai_-35/8": 0.007474058086763789,
+    "M_H=30 Msun (LIGO)|f_PBH=0.001|gaussian_0": 0.11133440312572651,
+    "M_H=30 Msun (LIGO)|f_PBH=0.001|matter_bounce_Li_-35/16": 0.010947100904730602,
+    "M_H=30 Msun (LIGO)|f_PBH=0.001|matter_bounce_Cai_-35/8": 0.005842225557731827,
+    "M_H=30 Msun (LIGO)|f_PBH=0.01|gaussian_0": 0.12312521895914555,
+    "M_H=30 Msun (LIGO)|f_PBH=0.01|matter_bounce_Li_-35/16": 0.012120479730137575,
+    "M_H=30 Msun (LIGO)|f_PBH=0.01|matter_bounce_Cai_-35/8": 0.006468326809198948,
+    "M_H=30 Msun (LIGO)|f_PBH=1|gaussian_0": 0.15595458305320553,
+    "M_H=30 Msun (LIGO)|f_PBH=1|matter_bounce_Li_-35/16": 0.015401661188635044,
+    "M_H=30 Msun (LIGO)|f_PBH=1|matter_bounce_Cai_-35/8": 0.008218351335556057,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=0.001|gaussian_0": 0.12662307573285433,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=0.001|matter_bounce_Li_-35/16": 0.012469089795736141,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=0.001|matter_bounce_Cai_-35/8": 0.0066543268747876845,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=0.01|gaussian_0": 0.14201369018449972,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=0.01|matter_bounce_Li_-35/16": 0.014005792007358218,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=0.01|matter_bounce_Cai_-35/8": 0.007474058086763789,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=1|gaussian_0": 0.1871376880332931,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=1|matter_bounce_Li_-35/16": 0.01853726904679202,
+    "M_H=1e4 Msun (early-SMBH seed)|f_PBH=1|matter_bounce_Cai_-35/8": 0.009888500735278666
+  },
+  "threshold_sensitivity": {
+    "C_th=0.4|gaussian_0": 0.03511670382600082,
+    "C_th=0.4|matter_bounce_Li_-35/16": 0.004502869740138478,
+    "C_th=0.4|matter_bounce_Cai_-35/8": 0.0024309910814892407,
+    "C_th=0.5|gaussian_0": 0.06493681516398778,
+    "C_th=0.5|matter_bounce_Li_-35/16": 0.006355902181714326,
+    "C_th=0.5|matter_bounce_Cai_-35/8": 0.0033920462453126787,
+    "C_th=0.6|gaussian_0": 0.12159815939264676,
+    "C_th=0.6|matter_bounce_Li_-35/16": 0.008990984648122922,
+    "C_th=0.6|matter_bounce_Cai_-35/8": 0.0047511609150035095
+  },
+  "ir_cutoff_sensitivity": {
+    "k_min/k_p=1e-05": {
+      "gamma_cr": 0.2668071892391362,
+      "A_required_-35/16": 0.006355902181714326,
+      "A_required_0": 0.06493681516398778
+    },
+    "k_min/k_p=0.001": {
+      "gamma_cr": 0.35813098492441475,
+      "A_required_-35/16": 0.009409943915938362,
+      "A_required_0": 0.06493681516403559
+    },
+    "k_min/k_p=0.01": {
+      "gamma_cr": 0.4458452390056557,
+      "A_required_-35/16": 0.013168734275017904,
+      "A_required_0": 0.06493681560572324
+    },
+    "k_min/k_p=0.1": {
+      "gamma_cr": 0.6297934614519982,
+      "A_required_-35/16": 0.026521433620623047,
+      "A_required_0": 0.06494086744994514
+    }
+  },
+  "per_mass_scale": {
+    "M_H=1e15 g (evaporating)": {
+      "M_H_g": 1000000000000000.0,
+      "k_p_Mpc-1": 5271659545002521.0,
+      "M_PBH_g_gamma0.2": 200000000000000.0,
+      "delivered_delta2_zeta_ns0.9649": 5.305334725673417e-10,
+      "delivered_delta2_zeta_ns1": 2.1e-09,
+      "gaussian_limit_at_delivered_amplitude": {
+        "sigma_c": 6.759508264857335e-06,
+        "sigma_r": 8.714356595187043e-05,
+        "gamma_cr": 0.26680718923913627,
+        "C_lin_minus": 0.6666666666666666,
+        "n_sigma_to_threshold": 98626.50366634876,
+        "log10_beta_gaussian_estimate": -2112231868.2260005
+      },
+      "required_over_delivered": {
+        "f_PBH=0.001|gaussian_0": {
+          "A_required": 0.05686078289593369,
+          "ratio_required_over_delivered": 107176617.1901929,
+          "log10_ratio": 8.030100045310528
+        },
+        "f_PBH=0.001|matter_bounce_Li_-35/16": {
+          "A_required": 0.005560992480321191,
+          "ratio_required_over_delivered": 10481888.076563016,
+          "log10_ratio": 7.020439518084511
+        },
+        "f_PBH=0.001|matter_bounce_Cai_-35/8": {
+          "A_required": 0.0029678190379596116,
+          "ratio_required_over_delivered": 5594027.882157614,
+          "log10_ratio": 6.747724626682812
+        },
+        "f_PBH=0.01|gaussian_0": {
+          "A_required": 0.059839877799855265,
+          "ratio_required_over_delivered": 112791898.8980656,
+          "log10_ratio": 8.05227790824474
+        },
+        "f_PBH=0.01|matter_bounce_Li_-35/16": {
+          "A_required": 0.005854071643092041,
+          "ratio_required_over_delivered": 11034311.585964957,
+          "log10_ratio": 7.0427452433660225
+        },
+        "f_PBH=0.01|matter_bounce_Cai_-35/8": {
+          "A_required": 0.0031242281421835884,
+          "ratio_required_over_delivered": 5888842.653159878,
+          "log10_ratio": 6.770029950350007
+        },
+        "f_PBH=1|gaussian_0": {
+          "A_required": 0.06683224893073667,
+          "ratio_required_over_delivered": 125971785.73356369,
+          "log10_ratio": 8.100273285813392
+        },
+        "f_PBH=1|matter_bounce_Li_-35/16": {
+          "A_required": 0.006542644975341022,
+          "ratio_required_over_delivered": 12332200.160114402,
+          "log10_ratio": 7.09104056501066
+        },
+        "f_PBH=1|matter_bounce_Cai_-35/8": {
+          "A_required": 0.0034917091519693307,
+          "ratio_required_over_delivered": 6581505.847448901,
+          "log10_ratio": 6.81832527148881
+        }
+      },
+      "f_PBH_at_delivered_amplitude": {
+        "gaussian_0": 0.0,
+        "matter_bounce_Li_-35/16": 0.0,
+        "matter_bounce_Cai_-35/8": 0.0
+      }
+    },
+    "M_H=1e20 g (asteroid window; the A3-1 mass)": {
+      "M_H_g": 1e+20,
+      "k_p_Mpc-1": 16670451211174.807,
+      "M_PBH_g_gamma0.2": 2e+19,
+      "delivered_delta2_zeta_ns0.9649": 6.49325995065344e-10,
+      "delivered_delta2_zeta_ns1": 2.1e-09,
+      "gaussian_limit_at_delivered_amplitude": {
+        "sigma_c": 7.47807993968071e-06,
+        "sigma_r": 9.640739043177708e-05,
+        "gamma_cr": 0.2668071892391362,
+        "C_lin_minus": 0.6666666666666666,
+        "n_sigma_to_threshold": 89149.44371337265,
+        "log10_beta_gaussian_estimate": -1725804474.8456008
+      },
+      "required_over_delivered": {
+        "f_PBH=0.001|gaussian_0": {
+          "A_required": 0.06493681516398778,
+          "ratio_required_over_delivered": 100006492.35897748,
+          "log10_ratio": 8.000028195041534
+        },
+        "f_PBH=0.001|matter_bounce_Li_-35/16": {
+          "A_required": 0.006355902181714326,
+          "ratio_required_over_delivered": 9788461.004205922,
+          "log10_ratio": 6.990714414998105
+        },
+        "f_PBH=0.001|matter_bounce_Cai_-35/8": {
+          "A_required": 0.0033920462453126787,
+          "ratio_required_over_delivered": 5223949.558605497,
+          "log10_ratio": 6.717998974828071
+        },
+        "f_PBH=0.01|gaussian_0": {
+          "A_required": 0.06884041570407123,
+          "ratio_required_over_delivered": 106018265.44329798,
+          "log10_ratio": 8.025380694489854
+        },
+        "f_PBH=0.01|matter_bounce_Li_-35/16": {
+          "A_required": 0.006740572989851567,
+          "ratio_required_over_delivered": 10380876.541333048,
+          "log10_ratio": 7.016234026055004
+        },
+        "f_PBH=0.01|matter_bounce_Cai_-35/8": {
+          "A_required": 0.00359733991681142,
+          "ratio_required_over_delivered": 5540113.816711445,
+          "log10_ratio": 6.743518687013985
+        },
+        "f_PBH=1|gaussian_0": {
+          "A_required": 0.07822671300976425,
+          "ratio_required_over_delivered": 120473712.13267384,
+          "log10_ratio": 8.080892292377996
+        },
+        "f_PBH=1|matter_bounce_Li_-35/16": {
+          "A_required": 0.00766673376546899,
+          "ratio_required_over_delivered": 11807218.290555978,
+          "log10_ratio": 7.072147592502683
+        },
+        "f_PBH=1|matter_bounce_Cai_-35/8": {
+          "A_required": 0.0040916139542153665,
+          "ratio_required_over_delivered": 6301324.73566473,
+          "log10_ratio": 6.799431861343936
+        }
+      },
+      "f_PBH_at_delivered_amplitude": {
+        "gaussian_0": 0.0,
+        "matter_bounce_Li_-35/16": 0.0,
+        "matter_bounce_Cai_-35/8": 0.0
+      }
+    },
+    "M_H=1 Msun": {
+      "M_H_g": 1.98847e+33,
+      "k_p_Mpc-1": 3738417.777445802,
+      "M_PBH_g_gamma0.2": 3.97694e+32,
+      "delivered_delta2_zeta_ns0.9649": 1.1113524184961072e-09,
+      "delivered_delta2_zeta_ns1": 2.1e-09,
+      "gaussian_limit_at_delivered_amplitude": {
+        "sigma_c": 9.783282808499842e-06,
+        "sigma_r": 0.00012612606083799204,
+        "gamma_cr": 0.26680718923913627,
+        "C_lin_minus": 0.6666666666666666,
+        "n_sigma_to_threshold": 68143.45242963416,
+        "log10_beta_gaussian_estimate": -1008329751.4516264
+      },
+      "required_over_delivered": {
+        "f_PBH=0.001|gaussian_0": {
+          "A_required": 0.10396100454576761,
+          "ratio_required_over_delivered": 93544588.39118616,
+          "log10_ratio": 7.9710186683745015
+        },
+        "f_PBH=0.001|matter_bounce_Li_-35/16": {
+          "A_required": 0.010214703202162527,
+          "ratio_required_over_delivered": 9191236.759969588,
+          "log10_ratio": 6.963373953376501
+        },
+        "f_PBH=0.001|matter_bounce_Cai_-35/8": {
+          "A_required": 0.0054513878958870445,
+          "ratio_required_over_delivered": 4905183.814926965,
+          "log10_ratio": 6.690655286601329
+        },
+        "f_PBH=0.01|gaussian_0": {
+          "A_required": 0.114197064612646,
+          "ratio_required_over_delivered": 102755042.15591538,
+          "log10_ratio": 8.01180314175749
+        },
+        "f_PBH=0.01|matter_bounce_Li_-35/16": {
+          "A_required": 0.011231737624978347,
+          "ratio_required_over_delivered": 10106368.995153889,
+          "log10_ratio": 7.004595150782643
+        },
+        "f_PBH=0.01|matter_bounce_Cai_-35/8": {
+          "A_required": 0.005994110352496867,
+          "ratio_required_over_delivered": 5393527.968930103,
+          "log10_ratio": 6.731872935172248
+        },
+        "f_PBH=1|gaussian_0": {
+          "A_required": 0.14201369018449972,
+          "ratio_required_over_delivered": 127784569.3418061,
+          "log10_ratio": 8.106478413647835
+        },
+        "f_PBH=1|matter_bounce_Li_-35/16": {
+          "A_required": 0.014005792007358218,
+          "ratio_required_over_delivered": 12602475.84318122,
+          "log10_ratio": 7.100455873641777
+        },
+        "f_PBH=1|matter_bounce_Cai_-35/8": {
+          "A_required": 0.007474058086763789,
+          "ratio_required_over_delivered": 6725191.723501855,
+          "log10_ratio": 6.827704669830138
+        }
+      },
+      "f_PBH_at_delivered_amplitude": {
+        "gaussian_0": 0.0,
+        "matter_bounce_Li_-35/16": 0.0,
+        "matter_bounce_Cai_-35/8": 0.0
+      }
+    },
+    "M_H=30 Msun (LIGO)": {
+      "M_H_g": 5.96541e+34,
+      "k_p_Mpc-1": 682538.5820284644,
+      "M_PBH_g_gamma0.2": 1.1930820000000001e+34,
+      "delivered_delta2_zeta_ns0.9649": 1.179710043899316e-09,
+      "delivered_delta2_zeta_ns1": 2.1e-09,
+      "gaussian_limit_at_delivered_amplitude": {
+        "sigma_c": 1.0079670768337533e-05,
+        "sigma_r": 0.0001299470937761034,
+        "gamma_cr": 0.2668071892391362,
+        "C_lin_minus": 0.6666666666666666,
+        "n_sigma_to_threshold": 66139.72638479558,
+        "log10_beta_gaussian_estimate": -949902659.3122602
+      },
+      "required_over_delivered": {
+        "f_PBH=0.001|gaussian_0": {
+          "A_required": 0.11133440312572651,
+          "ratio_required_over_delivered": 94374379.28198949,
+          "log10_ratio": 7.9748541082102955
+        },
+        "f_PBH=0.001|matter_bounce_Li_-35/16": {
+          "A_required": 0.010947100904730602,
+          "ratio_required_over_delivered": 9279484.36257011,
+          "log10_ratio": 6.967523844245565
+        },
+        "f_PBH=0.001|matter_bounce_Cai_-35/8": {
+          "A_required": 0.005842225557731827,
+          "ratio_required_over_delivered": 4952255.503751937,
+          "log10_ratio": 6.694803043323657
+        },
+        "f_PBH=0.01|gaussian_0": {
+          "A_required": 0.12312521895914555,
+          "ratio_required_over_delivered": 104369052.03602204,
+          "log10_ratio": 8.018571738872115
+        },
+        "f_PBH=0.01|matter_bounce_Li_-35/16": {
+          "A_required": 0.012120479730137575,
+          "ratio_required_over_delivered": 10274117.604420442,
+          "log10_ratio": 7.011744532641825
+        },
+        "f_PBH=0.01|matter_bounce_Cai_-35/8": {
+          "A_required": 0.006468326809198948,
+          "ratio_required_over_delivered": 5482980.197251755,
+          "log10_ratio": 6.739016677355336
+        },
+        "f_PBH=1|gaussian_0": {
+          "A_required": 0.15595458305320553,
+          "ratio_required_over_delivered": 132197385.1623117,
+          "log10_ratio": 8.12122286497708
+        },
+        "f_PBH=1|matter_bounce_Li_-35/16": {
+          "A_required": 0.015401661188635044,
+          "ratio_required_over_delivered": 13055463.304972522,
+          "log10_ratio": 7.115792288431865
+        },
+        "f_PBH=1|matter_bounce_Cai_-35/8": {
+          "A_required": 0.008218351335556057,
+          "ratio_required_over_delivered": 6966416.347861038,
+          "log10_ratio": 6.84300942650683
+        }
+      },
+      "f_PBH_at_delivered_amplitude": {
+        "gaussian_0": 0.0,
+        "matter_bounce_Li_-35/16": 0.0,
+        "matter_bounce_Cai_-35/8": 0.0
+      }
+    },
+    "M_H=1e4 Msun (early-SMBH seed)": {
+      "M_H_g": 1.98847e+37,
+      "k_p_Mpc-1": 37384.17777445802,
+      "M_PBH_g_gamma0.2": 3.9769400000000004e+36,
+      "delivered_delta2_zeta_ns0.9649": 1.3063266863391595e-09,
+      "delivered_delta2_zeta_ns1": 2.1e-09,
+      "gaussian_limit_at_delivered_amplitude": {
+        "sigma_c": 1.0606805569693402e-05,
+        "sigma_r": 0.00013674291449671775,
+        "gamma_cr": 0.26680718923913627,
+        "C_lin_minus": 0.6666666666666666,
+        "n_sigma_to_threshold": 62852.72811745687,
+        "log10_beta_gaussian_estimate": -857832668.9916533
+      },
+      "required_over_delivered": {
+        "f_PBH=0.001|gaussian_0": {
+          "A_required": 0.12662307573285433,
+          "ratio_required_over_delivered": 96930635.38930061,
+          "log10_ratio": 7.986461059587226
+        },
+        "f_PBH=0.001|matter_bounce_Li_-35/16": {
+          "A_required": 0.012469089795736141,
+          "ratio_required_over_delivered": 9545154.306446444,
+          "log10_ratio": 6.979782953567458
+        },
+        "f_PBH=0.001|matter_bounce_Cai_-35/8": {
+          "A_required": 0.0066543268747876845,
+          "ratio_required_over_delivered": 5093922.480781375,
+          "log10_ratio": 6.707052331592446
+        },
+        "f_PBH=0.01|gaussian_0": {
+          "A_required": 0.14201369018449972,
+          "ratio_required_over_delivered": 108712232.2996232,
+          "log10_ratio": 8.036278413647835
+        },
+        "f_PBH=0.01|matter_bounce_Li_-35/16": {
+          "A_required": 0.014005792007358218,
+          "ratio_required_over_delivered": 10721507.991701486,
+          "log10_ratio": 7.030255873641777
+        },
+        "f_PBH=0.01|matter_bounce_Cai_-35/8": {
+          "A_required": 0.007474058086763789,
+          "ratio_required_over_delivered": 5721431.06691714,
+          "log10_ratio": 6.757504669830138
+        },
+        "f_PBH=1|gaussian_0": {
+          "A_required": 0.1871376880332931,
+          "ratio_required_over_delivered": 143254891.74360082,
+          "log10_ratio": 8.15610946080334
+        },
+        "f_PBH=1|matter_bounce_Li_-35/16": {
+          "A_required": 0.01853726904679202,
+          "ratio_required_over_delivered": 14190377.675542042,
+          "log10_ratio": 7.151993954317313
+        },
+        "f_PBH=1|matter_bounce_Cai_-35/8": {
+          "A_required": 0.009888500735278666,
+          "ratio_required_over_delivered": 7569699.707345127,
+          "log10_ratio": 6.879078651226658
+        }
+      },
+      "f_PBH_at_delivered_amplitude": {
+        "gaussian_0": 0.0,
+        "matter_bounce_Li_-35/16": 0.0,
+        "matter_bounce_Cai_-35/8": 0.0
+      }
+    }
+  },
+  "mu_distortion": {
+    "window_integral_2.2_int_dlnk_W": 10.674562492914044,
+    "mu_FIRAS_95CL": 9e-05,
+    "branches": {
+      "MB_anchored_ns0.9649": {
+        "mu": 1.6538279706927496e-08,
+        "mu_over_FIRAS": 0.0001837586634103055,
+        "allowed": true
+      },
+      "pure_dust_ns1": {
+        "mu": 2.241658123511949e-08,
+        "mu_over_FIRAS": 0.000249073124834661,
+        "allowed": true
+      }
+    },
+    "required_amplitude_check": {
+      "note": "A seed of 1e3-1e6 Msun crosses the horizon at k ~ 1e3-1e5 Mpc^-1, on/near the COBE/FIRAS mu window (30-5400 Mpc^-1), so the required seed amplitude is directly constrained. Two realisations are reported because the verdict differs between them.",
+      "seeds": {
+        "M_seed=1e+03 Msun": {
+          "k_seed_Mpc-1": 118219.15021993183,
+          "M_H_g": 1.98847e+36,
+          "A_required_fPBH1e-3_at_-35/16": 0.011818679857493663,
+          "delivered_delta2_zeta": 1.2545899346236021e-09,
+          "mu_broadband_powerlaw": 0.15579643025631448,
+          "mu_broadband_over_FIRAS": 1731.071447292383,
+          "mu_narrow_lognormal_dl0.5": 1.8996638854587253e-06,
+          "mu_narrow_over_FIRAS": 0.021107376505096948,
+          "FIRAS_verdict": "broadband EXCLUDED, narrow peak ALLOWED"
+        },
+        "M_seed=1e+04 Msun": {
+          "k_seed_Mpc-1": 37384.17777445802,
+          "M_H_g": 1.98847e+37,
+          "A_required_fPBH1e-3_at_-35/16": 0.012469089795736141,
+          "delivered_delta2_zeta": 1.3063266863391595e-09,
+          "mu_broadband_powerlaw": 0.1578604317657948,
+          "mu_broadband_over_FIRAS": 1754.00479739772,
+          "mu_narrow_lognormal_dl0.5": 0.0003182102243339338,
+          "mu_narrow_over_FIRAS": 3.5356691592659306,
+          "FIRAS_verdict": "EXCLUDED (both realisations)"
+        },
+        "M_seed=1e+05 Msun": {
+          "k_seed_Mpc-1": 11821.915021993183,
+          "M_H_g": 1.9884699999999998e+38,
+          "A_required_fPBH1e-3_at_-35/16": 0.013193702973223587,
+          "delivered_delta2_zeta": 1.3601969570669514e-09,
+          "mu_broadband_powerlaw": 0.1604187900933176,
+          "mu_broadband_over_FIRAS": 1782.4310010368622,
+          "mu_narrow_lognormal_dl0.5": 0.005182378626866651,
+          "mu_narrow_over_FIRAS": 57.58198474296279,
+          "FIRAS_verdict": "EXCLUDED (both realisations)"
+        },
+        "M_seed=1e+06 Msun": {
+          "k_seed_Mpc-1": 3738.417777445802,
+          "M_H_g": 1.98847e+39,
+          "A_required_fPBH1e-3_at_-35/16": 0.014005792007358218,
+          "delivered_delta2_zeta": 1.4162887288163736e-09,
+          "mu_broadband_powerlaw": 0.16354836483682242,
+          "mu_broadband_over_FIRAS": 1817.2040537424712,
+          "mu_narrow_lognormal_dl0.5": 0.0189273060801946,
+          "mu_narrow_over_FIRAS": 210.3034008910511,
+          "FIRAS_verdict": "EXCLUDED (both realisations)"
+        }
+      }
+    },
+    "max_flat_delta2_zeta_allowed_in_mu_window": 8.431258897940176e-06
+  },
+  "verdict": {
+    "does_the_lab_spectrum_make_PBHs": "NO",
+    "margin_log10_in_amplitude": 6.990714414998105,
+    "statement": "The lab's own CMB-anchored matter-bounce spectrum delivers Delta^2_zeta ~ 1e-9 at every PBH scale, while the compaction-function criterion requires ~0.1-0.5 -- a shortfall of 7.0 orders of magnitude in amplitude at every mass scale and at both f_NL values. f_PBH is exactly zero in double precision; the Gaussian-limit exponent quantifies how far. The PBH channel is therefore NOT a channel for this model without an added small-scale amplification mechanism the model does not contain.",
+    "early_SMBH_seed_FIRAS": {
+      "M_seed=1e+03 Msun": "broadband EXCLUDED, narrow peak ALLOWED",
+      "M_seed=1e+04 Msun": "EXCLUDED (both realisations)",
+      "M_seed=1e+05 Msun": "EXCLUDED (both realisations)",
+      "M_seed=1e+06 Msun": "EXCLUDED (both realisations)"
+    },
+    "early_SMBH_seed_summary": "The amplitude a 1e3-1e6 Msun PBH seed requires is EXCLUDED by COBE/FIRAS if it is carried by a broadband (power-law) spectrum (mu up to 1.64e-01 vs mu < 9e-05); a narrow (Delta=0.5 lognormal) peak at the seed scale evades it only for the lightest seed considered (1e3 Msun, k = 1.2e5 Mpc^-1, above the window); 1e4-1e6 Msun seeds are excluded in both realisations. Either way the lab's own spectrum is ~7 dex below the required amplitude, so the lab's model does not supply the seeds and the discriminator is a null."
+  },
+  "wall_clock_s": 169.53422284126282
+}
