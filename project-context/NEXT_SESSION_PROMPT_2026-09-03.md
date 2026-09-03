@@ -39,20 +39,22 @@ endorsement emails. INT boards only; no browser EXT rounds.
   `SSOT/FINAL_REVIEW_RECOMMENDATIONS_2026-09-02.md`).
 - **A2** first half done (linear transmission bound T ≤ 1/2, scheme-labelled);
   second half (the bounce's own cubic term) is ledger #2's open item.
-- **Phase 3** (pod `8ofv5d4ynu7hku`, $0.17/hr): enrichment was ~55 % at
-  close-out with the watcher armed; the landing runbook is in
-  `SESSION_HANDOFF_2026-09-02.md` §Phase-3 landing. Reference catalogues for
-  ledger #8 are cached (`~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/`)
-  and `benchmark_known_object_recovery.py --crossmatch` (RUNBOOK §19) runs
-  the moment `flagship_*` artifacts land.
+- **Phase 3**: v1 COMPLETED 2026-09-03 but its S>8 sample was 84.8% sky
+  fibers (`ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`); v1 artifacts are
+  landed/backed up as SAMPLE-V1-CONTAMINATED (provenance only). A corrected
+  science-target run (OBJTYPE=TGT, FIBERSTATUS=0; threshold re-chosen on
+  the science-only distribution; sky-fraction-by-score curve recorded) was
+  launched under `/workspace/phase3_v2/` on pod `8ofv5d4ynu7hku` — check
+  `PHASE3_V2_LANDING_2026-09-03.md`; if it did not finish, resume per that
+  lane's notes, back up three ways, then stop the pod. Ledger #8 is answered
+  ONLY from v2. Public candidate counts must be science-target counts.
 
 ## TERMINAL GOAL (run until done; never stop early)
-1. If `PHASE3_DONE` exists: land phase 3 (pull `flagship_*` to
-   `clean_rerun/results_2026-08-07/phase3/`, commit, HF packed upload +
-   B2 sync, verify three locations, STOP the pod), run the recovery benchmark,
-   answer ledger #8 (paper vs data release) with the recovery table, and draft
-   the corresponding document under Q1. If not, keep the watcher and do
-   everything else.
+1. Phase 3 v2: verify it landed (three locations) and the pod is EXITED; if
+   not, finish it; run the recovery benchmark on the v2 sample; answer
+   ledger #8 (paper vs data release) from v2; draft the corresponding
+   document under Q1 with the science-target selection and the
+   sky-fraction curve as method/validation content.
 2. A3M: both REVISE items are DONE (v3M.0.7: abstract 307 words; injection
    on the real NANOGrav KDE grids, now mirrored on HF under
    `external/nanograv15yr_kde/`). What remains is the science gate: the

@@ -33,5 +33,13 @@ archived P1A/P1C/P4/P5.
 3. The Codex-driven launchd review tick (`com.bigbounce.cron-tick`) is a
    pre-directive-N artifact; it must not be re-armed while N stands.
 
-Verdict: **lineup on-vision; two process-drift instances caught and being
+4. (2026-09-03) The anomaly scan's high-score tail was 85% sky fibers because
+   no provenance gate checked OBJTYPE / fiber status; the sealed contract
+   counted rows honestly but the public "52,188 candidates" number was
+   never a science count. Lesson: every sample that leaves a pipeline gets a
+   fail-closed provenance gate (TARGETID sign, OBJTYPE, FIBERSTATUS, ZWARN)
+   before any interpretation, and public candidate counts are science-target
+   counts only (`ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`).
+
+Verdict: **lineup on-vision; three process-drift instances caught and being
 closed in-session.**
