@@ -84,3 +84,33 @@ before acting. Re-plan:
 5. **arXiv submissions (after endorsement clears):** ECH Note → gr-qc (cross-list astro-ph.CO); P4′ → astro-ph.GA (cross-list astro-ph.CO). Tarballs: `SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.5.tar.gz`, `…/paper4prime_chirality_test_arxiv_v4P.0.5.tar.gz`; form fields in the portal kit.
 6. **Journal portals:** CQG (ScholarOne, article type **Paper**) and ApJS (AAS eJournalPress) with the paste-ready fields in the portal kit; ApJS charges apply.
 7. **Secrets/infra you alone can do:** provide the You.md vault passphrase or run `hubify auth login` so `HUBIFY_TOKEN` can be restored (the manifest importer's live push waits on it); confirm permanent retirement of the two Codex launchd agents (plists kept in `~/Library/LaunchAgents`) or ask for a Claude-native watcher.
+
+## Phase-3 landing summary — 2026-09-03 (Sonnet landing lane)
+
+- All phase-3 pod artifacts (S>8 enrichment, SIMBAD/NED crossmatch, AllWISE,
+  taxonomy; 18 files incl. 172MB enrich_shards_part1.tar) landed to repo
+  (`0c2b3114`, `5fde486d`, `6a00af38`) + HF + B2 + local; backup-3plus receipt
+  `project-context/PHASE3_LANDING_2026-09-03.md`. Tar SHA-256
+  `83f89ef4e306b91c27eb05ef87d2eb78ad2eb99f55dc6223cf16aca1e583e417`
+  re-verified pod == local.
+- Ledger #8 recovery benchmark run (fixed a real sexagesimal-RA parsing bug in
+  `benchmark_known_object_recovery.py`): 0/5 fetched VizieR classes matched;
+  pod's own SIMBAD/NED crossmatch 92/3,810 (2.4%) matched; 8-family taxonomy.
+  `results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md`.
+- **Pod stop HELD per coordinator instruction (2026-09-03):** 84.8% of the
+  S>8 sample carries negative TARGETIDs (sky-fiber convention) — contamination
+  claim under coordinator verification. Pod `8ofv5d4ynu7hku` left RUNNING, not
+  stopped. No ledger #8 paper-vs-release decision recorded; all landed
+  artifacts and manifests labeled SAMPLE-V1 (provenance under review).
+- 5 reproducibility manifests added under `reproducibility/manifests/experiments/`
+  (enrichment, SIMBAD/NED crossmatch, AllWISE, taxonomy, recovery benchmark),
+  jsonschema-valid. SSOT `project-context/SSOT/paper-3/status.md` updated with
+  a phase-3 landing section (no readiness uplift claimed). Convex
+  `activityFeed:add` row written.
+- Note: a concurrent lane/agent was also touching this repo during this
+  session (site/src/data/repro.ts, reviewTimeline.ts, build_flagship_sample.py,
+  a new gates/check_sample_provenance.py, and a new test file appeared
+  already-staged and got swept into this lane's `5fde486d` commit alongside
+  the intended `PHASE3_LANDING_2026-09-03.md` add — not reviewed in detail by
+  this lane; flagging for the coordinator/owner to confirm those changes are
+  correct and intentional).

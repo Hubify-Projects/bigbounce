@@ -1,0 +1,82 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-ledger8-known-object-recovery-benchmark",
+  "title": "Ledger #8 known-object recovery benchmark (VizieR reference classes vs S>8 sample) [SAMPLE-V1, deferred]",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "flagship_sample_s8_enriched.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8_enriched.parquet",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "VizieR reference class cache (5 fetched classes)",
+      "type": "external-dataset",
+      "locator": "~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/ (outside repo per phase-3 intermediates convention)",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "sealed_2026-08-05/locator_inventory.jsonl (DESI footprint)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
+      "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-manifest <local manifest> --catalogs-config <s8 config> --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir results_2026-08-07/phase3/recovery_benchmark",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, astroquery, numpy, pandas, pyarrow",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "houstongolden-mac",
+    "date": "2026-09-03",
+    "wall_clock": "<5min",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local-cpu",
+    "est_wall_clock": "<5min (given cached VizieR reference classes)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "This session fixed a real bug: 4/5 fetched VizieR classes returned sexagesimal RA/Dec strings the script could not parse; patched to convert via astropy SkyCoord(unit=(hourangle, deg)) before the existing crossmatch_positional() call."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/recovery_benchmark.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/recovery_benchmark.md",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "0/0/0/0/0 matches across 5 fetched reference classes (BAL quasars, Roma-BZCAT, CV/WD binaries, LAEs, SLSN hosts) at 1.5 arcsec radius; footprint-restricted reference counts 27-5285 per class.",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md",
+    "project-context/NEXT_SCIENCE_LEDGER.md#8"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-flagship-s8-simbad-ned-crossmatch",
+  "title": "SIMBAD/NED positional cross-match of the S>8 enriched sample [SAMPLE-V1, provenance under review]",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "flagship_sample_s8_enriched.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8_enriched.parquet",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "SIMBAD (astroquery)",
+      "endpoint": "http://simbad.u-strasbg.fr/simbad/sim-tap",
+      "auth_required": false
+    },
+    {
+      "name": "NED (astroquery)",
+      "endpoint": "https://ned.ipac.caltech.edu",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py",
+      "entrypoint": "python3 build_flagship_sample.py --crossmatch-simbad-ned (pod-side; see phase3.log)",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "pandas, pyarrow, numpy (RunPod bootstrap.log for exact pins)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "a4000",
+    "pod_id_or_host": "8ofv5d4ynu7hku",
+    "date": "2026-09-03",
+    "wall_clock": "2026-09-03T03:50Z to 2026-09-03T13:19Z (~9h29m)",
+    "actual_cost_usd": 1.61
+  },
+  "reproduction": {
+    "recommended_venue": "local-cpu-or-runpod",
+    "est_wall_clock": "~9-10h (network-bound VizieR/SIMBAD/NED rate limits)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Network-bound; can run on any host with internet access, no GPU required despite pod venue used originally."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_matched.parquet",
+      "type": "catalog",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_unmatched.parquet",
+      "type": "catalog",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_manifest.json",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "92/3810 matched (2.4%), 3718 unmatched, counts sum to input row count 3810 (see PHASE3_BENCHMARK_SUMMARY.md).",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_manifest.json",
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md"
+  ]
+}

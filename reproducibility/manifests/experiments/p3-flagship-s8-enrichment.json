@@ -1,0 +1,71 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-flagship-s8-enrichment",
+  "title": "S>8 flagship anomaly sample enrichment (photometry/spectroscopy/morphology join) [SAMPLE-V1, provenance under review]",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "flagship_sample_s8.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8.parquet",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "DESI zcatalog/target coordinates",
+      "type": "external-dataset",
+      "locator": "DESI internal zcatalog (pod-local, bound by input_sample_sha256 in flagship_enriched_manifest.json)",
+      "checksum": "b5144115aba9ba18201496d166f2e501ba7657759ca56539aa548dd731090fae",
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py",
+      "entrypoint": "python3 build_flagship_sample.py --enrich (pod-side; see phase3.log)",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "pandas, pyarrow, numpy (RunPod bootstrap.log for exact pins)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "a4000",
+    "pod_id_or_host": "8ofv5d4ynu7hku",
+    "date": "2026-09-02",
+    "wall_clock": "2026-09-02T18:08Z to 2026-09-03T03:50Z (~9h42m)",
+    "actual_cost_usd": 1.65
+  },
+  "reproduction": {
+    "recommended_venue": "runpod-a4000-or-equivalent",
+    "est_wall_clock": "~10h",
+    "est_cost_usd": 1.7,
+    "parallelizable": false,
+    "resume_support": true,
+    "notes": "enrich_checkpoint.json supports resume; contract_sha256/model_sha256/inference_code_sha256 in flagship_enriched_manifest.json bind exact reproduction inputs."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_sample_s8_enriched.parquet",
+      "type": "catalog",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_enriched_manifest.json",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "flagship_enriched_manifest.json MSE cross-check: 0 offenders / 3810 rows checked (tolerance 1e-6); groups 3128/3128 completed, 0 skipped.",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_enriched_manifest.json",
+    "project-context/PHASE3_LANDING_2026-09-03.md",
+    "project-context/SESSION_HANDOFF_2026-09-02.md#Phase-3-landing-runbook"
+  ]
+}

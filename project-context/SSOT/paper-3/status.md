@@ -705,3 +705,43 @@ pod session.
   is a separate fire to debug.
 - **PDF recompile** — text-only deposit; no .tex changes in this
   wave. PDF is unaffected.
+
+## Phase-3 pod landing — 2026-09-03 (anomaly-flagship program, SAMPLE-V1)
+
+Pod `8ofv5d4ynu7hku` phase-3 chain (S>8 enrichment → SIMBAD/NED crossmatch →
+AllWISE join → taxonomy) completed 2026-09-03T15:18Z, 0 errors. All artifacts
+landed to `pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/`
+(commits `0c2b3114`, `5fde486d`, `6a00af38`) and backed up to HF
+(`bamfai/bigbounce-aug-011-clean-rerun/phase3/2026-09-03/`), Backblaze B2
+(`aug-011-clean-rerun/phase3/2026-09-03/`), and local disk — receipt at
+`project-context/PHASE3_LANDING_2026-09-03.md`.
+
+**CAVEAT — SAMPLE-V1 (provenance under review):** 3,232/3,810 rows (84.8%)
+of the enriched sample carry negative `targetid` — DESI convention reserves
+negative TARGETIDs for sky/non-astrophysical fibers. Confirmed independently
+during landing; see `project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md`
+and `project-context/NEXT_SCIENCE_LEDGER.md` row 8, which already records this
+as SAMPLE-V1-CONTAMINATED with a corrected science-target (OBJTYPE=TGT,
+FIBERSTATUS=0) run in progress on the same pod. Pod is held running
+(NOT stopped) pending the coordinator's contamination verdict.
+
+Ledger #8 known-object recovery benchmark run against this SAMPLE-V1 sample:
+0/0/0/0/0 positional matches across 5 fetched VizieR reference classes (BAL
+quasars, Roma-BZCAT blazars, CV/white-dwarf binaries, LAEs, SLSN hosts) at
+1.5 arcsec radius — no class clears the >=1-class/>10x-enrichment/>=5-matches
+confirmed-class bar. Pod's own SIMBAD/NED crossmatch: 92/3,810 (2.4%) matched
+(mostly NED IrS/G/star/UvS types); taxonomy: 8 descriptive UMAP clusters over
+the 3,718 unmatched rows. **No paper-vs-release decision is recorded** —
+numbers are reported as-is pending the contamination verdict; re-run against
+the corrected sample once available. Full table:
+`pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md`.
+
+Reproducibility manifests (5, jsonschema-valid against
+`reproducibility/manifests/experiment.schema.json`): `p3-flagship-s8-enrichment`,
+`p3-flagship-s8-simbad-ned-crossmatch`, `p3-flagship-s8-allwise-photometry`,
+`p3-flagship-s8-taxonomy`, `p3-ledger8-known-object-recovery-benchmark` in
+`reproducibility/manifests/experiments/`.
+
+No readiness uplift claimed by this landing — this is a P3-support /
+anomaly-flagship-program data landing, not a change to the P3-ApJS artifact
+itself.

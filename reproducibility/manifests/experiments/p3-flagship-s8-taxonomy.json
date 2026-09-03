@@ -1,0 +1,63 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-flagship-s8-taxonomy",
+  "title": "Descriptive taxonomy (UMAP + clustering, Q1 labels) of the S>8 unmatched population [SAMPLE-V1, provenance under review]",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "flagship_crossmatch_unmatched.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_crossmatch_unmatched.parquet",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/build_flagship_sample.py",
+      "entrypoint": "python3 build_flagship_sample.py --taxonomy (pod-side; see phase3.log; sklearn 1.9.0, umap_learn 0.5.12, numpy 2.4.6)",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy==2.4.6, scikit-learn==1.9.0, umap-learn==0.5.12",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "a4000",
+    "pod_id_or_host": "8ofv5d4ynu7hku",
+    "date": "2026-09-03",
+    "wall_clock": "2026-09-03T15:17Z to 2026-09-03T15:18Z (~1min)",
+    "actual_cost_usd": 0.003
+  },
+  "reproduction": {
+    "recommended_venue": "local-cpu",
+    "est_wall_clock": "~1-5min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fast, CPU-only clustering step; deterministic given the pinned sklearn/umap-learn versions and fixed input."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_taxonomy.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_taxonomy_manifest.json",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "8 families with sizes 1589/1032/556/239/142/80/47/33 summing to 3718 (matches SIMBAD/NED-unmatched row count).",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/flagship_taxonomy_manifest.json",
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/PHASE3_BENCHMARK_SUMMARY.md"
+  ]
+}
