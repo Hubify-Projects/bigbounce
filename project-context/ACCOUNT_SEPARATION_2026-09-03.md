@@ -44,3 +44,27 @@ pointers visible), skills listed, `bash bin/bigbounce-ready.sh` READY.
 Git is the only handoff channel between accounts: every session ends with
 `SESSION_HANDOFF_<date>.md`, the ledger, and the next-session prompt updated
 and pushed. Business/coding work stays on the other account; do not mix.
+
+## Status 2026-09-03 — Option B is SET UP on this Mac (orchestrator did it)
+- `~/.claude-research/` created; symlinks → `~/.claude/{skills,scistack,projects,plugins,commands,settings.json}` and `CLAUDE.md → ~/.agent-shared/AGENTS.md`. No credentials in it yet (fresh login required). Smoke: `CLAUDE_CONFIG_DIR=~/.claude-research claude --version` → 2.1.258; memory index and 191 skills visible through the symlinks.
+- `alias claude-research='CLAUDE_CONFIG_DIR=$HOME/.claude-research claude'` appended to `~/.zshrc` (open a new terminal or `source ~/.zshrc`).
+- Your current login in `~/.claude` is untouched; both accounts can run at the same time. No logout, no Codex needed.
+
+## When to switch (the good stopping point)
+Switch after the phase-3 landing lane in the current session reports the pod
+EXITED and the close-out is pushed (this session's final message says
+"pod stopped"). Until then the current session owns the pod; starting the
+research account earlier is harmless but would duplicate the watcher.
+
+## The three commands you run (once)
+```bash
+source ~/.zshrc
+cd ~/Desktop/CODE_YOU/bigbounce && git pull --ff-only
+claude-research
+```
+Inside: `/login` with the research account (browser opens; sign in to the NEW
+account). Then paste `project-context/NEXT_SESSION_PROMPT_2026-09-03.md`.
+First-session checks: it should mention reading `VISION.md` and the ledger
+first, `bin/bigbounce-ready.sh` should print READY, and `/memory` (or the
+memory index in the system prompt) should list this project's memories.
+For the business account keep using plain `claude` as before.
