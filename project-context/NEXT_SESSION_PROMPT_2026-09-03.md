@@ -57,8 +57,11 @@ endorsement emails. INT boards only; no browser EXT rounds.
    on the real NANOGrav KDE grids, now mirrored on HF under
    `external/nanograv15yr_kde/`). What remains is the science gate: the
    method-independent f_NL check (Bianchi-I separate universe), the bounce's
-   own cubic term (ledger #2 second half — a Fable lane was running at
-   close-out; read `research/cubic_bounce_transmission/A2B_*` first), and an
+   own cubic term (ledger #2 second half — two Fable lanes STALLED before writing
+   anything on 2026-09-02; run it as three short lanes: (a) the cubic
+   vertex table through ε=0 with the regularisation assumption written as
+   its own note, (b) the numerical evolution on the A2 backgrounds, (c) the
+   Quintin+2015 comparison — each committing early), and an
    in-lab Δ²_ζ for the PBH channel (A3-1b).
 3. Ledger #2 second half: the bounce's own cubic in-in term (Quintin+2015 /
    Agullo–Bolliet–Sreenath 2017 structure) — Fable-tier computation, committed
