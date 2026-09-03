@@ -1,7 +1,100 @@
 # Regularisation assumption — lane (a) cubic vertices at the bounce point (H = 0)
 
-Status: IN PROGRESS (header committed first; body appended after the sympy limits are run).
+**Date:** 2026-09-03 · **Companion:** `VERTEX_TABLE_2026-09-03.md`, `vertex_table.json`,
+`cubic_vertex_table.py` (all statements below marked *computed* are produced by that script;
+statements marked *literature* are cited, not derived here).
 
-Scope: the statement of *which* form of the cubic action we take as fundamental across H=0, what is
-finite in it, what is singular, and what is scheme-dependent. Nothing here is a computation of
-Δf_NL^{bounce}; that is lane (b).
+## 1. What is taken as fundamental
+
+We take as fundamental the **comoving-gauge cubic action for ζ in the Seery–Lidsey / Chen–Huang–
+Kachru–Shiu form** (literature: Chen et al. 2007 hep-th/0605045 Eq. 4.28–4.29; Seery & Lidsey 2005
+astro-ph/0503692 Eq. 51; Maldacena 2003 Eq. 3.9–3.10 at $c_s=1$), with the auxiliary field
+eliminated by $\partial^2\chi = a^2\epsilon\,\dot\zeta/c_s^2$ (Chen's convention), and the standard
+total-derivative terms replaced by the field redefinition (literature: Arroja & Tanaka 2011
+arXiv:1103.1102, Burrage–Ribeiro–Seery 2011 arXiv:1103.4126 — equivalence used, not re-derived).
+Every coefficient is then a function of $(a, H, \epsilon, \eta_{\rm sr}, c_s, s, \lambda)$.
+
+Comoving gauge is well defined through the bounce in the $P(X,\phi)$ description because
+$\rho+p = 2XP_X = -2\dot H = -2\Upsilon \ne 0$ at $H=0$, so $\dot\phi\ne0$ there. What is *not* well
+defined is the map $\epsilon = -\dot H/H^2$: with $\dot H$ finite and $H\to0$, $\epsilon$ has a
+**double pole** at the bounce point (*computed*: $\epsilon = -1/(\Upsilon t^2)$ for Quintin+2015,
+$\epsilon = 3/2 - 2/(\rho_c t^2)$ for LQC dust, both locally $H=\Upsilon_{\rm eff}t$ with
+$\Upsilon_{\rm eff}^{\rm LQC}=\rho_c/2$; and $\eta_{\rm sr} = 2\epsilon$ exactly in the Quintin phase,
+$\eta_{\rm sr}/\epsilon\to2$ at the LQC bounce).
+
+## 2. The two schemes (labels on every number)
+
+The lab's prior linear-order result (brief §2.1, `g1_*.py`) is **not redone**: the effective-fluid
+MS weight $z^2 = a^2(\rho+p)/(c_s^2H^2) = 2a^2\epsilon/c_s^2$ has an $H=0$ pole and the gradient-
+transmission coefficient has no scheme-independent limit; the dressed-metric geometric potential
+$a''/a$ is bounded. We carry the same two labels to cubic order:
+
+* **S2 — effective fluid / $P(X,\phi)$ form.** Coefficients used *as written*, with the bounce
+  background substituted. Super-Hubble mode: $\zeta = C_1 + C_2 J$, $J=\int d\eta/z^2$, so
+  $\dot\zeta = c_s^2C_2/(2a^3\epsilon) \propto H^2 \to 0$ at the bounce.
+* **S1 — geometric / dressed-metric prescription extended to cubic order.** The brief's linear
+  scheme S1 is $z = a$, i.e. the quadratic action with $\epsilon\to\epsilon_{\rm eff}=1/2$, $c_s\to1$
+  (hence $\eta_{\rm sr}\to0$, $s\to0$, $\lambda\to0$). **Our assumption** is that the same substitution
+  defines the cubic coefficients in S1. This is an *assumption of the scheme*, not a derivation:
+  the dressed-metric third-order Hamiltonian of Agullo–Bolliet–Sreenath 2017 (arXiv:1712.08148) has
+  explicit quantum-geometric couplings that this substitution does not produce (literature).
+  S1 is the **regulator** in the sense of §4 below.
+
+## 3. What is singular and what is finite (*computed*, `cubic_vertex_table.log` §C–D)
+
+Coefficient poles at $t\to0$ (S2 columns computed by the script; the S1 column for R1–R4 is by inspection of the same expressions with $\epsilon\to1/2$, $\eta_{\rm sr}\to0$, $\dot\zeta=C_2/a^3$; both backgrounds share the pole orders; leading coefficients differ
+by $\Upsilon\leftrightarrow\rho_c/2$):
+
+| operator | coefficient pole | integrand pole with $\dot\zeta\propto H^2$ (S2) | S1 integrand |
+|---|---|---|---|
+| V1 $\dot\zeta^3$ | $t^{-1}$ | $t^{+5}$ finite | coefficient $=0$ |
+| V2 $\zeta\dot\zeta^2$ | $t^{-4}$ | $t^{0}$ **finite** | finite |
+| V3 $\zeta(\partial\zeta)^2/a^2$ | $t^{-4}$ | $t^{-4}$ **non-integrable** (but $\propto k^2$) | finite |
+| V4 $\dot\zeta\,\partial\zeta\,\partial\tilde\chi$ | $t^{-4}$ | $t^{0}$ **finite** | finite |
+| V5 $\zeta^2\dot\zeta$ | $t^{-5}$ | $t^{-3}$ odd pole (PV-finite, scheme-dependent) | coefficient $=0$ |
+| V6 $\partial\zeta\partial\tilde\chi\partial^2\tilde\chi$ | $t^{-6}$ | $t^{-2}$ **non-integrable** | finite |
+| V7 $\partial^2\zeta(\partial\tilde\chi)^2$ | $t^{-6}$ | $t^{-2}$ **non-integrable** | finite |
+| R1 $\eta_{\rm sr}\zeta^2/4c_s^2$ | $t^{-2}$ | $t^{-2}$ | $=0$ |
+| R2 $\zeta\dot\zeta/(c_s^2H)$ | $t^{-1}$ | $t^{+1}$ finite ($\dot\zeta/H\propto H\to0$) | $t^{-1}$ odd pole ($\dot\zeta$ finite in S1) |
+| R3 $(\cdots)/(4a^2H^2)$ | $t^{-2}$ | $t^{-2}$ | pole (geometric $1/H^2$, scheme-independent) |
+| R4 $\epsilon(\cdots)/(2c_s^2H)$ | $t^{-3}$ | $t^{-1}$ | $t^{-1}$ odd pole ($\epsilon\to1/2$, $\dot\zeta$ finite) |
+
+**Key regularisation finding.** In S2 the $\dot\zeta\propto H^2$ softening of the super-Hubble mode
+cancels the $\epsilon^2$ poles (V2, V4 finite) but **cannot** cancel the $\epsilon^3$ poles of the
+$\chi$-sector vertices V6, V7 (net $H^{-2}$, even, non-integrable) nor the pure-gradient vertex V3
+($H^{-4}$, $k^2$-suppressed but divergent), while V5 leaves a principal-value-only odd pole. The
+$\epsilon^3$ terms are exactly the ones generated by solving the lapse/shift constraints
+$N_1 = \dot\zeta/H$, $\partial^2\psi \ni -a^2\epsilon\dot\zeta$ — i.e. the pole is the $1/H$ of the
+constraint solution, the same origin as the linear-order $z^2$ pole. **Therefore the bounce-window
+in-in integral is not absolutely convergent in the effective-fluid scheme; a regulator is required,
+and the regulated value is scheme-dependent — the cubic-order statement of the brief's phase-1
+result.** In S1 every bulk integrand is bounded (all coefficients $\propto a^n$ with constant
+$\epsilon_{\rm eff}$), so the bounce-window integrals are finite and duration-independent.
+
+The field-redefinition (boundary) terms are singular **at** the bounce point in both schemes (R3
+carries a geometric $1/(aH)^2$; R1, R4 carry $\eta_{\rm sr}$, $\epsilon/H$). Consequence: the
+evaluation surface $\eta_*$ must not be placed inside the NEC window. Placing it post-bounce in
+the matter expansion ($\epsilon=3/2$, $\eta_{\rm sr}=0$, $\dot\zeta/H\zeta\propto a^{-3}/H\to0$) sends
+the *entire* local redefinition contribution to zero; the contraction-phase $-5/2$ redefinition row of
+the adjudication table is then absent and must be accounted for by the bulk integrals through the
+bounce. This gives lane (b) an **$\eta_*$-independence test** (§5 of the vertex table).
+
+## 4. The regulator we adopt, and what is scheme-dependent
+
+* **Adopted:** S1 (geometric, $z=a$, $\epsilon_{\rm eff}=1/2$) is the regulated scheme in which the
+  analytic bounce-window estimate is quoted. It is bounded, parity-even, self-similar in the bounce
+  duration, and reproduces the brief's linear transfer. Its cubic coefficients are an assumption
+  (§2), so the S1 number is an **order-of-magnitude anchor with a definite sign**, not a prediction.
+* **S2 regulated alternative** (for lane (b) to quote alongside): excise $|t|<d_{\rm cut}$ or replace
+  $H^2\to H^2+\mu^2$; the V6+V7 contribution then scales as $d_{\rm cut}^{-1}$ (even $t^{-2}$ pole),
+  V3 as $d_{\rm cut}^{-3}$, V5 as the principal value — exactly the $d_{\rm cut}^{-1}$ non-limit the
+  lab found at linear order. Report the scaling, never a single regulated number.
+* **Scheme-independent statements:** (i) V2 and V4 are finite in every scheme; V2's bounce-window contribution is negative
+  (computed kernel, §5 of the table), V4's sign awaits the angular average in lane (b); (ii) the redefinition terms are singular at $H=0$ in every
+  scheme, so $\eta_*$ must be post-bounce; (iii) the combination that is physical is the total
+  $\eta_*$-independent bispectrum, not any single vertex.
+* **Scheme-dependent:** the absolute value of the V3, V5, V6, V7 bounce-window integrals; the
+  relative weighting of vertices in S1 vs the true dressed-metric $\mathcal H_3$ (literature: Agullo+
+  2017); any Horndeski/Galileon corrections in the actual Quintin+2015 Lagrangian, which modify the
+  constraint solution and hence the $\epsilon^3$ sector (literature: Gao & Steer 2011 arXiv:1107.2642,
+  De Felice & Tsujikawa 2011 arXiv:1103.1740 — *not* included in this table; flagged for lane (c)).

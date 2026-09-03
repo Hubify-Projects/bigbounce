@@ -1,0 +1,74 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-a2-lane-a-cubic-vertex-table",
+  "title": "Track A2 lane (a): cubic-vertex table for zeta through a nonsingular bounce \u2014 coefficient poles at H=0, scheme regularisation, super-Hubble in-in reduction and S1 bounce-window estimate",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "a2_transmission_linear backgrounds",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": "sha256:bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/lane_a_vertex_table/cubic_vertex_table.py",
+      "entrypoint": "python3 cubic_vertex_table.py",
+      "sha256": "2418fb92830ae43016cd37532a965d3d1ffc474a5c54e0deaf09d571a23cd946"
+    }
+  ],
+  "environment": {
+    "python": "numpy 2.x, sympy 1.14.0, scipy (via a2_transmission_linear import) (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-03",
+    "wall_clock": "2.0 s, measured",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 10 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic symbolic + quadrature; imports bg_quintin/bg_lqc/bg_poly from ../a2_transmission_linear.py."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/vertex_table.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/cubic_vertex_table.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/REGULARISATION_ASSUMPTION.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm in the log: [B] eps = -1/(Upsilon t^2), eta_sr = 2 eps (Quintin); LQC Upsilon_eff = rho_c/2; [C] coefficient pole orders V1..V7 = -1,-4,-4,-4,-5,-6,-6 and R1..R4 = -2,-1,-2,-3; [D] S2 integrand poles V3 t^-4, V6/V7 t^-2 (non-integrable), V5 t^-3 (odd), V2/V4 finite; [E] leading squeezed kernel 5(-I_inf-3J)/(12 I_inf^2) for zeta zeta'^2; [F] Delta f_NL[V2,S1] = -0.139578 (Quintin, all dtB), -0.104167 (LQC = -5/48 exactly), closed form -(5/24) rho_B to <5e-5 (Quintin) and <2e-6 (LQC).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item #2 second half (intrinsic bounce cubic contribution), lane (a) of three",
+    "builds on research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md (manifest p2-a2-bounce-fnl-transmission) and phases g1_*.py; does not redo them",
+    "in-in conventions: research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
+    "literature: hep-th/0605045 Eq. 4.28-4.29; astro-ph/0503692 Eq. 51; astro-ph/0210603 Eq. 3.9-3.10; arXiv:1103.1102; arXiv:1103.4126; arXiv:1508.04141; arXiv:1712.08148; arXiv:1108.0893"
+  ]
+}
