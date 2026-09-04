@@ -21,10 +21,18 @@ NS = 0.9649
 KREF = 1e-4
 
 
+# A_s matched to cosmoprimo's DESI() fiducial (bug found+fixed: camb's
+# default As differs from cosmoprimo's, which was silently rescaling
+# Plin(z=0) by ~5-7% across k=0.003-0.08 -- a pure normalisation offset,
+# not a transfer-function effect, and would have contaminated the fix-2
+# comparison with an unintended amplitude shift).
+A_S = 2.083e-09
+
+
 def _get_camb_pk(z_list):
     pars = camb.CAMBparams()
     pars.set_cosmology(H0=H0, ombh2=OMBH2, omch2=OMCH2)
-    pars.InitPower.set_params(ns=NS)
+    pars.InitPower.set_params(ns=NS, As=A_S)
     pars.set_matter_power(redshifts=sorted(set(z_list), reverse=True), kmax=2.0)
     pars.NonLinear = camb.model.NonLinear_none
     results = camb.get_results(pars)
