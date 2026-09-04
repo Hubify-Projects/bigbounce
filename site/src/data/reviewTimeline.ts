@@ -9167,6 +9167,58 @@ export const reviewRounds: ReviewRound[] = [
       { label: "commit 0b3cfaba — Codex launchd tick retirement", href: `${GH_COMMIT}/0b3cfaba` },
     ],
   },
+  {
+    id: "skill-improvement-2026-09-03-fable-early-commit",
+    kind: "skill-improvement",
+    dateISO: "2026-09-03",
+    title: "Fable/Opus science lanes must create+commit their output file within the first ~10 tool calls",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Two Fable science-adjudication lanes stalled on 2026-09-02, spending the whole session reading source material without ever writing the deliverable file. New standing rule: a spawned Fable/Opus science lane must create and commit (even a skeleton of) its output file within roughly the first 10 tool calls, then iterate on it in place — so a stalled or killed lane still leaves a real, inspectable artifact instead of nothing. The 2026-09-03 squeezed-monopole adjudication lanes (plan header, classical-kernel derivation, in-in verdict manifest+ledger) all applied this rule and completed cleanly.",
+    keyTakeaways: [
+      "Root cause: reading-only lanes with no early file write are indistinguishable from a working lane until the session ends — by then a stall has burned the whole budget with zero recoverable output.",
+      "Fix: spawn prompt now instructs the lane to touch+commit a skeleton output file (manifest/derivation stub) inside the first ~10 tool calls, before deep reading, so partial progress is always on disk.",
+      "Verified working on 2026-09-03: the IN-IN monopole adjudication (d0662559 plan header, 67dbe4af classical kernel, f3516042 verdict manifest+ledger) — all three lanes wrote and committed early, none stalled.",
+    ],
+    links: [
+      { label: "commit d0662559 — plan header (early-write lane)", href: `${GH_COMMIT}/d0662559` },
+      { label: "commit 67dbe4af — classical kernel (early-write lane)", href: `${GH_COMMIT}/67dbe4af` },
+      { label: "commit f3516042 — verdict manifest+ledger (early-write lane)", href: `${GH_COMMIT}/f3516042` },
+    ],
+  },
+  {
+    id: "skill-improvement-2026-09-03-no-nested-delegation",
+    kind: "skill-improvement",
+    dateISO: "2026-09-03",
+    title: "Sonnet execution lanes must not spawn nested background agents",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "The phase-3 v2 landing lane (a Sonnet execution worker with a fully-specified plan) delegated part of its own work to a nested background agent; that nested agent and the parent lane then edited the same files concurrently and collided. Fix: execution-lane prompts now carry an explicit no-further-delegation instruction — a worker that already has a scoped, file-level plan must do the edits itself, not fan out another agent layer, since collisions on shared files are undetectable until the corruption is already committed.",
+    keyTakeaways: [
+      "Failure: a Sonnet worker with a concrete plan spawned its own nested agent for part of the task; parent and nested agent wrote to the same files at the same time, producing a collision.",
+      "Fix: worker/lead prompts for well-specified execution work now explicitly say do not spawn additional agents — do the edits directly — closing the recursive fan-out gap in the model-routing rules.",
+      "Scope: applies to any Sonnet-tier execution lane (per /loop-model-routing and the N-AMENDED routing directive) that receives a file-level plan rather than an open-ended research question.",
+    ],
+    links: [],
+  },
+  {
+    id: "anomaly-sample-provenance-preflight-2026-09-03",
+    kind: "skill-improvement",
+    dateISO: "2026-09-03",
+    title: "Sample-provenance preflight before any GPU-billed anomaly run",
+    papers: ["P3", "P4"],
+    summary:
+      "ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md found the anomaly pipeline's target selection was not enforcing science-target-only cuts (OBJTYPE=TGT, FIBERSTATUS=0), risking contaminated samples on paid GPU runs. New standing gate: a sample-provenance preflight (science-target selection + provenance check) is now mandatory before launching any GPU-billed anomaly run, codified as the sample-provenance-preflight skill.",
+    keyTakeaways: [
+      "Finding: anomaly-catalog sample construction could silently admit non-science-target fibers (sky/standard/bad-fiber) without an explicit OBJTYPE=TGT and FIBERSTATUS=0 filter, contaminating downstream anomaly statistics.",
+      "Fix: a provenance preflight check now runs before any GPU-billed anomaly job — verifying the selection cuts and recording provenance — so a bad sample is caught before compute spend, not after.",
+      "Codified as a reusable skill (sample-provenance-preflight) rather than a one-off script, so every future anomaly-pipeline run on RunPod inherits the gate automatically.",
+    ],
+    links: [
+      { label: "ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md", href: `${GH}/project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md` },
+      { label: "commit 0e9e5b41 — P3 anomaly catalogue v2 data-release doc (directive Q1)", href: `${GH_COMMIT}/0e9e5b41` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
@@ -10629,6 +10681,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "skills-autolog-2026-08-05", dateISO: "2026-08-05", patterns: 79, promptRules: 41, tooling: 40, note: "Directive-Q wave: standing directive text (pure-contribution framing + mandatory reproducibility manifests; bigbounce 946c6655), reproducibility manifest schema v1 (a0fac40e), JSON schemas + tools/validate_repro_manifests.py validator (44b87570 — tooling 39→40), canonical paper-lineage disposition record confirming the retired 14-barrier no-go catalog is intact with resurrection recommended (03f1fde2), and the flat All-Papers site index with plain-English purpose subtitles (30e4676c). patterns/promptRules unchanged — process/tooling wave." },
   { id: "finalization-maintenance-autolog-2026-08-04", dateISO: "2026-08-04", patterns: 79, promptRules: 41, tooling: 39, note: "Maintenance autolog for all five skill/process/tooling-matched commits since 2026-07-27: publication-finalization prompt provenance (bigbounce bd89100b); P3 directive-G disclosure correction (bigbounce a59d53c2); duplicate project skill-mirror topology record (bigbounce c4eba285); existing native-PDF provider-routing and test repair (bigbounce b75c566d); generated SciStack skill-index refresh (scistack 90eb090). Counters intentionally unchanged: no new catalog pattern, reviewer-prompt instruction rule, or standalone tool was added." },
   { id: "skill-improvement-2026-09-02", dateISO: "2026-09-02", patterns: 79, promptRules: 42, tooling: 42, note: "P1N/P4P/A3M closure wave (promptRules 41→42, tooling 41→42): prompt rule 42 = N-AMENDED routing directive, Sonnet-body/Opus-judgment/Haiku-polling worker split for the Fable 5.1 era across both internal and external API/CLI legs (bigbounce b3c5efd9). +1 tooling: p1n_r3_checks machine-checkable closure assertions replaced prose-only regression claims for P1N's R3 final closure (bigbounce af204341), paired with the P1N R1 merge-regression lesson — 3 regressions from the P1A+P1C merge caught and restored (bigbounce 82bb7752) — and recovery-benchmark fetch hardening for the anomaly-catalog known-object benchmark (bigbounce 80dcf196). Also landed: reproducibility manifest schema v1 additive paper-code enum extensions for A2/A3/P1N/P4P (bigbounce f297cc6e, 7e420e8b, ae21546c) and Codex launchd tick retirement now that directive N pauses the Codex/OpenAI lane (bigbounce 0b3cfaba). patterns unchanged at 79." },
+  { id: "autolog-2026-09-03", dateISO: "2026-09-03", patterns: 79, promptRules: 42, tooling: 42, note: "Three process improvements from the 2026-09-03 squeezed-monopole adjudication session (patterns/promptRules/tooling unchanged — pure process fixes, no new script or catalog entry): (a) Fable/Opus science lanes must create+commit their output file within the first ~10 tool calls — two Fable lanes stalled 2026-09-02 reading with nothing written; the 2026-09-03 plan-header/classical-kernel/verdict-manifest lanes (bigbounce d0662559, 67dbe4af, f3516042) all applied the rule and completed cleanly. (b) Sonnet execution lanes must not spawn nested background agents — the phase-3 v2 landing lane delegated to a nested agent that collided with the parent on shared files; fixed with an explicit no-delegation instruction in execution-lane prompts. (c) Sample-provenance preflight (OBJTYPE=TGT / FIBERSTATUS=0 + provenance gate) is now mandatory before any GPU-billed anomaly run, per ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md. Also closes out the P3 anomaly catalogue v2 data-release doc (bigbounce 0e9e5b41, directive Q1)." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
