@@ -166,3 +166,88 @@ def constraint_gate(K2):
     log(f"[gate i-a] momentum constraint    -> psi = {sp.simplify(sol[P[1]])}   (expected -zeta/H - a^2 eps zetadot/k^2): {okP}")
     assert okN and okP, "raw quadratic Lagrangian does not reproduce Maldacena Eq. 2.13-2.14"
     return dict(N1=str(sp.simplify(sol[N[1]])), psi=str(sp.simplify(sol[P[1]])), passed=bool(okN and okP))
+
+
+# ---------------------------------------------------------------- Quintin-type background (cosmic time, exact)
+from math import factorial
+from scipy.special import erf
+
+
+class Quintin:
+    """H = Ups t, a = exp(Ups t^2/2) for |t| <= tm; matter (eps = 3/2) outside, matched at |t| = tm = dtB/2
+    with Ups = 8/(3 dtB^2) (same piecewise background as a2_transmission_linear.bg_quintin)."""
+
+    def __init__(self, dtB=1.0):
+        self.Ups, self.tm = 8.0 / (3.0 * dtB**2), dtB / 2.0
+        self.am = np.exp(self.Ups * self.tm**2 / 2.0)
+        self.eta_B = float(np.sqrt(np.pi / (2 * self.Ups)) * erf(self.tm * np.sqrt(self.Ups / 2)))
+        self.A = self.am**3 / (9.0 * self.tm**2)              # a = A eta_m^2 in the matter phases
+        self.eta_off = 3.0 * self.tm / self.am - self.eta_B     # bounce-centred eta = eta_m + sgn * eta_off
+
+    def a(self, t):
+        t = np.asarray(t, dtype=float)
+        return np.where(np.abs(t) <= self.tm, np.exp(self.Ups * np.minimum(t * t, self.tm**2) / 2),
+                        self.am * (np.maximum(np.abs(t), self.tm) / self.tm) ** (2.0 / 3.0))
+
+    def H(self, t):
+        t = np.asarray(t, dtype=float)
+        return np.where(np.abs(t) <= self.tm, self.Ups * t, 2.0 / (3.0 * np.where(np.abs(t) > self.tm, t, 1.0)))
+
+    def Hd(self, t):
+        t = np.asarray(t, dtype=float)
+        return np.where(np.abs(t) <= self.tm, self.Ups, -1.5 * self.H(t) ** 2)
+
+    def eta_m(self, t):                                       # matter-phase conformal time (a = A eta_m^2)
+        return np.sign(t) * 3.0 * self.tm ** (2.0 / 3.0) * np.abs(t) ** (1.0 / 3.0) / self.am
+
+    def eta(self, t):                                         # bounce-centred conformal time
+        t = np.asarray(t, dtype=float)
+        inw = np.sqrt(np.pi / (2 * self.Ups)) * erf(np.clip(t, -self.tm, self.tm) * np.sqrt(self.Ups / 2))
+        return np.where(np.abs(t) <= self.tm, inw, self.eta_m(t) + np.sign(t) * self.eta_off)
+
+    def t_of_eta(self, eta):                                  # inverse, matter phases only (|eta| > eta_B)
+        em = abs(eta) - self.eta_off
+        return np.sign(eta) * (em * self.am / (3.0 * self.tm ** (2.0 / 3.0))) ** 3
+
+
+def matter_mode(k, eta_m, alpha=1.0, beta=0.0):
+    """v(eta_m) = [alpha e^{-ik eta}(1 - i/(k eta)) + beta e^{+ik eta}(1 + i/(k eta))]/sqrt(2k); returns v, dv/deta."""
+    e = eta_m
+    fp, fm = np.exp(-1j * k * e) * (1 - 1j / (k * e)), np.exp(1j * k * e) * (1 + 1j / (k * e))
+    dfp = np.exp(-1j * k * e) * (-1j * k * (1 - 1j / (k * e)) + 1j / (k * e * e))
+    dfm = np.exp(1j * k * e) * (1j * k * (1 + 1j / (k * e)) - 1j / (k * e * e))
+    return (alpha * fp + beta * fm) / np.sqrt(2 * k), (alpha * dfp + beta * dfm) / np.sqrt(2 * k)
+
+
+def window_series(bg, k, scheme, order=90):
+    """Two power-series basis solutions of the window MS equation (coefficient arrays).
+    S2: t zdd + (3 Ups t^2 - 2) zd + k^2 t e^{-Ups t^2} z = 0  (Frobenius exponents 0, 3; c1 = 0 forced).
+    S1: zdd + 3 Ups t zd + k^2 e^{-Ups t^2} z = 0            (regular; c0, c1 free)."""
+    U = bg.Ups
+    g = [(-U) ** m / factorial(m) for m in range(order // 2 + 2)]
+    basis = []
+    for s in [(1.0, 0.0), (0.0, 1.0)]:               # (c0, c3) for S2 ; (c0, c1) for S1
+        c = np.zeros(order + 1)
+        if scheme == "S2":
+            c[0], c[3] = s
+            c[2] = k * k * c[0] / 2.0
+            for n in range(4, order + 1):
+                conv = sum(g[m] * c[n - 2 - 2 * m] for m in range(0, (n - 2) // 2 + 1))
+                c[n] = (-3 * U * (n - 2) * c[n - 2] - k * k * conv) / (n * (n - 3))
+        else:
+            c[0], c[1] = s
+            for n in range(0, order - 1):
+                conv = sum(g[m] * c[n - 2 * m] for m in range(0, n // 2 + 1))
+                c[n + 2] = -(3 * U * n * c[n] + k * k * conv) / ((n + 2) * (n + 1))
+        basis.append(c)
+    return basis
+
+
+def series_eval(c, t):
+    """value, first derivative, and zd/t (regular at t = 0) of sum c_n t^n."""
+    n = np.arange(len(c))
+    tt = np.asarray(t, dtype=float)[..., None]
+    f = (c * tt ** n).sum(-1)
+    fd = (n[1:] * c[1:] * tt ** (n[1:] - 1)).sum(-1)
+    fd_over_t = (n[2:] * c[2:] * tt ** (n[2:] - 2)).sum(-1)      # exact when c1 = 0 (S2 Frobenius)
+    return f, fd, fd_over_t
