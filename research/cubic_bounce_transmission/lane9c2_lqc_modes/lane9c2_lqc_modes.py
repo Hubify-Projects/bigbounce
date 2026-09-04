@@ -160,16 +160,16 @@ class ModesIC:
             mu0, dmu0, diag = _adiabatic_order4(Wspl, k, e_i)
             if mu0 is None:
                 e_alt = _find_ad4_time(Wspl, bg, k, eta0)
-                if e_alt is None or abs(e_alt) > 0.9 * eta_far:
-                    self.ok = False
-                    self.info.update({"defined": False, "reason": diag["reason"]})
-                    return
-                mu0, dmu0, diag2 = _adiabatic_order4(Wspl, k, e_alt)
-                if mu0 is None:
-                    diag = diag2
+                if e_alt is not None and abs(e_alt) <= 0.9 * eta_far:
+                    mu0, dmu0, diag2 = _adiabatic_order4(Wspl, k, e_alt)
+                    if mu0 is None:
+                        diag = diag2
+                    else:
+                        e_i = e_alt
+                        self.info["relocated"] = True
                 else:
-                    e_i = e_alt
-                    self.info["relocated"] = True
+                    diag = {"reason": diag.get("reason",
+                                               "no pre-bounce time on the grid with k^2 >= 10 W")}
             if mu0 is None:
                 # No 4th-order adiabatic vacuum exists at any finite pre-bounce time on
                 # this grid (the leg is super-Hubble throughout).  Fall back to the exact
