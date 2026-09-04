@@ -1,35 +1,23 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import {
-  reviewRounds,
-  getReviewRoundByReportSlug,
-} from "@/data/reviewTimeline";
+import { reviewRounds, getReviewRoundByReportSlug } from "@/data/reviewTimeline";
 import { renderMarkdown } from "@/lib/markdown";
+import { Band, PageHeader } from "@/components/primitives";
 import "../reviews.css";
 
 type PageParams = Promise<{ slug: string }>;
 
 export function generateStaticParams() {
-  return reviewRounds
-    .filter((r) => r.reportSlug)
-    .map((r) => ({ slug: r.reportSlug as string }));
+  return reviewRounds.filter((r) => r.reportSlug).map((r) => ({ slug: r.reportSlug as string }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: PageParams;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
   const { slug } = await params;
   const round = getReviewRoundByReportSlug(slug);
   if (!round) return { title: "Review report" };
-  return {
-    title: `${round.id} — review report`,
-    description: round.summary,
-  };
+  return { title: `${round.id} — review report`, description: round.summary };
 }
 
 async function loadReport(slug: string): Promise<string | null> {
@@ -41,11 +29,7 @@ async function loadReport(slug: string): Promise<string | null> {
   }
 }
 
-export default async function ReviewReportPage({
-  params,
-}: {
-  params: PageParams;
-}) {
+export default async function ReviewReportPage({ params }: { params: PageParams }) {
   const { slug } = await params;
   const round = getReviewRoundByReportSlug(slug);
   if (!round) notFound();
@@ -54,61 +38,17 @@ export default async function ReviewReportPage({
   if (!md) notFound();
 
   return (
-    <>
-      <p className="text-xs sans" style={{ marginBottom: 14 }}>
-        <Link
-          href="/reviews"
-          style={{ color: "var(--text-muted)", textDecoration: "none" }}
-        >
-          ← Review activity
-        </Link>
-      </p>
-
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "baseline",
-          gap: 10,
-          marginBottom: 4,
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "var(--font-mono-stack)",
-            fontSize: "0.74rem",
-            color: "var(--text-muted)",
-            letterSpacing: "0.04em",
-          }}
-        >
-          {round.dateISO}
-        </span>
-        <span
-          className={
-            round.kind === "external-browser"
-              ? "review-kind-badge is-external"
-              : "review-kind-badge"
-          }
-        >
-          {round.id}
-        </span>
-      </div>
-      <p
-        style={{
-          maxWidth: "72ch",
-          fontSize: "0.85rem",
-          color: "var(--text-muted)",
-          lineHeight: 1.55,
-          margin: "0 0 24px 0",
-        }}
-      >
-        {round.summary}
-      </p>
-
+    <Band>
+      <PageHeader
+        eyebrow={`${round.dateISO} · ${round.kind.replace(/-/g, " ")}`}
+        title={round.id}
+        lead={round.summary}
+        actions={[{ label: "← Review activity", href: "/reviews" }]}
+      />
       <article
         className="review-report-body"
         dangerouslySetInnerHTML={{ __html: renderMarkdown(md) }}
       />
-    </>
+    </Band>
   );
 }
