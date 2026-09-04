@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.11",
+      version: "v3M.0.12",
       readiness: 75,
-      pendingWork: "Science decision D-A3-9 (ledger row 9): transmitted amplitude restated as a two-scheme band f_NL^after in [-1.25,-0.50] (S1 vs S2, S2 finite on the raw ADM Lagrangian); Table IV gains an S2 row block. R5 verification board in progress. Houston final review pending.",
+      pendingWork: "R5 closure C1-C7 + DA3M-R5-15/18 integrated (S1/S2 transfer-bound scoped, NANOGrav Omega_GW corrected, Fig. 1 regenerated, first-order tensor null, gamma_cr coverage). One verification round remains under the R2 convergence budget. Houston final review pending.",
     },
     {
       slug: "paper-3",
