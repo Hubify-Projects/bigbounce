@@ -1,50 +1,50 @@
 {
   "manifest_version": "bigbounce-experiment/v1",
   "id": "p2-fnl-adjudication-inin-from-scratch",
-  "title": "Adjudication of the matter-contraction local f_NL: from-scratch in-in (validated on de Sitter and USR), delta-N on both slicings, long-mode shear — NEXT_SCIENCE_LEDGER #1 closure",
+  "title": "Adjudication of the matter-contraction local f_NL: from-scratch in-in (validated on de Sitter and USR), delta-N on both slicings, long-mode shear \u2014 NEXT_SCIENCE_LEDGER #1 closure",
   "program": "bounce-theory",
   "paper": "P2",
   "kind": "analysis",
   "inputs": [
     {
-      "name": "Cai, Xue, Brandenberger & Zhang 2009 (arXiv source matterbounceng2.tex, v2)",
-      "locator": "https://arxiv.org/e-print/0903.0631",
-      "used_for": "Eqs. 14-15 (mode function, cubic action), 20-21 (f_NL convention), 25-36 (per-vertex rows, read only for COMPARISON after the from-scratch computation), 37 (printed total), 38-40 (quoted amplitudes -35/8, -255/64, -9/4)"
+      "name": "Cai, Xue, Brandenberger & Zhang 2009 (arXiv source matterbounceng2.tex, v2) \u2014 used for: Eqs. 14-15 (mode function, cubic action), 20-21 (f_NL convention), 25-36 (per-vertex rows, read only for COMPARISON after the from-scratch computation), 37 (printed total), 38-40 (quoted amplitudes -35/8, -255/64, -9/4)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/e-print/0903.0631"
     },
     {
-      "name": "Li, Quintin, Wang & Cai 2016 (arXiv source)",
-      "locator": "https://arxiv.org/e-print/1612.02036",
-      "used_for": "Eq. 4.19 total shape function and Eq. 5.1 f_NL^local = -165/16 + 65/(8 c_s^2), independence audit"
+      "name": "Li, Quintin, Wang & Cai 2016 (arXiv source) \u2014 used for: Eq. 4.19 total shape function and Eq. 5.1 f_NL^local = -165/16 + 65/(8 c_s^2), independence audit",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/e-print/1612.02036"
     },
     {
-      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv source)",
-      "locator": "https://arxiv.org/e-print/1508.04141",
-      "used_for": "independence audit: the -35/16 there is a quotation attributed to Cai 2009, not a computation"
+      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv source) \u2014 used for: independence audit: the -35/16 there is a quotation attributed to Cai 2009, not a computation",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/e-print/1508.04141"
     },
     {
-      "name": "Maldacena 2003 (arXiv source)",
-      "locator": "https://arxiv.org/e-print/astro-ph/0210603",
-      "used_for": "cubic action; de Sitter three-point benchmark A_eps used to VALIDATE the machinery before use"
+      "name": "Maldacena 2003 (arXiv source) \u2014 used for: cubic action; de Sitter three-point benchmark A_eps used to VALIDATE the machinery before use",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/e-print/astro-ph/0210603"
     },
     {
-      "name": "Namjoo, Firouzjahi & Sasaki 2012",
-      "locator": "https://arxiv.org/abs/1210.3692",
-      "used_for": "ultra-slow-roll benchmark f_NL = 5/2 used to VALIDATE the field-redefinition term in a non-attractor phase"
+      "name": "Namjoo, Firouzjahi & Sasaki 2012 \u2014 used for: ultra-slow-roll benchmark f_NL = 5/2 used to VALIDATE the field-redefinition term in a non-attractor phase",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1210.3692"
     },
     {
-      "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013",
-      "locator": "https://arxiv.org/abs/1301.5699",
-      "used_for": "non-attractor in-in context (field-redefinition dominance, consistency-relation violation)"
+      "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013 \u2014 used for: non-attractor in-in context (field-redefinition dominance, consistency-relation violation)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1301.5699"
     },
     {
-      "name": "lab second-method delta-N (uniform-density slices)",
-      "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py (commit d7dac953)",
-      "used_for": "separate-universe system and the -55/16 result, reproduced here for general eps and compared with the comoving-slice delta-N"
+      "name": "lab second-method delta-N (uniform-density slices) \u2014 used for: separate-universe system and the -55/16 result, reproduced here for general eps and compared with the comoving-slice delta-N",
+      "type": "internal-artifact",
+      "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py (commit d7dac953)"
     },
     {
-      "name": "BigBounce Paper 2 Appendix A + scripts/p2_vertex_check.py",
-      "locator": "research/focused_paper_source_integration/02_full_draft.tex",
-      "used_for": "per-vertex table tab:vertexwalk and Eq. vertexsum, reproduced exactly; 'spurious term' narrative corrected"
+      "name": "BigBounce Paper 2 Appendix A + scripts/p2_vertex_check.py \u2014 used for: per-vertex table tab:vertexwalk and Eq. vertexsum, reproduced exactly; 'spurious term' narrative corrected",
+      "type": "internal-artifact",
+      "locator": "research/focused_paper_source_integration/02_full_draft.tex"
     }
   ],
   "apis": [],
@@ -83,15 +83,15 @@
     },
     {
       "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
-      "type": "writeup",
+      "type": "document",
       "checksum": null
     }
   ],
   "verification": "Re-run and diff the JSON. Required exact values: validation_deSitter_Maldacena == PASS; validation_USR_Namjoo == PASS; in_in_from_scratch.f_local_squeezed_isoceles == '-35/16'; f_equilateral == '-255/128'; f_folded == '-9/8'; f_squeezed_fixed_angle_mu == '15*mu**2/16 - 35/16'; every cai_row_differences value == '0'; cai_eq37_minus_total_distinct_monomial_reading == '0'; li_eq419_minus_total_at_cs1 == '0'; paper2_vertexwalk_table_reproduced == true; delta_N.comoving_slicing_fNL_eps_3_2 == '-5'; delta_N.uniform_density_slicing_fNL_general_eps == '5*(epsilon - 7)/8'; delta_N.linear_ratio_zeta_rho_over_zeta_c == '2'.",
   "status": "runnable-now",
   "provenance": [
-    "project-context/NEXT_SCIENCE_LEDGER.md row 1 (independent derivation of the matter-contraction f_NL) — adjudication step",
-    "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md §8 items 1-2 (the two open computations named there)",
+    "project-context/NEXT_SCIENCE_LEDGER.md row 1 (independent derivation of the matter-contraction f_NL) \u2014 adjudication step",
+    "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md \u00a78 items 1-2 (the two open computations named there)",
     "directive R (vision governance) and directive Q2 (reproducibility manifests)"
   ]
 }
