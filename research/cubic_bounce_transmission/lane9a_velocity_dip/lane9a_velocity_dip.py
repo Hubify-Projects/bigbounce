@@ -236,3 +236,54 @@ def main():
                 f"Hdot={r['Hdot_at_eta_amp_minus']:+.6g}  "
                 f"total-sector [phidot_B/phidot]^2 = "
                 f"{('%.4g' % f) if f is not None else 'divergent'}")
+
+    log("")
+    log("[2] lambda_zeta(k) and the S1-deviation transfer G(k)")
+    for tag, b in bgs.items():
+        tab = sweep(b, K_TABLE, tag)
+        plot = sweep(b, K_PLOT, tag)
+        res["sweeps"][tag] = {"table": tab, "plot": plot}
+        log(f"    --- {tag} ---")
+        log("      k*eta_B    lambda_zeta   lambda_S1     G(k)      Delta^2 ratio")
+        for r in tab:
+            log(f"      {r['k_etaB']:7.3g}   {r['lambda_zeta']:10.5f}   "
+                f"{r['lambda_zeta_S1_superhubble']:9.5f}   {r['G_transfer_over_S1']:8.5f}   "
+                f"{r['Delta2_ratio_vs_S1']:8.5f}")
+
+    log("")
+    log("[3] Quintin Eq. (79) amplification factor per background")
+    for tag, b in bgs.items():
+        lam_small = res["sweeps"][tag]["table"][0]["lambda_zeta"]
+        realisable = (tag == "quintin")
+        e79 = {"single_scalar_realisation_exists": realisable,
+               "reason": ("H = Upsilon(t-t_B) is Quintin's own single-field bounce ansatz; "
+                          "Hdot = Upsilon is constant across the NEC window, so a single "
+                          "field with constant kinetic normalisation has phidot^2 = "
+                          "2 M_p^2 Upsilon = const: T -> inf in their profile."
+                          if realisable else
+                          "effective-fluid background (no matter Lagrangian is specified); "
+                          "a matter-sector phidot is not definable without adding one. The "
+                          "only geometry-fixed velocity is the total-sector "
+                          "phidot^2 = -2 M_p^2 Hdot, which vanishes at eta_B by the "
+                          "definition of the NEC boundary and is not Quintin's phidot."),
+               "factor_Dt_over_T_0": eq79_factor(0.0),
+               "factor_if_T_equals_dt_amp": eq79_factor(1.0),
+               "adopted_factor": 1.0,
+               "lambda_zeta_measured_smallk": lam_small}
+        res["eq79"][tag] = e79
+        log(f"    {tag:8s} single-scalar realisation: "
+            f"{'YES' if realisable else 'NO (effective fluid)'} ; "
+            f"adopted [phidot_B/phidot(t_amp-)]^2 = {e79['adopted_factor']:.1f} "
+            f"(T -> inf); their T = Delta t_amp would give "
+            f"{e79['factor_if_T_equals_dt_amp']:.3f}")
+
+    log("")
+    log("[4] Eq. (44) propagation with the MEASURED growth (no dip)")
+    for tag, b in bgs.items():
+        dtB = b["params"].get("dtB", 2.0 * b["eta_B"])
+        for r in res["sweeps"][tag]["table"]:
+            key = f"{tag}@k_etaB={r['k_etaB']:g}"
+            res["eq44"][key] = eq44_propagation(r["lambda_zeta"], dtB)
+        rq = res["sweeps"][tag]["table"]
+        log(f"    {tag:8s} Delta zeta/zeta: "
+            + ", ".join(f"{r['k_etaB']:g}->{r['lambda_zeta']-1:+.3f}" for r in rq))
