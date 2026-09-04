@@ -112,3 +112,63 @@ $1$, and by $1+10^{-6}$ at $3$ — i.e. it switches off within a factor $\sim3$ 
 $k_{\rm LQC}\eta_B=1.06$, in agreement with ABS's own statement that the power spectrum is affected
 only for $k\lesssim k_{\rm LQC}$ (their §IV A). **The initial state changes this by less than a
 factor 8, and in the direction of *less* amplification, not more.**
+
+## 3. $\Delta f_{\rm NL}^{\rm bounce}(k\eta_B)$ per initial state
+
+Bulk V1–V7 integrated over the NEC window $[-\eta_B,+\eta_B]$; external legs and the R1–R4
+boundary terms at $\eta_*$. Squeezed isoceles, $k_1=0.02k$. **Headline $\eta_*=10\eta_B$**
+(the systematic is §3.2 and it is large — read that before quoting a single number).
+
+### 3.1 Table (headline $\eta_* = 10\,\eta_B$)
+
+| $k\eta_B$ | S-lab | S-ABS0 | S-ad4 | largest bulk vertex (fraction of bulk) |
+|---|---|---|---|---|
+| $10^{-3}$ (gate band) | $-0.09547$ | $-0.11392$ | $-0.09547$ | V2 (0.99) |
+| 0.1 | $-0.22407$ | $-0.24051$ | $-0.22407$ | V2 (1.01) |
+| 0.3 | $-2.3382$ | $-2.3309$ | $-2.3382$ | V2 (bulk sum $\simeq0$; see below) |
+| **1** | $\mathbf{+0.9403}$ | $\mathbf{+0.8315}$ | $\mathbf{+0.9473}$ | **V4 (0.64)** |
+| 3 | $-0.9381$ | $-0.8850$ | $-0.9381$ | V2 (bulk sum $\simeq0$) |
+| 10 | $-1.8974$ | $-1.8978$ | $-1.8974$ | V2 (2.7) |
+
+**Which vertex dominates at $k\eta_B\approx1$.** In the *bulk*, **V4**
+($-2a^3\epsilon^2 c_s^{-4}\,\dot\zeta\,\partial\zeta\,\partial\tilde\chi$; ABS's A7+A8) is the
+largest single term, $-0.1441$ of a bulk sum $-0.2261$, i.e. 64 %; V2 contributes $-0.1049$,
+V6 $+0.0180$, V7 $+0.0060$, V3 $-0.0011$. The **total**, however, is dominated by the *boundary*
+term **R2** ($\zeta\dot\zeta/H$), which supplies $+1.1735$ of the $+0.9403$ total — the bulk and
+R2 have opposite signs and R2 wins by a factor 5. This is a change of regime relative to
+$k\eta_B\lesssim10^{-2}$, where V2 alone carried 99 % of the answer and R1–R4 were $\lesssim10^{-4}$.
+Where the "fraction of bulk" exceeds 1 in the table above (rows 0.3 and 3) it is a **cancellation**
+inside the bulk sum, not dominance; those rows are reported as R2-dominated totals.
+
+### 3.2 Systematic A — $\eta_*$ dependence (the honest caveat)
+
+The lab's A3 model has **no inflationary phase**, so modes with $k\eta_B\gtrsim0.1$ never freeze:
+$\zeta$ keeps evolving and the boundary terms grow. $\Delta f_{\rm NL}^{\rm bounce}$ is therefore
+**not** $\eta_*$-independent outside the super-Hubble band, and the run measures how badly:
+
+| $k\eta_B$ | $\eta_*=1\eta_B$ | $2\eta_B$ | $5\eta_B$ | $10\eta_B$ | $30\eta_B$ | frac. spread |
+|---|---|---|---|---|---|---|
+| 0.1 | $+0.512$ | $+0.096$ | $-0.105$ | $-0.224$ | $-1.485$ | 8.3 |
+| 0.3 | $+0.365$ | $-0.039$ | $-0.482$ | $-2.338$ | $-2.353$ | 2.8 |
+| 1 | $-0.314$ | $-1.114$ | $-1.465$ | $+0.940$ | $-3.420$ | 4.1 |
+| 3 | $-0.453$ | $-0.692$ | $-0.823$ | $-0.938$ | $-1.516$ | 1.2 |
+| 10 | $-0.794$ | $-0.913$ | $-1.184$ | $-1.897$ | $-6.785$ | 2.6 |
+
+(S-ABS0 tracks S-lab column-by-column to $\le15\%$; full arrays in `results.json`.)
+The magnitude therefore is **$|\Delta f_{\rm NL}^{\rm bounce}| = 0.3$–$7$ over the whole
+$k\eta_B\in[0.1,10]$ band and over every $\eta_*\in[1,30]\eta_B$** — an $O(1)$–$O(10)$ number, with
+an $O(1)$–$O(10)$ evaluation-time ambiguity. No choice of $\eta_*$ in that range produces anything
+near $10^3$.
+
+### 3.3 Systematic B — how much the ABS-style state can move the answer
+
+Order-zero (Minkowski) vacuum imposed at $\eta_0$, at $k\eta_B=1$:
+
+| $\eta_0/\eta_B$ | $-2$ | $-3$ | $-10$ | $-30$ | $-100$ |
+|---|---|---|---|---|---|
+| $k^2/\mathfrak W(\eta_0)$ | 7.9 | 13.7 | 77 | 526 | 5247 |
+| $\vert\zeta_a/\zeta_b\vert$ | 1.0488 | 1.0390 | 1.0464 | 1.0466 | 1.0464 |
+| $\Delta f_{\rm NL}^{\rm bounce}$ | $+0.877$ | $+0.831$ | $+0.955$ | $+0.942$ | $+0.940$ |
+
+**The state-dependence of $\Delta f_{\rm NL}^{\rm bounce}$ is $\le13\%$** across all three states
+and all five $\eta_0$ values tested, at every $k\eta_B$ in the band.
