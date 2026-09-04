@@ -93,3 +93,76 @@ P = {j: sp.Symbol(f"P{j}") for j in LEGS}     # psi_j
 KX = {j: sp.Symbol(f"kx{j}") for j in LEGS}
 KY = {j: sp.Symbol(f"ky{j}") for j in LEGS}
 KV = {j: (KX[j], KY[j], sp.Integer(0)) for j in LEGS}   # coplanar triangle, k_z = 0
+
+
+# ---------------------------------------------------------------- the raw ADM Lagrangian (symbolic)
+def _field(amp, legs):
+    return MP({frozenset([j]): amp[j] for j in legs})
+
+
+def _grad(amp, i, legs):                       # d_i F  ->  i k_i F
+    return MP({frozenset([j]): sp.I * KV[j][i] * amp[j] for j in legs})
+
+
+def _grad2(amp, i, l, legs):                   # d_i d_l F  ->  -k_i k_l F
+    return MP({frozenset([j]): -KV[j][i] * KV[j][l] * amp[j] for j in legs})
+
+
+def raw_lagrangian(legs):
+    """(1/2) sqrt(h) [N R3 - 2 N V + N^-1 (E_ij E^ij - E^2) + N^-1 phidot^2] as an MP over `legs`,
+    with phidot^2 = -2 Hd, V = 3 H^2 + Hd, h_ij = a^2 e^{2 zeta} delta_ij, N = 1 + N1, N_i = d_i psi."""
+    zeta, N1 = _field(Z, legs), _field(N, legs)
+    dz = [_grad(Z, i, legs) for i in range(3)]
+    dp = [_grad(P, i, legs) for i in range(3)]
+    ddz = [[_grad2(Z, i, l, legs) for l in range(3)] for i in range(3)]
+    ddp = [[_grad2(P, i, l, legs) for l in range(3)] for i in range(3)]
+    lap_z = ddz[0][0] + ddz[1][1] + ddz[2][2]
+    gz2 = dz[0] * dz[0] + dz[1] * dz[1] + dz[2] * dz[2]
+    gzgp = dz[0] * dp[0] + dz[1] * dp[1] + dz[2] * dp[2]
+    zdot = _field(D, legs)
+    e2z, e3z, em2z, em4z = mp_exp(zeta, 2), mp_exp(zeta, 3), mp_exp(zeta, -2), mp_exp(zeta, -4)
+    invN = mp_inv1p(N1)
+    Nl = MP.const(1) + N1
+    # M_ij = nabla_i nabla_j psi on the conformally flat slice
+    M = [[ddp[i][l] - dz[i] * dp[l] - dz[l] * dp[i] + (gzgp if i == l else MP.const(0))
+          for l in range(3)] for i in range(3)]
+    trM = M[0][0] + M[1][1] + M[2][2]
+    trM2 = MP.const(0)
+    for i in range(3):
+        for l in range(3):
+            trM2 = trM2 + M[i][l] * M[l][i]
+    Hz = zdot + H_s                                   # H + zetadot
+    EE = (Hz * Hz) * (-6) + (Hz * em2z * trM) * (4 / a_s**2) + (em4z * (trM2 - trM * trM)) * (1 / a_s**4)
+    R3 = (em2z * (lap_z * 2 + gz2)) * (-2 / a_s**2)
+    V = 3 * H_s**2 + Hd_s
+    phidot2 = -2 * Hd_s
+    L = e3z * (Nl * R3 + Nl * (-2 * V) + invN * EE + invN * phidot2) * (a_s**3 / 2)
+    return L
+
+
+def build_kernels():
+    """Cubic Fourier kernel K3 (coefficient of E1E2E3) and quadratic kernel K2 (E1E2, k2 = -k1)."""
+    t0 = time.time()
+    L3 = raw_lagrangian(LEGS)
+    K3 = L3.coeff(LEGS)
+    L2 = raw_lagrangian((1, 2))
+    K2 = L2.coeff((1, 2)).subs({KX[2]: -KX[1], KY[2]: -KY[1]})
+    log(f"[symbolic] raw ADM cubic kernel built: {len(sp.Add.make_args(K3))} terms ({time.time() - t0:.1f} s)")
+    return K3, K2
+
+
+def constraint_gate(K2):
+    """Gate (i-a): vary the quadratic Fourier Lagrangian w.r.t. N1(-k) and psi(-k):
+    must give N1 = zetadot/H and psi = -zeta/H + chi, chi = -a^2 eps zetadot/k^2, eps = -Hd/H^2."""
+    k2 = KX[1]**2 + KY[1]**2
+    eqN = sp.diff(K2, N[2]); eqP = sp.diff(K2, P[2])
+    sol = sp.solve([eqN, eqP], [N[1], P[1]], dict=True)[0]
+    eps = -Hd_s / H_s**2
+    N_exp = D[1] / H_s
+    P_exp = -Z[1] / H_s - a_s**2 * eps * D[1] / k2
+    okN = sp.simplify(sol[N[1]] - N_exp) == 0
+    okP = sp.simplify(sol[P[1]] - P_exp) == 0
+    log(f"[gate i-a] Hamiltonian constraint -> N1 = {sp.simplify(sol[N[1]])}   (expected zetadot/H): {okN}")
+    log(f"[gate i-a] momentum constraint    -> psi = {sp.simplify(sol[P[1]])}   (expected -zeta/H - a^2 eps zetadot/k^2): {okP}")
+    assert okN and okP, "raw quadratic Lagrangian does not reproduce Maldacena Eq. 2.13-2.14"
+    return dict(N1=str(sp.simplify(sol[N[1]])), psi=str(sp.simplify(sol[P[1]])), passed=bool(okN and okP))
