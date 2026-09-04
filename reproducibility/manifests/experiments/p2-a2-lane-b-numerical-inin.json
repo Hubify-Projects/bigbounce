@@ -1,0 +1,92 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-a2-lane-b-numerical-inin",
+  "title": "Track A2 lane (b): numerical bounce-window in-in evaluation of Delta f_NL^bounce on the three A2 backgrounds — every vertex V1-V7 plus redefinition terms, scheme S1, with eta_*/window/step convergence tests and the S2 divergence diagnostic",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "a2_transmission_linear backgrounds + adiabatic-vacuum mode evolution",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": "sha256:bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+    },
+    {
+      "name": "lane (a) vertex table + regularisation prescription (S1/S2, pole orders, closed form -(5/24) rho_B)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/vertex_table.json",
+      "checksum": "sha256:dc7b99648f6c2c463bf3010f39adeb719860401ea108b4e393411ed95c50ea9e"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+      "entrypoint": "python3 bounce_cubic_inin.py",
+      "sha256": "a69b7f4b7e1743e54346a6351c5eb2e0299d3cafd3f3350da30bbec5e037f207"
+    }
+  ],
+  "environment": {
+    "python": "numpy 2.x, scipy (solve_ivp DOP853, CubicSpline, simpson), matplotlib (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-03",
+    "wall_clock": "4.0 s, measured",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 15 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic ODE + quadrature; imports bg_quintin/bg_lqc/bg_poly and evolve() from ../a2_transmission_linear.py. No random seeds, no external data, no network."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/dfnl_bounce_quintin.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/dfnl_bounce_lqc.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/dfnl_bounce_poly.png",
+      "type": "figure",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm in the log: gates Wronskian Im(mu* mu') = -0.50000000 on every leg, local redefinition F zeta^2 -> (5/3)F to <1e-12, triangle closure <1e-12; headline row k eta_B = 1e-3 gives V2 = -0.139586 (Quintin), -0.104198 (LQC), -0.126879 (poly) against lane (a)'s -(5/24) rho_B = -0.139581 / -0.104167 / -0.126875 (rel 3.3e-5 / 3.0e-4 / 3.4e-5); V1 and V5 identically zero in S1; V4 negative and V6+V7 positive but both <1.1e-4 of V2; totals Delta f_NL^bounce = -0.13982 / -0.10431 / -0.12711 and f_NL^after = -0.5008 / -0.6512 / -0.5548; eta_*-independence flat to 1.3-3.6 percent for eta_* >= 10 eta_B; step-size convergence 1e-8 or better; S2 V6+V7 d_cut log-log slope -1.005 to -1.007 (divergence, no regulated number).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item #2 second half (intrinsic bounce cubic contribution), lane (b) of three; lane (c) (Horndeski/dressed-metric vertex corrections) remains open",
+    "consumes lane (a): research/cubic_bounce_transmission/lane_a_vertex_table/ (manifest p2-a2-lane-a-cubic-vertex-table) — vertex table, S1/S2 schemes, closed form -(5/24) rho_B",
+    "consumes A2 linear transfer: research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md (manifest p2-a2-bounce-fnl-transmission) — backgrounds, adiabatic vacuum, T_fNL = (1-rho_B)/2",
+    "f_NL^before = -35/16 is an INPUT from ledger #1 (manifest p2-fnl-adjudication-inin-from-scratch), not recomputed",
+    "in-in conventions: research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py Sec. 1",
+    "corrects lane (a) Sec. 5: the S1 pure-time estimate '-(7/8)(5/24) rho_B' is not confirmed — the squeezed angular average of the V6/V7 kernels cancels the naive 1/8 weight to four digits"
+  ]
+}
