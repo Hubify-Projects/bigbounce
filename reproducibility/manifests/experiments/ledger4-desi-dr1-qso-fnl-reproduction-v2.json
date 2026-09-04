@@ -1,0 +1,142 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger4-desi-dr1-qso-fnl-reproduction-v2",
+  "title": "Ledger #4 v2 - cause-removal follow-up (window/IC, CAMB transfer, measured-shot-noise covariance, gal-lat systematics) on the DESI DR1 QSO f_NL^loc reproduction; supersedes ledger4-desi-dr1-qso-fnl-reproduction",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "DESI DR1 QSO clustering + randoms catalogues (LSScats v1.5) - NGC+SGC data, 4/18 randoms realisations per cap used in the headline fit (realisations 4-6 additionally downloaded/sha256'd for the blocked fix-3 attempt)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+      "checksum": "sha256 list in research/desi_png_reproduction/venv_setup/qso_randoms_1-3_sha256.txt and qso_randoms_4-6_sha256.txt",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (reproduction target)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2411.17623",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "cosmoprimo DESI fiducial cosmology (eisenstein_hu engine, baseline) + CAMB (fix 2, A_s-matched to cosmoprimo)",
+      "type": "external-literature",
+      "locator": "https://github.com/cosmodesi/cosmoprimo ; https://camb.readthedocs.io/",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI public data server (anonymous HTTP, no key)",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "research/desi_png_reproduction/window_conv.py",
+      "entrypoint": "python3 window_conv.py 4",
+      "sha256": "c17beb7cc760dab06d1cb24b1b580bcda40343d33701a64242d61d742b14fdc1"
+    },
+    {
+      "path": "research/desi_png_reproduction/camb_transfer.py",
+      "entrypoint": "python3 camb_transfer.py",
+      "sha256": "dc8b88d202824df24d069a7fe51a63e14e205778bb6e0c653da58a84dffa3053"
+    },
+    {
+      "path": "research/desi_png_reproduction/fit_fnl_v2.py",
+      "entrypoint": "python3 fit_fnl_v2.py --point --tk {eh,camb} [--window-ic] [--shotnoise-fixed] --out <file>",
+      "sha256": "29ecd96a2d470f09ef71f74e1be2369581ee2baf499f692a9f19cddd33bc3b73"
+    },
+    {
+      "path": "research/desi_png_reproduction/systest_gal_lat_fast.py",
+      "entrypoint": "python3 systest_gal_lat_fast.py",
+      "sha256": "3ce05519d38487e2905143f969f79b80bad1d86d26f262de41d5df58397b2011"
+    },
+    {
+      "path": "research/desi_png_reproduction/systest_splits_fit_v2.py",
+      "entrypoint": "python3 systest_splits_fit_v2.py",
+      "sha256": "f3cd557076434439774694cf5be82f24e47a91c2fd88083040e5d153b7db6d4f"
+    }
+  ],
+  "environment": {
+    "python": "python3.12.13 (dedicated venv: research/desi_png_reproduction/.venv312, gitignored) + camb 2.0.4 added this session (prebuilt macOS arm64 wheel, no gfortran issue)",
+    "hardware": "cpu-only; Apple M-series MacBook Air, 25.8 GB RAM, 10 cores, macOS 25.5.0 arm64 -- SHARED with concurrent sessions this run (swap usage peaked 24.4/25.6 GB, disk free swung 28GB-6GB-34GB from other activity, not this job)"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "window power computation ~11 min (NGC 77s + SGC 560s under contention); camb install+validation ~5 min; point-estimate fits (4 configs) ~2 min; n_ran=7 and n_ran=5 full-randoms attempts ~65 min combined, both killed without completing (fix 3 blocked); reduced-scope gal-lat systematics (nmesh=256, NGC-only) ~1 min; total session several hours, dominated by host-contention retries",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local (on an UNCONTENDED host -- this session's compute-time overruns were measured host-contention artifacts, not algorithmic cost)",
+    "est_wall_clock": "~20 min on an idle host with the venv + step-1 pypower P0/P2 outputs already present",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Requires outputs/pk_qso_{NGC,SGC}.json from the v1 pipeline (pk_estimator_qso.py) already on disk. Run order: window_conv.py 4 -> camb_transfer.py (sanity print) -> fit_fnl_v2.py --point --tk eh --out step0 -> --window-ic --out step1 -> --tk camb --window-ic --out step2 -> --tk camb --window-ic --shotnoise-fixed --out step4 -> systest_gal_lat_fast.py -> systest_splits_fit_v2.py. Fix 3 (full/expanded randoms) is UNRESOLVED -- retry PK_N_RAN=7 pk_estimator_qso.py on an idle host; realisations 4-6/cap are already downloaded+sha256'd (qso_randoms_4-6_sha256.txt), no new download needed. Known blockers this session: Fix 3 (full 18/cap or even 5-7/cap randoms) did not complete within this session's compute budget under measured host contention (concurrent sessions, swap 24+/25.6 GB) -- realisations 4-6/cap are downloaded+sha256'd and ready for a retry on an idle host. | Full pypower CatalogFFTWindow mode-mixing matrix (the plan's specified window-convolution method) is computationally infeasible in this environment at any tested scope (a 1-bin/1-ell minimal config exceeded 3 min CPU without completing) -- the shipped fix-1 uses a cheaper shuffled-randoms global-IC approximation instead, documented as a real simplification. | E(B-V), stellar-density, and depth/seeing systematics splits require the DESI imaging pixel-weight map, not downloaded this session. | Covariance remains analytic-diagonal (no EZmocks, no window mode-coupling) -- RunPod/EZmock contingency remains unauthorised per the governing plan."
+  },
+  "outputs": [
+    {
+      "locator": "research/desi_png_reproduction/outputs/window_qso_NGC.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/window_qso_SGC.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/fnl_fit_v2_step0_baseline.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/fnl_fit_v2_step1_windowic.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/fnl_fit_v2_step2_camb.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/fnl_fit_v2_step4_shotnoise.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/systest_splits_pk.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/systest_splits_fnl_v2.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/LEDGER4_RESULT_v2_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) step0 point estimate reproduces v1's MCMC medians to <1% (-50.43 vs -50.6 p=1.6, -26.06 vs -26.7 p=1.0) -- validates the point-estimate simplification; (b) step1 (window-IC) moves f_NL to -23.22/-12.00; (c) step2 (+CAMB, A_s-matched to cosmoprimo's 2.083e-9) moves to -16.68/-8.62; (d) step4 (measured-shotnoise covariance) leaves the central value at -16.68/-8.62 (Delta~0, as expected for a covariance-only change); (e) camb_transfer.py's T(k) differs from EH by -0.1% to -1.6% over k=0.003-0.05 (fnl_fit_v2_step2 vs step1 movement is NOT proportional to this small T(k) difference -- amplified via 1/alpha(k) sensitivity, documented in the result writeup); (f) gal-lat NGC-only split gives Delta f_NL=-197.3 (systest_splits_fnl_v2.json), confirming systematics >> statistics (sigma=18.5) as in v1's WEIGHT_SYS test (+62.4). Supersedes: ledger4-desi-dr1-qso-fnl-reproduction.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+    "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+    "research/desi_png_reproduction/RUN_LOG.md follow-up section (2026-09-04)",
+    "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md (v1, superseded)",
+    "research/desi_png_reproduction/LEDGER4_RESULT_v2_2026-09-04.md (this result)",
+    "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength)"
+  ]
+}
