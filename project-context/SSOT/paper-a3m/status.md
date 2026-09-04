@@ -2,10 +2,10 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-02 — v3M.0.5. R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
+last_updated: 2026-09-04 — v3M.0.8. Three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Readiness held at 75. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (9 pp / 0 undef refs / md5 67e1510e2b300ec683ed2e288ef1aefe)
-version: v3M.0.5 (2026-09-02, R2 closure — FINAL, rounds stop)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (10 pp / 0 undef refs / md5 0c61d2ab760a14e0ff27ca560585bcbf)
+version: v3M.0.8 (2026-09-04, science-gate closures — see "v3M.0.8" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
@@ -337,3 +337,95 @@ arXiv tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.7.tar.gz` sha256
 from scratch in /tmp (main.tex + pbh_compaction_fnl.png, inline
 `thebibliography` — no .bbl staleness risk), standalone extract+recompile
 smoke test PASS (0 undefined refs, 9 pages).
+
+## v3M.0.8 (2026-09-04) — three closed science-gate results integrated
+
+**Sources (all committed, pre-existing to this bundle):**
+`research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.md`,
+`research/theory_audit/fnl_monopole_adjudication_2026_09_03.md`,
+`research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md` §8
+(+ `lane_a_vertex_table/`, `lane_b_numerical/`, `lane_c_comparison/`),
+`research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md`.
+
+**(1) Method-independent squeezed-limit confirmation — Sec. II rewritten
+("Cross-check by a different route: closed").** The classical $\mathcal
+O(k^0)$ super-Hubble solution, organized by a shift decomposition
+([L] local / [K] shear-curvature, cancels / [X] shift, carries the
+quadrupole and $+5/4$ monopole / [S] sourced, suppressed), reproduces the
+in-in $-35/16$ result exactly and independently of the in-in commutator
+expansion. $\delta N_c=(1-\epsilon/3)\zeta$ (derived from the Friedmann
+equation at fixed $\phi$) resolves the gap to every separate-universe
+$\delta N$ value as an identity, not an open discrepancy. A companion
+Bianchi-I check confirmed the shear alone gives identically zero monopole,
+ruling that route out on its own and motivating the shift-decomposition
+resolution. Eq. label `eq:deltaNc` added.
+
+**(2) Bounce's own cubic term computed — new Sec. III.A.** Scheme S1
+(geometric/dressed-metric): $\Delta f_{\rm NL}^{\rm bounce}=-(5/24)\rho_B$,
+confirmed to $3\times10^{-4}$ by an independent finite-$k$ numerical in-in
+evaluation. Combined with the pre-existing linear transmission bound:
+$f_{\rm NL}^{\rm after}\in[-0.65,-0.50]$ across three backgrounds
+(Quintin-type $-0.501$, LQC $-0.651$, poly $-0.555$), valid for
+$k\eta_B\lesssim10^{-2}$ within scheme S1; scheme S2 does not regulate
+(reported as a non-result). Literature comparison: no contradiction with
+Quintin et al. 2015 (different term, same sign); not comparable as computed
+with Agullo, Bolliet & Sreenath 2017 (scheme-limited, quantum-geometric
+dressing not contained).
+
+**(3) Lab's own predicted spectrum in the PBH channel — new Sec. IV.C.**
+The lognormal stand-in of Sec. IV.B is supplemented (not replaced) with the
+lab's own CMB-anchored $\Delta_\zeta^2(k)$ fed into the same compaction
+machinery unmodified: a clean null, $f_{\rm PBH}=0$ exactly, $7.0$ orders of
+magnitude short of the required amplitude at every mass scale
+($10^{15}\,$g–$10^4\,M_\odot$). Required-amplitude ratio
+$A(-35/16)/A(-35/8)$ widens from $1.732\pm0.050$ to $1.7$–$1.9$ for this
+spectrum shape. FIRAS check: lab's own spectrum $\mu=1.65\times10^{-8}$
+(safely allowed); required early-SMBH-seed amplitude FIRAS-excluded by
+$\sim10^3$ if broadband, excluded even narrow for seeds $\ge10^4\,M_\odot$.
+
+**What was deliberately NOT changed.** The Sec. VI (Channel III, LSS)
+survey-reach table (`survey_reach_fnl.py` / `outputs/survey_reach_fnl.json`)
+was NOT recomputed at $f_{\rm NL}^{\rm after}$: it never applied a
+transmission factor (uses the pre-bounce $-35/16$ directly, as it did in
+every prior version), and the new scheme-S1 transmission result is validated
+only for $k\eta_B\lesssim10^{-2}$ — the PBH-scale regime — not for the
+CMB/LSS pivot scale ($k\sim0.05\,{\rm Mpc}^{-1}$) Channel III uses, which
+sits far outside that band. Applying $T_{\fnl}$ there without establishing
+validity would be unsupported extrapolation, not a hygiene fix; this gap is
+now explicit in the paper (Discussion, "Next steps" item (ii)) rather than
+silent.
+
+**Abstract.** Rewritten to state all three closures; 306 words (cap 307 per
+this SSOT's prior v3M.0.6 trim).
+
+**Hygiene (this commit).** `\paperVersion` v3M.0.8, `\date`/`\paperTimestamp`
+September 4, 2026; 4-pass pdflatex, 0 undefined refs (one benign
+`OMS/cmtt/m/n` font-shape warning, pre-existing pattern, not an undef ref);
+0 overfull hboxes >10pt (one pre-existing 2.7pt hbox, unrelated to this
+edit, carried from v3M.0.7); pdftoppm all 10 pages rendered at 55dpi and
+visually spot-checked (pp. 1, 3, 4, 7, 8, 9 — abstract, new §II, new §III.A,
+new §IV.C, Discussion) — clean two-column layout, no overflow, no path
+overflow. Page count grew 9→10pp from the new content. PDF md5
+`0c61d2ab760a14e0ff27ca560585bcbf` (sha256
+`8cf429e002d44c97308ccc994c9378a93b066e094de865d48f850d5e72291b9a`), 10
+pages, 564,544 bytes, mirrored byte-identical to
+`site/public/papers/a3_multichannel_arxiv_v3M.0.8.pdf`,
+`site/out/papers/a3_multichannel_arxiv_v3M.0.8.pdf`, and
+`public/papers/a3_multichannel_arxiv_v3M.0.8.pdf` (three-way md5 check:
+compile == served == Convex, all `0c61d2ab760a14e0ff27ca560585bcbf`).
+Convex `paperVersions:bump` (paperSlug `paper-a3m`) + `activityFeed:add`
+written; `sitePdfPath` confirmed updated on readback.
+`site/src/data/papers.ts`, `site/src/data/live-status.ts`,
+`site/src/data/publish.ts`, `site/src/data/reviewTimeline.ts` updated in the
+same bundle. Readiness held at **75** (unchanged — this bundle closes
+science items but the orchestrator sets readiness after a verification
+board, per this SSOT's standing convention).
+
+arXiv tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.8.tar.gz`
+sha256 `ad3680401e0c016965d5876d3148282d820369c3d075c3f518ac09082b09743e`,
+rebuilt from scratch in `/tmp` (main.tex + pbh_compaction_fnl.png, inline
+`thebibliography`, same convention as v3M.0.7), standalone extract+recompile
+smoke test PASS (0 undefined refs, 10 pages).
+
+**Not sourced from a committed file (disclosed).** None — every number
+above traces to the four source files listed at the top of this section.
