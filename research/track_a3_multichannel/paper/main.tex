@@ -62,7 +62,7 @@ two-scheme band, $[-1.25,-0.50]$ (S2, Quintin-type background only), not S1 alon
 We take the amplitude through three channels, each stated at the strength
 its evidence supports. (i)~\emph{Pulsar timing.} NANOGrav's 15-yr
 posteriors give $\gamma_{\rm HD}=3.2^{+0.6}_{-0.6}$ (official) and a refit
-$\gamma=2.567\pm0.382$; propagating this lab's own curvature spectrum
+$\gamma=2.567\pm0.382$; propagating this model's own curvature spectrum
 through the validated induced-GW kernel instead predicts
 $\gamma_{\rm pred}=5.07$, $5.1\sigma$ off, at $10^{14.3}$ below the
 NANOGrav amplitude -- a \emph{null}; insensitive to $\fnl$. (ii)~\emph{Primordial black holes.} The
@@ -436,8 +436,8 @@ enhancement}~\cite{AgulloBolliet2017}: its third-order Hamiltonian is, by
 the authors' own statement, the Legendre transform of the classical cubic
 action of Ref.~\cite{Maldacena2002} and contains no operator dependent on
 $\rho/\rho_c$ or the dressed potential; every one of its nine terms maps
-exactly onto scheme S1's vertex table, correcting an earlier statement in
-this program that the operator was absent from S1. Evaluated with the
+exactly onto scheme S1's vertex table; the operator is not absent from S1.
+Evaluated with the
 \emph{exact} LQC-dust dressed-metric mode functions -- not the
 super-Hubble reduction -- across $k\eta_B\in[0.1,10]$ and three choices of
 initial vacuum state, the resulting bispectrum shows no counterpart of the
@@ -531,9 +531,10 @@ for $k\eta_B\lesssim10^{-2}$ (set by the competing requirements that the
 post-bounce integral converge and the super-Hubble boundary treatment hold)
 and only within scheme S1.
 
-\textit{Scheme S2, resolved.}---An earlier version of this program reported
-the effective-fluid scheme S2 as divergent at the bounce and quoted no
-number. That divergence is now shown to be an artefact of the standard
+\textit{Scheme S2, resolved.}---The effective-fluid scheme S2's cubic
+bounce-window integral, previously reported divergent with no quoted
+number, is now shown to be finite: the divergence is an artefact of the
+standard
 integrated-by-parts (Maldacena/Chen) form of the cubic action, which
 introduces explicit $1/H$ factors singular exactly at the bounce; on the
 exact linear S2 mode functions the comoving-gauge lapse and shift,
@@ -606,10 +607,10 @@ process~\cite{CaiPiSasaki2020}. $\gamma = 3$ ($\OmGW \propto f^2$) is the
 slope Papanikolaou~\cite{Papanikolaou2025} derives for a matter bounce whose
 source spectrum carries a specific near-linear low-$k$ growth,
 $P_\mathcal{R}\propto k$; we retain it below only as a contrast case, since
-\S\ref{sec:pta_null} shows this lab's own committed spectrum does not have
+\S\ref{sec:pta_null} shows this model's own committed spectrum does not have
 that growth and does not reproduce $\gamma=3$.
 
-\subsection{Official posterior and this lab's refit}
+\subsection{Official posterior and this program's refit}
 
 The primary comparison for this channel is NANOGrav's own published result:
 fitting the 15-yr Hellings--Downs-correlated free-spectrum posterior on the
@@ -653,7 +654,7 @@ quoted to one significant figure for the same reason.
 \begin{table}[t]
 \caption{\label{tab:pta}Channel I. Tensions against the official NANOGrav
 $14$-bin posterior ($\gamma_{\rm HD}=3.2^{+0.6}_{-0.6}$, $\sigma\approx0.365$)
-and against this lab's $30$-bin refit (Eq.~\eqref{eq:gamma}), with the
+and against this program's $30$-bin refit (Eq.~\eqref{eq:gamma}), with the
 refit's Savage--Dickey factor where the chain has posterior support; the
 official posterior is the primary comparison and the refit is a secondary,
 differently-conditioned cross-check, not directly comparable to it. The
@@ -730,7 +731,7 @@ values; they are not by themselves a test of the matter bounce, since
 $\gamma=3$ was not derived from this model's own spectrum but borrowed from
 Papanikolaou~\cite{Papanikolaou2025}'s low-$k$ tail, whose source carries a
 small-scale enhancement that \S\ref{sec:pbh_inlab} shows this model's
-spectrum does not have. We therefore propagate this lab's own committed
+spectrum does not have. We therefore propagate this model's own committed
 curvature spectrum, $\Delta^2_\zeta(k)=A_s(k/k_*)^{n_s-1}$ with
 $A_s=2.1\times10^{-9}$, $k_*=0.05\,{\rm Mpc}^{-1}$, $n_s=0.9649$
 (\texttt{outputs/inlab\_delta2\_zeta\_2026-09-03.json}), through the
@@ -988,7 +989,7 @@ Sec.~\ref{sec:pbh_compaction}'s spectrum shape is a lognormal stand-in with a
 \emph{scanned} amplitude, because Choudhury \textit{et al.}'s spectrum is not
 reconstructible from their published paper. Removing that dependence,
 Eq.~\eqref{eq:pbh_ratio}'s amplitude ratio can instead be evaluated for the
-spectrum this lab's own matter-contraction model actually predicts: a
+spectrum this matter-contraction model actually predicts: a
 near-scale-invariant power law, $n_s-1=12w/(1+3w)$, anchored to the Planck
 2018 amplitude $A_s=2.1\times10^{-9}$ at $k_*=0.05\,{\rm Mpc}^{-1}$ and
 tilted by the small deviation from $w=0$ ($n_s=0.9649$), extrapolated across
@@ -1157,7 +1158,7 @@ localizing the factor-of-two slip in Cai \textit{et al.} (2009), and now
 confirmed by a method-independent route (Sec.~\ref{sec:crosscheck}) -- is
 not contradicted by any channel currently able to speak, but three of the
 four channels tested are honest nulls rather than supporting consistencies.
-Pulsar timing: propagating this lab's own committed curvature spectrum
+Pulsar timing: propagating this model's own committed curvature spectrum
 through the validated induced-GW kernel gives $\gamma_{\rm pred}=5.07$
 ($5.00$, dust bracket), $5.1\sigma$ ($4.9\sigma$) from NANOGrav's measured
 $\gamma_{\rm HD}=3.2\pm0.6$, at an amplitude $10^{14.3}$ below the NANOGrav
