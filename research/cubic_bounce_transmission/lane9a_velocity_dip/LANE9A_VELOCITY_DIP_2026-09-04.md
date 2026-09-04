@@ -84,3 +84,52 @@ $\dot\phi^2=2M_p^2\Upsilon=\text{const}$. That is exactly $T\to\infty$ in their 
 $\exp(0)=1$. Their own $T=\Delta t_{\rm amp}$ choice would give $e^2=7.389$; the lab's geometry
 supplies no reason to choose it. This upgrades lane (c) §2.3 item 2 ("the lab's backgrounds carry no
 scalar-velocity dip") from an assertion to a result.
+
+## 2. The lab's own growth factor, extended into $k\eta_B\in[0.1,10]$
+
+Machinery: `a2_transmission_linear.evolve()` — adiabatic-vacuum initial data in the contracting
+matter era, full finite-$k$ Mukhanov–Sasaki evolution $\mu''=(k^2-a''/a)\mu$ across the bounce,
+then **exact** projection onto the $S/C$ matter basis at both ends (no super-Hubble approximation
+anywhere in the measurement). Two quantities:
+
+- $\lambda_\zeta(k)=|\alpha_{\rm post}|/|\zeta(-\eta_B)|$ — the lab's $\lambda_\zeta$ with the
+  numerically evolved $\zeta=\mu/a$ at the NEC boundary in the denominator.
+- $G(k)=|\alpha_{\rm post}|/|\alpha_{\rm pre}+2\beta_{\rm pre}I_\infty|$ — the ratio of the true
+  transfer to the **S1 super-Hubble prediction** $(\alpha,\beta)\to(\alpha+2\beta I_\infty,\beta)$.
+  $G=1$ means the S1 formula is exact. $\Delta^2_\zeta$ ratio $=G^2$. **This is the quantity the
+  $k\eta_B\lesssim10^{-2}$ band never tested.**
+
+| $k\eta_B$ | Quintin $\lambda_\zeta$ | $G$ | $\Delta^2$ ratio | LQC $\lambda_\zeta$ | $G$ | $\Delta^2$ | poly $\lambda_\zeta$ | $G$ | $\Delta^2$ |
+|---|---|---|---|---|---|---|---|---|---|
+| 0.1 | 5.971 | 1.0130 | 1.026 | 3.919 | 1.0380 | 1.077 | 4.898 | 0.9523 | 0.907 |
+| 0.3 | 5.446 | 1.1057 | 1.223 | 3.553 | 1.2744 | 1.624 | 3.722 | 0.7433 | 0.552 |
+| 1 | 3.543 | 1.2111 | 1.467 | 4.582 | 1.0491 | 1.101 | 0.952 | 0.2829 | 0.080 |
+| 3 | (17.0)† | 1.0012 | 1.002 | (40.0)† | 0.9996 | 0.999 | (11.8)† | 0.9949 | 0.990 |
+| 10 | (189.8)† | 0.9974 | 0.995 | (448.1)† | 1.0000 | 1.000 | (133.2)† | 1.0000 | 1.000 |
+
+† For $k\eta_B\gtrsim1$ the mode is sub-Hubble at the bounce and $|\zeta(-\eta_B)|$ samples an
+oscillation phase, so the $\lambda_\zeta$ column stops being a growth factor there and is flagged as
+such in the log and on the figure. $G(k)$ stays well defined at all $k$ (both ends are projected,
+not sampled) and is the quantity carried forward.
+
+**Band extrema** (46-point log sweep, $k\eta_B\in[10^{-3},30]$), against the small-$k$ numerical
+floor $|G-1|$ measured at $k\eta_B\le10^{-2}$ where S1 is exact by construction:
+
+| background | floor $|G-1|$ | extremum $G$ | at $k\eta_B$ | $\Delta^2$ ratio | significant? |
+|---|---|---|---|---|---|
+| Quintin-type | $1.35\times10^{-2}$ | **1.328** | 0.768 | **1.76** | yes ($>5\times$ floor) |
+| LQC dust | $2.18\times10^{-2}$ | **1.497** | 0.611 | **2.24** | yes |
+| poly non-LQC | $8.35\times10^{-4}$ | **0.241** | 0.768 | **0.058** | yes |
+
+The $1.3$–$2.2\%$ small-$k$ floor on the Quintin/LQC backgrounds is a systematic of the matter-basis
+fit ($A$, $\eta_{\rm off}$) in the numerically-tabulated tails, not a physical $k$-dependence; it is
+reported rather than subtracted, and every band feature exceeds it by more than an order of
+magnitude. ODE convergence is far below it: $\le8.2\times10^{-8}$ for rtol $10^{-11}\to10^{-9}$ and
+exactly $0$ for $\eta_{\rm far}\times2$.
+
+**Shape of the result.** There *is* a real feature, and it lives exactly where the S1 band ends: a
+single-decade transfer excursion peaking at $k\eta_B\simeq0.6$–$0.8$, dying to $|G-1|<1\%$ for
+$k\eta_B\gtrsim3$ on all three backgrounds. Its **sign is background-dependent** — enhancement on
+the Quintin-type ($\times1.76$ in $\Delta^2$) and LQC ($\times2.24$) backgrounds, strong suppression
+on the poly background ($\times0.058$) — so it is a property of the individual $a(\eta)$ profile, not
+a robust prediction of "a bounce". Figure: `lane9a_growth_vs_ketaB.png`.
