@@ -231,3 +231,60 @@ def growth_factor(m, bg, Wspl, eta_ref):
                 omega=float(wp), growth_factor=G, power_modification=float(G ** 2),
                 beta_sq_after=float(max(0.0, (Np - 1.0) / 2.0)),
                 beta_sq_before=float(max(0.0, (Nm - 1.0) / 2.0)))
+
+
+# =====================================================================
+# [F] Delta f_NL^bounce with exact modes
+# =====================================================================
+def dfnl(bg, modes, ks, D, eta_star, npts=20001):
+    """Scheme-S1 bounce-window in-in: bulk V1-V7 over [-eta_B, eta_B] + redefinition
+    R1-R4 at eta_*.  Machinery imported verbatim from lane (b)."""
+    eB = bg["eta_B"]
+    fv, P, Psum = lb.vertex_fnl(bg, modes, ks, D, -eB, eB, eta_star, npts=npts)
+    fr, H = lb.redef_fnl(bg, modes, ks, D, eta_star)
+    bulk, red = sum(fv.values()), sum(fr.values())
+    dom = max(fv, key=lambda n: abs(fv[n]))
+    return dict(vertices={n: float(v) for n, v in fv.items()},
+                redefinition={n: float(v) for n, v in fr.items()},
+                bulk_sum=float(bulk), redef_sum=float(red), total=float(bulk + red),
+                dominant_vertex=dom,
+                dominant_vertex_fraction=float(abs(fv[dom]) / abs(bulk)) if bulk else None,
+                P=[float(p) for p in P], eta_star_over_etaB=float(eta_star / eB))
+
+
+def build_modes(bg, ks, state, eta_far, eta0):
+    ms = [ModesIC(bg, float(kk), state, eta_far, eta0=eta0) for kk in ks]
+    if not all(getattr(m, "ok", False) for m in ms):
+        return None, [m.info for m in ms]
+    return ms, [m.info for m in ms]
+
+
+def run_gate(bg, eta_far, out):
+    """GATE (implemented first): at k*eta_B = 1e-3 with the lab state, the exact-mode
+    pipeline must reproduce lane (b)'s LQC total to <= 1e-3 relative."""
+    ref_path = os.path.join(HERE, "..", "lane_b_numerical", "results.json")
+    ref = json.load(open(ref_path))["backgrounds"]["lqc"]
+    row = [e for e in ref["k_scan"] if abs(e["k_etaB"] - K_GATE) < 1e-12][0]
+    eB = bg["eta_B"]
+    k = K_GATE / eB
+    ks = np.array([SQUEEZE * k, k, k])
+    D = lb._dots(*ks)
+    ms, info = build_modes(bg, ks, "S-lab", eta_far, None)
+    assert ms is not None, info
+    es = row["eta_star_over_etaB"] * eB
+    got = dfnl(bg, ms, ks, D, es, npts=8001)
+    rel = abs(got["total"] - row["total"]) / abs(row["total"])
+    rel_analytic = abs(got["total"] - (-5.0 / 48.0)) / (5.0 / 48.0)
+    passed = bool(rel <= 1e-3)
+    log(f"\n[GATE] k*eta_B = {K_GATE}, state S-lab, eta_* = {row['eta_star_over_etaB']:g} eta_B")
+    log(f"  lane (b) total   = {row['total']:+.10f}")
+    log(f"  lane 9c-2 total  = {got['total']:+.10f}   rel = {rel:.3e}   -> {'PASS' if passed else 'FAIL'}")
+    log(f"  lane (a) closed form -5/48 = {-5/48:+.10f}   rel(9c-2 vs -5/48) = {rel_analytic:.3e}")
+    log(f"  Wronskian Im(mu* mu') = {np.mean([m.wronskian(0.0) for m in ms]):+.9f} (exact -0.5)")
+    out["gate"] = dict(k_etaB=K_GATE, laneB_total=row["total"], lane9c2_total=got["total"],
+                       rel_vs_laneB=float(rel), tolerance=1e-3, passed=passed,
+                       analytic_minus_5_over_48=-5.0 / 48.0,
+                       rel_vs_analytic=float(rel_analytic),
+                       wronskian=float(np.mean([m.wronskian(0.0) for m in ms])),
+                       vertices=got["vertices"], redefinition=got["redefinition"])
+    return passed
