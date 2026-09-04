@@ -1,35 +1,15 @@
-import { papers, getPaperBySlug } from"@/data/papers";
-import {
-  getLivePapers,
-  getNotablesForPaper,
-  getFiguresForPaper,
-  displayVersion,
-} from"@/lib/livePapers";
-import { sortedReviewRounds, type PaperId } from"@/data/reviewTimeline";
-import { PaperFigureGallery } from"./PaperFigureGallery";
-import { Badge } from"@/components/ui/badge";
-import { Button } from"@/components/ui/button";
-import { MathText } from"@/components/MathText";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from"@/components/ui/card";
-import { Separator } from"@/components/ui/separator";
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from"@/components/ui/tabs";
-import { Alert, AlertTitle, AlertDescription } from"@/components/ui/alert";
-import { ExternalReviewPanel } from"@/components/ExternalReviewPanel";
-import { PublicationPath } from"@/components/PublicationPath";
-import { Download, ExternalLink, FileText } from"lucide-react";
-import Link from"next/link";
-import { notFound } from"next/navigation";
-import type { Metadata } from"next";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { papers, getPaperBySlug } from "@/data/papers";
+import { getLivePapers, getFiguresForPaper, displayVersion } from "@/lib/livePapers";
+import { sortedReviewRounds, type PaperId } from "@/data/reviewTimeline";
+import { reproExperiments } from "@/data/repro";
+import { paperSlugForCode } from "@/lib/reproLab";
+import { MathText } from "@/components/MathText";
+import { Band, PageHeader, EvidenceChip, type EvidenceGrade } from "@/components/primitives";
+import { ExternalReviewPanel } from "@/components/ExternalReviewPanel";
+import { PaperFigureGallery } from "./PaperFigureGallery";
 
 export function generateStaticParams() {
   return papers.map((p) => ({ slug: p.slug }));
@@ -37,598 +17,252 @@ export function generateStaticParams() {
 
 type PageParams = Promise<{ slug: string }>;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: PageParams;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
   const { slug } = await params;
   const paper = getPaperBySlug(slug);
-  if (!paper) return { title:"Not Found" };
-  return {
-    title: `Paper ${paper.number}`,
-    description: paper.title,
-  };
+  if (!paper) return { title: "Not found" };
+  return { title: paper.plainTitle, description: paper.plainTitle };
 }
 
-const statusVariantMap: Record<
-  string,
-"default" |"secondary" |"destructive" |"outline"
-> = {
-  green:"default",
-  blue:"secondary",
-  amber:"outline",
-  red:"destructive",
+const SLUG_TO_PAPER_ID: Record<string, PaperId> = {
+  "paper-1a": "P1A",
+  "paper-1b": "P1B",
+  "paper-2": "P2",
+  "paper-3": "P3",
+  "paper-4": "P4",
+  "paper-5": "P5",
 };
 
-function readinessColor(pct: number) {
-  if (pct === 100) return"progress-fill-success";
-  if (pct >= 90) return"progress-fill-near";
-  return"progress-fill-caution";
+/** Pulls "md5 <hex>" out of a paper's pdfMeta artifact line for the header meta row. */
+function extractMd5(pdfMeta: string): string | null {
+  const m = pdfMeta.match(/md5 ([0-9a-f]{6,32})/i);
+  return m ? m[1].slice(0, 12) : null;
 }
 
-export default async function PaperDetailPage({
-  params,
-}: {
-  params: PageParams;
-}) {
+function stateLabel(status: string | null, staticVariant: string): string {
+  switch (status) {
+    case "active-drive-to-100":
+      return "active";
+    case "paused-houston-external":
+      return "paused — author review";
+    case "submitted-arxiv":
+      return "submitted to arXiv";
+    case "in-revision":
+      return "in revision";
+    case "accepted":
+      return "accepted";
+    default:
+      return staticVariant === "green" ? "ready" : staticVariant === "blue" ? "active" : "draft";
+  }
+}
+
+/** Heuristic evidence grade for a one-line result claim — used only until a
+ * per-result grade field exists on Paper. Nulls stay "null" (never red). */
+function claimGrade(text: string): EvidenceGrade {
+  const t = text.toLowerCase();
+  if (t.includes("null") || t.includes("no dipole") || t.includes("excludes") || t.includes("rules out")) return "null";
+  if (t.includes("derive") || t.includes("exact") || t.includes("amplitude")) return "derived";
+  if (t.includes("confirm") || t.includes("measure")) return "measured";
+  return "open";
+}
+
+export default async function PaperDetailPage({ params }: { params: PageParams }) {
   const { slug } = await params;
   const paper = getPaperBySlug(slug);
   if (!paper) notFound();
 
-  // Single source of truth for paper-level numeric state: Convex via getLivePapers.
-  // The static papers.ts retains descriptive content (title, tldr, path,
-  // figures, artifacts) but readiness + version + lastUpdated come from Convex so
-  // they can never drift relative to the homepage dashboard.
-  const [liveStates, notables, figures] = await Promise.all([
+  const [liveStates, figures] = await Promise.all([
     getLivePapers(),
-    getNotablesForPaper(slug),
     getFiguresForPaper(slug),
   ]);
-  // Review history — single-sourced from data/reviewTimeline.ts (same source
-  // as /reviews) so the per-paper list can never go stale relative to the
-  // timeline. Previously a separate Convex externalReviews table drifted.
-  const SLUG_TO_PAPER_ID: Record<string, PaperId> = {
-    "paper-1a": "P1A",
-    "paper-1b": "P1B",
-    "paper-2": "P2",
-    "paper-3": "P3",
-    "paper-4": "P4",
-    "paper-5": "P5",
-  };
-  const paperId = SLUG_TO_PAPER_ID[slug];
-  const paperRounds = paperId
-    ? sortedReviewRounds().filter((r) => r.papers.includes(paperId))
-    : [];
-  const recentRounds = paperRounds.slice(0, 6);
-  const inPaperFigures = figures.filter((f) => (f.status ?? "in-paper") === "in-paper");
-  const candidateFigures = figures.filter((f) => f.status === "candidate");
   const live = liveStates.find((p) => p.slug === slug);
+  const focusAreas = live?.focusAreas ?? [];
   const readiness = live?.readinessComputed ?? paper.readiness;
   const version = displayVersion(live?.currentVersion ?? paper.version);
   const lastUpdated = live?.lastUpdated ?? paper.lastUpdated;
-  const liveStatus = live?.status ?? null;
+  const state = stateLabel(live?.status ?? null, paper.statusVariant);
   const openSummary = live
-    ? `${live.openBlockers}B/${live.openMajors}M/${live.openMinors}m/${live.openCaveats}C open`
+    ? `${live.openBlockers}B / ${live.openMajors}M / ${live.openMinors}m / ${live.openCaveats}C open`
     : null;
-  const liveSource = live?.source ?? "static-fallback";
 
-  const staticVariant = paper.statusVariant;
-  function statusLabel(s: string | null): string {
-    switch (s) {
-      case "active-drive-to-100":
-        return "active";
-      case "paused-houston-external":
-        return "paused (author review)";
-      case "submitted-arxiv":
-        return "submitted to arXiv";
-      case "in-revision":
-        return "in revision";
-      case "accepted":
-        return "accepted";
-      default:
-        return staticVariant === "green"
-          ? "ready"
-          : staticVariant === "blue"
-            ? "active"
-            : staticVariant === "amber"
-              ? "draft"
-              : "blocked";
-    }
-  }
+  const inPaperFigures = figures.filter((f) => (f.status ?? "in-paper") === "in-paper");
+  const candidateFigures = figures.filter((f) => f.status === "candidate");
 
-  const livePdfHref = live?.sitePdfPath ?? null;
-  // Canonical focus bullets + novelty tier from Convex (Gap #4 + Gap #2).
-  // Falls back to empty array when running on the static path so the page
-  // still renders. Houston picks the novelty tier per-paper via the
-  // papers:setNovelty mutation — null means "not yet assigned".
-  const focusAreas = live?.focusAreas ?? [];
-  const novelty = live?.novelty ?? null;
-  const pdfArtifactRaw = paper.artifacts.find(
-    (a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"),
-  );
-  const downloadArtifactRaw = paper.artifacts.find(
-    (a) => a.download && a.href.toLowerCase().endsWith(".pdf"),
-  );
-  // Override static artifact hrefs with live Convex sitePdfPath (versioned, CDN-fresh URL)
-  const pdfArtifact = pdfArtifactRaw && livePdfHref
-    ? { ...pdfArtifactRaw, href: livePdfHref }
-    : pdfArtifactRaw;
-  const downloadArtifact = downloadArtifactRaw && livePdfHref
-    ? { ...downloadArtifactRaw, href: livePdfHref }
-    : downloadArtifactRaw;
-  const supplementaryArtifacts = paper.artifacts.filter(
-    (a) => a !== pdfArtifactRaw && a !== downloadArtifactRaw,
-  );
+  const paperId = SLUG_TO_PAPER_ID[slug];
+  const paperRounds = paperId ? sortedReviewRounds().filter((r) => r.papers.includes(paperId)) : [];
+  const recentRounds = paperRounds.slice(0, 5);
+
+  const manifests = reproExperiments.filter((e) => paperSlugForCode(e.paper) === slug);
+
+  const pdfArtifactRaw = paper.artifacts.find((a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"));
+  const pdfHref = live?.sitePdfPath ?? pdfArtifactRaw?.href ?? null;
+  const texArtifact = paper.artifacts.find((a) => a.label?.toLowerCase().includes("latex"));
+  const doiLink = paper.artifacts.find((a) => a.label?.toLowerCase().includes("doi") || a.label?.toLowerCase().includes("zenodo") || a.label?.toLowerCase().includes("arxiv"));
+
+  const role = paper.publicationRole.toLowerCase();
+  const kind = role.includes("software")
+    ? "Software"
+    : role.includes("data release")
+      ? "Data release"
+      : role.includes("note")
+        ? "Note"
+        : "Paper";
 
   return (
     <>
-      <div className="paper-detail-hero">
-        <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          <Link
-            href="/paper"
-            style={{ color:"var(--text-muted)", textDecoration:"none" }}
-          >
-            Papers
-          </Link>{""}
-          &rarr; Paper {paper.number}
+      <Band width="prose">
+        <p className="row-purpose" style={{ marginBottom: 4 }}>
+          <Link href="/papers">All works</Link> &rarr; {kind}
         </p>
-        <div className="paper-detail-grid grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <div className="paper-detail-copy">
-            <div className="paper-detail-kicker flex flex-wrap gap-2">
-              <span>Paper {paper.number}</span>
-              <span>{paper.preprintId}</span>
-              <span>{paper.pages} pages</span>
-              <span>{paper.refs} refs</span>
-              <span>Target: {paper.target}</span>
-            </div>
-            <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
-              Paper {paper.number}
-            </h1>
-            <p className="subtitle"><MathText>{paper.title}</MathText></p>
-            <p style={{ marginTop: 6, fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-              {paper.plainTitle}
-            </p>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <Badge variant={statusVariantMap[paper.statusVariant]}>
-                {readiness}% · {statusLabel(liveStatus)}
-              </Badge>
-              <Badge variant="outline">{version}</Badge>
-              {liveSource === "convex" && (
-                <Badge
-                  variant="outline"
-                  title="readiness + version updated in real time (computed from open findings + caveats)"
-                  style={{
-                    borderColor: "color-mix(in srgb, var(--success) 45%, transparent)",
-                    color: "var(--success)",
-                  }}
-                >
-                  ● live
-                </Badge>
-              )}
-              {openSummary && (
-                <Badge
-                  variant="outline"
-                  title="Open: BLOCKERs / MAJORs / minors / Caveats"
-                >
-                  {openSummary}
-                </Badge>
-              )}
-            </div>
-            <p style={{ marginTop: 14, fontSize: "0.92rem", color: "var(--text-muted)", lineHeight: 1.55 }}>
-              {paper.tldr}
-            </p>
-            {(pdfArtifact || downloadArtifact) && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {pdfArtifact && (
-                  <Button asChild size="default">
-                    <a
-                      href={pdfArtifact.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FileText size={16} />
-                      Read PDF
-                    </a>
-                  </Button>
-                )}
-                {downloadArtifact && (
-                  <Button asChild size="default" variant="outline">
-                    <a href={downloadArtifact.href} download>
-                      <Download size={16} />
-                      Download PDF
-                    </a>
-                  </Button>
-                )}
-              </div>
-            )}
+        <PageHeader
+          eyebrow={kind}
+          title={<MathText>{paper.title}</MathText>}
+          lead={paper.plainTitle}
+          meta={[
+            { label: "version", value: version, mono: true },
+            { label: "date", value: lastUpdated ?? "—", mono: true },
+            { label: "pages", value: paper.pages, mono: true },
+            { label: "md5", value: extractMd5(paper.pdfMeta) ?? "—", mono: true },
+            { label: "target", value: paper.target, mono: true },
+          ]}
+        />
+      </Band>
+
+      <Band width="prose">
+        <div className="page-header-actions" style={{ borderTop: "1px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "12px 0" }}>
+          {pdfHref && <a href={pdfHref} target="_blank" rel="noreferrer" className="page-header-action">Read PDF</a>}
+          {doiLink && <a href={doiLink.href} target="_blank" rel="noreferrer" className="page-header-action">{doiLink.label.toLowerCase().includes("arxiv") ? "arXiv" : "DOI"}</a>}
+          {texArtifact && <a href={texArtifact.href} target="_blank" rel="noreferrer" className="page-header-action">Source .tex</a>}
+          {manifests.length > 0 && <a href="#reproduce" className="page-header-action">Reproduction manifest</a>}
+          {(inPaperFigures.length + candidateFigures.length) > 0 && <a href="#figures" className="page-header-action">Figures</a>}
+        </div>
+      </Band>
+
+      <Band width="prose">
+        <h2 className="section-h2">Abstract</h2>
+        <p className="prose-body"><MathText>{paper.description}</MathText></p>
+      </Band>
+
+      <Band width="prose">
+        <h2 className="section-h2">Result summary</h2>
+        <ul className="result-summary-list">
+          {paper.keyResults.slice(0, 4).map((r, i) => (
+            <li key={i}>
+              <EvidenceChip grade={claimGrade(r)} />
+              <span><MathText>{r}</MathText></span>
+            </li>
+          ))}
+        </ul>
+      </Band>
+
+      {(inPaperFigures.length > 0 || candidateFigures.length > 0) && (
+        <Band width="prose" id="figures">
+          <h2 className="section-h2">Figures</h2>
+          <PaperFigureGallery inPaper={inPaperFigures} candidates={candidateFigures} paperNumber={paper.number} />
+        </Band>
+      )}
+
+      <Band width="prose">
+        <h2 className="section-h2">Readiness</h2>
+        <div className="readiness-line">
+          <strong className="readiness-line-value mono">{readiness}%</strong>
+          <div className="readiness-line-track">
+            <div className="readiness-line-fill" style={{ width: `${readiness}%` }} />
           </div>
-          <Card className="paper-artifact-card">
-            <CardHeader>
-              <CardTitle className="text-sm">Paper Artifacts</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="paper-artifact-meta">
-                <span>{paper.pdfMeta}</span>
-                <span>{paper.target}</span>
-              </div>
-              <div className="paper-artifact-actions flex flex-wrap gap-2">
-                {pdfArtifact && (
-                  <Button asChild size="sm">
-                    <a
-                      href={pdfArtifact.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FileText size={14} />
-                      {pdfArtifact.label}
-                    </a>
-                  </Button>
-                )}
-                {downloadArtifact && (
-                  <Button asChild size="sm" variant="outline">
-                    <a href={downloadArtifact.href} download>
-                      <Download size={14} />
-                      {downloadArtifact.label}
-                    </a>
-                  </Button>
-                )}
-                {supplementaryArtifacts.map((artifact) => (
-                  <Button
-                    key={`${artifact.href}-${artifact.label}`}
-                    asChild
-                    size="sm"
-                    variant="outline"
-                  >
-                    <a
-                      href={artifact.href}
-                      target={artifact.external ? "_blank" : undefined}
-                      rel={artifact.external ? "noopener noreferrer" : undefined}
-                      download={artifact.download ? true : undefined}
-                    >
-                      {artifact.label}
-                      {artifact.external && <ExternalLink size={12} />}
-                    </a>
-                  </Button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
         </div>
-      </div>
+        {openSummary && <p className="row-purpose mono">{openSummary}</p>}
+        <p className="row-purpose">
+          Readiness is publication readiness only — science, evidence, review convergence,
+          packaging, and Houston&rsquo;s final sign-off. Venue and submission are tracked
+          separately below, and never subtract from this number (directive P).
+        </p>
+      </Band>
 
-      <div className="paper-readiness grid gap-2">
-        <div className="paper-readiness-head flex items-baseline justify-between gap-3">
-          <span>
-            Readiness
-            {liveSource === "convex" && (
-              <span
-                style={{
-                  marginLeft: 8,
-                  fontSize: "0.7rem",
-                  color: "var(--success)",
-                  fontFamily: "var(--font-mono-stack)",
-                }}
-                title="computed from open findings + caveats; updated in real time"
-              >
-                ● live
-              </span>
-            )}
-          </span>
-          <strong>{readiness}%</strong>
+      <Band width="prose">
+        <h2 className="section-h2">Publishing</h2>
+        <p className="row-purpose">Not part of readiness.</p>
+        <div className="page-header-meta mono" style={{ marginTop: 8 }}>
+          <span className="page-header-meta-item"><span className="page-header-meta-label">target venue</span> {paper.target}</span>
+          <span className="page-header-meta-item"><span className="page-header-meta-label">state</span> {state}</span>
+          {live?.houstonSignOff && (
+            <span className="page-header-meta-item"><span className="page-header-meta-label">sign-off</span> {live.houstonSignOff}</span>
+          )}
         </div>
-        <div className="paper-readiness-track h-2.5 overflow-hidden rounded-full bg-border">
-          <div
-            className={`paper-readiness-fill ${readinessColor(readiness)}`}
-            style={{ width: `${readiness}%` }}
-          />
-        </div>
-        {openSummary && (
-          <p
-            style={{
-              margin: 0,
-              fontSize: "0.72rem",
-              color: "var(--text-muted)",
-              fontFamily: "var(--font-mono-stack)",
-            }}
-            title="Open findings (B=BLOCKER, M=MAJOR, m=minor) + open §pathc_caveats items (C)"
-          >
-            {openSummary} · {lastUpdated ?? "no date"}
-          </p>
-        )}
-      </div>
-
-      <Card className="paper-summary-card">
-        <CardContent>
-          <p className="paper-summary"><MathText>{paper.description}</MathText></p>
-        </CardContent>
-      </Card>
-
-      <Card className="paper-summary-card" style={{ marginTop: 16 }}>
-        <CardHeader>
-          <CardTitle className="text-sm font-mono" style={{ textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-muted)" }}>
-            Path to publication
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <PublicationPath stages={paper.path} />
-        </CardContent>
-      </Card>
-
-      {focusAreas.length > 0 && (
-        <Card className="paper-summary-card" style={{ marginTop: 16 }}>
-          <CardHeader>
-            <CardTitle
-              className="text-sm font-mono"
-              style={{
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                color: "var(--text-muted)",
-              }}
-            >
-              Focus areas
-              {novelty && (
-                <span
-                  title="Novelty tier (N1 incremental · N2 substantive · N3 first-of-kind). N4 reserved for paradigm-shifting work awarded by the field."
-                  style={{
-                    marginLeft: 10,
-                    padding: "2px 7px",
-                    fontSize: "0.65rem",
-                    border: "1px solid var(--border)",
-                    borderRadius: 4,
-                    color: "var(--text-muted)",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  Novelty: {novelty}
-                </span>
-              )}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul style={{ margin: 0, paddingLeft: 20, fontSize: "0.88rem", lineHeight: 1.6 }}>
-              {focusAreas.map((item) => (
-                <li key={item}><MathText>{item}</MathText></li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      )}
-
-      {notables.length > 0 && (
-        <Card className="paper-summary-card" style={{ marginTop: 16 }}>
-          <CardHeader>
-            <CardTitle
-              className="text-sm font-mono"
-              style={{
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                color: "var(--text-muted)",
-              }}
-            >
-              Notable contributions
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul style={{ margin: 0, paddingLeft: 20, fontSize: "0.88rem", lineHeight: 1.6 }}>
-              {notables.map((n) => (
-                <li key={n.ordinal}><MathText>{n.bullet}</MathText></li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      )}
+      </Band>
 
       {recentRounds.length > 0 && (
-        <Card className="paper-summary-card" style={{ marginTop: 16 }}>
-          <CardHeader>
-            <CardTitle
-              className="text-sm font-mono"
-              style={{
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                color: "var(--text-muted)",
-              }}
-            >
-              Review history ({paperRounds.length} rounds)
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-0" style={{ fontSize: "0.82rem" }}>
-              {recentRounds.map((r, i) => (
-                <div
-                  key={r.id}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "90px minmax(0,1fr)",
-                    gap: 10,
-                    padding: "8px 0",
-                    borderTop: i === 0 ? "none" : "1px solid var(--border)",
-                    alignItems: "baseline",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono-stack)",
-                      color: "var(--text-muted)",
-                      fontSize: "0.75rem",
-                    }}
-                  >
-                    {r.dateISO}
+        <Band width="prose">
+          <details className="review-evidence-details">
+            <summary className="section-h2" style={{ cursor: "pointer", display: "inline-block" }}>
+              Review evidence ({paperRounds.length} rounds)
+            </summary>
+            <div className="row-list" style={{ marginTop: 12 }}>
+              {recentRounds.map((r) => (
+                <div key={r.id} className="row" style={{ cursor: "default" }}>
+                  <span className="row-main">
+                    <span className="row-title mono">{r.id}</span>
+                    <span className="row-purpose">{r.title}</span>
                   </span>
-                  <span style={{ minWidth: 0 }}>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono-stack)",
-                        fontSize: "0.72rem",
-                        color:
-                          r.kind === "external-browser"
-                            ? "var(--accent)"
-                            : "var(--text-tertiary)",
-                        letterSpacing: "0.04em",
-                      }}
-                    >
-                      {r.id}
-                    </span>
-                    <span
-                      style={{
-                        marginLeft: 8,
-                        color: "var(--text-secondary)",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {r.title}
-                    </span>
-                  </span>
+                  <span className="row-right mono">{r.dateISO}</span>
                 </div>
               ))}
             </div>
-            <p style={{ margin: "10px 0 0 0", fontSize: "0.78rem" }}>
-              <Link
-                href={`/reviews?papers=${paperId}`}
-                style={{ color: "var(--accent-link)" }}
-              >
-                Full review timeline for Paper {paper.number} →
-              </Link>
+            <p className="row-purpose" style={{ marginTop: 8 }}>
+              Automated review is a gate on publication readiness, not a product.{" "}
+              <Link href={`/reviews?papers=${paperId}`}>Full review timeline &rarr;</Link>
             </p>
-          </CardContent>
-        </Card>
+            {pdfHref && (
+              <ExternalReviewPanel
+                paperNumber={paper.number}
+                paperTitle={paper.title}
+                paperVersion={version}
+                paperPath={texArtifact?.href.replace(/^https:\/\/github\.com\/[^/]+\/[^/]+\/blob\/[^/]+\//, "") ?? "(see GitHub LaTeX source artifact)"}
+                pdfHref={pdfHref}
+                pdfMeta={paper.pdfMeta}
+                focusAreas={focusAreas}
+              />
+            )}
+          </details>
+        </Band>
       )}
 
-      {(() => {
-        const texArtifact = paper.artifacts.find((a) => a.label?.toLowerCase().includes("latex"));
-        const texPath = texArtifact?.href.replace(/^https:\/\/github\.com\/[^/]+\/[^/]+\/blob\/[^/]+\//, "") ?? "";
-        const pdfArtRaw = paper.artifacts.find((a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"));
-        const pdfArt = pdfArtRaw && livePdfHref ? { ...pdfArtRaw, href: livePdfHref } : pdfArtRaw;
-        if (!pdfArt) return null;
-        return (
-          <ExternalReviewPanel
-            paperNumber={paper.number}
-            paperTitle={paper.title}
-            paperVersion={version}
-            paperPath={texPath || "(see GitHub LaTeX source artifact)"}
-            pdfHref={pdfArt.href}
-            pdfMeta={paper.pdfMeta}
-            focusAreas={focusAreas}
-          />
-        );
-      })()}
-
-      <Separator className="my-8" />
-
-      <Tabs defaultValue="results" className="paper-tabs w-full">
-        <TabsList className="flex-wrap">
-          <TabsTrigger value="results">Key Results</TabsTrigger>
-          <TabsTrigger value="surveys">Surveys</TabsTrigger>
-          <TabsTrigger value="predictions">Predictions</TabsTrigger>
-          <TabsTrigger value="figures">Figures</TabsTrigger>
-          {paper.remainingWork.length > 0 && (
-            <TabsTrigger value="todo">
-              Remaining ({paper.remainingWork.length})
-            </TabsTrigger>
-          )}
-        </TabsList>
-
-        <TabsContent value="results" className="pt-4">
-          <Card className="paper-tab-panel">
-            <CardHeader>
-              <CardTitle>Key Results</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="paper-result-list grid gap-0">
-                {paper.keyResults.map((r, i) => (
-                  <li key={i} className="grid grid-cols-[34px_minmax(0,1fr)] gap-3">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span>
-                      <MathText>{r}</MathText>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="surveys" className="pt-4">
-          {paper.surveys.length > 0 ? (
-            <div className="paper-chip-grid">
-              {paper.surveys.map((s) => (
-                <div key={s} className="paper-chip-card">
-                  <MathText>{s}</MathText>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <Alert>
-              <AlertTitle>No surveys connected</AlertTitle>
-              <AlertDescription>
-                This paper does not draw on a specific survey dataset.
-              </AlertDescription>
-            </Alert>
-          )}
-        </TabsContent>
-
-        <TabsContent value="predictions" className="pt-4">
-          <div className="paper-chip-grid">
-            {paper.predictions.map((p) => (
-              <div key={p} className="paper-chip-card">
-                <MathText>{p}</MathText>
+      {manifests.length > 0 && (
+        <Band width="prose" id="reproduce">
+          <h2 className="section-h2">Reproduce this</h2>
+          <div className="row-list">
+            {manifests.slice(0, 6).map((m) => (
+              <div key={m.id} className="row" style={{ cursor: "default" }}>
+                <span className="row-main">
+                  <span className="row-title">{m.title}</span>
+                  <span className="row-purpose">
+                    {m.environment.hardware} &middot; est. {m.reproduction.est_wall_clock} &middot;{" "}
+                    ${m.reproduction.est_cost_usd.toFixed(2)}
+                  </span>
+                </span>
+                <span className="row-right mono">{m.status}</span>
               </div>
             ))}
           </div>
-        </TabsContent>
+          <p className="row-purpose" style={{ marginTop: 8 }}>
+            <Link href="/reproduce">Full reproduction manifests &rarr;</Link>
+          </p>
+        </Band>
+      )}
 
-        <TabsContent value="figures" className="pt-4">
-          {figures.length > 0 ? (
-            <PaperFigureGallery
-              inPaper={inPaperFigures}
-              candidates={candidateFigures}
-              paperNumber={paper.number}
-            />
-          ) : paper.figures.length > 0 ? (
-            <div className="paper-chip-grid">
-              {paper.figures.map((f) => (
-                <div key={f} className="paper-chip-card">
-                  <MathText>{f}</MathText>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <Alert>
-              <AlertTitle>No figures registered yet</AlertTitle>
-              <AlertDescription>
-                Figures will populate as the paper draft is finalized.
-              </AlertDescription>
-            </Alert>
+      <Band width="prose">
+        <h2 className="section-h2">Lineage</h2>
+        <p className="prose-body">
+          {paper.archivedInto
+            ? `Archived — ${paper.archivedInto.note} See the current version at `
+            : `${paper.publicationRole}. `}
+          {paper.archivedInto && (
+            <Link href={`/papers/${paper.archivedInto.successorSlug}`}>
+              paper-{paper.archivedInto.successorSlug}
+            </Link>
           )}
-        </TabsContent>
-
-        {paper.remainingWork.length > 0 && (
-          <TabsContent value="todo" className="pt-4">
-            <div className="paper-task-list">
-              {paper.remainingWork.map((task, i) => (
-                <div
-                  key={i}
-                  className="paper-task-item"
-                >
-                  <span
-                    className={`h-2 w-2 shrink-0 rounded-full ${task.startsWith("TIER 1") ?"dot-tone-danger" :"dot-tone-caution"}`}
-                  />
-                  <span><MathText>{task}</MathText></span>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-        )}
-      </Tabs>
-
-      <div className="mt-8 flex gap-2">
-        <Button asChild variant="outline" size="sm">
-          <Link href="/paper">&larr; All papers</Link>
-        </Button>
-      </div>
+          {!paper.archivedInto && "This work does not claim beyond its stated target and scope above."}
+        </p>
+      </Band>
     </>
   );
 }
