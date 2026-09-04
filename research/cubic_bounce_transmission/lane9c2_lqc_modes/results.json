@@ -50,6 +50,11 @@
     "passed": true,
     "analytic_minus_5_over_48": -0.10416666666666667,
     "rel_vs_analytic": 0.0013887654435957408,
+    "rho_B": 0.5000003182551834,
+    "V2_closed_form": -0.10416673296982988,
+    "V2_numeric": -0.1041984351736334,
+    "rel_V2_vs_closed": 0.0003043409627976542,
+    "gate_note": "the -5/48 = -(5/24)rho_B closed form is the V2 vertex alone; the 1.4e-3 offset of the TOTAL is the genuine subleading V3+V4+V6+V7 + R1-R4 content, not a numerical error",
     "wronskian": -0.4999999999981404,
     "vertices": {
       "V1": 0.0,
@@ -105,11 +110,23 @@
         }
       },
       "S-ad4": {
-        "defined": false,
+        "defined": true,
+        "eta_ref": 44.833629014146986,
+        "N_before": 1.0000768505792328,
+        "N_after": 39514.37044490099,
+        "omega": 0.08948810748710971,
+        "growth_factor": 198.77458080951567,
+        "power_modification": 39511.33397599868,
+        "beta_sq_after": 19756.685222450495,
+        "beta_sq_before": 3.842528961639502e-05,
         "info": {
           "state": "S-ad4",
+          "relocated": true,
+          "eta_start": -44.86261534823798,
           "defined": false,
-          "reason": "4th-order adiabatic Omega^2 <= 0"
+          "reason": "k^2 - W <= 0 in the WKB window",
+          "wronskian_initial": -0.5000000000000001,
+          "ode_success": true
         }
       }
     },
@@ -150,11 +167,23 @@
         }
       },
       "S-ad4": {
-        "defined": false,
+        "defined": true,
+        "eta_ref": 13.223701430289877,
+        "N_before": 1.0000771792739491,
+        "N_after": 82.87213059414043,
+        "omega": 0.2684687101093342,
+        "growth_factor": 9.103061851754713,
+        "power_modification": 82.86573507687194,
+        "beta_sq_after": 40.936065297070215,
+        "beta_sq_before": 3.858963697456197e-05,
         "info": {
           "state": "S-ad4",
+          "relocated": true,
+          "eta_start": -13.219039071070732,
           "defined": false,
-          "reason": "4th-order adiabatic Omega^2 <= 0"
+          "reason": "4th-order adiabatic Omega^2 <= 0",
+          "wronskian_initial": -0.5,
+          "ode_success": true
         }
       }
     },
@@ -211,6 +240,7 @@
           "Omega4": 0.9097040018582999,
           "omega0": 0.9081546353466545,
           "adiabaticity_dOmega_over_Omega2": 0.017529478923495545,
+          "window_half_over_eta0": 0.25,
           "wronskian_initial": -0.4999999999999999,
           "ode_success": true
         }
@@ -269,6 +299,7 @@
           "Omega4": 2.818399372286594,
           "omega0": 2.818289549788783,
           "adiabaticity_dOmega_over_Omega2": 0.0005971147043408199,
+          "window_half_over_eta0": 0.25,
           "wronskian_initial": -0.5000000000000001,
           "ode_success": true
         }
@@ -327,6 +358,7 @@
           "Omega4": 9.42922003779058,
           "omega0": 9.429216974804765,
           "adiabaticity_dOmega_over_Omega2": 1.6315469802546138e-05,
+          "window_half_over_eta0": 0.25,
           "wronskian_initial": -0.5,
           "ode_success": true
         }
@@ -396,24 +428,34 @@
         "npts": 20001
       },
       "S-ad4": {
-        "defined": false,
-        "info": [
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "k^2 - W <= 0 in the WKB window"
-          },
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
-          },
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
-          }
-        ]
+        "vertices": {
+          "V1": -0.0,
+          "V2": -0.1042655217136591,
+          "V3": 0.003316669100884613,
+          "V4": -0.0031228486620376275,
+          "V5": -0.0,
+          "V6": 0.00039035608275470344,
+          "V7": 0.00013354181661260158
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -0.11867146399910233,
+          "R3": -6.498676414511634e-05,
+          "R4": -0.001787401911391534
+        },
+        "bulk_sum": -0.10354780337544481,
+        "redef_sum": -0.12052385267463898,
+        "total": -0.22407165605008378,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 1.0069312753609265,
+        "P": [
+          62938848.471518084,
+          377.7119608594783,
+          377.7119608594783
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
       }
     },
     "0.3": {
@@ -478,24 +520,34 @@
         "npts": 20001
       },
       "S-ad4": {
-        "defined": false,
-        "info": [
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "k^2 - W <= 0 in the WKB window"
-          },
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
-          },
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
-          }
-        ]
+        "vertices": {
+          "V1": -0.0,
+          "V2": -0.059226472817488426,
+          "V3": 0.04014180874425988,
+          "V4": 0.023856351799175435,
+          "V5": -0.0,
+          "V6": -0.0029820439748969294,
+          "V7": -0.0009916430340965775
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -2.336961243882567,
+          "R3": -0.000580760990093184,
+          "R4": -0.0014638024986816057
+        },
+        "bulk_sum": 0.0007980007169533791,
+        "redef_sum": -2.3390058073713416,
+        "total": -2.3382078066543883,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 74.21857093512932,
+        "P": [
+          2260685.454466676,
+          0.7268699485552184,
+          0.7268699485552184
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
       }
     },
     "1": {
@@ -560,34 +612,34 @@
         "npts": 20001
       },
       "S-ad4": {
-        "defined": false,
-        "info": [
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
-          },
-          {
-            "state": "S-ad4",
-            "eta_start": -3.1804378726284694,
-            "defined": true,
-            "Omega4": 0.9097040018582999,
-            "omega0": 0.9081546353466545,
-            "adiabaticity_dOmega_over_Omega2": 0.017529478923495545,
-            "wronskian_initial": -0.4999999999999999,
-            "ode_success": true
-          },
-          {
-            "state": "S-ad4",
-            "eta_start": -3.1804378726284694,
-            "defined": true,
-            "Omega4": 0.9097040018582999,
-            "omega0": 0.9081546353466545,
-            "adiabaticity_dOmega_over_Omega2": 0.017529478923495545,
-            "wronskian_initial": -0.4999999999999999,
-            "ode_success": true
-          }
-        ]
+        "vertices": {
+          "V1": 0.0,
+          "V2": -0.10517934382946158,
+          "V3": -0.001179041151269862,
+          "V4": -0.1440405235624525,
+          "V5": 0.0,
+          "V6": 0.018005065445306563,
+          "V7": 0.006002793433905812
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": 1.1808148006768375,
+          "R3": -0.006450697450352945,
+          "R4": -0.0006558261232485868
+        },
+        "bulk_sum": -0.22639104966397158,
+        "redef_sum": 1.173708277103236,
+        "total": 0.9473172274392645,
+        "dominant_vertex": "V4",
+        "dominant_vertex_fraction": 0.6362465467440053,
+        "P": [
+          60006.950744248395,
+          0.002895891071547608,
+          0.002895891071547608
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
       }
     },
     "3": {
@@ -652,34 +704,34 @@
         "npts": 20001
       },
       "S-ad4": {
-        "defined": false,
-        "info": [
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
-          },
-          {
-            "state": "S-ad4",
-            "eta_start": -3.1804378726284694,
-            "defined": true,
-            "Omega4": 2.818399372286594,
-            "omega0": 2.818289549788783,
-            "adiabaticity_dOmega_over_Omega2": 0.0005971147043408199,
-            "wronskian_initial": -0.5000000000000001,
-            "ode_success": true
-          },
-          {
-            "state": "S-ad4",
-            "eta_start": -3.1804378726284694,
-            "defined": true,
-            "Omega4": 2.818399372286594,
-            "omega0": 2.818289549788783,
-            "adiabaticity_dOmega_over_Omega2": 0.0005971147043408199,
-            "wronskian_initial": -0.5000000000000001,
-            "ode_success": true
-          }
-        ]
+        "vertices": {
+          "V1": -0.0,
+          "V2": 0.045594443719808295,
+          "V3": -0.03190143155198399,
+          "V4": -0.017372701170268755,
+          "V5": -0.0,
+          "V6": 0.002171587646283595,
+          "V7": 0.0007220533409324165
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -0.8891277462731572,
+          "R3": -0.058082473505709775,
+          "R4": 0.009907827679271156
+        },
+        "bulk_sum": -0.0007860480152284356,
+        "redef_sum": -0.9373023920995959,
+        "total": -0.9380884401148243,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 58.00465472399669,
+        "P": [
+          2055.3808102063554,
+          0.0008414846024776473,
+          0.0008414846024776473
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
       }
     },
     "10": {
@@ -744,34 +796,34 @@
         "npts": 20001
       },
       "S-ad4": {
-        "defined": false,
-        "info": [
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
-          },
-          {
-            "state": "S-ad4",
-            "eta_start": -3.1804378726284694,
-            "defined": true,
-            "Omega4": 9.42922003779058,
-            "omega0": 9.429216974804765,
-            "adiabaticity_dOmega_over_Omega2": 1.6315469802546138e-05,
-            "wronskian_initial": -0.5,
-            "ode_success": true
-          },
-          {
-            "state": "S-ad4",
-            "eta_start": -3.1804378726284694,
-            "defined": true,
-            "Omega4": 9.42922003779058,
-            "omega0": 9.429216974804765,
-            "adiabaticity_dOmega_over_Omega2": 1.6315469802546138e-05,
-            "wronskian_initial": -0.5,
-            "ode_success": true
-          }
-        ]
+        "vertices": {
+          "V1": -0.0,
+          "V2": 0.15387394585530348,
+          "V3": -0.0915752008515808,
+          "V4": -0.006003816480270646,
+          "V5": -0.0,
+          "V6": 0.0007504770600338309,
+          "V7": 0.0002449303377878981
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -1.4548941927371695,
+          "R3": -0.6552480253315988,
+          "R4": 0.15545257644193808
+        },
+        "bulk_sum": 0.05729033592127376,
+        "redef_sum": -1.95468964162683,
+        "total": -1.8973993057055563,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 2.685862168215444,
+        "P": [
+          19.90039107942715,
+          0.00025227747520188107,
+          0.00025227747520188107
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
       }
     },
     "0.001": {
@@ -836,24 +888,34 @@
         "npts": 20001
       },
       "S-ad4": {
-        "defined": false,
-        "info": [
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "k^2 - W <= 0 in the WKB window"
-          },
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "k^2 - W <= 0 in the WKB window"
-          },
-          {
-            "state": "S-ad4",
-            "defined": false,
-            "reason": "k^2 - W <= 0 in the WKB window"
-          }
-        ]
+        "vertices": {
+          "V1": 0.0,
+          "V2": -0.10659415935827422,
+          "V3": 3.222577734535935e-07,
+          "V4": -0.0018667340986908666,
+          "V5": 0.0,
+          "V6": 0.00023334176233635832,
+          "V7": 8.130225844265066e-05
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": 0.014491996305696815,
+          "R3": -6.5146878779551765e-09,
+          "R4": -0.0018136398289873333
+        },
+        "bulk_sum": -0.10814592717841262,
+        "redef_sum": 0.012678349962021603,
+        "total": -0.09546757721639101,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 0.9856511672642245,
+        "P": [
+          63308715120415.125,
+          505702712.50390065,
+          505702712.50390065
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
       }
     }
   },
@@ -1228,7 +1290,11 @@
             "ratio_to_ABS": 4.149092113298208e-05,
             "log10_gap_dex": 4.382046923365037
           },
-          "S-ad4": null
+          "S-ad4": {
+            "total": -0.22407165605008378,
+            "ratio_to_ABS": 3.865510466143207e-05,
+            "log10_gap_dex": 4.412793146508771
+          }
         }
       },
       "0.3": {
@@ -1244,7 +1310,11 @@
             "ratio_to_ABS": 0.0005798546781289767,
             "log10_gap_dex": 3.2366808347035785
           },
-          "S-ad4": null
+          "S-ad4": {
+            "total": -2.3382078066543883,
+            "ratio_to_ABS": 0.0005816673768297978,
+            "log10_gap_dex": 3.2353252931899523
+          }
         }
       },
       "1": {
@@ -1260,7 +1330,11 @@
             "ratio_to_ABS": 0.0007448161198810114,
             "log10_gap_dex": 3.1279509325911423
           },
-          "S-ad4": null
+          "S-ad4": {
+            "total": 0.9473172274392645,
+            "ratio_to_ABS": 0.0008485704118251195,
+            "log10_gap_dex": 3.071312115398894
+          }
         }
       },
       "3": {
@@ -1276,7 +1350,11 @@
             "ratio_to_ABS": 0.03082081409515421,
             "log10_gap_dex": 1.5111558940937908
           },
-          "S-ad4": null
+          "S-ad4": {
+            "total": -0.9380884401148243,
+            "ratio_to_ABS": 0.03267028659455812,
+            "log10_gap_dex": 1.4858470557330352
+          }
         }
       },
       "10": {
@@ -1292,7 +1370,11 @@
             "ratio_to_ABS": 24219.65494862546,
             "log10_gap_dex": -4.3841679515661
           },
-          "S-ad4": null
+          "S-ad4": {
+            "total": -1.8973993057055563,
+            "ratio_to_ABS": 24214.548995084955,
+            "log10_gap_dex": -4.384076384562819
+          }
         }
       }
     },

@@ -321,11 +321,23 @@ def run_gate(bg, eta_far, out):
     log(f"  lane (b) total   = {row['total']:+.10f}")
     log(f"  lane 9c-2 total  = {got['total']:+.10f}   rel = {rel:.3e}   -> {'PASS' if passed else 'FAIL'}")
     log(f"  lane (a) closed form -5/48 = {-5/48:+.10f}   rel(9c-2 vs -5/48) = {rel_analytic:.3e}")
+    rho_B = abs(float(bg["Jf"](-eB))) / bg["I_inf"]
+    v2_closed = -5.0 / 24.0 * rho_B
+    rel_v2 = abs(got["vertices"]["V2"] - v2_closed) / abs(v2_closed)
+    log(f"  V2 alone = {got['vertices']['V2']:+.10f} vs lane (a) closed form -(5/24)rho_B = "
+        f"{v2_closed:+.10f}   rel = {rel_v2:.3e}")
+    log(f"  (the -5/48 closed form describes V2 only; the total additionally carries "
+        f"V3+V4+V6+V7 and R1-R4)")
     log(f"  Wronskian Im(mu* mu') = {np.mean([m.wronskian(0.0) for m in ms]):+.9f} (exact -0.5)")
     out["gate"] = dict(k_etaB=K_GATE, laneB_total=row["total"], lane9c2_total=got["total"],
                        rel_vs_laneB=float(rel), tolerance=1e-3, passed=passed,
                        analytic_minus_5_over_48=-5.0 / 48.0,
                        rel_vs_analytic=float(rel_analytic),
+                       rho_B=float(rho_B), V2_closed_form=float(v2_closed),
+                       V2_numeric=float(got["vertices"]["V2"]), rel_V2_vs_closed=float(rel_v2),
+                       gate_note=("the -5/48 = -(5/24)rho_B closed form is the V2 vertex alone; "
+                                  "the 1.4e-3 offset of the TOTAL is the genuine subleading "
+                                  "V3+V4+V6+V7 + R1-R4 content, not a numerical error"),
                        wronskian=float(np.mean([m.wronskian(0.0) for m in ms])),
                        vertices=got["vertices"], redefinition=got["redefinition"])
     return passed
