@@ -249,3 +249,86 @@ dependent UV rise of the redefinition sector.
    attributes the whole feature to the **complex pole of $a^{-n}(\eta)$ at $|\eta_p|=1.17\,\eta_B$**,
    which a real-$\eta$ integral over the NEC window $[-\eta_B,+\eta_B]$ does not isolate. Testing (ii)
    requires deforming the in-in contour into the complex plane, which is not implemented here.
+
+## 5. VERDICT
+
+**ENHANCEMENT ABSENT / SUPPRESSED in the ABS sense — with one named unresolved sub-item.**
+
+**(i) The ABS-type non-Gaussian enhancement does not appear.** On the lab's LQC-dust dressed-metric
+background, evaluated with **exact** mode functions across $k\eta_B\in[0.1,10]$, the scheme-S1
+bounce-window in-in integral gives $|\Delta f_{\rm NL}^{\rm bounce}|$ of order $0.2$–$3$ (squeezed)
+and $0.3$–$10$ (equilateral) through the whole window $k\eta_B\lesssim1$ where ABS report
+$|f_{\rm NL}|\sim10^{3}$ — a deficit of **2.1–4.0 dex at and below $k_{\rm LQC}$** — and it shows
+**no feature whatever at $k_{\rm LQC}\eta_B=1.06$** and **no $e^{-1.830\,k\eta_B}$ decay above it**
+(§4). Its $k$-dependence is a monotonic UV rise carried by the R3 gradient boundary term at fixed
+evaluation time, which is a property of when one looks, not of the bounce.
+
+**(ii) It is not the initial state.** $\le13\%$ across the lab's adiabatic contraction vacuum, an
+ABS-style adiabatic-order-zero vacuum at $\eta_0=-2\ldots-100\,\eta_B$, and the 4th-order adiabatic
+vacuum, at every $k$ tested (§3.1, §3.3). ABS's own §IV A notes that other state choices in the
+literature give *suppression*; this lane finds that on a dust background even their own state gives
+no enhancement of $f_{\rm NL}$.
+
+**(iii) The linear bounce imprint IS present, and at exactly their scale.** $\mathcal P$ is amplified
+by $3.9\times10^{4}$ at $k\eta_B=0.1$, $83$ at $0.3$, $1.095$ at $1$, $1+10^{-6}$ at $3$, $1$ at $10$
+(§2). So the lab's bounce does modify modes with $k\lesssim k_{\rm LQC}$ exactly as ABS's §IV A says
+— the disagreement is confined to the **bispectrum**.
+
+**(iv) Unresolved sub-item, named exactly.** The *absolute normalisation* of
+$\Delta f_{\rm NL}^{\rm bounce}$ for $k\eta_B\gtrsim0.1$ is **not evaluation-time independent**: it
+varies by a factor 4 (squeezed) to 40 (equilateral) over $\eta_*\in[1,30]\,\eta_B$, because the lab's
+A3 model has no post-bounce freeze-out for these modes. A single number therefore cannot be quoted
+for $\Delta f_{\rm NL}^{\rm bounce}(k\eta_B\gtrsim0.1)$ without an observable-specific evaluation
+time. What *is* robust to that ambiguity, and is what (i) rests on, is the **absence of any feature
+at $k_{\rm LQC}$** and the sign of the $k$-slope (rising, not ABS's falling). The gate that would
+close this sub-item is named: an in-in evaluation with a physically-specified post-bounce
+freeze-out (or a complex-contour treatment isolating the $|\eta_p|=1.17\,\eta_B$ pole of $a^{-n}$
+that ABS §V identifies as their mechanism).
+
+**(v) The PBH-channel null at $k\eta_B\approx3$ is unchanged.** With $\Delta^2_\zeta\simeq10^{-9}$
+($\sigma_g=3.16\times10^{-5}$) and $\zeta=\zeta_g+\tfrac35f_{\rm NL}\zeta_g^2$:
+
+| case | $\zeta_c=0.1$, full quadratic | $\zeta_c=0.1$, NG-term-only |
+|---|---|---|
+| Gaussian | $3162\sigma$ | — |
+| lane 9c-2 S-lab at $k\eta_B=3$ ($f_{\rm NL}=-0.938$) | $3364\sigma$ | $13329\sigma$ |
+| lane 9c-2 S-ABS0 at $k\eta_B=3$ ($f_{\rm NL}=-0.885$) | $3351\sigma$ | $13723\sigma$ |
+| ABS-magnitude hypothesis $\vert f_{\rm NL}\vert=10^{3}$ | $383\sigma$ | $\mathbf{408.2\sigma}$ (lane 9c anchor, reproduced) |
+
+The computed $|f_{\rm NL}|\approx0.9$ makes the required Gaussian excursion **worse** than Gaussian
+(the sign is negative, which flattens the tail), $3364\sigma$ versus $3162\sigma$. Even granting the
+largest number this lane produces anywhere ($|\Delta f_{\rm NL}|\simeq1.2\times10^{3}$, equilateral,
+$k\eta_B=10$, $\eta_*=10\eta_B$), the threshold is lane 9c's $408\sigma$ — against a **7.0 dex
+amplitude deficit** in $\Delta^2_\zeta$ (A3-1b). **No choice of configuration, initial state, or
+evaluation time in this lane's scan reopens the PBH channel.** Row 9's decision-relevant conclusion
+is therefore unchanged from lane 9c §5(ii), and is now backed by a computation rather than by an
+extrapolation of ABS's published curve.
+
+### Sentence(s) for the A3 paper
+
+> We have evaluated the bounce-window cubic in-in integral with exact mode functions on the
+> LQC-dust dressed-metric background across $k\eta_B\in[0.1,10]$, varying the initial state between
+> an adiabatic contraction vacuum, an adiabatic-order-zero vacuum set at a fixed pre-bounce time,
+> and a fourth-order adiabatic vacuum. The linear response reproduces the expected bounce scale —
+> the power spectrum is amplified for $k\lesssim k_{\rm LQC}$ and is unmodified at the $10^{-6}$
+> level by $k\simeq3k_{\rm LQC}$ — but the bispectrum shows no counterpart of the
+> order-$10^{3}$ enhancement reported for a kinetic-dominated loop-quantum-cosmology bounce
+> [arXiv:1712.08148]: we find $|\Delta f_{\rm NL}^{\rm bounce}|\lesssim10$ throughout that window,
+> with a state-dependence below 13 %, and no feature at $k_{\rm LQC}$. Because the model has no
+> post-bounce inflationary phase, $\zeta$ does not freeze for these modes and the absolute
+> normalisation of $\Delta f_{\rm NL}^{\rm bounce}$ depends on the evaluation time by a factor of a
+> few tens; we therefore quote the absence of a bounce-scale feature rather than a single value.
+> Either way the small-scale channels are unaffected: the amplitude shortfall we report there is
+> seven decades, which a non-Gaussian tail of the magnitude in question does not bridge.
+
+## Artifacts
+
+| path | role |
+|---|---|
+| `LANE9C2_LQC_MODES_2026-09-04.md` | this document |
+| `lane9c2_lqc_modes.py` | the computation (imports lane (b)'s vertices/conventions verbatim) |
+| `results.json` | gate, modes, dfnl, eta_star/eta_0/equilateral systematics, ABS comparison, PBH tail |
+| `lane9c2_lqc_modes.log` | full run log |
+| `lane9c2_growth_factor.png` | $\vert\zeta_{\rm after}/\zeta_{\rm before}\vert$ vs $k\eta_B$, per state |
+| `lane9c2_dfnl_bounce.png` | $\vert\Delta f_{\rm NL}^{\rm bounce}\vert$ vs $k\eta_B$, per state, with the ABS law |
+| `reproducibility/manifests/experiments/ledger9-c2-lqc-exact-modes-inin.json` | manifest (directive Q2) |
