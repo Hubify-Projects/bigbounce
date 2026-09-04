@@ -421,3 +421,44 @@ def main():
             f"|z_a/z_b| = {g.get('growth_factor', float('nan')):10.4f}  "
             f"Delta f_NL = {(r['total'] if r else float('nan')):+.4e}")
     out["eta0_systematic"] = {"k_etaB": kt, "scan": e0rec}
+
+    # ---------------- (4) comparison to ABS --------------------------------------
+    log(f"\n{'=' * 78}\n(4) comparison to Agullo-Bolliet-Sreenath 2017 (arXiv:1712.08148)")
+    log(f"  their plateau |f_NL| ~ {ABS_PLATEAU:g} for k <~ k_LQC (their sec. IV B, sec. VII);")
+    log(f"  their decay exp(-alpha k_t/k_LQC) -> exp(-{ABS_DECAY:.3f} k*eta_B) equilateral (their sec. V);")
+    log(f"  k_LQC*eta_B = {K_LQC_ETAB:.4f} on the lab's LQC-dust background (lane 9c sec. 2.2).")
+    comp = {}
+    for kt in K_SCAN:
+        abs_pred = ABS_PLATEAU * np.exp(-ABS_DECAY * (kt - K_LQC_ETAB))
+        row = out["dfnl"][f"{kt:g}"]
+        e = {}
+        for st in ("S-lab", "S-ABS0", "S-ad4"):
+            v = row.get(st, {})
+            if not v.get("defined"):
+                e[st] = None
+                continue
+            e[st] = {"total": v["total"],
+                     "ratio_to_ABS": float(abs(v["total"]) / abs_pred),
+                     "log10_gap_dex": float(np.log10(abs_pred / max(abs(v["total"]), 1e-300)))}
+        comp[f"{kt:g}"] = {"ABS_extrapolated_|f_NL|": float(abs_pred), "lab": e}
+        log(f"  k*eta_B = {kt:5g}: ABS ~ {abs_pred:10.3e} | " + " | ".join(
+            f"{st} {e[st]['total']:+.3e} ({e[st]['log10_gap_dex']:+.2f} dex)" if e[st] else f"{st} n/a"
+            for st in ("S-lab", "S-ABS0", "S-ad4")))
+    out["abs_comparison"] = {
+        "ABS_plateau_fNL": ABS_PLATEAU, "ABS_decay_per_k_etaB": ABS_DECAY,
+        "k_LQC_eta_B": K_LQC_ETAB,
+        "ABS_law": "|Delta f_NL^bounce| ~ 1e3 exp(-1.830 (k*eta_B - 1.060)) (equilateral; lane 9c sec. 3.1)",
+        "per_k": comp,
+        "caveat": ("ABS use a kinetic-dominated scalar (w=+1, eps=3) with ~12.3 e-folds of inflation "
+                   "after the bounce and their f_NL convention differs by an overall sign; only "
+                   "magnitudes are compared.")}
+    _dump(out)
+    make_figures(out)
+    log(f"\nDONE ({time.time() - t0:.1f} s)")
+
+
+def _dump(out):
+    with open(JSON_OUT, "w") as fh:
+        json.dump(out, fh, indent=2)
+    with open(LOG, "w") as fh:
+        fh.write("\n".join(_lines) + "\n")
