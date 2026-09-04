@@ -133,3 +133,60 @@ $k\eta_B\gtrsim3$ on all three backgrounds. Its **sign is background-dependent**
 the Quintin-type ($\times1.76$ in $\Delta^2$) and LQC ($\times2.24$) backgrounds, strong suppression
 on the poly background ($\times0.058$) — so it is a property of the individual $a(\eta)$ profile, not
 a robust prediction of "a bounce". Figure: `lane9a_growth_vs_ketaB.png`.
+
+## 3. Eq. (79) evaluated for the lab's $\Upsilon$ and $\Delta t_B$
+
+Parameter map (lane (c) §2.1, re-derived here): $\Upsilon=8/(3\Delta t_B^2)$ from matching $H$ at the
+NEC boundary. The lab's grid point $\Delta t_B=1$ gives $\Upsilon=2.66667$ and $\eta_B=0.449601$ —
+both confirmed by the run ($\dot H$ measured $=+2.66667$ at the bounce).
+
+$$\Big[\frac{\dot\phi_B}{\dot\phi(t_{\rm amp-})}\Big]^2=\exp\!\Big(\frac{2\Delta t_{\rm amp}^2}{T^2}\Big)
+\;\xrightarrow[\ \dot H=\Upsilon=\text{const}\ \Rightarrow\ \dot\phi^2=2M_p^2\Upsilon=\text{const}\ ]{}\;
+\exp(0)=\mathbf{1}.$$
+
+| background | Eq. (79) factor | why |
+|---|---|---|
+| Quintin-type ($\Upsilon=2.667$, $\Delta t_B=1$) | **1** | $\dot H$ constant to $7.2\times10^{-6}$ across the NEC window $\Rightarrow$ $|\dot\phi|$ constant $\Rightarrow T\to\infty$ |
+| LQC effective dust | **1** | effective fluid; no matter-sector $\dot\phi$ exists to dip |
+| poly non-LQC | **1** | pure geometric $a(\eta)$; no matter sector at all |
+
+There is no free parameter left to tune here without *adding* a matter sector the lab has not
+specified; if one is added, $T$ becomes a new input and Eq. (79) is a statement about that input, not
+about the lab's backgrounds.
+
+## 4. Consequences for $\Delta^2_\zeta$ and for $\Delta f_{\rm NL}^{\rm bounce}$
+
+**Scheme label: S1** (geometric / dressed-metric extension: $z=a$, $\epsilon_{\rm eff}=1/2$,
+$c_s=1$, $\eta_{\rm sr}=0$, $\lambda=0$), adiabatic-vacuum initial data, exact matter-basis
+projection at both ends.
+
+**(a) Curvature spectrum.** $\Delta^2_\zeta(k)$ is multiplied by $G(k)^2$ relative to the S1
+extrapolation: $\le\!1.76$ (Quintin-type), $\le\!2.24$ (LQC), $\ge\!0.058$ (poly), all confined to
+$k\eta_B\in[0.2,2]$ and back to $1\pm0.01$ by $k\eta_B=3$. Since $\lambda_\zeta$ itself is unchanged
+in the super-Hubble band ($4.0$–$6.1$, matching the A2 brief), the CMB-anchored normalisation of the
+lab's spectrum is untouched.
+
+**(b) Cubic term.** Quintin Eq. (44), $f_{\rm NL}\sim(\Delta\zeta)^2/(\Delta t_BM_p^2)$, takes
+$\Delta\zeta/\zeta=\lambda_\zeta-1$. With the Eq. (79) factor $=1$, $\lambda_\zeta$ stays at its
+measured $4$–$6$, so the Eq. (44) *scaling* is unchanged from what lane (b) already normalises by
+direct in-in integration: $\Delta f_{\rm NL}^{\rm bounce}=-0.1398$ / $-0.1043$ / $-0.1271$ and
+$f_{\rm NL}^{\rm after}=-0.5008$ / $-0.6512$ / $-0.5548$ (Quintin / LQC / poly). Had the dip existed
+with their $T=\Delta t_{\rm amp}$, $\Delta\zeta$ would have grown by $e^2=7.39$ and Eq. (44) would
+have scaled $f_{\rm NL}^{\rm bounce}$ by $\sim55$ — the mechanism is real, it simply has no carrier
+on these backgrounds.
+
+A *scaling* estimate of the residual $k$-dependence: if every external leg near $k\eta_B\sim0.7$
+carries $G(k)$, then $B\propto G^3$ and $(P_1P_2+{\rm perms})\propto G^4$, so $f_{\rm NL}\propto
+1/G$ — a modulation of $0.75$ (Quintin), $0.67$ (LQC), $4.1$ (poly) confined to that one decade.
+**This is a scaling argument, not an in-in computation**: the bounce-window vertex integral is
+generated during the same interval in which the transfer acts, so the legs cannot be factorised
+rigorously. Quantifying it properly is lane (b)'s job (§6 below).
+
+**What is and is not covered.** *Covered:* the linear transfer of $\zeta$ through the bounce at
+finite $k$ across $k\eta_B\in[10^{-3},30]$, on all three backgrounds, in S1, with the Eq. (79)
+amplification question settled by derivation. *Not covered:* (i) the cubic in-in integral itself at
+$k\eta_B\gtrsim10^{-2}$ — lane (b)'s assumption A1 still stands unrelaxed, and this lane shows the
+error it hides is a factor $G^{3}/G^{4}$-type $O(1)$ effect in a single decade, not the $O(1)$ it was
+assumed to be everywhere; (ii) any background with an actual matter-sector velocity profile
+(two-field, ghost-condensate, Lee-Wick), where the dip and hence Eq. (79) can be non-trivial;
+(iii) S2 (effective-fluid) scheme, which remains divergent (lane 9b).
