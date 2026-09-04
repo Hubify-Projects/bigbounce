@@ -1,0 +1,70 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-a3-lane-9a-velocity-dip",
+  "title": "Ledger row 9 (A3-1e) lane (a): does the Quintin+2015 scalar-field-velocity-dip amplification of zeta (their Eq. 79) exist on the lab's three A2 backgrounds, and what is the curvature-spectrum transfer in the band k eta_B in [0.1, 10] that the S1 super-Hubble result does not cover",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "a2_transmission_linear backgrounds (Quintin-type, LQC effective dust, poly non-LQC) + adiabatic-vacuum mode evolution + exact S/C matter-basis projection",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": "sha256:bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+    },
+    {
+      "name": "lane (b) numerical in-in Delta f_NL^bounce (the term this lane's transfer would modulate)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+      "checksum": "sha256:a69b7f4b7e1743e54346a6351c5eb2e0299d3cafd3f3350da30bbec5e037f207"
+    },
+    {
+      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015, PRD 92 063532 (Eqs. 30, 44, 79, 80 and the bounce-phase ansatz) -- literature input, quoted not recomputed",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1508.04141",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/lane9a_velocity_dip/lane9a_velocity_dip.py",
+      "entrypoint": "python3 lane9a_velocity_dip.py",
+      "sha256": "227ce03404683c35cc5f8e1c9fbced4b5b4c72ac61ac922910a2c3cb0159e76e"
+    }
+  ],
+  "environment": {
+    "python": "numpy 2.x, scipy (solve_ivp DOP853, CubicSpline), matplotlib (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-04",
+    "wall_clock": "143.7 s, measured",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 4 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic ODE + projection; imports bg_quintin/bg_lqc/bg_poly, evolve(), zeta_at() from ../a2_transmission_linear.py. No random seeds, no external data, no network. Cost of the literature input is a single arXiv abs/HTML fetch."
+  },
+  "outputs": [
+    { "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/results.json", "type": "result-json", "checksum": null },
+    { "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/lane9a_velocity_dip.log", "type": "log", "checksum": null },
+    { "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/LANE9A_VELOCITY_DIP_2026-09-04.md", "type": "document", "checksum": null },
+    { "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/lane9a_growth_vs_ketaB.png", "type": "figure", "checksum": null }
+  ],
+  "verification": "Re-run and confirm in the log: (1) Hdot is constant to 7.2e-06 across the whole NEC window on the Quintin-type background (Upsilon = 2.66667 for dtB = 1) and varies by a factor of order unity on LQC and poly, so the total-sector identification phidot^2 = -2 M_p^2 Hdot vanishes at eta_B and manufactures a divergent factor (2.2e10 on LQC, 7.6e3 on poly) -- the diagnostic that it is NOT Quintin's matter-sector phidot; (2) the adopted Eq. (79) factor is exactly 1 on all three backgrounds; (3) growth table lambda_zeta(k eta_B = 0.1, 0.3, 1) = 5.971/5.446/3.543 (Quintin), 3.919/3.553/4.582 (LQC), 4.898/3.722/0.952 (poly); (4) S1-deviation transfer G(k) band extremum 1.3281 at k eta_B = 0.768 (Quintin), 1.4965 at 0.611 (LQC), 0.2414 at 0.768 (poly), against small-k numerical floors |G-1| = 1.35e-02 / 2.18e-02 / 8.35e-04, i.e. Delta^2 ratios 1.76 / 2.24 / 0.058; (5) G -> 1 to better than 1 percent for k eta_B >= 3 on all three; (6) convergence rel dev <= 8.2e-08 for rtol 1e-11 -> 1e-9 and 0 for eta_far x2.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane (a) of three; lane (b) = S2 regularisation (manifest p2-a3-lane-9b-s2-regularisation), lane (c) = comparison ledger",
+    "extends research/cubic_bounce_transmission/lane_c_comparison/LANE_C_COMPARISON_2026-09-03.md Sec. 2.3 item 2, which recorded 'the lab's backgrounds carry no scalar-velocity dip' as an assertion; this lane derives it and quantifies the k eta_B ~ 1 transfer the S1 band never tested",
+    "the assumption A1 of lane (b) (k eta_B <= 1e-2 super-Hubble transfer) is the object being probed here; this lane does NOT recompute the in-in bispectrum",
+    "f_NL^before = -35/16 remains an INPUT from ledger #1, not recomputed"
+  ]
+}
