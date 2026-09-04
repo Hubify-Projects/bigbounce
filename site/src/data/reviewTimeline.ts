@@ -84,6 +84,30 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "autolog-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "skill-improvement",
+    title: "Skill/process autolog 2026-09-04: 9 commits landed via tools/skills_autolog.sh",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Ran tools/skills_autolog.sh to close the skillslog freshness WARN: 9 skill/process/tooling commits since 2026-09-03 (8 bigbounce, 1 scistack) were unlogged. Commits: be4b5bef (skills-autolog housekeeping for 2026-09-03), 0e9e5b41 (P3 anomaly catalogue v2 data-release doc, directive Q1), 204c9f0c (A3M v3M.0.11->v3M.0.12 paperVersion bump, directive G), 044ea88c (A3M Fig. 1 regeneration with publication labels + Omega_DM footnote closure, directive I6), fb27d563 (reviewTimeline log for the 2026-09-04 site redesign + six-lane pattern), 67a36a5e (site-redesign lane4: /reviews simplified to grid + status + gap/skills + timeline), d0cbe4dd (full-reproduction pass kickoff, directive Q2), 2c5ee0a2 (SIGW nHz reproducibility manifest, directive Q2), and scistack 0b2a963 (generated skill-index refresh). No new catalog pattern, reviewer-prompt rule, or standalone tool this wave -- patterns/promptRules/tooling unchanged at 79/42/42; a matching skillsSeries point (autolog-2026-09-04) is added. tools/site_freshness_check.sh now passes with no skillslog WARN.",
+    keyTakeaways: [
+      "9 unlogged skill/process/tooling commits (8 bigbounce, 1 scistack) landed as one skillsSeries point + this timeline entry",
+      "No new pattern/prompt-rule/tool this wave -- process/doc/science commits only",
+      "tools/site_freshness_check.sh clears its skillslog WARN",
+    ],
+    links: [
+      { label: "commit be4b5bef", href: `${GH_COMMIT}/be4b5bef` },
+      { label: "commit 0e9e5b41", href: `${GH_COMMIT}/0e9e5b41` },
+      { label: "commit 204c9f0c", href: `${GH_COMMIT}/204c9f0c` },
+      { label: "commit 044ea88c", href: `${GH_COMMIT}/044ea88c` },
+      { label: "commit fb27d563", href: `${GH_COMMIT}/fb27d563` },
+      { label: "commit 67a36a5e", href: `${GH_COMMIT}/67a36a5e` },
+      { label: "commit d0cbe4dd", href: `${GH_COMMIT}/d0cbe4dd` },
+      { label: "commit 2c5ee0a2", href: `${GH_COMMIT}/2c5ee0a2` },
+    ],
+  },
+  {
     id: "site-redesign-2026-09-04-integration-gate",
     dateISO: "2026-09-04",
     kind: "restructure",
@@ -10848,6 +10872,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "finalization-maintenance-autolog-2026-08-04", dateISO: "2026-08-04", patterns: 79, promptRules: 41, tooling: 39, note: "Maintenance autolog for all five skill/process/tooling-matched commits since 2026-07-27: publication-finalization prompt provenance (bigbounce bd89100b); P3 directive-G disclosure correction (bigbounce a59d53c2); duplicate project skill-mirror topology record (bigbounce c4eba285); existing native-PDF provider-routing and test repair (bigbounce b75c566d); generated SciStack skill-index refresh (scistack 90eb090). Counters intentionally unchanged: no new catalog pattern, reviewer-prompt instruction rule, or standalone tool was added." },
   { id: "skill-improvement-2026-09-02", dateISO: "2026-09-02", patterns: 79, promptRules: 42, tooling: 42, note: "P1N/P4P/A3M closure wave (promptRules 41→42, tooling 41→42): prompt rule 42 = N-AMENDED routing directive, Sonnet-body/Opus-judgment/Haiku-polling worker split for the Fable 5.1 era across both internal and external API/CLI legs (bigbounce b3c5efd9). +1 tooling: p1n_r3_checks machine-checkable closure assertions replaced prose-only regression claims for P1N's R3 final closure (bigbounce af204341), paired with the P1N R1 merge-regression lesson — 3 regressions from the P1A+P1C merge caught and restored (bigbounce 82bb7752) — and recovery-benchmark fetch hardening for the anomaly-catalog known-object benchmark (bigbounce 80dcf196). Also landed: reproducibility manifest schema v1 additive paper-code enum extensions for A2/A3/P1N/P4P (bigbounce f297cc6e, 7e420e8b, ae21546c) and Codex launchd tick retirement now that directive N pauses the Codex/OpenAI lane (bigbounce 0b3cfaba). patterns unchanged at 79." },
   { id: "autolog-2026-09-03", dateISO: "2026-09-03", patterns: 79, promptRules: 42, tooling: 42, note: "Three process improvements from the 2026-09-03 squeezed-monopole adjudication session (patterns/promptRules/tooling unchanged — pure process fixes, no new script or catalog entry): (a) Fable/Opus science lanes must create+commit their output file within the first ~10 tool calls — two Fable lanes stalled 2026-09-02 reading with nothing written; the 2026-09-03 plan-header/classical-kernel/verdict-manifest lanes (bigbounce d0662559, 67dbe4af, f3516042) all applied the rule and completed cleanly. (b) Sonnet execution lanes must not spawn nested background agents — the phase-3 v2 landing lane delegated to a nested agent that collided with the parent on shared files; fixed with an explicit no-delegation instruction in execution-lane prompts. (c) Sample-provenance preflight (OBJTYPE=TGT / FIBERSTATUS=0 + provenance gate) is now mandatory before any GPU-billed anomaly run, per ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md. Also closes out the P3 anomaly catalogue v2 data-release doc (bigbounce 0e9e5b41, directive Q1)." },
+  { id: "autolog-2026-09-04", dateISO: "2026-09-04", patterns: 79, promptRules: 42, tooling: 42, note: "Auto-logged 9 skill/process/tooling commit(s) since 2026-09-03 (8 bigbounce, 1 scistack): skills-autolog housekeeping; P3 anomaly catalogue v2 data-release doc; A3M v3M.0.12 paperVersion bump + Fig. 1 regeneration with publication labels (directive I6); site redesign /reviews grid + six-lane pattern logging; full-reproduction pass kickoff (directive Q2); SIGW nHz reproducibility manifest (directive Q2); scistack generated skill-index refresh. patterns/promptRules/tooling unchanged — process/doc/science wave, no new catalog entry or standalone tool." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
