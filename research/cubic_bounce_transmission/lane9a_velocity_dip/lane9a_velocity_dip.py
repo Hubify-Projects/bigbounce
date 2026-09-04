@@ -220,7 +220,9 @@ def make_png(res, path):
         a_.grid(alpha=0.25)
     ax[0].set_yscale("log")
     ax[0].set_ylabel(r"$\lambda_\zeta(k)=|\zeta(+\infty)/\zeta(-\eta_B)|$")
-    ax[0].set_title("growth factor across the bounce")
+    ax[0].axvspan(1.0, 4e1, color="#c9a227", alpha=0.18, zorder=0)
+    ax[0].text(1.6, 2.0, "phase-sampled\n(not a growth factor)", fontsize=7, color="#7a5c00")
+    ax[0].set_title(r"growth factor across the bounce (valid for $k\eta_B\lesssim1$)")
     ax[1].set_ylabel(r"$G(k)=|\alpha_{\rm post}|/|\alpha_{\rm pre}+2\beta_{\rm pre}I_\infty|$")
     ax[1].set_title(r"deviation from the S1 super-Hubble transfer ($\Delta^2$ ratio $=G^2$)")
     fig.suptitle("Ledger 9 lane (a): no velocity-dip amplification on the lab backgrounds; "
