@@ -349,3 +349,75 @@ def main():
             else:
                 log(f"{kt:8.3g} {st:>8s}   growth UNDEFINED: {g.get('reason')}")
         out["modes"][f"{kt:g}"] = rec
+
+    # ---------------- (2)/(3) Delta f_NL^bounce per state ------------------------
+    log(f"\n{'=' * 78}\n(2)-(3) Delta f_NL^bounce (squeezed isoceles), eta_* = {ETA_STAR_FAC:g} eta_B")
+    log(f"{'k*eta_B':>8s} {'state':>8s} {'bulk':>14s} {'redef':>14s} {'TOTAL':>14s} "
+        f"{'dominant':>9s} {'frac':>7s}")
+    for kt in K_SCAN + [K_GATE]:
+        k = kt / eB
+        ks = np.array([SQUEEZE * k, k, k])
+        D = lb._dots(*ks)
+        es = ETA_STAR_FAC * eB
+        rec = {}
+        for st in ("S-lab", "S-ABS0", "S-ad4"):
+            ms, info = build_modes(bg, ks, st, eta_far, eta0)
+            if ms is None:
+                rec[st] = {"defined": False, "info": info}
+                log(f"{kt:8.3g} {st:>8s}   UNDEFINED (mode construction failed)")
+                continue
+            npts = int(max(20001, 400 * max(1.0, kt)))
+            r = dfnl(bg, ms, ks, D, es, npts=npts)
+            r["defined"] = True
+            r["npts"] = npts
+            rec[st] = r
+            log(f"{kt:8.3g} {st:>8s} {r['bulk_sum']:+14.6e} {r['redef_sum']:+14.6e} "
+                f"{r['total']:+14.6e} {r['dominant_vertex']:>9s} "
+                f"{(r['dominant_vertex_fraction'] or float('nan')):7.3f}")
+        out["dfnl"][f"{kt:g}"] = rec
+
+    # ---------------- systematics: eta_* and eta_0 --------------------------------
+    log(f"\n{'=' * 78}\nsystematic A: eta_* dependence (zeta is NOT conserved once k*eta_* > 1)")
+    for kt in K_SCAN:
+        k = kt / eB
+        ks = np.array([SQUEEZE * k, k, k])
+        D = lb._dots(*ks)
+        rec = {}
+        for st in ("S-lab", "S-ABS0"):
+            ms, _ = build_modes(bg, ks, st, eta_far, eta0)
+            if ms is None:
+                continue
+            vals = []
+            for f in ETA_STAR_SCAN:
+                r = dfnl(bg, ms, ks, D, f * eB, npts=int(max(20001, 400 * max(1.0, kt))))
+                vals.append({"eta_star_over_etaB": f, "total": r["total"],
+                             "k_eta_star": float(k * f * eB)})
+            tt = [v["total"] for v in vals]
+            spread = float((max(tt) - min(tt)) / abs(np.mean(tt))) if np.mean(tt) else float("nan")
+            rec[st] = {"scan": vals, "frac_spread": spread}
+            log(f"  k*eta_B={kt:6.3g} {st:>7s}: " + "  ".join(
+                f"{v['eta_star_over_etaB']:g}eB:{v['total']:+.3e}" for v in vals)
+                + f"   frac spread {spread:+.2e}")
+        out["eta_star_systematic"][f"{kt:g}"] = rec
+
+    log(f"\nsystematic B: eta_0 dependence of the ABS-style order-zero state (k*eta_B = 1)")
+    kt = 1.0
+    k = kt / eB
+    ks = np.array([SQUEEZE * k, k, k])
+    D = lb._dots(*ks)
+    eref = wkb_reference_time(bg, Wspl, k)
+    e0rec = []
+    for f0 in ETA0_SCAN:
+        e0 = f0 * eB
+        m = ModesIC(bg, k, "S-ABS0", eta_far, eta0=e0)
+        g = growth_factor(m, bg, Wspl, eref)
+        ms, _ = build_modes(bg, ks, "S-ABS0", eta_far, e0)
+        r = dfnl(bg, ms, ks, D, ETA_STAR_FAC * eB) if ms else None
+        e0rec.append({"eta0_over_etaB": f0, "k2_over_W": m.info.get("k2_over_W_at_eta0"),
+                      "growth_factor": g.get("growth_factor"),
+                      "power_modification": g.get("power_modification"),
+                      "total": r["total"] if r else None})
+        log(f"  eta_0 = {f0:7g} eta_B: k^2/W = {m.info.get('k2_over_W_at_eta0'):9.3e}  "
+            f"|z_a/z_b| = {g.get('growth_factor', float('nan')):10.4f}  "
+            f"Delta f_NL = {(r['total'] if r else float('nan')):+.4e}")
+    out["eta0_systematic"] = {"k_etaB": kt, "scan": e0rec}
