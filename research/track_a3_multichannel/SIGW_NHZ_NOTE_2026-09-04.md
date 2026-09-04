@@ -102,3 +102,70 @@ Two independent failures against Channel I's γ = 3:
 - **Amplitude.** Ω_GW h²(f_yr) = 1.45×10⁻²³ vs the NANOGrav power law's 6.3×10⁻¹⁰:
   a shortfall of **10^14.3** (10^13.7 for the pure-dust bracket). The lab spectrum's induced
   GWs are fourteen orders of magnitude below the PTA signal.
+
+### 5. What spectral shape at nHz WOULD give γ = 3, and what it costs
+
+For a broad power law P_R ∝ k^n in radiation domination the induced spectrum is
+Ω_GW ∝ f^{2n} (Domènech arXiv:2109.01398). With γ ≡ 5 − dlnΩ/dlnf, γ = 3 requires
+dlnΩ/dlnf = 2, hence
+
+> **n = 1 — i.e. P_R ∝ k¹ sustained across the whole 2–60 nHz band.**
+
+The lab spectrum has n = n_s − 1 = **−0.0351** (or exactly 0 in the pure-dust bracket).
+Getting to n = +1 is not a small correction: it is a change of sign and of order unity in
+the tilt, over a decade and a half in k, at k ≈ 10⁶–10⁷ Mpc⁻¹.
+
+Amplitude cost, on top of the shape: matching the NANOGrav amplitude at f_yr through
+Ω = 0.8222 Δ⁴ needs Δ²_ζ(f_yr) = **1.65×10⁻²**, against the lab's **1.05×10⁻⁹** — a
+**10^7.2** enhancement. That is the PBH-forming regime; §V C's headline null (7 decades
+short of PBH formation) is exactly the statement that the model does *not* have it. The
+two channels cannot both describe this model — which is item DA3M-R4-02's charge, now
+confirmed numerically.
+
+Note also that γ = 3 is **not** the universal IR causal tail. That floor is Ω_GW ∝ f³,
+i.e. γ = 2 (Cai, Pi & Sasaki 2020, PRD 102 083528, arXiv:1909.13728), and it applies only
+below the source's own support. γ = 3 is neither the causal floor nor the flat-spectrum
+result; it is specifically the P_R ∝ k¹ case.
+
+**Could a bounce-scale feature supply it?** Only if the feature scale k_B sat inside the
+band. k_B ≤ k(60 nHz) = 3.88×10⁷ Mpc⁻¹ requires
+
+> **T_B ≈ 2.3 GeV**, H_B ≈ 7.2×10⁻¹⁸ GeV
+
+i.e. **7.6 decades below** §V's own condition T_B ≳ 10⁸–10¹⁰ GeV, and below the QCD scale.
+A bounce that low is excluded by the paper's own BBN/baryogenesis argument for T_B. So the
+γ = 3 shape cannot be obtained from a k ~ k_B feature either: it would have to come from an
+*additional*, unmotivated, PBH-scale enhancement placed by hand at k ≈ 10⁷ Mpc⁻¹.
+
+## VERDICT — (A) the PTA channel is a null/inconsistency for the CMB-anchored spectrum
+
+**The lab's own committed curvature spectrum gives γ_pred = 5.07 (CMB-anchored) or 5.00
+(pure-dust bracket), 5.1σ / 4.9σ from NANOGrav's γ = 3.2, at an amplitude 10^14.3 below the
+signal. It does not give γ = 3.** The γ = 3 attribution in §IV D is borrowed from
+Papanikolaou 2025's low-k tail, whose spectrum carries a small-scale enhancement that
+§V C explicitly denies this model has. Confirmed: the two sections assume mutually
+inconsistent spectra, and the lab spectrum sides with §V C.
+
+**What §IV must now say.** §IV D's Channel I must be rewritten from a claimed γ = 3
+consistency to a stated null, with three components:
+
+1. **State the model's actual prediction.** From the CMB-anchored Δ²_ζ carried through the
+   standard radiation-era induced-GW kernel, γ_pred = 5.07 and Ω_GW h²(f_yr) = 1.45×10⁻²³
+   — cite this note and `outputs/sigw_nhz_from_lab_spectrum_2026_09_04.json`.
+2. **Delete the Papanikolaou γ = 3 attribution** (`main.tex:585–597`). It borrows the IR
+   slope of a *different*, small-scale-enhanced spectrum. Retain the citation only as a
+   contrast case, explicitly flagged as requiring an enhancement the model lacks.
+3. **Reclassify the channel.** PTA is not a supporting channel and not a constraint: at
+   10^14.3 below the signal the model is unconstrained by NANOGrav, and its slope is in
+   tension with the observed one *if* one insisted the model sourced the signal. State it
+   as a null — "the model predicts an induced-GW background fourteen orders of magnitude
+   below the PTA band and does not account for the NANOGrav signal" — and note that a
+   γ = 3 statement would require P_R ∝ k¹ plus a 10^7.2 enhancement at k ≈ 10⁷ Mpc⁻¹, or a
+   bounce at T_B ≈ 2 GeV, both excluded by §V.
+
+The transfer is not the limitation (kη_B ≤ 2.3×10⁻⁸ across the band), so this null is a
+robust consequence of the CMB anchoring, not an artefact of the bounce modelling.
+
+**Integrity note:** nothing was tuned toward γ = 3. The kernel normalisation was fixed
+against a published scale-invariant benchmark before any lab spectrum was inserted, and
+that benchmark runs as an assertion on every execution.
