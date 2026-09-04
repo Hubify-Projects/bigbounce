@@ -185,3 +185,72 @@ graded list (N1–N4 legend kept, prose rewritten to track framing).
 4. **Works in this track** — rows (title, purpose line, version [C], readiness [C], state [C]) → `/papers/[slug]`.
 5. **What is still open** — the track's open ledger rows in plain English, each with its blocker. [S]
 6. **Boundary** — what this track does *not* claim. Directly from the architecture reset's "What it is not" prose.
+
+### 3.4 `/papers/[slug]` — paper template
+
+The most-landed-on page. Sections in fixed order, single 760px prose column with full-width bands for data:
+
+1. **Header band** — kind label (Paper · Note · Software · Data release), H1 title, **purpose line in plain English
+   directly under the title** (Q3, mandatory, never omitted), then a mono metadata row: version [C] · date [C] ·
+   pages [C] · md5 [C] · track. No badges cluster; no card.
+2. **Actions row** — text links, hairline above/below: Read PDF · arXiv/Zenodo DOI · Source `.tex` · Reproduction
+   manifest · Figures. Missing links are omitted, never rendered disabled.
+3. **Abstract** — verbatim, prose width.
+4. **Result summary** — 2–4 lines, each a claim + its evidence chip. Nulls sit here with equal weight.
+5. **Figures** — inline gallery from `figures.ts` [S] filtered to this work; click opens full size.
+6. **Readiness** — one number [C] plus the five-part composition bar (science / evidence / review / packaging /
+   sign-off) as a single segmented rule, no nested boxes. Below it, one sentence: readiness is publication readiness
+   only; venue and submission are tracked separately (directive P).
+7. **Publishing** — venue, endorsement state, submission state [C via `publicationStatus`]; explicitly labeled
+   "not part of readiness".
+8. **Review evidence** — collapsed by default: current verdict row per active leg + link to `/reviews`. Never above
+   the abstract.
+9. **Reproduce this** — manifest summary from `repro.ts` [S]: inputs, scripts, compute venue, est. cost, wall-clock;
+   link into `/reproduce`.
+10. **Lineage** — one paragraph: what this work was, what it became, what it does not claim.
+
+### 3.5 `/status` — readiness dashboard
+
+Purpose: one honest picture of where every work stands. Sections: (a) H1 + one framing sentence — dates shown are
+real last-update dates and a two-month-old date is a backlog signal, not a bug; (b) **one table** [C]: work, version,
+readiness, open findings, last update, publishing state — last-update cells older than 30 days get a quiet
+"stale — no change since" annotation rather than silent old dates; (c) **`#signoff`** — the generalized final-review
+block: per work, the four agent gates plus Houston's sign-off slot (95 → 100), replacing the P2-only `/final-review`;
+(d) survey QC table (existing `SurveyQcTable`) moved to `/reproduce/surveys`; (e) links out to `/reviews`,
+`/activity`, `/publish`. No hand-maintained readiness numbers anywhere on this page.
+
+### 3.6 `/reviews` — internal QA evidence, simplified
+
+Reframed at the top: *"Automated multi-model review is a gate on publication readiness, not a product. Rounds stop
+when the remaining findings are genre or venue."* (directives R2, P.) Sections in order:
+
+1. **Verdict grid**, newest rounds on the **left** — rows = works, columns = rounds, cells = verdict letters. Active
+   legs only per directive M-AMENDED; frozen legs (OpenAI/ChatGPT) shown greyed with a "frozen, not counted"
+   footnote, never deleted, never faked. The all-A meter states it counts active legs only. [S `reviewTimeline.ts`
+   `externalVerdictRounds`, schema unchanged.]
+2. **Publication status widget** [C] — kept, restyled, de-nested.
+3. **Round timeline** — reverse-chronological rows, one line each: date · kind · what changed · receipt link.
+   `kind:"skill-improvement"` entries render with a distinct quiet marker. [S, append-only, schema unchanged.]
+4. **Gap and skills charts** — kept, single-accent line charts, axis labels in mono. [S `gapSeries`, `skillsSeries`.]
+5. The dense lead paragraph of numbers is deleted; those numbers become the stat row.
+
+### 3.7 `/reproduce` — data & reproducibility hub
+
+Sections: (a) H1 "Reproduce everything" + the platform sentence (flagship reproducible lab; every experiment carries a
+manifest per directive Q2); (b) stat row — programs, manifests, runnable now, est. total cost; (c) **manifest table**
+per program (the one bordered surface): experiment, inputs + external links (DESI, HF, SDSS…), scripts, compute venue
+(local ≈ free vs RunPod GPU), est. cost, wall-clock, state [S `repro.ts`]; (d) **`/reproduce/surveys`** — data sources
+and QC readiness, with the "0 of 8 clear the survey-hard bar" number given its explanatory sentence *on screen*;
+(e) **Releases & DOIs** — Zenodo records, HuggingFace datasets, Backblaze B2 mirrors, GitHub releases, each with the
+work it belongs to; (f) an "how to run one" code block (a genuine bordered surface).
+
+### 3.8 Explore and Learn hubs
+
+`/explore`: five one-line entries (galaxy explorer, anomaly explorer, data explorer, visualize, figures), each with
+its headline number. Explorer pages themselves: **tool first** — the `.html` [H] renders directly under a two-line
+intro; methodology and caveats move to a "How this was made" section *below* the tool. Wrapper chrome only; the
+`.html` files are edited only when their content changes, never replaced.
+
+`/learn`: `/explained` is the lead; `/glossary`, `/timeline`, `/articles`, `/speculations` follow as one-line entries.
+Glossary terms become anchor targets so jargon anywhere on the site can link straight to its definition (fixes the
+"jargon-only labels" problem at the source).
