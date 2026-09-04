@@ -59,11 +59,15 @@ The n_ran=7 `pk_estimator_qso.py` NGC pass ran ~50 min wall-clock without
 completing its FFT (vs. v1's 83 s baseline at n_ran=4) under measured
 24+ GB of swap usage; killed. Retried at n_ran=5 (realisations 0–4/cap):
 also did not complete within a further ~15 min under continued contention
-before the session's compute-time budget forced a cut. **This fix is
-recorded as attempted-but-blocked by host resource contention, not a
-result** — no f_NL movement is attributed to it. The full-18 (or even
-n_ran=5/7) run remains the concrete next step on a less-contended host;
-sha256s for realisations 1–6 are committed and ready.
+before the session's compute-time budget forced a cut. **Correction:** the n_ran=7 NGC pass actually completed (772.0 s wall
+clock, `outputs/pk_qso_NGC_nran7.json`, 9.3× v1's 83 s baseline — real
+data, not lost) before the kill signal landed; SGC never started (killed
+mid-loop). **Fix 3 is therefore "NGC done at n_ran=7, SGC missing"**, one
+cap short of a combined re-fit, rather than fully blocked — no f_NL
+movement is attributed to it here because a combined NGC+SGC re-fit needs
+both caps. The full-18 (or a completed n_ran=7 SGC pass) run remains the
+concrete next step on a less-contended host; sha256s for realisations 1–6
+and the completed NGC file are committed and ready.
 
 ## 5. Fix 5 — systematics budget (2/≥5 tests; reduced fidelity)
 
