@@ -49,15 +49,14 @@ linear-order relation is a derived identity
 ($\delta N_c=(1-\epsilon/3)\zeta$); the second-order piece is computed and
 recorded, but its physical mechanism is not identified, so the two routes
 compute different variables rather than disagreeing.
-Transmission through the bounce is scheme-qualified: within one cubic-vertex
-scheme (S1) and $k\eta_B\lesssim10^{-2}$ -- satisfied most easily at large
-scales, hardest at PBH scales -- a linear handoff bound
-($0\le T_{\fnl}<1/2$, $0.165$--$0.409$ across three backgrounds and two
-mode-function schemes; the combined post-bounce range below is scheme-S1
-only) combined
-with the bounce's own cubic term gives $\fnl^{\rm after}\in[-0.65,-0.50]$
-($-35/16$) or $[-1.20,-0.86]$ ($-35/8$); a second scheme (S2) does not
-regulate.
+Transmission through the bounce is scheme-qualified: within $k\eta_B\lesssim10^{-2}$
+-- easiest at large scales, hardest at PBH scales -- a linear handoff
+bound ($0\le T_{\fnl}<1/2$, $0.165$--$0.409$) combined with the bounce's
+own cubic term gives $\fnl^{\rm after}\in[-0.65,-0.50]$ ($-35/16$) or
+$[-1.20,-0.86]$ ($-35/8$) in the geometric scheme (S1). The
+effective-fluid scheme (S2), previously reported divergent, is now finite
+once that artefact is removed, giving $\fnl^{\rm after}\approx-1.25$: a
+two-scheme band, $[-1.25,-0.50]$, not S1 alone.
 We take the amplitude through three channels, each stated at the strength
 its evidence supports. (i)~\emph{Pulsar timing.} NANOGrav's 15-yr
 posteriors give $\gamma_{\rm HD}=3.2^{+0.6}_{-0.6}$ (official) and a refit
@@ -969,9 +968,20 @@ $\log_{10}\beta\approx-1.7\times10^9$ at $M_H=10^{20}\,$g). \textbf{The PBH
 channel is therefore a null for this model's own predicted spectrum}: it
 neither constrains nor is evidenced by primordial black holes, and any
 quotable PBH signal would require a small-scale amplification mechanism the
-model does not contain -- a literature survey of four such candidate
+model does not contain -- a survey of four such candidate
 mechanisms~\cite{Quintin2015,AgulloBolliet2017} finds none applies within the
-model's validated ($k\eta_B\lesssim10^{-2}$) domain.
+model's validated ($k\eta_B\lesssim10^{-2}$) domain, and this is no longer
+only a literature survey: at $k\eta_B\approx3$, the extreme small-scale
+end of the PBH band, the scheme-S1 bispectrum has now been evaluated
+directly on exact (non-super-Hubble) LQC-dust mode functions
+(Sec.~\ref{sec:transmission}) and gives $|\fnl|\approx0.9$--$1.9$, which
+\emph{worsens} rather than relieves the required Gaussian excursion
+(the required-excursion threshold moves from the Gaussian $3162\sigma$ to
+$3364\sigma$); even the largest number produced anywhere in that scan
+(equilateral configuration, $|\fnl|\approx1.2\times10^3$) leaves the
+threshold at $408\sigma$ against the $7.0$-decade amplitude deficit
+established here, so no configuration, initial state, or evaluation time
+tested reopens this channel.
 
 The same spectrum is checked against the FIRAS $\mu$-distortion bound
 ($|\mu|<9\times10^{-5}$): the lab's own prediction gives
@@ -1145,34 +1155,56 @@ output, and does not by itself separate $-35/16$ from $-35/8$ observationally
 -- only compares how hard each is to produce -- and $\fpbh(\fnl)$ itself was
 shown to be strongly non-monotonic along the path to both candidates on the
 earlier lognormal grid (Sec.~\ref{sec:pbh_compaction}). The transmission
-result is scheme-conditional (S1) and validated only for
-$k\eta_B\lesssim10^{-2}$; a second scheme (S2) does not regulate at all, so
-scheme-independence remains open. At the transmitted amplitude the survey
-channel's discriminating power is itself the weak link: SPHEREx separates
-the two candidates by $|\Delta\fnl^{\rm after}|\approx0.35$--$0.55$ against
-$\sigma_{\fnl}=0.5$--$0.7$, i.e.\ under $1\sigma$ (Sec.~\ref{sec:lss}), so no
-currently forecast LSS survey can distinguish $-35/16$ from $-35/8$ once
-scheme-S1 transmission is applied; the not-yet-derived shape-overlap
-projection $r$ would sharpen this somewhat but cannot by itself restore the
-pre-bounce-level $3\sigma$ separation.
+result is scheme-qualified and validated only for $k\eta_B\lesssim10^{-2}$;
+scheme-independence, previously an open question, is now answered
+negatively rather than left unresolved: the effective-fluid scheme S2,
+evaluated on its raw (pre-integration-by-parts) cubic action with exact
+mode functions, is finite -- the earlier ``S2 diverges'' statement traced
+to a total-derivative artefact, not a physical pathology -- but gives
+$\fnl^{\rm after}\approx-1.25$ on the one background tested (Quintin-type),
+a factor $\approx2.5$ from S1's $-0.50$ on the same background
+(Sec.~\ref{sec:bounce_cubic}). The transmitted amplitude is therefore
+reported as a two-scheme band rather than a single scheme-S1 number, and
+which scheme's linear variable is physical at $H=0$ remains an open
+theory question this paper does not resolve. At the transmitted amplitude
+the survey channel's discriminating power is itself the weak link: SPHEREx
+separates the two candidates by $|\Delta\fnl^{\rm after}|\approx0.35$--$0.55$
+against $\sigma_{\fnl}=0.5$--$0.7$, i.e.\ under $1\sigma$
+(Sec.~\ref{sec:lss}), so no currently forecast LSS survey can distinguish
+$-35/16$ from $-35/8$ once scheme-S1 transmission is applied; the
+not-yet-derived shape-overlap projection $r$ would sharpen this somewhat
+but cannot by itself restore the pre-bounce-level $3\sigma$ separation.
 
 \subsection{Next steps}
 \label{sec:next}
 
-In priority order: (i)~a second transmission scheme beyond S1, to test
-whether $\fnl^{\rm after}\in[-0.65,-0.50]$ is scheme-independent, and
-extension of the bounce-cubic-term computation to a regulated S2 value;
-(ii)~a bounce-scale enhancement mechanism at $k\eta_B\sim1$ (the regime the
-S1 transfer does not cover), which is the only remaining route by which
-Channel~I or the black-hole channel could become non-null within this
-model; (iii)~re-derivation of the shape overlap $r$ at the $-35/16$
-fiducial; and (iv)~a direct-collapse (rather than horizon-re-entry)
-primordial-black-hole formation channel during the dust contraction phase
-itself, identified but not evaluated in Sec.~\ref{sec:pbh_inlab}. The
-propagation of the post-bounce amplitude to the CMB/LSS pivot and of the
-scalar spectrum through the induced-GW kernel to the nHz amplitude, listed
-as open in earlier versions, are now carried out in
-Secs.~\ref{sec:lss} and~\ref{sec:pta_null}.
+In priority order: (i)~settling which linear variable ($z=a$ or the
+effective-fluid $z^2\propto\epsilon/c_s^2$) is the physically correct
+continuation through $H=0$ -- a theory question, not a numerical one, since
+both schemes are now finite and give genuinely different answers rather
+than differing by a regularization choice (Sec.~\ref{sec:bounce_cubic});
+(ii)~an evaluation-time (freeze-out) prescription for the bispectrum at
+$k\eta_B\gtrsim0.1$, where this model's absence of a post-bounce
+inflationary phase leaves $\zeta$ unfrozen and the bounce-window cubic
+integral dependent on when it is evaluated by a factor of several, so that
+the $k\eta_B\approx0.6$--$0.8$ transfer feature and the $k\eta_B\sim1$--$3$
+exact-mode bispectrum of Sec.~\ref{sec:transmission} can be quoted as
+single numbers rather than ranges; (iii)~re-derivation of the shape
+overlap $r$ at the $-35/16$ fiducial; (iv)~extending the S2 raw-ADM
+computation to the LQC and poly backgrounds, and to the $-35/8$ amplitude,
+neither of which is computed here (Sec.~\ref{sec:bounce_cubic},
+Table~\ref{tab:reach}); and (v)~a direct-collapse (rather than
+horizon-re-entry) primordial-black-hole formation channel during the dust
+contraction phase itself, identified but not evaluated in
+Sec.~\ref{sec:pbh_inlab}. The propagation of the post-bounce amplitude to
+the CMB/LSS pivot and of the scalar spectrum through the induced-GW kernel
+to the nHz amplitude, listed as open in earlier versions, are now carried
+out in Secs.~\ref{sec:lss} and~\ref{sec:pta_null}; the bounce-scale
+enhancement mechanisms at $k\eta_B\sim1$ once listed here as the sole
+remaining route to reopen Channel~I or the black-hole channel have now
+been checked directly (velocity dip, transfer excursion, and LQC
+cubic-operator enhancement, Sec.~\ref{sec:transmission}) and found not to
+reopen either.
 
 %======================================================================
 \appendix
@@ -1290,7 +1322,18 @@ at\footnotesize
 \end{itemize}
 \normalsize
 respectively, including \texttt{fnl\_monopole\_adjudication\_2026\_09\_03.md}
-in the former (Appendix~\ref{app:derivation}). The bounce-to-local shape overlap ($r$, Sec.~\ref{sec:lss}) is
+in the former (Appendix~\ref{app:derivation}). The ledger-row-9 (D-A3-9)
+mechanisms of Sec.~\ref{sec:transmission} and the S2 resolution of
+Sec.~\ref{sec:bounce_cubic} are committed, at the current HEAD, under
+\texttt{research/cubic\_bounce\_transmission/}: \texttt{lane9a\_velocity\_dip/}
+(Quintin Eq.~79 evaluation and the $k\eta_B\in[0.1,10]$ transfer scan),
+\texttt{lane9b\_s2\_regulation/} (the total-derivative diagnosis of the S2
+divergence), \texttt{lane9b2\_s2\_rawadm/} (the raw-ADM S2 computation,
+\texttt{results.json}), \texttt{lane9c\_abs\_operator/} (the
+Agullo--Bolliet--Sreenath operator map and scale-window conversion), and
+\texttt{lane9c2\_lqc\_modes/} (the exact-mode LQC-dust in-in evaluation,
+\texttt{results.json}), each with its own manifest under
+\texttt{reproducibility/manifests/experiments/}. The bounce-to-local shape overlap ($r$, Sec.~\ref{sec:lss}) is
 imported from this lab's companion Fisher-forecast draft at
 \texttt{research/focused\_paper\_source\_integration/} and
 \texttt{outputs/survey\_reach\_fnl.json}. The three channel computations
