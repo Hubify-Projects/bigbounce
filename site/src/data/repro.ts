@@ -2495,6 +2495,137 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "ledger4-desi-dr1-qso-fnl-reproduction",
+    "title": "Ledger #4 steps 2-6 - independent pypower P_ell(k) measurement and scale-dependent-bias f_NL^loc fit on DESI DR1 QSO (LSScats v1.5), with a WEIGHT_SYS systematics test and b_Phi-marginalised posterior overlap against the flagship f_NL=-35/16",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "DESI DR1 QSO clustering + randoms catalogues (LSScats v1.5) - NGC+SGC data, 4/18 randoms realisations per cap (0-3)",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+        "checksum": "sha256:2e14a4d112deada4f41f2c1768048184d5c2b97d2874844e2cc12adbab8964ce (QSO_NGC_0_clustering.ran.fits; full list in research/desi_png_reproduction/venv_setup/qso_randoms_1-3_sha256.txt plus the ledger4-desi-dr1-lss-sanity manifest for the step-1 files)",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (reproduction target; supplies b1(z) formula, FKP P0 fiducial, published f_NL central values/errors)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2411.17623",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "cosmoprimo DESI fiducial cosmology (eisenstein_hu transfer engine - CLASS/pyclass unavailable, fails to build in this environment)",
+        "type": "external-literature",
+        "locator": "https://github.com/cosmodesi/cosmoprimo",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "DESI public data server (anonymous HTTP, no key)",
+        "endpoint": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "research/desi_png_reproduction/pk_estimator_qso.py",
+        "entrypoint": "python3 pk_estimator_qso.py [NGC|SGC]",
+        "sha256": "7ace8a26fce9acf22069e17528646cd89728edfd7fbc0e77c71348da462925bb"
+      },
+      {
+        "path": "research/desi_png_reproduction/combine_and_compare.py",
+        "entrypoint": "python3 combine_and_compare.py",
+        "sha256": "d63c48607eca68b7615457a653383d5f47e1a0a5500e0b0f98210da02ea58ae3"
+      },
+      {
+        "path": "research/desi_png_reproduction/fit_fnl.py",
+        "entrypoint": "python3 fit_fnl.py",
+        "sha256": "628da290a1f02520bdd81a499208384b6fbd2544c421f1b3bf05c7f83b05cb35"
+      },
+      {
+        "path": "research/desi_png_reproduction/systest_weight_sys.py",
+        "entrypoint": "python3 systest_weight_sys.py",
+        "sha256": "b4dd467e924f6fb5e1b0f3da9fa2b90ccbeb5ec8e525b00eebaaf5d65fa2f4c9"
+      },
+      {
+        "path": "research/desi_png_reproduction/systest_fit.py",
+        "entrypoint": "python3 systest_fit.py",
+        "sha256": "62f13c5fab3d78af58aaf4050e4590f13d0bd6a04a9975b9731dab872d3b6f7a"
+      }
+    ],
+    "environment": {
+      "python": "python3.12.13 (dedicated venv: research/desi_png_reproduction/.venv312, gitignored) + numpy 2.5.2 + scipy 1.18.1 + astropy 8.0.1 + fitsio 1.4.2 + emcee 3.1.6 + mpi4py 4.1.2 + pyFFTW 0.15.1 + pmesh (git) + pypower 1.0.0 (git) + cosmoprimo (git, eisenstein_hu engine) + desilike (git); brew open-mpi required for mpi4py/pmesh build",
+      "hardware": "cpu-only; Apple M-series MacBook Air, 25.8 GB RAM, 10 cores, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "package install ~15 min; +7.8GB download ~4 min; P_ell(k) NGC+SGC ~3 min; f_NL fit (3 MCMC runs, 3000 steps x 32 walkers) ~10 min; WEIGHT_SYS systematics test (4 pypower runs) ~12 min; total session ~1 hour of compute",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~45 min after environment setup (venv + package install ~15-20 min one-time)",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Requires the step-1 sanity-check files (ledger4-desi-dr1-lss-sanity manifest) plus randoms realisations 1-3 per cap (re-fetch from the DESI URL, sha256s in venv_setup/qso_randoms_1-3_sha256.txt). CLASS/pyclass fails to build in this environment (ValueError: could not build CLASS) -- cosmoprimo falls back to the eisenstein_hu transfer engine, a documented fidelity limitation vs the published CLASS-based pipeline. Run order: pk_estimator_qso.py NGC, pk_estimator_qso.py SGC, combine_and_compare.py, fit_fnl.py, systest_weight_sys.py, systest_fit.py."
+    },
+    "outputs": [
+      {
+        "locator": "research/desi_png_reproduction/outputs/pk_qso_NGC.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/pk_qso_SGC.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/pk_qso_combined_comparison.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/fnl_fit_results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/fnl_chain_marginalised.npy",
+        "type": "dataset",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/systest_weight_sys_fnl.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) P0(k=0.01,zeff) at f_NL=0, b1=2.242 (published Table-2 formula) predicts 35,522 (Mpc/h)^3 vs measured combined P0(k=0.01)=34,944 -- 1.7% agreement (fnl_fit_results.json note field); (b) f_NL posterior medians: -50.6 (p=1.6), -26.7 (p=1.0), -36.3 (p marginalised over [1.0,1.6]) with sigma 18.5/9.3/15.5 respectively (fnl_fit_results.json); (c) WEIGHT_SYS on/off point-estimate Delta f_NL = +62.4 (systest_weight_sys_fnl.json), exceeding the statistical sigma by >3x; (d) posterior distance from f_NL=-35/16 is 2.20 sigma, from -35/8 is 2.06 sigma, from 0 is 2.34 sigma, using the p-marginalised chain's median/std.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+      "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md sections 3 (method), 4 (compute), 5 (kill/success)",
+      "research/desi_png_reproduction/RUN_LOG.md (full step-by-step log with commit SHAs)",
+      "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md (result writeup)",
+      "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength -- central-value offset from published reported honestly, not smoothed)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "ledger7-chiral-gw-delta-h",
     "title": "Ledger #7 gate - net helicity asymmetry Delta_h of the SGWB from the minimal Einstein-Cartan-Holst torsion bounce (symbolic parity-operator check + super-Hubble k-odd estimate)",
     "program": "bounce-theory",
@@ -6674,8 +6805,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [],
@@ -6728,7 +6859,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — astra per-object crossmatch + HF mirror bullet",
       "project-context/SSOT/paper-5/status.md",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   },
   {
@@ -6749,8 +6881,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [
@@ -6836,7 +6968,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
       "project-context/SSOT/paper-5/status.md",
       "Added `08_analysis_cosmic_web.py` to code[] beyond the inventory's explicit list: verified via `ls pipelines/p5_desi_chirality/scripts/` that this script (within the same 05-09 numbered range referenced by the redshift/density/healpix/systematics bullet) is the cosmic-web analysis, not a HEALPix/systematics script, and its output directory `results/analysis_cosmic_web/` matches this experiment's scope rather than the 16a-16d split.",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   },
   {
@@ -6850,8 +6983,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [],
@@ -6895,7 +7028,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
       "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 06_analysis_density.py maps to this analysis.",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   },
   {
@@ -6962,13 +7096,13 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "No venue was explicitly logged in the inventory for this run; 'implied local' is a reproduction-side inference only, not an original_run fact, so all original_run fields stay null. The matched parquet itself (1.3GB, 2,232,212 rows) is not checked into git — only its provenance/summary JSONs are — consistent with the repo's pattern of keeping large derived artifacts out of git."
+      "notes": "Regenerated 2026-09-04: inputs (p4_chirality.parquet, desi_zall.fits) were already local (no re-download needed). 03_crossmatch.py output: 2,232,212 rows, 1,297,512,873 bytes, sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147. Backed up 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet."
     },
     "outputs": [
       {
         "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
         "type": "catalog",
-        "checksum": null
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       },
       {
         "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi_summary.json",
@@ -6978,7 +7112,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json",
         "type": "receipt",
-        "checksum": null
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "verification": "Re-run and confirm the matched catalog contains 2,232,212 rows (1.3GB parquet) via p5_matched_chirality_desi_summary.json's row count, exact integer match.",
@@ -6986,7 +7120,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — P4xDESI DR1 crossmatch + matched catalog build bullet",
       "project-context/SSOT/paper-5/status.md",
-      "Verified via `find` that the 1.3GB parquet itself is not present in the repo tree; only p5_matched_chirality_desi_summary.json and p5_matched_chirality_desi.parquet.provenance.json are — noted in reproduction.notes rather than fabricating a checksum for the missing parquet."
+      "Verified via `find` that the 1.3GB parquet itself is not present in the repo tree; only p5_matched_chirality_desi_summary.json and p5_matched_chirality_desi.parquet.provenance.json are — noted in reproduction.notes rather than fabricating a checksum for the missing parquet.",
+      "2026-09-04 restoration run: see reproducibility/FULL_PASS_2026-09-04.md \"P5 parquet restored\" section for full detail."
     ]
   },
   {
@@ -7000,8 +7135,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [],
@@ -7055,7 +7190,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — r23conf/r24conf/r27conf closure recomputes + focal cluster inference bullet",
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (venue evidence missing for this r-conf family)",
       "project-context/SSOT/paper-5/status.md",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   },
   {
@@ -7069,8 +7205,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [],
@@ -7114,7 +7250,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
       "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — note the inventory's own '05-09' numbering is not a clean 1:1 map: 07_analysis_healpix.py is the HEALPix script, while 08_analysis_cosmic_web.py (also in the 05-09 range) is NOT a HEALPix/systematics script but the cosmic-web analysis, and is instead attached to p5-cosmic-web-desivast-void.",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   },
   {
@@ -7128,8 +7265,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [],
@@ -7203,7 +7340,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — r23conf/r24conf/r27conf closure recomputes + focal cluster inference bullet",
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
       "project-context/SSOT/paper-5/status.md",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   },
   {
@@ -7217,8 +7355,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [],
@@ -7262,7 +7400,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
       "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 05_analysis_redshift.py maps to this analysis.",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   },
   {
@@ -7276,8 +7415,8 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-        "checksum": null
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+        "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
       }
     ],
     "apis": [],
@@ -7321,7 +7460,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
       "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 09_systematics.py maps to this analysis.",
-      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+      "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
     ]
   }
 ];

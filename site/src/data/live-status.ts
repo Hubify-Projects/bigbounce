@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.10",
+      version: "v3M.0.11",
       readiness: 75,
-      pendingWork: "R3 truth-audit closure (C1-C10): transmitted-amplitude LSS reach, delta N_c derivation appendix, induced-GW IR-slope correction, 8 numeric/definitional fixes. Houston final review pending.",
+      pendingWork: "Science decision D-A3-9 (ledger row 9): transmitted amplitude restated as a two-scheme band f_NL^after in [-1.25,-0.50] (S1 vs S2, S2 finite on the raw ADM Lagrangian); Table IV gains an S2 row block. R5 verification board in progress. Houston final review pending.",
     },
     {
       slug: "paper-3",
