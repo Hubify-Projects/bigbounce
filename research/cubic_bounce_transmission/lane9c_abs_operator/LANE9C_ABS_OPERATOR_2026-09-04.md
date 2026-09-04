@@ -289,3 +289,68 @@ show it does not rescue that channel:
    enhanced region, and the lab's spectrum is *anchored there* to $A_s=2.1\times10^{-9}$ (A3-1b).
    Importing an ABS-type infrared growth and re-anchoring to $A_s$ therefore leaves the PTA/PBH band
    relatively **suppressed**, not enhanced. Quantifying this requires the computation named in §5.
+
+---
+
+## 5. VERDICT
+
+**Primary verdict: NOT DETERMINABLE WITHOUT A COMPUTATION.** Named exactly:
+
+> the scheme-S1 cubic in-in integral of lane (a)'s V2–V7 (+ R1–R4 boundary terms) evaluated with the
+> **exact** mode functions of $\mu''+(k^2-W(\eta))\mu=0$ — not the super-Hubble reduction
+> $\zeta=C_1+C_2J$ — on the **LQC-dust** background over $k\eta_B\in[0.1,10]$, with the initial state
+> stated explicitly and varied over at least (i) the lab's contraction-phase vacuum and (ii) an
+> ABS-style adiabatic-order-zero state, reporting $\Delta f_{\rm NL}^{\rm bounce}(k\eta_B)$ and its
+> state-dependence. This is lane (b)'s machinery run outside its super-Hubble reduction.
+
+Two sub-verdicts, both settled by this lane and both required for honest reporting:
+
+**(i) The mapping question is settled: OPERATOR PRESENT AND REPRESENTABLE.** ABS's
+$\mathcal H^{(3)}$ (their Eq. 23) is, by their own statement, the Legendre transform of Maldacena's
+third-order Lagrangian; §1.2 maps every one of its nine terms onto lane (a)'s V2–V7/R1–R4 at
+$c_s=1$, $\lambda=0$, including the $\zeta(\partial_i\partial_j\tilde\chi)^2$ structure lane (a) had
+already derived independently. **No term of $\mathcal H^{(3)}$ depends on $\rho/\rho_{\rm c}$,
+$\rho_{\rm sup}$, $\Delta_0$, or $\mathfrak U$**; the quantum geometry enters only the effective
+background (their Eq. 32) and the *free* propagation through the dressed metric and dressed potential
+(their Eqs. 39–42). **The 2026-09-03 lane (c) statement that "Agullo+2017's dressed-metric $H^{(3)}$
+quantum-geometric operator is NOT contained in S1" is hereby corrected** (and the corresponding
+sentence in `NEXT_SCIENCE_LEDGER.md` row 2 should be amended): the operator is contained in S1; what
+S1 does not cover is the *regime* $k\eta_B\gtrsim10^{-2}$ and the *initial state*. On a **strict dust
+fluid** ($c_s^2=0$) the $P(X,\phi)$ form of those same coefficients is **singular**, not absent — the
+$c_s^{-4}$ divergence the lab already measured as S2's unregulable $d_{\rm cut}^{-1}$ scaling.
+
+**(ii) The decision-relevant answer is unchanged: this route does not reopen Track A's channels.**
+The enhancement window is $k\eta_B\lesssim1.06$ (onset), $\lesssim10.6$ ($f_{\rm NL}$-affected), i.e.
+$k\lesssim1.8\times10^{15}(T_B/10^{8}\,{\rm GeV})\ {\rm Mpc^{-1}}$. The PTA band would need
+$T_B\approx2\times10^{1}$ GeV, 6.7–8.7 decades below §V's condition. The PBH band overlaps only at its
+extreme high end at the lowest allowed $T_B$ ($k\eta_B\approx3$), and there the channel's deficit is a
+**7.0 dex amplitude** shortfall that a non-Gaussian tail with $|f_{\rm NL}|=10^{3}$ does not bridge
+($408\sigma$ at $\zeta_c=0.1$). Row 9 stays OPEN as a *scheme/regime* item, not as a live channel.
+
+### Sentence(s) for the A3 paper (§V or the transmission subsection)
+
+> The transmission coefficient quoted here is a scheme-S1 result whose validity band is
+> $k\eta_B\lesssim10^{-2}$. Agullo, Bolliet and Sreenath [arXiv:1712.08148] report an enhancement of
+> $f_{\rm NL}$ by several orders of magnitude for modes larger than the curvature radius at the
+> bounce, $k\lesssim k_{\rm LQC}=a_B\sqrt{R_{\rm B}/6}$; their third-order Hamiltonian is, as they
+> state, the Legendre transform of Maldacena's classical cubic action, so it contains no operator
+> beyond those used here, and their enhancement arises from the exact bounce-crossing mode functions
+> and their choice of initial state rather than from a quantum-geometric vertex. In the present
+> normalisation their window is $k\eta_B\lesssim1.06$, two decades above our validity band; we
+> therefore neither reproduce nor refute their magnitude, and we make no claim that the bounce
+> produces no orders-of-magnitude enhancement at $k\eta_B\sim1$. For the bounce temperatures
+> considered in §V, $T_B\gtrsim10^{8}$–$10^{10}$ GeV, that window lies at
+> $k\lesssim1.8\times10^{15}(T_B/10^{8}\,{\rm GeV})\,{\rm Mpc^{-1}}$ — seven to eight decades above the
+> PTA band, and at the extreme small-scale end of the PBH band, where the amplitude shortfall we
+> report is seven decades and is not bridged by a non-Gaussian tail of any plausible $f_{\rm NL}$.
+
+---
+
+## Artifacts
+
+| path | role |
+|---|---|
+| `LANE9C_ABS_OPERATOR_2026-09-04.md` | this document |
+| `lane9c_scale_window.py` → `lane9c_scale_window.json` | $k_{\rm LQC}\eta_B$, decay law, PTA/PBH overlap, NG-tail $\sigma$ |
+| `reproducibility/manifests/experiments/ledger9-c-abs-operator-map.json` | reproducibility manifest (directive Q2) |
+| source: `https://arxiv.org/e-print/1712.08148` (`NGLQC.tex`, v2 2018-02-26) | literature, read directly |
