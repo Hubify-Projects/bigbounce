@@ -72,7 +72,7 @@ def _W_tools(bg):
     return CubicSpline(bg["eta"], bg["appa"])
 
 
-def _adiabatic_order4(Wspl, k, eta0, half=None, npts=4001):
+def _adiabatic_order4(Wspl, k, eta0, half=None, npts=801):
     """4th-order adiabatic (WKB) vacuum at eta0 for mu'' + (k^2 - W) mu = 0.
 
     omega0^2 = k^2 - W;  Omega_(2)^2 = omega0^2 - (1/2)(omega0''/omega0) + (3/4)(omega0'/omega0)^2
@@ -82,24 +82,31 @@ def _adiabatic_order4(Wspl, k, eta0, half=None, npts=4001):
     Returns (mu0, dmu0, diagnostics) or (None, None, reason).
     """
     if half is None:
-        half = max(0.02 * abs(eta0), 1e-3)
+        half = 0.25 * abs(eta0)
     e = np.linspace(eta0 - half, eta0 + half, npts)
     w2 = k * k - Wspl(e)
     if np.any(w2 <= 0):
         return None, None, {"defined": False, "reason": "k^2 - W <= 0 in the WKB window"}
+    # derivatives are taken from a degree-10 least-squares polynomial in (eta - eta0),
+    # NOT from nested cubic splines: W itself is a spline of the background grid, so its
+    # 3rd/4th derivatives are numerically meaningless and would spuriously drive
+    # Omega^2 negative.  The polynomial is a smoothing filter of the adiabatic window.
+    def _poly(y):
+        return np.polynomial.Polynomial.fit(e - eta0, y, 10).convert()
+
     w0 = np.sqrt(w2)
-    s0 = CubicSpline(e, w0)
-    O2sq = w2 - 0.5 * s0.derivative(2)(e) / w0 + 0.75 * (s0.derivative(1)(e) / w0) ** 2
+    p0 = _poly(w0)
+    O2sq = w2 - 0.5 * p0.deriv(2)(e - eta0) / w0 + 0.75 * (p0.deriv(1)(e - eta0) / w0) ** 2
     if np.any(O2sq <= 0):
         return None, None, {"defined": False, "reason": "2nd-order adiabatic Omega^2 <= 0"}
     O2 = np.sqrt(O2sq)
-    s2 = CubicSpline(e, O2)
-    O4sq = w2 - 0.5 * s2.derivative(2)(e) / O2 + 0.75 * (s2.derivative(1)(e) / O2) ** 2
+    p2 = _poly(O2)
+    O4sq = w2 - 0.5 * p2.deriv(2)(e - eta0) / O2 + 0.75 * (p2.deriv(1)(e - eta0) / O2) ** 2
     if np.any(O4sq <= 0):
         return None, None, {"defined": False, "reason": "4th-order adiabatic Omega^2 <= 0"}
     O4 = np.sqrt(O4sq)
-    s4 = CubicSpline(e, O4)
-    Om, dOm = float(s4(eta0)), float(s4.derivative(1)(eta0))
+    p4 = _poly(O4)
+    Om, dOm = float(p4(0.0)), float(p4.deriv(1)(0.0))
     mu0 = 1.0 / np.sqrt(2.0 * Om) + 0.0j
     dmu0 = (-1j * Om - dOm / (2.0 * Om)) * mu0
     diag = {"defined": True, "Omega4": Om, "omega0": float(np.interp(eta0, e, w0)),
