@@ -429,3 +429,7 @@ smoke test PASS (0 undefined refs, 10 pages).
 
 **Not sourced from a committed file (disclosed).** None — every number
 above traces to the four source files listed at the top of this section.
+
+## R3 closure decision C1 (orchestrator, Fable 5.1, 2026-09-04)
+
+**Decision C1 = (a) PROPAGATE.** Verbatim: "The scheme-S1 super-Hubble transfer (validity kη_B ≲ 1e−2, an upper bound on k) is satisfied most easily at the LSS/CMB pivot, so the transmitted amplitude f_NL^after = T·f_NL^pre + Δf_NL^bounce is the paper's observable prediction for every channel. Table IV carries f_NL^after rows for −35/16 and −35/8 on all three backgrounds with bare significances at σ = 0.7/0.5/1.0; the pre-bounce row stays as a clearly-labelled secondary ('assuming T_fNL = 1'). The abstract's 'this channel alone discriminates the two amplitudes, with SPHEREx reaching 3.13σ' is replaced by the transmitted statement (SPHEREx bare 0.7–0.9σ for −35/16, 1.2–1.7σ for −35/8 — no discrimination at current reach). The §VII A 'far outside that validated window' sentence is deleted as false. No exemption (b) is claimed: no physical IR cutoff on S1 exists in the lab's computation." Basis: A3M_v3M.0.8_R3_TRUTH_AUDIT_2026-09-04.md DA3M-R3-01 (Fable M1 ≡ Gemini E4); VISION.md R6 (claims at evidential strength). Consequence: the Track-A headline becomes a transmission-corrected prediction plus a multi-channel consistency map; the −35/16 vs −35/8 factor-two is not separable by SPHEREx at the transmitted amplitude. Closure C1–C10 → v3M.0.9.
