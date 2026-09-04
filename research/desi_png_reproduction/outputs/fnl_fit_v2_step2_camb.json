@@ -1,0 +1,13 @@
+{
+  "tk": "camb",
+  "nran": 4,
+  "window_ic": true,
+  "shotnoise_fixed": false,
+  "method": "point_estimate",
+  "p1.6": {
+    "f_nl_point": -16.68205649097822
+  },
+  "p1.0": {
+    "f_nl_point": -8.620524470209437
+  }
+}

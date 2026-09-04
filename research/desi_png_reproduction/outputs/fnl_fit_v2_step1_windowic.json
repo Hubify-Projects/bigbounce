@@ -1,0 +1,13 @@
+{
+  "tk": "eh",
+  "nran": 4,
+  "window_ic": true,
+  "shotnoise_fixed": false,
+  "method": "point_estimate",
+  "p1.6": {
+    "f_nl_point": -23.215973585055785
+  },
+  "p1.0": {
+    "f_nl_point": -11.996956272743653
+  }
+}
