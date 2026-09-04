@@ -1,0 +1,36 @@
+{
+  "finished_utc": "2026-09-03T23:14:03Z",
+  "input_manifest_parent": {
+    "catalog_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "contract_sha256": "6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf",
+    "generation_id": "clean-rerun-6699d09ff886",
+    "input_manifest_sha256": "01fdf5a76d69d4fdbbf9e51d9ab3a2ac0878884d6db5c0f3569f9d5092648ea2",
+    "summary_sha256": "77be443ce9ab10895ba26317e7768135a39f4b4bd2a93e00018bf567b7416d1d"
+  },
+  "input_sample_sha256": "d6d43dfa04d6a8b2b4d014f5f4899b5e5b844144a50b6c88e01a9a771a6baa5f",
+  "manifest_version": "flagship-crossmatch/v1",
+  "matched_output": {
+    "file_name": "flagship_crossmatch_v2_matched.parquet",
+    "sha256": "4a718d1a7ad253d2f91c69841d81e3b8015650fc0ca1f4a711fa0ee9da17f135"
+  },
+  "n_input": 1244,
+  "n_matched": 569,
+  "n_ned_found": 562,
+  "n_simbad_found": 38,
+  "n_unmatched": 675,
+  "query_params": {
+    "radius_arcsec": 3.0,
+    "rate_limit_sleep_seconds": 1.0,
+    "timeout_seconds": 30.0
+  },
+  "services": {
+    "astroquery_version": "0.4.11",
+    "ned": "astroquery.ipac.ned.Ned",
+    "simbad": "astroquery.simbad.Simbad"
+  },
+  "started_utc": "2026-09-03T19:51:12Z",
+  "unmatched_output": {
+    "file_name": "flagship_crossmatch_v2_unmatched.parquet",
+    "sha256": "c0a6b57bd672f81b1424a65449f99d891810073ea59e600c1fc35cfec30eb7c3"
+  }
+}

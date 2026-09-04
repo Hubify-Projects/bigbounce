@@ -1,0 +1,28 @@
+{
+  "finished_utc": "2026-09-03T23:55:02Z",
+  "input_enriched_manifest": "flagship_enriched_v2_manifest.json",
+  "input_enriched_sha256": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff",
+  "manifest_version": "flagship-wise-join/v1",
+  "n_input": 1244,
+  "n_matched": 74,
+  "n_unmatched": 1170,
+  "output": {
+    "file_name": "flagship_wise_v2.parquet",
+    "sha256": "1b42125d5e62830cf44806a842b7253e787ec218c77b3a19e690eed4fedb40f3"
+  },
+  "query_params": {
+    "checkpoint_every": 50,
+    "radius_arcsec": 3.0,
+    "rate_limit_sleep_seconds": 1.0,
+    "timeout_seconds": 30.0
+  },
+  "service": {
+    "astroquery_version": "0.4.11",
+    "catalog": "II/328/allwise",
+    "client": "astroquery.vizier.Vizier",
+    "endpoint": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/sync",
+    "historical_precedent": "same catalog neowise_crossmatch.py/neowise_crossmatch_silver.py queried via raw requests.get() for w1w2_color; only the client library changed, matching the raw-requests -> astroquery precedent crossmatch_flagship.py set for SIMBAD/NED",
+    "name": "AllWISE (VizieR)"
+  },
+  "started_utc": "2026-09-03T23:14:04Z"
+}

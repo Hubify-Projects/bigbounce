@@ -1,0 +1,71 @@
+{
+  "bins": [
+    {
+      "bin": "[3,4)",
+      "joined_to_zcat": 49348,
+      "science_target_count": 1092,
+      "score_hi": 4.0,
+      "score_lo": 3.0,
+      "sky_or_nonscience_count": 233273,
+      "sky_or_nonscience_fraction": 0.9953406011989845,
+      "total": 234365
+    },
+    {
+      "bin": "[4,5)",
+      "joined_to_zcat": 6399,
+      "science_target_count": 108,
+      "score_hi": 5.0,
+      "score_lo": 4.0,
+      "sky_or_nonscience_count": 33757,
+      "sky_or_nonscience_fraction": 0.9968108666765096,
+      "total": 33865
+    },
+    {
+      "bin": "[5,6)",
+      "joined_to_zcat": 3846,
+      "science_target_count": 24,
+      "score_hi": 6.0,
+      "score_lo": 5.0,
+      "sky_or_nonscience_count": 24984,
+      "sky_or_nonscience_fraction": 0.9990403071017274,
+      "total": 25008
+    },
+    {
+      "bin": "[6,8)",
+      "joined_to_zcat": 3609,
+      "science_target_count": 18,
+      "score_hi": 8.0,
+      "score_lo": 6.0,
+      "sky_or_nonscience_count": 23352,
+      "sky_or_nonscience_fraction": 0.9992297817715019,
+      "total": 23370
+    },
+    {
+      "bin": "[8,10)",
+      "joined_to_zcat": 545,
+      "science_target_count": 1,
+      "score_hi": 10.0,
+      "score_lo": 8.0,
+      "sky_or_nonscience_count": 3472,
+      "sky_or_nonscience_fraction": 0.9997120644975526,
+      "total": 3473
+    },
+    {
+      "bin": "[10,24.42]",
+      "joined_to_zcat": 33,
+      "science_target_count": 1,
+      "score_hi": null,
+      "score_lo": 10.0,
+      "sky_or_nonscience_count": 336,
+      "sky_or_nonscience_fraction": 0.9970326409495549,
+      "total": 337
+    }
+  ],
+  "contract_sha256": "6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf",
+  "generation_id": "clean-rerun-6699d09ff886",
+  "max_score_observed": 24.41764347732522,
+  "raw_rows_all_shards": 28425963,
+  "rule": "sky_or_nonscience = NOT (OBJTYPE=='TGT' AND COADD_FIBERSTATUS==0); TARGETID<=0 counted as sky_or_nonscience",
+  "unique_targetids_all_shards": 27547223,
+  "zcatalog_path": "/workspace/zall-pix-iron.fits"
+}

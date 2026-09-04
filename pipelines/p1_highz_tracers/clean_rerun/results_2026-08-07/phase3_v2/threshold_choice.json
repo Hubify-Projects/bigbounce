@@ -1,0 +1,21 @@
+{
+  "rule": "From grid {3,4,5,6,8,10}: take the LARGEST threshold whose science-only count is >= 300. If that count exceeds 1500, step to the NEXT-LARGER grid point unless that would drop the count below 300 (then keep the >=300 pick).",
+  "grid": [
+    3,
+    4,
+    5,
+    6,
+    8,
+    10
+  ],
+  "counts_by_threshold": {
+    "3": 1244,
+    "4": 152,
+    "5": 44,
+    "6": 20,
+    "8": 2,
+    "10": 1
+  },
+  "chosen_threshold": "3",
+  "reason": "grid={'3': 1244, '4': 152, '5': 44, '6': 20, '8': 2, '10': 1}; picked g=3 count=1244"
+}

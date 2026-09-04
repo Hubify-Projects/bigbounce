@@ -1,0 +1,6775 @@
+{
+  "checkpoint_version": 1,
+  "completed_groups": [
+    {
+      "group": [
+        "main",
+        "bright",
+        2095
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-2095.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        4799
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-4799.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        4989
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-4989.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        5748
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-5748.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6123
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6123.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6349
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6349.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6464
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6464.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6578
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6578.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6736
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6736.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6774
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6774.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6776
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6776.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6778
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6778.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6780
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6780.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6781
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6781.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6956
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6956.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6962
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6962.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        6972
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-6972.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7068
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7068.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7113
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7113.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7114
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7114.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7133
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7133.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7157
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7157.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7751
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7751.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7786
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7786.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7820
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7820.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7833
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7833.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7839
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7839.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7841
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7841.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7878
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7878.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7880
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7880.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7905
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7905.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7909
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7909.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        7997
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-7997.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        8006
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-8006.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        8082
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-8082.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        9276
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-9276.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        9580
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-9580.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        9862
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-9862.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        9899
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-9899.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        10182
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-10182.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        10536
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-10536.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        10598
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-10598.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        10696
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-10696.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        10727
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-10727.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        11000
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-11000.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        11045
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-11045.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        11074
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-11074.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        11733
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-11733.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        15095
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-15095.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        16011
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-16011.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        16023
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-16023.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        16041
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-16041.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        16106
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-16106.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        16725
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-16725.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        16834
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-16834.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        18326
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-18326.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        20093
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-20093.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        21838
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-21838.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        21862
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-21862.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        26090
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-26090.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        26472
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-26472.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        28508
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-28508.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        32372
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-bright-32372.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        36191
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-36191.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        36213
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-36213.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        40817
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-40817.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "bright",
+        40829
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-bright-40829.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        13
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-13.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        680
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-680.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        728
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-728.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        2142
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-2142.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        2176
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-2176.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        2181
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-2181.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        2568
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-2568.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4128
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4128.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4131
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4131.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4141
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4141.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4143
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4143.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4226
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4226.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4228
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4228.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4229
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4229.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4300
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4300.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4479
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4479.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4565
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-4565.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4608
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4608.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4610
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4610.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        4666
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-4666.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        5131
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-5131.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        5168
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-5168.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        5493
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-5493.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        5496
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-5496.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        5906
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-5906.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        6239
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-6239.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        6269
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-6269.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        6301
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-6301.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        6433
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-6433.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        6502
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-6502.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        6633
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-6633.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7021
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7021.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7095
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7095.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7143
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-7143.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7152
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-7152.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7153
+      ],
+      "row_count": 16,
+      "shard": "enriched-main-dark-7153.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7154
+      ],
+      "row_count": 7,
+      "shard": "enriched-main-dark-7154.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7155
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-7155.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7156
+      ],
+      "row_count": 8,
+      "shard": "enriched-main-dark-7156.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7157
+      ],
+      "row_count": 4,
+      "shard": "enriched-main-dark-7157.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7158
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-7158.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7159
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7159.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7160
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-7160.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7161
+      ],
+      "row_count": 8,
+      "shard": "enriched-main-dark-7161.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7164
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-7164.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7165
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7165.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7166
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7166.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7167
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7167.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7381
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7381.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7389
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7389.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7552
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7552.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7553
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-7553.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7554
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7554.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7555
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-7555.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7561
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7561.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7755
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7755.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7840
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7840.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7843
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-7843.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7846
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7846.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        7974
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-7974.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8069
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8069.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8205
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8205.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8220
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8220.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8287
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8287.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8309
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8309.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8341
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8341.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8353
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8353.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8469
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8469.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8477
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8477.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8507
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8507.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8545
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8545.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8571
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8571.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8598
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8598.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8643
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8643.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8658
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8658.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8672
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8672.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        8977
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-8977.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9074
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9074.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9076
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-9076.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9087
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9087.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9168
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9168.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9193
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9193.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9195
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9195.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9231
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9231.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9244
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9244.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9310
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9310.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9334
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9334.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9373
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9373.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9388
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9388.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9391
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9391.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9459
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9459.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9462
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9462.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9486
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9486.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9488
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9488.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9534
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9534.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9575
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9575.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9648
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9648.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9674
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9674.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9685
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-9685.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9705
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9705.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9717
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-9717.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9719
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-9719.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9728
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9728.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9730
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9730.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9753
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9753.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9817
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9817.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9818
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9818.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9835
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9835.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        9841
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-9841.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10093
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10093.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10118
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10118.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10132
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10132.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10320
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10320.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10365
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10365.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10508
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10508.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10552
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10552.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10626
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10626.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10633
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10633.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10802
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10802.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        10932
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-10932.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        11018
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-11018.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        11028
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-11028.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        11589
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-11589.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12291
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12291.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12313
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12313.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12327
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12327.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12337
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12337.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12338
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12338.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12598
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12598.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12606
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12606.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12665
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12665.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12765
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12765.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        12789
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-12789.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        13504
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-13504.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15035
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-15035.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15038
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15038.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15063
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15063.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15074
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15074.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15086
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15086.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15087
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15087.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15090
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-15090.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15231
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15231.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15240
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15240.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15251
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15251.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15264
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-15264.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15273
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15273.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15283
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15283.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15285
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15285.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15286
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15286.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15288
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15288.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15289
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-15289.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15306
+      ],
+      "row_count": 4,
+      "shard": "enriched-main-dark-15306.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15307
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-15307.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15309
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15309.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15318
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15318.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15330
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15330.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15331
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15331.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15334
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-15334.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15335
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-15335.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15934
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15934.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15935
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15935.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15978
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15978.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15979
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15979.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        15982
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-15982.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        16004
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-16004.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        16028
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-16028.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        16865
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-16865.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        17872
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-17872.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        17957
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-17957.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18004
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18004.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18006
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18006.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18210
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18210.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18705
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18705.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18717
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18717.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18786
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18786.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18829
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18829.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18977
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18977.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18978
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-18978.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18980
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18980.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18982
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18982.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18984
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18984.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        18986
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-18986.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19015
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19015.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19072
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19072.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19077
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19077.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19078
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-19078.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19089
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19089.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19092
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19092.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19100
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-19100.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19103
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19103.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19111
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19111.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19113
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19113.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19121
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19121.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19156
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19156.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19178
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19178.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19179
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19179.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19417
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19417.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        19898
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-19898.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        20116
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-20116.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        20126
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-20126.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        20229
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-20229.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        20246
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-20246.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        20385
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-20385.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21836
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21836.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21849
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21849.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21861
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21861.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21863
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21863.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21873
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21873.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21886
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21886.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21970
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-21970.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21977
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-21977.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21979
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21979.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        21982
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-21982.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22579
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22579.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22586
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22586.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22682
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22682.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22683
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22683.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22736
+      ],
+      "row_count": 3,
+      "shard": "enriched-main-dark-22736.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22737
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22737.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22746
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-22746.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22752
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22752.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22768
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22768.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        22958
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-22958.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        23185
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-23185.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25556
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25556.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25574
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25574.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25595
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25595.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25800
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25800.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25843
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25843.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25856
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25856.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25874
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25874.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25880
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25880.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25897
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25897.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25914
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25914.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        25997
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-25997.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26010
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26010.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26055
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26055.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26076
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26076.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26081
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26081.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26128
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26128.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26137
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26137.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26141
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26141.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26190
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26190.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26195
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26195.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26198
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26198.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26243
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26243.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26251
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26251.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26256
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26256.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26319
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26319.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26857
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26857.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26959
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26959.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        26979
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-26979.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27025
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27025.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27051
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27051.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27073
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27073.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27117
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27117.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27160
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27160.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27175
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27175.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27198
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27198.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27221
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27221.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27234
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27234.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27240
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27240.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27249
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27249.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27270
+      ],
+      "row_count": 5,
+      "shard": "enriched-main-dark-27270.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27271
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27271.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27277
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27277.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27282
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27282.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27287
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27287.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27300
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27300.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27314
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27314.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27327
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27327.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27332
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27332.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27339
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27339.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27392
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27392.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27417
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27417.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27574
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27574.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27576
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27576.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27577
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27577.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27659
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27659.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        27714
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-27714.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        28319
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-28319.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        28537
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-28537.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        28661
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-28661.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        30029
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-30029.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        30039
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-30039.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        30065
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-30065.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        30076
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-30076.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        30078
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-30078.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31142
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31142.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31159
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31159.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31161
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31161.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31207
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31207.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31208
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31208.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31214
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31214.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31224
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31224.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31231
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31231.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31429
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31429.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31447
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31447.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31475
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31475.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31493
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31493.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31502
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31502.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31514
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31514.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31531
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31531.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31543
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31543.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31545
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31545.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31549
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31549.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31582
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31582.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31636
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31636.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31659
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31659.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31733
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31733.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31933
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31933.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        31935
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-31935.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32276
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32276.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32279
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32279.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32284
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32284.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32291
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32291.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32298
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32298.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32328
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32328.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32357
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32357.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32363
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32363.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32382
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32382.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32397
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32397.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32408
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-32408.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32452
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32452.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32469
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32469.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32473
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32473.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32478
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32478.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32486
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32486.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32547
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-32547.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32634
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32634.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32682
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32682.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32722
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32722.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32723
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32723.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32729
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32729.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        32754
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-32754.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        36272
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-36272.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        36711
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-36711.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        36848
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-36848.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        36849
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-36849.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        36851
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-36851.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        40798
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-40798.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        40904
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-40904.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        40929
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-40929.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        40950
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-40950.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        45035
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-45035.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49012
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49012.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49013
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49013.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49049
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49049.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49051
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49051.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49052
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49052.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49106
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49106.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49110
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49110.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49130
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49130.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49146
+      ],
+      "row_count": 1,
+      "shard": "enriched-main-dark-49146.parquet"
+    },
+    {
+      "group": [
+        "main",
+        "dark",
+        49149
+      ],
+      "row_count": 2,
+      "shard": "enriched-main-dark-49149.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        10248
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-dark-10248.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14859
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-dark-14859.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14880
+      ],
+      "row_count": 4,
+      "shard": "enriched-special-dark-14880.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14881
+      ],
+      "row_count": 6,
+      "shard": "enriched-special-dark-14881.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14882
+      ],
+      "row_count": 5,
+      "shard": "enriched-special-dark-14882.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14883
+      ],
+      "row_count": 5,
+      "shard": "enriched-special-dark-14883.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14886
+      ],
+      "row_count": 8,
+      "shard": "enriched-special-dark-14886.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14888
+      ],
+      "row_count": 5,
+      "shard": "enriched-special-dark-14888.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14889
+      ],
+      "row_count": 2,
+      "shard": "enriched-special-dark-14889.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14890
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-dark-14890.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        14891
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-dark-14891.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        26189
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-dark-26189.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27986
+      ],
+      "row_count": 2,
+      "shard": "enriched-special-dark-27986.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27987
+      ],
+      "row_count": 13,
+      "shard": "enriched-special-dark-27987.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27991
+      ],
+      "row_count": 3,
+      "shard": "enriched-special-dark-27991.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27993
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-dark-27993.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27995
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-dark-27995.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27996
+      ],
+      "row_count": 4,
+      "shard": "enriched-special-dark-27996.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27998
+      ],
+      "row_count": 3,
+      "shard": "enriched-special-dark-27998.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        27999
+      ],
+      "row_count": 2,
+      "shard": "enriched-special-dark-27999.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        32629
+      ],
+      "row_count": 6,
+      "shard": "enriched-special-dark-32629.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        32631
+      ],
+      "row_count": 10,
+      "shard": "enriched-special-dark-32631.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "dark",
+        32637
+      ],
+      "row_count": 3,
+      "shard": "enriched-special-dark-32637.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        2622
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-other-2622.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        2753
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-other-2753.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27244
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-other-27244.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27245
+      ],
+      "row_count": 3,
+      "shard": "enriched-special-other-27245.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27247
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-other-27247.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27251
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-other-27251.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27258
+      ],
+      "row_count": 2,
+      "shard": "enriched-special-other-27258.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27262
+      ],
+      "row_count": 2,
+      "shard": "enriched-special-other-27262.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27333
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-other-27333.parquet"
+    },
+    {
+      "group": [
+        "special",
+        "other",
+        27345
+      ],
+      "row_count": 1,
+      "shard": "enriched-special-other-27345.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        4104
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-4104.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        4243
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-4243.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        4244
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-4244.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        6342
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-6342.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        6856
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-6856.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        17668
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv1-bright-17668.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        17671
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-17671.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        17767
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-17767.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        22921
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-22921.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        27496
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-bright-27496.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "bright",
+        36782
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv1-bright-36782.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        4684
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-4684.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        4957
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-4957.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        4983
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-4983.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        5648
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-5648.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        6251
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-6251.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        6409
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-6409.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        6739
+      ],
+      "row_count": 6,
+      "shard": "enriched-sv1-dark-6739.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        6742
+      ],
+      "row_count": 37,
+      "shard": "enriched-sv1-dark-6742.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        6745
+      ],
+      "row_count": 23,
+      "shard": "enriched-sv1-dark-6745.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        6748
+      ],
+      "row_count": 14,
+      "shard": "enriched-sv1-dark-6748.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        7120
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-7120.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        7588
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-7588.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        7591
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-7591.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        7599
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-7599.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        7606
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-7606.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        7610
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-7610.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        7941
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-7941.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        8141
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-8141.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        8468
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-8468.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        9416
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-9416.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        10407
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-10407.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        10413
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-10413.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        10432
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-10432.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        10739
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-10739.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        11405
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-11405.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        11407
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-11407.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        17694
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-17694.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        20713
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-20713.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        21068
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-21068.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        25591
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv1-dark-25591.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        25597
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-25597.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        26404
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-26404.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        28531
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-28531.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        28591
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-28591.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38770
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38770.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38776
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv1-dark-38776.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38777
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv1-dark-38777.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38778
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38778.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38779
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38779.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38780
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38780.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38782
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38782.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38861
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38861.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38865
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38865.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38868
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38868.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38874
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38874.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38896
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv1-dark-38896.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "dark",
+        38897
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-dark-38897.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        2710
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-2710.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        4685
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-4685.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        4702
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-4702.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        5919
+      ],
+      "row_count": 7,
+      "shard": "enriched-sv1-other-5919.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        5940
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv1-other-5940.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        5941
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv1-other-5941.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        5984
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv1-other-5984.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11314
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv1-other-11314.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11315
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv1-other-11315.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11316
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-11316.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11317
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-11317.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11318
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-11318.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11319
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-11319.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11320
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv1-other-11320.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11321
+      ],
+      "row_count": 16,
+      "shard": "enriched-sv1-other-11321.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11322
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-11322.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11324
+      ],
+      "row_count": 6,
+      "shard": "enriched-sv1-other-11324.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        11326
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv1-other-11326.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        27244
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-27244.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        27245
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv1-other-27245.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        27247
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv1-other-27247.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        27256
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv1-other-27256.parquet"
+    },
+    {
+      "group": [
+        "sv1",
+        "other",
+        27259
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv1-other-27259.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "bright",
+        11196
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv2-bright-11196.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        5965
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv2-dark-5965.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10931
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv2-dark-10931.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10932
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv2-dark-10932.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10933
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv2-dark-10933.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10934
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv2-dark-10934.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10935
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv2-dark-10935.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10954
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv2-dark-10954.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10976
+      ],
+      "row_count": 7,
+      "shard": "enriched-sv2-dark-10976.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        10977
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv2-dark-10977.parquet"
+    },
+    {
+      "group": [
+        "sv2",
+        "dark",
+        11181
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv2-dark-11181.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9146
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-9146.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9339
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9339.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9341
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-9341.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9343
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-9343.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9428
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-9428.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9429
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-9429.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9430
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9430.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9814
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9814.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9815
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9815.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9820
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9820.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9822
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9822.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9829
+      ],
+      "row_count": 6,
+      "shard": "enriched-sv3-bright-9829.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9830
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-9830.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9831
+      ],
+      "row_count": 7,
+      "shard": "enriched-sv3-bright-9831.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9836
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9836.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9840
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-9840.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9841
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9841.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9842
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9842.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9848
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-9848.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9921
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9921.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9922
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-9922.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9923
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-9923.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9928
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9928.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9929
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-9929.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        9992
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-9992.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10150
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10150.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10152
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-10152.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10153
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10153.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10155
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10155.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10199
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-10199.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10204
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-10204.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10206
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-10206.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10207
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10207.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10237
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10237.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10238
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10238.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10239
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10239.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10376
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10376.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10377
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10377.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10378
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-10378.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10379
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10379.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10382
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-10382.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10400
+      ],
+      "row_count": 8,
+      "shard": "enriched-sv3-bright-10400.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10401
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10401.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10403
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10403.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10404
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10404.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10406
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-10406.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10512
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10512.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10516
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10516.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10518
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10518.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        10741
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-10741.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11227
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11227.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11228
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11228.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11230
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-11230.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11231
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11231.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11248
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-11248.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11252
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11252.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11253
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11253.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11402
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-11402.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11403
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11403.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11404
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11404.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11406
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-11406.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11424
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-bright-11424.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11427
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11427.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11428
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-11428.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11430
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-11430.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11605
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-11605.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11607
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-bright-11607.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        11914
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-11914.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        15358
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-15358.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        16042
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-16042.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        16043
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-16043.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25598
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-25598.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25599
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25599.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25911
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-25911.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25915
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-25915.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25932
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25932.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25934
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25934.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25952
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25952.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25954
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-25954.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25958
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25958.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25964
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-25964.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25966
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25966.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25968
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-25968.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25969
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25969.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25976
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25976.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25979
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-25979.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        25982
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-25982.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26001
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-26001.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26007
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-26007.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26050
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-26050.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26065
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-26065.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26068
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-26068.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26086
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-26086.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26088
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-26088.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26089
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-26089.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26094
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv3-bright-26094.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26274
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-26274.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26275
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-26275.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26282
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-26282.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26284
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-bright-26284.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26285
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-26285.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26287
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv3-bright-26287.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26433
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-26433.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26436
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-26436.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        26964
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-26964.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        27245
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-27245.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        27251
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-27251.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        27258
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-27258.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        27259
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-bright-27259.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        27345
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-27345.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        27648
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-27648.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        27650
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-27650.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28115
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-28115.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28117
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-28117.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28118
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-28118.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28121
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-28121.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28124
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-28124.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28125
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv3-bright-28125.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28126
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-bright-28126.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28127
+      ],
+      "row_count": 9,
+      "shard": "enriched-sv3-bright-28127.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "bright",
+        28149
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-bright-28149.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9149
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9149.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9338
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9338.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9339
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9339.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9429
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9429.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9814
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9814.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9820
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9820.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9821
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9821.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9829
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9829.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9831
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9831.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9837
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9837.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9839
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9839.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9877
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9877.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9922
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-9922.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9928
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-dark-9928.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        9929
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-dark-9929.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10153
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10153.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10154
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10154.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10155
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-dark-10155.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10158
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-10158.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10199
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10199.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10229
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-10229.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10231
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10231.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10236
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10236.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10238
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10238.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10239
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10239.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10400
+      ],
+      "row_count": 7,
+      "shard": "enriched-sv3-dark-10400.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10406
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10406.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10516
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-10516.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10518
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-dark-10518.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        10519
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-dark-10519.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11230
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11230.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11231
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11231.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11237
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11237.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11248
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11248.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11402
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11402.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11406
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11406.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11424
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11424.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11425
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11425.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11428
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-11428.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11521
+      ],
+      "row_count": 7,
+      "shard": "enriched-sv3-dark-11521.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11524
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-11524.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        11605
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-11605.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        15354
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-15354.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        16043
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-16043.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25595
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25595.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25598
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25598.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25911
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-dark-25911.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25919
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25919.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25929
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25929.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25932
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25932.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25933
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25933.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25954
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25954.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25960
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25960.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25964
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-25964.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25965
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25965.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25966
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-25966.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25968
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25968.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25969
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-25969.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25976
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25976.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25977
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25977.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        25982
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-25982.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26005
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-26005.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26007
+      ],
+      "row_count": 5,
+      "shard": "enriched-sv3-dark-26007.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26045
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-26045.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26050
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-26050.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26065
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-26065.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26068
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-dark-26068.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26088
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-26088.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26094
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-dark-26094.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26274
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-26274.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26285
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-26285.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26287
+      ],
+      "row_count": 6,
+      "shard": "enriched-sv3-dark-26287.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26436
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-26436.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        26961
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-26961.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27239
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-27239.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27244
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-27244.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27245
+      ],
+      "row_count": 2,
+      "shard": "enriched-sv3-dark-27245.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27260
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-27260.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27262
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-27262.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27345
+      ],
+      "row_count": 6,
+      "shard": "enriched-sv3-dark-27345.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27650
+      ],
+      "row_count": 3,
+      "shard": "enriched-sv3-dark-27650.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        27651
+      ],
+      "row_count": 1,
+      "shard": "enriched-sv3-dark-27651.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        28127
+      ],
+      "row_count": 4,
+      "shard": "enriched-sv3-dark-28127.parquet"
+    },
+    {
+      "group": [
+        "sv3",
+        "dark",
+        28149
+      ],
+      "row_count": 10,
+      "shard": "enriched-sv3-dark-28149.parquet"
+    }
+  ],
+  "contract_sha256": "6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf",
+  "input_sample_sha256": "d6d43dfa04d6a8b2b4d014f5f4899b5e5b844144a50b6c88e01a9a771a6baa5f"
+}

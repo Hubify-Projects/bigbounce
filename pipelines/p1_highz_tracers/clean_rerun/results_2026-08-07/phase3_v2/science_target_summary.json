@@ -1,0 +1,99 @@
+{
+  "generated_utc": "2026-09-03T16:57:01.042476Z",
+  "source_log": "/workspace/phase3_v2/describe_science.log",
+  "raw_describe_output": "{\n  \"contract_sha256\": \"6699d09ff886f74dab6608bd70a70b73b7a34afabc436d365c69f16a95ac5edf\",\n  \"counts_above_threshold\": {\n    \"sigma_10\": {\n      \"count\": 337,\n      \"fraction_of_unique\": 1.2233538023052269e-05,\n      \"threshold\": 10.0\n    },\n    \"sigma_3\": {\n      \"count\": 320418,\n      \"fraction_of_unique\": 0.011631589870238462,\n      \"threshold\": 3.0\n    },\n    \"sigma_4\": {\n      \"count\": 86053,\n      \"fraction_of_unique\": 0.0031238357492513855,\n      \"threshold\": 4.0\n    },\n    \"sigma_5\": {\n      \"count\": 52188,\n      \"fraction_of_unique\": 0.0018944922324838334,\n      \"threshold\": 5.0\n    },\n    \"sigma_6\": {\n      \"count\": 27180,\n      \"fraction_of_unique\": 0.0009866693277939486,\n      \"threshold\": 6.0\n    },\n    \"sigma_8\": {\n      \"count\": 3810,\n      \"fraction_of_unique\": 0.00013830795213005682,\n      \"threshold\": 8.0\n    }\n  },\n  \"generation_id\": \"clean-rerun-6699d09ff886\",\n  \"note\": \"describe mode emits no sample; use --score-threshold to select one\",\n  \"quantiles\": {\n    \"q00\": -0.6445933290903847,\n    \"q05\": -0.6436520708597017,\n    \"q10\": -0.6428106552941931,\n    \"q100\": 24.41764347732522,\n    \"q25\": -0.6336089379828211,\n    \"q50\": -0.5636190354993683,\n    \"q75\": 0.06934444013864655,\n    \"q90\": 1.81875470605507,\n    \"q95\": 2.267603220953169,\n    \"q99\": 3.077658607048009\n  },\n  \"raw_rows\": 28425963,\n  \"science_only\": {\n    \"counts_above_threshold\": {\n      \"sigma_10\": {\n        \"count\": 1,\n        \"fraction_of_unique\": 4.58851357397028e-08,\n        \"threshold\": 10.0\n      },\n      \"sigma_3\": {\n        \"count\": 1244,\n        \"fraction_of_unique\": 5.708110886019028e-05,\n        \"threshold\": 3.0\n      },\n      \"sigma_4\": {\n        \"count\": 152,\n        \"fraction_of_unique\": 6.974540632434826e-06,\n        \"threshold\": 4.0\n      },\n      \"sigma_5\": {\n        \"count\": 44,\n        \"fraction_of_unique\": 2.0189459725469234e-06,\n        \"threshold\": 5.0\n      },\n      \"sigma_6\": {\n        \"count\": 20,\n        \"fraction_of_unique\": 9.17702714794056e-07,\n        \"threshold\": 6.0\n      },\n      \"sigma_8\": {\n        \"count\": 2,\n        \"fraction_of_unique\": 9.17702714794056e-08,\n        \"threshold\": 8.0\n      }\n    },\n    \"quantiles\": {\n      \"q00\": -0.6445933289941215,\n      \"q05\": -0.6433977060092197,\n      \"q10\": -0.6426988975762108,\n      \"q100\": 11.331638918519781,\n      \"q25\": -0.6361735058488243,\n      \"q50\": -0.5998580109745055,\n      \"q75\": -0.3642172651170913,\n      \"q90\": 0.09213485929192404,\n      \"q95\": 0.3688659586556217,\n      \"q99\": 0.9638153429269956\n    },\n    \"unique_targetids\": 21793550\n  },\n  \"science_target_rule\": \"OBJTYPE == 'TGT' AND COADD_FIBERSTATUS == 0 (TARGETID > 0 asserted)\",\n  \"science_targets_only\": true,\n  \"unique_targetids\": 27547223,\n  \"zcatalog_path\": \"/workspace/zall-pix-iron.fits\"\n}\n",
+  "raw": {
+    "unique_targetids": 27547223,
+    "quantiles": {
+      "q00": -0.6445933290903847,
+      "q05": -0.6436520708597017,
+      "q10": -0.6428106552941931,
+      "q100": 24.41764347732522,
+      "q25": -0.6336089379828211,
+      "q50": -0.5636190354993683,
+      "q75": 0.06934444013864655,
+      "q90": 1.81875470605507,
+      "q95": 2.267603220953169,
+      "q99": 3.077658607048009
+    },
+    "counts_above_threshold": {
+      "sigma_10": {
+        "count": 337,
+        "fraction_of_unique": 1.2233538023052269e-05,
+        "threshold": 10.0
+      },
+      "sigma_3": {
+        "count": 320418,
+        "fraction_of_unique": 0.011631589870238462,
+        "threshold": 3.0
+      },
+      "sigma_4": {
+        "count": 86053,
+        "fraction_of_unique": 0.0031238357492513855,
+        "threshold": 4.0
+      },
+      "sigma_5": {
+        "count": 52188,
+        "fraction_of_unique": 0.0018944922324838334,
+        "threshold": 5.0
+      },
+      "sigma_6": {
+        "count": 27180,
+        "fraction_of_unique": 0.0009866693277939486,
+        "threshold": 6.0
+      },
+      "sigma_8": {
+        "count": 3810,
+        "fraction_of_unique": 0.00013830795213005682,
+        "threshold": 8.0
+      }
+    }
+  },
+  "science_only": {
+    "counts_above_threshold": {
+      "sigma_10": {
+        "count": 1,
+        "fraction_of_unique": 4.58851357397028e-08,
+        "threshold": 10.0
+      },
+      "sigma_3": {
+        "count": 1244,
+        "fraction_of_unique": 5.708110886019028e-05,
+        "threshold": 3.0
+      },
+      "sigma_4": {
+        "count": 152,
+        "fraction_of_unique": 6.974540632434826e-06,
+        "threshold": 4.0
+      },
+      "sigma_5": {
+        "count": 44,
+        "fraction_of_unique": 2.0189459725469234e-06,
+        "threshold": 5.0
+      },
+      "sigma_6": {
+        "count": 20,
+        "fraction_of_unique": 9.17702714794056e-07,
+        "threshold": 6.0
+      },
+      "sigma_8": {
+        "count": 2,
+        "fraction_of_unique": 9.17702714794056e-08,
+        "threshold": 8.0
+      }
+    },
+    "quantiles": {
+      "q00": -0.6445933289941215,
+      "q05": -0.6433977060092197,
+      "q10": -0.6426988975762108,
+      "q100": 11.331638918519781,
+      "q25": -0.6361735058488243,
+      "q50": -0.5998580109745055,
+      "q75": -0.3642172651170913,
+      "q90": 0.09213485929192404,
+      "q95": 0.3688659586556217,
+      "q99": 0.9638153429269956
+    },
+    "unique_targetids": 21793550
+  }
+}
