@@ -288,3 +288,64 @@ def run_gate(bg, eta_far, out):
                        wronskian=float(np.mean([m.wronskian(0.0) for m in ms])),
                        vertices=got["vertices"], redefinition=got["redefinition"])
     return passed
+
+
+# =====================================================================
+def main():
+    t0 = time.time()
+    log("=" * 78)
+    log("Lane 9c-2: exact dressed-metric modes + S1 bounce-window in-in, k*eta_B in [0.1,10]")
+    log("=" * 78)
+    bg = a2.bg_lqc()
+    eB, Wspl = bg["eta_B"], _W_tools(bg)
+    eta_far = min(0.9 * bg["eta_far"], 300.0 * eB)
+    log(f"background {bg['label']}: eta_B = {eB:.6f}, I_inf = {bg['I_inf']:.6f}, "
+        f"A = {bg['A']:.6f}, eta_far(used) = {eta_far:.4g}")
+    log(f"scheme S1 (z = a, eps_eff = 1/2, c_s = 1); squeezed isoceles k1 = {SQUEEZE} k, k2 = k3 = k")
+
+    out = {"date": "2026-09-04", "lane": "9c-2",
+           "background": {"label": bg["label"], "eta_B": float(eB), "I_inf": float(bg["I_inf"]),
+                          "A": float(bg["A"]), "eta_far_used": float(eta_far),
+                          "potential": "W = a''/a = x^(1/3)(1/6 + x/3), x = rho/rho_c (dressed/geometric)"},
+           "scheme": "S1 (geometric, z = a, eps_eff = 1/2, c_s = 1); vertices+conventions imported from lane (b)",
+           "configuration": {"squeeze": SQUEEZE, "k_scan_k_etaB": K_SCAN,
+                             "eta0_headline_over_etaB": ETA0_FAC, "eta0_scan": ETA0_SCAN,
+                             "eta_star_headline_over_etaB": ETA_STAR_FAC,
+                             "eta_star_scan": ETA_STAR_SCAN},
+           "states": {"S-lab": "adiabatic (exact dust) contraction vacuum at eta -> -eta_far (A2 sec. 4)",
+                      "S-ABS0": "adiabatic-order-zero Minkowski vacuum at fixed eta_0 (ABS sec. IV F)",
+                      "S-ad4": "4th-order adiabatic (WKB) vacuum at eta_0 (relocated earlier if k^2 <= W)"},
+           "gate": {}, "modes": {}, "dfnl": {}, "eta_star_systematic": {}, "eta0_systematic": {},
+           "abs_comparison": {}}
+
+    if not run_gate(bg, eta_far, out):
+        log("\n[GATE FAILED] no downstream number is reported.")
+        _dump(out)
+        return
+
+    # ---------------- (1) exact modes: growth factor + power modification ----------
+    log(f"\n{'=' * 78}\n(1) exact modes: growth factor |zeta_after/zeta_before| and P/P_vac")
+    log(f"{'k*eta_B':>8s} {'state':>8s} {'eta_ref/eta_B':>13s} {'N_before':>11s} {'N_after':>11s} "
+        f"{'|z_a/z_b|':>11s} {'P/P_before':>12s} {'|beta|^2_after':>15s}")
+    eta0 = ETA0_FAC * eB
+    for kt in K_SCAN:
+        k = kt / eB
+        eref = wkb_reference_time(bg, Wspl, k)
+        rec = {}
+        for st in ("S-lab", "S-ABS0", "S-ad4"):
+            m = ModesIC(bg, k, st, eta_far, eta0=eta0)
+            if not getattr(m, "ok", False):
+                rec[st] = {"defined": False, "info": m.info}
+                log(f"{kt:8.3g} {st:>8s}   UNDEFINED: {m.info.get('reason')}")
+                continue
+            g = growth_factor(m, bg, Wspl, eref) if eref else {"defined": False,
+                                                               "reason": "no WKB-safe eta_ref"}
+            g["info"] = m.info
+            rec[st] = g
+            if g.get("defined"):
+                log(f"{kt:8.3g} {st:>8s} {eref / eB:13.2f} {g['N_before']:11.4f} {g['N_after']:11.4f} "
+                    f"{g['growth_factor']:11.4f} {g['power_modification']:12.4f} "
+                    f"{g['beta_sq_after']:15.4f}")
+            else:
+                log(f"{kt:8.3g} {st:>8s}   growth UNDEFINED: {g.get('reason')}")
+        out["modes"][f"{kt:g}"] = rec
