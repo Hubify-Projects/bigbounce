@@ -123,8 +123,11 @@
           "state": "S-ad4",
           "relocated": true,
           "eta_start": -44.86261534823798,
-          "defined": false,
-          "reason": "k^2 - W <= 0 in the WKB window",
+          "defined": true,
+          "Omega4": 0.08977302440921246,
+          "omega0": 0.0894941768165833,
+          "adiabaticity_dOmega_over_Omega2": 0.02392863352223097,
+          "window_half_over_eta0": 0.25,
           "wronskian_initial": -0.5000000000000001,
           "ode_success": true
         }
@@ -180,8 +183,11 @@
           "state": "S-ad4",
           "relocated": true,
           "eta_start": -13.219039071070732,
-          "defined": false,
-          "reason": "4th-order adiabatic Omega^2 <= 0",
+          "defined": true,
+          "Omega4": 0.2692956795229198,
+          "omega0": 0.268459911280705,
+          "adiabaticity_dOmega_over_Omega2": 0.024037914554487005,
+          "window_half_over_eta0": 0.25,
           "wronskian_initial": -0.5,
           "ode_success": true
         }

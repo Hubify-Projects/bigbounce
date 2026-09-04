@@ -166,6 +166,7 @@ class ModesIC:
                         diag = diag2
                     else:
                         e_i = e_alt
+                        diag = diag2
                         self.info["relocated"] = True
                 else:
                     diag = {"reason": diag.get("reason",
