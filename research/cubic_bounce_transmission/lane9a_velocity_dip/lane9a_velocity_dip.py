@@ -177,3 +177,62 @@ def eq44_propagation(lam, dtB, fnl_before=-35.0 / 16.0, T_fNL=None):
             "eq44_relative_to_lambda5": float((dz**2) / ((5.0 - 1.0) ** 2)),
             "fNL_before_input": fnl_before,
             "T_fNL_multiplicative": T_fNL}
+
+
+def make_png(res, path):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(1, 2, figsize=(11.0, 4.2))
+    cols = {"quintin": "#d62728", "LQC": "#1f77b4", "poly": "#2ca02c"}
+    for tag in ("quintin", "LQC", "poly"):
+        rows = sorted(res["sweeps"][tag]["plot"], key=lambda r: r["k_etaB"])
+        x = [r["k_etaB"] for r in rows]
+        ax[0].plot(x, [r["lambda_zeta"] for r in rows], "-", color=cols[tag], label=tag)
+        ax[1].plot(x, [r["G_transfer_over_S1"] for r in rows], "-", color=cols[tag], label=tag)
+    for a_ in ax:
+        a_.set_xscale("log")
+        a_.axvspan(0.1, 10.0, color="0.85", zorder=0)
+        a_.axvline(1e-2, ls=":", color="0.4")
+        a_.set_xlabel(r"$k\,\eta_B$")
+        a_.legend(fontsize=8)
+        a_.grid(alpha=0.25)
+    ax[0].set_yscale("log")
+    ax[0].set_ylabel(r"$\lambda_\zeta(k)=|\zeta(+\infty)/\zeta(-\eta_B)|$")
+    ax[0].set_title("growth factor across the bounce")
+    ax[1].set_ylabel(r"$G(k)=|\alpha_{\rm post}|/|\alpha_{\rm pre}+2\beta_{\rm pre}I_\infty|$")
+    ax[1].set_title(r"deviation from the S1 super-Hubble transfer ($\Delta^2$ ratio $=G^2$)")
+    fig.suptitle("Ledger 9 lane (a): no velocity-dip amplification on the lab backgrounds; "
+                 r"shaded = $k\eta_B\in[0.1,10]$, dotted = S1 validity edge", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+
+
+def main():
+    t0 = time.time()
+    log("=" * 78)
+    log("LEDGER ROW 9 (A3-1e) LANE (a): Quintin+2015 velocity-dip amplification")
+    log("=" * 78)
+    bgs = {"quintin": a2.bg_quintin(dtB=1.0), "LQC": a2.bg_lqc(), "poly": a2.bg_poly(eta_b=1.0)}
+    res = {"generated": time.strftime("%Y-%m-%dT%H:%M:%S"), "backgrounds": {},
+           "velocity": {}, "sweeps": {}, "eq79": {}, "eq44": {}, "convergence": {}}
+    for tag, b in bgs.items():
+        res["backgrounds"][tag] = {"label": b["label"], "params": b["params"],
+                                   "eta_B": b["eta_B"], "I_inf": b["I_inf"], "A": b["A"]}
+        log(f"  [bg] {tag:8s} {b['label']:22s} eta_B={b['eta_B']:.6g} I_inf={b['I_inf']:.6g}")
+
+    log("")
+    log("[1] scalar-field velocity: is a phidot dip definable?")
+    for tag, b in bgs.items():
+        v = velocity_block(b)
+        res["velocity"][tag] = v
+        log(f"    {tag:8s} Hdot(t_B)={v['Hdot_at_bounce']:+.6g}  "
+            f"max frac variation of Hdot inside |eta|<eta_B = "
+            f"{v['Hdot_max_frac_variation_inside_NEC_window']:.3e}")
+        for r in v["total_sector_identification"]:
+            f = r["total_sector_factor_Hdot_ratio"]
+            log(f"        eta_amp-/eta_B={r['eta_amp_minus_over_etaB']:.2f}  "
+                f"Hdot={r['Hdot_at_eta_amp_minus']:+.6g}  "
+                f"total-sector [phidot_B/phidot]^2 = "
+                f"{('%.4g' % f) if f is not None else 'divergent'}")
