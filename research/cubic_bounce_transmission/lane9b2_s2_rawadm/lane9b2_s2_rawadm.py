@@ -222,15 +222,17 @@ def matter_mode(k, eta_m, alpha=1.0, beta=0.0):
 def matter_real_basis(k, eta_m):
     """Real solutions of v'' + (k^2 - 2/eta^2) v = 0: g1 = cos x - sin x/x (~ -x^2/3, the constant-zeta branch),
     g2 = sin x + cos x/x (the eta^-3 branch), x = k eta; returns g1, g2, dg1/deta, dg2/deta (well conditioned)."""
-    x = k * eta_m
-    if abs(x) < 0.5:
-        n = np.arange(0, 14)
-        c = (-1.0) ** n * (2 * n) / np.array([factorial(2 * m + 1) for m in n], dtype=float)
-        g1 = float((c * x ** (2 * n)).sum())
-        dg1 = float((c[1:] * 2 * n[1:] * x ** (2 * n[1:] - 1)).sum())
-    else:
-        g1 = np.cos(x) - np.sin(x) / x
-        dg1 = -np.sin(x) - np.cos(x) / x + np.sin(x) / x**2
+    x = k * np.asarray(eta_m, dtype=float)
+    n = np.arange(0, 14)
+    c = (-1.0) ** n * (2 * n) / np.array([factorial(2 * m + 1) for m in n], dtype=float)
+    xs = x[..., None]
+    g1s = (c * xs ** (2 * n)).sum(-1)
+    dg1s = (c[1:] * 2 * n[1:] * xs ** (2 * n[1:] - 1)).sum(-1)
+    with np.errstate(all="ignore"):
+        g1t = np.cos(x) - np.sin(x) / x
+        dg1t = -np.sin(x) - np.cos(x) / x + np.sin(x) / x**2
+    small = np.abs(x) < 0.5
+    g1, dg1 = np.where(small, g1s, g1t), np.where(small, dg1s, dg1t)
     g2 = np.sin(x) + np.cos(x) / x
     dg2 = g1 - np.cos(x) / x**2
     return g1, g2, k * dg1, k * dg2
@@ -328,7 +330,7 @@ class BounceModes:
     def late(self, t):
         """(zeta, zetadot) in the expansion phase t >= tm."""
         a = self.bg.a(t)
-        g1, g2, dg1, dg2 = matter_real_basis(self.k, float(self.bg.eta_m(t)))
+        g1, g2, dg1, dg2 = matter_real_basis(self.k, self.bg.eta_m(t))
         v, dv = self.cA * g1 + self.cB * g2, self.cA * dg1 + self.cB * dg2
         z, dz = np.sqrt(2 * self.eps_c) * a, np.sqrt(2 * self.eps_c) * a**2 * self.bg.H(t)
         return v / z, (dv * z - v * dz) / z**2 / a
@@ -481,3 +483,89 @@ def run_gate_ib(K3f):
     worst = max(abs(r['extrapolated_raw_over_mald_minus_1']) for r in rows)
     log(f"   gate (i-b) {'PASS' if worst < 2e-3 else 'FAIL'}: worst extrapolated |raw/Mald - 1| = {worst:.2e} (bar 2e-3)")
     return dict(rows=rows, worst_extrapolated=float(worst), passed=bool(worst < 2e-3))
+
+
+# ---------------------------------------------------------------- bounce-window driver
+SQUEEZE = 0.02
+
+
+def bounce_legs(bg, modes, t, scheme):
+    """Conjugated leg data (Z, D, N, P) on the grid t for the three modes. S2 inside the window uses the
+    series-regular N1 = w/Ups and psi = (a^2 w/k^2 - zeta)/(Ups t) (both finite at H = 0); elsewhere and for
+    the S1 pseudo-scheme the generic constraint substitution (which has 1/H poles in S1)."""
+    a, H, Hd = bg.a(t), bg.H(t), bg.Hd(t)
+    inw = np.abs(t) < bg.tm
+    eps = (-Hd / np.where(H == 0, 1e-300, H) ** 2) if scheme == "S2" else 0.5 + 0 * t
+    Hd_k = Hd if scheme == "S2" else -0.5 * H**2                    # S1 pseudo-scheme: Hdot -> -eps_eff H^2
+    legs = []
+    for m in modes:
+        k2 = m.k**2
+        zw, dw, ww = m.window(np.where(inw, t, 0.0))
+        ze, de = m.early(np.where(t <= -bg.tm, t, -2 * bg.tm))
+        zl, dl = m.late(np.where(t >= bg.tm, t, 2 * bg.tm))
+        zeta = np.where(inw, zw, np.where(t < 0, ze, zl))
+        zd = np.where(inw, dw, np.where(t < 0, de, dl))
+        if scheme == "S2":
+            N1 = np.where(inw, ww / bg.Ups, zd / np.where(inw, 1.0, H))
+            psi = np.where(inw, m.psi_window(np.where(inw, t, 0.0)), -zeta / np.where(inw, 1.0, H) - a**2 * eps * zd / k2)
+        else:
+            Hs = np.where(H == 0, np.nan, H)
+            N1, psi = zd / Hs, -zeta / Hs - a**2 * 0.5 * zd / k2
+        legs.append(dict(Z=np.conj(zeta), D=np.conj(zd), N=np.conj(N1), P=np.conj(psi), ZD=(np.conj(zeta), np.conj(zd))))
+    return a, H, Hd_k, eps, legs
+
+
+def bounce_window_fnl(bg, K3f, scheme, kt, npts=4001, win=1.0, eta_star_fac=50.0, form="raw"):
+    """Delta f_NL^bounce over [-win tm, win tm] in cosmic time; u(t*) at eta* = eta_star_fac * eta_B."""
+    k = kt / bg.eta_B
+    kv = triangle(SQUEEZE * k, k); ks = [np.hypot(*v) for v in kv]
+    modes = [BounceModes(bg, kk, scheme) for kk in ks]
+    t = np.linspace(-win * bg.tm, win * bg.tm, npts)
+    a, H, Hd_k, eps, legs = bounce_legs(bg, modes, t, scheme)
+    if form == "raw":
+        K = kernel_values(K3f, kv, a, H, Hd_k, legs)
+    else:
+        K = mald_kernel_values(kv, [l["ZD"] for l in legs], a, eps)
+    t_star = float(bg.t_of_eta(eta_star_fac * bg.eta_B))
+    u_star = [m.late(t_star)[0] for m in modes]
+    fnl, integ, Pw = fnl_from(K, t, np.ones_like(t), u_star)
+    valid = bool(k * eta_star_fac * bg.eta_B < 0.3)
+    return dict(k_etaB=kt, k=k, scheme=scheme, form=form, npts=npts, window_over_tm=win, eta_star_over_etaB=eta_star_fac,
+                k_eta_star=float(k * eta_star_fac * bg.eta_B), valid=valid, f_NL=float(fnl), integral=[float(integ.real), float(integ.imag)],
+                P=Pw, wronskian=[m.wronskian(0.3 * bg.tm) for m in modes],
+                linear_transmission_abs=[float(abs(m.late(t_star)[0]) / abs(m.early(-bg.tm)[0])) for m in modes]), (t, K, u_star)
+
+
+def s1_pole_diagnostic(bg, K3f, kt, dcuts=(3e-1, 1e-1, 3e-2, 1e-2, 3e-3, 1e-3)):
+    """The raw form on the S1 pseudo-scheme variables (eps_eff = 1/2, Hdot -> -H^2/2, N1 = zetadot/H,
+    psi = -zeta/H - a^2 zetadot/(2k^2)) is singular at H = 0 because the S1 modes have zetadot(0) != 0.
+    Measure the pole order of the integrand and the scaling of the symmetrically excised integral."""
+    k = kt / bg.eta_B
+    kv = triangle(SQUEEZE * k, k); ks = [np.hypot(*v) for v in kv]
+    modes = [BounceModes(bg, kk, "S1") for kk in ks]
+    tt = np.array([1e-1, 3e-2, 1e-2, 3e-3, 1e-3, 3e-4, 1e-4]) * bg.tm
+    a, H, Hd_k, eps, legs = bounce_legs(bg, modes, tt, "S1")
+    Kp = kernel_values(K3f, kv, a, H, Hd_k, legs)
+    a, H, Hd_k, eps, legs = bounce_legs(bg, modes, -tt, "S1")
+    Km = kernel_values(K3f, kv, a, H, Hd_k, legs)
+    even, odd = 0.5 * (Kp + Km), 0.5 * (Kp - Km)
+    slope_even = float(np.polyfit(np.log(tt[-4:]), np.log(np.abs(even[-4:])), 1)[0])
+    slope_odd = float(np.polyfit(np.log(tt[-4:]), np.log(np.abs(odd[-4:])), 1)[0])
+    vals = []
+    for d in dcuts:
+        t = np.concatenate([-np.geomspace(bg.tm, d * bg.tm, 8001), np.geomspace(d * bg.tm, bg.tm, 8001)])
+        a, H, Hd_k, eps, legs = bounce_legs(bg, modes, t, "S1")
+        K = kernel_values(K3f, kv, a, H, Hd_k, legs)
+        t_star = float(bg.t_of_eta(50 * bg.eta_B)); u_star = [m.late(t_star)[0] for m in modes]
+        vals.append(bounce_excised(K, t, u_star, d))
+    slope_int = float(np.polyfit(np.log(dcuts[-4:]), np.log(np.abs(np.array(vals[-4:]))), 1)[0])
+    return dict(k_etaB=kt, t_probe_over_tm=(tt / bg.tm).tolist(), integrand_even=np.abs(even).tolist(),
+                integrand_odd=np.abs(odd).tolist(), pole_order_even_part=-slope_even, pole_order_odd_part=-slope_odd,
+                dcuts=list(dcuts), excised_fnl=vals, excised_loglog_slope=slope_int)
+
+
+def bounce_excised(K, t, u_star, d):
+    n = len(t) // 2
+    fl, _, _ = fnl_from(K[:n], t[:n], np.ones(n), u_star)
+    fr, _, _ = fnl_from(K[n:], t[n:], np.ones(n), u_star)
+    return float(fl + fr)
