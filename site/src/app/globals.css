@@ -3007,3 +3007,270 @@ code {
 .flat-item-list > * + * {
   border-top: 1px solid var(--border-subtle);
 }
+
+/* ══════════════════════════════════
+   Redesign primitives (2026-09-04, Lane 1 — REDESIGN_SPEC.md §5.1)
+   Band, PageHeader, StatRow, EvidenceChip, RowList, DataTable, plus the
+   slim Topbar / Footer / CommandSearch shell. Consumers: lanes 2-6.
+   ══════════════════════════════════ */
+
+.mono {
+  font-family: var(--font-mono-stack);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Band ── */
+.band {
+  width: 100%;
+}
+
+.band-base { background: var(--bg); }
+.band-alt { background: var(--bg-1); }
+.band-deep { background: var(--bg-2); }
+
+.band-inner {
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.band-width-prose { max-width: var(--prose-width); }
+.band-width-content { max-width: var(--content-width); }
+.band-width-full { max-width: none; padding-left: 0; padding-right: 0; }
+
+@media (max-width: 900px) {
+  .band-inner { padding: 40px 20px; }
+}
+
+/* ── PageHeader ── */
+.page-header {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 40px 24px 8px;
+}
+
+.page-header-title {
+  font-size: 36px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-top: 8px;
+}
+
+.page-header-lead {
+  margin-top: 12px;
+  max-width: var(--prose-width);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.page-header-meta {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 13.5px;
+  color: var(--ink-3);
+}
+
+.page-header-meta-label {
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+  margin-right: 2px;
+}
+
+.page-header-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+
+.page-header-action {
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.page-header-action:hover { text-decoration: underline; }
+
+/* ── StatRow ── */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stat-row-item,
+.stat-row-item-link {
+  flex: 1 1 160px;
+  padding: 0 24px;
+  border-left: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-row-item:first-child,
+.stat-row-item-link:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.stat-row-item-link:hover .stat-row-value { color: var(--accent-ink); }
+
+.stat-row-value {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.stat-row-label {
+  font-size: 13.5px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 900px) {
+  .stat-row-item,
+  .stat-row-item-link {
+    flex: 1 1 45%;
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    padding: 12px 0 0;
+  }
+  .stat-row-item:first-child,
+  .stat-row-item-link:first-child { border-top: 0; padding-top: 0; }
+}
+
+/* ── EvidenceChip ── */
+.evidence-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.evidence-chip-dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--grade-open);
+}
+
+.evidence-chip-measured .evidence-chip-dot { background: var(--grade-measured); }
+.evidence-chip-derived .evidence-chip-dot { background: var(--grade-derived); }
+.evidence-chip-null .evidence-chip-dot { background: var(--grade-null); }
+.evidence-chip-open .evidence-chip-dot { background: var(--grade-open); }
+
+/* ── RowList / Row ── */
+.row-list > * + * {
+  border-top: 1px solid var(--rule);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.row:hover .row-title { color: var(--accent-ink); }
+
+.row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.row-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.row-purpose {
+  font-size: 13.5px;
+  color: var(--ink-3);
+}
+
+.row-chips {
+  display: flex;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.row-right {
+  flex: none;
+  font-size: 13.5px;
+  color: var(--ink-3);
+}
+
+/* ── DataTable — the only bordered list surface (§4.3 surface rule) ── */
+.data-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--tool);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.data-table th {
+  font-family: var(--font-mono-stack);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--rule);
+}
+
+.data-table td {
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table tbody tr:last-child td { border-bottom: 0; }
+.data-table tbody tr:hover td { background: var(--bg-1); }
+
+.data-table-dense th,
+.data-table-dense td { padding: 6px 12px; }
+
+.data-table-sticky-head th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.data-table-empty {
+  color: var(--ink-3);
+  font-style: italic;
+}
+
+.align-right { text-align: right; }
