@@ -347,3 +347,137 @@ class BounceModes:
         else:
             u, ud = (self.late(t) if t > 0 else self.early(t)); eps = self.eps_c
         return float(np.real(2 * bg.a(t)**3 * eps * (u * np.conj(ud) - np.conj(u) * ud) / 1j))
+
+
+# ---------------------------------------------------------------- in-in engine on the Fourier kernel
+from scipy.integrate import simpson
+from scipy.special import hankel1, hankel2
+
+KARGS = ([a_s, H_s, Hd_s] + [KX[j] for j in LEGS] + [KY[j] for j in LEGS] + [Z[j] for j in LEGS]
+         + [D[j] for j in LEGS] + [N[j] for j in LEGS] + [P[j] for j in LEGS])
+
+
+def kernel_fn(K3):
+    return sp.lambdify(KARGS, K3, "numpy")
+
+
+def triangle(kL, kS):
+    """squeezed isoceles: k1 = kL (x-axis), |k2| = |k3| = kS, k1 + k2 + k3 = 0; coplanar."""
+    h = np.sqrt(kS**2 - kL**2 / 4.0)
+    return [(kL, 0.0), (-kL / 2.0, h), (-kL / 2.0, -h)]
+
+
+def kernel_values(K3f, kv, a, H, Hd, legs):
+    """legs: list of dicts with Z, D (conjugated mode values on the grid) and N, P (constraint solutions)."""
+    kx, ky = [v[0] for v in kv], [v[1] for v in kv]
+    return K3f(a, H, Hd, *kx, *ky, *[l["Z"] for l in legs], *[l["D"] for l in legs],
+               *[l["N"] for l in legs], *[l["P"] for l in legs])
+
+
+def onshell_legs(ZD, kv, a, H, Hd, eps):
+    """generic constraint substitution N1 = zetadot/H, psi = -zeta/H - a^2 eps zetadot/k^2 (H != 0)."""
+    out = []
+    for (Zj, Dj), (kx, ky) in zip(ZD, kv):
+        k2 = kx * kx + ky * ky
+        out.append(dict(Z=Zj, D=Dj, N=Dj / H, P=-Zj / H - a**2 * eps * Dj / k2))
+    return out
+
+
+def fnl_from(K, x, jac, u_star):
+    """B = -2 Im[u1 u2 u3(t*) int K jac dx];  f_NL = (5/6) B / (P1P2 + P1P3 + P2P3)."""
+    integ = simpson(np.real(K * jac), x=x) + 1j * simpson(np.imag(K * jac), x=x)
+    pref = u_star[0] * u_star[1] * u_star[2]
+    B = -2.0 * float(np.imag(pref * integ))
+    Pw = [float(abs(u) ** 2) for u in u_star]
+    Psum = Pw[0] * Pw[1] + Pw[0] * Pw[2] + Pw[1] * Pw[2]
+    return 5.0 / 6.0 * B / Psum, integ, Pw
+
+
+PERMS = [(0, 1, 2), (0, 2, 1), (1, 0, 2), (1, 2, 0), (2, 0, 1), (2, 1, 0)]
+
+
+def mald_kernel_values(kv, ZD, a, eps):
+    """Maldacena/Chen integrated-by-parts cubic kernel (lane (a) table, c_s = 1, eta_sr = 0, cosmic time):
+    V2 a^3 eps^2 z zd^2 ; V3 a eps^2 z (dz)^2 ; V4 -2 a^3 eps^2 zd dz d(chit) ; V6 a^3 eps^3/2 ; V7 a^3 eps^3/4."""
+    kk = np.array(kv); Dm = kk @ kk.T; ks = [np.hypot(*v) for v in kv]
+    K = 0
+    for (i, j, l) in PERMS:
+        Zi, Di = ZD[i]; Zj, Dj = ZD[j]; Zl, Dl = ZD[l]
+        K = (K + a**3 * eps**2 * Zi * Dj * Dl - a * eps**2 * Dm[j, l] * Zi * Zj * Zl
+             - 2 * a**3 * eps**2 * (Dm[j, l] / ks[l]**2) * Di * Zj * Dl
+             + a**3 * eps**3 / 2 * (Dm[i, j] / ks[j]**2) * Zi * Dj * Dl
+             + a**3 * eps**3 / 4 * (ks[i]**2 * Dm[j, l] / (ks[j]**2 * ks[l]**2)) * Zi * Dj * Dl)
+    return K
+
+
+# ---------------------------------------------------------------- gate (i-b): power-law inflation, exact background
+def powerlaw_gate(K3f, eps=0.1, ratio=0.02, delta=0.1, npts=60001, k_eta_star=1e-3):
+    """Constant-eps power-law inflation a = (-eta)^q, q = p/(1-p), p = 1/eps: exact background, exact Hankel
+    modes, raw-ADM in-in from eta = -inf (contour eta = eta* + s(1 - i delta)) to eta* with k_S eta* -> 0.
+    Maldacena consistency relation (exact for any single-field attractor, leading order in k_L/k_S):
+    f_NL^sq = (5/12)(1 - n_s) with n_s - 1 = -2 eps/(1 - eps)  =>  (5/6) eps/(1 - eps)."""
+    p = 1.0 / eps; q = p / (1.0 - p); nu = (3 * p - 1) / (2 * (p - 1))
+    kS = 1.0; kL = ratio * kS; kv = triangle(kL, kS); ks = [np.hypot(*v) for v in kv]
+    eta_star = -k_eta_star / kS
+    Ktot = kL + 2 * kS
+    L = 70.0 / (Ktot * delta)
+    s = -np.concatenate([[0.0], np.geomspace(1e-5, L, npts - 1)])[::-1]
+    eta_c = eta_star + s * (1 - 1j * delta)
+    me = -eta_c
+    a, H = me**q, (p / (p - 1.0)) * me ** (-q - 1)
+    Hd = -eps * H**2
+    z, dz = np.sqrt(2 * eps) * a, np.sqrt(2 * eps) * (-q) * me ** (q - 1)     # dz/deta
+
+    def vbar(k, eta):                                    # analytic continuation of v*  (H^(2) branch)
+        x = -k * eta
+        h2, h2m = hankel2(nu, x), hankel2(nu - 1, x)
+        v = (np.sqrt(np.pi) / 2) * np.sqrt(x / k) * h2
+        dv = -(np.sqrt(np.pi) / 2) * np.sqrt(k) * (h2 / (2 * np.sqrt(x)) + np.sqrt(x) * (h2m - nu / x * h2))
+        return v, dv
+
+    def v_real(k, eta):
+        x = -k * eta
+        return (np.sqrt(np.pi) / 2) * np.sqrt(x / k) * hankel1(nu, x)
+
+    ZD = []
+    for k in ks:
+        v, dv = vbar(k, eta_c)
+        zeta = v / z
+        zetad = (dv * z - v * dz) / z**2 / a
+        ZD.append((zeta, zetad))
+    legs = onshell_legs(ZD, kv, a, H, Hd, eps)
+    K = kernel_values(K3f, kv, a, H, Hd, legs)
+    a_star = (-eta_star) ** q
+    u_star = [v_real(k, eta_star) / (np.sqrt(2 * eps) * a_star) for k in ks]
+    fnl, integ, Pw = fnl_from(K, s, a * (1 - 1j * delta), u_star)
+    fnl_m, _, _ = fnl_from(mald_kernel_values(kv, ZD, a, eps), s, a * (1 - 1j * delta), u_star)
+    # Wronskian on the real axis (mode normalisation): v v'* - v* v' = i
+    e0 = -3.0 / kS; vb, dvb = vbar(kS, e0); W = float(np.imag(np.conj(vb) * dvb - vb * np.conj(dvb)))
+    expected = 5.0 / 6.0 * eps / (1.0 - eps)
+    return dict(eps=eps, ratio=ratio, delta=delta, npts=npts, k_eta_star=k_eta_star, f_NL_raw=fnl,
+                f_NL_maldacena_form=fnl_m, raw_over_mald_minus_1=fnl / fnl_m - 1.0,
+                expected_consistency=expected, mald_over_consistency_minus_1=fnl_m / expected - 1.0,
+                wronskian_im=W, n_s_minus_1=-2 * eps / (1 - eps))
+
+
+def run_gate_ib(K3f):
+    """Gate (i-b): raw = Maldacena form (+ boundary terms that vanish as (k eta*)^2) on an exact background."""
+    log("\n[gate i-b] power-law inflation (exact eps = const background), raw ADM vs Maldacena form vs consistency relation")
+    rows = []
+    for eps, ratio in ((0.1, 0.02), (0.2, 0.02), (0.1, 0.1)):
+        pts = []
+        for kes in (0.05, 0.03, 0.02):
+            r = powerlaw_gate(K3f, eps=eps, ratio=ratio, delta=0.15, k_eta_star=kes)
+            pts.append(r)
+            log(f"   eps={eps} k_L/k_S={ratio} k eta*={kes}: raw {r['f_NL_raw']:.7f}  Mald {r['f_NL_maldacena_form']:.7f}  "
+                f"raw/Mald-1 {r['raw_over_mald_minus_1']:+.3e}  Mald/consistency-1 {r['mald_over_consistency_minus_1']:+.3e}")
+        x = np.array([q['k_eta_star'] ** 2 for q in pts]); y = np.array([q['raw_over_mald_minus_1'] for q in pts])
+        c, b = np.polyfit(x, y, 1)
+        rd = powerlaw_gate(K3f, eps=eps, ratio=ratio, delta=0.3, k_eta_star=0.03)
+        log(f"   => raw/Mald-1 = {b:+.2e} + ({c:+.2f}) (k eta*)^2 ; contour-independence at k eta*=0.03: "
+            f"delta 0.15 vs 0.30 differ by {abs(pts[1]['f_NL_raw'] - rd['f_NL_raw']) / abs(rd['f_NL_raw']):.1e}")
+        rows.append(dict(eps=eps, ratio=ratio, points=pts, extrapolated_raw_over_mald_minus_1=float(b),
+                         keta2_slope=float(c), contour_check_rel=float(abs(pts[1]['f_NL_raw'] - rd['f_NL_raw']) / abs(rd['f_NL_raw']))))
+    worst = max(abs(r['extrapolated_raw_over_mald_minus_1']) for r in rows)
+    log(f"   gate (i-b) {'PASS' if worst < 2e-3 else 'FAIL'}: worst extrapolated |raw/Mald - 1| = {worst:.2e} (bar 2e-3)")
+    return dict(rows=rows, worst_extrapolated=float(worst), passed=bool(worst < 2e-3))
