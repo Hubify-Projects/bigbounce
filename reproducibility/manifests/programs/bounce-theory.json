@@ -65,6 +65,13 @@
       ]
     },
     {
+      "id": "p2-a3-lane-9b2-s2-rawadm",
+      "depends_on": [
+        "p2-a3-lane-9b-s2-regularisation",
+        "p2-a2-lane-b-numerical-inin"
+      ]
+    },
+    {
       "id": "p2-a3-lane-9a-velocity-dip",
       "depends_on": [
         "p2-a2-bounce-fnl-transmission",

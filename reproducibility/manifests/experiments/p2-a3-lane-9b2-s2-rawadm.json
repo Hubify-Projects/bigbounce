@@ -1,0 +1,97 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-a3-lane-9b2-s2-rawadm",
+  "title": "Track A3 (ledger row 9 / A3-1e) lane 9b-2: scheme-S2 (effective-fluid MS variable) bounce-window cubic contribution from the RAW ADM cubic Lagrangian on exact S2 modes, end-to-end in-in through the Quintin-type bounce, compared with scheme S1's -(5/24) rho_B",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "lane 9b finding (S2 divergence = total-derivative pole; raw ADM form finite on exact S2 modes; Frobenius data)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.py",
+      "checksum": "sha256:36f79edc6c86353d328a9bcfe76fb51eb7e8ef36907f0b5a37f643ccb72fb428"
+    },
+    {
+      "name": "lane (b) S1 numbers, in-in conventions, window/eta* tests (Quintin rho_B = 0.6700, -(5/24) rho_B = -0.1396, f_NL^after = -0.5002)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/results.json",
+      "checksum": null
+    },
+    {
+      "name": "lane (b) in-in engine (conventions reproduced: -2 Im commutator, 3! attachments once, f_NL = (5/6) B / sum PP)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+      "checksum": "sha256:a69b7f4b7e1743e54346a6351c5eb2e0299d3cafd3f3350da30bbec5e037f207"
+    },
+    {
+      "name": "adjudicated matter-contraction value f_NL = -35/16 (ledger #1; used as an independent gate, not an input)",
+      "type": "internal-artifact",
+      "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.py",
+      "entrypoint": "python3 lane9b2_s2_rawadm.py",
+      "sha256": "44b848063978e912770ed535a99f762765bc7b7e3ee96aee1be240c59c2f9d62"
+    }
+  ],
+  "environment": {
+    "python": "numpy, scipy (special.hankel1/2, erf, integrate.simpson), sympy 1.14, matplotlib (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-04",
+    "wall_clock": "25 s, measured",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic. Symbolic raw ADM expansion (sympy, 184-term cubic Fourier kernel) + exact S2/S1 modes (analytic matter modes, power series through H=0, well-conditioned real matter basis after the bounce) + Simpson in-in on real t (window/expansion) and on a damped contour eta_m = eta_m0 + s(1 - i delta) (contraction)."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/integrand_across_bounce.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/dfnl_bounce_s2_vs_ketaB.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/LANE9B2_S2_RAWADM_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm in the log: gate (i-a) both constraint solutions derived from the raw quadratic Fourier Lagrangian (N1 = zetadot/H, psi = -zeta/H - a^2 eps zetadot/k^2) -> True/True. Gate (i-b) power-law inflation eps in {0.1, 0.2}: raw/Maldacena-form - 1 = O(1e-4) after (k eta*)^2 extrapolation, Maldacena form vs consistency relation (5/6) eps/(1-eps) within 1e-3, contour independence ~5e-6. Gate (i-c) S1 Maldacena-form window integral = lane b bulk to 3e-5 at k eta_B = 1e-3; |zeta_after/zeta(-tm)| = 6.06 = 2/(1-rho_B). Gate (i-b') raw contraction-only f_NL at -tm = -2.18728 vs -35/16 (1e-4). Gate (i) literal: raw form on S1 pseudo-variables has an odd |t|^-1 pole at H = 0 -> VOID. S2: NEC-window raw +1.640 (k eta_B = 1e-3), f_NL^before -2.18728, f_NL^after -1.2488, |lambda| = 0.9696, Delta_T = +1.007; step convergence 1e-10; window scan [-0.5..2] tm spans -0.30..-4.80 (window-convention dependence, reported). Verdict string starts 'S2 != S1'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane 9b named next step: raw-ADM-form in-in bounce-window integral on exact S2 modes",
+    "builds on manifests p2-a3-lane-9b-s2-regularisation, p2-a2-lane-b-numerical-inin, p2-a2-lane-a-cubic-vertex-table; does not redo them",
+    "literature (transcribed, not re-derived): astro-ph/0210603 Eq. 2.4, 2.9-2.14 (raw ADM action, constraint solutions), consistency relation f_NL^sq = (5/12)(1 - n_s) (Maldacena 2003; Creminelli & Zaldarriaga 2004) used only as an engine gate on an exact power-law background",
+    "the S1 pseudo-scheme (eps_eff = 1/2, z = a) has no raw-ADM counterpart: its modes have zetadot(0) != 0 so N1 = zetadot/H is singular at H = 0; S1 remains a Maldacena-form-defined assumption-labelled anchor (lane a wording stands)"
+  ]
+}
