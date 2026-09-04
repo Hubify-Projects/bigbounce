@@ -134,7 +134,8 @@ def growth_at_k(bg, k, eta_far, rtol=1e-11, atol=1e-14):
             "lambda_zeta": float(abs(ap) / abs(z_hB)),
             "lambda_zeta_S1_superhubble": float(lam_sh),
             "G_transfer_over_S1": float(abs(ap) / abs(s1_pred)),
-            "Delta2_ratio_vs_S1": float((abs(ap) / abs(s1_pred)) ** 2)}
+            "Delta2_ratio_vs_S1": float((abs(ap) / abs(s1_pred)) ** 2),
+            "lambda_zeta_is_a_growth_factor": bool(k * bg["eta_B"] <= 1.0)}
 
 
 def sweep(bg, ks, tag, rtol=1e-11):
@@ -177,6 +178,26 @@ def eq44_propagation(lam, dtB, fnl_before=-35.0 / 16.0, T_fNL=None):
             "eq44_relative_to_lambda5": float((dz**2) / ((5.0 - 1.0) ** 2)),
             "fNL_before_input": fnl_before,
             "T_fNL_multiplicative": T_fNL}
+
+
+
+def feature_summary(plot_rows):
+    """Numerical floor of the projection (|G-1| at k eta_B <= 1e-2, where S1 is exact
+    by construction) and the extremum of G inside the band k eta_B in [0.1, 10]."""
+    lo = [r for r in plot_rows if r["k_etaB"] <= 1e-2]
+    band = [r for r in plot_rows if 0.1 <= r["k_etaB"] <= 10.0]
+    floor = max(abs(r["G_transfer_over_S1"] - 1.0) for r in lo) if lo else None
+    hi = max(band, key=lambda r: r["G_transfer_over_S1"])
+    lowest = min(band, key=lambda r: r["G_transfer_over_S1"])
+    ext = hi if abs(hi["G_transfer_over_S1"] - 1) >= abs(lowest["G_transfer_over_S1"] - 1) else lowest
+    return {"numerical_floor_absG_minus_1_at_smallk": floor,
+            "band_extremum_k_etaB": ext["k_etaB"],
+            "band_extremum_G": ext["G_transfer_over_S1"],
+            "band_extremum_Delta2_ratio": ext["Delta2_ratio_vs_S1"],
+            "band_max_G": hi["G_transfer_over_S1"], "band_max_k_etaB": hi["k_etaB"],
+            "band_min_G": lowest["G_transfer_over_S1"], "band_min_k_etaB": lowest["k_etaB"],
+            "significant_vs_floor": (bool(abs(ext["G_transfer_over_S1"] - 1.0) > 5.0 * floor)
+                                     if floor else None)}
 
 
 def make_png(res, path):
@@ -242,13 +263,21 @@ def main():
     for tag, b in bgs.items():
         tab = sweep(b, K_TABLE, tag)
         plot = sweep(b, K_PLOT, tag)
-        res["sweeps"][tag] = {"table": tab, "plot": plot}
+        res["sweeps"][tag] = {"table": tab, "plot": plot,
+                              "feature": feature_summary(plot)}
         log(f"    --- {tag} ---")
         log("      k*eta_B    lambda_zeta   lambda_S1     G(k)      Delta^2 ratio")
         for r in tab:
             log(f"      {r['k_etaB']:7.3g}   {r['lambda_zeta']:10.5f}   "
                 f"{r['lambda_zeta_S1_superhubble']:9.5f}   {r['G_transfer_over_S1']:8.5f}   "
-                f"{r['Delta2_ratio_vs_S1']:8.5f}")
+                f"{r['Delta2_ratio_vs_S1']:8.5f}"
+                + ("" if r["lambda_zeta_is_a_growth_factor"] else
+                   "   [lambda: phase-sampled, NOT a growth factor]"))
+        fs = res["sweeps"][tag]["feature"]
+        log(f"      floor |G-1|(k eta_B<=1e-2) = {fs['numerical_floor_absG_minus_1_at_smallk']:.2e}; "
+            f"band extremum G={fs['band_extremum_G']:.4f} at k eta_B={fs['band_extremum_k_etaB']:.3g} "
+            f"(Delta^2 ratio {fs['band_extremum_Delta2_ratio']:.4f}); "
+            f"significant vs floor: {fs['significant_vs_floor']}")
 
     log("")
     log("[3] Quintin Eq. (79) amplification factor per background")
