@@ -181,6 +181,13 @@
       ]
     },
     {
+      "id": "a3-r5-15-tensor-omega-nhz",
+      "depends_on": [
+        "a3-3-sigw-nhz-from-lab-spectrum",
+        "a3-pta-gamma-reproduction"
+      ]
+    },
+    {
       "id": "ledger9-c-abs-operator-map",
       "depends_on": [
         "p2-a2-lane-a-cubic-vertex-table",
