@@ -466,3 +466,131 @@ determines the paper's headline discrimination claim; `DA3M-R3-02` shares its ro
 `R3-04` close with in-paper work and no new computation. Full ordered closure plan (C1–C10, with the
 file to change for each) in `INT_v3/A3M_v3M.0.8_R3_TRUTH_AUDIT_2026-09-04.md` §5. After closure, one
 verification round scoped to C1 is warranted, then rounds stop.
+
+---
+
+# R4VERIFY — 2026-09-04 (v3M.0.9)
+
+Round `ROUND_2026-09-04-A3M-v3M.0.9-EXACTPDF-6c543e5e-R4VERIFY`; paper v3M.0.9, 12 pp,
+sha256 `6c543e5e9885c6db58e07576482ed6f283b0307ad1499c6309a4651d3c26fb1a` (re-verified; served
+mirror `site/public/papers/a3_multichannel_arxiv_v3M.0.9.pdf` byte-identical).
+Receipt `INT_v3/ROUND_2026-09-04-…-R4VERIFY/preflight_receipt.json` (PASS, HEAD `d8658cbf`).
+Board: `INT_v3/A3M_v3M.0.9_R4_BOARD_2026-09-04.md`.
+Full evidence: `INT_v3/A3M_v3M.0.9_R4_TRUTH_AUDIT_2026-09-04.md`.
+
+Verdicts (verbatim, diagnostic only): Claude Fable INT **major-revisions** (5 MAJOR / 11 minor,
+one of which is a reference-verification confirmation) · Grok API `grok-4.3` **REJECT**
+(4 ESSENTIAL / 3 MAJOR / 3 NIT) · Gemini API `gemini-3.1-pro-preview` **MAJOR REVISIONS**
+(2 ESSENTIAL / 1 MAJOR / 2 NIT; pass-2 self-critique failed on a stale receipt, non-fatal —
+pass-1 report complete) · OpenAI/ChatGPT **ABSENT** (directive N pause) · Perplexity **ABSENT**
+(optional leg, recorded absent, never as clean). **0 BLOCKER** all legs.
+
+Class counts: 30 raw findings → **15 outstanding REAL** (13 genuinely-new: 3 MAJOR + 10 MINOR,
+including 1 auditor-originated; plus 2 residuals of incomplete R3 closures), **5
+RE-FLAG-OF-DISCLOSED**, **8 FALSIFIED**, **3 OPINION/GENRE**, 0 OUT-OF-SCOPE, 0 BLOCKER, plus
+1 carried-open packaging item (`DA3M-R2-11`). Clean-wave count: **0**.
+
+## OPEN — genuinely-new-real, MAJOR
+
+### DA3M-R4-01: the transfer interval 0.165–0.409 mixes schemes S1 and S2; every downstream f_NL^after number is S1-only and the exclusion is never stated
+- **class:** OPEN (MAJOR, editorial). Legs: Fable M1, Grok E2.
+  `a2_transmission_linear.json` row 4 / `A2_TRANSMISSION_BRIEF_2026-09-02.md` §4.1: `T=0.409155`
+  is the **LQC background under scheme S2 (effective fluid)** — a scheme variant of the `T=0.250`
+  S1 row, **not a fourth background**. Excluding it is legitimate: `main.tex:424–427` +
+  brief §4.3 show `Δf_NL^bounce[S2]` is divergent (`K ~ d_cut^{-0.4998}`), so no `f_NL^after`
+  is computable there. Defect = the paper never says so beside the range, and the abstract calls
+  the interval "across three backgrounds". Closure **C1** (label the S2 row; do NOT widen).
+
+### DA3M-R4-02: §IV D's γ=3 justification and §V C's PBH null assume mutually inconsistent primordial spectra — SCIENCE
+- **class:** OPEN (MAJOR, **SCIENCE**, closure-induced by R3's C4). Leg: Fable M2.
+  `main.tex:585–597` attributes `Ω_GW ∝ f²` to `P_R ∝ k`; `main.tex:801–812` extrapolates a flat
+  `n_s=0.9649` power law over 10–15 decades. A flat `P_R` gives `Ω_GW ∝ f⁰` (`γ≈5`) — the row §IV
+  disfavours at 3.1σ/4.63σ. nHz ↔ `k ≈ 6.5×10⁶ Mpc⁻¹` (auditor), above Papanikolaou's
+  `k<10⁴ Mpc⁻¹` scale-invariant range; his abstract (fetched 2026-09-04) ties the `f²` IR tail to
+  a spectrum with small-scale **enhancement** that "collapse[s] as well to form PBHs" — the
+  opposite of §V C's null. **Ledger `A3-3`.** Blocks Channel I's consistency claim and §V C's null.
+
+### DA3M-R4-03: Eq. (6) has three undefined symbols, a mislabelled definition, and no derivation pointer
+- **class:** OPEN (MAJOR, editorial). Leg: Fable M3 (a,b real; c FALSIFIED → `DA3M-R4-F8`).
+  `main.tex:334–344` calls `T_fNL` a bispectrum transfer; brief §3 derives it as the **f_NL**
+  transfer `= 1/λ_ζ` (auditor-verified: `λ_ζ = 4.0 ↔ T = 0.250`, etc.). `𝒜`, `I_∞`, `1+2r`
+  undefined in the paper. Closure **C3** (transcription).
+
+## OPEN — genuinely-new-real, MINOR
+
+| id | item | leg(s) | source | closure |
+|---|---|---|---|---|
+| DA3M-R4-04 | Ref. [9] title is that of PRL 122, 201101 (2019); arXiv:1909.13728 = "Universal infrared scaling of gravitational wave background spectra" (arXiv fetched) | Fable M4 | `main.tex:1215–1217` | C4 |
+| DA3M-R4-05 | abstract quotes only Table IV's bispectrum-only row, unqualified, and says "under 1σ apart" while the P+B row reaches 1.1σ | Gemini E1 | abstract `:70–73` vs Table IV `:915–918`, body `:930–933` | C5 |
+| DA3M-R4-06 | "quadrupole 15/16" is the μ² coefficient; the ℓ=2 Legendre coefficient is 5/8 | Fable m1 | `main.tex:176`, App. A `:1063–1073` | C5 |
+| DA3M-R4-07 | "seven decades above the BBN scale" — 10⁸ GeV vs 1 MeV is **eleven**; no other BBN bound in §V (C2-closure-induced) | Fable m2 | `main.tex:813–816` | C5 |
+| DA3M-R4-08 | "shortfall of 7.0 orders … at both f_NL values" — JSON gives `log10_ratio` 6.75 (−35/8) and 7.02 (−35/16) | Fable m3 | `outputs/inlab_delta2_zeta_2026-09-03.json` | C5 |
+| DA3M-R4-09 | App. A general-ε formulas carry no domain; they do not reduce to Maldacena as ε→0 (valid on the non-attractor branch only) | Fable M5(b) | `main.tex:1099–1112`; auditor re-derivation | C5 |
+| DA3M-R4-10 | "explained at the equation level" / "recorded identity whose mechanism is not derived" is read oppositely by two legs — ambiguous, not false | Fable M5(a) + Gemini N2 | `main.tex:44–49` vs `:1093–1098` | C5 |
+| DA3M-R4-13 | Table II has no γ=2 row although C4 made the γ=2 causal floor a central comparator | Fable m5 | `main.tex:585–591`; Table II | C6 (re-run `pta_gamma_reproduce.py`; never import the referee's σ) |
+| DA3M-R4-14 | DESI z-scores use one side of an asymmetric error without saying which (method verified correct) | Fable m9 | `main.tex:869–876` | C5 |
+| DA3M-R4-15 | **auditor-originated:** §VI A compares DESI to the pre-bounce −35/16 while §VI B declares the transmitted range the observable prediction (C1-closure seam; not load-bearing — 0.34σ/0.55σ) | — | `main.tex:869–872` vs `:880–887` | C5 |
+
+## OPEN — REAL residual of an incomplete R3 closure (not counted as genuinely-new)
+
+| id | item | leg(s) | source | closure |
+|---|---|---|---|---|
+| DA3M-R4-11 *(residual of DA3M-R3-11; C8 incomplete)* | in-body/appendix `research/…` paths at `:566`, `:793`, `:855`, `:1022`; `:230` "this paper's own adjudication"; **new instance** `:1163` "directive Q2"; `:1157` "companion P2 Zenodo record"; `:891–894` companion draft. C8's own grep gate not met. Paths *inside* the reproducibility statement are sanctioned and are NOT defects — Gemini's blanket scrub declined. | Gemini M1 + Grok N2 | `grep -nE 'research/\|this lab\|directive Q' main.tex` | C7 |
+| DA3M-R4-12 *(residual of DA3M-R3-09; C7 incomplete)* | Ω_DM footnote still asserts "no number here changes"; true for the ratio, false for the tabulated f_PBH and Fig. 1 (f_PBH depends exponentially on the amplitude; A_* shifts −2.70 %) | Fable m8 | `main.tex:780–789`; `pbh_compaction_fnl.py:156,267`; R3 re-run | C5 (directive I6 if recomputed) |
+
+## RE-FLAG-OF-DISCLOSED (R4)
+
+| id | item | leg | where the paper already says it |
+|---|---|---|---|
+| DA3M-R4-R1 | in-in vs separate-universe "unproven that they compute the same quantity" | Grok M1 | `:271–276` + **Appendix A** (`:1017–1116`), added by C3; = `DA3M-R3-R1` |
+| DA3M-R4-R2 | refit vs official σ "not comparable / meaningless" | Grok M2 | `:583–588` verbatim; abstract `:64–67` carries the 5–95 % interval type; = `DA3M-R3-R2` |
+| DA3M-R4-R3 | "100 decades" reads as a pathology | Fable m7 | `:688–692` "because it depends exponentially on γ_cr" |
+| DA3M-R4-R4 | abstract "1.7–1.9" vs Table III "1.732" | Fable m4 | `:806–812` states the widening; C10 restored both caveats at `:68–70` ⇒ **`DA3M-R3-19` CLOSED** |
+| DA3M-R2-11 | frozen-release DOI | Gemini E2, Fable m10 | disclosed at `:1152–1156`; Houston-gated P-round. Carried, not re-counted |
+
+## FALSIFIED (R4)
+
+| id | item | leg | why false — source |
+|---|---|---|---|
+| DA3M-R4-F1 | "'exact' is scheme/ordering-contingent throughout" | Grok E1 | `:150–158` — Maldacena de Sitter matched term-by-term and Namjoo USR `f_NL=5/2`, "Both match exactly"; transmission qualifiers already in the abstract sentence quoted (`:51–56`). = `DA3M-R3-F1` |
+| DA3M-R4-F2 | "the 1.7–1.9 ratio is a truncation artefact" | Grok E3 | **Inverted.** `:653–658` — the compaction map has **no** ceiling, "the artefact is removed by construction"; the artefact label belongs to the discarded first pass (`:640–645`). Species of `DA3M-R3-F2` |
+| DA3M-R4-F3 | "PBH null listed as consistency evidence" | Grok E4 | abstract `:57–58` "each stated at the strength its evidence supports"; `:66–69` "a clean *null*" |
+| DA3M-R4-F4 | "future date September 4, 2026" | Grok N1 | today **is** 2026-09-04. Auto-FALSIFY Rule 3. **8 consecutive rounds, 100 % falsified** = `DA3M-F3` |
+| DA3M-R4-F5 | "Fig. 1 color-bar units / inconsistent capitalization" | Grok N3 | auditor rendered `pbh_compaction_fnl.png`: **no color bar exists**; labels consistent; `A` dimensionless |
+| DA3M-R4-F6 | "stray space in 'regularized-renormalized- resummed'" | Gemini N1 | `:664–665` source line break; PDF renders correctly (Rule 7). = `DA3M-F5`/`R3-F6` |
+| DA3M-R4-F7 | "widen the range to [−0.93,−0.50]" | Fable M1 (sub-claim) | applies the S1 cubic formula to the S2 transfer; `Δf_NL^bounce[S2]` divergent (`:424–427`) ⇒ the number is not computable |
+| DA3M-R4-F8 | "\|r\|≫1 ⇒ non-scale-invariant post-bounce spectrum" | Fable M3(c) | brief §4.3: post-bounce `Δ²` flat to **1.2–4.2 %** across the k grid |
+
+## OPINION/GENRE (R4 — venue pass only)
+
+| id | item |
+|---|---|
+| DA3M-R4-G1 | 12 pp vs a ~8 pp norm (Grok M3) = `DA3M-R3-G1`; note the growth 10→12 is the derivation appendix a referee asked for |
+| DA3M-R4-G2 | Table II caption's `3×10⁻¹⁵` self-reproduction check is determinism, not validation (Fable m6) |
+| DA3M-R4-G3 | self-referential register (Grok N2, genre half; the Q1 half is `DA3M-R4-11`) |
+
+## Corrections to earlier dispositions (dated 2026-09-04, R4 pass — never backfilled silently)
+
+1. **`DA3M-R3-19` CLOSED** — C10 restored the perturbativity and non-monotonicity caveats
+   (`:68–70`), verified this round.
+2. **`DA3M-R3-01` / `-02` CLOSED** — the `kη_B` direction is stated correctly (`:363–376`,
+   `:944–948`), Table IV carries transmitted rows with the pre-bounce row demoted, and every
+   Table IV cell reproduces from `|f^after|/σ` (auditor). Residual seam = `DA3M-R4-15`.
+3. **`DA3M-R3-11` partially closed → re-opened as `DA3M-R4-11`**; C8's own grep gate not met and
+   the closure **added** a new Q1 instance (`directive Q2`). Third consecutive round in which a
+   Q1 sweep leaves or introduces Q1 material.
+4. **`DA3M-R3-09` partially closed → re-opened as `DA3M-R4-12`**; option (a) chosen, option (b)'s
+   conclusion still printed.
+5. **`DA3M-R3-04`'s closure (C4) introduced `DA3M-R4-02`** — second consecutive round in which a
+   closure created a new finding. Closures that replace a wrong justification must be checked
+   against the paper's other sections before the bundle commits.
+
+## Convergence statement (R4)
+
+**NOT converged at v3M.0.9. Clean-wave count 0.** 15 outstanding real items (3 MAJOR, 12 MINOR).
+R3's authorised single verification round is this one, and its scoped question is answered — C1's
+propagation landed correctly. **Directive R2: the convergence budget is spent.** v3M.0.10 closes
+the editorial list (C1, C3–C7 in the audit §5(i)), then **rounds STOP** until ledger item `A3-3`
+(the `P_R(k)` propagation from the LSS pivot to the nHz band, and the induced-GW slope that
+follows) returns a science decision on `DA3M-R4-02`. No further round may be dispatched on
+editorial grounds alone.
