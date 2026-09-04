@@ -550,7 +550,7 @@ export const papers: Paper[] = [
     path: publicationPath({}),
     pages: "9",
     refs: "\u2014",
-    readiness: 70,
+    readiness: 75,
     statusVariant: "blue",
     target: "PRD (regular article)",
     description:
