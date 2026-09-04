@@ -126,3 +126,42 @@ records `nanograv_reference/Omega_GW_h2_at_f_yr = 3.6235e-9` (from `A=2.4e-15, �
 `~3×10⁻⁹` near `f_yr`, agreeing with the JSON and not with the text.
 *Closure:* **C3** — replace `6.3×10⁻¹⁰ → 3.6×10⁻⁹` at `:702` (state the `Ω_GW h²` convention);
 the `10^14.3`/`10^13.7` gaps, abstract `:65`, `:1108` and the Fig. 1 caption need no change.
+
+### GENUINELY-NEW REAL — MINOR
+
+| id | finding | leg | verdict citation (source checked) | closure |
+|---|---|---|---|---|
+| `DA3M-R5-04` | **auditor-originated:** `:381–384` "S2 has no computable post-bounce `f^after`, so this value does not enter the combined range" is contradicted by `:482–501` ("Scheme S2, resolved", `f^after[S2]=-1.249`). A v3M.0.10 closure seam: the statement is now true only of the **LQC** background | — | `:381–384` vs `:471–473`, `:492–495` | C1 |
+| `DA3M-R5-05` | abstract `:75–76` "widens the separation to `0.5–1.1σ`" vs body `:1086`, `:1131`, `:1134`, `:1172` "under `1σ`". Auditor: `\|Δf\|=0.35–0.55` over `σ=0.5–0.7` ⇒ `0.50–1.10σ`; the **body** is the wrong half (inverted residual of `DA3M-R4-05`/C5) | Fable m1, Gemini E1 | `:1172` vs Table IV `:1077` | C4 |
+| `DA3M-R5-06` | `:243–245` "the first that reproduces this value from an independent, from-scratch vertex-by-vertex derivation" is contradicted two sentences earlier by `:230–231` (Li *et al.* redo the in-in calculation for general `c_s` and print the amplitude). The paper's real novelty is the **per-vertex attribution + factor-2 localization** | Gemini M1 | `:230–231` vs `:243–245` | C4 |
+| `DA3M-R5-07` | the `-15/8 − (−5) = −25/8` gap accounting never states what `f^ρ_NL`, `f^c_NL` are normalised against; with `δN_c=(1-ε/3)ζ` (`:281–286`) a `δN_c`-normalised `f_NL` differs by `1/(1-ε/3)=2` at `ε=3/2` | Fable M4 (real part) | `:255–261`, App. A.2 `:1240–1252` | C4 |
+| `DA3M-R5-08` | the §III A per-background table `:462–470` has no `\caption`/`\label` yet is cross-referenced as "the table in Sec. III A" | Fable m5 | `:462–470`, `:1054` | C4 |
+| `DA3M-R5-09` | `:158` "All five [cubic pieces] are evaluated" vs `:453–455` "all six cubic attachments and boundary terms"; the sixth is never named | Fable m4 | `:158` vs `:453–455` | C4 |
+| `DA3M-R5-10` | `:408–409` calls the finite-`k` transfer excursion `O(1)` while listing `0.058` (poly non-LQC) — a factor-17 suppression | Fable m6 | `:408–409` | C4 |
+| `DA3M-R5-11` | `:1135` "the `3.13σ` apparent tension with the pre-bounce" — Table IV `:1077` gives `3.13σ` as a **forecast detection significance**, not a tension | Fable m12 | `:1077` vs `:1135` | C4 |
+| `DA3M-R5-12` | Fig. 1 image carries internal labels: title "**A3-3**: … the lab's own `Δ²_ζ`", legend `MB_anchored_ns0.9649` / `pure_dust_ns1` (auditor rendered the PNG). Directive **I6** applies — regenerate the figure, do not patch text only | Fable m14a | `paper/sigw_nhz_from_lab_spectrum_2026_09_04.png` | C5 |
+| `DA3M-R5-13` | source-verified typography: `:452–453` "`−5/24.` a closed-form" and `:471–473` "(below). so `\|f^after\|`" (lower-case after a full stop); "isoceles"; curly-quote `”moderate tension`; "Papanikolaou [8] derive" (single author) | Fable m15 | `:452`, `:471`, grep | C4 |
+| `DA3M-R5-14` | `:1176–1177` "the not-yet-derived shape-overlap projection `r` would sharpen this somewhat but cannot by itself restore the pre-bounce-level `3σ` separation" — an uncomputed quantitative claim about an explicitly underived quantity | Gemini M3 | `:1176–1177` | C4 (bound it or drop the confidence clause) |
+| `DA3M-R5-15` | **MINOR-SCIENCE:** the model's own **first-order** tensor `Ω_GW` at nHz is never stated, although Channel I compares only the induced (second-order) background and Table II's `γ=5` row is labelled "prim. tensors" | Fable m16 | `:602–622`, `:679–711` | **(ii)** — one ledger number or an explicit scope sentence |
+| `DA3M-R5-16` | abstract `:57–59` prints the two-scheme band `[-1.25,-0.50]` without the "S2, Quintin-type background only" qualifier the body attaches at `:507–510` | Fable m2 | `:57–59` vs `:507–510` | C4 |
+| `DA3M-R5-17` | §V C `:975–977` evaluates at `kη_B≈3` without naming the `(T_B,k)` it corresponds to. Auditor: at `T_B=10⁸ GeV`, `k_B=1.714×10¹⁵` ⇒ `k=5.1×10¹⁵ Mpc⁻¹`, inside the paper's own PBH band — legitimate, but unstated | Fable m7 (residual) | `sigw…json → transfer_validity` | C4 |
+| `DA3M-R5-18` | the `1.7–1.9` ratio's conditionality on the unresolved Choudhury sign disagreement (`:864–870`) is stated only in §V B; and whether any of the 27 grid points fall at `γ_cr ≲ 0.85` is not reported | Fable M5 (residual) | `:838–870` | **(ii)-lite** — one re-run of `pbh_compaction_fnl.py` printing `γ_cr` per grid point, then a one-clause statement |
+
+### REAL residual of an open earlier item (not counted genuinely-new)
+
+| id | status | leg | citation |
+|---|---|---|---|
+| `DA3M-R4-11` *(C7 still incomplete)* | in-body "this lab's" at `:63, :557, :560, :604, :679, :937, :1105`; internal history at `:421` ("correcting an earlier statement in this program") and `:482` ("An earlier version of this program reported"). Paths **inside** the reproducibility statement (`:1328, :1337–1341`) are sanctioned and are NOT defects — Gemini's blanket scrub declined | Gemini E4, Grok N2 | `grep -nE 'research/\|this lab\|directive Q' main.tex` = 14 hits |
+| `DA3M-R4-12` *(C5 pending)* | `Ω_DM = 0.674` footnote (h mis-used as `Ω_DM`) still propagates into the tabulated `f_PBH` and Fig. 2 | Fable m8 | `:780–789` |
+| `DA3M-R2-11` *(carried)* | frozen-release DOI — Houston-gated P-round packaging action, disclosed in the reproducibility statement. Carried, not re-counted | Gemini E3 | reproducibility statement |
+
+### RE-FLAG-OF-DISCLOSED
+
+| id | finding | leg | disposition (source-cited) |
+|---|---|---|---|
+| `DA3M-R5-R1` | "official vs refit `σ` juxtaposed without a *not directly comparable* qualifier" | Grok E2, Gemini E2 | `:560–588`: official is "the primary comparison", refit is "a secondary, differently-conditioned cross-check", with both intervals' types printed. = `DA3M-R3-R2`/`R4-R2`, **3rd–4th recurrence**. Optional 1-line Table II caption add (C4) |
+| `DA3M-R5-R2` | "no second-order `δN` cross-check; in-in treated as unique truth" | Grok M3 | `:286–292` — at second order the map is a non-local `∂⁻²` diffeomorphism, so **no local `f_NL` relation exists**; a second-order `δN` number is not a well-defined comparator. = `DA3M-R3-R1`/`R4-R1` |
+| `DA3M-R5-R3` | "the Quintin Eq. (79) factor is constant by construction ⇒ not a check" | Fable m11 | `:411–415` already says exactly that, and that it is "not definable as a matter-sector effect on the two effective-fluid backgrounds" |
+| `DA3M-R5-R4` | "`1.732±0.050 (n=27)` std understates the prior volume; report the range" | Grok M2 | `:838–842` gives the std over the 27 points **and** "a result within a stated regime, not a claim of general validity"; the abstract already quotes the **range** `1.7–1.9`. Grok's "four `r_p` values" misreads a 3×3×3 grid. = `DA3M-R4-R4` |
+| `DA3M-R5-R5` | "`B=5×10⁻⁴` from 9 samples cannot carry `±0.2` dex" | Fable m9 | `:596–600` already refuses a `γ=5` factor outright and quotes the `13/3` factor **to one significant figure** for that reason |
+| `DA3M-R5-R6` | "Fig. 2's `f_PBH > 1` region is unphysical" | Fable m14b | Table III caption `:872–877`: "the ***nominal (uncapped)*** `f_PBH` columns — evaluated at the Gaussian-calibrated amplitude `A_*` with no upper cutoff applied" |
