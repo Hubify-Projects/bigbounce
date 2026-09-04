@@ -1,0 +1,64 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-a3-lane-9b-s2-regularisation",
+  "title": "Track A3 (ledger row 9 / A3-1e) lane 9b: is the effective-fluid (S2) divergence of Delta f_NL^bounce physical? Exact S2 modes at H=0, regularity of the comoving-gauge constraint solutions, total-derivative origin of the Maldacena-form poles",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "lane (a) cubic-vertex table (coefficients, S2 pole counting)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/cubic_vertex_table.py",
+      "checksum": "sha256:2418fb92830ae43016cd37532a965d3d1ffc474a5c54e0deaf09d571a23cd946"
+    },
+    {
+      "name": "lane (b) S2 divergence report (d_cut slope -1.005..-1.007)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.py",
+      "entrypoint": "python3 lane9b_s2_regulation.py",
+      "sha256": "36f79edc6c86353d328a9bcfe76fb51eb7e8ef36907f0b5a37f643ccb72fb428"
+    }
+  ],
+  "environment": {
+    "python": "sympy 1.14.0 (repo requirements.txt); no numpy/scipy needed",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-04",
+    "wall_clock": "1 s, measured",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 10 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic symbolic (Frobenius series to O(t^9), Laurent residues). Self-contained; does not import lane (a)."
+  },
+  "outputs": [
+    { "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.json", "type": "result-json", "checksum": null },
+    { "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.log", "type": "log", "checksum": null },
+    { "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/LANE9B_S2_REGULATION_2026-09-04.md", "type": "document", "checksum": null }
+  ],
+  "verification": "Re-run and confirm in the log: [A] Frobenius indicial exponents 0 and 3; zetadot|C1 = c_s^2 k^2 t (not ~H^2), zetadot|C2 = 3 t^2; MS residual 0 through O(t^2). [B] Res[-zeta/H]_C1 = -1/Upsilon, Res[chi]_C1 = +1/Upsilon, sum 0; psi = -zeta/H + chi regular (leading t^1 for C1, t^0 for C2); N1 regular. [C] Maldacena-form poles on exact [C1^3] modes: V2 t^-2, V3 t^-4, V4 t^-2, V5 t^-4, V6+V7 t^-4 (all even, non-integrable); lane-(a) [C1,C2,C2] weights reproduce V2 t^0, V6+V7 t^-2. [D] all raw-ADM building blocks (zeta, zetadot, N1, psi, H, phidot^2, V, a) regular at t=0. Verdict string: 'S2 REGULARISED-IN-FORM / VALUE UNRESOLVED'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane (b): contested math — S2 regularisation of Delta f_NL^bounce",
+    "builds on research/cubic_bounce_transmission/lane_a_vertex_table/REGULARISATION_ASSUMPTION.md and lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md (manifests p2-a2-lane-a-cubic-vertex-table, p2-a2-lane-b-numerical-inin); does not redo them",
+    "linear-order antecedent: research/cubic_bounce_transmission/g1_gradient_transmission_scheme.py (S2 gradient-transmission coefficient ~ d_cut^-1)",
+    "literature (transcribed, not re-derived): astro-ph/0210603 Eq. 2.9-2.14, 3.8-3.10; hep-th/0605045 Eq. 3.5-3.6, 4.28-4.29; astro-ph/0503692 Eq. 51; arXiv:1406.2790; arXiv:1508.04141 (equation numbers NOT asserted; audit item)",
+    "named next step: raw-ADM-form in-in bounce-window integral on exact S2 modes (lane-(b)-class numerical job) — the finite S2 value is not computed here and equality with S1 -(5/24) rho_B is not claimed"
+  ]
+}

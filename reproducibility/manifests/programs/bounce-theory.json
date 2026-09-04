@@ -15,6 +15,7 @@
     { "id": "p2-a2-bounce-fnl-transmission", "depends_on": ["p2-g1-dressedmetric-transmission"] },
     { "id": "p2-a2-lane-a-cubic-vertex-table", "depends_on": ["p2-a2-bounce-fnl-transmission", "p2-fnl-adjudication-inin-from-scratch"] },
     { "id": "p2-a2-lane-b-numerical-inin", "depends_on": ["p2-a2-lane-a-cubic-vertex-table", "p2-a2-bounce-fnl-transmission"] },
+    { "id": "p2-a3-lane-9b-s2-regularisation", "depends_on": ["p2-a2-lane-a-cubic-vertex-table", "p2-a2-lane-b-numerical-inin"] },
     { "id": "p2-g3-torsion-fourfermion-bound", "depends_on": ["p2-vertex-check"] },
     { "id": "p2-honest-negative-inin", "depends_on": [] },
     { "id": "p2-channel-native-fisher", "depends_on": ["p2-vertex-check"] },
