@@ -86,3 +86,35 @@ $\dot\phi=p_\phi/a^3$ (their Eq. 11, `eomphi`), $z\equiv-\tfrac6\kappa\tfrac{p_\
    $\mathcal H^{(3)}\to0$ identically as $p_\phi\to0$ at $V_\phi=V_{\phi\phi}=V_{\phi\phi\phi}=0$.
    In $\zeta$-language this is the familiar statement that the cubic action is $O(\epsilon)$, with
    $\epsilon=\kappa p_\phi^2/(2a^6H^2)$.
+
+### 1.2 Mapping table, operator by operator
+
+Gauge dictionary (their Eq. 25, `zetadph`, first line): $\mathcal R=-\tfrac az\dph+O(\dph^2)$, i.e.
+$\dph=-\tfrac za\zeta$; and from their $\mathcal H^{(2)}$ (Eq. 21, `hams`), $\delta p_\phi=a^3\dot{\dph}$
+at $N=1$. The lab column is lane (a) §1 (`VERTEX_TABLE_2026-09-03.md`) at $c_s=1,\ \lambda=0$, where
+$\tilde\chi\equiv\partial^{-2}\dot\zeta$.
+
+| ABS term (Eq. 23) | structure | $\epsilon$-order | lab counterpart (lane (a)) | quantum-corrected? |
+|---|---|---|---|---|
+| A1 ($\kappa p_\phi^3$, $p_\phi^5$ pieces) | $\dph^3$, no derivative | $\epsilon^{3/2},\epsilon^{5/2}$ | no bare $\zeta^3$ vertex exists in Maldacena form: absorbed by the redefinition **R1** ($\eta_{\rm sr}\zeta^2/4$) + total derivatives | **no** — classical, $V$-independent |
+| A1 ($V_{\phi\phi}$, $V_{\phi\phi\phi}$ pieces) | $\dph^3$ | — | **outside lane (a)'s scope** (lane (a) is built at $V=0$, $\lambda=0$); vanishes in ABS's own kinetic-dominated bounce regime | **no** — classical potential sector |
+| A2 $-\tfrac{3p_\phi}{2a^4\pi_a}\delta p_\phi^2\dph$ | $\zeta\dot\zeta^2$ | $\epsilon^2$ | **V2** $a^3\epsilon^2\,\zeta\dot\zeta^2$ | **no** |
+| A3 $-\tfrac{9p_\phi^3}{a^5\pi_a^2}\delta p_\phi\dph^2$ | $\zeta^2\dot\zeta$ | $\epsilon^2$ | **V5** $\tfrac12a^3\epsilon\dot\eta_{\rm sr}\,\zeta^2\dot\zeta$ | **no** |
+| A4 $-\tfrac{3a^2p_\phi}{2\pi_a}\dph(\vec\partial\dph)^2$ | $\zeta(\partial\zeta)^2$ | $\epsilon^2$ | **V3** $a\epsilon^2\,\zeta(\partial\zeta)^2/a^2$ | **no** |
+| A5 $+\tfrac{3p_\phi^2}{Na\pi_a}\dph^2\partial^2\chi$ | $\zeta^2\partial^2\tilde\chi=\zeta^2\dot\zeta$ | $\epsilon^2$ | **V5** (+ **V2** after parts) | **no** |
+| A6 $+\tfrac{3a^2p_\phi}{2N^2\kappa\pi_a}\dph(\partial^2\chi)^2$ | $\zeta(\partial^2\tilde\chi)^2$ | $\epsilon^3$ | **V6/V7** constraint sector | **no** |
+| A7 $+\tfrac{3p_\phi^2}{Na\pi_a}\dph\,\partial^i\chi\partial_i\dph$ | $\zeta\,\partial\zeta\,\partial\tilde\chi$ | $\epsilon^2$ | **V4** $-2a^3\epsilon^2\dot\zeta\,\partial\zeta\,\partial\tilde\chi$ (after parts) | **no** |
+| A8 $+\tfrac1N\delta p_\phi\,\partial_i\dph\,\partial^i\chi$ | $\dot\zeta\,\partial\zeta\,\partial\tilde\chi$ | $\epsilon^2$ | **V4** | **no** |
+| A9 $-\tfrac{3a^2p_\phi}{2N^2\kappa\pi_a}\dph\,\partial_i\partial_j\chi\,\partial^i\partial^j\chi$ | $\zeta(\partial_i\partial_j\tilde\chi)^2$ | $\epsilon^3$ | **V6+V7**, *in exactly the form lane (a) verified*: $V6+V7\to-\tfrac12a^3\epsilon^3\zeta\dot\zeta^2+\tfrac12a^3\epsilon^3\zeta(\partial_i\partial_j\tilde\chi)^2+\text{t.d.}$ | **no** |
+| — (absent in ABS) | $\dot\zeta^3$ | — | **V1**, coefficient $\propto(1-c_s^{-2})+2\lambda$ — **zero** for a canonical scalar, consistent with its absence from Eq. (23) | — |
+| — | boundary/redefinition | — | **R1–R4** reproduced by their Eq. 25 lines 2–3 ($\tfrac{d}{dt}[\tfrac az\dph]^2$, $(\vec\partial\dph)^2$, $\partial^{-2}\partial_i\partial_j$, $\partial\chi\partial\dph$ terms) | **no** |
+
+**Result of §1.** The mapping is complete and onto: every operator in ABS's $\mathcal H^{(3)}$ has a
+lane-(a) counterpart, and every lane-(a) vertex that survives at $c_s=1,\lambda=0$ appears in ABS.
+**Not one term is quantum-corrected.** This *corrects* the statement recorded in the 2026-09-03 lane
+(c) file and carried into ledger row 2 — *"Agullo+2017's dressed-metric $H^{(3)}$ quantum-geometric
+operator is NOT contained in S1"*. It is contained in S1, exactly and term-by-term. What S1 does not
+contain is not an **operator** but a **regime**: ABS evaluate the same operators with the full
+(non-super-Hubble, oscillatory, non-adiabatically-excited) mode functions of their Eq. (60), `chieq`,
+$v_k''+(k^2+f(\eta))v_k=0$ with $f=a^2(\tilde{\mathfrak U}-R/6)$, whereas lane (a)/(b) evaluated them
+with the super-Hubble reduction $\zeta=C_1+C_2J$ valid only for $k\eta_B\lesssim10^{-2}$.
