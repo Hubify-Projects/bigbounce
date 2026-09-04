@@ -60,3 +60,49 @@ Newtonian to comoving slicing), and $\dot\phi=\sqrt{2\Upsilon}\neq0$ at the boun
 metric is finite at $H=0$. The $1/H$ that lane (a) traced to "the constraint solution" is real in each *piece* but
 absent in the *metric*. The cancellation fails if $\dot\zeta\propto H^2$ is assumed (then $\chi$ is finite and
 $-\zeta/H$ is not), which is exactly lane (a)'s counting.
+
+## 3. What this does to the Maldacena/Chen-form vertices on the exact modes (computed, script §C)
+
+Cosmic-time integrand pole orders, three legs, with the $C_1$ mode on every leg ($\dot\zeta\propto k^2t$) versus
+lane (a)'s $[C_1,C_2,C_2]$ weights ($\dot\zeta\propto t^2$):
+
+| vertex | exact modes $[C_1^3]$ | lane (a) weights $[C_1,C_2,C_2]$ | class |
+|---|---|---|---|
+| V2 $a^3\epsilon^2\zeta\dot\zeta^2$ | $t^{-2}$, lead $c_s^4k^4/\Upsilon^2$ | $t^{0}$ | **non-integrable** (was "finite") |
+| V3 $a\epsilon^2\zeta(\partial\zeta)^2$ | $t^{-4}$ | $t^{-4}$ | non-integrable |
+| V4 $-2a^3\epsilon^2\dot\zeta\partial\zeta\partial\tilde\chi$ | $t^{-2}$ | $t^{0}$ | **non-integrable** (was "finite") |
+| V5 $\tfrac12a^3\epsilon\dot\eta_{\rm sr}\zeta^2\dot\zeta$ | $t^{-4}$ (even!) | $t^{-3}$ odd | non-integrable (was "PV-finite") |
+| V6+V7 $\tfrac34a^3\epsilon^3\zeta\dot\zeta^2$-type | $t^{-4}$, lead $-\tfrac34c_s^4k^4/\Upsilon^3$ | $t^{-2}$ ($d_{\rm cut}^{-1}$, lane b) | non-integrable |
+
+So the honest S2 statement in the Maldacena form is *worse* than lanes (a),(b) reported: with the exact modes every
+bulk vertex, including V2 and V4, has an even non-integrable pole at the bounce, and the $k^4$ factors show these
+are the $k^2$-corrections of the constant mode squared — precisely the sector whose $\int z^2dt\sim1/t$ enhancement
+the super-Hubble reduction discards. This is also the cubic-order face of the lab's linear finding
+(`g1_gradient_transmission_scheme.py`: the S2 gradient-transmission coefficient scales as $d_{\rm cut}^{-1}$).
+
+## 4. Why the raw ADM form is finite and the integrated-by-parts form is not (computed §D + literature)
+
+Maldacena 2003 Eq. 2.9–2.11 (*literature*): $\mathcal L=\tfrac12\sqrt h\,[NR^{(3)}-2NV+N^{-1}(E_{ij}E^{ij}-E^2)+N^{-1}\dot\phi^2]$
+with $h_{ij}=a^2e^{2\zeta}\delta_{ij}$, $N=1+N_1$, $N_i=\partial_i\psi$. Expanded to cubic order *before* any
+integration by parts, every coefficient is a polynomial in $\{a^{\pm1},H,\dot\phi,V\}$ (from $\dot h_{ij}=2a^2e^{2\zeta}(H+\dot\zeta)\delta_{ij}$,
+$V=3H^2-\dot\phi^2/2$) and in $1/N=1-N_1+N_1^2-\dots$, multiplying products of $\{\zeta,\dot\zeta,N_1,\psi\}$ and
+gradients. No $1/H$ appears explicitly. Building-block Laurent orders on the exact modes (script §D):
+$\zeta\sim t^0$, $\dot\zeta\sim t^1$, $N_1\sim t^0$, $\psi\sim t^0$, $H\sim t$, $\dot\phi^2=2\Upsilon$,
+$V\to-\Upsilon$, $a\to1$ — **all regular**, so the on-shell cubic integrand is finite through $H=0$ and the
+bounce-window in-in integral in the raw form is absolutely convergent (for $k\eta_B$ finite).
+
+The passage to the Maldacena/Chen form (Maldacena Eq. 3.8→3.9; Chen+2007 Eq. 4.28–4.29; Seery–Lidsey Eq. 51,
+*literature*) integrates by parts in time repeatedly, using the background equations to trade $\dot\phi^2\to2\epsilon H^2$,
+$\ddot\phi$, $\dot H$ for $\epsilon,\eta_{\rm sr}$ and introducing $1/H$ through $N_1=\dot\zeta/H$ and $\psi\ni-\zeta/H$
+*separately*. The result is
+$\mathcal L_{\rm Mald}=\mathcal L_{\rm raw}+\dot F+(\text{terms}\propto\delta L_2/\delta\zeta)$, where $F$ is a
+cubic functional carrying explicit $1/H^n$ and $\epsilon^n$ — e.g. the field-redefinition pieces R2 $\zeta\dot\zeta/(c_s^2H)$,
+R3 $(\partial\zeta)^2/(4a^2H^2)$, R4 $\epsilon(\dots)/(2c_s^2H)$ of lane (a) are exactly such boundary functionals and lane (a)
+already found them singular *at* the bounce. On an interval containing $t=0$,
+$$\int_{-t_B}^{t_B}\dot F\,dt\neq F(t_B)-F(-t_B)\quad\text{when }F\text{ has a pole at }t=0,$$
+so the Maldacena-form bulk integral inherits the pole of $F$ (even $t^{-2}$ or $t^{-4}$ integrands from
+$F\propto t^{-1},t^{-3}$, giving $d_{\rm cut}^{-1},d_{\rm cut}^{-3}$ — lane (b)'s measured slope $-1.005$ is the $[C_1,C_2,C_2]$
+member of this family). The physical bispectrum is the raw-form one; equivalently it is the Maldacena-form integral
+*plus* $F(0^+)-F(0^-)$-type subtractions — which no symmetric excision, $H^2\to H^2+\mu^2$ smoothing or principal
+value reproduces in general (they reproduce it only if the singular part of $F$ is even in $t$, which for $F\propto t^{-1}$
+with even coefficient it is not).
