@@ -118,7 +118,7 @@ export default async function PapersIndexPage() {
     const livePaper = liveBySlug.get(paper.slug);
     return {
       paper,
-      trackTitle: track?.title ?? "Unassigned",
+      trackTitle: track?.title ?? (paper.archivedInto ? "Archived — folded into successor" : "Unassigned"),
       trackId: track?.id ?? "z",
       version: displayVersion(livePaper?.currentVersion ?? paper.version),
       readiness: livePaper?.readinessComputed ?? paper.readiness,
