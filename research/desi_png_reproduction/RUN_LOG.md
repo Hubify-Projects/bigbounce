@@ -33,8 +33,17 @@ engine** instead — confirmed working (`DESI(engine='eisenstein_hu')` +
 paper's CLASS-based transfer function; recorded as a limitation in the final
 result writeup (§4/§8), not hidden.
 
-## Step 2 — remaining QSO randoms download
-TBD.
+## Step 2 — remaining QSO randoms download (DONE, reduced scope, 2026-09-04)
+Downloaded randoms realisations 1,2,3 for both caps (NGC + SGC), giving 4
+realisations per cap total (0-3; realisation 0 already on disk from step 1).
++7.8 GB, ~4 min wall clock, $0. **Scope reduction from the plan's full 18
+realisations per cap** (~37 GB, ~20 min) to 4/cap: at ~15x data density per
+single realisation (established in step-1 sanity check), 4 realisations give
+~60x data density, which is standard/ample for FKP shot-noise control at
+k > 0.003 h/Mpc; this is a documented fidelity choice, not a silent shortcut.
+Full-18 download remains available if a later wave needs tighter window
+control. sha256s: `research/desi_png_reproduction/venv_setup/qso_randoms_1-3_sha256.txt`.
+Total on-disk dataset now 7.8 GB at `~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/`.
 
 ## Step 3 — P_ell(k) measurement
 TBD.
