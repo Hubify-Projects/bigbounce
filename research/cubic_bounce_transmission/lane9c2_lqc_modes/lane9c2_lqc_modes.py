@@ -462,3 +462,67 @@ def _dump(out):
         json.dump(out, fh, indent=2)
     with open(LOG, "w") as fh:
         fh.write("\n".join(_lines) + "\n")
+
+
+# =====================================================================
+def make_figures(out):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    ks = [float(x) for x in out["modes"].keys()]
+    styles = {"S-lab": ("o-", "C0"), "S-ABS0": ("s-", "C3"), "S-ad4": ("^-", "C2")}
+
+    fig, ax = plt.subplots(figsize=(6.4, 4.4))
+    for st, (mk, c) in styles.items():
+        xs, ys = [], []
+        for kt in ks:
+            r = out["modes"][f"{kt:g}"].get(st, {})
+            if r.get("defined"):
+                xs.append(kt)
+                ys.append(r["growth_factor"])
+        if xs:
+            ax.plot(xs, ys, mk, color=c, ms=5, lw=1.4, label=st)
+    ax.axvline(out["abs_comparison"]["k_LQC_eta_B"], color="0.4", ls=":", lw=1,
+               label=r"$k_{\rm LQC}\eta_B=1.06$")
+    ax.axhline(1.0, color="0.7", lw=0.8)
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlabel(r"$k\,\eta_B$")
+    ax.set_ylabel(r"$|\zeta_{\rm after}/\zeta_{\rm before}|$  (envelope)")
+    ax.set_title("Lane 9c-2: bounce growth factor, LQC-dust dressed metric", fontsize=10)
+    ax.legend(fontsize=8)
+    ax.grid(alpha=0.3, which="both")
+    fig.tight_layout()
+    fig.savefig(os.path.join(HERE, "lane9c2_growth_factor.png"), dpi=140)
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(6.4, 4.4))
+    for st, (mk, c) in styles.items():
+        xs, ys = [], []
+        for kt in ks:
+            r = out["dfnl"][f"{kt:g}"].get(st, {})
+            if r.get("defined"):
+                xs.append(kt)
+                ys.append(abs(r["total"]))
+        if xs:
+            ax.plot(xs, ys, mk, color=c, ms=5, lw=1.4, label=st)
+    kk = np.geomspace(0.1, 10, 200)
+    ax.plot(kk, out["abs_comparison"]["ABS_plateau_fNL"]
+            * np.exp(-out["abs_comparison"]["ABS_decay_per_k_etaB"]
+                     * (kk - out["abs_comparison"]["k_LQC_eta_B"])),
+            "k--", lw=1.2, label=r"ABS 2017: $10^3e^{-1.83(k\eta_B-1.06)}$")
+    ax.axvline(out["abs_comparison"]["k_LQC_eta_B"], color="0.4", ls=":", lw=1)
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlabel(r"$k\,\eta_B$")
+    ax.set_ylabel(r"$|\Delta f_{\rm NL}^{\rm bounce}|$  (scheme S1, squeezed isoceles)")
+    ax.set_title(r"Lane 9c-2: $\Delta f_{\rm NL}^{\rm bounce}$ vs initial state", fontsize=10)
+    ax.legend(fontsize=8)
+    ax.grid(alpha=0.3, which="both")
+    fig.tight_layout()
+    fig.savefig(os.path.join(HERE, "lane9c2_dfnl_bounce.png"), dpi=140)
+    plt.close(fig)
+
+
+if __name__ == "__main__":
+    main()
