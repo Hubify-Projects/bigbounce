@@ -51,12 +51,14 @@ recorded, but its physical mechanism is not identified, so the two routes
 compute different variables rather than disagreeing.
 Transmission through the bounce is scheme-qualified: within $k\eta_B\lesssim10^{-2}$
 -- easiest at large scales, hardest at PBH scales -- a linear handoff
-bound ($0\le T_{\fnl}<1/2$, $0.165$--$0.409$) combined with the bounce's
+bound (scheme S1, assumption (A4); $0\le T_{\fnl}<1/2$, $0.165$--$0.409$)
+combined with the bounce's
 own cubic term gives $\fnl^{\rm after}\in[-0.65,-0.50]$ ($-35/16$) or
 $[-1.20,-0.86]$ ($-35/8$) in the geometric scheme (S1). The
 effective-fluid scheme (S2), previously reported divergent, is now finite
-once that artefact is removed, giving $\fnl^{\rm after}\approx-1.25$: a
-two-scheme band, $[-1.25,-0.50]$, not S1 alone.
+once that artefact is removed on the Quintin-type background, giving
+$\fnl^{\rm after}\approx-1.25$: a
+two-scheme band, $[-1.25,-0.50]$ (S2, Quintin-type background only), not S1 alone.
 We take the amplitude through three channels, each stated at the strength
 its evidence supports. (i)~\emph{Pulsar timing.} NANOGrav's 15-yr
 posteriors give $\gamma_{\rm HD}=3.2^{+0.6}_{-0.6}$ (official) and a refit
@@ -355,9 +357,13 @@ growing-mode-dominated limit the transfer reduces to
 \begin{equation}
 T_{\fnl}=\frac{1-\rho(\eta_h)}{2},
 \end{equation}
-so that, under assumption (A4), $0\le T_{\fnl}<1/2$ since $\rho\in(0,1]$: within
+so that, under assumption (A4) and within scheme S1, $0\le T_{\fnl}<1/2$
+since $\rho\in(0,1]$: within
 this handoff scheme, linear transfer can only suppress the amplitude, never
-invert or amplify its sign. $T_{\fnl}$ is precisely the $f_{\rm NL}$
+invert or amplify its sign; this bound is specific to scheme S1 -- S2's
+raw-ADM continuation (Sec.~\ref{sec:bounce_cubic}) lies outside assumption
+(A4) and transmits with $T_{\fnl}\approx1.03$ (from $|\lambda_\zeta|=0.97$).
+$T_{\fnl}$ is precisely the $f_{\rm NL}$
 transfer, $T_{\fnl}=1/\lambda_\zeta$ with $\lambda_\zeta\equiv\zeta(+\infty)/\zeta(-\eta_h)$
 the linear-amplitude growth of $\zeta$ across the handoff
 ($\lambda_\zeta=4.0$, $5.12$, $6.06$ for the LQC, poly, and Quintin-type
@@ -377,11 +383,14 @@ the natural handoff $\eta_h=\eta_B$ (the NEC boundary), $T_{\fnl}$ ranges over
 $0.165$--$0.409$: a $1.64\times$ spread between two mode-function conventions
 (geometric vs.\ effective-fluid) on the \emph{same} LQC background
 ($0.409/0.250$), and a $2.48\times$ spread across the full set of three
-backgrounds and two conventions ($0.409/0.165$). The upper value, $0.409$, is
+backgrounds and two conventions ($0.409/0.165$; the combined S1 range below
+uses the S1 rows only). The upper value, $0.409$, is
 the LQC background under the effective-fluid convention (scheme S2); it is
 \emph{not} a fourth background, and, as stated below, S2 has no computable
-post-bounce $\fnl^{\rm after}$, so this value does not enter the combined
-range that follows. This bound is a statement
+post-bounce $\fnl^{\rm after}$ \emph{on the LQC background} (S2 is carried
+through cubic order only on the Quintin-type background, Sec.~\ref{sec:bounce_cubic}),
+so this LQC/S2 value does not enter the combined
+S1 range that follows. This bound is a statement
 about scheme-dependent linear transfer, not a universal property of the
 physical post-bounce $\fnl$.
 
@@ -457,17 +466,22 @@ $99.95$--$99.97\%$ of it. Combining Eq.~\eqref{eq:bounce_cubic} with the
 linear transmission of Eq.~\eqref{eq:fnl} at $\eta_h=\eta_B$,
 $\fnl^{\rm after}=T_{\fnl}\cdot(-35/16)+\Delta\fnl^{\rm bounce}$, gives a
 definite post-bounce prediction for the first time, one number per background:
-\begin{center}
+\begin{table}[h]
+\caption{\label{tab:s1_after}Per-background transmitted amplitude, scheme S1
+(Sec.~\ref{sec:transmission}); the S2 row is the Quintin-type-only raw-ADM
+continuation and is not directly comparable to the S1 rows above it
+(different scheme, no separately regulated $\Delta\fnl^{\rm bounce}$).}
 \begin{tabular}{lccc}
 \hline\hline
 background & $T_{\fnl}$ & $\Delta\fnl^{\rm bounce}$ & $\fnl^{\rm after}$ \\
 \hline
-Quintin-type~\cite{Quintin2015} & $0.165$ & $-0.140$ & $-0.501$ \\
-LQC effective dust & $0.250$ & $-0.104$ & $-0.651$ \\
-poly (analytic non-LQC) & $0.196$ & $-0.127$ & $-0.555$ \\
+Quintin-type~\cite{Quintin2015} (S1) & $0.165$ & $-0.140$ & $-0.501$ \\
+LQC effective dust (S1) & $0.250$ & $-0.104$ & $-0.651$ \\
+poly (analytic non-LQC) (S1) & $0.196$ & $-0.127$ & $-0.555$ \\
+Quintin-type (S2, raw-ADM) & $\approx1.03$ & not separately regulated & $-1.25$ \\
 \hline\hline
 \end{tabular}
-\end{center}
+\end{table}
 The LQC/S2 (effective-fluid) value $T_{\fnl}=0.409$ has no row above: S2 has
 been carried through cubic order only on the Quintin-type background
 (below).
@@ -1031,8 +1045,7 @@ As established in Sec.~\ref{sec:transmission}, the scheme-S1 $k\eta_B$
 window is satisfied most easily at this channel's CMB/LSS pivot scale, so the
 transmitted amplitude $\fnl^{\rm after}=T_{\fnl}\cdot\fnl^{\rm pre}
 +\Delta\fnl^{\rm bounce}\in[-0.65,-0.50]$ ($-35/16$) or
-$[-1.20,-0.86]$ ($-35/8$) (Sec.~\ref{sec:bounce_cubic}, Table in that
-section) is this paper's observable prediction for Channel III, not the
+$[-1.20,-0.86]$ ($-35/8$) (Table~\ref{tab:s1_after}) is this paper's observable prediction for Channel III, not the
 pre-bounce contraction-phase amplitude. Table~\ref{tab:reach} reports the
 bare significance $\fnl^{\rm after}/\sigma_{\fnl}$ across the three
 backgrounds of Sec.~\ref{sec:transmission}, with the pre-bounce amplitude's
@@ -1048,8 +1061,8 @@ local}/r$; the $r$-projected numbers are omitted pending that re-derivation.
 \begin{table}[t]
 \caption{\label{tab:reach}Channel III. Bare detection significance
 $|\fnl^{\rm after}|/\sigma_{\fnl}$ of the transmitted amplitude across the
-three backgrounds of Sec.~\ref{sec:transmission} (range shown; Table in
-Sec.~\ref{sec:bounce_cubic} gives per-background values). The pre-bounce
+three backgrounds of Sec.~\ref{sec:transmission} (range shown; Table~\ref{tab:s1_after}
+gives per-background values). The pre-bounce
 row (assuming $T_{\fnl}=1$) is a secondary reference, not this paper's
 prediction. The scheme-S2 row is evaluated only on the Quintin-type
 background (Sec.~\ref{sec:bounce_cubic}, ``Scheme S2, resolved''); no
