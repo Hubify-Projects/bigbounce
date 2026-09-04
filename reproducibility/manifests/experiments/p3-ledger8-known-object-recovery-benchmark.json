@@ -32,7 +32,7 @@
   "code": [
     {
       "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
-      "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-manifest <local manifest> --catalogs-config <s8 config> --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir results_2026-08-07/phase3/recovery_benchmark",
+      "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-manifest ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/reference_manifest_local.json --catalogs-config /tmp/catalogs_config_v2.json --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir results_2026-08-07/phase3/recovery_benchmark",
       "sha256": null
     }
   ],

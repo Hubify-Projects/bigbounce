@@ -16,13 +16,13 @@
     "derivation": "exact re-expansion of the sum of all four cubic vertices"
   },
   "benchmark_configurations": {
-    "squeezed": -2.187499999847382,
+    "squeezed": -2.187500000582226,
     "equilateral": -1.9921875,
     "folded": -1.125
   },
   "reference_coefficient_overlap": {
-    "r_amplitude": 0.8354229397420156,
-    "r_cosine": 0.9816782504055881,
+    "r_amplitude": 0.8354229397419414,
+    "r_cosine": 0.9816782504055811,
     "weight": "w proportional to S_local squared",
     "triangle_configurations": 23098
   },

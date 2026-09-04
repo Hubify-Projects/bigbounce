@@ -66,3 +66,66 @@ surface for agents. That is the platform proof, and it earns a first-class nav s
 
 **Voice.** Declarative, quantitative, unhedged about uncertainty. Sentence case everywhere. No exclamation, no
 marketing verbs, no "revolutionary". The register of a good PRD abstract, one notch warmer.
+
+## 2. Information architecture
+
+### 2.1 The one structural decision: `/paper` vs `/papers` is resolved as *tracks are the spine, the flat list is the index*
+
+`/paper` (three tracks) becomes **`/research`** — the canonical scientific spine, one page per track. `/papers` stays
+as the **flat, complete index of every work** — papers, notes, software, and data releases in one sortable list, which
+directive Q3 requires. They are no longer two competing schemes: `/research` answers *"what questions is this lab
+asking and what did it find?"*, `/papers` answers *"show me everything, let me find one."* Every track page links down
+into the flat list filtered to that track; every entry in the flat list names its track. `/paper` 301s to `/research`.
+
+### 2.2 Primary nav — six items
+
+`Research` · `Works` (`/papers`) · `Explore` · `Reproduce` · `Status` · `Learn`
+
+The wordmark is home. Search is **not** a nav item — it becomes a topbar affordance opened by `⌘K`/`/` (route
+`/search` survives for deep links). The current duplicate `status` entry and the grouped-section sidebar disappear:
+the shell drops the 247px sidebar for a **slim sticky topbar** (wordmark, six links, search, theme toggle, live-status
+dot) so content gets the full width — the sidebar is the single biggest source of the site's "app chrome around
+reading material" feel and it is not carrying its cost across 27 routes.
+
+Section hubs carry their own secondary nav (a row of text links under the page title, not a second sidebar).
+
+### 2.3 Footer
+
+One full-width band, four columns, no borders: **Lab** (Overview, Explained, Timeline, Contributions) ·
+**Works** (All works, Research tracks, Figures, Predictions) · **Reproduce** (Manifests, Data sources, Releases &
+DOIs, HuggingFace / Backblaze / Zenodo) · **Build on it** (Docs, API & MCP architecture, GitHub, Activity, Legacy
+archive `/old`). Bottom line: author + email, the honesty statement ("Nulls are published as nulls; readiness is read
+live from Convex"), and a live freshness stamp.
+
+### 2.4 Route table — old → new
+
+| Old route | New route | Disposition |
+|---|---|---|
+| `/` | `/` | **Rebuild.** Best page today; becomes the ten-second answer for all three readers (§3.1). |
+| `/paper` | `/research` | **Rename + 301.** Canonical track spine; adds `/research/[track]`. |
+| — | `/research/[track]` | **New.** One page per track (A, B, C) — §3.3. |
+| `/papers` | `/papers` | **Keep, rebuild.** Flat complete index of papers + notes + software + data releases (Q3). |
+| `/papers/[slug]` | `/papers/[slug]` | **Keep, rebuild** to the paper template (§3.4). |
+| `/status` | `/status` | **Keep, rebuild.** Single readiness dashboard; absorbs `/final-review`; Convex-only numbers. |
+| `/final-review` | `/status#signoff` | **Merge + 301.** Becomes a generic per-work sign-off block, not a P2-only page. |
+| `/reviews` | `/reviews` | **Keep, simplify** (§3.6). Explicitly framed as internal QA evidence; child of Status. |
+| `/reviews/[slug]` | `/reviews/[slug]` | **Keep**, restyled; schema untouched. |
+| `/activity` | `/activity` | **Keep**, restyled; child of Status; footer + Status link only. |
+| `/publish` | `/publish` | **Keep**, retitled "Publishing"; child of Status; the venue/endorsement/submission strip. |
+| `/contributions` | `/research#contributions` | **Merge + 301.** Novelty-graded contribution list rewritten to track framing; the N1–N4 legend survives. |
+| `/reproduce` | `/reproduce` | **Keep, promote to primary nav.** Becomes the Data & reproducibility hub (§3.7). |
+| `/surveys`, `/surveys/[slug]` | `/reproduce/surveys`, `/reproduce/surveys/[slug]` | **Move.** Data sources belong to the reproducibility hub; "0/8 pass" gets its framing sentence. |
+| `/predictions`, `/predictions/[slug]` | `/predictions`, `/predictions/[slug]` | **Keep**, linked from `/research/track-a`; observational-channel detail. |
+| `/figures` | `/explore/figures` + `/figures` 301 | **Move + rebuild.** Facets read live from Convex/track data — the hard-coded "6 papers" string is deleted. |
+| `/galaxy-explorer`, `/anomaly-explorer`, `/data-explorer`, `/visualize` | unchanged paths | **Keep paths and their root `.html` verbatim.** Wrapper chrome only: tool first, methodology prose collapsed beneath it. |
+| — | `/explore` | **New.** Small hub page: four tools + figures, one line each. |
+| `/explained` | `/explained` | **Keep.** Becomes the Learn hub's lead page and the model for long-form voice. |
+| `/glossary` | `/glossary` | **Keep, rebuild** as a two-column definition list with back-links to where each term is used. |
+| `/timeline` | `/timeline` | **Keep**, restyled as a single typographic timeline (no per-step cards). |
+| `/articles`, `/articles/[slug]` | `/articles`, `/articles/[slug]` | **Keep**, folded under Learn. |
+| `/speculations` | `/speculations` | **Keep**, folded under Learn, labeled "not yet formal work". |
+| `/docs` | `/docs` | **Keep**, absorbs `/architecture` as `/docs/architecture`. |
+| `/architecture` | `/docs/architecture` | **Move + 301.** Ends the orphan route. |
+| `/search` | `/search` | **Keep** as a route; entry point moves to the `⌘K` topbar affordance. |
+| `/chat` | — | **RETIRE.** Delete route, page, and nav entry; no redirect target beyond `/` — a dead feature must not sit in nav. |
+| `/old` | `/old` | **Keep, unlisted** (footer link only). |

@@ -1,0 +1,1204 @@
+{
+  "date": "2026-09-04",
+  "lane": "9c-2",
+  "background": {
+    "label": "LQC-effective-dust",
+    "eta_B": 1.0601459575428231,
+    "I_inf": 1.8137982097415053,
+    "A": 0.08333333332653892,
+    "eta_far_used": 309.44074677114986,
+    "potential": "W = a''/a = x^(1/3)(1/6 + x/3), x = rho/rho_c (dressed/geometric)"
+  },
+  "scheme": "S1 (geometric, z = a, eps_eff = 1/2, c_s = 1); vertices+conventions imported from lane (b)",
+  "configuration": {
+    "squeeze": 0.02,
+    "k_scan_k_etaB": [
+      0.1,
+      0.3,
+      1.0,
+      3.0,
+      10.0
+    ],
+    "eta0_headline_over_etaB": -3.0,
+    "eta0_scan": [
+      -2.0,
+      -3.0,
+      -10.0,
+      -30.0,
+      -100.0
+    ],
+    "eta_star_headline_over_etaB": 10.0,
+    "eta_star_scan": [
+      2.0,
+      5.0,
+      10.0,
+      30.0
+    ]
+  },
+  "states": {
+    "S-lab": "adiabatic (exact dust) contraction vacuum at eta -> -eta_far (A2 sec. 4)",
+    "S-ABS0": "adiabatic-order-zero Minkowski vacuum at fixed eta_0 (ABS sec. IV F)",
+    "S-ad4": "4th-order adiabatic (WKB) vacuum at eta_0 (relocated earlier if k^2 <= W)"
+  },
+  "gate": {
+    "k_etaB": 0.001,
+    "laneB_total": -0.10431132973117212,
+    "lane9c2_total": -0.1043113297337079,
+    "rel_vs_laneB": 2.4309700109802054e-11,
+    "tolerance": 0.001,
+    "passed": true,
+    "analytic_minus_5_over_48": -0.10416666666666667,
+    "rel_vs_analytic": 0.0013887654435957408,
+    "wronskian": -0.4999999999981404,
+    "vertices": {
+      "V1": 0.0,
+      "V2": -0.1041984351736334,
+      "V3": 3.2303947682064175e-07,
+      "V4": -6.702445891833844e-05,
+      "V5": 0.0,
+      "V6": 8.378057364792306e-06,
+      "V7": 6.264502611679014e-06
+    },
+    "redefinition": {
+      "R1": 0.0,
+      "R2": -3.669248617758172e-05,
+      "R3": -1.157143310765378e-07,
+      "R4": -2.4027500100781386e-05
+    }
+  },
+  "modes": {
+    "0.1": {
+      "S-lab": {
+        "defined": true,
+        "eta_ref": 44.833629014146986,
+        "N_before": 1.0000704210407618,
+        "N_after": 39486.471689038815,
+        "omega": 0.08948810748710971,
+        "growth_factor": 198.70503568458184,
+        "power_modification": 39483.69120641094,
+        "beta_sq_after": 19742.735844519408,
+        "beta_sq_before": 3.521052038091277e-05,
+        "info": {
+          "state": "S-lab",
+          "eta_start": -309.44074677114986,
+          "wronskian_initial": -0.5000000000000001,
+          "ode_success": true
+        }
+      },
+      "S-ABS0": {
+        "defined": true,
+        "eta_ref": 44.833629014146986,
+        "N_before": 9112398421511114.0,
+        "N_after": 5038.778642950902,
+        "omega": 0.08948810748710971,
+        "growth_factor": 7.436118293291572e-07,
+        "power_modification": 5.529585527182556e-13,
+        "beta_sq_after": 2518.889321475451,
+        "beta_sq_before": 4556199210755556.0,
+        "info": {
+          "state": "S-ABS0",
+          "eta_start": -3.1804378726284694,
+          "k2_over_W_at_eta0": 0.13687103438717196,
+          "wronskian_initial": -0.5000000000000001,
+          "ode_success": true
+        }
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": {
+          "state": "S-ad4",
+          "defined": false,
+          "reason": "4th-order adiabatic Omega^2 <= 0"
+        }
+      }
+    },
+    "0.3": {
+      "S-lab": {
+        "defined": true,
+        "eta_ref": 13.223701430289877,
+        "N_before": 1.0000702359827558,
+        "N_after": 82.81795581373561,
+        "omega": 0.2684687101093342,
+        "growth_factor": 9.100117549885782,
+        "power_modification": 82.81213942173922,
+        "beta_sq_after": 40.908977906867804,
+        "beta_sq_before": 3.511799137789762e-05,
+        "info": {
+          "state": "S-lab",
+          "eta_start": -309.44074677114986,
+          "wronskian_initial": -0.4999999999999999,
+          "ode_success": true
+        }
+      },
+      "S-ABS0": {
+        "defined": true,
+        "eta_ref": 13.223701430289877,
+        "N_before": 819130.4061006687,
+        "N_after": 62.858290094937814,
+        "omega": 0.2684687101093342,
+        "growth_factor": 0.008760013144828964,
+        "power_modification": 7.673783029757622e-05,
+        "beta_sq_after": 30.929145047468907,
+        "beta_sq_before": 409564.70305033436,
+        "info": {
+          "state": "S-ABS0",
+          "eta_start": -3.1804378726284694,
+          "k2_over_W_at_eta0": 1.2318393094845472,
+          "wronskian_initial": -0.49999999999999994,
+          "ode_success": true
+        }
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": {
+          "state": "S-ad4",
+          "defined": false,
+          "reason": "4th-order adiabatic Omega^2 <= 0"
+        }
+      }
+    },
+    "1": {
+      "S-lab": {
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 1.0000001376427337,
+        "N_after": 1.0949942284660699,
+        "omega": 0.9371479458198466,
+        "growth_factor": 1.046419647057571,
+        "power_modification": 1.0949940777480915,
+        "beta_sq_after": 0.04749711423303493,
+        "beta_sq_before": 6.882136682762052e-08,
+        "info": {
+          "state": "S-lab",
+          "eta_start": -309.44074677114986,
+          "wronskian_initial": -0.5000000000000001,
+          "ode_success": true
+        }
+      },
+      "S-ABS0": {
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 399699.8162848963,
+        "N_after": 1.080137688173306,
+        "omega": 0.9371479458198466,
+        "growth_factor": 0.0016438893639111915,
+        "power_modification": 2.7023722407803416e-06,
+        "beta_sq_after": 0.04006884408665301,
+        "beta_sq_before": 199849.40814244814,
+        "info": {
+          "state": "S-ABS0",
+          "eta_start": -3.1804378726284694,
+          "k2_over_W_at_eta0": 13.687103438717193,
+          "wronskian_initial": -0.5,
+          "ode_success": true
+        }
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": {
+          "state": "S-ad4",
+          "defined": false,
+          "reason": "4th-order adiabatic Omega^2 <= 0"
+        }
+      }
+    },
+    "3": {
+      "S-lab": {
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 1.0000000000928355,
+        "N_after": 1.000000563272868,
+        "omega": 2.827765445913328,
+        "growth_factor": 1.0000002815899764,
+        "power_modification": 1.0000005631800322,
+        "beta_sq_after": 2.816364339519595e-07,
+        "beta_sq_before": 4.641775852576302e-11,
+        "info": {
+          "state": "S-lab",
+          "eta_start": -309.44074677114986,
+          "wronskian_initial": -0.5000000000000001,
+          "ode_success": true
+        }
+      },
+      "S-ABS0": {
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 99247873949.0425,
+        "N_after": 1.000004790872567,
+        "omega": 2.827765445913328,
+        "growth_factor": 3.1742449271370042e-06,
+        "power_modification": 1.0075830857455005e-11,
+        "beta_sq_after": 2.3954362835532095e-06,
+        "beta_sq_before": 49623936974.02125,
+        "info": {
+          "state": "S-ABS0",
+          "eta_start": -3.1804378726284694,
+          "k2_over_W_at_eta0": 123.18393094845473,
+          "wronskian_initial": -0.5,
+          "ode_success": true
+        }
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": {
+          "state": "S-ad4",
+          "defined": false,
+          "reason": "4th-order adiabatic Omega^2 <= 0"
+        }
+      }
+    },
+    "10": {
+      "S-lab": {
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 0.9999999996340392,
+        "N_after": 0.9999999996362641,
+        "omega": 9.432053550982365,
+        "growth_factor": 1.0000000000011124,
+        "power_modification": 1.0000000000022249,
+        "beta_sq_after": 0.0,
+        "beta_sq_before": 0.0,
+        "info": {
+          "state": "S-lab",
+          "eta_start": -309.44074677114986,
+          "wronskian_initial": -0.5,
+          "ode_success": true
+        }
+      },
+      "S-ABS0": {
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 3.1486492978282465e+18,
+        "N_after": 1.0000000665332958,
+        "omega": 9.432053550982365,
+        "growth_factor": 5.635570265493867e-10,
+        "power_modification": 3.175965221731861e-19,
+        "beta_sq_after": 3.326664788083633e-08,
+        "beta_sq_before": 1.5743246489141233e+18,
+        "info": {
+          "state": "S-ABS0",
+          "eta_start": -3.1804378726284694,
+          "k2_over_W_at_eta0": 1368.7103438717195,
+          "wronskian_initial": -0.5000000000000001,
+          "ode_success": true
+        }
+      },
+      "S-ad4": {
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 3.5482836068371624e+25,
+        "N_after": 267.91262210548894,
+        "omega": 9.432053550982365,
+        "growth_factor": 2.747814589323345e-12,
+        "power_modification": 7.550485017298224e-24,
+        "beta_sq_after": 133.45631105274447,
+        "beta_sq_before": 1.7741418034185812e+25,
+        "info": {
+          "state": "S-ad4",
+          "eta_start": -3.1804378726284694,
+          "defined": true,
+          "Omega4": 9.872642602108092,
+          "omega0": 9.429216974804765,
+          "adiabaticity_dOmega_over_Omega2": 45.15957170811459,
+          "wronskian_initial": -0.5,
+          "ode_success": true
+        }
+      }
+    }
+  },
+  "dfnl": {
+    "0.1": {
+      "S-lab": {
+        "vertices": {
+          "V1": 0.0,
+          "V2": -0.10426582099493059,
+          "V3": 0.0033166784938411936,
+          "V4": -0.003123743198956137,
+          "V5": 0.0,
+          "V6": 0.00039046789986951715,
+          "V7": 0.00013357908405022212
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -0.11867149157248663,
+          "R3": -6.49864226763797e-05,
+          "R4": -0.001787402045661033
+        },
+        "bulk_sum": -0.1035488387161258,
+        "redef_sum": -0.12052388004082405,
+        "total": -0.22407271875694984,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 1.0069240977271638,
+        "P": [
+          62938848.471518084,
+          377.4453022565165,
+          377.4453022565165
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ABS0": {
+        "vertices": {
+          "V1": -0.0,
+          "V2": -0.11029819275609416,
+          "V3": 0.0035234287215945904,
+          "V4": -0.013346532563051749,
+          "V5": -0.0,
+          "V6": 0.001668316570381459,
+          "V7": 0.0005595593200157314
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -0.12012747096545189,
+          "R3": -0.001235081968252854,
+          "R4": -0.001254031201701748
+        },
+        "bulk_sum": -0.11789342070715413,
+        "redef_sum": -0.12261658413540648,
+        "total": -0.2405100048425606,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 0.9355754722740091,
+        "P": [
+          3293.7596307157446,
+          48.1882526146696,
+          48.1882526146696
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": [
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "k^2 - W <= 0 in the WKB window"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          }
+        ]
+      }
+    },
+    "0.3": {
+      "S-lab": {
+        "vertices": {
+          "V1": -0.0,
+          "V2": -0.0592352161666155,
+          "V3": 0.04014480520944449,
+          "V4": 0.023834957720272314,
+          "V5": -0.0,
+          "V6": -0.0029793697150340393,
+          "V7": -0.000990751679294427
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -2.336977944260487,
+          "R3": -0.0005807608349531704,
+          "R4": -0.0014638009529078075
+        },
+        "bulk_sum": 0.000774425368772837,
+        "redef_sum": -2.339022506048348,
+        "total": -2.338248080679575,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 76.48925068206415,
+        "P": [
+          2260685.454466676,
+          0.7263864392356102,
+          0.7263864392356102
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ABS0": {
+        "vertices": {
+          "V1": -0.0,
+          "V2": -0.060446404966281224,
+          "V3": 0.040676460120207175,
+          "V4": 0.02763217659442381,
+          "V5": -0.0,
+          "V6": -0.003454022074302972,
+          "V7": -0.0011488654764801418
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -2.3321277393364723,
+          "R3": -0.0009464368648718127,
+          "R4": -0.0011062220799705484
+        },
+        "bulk_sum": 0.003259344197566648,
+        "redef_sum": -2.3341803982813145,
+        "total": -2.3309210540837477,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 18.545572760130437,
+        "P": [
+          1096.844493127383,
+          0.5534374790311181,
+          0.5534374790311181
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": [
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "k^2 - W <= 0 in the WKB window"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          }
+        ]
+      }
+    },
+    "1": {
+      "S-lab": {
+        "vertices": {
+          "V1": 0.0,
+          "V2": -0.10492360298135885,
+          "V3": -0.0010835431981781852,
+          "V4": -0.1441141059170186,
+          "V5": 0.0,
+          "V6": 0.018014263239627324,
+          "V7": 0.006005849615131022
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": 1.1735103215116458,
+          "R3": -0.006450697952245313,
+          "R4": -0.0006550955979017732
+        },
+        "bulk_sum": -0.22610113924179728,
+        "redef_sum": 1.1664045279614987,
+        "total": 0.9403033887197014,
+        "dominant_vertex": "V4",
+        "dominant_vertex_fraction": 0.6373877920309812,
+        "P": [
+          59917.922827471695,
+          0.002895325868044123,
+          0.002895325868044123
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ABS0": {
+        "vertices": {
+          "V1": -0.0,
+          "V2": -0.1001302398448881,
+          "V3": 0.004245364656941988,
+          "V4": -0.1407489430788828,
+          "V5": -0.0,
+          "V6": 0.01759361788486035,
+          "V7": 0.005865530820129331
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": 1.0517663223186806,
+          "R3": -0.006520308856308135,
+          "R4": -0.0005821335706756151
+        },
+        "bulk_sum": -0.21317466956183923,
+        "redef_sum": 1.0446638798916967,
+        "total": 0.8314892103298575,
+        "dominant_vertex": "V4",
+        "dominant_vertex_fraction": 0.6602517239415884,
+        "P": [
+          325.4028212428957,
+          0.00282622492387438,
+          0.00282622492387438
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": [
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          }
+        ]
+      }
+    },
+    "3": {
+      "S-lab": {
+        "vertices": {
+          "V1": -0.0,
+          "V2": 0.04559430681355206,
+          "V3": -0.031901465735403194,
+          "V4": -0.017372688279114576,
+          "V5": -0.0,
+          "V6": 0.0021715860348893224,
+          "V7": 0.0007220528085789302
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -0.8891255614949337,
+          "R3": -0.058082493116619546,
+          "R4": 0.009907828977936678
+        },
+        "bulk_sum": -0.0007862083574974567,
+        "redef_sum": -0.9373002256336166,
+        "total": -0.938086433991114,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 57.992650903230256,
+        "P": [
+          2054.024509488298,
+          0.0008414846464843804,
+          0.0008414846464843804
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ABS0": {
+        "vertices": {
+          "V1": 0.0,
+          "V2": 0.04134332548211574,
+          "V3": -0.03241953360836223,
+          "V4": -0.016827498034528696,
+          "V5": 0.0,
+          "V6": 0.002103437254316086,
+          "V7": 0.0006994873200997077
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -0.8311731457336248,
+          "R3": -0.0586749000207762,
+          "R4": 0.009965791336167285
+        },
+        "bulk_sum": -0.005100781586359388,
+        "redef_sum": -0.8798822544182338,
+        "total": -0.8849830360045932,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 8.10529225416687,
+        "P": [
+          98.26314189510707,
+          0.0008427715997836262,
+          0.0008427715997836262
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": [
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          }
+        ]
+      }
+    },
+    "10": {
+      "S-lab": {
+        "vertices": {
+          "V1": 0.0,
+          "V2": 0.15387758956374648,
+          "V3": -0.09157739406613742,
+          "V4": -0.0060033428764279355,
+          "V5": 0.0,
+          "V6": 0.0007504178595534918,
+          "V7": 0.00024491049074304666
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -1.4548946460307541,
+          "R3": -0.655255187130468,
+          "R4": 0.1554527214600379
+        },
+        "bulk_sum": 0.05729218097147766,
+        "redef_sum": -1.9546971117011842,
+        "total": -1.8974049307297065,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 2.6858392708134624,
+        "P": [
+          19.886451503393076,
+          0.00025227747591264883,
+          0.00025227747591264883
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ABS0": {
+        "vertices": {
+          "V1": -0.0,
+          "V2": 0.15153300918054508,
+          "V3": -0.09187756085103209,
+          "V4": -0.005452768000810611,
+          "V5": -0.0,
+          "V6": 0.0006815960001013262,
+          "V7": 0.00022205719203775915
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": -1.439568259191557,
+          "R3": -0.6687924118449954,
+          "R4": 0.15545494041449473
+        },
+        "bulk_sum": 0.05510633352084146,
+        "redef_sum": -1.9529057306220576,
+        "total": -1.8977993971012161,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 2.74982927549035,
+        "P": [
+          8.558680917907534,
+          0.00025233150595179425,
+          0.00025233150595179425
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": [
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "4th-order adiabatic Omega^2 <= 0"
+          },
+          {
+            "state": "S-ad4",
+            "eta_start": -3.1804378726284694,
+            "defined": true,
+            "Omega4": 9.872642602108092,
+            "omega0": 9.429216974804765,
+            "adiabaticity_dOmega_over_Omega2": 45.15957170811459,
+            "wronskian_initial": -0.5,
+            "ode_success": true
+          },
+          {
+            "state": "S-ad4",
+            "eta_start": -3.1804378726284694,
+            "defined": true,
+            "Omega4": 9.872642602108092,
+            "omega0": 9.429216974804765,
+            "adiabaticity_dOmega_over_Omega2": 45.15957170811459,
+            "wronskian_initial": -0.5,
+            "ode_success": true
+          }
+        ]
+      }
+    },
+    "0.001": {
+      "S-lab": {
+        "vertices": {
+          "V1": 0.0,
+          "V2": -0.10659415935827422,
+          "V3": 3.222577734535935e-07,
+          "V4": -0.0018667340986908666,
+          "V5": 0.0,
+          "V6": 0.00023334176233635832,
+          "V7": 8.130225844265066e-05
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": 0.014491996305696815,
+          "R3": -6.5146878779551765e-09,
+          "R4": -0.0018136398289873333
+        },
+        "bulk_sum": -0.10814592717841262,
+        "redef_sum": 0.012678349962021603,
+        "total": -0.09546757721639101,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 0.9856511672642245,
+        "P": [
+          63308715120415.125,
+          505702712.50390065,
+          505702712.50390065
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ABS0": {
+        "vertices": {
+          "V1": -0.0,
+          "V2": -0.11338820842067703,
+          "V3": 3.450522964597882e-07,
+          "V4": -0.0153104339236962,
+          "V5": -0.0,
+          "V6": 0.001913804240462025,
+          "V7": 0.0006414588019086453
+        },
+        "redefinition": {
+          "R1": 0.0,
+          "R2": 0.01398652258931243,
+          "R3": -1.6604270881964385e-07,
+          "R4": -0.0017676988927001402
+        },
+        "bulk_sum": -0.1261430342497061,
+        "redef_sum": 0.01221865765390347,
+        "total": -0.11392437659580264,
+        "dominant_vertex": "V2",
+        "dominant_vertex_fraction": 0.8988860074209069,
+        "P": [
+          329416.3051894981,
+          6588.124445693334,
+          6588.124445693334
+        ],
+        "eta_star_over_etaB": 10.0,
+        "defined": true,
+        "npts": 20001
+      },
+      "S-ad4": {
+        "defined": false,
+        "info": [
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "k^2 - W <= 0 in the WKB window"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "k^2 - W <= 0 in the WKB window"
+          },
+          {
+            "state": "S-ad4",
+            "defined": false,
+            "reason": "k^2 - W <= 0 in the WKB window"
+          }
+        ]
+      }
+    }
+  },
+  "eta_star_systematic": {
+    "0.1": {
+      "S-lab": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": 0.09635941941710366,
+            "k_eta_star": 0.2
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -0.10532297420063591,
+            "k_eta_star": 0.5
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -0.22407271875694984,
+            "k_eta_star": 1.0
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -1.4853309621007371,
+            "k_eta_star": 3.0
+          }
+        ],
+        "frac_spread": 3.681844832027709
+      },
+      "S-ABS0": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": 0.073127462384769,
+            "k_eta_star": 0.2
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -0.1218683857103045,
+            "k_eta_star": 0.5
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -0.2405100048425606,
+            "k_eta_star": 1.0
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -1.5020728784828845,
+            "k_eta_star": 3.0
+          }
+        ],
+        "frac_spread": 3.5173994450788064
+      }
+    },
+    "0.3": {
+      "S-lab": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -0.03947705028690221,
+            "k_eta_star": 0.6
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -0.48178912228563076,
+            "k_eta_star": 1.5
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -2.338248080679575,
+            "k_eta_star": 3.0
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -2.3525544542918357,
+            "k_eta_star": 9.0
+          }
+        ],
+        "frac_spread": 1.7751703086008725
+      },
+      "S-ABS0": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -0.03518514562572905,
+            "k_eta_star": 0.6
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -0.47949818179231957,
+            "k_eta_star": 1.5
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -2.3309210540837477,
+            "k_eta_star": 3.0
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -2.3410048428826857,
+            "k_eta_star": 9.0
+          }
+        ],
+        "frac_spread": 1.7782868132160843
+      }
+    },
+    "1": {
+      "S-lab": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -1.1139901512535646,
+            "k_eta_star": 2.0
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -1.465110897695795,
+            "k_eta_star": 5.0
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": 0.9403033887197014,
+            "k_eta_star": 10.0
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -3.419642042569489,
+            "k_eta_star": 30.000000000000004
+          }
+        ],
+        "frac_spread": 3.4476602964163545
+      },
+      "S-ABS0": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -1.0842121930909971,
+            "k_eta_star": 2.0
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -1.402919681535719,
+            "k_eta_star": 5.0
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": 0.8314892103298575,
+            "k_eta_star": 10.0
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -3.193497052459798,
+            "k_eta_star": 30.000000000000004
+          }
+        ],
+        "frac_spread": 3.32016522343618
+      }
+    },
+    "3": {
+      "S-lab": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -0.6923821511054242,
+            "k_eta_star": 6.0
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -0.8233826903107196,
+            "k_eta_star": 15.000000000000002
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -0.938086433991114,
+            "k_eta_star": 30.000000000000004
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -1.5160804068632756,
+            "k_eta_star": 90.0
+          }
+        ],
+        "frac_spread": 0.8299369577934415
+      },
+      "S-ABS0": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -0.7209470463029769,
+            "k_eta_star": 6.0
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -0.8338064480282102,
+            "k_eta_star": 15.000000000000002
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -0.8849830360045932,
+            "k_eta_star": 30.000000000000004
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -1.427082840547052,
+            "k_eta_star": 90.0
+          }
+        ],
+        "frac_spread": 0.7304564568609341
+      }
+    },
+    "10": {
+      "S-lab": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -0.9127474688518642,
+            "k_eta_star": 20.0
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -1.1837566154238877,
+            "k_eta_star": 50.00000000000001
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -1.8974049307297065,
+            "k_eta_star": 100.00000000000001
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -6.784889661882978,
+            "k_eta_star": 300.0
+          }
+        ],
+        "frac_spread": 2.179145327436898
+      },
+      "S-ABS0": {
+        "scan": [
+          {
+            "eta_star_over_etaB": 2.0,
+            "total": -0.9642236614933751,
+            "k_eta_star": 20.0
+          },
+          {
+            "eta_star_over_etaB": 5.0,
+            "total": -1.197172954516818,
+            "k_eta_star": 50.00000000000001
+          },
+          {
+            "eta_star_over_etaB": 10.0,
+            "total": -1.8977993971012161,
+            "k_eta_star": 100.00000000000001
+          },
+          {
+            "eta_star_over_etaB": 30.0,
+            "total": -6.90448242065509,
+            "k_eta_star": 300.0
+          }
+        ],
+        "frac_spread": 2.1672502691675453
+      }
+    }
+  },
+  "eta0_systematic": {
+    "k_etaB": 1.0,
+    "scan": [
+      {
+        "eta0_over_etaB": -2.0,
+        "k2_over_W": 7.883066062608845,
+        "growth_factor": 0.0008046771282388845,
+        "power_modification": 6.475052807107782e-07,
+        "total": 0.8768291616041395
+      },
+      {
+        "eta0_over_etaB": -3.0,
+        "k2_over_W": 13.687103438717193,
+        "growth_factor": 0.0016438893639111915,
+        "power_modification": 2.7023722407803416e-06,
+        "total": 0.8314892103298575
+      },
+      {
+        "eta0_over_etaB": -10.0,
+        "k2_over_W": 77.33525038773124,
+        "growth_factor": 1.0464486962972048,
+        "power_modification": 1.0950548739821195,
+        "total": 0.9552175842707483
+      },
+      {
+        "eta0_over_etaB": -30.0,
+        "k2_over_W": 526.1866254600856,
+        "growth_factor": 1.0465740475755145,
+        "power_modification": 1.0953172370585953,
+        "total": 0.9417722271277811
+      },
+      {
+        "eta0_over_etaB": -100.0,
+        "k2_over_W": 5247.01094027631,
+        "growth_factor": 1.0464039323515328,
+        "power_modification": 1.0949611896407514,
+        "total": 0.9398936384102446
+      }
+    ]
+  },
+  "abs_comparison": {
+    "ABS_plateau_fNL": 1000.0,
+    "ABS_decay_per_k_etaB": 1.830229,
+    "k_LQC_eta_B": 1.060146,
+    "ABS_law": "|Delta f_NL^bounce| ~ 1e3 exp(-1.830 (k*eta_B - 1.060)) (equilateral; lane 9c sec. 3.1)",
+    "per_k": {
+      "0.1": {
+        "ABS_extrapolated_|f_NL|": 5796.689933002564,
+        "lab": {
+          "S-lab": {
+            "total": -0.22407271875694984,
+            "ratio_to_ABS": 3.8655287991380426e-05,
+            "log10_gap_dex": 4.412791086780907
+          },
+          "S-ABS0": {
+            "total": -0.2405100048425606,
+            "ratio_to_ABS": 4.149092113298208e-05,
+            "log10_gap_dex": 4.382046923365037
+          },
+          "S-ad4": null
+        }
+      },
+      "0.3": {
+        "ABS_extrapolated_|f_NL|": 4019.8365935495353,
+        "lab": {
+          "S-lab": {
+            "total": -2.338248080679575,
+            "ratio_to_ABS": 0.0005816773956512721,
+            "log10_gap_dex": 3.2353178128299
+          },
+          "S-ABS0": {
+            "total": -2.3309210540837477,
+            "ratio_to_ABS": 0.0005798546781289767,
+            "log10_gap_dex": 3.2366808347035785
+          },
+          "S-ad4": null
+        }
+      },
+      "1": {
+        "ABS_extrapolated_|f_NL|": 1116.3684406598136,
+        "lab": {
+          "S-lab": {
+            "total": 0.9403033887197014,
+            "ratio_to_ABS": 0.0008422876843096251,
+            "log10_gap_dex": 3.07453954939213
+          },
+          "S-ABS0": {
+            "total": 0.8314892103298575,
+            "ratio_to_ABS": 0.0007448161198810114,
+            "log10_gap_dex": 3.1279509325911423
+          },
+          "S-ad4": null
+        }
+      },
+      "3": {
+        "ABS_extrapolated_|f_NL|": 28.71381116904807,
+        "lab": {
+          "S-lab": {
+            "total": -0.938086433991114,
+            "ratio_to_ABS": 0.03267021672839864,
+            "log10_gap_dex": 1.485847984482769
+          },
+          "S-ABS0": {
+            "total": -0.8849830360045932,
+            "ratio_to_ABS": 0.03082081409515421,
+            "log10_gap_dex": 1.5111558940937908
+          },
+          "S-ad4": null
+        }
+      },
+      "10": {
+        "ABS_extrapolated_|f_NL|": 7.83578214110322e-05,
+        "lab": {
+          "S-lab": {
+            "total": -1.8974049307297065,
+            "ratio_to_ABS": 24214.620781462487,
+            "log10_gap_dex": -4.384077672068997
+          },
+          "S-ABS0": {
+            "total": -1.8977993971012161,
+            "ratio_to_ABS": 24219.65494862546,
+            "log10_gap_dex": -4.3841679515661
+          },
+          "S-ad4": null
+        }
+      }
+    },
+    "caveat": "ABS use a kinetic-dominated scalar (w=+1, eps=3) with ~12.3 e-folds of inflation after the bounce and their f_NL convention differs by an overall sign; only magnitudes are compared."
+  }
+}
