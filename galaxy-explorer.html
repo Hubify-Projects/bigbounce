@@ -263,6 +263,108 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════ FILTER PANEL ═══════════════════════════════ -->
+<h2>Filter Galaxies</h2>
+
+<div class="gx-filters">
+  <div class="gx-filter-group">
+    <label for="gx-class-filter">Classification</label>
+    <select id="gx-class-filter">
+      <option value="ALL">All</option>
+      <option value="CW">Clockwise (CW)</option>
+      <option value="CCW">Counter-Clockwise (CCW)</option>
+      <option value="NOT_SPIRAL">Not Spiral</option>
+    </select>
+  </div>
+
+  <div class="gx-filter-group">
+    <label for="gx-confidence">Confidence &ge; <span id="gx-conf-val">0.50</span></label>
+    <input type="range" id="gx-confidence" min="0.50" max="1.00" step="0.01" value="0.50" style="width: 140px; accent-color: var(--text);">
+  </div>
+
+  <div class="gx-filter-group">
+    <label>RA Range (&deg;)</label>
+    <div class="gx-range-pair">
+      <input type="number" id="gx-ra-min" placeholder="0" min="0" max="360" step="0.1">
+      <span class="gx-range-sep">&ndash;</span>
+      <input type="number" id="gx-ra-max" placeholder="360" min="0" max="360" step="0.1">
+    </div>
+  </div>
+
+  <div class="gx-filter-group">
+    <label>DEC Range (&deg;)</label>
+    <div class="gx-range-pair">
+      <input type="number" id="gx-dec-min" placeholder="-90" min="-90" max="90" step="0.1">
+      <span class="gx-range-sep">&ndash;</span>
+      <input type="number" id="gx-dec-max" placeholder="90" min="-90" max="90" step="0.1">
+    </div>
+  </div>
+
+  <div class="gx-filter-group">
+    <label for="gx-search-id">Search dr8_id</label>
+    <input type="text" id="gx-search-id" placeholder="e.g. 7953-5581-194">
+  </div>
+
+  <div class="gx-filter-actions">
+    <button class="btn btn-primary" onclick="applyFilters()">Apply</button>
+    <button class="btn btn-secondary" onclick="resetFilters()">Reset</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ RESULTS TABLE ═══════════════════════════════ -->
+<h2>Results</h2>
+
+<div class="gx-controls">
+  <div class="gx-result-count">Showing <strong>1&ndash;20</strong> of <strong>8,474,531</strong> galaxies</div>
+  <div class="gx-pagination">
+    <button disabled>&laquo; Prev</button>
+    <span class="gx-page-info">Page 1 of 423,727</span>
+    <button onclick="nextPage()">Next &raquo;</button>
+  </div>
+</div>
+
+<div style="margin: 8px 0 14px; padding: 10px 14px; border: 1px solid var(--border); border-left: 3px solid #d97706; background: color-mix(in srgb, #d97706 6%, var(--bg)); font-size: 12px; line-height: 1.55; font-family: var(--font-sans);">
+  <strong>Demo table:</strong> the 20 rows below are a representative sample.
+  The full 8.47M-row catalog is live in Convex (table <code>galaxies</code>: dr8_id, p_cw, p_ccw, p_ns, classification, confidence)
+  but does not yet include RA/Dec, so Legacy Survey cutouts can't be regenerated per row in the live query path.
+  Full data access: <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener">HuggingFace dataset</a>,
+  <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener">model</a>,
+  <a href="/papers/chirality_catalog_paper.pdf" target="_blank">Paper 4 PDF</a>.
+  Schema extension (add ra/dec + reimport) is queued as a follow-up.
+</div>
+
+<div class="gx-table-wrap">
+  <table class="gx-table" id="gx-results-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th onclick="sortTable(1)">dr8_id <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(2)">Class <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(3)">P(CW) <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(4)">P(CCW) <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(5)">P(NS) <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(6)">Confidence <span class="sort-arrow">&#9650;</span></th>
+        <th>RA</th>
+        <th>DEC</th>
+      </tr>
+    </thead>
+    <tbody id="gx-results-body">
+      <!-- Placeholder rows — will be replaced by Convex queries -->
+    </tbody>
+  </table>
+</div>
+
+<div class="gx-controls" style="margin-top: 12px;">
+  <div></div>
+  <div class="gx-pagination">
+    <button disabled>&laquo; Prev</button>
+    <span class="gx-page-info">Page 1 of 423,727</span>
+    <button onclick="nextPage()">Next &raquo;</button>
+  </div>
+</div>
+
+<hr>
+
 <!-- ═══════════════════════════════ STAT CARDS ═══════════════════════════════ -->
 <div class="gx-stats">
   <div class="gx-stat">
@@ -505,108 +607,6 @@
     </div>
   </div>
 
-</div>
-
-<hr>
-
-<!-- ═══════════════════════════════ FILTER PANEL ═══════════════════════════════ -->
-<h2>Filter Galaxies</h2>
-
-<div class="gx-filters">
-  <div class="gx-filter-group">
-    <label for="gx-class-filter">Classification</label>
-    <select id="gx-class-filter">
-      <option value="ALL">All</option>
-      <option value="CW">Clockwise (CW)</option>
-      <option value="CCW">Counter-Clockwise (CCW)</option>
-      <option value="NOT_SPIRAL">Not Spiral</option>
-    </select>
-  </div>
-
-  <div class="gx-filter-group">
-    <label for="gx-confidence">Confidence &ge; <span id="gx-conf-val">0.50</span></label>
-    <input type="range" id="gx-confidence" min="0.50" max="1.00" step="0.01" value="0.50" style="width: 140px; accent-color: var(--text);">
-  </div>
-
-  <div class="gx-filter-group">
-    <label>RA Range (&deg;)</label>
-    <div class="gx-range-pair">
-      <input type="number" id="gx-ra-min" placeholder="0" min="0" max="360" step="0.1">
-      <span class="gx-range-sep">&ndash;</span>
-      <input type="number" id="gx-ra-max" placeholder="360" min="0" max="360" step="0.1">
-    </div>
-  </div>
-
-  <div class="gx-filter-group">
-    <label>DEC Range (&deg;)</label>
-    <div class="gx-range-pair">
-      <input type="number" id="gx-dec-min" placeholder="-90" min="-90" max="90" step="0.1">
-      <span class="gx-range-sep">&ndash;</span>
-      <input type="number" id="gx-dec-max" placeholder="90" min="-90" max="90" step="0.1">
-    </div>
-  </div>
-
-  <div class="gx-filter-group">
-    <label for="gx-search-id">Search dr8_id</label>
-    <input type="text" id="gx-search-id" placeholder="e.g. 7953-5581-194">
-  </div>
-
-  <div class="gx-filter-actions">
-    <button class="btn btn-primary" onclick="applyFilters()">Apply</button>
-    <button class="btn btn-secondary" onclick="resetFilters()">Reset</button>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════ RESULTS TABLE ═══════════════════════════════ -->
-<h2>Results</h2>
-
-<div class="gx-controls">
-  <div class="gx-result-count">Showing <strong>1&ndash;20</strong> of <strong>8,474,531</strong> galaxies</div>
-  <div class="gx-pagination">
-    <button disabled>&laquo; Prev</button>
-    <span class="gx-page-info">Page 1 of 423,727</span>
-    <button onclick="nextPage()">Next &raquo;</button>
-  </div>
-</div>
-
-<div style="margin: 8px 0 14px; padding: 10px 14px; border: 1px solid var(--border); border-left: 3px solid #d97706; background: color-mix(in srgb, #d97706 6%, var(--bg)); font-size: 12px; line-height: 1.55; font-family: var(--font-sans);">
-  <strong>Demo table:</strong> the 20 rows below are a representative sample.
-  The full 8.47M-row catalog is live in Convex (table <code>galaxies</code>: dr8_id, p_cw, p_ccw, p_ns, classification, confidence)
-  but does not yet include RA/Dec, so Legacy Survey cutouts can't be regenerated per row in the live query path.
-  Full data access: <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener">HuggingFace dataset</a>,
-  <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener">model</a>,
-  <a href="/papers/chirality_catalog_paper.pdf" target="_blank">Paper 4 PDF</a>.
-  Schema extension (add ra/dec + reimport) is queued as a follow-up.
-</div>
-
-<div class="gx-table-wrap">
-  <table class="gx-table" id="gx-results-table">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th onclick="sortTable(1)">dr8_id <span class="sort-arrow">&#9650;</span></th>
-        <th onclick="sortTable(2)">Class <span class="sort-arrow">&#9650;</span></th>
-        <th onclick="sortTable(3)">P(CW) <span class="sort-arrow">&#9650;</span></th>
-        <th onclick="sortTable(4)">P(CCW) <span class="sort-arrow">&#9650;</span></th>
-        <th onclick="sortTable(5)">P(NS) <span class="sort-arrow">&#9650;</span></th>
-        <th onclick="sortTable(6)">Confidence <span class="sort-arrow">&#9650;</span></th>
-        <th>RA</th>
-        <th>DEC</th>
-      </tr>
-    </thead>
-    <tbody id="gx-results-body">
-      <!-- Placeholder rows — will be replaced by Convex queries -->
-    </tbody>
-  </table>
-</div>
-
-<div class="gx-controls" style="margin-top: 12px;">
-  <div></div>
-  <div class="gx-pagination">
-    <button disabled>&laquo; Prev</button>
-    <span class="gx-page-info">Page 1 of 423,727</span>
-    <button onclick="nextPage()">Next &raquo;</button>
-  </div>
 </div>
 
 <!-- ═══════════════════════════════ SKY MAP ═══════════════════════════════ -->
