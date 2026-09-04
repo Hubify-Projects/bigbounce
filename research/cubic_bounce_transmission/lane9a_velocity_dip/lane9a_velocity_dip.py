@@ -145,3 +145,35 @@ def sweep(bg, ks, tag, rtol=1e-11):
         r["background"] = tag
         out.append(r)
     return out
+
+
+# =====================================================================
+# [3] Eq. (79) factor and [4] the Eq. (44) propagation
+# =====================================================================
+def eq79_factor(dt_amp_over_T2):
+    """Quintin Eq. (79)/(80) amplification factor under THEIR ansatz
+    phidot = phidot_B exp[-(t-t_B)^2/T^2]:
+
+        [phidot_B/phidot(t_amp-)]^2 = exp(+2 Delta t_amp^2 / T^2).
+
+    The factor is controlled ENTIRELY by T, the width of the matter-sector velocity
+    profile.  T is a free matter parameter: the geometry H(t) = Upsilon (t - t_B)
+    does not fix it.  T -> infinity (constant |phidot|, the unique single-field
+    constant-kinetic realisation of Hdot = Upsilon = const) gives exactly 1.
+    """
+    return float(np.exp(2.0 * dt_amp_over_T2))
+
+
+def eq44_propagation(lam, dtB, fnl_before=-35.0 / 16.0, T_fNL=None):
+    """Quintin Eq. (44) structure f_NL ~ (Delta zeta)^2/(Delta t_B M_p^2), with
+    Delta zeta/zeta = lam - 1 the growth actually measured on the background, in
+    units M_p = 1 and zeta normalised to its pre-bounce value.  Reported as a
+    SCALING (their '~'), never as a calibrated prediction: the lab's own
+    normalisation of this term is lane (b)'s in-in Delta f_NL^bounce.
+    """
+    dz = lam - 1.0
+    return {"lambda_zeta": float(lam), "Delta_zeta_over_zeta": float(dz),
+            "eq44_scaling_fNL_bounce": float(dz**2 / dtB),
+            "eq44_relative_to_lambda5": float((dz**2) / ((5.0 - 1.0) ** 2)),
+            "fNL_before_input": fnl_before,
+            "T_fNL_multiplicative": T_fNL}
