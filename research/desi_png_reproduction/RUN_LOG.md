@@ -3,6 +3,15 @@
 **Plan:** `research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md`
 (read in full before starting). Executing steps 1-7 of that plan. Constraints
 this session: no delegation, no Monitor tool, blocking Bash only (≤600 s per
+
+**Note on commit attribution (2026-09-04, step 3):** other concurrent
+sessions are active on this repo (ledger9-c2, site-redesign lanes per
+directive-driven parallel work). Step-3 files (`pk_estimator_qso.py`,
+`combine_and_compare.py`, `outputs/pk_qso_*`) were committed correctly to
+disk/history but got swept into two of those concurrent sessions' commits
+(`cf8f33d1`, `e23b4f3d`) rather than my own atomic ledger4 commit — nothing
+lost, just commingled attribution. No destructive action taken; noting for
+the record.
 call), commits after every step, no `git add -A`, no Write/Edit over ~80 lines.
 
 ## Step 0 — environment survey (2026-09-04)
