@@ -16,8 +16,8 @@
     {
       "name": "P5 matched chirality x DESI DR1 catalog",
       "type": "internal-artifact",
-      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
-      "checksum": null
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1,297,512,873 bytes, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9), NOT present in this git checkout by design, but regenerated 2026-09-04 from the committed recipe (p5-desi-dr1-crossmatch-build) at git_sha fb93e904 and verified 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet. sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147.",
+      "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
     }
   ],
   "apis": [
@@ -55,7 +55,7 @@
     }
   ],
   "environment": {
-    "python": "astropy, pandas, numpy, scipy, healpy — see requirements.txt",
+    "python": "astropy, pandas, numpy, scipy, healpy \u2014 see requirements.txt",
     "hardware": "cpu-only"
   },
   "original_run": {
@@ -72,7 +72,7 @@
     "est_cost_usd": 0.0,
     "parallelizable": true,
     "resume_support": true,
-    "notes": "reproducibility: runnable-now, gap = no venue/cost evidence — the code runs, just no compute-receipt exists for the original run. Lineage note: the earlier '187-DESI-attribute cosmic-web catalog' blocker (SSOT: 'Houston-mediated, confirmed not in repo') was later resolved via this DESIVAST VAC approach, superseding the earlier env_finder/ 'run our own cosmic-web finder' fallback plan. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
+    "notes": "reproducibility: runnable-now, gap = no venue/cost evidence \u2014 the code runs, just no compute-receipt exists for the original run. Lineage note: the earlier '187-DESI-attribute cosmic-web catalog' blocker (SSOT: 'Houston-mediated, confirmed not in repo') was later resolved via this DESIVAST VAC approach, superseding the earlier env_finder/ 'run our own cosmic-web finder' fallback plan. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
   },
   "outputs": [
     {
@@ -99,10 +99,11 @@
   "verification": "Re-run and confirm the DP5-12 closure result in 27_rsd_void_recon_bound.json (RSD void-reconstruction bound, 2026-07-12) matches the committed JSON within the numeric tolerance stated in the result file.",
   "status": "runnable-now",
   "provenance": [
-    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — cosmic-web / DESIVAST void analysis bullet (16, 27, 35-39 series) + its lineage Note",
-    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: chirality / P5 \u2014 cosmic-web / DESIVAST void analysis bullet (16, 27, 35-39 series) + its lineage Note",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7Top 5 gaps \u2014 item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
     "project-context/SSOT/paper-5/status.md",
     "Added `08_analysis_cosmic_web.py` to code[] beyond the inventory's explicit list: verified via `ls pipelines/p5_desi_chirality/scripts/` that this script (within the same 05-09 numbered range referenced by the redshift/density/healpix/systematics bullet) is the cosmic-web analysis, not a HEALPix/systematics script, and its output directory `results/analysis_cosmic_web/` matches this experiment's scope rather than the 16a-16d split.",
-    "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
+    "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
+    "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
   ]
 }

@@ -45,7 +45,7 @@
     }
   ],
   "environment": {
-    "python": "astropy, pandas, pyarrow, numpy, requests — see requirements.txt",
+    "python": "astropy, pandas, pyarrow, numpy, requests \u2014 see requirements.txt",
     "hardware": "cpu-only"
   },
   "original_run": {
@@ -57,18 +57,18 @@
     "actual_cost_usd": null
   },
   "reproduction": {
-    "recommended_venue": "local CPU (implied local/CPU-bound crossmatch — no venue was explicitly logged for the original run)",
+    "recommended_venue": "local CPU (implied local/CPU-bound crossmatch \u2014 no venue was explicitly logged for the original run)",
     "est_wall_clock": "~1-3 hours for the DESI DR1 fetch + 2,232,212-row crossmatch, dominated by DESI DR1 download bandwidth",
     "est_cost_usd": 0.0,
     "parallelizable": true,
     "resume_support": true,
-    "notes": "No venue was explicitly logged in the inventory for this run; 'implied local' is a reproduction-side inference only, not an original_run fact, so all original_run fields stay null. The matched parquet itself (1.3GB, 2,232,212 rows) is not checked into git — only its provenance/summary JSONs are — consistent with the repo's pattern of keeping large derived artifacts out of git."
+    "notes": "Regenerated 2026-09-04: inputs (p4_chirality.parquet, desi_zall.fits) were already local (no re-download needed). 03_crossmatch.py output: 2,232,212 rows, 1,297,512,873 bytes, sha256=a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147. Backed up 3-way: HF https://huggingface.co/datasets/bamfai/bigbounce-aug-011-clean-rerun/blob/main/p5/2026-09-04/p5_matched_chirality_desi.parquet ; B2 s3://bigbounce/p5/2026-09-04/p5_matched_chirality_desi.parquet ; local ~/Desktop/CODE_YOU/bigbounce_datasets/p5/2026-09-04/p5_matched_chirality_desi.parquet."
   },
   "outputs": [
     {
       "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
       "type": "catalog",
-      "checksum": null
+      "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
     },
     {
       "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi_summary.json",
@@ -78,14 +78,15 @@
     {
       "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json",
       "type": "receipt",
-      "checksum": null
+      "checksum": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147"
     }
   ],
   "verification": "Re-run and confirm the matched catalog contains 2,232,212 rows (1.3GB parquet) via p5_matched_chirality_desi_summary.json's row count, exact integer match.",
   "status": "runnable-now",
   "provenance": [
-    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — P4xDESI DR1 crossmatch + matched catalog build bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: chirality / P5 \u2014 P4xDESI DR1 crossmatch + matched catalog build bullet",
     "project-context/SSOT/paper-5/status.md",
-    "Verified via `find` that the 1.3GB parquet itself is not present in the repo tree; only p5_matched_chirality_desi_summary.json and p5_matched_chirality_desi.parquet.provenance.json are — noted in reproduction.notes rather than fabricating a checksum for the missing parquet."
+    "Verified via `find` that the 1.3GB parquet itself is not present in the repo tree; only p5_matched_chirality_desi_summary.json and p5_matched_chirality_desi.parquet.provenance.json are \u2014 noted in reproduction.notes rather than fabricating a checksum for the missing parquet.",
+    "2026-09-04 restoration run: see reproducibility/FULL_PASS_2026-09-04.md \"P5 parquet restored\" section for full detail."
   ]
 }
