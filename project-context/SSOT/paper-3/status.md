@@ -745,3 +745,47 @@ Reproducibility manifests (5, jsonschema-valid against
 No readiness uplift claimed by this landing — this is a P3-support /
 anomaly-flagship-program data landing, not a change to the P3-ApJS artifact
 itself.
+
+## Phase-3 v2 pod landing — 2026-09-03/04 (anomaly-flagship program, SAMPLE-V2, science-only)
+
+Pod `8ofv5d4ynu7hku` phase-3 v2 chain (science-only sample build →
+enrichment → SIMBAD/NED crossmatch → AllWISE join → taxonomy → shard pack)
+completed 2026-09-03T23:55:29Z (`PHASE3_V2_DONE`, 8/8 stage markers, 0
+FAILED lines after the pre-fix 16:26:46Z line). This is the fix for the
+SAMPLE-V1 negative-TARGETID / sky-fiber contamination flagged above: the
+`03_CHOOSE_THRESHOLD_AND_BUILD` stage passed `gates/check_sample_provenance.py`
+clean (`status: 'clean'`, 1,244 rows). All artifacts landed to
+`pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/` and
+backed up 3 ways — local disk mirror, HuggingFace
+(`bamfai/bigbounce-aug-011-clean-rerun/phase3_v2/2026-09-03/`), Backblaze B2
+(`aug-011-clean-rerun/phase3_v2/2026-09-03/`) — each verified by sha256/sha1
+checksum comparison, not just upload success. Receipt at
+`project-context/PHASE3_V2_LANDING_2026-09-03.md`.
+
+Sample: S>3 threshold (grid pick per `threshold_choice.json`), n=1,244
+science-only rows. SIMBAD/NED crossmatch: **569/1,244 (45.7%) matched**,
+675/1,244 (54.3%) unmatched — a 19x jump over SAMPLE-V1's 2.4% match rate,
+consistent with the contamination fix removing non-astrophysical sky-fiber
+rows. Taxonomy: 25 UMAP clusters roll up to 8 descriptive families over the
+675 unmatched rows (sizes 302/87/71/61/44/38/36/36, sum=675, exact match).
+Ledger #8 recovery benchmark re-run against this sample: 1 BAL-quasar
+positional match (4.2x enrichment, 5,285 in-footprint references) — still
+does not clear the >10x-enrichment/>=5-match confirmed-class bar; 0 matches
+for Roma-BZCAT, CV/WD binaries, LAEs, SLSN hosts. **No paper-vs-release
+decision is recorded** — numbers only. Full table:
+`pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md`.
+
+Pod stopped after 3-location backup verification passed (`backup-3plus`
+gate): RunPod `podStop` mutation confirmed `desiredStatus: EXITED`; account
+balance at stop time $140.56. Wall-clock 7h42m53s across all 8 stages
+(dominated by 04_ENRICH ~2h43m and 05_CROSSMATCH ~3h24m, both network/
+compute-bound); cost ≈ $1.31 at $0.17/hr.
+
+Reproducibility manifests (5, jsonschema-valid against
+`reproducibility/manifests/experiment.schema.json`): `p3-flagship-v2-enrichment`,
+`p3-flagship-v2-simbad-ned-crossmatch`, `p3-flagship-v2-allwise-photometry`,
+`p3-flagship-v2-taxonomy`, `anomaly-known-object-recovery-benchmark-v2` in
+`reproducibility/manifests/experiments/`.
+
+No readiness uplift claimed by this landing — data landing only, not a
+change to the P3-ApJS artifact itself.
