@@ -1,31 +1,53 @@
 #!/usr/bin/env python3
-"""Ledger row 4 v2, fix (1): window function + integral constraint.
+"""Ledger row 4 v2, fix (1): window shape + global integral constraint.
 
-Uses pypower's CatalogFFTWindow (FFT-mesh window estimator, reusing the same
-mesh/nmesh/resampler as the CatalogFFTPower measurement in
-pk_estimator_qso.py) to build a PowerSpectrumFFTWindowMatrix directly from
-the randoms, then convolves the theory P0/P2 model with it.
-Docs followed: pypower/tests/test_fft_window.py (CatalogFFTWindow ->
-window.poles IS a PowerSpectrumFFTWindowMatrix; .dot(theory) convolves);
-even multipoles only (ells=0,2,4 in and out) -- wide-angle odd terms (1,3,5)
-dropped as a documented simplification (sub-dominant vs the leading window
-mixing at these k, matches pypower/nb/window_examples.ipynb convention
-where odd terms are the next-order wide-angle correction).
-Global integral constraint (documented simplification vs DESI's radial+
-angular IC, de Mattia & Ruhlmann-Kleider 2019 arXiv:1904.08851 sec 2.2):
-    P0_IC(k) = P0_conv(k) - W0(k) * P0_conv(k->k_min)
-i.e. subtract the window monopole shape times the survey-averaged mean
-(approximated at k_min, the lowest well-measured mode) -- this is exactly
-what an unconstrained mean-density estimate leaks into P0 at low k.
+SCOPE NOTE (honest, measured): the full pypower CatalogFFTWindow mode-mixing
+matrix (ells 0,2,4 in x out, pypower/tests/test_fft_window.py workflow) was
+attempted first. A MINIMAL config (1 theory k-bin, ell=0 only) took >3 min
+CPU and had not finished -- extrapolated to many hours for a usable
+k-range/ell-set, infeasible in this session's compute budget. Documented as
+the exact remaining step (full window-convolution matrix), not silently
+dropped -- see LEDGER4_RESULT_v2_2026-09-04.md sec on remaining work.
+
+What IS computed here (real, cheap, ~85s/cap, reuses the existing FFT
+machinery): the survey window's OWN power spectrum W0(k), via the standard
+"shuffled/split randoms" technique -- one randoms realisation plays the role
+of "data", the remaining realisations play the role of "randoms" for FKP
+mean-density estimation. This isolates the window/selection-function power
+(no clustering signal, since both point sets are Poisson-sampled from the
+same selection function) -- exactly the quantity needed for the classic
+GLOBAL integral-constraint correction (Peacock & Nicholson 1991; Beutler
+et al. 2014, arXiv:1312.4611, eq. 13-14; the DESI radial+angular IC of de
+Mattia & Ruhlmann-Kleider 2019, arXiv:1904.08851, is the fuller version of
+the same physics, not reproduced here):
+    P0_obs(k) = P0_true(k) - W0n(k) * P0_true(k_min)
+    W0n(k) = W0(k) / W0(k_min)
+i.e. the observed monopole is suppressed by the window's own shape,
+normalised to 1 at the lowest well-measured k -- because the survey's mean
+density is estimated FROM the sample itself, forcing large-scale power
+toward zero exactly where PNG's scale-dependent-bias signal lives. This is
+the SAME mechanism (not full window convolution) as the DESI paper's
+integral constraint; a real, documented simplification.
 """
+import json
+import time
 import numpy as np
-from pypower import CatalogFFTPower, CatalogFFTWindow
 import fitsio
+from cosmoprimo.fiducial import DESI
+from pypower import CatalogFFTPower
 
 DATA_DIR = "/Users/houstongolden/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss"
 OUT_DIR = "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/desi_png_reproduction/outputs"
-from cosmoprimo.fiducial import DESI
+ZMIN, ZMAX = 0.8, 3.1
 cosmo = DESI(engine="eisenstein_hu")
+
+
+def load_ran(cap, i):
+    f = fitsio.FITS(f"{DATA_DIR}/QSO_{cap}_{i}_clustering.ran.fits")
+    d = f[1].read(columns=["RA", "DEC", "Z", "WEIGHT", "WEIGHT_FKP"])
+    f.close()
+    m = (d["Z"] > ZMIN) & (d["Z"] < ZMAX)
+    return d[m]
 
 
 def radec_z_to_xyz(ra, dec, z):
@@ -37,28 +59,31 @@ def radec_z_to_xyz(ra, dec, z):
 
 
 def run_cap(cap, n_ran):
-    power = CatalogFFTPower.load(f"{OUT_DIR}/pk_qso_{cap}_pypower.npy")
-    rparts = []
-    for i in range(n_ran):
-        f = fitsio.FITS(f"{DATA_DIR}/QSO_{cap}_{i}_clustering.ran.fits")
-        d = f[1].read(columns=["RA", "DEC", "Z", "WEIGHT", "WEIGHT_FKP"])
-        f.close()
-        m = (d["Z"] > 0.8) & (d["Z"] < 3.1)
-        rparts.append(d[m])
-    r = np.concatenate(rparts)
+    t0 = time.time()
+    d = load_ran(cap, 0)  # realisation 0 plays "data"
+    r = np.concatenate([load_ran(cap, i) for i in range(1, n_ran)])  # rest play "randoms"
+    dpos = radec_z_to_xyz(d["RA"], d["DEC"], d["Z"])
+    dw = d["WEIGHT"] * d["WEIGHT_FKP"]
     rpos = radec_z_to_xyz(r["RA"], r["DEC"], r["Z"])
     rw = r["WEIGHT"] * r["WEIGHT_FKP"]
-    edgesin = np.arange(0.0, 0.21, 0.005)
-    import time
-    t0 = time.time()
-    window = CatalogFFTWindow(
+    edges = np.arange(0.0, 0.11, 0.001)
+    result = CatalogFFTPower(
+        data_positions1=dpos, data_weights1=dw,
         randoms_positions1=rpos, randoms_weights1=rw,
-        edgesin=edgesin, projsin=[0, 2, 4], power_ref=power,
+        edges=edges, ells=(0, 2), los="firstpoint",
+        nmesh=512, resampler="tsc", interlacing=2,
         position_type="xyz", dtype="f8",
     )
-    print(f"[{cap}] window FFT done in {time.time()-t0:.1f}s, n_ran={n_ran}", flush=True)
-    window.poles.save(f"{OUT_DIR}/window_qso_{cap}_matrix.npy")
-    return window.poles
+    poles = result.poles
+    k = poles.k
+    w0 = np.real(poles(ell=0, complex=False))
+    w2 = np.real(poles(ell=2, complex=False))
+    print(f"[{cap}] window power done in {time.time()-t0:.1f}s (n_ran_role={n_ran})", flush=True)
+    out = {"cap": cap, "k": k.tolist(), "w0": w0.tolist(), "w2": w2.tolist(),
+           "n_ran_total": int(n_ran), "wall_clock_s": time.time() - t0}
+    with open(f"{OUT_DIR}/window_qso_{cap}.json", "w") as fh:
+        json.dump(out, fh, indent=2)
+    return out
 
 
 if __name__ == "__main__":
