@@ -67,6 +67,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-r4-verification-closure-v3m-0-10-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3 v3M.0.10 -- R4 verification board, editorial closure, PTA channel restated as a null; rounds stopped (R2)",
+    papers: ["A3"],
+    summary:
+      "R4 verification board on the exact v3M.0.9 PDF (sha256 6c543e5e...): Fable major-revisions (5 major / 11 minor), Grok REJECT (4 essential / 3 major), Gemini major-revisions (2 essential / 1 major). Independent truth-audit of 30 raw findings: 15 outstanding real (3 major / 12 minor; 13 genuinely-new), 5 re-flags, 8 falsified, 3 opinion. Editorial/real items closed in this bundle: the S2 (effective-fluid, T=0.409) scheme exclusion is now stated beside the transmitted range with its reason (the bounce cubic term diverges in S2); Eq. (6) symbols defined; ref. [9] title corrected to arXiv:1909.13728's; abstract reach quoted consistently with Table IV; decade counts and quadrupole wording corrected; Appendix A general-epsilon domains; gamma=2 causal-floor row added to Table II; DESI error side; Secs. VI A/B on one amplitude; directive-Q1 sweep completed; Omega_DM footnote fixed. Science decision D-A3-3 (ledger A3-3, recorded in PAPER_LINEAGE before editing): the lab's own CMB-anchored spectrum propagated to nHz through the validated Kohri-Terada kernel (benchmark 0.8225 vs published 0.8222) gives gamma_pred = 5.07 (n_s = 0.9649) / 5.00 (dust) and Omega_GW h^2(f_yr) = 1.45e-23, 14.3 decades below NANOGrav, with k*eta_B deep inside the A2 validity domain for all T_B >= 1e8 GeV -- so Channel I is restated as a NULL: the matter bounce as modelled neither produces nor explains the NANOGrav signal, and the gamma=3 attribution is withdrawn (kept only as a flagged contrast case requiring P_R ~ k plus a 1e7.2 enhancement excluded by the PBH null, or T_B ~ 2 GeV below the paper's own bounce-energy condition). New SIGW null-panel figure; abstract and Discussion restated (three honest nulls: PTA, PBH, PNG high-z abundance; one reachable-but-unseparable channel: LSS bispectrum at the transmitted amplitude); Next-steps promotes the k*eta_B~1 enhancement question. Recompiled 4-pass, 0 undef refs, 0 overfull hbox >10pt, 13pp, md5 d3981d8b5ed2cbf6b02bd771f784ee1c, tarball rebuilt (sha256 b7265d81...) and standalone-smoke-tested; Convex bumped. Readiness held at 75. Under directive R2 the review rounds STOP here: the next board requires a science decision first (the remaining science route is the bounce-scale enhancement at k*eta_B~1).",
+    keyTakeaways: [
+      "R4 board: Fable major-revisions 5M/11m, Grok REJECT, Gemini major-revisions; truth-audit 30 raw -> 15 outstanding real (13 genuinely-new), all editorial items closed in v3M.0.10",
+      "D-A3-3: the lab's own spectrum predicts gamma_pred = 5.07 and an nHz amplitude 14.3 decades below NANOGrav -- the PTA channel is a null, the gamma=3 attribution is withdrawn",
+      "Track A now carries three honest nulls (PTA, PBH, PNG high-z abundance) and one reachable-but-unseparable channel (LSS bispectrum at the transmitted amplitude)",
+      "v3M.0.10, 13pp, md5 d3981d8b5ed2cbf6b02bd771f784ee1c; readiness held at 75; rounds stopped under R2 pending a science decision",
+    ],
+    links: [
+      { label: "R4 truth audit", href: `${PR}/INT_v3/A3M_v3M.0.9_R4_TRUTH_AUDIT_2026-09-04.md` },
+      { label: "R4 board", href: `${PR}/INT_v3/A3M_v3M.0.9_R4_BOARD_2026-09-04.md` },
+      { label: "SIGW nHz note (D-A3-3)", href: `${GH}/research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+    ],
+  },
+  {
     id: "a3m-r3-truth-audit-closure-v3m-0-9-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",

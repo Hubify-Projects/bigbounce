@@ -109,7 +109,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.9",
+      version: "v3M.0.10",
       readiness: 75,
       pendingWork: "R3 truth-audit closure (C1-C10): transmitted-amplitude LSS reach, delta N_c derivation appendix, induced-GW IR-slope correction, 8 numeric/definitional fixes. Houston final review pending.",
     },
