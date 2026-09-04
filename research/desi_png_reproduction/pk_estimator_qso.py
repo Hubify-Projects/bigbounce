@@ -24,7 +24,7 @@ from pypower import CatalogFFTPower
 DATA_DIR = "/Users/houstongolden/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss"
 OUT_DIR = "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/desi_png_reproduction/outputs"
 ZMIN, ZMAX = 0.8, 3.1
-N_RAN = 4  # realisations 0..3 per cap
+N_RAN = int(__import__("os").environ.get("PK_N_RAN", "4"))  # realisations 0..N_RAN-1 per cap
 
 cosmo = DESI(engine="eisenstein_hu")
 
@@ -91,11 +91,11 @@ def run_cap(cap):
         "n_randoms_realisations": N_RAN,
         "wall_clock_s": time.time() - t0,
     }
-    np.save(f"{OUT_DIR}/pk_qso_{cap}_poles.npy",
+    np.save(f"{OUT_DIR}/pk_qso_{cap}_nran{N_RAN}_poles.npy",
             np.array([out["k"], out["power_0"], out["power_2"], out["power_4"]]))
-    with open(f"{OUT_DIR}/pk_qso_{cap}.json", "w") as fh:
+    with open(f"{OUT_DIR}/pk_qso_{cap}_nran{N_RAN}.json", "w") as fh:
         json.dump(out, fh, indent=2)
-    result.save(f"{OUT_DIR}/pk_qso_{cap}_pypower.npy")
+    result.save(f"{OUT_DIR}/pk_qso_{cap}_nran{N_RAN}_pypower.npy")
     print(f"[{cap}] saved. total {time.time()-t0:.1f}s", flush=True)
     return out
 
