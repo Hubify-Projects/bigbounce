@@ -67,6 +67,45 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "site-redesign-2026-09-04-integration-gate",
+    dateISO: "2026-09-04",
+    kind: "restructure",
+    title:
+      "Site redesign 2026-09-04: three tracks as the spine, flat works index, slim topbar, evidence grades, honest nulls",
+    papers: [],
+    summary:
+      "Six file-disjoint Sonnet lanes (foundation/shell; homepage + research tracks; works index/paper template/figures/predictions; status/reviews/activity/publishing; reproduce hub/data sources/docs; learn cluster + explorer wrappers) landed the site-wide redesign against REDESIGN_SPEC.md: /research becomes the track spine (Track A bounce-vs-inflation, Track B the ECH note, Track C galaxy chirality) with /papers kept as the complete flat works index (directive Q3); topbar collapses to six primary items with a command-K search; EvidenceChip/RowList/DataTable/Band primitives replace ad hoc cards to enforce the surface rule (bordered surfaces reserved for tables and genuinely distinct tools); nulls are stated as nulls throughout rather than narrated as process failures (directive Q1). The integration gate then ran REDESIGN_SPEC.md Section 6's checklist end to end: tsc/build clean; /chat retired (301 already live in vercel.json); three orphaned components (ReviewsClient/ReviewEntry/VerdictTrajectoryChart) and an unreferenced publish.css deleted; a stale \"all 6 papers\" doc string fixed (the works index now lists 12 entries); a DOM nested-border sweep across every route found and fixed a real card-in-card on /docs (.docs-article wrapping bordered .docs-endpoint reference cards, 94 -> 30 flagged elements, remainder is baseline shell chrome plus icon buttons inside the one legitimate bordered endpoint card) and confirmed the /publish and /status hits are either benign divider structure or pre-existing ui/card.tsx debt (12 importers still pending migration per spec §5.2, left alone at this pass); a minimal no-library mobile menu was added to Topbar.tsx after headed 375px QA showed the six-item nav was completely unreachable below 900px with no replacement control; site_freshness_check.sh passes.",
+    keyTakeaways: [
+      "Six-lane, file-disjoint redesign landed: tracks-as-spine research IA, flat works index, restyled status/reviews/reproduce/docs, learn cluster + untouched explorer .html roots",
+      "Integration gate (spec §6): tsc/build clean, /chat retired, 3 orphan components + publish.css deleted, stale 6-paper doc copy fixed",
+      "DOM nested-border sweep across every route found one real violation (.docs-article card wrapping .docs-endpoint cards, fixed 94 -> 30) and cleared the rest as shell-chrome dividers or known ui/card.tsx migration debt",
+      "Mobile nav was unreachable below 900px (no replacement for the hidden .topbar-nav) -- added a minimal hamburger menu to Topbar.tsx, no library",
+    ],
+    links: [
+      { label: "Redesign spec", href: `${GH}/project-context/site-redesign/2026-09-04/REDESIGN_SPEC.md` },
+      { label: "Redesign inventory", href: `${GH}/project-context/site-redesign/2026-09-04/INVENTORY.md` },
+    ],
+  },
+  {
+    id: "site-redesign-2026-09-04-six-lane-pattern",
+    dateISO: "2026-09-04",
+    kind: "skill-improvement",
+    title: "Skill improvement: file-disjoint six-lane redesign pattern (write-early, commit-per-page)",
+    papers: [],
+    summary:
+      "Pattern extracted from the 2026-09-04 site redesign for reuse on future large, multi-surface UI passes: (1) partition the surface into lanes by FILE OWNERSHIP, not by feature area, so lanes can run in parallel with zero write conflicts -- REDESIGN_SPEC.md §6 names the exact files each lane writes and states 'no two lanes write the same file' as the acceptance bar; (2) each lane commits per page/component rather than batching a lane-wide commit, so a stalled or killed lane still leaves verified, working increments on main; (3) a shared, append-only ledger file (reviewTimeline.ts here) is explicitly marked read-only for every implementation lane and is written exactly once, at the end, by the integration gate -- this avoids merge contention on the one file every lane would otherwise want to touch; (4) the integration/gate pass is a separate step from the lanes themselves, re-running tsc/build after every fix and re-deriving DOM/QA evidence live rather than trusting each lane's self-report; (5) a mechanical DOM nested-border checker (ancestor-walk excluding table/td/th/pre/code/input/textarea/select and legacy untouchable roots, requiring non-transparent color on the border/outline) is cheap to write per-session and catches real card-in-card regressions a visual skim misses, but needs a transparent-border and legacy-root exclusion pass to avoid false positives from CSS active-state indicators and dangerouslySetInnerHTML'd legacy tools.",
+    keyTakeaways: [
+      "Partition large UI redesigns by file ownership (not feature area) so lanes run in parallel with zero write conflicts -- state 'no two lanes write the same file' as the explicit acceptance bar",
+      "Commit per page/component inside each lane, not one lane-wide commit, so a stalled lane still leaves working increments",
+      "Mark shared append-only ledgers (reviewTimeline.ts) read-only for every implementation lane; the integration gate writes them exactly once, at the end",
+      "A DOM nested-border checker needs a non-transparent-color check and an explicit exclusion for legacy dangerouslySetInnerHTML roots, or it false-positives on CSS active-state borders and untouchable legacy tool subtrees",
+    ],
+    links: [
+      { label: "Redesign spec", href: `${GH}/project-context/site-redesign/2026-09-04/REDESIGN_SPEC.md` },
+      { label: "Redesign inventory", href: `${GH}/project-context/site-redesign/2026-09-04/INVENTORY.md` },
+    ],
+  },
+  {
     id: "a3m-r4-verification-closure-v3m-0-10-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",
