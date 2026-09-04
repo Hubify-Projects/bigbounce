@@ -255,3 +255,117 @@ observable. That is a text change for the P2 owner, not made here.
 with the linear-transfer half recorded as closed and this brief as its artifact. Under directive R2 no
 review round is owed on this; under R6 the P2 claim should be restated at its actual evidential
 strength (§5).
+
+---
+
+# Second half: the bounce's own cubic term ($\Delta f_{\rm NL}^{\rm bounce}$)
+
+**Added 2026-09-03.** §5 above recorded the intrinsic bounce contribution as *not computed*. It is now
+computed. Three lanes, all committed:
+`lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md` (+ `REGULARISATION_ASSUMPTION.md`) — the cubic-vertex
+table, pole structure at $H\to0$, and the scheme/regulator statement;
+`lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md` (+ `results.json`) — the numerical in-in evaluation;
+`lane_c_comparison/LANE_C_COMPARISON_2026-09-03.md` — the literature comparison summarised in §8.4.
+Venue local CPU, cost \$0. Every number below is emitted by the committed scripts;
+$f_{\rm NL}^{\rm before}=-35/16$ remains an **input** (ledger #1), never recomputed.
+
+## 8.1 Result
+
+Scheme **S1** (geometric / dressed-metric prescription: $z=a$, $\epsilon_{\rm eff}=1/2$, $c_s=1$),
+squeezed isoceles, bounce window $[-\eta_B,+\eta_B]$, $\eta_*$ post-bounce:
+
+$$\Delta f_{\rm NL}^{\rm bounce}[\mathrm{S1}] = -\frac{5}{24}\,\rho_B \quad\text{(closed form, lane a)},$$
+
+confirmed by the independent numerical evaluation of lane (b) — finite-$k$ evolved modes, exact
+kernels, all six $S_3$ attachments, boundary terms R1–R4 — to $3\times10^{-5}$ (Quintin, poly) and
+$3\times10^{-4}$ (LQC). The vertex $V2 = \zeta\dot\zeta^2$ carries **99.95–99.97 %**; $V4$ is negative
+but $5\times10^{-4}$ of it; $V6+V7$ are positive but $1.1\times10^{-4}$ of it (lane (a)'s pure-time
+$-7/8$ rewrite estimate is **not** confirmed — the squeezed angular average cancels it, and the
+correct S1 total is $-(5/24)\rho_B$ to 0.2 %); $V1$ and $V5$ vanish identically in S1;
+$V3$ is $(k\eta_B)^2$-suppressed.
+
+## 8.2 Combined statement per background
+
+$f_{\rm NL}^{\rm after} = T_{f_{\rm NL}}\cdot(-35/16) + \Delta f_{\rm NL}^{\rm bounce}$:
+
+| background | $T_{f_{\rm NL}}$ | $T\cdot(-35/16)$ | $\Delta f_{\rm NL}^{\rm bounce}$ | **$f_{\rm NL}^{\rm after}$** |
+|---|---|---|---|---|
+| Quintin+2015-type | 0.165005 | $-0.360949$ | $-0.13982$ | **$-0.5008$** |
+| LQC effective dust | 0.250000 | $-0.546875$ | $-0.10431$ | **$-0.6512$** |
+| poly analytic non-LQC | 0.195501 | $-0.427659$ | $-0.12711$ | **$-0.5548$** |
+
+The bounce's own term is **negative** — it *adds* to $|f_{\rm NL}|$, i.e. it acts in the direction the
+literature calls enhancement — at **28–39 %** of the transmitted contraction term. It partially undoes
+the linear suppression but does not reverse it: $|f_{\rm NL}^{\rm after}| = 0.50$–$0.65$ against
+$|f_{\rm NL}^{\rm before}| = 2.19$.
+
+## 8.3 Scheme label and validity (not optional)
+
+* **Scheme S1**, whose cubic coefficients are the substitution $\epsilon\to1/2$, $c_s\to1$ into the
+  classical comoving-gauge $P(X,\phi)$ cubic action (Chen+2007 Eq. 4.28; Maldacena 2003 Eq. 3.9) —
+  an **assumption of the scheme**, not a derivation (lane (a) A3).
+* **Validity $k\eta_B\lesssim10^{-2}$**, set by two competing requirements: $J(\eta_*)\to I_\infty$
+  needs $\eta_*$ deep post-bounce, while the super-Hubble treatment of the boundary terms needs
+  $k\eta_*\ll1$. Rows outside the band are flagged `valid: false` in `results.json`.
+* **$\eta_*$-independence: partial pass.** The total is flat to 1.3–3.6 % for $\eta_*\ge10\eta_B$, and
+  is *not* flat at $2\eta_B$–$5\eta_B$ — as the regularisation note predicts, since R2/R3/R4 are
+  singular at $H=0$. Independent in its stated domain, not globally.
+* **The bounce/expansion split is a definition, not a convergent isolation.** The integrand falls off
+  as $1/a^2$ and does not vanish at the NEC boundary; widening the window $[-f,f]\eta_B$ from
+  $f=0.8$ to 3 moves the bulk from $-0.108$ to $-0.196$ (poly). Stated, not hidden.
+* **Scheme S2 (effective fluid) is reported as a divergence, not a number.** Excising
+  $|\eta|<d_{\rm cut}\eta_B$ from the $V6+V7$ integrand gives fitted log–log slopes $-1.0050$
+  (Quintin), $-1.0071$ (LQC), $-1.0072$ (poly): a clean $d_{\rm cut}^{-1}$ with **no
+  $d_{\rm cut}\to0$ limit**, the cubic-order restatement of the linear-order $z^2$ pathology. No
+  regulated S2 value is quoted anywhere.
+* Gates passed: Wronskian $-0.50000000$ on every leg; local-redefinition normalisation
+  $f_{\rm NL}=\tfrac53F$ to $<10^{-12}$; triangle closure $<10^{-12}$; step-size convergence
+  $10^{-8}$–$10^{-13}$.
+
+## 8.4 Literature comparison verdict
+
+Full mapping in `lane_c_comparison/LANE_C_COMPARISON_2026-09-03.md`. Summary:
+
+* **Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv:1508.04141) — no contradiction.** Their
+  parametrisation is background 3 here ($H=\Upsilon(t-t_B)$, $a=a_Be^{\Upsilon(t-t_B)^2/2}$, their
+  Eqs. 52–54; $\Upsilon=8/(3\Delta t_B^2)$). Their "$f_{\rm NL}$ is enhanced during the bounce phase if
+  the curvature fluctuations grow" refers to the **additive** bounce-generated bispectrum, their
+  Eq. (44) $f_{\rm NL}\sim(\Delta\zeta)^2/(\Delta t_B M_p^2)$ — whose counterpart here,
+  $\Delta f_{\rm NL}^{\rm bounce}$, is **negative, i.e. enhances $|f_{\rm NL}|$: the same direction.**
+  §4.1's suppression is the *multiplicative* transmission $T_{f_{\rm NL}}\le1/2$ of the inherited
+  contraction coefficient, a term they do not compute at all — so the two results share no quantity of
+  opposite sign. The magnitude gap is the amplification: theirs is driven by the scalar-field-velocity
+  dip $[\dot\phi_B/\dot\phi(t_{\rm amp-})]^2$ (their Eq. 79) reaching $\Delta\zeta/\zeta\sim50$, while
+  the three backgrounds here are purely geometric with $\lambda_\zeta=4.0$–$6.1$ — consistent with
+  their own "growth is very limited by super-Hubble conservation". The lab therefore occupies the
+  **un-amplified corner of their parameter space**, where their Conjecture 1 predicts a small
+  $f_{\rm NL}$ (confirmed) **and**, unfavourably for this scenario, an unsuppressed $r$. Recorded as a
+  cost, not a success. They also quote $f_{\rm NL}^{\rm local}=-35/16$ for the contraction (their
+  Sec. III.3) — the corroboration already logged under ledger #1.
+* **Agullo, Bolliet & Sreenath 2017 (arXiv:1712.08148) — not comparable as computed; this result is
+  scheme-limited relative to their treatment, and does not refute it.** Their mechanism is the
+  gravitational self-interaction in the third-order Hamiltonian, their Eq. (23) — verbatim, "Most
+  terms in $\mathcal H^{(3)}$ are independent of $V(\phi)$, and therefore would be present even if
+  $V(\phi)=0$" — evaluated on the **dressed metric** of their Eqs. (39)–(42) with symmetric operator
+  ordering. Lane (a)'s S1 contains the *classical* counterpart of that operator (V2, the dominant
+  vertex here, is exactly a gravity-mediated self-coupling surviving at $V=0$) but **not** the
+  quantum-geometric dressing of the coefficients — assumption A3, written before the comparison. Their
+  background is a kinetic-dominated Planck-scale scalar bounce plus inflation, not a quasi-dust matter
+  bounce; their quoted $\mathfrak f_{\rm NL}\sim10^3$ (companion review arXiv:2006.09605 Eq. 24) is an
+  amplitude in an unmatched sign convention, so **signs are not compared**. A further plausible
+  reconciliation — that their enhancement peaks in $k_I<k<k_B$ and is blue-tilted $\propto k^2$ below
+  $k_I$, while the band here, $k\eta_B\le10^{-2}$, lies at or below $k_I$ — is recorded as
+  literature-derived (same review) and **not relied upon**.
+* **Li, Quintin, Wang & Cai 2016 (arXiv:1612.02036)** treats the contraction stage only; it
+  corroborates the **input** $-35/16$ and its $c_s$-dependence, and supplies no bounce-phase object to
+  compare against. **Cai, Easson & Brandenberger 2012 (arXiv:1206.2382)** computes no $f_{\rm NL}$;
+  its ghost-condensate "controlled exponential growth" is the amplification mechanism Quintin+2015
+  later parametrise, and marks an **uncovered background class** here.
+
+**Net.** §5's verdict — "not currently predicted at better than order-of-magnitude" — is **narrowed,
+not overturned**: *within scheme S1*, on these three backgrounds, at $k\eta_B\lesssim10^{-2}$, for the
+classical $P(X,\phi)$ cubic action, $f_{\rm NL}^{\rm after} \in [-0.65,\,-0.50]$. The residual
+uncertainty is now the **scheme**, not the integral. P2's assumption (d) ($T\simeq1$,
+$f_{\rm NL}^{\rm after}\simeq-2.19$) remains **unsupported** by either term. The qualifier "in scheme
+S1" is mandatory on every use of the $[-0.65,-0.50]$ range; the unqualified claim "the bounce produces
+no orders-of-magnitude enhancement" is **not** established and must not be made.
