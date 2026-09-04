@@ -192,18 +192,6 @@ def run(args):
         json.dump(results, fh, indent=2)
 
 
-if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--tk", choices=["eh", "camb"], default="eh")
-    ap.add_argument("--nran", type=int, default=4)
-    ap.add_argument("--window-ic", action="store_true")
-    ap.add_argument("--shotnoise-fixed", action="store_true")
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--point", action="store_true",
-                     help="fast scipy.optimize point estimate instead of full emcee MCMC")
-    a = ap.parse_args()
-    run_point(a) if a.point else run(a)
-
 
 def run_point(args):
     """Fast scipy.optimize point-estimate path (compute-budget fallback):
@@ -235,3 +223,16 @@ def run_point(args):
     with open(args.out, "w") as fh:
         json.dump(results, fh, indent=2)
     print("SAVED", args.out)
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--tk", choices=["eh", "camb"], default="eh")
+    ap.add_argument("--nran", type=int, default=4)
+    ap.add_argument("--window-ic", action="store_true")
+    ap.add_argument("--shotnoise-fixed", action="store_true")
+    ap.add_argument("--out", required=True)
+    ap.add_argument("--point", action="store_true",
+                     help="fast scipy.optimize point estimate instead of full emcee MCMC")
+    a = ap.parse_args()
+    run_point(a) if a.point else run(a)
