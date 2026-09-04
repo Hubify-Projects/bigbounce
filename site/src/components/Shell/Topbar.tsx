@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Search, Sun } from "lucide-react";
+import { Menu, Moon, Search, Sun, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark";
@@ -40,12 +40,17 @@ function applyTheme(theme: Theme) {
 export function Topbar() {
   const pathname = usePathname();
   const [theme, setTheme] = useState<Theme>("light");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const next = getBrowserTheme();
     applyTheme(next);
     queueMicrotask(() => setTheme(next));
   }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   function toggleTheme() {
     const next: Theme = theme === "dark" ? "light" : "dark";
@@ -101,7 +106,32 @@ export function Topbar() {
             {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
           </span>
         </button>
+        <button
+          className="topbar-mobile-toggle"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label={mobileOpen ? "Close menu" : "Menu"}
+          aria-expanded={mobileOpen}
+          aria-controls="topbar-mobile-nav"
+        >
+          {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+        </button>
       </div>
+      {mobileOpen && (
+        <nav id="topbar-mobile-nav" className="topbar-mobile-nav" aria-label="Primary (mobile)">
+          {NAV_ITEMS.map((item) => {
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn("topbar-mobile-nav-link", active && "topbar-nav-link-active")}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+      )}
     </header>
   );
 }

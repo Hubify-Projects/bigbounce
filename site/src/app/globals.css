@@ -3338,8 +3338,45 @@ code {
   padding: 1px 4px;
 }
 
+.topbar-mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 0;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.topbar-mobile-nav {
+  position: fixed;
+  top: var(--topbar-h);
+  left: 0;
+  right: 0;
+  z-index: 89;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 16px;
+}
+
+.topbar-mobile-nav-link {
+  color: var(--ink-2) !important;
+  text-decoration: none !important;
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 15px;
+}
+
+.topbar-mobile-nav-link:first-child { border-top: none; }
+.topbar-mobile-nav-link:hover { color: var(--ink) !important; }
+
 @media (max-width: 900px) {
   .topbar-nav { display: none; }
+  .topbar-mobile-toggle { display: inline-flex; }
 }
 
 /* ── Footer ── */
