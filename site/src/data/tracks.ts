@@ -208,3 +208,98 @@ export const tracks: Track[] = [
 export function getTrack(slug: string): Track | undefined {
   return tracks.find((t) => t.slug === slug);
 }
+
+// ──────────────────────────────────────────────────────────────────────
+// Contributions — N1–N4 novelty-graded list, ported from the retired
+// /contributions page and rewritten to track framing (REDESIGN_SPEC.md
+// §2.4 "/contributions → /research#contributions"). Kept in this file
+// (not a new data file) since Lane 2 owns only tracks.ts + the three
+// page.tsx files. Novelty ceiling is N3 — N4 is reserved for outside
+// arbiters and never self-claimed.
+// ──────────────────────────────────────────────────────────────────────
+
+export type NoveltyTier = "N3" | "N2" | "N1";
+
+export interface Contribution {
+  id: string;
+  tier: NoveltyTier;
+  title: string;
+  track: "Track A" | "Track B" | "Track C" | "Program-wide";
+  oneLine: string;
+  href: string;
+}
+
+export const contributions: Contribution[] = [
+  {
+    id: "matter-bounce-fnl",
+    tier: "N2",
+    title: "Exact Matter-Contraction Non-Gaussianity",
+    track: "Track A",
+    oneLine:
+      "Reproducible derivation of f_NL^local = −35/16 with explicit convention, bounce-transmission, and survey-mapping boundaries; independently re-derived from scratch.",
+    href: `${TREE}/research/matter_bounce_parameters`,
+  },
+  {
+    id: "bounce-transmission",
+    tier: "N2",
+    title: "Bounce Transmission of the Non-Gaussian Amplitude",
+    track: "Track A",
+    oneLine:
+      "The bounce's own cubic term (Δf_NL^bounce = −(5/24)ρ_B) carries f_NL^local through an explicit nonsingular bounce to f_NL^after ∈ [−0.65, −0.50] across three background choices.",
+    href: `${TREE}/research/cubic_bounce_transmission`,
+  },
+  {
+    id: "multichannel-consistency",
+    tier: "N2",
+    title: "Multi-Channel Consistency Test (PTA, PBH, high-z PNG)",
+    track: "Track A",
+    oneLine:
+      "The transmitted amplitude is checked against pulsar timing, primordial black holes, and high-z non-Gaussianity in one lab spectrum — three honest nulls, not three separate hopes.",
+    href: `${TREE}/research/track_a3_multichannel`,
+  },
+  {
+    id: "ech-contact-term",
+    tier: "N2",
+    title: "Minimal-ECH Contact Term Identified with the Popławski Mechanism",
+    track: "Track B",
+    oneLine:
+      "The derived axial spin-spin contact term is identified with Popławski's torsion-bounce repulsion, stated alongside the same algebra's closure of four dark-energy routes.",
+    href: `${REPO}/arxiv/paper1n_ech_note.tex`,
+  },
+  {
+    id: "chiral-gw-gate",
+    tier: "N1",
+    title: "Chiral Gravitational-Wave Gate — Closed Negative",
+    track: "Track B",
+    oneLine:
+      "Minimal ECH + Dirac/Weyssenhoff matter has no parity-odd O(h²) operator; the birefringence signal is structurally k-odd, ≤6e−13 at LISA.",
+    href: `${TREE}/research/chiral_gw_gate`,
+  },
+  {
+    id: "chirality-catalog",
+    tier: "N2",
+    title: "8.47M-Galaxy Chirality Catalog and Spin-Axis Null",
+    track: "Track C",
+    oneLine:
+      "The largest test of the rotating-black-hole-universe spin-axis prediction: a quality-controlled 890,069-row null (z_mom=+0.635, rank p=0.238) with a void-environment cross-check, excluding literature amplitudes 2–20×.",
+    href: `${REPO}/arxiv/paper4p_chirality.tex`,
+  },
+  {
+    id: "anomaly-catalogue-v2",
+    tier: "N2",
+    title: "Anomaly Catalogue v2 — Public Science-Target Data Release",
+    track: "Track C",
+    oneLine:
+      "1,244 science-target spectral anomalies released with provenance and cross-matching; answered as a data release, not yet a discovery paper, after no reference class cleared the confirmed-class bar.",
+    href: `${TREE}/pipelines/p3_anomaly_engine/release`,
+  },
+  {
+    id: "namaster-proof",
+    tier: "N2",
+    title: "namaster-proof Verification Software",
+    track: "Track C",
+    oneLine:
+      "A small verification library that proves an exact NaMaster bandpower-window inference wasn't shortcut, with tamper-evident, content-bound computational receipts.",
+    href: `${REPO}/arxiv/paper1b_namaster_proof.tex`,
+  },
+];
