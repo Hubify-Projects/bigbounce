@@ -59,13 +59,13 @@ Nothing below is graded on a reviewer's say-so. Line numbers are `main.tex` @ v3
 | leg | raw | GENUINELY-NEW REAL | REAL residual (open earlier) | RE-FLAG | FALSIFIED | OPINION/GENRE | carried packaging |
 |---|---|---|---|---|---|---|---|
 | Grok API (`REJECT`) | 10 (3E/3M/2m/2N) | **0** | 1 | 3 | 6 | 0 | 0 |
-| Gemini API (`MAJOR REVISIONS`) | 9 (4E/3M/1m/1N) | **3** | 1 | 1 | 2 | 1 | 1 |
+| Gemini API (`MAJOR REVISIONS`) | 9 (4E/3M/1m/1N) | **3** | 1 | 1 | 3 | 0 | 1 |
 | Claude Fable (`major-revisions`) | 21 (5 MAJOR/16 minor) | **15** | 1 | 3 | 2 sub-claims | 3 | 0 |
 | OpenAI / Perplexity | ABSENT (directive N pause / quota) — never faked, never counted clean | — | — | — | — | — | — |
 
 **Canonical after cross-leg fingerprint dedup:** **18 genuinely-new REAL** (3 MAJOR + 15 MINOR,
 one of them auditor-originated), **2 REAL residuals of open R4 items** (`DA3M-R4-11`,
 `DA3M-R4-12`), **1 carried packaging item** (`DA3M-R2-11`), **6 RE-FLAG-OF-DISCLOSED**,
-**10 FALSIFIED**, **6 OPINION/GENRE**, **0 BLOCKER**.
+**11 FALSIFIED**, **6 OPINION/GENRE**, **0 BLOCKER**.
 
 **Clean-wave count: 0** (reset — genuinely-new real findings present).
