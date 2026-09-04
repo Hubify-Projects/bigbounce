@@ -634,6 +634,11 @@ def make_figures(out):
                 ys.append(abs(r["total"]))
         if xs:
             ax.plot(xs, ys, mk, color=c, ms=5, lw=1.4, label=st)
+    if out.get("equilateral"):
+        xs = [float(x) for x in out["equilateral"]]
+        ys = [abs(out["equilateral"][f"{x:g}"]["S-lab"]["total"]) for x in xs]
+        ax.plot(xs, ys, "d--", color="C1", ms=5, lw=1.2,
+                label=r"S-lab, equilateral ($\eta_*=10\eta_B$)")
     kk = np.geomspace(0.1, 10, 200)
     ax.plot(kk, out["abs_comparison"]["ABS_plateau_fNL"]
             * np.exp(-out["abs_comparison"]["ABS_decay_per_k_etaB"]
@@ -643,7 +648,7 @@ def make_figures(out):
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.set_xlabel(r"$k\,\eta_B$")
-    ax.set_ylabel(r"$|\Delta f_{\rm NL}^{\rm bounce}|$  (scheme S1, squeezed isoceles)")
+    ax.set_ylabel(r"$|\Delta f_{\rm NL}^{\rm bounce}|$  (scheme S1)")
     ax.set_title(r"Lane 9c-2: $\Delta f_{\rm NL}^{\rm bounce}$ vs initial state", fontsize=10)
     ax.legend(fontsize=8)
     ax.grid(alpha=0.3, which="both")

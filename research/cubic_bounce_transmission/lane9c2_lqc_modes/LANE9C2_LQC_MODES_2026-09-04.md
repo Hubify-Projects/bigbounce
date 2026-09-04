@@ -258,7 +258,7 @@ dependent UV rise of the redefinition sector.
 background, evaluated with **exact** mode functions across $k\eta_B\in[0.1,10]$, the scheme-S1
 bounce-window in-in integral gives $|\Delta f_{\rm NL}^{\rm bounce}|$ of order $0.2$–$3$ (squeezed)
 and $0.3$–$10$ (equilateral) through the whole window $k\eta_B\lesssim1$ where ABS report
-$|f_{\rm NL}|\sim10^{3}$ — a deficit of **2.1–4.0 dex at and below $k_{\rm LQC}$** — and it shows
+$|f_{\rm NL}|\sim10^{3}$ — a deficit of **2.1–4.4 dex at and below $k_{\rm LQC}$** — and it shows
 **no feature whatever at $k_{\rm LQC}\eta_B=1.06$** and **no $e^{-1.830\,k\eta_B}$ decay above it**
 (§4). Its $k$-dependence is a monotonic UV rise carried by the R3 gradient boundary term at fixed
 evaluation time, which is a property of when one looks, not of the bounce.
@@ -330,5 +330,5 @@ extrapolation of ABS's published curve.
 | `results.json` | gate, modes, dfnl, eta_star/eta_0/equilateral systematics, ABS comparison, PBH tail |
 | `lane9c2_lqc_modes.log` | full run log |
 | `lane9c2_growth_factor.png` | $\vert\zeta_{\rm after}/\zeta_{\rm before}\vert$ vs $k\eta_B$, per state |
-| `lane9c2_dfnl_bounce.png` | $\vert\Delta f_{\rm NL}^{\rm bounce}\vert$ vs $k\eta_B$, per state, with the ABS law |
+| `lane9c2_dfnl_bounce.png` | $\vert\Delta f_{\rm NL}^{\rm bounce}\vert$ vs $k\eta_B$, per state (+ equilateral S-lab), with the ABS law |
 | `reproducibility/manifests/experiments/ledger9-c2-lqc-exact-modes-inin.json` | manifest (directive Q2) |

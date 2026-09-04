@@ -658,3 +658,134 @@ def sector_split_S2(bg, K3, kt, eta_star_fac=50.0):
         r = full_fnl_after_S2(bg, fn, kt, eta_star_fac=eta_star_fac, npts_c=60001)
         out[f"N1^{key[0]} psi^{key[1]}"] = dict(f_NL_after=r["f_NL_after"], parts=r["parts"])
     return out
+
+
+# ---------------------------------------------------------------- main
+def main():
+    t0 = time.time()
+    log("=" * 88); log("Lane 9b-2: Delta f_NL^bounce[S2] from the RAW ADM cubic Lagrangian on exact S2 modes (2026-09-04)"); log("=" * 88)
+    K3, K2 = build_kernels()
+    out = {"date": "2026-09-04", "gates": {}, "S1_reference_lane_b": {}, "S2": {}, "figures": []}
+    out["gates"]["i_a_constraints"] = constraint_gate(K2)
+    K3f = kernel_fn(K3)
+    out["gates"]["i_b_powerlaw"] = run_gate_ib(K3f)
+    bg = Quintin(1.0)
+    lbj = json.load(open(os.path.join(HERE, "..", "lane_b_numerical", "results.json")))
+    lb = dict(lbj["backgrounds"]["quintin"], f_NL_after=lbj["combined"]["quintin"]["f_NL_after"])
+    out["S1_reference_lane_b"] = dict(rho_B=lb["rho_B"], T_fNL=lb["T_fNL_linear"], closed_form_minus_5_24_rho_B=-5 / 24 * lb["rho_B"],
+                                      k_scan={str(e["k_etaB"]): dict(bulk=e["bulk_sum"], total=e["total"]) for e in lb["k_scan"]},
+                                      window_scan=lb["tests"]["window_scan"], f_NL_after=lb.get("f_NL_after"))
+    log(f"\n[background] Quintin dtB=1: Ups={bg.Ups:.4f} tm={bg.tm} eta_B={bg.eta_B:.6f} (a2: {lb['eta_B']:.6f}); lane b rho_B={lb['rho_B']:.4f}, "
+        f"-(5/24)rho_B={-5 / 24 * lb['rho_B']:+.4f}, T_fNL(S1)={lb['T_fNL_linear']:.4f}")
+    KT = [1e-3, 3e-3, 1e-2]
+    # gate (i-c): my S1 modes + Maldacena-form kernel vs lane b; gate (i) literal: raw on S1 variables
+    log("\n[gate i-c] S1 (Maldacena form, this engine, own modes) vs lane b bulk over [-eta_B, eta_B]")
+    ic = {}
+    for kt in KT:
+        r, _ = bounce_window_fnl(bg, K3f, "S1", kt, form="mald", eta_star_fac=min(50.0, 0.2 / kt))
+        ref = [e for e in lb["k_scan"] if abs(e["k_etaB"] - kt) < 1e-12][0]
+        ic[str(kt)] = dict(mine=r["f_NL"], lane_b_bulk=ref["bulk_sum"], rel=r["f_NL"] / ref["bulk_sum"] - 1, linear_transmission=r["linear_transmission_abs"])
+        log(f"   k eta_B={kt:g}: mine {r['f_NL']:+.6f}  lane b {ref['bulk_sum']:+.6f}  rel {r['f_NL'] / ref['bulk_sum'] - 1:+.1e}  |zeta_after/zeta(-tm)|={r['linear_transmission_abs'][1]:.4f} (2/(1-rho_B)={2 / (1 - lb['rho_B']):.4f})")
+    out["gates"]["i_c_S1_maldacena_vs_lane_b"] = ic
+    d = s1_pole_diagnostic(bg, K3f, 1e-3)
+    out["gates"]["i_literal_S1_raw"] = dict(d, verdict="VOID: raw form on S1 pseudo-variables is singular at H=0 (zetadot(0) != 0 in S1); not absolutely convergent; excised (PV-type) value is not a derivation")
+    log(f"\n[gate i, literal] raw ADM on S1 variables: integrand pole orders odd {d['pole_order_odd_part']:.2f}, even {d['pole_order_even_part']:.2f}; "
+        f"symmetric-excision values {np.round(d['excised_fnl'], 4).tolist()} (slope {d['excised_loglog_slope']:+.3f}) -> VOID (structural), see .md")
+    # gate (i-b'): raw contraction-only vs -35/16
+    log("\n[gate i-b'] raw ADM, matter contraction from the vacuum to -tm (S2 = true fluid, eps=3/2): f_NL vs -35/16")
+    ibp = {}
+    for kt in KT:
+        r = full_fnl_after_S2(bg, K3f, kt, upto="contraction")
+        ibp[str(kt)] = dict(f_NL=r["f_NL"], rel_to_35_16=r["f_NL"] / (-35 / 16) - 1)
+        log(f"   k eta_B={kt:g}: {r['f_NL']:+.6f}   (-35/16 = {-35 / 16:+.6f}; rel {r['f_NL'] / (-35 / 16) - 1:+.1e})")
+    out["gates"]["i_b_prime_contraction_35_16"] = dict(ibp, passed=bool(max(abs(v["rel_to_35_16"]) for v in ibp.values()) < 1e-3))
+    # S2 numbers
+    log("\n[S2] raw ADM on exact S2 modes")
+    s2 = {}
+    for kt in KT:
+        fac = min(50.0, 0.2 / kt)
+        rw, (tg, Kg, us) = bounce_window_fnl(bg, K3f, "S2", kt, npts=8001, eta_star_fac=fac)
+        rf = full_fnl_after_S2(bg, K3f, kt, eta_star_fac=fac)
+        rc = full_fnl_after_S2(bg, K3f, kt, upto="contraction")
+        lam = rw["linear_transmission_abs"][1]
+        dT = rf["f_NL_after"] - rc["f_NL"] / lam
+        s2[str(kt)] = dict(window_raw=rw["f_NL"], k_eta_star=rw["k_eta_star"], eta_star_over_etaB=fac, valid=rw["valid"], f_NL_before=rc["f_NL"],
+                           f_NL_after=rf["f_NL_after"], parts=rf["parts"], linear_transmission_abs=lam, Delta_T=dT,
+                           integrand=dict(t=tg.tolist(), density=(5 / 6 * (-2) * np.imag(us[0] * us[1] * us[2] * Kg) / (rw["P"][0] * rw["P"][1] + rw["P"][0] * rw["P"][2] + rw["P"][1] * rw["P"][2])).tolist()))
+        log(f"   k eta_B={kt:g} (eta*={fac:g} eta_B, k eta*={rw['k_eta_star']:.2f}, valid {rw['valid']}): NEC-window raw {rw['f_NL']:+.5f} | "
+            f"f_NL^before {rc['f_NL']:+.5f}  f_NL^after {rf['f_NL_after']:+.5f} [contraction {rf['parts']['contraction']:+.4f}, window {rf['parts']['window']:+.4f}, "
+            f"expansion {rf['parts']['expansion']:+.4f}] | lambda={lam:.4f} -> Delta_T = after - before/lambda = {dT:+.5f}")
+    out["S2"]["k_scan"] = s2
+    out["S2"]["tests"] = s2_tests(bg, K3f, 1e-3)
+    out["S2"]["sector_split_after"] = sector_split_S2(bg, K3, 1e-3)
+    log("\n[S2] operator-sector attribution of f_NL^after (k eta_B = 1e-3): " + "; ".join(f"{k}: {v['f_NL_after']:+.4f}" for k, v in out["S2"]["sector_split_after"].items()))
+    out["S1_pseudo_raw"] = d
+    out["runtime_s"] = time.time() - t0
+    return out, bg, K3f
+
+
+def verdict(out):
+    lb = out["S1_reference_lane_b"]; s2 = out["S2"]["k_scan"]; g = out["gates"]
+    gates_ok = g["i_a_constraints"]["passed"] and g["i_b_powerlaw"]["passed"] and g["i_b_prime_contraction_35_16"]["passed"]
+    valid = {k: v for k, v in s2.items() if v["valid"]}
+    win = [v["window_raw"] for v in valid.values()]; dT = [v["Delta_T"] for v in valid.values()]; aft = [v["f_NL_after"] for v in valid.values()]
+    s1 = lb["closed_form_minus_5_24_rho_B"]
+    tests = out["S2"]["tests"]
+    conv_ok = tests["step_rel"] < 1e-6 and tests["eta_star_spread_valid"] < 0.5 * abs(np.mean(win))
+    if not gates_ok:
+        v = "UNRESOLVED: an engine gate failed (see gates)"
+    elif not conv_ok:
+        v = "UNRESOLVED: gate (ii) convergence"
+    else:
+        v = ("S2 != S1: scheme-DEPENDENT. NEC-window raw value {:+.3f} (window-convention dependent at O(1)), Delta_T {:+.3f}, "
+             "f_NL^after {:+.3f}, versus S1 -(5/24)rho_B = {:+.4f} and f_NL^after[S1] = {:+.4f}. Sign and magnitude differ; "
+             "the difference is dominated by the linear MS-variable choice (S2 transmits the growing mode with |lambda| = 0.97, "
+             "S1 amplifies it by 2/(1-rho_B) = 6.06) plus a cubic-sector cancellation (geometric +6.6, lapse -7.8, shift ~0); "
+             "no single operator is responsible.").format(np.mean(win), np.mean(dT), np.mean(aft), s1, lb["f_NL_after"] or float("nan"))
+    out["verdict"] = v
+    out["headline"] = dict(S2_NEC_window_raw_mean=float(np.mean(win)), S2_Delta_T_mean=float(np.mean(dT)), S2_f_NL_after_mean=float(np.mean(aft)),
+                           S2_f_NL_before=float(np.mean([v["f_NL_before"] for v in valid.values()])), S1_minus_5_24_rho_B=s1, S1_f_NL_after=lb["f_NL_after"])
+    log("\nVERDICT: " + v)
+    return out
+
+
+def make_figures(out, bg):
+    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+    s2 = out["S2"]["k_scan"]; d = out["S1_pseudo_raw"]
+    fig, ax = plt.subplots(1, 2, figsize=(11, 4.2))
+    for kt, v in s2.items():
+        t = np.array(v["integrand"]["t"]) / bg.tm; y = np.array(v["integrand"]["density"])
+        ax[0].plot(t, y, lw=1.2, label=f"S2 raw, $k\\eta_B$={float(kt):g}")
+    ax[0].axvline(0, color="k", lw=0.5, ls=":"); ax[0].set_xlabel("$t/t_m$ (bounce at 0, NEC boundaries at $\\pm1$)")
+    ax[0].set_ylabel("$d\\,\\Delta f_{NL}/d(t)$  [raw ADM, S2, exact modes]"); ax[0].set_title("S2 raw integrand across $H=0$: finite", fontsize=10)
+    ax[0].legend(fontsize=7); ax[0].grid(alpha=0.3)
+    kt0 = "0.001"; t = np.abs(np.array(s2[kt0]["integrand"]["t"])) / bg.tm; y = np.abs(np.array(s2[kt0]["integrand"]["density"]))
+    m = (t > 0) & (t < 0.3); ax[1].loglog(t[m], y[m], ".", ms=2, label="S2 raw (exact modes)")
+    tp = np.array(d["t_probe_over_tm"]); ax[1].loglog(tp, np.array(d["integrand_odd"]) / np.array(d["integrand_odd"])[0] * y[m][np.argmin(abs(t[m] - tp[0]))], "s-", ms=4, label="S1 pseudo-scheme raw, odd part (rescaled): $\\propto |t|^{-1}$")
+    ax[1].set_xlabel("$|t|/t_m$"); ax[1].set_ylabel("|integrand| (arb. norm.)"); ax[1].set_title("pole test near the bounce", fontsize=10); ax[1].legend(fontsize=7); ax[1].grid(alpha=0.3, which="both")
+    fig.tight_layout(); p1 = os.path.join(HERE, "integrand_across_bounce.png"); fig.savefig(p1, dpi=140); plt.close(fig)
+    fig, ax = plt.subplots(figsize=(6.4, 4.4))
+    ks = [float(k) for k in s2]; lbk = out["S1_reference_lane_b"]["k_scan"]
+    ax.plot(ks, [s2[k]["window_raw"] for k in s2], "o-", label="S2 raw, NEC window $[-t_m,t_m]$")
+    ax.plot(ks, [s2[k]["Delta_T"] for k in s2], "s-", label="S2 $\\Delta_T = f^{after}-f^{before}/|\\lambda|$")
+    ax.plot(ks, [s2[k]["f_NL_after"] for k in s2], "^-", label="S2 $f_{NL}^{after}$ (end-to-end raw)")
+    ax.plot(ks, [s2[k]["f_NL_before"] for k in s2], "v--", color="0.5", label="S2 $f_{NL}^{before}$ (raw; $-35/16$ dashed)"); ax.axhline(-35 / 16, color="0.5", lw=0.6, ls=":")
+    ax.plot([float(k) for k in lbk], [lbk[k]["total"] for k in lbk], "x-", color="r", label="S1 lane b $\\Delta f_{NL}^{bounce}$")
+    ax.axhline(out["S1_reference_lane_b"]["closed_form_minus_5_24_rho_B"], color="r", ls="--", lw=0.8, label="S1 $-(5/24)\\rho_B$")
+    ax.axhline(out["S1_reference_lane_b"]["f_NL_after"], color="m", ls="--", lw=0.8, label="S1 $f_{NL}^{after}$ (lane b)")
+    ax.set_xscale("log"); ax.set_xlabel("$k\\eta_B$"); ax.set_ylabel("$f_{NL}$"); ax.set_title("Quintin-type bounce: scheme S2 (raw ADM) vs S1", fontsize=10)
+    ax.legend(fontsize=7); ax.grid(alpha=0.3); fig.tight_layout(); p2 = os.path.join(HERE, "dfnl_bounce_s2_vs_ketaB.png"); fig.savefig(p2, dpi=140); plt.close(fig)
+    out["figures"] = [os.path.basename(p1), os.path.basename(p2)]
+
+
+if __name__ == "__main__":
+    out, bg, K3f = main()
+    out = verdict(out)
+    make_figures(out, bg)
+    for v in out["S2"]["k_scan"].values():
+        v["integrand"] = {"n": len(v["integrand"]["t"]), "note": "stored only in the figure"}
+    log(f"\nDONE ({out['runtime_s']:.1f} s)")
+    with open(os.path.join(HERE, "results.json"), "w") as fh:
+        json.dump(out, fh, indent=2, default=float)
+    with open(os.path.join(HERE, "lane9b2_s2_rawadm.log"), "w") as fh:
+        fh.write("\n".join(_lines) + "\n")

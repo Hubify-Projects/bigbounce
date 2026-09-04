@@ -75,7 +75,7 @@
     {
       "path": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.py",
       "entrypoint": "python3 research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.py",
-      "sha256": "5543eea94832c9ff6fc66746fdc281d430b0e8ba5e44831d46d827956378c5bb"
+      "sha256": "70bcaba34c209115cae533540dd04b28e0341f1c4351e9ea2b4db1ca344fcc36"
     }
   ],
   "environment": {
