@@ -1,0 +1,245 @@
+{
+  "task": "DA3M-R5-18 -- gamma_cr coverage of the 27-point PBH grid and the standing of the quoted 1.7-1.9 amplitude ratio",
+  "date": "2026-09-04",
+  "source_artifacts": {
+    "grid": "research/track_a3_multichannel/outputs/pbh_compaction_fnl.json (robust_amplitude_requirement_grid)",
+    "inlab_shape": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.json (ir_cutoff_sensitivity)"
+  },
+  "gamma_cr_definition": "sigma_cr^2/(sigma_c sigma_r), Choudhury et al. 2025 (arXiv:2409.18983) Eq. 50; a function of the SPECTRUM SHAPE (Delta, r_p k_p) only -- independent of C_th",
+  "grid_points": [
+    {
+      "Delta": 0.8,
+      "rp_kp": 0.75,
+      "C_th": 0.4,
+      "gamma_cr": 0.7660370088552163,
+      "ratio_-35/16_over_-35/8": 1.7324199791236792
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 0.75,
+      "C_th": 0.5,
+      "gamma_cr": 0.7660370088552163,
+      "ratio_-35/16_over_-35/8": 1.7735911916143852
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 0.75,
+      "C_th": 0.6,
+      "gamma_cr": 0.7660370088552163,
+      "ratio_-35/16_over_-35/8": 1.808616863889583
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 1.0,
+      "C_th": 0.4,
+      "gamma_cr": 0.8077537480983916,
+      "ratio_-35/16_over_-35/8": 1.7078955174081099
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 1.0,
+      "C_th": 0.5,
+      "gamma_cr": 0.8077537480983916,
+      "ratio_-35/16_over_-35/8": 1.7533070764947736
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 1.0,
+      "C_th": 0.6,
+      "gamma_cr": 0.8077537480983916,
+      "ratio_-35/16_over_-35/8": 1.7918091769068305
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 0.75,
+      "C_th": 0.4,
+      "gamma_cr": 0.8461103136871637,
+      "ratio_-35/16_over_-35/8": 1.7229935827986913
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 0.75,
+      "C_th": 0.5,
+      "gamma_cr": 0.8461103136871637,
+      "ratio_-35/16_over_-35/8": 1.7660764322296036
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 0.75,
+      "C_th": 0.6,
+      "gamma_cr": 0.8461103136871637,
+      "ratio_-35/16_over_-35/8": 1.8025854782147532
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 1.5,
+      "C_th": 0.4,
+      "gamma_cr": 0.8567338407306049,
+      "ratio_-35/16_over_-35/8": 1.676525236841846
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 1.5,
+      "C_th": 0.5,
+      "gamma_cr": 0.8567338407306049,
+      "ratio_-35/16_over_-35/8": 1.7275138271675536
+    },
+    {
+      "Delta": 0.8,
+      "rp_kp": 1.5,
+      "C_th": 0.6,
+      "gamma_cr": 0.8567338407306049,
+      "ratio_-35/16_over_-35/8": 1.770541775132225
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 1.0,
+      "C_th": 0.4,
+      "gamma_cr": 0.887700382417682,
+      "ratio_-35/16_over_-35/8": 1.6834690349922519
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 1.0,
+      "C_th": 0.5,
+      "gamma_cr": 0.887700382417682,
+      "ratio_-35/16_over_-35/8": 1.733471627160005
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 1.0,
+      "C_th": 0.6,
+      "gamma_cr": 0.887700382417682,
+      "ratio_-35/16_over_-35/8": 1.7756222542904994
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 0.75,
+      "C_th": 0.4,
+      "gamma_cr": 0.8965464874542852,
+      "ratio_-35/16_over_-35/8": 1.723182277157529
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 0.75,
+      "C_th": 0.5,
+      "gamma_cr": 0.8965464874542852,
+      "ratio_-35/16_over_-35/8": 1.7664682145521962
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 0.75,
+      "C_th": 0.6,
+      "gamma_cr": 0.8965464874542852,
+      "ratio_-35/16_over_-35/8": 1.8030718826849808
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 1.0,
+      "C_th": 0.4,
+      "gamma_cr": 0.9295227195881237,
+      "ratio_-35/16_over_-35/8": 1.6713604327512042
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 1.0,
+      "C_th": 0.5,
+      "gamma_cr": 0.9295227195881237,
+      "ratio_-35/16_over_-35/8": 1.7237380507093953
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 1.0,
+      "C_th": 0.6,
+      "gamma_cr": 0.9295227195881237,
+      "ratio_-35/16_over_-35/8": 1.7677473396557164
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 1.5,
+      "C_th": 0.4,
+      "gamma_cr": 0.934009519264605,
+      "ratio_-35/16_over_-35/8": 1.6353783298068243
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 1.5,
+      "C_th": 0.5,
+      "gamma_cr": 0.934009519264605,
+      "ratio_-35/16_over_-35/8": 1.6941355866617525
+    },
+    {
+      "Delta": 0.5,
+      "rp_kp": 1.5,
+      "C_th": 0.6,
+      "gamma_cr": 0.934009519264605,
+      "ratio_-35/16_over_-35/8": 1.7433245789682714
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 1.5,
+      "C_th": 0.4,
+      "gamma_cr": 0.9675230371519172,
+      "ratio_-35/16_over_-35/8": 1.6097450812783733
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 1.5,
+      "C_th": 0.5,
+      "gamma_cr": 0.9675230371519172,
+      "ratio_-35/16_over_-35/8": 1.6734435965515264
+    },
+    {
+      "Delta": 0.35,
+      "rp_kp": 1.5,
+      "C_th": 0.6,
+      "gamma_cr": 0.9675230371519172,
+      "ratio_-35/16_over_-35/8": 1.7265182523376286
+    }
+  ],
+  "n_points": 27,
+  "n_distinct_gamma_cr": 9,
+  "distinct_gamma_cr": [
+    0.7660370089,
+    0.8077537481,
+    0.8461103137,
+    0.8567338407,
+    0.8877003824,
+    0.8965464875,
+    0.9295227196,
+    0.9340095193,
+    0.9675230372
+  ],
+  "gamma_cr_covered_range": [
+    0.7660370088552163,
+    0.9675230371519172
+  ],
+  "ratio_range_over_grid": [
+    1.6097450812783733,
+    1.808616863889583
+  ],
+  "sign_flip_scale": 0.85,
+  "n_points_at_or_below_flip": 9,
+  "points_at_or_below_flip": [
+    0.766037,
+    0.807754,
+    0.84611
+  ],
+  "inlab_spectrum_gamma_cr": {
+    "k_min/k_p=1e-05": 0.2668071892391362,
+    "k_min/k_p=0.001": 0.35813098492441475,
+    "k_min/k_p=0.01": 0.4458452390056557,
+    "k_min/k_p=0.1": 0.6297934614519982
+  },
+  "inlab_gamma_cr_range": [
+    0.2668071892391362,
+    0.6297934614519982
+  ],
+  "inlab_inside_grid_coverage": false,
+  "verdict": {
+    "coverage": "the 27 points carry 9 distinct gamma_cr values spanning [0.766, 0.968]; each value repeats over C_th in {0.4, 0.5, 0.6} because gamma_cr is C_th-independent",
+    "enhancement_branch": "9 of 27 points sit at gamma_cr <= 0.85 (the enhancement branch); the grid straddles the sign-flip scale rather than sitting entirely above it",
+    "is_the_quoted_ratio_inside_coverage": "NO for the lab's own spectrum shape. The in-lab near-scale-invariant spectrum gives gamma_cr in [0.267, 0.630], entirely BELOW the scanned [0.766, 0.968]. The grid's own ratio range is [1.610, 1.809] (1.732 +- 0.050); the in-lab shape gives 1.85-1.89 (A3-1b note). The quoted 1.7-1.9 is therefore the UNION of the scanned grid and the one out-of-coverage in-lab evaluation -- honest as a combined range, but it must not be presented as a scan result, and the narrower 1.732 +- 0.050 must not be quoted as universal."
+  },
+  "wall_seconds": 0.0011930465698242188
+}
