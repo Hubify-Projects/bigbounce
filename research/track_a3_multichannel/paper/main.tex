@@ -665,7 +665,11 @@ values reproduced from the committed chain (\texttt{pta\_gamma\_reproduce.py});
 differences from a self-reproduction run of the same script against the same chain are $\le3\times10^{-15}$ (floating-point-level agreement, not an independent external check). $z_{\rm refit}$
 at $\gamma=5$ is a Gaussian approximation only: $0$ of $3.2\times10^5$ chain
 samples reach $\gamma\ge5$ (chain max $4.70$), so no data-supported Bayes
-factor is reported there (see text).}
+factor is reported there (see text). The ``Prim.\ tensors'' row's $\gamma=5$
+is the scale-invariant reference value; this model's own first-order tensor
+background instead predicts $\gamma_{\rm pred}^{(1)}=5.035$
+(\texttt{outputs/r5\_15\_tensor\_omega\_nhz.json}), within $0.04$ of it and
+subject to the same null verdict below.}
 \begin{ruledtabular}
 \scriptsize
 \begin{tabular}{lccccc}
@@ -765,6 +769,20 @@ $10^{14.3}$ ($10^{13.7}$, dust bracket) -- fourteen orders of magnitude
 below the PTA band. The model predicts an induced-GW background far below
 current sensitivity and does not account for the NANOGrav signal: this
 channel is a \textbf{null}, not a supporting consistency.
+
+The comparison above is the \emph{second-order} (scalar-induced) background
+only; the model's own \emph{first-order} (primordial) tensor background at
+nHz, propagated with the same $f\leftrightarrow k$ map and transfer
+prefactor and the same background's tensor tilt $n_T=n_s-1$, dominates the
+induced background by roughly six decades at the CMB bound
+$r<0.036$~\cite{BicepKeck2021} ($\OmGW^{(1)}h^2(f_{\rm yr})<2.5\times10^{-17}$
+against the induced $1.45\times10^{-23}$), and by $7.6$ decades in the
+unresolved $r=0.84$ matter-bounce scenario (open item, not adopted). Either
+way it remains $8$--$9$ orders of magnitude below NANOGrav's
+$3.6235\times10^{-9}$, and its slope, $\gamma_{\rm pred}^{(1)}=5.035$, is
+within $0.04$ of the induced value, so Channel I is a null in both amplitude
+and slope whichever tensor order is compared
+(\texttt{outputs/r5\_15\_tensor\_omega\_nhz.json}).
 
 Reaching $\gamma=3$ would require $P_\mathcal R\propto k^1$ sustained
 across the full $2$--$60\,$nHz band (the lab spectrum instead has
@@ -931,7 +949,17 @@ ratio $A(-35/16)/A(-35/8)$ required to reach $\fpbh=10^{-3}$, and the
 \emph{nominal (uncapped)} $\fpbh$ columns -- i.e.\ evaluated at the
 Gaussian-calibrated amplitude $A_*$ with no upper cutoff applied -- for
 representative points of the $(\Delta,r_pk_p,C_{\rm th})$ grid (full 27-point
-grid in \texttt{outputs/pbh\_compaction\_fnl.json}).}
+grid in \texttt{outputs/pbh\_compaction\_fnl.json}). The grid's $9$ distinct
+$\gamma_{\rm cr}$ values span $[0.766,0.968]$, straddling the sign-flip
+scale $\gamma_{\rm cr}\approx0.85$ ($9$ of $27$ points below it), giving
+ratio $1.732\pm0.050$ (range $[1.610,1.809]$); this model's own
+near-scale-invariant spectrum shape sits at $\gamma_{\rm cr}\in[0.27,0.63]$,
+\emph{outside} this scanned coverage, and separately gives $1.85$--$1.89$.
+The quoted $1.7$--$1.9$ (abstract, Sec.~\ref{sec:pbh}) is therefore the
+union of this grid scan and one out-of-coverage evaluation, not itself a
+scan result over the full range, and conditional throughout on the
+unresolved Choudhury \textit{et al.} sign disagreement above
+(\texttt{outputs/r5\_18\_gammacr\_coverage.json}).}
 \begin{ruledtabular}
 \begin{tabular}{ccccccc}
 $\Delta$ & $r_pk_p$ & $C_{\rm th}$ & $\gamma_{\rm cr}$ & $\fpbh(-35/16)$ & $\fpbh(-35/8)$ & ratio $A$ \\
@@ -1548,6 +1576,11 @@ against the committed script output.
 \bibitem{Sailer2021} N. Sailer, E. Castorina, S. Ferraro, and M. White,
   ``Cosmology at high redshift -- a probe of fundamental physics,''
   JCAP \textbf{12}, 049 (2021), arXiv:2106.09713.
+
+\bibitem{BicepKeck2021} P. A. R. Ade \textit{et al.} (BICEP/Keck Collaboration),
+  ``Improved Constraints on Primordial Gravitational Waves using Planck,
+  WMAP, and BICEP/Keck Observations through the 2018 Observing Season,''
+  Phys. Rev. Lett. \textbf{127}, 151301 (2021), arXiv:2110.00483.
 
 \end{thebibliography}
 
