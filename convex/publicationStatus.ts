@@ -40,13 +40,19 @@ import { query } from "./_generated/server";
 
 // Canonical six submission targets. Retired ids (P1U) and raw store ids that
 // linger in older rows must never reach the surface.
+// 2026-09-02 portfolio restructure (directive R3): A3M folds the A3
+// multi-channel skeleton + P2' exact-amplitude theory into Track A's flagship
+// submission candidate, and 4P folds P4+P5 into the Track C1 ApJS candidate.
+// Both are live standalone submission targets and must be tracked here or
+// their version bumps/review boards never register as evidence, and this
+// surface renders permanently stale regardless of how current the loop is.
 const CANONICAL: Array<{ slug: string; paperId: string }> = [
   { slug: "paper-1a", paperId: "P1A" },
   { slug: "paper-1b", paperId: "P1B" },
   { slug: "paper-2", paperId: "P2" },
+  { slug: "paper-a3m", paperId: "A3M" },
   { slug: "paper-3", paperId: "P3" },
-  { slug: "paper-4", paperId: "P4" },
-  { slug: "paper-5", paperId: "P5" },
+  { slug: "paper-4p", paperId: "4P" },
 ];
 
 // Beyond this the surface renders as explicitly stale rather than current.
