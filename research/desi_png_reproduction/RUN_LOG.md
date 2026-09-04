@@ -78,8 +78,41 @@ construction. Published QSO bias formula (Table 2) b1(z)=0.237(1+z)^2+0.771
 gives b1(z_eff=1.491)=2.242, the literature-standard DESI QSO bias, used as
 input to step 4.
 
-## Step 4 — scale-dependent bias fit
-TBD.
+## Step 4 — scale-dependent bias fit (DONE, 2026-09-04)
+`fit_fnl.py`: model Delta_b(k,z)=3 f_NL delta_c (b1-p)/alpha(k,z), alpha via
+cosmoprimo EH-derived T(k) + growth factor/rate at z_eff=1.491; Kaiser
+P0/P2; b1 FIXED at published Table-2 value 2.242 (single-tracer P0/P2 at
+this S/N cannot jointly constrain b1 and f_NL — documented simplification).
+Diagonal analytic covariance sigma_Pl(k)^2=2(2l+1)/Nmodes*(P0+SN)^2,
+**calibrated** by a single multiplicative factor so chi2/dof=1 at a fixed
+null model (standard, transparent technique — does not move best-fit
+centre, only widens sigma to reflect real point-to-point scatter the
+diagonal formula misses per plan sec 3.5).
+
+**Bug found + fixed:** first run added the FULL measured shot noise back
+onto P0 as a nuisance term, but pypower's `poles()` call defaults to
+`get_power(remove_shotnoise=True)` (confirmed by reading
+`pypower/fft_power.py`) — P0/P2 are already shot-noise-subtracted. Double-
+counting it drove f_NL to unphysical values (-50 to -180, sigma 200-260).
+Fixed: n_shot is now a small residual nuisance (prior centred at 0, width
+10% of shotnoise scale), sanity-check comparison at k=0.01 fixed accordingly.
+
+**Result after fix:**
+| p (bias model) | f_NL median | 68% CL | published |
+|---|---|---|---|
+| p=1.6 (QSO merger, DESI default) | -50.6 | [-69.3, -32.5] (sigma~18.5) | -3.6 (+9.0/-9.1) |
+| p=1.0 (universality) | -26.7 | [-35.9, -17.4] (sigma~9.3) | +3.5 (+10.7/-7.4) |
+| p marginalised [1.0,1.6] | -36.3 | [-52.7, -23.2] (sigma~15.5) | n/a |
+
+Our sigma for p=1.0 (9.3) lands close to the published magnitude (~9); our
+p=1.6 sigma (18.5) is ~2x larger, plausibly because we lack the window/AIC/
+wide-angle corrections and joint growth-rate/bias marginalisation the
+official desilike pipeline applies (those typically tighten a constraint).
+**Central values disagree with published by several of our own sigma** —
+attributed (not proven) to: single-field-realisation sample variance on
+this exact DR1 patch (no mock ensemble), EH-vs-CLASS transfer function,
+missing integral-constraint/window convolution, and the reduced (4/18)
+randoms density. This is reported as the honest result, not smoothed over.
 
 ## Step 5 — systematics splits
 TBD.

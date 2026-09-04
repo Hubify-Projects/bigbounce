@@ -57,6 +57,16 @@ def plin_zeff(k_hmpc):
 
 
 def model_p0p2(k, f_nl, p, n_shot, b1=B1_PUBLISHED):
+    # NOTE (bug fix, 2026-09-04): pypower's poles() call defaults to
+    # get_power(remove_shotnoise=True) -- confirmed by reading
+    # pypower/fft_power.py -- so P0_OBS/P2_OBS are ALREADY shot-noise-
+    # subtracted. n_shot here is therefore a small RESIDUAL nuisance
+    # (imperfect subtraction / aliasing / zero-mode leakage), NOT the full
+    # shot noise added back -- see prior in log_prior (centred at 0, not
+    # at SHOTNOISE). An earlier version of this script added the FULL
+    # measured shotnoise back on top of an already-subtracted P0, which
+    # double-counted it and drove f_NL to unphysical values (~-50 to -180);
+    # documented in RUN_LOG.md step 4.
     db = 3.0 * f_nl * DELTA_C * (b1 - p) / alpha(k)
     b = b1 + db
     pl = plin_zeff(k)
@@ -97,7 +107,7 @@ SIG_P2_RAW = np.sqrt(2.0 * 5.0 / NMODES) * (P0_OBS + SHOTNOISE)
 # all sigmas by one constant does not move the chi2 minimum), only the
 # error bar -- exactly the quantity our raw diagonal formula is known to
 # mis-estimate (plan sec 3.5 / K2).
-_p0_null, _p2_null = model_p0p2(K, 0.0, 1.6, SHOTNOISE)
+_p0_null, _p2_null = model_p0p2(K, 0.0, 1.6, 0.0)
 _chi2_null = np.sum((P0_OBS - _p0_null) ** 2 / SIG_P0_RAW ** 2) + \
              np.sum((P2_OBS - _p2_null) ** 2 / SIG_P2_RAW ** 2)
 _dof = 2 * len(K)
@@ -115,7 +125,11 @@ def log_prior(theta, p_free):
         f_nl, n_shot = theta
     if not (-500 < f_nl < 500):
         return -np.inf
-    lp = -0.5 * ((n_shot - SHOTNOISE) / (0.3 * SHOTNOISE)) ** 2
+    # n_shot is a RESIDUAL nuisance (P0_OBS is already shot-noise-subtracted
+    # by pypower's default remove_shotnoise=True) -- prior centred at 0,
+    # width = 10% of the measured shotnoise scale as a generous allowance
+    # for imperfect subtraction/aliasing, not a re-addition of the full term.
+    lp = -0.5 * (n_shot / (0.1 * SHOTNOISE)) ** 2
     return lp
 
 
@@ -143,13 +157,13 @@ def run_mcmc(p_free, p_fixed=None, nwalkers=32, nsteps=3000, ndim=None):
     if p_free:
         p0 = np.column_stack([
             rng.normal(0, 5, nwalkers),
-            rng.normal(SHOTNOISE, 0.05 * SHOTNOISE, nwalkers),
+            rng.normal(0, 0.05 * SHOTNOISE, nwalkers),
             rng.uniform(1.0, 1.6, nwalkers),
         ])
     else:
         p0 = np.column_stack([
             rng.normal(0, 5, nwalkers),
-            rng.normal(SHOTNOISE, 0.05 * SHOTNOISE, nwalkers),
+            rng.normal(0, 0.05 * SHOTNOISE, nwalkers),
         ])
     sampler = emcee.EnsembleSampler(nwalkers, ndim, log_prob, args=(p_free, p_fixed))
     sampler.run_mcmc(p0, nsteps, progress=False)
@@ -164,12 +178,13 @@ if __name__ == "__main__":
                "cov_calibration_factor_applied_to_sigma": COV_CALIBRATION_FACTOR,
                "chi2_null_over_dof_before_calibration": float(_chi2_null / _dof),
                "note_p0_model_fnl0_vs_data_at_k0.01": "sanity check: (b1_published^2 + "
-                   "RSD)*Plin(k=0.01,zeff)+Nshot = %.0f vs measured combined P0(k=0.01)="
-                   "%.0f (%.1f%% agreement) -- confirms b1/growth/Plin normalisation is "
-                   "correct independent of the f_NL fit." % (
-                       model_p0p2(np.array([0.01]), 0.0, 1.6, SHOTNOISE)[0][0],
+                   "RSD)*Plin(k=0.01,zeff) [no shot-noise term - already subtracted by "
+                   "pypower] = %.0f vs measured combined P0(k=0.01)=%.0f (%.1f%% "
+                   "agreement) -- confirms b1/growth/Plin normalisation is correct "
+                   "independent of the f_NL fit." % (
+                       model_p0p2(np.array([0.01]), 0.0, 1.6, 0.0)[0][0],
                        P0_OBS[np.argmin(np.abs(K - 0.01))],
-                       100 * abs(model_p0p2(np.array([0.01]), 0.0, 1.6, SHOTNOISE)[0][0] -
+                       100 * abs(model_p0p2(np.array([0.01]), 0.0, 1.6, 0.0)[0][0] -
                                   P0_OBS[np.argmin(np.abs(K - 0.01))]) / P0_OBS[np.argmin(np.abs(K - 0.01))])}
 
     for p_fixed, label in [(1.6, "p1.6_QSO_merger"), (1.0, "p1.0_universality")]:

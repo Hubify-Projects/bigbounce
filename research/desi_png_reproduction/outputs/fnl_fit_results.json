@@ -1,4 +1,33 @@
 {
   "z_eff": 1.491,
   "b1_published": 2.241604197,
-  "f_zeff": 
+  "f_zeff": 0.9299406756568468,
+  "D_zeff": 0.49776177812001304,
+  "k_range_fit": [
+    0.0035353866441594052,
+    0.07950325962691229
+  ],
+  "n_kbins": 77,
+  "cov_calibration_factor_applied_to_sigma": 8.652839987360679,
+  "chi2_null_over_dof_before_calibration": 74.87163984686795,
+  "note_p0_model_fnl0_vs_data_at_k0.01": "sanity check: (b1_published^2 + RSD)*Plin(k=0.01,zeff) [no shot-noise term - already subtracted by pypower] = 35507 vs measured combined P0(k=0.01)=34944 (1.6% agreement) -- confirms b1/growth/Plin normalisation is correct independent of the f_NL fit.",
+  "p1.6_QSO_merger": {
+    "f_nl_median": -50.6420821194281,
+    "f_nl_p16": -69.26552887149309,
+    "f_nl_p84": -32.45367306179507,
+    "f_nl_sigma_approx": 18.533264391997164
+  },
+  "p1.0_universality": {
+    "f_nl_median": -26.69452781991005,
+    "f_nl_p16": -35.86072987641632,
+    "f_nl_p84": -17.367712221650475,
+    "f_nl_sigma_approx": 9.262034078269728
+  },
+  "p_marginalised_1.0_to_1.6": {
+    "f_nl_median": -36.268149567982164,
+    "f_nl_p16": -52.68430493546072,
+    "f_nl_p84": -23.17284171238344,
+    "f_nl_sigma_approx": 15.503820250784704,
+    "p_median": 1.3527642628683014
+  }
+}
