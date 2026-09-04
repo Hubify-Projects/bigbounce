@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anomaly Explorer — DESI DR1 Spectral Anomalies</title>
-<meta name="description" content="Explore the DESI DR1 autoencoder anomaly-detection pipeline: 22.5M spectra scored down to 2,145 high-significance exploratory candidates, with photo-z from unsupervised latent vectors. Interactive candidate table with Legacy Survey image links. These are exploratory pipeline candidates, not confirmed discoveries.">
+<meta name="description" content="Explore the DESI DR1 autoencoder anomaly-detection pipeline: 27.5M science-target spectra scored down to a 1,244-object data release v2 candidate catalogue (2026-09-03), with photo-z from unsupervised latent vectors. Interactive candidate table with Legacy Survey image links. These are exploratory pipeline candidates, not confirmed discoveries.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script src="nav.js" defer></script>
@@ -61,7 +61,7 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">DESI DR1 Spectral Anomaly Catalog</p>
   <h1>Anomaly Explorer</h1>
-  <p class="subtitle">A full-DR1-scale autoencoder anomaly-detection pipeline &mdash; 22.5M DESI DR1 spectra scored down to 2,145 high-significance exploratory candidates. Photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub> = 0.028); UMAP reveals two populations. These are exploratory pipeline candidates, not confirmed detections. Browse the top 1,000 by anomaly score in the table.</p>
+  <p class="subtitle">A full-DR1-scale autoencoder anomaly-detection pipeline &mdash; 27.5M DESI DR1 science-target spectra scored down to a 1,244-object anomaly-score&gt;3 catalogue (data release v2, 2026-09-03). Photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub> = 0.028). These are exploratory pipeline candidates, not confirmed detections. Browse the top 1,000 by anomaly score in the table.</p>
   <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
     <a href="/old/methodology-anomaly.html" class="btn btn-secondary" style="font-size:13px;">How It Works</a>
     <a href="/status" class="btn btn-secondary" style="font-size:13px;">Research Status</a>
@@ -70,8 +70,8 @@
 </div>
 
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid #22c55e; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
-  <strong style="color: var(--text);">What Paper 3 actually is</strong> &mdash; Paper 3 (v3.2.0-r12, IN REVISION) is a <strong>public-ID recovery of a frozen historical DESI DR1 anomaly list</strong>: 181 warning-free global-primary TARGETIDs recovered by a declared 1-arcsec positional join, split transparently into 170 high-coordinate-consistency core associations (&le;0.1&Prime;) and 11 lower-confidence positional associations (0.1&ndash;1&Prime;). It is an <strong>archive-recovery / provenance product &mdash; explicitly NOT a purity, novelty, or detection claim</strong>, and it declines physical classification and anomaly-rate claims the surviving lineage does not support. See the <a href="/papers/paper-3">Paper 3 page</a> (17 pp).<br>
-  <strong>This explorer</strong> shows the separate exploratory <strong>autoencoder anomaly-detection pipeline</strong> that scored 22,504,897 unique DESI DR1 spectra (deduplicated, 173 columns) and produced the candidate list &mdash; 2,145 silver (score&gt;3, SNR&gt;0.5) and 120 gold (&gt;5&sigma;) <strong>exploratory candidates</strong>. The broader multi-survey candidate set (per-survey native retrains across DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, NEOWISE) is published as a dataset at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>. These are pipeline candidates, not confirmed detections.
+  <strong style="color: var(--text);">What Paper 3 actually is</strong> &mdash; Paper 3 is now disposed as a <strong>data release</strong>, not a standalone paper: the <a href="/pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md" target="_blank">DESI DR1 Anomaly-Score Candidate Catalogue (v2, science-only, 2026-09-03)</a>. It is a machine-flagged catalogue of 1,244 spectroscopically unusual DESI DR1 science-target objects (anomaly_score&gt;3, threshold chosen by the pre-declared elbow rule over 27,547,223 scanned TARGETIDs), released as reproducible data infrastructure for follow-up characterization &mdash; <strong>not a purity, novelty, or detection claim</strong>. A known-object recovery benchmark against VizieR reference classes (BAL quasars, blazars, cataclysmic variables, Ly&alpha; emitters, superluminous-supernova hosts) found no confirmed class recovered at meaningful enrichment (1 BAL-quasar match at 4.2&times;; 0 elsewhere).<br>
+  <strong>This explorer</strong> shows that same v2 catalogue: 1,244 science-target anomaly candidates, of which 569 (45.7%) cross-matched an existing SIMBAD or NED entry and 675 (54.3%) did not. The broader multi-survey candidate set (per-survey native retrains across DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, NEOWISE) is published as a dataset at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>. These are pipeline candidates, not confirmed detections.
   Click any row to view the Legacy Survey image, read AI analysis notes, and add your own review comments.
 </div>
 
@@ -86,30 +86,49 @@
 
 <div class="anomaly-stats">
   <div class="anomaly-stat highlight">
-    <div class="num">22.5M</div>
-    <div class="label">Spectra Scored</div>
+    <div class="num">27.5M</div>
+    <div class="label">Science-Target Spectra Scanned</div>
   </div>
   <div class="anomaly-stat highlight">
-    <div class="num">2,145</div>
-    <div class="label">Silver (SNR-filtered)</div>
+    <div class="num">1,244</div>
+    <div class="label">Anomaly Candidates (score&gt;3)</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">120</div>
-    <div class="label">Gold (&gt;5&sigma;)</div>
+    <div class="num">569</div>
+    <div class="label">SIMBAD/NED Matched</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">12</div>
-    <div class="label">z&gt;6 QSO candidates</div>
+    <div class="num">675</div>
+    <div class="label">Uncataloged (no SIMBAD/NED)</div>
   </div>
   <div class="anomaly-stat">
     <div class="num">0.028</div>
     <div class="label">&sigma;<sub>NMAD</sub> Photo-z</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">1,127</div>
-    <div class="label">Uncataloged (no SIMBAD/NED)</div>
+    <div class="num">8</div>
+    <div class="label">Descriptive Taxonomy Families</div>
   </div>
 </div>
+
+<section class="section">
+<p class="text-xs sans" style="color: var(--text-secondary); margin: 4px 0 12px;">Descriptive taxonomy families (25 UMAP/HDBSCAN clusters rolled up into 8 families over the 675 SIMBAD/NED-unmatched objects; sizes sum to 675):</p>
+<div style="overflow-x:auto;">
+<table style="width:100%; border-collapse:collapse; font-size:13px;">
+<thead><tr style="text-align:left; border-bottom:1px solid var(--border);"><th style="padding:6px 10px;">Family</th><th style="padding:6px 10px;">N</th></tr></thead>
+<tbody>
+<tr><td style="padding:6px 10px;">0 &mdash; low-anomaly-score, main/dark</td><td style="padding:6px 10px;">302</td></tr>
+<tr><td style="padding:6px 10px;">1 &mdash; elevated-anomaly-score, main/dark</td><td style="padding:6px 10px;">87</td></tr>
+<tr><td style="padding:6px 10px;">2 &mdash; elevated-anomaly-score, sv3/bright</td><td style="padding:6px 10px;">71</td></tr>
+<tr><td style="padding:6px 10px;">3 &mdash; extreme-anomaly-score, sv3/bright</td><td style="padding:6px 10px;">61</td></tr>
+<tr><td style="padding:6px 10px;">4 &mdash; low-anomaly-score, sv3/bright</td><td style="padding:6px 10px;">44</td></tr>
+<tr><td style="padding:6px 10px;">5 &mdash; low-anomaly-score, sv1/other</td><td style="padding:6px 10px;">38</td></tr>
+<tr><td style="padding:6px 10px;">6 &mdash; high-anomaly-score, main/dark</td><td style="padding:6px 10px;">36</td></tr>
+<tr><td style="padding:6px 10px;">7 &mdash; high-anomaly-score, sv3/bright</td><td style="padding:6px 10px;">36</td></tr>
+</tbody>
+</table>
+</div>
+</section>
 
 <section class="section">
 <h2>Scientific Insights</h2>
@@ -138,8 +157,8 @@
   </div>
 
   <div style="padding:16px; background:var(--bg-subtle); border-left:4px solid #22c55e;">
-    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">1,127 Genuinely Uncataloged Objects</h4>
-    <p style="font-size:13px; margin:0; line-height:1.6;">1,127 of 2,145 SNR-filtered anomalies (52.5%) are in <strong>NEITHER SIMBAD nor NED</strong>. Classified into 10 taxonomy families: <strong>76 uncataloged AGN</strong>, 27 post-starburst galaxies, 363 blue compact galaxies. Known to DESI, unknown to the astronomical community. Concrete targets for follow-up.</p>
+    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">675 Uncataloged Objects</h4>
+    <p style="font-size:13px; margin:0; line-height:1.6;">675 of 1,244 v2 anomaly candidates (54.3%) are in <strong>NEITHER SIMBAD nor NED</strong>. Grouped by PCA&rarr;UMAP&rarr;HDBSCAN clustering into 25 clusters rolling up to 8 descriptive families (largest: 302 low-anomaly-score, main/dark). A VizieR reference-class recovery benchmark found no confirmed class recovered at meaningful enrichment. Known to DESI, unknown to the astronomical community &mdash; concrete targets for follow-up.</p>
   </div>
 
   <div style="padding:16px; background:var(--bg-subtle); border-left:4px solid #3b82f6;">
@@ -308,7 +327,7 @@
       </tbody>
     </table>
     </div>
-    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> 6 major databases cross-matched, representing over 3 billion cataloged objects. SIMBAD: 0.2% matched. NED: 12.7%. AllWISE: 1.5%. Milliquas: 0%. Gaia: 0.6% (1 star). SDSS DR18: 77,905 anomalies (native BigAE rescore complete). <strong>1,127 of 2,145 (52.5%) are in neither SIMBAD nor NED</strong> &mdash; genuinely uncataloged. Classified into 10 taxonomy families including 76 AGN, 27 post-starburst, 363 blue compact galaxies.</p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> 6 major databases cross-matched, representing over 3 billion cataloged objects. SIMBAD: 0.2% matched. NED: 12.7%. AllWISE: 1.5%. Milliquas: 0%. Gaia: 0.6% (1 star). SDSS DR18: 77,905 anomalies (native BigAE rescore complete). On the v2 science-only catalogue, <strong>675 of 1,244 (54.3%) are in neither SIMBAD nor NED</strong> &mdash; genuinely uncataloged. Grouped into 8 descriptive taxonomy families (see table above).</p>
   </div>
 </section>
 
