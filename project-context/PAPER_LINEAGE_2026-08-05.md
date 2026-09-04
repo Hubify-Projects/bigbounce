@@ -532,3 +532,28 @@ two honest nulls (PBH from the lab's own spectrum; PNG high-z abundance).
 window includes the pivot; claiming the pre-bounce reach was a claim above its
 evidence (VISION.md R6). Nothing retired; the science is the same, stated at
 its strength.
+
+## 2026-09-04 — A3 multi-channel paper: PTA channel reclassified as a null (science decision D-A3-3)
+
+**ORIGINAL CLAIM (v3M.0.3–0.10 drafts):** the NANOGrav 15-yr spectral index
+γ = 3.2 ± 0.6 is consistent with the matter bounce's scalar-induced GW slope
+γ = 3 (Ω_GW ∝ f²), a multi-channel consistency point for Track A.
+
+**NEW CLAIM (from `research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md`,
+ledger A3-3, commits a68ac1ec…a638a02c):** the lab's CMB-anchored curvature
+spectrum propagated to nHz (k ≈ 6.5e6 Mpc⁻¹, deep inside the A2 validity domain
+for every T_B ≥ 1e8 GeV) through the validated Kohri–Terada kernel gives
+γ_pred = 5.07 (n_s = 0.9649) / 5.00 (dust) and Ω_GW h²(f_yr) = 1.45e−23,
+14.3 decades below the NANOGrav amplitude. The PTA channel is a NULL for the
+matter bounce as modelled: it neither produces nor explains the NANOGrav
+signal; γ = 3 would need P_R ∝ k plus a 10^7.2 enhancement the PBH null (§V)
+excludes, or T_B ≈ 2 GeV, below the paper's own bounce-energy condition.
+The γ = 3 attribution is withdrawn; NANOGrav's γ is retained only as the
+measured value the channel fails to reach.
+
+**Why:** R4 board (Fable M2) exposed that §IV used a different spectrum
+(P_R ∝ k) from §V (flat); the lab computed the actual prediction instead of
+choosing. Claims at evidential strength (VISION.md R6): a null is published as
+a null. Track A's multi-channel map now carries three honest nulls (PTA, PBH,
+PNG high-z abundance) and one reachable-but-unseparable channel (LSS
+bispectrum at the transmitted amplitude). Applied in the paper at v3M.0.11.
