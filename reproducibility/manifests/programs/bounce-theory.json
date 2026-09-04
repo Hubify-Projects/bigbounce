@@ -188,6 +188,13 @@
       ]
     },
     {
+      "id": "a3-r5-18-gammacr-coverage",
+      "depends_on": [
+        "a3-pbh-compaction-fnl",
+        "a3-1b-inlab-delta2-zeta"
+      ]
+    },
+    {
       "id": "ledger9-c-abs-operator-map",
       "depends_on": [
         "p2-a2-lane-a-cubic-vertex-table",
