@@ -433,13 +433,40 @@ this program that the operator was absent from S1. Evaluated with the
 super-Hubble reduction -- across $k\eta_B\in[0.1,10]$ and three choices of
 initial vacuum state, the resulting bispectrum shows no counterpart of the
 literature's order-$10^3$ plateau and no feature at the literature's own
-enhancement scale $k_{\rm LQC}\eta_B\approx1.06$: it sits $2.1$--$4.4$
-decades below that plateau, with a state-dependence under $13\%$. None of
+enhancement scale $k_{\rm LQC}\eta_B\approx1.06$: at and below $k_{\rm LQC}$
+(squeezed configuration, $k\eta_B\lesssim1.06$) it sits $2.1$--$4.4$
+decades below that plateau, with a state-dependence under $13\%$; this
+deficit is not extended above $k_{\rm LQC}$, where the lab/ABS ratio
+changes sign (Table~\ref{tab:lane9c2}). None of
 the three mechanisms reopens the pulsar-timing or PBH nulls
 (Secs.~\ref{sec:pta_null},~\ref{sec:pbh_inlab}). Any assumption that the
 bounce transmits $\fnl$ with a coefficient near unity is therefore not
 supported by any of these calculations: the linear channel caps it at
 $1/2$ within the (A4) handoff scheme.
+
+\begin{table}[h]
+\caption{\label{tab:lane9c2}Exact LQC-dust mode-function bispectrum
+$|\fnl^{\rm bounce}|$ vs.\ the ABS literature plateau, lab-vacuum initial
+state (source: \texttt{lane9c2\_lqc\_modes/results.json}). The squeezed
+deficit is $2.1$--$4.4$ dex only at and below $k_{\rm LQC}\eta_B\approx1.06$;
+above it the sign of the gap reverses.}
+\begin{tabular}{lccc}
+\hline\hline
+configuration & $k\eta_B$ & initial state & $|\fnl^{\rm bounce}|$ \\
+\hline
+squeezed & $0.1$ & lab vacuum & $0.22$ \\
+squeezed & $0.3$ & lab vacuum & $2.34$ \\
+squeezed & $1$ & lab vacuum & $0.94$ \\
+squeezed & $3$ & lab vacuum & $0.94$ \\
+squeezed & $10$ & lab vacuum & $1.90$ \\
+equilateral & $0.1$ & lab vacuum & $0.54$ \\
+equilateral & $0.3$ & lab vacuum & $5.16$ \\
+equilateral & $1$ & lab vacuum & $9.81$ \\
+equilateral & $3$ & lab vacuum & $111.97$ \\
+equilateral & $10$ & lab vacuum & $1215.57$ \\
+\hline\hline
+\end{tabular}
+\end{table}
 
 \subsection{The bounce's own cubic term: now computed}
 \label{sec:bounce_cubic}
