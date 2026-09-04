@@ -19,5 +19,15 @@
     { "source": "/activity", "destination": "/activity.html" },
     { "source": "/docs", "destination": "/docs.html" },
     { "source": "/architecture", "destination": "/architecture.html" }
+  ],
+  "redirects": [
+    { "source": "/paper", "destination": "/research", "permanent": true },
+    { "source": "/contributions", "destination": "/research#contributions", "permanent": true },
+    { "source": "/final-review", "destination": "/status#signoff", "permanent": true },
+    { "source": "/architecture", "destination": "/docs/architecture", "permanent": true },
+    { "source": "/figures", "destination": "/explore/figures", "permanent": true },
+    { "source": "/surveys", "destination": "/reproduce/surveys", "permanent": true },
+    { "source": "/surveys/:slug", "destination": "/reproduce/surveys/:slug", "permanent": true },
+    { "source": "/chat", "destination": "/", "permanent": true }
   ]
 }
