@@ -827,6 +827,7 @@ function openGalaxyPanel(g) {
   var imgUrl = 'https://www.legacysurvey.org/viewer/jpeg-cutout?ra=' + g.ra + '&dec=' + g.dec + '&size=256&layer=ls-dr9';
   var viewerUrl = 'https://www.legacysurvey.org/viewer?ra=' + g.ra + '&dec=' + g.dec + '&layer=ls-dr9&zoom=15';
 
+  if (!gxPanel || !gxBackdrop || !gxPanelBody || !gxPanelTitle) return;
   gxPanelTitle.textContent = g.dr8_id;
   gxPanelBody.innerHTML =
     '<img class="gx-panel-img" src="' + imgUrl + '" alt="' + g.dr8_id + '" onerror="this.alt=\'Image not available\'; this.style.opacity=0.3;">' +
@@ -870,15 +871,17 @@ function openGalaxyPanel(g) {
 }
 
 function closeGalaxyPanel() {
+  if (!gxPanel || !gxBackdrop) return;
   gxPanel.classList.remove('open');
   gxBackdrop.classList.remove('open');
   document.body.style.overflow = '';
 }
 
-gxBackdrop.addEventListener('click', closeGalaxyPanel);
-document.getElementById('gxPanelClose').addEventListener('click', closeGalaxyPanel);
+if (gxBackdrop) gxBackdrop.addEventListener('click', closeGalaxyPanel);
+var gxPanelCloseEl = document.getElementById('gxPanelClose');
+if (gxPanelCloseEl) gxPanelCloseEl.addEventListener('click', closeGalaxyPanel);
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape' && gxPanel.classList.contains('open')) closeGalaxyPanel();
+  if (e.key === 'Escape' && gxPanel && gxPanel.classList.contains('open')) closeGalaxyPanel();
 });
 
 renderTable(placeholderGalaxies);
