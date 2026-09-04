@@ -287,3 +287,38 @@ def main():
         rq = res["sweeps"][tag]["table"]
         log(f"    {tag:8s} Delta zeta/zeta: "
             + ", ".join(f"{r['k_etaB']:g}->{r['lambda_zeta']-1:+.3f}" for r in rq))
+
+    log("")
+    log("[5] convergence (rtol 1e-11 -> 1e-9, eta_far x2) on the quintin background")
+    b = bgs["quintin"]
+    for kt in (0.1, 1.0, 10.0):
+        base = growth_at_k(b, kt / b["eta_B"], min(0.9 * b["eta_far"], 400.0 * b["eta_B"]))
+        alt1 = growth_at_k(b, kt / b["eta_B"], min(0.9 * b["eta_far"], 400.0 * b["eta_B"]),
+                           rtol=1e-9, atol=1e-12)
+        alt2 = growth_at_k(b, kt / b["eta_B"], min(0.9 * b["eta_far"], 800.0 * b["eta_B"]))
+        res["convergence"][f"k_etaB={kt:g}"] = {
+            "rel_dev_rtol": float(abs(alt1["lambda_zeta"] / base["lambda_zeta"] - 1)),
+            "rel_dev_eta_far": float(abs(alt2["lambda_zeta"] / base["lambda_zeta"] - 1)),
+            "rel_dev_G_rtol": float(abs(alt1["G_transfer_over_S1"] / base["G_transfer_over_S1"] - 1))}
+        c = res["convergence"][f"k_etaB={kt:g}"]
+        log(f"    k eta_B={kt:<5g} d(lambda)/lambda: rtol {c['rel_dev_rtol']:.2e}, "
+            f"eta_far {c['rel_dev_eta_far']:.2e}; d(G)/G rtol {c['rel_dev_G_rtol']:.2e}")
+
+    make_png(res, PNG)
+    res["wall_clock_s"] = round(time.time() - t0, 2)
+    res["scheme"] = ("S1 geometric / dressed-metric extension: z = a, eps_eff = 1/2, "
+                     "c_s = 1, eta_sr = 0, lambda = 0; adiabatic-vacuum initial data in "
+                     "the contracting matter era; exact S/C matter-basis projection at "
+                     "both ends (no super-Hubble approximation in the measurement).")
+    with open(JSON_OUT, "w") as f:
+        json.dump(res, f, indent=2)
+    log("")
+    log(f"  wrote {JSON_OUT}")
+    log(f"  wrote {PNG}")
+    log(f"  wall clock {res['wall_clock_s']} s")
+    with open(LOG, "w") as f:
+        f.write("\n".join(_lines) + "\n")
+
+
+if __name__ == "__main__":
+    main()
