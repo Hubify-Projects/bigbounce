@@ -254,3 +254,91 @@ intro; methodology and caveats move to a "How this was made" section *below* the
 `/learn`: `/explained` is the lead; `/glossary`, `/timeline`, `/articles`, `/speculations` follow as one-line entries.
 Glossary terms become anchor targets so jargon anywhere on the site can link straight to its definition (fixes the
 "jargon-only labels" problem at the source).
+
+## 4. Visual language
+
+**Direction in one line:** warm paper, editorial typography, full-width tonal bands, one green accent — a physics
+preprint that reads like a well-set journal page, with the only boxes being real tools.
+
+### 4.1 Type — one text face, one mono
+
+Keep **Geist Sans** (body/display) and **Geist Mono** (numbers, versions, md5, code, axis labels), already loaded via
+`next/font` — no Google Fonts dependency, no CSP surface. No third face.
+
+| Role | Size / line-height | Weight | Notes |
+|---|---|---|---|
+| Display (hero H1) | 56 / 1.05 (mobile 36) | 600 | tracking −0.02em; max 2 lines |
+| H1 page title | 36 / 1.15 | 600 | tracking −0.015em |
+| H2 band title | 24 / 1.25 | 600 | |
+| H3 row title | 18 / 1.35 | 600 | |
+| Body | 16 / 1.65 | 400 | prose column only |
+| Body large (lead) | 19 / 1.55 | 400 | one per page, under H1 |
+| Small / meta | 13.5 / 1.45 | 400 | plain-English purpose lines use this at full ink |
+| Mono data | 13.5 / 1.4 | 450 | tabular-nums on every numeric column |
+| Eyebrow | 12 / 1.2 | 500 | uppercase, tracking 0.08em, muted |
+
+Numerals: `font-variant-numeric: tabular-nums` on all tables and stat rows. Equations render with the existing
+`MathText` component at body-large size, centered when they are a band's subject, inline otherwise.
+
+### 4.2 Color tokens
+
+Light (`:root`) keeps the warm paper family, tightened to four backgrounds and three inks:
+
+```
+--bg:        #faf8f3   /* page ground */
+--bg-1:      #f2eee5   /* alternate band (tonal shift, no border) */
+--bg-2:      #e9e3d7   /* deep band: nulls, footer */
+--tool:      #fffdf8   /* bordered tool surfaces only (tables, code, explorers) */
+--ink:       #2b2825   /* primary text */
+--ink-2:     #5b544c   /* secondary */
+--ink-3:     #8a8177   /* meta, muted */
+--rule:      #ddd6c8   /* hairlines, table borders */
+--accent:    #2f6f4e   /* the single accent: links, active nav, primary chart line */
+--accent-ink:#215239   /* accent text on light ground (AA on --bg) */
+```
+
+Dark (`@media (prefers-color-scheme: dark)` + `[data-theme="dark"]`, both, per the existing boot script):
+
+```
+--bg:#17130f  --bg-1:#1e1a15  --bg-2:#241f19  --tool:#211d18
+--ink:#ece7dd  --ink-2:#b6ae a1→#b6aea1  --ink-3:#877f73  --rule:#372f26
+--accent:#63b98a  --accent-ink:#8fd3ab
+```
+
+**Evidence-grade colors** — four, used identically everywhere, rendered as a 6px square dot + label in `--ink-2`,
+never as a filled pill:
+
+```
+--grade-measured: var(--accent)   /* green  — measured in data */
+--grade-derived:  #4b6ea8 / dark #7ea3d8   /* blue — derived analytically */
+--grade-null:     #6f7a72 / dark #93a099   /* slate — a null result, a contribution */
+--grade-open:     #9a7430 / dark #cfa458   /* amber — open, not yet answered */
+```
+
+A null is **never red**. Red exists only as `--danger:#8b4639` for genuine failure states (broken build, failed
+freshness gate) and appears nowhere in scientific content. Reviewer-brand colors
+(`--model-grok`/`--model-gemini`/`--model-chatgpt`) survive **only** inside `/reviews`.
+
+### 4.3 Space, width, surfaces
+
+Spacing scale (px): `4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128`. Band vertical rhythm: 96 desktop / 56 mobile.
+Widths: `--prose: 720px` (all long-form text), `--content: 1120px` (tables, rows, stat strips), bands are full-bleed
+with content centered inside. Topbar 56px sticky, translucent with a hairline bottom.
+
+**Surface rule (the boxes-within-boxes hard rule made mechanical):** a `border` + `radius` + `padding` combination is
+permitted **only** on: data tables, code blocks, the explorer/visualize embeds, form composers, and modals. Everything
+else separates with (a) a background tonal shift, (b) a 1px `--rule` hairline, or (c) whitespace. `Card` as a generic
+container is deleted (§5). A bordered surface may never contain another bordered surface; chips inside tables are text
+plus a dot, never bordered.
+
+Radii: `4px` tools, `2px` chart elements, nothing larger. Elevation: none — no shadows anywhere except the sticky
+topbar's hairline. Focus: `focus-within:` ring on wrappers only; inner `input`/`textarea` carry `outline:none` and no
+`focus:border-*`, `focus:ring-*`, or box-shadow (global hard rule).
+
+### 4.4 Figures, equations, honest nulls
+
+Figures render full-content-width on `--bg-1` with the caption in small type below, left-aligned, no frame; clicking
+opens the full-size asset. Equations get a `--bg-1` band with generous vertical space when they are a section's
+subject. Charts: one accent line, `--ink-3` gridlines at 10% opacity, mono axis labels, no chart junk, no gradient
+fills. Null results are typeset like any other result — same H3 weight, slate dot, a number and a receipt link — and
+the copy states the null as a finding ("PTA channel: 14.3 dex below NANOGrav — closed as a null"), never as an absence.
