@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { Metadata } from "next";
+import { PageHeader } from "@/components/primitives";
 import { DataExplorerClient } from "./DataExplorerClient";
 
 export const metadata: Metadata = {
@@ -36,14 +37,21 @@ export default async function DataExplorerPage() {
   const { style, body, script } = await loadExplorer();
 
   return (
-    <div className="data-explorer-root" suppressHydrationWarning>
-      <style dangerouslySetInnerHTML={{ __html: style }} suppressHydrationWarning />
-      <style
-        dangerouslySetInnerHTML={{ __html: DATA_EXPLORER_OVERRIDES }}
-        suppressHydrationWarning
+    <>
+      <PageHeader
+        eyebrow="Explore"
+        title="Data explorer"
+        lead="Every dataset behind the program — MCMC chains, the anomaly and chirality catalogs, and observational constraints — browsable in one dashboard. Pick a source from the rail below."
       />
-      <DataExplorerClient body={body} script={script} />
-    </div>
+      <div className="data-explorer-root" suppressHydrationWarning>
+        <style dangerouslySetInnerHTML={{ __html: style }} suppressHydrationWarning />
+        <style
+          dangerouslySetInnerHTML={{ __html: DATA_EXPLORER_OVERRIDES }}
+          suppressHydrationWarning
+        />
+        <DataExplorerClient body={body} script={script} />
+      </div>
+    </>
   );
 }
 

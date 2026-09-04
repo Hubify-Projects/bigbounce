@@ -791,6 +791,9 @@ export default function DocsClient() {
           <Link href="/" className="docs-sidebar-back">
             ← back to bigbounce
           </Link>
+          <Link href="/docs/architecture" className="docs-sidebar-link">
+            architecture reference <ChevronRight className="inline-icon" />
+          </Link>
           <a
             href="https://github.com/Hubify-Projects/bigbounce"
             target="_blank"

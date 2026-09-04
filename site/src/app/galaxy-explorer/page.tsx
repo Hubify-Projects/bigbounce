@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegacyExplorerClient } from "./LegacyExplorerClient";
 
 export const metadata: Metadata = {
@@ -35,14 +36,21 @@ export default async function GalaxyExplorerPage() {
   const { style, body, script } = await loadExplorer();
 
   return (
-    <div className="legacy-explorer-root" suppressHydrationWarning>
-      <style dangerouslySetInnerHTML={{ __html: style }} suppressHydrationWarning />
-      <style
-        dangerouslySetInnerHTML={{ __html: LEGACY_EXPLORER_OVERRIDES }}
-        suppressHydrationWarning
-      />
-      <LegacyExplorerClient body={body} script={script} />
-    </div>
+    <>
+      <p className="mono mb-3 text-xs uppercase tracking-wider text-muted-foreground">
+        <Link href="/explore" className="hover:text-foreground">
+          ← Explore
+        </Link>
+      </p>
+      <div className="legacy-explorer-root" suppressHydrationWarning>
+        <style dangerouslySetInnerHTML={{ __html: style }} suppressHydrationWarning />
+        <style
+          dangerouslySetInnerHTML={{ __html: LEGACY_EXPLORER_OVERRIDES }}
+          suppressHydrationWarning
+        />
+        <LegacyExplorerClient body={body} script={script} />
+      </div>
+    </>
   );
 }
 
