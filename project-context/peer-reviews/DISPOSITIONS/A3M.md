@@ -307,3 +307,162 @@ pulls −0.026σ / +0.068σ over 5 realizations each. v3M.0.5, 9 pp, md5
 `67e1510e2b300ec683ed2e288ef1aefe`. Per directive R2 the convergence budget
 (2 rounds) is consumed — review rounds STOP on this paper. Full item→edit
 table: `project-context/SSOT/paper-a3m/status.md` "R2 closure (2026-09-02)".
+
+---
+
+# R3 — 2026-09-04 (v3M.0.8)
+
+Round `ROUND_2026-09-04-A3M-v3M.0.8-EXACTPDF-8cf429e0-R3`; paper v3M.0.8, 10 pp,
+sha256 `8cf429e002d44c97308ccc994c9378a93b066e094de865d48f850d5e72291b9a` (verified;
+served mirror `site/public/papers/a3_multichannel_arxiv_v3M.0.8.pdf` byte-identical).
+Receipt `INT_v3/ROUND_2026-09-04-…-R3/preflight_receipt.json` (PASS, HEAD `8d5ca7c8`).
+Board: `INT_v3/A3M_v3M.0.8_R3_BOARD_2026-09-04.md`.
+Full evidence: `INT_v3/A3M_v3M.0.8_R3_TRUTH_AUDIT_2026-09-04.md`.
+
+Verdicts (verbatim, diagnostic only): Claude Fable INT **major-revisions** (4 MAJOR / 15 minor) ·
+Grok API `grok-4.3` **REJECT** (4 ESSENTIAL / 3 MAJOR / 1 MINOR / 2 NIT) · Gemini API
+`gemini-3.1-pro-preview` **MAJOR REVISIONS** (4 ESSENTIAL / 1 NIT; pass-2 self-critique timed out,
+non-fatal — pass-1 report complete, recorded on the board) · OpenAI/ChatGPT **ABSENT** (directive N
+pause) · Perplexity **ABSENT** (leg not run — recorded absent, never as clean, Rule 4).
+**0 BLOCKER** all legs.
+
+Class counts: 34 raw findings → **19 GENUINELY-NEW-REAL** (4 MAJOR + 15 MINOR), **4
+RE-FLAG-OF-DISCLOSED**, **7 FALSIFIED**, **4 OPINION/GENRE**, 0 OUT-OF-SCOPE, 0 BLOCKER, plus 1
+carried-open packaging item (`DA3M-R2-11`). Clean-wave count: **0**. Directive R2: all four MAJORs
+land on content that did not exist at R2 (the three science closures landed between v3M.0.5 and
+v3M.0.8), which is the intervening science decision R2 requires; zero of the 19 new items
+fingerprint-matches an R1/R2 disposition.
+
+## OPEN — genuinely-new-real, MAJOR
+
+### DA3M-R3-01: the `kη_B ≲ 10⁻²` validity window is applied backwards; the headline LSS discrimination rests on the inversion
+- **class:** OPEN (MAJOR). Legs: Fable M1, Gemini E4 (independent routes, same defect).
+  `kη_B` increases with `k`; `LANE_B_NUMERICAL_2026-09-03.md:107–111` + (A1) set an **upper** bound on
+  `k` (rows flagged invalid for `kη_* > 0.3`), with no small-`k` cutoff. The CMB/LSS pivot
+  `k = 0.05 Mpc⁻¹` is the smallest `k` in the paper, 5–16 decades below every PBH scale, hence deepest
+  *inside* the window — yet `main.tex:866–868` says it "lies far outside that validated window" while
+  `:749–750` says the window is satisfied at every (much larger-`k`) PBH scale. Consequence
+  (auditor-computed): applying the S1 transfer at the pivot gives `|f_NL^after| ∈ [0.50,0.65]` for
+  `−35/16` and `[0.86,1.20]` for `−35/8`; bare SPHEREx drops to **0.7–0.9σ** and the two candidates
+  separate by **< 1σ**, collapsing the abstract's "this channel alone discriminates".
+- **closure:** C1 — science decision required: (a) propagate `f_NL^after` to Table IV/abstract with the
+  pre-bounce row secondary, or (b) give a physical exemption for `k = 0.05 Mpc⁻¹` and delete the §V C
+  all-PBH-scales sentence. "Outside the window" is not a usable reason.
+- **fingerprint:** k eta_B window direction, pivot 0.05 Mpc^-1 inside not outside, pre-bounce vs
+  post-bounce LSS, SPHEREx 3.13 sigma collapses, transmitted amplitude discrimination
+
+### DA3M-R3-02: "satisfied at every PBH mass scale for any bounce energy above the BBN scale" is wrong by 11–13 decades in energy
+- **class:** OPEN (MAJOR). Leg: Fable M4. `main.tex:749–750`. Auditor: `aH ∝ T` in RD anchored at
+  `k_eq ≈ 0.01 Mpc⁻¹` gives `a_B H_B(1 MeV) ≈ 1.2×10⁴ Mpc⁻¹`, so `kη_B ≲ 10⁻²` admits only
+  `k ≲ 10² Mpc⁻¹`; the section's PBH scales are `k ~ 10⁴–10¹⁶ Mpc⁻¹`. Covering `10¹⁵ g` needs
+  `T_B ≳ 10⁸–10¹⁰ GeV`. Same root cause as R3-01.
+- **closure:** C2 — state the real condition on `T_B`/`H_B` at the smallest PBH mass and restrict the
+  null's scope accordingly, **or** show (one sentence of arithmetic) that the 7-decade shortfall is
+  insensitive to the transfer assumption. Do not assume it.
+- **fingerprint:** BBN scale bounce energy, T_B 10^10 GeV, comoving horizon at bounce, PBH scale
+  outside validity window
+
+### DA3M-R3-03: "method-independent confirmation" / "derived identity" asserted, self-contradicted, and stronger than the lab's own note
+- **class:** OPEN (MAJOR). Leg: Fable M2 (a/b/c); Grok M1's substantive half folds here.
+  (a) abstract `:44` "gradient-expansion route" vs §II D `:238–241` "the gradient-expansion assumption
+  `N_i=O(∇)` fails here". (b) `:277–285` "the gap … is accounted for by Eq. (5), a **derived identity**"
+  vs `:270–274` "no local `f_NL` relation between `δN_c` and `ζ_Mald` exists"; auditor: `δN_c=½ζ` maps
+  `f_NL→2f_NL = −15/4`, not `−5` (gap ratio 8/3), and the lab's own
+  `fnl_monopole_adjudication_2026_09_03.md` calls the linear relation "**asserted**" (`:25`), the
+  second-order piece "a computed identity, **not a claimed mechanism**" (`:39, 72`), and the outcome
+  "explained at the equation level" (`:76`). (c) the classical `O(k⁰)` solution, `[L]/[K]/[X]/[S]`
+  bookkeeping, pole cancellation, boundary term, general-ε formulas and the Bianchi-I result appear
+  with **no equation and no appendix** — only two script paths (`:286–291`).
+- **closure:** C3 — reword the two claim sentences to the note's own framing (different variables;
+  second-order mechanism not derived) and add Appendix A transcribing the note §§1–4 (Eq. 5 derivation
+  with sign convention; `[L]/[K]/[X]/[S]` + `1/k_L` cancellation + `f_b` boundary term; general-ε
+  formulas; Bianchi-I traceless-response argument). No new science.
+- **fingerprint:** method-independent confirmation, derived identity, delta N_c = (1-eps/3) zeta,
+  gradient-expansion route contradiction, no appendix, script paths only, 8/3 gap
+
+### DA3M-R3-04: induced-GW infrared slope misstated as causality-limited and generic
+- **class:** OPEN (MAJOR, scoped). Leg: Fable M3. `main.tex:545–547` (echoed `:879`): "`Ω_GW ∝ f²` is
+  the causality-limited infrared slope common to scalar-induced backgrounds of essentially any origin".
+  The universal causality-limited IR tail from a finite-duration source is `Ω_GW ∝ f³` (`γ=2` in this
+  paper's `Ω ∝ f^{5−γ}`), with `f³ln²f` for narrow peaks — Cai, Pi & Sasaki, PRD **102**, 083528
+  (2020), arXiv:1909.13728. `f²` is shallower than the causal floor, hence neither causality-limited
+  nor generic. The paper's own `γ=3` prediction is **not** falsified: it is cited to Papanikolaou 2025
+  (arXiv:2504.11641) in `main.tex:417–418` and `pta_gamma_reproduce.py:22–31`, and all PTA arithmetic
+  stands. The error is self-inflicted weakening plus a §IV A ↔ §IV D contradiction.
+- **closure:** C4 — correct both sentences, add the Cai–Pi–Sasaki citation, name the specific
+  Papanikolaou equation that yields `f²` for the matter bounce, and say whether it holds across the
+  full NANOGrav band or only asymptotically.
+- **fingerprint:** Omega_GW f^2 causality-limited, universal IR slope f^3 gamma 2, Cai Pi Sasaki
+  1909.13728, log corrections, gamma=3 generic disclaimer
+
+## OPEN — genuinely-new-real, MINOR
+
+| id | item | evidence | fingerprint |
+|---|---|---|---|
+| DA3M-R3-05 | "28–39 % of the transmitted contraction term" is wrong | `main.tex:374–375`; `LANE_B_NUMERICAL:125–128` ratios 0.387/0.191/0.297 ⇒ **19–39 %**; the source note carries the same error | 28-39 percent, 19-39 percent, bounce cubic fraction |
+| DA3M-R3-06 | `n_s−1 = 12w/(1+w)` is the wrong contracting-phase formula | `main.tex:743`; `inlab_delta2_zeta_2026-09-03.py:24`; correct `12w/(1+3w)` (Wands 1999; Cai+2012). Numerically inert (`w: −0.00293→−0.00290`) | n_s-1 12w/(1+w), 12w/(1+3w), Wands duality, contracting tilt |
+| DA3M-R3-07 | `0 < T_fNL ≤ 1/2` has both endpoints inverted | `main.tex:315–318` + abstract `:49`: `T=(1−ρ)/2`, `ρ∈(0,1]` ⇒ `T ∈ [0,1/2)` | T interval endpoints, 0 < T <= 1/2, rho in (0,1] |
+| DA3M-R3-08 | `ρ_B` never defined in Eq. (7) | `main.tex:353`; auditor: `ρ_B = 1−2T` reproduces all three rows; `f_NL^after = −(85/48)T − 5/24` | rho_B undefined, Eq 7 one-parameter in T |
+| DA3M-R3-09 | Ω_DM footnote's "every result unaffected" false for Table III/Fig. 1 | `main.tex:716–726`; auditor re-ran `pbh_compaction_fnl.py`: `A_*: 0.131446→0.127901` (−2.70 %), `f_PBH: 3.6e−14→6.3e−15`, `1.6e−2→5.7e−3`. Ratio genuinely unaffected | Omega_DM 0.674 footnote, A_star recalibration, Table III f_PBH shift |
+| DA3M-R3-10 | configuration behind μ-dependent Eq. (4) unstated; exact isosceles forces μ=0 | `main.tex:157–200` vs Eq. (4); `fnl_monopole_adjudication:41` "isoceles μ=0" | isoceles k2=k3, mu = k_L . k_S, Eq 3 is mu=0 not angular average |
+| DA3M-R3-11 | revision-history prose + inline filesystem paths in the body (directive Q1) — partial re-open of DA3M-08 | 3 legs (Fable m12, Grok E1+N3, Gemini E3). `main.tex:218, 275, 286–291, 530–534`, §V A | supersedes earlier misdescribed claim, left open in earlier drafts, research/theory_audit in body, why it had to be redone |
+| DA3M-R3-12 | injection pulls quoted without scatter | `main.tex:515–521`; JSON `summary`: `std_pull` 0.0993/0.1203 over 5 realizations ⇒ SEM 0.044/0.054 | mean pull 0.016 0.033, standard error of the mean, unbiased well under 0.1 sigma |
+| DA3M-R3-13 | Table III `f_PBH = 3.5e3`, `2.2e8` are not physical abundances | `main.tex:690–691` — nominal uncapped values at the Gaussian calibration, not labelled as such | f_PBH greater than one, uncapped nominal, label column or use beta |
+| DA3M-R3-14 | `γ_cr ≡ σ_cr²/(σ_c σ_r)` subscripts and windows undefined | §V B `main.tex:590–668` | gamma_cr undefined, compaction curvature variances, window functions |
+| DA3M-R3-15 | `\|r\| ≫ 1` k-range unstated; three backgrounds' parameters undefined | `main.tex:310–314, 363–370`; `r = −9i𝒜²I_∞/k³` is k-dependent; "poly (analytic non-LQC)" undefined | r >> 1 k range, complex branch ratio, poly analytic non-LQC undefined |
+| DA3M-R3-16 | §II C Cai bookkeeping described, not displayed; Li/Quintin equation numbers missing | `main.tex:201–217`; closes long-open `DA3M-m09` too | Cai shape function squeezed limit displayed, Eqs 38-40, Li et al equation number, error vs convention |
+| DA3M-R3-17 | Table I footnote `O(k²S²)` — `S` undefined | `main.tex:197` (residual of DA3M-m11's closure) | O(k^2 S^2), S undefined, Table I footnote |
+| DA3M-R3-18 | abstract prints `γ_HD = 3.2^{+0.6}_{-0.6}` without its interval type | `main.tex:56–57`; `σ≈0.365` only follows because ±0.6 is a **5–95 %** half-width (`pta_gamma_reproduce.py:53–58`). Residual of Grok E2 (whose stated form is falsified) | abstract interval type, 5-95 percent half width, 0.55 sigma vs 0.33 sigma |
+| DA3M-R3-19 | **regression:** abstract's `1.7–1.9` ratio lost the perturbativity + non-monotonicity caveats it carried at v3M.0.4 | `main.tex:62–68`; the v3M.0.4 text is what falsified Grok at R2 (`DA3M-R2-F3`) — the v3M.0.8 rewrite dropped it | abstract ratio caveat regression, 1.2 f_NL sigma_r, 55 decades non-monotonic, shape robust not truncation robust |
+
+## RE-FLAG-OF-DISCLOSED (R3)
+
+| id | item | where the paper already says it |
+|---|---|---|
+| DA3M-R3-R1 | "factor-of-two resolution not independent; no second public code / Cai's own Hamiltonian" (Grok M1) | `main.tex:271–276` — scope statement already limits it to "within the in-in method" and names the two published agreements. = `DA3M-R4`. Substantive half carried as **DA3M-R3-03(c)**, not dismissed |
+| DA3M-R3-R2 | "official vs refit σ juxtaposed without a not-directly-comparable qualifier" (Grok M2) | `main.tex:451–453`, `:486–489` (`P(γ>3)=8.97 %`), Table II caption `:466–473`. = `DA3M-R2-R4`. Residual (abstract interval type) = **DA3M-R3-18** |
+| DA3M-R3-R3 | "no table/figure of the ratio under Choudhury's exact spectrum" (Grok E4 residual) | `main.tex:737–740` — their spectrum is not reconstructible from their paper, which is why §V C substitutes the lab's own. Unsatisfiable by construction, and disclosed |
+| DA3M-R2-11 (carried) | "no frozen-release DOI" (Gemini E1) | Not new — the R2 packaging item, explicitly left open as a Houston-gated P-round action (`main.tex:958–962`). Carried, not re-counted |
+
+## FALSIFIED (R3)
+
+| id | item | why false |
+|---|---|---|
+| DA3M-R3-F1 | "the abstract omits the scheme and cutoff restrictions; transmission advertised as model-independent" (Grok E3) | `main.tex:47–50` — the abstract literally reads "within one cubic-vertex scheme (S1) and `kη_B≲10⁻²` … a second scheme does not regulate". Both allegedly-missing restrictions are in the sentence quoted |
+| DA3M-R3-F2 | "the PBH null rests on an unreproducible spectrum; `n_s = 1−12w/(1+w)`, `w=0.9649`" (Grok E4) | Inverted: `main.tex:737–741` uses the **lab's own** spectrum precisely to remove the dependence on Choudhury's unreconstructible one. Grok also garbles the formula (paper: `n_s−1=12w/(1+w)`, `n_s=0.9649`, `w≈−0.003`). The formula is separately wrong for a different reason (`DA3M-R3-06`) |
+| DA3M-R3-F3 | "the abstract presents the refit γ without an 'authors' refit prior' qualifier" (Grok E2 main) | `main.tex:55–58` labels it "(refit)", prints the official 14-bin posterior beside it, and gives both z-distances. Residual real bit = `DA3M-R3-18` |
+| DA3M-R3-F4 | "abstract asserts `f_PBH=0` while the body's 1.732 needs an ad-hoc normalization" (Grok E2 second half) | Two disclosed sub-results: the null is on the lab's own spectrum (`:757–762`); the ratio is on the lognormal stand-in at the disclosed calibration `A_*=0.131446` (`:664–668`, added at R1 as `DA3M-m07`). No contradiction, nothing ad hoc |
+| DA3M-R3-F5 | "September 4, 2026 is future-dated" (Grok N1) | Today **is** 2026-09-04. Auto-FALSIFY Rule 3; recurrence of `DA3M-F3` — now 7+ consecutive rounds, 100 % falsified |
+| DA3M-R3-F6 | "'regularized-renormalized- resummed' has a stray hyphen/space" (Gemini N1) | `main.tex:609` — source line break inside a compound; PDF renders correctly (Rule 7). Recurrence of `DA3M-F5` |
+| DA3M-R3-F7 | "`r` imported from an unpublished draft for a load-bearing parameter" (Gemini E2) | Closed at R2 (`DA3M-R2-10`): `main.tex:809–820` — "so no numeral is quoted here"; Table IV reports bare significance only. Gemini is reviewing a superseded state of the manuscript |
+
+## OPINION/GENRE (R3 — venue pass only)
+
+| id | item |
+|---|---|
+| DA3M-R3-G1 | 10 pp vs a 6–7 pp norm (Grok M3); the C8 Q1 cut reduces it as a side effect |
+| DA3M-R3-G2 | abstract ~380 words + internal labels ("scheme S1", "(A4)", "zero-shift-threading") (Fable m15) = `DA3M-G2`/`R2-G1`; do it **after** C1–C4 |
+| DA3M-R3-G3 | Fig. 1 axis normalization not restated in the caption (Grok N2) = `DA3M-R2-G5`; `A_*` is now in the text at `:664–668` |
+| DA3M-R3-G4 | frozen-release DOI restated for the P-round checklist (Gemini E1) = `DA3M-R2-11` |
+
+## Corrections to earlier dispositions (dated 2026-09-04, R3 pass — never backfilled silently)
+
+1. **`DA3M-R2-F3` is superseded for v3M.0.8.** It falsified Grok's "the abstract strips the ratio's
+   regime-of-validity caveat" because the v3M.0.4 abstract carried the perturbativity range and the
+   55-decade non-monotonicity verbatim. The v3M.0.8 abstract rewrite **removed both**. The R2 verdict
+   was correct for v3M.0.4 and is no longer true of the current manuscript; re-opened as
+   **`DA3M-R3-19`**, a closure-induced regression (exactly the class directive-G hygiene exists to catch).
+2. **`DA3M-08` (R1) is partially re-opened as `DA3M-R3-11`.** R1's closure verified 0 body hits for
+   audit tags. The R2 and v3M.0.8 closures re-introduced a different species of the same directive-Q1
+   defect — narration of the lab's own corrections plus two inline `research/theory_audit/…` paths.
+   Same directive, new instances, three legs concur.
+
+## Convergence statement (R3)
+
+**NOT converged at v3M.0.8. Clean-wave count 0.** 19 genuinely-new-real items open (4 MAJOR, 15 MINOR);
+none fingerprint-matches an existing disposition. `DA3M-R3-01` carries an outstanding **science
+decision** (propagate the transmission to the LSS pivot, or justify a physical exemption) that
+determines the paper's headline discrimination claim; `DA3M-R3-02` shares its root cause. `R3-03` and
+`R3-04` close with in-paper work and no new computation. Full ordered closure plan (C1–C10, with the
+file to change for each) in `INT_v3/A3M_v3M.0.8_R3_TRUTH_AUDIT_2026-09-04.md` §5. After closure, one
+verification round scoped to C1 is warranted, then rounds stop.
