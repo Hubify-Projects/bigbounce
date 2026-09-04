@@ -5,7 +5,6 @@ import type { Metadata } from"next";
 import Script from"next/script";
 import Link from"next/link";
 import { articles } from"@/data/articles";
-import { Badge } from"@/components/ui/badge";
 
 type PageParams = Promise<{ slug: string }>;
 
@@ -70,21 +69,11 @@ export default async function ArticlePage({ params }: { params: PageParams }) {
         </Link>
       </div>
 
-      <div className="mb-6 flex flex-wrap gap-2">
-        <Badge variant="outline" className="font-mono text-[10px]">
-          {article.type}
-        </Badge>
-        {article.category && (
-          <Badge variant="secondary" className="font-mono text-[10px]">
-            {article.category}
-          </Badge>
-        )}
-        {article.isNew && (
-          <Badge variant="default" className="font-mono text-[10px]">
-            NEW
-          </Badge>
-        )}
-      </div>
+      <p className="mono mb-6 text-xs uppercase tracking-wider text-muted-foreground">
+        {[article.type, article.category, article.isNew ? "new" : null]
+          .filter(Boolean)
+          .join(" · ")}
+      </p>
 
       {body ? (
         <article

@@ -1,10 +1,7 @@
-import type { Metadata } from"next";
-import Link from"next/link";
-import { articles } from"@/data/articles";
-import { Card, CardContent, CardHeader, CardTitle } from"@/components/ui/card";
-import { Badge } from"@/components/ui/badge";
+import type { Metadata } from "next";
+import { PageHeader, RowList } from "@/components/primitives";
+import { articles } from "@/data/articles";
 
-// Ensure display labels are consistently Title Case (e.g. "theory" → "Theory")
 function toDisplayLabel(s: string): string {
   return s.replace(/\b([a-z])/g, (c) => c.toUpperCase());
 }
@@ -18,61 +15,27 @@ export const metadata: Metadata = {
 export default function ArticlesPage() {
   return (
     <>
-      <div className="hero">
-        <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Research Articles · BigBounce Cosmology Program
-        </p>
-        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
-          Articles
-        </h1>
-        <p className="subtitle">
-          Deep dives, explainers, strategic assessments, and visual guides from
-          the BigBounce research program. Written for researchers, students, and
-          anyone curious about the frontiers of quantum gravity and cosmology.
-        </p>
-      </div>
+      <PageHeader
+        eyebrow="Research articles"
+        title="Articles"
+        lead="Deep dives, explainers, strategic assessments, and visual guides from the BigBounce research program — written for researchers, students, and anyone curious about the frontiers of quantum gravity and cosmology."
+      />
 
-      <section className="section">
-        <div className="grid gap-3">
-          {articles.map((article) => (
-            <Link
-              key={article.slug}
-              href={`/articles/${article.slug}`}
-              className="no-underline text-foreground"
-            >
-              <Card className="transition-colors hover:bg-accent/40">
-                <CardHeader className="pb-2">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="outline" className="font-mono text-[10px]">
-                      {toDisplayLabel(article.type)}
-                    </Badge>
-                    {article.category && (
-                      <Badge variant="secondary" className="font-mono text-[10px]">
-                        {toDisplayLabel(article.category)}
-                      </Badge>
-                    )}
-                    {article.isNew && (
-                      <Badge variant="default" className="font-mono text-[10px]">
-                        NEW
-                      </Badge>
-                    )}
-                  </div>
-                  <CardTitle
-                    className="mt-2 text-base leading-snug"
-                    style={{ fontFamily:"var(--font-mono-stack)" }}
-                  >
-                    {article.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    {article.summary}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+      <section className="mt-2">
+        <RowList
+          items={articles.map((article) => ({
+            title: article.title,
+            purpose: article.summary,
+            href: `/articles/${article.slug}`,
+            chips: [
+              toDisplayLabel(article.type),
+              article.category ? toDisplayLabel(article.category) : null,
+              article.isNew ? "New" : null,
+            ]
+              .filter(Boolean)
+              .join(" · "),
+          }))}
+        />
       </section>
     </>
   );
