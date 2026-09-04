@@ -264,7 +264,7 @@ const SECTIONS: DocSection[] = [
         method: "QUERY",
         name: "papers:listPapersWithVersions",
         description:
-          "Cross-paper dashboard: all 6 papers joined with their latest paper_versions row.",
+          "Cross-paper dashboard: all papers joined with their latest paper_versions row.",
         returns: "Array<PaperWithVersion>",
         example: `useQuery(api.papers.listPapersWithVersions)
 // → [{ slug: "p3", title: "Multi-Survey Anomaly Catalog",
