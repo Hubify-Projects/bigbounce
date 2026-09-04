@@ -173,3 +173,11 @@ without finishing under measured swap pressure (24+/25.6 GB); step-0 point
 estimate cross-checked against v1's MCMC median to <1%. Manifest
 `ledger4-desi-dr1-qso-fnl-reproduction-v2` (schema-valid). Ledger row 4
 updated. All commits atomic per RUN_LOG entries above.
+
+**Correction (2026-09-04, post-close):** the n_ran=7 NGC pass actually
+COMPLETED (772.0s wall clock, `outputs/pk_qso_NGC_nran7.json`) before the
+kill signal landed -- 9.3x v1's 83s baseline, consistent with measured host
+contention, but real data, not silently lost. SGC never started (killed
+before the loop reached it). Fix 3 is therefore "NGC done, SGC missing" --
+one cap short of a combined re-fit -- rather than "fully blocked" as first
+recorded. Preserved for a future SGC-only completion.
