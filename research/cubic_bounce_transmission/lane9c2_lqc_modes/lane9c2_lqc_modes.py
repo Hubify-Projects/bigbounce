@@ -188,3 +188,46 @@ class ModesIC:
     def wronskian(self, eta):
         mu, dmu = self._mu(eta)
         return float(np.imag(np.conj(mu) * dmu))
+
+
+# =====================================================================
+# [G] growth factor and power-spectrum modification
+# =====================================================================
+def adiabatic_occupation(m, bg, Wspl, eta):
+    """N_tot(eta) = omega |mu|^2 + |mu'|^2/omega = |alpha|^2 + |beta|^2 relative to the
+    INSTANTANEOUS adiabatic vacuum (exact identity to WKB accuracy; = 1 in that vacuum).
+    Oscillation-free, so it is the envelope measure used for the growth factor.
+    Returns (N_tot, omega) or (nan, nan) where omega^2 <= 0 (no adiabatic vacuum)."""
+    w2 = m.k ** 2 - float(Wspl(eta))
+    if w2 <= 0:
+        return float("nan"), float("nan")
+    w = np.sqrt(w2)
+    mu, dmu = m._mu(eta)
+    return float(w * abs(mu) ** 2 + abs(dmu) ** 2 / w), float(w)
+
+
+def wkb_reference_time(bg, Wspl, k, factor=10.0, lo=10.0, hi=0.9):
+    """Smallest |eta| >= lo*eta_B with k^2 >= factor*W(eta) (WKB-safe on BOTH sides;
+    the LQC-dust background is exactly time-symmetric, a(-eta) = a(eta))."""
+    e = np.geomspace(lo * bg["eta_B"], hi * bg["eta_far"], 6000)
+    ok = k * k >= factor * Wspl(e)
+    if not np.any(ok):
+        return None
+    return float(e[np.argmax(ok)])
+
+
+def growth_factor(m, bg, Wspl, eta_ref):
+    """|zeta_after / zeta_before| across the bounce, envelope-averaged.
+
+    The background is time-symmetric, so a(+eta_ref) = a(-eta_ref) and
+      |zeta|^2_avg = N_tot/(2 omega a^2)  =>  |zeta_after/zeta_before| = sqrt(N_+/N_-).
+    The power-spectrum modification is its square."""
+    Nm, wm = adiabatic_occupation(m, bg, Wspl, -eta_ref)
+    Np, wp = adiabatic_occupation(m, bg, Wspl, +eta_ref)
+    if not np.isfinite(Nm) or not np.isfinite(Np) or Nm <= 0:
+        return dict(defined=False, reason="omega^2 <= 0 at eta_ref")
+    G = float(np.sqrt(Np / Nm))
+    return dict(defined=True, eta_ref=float(eta_ref), N_before=Nm, N_after=Np,
+                omega=float(wp), growth_factor=G, power_modification=float(G ** 2),
+                beta_sq_after=float(max(0.0, (Np - 1.0) / 2.0)),
+                beta_sq_before=float(max(0.0, (Nm - 1.0) / 2.0)))
