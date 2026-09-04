@@ -64,7 +64,7 @@
     },
     {
       "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/recovery_benchmark.md",
-      "type": "result-json",
+      "type": "document",
       "checksum": null
     },
     {

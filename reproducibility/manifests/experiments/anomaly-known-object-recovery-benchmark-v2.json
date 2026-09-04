@@ -68,12 +68,12 @@
     },
     {
       "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/recovery_benchmark.md",
-      "type": "result-json",
+      "type": "document",
       "checksum": null
     },
     {
       "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md",
-      "type": "receipt",
+      "type": "document",
       "checksum": null
     }
   ],
