@@ -1,0 +1,63 @@
+========================================================================================
+Lane 9b-2: Delta f_NL^bounce[S2] from the RAW ADM cubic Lagrangian on exact S2 modes (2026-09-04)
+========================================================================================
+[symbolic] raw ADM cubic kernel built: 184 terms (0.2 s)
+[gate i-a] Hamiltonian constraint -> N1 = D1/H   (expected zetadot/H): True
+[gate i-a] momentum constraint    -> psi = (D1*Hd*a**2 - H*Z1*kx1**2 - H*Z1*ky1**2)/(H**2*(kx1**2 + ky1**2))   (expected -zeta/H - a^2 eps zetadot/k^2): True
+
+[gate i-b] power-law inflation (exact eps = const background), raw ADM vs Maldacena form vs consistency relation
+   eps=0.1 k_L/k_S=0.02 k eta*=0.05: raw 0.0909734  Mald 0.0925191  raw/Mald-1 -1.671e-02  Mald/consistency-1 -7.939e-04
+   eps=0.1 k_L/k_S=0.02 k eta*=0.03: raw 0.0920738  Mald 0.0926292  raw/Mald-1 -5.996e-03  Mald/consistency-1 +3.956e-04
+   eps=0.1 k_L/k_S=0.02 k eta*=0.02: raw 0.0924073  Mald 0.0926635  raw/Mald-1 -2.765e-03  Mald/consistency-1 +7.661e-04
+   => raw/Mald-1 = -6.34e-05 + (-6.65) (k eta*)^2 ; contour-independence at k eta*=0.03: delta 0.15 vs 0.30 differ by 5.1e-06
+   eps=0.2 k_L/k_S=0.02 k eta*=0.05: raw 0.2071485  Mald 0.2082688  raw/Mald-1 -5.379e-03  Mald/consistency-1 -3.099e-04
+   eps=0.2 k_L/k_S=0.02 k eta*=0.03: raw 0.2080454  Mald 0.2084485  raw/Mald-1 -1.934e-03  Mald/consistency-1 +5.526e-04
+   eps=0.2 k_L/k_S=0.02 k eta*=0.02: raw 0.2082990  Mald 0.2085044  raw/Mald-1 -9.848e-04  Mald/consistency-1 +8.210e-04
+   => raw/Mald-1 = -9.66e-05 + (-2.11) (k eta*)^2 ; contour-independence at k eta*=0.03: delta 0.15 vs 0.30 differ by 5.3e-06
+   eps=0.1 k_L/k_S=0.1 k eta*=0.05: raw 0.0932289  Mald 0.0947966  raw/Mald-1 -1.654e-02  Mald/consistency-1 +2.380e-02
+   eps=0.1 k_L/k_S=0.1 k eta*=0.03: raw 0.0943461  Mald 0.0949095  raw/Mald-1 -5.936e-03  Mald/consistency-1 +2.502e-02
+   eps=0.1 k_L/k_S=0.1 k eta*=0.02: raw 0.0946849  Mald 0.0949446  raw/Mald-1 -2.735e-03  Mald/consistency-1 +2.540e-02
+   => raw/Mald-1 = -6.13e-05 + (-6.59) (k eta*)^2 ; contour-independence at k eta*=0.03: delta 0.15 vs 0.30 differ by 4.9e-06
+   gate (i-b) PASS: worst extrapolated |raw/Mald - 1| = 9.66e-05 (bar 2e-3)
+
+[background] Quintin dtB=1: Ups=2.6667 tm=0.5 eta_B=0.449586 (a2: 0.449601); lane b rho_B=0.6700, -(5/24)rho_B=-0.1396, T_fNL(S1)=0.1650
+
+[gate i-c] S1 (Maldacena form, this engine, own modes) vs lane b bulk over [-eta_B, eta_B]
+   k eta_B=0.001: mine -0.139639  lane b -0.139635  rel +3.1e-05  |zeta_after/zeta(-tm)|=6.0586 (2/(1-rho_B)=6.0604)
+   k eta_B=0.003: mine -0.139635  lane b -0.139964  rel -2.3e-03  |zeta_after/zeta(-tm)|=6.0471 (2/(1-rho_B)=6.0604)
+   k eta_B=0.01: mine -0.139897  lane b -0.140974  rel -7.6e-03  |zeta_after/zeta(-tm)|=6.0361 (2/(1-rho_B)=6.0604)
+
+[gate i, literal] raw ADM on S1 variables: integrand pole orders odd 1.00, even 1.01; symmetric-excision values [-4.5012, -4.7313, -4.8098, -4.8322, -4.8401, -4.8423] (slope -0.002) -> VOID (structural), see .md
+
+[gate i-b'] raw ADM, matter contraction from the vacuum to -tm (S2 = true fluid, eps=3/2): f_NL vs -35/16
+   k eta_B=0.001: -2.187275   (-35/16 = -2.187500; rel -1.0e-04)
+   k eta_B=0.003: -2.187228   (-35/16 = -2.187500; rel -1.2e-04)
+   k eta_B=0.01: -2.186686   (-35/16 = -2.187500; rel -3.7e-04)
+
+[S2] raw ADM on exact S2 modes
+   k eta_B=0.001 (eta*=50 eta_B, k eta*=0.05, valid True): NEC-window raw +1.64013 | f_NL^before -2.18728  f_NL^after -1.24883 [contraction -2.7269, window +1.6401, expansion -0.1620] | lambda=0.9696 -> Delta_T = after - before/lambda = +1.00708
+   k eta_B=0.003 (eta*=50 eta_B, k eta*=0.15, valid True): NEC-window raw +1.63995 | f_NL^before -2.18723  f_NL^after -1.24571 [contraction -2.7266, window +1.6399, expansion -0.1590] | lambda=0.9678 -> Delta_T = after - before/lambda = +1.01438
+   k eta_B=0.01 (eta*=20 eta_B, k eta*=0.20, valid True): NEC-window raw +1.67187 | f_NL^before -2.18669  f_NL^after -1.24371 [contraction -2.7618, window +1.6719, expansion -0.1537] | lambda=0.9647 -> Delta_T = after - before/lambda = +1.02304
+
+[gate ii] S2 raw window integral tests at k eta_B = 0.001
+   eta* =    10 eta_B (k eta* = 0.010, valid True): Delta f_NL = +2.0124280
+   eta* =    20 eta_B (k eta* = 0.020, valid True): Delta f_NL = +1.6738135
+   eta* =    50 eta_B (k eta* = 0.050, valid True): Delta f_NL = +1.6401338
+   eta* =   100 eta_B (k eta* = 0.100, valid True): Delta f_NL = +1.6383782
+   window [-0.5, 0.5] tm: Delta f_NL = -0.2971875
+   window [-0.75, 0.75] tm: Delta f_NL = -0.0826699
+   window [-1, 1] tm: Delta f_NL = +1.6401338
+   window [-1.25, 1.25] tm: Delta f_NL = -0.9354898
+   window [-1.5, 1.5] tm: Delta f_NL = -2.6605462
+   window [-2, 2] tm: Delta f_NL = -4.8010186
+   npts =   1001: Delta f_NL = +1.6401338116
+   npts =   2001: Delta f_NL = +1.6401338114
+   npts =   4001: Delta f_NL = +1.6401338114
+   npts =   8001: Delta f_NL = +1.6401338114
+   npts =  16001: Delta f_NL = +1.6401338114
+
+[S2] operator-sector attribution of f_NL^after (k eta_B = 1e-3): N1^3 psi^0: +0.0000; N1^2 psi^1: -0.0000; N1^2 psi^0: +5.3115; N1^1 psi^2: +0.0000; N1^1 psi^1: +0.8331; N1^1 psi^0: -13.1222; N1^0 psi^2: +0.0008; N1^0 psi^1: -0.8331; N1^0 psi^0: +6.5611
+
+VERDICT: S2 != S1: scheme-DEPENDENT. NEC-window raw value +1.651 (window-convention dependent at O(1)), Delta_T +1.015, f_NL^after -1.246, versus S1 -(5/24)rho_B = -0.1396 and f_NL^after[S1] = -0.5002. Sign and magnitude differ; the difference is dominated by the linear MS-variable choice (S2 transmits the growing mode with |lambda| = 0.97, S1 amplifies it by 2/(1-rho_B) = 6.06) plus a cubic-sector cancellation (geometric +6.6, lapse -7.8, shift ~0); no single operator is responsible.
+
+DONE (24.8 s)
