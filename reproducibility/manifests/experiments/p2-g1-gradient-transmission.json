@@ -41,7 +41,7 @@
       "checksum": null
     },
     {
-      "locator": "research/cubic_bounce_transmission/g1_gradient_transmission_results.log",
+      "locator": "research/cubic_bounce_transmission/g1_gradient_transmission.log",
       "type": "receipt",
       "checksum": null
     }

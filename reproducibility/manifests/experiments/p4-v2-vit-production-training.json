@@ -10,13 +10,13 @@
       "name": "Smith42/galaxies (HF)",
       "type": "external-dataset",
       "locator": "https://huggingface.co/datasets/Smith42/galaxies",
-      "checksum": "bdd1b063… (HF revision, partial per inventory)",
+      "checksum": "bdd1b063\u2026 (HF revision, partial per inventory)",
       "license": null
     },
     {
       "name": "GZ1 CW/CCW human-vote labels (S3-hosted)",
       "type": "external-dataset",
-      "locator": "GZ1 CW/CCW label set, S3-hosted — exact bucket path not captured in the inventory",
+      "locator": "GZ1 CW/CCW label set, S3-hosted \u2014 exact bucket path not captured in the inventory",
       "checksum": null,
       "license": null
     },
@@ -30,7 +30,7 @@
     {
       "name": "Galaxy Zoo DESI morphology predictions (Walmsley 2023)",
       "type": "external-dataset",
-      "locator": "Galaxy Zoo DESI predictions, Walmsley et al. 2023 — exact data locator not captured in the inventory",
+      "locator": "Galaxy Zoo DESI predictions, Walmsley et al. 2023 \u2014 exact data locator not captured in the inventory",
       "checksum": null,
       "license": null
     }
@@ -44,7 +44,7 @@
     }
   ],
   "environment": {
-    "python": "torch, timm, huggingface_hub, datasets, pillow, numpy — see requirements.txt (repo root)",
+    "python": "torch, timm, huggingface_hub, datasets, pillow, numpy \u2014 see requirements.txt (repo root)",
     "hardware": "gpu-24gb"
   },
   "original_run": {
@@ -61,19 +61,19 @@
     "est_cost_usd": 5.0,
     "parallelizable": false,
     "resume_support": true,
-    "notes": "The original run's exact labels/split manifest were not retained, so a byte-identical reproduction of THIS checkpoint is not possible — see p4-g1-vit-retrain-manifest for the regenerable, manifest-bound successor that supersedes this training. This estimate covers reproducing an equivalent training run against the same input datasets, not an exact checkpoint match."
+    "notes": "The original run's exact labels/split manifest were not retained, so a byte-identical reproduction of THIS checkpoint is not possible \u2014 see p4-g1-vit-retrain-manifest for the regenerable, manifest-bound successor that supersedes this training. This estimate covers reproducing an equivalent training run against the same input datasets, not an exact checkpoint match."
   },
   "outputs": [
     {
-      "locator": "HF bamfai/galaxy-chirality-v2 (checkpoint SHA 618d170f…)",
+      "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2",
       "type": "model",
-      "checksum": "618d170f… (partial SHA quoted in inventory)"
+      "checksum": "618d170f\u2026 (partial SHA quoted in inventory)"
     }
   ],
   "verification": "No numeric target is defined for this historical realization since its labels/manifest were not retained; status is superseded. Use p4-g1-vit-retrain-manifest's best_val_acc=0.9931 (epoch 47) as the current verifiable production-training benchmark instead.",
   "status": "superseded",
   "provenance": [
-    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P4 — v2 ViT-Small production training bullet",
+    "project-context/EXPERIMENT_INVENTORY_2026-08-05.md \u00a7PROGRAM: chirality / P4 \u2014 v2 ViT-Small production training bullet",
     "project-context/SSOT/paper-4/status.md",
     "project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md"
   ]

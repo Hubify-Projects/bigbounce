@@ -1,7 +1,7 @@
 {
   "manifest_version": "bigbounce-experiment/v1",
   "id": "a3-pta-gamma-reproduction",
-  "title": "Track A3 channel 1 — reproduction of the NANOGrav 15-yr free-spectrum gamma posterior and Savage-Dickey Bayes factors from the committed chain",
+  "title": "Track A3 channel 1 \u2014 reproduction of the NANOGrav 15-yr free-spectrum gamma posterior and Savage-Dickey Bayes factors from the committed chain",
   "program": "bounce-theory",
   "paper": "A3",
   "kind": "analysis",
@@ -13,15 +13,15 @@
       "checksum": "sha256:50abc38a04e1bf886adc833b5eb653be4e986877fe2476f87a78927f4f3610fc"
     },
     {
-      "name": "NANOGrav 15-yr KDE Free Spectra v1.0.0 (30f_fs{hd}_ceffyl) — upstream source of the chain",
+      "name": "NANOGrav 15-yr KDE Free Spectra v1.0.0 (30f_fs{hd}_ceffyl) \u2014 upstream source of the chain",
       "type": "external-dataset",
       "locator": "https://doi.org/10.5281/zenodo.8060824",
       "checksum": null
     },
     {
-      "name": "committed reference summaries for the diff",
+      "name": "committed reference summaries for the diff (results.json + savage_dickey_2026-05-29.json in this dir)",
       "type": "internal-artifact",
-      "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/{results.json,savage_dickey_2026-05-29.json}",
+      "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/",
       "checksum": null
     }
   ],
