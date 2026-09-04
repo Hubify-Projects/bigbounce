@@ -190,3 +190,63 @@ error it hides is a factor $G^{3}/G^{4}$-type $O(1)$ effect in a single decade, 
 assumed to be everywhere; (ii) any background with an actual matter-sector velocity profile
 (two-field, ghost-condensate, Lee-Wick), where the dip and hence Eq. (79) can be non-trivial;
 (iii) S2 (effective-fluid) scheme, which remains divergent (lane 9b).
+
+## 5. VERDICT
+
+**No velocity-dip amplification exists on the lab's three A2 backgrounds — the PTA and PBH nulls
+stand — but a real, quantified, background-dependent $O(1)$ transfer feature does exist at
+$k\eta_B\simeq0.6$–$0.8$, and it is not enough to reopen either channel.**
+
+1. **Eq. (79) factor $=1$ on all three backgrounds**, by derivation on the Quintin-type background
+   ($\dot H=\Upsilon$ constant $\Rightarrow$ $|\dot\phi|$ constant $\Rightarrow T\to\infty$) and by
+   non-definability on the two effective-fluid backgrounds. The only geometry-fixed velocity,
+   $\dot\phi^2=-2M_p^2\dot H$, vanishes at $\pm\eta_B$ by construction and is rejected as a
+   substitute. The lab therefore sits in the *un-amplified* corner of Quintin's parameter space,
+   which is exactly where their Conjecture 1 predicts small $f_{\rm NL}$ — and, symmetrically, no
+   suppression of $r$. That remains a **cost** of the lab's scenario, recorded as such.
+2. **The band $k\eta_B\in[0.1,10]$ does contain a genuine feature**, invisible to the S1 result:
+   $\Delta^2_\zeta$ ratio $1.76$ (Quintin-type) / $2.24$ (LQC) / $0.058$ (poly), peaking at
+   $k\eta_B=0.77/0.61/0.77$, against numerical floors of $1.4\times10^{-2}$/$2.2\times10^{-2}$/
+   $8.4\times10^{-4}$. It changes sign between backgrounds, so it is a property of the individual
+   $a(\eta)$, not of bouncing per se, and it cannot be quoted as a prediction.
+3. **It cannot reopen PTA.** A3-3 already established that for $T_B\ge10^8$ GeV the *entire*
+   NANOGrav band sits at $k\eta_B\le2.26\times10^{-8}$ — roughly eight decades in $k$ below this
+   feature. A factor $\le2.24$ localised at $k\eta_B\sim0.7$ is not in the PTA band at all.
+4. **It cannot reopen PBH.** A3-1b requires an amplitude ratio of $9.79\times10^{6}$
+   ($\Delta^2$ delivered $6.49\times10^{-10}$ vs required $6.36\times10^{-3}$ at $f_{\rm PBH}=10^{-3}$,
+   $M_H=10^{20}$ g). $2.24$ is short by a factor $4\times10^{6}$. Even the maximal-possible reading of
+   Quintin's own required amplification, $\sim50$ in $\zeta$ ($2.5\times10^3$ in $\Delta^2$), would
+   still fall four orders short.
+5. **Honest bound on what a dip *could* buy, if a matter sector were added:** their
+   $T=\Delta t_{\rm amp}$ gives $[\dot\phi_B/\dot\phi]^2=7.39$, and Eq. (44) then scales
+   $f_{\rm NL}^{\rm bounce}$ by $\sim55$ — i.e. $\Delta f^{\rm bounce}_{\rm NL}\sim-7.7$ rather than
+   $-0.14$. That is a *bispectrum* statement, not a spectrum one, and it does not move $\Delta^2$
+   into the PBH/PTA windows either. This is the honest upper bound on the channel, and it costs a
+   new, unconstrained matter-sector input to claim.
+
+## 6. What lanes (b)/(c) and the paper must do next
+
+- **Lane (b) — relax assumption A1 in one decade only.** A1 ($k\eta_B\le10^{-2}$ super-Hubble
+  transfer) is now known to be violated at the $O(1)$ level only for $k\eta_B\in[0.2,2]$ and to be
+  accurate to $<1\%$ for $k\eta_B\ge3$. The scoped follow-up is to re-run the in-in vertex integral
+  with numerically evolved (not super-Hubble) legs at $k\eta_B=0.3,\,0.7,\,1$ on the Quintin-type
+  background and compare with the $1/G$ scaling estimate of §4(b). Nothing outside that decade needs
+  redoing.
+- **Lane (c) — upgrade §2.3 item 2.** Replace "the lab's backgrounds carry no scalar-velocity dip"
+  (assertion) with this lane's derivation, and add the rejected total-sector identification as the
+  reason the substitution is not available. Add the sentence that the "$\sim\!50$" in Quintin is the
+  *required* amplification (their Eq. 30), not an achieved one.
+- **Paper (P2).** One sentence in the transmission section: the super-Hubble transfer is exact to
+  $<1\%$ outside $k\eta_B\in[0.2,2]$, with an $O(1)$, background-dependent, sign-indefinite excursion
+  inside it — disclosed, not modelled. No claim of a feature.
+- **Ledger row 9.** Lane (a) closes as a **null for the amplification mechanism** with a quantified
+  by-product (the $G(k)$ transfer curve). Do not open a PTA/PBH re-analysis on this basis.
+
+## 7. Reproducibility
+
+Manifest: `reproducibility/manifests/experiments/p2-a3-lane-9a-velocity-dip.json` (validated;
+registered in `reproducibility/manifests/programs/bounce-theory.json`). Local, CPU-only, no network,
+no seeds; 143.7 s measured, $0.00. Script `lane9a_velocity_dip.py`, outputs `results.json`,
+`lane9a_velocity_dip.log`, `lane9a_growth_vs_ketaB.png`. Every number in this note comes from that
+run; nothing was tuned toward an outcome, and the one result that would have been convenient —
+an amplification at $k\eta_B\sim1$ — is reported as absent.
