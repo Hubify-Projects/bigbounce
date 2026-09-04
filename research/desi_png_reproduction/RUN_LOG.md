@@ -142,3 +142,14 @@ overlap, scope-vs-plan table). Manifest
 `project-context/NEXT_SCIENCE_LEDGER.md` updated with a concise status
 append. LRG not started this session (QSO-first per task scope; QSO alone
 consumed the session's compute-time budget).
+
+---
+
+## Follow-up 2026-09-04 — remove causes in order of impact (v2)
+
+Task: re-fit after removing, in order: (1) window function + integral
+constraint, (2) transfer function upgrade (camb/cosmoprimo[class]/pyccl),
+(3) full 18 randoms, (4) analytic Gaussian covariance w/ window-convolved
+model + measured shot noise, (5) remaining systematics splits. Writing
+`LEDGER4_RESULT_v2_2026-09-04.md` (supersedes v1, v1 kept as record).
+Budget: ~4h local CPU. Steps logged below as they complete.
