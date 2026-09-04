@@ -87,8 +87,8 @@ def step_A_frobenius():
             sol.update({kk: sp.simplify(v) for kk, v in s[0].items()})
     zeta_sol = sp.expand(zeta.subs(sol))
     # any coefficient left unsolved beyond the truncation is set to 0 (truncation only)
-    zeta_sol = zeta_sol.subs({c: 0 for c in cs_ if c not in sol})
-    zeta_sol = sp.expand(sp.series(zeta_sol, t, 0, 6).removeO())
+    zeta_full = zeta_sol.subs({c: 0 for c in cs_ if c not in sol})
+    zeta_sol = sp.expand(sp.series(zeta_full, t, 0, 6).removeO())
     log("\n[A] Frobenius solution of the S2 MS equation about the bounce (to O(t^5)):")
     log(f"    zeta = {zeta_sol}")
     zd = sp.expand(sp.diff(zeta_sol, t))
@@ -99,8 +99,8 @@ def step_A_frobenius():
     RES["A_frobenius"] = {"zeta_series": str(zeta_sol), "zetadot_C1_leading": f"{l1}*t^{p1}",
                           "zetadot_C2_leading": f"{l2}*t^{p2}", "indicial_exponents": [0, 3]}
     # residual check: plug back
-    resid = sp.expand(sp.series(sp.diff((z2 / a) * sp.diff(zeta_sol, t), t) + cs**2 * k**2 * a * z2 * zeta_sol, t, 0, 3).removeO())
-    log(f"    residual of the MS equation through O(t^2): {resid}")
+    resid = sp.expand(sp.series(sp.diff((z2 / a) * sp.diff(zeta_full, t), t) + cs**2 * k**2 * a * z2 * zeta_full, t, 0, 3).removeO())
+    log(f"    residual of the MS equation through O(t^2) using all solved coefficients (c_0..c_9): {resid}")
     RES["A_frobenius"]["residual_through_t2"] = str(resid)
     return zeta_sol
 
@@ -143,7 +143,7 @@ def step_C_vertex_poles(zeta_sol, cons):
     """Pole orders of the Maldacena/Chen-form bounce-window integrands (lane (a) coefficients, cosmic time,
     c_s = 1 form) evaluated on the EXACT modes of [A] (three legs, each leg = C1-mode unless stated),
     compared with lane (a)'s super-Hubble counting that used zetadot ~ H^2.  chit = d^-2 zetadot = -zetadot/k^2."""
-    zd = cons["zd"]; chit = -zd / k**2
+    zd = cons["zd"]; chit = sp.expand(-zd / k**2)
     zC1 = zeta_sol.coeff(C1); zdC1 = zd.coeff(C1); chitC1 = chit.coeff(C1)
     zdC2 = zd.coeff(C2); chitC2 = chit.coeff(C2)
     rows = {
@@ -199,3 +199,28 @@ def step_D_raw_adm(zeta_sol, cons):
 
 
 STEPS.append(step_C_vertex_poles); STEPS.append(step_D_raw_adm)
+
+
+def run():
+    t0 = main()
+    zeta_sol = step_A_frobenius()
+    cons = step_B_constraints(zeta_sol)
+    step_C_vertex_poles(zeta_sol, cons)
+    step_D_raw_adm(zeta_sol, cons)
+    verdict = ("S2 REGULARISED-IN-FORM / VALUE UNRESOLVED: the S2 divergence is an artefact of the Maldacena/Chen "
+               "integrated-by-parts form of the cubic action (singular total derivatives at H=0); the raw ADM form is "
+               "finite on-shell because the comoving-gauge constraint solutions N1, psi are regular at H=0 (residue "
+               "cancellation, step B). No cutoff is needed and none is legitimate; the finite S2 value requires the raw-form "
+               "in-in integral (not computed in this lane) and is NOT shown to equal S1's -(5/24) rho_B."
+               if RES["B_constraints"]["psi_regular"] and RES["D_raw_adm_regular"]["all_regular"]
+               else "UNRESOLVED: constraint solutions not regular at H=0 in this computation")
+    RES["verdict"] = verdict
+    RES["wall_clock_s"] = round(time.time() - t0, 2)
+    log("\nVERDICT: " + verdict)
+    log(f"wall clock {RES['wall_clock_s']} s")
+    with open(os.path.join(HERE, "lane9b_s2_regulation.json"), "w") as f:
+        json.dump(RES, f, indent=2)
+
+
+if __name__ == "__main__":
+    run()

@@ -1,0 +1,96 @@
+{
+  "lane": "9b",
+  "date": "2026-09-04",
+  "background": "Quintin+2015-type: H=Ups t, a=exp(Ups t^2/2), eps=-1/(Ups t^2)",
+  "z2_pole_order": -2,
+  "A_frobenius": {
+    "zeta_series": "-C1*Upsilon*c_s**2*k**2*t**4/2 - C1*c_s**4*k**4*t**4/8 + C1*c_s**2*k**2*t**2/2 + C1 - 3*C2*Upsilon*t**5/10 - C2*c_s**2*k**2*t**5/10 + C2*t**3",
+    "zetadot_C1_leading": "c_s**2*k**2*t^1",
+    "zetadot_C2_leading": "3*t^2",
+    "indicial_exponents": [
+      0,
+      3
+    ],
+    "residual_through_t2": "0"
+  },
+  "B_constraints": {
+    "N1 = zetadot/H": {
+      "C1_power": 0,
+      "C1_coef": "c_s**2*k**2/Upsilon",
+      "C2_power": 1,
+      "C2_coef": "3/Upsilon"
+    },
+    "-zeta/H": {
+      "C1_power": -1,
+      "C1_coef": "-1/Upsilon",
+      "C2_power": 2,
+      "C2_coef": "-1/Upsilon"
+    },
+    "chi": {
+      "C1_power": -1,
+      "C1_coef": "1/Upsilon",
+      "C2_power": 0,
+      "C2_coef": "3/(Upsilon*c_s**2*k**2)"
+    },
+    "psi = -zeta/H + chi": {
+      "C1_power": 1,
+      "C1_coef": "(-Upsilon - c_s**2*k**2)/Upsilon",
+      "C2_power": 0,
+      "C2_coef": "3/(Upsilon*c_s**2*k**2)"
+    },
+    "residue_sum_C1": "0",
+    "psi_regular": true
+  },
+  "C_maldacena_form_poles": {
+    "V2 a^3 eps^2 zeta zetadot^2  [C1,C1,C1]": {
+      "power": -2,
+      "class": "non-integrable",
+      "leading_coef": "c_s**4*k**4/Upsilon**2"
+    },
+    "V2 a^3 eps^2 zeta zetadot^2  [C1,C2,C2] (lane-a weights)": {
+      "power": 0,
+      "class": "integrable",
+      "leading_coef": "9/Upsilon**2"
+    },
+    "V3 a eps^2 zeta (d zeta)^2  [C1^3]": {
+      "power": -4,
+      "class": "non-integrable",
+      "leading_coef": "k**2/Upsilon**2"
+    },
+    "V4 -2 a^3 eps^2 zetadot dzeta dchit [C1^3]": {
+      "power": -2,
+      "class": "non-integrable",
+      "leading_coef": "2*c_s**4*k**4/Upsilon**2"
+    },
+    "V6+V7 ~ (3/4) a^3 eps^3 zeta zetadot^2-type [C1^3]": {
+      "power": -4,
+      "class": "non-integrable",
+      "leading_coef": "-3*c_s**4*k**4/(4*Upsilon**3)"
+    },
+    "V6+V7 [C1,C2,C2] (lane-a weights)": {
+      "power": -2,
+      "class": "non-integrable",
+      "leading_coef": "-27/(4*Upsilon**3)"
+    },
+    "V5 (a^3 eps/2) d(eta_sr)/dt zeta^2 zetadot [C1^3]": {
+      "power": -4,
+      "class": "non-integrable",
+      "leading_coef": "-2*c_s**2*k**2/Upsilon**2"
+    }
+  },
+  "D_raw_adm_regular": {
+    "blocks": {
+      "zeta": 0,
+      "zetadot": 1,
+      "N1": 0,
+      "psi": 0,
+      "H": 1,
+      "phidot^2": 0,
+      "V = 3H^2 - phidot^2/2": 0,
+      "a": 0
+    },
+    "all_regular": true
+  },
+  "verdict": "S2 REGULARISED-IN-FORM / VALUE UNRESOLVED: the S2 divergence is an artefact of the Maldacena/Chen integrated-by-parts form of the cubic action (singular total derivatives at H=0); the raw ADM form is finite on-shell because the comoving-gauge constraint solutions N1, psi are regular at H=0 (residue cancellation, step B). No cutoff is needed and none is legitimate; the finite S2 value requires the raw-form in-in integral (not computed in this lane) and is NOT shown to equal S1's -(5/24) rho_B.",
+  "wall_clock_s": 1.13
+}

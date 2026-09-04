@@ -1,0 +1,48 @@
+# Lane 9b — S2 regularisation test (Quintin-type bounce)
+eps = -1/(Upsilon*t**2);  z^2 = -2*exp(Upsilon*t**2)/(Upsilon*c_s**2*t**2);  phidot^2 = rho+p = -2*Upsilon
+[A0] z^2 pole order at t=0: -2  (S2 pathology, as in the brief);  int z^2 dt ~ (-Upsilon**2*t**3/3 - 2*Upsilon*t + 2/t)/(Upsilon*c_s**2)
+
+[A] Frobenius solution of the S2 MS equation about the bounce (to O(t^5)):
+    zeta = -C1*Upsilon*c_s**2*k**2*t**4/2 - C1*c_s**4*k**4*t**4/8 + C1*c_s**2*k**2*t**2/2 + C1 - 3*C2*Upsilon*t**5/10 - C2*c_s**2*k**2*t**5/10 + C2*t**3
+    zetadot|C1 = c_s**2*k**2*t^1 + ... (k^2 correction, 1/t-ENHANCED by int z^2 dt ~ 1/t: NOT ~H^2)
+    zetadot|C2 = 3*t^2 + ... (lane (a)'s ~H^2 mode)
+    residual of the MS equation through O(t^2) using all solved coefficients (c_0..c_9): 0
+
+[B] on-shell constraint solutions at the bounce (Laurent in t):
+    N1 = zetadot/H          : C1-mode leading c_s**2*k**2/Upsilon*t^0;  C2-mode leading 3/Upsilon*t^1
+    -zeta/H                 : C1-mode leading -1/Upsilon*t^-1;  C2-mode leading -1/Upsilon*t^2
+    chi                     : C1-mode leading 1/Upsilon*t^-1;  C2-mode leading 3/(Upsilon*c_s**2*k**2)*t^0
+    psi = -zeta/H + chi     : C1-mode leading (-Upsilon - c_s**2*k**2)/Upsilon*t^1;  C2-mode leading 3/(Upsilon*c_s**2*k**2)*t^0
+    residue check:  Res[-zeta/H] = -1/Upsilon,  Res[chi] = 1/Upsilon,  sum = 0
+    => psi is REGULAR at H=0 (comoving-gauge shift = -delta phi_N/phidot, finite); N1 is regular.
+       The 1/H poles are individually present in -zeta/H and in chi = -a^2 eps zetadot/(c_s^2 k^2) but cancel
+       identically on the exact linear solution; they do NOT cancel if zetadot ~ H^2 (C2-mode only) is assumed.
+
+[C] Maldacena/Chen-form integrand poles on the EXACT S2 modes (cosmic-time integrand ~ t^n):
+    V2 a^3 eps^2 zeta zetadot^2  [C1,C1,C1]                     : t^-2  [non-integrable]  lead c_s**4*k**4/Upsilon**2
+    V2 a^3 eps^2 zeta zetadot^2  [C1,C2,C2] (lane-a weights)    : t^0  [integrable]  lead 9/Upsilon**2
+    V3 a eps^2 zeta (d zeta)^2  [C1^3]                          : t^-4  [non-integrable]  lead k**2/Upsilon**2
+    V4 -2 a^3 eps^2 zetadot dzeta dchit [C1^3]                  : t^-2  [non-integrable]  lead 2*c_s**4*k**4/Upsilon**2
+    V6+V7 ~ (3/4) a^3 eps^3 zeta zetadot^2-type [C1^3]          : t^-4  [non-integrable]  lead -3*c_s**4*k**4/(4*Upsilon**3)
+    V6+V7 [C1,C2,C2] (lane-a weights)                           : t^-2  [non-integrable]  lead -27/(4*Upsilon**3)
+    V5 (a^3 eps/2) d(eta_sr)/dt zeta^2 zetadot [C1^3]           : t^-4  [non-integrable]  lead -2*c_s**2*k**2/Upsilon**2
+    => with the exact C1 mode (zetadot ~ k^2 t, not H^2) even V2 is non-integrable in S2 (t^-2) and V6+V7 is t^-4:
+       lane (a)/(b)'s d_cut^-1 was the C2-weighted sub-case; the Maldacena-form S2 integral is worse, not better.
+
+[D] raw-ADM building blocks at the bounce:
+    zeta                      : leading t^0
+    zetadot                   : leading t^1
+    N1                        : leading t^0
+    psi                       : leading t^0
+    H                         : leading t^1
+    phidot^2                  : leading t^0
+    V = 3H^2 - phidot^2/2     : leading t^0
+    a                         : leading t^0
+    => all building blocks regular: True.  The raw ADM cubic integrand is therefore FINITE through H=0 on-shell.
+       The Maldacena/Chen form differs from it by total time derivatives d/dt F whose F is built with explicit 1/H
+       and eps = phidot^2/(2H^2) (Maldacena Eq. 3.8 -> 3.9 uses the background EOM and 1/H repeatedly): F is
+       singular AT the bounce, so int dF/dt over a window containing t=0 is NOT F(t_B)-F(-t_B) and the
+       d_cut^-1 (lane b) / t^-4 (here) divergences are the divergence of the dropped total derivative, not of the physics.
+
+VERDICT: S2 REGULARISED-IN-FORM / VALUE UNRESOLVED: the S2 divergence is an artefact of the Maldacena/Chen integrated-by-parts form of the cubic action (singular total derivatives at H=0); the raw ADM form is finite on-shell because the comoving-gauge constraint solutions N1, psi are regular at H=0 (residue cancellation, step B). No cutoff is needed and none is legitimate; the finite S2 value requires the raw-form in-in integral (not computed in this lane) and is NOT shown to equal S1's -(5/24) rho_B.
+wall clock 1.13 s
