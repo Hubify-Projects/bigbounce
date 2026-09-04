@@ -544,7 +544,7 @@ export const papers: Paper[] = [
     standaloneSubmission: true,
     title: "Multi-Channel Consistency of the Matter-Bounce Prediction f_NL = \u221235/16: Exact Amplitude, Pulsar Timing, Primordial Black Holes, and Survey Reach",
     plainTitle: "Multi-channel consistency of the matter-bounce prediction at f_NL = \u221235/16 (exact amplitude, pulsar timing, primordial black holes, survey reach)",
-    version: "v3M.0.7",
+    version: "v3M.0.8",
     lastUpdated: "2026-09-02",
     tldr: "Track A's flagship submission candidate: folds the A3 multi-channel skeleton (NANOGrav 15-yr free-spectrum \u03b3, PBH abundance, SPHEREx/MegaMapper reach) together with the P2\u2032 v2L.0.2 exact matter-contraction theory (f_NL = \u221235/16, ledger #1 CLOSED independent re-derivation, orientation-dependent squeezed limit, \u03b4N cross-check) per the 2026-09-02 lineage decision. v3M.0.7: injection-recovery validation re-run on the REAL NANOGrav 15-yr KDE grids (Zenodo 10.5281/zenodo.8060824, sha256-verified, mirrored to HF); \u03b3=13/3 mean pull +0.016\u03c3, \u03b3=3 control mean pull +0.033\u03c3 (both well under 0.1\u03c3), superseding the prior synthetic-density placeholder. Readiness 75.",
     path: publicationPath({}),
@@ -568,13 +568,15 @@ export const papers: Paper[] = [
     figures: ["NANOGrav free-spectrum \u03b3 posterior vs. matter-bounce prediction", "Squeezed-limit orientation dependence"],
     remainingWork: [
       "v3M.0.7: real-KDE injection validation closed (Zenodo 8060824). Readiness 75.",
+      "v3M.0.8: method-independent f_NL cross-check closed, bounce cubic term computed (f_NL^after in [-0.65,-0.50]), lab-own-spectrum PBH channel null. Readiness 75.",
       "v3M.0.6: final-review REVISE executed (abstract 307 words).",
       "See project-context/PAPER_LINEAGE_2026-08-05.md for the recorded scope decision folding P2\u2032 theory into A3",
     ],
     preprintId: "HUBIFY-2026-A3M",
-    pdfMeta: "PDF \u00b7 9 pp \u00b7 v3M.0.7 \u00b7 created Sep 2, 2026 \u00b7 md5 f27a62098e5a673fa16b24d68e70da96 \u2014 injection-recovery validation re-run on real NANOGrav 15-yr KDE grids (Zenodo 8060824); \u03b3=13/3 pull +0.016\u03c3, \u03b3=3 pull +0.033\u03c3. Readiness 75.",
+    pdfMeta: "PDF \u00b7 10 pp \u00b7 v3M.0.8 \u00b7 created Sep 4, 2026 \u00b7 md5 0c61d2ab760a14e0ff27ca560585bcbf \u2014 method-independent f_NL cross-check closed, bounce cubic term computed (f_NL^after in [-0.65,-0.50]), lab-own-spectrum PBH channel null (7.0 dex short). Readiness 75.",
     changelog: [
       "v3M.0.7: real NANOGrav 15-yr KDE grids fetched from the public Zenodo record 10.5281/zenodo.8060824 (30f_fs{hd}_ceffyl, sha256-verified) and mirrored to HuggingFace (bamfai/bigbounce-aug-011-clean-rerun, external/nanograv15yr_kde/); Sec. IV C injection-recovery re-run with real per-bin KDE curves re-centered on the injected truth: \u03b3=13/3 mean pull +0.016\u03c3, \u03b3=3 control mean pull +0.033\u03c3 (5 realizations each), superseding the synthetic-density placeholder (retained as secondary cross-check). Readiness 75.",
+      "v3M.0.8: Sec. II closed by a method-independent (classical O(k^0) super-Hubble / Bianchi-I shift-decomposition) confirmation of f_NL=-35/16; Sec. III adds the bounce's own computed cubic term, giving f_NL^after in [-0.65,-0.50] (scheme S1, three backgrounds); Sec. IV adds a new subsection feeding the lab's own predicted Delta^2_zeta spectrum into the PBH compaction channel — a clean null, 7.0 dex short of the required amplitude at every mass scale, with the required-amplitude ratio widened to 1.7-1.9 and a FIRAS check on the early-SMBH-seed channel. Abstract and Discussion updated to match; the LSS reach table (Sec. VI) intentionally not recomputed at f_NL^after since the CMB/LSS pivot scale lies outside the established k*eta_B<=1e-2 transmission-validity band. Readiness held at 75.",
       "v3M.0.5: R2 CLOSED \u2014 real injection-recovery test at gamma=13/3 and gamma=3 through the same 30-bin free-spectrum likelihood/priors replaces the misdescribed prior injection claim (mean pull -0.026sigma / +0.068sigma over 5 realizations each); Eq. (8) sigma^2 term restored; Omega_DM=0.674 footnoted as Planck h (cancels in the ratio); precision/label fixes; five carried R1 minors closed. Rounds stop per directive R2 (convergence budget 2/2 consumed); residue is genre/length/venue only.",
       "v3M.0.4: R1 closed (official NANOGrav posterior primary; handoff-conditional transmission bound; PBH ratio with regime disclosed). R2 verification pass dispatched (Fable + Grok + Gemini) \u2014 verdicts pending.",
       "v3M.0.3: PBH compaction-function channel (item A3-1) integrated, replacing the Press-Schechter placeholder row; ordering reverses (f_PBH(\u221235/16) < f_PBH(\u221235/8) at every grid point). R1 INT board dispatched (Fable + Grok + Gemini) \u2014 verdicts pending.",
@@ -582,8 +584,8 @@ export const papers: Paper[] = [
       "v3M.0.1 and earlier: A3 multi-channel first-pass skeleton (research/track_a3_multichannel/) \u2014 NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach; not yet registered as a site paper.",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.7.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.7.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.8.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.8.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/research/track_a3_multichannel/paper",

@@ -106,6 +106,28 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "a3m-science-gate-closures-v3m-0-8-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3 v3M.0.8 -- three closed science-gate results integrated; readiness 75",
+    papers: ["A3"],
+    summary:
+      "Three previously-open science items were closed and integrated into the flagship paper. (1) Method-independent f_NL cross-check: a classical O(k^0) super-Hubble solution, organized by a shift decomposition into local/shear/shift/sourced ([L]/[K]/[X]/[S]) pieces, reproduces the in-in squeezed-limit result -35/16 exactly by a route independent of the in-in commutator expansion, closing Sec. II's open item; the residual gap to every separate-universe delta-N value is now the derived identity delta_N_c=(1-eps/3)*zeta rather than an unresolved discrepancy (a companion Bianchi-I check found the shear alone carries zero monopole, ruling that route out and motivating the shift-decomposition resolution). (2) The bounce's own cubic self-interaction term is computed for the first time (geometric/dressed-metric scheme S1: Delta_f_NL^bounce = -(5/24)*rho_B, confirmed independently by a finite-k numerical in-in evaluation to 3e-4), and combined with the existing linear transmission bound into a definite post-bounce prediction, f_NL^after in [-0.65,-0.50] across three explicit bounce backgrounds, valid for k*eta_B <~ 1e-2 within scheme S1 (a second scheme, S2, does not regulate). (3) The PBH channel's lognormal stand-in spectrum is supplemented with the lab's own CMB-anchored predicted curvature spectrum fed into the same compaction machinery unmodified: a clean null, f_PBH=0 exactly, 7.0 orders of magnitude short of the required amplitude at every mass scale from 10^15 g to 10^4 solar masses; the required-amplitude ratio A(-35/16)/A(-35/8) widens from 1.732+/-0.050 to 1.7-1.9 for this spectrum shape, and a FIRAS mu-distortion check finds the lab's own spectrum safely allowed (1.8e-4 of the bound) while the required early-SMBH-seed amplitude is FIRAS-excluded by ~1e3 if broadband. Abstract (306 words, under the 307-word PRD cap), Secs. II/III/IV, and the Discussion were rewritten to state each result at its exact evidential strength; the Sec. VI LSS survey-reach table was deliberately left unrecomputed at f_NL^after, since the CMB/LSS pivot scale (k~0.05/Mpc) lies far outside the k*eta_B<=1e-2 band the transmission result is validated on -- extrapolating it there would be unsupported, not a hygiene oversight. v3M.0.8: 10pp (grew from 9pp), 0 undef refs, 0 overfull hbox >10pt, md5 0c61d2ab760a14e0ff27ca560585bcbf, tarball sha256 ad3680401e0c016965d5876d3148282d820369c3d075c3f518ac09082b09743e, mirrored byte-identical to site/public/papers/ and public/papers/. Readiness held at 75 pending orchestrator verification board.",
+    keyTakeaways: [
+      "Sec. II's method-independent cross-check CLOSED: classical O(k^0) super-Hubble route reproduces -35/16 exactly; delta_N_c=(1-eps/3)*zeta resolves the separate-universe gap as a derived identity",
+      "Bounce's own cubic term computed (scheme S1): f_NL^after in [-0.65,-0.50] across three backgrounds, valid for k*eta_B <~ 1e-2",
+      "PBH channel: lab's own predicted spectrum is a clean null (f_PBH=0, 7.0 dex short); required-ratio widened to 1.7-1.9; FIRAS checks added",
+      "LSS reach table intentionally NOT recomputed at f_NL^after -- pivot scale is outside the established transmission-validity band",
+      "v3M.0.8, 10pp, md5 0c61d2ab760a14e0ff27ca560585bcbf; readiness held at 75",
+    ],
+    links: [
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "Method-independent cross-check script", href: `${GH}/research/theory_audit/fnl_monopole_adjudication_2026_09_03.py` },
+      { label: "Bounce cubic term (lane b, numerical)", href: `${GH}/research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md` },
+      { label: "Lab-own-spectrum PBH null", href: `${GH}/research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.py` },
+    ],
+  },
+  {
     id: "a3m-real-kde-injection-v3m-0-7-2026-09-02",
     dateISO: "2026-09-02",
     kind: "closure-wave",
