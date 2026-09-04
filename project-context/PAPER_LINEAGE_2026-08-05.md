@@ -557,3 +557,26 @@ choosing. Claims at evidential strength (VISION.md R6): a null is published as
 a null. Track A's multi-channel map now carries three honest nulls (PTA, PBH,
 PNG high-z abundance) and one reachable-but-unseparable channel (LSS
 bispectrum at the transmitted amplitude). Applied in the paper at v3M.0.11.
+
+## 2026-09-04 — A3M: transmitted amplitude reported as a two-scheme band (science decision D-A3-9, ledger row 9)
+
+**ORIGINAL CLAIM (v3M.0.9–0.10):** f_NL^after ∈ [−0.65, −0.50] in scheme S1 (geometric
+MS variable z = a), with S2 (effective-fluid z² = a²(ρ+p)/(c_s²H²)) reported as divergent.
+
+**NEW CLAIM (v3M.0.11):** the S2 "divergence" is a total-derivative pole created by the
+Maldacena integration-by-parts steps (1/H) across H = 0; on the raw ADM cubic Lagrangian
+with exact S2 modes the bounce-window contribution is finite and gives f_NL^after ≈ −1.25
+(kη_B ≤ 1e−2, Quintin background) against S1's −0.50 — a factor 2.5, dominated by the
+linear MS-variable choice (|λ_ζ| 0.97 vs 6.06) plus geometric/lapse cancellation, not by a
+single operator (`lane9b_s2_regulation/`, `lane9b2_s2_rawadm/`). The paper reports the
+transmitted amplitude as the scheme band S1…S2 with both values and the reason, and
+labels which observable each variable is; the survey-reach table carries both. Row-9
+lanes (a) and (c/c2) found no bounce-scale mechanism that reopens the PTA or PBH
+channels: the velocity-dip amplification is absent on all three backgrounds (Eq. 79
+factor = 1), the only transfer feature is O(1) and sign-indefinite at kη_B ≈ 0.6–0.8, and
+the Agullo–Bolliet–Sreenath operator is contained in S1 with no enhancement on exact
+LQC-dust modes (bispectrum 2–4 dex below their plateau; PBH null unchanged at 3364σ).
+
+**Why:** claims at evidential strength (VISION R6): scheme-independence was the paper's
+own stated open item; it is now answered negatively and stated as a band rather than
+hidden in a footnote. The three nulls stand.

@@ -57,7 +57,7 @@ export const tracks: Track[] = [
       "Does a nonsingular matter-bounce produce a distinctive, reproducible, and observationally testable primordial non-Gaussian signature that beats inflation-from-a-singularity as the origin of structure?",
     leadResult:
       "The exact matter-contraction amplitude f_NL^local = −35/16 is confirmed by an independent from-scratch in-in computation, which also locates Cai et al. (2009)'s published −35/8 as a uniform missing factor of 2, not a competing result. Transmitted through an explicit nonsingular bounce (the bounce's own cubic term, Δf_NL^bounce = −(5/24)ρ_B), the amplitude becomes f_NL^after ∈ [−0.65, −0.50] across three background choices — the number a survey would actually see.",
-    leadEquation: "f_NL^{local} = -35/16 \;\\rightarrow\; f_NL^{after} \\in [-0.65,\\,-0.50]",
+    leadEquation: "f_NL^local = −35/16  →  f_NL^after ∈ [−0.65, −0.50]",
     leadGrade: "derived",
     channels: [
       {

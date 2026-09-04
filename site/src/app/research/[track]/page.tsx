@@ -6,16 +6,19 @@ import { tracks, getTrack } from "@/data/tracks";
 import { getPaperBySlug } from "@/data/papers";
 import { getLivePapers, displayVersion } from "@/lib/livePapers";
 
+type TrackPageParams = Promise<{ track: string }>;
+
 export function generateStaticParams() {
   return tracks.map((t) => ({ track: t.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { track: string };
-}): Metadata {
-  const track = getTrack(params.track);
+  params: TrackPageParams;
+}): Promise<Metadata> {
+  const { track: slug } = await params;
+  const track = getTrack(slug);
   if (!track) return { title: "Track not found" };
   return {
     title: track.navTitle,
@@ -26,9 +29,10 @@ export function generateMetadata({
 export default async function TrackPage({
   params,
 }: {
-  params: { track: string };
+  params: TrackPageParams;
 }) {
-  const track = getTrack(params.track);
+  const { track: slug } = await params;
+  const track = getTrack(slug);
   if (!track) notFound();
 
   const live = await getLivePapers();
