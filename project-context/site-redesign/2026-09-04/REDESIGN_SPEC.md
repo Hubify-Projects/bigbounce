@@ -129,3 +129,59 @@ live from Convex"), and a live freshness stamp.
 | `/search` | `/search` | **Keep** as a route; entry point moves to the `⌘K` topbar affordance. |
 | `/chat` | — | **RETIRE.** Delete route, page, and nav entry; no redirect target beyond `/` — a dead feature must not sit in nav. |
 | `/old` | `/old` | **Keep, unlisted** (footer link only). |
+
+## 3. Content model per page
+
+Binding legend: **[C]** Convex-live (via `lib/livePapers.ts`, `lib/liveReadiness.ts`, `lib/publicationStatus.ts`,
+`lib/liveActivity.ts`) · **[S]** static file under `site/src/data/` (schema, narrative, fallback) · **[H]** root
+`.html`, canonical, untouched. Readiness/version/round numbers are **[C] only** — never re-typed into a static file
+except the `live-status.ts` mirror the freshness gate already checks.
+
+### 3.1 Homepage `/` — wireframe in words
+
+Full-width bands, top to bottom, no cards anywhere on this page:
+
+1. **Hero band** (bg base). Eyebrow: `spin-torsion cosmology · reproducible lab`. H1, two lines max:
+   *"Was the Big Bang the beginning?"* Sub, one sentence: the lab tests a nonsingular bounce against data that exists
+   now, and publishes the nulls. Two links, text-first, no button pair competing for weight: **Start with the
+   explainer** (primary) · **All works** (quiet). [S]
+2. **Live result strip** — four numbers on one row, hairline dividers between, no boxes: works published-ready,
+   channels closed as nulls, experiment manifests runnable now, reproduction cost. [C] for the first, [S]+[C] for the
+   rest. Each number's label is plain English; each links to its page.
+3. **The claim band** (tonal shift, surface-1). One equation rendered large and centered —
+   `f_NL^local = −35/16 → f_NL^after ∈ [−0.65, −0.50]` — with a one-line gloss underneath and a `derived` evidence
+   chip. This is the lab's single strongest sentence; it gets its own band. [S]
+4. **Three tracks band** — three rows (not three cards), each: track letter + question in H3, one-sentence lead
+   result, evidence chips for its channels, right-aligned readiness figure [C], whole row links to
+   `/research/track-x`. Rows separated by hairlines only.
+5. **Nulls band** (surface-1, calm slate accent). Title: *"What we ruled out."* Three to four one-line entries —
+   PTA (14.3 dex below NANOGrav), PBH (`f_PBH = 0`, 7.0 dex short), high-z PNG / SMBH-seed (FIRAS-excluded), chiral GW
+   at LISA (≤6e−13) — each with its receipt link. Same type weight as the claim band. [S]
+6. **Reproducibility band** — one paragraph plus a three-item row: manifests, data sources, releases & DOIs; ends
+   with the HuggingFace / Backblaze / Zenodo lockup. [S]+[C]
+7. **Latest band** — five most recent activity lines, terse, mono timestamps, link to `/activity`. [C]
+8. Footer (§2.3).
+
+### 3.2 `/papers` — all works (flat index, directive Q3)
+
+Purpose: find any work in one screen. Sections in order: (a) H1 "All works" + one line explaining that this is the
+complete flat list and `/research` is the same material grouped by question; (b) a filter row — kind (paper / note /
+software / data release), track, state — rendered as text toggles, no bordered chips; (c) **one table**, the only
+bordered surface on the page: columns *Work* (short title + **plain-English purpose line**, mandatory), *Kind*,
+*Track*, *Version* [C], *Readiness* [C], *State* (Convex publication status [C]), *PDF*. Sorted by track then
+readiness. Row → `/papers/[slug]`. No card grid; the 28-`<Card>` layout is deleted.
+
+### 3.3 `/research` and `/research/[track]` — track template
+
+`/research`: H1 + the three-track rationale in two sentences (from `PUBLICATION_ARCHITECTURE_RESET`), then the same
+three rows as the homepage but expanded with each track's works listed inline; then `#contributions` — the novelty
+graded list (N1–N4 legend kept, prose rewritten to track framing).
+
+`/research/[track]` sections in fixed order:
+1. **Question** — the track's question in H1-adjacent large type, verbatim from `VISION.md`.
+2. **Lead result** — one paragraph, one equation or number, one evidence chip.
+3. **Channels / tests table** — the only bordered surface: channel, prediction, current data, evidence grade,
+   receipt link. Nulls appear here as first-class rows.
+4. **Works in this track** — rows (title, purpose line, version [C], readiness [C], state [C]) → `/papers/[slug]`.
+5. **What is still open** — the track's open ledger rows in plain English, each with its blocker. [S]
+6. **Boundary** — what this track does *not* claim. Directly from the architecture reset's "What it is not" prose.
