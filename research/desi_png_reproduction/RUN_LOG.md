@@ -114,11 +114,31 @@ this exact DR1 patch (no mock ensemble), EH-vs-CLASS transfer function,
 missing integral-constraint/window convolution, and the reduced (4/18)
 randoms density. This is reported as the honest result, not smoothed over.
 
-## Step 5 — systematics splits
-TBD.
+## Step 5 — systematics splits (PARTIAL — 1/≥5 tests, 2026-09-04)
+`systest_weight_sys.py` + `systest_fit.py`: WEIGHT_SYS on/off (plan test 1,
+the headline lever). Result: f_NL(p=1.6 point-est) sys-on=-50.4 (matches
+the full MCMC median -50.6, good cross-check), sys-off=+11.9, **Delta
+f_NL=+62.4** — >3x our statistical sigma (18.5). Remaining 6 tests
+(Galactic-latitude, E(B-V), stellar-density, depth/seeing, AIC on/off,
+randoms jackknife) BLOCKED on compute-time budget this session (~150-200s
+per pypower run x 2 caps x N tests); each is a mechanical repeat of
+`systest_weight_sys.py`'s pattern with a different weight/selection mask —
+concrete next step, not a research blocker.
 
-## Step 6 — b_phi-marginalised statement + posterior overlap
-TBD.
+## Step 6 — b_phi-marginalised statement + posterior overlap (DONE, 2026-09-04)
+p marginalised uniformly over [1.0,1.6]: f_NL=-36.3 (+16.4/-16.4). Posterior
+distance from -35/16: 2.20 sigma; from -35/8: 2.06 sigma; from 0: 2.34
+sigma — neither flagship value distinguished from the other or from our
+own central value, consistent with ledger #3's pre-registered 0.16/0.32
+sigma reach for the official DESI sigma. Full derivation in
+`LEDGER4_RESULT_2026-09-04.md` sections 4-5.
 
-## Step 7 — result writeup
-TBD.
+## Step 7 — result writeup (DONE, 2026-09-04)
+`LEDGER4_RESULT_2026-09-04.md` (headline table, attributed causes for the
+published-vs-ours offset, systematics table, b_Phi statement, posterior
+overlap, scope-vs-plan table). Manifest
+`reproducibility/manifests/experiments/ledger4-desi-dr1-qso-fnl-reproduction.json`
+(schema-validated against `experiment.schema.json`). Ledger row 4 in
+`project-context/NEXT_SCIENCE_LEDGER.md` updated with a concise status
+append. LRG not started this session (QSO-first per task scope; QSO alone
+consumed the session's compute-time budget).
