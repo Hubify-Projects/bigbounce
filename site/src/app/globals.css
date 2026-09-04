@@ -3540,3 +3540,75 @@ code {
 }
 
 .figure-block-credit { color: var(--ink-3); }
+
+/* ── /papers works table ── */
+.works-table-title-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.works-table-title-link:hover .works-table-title { color: var(--accent-ink); }
+
+.works-table-title { font-weight: 500; }
+
+.works-table-pdf-link { color: var(--accent); text-decoration: none; }
+.works-table-pdf-link:hover { text-decoration: underline; }
+
+/* ── ReadinessBar (status, papers/[slug]) ── */
+.readiness-bar-row { display: flex; align-items: center; gap: 10px; }
+.readiness-bar-track {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 4px;
+  background: var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.readiness-bar-fill { position: absolute; inset: 0 auto 0 0; height: 100%; background: var(--accent); }
+.readiness-bar-value { font-size: 13.5px; color: var(--ink); min-width: 3.2em; }
+.readiness-bar-segments { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 6px; font-size: 12px; color: var(--ink-3); }
+
+/* ── VerdictGrid (/reviews) ── */
+.verdict-grid-wrap { margin-top: 8px; }
+.verdict-grid th, .verdict-grid td { white-space: nowrap; }
+.verdict-grid-cell { letter-spacing: 0.12em; }
+.verdict-grid-letter { display: inline-block; width: 1.1em; text-align: center; }
+.verdict-grid-accept { color: var(--grade-measured); }
+.verdict-grid-minor { color: var(--grade-open); }
+.verdict-grid-major { color: var(--danger); opacity: 0.85; }
+.verdict-grid-reject { color: var(--danger); }
+.verdict-grid-no_verdict { color: var(--ink-3); }
+.verdict-grid-frozen { opacity: 0.4; }
+.verdict-grid-inactive { opacity: 0.6; }
+.verdict-grid-note { margin: 10px 0 0; font-size: 13px; color: var(--ink-3); }
+
+/* ── TimelineList (/reviews, /activity) ── */
+.timeline-list > * + * { border-top: 1px solid var(--rule); }
+.timeline-list-row { padding: 12px 0; }
+.timeline-list-date { color: var(--ink-3); font-size: 12.5px; margin-right: 10px; }
+.timeline-list-kind {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-right: 10px;
+}
+.timeline-list-kind-quiet { color: var(--accent-ink); font-style: italic; text-transform: none; letter-spacing: 0; }
+.timeline-list-title { color: var(--ink); }
+.timeline-list-link { text-decoration: none; color: inherit; display: block; }
+.timeline-list-link:hover .timeline-list-title { color: var(--accent-ink); }
+.timeline-list-summary { margin: 6px 0 0; font-size: 13.5px; line-height: 1.6; color: var(--ink-2); max-width: 76ch; }
+.timeline-list-empty { color: var(--ink-3); font-size: 13.5px; }
+
+/* ── stale-date annotation (never red; §7.2 risk 5) ── */
+.stale-note { color: var(--grade-open); font-size: 12.5px; margin-left: 6px; }
+
+/* ── de-nested widgets: PublicationStatusWidget, ExternalReviewPanel ── */
+.widget-section { padding-top: 8px; }
+.widget-section > * + * { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 12px; }
+.widget-row { padding: 8px 0; border-top: 1px solid var(--rule); }
+.widget-row:first-child { border-top: none; }
