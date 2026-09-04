@@ -67,6 +67,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "anomaly-catalogue-data-release-ledger8-2026-09-03",
+    dateISO: "2026-09-03",
+    kind: "restructure",
+    title: "Anomaly catalogue → data release (ledger #8 answered, phase-3 v2 landed)",
+    papers: ["P3"],
+    summary:
+      "The phase-3 v2 rerun (science-only sample, S>3, n=1,244, provenance-gate clean — the fix for the S>8-sample sky-fiber contamination logged 2026-09-03) landed and closed ledger #8: the pre-declared known-object recovery benchmark exit rule (>=1 reference class, >10x enrichment, >=5 positional matches) is NOT MET — 1 BAL-quasar positional match at 4.2x enrichment (5,285 in-footprint references) is the only nonzero cell across 5 fetched reference classes (0/4 for BZCAT/CV-WD/LAE/SLSN-host). SIMBAD/NED matched 569/1,244 (45.7%), up sharply from v1's 92/3,810 (2.4%) — the expected signature of a provenance-clean, real-source-dominated sample. 675 unmatched objects roll up into 25 clusters -> 8 descriptive candidate families (302/87/71/61/44/38/36/36). Orchestrator decision: the anomaly catalogue is disposed as a DATA RELEASE, not a standalone paper, per the pre-declared criterion in NEXT_SCIENCE_LEDGER.md row 8 and consistent with the 2026-08-03 publication-architecture reset (P3 = integrated supporting release). Recorded in PAPER_LINEAGE_2026-08-05.md and a new release document (pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md) presenting the science-target selection and sky-fraction-by-score curve as method/validation content, per directive Q1. No readiness-cap change.",
+    keyTakeaways: [
+      "Ledger #8 recovery benchmark: 1 BAL-quasar match at 4.2x enrichment (below >10x/>=5-match bar); 0/4 for the other fetched reference classes — exit rule NOT MET",
+      "SIMBAD/NED match rate jumped 2.4% (v1, contaminated) -> 45.7% (v2, science-only, n=1,244) — sanity signal the cleaned sample is real astrophysical sources",
+      "675 unmatched objects -> 25 clusters -> 8 descriptive candidate families (302/87/71/61/44/38/36/36)",
+      "Decision: anomaly catalogue disposed as a DATA RELEASE (not a standalone paper); release doc + lineage entry landed; no readiness-cap change",
+    ],
+    links: [
+      { label: "Ledger row 8", href: `${GH}/project-context/NEXT_SCIENCE_LEDGER.md` },
+      { label: "Lineage decision", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+      { label: "Release document", href: `${GH}/pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md` },
+      { label: "Benchmark summary", href: `${GH}/pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md` },
+      { label: "Landing receipt", href: `${GH}/project-context/PHASE3_V2_LANDING_2026-09-03.md` },
+    ],
+  },
+  {
     id: "anomaly-sample-provenance-gate-2026-09-03",
     dateISO: "2026-09-03",
     kind: "skill-improvement",
