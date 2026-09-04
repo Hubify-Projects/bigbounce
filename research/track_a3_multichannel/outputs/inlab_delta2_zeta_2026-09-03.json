@@ -9,7 +9,7 @@
     "branches": {
       "MB_anchored_ns0.9649": {
         "n_s": 0.9649,
-        "implied_w_matter_bounce": -0.002916469327217889,
+        "implied_w_matter_bounce": -0.002899556392654459,
         "delta2_zeta_at_k": {
           "k=5e-02": 2.1e-09,
           "k=1e+02": 1.6082484514015058e-09,
@@ -585,5 +585,5 @@
     },
     "early_SMBH_seed_summary": "The amplitude a 1e3-1e6 Msun PBH seed requires is EXCLUDED by COBE/FIRAS if it is carried by a broadband (power-law) spectrum (mu up to 1.64e-01 vs mu < 9e-05); a narrow (Delta=0.5 lognormal) peak at the seed scale evades it only for the lightest seed considered (1e3 Msun, k = 1.2e5 Mpc^-1, above the window); 1e4-1e6 Msun seeds are excluded in both realisations. Either way the lab's own spectrum is ~7 dex below the required amplitude, so the lab's model does not supply the seeds and the discriminator is a null."
   },
-  "wall_clock_s": 169.53422284126282
+  "wall_clock_s": 48.704522132873535
 }

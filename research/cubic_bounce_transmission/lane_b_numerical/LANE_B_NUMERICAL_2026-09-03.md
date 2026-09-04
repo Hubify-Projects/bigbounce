@@ -127,7 +127,7 @@ definition tied to `η_B`, not a convergent isolation. Stated explicitly rather 
 | LQC effective dust | 0.250000 | −0.546875 | −0.10431 | **−0.6512** |
 | poly analytic non-LQC | 0.195501 | −0.427659 | −0.12711 | **−0.5548** |
 
-The intrinsic bounce term is **28–39 % of the transmitted contraction term and has the same
+The intrinsic bounce term is **19–39 % of the transmitted contraction term and has the same
 (negative) sign**, so it partially undoes the linear suppression but does not reverse it:
 `|f_NL^after| = 0.50–0.65` versus `|T·(−35/16)| = 0.36–0.55` and `|f_NL^before| = 2.19`.
 **In scheme S1 there is no "orders of magnitude" enhancement** in the super-Hubble band.

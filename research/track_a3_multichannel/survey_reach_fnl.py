@@ -94,6 +94,40 @@ def main():
                 abs(FNL_BOUNCE_LI) / (0.5 * (c["err_plus"] + c["err_minus"])),
             "derivation": "tension = |f_NL_pred - central| / (1-sigma error on that side)"})
 
+    # --- R3 C1(a): transmitted-amplitude f_NL^after rows ---------------------
+    # T (linear handoff fraction) and rho_B read from the committed lane-B
+    # numerical results (research/cubic_bounce_transmission/lane_b_numerical/
+    # results.json); Delta f_NL^bounce[S1] = -(5/24) rho_B (Eq. bounce_cubic,
+    # confirmed there to 3e-4 against the independent finite-k numerical
+    # in-in evaluation).
+    LANE_B_JSON = (HERE / "../cubic_bounce_transmission/lane_b_numerical/results.json").resolve()
+    lane_b = json.loads(LANE_B_JSON.read_text())
+    BACKGROUNDS = [
+        ("quintin", "Quintin-type"),
+        ("lqc", "LQC effective dust"),
+        ("poly", "poly (analytic non-LQC)"),
+    ]
+    SIGMAS = [0.7, 0.5, 1.0]  # SPHEREx bispectrum-only, SPHEREx P+B target, MegaMapper
+    after_rows = []
+    for key, label in BACKGROUNDS:
+        bg = lane_b["backgrounds"][key]
+        T = bg["T_fNL_linear"]
+        rho_B = bg["rho_B"]
+        delta_bounce = -(5.0 / 24.0) * rho_B
+        for fnl_label, fnl_pre in (("-35/16", FNL_BOUNCE_LI), ("-35/8", FNL_BOUNCE_CAI)):
+            fnl_after = T * fnl_pre + delta_bounce
+            row = {
+                "background": label,
+                "T_fNL": T,
+                "rho_B": rho_B,
+                "delta_fNL_bounce_S1": delta_bounce,
+                "f_NL_pre": fnl_label,
+                "f_NL_after": fnl_after,
+            }
+            for s in SIGMAS:
+                row[f"bare_significance_sigma{s}"] = abs(fnl_after) / s
+            after_rows.append(row)
+
     out = {
         "task": "Track A3 channel 3 — survey reach for f_NL^local = -35/16",
         "f_NL_matter_bounce_Li_-35/16": FNL_BOUNCE_LI,
@@ -103,6 +137,14 @@ def main():
                     "research/focused_paper_source_integration/02_full_draft.tex",
         "forecast_reach": forecast,
         "current_constraints": current,
+        "transmitted_reach_after_bounce_R3_C1a": {
+            "note": "R3 closure C1(a): the kappa*eta_B <~ 1e-2 window is an upper "
+                    "bound on k, satisfied most easily at the LSS/CMB pivot, so "
+                    "f_NL^after = T*f_NL^pre + Delta_f_NL^bounce[S1] is the "
+                    "paper's observable prediction for every channel.",
+            "T_and_rho_B_source": str(LANE_B_JSON),
+            "rows": after_rows,
+        },
         "notes": [
             "MegaMapper is a proposed, unapproved facility. Consistent with this "
             "lab's P2 policy we quote it as an outlook at the published "

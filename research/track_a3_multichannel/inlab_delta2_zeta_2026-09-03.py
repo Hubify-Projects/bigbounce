@@ -21,7 +21,7 @@ PART 1 -- THE SPECTRUM
 For a contracting phase with equation of state w, the curvature perturbation
 that exits the Hubble radius acquires
 
-    Delta^2_zeta(k) = A_s (k/k_*)^{n_s - 1},     n_s - 1 = 12 w / (1 + w)
+    Delta^2_zeta(k) = A_s (k/k_*)^{n_s - 1},     n_s - 1 = 12 w / (1 + 3w)
 
 [LITERATURE: Wands 1999 (gr-qc/9809062) duality; Cai, Easson & Brandenberger 2012
 (arXiv:1206.2382) sections 2-4; Quintin, Sherkatghanad, Cai & Brandenberger 2015
@@ -206,7 +206,7 @@ def main():
             "n_s_planck2018": N_S_PLANCK, "n_s_sigma": N_S_SIG,
             "branches": {}}
     for name, ns in BRANCHES.items():
-        w = (ns - 1.0) / (13.0 - ns)            # n_s-1 = 12w/(1+w) inverted
+        w = (ns - 1.0) / (3.0 * (5.0 - ns))      # n_s-1 = 12w/(1+3w) inverted
         row = {"n_s": ns, "implied_w_matter_bounce": w,
                "delta2_zeta_at_k": {}}
         for kk in [0.05, 1e2, 1e4, 1e5, 1e8, 1e13, 1e15]:

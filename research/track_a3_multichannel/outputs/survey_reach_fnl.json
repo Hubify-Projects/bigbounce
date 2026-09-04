@@ -87,6 +87,78 @@
       "derivation": "tension = |f_NL_pred - central| / (1-sigma error on that side)"
     }
   ],
+  "transmitted_reach_after_bounce_R3_C1a": {
+    "note": "R3 closure C1(a): the kappa*eta_B <~ 1e-2 window is an upper bound on k, satisfied most easily at the LSS/CMB pivot, so f_NL^after = T*f_NL^pre + Delta_f_NL^bounce[S1] is the paper's observable prediction for every channel.",
+    "T_and_rho_B_source": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/cubic_bounce_transmission/lane_b_numerical/results.json",
+    "rows": [
+      {
+        "background": "Quintin-type",
+        "T_fNL": 0.16500538338165804,
+        "rho_B": 0.6699892332366839,
+        "delta_fNL_bounce_S1": -0.13958109025764248,
+        "f_NL_pre": "-35/16",
+        "f_NL_after": -0.5005303664050195,
+        "bare_significance_sigma0.7": 0.7150433805785993,
+        "bare_significance_sigma0.5": 1.001060732810039,
+        "bare_significance_sigma1.0": 0.5005303664050195
+      },
+      {
+        "background": "Quintin-type",
+        "T_fNL": 0.16500538338165804,
+        "rho_B": 0.6699892332366839,
+        "delta_fNL_bounce_S1": -0.13958109025764248,
+        "f_NL_pre": "-35/8",
+        "f_NL_after": -0.8614796425523965,
+        "bare_significance_sigma0.7": 1.2306852036462808,
+        "bare_significance_sigma0.5": 1.722959285104793,
+        "bare_significance_sigma1.0": 0.8614796425523965
+      },
+      {
+        "background": "LQC effective dust",
+        "T_fNL": 0.24999984087240829,
+        "rho_B": 0.5000003182551834,
+        "delta_fNL_bounce_S1": -0.10416673296982988,
+        "f_NL_pre": "-35/16",
+        "f_NL_after": -0.651041384878223,
+        "bare_significance_sigma0.7": 0.9300591212546044,
+        "bare_significance_sigma0.5": 1.302082769756446,
+        "bare_significance_sigma1.0": 0.651041384878223
+      },
+      {
+        "background": "LQC effective dust",
+        "T_fNL": 0.24999984087240829,
+        "rho_B": 0.5000003182551834,
+        "delta_fNL_bounce_S1": -0.10416673296982988,
+        "f_NL_pre": "-35/8",
+        "f_NL_after": -1.1979160367866162,
+        "bare_significance_sigma0.7": 1.7113086239808804,
+        "bare_significance_sigma0.5": 2.3958320735732324,
+        "bare_significance_sigma1.0": 1.1979160367866162
+      },
+      {
+        "background": "poly (analytic non-LQC)",
+        "T_fNL": 0.19550110608544408,
+        "rho_B": 0.6089977878291118,
+        "delta_fNL_bounce_S1": -0.12687453913106497,
+        "f_NL_pre": "-35/16",
+        "f_NL_after": -0.5545332086929738,
+        "bare_significance_sigma0.7": 0.7921902981328198,
+        "bare_significance_sigma0.5": 1.1090664173859477,
+        "bare_significance_sigma1.0": 0.5545332086929738
+      },
+      {
+        "background": "poly (analytic non-LQC)",
+        "T_fNL": 0.19550110608544408,
+        "rho_B": 0.6089977878291118,
+        "delta_fNL_bounce_S1": -0.12687453913106497,
+        "f_NL_pre": "-35/8",
+        "f_NL_after": -0.9821918782548827,
+        "bare_significance_sigma0.7": 1.4031312546498327,
+        "bare_significance_sigma0.5": 1.9643837565097655,
+        "bare_significance_sigma1.0": 0.9821918782548827
+      }
+    ]
+  },
   "notes": [
     "MegaMapper is a proposed, unapproved facility. Consistent with this lab's P2 policy we quote it as an outlook at the published order-unity level only, and do not transfer any systematic budget or headline a significance for it.",
     "The two illustrative rows (sigma = 0.3, 0.1) are NOT published forecasts and must never be quoted as such.",
