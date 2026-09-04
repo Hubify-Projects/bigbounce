@@ -9,7 +9,7 @@
     {
       "name": "P5 matched chirality x DESI DR1 catalog",
       "type": "internal-artifact",
-      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
       "checksum": null
     }
   ],
@@ -39,7 +39,7 @@
     "est_cost_usd": 0.0,
     "parallelizable": true,
     "resume_support": true,
-    "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep."
+    "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
   },
   "outputs": [
     {
@@ -53,6 +53,7 @@
   "provenance": [
     "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
     "project-context/SSOT/paper-5/status.md",
-    "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 06_analysis_density.py maps to this analysis."
+    "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 06_analysis_density.py maps to this analysis.",
+    "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
   ]
 }
