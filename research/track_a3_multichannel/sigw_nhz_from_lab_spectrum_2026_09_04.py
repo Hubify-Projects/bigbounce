@@ -154,9 +154,9 @@ def main():
     Mpl, T0 = 2.435323e18, 2.7255 * 8.617333262e-14
     c_H = np.sqrt(np.pi ** 2 * G_STAR_RD / 90.0) / Mpl
     c_a = T0 * (3.9091 / G_STAR_RD) ** (1.0 / 3.0)
-    kB = {}
-    for T_B in [1e16, 1e14, 1e10, 1e8]:
-        kB[f"T_B={T_B:.0e} GeV"] = float(c_a * c_H * T_B / 6.39193e-39)
+    kB, T_B_LIST = {}, [1e16, 1e14, 1e10, 1e8]
+    for T_B in T_B_LIST:
+        kB["T_B=1e%d GeV" % round(np.log10(T_B))] = float(c_a * c_H * T_B / 6.39193e-39)
     kmax = float(k.max())
     out["transfer_validity"] = {
         "criterion": "A2 transfer scale-independent only for k eta_B = k/k_B <~ 1e-2",
@@ -208,7 +208,7 @@ def main():
     A_needed = float(np.sqrt(om_prod_needed / 0.8222))
     A_lab = float(delta2_zeta(K_PER_HZ * F_YR, 0.9649))
     # a k~k_B feature inside the band requires k_B <= k(60 nHz)
-    T_B_needed = 1e16 * kmax / kB["T_B=1e16 GeV"]
+    T_B_needed = 1e16 * kmax / kB["T_B=1e16 GeV"]  # k_B scales linearly with T_B
     H_B_needed = float(np.sqrt(np.pi ** 2 * G_STAR_RD / 90.0) * T_B_needed ** 2 / Mpl)
     out["what_would_give_gamma3"] = {
         "required_spectral_index_of_P_R_at_nHz": n_needed,
@@ -261,10 +261,9 @@ def main():
     ref = ng_omega_h2(F_YR)
     ax.loglog(fn, ref * (f / F_YR) ** 2.0, ":", color="crimson", lw=1.6,
               label=r"$\gamma=3$ ($\Omega\propto f^2$) at NANOGrav amplitude")
-    ax.axvspan(F_LO_NHZ, F_HI_NHZ, color="0.85", zorder=0)
-    ax.set_xlabel("f  [nHz]"); ax.set_ylabel(r"$\Omega_{\rm GW}h^2$")
+    ax.set_xlabel("f  [nHz]"); ax.set_ylabel(r"$\Omega_{\rm GW}h^2$"); ax.set_ylim(1e-24, 1e-7)
     ax.set_title("A3-3: induced GWs at nHz from the lab's own $\\Delta^2_\\zeta$")
-    ax.legend(fontsize=7.5, loc="lower right"); ax.grid(alpha=0.3, which="both")
+    ax.legend(fontsize=7.5, loc="center left"); ax.grid(alpha=0.3, which="both")
     fig.tight_layout(); fig.savefig(OUTP, dpi=150)
 
     print(json.dumps({k2: out[k2] for k2 in

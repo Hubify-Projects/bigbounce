@@ -1,0 +1,66 @@
+{
+ "kernel_validation": {
+  "benchmark": "scale-invariant P_zeta = A -> Omega_GW = 0.8222 A^2 (Espinosa-Racco-Riotto 2018; Kohri-Terada 2018 arXiv:1804.08577)",
+  "computed_coefficient": 0.8225416718808868,
+  "published_coefficient": 0.8222,
+  "rel_error": 0.00041555811345991275
+ },
+ "f_to_k": {
+  "relation": "k [Mpc^-1] = 2 pi f (Mpc_km / c_km_s) = 6.4671e14 * f[Hz]",
+  "k_per_nHz_Mpc-1": 646710.1998516588,
+  "k_at_2nHz": 1293420.3997033176,
+  "k_at_60nHz": 38802611.99109952,
+  "k_at_f_yr": 20493009.603127573
+ },
+ "branches": {
+  "MB_anchored_ns0.9649": {
+   "n_s": 0.9649,
+   "Delta2_zeta_at_2nHz": 1.1535358021055184e-09,
+   "Delta2_zeta_at_60nHz": 1.0237269164087578e-09,
+   "Omega_GW_h2_at_2nHz": 1.7570742862543923e-23,
+   "Omega_GW_h2_at_60nHz": 1.3838729201599862e-23,
+   "Omega_GW_h2_near_f_yr": 1.454451049684014e-23,
+   "n_Omega_local_slope": -0.07019999999999826,
+   "gamma_pred": 5.070199999999998,
+   "gamma_pred_analytic_2(ns-1)+5": 5.0702,
+   "z_vs_NANOGrav_official_gamma": 5.127464999999995,
+   "log10_amplitude_shortfall_vs_NANOGrav_at_f_yr": 14.341563937534168
+  },
+  "pure_dust_ns1": {
+   "n_s": 1.0,
+   "Delta2_zeta_at_2nHz": 2.1e-09,
+   "Delta2_zeta_at_60nHz": 2.1e-09,
+   "Omega_GW_h2_at_2nHz": 5.876402212251419e-23,
+   "Omega_GW_h2_at_60nHz": 5.876402212251419e-23,
+   "Omega_GW_h2_near_f_yr": 5.876402212251419e-23,
+   "n_Omega_local_slope": 2.0126511885467765e-15,
+   "gamma_pred": 4.999999999999998,
+   "gamma_pred_analytic_2(ns-1)+5": 5.0,
+   "z_vs_NANOGrav_official_gamma": 4.934999999999994,
+   "log10_amplitude_shortfall_vs_NANOGrav_at_f_yr": 13.735151533391786
+  }
+ },
+ "what_would_give_gamma3": {
+  "required_spectral_index_of_P_R_at_nHz": 1.0,
+  "rule": "broad P_R ~ k^n in RD gives Omega_GW ~ f^{2n} (Domenech arXiv:2109.01398)",
+  "lab_spectrum_index_n": {
+   "MB_anchored_ns0.9649": -0.03510000000000002,
+   "pure_dust_ns1": 0.0
+  },
+  "required_Delta2_zeta_at_f_yr_for_NANOGrav_amplitude": 0.016493613732930384,
+  "lab_Delta2_zeta_at_f_yr": 1.0469255053709048e-09,
+  "log10_amplitude_gap": 7.197400039234421,
+  "alternative_IR_causal_tail": "Omega_GW ~ f^3 (gamma = 2) is the universal IR causal floor (Cai, Pi & Sasaki 2020, PRD 102 083528, arXiv:1909.13728); gamma = 3 is neither that floor nor the flat-spectrum result -- it requires P_R ~ k^1 sustained ACROSS the band.",
+  "k_B_needed_for_a_bounce_feature_in_band_Mpc-1": 38802611.99109953,
+  "T_B_needed_GeV": 2.2635057790690967,
+  "H_B_needed_GeV": 7.198122025614155e-18,
+  "paper_section_V_condition": "T_B >~ 1e8-1e10 GeV",
+  "decades_below_section_V": 7.645218392348488
+ },
+ "verdict": {
+  "answer": "A",
+  "gamma_pred_MB_anchored": 5.070199999999998,
+  "gamma_pred_pure_dust": 4.999999999999998,
+  "statement": "The lab's CMB-anchored spectrum gives gamma_pred ~ 5.07 (near-flat Omega_GW), NOT gamma = 3, and an amplitude ~1e14 times below the NANOGrav signal. The PTA channel is a NULL for this model: it neither predicts nor is constrained by the signal. gamma = 3 requires P_R ~ k^1 across the nHz band plus a ~1e7 amplitude enhancement -- i.e. exactly the PBH-forming small-scale enhancement the paper's section V C denies the model has."
+ }
+}
