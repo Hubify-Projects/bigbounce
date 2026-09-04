@@ -118,3 +118,48 @@ contain is not an **operator** but a **regime**: ABS evaluate the same operators
 (non-super-Hubble, oscillatory, non-adiabatically-excited) mode functions of their Eq. (60), `chieq`,
 $v_k''+(k^2+f(\eta))v_k=0$ with $f=a^2(\tilde{\mathfrak U}-R/6)$, whereas lane (a)/(b) evaluated them
 with the super-Hubble reduction $\zeta=C_1+C_2J$ valid only for $k\eta_B\lesssim10^{-2}$.
+
+---
+
+## 2. The scale of the enhancement, in the lab's $k\eta_B$
+
+### 2.1 What ABS define (literature)
+
+*Their §IV A:* "we define the bounce scale $k_{\rm LQC}$ as
+$k_{\rm LQC}\equiv a(\eta_B)\sqrt{R_{\rm B}/6}\approx a(\eta_B)\sqrt{\kappa\rho_{\rm B}}$ … we expect the
+power spectrum to be significantly affected by the bounce for modes with $k\lesssim k_{\rm LQC}$."
+*Their §V*, using $a(t)=a_B(1+3\kappa\rho_{\rm B}t^2)^{1/6}$ (kinetic-dominated LQC bounce, their
+citation to Bolliet+2015), locates the pole of $a^{-1}$ at $t_p=i/\sqrt{3\kappa\rho_{\rm B}}$, i.e.
+$$\eta_p=i\sqrt{\pi/3}\,\frac{\Gamma[5/6]}{2\Gamma[4/3]}\frac{1}{a_B\sqrt{\kappa\rho_{\rm B}}}=i\,\frac{\alpha}{k_{\rm LQC}},\qquad \alpha\simeq0.64677,$$
+whence "the bounce produces a contribution to $f_{\rm NL}(k_1,k_2,k_3)$ whose amplitude changes with
+$k_i$ according to $e^{-\alpha(k_1+k_2+k_3)/k_{\rm LQC}}$, when $(k_1+k_2+k_3)\gtrsim k_{\rm LQC}$."
+Their summary point (4) adds: modes with $k\gg k_{\rm LQC}$ are unaffected; and point (7)/§IV point 4:
+the power spectrum departs from scale invariance for $k\lesssim k_{\rm LQC}$ but $f_{\rm NL}$ does so
+for $k\lesssim10\,k_{\rm LQC}$, so there is a window $k\in(2k_{\rm LQC},10k_{\rm LQC})$ where the
+power-spectrum effect is already negligible while the $f_{\rm NL}$ effect is not.
+
+### 2.2 Conversion to $k\eta_B$ (computed, `lane9c_scale_window.py`)
+
+The lab's $\eta_B$ is the conformal half-width of the NEC-violating window, which in LQC is
+$\rho\ge\rho_{\rm c}/2$ for any matter content (since $\dot H=-\tfrac\kappa2(\rho+P)(1-2\rho/\rho_{\rm c})$).
+With $\kappa=1$, $a_B=1$ (lane (a) conventions), so that $k_{\rm LQC}=\sqrt{\rho_{\rm B}}$:
+
+| background | $a$ near the bounce | NEC edge | $\eta_B\sqrt{\rho_{\rm B}}$ | $k_{\rm LQC}\eta_B$ |
+|---|---|---|---|---|
+| lab **LQC dust** (lane (a) Table 2) | $a^3=1+\tfrac34\rho_{\rm c}t^2$ | $a^3=2$ | $\tfrac2{\sqrt3}\int_0^1\!(1+u^2)^{-1/3}\d u=1.0601$ | **1.060** |
+| ABS **kinetic-dominated** (their §V) | $a^6=1+3\kappa\rho_{\rm B}t^2$ | $a^6=2$ | $\tfrac1{\sqrt3}\int_0^1\!(1+u^2)^{-1/6}\d u=0.5529$ | **0.553** |
+
+and their pole sits at $|\eta_p|=\alpha/k_{\rm LQC}=1.170\,\eta_B$ on their own background — just
+outside the NEC window, as it must be. Therefore, in the lab's normalisation (LQC dust):
+
+$$\boxed{\ k\lesssim k_{\rm LQC}\ \Longleftrightarrow\ k\eta_B\lesssim 1.06\ ,\qquad
+k\lesssim10\,k_{\rm LQC}\ \Longleftrightarrow\ k\eta_B\lesssim 10.6\ ,}$$
+$$|f_{\rm NL}^{\rm bounce}|\propto e^{-\alpha k_t/k_{\rm LQC}}=e^{-1.830\,k\eta_B}\ \ \text{(equilateral, }k_t=3k).$$
+
+**Where this sits relative to the lab's bands.** The onset of the ABS enhancement is at
+$k\eta_B\approx1$ — i.e. **exactly the row-9 regime**, and **two decades above the S1 validity band**
+$k\eta_B\lesssim10^{-2}$ in which $\Delta f_{\rm NL}^{\rm bounce}=-\tfrac5{24}\rho_B$ was computed.
+Note the sense of the inequality: ABS's $e^{-1.83k\eta_B}$ is a **suppression at large $k$**, so the
+lab's band $k\eta_B\lesssim10^{-2}$ lies on the *plateau* of their bounce contribution, not outside
+it. The lab and ABS therefore evaluate the same operators on the same side of the same scale — and
+still differ by four orders of magnitude in the answer (§3). That difference is not an operator gap.
