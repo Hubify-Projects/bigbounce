@@ -536,6 +536,20 @@ export const reproPrograms: ReproProgram[] = [
         ]
       },
       {
+        "id": "a3-r5-15-tensor-omega-nhz",
+        "depends_on": [
+          "a3-3-sigw-nhz-from-lab-spectrum",
+          "a3-pta-gamma-reproduction"
+        ]
+      },
+      {
+        "id": "a3-r5-18-gammacr-coverage",
+        "depends_on": [
+          "a3-pbh-compaction-fnl",
+          "a3-1b-inlab-delta2-zeta"
+        ]
+      },
+      {
         "id": "ledger9-c-abs-operator-map",
         "depends_on": [
           "p2-a2-lane-a-cubic-vertex-table",
@@ -1458,6 +1472,213 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY/A3M_v3M.0.4_R2_truth_audit.md finding #1 / DA3M-R2-01",
       "project-context/peer-reviews/DISPOSITIONS/A3M.md DA3M-R2-01",
       "research/track_a3_multichannel/paper/main.tex §IV C"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-r5-15-tensor-omega-nhz",
+    "title": "A3M R5-15 - the model's own FIRST-ORDER (primordial) tensor Omega_GW h^2 in the NANOGrav band, compared with the scalar-induced background and with NANOGrav: which dominates, and does the PTA null change?",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Ade et al. (BICEP/Keck + Planck) 2021 - r < 0.036 (95% CL) at k_* = 0.05 Mpc^-1; CASE A tensor amplitude (an UPPER LIMIT)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2110.00483",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Watanabe & Komatsu 2006 - radiation-era propagation of a first-order tensor mode; Omega_GW = P_T/24 deep inside the horizon",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/0604176",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Caprini & Figueroa 2018 - cosmological GW background review, Sec. 2 (same propagation and the g_* transfer factor)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1801.04268",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2018 - A_s = 2.1e-9 at k_* = 0.05 Mpc^-1, n_s = 0.9649 (the background from which n_T = n_s - 1 is taken)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1807.06209",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "NANOGrav 15 yr - HD-correlated power law, Omega_GW h^2(f_yr) = 3.6235e-9 (the comparison target)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2306.16213",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai et al. 2009 matter-bounce r = 0.84 - CASE B scenario only; this program's OPEN item A3-4 (re-derivation unresolved)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/0810.4677",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-3 induced (second-order) background: Omega_GW h^2(f_yr) = 1.4545e-23 (anchored) / 5.8764e-23 (dust) - the comparator this item is measured against, and the source of the identical f<->k map and transfer prefactor",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/outputs/sigw_nhz_from_lab_spectrum_2026_09_04.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "The paper's gamma convention Omega_GW ~ f^{5-gamma} and its 'prim. tensors n_T = 0' Table II row",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/pta_gamma_reproduce.py",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/r5_15_tensor_omega_nhz.py",
+        "entrypoint": "cd research/track_a3_multichannel && python3 r5_15_tensor_omega_nhz.py",
+        "sha256": "25123c89cbfcb8cac0992212faf53966c92d56da2c8d786dd315fc064c469fae"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy 2.5.1",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "<0.01 s (measured, field wall_seconds in the output JSON)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~1 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline, deterministic, closed-form (no RNG, no data files, no network, no quadrature). Nothing is tuned: r is a published CMB upper bound (CASE A) or the program's own open literature value (CASE B, labelled a scenario); the transfer prefactor 1.62e-5 (g_*/106.75)^{-1/3} is copied verbatim from the companion induced-GW script whose kernel normalisation is already validated against a published benchmark. A g_* = 20 variant (nHz horizon entry, T ~ 0.2 GeV) is carried in every case row as a x1.75 sensitivity."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/outputs/r5_15_tensor_omega_nhz.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/outputs/R5_15_TENSOR_NOTE_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) cases['A_CMB_bound_r0.036|MB_anchored_ns0.9649'].Omega_GW1_h2_at_f_yr == 2.544e-17 with log10_ratio_first_order_over_induced_at_f_yr == 6.243 and log10_shortfall_vs_NANOGrav_at_f_yr == 8.154; (b) the pure-dust CASE A row gives 5.103e-17, ratio 5.939, shortfall 7.851; (c) CASE B (r = 0.84) gives 5.936e-16 (anchored) and 1.191e-15 (dust), shortfalls 6.786 and 6.483; (d) gamma_pred_first_order == 5.0351 (n_T = n_s - 1) and 5.0000 (dust), i.e. within 0.04 of the induced gamma_pred = 5.0702; (e) every g_star20_variant row is x1.75 its baseline; (f) verdict.does_the_PTA_null_change begins 'NO.'",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/peer-reviews/INT_v3/A3M_v3M.0.11_R5_TRUTH_AUDIT_2026-09-04.md item DA3M-R5-15 (MINOR-SCIENCE; closure plan (ii)) - this experiment is that item's closure evidence",
+      "research/track_a3_multichannel/outputs/R5_15_TENSOR_NOTE_2026-09-04.md (method, table, and the sentence the paper may state)",
+      "research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md (the second-order comparator this result is measured against)",
+      "directive Q2 (per-experiment reproducibility manifests), directive Q1 (the result is stated in its own terms as a null, not as a redo narrative), directive R1 (ledger-first)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-r5-18-gammacr-coverage",
+    "title": "A3M R5-18 - gamma_cr coverage of the 27-point PBH (Delta, r_p k_p, C_th) grid: how many points sit on the enhancement branch (gamma_cr <= 0.85), and is the quoted 1.7-1.9 required-amplitude ratio inside the scanned coverage?",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025 - gamma_cr = sigma_cr^2/(sigma_c sigma_r), Eq. 50; the compaction-function formalism the grid implements, and the source of the unresolved sign disagreement the ratio is conditional on",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2409.18983",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1 compaction-function PBH grid - the 27 (Delta, r_p k_p, C_th) points with gamma_cr and ratio_-35/16_over_-35/8 (robust_amplitude_requirement_grid)",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/outputs/pbh_compaction_fnl.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1b in-lab curvature spectrum - gamma_cr of the lab's own near-scale-invariant shape over the IR-cutoff scan (ir_cutoff_sensitivity)",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1b note - the 1.85-1.89 ratio at the in-lab shape and the observation that it lies outside the grid's [1.610, 1.809]",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1 note - the sign-flip statement (enhancement at gamma_cr <~ 0.85, suppression above), step (4) of the generating script",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/r5_18_gammacr_coverage.py",
+        "entrypoint": "cd research/track_a3_multichannel && python3 r5_18_gammacr_coverage.py",
+        "sha256": "17dbba072f883f47dfc8e8113fa069a0fd77360d4d163320a3ee5b7f2214dc28"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 (stdlib only; no numpy required)",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "<0.01 s (measured, field wall_seconds in the output JSON)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~1 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic re-reading of two COMMITTED result JSONs. No physics is re-derived, no integral re-run, no parameter fitted: the script tabulates gamma_cr and the required-amplitude ratio already stored per grid point, counts how many fall at or below the 0.85 sign-flip scale, and compares the covered range with the in-lab shape's gamma_cr. Regenerating the two input JSONs (a3-pbh-compaction-fnl, a3-1b-inlab-delta2-zeta) is the upstream reproduction path."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/outputs/r5_18_gammacr_coverage.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) n_points == 27 and n_distinct_gamma_cr == 9 (gamma_cr is C_th-independent, so each shape value repeats over C_th in {0.4,0.5,0.6}); (b) gamma_cr_covered_range == [0.76604, 0.96752]; (c) n_points_at_or_below_flip == 9, at gamma_cr in {0.766037, 0.807754, 0.846110} -- i.e. the grid straddles the 0.85 sign-flip scale; (d) ratio_range_over_grid == [1.6097, 1.8086], consistent with the committed headline 1.7320 +- 0.0502 (n=27); (e) inlab_gamma_cr_range == [0.26681, 0.62979] and inlab_inside_grid_coverage == false, i.e. the lab's own spectrum shape sits ENTIRELY BELOW the scanned coverage; (f) verdict.is_the_quoted_ratio_inside_coverage begins 'NO for the lab's own spectrum shape.'",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/peer-reviews/INT_v3/A3M_v3M.0.11_R5_TRUTH_AUDIT_2026-09-04.md item DA3M-R5-18 (residual of Fable M5; closure plan (ii)-lite) - this experiment is that item's closure evidence",
+      "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md (per-point table and the sentence the paper may state)",
+      "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md (open item A3-1d: the in-lab shape reaches the enhancement branch by a physically-motivated shape, not only by grid corners)",
+      "directive Q2 (per-experiment reproducibility manifests), directive Q1 (result stated in its own terms), directive R1 (ledger-first)"
     ]
   },
   {
