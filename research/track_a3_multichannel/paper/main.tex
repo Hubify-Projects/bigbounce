@@ -68,7 +68,7 @@ compaction-function criterion gives a shape-robust required-amplitude ratio
 $A(-35/16)/A(-35/8)\approx1.7$--$1.9$, in a regime that is only marginally
 perturbative ($1.2|\fnl|\sigma_r\approx0.5$--$2$) with $\fpbh(\fnl)$
 non-monotonic; fed the lab's predicted spectrum, the channel is a clean
-\emph{null}: $7.0$ orders of magnitude short of the required amplitude, with
+\emph{null}: $6.7$--$7.0$ orders of magnitude short of the required amplitude, with
 $\fpbh=0$ exactly. (iii)~\emph{Large-scale structure.} Consistent with DESI DR1 under either prior ($0.16\sigma$/$0.77\sigma$). At
 the transmitted amplitude this channel does not discriminate the two
 candidates: SPHEREx bispectrum-only significance is $0.7$--$0.9\sigma$
@@ -179,7 +179,8 @@ orientation,
 f_{\rm NL}^{\rm sq}(\mu)=-\frac{35}{16}+\frac{15}{16}\mu^2,
 \label{eq:orientation}
 \end{equation}
-a monopole $-15/8$ and a quadrupole $15/16$ under angular averaging. The
+a monopole $-15/8$ and a $\mu^2$ coefficient $15/16$ (Legendre $\ell=2$
+coefficient $5/8$) under angular averaging. The
 equilateral and folded values are $-255/128$ and $-9/8$, matching
 Ref.~\cite{Li2016}'s $c_s=1$ limit exactly. Equation~\eqref{eq:orientation} is
 not a new physical effect: it is the fixed-angle squeezed limit already
@@ -337,9 +338,15 @@ independent of when in the contraction phase it is evaluated. For a linear
 mode-mixing matrix that carries the growing mode's amplitude through the
 bounce with weight $1$ and the sub-dominant decaying mode with weight $r$,
 writing $\rho(\eta_h)\equiv|J(-\eta_h)|/I_\infty\in(0,1]$ for the fraction of the
-mode-mixing integral accumulated before $\eta_h$, the transmitted bispectrum
+mode-mixing integral accumulated before $\eta_h$, the transmitted $\fnl$
 amplitude scales as $T_{\fnl}(\eta_h)=\dfrac{1+r\,[1-\rho(\eta_h)]}{1+2r}$,
-where $r=-9i\mathcal{A}^2 I_\infty/k^3$ is in general complex; over the
+where $\mathcal A$ is the matter-asymptotic normalization of the scale
+factor ($a\to\mathcal A\tau^2$), $I_\infty\equiv J(+\infty)$ is the
+super-Hubble mode-mixing integral of the growing-mode basis, and
+$r=-9i\mathcal{A}^2 I_\infty/k^3=\beta_-I_\infty/\alpha_-$ is in general
+complex, with $\alpha_-,\beta_-$ the matter-basis projection coefficients
+and the denominator $1+2r$ fixing the vacuum normalization
+$C_1=\alpha_-(1+r)$, $C_2=\beta_-$; over the
 validated range $k\eta_B\lesssim10^{-2}$ used throughout this paper,
 $|r|\gg1$ holds numerically for all three backgrounds below, and in this
 growing-mode-dominated limit the transfer reduces to
@@ -348,7 +355,17 @@ T_{\fnl}=\frac{1-\rho(\eta_h)}{2},
 \end{equation}
 so that, under assumption (A4), $0\le T_{\fnl}<1/2$ since $\rho\in(0,1]$: within
 this handoff scheme, linear transfer can only suppress the amplitude, never
-invert or amplify its sign. Evaluated across three explicit nonsingular bounce
+invert or amplify its sign. $T_{\fnl}$ is precisely the $f_{\rm NL}$
+transfer, $T_{\fnl}=1/\lambda_\zeta$ with $\lambda_\zeta\equiv\zeta(+\infty)/\zeta(-\eta_h)$
+the linear-amplitude growth of $\zeta$ across the handoff
+($\lambda_\zeta=4.0$, $5.12$, $6.06$ for the LQC, poly, and Quintin-type
+backgrounds respectively): $\zeta$ \emph{grows} through the bounce by
+$\lambda_\zeta$, which is why $\fnl$ is suppressed rather than enhanced by a
+uniform rescaling. Separately, the post-bounce curvature power spectrum
+remains scale-invariant, $\Delta^2\propto k^3|\alpha_{\rm post}|^2$ flat to
+$1.2$--$4.2\%$ across the validated $k$ range in the $|r|\gg1$ limit used
+here, so $n_s=0.9649$ in Sec.~\ref{sec:lss} is not in tension with this
+section. Evaluated across three explicit nonsingular bounce
 backgrounds -- an LQC effective quasi-dust bounce (``LQC''), an analytic
 non-LQC polynomial bounce (``poly (analytic non-LQC)'', a different
 functional bounce profile from the LQC effective-dust form, not an LQC
@@ -524,7 +541,10 @@ quoted to one significant figure for the same reason.
 \caption{\label{tab:pta}Channel I. Tensions against the official NANOGrav
 $14$-bin posterior ($\gamma_{\rm HD}=3.2^{+0.6}_{-0.6}$, $\sigma\approx0.365$)
 and against this lab's $30$-bin refit (Eq.~\eqref{eq:gamma}), with the
-refit's Savage--Dickey factor where the chain has posterior support. All
+refit's Savage--Dickey factor where the chain has posterior support. The
+causal floor ($\gamma=2$, $\OmGW\propto f^3$, the universal IR bound
+discussed below in this section) is included as a comparator alongside
+the three physical hypotheses. All
 values reproduced from the committed chain (\texttt{pta\_gamma\_reproduce.py});
 differences from a self-reproduction run of the same script against the same chain are $\le3\times10^{-15}$ (floating-point-level agreement, not an independent external check). $z_{\rm refit}$
 at $\gamma=5$ is a Gaussian approximation only: $0$ of $3.2\times10^5$ chain
@@ -535,6 +555,7 @@ factor is reported there (see text).}
 \begin{tabular}{lccccc}
 Hyp. & $\gamma_*$ & slope & $z_{\rm off}$ & $z_{\rm refit}$ & $B_{\gamma_*/{\rm free}}$ \\
 \colrule
+Causal floor  & $2$    & $f^{3}$   & $3.29\sigma$ & $1.48\sigma$ & $0.54$ \\
 Matter bounce & $3$    & $f^{2}$   & $0.55\sigma$ & $1.14\sigma$ & $3.23$ \\
 SMBHB         & $13/3$ & $f^{2/3}$ & $3.1\sigma$  & $4.63\sigma$ & $5\times10^{-4}$ \\
 Prim.\ tensors& $5$    & $f^{0}$   & $4.9\sigma$  & $6.37\sigma$ & n/a \\
@@ -795,11 +816,13 @@ Present-day abundance uses~\cite{Sasaki2018}
 with $\Omega_{\rm DM}=0.674$\footnote{Quoted as printed in Choudhury
 \textit{et al.}'s Eq.~(66); it numerically coincides with the Planck 2018
 reduced Hubble parameter $h$, not the dark-matter density parameter
-($\Omega_{\rm DM}\approx0.264$). Every result in this section is unaffected:
-$\Omega_{\rm DM}$ cancels identically in the amplitude ratio
-(Eq.~\eqref{eq:pbh_ratio}) and is absorbed by the Gaussian-case calibration
-for the tabulated $\fpbh$ values, so no number here changes with the
-correct value.}, $g_*=g_{*s}=106.75$, and a single horizon mass
+($\Omega_{\rm DM}\approx0.264$). The required-amplitude \emph{ratio}
+(Eq.~\eqref{eq:pbh_ratio}) and this section's null verdict are unaffected,
+since $\Omega_{\rm DM}$ cancels identically there; the \emph{tabulated}
+$\fpbh$ column and Fig.~\ref{fig:pbh} are calibrated so the Gaussian case
+gives $\fpbh=1$ at this quoted value and would shift under the
+dark-matter-density value -- they are not independent of which
+$\Omega_{\rm DM}$ is used.}, $g_*=g_{*s}=106.75$, and a single horizon mass
 $M_H = 10^{20}\,$g (matching the first pass, rather than the mass-integrated
 Eq.~66 of Choudhury \textit{et al.}, an $O(1)$ width-factor deviation for a
 narrow peak). Full formalism, the itemized deviations from Choudhury \textit{et al.}'s setup (mass-integration, width-factor, and spectrum-shape approximations), and validation are recorded
@@ -825,8 +848,7 @@ considered here only if the bounce energy is high enough. Requiring
 $k\eta_B\lesssim10^{-2}$ at the smallest PBH mass used here ($10^{15}\,$g,
 $k\sim10^{15}$--$10^{16}\,{\rm Mpc}^{-1}$) needs $a_BH_B\gtrsim10^{17}$--$10^{18}\,{\rm
 Mpc}^{-1}$, i.e.\ a bounce temperature $T_B\gtrsim10^{8}$--$10^{10}\,$GeV --
-seven decades above the BBN scale used to bound the mass range elsewhere in
-this section; a scale-independent transfer with $T_{\fnl}<1/2$ cannot by
+eleven decades above the BBN scale ($\sim1\,$MeV); a scale-independent transfer with $T_{\fnl}<1/2$ cannot by
 itself close the $7$-decade amplitude shortfall found below, so this
 condition, while formally required, does not affect the null verdict. On
 this shape,
@@ -839,8 +861,9 @@ were universal.
 Fed into the same compaction machinery unmodified, the lab's own spectrum
 delivers $\Delta_\zeta^2\sim5\times10^{-10}$--$1.3\times10^{-9}$ at PBH
 scales against a required $0.006$--$0.019$ (the compaction threshold): a
-shortfall of $7.0$ orders of magnitude in curvature amplitude, at every mass
-from $10^{15}\,$g to $10^4\,M_\odot$, at both candidate $\fnl$ values, over
+shortfall of $6.7$--$7.0$ orders of magnitude in curvature amplitude
+($\log_{10}$ ratio $6.75$ at $-35/8$, $7.02$ at $-35/16$), at every mass
+from $10^{15}\,$g to $10^4\,M_\odot$, over
 the same threshold scan and a four-decade IR-cutoff scan. $\fpbh$ is exactly
 zero in double precision at every point (Gaussian-limit
 $\log_{10}\beta\approx-1.7\times10^9$ at $M_H=10^{20}\,$g). \textbf{The PBH
@@ -882,8 +905,14 @@ with a merger model for the quasar response, or
 $\fnlloc = +3.5^{+10.7}_{-7.4}$ (asymmetric $10.7$/$7.4$) assuming universality.
 These two numbers come from mutually exclusive theoretical priors on the same
 DESI DR1 data (merger-response vs. universality) and are not directly
-comparable to each other; each is quoted here against its own prior. The
-prediction of Eq.~\eqref{eq:fnl} sits $0.16\sigma$ from the former and
+comparable to each other; each is quoted here against its own prior. This
+section compares against the pre-bounce amplitude $\fnlloc=-35/16$, since
+that is the value the DESI DR1 analysis constrains directly, using the upper
+side of the merger-response error ($+9.0$, since the prediction lies below
+the central value) and the lower side of the universality error ($-7.4$,
+for the same reason); the transmitted, post-bounce range is compared
+against forecast reach below (Sec.~\ref{sec:lss}, ``Forecast reach''). The
+prediction sits $0.16\sigma$ from the former and
 $0.77\sigma$ from the latter. The discriminating power is
 $|\fnl|/\sigma = 0.24$: DESI DR1 is consistent with the prediction under
 either prior and cannot test it.
@@ -962,7 +991,7 @@ NANOGrav's official posterior and this lab's free-spectrum refit, but is
 insensitive to the value of $\fnl$ and therefore does not test it.
 Primordial black holes yield a reproducible amplitude ratio ($1.7$--$1.9$)
 between the two candidate values, but the lab's own predicted spectrum falls
-$7.0$ orders of magnitude short of the required amplitude at every mass
+$6.7$--$7.0$ orders of magnitude short of the required amplitude at every mass
 scale considered (Sec.~\ref{sec:pbh_inlab}): the channel is a clean null for
 this model, not an open promise. Transmission through the bounce is now a
 definite, scheme-qualified prediction rather than an open bound: within
@@ -1087,7 +1116,7 @@ f_b=\frac{\epsilon}{2\mathcal H}\Big[\partial\zeta\,\partial\tilde\chi
 \end{equation}
 subtracts $(1-\epsilon/3)\times\tfrac{5\epsilon}{4}\mu^2$ from the $T_3$
 bulk's $\mu^2$ coupling and adds the $+15/16$ monopole, reproducing the
-quadrupole exactly and supplying the [X] monopole. In-in monopole minus
+$\mu^2$ coefficient exactly and supplying the [X] monopole. In-in monopole minus
 $\delta N_c$: $-\tfrac{15}{8}-(-5)=\tfrac{25}{8}=[X]_{\rm mono}\,(5/4)+
 ([L]-\delta N_c)\,(15/8)$; in general $\epsilon$,
 $5\epsilon(9-\epsilon)/18=5\epsilon(9-2\epsilon)/36+5\epsilon/4$. The second
@@ -1110,7 +1139,12 @@ with monopole $-5(\epsilon-3)(\epsilon-6)/18$, isosceles ($\mu=0$) value
 $-5(\epsilon^2-6\epsilon+12)/12$, and $\mu^2$ coefficient $5\epsilon^2/12$;
 at $\epsilon=3/2$ these reduce to the monopole $-15/8$, the isosceles value
 $-35/16$ of Eq.~\eqref{eq:orientation}'s $\mu=0$ limit, and the
-$+15/16\,\mu^2$ quadrupole quoted throughout this paper.
+$+15/16\,\mu^2$ coefficient (Legendre $\ell=2$ coefficient $5/8$) quoted
+throughout this paper. These general-$\epsilon$ expressions hold on the
+non-attractor growing branch ($\dot\zeta=-3\zeta/\eta$) that this paper's
+entire construction uses, and do \emph{not} reduce to the slow-roll
+attractor (Maldacena) result $(5/12)(1-n_s)\to0$ as $\epsilon\to0$; they are
+not claimed to.
 
 \subsection{Bianchi-I: why an anisotropic separate universe does not close the gap}
 
@@ -1226,7 +1260,7 @@ against the committed script output.
   NANOGrav and beyond,'' arXiv:2504.11641.
 
 \bibitem{CaiPiSasaki2020} Y. Cai, S. Pi, and M. Sasaki,
-  ``Gravitational Waves Induced by non-Gaussian Scalar Perturbations,''
+  ``Universal infrared scaling of gravitational wave background spectra,''
   Phys. Rev. D \textbf{102}, 083528 (2020), arXiv:1909.13728.
 
 \bibitem{NANOGrav15} G. Agazie \textit{et al.} (NANOGrav Collaboration),
