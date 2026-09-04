@@ -1,0 +1,48 @@
+{
+  "literature": {
+    "alpha_ABS": 0.64677,
+    "k_LQC_def": "a_B sqrt(kappa rho_B) = a_B sqrt(R_B/6)"
+  },
+  "scale_window": {
+    "eta_B_dust_times_sqrt_rho_c": 1.060145957526793,
+    "eta_B_stiff_times_sqrt_rho_B": 0.5528565981811728,
+    "k_LQC_eta_B_dust": 1.060145957526793,
+    "k_LQC_eta_B_stiff": 0.5528565981811728,
+    "pole_over_eta_B_stiff": 1.1698693696119213,
+    "enhancement_edge_k_eta_B_dust": 1.060145957526793,
+    "fNL_affected_edge_k_eta_B_dust": 10.601459575267931,
+    "equilateral_decay_exponent_per_k_eta_B": 1.830229117249605
+  },
+  "observability": {
+    "k_B_Mpc^-1_at_1e8GeV": 1710000000000000.0,
+    "k_eta_B_of_band": {
+      "T_B=1e+08 GeV": {
+        "k_B_Mpc^-1": 1709999999999999.8,
+        "PTA_2nHz": 7.60233918128655e-09,
+        "PTA_60nHz": 2.2807017543859652e-07,
+        "PBH_lo": 5.847953216374269e-11,
+        "PBH_hi": 3.099415204678363
+      },
+      "T_B=1e+10 GeV": {
+        "k_B_Mpc^-1": 1.71e+17,
+        "PTA_2nHz": 7.60233918128655e-11,
+        "PTA_60nHz": 2.280701754385965e-09,
+        "PBH_lo": 5.847953216374269e-13,
+        "PBH_hi": 0.030994152046783626
+      }
+    },
+    "T_B_for_k_LQC_at_60nHz_GeV": 22.80701754385965
+  },
+  "pbh_tail": {
+    "fNL=1000_zeta_c=0.1": {
+      "sigma_g": 3.1622776601683795e-05,
+      "zeta_g_needed": 0.012909944487358056,
+      "n_sigma": 408.248290463863
+    },
+    "fNL=1000_zeta_c=0.7": {
+      "sigma_g": 3.1622776601683795e-05,
+      "zeta_g_needed": 0.03415650255319866,
+      "n_sigma": 1080.1234497346431
+    }
+  }
+}
