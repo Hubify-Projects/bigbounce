@@ -1,6 +1,10 @@
-import type { ReactNode } from "react";
+import { createElement, Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+
+// NOTE: this file is intentionally `.ts` (not `.tsx`) per the Lane 6 spec —
+// `Term` is built with `createElement` rather than JSX so it stays parseable
+// as plain TypeScript while still exporting a component other lanes can use.
 
 /**
  * Shared jargon -> glossary anchor map (REDESIGN_SPEC.md §3.8, §6 Lane 6).
@@ -132,14 +136,14 @@ export interface TermProps {
  */
 export function Term({ term, children, className }: TermProps) {
   const meta = GLOSSARY_TERMS[term];
-  if (!meta) return <>{children}</>;
-  return (
-    <Link
-      href={`/glossary#term-${meta.slug}`}
-      className={cn("underline decoration-dotted underline-offset-2", className)}
-      title={meta.gloss}
-    >
-      {children}
-    </Link>
+  if (!meta) return createElement(Fragment, null, children);
+  return createElement(
+    Link,
+    {
+      href: `/glossary#term-${meta.slug}`,
+      className: cn("underline decoration-dotted underline-offset-2", className),
+      title: meta.gloss,
+    },
+    children,
   );
 }

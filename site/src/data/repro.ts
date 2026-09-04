@@ -227,6 +227,70 @@ export const reproPrograms: ReproProgram[] = [
         "depends_on": [
           "p3-multisurvey-summary-crossmatch"
         ]
+      },
+      {
+        "id": "p3-flagship-s8-enrichment",
+        "depends_on": []
+      },
+      {
+        "id": "p3-flagship-s8-allwise-photometry",
+        "depends_on": [
+          "p3-flagship-s8-enrichment"
+        ]
+      },
+      {
+        "id": "p3-flagship-s8-simbad-ned-crossmatch",
+        "depends_on": [
+          "p3-flagship-s8-enrichment"
+        ]
+      },
+      {
+        "id": "p3-flagship-s8-taxonomy",
+        "depends_on": [
+          "p3-flagship-s8-simbad-ned-crossmatch"
+        ]
+      },
+      {
+        "id": "p3-flagship-v2-enrichment",
+        "depends_on": []
+      },
+      {
+        "id": "p3-flagship-v2-allwise-photometry",
+        "depends_on": [
+          "p3-flagship-v2-enrichment"
+        ]
+      },
+      {
+        "id": "p3-flagship-v2-simbad-ned-crossmatch",
+        "depends_on": [
+          "p3-flagship-v2-enrichment"
+        ]
+      },
+      {
+        "id": "p3-flagship-v2-taxonomy",
+        "depends_on": [
+          "p3-flagship-v2-simbad-ned-crossmatch"
+        ]
+      },
+      {
+        "id": "anomaly-known-object-recovery-benchmark",
+        "depends_on": []
+      },
+      {
+        "id": "anomaly-known-object-recovery-benchmark-v2",
+        "depends_on": [
+          "p3-flagship-v2-enrichment"
+        ]
+      },
+      {
+        "id": "p3-ledger8-known-object-recovery-benchmark",
+        "depends_on": [
+          "p3-flagship-s8-enrichment"
+        ]
+      },
+      {
+        "id": "anomaly-map-png-highz-abundance",
+        "depends_on": []
       }
     ],
     "external_data": [
@@ -329,6 +393,47 @@ export const reproPrograms: ReproProgram[] = [
         ]
       },
       {
+        "id": "p2-a2-bounce-fnl-transmission",
+        "depends_on": [
+          "p2-g1-dressedmetric-transmission"
+        ]
+      },
+      {
+        "id": "p2-a2-lane-a-cubic-vertex-table",
+        "depends_on": [
+          "p2-a2-bounce-fnl-transmission",
+          "p2-fnl-adjudication-inin-from-scratch"
+        ]
+      },
+      {
+        "id": "p2-a2-lane-b-numerical-inin",
+        "depends_on": [
+          "p2-a2-lane-a-cubic-vertex-table",
+          "p2-a2-bounce-fnl-transmission"
+        ]
+      },
+      {
+        "id": "p2-a3-lane-9b-s2-regularisation",
+        "depends_on": [
+          "p2-a2-lane-a-cubic-vertex-table",
+          "p2-a2-lane-b-numerical-inin"
+        ]
+      },
+      {
+        "id": "p2-a3-lane-9b2-s2-rawadm",
+        "depends_on": [
+          "p2-a3-lane-9b-s2-regularisation",
+          "p2-a2-lane-b-numerical-inin"
+        ]
+      },
+      {
+        "id": "p2-a3-lane-9a-velocity-dip",
+        "depends_on": [
+          "p2-a2-bounce-fnl-transmission",
+          "p2-a2-lane-b-numerical-inin"
+        ]
+      },
+      {
         "id": "p2-g3-torsion-fourfermion-bound",
         "depends_on": [
           "p2-vertex-check"
@@ -370,6 +475,90 @@ export const reproPrograms: ReproProgram[] = [
         "id": "p1b-namaster-window-regen",
         "depends_on": [
           "p1a-namaster-500mc-birefringence"
+        ]
+      },
+      {
+        "id": "p2-fnl-adjudication-inin-from-scratch",
+        "depends_on": []
+      },
+      {
+        "id": "p2-fnl-second-method-deltan",
+        "depends_on": []
+      },
+      {
+        "id": "a3-2-fnl-bianchi-separate-universe",
+        "depends_on": [
+          "p2-fnl-adjudication-inin-from-scratch",
+          "p2-fnl-second-method-deltan"
+        ]
+      },
+      {
+        "id": "p2-fnl-monopole-adjudication",
+        "depends_on": [
+          "p2-fnl-adjudication-inin-from-scratch",
+          "p2-fnl-second-method-deltan",
+          "a3-2-fnl-bianchi-separate-universe"
+        ]
+      },
+      {
+        "id": "a3-pbh-compaction-fnl",
+        "depends_on": []
+      },
+      {
+        "id": "a3-pbh-abundance-fnl",
+        "depends_on": []
+      },
+      {
+        "id": "a3-pta-gamma-reproduction",
+        "depends_on": []
+      },
+      {
+        "id": "a3-pta-injection-30bin-2026-09-02",
+        "depends_on": []
+      },
+      {
+        "id": "a3-survey-reach-fnl",
+        "depends_on": []
+      },
+      {
+        "id": "a3-1b-inlab-delta2-zeta",
+        "depends_on": [
+          "a3-pbh-compaction-fnl",
+          "p2-a2-bounce-fnl-transmission"
+        ]
+      },
+      {
+        "id": "a3-3-sigw-nhz-from-lab-spectrum",
+        "depends_on": [
+          "a3-1b-inlab-delta2-zeta",
+          "p2-a2-bounce-fnl-transmission",
+          "a3-pta-gamma-reproduction"
+        ]
+      },
+      {
+        "id": "ledger9-c-abs-operator-map",
+        "depends_on": [
+          "p2-a2-lane-a-cubic-vertex-table",
+          "a3-3-sigw-nhz-from-lab-spectrum",
+          "a3-1b-inlab-delta2-zeta"
+        ]
+      },
+      {
+        "id": "ledger4-desi-dr1-lss-sanity",
+        "depends_on": [
+          "a3-survey-reach-fnl"
+        ]
+      },
+      {
+        "id": "ledger7-chiral-gw-delta-h",
+        "depends_on": []
+      },
+      {
+        "id": "ledger9-c2-lqc-exact-modes-inin",
+        "depends_on": [
+          "ledger9-c-abs-operator-map",
+          "p2-a2-lane-a-cubic-vertex-table",
+          "a3-1b-inlab-delta2-zeta"
         ]
       }
     ],
@@ -576,6 +765,16 @@ export const reproPrograms: ReproProgram[] = [
         "depends_on": [
           "p5-desi-dr1-crossmatch-build"
         ]
+      },
+      {
+        "id": "p4prime-a95-neyman-cl-2026-09-02",
+        "depends_on": []
+      },
+      {
+        "id": "p4prime-bh-universe-dipole-exclusion",
+        "depends_on": [
+          "p4prime-a95-neyman-cl-2026-09-02"
+        ]
       }
     ],
     "external_data": [
@@ -659,6 +858,373 @@ export const reproPrograms: ReproProgram[] = [
 ];
 
 export const reproExperiments: ReproExperiment[] = [
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-1b-inlab-delta2-zeta",
+    "title": "A3-1b - the lab's own matter-bounce curvature power spectrum Delta^2_zeta(k) at PBH scales: delivered vs required amplitude in the compaction-function PBH criterion, and the COBE/FIRAS mu-distortion check on the early-SMBH seed amplitude",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Planck 2018 cosmological parameters (A_s = 2.1e-9 at k_* = 0.05 Mpc^-1; n_s = 0.9649 +/- 0.0042)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1807.06209",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai, Easson & Brandenberger 2012 - matter-bounce spectrum and tilt (n_s - 1 = 12w/(1+w))",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1206.2382",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - matter bounce spectrum, tilt, bounce growth",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1508.04141",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Agullo, Bolliet & Sreenath 2017 - LQC bounce enhancement of non-Gaussianity (checked, not imported)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1712.08148",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chen, Zhu, Yan, Wang & Cai 2022/2023 (JCAP 01 (2023) 015) - PBH enhancement from non-linear processes around the bounce point (checked, not imported)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2207.14532",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Papanikolaou, Banerjee, Cai, Capozziello & Saridakis 2024 - PBHs by direct collapse in the contracting phase (recorded as new open item A3-1e)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2404.03779",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chluba, Erickcek & Ben-Dayan 2012 - mu-distortion window; Fixsen et al. 1996 COBE/FIRAS |mu| < 9e-5",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1203.2681",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025 - compaction-function PBH formalism implemented by the imported script",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2409.18983",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1 compaction-function PBH machinery (imported unmodified; only its module-level spectrum function is swapped and restored)",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A2 linear bounce transmission - eta_B per background, scale-independence of the transfer for k eta_B << 1",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.py",
+        "entrypoint": "cd research/track_a3_multichannel && python3 inlab_delta2_zeta_2026-09-03.py",
+        "sha256": "aca88410c4eff683dcd817e13a807c15eeac3a81d1b0883978af1328914278fe"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy 2.5.1 + scipy + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-03",
+      "wall_clock": "170 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~3 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). Must be run from research/track_a3_multichannel/ so that 'import pbh_compaction_fnl' resolves. The committed A3-1 script is imported, never edited: the run swaps only its module-level delta2_zeta and restores it (the script asserts the restore before writing outputs), so no A3-1 result changes. The lognormal-vs-power-law change of shape means 'A' here is Delta^2_zeta AT k_p, not a lognormal integrated amplitude - the two are not numerically interchangeable."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) k-mass anchor check k = 2.9e5 Mpc^-1 -> M_H = 166.18 Msun, i.e. M_PBH = gamma M_H = 33.2 Msun at gamma = 0.2 (literature ~30 Msun); (b) spectrum.branches['MB_anchored_ns0.9649'].implied_w_matter_bounce == -0.002920 +/- 1e-6 and Delta^2_zeta(1e13 Mpc^-1) == 6.611e-10 (rel. 1e-3); (c) per_mass_scale['M_H=1e20 g (asteroid window; the A3-1 mass)'] has k_p == 1.667e13 Mpc^-1, delivered == 6.493e-10, A_required(f_PBH=1e-3, -35/16) == 0.00636 and ratio == 9.79e6 (rel. 1e-2); (d) f_PBH_at_delivered_amplitude == 0.0 exactly at every mass and every f_NL; (e) threshold_sensitivity ratio A(-35/16)/A(-35/8) in [1.84, 1.90] for C_th in {0.4,0.5,0.6}; (f) ir_cutoff_sensitivity spans gamma_cr 0.267->0.630 and A(-35/16) 0.0064->0.0265 (factor <= 4.2); (g) mu_distortion.branches: mu == 1.654e-8 (ns=0.9649) and 2.242e-8 (pure dust), both ALLOWED at 1.8e-4 and 2.5e-4 of the FIRAS bound; (h) mu_distortion.required_amplitude_check.seeds: broadband mu ~ 1.6e-1 (~1.8e3 x FIRAS) for all four seed masses, narrow-peak mu 1.90e-6 / 3.18e-4 / 5.18e-3 / 1.89e-2 for 1e3/1e4/1e5/1e6 Msun; (i) verdict.does_the_lab_spectrum_make_PBHs == 'NO' with margin_log10_in_amplitude == 6.99 +/- 0.01.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 3 (sub-item A3-1b) and item 6 (early-SMBH discriminator, previously BLOCKED on this result)",
+      "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md section 8 (A3-1b opened there; deviation D1 is what this closes)",
+      "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md section 4 (validity domain k eta_B << 1)",
+      "directive Q2 (per-experiment reproducibility manifests), directive Q1 (pure-contribution framing: the result is stated as a null, not as a redo narrative), directive R1 (ledger-first)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-2-fnl-bianchi-separate-universe",
+    "title": "A3-2: second-order Bianchi-I (anisotropic) separate-universe cross-check of the matter-contraction squeezed f_NL, including the long mode's shear",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "lab in-in adjudication (2026-09-02)",
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md (commit aa2987cf)",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab second-method delta-N (2026-09-02)",
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md (commit d7dac953)",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "Maldacena 2003",
+        "locator": "https://arxiv.org/abs/astro-ph/0210603",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Namjoo, Firouzjahi & Sasaki 2012",
+        "locator": "https://arxiv.org/abs/1210.3692",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Pajer, Schmidt & Zaldarriaga 2013; Dai, Pajer & Schmidt 2015",
+        "locator": "https://arxiv.org/abs/1305.0824 ; https://arxiv.org/abs/1504.00351",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.py",
+        "entrypoint": "python3 research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.py",
+        "sha256": "cc393a1236869745236923a90e168b6126a21f9011eeb38f5d6a47079fa2aac4"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-03",
+      "wall_clock": "4 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 1 minute",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic exact-rational sympy. No network access at run time. The script self-validates: eps recovered from H; the growing mode solves d/dt(a^3 eps zetadot)=0; the isotropic projection response equals (1-n_s) zeta_L (consistency relation); the attractor limit gives (5/12)(1-n_s) with no quadrupole; the shear vanishes as eps -> 0 (USR); the second-order delta-N ODE residual is identically zero."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required exact values: growing_mode.zetadot_over_H_zeta == 'epsilon - 3'; anisotropy['beta_z / zeta_L'] == '2*epsilon*s_conv/3'; delta_N_comoving.f_NL_comoving_general_eps == '-5'; projection.isotropic_part == '1 - n_s'; result['f_total(mu)_eps_3_2_sconv_+1'] == '15*mu**2/8 - 45/8'; result.monopole == '-5'; result.mu2_coefficient == '15/8'; comparison.ratio_mu2_coefficients == '2'; comparison.monopole_gap == '-25/8'; comparison.shear_monopole_contribution == '0'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 1 (open item: 'second-order Bianchi-I separate-universe check of the shear response') and row 3 (A3-2 method-independent f_NL check)",
+      "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md, 'What remains open'",
+      "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+      "input 'lab in-in adjudication (2026-09-02)' (research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md (commit aa2987cf)) used for: the open item this work executes; the comparison values f(mu) = -35/16 + (15/16) mu^2, monopole -15/8, comoving delta-N -5, and the quoted shear sign convention — all used only AFTER the computation",
+      "input 'lab second-method delta-N (2026-09-02)' (research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md (commit d7dac953)) used for: separate-universe system (exponential potential, x/Y variables) and the -55/16 uniform-density value",
+      "input 'Maldacena 2003' (https://arxiv.org/abs/astro-ph/0210603) used for: comoving gauge ADM variables, psi = -zeta/H + a^2 eps grad^{-2} zetadot; consistency-relation normalisation used as a VALIDATION",
+      "input 'Namjoo, Firouzjahi & Sasaki 2012' (https://arxiv.org/abs/1210.3692) used for: ultra-slow-roll non-attractor benchmark: f_NL = 5/2 with no angular dependence, used to VALIDATE that the shear term vanishes as eps -> 0",
+      "input 'Pajer, Schmidt & Zaldarriaga 2013; Dai, Pajer & Schmidt 2015' (https://arxiv.org/abs/1305.0824 ; https://arxiv.org/abs/1504.00351) used for: conformal-Fermi-coordinate / separate-universe-with-shear framework; their attractor-only validity is recorded as the identified incompleteness"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-3-sigw-nhz-from-lab-spectrum",
+    "title": "A3-3 - scalar-induced gravitational waves in the NANOGrav band from the lab's own curvature power spectrum: does the CMB-anchored matter-bounce spectrum give the paper's Channel-I gamma = 3?",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Planck 2018 cosmological parameters (A_s = 2.1e-9 at k_* = 0.05 Mpc^-1; n_s = 0.9649)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1807.06209",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Kohri & Terada 2018 - radiation-era induced-GW kernel, oscillation-averaged x^2 <I^2> (the transfer used here)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1804.08577",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Domenech 2021 - scalar-induced GW review; Eq. (2.21) kernel form and the Omega_GW ~ f^{2n} rule for broad P_R ~ k^n in RD",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2109.01398",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Espinosa, Racco & Riotto 2018 - closed-form Omega_GW = 0.8222 A^2 for scale-invariant P_zeta = A (the kernel-normalisation benchmark asserted at runtime)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1804.07732",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai, Pi & Sasaki 2020 - universal IR causal tail Omega_GW ~ f^3 (gamma = 2), cited to show gamma = 3 is not the causal floor",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1909.13728",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "NANOGrav 15 yr - HD-correlated power law A = 2.4e-15 at f_yr, gamma = 3.2 (+/-0.6 at 90%)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2306.16213",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Papanikolaou 2025 - the source whose low-k P_R ~ k tail the paper's section IV D borrows for gamma = 3 (contrast case; its spectrum carries a small-scale enhancement)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2504.11641",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1b lab curvature spectrum Delta^2_zeta(k) - the exact spectrum evaluated here",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A2 linear bounce transmission - eta_B per background; scale-independence of the transfer for k eta_B << 1 (validity test in section 3 of the note)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "The paper's own gamma convention Omega_GW ~ f^{5-gamma}",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/pta_gamma_reproduce.py",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/sigw_nhz_from_lab_spectrum_2026_09_04.py",
+        "entrypoint": "cd research/track_a3_multichannel && python3 sigw_nhz_from_lab_spectrum_2026_09_04.py",
+        "sha256": "6c8efd80b212455e06a148fbc77819c16b53f4b1e064da0cf6b088d3737722da"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy 2.5.1 + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "3.2 s (measured, field wall_seconds in the output JSON)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~5 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). The kernel normalisation is asserted against the published scale-invariant benchmark at the top of main() BEFORE any lab spectrum is inserted, so a normalisation regression aborts the run rather than propagating. Nothing is tuned toward gamma = 3. The double integral is a fixed 1200x1200 grid over ln v in [1e-3, 300]; the benchmark is stable to 0.05% across grids from 400x400/vmax=50 to 2000x2000/vmax=2000."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/outputs/sigw_nhz_from_lab_spectrum_2026_09_04.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/outputs/sigw_nhz_from_lab_spectrum_2026_09_04.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/outputs/sigw_nhz_2026_09_04.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) kernel_validation.computed_coefficient == 0.82254 vs published 0.8222, rel_error < 1e-3 (this assertion is executed in main() and aborts on failure); (b) f_to_k.k_per_nHz_Mpc-1 == 646710.2 (i.e. k = 6.467e5 Mpc^-1 per nHz, so k(10 nHz) = 6.47e6 Mpc^-1, matching the R4 audit's independent 6.5e6 figure), k_at_f_yr == 2.0493e7; (c) transfer_validity.k_eta_B_at_60nHz <= 2.264e-8 for every T_B >= 1e8 GeV, i.e. the whole PTA band is deep inside the A2 scale-independent domain; (d) branches['MB_anchored_ns0.9649'].gamma_pred == 5.0702 and branches['pure_dust_ns1'].gamma_pred == 5.0000, each matching gamma_pred_analytic_2(ns-1)+5 to 1e-4; (e) z_vs_NANOGrav_official_gamma == 5.13 and 4.93 respectively; (f) log10_amplitude_shortfall_vs_NANOGrav_at_f_yr == 14.34 (ns=0.9649) and 13.74 (pure dust); (g) what_would_give_gamma3.required_spectral_index_of_P_R_at_nHz == 1.0, log10_amplitude_gap == 7.197, T_B_needed_GeV == 2.264 and decades_below_section_V == 7.645; (h) verdict.answer == 'A'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 3 (item A3-3)",
+      "project-context/peer-reviews/INT_v3/A3M_v3M.0.9_R4_TRUTH_AUDIT_2026-09-04.md item DA3M-R4-02 (MAJOR, SCIENCE; closure plan (ii)) - this experiment is that item's closure evidence",
+      "research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md (derivation summary, tables, and VERDICT A)",
+      "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md section 4 (validity domain k eta_B << 1)",
+      "directive Q2 (per-experiment reproducibility manifests), directive Q1 (the result is stated as a null in its own terms, not as a redo narrative), directive R1 (ledger-first)"
+    ]
+  },
   {
     "manifest_version": "bigbounce-experiment/v1",
     "id": "a3-pbh-abundance-fnl",
@@ -795,9 +1361,9 @@ export const reproExperiments: ReproExperiment[] = [
         "checksum": null
       },
       {
-        "name": "committed reference summaries for the diff",
+        "name": "committed reference summaries for the diff (results.json + savage_dickey_2026-05-29.json in this dir)",
         "type": "internal-artifact",
-        "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/{results.json,savage_dickey_2026-05-29.json}",
+        "locator": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/",
         "checksum": null
       }
     ],
@@ -1370,7 +1936,7 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.md",
-        "type": "result-json",
+        "type": "document",
         "checksum": null
       }
     ],
@@ -1382,6 +1948,94 @@ export const reproExperiments: ReproExperiment[] = [
       "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/summary.json (threshold=5.0, threshold_count_after_dedup=52188, unique_targetids=27547223)",
       "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md Section 19",
       "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark_preview/recovery_benchmark.json (this run's own committed output)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "anomaly-known-object-recovery-benchmark-v2",
+    "title": "Known-object recovery benchmark (ledger item #8) run against the S>3 v2 science-only flagship sample",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "crossmatch",
+    "inputs": [
+      {
+        "name": "Sealed locator inventory (HEALPix footprint definition)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl",
+        "checksum": null
+      },
+      {
+        "name": "flagship_sample_v2_enriched.parquet (S>3 science-only sample, n=1244)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+        "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff"
+      },
+      {
+        "name": "Cached reference 'unusual object' classes (BAL quasars, Roma-BZCAT blazars, CV/WD binaries, LAEs, SLSN hosts)",
+        "type": "external-dataset",
+        "locator": "huggingface/local cache: ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/ (fetched 2026-09-02, reused unchanged for this v2 run)",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "VizieR (CDS)",
+        "endpoint": "https://vizier.cds.unistra.fr/viz-bin/votable",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
+        "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-cache-dir ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02 --reference-manifest ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/reference_manifest_local.json --catalogs-config /tmp/catalogs_config_v2.json --locator-inventory pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl --radius-arcsec 1.5 --out-dir pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "astropy, astroquery, healpy, pandas, pyarrow, numpy",
+      "hardware": "cpu-only, local (Houston's machine, not the RunPod pod)"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-04",
+      "wall_clock": "under 1 minute (offline crossmatch stage against cached reference classes)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local CPU (any host with the cached reference_catalogs, or a fresh --fetch-references run from a host that can reach vizier.cds.unistra.fr's TAP query endpoint)",
+      "est_wall_clock": "under 1 minute for --crossmatch once references are cached; 10-40 min for a fresh --fetch-references pass",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Unlike the v1 recovery_benchmark_preview run (which returned 0 fetched classes due to a VizieR TAP-endpoint connectivity failure), this v2 run reused the successfully cached 2026-09-02 reference fetch (5/11 classes fetched, 4 unavailable for missing RA/Dec columns, 1 with no known catalogue ID) and produced real per-class recovery numbers against the S>3 v2 sample's 1244 rows."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/recovery_benchmark.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/recovery_benchmark.md",
+        "type": "document",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "pipelines/p1_highz_tracers/tests/test_recovery_benchmark.py (26 offline unit tests) covers the pure matching/CI/enrichment arithmetic. This run's real output: 1 BAL-quasar positional match (4.2x enrichment, out of 5285 in-footprint references) out of 5 fetched classes; ledger #8's >10x-enrichment/>=5-match confirmed-class bar is NOT met. 0 matches for Roma-BZCAT, CV/WD binaries, LAEs, SLSN hosts.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 8",
+      "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md Section 19",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md (this run's own committed output)",
+      "project-context/PHASE3_V2_LANDING_2026-09-03.md"
     ]
   },
   {
@@ -1691,7 +2345,7 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "locator": "pipelines/p1_highz_tracers/outputs/uncataloged_taxonomy/taxonomy_summary.md",
-        "type": "result-json",
+        "type": "document",
         "checksum": null
       }
     ],
@@ -1701,6 +2355,562 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: anomaly / Rebuilt DESI anomaly-science flagship — uncataloged taxonomy (1,127 objects, 10 families) bullet",
       "project-context/ANOMALY_SCIENCE_CLAIM_INVENTORY_2026-08-03.md",
       "path correction: inventory did not name a generating script; verified via directory listing that pipelines/p1_highz_tracers/outputs/uncataloged_taxonomy/classify_uncataloged.py is the generator (co-located with its own outputs, not under scripts/)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "ledger4-desi-dr1-lss-sanity",
+    "title": "Ledger #4 step 1 - provenance-bound download and lab-native sanity check of the DESI DR1 public LSS clustering catalogues (QSO, LSScats v1.5), the input products for an independent reproduction of the DR1 local-PNG scale-dependent-bias constraint",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "DESI DR1 QSO NGC clustering catalogue (LSScats v1.5)",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_NGC_clustering.dat.fits",
+        "checksum": "sha256:9d01efdc6dc3c2a403369e5a8e0f7129a8ff08b5e503d9b0c6b91b7bc589f784",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "DESI DR1 QSO SGC clustering catalogue (LSScats v1.5)",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_SGC_clustering.dat.fits",
+        "checksum": "sha256:875c67fe9ef5c03c1daf9fe5606f254b3ab6e91c4fb01ef304f6fa9a7a2c1bc4",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "DESI DR1 QSO SGC randoms realisation 0 of 18 (LSScats v1.5)",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_SGC_0_clustering.ran.fits",
+        "checksum": "sha256:2965a952b3a59902f0de84f91e95f4106c3f63a2b32e9f539450b3ed73d9d9c9",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "DESI DR1 QSO NGC n(z) table (FKP weights)",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_NGC_nz.txt",
+        "checksum": "sha256:853fa9c56bbfdd659373d216bc1c9fc2ce4365fa9babddd3850ee4135c529505",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "DESI DR1 QSO SGC n(z) table (FKP weights)",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_SGC_nz.txt",
+        "checksum": "sha256:80608da63516ac0afbf704a1e073611c2c5bb75232785ea13f67d369a0e3b357",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (the measurement being reproduced; supplies the 1,189,129 QSO / 0.8<z<3.1 comparison numbers)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2411.17623",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Brown, Levi, Randall, Chaussidon et al. 2026 - configuration-space DR1 LRG+QSO PNG measurement (method-independent cross-check)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2606.24651",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Rezaie et al. 2023 - imaging-systematics mitigation for photometric DESI LRG PNG (source of the systematics-budget design)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2307.01753",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger #3 survey-reach study (DESI DR1 = 0.16 sigma on f_NL = -35/16; sets this item's honest scope)",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/survey_reach_fnl.py",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "DESI public data server (anonymous HTTP, no key)",
+        "endpoint": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "research/desi_png_reproduction/dr1_lss_sanity.py",
+        "entrypoint": "python3 research/desi_png_reproduction/dr1_lss_sanity.py",
+        "sha256": "aff455a671b6a1494443c71869d57d92f38907dc0500cb7891ab52fbfecf05fc"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + astropy 8.0.1 + matplotlib 3.11.1",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-03",
+      "wall_clock": "download 0.86 GB ~ 20 s; sanity check 0.7 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~2 min including download",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Data live OUTSIDE the repo at ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/ (0.86 GB). Re-fetch with curl -O from the five locators above and confirm the sha256s before re-running. The script memory-maps the FITS files and never loads the 736 MB randoms table into memory (header row count only)."
+    },
+    "outputs": [
+      {
+        "locator": "research/desi_png_reproduction/outputs/dr1_lss_sanity.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/dr1_lss_sanity_zhist.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/dr1_lss_sanity_footprint.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) the five input sha256s match the values recorded above; (b) row counts QSO NGC = 793,219 and QSO SGC = 430,172 (total 1,223,391); (c) checks.n_qso_in_published_z_range == 1,190,839 in 0.8 < z < 3.1, i.e. ratio_zrange_to_published == 1.0014 against Chaussidon et al. 2024's 1,189,129 - a 0.14% agreement, which is the pass condition (an EXACT match is not expected and is not claimed, since the published count follows further analysis selection); (d) both caps carry WEIGHT_SYS, WEIGHT_COMP, WEIGHT_ZFAIL, WEIGHT_RF, WEIGHT_FKP, WEIGHT, NX; (e) WEIGHT_SYS NGC mean == 0.97676 +/- 1e-4, std == 0.06538, range [0.6244, 1.5945], zero non-finite values - i.e. the imaging-systematics weight that the plan's section 3.4 test 1 switches off is present and non-trivial; (f) randoms QSO_SGC_0 has 6,511,977 rows, 15.14x the SGC data.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 4 (first cheap test: reproduce the published DESI PNG pipeline on DR1 public products)",
+      "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md sections 2 (inputs) and 7 (execution log)",
+      "directive Q2 (per-experiment reproducibility manifests with external sources, licences, venue, cost, wall clock), directive R1 (ledger-first), directive R6 (claims at their evidential strength: this is a provenance check, not a measurement)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "ledger7-chiral-gw-delta-h",
+    "title": "Ledger #7 gate - net helicity asymmetry Delta_h of the SGWB from the minimal Einstein-Cartan-Holst torsion bounce (symbolic parity-operator check + super-Hubble k-odd estimate)",
+    "program": "bounce-theory",
+    "paper": "none",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Freidel, Minic & Takeuchi 2005 - minimal fermion coupling in Einstein-Cartan-Holst, gamma^2/(1+gamma^2) four-fermion term",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/0507253",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Mercuri 2006 - Nieh-Yan formulation; Immirzi parameter unobservable at constant gamma",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/gr-qc/0601013",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Alexander & Yunes 2009 - Chern-Simons modified gravity review",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/0907.2562",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Taveras & Yunes 2008 - dynamical Barbero-Immirzi field",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/0807.2652",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai, Li, Wang & Zhu 2021 - chiral GWs in Nieh-Yan modified teleparallel gravity",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2104.08376",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Poplawski 2010 - torsion spin-fluid bounce (Hehl-Datta term, parity-even)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1007.0587",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Seto & Taruya 2007/2008 - circular-polarisation sensitivity of a planar GW detector",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/0707.0535",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Domcke et al. 2020 - measuring SGWB chirality with LISA via the kinematic dipole",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1910.08052",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Kato & Soda 2016 - PTA probe of circular polarisation",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1512.09139",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Gluscevic & Kamionkowski 2010 - CMB TB/EB from chiral GWs",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1002.1308",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "On-shell ECH torsion irreps and O4 coefficient (in-lab adjudication, 2026-08-08)",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/ech_torsion_onshell_2026_08_08.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "ECH Note four-fermion contact term L_4psi = -(3 kappa/16) gamma^2/(1+gamma^2) (J5.J5)",
+        "type": "internal-artifact",
+        "locator": "arxiv/paper1bc_ech_note/main.tex",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Branch M PGT bounce GW spectrum (amplitude/frequency gap)",
+        "type": "internal-artifact",
+        "locator": "research/branch_M_pgt_bounce_gw/phase1_results.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Branch Q sourced-parity screening (BRANCH_Q_WEAK)",
+        "type": "internal-artifact",
+        "locator": "research/branch_Q_sourced_parity/phase1_results.md",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/chiral_gw_gate/chiral_gw_delta_h.py",
+        "entrypoint": "python3 research/chiral_gw_gate/chiral_gw_delta_h.py",
+        "sha256": "93eba1315977ed33ffc53031be619844679cb140d9eeefba4a7c12e0e02e5fb2"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy 2.5.1 + sympy",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-03",
+      "wall_clock": "< 3 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~3 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no external data files, no network). Part (A) is exact sympy algebra on the solved on-shell ECH contorsion coefficients; part (B) is a closed-form redshift/parametric evaluation. The Delta_h numbers are CEILINGS at the perturbative-unitarity value xi_B = 1 with an O(1) matching constant set to 1; in minimal ECH the parity-odd coefficient is exactly zero. Unfixed conventions (Holst sign s_H; no committed rho_c/T_B) are listed in the output JSON under convention_flags."
+    },
+    "outputs": [
+      {
+        "locator": "research/chiral_gw_gate/outputs/ledger7_chiral_gw_delta_h.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/chiral_gw_gate/LEDGER7_CHIRAL_GW_GATE_2026-09-03.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) symbolic.beta_over_alpha_onshell == 's_H/(2*gamma)'; (b) symbolic.O4_onshell simplifies to -3*J5sq*gamma**3*kappa**2*lambda_src**2*s_H/(gamma**2 + s_H**2)**2, i.e. -3 kappa^2 gamma^3/(1+gamma^2)^2 (J5.J5) at s_H=+1, matching research/theory_audit/ech_torsion_onshell_2026_08_08.md READING-I; (c) symbolic.xi_gamma_numeric['gamma=0.2375'] == 0.053394 +/- 1e-6 (the ECH Note's 0.053) and ['gamma=0.274'] == 0.069833 +/- 1e-6; (d) symbolic.beta_over_alpha_numeric_sH_plus1 == {2.10526, 1.82482} +/- 1e-4 (the 40/19 and 250/137 of the 2026-08-08 adjudication); (e) symbolic.parity_odd_tensor_coefficient_minimal_ECH == '0'; (f) numeric rows: f_B(T_B=1e16 GeV) == 1.668e9 Hz +/- 1e6 and Delta_h_max for LISA == 5.995e-13 (rel. 1e-3), PTA == 5.995e-18, CMB == 1.798e-26; (g) verdict.gate == 'CLOSE WITH REASON (O(epsilon), and requires an ad-hoc ingredient)'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 7 (four-question gate)",
+      "research/project_nextgen_bounce_signals/07_single_best_theory.md (March-2026 'single best next theory' call, REVERSED by this gate)",
+      "research/branch_M_pgt_bounce_gw/ and research/branch_Q_sourced_parity/ (prior partial work, not redone)",
+      "research/theory_audit/ech_torsion_onshell_2026_08_08.md and operator_basis_adjudication_2026_08_07.md",
+      "arxiv/paper1bc_ech_note/main.tex v1N.0.5 Eq. (4fermi)",
+      "directive Q2 (per-experiment reproducibility manifests), directive Q4 (nothing viable gets lost - salvage recorded)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "ledger9-c-abs-operator-map",
+    "title": "Ledger row 9 (A3-1e) lane (c) - literature-bound map of the Agullo-Bolliet-Sreenath 2017 LQC third-order Hamiltonian onto the lab's classical scheme-S1 cubic vertex table, plus the k_LQC -> k*eta_B scale-window conversion and PTA/PBH overlap test",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Agullo, Bolliet & Sreenath 2017 - Non-Gaussianity in loop quantum cosmology (H^(3) Eq. 23; dressed metric Eqs. 39-42; k_LQC and the exp(-alpha k_t/k_LQC) law, sec. V)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1712.08148",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "arXiv source package read directly (NGLQC.tex, v2 2018-02-26) - equation numbering recovered by counting numbered environments, anchored on Eq. 23 = eq:H3 and Eqs. 39-42 = dres/ta/teta/qpot",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/e-print/1712.08148",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ashtekar, Kaminski & Lewandowski / Agullo, Ashtekar & Nelson - dressed-metric approach (cited by ABS 2017 as the origin of Eqs. 39-42 and the effective potential U)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1211.1354",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Agullo, Ashtekar & Nelson - extension of the quantum theory of cosmological perturbations to the Planck era",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1302.0254",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Maldacena 2003 - third-order action ABS state their H^(3) Legendre-transforms into",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/0210603",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chen, Huang, Kachru & Shiu 2007 - cubic action coefficients (c_s^-4 structure used for the c_s -> 0 dust argument)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/0605045",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane (a) cubic vertex table V1-V7 + R1-R4 and the LQC-dust background",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane (c) 2026-09-03 literature comparison (the statement corrected by this lane)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_c_comparison/LANE_C_COMPARISON_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-3 SIGW note - comoving bounce scale k_B = 1.71e15 Mpc^-1 at T_B = 1e8 GeV, linear in T_B",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1b in-lab Delta^2_zeta - PBH-band amplitude 5e-10 to 1.3e-9 and the 7.0 dex deficit",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/lane9c_abs_operator/lane9c_scale_window.py",
+        "entrypoint": "python3 research/cubic_bounce_transmission/lane9c_abs_operator/lane9c_scale_window.py",
+        "sha256": "432f8606f1cc94ed0ffcde583183f1401efbfcdffee24bdc9d3e745ffa454898"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy + scipy (quad)",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "< 2 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~2 s (script); ~2 min to re-fetch and re-read the arXiv source",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "The operator mapping is literature transcription plus algebra, not computation: it is verified by re-reading NGLQC.tex from https://arxiv.org/e-print/1712.08148 and checking that Eq. 23 (label eq:H3) contains no rho/rho_c, rho_sup, area gap, or U/tilde-U. The script is deterministic (no RNG, no network, no data files); it evaluates two quadratures and closed-form ratios. Conventions: kappa = 1, a_B = 1, k*eta_B = k/k_B with k_B = 1/eta_B and eta_B the conformal half-width of the NEC-violating window (rho >= rho_c/2)."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/lane9c_abs_operator/lane9c_scale_window.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) scale_window.k_LQC_eta_B_dust == 1.060146 +/- 1e-5 and k_LQC_eta_B_stiff == 0.552857 +/- 1e-5; (b) scale_window.pole_over_eta_B_stiff == 1.169869 +/- 1e-5 (ABS pole at 1.17 eta_B, just outside the NEC window); (c) scale_window.equilateral_decay_exponent_per_k_eta_B == 1.830229 +/- 1e-5, so |Delta f_NL^bounce| ~ exp(-1.83 k eta_B); (d) observability.k_eta_B_of_band['T_B=1e+08 GeV']['PBH_hi'] == 3.0994 +/- 1e-3 and ['PTA_60nHz'] == 2.2807e-7 +/- 1e-11; (e) observability.T_B_for_k_LQC_at_60nHz_GeV == 22.807 +/- 1e-2 GeV, i.e. 6.6 decades below section V's T_B >= 1e8 GeV; (f) pbh_tail['fNL=1000_zeta_c=0.1'].n_sigma == 408.25 +/- 1e-2; (g) by re-reading the source: ABS Eq. 23 contains p_phi or a V-derivative in every term and no rho/rho_c or U, and the sentence after it states the Legendre transform agrees with Maldacena 2003.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane (c) literature-bound leg",
+      "research/cubic_bounce_transmission/lane_a_vertex_table/ and lane_c_comparison/ (prior lanes; this lane CORRECTS lane (c)'s 'operator not contained in S1' statement)",
+      "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "ledger9-c2-lqc-exact-modes-inin",
+    "title": "Ledger row 9 (A3-1e) lane 9c-2 - scheme-S1 bounce-window in-in integral (V2-V7 + R1-R4) evaluated with EXACT dressed-metric mode functions on the LQC-dust background over k*eta_B in [0.1, 10], with the initial state varied (lab adiabatic contraction vacuum, ABS adiabatic-order-zero vacuum, 4th-order adiabatic vacuum), testing whether the Agullo-Bolliet-Sreenath 2017 f_NL enhancement near k*eta_B ~ 1 appears in the lab's model",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Agullo, Bolliet & Sreenath 2017 - Non-Gaussianity in loop quantum cosmology (H^(3) Eq. 23; dressed metric Eqs. 39-42; |f_NL| ~ 1e3 plateau sec. IV B and VII; exp(-alpha k_t/k_LQC) decay sec. V; adiabatic-order-zero initial state sec. IV F)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1712.08148",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Maldacena 2003 - third-order action ABS's H^(3) Legendre-transforms into",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/0210603",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chen, Huang, Kachru & Shiu 2007 - cubic-action coefficients used for the epsilon-scaling estimate",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/0605045",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane (a) cubic vertex table V1-V7 + R1-R4 (scheme S1 coefficients and kernels)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane (b) numerical in-in machinery and its LQC result at k*eta_B = 1e-3 (-0.1043113297), the gate target of this lane",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane (b) results.json (backgrounds.lqc.k_scan, read by the gate at run time)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/results.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A2 linear-transmission module - LQC-dust background, dressed geometric potential a''/a = x^(1/3)(1/6 + x/3), matter-basis projection, exact dust adiabatic vacuum",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane 9c - ABS operator map, k_LQC*eta_B = 1.060146, decay 1.830229 per k*eta_B, 408 sigma PBH tail",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1b in-lab Delta^2_zeta ~ 1e-9 and the 7.0 dex PBH-band deficit",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.py",
+        "entrypoint": "python3 research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.py",
+        "sha256": "70bcaba34c209115cae533540dd04b28e0341f1c4351e9ea2b4db1ca344fcc36"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy + scipy (solve_ivp DOP853, CubicSpline, simpson) + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "~140 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~3 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic: no RNG, no network, no data files. The script imports lane (b)'s vertex set, kernels and in-in conventions verbatim and A2's LQC-dust background; only the mode-function initial state and the k-range are new. Conventions: kappa = 1, a_B = 1, rho_c = 1, k*eta_B = k*eta_B with eta_B the conformal half-width of the NEC-violating window; scheme S1 (z = a, eps_eff = 1/2, c_s = 1); f_NL = (5/6) B / (P1P2 + P1P3 + P2P3); squeezed isoceles k1 = 0.02 k unless the equilateral block is read."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_growth_factor.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_dfnl_bounce.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/LANE9C2_LQC_MODES_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) gate.passed is true and gate.rel_vs_laneB <= 1e-3 (measured 2.43e-11: the exact-mode pipeline reproduces lane (b)'s LQC total -0.1043113297 at k*eta_B = 1e-3); (b) gate.rel_V2_vs_closed == 3.04e-4 +/- 1e-5 (V2 alone vs the lane (a) closed form -(5/24) rho_B = -5/48) while gate.rel_vs_analytic == 1.389e-3 for the total, the difference being the genuine V3+V4+V6+V7 + R1-R4 content; (c) every mode has Wronskian Im(mu* mu') = -0.5 to 1e-9; (d) modes['0.1']['S-lab'].power_modification == 3.948e4 +/- 1%, modes['1']['S-lab'].power_modification == 1.0950 +/- 1e-3, and modes['3']['S-lab'].power_modification == 1.000001 +/- 1e-5 - the linear bounce imprint switches off within a factor 3 above k_LQC; (e) the state-dependence of dfnl[k][state].total is <= 13% across S-lab / S-ABS0 / S-ad4 at every k in K_SCAN, and eta0_systematic spans <= 15%; (f) |dfnl| stays in 0.3-7 (squeezed) across eta_star_systematic for every k in [0.1, 10], i.e. >= 2 dex below the ABS 1e3 plateau at k*eta_B ~ 1; (g) pbh_tail reproduces lane 9c's anchor: the |f_NL| = 1e3, zeta_c = 0.1 NG-term-only case gives 408.2 sigma.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e) - the computation named in lane 9c sec. 5",
+      "research/cubic_bounce_transmission/lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md (predecessor lane; its verdict was NOT DETERMINABLE WITHOUT A COMPUTATION, and named this one)",
+      "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)"
     ]
   },
   {
@@ -1996,7 +3206,7 @@ export const reproExperiments: ReproExperiment[] = [
     },
     "outputs": [
       {
-        "locator": "packages/namaster-proof/examples/rebuild_workspace_check_2026-07-18_podA4000.log",
+        "locator": "packages/namaster-proof/examples/rebuild_workspace_check_2026-07-18_podA4000.receipt.json",
         "type": "receipt",
         "checksum": null
       }
@@ -2149,6 +3359,431 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-a2-lane-a-cubic-vertex-table",
+    "title": "Track A2 lane (a): cubic-vertex table for zeta through a nonsingular bounce — coefficient poles at H=0, scheme regularisation, super-Hubble in-in reduction and S1 bounce-window estimate",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "a2_transmission_linear backgrounds",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": "sha256:bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/lane_a_vertex_table/cubic_vertex_table.py",
+        "entrypoint": "python3 cubic_vertex_table.py",
+        "sha256": "2418fb92830ae43016cd37532a965d3d1ffc474a5c54e0deaf09d571a23cd946"
+      }
+    ],
+    "environment": {
+      "python": "numpy 2.x, sympy 1.14.0, scipy (via a2_transmission_linear import) (repo requirements.txt)",
+      "hardware": "cpu-only; no GPU, no network"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-03",
+      "wall_clock": "2.0 s, measured",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 10 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic symbolic + quadrature; imports bg_quintin/bg_lqc/bg_poly from ../a2_transmission_linear.py."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/vertex_table.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/cubic_vertex_table.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+        "type": "document",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/REGULARISATION_ASSUMPTION.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm in the log: [B] eps = -1/(Upsilon t^2), eta_sr = 2 eps (Quintin); LQC Upsilon_eff = rho_c/2; [C] coefficient pole orders V1..V7 = -1,-4,-4,-4,-5,-6,-6 and R1..R4 = -2,-1,-2,-3; [D] S2 integrand poles V3 t^-4, V6/V7 t^-2 (non-integrable), V5 t^-3 (odd), V2/V4 finite; [E] leading squeezed kernel 5(-I_inf-3J)/(12 I_inf^2) for zeta zeta'^2; [F] Delta f_NL[V2,S1] = -0.139578 (Quintin, all dtB), -0.104167 (LQC = -5/48 exactly), closed form -(5/24) rho_B to <5e-5 (Quintin) and <2e-6 (LQC).",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item #2 second half (intrinsic bounce cubic contribution), lane (a) of three",
+      "builds on research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md (manifest p2-a2-bounce-fnl-transmission) and phases g1_*.py; does not redo them",
+      "in-in conventions: research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
+      "literature: hep-th/0605045 Eq. 4.28-4.29; astro-ph/0503692 Eq. 51; astro-ph/0210603 Eq. 3.9-3.10; arXiv:1103.1102; arXiv:1103.4126; arXiv:1508.04141; arXiv:1712.08148; arXiv:1108.0893"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-a2-lane-b-numerical-inin",
+    "title": "Track A2 lane (b): numerical bounce-window in-in evaluation of Delta f_NL^bounce on the three A2 backgrounds — every vertex V1-V7 plus redefinition terms, scheme S1, with eta_*/window/step convergence tests and the S2 divergence diagnostic",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "a2_transmission_linear backgrounds + adiabatic-vacuum mode evolution",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": "sha256:bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+      },
+      {
+        "name": "lane (a) vertex table + regularisation prescription (S1/S2, pole orders, closed form -(5/24) rho_B)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/vertex_table.json",
+        "checksum": "sha256:dc7b99648f6c2c463bf3010f39adeb719860401ea108b4e393411ed95c50ea9e"
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+        "entrypoint": "python3 bounce_cubic_inin.py",
+        "sha256": "a69b7f4b7e1743e54346a6351c5eb2e0299d3cafd3f3350da30bbec5e037f207"
+      }
+    ],
+    "environment": {
+      "python": "numpy 2.x, scipy (solve_ivp DOP853, CubicSpline, simpson), matplotlib (repo requirements.txt)",
+      "hardware": "cpu-only; no GPU, no network"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-03",
+      "wall_clock": "4.0 s, measured",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 15 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic ODE + quadrature; imports bg_quintin/bg_lqc/bg_poly and evolve() from ../a2_transmission_linear.py. No random seeds, no external data, no network."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md",
+        "type": "document",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/dfnl_bounce_quintin.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/dfnl_bounce_lqc.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/dfnl_bounce_poly.png",
+        "type": "figure",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm in the log: gates Wronskian Im(mu* mu') = -0.50000000 on every leg, local redefinition F zeta^2 -> (5/3)F to <1e-12, triangle closure <1e-12; headline row k eta_B = 1e-3 gives V2 = -0.139586 (Quintin), -0.104198 (LQC), -0.126879 (poly) against lane (a)'s -(5/24) rho_B = -0.139581 / -0.104167 / -0.126875 (rel 3.3e-5 / 3.0e-4 / 3.4e-5); V1 and V5 identically zero in S1; V4 negative and V6+V7 positive but both <1.1e-4 of V2; totals Delta f_NL^bounce = -0.13982 / -0.10431 / -0.12711 and f_NL^after = -0.5008 / -0.6512 / -0.5548; eta_*-independence flat to 1.3-3.6 percent for eta_* >= 10 eta_B; step-size convergence 1e-8 or better; S2 V6+V7 d_cut log-log slope -1.005 to -1.007 (divergence, no regulated number).",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item #2 second half (intrinsic bounce cubic contribution), lane (b) of three; lane (c) (Horndeski/dressed-metric vertex corrections) remains open",
+      "consumes lane (a): research/cubic_bounce_transmission/lane_a_vertex_table/ (manifest p2-a2-lane-a-cubic-vertex-table) — vertex table, S1/S2 schemes, closed form -(5/24) rho_B",
+      "consumes A2 linear transfer: research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md (manifest p2-a2-bounce-fnl-transmission) — backgrounds, adiabatic vacuum, T_fNL = (1-rho_B)/2",
+      "f_NL^before = -35/16 is an INPUT from ledger #1 (manifest p2-fnl-adjudication-inin-from-scratch), not recomputed",
+      "in-in conventions: research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py Sec. 1",
+      "corrects lane (a) Sec. 5: the S1 pure-time estimate '-(7/8)(5/24) rho_B' is not confirmed — the squeezed angular average of the V6/V7 kernels cancels the naive 1/8 weight to four digits"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-a3-lane-9a-velocity-dip",
+    "title": "Ledger row 9 (A3-1e) lane (a): does the Quintin+2015 scalar-field-velocity-dip amplification of zeta (their Eq. 79) exist on the lab's three A2 backgrounds, and what is the curvature-spectrum transfer in the band k eta_B in [0.1, 10] that the S1 super-Hubble result does not cover",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "a2_transmission_linear backgrounds (Quintin-type, LQC effective dust, poly non-LQC) + adiabatic-vacuum mode evolution + exact S/C matter-basis projection",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": "sha256:bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+      },
+      {
+        "name": "lane (b) numerical in-in Delta f_NL^bounce (the term this lane's transfer would modulate)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+        "checksum": "sha256:a69b7f4b7e1743e54346a6351c5eb2e0299d3cafd3f3350da30bbec5e037f207"
+      },
+      {
+        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015, PRD 92 063532 (Eqs. 30, 44, 79, 80 and the bounce-phase ansatz) -- literature input, quoted not recomputed",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1508.04141",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/lane9a_velocity_dip/lane9a_velocity_dip.py",
+        "entrypoint": "python3 lane9a_velocity_dip.py",
+        "sha256": "227ce03404683c35cc5f8e1c9fbced4b5b4c72ac61ac922910a2c3cb0159e76e"
+      }
+    ],
+    "environment": {
+      "python": "numpy 2.x, scipy (solve_ivp DOP853, CubicSpline), matplotlib (repo requirements.txt)",
+      "hardware": "cpu-only; no GPU, no network"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-04",
+      "wall_clock": "143.7 s, measured",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 4 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic ODE + projection; imports bg_quintin/bg_lqc/bg_poly, evolve(), zeta_at() from ../a2_transmission_linear.py. No random seeds, no external data, no network. Cost of the literature input is a single arXiv abs/HTML fetch."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/lane9a_velocity_dip.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/LANE9A_VELOCITY_DIP_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9a_velocity_dip/lane9a_growth_vs_ketaB.png",
+        "type": "figure",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm in the log: (1) Hdot is constant to 7.2e-06 across the whole NEC window on the Quintin-type background (Upsilon = 2.66667 for dtB = 1) and varies by a factor of order unity on LQC and poly, so the total-sector identification phidot^2 = -2 M_p^2 Hdot vanishes at eta_B and manufactures a divergent factor (2.2e10 on LQC, 7.6e3 on poly) -- the diagnostic that it is NOT Quintin's matter-sector phidot; (2) the adopted Eq. (79) factor is exactly 1 on all three backgrounds; (3) growth table lambda_zeta(k eta_B = 0.1, 0.3, 1) = 5.971/5.446/3.543 (Quintin), 3.919/3.553/4.582 (LQC), 4.898/3.722/0.952 (poly); (4) S1-deviation transfer G(k) band extremum 1.3281 at k eta_B = 0.768 (Quintin), 1.4965 at 0.611 (LQC), 0.2414 at 0.768 (poly), against small-k numerical floors |G-1| = 1.35e-02 / 2.18e-02 / 8.35e-04, i.e. Delta^2 ratios 1.76 / 2.24 / 0.058; (5) G -> 1 to better than 1 percent for k eta_B >= 3 on all three; (6) convergence rel dev <= 8.2e-08 for rtol 1e-11 -> 1e-9 and 0 for eta_far x2.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane (a) of three; lane (b) = S2 regularisation (manifest p2-a3-lane-9b-s2-regularisation), lane (c) = comparison ledger",
+      "extends research/cubic_bounce_transmission/lane_c_comparison/LANE_C_COMPARISON_2026-09-03.md Sec. 2.3 item 2, which recorded 'the lab's backgrounds carry no scalar-velocity dip' as an assertion; this lane derives it and quantifies the k eta_B ~ 1 transfer the S1 band never tested",
+      "the assumption A1 of lane (b) (k eta_B <= 1e-2 super-Hubble transfer) is the object being probed here; this lane does NOT recompute the in-in bispectrum",
+      "f_NL^before = -35/16 remains an INPUT from ledger #1, not recomputed"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-a3-lane-9b-s2-regularisation",
+    "title": "Track A3 (ledger row 9 / A3-1e) lane 9b: is the effective-fluid (S2) divergence of Delta f_NL^bounce physical? Exact S2 modes at H=0, regularity of the comoving-gauge constraint solutions, total-derivative origin of the Maldacena-form poles",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "lane (a) cubic-vertex table (coefficients, S2 pole counting)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/cubic_vertex_table.py",
+        "checksum": "sha256:2418fb92830ae43016cd37532a965d3d1ffc474a5c54e0deaf09d571a23cd946"
+      },
+      {
+        "name": "lane (b) S2 divergence report (d_cut slope -1.005..-1.007)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.py",
+        "entrypoint": "python3 lane9b_s2_regulation.py",
+        "sha256": "36f79edc6c86353d328a9bcfe76fb51eb7e8ef36907f0b5a37f643ccb72fb428"
+      }
+    ],
+    "environment": {
+      "python": "sympy 1.14.0 (repo requirements.txt); no numpy/scipy needed",
+      "hardware": "cpu-only; no GPU, no network"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-04",
+      "wall_clock": "1 s, measured",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 10 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic symbolic (Frobenius series to O(t^9), Laurent residues). Self-contained; does not import lane (a)."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/LANE9B_S2_REGULATION_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm in the log: [A] Frobenius indicial exponents 0 and 3; zetadot|C1 = c_s^2 k^2 t (not ~H^2), zetadot|C2 = 3 t^2; MS residual 0 through O(t^2). [B] Res[-zeta/H]_C1 = -1/Upsilon, Res[chi]_C1 = +1/Upsilon, sum 0; psi = -zeta/H + chi regular (leading t^1 for C1, t^0 for C2); N1 regular. [C] Maldacena-form poles on exact [C1^3] modes: V2 t^-2, V3 t^-4, V4 t^-2, V5 t^-4, V6+V7 t^-4 (all even, non-integrable); lane-(a) [C1,C2,C2] weights reproduce V2 t^0, V6+V7 t^-2. [D] all raw-ADM building blocks (zeta, zetadot, N1, psi, H, phidot^2, V, a) regular at t=0. Verdict string: 'S2 REGULARISED-IN-FORM / VALUE UNRESOLVED'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane (b): contested math — S2 regularisation of Delta f_NL^bounce",
+      "builds on research/cubic_bounce_transmission/lane_a_vertex_table/REGULARISATION_ASSUMPTION.md and lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md (manifests p2-a2-lane-a-cubic-vertex-table, p2-a2-lane-b-numerical-inin); does not redo them",
+      "linear-order antecedent: research/cubic_bounce_transmission/g1_gradient_transmission_scheme.py (S2 gradient-transmission coefficient ~ d_cut^-1)",
+      "literature (transcribed, not re-derived): astro-ph/0210603 Eq. 2.9-2.14, 3.8-3.10; hep-th/0605045 Eq. 3.5-3.6, 4.28-4.29; astro-ph/0503692 Eq. 51; arXiv:1406.2790; arXiv:1508.04141 (equation numbers NOT asserted; audit item)",
+      "named next step: raw-ADM-form in-in bounce-window integral on exact S2 modes (lane-(b)-class numerical job) — the finite S2 value is not computed here and equality with S1 -(5/24) rho_B is not claimed"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-a3-lane-9b2-s2-rawadm",
+    "title": "Track A3 (ledger row 9 / A3-1e) lane 9b-2: scheme-S2 (effective-fluid MS variable) bounce-window cubic contribution from the RAW ADM cubic Lagrangian on exact S2 modes, end-to-end in-in through the Quintin-type bounce, compared with scheme S1's -(5/24) rho_B",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "lane 9b finding (S2 divergence = total-derivative pole; raw ADM form finite on exact S2 modes; Frobenius data)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane9b_s2_regulation/lane9b_s2_regulation.py",
+        "checksum": "sha256:36f79edc6c86353d328a9bcfe76fb51eb7e8ef36907f0b5a37f643ccb72fb428"
+      },
+      {
+        "name": "lane (b) S1 numbers, in-in conventions, window/eta* tests (Quintin rho_B = 0.6700, -(5/24) rho_B = -0.1396, f_NL^after = -0.5002)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/results.json",
+        "checksum": null
+      },
+      {
+        "name": "lane (b) in-in engine (conventions reproduced: -2 Im commutator, 3! attachments once, f_NL = (5/6) B / sum PP)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+        "checksum": "sha256:a69b7f4b7e1743e54346a6351c5eb2e0299d3cafd3f3350da30bbec5e037f207"
+      },
+      {
+        "name": "adjudicated matter-contraction value f_NL = -35/16 (ledger #1; used as an independent gate, not an input)",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.py",
+        "entrypoint": "python3 lane9b2_s2_rawadm.py",
+        "sha256": "44b848063978e912770ed535a99f762765bc7b7e3ee96aee1be240c59c2f9d62"
+      }
+    ],
+    "environment": {
+      "python": "numpy, scipy (special.hankel1/2, erf, integrate.simpson), sympy 1.14, matplotlib (repo requirements.txt)",
+      "hardware": "cpu-only; no GPU, no network"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-04",
+      "wall_clock": "25 s, measured",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 1 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic. Symbolic raw ADM expansion (sympy, 184-term cubic Fourier kernel) + exact S2/S1 modes (analytic matter modes, power series through H=0, well-conditioned real matter basis after the bounce) + Simpson in-in on real t (window/expansion) and on a damped contour eta_m = eta_m0 + s(1 - i delta) (contraction)."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/integrand_across_bounce.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/dfnl_bounce_s2_vs_ketaB.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/LANE9B2_S2_RAWADM_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm in the log: gate (i-a) both constraint solutions derived from the raw quadratic Fourier Lagrangian (N1 = zetadot/H, psi = -zeta/H - a^2 eps zetadot/k^2) -> True/True. Gate (i-b) power-law inflation eps in {0.1, 0.2}: raw/Maldacena-form - 1 = O(1e-4) after (k eta*)^2 extrapolation, Maldacena form vs consistency relation (5/6) eps/(1-eps) within 1e-3, contour independence ~5e-6. Gate (i-c) S1 Maldacena-form window integral = lane b bulk to 3e-5 at k eta_B = 1e-3; |zeta_after/zeta(-tm)| = 6.06 = 2/(1-rho_B). Gate (i-b') raw contraction-only f_NL at -tm = -2.18728 vs -35/16 (1e-4). Gate (i) literal: raw form on S1 pseudo-variables has an odd |t|^-1 pole at H = 0 -> VOID. S2: NEC-window raw +1.640 (k eta_B = 1e-3), f_NL^before -2.18728, f_NL^after -1.2488, |lambda| = 0.9696, Delta_T = +1.007; step convergence 1e-10; window scan [-0.5..2] tm spans -0.30..-4.80 (window-convention dependence, reported). Verdict string starts 'S2 != S1'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane 9b named next step: raw-ADM-form in-in bounce-window integral on exact S2 modes",
+      "builds on manifests p2-a3-lane-9b-s2-regularisation, p2-a2-lane-b-numerical-inin, p2-a2-lane-a-cubic-vertex-table; does not redo them",
+      "literature (transcribed, not re-derived): astro-ph/0210603 Eq. 2.4, 2.9-2.14 (raw ADM action, constraint solutions), consistency relation f_NL^sq = (5/12)(1 - n_s) (Maldacena 2003; Creminelli & Zaldarriaga 2004) used only as an engine gate on an exact power-law background",
+      "the S1 pseudo-scheme (eps_eff = 1/2, z = a) has no raw-ADM counterpart: its modes have zetadot(0) != 0 so N1 = zetadot/H is singular at H = 0; S1 remains a Maldacena-form-defined assumption-labelled anchor (lane a wording stands)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p2-channel-native-fisher",
     "title": "Channel-native Fisher surrogate (c15) + covariance chain (c8-c15)",
     "program": "bounce-theory",
@@ -2234,44 +3869,44 @@ export const reproExperiments: ReproExperiment[] = [
     "kind": "analysis",
     "inputs": [
       {
-        "name": "Cai, Xue, Brandenberger & Zhang 2009 (arXiv source matterbounceng2.tex, v2)",
-        "locator": "https://arxiv.org/e-print/0903.0631",
-        "used_for": "Eqs. 14-15 (mode function, cubic action), 20-21 (f_NL convention), 25-36 (per-vertex rows, read only for COMPARISON after the from-scratch computation), 37 (printed total), 38-40 (quoted amplitudes -35/8, -255/64, -9/4)"
+        "name": "Cai, Xue, Brandenberger & Zhang 2009 (arXiv source matterbounceng2.tex, v2) — used for: Eqs. 14-15 (mode function, cubic action), 20-21 (f_NL convention), 25-36 (per-vertex rows, read only for COMPARISON after the from-scratch computation), 37 (printed total), 38-40 (quoted amplitudes -35/8, -255/64, -9/4)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/e-print/0903.0631"
       },
       {
-        "name": "Li, Quintin, Wang & Cai 2016 (arXiv source)",
-        "locator": "https://arxiv.org/e-print/1612.02036",
-        "used_for": "Eq. 4.19 total shape function and Eq. 5.1 f_NL^local = -165/16 + 65/(8 c_s^2), independence audit"
+        "name": "Li, Quintin, Wang & Cai 2016 (arXiv source) — used for: Eq. 4.19 total shape function and Eq. 5.1 f_NL^local = -165/16 + 65/(8 c_s^2), independence audit",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/e-print/1612.02036"
       },
       {
-        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv source)",
-        "locator": "https://arxiv.org/e-print/1508.04141",
-        "used_for": "independence audit: the -35/16 there is a quotation attributed to Cai 2009, not a computation"
+        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv source) — used for: independence audit: the -35/16 there is a quotation attributed to Cai 2009, not a computation",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/e-print/1508.04141"
       },
       {
-        "name": "Maldacena 2003 (arXiv source)",
-        "locator": "https://arxiv.org/e-print/astro-ph/0210603",
-        "used_for": "cubic action; de Sitter three-point benchmark A_eps used to VALIDATE the machinery before use"
+        "name": "Maldacena 2003 (arXiv source) — used for: cubic action; de Sitter three-point benchmark A_eps used to VALIDATE the machinery before use",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/e-print/astro-ph/0210603"
       },
       {
-        "name": "Namjoo, Firouzjahi & Sasaki 2012",
-        "locator": "https://arxiv.org/abs/1210.3692",
-        "used_for": "ultra-slow-roll benchmark f_NL = 5/2 used to VALIDATE the field-redefinition term in a non-attractor phase"
+        "name": "Namjoo, Firouzjahi & Sasaki 2012 — used for: ultra-slow-roll benchmark f_NL = 5/2 used to VALIDATE the field-redefinition term in a non-attractor phase",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1210.3692"
       },
       {
-        "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013",
-        "locator": "https://arxiv.org/abs/1301.5699",
-        "used_for": "non-attractor in-in context (field-redefinition dominance, consistency-relation violation)"
+        "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013 — used for: non-attractor in-in context (field-redefinition dominance, consistency-relation violation)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1301.5699"
       },
       {
-        "name": "lab second-method delta-N (uniform-density slices)",
-        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py (commit d7dac953)",
-        "used_for": "separate-universe system and the -55/16 result, reproduced here for general eps and compared with the comoving-slice delta-N"
+        "name": "lab second-method delta-N (uniform-density slices) — used for: separate-universe system and the -55/16 result, reproduced here for general eps and compared with the comoving-slice delta-N",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py (commit d7dac953)"
       },
       {
-        "name": "BigBounce Paper 2 Appendix A + scripts/p2_vertex_check.py",
-        "locator": "research/focused_paper_source_integration/02_full_draft.tex",
-        "used_for": "per-vertex table tab:vertexwalk and Eq. vertexsum, reproduced exactly; 'spurious term' narrative corrected"
+        "name": "BigBounce Paper 2 Appendix A + scripts/p2_vertex_check.py — used for: per-vertex table tab:vertexwalk and Eq. vertexsum, reproduced exactly; 'spurious term' narrative corrected",
+        "type": "internal-artifact",
+        "locator": "research/focused_paper_source_integration/02_full_draft.tex"
       }
     ],
     "apis": [],
@@ -2310,7 +3945,7 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
-        "type": "writeup",
+        "type": "document",
         "checksum": null
       }
     ],
@@ -2320,6 +3955,115 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/NEXT_SCIENCE_LEDGER.md row 1 (independent derivation of the matter-contraction f_NL) — adjudication step",
       "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md §8 items 1-2 (the two open computations named there)",
       "directive R (vision governance) and directive Q2 (reproducibility manifests)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-fnl-monopole-adjudication",
+    "title": "Adjudication of the squeezed-limit monopole of the matter-contraction f_NL: in-in (-15/8) vs comoving delta-N (-5) via the classical O(k^0) super-Hubble kernel with L/K/X tagging",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "lab in-in adjudication (2026-09-02)",
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.json (commit aa2987cf)",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab second-method delta-N (2026-09-02)",
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md (commit d7dac953)",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab Bianchi-I separate universe (2026-09-03)",
+        "locator": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.md (commit 866cf342)",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "Maldacena 2003",
+        "locator": "https://arxiv.org/abs/astro-ph/0210603",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Namjoo, Firouzjahi & Sasaki 2012",
+        "locator": "https://arxiv.org/abs/1210.3692",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lyth, Malik & Sasaki 2005",
+        "locator": "https://arxiv.org/abs/astro-ph/0411220",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
+        "entrypoint": "python3 research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.py && python3 research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
+        "sha256": "058447db00cb61978e05dd0503983ebbe29a558abfd94ad5270fd87e5c3880aa"
+      },
+      {
+        "path": "research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.py",
+        "entrypoint": "python3 research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.py",
+        "sha256": "0c30afe73b8080e5443fa2af28461782a8a5a01bdebe147830f57f5563d447d7"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-03",
+      "wall_clock": "15 s + 8 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 1 minute",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic exact sympy; no network. Run the general-eps companion first (main script reads its JSON in Section 9). Self-validates: USR gives 5/2; attractor has no O(k^0) source; the full O(k^0) kernel and every per-vertex row equal lane A's in-in JSON (asserted); 1/k_L poles cancel across classes (asserted); delta-N_c/zeta_Maldacena = 1 - eps/3 (asserted)."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSONs. Required exact values: validation_USR.f_NL == '5/2'; validation_vs_laneA_inin.A_total_difference == '0'; matter_classical_O_k0.f_squeezed_mu == '15*mu**2/16 - 35/16'; squeezed_tagging.class_L_f_mu == '-25/8'; class_K_f_mu == '0'; class_X_f_mu == '15*mu**2/16 + 15/16'; deltaN_checks.linear_map_deltaNc_over_zetaMaldacena == '1 - epsilon/3'; general_eps.total.f_mu_eps == '5*(epsilon**2*mu**2 - epsilon**2 + 6*epsilon - 12)/12'; general_eps.L_minus_deltaNc == '5*epsilon/4'; general_eps.inin_over_laneC_quadrupole == 'epsilon/3'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 1 (A3-2 amendment: -25/8 monopole gap OPEN; this work closes it)",
+      "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.md §4 item 2 (the advection/projection prescription = class [X] here)",
+      "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+      "input 'lab in-in adjudication (2026-09-02)' used ONLY for the post-hoc per-vertex comparison in script Section 4",
+      "input 'Lyth, Malik & Sasaki 2005' used for: the gradient-expansion assumption that the shift is first order in gradients — the assumption shown to fail for the non-attractor growing mode in comoving gauge",
+      "input 'Namjoo, Firouzjahi & Sasaki 2012' used for: USR f_NL = 5/2 benchmark (validation of both the classical kernel and the delta-N ODE system)"
     ]
   },
   {
@@ -2500,7 +4244,7 @@ export const reproExperiments: ReproExperiment[] = [
         "checksum": null
       },
       {
-        "locator": "research/cubic_bounce_transmission/g1_gradient_transmission_results.log",
+        "locator": "research/cubic_bounce_transmission/g1_gradient_transmission.log",
         "type": "receipt",
         "checksum": null
       }
@@ -3091,6 +4835,290 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-v2-allwise-photometry",
+    "title": "AllWISE (VizieR) photometry join for the S>3 v2 science-only sample",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "crossmatch",
+    "inputs": [
+      {
+        "name": "flagship_sample_v2_enriched.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+        "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff",
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "AllWISE II/328 (VizieR, astroquery)",
+        "endpoint": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/sync",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/wise_join_flagship.py",
+        "entrypoint": "python3 wise_join_flagship.py (pod-side, stage 06_WISE; radius_arcsec=3.0, astroquery.vizier.Vizier)",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "astroquery==0.4.11, pandas, pyarrow, numpy",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-03",
+      "wall_clock": "2026-09-03T23:14:03Z to 2026-09-03T23:55:02Z (~41m)",
+      "actual_cost_usd": 0.12
+    },
+    "reproduction": {
+      "recommended_venue": "local-cpu",
+      "est_wall_clock": "~40-45min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": true,
+      "notes": "Network-bound VizieR query; no GPU required; wise_checkpoint.json supports resume (checkpoint_every=50)."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_wise_v2.parquet",
+        "type": "catalog",
+        "checksum": "1b42125d5e62830cf44806a842b7253e787ec218c77b3a19e690eed4fedb40f3"
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_wise_v2_manifest.json",
+        "type": "receipt",
+        "checksum": "b060c1f5395b131865eef57fb7678f02349d69e891b6ad2dc8360eccc1a92290"
+      }
+    ],
+    "verification": "Row count in flagship_wise_v2.parquet cross-checked against flagship_wise_v2_manifest.json at landing time (2026-09-03).",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_wise_v2_manifest.json",
+      "project-context/PHASE3_V2_LANDING_2026-09-03.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-v2-enrichment",
+    "title": "S>3 flagship anomaly sample enrichment (photometry/spectroscopy/morphology join) [SAMPLE-V2, science-only, contamination-fixed]",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "flagship_sample_v2.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2.parquet",
+        "checksum": "d6d43dfa04d6a8b2b4d014f5f4899b5e5b844144a50b6c88e01a9a771a6baa5f",
+        "license": null
+      },
+      {
+        "name": "DESI zcatalog/target coordinates",
+        "type": "external-dataset",
+        "locator": "DESI internal zcatalog (pod-local, bound by zcatalog_sha256 in flagship_enriched_v2_manifest.json)",
+        "checksum": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/enrich_flagship_sample.py",
+        "entrypoint": "python3 enrich_flagship_sample.py (pod-side, stage 04_ENRICH; see pod_phase3_v2.sh)",
+        "sha256": "3e7efb243fa5cc4e7e06c5ce8e13f011e1173d2cc44aecd8df47e0c67c0ab996"
+      }
+    ],
+    "environment": {
+      "python": "pandas, pyarrow, numpy (RunPod pod bootstrap for exact pins)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-03",
+      "wall_clock": "2026-09-03T17:06:50Z to 2026-09-03T19:49:52Z (~2h43m)",
+      "actual_cost_usd": 0.46
+    },
+    "reproduction": {
+      "recommended_venue": "runpod-a4000-or-equivalent",
+      "est_wall_clock": "~2h45m",
+      "est_cost_usd": 0.5,
+      "parallelizable": false,
+      "resume_support": true,
+      "notes": "enrich_checkpoint.json supports resume; contract_sha256/model_sha256/inference_code_sha256/zcatalog_sha256 in flagship_enriched_v2_manifest.json bind exact reproduction inputs. Sample built by 03_CHOOSE_THRESHOLD_AND_BUILD, which passed gates/check_sample_provenance.py clean (status: clean) -- the fix for SAMPLE-V1 negative-TARGETID contamination."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+        "type": "catalog",
+        "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff"
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_enriched_v2_manifest.json",
+        "type": "receipt",
+        "checksum": "243495ac59987d9a7b461adca1e11668c47cb09cee30b64141cf224f5c9733c5"
+      }
+    ],
+    "verification": "flagship_enriched_v2_manifest.json MSE cross-check: 0 offenders / 1244 rows checked (tolerance 1e-6); groups 752/752 completed, 0 skipped. input_sample_sha256 matches flagship_sample_v2.parquet's own hash.",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_enriched_v2_manifest.json",
+      "project-context/PHASE3_V2_LANDING_2026-09-03.md",
+      "project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-v2-simbad-ned-crossmatch",
+    "title": "SIMBAD/NED positional cross-match of the S>3 v2 science-only sample",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "crossmatch",
+    "inputs": [
+      {
+        "name": "flagship_sample_v2_enriched.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+        "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff",
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "SIMBAD (astroquery)",
+        "endpoint": "astroquery.simbad.Simbad (v0.4.11)",
+        "auth_required": false
+      },
+      {
+        "name": "NED (astroquery)",
+        "endpoint": "astroquery.ipac.ned.Ned (v0.4.11)",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/crossmatch_flagship.py",
+        "entrypoint": "python3 crossmatch_flagship.py (pod-side, stage 05_CROSSMATCH; radius_arcsec=3.0)",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "astroquery==0.4.11, pandas, pyarrow, numpy",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-03",
+      "wall_clock": "2026-09-03T19:49:52Z to 2026-09-03T23:14:03Z (~3h24m)",
+      "actual_cost_usd": 0.58
+    },
+    "reproduction": {
+      "recommended_venue": "local-cpu-or-runpod",
+      "est_wall_clock": "~3-4h (network-bound VizieR/SIMBAD/NED rate limits, 1.0s sleep between queries, radius 3.0 arcsec)",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": true,
+      "notes": "Network-bound; crossmatch_ckpt/ supports resume. No GPU required despite pod venue used originally."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_matched.parquet",
+        "type": "catalog",
+        "checksum": "4a718d1a7ad253d2f91c69841d81e3b8015650fc0ca1f4a711fa0ee9da17f135"
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_unmatched.parquet",
+        "type": "catalog",
+        "checksum": "c0a6b57bd672f81b1424a65449f99d891810073ea59e600c1fc35cfec30eb7c3"
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_manifest.json",
+        "type": "receipt",
+        "checksum": "dc9734decafa79cb803370d977ec8d7fa88a20fa8444a4de86175e8f513480c9"
+      }
+    ],
+    "verification": "569/1244 matched (45.7%: n_ned_found=562, n_simbad_found=38), 675 unmatched (54.3%), counts sum to input row count 1244 (see PHASE3_V2_BENCHMARK_SUMMARY.md). Match rate is 19x higher than the v1 S>8 sample's 2.4%, consistent with v2's science-only provenance gate having removed sky-fiber contamination.",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_manifest.json",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md",
+      "project-context/PHASE3_V2_LANDING_2026-09-03.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p3-flagship-v2-taxonomy",
+    "title": "Descriptive taxonomy (UMAP + clustering, 25 clusters -> 8 families) of the S>3 v2 science-only unmatched population",
+    "program": "anomaly-discovery",
+    "paper": "anomaly-flagship",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "flagship_crossmatch_v2_unmatched.parquet",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_unmatched.parquet",
+        "checksum": "c0a6b57bd672f81b1424a65449f99d891810073ea59e600c1fc35cfec30eb7c3",
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p1_highz_tracers/clean_rerun/taxonomy_flagship.py",
+        "entrypoint": "python3 taxonomy_flagship.py (pod-side, stage 07_TAXONOMY; umap_neighbors=15, umap_min_dist=0.05, score_tier_quantiles=[0.5,0.8,0.95])",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "numpy==2.4.6, scikit-learn==1.9.0, umap-learn==0.5.12",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "runpod",
+      "gpu": "a4000",
+      "pod_id_or_host": "8ofv5d4ynu7hku",
+      "date": "2026-09-03",
+      "wall_clock": "2026-09-03T23:55:02Z to 2026-09-03T23:55:28Z (~26s)",
+      "actual_cost_usd": 0.001
+    },
+    "reproduction": {
+      "recommended_venue": "local-cpu",
+      "est_wall_clock": "~1-5min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fast, CPU-only clustering step; deterministic given the pinned sklearn/umap-learn versions and fixed input."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_taxonomy_v2.json",
+        "type": "result-json",
+        "checksum": "1420388b59f3727814dda63c90c8e4cd0d2226c1e6ad2907c3301ed844edbf60"
+      },
+      {
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_taxonomy_v2_manifest.json",
+        "type": "receipt",
+        "checksum": "8afbc35ceb912390b153a5ba752075fdb8c734799ed04b79c937d34c11959a87"
+      }
+    ],
+    "verification": "25 clusters roll up to 8 families with sizes 302/87/71/61/44/38/36/36, summing to 675 -- matches SIMBAD/NED-unmatched row count exactly (see PHASE3_V2_BENCHMARK_SUMMARY.md).",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_taxonomy_v2_manifest.json",
+      "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md",
+      "project-context/PHASE3_V2_LANDING_2026-09-03.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p3-kfold-cv-gate",
     "title": "DESI 5-fold cross-validation reproducibility gate (mean pairwise Jaccard 0.862)",
     "program": "anomaly-discovery",
@@ -3194,7 +5222,7 @@ export const reproExperiments: ReproExperiment[] = [
     "code": [
       {
         "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
-        "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-manifest <local manifest> --catalogs-config <s8 config> --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir results_2026-08-07/phase3/recovery_benchmark",
+        "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-manifest ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/reference_manifest_local.json --catalogs-config /tmp/catalogs_config_v2.json --locator-inventory sealed_2026-08-05/locator_inventory.jsonl --out-dir results_2026-08-07/phase3/recovery_benchmark",
         "sha256": null
       }
     ],
@@ -3226,7 +5254,7 @@ export const reproExperiments: ReproExperiment[] = [
       },
       {
         "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3/recovery_benchmark/recovery_benchmark.md",
-        "type": "result-json",
+        "type": "document",
         "checksum": null
       },
       {
@@ -3313,7 +5341,7 @@ export const reproExperiments: ReproExperiment[] = [
     "code": [
       {
         "path": "pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/emcee_freespec.py",
-        "entrypoint": "python3 emcee_freespec.py",
+        "entrypoint": "BIGBOUNCE_WORKSPACE=/path/to/writable/dir python3 emcee_freespec.py",
         "sha256": null
       }
     ],
@@ -3335,7 +5363,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": false,
-      "notes": "CONTENT CORRECTION vs the inventory bullet: the inventory's cited headline numbers (gamma=3.20+/-0.42, 192,000 samples = 32 walkers x 6,000 steps, DeltaBIC=7.0 from savage_dickey_2026-05-29.json) do NOT match the actual committed artifacts in this directory. The committed results.json for this exact script (emcee_freespec.py, real 30-bin Zenodo KDE likelihood) reports gamma mean=2.5665 +/- 0.3818 (median 2.5913), n_samples=320,000 (32 walkers x 10,000 production steps, plus 2,500 burn-in per the script docstring), and the committed savage_dickey_2026-05-29.json reports Savage-Dickey Bayes factors (B_matter_bounce_vs_free=3.228, log10_B_matter_bounce_vs_smbhb=3.854), not a Delta-BIC figure. The gamma=3.20+/-0.42 / DeltaBIC=7.0 figures instead belong to a DIFFERENT script, projects/nanograv/nanograv_improved_analysis.py (32 walkers x 6,000 steps, 134k post-burn samples, reconstructed from the published Agazie+2023 best-fit rather than the real Zenodo KDE likelihood — see project-context/SSOT/paper-3/status.md's Wave-14-RR note), which is outside this manifest's 17-id scope. Venue is genuinely ungated: no RunPod pod ID, GPU/CPU class, $/hr, or wall-clock is recorded anywhere in pipelines/p3_pta_mcmc/ (Top-5-gaps #2); the 24.97s committed production_seconds strongly suggests local CPU execution, but that inference is not itself logged evidence."
+      "notes": "CONTENT CORRECTION vs the inventory bullet: the inventory's cited headline numbers (gamma=3.20+/-0.42, 192,000 samples = 32 walkers x 6,000 steps, DeltaBIC=7.0 from savage_dickey_2026-05-29.json) do NOT match the actual committed artifacts in this directory. The committed results.json for this exact script (emcee_freespec.py, real 30-bin Zenodo KDE likelihood) reports gamma mean=2.5665 +/- 0.3818 (median 2.5913), n_samples=320,000 (32 walkers x 10,000 production steps, plus 2,500 burn-in per the script docstring), and the committed savage_dickey_2026-05-29.json reports Savage-Dickey Bayes factors (B_matter_bounce_vs_free=3.228, log10_B_matter_bounce_vs_smbhb=3.854), not a Delta-BIC figure. The gamma=3.20+/-0.42 / DeltaBIC=7.0 figures instead belong to a DIFFERENT script, projects/nanograv/nanograv_improved_analysis.py (32 walkers x 6,000 steps, 134k post-burn samples, reconstructed from the published Agazie+2023 best-fit rather than the real Zenodo KDE likelihood — see project-context/SSOT/paper-3/status.md's Wave-14-RR note), which is outside this manifest's 17-id scope. Venue is genuinely ungated: no RunPod pod ID, GPU/CPU class, $/hr, or wall-clock is recorded anywhere in pipelines/p3_pta_mcmc/ (Top-5-gaps #2); the 24.97s committed production_seconds strongly suggests local CPU execution, but that inference is not itself logged evidence. 2026-09-04 hygiene closure: emcee_freespec.py hardcoded ROOT/OUT_DIR under /workspace (pod-only, read-only filesystem elsewhere); the script now reads BIGBOUNCE_WORKSPACE (default /workspace, unchanged numerics/paths) so it can write to any local directory off-pod — set it to a writable path to reproduce outside RunPod."
     },
     "outputs": [
       {
@@ -4477,7 +6505,7 @@ export const reproExperiments: ReproExperiment[] = [
     },
     "outputs": [
       {
-        "locator": "HF bamfai/galaxy-chirality-v2 (checkpoint SHA 618d170f…)",
+        "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2",
         "type": "model",
         "checksum": "618d170f… (partial SHA quoted in inventory)"
       }
@@ -4646,7 +6674,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -4681,7 +6709,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "Not evidenced beyond code presence in the inventory; all original_run fields stay null. Reproduction requires a valid HF_TOKEN with write access to bamfai/astra-desi-edr-mirror to complete the mirror step."
+      "notes": "Not evidenced beyond code presence in the inventory; all original_run fields stay null. Reproduction requires a valid HF_TOKEN with write access to bamfai/astra-desi-edr-mirror to complete the mirror step. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -4699,7 +6727,8 @@ export const reproExperiments: ReproExperiment[] = [
     "status": "runnable-now",
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — astra per-object crossmatch + HF mirror bullet",
-      "project-context/SSOT/paper-5/status.md"
+      "project-context/SSOT/paper-5/status.md",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   },
   {
@@ -4720,7 +6749,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -4776,7 +6805,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "reproducibility: runnable-now, gap = no venue/cost evidence — the code runs, just no compute-receipt exists for the original run. Lineage note: the earlier '187-DESI-attribute cosmic-web catalog' blocker (SSOT: 'Houston-mediated, confirmed not in repo') was later resolved via this DESIVAST VAC approach, superseding the earlier env_finder/ 'run our own cosmic-web finder' fallback plan."
+      "notes": "reproducibility: runnable-now, gap = no venue/cost evidence — the code runs, just no compute-receipt exists for the original run. Lineage note: the earlier '187-DESI-attribute cosmic-web catalog' blocker (SSOT: 'Houston-mediated, confirmed not in repo') was later resolved via this DESIVAST VAC approach, superseding the earlier env_finder/ 'run our own cosmic-web finder' fallback plan. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -4806,7 +6835,8 @@ export const reproExperiments: ReproExperiment[] = [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — cosmic-web / DESIVAST void analysis bullet (16, 27, 35-39 series) + its lineage Note",
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
       "project-context/SSOT/paper-5/status.md",
-      "Added `08_analysis_cosmic_web.py` to code[] beyond the inventory's explicit list: verified via `ls pipelines/p5_desi_chirality/scripts/` that this script (within the same 05-09 numbered range referenced by the redshift/density/healpix/systematics bullet) is the cosmic-web analysis, not a HEALPix/systematics script, and its output directory `results/analysis_cosmic_web/` matches this experiment's scope rather than the 16a-16d split."
+      "Added `08_analysis_cosmic_web.py` to code[] beyond the inventory's explicit list: verified via `ls pipelines/p5_desi_chirality/scripts/` that this script (within the same 05-09 numbered range referenced by the redshift/density/healpix/systematics bullet) is the cosmic-web analysis, not a HEALPix/systematics script, and its output directory `results/analysis_cosmic_web/` matches this experiment's scope rather than the 16a-16d split.",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   },
   {
@@ -4820,7 +6850,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -4850,7 +6880,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep."
+      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -4864,7 +6894,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
-      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 06_analysis_density.py maps to this analysis."
+      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 06_analysis_density.py maps to this analysis.",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   },
   {
@@ -4969,7 +7000,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -5004,7 +7035,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "runnable-now (code present per inventory); part of the same r-conf family as p5-rconf-closures and shares the same venue-evidence gap — no RunPod pod ID, GPU class, cost, or runtime found in pipelines/p5_desi_chirality/ or in the reachable sections of paper-5/status.md, so all original_run fields stay null."
+      "notes": "runnable-now (code present per inventory); part of the same r-conf family as p5-rconf-closures and shares the same venue-evidence gap — no RunPod pod ID, GPU class, cost, or runtime found in pipelines/p5_desi_chirality/ or in the reachable sections of paper-5/status.md, so all original_run fields stay null. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -5023,7 +7054,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — r23conf/r24conf/r27conf closure recomputes + focal cluster inference bullet",
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (venue evidence missing for this r-conf family)",
-      "project-context/SSOT/paper-5/status.md"
+      "project-context/SSOT/paper-5/status.md",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   },
   {
@@ -5037,7 +7069,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -5067,7 +7099,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep."
+      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -5081,7 +7113,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
-      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — note the inventory's own '05-09' numbering is not a clean 1:1 map: 07_analysis_healpix.py is the HEALPix script, while 08_analysis_cosmic_web.py (also in the 05-09 range) is NOT a HEALPix/systematics script but the cosmic-web analysis, and is instead attached to p5-cosmic-web-desivast-void."
+      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — note the inventory's own '05-09' numbering is not a clean 1:1 map: 07_analysis_healpix.py is the HEALPix script, while 08_analysis_cosmic_web.py (also in the 05-09 range) is NOT a HEALPix/systematics script but the cosmic-web analysis, and is instead attached to p5-cosmic-web-desivast-void.",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   },
   {
@@ -5095,7 +7128,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -5140,7 +7173,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "reproducibility: runnable-now (code present per inventory), venue evidence missing. This is gap #3 in the inventory's Top-5-gaps list: the script name `24_r24conf_pod_session.py` implies RunPod use but no pod ID, GPU class, cost, or runtime was found in pipelines/p5_desi_chirality/ or in the reachable sections of paper-5/status.md — so all original_run fields stay null rather than being inferred from the filename alone."
+      "notes": "reproducibility: runnable-now (code present per inventory), venue evidence missing. This is gap #3 in the inventory's Top-5-gaps list: the script name `24_r24conf_pod_session.py` implies RunPod use but no pod ID, GPU class, cost, or runtime was found in pipelines/p5_desi_chirality/ or in the reachable sections of paper-5/status.md — so all original_run fields stay null rather than being inferred from the filename alone. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -5169,7 +7202,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — r23conf/r24conf/r27conf closure recomputes + focal cluster inference bullet",
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §Top 5 gaps — item 3 (P5 cosmic-web / DESIVAST + r24conf pod-session scripts, venue evidence missing)",
-      "project-context/SSOT/paper-5/status.md"
+      "project-context/SSOT/paper-5/status.md",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   },
   {
@@ -5183,7 +7217,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -5213,7 +7247,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep."
+      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -5227,7 +7261,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
-      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 05_analysis_redshift.py maps to this analysis."
+      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 05_analysis_redshift.py maps to this analysis.",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   },
   {
@@ -5241,7 +7276,7 @@ export const reproExperiments: ReproExperiment[] = [
       {
         "name": "P5 matched chirality x DESI DR1 catalog",
         "type": "internal-artifact",
-        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet (1.3 GB, 2,232,212 rows) -- gitignored (pipelines/p5_desi_chirality/.gitignore:9, \"Big matched output. Provenance sidecar commits.\"), NOT present in this checkout (only its .provenance.json/_summary.json sidecars are committed), and NOT mirrored to any bamfai/* HuggingFace dataset repo (checked via huggingface_hub list_datasets(author='bamfai') + list_repo_files against all 8 bamfai repos on 2026-09-04: bigbounce-mcmc, galaxy-chirality-catalog, bigbounce-anomaly-catalog, astra-desi-edr-mirror, p1b-mcmc-diagnostics, p1b-namaster-artifacts, p1b-alp-chains, bigbounce-aug-011-clean-rerun -- none contain a matching file). No Backblaze B2 path is documented anywhere in pipelines/p5_desi_chirality/README.md or project-context/SSOT/paper-5/status.md. No local copy found under ~/Desktop/CODE_YOU/bigbounce_datasets/ either. Honest disclosure per 2026-09-04 hygiene closure: no retrievable locator or sha256 exists for this exact file -- one was not invented. It IS deterministically regenerable via the p5-desi-dr1-crossmatch-build experiment (pipelines/p5_desi_chirality/scripts/03_crossmatch.py) from its two retrievable inputs -- HF bamfai/galaxy-chirality-catalog/catalog_production.parquet (verified live) and the public DESI DR1 zall-pix-iron.fits -- bound by the committed provenance sidecar's git_sha 0882fcdcc75e / config_hash 83970171f71bb863 (pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet.provenance.json), which records no sha256 for the parquet itself.",
         "checksum": null
       }
     ],
@@ -5271,7 +7306,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": true,
-      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep."
+      "notes": "Local CPU, no RunPod reference found for this analysis family per the inventory's own grep. Depends on regenerating pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet via the p5-desi-dr1-crossmatch-build experiment first (not retrievable directly -- see inputs[] disclosure)."
     },
     "outputs": [
       {
@@ -5285,7 +7320,8 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: chirality / P5 — redshift / density / HEALPix / systematics analyses bullet (scripts 05-09)",
       "project-context/SSOT/paper-5/status.md",
-      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 09_systematics.py maps to this analysis."
+      "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 09_systematics.py maps to this analysis.",
+      "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download."
     ]
   }
 ];
