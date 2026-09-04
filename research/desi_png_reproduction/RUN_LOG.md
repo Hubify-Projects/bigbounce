@@ -192,3 +192,17 @@ randoms NGC+SGC, real pypower CatalogSmoothWindow->WindowMatrix convolution
 public DR1 QSO mock P(k)/covariance products exist (else honest fallback),
 joint (b1,fNL,shotnoise) emcee, remaining systematics splits (E(B-V), stellar
 density, depth from DR1 pixweight), spend cap $30. Starting now.
+
+**Pod provisioning failure (2026-09-04):** created RunPod pod `p8vj377enumve4`
+(RTX A6000, 50GB RAM, $0.53/hr) but `runtime` stayed null / SSH never became
+reachable after ~30 min wait (no host handoff observed via GraphQL). No data
+was ever rsynced to it (nothing to lose). Stopped then terminated to cap
+spend at $0 pod-compute cost. **Substituted strategy:** found the OFFICIAL
+DESI DR1 full-shape-bao-clustering v1.0 VAC at data.desi.lbl.gov (real
+CatalogSmoothWindow-derived WindowMatrix, full-18-randoms measured P_ell,
+and EZmock-based covariance for QSO GCcomb, z0.8-2.1) and used those
+directly instead of reconstructing them locally under compute contention.
+This is a real, honest, HIGHER-fidelity substitute (official pipeline
+products, not our approximation) for causes 1/3/4 (window, randoms
+density, covariance) simultaneously -- see official_window_io.py +
+fit_fnl_official.py.
