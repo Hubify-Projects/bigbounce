@@ -165,16 +165,33 @@ class ModesIC:
             raise ValueError(state)
         wr0 = float(np.imag(np.conj(mu0) * dmu0))
         self.info["wronskian_initial"] = wr0
-        e_f = eta_far
-        sol = solve_ivp(lb.a2._rhs_factory(CubicSpline(bg["eta"], bg["appa"]), k),
-                        [e_i, e_f], [mu0.real, dmu0.real, mu0.imag, dmu0.imag],
-                        rtol=rtol, atol=atol, method="DOP853", dense_output=True)
-        self.sol = sol
-        self.ok = bool(sol.success)
-        self.info["ode_success"] = self.ok
+        rhs = a2._rhs_factory(CubicSpline(bg["eta"], bg["appa"]), k)
+        y0 = [mu0.real, dmu0.real, mu0.imag, dmu0.imag]
+        self.e_i = float(e_i)
+        # forward from the state-setting time; and, when the state is set at a finite
+        # eta_0, BACKWARD as well - a mode function is a solution of a 2nd-order ODE, so
+        # its past is determined and the pre-bounce envelope is measurable.
+        fwd = solve_ivp(rhs, [e_i, eta_far], y0, rtol=rtol, atol=atol,
+                        method="DOP853", dense_output=True)
+        self.fwd = fwd
+        self.bwd = None
+        ok = bool(fwd.success)
+        if e_i > -eta_far + 1e-9:
+            bwd = solve_ivp(rhs, [e_i, -eta_far], y0, rtol=rtol, atol=atol,
+                            method="DOP853", dense_output=True)
+            self.bwd = bwd
+            ok = ok and bool(bwd.success)
+        self.ok = ok
+        self.info["ode_success"] = ok
 
     def _mu(self, eta):
-        y = self.sol.sol(eta)
+        e = np.asarray(eta, dtype=float)
+        if self.bwd is None:
+            y = self.fwd.sol(e)
+        elif e.ndim == 0:
+            y = (self.fwd.sol(e) if float(e) >= self.e_i else self.bwd.sol(e))
+        else:
+            y = np.where(e >= self.e_i, self.fwd.sol(e), self.bwd.sol(e))
         return y[0] + 1j * y[2], y[1] + 1j * y[3]
 
     def zeta_dz(self, eta):

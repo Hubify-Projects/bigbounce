@@ -45,8 +45,29 @@ Full-18 download remains available if a later wave needs tighter window
 control. sha256s: `research/desi_png_reproduction/venv_setup/qso_randoms_1-3_sha256.txt`.
 Total on-disk dataset now 7.8 GB at `~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/`.
 
-## Step 3 — P_ell(k) measurement
-TBD.
+## Step 3 — P_ell(k) measurement (DONE, 2026-09-04)
+`pk_estimator_qso.py`: pypower `CatalogFFTPower`, nmesh=512, resampler=tsc,
+interlacing=2, los=firstpoint, ells=(0,2,4), k-edges 0-0.31 step 0.001,
+WEIGHT*WEIGHT_FKP, DESI fiducial cosmology (cosmoprimo, EH transfer) for
+RA/DEC/Z -> comoving xyz, 0.8<z<3.1 cut. NGC: 772,215 data / 45.2M randoms,
+83s FFT. SGC: 418,624 data / 25.3M randoms, 81s FFT. Valid (non-nan) k range
+extends to k~0.098-0.103 h/Mpc, comfortably covering the plan's 0.003-0.08
+target. Outputs: `outputs/pk_qso_{NGC,SGC}.json` + `_poles.npy` +
+`_pypower.npy` (window/result state).
+
+`combine_and_compare.py`: data-count-weighted NGC+SGC combination ->
+`outputs/pk_qso_combined_poles.npy` + `_comparison.json`. **Comparison
+finding (honest scope note): Chaussidon et al. 2024 does NOT publish a
+numeric P0(k)/P2(k) table** — confirmed via WebFetch full-text search of
+the arxiv HTML version (Fig. 5 multipoles are graphical only, no digitized
+values or supplementary table). So the "3 k-point" comparison is a
+specification-level consistency check instead of a literal number match:
+our combined P0(k=0.01,0.03,0.06 h/Mpc) = 34,944 / 32,311 / 18,352 (Mpc/h)^3,
+same order of magnitude as the paper's own FKP fiducial P0=3e4 (Mpc/h)^3
+(Sec 3.2.1) — consistent with FKP weights being near-optimal, as intended by
+construction. Published QSO bias formula (Table 2) b1(z)=0.237(1+z)^2+0.771
+gives b1(z_eff=1.491)=2.242, the literature-standard DESI QSO bias, used as
+input to step 4.
 
 ## Step 4 — scale-dependent bias fit
 TBD.

@@ -1,0 +1,16 @@
+{
+  "note": "Chaussidon et al. 2024 (arXiv:2411.17623) does not publish a numeric P0(k)/P2(k) table (confirmed via full-text search of the arxiv HTML version; Fig. 5 multipoles are graphical only) -- so this is a specification-level consistency check against the text/table values that ARE published, not a 3-point digitized-figure match.",
+  "k_range_used_h_Mpc": [
+    0.0007648404136724685,
+    0.09750195116224872
+  ],
+  "our_P0_at_k0.01": 34943.62895186177,
+  "our_P0_at_k0.03": 32310.97067269107,
+  "our_P0_at_k0.06": 18352.412217034165,
+  "published_FKP_P0_fiducial_Mpc_h_3": 30000.0,
+  "consistency_check_1": "our large-scale P0(k~0.01-0.03) ~ 3-4e4 (Mpc/h)^3, same order of magnitude as the FKP fiducial P0=3e4 (Mpc/h)^3 DESI tuned for QSO weighting (Sec 3.2.1) -- FKP weights are near-optimal here, as intended by construction.",
+  "published_b1_qso_formula": "b1(z) = 0.237(1+z)^2 + 0.771 (Table 2)",
+  "published_b1_qso_at_zeff_1.491": 2.241604197,
+  "our_shotnoise_NGC": 54308.104971457884,
+  "our_shotnoise_SGC": 61521.5052081716
+}
