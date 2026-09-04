@@ -13,3 +13,4 @@ export {
 } from "./EvidenceChip";
 export { RowList, Row, type RowListProps, type RowItem } from "./RowList";
 export { DataTable, type DataTableProps, type DataTableColumn } from "./DataTable";
+export { FigureBlock, type FigureBlockProps } from "./FigureBlock";

@@ -3514,3 +3514,29 @@ code {
   font-size: 13.5px;
   text-align: center;
 }
+
+/* ── FigureBlock (§4.4, §5.1 #10) ── */
+.figure-block {
+  margin: 24px 0;
+  background: var(--bg-1);
+  padding: 16px;
+}
+
+.figure-block-full { width: 100%; }
+
+.figure-block-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.figure-block-caption {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-align: left;
+}
+
+.figure-block-credit { color: var(--ink-3); }
