@@ -241,10 +241,12 @@ step -- is adjudicated directly from the two shape functions here, not a convent
 reported by either source. Quintin \textit{et al.}~\cite{Quintin2015}
 likewise quote $-35/16$ in the text following their cubic-action equation
 for $\mathcal L_3$, explicitly attributing it to Cai \textit{et al.} as a
-citation rather than an independent computation. The present computation is,
-to our knowledge, the first that reproduces this value from an independent,
-from-scratch vertex-by-vertex derivation rather than transcribing a prior
-expression.
+citation rather than an independent computation. Li \textit{et al.} already
+give an independent in-in re-derivation of the amplitude itself (Eq.~5.1);
+the present computation's novelty relative to theirs is not the amplitude
+number but the per-vertex attribution of it (the per-vertex table above) and
+the factor-of-two localization to Cai \textit{et al.}'s normalization step
+above, neither of which either published derivation provides.
 
 \subsection{Cross-check by an independent classical route}
 \label{sec:crosscheck}
@@ -253,7 +255,13 @@ A separate-universe ($\delta N$) calculation on the same background but evaluate
 on uniform-density slices gives, for general $\epsilon$,
 $f_{\rm NL}^\rho=5(\epsilon-7)/8$, which reduces at $\epsilon=3/2$ to
 $(5\epsilon-35)/8=-55/16$, while the comoving-slice $\delta N$ (an isotropic,
-shear-free approximation) gives $f_{\rm NL}^c=-5$ for all $\epsilon$. Neither
+shear-free approximation) gives $f_{\rm NL}^c=-5$ for all $\epsilon$. Both
+$f_{\rm NL}^\rho$ and $f_{\rm NL}^c$ are normalized against $\delta N$ itself
+(the Maldacena convention, $\zeta_{\rm Mald}$), not against $\delta N_c$; since
+$\delta N_c=(1-\epsilon/3)\zeta_{\rm Mald}$ (Eq.~\eqref{eq:deltaNc}) at
+$\epsilon=3/2$ gives $1-\epsilon/3=1/2$, an $f_{\rm NL}$ normalized against
+$\delta N_c$ instead would differ from the values quoted here by a factor
+$1/(1-\epsilon/3)=2$. Neither
 equals the in-in result above. An anisotropic (Bianchi-I) separate-universe
 treatment of the long mode's shear response, carrying the projected shear onto
 the short-mode power spectrum exactly, gives an identically zero monopole
@@ -413,8 +421,9 @@ directly rather than left as a citation. \textbf{(1) Linear transfer at
 finite $k$.} Evaluated exactly (not in the super-Hubble limit) across
 $k\eta_B\in[0.1,10]$ on all three backgrounds, the power-spectrum transfer
 relative to the S1 super-Hubble prediction is flat to $1$--$2\%$ outside
-$k\eta_B\in[0.2,2]$ but shows a real, background-dependent, sign-indefinite
-$O(1)$ excursion peaking at $k\eta_B\approx0.6$--$0.8$: the power ratio
+$k\eta_B\in[0.2,2]$ but shows a real, background-dependent excursion, a
+factor $0.06$--$2.2$ (not order-unity in the strict sense), peaking at
+$k\eta_B\approx0.6$--$0.8$: the power ratio
 reaches $1.76$ (Quintin-type), $2.24$ (LQC), and $0.058$ (poly non-LQC).
 \textbf{(2) The Quintin \textit{et al.} scalar-field-velocity-dip
 amplification}, their Eq.~(79): evaluated for this program's $\Upsilon$
@@ -476,7 +485,7 @@ scheme. In the geometric (dressed-metric) prescription $z=a$,
 $\epsilon_{\rm eff}=1/2$, $c_s=1$ -- scheme S1, the substitution of these
 values into the classical comoving-gauge $P(X,\phi)$ cubic action of
 Ref.~\cite{Maldacena2002}, an assumption of the scheme and not a derivation
-of the quantum-gravity-dressed operator -- the squeezed-isoceles bounce
+of the quantum-gravity-dressed operator -- the squeezed-isosceles bounce
 contribution evaluated over the window $[-\eta_B,\eta_B]$ is, with
 $\rho_B\equiv\rho(\eta_B)=1-2T_{\fnl}$ the same handoff fraction of
 Sec.~\ref{sec:transmission} evaluated at the bounce,
@@ -485,10 +494,12 @@ Sec.~\ref{sec:transmission} evaluated at the bounce,
   \label{eq:bounce_cubic}
 \end{equation}
 so that, combined with the linear transmission of the contraction-phase
-amplitude below, $\fnl^{\rm after}=-\dfrac{85}{48}T_{\fnl}-\dfrac{5}{24}$.
+amplitude below, $\fnl^{\rm after}=-\dfrac{85}{48}T_{\fnl}-\dfrac{5}{24}$,
 a closed-form vertex-table result confirmed to $3\times10^{-4}$ by an
 independent finite-$k$ numerical in-in evaluation of all six cubic
-attachments and boundary terms; the vertex $\zeta\dot\zeta^2$ carries
+attachments and boundary terms (Table~\ref{tab:vertices}'s five rows with
+the field-redefinition row's local and non-local parts counted separately,
+as the numerical pipeline treats them); the vertex $\zeta\dot\zeta^2$ carries
 $99.95$--$99.97\%$ of it. Combining Eq.~\eqref{eq:bounce_cubic} with the
 linear transmission of Eq.~\eqref{eq:fnl} at $\eta_h=\eta_B$,
 $\fnl^{\rm after}=T_{\fnl}\cdot(-35/16)+\Delta\fnl^{\rm bounce}$, gives a
@@ -592,7 +603,7 @@ primordial tensor background ($n_{\rm T} = 0$, $\OmGW \propto f^0$), and
 $\gamma = 2$ for $\OmGW\propto f^3$, the universal causality-limited infrared
 tail of an induced background sourced by a finite-duration
 process~\cite{CaiPiSasaki2020}. $\gamma = 3$ ($\OmGW \propto f^2$) is the
-slope Papanikolaou~\cite{Papanikolaou2025} derive for a matter bounce whose
+slope Papanikolaou~\cite{Papanikolaou2025} derives for a matter bounce whose
 source spectrum carries a specific near-linear low-$k$ growth,
 $P_\mathcal{R}\propto k$; we retain it below only as a contrast case, since
 \S\ref{sec:pta_null} shows this lab's own committed spectrum does not have
@@ -643,7 +654,9 @@ quoted to one significant figure for the same reason.
 \caption{\label{tab:pta}Channel I. Tensions against the official NANOGrav
 $14$-bin posterior ($\gamma_{\rm HD}=3.2^{+0.6}_{-0.6}$, $\sigma\approx0.365$)
 and against this lab's $30$-bin refit (Eq.~\eqref{eq:gamma}), with the
-refit's Savage--Dickey factor where the chain has posterior support. The
+refit's Savage--Dickey factor where the chain has posterior support; the
+official posterior is the primary comparison and the refit is a secondary,
+differently-conditioned cross-check, not directly comparable to it. The
 causal floor ($\gamma=2$, $\OmGW\propto f^3$, the universal IR bound
 discussed below in this section) is included as a comparator alongside
 the three physical hypotheses. All
@@ -1012,7 +1025,9 @@ quotable PBH signal would require a small-scale amplification mechanism the
 model does not contain -- a survey of four such candidate
 mechanisms~\cite{Quintin2015,AgulloBolliet2017} finds none applies within the
 model's validated ($k\eta_B\lesssim10^{-2}$) domain, and this is no longer
-only a literature survey: at $k\eta_B\approx3$, the extreme small-scale
+only a literature survey: at $k\eta_B\approx3$ (at $T_B=10^8\,$GeV,
+$k_B\approx1.714\times10^{15}\,{\rm Mpc}^{-1}$, so $k\approx5.1\times10^{15}\,{\rm Mpc}^{-1}$,
+inside this paper's own PBH band), the extreme small-scale
 end of the PBH band, the scheme-S1 bispectrum has now been evaluated
 directly on exact (non-super-Hubble) LQC-dust mode functions
 (Sec.~\ref{sec:transmission}) and gives $|\fnl|\approx0.9$--$1.9$, which
@@ -1123,7 +1138,7 @@ MegaMapper class & $\sim1$ & $2.19\sigma$ & $4.38\sigma$ \\
 
 At the transmitted amplitude the two candidate values separate by
 $|\Delta\fnl^{\rm after}|\approx0.35$--$0.55$ against $\sigma_{\fnl}=0.5$--$0.7$
-at SPHEREx sensitivity: under $1\sigma$, so this channel does not
+at SPHEREx sensitivity: $0.5$--$1.1\sigma$, so this channel does not
 discriminate $-35/16$ from $-35/8$ at current forecast reach once
 scheme-S1 transmission is applied; it remains the only channel where the
 factor of two would be observationally consequential \emph{if} the
@@ -1170,9 +1185,11 @@ channel that discriminates between the two candidate amplitudes at all, but
 at the transmitted amplitude that discrimination is weak: DESI DR1 is
 consistent with $\fnl^{\rm after}$ at well under $1\sigma$ under either
 prior, and SPHEREx reaches only $0.7$--$0.9\sigma$ ($-35/16$) or
-$1.2$--$1.7\sigma$ ($-35/8$) bare significance (Table~\ref{tab:reach}) --
-under $1\sigma$ separation between the two candidates at current or forecast
-LSS sensitivity, not the $3.13\sigma$ apparent tension with the pre-bounce
+$1.2$--$1.7\sigma$ ($-35/8$) bare significance (Table~\ref{tab:reach}), and
+combining power spectrum and bispectrum widens the candidate separation to
+only $0.5$--$1.1\sigma$ at current or forecast
+LSS sensitivity, not the $3.13\sigma$ forecast detection significance quoted
+for the pre-bounce
 amplitude a naive reading of Channel III alone would suggest. No channel
 observationally contradicts $\fnlloc=-35/16$; the honest summary is three
 nulls (pulsar timing, PBH abundance, SMBH-seed abundance) and one channel
@@ -1209,11 +1226,12 @@ which scheme's linear variable is physical at $H=0$ remains an open
 theory question this paper does not resolve. At the transmitted amplitude
 the survey channel's discriminating power is itself the weak link: SPHEREx
 separates the two candidates by $|\Delta\fnl^{\rm after}|\approx0.35$--$0.55$
-against $\sigma_{\fnl}=0.5$--$0.7$, i.e.\ under $1\sigma$
+against $\sigma_{\fnl}=0.5$--$0.7$, i.e.\ $0.5$--$1.1\sigma$
 (Sec.~\ref{sec:lss}), so no currently forecast LSS survey can distinguish
-$-35/16$ from $-35/8$ once scheme-S1 transmission is applied; the
-not-yet-derived shape-overlap projection $r$ would sharpen this somewhat
-but cannot by itself restore the pre-bounce-level $3\sigma$ separation.
+$-35/16$ from $-35/8$ once scheme-S1 transmission is applied; a
+not-yet-derived shape-overlap projection $r<1$ would only narrow this
+separation further, and since $r$ has not been computed at this paper's
+fiducial no quantitative statement about its effect is made here.
 
 \subsection{Next steps}
 \label{sec:next}
