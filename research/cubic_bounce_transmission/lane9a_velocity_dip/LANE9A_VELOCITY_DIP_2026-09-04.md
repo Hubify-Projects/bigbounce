@@ -6,7 +6,8 @@
 
 Does the Quintin, Sherkatghanad, Cai & Brandenberger (2015, arXiv:1508.04141)
 scalar-field-velocity-dip amplification of ζ through the bounce — their Eq. (79),
-Δζ/ζ ~ [φ̇_B/φ̇(t_amp−)]², which they find can reach ~50 — exist on the lab's three
+Δζ/ζ ~ [φ̇_B/φ̇(t_amp−)]² (the ~50 in the task framing is their *required* amplification,
+their Eq. 30 — see §0) — exist on the lab's three
 A2 backgrounds? And what does it do to the curvature spectrum and to the cubic term
 in the band kη_B ∈ [0.1, 10] that the S1 super-Hubble transfer (validity kη_B ≲ 1e−2)
 does not cover?
