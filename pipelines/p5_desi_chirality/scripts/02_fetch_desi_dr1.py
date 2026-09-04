@@ -157,7 +157,7 @@ def main() -> int:
         "parquet_sha256": sha_parquet,
         "rows_observed": n_rows,
         "rows_expected_approx": int(cfg["sources"]["desi_dr1"]["expected_rows_approx"]),
-        "columns_kept": list(df.columns),
+        "columns_kept": keep,
         "columns_requested": KEEP_COLUMNS,
         "columns_missing_from_source": sorted(set(KEEP_COLUMNS) - available),
         "config_version": cfg["version"],
