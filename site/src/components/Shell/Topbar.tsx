@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Moon, Search, Sun, X } from "lucide-react";
@@ -41,6 +41,7 @@ export function Topbar() {
   const pathname = usePathname();
   const [theme, setTheme] = useState<Theme>("light");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const next = getBrowserTheme();
@@ -51,6 +52,27 @@ export function Topbar() {
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (event.key === "Escape") setMobileOpen(false);
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setMobileOpen(false);
+      }
+    }
+
+    document.addEventListener("keydown", handleKeydown);
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeydown);
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [mobileOpen]);
 
   function toggleTheme() {
     const next: Theme = theme === "dark" ? "light" : "dark";
@@ -66,7 +88,7 @@ export function Topbar() {
   const themeLabel = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
 
   return (
-    <header className="topbar topbar-slim">
+    <header className="topbar topbar-slim" ref={headerRef}>
       <Link href="/" className="topbar-wordmark">
         bigbounce
       </Link>
