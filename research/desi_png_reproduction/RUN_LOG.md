@@ -181,3 +181,14 @@ contention, but real data, not silently lost. SGC never started (killed
 before the loop reached it). Fix 3 is therefore "NGC done, SGC missing" --
 one cap short of a combined re-fit -- rather than "fully blocked" as first
 recorded. Preserved for a future SGC-only completion.
+
+---
+
+## v3 (RunPod) 2026-09-04
+
+Task: finish DESI DR1 QSO f_NL reproduction on a RunPod host — full 18-file
+randoms NGC+SGC, real pypower CatalogSmoothWindow->WindowMatrix convolution
+(not shuffled-randoms approx) + global IC + wide-angle, EZmock covariance if
+public DR1 QSO mock P(k)/covariance products exist (else honest fallback),
+joint (b1,fNL,shotnoise) emcee, remaining systematics splits (E(B-V), stellar
+density, depth from DR1 pixweight), spend cap $30. Starting now.
