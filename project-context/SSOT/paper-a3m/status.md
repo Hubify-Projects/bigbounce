@@ -2,10 +2,10 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-04 — v3M.0.8. Three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Readiness held at 75. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
+last_updated: 2026-09-04 — v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Readiness held at 75. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (10 pp / 0 undef refs / md5 0c61d2ab760a14e0ff27ca560585bcbf)
-version: v3M.0.8 (2026-09-04, science-gate closures — see "v3M.0.8" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (12 pp / 0 undef refs / md5 925198c7ddc3485b9a6285a38995fe94)
+version: v3M.0.9 (2026-09-04, R3 closure C1–C10 — see "v3M.0.9" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
@@ -433,3 +433,68 @@ above traces to the four source files listed at the top of this section.
 ## R3 closure decision C1 (orchestrator, Fable 5.1, 2026-09-04)
 
 **Decision C1 = (a) PROPAGATE.** Verbatim: "The scheme-S1 super-Hubble transfer (validity kη_B ≲ 1e−2, an upper bound on k) is satisfied most easily at the LSS/CMB pivot, so the transmitted amplitude f_NL^after = T·f_NL^pre + Δf_NL^bounce is the paper's observable prediction for every channel. Table IV carries f_NL^after rows for −35/16 and −35/8 on all three backgrounds with bare significances at σ = 0.7/0.5/1.0; the pre-bounce row stays as a clearly-labelled secondary ('assuming T_fNL = 1'). The abstract's 'this channel alone discriminates the two amplitudes, with SPHEREx reaching 3.13σ' is replaced by the transmitted statement (SPHEREx bare 0.7–0.9σ for −35/16, 1.2–1.7σ for −35/8 — no discrimination at current reach). The §VII A 'far outside that validated window' sentence is deleted as false. No exemption (b) is claimed: no physical IR cutoff on S1 exists in the lab's computation." Basis: A3M_v3M.0.8_R3_TRUTH_AUDIT_2026-09-04.md DA3M-R3-01 (Fable M1 ≡ Gemini E4); VISION.md R6 (claims at evidential strength). Consequence: the Track-A headline becomes a transmission-corrected prediction plus a multi-channel consistency map; the −35/16 vs −35/8 factor-two is not separable by SPHEREx at the transmitted amplitude. Closure C1–C10 → v3M.0.9.
+
+## v3M.0.9 (2026-09-04) — R3 closure C1–C10
+
+C1(a) PROPAGATE executed exactly as recorded in the section above. C2–C10
+executed per `project-context/peer-reviews/INT_v3/A3M_v3M.0.8_R3_TRUTH_AUDIT_2026-09-04.md`
+§5. Summary of what changed: §III states the true `kη_B` direction (upper
+bound on k, satisfied most easily at large scales) and the false "far
+outside that validated window" sentence is deleted; Table IV gains
+`f_NL^after` rows (values re-derived by `survey_reach_fnl.py`, cross-checked
+against the auditor's precomputed values exactly: 0.7–0.9σ / 1.2–1.7σ at
+SPHEREx bispectrum-only); the bounce-energy condition is restated correctly
+(`T_B ≳ 1e8–1e10 GeV` at the smallest PBH mass, with the 7-decade-shortfall
+argument for why the null verdict is unaffected); a new Appendix A
+transcribes the δN_c derivation, [L]/[K]/[X]/[S] table, general-ε formulas,
+and Bianchi-I argument from `research/theory_audit/fnl_monopole_adjudication_2026_09_03.md`
+§§1–4 (no new science); the induced-GW IR-slope claim is corrected (causal
+floor is `f^3`/γ=2, Cai, Pi & Sasaki PRD 102, 083528 (2020), arXiv:1909.13728,
+added to the bibliography; γ=3 here follows from the bounce's specific
+source spectrum, Papanikolaou Eq. 30+8); three numeric corrections (19–39%,
+`n_s−1=12w/(1+3w)`, `0≤T_fNL<1/2`); eight definitional/labelling fixes;
+directive-Q1 revision-history sweep (verified: `grep -nE 'research/|earlier
+draft|supersed|had to be redone|prior version' main.tex` returns hits only
+in reproducibility-statement/appendix-attribution context); Cai bookkeeping
+equation numbers added (Li et al. Eq. 4.19 shape function, Eq. 5.1
+amplitude); abstract restores the PBH perturbativity/non-monotonicity
+caveats dropped in v3M.0.8, trimmed to 304 words (≤307-word PRD cap).
+
+**Script re-runs (committed).** `research/track_a3_multichannel/survey_reach_fnl.py`
+extended with `f_NL^after` rows (`outputs/survey_reach_fnl.json` re-emitted);
+`research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.py` fixed and
+re-run (`outputs/inlab_delta2_zeta_2026-09-03.json` re-emitted, `w` moves
+−0.00293→−0.00290 as predicted, all tabulated `Δ²_ζ` values unchanged at
+quoted precision); `research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md`
+corrected 28–39%→19–39% to match.
+
+**Hygiene (directive G).** `\paperVersion` v3M.0.8→v3M.0.9, `\date`/
+`\paperTimestamp` → September 4, 2026 (today). 4-pass `pdflatex`, 0 undefined
+references, 0 overfull `\hbox` > 10pt (all four transient overfulls from the
+new Table IV / Appendix A tables fixed with `\scriptsize` + narrower
+`p{}`-columns and `\allowbreak` on one long path). Pages grew 10→12. Page 1
+(abstract), page 2 (Cai bookkeeping), page 9 (Table IV / Discussion), and
+page 10 (Appendix A) visually spot-checked at ~55 dpi — clean two-column
+layout, no overflow, no path overflow. PDF md5
+`925198c7ddc3485b9a6285a38995fe94` (sha256
+`6c543e5e9885c6db58e07576482ed6f283b0307ad1499c6309a4651d3c26fb1a`), 12
+pages, 605,681 bytes, mirrored byte-identical to
+`site/public/papers/a3_multichannel_arxiv_v3M.0.9.pdf` and
+`public/papers/a3_multichannel_arxiv_v3M.0.9.pdf` (three-way md5 check:
+fresh compile == served == Convex, all `925198c7ddc3485b9a6285a38995fe94`).
+Convex `paperVersions:bump` (paperSlug `paper-a3m`) written (mutation id
+`k5784scqrpaftj6jgra8b22rjx8ds5v2`). `site/src/data/papers.ts`,
+`site/src/data/live-status.ts`, `site/src/data/publish.ts`,
+`site/src/data/reviewTimeline.ts` updated in the same bundle. Readiness held
+at **75** (unchanged — this bundle is a science-decision closure; the
+R2-budget allows one more verification round before the next readiness
+decision).
+
+arXiv tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.9.tar.gz`
+sha256 `d295ded8593acd723bfe560be6e7ae895feed1464c96fed8c3377b3d87574509`,
+rebuilt from scratch in `/tmp` (main.tex + pbh_compaction_fnl.png, inline
+`thebibliography`, same convention as v3M.0.8), standalone extract+recompile
+smoke test PASS (0 undefined refs, 12 pages).
+
+**Not sourced from a committed file (disclosed).** None — every number
+above traces to the source files named above or to the R3 truth audit.

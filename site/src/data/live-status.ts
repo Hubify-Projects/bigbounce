@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.8",
+      version: "v3M.0.9",
       readiness: 75,
-      pendingWork: "Real-KDE injection validation closed (Zenodo 8060824, γ=13/3 pull +0.016σ, γ=3 pull +0.033σ). Houston final review pending.",
+      pendingWork: "R3 truth-audit closure (C1-C10): transmitted-amplitude LSS reach, delta N_c derivation appendix, induced-GW IR-slope correction, 8 numeric/definitional fixes. Houston final review pending.",
     },
     {
       slug: "paper-3",

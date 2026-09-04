@@ -67,6 +67,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-r3-truth-audit-closure-v3m-0-9-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3 v3M.0.9 -- R3 truth-audit closure (C1-C10); readiness 75",
+    papers: ["A3"],
+    summary:
+      "R3 board: Fable major-revisions (4 major / 15 minor), Grok REJECT, Gemini major-revisions. Independent truth-audit of 34 raw findings across the three legs found 19 genuinely-new-real (15 falsified/re-flagged/out-of-scope), closed in this bundle as closure items C1-C10. C1 (science decision, orchestrator + Houston-directed, recorded in SSOT before editing): the scheme-S1 k*eta_B<=1e-2 super-Hubble transfer window is an UPPER bound on k, not a lower one -- satisfied most easily at the LSS/CMB pivot scale and hardest at PBH scales -- so the false 'far outside that validated window' sentence is deleted and Table IV gains f_NL^after rows (T*f_NL^pre + Delta_f_NL^bounce) for both -35/16 and -35/8 across the three bounce backgrounds: bare SPHEREx significance is 0.7-0.9sigma (-35/16) or 1.2-1.7sigma (-35/8) -- under 1sigma apart, so the LSS channel does not discriminate the two candidate amplitudes once transmission is applied, contrary to the pre-bounce-amplitude 3.13sigma reading the v3M.0.8 abstract headlined. C2: the bounce-energy condition is restated correctly as T_B >~ 1e8-1e10 GeV at the smallest PBH mass used (was 'any bounce energy above BBN'), with the 7-decade-shortfall argument for why this does not change the PBH null. C3: a new Appendix A transcribes (no new science) the delta_N_c=(1-eps/3)*zeta derivation, the [L]/[K]/[X]/[S] decomposition table, the general-epsilon formulas, and the Bianchi-I argument from the theory-audit note; 'derived identity' softened to the note's own framing (linear order derived, second order a recorded identity with the mechanism not derived). C4: the induced-GW claim that Omega_GW~f^2 is a generic causality-limited floor is corrected -- the universal causal floor is f^3 (gamma=2; Cai, Pi & Sasaki, PRD 102, 083528 (2020), arXiv:1909.13728, added to the bibliography) -- gamma=3 here follows from the bounce's specific broad, near-scale-invariant scalar source (Papanikolaou 2025 Eq. 30+8), making gamma=3 MORE distinctive than a generic argument, not less. C5: three numeric corrections (28-39% -> 19-39%; n_s-1=12w/(1+w) -> 12w/(1+3w), re-run with w moving -0.00293->-0.00290; 0<T_fNL<=1/2 -> 0<=T_fNL<1/2). C6: eight definitional/labelling fixes. C7: Omega_DM footnote scope left correct (ratio unaffected; option a). C8: directive-Q1 sweep removes revision-history/'why it had to be redone' narration from section titles and body prose. C9: Li et al. Eq. 4.19 (shape function) and Eq. 5.1 (amplitude, -35/16 at c_s=1) equation numbers added; the factor-of-2 identified as this paper's own adjudication of Cai et al.'s amplitude-conversion step, not a convention difference either source reports. C10: abstract restores the PBH perturbativity (1.2|f_NL|sigma_r~0.5-2) and non-monotonicity caveats dropped by the v3M.0.8 rewrite, trimmed to 304 words. Recompiled 4-pass, 0 undef refs, 0 overfull hbox >10pt, 12pp (grew from 10pp), md5 925198c7ddc3485b9a6285a38995fe94, tarball rebuilt and standalone-smoke-tested. Readiness held at 75; the R2-budget allows one more verification round on this science-decision closure.",
+    keyTakeaways: [
+      "C1 PROPAGATE: k*eta_B<=1e-2 is an upper bound on k, satisfied most easily at the LSS/CMB pivot -- Table IV now reports the transmitted f_NL^after (0.7-0.9sigma / 1.2-1.7sigma at SPHEREx), under 1sigma separation between the two candidate amplitudes",
+      "New Appendix A transcribes the delta_N_c-zeta_Mald derivation from the theory-audit note -- no new science",
+      "Induced-GW IR-slope corrected: causal floor is f^3 (gamma=2, Cai-Pi-Sasaki 2020), not f^2; gamma=3 here is a specific matter-bounce prediction, not a generic causality statement",
+      "Three numeric corrections (19-39%, n_s-1=12w/(1+3w), 0<=T_fNL<1/2) plus 8 definitional fixes and a directive-Q1 revision-history sweep",
+      "v3M.0.9, 12pp, md5 925198c7ddc3485b9a6285a38995fe94; readiness held at 75",
+    ],
+    links: [
+      { label: "R3 truth audit", href: `${PR}/INT_v3/A3M_v3M.0.8_R3_TRUTH_AUDIT_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "Derivation source note", href: `${GH}/research/theory_audit/fnl_monopole_adjudication_2026_09_03.md` },
+      { label: "Survey-reach script (C1 f_NL^after)", href: `${GH}/research/track_a3_multichannel/survey_reach_fnl.py` },
+    ],
+  },
+  {
     id: "anomaly-catalogue-data-release-ledger8-2026-09-03",
     dateISO: "2026-09-03",
     kind: "restructure",
