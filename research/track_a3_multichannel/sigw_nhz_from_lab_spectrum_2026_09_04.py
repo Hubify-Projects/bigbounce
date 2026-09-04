@@ -27,10 +27,10 @@ Method
               [ (4 v^2 - (1 + v^2 - u^2)^2) / (4 u v) ]^2
               P_zeta(k u) P_zeta(k v) * xbar2_I2(u,v)
       with
-          I_c = -36 pi (u^2+v^2-3)^2 / (4 u^3 v^3) * Theta(u+v-sqrt(3))
-          I_s = -36     (u^2+v^2-3)   / (4 u^3 v^3)
-                * [ (u^2+v^2-3)/(2 u v) * ln|(3-(u-v)^2)/(3-(u+v)^2)| + 2 ]
-          xbar2_I2 = (1/2)(I_c^2 + I_s^2) / 36^2   <- normalisation VALIDATED
+          xbar2_I2 = (1/2) [3(u^2+v^2-3)/(4 u^3 v^3)]^2
+                     * { [ -4uv + (u^2+v^2-3) ln|(3-(u+v)^2)/(3-(u-v)^2)| ]^2
+                         + pi^2 (u^2+v^2-3)^2 Theta(u+v-sqrt(3)) }
+      <- normalisation VALIDATED
       against the published analytic benchmark for an exactly scale-invariant
       P_zeta = A: Omega_GW = 0.8222 A^2 (Espinosa-Racco-Riotto 2018;
       Kohri-Terada 2018).  The script asserts that benchmark; the overall
@@ -77,21 +77,28 @@ def delta2_zeta(k, ns):
 
 # ------------------------------------------------- Kohri-Terada RD kernel
 def xbar2_I2(u, v):
-    """Oscillation-averaged x^2 <I^2> for radiation domination (KT18 4.7-4.9)."""
-    s = u * u + v * v - 3.0
-    pref = s / (4.0 * u ** 3 * v ** 3)
-    # NOTE the argument order: the IR cancellation (I_s -> 0 as v -> 0 with
-    # u -> 1) fixes it uniquely -- validated against the 0.8222 benchmark.
-    num = np.abs(3.0 - (u - v) ** 2)
-    den = np.abs(3.0 - (u + v) ** 2)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        L = np.log(np.where(den > 0, num / den, 1.0))
-    L = np.where(np.isfinite(L), L, 0.0)
-    Is = -36.0 * pref * (s / (2.0 * u * v) * L + 2.0)
-    Ic = -36.0 * np.pi * pref * s * (u + v > np.sqrt(3.0))
-    return 0.5 * (Ic ** 2 + Is ** 2) / 36.0 ** 2
+    """Oscillation-averaged x^2 <I^2> for radiation domination.
 
-def omega_gw_production(k, pk, nu=900, nv=900, vmax=200.0):
+    Canonical Kohri-Terada 2018 (arXiv:1804.08577) form, as also written in
+    Domenech's review (arXiv:2109.01398, Eq. 2.21) and Espinosa-Racco-Riotto:
+
+        x^2 <I_RD^2> = (1/2) [3(u^2+v^2-3)/(4 u^3 v^3)]^2
+                       * { [ -4uv + (u^2+v^2-3) ln|(3-(u+v)^2)/(3-(u-v)^2)| ]^2
+                           + pi^2 (u^2+v^2-3)^2 Theta(u+v-sqrt(3)) }
+
+    Validated below against Omega_GW = 0.8222 A^2 for scale-invariant P = A.
+    """
+    s = u * u + v * v - 3.0
+    pref = 3.0 * s / (4.0 * u ** 3 * v ** 3)
+    num = np.abs(3.0 - (u + v) ** 2)
+    den = np.abs(3.0 - (u - v) ** 2)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        L = np.log(np.where((num > 0) & (den > 0), num / np.where(den > 0, den, 1.0), 1.0))
+    L = np.where(np.isfinite(L), L, 0.0)
+    term = (-4.0 * u * v + s * L) ** 2 + np.pi ** 2 * s ** 2 * (u + v > np.sqrt(3.0))
+    return 0.5 * pref ** 2 * term
+
+def omega_gw_production(k, pk, nu=1200, nv=1200, vmax=300.0):
     """Omega_GW at production for a callable pk(k), at comoving wavenumber k."""
     # substitution: t = u - |1-v| in [0, 2 min(1,v)] handled by direct grid
     lv = np.linspace(np.log(1e-3), np.log(vmax), nv)
@@ -132,7 +139,7 @@ def main():
         "computed_coefficient": float(bench),
         "published_coefficient": 0.8222,
         "rel_error": float(abs(bench - 0.8222) / 0.8222)}
-    assert abs(bench - 0.8222) / 0.8222 < 0.05, f"kernel normalisation off: {bench}"
+    assert abs(bench - 0.8222) / 0.8222 < 0.02, f"kernel normalisation off: {bench}"
 
     # ---- (1) f <-> k
     f = np.geomspace(F_LO_NHZ * 1e-9, F_HI_NHZ * 1e-9, 25)
