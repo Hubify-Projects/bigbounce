@@ -212,3 +212,39 @@ differences that can carry it, in the order this lane can defend:
 3. **Post-bounce history.** ABS have $N_{B\star}\simeq12.3$ e-folds of inflation after the bounce
    (their fig. 1 caption) that both redshift $k_{\rm LQC}$ to CMB scales and set $\mathcal P_{\mathcal R}$
    in the denominator of $f_{\rm NL}$. The lab's A3 bounce model has **no inflationary phase**.
+
+### 3.3 Does the lab's **dust** background admit $\mathcal H^{(3)}$? (the decisive point)
+
+Three separate answers, which must not be collapsed into one:
+
+**(a) Literally, as an operator in $(\dph,\delta p_\phi)$: no.** $\mathcal H^{(3)}$ is built entirely
+from the perturbation of a canonical scalar field, and its overall scale is $p_\phi=a^3\dot\phi$
+(§1.1 fact 2). A pressureless dust component has no $\phi$, hence no $\dph$, no $\delta p_\phi$, and no
+$p_\phi$. On a strict dust background ABS's operator, written in their variables, is **absent**; the
+analogous object is the dust fluid's own cubic self-interaction.
+
+**(b) As the $\zeta$-gauge cubic action on a background with the lab's $\epsilon(t)$: yes, but only in
+the $c_s=1$ (S1) surrogate.** Under the Legendre transform + gauge map of §1.2, ABS's coefficients
+depend on the matter only through $\epsilon(t)$ and $c_s$. Lane (a)'s S1 scheme substitutes
+$\epsilon_{\rm eff}=1/2$, $c_s=1$, $z=a$ into the classical $P(X,\phi)$ cubic action — a **geometric
+surrogate**, not a derivation of dust's cubic action. In S1 the ABS operator set is present, finite,
+and exactly the V1–V7/R1–R4 already tabulated. This is the scheme label the lab has always carried.
+
+**(c) As a genuine dust ($c_s^2\to0$) cubic action: singular, not merely absent.** Dust is $c_s=0$, and
+every $\epsilon^2$/$\epsilon^3$ coefficient in the Chen-Huang-Kachru-Shiu form carries $c_s^{-4}$:
+$$c_{V2}=\frac{a^3\epsilon}{c_s^4}(\epsilon-3+3c_s^2),\quad c_{V3}=\frac{a\epsilon}{c_s^2}(\epsilon-2s+1-c_s^2),\quad c_{V4}=-\frac{2a^3\epsilon^2}{c_s^4},\quad c_{V6}=\frac{a^3\epsilon^3}{2c_s^4},\quad c_{V7}=\frac{a^3\epsilon^3}{4c_s^4},$$
+all divergent as $c_s\to0$. **This is the same pathology the lab already measured**: lane (a)'s S2
+effective-fluid scheme diverges as $d_{\rm cut}^{-1}$ with no limit (slopes $-1.005/-1.007/-1.007$).
+So the honest statement is not "dust has no such operator" but "**the $P(X,\phi)$ parametrisation of
+that operator has no finite $c_s\to0$ limit, and the lab has already demonstrated the divergence
+numerically**". A finite dust answer requires a different formalism (irrotational-dust/mimetic
+constraint algebra, or a hydrodynamical cubic action with a physical UV completion), which no lane of
+this program has built.
+
+**A caveat that cuts the other way, and must be recorded.** ABS's own §V concludes: *"since it is
+only the complex pole of the scale factor at the bounce that accounts for the main features of
+$f_{\rm NL}$, it is expected that bounces in other cosmological models different from LQC will produce
+similar non-Gaussianity."* Their mechanism is the pole of $a^{-n}(\eta)$ at $|\eta_p|=1.17\,\eta_B$ —
+a property of the **geometry**, which the lab's LQC-dust background shares (it is a bounce with a
+minimum of $a$ at the same $\rho_{\rm c}$). The mechanism is therefore *not* specific to scalar-field
+matter; only the vertex prefactors are. This is why (a) alone does not settle row 9.
