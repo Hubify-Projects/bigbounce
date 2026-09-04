@@ -100,3 +100,48 @@ def velocity_block(bg):
             "Hdot_max_frac_variation_inside_NEC_window": flat,
             "total_sector_identification": rows,
             "matter_sector_factor_constant_kinetic": 1.0}
+
+
+# =====================================================================
+# [2] the lab's own growth factor lambda_zeta(k), extended to k eta_B ~ 1
+# =====================================================================
+def growth_at_k(bg, k, eta_far, rtol=1e-11, atol=1e-14):
+    """Evolve the adiabatic-vacuum mode across the bounce and measure:
+
+      alpha_post   exact constant-branch amplitude in the expanding matter era
+                   (projection onto the exact S/C matter basis; = zeta(+inf)).
+      lam_zeta(k)  = |alpha_post| / |zeta(-eta_B)|  -- the lab's lambda_zeta,
+                   generalised to finite k by using the numerically evolved
+                   zeta = mu/a at the NEC boundary instead of the k->0 branch value.
+      G(k)         = |alpha_post| / |alpha_pre + 2 beta_pre I_inf|  -- the ratio of
+                   the true transfer to the S1 super-Hubble prediction
+                   (alpha, beta) -> (alpha + 2 beta I_inf, beta).  G = 1 means the
+                   S1 formula is exact; G != 1 is precisely the content the
+                   k eta_B <~ 1e-2 band never tested.  Delta^2_zeta ratio = G^2.
+    """
+    ev = a2.evolve(bg, k, eta_far, ic="vacuum", rtol=rtol, atol=atol)
+    am, bm, ap = ev["alpha_pre"], ev["beta_pre"], ev["alpha_post"]
+    s1_pred = am + 2.0 * bm * bg["I_inf"]
+    z_hB = a2.zeta_at(bg, ev, -bg["eta_B"])
+    lam_sh = abs((am + 2.0 * bm * bg["I_inf"]) / (am + bm * (bg["I_inf"] + float(bg["Jf"](-bg["eta_B"])))))
+    return {"k_etaB": float(k * bg["eta_B"]), "k": float(k),
+            "eta_far_over_etaB": float(eta_far / bg["eta_B"]),
+            "ok": bool(ev["success"]),
+            "abs_alpha_pre": float(abs(am)), "abs_beta_pre": float(abs(bm)),
+            "abs_alpha_post": float(abs(ap)),
+            "abs_beta_post": float(abs(ev["beta_post"])),
+            "abs_zeta_at_minus_etaB": float(abs(z_hB)),
+            "lambda_zeta": float(abs(ap) / abs(z_hB)),
+            "lambda_zeta_S1_superhubble": float(lam_sh),
+            "G_transfer_over_S1": float(abs(ap) / abs(s1_pred)),
+            "Delta2_ratio_vs_S1": float((abs(ap) / abs(s1_pred)) ** 2)}
+
+
+def sweep(bg, ks, tag, rtol=1e-11):
+    eta_far = min(0.9 * bg["eta_far"], 400.0 * bg["eta_B"])
+    out = []
+    for kt in ks:
+        r = growth_at_k(bg, kt / bg["eta_B"], eta_far, rtol=rtol)
+        r["background"] = tag
+        out.append(r)
+    return out
