@@ -594,3 +594,77 @@ the editorial list (C1, C3–C7 in the audit §5(i)), then **rounds STOP** until
 (the `P_R(k)` propagation from the LSS pivot to the nHz band, and the induced-GW slope that
 follows) returns a science decision on `DA3M-R4-02`. No further round may be dispatched on
 editorial grounds alone.
+
+---
+
+# R5 (v3M.0.11, `ROUND_2026-09-04-A3M-v3M.0.11-EXACTPDF-790fafa6-R5VERIFY`) — 2026-09-04
+
+Full audit: `INT_v3/A3M_v3M.0.11_R5_TRUTH_AUDIT_2026-09-04.md`. Legs: Grok API `grok-4.3`
+(REJECT, 3E/3M/2m/2N), Gemini API `gemini-3.1-pro-preview` (MAJOR REVISIONS, 4E/3M/1m/1N),
+Claude Fable 5.1 INT subagent (major-revisions, 5 MAJOR/16 minor). OpenAI ABSENT (directive N),
+Perplexity ABSENT (quota) — recorded, never counted clean.
+
+**Counts:** 18 genuinely-new REAL (3 MAJOR + 15 MINOR, 1 auditor-originated) · 2 REAL residuals of
+open R4 items · 1 carried packaging · 6 RE-FLAG · 11 FALSIFIED · 6 OPINION/GENRE · 0 BLOCKER.
+**Clean-wave count: 0.** Per leg (new/residual/re-flag/falsified/opinion/carried):
+Grok 0/1/3/6/0/0 · Gemini 3/1/1/3/0/1 · Fable 15/1/3/2/3/0.
+
+## OPEN — genuinely-new-real, MAJOR (R5)
+
+| id | finding | citation | closure |
+|---|---|---|---|
+| `DA3M-R5-01` | `0≤T_fNL<1/2` and "linear transfer can only suppress" printed unconditionally; the paper's own S2/Quintin row has `\|λ_ζ\|=0.97` ⇒ `T≈1.03>1/2` (auditor: `T·(-2.1875)+1.0=-1.246 ⇒ T=1.027`) | `:52–56`, `:355–361`, `:433` vs `:498–501`, `lane9b2_s2_rawadm/results.json` | C1 |
+| `DA3M-R5-02` | "2.1–4.4 decades below the 10³ plateau across `kη_B∈[0.1,10]`" overstates its source ("at and below `k_LQC`"); §V C's `1.2×10³` is the equilateral `kη_B=10` point | `:423–428`, `:980–982`; `LANE9C2…md:255–261`; `results.json → equilateral/10/S-lab = -1215.57` | C2 |
+| `DA3M-R5-03` | printed NANOGrav `Ω_GW h²(f_yr)=6.3×10⁻¹⁰` is unsupported by the paper's own artifact (`3.6235e-9`) and inconsistent with its own `10^14.3` gap (`log10(6.3e-10/1.45e-23)=13.64`) | `:700–707`; `sigw_nhz_from_lab_spectrum_2026_09_04.json` | C3 |
+
+## OPEN — genuinely-new-real, MINOR (R5)
+
+`DA3M-R5-04` S2-has-no-computable-`f^after` (`:381–384`) contradicts "Scheme S2, resolved"
+(auditor-originated) · `-05` body "under 1σ" vs abstract `0.5–1.1σ` (inverted residual of
+`DA3M-R4-05`) · `-06` `:243–245` "first from-scratch" vs `:230–231` Li *et al.* ·
+`-07` `f^ρ_NL`/`f^c_NL` normalisation unstated in the `-25/8` gap accounting · `-08` unnumbered
+§III A table · `-09` "five" vs "six" cubic pieces · `-10` `O(1)` excursion incl. `0.058` ·
+`-11` `3.13σ` mislabelled a tension · `-12` Fig. 1 internal title/legend labels (directive I6) ·
+`-13` sentence-break/typo set · `-14` `:1176` uncomputed "sharpen this somewhat" ·
+`-15` **(ii)** first-order tensor `Ω_GW` at nHz unstated · `-16` abstract band lacks
+"S2/Quintin-only" · `-17` `kη_B≈3` `(T_B,k)` unstated · `-18` **(ii)-lite** ratio's conditionality
+on the Choudhury sign disagreement + `γ_cr` grid coverage.
+
+## RE-FLAG-OF-DISCLOSED (R5)
+
+`R1` refit-vs-official σ qualifier (Grok E2, Gemini E2) = `DA3M-R3-R2`/`R4-R2`, **3rd–4th
+recurrence**; `:560–588` already frames official as primary and refit as "a secondary,
+differently-conditioned cross-check" · `R2` second-order `δN` cross-check (Grok M3) = `R3-R1`/`R4-R1`;
+`:286–292` no local `f_NL` relation exists at second order · `R3` Quintin Eq. (79) "constant by
+construction" (Fable m11) — `:411–415` says it · `R4` `1.732±0.050` grid coverage (Grok M2) =
+`R4-R4`; abstract already quotes the range · `R5` `B=5×10⁻⁴` from 9 samples (Fable m9) — `:596–600`
+restricts it to one sig fig · `R6` Fig. 2 uncapped `f_PBH>1` (Fable m14b) — caption `:872–877`.
+
+## FALSIFIED (R5)
+
+`F1` "abstract presents `-35/16` as scheme-independent" (Grok E1) = `R4-F1` · `F2` "`f_PBH=0` only
+after truncation" (Grok E3) = `R4-F2`/`F4` family · `F3` "no central value per background"
+(Grok M1) — `:462–470` · `F4` "future date" (Grok N1) = `DA3M-F3`, **9 consecutive rounds,
+100 % falsified** · `F5` "Eq. (1)=Eq. (3)" (Grok N3) · `F6` "Fig. 1 caption cites a commit hash"
+(Grok N4) — it does not · `F7` "Fig. 1 y-axis unlabelled" (Gemini N1) — auditor rendered the PNG;
+it reads `Ω_GW h²` · **`F8` "the the" duplications (Gemini N2) — `grep` on `main.tex` AND on
+`pdftotext main.pdf` both return 0 hits: a fabricated quotation** · `F9` "`r` imported, load-bearing"
+(Gemini M2) = `R3-F7` · `F10` "`kη_B≈3` needs `T_B~10⁶ GeV`" (Fable m7) — at `T_B=10⁸ GeV`,
+`k=5.1×10¹⁵ Mpc⁻¹`, inside the paper's PBH band · `F11` "re-run at Choudhury's parameter set"
+(Fable M5) — their spectrum is unreproducible = `R3-R3`.
+
+## OPINION/GENRE (R5)
+
+`G1` "5.1σ is not a test" (Fable m10) · `G2` Table II `γ=5` row labelling (m13) · `G3` expand
+App. A.1 (Fable M4 tail) · `G4` missing-reference wish-list (act on the SPHEREx `σ=0.5` source
+only) · `G5` register/length (Grok summary, Gemini E4 genre half) · `G6` Grok's reject framing
+rests on F1+F2+F3.
+
+## Convergence statement (R5)
+
+**NOT converged at v3M.0.11. Clean-wave count 0.** No physics error found: every number re-derived
+from the committed JSONs reproduces. The three MAJORs are editorial-with-a-numeric-core.
+**Directive R2:** this is the second consecutive round; v3M.0.12 closes C1–C7 (editorial + the two
+>10 pt overfull baselines), then **rounds STOP** until the two **(ii)** ledger items
+(`DA3M-R5-15` first-order tensor `Ω_GW` at nHz; `DA3M-R5-18` `γ_cr` grid coverage) return.
+No further round may be dispatched on editorial grounds alone.
