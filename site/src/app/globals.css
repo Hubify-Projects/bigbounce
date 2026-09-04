@@ -79,10 +79,29 @@
   --radius-lg: 8px;
   --radius-xl: 12px;
   --sidebar-w: 247px;
-  --topbar-h: 44px;
+  --topbar-h: 56px;
   --max-width: 1180px;
   --prose-width: 760px;
   --transition: 140ms ease;
+
+  /* ── §4.2 redesign token layer (2026-09-04, Lane 1 — REDESIGN_SPEC.md) ──
+     Additive: consumed by Shell/Topbar, Shell/Footer, Shell/CommandSearch,
+     and components/primitives/*. Legacy tokens above are unchanged so every
+     existing route keeps rendering until its own lane migrates it. */
+  --bg-1: #f2eee5;
+  --bg-2: #e9e3d7;
+  --tool: var(--surface);
+  --ink: #2b2825;
+  --ink-2: #5b544c;
+  --ink-3: #8a8177;
+  --rule: #ddd6c8;
+  --accent-ink: #215239;
+  --grade-measured: #2f6f4e;
+  --grade-derived: #4b6ea8;
+  --grade-null: #6f7a72;
+  --grade-open: #9a7430;
+  --danger: var(--crit);
+  --content-width: 1120px;
 }
 
 /* Dark mode */
@@ -127,6 +146,26 @@
   }
 }
 
+/* §4.2 redesign token layer — dark, system preference only (guarded so an
+   explicit data-theme="light" choice always wins, per the theme-aware hard
+   rule). Mirrored unconditionally into [data-theme="dark"] below. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-1: #1e1a15;
+    --bg-2: #241f19;
+    --tool: var(--surface);
+    --ink: #ece7dd;
+    --ink-2: #b6aea1;
+    --ink-3: #877f73;
+    --rule: #372f26;
+    --accent-ink: #8fd3ab;
+    --grade-measured: #63b98a;
+    --grade-derived: #7ea3d8;
+    --grade-null: #93a099;
+    --grade-open: #cfa458;
+  }
+}
+
 [data-theme="dark"] {
   --bg: #1a1512;
   --surface: #211d18;
@@ -164,6 +203,21 @@
   --crit: #a66555;
   --accent-link: var(--text);
   --accent-link-hover: #ffffff;
+
+  /* §4.2 redesign token layer — dark, explicit toggle (wins over system
+     preference in both directions per the theme-aware hard rule). */
+  --bg-1: #1e1a15;
+  --bg-2: #241f19;
+  --tool: var(--surface);
+  --ink: #ece7dd;
+  --ink-2: #b6aea1;
+  --ink-3: #877f73;
+  --rule: #372f26;
+  --accent-ink: #8fd3ab;
+  --grade-measured: #63b98a;
+  --grade-derived: #7ea3d8;
+  --grade-null: #93a099;
+  --grade-open: #cfa458;
 }
 
 [data-theme="light"] {
@@ -236,12 +290,12 @@ body {
 .topbar {
   position: fixed;
   top: 0;
-  left: var(--sidebar-w);
+  left: 0;
   right: 0;
   z-index: 90;
   height: var(--topbar-h);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
   backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
@@ -480,7 +534,7 @@ body {
 
 /* Content area */
 .content {
-  margin-left: var(--sidebar-w);
+  margin-left: 0;
   margin-top: var(--topbar-h);
   flex: 1;
   /* Flex items default to min-width:auto (= content min-width), which lets a
@@ -1209,28 +1263,10 @@ a:hover {
 .badge-red { background: color-mix(in srgb, var(--crit) 12%, transparent); color: var(--crit); border-color: color-mix(in srgb, var(--crit) 35%, transparent); }
 .badge-purple { background: var(--surface-2); color: var(--text-tertiary); border-color: var(--border); }
 
-.card {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, white), color-mix(in srgb, var(--surface) 84%, var(--bg))),
-    var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 18px;
-  margin-bottom: 12px;
-  min-width: 0;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.24) inset,
-    0 14px 34px rgba(25, 21, 18, 0.045);
-  transition: border-color var(--transition), background var(--transition), transform var(--transition);
-}
-
-.card:hover {
-  border-color: var(--border-bright);
-  transform: translateY(-1px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.26) inset,
-    0 18px 44px rgba(25, 21, 18, 0.07);
-}
+/* `.card` deleted (2026-09-04, Lane 1, REDESIGN_SPEC.md §4.3): a generic
+   bordered container violates the surface rule. `ui/card.tsx` still applies
+   className="card" (12 importers migrate in lanes 2-6 per spec risk #4); a
+   plain unstyled div is the correct interim state, not a re-added box. */
 
 /* List-of-rows card: no padding, divider rows inside */
 .card-list {
