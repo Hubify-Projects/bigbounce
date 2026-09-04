@@ -506,6 +506,36 @@ def main():
         "caveat": ("ABS use a kinetic-dominated scalar (w=+1, eps=3) with ~12.3 e-folds of inflation "
                    "after the bounce and their f_NL convention differs by an overall sign; only "
                    "magnitudes are compared.")}
+    # ---------------- systematic C: configuration (ABS quote equilateral) --------
+    log(f"\nsystematic C: equilateral configuration (k1 = k2 = k3 = k), eta_* = {ETA_STAR_FAC:g} eta_B")
+    eq = {}
+    for kt in K_SCAN:
+        k = kt / eB
+        ks = np.array([k, k, k])
+        D = lb._dots(*ks)
+        rec = {}
+        for st in ("S-lab", "S-ABS0"):
+            ms, _ = build_modes(bg, ks, st, eta_far, eta0)
+            if ms is None:
+                continue
+            r = dfnl(bg, ms, ks, D, ETA_STAR_FAC * eB, npts=int(max(20001, 400 * max(1.0, kt))))
+            rec[st] = {"total": r["total"], "bulk_sum": r["bulk_sum"],
+                       "redef_sum": r["redef_sum"], "dominant_vertex": r["dominant_vertex"],
+                       "vertices": r["vertices"], "redefinition": r["redefinition"]}
+        ms, _ = build_modes(bg, ks, "S-lab", eta_far, eta0)
+        scan = []
+        for f in ETA_STAR_SCAN:
+            rr = dfnl(bg, ms, ks, D, f * eB, npts=int(max(20001, 400 * max(1.0, kt))))
+            scan.append({"eta_star_over_etaB": f, "k_eta_star": float(k * f * eB),
+                         "total": rr["total"], "redef_R3": rr["redefinition"]["R3"]})
+        rec["eta_star_scan_S-lab"] = scan
+        eq[f"{kt:g}"] = rec
+        log("  k*eta_B = %6.3g: " % kt + "  ".join(
+            f"{st} {rec[st]['total']:+.4e}" for st in ("S-lab", "S-ABS0") if st in rec)
+            + "  | eta_* scan (S-lab): " + " ".join(
+            f"{v['eta_star_over_etaB']:g}eB:{v['total']:+.3e}" for v in scan))
+    out["equilateral"] = eq
+
     # ---------------- (5) PBH channel at k*eta_B ~ 3 ------------------------------
     # zeta = zeta_g + (3/5) f_NL zeta_g^2 ; collapse threshold zeta_c ; sigma_g = 3.2e-5
     # (lane 9c sec. 4 item 1, which quoted 408 sigma for |f_NL| = 1e3 at zeta_c = 0.1).
