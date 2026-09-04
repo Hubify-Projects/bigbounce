@@ -69,3 +69,60 @@ one of them auditor-originated), **2 REAL residuals of open R4 items** (`DA3M-R4
 **11 FALSIFIED**, **6 OPINION/GENRE**, **0 BLOCKER**.
 
 **Clean-wave count: 0** (reset — genuinely-new real findings present).
+
+---
+
+## 2. Canonical numbered findings
+
+Severity is read from each leg's own per-item tag, never from its verdict word.
+
+### GENUINELY-NEW REAL — MAJOR
+
+**DA3M-R5-01 (MAJOR) — the `0 ≤ T_fNL < 1/2` bound and "linear transfer can only suppress" are
+S1/(A4)-only statements, printed unconditionally, and the paper's own S2 row violates them.**
+*Legs:* Fable M1 (+ minors 2, 3); Grok E1 reaches the same territory from a false premise (see F1).
+*Class:* **GENUINELY-NEW REAL, editorial — no new computation.*
+*Verdict citation:* `:355–360` derives `0≤T<1/2` from `T=(1-ρ)/2`, `ρ∈(0,1]`, **under assumption
+(A4)** and in the `|r|≫1` limit; `:433` repeats "caps it at `1/2` within the (A4) handoff scheme".
+But `:359–361` then asserts flatly "within this handoff scheme, linear transfer can only suppress
+the amplitude, never invert or amplify its sign", and the abstract `:52–56` prints the bound with
+no scheme tag. `:498–501` reports `|λ_ζ|=0.97` for S2 on the Quintin-type background and a net
+cubic `+1.0`; with `f^after[S2] = -1.246` (`lane9b2_s2_rawadm/results.json → headline`) and
+`f^before = -2.1875`, the auditor's own arithmetic gives `T = 1.027 = 1/0.97 > 1/2`. The bound is
+therefore correct **only** where (A4) holds, and the paper never says S2 falls outside it. The
+range `0.165–0.409` also omits this `≈1.03` value while `:377–379` calls it "the full set of three
+backgrounds and two conventions".
+*Closure:* **C1** — tag the bound "(scheme S1, assumption (A4))" in the abstract and at `:359`;
+add the S2/Quintin `T_fNL ≈ 1.03` cell to the `:462–470` table (marking `Δf^bounce[S2]` "not
+separately regulated", per `:510–515`); restate `:377–379` as "three backgrounds × two conventions,
+S1 rows only".
+
+**DA3M-R5-02 (MAJOR) — §III's "2.1–4.4 decades below the 10³ plateau across `kη_B∈[0.1,10]`"
+overstates its own source's window, and §V C's `|f_NL|≈1.2×10³` from the same scan contradicts it
+as printed.**
+*Legs:* Fable M2.
+*Class:* **GENUINELY-NEW REAL, editorial + one table — no new computation.**
+*Verdict citation:* `LANE9C2_LQC_MODES_2026-09-04.md:255–261` states the deficit as "**2.1–4.4 dex
+at and below `k_LQC`**", with `|Δf_NL^bounce|` "of order 0.2–3 (squeezed) and 0.3–10 (equilateral)
+through the whole window `kη_B ≲ 1`". `main.tex:423–428` promotes this to the full scanned range
+`kη_B∈[0.1,10]`. `results.json → equilateral/10/S-lab/total = -1215.57` is the `≈1.2×10³` §V C
+`:980–982` quotes, at `kη_B=10` — where `abs_comparison/per_k/10/…/ratio_to_ABS = 2.42×10⁴` puts
+the lab value **4.4 dex above** the ABS decay law. Both numbers are individually sourced; the two
+sentences cannot both stand unqualified.
+*Closure:* **C2** — scope `:423–428` to "squeezed configuration, at and below `k_LQC η_B ≈ 1.06`";
+add a four-row table (configuration, `kη_B`, initial state, `|f_NL|`) covering `0.1…10` squeezed
+and equilateral, cited from both §III and §V C; keep §V C's stress-test framing.
+
+**DA3M-R5-03 (MAJOR) — the printed NANOGrav reference amplitude `6.3×10⁻¹⁰` is unsupported by the
+paper's own artifact and inconsistent with the paper's own quoted gap.**
+*Legs:* Fable M3 (integrity note).
+*Class:* **GENUINELY-NEW REAL, numeric error, editorial fix.**
+*Verdict citation:* `main.tex:700–707` "against NANOGrav's power-law value `6.3×10⁻¹⁰` at `f_yr` …
+`10^{14.3}` (`10^{13.7}`, dust bracket)". `outputs/sigw_nhz_from_lab_spectrum_2026_09_04.json`
+records `nanograv_reference/Omega_GW_h2_at_f_yr = 3.6235e-9` (from `A=2.4e-15, γ=3.2`) and
+`log10_amplitude_shortfall_vs_NANOGrav_at_f_yr = 14.3416` / `13.7352`. Auditor arithmetic:
+`log10(6.3e-10 / 1.4545e-23) = 13.64`, not 14.3 — the printed pair is internally inconsistent;
+`log10(3.62e-9 / 1.4545e-23) = 14.40 ≈ 14.34` ✓. The rendered Fig. 1 dashed NANOGrav line sits at
+`~3×10⁻⁹` near `f_yr`, agreeing with the JSON and not with the text.
+*Closure:* **C3** — replace `6.3×10⁻¹⁰ → 3.6×10⁻⁹` at `:702` (state the `Ω_GW h²` convention);
+the `10^14.3`/`10^13.7` gaps, abstract `:65`, `:1108` and the Fig. 1 caption need no change.
