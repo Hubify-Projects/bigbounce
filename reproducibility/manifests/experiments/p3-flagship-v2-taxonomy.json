@@ -1,0 +1,64 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-flagship-v2-taxonomy",
+  "title": "Descriptive taxonomy (UMAP + clustering, 25 clusters -> 8 families) of the S>3 v2 science-only unmatched population",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "flagship_crossmatch_v2_unmatched.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_unmatched.parquet",
+      "checksum": "c0a6b57bd672f81b1424a65449f99d891810073ea59e600c1fc35cfec30eb7c3",
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/taxonomy_flagship.py",
+      "entrypoint": "python3 taxonomy_flagship.py (pod-side, stage 07_TAXONOMY; umap_neighbors=15, umap_min_dist=0.05, score_tier_quantiles=[0.5,0.8,0.95])",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "numpy==2.4.6, scikit-learn==1.9.0, umap-learn==0.5.12",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "a4000",
+    "pod_id_or_host": "8ofv5d4ynu7hku",
+    "date": "2026-09-03",
+    "wall_clock": "2026-09-03T23:55:02Z to 2026-09-03T23:55:28Z (~26s)",
+    "actual_cost_usd": 0.001
+  },
+  "reproduction": {
+    "recommended_venue": "local-cpu",
+    "est_wall_clock": "~1-5min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fast, CPU-only clustering step; deterministic given the pinned sklearn/umap-learn versions and fixed input."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_taxonomy_v2.json",
+      "type": "result-json",
+      "checksum": "1420388b59f3727814dda63c90c8e4cd0d2226c1e6ad2907c3301ed844edbf60"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_taxonomy_v2_manifest.json",
+      "type": "receipt",
+      "checksum": "8afbc35ceb912390b153a5ba752075fdb8c734799ed04b79c937d34c11959a87"
+    }
+  ],
+  "verification": "25 clusters roll up to 8 families with sizes 302/87/71/61/44/38/36/36, summing to 675 -- matches SIMBAD/NED-unmatched row count exactly (see PHASE3_V2_BENCHMARK_SUMMARY.md).",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_taxonomy_v2_manifest.json",
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md",
+    "project-context/PHASE3_V2_LANDING_2026-09-03.md"
+  ]
+}

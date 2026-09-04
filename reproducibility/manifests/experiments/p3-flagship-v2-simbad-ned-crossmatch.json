@@ -1,0 +1,80 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-flagship-v2-simbad-ned-crossmatch",
+  "title": "SIMBAD/NED positional cross-match of the S>3 v2 science-only sample",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "flagship_sample_v2_enriched.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+      "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff",
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "SIMBAD (astroquery)",
+      "endpoint": "astroquery.simbad.Simbad (v0.4.11)",
+      "auth_required": false
+    },
+    {
+      "name": "NED (astroquery)",
+      "endpoint": "astroquery.ipac.ned.Ned (v0.4.11)",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/crossmatch_flagship.py",
+      "entrypoint": "python3 crossmatch_flagship.py (pod-side, stage 05_CROSSMATCH; radius_arcsec=3.0)",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astroquery==0.4.11, pandas, pyarrow, numpy",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "a4000",
+    "pod_id_or_host": "8ofv5d4ynu7hku",
+    "date": "2026-09-03",
+    "wall_clock": "2026-09-03T19:49:52Z to 2026-09-03T23:14:03Z (~3h24m)",
+    "actual_cost_usd": 0.58
+  },
+  "reproduction": {
+    "recommended_venue": "local-cpu-or-runpod",
+    "est_wall_clock": "~3-4h (network-bound VizieR/SIMBAD/NED rate limits, 1.0s sleep between queries, radius 3.0 arcsec)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": true,
+    "notes": "Network-bound; crossmatch_ckpt/ supports resume. No GPU required despite pod venue used originally."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_matched.parquet",
+      "type": "catalog",
+      "checksum": "4a718d1a7ad253d2f91c69841d81e3b8015650fc0ca1f4a711fa0ee9da17f135"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_unmatched.parquet",
+      "type": "catalog",
+      "checksum": "c0a6b57bd672f81b1424a65449f99d891810073ea59e600c1fc35cfec30eb7c3"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_manifest.json",
+      "type": "receipt",
+      "checksum": "dc9734decafa79cb803370d977ec8d7fa88a20fa8444a4de86175e8f513480c9"
+    }
+  ],
+  "verification": "569/1244 matched (45.7%: n_ned_found=562, n_simbad_found=38), 675 unmatched (54.3%), counts sum to input row count 1244 (see PHASE3_V2_BENCHMARK_SUMMARY.md). Match rate is 19x higher than the v1 S>8 sample's 2.4%, consistent with v2's science-only provenance gate having removed sky-fiber contamination.",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_manifest.json",
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md",
+    "project-context/PHASE3_V2_LANDING_2026-09-03.md"
+  ]
+}

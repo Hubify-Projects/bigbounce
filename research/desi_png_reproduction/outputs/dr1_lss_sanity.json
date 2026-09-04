@@ -1,0 +1,274 @@
+{
+  "task": "Ledger #4 step 1 - DESI DR1 public LSS (QSO v1.5) sanity check",
+  "published_reference": {
+    "reference": "Chaussidon et al. 2024, arXiv:2411.17623 (abstract)",
+    "n_qso": 1189129,
+    "z_range": [
+      0.8,
+      3.1
+    ],
+    "n_lrg": 1631716,
+    "lrg_z_range": [
+      0.6,
+      1.1
+    ],
+    "fnl_merger_model": {
+      "central": -3.6,
+      "plus": 9.0,
+      "minus": 9.1,
+      "cl": 0.68
+    },
+    "fnl_universality": {
+      "central": 3.5,
+      "plus": 10.7,
+      "minus": 7.4,
+      "cl": 0.68
+    }
+  },
+  "source_root": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+  "licence": "CC BY 4.0 (DESI public data releases)",
+  "files": {
+    "QSO_NGC_clustering.dat.fits": {
+      "bytes": 83298240,
+      "sha256": "9d01efdc6dc3c2a403369e5a8e0f7129a8ff08b5e503d9b0c6b91b7bc589f784"
+    },
+    "QSO_NGC_nz.txt": {
+      "bytes": 11808,
+      "sha256": "853fa9c56bbfdd659373d216bc1c9fc2ce4365fa9babddd3850ee4135c529505"
+    },
+    "QSO_SGC_0_clustering.ran.fits": {
+      "bytes": 735863040,
+      "sha256": "2965a952b3a59902f0de84f91e95f4106c3f63a2b32e9f539450b3ed73d9d9c9"
+    },
+    "QSO_SGC_clustering.dat.fits": {
+      "bytes": 45178560,
+      "sha256": "875c67fe9ef5c03c1daf9fe5606f254b3ab6e91c4fb01ef304f6fa9a7a2c1bc4"
+    },
+    "QSO_SGC_nz.txt": {
+      "bytes": 11832,
+      "sha256": "80608da63516ac0afbf704a1e073611c2c5bb75232785ea13f67d369a0e3b357"
+    }
+  },
+  "caps": {
+    "NGC": {
+      "file": "QSO_NGC_clustering.dat.fits",
+      "n_rows": 793219,
+      "n_columns": 14,
+      "columns": [
+        "TARGETID",
+        "NTILE",
+        "RA",
+        "DEC",
+        "PHOTSYS",
+        "Z",
+        "FRAC_TLOBS_TILES",
+        "WEIGHT_ZFAIL",
+        "WEIGHT_RF",
+        "WEIGHT_SYS",
+        "WEIGHT",
+        "WEIGHT_COMP",
+        "NX",
+        "WEIGHT_FKP"
+      ],
+      "z_min": 0.800005467908201,
+      "z_max": 3.4999978020237714,
+      "z_median": 1.7429596422598224,
+      "n_in_published_z_range": 772215,
+      "frac_in_published_z_range": 0.9735205535923874,
+      "ra_range": [
+        90.41339865688992,
+        297.0886052799253
+      ],
+      "dec_range": [
+        -10.157311765959316,
+        79.04838381500714
+      ]
+    },
+    "SGC": {
+      "file": "QSO_SGC_clustering.dat.fits",
+      "n_rows": 430172,
+      "n_columns": 14,
+      "columns": [
+        "TARGETID",
+        "NTILE",
+        "RA",
+        "DEC",
+        "PHOTSYS",
+        "Z",
+        "FRAC_TLOBS_TILES",
+        "WEIGHT_ZFAIL",
+        "WEIGHT_RF",
+        "WEIGHT_SYS",
+        "WEIGHT",
+        "WEIGHT_COMP",
+        "NX",
+        "WEIGHT_FKP"
+      ],
+      "z_min": 0.8000081757730048,
+      "z_max": 3.499863054768398,
+      "z_median": 1.7398477422485343,
+      "n_in_published_z_range": 418624,
+      "frac_in_published_z_range": 0.9731549240768809,
+      "ra_range": [
+        0.000744576266729011,
+        359.99975571653584
+      ],
+      "dec_range": [
+        -19.44134382450835,
+        33.53292870093532
+      ]
+    }
+  },
+  "weights": {
+    "NGC": {
+      "WEIGHT_ZFAIL": {
+        "mean": 1.0150563375502961,
+        "std": 0.03176273549451489,
+        "min": 1.0,
+        "max": 2.5105226039886475,
+        "n_nonfinite": 0,
+        "n_exactly_one": 469040
+      },
+      "WEIGHT_RF": {
+        "mean": 0.9767608655450548,
+        "std": 0.06537500867393414,
+        "min": 0.6243856889125945,
+        "max": 1.5944592718524744,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT_SYS": {
+        "mean": 0.9767608655450548,
+        "std": 0.06537500867393414,
+        "min": 0.6243856889125945,
+        "max": 1.5944592718524744,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT": {
+        "mean": 0.9913935695639992,
+        "std": 0.28376403485022705,
+        "min": 0.5349241769074669,
+        "max": 5.766251794911218,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT_COMP": {
+        "mean": 1.100036685959363,
+        "std": 0.34598175077794635,
+        "min": 1.0,
+        "max": 6.0,
+        "n_nonfinite": 0,
+        "n_exactly_one": 724272
+      },
+      "NX": {
+        "mean": 2.374632471802572e-05,
+        "std": 8.417428920002127e-06,
+        "min": 1.2191900857880433e-06,
+        "max": 3.563503070691674e-05,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT_FKP": {
+        "mean": 0.8770711739840523,
+        "std": 0.04032953556596613,
+        "min": 0.8238520429163243,
+        "max": 0.9927379821661468,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      }
+    },
+    "SGC": {
+      "WEIGHT_ZFAIL": {
+        "mean": 1.0169844510069908,
+        "std": 0.03134861338040351,
+        "min": 1.0,
+        "max": 1.5688285827636719,
+        "n_nonfinite": 0,
+        "n_exactly_one": 233516
+      },
+      "WEIGHT_RF": {
+        "mean": 0.977672515712934,
+        "std": 0.0640714901763156,
+        "min": 0.6770831574724004,
+        "max": 1.5462315410814473,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT_SYS": {
+        "mean": 0.977672515712934,
+        "std": 0.0640714901763156,
+        "min": 0.6770831574724004,
+        "max": 1.5462315410814473,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT": {
+        "mean": 0.9942735486824177,
+        "std": 0.33602180138195636,
+        "min": 0.5528264983147883,
+        "max": 5.7075180972724,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT_COMP": {
+        "mean": 1.1428591354156012,
+        "std": 0.4057047389033712,
+        "min": 1.0,
+        "max": 7.0,
+        "n_nonfinite": 0,
+        "n_exactly_one": 376767
+      },
+      "NX": {
+        "mean": 2.2810257206465355e-05,
+        "std": 7.847084108310489e-06,
+        "min": 1.358037977667314e-06,
+        "max": 3.660296186245639e-05,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      },
+      "WEIGHT_FKP": {
+        "mean": 0.881182559366782,
+        "std": 0.03790292591883757,
+        "min": 0.8199290168072888,
+        "max": 0.9919176291335138,
+        "n_nonfinite": 0,
+        "n_exactly_one": 0
+      }
+    }
+  },
+  "checks": {
+    "n_qso_total_downloaded": 1223391,
+    "n_qso_published": 1189129,
+    "n_qso_in_published_z_range": 1190839,
+    "ratio_zrange_to_published": 1.0014,
+    "abs_diff_zrange_vs_published": 1710,
+    "WEIGHT_SYS_present": true,
+    "WEIGHT_FKP_present": true,
+    "verdict_note": "The clustering catalogue carries the full tracer sample; the published 1,189,129 is the count entering the PNG fit after its own z-cut and any further selection. Agreement of the z-range count to within a few percent is the pass condition here; an exact match is NOT expected and is not claimed."
+  },
+  "randoms": {
+    "file": "QSO_SGC_0_clustering.ran.fits",
+    "n_rows": 6511977,
+    "columns": [
+      "TARGETID",
+      "RA",
+      "DEC",
+      "NTILE",
+      "PHOTSYS",
+      "FRAC_TLOBS_TILES",
+      "Z",
+      "WEIGHT",
+      "WEIGHT_SYS",
+      "WEIGHT_COMP",
+      "WEIGHT_ZFAIL",
+      "WEIGHT_RF",
+      "TARGETID_DATA",
+      "NX",
+      "WEIGHT_FKP"
+    ],
+    "ratio_to_SGC_data": 15.14,
+    "note": "one of 18 realisations (0..17); the plan's section 2 volume table"
+  },
+  "wall_clock_s": 0.7
+}

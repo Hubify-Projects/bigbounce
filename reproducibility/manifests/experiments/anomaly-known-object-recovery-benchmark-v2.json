@@ -1,0 +1,88 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-known-object-recovery-benchmark-v2",
+  "title": "Known-object recovery benchmark (ledger item #8) run against the S>3 v2 science-only flagship sample",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "Sealed locator inventory (HEALPix footprint definition)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl",
+      "checksum": null
+    },
+    {
+      "name": "flagship_sample_v2_enriched.parquet (S>3 science-only sample, n=1244)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+      "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff"
+    },
+    {
+      "name": "Cached reference 'unusual object' classes (BAL quasars, Roma-BZCAT blazars, CV/WD binaries, LAEs, SLSN hosts)",
+      "type": "external-dataset",
+      "locator": "huggingface/local cache: ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/ (fetched 2026-09-02, reused unchanged for this v2 run)",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "VizieR (CDS)",
+      "endpoint": "https://vizier.cds.unistra.fr/viz-bin/votable",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/benchmark_known_object_recovery.py",
+      "entrypoint": "python3 benchmark_known_object_recovery.py --crossmatch --reference-cache-dir ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02 --reference-manifest ~/Desktop/CODE_YOU/bigbounce_datasets/aug-011-clean-rerun/recovery_refs_2026-09-02/reference_manifest_local.json --catalogs-config /tmp/catalogs_config_v2.json --locator-inventory pipelines/p1_highz_tracers/clean_rerun/sealed_2026-08-05/locator_inventory.jsonl --radius-arcsec 1.5 --out-dir pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astropy, astroquery, healpy, pandas, pyarrow, numpy",
+    "hardware": "cpu-only, local (Houston's machine, not the RunPod pod)"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-04",
+    "wall_clock": "under 1 minute (offline crossmatch stage against cached reference classes)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU (any host with the cached reference_catalogs, or a fresh --fetch-references run from a host that can reach vizier.cds.unistra.fr's TAP query endpoint)",
+    "est_wall_clock": "under 1 minute for --crossmatch once references are cached; 10-40 min for a fresh --fetch-references pass",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Unlike the v1 recovery_benchmark_preview run (which returned 0 fetched classes due to a VizieR TAP-endpoint connectivity failure), this v2 run reused the successfully cached 2026-09-02 reference fetch (5/11 classes fetched, 4 unavailable for missing RA/Dec columns, 1 with no known catalogue ID) and produced real per-class recovery numbers against the S>3 v2 sample's 1244 rows."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/recovery_benchmark.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/recovery_benchmark.md",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md",
+      "type": "receipt",
+      "checksum": null
+    }
+  ],
+  "verification": "pipelines/p1_highz_tracers/tests/test_recovery_benchmark.py (26 offline unit tests) covers the pure matching/CI/enrichment arithmetic. This run's real output: 1 BAL-quasar positional match (4.2x enrichment, out of 5285 in-footprint references) out of 5 fetched classes; ledger #8's >10x-enrichment/>=5-match confirmed-class bar is NOT met. 0 matches for Roma-BZCAT, CV/WD binaries, LAEs, SLSN hosts.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 8",
+    "pipelines/p1_highz_tracers/clean_rerun/RUNBOOK.md Section 19",
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md (this run's own committed output)",
+    "project-context/PHASE3_V2_LANDING_2026-09-03.md"
+  ]
+}

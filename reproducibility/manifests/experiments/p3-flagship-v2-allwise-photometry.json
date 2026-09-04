@@ -1,0 +1,69 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-flagship-v2-allwise-photometry",
+  "title": "AllWISE (VizieR) photometry join for the S>3 v2 science-only sample",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "crossmatch",
+  "inputs": [
+    {
+      "name": "flagship_sample_v2_enriched.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+      "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff",
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "AllWISE II/328 (VizieR, astroquery)",
+      "endpoint": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/sync",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/wise_join_flagship.py",
+      "entrypoint": "python3 wise_join_flagship.py (pod-side, stage 06_WISE; radius_arcsec=3.0, astroquery.vizier.Vizier)",
+      "sha256": null
+    }
+  ],
+  "environment": {
+    "python": "astroquery==0.4.11, pandas, pyarrow, numpy",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "a4000",
+    "pod_id_or_host": "8ofv5d4ynu7hku",
+    "date": "2026-09-03",
+    "wall_clock": "2026-09-03T23:14:03Z to 2026-09-03T23:55:02Z (~41m)",
+    "actual_cost_usd": 0.12
+  },
+  "reproduction": {
+    "recommended_venue": "local-cpu",
+    "est_wall_clock": "~40-45min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": true,
+    "notes": "Network-bound VizieR query; no GPU required; wise_checkpoint.json supports resume (checkpoint_every=50)."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_wise_v2.parquet",
+      "type": "catalog",
+      "checksum": "1b42125d5e62830cf44806a842b7253e787ec218c77b3a19e690eed4fedb40f3"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_wise_v2_manifest.json",
+      "type": "receipt",
+      "checksum": "b060c1f5395b131865eef57fb7678f02349d69e891b6ad2dc8360eccc1a92290"
+    }
+  ],
+  "verification": "Row count in flagship_wise_v2.parquet cross-checked against flagship_wise_v2_manifest.json at landing time (2026-09-03).",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_wise_v2_manifest.json",
+    "project-context/PHASE3_V2_LANDING_2026-09-03.md"
+  ]
+}

@@ -267,5 +267,36 @@ which this item silently stalls (directive R1/Q4).
 
 ## 7. Execution log
 
-- **2026-09-03** — plan written; step 1 executed (see
-  `dr1_lss_sanity.py` and manifest `ledger4-desi-dr1-lss-sanity`).
+**2026-09-03 — plan written; step 1 EXECUTED and PASSED.**
+
+Downloaded (0.86 GB, $0, ~20 s) to
+`~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/` — *outside the repo*:
+`QSO_{NGC,SGC}_clustering.dat.fits`, `QSO_{NGC,SGC}_nz.txt`,
+`QSO_SGC_0_clustering.ran.fits`. All five sha256s recorded in manifest
+`reproducibility/manifests/experiments/ledger4-desi-dr1-lss-sanity.json`
+(schema-validated).
+
+`dr1_lss_sanity.py` (0.7 s, local CPU) results:
+
+| Check | Result |
+|---|---|
+| Rows | QSO NGC 793,219 · SGC 430,172 · total 1,223,391 |
+| In published 0.8 < z < 3.1 | **1,190,839 vs Chaussidon+ 2024's 1,189,129 → ratio 1.0014 (0.14%)** |
+| Randoms | `QSO_SGC_0` 6,511,977 rows = 15.14× the SGC data |
+| Weight columns | `WEIGHT`, `WEIGHT_SYS`, `WEIGHT_COMP`, `WEIGHT_ZFAIL`, `WEIGHT_RF`, `WEIGHT_FKP`, `NX` — all present in both caps |
+| `WEIGHT_SYS` (NGC) | mean 0.9768, σ 0.0654, range [0.624, 1.594], 0 non-finite, 0 exactly-unity |
+
+The 0.14% agreement with the published QSO count is a **provenance check, not a
+measurement**: it confirms we hold the same sample the DR1 PNG analysis used.
+The residual 1,710 objects are the paper's own further analysis selection and
+are not claimed to be reproduced. The imaging-systematics weight is present and
+non-trivial (7% RMS, 1.6× dynamic range), so §3.4 test 1 — the plan's primary
+systematic lever — is executable on these files as downloaded.
+
+Figures: `outputs/dr1_lss_sanity_zhist.png` (n(z) both caps against the fit
+range), `outputs/dr1_lss_sanity_footprint.png` (equatorial Mollweide; the
+expected DR1 tiled NGC/SGC footprint).
+
+**No blocker encountered.** Next step: extend the download to the remaining 17
+randoms realisations per cap plus the LRG catalogues (≈ 64 GB, still $0), then
+Track-1 `pypower` P_0(k) on QSO SGC as the S1 validation target.

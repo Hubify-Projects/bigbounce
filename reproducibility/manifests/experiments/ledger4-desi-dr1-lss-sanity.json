@@ -1,0 +1,136 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger4-desi-dr1-lss-sanity",
+  "title": "Ledger #4 step 1 - provenance-bound download and lab-native sanity check of the DESI DR1 public LSS clustering catalogues (QSO, LSScats v1.5), the input products for an independent reproduction of the DR1 local-PNG scale-dependent-bias constraint",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "DESI DR1 QSO NGC clustering catalogue (LSScats v1.5)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_NGC_clustering.dat.fits",
+      "checksum": "sha256:9d01efdc6dc3c2a403369e5a8e0f7129a8ff08b5e503d9b0c6b91b7bc589f784",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "DESI DR1 QSO SGC clustering catalogue (LSScats v1.5)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_SGC_clustering.dat.fits",
+      "checksum": "sha256:875c67fe9ef5c03c1daf9fe5606f254b3ab6e91c4fb01ef304f6fa9a7a2c1bc4",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "DESI DR1 QSO SGC randoms realisation 0 of 18 (LSScats v1.5)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_SGC_0_clustering.ran.fits",
+      "checksum": "sha256:2965a952b3a59902f0de84f91e95f4106c3f63a2b32e9f539450b3ed73d9d9c9",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "DESI DR1 QSO NGC n(z) table (FKP weights)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_NGC_nz.txt",
+      "checksum": "sha256:853fa9c56bbfdd659373d216bc1c9fc2ce4365fa9babddd3850ee4135c529505",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "DESI DR1 QSO SGC n(z) table (FKP weights)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_SGC_nz.txt",
+      "checksum": "sha256:80608da63516ac0afbf704a1e073611c2c5bb75232785ea13f67d369a0e3b357",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (the measurement being reproduced; supplies the 1,189,129 QSO / 0.8<z<3.1 comparison numbers)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2411.17623",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Brown, Levi, Randall, Chaussidon et al. 2026 - configuration-space DR1 LRG+QSO PNG measurement (method-independent cross-check)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2606.24651",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Rezaie et al. 2023 - imaging-systematics mitigation for photometric DESI LRG PNG (source of the systematics-budget design)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2307.01753",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger #3 survey-reach study (DESI DR1 = 0.16 sigma on f_NL = -35/16; sets this item's honest scope)",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/survey_reach_fnl.py",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI public data server (anonymous HTTP, no key)",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "research/desi_png_reproduction/dr1_lss_sanity.py",
+      "entrypoint": "python3 research/desi_png_reproduction/dr1_lss_sanity.py",
+      "sha256": "aff455a671b6a1494443c71869d57d92f38907dc0500cb7891ab52fbfecf05fc"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + astropy 8.0.1 + matplotlib 3.11.1",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-03",
+    "wall_clock": "download 0.86 GB ~ 20 s; sanity check 0.7 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~2 min including download",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Data live OUTSIDE the repo at ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/ (0.86 GB). Re-fetch with curl -O from the five locators above and confirm the sha256s before re-running. The script memory-maps the FITS files and never loads the 736 MB randoms table into memory (header row count only)."
+  },
+  "outputs": [
+    {
+      "locator": "research/desi_png_reproduction/outputs/dr1_lss_sanity.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/dr1_lss_sanity_zhist.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/dr1_lss_sanity_footprint.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) the five input sha256s match the values recorded above; (b) row counts QSO NGC = 793,219 and QSO SGC = 430,172 (total 1,223,391); (c) checks.n_qso_in_published_z_range == 1,190,839 in 0.8 < z < 3.1, i.e. ratio_zrange_to_published == 1.0014 against Chaussidon et al. 2024's 1,189,129 - a 0.14% agreement, which is the pass condition (an EXACT match is not expected and is not claimed, since the published count follows further analysis selection); (d) both caps carry WEIGHT_SYS, WEIGHT_COMP, WEIGHT_ZFAIL, WEIGHT_RF, WEIGHT_FKP, WEIGHT, NX; (e) WEIGHT_SYS NGC mean == 0.97676 +/- 1e-4, std == 0.06538, range [0.6244, 1.5945], zero non-finite values - i.e. the imaging-systematics weight that the plan's section 3.4 test 1 switches off is present and non-trivial; (f) randoms QSO_SGC_0 has 6,511,977 rows, 15.14x the SGC data.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 4 (first cheap test: reproduce the published DESI PNG pipeline on DR1 public products)",
+    "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md sections 2 (inputs) and 7 (execution log)",
+    "directive Q2 (per-experiment reproducibility manifests with external sources, licences, venue, cost, wall clock), directive R1 (ledger-first), directive R6 (claims at their evidential strength: this is a provenance check, not a measurement)"
+  ]
+}

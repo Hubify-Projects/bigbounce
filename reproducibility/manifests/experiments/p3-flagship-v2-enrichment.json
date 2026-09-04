@@ -1,0 +1,71 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p3-flagship-v2-enrichment",
+  "title": "S>3 flagship anomaly sample enrichment (photometry/spectroscopy/morphology join) [SAMPLE-V2, science-only, contamination-fixed]",
+  "program": "anomaly-discovery",
+  "paper": "anomaly-flagship",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "flagship_sample_v2.parquet",
+      "type": "internal-artifact",
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2.parquet",
+      "checksum": "d6d43dfa04d6a8b2b4d014f5f4899b5e5b844144a50b6c88e01a9a771a6baa5f",
+      "license": null
+    },
+    {
+      "name": "DESI zcatalog/target coordinates",
+      "type": "external-dataset",
+      "locator": "DESI internal zcatalog (pod-local, bound by zcatalog_sha256 in flagship_enriched_v2_manifest.json)",
+      "checksum": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p1_highz_tracers/clean_rerun/enrich_flagship_sample.py",
+      "entrypoint": "python3 enrich_flagship_sample.py (pod-side, stage 04_ENRICH; see pod_phase3_v2.sh)",
+      "sha256": "3e7efb243fa5cc4e7e06c5ce8e13f011e1173d2cc44aecd8df47e0c67c0ab996"
+    }
+  ],
+  "environment": {
+    "python": "pandas, pyarrow, numpy (RunPod pod bootstrap for exact pins)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "runpod",
+    "gpu": "a4000",
+    "pod_id_or_host": "8ofv5d4ynu7hku",
+    "date": "2026-09-03",
+    "wall_clock": "2026-09-03T17:06:50Z to 2026-09-03T19:49:52Z (~2h43m)",
+    "actual_cost_usd": 0.46
+  },
+  "reproduction": {
+    "recommended_venue": "runpod-a4000-or-equivalent",
+    "est_wall_clock": "~2h45m",
+    "est_cost_usd": 0.5,
+    "parallelizable": false,
+    "resume_support": true,
+    "notes": "enrich_checkpoint.json supports resume; contract_sha256/model_sha256/inference_code_sha256/zcatalog_sha256 in flagship_enriched_v2_manifest.json bind exact reproduction inputs. Sample built by 03_CHOOSE_THRESHOLD_AND_BUILD, which passed gates/check_sample_provenance.py clean (status: clean) -- the fix for SAMPLE-V1 negative-TARGETID contamination."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+      "type": "catalog",
+      "checksum": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff"
+    },
+    {
+      "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_enriched_v2_manifest.json",
+      "type": "receipt",
+      "checksum": "243495ac59987d9a7b461adca1e11668c47cb09cee30b64141cf224f5c9733c5"
+    }
+  ],
+  "verification": "flagship_enriched_v2_manifest.json MSE cross-check: 0 offenders / 1244 rows checked (tolerance 1e-6); groups 752/752 completed, 0 skipped. input_sample_sha256 matches flagship_sample_v2.parquet's own hash.",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_enriched_v2_manifest.json",
+    "project-context/PHASE3_V2_LANDING_2026-09-03.md",
+    "project-context/ANOMALY_SAMPLE_CONTAMINATION_2026-09-03.md"
+  ]
+}
