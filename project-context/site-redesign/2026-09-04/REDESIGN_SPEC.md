@@ -301,7 +301,7 @@ Dark (`@media (prefers-color-scheme: dark)` + `[data-theme="dark"]`, both, per t
 
 ```
 --bg:#17130f  --bg-1:#1e1a15  --bg-2:#241f19  --tool:#211d18
---ink:#ece7dd  --ink-2:#b6ae a1→#b6aea1  --ink-3:#877f73  --rule:#372f26
+--ink:#ece7dd  --ink-2:#b6aea1  --ink-3:#877f73  --rule:#372f26
 --accent:#63b98a  --accent-ink:#8fd3ab
 ```
 
@@ -342,3 +342,46 @@ opens the full-size asset. Equations get a `--bg-1` band with generous vertical 
 subject. Charts: one accent line, `--ink-3` gridlines at 10% opacity, mono axis labels, no chart junk, no gradient
 fills. Null results are typeset like any other result — same H3 weight, slate dot, a number and a receipt link — and
 the copy states the null as a finding ("PTA channel: 14.3 dex below NANOGrav — closed as a null"), never as an absence.
+
+## 5. Components
+
+### 5.1 The minimal set (12)
+
+Every page in §3 is buildable from these. Props are sketches, not final signatures.
+
+| # | Component | Props | Used by |
+|---|---|---|---|
+| 1 | `Band` | `tone: 'base'\|'alt'\|'deep'`, `width: 'prose'\|'content'\|'full'`, `children` | every page — the layout primitive that replaces `Card` |
+| 2 | `PageHeader` | `eyebrow?`, `title`, `lead?`, `meta?: MetaItem[]`, `actions?: LinkItem[]` | all top-level pages, paper pages |
+| 3 | `StatRow` | `items: {value, label, href?, mono?}[]` | `/`, `/reproduce`, `/status`, explorers, `/reviews` |
+| 4 | `EvidenceChip` | `grade: 'measured'\|'derived'\|'null'\|'open'`, `label?` | `/`, tracks, papers, status |
+| 5 | `RowList` + `Row` | `items: {title, purpose, href, right?: ReactNode, chips?}[]` | tracks, works index fallback, learn/explore hubs, activity |
+| 6 | `DataTable` | `columns`, `rows`, `dense?`, `stickyHeader?` — the **only** bordered list surface | `/papers`, `/status`, `/reproduce`, `/reviews`, `/docs/architecture`, surveys |
+| 7 | `ReadinessBar` | `value: number` (Convex), `segments: {label, max, earned}[]` | `/status`, `/papers/[slug]` |
+| 8 | `VerdictGrid` | `rounds` (newest-left), `works`, `activeLegs`, `frozenLegs` | `/reviews` |
+| 9 | `TimelineList` | `entries: ReviewRound[]`, `kindMarkers` | `/reviews`, `/timeline`, `/activity` |
+| 10 | `FigureBlock` | `src`, `caption`, `credit?`, `full?` | `/explore/figures`, `/papers/[slug]` |
+| 11 | `MathText` | *(existing, unchanged API)* | tracks, papers, predictions, glossary |
+| 12 | `Topbar` + `Footer` + `CommandSearch` | shell trio (`CommandSearch` = ⌘K over the existing search index) | `layout.tsx` |
+
+Kept as-is behind these: `LegacyExplorerClient`, `DataExplorerClient`, `LiveStatus`, `ScrollToTop`,
+`PublicationStatusWidget` (restyled, de-nested), `FreshnessStamp`, `PublicationPath`, `ExternalReviewPanel`
+(restyled into `/papers/[slug]` §8), `SurveyQcTable` (moved under `/reproduce/surveys`).
+
+### 5.2 Delete
+
+- `site/src/components/Shell/Sidebar.tsx` — replaced by `Topbar` nav.
+- `site/src/components/Cards/Badge.tsx` — dead; superseded by `EvidenceChip`.
+- `site/src/components/Feed/FeedItem.tsx` — dead.
+- `site/src/components/ui/accordion.tsx`, `scroll-area.tsx`, `skeleton.tsx`, `tooltip.tsx` — dead.
+- `site/src/components/ui/card.tsx` — **deleted after migration**; generic cards violate the surface rule. Its 12
+  importers move to `Band`/`RowList`/`DataTable`.
+- `site/src/components/ui/badge.tsx` — deleted after migration to `EvidenceChip` (15 importers).
+- `site/src/app/chat/**` and its nav entry — retired feature.
+- `site/src/app/final-review/**` — merged into `/status#signoff`.
+- `site/src/app/architecture/**` — moved to `/docs/architecture`.
+- Page-local CSS that duplicates the token layer (`final-review.css`; audit `reviews.css`/`publish.css` and keep only
+  genuinely page-specific rules).
+
+`ui/button.tsx`, `ui/separator.tsx`, `ui/table.tsx`, `ui/tabs.tsx`, `ui/alert.tsx`, `ui/dialog.tsx` survive, restyled
+to the tokens in §4.

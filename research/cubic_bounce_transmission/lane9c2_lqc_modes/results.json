@@ -29,6 +29,7 @@
     ],
     "eta_star_headline_over_etaB": 10.0,
     "eta_star_scan": [
+      1.0,
       2.0,
       5.0,
       10.0,
@@ -88,13 +89,13 @@
       "S-ABS0": {
         "defined": true,
         "eta_ref": 44.833629014146986,
-        "N_before": 9112398421511114.0,
+        "N_before": 6.998004234393903,
         "N_after": 5038.778642950902,
         "omega": 0.08948810748710971,
-        "growth_factor": 7.436118293291572e-07,
-        "power_modification": 5.529585527182556e-13,
+        "growth_factor": 26.833389796170913,
+        "power_modification": 720.0308079532492,
         "beta_sq_after": 2518.889321475451,
-        "beta_sq_before": 4556199210755556.0,
+        "beta_sq_before": 2.9990021171969516,
         "info": {
           "state": "S-ABS0",
           "eta_start": -3.1804378726284694,
@@ -133,13 +134,13 @@
       "S-ABS0": {
         "defined": true,
         "eta_ref": 13.223701430289877,
-        "N_before": 819130.4061006687,
+        "N_before": 1.0795952966177644,
         "N_after": 62.858290094937814,
         "omega": 0.2684687101093342,
-        "growth_factor": 0.008760013144828964,
-        "power_modification": 7.673783029757622e-05,
+        "growth_factor": 7.630461220936516,
+        "power_modification": 58.22393844421598,
         "beta_sq_after": 30.929145047468907,
-        "beta_sq_before": 409564.70305033436,
+        "beta_sq_before": 0.039797648308882216,
         "info": {
           "state": "S-ABS0",
           "eta_start": -3.1804378726284694,
@@ -178,13 +179,13 @@
       "S-ABS0": {
         "defined": true,
         "eta_ref": 10.601459575428231,
-        "N_before": 399699.8162848963,
+        "N_before": 1.0006267793711983,
         "N_after": 1.080137688173306,
         "omega": 0.9371479458198466,
-        "growth_factor": 0.0016438893639111915,
-        "power_modification": 2.7023722407803416e-06,
+        "growth_factor": 1.0389711758375058,
+        "power_modification": 1.0794611042211693,
         "beta_sq_after": 0.04006884408665301,
-        "beta_sq_before": 199849.40814244814,
+        "beta_sq_before": 0.0003133896855991303,
         "info": {
           "state": "S-ABS0",
           "eta_start": -3.1804378726284694,
@@ -194,11 +195,24 @@
         }
       },
       "S-ad4": {
-        "defined": false,
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 1.0000022608469776,
+        "N_after": 1.0956674355482086,
+        "omega": 0.9371479458198466,
+        "growth_factor": 1.0467401580227056,
+        "power_modification": 1.0956649584173987,
+        "beta_sq_after": 0.04783371777410428,
+        "beta_sq_before": 1.130423488815424e-06,
         "info": {
           "state": "S-ad4",
-          "defined": false,
-          "reason": "4th-order adiabatic Omega^2 <= 0"
+          "eta_start": -3.1804378726284694,
+          "defined": true,
+          "Omega4": 0.9097040018582999,
+          "omega0": 0.9081546353466545,
+          "adiabaticity_dOmega_over_Omega2": 0.017529478923495545,
+          "wronskian_initial": -0.4999999999999999,
+          "ode_success": true
         }
       }
     },
@@ -223,13 +237,13 @@
       "S-ABS0": {
         "defined": true,
         "eta_ref": 10.601459575428231,
-        "N_before": 99247873949.0425,
+        "N_before": 1.000008261188491,
         "N_after": 1.000004790872567,
         "omega": 2.827765445913328,
-        "growth_factor": 3.1742449271370042e-06,
-        "power_modification": 1.0075830857455005e-11,
+        "growth_factor": 0.999998264854867,
+        "power_modification": 0.9999965297127447,
         "beta_sq_after": 2.3954362835532095e-06,
-        "beta_sq_before": 49623936974.02125,
+        "beta_sq_before": 4.130594245532748e-06,
         "info": {
           "state": "S-ABS0",
           "eta_start": -3.1804378726284694,
@@ -239,11 +253,24 @@
         }
       },
       "S-ad4": {
-        "defined": false,
+        "defined": true,
+        "eta_ref": 10.601459575428231,
+        "N_before": 1.0000000001440794,
+        "N_after": 1.0000005635005387,
+        "omega": 2.827765445913328,
+        "growth_factor": 1.0000002816781899,
+        "power_modification": 1.000000563356459,
+        "beta_sq_after": 2.817502693375218e-07,
+        "beta_sq_before": 7.203970753266731e-11,
         "info": {
           "state": "S-ad4",
-          "defined": false,
-          "reason": "4th-order adiabatic Omega^2 <= 0"
+          "eta_start": -3.1804378726284694,
+          "defined": true,
+          "Omega4": 2.818399372286594,
+          "omega0": 2.818289549788783,
+          "adiabaticity_dOmega_over_Omega2": 0.0005971147043408199,
+          "wronskian_initial": -0.5000000000000001,
+          "ode_success": true
         }
       }
     },
@@ -268,13 +295,13 @@
       "S-ABS0": {
         "defined": true,
         "eta_ref": 10.601459575428231,
-        "N_before": 3.1486492978282465e+18,
+        "N_before": 1.0000000664824467,
         "N_after": 1.0000000665332958,
         "omega": 9.432053550982365,
-        "growth_factor": 5.635570265493867e-10,
-        "power_modification": 3.175965221731861e-19,
+        "growth_factor": 1.0000000000254246,
+        "power_modification": 1.000000000050849,
         "beta_sq_after": 3.326664788083633e-08,
-        "beta_sq_before": 1.5743246489141233e+18,
+        "beta_sq_before": 3.3241223329483205e-08,
         "info": {
           "state": "S-ABS0",
           "eta_start": -3.1804378726284694,
@@ -286,20 +313,20 @@
       "S-ad4": {
         "defined": true,
         "eta_ref": 10.601459575428231,
-        "N_before": 3.5482836068371624e+25,
-        "N_after": 267.91262210548894,
+        "N_before": 1.0000000000066902,
+        "N_after": 0.999999999957242,
         "omega": 9.432053550982365,
-        "growth_factor": 2.747814589323345e-12,
-        "power_modification": 7.550485017298224e-24,
-        "beta_sq_after": 133.45631105274447,
-        "beta_sq_before": 1.7741418034185812e+25,
+        "growth_factor": 0.9999999999752759,
+        "power_modification": 0.9999999999505518,
+        "beta_sq_after": 0.0,
+        "beta_sq_before": 3.3451019731955967e-12,
         "info": {
           "state": "S-ad4",
           "eta_start": -3.1804378726284694,
           "defined": true,
-          "Omega4": 9.872642602108092,
+          "Omega4": 9.42922003779058,
           "omega0": 9.429216974804765,
-          "adiabaticity_dOmega_over_Omega2": 45.15957170811459,
+          "adiabaticity_dOmega_over_Omega2": 1.6315469802546138e-05,
           "wronskian_initial": -0.5,
           "ode_success": true
         }
@@ -542,13 +569,23 @@
           },
           {
             "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
+            "eta_start": -3.1804378726284694,
+            "defined": true,
+            "Omega4": 0.9097040018582999,
+            "omega0": 0.9081546353466545,
+            "adiabaticity_dOmega_over_Omega2": 0.017529478923495545,
+            "wronskian_initial": -0.4999999999999999,
+            "ode_success": true
           },
           {
             "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
+            "eta_start": -3.1804378726284694,
+            "defined": true,
+            "Omega4": 0.9097040018582999,
+            "omega0": 0.9081546353466545,
+            "adiabaticity_dOmega_over_Omega2": 0.017529478923495545,
+            "wronskian_initial": -0.4999999999999999,
+            "ode_success": true
           }
         ]
       }
@@ -624,13 +661,23 @@
           },
           {
             "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
+            "eta_start": -3.1804378726284694,
+            "defined": true,
+            "Omega4": 2.818399372286594,
+            "omega0": 2.818289549788783,
+            "adiabaticity_dOmega_over_Omega2": 0.0005971147043408199,
+            "wronskian_initial": -0.5000000000000001,
+            "ode_success": true
           },
           {
             "state": "S-ad4",
-            "defined": false,
-            "reason": "4th-order adiabatic Omega^2 <= 0"
+            "eta_start": -3.1804378726284694,
+            "defined": true,
+            "Omega4": 2.818399372286594,
+            "omega0": 2.818289549788783,
+            "adiabaticity_dOmega_over_Omega2": 0.0005971147043408199,
+            "wronskian_initial": -0.5000000000000001,
+            "ode_success": true
           }
         ]
       }
@@ -708,9 +755,9 @@
             "state": "S-ad4",
             "eta_start": -3.1804378726284694,
             "defined": true,
-            "Omega4": 9.872642602108092,
+            "Omega4": 9.42922003779058,
             "omega0": 9.429216974804765,
-            "adiabaticity_dOmega_over_Omega2": 45.15957170811459,
+            "adiabaticity_dOmega_over_Omega2": 1.6315469802546138e-05,
             "wronskian_initial": -0.5,
             "ode_success": true
           },
@@ -718,9 +765,9 @@
             "state": "S-ad4",
             "eta_start": -3.1804378726284694,
             "defined": true,
-            "Omega4": 9.872642602108092,
+            "Omega4": 9.42922003779058,
             "omega0": 9.429216974804765,
-            "adiabaticity_dOmega_over_Omega2": 45.15957170811459,
+            "adiabaticity_dOmega_over_Omega2": 1.6315469802546138e-05,
             "wronskian_initial": -0.5,
             "ode_success": true
           }
@@ -815,6 +862,11 @@
       "S-lab": {
         "scan": [
           {
+            "eta_star_over_etaB": 1.0,
+            "total": 0.5121250110689867,
+            "k_eta_star": 0.1
+          },
+          {
             "eta_star_over_etaB": 2.0,
             "total": 0.09635941941710366,
             "k_eta_star": 0.2
@@ -835,10 +887,15 @@
             "k_eta_star": 3.0
           }
         ],
-        "frac_spread": 3.681844832027709
+        "frac_spread": 8.279663621782426
       },
       "S-ABS0": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": 0.4710826576557709,
+            "k_eta_star": 0.1
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": 0.073127462384769,
@@ -860,12 +917,17 @@
             "k_eta_star": 3.0
           }
         ],
-        "frac_spread": 3.5173994450788064
+        "frac_spread": 7.472708821567773
       }
     },
     "0.3": {
       "S-lab": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": 0.36479564849142787,
+            "k_eta_star": 0.3
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -0.03947705028690221,
@@ -887,10 +949,15 @@
             "k_eta_star": 9.0
           }
         ],
-        "frac_spread": 1.7751703086008725
+        "frac_spread": 2.8029678436502365
       },
       "S-ABS0": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": 0.36970022013193515,
+            "k_eta_star": 0.3
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -0.03518514562572905,
@@ -912,12 +979,17 @@
             "k_eta_star": 9.0
           }
         ],
-        "frac_spread": 1.7782868132160843
+        "frac_spread": 2.8137391225592068
       }
     },
     "1": {
       "S-lab": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": -0.314228137220231,
+            "k_eta_star": 1.0
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -1.1139901512535646,
@@ -939,10 +1011,15 @@
             "k_eta_star": 30.000000000000004
           }
         ],
-        "frac_spread": 3.4476602964163545
+        "frac_spread": 4.057523711789211
       },
       "S-ABS0": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": -0.3283851709124005,
+            "k_eta_star": 1.0
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -1.0842121930909971,
@@ -964,12 +1041,17 @@
             "k_eta_star": 30.000000000000004
           }
         ],
-        "frac_spread": 3.32016522343618
+        "frac_spread": 3.8869791552095476
       }
     },
     "3": {
       "S-lab": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": -0.45341117145065885,
+            "k_eta_star": 3.0
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -0.6923821511054242,
@@ -991,10 +1073,15 @@
             "k_eta_star": 90.0
           }
         ],
-        "frac_spread": 0.8299369577934415
+        "frac_spread": 1.2012060454669855
       },
       "S-ABS0": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": -0.5111229753546517,
+            "k_eta_star": 3.0
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -0.7209470463029769,
@@ -1016,12 +1103,17 @@
             "k_eta_star": 90.0
           }
         ],
-        "frac_spread": 0.7304564568609341
+        "frac_spread": 1.0461077291020058
       }
     },
     "10": {
       "S-lab": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": -0.7935306646046334,
+            "k_eta_star": 10.0
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -0.9127474688518642,
@@ -1043,10 +1135,15 @@
             "k_eta_star": 300.0
           }
         ],
-        "frac_spread": 2.179145327436898
+        "frac_spread": 2.588657313699186
       },
       "S-ABS0": {
         "scan": [
+          {
+            "eta_star_over_etaB": 1.0,
+            "total": -0.9574425139226884,
+            "k_eta_star": 10.0
+          },
           {
             "eta_star_over_etaB": 2.0,
             "total": -0.9642236614933751,
@@ -1068,7 +1165,7 @@
             "k_eta_star": 300.0
           }
         ],
-        "frac_spread": 2.1672502691675453
+        "frac_spread": 2.4943291544597517
       }
     }
   },
@@ -1078,15 +1175,15 @@
       {
         "eta0_over_etaB": -2.0,
         "k2_over_W": 7.883066062608845,
-        "growth_factor": 0.0008046771282388845,
-        "power_modification": 6.475052807107782e-07,
+        "growth_factor": 1.0487852137559892,
+        "power_modification": 1.099950424593196,
         "total": 0.8768291616041395
       },
       {
         "eta0_over_etaB": -3.0,
         "k2_over_W": 13.687103438717193,
-        "growth_factor": 0.0016438893639111915,
-        "power_modification": 2.7023722407803416e-06,
+        "growth_factor": 1.0389711758375058,
+        "power_modification": 1.0794611042211693,
         "total": 0.8314892103298575
       },
       {
