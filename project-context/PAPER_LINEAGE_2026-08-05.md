@@ -509,3 +509,26 @@ enrichment, ≥5 positional matches) on a subsequent characterization pass, or
 an independently-derived discriminator (per ledger #6) confronted with this
 catalogue's candidate families. Absent that, the catalogue stands as public
 data-release infrastructure for the lab's early-universe anomaly-map line.
+
+## 2026-09-04 — A3 multi-channel paper (Track A flagship): claim change, transmitted amplitude becomes the observable
+
+**ORIGINAL CLAIM (v3M.0.5–0.8):** the matter-contraction local f_NL = −35/16
+(pre-bounce) is the flagship prediction; the SPHEREx bispectrum channel
+"alone discriminates" −35/16 from Cai+2009's −35/8 at 3.13σ.
+
+**NEW CLAIM (v3M.0.9, closure decision C1 = propagate, recorded in
+`SSOT/paper-a3m/status.md`):** the observable prediction is the transmitted
+post-bounce amplitude f_NL^after = T·f_NL^pre + Δf_NL^bounce, scheme S1,
+validity kη_B ≲ 1e−2 (satisfied at the LSS/CMB pivot): f_NL^after ∈
+[−0.65, −0.50] for −35/16 and [−1.20, −0.86] for −35/8 across the three A2
+backgrounds (ledger #2, lanes a/b/c, 2026-09-03). At that amplitude SPHEREx
+reaches 0.7–0.9σ (−35/16) / 1.2–1.7σ (−35/8): the factor-two is NOT separable
+at current reach; −35/16 remains the pre-bounce input (ledger #1 closed;
+monopole adjudication 2026-09-03). The paper's contribution is the
+transmission-corrected prediction plus a multi-channel consistency map with
+two honest nulls (PBH from the lab's own spectrum; PNG high-z abundance).
+
+**Why:** R3 board (Fable M1 ≡ Gemini E4) showed the paper's own validity
+window includes the pivot; claiming the pre-bounce reach was a claim above its
+evidence (VISION.md R6). Nothing retired; the science is the same, stated at
+its strength.
