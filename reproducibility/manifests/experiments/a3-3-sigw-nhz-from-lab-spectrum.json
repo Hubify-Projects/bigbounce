@@ -1,0 +1,139 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-3-sigw-nhz-from-lab-spectrum",
+  "title": "A3-3 - scalar-induced gravitational waves in the NANOGrav band from the lab's own curvature power spectrum: does the CMB-anchored matter-bounce spectrum give the paper's Channel-I gamma = 3?",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Planck 2018 cosmological parameters (A_s = 2.1e-9 at k_* = 0.05 Mpc^-1; n_s = 0.9649)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1807.06209",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Kohri & Terada 2018 - radiation-era induced-GW kernel, oscillation-averaged x^2 <I^2> (the transfer used here)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1804.08577",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Domenech 2021 - scalar-induced GW review; Eq. (2.21) kernel form and the Omega_GW ~ f^{2n} rule for broad P_R ~ k^n in RD",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2109.01398",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Espinosa, Racco & Riotto 2018 - closed-form Omega_GW = 0.8222 A^2 for scale-invariant P_zeta = A (the kernel-normalisation benchmark asserted at runtime)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1804.07732",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai, Pi & Sasaki 2020 - universal IR causal tail Omega_GW ~ f^3 (gamma = 2), cited to show gamma = 3 is not the causal floor",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1909.13728",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "NANOGrav 15 yr - HD-correlated power law A = 2.4e-15 at f_yr, gamma = 3.2 (+/-0.6 at 90%)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2306.16213",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Papanikolaou 2025 - the source whose low-k P_R ~ k tail the paper's section IV D borrows for gamma = 3 (contrast case; its spectrum carries a small-scale enhancement)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2504.11641",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A3-1b lab curvature spectrum Delta^2_zeta(k) - the exact spectrum evaluated here",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.json",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A2 linear bounce transmission - eta_B per background; scale-independence of the transfer for k eta_B << 1 (validity test in section 3 of the note)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "The paper's own gamma convention Omega_GW ~ f^{5-gamma}",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/pta_gamma_reproduce.py",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/sigw_nhz_from_lab_spectrum_2026_09_04.py",
+      "entrypoint": "cd research/track_a3_multichannel && python3 sigw_nhz_from_lab_spectrum_2026_09_04.py",
+      "sha256": "6c8efd80b212455e06a148fbc77819c16b53f4b1e064da0cf6b088d3737722da"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy 2.5.1 + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "3.2 s (measured, field wall_seconds in the output JSON)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~5 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no data files, no network). The kernel normalisation is asserted against the published scale-invariant benchmark at the top of main() BEFORE any lab spectrum is inserted, so a normalisation regression aborts the run rather than propagating. Nothing is tuned toward gamma = 3. The double integral is a fixed 1200x1200 grid over ln v in [1e-3, 300]; the benchmark is stable to 0.05% across grids from 400x400/vmax=50 to 2000x2000/vmax=2000."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/outputs/sigw_nhz_from_lab_spectrum_2026_09_04.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/outputs/sigw_nhz_from_lab_spectrum_2026_09_04.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/outputs/sigw_nhz_2026_09_04.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) kernel_validation.computed_coefficient == 0.82254 vs published 0.8222, rel_error < 1e-3 (this assertion is executed in main() and aborts on failure); (b) f_to_k.k_per_nHz_Mpc-1 == 646710.2 (i.e. k = 6.467e5 Mpc^-1 per nHz, so k(10 nHz) = 6.47e6 Mpc^-1, matching the R4 audit's independent 6.5e6 figure), k_at_f_yr == 2.0493e7; (c) transfer_validity.k_eta_B_at_60nHz <= 2.264e-8 for every T_B >= 1e8 GeV, i.e. the whole PTA band is deep inside the A2 scale-independent domain; (d) branches['MB_anchored_ns0.9649'].gamma_pred == 5.0702 and branches['pure_dust_ns1'].gamma_pred == 5.0000, each matching gamma_pred_analytic_2(ns-1)+5 to 1e-4; (e) z_vs_NANOGrav_official_gamma == 5.13 and 4.93 respectively; (f) log10_amplitude_shortfall_vs_NANOGrav_at_f_yr == 14.34 (ns=0.9649) and 13.74 (pure dust); (g) what_would_give_gamma3.required_spectral_index_of_P_R_at_nHz == 1.0, log10_amplitude_gap == 7.197, T_B_needed_GeV == 2.264 and decades_below_section_V == 7.645; (h) verdict.answer == 'A'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 3 (item A3-3)",
+    "project-context/peer-reviews/INT_v3/A3M_v3M.0.9_R4_TRUTH_AUDIT_2026-09-04.md item DA3M-R4-02 (MAJOR, SCIENCE; closure plan (ii)) - this experiment is that item's closure evidence",
+    "research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md (derivation summary, tables, and VERDICT A)",
+    "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md section 4 (validity domain k eta_B << 1)",
+    "directive Q2 (per-experiment reproducibility manifests), directive Q1 (the result is stated as a null in its own terms, not as a redo narrative), directive R1 (ledger-first)"
+  ]
+}
