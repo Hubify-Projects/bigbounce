@@ -199,4 +199,39 @@ if __name__ == "__main__":
     ap.add_argument("--window-ic", action="store_true")
     ap.add_argument("--shotnoise-fixed", action="store_true")
     ap.add_argument("--out", required=True)
-    run(ap.parse_args())
+    ap.add_argument("--point", action="store_true",
+                     help="fast scipy.optimize point estimate instead of full emcee MCMC")
+    a = ap.parse_args()
+    run_point(a) if a.point else run(a)
+
+
+def run_point(args):
+    """Fast scipy.optimize point-estimate path (compute-budget fallback):
+    MCMC posteriors under fit_fnl_v2.py's full emcee path proved too slow
+    under this session's host contention (RUN_LOG.md follow-up section) --
+    this reuses the same chi2 as run_mcmc's log_like but minimizes directly.
+    Sigma is NOT recomputed here; v1's MCMC sigma (fnl_fit_results.json) is
+    the canonical uncertainty reference for the v2 movement table."""
+    from scipy.optimize import minimize
+    alpha_fn, plin_fn, f_zeff, d_zeff = get_cosmo_funcs(args.tk)
+    nran_suffix = f"_nran{args.nran}" if args.nran != 4 else ""
+    K, P0_OBS, P2_OBS, NMODES, SHOTNOISE = load_data(nran_suffix, args.window_ic)
+    model_p0p2 = make_model(alpha_fn, plin_fn, f_zeff)
+    SIG_P0 = np.sqrt(2.0 / NMODES) * (P0_OBS + SHOTNOISE)
+    SIG_P2 = np.sqrt(2.0 * 5.0 / NMODES) * (P0_OBS + SHOTNOISE)
+    shot0 = SHOTNOISE if args.shotnoise_fixed else 0.0
+
+    def chi2(theta, p_fixed):
+        f_nl, n_shot = theta
+        p0m, p2m = model_p0p2(K, f_nl, p_fixed, n_shot)
+        return np.sum((P0_OBS - p0m) ** 2 / SIG_P0 ** 2) + np.sum((P2_OBS - p2m) ** 2 / SIG_P2 ** 2)
+
+    results = {"tk": args.tk, "nran": args.nran, "window_ic": args.window_ic,
+               "shotnoise_fixed": args.shotnoise_fixed, "method": "point_estimate"}
+    for p_fixed, label in [(1.6, "p1.6"), (1.0, "p1.0")]:
+        res = minimize(chi2, x0=[0.0, shot0], args=(p_fixed,), method="Nelder-Mead")
+        results[label] = {"f_nl_point": float(res.x[0])}
+        print(label, results[label])
+    with open(args.out, "w") as fh:
+        json.dump(results, fh, indent=2)
+    print("SAVED", args.out)
