@@ -69,6 +69,39 @@
   </div>
 </div>
 
+<section class="section">
+<h2>Top Anomalies</h2>
+<p class="text-sm sans" style="color: var(--text-secondary); margin-bottom: 8px;">Showing top 1,000 by anomaly score. Click column headers to sort. Each row links to the Legacy Survey image viewer. Full catalog (195,829 objects) available for download.</p>
+
+<div class="filter-bar">
+  <label>Min score: <input type="number" id="minScore" value="5" step="1" min="5" max="25" style="width:60px" onchange="filterTable()"></label>
+  <label>Worst band: <select id="bandFilter" onchange="filterTable()"><option value="">All</option><option value="B">B</option><option value="R">R</option><option value="Z">Z</option></select></label>
+  <span id="rowCount" style="color: var(--text-muted); font-family: var(--font-mono);">1000 shown</span>
+</div>
+
+<div style="overflow-x: auto;">
+<table class="anomaly-table" id="anomalyTable">
+<thead>
+<tr>
+<th onclick="sortTable(0)">#</th>
+<th onclick="sortTable(1)">Score</th>
+<th onclick="sortTable(2)">RA</th>
+<th onclick="sortTable(3)">Dec</th>
+<th onclick="sortTable(4)">Band</th>
+<th onclick="sortTable(5)">rB</th>
+<th onclick="sortTable(6)">rR</th>
+<th onclick="sortTable(7)">rZ</th>
+<th>Image</th>
+<th>Full</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+</div>
+</section>
+
+<section class="section">
+<h2>About This Data Release</h2>
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid #22c55e; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
   <strong style="color: var(--text);">What Paper 3 actually is</strong> &mdash; Paper 3 is now disposed as a <strong>data release</strong>, not a standalone paper: the <a href="/pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md" target="_blank">DESI DR1 Anomaly-Score Candidate Catalogue (v2, science-only, 2026-09-03)</a>. It is a machine-flagged catalogue of 1,244 spectroscopically unusual DESI DR1 science-target objects (anomaly_score&gt;3, threshold chosen by the pre-declared elbow rule over 27,547,223 scanned TARGETIDs), released as reproducible data infrastructure for follow-up characterization &mdash; <strong>not a purity, novelty, or detection claim</strong>. A known-object recovery benchmark against VizieR reference classes (BAL quasars, blazars, cataclysmic variables, Ly&alpha; emitters, superluminous-supernova hosts) found no confirmed class recovered at meaningful enrichment (1 BAL-quasar match at 4.2&times;; 0 elsewhere).<br>
   <strong>This explorer</strong> shows that same v2 catalogue: 1,244 science-target anomaly candidates, of which 569 (45.7%) cross-matched an existing SIMBAD or NED entry and 675 (54.3%) did not. The broader multi-survey candidate set (per-survey native retrains across DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, NEOWISE) is published as a dataset at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>. These are pipeline candidates, not confirmed detections.
@@ -110,6 +143,7 @@
     <div class="label">Descriptive Taxonomy Families</div>
   </div>
 </div>
+</section>
 
 <section class="section">
 <p class="text-xs sans" style="color: var(--text-secondary); margin: 4px 0 12px;">Descriptive taxonomy families (25 UMAP/HDBSCAN clusters rolled up into 8 families over the 675 SIMBAD/NED-unmatched objects; sizes sum to 675):</p>
@@ -183,37 +217,6 @@
 <h2>Sky Distribution</h2>
 <p class="text-sm sans" style="color: var(--text-secondary);">All 1,000 top-scored anomalies plotted by RA/Dec. Color indicates anomaly score (yellow = highest, blue = threshold).</p>
 <div class="sky-map"><canvas id="skyCanvas"></canvas></div>
-</section>
-
-<section class="section">
-<h2>Top Anomalies</h2>
-<p class="text-sm sans" style="color: var(--text-secondary); margin-bottom: 8px;">Showing top 1,000 by anomaly score. Click column headers to sort. Each row links to the Legacy Survey image viewer. Full catalog (195,829 objects) available for download.</p>
-
-<div class="filter-bar">
-  <label>Min score: <input type="number" id="minScore" value="5" step="1" min="5" max="25" style="width:60px" onchange="filterTable()"></label>
-  <label>Worst band: <select id="bandFilter" onchange="filterTable()"><option value="">All</option><option value="B">B</option><option value="R">R</option><option value="Z">Z</option></select></label>
-  <span id="rowCount" style="color: var(--text-muted); font-family: var(--font-mono);">1000 shown</span>
-</div>
-
-<div style="overflow-x: auto;">
-<table class="anomaly-table" id="anomalyTable">
-<thead>
-<tr>
-<th onclick="sortTable(0)">#</th>
-<th onclick="sortTable(1)">Score</th>
-<th onclick="sortTable(2)">RA</th>
-<th onclick="sortTable(3)">Dec</th>
-<th onclick="sortTable(4)">Band</th>
-<th onclick="sortTable(5)">rB</th>
-<th onclick="sortTable(6)">rR</th>
-<th onclick="sortTable(7)">rZ</th>
-<th>Image</th>
-<th>Full</th>
-</tr>
-</thead>
-<tbody id="tableBody"></tbody>
-</table>
-</div>
 </section>
 
 <section class="section">

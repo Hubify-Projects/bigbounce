@@ -165,3 +165,75 @@ the `10^14.3`/`10^13.7` gaps, abstract `:65`, `:1108` and the Fig. 1 caption nee
 | `DA3M-R5-R4` | "`1.732±0.050 (n=27)` std understates the prior volume; report the range" | Grok M2 | `:838–842` gives the std over the 27 points **and** "a result within a stated regime, not a claim of general validity"; the abstract already quotes the **range** `1.7–1.9`. Grok's "four `r_p` values" misreads a 3×3×3 grid. = `DA3M-R4-R4` |
 | `DA3M-R5-R5` | "`B=5×10⁻⁴` from 9 samples cannot carry `±0.2` dex" | Fable m9 | `:596–600` already refuses a `γ=5` factor outright and quotes the `13/3` factor **to one significant figure** for that reason |
 | `DA3M-R5-R6` | "Fig. 2's `f_PBH > 1` region is unphysical" | Fable m14b | Table III caption `:872–877`: "the ***nominal (uncapped)*** `f_PBH` columns — evaluated at the Gaussian-calibrated amplitude `A_*` with no upper cutoff applied" |
+
+### FALSIFIED (each against a committed source or the auditor's own arithmetic)
+
+| id | claim | leg | falsifying source |
+|---|---|---|---|
+| `DA3M-R5-F1` | "the abstract presents `-35/16` as the exact, **scheme-independent** amplitude" | Grok E1 | abstract `:52–59` reads "Transmission through the bounce is **scheme-qualified** … a two-scheme band, `[-1.25,-0.50]`, **not S1 alone**". "Exact" attaches to the pre-bounce in-in amplitude (`:158–164`, two literature reproductions "Both match exactly"), never to transmission. = `DA3M-R4-F1`/`R3-F1`, recurrence |
+| `DA3M-R5-F2` | "`f_PBH=0` holds only after the Gaussian-calibrated truncation; Table III shows non-zero" | Grok E3 | abstract `:70–72` conditions on "fed the lab's predicted spectrum"; `:966–968` `f_PBH` is "exactly zero in double precision at every point". Table III's non-zero columns are the disclosed "nominal (uncapped)" values at `A_*` (`:872–877`) — a different object (required-amplitude calibration, not the lab spectrum). = `DA3M-R4-F2`/`F4` family |
+| `DA3M-R5-F3` | "no single reproducible central value per background; forecasts cannot be recomputed" | Grok M1 | `:462–470` tabulates `(T_fNL, Δf^bounce, f^after)` per background — `0.165/-0.140/-0.501`, `0.250/-0.104/-0.651`, `0.196/-0.127/-0.555`; Table IV gives per-candidate significances |
+| `DA3M-R5-F4` | "the title contains the future date September 4, 2026" | Grok N1 | today **is** 2026-09-04 (`:19 \paperTimestamp`). Auto-FALSIFY Rule 3. **9 consecutive rounds, 100 % falsified** = `DA3M-F3` |
+| `DA3M-R5-F5` | "Eq. (1) and Eq. (3) are identical; one is redundant" | Grok N3 | `:151–153` is the `f_NL^local` **definition**; `:171–174` is the boxed `-35/16` **result** |
+| `DA3M-R5-F6` | "Fig. 1's caption cites a commit hash that post-dates the paper's date" | Grok N4 | caption `:729–740` contains no hash; it cites `outputs/sigw_nhz_from_lab_spectrum_2026_09_04.json` |
+| `DA3M-R5-F7` | "Fig. 1's y-axis has tick values but no physical label or units" | Gemini N1 | auditor **rendered** `paper/sigw_nhz_from_lab_spectrum_2026_09_04.png`: the y-axis reads `Ω_GW h²`, the x-axis `f [nHz]` |
+| `DA3M-R5-F8` | "`(the the shift…)` and `(the the T₃ bulk coupling…)` duplicate words in App. A 2" | Gemini N2 | `grep -n "the the" main.tex` → **0 hits**; `pdftotext main.pdf \| grep -i "the the"` → **0 hits**. The quoted text does not exist in the manuscript (fabricated quotation — record, do not act) |
+| `DA3M-R5-F9` | "`r` is imported from an unpublished companion draft for a load-bearing parameter" | Gemini M2 | `:1170–1177` quotes **no numeral** for `r`; Table IV reports bare significances. = `DA3M-R3-F7`, recurrence. (The internal-path half is `DA3M-R4-11`, still open) |
+| `DA3M-R5-F10` | "`kη_B≈3` corresponds to `T_B~10⁶ GeV`, which §V C excludes" | Fable m7 | `sigw…json → transfer_validity/k_B_Mpc-1["T_B=1e8 GeV"] = 1.7143e15` ⇒ `kη_B=3` at `k=5.14×10¹⁵ Mpc⁻¹`, inside the paper's own `10¹⁵–10¹⁶ Mpc⁻¹` PBH band at the stated `T_B ≳ 10⁸ GeV`. Only "say which `(T_B,k)`" survives (`DA3M-R5-17`) |
+| `DA3M-R5-F11` | "run the paper's code at Choudhury *et al.*'s stated parameter set" | Fable M5 (primary ask) | `:864–870` — their spectrum is "unreproducible"; the demanded re-run is unsatisfiable by construction = `DA3M-R3-R3`. Residual survives as `DA3M-R5-18` |
+
+### OPINION / GENRE (venue pass only — never a correctness finding)
+
+| id | item |
+|---|---|
+| `DA3M-R5-G1` | "a `5.1σ` slope tension for a signal 14 decades down is not a test" (Fable m10) — abstract `:65–66` and `:709–711` already call it a null and print the amplitude gap beside it |
+| `DA3M-R5-G2` | Table II's `γ=5` "prim. tensors" row is visually confusable with `γ_pred=5.07` (Fable m13) |
+| `DA3M-R5-G3` | expand App. A.1 into a full derivation (Fable M4 tail) — the identity's derivation route is stated at `:286–290`; genuine improvement, not a defect |
+| `DA3M-R5-G4` | missing-reference wish-list: Sasaki–Stewart, Lyth–Malik–Sasaki, Salopek–Bond, Brandenberger–Peter, the SPHEREx `σ=0.5` primary source (Fable, references section) — the last one is worth acting on with C4 |
+| `DA3M-R5-G5` | self-referential register / 14 pp length (Grok summary, Gemini E4 genre half) |
+| `DA3M-R5-G6` | Grok's "reconsider after (i)(ii)(iii)" framing rests on F1+F2+F3 and carries no separate content |
+
+---
+
+## 3. CLOSURE PLAN
+
+### (i) Editorial / real edits — closable in **v3M.0.12** by a Sonnet lane, no new science
+
+All line numbers are `research/track_a3_multichannel/paper/main.tex` @ v3M.0.11. Directive G applies
+(bump `\paperVersion`→`v3M.0.12`, keep `\paperTimestamp` at today, recompile 0 undef-refs, re-mirror
+byte-identical to every served path, Convex `paperVersions:bump`, three-way md5 check).
+
+| id | edit |
+|---|---|
+| **C1** | `DA3M-R5-01` + `DA3M-R5-04`. Abstract `:52–56`: tag the bound "(scheme S1, assumption (A4))". `:359–361`: change "within this handoff scheme, linear transfer can only suppress …" to name (A4)+S1 and add one sentence: S2's raw-ADM continuation lies outside (A4) and transmits with `T_fNL ≈ 1.03` (from `\|λ_ζ\|=0.97`, `:498–499`). `:377–379`: "three backgrounds × two conventions (S1 rows only)". `:381–384`: scope "S2 has no computable post-bounce `f^after`" to **the LQC background**. `:462–470`: add the S2/Quintin row `(T_fNL≈1.03, Δf^bounce not separately regulated, f^after=-1.25)` |
+| **C2** | `DA3M-R5-02`. `:423–428`: scope to "squeezed configuration, at and below `k_LQC η_B≈1.06`" (source: `LANE9C2…md:255–261`). Insert a small table (config, `kη_B`, initial state, `\|f_NL\|`) from `lane9c2_lqc_modes/results.json` (`abs_comparison/per_k` squeezed; `equilateral/*/S-lab/total` = `-0.539, -5.158, -9.807, -111.97, -1215.57`), referenced from `:428` and `:980` |
+| **C3** | `DA3M-R5-03`. `:702`: `6.3\times10^{-10}` → `3.6\times10^{-9}` (`Ω_GW h²`, from `nanograv_reference/Omega_GW_h2_at_f_yr`). Leave `10^{14.3}`/`10^{13.7}`, `:65`, `:1108`, Fig. 1 caption unchanged |
+| **C4** | `DA3M-R5-05..11`, `13`, `14`, `16`, `17`, `R1`, `G4`: body "under `1σ`" → "`0.5–1.1σ`" at `:1086, :1131, :1134, :1172`; narrow the `:243–245` novelty claim to per-vertex attribution; define `f^ρ_NL`/`f^c_NL` normalisation at `:255–261`+App. A.2; `\caption`+`\label` the `:462–470` table and fix `:1054`'s cross-ref; name the sixth cubic attachment at `:453–455` (or reconcile with `:158`); reword `:408` `O(1)`→"factor `0.06`–`2.2`"; `:1135` "apparent tension"→"forecast detection significance"; fix `:452` / `:471` sentence breaks, "isoceles", the curly quote, "Papanikolaou … derives"; bound-or-drop `:1176–1177`; qualifier "(S2, Quintin-type only)" in abstract `:57–59`; add "(at `T_B=10⁸ GeV`, `k≈5×10¹⁵ Mpc⁻¹`)" at `:975`; one clause in the Table II caption; cite the actual SPHEREx `σ=0.5` source |
+| **C5** | `DA3M-R5-12` + `DA3M-R4-12`. **Directive I6:** regenerate `sigw_nhz_from_lab_spectrum_2026_09_04.png` from its generator with a publication title/legend (no "A3-3", no `MB_anchored_ns0.9649`); re-mirror byte-identical; verify by **rendering the figure page**. Close the `Ω_DM=0.674` footnote residual |
+| **C6** | `DA3M-R4-11` (C7 residual). Replace in-body "this lab's" (`:63, :557, :560, :604, :679, :937, :1105`) with neutral wording; delete the internal-history clauses at `:421`, `:482` (keep the physics, drop "an earlier version of this program"). Paths inside the reproducibility statement stay. Gate: `grep -nE 'this lab\|earlier version of this program\|earlier statement in this program' main.tex` returns hits only inside the reproducibility statement |
+| **C7** | **LaTeX overfull (baseline, >10 pt).** `main.log`: `56.74pt` @ `:697` — split Eq. `gammapred` (`:693–697`) into a two-line `gathered`/`split` instead of one `\qquad`-joined line; `16.76pt` @ `:697–711` — the following paragraph inherits it, re-check after the equation fix; `14.58pt` @ `:1240–1253` — App. A.2 `tabular{lp{2.9cm}p{2.3cm}}`: narrow to `p{2.6cm}p{2.1cm}` or wrap in `\small`. Re-run `/latex-audit` and confirm 0 overfull > 10 pt |
+
+### (ii) SCIENCE — needs a ledger computation before it can be written
+
+| id | item | what must be computed | cost |
+|---|---|---|---|
+| `DA3M-R5-15` | the model's own **first-order** tensor `Ω_GW h²` at nHz | the matter-bounce first-order tensor spectrum on the same background + the same nHz propagation as `sigw_nhz_from_lab_spectrum.py`; report it beside the induced background in §IV D and Table II, or state explicitly why Channel I compares only the second-order piece | small, local CPU (minutes); one new JSON in `outputs/` |
+| `DA3M-R5-18` | the `1.7–1.9` ratio's exposure to the Choudhury sign disagreement | re-run `pbh_compaction_fnl.py` printing `γ_cr` at each of the 27 grid points; report how many (if any) fall at `γ_cr ≲ 0.85`, then state the ratio's conditionality outside §V B (abstract or Table III caption) | small, local CPU (minutes); extend the existing results JSON |
+
+Both are lab-local and cheap; **neither blocks C1–C7**, and neither requires GPU/RunPod.
+No item in this audit requires new physics beyond these two.
+
+---
+
+## 4. Convergence statement (R5)
+
+**NOT converged.** 18 genuinely-new REAL findings (3 MAJOR + 15 MINOR) are outstanding on the exact
+v3M.0.11 PDF, plus 2 real residuals of open R4 items and 1 carried packaging item. Clean-wave count
+**reset to 0**. Three of the MAJORs are editorial-with-a-numeric-core (a printed reference amplitude
+contradicted by the paper's own artifact; a bound printed without the assumption that makes it true;
+a scan result promoted beyond its source's stated window) — none is a physics error in the
+computations themselves: every number this auditor re-derived from the committed JSONs
+(`headline/S2_f_NL_after_mean`, the S1 per-background table, `log10_amplitude_shortfall`,
+`equilateral/*/total`, `transfer_validity/k_B`) reproduces. Directive R2 note: this is A3M's second
+consecutive review round; after v3M.0.12 closes C1–C7 the remaining lane must be the **(ii)** science
+items and the `NEXT_SCIENCE_LEDGER`, not a third verdict-word round.
