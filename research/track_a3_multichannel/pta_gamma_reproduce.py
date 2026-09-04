@@ -45,6 +45,8 @@ REF_RESULTS = CHAINDIR / "results.json"
 REF_SD = CHAINDIR / "savage_dickey_2026-05-29.json"
 OUT = HERE / "outputs/pta_gamma_reproduction.json"
 
+GAMMA_CAUSAL = 2.0        # causal floor (steepest IR slope for a causal
+                           # process), Omega_GW ~ f^3
 GAMMA_MB = 3.0            # matter bounce, SIGW f^2 IR scaling
 GAMMA_SMBHB = 13.0 / 3.0  # 4.3333, GW-driven SMBHB inspiral
 GAMMA_INFL = 5.0          # scale-invariant primordial tensors, n_T = 0
@@ -72,11 +74,11 @@ def main():
     kde = stats.gaussian_kde(g, bw_method="scott")
     prior = 1.0 / (G_HI - G_LO)
     post = {k: float(kde(v)[0]) for k, v in
-            [("mb", GAMMA_MB), ("smbhb", GAMMA_SMBHB), ("infl", GAMMA_INFL)]}
+            [("causal", GAMMA_CAUSAL), ("mb", GAMMA_MB), ("smbhb", GAMMA_SMBHB), ("infl", GAMMA_INFL)]}
     B = {k: v / prior for k, v in post.items()}
 
     z = {k: float((v - g_mu) / g_sd) for k, v in
-         [("mb", GAMMA_MB), ("smbhb", GAMMA_SMBHB), ("infl", GAMMA_INFL)]}
+         [("causal", GAMMA_CAUSAL), ("mb", GAMMA_MB), ("smbhb", GAMMA_SMBHB), ("infl", GAMMA_INFL)]}
 
     # --- A3M R1 closure additions (2026-09-02, item A3M-R1-01/02) ---
     # (a) tail census: how many of the 320,000 posterior samples actually
@@ -99,6 +101,7 @@ def main():
     official_tension = {
         "gamma_official_median": GAMMA_OFFICIAL_MEDIAN,
         "gamma_official_sigma_equiv": GAMMA_OFFICIAL_SIGMA,
+        "z_causal_vs_official": float((GAMMA_CAUSAL - GAMMA_OFFICIAL_MEDIAN) / GAMMA_OFFICIAL_SIGMA),
         "z_mb_vs_official": float((GAMMA_MB - GAMMA_OFFICIAL_MEDIAN) / GAMMA_OFFICIAL_SIGMA),
         "z_smbhb_vs_official": float((GAMMA_SMBHB - GAMMA_OFFICIAL_MEDIAN) / GAMMA_OFFICIAL_SIGMA),
         "z_infl_vs_official": float((GAMMA_INFL - GAMMA_OFFICIAL_MEDIAN) / GAMMA_OFFICIAL_SIGMA),
@@ -147,6 +150,7 @@ def main():
         },
         "z_distance_sigma": z,
         "omega_gw_slope_5_minus_gamma": {
+            "causal_floor_gamma2": 5.0 - GAMMA_CAUSAL,
             "matter_bounce_gamma3": 5.0 - GAMMA_MB,
             "smbhb_gamma13_3": 5.0 - GAMMA_SMBHB,
             "scale_invariant_tensors_gamma5": 5.0 - GAMMA_INFL,

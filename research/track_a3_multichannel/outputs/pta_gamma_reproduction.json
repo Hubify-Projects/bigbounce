@@ -21,11 +21,13 @@
   "savage_dickey_1d": {
     "prior_density": 0.14285714285714285,
     "posterior_at_gamma": {
+      "causal": 0.07735366404533216,
       "mb": 0.46108139263570713,
       "smbhb": 6.459868290225102e-05,
       "infl": 2.653521991213308e-25
     },
     "B_vs_free": {
+      "causal": 0.5414756483173251,
       "mb": 3.22756974844995,
       "smbhb": 0.00045219078031575715,
       "infl": 1.8574653938493155e-24
@@ -34,11 +36,13 @@
     "log10_B_mb_over_smbhb": 3.8535539329317974
   },
   "z_distance_sigma": {
+    "causal": -1.4835725887355633,
     "mb": 1.1354272228955153,
     "smbhb": 4.627426971736953,
     "infl": 6.373426846157673
   },
   "omega_gw_slope_5_minus_gamma": {
+    "causal_floor_gamma2": 3.0,
     "matter_bounce_gamma3": 2.0,
     "smbhb_gamma13_3": 0.666666666666667,
     "scale_invariant_tensors_gamma5": 0.0
@@ -62,11 +66,12 @@
   "official_nanograv_posterior_comparison": {
     "gamma_official_median": 3.2,
     "gamma_official_sigma_equiv": 0.364741641337386,
+    "z_causal_vs_official": -3.2900000000000005,
     "z_mb_vs_official": -0.5483333333333338,
     "z_smbhb_vs_official": 3.1072222222222208,
     "z_infl_vs_official": 4.935,
     "z_refit_vs_official": -1.1997839380554087
   },
   "REPRODUCED": true,
-  "wall_seconds": 0.01
+  "wall_seconds": 0.02
 }
