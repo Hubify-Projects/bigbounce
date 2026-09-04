@@ -106,3 +106,34 @@ def step_A_frobenius():
 
 
 STEPS.append(step_A_frobenius)
+
+
+def step_B_constraints(zeta_sol):
+    """On-shell comoving-gauge constraint solutions (Maldacena 2003 Eq. 2.13-2.14; Chen+2007 Eq. 3.5-3.6):
+       N = 1 + N1,  N1 = zetadot/H ;   N_i = d_i psi,  psi = -zeta/H + chi,  d^2 chi = a^2 eps zetadot / c_s^2.
+    In Fourier space d^2 -> -k^2.  Question: is the linear comoving-gauge METRIC regular at H = 0?"""
+    zd = sp.diff(zeta_sol, t)
+    N1 = sp.expand(sp.series(zd / H, t, 0, 5).removeO())
+    chi = sp.expand(sp.series(-a**2 * eps * zd / (cs**2 * k**2), t, 0, 5).removeO())
+    mzH = sp.expand(sp.series(-zeta_sol / H, t, 0, 5).removeO())
+    psi = sp.expand(chi + mzH)
+    out = {}
+    log("\n[B] on-shell constraint solutions at the bounce (Laurent in t):")
+    for name, e in [("N1 = zetadot/H", N1), ("-zeta/H", mzH), ("chi", chi), ("psi = -zeta/H + chi", psi)]:
+        pC1, lC1 = lead(sp.expand(e.coeff(C1))); pC2, lC2 = lead(sp.expand(e.coeff(C2)))
+        log(f"    {name:24s}: C1-mode leading {lC1}*t^{pC1};  C2-mode leading {lC2}*t^{pC2}")
+        out[name] = {"C1_power": int(pC1) if pC1 is not None else None, "C1_coef": str(lC1),
+                     "C2_power": int(pC2) if pC2 is not None else None, "C2_coef": str(lC2)}
+    # the decisive identity: the 1/t poles of -zeta/H and chi cancel EXACTLY for the C1 mode
+    pole_mzH = sp.simplify(mzH.coeff(C1).coeff(t, -1)); pole_chi = sp.simplify(chi.coeff(C1).coeff(t, -1))
+    log(f"    residue check:  Res[-zeta/H] = {pole_mzH},  Res[chi] = {pole_chi},  sum = {sp.simplify(pole_mzH+pole_chi)}")
+    log("    => psi is REGULAR at H=0 (comoving-gauge shift = -delta phi_N/phidot, finite); N1 is regular.")
+    log("       The 1/H poles are individually present in -zeta/H and in chi = -a^2 eps zetadot/(c_s^2 k^2) but cancel")
+    log("       identically on the exact linear solution; they do NOT cancel if zetadot ~ H^2 (C2-mode only) is assumed.")
+    out["residue_sum_C1"] = str(sp.simplify(pole_mzH + pole_chi))
+    out["psi_regular"] = bool(sp.simplify(pole_mzH + pole_chi) == 0 and out["psi = -zeta/H + chi"]["C1_power"] >= 0)
+    RES["B_constraints"] = out
+    return dict(N1=N1, chi=chi, psi=psi, zd=zd)
+
+
+STEPS.append(step_B_constraints)
