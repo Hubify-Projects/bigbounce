@@ -1,0 +1,342 @@
+{
+  "validation_USR": {
+    "f_NL": "5/2",
+    "status": "PASS",
+    "note": "bulk vertex sources scale as positive powers of eta (eps-suppressed) and drop; f_a + f_eta = 3/2 zeta^2"
+  },
+  "validation_attractor": "PASS (no O(k^0) super-Hubble source on a constant mode; the Maldacena O(eps) squeezed limit is a sub-Hubble/S^0 effect, as it must be)",
+  "matter_classical_O_k0": {
+    "per_vertex_A": {
+      "T1 zeta zeta'^2": "-3*(k1**3 + k2**3 + k3**3)/64",
+      "T2 zeta (d zeta)^2": "0",
+      "T3 zeta' d zeta . d chi~": "3*(k1**7*k2**2 + k1**7*k3**2 - k1**5*k2**4 - k1**5*k2**2*k3**2 - k1**5*k3**4 - k1**4*k2**5 - k1**4*k3**5 + k1**2*k2**7 - k1**2*k2**5*k3**2 - k1**2*k2**2*k3**5 + k1**2*k3**7 + k2**7*k3**2 - k2**5*k3**4 - k2**4*k3**5 + k2**2*k3**7)/(16*k1**2*k2**2*k3**2)",
+      "T4 zeta (d_i d_j chi~)^2": "9*(k1**9 - 3*k1**7*k2**2 - 3*k1**7*k3**2 - k1**6*k2**3 - k1**6*k3**3 + 3*k1**5*k2**4 - 2*k1**5*k2**2*k3**2 + 3*k1**5*k3**4 + 3*k1**4*k2**5 + k1**4*k2**3*k3**2 + k1**4*k2**2*k3**3 + 3*k1**4*k3**5 - k1**3*k2**6 + k1**3*k2**4*k3**2 + k1**3*k2**2*k3**4 - k1**3*k3**6 - 3*k1**2*k2**7 - 2*k1**2*k2**5*k3**2 + k1**2*k2**4*k3**3 + k1**2*k2**3*k3**4 - 2*k1**2*k2**2*k3**5 - 3*k1**2*k3**7 + k2**9 - 3*k2**7*k3**2 - k2**6*k3**3 + 3*k2**5*k3**4 + 3*k2**4*k3**5 - k2**3*k3**6 - 3*k2**2*k3**7 + k3**9)/(256*k1**2*k2**2*k3**2)",
+      "fa zeta zeta'/calH": "-3*(k1**3 + k2**3 + k3**3)/4",
+      "feta (eta_sr/4) zeta^2": "0",
+      "fb (eps/2calH)[...chi~]": "-9*(k1 - k2 - k3)*(k1 - k2 + k3)*(k1 + k2 - k3)*(k1 + k2 + k3)*(k1**3*k2**2 + k1**3*k3**2 + k1**2*k2**3 + k1**2*k3**3 + k2**3*k3**2 + k2**2*k3**3)/(128*k1**2*k2**2*k3**2)",
+      "fc gradient": "0"
+    },
+    "A_total_times_256_prodk2": "9*k1**9 + 3*k1**7*k2**2 + 3*k1**7*k3**2 - 27*k1**6*k2**3 - 27*k1**6*k3**3 + 15*k1**5*k2**4 - 198*k1**5*k2**2*k3**2 + 15*k1**5*k3**4 + 15*k1**4*k2**5 + 27*k1**4*k2**3*k3**2 + 27*k1**4*k2**2*k3**3 + 15*k1**4*k3**5 - 27*k1**3*k2**6 + 27*k1**3*k2**4*k3**2 + 27*k1**3*k2**2*k3**4 - 27*k1**3*k3**6 + 3*k1**2*k2**7 - 198*k1**2*k2**5*k3**2 + 27*k1**2*k2**4*k3**3 + 27*k1**2*k2**3*k3**4 - 198*k1**2*k2**2*k3**5 + 3*k1**2*k3**7 + 9*k2**9 + 3*k2**7*k3**2 - 27*k2**6*k3**3 + 15*k2**5*k3**4 + 15*k2**4*k3**5 - 27*k2**3*k3**6 + 3*k2**2*k3**7 + 9*k3**9",
+    "f_squeezed_mu": "15*mu**2/16 - 35/16",
+    "isoceles": "-35/16",
+    "monopole": "-15/8",
+    "mu2_coefficient": "15/16",
+    "equilateral": "-255/128"
+  },
+  "validation_vs_laneA_inin": {
+    "A_total_difference": "0",
+    "per_vertex_differences": {
+      "zeta zeta'^2 [eps^2 - eps^3/2]": "0",
+      "zeta (d zeta)^2 [eps^2]": "0",
+      "zeta' d zeta . d chi~ [-2 eps^2]": "0",
+      "zeta (d_i d_j chi~)^2 [eps^3/2]": "0",
+      "field redefinition": "0"
+    },
+    "status": "PASS: identical"
+  },
+  "squeezed_tagging": {
+    "pieces": {
+      "k2 sourced | (\"T1 zeta zeta'^2\", 0, 0)": {
+        "cls": "L",
+        "lead": "5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T1 zeta zeta'^2\", 0, 1)": {
+        "cls": "L",
+        "lead": "5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T1 zeta zeta'^2\", 1, 0)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T1 zeta zeta'^2\", 1, 1)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T1 zeta zeta'^2\", 2, 0)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T1 zeta zeta'^2\", 2, 1)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T3 zeta' d zeta . d chi~\", 0, 0)": {
+        "cls": "L",
+        "lead": "0",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T3 zeta' d zeta . d chi~\", 0, 1)": {
+        "cls": "X",
+        "lead": "15*mu**2/32 - 5/16",
+        "pole1": "-5*k*mu/16",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T3 zeta' d zeta . d chi~\", 1, 0)": {
+        "cls": "L",
+        "lead": "5/16",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T3 zeta' d zeta . d chi~\", 1, 1)": {
+        "cls": "X",
+        "lead": "15*mu**2/32",
+        "pole1": "-5*k*mu/16",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T3 zeta' d zeta . d chi~\", 2, 0)": {
+        "cls": "L",
+        "lead": "-5/16",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"T3 zeta' d zeta . d chi~\", 2, 1)": {
+        "cls": "L",
+        "lead": "0",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('T4 zeta (d_i d_j chi~)^2', 0, 0)": {
+        "cls": "K",
+        "lead": "15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('T4 zeta (d_i d_j chi~)^2', 0, 1)": {
+        "cls": "K",
+        "lead": "15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('T4 zeta (d_i d_j chi~)^2', 1, 0)": {
+        "cls": "L",
+        "lead": "-15/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('T4 zeta (d_i d_j chi~)^2', 1, 1)": {
+        "cls": "K",
+        "lead": "-15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('T4 zeta (d_i d_j chi~)^2', 2, 0)": {
+        "cls": "L",
+        "lead": "-15/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('T4 zeta (d_i d_j chi~)^2', 2, 1)": {
+        "cls": "K",
+        "lead": "-15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"fa zeta zeta'/calH\", 'redef', 0)": {
+        "cls": "L",
+        "lead": "-5/8",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('fb (eps/2calH)[...chi~]', 'redef', 0)": {
+        "cls": "L",
+        "lead": "0",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | (\"fa zeta zeta'/calH\", 'redef', 1)": {
+        "cls": "L",
+        "lead": "-5/8",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k2 sourced | ('fb (eps/2calH)[...chi~]', 'redef', 1)": {
+        "cls": "X",
+        "lead": "15/32 - 15*mu**2/32",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T1 zeta zeta'^2\", 0, 0)": {
+        "cls": "L",
+        "lead": "5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T1 zeta zeta'^2\", 0, 1)": {
+        "cls": "L",
+        "lead": "5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T1 zeta zeta'^2\", 1, 0)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T1 zeta zeta'^2\", 1, 1)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T1 zeta zeta'^2\", 2, 0)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T1 zeta zeta'^2\", 2, 1)": {
+        "cls": "L",
+        "lead": "-5/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T3 zeta' d zeta . d chi~\", 0, 0)": {
+        "cls": "L",
+        "lead": "0",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T3 zeta' d zeta . d chi~\", 0, 1)": {
+        "cls": "X",
+        "lead": "15*mu**2/32",
+        "pole1": "5*k*mu/16",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T3 zeta' d zeta . d chi~\", 1, 0)": {
+        "cls": "L",
+        "lead": "5/16",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T3 zeta' d zeta . d chi~\", 1, 1)": {
+        "cls": "X",
+        "lead": "15*mu**2/32 + 5/16",
+        "pole1": "5*k*mu/16",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T3 zeta' d zeta . d chi~\", 2, 0)": {
+        "cls": "L",
+        "lead": "-5/16",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"T3 zeta' d zeta . d chi~\", 2, 1)": {
+        "cls": "L",
+        "lead": "0",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('T4 zeta (d_i d_j chi~)^2', 0, 0)": {
+        "cls": "K",
+        "lead": "15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('T4 zeta (d_i d_j chi~)^2', 0, 1)": {
+        "cls": "K",
+        "lead": "15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('T4 zeta (d_i d_j chi~)^2', 1, 0)": {
+        "cls": "L",
+        "lead": "-15/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('T4 zeta (d_i d_j chi~)^2', 1, 1)": {
+        "cls": "K",
+        "lead": "-15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('T4 zeta (d_i d_j chi~)^2', 2, 0)": {
+        "cls": "L",
+        "lead": "-15/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('T4 zeta (d_i d_j chi~)^2', 2, 1)": {
+        "cls": "K",
+        "lead": "-15*mu**2/128",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"fa zeta zeta'/calH\", 'redef', 0)": {
+        "cls": "L",
+        "lead": "-5/8",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('fb (eps/2calH)[...chi~]', 'redef', 0)": {
+        "cls": "L",
+        "lead": "0",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | (\"fa zeta zeta'/calH\", 'redef', 1)": {
+        "cls": "L",
+        "lead": "-5/8",
+        "pole1": "0",
+        "pole2": "0"
+      },
+      "k3 sourced | ('fb (eps/2calH)[...chi~]', 'redef', 1)": {
+        "cls": "X",
+        "lead": "15/32 - 15*mu**2/32",
+        "pole1": "0",
+        "pole2": "0"
+      }
+    },
+    "class_L_f_mu": "-25/8",
+    "class_K_f_mu": "0",
+    "class_X_f_mu": "15*mu**2/16 + 15/16",
+    "class_S_f_mu": "0",
+    "K_trace_part": "0",
+    "K_shear_part": "0",
+    "isotropic_SU_representable_L_plus_traceK": "-25/8",
+    "X_monopole": "5/4",
+    "X_mu2": "15/16",
+    "total_minus_isoSU": "15*mu**2/16 + 15/16",
+    "pole_cancellation": "sum of 1/k_L and 1/k_L^2 poles over all classes = 0 (asserted)"
+  },
+  "translation_estimate": {
+    "kL_dot_xi_over_zetaL": "3*I/2",
+    "f_pure_translation": "15/8"
+  },
+  "deltaN_checks": {
+    "USR_vary_pi": "5/2",
+    "USR_vary_phi": "5/2",
+    "laneB_includes_N_of_phi_and_pi": true,
+    "note": "lane B varies u_i = x_i - x* (the momentum direction) on a flat initial slice; the phi_i direction is the non-growing time shift (its script, Step 3-4)",
+    "comoving_deltaN_general_eps": "-5"
+  },
+  "quadrupole": {
+    "in_in_mu2": "15/16",
+    "K_shear_mu2": "0",
+    "X_mu2": "15/16",
+    "laneC_projection_mu2": "15/8",
+    "ratio": "1/2"
+  },
+  "provenance": {
+    "script": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
+    "script_sha256": "299aa430248b40fbe36b08e936d272a092a96298b758de672f982da66dd401b7",
+    "wall_clock_seconds": 15.5,
+    "sympy": "1.14.0",
+    "python": "3.14.6",
+    "date": "2026-09-03"
+  }
+}
