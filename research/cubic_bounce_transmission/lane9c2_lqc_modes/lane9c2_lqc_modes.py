@@ -82,7 +82,12 @@ def _adiabatic_order4(Wspl, k, eta0, half=None, npts=801):
     Returns (mu0, dmu0, diagnostics) or (None, None, reason).
     """
     if half is None:
-        half = 0.25 * abs(eta0)
+        for h in (0.25, 0.10, 0.04, 0.015):
+            r = _adiabatic_order4(Wspl, k, eta0, half=h * abs(eta0), npts=npts)
+            if r[0] is not None:
+                r[2]["window_half_over_eta0"] = h
+                return r
+        return r
     e = np.linspace(eta0 - half, eta0 + half, npts)
     w2 = k * k - Wspl(e)
     if np.any(w2 <= 0):
@@ -114,7 +119,7 @@ def _adiabatic_order4(Wspl, k, eta0, half=None, npts=801):
     return mu0, dmu0, diag
 
 
-def _find_ad4_time(Wspl, bg, k, eta0, margin=4.0):
+def _find_ad4_time(Wspl, bg, k, eta0, margin=10.0):
     """Latest pre-bounce eta <= eta0 with k^2 >= margin * W(eta); None if there is none."""
     e = -np.geomspace(abs(eta0), 0.95 * bg["eta_far"], 4000)
     ok = k * k >= margin * Wspl(e)
@@ -159,13 +164,25 @@ class ModesIC:
                     self.ok = False
                     self.info.update({"defined": False, "reason": diag["reason"]})
                     return
-                mu0, dmu0, diag = _adiabatic_order4(Wspl, k, e_alt)
+                mu0, dmu0, diag2 = _adiabatic_order4(Wspl, k, e_alt)
                 if mu0 is None:
-                    self.ok = False
-                    self.info.update({"defined": False, "reason": diag["reason"]})
-                    return
-                e_i = e_alt
-                self.info["relocated"] = True
+                    diag = diag2
+                else:
+                    e_i = e_alt
+                    self.info["relocated"] = True
+            if mu0 is None:
+                # No 4th-order adiabatic vacuum exists at any finite pre-bounce time on
+                # this grid (the leg is super-Hubble throughout).  Fall back to the exact
+                # dust positive-frequency solution at eta -> -eta_far, which IS the
+                # adiabatic vacuum to all orders in that asymptotic region.  Recorded.
+                e_i = -eta_far
+                tau_i = e_i - bg["eta_off"]
+                u = k * tau_i
+                mu0 = np.exp(-1j * u) * (1 - 1j / u) / np.sqrt(2 * k)
+                dmu0 = (np.exp(-1j * u) * (-1j * k) * (1 - 1j / u)
+                        + np.exp(-1j * u) * (1j / (k * tau_i ** 2))) / np.sqrt(2 * k)
+                diag = {"defined": True, "fallback_far_past_exact_vacuum": True,
+                        "fallback_reason": diag.get("reason")}
             self.info["eta_start"] = float(e_i)
             self.info.update(diag)
         else:
