@@ -4,52 +4,251 @@
   "title": "Bounce theory",
   "question": "Does matter-dominated contraction produce a distinctive, reproducible primordial non-Gaussian amplitude?",
   "papers": [
-    { "paper": "P2", "role": "lead", "title": "f_NL forecast / exact matter-contraction non-Gaussianity (PRD)" },
-    { "paper": "P1A", "role": "support", "title": "Algebraic Cartan elimination (CQG Note)" },
-    { "paper": "P1B", "role": "support", "title": "namaster-proof: exact pseudo-Cl window inference and tamper-evident provenance (JORS)" }
+    {
+      "paper": "P2",
+      "role": "lead",
+      "title": "f_NL forecast / exact matter-contraction non-Gaussianity (PRD)"
+    },
+    {
+      "paper": "P1A",
+      "role": "support",
+      "title": "Algebraic Cartan elimination (CQG Note)"
+    },
+    {
+      "paper": "P1B",
+      "role": "support",
+      "title": "namaster-proof: exact pseudo-Cl window inference and tamper-evident provenance (JORS)"
+    }
   ],
   "experiments": [
-    { "id": "p2-vertex-check", "depends_on": [] },
-    { "id": "p2-g1-gradient-transmission", "depends_on": ["p2-vertex-check"] },
-    { "id": "p2-g1-dressedmetric-transmission", "depends_on": ["p2-g1-gradient-transmission"] },
-    { "id": "p2-a2-bounce-fnl-transmission", "depends_on": ["p2-g1-dressedmetric-transmission"] },
-    { "id": "p2-a2-lane-a-cubic-vertex-table", "depends_on": ["p2-a2-bounce-fnl-transmission", "p2-fnl-adjudication-inin-from-scratch"] },
-    { "id": "p2-a2-lane-b-numerical-inin", "depends_on": ["p2-a2-lane-a-cubic-vertex-table", "p2-a2-bounce-fnl-transmission"] },
-    { "id": "p2-a3-lane-9b-s2-regularisation", "depends_on": ["p2-a2-lane-a-cubic-vertex-table", "p2-a2-lane-b-numerical-inin"] },
-    { "id": "p2-a3-lane-9a-velocity-dip", "depends_on": ["p2-a2-bounce-fnl-transmission", "p2-a2-lane-b-numerical-inin"] },
-    { "id": "p2-g3-torsion-fourfermion-bound", "depends_on": ["p2-vertex-check"] },
-    { "id": "p2-honest-negative-inin", "depends_on": [] },
-    { "id": "p2-channel-native-fisher", "depends_on": ["p2-vertex-check"] },
-    { "id": "p1a-mcmc-dneff", "depends_on": [] },
-    { "id": "p1a-namaster-500mc-birefringence", "depends_on": [] },
-    { "id": "p1a-ntot-sensitivity-mc", "depends_on": [] },
-    { "id": "p1a-alp-prior-predictive", "depends_on": [] },
-    { "id": "p1b-sn-overlap-control-chains", "depends_on": ["p1a-mcmc-dneff"] },
-    { "id": "p1b-namaster-window-regen", "depends_on": ["p1a-namaster-500mc-birefringence"] },
-    { "id": "p2-fnl-adjudication-inin-from-scratch", "depends_on": [] },
-    { "id": "p2-fnl-second-method-deltan", "depends_on": [] },
-    { "id": "a3-2-fnl-bianchi-separate-universe", "depends_on": ["p2-fnl-adjudication-inin-from-scratch", "p2-fnl-second-method-deltan"] },
-    { "id": "p2-fnl-monopole-adjudication", "depends_on": ["p2-fnl-adjudication-inin-from-scratch", "p2-fnl-second-method-deltan", "a3-2-fnl-bianchi-separate-universe"] },
-    { "id": "a3-pbh-compaction-fnl", "depends_on": [] },
-    { "id": "a3-pbh-abundance-fnl", "depends_on": [] },
-    { "id": "a3-pta-gamma-reproduction", "depends_on": [] },
-    { "id": "a3-pta-injection-30bin-2026-09-02", "depends_on": [] },
-    { "id": "a3-survey-reach-fnl", "depends_on": [] },
-    { "id": "a3-1b-inlab-delta2-zeta", "depends_on": ["a3-pbh-compaction-fnl", "p2-a2-bounce-fnl-transmission"] },
-    { "id": "a3-3-sigw-nhz-from-lab-spectrum", "depends_on": ["a3-1b-inlab-delta2-zeta", "p2-a2-bounce-fnl-transmission", "a3-pta-gamma-reproduction"] },
-    { "id": "ledger9-c-abs-operator-map", "depends_on": ["p2-a2-lane-a-cubic-vertex-table", "a3-3-sigw-nhz-from-lab-spectrum", "a3-1b-inlab-delta2-zeta"] },
-    { "id": "ledger4-desi-dr1-lss-sanity", "depends_on": ["a3-survey-reach-fnl"] },
-    { "id": "ledger7-chiral-gw-delta-h", "depends_on": [] }
+    {
+      "id": "p2-vertex-check",
+      "depends_on": []
+    },
+    {
+      "id": "p2-g1-gradient-transmission",
+      "depends_on": [
+        "p2-vertex-check"
+      ]
+    },
+    {
+      "id": "p2-g1-dressedmetric-transmission",
+      "depends_on": [
+        "p2-g1-gradient-transmission"
+      ]
+    },
+    {
+      "id": "p2-a2-bounce-fnl-transmission",
+      "depends_on": [
+        "p2-g1-dressedmetric-transmission"
+      ]
+    },
+    {
+      "id": "p2-a2-lane-a-cubic-vertex-table",
+      "depends_on": [
+        "p2-a2-bounce-fnl-transmission",
+        "p2-fnl-adjudication-inin-from-scratch"
+      ]
+    },
+    {
+      "id": "p2-a2-lane-b-numerical-inin",
+      "depends_on": [
+        "p2-a2-lane-a-cubic-vertex-table",
+        "p2-a2-bounce-fnl-transmission"
+      ]
+    },
+    {
+      "id": "p2-a3-lane-9b-s2-regularisation",
+      "depends_on": [
+        "p2-a2-lane-a-cubic-vertex-table",
+        "p2-a2-lane-b-numerical-inin"
+      ]
+    },
+    {
+      "id": "p2-a3-lane-9a-velocity-dip",
+      "depends_on": [
+        "p2-a2-bounce-fnl-transmission",
+        "p2-a2-lane-b-numerical-inin"
+      ]
+    },
+    {
+      "id": "p2-g3-torsion-fourfermion-bound",
+      "depends_on": [
+        "p2-vertex-check"
+      ]
+    },
+    {
+      "id": "p2-honest-negative-inin",
+      "depends_on": []
+    },
+    {
+      "id": "p2-channel-native-fisher",
+      "depends_on": [
+        "p2-vertex-check"
+      ]
+    },
+    {
+      "id": "p1a-mcmc-dneff",
+      "depends_on": []
+    },
+    {
+      "id": "p1a-namaster-500mc-birefringence",
+      "depends_on": []
+    },
+    {
+      "id": "p1a-ntot-sensitivity-mc",
+      "depends_on": []
+    },
+    {
+      "id": "p1a-alp-prior-predictive",
+      "depends_on": []
+    },
+    {
+      "id": "p1b-sn-overlap-control-chains",
+      "depends_on": [
+        "p1a-mcmc-dneff"
+      ]
+    },
+    {
+      "id": "p1b-namaster-window-regen",
+      "depends_on": [
+        "p1a-namaster-500mc-birefringence"
+      ]
+    },
+    {
+      "id": "p2-fnl-adjudication-inin-from-scratch",
+      "depends_on": []
+    },
+    {
+      "id": "p2-fnl-second-method-deltan",
+      "depends_on": []
+    },
+    {
+      "id": "a3-2-fnl-bianchi-separate-universe",
+      "depends_on": [
+        "p2-fnl-adjudication-inin-from-scratch",
+        "p2-fnl-second-method-deltan"
+      ]
+    },
+    {
+      "id": "p2-fnl-monopole-adjudication",
+      "depends_on": [
+        "p2-fnl-adjudication-inin-from-scratch",
+        "p2-fnl-second-method-deltan",
+        "a3-2-fnl-bianchi-separate-universe"
+      ]
+    },
+    {
+      "id": "a3-pbh-compaction-fnl",
+      "depends_on": []
+    },
+    {
+      "id": "a3-pbh-abundance-fnl",
+      "depends_on": []
+    },
+    {
+      "id": "a3-pta-gamma-reproduction",
+      "depends_on": []
+    },
+    {
+      "id": "a3-pta-injection-30bin-2026-09-02",
+      "depends_on": []
+    },
+    {
+      "id": "a3-survey-reach-fnl",
+      "depends_on": []
+    },
+    {
+      "id": "a3-1b-inlab-delta2-zeta",
+      "depends_on": [
+        "a3-pbh-compaction-fnl",
+        "p2-a2-bounce-fnl-transmission"
+      ]
+    },
+    {
+      "id": "a3-3-sigw-nhz-from-lab-spectrum",
+      "depends_on": [
+        "a3-1b-inlab-delta2-zeta",
+        "p2-a2-bounce-fnl-transmission",
+        "a3-pta-gamma-reproduction"
+      ]
+    },
+    {
+      "id": "ledger9-c-abs-operator-map",
+      "depends_on": [
+        "p2-a2-lane-a-cubic-vertex-table",
+        "a3-3-sigw-nhz-from-lab-spectrum",
+        "a3-1b-inlab-delta2-zeta"
+      ]
+    },
+    {
+      "id": "ledger4-desi-dr1-lss-sanity",
+      "depends_on": [
+        "a3-survey-reach-fnl"
+      ]
+    },
+    {
+      "id": "ledger7-chiral-gw-delta-h",
+      "depends_on": []
+    },
+    {
+      "id": "ledger9-c2-lqc-exact-modes-inin",
+      "depends_on": [
+        "ledger9-c-abs-operator-map",
+        "p2-a2-lane-a-cubic-vertex-table",
+        "a3-1b-inlab-delta2-zeta"
+      ]
+    }
   ],
   "external_data": [
-    { "name": "Planck PR4/PR3 CMB likelihoods (via Cobaya)", "link": "https://cobaya.readthedocs.io/en/latest/likelihood_planck.html", "kind": "likelihood", "license": null },
-    { "name": "BAO compilations (via Cobaya)", "link": "https://cobaya.readthedocs.io/en/latest/likelihood_bao.html", "kind": "likelihood", "license": null },
-    { "name": "Pantheon+ supernova compilation", "link": "https://github.com/PantheonPlusSH0ES/DataRelease", "kind": "dataset", "license": null },
-    { "name": "DES-SN5YR supernova compilation", "link": "https://github.com/des-science/DES-SN5YR", "kind": "dataset", "license": null },
-    { "name": "Heinrich et al. 2023 SPHEREx forecast covariance (Cov_B) — NOT publicly released by original authors; DP2-26/DP2-29 gap", "link": "not-publicly-released", "kind": "covariance-matrix", "license": null },
-    { "name": "P1A archive (algebraic Cartan elimination manuscript + data)", "link": "https://doi.org/10.5281/zenodo.21481838", "kind": "zenodo-archive", "license": "CC-BY-4.0" },
-    { "name": "P1B namaster-proof software archive", "link": "https://doi.org/10.5281/zenodo.21481753", "kind": "zenodo-archive", "license": null },
-    { "name": "P1B namaster-proof paper archive", "link": "https://doi.org/10.5281/zenodo.21481842", "kind": "zenodo-archive", "license": null }
+    {
+      "name": "Planck PR4/PR3 CMB likelihoods (via Cobaya)",
+      "link": "https://cobaya.readthedocs.io/en/latest/likelihood_planck.html",
+      "kind": "likelihood",
+      "license": null
+    },
+    {
+      "name": "BAO compilations (via Cobaya)",
+      "link": "https://cobaya.readthedocs.io/en/latest/likelihood_bao.html",
+      "kind": "likelihood",
+      "license": null
+    },
+    {
+      "name": "Pantheon+ supernova compilation",
+      "link": "https://github.com/PantheonPlusSH0ES/DataRelease",
+      "kind": "dataset",
+      "license": null
+    },
+    {
+      "name": "DES-SN5YR supernova compilation",
+      "link": "https://github.com/des-science/DES-SN5YR",
+      "kind": "dataset",
+      "license": null
+    },
+    {
+      "name": "Heinrich et al. 2023 SPHEREx forecast covariance (Cov_B) \u2014 NOT publicly released by original authors; DP2-26/DP2-29 gap",
+      "link": "not-publicly-released",
+      "kind": "covariance-matrix",
+      "license": null
+    },
+    {
+      "name": "P1A archive (algebraic Cartan elimination manuscript + data)",
+      "link": "https://doi.org/10.5281/zenodo.21481838",
+      "kind": "zenodo-archive",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "name": "P1B namaster-proof software archive",
+      "link": "https://doi.org/10.5281/zenodo.21481753",
+      "kind": "zenodo-archive",
+      "license": null
+    },
+    {
+      "name": "P1B namaster-proof paper archive",
+      "link": "https://doi.org/10.5281/zenodo.21481842",
+      "kind": "zenodo-archive",
+      "license": null
+    }
   ],
   "full_reproduction": {
     "est_wall_clock": "~1-2 days sequential; dominated by the P1A delta-Neff MCMC (~12-18h to R-1<0.01) and the P1B SN-overlap control chains (several hours per chain pair). All 6 P2 derivation/analysis scripts are minutes-scale and independently parallelizable; the 500-MC NaMaster birefringence recovery (~1.5-2h) and NaMaster window regen (~5-15 min) can run alongside the MCMC legs.",

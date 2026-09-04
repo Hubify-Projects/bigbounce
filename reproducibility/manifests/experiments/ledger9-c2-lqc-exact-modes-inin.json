@@ -1,0 +1,135 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger9-c2-lqc-exact-modes-inin",
+  "title": "Ledger row 9 (A3-1e) lane 9c-2 - scheme-S1 bounce-window in-in integral (V2-V7 + R1-R4) evaluated with EXACT dressed-metric mode functions on the LQC-dust background over k*eta_B in [0.1, 10], with the initial state varied (lab adiabatic contraction vacuum, ABS adiabatic-order-zero vacuum, 4th-order adiabatic vacuum), testing whether the Agullo-Bolliet-Sreenath 2017 f_NL enhancement near k*eta_B ~ 1 appears in the lab's model",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Agullo, Bolliet & Sreenath 2017 - Non-Gaussianity in loop quantum cosmology (H^(3) Eq. 23; dressed metric Eqs. 39-42; |f_NL| ~ 1e3 plateau sec. IV B and VII; exp(-alpha k_t/k_LQC) decay sec. V; adiabatic-order-zero initial state sec. IV F)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1712.08148",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Maldacena 2003 - third-order action ABS's H^(3) Legendre-transforms into",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/astro-ph/0210603",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chen, Huang, Kachru & Shiu 2007 - cubic-action coefficients used for the epsilon-scaling estimate",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/hep-th/0605045",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lane (a) cubic vertex table V1-V7 + R1-R4 (scheme S1 coefficients and kernels)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lane (b) numerical in-in machinery and its LQC result at k*eta_B = 1e-3 (-0.1043113297), the gate target of this lane",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lane (b) results.json (backgrounds.lqc.k_scan, read by the gate at run time)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/results.json",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A2 linear-transmission module - LQC-dust background, dressed geometric potential a''/a = x^(1/3)(1/6 + x/3), matter-basis projection, exact dust adiabatic vacuum",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lane 9c - ABS operator map, k_LQC*eta_B = 1.060146, decay 1.830229 per k*eta_B, 408 sigma PBH tail",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A3-1b in-lab Delta^2_zeta ~ 1e-9 and the 7.0 dex PBH-band deficit",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.py",
+      "entrypoint": "python3 research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.py",
+      "sha256": "5543eea94832c9ff6fc66746fdc281d430b0e8ba5e44831d46d827956378c5bb"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy + scipy (solve_ivp DOP853, CubicSpline, simpson) + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "~140 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~3 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic: no RNG, no network, no data files. The script imports lane (b)'s vertex set, kernels and in-in conventions verbatim and A2's LQC-dust background; only the mode-function initial state and the k-range are new. Conventions: kappa = 1, a_B = 1, rho_c = 1, k*eta_B = k*eta_B with eta_B the conformal half-width of the NEC-violating window; scheme S1 (z = a, eps_eff = 1/2, c_s = 1); f_NL = (5/6) B / (P1P2 + P1P3 + P2P3); squeezed isoceles k1 = 0.02 k unless the equilateral block is read."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_lqc_modes.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_growth_factor.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/lane9c2_dfnl_bounce.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9c2_lqc_modes/LANE9C2_LQC_MODES_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) gate.passed is true and gate.rel_vs_laneB <= 1e-3 (measured 2.43e-11: the exact-mode pipeline reproduces lane (b)'s LQC total -0.1043113297 at k*eta_B = 1e-3); (b) gate.rel_V2_vs_closed == 3.04e-4 +/- 1e-5 (V2 alone vs the lane (a) closed form -(5/24) rho_B = -5/48) while gate.rel_vs_analytic == 1.389e-3 for the total, the difference being the genuine V3+V4+V6+V7 + R1-R4 content; (c) every mode has Wronskian Im(mu* mu') = -0.5 to 1e-9; (d) modes['0.1']['S-lab'].power_modification == 3.948e4 +/- 1%, modes['1']['S-lab'].power_modification == 1.0950 +/- 1e-3, and modes['3']['S-lab'].power_modification == 1.000001 +/- 1e-5 - the linear bounce imprint switches off within a factor 3 above k_LQC; (e) the state-dependence of dfnl[k][state].total is <= 13% across S-lab / S-ABS0 / S-ad4 at every k in K_SCAN, and eta0_systematic spans <= 15%; (f) |dfnl| stays in 0.3-7 (squeezed) across eta_star_systematic for every k in [0.1, 10], i.e. >= 2 dex below the ABS 1e3 plateau at k*eta_B ~ 1; (g) pbh_tail reproduces lane 9c's anchor: the |f_NL| = 1e3, zeta_c = 0.1 NG-term-only case gives 408.2 sigma.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e) - the computation named in lane 9c sec. 5",
+    "research/cubic_bounce_transmission/lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md (predecessor lane; its verdict was NOT DETERMINABLE WITHOUT A COMPUTATION, and named this one)",
+    "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)"
+  ]
+}
