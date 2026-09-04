@@ -1,0 +1,133 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-1b-inlab-delta2-zeta",
+  "title": "A3-1b - the lab's own matter-bounce curvature power spectrum Delta^2_zeta(k) at PBH scales: delivered vs required amplitude in the compaction-function PBH criterion, and the COBE/FIRAS mu-distortion check on the early-SMBH seed amplitude",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Planck 2018 cosmological parameters (A_s = 2.1e-9 at k_* = 0.05 Mpc^-1; n_s = 0.9649 +/- 0.0042)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1807.06209",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai, Easson & Brandenberger 2012 - matter-bounce spectrum and tilt (n_s - 1 = 12w/(1+w))",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1206.2382",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - matter bounce spectrum, tilt, bounce growth",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1508.04141",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Agullo, Bolliet & Sreenath 2017 - LQC bounce enhancement of non-Gaussianity (checked, not imported)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1712.08148",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chen, Zhu, Yan, Wang & Cai 2022/2023 (JCAP 01 (2023) 015) - PBH enhancement from non-linear processes around the bounce point (checked, not imported)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2207.14532",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Papanikolaou, Banerjee, Cai, Capozziello & Saridakis 2024 - PBHs by direct collapse in the contracting phase (recorded as new open item A3-1e)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2404.03779",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chluba, Erickcek & Ben-Dayan 2012 - mu-distortion window; Fixsen et al. 1996 COBE/FIRAS |mu| < 9e-5",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1203.2681",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025 - compaction-function PBH formalism implemented by the imported script",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2409.18983",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A3-1 compaction-function PBH machinery (imported unmodified; only its module-level spectrum function is swapped and restored)",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A2 linear bounce transmission - eta_B per background, scale-independence of the transfer for k eta_B << 1",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.py",
+      "entrypoint": "cd research/track_a3_multichannel && python3 inlab_delta2_zeta_2026-09-03.py",
+      "sha256": "aca88410c4eff683dcd817e13a807c15eeac3a81d1b0883978af1328914278fe"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy 2.5.1 + scipy + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-03",
+    "wall_clock": "170 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~3 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no data files, no network). Must be run from research/track_a3_multichannel/ so that 'import pbh_compaction_fnl' resolves. The committed A3-1 script is imported, never edited: the run swaps only its module-level delta2_zeta and restores it (the script asserts the restore before writing outputs), so no A3-1 result changes. The lognormal-vs-power-law change of shape means 'A' here is Delta^2_zeta AT k_p, not a lognormal integrated amplitude - the two are not numerically interchangeable."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/outputs/inlab_delta2_zeta_2026-09-03.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) k-mass anchor check k = 2.9e5 Mpc^-1 -> M_H = 166.18 Msun, i.e. M_PBH = gamma M_H = 33.2 Msun at gamma = 0.2 (literature ~30 Msun); (b) spectrum.branches['MB_anchored_ns0.9649'].implied_w_matter_bounce == -0.002920 +/- 1e-6 and Delta^2_zeta(1e13 Mpc^-1) == 6.611e-10 (rel. 1e-3); (c) per_mass_scale['M_H=1e20 g (asteroid window; the A3-1 mass)'] has k_p == 1.667e13 Mpc^-1, delivered == 6.493e-10, A_required(f_PBH=1e-3, -35/16) == 0.00636 and ratio == 9.79e6 (rel. 1e-2); (d) f_PBH_at_delivered_amplitude == 0.0 exactly at every mass and every f_NL; (e) threshold_sensitivity ratio A(-35/16)/A(-35/8) in [1.84, 1.90] for C_th in {0.4,0.5,0.6}; (f) ir_cutoff_sensitivity spans gamma_cr 0.267->0.630 and A(-35/16) 0.0064->0.0265 (factor <= 4.2); (g) mu_distortion.branches: mu == 1.654e-8 (ns=0.9649) and 2.242e-8 (pure dust), both ALLOWED at 1.8e-4 and 2.5e-4 of the FIRAS bound; (h) mu_distortion.required_amplitude_check.seeds: broadband mu ~ 1.6e-1 (~1.8e3 x FIRAS) for all four seed masses, narrow-peak mu 1.90e-6 / 3.18e-4 / 5.18e-3 / 1.89e-2 for 1e3/1e4/1e5/1e6 Msun; (i) verdict.does_the_lab_spectrum_make_PBHs == 'NO' with margin_log10_in_amplitude == 6.99 +/- 0.01.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 3 (sub-item A3-1b) and item 6 (early-SMBH discriminator, previously BLOCKED on this result)",
+    "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md section 8 (A3-1b opened there; deviation D1 is what this closes)",
+    "research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md section 4 (validity domain k eta_B << 1)",
+    "directive Q2 (per-experiment reproducibility manifests), directive Q1 (pure-contribution framing: the result is stated as a null, not as a redo narrative), directive R1 (ledger-first)"
+  ]
+}
