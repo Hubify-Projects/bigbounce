@@ -1,0 +1,346 @@
+==============================================================================
+Lane (b): numerical bounce-window in-in evaluation of Delta f_NL^bounce  (2026-09-03)
+==============================================================================
+scheme S1 (geometric, z = a, eps_eff = 1/2, c_s = 1); contraction value -35/16 is INPUT
+
+[gate] local redefinition F zeta^2 -> f_NL = 0.6166666667 vs (5/3)F = 0.6166666667  (diff 0.00e+00)
+[gate] triangle closure sum_j k_i.k_j = 0: max residual 4.41e-17
+
+==========================================================================
+[Quintin2015-type]  eta_B=0.449601  I_inf=0.557352  A=1.208125  rho_B=0.669989  T_fNL=0.165005  eta_far=121.3
+  k eta_B = 0.001  (k = 0.0022242, k_L = 4.4484e-05)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.395857e-01   [closed-form modes -1.395903e-01]
+     V3: +2.131529e-07   [closed-form modes +2.131675e-07]
+     V4: -6.447369e-05   [closed-form modes -6.442858e-05]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +8.059212e-06   [closed-form modes +8.053573e-06]
+     V7: +7.337721e-06   [closed-form modes +7.335996e-06]
+     R1: +0.000000e+00   (boundary, at eta_* = 50 eta_B)
+     R2: -1.786430e-04   (boundary, at eta_* = 50 eta_B)
+     R3: -1.111288e-07   (boundary, at eta_* = 50 eta_B)
+     R4: -5.148915e-06   (boundary, at eta_* = 50 eta_B)
+     bulk sum = -0.139635   redef sum = -1.839031e-04   TOTAL Delta f_NL^bounce = -0.139818   [eta_*=50 eta_B, k eta_*=0.050, J_*/I_inf=0.99997, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.139581; numeric V2 = -0.139586  (rel 3.30e-05)
+  k eta_B = 0.003  (k = 0.0066726, k_L = 0.00013345)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.397889e-01   [closed-form modes -1.397950e-01]
+     V3: +1.917800e-06   [closed-form modes +1.917912e-06]
+     V4: -2.182300e-04   [closed-form modes -2.179439e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +2.727875e-05   [closed-form modes +2.724299e-05]
+     V7: +1.374844e-05   [closed-form modes +1.373673e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 16.6667 eta_B)
+     R2: +7.133635e-04   (boundary, at eta_* = 16.6667 eta_B)
+     R3: -1.234754e-07   (boundary, at eta_* = 16.6667 eta_B)
+     R4: -1.197069e-04   (boundary, at eta_* = 16.6667 eta_B)
+     bulk sum = -0.139964   redef sum = +5.935331e-04   TOTAL Delta f_NL^bounce = -0.139371   [eta_*=16.6667 eta_B, k eta_*=0.050, J_*/I_inf=0.99923, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.139581; numeric V2 = -0.139789  (rel 1.49e-03)
+  k eta_B = 0.01  (k = 0.022242, k_L = 0.00044484)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.404137e-01   [closed-form modes -1.404350e-01]
+     V3: +2.129052e-05   [closed-form modes +2.128937e-05]
+     V4: -7.030219e-04   [closed-form modes -6.982514e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +8.787773e-05   [closed-form modes +8.728142e-05]
+     V7: +3.396085e-05   [closed-form modes +3.376287e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: +2.742589e-03   (boundary, at eta_* = 10 eta_B)
+     R3: -5.457852e-07   (boundary, at eta_* = 10 eta_B)
+     R4: -4.774341e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.140974   redef sum = +2.264609e-03   TOTAL Delta f_NL^bounce = -0.138709   [eta_*=10 eta_B, k eta_*=0.100, J_*/I_inf=0.99695, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.139581; numeric V2 = -0.140414  (rel 5.97e-03)
+  k eta_B = 0.03  (k = 0.066726, k_L = 0.0013345)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.402789e-01   [closed-form modes -1.404350e-01]
+     V3: +1.918036e-04   [closed-form modes +1.916044e-04]
+     V4: -7.412604e-04   [closed-form modes -6.982515e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +9.265755e-05   [closed-form modes +8.728144e-05]
+     V7: +3.554899e-05   [closed-form modes +3.376287e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -5.905672e-03   (boundary, at eta_* = 10 eta_B)
+     R3: -4.911312e-06   (boundary, at eta_* = 10 eta_B)
+     R4: -4.756921e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.140700   redef sum = -6.386275e-03   TOTAL Delta f_NL^bounce = -0.147086   [eta_*=10 eta_B, k eta_*=0.300, J_*/I_inf=0.99695, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.139581; numeric V2 = -0.140279  (rel 5.00e-03)
+  k eta_B = 0.1  (k = 0.22242, k_L = 0.0044484)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.386955e-01   [closed-form modes -1.404351e-01]
+     V3: +2.155365e-03   [closed-form modes +2.128939e-03]
+     V4: -1.100504e-03   [closed-form modes -6.984885e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +1.375629e-04   [closed-form modes +8.731106e-05]
+     V7: +5.045870e-05   [closed-form modes +3.377274e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -1.080697e-01   (boundary, at eta_* = 10 eta_B)
+     R3: -5.446971e-05   (boundary, at eta_* = 10 eta_B)
+     R4: -4.555308e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.137453   redef sum = -1.085797e-01   TOTAL Delta f_NL^bounce = -0.246032   [eta_*=10 eta_B, k eta_*=1.000, J_*/I_inf=0.99695, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.139581; numeric V2 = -0.138696  (rel 6.34e-03)
+  k eta_B = 0.3  (k = 0.66726, k_L = 0.013345)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: -0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.180297e-01   [closed-form modes -1.404924e-01]
+     V3: +2.186674e-02   [closed-form modes +1.916833e-02]
+     V4: +4.369242e-03   [closed-form modes -8.710308e-04]
+     V5: -0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: -5.461552e-04   [closed-form modes +1.088788e-04]
+     V7: -1.780450e-04   [closed-form modes +4.096104e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -1.656730e+00   (boundary, at eta_* = 10 eta_B)
+     R3: -4.868084e-04   (boundary, at eta_* = 10 eta_B)
+     R4: -2.145378e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.092518   redef sum = -1.657431e+00   TOTAL Delta f_NL^bounce = -1.749949   [eta_*=10 eta_B, k eta_*=3.000, J_*/I_inf=0.99695, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.139581; numeric V2 = -0.118030  (rel 1.54e-01)
+
+  [test] eta_*-independence (k eta_B = 0.001); bulk over [-eta_B, eta_*] + redefinition at eta_*
+     eta_* =     2 eta_B (k eta_* = 0.002) : bulk -0.337449  redef +1.343e-01  total -0.203146
+     eta_* =     5 eta_B (k eta_* = 0.005) : bulk -0.332709  redef +1.906e-02  total -0.313650
+     eta_* =    10 eta_B (k eta_* = 0.010) : bulk -0.332046  redef +3.332e-03  total -0.328714
+     eta_* =    20 eta_B (k eta_* = 0.020) : bulk -0.331913  redef +4.659e-04  total -0.331447
+     eta_* =    50 eta_B (k eta_* = 0.050) : bulk -0.331802  redef -1.839e-04  total -0.331986
+     eta_* =   150 eta_B (k eta_* = 0.150) : bulk -0.330954  redef -1.911e-03  total -0.332866
+     => fractional spread of the total over eta_*: 4.226e-01 (all), 1.253e-02 for eta_* >= 10 eta_B
+  [test] window independence (bounce-window edges)
+     [-0.8,0.8] eta_B : bulk -0.119583   V2 -0.119541
+     [-1,1] eta_B : bulk -0.139635   V2 -0.139586
+     [-1.5,1.5] eta_B : bulk -0.169528   V2 -0.169461
+     [-2,2] eta_B : bulk -0.184338   V2 -0.184261
+     [-3,3] eta_B : bulk -0.197353   V2 -0.197268
+  [test] step-size convergence of the bulk integral
+     npts =   1001 : bulk -0.1396345820
+     npts =   2001 : bulk -0.1396345654
+     npts =   4001 : bulk -0.1396345570
+     npts =   8001 : bulk -0.1396345529
+     npts =  16001 : bulk -0.1396345508
+     => last-halving relative change 1.49e-08
+  [S2] effective-fluid V6+V7 bounce-window integral vs d_cut: log-log slope -1.0050  (divergence, no regulated number quoted)
+
+==========================================================================
+[LQC-effective-dust]  eta_B=1.060146  I_inf=1.813798  A=0.083333  rho_B=0.500000  T_fNL=0.250000  eta_far=309.4
+  k eta_B = 0.001  (k = 0.00094327, k_L = 1.8865e-05)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.041984e-01   [closed-form modes -1.041987e-01]
+     V3: +3.230395e-07   [closed-form modes +3.230381e-07]
+     V4: -6.702446e-05   [closed-form modes -6.688832e-05]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +8.378057e-06   [closed-form modes +8.361040e-06]
+     V7: +6.264503e-06   [closed-form modes +6.258841e-06]
+     R1: +0.000000e+00   (boundary, at eta_* = 50 eta_B)
+     R2: -3.669249e-05   (boundary, at eta_* = 50 eta_B)
+     R3: -1.157143e-07   (boundary, at eta_* = 50 eta_B)
+     R4: -2.402750e-05   (boundary, at eta_* = 50 eta_B)
+     bulk sum = -0.104250   redef sum = -6.083570e-05   TOTAL Delta f_NL^bounce = -0.104311   [eta_*=50 eta_B, k eta_*=0.050, J_*/I_inf=0.99985, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.104167; numeric V2 = -0.104198  (rel 3.04e-04)
+  k eta_B = 0.003  (k = 0.0028298, k_L = 5.6596e-05)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.048295e-01   [closed-form modes -1.048318e-01]
+     V3: +2.905589e-06   [closed-form modes +2.905505e-06]
+     V4: -5.430226e-04   [closed-form modes -5.419764e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +6.787783e-05   [closed-form modes +6.774705e-05]
+     V7: +2.611086e-05   [closed-form modes +2.606736e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 16.6667 eta_B)
+     R2: +3.713624e-03   (boundary, at eta_* = 16.6667 eta_B)
+     R3: -1.382454e-07   (boundary, at eta_* = 16.6667 eta_B)
+     R4: -4.983972e-04   (boundary, at eta_* = 16.6667 eta_B)
+     bulk sum = -0.105276   redef sum = +3.215088e-03   TOTAL Delta f_NL^bounce = -0.102061   [eta_*=16.6667 eta_B, k eta_*=0.050, J_*/I_inf=0.99682, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.104167; numeric V2 = -0.104829  (rel 6.36e-03)
+  k eta_B = 0.01  (k = 0.0094327, k_L = 0.00018865)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.065729e-01   [closed-form modes -1.065943e-01]
+     V3: +3.223501e-05   [closed-form modes +3.222566e-05]
+     V4: -1.882661e-03   [closed-form modes -1.866476e-03]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +2.353326e-04   [closed-form modes +2.333095e-04]
+     V7: +8.196490e-05   [closed-form modes +8.129150e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: +1.323078e-02   (boundary, at eta_* = 10 eta_B)
+     R3: -6.511587e-07   (boundary, at eta_* = 10 eta_B)
+     R4: -1.813385e-03   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.108106   redef sum = +1.141674e-02   TOTAL Delta f_NL^bounce = -0.096689   [eta_*=10 eta_B, k eta_*=0.100, J_*/I_inf=0.98847, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.104167; numeric V2 = -0.106573  (rel 2.31e-02)
+  k eta_B = 0.03  (k = 0.028298, k_L = 0.00056596)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.064001e-01   [closed-form modes -1.065943e-01]
+     V3: +2.907866e-04   [closed-form modes +2.900310e-04]
+     V4: -2.009210e-03   [closed-form modes -1.866479e-03]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +2.511513e-04   [closed-form modes +2.333098e-04]
+     V7: +8.722992e-05   [closed-form modes +8.129163e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: +2.999663e-03   (boundary, at eta_* = 10 eta_B)
+     R3: -5.859599e-06   (boundary, at eta_* = 10 eta_B)
+     R4: -1.811325e-03   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.107780   redef sum = +1.182479e-03   TOTAL Delta f_NL^bounce = -0.106598   [eta_*=10 eta_B, k eta_*=0.300, J_*/I_inf=0.98847, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.104167; numeric V2 = -0.106400  (rel 2.14e-02)
+  k eta_B = 0.1  (k = 0.094327, k_L = 0.0018865)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.042658e-01   [closed-form modes -1.065957e-01]
+     V3: +3.316678e-03   [closed-form modes +3.222611e-03]
+     V4: -3.123743e-03   [closed-form modes -1.870806e-03]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +3.904679e-04   [closed-form modes +2.338508e-04]
+     V7: +1.335791e-04   [closed-form modes +8.147191e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -1.186715e-01   (boundary, at eta_* = 10 eta_B)
+     R3: -6.498642e-05   (boundary, at eta_* = 10 eta_B)
+     R4: -1.787402e-03   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.103549   redef sum = -1.205239e-01   TOTAL Delta f_NL^bounce = -0.224073   [eta_*=10 eta_B, k eta_*=1.000, J_*/I_inf=0.98847, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.104167; numeric V2 = -0.104266  (rel 9.51e-04)
+  k eta_B = 0.3  (k = 0.28298, k_L = 0.0056596)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: -0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -5.923522e-02   [closed-form modes -1.076243e-01]
+     V3: +4.014481e-02   [closed-form modes +2.929061e-02]
+     V4: +2.383496e-02   [closed-form modes -4.991935e-03]
+     V5: -0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: -2.979370e-03   [closed-form modes +6.239918e-04]
+     V7: -9.907517e-04   [closed-form modes +2.115012e-04]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -2.336978e+00   (boundary, at eta_* = 10 eta_B)
+     R3: -5.807608e-04   (boundary, at eta_* = 10 eta_B)
+     R4: -1.463801e-03   (boundary, at eta_* = 10 eta_B)
+     bulk sum = +0.000774   redef sum = -2.339023e+00   TOTAL Delta f_NL^bounce = -2.338248   [eta_*=10 eta_B, k eta_*=3.000, J_*/I_inf=0.98847, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.104167; numeric V2 = -0.059235  (rel 4.31e-01)
+
+  [test] eta_*-independence (k eta_B = 0.001); bulk over [-eta_B, eta_*] + redefinition at eta_*
+     eta_* =     2 eta_B (k eta_* = 0.002) : bulk -0.382628  redef +3.272e-01  total -0.055464
+     eta_* =     5 eta_B (k eta_* = 0.005) : bulk -0.373606  redef +6.069e-02  total -0.312915
+     eta_* =    10 eta_B (k eta_* = 0.010) : bulk -0.371661  redef +1.268e-02  total -0.358982
+     eta_* =    20 eta_B (k eta_* = 0.020) : bulk -0.371210  redef +2.110e-03  total -0.369100
+     eta_* =    50 eta_B (k eta_* = 0.050) : bulk -0.371033  redef -6.084e-05  total -0.371094
+     eta_* =   150 eta_B (k eta_* = 0.150) : bulk -0.370172  redef -1.932e-03  total -0.372104
+     => fractional spread of the total over eta_*: 1.033e+00 (all), 3.567e-02 for eta_* >= 10 eta_B
+  [test] window independence (bounce-window edges)
+     [-0.8,0.8] eta_B : bulk -0.087688   V2 -0.087644
+     [-1,1] eta_B : bulk -0.104250   V2 -0.104198
+     [-1.5,1.5] eta_B : bulk -0.135849   V2 -0.135781
+     [-2,2] eta_B : bulk -0.156684   V2 -0.156606
+     [-3,3] eta_B : bulk -0.179919   V2 -0.179829
+  [test] step-size convergence of the bulk integral
+     npts =   1001 : bulk -0.1042504940
+     npts =   2001 : bulk -0.1042504940
+     npts =   4001 : bulk -0.1042504940
+     npts =   8001 : bulk -0.1042504940
+     npts =  16001 : bulk -0.1042504940
+     => last-halving relative change 6.28e-12
+  [S2] effective-fluid V6+V7 bounce-window integral vs d_cut: log-log slope -1.0071  (divergence, no regulated number quoted)
+
+==========================================================================
+[poly-analytic-nonLQC]  eta_B=0.577350  I_inf=0.785398  A=1.000000  rho_B=0.608998  T_fNL=0.195501  eta_far=173.2
+  k eta_B = 0.001  (k = 0.0017321, k_L = 3.4641e-05)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.268788e-01   [closed-form modes -1.268790e-01]
+     V3: +2.429533e-07   [closed-form modes +2.429530e-07]
+     V4: -5.562932e-05   [closed-form modes -5.562497e-05]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +6.953665e-06   [closed-form modes +6.953121e-06]
+     V7: +6.545832e-06   [closed-form modes +6.545657e-06]
+     R1: +0.000000e+00   (boundary, at eta_* = 50 eta_B)
+     R2: -1.869844e-04   (boundary, at eta_* = 50 eta_B)
+     R3: -1.054495e-07   (boundary, at eta_* = 50 eta_B)
+     R4: -2.712004e-06   (boundary, at eta_* = 50 eta_B)
+     bulk sum = -0.126921   redef sum = -1.898018e-04   TOTAL Delta f_NL^bounce = -0.127111   [eta_*=50 eta_B, k eta_*=0.050, J_*/I_inf=0.99998, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.126875; numeric V2 = -0.126879  (rel 3.37e-05)
+  k eta_B = 0.003  (k = 0.0051962, k_L = 0.00010392)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.269922e-01   [closed-form modes -1.269939e-01]
+     V3: +2.186273e-06   [closed-form modes +2.186246e-06]
+     V4: -1.419558e-04   [closed-form modes -1.418193e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +1.774448e-05   [closed-form modes +1.772742e-05]
+     V7: +1.014511e-05   [closed-form modes +1.013948e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 16.6667 eta_B)
+     R2: +3.756200e-04   (boundary, at eta_* = 16.6667 eta_B)
+     R3: -1.074813e-07   (boundary, at eta_* = 16.6667 eta_B)
+     R4: -7.363073e-05   (boundary, at eta_* = 16.6667 eta_B)
+     bulk sum = -0.127104   redef sum = +3.018818e-04   TOTAL Delta f_NL^bounce = -0.126802   [eta_*=16.6667 eta_B, k eta_*=0.050, J_*/I_inf=0.99953, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.126875; numeric V2 = -0.126992  (rel 9.27e-04)
+  k eta_B = 0.01  (k = 0.017321, k_L = 0.00034641)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.273976e-01   [closed-form modes -1.274156e-01]
+     V3: +2.428134e-05   [closed-form modes +2.427813e-05]
+     V4: -4.608344e-04   [closed-form modes -4.582503e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +5.760430e-05   [closed-form modes +5.728129e-05]
+     V7: +2.343991e-05   [closed-form modes +2.333289e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: +1.788059e-03   (boundary, at eta_* = 10 eta_B)
+     R3: -4.464015e-07   (boundary, at eta_* = 10 eta_B)
+     R4: -3.348225e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.127753   redef sum = +1.452790e-03   TOTAL Delta f_NL^bounce = -0.126300   [eta_*=10 eta_B, k eta_*=0.100, J_*/I_inf=0.99787, VALID=True]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.126875; numeric V2 = -0.127398  (rel 4.12e-03)
+  k eta_B = 0.03  (k = 0.051962, k_L = 0.0010392)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.272529e-01   [closed-form modes -1.274156e-01]
+     V3: +2.187637e-04   [closed-form modes +2.185032e-04]
+     V4: -4.813736e-04   [closed-form modes -4.582504e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +6.017170e-05   [closed-form modes +5.728130e-05]
+     V7: +2.429055e-05   [closed-form modes +2.333289e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -5.361215e-03   (boundary, at eta_* = 10 eta_B)
+     R3: -4.016680e-06   (boundary, at eta_* = 10 eta_B)
+     R4: -3.333817e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.127431   redef sum = -5.698614e-03   TOTAL Delta f_NL^bounce = -0.133130   [eta_*=10 eta_B, k eta_*=0.300, J_*/I_inf=0.99787, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.126875; numeric V2 = -0.127253  (rel 2.98e-03)
+  k eta_B = 0.1  (k = 0.17321, k_L = 0.0034641)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.255781e-01   [closed-form modes -1.274156e-01]
+     V3: +2.460628e-03   [closed-form modes +2.427813e-03]
+     V4: -6.934443e-04   [closed-form modes -4.583019e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: +8.668054e-05   [closed-form modes +5.728773e-05]
+     V7: +3.306747e-05   [closed-form modes +2.333504e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -8.933040e-02   (boundary, at eta_* = 10 eta_B)
+     R3: -4.453214e-05   (boundary, at eta_* = 10 eta_B)
+     R4: -3.167630e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.123691   redef sum = -8.969170e-02   TOTAL Delta f_NL^bounce = -0.213383   [eta_*=10 eta_B, k eta_*=1.000, J_*/I_inf=0.99787, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.126875; numeric V2 = -0.125578  (rel 1.02e-02)
+  k eta_B = 0.3  (k = 0.51962, k_L = 0.010392)   Wronskian Im(mu* mu') = -0.50000000 (exact -0.5)
+     V1: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V2: -1.067891e-01   [closed-form modes -1.274281e-01]
+     V3: +2.518447e-02   [closed-form modes +2.185247e-02]
+     V4: +1.384285e-03   [closed-form modes -4.958020e-04]
+     V5: +0.000000e+00   [closed-form modes -0.000000e+00]
+     V6: -1.730356e-04   [closed-form modes +6.197526e-05]
+     V7: -5.409619e-05   [closed-form modes +2.489733e-05]
+     R1: +0.000000e+00   (boundary, at eta_* = 10 eta_B)
+     R2: -1.217921e+00   (boundary, at eta_* = 10 eta_B)
+     R3: -3.980358e-04   (boundary, at eta_* = 10 eta_B)
+     R4: -1.326926e-04   (boundary, at eta_* = 10 eta_B)
+     bulk sum = -0.080447   redef sum = -1.218452e+00   TOTAL Delta f_NL^bounce = -1.298900   [eta_*=10 eta_B, k eta_*=3.000, J_*/I_inf=0.99787, VALID=False]
+     lane (a) closed form for V2 alone: -(5/24) rho_B = -0.126875; numeric V2 = -0.106789  (rel 1.58e-01)
+
+  [test] eta_*-independence (k eta_B = 0.001); bulk over [-eta_B, eta_*] + redefinition at eta_*
+     eta_* =     2 eta_B (k eta_* = 0.002) : bulk -0.354790  redef +1.852e-01  total -0.169608
+     eta_* =     5 eta_B (k eta_* = 0.005) : bulk -0.348609  redef +1.736e-02  total -0.331250
+     eta_* =    10 eta_B (k eta_* = 0.010) : bulk -0.347968  redef +2.335e-03  total -0.345633
+     eta_* =    20 eta_B (k eta_* = 0.020) : bulk -0.347867  redef +2.654e-04  total -0.347601
+     eta_* =    50 eta_B (k eta_* = 0.050) : bulk -0.347767  redef -1.898e-04  total -0.347956
+     eta_* =   150 eta_B (k eta_* = 0.150) : bulk -0.346931  redef -1.877e-03  total -0.348808
+     eta_* =   250 eta_B (k eta_* = 0.250) : bulk -0.345258  redef -5.222e-03  total -0.350480
+     => fractional spread of the total over eta_*: 5.649e-01 (all), 1.392e-02 for eta_* >= 10 eta_B
+  [test] window independence (bounce-window edges)
+     [-0.8,0.8] eta_B : bulk -0.107914   V2 -0.107879
+     [-1,1] eta_B : bulk -0.126921   V2 -0.126879
+     [-1.5,1.5] eta_B : bulk -0.160353   V2 -0.160300
+     [-2,2] eta_B : bulk -0.179372   V2 -0.179313
+     [-3,3] eta_B : bulk -0.196390   V2 -0.196325
+  [test] step-size convergence of the bulk integral
+     npts =   1001 : bulk -0.1269207071
+     npts =   2001 : bulk -0.1269207071
+     npts =   4001 : bulk -0.1269207071
+     npts =   8001 : bulk -0.1269207071
+     npts =  16001 : bulk -0.1269207071
+     => last-halving relative change 2.08e-13
+  [S2] effective-fluid V6+V7 bounce-window integral vs d_cut: log-log slope -1.0072  (divergence, no regulated number quoted)
+
+==========================================================================
+[combined] f_NL^after = T_fNL * (-35/16) + Delta f_NL^bounce   (S1, k eta_B << 1)
+        Quintin2015-type: T = 0.165005, T*(-35/16) = -0.360949, Delta f_NL^bounce = -0.139299  ->  f_NL^after = -0.500249
+      LQC-effective-dust: T = 0.250000, T*(-35/16) = -0.546875, Delta f_NL^bounce = -0.103186  ->  f_NL^after = -0.650061
+    poly-analytic-nonLQC: T = 0.195501, T*(-35/16) = -0.427659, Delta f_NL^bounce = -0.126738  ->  f_NL^after = -0.554396
+
+DONE (3.7 s)
