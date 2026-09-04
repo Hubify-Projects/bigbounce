@@ -233,7 +233,7 @@ directly in their Eq.~5.1, which reduces to $-35/16$ at $c_s=1$. Li
 \textit{et al.}'s quoted amplitude; because their shape function (Eq.~4.19)
 agrees with Cai \textit{et al.}'s (Eq.~37) exactly, the localization above --
 a uniform factor-$2$ slip at Cai \textit{et al.}'s amplitude-conversion
-step -- is this paper's own adjudication, not a convention difference
+step -- is adjudicated directly from the two shape functions here, not a convention difference
 reported by either source. Quintin \textit{et al.}~\cite{Quintin2015}
 likewise quote $-35/16$ in the text following their cubic-action equation
 for $\mathcal L_3$, explicitly attributing it to Cai \textit{et al.} as a
@@ -596,10 +596,8 @@ realizations (the full 30-bin recovery plus four bootstrap bin-resamples)
 recover $\gamma=4.336$ on average with a mean pull of $+0.016\pm0.044\sigma$
 (std $0.0993$ over the 5 realizations, standard error of the mean); at a
 $\gamma_{\rm true}=3$ control, five realizations recover $\gamma=3.005$ with
-a mean pull of $+0.033\pm0.054\sigma$ (std $0.1203$; script, JSON, and data manifest:
-\texttt{research/track\_a3\_multichannel/}\allowbreak
-\texttt{pta\_injection\_30bin\_realkde\_2026\_09\_02.py},
-\texttt{outputs/pta\_}\allowbreak\texttt{injection\_30bin\_}\allowbreak\texttt{realkde\_2026\_09\_02.json}). Both
+a mean pull of $+0.033\pm0.054\sigma$ (std $0.1203$; script, JSON, and data manifest
+recorded in the reproducibility statement below). Both
 are consistent with unbiased recovery: both mean pulls are well under
 $0.1\sigma$, though the per-realization scatter (std $\approx0.10$--$0.12\sigma$
 over 5 realizations) is comparable to, not smaller than, that threshold,
@@ -826,8 +824,7 @@ $\Omega_{\rm DM}$ is used.}, $g_*=g_{*s}=106.75$, and a single horizon mass
 $M_H = 10^{20}\,$g (matching the first pass, rather than the mass-integrated
 Eq.~66 of Choudhury \textit{et al.}, an $O(1)$ width-factor deviation for a
 narrow peak). Full formalism, the itemized deviations from Choudhury \textit{et al.}'s setup (mass-integration, width-factor, and spectrum-shape approximations), and validation are recorded
-in \texttt{research/track\_a3\_multichannel/}\allowbreak
-\texttt{PBH\_COMPACTION\_NOTE\_2026-09-02.md}.
+in the compaction note cited in the reproducibility statement below.
 
 \subsection{The lab's own primordial spectrum: a null result}
 \label{sec:pbh_inlab}
@@ -887,9 +884,8 @@ peak. Combined with the null above, the honest statement is two-part: the
 required SMBH-seed amplitude is largely excluded independent of this model,
 and this model's own spectrum falls far short of supplying it either way.
 Full derivation, the four-mechanism literature survey, and every number
-above are archived in
-\texttt{research/track\_a3\_multichannel/}\allowbreak
-\texttt{inlab\_delta2\_zeta\_2026-09-03.py}.
+above are archived in the lab-spectrum script cited in the reproducibility
+statement below.
 
 %======================================================================
 \section{Channel III: the large-scale-structure bispectrum}
@@ -931,10 +927,9 @@ backgrounds of Sec.~\ref{sec:transmission}, with the pre-bounce amplitude's
 bare significance retained as a clearly-labelled secondary row (i.e.\
 assuming $T_{\fnl}=1$, the transfer-free case this paper does not otherwise
 support). The matter-bounce bispectrum is also not exactly the local shape;
-a noise-weighted shape overlap $r<1$, reported in this lab's companion
-Fisher-forecast draft (referenced in the reproducibility statement below)
-but not re-derived at the $\fnl^{\rm after}$ fiducial used in this paper --
-so no numeral is quoted here -- would let an experiment quoting
+a noise-weighted shape overlap $r<1$, which has not been re-derived at the
+$\fnl^{\rm after}$ fiducial used in this paper -- so no numeral is quoted
+here -- would let an experiment quoting
 $\sigma_{\rm local}$ constrain the bounce amplitude at $\sigma_{\rm
 local}/r$; the $r$-projected numbers are omitted pending that re-derivation.
 
@@ -1061,8 +1056,7 @@ Sec.~\ref{sec:pbh_inlab}.
 \label{app:derivation}
 
 This appendix transcribes, without new science, the derivation archived in
-\texttt{research/theory\_audit/}\allowbreak
-\texttt{fnl\_monopole\_adjudication\_2026\_09\_03.md}
+the monopole-adjudication note cited in the reproducibility statement below
 (\S\S1--4) that underlies Eq.~\eqref{eq:deltaNc} and the [L]/[K]/[X]/[S]
 decomposition of Sec.~\ref{sec:crosscheck}.
 
@@ -1171,7 +1165,8 @@ at\footnotesize
 \item[] \url{https://github.com/Hubify-Projects/bigbounce/tree/68309c8/research/cubic_bounce_transmission}
 \end{itemize}
 \normalsize
-respectively. The bounce-to-local shape overlap ($r$, Sec.~\ref{sec:lss}) is
+respectively, including \texttt{fnl\_monopole\_adjudication\_2026\_09\_03.md}
+in the former (Appendix~\ref{app:derivation}). The bounce-to-local shape overlap ($r$, Sec.~\ref{sec:lss}) is
 imported from this lab's companion Fisher-forecast draft at
 \texttt{research/focused\_paper\_source\_integration/} and
 \texttt{outputs/survey\_reach\_fnl.json}. The three channel computations
@@ -1181,8 +1176,11 @@ of Secs.~\ref{sec:pta}--\ref{sec:lss} are committed at
 \texttt{pbh\_compaction\_fnl.py} (compaction-function criterion, this paper's principal PBH result),
 \texttt{inlab\_delta2\_zeta\_2026-09-03.py} (Sec.~\ref{sec:pbh_inlab}, the
 lab's own predicted spectrum and its FIRAS check),
-\texttt{survey\_reach\_fnl.py}, and \texttt{pta\_injection\_30bin\_2026\_09\_02.py}
-(the Sec.~\ref{sec:pta_validity} injection-recovery validation), with results in \texttt{outputs/*.json} and
+\texttt{survey\_reach\_fnl.py}, \texttt{pta\_injection\_30bin\_2026\_09\_02.py},
+and \texttt{pta\_injection\_30bin\_realkde\_2026\_09\_02.py}
+(the Sec.~\ref{sec:pta_validity} injection-recovery validations), and
+\texttt{PBH\_COMPACTION\_NOTE\_2026-09-02.md} (the Sec.~\ref{sec:pbh_compaction}
+compaction-note validation), with results in \texttt{outputs/*.json} and
 manifests at \texttt{reproducibility/manifests/}\allowbreak
 \texttt{experiments/a3-*.json} (PTA/PBH/reach, including
 \texttt{a3-pbh-compaction-fnl.json}), \texttt{reproducibility/manifests/}\allowbreak
@@ -1201,13 +1199,12 @@ spectra, Zenodo \texttt{10.5281/zenodo.8060824}. This work's own code and
 artifacts are pinned by the GitHub commit hash above rather than a
 frozen-release DOI of their own; minting one is a maintainer action
 planned for the packaging stage. The exact-amplitude theory lineage this
-paper builds on is archived at this lab's companion P2 Zenodo record,
-\texttt{10.5281/zenodo.21461881}. Every computation reported in
+paper builds on is archived at Zenodo \texttt{10.5281/zenodo.21461881}.
+Every computation reported in
 this paper ran on a local CPU (Apple M5, 24\,GB, macOS 26.5) at zero compute
 cost; the PTA/PBH/reach/injection channels ran in under $6\,$s total. Compute venue,
 wall-clock time, and external data sources are recorded per-experiment in the
-manifests cited above, consistent with this lab's standing reproducibility
-policy (directive Q2).
+manifests cited above.
 
 \section*{AI Usage Disclosure}
 Symbolic derivations reported in Secs.~\ref{sec:parameter}--\ref{sec:transmission}
