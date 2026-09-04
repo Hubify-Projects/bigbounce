@@ -44,7 +44,6 @@ def lead(expr, var=t):
     e = sp.expand(e)
     if e == 0:
         return None, 0
-    pw = sorted(sp.Poly(e.subs(var, 1 / var) if False else e, var).as_dict().keys()) if False else None
     terms = sp.Add.make_args(e)
     pows = []
     for term in terms:
@@ -62,3 +61,48 @@ def main():
     RES["z2_pole_order"] = int(lead(z2)[0])
     log(f"[A0] z^2 pole order at t=0: {RES['z2_pole_order']}  (S2 pathology, as in the brief);  int z^2 dt ~ {sp.integrate(sp.series(z2,t,0,4).removeO(),t)}")
     return t0
+
+
+STEPS = []
+
+
+def step_A_frobenius():
+    """Exact series solution of the S2 MS equation  d/dt( (z^2/a) zetadot ) + c_s^2 k^2 a z^2 zeta = 0
+    (conformal-time (z^2 zeta')' + c_s^2 k^2 z^2 zeta = 0 rewritten in cosmic time).
+    Indicial exponents at t=0 are 0 and 3  ->  zeta = C1*(1 + ...) + C2*(t^3 + ...)."""
+    cs_ = [sp.Symbol(f"c{n}") for n in range(NSER + 2)]
+    zeta = sum(cs_[n] * t**n for n in range(NSER + 2))
+    w = sp.series(z2 / a, t, 0, NSER + 2).removeO()
+    eq = sp.expand(sp.series(sp.diff(w * sp.diff(zeta, t), t) + cs**2 * k**2 * sp.series(a * z2, t, 0, NSER + 2).removeO() * zeta,
+                             t, 0, NSER - 1).removeO())
+    sol = {cs_[0]: C1, cs_[3]: C2}
+    # solve order by order for the remaining coefficients
+    for p in range(-3, NSER - 2):
+        coef = eq.coeff(t, p).subs(sol)
+        unknowns = [c for c in cs_ if c in coef.free_symbols and c not in sol]
+        if coef == 0 or not unknowns:
+            continue
+        s = sp.solve(coef, unknowns[0], dict=True)
+        if s:
+            sol.update({kk: sp.simplify(v) for kk, v in s[0].items()})
+    zeta_sol = sp.expand(zeta.subs(sol))
+    # any coefficient left unsolved beyond the truncation is set to 0 (truncation only)
+    zeta_sol = zeta_sol.subs({c: 0 for c in cs_ if c not in sol})
+    zeta_sol = sp.expand(sp.series(zeta_sol, t, 0, 6).removeO())
+    log("\n[A] Frobenius solution of the S2 MS equation about the bounce (to O(t^5)):")
+    log(f"    zeta = {zeta_sol}")
+    zd = sp.expand(sp.diff(zeta_sol, t))
+    c1_part = sp.expand(zd.coeff(C1)); c2_part = sp.expand(zd.coeff(C2))
+    p1, l1 = lead(c1_part); p2, l2 = lead(c2_part)
+    log(f"    zetadot|C1 = {l1}*t^{p1} + ... (k^2 correction, 1/t-ENHANCED by int z^2 dt ~ 1/t: NOT ~H^2)")
+    log(f"    zetadot|C2 = {l2}*t^{p2} + ... (lane (a)'s ~H^2 mode)")
+    RES["A_frobenius"] = {"zeta_series": str(zeta_sol), "zetadot_C1_leading": f"{l1}*t^{p1}",
+                          "zetadot_C2_leading": f"{l2}*t^{p2}", "indicial_exponents": [0, 3]}
+    # residual check: plug back
+    resid = sp.expand(sp.series(sp.diff((z2 / a) * sp.diff(zeta_sol, t), t) + cs**2 * k**2 * a * z2 * zeta_sol, t, 0, 3).removeO())
+    log(f"    residual of the MS equation through O(t^2): {resid}")
+    RES["A_frobenius"]["residual_through_t2"] = str(resid)
+    return zeta_sol
+
+
+STEPS.append(step_A_frobenius)
