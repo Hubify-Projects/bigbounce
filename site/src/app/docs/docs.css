@@ -321,7 +321,9 @@
   background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
 
-/* status pill */
+/* status pill — no border: these render nested inside .docs-endpoint cards
+   (and the bordered .docs-sidebar); background + text color differentiate
+   the state without stacking another border inside a bordered container. */
 .docs-status {
   font-family: var(--font-mono-stack);
   font-size: 10px;
@@ -329,25 +331,21 @@
   letter-spacing: 0.8px;
   padding: 2px 8px;
   border-radius: 999px;
-  border: 1px solid var(--border);
 }
 
 .docs-status-stable {
   color: #16a34a;
-  border-color: color-mix(in srgb, #16a34a 35%, var(--border));
-  background: color-mix(in srgb, #16a34a 6%, transparent);
+  background: color-mix(in srgb, #16a34a 12%, transparent);
 }
 
 .docs-status-beta {
   color: #2563eb;
-  border-color: color-mix(in srgb, #2563eb 35%, var(--border));
-  background: color-mix(in srgb, #2563eb 6%, transparent);
+  background: color-mix(in srgb, #2563eb 12%, transparent);
 }
 
 .docs-status-internal {
   color: #d97706;
-  border-color: color-mix(in srgb, #d97706 35%, var(--border));
-  background: color-mix(in srgb, #d97706 6%, transparent);
+  background: color-mix(in srgb, #d97706 12%, transparent);
 }
 
 /* table */
