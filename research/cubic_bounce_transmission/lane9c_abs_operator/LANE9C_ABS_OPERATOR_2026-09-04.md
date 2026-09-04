@@ -163,3 +163,52 @@ Note the sense of the inequality: ABS's $e^{-1.83k\eta_B}$ is a **suppression at
 lab's band $k\eta_B\lesssim10^{-2}$ lies on the *plateau* of their bounce contribution, not outside
 it. The lab and ABS therefore evaluate the same operators on the same side of the same scale — and
 still differ by four orders of magnitude in the answer (§3). That difference is not an operator gap.
+
+---
+
+## 3. Magnitude, and whether a dust background admits the operator at all
+
+### 3.1 Their numbers (literature, quoted)
+
+*Their §IV B:* "In the regime $k\gtrsim k_{\rm LQC}$ the result agrees with the inflationary
+prediction, i.e., $f_{\rm NL}\sim\epsilon$ … For scales that were larger than the curvature radius at
+the bounce, i.e., $k\lesssim k_{\rm LQC}$, $f_{\rm NL}$ oscillates between positive and negative values
+with an amplitude of order $10^{3}$." Their summary point 2 gives the large-$k$ floor as
+$f_{\rm NL}\sim10^{-2}$, and §VII repeats: "$f_{\rm NL}$ is of order $10^{-2}$ for large wave-numbers,
+and then it increases for small wave-numbers, reaching values of order $10^{3}$." Their bounce-only
+piece $\Delta f^{\rm bounce}_{\rm NL}$ (fig. 13 caption) is "the value of $f_{\rm NL}$ given only by the
+first term in equation (\ref{BR}), and evaluating the integral in (\ref{Bphi}) just before the onset of
+inflation" — structurally the same object as the lab's $\Delta f_{\rm NL}^{\rm bounce}$.
+
+**"Just above the enhancement scale."** Combining the $10^3$ plateau with their §V decay law, in lab
+units, $|\Delta f^{\rm bounce}_{\rm NL}|(k\eta_B)\simeq10^{3}\,e^{-1.830\,(k\eta_B-1.06)}$ (equilateral).
+This crosses their own inflationary floor $10^{-2}$ at $k\eta_B\simeq1.06+\ln(10^{5})/1.830=7.4$, i.e.
+at $k\simeq7\,k_{\rm LQC}$ — an internal consistency check against their independent statement that
+$f_{\rm NL}$ is affected out to $k\lesssim10\,k_{\rm LQC}$.
+
+**Convention caution.** ABS define $f_{\rm NL}\equiv-\tfrac56 B_{\mathcal R}/(\Delta_{k_1}\Delta_{k_2}+\dots)$
+(their Eq. 51, `fNLdef`; $\Delta_k=2\pi^2\mathcal P_{\mathcal R}/k^3$), citing LoVerde+2007 App. A on
+sign conventions. The lab uses $f_{\rm NL}=+\tfrac56B/(P_1P_2+\dots)$ (lane (a) §5), the
+$\zeta=\zeta_g+\tfrac35f_{\rm NL}\zeta_g^2$ convention. **The two differ by an overall sign**; ABS's
+$f_{\rm NL}$ oscillates in sign over the enhanced band anyway, so only the magnitude is comparable.
+
+### 3.2 The four-orders-of-magnitude gap is not an operator gap
+
+Lab (S1, LQC dust, $k\eta_B\lesssim10^{-2}$): $\Delta f_{\rm NL}^{\rm bounce}=-\tfrac5{24}\rho_B=-5/48=-0.104$.
+ABS (same operators, $k\lesssim k_{\rm LQC}$): $|\Delta f^{\rm bounce}_{\rm NL}|\sim10^{3}$.
+Ratio $\sim10^{4}$, on **the same operator set, on the same (plateau) side of $k_{\rm LQC}$**. The
+differences that can carry it, in the order this lane can defend:
+
+1. **Mode functions and initial state.** The lab used the super-Hubble reduction $\zeta=C_1+C_2J$
+   (lane (a) §5); ABS integrate $v_k''+(k^2+f(\eta))v_k=0$ numerically from a Minkowski-like vacuum at
+   $\eta_0=-281.5\,T_{\rm P\ell}$, which they state is "not a fourth-order adiabatic state (it is only
+   of adiabatic order zero)" (their §IV F). Their own §IV A adds that other state choices in the
+   literature give a spectrum that is **suppressed rather than enhanced** on these scales
+   (their citations deBlas–Olmedo 2016, Ashtekar+2016 ×2), which they explicitly do not consider.
+   **The ABS enhancement is therefore initial-state dependent, not a state-independent prediction.**
+2. **Matter sector.** Theirs is kinetic-dominated ($w\simeq+1$, $\epsilon=3$, $c_s=1$,
+   $\rho\propto a^{-6}$); the lab's LQC background is dust ($w=0$, $\epsilon\to3/2$, $c_s^2=0$,
+   $\rho\propto a^{-3}$). Vertices scale as $\epsilon^2$ (V2–V4) and $\epsilon^3$ (V6, V7).
+3. **Post-bounce history.** ABS have $N_{B\star}\simeq12.3$ e-folds of inflation after the bounce
+   (their fig. 1 caption) that both redshift $k_{\rm LQC}$ to CMB scales and set $\mathcal P_{\mathcal R}$
+   in the denominator of $f_{\rm NL}$. The lab's A3 bounce model has **no inflationary phase**.
