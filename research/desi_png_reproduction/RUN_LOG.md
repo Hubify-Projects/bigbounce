@@ -162,3 +162,14 @@ noted concurrent-lane activity). Killed and retried at n_ran=5 (realisations
 0-4/cap) for tractability -- still a real increase over v1's 4, short of the
 7 downloaded/sha256'd. Full 7-realisation run remains a named next step once
 the host is less contended.
+
+**Follow-up session closed (2026-09-04).** Result: `LEDGER4_RESULT_v2_2026-09-04.md`.
+Movement: f_NL(p=1.6) -50.4 -> -23.2 (window-IC) -> -16.7 (+CAMB, A_s-matched)
+-> -16.7 (+measured-shotnoise cov, Delta~0 as expected). Fix 3 (full randoms)
+and the full pypower window-convolution matrix both attempted and blocked
+(host contention / computational infeasibility), documented not dropped.
+Point-estimates replaced full MCMC after step-1's MCMC ran >6.5 CPU-min
+without finishing under measured swap pressure (24+/25.6 GB); step-0 point
+estimate cross-checked against v1's MCMC median to <1%. Manifest
+`ledger4-desi-dr1-qso-fnl-reproduction-v2` (schema-valid). Ledger row 4
+updated. All commits atomic per RUN_LOG entries above.
