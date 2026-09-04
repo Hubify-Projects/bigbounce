@@ -16,8 +16,22 @@ call), commits after every step, no `git add -A`, no Write/Edit over ~80 lines.
   ledger4-desi-dr1-lss-sanity manifest): QSO_NGC/SGC clustering.dat.fits,
   QSO_NGC/SGC_nz.txt, QSO_SGC_0_clustering.ran.fits.
 
-## Step 1 — package install (in progress)
-See below for outcome (pypower/cosmoprimo/desilike vs pure-python fallback).
+## Step 1 — package install (DONE, 2026-09-04)
+All target packages installed in `.venv312`: numpy 2.5.2, scipy 1.18.1,
+astropy 8.0.1, fitsio 1.4.2, emcee 3.1.6, matplotlib 3.11.1, mpi4py 4.1.2
+(needed brew open-mpi — installed), pyFFTW 0.15.1, pmesh (needed mpi4py to
+build pfft-python), pypower 1.0.0 (git), cosmoprimo (git), desilike (git,
+jax optional/absent — fine, not using analytic marginalization).
+Full pinned list: `research/desi_png_reproduction/venv_setup/requirements_frozen.txt`.
+
+**CLASS Boltzmann engine unavailable**: `pip install pyclass` fails to build
+(`ValueError: could not build CLASS`, missing C toolchain wiring for the
+bundled CLASS source under this pip/setuptools version). Per the plan's
+explicit fallback, using **cosmoprimo's `eisenstein_hu` transfer-function
+engine** instead — confirmed working (`DESI(engine='eisenstein_hu')` +
+`.get_transfer(z=0)` callable). This is a real fidelity cap vs the DESI
+paper's CLASS-based transfer function; recorded as a limitation in the final
+result writeup (§4/§8), not hidden.
 
 ## Step 2 — remaining QSO randoms download
 TBD.

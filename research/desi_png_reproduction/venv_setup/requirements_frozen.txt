@@ -1,0 +1,13 @@
+astropy==8.0.1
+astropy-iers-data==0.2026.8.31.0.57.9
+cosmoprimo @ git+https://github.com/cosmodesi/cosmoprimo@91bee36601bcc4d112e7a9c051ff48f82ea9ab47
+desilike @ git+https://github.com/cosmodesi/desilike@4c77845a48fe444b1e8f7f4ce406072071b0ed01
+emcee==3.1.6
+fitsio==1.4.2
+matplotlib==3.11.1
+mpi4py==4.1.2
+numpy==2.5.2
+pmesh @ git+https://github.com/MP-Gadget/pmesh@da7b574ab930836fac2410394592d62f3f04a68d
+pyFFTW==0.15.1
+pypower @ git+https://github.com/cosmodesi/pypower@8606a05b357357c7cc71a5324cc3fdbdda522875
+scipy==1.18.1
