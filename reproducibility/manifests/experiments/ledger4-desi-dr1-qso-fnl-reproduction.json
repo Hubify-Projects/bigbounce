@@ -36,11 +36,31 @@
     }
   ],
   "code": [
-    {"path": "research/desi_png_reproduction/pk_estimator_qso.py", "entrypoint": "python3 pk_estimator_qso.py [NGC|SGC]", "sha256": "7ace8a26fce9acf22069e17528646cd89728edfd7fbc0e77c71348da462925bb"},
-    {"path": "research/desi_png_reproduction/combine_and_compare.py", "entrypoint": "python3 combine_and_compare.py", "sha256": "d63c48607eca68b7615457a653383d5f47e1a0a5500e0b0f98210da02ea58ae3"},
-    {"path": "research/desi_png_reproduction/fit_fnl.py", "entrypoint": "python3 fit_fnl.py", "sha256": "628da290a1f02520bdd81a499208384b6fbd2544c421f1b3bf05c7f83b05cb35"},
-    {"path": "research/desi_png_reproduction/systest_weight_sys.py", "entrypoint": "python3 systest_weight_sys.py", "sha256": "b4dd467e924f6fb5e1b0f3da9fa2b90ccbeb5ec8e525b00eebaaf5d65fa2f4c9"},
-    {"path": "research/desi_png_reproduction/systest_fit.py", "entrypoint": "python3 systest_fit.py", "sha256": "62f13c5fab3d78af58aaf4050e4590f13d0bd6a04a9975b9731dab872d3b6f7a"}
+    {
+      "path": "research/desi_png_reproduction/pk_estimator_qso.py",
+      "entrypoint": "python3 pk_estimator_qso.py [NGC|SGC]",
+      "sha256": "7ace8a26fce9acf22069e17528646cd89728edfd7fbc0e77c71348da462925bb"
+    },
+    {
+      "path": "research/desi_png_reproduction/combine_and_compare.py",
+      "entrypoint": "python3 combine_and_compare.py",
+      "sha256": "d63c48607eca68b7615457a653383d5f47e1a0a5500e0b0f98210da02ea58ae3"
+    },
+    {
+      "path": "research/desi_png_reproduction/fit_fnl.py",
+      "entrypoint": "python3 fit_fnl.py",
+      "sha256": "628da290a1f02520bdd81a499208384b6fbd2544c421f1b3bf05c7f83b05cb35"
+    },
+    {
+      "path": "research/desi_png_reproduction/systest_weight_sys.py",
+      "entrypoint": "python3 systest_weight_sys.py",
+      "sha256": "b4dd467e924f6fb5e1b0f3da9fa2b90ccbeb5ec8e525b00eebaaf5d65fa2f4c9"
+    },
+    {
+      "path": "research/desi_png_reproduction/systest_fit.py",
+      "entrypoint": "python3 systest_fit.py",
+      "sha256": "62f13c5fab3d78af58aaf4050e4590f13d0bd6a04a9975b9731dab872d3b6f7a"
+    }
   ],
   "environment": {
     "python": "python3.12.13 (dedicated venv: research/desi_png_reproduction/.venv312, gitignored) + numpy 2.5.2 + scipy 1.18.1 + astropy 8.0.1 + fitsio 1.4.2 + emcee 3.1.6 + mpi4py 4.1.2 + pyFFTW 0.15.1 + pmesh (git) + pypower 1.0.0 (git) + cosmoprimo (git, eisenstein_hu engine) + desilike (git); brew open-mpi required for mpi4py/pmesh build",
@@ -63,13 +83,41 @@
     "notes": "Requires the step-1 sanity-check files (ledger4-desi-dr1-lss-sanity manifest) plus randoms realisations 1-3 per cap (re-fetch from the DESI URL, sha256s in venv_setup/qso_randoms_1-3_sha256.txt). CLASS/pyclass fails to build in this environment (ValueError: could not build CLASS) -- cosmoprimo falls back to the eisenstein_hu transfer engine, a documented fidelity limitation vs the published CLASS-based pipeline. Run order: pk_estimator_qso.py NGC, pk_estimator_qso.py SGC, combine_and_compare.py, fit_fnl.py, systest_weight_sys.py, systest_fit.py."
   },
   "outputs": [
-    {"locator": "research/desi_png_reproduction/outputs/pk_qso_NGC.json", "type": "result-json", "checksum": null},
-    {"locator": "research/desi_png_reproduction/outputs/pk_qso_SGC.json", "type": "result-json", "checksum": null},
-    {"locator": "research/desi_png_reproduction/outputs/pk_qso_combined_comparison.json", "type": "result-json", "checksum": null},
-    {"locator": "research/desi_png_reproduction/outputs/fnl_fit_results.json", "type": "result-json", "checksum": null},
-    {"locator": "research/desi_png_reproduction/outputs/fnl_chain_marginalised.npy", "type": "dataset", "checksum": null},
-    {"locator": "research/desi_png_reproduction/outputs/systest_weight_sys_fnl.json", "type": "result-json", "checksum": null},
-    {"locator": "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md", "type": "document", "checksum": null}
+    {
+      "locator": "research/desi_png_reproduction/outputs/pk_qso_NGC.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/pk_qso_SGC.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/pk_qso_combined_comparison.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/fnl_fit_results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/fnl_chain_marginalised.npy",
+      "type": "dataset",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/systest_weight_sys_fnl.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
   ],
   "verification": "Re-run and confirm: (a) P0(k=0.01,zeff) at f_NL=0, b1=2.242 (published Table-2 formula) predicts 35,522 (Mpc/h)^3 vs measured combined P0(k=0.01)=34,944 -- 1.7% agreement (fnl_fit_results.json note field); (b) f_NL posterior medians: -50.6 (p=1.6), -26.7 (p=1.0), -36.3 (p marginalised over [1.0,1.6]) with sigma 18.5/9.3/15.5 respectively (fnl_fit_results.json); (c) WEIGHT_SYS on/off point-estimate Delta f_NL = +62.4 (systest_weight_sys_fnl.json), exceeding the statistical sigma by >3x; (d) posterior distance from f_NL=-35/16 is 2.20 sigma, from -35/8 is 2.06 sigma, from 0 is 2.34 sigma, using the p-marginalised chain's median/std.",
   "status": "runnable-now",
@@ -79,5 +127,17 @@
     "research/desi_png_reproduction/RUN_LOG.md (full step-by-step log with commit SHAs)",
     "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md (result writeup)",
     "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength -- central-value offset from published reported honestly, not smoothed)"
+  ],
+  "addenda": [
+    {
+      "id": "v3-official-products-2026-09-04",
+      "note": "RunPod pod p8vj377enumve4 (RTX A6000) created, never reachable, stopped+terminated, $0 compute cost. Substituted official DESI DR1 full-shape-bao-clustering v1.0 VAC products (window matrix, full-18-randoms measured P_ell, EZmock covariance for QSO GCcomb z0.8-2.1) downloaded from data.desi.lbl.gov -- see research/desi_png_reproduction/official_products_sha256.txt for checksums and LEDGER4_RESULT_v3_2026-09-04.md for the full result.",
+      "code": [
+        "research/desi_png_reproduction/official_window_io.py",
+        "research/desi_png_reproduction/fit_fnl_official.py"
+      ],
+      "result": "f_NL(p=1.6)=-2.17+/-25.3, f_NL(p=1.0)=-1.13+/-13.1, marginalised(midpoint)=-1.65+/-19.2",
+      "cost_usd": 0.0
+    }
   ]
 }
