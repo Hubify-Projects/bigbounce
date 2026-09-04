@@ -67,6 +67,23 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-abstract-cap-v3m-0-13-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3 v3M.0.13: abstract to cap, 15 pp",
+    papers: ["A3"],
+    summary:
+      "Directive-G PDF hygiene wave: the v3M.0.12 abstract had grown to ~415 words against the PRD-regular 307-word convention in effect since v3M.0.6. Rewritten to exactly 307 words with no science change -- every claim kept at its evidential strength: the -35/16 in-in confirmation and the located Cai et al. factor-of-2; the S1 linear handoff bound (assumption A4); the two-scheme transmitted band f_NL^after in [-1.25,-0.50] with the S1/S2 distinction stated; the three honest nulls (PTA: gamma_pred=5.07 at ~10^14 below NANOGrav, first-order tensor 8-9 decades below either way; PBH: ratio 1.7-1.9, 6.7-7.0 dex short, f_PBH=0 exactly; SMBH-seed high-z: 3 dex short); and the LSS reach (S1 0.7-0.9sigma, S2 1.78sigma SPHEREx bispectrum-only). Recompiled 4-pass, 0 undefined references, 15 pp, 0 overfull hboxes >10pt (max 2.7pt, pre-existing). md5 02251c80882da4eda5fa07c92917c86d, sha256 c6f9bb57f9acb755dfe6a3bda12955038ffcf46c86a5cea9809dabff5031a34c, mirrored byte-identical to site/public/papers/, public/papers/, and the source-dir main.pdf. arXiv tarball rebuilt (sha256 e1a838dcc3a2b4823e227cc35348402ec39dcda629e4292d8b83463a5b3573ac) and standalone-smoke-tested (extract to a clean directory, recompile 4-pass, 0 undefined refs, 15 pages). Convex paperVersions:bump mutation id k57akjqq9tz75xh8kd16tq6t058ds6m7; activityFeed:add id j572mzpfrwfep32anbye451yzs8ds05m. Readiness held at 75.",
+    keyTakeaways: [
+      "Abstract cut from ~415 to exactly 307 words (PRD-regular cap); no science change, every claim retained at its evidential strength",
+      "4-pass recompile clean: 0 undefined refs, 15 pp, 0 overfull hboxes >10pt",
+      "Tarball rebuilt and standalone-smoke-tested; three-way md5 match (compile == served == Convex)",
+    ],
+    links: [
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+    ],
+  },
+  {
     id: "site-redesign-2026-09-04-integration-gate",
     dateISO: "2026-09-04",
     kind: "restructure",

@@ -2,15 +2,53 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-04 — v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
+last_updated: 2026-09-04 — v3M.0.13. Abstract trimmed to the PRD-regular ≤307-word cap (was ~415 words), no science change, every claim retained at its evidential strength; see "v3M.0.13" section below. Readiness held at 75. Prior: v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (15 pp / 0 undef refs / md5 6c9a16d50efe17e16ac683fdb96807ca / sha256 ad63d5ee0d67946c34c610a0e9985fe10973f798bc344800c8de2241e58605af)
-version: v3M.0.12 (2026-09-04, R5 closure C1–C7 + DA3M-R5-15/18 — see "v3M.0.12" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (15 pp / 0 undef refs / md5 02251c80882da4eda5fa07c92917c86d / sha256 c6f9bb57f9acb755dfe6a3bda12955038ffcf46c86a5cea9809dabff5031a34c)
+version: v3M.0.13 (2026-09-04, abstract to cap — see "v3M.0.13" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
 headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 25 (R1+R2 closed, rounds stop per directive R2) / packaging 20 = ~95; awaiting Houston's final personal review for 100 per directive P)
 submission_status: draft, R2-closed — CONVERGENCE STATEMENT: rounds stop after v3M.0.5 per directive R2 (2/2 consumed); residue genre/venue
+
+## v3M.0.13 (2026-09-04) — abstract to cap, 15 pp
+
+Directive-G PDF hygiene wave. v3M.0.12's abstract had grown to ~415 words
+against the PRD-REGULAR ≤307-word convention used since v3M.0.6. Rewritten
+to exactly 307 words with no science change; every claim retained at its
+evidential strength: the −35/16 in-in confirmation and the located Cai
+et al. factor-of-2; the linear transfer bound scoped to scheme S1
+(assumption A4); the two-scheme transmitted band f_NL^after ∈ [−1.25,−0.50]
+with the S1/S2 distinction stated; the three honest nulls (PTA: γ_pred=5.07,
+~10^14 below NANOGrav, first-order tensor 8–9 decades below either way;
+PBH: ratio 1.7–1.9, 6.7–7.0 dex short, f_PBH=0 exactly, with the γ_cr
+grid-coverage caveat carried in the body/table not the abstract; SMBH-seed
+high-z: 3 dex short); and the LSS reach (S1 0.7–0.9σ, S2 1.78σ SPHEREx
+bispectrum-only).
+
+**PDF hygiene (directive G):** `\paperVersion` v3M.0.12→v3M.0.13,
+`\paperTimestamp` unchanged (2026-09-04, same day). Recompiled 4-pass, 0
+undefined references, 15 pp, md5 `02251c80882da4eda5fa07c92917c86d`, sha256
+`c6f9bb57f9acb755dfe6a3bda12955038ffcf46c86a5cea9809dabff5031a34c`. Overfull
+hboxes remain at 2.7pt/2.2pt (both pre-existing, under the `>10pt` gate).
+Mirrored byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.13.pdf`,
+`public/papers/a3_multichannel_arxiv_v3M.0.13.pdf`, and the source-dir
+`research/track_a3_multichannel/paper/main.pdf` (three-way md5 match
+verified). Page 1 rendered at 55 dpi and visually spot-checked — abstract
+fits cleanly, no overflow. arXiv tarball rebuilt at
+`project-context/SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.13.tar.gz`,
+sha256 `e1a838dcc3a2b4823e227cc35348402ec39dcda629e4292d8b83463a5b3573ac`
+(main.tex + 2 figures), standalone-smoke-tested (extract to a clean
+directory, recompile 4-pass, 0 undefined refs, 15 pp). Convex
+`paperVersions:bump` mutation id `k57akjqq9tz75xh8kd16tq6t058ds6m7`;
+`activityFeed:add` id `j572mzpfrwfep32anbye451yzs8ds05m`.
+`site/src/data/{papers,live-status,publish}.ts` updated to v3M.0.13
+strings/pdfMeta/hrefs in the same bundle; `reviewTimeline.ts` gains a
+`closure-wave` entry (`a3m-abstract-cap-v3m-0-13-2026-09-04`).
+
+**Readiness held at 75. R6 verification board next — last round under the
+directive-R2 convergence budget (2/2 will be consumed).**
 
 ## v3M.0.12 (2026-09-04) — R5 closure C1–C7 + DA3M-R5-15/18
 
