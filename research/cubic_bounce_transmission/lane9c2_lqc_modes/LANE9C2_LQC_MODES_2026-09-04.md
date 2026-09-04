@@ -172,3 +172,80 @@ Order-zero (Minkowski) vacuum imposed at $\eta_0$, at $k\eta_B=1$:
 
 **The state-dependence of $\Delta f_{\rm NL}^{\rm bounce}$ is $\le13\%$** across all three states
 and all five $\eta_0$ values tested, at every $k\eta_B$ in the band.
+
+### 3.4 Systematic C — configuration (ABS quote *equilateral*)
+
+ABS's decay law $e^{-\alpha k_t/k_{\rm LQC}}$ is written for $k_t=k_1+k_2+k_3$ and their plateau is
+quoted for their scanned configurations, so the equilateral triangle is the like-for-like comparison.
+Re-running the same pipeline with $k_1=k_2=k_3=k$:
+
+| $k\eta_B$ | $\eta_*=1\eta_B$ | $2\eta_B$ | $5\eta_B$ | $10\eta_B$ | $30\eta_B$ | S-ABS0 at $10\eta_B$ |
+|---|---|---|---|---|---|---|
+| 0.1 | $+0.308$ | $-0.051$ | $-0.274$ | $-0.539$ | $-3.71$ | $-0.550$ |
+| 0.3 | $-0.051$ | $-0.405$ | $-1.278$ | $-5.158$ | $-13.4$ | $-5.124$ |
+| **1** | $-3.05$ | $-4.82$ | $-8.15$ | $-9.81$ | $-119$ | $-10.31$ |
+| 3 | $-20.4$ | $-17.9$ | $-41.0$ | $-112.0$ | $-733$ | $-111.9$ |
+| 10 | $-212$ | $-187$ | $-439$ | $-1216$ | $-8192$ | $-1216$ |
+
+The equilateral values are larger and **rise monotonically with $k$**. The rise is entirely the
+**R3** boundary term ($[-(\partial\zeta)^2+\partial^{-2}\partial_i\partial_j(\partial_i\zeta\partial_j\zeta)]/(4a^2H^2)$),
+whose kernel is quadratic in the momenta while its prefactor is not: at $k\eta_B=10$, $\eta_*=10\eta_B$,
+R3 supplies $-1.21\times10^{3}$ of the $-1.216\times10^{3}$ total, against a bulk sum of $-4.66$.
+R3 is negligible ($\lesssim10^{-2}$) whenever $k\eta_*\lesssim1$ and dominant when $k\eta_*\gg1$; it is
+the gradient piece of the $\zeta\to\zeta_n$ redefinition evaluated while the mode is deep inside the
+horizon, **not** a bounce-generated bispectrum. This is why the squeezed configuration (whose long
+leg suppresses that kernel) stays $O(1)$ and the equilateral one does not.
+
+## 4. Comparison to Agullo–Bolliet–Sreenath 2017
+
+**Their statements, as cited in lane 9c §§2–3 from arXiv:1712.08148.** Plateau: "$f_{\rm NL}$
+oscillates … with an amplitude of order $10^{3}$" for $k\lesssim k_{\rm LQC}$ (their §IV B; repeated
+§VII). Decay: "the bounce produces a contribution to $f_{\rm NL}$ … according to
+$e^{-\alpha(k_1+k_2+k_3)/k_{\rm LQC}}$" with $\alpha\simeq0.64677$ (their §V) — in the lab's
+normalisation $e^{-1.830\,k\eta_B}$ equilateral, with $k_{\rm LQC}\eta_B=1.060$. Initial state:
+theirs "is only of adiabatic order zero" (their §IV F). Their $\mathcal H^{(3)}$ (Eq. 23) is the
+Legendre transform of Maldacena's cubic action and contains **no** quantum-geometric operator
+(lane 9c §1), which is why the same vertex set is used here.
+
+| $k\eta_B$ | ABS extrapolated $\vert f_{\rm NL}\vert$ | lab, squeezed (S-lab) | lab, equilateral (S-lab) | gap, equilateral |
+|---|---|---|---|---|
+| 0.1 | $5.80\times10^{3}$ | $-0.224$ | $-0.539$ | $+4.03$ dex |
+| 0.3 | $4.02\times10^{3}$ | $-2.34$ | $-5.16$ | $+2.89$ dex |
+| **1** | $1.12\times10^{3}$ | $+0.940$ | $-9.81$ | $\mathbf{+2.06}$ **dex** |
+| 3 | $2.87\times10^{1}$ | $-0.938$ | $-112$ | $-0.59$ dex |
+| 10 | $7.84\times10^{-5}$ | $-1.897$ | $-1216$ | $-7.19$ dex |
+
+**The shapes are incompatible, not merely offset.** ABS's bounce contribution *decays*
+exponentially above $k_{\rm LQC}$; the lab's rises monotonically with $k$ and has **no feature at
+all at $k_{\rm LQC}\eta_B=1.06$** — the same background whose *linear* response (§2) switches off
+sharply at exactly that scale. A bounce-localised $f_{\rm NL}$ enhancement of the ABS kind is
+therefore not present in the lab's model; what is present is a configuration- and evaluation-time-
+dependent UV rise of the redefinition sector.
+
+### 4.1 Partition of the $\sim2$ dex gap at $k\eta_B\approx1$
+
+1. **Initial state: $\le13\%$ ($\le0.06$ dex) — measured, not estimated.** Across S-lab, S-ABS0
+   ($\eta_0=-2$ to $-100\,\eta_B$) and S-ad4, $\Delta f_{\rm NL}^{\rm bounce}$ moves by at most 13 %
+   at every $k$ tested (§3.3, §3.1). **The ABS enhancement is not an initial-state effect on this
+   background.** (On the *power spectrum* the state does matter — a factor 7 at $k\eta_B=0.1$ — but
+   in the direction of *less* amplification.)
+2. **Matter sector: $\le0.8$ dex, and probably far less — scaling estimate.** ABS's matter is
+   kinetic-dominated ($w=+1\Rightarrow\epsilon=3$); scheme S1 substitutes $\epsilon_{\rm eff}=1/2$.
+   With $c_V\propto\epsilon^{n}$ and $u\propto z^{-1}\propto\epsilon^{-1/2}$, the in-in bispectrum
+   scales as $B\propto\epsilon^{n-3}$ and $\sum PP\propto\epsilon^{-2}$, so
+   $f_{\rm NL}\propto\epsilon^{\,n-1}$: $\times6$ (0.78 dex) for the $n=2$ vertices V2/V3/V4 and
+   $\times36$ (1.56 dex) for the $n=3$ constraint sector V6/V7. **But the terms that dominate the
+   lab's total are $\epsilon$-independent**: R2 ($\propto1/H$, legs $\epsilon^{-1}\epsilon^{-1}$ over
+   $\sum PP\propto\epsilon^{-2}$) and R3 (same counting) both scale as $\epsilon^{0}$. Rescaling to
+   $\epsilon=3$ would therefore lift only the sub-dominant bulk.
+3. **Evaluation time / absence of inflation: 1.6 dex — measured, and it is an ill-definedness, not a
+   difference.** ABS evaluate "just before the onset of inflation" and have $N_{B\star}\simeq12.3$
+   e-folds afterwards in which $\zeta$ freezes. The lab's A3 model has no inflationary phase, so
+   $\zeta$ never freezes for $k\eta_B\gtrsim0.1$ and the answer moves by a factor $\sim40$
+   ($-3.05\to-119$, equilateral) over $\eta_*\in[1,30]\eta_B$.
+4. **Remainder: $\lesssim1.3$ dex, unexplained, and not separable from (3).** The two candidates this
+   lane cannot test are (i) ABS's normalisation of $\mathcal P_{\mathcal R}$ in the denominator of
+   $f_{\rm NL}$ after their post-bounce inflation, and (ii) their mechanism itself — their §V
+   attributes the whole feature to the **complex pole of $a^{-n}(\eta)$ at $|\eta_p|=1.17\,\eta_B$**,
+   which a real-$\eta$ integral over the NEC window $[-\eta_B,+\eta_B]$ does not isolate. Testing (ii)
+   requires deforming the in-in contour into the complex plane, which is not implemented here.
