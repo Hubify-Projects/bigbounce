@@ -385,3 +385,81 @@ Kept as-is behind these: `LegacyExplorerClient`, `DataExplorerClient`, `LiveStat
 
 `ui/button.tsx`, `ui/separator.tsx`, `ui/table.tsx`, `ui/tabs.tsx`, `ui/alert.tsx`, `ui/dialog.tsx` survive, restyled
 to the tokens in §4.
+
+## 6. Implementation plan — six Sonnet lanes
+
+**Lane 1 is blocking; lanes 2–6 run in parallel after it lands.** No two lanes write the same file. Every lane is
+Sonnet-tier (the spec names exact files, contracts, and checks); no lane nest-delegates, each commits per page,
+edits stay ≤80 lines, and no lane arms a Monitor.
+
+### Lane 1 — Foundation and shell *(blocking; must land first)*
+
+Writes: `site/src/app/globals.css` (token layer §4.2–4.3, delete `.card`), `site/src/app/layout.tsx`,
+`site/src/components/Shell/{Topbar,Footer,CommandSearch}.tsx`, `site/src/components/primitives/{Band,PageHeader,StatRow,EvidenceChip,RowList,DataTable}.tsx`,
+`site/next.config.*` (all §2.4 301s: `/paper`→`/research`, `/contributions`→`/research#contributions`,
+`/final-review`→`/status#signoff`, `/architecture`→`/docs/architecture`, `/figures`→`/explore/figures`,
+`/surveys*`→`/reproduce/surveys*`, `/chat`→`/`). Deletes `Shell/Sidebar.tsx`, `Cards/Badge.tsx`, `Feed/FeedItem.tsx`,
+`ui/{accordion,scroll-area,skeleton,tooltip}.tsx`.
+Accept: `npx tsc --noEmit` clean; `npm run build` clean; every route still renders (temporary token-only restyle);
+grep proves zero `focus:ring`/`focus:border`/`box-shadow` on any `input`/`textarea`; dark and light both painted from
+tokens; no `Card` import remains in the shell.
+
+### Lane 2 — Homepage + research tracks
+
+Writes: `site/src/app/page.tsx`, `site/src/app/research/page.tsx`, `site/src/app/research/[track]/page.tsx`,
+`site/src/data/tracks.ts` (new: track questions, lead results, channel tables, boundaries — sourced verbatim from
+`VISION.md` + `PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`); deletes `site/src/app/paper/**` and
+`site/src/app/contributions/**` after porting their content.
+Accept: homepage passes the three ten-second reads (§1); nulls band present with ≥3 receipt links; every track row
+carries a Convex readiness number via `lib/livePapers.ts`; zero bordered containers on `/` outside tables; no verdict
+letter anywhere on `/` or `/research`.
+
+### Lane 3 — Works index, paper template, figures, predictions
+
+Writes: `site/src/app/papers/page.tsx`, `site/src/app/papers/[slug]/page.tsx`, `site/src/app/explore/page.tsx`,
+`site/src/app/explore/figures/page.tsx`, `site/src/app/predictions/**`,
+`site/src/components/primitives/FigureBlock.tsx`; deletes `site/src/app/figures/**`.
+Accept: every row in `/papers` and every `/papers/[slug]` header shows a plain-English purpose line (Q3) — assert by
+grep that no work renders without one; the string "6 papers"/"P1A · P1B · P2 · P3 · P4 · P5" appears nowhere under
+`site/`; version/readiness/md5 come only from `lib/livePapers.ts`; the works table is the page's only bordered surface.
+
+### Lane 4 — Status, reviews, activity, publishing
+
+Writes: `site/src/app/status/page.tsx`, `site/src/app/reviews/page.tsx`, `site/src/app/reviews/[slug]/page.tsx`,
+`site/src/app/activity/page.tsx`, `site/src/app/publish/page.tsx`,
+`site/src/components/primitives/{ReadinessBar,VerdictGrid,TimelineList}.tsx`, restyles
+`PublicationStatusWidget.tsx` + `ExternalReviewPanel.tsx`; deletes `site/src/app/final-review/**` and
+`final-review.css`.
+Accept: `reviewTimeline.ts` is **read-only** in this lane (schema byte-identical — `git diff --stat` shows no change);
+verdict grid renders newest-left with active legs only and a visible "frozen leg, not counted" note; readiness values
+trace to Convex; `/status` renders a stale annotation for any last-update >30 days; `bash tools/site_freshness_check.sh`
+passes.
+
+### Lane 5 — Reproduce hub, data sources, docs
+
+Writes: `site/src/app/reproduce/page.tsx`, `site/src/app/reproduce/surveys/page.tsx`,
+`site/src/app/reproduce/surveys/[slug]/page.tsx`, `site/src/app/docs/**` (absorbing the old architecture page content);
+deletes `site/src/app/surveys/**` and `site/src/app/architecture/**`.
+Accept: every manifest row shows inputs + external link, scripts, compute venue, est. cost, wall-clock (Q2); the
+"0 of 8" survey number carries its explanatory sentence on screen; Releases & DOIs section lists Zenodo, HuggingFace,
+B2 and GitHub targets for every work that has one; `/docs/architecture` reachable from `/docs` nav.
+
+### Lane 6 — Learn cluster and explorer wrappers
+
+Writes: `site/src/app/learn/page.tsx`, `site/src/app/explained/page.tsx`, `site/src/app/glossary/page.tsx`,
+`site/src/app/timeline/page.tsx`, `site/src/app/articles/**`, `site/src/app/speculations/page.tsx`, and the wrapper
+pages `site/src/app/{anomaly-explorer,galaxy-explorer,data-explorer,visualize}/page.tsx` **only**.
+Accept: explorer tools render above their methodology prose; the four root `.html` files are untouched
+(`git status` clean for them); glossary terms are anchor targets (`#term-slug`) and at least ten jargon strings
+elsewhere on the site link into them.
+
+### Gates before any push
+
+1. `npx tsc --noEmit` and `npm run build` clean at repo `site/`.
+2. `bash tools/site_freshness_check.sh` → PASS (banner, skills, board, versions).
+3. Headed-browser QA per `/connect-chrome` across `/`, `/research`, `/research/track-a`, `/papers`,
+   `/papers/[a3m]`, `/status`, `/reviews`, `/reproduce`, one explorer — light **and** dark, desktop and 375px.
+4. Surface audit: DOM check for a bordered element inside a bordered element on `/papers`, `/status`, `/reproduce`.
+5. `reviewTimeline.ts` diff is empty (or is an append made by the review pipeline, never by a redesign lane).
+6. A `reviewTimeline.ts` `kind:"skill-improvement"` entry for the redesign lands in the same commit bundle as the
+   final lane (standing review-round site-sync rule).
