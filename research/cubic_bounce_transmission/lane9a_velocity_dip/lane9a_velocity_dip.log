@@ -1,0 +1,74 @@
+==============================================================================
+LEDGER ROW 9 (A3-1e) LANE (a): Quintin+2015 velocity-dip amplification
+==============================================================================
+  [bg] quintin  Quintin2015-type       eta_B=0.449601 I_inf=0.557352
+  [bg] LQC      LQC-effective-dust     eta_B=1.06015 I_inf=1.8138
+  [bg] poly     poly-analytic-nonLQC   eta_B=0.57735 I_inf=0.785398
+
+[1] scalar-field velocity: is a phidot dip definable?
+    quintin  Hdot(t_B)=+2.66667  max frac variation of Hdot inside |eta|<eta_B = 7.202e-06
+        eta_amp-/eta_B=0.25  Hdot=+2.66667  total-sector [phidot_B/phidot]^2 = 1
+        eta_amp-/eta_B=0.50  Hdot=+2.66667  total-sector [phidot_B/phidot]^2 = 1
+        eta_amp-/eta_B=0.75  Hdot=+2.66667  total-sector [phidot_B/phidot]^2 = 1
+        eta_amp-/eta_B=0.90  Hdot=+2.66667  total-sector [phidot_B/phidot]^2 = 1
+        eta_amp-/eta_B=0.99  Hdot=+2.66667  total-sector [phidot_B/phidot]^2 = 1
+        eta_amp-/eta_B=1.00  Hdot=-0.358296  total-sector [phidot_B/phidot]^2 = 7.443
+    LQC      Hdot(t_B)=+0.5  max frac variation of Hdot inside |eta|<eta_B = 1.000e+00
+        eta_amp-/eta_B=0.25  Hdot=+0.426657  total-sector [phidot_B/phidot]^2 = 1.172
+        eta_amp-/eta_B=0.50  Hdot=+0.261582  total-sector [phidot_B/phidot]^2 = 1.911
+        eta_amp-/eta_B=0.75  Hdot=+0.102501  total-sector [phidot_B/phidot]^2 = 4.878
+        eta_amp-/eta_B=0.90  Hdot=+0.0335684  total-sector [phidot_B/phidot]^2 = 14.89
+        eta_amp-/eta_B=0.99  Hdot=+0.00293668  total-sector [phidot_B/phidot]^2 = 170.3
+        eta_amp-/eta_B=1.00  Hdot=+2.26625e-11  total-sector [phidot_B/phidot]^2 = 2.206e+10
+    poly     Hdot(t_B)=+2  max frac variation of Hdot inside |eta|<eta_B = 9.801e-01
+        eta_amp-/eta_B=0.25  Hdot=+1.72596  total-sector [phidot_B/phidot]^2 = 1.159
+        eta_amp-/eta_B=0.50  Hdot=+1.08905  total-sector [phidot_B/phidot]^2 = 1.836
+        eta_amp-/eta_B=0.75  Hdot=+0.440515  total-sector [phidot_B/phidot]^2 = 4.54
+        eta_amp-/eta_B=0.90  Hdot=+0.146118  total-sector [phidot_B/phidot]^2 = 13.69
+        eta_amp-/eta_B=0.99  Hdot=+0.0134083  total-sector [phidot_B/phidot]^2 = 149.2
+        eta_amp-/eta_B=1.00  Hdot=+0.000263926  total-sector [phidot_B/phidot]^2 = 7578
+
+[2] lambda_zeta(k) and the S1-deviation transfer G(k)
+    --- quintin ---
+      k*eta_B    lambda_zeta   lambda_S1     G(k)      Delta^2 ratio
+          0.1      5.97057     6.06035    1.01295    1.02606
+          0.3      5.44642     6.01635    1.10569    1.22254
+            1      3.54298     1.62589    1.21109    1.46675
+            3     17.02069     1.00118    1.00115    1.00231   [lambda: phase-sampled, NOT a growth factor]
+           10    189.83401     1.00000    0.99739    0.99478   [lambda: phase-sampled, NOT a growth factor]
+      floor |G-1|(k eta_B<=1e-2) = 1.35e-02; band extremum G=1.3281 at k eta_B=0.768 (Delta^2 ratio 1.7639); significant vs floor: True
+    --- LQC ---
+      k*eta_B    lambda_zeta   lambda_S1     G(k)      Delta^2 ratio
+          0.1      3.91894     3.99959    1.03797    1.07738
+          0.3      3.55252     3.73269    1.27438    1.62403
+            1      4.58234     1.03349    1.04907    1.10054
+            3     40.01637     1.00005    0.99962    0.99924   [lambda: phase-sampled, NOT a growth factor]
+           10    448.07366     1.00000    1.00000    1.00000   [lambda: phase-sampled, NOT a growth factor]
+      floor |G-1|(k eta_B<=1e-2) = 2.18e-02; band extremum G=1.4965 at k eta_B=0.611 (Delta^2 ratio 2.2396); significant vs floor: True
+    --- poly ---
+      k*eta_B    lambda_zeta   lambda_S1     G(k)      Delta^2 ratio
+          0.1      4.89848     5.11505    0.95231    0.90689
+          0.3      3.72183     5.10873    0.74327    0.55245
+            1      0.95243     2.55916    0.28292    0.08004
+            3     11.83027     1.00487    0.99494    0.98991   [lambda: phase-sampled, NOT a growth factor]
+           10    133.17096     1.00000    1.00000    0.99999   [lambda: phase-sampled, NOT a growth factor]
+      floor |G-1|(k eta_B<=1e-2) = 8.35e-04; band extremum G=0.2414 at k eta_B=0.768 (Delta^2 ratio 0.0583); significant vs floor: True
+
+[3] Quintin Eq. (79) amplification factor per background
+    quintin  single-scalar realisation: YES ; adopted [phidot_B/phidot(t_amp-)]^2 = 1.0 (T -> inf); their T = Delta t_amp would give 7.389
+    LQC      single-scalar realisation: NO (effective fluid) ; adopted [phidot_B/phidot(t_amp-)]^2 = 1.0 (T -> inf); their T = Delta t_amp would give 7.389
+    poly     single-scalar realisation: NO (effective fluid) ; adopted [phidot_B/phidot(t_amp-)]^2 = 1.0 (T -> inf); their T = Delta t_amp would give 7.389
+
+[4] Eq. (44) propagation with the MEASURED growth (no dip)
+    quintin  Delta zeta/zeta: 0.1->+4.971, 0.3->+4.446, 1->+2.543, 3->+16.021, 10->+188.834
+    LQC      Delta zeta/zeta: 0.1->+2.919, 0.3->+2.553, 1->+3.582, 3->+39.016, 10->+447.074
+    poly     Delta zeta/zeta: 0.1->+3.898, 0.3->+2.722, 1->-0.048, 3->+10.830, 10->+132.171
+
+[5] convergence (rtol 1e-11 -> 1e-9, eta_far x2) on the quintin background
+    k eta_B=0.1   d(lambda)/lambda: rtol 3.01e-09, eta_far 0.00e+00; d(G)/G rtol 2.80e-09
+    k eta_B=1     d(lambda)/lambda: rtol 7.84e-08, eta_far 0.00e+00; d(G)/G rtol 8.14e-08
+    k eta_B=10    d(lambda)/lambda: rtol 2.74e-08, eta_far 0.00e+00; d(G)/G rtol 5.78e-08
+
+  wrote /Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/cubic_bounce_transmission/lane9a_velocity_dip/results.json
+  wrote /Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/cubic_bounce_transmission/lane9a_velocity_dip/lane9a_growth_vs_ketaB.png
+  wall clock 143.74 s
