@@ -206,3 +206,18 @@ This is a real, honest, HIGHER-fidelity substitute (official pipeline
 products, not our approximation) for causes 1/3/4 (window, randoms
 density, covariance) simultaneously -- see official_window_io.py +
 fit_fnl_official.py.
+
+**Official-products fit result (2026-09-04):** joint (b1, f_NL) fit (n_shot
+fixed=0, matching pypower's remove_shotnoise=True convention already
+confirmed in v1) against the official window-convolved theory + official
+EZmock covariance, k in [0.003,0.08], 46 dof:
+  p=1.6: b1=2.249, f_NL=-2.169 +/- 25.3 (profile-likelihood 1-sigma), chi2/dof=1.36
+  p=1.0: b1=2.249, f_NL=-1.127 +/- 13.1, chi2/dof=1.36 (same b1/chi2 -- p only
+  rescales the k-dependence of Delta b, degenerate with b1 at this S/N, as v1/v2 found)
+p-marginalised (midpoint, documented approximation as in v2): f_NL=-1.648,
+sigma~19.2 (average of the two profile sigmas).
+3-parameter (b1,fNL,n_shot all free) emcee explored a genuine flat/degenerate
+direction (n_shot wandered to O(500) with f_NL flipping sign, BFGS found a
+second local nll minimum at n_shot~550) -- an honest non-convergence, not
+force-fit; resolved by fixing n_shot=0 per the same physical convention
+fit_fnl.py's shot-noise-double-counting bug fix already established.
