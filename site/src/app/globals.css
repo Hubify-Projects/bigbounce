@@ -3424,7 +3424,7 @@ code {
 }
 
 /* Focus ring lives on the WRAPPER only — the input itself is outline:none
-   with no focus:border-*/focus:ring-* (global hard rule). */
+   with no focus-border or focus-ring utility on the input (global hard rule). */
 .command-search-input-wrap {
   display: flex;
   align-items: center;
