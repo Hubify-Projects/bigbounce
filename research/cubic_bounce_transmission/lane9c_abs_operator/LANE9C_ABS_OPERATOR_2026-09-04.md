@@ -248,3 +248,44 @@ similar non-Gaussianity."* Their mechanism is the pole of $a^{-n}(\eta)$ at $|\e
 a property of the **geometry**, which the lab's LQC-dust background shares (it is a bounce with a
 minimum of $a$ at the same $\rho_{\rm c}$). The mechanism is therefore *not* specific to scalar-field
 matter; only the vertex prefactors are. This is why (a) alone does not settle row 9.
+
+---
+
+## 4. Observability: where $k_{\rm LQC}$ lands today, under the A3 paper's §V condition
+
+The A3 multi-channel note (`research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md`, committed)
+fixes the comoving bounce scale today as $k_B=1.71\times10^{15}\,{\rm Mpc^{-1}}$ at $T_B=10^{8}$ GeV,
+linear in $T_B$, with $k\eta_B\equiv k/k_B$. Since $k_{\rm LQC}\eta_B=1.060$ (§2.2),
+$$k_{\rm LQC}\simeq1.81\times10^{15}\Big(\frac{T_B}{10^{8}\,{\rm GeV}}\Big)\ {\rm Mpc^{-1}}.$$
+
+| window | $k$ [Mpc$^{-1}$] | $k\eta_B$, $T_B=10^{8}$ GeV | $k\eta_B$, $T_B=10^{10}$ GeV | inside ABS's enhanced band? |
+|---|---|---|---|---|
+| PTA, 2 nHz | $1.3\times10^{7}$ | $7.6\times10^{-9}$ | $7.6\times10^{-11}$ | on the plateau, $\sim8$–10 decades below onset |
+| PTA, 60 nHz | $3.9\times10^{8}$ | $2.3\times10^{-7}$ | $2.3\times10^{-9}$ | idem |
+| PBH, low end | $10^{5}$ | $5.8\times10^{-11}$ | $5.8\times10^{-13}$ | idem |
+| **PBH, high end** | $5.3\times10^{15}$ | **3.10** | $3.1\times10^{-2}$ | **yes at $T_B=10^{8}$ GeV** — inside $(2\!-\!10)k_{\rm LQC}$ |
+
+Putting $k_{\rm LQC}$ *at the top of the PTA band* would require $T_B\simeq2\times10^{1}$ GeV,
+**6.7–8.7 decades below** §V's $T_B\gtrsim10^{8}$–$10^{10}$ GeV, and independently excluded by the
+paper's own BBN/baryogenesis argument. This reproduces, by a different route, A3-3's finding that the
+PTA band would need $T_B\approx2.3$ GeV. **The PTA channel can never reach the ABS enhancement window.**
+
+The **only** overlap anywhere in Track A is the extreme small-scale end of the PBH band at the bottom
+of the allowed $T_B$ range: $k\approx5\times10^{15}\,{\rm Mpc^{-1}}$, $T_B\approx10^{8}$ GeV, sitting at
+$k\eta_B\approx3$ — precisely ABS's $k\in(2k_{\rm LQC},10k_{\rm LQC})$ window where, in their words, the
+power-spectrum effect is already negligible but the $f_{\rm NL}$ effect is not. Two independent checks
+show it does not rescue that channel:
+
+1. **The non-Gaussian tail cannot supply the missing amplitude.** A3-1b's null is a **7.0 dex deficit
+   in $\Delta^2_\zeta$**. With the lab's own $\Delta^2_\zeta\approx10^{-9}$ ($\sigma_g=3.2\times10^{-5}$)
+   and $\zeta=\zeta_g+\tfrac35 f_{\rm NL}\zeta_g^2$, even granting $|f_{\rm NL}|=10^{3}$ at $k\eta_B\sim3$,
+   the non-Gaussian term reaches a collapse threshold $\zeta_c=0.1$ only at
+   $\zeta_g=1.29\times10^{-2}=408\,\sigma$, and $\zeta_c=0.7$ at $3.4\times10^{-2}=1080\,\sigma$
+   (`lane9c_scale_window.json`, `pbh_tail`). No $f_{\rm NL}$ of order $10^{3}$ moves a $400\sigma$ tail.
+2. **The ABS feature is infrared, and the lab's anchor is infrared.** Their enhancement grows toward
+   *small* $k$ ($k\lesssim k_{\rm LQC}$); in their scenario $\sim12$ e-folds of inflation place
+   $k_{\rm LQC}$ near CMB scales, so PBH/PTA scales are on the un-enhanced ultraviolet side. The lab's
+   A3 model has no inflation: CMB scales sit $\sim20$ decades **below** $k_B$, i.e. deep inside the
+   enhanced region, and the lab's spectrum is *anchored there* to $A_s=2.1\times10^{-9}$ (A3-1b).
+   Importing an ABS-type infrared growth and re-anchoring to $A_s$ therefore leaves the PTA/PBH band
+   relatively **suppressed**, not enhanced. Quantifying this requires the computation named in §5.
