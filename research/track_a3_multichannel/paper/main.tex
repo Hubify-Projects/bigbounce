@@ -1037,23 +1037,31 @@ local}/r$; the $r$-projected numbers are omitted pending that re-derivation.
 
 \begin{table}[t]
 \caption{\label{tab:reach}Channel III. Bare detection significance
-$|\fnl^{\rm after}|/\sigma_{\fnl}$ of the scheme-S1 transmitted amplitude
-across the three backgrounds of Sec.~\ref{sec:transmission} (range shown;
-Table in Sec.~\ref{sec:bounce_cubic} gives per-background values). The
-pre-bounce row (assuming $T_{\fnl}=1$) is a secondary reference, not this
-paper's prediction. Forecast $\sigma$ values are quoted from the cited
-abstracts. MegaMapper is an unapproved design and is quoted only at its
-published order-unity level; no systematic budget is transferred to it.
-Values re-derived by \texttt{survey\_reach\_fnl.py}
-(\texttt{outputs/survey\_reach\_fnl.json}).}
+$|\fnl^{\rm after}|/\sigma_{\fnl}$ of the transmitted amplitude across the
+three backgrounds of Sec.~\ref{sec:transmission} (range shown; Table in
+Sec.~\ref{sec:bounce_cubic} gives per-background values). The pre-bounce
+row (assuming $T_{\fnl}=1$) is a secondary reference, not this paper's
+prediction. The scheme-S2 row is evaluated only on the Quintin-type
+background (Sec.~\ref{sec:bounce_cubic}, ``Scheme S2, resolved''); no
+$-35/8$ value is computed for S2 (not scaled from $-35/16$; see text).
+Forecast $\sigma$ values are quoted from the cited abstracts. MegaMapper is
+an unapproved design and is quoted only at its published order-unity
+level; no systematic budget is transferred to it. Values re-derived by
+\texttt{survey\_reach\_fnl.py} (\texttt{outputs/survey\_reach\_fnl.json}).}
 \begin{ruledtabular}
 \scriptsize
 \begin{tabular}{lccc}
 Survey & $\sigma_{\fnl}$ & bare ($-35/16$) & bare ($-35/8$) \\
 \colrule
+\multicolumn{4}{l}{\emph{scheme S1, all three backgrounds:}} \\
 SPHEREx, bispectrum only~\cite{Heinrich2023} & $0.7$ & $0.7$--$0.9\sigma$ & $1.2$--$1.7\sigma$ \\
 SPHEREx, $P+B$ target~\cite{Heinrich2023,Dore2014} & $0.5$ & $1.0$--$1.3\sigma$ & $1.7$--$2.4\sigma$ \\
 MegaMapper class~\cite{Ferraro2019,Sailer2021} & $\sim 1$ & $0.50$--$0.65\sigma$ & $0.86$--$1.20\sigma$ \\
+\colrule
+\multicolumn{4}{l}{\emph{scheme S2, Quintin-type only ($\fnl^{\rm after}\approx-1.24$ to $-1.25$):}} \\
+SPHEREx, bispectrum only & $0.7$ & $1.78\sigma$ & not computed \\
+SPHEREx, $P+B$ target & $0.5$ & $2.49\sigma$ & not computed \\
+MegaMapper class & $\sim 1$ & $1.25\sigma$ & not computed \\
 \colrule
 \multicolumn{4}{l}{\emph{pre-bounce secondary (assuming $T_{\fnl}=1$):}} \\
 SPHEREx, bispectrum only & $0.7$ & $3.13\sigma$ & $6.25\sigma$ \\

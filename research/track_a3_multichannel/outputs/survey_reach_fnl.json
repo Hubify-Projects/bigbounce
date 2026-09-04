@@ -159,10 +159,55 @@
       }
     ]
   },
+  "transmitted_reach_S2_scheme_ledger_row9_D_A3_9": {
+    "note": "Science decision D-A3-9 (project-context/PAPER_LINEAGE_2026-08-05.md 2026-09-04 entry): the S2 'divergence' quoted in earlier versions is a total-derivative artefact of the Maldacena/Chen integrated-by-parts form; on the raw ADM cubic Lagrangian with exact S2 modes the bounce-window integral is finite (lane9b/lane9b2). Reported as a two-scheme band alongside S1, not a replacement for it.",
+    "source": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/cubic_bounce_transmission/lane9b2_s2_rawadm/results.json",
+    "rows": [
+      {
+        "background": "Quintin-type (only background evaluated in S2)",
+        "scheme": "S2 (effective-fluid, raw ADM cubic Lagrangian, exact modes)",
+        "k_eta_B": 0.001,
+        "f_NL_before": -2.1872753649135515,
+        "f_NL_after_-35/16": -1.248829194822185,
+        "linear_transmission_abs_lambda_zeta": 0.9695759379176615,
+        "f_NL_after_-35/8": null,
+        "-35/8_status": "NOT COMPUTED: no scheme-independent (window-convention-free) T_S2/Delta_S2 decomposition exists to scale from -35/16 without re-running the raw-ADM in-in integral with the Cai normalization (LANE9B2_S2_RAWADM_2026-09-04.md Sec.4).",
+        "bare_significance_sigma0.7_-35/16": 1.784041706888836,
+        "bare_significance_sigma0.5_-35/16": 2.49765838964437,
+        "bare_significance_sigma1.0_-35/16": 1.248829194822185
+      },
+      {
+        "background": "Quintin-type (only background evaluated in S2)",
+        "scheme": "S2 (effective-fluid, raw ADM cubic Lagrangian, exact modes)",
+        "k_eta_B": 0.003,
+        "f_NL_before": -2.1872277237682027,
+        "f_NL_after_-35/16": -1.2457068304530605,
+        "linear_transmission_abs_lambda_zeta": 0.9677641829675677,
+        "f_NL_after_-35/8": null,
+        "-35/8_status": "NOT COMPUTED: no scheme-independent (window-convention-free) T_S2/Delta_S2 decomposition exists to scale from -35/16 without re-running the raw-ADM in-in integral with the Cai normalization (LANE9B2_S2_RAWADM_2026-09-04.md Sec.4).",
+        "bare_significance_sigma0.7_-35/16": 1.7795811863615152,
+        "bare_significance_sigma0.5_-35/16": 2.491413660906121,
+        "bare_significance_sigma1.0_-35/16": 1.2457068304530605
+      },
+      {
+        "background": "Quintin-type (only background evaluated in S2)",
+        "scheme": "S2 (effective-fluid, raw ADM cubic Lagrangian, exact modes)",
+        "k_eta_B": 0.01,
+        "f_NL_before": -2.1866862438984396,
+        "f_NL_after_-35/16": -1.2437119683031637,
+        "linear_transmission_abs_lambda_zeta": 0.9646762038399515,
+        "f_NL_after_-35/8": null,
+        "-35/8_status": "NOT COMPUTED: no scheme-independent (window-convention-free) T_S2/Delta_S2 decomposition exists to scale from -35/16 without re-running the raw-ADM in-in integral with the Cai normalization (LANE9B2_S2_RAWADM_2026-09-04.md Sec.4).",
+        "bare_significance_sigma0.7_-35/16": 1.7767313832902338,
+        "bare_significance_sigma0.5_-35/16": 2.4874239366063273,
+        "bare_significance_sigma1.0_-35/16": 1.2437119683031637
+      }
+    ]
+  },
   "notes": [
     "MegaMapper is a proposed, unapproved facility. Consistent with this lab's P2 policy we quote it as an outlook at the published order-unity level only, and do not transfer any systematic budget or headline a significance for it.",
     "The two illustrative rows (sigma = 0.3, 0.1) are NOT published forecasts and must never be quoted as such.",
     "DESI DR1 currently has essentially no discriminating power on a |f_NL| ~ 2 signal: |f_NL|/sigma < 0.3."
   ],
-  "wall_seconds": 0.0
+  "wall_seconds": 0.002
 }

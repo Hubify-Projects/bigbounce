@@ -128,6 +128,35 @@ def main():
                 row[f"bare_significance_sigma{s}"] = abs(fnl_after) / s
             after_rows.append(row)
 
+    # --- ledger row 9 / D-A3-9: scheme-S2 rows (raw ADM, exact modes) --------
+    # f_NL_before/after read verbatim from the committed lane9b2 results.json
+    # (research/cubic_bounce_transmission/lane9b2_s2_rawadm/). S2 has been
+    # carried through cubic order only on the Quintin-type background; no
+    # T_S2/Delta_S2 decomposition robust to the window-evaluation convention
+    # exists (LANE9B2 Sec.4, "window scan"), so the -35/8 row is NOT computed
+    # by scaling -- it is reported absent rather than invented.
+    LANE_9B2_JSON = (HERE / "../cubic_bounce_transmission/lane9b2_s2_rawadm/results.json").resolve()
+    lane_9b2 = json.loads(LANE_9B2_JSON.read_text())
+    s2_rows = []
+    for k_key, k_data in lane_9b2["S2"]["k_scan"].items():
+        fnl_after_s2 = k_data["f_NL_after"]
+        row = {
+            "background": "Quintin-type (only background evaluated in S2)",
+            "scheme": "S2 (effective-fluid, raw ADM cubic Lagrangian, exact modes)",
+            "k_eta_B": float(k_key),
+            "f_NL_before": k_data["f_NL_before"],
+            "f_NL_after_-35/16": fnl_after_s2,
+            "linear_transmission_abs_lambda_zeta": k_data["linear_transmission_abs"],
+            "f_NL_after_-35/8": None,
+            "-35/8_status": "NOT COMPUTED: no scheme-independent (window-convention-free) "
+                            "T_S2/Delta_S2 decomposition exists to scale from -35/16 without "
+                            "re-running the raw-ADM in-in integral with the Cai normalization "
+                            "(LANE9B2_S2_RAWADM_2026-09-04.md Sec.4).",
+        }
+        for s in SIGMAS:
+            row[f"bare_significance_sigma{s}_-35/16"] = abs(fnl_after_s2) / s
+        s2_rows.append(row)
+
     out = {
         "task": "Track A3 channel 3 — survey reach for f_NL^local = -35/16",
         "f_NL_matter_bounce_Li_-35/16": FNL_BOUNCE_LI,
@@ -144,6 +173,16 @@ def main():
                     "paper's observable prediction for every channel.",
             "T_and_rho_B_source": str(LANE_B_JSON),
             "rows": after_rows,
+        },
+        "transmitted_reach_S2_scheme_ledger_row9_D_A3_9": {
+            "note": "Science decision D-A3-9 (project-context/PAPER_LINEAGE_2026-08-05.md "
+                    "2026-09-04 entry): the S2 'divergence' quoted in earlier versions is a "
+                    "total-derivative artefact of the Maldacena/Chen integrated-by-parts form; "
+                    "on the raw ADM cubic Lagrangian with exact S2 modes the bounce-window "
+                    "integral is finite (lane9b/lane9b2). Reported as a two-scheme band "
+                    "alongside S1, not a replacement for it.",
+            "source": str(LANE_9B2_JSON),
+            "rows": s2_rows,
         },
         "notes": [
             "MegaMapper is a proposed, unapproved facility. Consistent with this "
