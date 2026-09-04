@@ -25,7 +25,21 @@
     { "id": "p1a-ntot-sensitivity-mc", "depends_on": [] },
     { "id": "p1a-alp-prior-predictive", "depends_on": [] },
     { "id": "p1b-sn-overlap-control-chains", "depends_on": ["p1a-mcmc-dneff"] },
-    { "id": "p1b-namaster-window-regen", "depends_on": ["p1a-namaster-500mc-birefringence"] }
+    { "id": "p1b-namaster-window-regen", "depends_on": ["p1a-namaster-500mc-birefringence"] },
+    { "id": "p2-fnl-adjudication-inin-from-scratch", "depends_on": [] },
+    { "id": "p2-fnl-second-method-deltan", "depends_on": [] },
+    { "id": "a3-2-fnl-bianchi-separate-universe", "depends_on": ["p2-fnl-adjudication-inin-from-scratch", "p2-fnl-second-method-deltan"] },
+    { "id": "p2-fnl-monopole-adjudication", "depends_on": ["p2-fnl-adjudication-inin-from-scratch", "p2-fnl-second-method-deltan", "a3-2-fnl-bianchi-separate-universe"] },
+    { "id": "a3-pbh-compaction-fnl", "depends_on": [] },
+    { "id": "a3-pbh-abundance-fnl", "depends_on": [] },
+    { "id": "a3-pta-gamma-reproduction", "depends_on": [] },
+    { "id": "a3-pta-injection-30bin-2026-09-02", "depends_on": [] },
+    { "id": "a3-survey-reach-fnl", "depends_on": [] },
+    { "id": "a3-1b-inlab-delta2-zeta", "depends_on": ["a3-pbh-compaction-fnl", "p2-a2-bounce-fnl-transmission"] },
+    { "id": "a3-3-sigw-nhz-from-lab-spectrum", "depends_on": ["a3-1b-inlab-delta2-zeta", "p2-a2-bounce-fnl-transmission", "a3-pta-gamma-reproduction"] },
+    { "id": "ledger9-c-abs-operator-map", "depends_on": ["p2-a2-lane-a-cubic-vertex-table", "a3-3-sigw-nhz-from-lab-spectrum", "a3-1b-inlab-delta2-zeta"] },
+    { "id": "ledger4-desi-dr1-lss-sanity", "depends_on": ["a3-survey-reach-fnl"] },
+    { "id": "ledger7-chiral-gw-delta-h", "depends_on": [] }
   ],
   "external_data": [
     { "name": "Planck PR4/PR3 CMB likelihoods (via Cobaya)", "link": "https://cobaya.readthedocs.io/en/latest/likelihood_planck.html", "kind": "likelihood", "license": null },

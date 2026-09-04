@@ -24,7 +24,19 @@
     { "id": "p3-erosita-scaler-leakage-control", "depends_on": [] },
     { "id": "p3-nanograv-pta-mcmc", "depends_on": [] },
     { "id": "p3-multisurvey-summary-crossmatch", "depends_on": [] },
-    { "id": "p3-umap-multiseed-stability", "depends_on": ["p3-multisurvey-summary-crossmatch"] }
+    { "id": "p3-umap-multiseed-stability", "depends_on": ["p3-multisurvey-summary-crossmatch"] },
+    { "id": "p3-flagship-s8-enrichment", "depends_on": [] },
+    { "id": "p3-flagship-s8-allwise-photometry", "depends_on": ["p3-flagship-s8-enrichment"] },
+    { "id": "p3-flagship-s8-simbad-ned-crossmatch", "depends_on": ["p3-flagship-s8-enrichment"] },
+    { "id": "p3-flagship-s8-taxonomy", "depends_on": ["p3-flagship-s8-simbad-ned-crossmatch"] },
+    { "id": "p3-flagship-v2-enrichment", "depends_on": [] },
+    { "id": "p3-flagship-v2-allwise-photometry", "depends_on": ["p3-flagship-v2-enrichment"] },
+    { "id": "p3-flagship-v2-simbad-ned-crossmatch", "depends_on": ["p3-flagship-v2-enrichment"] },
+    { "id": "p3-flagship-v2-taxonomy", "depends_on": ["p3-flagship-v2-simbad-ned-crossmatch"] },
+    { "id": "anomaly-known-object-recovery-benchmark", "depends_on": [] },
+    { "id": "anomaly-known-object-recovery-benchmark-v2", "depends_on": ["p3-flagship-v2-enrichment"] },
+    { "id": "p3-ledger8-known-object-recovery-benchmark", "depends_on": ["p3-flagship-s8-enrichment"] },
+    { "id": "anomaly-map-png-highz-abundance", "depends_on": [] }
   ],
   "external_data": [
     { "name": "DESI DR1 iron zcatalog (zall-pix-iron.fits)", "link": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits", "kind": "dataset", "license": null },

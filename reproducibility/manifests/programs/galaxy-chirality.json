@@ -30,7 +30,9 @@
     { "id": "p5-cosmic-web-desivast-void", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
     { "id": "p5-rconf-closures", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
     { "id": "p5-focal-cluster-robustness", "depends_on": ["p5-rconf-closures"] },
-    { "id": "p5-astra-crossmatch-hf-mirror", "depends_on": ["p5-desi-dr1-crossmatch-build"] }
+    { "id": "p5-astra-crossmatch-hf-mirror", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
+    { "id": "p4prime-a95-neyman-cl-2026-09-02", "depends_on": [] },
+    { "id": "p4prime-bh-universe-dipole-exclusion", "depends_on": ["p4prime-a95-neyman-cl-2026-09-02"] }
   ],
   "external_data": [
     { "name": "Smith42/galaxies (HF, galaxy image dataset)", "link": "https://huggingface.co/datasets/Smith42/galaxies", "kind": "dataset", "license": null },
