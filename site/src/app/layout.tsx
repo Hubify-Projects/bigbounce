@@ -2,9 +2,10 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Sidebar } from "@/components/Shell/Sidebar";
 import { ScrollToTop } from "@/components/Shell/ScrollToTop";
 import { Topbar } from "@/components/Shell/Topbar";
+import { Footer } from "@/components/Shell/Footer";
+import { CommandSearch } from "@/components/Shell/CommandSearch";
 import "./globals.css";
 
 const themeBootScript = `
@@ -15,10 +16,6 @@ const themeBootScript = `
       ? savedTheme
       : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
-    var savedSidebar = localStorage.getItem('bigbounce-sidebar');
-    if (savedSidebar === 'collapsed') {
-      document.documentElement.setAttribute('data-sidebar-collapsed', '');
-    }
   } catch (e) {}
 })();
 `;
@@ -57,20 +54,17 @@ export default function RootLayout({
         />
         <div className="shell">
           <ScrollToTop />
-          <Sidebar />
           <Topbar />
           <main className="content">
             <div className="container">
               {children}
             </div>
+            <Footer />
           </main>
         </div>
-        {/* Astro chat widget REMOVED 2026-07-22 (site audit): its /api/chat
-            backend does not exist on this static deployment (and no Convex
-            HTTP route serves it), so the bubble and /chat mount were dead UI.
-            /chat now renders an honest offline state. Restore the <Script
-            src="/old/astro/chat-widget.js"> include only together with a
-            working backend. */}
+        <CommandSearch />
+        {/* Astro chat widget REMOVED 2026-07-22 (site audit); /chat now 301s
+            to / (REDESIGN_SPEC.md §2.4 — retired feature, no dead nav entry). */}
       </body>
     </html>
   );

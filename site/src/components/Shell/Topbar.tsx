@@ -1,12 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, Moon, Sun } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Moon, Search, Sun } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark";
 
 const THEME_KEY = "bigbounce-theme";
-const SIDEBAR_KEY = "bigbounce-sidebar";
+
+const NAV_ITEMS = [
+  { href: "/research", label: "Research" },
+  { href: "/papers", label: "Works" },
+  { href: "/explore", label: "Explore" },
+  { href: "/reproduce", label: "Reproduce" },
+  { href: "/status", label: "Status" },
+  { href: "/learn", label: "Learn" },
+];
 
 function readInitialTheme(): Theme | null {
   if (typeof window === "undefined") return null;
@@ -18,42 +29,16 @@ function readInitialTheme(): Theme | null {
 function getBrowserTheme(): Theme {
   const saved = readInitialTheme();
   if (saved) return saved;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 function applyTheme(theme: Theme) {
   document.documentElement.setAttribute("data-theme", theme);
 }
 
-function setMobileOpen(open: boolean) {
-  const root = document.documentElement;
-  if (open) root.setAttribute("data-sidebar", "open");
-  else root.removeAttribute("data-sidebar");
-}
-
-function toggleSidebar() {
-  const root = document.documentElement;
-  const isMobile = window.matchMedia("(max-width: 900px)").matches;
-  if (isMobile) {
-    const open = root.getAttribute("data-sidebar") === "open";
-    setMobileOpen(!open);
-    return;
-  }
-  const collapsed = root.hasAttribute("data-sidebar-collapsed");
-  if (collapsed) {
-    root.removeAttribute("data-sidebar-collapsed");
-    window.localStorage.setItem(SIDEBAR_KEY, "expanded");
-  } else {
-    root.setAttribute("data-sidebar-collapsed", "");
-    window.localStorage.setItem(SIDEBAR_KEY, "collapsed");
-  }
-}
-
+/** Slim sticky topbar: wordmark, six nav items, ⌘K search, theme toggle, live dot. */
 export function Topbar() {
-  // Keep the server and the first client render identical. Browser preferences
-  // are applied only after hydration; the inline boot script prevents a flash.
+  const pathname = usePathname();
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
@@ -69,49 +54,54 @@ export function Topbar() {
     window.localStorage.setItem(THEME_KEY, next);
   }
 
+  function openSearch() {
+    window.dispatchEvent(new CustomEvent("bigbounce:open-search"));
+  }
+
   const themeLabel = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
 
   return (
-    <>
-      <header className="topbar">
-        <span className="topbar-left">
-          <button
-            className="nav-toggle"
-            onClick={toggleSidebar}
-            aria-label="Toggle navigation"
-            title="Toggle navigation"
-          >
-            <Menu size={16} />
-          </button>
-          <span className="breadcrumb">
-            <span>bigbounce</span>
-            <span>/</span>
-            <span className="breadcrumb-current">
-              spin-torsion cosmology research program
-            </span>
+    <header className="topbar topbar-slim">
+      <Link href="/" className="topbar-wordmark">
+        bigbounce
+      </Link>
+      <nav className="topbar-nav" aria-label="Primary">
+        {NAV_ITEMS.map((item) => {
+          const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn("topbar-nav-link", active && "topbar-nav-link-active")}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+      </nav>
+      <div className="topbar-right">
+        <button
+          className="topbar-search"
+          onClick={openSearch}
+          aria-label="Search (⌘K)"
+          title="Search (⌘K)"
+        >
+          <Search size={14} />
+          <span className="topbar-search-kbd">⌘K</span>
+        </button>
+        <span className="status-dot" aria-hidden="true" />
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={themeLabel}
+          title={themeLabel}
+          suppressHydrationWarning
+        >
+          <span className="theme-icon" suppressHydrationWarning>
+            {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
           </span>
-        </span>
-        <div className="topbar-right">
-          <span className="status-dot" aria-hidden="true" />
-          <span>research live</span>
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label={themeLabel}
-            title={themeLabel}
-            suppressHydrationWarning
-          >
-            <span className="theme-icon" suppressHydrationWarning>
-              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
-            </span>
-          </button>
-        </div>
-      </header>
-      <div
-        className="sidebar-backdrop"
-        onClick={() => setMobileOpen(false)}
-        aria-hidden="true"
-      />
-    </>
+        </button>
+      </div>
+    </header>
   );
 }
