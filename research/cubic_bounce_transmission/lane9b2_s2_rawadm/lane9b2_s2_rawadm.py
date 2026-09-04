@@ -494,7 +494,7 @@ def bounce_legs(bg, modes, t, scheme):
     series-regular N1 = w/Ups and psi = (a^2 w/k^2 - zeta)/(Ups t) (both finite at H = 0); elsewhere and for
     the S1 pseudo-scheme the generic constraint substitution (which has 1/H poles in S1)."""
     a, H, Hd = bg.a(t), bg.H(t), bg.Hd(t)
-    inw = np.abs(t) < bg.tm
+    inw = np.abs(t) <= bg.tm
     eps = (-Hd / np.where(H == 0, 1e-300, H) ** 2) if scheme == "S2" else 0.5 + 0 * t
     Hd_k = Hd if scheme == "S2" else -0.5 * H**2                    # S1 pseudo-scheme: Hdot -> -eps_eff H^2
     legs = []
@@ -569,3 +569,92 @@ def bounce_excised(K, t, u_star, d):
     fl, _, _ = fnl_from(K[:n], t[:n], np.ones(n), u_star)
     fr, _, _ = fnl_from(K[n:], t[n:], np.ones(n), u_star)
     return float(fl + fr)
+
+
+# ---------------------------------------------------------------- end-to-end raw in-in (S2): contraction + window + expansion
+def full_fnl_after_S2(bg, K3f, kt, eta_star_fac=50.0, delta=0.15, npts_c=120001, npts_w=8001, npts_e=20001, upto="after"):
+    """f_NL(t*) from the raw ADM form integrated from the adiabatic vacuum (matter contraction, contour
+    eta_m = eta_m0 + s(1 - i delta)) through the NEC window (real t, exact S2 modes) and the matter expansion to t*.
+    upto='contraction' stops at -tm (u evaluated at -tm) -- the fluid-scheme analogue of the -35/16 input."""
+    k = kt / bg.eta_B
+    kv = triangle(SQUEEZE * k, k); ks = [np.hypot(*v) for v in kv]
+    modes = [BounceModes(bg, kk, "S2") for kk in ks]
+    eps_m = 1.5
+    # --- contraction (analytic in eta_m): a = A eta_m^2, H = 2/(A eta_m^3), Hd = -3/2 H^2, dt = a d eta_m
+    em0 = float(bg.eta_m(-bg.tm)); Ktot = sum(ks); L = 70.0 / (Ktot * delta)
+    s = -np.concatenate([[0.0], np.geomspace(1e-6 * abs(em0), L, npts_c - 1)])[::-1]
+    em = em0 + s * (1 - 1j * delta)
+    a, H = bg.A * em**2, 2.0 / (bg.A * em**3); Hd = -1.5 * H**2
+    z, dz = np.sqrt(2 * eps_m) * a, np.sqrt(2 * eps_m) * 2 * bg.A * em
+    ZD = []
+    for kk in ks:
+        vb, dvb = matter_mode(kk, em, 0.0, 1.0)                       # analytic continuation of v*
+        ZD.append((vb / z, (dvb * z - vb * dz) / z**2 / a))
+    legs = onshell_legs(ZD, kv, a, H, Hd, eps_m)
+    Kc = kernel_values(K3f, kv, a, H, Hd, legs)
+    Ic = simpson(np.real(Kc * a * (1 - 1j * delta)), x=s) + 1j * simpson(np.imag(Kc * a * (1 - 1j * delta)), x=s)
+    if upto == "contraction":
+        u_star = [m.early(-bg.tm)[0] for m in modes]
+        fnl, _, Pw = fnl_from(np.array([0, 0, 0.0]), np.array([0, 1, 2.0]), np.ones(3), u_star)
+        pref = u_star[0] * u_star[1] * u_star[2]; Psum = Pw[0] * Pw[1] + Pw[0] * Pw[2] + Pw[1] * Pw[2]
+        return dict(k_etaB=kt, upto="contraction", f_NL=float(5 / 6 * (-2 * np.imag(pref * Ic)) / Psum), I_c=[Ic.real, Ic.imag])
+    # --- window
+    tw = np.linspace(-bg.tm, bg.tm, npts_w)
+    a, H, Hd_k, eps, legs = bounce_legs(bg, modes, tw, "S2")
+    Kw = kernel_values(K3f, kv, a, H, Hd_k, legs)
+    Iw = simpson(np.real(Kw), x=tw) + 1j * simpson(np.imag(Kw), x=tw)
+    # --- expansion, real t from tm to t*
+    t_star = float(bg.t_of_eta(eta_star_fac * bg.eta_B))
+    te = np.concatenate([[bg.tm], bg.tm + np.geomspace(1e-7, t_star - bg.tm, npts_e - 1)])
+    a, H, Hd_k, eps, legs = bounce_legs(bg, modes, te, "S2")
+    Ke = kernel_values(K3f, kv, a, H, Hd_k, legs)
+    Ie = simpson(np.real(Ke), x=te) + 1j * simpson(np.imag(Ke), x=te)
+    u_star = [m.late(t_star)[0] for m in modes]
+    pref = u_star[0] * u_star[1] * u_star[2]
+    Pw = [float(abs(u) ** 2) for u in u_star]; Psum = Pw[0] * Pw[1] + Pw[0] * Pw[2] + Pw[1] * Pw[2]
+    parts = {n: float(5 / 6 * (-2 * np.imag(pref * I)) / Psum) for n, I in (("contraction", Ic), ("window", Iw), ("expansion", Ie))}
+    return dict(k_etaB=kt, eta_star_over_etaB=eta_star_fac, k_eta_star=float(k * eta_star_fac * bg.eta_B), delta=delta,
+                f_NL_after=float(sum(parts.values())), parts=parts, valid=bool(k * eta_star_fac * bg.eta_B < 0.3))
+
+
+def s2_tests(bg, K3f, kt=1e-3):
+    """Gate (ii): eta*-independence, window sensitivity, step convergence for the S2 raw window integral."""
+    log(f"\n[gate ii] S2 raw window integral tests at k eta_B = {kt:g}")
+    es = []
+    for fac in (10.0, 20.0, 50.0, 100.0):
+        r, _ = bounce_window_fnl(bg, K3f, "S2", kt, eta_star_fac=fac); es.append(r)
+        log(f"   eta* = {fac:5.0f} eta_B (k eta* = {r['k_eta_star']:.3f}, valid {r['valid']}): Delta f_NL = {r['f_NL']:+.7f}")
+    ws = []
+    for win in (0.5, 0.75, 1.0, 1.25, 1.5, 2.0):
+        r, _ = bounce_window_fnl(bg, K3f, "S2", kt, win=win, npts=8001); ws.append(r)
+        log(f"   window [-{win:g}, {win:g}] tm: Delta f_NL = {r['f_NL']:+.7f}")
+    cs = []
+    for n in (1001, 2001, 4001, 8001, 16001):
+        r, _ = bounce_window_fnl(bg, K3f, "S2", kt, npts=n); cs.append(r)
+        log(f"   npts = {n:6d}: Delta f_NL = {r['f_NL']:+.10f}")
+    vals = [e["f_NL"] for e in es if e["valid"]]
+    return dict(eta_star_scan=es, eta_star_spread_valid=float(max(vals) - min(vals)), window_scan=ws,
+                step_convergence=cs, step_rel=float(abs(cs[-1]["f_NL"] - cs[-2]["f_NL"]) / abs(cs[-1]["f_NL"])))
+
+
+# ---------------------------------------------------------------- operator-sector attribution
+def sector_kernels(K3):
+    """Split the raw cubic kernel by constraint content: (n_N1, n_psi) degrees. Pure (0,0) = terms with only
+    zeta, zetadot and gradients (e^{3 zeta}, R^(3), (H+zetadot)^2 pieces); the rest come through the lapse/shift."""
+    Ns, Ps = [N[j] for j in LEGS], [P[j] for j in LEGS]
+    poly = sp.Poly(K3, *Ns, *Ps)
+    groups = {}
+    for mon, coef in poly.terms():
+        key = (sum(mon[:3]), sum(mon[3:]))
+        term = coef * sp.prod([v**e for v, e in zip(Ns + Ps, mon)])
+        groups[key] = groups.get(key, 0) + term
+    return {k: kernel_fn(v) for k, v in groups.items()}
+
+
+def sector_split_S2(bg, K3, kt, eta_star_fac=50.0):
+    """f_NL^after[S2] by sector, end-to-end (contraction+window+expansion share the u(t*) prefactor)."""
+    out = {}
+    for key, fn in sector_kernels(K3).items():
+        r = full_fnl_after_S2(bg, fn, kt, eta_star_fac=eta_star_fac, npts_c=60001)
+        out[f"N1^{key[0]} psi^{key[1]}"] = dict(f_NL_after=r["f_NL_after"], parts=r["parts"])
+    return out

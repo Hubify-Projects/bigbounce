@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getRecentActivity, type ActivityEvent } from "@/lib/liveActivity";
+import { Band, PageHeader, StatRow, TimelineList, type TimelineEntry } from "@/components/primitives";
 
 export const metadata: Metadata = {
   title: "Activity",
@@ -8,22 +9,6 @@ export const metadata: Metadata = {
     "Time-stamped activity feed for the BigBounce research program — version bumps, review rounds, finding closures, and compute events from the live research database.",
 };
 
-function relativeTime(ms: number, now: number): string {
-  const diff = now - ms;
-  const min = Math.floor(diff / 60000);
-  if (min < 1) return "just now";
-  if (min < 60) return `${min} min ago`;
-  const hr = Math.floor(min / 60);
-  if (hr < 24) return `${hr} hr ago`;
-  const day = Math.floor(hr / 24);
-  if (day < 30) return `${day}d ago`;
-  const mo = Math.floor(day / 30);
-  return `${mo}mo ago`;
-}
-
-/* Render in PT (matching the home-page header), not UTC. Some event writers
-   stored PDT-naive datetimes as UTC (+7h) and one pod writer ran ~36h fast,
-   so raw stamps used to render up to 2 days in the future. */
 const ptFormat = new Intl.DateTimeFormat("en-CA", {
   timeZone: "America/Los_Angeles",
   year: "numeric",
@@ -38,269 +23,82 @@ function ptLine(ms: number): string {
   return ptFormat.format(new Date(ms)).replace(",", "") + " PT";
 }
 
-/* Defensive clamp: a research log can never contain future events. If a
-   Convex row carries a timestamp ahead of render time (bad writer clock /
-   PDT-naive double conversion), display it clamped to render time and keep
-   the raw stored stamp in the tooltip for forensics. */
-function clampTimestamp(
-  ms: number,
-  now: number,
-): { ms: number; skewed: boolean } {
-  return ms > now + 60_000 ? { ms: now, skewed: true } : { ms, skewed: false };
+function clampTimestamp(ms: number, now: number): number {
+  return ms > now + 60_000 ? now : ms;
 }
 
-/** Strip internal "(subagent)" suffix before public display. */
 function publicHeadline(raw: string): string {
   return raw.replace(/\s*\(subagent\)\s*$/i, "").trim();
 }
 
-/**
- * Normalize a Convex paperSlug to a human-readable label.
- * "paper-1a" → "Paper 1A", "paper-2" → "Paper 2", etc.
- */
-function paperLabel(slug: string): string {
-  return slug.replace(
-    /^paper-(\d+)([a-zA-Z]?)$/,
-    (_, n, l) => `Paper ${n}${l.toUpperCase()}`,
-  );
+function paperLabel(slug: string | null): string | undefined {
+  if (!slug) return undefined;
+  return slug.replace(/^paper-(\d+)([a-zA-Z]?)$/, (_, n, l) => `Paper ${n}${l.toUpperCase()}`);
 }
 
 function kindLabel(kind: string): string {
   switch (kind) {
-    case "version_bump": return "VERSION";
-    case "r_round": return "REVIEW ROUND";
-    case "r_round_done": return "REVIEW ROUND ✓";
-    case "finding_real_close": return "FINDING ✓";
-    case "finding_audit_close": return "FINDING (verified)";
-    case "caveat_close": return "CAVEAT ✓";
-    case "pod_start": return "COMPUTE START";
-    case "pod_stop": return "COMPUTE STOP";
-    default: return kind.toUpperCase();
+    case "version_bump": return "version";
+    case "r_round": return "review round";
+    case "r_round_done": return "review round ✓";
+    case "finding_real_close": return "finding ✓";
+    case "finding_audit_close": return "finding (verified)";
+    case "caveat_close": return "caveat ✓";
+    case "pod_start": return "compute start";
+    case "pod_stop": return "compute stop";
+    default: return kind.replace(/_/g, " ");
   }
+}
+
+function toEntry(e: ActivityEvent, now: number): TimelineEntry {
+  const ts = clampTimestamp(e.timestamp, now);
+  const paper = paperLabel(e.paperSlug);
+  return {
+    id: e.id,
+    dateISO: ptLine(ts),
+    kind: kindLabel(e.kind),
+    title: paper ? `${paper} · ${publicHeadline(e.headline)}` : publicHeadline(e.headline),
+    summary: e.detail || undefined,
+    href: e.paperSlug ? `/papers/${e.paperSlug}` : undefined,
+  };
 }
 
 export default async function ActivityPage() {
   const { events, summary, source, fetchedAt } = await getRecentActivity(300);
   const live = source === "convex";
-  const renderedAt = fetchedAt;
 
   return (
     <>
-      <div className="hero">
-        <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Live Research Activity
-        </p>
-        <h1 style={{ fontFamily: "var(--font-mono-stack)", fontWeight: 600 }}>
-          Activity Feed
-          <span
-            style={{
-              marginLeft: 12,
-              fontSize: "0.7rem",
-              color: live ? "#16a34a" : "#d97706",
-              fontFamily: "var(--font-mono-stack)",
-              verticalAlign: "middle",
-            }}
-            title={
-              live
-                ? "Live data — every review round, finding closure, and compute event lands here within seconds."
-                : "Live feed temporarily unavailable."
-            }
-          >
-            ● {live ? "LIVE" : "OFFLINE"}
-          </span>
-        </h1>
-        <p className="subtitle">
-          Every research event from the live database:
-          version bumps, review rounds, finding closures, caveat resolutions,
-          compute runs. Time-sorted descending. See{" "}
-          <Link href="/docs">/docs</Link> for how the pipeline writes here.
-        </p>
-        <p
-          style={{
-            fontFamily: "var(--font-mono-stack)",
-            fontSize: "0.78rem",
-            marginTop: 12,
-            padding: "10px 14px",
-            border: "1px solid var(--border)",
-            borderRadius: 8,
-            color: "var(--text-secondary)",
-            maxWidth: "72ch",
-          }}
-        >
-          Looking for the progress story? The curated review-loop timeline — paper/kind
-          filters, verdict trajectories, gap-closure and skills-growth charts — lives at{" "}
-          <Link href="/reviews" style={{ color: "var(--accent-link)", textDecoration: "underline" }}>
-            /reviews
-          </Link>
-          . This page is the raw machine-event stream.
-        </p>
-      </div>
-
-      {summary && (
-        <section
-          aria-label="Activity summary"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-            gap: 10,
-            marginTop: 20,
-            marginBottom: 20,
-            fontFamily: "var(--font-mono-stack)",
-            fontSize: "0.82rem",
-          }}
-        >
-          {[
-            { label: "Versions", v: summary.paperVersions },
-            { label: "Review Rounds", v: summary.rRounds },
-            { label: "Findings (open)", v: summary.findings.open },
-            { label: "Findings (closed)", v: summary.findings.closed },
-            { label: "Caveats (open)", v: summary.caveats.open },
-            { label: "Caveats (closed)", v: summary.caveats.closed },
-            { label: "Compute (running)", v: summary.pods.running },
-          ].map((s) => (
-            <div
-              key={s.label}
-              style={{
-                border: "1px solid var(--border)",
-                borderRadius: 8,
-                padding: "10px 12px",
-                background: "rgba(0,0,0,0.02)",
-              }}
-            >
-              <div style={{ color: "var(--text-muted)", fontSize: "0.7rem", marginBottom: 4 }}>
-                {s.label}
-              </div>
-              <div style={{ fontSize: "1.1rem", fontWeight: 600 }}>{s.v}</div>
-            </div>
-          ))}
-        </section>
-      )}
-
-      <section
-        aria-label="Event feed"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 6,
-          marginTop: 24,
-        }}
-      >
-        {events.length === 0 && (
-          <p
-            style={{
-              color: "var(--text-muted)",
-              padding: 16,
-              border: "1px dashed var(--border)",
-              borderRadius: 8,
-              fontFamily: "var(--font-mono-stack)",
-              fontSize: "0.85rem",
-            }}
-          >
-            No activity in the feed yet. Activity will appear as research events are recorded.
-          </p>
+      <Band>
+        <PageHeader
+          eyebrow={live ? "Live research activity" : "Activity feed offline"}
+          title="Activity"
+          lead="Every research event from the live database — version bumps, review rounds, finding closures, caveat resolutions, compute runs — time-sorted, newest first. The curated review-loop story (verdict trajectories, gap-closure, skills growth) lives at /reviews; this is the raw machine-event stream."
+          actions={[{ label: "Review activity →", href: "/reviews" }]}
+        />
+        {summary && (
+          <StatRow
+            items={[
+              { value: summary.paperVersions, label: "versions" },
+              { value: summary.rRounds, label: "review rounds" },
+              { value: summary.findings.open, label: "findings open" },
+              { value: summary.findings.closed, label: "findings closed" },
+              { value: summary.caveats.open, label: "caveats open" },
+              { value: summary.pods.running, label: "compute running" },
+            ]}
+          />
         )}
-        {events.map((e: ActivityEvent) => {
-          const { ms: displayTs, skewed } = clampTimestamp(
-            e.timestamp,
-            renderedAt,
-          );
-          return (
-          <article
-            key={e.id}
-            style={{
-              border: "1px solid var(--border)",
-              borderLeft: `4px solid ${e.colorHint}`,
-              borderRadius: 6,
-              padding: "10px 14px",
-              fontFamily: "var(--font-mono-stack)",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: 12,
-                alignItems: "baseline",
-                flexWrap: "wrap",
-                marginBottom: 4,
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.06em",
-                  color: e.colorHint,
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                }}
-              >
-                {kindLabel(e.kind)}
-              </span>
-              {e.paperSlug && (
-                <Link
-                  href={`/papers/${e.paperSlug}`}
-                  style={{
-                    fontSize: "0.7rem",
-                    color: "var(--text-muted)",
-                    textDecoration: "none",
-                  }}
-                >
-                  {paperLabel(e.paperSlug)}
-                </Link>
-              )}
-              <span
-                style={{
-                  fontSize: "0.7rem",
-                  color: "var(--text-muted)",
-                  marginLeft: "auto",
-                }}
-                title={
-                  skewed
-                    ? `stored stamp ${ptLine(e.timestamp)} is in the future (writer clock skew) — clamped to feed-render time`
-                    : ptLine(e.timestamp)
-                }
-              >
-                {ptLine(displayTs)} · {relativeTime(displayTs, renderedAt)}
-                {skewed && (
-                  <span
-                    style={{ color: "var(--warn, #d97706)", marginLeft: 6 }}
-                    aria-label="timestamp clamped due to writer clock skew"
-                  >
-                    ⚠ clock-skew
-                  </span>
-                )}
-              </span>
-            </div>
-            <div style={{ fontSize: "0.88rem", marginBottom: 4 }}>
-              {publicHeadline(e.headline)}
-            </div>
-            {e.detail && (
-              <div
-                style={{
-                  fontSize: "0.78rem",
-                  color: "var(--text-muted)",
-                  lineHeight: 1.4,
-                }}
-              >
-                {e.detail}
-              </div>
-            )}
-          </article>
-          );
-        })}
-      </section>
-
-      <p
-        style={{
-          marginTop: 32,
-          fontSize: "0.72rem",
-          color: "var(--text-muted)",
-          fontFamily: "var(--font-mono-stack)",
-          textAlign: "center",
-        }}
-      >
-        Showing up to 300 events. Older history in git log
-        (github.com/Hubify-Projects/bigbounce) and SSOT/queue.md.
-      </p>
+      </Band>
+      <Band tone="alt">
+        <TimelineList entries={events.map((e) => toEntry(e, fetchedAt))} />
+        {events.length === 0 && (
+          <p className="row-purpose">No activity in the feed yet.</p>
+        )}
+        <p className="timeline-list-empty" style={{ marginTop: 16 }}>
+          Showing up to 300 events. Older history in{" "}
+          <Link href="https://github.com/Hubify-Projects/bigbounce">git log</Link> and SSOT/queue.md.
+        </p>
+      </Band>
     </>
   );
 }
