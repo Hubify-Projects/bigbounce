@@ -219,6 +219,23 @@ def matter_mode(k, eta_m, alpha=1.0, beta=0.0):
     return (alpha * fp + beta * fm) / np.sqrt(2 * k), (alpha * dfp + beta * dfm) / np.sqrt(2 * k)
 
 
+def matter_real_basis(k, eta_m):
+    """Real solutions of v'' + (k^2 - 2/eta^2) v = 0: g1 = cos x - sin x/x (~ -x^2/3, the constant-zeta branch),
+    g2 = sin x + cos x/x (the eta^-3 branch), x = k eta; returns g1, g2, dg1/deta, dg2/deta (well conditioned)."""
+    x = k * eta_m
+    if abs(x) < 0.5:
+        n = np.arange(0, 14)
+        c = (-1.0) ** n * (2 * n) / np.array([factorial(2 * m + 1) for m in n], dtype=float)
+        g1 = float((c * x ** (2 * n)).sum())
+        dg1 = float((c[1:] * 2 * n[1:] * x ** (2 * n[1:] - 1)).sum())
+    else:
+        g1 = np.cos(x) - np.sin(x) / x
+        dg1 = -np.sin(x) - np.cos(x) / x + np.sin(x) / x**2
+    g2 = np.sin(x) + np.cos(x) / x
+    dg2 = g1 - np.cos(x) / x**2
+    return g1, g2, k * dg1, k * dg2
+
+
 def window_series(bg, k, scheme, order=90):
     """Two power-series basis solutions of the window MS equation (coefficient arrays).
     S2: t zdd + (3 Ups t^2 - 2) zd + k^2 t e^{-Ups t^2} z = 0  (Frobenius exponents 0, 3; c1 = 0 forced).
@@ -251,3 +268,82 @@ def series_eval(c, t):
     fd = (n[1:] * c[1:] * tt ** (n[1:] - 1)).sum(-1)
     fd_over_t = (n[2:] * c[2:] * tt ** (n[2:] - 2)).sum(-1)      # exact when c1 = 0 (S2 Frobenius)
     return f, fd, fd_over_t
+
+
+# ---------------------------------------------------------------- modes through the bounce (both schemes)
+class BounceModes:
+    """zeta_k(t) through the Quintin bounce.  Contraction: adiabatic vacuum matter mode, zeta = v/z,
+    z = a sqrt(2 eps_c) (S2: eps_c = 3/2 true; S1: eps_c = 1/2, z = a).  Junctions at |t| = tm: zeta and
+    a^3 eps zetadot continuous (S2: zetadot flips sign since eps: +3/2 -> -3/2; S1: eps_eff constant).
+    Window: exact power series (window_series).  Expansion: exact matter basis (alpha, beta)."""
+
+    def __init__(self, bg, k, scheme):
+        self.bg, self.k, self.scheme = bg, float(k), scheme
+        self.eps_c = 1.5 if scheme == "S2" else 0.5
+        tm, am = bg.tm, bg.am
+        s2e = np.sqrt(2 * self.eps_c)
+        # contraction side of the junction
+        em = bg.eta_m(-tm)
+        v, dv = matter_mode(k, em)
+        z, dz = s2e * am, s2e * am**2 * bg.H(-tm)              # dz/deta = sqrt(2eps) a' = sqrt(2eps) a^2 H
+        zeta, zp = v / z, (dv * z - v * dz) / z**2
+        zd = zp / am
+        if scheme == "S2":
+            zd = -zd                                            # eps_-/eps_+ = (3/2)/(-3/2)
+        self.f1, self.f2 = window_series(bg, k, scheme)
+        F = np.array([[series_eval(self.f1, -tm)[0], series_eval(self.f2, -tm)[0]],
+                      [series_eval(self.f1, -tm)[1], series_eval(self.f2, -tm)[1]]])
+        self.A, self.B = np.linalg.solve(F, np.array([zeta, zd]))
+        # expansion side
+        zeta_p, zd_p, _ = self.window(tm)
+        if scheme == "S2":
+            zd_p = -zd_p
+        g1, g2, dg1, dg2 = matter_real_basis(k, bg.eta_m(tm))
+        zz, dzz = s2e * am, s2e * am**2 * bg.H(tm)
+        vv, vvp = zz * zeta_p, dzz * zeta_p + zz * zd_p * am
+        self.cA, self.cB = np.linalg.solve(np.array([[g1, g2], [dg1, dg2]]), np.array([vv, vvp]))
+        # S2 regular constraint data: psi = (a^2 w/k^2 - zeta)/(Ups t)  -> series of the numerator / t
+        if scheme == "S2":
+            self.p1, self.p2 = [self._psi_series(c) for c in (self.f1, self.f2)]
+
+    def _psi_series(self, c):
+        U, k2 = self.bg.Ups, self.k**2
+        n = len(c)
+        gp = [U**m / factorial(m) for m in range(n // 2 + 2)]           # a^2 = e^{Ups t^2}
+        w = np.zeros(n); w[:-2] = np.arange(2, n) * c[2:]                  # w = zd/t = sum (n c_n) t^{n-2}
+        num = np.zeros(n)
+        for j in range(n):
+            num[j] = sum(gp[m] * w[j - 2 * m] for m in range(0, j // 2 + 1)) / k2 - c[j]
+        assert abs(num[0]) < 1e-12 * max(1.0, abs(c[0]))                    # residue cancellation
+        return num[1:] / U                                                  # psi = sum num_{j+1} t^j / Ups
+
+    def window(self, t):
+        z1, d1, w1 = series_eval(self.f1, t); z2, d2, w2 = series_eval(self.f2, t)
+        return self.A * z1 + self.B * z2, self.A * d1 + self.B * d2, self.A * w1 + self.B * w2
+
+    def psi_window(self, t):
+        n = np.arange(len(self.p1)); tt = np.asarray(t, dtype=float)[..., None]
+        return self.A * (self.p1 * tt**n).sum(-1) + self.B * (self.p2 * tt**n).sum(-1)
+
+    def late(self, t):
+        """(zeta, zetadot) in the expansion phase t >= tm."""
+        a = self.bg.a(t)
+        g1, g2, dg1, dg2 = matter_real_basis(self.k, float(self.bg.eta_m(t)))
+        v, dv = self.cA * g1 + self.cB * g2, self.cA * dg1 + self.cB * dg2
+        z, dz = np.sqrt(2 * self.eps_c) * a, np.sqrt(2 * self.eps_c) * a**2 * self.bg.H(t)
+        return v / z, (dv * z - v * dz) / z**2 / a
+
+    def early(self, t):
+        em = self.bg.eta_m(t); a = self.bg.a(t)
+        v, dv = matter_mode(self.k, em)
+        z, dz = np.sqrt(2 * self.eps_c) * a, np.sqrt(2 * self.eps_c) * a**2 * self.bg.H(t)
+        return v / z, (dv * z - v * dz) / z**2 / a
+
+    def wronskian(self, t):
+        """2 a^3 eps (u udot* - u* udot) / i  (must be 1; eps = scheme's eps at t)."""
+        bg = self.bg
+        if abs(t) < bg.tm:
+            u, ud, _ = self.window(t); eps = (-bg.Hd(t) / bg.H(t)**2) if self.scheme == "S2" else 0.5
+        else:
+            u, ud = (self.late(t) if t > 0 else self.early(t)); eps = self.eps_c
+        return float(np.real(2 * bg.a(t)**3 * eps * (u * np.conj(ud) - np.conj(u) * ud) / 1j))
