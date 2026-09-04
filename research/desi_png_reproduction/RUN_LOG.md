@@ -153,3 +153,12 @@ constraint, (2) transfer function upgrade (camb/cosmoprimo[class]/pyccl),
 model + measured shot noise, (5) remaining systematics splits. Writing
 `LEDGER4_RESULT_v2_2026-09-04.md` (supersedes v1, v1 kept as record).
 Budget: ~4h local CPU. Steps logged below as they complete.
+
+**Fix 3 scope cut (2026-09-04):** n_ran=7 (planned bump from 4) did not
+complete its NGC FFT pass within ~50 min wall clock (severe swap pressure
+observed on this shared machine, `vm.swapusage` showed 24.4/25.6 GB used --
+other concurrent sessions on this host, not this job alone, per CLAUDE.md's
+noted concurrent-lane activity). Killed and retried at n_ran=5 (realisations
+0-4/cap) for tractability -- still a real increase over v1's 4, short of the
+7 downloaded/sha256'd. Full 7-realisation run remains a named next step once
+the host is less contended.
