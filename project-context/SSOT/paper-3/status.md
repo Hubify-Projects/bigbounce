@@ -16,6 +16,14 @@
 **Current candidate:** v3.2.0-r17 · `pipelines/p3_anomaly_engine/paper3_apjs.tex`
 **Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
 
+**Disposition 2026-09-03: data release.** The AUG-011 anomaly-characterization
+cohort (ledger #8) is disposed as a data release, not a standalone paper — see
+`PAPER_LINEAGE_2026-08-05.md` §"Anomaly catalogue (P3/AUG-011) → DATA RELEASE
+(ledger #8 answered)" and the release document
+`pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md`.
+No readiness-cap change — this disposition is orthogonal to the paper3_apjs.tex
+public-ID recovery release above.
+
 The current artifact is a bounded **public-ID recovery and provenance
 release**, not the anomaly-discovery flagship and not a standalone ApJS
 submission. Its approved role is supporting infrastructure for the rebuilt

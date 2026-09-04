@@ -471,3 +471,41 @@ located, δN reconciliation, consistent with Li et al. 2016."
 **Convergence budget:** one round run (`ROUND_2026-09-02-P2L-v2L.0.1-EXACTPDF-e1501145-R1`);
 rounds stop here for the Letter (directive R2). Closure detail:
 `project-context/SSOT/paper-2l/status.md` §"R1 closure — 2026-09-02 (evening)".
+
+## Decision record — 2026-09-03: Anomaly catalogue (P3/AUG-011) → DATA RELEASE (ledger #8 answered)
+
+**ORIGINAL CLAIM (item (h) above, 2026-09-02):** the AUG-011 discovery-flagship
+anomaly-characterization cohort was redirected to the early-universe anomaly
+map (Track C2), "publishable only when ledger #8's known-object recovery
+benchmark is earned."
+
+**PRE-DECLARED CRITERION** (`NEXT_SCIENCE_LEDGER.md` row 8): "Recovery rates +
+one confirmed class → paper; else release," with the confirmed-class bar set
+at ≥1 reference class, >10× enrichment, ≥5 positional matches.
+
+**MEASURED (2026-09-03, v2 science-only sample, S>3, n=1,244, provenance-gate
+clean — supersedes the v1 SAMPLE-V1-CONTAMINATED run):**
+- VizieR reference-class cross-match: 1 BAL-quasar match at 4.2× enrichment
+  (5,285 in-footprint references); 0 matches each for Roma-BZCAT blazars,
+  CV/white-dwarf binaries, LAEs, SLSN host galaxies.
+- Exit rule (≥1 class, >10× enrichment, ≥5 matches): **NOT MET** — the one
+  nonzero cell clears neither the enrichment nor the match-count bar.
+- SIMBAD/NED: 569/1,244 (45.7%) matched, 675/1,244 (54.3%) unmatched.
+- Taxonomy: 25 UMAP+HDBSCAN clusters roll up to 8 descriptive families over
+  the 675 unmatched objects (302/87/71/61/44/38/36/36).
+
+**NEW DISPOSITION:** the anomaly catalogue is a **data release**, not a
+standalone paper — the pre-declared success condition is unmet on the only
+non-contaminated sample. Consistent with
+`PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`'s framing of P3 as integrated
+supporting material rather than a standalone candidate. Release document:
+`pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md`.
+Full benchmark: `pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/recovery_benchmark/PHASE3_V2_BENCHMARK_SUMMARY.md`;
+landing receipt: `project-context/PHASE3_V2_LANDING_2026-09-03.md`.
+
+**WHAT WOULD REOPEN THE PAPER:** a confirmed class from a future closed-loop
+follow-up — i.e. a reference class clearing the pre-declared bar (>10×
+enrichment, ≥5 positional matches) on a subsequent characterization pass, or
+an independently-derived discriminator (per ledger #6) confronted with this
+catalogue's candidate families. Absent that, the catalogue stands as public
+data-release infrastructure for the lab's early-universe anomaly-map line.
