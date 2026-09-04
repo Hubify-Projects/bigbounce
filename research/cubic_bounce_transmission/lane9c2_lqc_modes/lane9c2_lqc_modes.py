@@ -62,3 +62,55 @@ ETA_STAR_SCAN = [2.0, 5.0, 10.0, 30.0]
 ABS_PLATEAU = 1.0e3                           # ABS sec. IV B / VII |f_NL| plateau
 ABS_DECAY = 1.830229                          # exp(-alpha k_t/k_LQC) -> exp(-1.83 k eta_B), lane 9c sec. 2.2
 K_LQC_ETAB = 1.060146                         # lane 9c sec. 2.2, LQC dust
+
+
+# =====================================================================
+# [S] initial states
+# =====================================================================
+def _W_tools(bg):
+    """W(eta) = a''/a as a spline, plus a helper for smooth local derivatives."""
+    return CubicSpline(bg["eta"], bg["appa"])
+
+
+def _adiabatic_order4(Wspl, k, eta0, half=None, npts=4001):
+    """4th-order adiabatic (WKB) vacuum at eta0 for mu'' + (k^2 - W) mu = 0.
+
+    omega0^2 = k^2 - W;  Omega_(2)^2 = omega0^2 - (1/2)(omega0''/omega0) + (3/4)(omega0'/omega0)^2
+               Omega_(4)^2 = omega0^2 - (1/2)(Omega_2''/Omega_2) + (3/4)(Omega_2'/Omega_2)^2
+    mu = (2 Omega_(4))^(-1/2),  mu' = (-i Omega_(4) - Omega_(4)'/(2 Omega_(4))) mu
+    (overall phase irrelevant; Wronskian Im(mu* mu') = -1/2 exactly).
+    Returns (mu0, dmu0, diagnostics) or (None, None, reason).
+    """
+    if half is None:
+        half = max(0.02 * abs(eta0), 1e-3)
+    e = np.linspace(eta0 - half, eta0 + half, npts)
+    w2 = k * k - Wspl(e)
+    if np.any(w2 <= 0):
+        return None, None, {"defined": False, "reason": "k^2 - W <= 0 in the WKB window"}
+    w0 = np.sqrt(w2)
+    s0 = CubicSpline(e, w0)
+    O2sq = w2 - 0.5 * s0.derivative(2)(e) / w0 + 0.75 * (s0.derivative(1)(e) / w0) ** 2
+    if np.any(O2sq <= 0):
+        return None, None, {"defined": False, "reason": "2nd-order adiabatic Omega^2 <= 0"}
+    O2 = np.sqrt(O2sq)
+    s2 = CubicSpline(e, O2)
+    O4sq = w2 - 0.5 * s2.derivative(2)(e) / O2 + 0.75 * (s2.derivative(1)(e) / O2) ** 2
+    if np.any(O4sq <= 0):
+        return None, None, {"defined": False, "reason": "4th-order adiabatic Omega^2 <= 0"}
+    O4 = np.sqrt(O4sq)
+    s4 = CubicSpline(e, O4)
+    Om, dOm = float(s4(eta0)), float(s4.derivative(1)(eta0))
+    mu0 = 1.0 / np.sqrt(2.0 * Om) + 0.0j
+    dmu0 = (-1j * Om - dOm / (2.0 * Om)) * mu0
+    diag = {"defined": True, "Omega4": Om, "omega0": float(np.interp(eta0, e, w0)),
+            "adiabaticity_dOmega_over_Omega2": float(abs(dOm) / Om ** 2)}
+    return mu0, dmu0, diag
+
+
+def _find_ad4_time(Wspl, bg, k, eta0, margin=4.0):
+    """Latest pre-bounce eta <= eta0 with k^2 >= margin * W(eta); None if there is none."""
+    e = -np.geomspace(abs(eta0), 0.95 * bg["eta_far"], 4000)
+    ok = k * k >= margin * Wspl(e)
+    if not np.any(ok):
+        return None
+    return float(e[np.argmax(ok)])
