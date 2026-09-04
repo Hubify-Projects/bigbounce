@@ -1,0 +1,733 @@
+{
+  "core_sha256": "01806975c071416df340f47b79314591eabf89555556037dbd3b7bfbccda9993",
+  "generated_at": "2026-09-04T22:48:58.785493Z",
+  "generic_engine": {
+    "bytes": 10058,
+    "git_commit": "79a436e24ea4bdbb6887d12f896b4ba124e1c03d",
+    "path": "/Users/houstongolden/.claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py",
+    "sha256": "c81578ce3ecaa5b80103284f9560c45c89303d6b1e2e6e79f0cbefaa1b4d99f5"
+  },
+  "generic_rule_receipt": {
+    "catalog": {
+      "bytes": 8816,
+      "sha256": "41fcd45b9903848382a3c1c03ea1d831b8e768d7bb04c2c4efec785d66be6be9"
+    },
+    "core_sha256": "19c97def57398941c25e7e740fbee3511dd1ae01631290e9ee5a1c289bc34fa4",
+    "finding_count": 0,
+    "findings": [],
+    "project_root": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce",
+    "rule_count": 9,
+    "schema": "hubstack.paper-pre-review-receipt/v1",
+    "sources": [
+      {
+        "bytes": 344880,
+        "path": "arxiv/paper1a_ech_nogo.tex",
+        "sha256": "7fff23a4c20d97022d09dee08488704efbd9b4181c93c1dca6a562d7e5417943"
+      },
+      {
+        "bytes": 26925,
+        "path": "arxiv/paper1b_namaster_proof.tex",
+        "sha256": "03109e0d2ab86058c8ef57b798e1eb988afc260a20cdf314f7112176f2628946"
+      },
+      {
+        "bytes": 244792,
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "42c3cb34776a6159ef69fdc3c1b1c325b979e26eaf3edacb0b284e7ddc10c7c3"
+      },
+      {
+        "bytes": 87352,
+        "path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "sha256": "c3a6823d2e936abdb9583227f79ef57415035a7481abe2094854fbba9914e73f"
+      },
+      {
+        "bytes": 356022,
+        "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+        "sha256": "04741ad11fdd5c538fa16758e074f9d3beb4c0bba0a4148bcd6b1175d3c57cd4"
+      },
+      {
+        "bytes": 200450,
+        "path": "research/focused_paper_source_integration/02_full_draft.tex",
+        "sha256": "4a780eb8666ad536f25fc5cf75e9d2331e0fa8c384d0e89f4a50aabdf3d14943"
+      }
+    ],
+    "verdict": "PASS"
+  },
+  "generic_rule_receipt_sha256": "80cad43630395f271f4c58ffe7ea856279848895863fbe521a63a1f9dff4e70a",
+  "paper_count": 6,
+  "papers": [
+    {
+      "pages": 8,
+      "paper_id": "P1A",
+      "pdf": {
+        "bytes": 362791,
+        "path": "arxiv/paper1a_ech_nogo.pdf",
+        "sha256": "210be8f0b285034d88b9854c532eaac4a32147cea2621dedbaaac94540bbc7f0"
+      },
+      "source": {
+        "bytes": 344880,
+        "path": "arxiv/paper1a_ech_nogo.tex",
+        "sha256": "7fff23a4c20d97022d09dee08488704efbd9b4181c93c1dca6a562d7e5417943"
+      },
+      "verdict": "PASS",
+      "version": "v1A.0.127"
+    },
+    {
+      "pages": 6,
+      "paper_id": "P1B",
+      "pdf": {
+        "bytes": 383162,
+        "path": "arxiv/paper1b_namaster_proof.pdf",
+        "sha256": "2fb957101604066382ddb604da41b9fe3bc2a48ae4a799ca25c2b34eaac6267a"
+      },
+      "source": {
+        "bytes": 26925,
+        "path": "arxiv/paper1b_namaster_proof.tex",
+        "sha256": "03109e0d2ab86058c8ef57b798e1eb988afc260a20cdf314f7112176f2628946"
+      },
+      "verdict": "PASS",
+      "version": "v2B.0.16"
+    },
+    {
+      "pages": 12,
+      "paper_id": "P2",
+      "pdf": {
+        "bytes": 604293,
+        "path": "research/focused_paper_source_integration/02_full_draft.pdf",
+        "sha256": "d3afe79fe70ce13cee5ec8149e84c4b42c78224ca6a90569058ec501222f5c2f"
+      },
+      "source": {
+        "bytes": 200450,
+        "path": "research/focused_paper_source_integration/02_full_draft.tex",
+        "sha256": "4a780eb8666ad536f25fc5cf75e9d2331e0fa8c384d0e89f4a50aabdf3d14943"
+      },
+      "verdict": "PASS",
+      "version": "v1.7.130"
+    },
+    {
+      "pages": 17,
+      "paper_id": "P3",
+      "pdf": {
+        "bytes": 496555,
+        "path": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+        "sha256": "9a3769269ada4d2a5371aa447e6ce93aa55518ae2a3b13fdc3d83f0b8b779a0b"
+      },
+      "source": {
+        "bytes": 87352,
+        "path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+        "sha256": "c3a6823d2e936abdb9583227f79ef57415035a7481abe2094854fbba9914e73f"
+      },
+      "verdict": "PASS",
+      "version": "v3.2.0-r17"
+    },
+    {
+      "pages": 32,
+      "paper_id": "P4",
+      "pdf": {
+        "bytes": 33988973,
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+        "sha256": "2641a228af1e3decf17d18341570c4e779483a823267421fe041aade1375e0d7"
+      },
+      "source": {
+        "bytes": 244792,
+        "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+        "sha256": "42c3cb34776a6159ef69fdc3c1b1c325b979e26eaf3edacb0b284e7ddc10c7c3"
+      },
+      "verdict": "PASS",
+      "version": "v1.0.274"
+    },
+    {
+      "pages": 46,
+      "paper_id": "P5",
+      "pdf": {
+        "bytes": 1555206,
+        "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+        "sha256": "3c1c484118d21ecab9a26655135df9d982c27d375095c2693b4376a86317b18e"
+      },
+      "source": {
+        "bytes": 356022,
+        "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+        "sha256": "04741ad11fdd5c538fa16758e074f9d3beb4c0bba0a4148bcd6b1175d3c57cd4"
+      },
+      "verdict": "PASS",
+      "version": "v0.1.147-2026-08-03"
+    },
+    {
+      "draft": true,
+      "pages": 14,
+      "paper_id": "A3M",
+      "pdf": {
+        "bytes": 707384,
+        "path": "research/track_a3_multichannel/paper/main.pdf",
+        "sha256": "790fafa691e1a6ef0c476309d8224c5f2af2a59e4a3966f6afa0cf9d9dff4105"
+      },
+      "source": {
+        "bytes": 87960,
+        "path": "research/track_a3_multichannel/paper/main.tex",
+        "sha256": "d560e20824491fe14eb41f4a8e8f0d70df236285b2628bd2889832174128eca4"
+      },
+      "verdict": "PASS",
+      "version": "v3M.0.11"
+    },
+    {
+      "draft": true,
+      "pages": 25,
+      "paper_id": "P1C",
+      "pdf": {
+        "bytes": 564674,
+        "path": "arxiv/paper1c_nogo_survey/main.pdf",
+        "sha256": "285948c6248e79951d1f961142bee844baab23dd03012d009ac78afb02ac409c"
+      },
+      "source": {
+        "bytes": 191070,
+        "path": "arxiv/paper1c_nogo_survey/main.tex",
+        "sha256": "ba7d4ac6f4cbc1f441854b0a81bb184bde862f843b9eba9bdf935f534d1ecd0c"
+      },
+      "verdict": "PASS",
+      "version": "v1C.0.16"
+    },
+    {
+      "draft": true,
+      "pages": 11,
+      "paper_id": "P1N",
+      "pdf": {
+        "bytes": 433652,
+        "path": "arxiv/paper1bc_ech_note/main.pdf",
+        "sha256": "014a96ebffc21d75e92dfa7e05592132ef4ba0a5fa950a6ec50c4b33a6e8e3d9"
+      },
+      "source": {
+        "bytes": 67182,
+        "path": "arxiv/paper1bc_ech_note/main.tex",
+        "sha256": "273fcbff0b84850efc95d9df720377df0d021e49648f861957121f0040c697d8"
+      },
+      "verdict": "PASS",
+      "version": "v1N.0.5"
+    },
+    {
+      "draft": true,
+      "pages": 4,
+      "paper_id": "P2L",
+      "pdf": {
+        "bytes": 347144,
+        "path": "arxiv/paper2prime_fnl_letter/main.pdf",
+        "sha256": "314022c9bd3c4985084c5ee969f85a4fe0f4dac5ff2fb21ad5451bc9bcd463e6"
+      },
+      "source": {
+        "bytes": 19506,
+        "path": "arxiv/paper2prime_fnl_letter/main.tex",
+        "sha256": "11269ecc5e9df1e698a1f14d41de2bcdd500de51b922dd8144a6a5becadd957f"
+      },
+      "verdict": "PASS",
+      "version": "v2L.0.2"
+    },
+    {
+      "draft": true,
+      "pages": 11,
+      "paper_id": "P4P",
+      "pdf": {
+        "bytes": 1090759,
+        "path": "pipelines/p4prime_chirality_test/paper/main.pdf",
+        "sha256": "b60781c761ea10eb26e3ce1b9ccb06a0a17c05d44588972a9c42f6602991a5fb"
+      },
+      "source": {
+        "bytes": 61374,
+        "path": "pipelines/p4prime_chirality_test/paper/main.tex",
+        "sha256": "01764dba15dd439f3fc566d214a644818dbe42cf708305ce0442f007d7dd106a"
+      },
+      "verdict": "PASS",
+      "version": "v4P.0.5"
+    }
+  ],
+  "portfolio_engine": [
+    {
+      "bytes": 8816,
+      "path": "project-context/pre-review-rules.json",
+      "sha256": "41fcd45b9903848382a3c1c03ea1d831b8e768d7bb04c2c4efec785d66be6be9"
+    },
+    {
+      "bytes": 21795,
+      "path": "tools/bigbounce_preflight.py",
+      "sha256": "b4409f31104aaaa83eaf7313b83e679536d5c7b07cd51ed5ed24c4682921f9bd"
+    },
+    {
+      "bytes": 6793,
+      "path": "tools/artifact_crosscheck.py",
+      "sha256": "ae604cbc7ef3f188c6f0be68d8f58a3b92ee555052bd66be226705274802d2a4"
+    },
+    {
+      "bytes": 6445,
+      "path": "tools/verify_analysis_artifact_manifest.py",
+      "sha256": "15834cdd601982bf15625da8d0b4c1743d6559e22b554c67c4acdffabbc65527"
+    },
+    {
+      "bytes": 8836,
+      "path": "tools/verify_p1b_science_contracts.py",
+      "sha256": "2fd143b83e2faeeaf5a9f6689aa035747fe59e18a8994124adb65963994bcc6b"
+    },
+    {
+      "bytes": 13527,
+      "path": "tools/verify_p4_p5_science_contracts.py",
+      "sha256": "7057c794a3a7c85759095b049717cd095bf370f4dcbcdd22660db033bd898c0e"
+    },
+    {
+      "bytes": 7397,
+      "path": "tools/verify_claim_dependency_graph.py",
+      "sha256": "60f527254ec8a0ea34868e84c8d5ac8757158b4b3fc1b2ccdf38ea35ba0e6cd2"
+    },
+    {
+      "bytes": 3480,
+      "path": "tools/verify_ci_shell_portability.py",
+      "sha256": "4e12577c121f949fc74547c586ed92f72b3437d1a87b84748d8763b8f5080146"
+    },
+    {
+      "bytes": 3614,
+      "path": "project-context/claim-dependency-graph.json",
+      "sha256": "0b0aba182b205335e9d952af78abed865491b956cbdcfe7881f3e760ec9f9b6d"
+    },
+    {
+      "bytes": 17457,
+      "path": "tools/verify_companion_status.py",
+      "sha256": "97249820c18f0a53e957713487a664c7e531c6cc3e812703c7d4ca34d536fd25"
+    },
+    {
+      "bytes": 6451,
+      "path": "project-context/companion-status-ledger.json",
+      "sha256": "30b8b5775199a683241ec5d07a50bdca0f234cca3c92ccf625592602ba94e220"
+    },
+    {
+      "bytes": 25354,
+      "path": "tools/verify_pdf_mirror_integrity.py",
+      "sha256": "f2b065dd141a44d271ea661607271bda415c8358e31da06baab0b3814e2ce675"
+    }
+  ],
+  "portfolio_validators": [
+    {
+      "artifact_count": 230,
+      "base_repository_commit": "59517e43ab185d3e185681fd61065f99a11d1616",
+      "core_sha256": "83b934bfd9be196a2993115eb985907513d4a4e5fbc931b7e8cad78452972ea8",
+      "id": "p1b-analysis-manifest",
+      "manifest_bytes": 101002,
+      "manifest_path": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.112.json",
+      "manifest_sha256": "b941ab6d032b4691434b6951e57ad37d30c52401b4b9c50b3b370d6ff3d1d705",
+      "paper_version": "v1B.0.112",
+      "schema": "bigbounce.analysis-artifact-manifest-verification/v1",
+      "storage_counts": {
+        "git-blob": 206,
+        "git-lfs-pointer": 24
+      },
+      "verdict": "PASS"
+    },
+    {
+      "contracts": {
+        "alp_estimand_language": true,
+        "bbn_executed_provenance": true,
+        "namaster_raw_c_ell_500mc": true,
+        "reviewed_manuscript_semantics": true,
+        "s8_uniform_burn_in": true,
+        "version_matched_manifest": true
+      },
+      "id": "p1b-science-contracts",
+      "schema": "bigbounce.p1b-science-contracts/v1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "artifact-crosscheck-six",
+      "paper_count": 6,
+      "papers": [
+        {
+          "output": "paper version: v1A.0.127 | candidate paths: 1\nOK       research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py\n\nPASS: 0 problems\n",
+          "output_sha256": "8bcd1b37919ca440fa90cf639c03c26a73403a41fc8f7bdb5b045bdeacbc0a75",
+          "paper_id": "P1A",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v2B.0.16 | candidate paths: 3\nOK       packages/namaster-proof\nOK       reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/bandpowers.npz\nOK       reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json\n\nPASS: 0 problems\n",
+          "output_sha256": "d3278d917ad5613c381254b15fb86c2722661f0d723121dcb16688e6a77a6f5e",
+          "paper_id": "P1B",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v1.7.130 | candidate paths: 11\nOK       research/cubic_bounce_transmission/g1_dressedmetric_ic_close.json\nOK       research/cubic_bounce_transmission/g1_dressedmetric_ic_close.py\nOK       research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.py\nOK       scripts/c13_independent_bounce_fisher.py\nOK       scripts/c14_rsd_multipole_fisher.py\nOK       scripts/c15_channel_native_fisher.py\nOK       scripts/caili_certification/cai_conv.py\nOK       scripts/caili_certification/cai_shape.py\nOK       scripts/caili_certification/cai_vertices.py\nOK       scripts/exact_shape_analysis.py\nOK       scripts/p2_vertex_check.py\n\nPASS: 0 problems\n",
+          "output_sha256": "dd031c513113a608428740d6f4ab4f1f10765943d403b3515e6306bb49c32ef9",
+          "paper_id": "P2",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v3.2.0-r17 | candidate paths: 8\nOK       pipelines/p3_anomaly_engine/apjs_submission_bundle_v3.2.0-r7/coordinate_lineage/COORDINATE_LINEAGE_AUDIT.json\nOK       pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json\nOK       pipelines/p3_anomaly_engine/outputs/desi_injection_recovery/RECONCILIATION_history_2026-06-28.json\nOK       pipelines/p3_anomaly_engine/outputs/dp3_15_heldout_reinference.json\nOK       pipelines/p3_anomaly_engine/outputs/p3_apjs_r16_core_conditioned_control.json\nOK       pipelines/p3_anomaly_engine/outputs/p3_apjs_r6_science_controls.json\nOK       pipelines/p3_anomaly_engine/pathc_positional_dedup.py\nOK       pipelines/p3_anomaly_engine/scripts/p3_apjs_r6_science_controls.py\n\nPASS: 0 problems\n",
+          "output_sha256": "af74136fad403afb5500cc9ec39835075edc188bcd44ea85bd5f4181baca1bb5",
+          "paper_id": "P3",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v1.0.274 | candidate paths: 32\nOK       pipelines/p2_chirality/BENCHMARK_REPORT.md\nOK       pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.json\nOK       pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.json\nOK       pipelines/p2_chirality/analysis/monopole_correction_map_v1_0_262.json\nHISTORICAL-LABEL pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json: explicitly versioned artifact contains ['v1.0.259']; paper is v1.0.274\nOK       pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json\nHISTORICAL-LABEL pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json: explicitly versioned artifact contains ['v1.0.259']; paper is v1.0.274\nOK       pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m4_slab_stats.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c16_r24conf_pod_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_flip_identity_qc.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g3_joint_estimator_covariance_master_v2.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g4_monopole_mechanism_injection.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g4_perpixel_confusion_nside64.npz\nOK       pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/stage_b_hybrid_image_field_recovery.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/DIAGNOSIS_ce_included_retrain.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/PROVENANCE.md\nOK       pipelines/p2_chirality/outputs/g1_full_composition/g1_full_composition_manifest.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/pod_evidence/g1_per_source_eval.json\nOK       pipelines/p2_chirality/outputs/g1_retrain/PROVENANCE.md\nOK       pipelines/p2_chirality/outputs/g1_retrain/g1_training_manifest.json\nOK       pipelines/p2_chirality/outputs/gz1_stratified_confusion.json\nOK       pipelines/p2_chirality/scripts/g1_ce_composition_assembly.py\nOK       pipelines/p2_chirality/scripts/gz1_stratified_confusion.py\nOK       pipelines/p2_chirality/scripts/joint_nuisance_bootstrap_sigma.py\nWARN-OLD-COMMIT 397671bf: valid ancestor but not HEAD (da3bbb2a) \u2014 update at restamp\n\nPASS: 0 problems\n",
+          "output_sha256": "f30b07fc7cb7d2a0294928e336880271c17e3e6eea2eafea69e7d79321e5ee1f",
+          "paper_id": "P4",
+          "verdict": "PASS"
+        },
+        {
+          "output": "paper version: v0.1.147-2026-08-03 | candidate paths: 43\nOK       analysis/forward_leakage_injection_v0_1_141.json\nOK       analysis/forward_leakage_injection_v0_1_141.py\nOK       analysis/global_multiplicity_bound_v0_1_140.json\nOK       analysis/global_multiplicity_bound_v0_1_140.py\nOK       env_finder/01_compute_vweb.py\nOK       env_finder/03_tempel_cross_validation.py\nOK       env_finder/config.yaml\nOK       env_finder/reports/01_volume_fractions.json\nOK       env_finder/reports/02_phase2_sweep.csv\nOK       outputs/16_cosmic_web_zshell_corrected.json\nOK       outputs/17_v0151_closure_recomputes.json\nOK       outputs/18_v0151_stratified_and_density.json\nOK       outputs/19_v0151_zshell_geofootprint_check.json\nOK       outputs/20_v0151_covariate_regression.json\nOK       outputs/21_r23conf_meta_closures.json\nOK       outputs/22_r24conf_local_batch.json\nOK       outputs/23_unique_parent_rebuild.json\nOK       outputs/24_r24conf_pod_session.json\nOK       outputs/25_completeness_weighted_rebuild.json\nOK       outputs/26_r27conf_ess_recomputes.json\nOK       outputs/27_ext1_logistic_program_control.json\nOK       outputs/27_rsd_void_recon_bound.json\nOK       outputs/28_ext1_desivast_program_split.json\nOK       outputs/29_ext3_desivast_footprint_retabulation.json\nOK       outputs/30_ext4_galzone_complement_contrasts.json\nOK       outputs/31_ext5_appendixB_tables.json\nOK       outputs/35_desivast_cluster_bootstrap.json\nOK       outputs/36_desivast_native_selection_control.json\nOK       outputs/36_desivast_native_selection_manifest.json\nOK       outputs/36_desivast_native_selection_rows.parquet\nOK       outputs/38_focal_cluster_inference_sensitivity.json\nOK       outputs/39_focal_interaction_clustering_robustness.json\nOK       p2_chirality/outputs/gz1_stratified_confusion.json\nOK       p2_chirality/scripts/gz1_stratified_confusion.py\nOK       scripts/16_cosmic_web_zshell_corrected.py\nOK       scripts/27_rsd_void_recon_bound.py\nOK       scripts/31_ext5_appendixB_tables.py\nOK       scripts/35_desivast_cluster_bootstrap.py\nOK       scripts/36_desivast_native_selection_control.py\nOK       scripts/38_focal_cluster_inference_sensitivity.py\nOK       scripts/39_focal_interaction_clustering_robustness.py\nWARN-OLD-COMMIT 84d53b75: valid ancestor but not HEAD (da3bbb2a) \u2014 update at restamp\n\nPASS: 0 problems\n",
+          "output_sha256": "b4eb6f569b9ad7ec7833f06549ae79c1deb64e548733a9653ffe98c19ec2d741",
+          "paper_id": "P5",
+          "verdict": "PASS"
+        }
+      ],
+      "schema": "bigbounce.artifact-crosscheck-six/v1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "p4-p5-science-contracts",
+      "receipts": {
+        "p4_harmonics": {
+          "bytes": 7189,
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+          "sha256": "5b025a55c1a3dac86e61c005c604437298ce89f3b27056447f7bca2ba3e5ae06"
+        },
+        "p4_primary": {
+          "bytes": 2200,
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
+          "sha256": "cda8bbac0f9bc7765ab0a89ef41b2bfbe41e9725b228639d33c58185571ea397"
+        },
+        "p4_strict_release": {
+          "bytes": 3074,
+          "path": "pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json",
+          "sha256": "adc862fce8f521fe482490a14f8cbb3cb442d72f01095f77c4c52b7951863ed6"
+        },
+        "p5_robustness": {
+          "bytes": 13991,
+          "path": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json",
+          "sha256": "847e7da42322ce43573c901b40f20cd56ade13fbaa028a8d840fdf9deca5a637"
+        }
+      },
+      "schema": "bigbounce.p4-p5-science-contracts/v1",
+      "verdict": "PASS"
+    },
+    {
+      "anchor_count": 10,
+      "checked_files": [
+        {
+          "bytes": 244792,
+          "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+          "sha256": "42c3cb34776a6159ef69fdc3c1b1c325b979e26eaf3edacb0b284e7ddc10c7c3"
+        },
+        {
+          "bytes": 7189,
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+          "sha256": "5b025a55c1a3dac86e61c005c604437298ce89f3b27056447f7bca2ba3e5ae06"
+        },
+        {
+          "bytes": 2200,
+          "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
+          "sha256": "cda8bbac0f9bc7765ab0a89ef41b2bfbe41e9725b228639d33c58185571ea397"
+        },
+        {
+          "bytes": 13991,
+          "path": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json",
+          "sha256": "847e7da42322ce43573c901b40f20cd56ade13fbaa028a8d840fdf9deca5a637"
+        },
+        {
+          "bytes": 356022,
+          "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+          "sha256": "04741ad11fdd5c538fa16758e074f9d3beb4c0bba0a4148bcd6b1175d3c57cd4"
+        }
+      ],
+      "claim_count": 5,
+      "claims": [
+        {
+          "anchor_count": 2,
+          "anchors": [
+            {
+              "expected": "8,474,531",
+              "kind": "literal",
+              "occurrences": 8,
+              "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+              "surface": "P4-manuscript"
+            },
+            {
+              "expected": "8{,}474{,}531",
+              "kind": "literal",
+              "occurrences": 3,
+              "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+              "surface": "P5-manuscript"
+            }
+          ],
+          "description": "The released Paper 4 science-facing Catalog C contains 8,474,531 rows, and Paper 5 identifies that same upstream catalog.",
+          "id": "P4-CATALOG-ROW-COUNT",
+          "surface_count": 2,
+          "verdict": "PASS"
+        },
+        {
+          "anchor_count": 2,
+          "anchors": [
+            {
+              "expected": "0.4974",
+              "kind": "literal",
+              "occurrences": 2,
+              "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+              "surface": "P4-manuscript"
+            },
+            {
+              "expected": "0.4974",
+              "kind": "literal",
+              "occurrences": 9,
+              "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+              "surface": "P5-manuscript"
+            }
+          ],
+          "description": "Paper 5's imported Paper 4 Catalog C monopole agrees with the value stated by Paper 4.",
+          "id": "P4-CATALOG-C-MONOPOLE",
+          "surface_count": 2,
+          "verdict": "PASS"
+        },
+        {
+          "anchor_count": 2,
+          "anchors": [
+            {
+              "expected": "890,069",
+              "kind": "literal",
+              "occurrences": 5,
+              "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+              "surface": "P4-manuscript"
+            },
+            {
+              "expected": "890069",
+              "kind": "literal",
+              "occurrences": 2,
+              "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
+              "surface": "P4-science-receipt"
+            }
+          ],
+          "description": "Paper 4's strict release-safe primary sample size is bound to its retained computational receipt.",
+          "id": "P4-STRICT-PRIMARY-N",
+          "surface_count": 2,
+          "verdict": "PASS"
+        },
+        {
+          "anchor_count": 2,
+          "anchors": [
+            {
+              "expected": "24,087",
+              "kind": "literal",
+              "occurrences": 18,
+              "path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+              "surface": "P4-manuscript"
+            },
+            {
+              "expected": "24087",
+              "kind": "literal",
+              "occurrences": 2,
+              "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+              "surface": "P4-science-receipt"
+            }
+          ],
+          "description": "Paper 4's harmonic statements use the same 24,087-pixel support as the retained harmonic receipt.",
+          "id": "P4-FSC-PIXEL-SUPPORT",
+          "surface_count": 2,
+          "verdict": "PASS"
+        },
+        {
+          "anchor_count": 2,
+          "anchors": [
+            {
+              "expected": "145,766",
+              "kind": "literal",
+              "occurrences": 1,
+              "path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+              "surface": "P5-manuscript"
+            },
+            {
+              "expected": "145766",
+              "kind": "literal",
+              "occurrences": 1,
+              "path": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json",
+              "surface": "P5-science-receipt"
+            }
+          ],
+          "description": "Paper 5's released-GALZONE/VoidFinder focal sample size is bound to the retained robustness receipt.",
+          "id": "P5-FOCAL-ROBUSTNESS-N",
+          "surface_count": 2,
+          "verdict": "PASS"
+        }
+      ],
+      "graph": {
+        "bytes": 3614,
+        "path": "project-context/claim-dependency-graph.json",
+        "sha256": "0b0aba182b205335e9d952af78abed865491b956cbdcfe7881f3e760ec9f9b6d"
+      },
+      "id": "claim-dependency-graph",
+      "schema": "bigbounce.claim-dependency-graph-receipt/v1",
+      "verdict": "PASS"
+    },
+    {
+      "finding_count": 0,
+      "findings": [],
+      "id": "ci-shell-portability",
+      "receipt_sha256": "4c290e1cdf7eaedceea8bc7429d222f10ad9d42187abfc4fb68844a096ac32e9",
+      "schema": "bigbounce.ci-shell-portability/v1",
+      "verdict": "PASS",
+      "workflow_count": 1,
+      "workflows": [
+        {
+          "bytes": 2031,
+          "path": ".github/workflows/namaster-proof.yml",
+          "sha256": "88a81a18511fee2f89152cf0047226b190827c930be29c5e87445841a49bd330"
+        }
+      ]
+    },
+    {
+      "finding_count": 0,
+      "findings": [],
+      "id": "companion-status",
+      "ledger": "project-context/companion-status-ledger.json",
+      "ledger_verified_on": "2026-07-24",
+      "papers": [
+        {
+          "finding_count": 0,
+          "paper_id": "P1A",
+          "tex_path": "arxiv/paper1a_ech_nogo.tex",
+          "verdict": "PASS"
+        },
+        {
+          "finding_count": 0,
+          "paper_id": "P1B",
+          "tex_path": "arxiv/paper1b_namaster_proof.tex",
+          "verdict": "PASS"
+        },
+        {
+          "finding_count": 0,
+          "paper_id": "P2",
+          "tex_path": "research/focused_paper_source_integration/02_full_draft.tex",
+          "verdict": "PASS"
+        },
+        {
+          "finding_count": 0,
+          "paper_id": "P3",
+          "tex_path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+          "verdict": "PASS"
+        },
+        {
+          "finding_count": 0,
+          "paper_id": "P4",
+          "tex_path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+          "verdict": "PASS"
+        },
+        {
+          "finding_count": 0,
+          "paper_id": "P5",
+          "tex_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+          "verdict": "PASS"
+        }
+      ],
+      "published_companions": [
+        "P1A",
+        "P1B",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "schema": "bigbounce.companion-status/v1",
+      "unpublished_companions": [
+        "P5"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "finding_count": 0,
+      "findings": [],
+      "id": "pdf-mirror-integrity",
+      "papers": [
+        {
+          "md5": "0bc1ee72836c867114118521cf86e1c2",
+          "paper_id": "P1A",
+          "pdf_path": "arxiv/paper1a_ech_nogo.pdf",
+          "version": "v1A.0.127"
+        },
+        {
+          "md5": "6d20df58e70261c805cd2ce2f9a4d5d3",
+          "paper_id": "P1B",
+          "pdf_path": "arxiv/paper1b_namaster_proof.pdf",
+          "version": "v2B.0.16"
+        },
+        {
+          "md5": "a993987a65d2ede378a3d0fc204a6228",
+          "paper_id": "P1B-MCMC",
+          "pdf_path": "arxiv/paper1b_mcmc_companion.pdf",
+          "version": "v1B.0.112"
+        },
+        {
+          "md5": "0b46380e34d130c2c9824eb62b08a170",
+          "paper_id": "P1C",
+          "pdf_path": "arxiv/paper1c_nogo_survey/main.pdf",
+          "version": "v1C.0.16"
+        },
+        {
+          "md5": "f7116fe3e2541d6f649876f2ec7789ee",
+          "paper_id": "P2",
+          "pdf_path": "research/focused_paper_source_integration/02_full_draft.pdf",
+          "version": "v1.7.130"
+        },
+        {
+          "md5": "477b0d83ca31f6ace3273bb19bcfcf34",
+          "paper_id": "P3",
+          "pdf_path": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+          "version": "v3.2.0-r17"
+        },
+        {
+          "md5": "6c7de2b81dfa3d7af2a7414214d57cfc",
+          "paper_id": "P4",
+          "pdf_path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+          "version": "v1.0.274"
+        },
+        {
+          "md5": "8b9365ff762e0baed12ad9963d9aea1d",
+          "paper_id": "P5",
+          "pdf_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+          "version": "v0.1.147-2026-08-03"
+        }
+      ],
+      "policy_schema": "bigbounce.served-pdf-policy/v1",
+      "schema": "bigbounce.pdf-mirror-integrity/v1",
+      "served_inventory": {
+        "counts": {
+          "current_mirror": 34,
+          "immutable_archive": 1146,
+          "non_manuscript_asset": 12,
+          "orphan": 0,
+          "retained_by_policy": 0,
+          "total": 1192
+        },
+        "inventory_sha256": "241ea61a48a1048432730b6643f9d8af00f917b280d55b2b0b84a5bb5015451a",
+        "inventory_size": 1192
+      },
+      "served_roots": [
+        "public",
+        "site/public"
+      ],
+      "site_data_sources": [
+        {
+          "kind": "current-paper-artifacts",
+          "path": "site/src/data/papers.ts",
+          "reference_count": 20
+        },
+        {
+          "kind": "current-paper-artifacts",
+          "path": "site/src/data/live-status.ts",
+          "reference_count": 0
+        },
+        {
+          "kind": "historical-archive-links",
+          "path": "site/src/data/reviewTimeline.ts",
+          "reference_count": 28
+        }
+      ],
+      "verdict": "PASS"
+    }
+  ],
+  "receipt_sha256": "02034ebbf6a6b1166d5379eec2d4eb90a10554f8f8808289ce4d1a024fb74ec8",
+  "registry": {
+    "bytes": 7143,
+    "path": "project-context/paper_registry.json",
+    "sha256": "40e726f109887d00d505f77a8aee9eab126d5773fd846959574662e7287e9698"
+  },
+  "repository_head": "da3bbb2aff946180e3fea9987c21e1f31cc4478a",
+  "schema": "bigbounce.pre-review-portfolio-receipt/v1",
+  "verdict": "PASS"
+}
