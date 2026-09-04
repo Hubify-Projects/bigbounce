@@ -508,3 +508,119 @@ above traces to the source files named above or to the R3 truth audit.
 - **Directive G:** `\paperVersion` v3M.0.10, date 2026-09-04; 4-pass, 0 undefined refs/cites, 0 overfull >10pt, **13 pp**; pages 1/5/6/11/12/13 rendered and inspected; served `site/public/papers/a3_multichannel_arxiv_v3M.0.10.pdf` + `public/papers/…` byte-identical; **three-way md5 PASS** compile == served == Convex `d3981d8b5ed2cbf6b02bd771f784ee1c`; Convex `paperVersions:bump` id `k575ayh1ejerb184hvjjhjch598drgaf`, `activityFeed:add` id `j57104bpxp9pn22q32ygqrvw1h8dsdps`; tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.10.tar.gz` sha256 `b7265d810f11034f4e6cc743f800922b56f3aa71c1d1ff4c24f27330c1ebe077` (main.tex + 2 figures; standalone smoke compile 13 pp, only a font-shape warning).
 - **Readiness 75, unchanged.** Publication readiness composition: evidence 25 + convergence (0 genuinely-new outstanding after this closure, but not yet re-verified) + packaging 20 + science: the three science-gate items are closed, and Track A now states three honest nulls + one unseparable channel. **ROUNDS STOPPED under directive R2:** two science decisions were taken this session (C1 propagate; D-A3-3 PTA null); the next board requires a new science decision first (the remaining route: bounce-scale enhancement at kη_B ~ 1, ledger A3-1e).
 - Not sourced from a committed file: none.
+
+## v3M.0.11 (2026-09-04) — science decision D-A3-9 (ledger row 9) integrated
+
+**Science decision D-A3-9** recorded in `project-context/PAPER_LINEAGE_2026-08-05.md`
+(2026-09-04 entry) before this edit. Sources (bounded reads, every number
+traced to a committed file): `research/cubic_bounce_transmission/lane9b_s2_regulation/`,
+`lane9b2_s2_rawadm/` (+ `results.json`), `lane9a_velocity_dip/`,
+`lane9c_abs_operator/`, `lane9c2_lqc_modes/` (+ `results.json`).
+
+**§III (Transmission).** The "S2 does not regulate" claim is replaced by a
+two-scheme statement: the S2 apparent divergence is a total-derivative
+artefact of the Maldacena/Chen integrated-by-parts cubic form (explicit
+$1/H$ factors singular at the bounce); on the *raw* ADM cubic Lagrangian,
+exact S2 mode functions give a comoving-gauge lapse/shift that is regular
+at $H=0$ (residue cancellation), so the bounce-window integral is finite
+and requires no cutoff. On the Quintin-type background (the only one
+evaluated in S2), $\fnl^{\rm after}[{\rm S2}]=-1.249,-1.246,-1.244$ at
+$k\eta_B=10^{-3},3\times10^{-3},10^{-2}$ against S1's $-0.501$ — a factor
+$\approx2.5$, dominated by the linear Mukhanov–Sasaki variable choice
+($|\lambda_\zeta|=0.97$ vs $6.06$) plus an $O(1)$ geometric-vs-lapse
+cancellation in the cubic term, not a single operator. The earlier
+statement that the Agullo–Bolliet–Sreenath (2017) LQC cubic operator is
+"not contained in S1" is corrected: their $\mathcal H^{(3)}$ is, by their
+own statement, the Legendre transform of the classical cubic action and
+contains no quantum-geometric term; every one of its nine operators maps
+onto S1's vertex table. Evaluated with exact LQC-dust modes across
+$k\eta_B\in[0.1,10]$ and three initial states, the bispectrum shows no
+counterpart of their order-$10^3$ enhancement (2.1–4.4 dex below their
+plateau, state-dependence under 13%). A real, background-dependent,
+sign-indefinite $O(1)$ transfer feature at $k\eta_B\approx0.6$–$0.8$ is
+disclosed ($\Delta^2$ ratio $\times1.76$/$\times2.24$/$\times0.058$ on
+Quintin/LQC/poly) and the Quintin *et al.* velocity-dip amplification
+(their Eq. 79) is shown to evaluate to exactly 1 on all three backgrounds
+(no matter-sector carrier exists on any of them). None of the three
+row-9 mechanisms reopens the PTA or PBH nulls.
+
+**Table IV.** Gains an S2 row block (Quintin-type only, $-35/16$):
+SPHEREx bispectrum-only $1.78\sigma$, SPHEREx $P+B$ target $2.49\sigma$,
+MegaMapper $1.25\sigma$ (`survey_reach_fnl.py`, extended to read
+`lane9b2_s2_rawadm/results.json`; re-emitted
+`outputs/survey_reach_fnl.json`). The $-35/8$ S2 row is explicitly **not
+computed** — no window-convention-free $T_{\rm S2}$/$\Delta_{\rm S2}$
+decomposition exists to scale from $-35/16$ without re-running the
+raw-ADM in-in integral with the Cai normalization (per the task's
+instruction not to scale without new physics).
+
+**§V (PBH null) / §VII (Discussion).** §V now cites the exact-mode
+$k\eta_B\approx3$ bispectrum result directly ($|\fnl|\approx0.9$–$1.9$,
+worsening the required-excursion threshold to $3364\sigma$ from $3162\sigma$
+Gaussian; even the largest number in the row-9 scan, $|\fnl|\approx1.2\times10^3$
+equilateral, leaves $408\sigma$ against the 7.0-dex deficit) alongside the
+pre-existing literature survey. §VII's "a second scheme (S2) does not
+regulate at all, so scheme-independence remains open" is replaced: the
+question is answered negatively (finite, factor $\approx2.5$ from S1),
+not left open.
+
+**Abstract.** Restates the transmitted amplitude as a two-scheme band,
+$\fnl^{\rm after}\in[-1.25,-0.50]$ ($-35/16$, S1∪S2). Trimmed to stay at
+or under the pre-edit raw-token length (365 vs 364 before), consistent
+with the $\le307$-word PRD cap.
+
+**Next steps.** Row-9 items replaced with what remains: (i) which linear
+variable ($z=a$ vs the effective-fluid $z^2$) is the physically correct
+continuation through $H=0$ — a theory question, since both schemes are
+now finite and genuinely different; (ii) an evaluation-time (freeze-out)
+prescription for $k\eta_B\gtrsim0.1$, where the model's lack of a
+post-bounce inflationary phase leaves $\zeta$ unfrozen; (iii) shape-overlap
+$r$ re-derivation; (iv) extending S2 to the LQC/poly backgrounds and to
+$-35/8$; (v) the direct-collapse PBH channel (unchanged from v3M.0.10).
+
+**Reproducibility statement.** Lists the five new lane9 script
+directories (`lane9a_velocity_dip/`, `lane9b_s2_regulation/`,
+`lane9b2_s2_rawadm/`, `lane9c_abs_operator/`, `lane9c2_lqc_modes/`), each
+with its own manifest under `reproducibility/manifests/experiments/`.
+
+**Hygiene (directive G).** `\paperVersion` v3M.0.10→v3M.0.11, date
+unchanged (2026-09-04, today). 4-pass `pdflatex`, 0 undefined refs/cites
+(one benign pre-existing `OMS/cmtt/m/n` font-shape warning). One overfull
+`\hbox` (49.3pt, the reproducibility-statement filename now inside the
+extended paragraph) fixed with `\allowbreak`. Two overfull hboxes remain
+(56.7pt/16.8pt at the PTA $\gamma_{\rm pred}$ display equation; 14.6pt at
+the Appendix `[L]/[K]/[X]/[S]` table) — confirmed **pre-existing**: a
+standalone recompile of the unmodified v3M.0.10 baseline (commit
+`1f895e9b`) reproduces the identical magnitudes at the identical
+paragraphs, so they are unrelated to this edit and not introduced by it.
+Pages grew 13→**14**. Pages 1 (abstract), 5 ("Scheme S2, resolved"), 9
+(PBH null), 10 (Table IV), 11 (Discussion), and 13 (reproducibility
+statement) rendered at 55 dpi and visually spot-checked — clean
+two-column layout, no new overflow. PDF md5
+`56ca90f1202595c8b7ee2f91932b3c65`, 14 pages, 707,384 bytes, mirrored
+byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.11.pdf`
+and `public/papers/a3_multichannel_arxiv_v3M.0.11.pdf` (three-way md5
+PASS: fresh compile == served == Convex, all
+`56ca90f1202595c8b7ee2f91932b3c65`). Convex `paperVersions:bump`
+(paperSlug `paper-a3m`) mutation id `k57ag2aq3hs95mvqdkfp3jv9k18dszee`;
+readback via `paperVersions:current` confirms version/md5/pages/tarball
+path match. `activityFeed:add` id `j57c3yvjyeacafhwsfp58h2k3d8dsf6r`.
+
+arXiv tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.11.tar.gz`
+sha256 `da60e774e78bc7aa8d8fb2567f98d1421802d8f5ad882f95ddd9ce3f5ac794b2`,
+190,120 bytes, rebuilt from scratch (main.tex + 2 figures, inline
+`thebibliography`, same convention as v3M.0.10), standalone
+extract+recompile smoke test PASS (14 pages, 0 undefined refs).
+
+**Readiness held at 75.** Science decision D-A3-9 taken → one
+verification board permitted under directive R2 (two decisions were
+already taken in this session's prior v3M.0.9/v3M.0.10 work; D-A3-9 is a
+further science decision on the same paper, so the next board should be
+the closing act before a readiness re-evaluation). **Site data sync
+pending redesign**: per this task's scope boundary, `site/src/` was not
+touched — five redesign lanes are editing it; the orchestrator syncs
+`site/src/data/papers.ts`, `live-status.ts`, `publish.ts`, and
+`reviewTimeline.ts` for this version in a later, separate bundle.
+
+**Not sourced from a committed file (disclosed).** None — every number
+above traces to the five lane9 files named at the top of this section.
