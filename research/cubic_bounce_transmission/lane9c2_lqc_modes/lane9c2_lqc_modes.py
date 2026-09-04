@@ -114,3 +114,77 @@ def _find_ad4_time(Wspl, bg, k, eta0, margin=4.0):
     if not np.any(ok):
         return None
     return float(e[np.argmax(ok)])
+
+
+class ModesIC:
+    """mu'' + (k^2 - a''/a) mu = 0 with a selectable initial state.
+
+    Exposes the interface lane (b)'s vertex_fnl/redef_fnl consume:
+    zeta_dz(eta) -> (zeta, dzeta/deta) with zeta = mu/a (scheme S1: z = a).
+    """
+
+    def __init__(self, bg, k, state, eta_far, eta0=None, rtol=1e-11, atol=1e-14):
+        self.bg, self.k, self.state = bg, float(k), state
+        self.af = bg["af"]
+        self.apf = bg["af"].derivative()
+        Wspl = _W_tools(bg)
+        self.info = {"state": state}
+        if state == "S-lab":
+            e_i = -eta_far
+            tau_i = e_i - bg["eta_off"]
+            u = k * tau_i
+            mu0 = np.exp(-1j * u) * (1 - 1j / u) / np.sqrt(2 * k)
+            dmu0 = (np.exp(-1j * u) * (-1j * k) * (1 - 1j / u)
+                    + np.exp(-1j * u) * (1j / (k * tau_i ** 2))) / np.sqrt(2 * k)
+            self.info["eta_start"] = float(e_i)
+        elif state == "S-ABS0":
+            e_i = float(eta0)
+            mu0 = np.exp(-1j * k * e_i) / np.sqrt(2 * k)
+            dmu0 = -1j * k * mu0
+            self.info["eta_start"] = e_i
+            self.info["k2_over_W_at_eta0"] = float(k * k / Wspl(e_i))
+        elif state == "S-ad4":
+            e_i = float(eta0)
+            mu0, dmu0, diag = _adiabatic_order4(Wspl, k, e_i)
+            if mu0 is None:
+                e_alt = _find_ad4_time(Wspl, bg, k, eta0)
+                if e_alt is None or abs(e_alt) > 0.9 * eta_far:
+                    self.ok = False
+                    self.info.update({"defined": False, "reason": diag["reason"]})
+                    return
+                mu0, dmu0, diag = _adiabatic_order4(Wspl, k, e_alt)
+                if mu0 is None:
+                    self.ok = False
+                    self.info.update({"defined": False, "reason": diag["reason"]})
+                    return
+                e_i = e_alt
+                self.info["relocated"] = True
+            self.info["eta_start"] = float(e_i)
+            self.info.update(diag)
+        else:
+            raise ValueError(state)
+        wr0 = float(np.imag(np.conj(mu0) * dmu0))
+        self.info["wronskian_initial"] = wr0
+        e_f = eta_far
+        sol = solve_ivp(lb.a2._rhs_factory(CubicSpline(bg["eta"], bg["appa"]), k),
+                        [e_i, e_f], [mu0.real, dmu0.real, mu0.imag, dmu0.imag],
+                        rtol=rtol, atol=atol, method="DOP853", dense_output=True)
+        self.sol = sol
+        self.ok = bool(sol.success)
+        self.info["ode_success"] = self.ok
+
+    def _mu(self, eta):
+        y = self.sol.sol(eta)
+        return y[0] + 1j * y[2], y[1] + 1j * y[3]
+
+    def zeta_dz(self, eta):
+        mu, dmu = self._mu(eta)
+        a, ap = self.af(eta), self.apf(eta)
+        return mu / a, (dmu - mu * ap / a) / a
+
+    def zeta_dz_closed(self, eta):
+        raise RuntimeError("closed-form super-Hubble modes are not used in lane 9c-2")
+
+    def wronskian(self, eta):
+        mu, dmu = self._mu(eta)
+        return float(np.imag(np.conj(mu) * dmu))
