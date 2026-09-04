@@ -399,15 +399,39 @@ transmitted amplitude $\fnl^{\rm after}=T_{\fnl}\cdot\fnl^{\rm before}
 +\Delta\fnl^{\rm bounce}$ (Sec.~\ref{sec:bounce_cubic}) is therefore this
 paper's observable prediction for that channel, not the pre-bounce value.
 
-What this bound does not include is the bounce's own cubic self-interaction
-term, which the loop-quantum-cosmology literature finds can \emph{enhance}
-non-Gaussianity by orders of magnitude through gravitational self-interactions
-in the third-order Hamiltonian, even in the absence of a
-potential~\cite{AgulloBolliet2017}; its sign relative to the contraction-phase
-value in Eq.~\eqref{eq:fnl} is not established by the present work and is cited
-here, not computed. Any assumption that the bounce transmits $\fnl$ with a
-coefficient near unity is therefore not supported by either calculation: the
-linear channel caps it at $1/2$ within the (A4) handoff scheme.
+What this bound does not include is behavior at $k\eta_B\gtrsim10^{-2}$,
+outside the validated band, where three mechanisms have now been checked
+directly rather than left as a citation. \textbf{(1) Linear transfer at
+finite $k$.} Evaluated exactly (not in the super-Hubble limit) across
+$k\eta_B\in[0.1,10]$ on all three backgrounds, the power-spectrum transfer
+relative to the S1 super-Hubble prediction is flat to $1$--$2\%$ outside
+$k\eta_B\in[0.2,2]$ but shows a real, background-dependent, sign-indefinite
+$O(1)$ excursion peaking at $k\eta_B\approx0.6$--$0.8$: the power ratio
+reaches $1.76$ (Quintin-type), $2.24$ (LQC), and $0.058$ (poly non-LQC).
+\textbf{(2) The Quintin \textit{et al.} scalar-field-velocity-dip
+amplification}, their Eq.~(79): evaluated for this program's $\Upsilon$
+and $\Delta t_B$, the required amplification factor is exactly $1$ on
+every background (constant on the Quintin-type background by
+construction, and not definable as a matter-sector effect on the two
+effective-fluid backgrounds), so no carrier for their mechanism exists
+here. \textbf{(3) The loop-quantum-cosmology cubic self-interaction
+enhancement}~\cite{AgulloBolliet2017}: its third-order Hamiltonian is, by
+the authors' own statement, the Legendre transform of the classical cubic
+action of Ref.~\cite{Maldacena2002} and contains no operator dependent on
+$\rho/\rho_c$ or the dressed potential; every one of its nine terms maps
+exactly onto scheme S1's vertex table, correcting an earlier statement in
+this program that the operator was absent from S1. Evaluated with the
+\emph{exact} LQC-dust dressed-metric mode functions -- not the
+super-Hubble reduction -- across $k\eta_B\in[0.1,10]$ and three choices of
+initial vacuum state, the resulting bispectrum shows no counterpart of the
+literature's order-$10^3$ plateau and no feature at the literature's own
+enhancement scale $k_{\rm LQC}\eta_B\approx1.06$: it sits $2.1$--$4.4$
+decades below that plateau, with a state-dependence under $13\%$. None of
+the three mechanisms reopens the pulsar-timing or PBH nulls
+(Secs.~\ref{sec:pta_null},~\ref{sec:pbh_inlab}). Any assumption that the
+bounce transmits $\fnl$ with a coefficient near unity is therefore not
+supported by any of these calculations: the linear channel caps it at
+$1/2$ within the (A4) handoff scheme.
 
 \subsection{The bounce's own cubic term: now computed}
 \label{sec:bounce_cubic}
@@ -445,20 +469,53 @@ poly (analytic non-LQC) & $0.196$ & $-0.127$ & $-0.555$ \\
 \hline\hline
 \end{tabular}
 \end{center}
-The LQC/S2 (effective-fluid) value $T_{\fnl}=0.409$ has no row above and is
-excluded from the combined range: $\Delta\fnl^{\rm bounce}[{\rm S2}]$ is
-divergent with no regulated value (below), so $\fnl^{\rm after}$ is not
-computable in that scheme.
-so $|\fnl^{\rm after}|\in[0.50,0.65]$ against $|\fnl^{\rm before}|=2.19$: the
-bounce's own term is negative -- it enhances $|\fnl|$, partially undoing but
-not reversing the linear suppression, at $19$--$39\%$ of the transmitted
-contraction term. This range is valid only for $k\eta_B\lesssim10^{-2}$ (set
-by the competing requirements that the post-bounce integral converge and the
-super-Hubble boundary treatment hold) and only within scheme S1; a second
-scheme (effective-fluid, S2) gives a divergent $\Delta\fnl^{\rm bounce}$ with
-no regulated value ($d_{\rm cut}^{-1}$ scaling as $d_{\rm cut}\to0$, the
-cubic-order restatement of the linear-order $z^2$ pathology) and is reported
-as a non-result, not quoted numerically anywhere in this paper.
+The LQC/S2 (effective-fluid) value $T_{\fnl}=0.409$ has no row above: S2 has
+been carried through cubic order only on the Quintin-type background
+(below).
+so $|\fnl^{\rm after}|\in[0.50,0.65]$ (S1, all three backgrounds) against
+$|\fnl^{\rm before}|=2.19$: the bounce's own term is negative -- it enhances
+$|\fnl|$, partially undoing but not reversing the linear suppression, at
+$19$--$39\%$ of the transmitted contraction term. This range is valid only
+for $k\eta_B\lesssim10^{-2}$ (set by the competing requirements that the
+post-bounce integral converge and the super-Hubble boundary treatment hold)
+and only within scheme S1.
+
+\textit{Scheme S2, resolved.}---An earlier version of this program reported
+the effective-fluid scheme S2 as divergent at the bounce and quoted no
+number. That divergence is now shown to be an artefact of the standard
+integrated-by-parts (Maldacena/Chen) form of the cubic action, which
+introduces explicit $1/H$ factors singular exactly at the bounce; on the
+exact linear S2 mode functions the comoving-gauge lapse and shift,
+$N_1=\dot\zeta/H$ and $\psi=-\zeta/H+\chi$, are individually singular but
+their sum is regular at $H=0$ (a residue cancellation), so the \emph{raw}
+ADM cubic Lagrangian, taken before any integration by parts, is finite
+on-shell through the bounce and requires no cutoff. Evaluated on this raw
+form with the exact S2 modes on the Quintin-type background, the
+bounce-window in-in integral gives, at $k\eta_B=10^{-3},3\times10^{-3},
+10^{-2}$ respectively, $\fnl^{\rm after}[{\rm S2}]=-1.249,-1.246,-1.244$
+against $\fnl^{\rm before}=-2.187\approx-35/16$ -- a factor $\approx2.5$
+above S1's $-0.501$ on the same background. The difference is dominated by
+the choice of linear Mukhanov--Sasaki variable, not by any single cubic
+operator: S2 transmits the growing mode almost unsuppressed
+($|\lambda_\zeta|=0.97$) where S1 amplifies it by $6.06$, and the net
+bounce-plus-expansion cubic contribution is $+1.0$ (S2) against $-0.14$
+(S1), traced by an operator-by-operator decomposition to a
+geometric-versus-lapse cancellation rather than a single dominant vertex.
+S1 and S2 are therefore genuinely physically inequivalent continuations
+through $H=0$, not two regularizations of the same answer, and the paper's
+own previously stated open item -- whether the transmitted amplitude is
+scheme-independent -- is answered negatively: at $\fnlloc=-35/16$ the
+transmitted amplitude is reported as the two-scheme band
+$\fnl^{\rm after}\in[-1.25,-0.50]$ on the Quintin-type background (the S1
+range across all three backgrounds is $[-0.65,-0.50]$; S2 is evaluated only
+on Quintin-type). Because the raw-form S2 bounce-window integral is not
+bounce-localised (an $O(1)$ dependence on the evaluation-window convention,
+unlike S1's), only $\fnl^{\rm before}$ and $\fnl^{\rm after}$ are
+convention-free S2 quantities; no separately regulated
+$\Delta\fnl^{\rm bounce}[{\rm S2}]$ analogous to Eq.~\eqref{eq:bounce_cubic}
+is reported, and S2's row for the Cai amplitude $-35/8$ is not computed
+(Table~\ref{tab:reach}).
+
 Quintin~\textit{et al.}'s reported bispectrum growth through a nonsingular
 bounce~\cite{Quintin2015} is not contradicted: their growth is the
 \emph{additive} bounce-generated term, the counterpart of
@@ -466,14 +523,12 @@ Eq.~\eqref{eq:bounce_cubic}, sharing its sign (both enhance $|\fnl|$); the
 factor-of-two suppression identified above is the \emph{multiplicative}
 transmission of the inherited contraction amplitude, a quantity they do not
 compute, so the two statements are about different terms and are not in
-tension. Agullo, Bolliet \& Sreenath's LQC enhancement~\cite{AgulloBolliet2017}
-remains not comparable as computed: scheme S1 contains the classical
-counterpart of their dominant operator but not its quantum-geometric
-dressing, so the present result neither reproduces nor refutes theirs. The
-nonlinear channel is therefore no longer an unknown but a scheme-limited,
-qualified prediction; every use of $\fnl^{\rm after}\in[-0.65,-0.50]$ in this
-paper carries the ``scheme S1'' qualifier, and the unqualified statement that
-the bounce produces no orders-of-magnitude enhancement is not established.
+tension. The nonlinear channel is therefore no longer an unknown but a
+scheme-qualified prediction reported as a band; every use of
+$\fnl^{\rm after}$ in this paper carries its scheme qualifier, and the
+unqualified statement that the bounce produces no orders-of-magnitude
+enhancement is addressed directly in Sec.~\ref{sec:transmission} rather
+than left open.
 The full vertex table, regularization-assumption note, numerical
 cross-check, and literature-comparison derivation are archived and
 referenced in the reproducibility statement below.
