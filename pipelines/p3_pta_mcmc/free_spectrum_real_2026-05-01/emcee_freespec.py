@@ -18,6 +18,8 @@ MCMC hyperparameters match nanograv_ptarcade.py: 32 walkers x 10,000
 production + 2,500 burn-in. Priors:
   gamma ~ U[0, 7]
   log10_A ~ U[-18, -11]
+
+Set BIGBOUNCE_WORKSPACE to run outside the original RunPod pod (default: /workspace).
 """
 import json
 import os
@@ -25,8 +27,9 @@ import time
 import numpy as np
 import emcee
 
-ROOT = "/workspace/p3_realfreespec/kde/30f_fs{hd}_ceffyl"
-OUT_DIR = "/workspace/p3_realfreespec/results"
+WORKSPACE = os.environ.get("BIGBOUNCE_WORKSPACE", "/workspace")
+ROOT = f"{WORKSPACE}/p3_realfreespec/kde/30f_fs{{hd}}_ceffyl"
+OUT_DIR = f"{WORKSPACE}/p3_realfreespec/results"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ---- Load KDE pack ----
