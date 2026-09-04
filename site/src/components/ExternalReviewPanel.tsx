@@ -83,12 +83,10 @@ export function ExternalReviewPanel({
   return (
     <section
       style={{
-        border: "1px solid var(--border)",
-        borderRadius: 10,
-        padding: 18,
+        borderTop: "1px solid var(--rule, var(--border))",
+        paddingTop: 18,
         marginTop: 24,
         marginBottom: 24,
-        background: "color-mix(in srgb, var(--surface) 80%, transparent)",
       }}
       aria-label="External peer review kit"
     >

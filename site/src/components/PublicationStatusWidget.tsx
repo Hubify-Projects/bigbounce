@@ -63,11 +63,12 @@ export function PublicationStatusWidget({
   livePapers: LivePaperState[];
   compact?: boolean;
 }) {
+  // De-nested per the redesign surface rule (§4.3): no border/radius shell —
+  // this widget always renders inside a Band, which already separates it with
+  // a tonal background. A generic bordered card here would nest one bordered
+  // surface inside another.
   const shell: React.CSSProperties = {
-    border: "1px solid var(--border)",
-    borderRadius: 10,
-    padding: compact ? "16px 18px" : "20px 22px",
-    background: "color-mix(in srgb, var(--bg) 55%, transparent)",
+    padding: compact ? "4px 0" : "8px 0",
   };
 
   // Convex unreachable. Say so plainly — the old widget rendered nothing here,
