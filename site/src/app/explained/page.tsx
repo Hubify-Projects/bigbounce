@@ -1,5 +1,6 @@
-import { Separator } from"@/components/ui/separator";
-import type { Metadata } from"next";
+import type { Metadata } from "next";
+import { Band, PageHeader } from "@/components/primitives";
+import { Term } from "@/lib/glossaryLinks";
 
 export const metadata: Metadata = {
   title: "Explainer",
@@ -10,23 +11,14 @@ export const metadata: Metadata = {
 export default function ExplainedPage() {
   return (
     <>
-      <div className="hero">
-        <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Non-Technical Explainer &middot; July 2026
-        </p>
-        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
-          The Big Bounce, Explained
-        </h1>
-        <p className="subtitle">
-          What if the Big Bang wasn&apos;t the beginning? A plain-English guide
-          to why we think the universe bounced.
-        </p>
-      </div>
-
-      <Separator className="my-8" />
+      <PageHeader
+        eyebrow="Non-technical explainer"
+        title="The Big Bounce, explained"
+        lead="What if the Big Bang wasn't the beginning? A plain-English guide to why we think the universe bounced."
+      />
 
       <section className="section">
-        <h2>The Standard Story</h2>
+        <h2>The standard story</h2>
         <p>
           The standard model of cosmology says the universe began with the Big
           Bang — an explosion from an infinitely dense point about 13.8 billion
@@ -42,7 +34,7 @@ export default function ExplainedPage() {
       </section>
 
       <section className="section">
-        <h2>The Problem with the Beginning</h2>
+        <h2>The problem with the beginning</h2>
         <p>
           General relativity — Einstein&apos;s theory of gravity — predicts
           that if you rewind the universe to the Big Bang, you hit a
@@ -59,13 +51,19 @@ export default function ExplainedPage() {
       </section>
 
       <section className="section">
-        <h2>The Bounce Alternative</h2>
+        <h2>The bounce alternative</h2>
         <p>
           Bounce cosmology proposes a different history: instead of a
           singularity, the universe underwent a &ldquo;bounce.&rdquo; A
           previous universe contracted, reached a maximum density (incredibly
           high, but finite), and then rebounded into expansion — what we
-          observe as the Big Bang.
+          observe as the Big Bang. A <Term term="matter-bounce">matter bounce</Term>{" "}
+          is the specific variant this program studies in most depth;{" "}
+          <Term term="ech">ECH theory</Term> and{" "}
+          <Term term="lqc">Loop Quantum Cosmology</Term> are two candidate
+          mechanisms for how a bounce could physically happen, via{" "}
+          <Term term="torsion">torsion</Term> or quantum-geometric repulsion
+          respectively.
         </p>
         <p>
           No singularity. No infinite density. No breakdown of physics. Just a
@@ -75,86 +73,91 @@ export default function ExplainedPage() {
       </section>
 
       <section className="section">
-        <h2>How Do We Test This?</h2>
+        <h2>How do we test this?</h2>
         <p>
           The bounce and inflation make different predictions about what we
           should see in the sky today. Our research program has identified the
           key discriminators:
         </p>
-        <div
-          className="mt-4 rounded-lg p-5"
-          style={{ background: "color-mix(in srgb, var(--surface-2) 55%, transparent)" }}
-        >
-          <div className="grid gap-5 md:grid-cols-2">
+        <Band tone="alt" width="content" className="mt-4">
+          <div className="grid gap-6 py-2 md:grid-cols-2">
             <div>
               <p
-                className="font-semibold text-sm mb-1"
+                className="mb-1 text-sm font-semibold"
                 style={{ fontFamily: "var(--font-mono-stack)" }}
               >
-                f<sub>NL</sub> = &minus;35/16
+                <Term term="f_nl">f_NL</Term> = &minus;35/16
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 The matter-bounce scenario predicts a specific pattern in how
                 galaxies cluster — a &ldquo;non-Gaussianity&rdquo; signal of
                 &minus;2.1875. Inflation predicts this number should be nearly
-                zero. NASA&apos;s SPHEREx mission (~2028) will measure this
-                directly.
+                zero. NASA&apos;s <Term term="spherex">SPHEREx</Term> mission
+                (~2028) will measure this directly.
               </p>
             </div>
             <div>
               <p
-                className="font-semibold text-sm mb-1"
+                className="mb-1 text-sm font-semibold"
                 style={{ fontFamily: "var(--font-mono-stack)" }}
               >
-                Dark Energy Dynamics
+                Dark energy dynamics
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Whether dark energy&apos;s strength changes over time is one of
-                the open questions the bounce can speak to. The quintom branch
-                of bounce cosmology predicts &ldquo;quintom-B&rdquo; behavior
-                (the equation of state crosses w = &minus;1). External DESI DR2
-                analyses now report 2.8&ndash;4.2σ for w-crossing depending on
-                the dataset combination. Our own program treats this
-                theoretically — we have not yet run a free-w<sub>0</sub>&ndash;w
+                the open questions the bounce can speak to. The{" "}
+                <Term term="quintom">quintom</Term> branch of bounce cosmology
+                predicts &ldquo;quintom-B&rdquo; behavior (the equation of
+                state crosses w = &minus;1). External DESI DR2 analyses now
+                report 2.8&ndash;4.2σ for w-crossing depending on the dataset
+                combination. Our own program treats this theoretically — we
+                have not yet run a free-w<sub>0</sub>&ndash;w
                 <sub>a</sub> MCMC ourselves; that&apos;s a planned next step.
               </p>
             </div>
             <div>
               <p
-                className="font-semibold text-sm mb-1"
+                className="mb-1 text-sm font-semibold"
                 style={{ fontFamily: "var(--font-mono-stack)" }}
               >
-                Gravitational Wave Hum
+                Gravitational wave hum
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                NANOGrav detected a cosmic gravitational wave background. The
-                bounce predicts a specific spectral shape (&gamma; = 3.0). The
-                measured spectral slope (our real free-spectrum re-fit) is 2.567 &plusmn; 0.382 — consistent at +1.13σ, while the black-hole-binary value 4.33 is excluded at +4.61σ.
+                <Term term="nanograv">NANOGrav</Term> detected a cosmic
+                gravitational wave background from{" "}
+                <Term term="pta">pulsar timing</Term>. Through the validated{" "}
+                <Term term="sigw">SIGW</Term> kernel, the bounce predicts a
+                specific spectrum — our real free-spectrum re-fit sits 14.3 dex
+                below the NANOGrav background. This channel is closed as a
+                measured null, not a detection; a bounce-scale enhancement near{" "}
+                <Term term="k-eta-b">kη_B ≈ 1</Term> is the one remaining
+                non-null route being investigated.
               </p>
             </div>
             <div>
               <p
-                className="font-semibold text-sm mb-1"
+                className="mb-1 text-sm font-semibold"
                 style={{ fontFamily: "var(--font-mono-stack)" }}
               >
                 Anomaly-detection pipeline &amp; public-ID recovery
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                An exploratory autoencoder anomaly-detection pipeline scored
-                millions of archival survey spectra to build a candidate list.
-                Paper 3 is the reproducible <strong>public-ID recovery</strong> of
-                181 DESI DR1 TARGETIDs from a frozen historical anomaly list (170
+                An exploratory <Term term="autoencoder">autoencoder</Term>{" "}
+                anomaly-detection pipeline scored millions of archival survey
+                spectra to build a candidate list. Paper 3 is the reproducible{" "}
+                <strong>public-ID recovery</strong> of 181 DESI DR1 TARGETIDs
+                from a frozen historical anomaly list (170
                 high-coordinate-consistency core + 11 lower-confidence) — an
                 archive-recovery / provenance product, explicitly not a purity,
                 novelty, or detection claim.
               </p>
             </div>
           </div>
-        </div>
+        </Band>
       </section>
 
       <section className="section">
-        <h2>What Happens Next?</h2>
+        <h2>What happens next?</h2>
         <p>
           SPHEREx launches around 2028 and will measure f<sub>NL</sub> to a
           precision of about &plusmn;1. If it finds f<sub>NL</sub> near
@@ -166,6 +169,8 @@ export default function ExplainedPage() {
           In the meantime, we&apos;re squeezing every drop of information from
           current data — improving our measurements, scanning more surveys, and
           building the most complete picture of what the data already tells us.
+          Every result carries a <Term term="readiness">readiness</Term> number
+          so you can see how far along it is.
         </p>
         <p>
           The goal is simple: find out if the universe bounced. The answer
