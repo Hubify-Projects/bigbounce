@@ -1,10 +1,14 @@
 {
   "output": "p5_matched_chirality_desi.parquet",
-  "written_utc": "2026-05-16T06:34:58Z",
-  "git_sha": "0882fcdcc75e",
-  "python": "3.10.6",
+  "written_utc": "2026-09-04T22:22:51Z",
+  "git_sha": "b8a30d19c9d3",
+  "python": "3.14.6",
   "p4_rows_after_filter": 8474531,
   "desi_rows_after_filter": 16361731,
   "config_version": "0.1.0",
-  "config_hash": "83970171f71bb863"
+  "config_hash": "83970171f71bb863",
+  "sha256": "a0fa4725841c4f6b81233a8dc7d323e1de755ed6cfa0dc878b6af24674adc147",
+  "rows": 2232212,
+  "bytes": 1297512873,
+  "regeneration_note": "2026-09-04 restoration: file was missing (gitignored, not on HF/B2/local, no sha256 recorded) per reproducibility/manifests/experiments/p5-desi-dr1-crossmatch-build.json. Regenerated via the committed recipe (scripts/01_fetch_p4_catalog.py [already local, skipped] -> 02_fetch_desi_dr1.py [raw FITS already local, only FITS->parquet conversion rerun] -> 03_crossmatch.py). Output verified byte-for-byte-equivalent in every numeric field to the pre-existing committed p5_matched_chirality_desi_summary.json (matched_primary_deduped=2232212, file size 1.3GB) -- only written_utc/git_sha/python differ."
 }
