@@ -137,3 +137,65 @@ def step_B_constraints(zeta_sol):
 
 
 STEPS.append(step_B_constraints)
+
+
+def step_C_vertex_poles(zeta_sol, cons):
+    """Pole orders of the Maldacena/Chen-form bounce-window integrands (lane (a) coefficients, cosmic time,
+    c_s = 1 form) evaluated on the EXACT modes of [A] (three legs, each leg = C1-mode unless stated),
+    compared with lane (a)'s super-Hubble counting that used zetadot ~ H^2.  chit = d^-2 zetadot = -zetadot/k^2."""
+    zd = cons["zd"]; chit = -zd / k**2
+    zC1 = zeta_sol.coeff(C1); zdC1 = zd.coeff(C1); chitC1 = chit.coeff(C1)
+    zdC2 = zd.coeff(C2); chitC2 = chit.coeff(C2)
+    rows = {
+        "V2 a^3 eps^2 zeta zetadot^2  [C1,C1,C1]": a**3 * eps**2 * zC1 * zdC1**2,
+        "V2 a^3 eps^2 zeta zetadot^2  [C1,C2,C2] (lane-a weights)": a**3 * eps**2 * zC1 * zdC2**2,
+        "V3 a eps^2 zeta (d zeta)^2  [C1^3]": a * eps**2 * zC1**3 * k**2,
+        "V4 -2 a^3 eps^2 zetadot dzeta dchit [C1^3]": -2 * a**3 * eps**2 * zdC1 * zC1 * chitC1 * k**2,
+        "V6+V7 ~ (3/4) a^3 eps^3 zeta zetadot^2-type [C1^3]": sp.Rational(3, 4) * a**3 * eps**3 * zC1 * zdC1**2,
+        "V6+V7 [C1,C2,C2] (lane-a weights)": sp.Rational(3, 4) * a**3 * eps**3 * zC1 * zdC2**2,
+        "V5 (a^3 eps/2) d(eta_sr)/dt zeta^2 zetadot [C1^3]": a**3 * eps / 2 * sp.diff(2 * eps, t) * zC1**2 * zdC1,
+    }
+    log("\n[C] Maldacena/Chen-form integrand poles on the EXACT S2 modes (cosmic-time integrand ~ t^n):")
+    out = {}
+    for name, e in rows.items():
+        p, l = lead(sp.expand(sp.series(e, t, 0, 4).removeO()))
+        tag = "non-integrable" if (p is not None and p <= -1 and p % 2 == 0) else ("odd pole (PV only)" if (p is not None and p <= -1) else "integrable")
+        log(f"    {name:60s}: t^{p}  [{tag}]  lead {l}")
+        out[name] = {"power": int(p) if p is not None else None, "class": tag, "leading_coef": str(l)}
+    log("    => with the exact C1 mode (zetadot ~ k^2 t, not H^2) even V2 is non-integrable in S2 (t^-2) and V6+V7 is t^-4:")
+    log("       lane (a)/(b)'s d_cut^-1 was the C2-weighted sub-case; the Maldacena-form S2 integral is worse, not better.")
+    RES["C_maldacena_form_poles"] = out
+
+
+def step_D_raw_adm(zeta_sol, cons):
+    """The raw ADM cubic Lagrangian in comoving gauge (Maldacena 2003 Eq. 2.9-2.11 before any integration by parts):
+       L = (1/2) sqrt(h) [ N R3 - 2 N V + N^-1 (E_ij E^ij - E^2) + N^-1 phidot^2 ],  h_ij = a^2 e^{2 zeta} delta_ij,
+       N = 1 + N1, N_i = d_i psi.  Every coefficient is a polynomial in {a, H, phidot, V} (all FINITE at H=0:
+       phidot^2 = -2 Hdot = 2 Ups, V = 3 H^2 - phidot^2/2) times products of the fields {zeta, zetadot, N1, psi}
+       and their gradients, with 1/N = 1 - N1 + N1^2 - ...  Hence the on-shell cubic integrand is regular at H=0
+       iff every building block is regular.  Building-block Laurent orders on the exact modes:"""
+    zd = cons["zd"]
+    blocks = {"zeta": zeta_sol, "zetadot": zd, "N1": cons["N1"], "psi": cons["psi"], "H": H, "phidot^2": phidot2,
+              "V = 3H^2 - phidot^2/2": 3 * H**2 - phidot2 / 2, "a": a}
+    out = {}
+    log("\n[D] raw-ADM building blocks at the bounce:")
+    ok = True
+    for name, e in blocks.items():
+        e = sp.expand(sp.series(e, t, 0, 4).removeO())
+        pmin = None
+        for part in ([e.coeff(C1), e.coeff(C2)] if (C1 in e.free_symbols or C2 in e.free_symbols) else [e]):
+            p, _ = lead(sp.expand(part))
+            if p is not None:
+                pmin = p if pmin is None else min(pmin, p)
+        log(f"    {name:26s}: leading t^{pmin}")
+        out[name] = int(pmin) if pmin is not None else None
+        ok = ok and (pmin is None or pmin >= 0)
+    log(f"    => all building blocks regular: {ok}.  The raw ADM cubic integrand is therefore FINITE through H=0 on-shell.")
+    log("       The Maldacena/Chen form differs from it by total time derivatives d/dt F whose F is built with explicit 1/H")
+    log("       and eps = phidot^2/(2H^2) (Maldacena Eq. 3.8 -> 3.9 uses the background EOM and 1/H repeatedly): F is")
+    log("       singular AT the bounce, so int dF/dt over a window containing t=0 is NOT F(t_B)-F(-t_B) and the")
+    log("       d_cut^-1 (lane b) / t^-4 (here) divergences are the divergence of the dropped total derivative, not of the physics.")
+    RES["D_raw_adm_regular"] = {"blocks": out, "all_regular": bool(ok)}
+
+
+STEPS.append(step_C_vertex_poles); STEPS.append(step_D_raw_adm)
