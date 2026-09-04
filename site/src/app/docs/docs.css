@@ -233,7 +233,6 @@
 /* article */
 .docs-article {
   scroll-margin-top: 80px;
-  border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface);
   padding: 22px 24px;
