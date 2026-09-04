@@ -491,10 +491,14 @@ $\OmGW = (2\pi^2/3H_0^2)\, f^2 h_c^2(f)$, the energy density scales as
 Hence $\gamma = 13/3$ for gravitational-wave-driven supermassive-black-hole
 binary inspirals ($\OmGW \propto f^{2/3}$), $\gamma = 5$ for a scale-invariant
 primordial tensor background ($n_{\rm T} = 0$, $\OmGW \propto f^0$), and
-$\gamma = 3$ for $\OmGW \propto f^2$, the universal infrared scaling of the
-scalar-induced background of a nonsingular matter bounce~\cite{Papanikolaou2025}.
-We stress that $\gamma = 3$ is \emph{not} the $n_{\rm T} = 0$ case; the two are
-separated by two units of slope.
+$\gamma = 2$ for $\OmGW\propto f^3$, the universal causality-limited infrared
+tail of an induced background sourced by a finite-duration
+process~\cite{CaiPiSasaki2020}. $\gamma = 3$ ($\OmGW \propto f^2$) is the
+slope Papanikolaou~\cite{Papanikolaou2025} derive for a matter bounce whose
+source spectrum carries a specific near-linear low-$k$ growth,
+$P_\mathcal{R}\propto k$; we retain it below only as a contrast case, since
+\S\ref{sec:pta_null} shows this lab's own committed spectrum does not have
+that growth and does not reproduce $\gamma=3$.
 
 \subsection{Official posterior and this lab's refit}
 
@@ -607,37 +611,63 @@ true}=13/3\to$ mean pull $-0.026\sigma$; $\gamma_{\rm true}=3\to$ mean pull
 $+0.068\sigma$ (\texttt{pta\_injection\_30bin\_2026\_09\_02.py}) -- both runs
 agree the pipeline is unbiased at well under $0.1\sigma$.
 
-\subsection{What this channel does and does not establish}
+\subsection{The model's own nHz prediction: a null}
+\label{sec:pta_null}
 
-Both the official posterior and the refit are consistent with the
-matter-bounce induced-GW prediction $\gamma=3$ and disfavour both the SMBHB
-expectation and a scale-invariant primordial tensor background, though the
-strength of that disfavouring differs by conditioning: $3.1\sigma$ against
-the official posterior and $4.63\sigma$ against this lab's $30$-bin refit
-(Table~\ref{tab:pta}); the latter should not be read as tighter than
-NANOGrav's own official assessment, since it conditions on a different
-(refit) marginal. This channel does not favour the matter bounce
-\emph{uniquely} on causality grounds alone: the universal causality-limited
-infrared tail of an induced background sourced by a finite-duration process
-is $\OmGW\propto f^3$ ($f^3\ln^2f$ for a narrow spectral peak), \emph{not}
-$f^2$~\cite{CaiPiSasaki2020}, so $\OmGW\propto f^2$ is \emph{shallower} than
-that causal floor and is not generic to scalar-induced backgrounds of
-arbitrary origin. Here $\gamma=3$ ($\OmGW\propto f^2$) instead follows from
-the matter bounce's broad, near-scale-invariant scalar source: $\OmGW\propto
-P_\mathcal R^2$ (Papanikolaou's Eq.~(30)) combined with the source spectrum's
-own near-linear low-$k$ growth $P_\mathcal R\propto k$ (Eq.~(8) there) gives
-$\OmGW\propto k^2\propto f^2$~\cite{Papanikolaou2025}; the cited derivation
-does not state whether this holds only asymptotically at the lowest
-frequencies or across the full NANOGrav band, so we do not claim more than
-the IR asymptotic scaling here. $\gamma=3$ is therefore \emph{more}
-distinctive than a generic causality argument would suggest, not less: it
-requires the specific broad, near-scale-invariant source spectrum of the
-matter bounce, not merely any finite-duration scalar-induced background. Nor
-does this channel constrain $\fnl$: it measures a slope, not
-a bispectrum amplitude, and is identical at $-35/16$ and $-35/8$. Converting it
-into a discriminating test requires propagating the matter-bounce scalar
-spectrum through the induced-GW kernel to predict an \emph{amplitude} in the
-nHz band; that computation is not attempted here.
+The official posterior and the refit above are the \emph{measured} slope
+values; they are not by themselves a test of the matter bounce, since
+$\gamma=3$ was not derived from this model's own spectrum but borrowed from
+Papanikolaou~\cite{Papanikolaou2025}'s low-$k$ tail, whose source carries a
+small-scale enhancement that \S\ref{sec:pbh_inlab} shows this model's
+spectrum does not have. We therefore propagate this lab's own committed
+curvature spectrum, $\Delta^2_\zeta(k)=A_s(k/k_*)^{n_s-1}$ with
+$A_s=2.1\times10^{-9}$, $k_*=0.05\,{\rm Mpc}^{-1}$, $n_s=0.9649$
+(\texttt{outputs/inlab\_delta2\_zeta\_2026-09-03.json}), through the
+scale-independent A2 bounce transfer and the standard radiation-era
+induced-GW kernel~\cite{KohriTerada2018} (kernel validated against the
+published scale-invariant closed form, $0.822542$ vs.\ $0.8222$, before any
+lab spectrum was inserted). Every committed background at or above
+\S\ref{sec:pbh_compaction}'s $T_B\gtrsim10^8\,$GeV puts the entire NANOGrav
+band at $k\eta_B\le2.3\times10^{-8}$, six or more orders inside the
+transfer's validity domain, so this result is not limited by transfer
+uncertainty.
+
+The fitted slope over $f\in[2,60]\,$nHz is
+\begin{equation}
+  \gamma_{\rm pred} = 5.070 \ \ (n_s=0.9649), \qquad
+  \gamma_{\rm pred} = 5.000 \ \ (n_s=1\ \text{dust bracket}),
+  \label{eq:gammapred}
+\end{equation}
+reproducing the analytic self-similarity result $\gamma=5-2(n_s-1)$ to
+$1$ part in $10^4$, with predicted amplitude
+$\OmGW h^2(f_{\rm yr})=1.45\times10^{-23}$
+($5.88\times10^{-23}$ for the dust bracket) against NANOGrav's power-law
+value $6.3\times10^{-10}$ at $f_{\rm yr}$ --
+(\texttt{outputs/sigw\_nhz\_from\_lab\_spectrum\_2026\_09\_04.json}). Two
+independent failures against the borrowed $\gamma=3$: the slope is
+$5.1\sigma$ ($4.9\sigma$, dust bracket) from NANOGrav's measured
+$\gamma_{\rm HD}=3.2\pm0.6$, and the amplitude is a shortfall of
+$10^{14.3}$ ($10^{13.7}$, dust bracket) -- fourteen orders of magnitude
+below the PTA band. The model predicts an induced-GW background far below
+current sensitivity and does not account for the NANOGrav signal: this
+channel is a \textbf{null}, not a supporting consistency.
+
+Reaching $\gamma=3$ would require $P_\mathcal R\propto k^1$ sustained
+across the full $2$--$60\,$nHz band (the lab spectrum instead has
+$n_s-1=-0.0351$, or $0$ in the dust bracket) \emph{and} a
+$10^{7.2}$ amplitude enhancement at $k\approx10^7\,{\rm Mpc}^{-1}$ --
+precisely the PBH-forming regime \S\ref{sec:pbh_inlab} shows this model's
+spectrum falls seven decades short of. Alternatively, placing the required
+feature at the bounce scale itself needs $T_B\approx2.3\,$GeV, $7.6$
+decades below \S\ref{sec:pbh_compaction}'s own $T_B\gtrsim10^8$--$10^{10}\,$GeV
+condition and below the QCD scale -- excluded by this paper's own
+baryogenesis argument. Channels I and II therefore assume mutually
+inconsistent spectra if $\gamma=3$ is claimed, and the lab's own spectrum
+sides with Channel II's null. We retain the $\gamma=3$ citation only as a
+flagged contrast case, requiring an enhancement this model does not
+produce, not as this model's prediction. Nor does this channel constrain
+$\fnl$ even under that contrast case: it measures a slope, not a
+bispectrum amplitude, and would be identical at $-35/16$ and $-35/8$.
 
 %======================================================================
 \section{Channel II: primordial black hole abundance}
@@ -1259,6 +1289,11 @@ against the committed script output.
 \bibitem{CaiPiSasaki2020} Y. Cai, S. Pi, and M. Sasaki,
   ``Universal infrared scaling of gravitational wave background spectra,''
   Phys. Rev. D \textbf{102}, 083528 (2020), arXiv:1909.13728.
+
+\bibitem{KohriTerada2018} K. Kohri and T. Terada,
+  ``Semianalytic calculation of gravitational wave spectrum nonlinearly
+  induced from primordial curvature perturbations,''
+  Phys. Rev. D \textbf{97}, 123532 (2018), arXiv:1804.08577.
 
 \bibitem{NANOGrav15} G. Agazie \textit{et al.} (NANOGrav Collaboration),
   ``The NANOGrav 15 yr Data Set: Evidence for a Gravitational-wave Background,''
