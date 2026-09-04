@@ -1,0 +1,127 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger9-c-abs-operator-map",
+  "title": "Ledger row 9 (A3-1e) lane (c) - literature-bound map of the Agullo-Bolliet-Sreenath 2017 LQC third-order Hamiltonian onto the lab's classical scheme-S1 cubic vertex table, plus the k_LQC -> k*eta_B scale-window conversion and PTA/PBH overlap test",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Agullo, Bolliet & Sreenath 2017 - Non-Gaussianity in loop quantum cosmology (H^(3) Eq. 23; dressed metric Eqs. 39-42; k_LQC and the exp(-alpha k_t/k_LQC) law, sec. V)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1712.08148",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "arXiv source package read directly (NGLQC.tex, v2 2018-02-26) - equation numbering recovered by counting numbered environments, anchored on Eq. 23 = eq:H3 and Eqs. 39-42 = dres/ta/teta/qpot",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/e-print/1712.08148",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ashtekar, Kaminski & Lewandowski / Agullo, Ashtekar & Nelson - dressed-metric approach (cited by ABS 2017 as the origin of Eqs. 39-42 and the effective potential U)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1211.1354",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Agullo, Ashtekar & Nelson - extension of the quantum theory of cosmological perturbations to the Planck era",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1302.0254",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Maldacena 2003 - third-order action ABS state their H^(3) Legendre-transforms into",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/astro-ph/0210603",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chen, Huang, Kachru & Shiu 2007 - cubic action coefficients (c_s^-4 structure used for the c_s -> 0 dust argument)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/hep-th/0605045",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lane (a) cubic vertex table V1-V7 + R1-R4 and the LQC-dust background",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lane (c) 2026-09-03 literature comparison (the statement corrected by this lane)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_c_comparison/LANE_C_COMPARISON_2026-09-03.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A3-3 SIGW note - comoving bounce scale k_B = 1.71e15 Mpc^-1 at T_B = 1e8 GeV, linear in T_B",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A3-1b in-lab Delta^2_zeta - PBH-band amplitude 5e-10 to 1.3e-9 and the 7.0 dex deficit",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/lane9c_abs_operator/lane9c_scale_window.py",
+      "entrypoint": "python3 research/cubic_bounce_transmission/lane9c_abs_operator/lane9c_scale_window.py",
+      "sha256": "432f8606f1cc94ed0ffcde583183f1401efbfcdffee24bdc9d3e745ffa454898"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy + scipy (quad)",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "< 2 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~2 s (script); ~2 min to re-fetch and re-read the arXiv source",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "The operator mapping is literature transcription plus algebra, not computation: it is verified by re-reading NGLQC.tex from https://arxiv.org/e-print/1712.08148 and checking that Eq. 23 (label eq:H3) contains no rho/rho_c, rho_sup, area gap, or U/tilde-U. The script is deterministic (no RNG, no network, no data files); it evaluates two quadratures and closed-form ratios. Conventions: kappa = 1, a_B = 1, k*eta_B = k/k_B with k_B = 1/eta_B and eta_B the conformal half-width of the NEC-violating window (rho >= rho_c/2)."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/lane9c_abs_operator/lane9c_scale_window.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) scale_window.k_LQC_eta_B_dust == 1.060146 +/- 1e-5 and k_LQC_eta_B_stiff == 0.552857 +/- 1e-5; (b) scale_window.pole_over_eta_B_stiff == 1.169869 +/- 1e-5 (ABS pole at 1.17 eta_B, just outside the NEC window); (c) scale_window.equilateral_decay_exponent_per_k_eta_B == 1.830229 +/- 1e-5, so |Delta f_NL^bounce| ~ exp(-1.83 k eta_B); (d) observability.k_eta_B_of_band['T_B=1e+08 GeV']['PBH_hi'] == 3.0994 +/- 1e-3 and ['PTA_60nHz'] == 2.2807e-7 +/- 1e-11; (e) observability.T_B_for_k_LQC_at_60nHz_GeV == 22.807 +/- 1e-2 GeV, i.e. 6.6 decades below section V's T_B >= 1e8 GeV; (f) pbh_tail['fNL=1000_zeta_c=0.1'].n_sigma == 408.25 +/- 1e-2; (g) by re-reading the source: ABS Eq. 23 contains p_phi or a V-derivative in every term and no rho/rho_c or U, and the sentence after it states the Legendre transform agrees with Maldacena 2003.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 9 (A3-1e), lane (c) literature-bound leg",
+    "research/cubic_bounce_transmission/lane_a_vertex_table/ and lane_c_comparison/ (prior lanes; this lane CORRECTS lane (c)'s 'operator not contained in S1' statement)",
+    "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)"
+  ]
+}
