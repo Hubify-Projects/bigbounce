@@ -516,7 +516,7 @@ background & $T_{\fnl}$ & $\Delta\fnl^{\rm bounce}$ & $\fnl^{\rm after}$ \\
 Quintin-type~\cite{Quintin2015} (S1) & $0.165$ & $-0.140$ & $-0.501$ \\
 LQC effective dust (S1) & $0.250$ & $-0.104$ & $-0.651$ \\
 poly (analytic non-LQC) (S1) & $0.196$ & $-0.127$ & $-0.555$ \\
-Quintin-type (S2, raw-ADM) & $\approx1.03$ & not separately regulated & $-1.25$ \\
+Quintin-type (S2, raw-ADM) & $\approx1.03$ & -- & $-1.25$ \\
 \hline\hline
 \end{tabular}
 \end{table}
@@ -746,16 +746,18 @@ uncertainty.
 
 The fitted slope over $f\in[2,60]\,$nHz is
 \begin{equation}
-  \gamma_{\rm pred} = 5.070 \ \ (n_s=0.9649), \qquad
+\begin{gathered}
+  \gamma_{\rm pred} = 5.070 \ \ (n_s=0.9649), \\
   \gamma_{\rm pred} = 5.000 \ \ (n_s=1\ \text{dust bracket}),
+\end{gathered}
   \label{eq:gammapred}
 \end{equation}
 reproducing the analytic self-similarity result $\gamma=5-2(n_s-1)$ to
 $1$ part in $10^4$, with predicted amplitude
 $\OmGW h^2(f_{\rm yr})=1.45\times10^{-23}$
 ($5.88\times10^{-23}$ for the dust bracket) against NANOGrav's power-law
-value $\OmGW h^2(f_{\rm yr})=3.6235\times10^{-9}$ at $f_{\rm yr}$ --
-(\texttt{outputs/sigw\_nhz\_from\_lab\_spectrum\_2026\_09\_04.json}). Two
+value $\OmGW h^2(f_{\rm yr})=3.6235\times10^{-9}$ at $f_{\rm yr}$ (source
+file in the reproducibility statement below). Two
 independent failures against the borrowed $\gamma=3$: the slope is
 $5.1\sigma$ ($4.9\sigma$, dust bracket) from NANOGrav's measured
 $\gamma_{\rm HD}=3.2\pm0.6$, and the amplitude is a shortfall of
@@ -1300,7 +1302,7 @@ Separating the long mode's coupling to the short-mode pair by how it enters:
 
 \begin{center}
 \scriptsize
-\begin{tabular}{lp{2.9cm}p{2.3cm}}
+\begin{tabular}{lp{2.6cm}p{2.1cm}}
 \hline\hline
 class & long mode enters as & squeezed value at $\epsilon=3/2$ \\
 \hline
