@@ -463,3 +463,43 @@ elsewhere on the site link into them.
 5. `reviewTimeline.ts` diff is empty (or is an append made by the review pipeline, never by a redesign lane).
 6. A `reviewTimeline.ts` `kind:"skill-improvement"` entry for the redesign lands in the same commit bundle as the
    final lane (standing review-round site-sync rule).
+
+## 7. Risks and what must NOT change
+
+### 7.1 Do not touch
+
+| Asset | Why |
+|---|---|
+| Root `.html` explorers (`anomaly-explorer`, `galaxy-explorer`, `data-explorer`, `visualize`) | Canonical source of truth. Redesign the wrapper page only; content changes are edits to the `.html` itself in a separate, deliberate commit — never a wholesale replacement. |
+| `convex/**` (24 modules) and the Convex deployment `brilliant-panther-471` | Backend is out of scope for the redesign. No schema edits, no mutations, no `npx convex deploy`. Readiness stays Convex-sourced (directive A). |
+| `site/src/data/reviewTimeline.ts` | Append-only, written by the review pipeline every round. Consume the schema as-is; a redesign lane never edits or reformats it. |
+| `site/src/data/live-status.ts` field names (`lastUpdatedISO`, per-paper versions) | `tools/site_freshness_check.sh` diffs these against Convex and blocks pushes on drift. Restyle the consumer, never rename the fields. |
+| Existing PDF paths under `site/public/papers/**` | Served artifacts are md5-bound to Convex `paperVersions`; moving or renaming them breaks the three-way md5 check (directive G). |
+
+### 7.2 Risks and mitigations
+
+1. **Freshness gate breaks mid-redesign.** Any rename of `live-status.ts`/`reviewTimeline.ts` fields fails the
+   pre-push hook. *Mitigation:* lanes 2–6 treat both files as read-only; gate #5 asserts an empty diff.
+2. **Readiness drifts back into static files.** The most likely regression is a lane hard-coding "95" into a rebuilt
+   page. *Mitigation:* acceptance greps for numeric readiness literals in `site/src/app/**`; all values come through
+   `lib/livePapers.ts` / `lib/liveReadiness.ts`.
+3. **Sidebar removal breaks deep-link discovery.** Twenty-seven routes collapsed behind six nav items can strand a
+   page. *Mitigation:* every retired or moved route gets a 301 in lane 1; the footer carries the long tail; `⌘K`
+   search indexes every surviving route.
+4. **Card deletion cascade.** `ui/card.tsx` has 12 importers and `ui/badge.tsx` 15. *Mitigation:* the deletion happens
+   only after lanes 2–6 land; lane 1 leaves both files in place and a final cleanup commit removes them once
+   `grep -rl "ui/card\|ui/badge" site/src` is empty.
+5. **Honest-but-alarming numbers get softened.** The redesign adds framing sentences to "0 of 8" and to two-month-old
+   dates. *Mitigation:* framing may only add context, never change or hide a number; directive R6 governs — nulls
+   stay nulls, stale dates stay visible.
+6. **Explorer prose reordering hides a required caveat.** Moving methodology below the tool must not drop a
+   disclosure. *Mitigation:* the "How this was made" section carries the caveat text verbatim; diff-check that no
+   sentence is deleted, only relocated.
+7. **Frozen reviewer legs get silently dropped from the grid.** *Mitigation:* directive M-AMENDED requires historical
+   OpenAI/ChatGPT cells to remain displayed and annotated; lane 4 acceptance checks their presence.
+8. **Two surfaces drift again.** The legacy static HTML under `/old` is archival and must not be re-synced; the
+   dual-sync rule applies to the explorer `.html` files only.
+
+---
+
+*Spec complete. Implementation is authorized to begin with lane 1; lanes 2–6 fan out after it lands.*
