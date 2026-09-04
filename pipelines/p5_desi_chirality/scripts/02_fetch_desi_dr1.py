@@ -109,6 +109,14 @@ def main() -> int:
     import pyarrow as pa
     import pyarrow.parquet as pq
 
+    def _to_native(arr: np.ndarray) -> np.ndarray:
+        """FITS is big-endian; pyarrow's zero-copy path rejects byte-swapped
+        (non-native) numpy dtypes ('Byte-swapped arrays not supported').
+        Force native byte order without changing values."""
+        if arr.dtype.byteorder not in ("=", "|"):
+            return arr.byteswap().view(arr.dtype.newbyteorder("="))
+        return arr
+
     CHUNK_ROWS = 2_000_000
     writer = None
     n_rows = 0
@@ -121,7 +129,7 @@ def main() -> int:
         print(f"[convert] kept {len(keep)} columns, dropped {len(drop_cols)}; rows={n_total:,}")
         for start in range(0, n_total, CHUNK_ROWS):
             end = min(start + CHUNK_ROWS, n_total)
-            chunk = {c: np.array(data[c][start:end]) for c in keep}
+            chunk = {c: _to_native(np.array(data[c][start:end])) for c in keep}
             df = pd.DataFrame(chunk)
             for c in df.columns:
                 if df[c].dtype == object and len(df[c]) and isinstance(df[c].iloc[0], bytes):
