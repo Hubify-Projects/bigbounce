@@ -1,0 +1,23 @@
+{
+  "L": {
+    "f_mu": "5*(epsilon - 4)/4",
+    "monopole": "5*(epsilon - 4)/4",
+    "mu2": "0"
+  },
+  "K": {
+    "f_mu": "0",
+    "monopole": "0",
+    "mu2": "0"
+  },
+  "X": {
+    "f_mu": "5*epsilon*(epsilon*mu**2 - epsilon + 3)/12",
+    "monopole": "-5*epsilon*(2*epsilon - 9)/36",
+    "mu2": "5*epsilon**2/12"
+  },
+  "total": {
+    "f_mu_eps": "5*(epsilon**2*mu**2 - epsilon**2 + 6*epsilon - 12)/12",
+    "monopole_eps": "-5*(epsilon - 6)*(epsilon - 3)/18",
+    "isoceles_eps": "-5*(epsilon**2 - 6*epsilon + 12)/12",
+    "mu2_eps": "5*epsilon**2/12"
+  }
+}

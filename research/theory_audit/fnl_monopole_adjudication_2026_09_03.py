@@ -462,6 +462,22 @@ f_dN_c = sp.radsimp(sp.simplify(sp.Rational(5, 3) * z2L / z1L**2))
 print("  matter contraction comoving delta-N (growing-mode-dominated, general eps):", f_dN_c)
 OUT['deltaN_checks']['comoving_deltaN_general_eps'] = str(f_dN_c)
 
+# --- the LINEAR map between the comoving delta-N variable and Maldacena's zeta (derived, then asserted) ---------
+# On a uniform-phi slice the local patch has lapse N = 1 + zetadot/H (Maldacena), so its proper-time phidot is
+# phidot (1 - zetadot/H); Friedmann 3H^2 = phidot^2/2 + V at fixed phi gives  dH/H = -(eps/3) zetadot/H.
+# In the SU variables (x = phidot/(sqrt6 H), u = x - x*, V/(3H^2) = 1 - x^2):  dH/H = x* u / (1 - x*^2).
+# Growing mode: zetadot/(H zeta) = eps - 3.  Hence u = (1 - x*^2) eps (3 - eps) zeta / (3 x*), and delta-N_c = z1L u.
+xs_ = sp.sqrt(ep / 3)
+u_over_zeta = sp.simplify((1 - xs_**2) * ep * (3 - ep) / (3 * xs_))
+dNc_over_zeta = sp.simplify(z1L * u_over_zeta)
+print("  LINEAR MAP: delta-N_c / zeta_Maldacena =", dNc_over_zeta, "  (=", dNc_over_zeta.subs(ep, sp.Rational(3, 2)), "at eps = 3/2)")
+assert sp.simplify(dNc_over_zeta - (1 - ep / 3)) == 0
+print("  => the comoving-slice delta-N is the ZERO-SHIFT-THREADING curvature psi = zeta + b, b = -(eps/3) zeta (b' = delta K/3),")
+print("     NOT Maldacena's conformally-flat-threading zeta.  The lab's 'zeta_rho = 2 zeta_c' is delta-N_rho = 2(1-eps/3) zeta,")
+print("     i.e. delta-N_rho = zeta_Maldacena at linear order ONLY because eps = 3/2.")
+OUT['deltaN_checks']['linear_map_deltaNc_over_zetaMaldacena'] = str(dNc_over_zeta)
+OUT['deltaN_checks']['linear_map_deltaNrho_over_zetaMaldacena'] = str(sp.simplify(2 * dNc_over_zeta))
+
 # ================================================================================================
 hdr("SECTION 8 --- QUADRUPOLE: DYNAMICAL RESPONSE vs FINAL-TIME PROJECTION")
 # ================================================================================================
@@ -479,6 +495,24 @@ print("  in-in mu^2 coefficient: total", c2, " = [K] shear part", shear_kernel_q
 print("  lane C projection mu^2 coefficient: 15/8 ;  ratio in-in/projection =", sp.nsimplify(c2 / sp.Rational(15, 8)))
 OUT['quadrupole'] = {'in_in_mu2': str(c2), 'K_shear_mu2': str(shear_kernel_quad), 'X_mu2': str(X_quad),
                      'laneC_projection_mu2': '15/8', 'ratio': str(sp.nsimplify(c2 / sp.Rational(15, 8)))}
+
+# ================================================================================================
+hdr("SECTION 9 --- GENERAL constant-eps CONTRACTION (companion script fnl_monopole_adjudication_2026_09_03_general_eps.py)")
+# ================================================================================================
+try:
+    with open(os.path.join(HERE, 'fnl_monopole_adjudication_2026_09_03_general_eps.json')) as fh:
+        ge = json.load(fh)
+    for cls in ('L', 'K', 'X'):
+        print(f"  class [{cls}](eps): f(mu) = {ge[cls]['f_mu']}   monopole {ge[cls]['monopole']}   mu^2 {ge[cls]['mu2']}")
+    print("  total f(mu, eps) =", ge['total']['f_mu_eps'], " monopole", ge['total']['monopole_eps'], " isoceles", ge['total']['isoceles_eps'], " mu^2", ge['total']['mu2_eps'])
+    L_eps = sp.sympify(ge['L']['f_mu'], locals={'epsilon': ep, 'mu': mu})
+    print("  [L](eps) - delta-N_c(-5) =", sp.factor(L_eps + 5), "   ;  pure pair-translation coefficient (5/12)(3 eps) =", sp.Rational(5, 4) * ep)
+    print("  in-in mu^2(eps) / lane-C projection mu^2 (5 eps/4) =", sp.factor(sp.sympify(ge['total']['mu2_eps'], locals={'epsilon': ep}) / (sp.Rational(5, 4) * ep)))
+    OUT['general_eps'] = ge
+    OUT['general_eps']['L_minus_deltaNc'] = str(sp.factor(L_eps + 5))
+    OUT['general_eps']['inin_over_laneC_quadrupole'] = str(sp.factor(sp.sympify(ge['total']['mu2_eps'], locals={'epsilon': ep}) / (sp.Rational(5, 4) * ep)))
+except FileNotFoundError:
+    print("  (companion JSON not found; run the general-eps script first)")
 
 # ================================================================================================
 hdr("PROVENANCE")

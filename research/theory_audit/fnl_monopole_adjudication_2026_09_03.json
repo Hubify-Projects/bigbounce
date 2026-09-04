@@ -322,7 +322,9 @@
     "USR_vary_phi": "5/2",
     "laneB_includes_N_of_phi_and_pi": true,
     "note": "lane B varies u_i = x_i - x* (the momentum direction) on a flat initial slice; the phi_i direction is the non-growing time shift (its script, Step 3-4)",
-    "comoving_deltaN_general_eps": "-5"
+    "comoving_deltaN_general_eps": "-5",
+    "linear_map_deltaNc_over_zetaMaldacena": "1 - epsilon/3",
+    "linear_map_deltaNrho_over_zetaMaldacena": "2 - 2*epsilon/3"
   },
   "quadrupole": {
     "in_in_mu2": "15/16",
@@ -331,10 +333,35 @@
     "laneC_projection_mu2": "15/8",
     "ratio": "1/2"
   },
+  "general_eps": {
+    "L": {
+      "f_mu": "5*(epsilon - 4)/4",
+      "monopole": "5*(epsilon - 4)/4",
+      "mu2": "0"
+    },
+    "K": {
+      "f_mu": "0",
+      "monopole": "0",
+      "mu2": "0"
+    },
+    "X": {
+      "f_mu": "5*epsilon*(epsilon*mu**2 - epsilon + 3)/12",
+      "monopole": "-5*epsilon*(2*epsilon - 9)/36",
+      "mu2": "5*epsilon**2/12"
+    },
+    "total": {
+      "f_mu_eps": "5*(epsilon**2*mu**2 - epsilon**2 + 6*epsilon - 12)/12",
+      "monopole_eps": "-5*(epsilon - 6)*(epsilon - 3)/18",
+      "isoceles_eps": "-5*(epsilon**2 - 6*epsilon + 12)/12",
+      "mu2_eps": "5*epsilon**2/12"
+    },
+    "L_minus_deltaNc": "5*epsilon/4",
+    "inin_over_laneC_quadrupole": "epsilon/3"
+  },
   "provenance": {
     "script": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
-    "script_sha256": "299aa430248b40fbe36b08e936d272a092a96298b758de672f982da66dd401b7",
-    "wall_clock_seconds": 15.5,
+    "script_sha256": "058447db00cb61978e05dd0503983ebbe29a558abfd94ad5270fd87e5c3880aa",
+    "wall_clock_seconds": 15.3,
     "sympy": "1.14.0",
     "python": "3.14.6",
     "date": "2026-09-03"

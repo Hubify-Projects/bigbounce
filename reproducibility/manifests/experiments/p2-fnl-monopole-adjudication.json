@@ -1,0 +1,109 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-fnl-monopole-adjudication",
+  "title": "Adjudication of the squeezed-limit monopole of the matter-contraction f_NL: in-in (-15/8) vs comoving delta-N (-5) via the classical O(k^0) super-Hubble kernel with L/K/X tagging",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "lab in-in adjudication (2026-09-02)",
+      "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.json (commit aa2987cf)",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "lab second-method delta-N (2026-09-02)",
+      "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md (commit d7dac953)",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "lab Bianchi-I separate universe (2026-09-03)",
+      "locator": "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.md (commit 866cf342)",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "Maldacena 2003",
+      "locator": "https://arxiv.org/abs/astro-ph/0210603",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Namjoo, Firouzjahi & Sasaki 2012",
+      "locator": "https://arxiv.org/abs/1210.3692",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lyth, Malik & Sasaki 2005",
+      "locator": "https://arxiv.org/abs/astro-ph/0411220",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
+      "entrypoint": "python3 research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.py && python3 research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
+      "sha256": "058447db00cb61978e05dd0503983ebbe29a558abfd94ad5270fd87e5c3880aa"
+    },
+    {
+      "path": "research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.py",
+      "entrypoint": "python3 research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.py",
+      "sha256": "0c30afe73b8080e5443fa2af28461782a8a5a01bdebe147830f57f5563d447d7"
+    }
+  ],
+  "environment": {
+    "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local macOS workstation",
+    "date": "2026-09-03",
+    "wall_clock": "15 s + 8 s",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 minute",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic exact sympy; no network. Run the general-eps companion first (main script reads its JSON in Section 9). Self-validates: USR gives 5/2; attractor has no O(k^0) source; the full O(k^0) kernel and every per-vertex row equal lane A's in-in JSON (asserted); 1/k_L poles cancel across classes (asserted); delta-N_c/zeta_Maldacena = 1 - eps/3 (asserted)."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and diff the JSONs. Required exact values: validation_USR.f_NL == '5/2'; validation_vs_laneA_inin.A_total_difference == '0'; matter_classical_O_k0.f_squeezed_mu == '15*mu**2/16 - 35/16'; squeezed_tagging.class_L_f_mu == '-25/8'; class_K_f_mu == '0'; class_X_f_mu == '15*mu**2/16 + 15/16'; deltaN_checks.linear_map_deltaNc_over_zetaMaldacena == '1 - epsilon/3'; general_eps.total.f_mu_eps == '5*(epsilon**2*mu**2 - epsilon**2 + 6*epsilon - 12)/12'; general_eps.L_minus_deltaNc == '5*epsilon/4'; general_eps.inin_over_laneC_quadrupole == 'epsilon/3'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 1 (A3-2 amendment: -25/8 monopole gap OPEN; this work closes it)",
+    "research/theory_audit/fnl_bianchi_separate_universe_2026_09_03.md \u00a74 item 2 (the advection/projection prescription = class [X] here)",
+    "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+    "input 'lab in-in adjudication (2026-09-02)' used ONLY for the post-hoc per-vertex comparison in script Section 4",
+    "input 'Lyth, Malik & Sasaki 2005' used for: the gradient-expansion assumption that the shift is first order in gradients \u2014 the assumption shown to fail for the non-attractor growing mode in comoving gauge",
+    "input 'Namjoo, Firouzjahi & Sasaki 2012' used for: USR f_NL = 5/2 benchmark (validation of both the classical kernel and the delta-N ODE system)"
+  ]
+}
