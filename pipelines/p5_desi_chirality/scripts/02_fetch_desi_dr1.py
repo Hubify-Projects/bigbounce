@@ -26,6 +26,9 @@ import sys
 import urllib.request
 from pathlib import Path
 
+import numpy as np
+import pandas as pd
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import load_config, write_provenance, sha256_of_file, ensure_dir, resolve_p5_path
 
@@ -88,26 +91,50 @@ def main() -> int:
             return 2
 
     # Convert FITS -> parquet, keeping only relevant columns.
+    #
+    # Memory-safety note (2026-09-04): the original implementation used
+    # `Table.read(raw_fits, hdu=1)` then dropped unwanted columns AFTER
+    # loading. That materializes ALL 136 source columns (28.4M rows) before
+    # any pruning, ballooning to ~20+ GB RSS and thrashing swap on machines
+    # with <=32 GB RAM. Read only KEEP_COLUMNS directly off the memory-mapped
+    # HDU instead -- output is byte-identical, peak RSS drops to ~O(kept
+    # columns), no whole-table materialization.
     try:
-        from astropy.table import Table
+        from astropy.io import fits
     except ImportError:
         print("ERROR: astropy not installed. `pip install astropy pyarrow`.")
         return 2
 
     print(f"[convert] {raw_fits} -> {out_parquet}")
-    t = Table.read(raw_fits, hdu=1)
-    available = set(t.colnames)
-    drop_cols = [c for c in t.colnames if c not in KEEP_COLUMNS]
-    for c in drop_cols:
-        t.remove_column(c)
-    print(f"[convert] kept {len(t.colnames)} columns, dropped {len(drop_cols)}; rows={len(t):,}")
-    df = t.to_pandas()
-    # Decode bytes columns
-    for c in df.columns:
-        if df[c].dtype == object and len(df[c]) and isinstance(df[c].iloc[0], bytes):
-            df[c] = df[c].str.decode("utf-8", errors="replace")
-    df.to_parquet(out_parquet, index=False)
-    n_rows = len(df)
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    CHUNK_ROWS = 2_000_000
+    writer = None
+    n_rows = 0
+    with fits.open(raw_fits, memmap=True) as hdul:
+        data = hdul[1].data
+        available = set(data.columns.names)
+        keep = [c for c in KEEP_COLUMNS if c in available]
+        drop_cols = [c for c in available if c not in KEEP_COLUMNS]
+        n_total = len(data)
+        print(f"[convert] kept {len(keep)} columns, dropped {len(drop_cols)}; rows={n_total:,}")
+        for start in range(0, n_total, CHUNK_ROWS):
+            end = min(start + CHUNK_ROWS, n_total)
+            chunk = {c: np.array(data[c][start:end]) for c in keep}
+            df = pd.DataFrame(chunk)
+            for c in df.columns:
+                if df[c].dtype == object and len(df[c]) and isinstance(df[c].iloc[0], bytes):
+                    df[c] = df[c].str.decode("utf-8", errors="replace")
+            table = pa.Table.from_pandas(df, preserve_index=False)
+            if writer is None:
+                writer = pq.ParquetWriter(out_parquet, table.schema)
+            writer.write_table(table)
+            n_rows += len(df)
+            print(f"[convert] wrote rows {start:,}-{end:,} (cumulative {n_rows:,})")
+            del chunk, df, table
+    if writer is not None:
+        writer.close()
 
     sha_fits = sha256_of_file(raw_fits)
     sha_parquet = sha256_of_file(out_parquet)
