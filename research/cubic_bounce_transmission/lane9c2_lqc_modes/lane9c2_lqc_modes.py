@@ -505,6 +505,50 @@ def main():
         "caveat": ("ABS use a kinetic-dominated scalar (w=+1, eps=3) with ~12.3 e-folds of inflation "
                    "after the bounce and their f_NL convention differs by an overall sign; only "
                    "magnitudes are compared.")}
+    # ---------------- (5) PBH channel at k*eta_B ~ 3 ------------------------------
+    # zeta = zeta_g + (3/5) f_NL zeta_g^2 ; collapse threshold zeta_c ; sigma_g = 3.2e-5
+    # (lane 9c sec. 4 item 1, which quoted 408 sigma for |f_NL| = 1e3 at zeta_c = 0.1).
+    log(f"\n{'=' * 78}\n(5) PBH channel at k*eta_B = 3: required Gaussian excursion")
+    sigma_g = float(np.sqrt(1e-9))      # Delta^2_zeta ~ 1e-9 (A3-1b); lane 9c used this value
+    pbh = {}
+
+    def _zg_full(fnl, zc):
+        """smallest zeta_g > 0 with zeta_g + (3/5) f_NL zeta_g^2 = zeta_c; None if the
+        threshold is unreachable (f_NL < 0 turns zeta over at zeta_g = -1/(2c))."""
+        c = 0.6 * fnl
+        if c == 0.0:
+            return zc
+        disc = 1.0 + 4.0 * c * zc
+        if disc < 0.0:
+            return None
+        roots = [r for r in ((-1.0 + np.sqrt(disc)) / (2.0 * c),
+                             (-1.0 - np.sqrt(disc)) / (2.0 * c)) if r > 0]
+        return float(min(roots)) if roots else None
+
+    for label, fnl in [("Gaussian (f_NL = 0)", 0.0),
+                       ("lane 9c-2 S-lab at k*eta_B = 3", out["dfnl"]["3"]["S-lab"]["total"]),
+                       ("lane 9c-2 S-ABS0 at k*eta_B = 3", out["dfnl"]["3"]["S-ABS0"]["total"]),
+                       ("ABS-magnitude hypothesis |f_NL| = 1e3", 1000.0)]:
+        for zc in (0.1, 0.7):
+            zg = _zg_full(fnl, zc)
+            # lane 9c's criterion: the NON-GAUSSIAN TERM ALONE reaches zeta_c
+            zg_ng = float(np.sqrt(zc / (0.6 * abs(fnl)))) if fnl != 0 else None
+            pbh[f"{label} | zeta_c={zc}"] = {
+                "f_NL": float(fnl), "zeta_c": zc,
+                "zeta_g_full_quadratic": zg,
+                "n_sigma_full_quadratic": (float(zg / sigma_g) if zg else None),
+                "zeta_g_NG_term_only": zg_ng,
+                "n_sigma_NG_term_only": (float(zg_ng / sigma_g) if zg_ng else None)}
+            log(f"  {label:38s} zeta_c={zc:4g}: full quadratic "
+                f"{('%8.1f sigma' % (zg / sigma_g)) if zg else '   unreachable'}"
+                f"   | NG-term-only "
+                f"{('%8.1f sigma' % (zg_ng / sigma_g)) if zg_ng else '        n/a'}")
+    out["pbh_tail"] = {"sigma_g": sigma_g, "convention": "zeta = zeta_g + (3/5) f_NL zeta_g^2",
+                       "cases": pbh,
+                       "note": ("A3-1b's null is a 7.0 dex deficit in Delta^2_zeta; lane 9c "
+                                "recorded 408 sigma for |f_NL| = 1e3 at zeta_c = 0.1 using the "
+                                "NG-term-only criterion, reproduced here as an anchor.")}
+
     _dump(out)
     make_figures(out)
     log(f"\nDONE ({time.time() - t0:.1f} s)")

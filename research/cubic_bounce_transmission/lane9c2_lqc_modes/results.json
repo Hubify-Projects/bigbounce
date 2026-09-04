@@ -1379,5 +1379,76 @@
       }
     },
     "caveat": "ABS use a kinetic-dominated scalar (w=+1, eps=3) with ~12.3 e-folds of inflation after the bounce and their f_NL convention differs by an overall sign; only magnitudes are compared."
+  },
+  "pbh_tail": {
+    "sigma_g": 3.1622776601683795e-05,
+    "convention": "zeta = zeta_g + (3/5) f_NL zeta_g^2",
+    "cases": {
+      "Gaussian (f_NL = 0) | zeta_c=0.1": {
+        "f_NL": 0.0,
+        "zeta_c": 0.1,
+        "zeta_g_full_quadratic": 0.1,
+        "n_sigma_full_quadratic": 3162.2776601683795,
+        "zeta_g_NG_term_only": null,
+        "n_sigma_NG_term_only": null
+      },
+      "Gaussian (f_NL = 0) | zeta_c=0.7": {
+        "f_NL": 0.0,
+        "zeta_c": 0.7,
+        "zeta_g_full_quadratic": 0.7,
+        "n_sigma_full_quadratic": 22135.943621178652,
+        "zeta_g_NG_term_only": null,
+        "n_sigma_NG_term_only": null
+      },
+      "lane 9c-2 S-lab at k*eta_B = 3 | zeta_c=0.1": {
+        "f_NL": -0.938086433991114,
+        "zeta_c": 0.1,
+        "zeta_g_full_quadratic": 0.10636821718306284,
+        "n_sigma_full_quadratic": 3363.6583694993797,
+        "zeta_g_NG_term_only": 0.4215052099748421,
+        "n_sigma_NG_term_only": 13329.16509148025
+      },
+      "lane 9c-2 S-lab at k*eta_B = 3 | zeta_c=0.7": {
+        "f_NL": -0.938086433991114,
+        "zeta_c": 0.7,
+        "zeta_g_full_quadratic": null,
+        "n_sigma_full_quadratic": null,
+        "zeta_g_NG_term_only": 1.115197961911494,
+        "n_sigma_NG_term_only": 35265.65601618025
+      },
+      "lane 9c-2 S-ABS0 at k*eta_B = 3 | zeta_c=0.1": {
+        "f_NL": -0.8849830360045932,
+        "zeta_c": 0.1,
+        "zeta_g_full_quadratic": 0.10596191520651099,
+        "n_sigma_full_quadratic": 3350.8099728620577,
+        "zeta_g_NG_term_only": 0.4339671958416139,
+        "n_sigma_NG_term_only": 13723.247686558516
+      },
+      "lane 9c-2 S-ABS0 at k*eta_B = 3 | zeta_c=0.7": {
+        "f_NL": -0.8849830360045932,
+        "zeta_c": 0.7,
+        "zeta_g_full_quadratic": null,
+        "n_sigma_full_quadratic": null,
+        "zeta_g_NG_term_only": 1.1481692773569738,
+        "n_sigma_NG_term_only": 36308.3005587763
+      },
+      "ABS-magnitude hypothesis |f_NL| = 1e3 | zeta_c=0.1": {
+        "f_NL": 1000.0,
+        "zeta_c": 0.1,
+        "zeta_g_full_quadratic": 0.01210347891355002,
+        "n_sigma_full_quadratic": 382.7456097863827,
+        "zeta_g_NG_term_only": 0.012909944487358056,
+        "n_sigma_NG_term_only": 408.248290463863
+      },
+      "ABS-magnitude hypothesis |f_NL| = 1e3 | zeta_c=0.7": {
+        "f_NL": 1000.0,
+        "zeta_c": 0.7,
+        "zeta_g_full_quadratic": 0.03333333333333333,
+        "n_sigma_full_quadratic": 1054.0925533894597,
+        "zeta_g_NG_term_only": 0.03415650255319866,
+        "n_sigma_NG_term_only": 1080.1234497346431
+      }
+    },
+    "note": "A3-1b's null is a 7.0 dex deficit in Delta^2_zeta; lane 9c recorded 408 sigma for |f_NL| = 1e3 at zeta_c = 0.1 using the NG-term-only criterion, reproduced here as an anchor."
   }
 }
