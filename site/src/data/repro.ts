@@ -669,6 +669,12 @@ export const reproPrograms: ReproProgram[] = [
         "depends_on": [
           "psu-gates-s1-s2-label-composition-criterion"
         ]
+      },
+      {
+        "id": "psu-gate-s7-cai-factor-2",
+        "depends_on": [
+          "psu-gates-s6-s11-science-gates"
+        ]
       }
     ],
     "external_data": [
@@ -5484,6 +5490,84 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "p1b-pymaster-crosscheck-2026-09-05",
+    "title": "PyMaster (NaMaster) cross-check of the in-house spin-0 MASTER estimator used by the P1B blind test, plus S6 effective-multipole shortcut error vs NaMaster",
+    "program": "lab-infra",
+    "paper": "P1B",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "Alonso, Sanchez, Slosar et al. 2019 - NaMaster: a unified pseudo-Cl framework",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1809.09603",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "In-house spin-0 MASTER estimator (honest path)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "S6 effective-multipole shortcut variant",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/variants2.py",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/namaster_proof/blind_test/pymaster_crosscheck.py",
+        "entrypoint": "MAMBA_ROOT_PREFIX=/tmp/mamba_root micromamba run -n pymaster_env python pipelines/namaster_proof/blind_test/pymaster_crosscheck.py",
+        "sha256": "4c79aeaa43a5b78ead155caa2cc5dabab159ae0cedb076055c20aef1788e8db5"
+      }
+    ],
+    "environment": {
+      "python": "python3.11.16 (conda-forge, throwaway micromamba env pymaster_env) + numpy 2.4.6 + healpy 1.20.0 + namaster/pymaster 3.0.1",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64 (Houstons-MacBook-Air.local)"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-05",
+      "wall_clock": "under 1 minute (deterministic, small nside=64/lmax=95 run)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~1 min including one-time conda-forge namaster env creation (~2-4 min)",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Homebrew pip has no macOS/arm64 pymaster wheel for Python 3.14 and the source build needs a working C toolchain plus GSL/FFTW/CFITSIO/HEALPix; conda-forge's namaster package ships prebuilt and is the reliable path. Deterministic: fixed seeds (mask_seed=11, map_seed=42), no external data or network calls beyond the one-time package install."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/namaster_proof/blind_test/pymaster_crosscheck_result.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/PYMASTER_CROSSCHECK_2026-09-05.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) coupling_matrix.max_rel_diff <= 1e-11 (measured 4.25e-13) over l=2..95, i.e. the in-house pcl.coupling_matrix formula matches NaMaster's raw get_coupling_matrix() to floating-point round-off; (b) decoupled_bandpowers.max_rel_diff <= 1e-10 (measured 1.54e-12), i.e. pcl.decouple matches wsp.decouple_cell(); (c) s6_effective_multipole_vs_namaster shows every 8-wide band's max_rel_err_vs_namaster > 0.1 (worst band 2-9 measured 1.177, best band 90-95 measured 0.232), quantifying the S6 shortcut's error in NaMaster-verified terms rather than against the in-house exact result alone.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/peer-reviews/INT_v3/P1B_v2B.0.18_R2_TRUTH_AUDIT_2026-09-04.md, science item \"PyMaster cross-check (wheels resolve - feasible)\"",
+      "pipelines/namaster_proof/PYMASTER_CROSSCHECK_2026-09-05.md (full tables, install record, paper-ready sentences)",
+      "pipelines/namaster_proof/blind_test/pcl.py (honest MASTER estimator, unchanged), variants2.py (S6 shortcut, unchanged) - this cross-check reads both, modifies neither"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p1b-sn-overlap-control-chains",
     "title": "SN-overlap control chains A (Pantheon+) / B (DES-SN5YR)",
     "program": "bounce-theory",
@@ -9839,6 +9923,86 @@ export const reproExperiments: ReproExperiment[] = [
       "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 09_systematics.py maps to this analysis.",
       "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
       "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "psu-gate-s7-cai-factor-2",
+    "title": "PSU gate S7: equation-level location of the factor 2 between Cai et al. 2009 (0903.0631) Eq. (37) and Eqs. (38)-(41)/Fig. 5, and the Li et al. 2017 (1612.02036) c_s=1 correspondence",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "Cai, Xue, Brandenberger, Zhang 2009 arXiv e-print source (matterbounceng2.tex, fnl.eps)",
+        "locator": "https://arxiv.org/e-print/0903.0631",
+        "type": "external-literature",
+        "checksum": null
+      },
+      {
+        "name": "Li, Quintin, Wang, Cai 2017 arXiv e-print source (general_matter_bounce_cosmology.tex)",
+        "locator": "https://arxiv.org/e-print/1612.02036",
+        "type": "external-literature",
+        "checksum": null
+      },
+      {
+        "name": "PSU gates S6-S11 note, item S7",
+        "locator": "research/theory_audit/psu_gates_S6_S11_2026_09_04.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab f_NL matter-contraction adjudication (claims under test)",
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
+        "type": "internal-artifact",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.py",
+        "entrypoint": "python3 research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.py",
+        "sha256": "e186602fd1e35e1a83a82af7c456ccd01f5020a06b4b8dd954d0acb9a40bc675"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy 1.14.0",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-05",
+      "wall_clock": "about 15 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 1 minute",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic sympy. Transcribes Cai Eqs. 14, 19-21, 23, 27-37 and Li Eqs. 3.17, 4.6, 4.9, 4.12, 4.14, 4.16, 4.19, 4.20, 4.22, 5.1-5.3 verbatim, evaluates the isoceles/equilateral/folded/squeezed configurations under five factor-2 hypotheses. Figure readings from fnl.eps (rendered with ghostscript) are by eye, +-0.05."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.json",
+        "type": "result-json",
+        "checksum": "sha256:e855ce3ce20fdcf28722fe76fbf2be93fc454b29fd3bdc7fe938f6be191d2a65"
+      },
+      {
+        "locator": "research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required: cai_row_convention six-perm entries all true and DISTINCT entry false; rows_sum_equals_Eqs34_36 true; Eq37_distinct_minus_rows == '0'; Eq37_sixperm_minus_rows == '-99*(k1**3 + k2**3 + k3**3)/128'; Li419_cs1_minus_rows == '0'; hypotheses.HB_uniform_x2_on_A_T.reproduces_printed all true; HA/HC/HD each have at least one false.",
+    "status": "runnable-now",
+    "provenance": [
+      "PSU gate S7 (psu_gates_S6_S11_2026_09_04.md, 'equation-level read of 0903.0631 / 1612.02036 pending')",
+      "directive Q2 (reproducibility manifests); directive R2 (rounds stopped); no paper .tex edited by this lane"
     ]
   },
   {

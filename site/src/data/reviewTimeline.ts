@@ -67,6 +67,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-a3m-s7-cai-literature-correction-2026-09-05",
+    dateISO: "2026-09-05",
+    kind: "skill-improvement",
+    title: "S7 located: Cai (2009) factor-of-2 statement corrected in paper-su v1S.0.4 and A3M v3M.0.20",
+    papers: ["PSU", "A3"],
+    summary:
+      "research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md located the paper-su/A3M S7 open item: Cai, Xue, Brandenberger & Zhang (2009) Eq. (37) is the correct squeezed shape function -- equal to the sum of their Eqs. (27)-(32) and to Li, Quintin, Wang & Cai (2017) Eq. (4.19) at c_s=1 -- but their quoted amplitudes Eqs. (38)-(41) and Fig. 5 are uniformly twice Eq. (37) in every printed configuration, so the correct isoceles amplitude is -35/16, not the printed -35/8; the factor of two enters downstream of Eq. (37) in an unprinted amplitude-conversion step. Li et al.'s -35/16 (their Eq. 5.1 at c_s=1) evaluates the same Eq. (4.19) as an independent general-(epsilon,c_s) derivation coinciding with Cai's at epsilon=3/2, not a reuse of Cai's rows. paper-su v1S.0.4 replaced its Sec. I Cai-comparison sentence with this equation-cited statement (4/3 counterfactual arithmetic unchanged). A3M v3M.0.20 widened its Sec. IV.B attribution from 'specifically their Eqs. (38)-(40)' to the audit-verified Eqs. (38)-(41) plus Fig. 5. Literature-statement corrections only; rounds stay stopped under directive R2 on both papers.",
+    keyTakeaways: [
+      "paper-su v1S.0.4: 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp, md5 32ef7a73c509eeb5cf4383f2e3ee00fe, Convex bump k577w3x0yrqxp98jm9kxg9q6ss8dtcye",
+      "A3M v3M.0.20: 4-pass + bibtex, 0 undef refs, 0 overfull hboxes >10pt, 18 pp, md5 541a6b8a76c9cb2875c13dc15246bcce, tarball sha256 0dbe3064bb2802e3, Convex bump k573f5pzg2fdz11hwhnppasqax8dvsby",
+      "S7 CLOSED on paper-su (readiness held 65); A3M readiness held 75 -- both rounds STOPPED under directive R2, this is a literature correction, not a new round",
+    ],
+    links: [
+      { label: "S7 audit note", href: `${GH}/research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md` },
+      { label: "paper-su SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "paper-su source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+      { label: "A3M source", href: `${GH}/research/track_a3_multichannel/paper/main.tex` },
+    ],
+  },
+  {
     id: "p4p-v4p-0-6-row16-disclosure-integrated-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",
