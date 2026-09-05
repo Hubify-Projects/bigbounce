@@ -91,7 +91,7 @@ plus `reproducibility/manifests/experiments/psu-gates-s1-s2-label-composition-cr
 (new in v1S.0.2, backs the label-resolved composition + restored gradient
 term), both local CPU, \$0, under 5 seconds total compute.
 
-## Close-the-gap section (open items)
+## Close-the-gap section (open items, as of v1S.0.2)
 
 - Per directive R2, exactly one more verification round is permitted on this
   paper before another science/scope decision is required — the next INT/EXT
@@ -107,3 +107,78 @@ term), both local CPU, \$0, under 5 seconds total compute.
 - Site (`site/src/data/papers.ts` etc.) not yet updated — explicitly out of
   scope for this lane per the originating task (another lane owns
   `site/src`).
+
+## v1S.0.3 — ROUNDS STOPPED (R2) pending S6–S11 / venue
+
+R2 truth-audit (`project-context/peer-reviews/INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md`)
+found 20 genuinely-new-real findings (32 canonical, 6 re-flags, 1 OOS, 2
+falsified, 3 opinion) across Grok/Gemini/Fable INT legs. All 11 editorial
+items (E-1..E-11) closed in v1S.0.3:
+
+- E-1 abstract precision (linear-order label; in-in-bispectrum composition
+  language; USR order $O(\sqrt{\eps_s\eps_f})$; validation count reworded to
+  "one nontrivial check plus three consistency limits")
+- E-2 Eq. (4) sign flip (sympy-verified independently by the audit)
+- E-3 algebra statement corrected ($1-\lambda=I/3$, not $I=1-\lambda$)
+- E-4 Cai 2009 counterfactual ratio corrected: **4/3, not 8/7** (R1's own
+  PSU-4 disposition supplied a wrong number that had been transcribed
+  unverified into the manuscript — see the audit's process finding)
+- E-5 references fixed: split conflated [6] into Dai-Pajer-Schmidt CFC
+  (arXiv:1502.02011) and DPS "On separate universes" (arXiv:1504.00351);
+  Artigas2022/Jackson2023 initials corrected; added Li, Quintin, Wang & Cai
+  2017 (arXiv:1612.02036)
+- E-6 new paragraph engaging DPS "On separate universes"; gradient-expansion
+  order renamed $\eps_{\rm grad}$
+- E-7 gradient error term moved inside the $[1-I/3+O(\cdot)]$ bracket
+  (abstract, Eq. (2), boxed summary)
+- E-8 Eq. (1) caveats ($\partial_iN^i$ coordinate divergence, no-vorticity
+  assumption), second-order $\zeta_L(t_i)=0$ assumption stated, uniform-$\phi$
+  vs uniform-$\rho$ slice ambiguity noted (LMS $\delta N=\zeta_{ud}$ is not the
+  compared object)
+- E-9 Table I relabeled ($w{=}0$ scalar not "dust"; ekpyrosis "n/a" not
+  "attractor-like"; USR marked not computed here, order corrected; kination
+  $\lambda\to0$ and the $\eps\to0$ coincidence qualified as formal limits)
+- E-10 $\Theta$ given an explicit name before its symbol; reproducibility
+  paths switched from `\seqsplit` to `\url{}` (breaks at `/_-.` instead of
+  mid-word)
+- E-11 (**required**) new self-contained Appendix A transcribing the
+  second-order lapse/shift setup, the five kernel contributions + totals,
+  the two-label translation Eq. (S1.1) + per-label maps, and the general-$\eps$
+  in-in shape + identity-vs-fit statement, from `threading_map_second_order_2026_09_04.md`
+  and `psu_gates_S1_S2_2026_09_04.md` — no new math, transcription only
+
+Post-closure hygiene: 4-pass pdflatex, 0 undefined references, 0 overfull
+`\hbox` >10pt (two boxes introduced by the appendix were split/wrapped and
+fixed in a follow-up commit), 6 pages (up from 4, driven by the required
+appendix). PDF md5 `afeda89e03a7e0bc688d84c423d164fb`, sha256
+`2c58f165af4398d6b0790643973867e97c4d9c9e8368a8ff0db8480bd47b28e4`,
+three-way matched: fresh compile == `site/public/papers/paper_su_criterion_v1S.0.3.pdf`
+== `public/papers/paper_su_criterion_v1S.0.3.pdf`. arXiv tarball
+`project-context/SSOT/arxiv_tarballs/paper_su_arxiv_v1S.0.3.tar.gz` (sha256
+`527808b57f057000c33b39c9237a55ec4b5708bfab74428b5138a522f7042f81`),
+smoke-tested (fresh extract, 2-pass pdflatex, identical byte-size output).
+Convex `paperVersions:bump` id `k572q3ewgfsmjb02ets0jyh9b58dvghn`,
+`activityFeed:add` id `j572wqc5jm01efn9mr7yt8myz18dt2cj`,
+`papers:setReadinessCap` → 65, all read back and confirmed current.
+
+**Per the audit's R2 statement (directive R2 convergence budget: R1+R2 exhaust
+it), review rounds on paper-su STOP here** until a science or venue decision
+is taken on the remaining science items (not closable by editing):
+
+- S6 — verify (not merely assert) the second-order map used no in-in/$\delta N$
+  input; extend the sympy gate to assert the printed Eq. (4)
+- S7 — the Cai 2009 factor-of-2 dispute: either an equation-level appendix
+  locating the slip, or downgrade to "differs from [18]"; must engage Li,
+  Quintin, Wang & Cai 2017
+- S8 — turn the USR row into a real validation (exact numerical
+  $\delta N(\phi,\pi)$ at finite $\eps_s$)
+- S9 — which final slice ($\phi$ or $\rho$) the separate-universe $-5$ is
+  computed on
+- S10 — $f_{\rm map}^{\rm init}$ when $\zeta_L$ carries a constant piece as
+  well as the growing mode
+- S11 — Zenodo DOI for the exact script release (carried from R1 E9/C22)
+
+Open Houston-gated decision: does the lab fund S7 (equation-level Cai
+reconciliation) and S8 (numerical USR validation), or is the note rescoped
+(Brief Report / comment, or held pending the Bianchi-I route)? Running R3 on
+an editorially-patched v1S.0.3 would measure referee variance, not progress.
