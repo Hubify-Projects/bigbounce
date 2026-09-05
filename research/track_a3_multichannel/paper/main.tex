@@ -1309,15 +1309,27 @@ Eq.~(4.19), is
 \fnl^{\rm pre}(c_s)=-\frac{165}{16}+\frac{65}{8c_s^2},
 \end{equation}
 whose $c_s\to1$ limit reproduces this paper's own from-scratch
-$-35/16$ exactly (Sec.~\ref{sec:parameter}). This transfer statement
-uses $T\times\fnl^{\rm pre}(c_s)$ only, i.e.\ the linear transfer $T$
-derived at $c_s=1$ applied to the $c_s$-dependent pre-bounce amplitude,
-without the additive $\Delta\fnl^{\rm bounce}$ term of
-Eq.~\eqref{eq:bounce_cubic} (also derived at $c_s=1$); numerically
-$\Delta\fnl^{\rm bounce}=-0.14$ is immaterial next to the $5.1$ bound
-at $c_s=1$, but its $c_s$-dependence away from $c_s=1$ is not
-computed here (ledger item \texttt{A3-cs-bounce}). $\fnl^{\rm pre}(c_s)$
-also changes sign at $c_s=0.8876$ (negative above, positive below):
+$-35/16$ exactly (Sec.~\ref{sec:parameter}). The bounce's own cubic contribution, evaluated at the same constant
+$c_s$ (scheme S1, $z=a$, $\epsilon_{\rm eff}=1/2$), generalizes
+Eq.~\eqref{eq:bounce_cubic} to
+\begin{equation}
+\Delta\fnl^{\rm bounce}(c_s)=-\frac{5}{24}\rho_B\,\frac{6c_s^2-5}{c_s^4},
+\label{eq:bounce_cubic_cs}
+\end{equation}
+reproduced by the full numerical in-in integral to $3\times10^{-4}$ and
+reducing to Eq.~\eqref{eq:bounce_cubic} at $c_s=1$ to $4\times10^{-6}$
+(ledger row 18(b), \texttt{row18b\_cs\_bounce\_cubic/}); the
+$c_s$ dependence enters the mode functions only through the sound
+horizon ($c_s^2k^2$ in the Mukhanov--Sasaki equation, with the
+Bunch--Davies Wronskian already carrying $1/\sqrt{2c_sk}$), so the
+whole effect is carried by the vertex coefficients, dominated
+($99.97\%$) by $\zeta\dot\zeta^2$. Eq.~\eqref{eq:bounce_cubic_cs}
+changes sign at $c_s=\sqrt{5/6}=0.913$ and diverges as $1/c_s^4$,
+faster than the transmitted contraction term $T\fnl^{\rm pre}\propto
+1/c_s^2$, so $\fnl^{\rm after}(c_s)=T\fnl^{\rm pre}(c_s)+\Delta\fnl^{\rm
+bounce}(c_s)$ is used below rather than the transfer term alone.
+$\fnl^{\rm pre}(c_s)$
+itself changes sign at $c_s=0.8876$ (negative above, positive below):
 on $c_s\in[0.444,0.888)$, the branch that is otherwise CMB-viable by
 $|\fnl^{\rm after}|$, the $k$-essence prediction is a \emph{positive}
 local amplitude, so the flagship negative sign survives only for
@@ -1328,23 +1340,41 @@ effective wavenumber and the transfer is already flat over
 $k\eta_B\ll1$.
 
 \begin{table}[t]
-\caption{\label{tab:nogo}The joint $(r,\fnl)$ window in $c_s$
-(Quintin-type background, $T_{\fnl}=0.165$; \texttt{row14\_cs\_window.py}).}
+\caption{\label{tab:nogo}The joint $(r,\fnl)$ window in $c_s$, with the
+bounce's own $c_s$-dependent cubic term
+(Eq.~\eqref{eq:bounce_cubic_cs}) included at the same $c_s$
+(Quintin-type background, $T_{\fnl}=0.165$; \texttt{row14\_cs\_window.py},
+\texttt{row18b\_cs\_bounce\_cubic.py}).}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 requirement & $c_s$ & implied $r$ \\
 \colrule
 $r<0.036$ (BICEP/Keck) & $<1.5\times10^{-3}$ & $0.036$ \\
-$\fnl^{\rm after}$ at that $c_s$ & \multicolumn{2}{c}{$6.0$--$9.0\times10^{5}$} \\
-$|\fnl^{\rm after}|\le5.1$ (Planck~\cite{Planck2018fNL} $1\sigma$) & $\ge0.444$ & $\ge10.7$ \\
+$\fnl^{\rm after}$ at that $c_s$ & \multicolumn{2}{c}{$1.0$--$1.4\times10^{11}$} \\
+$|\fnl^{\rm after}|\le5.1$ (Planck~\cite{Planck2018fNL} $1\sigma$) & $\ge0.600$ & $\ge14.4$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
-The two regions are disjoint by a factor $\sim296$ in $c_s$ (BICEP/Keck-viable
-$c_s<1.5\times10^{-3}$ against Planck-viable $c_s\ge0.444$): no constant-$c_s$
+Including the bounce's own term moves the Planck-viable boundary from
+row 14's $c_s\ge0.444$ ($r\ge10.7$) to $c_s\ge0.600/0.606/0.602$
+(Quintin/LQC/poly, $r\ge14.4/14.5/14.5$) -- nearly background-independent
+because the bounce term $\propto\rho_B$ and the transmission
+$(1-\rho_B)/2$ are anti-correlated -- and, at the tensor-viable
+$c_s=1.5\times10^{-3}$, raises $\fnl^{\rm after}$ from row 14's
+$6$--$9\times10^5$ to $1.0$--$1.4\times10^{11}$: the boundary moves
+against the model at both ends. The two regions are now disjoint by a
+factor $\sim400$ in $c_s$ (BICEP/Keck-viable
+$c_s<1.5\times10^{-3}$ against Planck-viable $c_s\ge0.600$), up from
+$\sim296$ when the bounce term is evaluated only at $c_s=1$: no
+constant-$c_s$
 value keeps both the tensor ratio and the local non-Gaussianity within
-current bounds. This independently reproduces and strengthens Li
+current bounds, and the no-go is strengthened, not relaxed, by
+evaluating both terms at the same $c_s$. Eq.~\eqref{eq:bounce_cubic_cs}'s
+own sign flip at $c_s=0.913$ sits close to $\fnl^{\rm pre}$'s at
+$c_s=0.888$ (Sec.~\ref{sec:bounce_cubic}), so both terms change sign
+within the same narrow window and the flagship negative sign survives
+only above it. This independently reproduces and strengthens Li
 \textit{et al.}'s (2016) own no-go statement (their $r<0.07$ era bound
 gives $c_s\lesssim0.0029$; the tighter current $r<0.036$ moves this to
 $c_s<1.5\times10^{-3}$ and $\fnl^{\rm pre}=3.6\times10^{6}$, a factor
