@@ -265,9 +265,10 @@ touch "$DONEMARK"
 # Stage 07: self-stop (absolute last action)
 # ---------------------------------------------------------------------
 mark "self-stop: podStop $RUNPOD_POD_ID"
-curl -sf -X POST https://api.runpod.io/graphql \
+# NOTE (2026-09-04 3rd attempt): Authorization:Bearer returns HTTP 403 on the
+# current RunPod API; ?api_key= query param is the confirmed-working auth.
+curl -sf -X POST "https://api.runpod.io/graphql?api_key=$RUNPOD_API_KEY" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $RUNPOD_API_KEY" \
   -d "{\"query\": \"mutation { podStop(input: {podId: \\\"$RUNPOD_POD_ID\\\"}) { id desiredStatus } }\"}" \
   2>&1 | tee -a "$LOG"
 

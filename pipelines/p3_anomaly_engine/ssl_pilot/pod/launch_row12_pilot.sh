@@ -16,19 +16,26 @@ B2_APPLICATION_KEY=$(grep '^B2_APPLICATION_KEY=' "$ENV_FILE" | cut -d= -f2-)
 B2_BUCKET=$(grep '^B2_BUCKET=' "$ENV_FILE" | cut -d= -f2-)
 
 gql() {
-  curl -sf -X POST https://api.runpod.io/graphql \
+  # NOTE (2026-09-04 3rd attempt): "Authorization: Bearer" returns HTTP 403 on
+  # the current RunPod API; the working auth is the ?api_key= query param
+  # (confirmed live against this account before this run).
+  curl -sf -X POST "https://api.runpod.io/graphql?api_key=$RUNPOD_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $RUNPOD_API_KEY" \
     -d "$1"
 }
 
 echo "=== balance before ==="
 gql '{"query":"query { myself { clientBalance } }"}' | python3 -c "import json,sys; print(json.load(sys.stdin)['data']['myself']['clientBalance'])"
 
+# NOTE (2026-09-04 3rd attempt): prefer SECURE cloud first -- RunPod docs
+# confirm SECURE always gets a public IP automatically, while COMMUNITY needs
+# supportPublicIp:true and is less reliable (2 prior COMMUNITY pods this
+# session never got SSH). Explicit ports:"22/tcp" added below (previously
+# relied on startSsh:true alone, which does not guarantee a mapped port).
 GPU_CONFIGS=(
-  'NVIDIA GeForce RTX 4090|COMMUNITY'
+  'NVIDIA GeForce RTX 3090|SECURE'
+  'NVIDIA GeForce RTX 4090|SECURE'
   'NVIDIA RTX A5000|SECURE'
-  'NVIDIA GeForce RTX 3090|COMMUNITY'
 )
 
 POD_ID=""
@@ -36,7 +43,7 @@ for cfg in "${GPU_CONFIGS[@]}"; do
   GPU_TYPE="${cfg%%|*}"
   CLOUD="${cfg##*|}"
   echo "trying $GPU_TYPE ($CLOUD)..."
-  RESP=$(gql "{\"query\": \"mutation { podFindAndDeployOnDemand(input: { name: \\\"bigbounce-row12-pilot\\\", imageName: \\\"runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04\\\", gpuTypeId: \\\"$GPU_TYPE\\\", gpuCount: 1, volumeInGb: 150, containerDiskInGb: 50, startSsh: true, cloudType: $CLOUD }) { id } }\"}")
+  RESP=$(gql "{\"query\": \"mutation { podFindAndDeployOnDemand(input: { name: \\\"bigbounce-row12-pilot\\\", imageName: \\\"runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04\\\", gpuTypeId: \\\"$GPU_TYPE\\\", gpuCount: 1, volumeInGb: 150, containerDiskInGb: 50, startSsh: true, ports: \\\"22/tcp\\\", supportPublicIp: true, cloudType: $CLOUD }) { id } }\"}")
   POD_ID=$(echo "$RESP" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('data',{}).get('podFindAndDeployOnDemand',{}).get('id',''))" 2>/dev/null)
   if [ -n "$POD_ID" ]; then
     echo "created pod $POD_ID ($GPU_TYPE, $CLOUD)"
@@ -130,7 +137,7 @@ chmod +x /workspace/bigbounce/pipelines/p3_anomaly_engine/ssl_pilot/pod/pod_row1
 source /workspace/row12_env.sh
 nohup bash -c 'source /workspace/row12_env.sh && bash /workspace/bigbounce/pipelines/p3_anomaly_engine/ssl_pilot/pod/pod_row12_pilot.sh' > /workspace/row12/nohup.out 2>&1 &
 disown
-nohup bash -c 'source /workspace/row12_env.sh && sleep 18000 && curl -sf -X POST https://api.runpod.io/graphql -H \"Content-Type: application/json\" -H \"Authorization: Bearer \$RUNPOD_API_KEY\" -d \"{\\\"query\\\": \\\"mutation { podStop(input: {podId: \\\\\\\"\$RUNPOD_POD_ID\\\\\\\"}) { id } }\\\"}\"' > /workspace/row12/watchdog.out 2>&1 &
+nohup bash -c 'source /workspace/row12_env.sh && sleep 18000 && curl -sf -X POST \"https://api.runpod.io/graphql?api_key=\$RUNPOD_API_KEY\" -H \"Content-Type: application/json\" -d \"{\\\"query\\\": \\\"mutation { podStop(input: {podId: \\\\\\\"\$RUNPOD_POD_ID\\\\\\\"}) { id } }\\\"}\"' > /workspace/row12/watchdog.out 2>&1 &
 disown
 echo LAUNCHED"
 
