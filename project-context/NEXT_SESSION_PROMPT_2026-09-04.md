@@ -1,8 +1,10 @@
-# New-session prompt — BigBounce + Hubify (v7, written 2026-09-04; supersedes v6 of 2026-09-03)
+# New-session prompt — BigBounce + Hubify (v8, written 2026-09-04 evening; supersedes v7)
 
 Paste everything below the line into a fresh session inside `~/Desktop/CODE_YOU/bigbounce`
 (`git pull --ff-only` first). State as of close is in
-`project-context/SESSION_HANDOFF_2026-09-04.md`; canonical truth in `SSOT/`.
+`project-context/SESSION_HANDOFF_2026-09-04.md` (read the "Evening state" section at the
+bottom first — it supersedes the earlier sections where they overlap); canonical truth in
+`SSOT/`.
 
 ---
 
@@ -22,7 +24,10 @@ commits its output file within its first ~10 tool calls; commits after every ite
 explicit path (never `-A`); keeps each Write/Edit under ~80 lines; never delegates to a
 nested agent; never arms Monitor (block with a Bash loop instead). When a lane stalls,
 read `git status`/`git log` and resume from the committed state with a narrower lane.
-`com.you.context-sync` auto-commits in this repo; expect HEAD to move.
+`com.you.context-sync` auto-commits in this repo; expect HEAD to move. A provider
+rate-limit outage killed four lanes late in the 09-04 session (18:04–18:41 PT) and left
+one orphaned RunPod pod running ($0.29 before it was found and terminated) — before
+starting any RunPod-heavy lane, check for stray pods first.
 
 ## The story so far
 - 2025-07 → 2026-03: one torsion paper grew into the March lineup and a written
@@ -30,59 +35,69 @@ read `git status`/`git log` and resume from the committed state with a narrower 
 - 2026-04 → 07: derailment — splits/rescues, review convergence as the product, the
   science list unpursued. −35/8 → −35/16 corrected.
 - 2026-08: reproducibility-first, no mistake narration (Q).
-- 2026-09-02: refocus — Track A (bounce vs inflation: A3M), Track B (ECH Note), Track C
-  (P4′ + anomaly map); directives R and N-AMENDED; ledger #1 closed (−35/16 by an
-  independent in-in route), A2 first half, A3 first pass, P4′ and ECH Note converged at 95.
-- 2026-09-03/04 (last session): phase-3 v2 landed and ledger #8 answered (data release);
-  ledger #7 closed negative (no chiral GWs from minimal ECH); ledger #2 closed as scoped
-  (bounce cubic term; f_NL^after ∈ [−0.65, −0.50]); the δN/in-in monopole adjudicated
-  (in-in −15/8 correct); A3-1b (PBH null, FIRAS), A3-3 (PTA null: γ_pred 5.07, 14.3 dex
-  below NANOGrav); ledger #4 planned with step 1 executed; A3M v3M.0.10 after two
-  truth-audited boards with two science decisions (C1 propagate; D-A3-3 PTA null).
-  **Track A now states: a transmission-corrected prediction plus three honest nulls and one
-  reachable-but-unseparable channel.** Rounds stopped under R2.
+- 2026-09-02/03: refocus into Track A/B/C; ledger #1/#7/#8/#2 closed; A3M v3M.0.10 states
+  a transmission-corrected prediction plus three honest nulls and one reachable-but-
+  unseparable LSS channel.
+- 2026-09-04 (this session): **the matter-bounce family is now excluded jointly by tensors
+  and non-Gaussianity for the single-field case (row 14: c_s windows disjoint 296×,
+  strengthens Li+2016 3.8×), and the standard cure (a curvaton spectator, row 15) buys
+  tensor viability only by diluting the flagship f_NL signal to (r/24)² ≈ 1.5e−6 — below
+  reach.** Row 9 closed the bounce-scale-enhancement question negative (no mechanism
+  reopens the PTA/PBH nulls). Row 11's threading map and row 17's spin-out gave a
+  standalone note, paper-su. Three honest novelty lifts were made (lift 1: A3M's no-go +
+  curvaton reframe, v3M.0.15; lift 2: paper-su draft; lift 3: namaster-proof's blind
+  shortcut-detection test, N3-candidate). The site shipped a full six-lane redesign
+  (tracks-as-spine `/research`, flat `/papers`, calm `/status`, `/reproduce` hub,
+  evidence-grade labels, "started from one question" positioning). Ledger row 16 opened a
+  decisive galaxy-chirality-at-scale program; row 12's SSL pilot and row 4's DESI
+  reproduction (now 0.06σ from published) both have real compute in flight or queued.
 
-## Reading order (15 minutes)
-`VISION.md` → `NEXT_SCIENCE_LEDGER.md` (rows 4 and 9 are the open science) →
-`SESSION_HANDOFF_2026-09-04.md` → `SSOT/paper-a3m/status.md` (v3M.0.10 section) →
-`PAPER_LINEAGE_2026-08-05.md` (the two 2026-09-04 entries) →
-`research/track_a3_multichannel/SIGW_NHZ_NOTE_2026-09-04.md` →
-`research/cubic_bounce_transmission/A2_TRANSMISSION_BRIEF_2026-09-02.md` §8 →
-(background) `SESSION_HANDOFF_2026-09-02.md`, `PORTFOLIO_DECISION_2026-09-02.md`.
+## Reading order (15–20 minutes)
+`VISION.md` → `NEXT_SCIENCE_LEDGER.md` (rows 4, 12, 13, 16 are the open science; rows 9–11,
+14, 15, 17 are this session's closures — read for context, not to redo) →
+`SESSION_HANDOFF_2026-09-04.md` "Evening state" → `SSOT/paper-a3m/status.md` (v3M.0.15
+section) → `NOVELTY_AUDIT_2026-09-04.md` (top-3 nearest-to-N3) →
+`PAPER_LINEAGE_2026-08-05.md` (the six 2026-09-04 entries) →
+`HUBIFY_POSITIONING_2026-09-04.md` → `project-context/site-redesign/2026-09-04/REDESIGN_SPEC.md`.
 
 ## Where things stand
 - P4′ v4P.0.5 and ECH Note v1N.0.5: readiness 95, kits ready; wait only on Houston.
-- A3M v3M.0.10 (13 pp, PRD): readiness 75; automated review rounds STOPPED (R2) — the next
-  board needs a science decision first. Three science-gate items are closed.
-- Anomaly catalogue: data release v2 (1,244 science targets) documented; Zenodo DOI is
-  Houston's click.
-- Pod: none running. No review cron. You.md sync agent commits on its own.
+- A3M v3M.0.15 (17 pp, PRD): readiness 75; D-A3-10/11 science reframe done, R7
+  verification board now permitted (site data sync for this version is pending, separate
+  bundle).
+- namaster-proof/P1B v2B.0.17: readiness 95, blind shortcut-detection test done,
+  N3-candidate claim recorded, no board run on this claim yet.
+- paper-su v1S.0.1 (new, 4 pp): readiness 40, draft only, no board run yet.
+- Anomaly catalogue v2: data release documented; Zenodo DOI is Houston's click.
+- Site: six-lane redesign shipped; live headed-browser QA still owed.
+- Pod: none confirmed running (one orphan found + terminated this session — re-check).
+  No review cron. You.md sync agent commits on its own.
 
 ## TERMINAL GOAL (run until done; never stop early)
-1. **Ledger row 9 (A3-1e): bounce-scale enhancement at kη_B ~ 1.** Three short lanes,
-   each committing early: (a) Quintin+2015 Eq. 79 velocity-dip amplification evaluated on the
-   lab's three A2 backgrounds with the lane-b mode machinery at kη_B ∈ [0.1, 10] (opus);
-   (b) a regulated S2 scheme — d_cut scan of the effective-fluid z² and whether a finite
-   limit exists for Δf_NL^bounce (fable, contested); (c) the ABS 2017 dressed-metric H⁽³⁾
-   self-interaction operator on the LQC-dust background: is it representable in the lab's
-   classical S1 table and what does it add (opus, literature-bound). Verdict: quantified
-   feature/enhancement with scheme label → reopen the PTA/PBH channels; none → Track A's
-   nulls stand. Record the decision in the ledger and lineage; if it changes A3M, that is
-   the science decision that permits one verification board (Fable + Grok + Gemini API
-   legs, truth-audit, closure, directive G).
-2. **Ledger row 4: execute the DESI DR1 PNG reproduction plan**
-   (`research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md`): download the
-   remaining LSS products (~64 GB, sha-bound manifests, outside the repo), P_0/P_2 with
-   pypower over 0.003 < k < 0.08, the scale-dependent-bias fit with the lab's own
-   systematics budget, the b_φ-marginalised statement and the posterior overlap at
-   f_NL^after. Local CPU, unattended lanes with markers; RunPod only for the EZmock
-   covariance contingency (backup-3plus applies).
-3. **Ledger row 3 residual A3-4:** re-derive the shape-overlap projection r at −35/16
-   (sonnet-specified from the existing forecast scripts; opus if the derivation is
-   contested).
-4. **Hubify parity:** run `hubify` parity for the lineup (A3M v3M.0.10, P3 data release
-   disposition) and the manifest importer once `HUBIFY_TOKEN` exists; otherwise record the
-   blocker again.
-5. **Hygiene every round:** directive G bundle, Convex/site/timeline sync with headed QA,
+1. **A3M R7 board → truth-audit → closure → rounds stop.** Run the verification board
+   permitted by D-A3-10/11 (Fable + Grok + Gemini API legs) on v3M.0.15's reframed
+   content, truth-audit every finding, close genuinely-new-real items, recompile +
+   directive-G hygiene, Convex/site sync (including the deferred site-data sync from
+   v3M.0.11–.15), then rounds stop under R2 again.
+2. **paper-su R1 board → truth-audit → closure.** First board ever on this paper; same
+   protocol; readiness moves off 40 once the board runs.
+3. **namaster-proof/P1B R1 board on the N3-candidate claim → truth-audit → closure →
+   ASCL/Zenodo kit finalized** (packaging steps already written in
+   `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5; DOI minting is
+   Houston's click, but the tagged-tarball + upload-metadata prep is not).
+4. **Row 16 program:** full-parent (8.47M-galaxy) dipole on RunPod once the 20–50k
+   pixel-level injection (staged, not yet run) lands; chirality × cosmic-web-environment
+   and chirality × anomaly-catalogue cross-correlations on local CPU (no GPU needed);
+   Euclid Q1 domain-adaptation as the pathfinder step named in row 13's writeup.
+5. **Row 12 program:** the full 1M-spectrum DR1 pilot (pod provisioning deferred last
+   session under the anti-stall contract — this session should provision, poll, and
+   backup-3plus it start to finish) → recovery benchmark vs the v2 catalogue.
+6. **Row 15's open items:** an entropy sector through the A2 backgrounds (needed for the
+   curvaton dilution factor F ≥ 22.35 to attach to a real matter-bounce background); CXB11
+   Eqs. 62–64 not yet re-derived.
+7. **Ledger #4 residuals:** wide-angle terms, E(B−V)/stellar-density/depth systematics
+   splits (find or request the pixweight VAC), own-covariance at official-product fidelity
+   if RunPod becomes reachable.
+8. **Hygiene every round:** directive G bundle, Convex/site/timeline sync with headed QA,
    manifests validated, ledger + handoff updated, next prompt written, ordered click-list.
    Stop only when every item is done or Houston-only.

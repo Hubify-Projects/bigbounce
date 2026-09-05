@@ -55,3 +55,89 @@ Track A's PTA/PBH channels.**
 5. arXiv submissions after endorsement; journal portals (CQG Paper; ApJS).
 6. Secrets/infra: `HUBIFY_TOKEN` (vault passphrase or `hubify auth login`); confirm retirement of the Codex launchd agents; decide on `com.you.context-sync` for this repo.
 7. **New — A3M scope read:** the Track-A paper now headlines a transmission-corrected f_NL^after and three nulls. Read `SSOT/paper-a3m/status.md` v3M.0.10 and the two lineage entries of 2026-09-04 and confirm the framing before any A3M submission step (readiness stays 75 until a science decision on row 9 and a final verification board).
+
+---
+
+## Evening state (2026-09-04, ~19:30 PT)
+
+361 commits since 06:00 today. Science table (rows closed/answered this
+session, one line + receipt each):
+
+| Row | Result | Receipt |
+|---|---|---|
+| 2 | Bounce cubic term closed as scoped; f_NL^after ∈ [−1.25,−0.50] two-scheme band after row 9 | `research/cubic_bounce_transmission/`, `lane9b2_s2_rawadm/` |
+| 7 | No chiral GWs from minimal ECH — k-odd super-Hubble suppression, O(ε) in every band | `research/chiral_gw_gate/LEDGER7_CHIRAL_GW_GATE_2026-09-03.md` |
+| 8 | Anomaly catalogue → data release (pre-declared benchmark not met) | `pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md` |
+| 9 | Bounce-scale enhancement at kη_B~1: velocity-dip null, S2 divergence is IBP artefact (raw-ADM finite, factor 2.5 vs S1), ABS operator absent/suppressed on exact LQC modes (2.1–4.4 dex below, PBH null unchanged) | `research/track_a3_multichannel/lane9{a,b,b2,c,c2}_*/` |
+| 10 | Model's own r = 16ε = 24 (dust), ~670× above BICEP/Keck; n_s=1 exactly (0.9649 is a w-anchor); r=0.84 withdrawn | `research/track_a3_multichannel/row10_r_ns/` |
+| 11 | PBH sign resolved (Choudhury+2025 correct; lab's earlier enhancement an IR-divergent artefact); in-coverage ratio 1.84±0.03; second-order threading map derived (δN_c=(1−ε/3)ζ) | `row11_pbh_residuals/`, `research/theory_audit/threading_map_second_order_2026_09_04.md` |
+| 14 | Joint (r,f_NL) no-go: c_s windows disjoint 296×; confirms+strengthens Li+2016 3.8× | `row14_cs_window/` |
+| 15 | Curvaton route: n_s inherited, r free, f_NL O(1) but diluted by (r/24)²≈1.5e−6 — cure removes the signal | `row15_curvaton/`, adjudication note |
+| 17 | Separate-universe failure criterion spun out as standalone note (paper-su v1S.0.1) | `research/theory_audit/separate_universe_failure_criterion_2026_09_04.*` |
+
+In progress:
+
+| Row | State |
+|---|---|
+| 4 | DESI DR1 f_NL v3 done (−2.2±25.3, 0.06σ from published); RunPod for own-covariance never came up ($0 spent); wide-angle/pixweight splits open |
+| 12 | Preflight + provenance design complete, RunPod balance confirmed funded; pod provisioning deferred to a dedicated pollable session (anti-stall contract disallows unattended Monitor loops here) |
+| 13 | Part A at-scale (N=5000, local MPS, $0) done — consistent but underpowered; N=20k script staged; Euclid Q1 domain-adaptation named as pathfinder-only, not yet run |
+| 16 | Program row opened 2026-09-04 (full 8.47M dipole, chirality×structure cross-correlations, Euclid Q1); N=20k injection scripts adapted, not yet run |
+
+**Papers.** A3M v3M.0.15 (17 pp): readiness 75, title/abstract reframed
+around the joint (r,f_NL) no-go (D-A3-10/D-A3-11); rounds stopped under R2
+after v3M.0.10; D-A3-9/10/11 are science decisions, not review rounds, so
+one verification board (R7) is now permitted. P4′ v4P.0.5 and ECH Note
+v1N.0.5: readiness 95, unchanged, waiting only on Houston sign-off.
+namaster-proof/P1B v2B.0.17 (8 pp): novelty lift #3 — reframed around a
+verification primitive, blind shortcut-detection test 12/12 detected, 0%
+false positives, N3-candidate claim recorded (pending an external referee
+board). paper-su v1S.0.1 (4 pp, new): "When the separate universe fails,"
+readiness 40, draft only — no INT/EXT board has run yet. Anomaly catalogue
+v2: data release, 1,244 science-only targets, 8 taxonomic families, Zenodo
+DOI still Houston's click.
+
+**Site.** The full six-lane redesign (`project-context/site-redesign/2026-09-04/REDESIGN_SPEC.md`)
+shipped: shell primitives (Band/PageHeader/StatRow/EvidenceChip/RowList/
+DataTable), `/research` (tracks-as-spine) + `/papers` (flat works index),
+paper template + figures + `/predictions`, `/status` as a calm readiness
+dashboard + simplified `/reviews` + `/publish`, `/reproduce` hub, `/learn`
+cluster + explorer wrappers, a "started from one question" positioning
+band on the homepage and `/research` header, contribution-type + novelty-
+tier labels per the novelty audit. `tools/site_freshness_check.sh` and
+`reviewTimeline.ts` contracts preserved; explorer root `.html` files
+untouched (still canonical). Live headed-browser QA of the redesign is
+still owed before calling it fully verified.
+
+**Process notes.** A provider rate-limit outage 18:04–18:41 PT killed four
+concurrent Agent lanes; one orphaned RunPod pod was found and terminated
+at $0.29 spend. `com.you.context-sync` (launchd) continued auto-committing
+in this repo through the session — expect HEAD to move between checks.
+Anti-stall rules (first commit within ~10 tool calls, commit per item,
+≤80-line edits, no nested delegation, no Monitor inside a lane) held for
+every lane that finished; they are standing in `NEXT_SESSION_PROMPT` and
+memory.
+
+**Updated ordered click-list for Houston (supersedes the 09-02 list above
+where items overlap):**
+1. Sign-off reads (95 → 100): P4′ v4P.0.5 and ECH Note v1N.0.5 — paste
+   sign-off quotes into `SSOT/paper-4p/status.md`, `SSOT/paper-1n/status.md`.
+2. Zenodo DOIs (irreversible): records 21481838/21461899 (P4′/ECH Note per
+   `SSOT/PORTAL_KITS_2026-09-02.md`); the anomaly-catalogue v2 data release
+   (`pipelines/p3_anomaly_engine/release/ANOMALY_CATALOGUE_RELEASE_v2_2026-09-03.md`);
+   and namaster-proof/P1B per §5 of
+   `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md`
+   (Zenodo upload, then an ASCL entry at ascl.net/code/submit once the DOI
+   exists).
+3. Endorsement emails (gr-qc → Popławski; astro-ph.GA → Desmond) per
+   `SSOT/ENDORSER_OUTREACH_2026-09-02.md`.
+4. A3M framing read: after R7 closes, re-read `SSOT/paper-a3m/status.md`
+   v3M.0.15 and confirm the joint (r,f_NL) no-go framing before any A3M
+   submission step.
+5. `HUBIFY_TOKEN` (vault passphrase or `hubify auth login`) — still blocks
+   the manifest importer / hubify parity check.
+6. `com.you.context-sync` decision for this repo — it keeps auto-committing
+   mid-session; decide whether to exclude `bigbounce`.
+7. RunPod spend approvals: row 16 full-parent dipole run after the 20–50k
+   injection lands (~$60 estimate); row 12 full 1M-spectrum DR1 pilot
+   (~$50) and, if that succeeds, the full DR1 SSL pass (~$300).
