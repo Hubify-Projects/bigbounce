@@ -2,6 +2,19 @@ import type { Metadata } from "next";
 import { Band, PageHeader, RowList } from "@/components/primitives";
 import { getAllFiguresGroupedByPaper } from "@/lib/livePapers";
 import { figureSections } from "@/data/figures";
+import { contributions } from "@/data/tracks";
+import { CONTRIBUTION_TYPE_LABEL, CONTRIBUTION_TYPE_HINT } from "@/lib/contributionTypes";
+
+function typeChip(contributionId: string) {
+  const c = contributions.find((x) => x.id === contributionId);
+  if (!c) return undefined;
+  return (
+    <span className="evidence-chip evidence-chip-type" title={CONTRIBUTION_TYPE_HINT[c.contributionType]}>
+      <span className="evidence-chip-dot" aria-hidden="true" />
+      {CONTRIBUTION_TYPE_LABEL[c.contributionType]} &middot; {c.tier}
+    </span>
+  );
+}
 
 export const metadata: Metadata = {
   title: "Explore",
@@ -35,12 +48,14 @@ export default async function ExplorePage() {
               purpose: "8.47M DESI galaxies tested for a handedness dipole (result: null).",
               href: "/galaxy-explorer",
               right: "8.47M galaxies",
+              chips: typeChip("chirality-catalog"),
             },
             {
               title: "Anomaly candidate explorer",
               purpose: "DESI spectral anomaly candidates from the autoencoder pipeline.",
               href: "/anomaly-explorer",
               right: "77,905 candidates",
+              chips: typeChip("anomaly-catalogue-v2"),
             },
             {
               title: "Bayes-factor data explorer",
