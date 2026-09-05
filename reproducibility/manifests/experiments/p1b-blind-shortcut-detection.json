@@ -1,0 +1,73 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1b-blind-shortcut-detection",
+  "title": "Blind shortcut-detection test: can a referee decide from receipts alone whether an expensive pseudo-C_ell computation was actually performed?",
+  "program": "lab-infra",
+  "paper": "P1B",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "Synthetic HEALPix Gaussian signal realisations (nside=64, lmax=64, power-law C_ell)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_map; healpy.synfast, seeds from the sealed assignment)",
+      "checksum": null
+    },
+    {
+      "name": "Synthetic binary sky mask (equatorial cut + 12 random discs, f_sky = 0.7857)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_mask, seed 11)",
+      "checksum": null
+    },
+    {
+      "name": "namaster-proof receipt primitive (publish_json / verify_json_receipt)",
+      "type": "internal-artifact",
+      "locator": "packages/namaster-proof/src/namaster_proof/receipts.py",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {"path": "pipelines/namaster_proof/blind_test/wigner.py", "entrypoint": "python3 test_wigner.py", "sha256": "13221ecafe217a9cc7d32842fccd73cfd4d41dba966a6e55fb441f8a7d794779"},
+    {"path": "pipelines/namaster_proof/blind_test/pcl.py", "entrypoint": "imported by variants.py", "sha256": "5d9fb3dcdba5821e187c9597874ab3987c0492b86b4d7b9fa11a53fa6ca9fc80"},
+    {"path": "pipelines/namaster_proof/blind_test/variants.py", "entrypoint": "imported by run_blind.py", "sha256": "1ea01738dd3a90da2c6260c28a2f6dbdc7d35519e3f3ac29309ca55d1272255b"},
+    {"path": "pipelines/namaster_proof/blind_test/seal.py", "entrypoint": "python3 seal.py", "sha256": "cd66d949511574cb164bd5247025946adb677ed1f7312b8aef6375ed8f1712e5"},
+    {"path": "pipelines/namaster_proof/blind_test/run_blind.py", "entrypoint": "python3 run_blind.py", "sha256": "d660743d120f6ed58be46150e03b1992989ec5504c82c9a4f3b3cbc327f1dc9c"},
+    {"path": "pipelines/namaster_proof/blind_test/verify.py", "entrypoint": "python3 verify.py", "sha256": "e847c512b5e4708830413d057eed0423026738791bef0831e10cf6c71535dc19"},
+    {"path": "pipelines/namaster_proof/blind_test/reveal.py", "entrypoint": "python3 reveal.py", "sha256": "c27518919c656b0206cdd9c7105af950fc867ce5f1e39278491ea20401e8346c"}
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + healpy 1.20.0 + scipy 1.18.0; sympy optional (test_wigner.py cross-check only). NaMaster/pymaster is NOT required and is NOT installed: the test ships its own spin-0 MASTER estimator so the Wigner-3j evaluation count can be instrumented.",
+    "hardware": "cpu-only, any laptop"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation (macOS arm64)",
+    "date": "2026-09-04",
+    "wall_clock": "~1 min total for seal + 19 runs (1 reference + 18 blind) + verify + reveal",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU",
+    "est_wall_clock": "~1-2 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "python3 seal.py && python3 run_blind.py && python3 verify.py && python3 reveal.py, from pipelines/namaster_proof/blind_test/. seal.py draws a FRESH random key, so a re-run reproduces the scorecard STATISTICS (detection/false-positive rates per arm) but not the committed assignment digest. To reproduce the committed run exactly, skip seal.py and reuse the committed sealed/key.txt + sealed/assignment.json."
+  },
+  "outputs": [
+    {"locator": "pipelines/namaster_proof/blind_test/public/contract.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public/sealed_digest.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public/runs", "type": "receipt", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public/verdicts.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public/scorecard.json", "type": "result-json", "checksum": null}
+  ],
+  "verification": "Exact, not tolerance-based. (1) python3 test_wigner.py reproduces the m=0 Wigner-3j kernel against sympy.physics.wigner to < 1e-12 on six cases. (2) reveal.py recomputes the sealed assignment from key.txt and asserts its sha256 equals the pre-run committed digest in public/sealed_digest.json (assignment_sha256 = 0f4ca4ba8e431067c8d47e182264ccedb62a72a6a1c564e72ccbab653a4d5515; seal_verified = true). (3) public/scorecard.json must reproduce byte-identically from the committed sealed/ and public/runs/: detection_rate_excluding_S5 = 1.0 (12/12 across S1-S4), detection_rate_all_shortcuts = 0.8 (12/15), false_positive_rate = 0.0 (0/3 honest). (4) Every run's result/receipt pair must pass namaster_proof.receipts.verify_json_receipt.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NOVELTY_AUDIT_2026-09-04.md, section '#3 — namaster-proof as a verification primitive (candidate 10)' (the lift this test executes)",
+    "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md (design note: threat model, trace fields, blind protocol, pre-declared success criterion)",
+    "packages/namaster-proof/src/namaster_proof/receipts.py (the content-binding primitive under test)",
+    "commit 0b43d5d6 (design note), b0426b4c (3j kernel), fc2f01b8 (pseudo-C_ell core), 73ec01ff (variants), 00132500 (seal), a07c496b (harness + verifier), d60949b7 (executed run + artifacts)"
+  ]
+}
