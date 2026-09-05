@@ -1,0 +1,34 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "psu-gates-s1-s2-label-composition-criterion",
+  "title": "PSU R1 science gates S1/S2 (+S3 math): label-resolved second-order composition (initial vs final worldline label), well-defined separate-universe criterion with the gradient term restored, change-of-variable statement",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {"name": "PSU v1S.0.1 R1 truth audit (items S1, S2, S3)", "locator": "project-context/peer-reviews/INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md", "type": "internal-artifact", "checksum": null},
+    {"name": "lab threading map (2026-09-04), frozen map pieces incl. lab_init / wl_initextra", "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json", "type": "internal-artifact", "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"},
+    {"name": "separate-universe failure criterion note (2026-09-04)", "locator": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.md", "type": "internal-artifact", "checksum": null},
+    {"name": "lab monopole adjudication (2026-09-03), in-in general-eps kernel", "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md", "type": "internal-artifact", "checksum": null}
+  ],
+  "apis": [],
+  "code": [
+    {"path": "research/theory_audit/psu_gates_S1_S2_2026_09_04.py", "entrypoint": "python3 research/theory_audit/psu_gates_S1_S2_2026_09_04.py", "sha256": "4f6410228fef112775d2c7a29701657f04da67e027b5d8b31d969a1360dd53e4"}
+  ],
+  "environment": {"python": "python3 with sympy (>=1.12; run on sympy 1.14.0)", "hardware": "cpu-only"},
+  "original_run": {"venue": "local", "gpu": null, "pod_id_or_host": "local macOS workstation", "date": "2026-09-04", "wall_clock": "about 3 s", "actual_cost_usd": 0.0},
+  "reproduction": {"recommended_venue": "local", "est_wall_clock": "under 10 seconds", "est_cost_usd": 0.0, "parallelizable": false, "resume_support": false,
+    "notes": "Deterministic exact sympy on closed forms (no constraint re-solve). Self-validating asserts: f_map(final) = -(5 eps/4)(1-mu^2); f_map(initial) = 5 eps/(4(3-eps)) [(eps-2) - eps mu^2]; label term T = 5 eps/(4(3-eps))(1-3 mu^2) with zero monopole; f_inin/lam + f_map(initial) == -5 for all constant eps; final-label total = -15(eps-4)/(4(eps-3)) + 15 eps/(4(3-eps)) mu^2; I(dust) -> 3/2, I(attractor) = 0, I(USR) = sqrt(eps_s eps_f) - eps_f; dust gradient term G -> (k eta_f)^2/6; inversion recovers the in-in monopole -5(eps-3)(eps-6)/18."},
+  "outputs": [
+    {"locator": "research/theory_audit/psu_gates_S1_S2_2026_09_04.json", "type": "result-json", "checksum": "sha256:f4164019c10766738527d93930255ccf1912c55a2ecf8bc2cbf06d908f39f329"},
+    {"locator": "research/theory_audit/psu_gates_S1_S2_2026_09_04.md", "type": "document", "checksum": null}
+  ],
+  "verification": "Re-run and diff the JSON. Required: S1.f_dN_initial_label.const == '-5' and .mu2 == '0'; S1.at_eps.dust_eps_3_2.f_dN_fin == {const '-25/4', mu2 '15/4'}; S1.T_monopole == '0'; S2.attractor.I == '0'; S2.dust.I_limit_xi_to_inf == '3/2'; S2.dust['G_leading_over_(k_eta_f)^2'] == '1/6'; S2.USR.I == 'sqrt(epsilon_f)*sqrt(epsilon_s) - epsilon_f'; S3_math.inversion_recovers_inin_monopole == '-5*(epsilon - 3)*(epsilon - 6)/18' up to sympy ordering.",
+  "status": "runnable-now",
+  "provenance": [
+    "PSU R1 truth audit S1 (PSU-1, PSU-8): printed Eq. (3) composed the final-label map with the initial-label total",
+    "PSU R1 truth audit S2 (PSU-9): <X>_zeta 0/0 on constant-mode rows; gradient term dropped",
+    "PSU R1 truth audit S3 (PSU-10): failure vs change-of-variable, math level only; framing left to Houston (R3/R6)",
+    "directive Q2 (reproducibility manifests); arxiv/paper_su_criterion/main.tex NOT edited by this lane"
+  ]
+}
