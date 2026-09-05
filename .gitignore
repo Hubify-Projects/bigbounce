@@ -116,3 +116,6 @@ tmp/
 pipelines/*/tmp/
 outputs_check
 .vercel_python_packages/
+
+# blind shortcut-detection test: sealing key is revealed in the report, not committed
+pipelines/namaster_proof/blind_test/sealed/key.txt
