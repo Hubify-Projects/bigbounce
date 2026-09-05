@@ -833,3 +833,5 @@ touched — five redesign lanes are editing it; the orchestrator syncs
 
 **Not sourced from a committed file (disclosed).** None — every number
 above traces to the five lane9 files named at the top of this section.
+
+- **R6-09 closed 2026-09-04 (orchestrator, arXiv fetched):** Ref. Papanikolaou2025 verified verbatim against arxiv.org/abs/2504.11641 — title "Gravitational wave signatures of non-singular matter bouncing cosmology in NANOGrav and beyond", sole author T. Papanikolaou, submitted 2025-04-15, Corfu Summer Institute 2024 proceedings contribution, no journal reference. No edit needed.
