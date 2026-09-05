@@ -1,0 +1,8 @@
+{
+  "batch": 4,
+  "committed_before": "the batch-4 seal, the batch-4 scripts' execution, and any batch-4 run output",
+  "purpose": "R8 post-commitment challenge randomness",
+  "randomness_source": "commit_reveal_verifier_seed_32B; bitcoin_ots_blockhash declared as the drop-in upgrade (no confirmed post-receipt attestation exists at challenge time)",
+  "revealed_after": "every run receipt and every bound receipt digest is committed",
+  "verifier_seed_sha256": "efef74f2b39fbfd739e3af2c8d517126cf28201e8648bc939ca6bc79c80bd29d"
+}
