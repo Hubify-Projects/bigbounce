@@ -57,7 +57,7 @@
  "outputs": [
   {
    "locator": "research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md",
-   "type": "derivation-note",
+   "type": "document",
    "checksum": "sha256:279a76e690a0902f37136053b52b2193a05f3cc91e8725b72f1c69d5d2594d19"
   },
   {
