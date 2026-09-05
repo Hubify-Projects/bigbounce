@@ -185,3 +185,59 @@ $c_s=1$, $1<\epsilon<3$ (frozen input, not re-solved here); (iii) the USR second
 (iv) the ekpyrotic check is a mode-dominance argument, no new constraint solve; (v) general-$w$ is substitution
 $\epsilon=\tfrac32(1+w)$ into (ii), valid for the scalar-field realisation ($c_s=1$), not for a genuine fluid with
 $c_s^2=w$ — that extension needs the $c_s$-dependent second-order constraints (open, bounded, \$0).
+
+## 4. Placement against the literature (what each paper knows; what is new here)
+
+| paper | what it establishes | what this note adds relative to it |
+|---|---|---|
+| Namjoo–Firouzjahi–Sasaki 2013, arXiv:1210.3692 | USR violates Maldacena's consistency relation, $f_{\rm NL}=5/2$; $\delta N$ reproduces it only with $N(\phi,\dot\phi)$ (growing mode needs the momentum) | Identifies a **second, independent** failure mode of $\delta N$ in non-attractors — the threading map $\delta N_c\ne\zeta_{\rm Mald}$ — controlled by $\langle\epsilon\rangle_\zeta$, not by the initial data; shows it is $O(\epsilon)$ in USR (hence invisible in their test, §1.1 exact) and $O(1)$ in contraction |
+| Chen–Firouzjahi–Namjoo–Sasaki 2013, arXiv:1301.5699 | $P(X)$ non-attractor, $f_{\rm NL}=\tfrac{5(1+c_s^2)}{4c_s^2}$, $\delta N$ with momentum agrees | Linear criterion carries $c_s$ explicitly ($\langle\epsilon/c_s^2\rangle_\zeta$); their agreement is again the $\epsilon\to0$ corner; the $c_s$-dependent second-order map is stated as the open extension |
+| Pajer–Schmidt–Zaldarriaga 2013, arXiv:1305.0824 | In attractors the squeezed limit is a coordinate effect of the long mode; observed squeezed bispectrum vanishes | Attractor = $\Theta=0$ = identity map, so there $\delta N_c=\zeta_{\rm Mald}$ and the only question is observability; in the $\Theta=O(1)$ phase the two curvature variables already differ at $O(1)$ **before** any observability argument, by a time-dependent non-local map along the fluid worldline |
+| Dai–Pajer–Schmidt 2015, arXiv:1504.00351 | Conformal Fermi coordinates: local observer's frame removes the long mode's $O(k^0)$ and $O(k)$ effects (attractor, constant $\zeta$) | Not a CFC construction. The note supplies the input a CFC-type treatment of a non-attractor would need: the long mode's comoving shift has $O(k^0)$ divergence $\epsilon\dot\zeta_L$, so the local frame is displaced by $\int N_L\,dt$ and dilated by $\tfrac13\int\partial_iN^i_L\,dt=(\epsilon/3)\zeta_L$; the pure translation contributes no monopole (threading note §2) |
+| Cai, Chen, Namjoo, Sasaki, Wang, Wang 2018, arXiv:1712.09998 | Post-USR transition dynamics of $f_{\rm NL}$; $\delta N$ and in-in agree through smooth/sharp transitions (inflation, $\epsilon\ll1$) | Explains *why* they agree (threading term $O(\epsilon)$ throughout) and predicts the regime where they would not: $\epsilon=O(1)$ during growth |
+| Bravo–Mooij–Palma–Pradenas 2018, arXiv:1711.02680 (generalized consistency relation) and arXiv:1711.05290 (vanishing observable local $f_{\rm NL}$ in canonical single field) | Non-attractor squeezed limits obey a generalized consistency relation; the USR local $f_{\rm NL}$ is removable by the long mode's effect on physical coordinates | Their removal manipulations are $O(\epsilon)$-controlled in inflation; in a contraction with $\langle\epsilon\rangle_\zeta=O(1)$ the map between the fluid-congruence variable and $\zeta_{\rm Mald}$ is $O(1)$ and explicit ($\lambda$, $f_{\rm map}$); whether a physical-coordinate argument removes the in-in $-35/16$ is a separate question, left open and not claimed |
+| Passaglia–Hu–Motohashi 2019, arXiv:1812.08243 | $\delta N(\phi,\pi)$ vs in-in agreement for PBH-motivated USR and transitions | Same as for Cai et al.: agreement is the $\epsilon\ll1$ corner of the criterion |
+| Artigas–Grain–Vennin 2022, arXiv:2110.11720; Jackson et al. 2023, arXiv:2311.03281 | Separate-universe (phase-space) breakdown at SR$\to$USR transitions in inflation, on a finite window of super-Hubble scales, from momentum/initial-data mismatch | Different mechanism and different order: here the failure is $O(k^0)$ (all super-Hubble scales), $O(1)$ in amplitude, and comes from the threading (shift divergence), not from the transition; it is present at constant $\epsilon$ with no transition at all |
+| Lyth–Malik–Sasaki 2005, astro-ph/0411220; Salopek–Bond 1990 | $\delta N=\zeta$ from the gradient expansion under $N_i=O(\nabla)$ | The criterion is exactly the condition under which that assumption holds at $O(k^0)$: $\Theta=\epsilon\dot\zeta_L/(H\zeta_L)\to0$ |
+| Creminelli–Nicolis–Zaldarriaga 2004 (ekpyrotic attractor) | In single-field ekpyrosis the constant $\zeta$ mode dominates; consistency relation holds | Reproduced by the criterion (dominant mode has $\Theta=0$); the note's failure is confined to $1<\epsilon<3$ growing-$\zeta$ contractions |
+
+**What is first-of-kind here, as far as the checked literature goes:** (a) a stated, quantitative criterion
+($\langle\epsilon/c_s^2\rangle_\zeta$, eq. 1.2) for the $O(1)$ breakdown of the isotropic separate universe that
+separates the threading failure from the Namjoo–Firouzjahi–Sasaki initial-data failure; (b) its evaluation showing
+the inflationary non-attractor literature could not have seen it ($O(\epsilon)$); (c) the explicit $O(1)$
+correction $\lambda$, $f_{\rm map}$ in a contracting non-attractor with the general-$w$ form. Not claimed as new:
+the exact identity's ingredients (ADM), the USR $5/2$, the attractor consistency relation, the ekpyrotic attractor.
+
+## 5. Sentences a short PRD-style note could claim (N3 only where the table supports it)
+
+1. "The isotropic separate-universe ($\delta N$) construction reproduces the squeezed bispectrum of the comoving
+   curvature perturbation if and only if the $\zeta$-growth-weighted mean of $\epsilon/c_s^2$ vanishes; the failure
+   is linear in that mean." — **N3-shaped** (criterion; not found stated in the checked literature).
+2. "In a contracting phase with constant $\epsilon\in(1,3)$ the separate-universe variable is
+   $\delta N_c=(1-\epsilon/3)\zeta$ and its squeezed amplitude is $-5$ for every $\epsilon$, while the comoving $\zeta$
+   has $f_{\rm NL}=\tfrac{5}{12}(\epsilon^2\mu^2-\epsilon^2+6\epsilon-12)$; the two are related exactly by the
+   threading map." — **N3-shaped** (first explicit $O(1)$ correction in a contraction), conditional on the in-in
+   input standing (it is lab-derived twice; Cai+2009 $\times2$ located).
+3. "Inflationary ultra-slow-roll evades the failure because $\epsilon\ll1$ while $\zeta$ grows, not because the
+   comoving shift is small — the shift is $O(1/k_L)$ there too." — **N2/N3 boundary** (a reinterpretation of known
+   agreement; new statement, no new number).
+4. "Ekpyrotic contraction evades it because $\zeta$ sits on its constant mode." — **N2** (CNZ 2004 restated through
+   the criterion).
+Do **not** claim: that the in-in $-35/16$ is "the observable", that CFC removes/does not remove it, or anything about
+$c_s\neq1$ at second order.
+
+## 6. VERDICT — **CRITERION ESTABLISHED** (linear order exact and general; second order exact at constant $\epsilon$)
+
+Criterion: $\delta N$ (isotropic, with $N(\phi,\pi)$) $=$ in-in squeezed limit of $\zeta_{\rm Mald}$ **iff**
+$\langle\epsilon/c_s^2\rangle_\zeta\to0$; otherwise $\delta N_c=(1-\langle\epsilon/c_s^2\rangle_\zeta/3)\zeta$ and, at constant
+$\epsilon$, $f_{\delta N}=f^{\rm in\text{-}in}/(1-\epsilon/3)-\tfrac{5\epsilon}{4}(1-\mu^2)$; general $w$:
+$\lambda=\tfrac{1-w}{2}$, $f_{\rm map}=-\tfrac{15}{8}(1+w)(1-\mu^2)$. Validated on dust ($O(1)$ failure, $25/8$),
+USR (agreement to $O(\epsilon)$, exact linear $\lambda_{\rm USR}=1+\tfrac{\epsilon_f}{3}-\tfrac{\sqrt{\epsilon_s\epsilon_f}}{3}$),
+attractor (identity), plus ekpyrosis as the discriminating contracting control. Limits of the claim: §3 (i)–(v).
+
+**Proposed ledger row 16 (orchestrator adds):** `16 | Separate-universe failure criterion (lift #2 of C2): <eps/c_s^2>_zeta
+criterion, general-w lambda/f_map, 3 validations + ekpyrotic control | DONE 2026-09-04 (this note, script sha 21668ab6,
+json 4e2a49be) | open: c_s-dependent second-order map; eps(t) re-solve for USR at second order; short methods note draft`.
+
+Artifacts: `separate_universe_failure_criterion_2026_09_04.py` (sha256 `21668ab67711…`), `.json` (`4e2a49be541a…`),
+manifest `reproducibility/manifests/experiments/lift2-separate-universe-failure-criterion.json`. Local CPU, \$0, 0.2 s.
