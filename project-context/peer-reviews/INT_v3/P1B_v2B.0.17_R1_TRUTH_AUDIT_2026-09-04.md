@@ -83,3 +83,102 @@ Q7 → answered: effective independent n = 1, pre-declared. Q5/Q6 (run the blind
 real PyMaster; which hook carries the 3j counter) remain **open and honest** — they are the
 NaMaster-applicability limitation, disclosed, not closable by editing. Q8 → the related-work
 note addresses in-toto/Rekor as the S5 anchor.
+
+---
+
+## CLOSURE PLAN
+
+### (i) Editorial / real edits for v2B.0.18 — integrate batch 2
+
+**Abstract (rewrite the empirical block).** Replace the 18-run sentence with the batch-2
+result plus the three qualifiers that C1, C2, C6, C8 demand: surrogate estimator, frozen
+rules, counts-with-intervals. Add one scope sentence naming the threat model as
+*unmodified, instrumented harness*.
+
+**§2 (motivation).** Quantify the effective-multipole deviation (C17) — the number that
+motivates the windows module is also the S6 arm's subject.
+
+**§4 (notation).** Define k ∈ {0, c, s} after Eq. 4 (C14).
+
+**§6 (protocol + result) — the largest edit.**
+1. Relabel batch 1 explicitly as the **pilot / rule-development round**, and *disclose* that
+   two rules were amended after outcomes were seen (wall floor fired 3/3 honest; M-hash
+   collision non-evidential). Do not delete it and do not defend it — state it (C2).
+2. Present **batch 2 as the primary result**: rules frozen in their own commit before the
+   seal, 35 runs / 7 arms × 5, commit-ordered trail `4451b135 → 28efa21c → 27300504 →
+   974e2859 → b3347c53`, sealed digest `c96b5bf1…`, `seal_verified: true`, sealed material
+   held outside the tree (C3 ordering half).
+3. Print the **verbatim R0–R6 rule table** with both R6 disjuncts, and the withdrawn/advisory
+   rules in a separate "not part of the decision set" block (C4).
+4. Report **counts with one-sided 95% Clopper–Pearson bounds, never bare percentages**:
+   S1–S4 20/20, lower bound 0.861; honest 0/5, FPR upper bound 0.451; S5 escaped 5/5;
+   **S6 escaped 5/5** (C6, C5). Carry the pre-declared **independence caveat**: effective
+   independent n per class is 1 for R1–R5; replicates measure firing reproducibility.
+5. Add the **S6 subsection**: what it does (builds the operator genuinely, shortcuts
+   downstream at one effective multipole), why R0–R6 cannot see it (no rule inspects result
+   *values*), and the explicit statement that **no rule was added after the fact**.
+6. Replace "independently verified" with what was actually checked (C3).
+7. Fix the HMAC/balanced-design description (C16) and the inline threat-model qualifier (C15).
+8. Quote the frozen-verifier digest from `public2/frozen_rules_digest.json` (C22).
+
+**§7.** Give the bandpower scale beside 1.41e-18 (C10); state 39/41 standalone-effective plus
+coverage and the CI workflow (C13).
+
+**§8.** Report the SEM on the 0.270°/0.342°/0.000° recoveries, or state algebraic exactness
+and justify 500 realizations (C9). **This is the one real item batch 2 does not touch.**
+
+**New §"Related work".** Half a page from `RELATED_WORK_NOTE_2026-09-04.md` placing execution
+receipts against in-toto/SLSA provenance, Sigstore/Rekor transparency logs, and RO-Crate /
+research-object provenance (C7, Q8).
+
+**§10–11.** Threat model as an explicit early assumption (C8); NaMaster applicability stated as
+the open limitation with Q5/Q6 named honestly; harmonize the timing figures (C18); macOS
+wording (C20); Table 2 by R-identifier (C21); appendix of the 35 per-run verdicts (C23).
+Strip the internal version stamp from the submission copy only (C12).
+
+**Tables/figures.** Table 2 is regenerated from `public2/verdicts.json` (7 arms × 5); per
+directive I6 check that no figure image bakes in a batch-1 number.
+
+### (ii) SCIENCE items (not closable by editing)
+
+- **S1 — Batch 3 with a value-level rule, pre-registered.** S6 escaped because nothing in
+  R0–R6 inspects result *values*. Pre-register (own commit, before the seal) a value-level
+  rule — a declared tolerance band on bandpowers against an independently-known reference,
+  or a cross-checked second estimator — then seal, run, reveal in the same commit order.
+  Batch 3 is the only thing that converts the S6 escape into a closed class. Explicitly
+  **future work, not claimed** in v2B.0.18.
+- **S2 — External timestamp for the seal.** Ordering is provable from git; witness is not.
+  Deposit the sealed digest alone into an external anchor (OpenTimestamps / Rekor / a Zenodo
+  or OSF deposit of the digest) before the batch-3 seal. This is the *same* anchor that would
+  close S5 metadata forgery, so it retires C3's residual and the S5 limitation together.
+  Until then it stays a stated limitation, not a claim.
+- **S3 — NaMaster applicability (Q5/Q6).** Either add a 3j-count instrumentation hook inside
+  PyMaster and re-run the honest + S1 arms at small nside, or keep the surrogate scope
+  statement. Not required for v2B.0.18; required before any claim about NaMaster itself.
+- **S4 — Zenodo DOI + ASCL entry** (Houston account actions, §5 of the design note).
+
+### The exact N3-eligible sentence that survives batch 2
+
+Everything stronger than this is now unsupported. The phrase "shortcut detector, not a fraud
+detector" survives only with the second escape named beside it:
+
+> Under a non-adversarial-analyst threat model — the analyst may alter the computation but
+> runs an unmodified, instrumented harness — execution-trace receipts decide, from receipts
+> alone and without re-running the computation, whether the *structural* steps of an
+> expensive pseudo-C_ℓ analysis were performed: in a sealed batch of 35 runs scored by
+> decision rules frozen and committed before the seal was drawn, the verifier flagged 20/20
+> operator-skipping, operator-truncating, grid-reducing and cache-substituting runs
+> (one-sided 95% lower bound 0.86) with 0/5 false positives on honest runs (one-sided 95%
+> upper bound 0.45), while both the metadata-forgery arm and the effective-multipole arm
+> escaped 5/5. Receipts of this kind are therefore a detector of *structural* shortcuts in
+> instrumented steps — not of forged metadata, and not of value-level shortcuts taken
+> downstream of the instrumented operator. An earlier 18-run pilot developed these rules and
+> is reported as such.
+
+**"First-of-kind" after batch 2.** No first-of-kind claim survives on the primitive itself —
+C7 shows the provenance/attestation literature (in-toto, SLSA, Sigstore/Rekor, RO-Crate) is
+unaddressed, so priority is unlocatable until the related-work section lands. What is
+defensible is narrower and should be stated that way: *the first pre-registered, sealed blind
+measurement of shortcut-detection sensitivity for pseudo-C_ℓ execution receipts, including a
+negative class (S6) reported as an escape.* Demonstration on a surrogate spin-0 estimator
+must accompany it.
