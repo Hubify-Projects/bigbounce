@@ -116,7 +116,7 @@
   "gpu": null,
   "pod_id_or_host": "Houston laptop (darwin)",
   "date": "2026-09-05",
-  "wall_clock": "TBD",
+  "wall_clock": "~2.1 h total: 0.7 h download/compaction + 1.4 h analysis (spec-z rotation null 28 min at 1000 realisations; projected rotation null wall-clock-capped at 10)",
   "actual_cost_usd": 0.0
  },
  "reproduction": {
@@ -141,6 +141,11 @@
   {
    "locator": "pipelines/p4prime_chirality_test/chirality_structure/ROW16IVB_BGS_ENVIRONMENT_2026-09-05.md",
    "type": "document",
+   "checksum": null
+  },
+  {
+   "locator": "~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/parquet_sha256.txt",
+   "type": "result-json",
    "checksum": null
   }
  ],
