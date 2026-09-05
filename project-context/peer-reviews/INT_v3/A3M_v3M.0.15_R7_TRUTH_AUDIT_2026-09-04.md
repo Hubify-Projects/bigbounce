@@ -118,3 +118,73 @@ reading (`…adjudication_2026_09_02.py:448–453`). Repeat the qualifier.
 
 **`R7-16` nit — auditor-originated:** Fig. 1's log minor-tick labels collide on the x-axis
 (`3×10⁰` overprints `4×10⁰`; same at `3×10¹`/`4×10¹`). Fix in the regeneration for `R7-02`.
+
+## (c) FALSIFIED — with citation
+
+`C1` **Grok E1** "the paper claims an exact/scheme-independent transmitted amplitude" — `:41–43`
+prints *both* schemes in the abstract ("S1 gives `[−0.65,−0.50]`, S2 gives `≈−1.25`"). 4th
+consecutive recurrence (`R4-F1`/`R5-F1`/`R6-F1`).
+`C2` **Grok E2** "`γ_pred` and the NANOGrav posterior juxtaposed without the qualifier" — `:651`
+carries it verbatim ("differently-conditioned cross-check, not directly comparable to it").
+`C3` **Grok E4** "Table VI's S2 row lacks the qualifier" — `:501–502` carries it.
+`C4` **Grok M3** "the `296×` disjointness has no numerical integral or code pointer" — `:1665`
+cites `row14_cs_window.py`+`results.json`; the value `296.0` is in that JSON.
+`C5` **Grok N1** "'scheme-qualified linear transfer' repeated verbatim in three consecutive
+paragraphs" — the string does not occur in `main.tex`.
+`C6` **Grok N3** future date — `DA3M-F3`, **11 consecutive rounds, 100% falsified**.
+`C7` **Gemini M1** "Fig. 1's plotted line sits at `~10⁻¹⁴`, i.e. the primordial not the induced
+background" — the plotted lab curves are at `1.38–1.76e-23` (anchored) and `5.88e-23` (pure
+dust): `outputs/sigw_nhz_from_lab_spectrum_2026_09_04.json → curves_Omega_GW_h2`, confirmed by
+rendering the embedded PNG. The `~10⁻¹⁰–10⁻⁸` band is the NANOGrav/γ=3 reference curves. The
+figure is nevertheless defective for a different reason — see `R7-02`.
+`C8` **Gemini E7** "the the" at Sec. IX.C — no such string (`grep -E '\bthe\s+the\b'` and a
+whitespace-insensitive perl scan both return nothing). LaTeX line-break artifact; same class as
+`R6-F4`.
+`C9` **Fable M1(b)** "not reproducible / (37) ≠ (4.19)" — both readings of the `(5,2,2)` sum are
+computed and printed by the committed script (`…adjudication_2026_09_02.py:448–461`); under the
+distinct-monomial reading the difference is 0, under the six-permutation reading it is
+`−(99/128)Σk³`. The residual is wording only (`R7-15`).
+
+## (b) RE-FLAG-OF-ALREADY-ADDRESSED
+
+`B1` **Grok E3** (γ_cr grid truncated at 0.63; cutoff systematic not in the ±) — `:955–967`
+prints the 255-point `[0.196,0.968]` scan (`1.83±0.05`, range `[1.61,1.91]`), the coverage-restricted
+`1.84±0.03`, and the 27-point `1.732±0.050` with "must not be quoted as universal". `RF1` class,
+4th recurrence.
+`B2` **Gemini E3 + Fable m13** frozen-release DOI / journal versions — `RF8`, carried packaging
+(a git commit hash IS pinned, `:1652–1655`).
+`B3` **Gemini E4** "`free_spectrum_real_2026-05-01/` predates the paper" — that is the provenance
+date of the NANOGrav 15-yr free-spectrum chain run, not staleness; one clarifying clause closes it.
+`B4` **Fable M3 second half** ("demote `1.84±0.03` out of the abstract") — `:940–950` already
+disqualifies the enhancement branch and `:962–966` already restricts the quoted interval to the
+model's own coverage. Re-flag; the labelling residual is `R7-08`.
+
+## (d) OPINION / GENRE / VENUE — no edit required
+
+`D1` Grok M1 "17 pp for an incremental result / a 4–5 page note would do" — `O1` recurrence.
+`D2` Grok N2 Fig. 1 prefactor — the kernel and normalisation are given (Sec. IV D, generator
+docstring lines 22–39).
+`D3` Grok M2 tail (rhetorical strength of "newly expose") beyond the real scope clause `R7-07`.
+`D4` Gemini M2 quantify "weakly" in the Table V caption — a slope number is cheap; folded into (i).
+`D5` Fable m4, m10, m11 (presentation of `r<0.036` vs 11.5/23; `n_T` as a class relation; Table IV
+extra column) and Q5 (1σ vs 95% Planck bound — the no-go holds either way).
+`D6` Fable m14 (promote App. A's `f_map`/boundary term, or relabel the appendix).
+
+## (e) CARRIED — real-shaped but UNVERIFIED this round; verify in the v3M.0.16 lane
+
+`E1` Fable m5 (state the `r_dec` interval behind `f_NL^curv ∈ [+9.30, −1.25]`) ·
+`E2` m6 (Li *et al.* cited as 2016 and 2017 in the same abstract — harmonise) ·
+`E3` m7 (Table II `|f_NL|`=112/1216 vs the "no order-10³ plateau" claim at `:435–439`, and the
+Sec. V C range mixing the `kη_B=3` and `10` rows) · `E4` m8 (post-bounce evaluation time behind
+the four-digit S2 values) · `E5` m9 (the `Ω_DM=0.674` footnote vs the Gaussian calibration,
+`:1008–1013`) · `E6` m12 (the DESI `0.06σ` uses the reproduction's own σ — say the two are not
+independent) · `E7` Fable Q2/Q4 (Cai multiplicity convention; `c_s`-dependence of
+`Δf_NL^bounce`) — Q4 is a science question, routed to (ii).
+
+## Integrity note
+
+No leg was told an expected outcome; verdict words were read from the raw text, not from labels.
+Every classification above cites a committed file+line or a JSON key. Two reviewer MAJORs
+(Grok's REJECT rationale, Gemini's Fig. 1) rest on findings falsified against committed
+artifacts; the strongest real finding of the round (`R7-02`, the stale figure) was found by the
+audit, not by any reviewer.
