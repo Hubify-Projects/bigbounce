@@ -627,6 +627,14 @@ export const reproPrograms: ReproProgram[] = [
         ]
       },
       {
+        "id": "a3-row19-lambda",
+        "depends_on": [
+          "a3-row14-cs-window",
+          "a3-row18b-cs-bounce-cubic",
+          "p2-a2-lane-a-cubic-vertex-table"
+        ]
+      },
+      {
         "id": "a3-row15-curvaton",
         "depends_on": [
           "a3-row14-cs-window",
@@ -2648,6 +2656,138 @@ export const reproExperiments: ReproExperiment[] = [
       "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md (f_NL^pre(c_s), r = 24 c_s, c_s-independent T)",
       "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the strengthened no-go is stated in its own terms)",
       "model-dependence disclosed: f_NL^pre(c_s) inherits Li+2016's k-essence kinetic sector (row 14 sec 2), and the S1 vertex coefficients keep eps -> eps_eff = 1/2 while retaining c_s exactly, which is a scheme assumption (lane (a) A3) and not the dressed-metric H_3 of Agullo+2017"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row19-lambda",
+    "title": "Ledger row 19 - the joint (r, f_NL) no-go for general P(X) k-essence with the cubic-action coefficient lambda free: lambda-general f_NL^pre(c_s, lambda/Sigma), the exact lambda-independence of r and of the bounce's own cubic term, and the window scan",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Li, Quintin, Wang & Cai 2016 - matter bounce with a generalized single field. Eq. (2.11)-(2.12) define Sigma and lambda; Eq. (4.18) is the only lambda-carrying shape contribution; Eq. (4.19) is the total shape function AFTER lambda/Sigma = (1-c_s^2)/(6c_s^2) has been substituted; Eq. (A.19)-(A.20) derive that substitution; Eq. (3.18) gives r = 24 c_s",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1612.02036",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chen, Huang, Kachru & Shiu 2007 - cubic action for general single-field P(X,phi); identical Sigma and lambda conventions (their Eq. 4.7-4.8) and the vertex coefficients used by lane (a)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/0605045",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Garriga & Mukhanov 1999 - k-inflation perturbations; c_s^2 = P_X/(P_X + 2X P_XX), used for the lambda-independence argument for r",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/9904176",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2110.00483",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2019 - local f_NL = -0.9 +/- 5.1",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1905.05697",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 14 - f_NL^pre(c_s) = -165/16 + 65/(8c_s^2) at lambda = 0, r = 24 c_s, and the transfer T = 0.16500538 (Quintin background); the lambda = 0 result this row generalises",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 18(b) - Delta f_NL^bounce(c_s) = -(5/24) rho_B (6c_s^2-5)/c_s^4 in scheme S1; its integrator is imported and its V1 coefficient patched to carry lambda",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/row18b_cs_bounce_cubic.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane (a) cubic-vertex table - c_V1 = -a^3[Sigma(1-1/c_s^2) + 2 lambda]/H, the lambda-carrying vertex",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lab in-in adjudication - the canonical-field squeezed value -35/16 that the lambda-general formula must reproduce at c_s = 1, lambda = 0",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/row19_lambda/row19_lambda.py",
+        "entrypoint": "cd research/track_a3_multichannel/row19_lambda && python3 row19_lambda.py",
+        "sha256": "bcf832b3b2a9bb92b53300e7a20e1549961a8f66459172834811d6388c35b446"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy + scipy + sympy + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "2.8 s (measured, printed in row19_lambda.log)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~5 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). The lambda-restoration is algebraic: A_tot(c_s, L) = A_tot^Li(c_s) - 9[L - (1-c_s^2)/(6c_s^2)] sum_i k_i^3, undoing the substitution Li+2016 state below their Eq. (4.19). The bounce leg imports row 18(b) and monkeypatches only the V1 coefficient to c_V1^conf(L) = -(aH) eps [(1/c_s^2 - 1/c_s^4) + 2L/c_s^2]. Nothing is tuned; the tuned-lambda numbers in section [E] are reported as the COST of a viable window, not as a model."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/row19_lambda/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row19_lambda/row19_lambda.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row19_lambda/row19_lambda.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row19_lambda/ROW19_LAMBDA_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) r_lambda_independence.quadratic_action_independent_of_lambda is true, with dSigma/dP_XXX = dc_s^2/dP_XXX = 0 and dlambda/dP_XXX = 2X^3/3; (b) fnl_pre.matches_closed_form_squeezed / _equilateral true, i.e. f_NL^sq = -245/16 + 105/(8c_s^2) - 30 L and f_NL^eq = -495/32 + 105/(8c_s^2) + 45c_s^2/128 - 30 L; (c) fnl_pre.gate_Li_line_reproduces_row14_squeezed and _equilateral true (the lambda-general form collapses to row 14 on Li's matter line) and gate_cs1_L0_equals_minus_35_over_16 true - all three are asserts; (d) fnl_pre.L_that_cancels_the_1_over_cs2_divergence == 7/(16*c_s**2); (e) bounce.max_abs_total_over_L0_minus_1 <= 1e-6 (2.8e-7 measured) and bounce.lambda_vertex_is_odd_in_eta true, with Delta f_NL^bounce = +14.291777 / +3.057749 / -0.139818 at c_s = 0.44/0.6/1.0 unchanged from row 18(b) for every L; (f) window.min_r_over_scan == 12.5664 on the DBI line and window.any_L_reaches_r_below_0.036 is false; (g) tuning.L_required_for_zero_f_NL_pre_only == 194444.44 with s_that_would_give_L_pre_only == 2.4375 = 39/16, versus Li's |s| << 1 assumption.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 19 (A3-lambda), opened by R8 audit item R8-01",
+      "decision D-A3-13 (the (r, f_NL) no-go stated for lambda = 0) - row 19 removes the qualifier",
+      "research/track_a3_multichannel/row19_lambda/ROW19_LAMBDA_2026-09-04.md (convention map, derivation, tables, paper-ready sentences, scope limits)",
+      "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the generalised no-go is stated in its own terms, not as a correction narrative)",
+      "model-dependence disclosed: the shape contributions are Li+2016's in-in integrals (transcribed, with their lambda term re-exposed), not re-derived here; eps = 3/2 is held fixed; the bounce term uses scheme S1 with eps_eff = 1/2 and a SYMMETRIC bounce - the lambda-independence of section 3 is a parity statement and would not hold exactly for an asymmetric bounce"
     ]
   },
   {
