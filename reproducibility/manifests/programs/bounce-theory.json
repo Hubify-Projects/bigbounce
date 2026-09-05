@@ -256,6 +256,13 @@
         "a3-4-row10-r-ns",
         "p2-fnl-adjudication-inin-from-scratch"
       ]
+    },
+    {
+      "id": "a3-row15-curvaton",
+      "depends_on": [
+        "a3-row14-cs-window",
+        "a3-4-row10-r-ns"
+      ]
     }
   ],
   "external_data": [

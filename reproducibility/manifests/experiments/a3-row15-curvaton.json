@@ -1,0 +1,168 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row15-curvaton",
+  "title": "Ledger row 15 - the curvaton-type matter bounce: whether a light spectator in the dust contraction gives r < 0.036 with n_s ~ 0.965 and an O(1) local f_NL, and what happens to the intrinsic -35/16 at that point",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Cai, Xue & Brandenberger 2011 - the matter bounce curvaton scenario: Eq. (18) spectator tilt, Eq. (58)/(61) r ~ 35 F^-2, Eq. (65) f_NL = -(5120/pi^6) d^2 C, Eq. (66) Case-1 f_NL ~ -3.3",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1101.0822",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lyth, Ungarelli & Wands 2003 - the primordial density perturbation in the curvaton scenario; zeta_sigma = (2/3) dsigma/sigma and the r_dec-dependent local f_NL",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/astro-ph/0208055",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Sasaki, Valiviita & Wands 2006 - non-Gaussianity of the curvaton: f_NL = 5/(4 r_dec) - 5/3 - 5 r_dec/6 with the non-quadratic corrections",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/astro-ph/0607627",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Bartolo, Komatsu, Matarrese & Riotto 2004 - non-Gaussianity from inflation: theory and observations (the f_NL^local convention zeta = zeta_L + (3/5) f_NL zeta_L^2 used here)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/astro-ph/0406398",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai, Easson & Brandenberger 2012 - towards a nonsingular bouncing cosmology; the matter bounce's large-r problem and its curvaton cure",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1206.2382",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Li, Quintin, Wang & Cai 2016 - matter bounce with a k-essence field; Eq. (4.19), the c_s-dependent f_NL used in row 14",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1612.02036",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Wands 1999 - duality invariance of cosmological perturbation spectra; the scale-invariant spectrum of a light field in a matter contraction",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/gr-qc/9809062",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL), the tensor bound tested here",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2110.00483",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Planck 2019 - local f_NL = -0.9 +/- 5.1, the non-Gaussianity bound tested here",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1905.05697",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A2 linear-transmission module - the three bounce backgrounds and the u'' + (k^2 - a''/a)u = 0 evolution, imported directly for the spectator's frozen-branch transfer",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger row 10 - r = 16 epsilon = 24 and n_s - 1 = 12w/(1+3w) on the w = -0.0029 anchor; the tensor amplitude and tilt this row reuses unchanged",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger row 14 - the c_s no-go and the A2 transfer values T = 0.165-0.250 quoted here",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row14_cs_window/results.json",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lab in-in adjudication of the matter-contraction f_NL (-35/16), the amplitude diluted by (r/24)^2 in this row",
+      "type": "internal-artifact",
+      "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Branch-W ALP-curvaton tilt program, phase 1 - the lab's existing curvaton work; its n_sigma - 1 sign is corrected here",
+      "type": "internal-artifact",
+      "locator": "research/branch_W_alp_curvaton_tilt/phase1_results.md",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/row15_curvaton/row15_curvaton.py",
+      "entrypoint": "cd research/track_a3_multichannel/row15_curvaton && python3 row15_curvaton.py",
+      "sha256": "aa493476e5936ea3f1d6f7723bb9ee516e83cdb074db52dcc951dbe3d2886a46"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy + scipy + sympy + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "~4 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~6 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no data files, no network). The spectator index nu = q - 1/2 and the tilt 12w/(1+3w) are DERIVED symbolically from the Mukhanov-Sasaki operator, not imported; the tracking-mass shift is expanded symbolically and is reported as 8m^2/(3H^2), a factor 4 above CXB11 Eq. (18)'s de Sitter value (sign unchanged). The curvaton power ratio, r(r_dec, sigma_*) and the (r/24)^2 dilution weight are symbolic. The A2 spectator transfer is a direct import of the same ODE used in rows 10 and 14."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/row15_curvaton/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row15_curvaton/row15_curvaton.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row15_curvaton/row15_curvaton.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row15_curvaton/ROW15_CURVATON_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) analytic.spectator_tilt_equals_adiabatic_tilt == true and analytic.ns_at_w_anchor == 0.9649, i.e. the curvaton inherits row 10's tilt exactly; (b) analytic.massive_shift_coeff_over_m2H2 == 8/3 (vs CXB11 Eq. 18's 2/3), sign positive => a curvaton mass tilts BLUE; (c) power_ratio.r_of_rdec_sigma_str == '216*sigma_star**2/(12*r_dec**2 + 9*sigma_star**2)' and power_ratio.F_needed_CXB_Eq61['r<0.036'] == 25.8199; (d) fnl.f_NL_at_rdec_1 == -1.25, fnl.sign_change_r_dec == 0.5811, fnl.rdec_min_Planck_2sigma == 0.1130; (e) fnl.bounce_term_at_r_0.036 is order 1e-6 on all three backgrounds and observability.r_max_for_bounce_term_above_SPHEREx_0.5 == 22.95; (f) cxb11.f_NL_case1_value == -3.2851 (= -320/pi^4, their quoted -3.3); (g) transmission.frozen_branch_check LQC/quintin T_c -> 1 as u_out decreases.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 15, promoted 2026-09-04 by decision D-A3-11",
+    "research/track_a3_multichannel/row15_curvaton/ROW15_CURVATON_2026-09-04.md (derivation, viable-window table, verdict, paper-ready sentences)",
+    "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md (the c_s no-go this row is the alternative to)",
+    "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md (r = 24, n_s anchor, nHz tensor amplitude rescaled here)",
+    "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the partial result is stated in its own terms)",
+    "model-dependence disclosed: CXB11's kinetic-amplification factor F is an assumption of their entropy sector and is NOT computed here - the A2 backgrounds carry no entropy field; the LUW/SVW f_NL is the exact-quadratic branch"
+  ]
+}
