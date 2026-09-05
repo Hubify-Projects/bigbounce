@@ -227,6 +227,22 @@
         "p2-a2-lane-a-cubic-vertex-table",
         "a3-1b-inlab-delta2-zeta"
       ]
+    },
+    {
+      "id": "a3-row11a-choudhury-sign",
+      "depends_on": [
+        "a3-pbh-compaction-fnl",
+        "a3-r5-18-gammacr-coverage",
+        "a3-1b-inlab-delta2-zeta"
+      ]
+    },
+    {
+      "id": "a3-row11b-gammacr-extension",
+      "depends_on": [
+        "a3-pbh-compaction-fnl",
+        "a3-r5-18-gammacr-coverage",
+        "a3-row11a-choudhury-sign"
+      ]
     }
   ],
   "external_data": [

@@ -1,0 +1,125 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row11b-gammacr-extension",
+  "title": "A3M ledger row 11(b) - compaction-function scan extended to gamma_cr in [0.2, 1.0]: the required-amplitude ratio A(-35/16)/A(-35/8) INSIDE the in-lab spectrum shape's own coverage [0.267, 0.630], and whether the quoted '1.7-1.9' survives",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025, 'Negative non-Gaussianity as a salvager for PBHs with PTAs in bounce', EPJC 85:472 - the compaction-function + local-f_NL formalism (Eqs. 30, 35, 40, 49-54, 60-66) whose f_NL sign response is under test; full text states 'f_NL<0 is considered more favourable to suppress the PBH abundance', with a sharply peaked USR/RRR spectrum",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2409.18983",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Kitajima, Tada, Yokoyama & Yoo 2021, 'Primordial black holes in peak theory with a non-Gaussian tail' - the averaged-compaction PBH criterion with critical scaling, the standard treatment the operator chain is checked against",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2109.00791",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Young & Byrnes 2013, 'Signatures of non-Gaussianity in the isocurvature modes of primordial black hole dark matter' - the standard local-f_NL PBH abundance treatment and the long-wavelength-mode modulation argument",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1307.4995",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Franciolini, Kehagias, Matarrese & Riotto 2018, 'Primordial black holes from inflation and non-Gaussianity'",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1801.09415",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A3-1 compaction-function integrator (Eqs. 52-54 covariances, Eq. 60 abundance) - imported unmodified as the numerical engine",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+      "checksum": "27e4021f84b8607acc5da0811f4cacf030d5068464457b5534a647ba6a39de38",
+      "license": null
+    },
+    {
+      "name": "A3-1 note - the enhancement-at-gamma_cr<~0.85 statement (sec 4.3) this item adjudicates",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "R5-18 gamma_cr coverage note - the in-lab shape's gamma_cr in [0.267, 0.630] and the standing of the quoted 1.7-1.9 ratio",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Row 11(a) sign adjudication - establishes that gamma_cr controls the sign of the f_NL response, hence that the ratio must be quoted inside the in-lab gamma_cr coverage",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_choudhury_sign.json",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/row11_pbh_residuals/row11_gammacr_extension.py",
+      "entrypoint": "cd research/track_a3_multichannel/row11_pbh_residuals && python3 row11_gammacr_extension.py",
+      "sha256": "a0c01e1598295d59f577dd1147afecd12d2151c76a51c28d07ad30c8db4daf28"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy/scipy/matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "~20-40 min (measured; field in the output JSON print line)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~30 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Deterministic. Two shape families (lognormal(Delta, r_p k_p) extended to broad Delta; the in-lab power law Delta^2 = A (k/k_p)^{n_s-1} with an explicit IR cutoff) are pushed through the COMMITTED beta_ng/A_for_fpbh integrator, with PC.covariances temporarily replaced by _cov_wide - the SAME Eqs. 52-54 integrals on a k-grid widened from [1e-5,1e3] k_p to [1e-9,1e3] k_p, which is what lets gamma_cr reach 0.2. _cov_wide is asserted against the committed integrator (max rel. diff < 1e-6) before any scan point is taken, and both PC.covariances and PC.delta2_zeta are restored in a finally block. NOTHING IS TUNED: at every point the amplitude A is solved by brentq from the fixed target f_PBH = 1e-3 (the floor of the Choudhury et al. band); the ratio is a property of the solution. Committed outputs (outputs/pbh_compaction_fnl.json) are not touched."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/ROW11_PBH_RESIDUALS_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) wide_integrator_validation_max_rel_diff < 1e-6 (the assert is in the script); (b) the union of scan points covers gamma_cr from <=0.2 to >=0.96, i.e. the [0.2,1.0] target the committed 27-point grid ([0.766,0.968]) does not reach; (c) summary.committed_grid_coverage reproduces the committed headline 1.732 +- 0.050 over gamma_cr in [0.766,0.968]; (d) summary.inlab_coverage reports the ratio over gamma_cr in [0.267,0.630] - the interval the lab's own spectrum shape occupies - with its own mean, std and [min,max]; (e) survives_1.7_to_1.9 records whether every scanned point falls in the quoted band.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 11 - this experiment is that row's closure evidence",
+    "project-context/peer-reviews/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md sec 4 class (e): 'the Choudhury et al. gamma_cr<~0.85 sign disagreement (:929-930, a genuine discrepancy left unresolved)'",
+    "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)",
+    "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md - the finding this experiment closes: the quoted 1.7-1.9 was a UNION of an in-coverage scan (1.732 +- 0.050 over [0.766,0.968]) and ONE out-of-coverage evaluation (1.85-1.89 at [0.267,0.630]), not a scan result over that range",
+    "project-context/peer-reviews/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md R6-11 (abstract 'shape-robust' carries none of the body's conditionality)"
+  ]
+}

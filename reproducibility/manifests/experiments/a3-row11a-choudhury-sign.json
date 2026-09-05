@@ -1,0 +1,106 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row11a-choudhury-sign",
+  "title": "A3M ledger row 11(a) - operator-by-operator location of the Choudhury et al. 2025 compaction-function f_NL sign disagreement: does negative local f_NL suppress or enhance the PBH abundance at fixed Gaussian amplitude?",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025, 'Negative non-Gaussianity as a salvager for PBHs with PTAs in bounce', EPJC 85:472 - the compaction-function + local-f_NL formalism (Eqs. 30, 35, 40, 49-54, 60-66) whose f_NL sign response is under test; full text states 'f_NL<0 is considered more favourable to suppress the PBH abundance', with a sharply peaked USR/RRR spectrum",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2409.18983",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Kitajima, Tada, Yokoyama & Yoo 2021, 'Primordial black holes in peak theory with a non-Gaussian tail' - the averaged-compaction PBH criterion with critical scaling, the standard treatment the operator chain is checked against",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2109.00791",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Young & Byrnes 2013, 'Signatures of non-Gaussianity in the isocurvature modes of primordial black hole dark matter' - the standard local-f_NL PBH abundance treatment and the long-wavelength-mode modulation argument",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1307.4995",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Franciolini, Kehagias, Matarrese & Riotto 2018, 'Primordial black holes from inflation and non-Gaussianity'",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1801.09415",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A3-1 compaction-function integrator (Eqs. 52-54 covariances, Eq. 60 abundance) - imported unmodified as the numerical engine",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+      "checksum": "27e4021f84b8607acc5da0811f4cacf030d5068464457b5534a647ba6a39de38",
+      "license": null
+    },
+    {
+      "name": "A3-1 note - the enhancement-at-gamma_cr<~0.85 statement (sec 4.3) this item adjudicates",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "R5-18 gamma_cr coverage note - the in-lab shape's gamma_cr in [0.267, 0.630] and the standing of the quoted 1.7-1.9 ratio",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/row11_pbh_residuals/row11_choudhury_sign.py",
+      "entrypoint": "cd research/track_a3_multichannel/row11_pbh_residuals && python3 row11_choudhury_sign.py",
+      "sha256": "b0274f1669bfd3c68d99e8158c23735e922655e6f7a63289eaa6c6a4dfa62bcf"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy/scipy/matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "~9 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~10 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic. Part (A) minimises the compaction-threshold saddle exponent S(x)=x^2/2+(nu/(1+eps x)-g x)^2/(2(1-g^2)) by bounded 1-D minimisation and compares finite-difference eps-derivatives with the analytic coefficients -g nu^3 and nu^4(6g^2-1). Part (B) calls the COMMITTED beta_ng/A_for_fpbh integrator unmodified. Part (C) monkeypatches only the spectrum shape (a power law with an explicit IR cutoff) and restores it in a finally block. No fitting, no tuning: the amplitude at each shape is SOLVED for from the fixed condition f_PBH(Gaussian)=1."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_choudhury_sign.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/ROW11_PBH_RESIDUALS_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) max_relative_error_d2S < 0.05, i.e. the numeric second eps-derivative of S_min reproduces nu^4(6 gamma_cr^2 - 1) at every (nu, g) checked; (b) gamma_cr_sign_flip_analytic == 1/sqrt(6) = 0.40825; (c) in full_beta_shape_scan, beta/beta_gauss < 1 at f_NL = -0.02 for EVERY gamma_cr including 0.305 (the O(eps) term suppresses universally); (d) beta/beta_gauss > 1 at f_NL = -35/16 only for gamma_cr <= 0.766; (e) in ir_sensitivity, sigma_cr2_over_sigma_c is constant to 5 significant figures (0.31921) over k_min/k_p from 1e-5 to 1e-2 while sigma_r changes by a factor 1.67 and gamma_cr moves 0.267 -> 0.446.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 11 - this experiment is that row's closure evidence",
+    "project-context/peer-reviews/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md sec 4 class (e): 'the Choudhury et al. gamma_cr<~0.85 sign disagreement (:929-930, a genuine discrepancy left unresolved)'",
+    "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)"
+  ]
+}
