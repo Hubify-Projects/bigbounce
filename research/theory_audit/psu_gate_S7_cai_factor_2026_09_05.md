@@ -11,3 +11,4 @@
 
 ## Log
 - step 0: plan header committed.
+- step 1: sources fetched (0903.0631 → matterbounceng2.tex; 1612.02036 → general_matter_bounce_cosmology.tex); Cai f_NL = (10/3) A/Σk³, ⟨ζζζ⟩=(2π)^7 δ P_ζ² A/Πk³; Cai isoceles −35/8, squeezed A_T=−21/8 k³.
