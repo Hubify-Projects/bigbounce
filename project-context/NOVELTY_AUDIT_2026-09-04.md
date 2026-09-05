@@ -223,3 +223,89 @@ by nature (combination). The one N3-shaped piece inside it is the
 requires |f_NL| ~ 32, excluded by Planck at ~6σ" — that is a *new constraint on
 a proposed explanation*, and if written as such (with the systematic floor
 budget), it is defensibly N3. Bounded work: one short note, $0 compute.
+
+---
+
+## Section 4 — data lane (candidates 7–9)
+
+### C7 — DESI DR1 f_NL reproduction with an independent likelihood
+
+**Claimed.** Using official DESI DR1 full-shape/BAO clustering VAC products
+(real window matrix, 18-random P(k), EZmock covariance) and a lab-built
+scale-dependent-bias likelihood, f_NL^loc = −2.17 ± 25.3 (p=1.6), **0.057σ from
+the published −3.6** (Chaussidon et al., **arXiv:2411.17623**); −1.13 ± 13.1 at
+p=1.0. Plus a documented systematics ladder (WEIGHT_SYS Δf_NL = +62.4; window
+and integral-constraint corrections worth +27/+14; a real (b1, f_NL, n_shot)
+degeneracy) and two honestly-recorded blocked steps.
+
+**Prior art.** The measurement is Chaussidon et al. **2411.17623**; cross-checks
+Brown et al. **2606.24651**, Rezaie et al. **2307.01753**. The lab's error bar
+(±25) is ~2.8× the published one (±9), so this does not tighten anything.
+
+**Verdict: N1.** Type = *reproduction*. This is the textbook definition of a
+replication: an independent pipeline recovering a published number to 0.06σ with
+a wider error bar. Calling it a "new constraint" would be inflation — it is not
+competitive, and the audit explicitly rejects that framing. Its real value is as
+**evidence for the lab's reproducibility claim (C10)**, and as an honest
+systematics budget. **Lift to N3:** only if the systematics ladder becomes a
+*published finding about the published analysis* (e.g. a demonstrable bias in a
+published choice such as the p-prior, worth several σ), which the current
+evidence does not support. Otherwise: nothing — N1 by nature, and that is fine.
+
+### C8 — The 8.47M-galaxy chirality catalogue and the A_95 = 0.98% null
+
+**Claimed.** An 8.47M-galaxy DESI spiral chirality catalogue; an observed-label
+dipole null on 890,069 quality-controlled high-confidence spirals
+(z_mom = +0.635, rank p = 0.238); A_95^obs ≈ 0.98% at 95% CL; under the minimal
+closure A_pred ≈ alignment fraction η, this excludes η > 0.98%, i.e. 2–20× below
+the Longo/Shamir claimed amplitudes; plus a void-environment cross-check.
+
+**Prior art.** Longo (**arXiv:1104.2815**); Shamir's series — DESI Legacy
+Survey **1.3 million** annotated galaxies (MNRAS 516, 2281, 2022), DES
+comparison (**arXiv:2208.00912**), JWST deep fields (**arXiv:2403.17271**),
+Southern-hemisphere PASA; Galaxy Zoo Land et al. (**astro-ph/0803.3247**,
+~37k, the classic null); Iye et al. (**arXiv:2003.02906**). Popławski's
+black-hole-universe papers (**1007.0587, 1111.4595, 1410.3881, 1910.10819**)
+state a preferred-axis *tendency* with **no amplitude** — which the lab verified
+and recorded rather than inventing.
+
+**Verdict: N2, with one honest wrinkle and a real N3 within reach.** Type =
+*catalogue + null result*. The wrinkle: **the tested sample (890,069) is smaller
+than Shamir's 1.3M DESI Legacy sample** — only the parent catalogue (8.47M) is
+larger. Any "largest test" phrasing must be tied to the catalogue, or to the
+quality-control depth, not to raw tested N; the site's current one-liner
+("largest test of the rotating-black-hole-universe spin-axis prediction") is
+defensible only because it is the *first* test framed against that model, not
+because N is largest. **Lift to N3:** the first-of-kind element is real and
+cheap to make explicit — *no one has previously confronted Popławski's
+black-hole-universe spin-axis prediction with a quantitative dipole bound.*
+To claim N3 honestly: (a) state the exclusion as the headline (a **new
+constraint on a named model**), with the minimal-closure assumption numbered;
+(b) close the N gap by running the dipole on the full high-confidence sample or
+by demonstrating that the QC cut is what makes the bound trustworthy; (c) add
+the image-level end-to-end injection (ledger row 13) so the null survives a
+generative systematics null through the actual classifier. (a)+(b) are weeks;
+(c) is the GPU program already proposed.
+
+### C9 — Anomaly catalogue v2 (1,244 science targets, 8 families) + recovery benchmark
+
+**Claimed.** A science-only S>3 sample of 1,244 DESI DR1 spectral anomalies,
+released with provenance, cross-matching (SIMBAD/NED 45.7%), 25 clusters → 8
+taxonomic families; a pre-declared recovery benchmark against 5 reference
+classes that **did not** meet its own success bar (1 BAL-quasar class at 4.2×
+enrichment vs the required >10× and ≥5 matches).
+
+**Prior art.** Unsupervised spectral anomaly detection on SDSS is Baron &
+Poznanski (**arXiv:1611.07526**); DESI EDR/DR1 anomaly and outlier searches
+exist in the survey's own literature. The lab's autoencoder is trained on 47k
+spectra and applied to 18M — a known-scale technique, not a new one.
+
+**Verdict: N2.** Type = *data release*. The genuinely good practice here is the
+**pre-declared exit rule that was allowed to fail** — the benchmark was set
+before the result and the lab published the release rather than a discovery
+paper. That is integrity, and it is worth saying on the site; it is not
+novelty. **Lift to N3:** ledger row 12 — a self-supervised model trained on the
+full DESI DR1 science-target population with a public embedding release. A
+foundation-scale public embedding for DESI spectra, if first, is a defensible
+first-of-kind *resource*; a confirmed anomalous class would be a first-of-kind
+*discovery*. Both are GPU-cost programs, not desk work.
