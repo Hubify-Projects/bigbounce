@@ -235,3 +235,66 @@ equally 0.086σ from zero); that it validates this paper's own LSS forecast; or 
 collaboration result. It is a lab reproduction of a published constraint, and its value here is
 exactly that: it establishes that the pipeline this paper's Channel III forecasts rest on
 reproduces the published DR1 number on official products.
+
+# 7. CLOSURE PLAN
+
+## (i) Editorial / real edits for v3M.0.14 — exact lines
+
+All against `research/track_a3_multichannel/paper/main.tex` at v3M.0.13. Directive-G hygiene
+(version + date bump, 4-pass recompile, byte-identical mirror to every served path, Convex
+`paperVersions:bump`, three-way md5) applies to the bundle; directive I6 (figure regeneration)
+applies to item 4.
+
+| # | line(s) | edit | closes |
+|---|---|---|---|
+| 1 | `:1023–1027` | replace "$T_B\gtrsim10^{8}$–$10^{10}$ GeV — eleven decades above the BBN scale" with "$T_B\gtrsim6\times10^{9}$–$6\times10^{10}$ GeV — thirteen decades above the BBN scale", and print the mapping once: "$k_B\simeq1.71\times10^{7}\,T_B[{\rm GeV}]\,{\rm Mpc}^{-1}$ (\texttt{outputs/inlab\_delta2\_zeta\_2026-09-03.json})" | `R6-01` |
+| 2 | `:784–786` (§IV D) | "$T_B\gtrsim10^{8}$–$10^{10}$ GeV condition" → "$T_B\gtrsim10^{10}$–$10^{11}$ GeV condition"; recompute the "$7.6$ decades below" → **$9.6$ decades below** | `R6-01` |
+| 3 | `:1051–1053` | keep the worked $T_B=10^{8}$ GeV / $k_B=1.714\times10^{15}$ point but relabel it "an illustrative bounce energy **below** §V C's validity condition" so it does not read as satisfying it | `R6-01` |
+| 4 | `sigw_nhz_from_lab_spectrum_2026_09_04.py:72` | pair $A$ and $\gamma$ from the **same** NANOGrav fit (free-$\gamma$: $\log_{10}A\approx-14.19$, $\gamma=3.2$); rerun; update `:752`, `:756`, `:771`, `:1186–1187`, abstract `:58` ($\sim10^{14}\to\sim10^{15}$); **regenerate `sigw_nhz_from_lab_spectrum_2026_09_04.png`** (legend carries $A=2.4\times10^{-15}$) and re-mirror it | `R6-02` |
+| 5 | abstract `:74–78` | "…combining power spectrum and bispectrum widens this to $0.5$–$1.1\sigma$" → "…the P+B **candidate separation** is $0.5$–$1.1\sigma$ (P+B bare significance $1.0$–$1.3\sigma$, Table VI)" | `R6-03` |
+| 6 | abstract `:62–64` | two-part: "the **required** SMBH-seed amplitude is itself FIRAS-excluded by three orders of magnitude, and this model's own spectrum falls $\sim7$ decades short of supplying it either way" | `R6-04` |
+| 7 | `:1099` | "lies below the central value" → "lies **above** the central value" | `R6-05` |
+| 8 | §VII C | delete "…listed as open in earlier versions, are now carried out in Secs. VI and IV D…" | `R6-06` |
+| 9 | `:1059–1062` | add the one-line derivation ("a $7.0$-decade shortfall in $\Delta^2_\zeta$ is $10^{3.5}=3162$ in $\sigma$") and label the mass scale of BOTH numbers ($3162\sigma$ at $M_H\sim10^{15}$–$10^{16}$ g; $\log_{10}\beta=-1.7\times10^{9}$ at $M_H=10^{20}$ g, $n_\sigma=89{,}149$); commit the three thresholds to a JSON | `R6-07`, pre-empts `F3` |
+| 10 | abstract `:53–54` | "a two-scheme band $[-1.25,-0.50]$" → "two scheme-dependent answers, $-1.25$ (S2) and $[-0.65,-0.50]$ (S1) — not a bracketed uncertainty" | `R6-08` |
+| 11 | abstract `:61` | "shape-robust amplitude ratio $1.7$–$1.9$" → "an amplitude ratio stable at the $\sim10\%$ level ($1.732\pm0.050$ over the scanned $\gamma_{\rm cr}\in[0.766,0.968]$ grid; $1.85$–$1.89$ at this model's own out-of-coverage shape), conditional on an unresolved sign disagreement with Ref.~[16]" | `R6-11` |
+| 12 | after `:769` (§IV D) | add: "If the $r=0.84$ of the unresolved matter-bounce item were confirmed, that background would already be excluded at $k_*$ by the same BICEP/Keck bound quoted above, independently of any of the three channels; resolving $r$ for these backgrounds is an open item." | `R6-10` |
+| 13 | `:1076` | "largely excluded" → the itemization already at `:1071–1075` | `R6-12` |
+| 14 | `:381–384` | "no computable post-bounce $f^{\rm after}$" → "no computable **cubic** $f^{\rm after}$" (the linear S2 transfer on LQC, $T=0.409$, exists) | `R6-14` |
+| 15 | ¶ after Eq. (7) | repair the sentence fragment beginning "so $|f_{\rm after}|\in[0.50,0.65]$…" | `R6-15` |
+| 16 | Table VI caption | label the entries **upper bounds** (shape overlap $r<1$ can only reduce them) | `R6-16` |
+| 17 | `:1504–1506` | verify Ref. [8] author list + arXiv identifier against the arXiv listing before submission | `R6-09` |
+| 18 | `:57`, `:755`, `:802`, `:1186` | label each "$5.1\sigma$"/"$4.9\sigma$"/"$3.13\sigma$" a **Gaussian-equivalent $z$-distance** from a $5$–$95\%$ interval width, consistent with the paper's own Savage–Dickey stance at `:637–641` | `R6-13` |
+| 19 | §II D / Appendix A2 (optional) | harmonize "resolved rather than merely bounded" to the Appendix's weaker, honest wording | `RF9` |
+| 20 | §VI | insert the DESI DR1 v3 sentence of §6 above with its mandatory caveat | new evidence |
+
+**None of (i) changes a scientific conclusion.** Every edit either corrects a number against a
+committed artifact (1–4, 9), calibrates the abstract to the body (5, 6, 10, 11, 18), or fixes prose
+(7, 8, 12–17, 19). Item 20 adds committed evidence.
+
+## (ii) SCIENCE items — for `NEXT_SCIENCE_LEDGER.md`, not for a review round
+
+| id | item | why it is science, not editing | named blocker / cost |
+|---|---|---|---|
+| `A3-4` | **Re-derive $r$** for the three bounce backgrounds under the same S1 prescription used for $f_{\rm NL}$, and test against $r<0.036$ | The paper currently carries $r=0.84$ as an unresolved imported number (`DA3M-06`, open since R1). Until it is derived, the fourth-channel statement of item (i)-12 is a conditional, and the honest completeness of "three nulls" cannot be settled | tensor mode functions through the bounce on all three backgrounds; local CPU, days of derivation, not a re-run |
+| `A3-1e` | **Resolve the Choudhury sign disagreement** at $\gamma_{\rm cr}\lesssim0.85$ | `:929–930` records that this implementation finds *enhancement* where Ref. [16] reports *suppression*, and the model's own shape ($\gamma_{\rm cr}\in[0.27,0.63]$) sits entirely in that regime — so the headline PBH ratio is conditional on an unresolved sign | **Blocker: their spectrum is not reconstructible from the published paper** (`DA3M-R5-F11`, `R3-R3`), so a re-run at their parameters is impossible. Realistic route: analytic diagnosis of the $J(\gamma_{\rm cr})$ sign structure in `pbh_compaction_fnl.py` step (4). **Extending the 27-point grid does NOT address this** and is not the fix (Grok has now asked for it 3 rounds running) |
+| `A3-ns` | **Evaluate Eq. (A3) at the $\epsilon$ that gives $n_s=0.9649$** via $n_s-1=12w/(1+3w)$ and quote the shift in $f_{\rm NL}$ | The propagated spectrum uses $n_s=0.9649$ while Eq. (1) is the $w=0$ value; the shift is expected $O(1\%)$ but is currently unstated. It is a **new number**, so it is (ii) even though it is cheap | one evaluation of the committed general-$\epsilon$ formula; local CPU, minutes |
+| `A3-dN` | **Identify the mechanism of the second-order $\delta N$ piece** (currently "a computed identity, not a claimed mechanism") | The only route that would *close* the factor-of-two adjudication rather than bound it (Fable Q2, Grok E6 substance) | open theory question; no committed path |
+| `DESI-4` | Wide-angle corrections (`PowerSpectrumOddWideAngleMatrix`) + the 3 blocked systematics splits (E(B−V), stellar density, depth) | Would shrink the reproduction's $\sigma=25$ toward the published $9.0$ | splits blocked on locating the DR9/Legacy imaging pixweight VAC (`LEDGER4_RESULT_v3` §6) |
+
+# 8. Directive-R2 statement
+
+**After v3M.0.14, rounds STOP on A3M.** R6 is the third consecutive verification round on this
+paper, and its yield confirms what R5 already indicated: the reviewer legs have stopped finding
+physics. Of 41 findings across three legs, **zero** identified an error in a derivation; the single
+numerically-wrong statement (`R6-01`) is a unit-conversion slip whose correction makes the paper's
+own null stronger, and every remaining real item is abstract-to-body calibration, attribution, or
+sourcing — precisely the genre/presentation residue directive R2 names as the signal to stop. The
+verdict words (REJECT, MAJOR REVISIONS) are not evidence to the contrary: Grok's REJECT rests on
+`F1` (falsified for the third time), `O1` (length), and abstract wording; Gemini's MAJOR REVISIONS
+rests on two abstract sentences, a DOI, and one arithmetic claim that is itself falsified (`F3`).
+Another round would re-flag `RF1` a fourth time and `RF7` a sixth. **The remaining movement on A3M
+is a science decision, not a review decision:** `A3-4` (does this background predict $r=0.84$, and
+is it therefore already excluded?) and `A3-1e` (is the PBH ratio's sign structure right at the
+model's own shape?) are the two items that would change what the paper can claim. v3M.0.14 closes
+the (i) list; no further round may be dispatched on A3M until a decision is taken on (ii).
