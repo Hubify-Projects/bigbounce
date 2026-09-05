@@ -168,6 +168,12 @@
    "depends_on": [
     "p4p-row16i-full-parent-dipole"
    ]
+  },
+  {
+   "id": "row16ivb-bgs-environment",
+   "depends_on": [
+    "row16iv-chirality-structure"
+   ]
   }
  ],
  "external_data": [

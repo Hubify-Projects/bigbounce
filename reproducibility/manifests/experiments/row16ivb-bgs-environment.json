@@ -1,0 +1,154 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "row16ivb-bgs-environment",
+ "title": "Row 16 (iv-b) - chirality parity vs DESI DR1 BGS cosmic-web environment",
+ "program": "galaxy-chirality",
+ "paper": "P4",
+ "kind": "validation",
+ "inputs": [
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_0_clustering.ran.fits (13,248,857 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_0_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_0_clustering.ran.fits",
+   "checksum": "sha256:28eeada4fd38568a9744b30b82086ca962811cb389f30b58d538f12124e017f7",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_1_clustering.ran.fits (13,251,505 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_1_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_1_clustering.ran.fits",
+   "checksum": "sha256:125ce00a59cabfcb17eddf8a60ae4744dc885d915641528d0d67e227c8481f0a",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_2_clustering.ran.fits (13,247,566 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_2_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_2_clustering.ran.fits",
+   "checksum": "sha256:0db329a9dbb95a1f3a3973f587865af9085d9d5ec23dd34ea7cb467d0118ef0c",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_3_clustering.ran.fits (13,250,420 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_3_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_3_clustering.ran.fits",
+   "checksum": "sha256:452855d35bb72538e7b05b4c1623a66f8186d9e583035feb4337f773a3a15411",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_clustering.dat.fits (217,614 rows, 0.03 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_clustering.dat.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_clustering.dat.fits",
+   "checksum": "sha256:b67e8e3ee579d9673089f2c9c6930b793a2bf1895f85198472fb7fc5aa392825",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_0_clustering.ran.fits (5,432,939 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_0_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_0_clustering.ran.fits",
+   "checksum": "sha256:32757814469155ae4f399e2d0ae4af95fd6599b0804961de84648f6b116b71d4",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_1_clustering.ran.fits (5,435,725 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_1_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_1_clustering.ran.fits",
+   "checksum": "sha256:2d781f04d93bd6142f3e8e943fdf14e0a124163112019db58646e45b7720de51",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_2_clustering.ran.fits (5,429,301 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_2_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_2_clustering.ran.fits",
+   "checksum": "sha256:a1aa18d195a645f34337c15f58a27fa5272741642b4493edfbf5ac465801b421",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_3_clustering.ran.fits (5,432,593 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_3_clustering.ran.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_3_clustering.ran.fits",
+   "checksum": "sha256:77e34a57ad8d5bb180b5698dbc713c9e9fd2ce454db301d2ea3e77833f008070",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_clustering.dat.fits (82,429 rows, 0.01 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_clustering.dat.parquet",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_clustering.dat.fits",
+   "checksum": "sha256:4daf878cc5bfce71c3ee67f91882bd70179643033741af1f1324bdf655c5d98f",
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  },
+  {
+   "name": "P4 chirality catalog (primary-safe, 8,474,531 rows)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+   "checksum": null
+  },
+  {
+   "name": "DESI spec-z x chirality crossmatch (P5)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+   "checksum": null
+  }
+ ],
+ "apis": [],
+ "code": [
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_fetch_bgs.py",
+   "entrypoint": "python3 row16ivb_fetch_bgs.py 4",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_bgs_environment.py",
+   "entrypoint": "python3 row16ivb_bgs_environment.py",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_common.py",
+   "entrypoint": "imported",
+   "sha256": null
+  }
+ ],
+ "environment": {
+  "python": "numpy, scipy, pyarrow, astropy, healpy, matplotlib",
+  "hardware": "local laptop CPU (no GPU, no cloud)"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": null,
+  "pod_id_or_host": "Houston laptop (darwin)",
+  "date": "2026-09-05",
+  "wall_clock": "TBD",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local CPU",
+  "est_wall_clock": "~2.5 h (0.7 h download + ~1.5 h nulls)",
+  "est_cost_usd": 0.0,
+  "parallelizable": true,
+  "resume_support": true,
+  "notes": "Pre-registration committed BEFORE any download or statistic: commit ce9ce224. Seeds fixed (16050-16053); FITS sha256 recorded above; FITS deleted after compaction to parquet to keep peak disk small. Total download 9.38 GB across 10 DESI files; retained on disk as ~2.3 GB of compacted parquet."
+ },
+ "outputs": [
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_bgs_environment.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_bgs_environment.png",
+   "type": "figure",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/ROW16IVB_BGS_ENVIRONMENT_2026-09-05.md",
+   "type": "document",
+   "checksum": null
+  }
+ ],
+ "verification": "Re-run the fetch (sha256 must match) then the analysis; every observed statistic, null mean/std, z and empirical p must match the committed JSON (fixed seeds).",
+ "status": "runnable-now",
+ "provenance": [
+  "project-context/NEXT_SCIENCE_LEDGER.md row 16, item (iv-b)",
+  "pipelines/p4prime_chirality_test/chirality_structure/ROW16IVB_BGS_ENVIRONMENT_2026-09-05.md (pre-registration at ce9ce224)",
+  "closes the data limitation recorded in ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md section 1 (QSO-only LSS products on disk)"
+ ]
+}
