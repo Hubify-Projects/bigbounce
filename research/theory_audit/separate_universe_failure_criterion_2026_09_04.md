@@ -116,7 +116,7 @@ $$
 $$
 f^{\rm in\text{-}in}=\frac{15}{16}(1+w)^2(\mu^2-1)+\frac{15}{4}(1+w)-5,\qquad
 f_{\delta N}^{\rm(initial\ label)}=-5\ \ (\text{all }w),\qquad
-f_{\delta N}^{\rm(final\ label)}=-\frac{5(3w-5)}{2(w-1)}-\frac{15(1+w)}{2(w-1)}\,\mu^2 .
+f_{\delta N}^{\rm(final\ label)}=-\frac{5(3w-5)}{4(w-1)}-\frac{15(1+w)}{4(w-1)}\,\mu^2 .
 $$
 Checks: $w=0$ gives $-\tfrac{35}{16}+\tfrac{15}{16}\mu^2$ vs $-5$; $w=-1$ (de Sitter, $\epsilon=0$) gives $\lambda=1$,
 $f_{\rm map}=0$; $w=1$ (kination, $\epsilon=3$): $\lambda=0$ — $\delta N_c$ has no linear response and is not a usable
@@ -159,3 +159,29 @@ therefore only ever see failure mode 1; failure mode 2 is invisible at $O(\epsil
 > amplitudes differ at $O(1)$: $f_{\delta N}=f^{\rm in\text{-}in}/\lambda-\tfrac{5\epsilon}{4}(1-\mu^2)$.
 > When $\langle\epsilon\rangle_\zeta\ll1$ (attractor: $\dot\zeta_L=0$; inflationary USR: $\epsilon\ll1$) the two
 > agree to $O(\langle\epsilon\rangle_\zeta)$, which is why $\delta N$ never failed in the inflationary tests.**
+
+## 3. Validations (script `separate_universe_failure_criterion_2026_09_04.py`, exact sympy, 0.2 s)
+
+| case | $\dot\zeta_L/(H\zeta_L)$ | $\Theta$ | $\langle\epsilon\rangle_\zeta$ | $\lambda$ | $f^{\rm in\text{-}in}_{\rm sq}$ | $f_{\delta N}$ (isotropic SU) | criterion says | literature |
+|---|---|---|---|---|---|---|---|---|
+| dust contraction, $\epsilon=3/2$ ($w=0$) | $-3/2$ | $-9/4$ | $3/2$ | $1/2$ | $-\tfrac{35}{16}+\tfrac{15}{16}\mu^2$ (mono $-15/8$) | $-5$ | **fails at $O(1)$**: gap $25/8=\tfrac{5}{2}+\tfrac{5}{8}$ | lab in-in (2026-09-02/03), $\delta N$ lanes A/B/C; Cai+2009 $\times2$ located |
+| general $1<\epsilon<3$ contraction | $\epsilon-3$ | $\epsilon(\epsilon-3)$ | $\epsilon$ | $1-\epsilon/3$ | $\tfrac{5}{12}(\epsilon^2\mu^2-\epsilon^2+6\epsilon-12)$ | $-5$ (all $\epsilon$) | fails at $O(\epsilon)$, coefficient $O(1)$ | this work (general-$w$ form §2.2) |
+| inflationary USR ($\epsilon\propto a^{-6}$) | $+3$ | $3\epsilon$ | $\sqrt{\epsilon_s\epsilon_f}-\epsilon_f$ | $1+O(\epsilon)$ (exact: $1+\tfrac{\epsilon_f}{3}-\tfrac{\sqrt{\epsilon_s\epsilon_f}}{3}$; $0.99997$ at $\epsilon_s=10^{-2},\epsilon_f=10^{-6}$) | $5/2$ | $5/2$ with $N(\phi,\pi)$ | **agrees to $O(\epsilon)$** — both failure modes accounted for (§2.3) | NFS 2013 ✓ (reproduced by construction) |
+| attractor slow roll | $0$ | $0$ | $0$ | $1$ | $\tfrac{5}{12}(1-n_s)$ | same | identity map (`div_cross = 0` at second order) | Maldacena 2003 ✓ |
+| ekpyrotic, $\epsilon\gg3$, dominant mode | $0$ (constant mode; the other mode $\propto(-\eta)^{(\epsilon-3)/(\epsilon-1)}$ decays) | $0$ | $0$ | $1$ | attractor-like | same | identity map — **not** a failure although contracting | Creminelli–Nicolis–Zaldarriaga 2004 ✓ (constant mode dominates; consistency relation holds) |
+| ekpyrotic, non-dominant mode (growing $\Psi$) | $\epsilon-3$ | $\epsilon(\epsilon-3)\gg1$ | $\epsilon$ | $1-\epsilon/3<0$ | — | — | $\delta N_c$ not a usable variable; irrelevant since this mode never sets $\zeta_L(t_f)$; constant-$\epsilon$ kernels not applicable ($m<0$) | — |
+| kination $\epsilon=3$ ($w=1$) | $\to0$ (log) | $\to0$ | $3$ | $0$ | mono $\to0$ | — | degenerate: integrated form needed | — |
+
+Reading: the criterion **discriminates** — it does not say "contraction fails"; it says "growing $\zeta$ while
+$\epsilon=O(1)$ fails". Ekpyrosis (contracting, $\epsilon\gg3$) passes because $\zeta$ sits on its constant mode;
+USR (expanding, $\dot\zeta\neq0$) passes because $\epsilon\ll1$; the matter-like contraction ($1<\epsilon<3$, growing
+$\zeta$, $\epsilon=O(1)$) is the unique corner where both ingredients are present, and there the failure is
+$5\epsilon(9-\epsilon)/18$ in the monopole — $25/8$ at $\epsilon=3/2$, i.e. a factor $8/3$ in $f_{\rm NL}$.
+
+Scope of what was actually computed (honest): (i) the linear criterion (1.2) is exact for any single-field history
+with a growing-mode initial condition, any $c_s$; (ii) the second-order $f_{\rm map}$ is exact for constant $\epsilon$,
+$c_s=1$, $1<\epsilon<3$ (frozen input, not re-solved here); (iii) the USR second-order statement is structural
+(every frozen kernel $\propto\epsilon$; `all_map_pieces_carry_eps = true`), not a re-solve with $\epsilon(t)$;
+(iv) the ekpyrotic check is a mode-dominance argument, no new constraint solve; (v) general-$w$ is substitution
+$\epsilon=\tfrac32(1+w)$ into (ii), valid for the scalar-field realisation ($c_s=1$), not for a genuine fluid with
+$c_s^2=w$ — that extension needs the $c_s$-dependent second-order constraints (open, bounded, \$0).
