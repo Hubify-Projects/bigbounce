@@ -73,3 +73,56 @@ OUT['S7'] = {'inin_shape_eps_3_2': str(ours), 'isoceles': str(poly(ours)[0]), 'm
                                           '(arXiv:0903.0631) and Li, Quintin, Wang, Cai 2017 (arXiv:1612.02036)',
              'verdict': 'NOT (symbolic content exhausted; the slip can only be located against the published equations)'}
 print('S7 ratios: iso', ratio_iso, 'mono', ratio_mono, flush=True)
+
+# ================= S8: USR row as a real validation - exact numerical delta N(phi,pi) at finite eps_s =================
+# Background: canonical field, Mp=1, V = V0 (exact USR): dphi/dN = u/H, du/dN = -3u, 3H^2 = V0 + u^2/2,
+# eps = 3u^2/(2V0+u^2).  Closed form: u_e = sqrt(2V0) sinh(asinh(u_s/sqrt(2V0)) - sqrt(3/2)(phi_e-phi_s)),
+# N = -(1/3) ln(u_e/u_s)  (to the uniform-phi surface); to the uniform-rho surface u_e is fixed, N = N(u_s) only.
+# k->0 linear theory (exact, c_s=1): zeta = C1 + C2 int dt/(a^3 eps);  flat gauge dphi = -(u/H) zeta, lapse
+# alpha = u dphi/(2H).  Separate-universe local data on the flat initial slice: phi_loc = phi_s + dphi,
+# pi_loc = (u_s + dphi_dot)(1 - alpha).  Test: delta N_SU = N(phi_loc,pi_loc) - N(phi_s,u_s) against
+#   (A) zeta_f                       [standard identification delta N = zeta]
+#   (B) zeta_f - (1/3) int eps zeta_dot dt = zeta_f (1 - I/3)   [threading identity, this note's criterion]
+import mpmath as mp
+mp.mp.dps = 40
+def usr_case(eps_s, eps_f, C1, C2, V0=mp.mpf(1)):
+    us = mp.sqrt(2 * V0 * eps_s / (3 - eps_s)); ue = mp.sqrt(2 * V0 * eps_f / (3 - eps_f))
+    phi_e = -mp.sqrt(mp.mpf(2) / 3) * (mp.asinh(ue / mp.sqrt(2 * V0)) - mp.asinh(us / mp.sqrt(2 * V0)))
+    Hf = lambda u: mp.sqrt((V0 + u**2 / 2) / 3); epsf = lambda u: 3 * u**2 / (2 * V0 + u**2)
+    def N_phi(phi0, u0):
+        u_end = mp.sqrt(2 * V0) * mp.sinh(mp.asinh(u0 / mp.sqrt(2 * V0)) - mp.sqrt(mp.mpf(3) / 2) * (phi_e - phi0))
+        return -mp.log(u_end / u0) / 3
+    def N_rho(u0): return -mp.log(ue / u0) / 3
+    Nf = N_phi(0, us); uN = lambda N: us * mp.exp(-3 * N)
+    zeta = lambda N: C1 + C2 * mp.quad(lambda n: 1 / (Hf(uN(n)) * mp.exp(3 * n) * epsf(uN(n))), [0, N])
+    dzdN = lambda N: C2 / (Hf(uN(N)) * mp.exp(3 * N) * epsf(uN(N)))
+    I = mp.quad(lambda n: epsf(uN(n)) * dzdN(n), [0, Nf]) / zeta(Nf)          # = (1/zeta_f) int eps zeta_dot dt
+    zf = zeta(Nf); zdot_f = Hf(uN(Nf)) * dzdN(Nf)
+    dphi = lambda N: -(uN(N) / Hf(uN(N))) * zeta(N)
+    dphi_s = dphi(0); dphidot_s = Hf(us) * mp.diff(dphi, 0); alpha_s = us * dphi_s / (2 * Hf(us))
+    def dN(A, fn):
+        loc = lambda s: fn(s * A * dphi_s, (us + s * A * dphidot_s) * (1 - s * A * alpha_s)) if fn is N_phi \
+            else fn((us + s * A * dphidot_s) * (1 - s * A * alpha_s))
+        return (loc(1) - loc(-1)) / (2 * A)                                     # linear response, O(A^2) removed
+    A = mp.mpf('1e-10')
+    dN_phi_SU = dN(A, N_phi); dN_rho_SU = dN(A, N_rho)
+    predB = zf * (1 - I / 3); zeta_rho_f = zf - zdot_f / (3 * Hf(uN(Nf)))
+    return {'eps_s': float(eps_s), 'eps_f': float(eps_f), 'C1': C1, 'C2': C2, 'N_f': float(Nf),
+            'I': mp.nstr(I, 12), 'lambda_pred_1_minus_I_over_3': mp.nstr(1 - I / 3, 15),
+            'zeta_f': mp.nstr(zf, 15), 'deltaN_SU_uniform_phi': mp.nstr(dN_phi_SU, 15),
+            'ratio_dN_SU_over_zeta_f': mp.nstr(dN_phi_SU / zf, 15),
+            'ratio_dN_SU_over_predB': mp.nstr(dN_phi_SU / predB, 15),
+            'zeta_rho_f (= zeta_f - zetadot_f/3H_f)': mp.nstr(zeta_rho_f, 15),
+            'deltaN_SU_uniform_rho': mp.nstr(dN_rho_SU, 15),
+            'ratio_dN_SU_rho_over_zeta_rho_f': mp.nstr(dN_rho_SU / zeta_rho_f, 15) if zeta_rho_f != 0 else 'zeta_rho_f = 0',
+            'ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)': mp.nstr(dN_rho_SU / (zeta_rho_f - I * zf / 3), 15)
+                if zeta_rho_f - I * zf / 3 != 0 else 'undefined'}
+S8 = {}
+for (es_, ef_) in [(mp.mpf('1e-2'), mp.mpf('1e-6')), (mp.mpf('1e-2'), mp.mpf('1e-4')), (mp.mpf('1e-3'), mp.mpf('1e-9'))]:
+    for (C1_, C2_) in [(0, 1), (1, 0), (1, 1)]:
+        r = usr_case(es_, ef_, C1_, C2_); S8[f'es={float(es_)},ef={float(ef_)},C1={C1_},C2={C2_}'] = r
+        print('S8', f'es={float(es_):g} ef={float(ef_):g} C=({C1_},{C2_})', 'I=', r['I'],
+              'dN/zeta_f=', r['ratio_dN_SU_over_zeta_f'], 'dN/predB=', r['ratio_dN_SU_over_predB'],
+              '| rho-slice dN/zeta_rho=', r['ratio_dN_SU_rho_over_zeta_rho_f'], 'dN/(B)=', r['ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)'], flush=True)
+OUT['S8'] = {'setup': 'exact USR (V=const), closed-form N(phi,pi); k->0 linear theory exact; flat-gauge lapse used for pi_loc',
+             'cases': S8}
