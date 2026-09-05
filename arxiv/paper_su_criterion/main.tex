@@ -93,54 +93,78 @@ two constructions agree and by how much they differ when they do not.
 \section{The threading identity and the map}
 
 Comoving gauge, ADM variables $N=1+\alpha$, $N_i=\partial_i\psi+\tilde N_i$. The
-zero-shift threading computed by the separate universe is the fluid (normal) congruence,
-with local expansion $K$; along a fluid worldline the fully nonlinear relation between $K$
-and the local volume element gives the exact identity
+separate universe evolves each patch as a homogeneous FRW region identified by its fluid
+element's position $x_i$ on a flat, super-Hubble initial slice $\Sigma_i$ ($k_L\ll a_iH_i$);
+its output is the e-fold count $\delta N_c$ of the fluid (normal) congruence, labelled by
+$x_i$, from $\Sigma_i$ to the comoving final slice $\Sigma_f$. Along a fluid worldline
+$\dot x^i=-N^i$ the fully nonlinear relation between the local expansion and the volume
+element gives the exact identity
 \begin{equation}
-\delta N_c(x_f)=\zeta(t_f,x_f)-\frac13\int_{-\infty}^{t_f}\!\partial_iN^i\big(t,x(t)\big)\,dt,
-\quad \dot x^i=-N^i,
+\delta N_c(x_i)=\zeta(t_f,x_f)-\frac13\int_{t_i}^{t_f}\!\partial_iN^i\big(t,x(t)\big)\,dt,
+\quad x_f=x(t_f),
 \label{eq:threading}
 \end{equation}
-integrated along the fluid worldline from a growing-mode initial condition
-$\zeta_L(-\infty)=0$~\cite{Golden2026Threading}. Every difference between Maldacena's
-$\zeta$ and the separate universe's $\delta N_c$ is the divergence of the comoving shift,
-integrated along this worldline. At linear order, $\partial_iN^i=(\eps/c_s^2)\dot\zeta$ on
-super-Hubble scales for any $c_s$~\cite{Maldacena2003,ChenHuang2007}, so
+with $\delta\rho_c/\rho\propto\partial_iN^i$ up to a gradient term. On super-Hubble scales,
+$\partial_iN^i=(\eps/c_s^2)\dot\zeta-\nabla^2\zeta/(a^2H)$ for the $P(X)$ class (a genuine
+fluid with non-adiabatic pressure adds a term)~\cite{Maldacena2003,ChenHuang2007}. Splitting
+the interval at the comoving slice through $x_i$ and integrating,
 \begin{equation}
-\delta N_c=\lambda\,\zeta_L,\qquad
-\lambda=1-\frac{\langle\eps/c_s^2\rangle_\zeta}{3},\qquad
-\langle X\rangle_\zeta\equiv\frac{\int X\,d\zeta_L}{\zeta_L(t_f)},
+\delta N_c=\zeta_{L,f}\Big[1-\frac{I}{3}\Big]+O\!\Big(\frac{k_L^2}{a^2H^2}\Big),\qquad
+I\equiv\frac{1}{\zeta_{L,f}}\int_{t_i}^{t_f}\!\frac{\eps}{c_s^2}\,\dot\zeta_L\,dt,
 \label{eq:lambda}
 \end{equation}
-exact for any single-field history with a growing-mode initial condition. This reduces to
-$\lambda=1-\eps/3$ for constant $\eps$, and to $\lambda_{\rm USR}=1+\eps_f/3-\sqrt{\eps_s\eps_f}/3$
-exactly for USR with $\eps=\eps_s(a/a_s)^{-6}$, $\zeta_L\propto a^3$. At second order, for
-constant $\eps$ and $c_s=1$, solving the exact ADM constraints to $O(\zeta_L\zeta_S)$ and
-integrating Eq.~\eqref{eq:threading} gives $f_{\delta N}=f^{\rm in\text{-}in}/\lambda+f_{\rm map}$
-with
+exact on super-Hubble scales for any single-field history from a flat, super-Hubble initial
+slice; the dropped gradient term is $O(k_L^2/a_iH_i^2)$ or $O(k_L^2/a_fH_f^2)$, whichever
+end of the interval dominates. $I\to0$ (identity map) on any constant mode, including the
+attractor and the dominant ekpyrotic mode; $I=1-\lambda$ reduces to $\eps/3$ for constant
+$\eps$, so $\lambda\equiv1-I/3=1-\eps/3$, and to
+$\lambda_{\rm USR}=1+\eps_f/3-\sqrt{\eps_s\eps_f}/3$ for USR with $\eps=\eps_s(a/a_s)^{-6}$
+from a slow-roll-frozen $\zeta_{L,i}\neq0$ at $a_s$, $\zeta_L\propto a^3$ thereafter. At second
+order, for constant $\eps$ and $c_s=1$, solving the exact ADM constraints to
+$O(\zeta_L\zeta_S)$ and integrating Eq.~\eqref{eq:threading} gives
+$f_{\delta N}=f^{\rm in\text{-}in}/\lambda+f_{\rm map}$, where $f_{\rm map}$ depends on how
+the fluid worldline is labelled. Labelled by \emph{initial} position $x_i$ -- the label the
+separate universe uses, since it never learns where the fluid element ends up --
 \begin{equation}
-f_{\rm map}(\eps,\mu)=-\frac{5\eps}{4}(1-\mu^2),
+f_{\rm map}^{\rm init}(\eps,\mu)=\frac{5\eps}{4(3-\eps)}\big[(\eps-2)-\eps\mu^2\big],
 \label{eq:fmap}
 \end{equation}
-$\mu=\hat k_L\!\cdot\!\hat k_S$; every one of the five geometric contributions to
-$f_{\rm map}$ carries an explicit overall factor of $\eps$~\cite{Golden2026Threading}. In
-terms of a constant equation of state $w$ ($\eps=\tfrac32(1+w)$, $c_s=1$),
+and $f_{\delta N}^{\rm init}\equiv f^{\rm in\text{-}in}/\lambda+f_{\rm map}^{\rm init}=-5$,
+isotropic, for every constant $\eps$. Labelled instead by \emph{final} position
+$x_f=x(t_f)$, the two labels differ by a pure translation $\xi^i=-\int N_L^i\,dt$ along the
+long mode, adding a shear-plus-dilation term with zero monopole:
+\begin{equation}
+f_{\rm map}^{\rm fin}(\eps,\mu)=-\frac{5\eps}{4}(1-\mu^2)=f_{\rm map}^{\rm init}+
+\frac{5\eps}{4(3-\eps)}(1-3\mu^2),
+\label{eq:fmapfin}
+\end{equation}
+giving $f_{\delta N}^{\rm fin}=-\tfrac{15(\eps-4)}{4(\eps-3)}+\tfrac{15\eps}{4(3-\eps)}\mu^2$
+($-\tfrac{25}{4}+\tfrac{15}{4}\mu^2$ at $\eps=3/2$); $\mu=\hat k_L\!\cdot\!\hat k_S$. Both
+labels give the same, label-independent monopole $-5\eps/6$; only the quadrupole is a
+labelling convention.\footnote{Each of the five geometric contributions to
+$f_{\rm map}^{\rm fin}$ carries an overall factor of $\eps$: the lapse, the second-order
+metric perturbation, the gradient term, the final-position worldline displacement, and the
+initial-label translation~\cite{Golden2026Threading}.} In terms of a constant equation of
+state $w$ ($\eps=\tfrac32(1+w)$, $c_s=1$),
 \begin{equation}
 \lambda=\frac{1-w}{2},\qquad
-f_{\rm map}=-\frac{15}{8}(1+w)(1-\mu^2),
+f_{\rm map}^{\rm fin}=-\frac{15}{8}(1+w)(1-\mu^2),
 \label{eq:generalw}
 \end{equation}
-with monopole $f_{\rm map}^{\rm mono}=-\tfrac54(1+w)$. Fig.~\ref{fig:lambda} shows both
-across $-1\le w\le1$: $\lambda\to1$, $f_{\rm map}\to0$ at $w=-1$ (de~Sitter, $\eps=0$); and
-$\lambda\to0$ at $w=1$ (kination, $\eps=3$), where $\delta N_c$ ceases to be a usable
-linear-response variable and the in-in monopole itself vanishes.
+with label-independent monopole $f_{\rm map}^{\rm mono}=-\tfrac54(1+w)$. Fig.~\ref{fig:lambda}
+shows both across $-1\le w\le1$: at $w=-1$ ($\eps=0$, de~Sitter/attractor limit) $\lambda\to1$
+and $f_{\rm map}^{\rm mono}\to0$, so the map is the identity; $\lambda\to0$ at $w=1$
+(kination, $\eps=3$), where $\delta N_c$ ceases to be a usable linear-response variable and
+the general-$\eps$ in-in monopole $-\tfrac{5}{18}(\eps-3)(\eps-6)$ itself vanishes.
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{fig_lambda_fmap.png}
-\caption{The linear rescaling $\lambda(w)=(1-w)/2$ and the second-order map monopole
-$f_{\rm map}^{\rm mono}(w)=-\tfrac54(1+w)$, Eq.~\eqref{eq:generalw}, for constant equation
-of state $-1\le w\le1$ at $c_s=1$. Both vanish at $w=-1$ (attractor limit); $\lambda$
-vanishes at $w=1$ (kination), where $\delta N_c$ loses linear response.}
+\caption{The linear rescaling $\lambda(w)=(1-w)/2$ (dimensionless, left axis) and the
+label-independent second-order map monopole $f_{\rm map}^{\rm mono}(w)=-\tfrac54(1+w)$
+(dimensionless, right axis), Eq.~\eqref{eq:generalw}, for constant equation of state
+$-1\le w\le1$ at $c_s=1$. At $w=-1$ (attractor limit, $\eps=0$) $f_{\rm map}^{\rm mono}$
+vanishes and $\lambda\to1$, so the map is the identity; $\lambda$ vanishes at $w=1$
+(kination), where $\delta N_c$ loses linear response.}
 \label{fig:lambda}
 \end{figure}
 
