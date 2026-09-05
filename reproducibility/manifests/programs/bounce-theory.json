@@ -237,6 +237,12 @@
       ]
     },
     {
+      "id": "row11c-threading-map-second-order",
+      "depends_on": [
+        "p2-fnl-monopole-adjudication"
+      ]
+    },
+    {
       "id": "a3-row11b-gammacr-extension",
       "depends_on": [
         "a3-pbh-compaction-fnl",
