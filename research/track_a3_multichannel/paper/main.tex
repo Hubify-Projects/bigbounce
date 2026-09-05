@@ -357,19 +357,19 @@ boundary and evolved purely linearly thereafter -- i.e. we bound the mode-mixing
 amplitude itself, which Sec.~\ref{sec:parameter} has already shown is
 independent of when in the contraction phase it is evaluated. For a linear
 mode-mixing matrix that carries the growing mode's amplitude through the
-bounce with weight $1$ and the sub-dominant decaying mode with weight $r$,
+bounce with weight $1$ and the sub-dominant decaying mode with weight $r_{\rm mix}$,
 writing $\rho(\eta_h)\equiv|J(-\eta_h)|/I_\infty\in(0,1]$ for the fraction of the
 mode-mixing integral accumulated before $\eta_h$, the transmitted $\fnl$
-amplitude scales as $T_{\fnl}(\eta_h)=\dfrac{1+r\,[1-\rho(\eta_h)]}{1+2r}$,
+amplitude scales as $T_{\fnl}(\eta_h)=\dfrac{1+r_{\rm mix}\,[1-\rho(\eta_h)]}{1+2r_{\rm mix}}$,
 where $\mathcal A$ is the matter-asymptotic normalization of the scale
 factor ($a\to\mathcal A\tau^2$), $I_\infty\equiv J(+\infty)$ is the
 super-Hubble mode-mixing integral of the growing-mode basis, and
-$r=-9i\mathcal{A}^2 I_\infty/k^3=\beta_-I_\infty/\alpha_-$ is in general
+$r_{\rm mix}=-9i\mathcal{A}^2 I_\infty/k^3=\beta_-I_\infty/\alpha_-$ is in general
 complex, with $\alpha_-,\beta_-$ the matter-basis projection coefficients
-and the denominator $1+2r$ fixing the vacuum normalization
-$C_1=\alpha_-(1+r)$, $C_2=\beta_-$; over the
+and the denominator $1+2r_{\rm mix}$ fixing the vacuum normalization
+$C_1=\alpha_-(1+r_{\rm mix})$, $C_2=\beta_-$; over the
 validated range $k\eta_B\lesssim10^{-2}$ used throughout this paper,
-$|r|\gg1$ holds numerically for all three backgrounds below, and in this
+$|r_{\rm mix}|\gg1$ holds numerically for all three backgrounds below, and in this
 growing-mode-dominated limit the transfer reduces to
 \begin{equation}
 T_{\fnl}=\frac{1-\rho(\eta_h)}{2},
@@ -388,7 +388,7 @@ backgrounds respectively): $\zeta$ \emph{grows} through the bounce by
 $\lambda_\zeta$, which is why $\fnl$ is suppressed rather than enhanced by a
 uniform rescaling. Separately, the post-bounce curvature power spectrum
 remains scale-invariant, $\Delta^2\propto k^3|\alpha_{\rm post}|^2$ flat to
-$1.2$--$4.2\%$ across the validated $k$ range in the $|r|\gg1$ limit used
+$1.2$--$4.2\%$ across the validated $k$ range in the $|r_{\rm mix}|\gg1$ limit used
 here, so $n_s=0.9649$ in Sec.~\ref{sec:lss} is not in tension with this
 section. Evaluated across three explicit nonsingular bounce
 backgrounds -- an LQC effective quasi-dust bounce (``LQC''), an analytic
@@ -1199,11 +1199,11 @@ backgrounds of Sec.~\ref{sec:transmission}, with the pre-bounce amplitude's
 bare significance retained as a clearly-labelled secondary row (i.e.\
 assuming $T_{\fnl}=1$, the transfer-free case this paper does not otherwise
 support). The matter-bounce bispectrum is also not exactly the local shape;
-a noise-weighted shape overlap $r<1$, which has not been re-derived at the
+a noise-weighted shape overlap $r_{\rm sh}<1$, which has not been re-derived at the
 $\fnl^{\rm after}$ fiducial used in this paper -- so no numeral is quoted
 here -- would let an experiment quoting
 $\sigma_{\rm local}$ constrain the bounce amplitude at $\sigma_{\rm
-local}/r$; the $r$-projected numbers are omitted pending that re-derivation.
+local}/r_{\rm sh}$; the $r_{\rm sh}$-projected numbers are omitted pending that re-derivation.
 
 \begin{table}[t]
 \caption{\label{tab:reach}Channel III. Bare detection significance
@@ -1217,8 +1217,8 @@ $-35/8$ value is computed for S2 (not scaled from $-35/16$; see text).
 Forecast $\sigma$ values are quoted from the cited abstracts. MegaMapper is
 an unapproved design and is quoted only at its published order-unity
 level; no systematic budget is transferred to it. Every tabulated significance is an \emph{upper bound}: it assumes a
-shape overlap $r=1$ with the local template, and the matter-bounce shape's
-true overlap $r<1$ (not yet re-derived at this paper's $\fnl^{\rm after}$
+shape overlap $r_{\rm sh}=1$ with the local template, and the matter-bounce shape's
+true overlap $r_{\rm sh}<1$ (not yet re-derived at this paper's $\fnl^{\rm after}$
 fiducial) can only reduce these numbers. Values re-derived by
 \texttt{survey\_reach\_fnl.py} (\texttt{outputs/survey\_reach\_fnl.json}).}
 \begin{ruledtabular}
@@ -1305,7 +1305,7 @@ free-$\gamma$ posterior amplitude used throughout Sec.~\ref{sec:pta_null}):
 the PTA null of
 Sec.~\ref{sec:pta_null} is unaffected by this section's own tensor
 amplitude. A tensor-sense $r=0.84$ is not used here: it traces to the
-noise-weighted bispectrum shape-overlap coefficient of
+noise-weighted bispectrum shape-overlap coefficient $r_{\rm sh}$ of
 Sec.~\ref{sec:lss}, a shape correlation and not a tensor-to-scalar
 ratio.
 
@@ -1545,7 +1545,7 @@ separates the two candidates by $|\Delta\fnl^{\rm after}|\approx0.35$--$0.55$
 against $\sigma_{\fnl}=0.5$--$0.7$, i.e.\ $0.5$--$1.1\sigma$
 (Sec.~\ref{sec:lss}), so no currently forecast LSS survey can distinguish
 $-35/16$ from $-35/8$ once scheme-S1 transmission is applied; a
-not-yet-derived shape-overlap projection $r<1$ would only narrow this
+not-yet-derived shape-overlap projection $r_{\rm sh}<1$ would only narrow this
 separation further, and since $r$ has not been computed at this paper's
 fiducial no quantitative statement about its effect is made here.
 
@@ -1758,7 +1758,7 @@ continuation of Sec.~\ref{sec:tensor} is at
 Sec.~\ref{sec:bounce_cubic} is at
 \texttt{research/cubic\_bounce\_transmission/}\allowbreak\texttt{row18b\_cs\_bounce\_cubic/}
 (\texttt{row18b\_cs\_bounce\_cubic.py}, \texttt{results.json}). The bounce-to-local shape
-overlap ($r=1$, an assumed value pending an explicit shape-overlap
+overlap ($r_{\rm sh}=1$, an assumed value pending an explicit shape-overlap
 projection; Sec.~\ref{sec:lss}) is taken from this lab's companion
 $f_{\rm NL}$-forecast program (\texttt{outputs/survey\_reach\_fnl.json});
 every tabulated survey significance in Table~\ref{tab:reach} is
