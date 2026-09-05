@@ -1,0 +1,650 @@
+{
+  "run_000": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01144405,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.001783593,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_001": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01281696,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.0003837176,
+    "rules": [
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_002": {
+    "call": "honest",
+    "r7_relative_residual": 2.57385e-13,
+    "r8_reason": "residual",
+    "r8_relative_residual": 1.171085e-14,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_003": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.008789511,
+    "rules": [
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_004": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.002739348,
+    "r8_reason": "operator hash absent",
+    "r8_relative_residual": null,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:operator hash absent"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_005": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.004092835,
+    "rules": [
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_006": {
+    "call": "shortcut",
+    "r7_relative_residual": null,
+    "r8_reason": "declared pseudo_cl absent or wrong length",
+    "r8_relative_residual": null,
+    "rules": [
+      "R8_post_commitment_challenge:declared pseudo_cl absent or wrong length"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_007": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.03022192,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.9002135,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_008": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01115392,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.007492287,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_009": {
+    "call": "honest",
+    "r7_relative_residual": 2.681853e-18,
+    "r8_reason": "residual",
+    "r8_relative_residual": 2.681853e-18,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_010": {
+    "call": "honest",
+    "r7_relative_residual": 1.311661e-13,
+    "r8_reason": "residual",
+    "r8_relative_residual": 8.99946e-15,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_011": {
+    "call": "shortcut",
+    "r7_relative_residual": null,
+    "r8_reason": "declared pseudo_cl absent or wrong length",
+    "r8_relative_residual": null,
+    "rules": [
+      "R8_post_commitment_challenge:declared pseudo_cl absent or wrong length"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_012": {
+    "call": "shortcut",
+    "r7_relative_residual": null,
+    "r8_reason": "declared pseudo_cl absent or wrong length",
+    "r8_relative_residual": null,
+    "rules": [
+      "R8_post_commitment_challenge:declared pseudo_cl absent or wrong length"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_013": {
+    "call": "honest",
+    "r7_relative_residual": 4.887411e-18,
+    "r8_reason": "residual",
+    "r8_relative_residual": 4.887411e-18,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_014": {
+    "call": "honest",
+    "r7_relative_residual": 3.311932e-18,
+    "r8_reason": "residual",
+    "r8_relative_residual": 6.623864e-18,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_015": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.02496145,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.7599086,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_016": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.1079763,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.04929263,
+    "rules": [
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_017": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.007478296,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.0494522,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_018": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.08780122,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.01267828,
+    "rules": [
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_019": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.05221817,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.06595191,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_020": {
+    "call": "honest",
+    "r7_relative_residual": 3.122427e-14,
+    "r8_reason": "residual",
+    "r8_relative_residual": 7.553628e-14,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_021": {
+    "call": "honest",
+    "r7_relative_residual": 5.353332e-17,
+    "r8_reason": "residual",
+    "r8_relative_residual": 1.338333e-17,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_022": {
+    "call": "shortcut",
+    "r7_relative_residual": null,
+    "r8_reason": "declared pseudo_cl absent or wrong length",
+    "r8_relative_residual": null,
+    "rules": [
+      "R8_post_commitment_challenge:declared pseudo_cl absent or wrong length"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_023": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.008718415,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.002047541,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_024": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.003055274,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.2910471,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_025": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.008341406,
+    "rules": [
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_026": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.004716986,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.008463943,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_027": {
+    "call": "honest",
+    "r7_relative_residual": 1.501555e-12,
+    "r8_reason": "residual",
+    "r8_relative_residual": 2.569295e-13,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_028": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.003590267,
+    "r8_reason": "operator hash absent",
+    "r8_relative_residual": null,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:operator hash absent"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_029": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.06259321,
+    "rules": [
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_030": {
+    "call": "shortcut",
+    "r7_relative_residual": null,
+    "r8_reason": "declared pseudo_cl absent or wrong length",
+    "r8_relative_residual": null,
+    "rules": [
+      "R8_post_commitment_challenge:declared pseudo_cl absent or wrong length"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_031": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.003756331,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.005170628,
+    "rules": [
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_032": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.003792153,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.008463552,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_033": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.000597818,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.006525722,
+    "rules": [
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_034": {
+    "call": "honest",
+    "r7_relative_residual": 6.556695e-18,
+    "r8_reason": "residual",
+    "r8_relative_residual": 1.639174e-18,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_035": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.008014931,
+    "r8_reason": "operator hash absent",
+    "r8_relative_residual": null,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:operator hash absent"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_036": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.008616917,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.01194656,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_037": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.008360421,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.00231067,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_038": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.004070664,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.03526908,
+    "rules": [
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_039": {
+    "call": "honest",
+    "r7_relative_residual": 1.378713e-18,
+    "r8_reason": "residual",
+    "r8_relative_residual": 5.882508e-17,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_040": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.005783348,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.2603542,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_041": {
+    "call": "honest",
+    "r7_relative_residual": 3.67084e-13,
+    "r8_reason": "residual",
+    "r8_relative_residual": 1.346466e-12,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_042": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.0005786541,
+    "rules": [
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_043": {
+    "call": "honest",
+    "r7_relative_residual": 1.834808e-14,
+    "r8_reason": "residual",
+    "r8_relative_residual": 5.109159e-13,
+    "rules": [],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_044": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.001419706,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.003710168,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_045": {
+    "call": "shortcut",
+    "r7_relative_residual": null,
+    "r8_reason": "declared pseudo_cl absent or wrong length",
+    "r8_relative_residual": null,
+    "rules": [
+      "R8_post_commitment_challenge:declared pseudo_cl absent or wrong length"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_046": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.002810948,
+    "r8_reason": "operator hash absent",
+    "r8_relative_residual": null,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:operator hash absent"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_047": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.008179324,
+    "r8_reason": "operator hash absent",
+    "r8_relative_residual": null,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:operator hash absent"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_048": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.0007099866,
+    "rules": [
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_049": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.00598596,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.001238726,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_050": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.00223964,
+    "r8_reason": "operator hash absent",
+    "r8_relative_residual": null,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:operator hash absent"
+    ],
+    "tag": "SHORTCUT-SUSPECT",
+    "wall_rule_would_fire": true
+  },
+  "run_051": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.002481181,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.0007994663,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  },
+  "run_052": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.02564381,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.005927437,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": false
+  },
+  "run_053": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.02570426,
+    "r8_reason": "residual",
+    "r8_relative_residual": 0.04180812,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual",
+      "R8_post_commitment_challenge:residual"
+    ],
+    "tag": null,
+    "wall_rule_would_fire": true
+  }
+}
