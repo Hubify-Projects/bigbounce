@@ -17,13 +17,42 @@ O(ε²) artefact; Choudhury right) and in-coverage ratio corrected to
 permitted (R7); site data sync pending in a separate bundle. See "v3M.0.15"
 section below. Prior: v3M.0.14. R6 truth-audit closure: 16 genuinely-new-real findings (0 physics errors) closed — T_B mapping corrected (thirteen decades above BBN, was eleven), Channel I amplitude re-paired to the free-gamma NANOGrav posterior, abstract calibrated to body, DESI DR1 v3 reproduction sentence added to Sec. VI. ROUNDS STOPPED under directive R2 (3rd consecutive verification round) — next board only after a science decision on the (ii) list (A3-4, A3-1e). Readiness held at 75. See "v3M.0.14" section below. Prior: v3M.0.13. Abstract trimmed to the PRD-regular ≤307-word cap (was ~415 words), no science change, every claim retained at its evidential strength; see "v3M.0.13" section below. Readiness held at 75. Prior: v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (17 pp / 0 undef refs / md5 4f2bf5e8204021bf06cbe27e3b8932c9 / sha256 909cf7893b89270f2a24d4a65a8750798b5bca7f6fa34e85acdb078a1bca6043)
-version: v3M.0.15 (2026-09-04, D-A3-10/11 science reframe — see "v3M.0.15" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (18 pp / 0 undef refs / md5 b18aafd1288ffddeea2c3a1ee074a23b)
+version: v3M.0.17 (2026-09-04, D-A3-12 tensor no-go strengthened — see "v3M.0.17" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
 headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 25 (R1+R2 closed, rounds stop per directive R2) / packaging 20 = ~95; awaiting Houston's final personal review for 100 per directive P)
-submission_status: draft, ROUNDS STOPPED (R2) — next board only after a science decision on the (ii) list
+submission_status: draft, readiness 75 — D-A3-12 taken → one verification board (R8) permitted; recommended for the next session
+
+## v3M.0.17 (2026-09-04) — D-A3-12 (ledger row 18): scheme-independent tensor no-go + c_s-dependent bounce cubic term
+
+Two computational items named by the R7 truth-audit (`row18a_s2_tensor/`,
+`row18b_cs_bounce_cubic/`) are closed. §VII (tensor amplitude): the tensor
+mode obeys `h''+2(a'/a)h'+k^2h=0` with no `1/H`, `eps`, `c_s`, or scalar
+constraint variables, so the S1/S2 scalar-continuation ambiguity cannot act
+on it; because the S1 scalar equation with `z=a` **is** the tensor equation,
+`lambda_T = lambda_zeta^S1` identically (verified to `1.4e-14` on Quintin-type
+at `k eta_B = 1e-3/3e-3/1e-2`, `8.5e-9` on poly/LQC). Hence `r_after^S1=24.0`
+is an identity (unchanged from before the bounce) and `r_after^S2≈9.4e2`
+(a `39x` bounce amplification in the fluid variable) — both excluded
+(`670x`, `2.6e4x` above BICEP/Keck), so the tensor no-go's conclusion is
+scheme-independent. §VIII (joint no-go): the bounce's own cubic term is
+generalized to `Delta f_NL^bounce(c_s) = -(5/24) rho_B (6c_s^2-5)/c_s^4`
+(V2-vertex-dominated, 99.97%; reproduces the `c_s=1` value to `4e-6`),
+which changes sign at `c_s=sqrt(5/6)=0.913` and diverges as `1/c_s^4` —
+faster than the transmitted term's `1/c_s^2`. Evaluating both terms at the
+same `c_s` moves the Planck-viable boundary from `c_s>=0.444` (`r>=10.7`) to
+`c_s>=0.600` (`r>=14.4`, `400x` BK18, up from `296x`); at the tensor-viable
+`c_s=1.5e-3`, `f_NL^after` rises from `~7e5` to `~1e11`. The no-go is
+strengthened, not relaxed. Abstract updated (302 words, `<=307` cap);
+Table VII regenerated with the `c_s`-dependent bounce term. 4-pass, 0 undef
+refs, 0 overfull hboxes >10pt (largest 3.9pt), 18 pp, md5
+`b18aafd1288ffddeea2c3a1ee074a23b`, Convex bump `k5773fexyjhsy11m8gpd4j01xn8dt1fj`,
+tarball sha256 `f37ff2e050c6b03349fe0e22c5871caeb2f5f05b3620bed5029fe5ba4c47eba4`
+(standalone recompile smoke-tested, 0 errors). Readiness held at 75 —
+D-A3-12 taken → one verification board (R8) permitted; recommended for the
+next session.
 
 ## v3M.0.15 (2026-09-04) — D-A3-10/D-A3-11 science reframe: joint (r,f_NL) no-go
 
