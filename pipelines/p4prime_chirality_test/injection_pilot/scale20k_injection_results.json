@@ -1,0 +1,622 @@
+{
+  "n_total": 20000,
+  "pipeline": "production equivariant Z2 (2-fold horizontal-flip) TTA, matching pipelines/p2_chirality/equivariant_postprocess.py exactly (NOT raw single-pass, NOT full D4 8-way)",
+  "model": "bamfai/galaxy-chirality-v2 chirality_model_v2_best.pt rev 237d021c451d75cf86a875e86d4de498b74e2f12",
+  "A0_baseline_pixel_level": -0.2171503173876852,
+  "M_cw_mean_eq": 0.3914248413061574,
+  "M_ccw_mean_eq": 0.386756558919667,
+  "M_ns_mean_eq": 0.2218186004914058,
+  "A0_ccw": -0.22648688216066604,
+  "paper_residual_bias_postprocess": -0.0026,
+  "fractions": [
+    0.0,
+    0.005,
+    0.01,
+    0.02,
+    0.05
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "per_seed_results": [
+    {
+      "f_injected": 0.0,
+      "seed": 1,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.005080296042017877,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008023219908834386
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 2,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.004914967713693693,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008103109180502867
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 3,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.005118126470120069,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007982685567299282
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 4,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.004863164119731655,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007896260456110044
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 5,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.004919034251906048,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008250656117242516
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 6,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.004776743513427125,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007795299250981375
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 7,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.004797342101559499,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.00783351172677188
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 8,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.004872645345414275,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.0081720805785932
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 9,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.004753949758641715,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007958045858433304
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 10,
+      "n_flipped": 0,
+      "A_recovered": -0.2171503173876852,
+      "bootstrap_se": 0.005032756168654099,
+      "A_recovered_spiral_classified": 0.005895691609977272,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008305477626600553
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 1,
+      "n_flipped": 100,
+      "A_recovered": -0.21753005359301503,
+      "bootstrap_se": 0.004949955495359452,
+      "A_recovered_spiral_classified": 0.004729510851959828,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008245830405892622
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 2,
+      "n_flipped": 100,
+      "A_recovered": -0.21679916596000282,
+      "bootstrap_se": 0.004764606138124412,
+      "A_recovered_spiral_classified": 0.00550696469063805,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007994069236389857
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 3,
+      "n_flipped": 100,
+      "A_recovered": -0.21891192792293535,
+      "bootstrap_se": 0.0049545027809121435,
+      "A_recovered_spiral_classified": 0.002656300615484275,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008049034539253427
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 4,
+      "n_flipped": 100,
+      "A_recovered": -0.21719616030741606,
+      "bootstrap_se": 0.004855256776252684,
+      "A_recovered_spiral_classified": 0.00550696469063805,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008010600376464361
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 5,
+      "n_flipped": 100,
+      "A_recovered": -0.217081447313343,
+      "bootstrap_se": 0.004819040507237456,
+      "A_recovered_spiral_classified": 0.006154842889536827,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007595233690273719
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 6,
+      "n_flipped": 100,
+      "A_recovered": -0.21739826469951617,
+      "bootstrap_se": 0.005321337567931773,
+      "A_recovered_spiral_classified": 0.004340783932620607,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007824376708721588
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 7,
+      "n_flipped": 100,
+      "A_recovered": -0.21614157751280672,
+      "bootstrap_se": 0.004696251099134224,
+      "A_recovered_spiral_classified": 0.007968901846452825,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007789937603425498
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 8,
+      "n_flipped": 100,
+      "A_recovered": -0.2173629133425058,
+      "bootstrap_se": 0.0045271403749271195,
+      "A_recovered_spiral_classified": 0.005377389050858383,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008094684826041487
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 9,
+      "n_flipped": 100,
+      "A_recovered": -0.21673295007914495,
+      "bootstrap_se": 0.004876572628023512,
+      "A_recovered_spiral_classified": 0.006932296728215048,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008341259044768543
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 10,
+      "n_flipped": 100,
+      "A_recovered": -0.21643628426660244,
+      "bootstrap_se": 0.004799000662298427,
+      "A_recovered_spiral_classified": 0.007061872367994715,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007678110891073923
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 1,
+      "n_flipped": 200,
+      "A_recovered": -0.21852791053030907,
+      "bootstrap_se": 0.004694310559550702,
+      "A_recovered_spiral_classified": 0.003563330093942385,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007837223308108342
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 2,
+      "n_flipped": 200,
+      "A_recovered": -0.21818354394699724,
+      "bootstrap_se": 0.004824116434996546,
+      "A_recovered_spiral_classified": 0.0031746031746031633,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008108576481167543
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 3,
+      "n_flipped": 200,
+      "A_recovered": -0.21822666319407913,
+      "bootstrap_se": 0.00487050799856686,
+      "A_recovered_spiral_classified": 0.00421120829284094,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008329770395039961
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 4,
+      "n_flipped": 200,
+      "A_recovered": -0.21645433369121525,
+      "bootstrap_se": 0.004718356341640628,
+      "A_recovered_spiral_classified": 0.007061872367994715,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007988795155735378
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 5,
+      "n_flipped": 200,
+      "A_recovered": -0.21742129288211598,
+      "bootstrap_se": 0.004828000265328328,
+      "A_recovered_spiral_classified": 0.0036929057337220517,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007815209075135566
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 6,
+      "n_flipped": 200,
+      "A_recovered": -0.21725103381021682,
+      "bootstrap_se": 0.004853253743480807,
+      "A_recovered_spiral_classified": 0.006025267249756938,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008010814913727184
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 7,
+      "n_flipped": 200,
+      "A_recovered": -0.2183173226782288,
+      "bootstrap_se": 0.004950583812349744,
+      "A_recovered_spiral_classified": 0.004340783932620607,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008122704828405056
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 8,
+      "n_flipped": 200,
+      "A_recovered": -0.21776778844998257,
+      "bootstrap_se": 0.004719412692594126,
+      "A_recovered_spiral_classified": 0.005247813411078717,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007645565176924365
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 9,
+      "n_flipped": 200,
+      "A_recovered": -0.2167525044596167,
+      "bootstrap_se": 0.004939677835574696,
+      "A_recovered_spiral_classified": 0.007709750566893492,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008481103509609622
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 10,
+      "n_flipped": 200,
+      "A_recovered": -0.2178108456675909,
+      "bootstrap_se": 0.005000789997573127,
+      "A_recovered_spiral_classified": 0.004599935212180162,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007962972559476967
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 1,
+      "n_flipped": 400,
+      "A_recovered": -0.2175876449202988,
+      "bootstrap_se": 0.004886776651244267,
+      "A_recovered_spiral_classified": 0.00291545189504383,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.0082617631427311
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 2,
+      "n_flipped": 400,
+      "A_recovered": -0.2155976163599238,
+      "bootstrap_se": 0.004951050145346995,
+      "A_recovered_spiral_classified": 0.010042112082928378,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008198989199788353
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 3,
+      "n_flipped": 400,
+      "A_recovered": -0.21708129936690945,
+      "bootstrap_se": 0.0048398660563901625,
+      "A_recovered_spiral_classified": 0.0071914480077746035,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008110274378312007
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 4,
+      "n_flipped": 400,
+      "A_recovered": -0.21812995018787062,
+      "bootstrap_se": 0.005030684965574161,
+      "A_recovered_spiral_classified": 0.0056365403304179384,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008430453336152154
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 5,
+      "n_flipped": 400,
+      "A_recovered": -0.21830557770421388,
+      "bootstrap_se": 0.005060673986274446,
+      "A_recovered_spiral_classified": 0.00330417881438283,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.00801478119995089
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 6,
+      "n_flipped": 400,
+      "A_recovered": -0.21878518907407374,
+      "bootstrap_se": 0.005006918849952612,
+      "A_recovered_spiral_classified": 0.0012309685779072765,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007846245328155343
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 7,
+      "n_flipped": 400,
+      "A_recovered": -0.21789561640166122,
+      "bootstrap_se": 0.00516011732230216,
+      "A_recovered_spiral_classified": 0.0038224813735017182,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007990709780305196
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 8,
+      "n_flipped": 400,
+      "A_recovered": -0.21727406835598106,
+      "bootstrap_se": 0.004917971553270809,
+      "A_recovered_spiral_classified": 0.00421120829284094,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008018162992070694
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 9,
+      "n_flipped": 400,
+      "A_recovered": -0.21660948067266883,
+      "bootstrap_se": 0.004742283053101925,
+      "A_recovered_spiral_classified": 0.0049886621315193835,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008120872243425298
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 10,
+      "n_flipped": 400,
+      "A_recovered": -0.21631561515851128,
+      "bootstrap_se": 0.004969796647838203,
+      "A_recovered_spiral_classified": 0.008098477486232492,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008477037465499547
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 1,
+      "n_flipped": 1000,
+      "A_recovered": -0.2179610115455427,
+      "bootstrap_se": 0.0050508511986761305,
+      "A_recovered_spiral_classified": 0.008357628765792047,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008511343081544238
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 2,
+      "n_flipped": 1000,
+      "A_recovered": -0.21741026503406558,
+      "bootstrap_se": 0.004732349533113551,
+      "A_recovered_spiral_classified": 0.0049886621315193835,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007617776213299044
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 3,
+      "n_flipped": 1000,
+      "A_recovered": -0.21653806204295267,
+      "bootstrap_se": 0.004646741679681535,
+      "A_recovered_spiral_classified": 0.00641399416909616,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007573236234373285
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 4,
+      "n_flipped": 1000,
+      "A_recovered": -0.2165653031354392,
+      "bootstrap_se": 0.004880911010904022,
+      "A_recovered_spiral_classified": 0.008098477486232492,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008316232304144673
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 5,
+      "n_flipped": 1000,
+      "A_recovered": -0.2177347601720503,
+      "bootstrap_se": 0.00513347875188054,
+      "A_recovered_spiral_classified": 0.006284418529316493,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008457339784094062
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 6,
+      "n_flipped": 1000,
+      "A_recovered": -0.2155573831656573,
+      "bootstrap_se": 0.00483658673938433,
+      "A_recovered_spiral_classified": 0.006802721088435382,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007942480338738655
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 7,
+      "n_flipped": 1000,
+      "A_recovered": -0.2184659678123959,
+      "bootstrap_se": 0.00481781748960004,
+      "A_recovered_spiral_classified": 0.005247813411078717,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.008056248498613179
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 8,
+      "n_flipped": 1000,
+      "A_recovered": -0.21296496090666073,
+      "bootstrap_se": 0.004910236262810919,
+      "A_recovered_spiral_classified": 0.009653385163589157,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007949452344421373
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 9,
+      "n_flipped": 1000,
+      "A_recovered": -0.21284867003592378,
+      "bootstrap_se": 0.004981458703585014,
+      "A_recovered_spiral_classified": 0.011597019760285043,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.00819226140678281
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 10,
+      "n_flipped": 1000,
+      "A_recovered": -0.21839673938987048,
+      "bootstrap_se": 0.004727844492452925,
+      "A_recovered_spiral_classified": 0.0034337544541627185,
+      "n_spiral_classified": 15435,
+      "bootstrap_se_spiral_classified": 0.007797093261245452
+    }
+  ],
+  "per_fraction_mean_A": [
+    {
+      "f_injected": 0.0,
+      "A_mean": -0.2171503173876852,
+      "A_std_across_seeds": 0.0,
+      "A_spiral_classified_mean": 0.005895691609977272,
+      "A_spiral_classified_std_across_seeds": 0.0
+    },
+    {
+      "f_injected": 0.005,
+      "A_mean": -0.21715907449972885,
+      "A_std_across_seeds": 0.0007590290721912323,
+      "A_spiral_classified_mean": 0.005623582766439861,
+      "A_spiral_classified_std_across_seeds": 0.001523945165740001
+    },
+    {
+      "f_injected": 0.01,
+      "A_mean": -0.21767132393103522,
+      "A_std_across_seeds": 0.0006924234028721013,
+      "A_spiral_classified_mean": 0.004962747003563317,
+      "A_spiral_classified_std_across_seeds": 0.001528040567549165
+    },
+    {
+      "f_injected": 0.02,
+      "A_mean": -0.21735820582021131,
+      "A_std_across_seeds": 0.0009832967606186926,
+      "A_spiral_classified_mean": 0.005144152899254939,
+      "A_spiral_classified_std_across_seeds": 0.0026553698956679264
+    },
+    {
+      "f_injected": 0.05,
+      "A_mean": -0.21644431232405587,
+      "A_std_across_seeds": 0.002072099312395563,
+      "A_spiral_classified_mean": 0.0070877874959507595,
+      "A_spiral_classified_std_across_seeds": 0.00240078481410165
+    }
+  ],
+  "slope_dA_df_pixel_level_TTA": 0.016725717057065635,
+  "intercept_pixel_level_TTA": -0.21744098398251335,
+  "label_level_analytic_curve": [
+    {
+      "f_injected": 0.0,
+      "A_label": -0.2171503173876852
+    },
+    {
+      "f_injected": 0.005,
+      "A_label": -0.21719700021155008
+    },
+    {
+      "f_injected": 0.01,
+      "A_label": -0.217243683035415
+    },
+    {
+      "f_injected": 0.02,
+      "A_label": -0.21733704868314482
+    },
+    {
+      "f_injected": 0.05,
+      "A_label": -0.21761714562633422
+    }
+  ],
+  "slope_dA_df_label_level_analytic": -0.009336564772980838,
+  "slope_ratio_pixel_over_label": -1.791420877351842,
+  "A0_spiral_classified": 0.005895691609977272,
+  "slope_dA_df_pixel_level_TTA_spiral_classified": 0.029671181311585162,
+  "label_level_analytic_curve_spiral_classified": [
+    {
+      "f_injected": 0.0,
+      "A_label_cls": 0.005895691609977272
+    },
+    {
+      "f_injected": 0.005,
+      "A_label_cls": 0.0058367346938774985
+    },
+    {
+      "f_injected": 0.01,
+      "A_label_cls": 0.005777777777777726
+    },
+    {
+      "f_injected": 0.02,
+      "A_label_cls": 0.00565986394557818
+    },
+    {
+      "f_injected": 0.05,
+      "A_label_cls": 0.0053061224489795444
+    }
+  ],
+  "slope_dA_df_label_level_analytic_spiral_classified": -0.011791383219954543,
+  "slope_ratio_pixel_over_label_spiral_classified": -2.516344415078687,
+  "note_on_comparison_scope": "The 'label-level curve' here is the exact closed-form mixture identity E[A(f)]=(1-f)*A0+f*A0_ccw for swapping eq_cw<->eq_ccw on a random fraction f of galaxies (A0_ccw=2*mean(eq_ccw)-1; this properly accounts for the NOT_SPIRAL probability mass, which a naive A(f)=A0*(1-2f) identity omits) -- NOT the paper's committed full_catalog_injection_recovery.py / gen_fig_injection_recovery.py detection-probability-vs-amplitude curve, which measures MASTER ell=1 sky-map dipole recovery under a physically-motivated cos(theta) dipole injection, a different statistic on a different axis (amplitude A, not flip-fraction f). Both are disclosed; conflating them would misstate the comparison."
+}

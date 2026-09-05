@@ -1,0 +1,108 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "row16-image-level-injection-n20k",
+  "title": "Row 16 Part A at N=20,000 — pixel-level parity-injection through the PRODUCTION equivariant (Z2 2-fold flip-TTA) pipeline vs the exact label-level mixture identity, resolving the slope comparison outside the noise floor",
+  "program": "galaxy-chirality",
+  "paper": "P4P",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "bamfai/galaxy-chirality-catalog (catalog_production.parquet)",
+      "type": "external-dataset",
+      "locator": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+      "checksum": null
+    },
+    {
+      "name": "bamfai/galaxy-chirality-v2 checkpoint",
+      "type": "model",
+      "locator": "chirality_model_v2_best.pt, revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+      "checksum": null
+    },
+    {
+      "name": "Legacy Survey DR9 JPEG cutouts (20,000 real galaxies, catalog-labeled CW/CCW)",
+      "type": "external-dataset",
+      "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=..&dec=..&size=150&layer=ls-dr9",
+      "checksum": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "huggingface_hub.hf_hub_download",
+      "endpoint": "https://huggingface.co",
+      "auth_required": true
+    },
+    {
+      "name": "legacysurvey.org jpeg-cutout service",
+      "endpoint": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "pipelines/p4prime_chirality_test/injection_pilot/fetch_scale20k_sample.py",
+      "entrypoint": "python3 fetch_scale20k_sample.py",
+      "sha256": "473329a5ddca4ebe94a6b2a389ec78e62e06e4c9c33f46c942e0119c49a59770"
+    },
+    {
+      "path": "pipelines/p4prime_chirality_test/injection_pilot/run_injection_scale20k.py",
+      "entrypoint": "python3 run_injection_scale20k.py",
+      "sha256": "956eefab8880317484b53a97f080a9de8661b897eb92803371473b41a2bc1608"
+    },
+    {
+      "path": "pipelines/p4prime_chirality_test/injection_pilot/analyze_injection_scale20k.py",
+      "entrypoint": "python3 analyze_injection_scale20k.py",
+      "sha256": "d87aa0f912103c931153786676d5bb3707d07f693ed0034a9fad2e2708247d77"
+    },
+    {
+      "path": "pipelines/p4prime_chirality_test/injection_pilot/gen_fig_scale20k_injection.py",
+      "entrypoint": "python3 gen_fig_scale20k_injection.py",
+      "sha256": "b36b719f7892f139ef67f264c17a5046cf48a9a9efdcaa14499deb8aa26bbf26"
+    }
+  ],
+  "environment": {
+    "python": "python3 + torch 2.13.0 + timm + PIL + healpy + pandas + huggingface_hub + matplotlib",
+    "hardware": "local Apple Silicon MPS (Metal), macOS arm64 — no RunPod needed at N=20k"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": "Apple M-series MPS",
+    "pod_id_or_host": "local workstation",
+    "date": "2026-09-04",
+    "wall_clock": "first attempt: 106.7 min to 10,640/20,000 pairs (9,360 failed on transient cutout-fetch errors); resumed attempt: 109.7 min completing the remaining 9,360 pairs, ending 20,000/20,000 succeeded, 0 failed on the resumed pass",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local MPS/GPU for N up to ~20k; RunPod only needed for a full-parent-catalog dipole run",
+    "est_wall_clock": "~110-215 min for N=20,000 on Apple Silicon MPS depending on cutout-fetch retry rate",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "run_injection_scale20k.py checkpoints to scale20k_pairs.parquet and resumes from the last saved offset; the first attempt's 9,360 fetch failures were fully recovered by resuming, with 0 failures on the retry. As at N=5000, the Z2-TTA construction's proven single-mirror-flip antisymmetry means one (orig, flip) forward-pass pair per galaxy covers all 5 fractions x 10 seeds in closed form via analyze_injection_scale20k.py, with no re-inference."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_sample_manifest.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_injection_results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p4prime_chirality_test/injection_pilot/fig_scale20k_injection_recovery.png",
+      "type": "figure",
+      "checksum": null
+    }
+  ],
+  "verification": "20,000/20,000 cutouts downloaded and classified successfully across the two attempts (9,360 fetch failures on the first pass, 0 on the resumed retry that completed them). Baseline pixel-level asymmetry A0=-21.72% (paper's published post-equivariant residual: -0.26%; opposite order of magnitude — the two A0 values are DIFFERENT statistics: this A0 is measured over the full injection sample including NOT_SPIRAL mass, while the spiral-classified-only baseline is A0=+0.59%, same order as the paper's -0.26%, opposite sign). Fitted pixel-level slope dA/df (OLS over the 5 fraction means) = +0.0167 +/- 0.0089 (SE from OLS residuals about the 5-point fraction-mean fit). The naive label-level identity A=A0(1-2f) gives slope -2*A0=+0.4343, ~47 sigma from the measured pixel-level slope using the OLS SE (or ~35 sigma using seed-spread-weighted SE) — the measured pixel-level response is far more conservative in magnitude than the naive identity predicts, now resolved well outside the noise floor. The rigorous mixture identity that additionally accounts for the NOT_SPIRAL probability mass (E[A(f)]=(1-f)*A0+f*A0_ccw, disclosed in scale20k_injection_results.json's note_on_comparison_scope) gives slope -0.00934, sign-flipped from the measured +0.0167 and ~2.9-3.0 sigma away — marginally outside the noise floor for the first time at this N, but the two are close in order of magnitude once NOT_SPIRAL mass is properly modeled. N=20k therefore resolves what N=5000 could not: the slope comparison is no longer noise-limited, and the production pipeline's pixel-level response is CONSERVATIVE relative to the naive label-level identity by more than an order of magnitude, while remaining consistent in scale (though not sign) with the NOT_SPIRAL-corrected mixture identity.",
+  "status": "runnable-now",
+  "provenance": [
+    "Task: ledger row 16 Part A at N=20,000 (2026-09-04, follow-on to row 13's N=5000 pilot)",
+    "Builds on row13-image-level-injection-scale.json (N=5000, slope comparison inconclusive within the noise floor)",
+    "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (paper's committed sky-map amplitude-vs-detection-probability curve; a DIFFERENT statistic/axis, not directly comparable — disclosed in analyze_injection_scale20k.py's note_on_comparison_scope)",
+    "pipelines/p2_chirality/equivariant_postprocess.py (production Z2 2-fold flip-TTA pipeline replicated exactly here)",
+    "pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md (Part A at N=20k appended in this run)"
+  ]
+}

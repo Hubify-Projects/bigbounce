@@ -67,6 +67,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "row16-image-level-injection-n20k-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "Ledger row 16: N=20,000 pixel-level parity injection resolves the row-13 slope comparison outside the noise floor",
+    papers: ["P4P"],
+    summary:
+      "Scaled the row-13 N=5000 pixel-level parity-injection pilot 4x to N=20,000 real galaxies through the exact production equivariant Z2 (2-fold flip) TTA pipeline, 10 seeds per fraction f in {0,0.5,1,2,5}%. Fitted pixel-level slope dA/df=+0.0167+/-0.0089 (OLS SE) is ~47 sigma below the naive label-level identity A=A0(1-2f) (slope -2*A0=+0.4343) and ~2.9 sigma from the NOT_SPIRAL-corrected mixture identity (-0.0093, sign-flipped) -- the N=5000 comparison, previously noise-limited, is now resolved: the production pipeline suppresses pixel-level parity leakage well beyond what the naive per-galaxy flip model predicts. 20,000/20,000 cutout pairs succeeded (9,360 transient fetch failures on the first attempt fully recovered on retry, 0 failures on the resumed pass). Local Apple Silicon MPS, $0 compute cost, ~110-215 min wall-clock. No change to the paper's disclosed spiral-classified residual (-0.26%).",
+    keyTakeaways: [
+      "Pixel-level slope +0.0167+/-0.0089 vs naive label-level identity +0.4343 (~47 sigma) and vs NOT_SPIRAL-corrected mixture identity -0.0093 (~2.9 sigma, sign-flipped) -- comparison resolved outside the noise floor for the first time",
+      "20,000/20,000 injection pairs succeeded (9,360 recovered on retry); local MPS, $0 cost",
+      "Manifest: reproducibility/manifests/experiments/row16-image-level-injection-n20k.json; ledger row 16 updated with the result and the two remaining next steps (full-parent dipole on RunPod; chirality x structure cross-correlation, local CPU)",
+    ],
+    links: [
+      { label: "Pilot notes", href: `${GH}/pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md` },
+      { label: "Reproducibility manifest", href: `${GH}/reproducibility/manifests/experiments/row16-image-level-injection-n20k.json` },
+      { label: "Next-science ledger", href: `${GH}/project-context/NEXT_SCIENCE_LEDGER.md` },
+    ],
+  },
+  {
     id: "psu-r2-board-in-progress-2026-09-04",
     dateISO: "2026-09-04",
     kind: "internal-cc",
