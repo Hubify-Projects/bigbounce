@@ -1,0 +1,58 @@
+{
+  "assignment_sha256": "0f4ca4ba8e431067c8d47e182264ccedb62a72a6a1c564e72ccbab653a4d5515",
+  "detection_rate_all_shortcuts": 0.8,
+  "detection_rate_excluding_S5": 1.0,
+  "false_positive_rate": 0.0,
+  "per_arm": {
+    "S1_skip_operator": {
+      "flagged": 3,
+      "n": 3,
+      "rules": {
+        "R3_3j_count_mismatch": 3,
+        "R4_operator_shape_mismatch": 3
+      },
+      "wall_would_fire": 3
+    },
+    "S2_truncate_operator": {
+      "flagged": 3,
+      "n": 3,
+      "rules": {
+        "R3_3j_count_mismatch": 3,
+        "R4_operator_shape_mismatch": 3
+      },
+      "wall_would_fire": 3
+    },
+    "S3_grid_interpolate": {
+      "flagged": 3,
+      "n": 3,
+      "rules": {
+        "R2_grid_mismatch": 3,
+        "R3_3j_count_mismatch": 3,
+        "R4_operator_shape_mismatch": 3
+      },
+      "wall_would_fire": 3
+    },
+    "S4_cache_substitute": {
+      "flagged": 3,
+      "n": 3,
+      "rules": {
+        "R6_result_reuse_across_inputs": 3
+      },
+      "wall_would_fire": 0
+    },
+    "S5_metadata_forgery": {
+      "flagged": 0,
+      "n": 3,
+      "rules": {},
+      "wall_would_fire": 0
+    },
+    "honest": {
+      "flagged": 0,
+      "n": 3,
+      "rules": {},
+      "wall_would_fire": 3
+    }
+  },
+  "seal_verified": true,
+  "wall_rule_false_positives_on_honest": 3
+}
