@@ -379,13 +379,19 @@ witness; it still does not witness *execution*, and the reveal remains self-run.
 | 1 | `dcf96696` | `RULES_v3_FROZEN.md` **alone** — R0–R7 and thresholds, before any batch-3 script existed |
 | 2 | `d03fe376` | pre-registration + the five loop scripts, no seal, no output |
 | 3 | `b19b72fc` | attempt-1 sealed commitment alone |
-| 4 | `60917635`, `1a4c3d4e` | attempt 1 aborted and preserved (`public3_aborted/`, abort note) |
-| 5 | `77d5f5a5` | harness fix (`variants3.seed_rng`), **before** the new key was drawn |
+| 4 | `60917635`, `cd9ab366` | attempt 1 aborted and preserved (`public3_aborted/`, abort note) |
+| 5 | `56ef3fd2` | harness fix (`variants3.seed_rng`), **before** the new key was drawn |
 | 6 | `c7fb5e38` | batch-3 sealed commitment alone — `abfe2793…`, no output yet |
 | 7 | `4a7f9f82` | 48 runs + receipts + blind verdicts, still sealed |
 | 8 | `5b643fc2` | reveal: key, assignment, cross-run sources, scorecard |
 | 9 | `bf7d26e3` | OpenTimestamps stamp + batch-1/2 upgrades |
 | 10 | `b5bcb278` | reproducibility manifest (`p1b-blind-shortcut-detection-batch3`) |
+| 11 | `5c26efb1` | this section |
+
+Note on step 4: `60917635` also carries four files staged concurrently by an
+unrelated lane in the same working tree (a paper PDF and its mirrors). It is
+recorded here rather than rewritten; the ordering-critical commits (1, 2, 3, 6, 7)
+contain only their own files.
 
 `RULES_v3_FROZEN.md` is byte-identical at `dcf96696` and at HEAD
 (`git diff dcf96696 HEAD -- .../RULES_v3_FROZEN.md` is empty).
