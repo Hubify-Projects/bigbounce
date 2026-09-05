@@ -224,6 +224,8 @@
     "leading_small_cs": "f_NL -> 65/(8 c_s^2) for both shapes (identical coefficient)"
   },
   "window": {
+    "f_NL_sign_change_c_s": 0.8876253645985945,
+    "f_NL_sign_note": "f_NL^pre < 0 for c_s > 0.8876 and > 0 below it, so the flagship negative sign does not survive on the tensor-viable branch",
     "cs_for_r_0.036": 0.0014999999999999998,
     "cs_for_r_0.01": 0.0004166666666666667,
     "table": [
@@ -404,5 +406,5 @@
       "note": "row 10 showed the A2 bounces amplify tensors and scalars IDENTICALLY (T_h/T_zeta - 1 <= 8e-5), so they supply NO r suppression at all; Quintin et al. 2015 Eq. (31) require |Delta zeta / zeta| >~ 49.1 from a scalar-only mechanism, and their Eq. (44) f_NL ~ (Delta zeta)^2/(Delta t_B) M_p^2 is why that route carries its own f_NL cost."
     }
   },
-  "wall_seconds": 4.529443264007568
+  "wall_seconds": 4.940055847167969
 }

@@ -36,4 +36,4 @@ ROW 14 -- the (r, f_NL) c_s window of the matter-dominated contraction
     c_s=1.000e-04  r=2.4000e-03  f_NL^pre=8.1250e+08  f_NL^after(quintin)=1.3407e+08
     c_s for r=0.036: 1.5000e-03
     VERDICT: NO VIABLE c_s WINDOW
-[done] 4.53 s
+[done] 4.94 s

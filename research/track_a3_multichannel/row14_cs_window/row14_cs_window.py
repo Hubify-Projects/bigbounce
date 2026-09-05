@@ -207,7 +207,11 @@ def window(T_map):
                       "gap_factor_in_c_s_vs_r_bound": {
                           k: float(v / cs_of_r(R_CMB)) for k, v in cmin.items()}}
     cs_r = cs_of_r(R_CMB)
-    return {"cs_for_r_0.036": float(cs_r), "cs_for_r_0.01": float(cs_of_r(0.01)),
+    cs_zero = float(np.sqrt(65.0 / 8.0 / (165.0 / 16.0)))   # f_pre(c_s) = 0
+    return {"f_NL_sign_change_c_s": cs_zero,
+            "f_NL_sign_note": "f_NL^pre < 0 for c_s > 0.8876 and > 0 below it, so the "
+                              "flagship negative sign does not survive on the tensor-viable branch",
+            "cs_for_r_0.036": float(cs_r), "cs_for_r_0.01": float(cs_of_r(0.01)),
             "table": tab,
             "at_cs_for_r_0.036": {
                 "c_s": float(cs_r), "r": R_CMB, "f_NL_pre": float(f_pre(cs_r)),

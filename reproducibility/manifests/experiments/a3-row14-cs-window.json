@@ -82,7 +82,7 @@
     {
       "path": "research/track_a3_multichannel/row14_cs_window/row14_cs_window.py",
       "entrypoint": "cd research/track_a3_multichannel/row14_cs_window && python3 row14_cs_window.py",
-      "sha256": "23c2dacf5c57db6c3bdc111f5a923858f0e1f57f89abb451e6cf9bd5679dc350"
+      "sha256": "f3bc5214cd1f37d59e7f7422e35388e3a02259505d086ac7e6b5d39b882f13f0"
     }
   ],
   "environment": {
