@@ -217,3 +217,134 @@ while their *content* converges on one hard defect class (the R7 security claim,
 raised only by Opus) plus one presentation defect class (the batch-3 statistics, D-R3-03/04,
 raised independently by Gemini and Grok and by Opus). Grok's REJECT is carried almost
 entirely by items this audit classes OPI/OOS/FAL (E1, E3, E4, E5 = 4 of its 5 essentials).
+
+---
+
+## 3. Convergence R1 → R3
+
+| round | PDF | pp | canonical | genuinely-new REAL | non-real (FAL/OPI/OOS) |
+|---|---|---|---|---|---|
+| R1 v2B.0.17 | `0d0c92ab…` | 8 | 23 (C1–C23) | — | — |
+| R2 v2B.0.18 | `354d63b2…` | 12 | 27 (D-R2-01…27) | 19 | 8 |
+| **R3 v2B.0.20** | `cf57f485…` | **15** | **33** | **27** | **6** |
+
+The genuinely-new count went **up**, not down, and that is the honest reading: the paper
+grew by a whole batch between rounds (12 → 15 pp; batch 3, rule R7, the S4b arm and the
+PyMaster cross-check are all new content), and **new content carries new findings**. Of the
+27 genuinely-new items, 22 are in text that did not exist at R2. Two of the three
+recurrences (D-R3-03 run-level intervals, D-R3-08 dangling S-tags) are the R2 defect classes
+reappearing in the newly written batch-3 prose — the v2B.0.19 fixes were applied to the
+batch-2 text and not carried forward as a rule for new text. That is the single most useful
+process lesson of this round.
+
+This is **not** convergence, and it is not divergence either — it is the expected signature
+of a paper still gaining science. The correct inference under directive R2 is that the
+round-driven phase has done its job: the remaining agent-visible defects are 24 editorial
+items plus one recompute, and the two that actually matter (D-R3-01, D-R3-02) were answered
+by **science**, not by another round.
+
+**What the rounds bought, measured.** R3's decisive contribution is a single finding
+(D-R3-01/02) that no external leg raised and that only repo-level code inspection could
+produce, and which was immediately converted into a pre-registered batch 4 that
+**empirically confirmed both halves** (S7: R7 evaded 6/6 at zero residual; S8: R7 fails open
+6/6, R8 catches both 6/6). A verdict word did not move; the science did.
+
+---
+
+## 4. Closure plan
+
+### (i) Editorial — v2B.0.21 (no new computation required)
+
+Exact edits, by `arxiv/paper1b_namaster_proof.tex` line:
+
+1. **`:573` — restate the R7 property honestly (D-R3-01).** Replace "the rows depend on the
+   run's own result and cannot be chosen by the runner" with a statement that the draw is
+   *receipt-bound but prover-predictable*: it binds the check to the published result, but a
+   runner that knows R7 can compute the rows before publishing and make exactly those rows
+   exact at zero marginal cost, since S6 already builds the full operator. Say plainly that
+   **R7's 6/6 is a measurement against a rule-unaware adversary**, and point to R8/S7.
+2. **`:584–586` — the statistics presentation fix, again (D-R3-03, D-R3-04).** Delete the
+   three run-level bounds (0.607, 0.393, 0.905), correct "24/24" → **30/30**, and report
+   batch 3 the way batch 2 and batch 4 report: counts per arm, class-level detection,
+   inferential unit named once. Apply the identical treatment to batch 1's 12/12 and 0/3.
+   Add one sentence stating the rule for all future batches so this class does not recur.
+3. **`:169, :392, :403` — four batches, not two (D-R3-05).** Rewrite the protocol paragraph
+   as pilot / primary / value-level extension / post-commitment challenge, with the aborted
+   attempt located, and extend steps (1)–(5) to cover batches 3–4.
+4. **New §7 paragraph — prior art (D-R3-12).** Freivalds (1979) as R7/R8's direct ancestor;
+   Fiat–Shamir (1986) as the transform whose soundness condition R7 violates and R8 meets;
+   Klein & Roodman (2005) for blind analysis. One paragraph, three citations.
+5. **`:252, :652` — repoint the two dead cross-references (D-R3-08)**; `:998` "Both" → "All
+   four" (D-R3-09); `:196,684,700,892,1024` pymaster 3.0.1 → 3.0 (D-R3-11); `:356` Table 1
+   caption/header and the third trust category (D-R3-20, D-R3-33); §8 move (D-R3-22).
+6. **Abstract (D-R3-13, D-R3-18).** Cut to ~half; replace "not a detector of value-level
+   shortcuts" with the post-batch-4 scope: structural shortcuts (R3/R4/R6); rule-unaware
+   value-level shortcuts (R7); rule-aware value-level shortcuts and omitted intermediates
+   (R8); metadata forgery still open by construction.
+7. **§6 subsectioning 6.1–6.8 (D-R3-16); batch-3/4 per-run tables (D-R3-17); batch-3 trail
+   + abort disclosure, four sentences (D-R3-06); rule-file digests quoted (D-R3-15);
+   0.1.7-contains-no-R7/R8 note (D-R3-23); S5/Rekor sentence (D-R3-24); §11 additions for
+   the fail-open and the semantically-wrong-but-expensive case (D-R3-02, D-R3-25);
+   mechanism recount (D-R3-26); S4b source rule (D-R3-27); §14 quantifications (D-R3-14);
+   OTS verification mode (D-R3-19).**
+8. **Submission build only — strip the title-page revision stamp and its §12 sentence,
+   rename the `p1b-` manifests (D-R3-10).** The internal build keeps the stamp under
+   directive G; this is a build-flag item, not a content edit.
+
+Directive-G hygiene applies to the v2B.0.21 bundle in full: bump `\paperVersion` + `\date`,
+recompile to 0 undefined references, `/latex-audit`, re-mirror byte-identical to every
+served path, Convex `paperVersions:bump` with the real md5/pages, three-way md5 check.
+
+### (ii) Science
+
+1. **Integrate batch 4 — the round's real output (D-R3-01, D-R3-02).** `RULES_v4_FROZEN.md`
+   was frozen 2026-09-05 before the batch-4 scripts, the verifier-seed commitment and the
+   seal, and it names M1/M2/M3 as its reason for existing. The batch has **landed**:
+   `public4/` carries `verifier_seed_commitment.json` (sha256 `efef74f2…`, committed before
+   the seal), `verifier_seed_reveal.json` (opens it, seed `06e39b7a…`, revealed after every
+   receipt digest was committed), `frozen_rules_digest.json` (13 per-file sha256 including
+   `RULES_v4_FROZEN.md` = `a59caaf8…`), `assignment.json` sealed as `dbe6a713…`, 8 arms × 6
+   = 48 runs, `scorecard.json`, `verdicts.json`, and OTS proofs on both the seal and the
+   commitment. Headline results to write up:
+   * **S7 (R7-aware effective multipole): R7 fired 0/6, residual max exactly 0.0; R8 fired
+     6/6.** M1 measured, not argued.
+   * **S8 (omit `pseudo_cl`): R7 fired 0/6; R8 fired 6/6; suspect 6/6.** M2 measured.
+   * S1–S4, S6: R7 and R8 both 6/6. S5 metadata forgery still escapes 0/6 flagged — the
+     stated limit holds. Honest false positives **0/6**.
+   * Report **counts only** — no run-level Clopper–Pearson intervals — per `RULES_v4_FROZEN.md`.
+   * Disclose honestly that R8's randomness is a **commit–reveal verifier seed**, not a
+     public beacon; `verifier_seed_commitment.json` itself declares a Bitcoin OTS blockhash
+     as the drop-in upgrade, and that sentence belongs in §11.
+2. **Zenodo deposit of the blind-test corpus (D-R3-07)** — batches 1–4, `public3_aborted/`,
+   seals, keys, verdicts, scorecards, OTS proofs, `verify3.py`/`verify4.py`. This is what
+   makes the OTS anchors independently useful and is the last packaging gap.
+3. **Recompute the two remaining §9 injected-angle σ values (D-R3-21)** — cheap, deterministic.
+4. **Venue decision (D-R3-31), under directive R3.** Two independent legs agree §6 is now a
+   measurement rather than a software description. Recommended: **ACM REP** primary (CiSE or
+   Nature Scientific Data alternates), with a short JORS/JOSS software paper for the package
+   cross-citing; arXiv `astro-ph.IM` primary, `cs.SE` secondary. Record in `PAPER_LINEAGE`
+   with the original claim beside the new claim if the split is taken.
+
+### (iii) R2 statement (directive R2 — convergence budget)
+
+**Rounds STOP after v2B.0.21.** R2 and R3 are the two permitted consecutive review rounds on
+this paper. The v2B.0.21 bundle closes the 24 editorial items, the batch-4 integration and
+the Zenodo deposit; **no further sweep may be run against P1B unless a new science or scope
+decision intervenes**. The two decisions that would license a new round are already named:
+(1) the venue split of §(ii)4, and (2) any successor to R8 (a public randomness beacon
+replacing the commit–reveal seed). A leg re-raising JORS length/genre, the in-house-estimator
+scope, or the abstract's independence caveat is a re-flag of D-R3-28/29/30/31 and is
+dispositioned by citation, not by another round.
+
+## 5. Integrity note
+
+Nothing in this round reads as engineered. Three checks support that: (1) the `24/24` slip
+runs *against* the authors' interest (the true figure is 30/30, a stronger number) — the
+signature of an honest arithmetic error; (2) the hardest finding of the round (D-R3-01) was
+raised by the lab's **own** INT leg against its own headline result, and was answered by
+pre-registering an arm designed to make that result look worse (S7 escapes R7 6/6) rather
+than by softening the text; (3) `RULES_v4_FROZEN.md` was committed alone and before the
+batch-4 scripts, the seed commitment and the seal, and `frozen_rules_digest.json` binds
+thirteen files by sha256 — the ordering is externally checkable. No verdict was recorded
+from a label, no leg was dropped, no finding was dismissed without a source citation, and
+no ACCEPT exists or was implied anywhere in this round.
