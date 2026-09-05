@@ -1,0 +1,18 @@
+{
+  "arms": [
+    "honest",
+    "S1_skip_operator",
+    "S2_truncate_operator",
+    "S3_grid_interpolate",
+    "S4_cache_substitute",
+    "S4b_cache_crossrun",
+    "S5_metadata_forgery",
+    "S6_effective_multipole"
+  ],
+  "assignment_sha256": "abfe2793bc6fa2c0ed1d5be429e1e32c02bc5263067c83957298605a21c04f58",
+  "batch": 3,
+  "key_file_sha256": "b63cce134b4b318224c45c092d5916493fbd1c3d7d08e419cad47333ed33273c",
+  "n_arms": 8,
+  "n_runs": 48,
+  "replicates_per_arm": 6
+}
