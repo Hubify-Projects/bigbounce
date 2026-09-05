@@ -710,3 +710,17 @@ restated with scheme labels and the corrected window.
 
 **Why:** R6 (claims at evidential strength); both items were named by the R7 truth-audit
 as the computations the paper's statements depended on.
+
+## 2026-09-04 — A3M: scope statement for the no-go (decision D-A3-13, ledger row 19)
+
+**ORIGINAL CLAIM (v3M.0.17):** a joint (r, f_NL) no-go for single-field matter bounces
+"canonical or k-essence", with the cubic-action coefficient λ implicitly set to zero.
+
+**NEW CLAIM (v3M.0.18):** the no-go is stated for canonical scalars and for P(X) k-essence
+with λ = s = 0 (the X³ coefficient and the sound-speed running of Li et al. 2016's cubic
+action); the general-λ case is an open item (ledger row 19), not covered by the present
+computation. Appendix A prints the initial-label composition correctly (−5) with the
+final-label form beside it; the stale "r = 0.84 open" passage is removed.
+
+**Why:** R8 truth-audit R8-01/R8-02/DA3M-06; claims at evidential strength. Rounds stop
+after v3M.0.18 under R2.
