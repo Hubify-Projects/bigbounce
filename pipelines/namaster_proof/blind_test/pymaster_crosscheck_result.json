@@ -1,0 +1,106 @@
+{
+  "env": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "healpy": "1.20.0",
+    "pymaster": "3.0",
+    "nside": 64,
+    "lmax": 95,
+    "lmin": 2,
+    "map_seed": 42,
+    "mask_seed": 11,
+    "band_width": 8,
+    "install_path": "conda-forge via micromamba throwaway env pymaster_env (homebrew pip wheel build failed: no C compiler toolchain for libnmt's GSL/FFTW/CFITSIO/HEALPix source build)"
+  },
+  "coupling_matrix": {
+    "l_range": [
+      2,
+      95
+    ],
+    "max_abs_diff": 7.360778653264788e-14,
+    "max_rel_diff": 4.249899000184596e-13,
+    "median_rel_diff": 6.426673668341216e-14
+  },
+  "decoupled_bandpowers": {
+    "l_range": [
+      2,
+      95
+    ],
+    "max_rel_diff": 1.5369994682870857e-12,
+    "median_rel_diff": 1.2515491005227173e-12
+  },
+  "s6_effective_multipole_vs_namaster": [
+    {
+      "l_start": 2,
+      "l_stop": 9,
+      "max_rel_err_vs_namaster": 1.1774739147484248,
+      "mean_rel_err_vs_namaster": 0.6184612414901313
+    },
+    {
+      "l_start": 10,
+      "l_stop": 17,
+      "max_rel_err_vs_namaster": 0.6729013007352698,
+      "mean_rel_err_vs_namaster": 0.31719834685375986
+    },
+    {
+      "l_start": 18,
+      "l_stop": 25,
+      "max_rel_err_vs_namaster": 0.4297390767633213,
+      "mean_rel_err_vs_namaster": 0.20156347243934508
+    },
+    {
+      "l_start": 26,
+      "l_stop": 33,
+      "max_rel_err_vs_namaster": 0.6091657564699944,
+      "mean_rel_err_vs_namaster": 0.18331775100041325
+    },
+    {
+      "l_start": 34,
+      "l_stop": 41,
+      "max_rel_err_vs_namaster": 0.4947256563043133,
+      "mean_rel_err_vs_namaster": 0.1991070391992063
+    },
+    {
+      "l_start": 42,
+      "l_stop": 49,
+      "max_rel_err_vs_namaster": 0.26069161394054213,
+      "mean_rel_err_vs_namaster": 0.12679525916286954
+    },
+    {
+      "l_start": 50,
+      "l_stop": 57,
+      "max_rel_err_vs_namaster": 0.37995912657484854,
+      "mean_rel_err_vs_namaster": 0.16934983262640135
+    },
+    {
+      "l_start": 58,
+      "l_stop": 65,
+      "max_rel_err_vs_namaster": 0.39675217948317676,
+      "mean_rel_err_vs_namaster": 0.17557608954577536
+    },
+    {
+      "l_start": 66,
+      "l_stop": 73,
+      "max_rel_err_vs_namaster": 0.3188685896129863,
+      "mean_rel_err_vs_namaster": 0.13763359586915414
+    },
+    {
+      "l_start": 74,
+      "l_stop": 81,
+      "max_rel_err_vs_namaster": 0.28432140069581946,
+      "mean_rel_err_vs_namaster": 0.11494248226363797
+    },
+    {
+      "l_start": 82,
+      "l_stop": 89,
+      "max_rel_err_vs_namaster": 0.4585992543761387,
+      "mean_rel_err_vs_namaster": 0.16508448075253143
+    },
+    {
+      "l_start": 90,
+      "l_stop": 95,
+      "max_rel_err_vs_namaster": 0.23156741933286035,
+      "mean_rel_err_vs_namaster": 0.09512923498614577
+    }
+  ]
+}
