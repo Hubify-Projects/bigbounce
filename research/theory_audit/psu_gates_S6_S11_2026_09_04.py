@@ -126,3 +126,71 @@ for (es_, ef_) in [(mp.mpf('1e-2'), mp.mpf('1e-6')), (mp.mpf('1e-2'), mp.mpf('1e
               '| rho-slice dN/zeta_rho=', r['ratio_dN_SU_rho_over_zeta_rho_f'], 'dN/(B)=', r['ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)'], flush=True)
 OUT['S8'] = {'setup': 'exact USR (V=const), closed-form N(phi,pi); k->0 linear theory exact; flat-gauge lapse used for pi_loc',
              'cases': S8}
+
+# ================= S9: final slice - uniform phi (comoving) vs uniform rho =================
+# Single canonical field, k->0, linear order, Mp=1.  Comoving gauge (delta phi = 0): delta rho_c = -phidot^2 alpha,
+# alpha = zetadot/H (momentum constraint), phidot^2 = 2 eps H^2  =>  delta rho_c = -2 eps H zetadot.
+# rho_bar_dot = -3H phidot^2 = -6 eps H^3.  Time from the phi_e slice to the rho_e slice: dt = -delta rho_c/rho_bar_dot.
+zeta, zdot, Hs, r = sp.symbols('zeta zetadot H r', real=True)      # r = zetadot/(H zeta)
+alpha1 = zdot / Hs; drho_c = -2 * eps * Hs**2 * alpha1; rhodot = -6 * eps * Hs**3
+dt_phi_to_rho = sp.simplify(-drho_c / rhodot)
+assert sp.simplify(dt_phi_to_rho + zdot / (3 * Hs**2)) == 0
+zeta_rho = sp.simplify(zeta + Hs * dt_phi_to_rho)                          # = zeta_phi - zetadot/(3H)
+lam_phi = 1 - eps / 3                                                       # delta N_c,phi / zeta_phi (constant-eps growing mode)
+# growing mode of constant eps: zetadot/(H zeta) = eps - 3  (S1/S2 script, r = eps-3)
+zr = sp.simplify(zeta_rho.subs(zdot, (eps - 3) * Hs * zeta) / zeta)         # zeta_rho / zeta_phi
+dNc_rho = sp.simplify(lam_phi * zeta + Hs * dt_phi_to_rho.subs(zdot, (eps - 3) * Hs * zeta))
+lam_rho = sp.simplify(dNc_rho / (zr * zeta))                                # delta N_c,rho / zeta_rho
+assert sp.simplify(zr - (2 - eps / 3)) == 0 and sp.simplify(dNc_rho / zeta - 2 * lam_phi) == 0
+assert sp.simplify(lam_rho - 2 * (3 - eps) / (6 - eps)) == 0
+OUT['S9'] = {'slice_shift_dt': str(dt_phi_to_rho), 'zeta_rho_general': 'zeta_phi - zetadot/(3H)  (exact, linear, k->0, single field)',
+             'growing_mode_constant_eps': {'zeta_rho_over_zeta_phi': str(zr), 'dNc_rho_over_zeta_phi': str(sp.simplify(dNc_rho / zeta)),
+                                           'lambda_phi': str(lam_phi), 'lambda_rho': str(lam_rho)},
+             'rows': {'dust_eps_3_2': {'zeta_rho/zeta_phi': str(zr.subs(eps, R(3, 2))), 'lambda_phi': str(lam_phi.subs(eps, R(3, 2))),
+                                       'lambda_rho': str(lam_rho.subs(eps, R(3, 2))), 'dNc_rho/zeta_phi': str((dNc_rho / zeta).subs(eps, R(3, 2)))},
+                      'attractor': {'zetadot': 0, 'all_slices_coincide': True, 'lambda': 1},
+                      'USR_growing_de_Sitter': {'zetadot/(H zeta)': 3, 'zeta_rho/zeta_phi': str(zeta_rho.subs(zdot, 3 * Hs * zeta) / zeta),
+                                                'note': 'uniform-rho = flat slices for the USR growing mode; S8 numerics: rho-slice threading identity holds to 1e-12'}},
+             'which_slice_the_note_uses': 'comoving (uniform-phi) final slice, by construction of the comoving-gauge threading identity; '
+                                          'the delta-N literature value -5 (Cai lanes A/B/C) is quoted on uniform-density slices',
+             'second_order_missing_step': 'H dt^(2)_{LS} from the L x S lapse A2(tau) of the threading constraint solve, run through the same '
+                                          'squeezed-limit pipeline; not evaluated here',
+             'verdict': 'PARTIAL: linear-order slice dependence is exact and O(1) (dust: lambda_phi = 1/2, lambda_rho = 2/3, '
+                        'zeta_rho = 3/2 zeta_phi); the second-order (-5) composition on the rho slice is not computed'}
+print('S9 dust: zeta_rho/zeta_phi', zr.subs(eps, R(3, 2)), '| lambda_phi', lam_phi.subs(eps, R(3, 2)), '| lambda_rho', lam_rho.subs(eps, R(3, 2)), flush=True)
+
+# ================= S10: zeta_L with a constant piece (I < eps) =================
+# zeta_L(t) = C + G(t), G the growing mode from a flat start; g = G_f/zeta_{L,f} (growing fraction).
+# Linear: I = (1/zeta_f) int eps dG = eps g  =>  lambda_g = 1 - eps g/3   (the integral form already covers this).
+# Second order, by bilinearity of the L x S kernel in zeta_L:  K[C+G] = (1-g) K^const + g K^grow (per unit zeta_{L,f}).
+# The 'zlap' piece -(1/3) int a^-2 (-2 zeta) d^2 psi_1 with d^2 psi_S -> a^2 eps zetadot_S (super-Hubble) is a total
+# derivative: (2/3) eps [zeta_L zeta_S]_i^f = (2/3) eps zeta_{L,f} zeta_{S,f}  -- history independent.
+g = sp.symbols('g', positive=True)
+lam_g = 1 - eps * g / 3
+K_zlap = R(2, 3) * eps                                                       # delta N_c^(2) = K zeta_L zeta_S
+f_zlap_grow = sp.simplify(R(5, 6) * K_zlap / lam_phi**2)
+assert sp.simplify(f_zlap_grow - piece('zlap')) == 0                         # matches the frozen growing-mode zlap piece
+K_rest_grow = sp.simplify(R(6, 5) * lam_phi**2 * (f_map_init - piece('zlap')))   # grad + psi2 + wl + label (initial label)
+K_const_psi2 = sp.symbols('K_c')                                             # constant-mode psi2 kernel: NOT computed here
+f_map_mixed = sp.simplify(R(5, 6) * (K_zlap + g * K_rest_grow + (1 - g) * K_const_psi2) / lam_g**2)
+assert sp.simplify(f_map_mixed.subs(g, 1) - f_map_init) == 0
+f_map_g0_known = sp.simplify(f_map_mixed.subs(g, 0).subs(K_const_psi2, 0))   # = 5 eps/9 (zlap only)
+OUT['S10'] = {'linear': {'I': 'eps*g', 'lambda': str(lam_g), 'note': 'exact for any admixture; I<eps iff g<1'},
+              'zlap_is_total_derivative': '(2/3) eps [zeta_L zeta_S]_i^f, so K_zlap = 2 eps/3 for any history with a flat start',
+              'K_rest_growing_initial_label': str(K_rest_grow), 'f_map_mixed(g, K_c)': str(f_map_mixed),
+              'f_map_g_to_0_known_part': str(f_map_g0_known), 'rows': {k: str(f_map_g0_known.subs(eps, v)) for k, v in ROWS.items()},
+              'missing_step': 'constant-mode L x S second-order constraint solve (m_L = 0, m_S = m) for K_c; the in-in f for a mixed '
+                              'long mode is likewise a new mode-function computation',
+              'verdict': 'PARTIAL: linear part exact; second-order map given up to one uncomputed kernel K_c'}
+print('S10 f_map(g,K_c) =', f_map_mixed, '| g->0 known part', f_map_g0_known, flush=True)
+
+# ================= S11: Zenodo DOI =================
+OUT['S11'] = {'verdict': 'NOT (archival action: Zenodo upload of the exact script release requires the lab account; no derivation)',
+              'release_contents': ['psu_gates_S1_S2_2026_09_04.{py,json}', 'psu_gates_S6_S11_2026_09_04.{py,json}',
+                                   'threading_map_second_order_2026_09_04.{py,json}', 'separate_universe_failure_criterion_2026_09_04.{py,json}']}
+OUT['S8']['verdict'] = ('RESOLVED: delta N_SU(phi,pi)/zeta_f = 1 - I/3 to 1e-12 (eps_s=1e-2, eps_f=1e-6: I=1.0011e-4, lambda-1=-3.34e-5); '
+                        'identification delta N = zeta_f fails by exactly I/3 on both final slices')
+OUT['verdicts'] = {k: OUT[k]['verdict'] for k in ('S6', 'S7', 'S8', 'S9', 'S10', 'S11')}
+OUT['wall_clock_s'] = round(time.time() - t0, 1); OUT['sympy'] = sp.__version__; OUT['mpmath'] = mp.__version__
+json.dump(OUT, open(os.path.join(H, 'psu_gates_S6_S11_2026_09_04.json'), 'w'), indent=1, default=str)
+print('json sha256', hashlib.sha256(open(os.path.join(H, 'psu_gates_S6_S11_2026_09_04.json'), 'rb').read()).hexdigest()[:16], OUT['verdicts'])
