@@ -1,0 +1,8 @@
+{
+  "n_total": 5000,
+  "n_cw": 2500,
+  "n_ccw": 2500,
+  "sampling": "sky-uniform via NSIDE=32 healpix bins, one galaxy per bin per class, seed=43 (NSIDE=16 undershot 2500/class at DESI DR9 sky density, capped ~1644/class)",
+  "source_catalog": "bamfai/galaxy-chirality-catalog:catalog_production.parquet",
+  "supersedes": "N=500 pilot (pilot_sample.parquet, seed=42) \u2014 Row13 Part A at scale"
+}
