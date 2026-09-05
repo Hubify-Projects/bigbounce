@@ -9745,6 +9745,27 @@ export const reviewRounds: ReviewRound[] = [
       { label: "arxiv/paper1b_namaster_proof.tex (v2B.0.20)", href: `${GH}/arxiv/paper1b_namaster_proof.tex` },
     ],
   },
+  {
+    id: "p1b-r3-truth-audit-batch4-v2B.0.21-2026-09-05",
+    kind: "closure-wave",
+    dateISO: "2026-09-05",
+    title: "P1B v2B.0.21 — R3 truth-audit closure: batch-4 post-commitment verifier challenge (R8) answers R7's two design MAJORs",
+    papers: ["P1B"],
+    summary:
+      "R3 truth-audit (33 canonical findings, 27 genuinely-new-real) found R7's spot-row draw is a public function of values the runner holds before publishing — receipt-bound but prover-predictable, not unpredictable — and that R7 fails open if its checked intermediate is simply omitted. Batch 4 (54 sealed runs, 9 arms x 6, seal dbe6a713..., verifier-seed committed before the seal and revealed only after every receipt was bound) answers both by building the exact adversaries the audit described: S7 (R7-aware effective multipole, computed at zero marginal cost) is flagged 6/6 by the new post-commitment rule R8 even though R7 itself fires 0/6 exactly as predicted; S8 (an S6 run that omits the checked intermediate) is likewise flagged 6/6 by R8's fail-closed branch while R7 fails open 0/6 as predicted. Honest runs: 0/6 false positives. Metadata forgery (S5) still escapes 0/6 by construction, unchanged across all four batches. Batch-3's '24/24' arithmetic slip is corrected to 30/30, and all four batches now report class-level detection counts only, never a run-level Clopper-Pearson interval. New prior-art paragraph cites Freivalds (1977) as R7/R8's direct ancestor and Fiat-Shamir (1986) as the soundness condition R7 violates and R8 restores.",
+    keyTakeaways: [
+      "The round's own INT leg (Claude Opus) found the hardest defect against the lab's own headline result, and it was answered by pre-registering an adversary designed to make that result look worse, not by softening the prose — the textbook signature of a genuine audit.",
+      "R8's post-commitment challenge (commit-reveal verifier seed, bound receipts, six challenged rows recomputed after every receipt is published) is a correctly-applied Fiat-Shamir transform over a row-sampled Freivalds matrix-product check — R7 was the same check without the soundness condition.",
+      "The scope claim narrows honestly, not broadens: R7+R8 together detect rule-unaware AND rule-aware value-level shortcuts plus omitted intermediates, but wholesale fabrication of the declared intermediate still escapes every rule across all four batches — receipts of this kind catch shortcuts, not forgery.",
+      "Directive R2's convergence budget is exhausted at two rounds (R2, R3): rounds STOP after this bundle. The remaining open items are venue selection and a Zenodo deposit of the blind-test corpus, both Houston-gated next steps, not further review rounds.",
+    ],
+    links: [
+      { label: "R3 truth audit", href: `${PR}/INT_v3/P1B_v2B.0.20_R3_TRUTH_AUDIT_2026-09-05.md` },
+      { label: "VERIFICATION_PRIMITIVE_2026-09-04.md — Batch 4 section", href: `${GH}/pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` },
+      { label: "RULES_v4_FROZEN.md", href: `${GH}/pipelines/namaster_proof/blind_test/RULES_v4_FROZEN.md` },
+      { label: "arxiv/paper1b_namaster_proof.tex (v2B.0.21)", href: `${GH}/arxiv/paper1b_namaster_proof.tex` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──

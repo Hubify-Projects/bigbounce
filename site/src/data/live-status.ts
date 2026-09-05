@@ -85,9 +85,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "NaMaster verification companion",
-      version: "v2B.0.20",
+      version: "v2B.0.21",
       readiness: 95,
-      pendingWork: "Batch 3 (R7 value-level rule, 48 sealed runs) + PyMaster cross-check integrated — S6 effective-multipole now caught 6/6, forgery remains the stated limit. ROUNDS STOPPED under directive R2 — one verification board permitted next; batch-3 OTS confirmation, correspondence metadata, and human software review remain open.",
+      pendingWork: "R3 closure plan (i) closed — batch-4 post-commitment verifier challenge (R8) integrated, catches the rule-aware evasion and the omitted-intermediate escape 6/6 each; R7 restated honestly. ROUNDS STOPPED under directive R2 — next: venue decision + ASCL/Zenodo kit (Houston-gated).",
     },
     {
       slug: "paper-2",
