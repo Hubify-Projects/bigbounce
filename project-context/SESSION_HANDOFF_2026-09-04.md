@@ -247,3 +247,10 @@ read stays v3M.0.19 (unchanged); paper-su venue decision still open; namaster-pr
 ASCL/Zenodo packaging still Houston-gated; RunPod public-IP/SECURE-tier pod approval
 still needed for the row-12 pilot (did not land tonight — two COMMUNITY-tier attempts
 both failed SSH).
+
+**Row 12 addendum (2026-09-05 early):** third attempt failed the same way even on SECURE cloud
+with the corrected `ports`/`supportPublicIp` schema (pods created, runtime never up; ~$0.32
+spent; no strays). The launch scripts are fixed and committed (68b403a6); the pilot pipeline is
+ready. **Click-list addition:** create a GPU pod through the RunPod web UI (as the working
+phase-3 pod was; see `pipelines/p5_desi_chirality/env_finder/LAUNCH_POD.md`) and hand the
+agent its SSH coordinates; the agent then runs `launch_row12_pilot.sh` unchanged.
