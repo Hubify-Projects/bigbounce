@@ -1,0 +1,131 @@
+{
+ "sympy": "1.14.0",
+ "S9": {
+  "lambda_phi": "1 - epsilon/3",
+  "lambda_rho_prime(dNc_rho/zeta_phi)": "2 - 2*epsilon/3",
+  "dt1_S": "-epsilon**2*m*tau**(1 - m)/3",
+  "dt2_LS_over_ZLZS": "-epsilon*tau*(epsilon - 3)*(3*epsilon*(2*k_L**4*mu + k_L**3*k_S*mu**2*(epsilon - 3) + k_L**3*k_S*mu**2 - k_L**3*k_S*(epsilon - 3) + k_L**3*k_S + k_L*k_S**3*mu**2*(epsilon - 3) + k_L*k_S**3*mu**2 - k_L*k_S**3*(epsilon - 3) + k_L*k_S**3 + 2*k_L*k_S*(epsilon - 3)*(k_L**2 + 2*k_L*k_S*mu + k_S**2) + 2*k_S**4*mu) - 4*k_L*k_S*(epsilon - 3)*(epsilon + 3)*(k_L**2 + 2*k_L*k_S*mu + k_S**2) + 18*k_L*k_S*(epsilon - 3)*(k_L**2 + 2*k_L*k_S*mu + k_S**2))/(18*k_L*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+  "A2_superhubble_growing": "-epsilon*tau**(2*(epsilon - 3)/epsilon)*(epsilon - 3)*(2*k_L**4*mu + k_L**3*k_S*mu**2*(epsilon - 3) + k_L**3*k_S*mu**2 - k_L**3*k_S*(epsilon - 3) + k_L**3*k_S + k_L*k_S**3*mu**2*(epsilon - 3) + k_L*k_S**3*mu**2 - k_L*k_S**3*(epsilon - 3) + k_L*k_S**3 + 2*k_S**4*mu)/(2*k_L*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+  "M_rho_extra_growing": "(epsilon - 3)*(3*epsilon*(2*k_L**4*mu + k_L**3*k_S*mu**2*(epsilon - 3) + k_L**3*k_S*mu**2 - k_L**3*k_S*(epsilon - 3) + k_L**3*k_S + k_L*k_S**3*mu**2*(epsilon - 3) + k_L*k_S**3*mu**2 - k_L*k_S**3*(epsilon - 3) + k_L*k_S**3 + 2*k_S**4*mu) + 4*k_L**3*k_S*(epsilon - 3)**2 + 6*k_L**3*k_S*(epsilon - 3) + 8*k_L**2*k_S**2*mu*(epsilon - 3)**2 + 12*k_L**2*k_S**2*mu*(epsilon - 3) + 4*k_L*k_S**3*(epsilon - 3)**2 + 6*k_L*k_S**3*(epsilon - 3))/(18*k_L*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+  "M_rho_extra_general_m": "epsilon**2*m*(-4*epsilon*k_L**3*k_S*m**2 + 3*epsilon*k_L**3*k_S*m*mu**2 - 3*epsilon*k_L**3*k_S*m - 8*epsilon*k_L**2*k_S**2*m**2*mu - 4*epsilon*k_L*k_S**3*m**2 + 3*epsilon*k_L*k_S**3*m*mu**2 - 3*epsilon*k_L*k_S**3*m - 6*k_L**4*mu + 6*k_L**3*k_S*m - 3*k_L**3*k_S*mu**2 - 3*k_L**3*k_S + 12*k_L**2*k_S**2*m*mu + 6*k_L*k_S**3*m - 3*k_L*k_S**3*mu**2 - 3*k_L*k_S**3 - 6*k_S**4*mu)/(18*k_L*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+  "f_map_rho": {
+   "final": {
+    "const": "-5*epsilon/24 - 5/8",
+    "mu2": "5*epsilon/8",
+    "monopole": "-5/8",
+    "const_3_2": "-15/16",
+    "mu2_3_2": "15/16"
+   },
+   "initial": {
+    "const": "5*(-epsilon**2 - 3*epsilon + 9)/(24*(epsilon - 3))",
+    "mu2": "5*epsilon**2/(8*(epsilon - 3))",
+    "monopole": "-5/8",
+    "const_3_2": "-5/16",
+    "mu2_3_2": "-15/16"
+   },
+   "extra_only": {
+    "const": "5*epsilon/48 - 5/8",
+    "mu2": "5*epsilon/16",
+    "monopole": "5*epsilon/24 - 5/8",
+    "const_3_2": "-15/32",
+    "mu2_3_2": "15/32"
+   }
+  },
+  "composition": {
+   "final": {
+    "const": "5*(2*epsilon**2 - 18*epsilon + 45)/(24*(epsilon - 3))",
+    "mu2": "-15*epsilon/(8*(epsilon - 3))",
+    "monopole": "5*(2*epsilon - 15)/24",
+    "const_3_2": "-25/8",
+    "mu2_3_2": "15/8"
+   },
+   "initial": {
+    "const": "5*(2*epsilon - 15)/24",
+    "mu2": "0",
+    "monopole": "5*(2*epsilon - 15)/24",
+    "const_3_2": "-5/2",
+    "mu2_3_2": "0"
+   }
+  },
+  "lab_deltaN_uniform_rho": "5*epsilon/8 - 35/8",
+  "threading_minus_lab_deltaN": "-5*(epsilon - 6)/24",
+  "attractor_m0": {
+   "dt1": "0",
+   "A2_superhubble": "0",
+   "rho_extra_kernel": "0"
+  },
+  "eps_to_0_fixed_m": {
+   "rho_extra_kernel": "0",
+   "lambda_rho_prime": "1"
+  }
+ },
+ "S10": {
+  "kernels_constant_long_mode": {
+   "psi2": "epsilon*(2*k_L**3*mu*(epsilon - 2) + k_L**2*k_S*(epsilon*mu**2 + epsilon + mu**2) - k_S*(7*k_L**2 + 6*k_L*k_S*mu + 4*k_S**2))/(6*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+   "grad": "2*epsilon*k_L*mu/(3*k_S)",
+   "zlap": "2*epsilon/3",
+   "wl_fin": "0",
+   "wl_initextra": "0",
+   "lab_init": "0"
+  },
+  "K_c": "epsilon*(2*epsilon*k_L**3*mu + epsilon*k_L**2*k_S*mu**2 + epsilon*k_L**2*k_S - 4*k_L**3*mu + k_L**2*k_S*mu**2 - 7*k_L**2*k_S - 6*k_L*k_S**2*mu - 4*k_S**3)/(6*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+  "K_c_squeezed_kL_over_kS_to_0": "-2*epsilon/3",
+  "K_c_general_short_history_m": "epsilon*(2*k_L**3*mu*(epsilon - 2) + k_L**2*k_S*(epsilon*mu**2 + epsilon + mu**2) - k_S*(7*k_L**2 + 6*k_L*k_S*mu + 4*k_S**2))/(6*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+  "K_c_limits": {
+   "m_S_to_0_Kc_alone": "epsilon*(2*k_L**3*mu*(epsilon - 2) + k_L**2*k_S*(epsilon*mu**2 + epsilon + mu**2) - k_S*(7*k_L**2 + 6*k_L*k_S*mu + 4*k_S**2))/(6*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+   "m_S_to_0_full_kernel": "epsilon*k_L*(2*epsilon*k_L**2*mu + epsilon*k_L*k_S*mu**2 + epsilon*k_L*k_S + 9*k_L*k_S*mu**2 - 3*k_L*k_S + 6*k_S**2*mu)/(6*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+   "m_S_to_0_cross_divergence_integrand": "0",
+   "m_S_to_0_full_kernel_squeezed": "0",
+   "eps_to_0": "0",
+   "K_c_independent_of_m_S": true
+  },
+  "f_of_K_c_alone(lamL=1,lamS=lam1)": {
+   "const": "5*epsilon/(3*(epsilon - 3))",
+   "mu2": "0"
+  },
+  "normalisation_note": "f_map(g) = (5/12)/(lambda_g lambda_1) Assemble[M(g)]: the long leg carries lambda_g, the short leg lambda_1; the 2026-09-04 S10.1 prefactor 5/(6 lambda_g^2) is correct only at g = 1",
+  "lambda_g": "-epsilon*g/3 + 1",
+  "f_map_g": {
+   "initial": {
+    "f_map(g)": {
+     "const": "5*epsilon*g*(2 - epsilon)/(4*(epsilon*g - 3))",
+     "mu2": "5*epsilon**2*g/(4*(epsilon*g - 3))"
+    },
+    "g1": {
+     "const": "5*epsilon*(2 - epsilon)/(4*(epsilon - 3))",
+     "mu2": "5*epsilon**2/(4*(epsilon - 3))"
+    },
+    "g0": {
+     "const": "0",
+     "mu2": "0"
+    },
+    "g0_3_2": {
+     "const": "0",
+     "mu2": "0"
+    }
+   },
+   "final": {
+    "f_map(g)": {
+     "const": "5*epsilon*g*(3 - epsilon)/(4*(epsilon*g - 3))",
+     "mu2": "5*epsilon*g*(epsilon - 3)/(4*(epsilon*g - 3))"
+    },
+    "g1": {
+     "const": "-5*epsilon/4",
+     "mu2": "5*epsilon/4"
+    },
+    "g0": {
+     "const": "0",
+     "mu2": "0"
+    },
+    "g0_3_2": {
+     "const": "0",
+     "mu2": "0"
+    }
+   }
+  },
+  "convergence_conditions": [
+   "-m < 0"
+  ]
+ },
+ "wall_clock_s": 67.8
+}
