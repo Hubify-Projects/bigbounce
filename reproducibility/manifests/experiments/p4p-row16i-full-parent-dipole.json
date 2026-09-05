@@ -1,0 +1,79 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4p-row16i-full-parent-dipole",
+  "title": "Row 16(i) — full-parent (8,474,531-galaxy) real-space chirality dipole using the exact P4' primary estimator",
+  "program": "galaxy-chirality",
+  "paper": "P4P",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Full DESI Legacy DR8 chirality catalog (class_eq, production equivariant Z2-TTA classifier; already-committed, not re-run)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+      "checksum": "sha256:139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+    },
+    {
+      "name": "row16(ii) N=20,000 injection-calibrated postprocess residual bias",
+      "type": "internal-artifact",
+      "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_injection_results.json",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p4prime_chirality_test/full_parent/full_parent_estimator_lib.py",
+      "entrypoint": "imports build_projector() verbatim from pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+      "sha256": "269add74ab903fb740793655a19684b4464a1c2d6ca07653a2f6a39aa70ccc26"
+    },
+    {
+      "path": "pipelines/p4prime_chirality_test/full_parent/run_full_parent_dipole.py",
+      "entrypoint": "python3 pipelines/p4prime_chirality_test/full_parent/run_full_parent_dipole.py",
+      "sha256": "7345c344b16f556d9aa2289ee9401da8ab21dd75998ff3bb7a07677308cbcebd"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy + healpy + pyarrow",
+    "hardware": "cpu-only; Apple M-series, macOS arm64 (no GPU/pod needed — classifier inference already existed for all 8,474,531 rows)"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation",
+    "date": "2026-09-04",
+    "wall_clock": "48.1 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~1 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Reuses the already-committed full-catalog class_eq labels; loads one parquet, bins into NSIDE=64 HEALPix pixels, fits a dipole with healpy.fit_dipole via the imported P4' projector, draws a fresh 10,000-sample fixed-occupancy null (seed 20260904), and runs a 14-point x 2000-axis injection-recovery sweep (seed 20260905) to invert A_95."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p4prime_chirality_test/full_parent/row16i_full_parent_dipole.json",
+      "type": "result-json",
+      "checksum": "sha256:975b2cf824884aec5d75d11cd25257a6b93926579832e063c559879972e99d89"
+    },
+    {
+      "locator": "pipelines/p4prime_chirality_test/full_parent/fig_row16i_full_parent_injection_recovery.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md",
+      "type": "report",
+      "checksum": null
+    }
+  ],
+  "verification": "Estimator (healpy.fit_dipole on per-pixel (2*n_CW-total)/total, NSIDE=64, support>=10) and null convention (fixed-occupancy multivariate-hypergeometric label randomization) are imported verbatim from the committed P4' strict-primary generator, not re-derived. Selection differs only in dropping the primary_hc/raw_flip_qc_unsafe restriction (full parent: all class_eq in {CW,CCW}, N=3,200,420 in support vs. 887,472 in the strict-primary subset). No tuning: amplitude grid, seed choice, and axis count match the committed a95_observed_label_upper_limit_v1_0_265.py convention.",
+  "status": "complete",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 16(i)",
+    "project-context/SSOT/paper-4p/status.md (887,472-subset A_95_obs=0.98%% comparison baseline)",
+    "pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md"
+  ]
+}

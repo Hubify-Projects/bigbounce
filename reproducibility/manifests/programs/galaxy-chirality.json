@@ -22,6 +22,7 @@
     { "id": "p4-gz1only-retrain-dipole-null", "depends_on": [] },
     { "id": "p4-dr8-axis-ratio-crossmatch", "depends_on": [] },
     { "id": "p4-dipole-8m-fullcatalog", "depends_on": [] },
+    { "id": "p4p-row16i-full-parent-dipole", "depends_on": ["p4-v2-vit-production-training", "p4-a95-dipole-injection-limit"] },
     { "id": "p5-desi-dr1-crossmatch-build", "depends_on": ["p4-e2e-mirror-flip"] },
     { "id": "p5-redshift-analysis", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
     { "id": "p5-density-analysis", "depends_on": ["p5-desi-dr1-crossmatch-build"] },

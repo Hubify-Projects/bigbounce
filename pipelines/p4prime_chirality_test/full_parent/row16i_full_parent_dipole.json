@@ -1,0 +1,83 @@
+{
+  "schema": "p4p-row16i-full-parent-dipole/v1",
+  "estimator_source": "pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py:build_projector (imported verbatim)",
+  "catalog_path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+  "catalog_sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3",
+  "n_total_parent_rows": 8474531,
+  "n_spiral_full_parent": 3201160,
+  "selection": "class_eq in (CW, CCW); NO primary_hc / raw_flip_qc_unsafe restriction (full parent, not the 887,472-row strict-primary subset)",
+  "nside": 64,
+  "min_pixel_count": 10,
+  "n_pixels_support": 24087,
+  "n_galaxies_in_support": 3200420,
+  "n_cw_in_support": 1591751,
+  "p_cw_global": 0.49735690940564053,
+  "monopole": -0.00511596273467176,
+  "observed_amplitude_A_obs": 0.005660281175118039,
+  "dipole_ra_deg": 278.629719594135,
+  "dipole_dec_deg": 25.3202680239249,
+  "null": {
+    "n_draws": 10000,
+    "seed": 20260904,
+    "mean": 0.0019015848948581641,
+    "std_ddof0": 0.0008465233795734338,
+    "z_moment": 4.440156492965256,
+    "rank_k": 1,
+    "rank_p_one_sided_upper_tail": 0.00019998000199980003
+  },
+  "injection_recovery": {
+    "n_axes_per_amplitude": 2000,
+    "seed": 20260905,
+    "grid_full_amp": [
+      0.004,
+      0.005,
+      0.006,
+      0.007,
+      0.008,
+      0.009,
+      0.01,
+      0.011,
+      0.012,
+      0.013,
+      0.014,
+      0.015,
+      0.0175,
+      0.02
+    ],
+    "detection_fraction": [
+      0.785,
+      0.946,
+      0.988,
+      0.9985,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "A95_obs_full_amp": 0.005095238095238095,
+    "A95_obs_pct": 0.5095238095238095,
+    "bracket": [
+      0.005,
+      0.006,
+      0.946,
+      0.988
+    ]
+  },
+  "comparison_887k_strict_primary": {
+    "A95_obs_pct": 0.98,
+    "A95_CL_pct": 0.75,
+    "N_support": 887472
+  },
+  "row16ii_injection_calibrated_systematic": {
+    "source": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_injection_results.json",
+    "paper_residual_bias_postprocess_full_amp": -0.0026,
+    "note": "pixel-level equivariant-postprocess residual bias measured on the N=20,000 label-injection pilot; reported for context, NOT subtracted from A_obs/A_95 above (no tuning)."
+  },
+  "wall_clock_s": 48.10104298591614
+}
