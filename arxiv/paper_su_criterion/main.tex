@@ -458,4 +458,20 @@ homogeneous FRW region identified by its fluid element's coordinates on the init
 has no shift and never learns where that element ends up, so its output is $\delta N_c$
 labelled by \emph{initial} position -- the label for which the composition is exactly $-5$.
 
+\subsection{The general-$\eps$ in-in shape and the identity-vs-fit check}
+
+The from-scratch in-in squeezed-limit shape used above, for general constant
+$\eps$~\cite{Golden2026Monopole}, is
+\begin{equation}
+f^{\rm in\text{-}in}(\mu,\eps)=\frac{5}{12}\big(\eps^2\mu^2-\eps^2+6\eps-12\big),
+\end{equation}
+whose isotropy under the composition of Sec.~II depends on this full shape, not only on its
+monopole $-\tfrac{5}{18}(\eps-3)(\eps-6)$ (the note this appendix draws on prints the monopole
+alone). The second-order map derivation (Secs.~A1-A3 above) is computed from the exact ADM
+constraints alone and is validated symbolically before any in-in number is substituted: the
+constraint solver and the bispectrum assembly are written and frozen, then $f^{\rm in\text{-}in}$
+is read in only at the closure step. The map derivation therefore takes no in-in and no
+$\delta N$ input; the composed monopole $-5$ is a consequence of the map applied to the
+independently-derived in-in shape, not a fit to the separate universe's own $-5$.
+
 \end{document}
