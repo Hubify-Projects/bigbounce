@@ -668,3 +668,96 @@ from the committed JSONs reproduces. The three MAJORs are editorial-with-a-numer
 >10 pt overfull baselines), then **rounds STOP** until the two **(ii)** ledger items
 (`DA3M-R5-15` first-order tensor `Ω_GW` at nHz; `DA3M-R5-18` `γ_cr` grid coverage) return.
 No further round may be dispatched on editorial grounds alone.
+
+---
+
+# R6 (v3M.0.13, `ROUND_2026-09-04-A3M-v3M.0.13-EXACTPDF-c6f9bb57-R6VERIFY`) — 2026-09-04
+
+Full audit: `INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md`. Board:
+`INT_v3/A3M_v3M.0.13_R6_BOARD_2026-09-04.md`. Legs: Grok API `grok-4.3` (REJECT, 6E/3M/2m),
+Gemini API `gemini-3.1-pro-preview` (MAJOR REVISIONS, 6E/1M/3m incl. pass-2), Claude Fable 5.1 INT
+subagent (major-revisions, 5 MAJOR/15 minor/7 questions). OpenAI ABSENT (directive N), Perplexity
+ABSENT — recorded, never counted clean.
+
+**Counts:** **16 genuinely-new REAL** (`R6-01`…`R6-16`; 1 MAJOR + 1 MAJOR-lite + 14 MINOR) ·
+8 RE-FLAG · 7 FALSIFIED · 8 OPINION/GENRE · 1 carried packaging · 0 BLOCKER.
+**Clean-wave count: 0.** Per leg (new/re-flag/falsified/opinion/carried):
+Grok 3/3/2/2/1 · Gemini 6/0/2/0/2 · Fable 11/4/3(halves)/4/1.
+
+## OPEN — genuinely-new-real, MAJOR (R6)
+
+| id | finding | citation | closure |
+|---|---|---|---|
+| `R6-01` | §V C `T_B ≳ 10^8–10^10 GeV` wrong by ~2 decades; committed mapping `k_B ≈ 1.7143e7·T_B[GeV] Mpc^-1` gives `T_B ≳ 6e9–6e10 GeV`, **thirteen** decades above BBN not eleven | `main.tex:1023–1027`, `:784–786`; `outputs/inlab_delta2_zeta_2026-09-03.json → k_B_Mpc-1_if_T_B_GeV` | (i)-1,2,3 · REAL residual of `DA3M-R3-02` |
+| `R6-02` | Channel I pairs the `γ=13/3`-FIXED amplitude `A=2.4e-15` with the free-`γ` slope `3.2`; consistent use moves the shortfall `10^14.3 → ≈10^15.2` | `sigw_nhz_from_lab_spectrum_2026_09_04.py:72`; `main.tex:752,756,771,1186–1187`, abstract `:58`, Fig. 1 legend | (i)-4 + figure regen (directive I6) |
+
+## OPEN — genuinely-new-real, MINOR (R6)
+
+`R6-03` abstract conflates bare significance with candidate separation (`:74–78` vs `:1211–1215`) ·
+`-04` abstract mis-attributes the FIRAS SMBH-seed exclusion to the model (`:62–64` vs `:1066–1077`) ·
+`-05` `:1099` "lies below the central value" — it lies above · `-06` §VII C version-history prose
+(**recurrence of `DA3M-08`**) · `-07` (auditor-originated) `3162σ/3364σ/408σ` appear only in
+`main.tex`, no committed artifact; derivable but unsourced (`/never-fabricate-derivation`) ·
+`-08` abstract "two-scheme **band**" vs §III A "genuinely physically inequivalent" (residual of
+`DA3M-R5-16`) · `-09` Ref. [8] author list/identifier unverified · `-10` `r=0.84` reported (`:769`)
+but never tested against the `r<0.036` bound quoted two lines earlier · `-11` abstract
+"shape-robust" carries none of the body's `:942–950` conditionality · `-12` `:1076` "largely
+excluded" · `-13` "5.1σ" printed as a tension, not as a Gaussian-equivalent z-distance from a
+5–95% width (same class as `DA3M-R5-11`) · `-14` `:381–384` should say "no computable **cubic**
+`f^after`" (residual of `DA3M-R5-04`) · `-15` sentence fragment after Eq. (7) · `-16` Table VI
+entries are upper bounds (shape overlap `r<1` uncomputed).
+
+## RE-FLAG-OF-DISCLOSED (R6)
+
+`RF1` ≥100-point PBH grid (Grok M1) = `R4-R4`/`R5-R4`, **3rd recurrence**; `:942–950` prints the
+coverage · `RF2` δN route "not independent" (Grok E6) = `R3-R1`/`R4-R1`/`R5-R2`, **4th** ·
+`RF3` scheme-marginalized LSS forecast (Grok M2) — marginalizing over a convention is undefined ·
+`RF5` `0.058` "not an excursion" (Fable m9) = `DA3M-R5-10`, closed at `:413–415` ·
+`RF6` uncapped `f_PBH` header (Fable m8) = `R5-R6` · `RF7` refit-vs-official σ (Fable m6) =
+`R3-R2`/`R4-R2`/`R5-R1`, **5th** · `RF8` frozen DOI (Grok E4, Gemini E3+E4, Fable m13) — carried
+packaging; Gemini E3's "no frozen hash" half is FALSE (a git hash is pinned) · `RF9` §II D
+"resolved" vs Appendix wording (Fable m2) = `DA3M-R3-03` class.
+
+## FALSIFIED (R6)
+
+`F1` "abstract presents −35/16 as scheme-independent" (Grok E1) = `R4-F1`/`R5-F1`, **3rd
+recurrence**; `:49–54` labels transmission scheme-qualified · `F2` "future date/affiliation"
+(Grok N1) = `DA3M-F3`, **10 consecutive rounds, 100% falsified** · **`F3` "3162σ and log₁₀β=−1.7e9
+are mathematically incompatible" (Gemini E6) — different mass scales;
+`inlab_delta2_zeta_2026-09-03.json:252–253` gives `n_sigma=89149.44`, `log10_beta=-1.7258e9` at
+`M_H=1e20 g` and `89149²/(2 ln10)=1.726e9` ✓; `3162=10^3.5` is the 7.0-decade deficit at
+`10^15–10^16 g`** · `F4` "regularized-renormalized- punctuation artifact" (Gemini N1) —
+`main.tex:863` has no stray space; it is a LaTeX line break · `F6` "the tensor sector is OMITTED"
+(Fable M1 first half) — `:762–774` computes both `r<0.036` and `r=0.84`, citing
+`outputs/r5_15_tensor_omega_nhz.json` · `F7` "must cite the statement fixing the ±0.6 convention"
+(Fable M3i) — `:607–609` does · `F8` "the paper carries none of the γ_cr conditionality"
+(Fable M2 second half) — `:942–950` carries it in full; only the abstract word survives.
+
+## OPINION/GENRE (R6 — venue pass only)
+
+`O1` 15 pp too long / "6–8 page note" (Grok M3) · `O2` "honest null" undefined (Grok N2) ·
+`O3` ORCID/affiliation (Grok N1b) · `O4` Grok M2 tail · `O5` "mint the DOI now" (Gemini E4) ·
+`O6` move the Eq. (5) derivation + shape function into the paper (Fable m3, m12) · `O7` Table IV
+row label + ABS-plateau column (Fable m4 = `R5-G2`, m5) · `O8` Fable Q5 (a question).
+
+## New evidence admitted at R6 (not a review finding)
+
+DESI DR1 reproduction v3 (`research/desi_png_reproduction/LEDGER4_RESULT_v3_2026-09-04.md`):
+`f_NL = −2.2 ± 25` at `p=1.6` on DESI's official window matrix + full-randoms `P_ℓ` + EZmock
+covariance, `0.06σ` from the published `−3.6^{+9.0}_{−9.1}`. §VI may state it with the mandatory
+caveat (σ ~2.8× published: no wide-angle corrections, 2/5 systematics splits). **The 0.0007σ
+distance to −35/16 is a coincidence and must be labelled one** — the same fit is 0.086σ from zero.
+
+## Convergence statement (R6) — directive R2 STOP
+
+**NOT converged at v3M.0.13. Clean-wave count 0.** No physics error found: every number
+re-derived from the committed JSONs reproduces; the only numerically-wrong statement (`R6-01`) is
+a unit-conversion slip whose correction *strengthens* the paper's null. Both reviewer verdict
+words rest on findings classed falsified, re-flag, or abstract-wording (`O4`, `F1`, `F3`).
+**Directive R2: this is the third consecutive verification round; v3M.0.14 closes the 16 (i)
+editorial items, then rounds STOP on A3M** until a science decision is taken on the (ii) ledger:
+`A3-4` (re-derive `r`; is `r=0.84` already excluded by `r<0.036`?), `A3-1e` (Choudhury
+`γ_cr ≲ 0.85` sign disagreement — blocked on their unreproducible spectrum; analytic route only,
+NOT a bigger grid), `A3-ns` (Eq. (A3) at the `n_s=0.9649` ε), `A3-dN` (mechanism of the
+second-order δN piece), `DESI-4` (wide-angle + 3 blocked splits). No further round may be
+dispatched on A3M on editorial grounds alone.
