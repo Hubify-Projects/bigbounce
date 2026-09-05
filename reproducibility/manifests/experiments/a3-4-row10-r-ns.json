@@ -1,0 +1,130 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-4-row10-r-ns",
+  "title": "Ledger row 10 (A3-4 + A3-ns) - the matter bounce's OWN tensor-to-scalar ratio r and scalar tilt n_s, derived for the dust contraction and propagated through all three A2 bounce backgrounds",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Cai, Easson & Brandenberger 2012 - nonsingular bouncing cosmology; the matter bounce's known large tensor-to-scalar ratio",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1206.2382",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - perturbations through a nonsingular bounce; single-field matter-bounce no-go trading r against f_NL",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1508.04141",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Wands 1999 - dust-contraction / de Sitter duality making the contracting spectra scale-invariant",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/gr-qc/9809062",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Brandenberger & Peter 2016 - bouncing cosmologies review",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1603.05834",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL) at k_* = 0.05 Mpc^-1, the bound the model is tested against",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2110.00483",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Planck 2018 - n_s = 0.9649, A_s = 2.1e-9, the anchor (not a prediction) for the tilt branch",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1807.06209",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A2 linear-transmission module - the three bounce backgrounds (LQC-effective dust, poly-analytic non-LQC, Quintin2015-type), the adiabatic-vacuum scalar evolution and the exact matter-basis projection, imported directly",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "First-order tensor Omega_GW at nHz - re-run with the model's own r as CASE C",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/r5_15_tensor_omega_nhz.py",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+      "entrypoint": "cd research/track_a3_multichannel/row10_r_ns && python3 row10_r_ns.py",
+      "sha256": "4554ac9add31704f973be6b4118d3c814aad2e15baa4b9f7db591eacc63d54b3"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy + scipy + sympy + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "1.5 s (measured, field wall_seconds in results.json)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~3 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no data files, no network). The symbolic block derives r = 16 eps and n_s - 1 = 12w/(1+3w) with sympy rather than asserting them. The tensor mode is integrated in h-form, an independent numerical route from A2's mu-form scalar integration, so T_h/T_zeta = 1 is a genuine numerical check and not an identity of the code. Nothing is tuned; no free parameter enters r."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/row10_r_ns/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/outputs/r5_15b_tensor_omega_nhz_model_r_2026_09_04.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) analytic.r_symbolic == '16*epsilon' and analytic.ns_minus_1_of_w == '12*w/(3*w + 1)' (both derived symbolically); (b) analytic.pure_dust.r == 24.0 and analytic.planck_anchored.w == -0.0028996 with r == 23.9304; (c) numeric_summary.max_abs_T_h_over_T_zeta_minus_1_all_backgrounds <= 1e-4 (poly 8.5e-9, LQC 1.0e-9, Quintin 8.0e-5), i.e. the tensor and scalar transfers through every bounce agree; (d) backgrounds.{poly,LQC,quintin}.r_after_median == 24.0000/24.0000/23.9962, so r is bounce-invariant; (e) cmb_verdict.ratio_model_over_bound == 664.7, verdict == CMB TENSION; (f) the CASE C rows in r5_15b_tensor_omega_nhz_model_r_2026_09_04.json give Omega_GW1 h^2(f_yr) = 1.691e-14 with log10 shortfall vs NANOGrav 5.33, so the PTA null of A3-3 is unchanged.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 10 (A3-4 + A3-ns), promoted 2026-09-04 by the R6 audit item R6-10",
+    "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md (derivation, per-background table, CMB verdict, paper-ready sentences)",
+    "research/cubic_bounce_transmission/a2_transmission_linear.py (backgrounds and scalar mode machinery, imported not copied)",
+    "directive Q2 (per-experiment reproducibility manifests); directive Q1 (the CMB tension is stated in its own terms as a limitation of the modelled background, not narrated as a fix of an earlier error)",
+    "provenance finding: the tensor-sense r = 0.84 at r5_15_tensor_omega_nhz.py:73,98 and paper/main.tex:769 is a conflation of P2's noise-weighted bispectrum shape overlap R_OVERLAP = 0.84 (survey_reach_fnl.py:46) with the tensor-to-scalar ratio; no in-repo derivation of a tensor r = 0.84 exists"
+  ]
+}

@@ -188,6 +188,14 @@
       ]
     },
     {
+      "id": "a3-4-row10-r-ns",
+      "depends_on": [
+        "p2-a2-bounce-fnl-transmission",
+        "a3-r5-15-tensor-omega-nhz",
+        "a3-1b-inlab-delta2-zeta"
+      ]
+    },
+    {
       "id": "a3-r5-18-gammacr-coverage",
       "depends_on": [
         "a3-pbh-compaction-fnl",
