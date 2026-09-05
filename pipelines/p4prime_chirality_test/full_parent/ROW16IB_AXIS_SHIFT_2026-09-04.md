@@ -177,5 +177,5 @@ published as a null.
 ## Artifacts
 
 `row16ib_qc_leg_sweep.py`, `row16ib_figure.py`, `row16ib_axis_shift.json`,
-`fig_row16ib_axis_shift.png`, `row16ib.log`, manifest
+`fig_row16ib_axis_shift.png` (run log is gitignored), manifest
 `reproducibility/manifests/experiments/p4p-row16ib-axis-shift.json`.
