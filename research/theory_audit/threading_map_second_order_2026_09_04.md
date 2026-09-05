@@ -80,3 +80,56 @@ quadrupole $-3c\,\mu^2$ (and, for $n_s\neq1$, a dilation monopole $c\,(n_s-1)/3$
 displacement field $\partial_i\Delta_j=c\,\hat k_i\hat k_j\zeta_L$, not the translation itself.
 
 The rest of this note computes every term of (2) exactly (script) and identifies where the monopole comes from.
+
+## 3. The map at second order (computed exactly; script §"threading map")
+
+The script solves the **exact ADM Hamiltonian and momentum constraints** to second order in the $L\times S$ cross
+term (second-order lapse $\alpha_2$, scalar shift $\psi_2$ and transverse shift $\tilde N_i$ at wavevector
+$k_L+k_S$; the first-order Maldacena solution is verified to satisfy the constraints identically, all $k$), forms
+$\partial_iN^i=\partial_i(h^{ij}N_j)$ with $h^{ij}=a^{-2}e^{-2\zeta}\delta^{ij}$, takes the super-Hubble limit
+($k_L,k_S\ll aH$ jointly; the long mode's shift is $O(1/k_L)$ and is kept), and integrates (2) along the fluid
+worldline. Writing $\delta N_c^{(2)}=\mathcal M\,\zeta_L\zeta_S$ at $t_f$ (end-time independent on the growing
+mode $m=3/\epsilon-1$), the kernel has five pieces of distinct geometric origin:
+
+| piece | origin in (2) | kernel $\mathcal M$ | $f_{\rm NL}$ contribution ($\delta N_c$ normalisation) | monopole |
+|---|---|---|---|---|
+| `zlap` | $-2\zeta\,\partial^2\psi$ from $e^{-2\zeta}$ in $N^i=h^{ij}N_j$ (long $\times$ short both ways) | $2\epsilon/3$ (local) | $\dfrac{5\epsilon}{(3-\epsilon)^2}$ | $\dfrac{5\epsilon}{(3-\epsilon)^2}$ |
+| `psi2` | second-order scalar shift $\partial^2\psi_2/a^2$ (constraints) | non-local, $O(k_S/k_L)$ poles | $\dfrac{5\epsilon(-2\epsilon^2+11\epsilon-24)}{8(3-\epsilon)^2}+\dfrac{5\epsilon(2\epsilon^2-9\epsilon+12)}{8(3-\epsilon)^2}\mu^2$ | $\dfrac{5\epsilon(-\epsilon^2+6\epsilon-15)}{6(3-\epsilon)^2}$ |
+| `grad` | $-2\partial_i\zeta\,\partial_i\psi_1/a^2$ | $\epsilon\mu(k_L^2+k_S^2)/(3k_Lk_S)$ | $\dfrac{-5\epsilon}{4(3-\epsilon)^2}+\dfrac{15\epsilon}{4(3-\epsilon)^2}\mu^2$ | **0** |
+| `wl_fin` | $\partial_iN^i_S$ read along the worldline displaced by $\Delta_L(t)=\int_t^{t_f}N_L\,dt'$ | $-\epsilon^2k_S\mu/(6k_L)$ | $\dfrac{5\epsilon^2}{8(3-\epsilon)^2}-\dfrac{15\epsilon^2}{8(3-\epsilon)^2}\mu^2$ | **0** |
+| `lab_init` (+`wl_initextra`) | rigid translation $x_f\to x_i$ (initial-position label) | $-\epsilon k_S\mu/k_L$ | $\propto(1-3\mu^2)$, eq. (3) with $c=\epsilon$ | **0** |
+
+**Totals.** Final-position label: $f_{\rm map}=-\tfrac{5\epsilon}{4}+\tfrac{5\epsilon}{4}\mu^2$, monopole $-5\epsilon/6$.
+Initial-position label (the separate-universe label): monopole again $-5\epsilon/6$; the quadrupole changes by the
+translation term only. Every $1/k_L$ pole cancels between the two short legs (asserted), exactly as in §2.
+
+The linear factor from (2) for a **general** history $\zeta\propto\tau^{-m}$ ($m>0$) is $\delta N_c/\zeta=1-\epsilon/3$,
+independent of $m$; and every cross kernel carries an explicit factor $\epsilon$.
+
+## 4. Closure against the in-in result (read only after the map was frozen)
+
+With $B_{\delta N_c}=\lambda^3B_\zeta^{\rm in\text{-}in}+\lambda^2P_L[\mathcal M(k_L,q)P(q)+\mathcal M(k_L,p)P(p)]$,
+$\lambda=1-\epsilon/3$, $f_{\delta N_c}=f^{\rm in\text{-}in}/\lambda+f_{\rm map}$, and the adjudication's
+$f^{\rm in\text{-}in}(\mu,\epsilon)=\tfrac{5}{12}(\epsilon^2\mu^2-\epsilon^2+6\epsilon-12)$:
+$$
+f_{\delta N_c}^{\rm (initial\ label)}=-5\quad\text{exactly, isotropic, for every constant }\epsilon;\qquad
+f_{\delta N_c}^{\rm (final\ label)}=-\frac{15(\epsilon-4)}{4(\epsilon-3)}+\frac{15\epsilon}{4(3-\epsilon)}\mu^2
+\ \ (\text{monopole }-5).\tag{4}
+$$
+At $\epsilon=3/2$: $-5$ (initial label) and $-\tfrac{25}{4}+\tfrac{15}{4}\mu^2$ (final label). The isotropic separate
+universe's $-5$ is therefore **the bispectrum of the fluid-congruence e-fold variable labelled by initial position,
+obtained from the in-in $-\tfrac{35}{16}+\tfrac{15}{16}\mu^2$ through (2)** — the two methods agree exactly once the
+variable is matched; there was never a discrepancy in the physics, only in the variable. Inverting (4) reproduces
+the adjudication's general-$\epsilon$ in-in monopole $-5(\epsilon-3)(\epsilon-6)/18$ (asserted).
+
+**The gap, decomposed honestly** ($f^{\rm in\text{-}in}_{\rm mono}-f_{\delta N_c}=5\epsilon(9-\epsilon)/18$):
+$$
+\underbrace{5(1-\lambda)}_{\text{linear rescaling: }5\epsilon/3}\;+\;\underbrace{(-\lambda f_{\rm map,mono})}_{\text{second-order map: }5\epsilon(3-\epsilon)/18}
+\;=\;\frac{5\epsilon(9-\epsilon)}{18}.\tag{5}
+$$
+Neither summand is $5\epsilon/4$, and no single map piece equals $5\epsilon/4$ in in-in normalisation
+(`zlap` $=\tfrac{5\epsilon}{3(\epsilon-3)}$, `psi2` $=\tfrac{5\epsilon(-\epsilon^2+6\epsilon-15)}{18(\epsilon-3)}$, the
+rest $0$; script key `five_eps_over_4_matches_a_map_term = []`). The adjudication's "$[L]-\delta N_c=5\epsilon/4$"
+is the difference between a vertex-leg class of the in-in calculation and a differently-normalised variable; it is
+not a term of the threading map, and — by §2 — it cannot be a pair translation, whose monopole is identically zero
+(script: `pure_translation_init` monopole $0$, quadrupole $-\tfrac{45\epsilon}{4(3-\epsilon)^2}$).
