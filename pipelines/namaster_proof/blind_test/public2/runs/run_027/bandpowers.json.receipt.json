@@ -1,0 +1,50 @@
+{
+  "code": {
+    "sha256": "e2aac087cdc3bfcdd161c041e91e7f3f931ff8278a43401ec477adb0600edc95"
+  },
+  "env": {
+    "healpy": "1.20.0",
+    "numpy": "2.5.1",
+    "platform": "Darwin",
+    "python": "3.14.6"
+  },
+  "inputs": {
+    "lmax": 64,
+    "map_sha256": "39e1017fd1d08d889173062e2edb6ec71ea711399c17ae35f8935446944bb347",
+    "mask_sha256": "4734a20b809b345ee0fb4adcab2faf779561dcc1be14355cc790c64210430d8a",
+    "nside": 64
+  },
+  "intermediates": {
+    "coupling_sha256": "71a5639e1efb7778a4d44f17873b97731b8a8b25af19180633908c7e22d15346",
+    "coupling_shape": [
+      65,
+      65
+    ],
+    "coupling_support": 1105,
+    "ell_grid": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      64
+    ],
+    "n_wigner3j": 35105
+  },
+  "result_bytes": 2323,
+  "result_file": "bandpowers.json",
+  "result_sha256": "f57225cd42179ce8166432a4cad9e34476cea4bbc3ec1da9648adcc4f2e839f7",
+  "schema_version": 1,
+  "wall_s": 0.1241
+}
