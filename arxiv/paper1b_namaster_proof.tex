@@ -466,35 +466,72 @@ with the seed-dependent input-map hash and is not subject to this caveat.
 The frozen verifier's own sha256 is quoted from
 \texttt{public2/frozen\_rules\_digest.json}: \texttt{6a9acd70\ldots}.
 
-\paragraph{Two corrections, both discovered by running the test.} First, wall
-clock is not a usable rule: the shortcut arms ran 3--15\(\times\) faster than
-honest ones, but a cold-cache honest reference run took 4.29~s against 0.08~s
-warm, so the pre-declared wall-time floor (25\% of the reference) would have
-fired on 3 of 3 honest runs; it is recorded per verdict as
-\texttt{wall\_rule\_would\_fire} and excluded from the decision rule set.
-Second, a coupling-matrix hash collision across runs is not, by itself,
-evidence of cache substitution: \(M\) depends only on the mask and the
+\paragraph{Batch 1: pilot / rule-development round, disclosed.}
+\label{sec:blind-test-pilot}
+An earlier 18-run batch (3 per arm, honest/S1--S5) is what motivated the
+frozen rules above; it is reported here as a pilot, not as a second blind
+measurement, because two of its rules were changed \emph{after} its outcomes
+were seen. First, wall clock was found not to be a usable rule: the shortcut
+arms ran 3--15\(\times\) faster than honest ones, but a cold-cache honest
+reference run took 4.29~s against 0.08~s warm, so the then-proposed wall-time
+floor (25\% of the reference) would have fired on 3 of 3 honest runs; batch 1
+excluded it from the decision set only after seeing this failure, and it
+survives in batch 2 as the advisory-only, non-deciding
+\texttt{wall\_rule\_would\_fire} field (still 5/5 on honest runs in batch 2,
+confirming it remains unusable as a decision rule; \S\ref{sec:blind-test-s6}
+gives its batch-2 count). Second, a coupling-matrix hash collision across
+runs was initially treated as cache-substitution evidence, then withdrawn
+once it was recognized that \(M\) depends only on the mask and the
 \(\ell\)-grid, so every honest run legitimately shares one \(M\) hash for a
-fixed survey mask. Cache substitution is instead caught by \emph{result} reuse
-under differing input-map hashes.
+fixed survey mask; batch 1 removed this rule post hoc rather than having
+excluded it in advance. With these two post-hoc changes disclosed, batch 1's
+own confusion counts (12/12 on S1--S4, one-sided 95\% lower bound 0.779; 0/3
+honest false positives, upper bound 0.632) are rule-fitting numbers, not a
+blind-test result, and are not headlined; batch 2 (\S\ref{sec:blind-test-result})
+is the reported measurement.
 
-\paragraph{Scope limits.} The estimator exercised here is this repository's
-own spin-0 MASTER implementation, not NaMaster itself: PyMaster is not
-installed in this environment, and the instrumented Wigner-3\(j\) counter is
-what makes the trace a measured consequence of the code path taken, so an
-equivalent hook would need to be added inside NaMaster to carry the claim over
-verbatim. The in-house estimator was itself checked against
-\texttt{sympy.physics.wigner} on the \(m=0\) kernel and agrees to
-\(6\times10^{-16}\) on six cases. The seal is process-level --- the verifier
-had no access to the sealing script's working directory --- not a
-cryptographic pre-registration against an external timestamp. The S5 escape
-is structural, not a bug: closing it needs an anchor outside the analyst's
-control (a witnessed execution environment, signed build/execution logs, or a
-third-party rerun), which is a natural next lift and is not claimed here.
-Under a non-adversarial-analyst threat model --- an adversary who runs the
-shortcut and then writes the honest trace by hand is, by construction,
-invisible to a receipt-only check --- the tested claim is: receipts of this
-kind are a shortcut detector, not a fraud detector.
+\paragraph{S6: the effective-multipole class escaped, and that is the finding.}
+\label{sec:blind-test-s6}
+S6 builds the full mode-coupling operator genuinely --- the real \(\ell\)-grid,
+the real 3\(j\)-evaluation count, the real operator shape and support all
+match the contract --- and takes the shortcut \emph{downstream}, in the band
+evaluation, dividing each band by the coupling evaluated at one effective
+multipole (the shortcut quantified in Sec.~2). Nothing in R0--R6 inspects
+result \emph{values} against the contract, so S6 is structurally invisible to
+this verifier and escaped detection 5/5, with wall-clock-would-fire also 5/5
+(again unusable as a decision signal). \textbf{No rule was added after seeing
+this outcome.} A value-level rule --- a declared tolerance band on
+bandpowers against an independently-known reference, or a cross-checked
+second estimator --- is proposed as a pre-registered batch 3, future work and
+not claimed here.
+
+\paragraph{Scope limits.} The estimator exercised in both batches is this
+repository's own spin-0 MASTER implementation, not NaMaster itself: PyMaster
+is not installed in this environment, and the instrumented Wigner-3\(j\)
+counter is what makes the trace a measured consequence of the code path
+taken, so an equivalent hook would need to be added inside NaMaster to carry
+the claim over verbatim (Sec.~\ref{sec:limitations}, item S3). The in-house
+estimator was itself checked against \texttt{sympy.physics.wigner} on the
+\(m=0\) kernel and agrees to \(6\times10^{-16}\) on six cases. The seal
+establishes \emph{ordering}, not an external witness: the commit-ordered
+trail (rules, then seal commitment, then outputs, then key, each in its own
+commit, sealed material held outside the tree until reveal) is checkable by
+any reader from git history alone, but the reveal remains self-run --- the
+same party sealed, ran, and unsealed. An external anchor is in progress: the
+sealed digest of each batch has been submitted to the OpenTimestamps Bitcoin
+calendar (\texttt{blind\_test/public\{,2\}/sealed\_digest.json.ots}); as of
+this revision the timestamps are pending Bitcoin confirmation, not yet
+upgradeable to a confirmed proof, and are named as a stated limitation, not a
+completed claim, until confirmed. The S5 metadata-forgery escape is
+structural, not a bug: closing it needs the same external anchor, or a
+witnessed execution environment, signed build/execution logs, or a
+third-party rerun. Under an unmodified-instrumented-harness threat model ---
+the analyst may alter the computation but runs an unmodified, instrumented
+harness; an adversary who also alters the harness and writes a fabricated
+honest trace by hand is, by construction, invisible to a receipt-only check
+--- the tested claim is: receipts of this kind are a detector of
+\emph{structural} shortcuts in instrumented steps, not of forged metadata and
+not of value-level shortcuts taken downstream of the instrumented operator.
 
 \section{Quality Control}
 
@@ -576,6 +613,7 @@ funding acquisition. Correspondence metadata remain author-supplied submission
 metadata and are not inferred by the software release process.
 
 \section{Limitations}
+\label{sec:limitations}
 
 \software{} does not create masks or maps, estimate covariance matrices,
 separate cosmic rotation from instrumental polarization calibration, model
