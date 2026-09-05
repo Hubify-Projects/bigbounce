@@ -372,3 +372,33 @@ sector with Dirac/Weyssenhoff matter can source w ≈ −1 at the observed
 amplitude; here is the class, here is the proof, here are the escape hatches").
 A scoped no-go theorem is a legitimate first-of-kind contribution. Without that
 scoping it stays a note.
+
+---
+
+## Section 6 — summary table
+
+Current site tier = `site/src/data/tracks.ts` `contributions[]` (the /research
+contributions list). "—" = not currently listed on the site.
+
+| # | Candidate | Contribution type | Current site tier | Honest tier | What would lift it to N3 |
+|---|---|---|---|---|---|
+| 1 | From-scratch in-in −35/16 + located ×2 in Cai+2009 (0903.0631) | derivation / verification | N2 (`matter-bounce-fnl`) | **N2** | Nothing — the value was already published (Quintin+2015, 1508.04141). N2 by nature. |
+| 2 | Threading map δN_c ↔ ζ; isotropic separate-universe fails at O(1) in a non-attractor contraction | derivation / method | — | **N2** (nearest to N3) | Generalise to arbitrary ε (and c_s); state the failure as a criterion; demo on ≥2 contracting backgrounds + the USR control; publish as a standalone methods note. |
+| 3 | T ≤ 1/2 transfer bound; S2 "divergence" = IBP artefact, raw ADM finite; factor-2.5 scheme band | derivation | N2 (`bounce-transmission`) | **N2** | Find a variable regular through H = 0 and show the transmitted amplitude is unique in it — i.e. replace the band with a scheme-independent number. |
+| 4 | Row 14 joint (r, f_NL) no-go; 296× disjoint windows | derivation / no-go | — | **N2** | Nothing alone — the theorem is Li+2016 (1612.02036). Value is the quantification. Combine with #5. |
+| 5 | Row 15 curvaton: n_s inherited, r free, f_NL O(1), −35/16 diluted by (r/24)² | derivation / null result | — | **N2, N3-eligible** | Generalise the dilution beyond CXB11's conversion; add the ekpyrotic branch; publish #4+#5 as one no-go whose claim is the closure of the model class. |
+| 6 | Three multi-channel nulls (PTA γ_pred 5.07; PBH deficit + sign resolution; high-z PNG suppression) | null result / consistency test | N2 (`multichannel-consistency`) | **N2** | The map is N2. The N3-shaped piece is the JWST-anomaly exclusion stated as a constraint on a proposed explanation (needs \|f_NL\| ~ 32, ~6σ excluded by Planck). |
+| 7 | DESI DR1 f_NL reproduction, 0.06σ, independent likelihood | reproduction | — | **N1** | Nothing honest — error bar is 2.8× the published one. It is evidence for #10, not a constraint. |
+| 8 | 8.47M chirality catalogue; A_95 = 0.98% null vs Popławski | catalogue + null result | N2 (`chirality-catalog`) | **N2, N3-eligible** | Headline the exclusion as the first quantitative bound on a *named* model with the closure assumption numbered; close the N gap vs Shamir 2022's 1.3M tested sample; add image-level injection (ledger 13). |
+| 9 | Anomaly catalogue v2 (1,244 targets, 8 families) + failed pre-declared benchmark | data release | N2 (`anomaly-catalogue-v2`) | **N2** | Ledger row 12: self-supervised model on the full DR1 science-target population + public embedding release, or a confirmed anomalous class. GPU program. |
+| 10 | Reproducibility-first lab (98 manifests) | method / tool | N2 (`namaster-proof` only) | **N2** as practice, **N1** as research | Reframe around the verification primitive (`namaster-proof` receipts), blind-test it against a deliberately shortcut computation, ship with ASCL + Zenodo DOI. |
+| 11 | The ECH Note (contact term ↔ Popławski; four dark-energy routes closed) | derivation / note | N2 (`ech-contact-term`); N1 (`chiral-gw-gate`) | **N2** (note), **N1** (chiral-GW gate) | Turn the dark-energy closure into a scoped no-go theorem over a stated class with its escape hatches named. |
+
+**Honest bottom line: every current contribution is N1 or N2. Nothing in the
+portfolio is N3 today.** That is the normal state for a lab's first year. N3
+means *first-of-kind*, and being first requires either (a) reaching a
+measurement no one has reached, (b) proving something no one has proved about a
+model class, or (c) building a capability no one has built. The lab's 2026 work
+has mostly been (correctly, per directive R) verifying, quantifying and
+falsifying claims that already existed — which is why the tiers are N2. Four of
+the eleven candidates are one bounded piece of work away from (b) or (c).
