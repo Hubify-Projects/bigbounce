@@ -58,8 +58,8 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FSC}}
 
-\newcommand{\paperVersion}{v4P.0.6}
-\newcommand{\paperTimestamp}{September 4, 2026}
+\newcommand{\paperVersion}{v4P.0.7}
+\newcommand{\paperTimestamp}{September 5, 2026}
 
 \begin{document}
 \raggedbottom
@@ -1074,6 +1074,63 @@ Free best-fit direction & $+0.32$ & null \\
 \end{ruledtabular}
 \end{table}
 
+\textbf{External environment: DESI DR1 BGS clustering catalog.} A
+density-based environment split against an external tracer field --
+$k$=10-NN density contrast measured on the public DESI DR1
+\texttt{BGS\_BRIGHT-21.5} clustering catalog and its randoms
+(300,043 tracers, 4 randoms per cap; not a void finder) -- finds no
+dependence of the parity fraction on environment in either subset it can
+be tested on. Table~\ref{tab:bgs_environment} reports the three-way
+void-like/wall-filament/node-like split for the 121,417-spiral DESI
+spectroscopic-redshift subset (three-dimensional comoving density) and the
+949,584-spiral photometric/no-redshift subset (projected density).
+
+\begin{table}[t]
+\centering
+\caption{Parity fraction by environment bin against the DESI DR1
+BGS\_BRIGHT-21.5 clustering catalog (density contrast $\delta_k$,
+$k$=10-NN vs.\ randoms). $z$ is against the 1,000-realization
+label-shuffle null.}
+\label{tab:bgs_environment}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Environment & $N$ & $f_{\rm CW}$ & $z$ \\
+\hline
+\multicolumn{4}{l}{Spec-z, 3D comoving ($N=121{,}417$)} \\
+Void-like & 24,284 & $0.48999\pm0.00321$ & $-0.61$ \\
+Wall/filament & 72,849 & $0.49489\pm0.00185$ & $+1.11$ \\
+Node-like & 24,284 & $0.49238\pm0.00321$ & $-0.84$ \\
+\multicolumn{4}{l}{Projected, photo-z/no-$z$ ($N=949{,}584$)} \\
+Void-like & 189,917 & $0.49602\pm0.00115$ & $+0.64$ \\
+Wall/filament & 569,750 & $0.49680\pm0.00066$ & $-1.06$ \\
+Node-like & 189,917 & $0.49388\pm0.00115$ & $+2.96$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The $\chi^2$ trend across bins is null in both subsets (spec-z: obs
+$1.872$ vs.\ null $1.984\pm1.841$, $z=-0.06$, $p=0.952$, confirmed by a
+sky-rotation null at $z=-0.12$, $p=0.917$; projected: $z=-1.51$,
+$p=0.084$ two-sided). Per-bin dipole amplitudes are likewise consistent
+with their nulls in every bin ($|z|\le2.15$). The largest excursion in
+the full 14-statistic battery (2 subsets $\times$ [3 $f_{\rm CW}$ + 1
+$\chi^2$ + 3 dipole]) is the projected node-like bin's parity fraction,
+$z=+2.96$ ($p_{\rm local}=0.0060$, $p=0.084$ after the pre-registered
+$\times14$ Bonferroni look-elsewhere correction) -- below the
+pre-declared $3\sigma$ post-look-elsewhere detection threshold
+($|z|\gtrsim3.7$). We report this channel as \textbf{null}: splitting the
+chirality sample by local environment, measured against a genuine
+external tracer population rather than the chirality catalog's own
+projected proxy, shows no environment dependence of handedness. The
+spec-z 3D result is the more constraining of the two, since the
+projected proxy line-of-sight-integrates true 3D structure.
+
+\textit{Data.} DESI DR1 LSS \texttt{BGS\_BRIGHT-21.5} clustering
+catalog, NGC+SGC, $0.1<z<0.4$ (300,043 tracers, 4 randoms/cap); the
+environment proxy is a $k$=10 nearest-neighbor density-contrast estimate
+against the randoms, not output from a void finder or void/filament
+classifier.
+
 % ============================================================
 \section*{Data Availability}
 % ============================================================
@@ -1109,7 +1166,7 @@ pin for its numbers: it is served alongside its git-tracked source at
 \url{https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p4prime_chirality_test/paper/main.tex},
 and the underlying catalog/quarantine/null-array revision it draws from is
 independently pinned by the versioned Zenodo DOI
-10.5281/zenodo.21461899 above. The three robustness/disclosure results of
+10.5281/zenodo.21461899 above. The four robustness/disclosure results of
 Sec.~\ref{sec:robustness_disclosure} are individually reproducible from
 their registered manifests (the latter two registered in
 \artifact{reproducibility/manifests/programs/galaxy-chirality.json}):
@@ -1120,6 +1177,8 @@ their registered manifests (the latter two registered in
 \artifact{reproducibility/manifests/experiments/p4p-row16i-full-parent-dipole.json}
 \item structure cross-correlations: \\
 \artifact{reproducibility/manifests/experiments/p4p-row16ib-axis-shift.json}
+\item external environment (DESI DR1 BGS clustering catalog): \\
+\artifact{reproducibility/manifests/experiments/row16ivb-bgs-environment.json}
 \end{itemize}
 
 % ============================================================
