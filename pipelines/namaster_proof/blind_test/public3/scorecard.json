@@ -1,0 +1,140 @@
+{
+  "S4b_crossrun_sources": {
+    "run_002": "run_001",
+    "run_032": "run_031",
+    "run_036": "run_035",
+    "run_037": "run_036",
+    "run_044": "run_043",
+    "run_047": "run_046"
+  },
+  "S5_escaped": 6,
+  "S6_detection": {
+    "lower95_one_sided": 0.607,
+    "point": 1.0,
+    "upper95_one_sided": 1.0
+  },
+  "S6_escaped": 0,
+  "assignment_sha256": "abfe2793bc6fa2c0ed1d5be429e1e32c02bc5263067c83957298605a21c04f58",
+  "batch": 3,
+  "detection_all_shortcut_arms": {
+    "lower95_one_sided": 0.7374,
+    "point": 0.8571,
+    "upper95_one_sided": 0.9359
+  },
+  "detection_structural_S1_S4b": {
+    "lower95_one_sided": 0.905,
+    "point": 1.0,
+    "upper95_one_sided": 1.0
+  },
+  "false_positive_rate_honest": {
+    "lower95_one_sided": 0.0,
+    "point": 0.0,
+    "upper95_one_sided": 0.393
+  },
+  "independence_caveat": "R1-R5 compare seed-independent quantities against a fixed contract; replicates within an arm are seed-varied executions of one deterministic variant (effective independent n = 1). R7 is seed-dependent (p and the spot-row draw both vary), so its replicates are distinct evaluations of one deterministic variant -- class-level evidence, not a run-level interval.",
+  "per_arm": {
+    "S1_skip_operator": {
+      "flagged": 6,
+      "n": 6,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "r7_residual_max": 0.05723746,
+      "r7_residual_min": 0.001409496,
+      "rules": {
+        "R3_3j_count_mismatch": 6,
+        "R4_operator_shape_mismatch": 6,
+        "R7_operator_consistency_residual": 6
+      },
+      "wall_would_fire": 6
+    },
+    "S2_truncate_operator": {
+      "flagged": 6,
+      "n": 6,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "r7_residual_max": 0.006596661,
+      "r7_residual_min": 0.002440538,
+      "rules": {
+        "R3_3j_count_mismatch": 6,
+        "R4_operator_shape_mismatch": 6,
+        "R7_operator_consistency_residual": 6
+      },
+      "wall_would_fire": 6
+    },
+    "S3_grid_interpolate": {
+      "flagged": 6,
+      "n": 6,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "r7_residual_max": 0.5152136,
+      "r7_residual_min": 0.007391487,
+      "rules": {
+        "R2_grid_mismatch": 6,
+        "R3_3j_count_mismatch": 6,
+        "R4_operator_shape_mismatch": 6,
+        "R7_operator_consistency_residual": 6
+      },
+      "wall_would_fire": 6
+    },
+    "S4_cache_substitute": {
+      "flagged": 6,
+      "n": 6,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 6,
+      "r7_residual_max": 0.1363047,
+      "r7_residual_min": 0.01688389,
+      "rules": {
+        "R6_result_reuse_across_inputs": 6,
+        "R7_operator_consistency_residual": 6
+      },
+      "wall_would_fire": 0
+    },
+    "S4b_cache_crossrun": {
+      "flagged": 6,
+      "n": 6,
+      "r6_crossrun_disjunct": 4,
+      "r6_reference_disjunct": 2,
+      "r7_residual_max": 0.02630552,
+      "r7_residual_min": 0.007018515,
+      "rules": {
+        "R6_result_reuse_across_inputs": 6,
+        "R7_operator_consistency_residual": 6
+      },
+      "wall_would_fire": 6
+    },
+    "S5_metadata_forgery": {
+      "flagged": 0,
+      "n": 6,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "r7_residual_max": 4.536737e-17,
+      "r7_residual_min": 7.495643e-19,
+      "rules": {},
+      "wall_would_fire": 0
+    },
+    "S6_effective_multipole": {
+      "flagged": 6,
+      "n": 6,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "r7_residual_max": 0.04919571,
+      "r7_residual_min": 0.0001767247,
+      "rules": {
+        "R7_operator_consistency_residual": 6
+      },
+      "wall_would_fire": 6
+    },
+    "honest": {
+      "flagged": 0,
+      "n": 6,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "r7_residual_max": 1.435996e-12,
+      "r7_residual_min": 2.936999e-14,
+      "rules": {},
+      "wall_would_fire": 6
+    }
+  },
+  "rules": "frozen, RULES_v3_FROZEN.md (committed before the seal)",
+  "seal_verified": true
+}

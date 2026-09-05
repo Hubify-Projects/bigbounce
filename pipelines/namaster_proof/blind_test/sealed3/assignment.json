@@ -1,0 +1,194 @@
+{
+  "run_000": {
+    "map_seed": 46064,
+    "variant": "S6_effective_multipole"
+  },
+  "run_001": {
+    "map_seed": 49284,
+    "variant": "S1_skip_operator"
+  },
+  "run_002": {
+    "map_seed": 63433,
+    "variant": "S4b_cache_crossrun"
+  },
+  "run_003": {
+    "map_seed": 18210,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_004": {
+    "map_seed": 84238,
+    "variant": "honest"
+  },
+  "run_005": {
+    "map_seed": 29183,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_006": {
+    "map_seed": 10519,
+    "variant": "S4_cache_substitute"
+  },
+  "run_007": {
+    "map_seed": 51328,
+    "variant": "S1_skip_operator"
+  },
+  "run_008": {
+    "map_seed": 15365,
+    "variant": "S2_truncate_operator"
+  },
+  "run_009": {
+    "map_seed": 58741,
+    "variant": "honest"
+  },
+  "run_010": {
+    "map_seed": 37341,
+    "variant": "S2_truncate_operator"
+  },
+  "run_011": {
+    "map_seed": 51891,
+    "variant": "S4_cache_substitute"
+  },
+  "run_012": {
+    "map_seed": 56978,
+    "variant": "S1_skip_operator"
+  },
+  "run_013": {
+    "map_seed": 97384,
+    "variant": "S6_effective_multipole"
+  },
+  "run_014": {
+    "map_seed": 86750,
+    "variant": "S4_cache_substitute"
+  },
+  "run_015": {
+    "map_seed": 35947,
+    "variant": "S4_cache_substitute"
+  },
+  "run_016": {
+    "map_seed": 54750,
+    "variant": "S1_skip_operator"
+  },
+  "run_017": {
+    "map_seed": 40356,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_018": {
+    "map_seed": 48137,
+    "variant": "S6_effective_multipole"
+  },
+  "run_019": {
+    "map_seed": 64149,
+    "variant": "S2_truncate_operator"
+  },
+  "run_020": {
+    "map_seed": 96860,
+    "variant": "honest"
+  },
+  "run_021": {
+    "map_seed": 47458,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_022": {
+    "map_seed": 52815,
+    "variant": "S2_truncate_operator"
+  },
+  "run_023": {
+    "map_seed": 10957,
+    "variant": "honest"
+  },
+  "run_024": {
+    "map_seed": 33556,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_025": {
+    "map_seed": 73587,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_026": {
+    "map_seed": 65451,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_027": {
+    "map_seed": 90439,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_028": {
+    "map_seed": 78055,
+    "variant": "S2_truncate_operator"
+  },
+  "run_029": {
+    "map_seed": 3327,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_030": {
+    "map_seed": 31065,
+    "variant": "S6_effective_multipole"
+  },
+  "run_031": {
+    "map_seed": 22954,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_032": {
+    "map_seed": 48219,
+    "variant": "S4b_cache_crossrun"
+  },
+  "run_033": {
+    "map_seed": 71726,
+    "variant": "S1_skip_operator"
+  },
+  "run_034": {
+    "map_seed": 9372,
+    "variant": "S2_truncate_operator"
+  },
+  "run_035": {
+    "map_seed": 42982,
+    "variant": "S4_cache_substitute"
+  },
+  "run_036": {
+    "map_seed": 75133,
+    "variant": "S4b_cache_crossrun"
+  },
+  "run_037": {
+    "map_seed": 17641,
+    "variant": "S4b_cache_crossrun"
+  },
+  "run_038": {
+    "map_seed": 92846,
+    "variant": "honest"
+  },
+  "run_039": {
+    "map_seed": 96657,
+    "variant": "honest"
+  },
+  "run_040": {
+    "map_seed": 63775,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_041": {
+    "map_seed": 62353,
+    "variant": "S6_effective_multipole"
+  },
+  "run_042": {
+    "map_seed": 95712,
+    "variant": "S6_effective_multipole"
+  },
+  "run_043": {
+    "map_seed": 51705,
+    "variant": "S1_skip_operator"
+  },
+  "run_044": {
+    "map_seed": 82057,
+    "variant": "S4b_cache_crossrun"
+  },
+  "run_045": {
+    "map_seed": 25094,
+    "variant": "S4_cache_substitute"
+  },
+  "run_046": {
+    "map_seed": 34811,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_047": {
+    "map_seed": 48330,
+    "variant": "S4b_cache_crossrun"
+  }
+}
