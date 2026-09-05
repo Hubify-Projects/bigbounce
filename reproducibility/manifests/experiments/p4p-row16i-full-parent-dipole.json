@@ -1,7 +1,7 @@
 {
   "manifest_version": "bigbounce-experiment/v1",
   "id": "p4p-row16i-full-parent-dipole",
-  "title": "Row 16(i) — full-parent (8,474,531-galaxy) real-space chirality dipole using the exact P4' primary estimator",
+  "title": "Row 16(i) \u2014 full-parent (8,474,531-galaxy) real-space chirality dipole using the exact P4' primary estimator",
   "program": "galaxy-chirality",
   "paper": "P4P",
   "kind": "analysis",
@@ -34,7 +34,7 @@
   ],
   "environment": {
     "python": "python3 + numpy + healpy + pyarrow",
-    "hardware": "cpu-only; Apple M-series, macOS arm64 (no GPU/pod needed — classifier inference already existed for all 8,474,531 rows)"
+    "hardware": "cpu-only; Apple M-series, macOS arm64 (no GPU/pod needed \u2014 classifier inference already existed for all 8,474,531 rows)"
   },
   "original_run": {
     "venue": "local",
@@ -65,12 +65,12 @@
     },
     {
       "locator": "pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md",
-      "type": "report",
+      "type": "document",
       "checksum": null
     }
   ],
   "verification": "Estimator (healpy.fit_dipole on per-pixel (2*n_CW-total)/total, NSIDE=64, support>=10) and null convention (fixed-occupancy multivariate-hypergeometric label randomization) are imported verbatim from the committed P4' strict-primary generator, not re-derived. Selection differs only in dropping the primary_hc/raw_flip_qc_unsafe restriction (full parent: all class_eq in {CW,CCW}, N=3,200,420 in support vs. 887,472 in the strict-primary subset). No tuning: amplitude grid, seed choice, and axis count match the committed a95_observed_label_upper_limit_v1_0_265.py convention.",
-  "status": "complete",
+  "status": "runnable-now",
   "provenance": [
     "project-context/NEXT_SCIENCE_LEDGER.md item 16(i)",
     "project-context/SSOT/paper-4p/status.md (887,472-subset A_95_obs=0.98%% comparison baseline)",
