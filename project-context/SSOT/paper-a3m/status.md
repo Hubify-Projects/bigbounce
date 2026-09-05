@@ -939,3 +939,98 @@ touched — five redesign lanes are editing it; the orchestrator syncs
 above traces to the five lane9 files named at the top of this section.
 
 - **R6-09 closed 2026-09-04 (orchestrator, arXiv fetched):** Ref. Papanikolaou2025 verified verbatim against arxiv.org/abs/2504.11641 — title "Gravitational wave signatures of non-singular matter bouncing cosmology in NANOGrav and beyond", sole author T. Papanikolaou, submitted 2025-04-15, Corfu Summer Institute 2024 proceedings contribution, no journal reference. No edit needed.
+
+---
+
+## v3M.0.16 — R7 truth-audit closure (2026-09-04)
+
+Closed all 16 (i) items of `project-context/peer-reviews/INT_v3/A3M_v3M.0.15_R7_TRUTH_AUDIT_2026-09-04.md`
+(16 genuinely-new-real findings across Grok_brutal REJECT / Gemini_cosmology
+MAJOR REVISIONS / Claude Fable 5.1 INT major-revisions; 0 physics errors
+beyond scoping and one stale figure). **R7-01** — `r=16ε=24` scoped to
+transmission scheme: S1 (tensor/scalar share `z=a`) gives `r_after=24`
+exactly as before; S2's raw-ADM continuation instead gives
+`r_after≈9.4×10²` on the Quintin-type background (the tensor problem is
+*worse*, not cured, in S2); the Sec. VIII `c_s`-window no-go is scoped to
+S1, with S2 noted as strengthening the exclusion. **R7-02** (auditor-found,
+directive I6) — Fig. 1's embedded PNG was stale: the paper's copy legended
+the superseded NANOGrav free-`γ` amplitude `A=2.4×10⁻¹⁵` while the current
+generator (post R6-02 fix) emits `A=6.46×10⁻¹⁵`; regenerated from the
+committed script and re-mirrored byte-identical to `paper/` and `outputs/`;
+**R7-16** fixed a colliding x-axis minor-tick-label collision in the same
+regen. **R7-03** — the `c_s` sign-flip at `c_s=0.8876` disclosed: on
+`c_s∈[0.444,0.888)` the k-essence `f_NL^pre` branch is positive, so the
+flagship negative sign survives only for `c_s≳0.89`. **R7-04** — disclosed
+the quoted window formula is `T×f_NL^pre(c_s)` only (no `Δf_NL^bounce`
+term, itself derived at `c_s=1`; numerically `−0.14`, immaterial against
+the `5.1` bound, but its `c_s`-dependence away from `c_s=1` is uncomputed —
+ledger item `A3-cs-bounce`). **R7-05** — rebuilt the `CaiXue2011` bib entry
+from arXiv:1101.0822 (Cai, Brandenberger & Zhang, *The Matter Bounce
+Curvaton Scenario*, JCAP 03,003 2011), replacing an internally-inconsistent
+prior citation; added Lyth–Ungarelli–Wands, Sasaki–Valiviita–Wands, and
+Planck 2018 `f_NL` bib entries; dropped an unverifiable
+Cai/Brandenberger/Zhang equation-number pointer rather than assert an
+unchecked citation. **R7-06/07** — abstract `|f_NL|≤5.1` →
+`|f_NL^after|≤5.1`; no-go statement scoped "on the backgrounds and channels
+evaluated here". **R7-08** — Table V `γ_cr≲0.8` rows labelled
+non-perturbative branch (`f_PBH>1` = uncapped ratio at the per-point
+Gaussian-calibrated `A_*`, not a probability); "suppresses…throughout"
+reworded to "suppresses at first order in `ε=(6/5)f_NLσ_r`"; ratio-vs-`γ_cr`
+slope quantified (~0.13/unit). **R7-09** — reconciled a Sec. VII tensor-nHz
+shortfall statement that silently used the pre-R6-02-fix stale NANOGrav
+amplitude (`3.6235×10⁻⁹`, giving the stated `10^5.3`); corrected to `10^6.2`
+against the same `2.622×10⁻⁸` free-`γ` posterior amplitude used
+consistently elsewhere. **R7-10** — removed repo-path "imported from…"
+framing for the LSS shape-overlap value; restated as an assumed `r=1`
+pending an explicit shape-overlap projection, with Table VI (`tab:reach`)
+explicitly an upper bound. **R7-11** (3rd recurrence, directive Q1) —
+deleted remaining version-history/open-item prose ("appeared in earlier
+drafts", "open item DESI-4"). **R7-13** — deleted a false claim that
+`T_B≈2.3` GeV is below the QCD scale (it is above it) and the non-existent
+baryogenesis-argument appeal. **R7-14/15** — Cai et al. shape-to-amplitude
+conversion marked "effectively" converted (not exact); the second
+`(37)=(4.19)` monomial-sum statement now repeats the distinct-monomial
+qualifier and states the six-permutation alternative reading's difference
+(`−(99/128)Σk³`, squeezed `−305/64`). **Appendix A** — replaced the
+"translation coincidence" wording with the label-resolved statement from
+`research/theory_audit/psu_gates_S1_S2_2026_09_04.md`: the initial-label
+`δN_c` composition is exactly `−5` for every constant `ε` (not a
+coincidence), and the gap to the in-in value is an exact, invertible change
+of variable, with the `O(1)` effect an error only in the standard `δN`
+formula's identification `δN_c=ζ` (arises iff the neglected integral
+`I=O(1)`).
+
+**Hygiene (directive G).** `\paperVersion` v3M.0.15→v3M.0.16, `\date`
+held at September 4, 2026 (same day). 4-pass `pdflatex`, 0 undefined
+references, 0 overfull `\hbox` >10pt (three pre-existing sub-10pt
+overfulls unchanged, confirmed present before this round's edits). Pages
+held at 17. Abstract 274/307 words. Page 1 (abstract) and the Fig. 1 page
+(p. 8) rendered at 55/200 dpi and visually spot-checked — clean
+two-column layout, no overflow; Fig. 1 legend confirmed reading
+`A=6.46×10⁻¹⁵` and the x-axis minor-tick collision confirmed gone. PDF
+md5 `5544bea1dba2db64f25e85d476489ce4`, 17 pages, 739,054 bytes, mirrored
+byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.16.pdf`
+and `public/papers/a3_multichannel_arxiv_v3M.0.16.pdf` (three-way md5
+PASS: fresh compile == served == Convex, all
+`5544bea1dba2db64f25e85d476489ce4`). Convex `paperVersions:bump`
+(paperSlug `paper-a3m`) mutation id `k57421pb671psc0vbbxm8zkc698dt1ga`;
+readback via `paperVersions:current` confirms version/md5/pages match.
+`activityFeed:add` id `j576qgyvfas7whdv1ap4yggct58dvrzr`.
+
+arXiv tarball `SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.16.tar.gz`
+sha256 `69d9178f24b6b8a3a292e3d579ec6c8a1c7834de574d31d9499b15c7e375914e`,
+rebuilt from scratch (main.tex + 2 figures, inline `thebibliography`),
+standalone extract+recompile smoke test PASS (17 pages, 0 undefined refs).
+
+**Readiness held at 75. ROUNDS STOPPED (directive R2).** R7 is the fourth
+consecutive verification round on A3M; both reviewer MAJORs (Grok's REJECT
+rationale, Gemini's Fig. 1 finding) rested substantially on findings
+falsified against committed artifacts (see the audit's (c) FALSIFIED
+section). Per directive R2, no further round may be dispatched on A3M on
+editorial grounds alone — the next board opens only after a science
+decision on the (ii) ledger: `A3-S2r` (a committed lane evolving the tensor
+mode under the S2 raw-ADM handoff convention to replace the current hand
+ratio), `A3-cs-bounce` (the `c_s`-dependence of `Δf_NL^bounce`), and the
+carried `A3-ns`, `A3-dN`, `DESI-4` items. Site data sync (`papers.ts`,
+`live-status.ts`, `reviewTimeline.ts`) is out of this task's scope
+boundary (`site/src/` not touched) and is deferred to a separate bundle.
