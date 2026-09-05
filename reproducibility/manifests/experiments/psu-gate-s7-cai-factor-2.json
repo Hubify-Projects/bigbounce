@@ -1,0 +1,80 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "psu-gate-s7-cai-factor-2",
+ "title": "PSU gate S7: equation-level location of the factor 2 between Cai et al. 2009 (0903.0631) Eq. (37) and Eqs. (38)-(41)/Fig. 5, and the Li et al. 2017 (1612.02036) c_s=1 correspondence",
+ "program": "bounce-theory",
+ "paper": "P2",
+ "kind": "derivation",
+ "inputs": [
+  {
+   "name": "Cai, Xue, Brandenberger, Zhang 2009 arXiv e-print source (matterbounceng2.tex, fnl.eps)",
+   "locator": "https://arxiv.org/e-print/0903.0631",
+   "type": "external-source",
+   "checksum": null
+  },
+  {
+   "name": "Li, Quintin, Wang, Cai 2017 arXiv e-print source (general_matter_bounce_cosmology.tex)",
+   "locator": "https://arxiv.org/e-print/1612.02036",
+   "type": "external-source",
+   "checksum": null
+  },
+  {
+   "name": "PSU gates S6-S11 note, item S7",
+   "locator": "research/theory_audit/psu_gates_S6_S11_2026_09_04.md",
+   "type": "internal-artifact",
+   "checksum": null
+  },
+  {
+   "name": "lab f_NL matter-contraction adjudication (claims under test)",
+   "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md",
+   "type": "internal-artifact",
+   "checksum": null
+  }
+ ],
+ "apis": [],
+ "code": [
+  {
+   "path": "research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.py",
+   "entrypoint": "python3 research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.py",
+   "sha256": "e186602fd1e35e1a83a82af7c456ccd01f5020a06b4b8dd954d0acb9a40bc675"
+  }
+ ],
+ "environment": {
+  "python": "python3 with sympy 1.14.0",
+  "hardware": "cpu-only"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": null,
+  "pod_id_or_host": "local macOS workstation",
+  "date": "2026-09-05",
+  "wall_clock": "about 15 s",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local",
+  "est_wall_clock": "under 1 minute",
+  "est_cost_usd": 0.0,
+  "parallelizable": false,
+  "resume_support": false,
+  "notes": "Deterministic sympy. Transcribes Cai Eqs. 14, 19-21, 23, 27-37 and Li Eqs. 3.17, 4.6, 4.9, 4.12, 4.14, 4.16, 4.19, 4.20, 4.22, 5.1-5.3 verbatim, evaluates the isoceles/equilateral/folded/squeezed configurations under five factor-2 hypotheses. Figure readings from fnl.eps (rendered with ghostscript) are by eye, +-0.05."
+ },
+ "outputs": [
+  {
+   "locator": "research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.json",
+   "type": "result-json",
+   "checksum": "sha256:e855ce3ce20fdcf28722fe76fbf2be93fc454b29fd3bdc7fe938f6be191d2a65"
+  },
+  {
+   "locator": "research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md",
+   "type": "document",
+   "checksum": null
+  }
+ ],
+ "verification": "Re-run and diff the JSON. Required: cai_row_convention six-perm entries all true and DISTINCT entry false; rows_sum_equals_Eqs34_36 true; Eq37_distinct_minus_rows == '0'; Eq37_sixperm_minus_rows == '-99*(k1**3 + k2**3 + k3**3)/128'; Li419_cs1_minus_rows == '0'; hypotheses.HB_uniform_x2_on_A_T.reproduces_printed all true; HA/HC/HD each have at least one false.",
+ "status": "runnable-now",
+ "provenance": [
+  "PSU gate S7 (psu_gates_S6_S11_2026_09_04.md, 'equation-level read of 0903.0631 / 1612.02036 pending')",
+  "directive Q2 (reproducibility manifests); directive R2 (rounds stopped); no paper .tex edited by this lane"
+ ]
+}
