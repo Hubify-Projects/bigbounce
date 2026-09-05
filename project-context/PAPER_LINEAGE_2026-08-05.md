@@ -670,3 +670,22 @@ introduced in the paper draft itself). Tracked in
 **Why:** VISION R6 (claims at evidential strength) and directive Q1 (pure-contribution
 framing) — the criterion is the publishable content; the internal discrepancy-finding
 process stays in the theory-audit lane, not the paper.
+
+## 2026-09-04 — paper-su: framing decision D-PSU-1 (change of variable, not "failure")
+
+**ORIGINAL CLAIM (v1S.0.1):** "When the separate universe fails" — an O(1) failure of the
+isotropic δN approach for the squeezed bispectrum in non-attractor phases.
+
+**NEW CLAIM (v1S.0.2):** the isotropic separate universe computes a different variable
+(δN_c, the initial-fluid-element-labelled expansion) from Maldacena's comoving ζ; the
+relation is an exact, invertible change of variable, δN_c = ζ_L,f[1 − I/3] + O(k_L²/a²H²)
+with I = ζ_L,f⁻¹ ∫ (ε/c_s²) ζ̇_L dt, and the O(1) error arises only when δN_c is identified
+with ζ, i.e. iff I = O(1) (I = 0 on attractor/ekpyrotic rows; √(ε_sε_f) − ε_f in USR; → ε
+in the dust contraction). Label-resolved compositions: initial label reproduces −5
+exactly for all constant ε; final label gives −25/4 + (15/4)μ² at ε = 3/2. Title and
+abstract reframed accordingly; Cai et al. 2009's −35/8 cited with the located factor of
+two and the dependence of the gap on it stated.
+
+**Why:** R6 (claims at evidential strength) and the PSU R1 truth-audit S3: the source note
+itself says "there was never a discrepancy in the physics, only in the variable". The
+criterion is the contribution; "failure" overstated it.
