@@ -1,0 +1,84 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "psu-gates-s9-s10-rho-slice-kc",
+ "title": "PSU gates S9 + S10 at second order: uniform-density-slice threading map (delta N_c,rho from the in-in bispectrum) and the constant-long-mode kernel K_c of the general-label map",
+ "program": "bounce-theory",
+ "paper": "P2",
+ "kind": "derivation",
+ "inputs": [
+  {
+   "name": "PSU gates S6-S11 (S9/S10 sections: linear rho-slice map, f_map(g) with K_c open)",
+   "locator": "research/theory_audit/psu_gates_S6_S11_2026_09_04.md",
+   "type": "internal-artifact",
+   "checksum": null
+  },
+  {
+   "name": "threading map at second order (machinery + frozen phi-slice kernels)",
+   "locator": "research/theory_audit/threading_map_second_order_2026_09_04.py",
+   "type": "internal-artifact",
+   "checksum": "sha256:b0c934158add4ddedb40f042a26e2f430b77849f301e86b93f0f76f3637c7fbf"
+  },
+  {
+   "name": "lab separate-universe delta N on uniform density (comparison value 5(eps-7)/8 = -55/16)",
+   "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md",
+   "type": "internal-artifact",
+   "checksum": null
+  },
+  {
+   "name": "Namjoo, Firouzjahi & Sasaki 2012",
+   "locator": "https://arxiv.org/abs/1210.3692",
+   "type": "external-literature",
+   "checksum": null,
+   "license": null
+  }
+ ],
+ "apis": [],
+ "code": [
+  {
+   "path": "research/theory_audit/psu_gates_S9_S10_2026_09_05.py",
+   "entrypoint": "python3 research/theory_audit/psu_gates_S9_S10_2026_09_05.py",
+   "sha256": "a75d892ef5c156d4c552454266fe1db06ad8cc8494c5fec393cf11c7535c4b18"
+  }
+ ],
+ "environment": {
+  "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+  "hardware": "cpu-only"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": null,
+  "pod_id_or_host": "local macOS workstation",
+  "date": "2026-09-05",
+  "wall_clock": "68 s (constraint solves 43 s + 16 s)",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local",
+  "est_wall_clock": "under 3 minutes",
+  "est_cost_usd": 0.0,
+  "parallelizable": false,
+  "resume_support": false,
+  "notes": "Deterministic exact sympy; no network. Self-validating: background + first-order ADM constraints hold for arbitrary (m_L, m_S); frozen phi-slice map reproduced before any rho-slice object is built; S9.1 linear shift and lambda' = 2 lambda recovered; 1/k_L poles cancel in every assembly; initial-label rho-slice f isotropic for all eps; attractor (m -> 0) kills dt, A2 and the rho-extra kernel; eps -> 0 kills every cross kernel; K_c squeezed value -2 eps/3; f_map(g=1) reproduces -5 (initial) and -25/4 + 15/4 mu^2 (final, eps=3/2); f_map(g=0) = 0 both labels; attractor cross divergence vanishes for both modes constant. Optional PSU_S9S10_CACHE=<prefix> caches the solves (not used for the committed json)."
+ },
+ "outputs": [
+  {
+   "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.json",
+   "type": "result-json",
+   "checksum": "sha256:def17f817207131eaedb8a7b41a3a350a011fd47074994c095bc56a9ab1f22bc"
+  },
+  {
+   "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.md",
+   "type": "document",
+   "checksum": null
+  }
+ ],
+ "verification": "Re-run and diff the JSON. Required exact values: S9.lambda_rho_prime(dNc_rho/zeta_phi) == '2 - 2*epsilon/3' (printed '-2*(epsilon - 3)/3'); S9.composition.initial == {const '5*(2*epsilon - 15)/24', mu2 '0', const_3_2 '-5/2'}; S9.composition.final.const_3_2 == '-25/8', mu2_3_2 == '15/8'; S9.threading_minus_lab_deltaN == '-5*(epsilon - 6)/24'; S9.attractor_m0 all '0'; S10.K_c_squeezed_kL_over_kS_to_0 == '-2*epsilon/3'; S10.K_c_limits.K_c_independent_of_m_S == true; S10.f_map_g.initial.g0 == {const '0', mu2 '0'}; S10.f_map_g.final.g1 == {const '-5*epsilon/4', mu2 '5*epsilon/4'}.",
+ "status": "runnable-now",
+ "provenance": [
+  "project-context/NEXT_SCIENCE_LEDGER.md row 17: S9/S10 recorded PARTIAL on 2026-09-04 (rho-slice second order open; K_c uncomputed)",
+  "research/theory_audit/psu_gates_S6_S11_2026_09_04.md S9 'missing step' and S10 eq. (S10.1): the two open kernels closed here",
+  "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+  "input 'lab separate-universe delta N on uniform density' used for: the comparison value only, read after the rho-slice map was computed and printed (negative result recorded)",
+  "input 'Namjoo, Firouzjahi & Sasaki 2012' used for: the literature caveat on delta N with non-Gaussian initial data in non-attractor phases (candidate missing step; not verified here)"
+ ]
+}

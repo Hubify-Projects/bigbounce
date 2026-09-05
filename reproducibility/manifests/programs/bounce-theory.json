@@ -320,6 +320,13 @@
       "depends_on": [
         "psu-gates-s6-s11-science-gates"
       ]
+    },
+    {
+      "id": "psu-gates-s9-s10-rho-slice-kc",
+      "depends_on": [
+        "psu-gates-s6-s11-science-gates",
+        "row11c-threading-map-second-order"
+      ]
     }
   ],
   "external_data": [
