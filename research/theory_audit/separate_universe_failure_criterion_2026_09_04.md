@@ -235,7 +235,7 @@ $\lambda=\tfrac{1-w}{2}$, $f_{\rm map}=-\tfrac{15}{8}(1+w)(1-\mu^2)$. Validated 
 USR (agreement to $O(\epsilon)$, exact linear $\lambda_{\rm USR}=1+\tfrac{\epsilon_f}{3}-\tfrac{\sqrt{\epsilon_s\epsilon_f}}{3}$),
 attractor (identity), plus ekpyrosis as the discriminating contracting control. Limits of the claim: §3 (i)–(v).
 
-**Proposed ledger row 16 (orchestrator adds):** `16 | Separate-universe failure criterion (lift #2 of C2): <eps/c_s^2>_zeta
+**Proposed ledger row (next free; row 16 was taken by the chirality-at-scale row 4afffc97 while this lane ran — orchestrator assigns the number):** `NN | Separate-universe failure criterion (lift #2 of C2): <eps/c_s^2>_zeta
 criterion, general-w lambda/f_map, 3 validations + ekpyrotic control | DONE 2026-09-04 (this note, script sha 21668ab6,
 json 4e2a49be) | open: c_s-dependent second-order map; eps(t) re-solve for USR at second order; short methods note draft`.
 
