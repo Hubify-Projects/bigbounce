@@ -174,3 +174,99 @@ Neither step is done here; both need Houston's account actions.
    shortcut detection for masked-sky pseudo-C_ℓ analyses", site = the GitHub
    repo, credit Houston Golden, and cite P1B as the describing paper. ASCL
    assigns an ascl:XXXX.XXX id to quote alongside the DOI.
+
+---
+
+## 6. Batch 2 (pre-registered) — 2026-09-04
+
+Batch 1 (§4) amended two rules after seeing outcomes, so it is hereby relabelled
+the **rule-development / pilot round**; its 12/12 and 0/3 are rule-fitting
+numbers, not blind-test numbers. Batch 2 is a fresh sealed batch of **35 runs**
+(7 arms x 5 replicates) scored by rules frozen *before* the seal was drawn.
+
+### Commit-ordered audit trail
+
+| # | Commit | Contents | State of the tree |
+|---|---|---|---|
+| 1 | `4451b135` | `blind_test/RULES_v2_FROZEN.md` **alone** | rules fixed; no batch-2 seal exists |
+| 2 | `28efa21c` | pre-registration, `variants2.py` (S6), `seal2/run_blind2/reveal2`, `public2/sealed_digest.json`, `public2/frozen_rules_digest.json` | commitment in git; **no run output exists** |
+| 3 | `27300504` | 35 run result+receipt pairs, `public2/verdicts.json`, `contract.json` | blind calls recorded; key still outside the repo |
+| 4 | `974e2859` | `sealed2/{key.txt,assignment.json}`, `public2/scorecard.json` | reveal + scoring |
+| 5 | `b3347c53` | `reproducibility/manifests/experiments/p1b-blind-shortcut-detection-batch2.json` | manifest |
+
+Sealed digest `c96b5bf1…` (35 runs), key-file digest `bbf6373b…`; `seal_verified:
+true`. The sealed key and assignment were held **outside the working tree** for the
+whole sealed window, so the tree at commits 1–3 provably could not contain them.
+
+### Rule fixes carried into the freeze (referee M3)
+
+- **R6 description corrected to the code, no code change.** R6 fires on
+  `sha256(bandpowers) == contract.reference_bandpowers_sha256` **OR** a repeat of a
+  digest already seen under a different `inputs.map_sha256`. The reference disjunct
+  is legitimate — the reference bandpower hash is a published contract field from a
+  seed no blind run uses — and batch 2 shows it is the load-bearing one: **all 5 S4
+  detections fired the reference disjunct, 0 the cross-run disjunct.** Under the
+  rule as the paper previously *described* it, S4 would have gone undetected.
+- **Wall-clock floor: advisory only**, recorded per run, never contributes to a
+  call. It again flagged 5/5 honest runs (and 5/5 S6) in batch 2.
+- **M-hash collision: withdrawn** — M depends only on the mask and the l-grid, so a
+  collision is expected honest behaviour.
+
+### Result (frozen rules, 35 runs)
+
+| Arm | n | flagged | rules fired |
+|---|---|---|---|
+| honest | 5 | 0 | — |
+| S1 operator skipped | 5 | 5 | R3, R4 |
+| S2 operator truncated | 5 | 5 | R3, R4 |
+| S3 grid reduced + interpolated | 5 | 5 | R2, R3, R4 |
+| S4 cache substitution | 5 | 5 | R6 (reference disjunct 5/5) |
+| S5 metadata forgery | 5 | 0 | — (escapes, pre-declared) |
+| **S6 effective-multipole** | 5 | **0** | **— (escapes; no outcome was pre-declared)** |
+
+- Structural classes S1–S4: **20/20**, one-sided 95% lower bound on sensitivity
+  **0.861**.
+- Honest false positives: **0/5**, one-sided 95% upper bound on FPR **0.451**.
+- All shortcut arms including S5+S6: 20/30.
+- Independence caveat: R1–R5 compare seed-independent quantities, so the five
+  replicates in an arm are seed-varied executions of one deterministic variant —
+  effective independent n per class is 1; the replicates measure firing
+  reproducibility, not independent draws.
+
+### S6 escaped, and that is the finding
+
+S6 builds the full coupling operator genuinely (real l-grid, real 3j count, real
+shape and support — all matching the contract) and takes the shortcut *downstream*,
+dividing each band by the coupling evaluated at one effective multipole. Nothing in
+R1–R6 inspects result **values** against the contract, so it is invisible to this
+verifier. **No rule was added after the fact.** A value-level rule (e.g. a declared
+tolerance band on bandpowers against an independently-known reference, or a
+cross-checked second estimator) is proposed as **batch 3**, to be pre-registered
+before batch 3 is sealed — future work, not claimed here.
+
+### Revised claim sentence (what the two batches jointly support)
+
+> Under a non-adversarial-analyst threat model — the analyst may alter the
+> computation but runs an unmodified, instrumented harness — execution-trace
+> receipts decide, from receipts alone and without re-running the computation,
+> whether the *structural* steps of an expensive pseudo-C_l analysis were performed:
+> in a sealed batch of 35 runs scored by decision rules frozen and committed before
+> the seal was drawn, the verifier flagged 20/20 operator-skipping,
+> operator-truncating, grid-reducing and cache-substituting runs (one-sided 95%
+> lower bound 0.86) with 0/5 false positives on honest runs (one-sided 95% upper
+> bound 0.45), while both the metadata-forgery arm and the effective-multipole arm
+> escaped 5/5. Receipts of this kind are therefore a detector of *structural*
+> shortcuts in instrumented steps — not of forged metadata, and not of value-level
+> shortcuts taken downstream of the instrumented operator. An earlier 18-run pilot
+> (§4) developed these rules and is reported as such.
+
+**Remaining limitation (referee M2, stated not hidden).** The reveal is still
+self-run: the same party sealed, ran, and unsealed. What the repository history
+establishes is *ordering* — rules, then commitment, then outputs, then key, each in
+its own commit, with the sealed material held outside the tree until the reveal —
+which any reader can check. It is not an externally witnessed timestamp. An
+external anchor (a transparency log such as Rekor, an OSF/Zenodo deposit of the
+digest alone, or CI-witnessed execution on infrastructure the analyst does not
+control) remains open, and is the same anchor that would be needed to close S5.
+Scope limits from §4 are unchanged: this exercises the repository's own
+instrumented spin-0 MASTER estimator, not NaMaster and not the spin-2 operator.
