@@ -1,0 +1,102 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row15-curvaton-adjudication",
+  "title": "Row 15 adjudication: independent sympy re-derivation of the curvaton-type matter bounce claims (CXB11 Eq. 18 coefficient and Case-1 f_NL, branch-W tilt sign, spectator MS operator and tilt, two-channel r, delta-N curvaton f_NL, adiabatic-bispectrum dilution)",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "row-15 lane under adjudication",
+      "locator": "research/track_a3_multichannel/row15_curvaton/ (ROW15_CURVATON_2026-09-04.md, results.json, row15_curvaton.py)",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "branch-W ALP-curvaton tilt note",
+      "locator": "research/branch_W_alp_curvaton_tilt/03_tilt_mechanisms.md ; 04_dynamical_screening.md ; phase1_results.md",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "Cai, Xue & Brandenberger 2011 (source)",
+      "locator": "https://arxiv.org/abs/1101.0822",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai, Easson & Brandenberger 2012 (source)",
+      "locator": "https://arxiv.org/abs/1206.2382",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lyth, Ungarelli & Wands 2003",
+      "locator": "https://arxiv.org/abs/astro-ph/0208055",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Sasaki, Valiviita & Wands 2006",
+      "locator": "https://arxiv.org/abs/astro-ph/0607627",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.py",
+      "entrypoint": "python3 research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.py",
+      "sha256": "2db10d9a7fe967a29b67d5c8e7bb09c860c9c36f3533559f83241b8151e588df"
+    }
+  ],
+  "environment": {
+    "python": "python3 with sympy (>=1.12; run on sympy 1.14.0), numpy, scipy",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local macOS workstation",
+    "date": "2026-09-04",
+    "wall_clock": "2 s",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 minute",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic sympy plus a small scipy DOP853 mode integration (first-order WKB vacuum). Self-validates: de Sitter massive-spectator tilt 2m^2/(3H^2) recovered before the contraction case; the integrator reproduces the exact tracking-mass Bessel tilt 2*gamma/3 to <=3%; the delta-N sudden-decay f_NL reproduces SVW06 exactly; CXB11 Eq. 65 is reproduced from their Eqs. 55/60/64. No network at run time."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and diff the JSON. Required exact values: validation_de_sitter.matches_textbook_2m2_over_3H2 == true; C_spectator_tilt.equals_12w_over_1p3w == true and same_MS_operator_as_adiabatic_for_const_eps == true; A_massive_spectator_dust.tilt_tracking_mass == '8*m**2/(3*H**2)' and coefficient_ratio_contraction_over_deSitter == '4'; D_r_formula.P_curv_over_P_ad_dust == '4*M_pl**2*r_dec**2/(3*sigma_star**2)' and x_threshold_for_r_lt_0.036 == 22.34 (2 dp); E_curvaton_fNL.deltaN_matches_SVW == true and zero_crossing_exact == '-1 + sqrt(10)/2'; F_dilution.adiabatic_weight_of_r == 'r**2/576'; A_CXB11_case1.case1_symbolic == '-320/pi**4'; B_massive_numeric.tracking_mass_validation within 3% of exact.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 15 (curvaton-type matter bounce) \u2014 adjudication of the lane's two literature corrections and central claims before the A3M paper may rely on them",
+    "directive R (vision governance) and directive Q2 (reproducibility manifests); /never-fabricate-derivation",
+    "input 'row-15 lane under adjudication' used for: the six claims A-F and their stated assumptions; its numbers compared only AFTER independent computation",
+    "input 'branch-W ALP-curvaton tilt note' used for: item B, locating the erring step (n-1 written as 2nu-3)",
+    "input 'Cai, Xue & Brandenberger 2011 (source)' used for: Eqs. 10-19 (spectator equation, Eq. 18 tilt, Eq. 19), Eq. 32 (C), Eqs. 55/60/61/64-67 (amplitudes, r, f_NL)",
+    "input 'Cai, Easson & Brandenberger 2012 (source)' used for: checked for an independent curvaton section \u2014 none (only a mention of the bounce curvaton); recorded as such",
+    "input 'Lyth, Ungarelli & Wands 2003' used for: Phi = -(3/5) zeta = -(r/5) delta rho_sigma/rho_sigma, f_NL = 5/(4r) leading term; zeta_curv = r_dec (2/3) delta sigma/sigma_*",
+    "input 'Sasaki, Valiviita & Wands 2006' used for: sudden-decay f_NL = (5/4r)(1+gg''/g'^2) - 5/3 - 5r/6, used as a VALIDATION target of the independent delta-N derivation"
+  ]
+}
