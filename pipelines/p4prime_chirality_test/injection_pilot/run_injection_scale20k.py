@@ -86,9 +86,24 @@ def download_one(row, cache_dir):
 def get_image(idx, url, cache_dir):
     p = cache_dir / f"{idx}.jpg"
     if not p.exists():
-        r = requests.get(url, timeout=20)
-        r.raise_for_status()
-        p.write_bytes(r.content)
+        # Row16-local hardening: the 2026-09-04 attempt hit a ~98% download
+        # failure tail (9360/9496 remaining requests failed) consistent with
+        # legacysurvey.org rate-limiting after ~10.5k sequential requests.
+        # Retry with backoff + a small inter-request delay to avoid repeating it.
+        last_exc = None
+        for attempt in range(4):
+            try:
+                r = requests.get(url, timeout=20)
+                r.raise_for_status()
+                p.write_bytes(r.content)
+                last_exc = None
+                break
+            except Exception as e:
+                last_exc = e
+                time.sleep(1.5 * (attempt + 1))
+        if last_exc is not None:
+            raise last_exc
+        time.sleep(0.15)
     return Image.open(p).convert("RGB")
 
 
