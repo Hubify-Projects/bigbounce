@@ -1,8 +1,10 @@
 # Ledger row 14 — the (r, f_NL) window in the contraction's scalar sound speed c_s
 
-**Status:** IN PROGRESS 2026-09-04 (plan header committed first; results appended below).
+**Status:** DONE 2026-09-04. **Result: NO VIABLE c_s WINDOW — r < 0.036 needs c_s < 1.5e-3,
+which drives f_NL^after to ~6e5; keeping f_NL inside Planck needs c_s > 0.44, i.e. r > 10.7.
+The two regions are disjoint by ~300x in c_s. Row 14 closes as a NULL.**
 **Owner lane:** row14_cs_window (does NOT touch `research/track_a3_multichannel/paper/main.tex`)
-**Artifacts (planned):** `row14_cs_window.py`, `results.json`, `row14_cs_window.log`,
+**Artifacts:** `row14_cs_window.py`, `results.json`, `row14_cs_window.log`,
 `row14_cs_window.png`, manifest `reproducibility/manifests/experiments/a3-row14-cs-window.json`.
 
 ## Why
