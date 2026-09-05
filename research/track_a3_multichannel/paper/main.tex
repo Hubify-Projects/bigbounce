@@ -937,12 +937,16 @@ $A_*=0.131446$ (the amplitude at which $\fpbh=1$ for $\fnl=0$); Table~\ref{tab:p
 and Fig.~\ref{fig:pbh} report $\fpbh$ at this calibration. Reproducing
 Choudhury \textit{et al.}'s reported band at $-35/8$
 ($10^{-3}\le\fpbh\le1$) is not forced by construction -- the amplitude was
-fixed by the unrelated Gaussian-case normalisation -- and it lands there
-unforced for $\gamma_{\rm cr}\gtrsim0.85$; for $\gamma_{\rm cr}\lesssim0.85$,
-at the same fiducial $\fnl=-35/8$ Choudhury \textit{et al.} report,
-our implementation instead finds \emph{enhancement} relative to Gaussian where
-they report suppression, a genuine discrepancy left unresolved because it
-depends on which side of that crossover their (unreproducible) spectrum falls.
+fixed by the unrelated Gaussian-case normalisation -- and it lands there for
+every $\gamma_{\rm cr}$ once the sign disagreement below $\gamma_{\rm
+cr}\approx0.85$ is traced to its source and resolved: the apparent
+\emph{enhancement} there is an IR-divergent $O(\epsilon^2)$ artefact of the
+quadratic compaction map ($\propto(6\gamma_{\rm cr}^2-1)\sigma_r^2$,
+positive only below $\gamma_{\rm cr}=1/\sqrt6\approx0.408$ and formally
+divergent as the IR cutoff is removed), not a physical effect; the
+IR-finite $O(\epsilon)$ term suppresses at every $\gamma_{\rm cr}$, so
+negative $\fnl$ suppresses the compaction abundance throughout, and
+Choudhury \textit{et al.} are right.
 
 \begin{table}[t]
 \caption{\label{tab:pbh}Channel II. Compaction-function criterion: amplitude
@@ -950,17 +954,20 @@ ratio $A(-35/16)/A(-35/8)$ required to reach $\fpbh=10^{-3}$, and the
 \emph{nominal (uncapped)} $\fpbh$ columns -- i.e.\ evaluated at the
 Gaussian-calibrated amplitude $A_*$ with no upper cutoff applied -- for
 representative points of the $(\Delta,r_pk_p,C_{\rm th})$ grid (full 27-point
-grid in \texttt{outputs/pbh\_compaction\_fnl.json}). The grid's $9$ distinct
-$\gamma_{\rm cr}$ values span $[0.766,0.968]$, straddling the sign-flip
-scale $\gamma_{\rm cr}\approx0.85$ ($9$ of $27$ points below it), giving
-ratio $1.732\pm0.050$ (range $[1.610,1.809]$); this model's own
-near-scale-invariant spectrum shape sits at $\gamma_{\rm cr}\in[0.27,0.63]$,
-\emph{outside} this scanned coverage, and separately gives $1.85$--$1.89$.
-The quoted $1.7$--$1.9$ (abstract, Sec.~\ref{sec:pbh}) is therefore the
-union of this grid scan and one out-of-coverage evaluation, not itself a
-scan result over the full range, and conditional throughout on the
-unresolved Choudhury \textit{et al.} sign disagreement above
-(\texttt{outputs/r5\_18\_gammacr\_coverage.json}).}
+grid in \texttt{outputs/pbh\_compaction\_fnl.json}). An extended $255$-point scan over
+$\gamma_{\rm cr}\in[0.196,0.968]$ (two spectrum-shape families) gives
+$1.83\pm0.05$ overall (range $[1.61,1.91]$); restricted to
+$\gamma_{\rm cr}\in[0.267,0.630]$, the interval this model's own
+near-scale-invariant spectrum shape occupies, the ratio is
+$\mathbf{1.84\pm0.03}$ ($144$ points, range $[1.76,1.89]$); on the
+original $27$-point committed grid ($\gamma_{\rm cr}\in[0.766,0.968]$) it
+is $1.732\pm0.050$ (range $[1.610,1.809]$) and must not be quoted as
+universal. The ratio decreases monotonically and weakly with
+$\gamma_{\rm cr}$, so the abstract's $1.84\pm0.03$ is a shape-resolved
+scan result, not a union of a scan and an out-of-coverage point, and the
+sign disagreement with Choudhury \textit{et al.} noted in earlier drafts
+is resolved above: negative $\fnl$ suppresses the abundance, as they
+report (\texttt{outputs/r11\_pbh\_residuals.json}).}
 \begin{ruledtabular}
 \begin{tabular}{ccccccc}
 $\Delta$ & $r_pk_p$ & $C_{\rm th}$ & $\gamma_{\rm cr}$ & $\fpbh(-35/16)$ & $\fpbh(-35/8)$ & ratio $A$ \\
@@ -1041,12 +1048,12 @@ Mpc}^{-1}$, i.e.\ a bounce temperature $T_B\gtrsim6\times10^{9}$--$6\times10^{10
 thirteen decades above the BBN scale ($\sim1\,$MeV); a scale-independent transfer with $T_{\fnl}<1/2$ cannot by
 itself close the $7$-decade amplitude shortfall found below, so this
 condition, while formally required, does not affect the null verdict. On
-this shape,
-the required-amplitude ratio widens from the lognormal grid's
-$1.732\pm0.050$ to $1.7$--$1.9$ across a threshold scan
-$C_{\rm th}\in\{0.4,0.5,0.6\}$: the ratio remains the channel's robust,
-spectrum-shape-stable output, but $1.73\pm0.05$ should not be quoted as if it
-were universal.
+this shape, inside the model's own $\gamma_{\rm cr}\in[0.267,0.630]$
+coverage the required-amplitude ratio is $1.84\pm0.03$ across a threshold
+scan $C_{\rm th}\in\{0.4,0.5,0.6\}$: the ratio remains the channel's
+robust, spectrum-shape-stable output, but the narrower $1.732\pm0.050$
+from the original committed grid must not be quoted as if it were
+universal.
 
 Fed into the same compaction machinery unmodified, the lab's own spectrum
 delivers $\Delta_\zeta^2\sim5\times10^{-10}$--$1.3\times10^{-9}$ at PBH
@@ -1361,7 +1368,8 @@ bounce elsewhere in the literature~\cite{Papanikolaou2025} requires a
 small-scale spectral enhancement this model does not have, and is retained
 only as a flagged contrast case. This channel is also insensitive to the
 value of $\fnl$ and therefore does not test it either way.
-Primordial black holes yield a reproducible amplitude ratio ($1.7$--$1.9$)
+Primordial black holes yield a reproducible amplitude ratio
+($1.84\pm0.03$ within this model's own $\gamma_{\rm cr}$ coverage)
 between the two candidate values, but the lab's own predicted spectrum falls
 $6.7$--$7.0$ orders of magnitude short of the required amplitude at every mass
 scale considered (Sec.~\ref{sec:pbh_inlab}): the channel is a clean null for
@@ -1522,11 +1530,19 @@ bulk's $\mu^2$ coupling and adds the $+15/16$ monopole, reproducing the
 $\mu^2$ coefficient exactly and supplying the [X] monopole. In-in monopole minus
 $\delta N_c$: $-\tfrac{15}{8}-(-5)=\tfrac{25}{8}=[X]_{\rm mono}\,(5/4)+
 ([L]-\delta N_c)\,(15/8)$; in general $\epsilon$,
-$5\epsilon(9-\epsilon)/18=5\epsilon(9-2\epsilon)/36+5\epsilon/4$. The second
-piece is the second-order part of the $\zeta_{\rm Mald}\to\delta N_c$
-threading map; it is \emph{recorded} as exactly the pure pair-translation
-coefficient $(5/12)(3\epsilon)$ -- a computed identity, not a claimed
-mechanism.
+$5\epsilon(9-\epsilon)/18=5\epsilon(9-2\epsilon)/36+5\epsilon/4$. The
+zero-shift, fluid-worldline threading identity underlying $\delta N_c$ is
+$\delta N_c(x_f)=\zeta(t_f,x_f)-\tfrac13\int\partial_iN^i\,dt$ along the
+worldline; expanding it to second order at constant $\epsilon$ gives
+$f_{\delta N_c}=f^{\rm in\text{-}in}/\lambda+f_{\rm map}$ with
+$\lambda=1-\epsilon/3$ and $f_{\rm map}=-\tfrac{5\epsilon}{4}
++\tfrac{5\epsilon}{4}\mu^2$, an isotropic monopole of exactly $-5$ for
+every constant $\epsilon$. A pure rigid translation of the short-mode
+field is isotropic and therefore cannot by itself supply a monopole; the
+numerical match of $f_{\rm map}$'s coefficient to a translation-like form
+is a coincidence of this threading map, not evidence that translation is
+the mechanism -- the position-dependent piece doing the work is the
+shear/dilation of the fluid displacement field, not its rigid part.
 
 \subsection{General-$\epsilon$ formulas}
 
