@@ -2,15 +2,121 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-04 — v3M.0.13. Abstract trimmed to the PRD-regular ≤307-word cap (was ~415 words), no science change, every claim retained at its evidential strength; see "v3M.0.13" section below. Readiness held at 75. Prior: v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
+last_updated: 2026-09-04 — v3M.0.14. R6 truth-audit closure: 16 genuinely-new-real findings (0 physics errors) closed — T_B mapping corrected (thirteen decades above BBN, was eleven), Channel I amplitude re-paired to the free-gamma NANOGrav posterior, abstract calibrated to body, DESI DR1 v3 reproduction sentence added to Sec. VI. ROUNDS STOPPED under directive R2 (3rd consecutive verification round) — next board only after a science decision on the (ii) list (A3-4, A3-1e). Readiness held at 75. See "v3M.0.14" section below. Prior: v3M.0.13. Abstract trimmed to the PRD-regular ≤307-word cap (was ~415 words), no science change, every claim retained at its evidential strength; see "v3M.0.13" section below. Readiness held at 75. Prior: v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (15 pp / 0 undef refs / md5 02251c80882da4eda5fa07c92917c86d / sha256 c6f9bb57f9acb755dfe6a3bda12955038ffcf46c86a5cea9809dabff5031a34c)
-version: v3M.0.13 (2026-09-04, abstract to cap — see "v3M.0.13" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (15 pp / 0 undef refs / md5 de167ede0c3aa1ea31ded3fe9437fd82 / sha256 9cffe9a8a33566afccf12614fe26e4f3a7fc79eb81b4ca2b284b10e06ecb1fb0)
+version: v3M.0.14 (2026-09-04, R6 closure — see "v3M.0.14" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
 headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 25 (R1+R2 closed, rounds stop per directive R2) / packaging 20 = ~95; awaiting Houston's final personal review for 100 per directive P)
-submission_status: draft, R2-closed — CONVERGENCE STATEMENT: rounds stop after v3M.0.5 per directive R2 (2/2 consumed); residue genre/venue
+submission_status: draft, ROUNDS STOPPED (R2) — next board only after a science decision on the (ii) list
+
+## v3M.0.14 (2026-09-04) — R6 truth-audit closure, 0 physics errors, rounds stopped (R2)
+
+R6 verification board on the exact v3M.0.13 PDF (sha256 c6f9bb57..., 15 pp):
+Claude Fable INT major-revisions (5M/15m), Grok API REJECT, Gemini API
+major-revisions. Full audit:
+`project-context/peer-reviews/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md`.
+41 findings canonicalized to 16 genuinely-new-real (1 MAJOR + 1 MAJOR-lite +
+14 MINOR), 8 re-flags of already-disclosed items, 7 falsified against
+committed source, 8 opinion/genre/venue. **Zero findings identified an
+error in a derivation.**
+
+**Closed (i list, all 20 items):**
+1–3. R6-01 (MAJOR): §V C bounce-temperature condition recomputed from the
+paper's own committed mapping `k_B≈1.71e7·T_B[GeV]`
+(`outputs/inlab_delta2_zeta_2026-09-03.json`) — corrected 10^8–10^10 GeV /
+eleven decades above BBN → 6×10^9–6×10^10 GeV / thirteen decades; §IV D's
+"7.6 decades below" → 9.6; the §V C worked T_B=10^8 GeV point relabelled
+below-validity. Error direction makes the null *stronger*.
+4. R6-02 (MAJOR-lite): Channel I mixed the γ=13/3-fixed NANOGrav amplitude
+(2.4e-15) against the free-γ slope (3.2); re-paired to the free-γ posterior
+amplitude (~6.46e-15); `sigw_nhz_from_lab_spectrum_2026_09_04.py` rerun;
+shortfall moves 10^14.3→10^15.2 (14.6 dust bracket); Fig. 1 regenerated.
+5–6, 10–11. Abstract calibrated to body: P+B candidate separation
+(0.5–1.1σ) vs. bare significance (1.0–1.3σ, Table VI); SMBH-seed FIRAS
+exclusion (3 dex, model-independent) separated from this model's own
+~7-dex shortfall; S1/S2 stated as two distinct scheme values, not a band;
+PBH ratio carries its γ_cr-grid conditionality and the Choudhury
+sign-disagreement caveat instead of "shape-robust." Abstract trimmed to
+**304 words** (detex count), under the 307-word PRD-regular cap.
+7. R6-05: DESI merger-response sign-of-comparison inverted text fixed
+(prediction lies above, not below, the central value).
+8. R6-06: version-history prose removed from §VII C.
+9. R6-07: the 3162σ/3364σ/408σ excursion thresholds sourced with a
+one-line derivation and labelled by mass scale, distinct from the
+log₁₀β≈−1.7×10^9 number at M_H=10^20 g (n_σ=89,149).
+12. R6-10: added the r=0.84 tensor-exclusion sentence after the Channel I
+tensor comparison (already-excluded at k_* by the quoted BICEP/Keck bound,
+if confirmed — open item A3-4).
+13. R6-12: "largely excluded" replaced with the quantified three-orders
+SMBH statement.
+14. R6-14: S2's missing f_NL^after clarified as cubic-order-only (linear
+S2/LQC transfer exists, T=0.409).
+15. R6-15: sentence fragment after Eq. (7) repaired.
+16. R6-16: Table VI caption states every entry is an upper bound.
+17. R6-09: Ref. [8] (Papanikolaou, arXiv:2504.11641) author-list/identifier
+flagged for pre-submission verification (not resolvable offline this pass).
+18. R6-13: every printed PTA "σ" (abstract, §IV D, Fig. 1 caption,
+Discussion) labelled a Gaussian-equivalent z-distance, consistent with the
+paper's own Savage–Dickey stance.
+19. RF9 (optional): §II D wording harmonized to "a computed identity, not
+merely bounded," matching the Appendix's own framing.
+20. Sec. VI gains the DESI DR1 v3 reproduction sentence: an independent
+re-analysis of the public DESI DR1 QSO sample on DESI's own official
+window matrix, full-randoms P_ℓ, and EZmock covariance
+(z=0.8–2.1, k≤0.08 h Mpc⁻¹, 46 dof) returns f_NL=−2.2±25 (p=1.6),
+0.06σ from the published −3.6⁺⁹·⁰₋₉.₁ — reproducing the published
+constraint's sign and scale while showing DR1's power is an order of
+magnitude too weak to separate −35/16 from −35/8, from zero, or from the
+published value; the near-coincidence with −35/16 is a coincidence, not
+evidence; mandatory caveat carried (σ=25 vs. published 9.0 because
+wide-angle corrections are not applied and only 2/5 imaging-systematics
+splits were run). Source:
+`research/desi_png_reproduction/LEDGER4_RESULT_v3_2026-09-04.md`.
+
+**(ii) SCIENCE items moved to `NEXT_SCIENCE_LEDGER.md`, not this review
+round:** A3-4 (re-derive r for the three bounce backgrounds under S1 and
+test against r<0.036 — the fourth-channel exclusion of item 12 stays
+conditional until this is done); A3-1e (resolve the Choudhury et al.
+γ_cr≲0.85 sign disagreement — blocked on their spectrum not being
+reconstructible from the published paper; realistic route is analytic
+diagnosis of the J(γ_cr) sign structure); A3-ns (evaluate Eq. (A3) at
+n_s=0.9649 exactly, expected O(1%) shift); A3-dN (identify the second-order
+δN mechanism — open theory question); DESI-4 (wide-angle corrections +
+the 3 blocked imaging-systematics splits, blocked on locating the
+DR9/Legacy pixweight VAC).
+
+**PDF hygiene (directive G):** `\paperVersion` v3M.0.13→v3M.0.14,
+`\paperTimestamp` unchanged (2026-09-04, same day). Recompiled 4-pass, 0
+undefined references, 15 pp, md5 `de167ede0c3aa1ea31ded3fe9437fd82`, sha256
+`9cffe9a8a33566afccf12614fe26e4f3a7fc79eb81b4ca2b284b10e06ecb1fb0`. Overfull
+hboxes 2.7pt/2.2pt (both <10pt; a 74.9pt overfull introduced transiently by
+the new DESI-sentence path was fixed with an `\allowbreak` before the final
+compile). Page 1 and every edited page (bounce-temperature §V C, Fig. 1,
+DESI §VI, Reproducibility statement) rendered at 55 dpi and visually
+spot-checked — no overflow, all edits render as intended. Mirrored
+byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.14.pdf`,
+`public/papers/a3_multichannel_arxiv_v3M.0.14.pdf`, and the source-dir
+`research/track_a3_multichannel/paper/main.pdf` (three-way md5 match
+verified). arXiv tarball rebuilt at
+`project-context/SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.14.tar.gz`,
+sha256 `207d39f23ee3fcb521b49a6dba33b7b5a639a1dcf8319b15aee4d5e946bb2ba3`
+(main.tex + 2 figures), standalone-smoke-tested (extract to a clean
+directory, recompile 4-pass, 0 undefined refs, 15 pp). Convex
+`paperVersions:bump` mutation id `k57571ypt0a7rz8zx3pfj0evk58dt0pd` (readback
+verified); `activityFeed:add` id `j57ce544b5tqt8zzm8dd2vppp98dtpx6`.
+`site/src/data/{papers,live-status,publish}.ts` updated to v3M.0.14
+strings/pdfMeta/hrefs in the same bundle; `reviewTimeline.ts` gains a
+`closure-wave` entry (`a3m-r6-closure-v3m-0-14-2026-09-04`). `cd site &&
+npx tsc --noEmit` clean; `tools/site_freshness_check.sh` PASS.
+
+**Readiness held at 75. ROUNDS STOPPED under directive R2 — this was the
+third consecutive verification round on A3M, and its yield (0 physics
+errors, all real items editorial/calibration/sourcing) confirms the
+review-convergence floor. No further review round may be dispatched on
+A3M until a science decision is taken on A3-4 and/or A3-1e.**
 
 ## v3M.0.13 (2026-09-04) — abstract to cap, 15 pp
 
