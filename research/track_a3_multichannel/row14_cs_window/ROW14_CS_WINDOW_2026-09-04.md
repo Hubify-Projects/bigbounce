@@ -113,3 +113,68 @@ What is independent is (i) the `c_s\to1` limit, verified exactly against the lab
 and (ii) the `1/c_s^2` *scaling*, which is the generic single-field result (CHKS 2007) and
 is what drives the conclusion below. A fine-tuned `\lambda` could shift the coefficient but
 not the divergence as `c_s\to0`.
+
+## 3. The transfer `T(c_s)` through the bounce is `c_s`-independent
+
+For constant `c_s`, `z \propto a`, so `z''/z = a''/a` is unchanged and the only change to
+the mode equation is `k^2 \to c_s^2k^2`: the `c_s` problem at wavenumber `k` **is** the
+`c_s = 1` problem at the effective wavenumber `c_s k`. Because `T` is already flat over
+`k\eta_B \ll 1` (row 10 / A2), lowering `c_s` moves the mode further into the super-Hubble
+regime and changes nothing. `z`'s `1/c_s` factor is a constant and drops out of the
+`{1, J(\eta)}` super-Hubble branch mixing entirely.
+
+Verified numerically, not assumed: the scalar was re-integrated through all three A2
+backgrounds with the gradient term `c_s^2k^2` for `c_s \in \{1, 10^{-1}, 10^{-2},
+1.5\times10^{-3}, 10^{-4}\}` at `k\eta_B = 10^{-2}`.
+
+| background | `T_{f_{\rm NL}}` | `\lambda_\zeta` | `\max|\lambda_S/\lambda_T - 1|` over the `c_s` grid | `r_{\rm after}/16\epsilon c_s` |
+|---|---|---|---|---|
+| poly-analytic non-LQC | 0.195501 | 5.115 | `5.6\times10^{-13}` | 1.00000000 |
+| LQC-effective dust | 0.250000 | 4.000 | `4.1\times10^{-11}` | 1.00000000 |
+| Quintin 2015-type (S1) | 0.165005 | 6.060 | `2.9\times10^{-12}` | 1.00000000 |
+
+So `r_{\rm after} = 16\epsilon c_s` for every bounce in the class and every `c_s`
+(row 10's bounce-invariance of `r` survives `c_s < 1` unchanged), and
+`f_{\rm NL}^{\rm after} = T_{f_{\rm NL}}\,f_{\rm NL}^{\rm pre}` with the `c_s = 1`
+transfer values.
+
+## 4. The joint table
+
+`\epsilon = 3/2`; `f_{\rm NL}^{\rm after}` on the Quintin 2015-type background (S1,
+`T = 0.16501`, the *most favourable* of the three).
+
+| `c_s` | `r = 24c_s` | `r/0.036` | `f_{\rm NL}^{\rm pre}` | `f_{\rm NL}^{\rm after}` (S1) |
+|---|---|---|---|---|
+| 1 | 24 | 667 | `-2.188` | `-0.361` |
+| 0.5 | 12 | 333 | `+22.19` | `+3.661` |
+| 0.1 | 2.4 | 66.7 | `+8.022\times10^{2}` | `+1.324\times10^{2}` |
+| `10^{-2}` | 0.24 | 6.67 | `+8.124\times10^{4}` | `+1.341\times10^{4}` |
+| **`1.500\times10^{-3}`** | **0.036** | **1.00** | **`+3.611\times10^{6}`** | **`+5.959\times10^{5}`** |
+| `10^{-3}` | 0.024 | 0.67 | `+8.125\times10^{6}` | `+1.341\times10^{6}` |
+| `4.167\times10^{-4}` | 0.010 | 0.28 | `+4.680\times10^{7}` | `+7.722\times10^{6}` |
+
+Note the sign flip: `f_{\rm NL}` crosses zero near `c_s \simeq 0.887` and is **positive**
+everywhere on the tensor-viable branch — the flagship line's negative `f_{\rm NL}` is a
+`c_s \simeq 1` feature and does not survive the fix.
+
+## 5. Observational comparison at the tensor-viable `c_s`
+
+At `c_s = 1.500\times10^{-3}` (exactly `r = 0.036`):
+
+| background | `f_{\rm NL}^{\rm after}` | `\sigma` vs Planck `-0.9\pm5.1` | `\sigma` vs SPHEREx `\sigma=0.5` |
+|---|---|---|---|
+| poly | `7.060\times10^{5}` | `1.38\times10^{5}` | `1.41\times10^{6}` |
+| LQC | `9.028\times10^{5}` | `1.77\times10^{5}` | `1.81\times10^{6}` |
+| Quintin (S1) | `5.959\times10^{5}` | `1.17\times10^{5}` | `1.19\times10^{6}` |
+
+Read the other way — the largest `c_s`-suppression the `f_{\rm NL}` data permit:
+
+| requirement | min `c_s` (S1) | implied `r` | `r`/0.036 |
+|---|---|---|---|
+| `\|f_{\rm NL}^{\rm after}\| \le 5.1` (Planck `1\sigma`) | 0.4440 | 10.66 | 296 |
+| `\|f_{\rm NL}^{\rm after}\| \le 10.2` (Planck `2\sigma`) | 0.3356 | 8.06 | 224 |
+| `\|f_{\rm NL}^{\rm after}\| \le 0.7` (SPHEREx) | 0.7472 | 17.93 | 498 |
+| `\|f_{\rm NL}^{\rm after}\| \le 0.5` (SPHEREx) | 0.7804 | 18.73 | 520 |
+
+**The two allowed regions do not overlap.** The gap is a factor `296` in `c_s`
+(`224`–`542` across the three backgrounds and the four bounds).
