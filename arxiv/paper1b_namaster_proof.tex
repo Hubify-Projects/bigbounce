@@ -221,7 +221,14 @@ ordering \([EE,EB,BE,BB]\).  A common shortcut is to evaluate a theory
 spectrum at a representative multipole for each bin.  That shortcut is not
 generally identical to applying the complete mode-coupling and binning
 operator, and a mismatch between the simulation and fitting operators can
-appear as a parameter-recovery bias.
+appear as a parameter-recovery bias.  On the synthetic \(N_{\rm side}=64\),
+\(\ell_{\max}=64\) configuration used for the blind test below
+(Sec.~\ref{sec:blind-test}), replacing the full band evaluation with a single
+effective-multipole transfer factor per 8-\(\ell\) band produces a maximum
+fractional deviation of \(1.66\) and a median fractional deviation of
+\(0.17\) in the decoupled bandpowers relative to the complete-operator
+result --- large enough to bias a fit, and exactly the shortcut exercised as
+class S6 below.
 
 A separate reproducibility risk arises in long or sharded calculations.
 Ordinary filenames do not prove that a summary corresponds to the intended
@@ -277,9 +284,10 @@ Let \(W_{b\ell}^{ij}\) be the workspace tensor mapping input spectrum \(j\)
 to output spectrum \(i\) in band \(b\).  The package precontracts each of the
 three components,
 \begin{equation}
- R_{b}^{i,k}=\sum_{j,\ell}W_{b\ell}^{ij}C_\ell^{j,k},
+ R_{b}^{i,k}=\sum_{j,\ell}W_{b\ell}^{ij}C_\ell^{j,k},\qquad k\in\{0,c,s\},
 \end{equation}
-and subsequently evaluates
+where \(k\) indexes the three angle-independent, \(\cos(4\beta)\), and
+\(\sin(4\beta)\) components defined above, and subsequently evaluates
 \begin{equation}
  C_b^i(\beta)=R_b^{i,0}
  +\cos(4\beta)R_b^{i,c}+\sin(4\beta)R_b^{i,s}.
