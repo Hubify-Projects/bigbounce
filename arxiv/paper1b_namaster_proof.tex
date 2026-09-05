@@ -103,13 +103,35 @@
 %   drift (same root-cause fix as the P2/P3/P4 stamp-drift closures of the
 %   same re-sweep); (c) all three bare "Version 0.1.7" body occurrences are
 %   qualified as "\software{} version 0.1.7". No number/science changed.
-\newcommand{\paperVersion}{v2B.0.16}
-\newcommand{\paperTimestamp}{2026-07-24 18:20 PT}
+% v2B.0.17 (2026-09-04): NOVELTY LIFT #3 — reframes the package around the
+%   verification primitive it already implements (content-bound execution
+%   receipts) and adds a pre-declared, sealed BLIND shortcut-detection test
+%   (project-context/NOVELTY_AUDIT_2026-09-04.md #3; design note
+%   pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md; executed
+%   artifacts pipelines/namaster_proof/blind_test/public/). 18 sealed runs (3
+%   honest + 3 each of shortcut classes S1-S5); verifier detected S1-S4
+%   (operator-skip, operator-truncate, grid-interpolate, cache-substitute)
+%   12/12 with 0/3 false positives on honest runs; the pre-declared S5
+%   (metadata-forgery) class escaped 3/3 as expected. New Sec.
+%   "Blind Shortcut-Detection Test" states the protocol, the per-class
+%   confusion table, the two corrections discovered while running it
+%   (wall-clock is not a usable rule; an M-hash collision across honest runs
+%   is not cache-substitution evidence), and the pre-declared escape. Title
+%   and abstract reframe the software as a shortcut detector, not a fraud
+%   detector, per the design note's own §"3" threat-model language --- no
+%   stronger claim is made. Limitations and Availability gain the scope
+%   caveats (pymaster absent from this environment; the exercised estimator
+%   is this repo's own spin-0 MASTER implementation, validated against sympy
+%   to 6e-16; the protocol is a process-level seal, not a cryptographic
+%   pre-registration). Old title retained in SSOT version history, not here
+%   (Directive Q1). No prior science number changed.
+\newcommand{\paperVersion}{v2B.0.17}
+\newcommand{\paperTimestamp}{2026-09-04 12:00 PT}
 
-\title{\software: Exact pseudo-\(\Cl\) window inference and
-content-bound validation for reproducible spin-2 analyses}
+\title{\software: Content-bound execution receipts as a shortcut
+detector for pseudo-\(\Cl\) computations}
 \author{Houston Golden\\Independent researcher\\[2pt]\href{https://orcid.org/0009-0008-5616-5994}{\footnotesize ORCID: 0009-0008-5616-5994}}
-\date{July 24, 2026 --- manuscript revision \paperVersion}
+\date{September 4, 2026 --- manuscript revision \paperVersion}
 
 \begin{document}
 \maketitle
@@ -121,12 +143,24 @@ in cut-sky spin-2 analyses.  First, it evaluates a uniformly rotated
 operator, avoiding replacement of the operator by bin-centre or
 effective-multipole templates.  Second, it writes JSON results and
 content-bound sidecar receipts with atomic per-file replacement and fails
-closed when result bytes or caller-asserted execution metadata change.  The package also supplies explicit
-multipole-support contracts, fixed-grid rotation-angle recovery, command-line
-receipt verification, and compatibility tests against the production helpers
-from which it was extracted.  The software is intended for method validation
-and reproducibility checks; it is not a sky-analysis pipeline, foreground
-model, or cosmological inference engine.
+closed when result bytes or caller-asserted execution metadata change.  We
+extend the receipt idea into an execution-trace contract and test it under a
+pre-declared, sealed blind protocol: a verifier that never re-runs the
+computation must decide, from 18 sealed runs alone, whether each one actually
+performed the declared pseudo-\(\Cl\) calculation.  The verifier detected all
+12 runs (100\%) drawn from four shortcut classes --- operator-skipping,
+operator-truncating, grid-reducing, and cache-substituting --- with a 0\%
+false-positive rate on 3 honest runs, while a fifth, pre-declared
+metadata-forgery class escaped detection in all 3 of its runs, exactly as
+predicted by the threat model.  The result establishes the primitive as a
+\emph{shortcut detector, not a fraud detector}: it converts an
+expensive-computation claim into a cheap consistency check against a declared
+contract under a non-adversarial-analyst threat model.  The package also
+supplies explicit multipole-support contracts, fixed-grid rotation-angle
+recovery, command-line receipt verification, and compatibility tests against
+the production helpers from which it was extracted.  The software is intended
+for method validation and reproducibility checks; it is not a sky-analysis
+pipeline, foreground model, or cosmological inference engine.
 \end{abstract}
 
 \paragraph{Keywords.}
@@ -253,6 +287,127 @@ requires an external receipt anchor or trusted expected metadata to detect. The
 expose the same behavior to shell workflows and return a nonzero status on
 failure.
 
+\paragraph{What the receipt binds.} Table~\ref{tab:receipt-binds} separates the
+fields a receipt \emph{self-evidently} protects (recomputed from the result
+bytes at verify time; not overridable by caller metadata) from the fields it
+only \emph{asserts} (caller-supplied, checked against a trusted expected
+contract). Shortcut detection, below, lives entirely in the asserted row: the
+package already gives content binding, and the blind test extends the
+asserted metadata into a measured execution trace.
+
+\begin{table}[h]
+\centering
+\caption{What a \software{} receipt binds, by trust level.}
+\label{tab:receipt-binds}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Field & Source & Trust \\
+\midrule
+\texttt{result\_sha256}, \texttt{result\_bytes} & recomputed at verify time & self-evident \\
+\texttt{result\_file}, \texttt{schema\_version} & protected & self-evident \\
+caller metadata (suite, seeds, \dots) & caller-asserted, contract-checked & asserted \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Blind Shortcut-Detection Test}
+\label{sec:blind-test}
+
+The Content Validation layer above gives content binding: the result bytes
+are the ones the receipt describes. It does not, by itself, establish that an
+expensive computation was actually performed rather than shortcut and then
+honestly reported. This section reports a pre-declared, sealed test of that
+narrower and falsifiable claim: \emph{a referee who cannot afford to re-run an
+expensive exact computation can, from receipts alone, decide whether the
+computation was actually performed or silently shortcut.}
+
+\paragraph{Execution-trace extension.} The blind test extends the
+caller-asserted metadata into an execution trace emitted by an instrumented
+harness rather than typed by the analyst: sha256 of the input map and mask,
+\(N_{\rm side}\), \(\ell_{\max}\); sha256 of the compute module actually
+imported; numpy/healpy versions and platform; sha256 and shape of the
+mode-coupling matrix \(M_{\ell\ell'}\); the list of \(\ell\)-values actually
+evaluated; an instrumented count of Wigner-3\(j\) symbol evaluations
+performed; the decoupled bandpowers (hash-bound, in the result file); and
+measured wall time.
+
+\paragraph{Protocol.} (1) A reference contract is published first, from one
+honest reference run: full \(\ell\)-grid, \(M\) shape, exact 3\(j\)-evaluation
+count, code sha256, tolerance. (2) A sealing script draws a random key,
+assigns \(N\) runs to \{honest, S1\ldots S5\} via HMAC(key, run\_id), and
+commits only the sealed digest of the assignment before any run executes. (3)
+Each run executes its variant, unknown to the verifier, and publishes a
+result and receipt through the package's \texttt{publish\_json}. (4) The
+verifier sees only the run directories, the reference contract, and the input
+manifest; it flags a run when receipt verification fails, code sha256
+disagrees, the \(\ell\)-grid disagrees, the 3\(j\) count disagrees, the \(M\)
+shape or support disagrees, an \(M\) hash collides across runs with differing
+input hashes, or a result hash repeats across runs with differing input-map
+hashes. (5) The key is revealed and the confusion matrix computed. The
+success criterion was pre-declared: \(\geq\)1 honest and \(\geq\)1 run of each
+of S1--S4 present; detection rate 100\% on S1--S4; false-positive rate 0\% on
+honest runs. S5 (metadata forgery) was included expecting it to escape, as a
+reported limitation rather than a protocol failure.
+
+\paragraph{Result.} 18 runs were sealed and executed (3 per arm; \(N_{\rm
+side}=64\), \(\ell_{\max}=64\), local CPU, \(\sim\)1 minute, \$0 marginal
+cost). The pre-declared criterion was met, as Table~\ref{tab:blind-results}
+shows. The seal was independently verified: the assignment re-derived from the
+revealed key reproduced the digest committed before any run,
+\texttt{0f4ca4ba\ldots}.
+
+\begin{table}[h]
+\centering
+\caption{Blind shortcut-detection confusion table (18 sealed runs, 3 per arm).}
+\label{tab:blind-results}
+\begin{tabular}{@{}lccl@{}}
+\toprule
+Arm & \(n\) & Flagged & Triggering rule(s) \\
+\midrule
+Honest & 3 & 0 & --- \\
+S1 operator skipped & 3 & 3 & 3\(j\)-count, operator-shape mismatch \\
+S2 operator truncated & 3 & 3 & 3\(j\)-count, operator-shape mismatch \\
+S3 grid reduced + interpolated & 3 & 3 & \(\ell\)-grid, 3\(j\)-count, shape mismatch \\
+S4 cache substituted & 3 & 3 & result reuse across differing inputs \\
+S5 metadata forgery & 3 & 0 & --- (escapes, as pre-declared) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Detection rate on the classes receipts can see (S1--S4) is 12/12 (100\%);
+over all shortcut runs including the forgery arm, 12/15 (80\%); false-positive
+rate on honest runs is 0/3 (0\%).
+
+\paragraph{Two corrections, both discovered by running the test.} First, wall
+clock is not a usable rule: the shortcut arms ran 3--15\(\times\) faster than
+honest ones, but a cold-cache honest reference run took 4.29~s against 0.08~s
+warm, so the pre-declared wall-time floor (25\% of the reference) would have
+fired on 3 of 3 honest runs; it is recorded per verdict as
+\texttt{wall\_rule\_would\_fire} and excluded from the decision rule set.
+Second, a coupling-matrix hash collision across runs is not, by itself,
+evidence of cache substitution: \(M\) depends only on the mask and the
+\(\ell\)-grid, so every honest run legitimately shares one \(M\) hash for a
+fixed survey mask. Cache substitution is instead caught by \emph{result} reuse
+under differing input-map hashes.
+
+\paragraph{Scope limits.} The estimator exercised here is this repository's
+own spin-0 MASTER implementation, not NaMaster itself: PyMaster is not
+installed in this environment, and the instrumented Wigner-3\(j\) counter is
+what makes the trace a measured consequence of the code path taken, so an
+equivalent hook would need to be added inside NaMaster to carry the claim over
+verbatim. The in-house estimator was itself checked against
+\texttt{sympy.physics.wigner} on the \(m=0\) kernel and agrees to
+\(6\times10^{-16}\) on six cases. The seal is process-level --- the verifier
+had no access to the sealing script's working directory --- not a
+cryptographic pre-registration against an external timestamp. The S5 escape
+is structural, not a bug: closing it needs an anchor outside the analyst's
+control (a witnessed execution environment, signed build/execution logs, or a
+third-party rerun), which is a natural next lift and is not claimed here.
+Under a non-adversarial-analyst threat model --- an adversary who runs the
+shortcut and then writes the honest trace by hand is, by construction,
+invisible to a receipt-only check --- the tested claim is: receipts of this
+kind are a shortcut detector, not a fraud detector.
+
 \section{Quality Control}
 
 \software{} version 0.1.7 contains 41 automated tests covering numerical behavior, invalid
@@ -346,7 +501,15 @@ metadata, not the scientific correctness of that metadata. SHA-256 sidecars
 are content bindings, not digital signatures, an authorization system, or
 protection against coordinated replacement without an external anchor.
 Schema version 1 has no migration requirement yet; a future incompatible
-schema will require an explicit reader or conversion path.
+schema will require an explicit reader or conversion path. The blind
+shortcut-detection test (Sec.~\ref{sec:blind-test}) establishes a shortcut
+detector, not a fraud detector: it cannot in principle catch metadata forgery
+(an adversary who runs the shortcut and then writes the honest execution
+trace by hand), a semantically wrong but equally expensive computation, or
+numerical drift below the declared tolerance. It exercises this repository's
+own spin-0 MASTER estimator rather than NaMaster itself, and its seal is a
+process-level control rather than a cryptographic pre-registration against an
+external timestamp.
 
 \section{Availability}
 
@@ -426,6 +589,21 @@ and the
 \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/bandpowers.npz}
 {repository bandpower artifact} (SHA-256
 \texttt{\seqsplit{b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331}}).
+
+\paragraph{Reproducibility: blind shortcut-detection test.} The test in
+Sec.~\ref{sec:blind-test} is recorded under reproducibility manifest
+\texttt{p1b-blind-shortcut-detection}
+(\nolinkurl{reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json}).
+Scripts live at
+\nolinkurl{pipelines/namaster_proof/blind_test/}: \texttt{seal.py} (commits the
+sealed assignment digest), \texttt{run\_blind.py} (executes the 18 runs via
+\texttt{variants.py} and \texttt{pcl.py}), \texttt{verify.py} (applies the
+verifier's decision rules), and \texttt{reveal.py} (discloses the key and
+recomputes the confusion matrix). Reproducing the exact committed run reuses
+the committed \texttt{sealed/key.txt} and \texttt{sealed/assignment.json}
+rather than re-running \texttt{seal.py}, which draws a fresh random key. Cost
+is \$0 on any CPU-only machine; wall time is approximately one to two
+minutes.
 
 \section{Reuse Potential}
 
