@@ -1,0 +1,142 @@
+{
+  "run_000": {
+    "map_seed": 9681,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_001": {
+    "map_seed": 34666,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_002": {
+    "map_seed": 10756,
+    "variant": "S6_effective_multipole"
+  },
+  "run_003": {
+    "map_seed": 15,
+    "variant": "honest"
+  },
+  "run_004": {
+    "map_seed": 71636,
+    "variant": "S1_skip_operator"
+  },
+  "run_005": {
+    "map_seed": 70343,
+    "variant": "S4_cache_substitute"
+  },
+  "run_006": {
+    "map_seed": 25391,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_007": {
+    "map_seed": 30905,
+    "variant": "S4_cache_substitute"
+  },
+  "run_008": {
+    "map_seed": 95691,
+    "variant": "S4_cache_substitute"
+  },
+  "run_009": {
+    "map_seed": 7347,
+    "variant": "S4_cache_substitute"
+  },
+  "run_010": {
+    "map_seed": 37437,
+    "variant": "honest"
+  },
+  "run_011": {
+    "map_seed": 1639,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_012": {
+    "map_seed": 66383,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_013": {
+    "map_seed": 56590,
+    "variant": "S2_truncate_operator"
+  },
+  "run_014": {
+    "map_seed": 29793,
+    "variant": "S6_effective_multipole"
+  },
+  "run_015": {
+    "map_seed": 86576,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_016": {
+    "map_seed": 81364,
+    "variant": "S6_effective_multipole"
+  },
+  "run_017": {
+    "map_seed": 50684,
+    "variant": "honest"
+  },
+  "run_018": {
+    "map_seed": 87565,
+    "variant": "S2_truncate_operator"
+  },
+  "run_019": {
+    "map_seed": 80827,
+    "variant": "S2_truncate_operator"
+  },
+  "run_020": {
+    "map_seed": 31161,
+    "variant": "honest"
+  },
+  "run_021": {
+    "map_seed": 23976,
+    "variant": "S1_skip_operator"
+  },
+  "run_022": {
+    "map_seed": 87782,
+    "variant": "honest"
+  },
+  "run_023": {
+    "map_seed": 33345,
+    "variant": "S4_cache_substitute"
+  },
+  "run_024": {
+    "map_seed": 5535,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_025": {
+    "map_seed": 40985,
+    "variant": "S6_effective_multipole"
+  },
+  "run_026": {
+    "map_seed": 9996,
+    "variant": "S1_skip_operator"
+  },
+  "run_027": {
+    "map_seed": 10324,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_028": {
+    "map_seed": 14098,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_029": {
+    "map_seed": 74197,
+    "variant": "S1_skip_operator"
+  },
+  "run_030": {
+    "map_seed": 44314,
+    "variant": "S2_truncate_operator"
+  },
+  "run_031": {
+    "map_seed": 29909,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_032": {
+    "map_seed": 64946,
+    "variant": "S1_skip_operator"
+  },
+  "run_033": {
+    "map_seed": 38009,
+    "variant": "S2_truncate_operator"
+  },
+  "run_034": {
+    "map_seed": 19571,
+    "variant": "S6_effective_multipole"
+  }
+}

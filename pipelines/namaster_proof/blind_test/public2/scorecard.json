@@ -1,0 +1,94 @@
+{
+  "S5_escaped": 5,
+  "S6_escaped": 5,
+  "assignment_sha256": "c96b5bf1d6d3dd3f6b8131e6260803bb2049e3481b9613b041091ac00a27e9ee",
+  "batch": 2,
+  "detection_all_shortcut_arms": {
+    "lower95_one_sided": 0.5006,
+    "point": 0.6667,
+    "upper95_one_sided": 0.8067
+  },
+  "detection_structural_S1_S4": {
+    "lower95_one_sided": 0.8609,
+    "point": 1.0,
+    "upper95_one_sided": 1.0
+  },
+  "false_positive_rate_honest": {
+    "lower95_one_sided": 0.0,
+    "point": 0.0,
+    "upper95_one_sided": 0.4507
+  },
+  "independence_caveat": "R1-R5 compare seed-independent quantities against a fixed contract; replicates within an arm are seed-varied executions of one deterministic variant (effective independent n = 1).",
+  "per_arm": {
+    "S1_skip_operator": {
+      "flagged": 5,
+      "n": 5,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "rules": {
+        "R3_3j_count_mismatch": 5,
+        "R4_operator_shape_mismatch": 5
+      },
+      "wall_would_fire": 5
+    },
+    "S2_truncate_operator": {
+      "flagged": 5,
+      "n": 5,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "rules": {
+        "R3_3j_count_mismatch": 5,
+        "R4_operator_shape_mismatch": 5
+      },
+      "wall_would_fire": 5
+    },
+    "S3_grid_interpolate": {
+      "flagged": 5,
+      "n": 5,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "rules": {
+        "R2_grid_mismatch": 5,
+        "R3_3j_count_mismatch": 5,
+        "R4_operator_shape_mismatch": 5
+      },
+      "wall_would_fire": 5
+    },
+    "S4_cache_substitute": {
+      "flagged": 5,
+      "n": 5,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 5,
+      "rules": {
+        "R6_result_reuse_across_inputs": 5
+      },
+      "wall_would_fire": 0
+    },
+    "S5_metadata_forgery": {
+      "flagged": 0,
+      "n": 5,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "rules": {},
+      "wall_would_fire": 0
+    },
+    "S6_effective_multipole": {
+      "flagged": 0,
+      "n": 5,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "rules": {},
+      "wall_would_fire": 5
+    },
+    "honest": {
+      "flagged": 0,
+      "n": 5,
+      "r6_crossrun_disjunct": 0,
+      "r6_reference_disjunct": 0,
+      "rules": {},
+      "wall_would_fire": 5
+    }
+  },
+  "rules": "frozen, RULES_v2_FROZEN.md (committed before the seal)",
+  "seal_verified": true
+}
