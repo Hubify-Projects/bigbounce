@@ -1,0 +1,126 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row15b-entropy-sector",
+  "title": "Ledger row 15b - the entropy (spectator) sector in the three A2 matter-bounce backgrounds: lambda_sigma vs lambda_T vs lambda_zeta per scheme, and the pre-bounce condition on r_dec Mpl/sigma_* for r < 0.036",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "A2 linear-transmission module - the three bounce backgrounds (Quintin-type, LQC-effective-dust, poly-analytic) and the a''/a arrays used for both the spectator and the tensor evolution",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger row 18a - lambda_T, lambda_zeta^S1 and lambda_zeta^S2 on the Quintin background; the S2 scalar transfer imported here",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/results.json",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger row 15 - the curvaton window r = 24/[1 + (4/3) r_dec^2 (Mpl/sigma_*)^2], the F >= 25.82 requirement and the (r/24)^2 dilution of the intrinsic -35/16",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row15_curvaton/results.json",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Curvaton matter-bounce adjudication - confirms the spectator obeys the same MS operator for constant epsilon, so n_s is inherited",
+      "type": "internal-artifact",
+      "locator": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai, Xue & Brandenberger 2011 - the matter-bounce curvaton scenario and the kinetic-amplification factor F",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1101.0822",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lyth, Ungarelli & Wands 2003 - zeta = r_dec zeta_sigma and the curvaton local f_NL",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/astro-ph/0208055",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - the bounce background (iii) integrated here",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1508.04141",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL), the target of the viability condition",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2110.00483",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/row15b_entropy_sector/row15b_entropy_sector.py",
+      "entrypoint": "cd research/track_a3_multichannel/row15b_entropy_sector && python3 row15b_entropy_sector.py",
+      "sha256": "0b1e15c6a36ca7a343a78ec7ade61cc7c3d029c004ae3e911da168597aaec8b8"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy + scipy + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "~4 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~10 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no data files, no network). The spectator is integrated as u'' + (k^2 - a''/a + a^2 m^2)u = 0 with the EXACT matter-era mode function as the initial condition (exact for all k tau, so no sub-Hubble requirement); the tensor is integrated from an INDEPENDENT first-order system h' = Pi/a^2, Pi' = -a^2 k^2 h, so lambda_sigma/lambda_T - 1 is a genuine numerical test of the operator identity rather than a tautology. lambda_zeta^S2 is imported from row 18a (Quintin only); S2 on the LQC and poly backgrounds is NOT computed here and is disclosed as such."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/row15b_entropy_sector/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row15b_entropy_sector/row15b_entropy_sector.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row15b_entropy_sector/row15b_entropy_sector.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row15b_entropy_sector/ROW15B_ENTROPY_SECTOR_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) backgrounds.<bg>.max_abs_lam_sigma_over_lam_T_minus_1 <= 8e-5 (Quintin) and <= 3e-9 (LQC, poly), i.e. the massless spectator transfers exactly like the tensor on all three backgrounds; (b) the light-mass correction dlam/lam scales as (m eta_B)^2 and tends to 0 (about -4e-7 at m eta_B = 1e-6 on Quintin), so the massless limit is recovered smoothly; (c) viability.S1.Lambda == 1 and viability.S2.Lambda == 6.2487 (= row 18a lam_T/lam_zeta^S2); (d) viability.S1['r<0.036'].X_min == 22.344 and viability.S2['r<0.036'].X_min == 22.360, i.e. the pre-bounce condition on X = r_dec Mpl/sigma_* is scheme-independent to 7.3e-4; (e) viability.<scheme>['r<0.036'].F_eff_min == 25.8199 in both schemes, reproducing row 15's F >= 25.82; (f) backgrounds.<bg>.delta_n_T at k eta_B = 1e-3 is about -1e-3 and scales as (k eta_B)^2, so the tensor tilt is unshifted by the bounce on observable scales.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 15 named open item: 'F needs an entropy sector in the A2 backgrounds'",
+    "research/track_a3_multichannel/row15b_entropy_sector/ROW15B_ENTROPY_SECTOR_2026-09-04.md (derivation, background x scheme table, verdict, paper-ready sentences)",
+    "research/track_a3_multichannel/row15_curvaton/ROW15_CURVATON_2026-09-04.md (the parent row this closes an item of)",
+    "research/cubic_bounce_transmission/row18a_s2_tensor/ROW18A_S2_TENSOR_2026-09-04.md (source of lambda_zeta^S2)",
+    "directive Q2 (per-experiment reproducibility manifest)",
+    "model-dependence disclosed: CXB11's kinetic-amplification factor F is still an assumption of THEIR entropy sector; this row computes the TRANSFER of a spectator through the A2 backgrounds and the resulting pre-bounce condition, it does not derive F from a microphysical model. lambda_zeta^S2 is measured on the Quintin background only."
+  ]
+}

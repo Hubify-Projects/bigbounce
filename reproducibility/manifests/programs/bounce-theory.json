@@ -291,6 +291,13 @@
       "depends_on": [
         "a3-row15-curvaton"
       ]
+    },
+    {
+      "id": "a3-row15b-entropy-sector",
+      "depends_on": [
+        "a3-row15-curvaton",
+        "p2-a3-row18a-s2-tensor-transfer"
+      ]
     }
   ],
   "external_data": [
