@@ -1,0 +1,60 @@
+==============================================================================
+Ledger row 19 / A3-lambda: joint (r, f_NL) no-go with lambda != 0   (2026-09-04)
+==============================================================================
+
+[A] does r depend on lambda?
+    dSigma/dP_XXX = 0, dc_s^2/dP_XXX = 0, dlambda/dP_XXX = 2*X**3/3
+    -> r is exactly lambda-independent:  r = 24 c_s stands for every lambda.
+
+[B] f_NL^pre(c_s, L), L = lambda/Sigma, from Li Eq. (4.19) with lambda restored
+    squeezed    : f_NL = -245/16 + 105/(8 c_s^2) - 30 L
+    equilateral : f_NL = -495/32 + 105/(8 c_s^2) + 45 c_s^2/128 - 30 L
+    gate Li line -> row 14 (squeezed/equil): True/True
+    gate c_s = 1, L = 0 -> -35/16: True
+    L that cancels the 1/c_s^2 divergence: L = 7/(16*c_s**2)
+
+[C] the bounce's own cubic term with the lambda vertex switched on (S1, Quintin bg)
+    c_s=0.44   L=          -1  V1=-3.202e-07  total=+14.291777  total/total(L=0)-1 = +0.00e+00
+    c_s=0.44   L=        -0.5  V1=-2.683e-07  total=+14.291777  total/total(L=0)-1 = +3.63e-09
+    c_s=0.44   L=          +0  V1=-2.164e-07  total=+14.291777  total/total(L=0)-1 = +7.27e-09
+    c_s=0.44   L=        +0.5  V1=-1.644e-07  total=+14.291777  total/total(L=0)-1 = +1.09e-08
+    c_s=0.44   L=          +1  V1=-1.125e-07  total=+14.291777  total/total(L=0)-1 = +1.45e-08
+    c_s=0.44   L=     +0.6942  V1=-1.442e-07  total=+14.291777  total/total(L=0)-1 = +1.23e-08
+    c_s=0.44   L=      +2.083  V1=+3.574e-23  total=+14.291777  total/total(L=0)-1 = +2.24e-08
+    c_s=0.6    L=          -1  V1=-1.052e-07  total=+3.057749  total/total(L=0)-1 = +0.00e+00
+    c_s=0.6    L=        -0.5  V1=-7.742e-08  total=+3.057749  total/total(L=0)-1 = +9.10e-09
+    c_s=0.6    L=          +0  V1=-4.955e-08  total=+3.057749  total/total(L=0)-1 = +1.82e-08
+    c_s=0.6    L=        +0.5  V1=-2.168e-08  total=+3.057749  total/total(L=0)-1 = +2.73e-08
+    c_s=0.6    L=          +1  V1=+6.191e-09  total=+3.057749  total/total(L=0)-1 = +3.64e-08
+    c_s=0.6    L=     +0.2963  V1=-3.303e-08  total=+3.057749  total/total(L=0)-1 = +2.36e-08
+    c_s=0.6    L=     +0.8889  V1=+0.000e+00  total=+3.057749  total/total(L=0)-1 = +3.44e-08
+    c_s=1      L=          -1  V1=-1.979e-08  total=-0.139818  total/total(L=0)-1 = +0.00e+00
+    c_s=1      L=        -0.5  V1=-9.896e-09  total=-0.139818  total/total(L=0)-1 = -7.08e-08
+    c_s=1      L=          +0  V1=+0.000e+00  total=-0.139818  total/total(L=0)-1 = -1.42e-07
+    c_s=1      L=        +0.5  V1=+9.896e-09  total=-0.139818  total/total(L=0)-1 = -2.12e-07
+    c_s=1      L=          +1  V1=+1.979e-08  total=-0.139818  total/total(L=0)-1 = -2.83e-07
+    c_s=1      L=          +0  V1=+0.000e+00  total=-0.139818  total/total(L=0)-1 = -1.42e-07
+    c_s=1      L=          +0  V1=+0.000e+00  total=-0.139818  total/total(L=0)-1 = -1.42e-07
+    max |total/total(L=0) - 1| = 2.83e-07  -> Delta f_NL^bounce is lambda-INDEPENDENT: True
+
+[D] the (r, f_NL) window, |f_NL^after| <= 5.1 (Planck 1sigma), r = 24 c_s
+    L = -1.00 (constant)                         c_s in [0.9036, 1.0000]  r_min = 21.6876 = 602.4x the CMB bound
+    L = -0.50 (constant)                         c_s in [0.7211, 1.0000]  r_min = 17.3066 = 480.7x the CMB bound
+    L = +0.00 (constant)                         c_s in [0.6353, 1.0000]  r_min = 15.2479 = 423.6x the CMB bound
+    L = +0.50 (constant)                         c_s in [0.5808, 1.0000]  r_min = 13.9383 = 387.2x the CMB bound
+    L = +1.00 (constant)                         c_s in [0.5433, 0.9419]  r_min = 13.0380 = 362.2x the CMB bound
+    L = (1-c_s^2)/(6c_s^2)  [Li+2016 Eq. A.20]   c_s in [0.5998, 1.0000]  r_min = 14.3950 = 399.9x the CMB bound
+    L = (1-c_s^2)/(2c_s^2)  [DBI]                c_s in [0.5236, 1.0000]  r_min = 12.5664 = 349.1x the CMB bound
+    -> min r over the whole scan = 12.5664 at L = (1-c_s^2)/(2c_s^2)  [DBI]
+    -> any L with r < 0.036 AND |f_NL| <= 5.1 : False
+
+[E] what a viable L would have to be
+    at c_s = 1.500e-03 (r = 0.036): need L = 2.78966e+10
+    Li matter line gives L = 74073.9; DBI gives L = 222222
+    allowed half-width dL = 1.03 -> fractional tuning 3.693e-11
+    it is 2.790e+10x outside |L| <= 1
+    the sound-speed running that would supply it: s = 564902.4225 (Li Eq. 4.19 assumes |s| << 1 (their Appendix A, Eq. A.20)) -> self-consistent: False
+
+VERDICT: NO-GO GENERALISED. r = 24 c_s is exactly lambda-independent (quadratic action); Delta f_NL^bounce is lambda-independent in S1 (the lambda vertex is odd about a symmetric bounce); lambda shifts f_NL^pre only by the constant -30 lambda/Sigma, which cannot cancel the 105/(8 c_s^2) divergence unless lambda/Sigma = 7/(16 c_s^2) exactly.  No constant L in [-1, 1], and neither the Li matter line nor the DBI line, opens a window: the minimum r compatible with |f_NL^after| <= 5.1 stays O(10), ~300x the CMB bound.
+
+wall 2.8 s

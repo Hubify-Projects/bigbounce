@@ -1,0 +1,315 @@
+{
+  "task": "NEXT_SCIENCE_LEDGER row 19 -- (r, f_NL) no-go for general P(X) k-essence with the cubic coefficient lambda free",
+  "date": "2026-09-04",
+  "sources": {
+    "fnl": "Li, Quintin, Wang & Cai 2016 (arXiv:1612.02036) Eqs. (4.18)-(4.19), (2.11)-(2.12), (A.19)-(A.20)",
+    "cubic_action": "Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045) Eq. (4.28)",
+    "bounce_term": "row 18(b) research/cubic_bounce_transmission/row18b_cs_bounce_cubic/",
+    "r_of_cs": "row 14 research/track_a3_multichannel/row14_cs_window/"
+  },
+  "r_lambda_independence": {
+    "dSigma_dPXXX": "0",
+    "dcs2_dPXXX": "0",
+    "dlambda_dPXXX": "2*X**3/3",
+    "quadratic_action_independent_of_lambda": true,
+    "r_formula": "r = 16 eps c_s^(2 nu - 2) = 24 c_s for the dust contraction (row 14; Li+2016 Eq. 3.18) -- a QUADRATIC-action result",
+    "verdict": "r is exactly lambda-independent"
+  },
+  "fnl_pre": {
+    "f_NL_squeezed_of_cs_L": "-30*L - 245/16 + 105/(8*c_s**2)",
+    "f_NL_equilateral_of_cs_L": "-30*L + 45*c_s**2/128 - 495/32 + 105/(8*c_s**2)",
+    "closed_form_squeezed": "-245/16 + 105/(8 c_s^2) - 30 L",
+    "matches_closed_form_squeezed": true,
+    "matches_closed_form_equilateral": true,
+    "gate_Li_line_reproduces_row14_squeezed": true,
+    "gate_Li_line_reproduces_row14_equilateral": true,
+    "gate_cs1_L0_equals_minus_35_over_16": true,
+    "L_that_cancels_the_1_over_cs2_divergence": "7/(16*c_s**2)",
+    "dfNL_dL": -30.0
+  },
+  "bounce": {
+    "background": "Quintin+2015-type (a2_transmission_linear.bg_quintin, dtB=1)",
+    "scheme": "S1 geometric, eps_eff = 1/2, eta_sr = 0, s = 0, k eta_B = 1e-3",
+    "rows": [
+      {
+        "c_s": 0.44,
+        "L": -1.0,
+        "V1": -3.20215957929274e-07,
+        "V2": 14.294029149387864,
+        "total": 14.291776662882,
+        "total_over_L0": 1.0
+      },
+      {
+        "c_s": 0.44,
+        "L": -0.5,
+        "V1": -2.682698078739954e-07,
+        "V2": 14.294029149387864,
+        "total": 14.29177671482815,
+        "total_over_L0": 1.0000000036346879
+      },
+      {
+        "c_s": 0.44,
+        "L": 0.0,
+        "V1": -2.1637432283502764e-07,
+        "V2": 14.294029149387864,
+        "total": 14.291776766723634,
+        "total_over_L0": 1.000000007265831
+      },
+      {
+        "c_s": 0.44,
+        "L": 0.5,
+        "V1": -1.6442917680824654e-07,
+        "V2": 14.294029149387864,
+        "total": 14.291776818668781,
+        "total_over_L0": 1.0000000109004488
+      },
+      {
+        "c_s": 0.44,
+        "L": 1.0,
+        "V1": -1.1248428178300266e-07,
+        "V2": 14.294029149387864,
+        "total": 14.291776870613676,
+        "total_over_L0": 1.0000000145350492
+      },
+      {
+        "c_s": 0.44,
+        "L": 0.6942148760330579,
+        "V1": -1.442497158835938e-07,
+        "V2": 14.294029149387864,
+        "total": 14.291776838848241,
+        "total_over_L0": 1.000000012312412
+      },
+      {
+        "c_s": 0.44,
+        "L": 2.0826446280991737,
+        "V1": 3.57431941280262e-23,
+        "V2": 14.294029149387864,
+        "total": 14.291776983097957,
+        "total_over_L0": 1.0000000224056087
+      },
+      {
+        "c_s": 0.6,
+        "L": -1.0,
+        "V1": -1.052322904375315e-07,
+        "V2": 3.0586672717051093,
+        "total": 3.0577485197799725,
+        "total_over_L0": 1.0
+      },
+      {
+        "c_s": 0.6,
+        "L": -0.5,
+        "V1": -7.741711089932971e-08,
+        "V2": 3.0586672717051093,
+        "total": 3.057748547595152,
+        "total_over_L0": 1.000000009096621
+      },
+      {
+        "c_s": 0.6,
+        "L": 0.0,
+        "V1": -4.954872779342454e-08,
+        "V2": 3.0586672717051093,
+        "total": 3.057748575463535,
+        "total_over_L0": 1.0000000182106417
+      },
+      {
+        "c_s": 0.6,
+        "L": 0.5,
+        "V1": -2.1681507009917707e-08,
+        "V2": 3.0586672717051093,
+        "total": 3.057748603330756,
+        "total_over_L0": 1.0000000273242822
+      },
+      {
+        "c_s": 0.6,
+        "L": 1.0,
+        "V1": 6.190863014838831e-09,
+        "V2": 3.0586672717051093,
+        "total": 3.057748631203126,
+        "total_over_L0": 1.0000000364396067
+      },
+      {
+        "c_s": 0.6,
+        "L": 0.2962962962962963,
+        "V1": -3.3025210643366516e-08,
+        "V2": 3.0586672717051093,
+        "total": 3.0577485919870524,
+        "total_over_L0": 1.00000002361446
+      },
+      {
+        "c_s": 0.6,
+        "L": 0.888888888888889,
+        "V1": 0.0,
+        "V2": 3.0586672717051093,
+        "total": 3.057748625012263,
+        "total_over_L0": 1.000000034414959
+      },
+      {
+        "c_s": 1.0,
+        "L": -1.0,
+        "V1": -1.9792324002214942e-08,
+        "V2": -0.13958569343237745,
+        "total": -0.13981847989469454,
+        "total_over_L0": 1.0
+      },
+      {
+        "c_s": 1.0,
+        "L": -0.5,
+        "V1": -9.896162001107471e-09,
+        "V2": -0.13958569343237745,
+        "total": -0.13981846999853254,
+        "total_over_L0": 0.9999999292213589
+      },
+      {
+        "c_s": 1.0,
+        "L": 0.0,
+        "V1": 0.0,
+        "V2": -0.13958569343237745,
+        "total": -0.13981846010237053,
+        "total_over_L0": 0.9999998584427179
+      },
+      {
+        "c_s": 1.0,
+        "L": 0.5,
+        "V1": 9.896162001107471e-09,
+        "V2": -0.13958569343237745,
+        "total": -0.13981845020620853,
+        "total_over_L0": 0.9999997876640768
+      },
+      {
+        "c_s": 1.0,
+        "L": 1.0,
+        "V1": 1.9792324002214942e-08,
+        "V2": -0.13958569343237745,
+        "total": -0.13981844031004653,
+        "total_over_L0": 0.9999997168854358
+      },
+      {
+        "c_s": 1.0,
+        "L": 0.0,
+        "V1": 0.0,
+        "V2": -0.13958569343237745,
+        "total": -0.13981846010237053,
+        "total_over_L0": 0.9999998584427179
+      },
+      {
+        "c_s": 1.0,
+        "L": 0.0,
+        "V1": 0.0,
+        "V2": -0.13958569343237745,
+        "total": -0.13981846010237053,
+        "total_over_L0": 0.9999998584427179
+      }
+    ],
+    "max_abs_total_over_L0_minus_1": 2.8311456423679715e-07,
+    "lambda_vertex_is_odd_in_eta": true,
+    "reason": "V1 is the only lambda-carrying vertex and its conformal coefficient is proportional to aH = a'/a, which is ODD about a symmetric bounce (a even => a' odd); the in-in window integral over [-eta_B, +eta_B] therefore cancels it identically, for any L.",
+    "closed_form": "Delta f_NL^bounce(c_s, L) = -(5/24) rho_B (6 c_s^2 - 5)/c_s^4, INDEPENDENT of L (row 18(b) closed form carries over unchanged)"
+  },
+  "transfer": {
+    "T_fNL_quintin": 0.16500538338212953,
+    "Delta_fNL_bounce_cs1": -0.139818,
+    "source": "row 14 results.json / row 18(b) gate values, Quintin background"
+  },
+  "window": {
+    "constant_L": [
+      {
+        "tag": "L = -1.00 (constant)",
+        "any_viable": true,
+        "c_s_min_viable": 0.9036494737223014,
+        "c_s_max_viable": 1.0,
+        "r_min_viable": 21.687587369335233,
+        "r_max_viable": 24.0,
+        "r_min_over_CMB_bound": 602.4329824815343,
+        "viable_at_CMB_r": false,
+        "f_NL_after_at_r_0.036": 138092441537.6785
+      },
+      {
+        "tag": "L = -0.50 (constant)",
+        "any_viable": true,
+        "c_s_min_viable": 0.7211074791828997,
+        "c_s_max_viable": 1.0,
+        "r_min_viable": 17.306579500389596,
+        "r_max_viable": 24.0,
+        "r_min_over_CMB_bound": 480.7383194552666,
+        "viable_at_CMB_r": false,
+        "f_NL_after_at_r_0.036": 138092441535.20343
+      },
+      {
+        "tag": "L = +0.00 (constant)",
+        "any_viable": true,
+        "c_s_min_viable": 0.6353309318517436,
+        "c_s_max_viable": 1.0,
+        "r_min_viable": 15.247942364441847,
+        "r_max_viable": 24.0,
+        "r_min_over_CMB_bound": 423.5539545678291,
+        "viable_at_CMB_r": false,
+        "f_NL_after_at_r_0.036": 138092441532.72833
+      },
+      {
+        "tag": "L = +0.50 (constant)",
+        "any_viable": true,
+        "c_s_min_viable": 0.5807644175213124,
+        "c_s_max_viable": 1.0,
+        "r_min_viable": 13.938346020511496,
+        "r_max_viable": 24.0,
+        "r_min_over_CMB_bound": 387.1762783475416,
+        "viable_at_CMB_r": false,
+        "f_NL_after_at_r_0.036": 138092441530.25327
+      },
+      {
+        "tag": "L = +1.00 (constant)",
+        "any_viable": true,
+        "c_s_min_viable": 0.5432503314924331,
+        "c_s_max_viable": 0.9418895965228418,
+        "r_min_viable": 13.038007955818394,
+        "r_max_viable": 22.605350316548204,
+        "r_min_over_CMB_bound": 362.16688766162207,
+        "viable_at_CMB_r": false,
+        "f_NL_after_at_r_0.036": 138092441527.7782
+      }
+    ],
+    "Li_matter_line": {
+      "tag": "L = (1-c_s^2)/(6c_s^2)  [Li+2016 Eq. A.20]",
+      "any_viable": true,
+      "c_s_min_viable": 0.5997910762555094,
+      "c_s_max_viable": 1.0,
+      "r_min_viable": 14.394985830132226,
+      "r_max_viable": 24.0,
+      "r_min_over_CMB_bound": 399.86071750367296,
+      "viable_at_CMB_r": false,
+      "f_NL_after_at_r_0.036": 138092074854.92365
+    },
+    "DBI_line": {
+      "tag": "L = (1-c_s^2)/(2c_s^2)  [DBI]",
+      "any_viable": true,
+      "c_s_min_viable": 0.5236004365857501,
+      "c_s_max_viable": 1.0,
+      "r_min_viable": 12.566410478058001,
+      "r_max_viable": 24.0,
+      "r_min_over_CMB_bound": 349.0669577238334,
+      "viable_at_CMB_r": false,
+      "f_NL_after_at_r_0.036": 138091341499.3142
+    },
+    "min_r_over_scan": 12.566410478058001,
+    "min_r_at": "L = (1-c_s^2)/(2c_s^2)  [DBI]",
+    "any_L_reaches_r_below_0.036": false
+  },
+  "tuning": {
+    "c_s_at_r_0.036": 0.0014999999999999998,
+    "L_required_for_zero_f_NL_pre_only": 194444.44444444447,
+    "s_that_would_give_L_pre_only": 2.4374978906297455,
+    "Delta_fNL_bounce_there": 138091479003.85193,
+    "note_bounce_term": "Delta f_NL^bounce is lambda-INDEPENDENT, so even the L that exactly cancels f_NL^pre leaves the bounce term ~1e11 behind; L_required_for_zero_f_NL_after below is the L that would have to cancel BOTH through the transfer T.",
+    "L_required_for_zero_f_NL_after": 27896552767.39778,
+    "L_on_Li_matter_line_there": 74073.90740740742,
+    "L_on_DBI_line_there": 222221.72222222225,
+    "allowed_half_width_in_L": 1.0302694161577965,
+    "fractional_tuning_required": 3.693178238717203e-11,
+    "outside_L_grid_by_factor": 27896552767.39778,
+    "sound_speed_running_s_that_would_give_L_star": 564902.4225127293,
+    "s_assumption_of_Li_Eq_4_19": "|s| << 1 (their Appendix A, Eq. A.20)",
+    "self_consistent": false
+  },
+  "verdict": "NO-GO GENERALISED. r = 24 c_s is exactly lambda-independent (quadratic action); Delta f_NL^bounce is lambda-independent in S1 (the lambda vertex is odd about a symmetric bounce); lambda shifts f_NL^pre only by the constant -30 lambda/Sigma, which cannot cancel the 105/(8 c_s^2) divergence unless lambda/Sigma = 7/(16 c_s^2) exactly.  No constant L in [-1, 1], and neither the Li matter line nor the DBI line, opens a window: the minimum r compatible with |f_NL^after| <= 5.1 stays O(10), ~300x the CMB bound.",
+  "wall_seconds": 2.834886312484741
+}
