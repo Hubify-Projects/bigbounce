@@ -563,6 +563,85 @@ bandpowers against an independently-known reference, or a cross-checked
 second estimator --- is proposed as a pre-registered batch 3, future work and
 not claimed here.
 
+\paragraph{Batch 3: a value-level rule (R7), pre-registered against S6.}
+\label{sec:blind-test-batch3}
+Batch 3 adds one instrumented intermediate, \texttt{intermediates.pseudo\_cl}
+(the pseudo-spectrum every MASTER pipeline computes as step one), and one
+rule, R7: rebuild the mask and refuse unless its hash matches the contract;
+derive \(K=6\) spot rows of the coupling matrix from
+\(\mathrm{sha256}(\text{mask hash} \Vert \text{sha256(bandpowers)})\), so the
+rows depend on the run's own result and cannot be chosen by the runner;
+recompute only those six rows (\(\sim\)9\% of a full build); fire iff
+\(|\sum_{\ell_2\ge2} M_{\ell_1\ell_2} C_{\ell_2} - p_{\ell_1}| >
+10^{-6}\lVert p\rVert_2\) on any spot row. \(\mathrm{TOL}=10^{-6}\) was fixed
+from theory plus non-blind calibration before the seal (honest relative
+residuals \(8.4\times10^{-13}\)--\(1.4\times10^{-12}\); S6 under the same
+seeds, \(7.5\times10^{-2}\)--\(1.5\times10^{-1}\)): an eleven-order gap, not
+tuned after unblinding. 48 runs were sealed (8 arms \(\times\) 6; seal
+\texttt{abfe2793\ldots}, \texttt{seal\_verified: true}). Table
+\ref{tab:blind-results-batch3} gives the result: honest 0/6 flagged (upper
+bound 0.393); S1--S4 and the new S4b (cross-run cache variant) 6/6 each;
+\textbf{S6 6/6 by R7 alone} (lower bound 0.607); S5 (metadata forgery,
+extended to forge \(p := MC\)) still escapes 6/6. Structural arms S1--S4b
+pool to 24/24 (lower bound 0.905). S4b is the first replicate set to
+exercise R6's cross-run disjunct (\S\ref{sec:blind-test-result}): 4/6 fired
+it, and the other 2 collapsed to the reference disjunct because the prior
+run they substituted was itself cache-substituting, with the source run for
+each replicate named in \texttt{sealed3/crossrun\_sources.json}. As in batch
+2, R7's replicates are seed-dependent but of one deterministic variant, so
+these are class-level detection rates, not per-run probabilities
+(\S\ref{sec:blind-test-result}).
+
+\begin{table}[h]
+\centering
+\caption{Blind shortcut-detection confusion table, batch 3 (48 sealed runs, 8 arms \(\times\) 6, R0--R7).}
+\label{tab:blind-results-batch3}
+\begin{tabular}{@{}lccl@{}}
+\toprule
+Arm & \(n\) & Flagged & Rule(s) fired \\
+\midrule
+Honest & 6 & 0 & --- \\
+S1 operator skipped & 6 & 6 & R3, R4, R7 \\
+S2 operator truncated & 6 & 6 & R3, R4, R7 \\
+S3 grid reduced + interpolated & 6 & 6 & R2, R3, R4, R7 \\
+S4 cache substituted & 6 & 6 & R6 (reference), R7 \\
+S4b cache substituted, cross-run & 6 & 6 & R6 (cross-run 4/6, reference 2/6), R7 \\
+S5 metadata forgery (extended) & 6 & 0 & --- (escapes; forges \(p:=MC\)) \\
+S6 effective multipole & 6 & 6 & R7 alone \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{R7 catches S6, bounded three ways.} (1) R7 was written against S6's
+own batch-2 definition: a pre-registered rule targeting a known class, not a
+verifier discovering an unanticipated shortcut. (2) 0/6 honest false
+positives bounds the false-positive rate above by 0.393; six runs cannot
+establish a small rate. (3) R7 is bound to a \emph{declared} intermediate, so
+an informed forger escapes by fabricating \(p := MC\) --- one
+matrix-vector product --- which is exactly what the extended S5 arm does,
+6/6, at residuals \(\sim\!10^{-17}\). R7 therefore moves the
+effective-multipole shortcut from ``escapes by omission'' into the S5 class,
+``requires deliberate fabrication of a recorded intermediate''; that is the
+whole of the improvement, and forgery remains the primitive's stated limit.
+
+\paragraph{Attempt 1 was aborted before unsealing, and is preserved.} The
+first batch-3 seal (\texttt{8b4fa840\ldots}, commit \texttt{b19b72fc}) was
+executed and blind-judged, then abandoned \emph{without ever being
+unsealed}: \texttt{pcl.make\_map} ignored its \texttt{seed} argument (healpy
+\texttt{synfast} draws from the global NumPy RNG), so the new
+\texttt{pseudo\_cl} instrumentation described a different random map than
+the run analysed, and R7 was measuring RNG divergence rather than operator
+consistency. The defect was diagnosed from the public verdict file and
+source with the assignment still sealed; all 48 invalid runs, receipts, and
+verdicts are preserved under
+\nolinkurl{blind_test/public3_aborted/BATCH3_ABORT_NOTE.md}; the rules file
+was untouched; the harness fix (\texttt{variants3.seed\_rng}) was committed
+\emph{before} the new key was drawn. This also corrects a batch-1/2
+statement: the sealed \texttt{map\_seed} never actually selected those
+batches' maps either, so their replicates were fresh random draws rather
+than seed-varied executions of one map --- a wording correction only, since
+no batch-1/2 rule depended on reproducing a map.
+
 \paragraph{Scope limits.} The estimator exercised in both batches is this
 repository's own spin-0 MASTER implementation, not NaMaster itself: PyMaster
 is not installed in this environment, and the instrumented Wigner-3\(j\)
