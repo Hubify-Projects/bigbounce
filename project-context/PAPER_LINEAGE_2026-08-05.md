@@ -689,3 +689,24 @@ two and the dependence of the gap on it stated.
 **Why:** R6 (claims at evidential strength) and the PSU R1 truth-audit S3: the source note
 itself says "there was never a discrepancy in the physics, only in the variable". The
 criterion is the contribution; "failure" overstated it.
+
+## 2026-09-04 — A3M: scheme-independent tensor no-go and the bounce term's c_s-dependence (science decision D-A3-12, ledger row 18)
+
+**ORIGINAL CLAIM (v3M.0.15/16):** r = 24 for the modelled background "bounce-invariant";
+the joint (r, f_NL) window computed with the c_s = 1 bounce term; the S2 scheme's effect on
+r unstated.
+
+**NEW CLAIM (v3M.0.17):** the tensor mode obeys h'' + 2(a'/a)h' + k²h = 0 with no
+scalar-variable ambiguity, and the S1 scalar equation with z = a is the tensor equation, so
+λ_T = λ_ζ^S1 is an identity (1.4e−14): r_after = 24 in S1 and 24(λ_T/λ_ζ^S2)² ≈ 9.4e2 in S2
+(the bounce amplifies r by 39× in the fluid variable); both are excluded by ≥670×, so the
+tensor no-go's conclusion is scheme-independent (`row18a_s2_tensor/`). The bounce's own
+cubic term in S1 is Δf_NL^bounce(c_s) = −(5/24)ρ_B (6c_s² − 5)/c_s⁴ (V2-dominated; sign flip
+at c_s = √(5/6) = 0.913), diverging faster than T·f_NL^pre ∝ 1/c_s², so the
+|f_NL^after| ≤ 5.1 window needs c_s ≥ 0.60 and hence r ≥ 14.4 (≈400× BK18), nearly
+background-independent; at the tensor-viable c_s = 1.5e−3, f_NL^after ≈ 1e11
+(`row18b_cs_bounce_cubic/`). Row 14's no-go is strengthened, not relaxed; A3M §VII–VIII are
+restated with scheme labels and the corrected window.
+
+**Why:** R6 (claims at evidential strength); both items were named by the R7 truth-audit
+as the computations the paper's statements depended on.
