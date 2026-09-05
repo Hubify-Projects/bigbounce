@@ -1,0 +1,153 @@
+{
+  "assignment_sha256": "dbe6a713bc89be8a8701377bc7a03edb56c5f9680af0f88cfd165af204cfd7a5",
+  "batch": 4,
+  "false_positives_honest": "0/6",
+  "headline": {
+    "S7_r7_aware_effective": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 0,
+      "r8_fired": 6
+    },
+    "S8_omit_pseudo_cl": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 0,
+      "r8_fired": 6,
+      "suspect": 6
+    }
+  },
+  "per_arm": {
+    "S1_skip_operator": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 6,
+      "r7_residual_max": 0.008179324,
+      "r8_fired": 6,
+      "r8_residual_max": null,
+      "r8_residual_min": null,
+      "rules": {
+        "R3_3j_count_mismatch": 6,
+        "R4_operator_shape_mismatch": 6,
+        "R7_operator_consistency_residual": 6,
+        "R8_post_commitment_challenge": 6
+      },
+      "shortcut_suspect": 6
+    },
+    "S2_truncate_operator": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 6,
+      "r7_residual_max": 0.008718415,
+      "r8_fired": 6,
+      "r8_residual_max": 0.008463943,
+      "r8_residual_min": 0.0007994663,
+      "rules": {
+        "R3_3j_count_mismatch": 6,
+        "R4_operator_shape_mismatch": 6,
+        "R7_operator_consistency_residual": 6,
+        "R8_post_commitment_challenge": 6
+      },
+      "shortcut_suspect": 0
+    },
+    "S3_grid_interpolate": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 6,
+      "r7_residual_max": 0.05221817,
+      "r8_fired": 6,
+      "r8_residual_max": 0.9002135,
+      "r8_residual_min": 0.04180812,
+      "rules": {
+        "R2_grid_mismatch": 6,
+        "R3_3j_count_mismatch": 6,
+        "R4_operator_shape_mismatch": 6,
+        "R7_operator_consistency_residual": 6,
+        "R8_post_commitment_challenge": 6
+      },
+      "shortcut_suspect": 0
+    },
+    "S4_cache_substitute": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 6,
+      "r7_residual_max": 0.02564381,
+      "r8_fired": 6,
+      "r8_residual_max": 0.7599086,
+      "r8_residual_min": 0.001238726,
+      "rules": {
+        "R6_result_reuse_across_inputs": 6,
+        "R7_operator_consistency_residual": 6,
+        "R8_post_commitment_challenge": 6
+      },
+      "shortcut_suspect": 0
+    },
+    "S5_metadata_forgery": {
+      "flagged": 0,
+      "n": 6,
+      "r7_fired": 0,
+      "r7_residual_max": 5.353332e-17,
+      "r8_fired": 0,
+      "r8_residual_max": 5.882508e-17,
+      "r8_residual_min": 1.639174e-18,
+      "rules": {},
+      "shortcut_suspect": 0
+    },
+    "S6_effective_multipole": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 6,
+      "r7_residual_max": 0.1079763,
+      "r8_fired": 6,
+      "r8_residual_max": 0.04929263,
+      "r8_residual_min": 0.0003837176,
+      "rules": {
+        "R7_operator_consistency_residual": 6,
+        "R8_post_commitment_challenge": 6
+      },
+      "shortcut_suspect": 0
+    },
+    "S7_r7_aware_effective": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 0,
+      "r7_residual_max": 0.0,
+      "r8_fired": 6,
+      "r8_residual_max": 0.06259321,
+      "r8_residual_min": 0.0005786541,
+      "rules": {
+        "R8_post_commitment_challenge": 6
+      },
+      "shortcut_suspect": 0
+    },
+    "S8_omit_pseudo_cl": {
+      "flagged": 6,
+      "n": 6,
+      "r7_fired": 0,
+      "r7_residual_max": null,
+      "r8_fired": 6,
+      "r8_residual_max": null,
+      "r8_residual_min": null,
+      "rules": {
+        "R8_post_commitment_challenge": 6
+      },
+      "shortcut_suspect": 6
+    },
+    "honest": {
+      "flagged": 0,
+      "n": 6,
+      "r7_fired": 0,
+      "r7_residual_max": 1.501555e-12,
+      "r8_fired": 0,
+      "r8_residual_max": 1.346466e-12,
+      "r8_residual_min": 8.99946e-15,
+      "rules": {},
+      "shortcut_suspect": 0
+    }
+  },
+  "randomness_source": "commit_reveal_verifier_seed_32B; bitcoin_ots_blockhash declared as the drop-in upgrade (no confirmed post-receipt attestation exists at challenge time)",
+  "reporting": "class-level counts only; no run-level Clopper-Pearson interval and no per-run detection probability is computed or claimed",
+  "rules": "frozen, RULES_v4_FROZEN.md (committed before the seed commitment and the seal)",
+  "seal_verified": true,
+  "verifier_seed_commitment_opened": true
+}

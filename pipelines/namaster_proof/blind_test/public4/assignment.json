@@ -1,0 +1,218 @@
+{
+  "run_000": {
+    "map_seed": 90244,
+    "variant": "S4_cache_substitute"
+  },
+  "run_001": {
+    "map_seed": 59634,
+    "variant": "S6_effective_multipole"
+  },
+  "run_002": {
+    "map_seed": 9671,
+    "variant": "honest"
+  },
+  "run_003": {
+    "map_seed": 38217,
+    "variant": "S7_r7_aware_effective"
+  },
+  "run_004": {
+    "map_seed": 27911,
+    "variant": "S1_skip_operator"
+  },
+  "run_005": {
+    "map_seed": 39786,
+    "variant": "S7_r7_aware_effective"
+  },
+  "run_006": {
+    "map_seed": 2675,
+    "variant": "S8_omit_pseudo_cl"
+  },
+  "run_007": {
+    "map_seed": 95496,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_008": {
+    "map_seed": 92524,
+    "variant": "S4_cache_substitute"
+  },
+  "run_009": {
+    "map_seed": 42657,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_010": {
+    "map_seed": 60647,
+    "variant": "honest"
+  },
+  "run_011": {
+    "map_seed": 82297,
+    "variant": "S8_omit_pseudo_cl"
+  },
+  "run_012": {
+    "map_seed": 63874,
+    "variant": "S8_omit_pseudo_cl"
+  },
+  "run_013": {
+    "map_seed": 66647,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_014": {
+    "map_seed": 36379,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_015": {
+    "map_seed": 72802,
+    "variant": "S4_cache_substitute"
+  },
+  "run_016": {
+    "map_seed": 2510,
+    "variant": "S6_effective_multipole"
+  },
+  "run_017": {
+    "map_seed": 73493,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_018": {
+    "map_seed": 56660,
+    "variant": "S6_effective_multipole"
+  },
+  "run_019": {
+    "map_seed": 94901,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_020": {
+    "map_seed": 83645,
+    "variant": "honest"
+  },
+  "run_021": {
+    "map_seed": 91962,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_022": {
+    "map_seed": 69427,
+    "variant": "S8_omit_pseudo_cl"
+  },
+  "run_023": {
+    "map_seed": 14276,
+    "variant": "S2_truncate_operator"
+  },
+  "run_024": {
+    "map_seed": 49923,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_025": {
+    "map_seed": 92714,
+    "variant": "S7_r7_aware_effective"
+  },
+  "run_026": {
+    "map_seed": 84814,
+    "variant": "S2_truncate_operator"
+  },
+  "run_027": {
+    "map_seed": 91445,
+    "variant": "honest"
+  },
+  "run_028": {
+    "map_seed": 53966,
+    "variant": "S1_skip_operator"
+  },
+  "run_029": {
+    "map_seed": 40723,
+    "variant": "S7_r7_aware_effective"
+  },
+  "run_030": {
+    "map_seed": 62278,
+    "variant": "S8_omit_pseudo_cl"
+  },
+  "run_031": {
+    "map_seed": 83414,
+    "variant": "S6_effective_multipole"
+  },
+  "run_032": {
+    "map_seed": 83487,
+    "variant": "S2_truncate_operator"
+  },
+  "run_033": {
+    "map_seed": 73214,
+    "variant": "S6_effective_multipole"
+  },
+  "run_034": {
+    "map_seed": 55815,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_035": {
+    "map_seed": 53072,
+    "variant": "S1_skip_operator"
+  },
+  "run_036": {
+    "map_seed": 49030,
+    "variant": "S4_cache_substitute"
+  },
+  "run_037": {
+    "map_seed": 85143,
+    "variant": "S2_truncate_operator"
+  },
+  "run_038": {
+    "map_seed": 56389,
+    "variant": "S6_effective_multipole"
+  },
+  "run_039": {
+    "map_seed": 35349,
+    "variant": "S5_metadata_forgery"
+  },
+  "run_040": {
+    "map_seed": 19590,
+    "variant": "S3_grid_interpolate"
+  },
+  "run_041": {
+    "map_seed": 3328,
+    "variant": "honest"
+  },
+  "run_042": {
+    "map_seed": 9140,
+    "variant": "S7_r7_aware_effective"
+  },
+  "run_043": {
+    "map_seed": 21152,
+    "variant": "honest"
+  },
+  "run_044": {
+    "map_seed": 62227,
+    "variant": "S2_truncate_operator"
+  },
+  "run_045": {
+    "map_seed": 825,
+    "variant": "S8_omit_pseudo_cl"
+  },
+  "run_046": {
+    "map_seed": 26872,
+    "variant": "S1_skip_operator"
+  },
+  "run_047": {
+    "map_seed": 46077,
+    "variant": "S1_skip_operator"
+  },
+  "run_048": {
+    "map_seed": 53300,
+    "variant": "S7_r7_aware_effective"
+  },
+  "run_049": {
+    "map_seed": 823,
+    "variant": "S4_cache_substitute"
+  },
+  "run_050": {
+    "map_seed": 18980,
+    "variant": "S1_skip_operator"
+  },
+  "run_051": {
+    "map_seed": 16441,
+    "variant": "S2_truncate_operator"
+  },
+  "run_052": {
+    "map_seed": 5388,
+    "variant": "S4_cache_substitute"
+  },
+  "run_053": {
+    "map_seed": 55302,
+    "variant": "S3_grid_interpolate"
+  }
+}
