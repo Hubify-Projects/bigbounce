@@ -4,49 +4,233 @@
   "title": "Galaxy chirality",
   "question": "Is there a large-scale observed-label chirality dipole in the released DESI imaging catalog?",
   "papers": [
-    { "paper": "P4", "role": "lead", "title": "Galaxy Chirality Catalog (ApJS)" },
-    { "paper": "P5", "role": "support", "title": "Environmental Dependence of Spiral Chirality (AJ)" }
+    {
+      "paper": "P4",
+      "role": "lead",
+      "title": "Galaxy Chirality Catalog (ApJS)"
+    },
+    {
+      "paper": "P5",
+      "role": "support",
+      "title": "Environmental Dependence of Spiral Chirality (AJ)"
+    }
   ],
   "experiments": [
-    { "id": "p4-v2-vit-production-training", "depends_on": [] },
-    { "id": "p4-g1-vit-retrain-manifest", "depends_on": [] },
-    { "id": "p4-g1-ce-composition-assembly", "depends_on": ["p4-g1-vit-retrain-manifest"] },
-    { "id": "p4-g2-disjoint-validation", "depends_on": ["p4-g1-vit-retrain-manifest"] },
-    { "id": "p4-g3-joint-estimator-covariance", "depends_on": ["p4-g1-vit-retrain-manifest"] },
-    { "id": "p4-e2e-mirror-flip", "depends_on": ["p4-g1-vit-retrain-manifest"] },
-    { "id": "p4-g4-monopole-mechanism-injection", "depends_on": ["p4-e2e-mirror-flip"] },
-    { "id": "p4-a95-dipole-injection-limit", "depends_on": ["p4-e2e-mirror-flip"] },
-    { "id": "p4-c1-namaster-fsky-sweep", "depends_on": [] },
-    { "id": "p4-c2-nall-binomial-null", "depends_on": ["p4-e2e-mirror-flip"] },
-    { "id": "p4-c3-wp-invariance-fsky", "depends_on": ["p4-e2e-mirror-flip"] },
-    { "id": "p4-gz1only-retrain-dipole-null", "depends_on": [] },
-    { "id": "p4-dr8-axis-ratio-crossmatch", "depends_on": [] },
-    { "id": "p4-dipole-8m-fullcatalog", "depends_on": [] },
-    { "id": "p4p-row16i-full-parent-dipole", "depends_on": ["p4-v2-vit-production-training", "p4-a95-dipole-injection-limit"] },
-    { "id": "p5-desi-dr1-crossmatch-build", "depends_on": ["p4-e2e-mirror-flip"] },
-    { "id": "p5-redshift-analysis", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
-    { "id": "p5-density-analysis", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
-    { "id": "p5-healpix-analysis", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
-    { "id": "p5-systematics-analysis", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
-    { "id": "p5-cosmic-web-desivast-void", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
-    { "id": "p5-rconf-closures", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
-    { "id": "p5-focal-cluster-robustness", "depends_on": ["p5-rconf-closures"] },
-    { "id": "p5-astra-crossmatch-hf-mirror", "depends_on": ["p5-desi-dr1-crossmatch-build"] },
-    { "id": "p4prime-a95-neyman-cl-2026-09-02", "depends_on": [] },
-    { "id": "p4prime-bh-universe-dipole-exclusion", "depends_on": ["p4prime-a95-neyman-cl-2026-09-02"] }
+    {
+      "id": "p4-v2-vit-production-training",
+      "depends_on": []
+    },
+    {
+      "id": "p4-g1-vit-retrain-manifest",
+      "depends_on": []
+    },
+    {
+      "id": "p4-g1-ce-composition-assembly",
+      "depends_on": [
+        "p4-g1-vit-retrain-manifest"
+      ]
+    },
+    {
+      "id": "p4-g2-disjoint-validation",
+      "depends_on": [
+        "p4-g1-vit-retrain-manifest"
+      ]
+    },
+    {
+      "id": "p4-g3-joint-estimator-covariance",
+      "depends_on": [
+        "p4-g1-vit-retrain-manifest"
+      ]
+    },
+    {
+      "id": "p4-e2e-mirror-flip",
+      "depends_on": [
+        "p4-g1-vit-retrain-manifest"
+      ]
+    },
+    {
+      "id": "p4-g4-monopole-mechanism-injection",
+      "depends_on": [
+        "p4-e2e-mirror-flip"
+      ]
+    },
+    {
+      "id": "p4-a95-dipole-injection-limit",
+      "depends_on": [
+        "p4-e2e-mirror-flip"
+      ]
+    },
+    {
+      "id": "p4-c1-namaster-fsky-sweep",
+      "depends_on": []
+    },
+    {
+      "id": "p4-c2-nall-binomial-null",
+      "depends_on": [
+        "p4-e2e-mirror-flip"
+      ]
+    },
+    {
+      "id": "p4-c3-wp-invariance-fsky",
+      "depends_on": [
+        "p4-e2e-mirror-flip"
+      ]
+    },
+    {
+      "id": "p4-gz1only-retrain-dipole-null",
+      "depends_on": []
+    },
+    {
+      "id": "p4-dr8-axis-ratio-crossmatch",
+      "depends_on": []
+    },
+    {
+      "id": "p4-dipole-8m-fullcatalog",
+      "depends_on": []
+    },
+    {
+      "id": "p4p-row16i-full-parent-dipole",
+      "depends_on": [
+        "p4-v2-vit-production-training",
+        "p4-a95-dipole-injection-limit"
+      ]
+    },
+    {
+      "id": "p5-desi-dr1-crossmatch-build",
+      "depends_on": [
+        "p4-e2e-mirror-flip"
+      ]
+    },
+    {
+      "id": "p5-redshift-analysis",
+      "depends_on": [
+        "p5-desi-dr1-crossmatch-build"
+      ]
+    },
+    {
+      "id": "p5-density-analysis",
+      "depends_on": [
+        "p5-desi-dr1-crossmatch-build"
+      ]
+    },
+    {
+      "id": "p5-healpix-analysis",
+      "depends_on": [
+        "p5-desi-dr1-crossmatch-build"
+      ]
+    },
+    {
+      "id": "p5-systematics-analysis",
+      "depends_on": [
+        "p5-desi-dr1-crossmatch-build"
+      ]
+    },
+    {
+      "id": "p5-cosmic-web-desivast-void",
+      "depends_on": [
+        "p5-desi-dr1-crossmatch-build"
+      ]
+    },
+    {
+      "id": "p5-rconf-closures",
+      "depends_on": [
+        "p5-desi-dr1-crossmatch-build"
+      ]
+    },
+    {
+      "id": "p5-focal-cluster-robustness",
+      "depends_on": [
+        "p5-rconf-closures"
+      ]
+    },
+    {
+      "id": "p5-astra-crossmatch-hf-mirror",
+      "depends_on": [
+        "p5-desi-dr1-crossmatch-build"
+      ]
+    },
+    {
+      "id": "p4prime-a95-neyman-cl-2026-09-02",
+      "depends_on": []
+    },
+    {
+      "id": "p4prime-bh-universe-dipole-exclusion",
+      "depends_on": [
+        "p4prime-a95-neyman-cl-2026-09-02"
+      ]
+    },
+    {
+      "id": "row16iv-chirality-structure",
+      "depends_on": []
+    }
   ],
   "external_data": [
-    { "name": "Smith42/galaxies (HF, galaxy image dataset)", "link": "https://huggingface.co/datasets/Smith42/galaxies", "kind": "dataset", "license": null },
-    { "name": "Galaxy Zoo 1 (GZ1) CW/CCW S3 labels", "link": "https://data.galaxyzoo.org/", "kind": "labels", "license": null },
-    { "name": "CE-ResNet pre_desi.fits (Zenodo)", "link": "https://doi.org/10.5281/zenodo.7167388", "kind": "model-artifact", "license": null },
-    { "name": "Galaxy Zoo DESI morphology predictions (Walmsley 2023)", "link": "https://data.galaxyzoo.org/", "kind": "labels", "license": null },
-    { "name": "NOIRLab Astro Data Lab TAP (ls_dr8.tractor)", "link": "https://datalab.noirlab.edu/tap", "kind": "api", "license": null },
-    { "name": "DESI DR1 (base release)", "link": "https://data.desi.lbl.gov/public/dr1/", "kind": "dataset", "license": null },
-    { "name": "DESI DR1 DESIVAST value-added catalog", "link": "https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/", "kind": "dataset", "license": null },
-    { "name": "bamfai/galaxy-chirality-catalog (HF)", "link": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog", "kind": "dataset", "license": null },
-    { "name": "bamfai/galaxy-chirality-v2 (HF checkpoint)", "link": "https://huggingface.co/bamfai/galaxy-chirality-v2", "kind": "model", "license": null },
-    { "name": "bamfai/astra-desi-edr-mirror (HF)", "link": "https://huggingface.co/datasets/bamfai/astra-desi-edr-mirror", "kind": "dataset", "license": null },
-    { "name": "P4 Zenodo archive", "link": "https://doi.org/10.5281/zenodo.21461899", "kind": "zenodo-archive", "license": null }
+    {
+      "name": "Smith42/galaxies (HF, galaxy image dataset)",
+      "link": "https://huggingface.co/datasets/Smith42/galaxies",
+      "kind": "dataset",
+      "license": null
+    },
+    {
+      "name": "Galaxy Zoo 1 (GZ1) CW/CCW S3 labels",
+      "link": "https://data.galaxyzoo.org/",
+      "kind": "labels",
+      "license": null
+    },
+    {
+      "name": "CE-ResNet pre_desi.fits (Zenodo)",
+      "link": "https://doi.org/10.5281/zenodo.7167388",
+      "kind": "model-artifact",
+      "license": null
+    },
+    {
+      "name": "Galaxy Zoo DESI morphology predictions (Walmsley 2023)",
+      "link": "https://data.galaxyzoo.org/",
+      "kind": "labels",
+      "license": null
+    },
+    {
+      "name": "NOIRLab Astro Data Lab TAP (ls_dr8.tractor)",
+      "link": "https://datalab.noirlab.edu/tap",
+      "kind": "api",
+      "license": null
+    },
+    {
+      "name": "DESI DR1 (base release)",
+      "link": "https://data.desi.lbl.gov/public/dr1/",
+      "kind": "dataset",
+      "license": null
+    },
+    {
+      "name": "DESI DR1 DESIVAST value-added catalog",
+      "link": "https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/",
+      "kind": "dataset",
+      "license": null
+    },
+    {
+      "name": "bamfai/galaxy-chirality-catalog (HF)",
+      "link": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+      "kind": "dataset",
+      "license": null
+    },
+    {
+      "name": "bamfai/galaxy-chirality-v2 (HF checkpoint)",
+      "link": "https://huggingface.co/bamfai/galaxy-chirality-v2",
+      "kind": "model",
+      "license": null
+    },
+    {
+      "name": "bamfai/astra-desi-edr-mirror (HF)",
+      "link": "https://huggingface.co/datasets/bamfai/astra-desi-edr-mirror",
+      "kind": "dataset",
+      "license": null
+    },
+    {
+      "name": "P4 Zenodo archive",
+      "link": "https://doi.org/10.5281/zenodo.21461899",
+      "kind": "zenodo-archive",
+      "license": null
+    }
   ],
   "full_reproduction": {
     "est_wall_clock": "~2-3 days sequential; dominated by the G1 ViT-Small retrain (~4h on RunPod A4000) and the e2e mirror-flip full-catalog inference (10.45h wall on RunPod A100, 16.9M inferences). The C1-C3 NaMaster null-test batch, G2/G3/G4 validations, and the A_95 dipole limit are each minutes-scale once the trained model and full-catalog inference exist and can run in parallel. P5's DESI crossmatch build (~hours, local CPU) gates its four downstream environment analyses plus the cosmic-web/DESIVAST and r-conf legs, which are independently parallelizable after that.",

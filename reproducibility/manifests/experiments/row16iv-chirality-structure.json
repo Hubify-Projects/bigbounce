@@ -1,0 +1,116 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "row16iv-chirality-structure",
+ "title": "Row 16 (iv) \u2014 chirality x structure: parity vs environment, anomaly positions, redshift, and preferred axes",
+ "program": "galaxy-chirality",
+ "paper": "P4",
+ "kind": "validation",
+ "inputs": [
+  {
+   "name": "P4 chirality catalog (primary-safe, DESI Legacy DR8 ViT+TTA, 8,474,531 rows)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+   "checksum": null
+  },
+  {
+   "name": "Anomaly catalog v2 science targets (1,244 rows)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+   "checksum": null
+  },
+  {
+   "name": "DESI spec-z x chirality crossmatch (P5)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+   "checksum": null
+  },
+  {
+   "name": "DESI DR1 LSS public products (QSO clustering + randoms, z=0.8-2.1) - INSPECTED, NOT USED: no LRG/BGS/void product on disk and no redshift overlap with the z<0.3 spirals",
+   "type": "external-dataset",
+   "locator": "https://data.desi.lbl.gov/public/dr1/",
+   "checksum": null,
+   "license": "DESI DR1 public data, CC-BY-4.0"
+  }
+ ],
+ "apis": [],
+ "code": [
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_common.py",
+   "entrypoint": "imported",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_env_z.py",
+   "entrypoint": "python3 chirality_structure_env_z.py",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_anomaly.py",
+   "entrypoint": "python3 chirality_structure_anomaly.py",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_axes.py",
+   "entrypoint": "python3 chirality_structure_axes.py",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_figures.py",
+   "entrypoint": "python3 chirality_structure_figures.py",
+   "sha256": null
+  }
+ ],
+ "environment": {
+  "python": "numpy, scipy, pyarrow, scikit-learn, healpy, matplotlib",
+  "hardware": "local laptop CPU (no GPU, no cloud)"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": null,
+  "pod_id_or_host": "Houston laptop (darwin)",
+  "date": "2026-09-04",
+  "wall_clock": "~50 min total across the three analysis scripts",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local CPU",
+  "est_wall_clock": "~1 hour",
+  "est_cost_usd": 0.0,
+  "parallelizable": true,
+  "resume_support": false,
+  "notes": "Pre-registration (statistics, nulls, selection handling, 3-sigma-after-look-elsewhere threshold) was committed BEFORE any statistic was computed: commit 8e429040. Seeds are fixed in the scripts (16041-16045), so all reported numbers are byte-reproducible on a local CPU."
+ },
+ "outputs": [
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_env_z.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_anomaly.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_axes.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_summary.png",
+   "type": "figure",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/chirality_structure/ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md",
+   "type": "document",
+   "checksum": null
+  }
+ ],
+ "verification": "Re-run the three analysis scripts and confirm every reported observed statistic, null mean/std, z and empirical p match the committed JSON exactly (fixed seeds).",
+ "status": "runnable-now",
+ "provenance": [
+  "project-context/NEXT_SCIENCE_LEDGER.md row 16, item (iv)",
+  "pipelines/p4prime_chirality_test/chirality_structure/ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md (pre-registration committed at 8e429040)"
+ ]
+}
