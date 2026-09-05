@@ -417,34 +417,54 @@ evidential, since \(M\) depends only on the mask and \(\ell\)-grid so every
 honest run legitimately shares one \(M\) hash). Both are discussed under the
 pilot round below.
 
-\paragraph{Result.} 18 runs were sealed and executed (3 per arm; \(N_{\rm
-side}=64\), \(\ell_{\max}=64\), local CPU, \(\sim\)1 minute, \$0 marginal
-cost). The pre-declared criterion was met, as Table~\ref{tab:blind-results}
-shows. The seal was independently verified: the assignment re-derived from the
-revealed key reproduced the digest committed before any run,
-\texttt{0f4ca4ba\ldots}.
+\paragraph{Result (batch 2, primary).}
+\label{sec:blind-test-result}
+35 runs were sealed and executed under the frozen rules (7 arms \(\times\) 5
+replicates; \(N_{\rm side}=64\), \(\ell_{\max}=64\), local CPU, \(\sim\)11~s
+for 36 runs including the reference, \$0 marginal cost). The commit-ordered
+audit trail is: rules frozen alone (\texttt{4451b135}) \(\to\) seal
+commitment with no run output in the tree (\texttt{28efa21c}) \(\to\) 35
+run outputs and verdicts (\texttt{27300504}) \(\to\) key reveal and scorecard
+(\texttt{974e2859}) \(\to\) manifest (\texttt{b3347c53}). Sealed assignment
+digest \texttt{c96b5bf1\ldots}, key-file digest \texttt{bbf6373b\ldots},
+\texttt{seal\_verified: true}: the assignment re-derived from the revealed
+key reproduces the digest committed before any batch-2 run output existed,
+and the sealed material was held outside the working tree for the entire
+sealed window. Table~\ref{tab:blind-results} gives the per-arm confusion
+counts.
 
 \begin{table}[h]
 \centering
-\caption{Blind shortcut-detection confusion table (18 sealed runs, 3 per arm).}
+\caption{Blind shortcut-detection confusion table, batch 2 (35 sealed runs, 7 arms \(\times\) 5, frozen rules).}
 \label{tab:blind-results}
 \begin{tabular}{@{}lccl@{}}
 \toprule
-Arm & \(n\) & Flagged & Triggering rule(s) \\
+Arm & \(n\) & Flagged & Rule(s) fired \\
 \midrule
-Honest & 3 & 0 & --- \\
-S1 operator skipped & 3 & 3 & 3\(j\)-count, operator-shape mismatch \\
-S2 operator truncated & 3 & 3 & 3\(j\)-count, operator-shape mismatch \\
-S3 grid reduced + interpolated & 3 & 3 & \(\ell\)-grid, 3\(j\)-count, shape mismatch \\
-S4 cache substituted & 3 & 3 & result reuse across differing inputs \\
-S5 metadata forgery & 3 & 0 & --- (escapes, as pre-declared) \\
+Honest & 5 & 0 & --- \\
+S1 operator skipped & 5 & 5 & R3, R4 \\
+S2 operator truncated & 5 & 5 & R3, R4 \\
+S3 grid reduced + interpolated & 5 & 5 & R2, R3, R4 \\
+S4 cache substituted & 5 & 5 & R6 (reference disjunct 5/5, cross-run disjunct 0/5) \\
+S5 metadata forgery & 5 & 0 & --- (escapes, pre-declared) \\
+S6 effective multipole & 5 & 0 & --- (escapes; \emph{no} outcome pre-declared) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Detection rate on the classes receipts can see (S1--S4) is 12/12 (100\%);
-over all shortcut runs including the forgery arm, 12/15 (80\%); false-positive
-rate on honest runs is 0/3 (0\%).
+Reporting counts with one-sided 95\% Clopper--Pearson bounds, never bare
+percentages: structural classes S1--S4 are detected 20/20 (lower bound
+\textbf{0.861}); honest false positives are 0/5 (upper bound on FPR
+\textbf{0.451}); across all six shortcut arms, 20/30 (point estimate 0.667,
+95\% interval [0.501, 0.807]). \textbf{Independence caveat (pre-declared):}
+rules R1--R5 compare seed-independent quantities against a fixed contract, so
+the five replicates within an arm are seed-varied executions of one
+deterministic variant, not five independent draws --- effective independent
+\(n\) per class is 1 for those rules, and the replicates measure firing
+\emph{reproducibility}, not sampling variance. R6 (result reuse) does vary
+with the seed-dependent input-map hash and is not subject to this caveat.
+The frozen verifier's own sha256 is quoted from
+\texttt{public2/frozen\_rules\_digest.json}: \texttt{6a9acd70\ldots}.
 
 \paragraph{Two corrections, both discovered by running the test.} First, wall
 clock is not a usable rule: the shortcut arms ran 3--15\(\times\) faster than
