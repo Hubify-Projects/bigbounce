@@ -1,0 +1,169 @@
+{
+ "cai_row_convention": {
+  "A_red (Eq.27) first==second under 6-perm": true,
+  "A_zdz (Eq.30) first==second under 6-perm": true,
+  "A_chi (Eq.32) first==second under 6-perm": true,
+  "A_red first==second under DISTINCT reading": false
+ },
+ "rows_sum_equals_Eqs34_36": true,
+ "Eq37_distinct_minus_rows": "0",
+ "Eq37_sixperm_minus_rows": "-99*(k1**3 + k2**3 + k3**3)/128",
+ "Li419_cs1_minus_rows": "0",
+ "Li_rows_cs1_eps32_minus_Cai_rows": {
+  "redefinition": "0",
+  "zeta zetadot^2": "0",
+  "zetadot dzeta dchi": "0",
+  "zeta(ddchi)^2": "0"
+ },
+ "Li_rows_general_eps_minus_Cai_rows_has_factor_(2eps-3)": {
+  "redefinition": true,
+  "zeta zetadot^2": true,
+  "zetadot dzeta dchi": true,
+  "zeta(ddchi)^2": true
+ },
+ "printed_Cai_Eqs38_41": {
+  "isoceles_local": "-35/8",
+  "equilateral": "-255/64",
+  "folded": "-9/4",
+  "A_T_squeezed_over_k3": "-21/8"
+ },
+ "hypotheses": {
+  "H0_Eq37_distinct_reading_(=rows,=Li4.19)": {
+   "isoceles_local": "-35/16",
+   "equilateral": "-255/128",
+   "folded": "-9/8",
+   "A_T_squeezed_over_k3": "-21/16",
+   "reproduces_printed": {
+    "isoceles_local": false,
+    "equilateral": false,
+    "folded": false,
+    "A_T_squeezed_over_k3": false
+   },
+   "ratio_printed_over_this": {
+    "isoceles_local": "2",
+    "equilateral": "2",
+    "folded": "2",
+    "A_T_squeezed_over_k3": "2"
+   }
+  },
+  "HA_Eq37_sixperm_reading_(Cai_own_convention)": {
+   "isoceles_local": "-305/64",
+   "equilateral": "-585/128",
+   "folded": "-237/64",
+   "A_T_squeezed_over_k3": "-183/64",
+   "reproduces_printed": {
+    "isoceles_local": false,
+    "equilateral": false,
+    "folded": false,
+    "A_T_squeezed_over_k3": false
+   },
+   "ratio_printed_over_this": {
+    "isoceles_local": "56/61",
+    "equilateral": "34/39",
+    "folded": "48/79",
+    "A_T_squeezed_over_k3": "56/61"
+   }
+  },
+  "HB_uniform_x2_on_A_T": {
+   "isoceles_local": "-35/8",
+   "equilateral": "-255/64",
+   "folded": "-9/4",
+   "A_T_squeezed_over_k3": "-21/8",
+   "reproduces_printed": {
+    "isoceles_local": true,
+    "equilateral": true,
+    "folded": true,
+    "A_T_squeezed_over_k3": true
+   },
+   "ratio_printed_over_this": {
+    "isoceles_local": "1",
+    "equilateral": "1",
+    "folded": "1",
+    "A_T_squeezed_over_k3": "1"
+   }
+  },
+  "HC_isoceles_norm_sumk3->k3_only": {
+   "isoceles_local": "-35/8",
+   "equilateral": "-255/128",
+   "folded": "-9/8",
+   "A_T_squeezed_over_k3": "-21/16",
+   "reproduces_printed": {
+    "isoceles_local": true,
+    "equilateral": false,
+    "folded": false,
+    "A_T_squeezed_over_k3": false
+   },
+   "ratio_printed_over_this": {
+    "isoceles_local": "1",
+    "equilateral": "2",
+    "folded": "2",
+    "A_T_squeezed_over_k3": "2"
+   }
+  },
+  "HD_f=(20/3)A/sumk3_(Wick_2_dropped)": {
+   "isoceles_local": "-35/8",
+   "equilateral": "-255/64",
+   "folded": "-9/4",
+   "A_T_squeezed_over_k3": "-21/16",
+   "reproduces_printed": {
+    "isoceles_local": true,
+    "equilateral": true,
+    "folded": true,
+    "A_T_squeezed_over_k3": false
+   },
+   "ratio_printed_over_this": {
+    "isoceles_local": "1",
+    "equilateral": "1",
+    "folded": "1",
+    "A_T_squeezed_over_k3": "2"
+   }
+  }
+ },
+ "Li_cs1": {
+  "5.1 local": "-35/16",
+  "5.2 equil": "-255/128",
+  "5.3 folded": "-9/8",
+  "4.22 squeezed F coeff": "-21/16"
+ },
+ "Li419_configs_cs1": {
+  "isoceles_local": "-35/16",
+  "equilateral": "-255/128",
+  "folded": "-9/8",
+  "A_T_squeezed_over_k3": "-21/16"
+ },
+ "figure_fnl_eps": {
+  "0.0": {
+   "read": -4.38,
+   "2xH0": -4.375,
+   "HA": -4.765625
+  },
+  "0.5": {
+   "read": -4.2,
+   "2xH0": -4.155847886029412,
+   "HA": -4.656048943014706
+  },
+  "1.0": {
+   "read": -3.98,
+   "2xH0": -3.9843749999999996,
+   "HA": -4.5703125
+  },
+  "1.5": {
+   "read": -3.9,
+   "2xH0": -3.818018713662791,
+   "HA": -4.487134356831396
+  },
+  "2.0": {
+   "read": -2.25,
+   "2xH0": -2.25,
+   "HA": -3.703125
+  }
+ },
+ "definitions": {
+  "Cai Eq.(14) P_zeta": "P_zeta(k,eta) = k^3/(12 pi^2) |zeta_k|^2  [verbatim; Li Eq.3.17 uses (2pi)^3 delta (2pi^2/k^3) P_zeta]",
+  "Cai Eq.(19) 3pt": "<zeta zeta zeta> = (2pi)^7 delta(sum k) P_zeta^2/prod k_i^3 * A   [identical to Li Eq.(4.6)]",
+  "Cai Eq.(20) local ansatz": "zeta = zeta_g + (3/5) f_NL zeta_g^2",
+  "Cai Eq.(21) amplitude": "|B|_NL = (10/3) A/sum k_i^3   [identical to Li Eq.(4.20) f_NL = (10/3) A_tot/sum k_i^3]",
+  "consistency": "with <zz>=(2pi)^3 delta P, P=2pi^2 Delta^2/k^3 and (2pi)^7 Delta^4 A/prod k^3, the local ansatz gives A=(3/10) f sum k^3, i.e. f=(10/3)A/sum k^3: the 6/5 Wick factor is already inside 10/3; no P-vs-2P slip is possible at the definition level",
+  "Cai Eq.(23) 2pt": "<zeta*(k) zeta(k')> = (2pi)^4 k^-3 delta^3(k+k') P_zeta(k)  [verbatim]"
+ }
+}
