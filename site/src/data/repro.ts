@@ -646,6 +646,29 @@ export const reproPrograms: ReproProgram[] = [
         "depends_on": [
           "a3-row15-curvaton"
         ]
+      },
+      {
+        "id": "a3-row15b-entropy-sector",
+        "depends_on": [
+          "a3-row15-curvaton",
+          "p2-a3-row18a-s2-tensor-transfer"
+        ]
+      },
+      {
+        "id": "lift2-separate-universe-failure-criterion",
+        "depends_on": []
+      },
+      {
+        "id": "psu-gates-s1-s2-label-composition-criterion",
+        "depends_on": [
+          "lift2-separate-universe-failure-criterion"
+        ]
+      },
+      {
+        "id": "psu-gates-s6-s11-science-gates",
+        "depends_on": [
+          "psu-gates-s1-s2-label-composition-criterion"
+        ]
       }
     ],
     "external_data": [
@@ -799,6 +822,13 @@ export const reproPrograms: ReproProgram[] = [
         "depends_on": []
       },
       {
+        "id": "p4p-row16i-full-parent-dipole",
+        "depends_on": [
+          "p4-v2-vit-production-training",
+          "p4-a95-dipole-injection-limit"
+        ]
+      },
+      {
         "id": "p5-desi-dr1-crossmatch-build",
         "depends_on": [
           "p4-e2e-mirror-flip"
@@ -860,6 +890,16 @@ export const reproPrograms: ReproProgram[] = [
         "id": "p4prime-bh-universe-dipole-exclusion",
         "depends_on": [
           "p4prime-a95-neyman-cl-2026-09-02"
+        ]
+      },
+      {
+        "id": "row16iv-chirality-structure",
+        "depends_on": []
+      },
+      {
+        "id": "p4p-row16ib-axis-shift",
+        "depends_on": [
+          "p4p-row16i-full-parent-dipole"
         ]
       }
     ],
@@ -2526,6 +2566,132 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row15b-entropy-sector",
+    "title": "Ledger row 15b - the entropy (spectator) sector in the three A2 matter-bounce backgrounds: lambda_sigma vs lambda_T vs lambda_zeta per scheme, and the pre-bounce condition on r_dec Mpl/sigma_* for r < 0.036",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "A2 linear-transmission module - the three bounce backgrounds (Quintin-type, LQC-effective-dust, poly-analytic) and the a''/a arrays used for both the spectator and the tensor evolution",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 18a - lambda_T, lambda_zeta^S1 and lambda_zeta^S2 on the Quintin background; the S2 scalar transfer imported here",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/results.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 15 - the curvaton window r = 24/[1 + (4/3) r_dec^2 (Mpl/sigma_*)^2], the F >= 25.82 requirement and the (r/24)^2 dilution of the intrinsic -35/16",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row15_curvaton/results.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Curvaton matter-bounce adjudication - confirms the spectator obeys the same MS operator for constant epsilon, so n_s is inherited",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai, Xue & Brandenberger 2011 - the matter-bounce curvaton scenario and the kinetic-amplification factor F",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1101.0822",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lyth, Ungarelli & Wands 2003 - zeta = r_dec zeta_sigma and the curvaton local f_NL",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/0208055",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - the bounce background (iii) integrated here",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1508.04141",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL), the target of the viability condition",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2110.00483",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/row15b_entropy_sector/row15b_entropy_sector.py",
+        "entrypoint": "cd research/track_a3_multichannel/row15b_entropy_sector && python3 row15b_entropy_sector.py",
+        "sha256": "0b1e15c6a36ca7a343a78ec7ade61cc7c3d029c004ae3e911da168597aaec8b8"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy + scipy + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "~4 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~10 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). The spectator is integrated as u'' + (k^2 - a''/a + a^2 m^2)u = 0 with the EXACT matter-era mode function as the initial condition (exact for all k tau, so no sub-Hubble requirement); the tensor is integrated from an INDEPENDENT first-order system h' = Pi/a^2, Pi' = -a^2 k^2 h, so lambda_sigma/lambda_T - 1 is a genuine numerical test of the operator identity rather than a tautology. lambda_zeta^S2 is imported from row 18a (Quintin only); S2 on the LQC and poly backgrounds is NOT computed here and is disclosed as such."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/row15b_entropy_sector/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row15b_entropy_sector/row15b_entropy_sector.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row15b_entropy_sector/row15b_entropy_sector.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row15b_entropy_sector/ROW15B_ENTROPY_SECTOR_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) backgrounds.<bg>.max_abs_lam_sigma_over_lam_T_minus_1 <= 8e-5 (Quintin) and <= 3e-9 (LQC, poly), i.e. the massless spectator transfers exactly like the tensor on all three backgrounds; (b) the light-mass correction dlam/lam scales as (m eta_B)^2 and tends to 0 (about -4e-7 at m eta_B = 1e-6 on Quintin), so the massless limit is recovered smoothly; (c) viability.S1.Lambda == 1 and viability.S2.Lambda == 6.2487 (= row 18a lam_T/lam_zeta^S2); (d) viability.S1['r<0.036'].X_min == 22.344 and viability.S2['r<0.036'].X_min == 22.360, i.e. the pre-bounce condition on X = r_dec Mpl/sigma_* is scheme-independent to 7.3e-4; (e) viability.<scheme>['r<0.036'].F_eff_min == 25.8199 in both schemes, reproducing row 15's F >= 25.82; (f) backgrounds.<bg>.delta_n_T at k eta_B = 1e-3 is about -1e-3 and scales as (k eta_B)^2, so the tensor tilt is unshifted by the bounce on observable scales.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 15 named open item: 'F needs an entropy sector in the A2 backgrounds'",
+      "research/track_a3_multichannel/row15b_entropy_sector/ROW15B_ENTROPY_SECTOR_2026-09-04.md (derivation, background x scheme table, verdict, paper-ready sentences)",
+      "research/track_a3_multichannel/row15_curvaton/ROW15_CURVATON_2026-09-04.md (the parent row this closes an item of)",
+      "research/cubic_bounce_transmission/row18a_s2_tensor/ROW18A_S2_TENSOR_2026-09-04.md (source of lambda_zeta^S2)",
+      "directive Q2 (per-experiment reproducibility manifest)",
+      "model-dependence disclosed: CXB11's kinetic-amplification factor F is still an assumption of THEIR entropy sector; this row computes the TRANSFER of a spectator through the A2 backgrounds and the resulting pre-bounce condition, it does not derive F from a microphysical model. lambda_zeta^S2 is measured on the Quintin background only."
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "a3-row18b-cs-bounce-cubic",
     "title": "Ledger row 18(b) - c_s-dependence of the bounce's own cubic contribution Delta f_NL^bounce(c_s) in scheme S1, and the resulting shift of the joint (r, f_NL) window boundary of row 14",
     "program": "bounce-theory",
@@ -4093,6 +4259,120 @@ export const reproExperiments: ReproExperiment[] = [
       "research/desi_png_reproduction/RUN_LOG.md follow-up section (2026-09-04)",
       "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md (v1, superseded)",
       "research/desi_png_reproduction/LEDGER4_RESULT_v2_2026-09-04.md (this result)",
+      "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "ledger4-desi-dr1-qso-fnl-reproduction-v4",
+    "title": "Ledger #4 v4 - wide-angle correction check (genuine null) + imaging-systematics splits (E(B-V), stellar density, galactic depth) at official-window/official-EZmock-covariance fidelity, on the DESI DR1 QSO f_NL^loc reproduction; supersedes ledger4-desi-dr1-qso-fnl-reproduction-v3 headline (numbers unchanged, two open items closed)",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Official DESI DR1 full-shape-bao-clustering v1.0 VAC (window matrix, full-18-randoms P_ell, EZmock covariance) for QSO - same products as v3",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/",
+        "checksum": "sha256 list in research/desi_png_reproduction/official_products_sha256.txt",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "DESI DR1 QSO clustering + randoms catalogues (LSScats v1.5), split by imaging property median (E(B-V), STARDENS, GALDEPTH_Z) - NGC+SGC, produced by pk_estimator_qso_splits.py",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+        "checksum": null,
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "pypower PowerSpectrumOddWideAngleMatrix (Beutler/Castorina-White wide-angle formalism)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2106.06324 ; https://github.com/cosmodesi/pypower",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (reproduction target)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2411.17623",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "DESI public data server (anonymous HTTP, no key)",
+        "endpoint": "https://data.desi.lbl.gov/public/dr1/",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "research/desi_png_reproduction/wideangle_check.py",
+        "entrypoint": "python3 wideangle_check.py",
+        "sha256": "07b74363e8e7e9643f48b6835e6e7df6d0616bed4670a894b6df215fd6eafef0"
+      },
+      {
+        "path": "research/desi_png_reproduction/imaging_splits_crossmatch.py",
+        "entrypoint": "python3 imaging_splits_crossmatch.py",
+        "sha256": "287e449f1a04ab51746d73456550fb407969e12cadb06a7284269cb1ca7f3a8e"
+      },
+      {
+        "path": "research/desi_png_reproduction/pk_estimator_qso_splits.py",
+        "entrypoint": "python3 pk_estimator_qso_splits.py {EBV,STARDENS,GALDEPTH_Z}",
+        "sha256": "2260f73a7e7fc8a03293db4b0c922869c05fef72fc4ad4ba12e96c262743d700"
+      },
+      {
+        "path": "research/desi_png_reproduction/fit_fnl_splits.py",
+        "entrypoint": "python3 fit_fnl_splits.py",
+        "sha256": "de0e20c1d59e324c5eefef36b967571f4086b43220995f64f42724b27dc761cf"
+      }
+    ],
+    "environment": {
+      "python": "python3.12.13 (dedicated venv: research/desi_png_reproduction/.venv312, gitignored)",
+      "hardware": "cpu-only; Apple M-series MacBook Air, 25.8 GB RAM, 10 cores, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "wide-angle matrix construction + check ~10s; three split P(k) NGC+SGC pypower runs (prior session instance) several minutes each; fit_fnl_splits.py six official-fidelity fits with profile-likelihood scans ~3 min total",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~5 min given outputs/pk_split_*.json and official_products/ already on disk",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Requires official_products/ (window matrix, EZmock covariance) already downloaded per v3, and outputs/pk_split_{NGC,SGC}_{EBV,STARDENS,GALDEPTH_Z}_{low,high}.json already on disk (pk_estimator_qso_splits.py). Run order: wideangle_check.py (standalone, no split dependency) -> fit_fnl_splits.py (reads combine_and_compare.py-convention NGC+SGC combination internally). No new external data required beyond v1-v3's downloads."
+    },
+    "outputs": [
+      {
+        "locator": "research/desi_png_reproduction/outputs/wideangle_check.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/imaging_splits_fnl_v4.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/LEDGER4_RESULT_v4_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) wideangle_check.py's library guard raises ValueError 'Wide-angle order 1 produces only odd poles' when an even-ell projout is requested at wa_order=1, and the constructed matrix's even-ell blocks (ell=0,2,4) have max|M|=0.0 over k<=0.08 for all three; (b) fit_fnl_splits.py reproduces the table: E(B-V) Delta f_NL=-1.69 (sigma_Delta=29.30), STARDENS Delta f_NL=-2.37 (sigma_Delta=34.70), GALDEPTH_Z Delta f_NL=-18.66 (sigma_Delta=31.73) -- none exceeds |Delta/sigma|=2; (c) v3's headline numbers (f_NL=-2.169+/-25.3 at p=1.6, -1.127+/-13.1 at p=1.0) are UNCHANGED by the wide-angle correction, confirming the analytic null. Supersedes: ledger4-desi-dr1-qso-fnl-reproduction-v3 (v3 had no separate manifest; this manifest documents both v3's carried-forward headline and v4's two new closed items).",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+      "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+      "research/desi_png_reproduction/RUN_LOG.md v4 section (2026-09-04)",
+      "research/desi_png_reproduction/LEDGER4_RESULT_v3_2026-09-04.md (v3, headline carried forward unchanged)",
+      "research/desi_png_reproduction/LEDGER4_RESULT_v4_2026-09-04.md (this result)",
       "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength)"
     ]
   },
@@ -8585,6 +8865,169 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "p4p-row16i-full-parent-dipole",
+    "title": "Row 16(i) — full-parent (8,474,531-galaxy) real-space chirality dipole using the exact P4' primary estimator",
+    "program": "galaxy-chirality",
+    "paper": "P4P",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Full DESI Legacy DR8 chirality catalog (class_eq, production equivariant Z2-TTA classifier; already-committed, not re-run)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+        "checksum": "sha256:139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+      },
+      {
+        "name": "row16(ii) N=20,000 injection-calibrated postprocess residual bias",
+        "type": "internal-artifact",
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_injection_results.json",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p4prime_chirality_test/full_parent/full_parent_estimator_lib.py",
+        "entrypoint": "imports build_projector() verbatim from pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+        "sha256": "269add74ab903fb740793655a19684b4464a1c2d6ca07653a2f6a39aa70ccc26"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/full_parent/run_full_parent_dipole.py",
+        "entrypoint": "python3 pipelines/p4prime_chirality_test/full_parent/run_full_parent_dipole.py",
+        "sha256": "7345c344b16f556d9aa2289ee9401da8ab21dd75998ff3bb7a07677308cbcebd"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy + healpy + pyarrow",
+      "hardware": "cpu-only; Apple M-series, macOS arm64 (no GPU/pod needed — classifier inference already existed for all 8,474,531 rows)"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation",
+      "date": "2026-09-04",
+      "wall_clock": "48.1 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~1 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Reuses the already-committed full-catalog class_eq labels; loads one parquet, bins into NSIDE=64 HEALPix pixels, fits a dipole with healpy.fit_dipole via the imported P4' projector, draws a fresh 10,000-sample fixed-occupancy null (seed 20260904), and runs a 14-point x 2000-axis injection-recovery sweep (seed 20260905) to invert A_95."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p4prime_chirality_test/full_parent/row16i_full_parent_dipole.json",
+        "type": "result-json",
+        "checksum": "sha256:975b2cf824884aec5d75d11cd25257a6b93926579832e063c559879972e99d89"
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/full_parent/fig_row16i_full_parent_injection_recovery.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Estimator (healpy.fit_dipole on per-pixel (2*n_CW-total)/total, NSIDE=64, support>=10) and null convention (fixed-occupancy multivariate-hypergeometric label randomization) are imported verbatim from the committed P4' strict-primary generator, not re-derived. Selection differs only in dropping the primary_hc/raw_flip_qc_unsafe restriction (full parent: all class_eq in {CW,CCW}, N=3,200,420 in support vs. 887,472 in the strict-primary subset). No tuning: amplitude grid, seed choice, and axis count match the committed a95_observed_label_upper_limit_v1_0_265.py convention.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 16(i)",
+      "project-context/SSOT/paper-4p/status.md (887,472-subset A_95_obs=0.98%% comparison baseline)",
+      "pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p4p-row16ib-axis-shift",
+    "title": "Row 16(i-b) — is the full-parent chirality dipole a QC/footprint systematic? Graded QC sweep, per-imaging-leg table, monopole/mask-leakage null",
+    "program": "galaxy-chirality",
+    "paper": "P4P",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Full DESI Legacy DR8 chirality catalog (class_eq, production equivariant Z2-TTA classifier; already-committed, not re-run)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+        "checksum": "sha256:139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+      },
+      {
+        "name": "row16(ii) N=20,000 injection-calibrated postprocess residual bias",
+        "type": "internal-artifact",
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_injection_results.json",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p4prime_chirality_test/full_parent/full_parent_estimator_lib.py",
+        "entrypoint": "imports build_projector() verbatim from pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+        "sha256": "269add74ab903fb740793655a19684b4464a1c2d6ca07653a2f6a39aa70ccc26"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/full_parent/row16ib_qc_leg_sweep.py",
+        "entrypoint": "python3 pipelines/p4prime_chirality_test/full_parent/row16ib_qc_leg_sweep.py",
+        "sha256": "8adacafd3cde0663185ad89015116bb52a198cac6aaa703e17f766d3d6cb4a0f"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/full_parent/row16ib_figure.py",
+        "entrypoint": "python3 pipelines/p4prime_chirality_test/full_parent/row16ib_figure.py",
+        "sha256": "4807049e1311a1e35fcd4b123447c6f511929e840b39407425b61d4400e88e03"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy + healpy + pyarrow",
+      "hardware": "cpu-only; Apple M-series, macOS arm64 (no GPU/pod needed — classifier inference already existed for all 8,474,531 rows)"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation",
+      "date": "2026-09-04",
+      "wall_clock": "95.3 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~2 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Re-runs the frozen P4' projector estimator on four QC selections (full parent; !raw_flip_qc_unsafe only; primary_hc only; strict), on each imaging leg (Dec boundaries (-20,32) from p2_chirality/c12b_wls_conditioning.py) in only-leg and drop-leg form for the parent and strict sets, and on |b|>20/30 cuts; fixed-occupancy label-shuffle nulls (10,000 draws for C0/C3, 2,000 elsewhere, seed 20260906) plus a 1,000-realisation pure-monopole mask-leakage null."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p4prime_chirality_test/full_parent/row16ib_axis_shift.json",
+        "type": "result-json",
+        "checksum": "sha256:01af9a4e37a8f93370760a6d71cfa2252327c10e2f6bb8b1b2b2150a4a93758b"
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/full_parent/fig_row16ib_axis_shift.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Plan pre-registered and committed (a5fde20a) BEFORE any fit was run, including the decision rule. Estimator and null imported verbatim from the committed P4' strict-primary generator; leg boundaries taken from the committed c12b_wls_conditioning.py. Result: the parent dipole is removed by the primary_hc cut alone (z=+0.68) and by dropping the DES imaging leg alone (z=+0.48); C0-vs-C3 axis separation 107.5 deg; pure-monopole mask leakage 0.19%. Verdict SYSTEMATIC per the pre-registered rule. Depth/seeing/E(B-V)/brick-quality legs declared NOT RUN (columns absent from the immutable release).",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 16(i-b)",
+      "pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md",
+      "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p4prime-a95-neyman-cl-2026-09-02",
     "title": "P4' R2 closure (DP4P-22) — genuine 95% CL upper limit on the primary real-space chirality dipole amplitude via Neyman inversion of the injection-recovery null",
     "program": "galaxy-chirality",
@@ -9482,6 +9925,92 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "psu-gates-s6-s11-science-gates",
+    "title": "PSU R2 science gates S6-S11: map-independence sentinel + Eq.(4) assertion, Cai factor-2 scope, exact numerical USR delta N(phi,pi) at finite eps_s, final-slice dependence, constant-piece long mode, Zenodo status",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "PSU v1S.0.2 R2 truth audit, section 5(ii) science items S6-S11",
+        "locator": "project-context/peer-reviews/INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab threading map (2026-09-04), frozen map pieces",
+        "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json",
+        "type": "internal-artifact",
+        "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"
+      },
+      {
+        "name": "PSU gates S1/S2 note (closed forms re-asserted here)",
+        "locator": "research/theory_audit/psu_gates_S1_S2_2026_09_04.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab monopole adjudication (2026-09-03), in-in kernel and Cai/Li discussion",
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+        "type": "internal-artifact",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/psu_gates_S6_S11_2026_09_04.py",
+        "entrypoint": "S6_SENTINEL_JSON=research/theory_audit/psu_gates_S6_sentinel_threading_2026_09_04.json python3 research/theory_audit/psu_gates_S6_S11_2026_09_04.py",
+        "sha256": "207c4e118ad46244c7df7b9024ce4c34bfda39b5a99c8bef987b9d25f6c919ad"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy 1.14.0 and mpmath 1.3.0",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-04",
+      "wall_clock": "about 20 s (+ about 100 s for the sentinel re-run of the threading script)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 3 minutes",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic. S6: static ordering assert + sentinel re-run of threading_map_second_order_2026_09_04.py with the in-in coefficients perturbed (c0i+7, c2i+11): map_fNL_pieces byte-identical, prediction block changes; Eq.(4) asserted with the minus sign. S8: exact USR closed-form N(phi,pi), k->0 linear theory, 40-digit mpmath: delta N_SU/[zeta_f(1-I/3)] = 1 + 1e-12 at eps_s=1e-2, eps_f=1e-6 (both final slices). S9: zeta_rho = zeta_phi - zetadot/(3H); lambda_phi = 1-eps/3, lambda_rho = 2(3-eps)/(6-eps). S10: f_map(g,K_c) with g=1 reproducing the frozen initial-label map."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/psu_gates_S6_S11_2026_09_04.json",
+        "type": "result-json",
+        "checksum": "sha256:6642580c39cc7ef2c6d4cbbd1708f3e6270ad907b46f204cb234fedf0c15f6f3"
+      },
+      {
+        "locator": "research/theory_audit/psu_gates_S6_sentinel_threading_2026_09_04.json",
+        "type": "result-json",
+        "checksum": "sha256:bd73587b9b9ccaae0a73ab3c7d14e12422627c4467d637e8b910ded2efc6717e"
+      },
+      {
+        "locator": "research/theory_audit/psu_gates_S6_S11_2026_09_04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run with S6_SENTINEL_JSON pointing at the sentinel receipt and diff the JSON. Required: S6.verdict == 'RESOLVED', S6.Eq4_residual_minus_sign == '0'; S8.cases['es=0.01,ef=1e-06,C1=0,C2=1'].ratio_dN_SU_over_predB within 1e-10 of 1 and ratio_dN_SU_over_zeta_f == 0.99996663...; S9.rows.dust_eps_3_2 == {zeta_rho/zeta_phi '3/2', lambda_phi '1/2', lambda_rho '2/3'}; S10.f_map_g_to_0_known_part == '5*epsilon/9'.",
+    "status": "runnable-now",
+    "provenance": [
+      "PSU R2 truth audit section 5(ii) science items S6-S11 (2026-09-04)",
+      "S6 sentinel: scratch copy of threading_map_second_order_2026_09_04.py with in-in coefficients perturbed; receipt committed",
+      "directive Q2 (reproducibility manifests); directive R2 (rounds stopped); arxiv/paper_su_criterion/main.tex NOT edited by this lane"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "row11c-threading-map-second-order",
     "title": "Row 11(c): second-order threading map from Maldacena's comoving zeta to the zero-shift (fluid-congruence) delta N_c in a non-attractor contraction; mechanism behind the delta N = -5 vs in-in -15/8 monopole gap",
     "program": "bounce-theory",
@@ -9772,6 +10301,230 @@ export const reproExperiments: ReproExperiment[] = [
       "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (paper's committed sky-map amplitude-vs-detection-probability curve; a DIFFERENT statistic/axis, not directly comparable — disclosed in analyze_injection_scale.py's note_on_comparison_scope)",
       "pipelines/p2_chirality/equivariant_postprocess.py (production Z2 2-fold flip-TTA pipeline replicated exactly here)",
       "pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md (prior N=500 pilot this run follows up on)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "row16-image-level-injection-n20k",
+    "title": "Row 16 Part A at N=20,000 — pixel-level parity-injection through the PRODUCTION equivariant (Z2 2-fold flip-TTA) pipeline vs the exact label-level mixture identity, resolving the slope comparison outside the noise floor",
+    "program": "galaxy-chirality",
+    "paper": "P4P",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "bamfai/galaxy-chirality-catalog (catalog_production.parquet)",
+        "type": "external-dataset",
+        "locator": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+        "checksum": null
+      },
+      {
+        "name": "bamfai/galaxy-chirality-v2 checkpoint",
+        "type": "model",
+        "locator": "chirality_model_v2_best.pt, revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+        "checksum": null
+      },
+      {
+        "name": "Legacy Survey DR9 JPEG cutouts (20,000 real galaxies, catalog-labeled CW/CCW)",
+        "type": "external-dataset",
+        "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=..&dec=..&size=150&layer=ls-dr9",
+        "checksum": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "huggingface_hub.hf_hub_download",
+        "endpoint": "https://huggingface.co",
+        "auth_required": true
+      },
+      {
+        "name": "legacysurvey.org jpeg-cutout service",
+        "endpoint": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/fetch_scale20k_sample.py",
+        "entrypoint": "python3 fetch_scale20k_sample.py",
+        "sha256": "473329a5ddca4ebe94a6b2a389ec78e62e06e4c9c33f46c942e0119c49a59770"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/run_injection_scale20k.py",
+        "entrypoint": "python3 run_injection_scale20k.py",
+        "sha256": "956eefab8880317484b53a97f080a9de8661b897eb92803371473b41a2bc1608"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/analyze_injection_scale20k.py",
+        "entrypoint": "python3 analyze_injection_scale20k.py",
+        "sha256": "d87aa0f912103c931153786676d5bb3707d07f693ed0034a9fad2e2708247d77"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/gen_fig_scale20k_injection.py",
+        "entrypoint": "python3 gen_fig_scale20k_injection.py",
+        "sha256": "b36b719f7892f139ef67f264c17a5046cf48a9a9efdcaa14499deb8aa26bbf26"
+      }
+    ],
+    "environment": {
+      "python": "python3 + torch 2.13.0 + timm + PIL + healpy + pandas + huggingface_hub + matplotlib",
+      "hardware": "local Apple Silicon MPS (Metal), macOS arm64 — no RunPod needed at N=20k"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": "Apple M-series MPS",
+      "pod_id_or_host": "local workstation",
+      "date": "2026-09-04",
+      "wall_clock": "first attempt: 106.7 min to 10,640/20,000 pairs (9,360 failed on transient cutout-fetch errors); resumed attempt: 109.7 min completing the remaining 9,360 pairs, ending 20,000/20,000 succeeded, 0 failed on the resumed pass",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local MPS/GPU for N up to ~20k; RunPod only needed for a full-parent-catalog dipole run",
+      "est_wall_clock": "~110-215 min for N=20,000 on Apple Silicon MPS depending on cutout-fetch retry rate",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": true,
+      "notes": "run_injection_scale20k.py checkpoints to scale20k_pairs.parquet and resumes from the last saved offset; the first attempt's 9,360 fetch failures were fully recovered by resuming, with 0 failures on the retry. As at N=5000, the Z2-TTA construction's proven single-mirror-flip antisymmetry means one (orig, flip) forward-pass pair per galaxy covers all 5 fractions x 10 seeds in closed form via analyze_injection_scale20k.py, with no re-inference."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_sample_manifest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_injection_results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/fig_scale20k_injection_recovery.png",
+        "type": "figure",
+        "checksum": null
+      }
+    ],
+    "verification": "20,000/20,000 cutouts downloaded and classified successfully across the two attempts (9,360 fetch failures on the first pass, 0 on the resumed retry that completed them). Baseline pixel-level asymmetry A0=-21.72% (paper's published post-equivariant residual: -0.26%; opposite order of magnitude — the two A0 values are DIFFERENT statistics: this A0 is measured over the full injection sample including NOT_SPIRAL mass, while the spiral-classified-only baseline is A0=+0.59%, same order as the paper's -0.26%, opposite sign). Fitted pixel-level slope dA/df (OLS over the 5 fraction means) = +0.0167 +/- 0.0089 (SE from OLS residuals about the 5-point fraction-mean fit). The naive label-level identity A=A0(1-2f) gives slope -2*A0=+0.4343, ~47 sigma from the measured pixel-level slope using the OLS SE (or ~35 sigma using seed-spread-weighted SE) — the measured pixel-level response is far more conservative in magnitude than the naive identity predicts, now resolved well outside the noise floor. The rigorous mixture identity that additionally accounts for the NOT_SPIRAL probability mass (E[A(f)]=(1-f)*A0+f*A0_ccw, disclosed in scale20k_injection_results.json's note_on_comparison_scope) gives slope -0.00934, sign-flipped from the measured +0.0167 and ~2.9-3.0 sigma away — marginally outside the noise floor for the first time at this N, but the two are close in order of magnitude once NOT_SPIRAL mass is properly modeled. N=20k therefore resolves what N=5000 could not: the slope comparison is no longer noise-limited, and the production pipeline's pixel-level response is CONSERVATIVE relative to the naive label-level identity by more than an order of magnitude, while remaining consistent in scale (though not sign) with the NOT_SPIRAL-corrected mixture identity.",
+    "status": "runnable-now",
+    "provenance": [
+      "Task: ledger row 16 Part A at N=20,000 (2026-09-04, follow-on to row 13's N=5000 pilot)",
+      "Builds on row13-image-level-injection-scale.json (N=5000, slope comparison inconclusive within the noise floor)",
+      "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (paper's committed sky-map amplitude-vs-detection-probability curve; a DIFFERENT statistic/axis, not directly comparable — disclosed in analyze_injection_scale20k.py's note_on_comparison_scope)",
+      "pipelines/p2_chirality/equivariant_postprocess.py (production Z2 2-fold flip-TTA pipeline replicated exactly here)",
+      "pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md (Part A at N=20k appended in this run)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "row16iv-chirality-structure",
+    "title": "Row 16 (iv) — chirality x structure: parity vs environment, anomaly positions, redshift, and preferred axes",
+    "program": "galaxy-chirality",
+    "paper": "P4",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "P4 chirality catalog (primary-safe, DESI Legacy DR8 ViT+TTA, 8,474,531 rows)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+        "checksum": null
+      },
+      {
+        "name": "Anomaly catalog v2 science targets (1,244 rows)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet",
+        "checksum": null
+      },
+      {
+        "name": "DESI spec-z x chirality crossmatch (P5)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "checksum": null
+      },
+      {
+        "name": "DESI DR1 LSS public products (QSO clustering + randoms, z=0.8-2.1) - INSPECTED, NOT USED: no LRG/BGS/void product on disk and no redshift overlap with the z<0.3 spirals",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/",
+        "checksum": null,
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_common.py",
+        "entrypoint": "imported",
+        "sha256": null
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_env_z.py",
+        "entrypoint": "python3 chirality_structure_env_z.py",
+        "sha256": null
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_anomaly.py",
+        "entrypoint": "python3 chirality_structure_anomaly.py",
+        "sha256": null
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_axes.py",
+        "entrypoint": "python3 chirality_structure_axes.py",
+        "sha256": null
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_figures.py",
+        "entrypoint": "python3 chirality_structure_figures.py",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "numpy, scipy, pyarrow, scikit-learn, healpy, matplotlib",
+      "hardware": "local laptop CPU (no GPU, no cloud)"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houston laptop (darwin)",
+      "date": "2026-09-04",
+      "wall_clock": "~50 min total across the three analysis scripts",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local CPU",
+      "est_wall_clock": "~1 hour",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Pre-registration (statistics, nulls, selection handling, 3-sigma-after-look-elsewhere threshold) was committed BEFORE any statistic was computed: commit 8e429040. Seeds are fixed in the scripts (16041-16045), so all reported numbers are byte-reproducible on a local CPU."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_env_z.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_anomaly.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_axes.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_summary.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run the three analysis scripts and confirm every reported observed statistic, null mean/std, z and empirical p match the committed JSON exactly (fixed seeds).",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 16, item (iv)",
+      "pipelines/p4prime_chirality_test/chirality_structure/ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md (pre-registration committed at 8e429040)"
     ]
   }
 ];
