@@ -161,3 +161,119 @@ f_NL^{bounce, effective} = (-35/16) \times T_{A2} \times (r/24)^2
 **six orders of magnitude below SPHEREx.** Inverting: the bounce term stays above
 `\sigma(f_NL) = 0.5` only for **`r \ge 22.95`** — only on the un-suppressed,
 tensor-excluded branch. This is the row's central finding.
+
+## 4. Viable-window table (from `results.json`; `n_s` at `w = -0.0029`, `r` set to 0.036)
+
+| `r_dec` | max `\sigma_*/M_{pl}` for `r<0.036` | `r` | `n_s` | `f_NL^{curv}` | `f_NL^{tot}` | Planck 2σ | SPHEREx |
+|---|---|---|---|---|---|---|---|
+| 0.050 | 0.0022 | 0.036 | 0.9649 | +23.29 | +23.29 | no | — |
+| 0.100 | 0.0045 | 0.036 | 0.9649 | +10.75 | +10.75 | no | — |
+| **0.1130** | 0.0051 | 0.036 | 0.9649 | **+9.30** | +9.30 | edge | 18.6σ |
+| 0.200 | 0.0090 | 0.036 | 0.9649 | +4.42 | +4.42 | yes | 8.8σ |
+| 0.300 | 0.0134 | 0.036 | 0.9649 | +2.25 | +2.25 | yes | 4.5σ |
+| 0.500 | 0.0224 | 0.036 | 0.9649 | +0.42 | +0.42 | yes | 0.8σ |
+| 0.5811 | 0.0260 | 0.036 | 0.9649 | **0.00** | 0.00 | yes | 0σ |
+| 0.750 | 0.0336 | 0.036 | 0.9649 | −0.63 | −0.63 | yes | 1.2σ |
+| 1.000 | 0.0448 | 0.036 | 0.9649 | **−1.25** | −1.25 | yes | 2.5σ |
+
+**Viable window: `r_{dec} \in [0.113, 1]`**, `r` free (0.036 here), `n_s = 0.9649`,
+`f_NL^{local} \in [-1.25, +9.30]`. **Sign:** negative only for `r_{dec} > 0.5811`, and
+then only as far as `-1.25`. CXB11's Case 1 is more predictive: with
+`\mathcal{C} = (\pi/4d)^2` their Eq. (65) collapses to the **parameter-free**
+`f_NL = -320/\pi^4 = -3.285` (they quote `-3.3`), `0.47\sigma` from Planck and a
+`6.6\sigma` target for SPHEREx — and it keeps the negative sign. Their Case 2,
+`f_NL \simeq -5.3\,m^4/(d^2M^4)` (Eq. 67), has one free combination and no predictive
+content.
+
+## 5. Transmission
+
+The spectator ODE `u'' + (k^2 - a''/a)u = 0` is **literally** the ODE the A2 module
+integrates and the ODE the tensor mode obeys, so `T_\sigma \equiv T_h` identically;
+row 10 measured `T_h/T_\zeta - 1 \le 8\times10^{-5}` and row 14
+`\lambda_{scalar}/\lambda_{tensor} - 1 \le 4\times10^{-11}` on all three backgrounds.
+Direct check here of the frozen super-Hubble branch (`T_c \to 1`) at `k\eta_B = 0.01`:
+LQC `|T_c-1| = 1.9\times10^{-4} \to 5.5\times10^{-6}` and Quintin
+`7.8\times10^{-4} \to 2.7\times10^{-4}` as `u_{out}` falls from 0.1 to 0.05, both
+converging to 1; the poly background's constant-branch preparation is less accurate there
+(`2.7\times10^{-2}` at `u_{out}=0.05`, non-monotonic), and the analytic identity plus
+row 14's `4\times10^{-11}` are the stronger evidence for that background.
+
+**`\Delta f_NL^{bounce}` does NOT apply to the curvaton channel.** The curvaton's local
+`f_NL` is generated at curvaton *decay*, after the bounce, from a Gaussian
+`\delta\sigma`; the A2 transfer `T = 0.165-0.250` acts only on the pre-bounce adiabatic
+bispectrum — the channel just diluted away. (In CXB11's variant the conversion happens
+*at* the bounce and their Eq. (65) already contains that physics.)
+
+## 6. Multi-channel map at the viable point
+
+| Channel | Status at the curvaton point |
+|---|---|
+| nHz tensors (PTA) | **Null STRENGTHENED.** `\Omega_{GW}h^2(f_{yr})` scales with `r`: `1.69\times10^{-14}\times(0.036/24) = 2.5\times10^{-17}`, now `\sim10^{8}` below NANOGrav instead of `10^{5.3}`. |
+| PBH | **Null unchanged.** Set by the small-scale scalar amplitude; the curvaton spectrum is scale-invariant on the same branch. |
+| `f_NL` (flagship) | **Reinterpreted.** The observable is purely *local* and measures `r_{dec}`, not the bounce. The bounce's orientation-dependent shape `f(\mu) = -35/16 + (15/16)\mu^2` survives only at the `(r/24)^2 = 2\times10^{-6}` level. |
+| DESI reproduction / unseparable channel | Unchanged (independent of `r` and of the `f_NL` amplitude). |
+
+SPHEREx (`\sigma \simeq 0.5`) reaches the curvaton `f_NL` at `\ge 4.5\sigma` for
+`r_{dec} \le 0.3` and `2.5\sigma` at `r_{dec} = 1`; CXB11 Case 1 at `6.6\sigma`. A
+SPHEREx detection at this level would **not** be evidence for the bounce's cubic action —
+it would measure a curvaton decay fraction, which inflationary curvaton models predict too.
+
+## Verdict (ledger row 15)
+
+**PARTIAL PASS — the ledger's success condition is met on `(r, n_s, f_NL)`, but the
+flagship `f_NL` prediction does not survive the fix.**
+
+1. `r < 0.036` — **achievable with no tension**, for `\sigma_*/M_{pl} < r_{dec}/22.35`
+   (equivalently CXB11's `\mathcal{F} \ge 25.82`). Unlike row 14's `c_s` route, nothing
+   pushes back.
+2. `n_s = 0.9649` — **inherited unchanged** from row 10's `w = -0.0029` anchor, because
+   the spectator tilt equals the adiabatic tilt exactly, `12w/(1+3w)`. Still an anchor,
+   not a prediction. A curvaton *mass* cannot supply it (wrong sign: blue).
+3. `f_NL^{local}` — **O(1) and Planck-compatible** over `r_{dec} \in [0.113, 1]`, from
+   `+9.30` down to `-1.25`, negative only for `r_{dec} > 0.5811`; CXB11 Case 1 gives the
+   parameter-free `-320/\pi^4 = -3.29`.
+4. **But** the observable `f_NL` there is the *curvaton's*, not the bounce's: `-35/16` is
+   suppressed by `(r/24)^2` to `\sim10^{-6}`, staying above SPHEREx only for
+   `r \ge 22.95` — the excluded branch.
+
+Track A's `f_NL = -35/16` is therefore **observable only where the model is
+tensor-excluded, and the model is tensor-viable only where `f_NL` is unobservable.** With
+row 14 this is one structural statement: every known mechanism that cures `r` either
+amplifies `f_NL` past the bounds (`c_s`, row 14) or dilutes the bounce `f_NL` below
+detectability (curvaton, this row). The matter-bounce family is **not excluded** — it is
+*un-diagnosed* by the `f_NL` channel.
+
+**Still open:** (i) `\mathcal{F}`, the entropy-only kinetic amplification, is an
+assumption — computing it needs an entropy sector added to the A2 backgrounds; (ii) the
+curvaton's *intrinsic* bispectrum generated during the contraction/conversion (CXB11
+Eqs. 62–64) has not been re-derived here — only their final Eq. (65) is quoted; (iii)
+whether any channel distinguishes a curvaton matter bounce from a curvaton inflation —
+the shape is local in both, so the discriminator, if one exists, must be the tensor tilt
+`n_T = -0.035` (row 10), not `f_NL`.
+
+## Paper-ready reframing sentences
+
+> A curvaton sector removes the tensor obstruction of the single-field matter bounce at no
+> cost: because the light spectator obeys the same Mukhanov–Sasaki equation as the
+> adiabatic mode, its spectrum is scale-invariant with the identical tilt `12w/(1+3w)`, and
+> the tensor-to-scalar ratio becomes `r = 16\epsilon/[1 + (8\epsilon/9)r_{dec}^2
+> (M_{pl}/\sigma_*)^2]` — any value below 24. The price is paid in the non-Gaussianity
+> channel: the adiabatic power fraction is exactly `r/16\epsilon`, so the contraction's
+> intrinsic `f_NL = -35/16` enters the observable bispectrum weighted by
+> `(r/16\epsilon)^2`. At `r = 0.036` that weight is `2\times10^{-6}`, and the measurable
+> local `f_NL` is the curvaton's `5/(4r_{dec}) - 5/3 - 5r_{dec}/6`, an O(1) number set by
+> the decay fraction and shared with inflationary curvaton models.
+
+> The two curative mechanisms fail in opposite directions. Reducing the scalar sound speed
+> suppresses `r` only at `c_s < 1.5\times10^{-3}`, where `f_NL \sim 10^{6}`; adding a
+> curvaton suppresses `r` freely but drives the bounce contribution to `f_NL` below
+> `10^{-6}`. The matter bounce's cubic action is observable only on the branch its own
+> tensor spectrum excludes.
+
+## Reproduce
+
+```
+cd research/track_a3_multichannel/row15_curvaton && python3 row15_curvaton.py
+```
+Local CPU, ~4 s, $0, deterministic (no RNG, no data files, no network). Manifest:
+`reproducibility/manifests/experiments/a3-row15-curvaton.json`.
