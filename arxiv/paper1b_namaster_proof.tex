@@ -996,20 +996,31 @@ and the
 \paragraph{Reproducibility: blind shortcut-detection test.} Both batches'
 manifests live in \nolinkurl{reproducibility/manifests/experiments/}: the
 pilot (batch 1, Sec.~\ref{sec:blind-test-pilot}) as
-\nolinkurl{p1b-blind-shortcut-detection.json}, and the primary result (batch
-2, Sec.~\ref{sec:blind-test-result}) as
-\nolinkurl{p1b-blind-shortcut-detection-batch2.json}. Scripts for both live
-in \nolinkurl{pipelines/namaster_proof/blind_test/}: batch 1 uses
+\nolinkurl{p1b-blind-shortcut-detection.json}; batch 2
+(Sec.~\ref{sec:blind-test-result}) as
+\nolinkurl{p1b-blind-shortcut-detection-batch2.json}; and batch 3
+(Sec.~\ref{sec:blind-test-batch3}) as
+\nolinkurl{p1b-blind-shortcut-detection-batch3.json}. Scripts for all three
+live in \nolinkurl{pipelines/namaster_proof/blind_test/}: batch 1 uses
 \texttt{seal.py}, \texttt{run\_blind.py}, \texttt{verify.py}, and
 \texttt{reveal.py}; batch 2 adds \texttt{variants2.py} (the S6 class) and
 uses \texttt{seal2.py}, \texttt{run\_blind2.py}, the same \texttt{verify.py},
-and \texttt{reveal2.py}. Reproducing either committed run reuses its
-committed \texttt{sealed\{,2\}/key.txt} and
-\texttt{sealed\{,2\}/assignment.json} rather than re-running the seal script,
-which draws a fresh random key. Both batches cost \$0 on any CPU-only
-machine; batch 1's 18 runs plus overhead take approximately one to two
-minutes, and batch 2's 35 runs measured \(\sim\)11~s of core execution (36
-runs including the reference), under one minute total.
+and \texttt{reveal2.py}; batch 3 adds \texttt{variants3.py} (R7, S4b, and the
+extended S5) and uses \texttt{seal3.py}, \texttt{run\_blind3.py}, the R7
+extension to \texttt{verify.py}, and \texttt{reveal3.py}, with the aborted
+first attempt preserved under \nolinkurl{blind_test/public3_aborted/}.
+Reproducing any committed run reuses its
+committed \texttt{sealed\{,2,3\}/key.txt} and
+\texttt{sealed\{,2,3\}/assignment.json} rather than re-running the seal
+script, which draws a fresh random key. All three batches cost \$0 on any
+CPU-only machine; batch 1's 18 runs plus overhead take approximately one to
+two minutes, batch 2's 35 runs measured \(\sim\)11~s of core execution, and
+batch 3's 48 runs (plus the 48 aborted) complete in under two minutes total.
+The PyMaster cross-check (\S\ref{sec:pymaster-crosscheck}) is
+\nolinkurl{reproducibility/manifests/experiments/p1b-pymaster-crosscheck-2026-09-05.json},
+script \nolinkurl{pipelines/namaster_proof/blind_test/pymaster_crosscheck.py},
+run in a throwaway conda-forge \texttt{pymaster} 3.0.1 environment (\$0,
+under one minute).
 \end{sloppypar}
 
 \section{Reuse Potential}
