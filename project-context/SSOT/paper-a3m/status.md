@@ -2,7 +2,14 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-04 — v3M.0.15. Science reframe (not a review round) per
+last_updated: 2026-09-04 — v3M.0.18. R8 truth-audit closure under D-A3-13
+(ledger row 19): lambda=s=0 k-essence scope disclosed, Appendix A
+initial/final-label maps corrected, stale r=0.84 passage removed, 14 ledger
+tags swept to reproducibility statement, Planck 68% interval fix, 12 minors
+closed. Readiness held at 75. ROUNDS STOPPED (R2): R3-R8 today,
+genuinely-new 19/13/18/16/16/15, no physics error found in R8; next board
+only after a science decision on row 19. See "v3M.0.18" section below.
+Prior: v3M.0.15. Science reframe (not a review round) per
 decisions D-A3-10 (ledger row 10) and D-A3-11 (ledger row 14): the model's own
 tensor-to-scalar ratio r=16ε=24, ~670× above BICEP/Keck; no constant sound
 speed cures both r and f_NL (windows disjoint 296× in c_s), confirming and
@@ -17,13 +24,69 @@ O(ε²) artefact; Choudhury right) and in-coverage ratio corrected to
 permitted (R7); site data sync pending in a separate bundle. See "v3M.0.15"
 section below. Prior: v3M.0.14. R6 truth-audit closure: 16 genuinely-new-real findings (0 physics errors) closed — T_B mapping corrected (thirteen decades above BBN, was eleven), Channel I amplitude re-paired to the free-gamma NANOGrav posterior, abstract calibrated to body, DESI DR1 v3 reproduction sentence added to Sec. VI. ROUNDS STOPPED under directive R2 (3rd consecutive verification round) — next board only after a science decision on the (ii) list (A3-4, A3-1e). Readiness held at 75. See "v3M.0.14" section below. Prior: v3M.0.13. Abstract trimmed to the PRD-regular ≤307-word cap (was ~415 words), no science change, every claim retained at its evidential strength; see "v3M.0.13" section below. Readiness held at 75. Prior: v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (18 pp / 0 undef refs / md5 b18aafd1288ffddeea2c3a1ee074a23b)
-version: v3M.0.17 (2026-09-04, D-A3-12 tensor no-go strengthened — see "v3M.0.17" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (18 pp / 0 undef refs / md5 4ce035b9139cbb74d80e84037c43a5fa)
+version: v3M.0.18 (2026-09-04, R8 closure under D-A3-13 — see "v3M.0.18" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
 headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 25 (R1+R2 closed, rounds stop per directive R2) / packaging 20 = ~95; awaiting Houston's final personal review for 100 per directive P)
-submission_status: draft, readiness 75 — D-A3-12 taken → one verification board (R8) permitted; recommended for the next session
+submission_status: draft, readiness 75 — ROUNDS STOPPED (R2): R3-R8 today, genuinely-new 19/13/18/16/16/15, no physics error found in R8; next board only after a science decision on row 19
+
+## v3M.0.18 (2026-09-04) — D-A3-13 (ledger row 19): R8 truth-audit closure, scope statement for the no-go
+
+R8 truth-audit (`INT_v3/A3M_v3M.0.17_R8_TRUTH_AUDIT_2026-09-04.md`) closure
+plan (i), 18 items, no new computation. **R8-01** (MAJOR): disclosed that
+the `k`-essence no-go (Eq.~16, Table VII) assumes the Li *et al.* kinetic
+sector `lambda=s=0`; general `lambda` is now an explicit open item (ledger
+row 19, per decision D-A3-13). **R8-02** (MAJOR): Appendix A was printing
+the final-label composition (`-25/4+(15/4)mu^2` at eps=3/2) under the
+initial-label name (`-5`, isotropic); now prints both `f_map^init` and
+`f_map^fin` correctly, transcribed from
+`research/theory_audit/psu_gates_S1_S2_2026_09_04.md`. **R8-03**
+(MAJOR-lite): defined `Upsilon` and `Delta t_B` where first used
+(Quintin Eq. 79 evaluation). **DA3M-06** (residual MAJOR, open since R2):
+removed the stale "unresolved r=0.84 matter-bounce scenario, open item"
+passage in Sec. VI, replaced with the already-computed `r_after=24`
+first-order tensor background (9.1 decades below NANOGrav, already excluded
+at k* by BICEP/Keck) — closes the paper's last internal contradiction on its
+headline quantity. **DA3M-08** (residual MAJOR, open since R2): swept 14
+internal ledger/lane tags (`row18a`, `row18b`, `row14_`, "ledger row n",
+`LEDGER4_RESULT_...`, `r5_15`, `r11_pbh`, `D-A3-9`, `lane9c2`) out of body
+prose and captions into the reproducibility statement only. Also softened
+"the conclusion is therefore scheme-independent ... no continuation rescues
+it" to what S1+S2 actually support (S2 is defined only on the Quintin-type
+background; LQC/poly have no exact S2 mode construction through their
+`Hdot=0` crossings). 12 minors closed at the audit's cited lines: `[S]` row
+suppression scaling `O(k_L^2/a^2H^2)`; explicit commit hash `68309c8`
+replacing "current HEAD"; Eq. (12) headlines `1.84+-0.03` (144-pt,
+`gamma_cr in [0.267,0.630]`), demotes `1.732+-0.050` (27-pt grid) to a
+regime note; the Planck f_NL criterion recomputed against the correct 68%
+interval `[-6.0,+4.2]` (not the symmetric `|f|<=5.1`) — `c_s_min` moves
+`0.600->0.624`, `r_min` `14.4->15.0` (Quintin-type; LQC/poly `0.632/15.2`,
+`0.627/15.0`), strengthening the no-go; Sec. V B/V C cross-reference and
+`T_B` value fixed; the three distinct uses of `r` (tensor-to-scalar,
+mode-mixing, bispectrum shape-overlap) renamed `r`, `r_mix`, `r_sh`; `r_dec`
+lower bound `0.113` stated; Li *et al.* citation year unified to 2016;
+Table IV's borrowed-`gamma=3` row relabelled; the duplicated Bianchi-I
+argument kept once (Appendix A only, Sec. II D now points to it); Fig. 1
+legend/axis fonts enlarged and the two predicted curves' legend labels
+clarified (`sigw_nhz_from_lab_spectrum_2026_09_04.png` regenerated, no data
+change); the `0.5-1.1sigma` vs `3.13sigma` LSS comparison tagged "not
+directly comparable". Fable's Q1 (is the `1/(1-eps/3)=2` normalization
+factor at eps=3/2 related to Cai *et al.*'s factor-of-two slip?) answered
+in Sec. II D: numerically coincident but a different mechanism
+(normalization convention vs. amplitude-conversion error). Abstract trimmed
+39->0.18: net -20 words to 304 (was over the ~307 cap after R8-01/R8-07
+additions). Directive-G hygiene: version bumped, recompiled 4-pass (0
+undef refs, largest overfull hbox 3.9pt), three-way md5
+`4ce035b9139cbb74d80e84037c43a5fa` (compile == site/public == public ==
+source-dir), arXiv tarball rebuilt and smoke-tested (standalone re-extract
++ recompile, 0 undef refs), Convex `paperVersions:bump` +
+`activityFeed:add` written. **R2 statement (from the audit): rounds STOP
+on A3M after v3M.0.18** — R8 is the fifth consecutive verification round
+with no physics or numerical error found; the only item that could license
+a further round is the ledger-row-19 science/scope decision on general
+`lambda`, which is Houston-gated, not a round trigger.
 
 ## v3M.0.17 (2026-09-04) — D-A3-12 (ledger row 18): scheme-independent tensor no-go + c_s-dependent bounce cubic term
 
