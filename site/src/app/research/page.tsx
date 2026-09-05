@@ -4,6 +4,7 @@ import { MathText } from "@/components/MathText";
 import { tracks, contributions } from "@/data/tracks";
 import { getPaperBySlug } from "@/data/papers";
 import { getLivePapers, displayVersion } from "@/lib/livePapers";
+import { CONTRIBUTION_TYPE_LABEL, CONTRIBUTION_TYPE_HINT } from "@/lib/contributionTypes";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -86,7 +87,7 @@ export default async function ResearchPage() {
         <p className="eyebrow">Contributions</p>
         <PageHeader
           title="What's novel here"
-          lead="Every result the lab claims as its own, ranked on a four-tier novelty scale. Self-claim ceiling is N3 (first-of-kind); N4 (paradigm-shifting) is reserved for outside arbiters and never self-claimed."
+          lead="Every result the lab claims as its own — what kind of contribution it is, and how novel, ranked on a four-tier scale. Self-claim ceiling is N3 (first-of-kind); N4 (paradigm-shifting) is reserved for outside arbiters and never self-claimed."
         />
         <RowList
           items={contributions.map((c) => ({
@@ -94,6 +95,15 @@ export default async function ResearchPage() {
             purpose: `${TIER_LABEL[c.tier]} · ${c.track} — ${c.oneLine}`,
             href: c.href,
             right: c.tier,
+            chips: (
+              <span
+                className="evidence-chip evidence-chip-type"
+                title={CONTRIBUTION_TYPE_HINT[c.contributionType]}
+              >
+                <span className="evidence-chip-dot" aria-hidden="true" />
+                {CONTRIBUTION_TYPE_LABEL[c.contributionType]}
+              </span>
+            ),
             external: c.href.startsWith("http"),
           }))}
         />

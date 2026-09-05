@@ -3170,6 +3170,10 @@ code {
 .evidence-chip-derived .evidence-chip-dot { background: var(--grade-derived); }
 .evidence-chip-null .evidence-chip-dot { background: var(--grade-null); }
 .evidence-chip-open .evidence-chip-dot { background: var(--grade-open); }
+/* Contribution-type chip — labels the KIND of contribution, distinct from
+   the novelty-tier grade chips above; neutral dot, never implies a tier. */
+.evidence-chip-type { color: var(--ink-3); font-size: 12.5px; }
+.evidence-chip-type .evidence-chip-dot { background: var(--ink-3); }
 
 /* ── RowList / Row ── */
 .row-list > * + * {
