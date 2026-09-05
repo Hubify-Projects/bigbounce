@@ -202,3 +202,70 @@ findings are falsified against the paper's own text and 6 more are genre/length 
 itself pre-empts. Gemini, at the same PRD bar, calls the physics "exceptionally high quality" and
 its ESSENTIALs are presentation/provenance. This is textbook referee variance; the verdict words
 are diagnostic, never the gate (directives H-refined, P).
+
+## CLOSURE PLAN
+
+### (i) Editorial — v3M.0.18 (exact lines, no new computation)
+
+1. **`R8-01`** — after `main.tex:1331` (the `Δf^bounce(c_s)` closed form) add one sentence:
+   "This evaluation takes the `P(X,φ)` cubic action with `η_sr = s = 0` and the `P_XXX`
+   coefficient `λ = 0` (the kinetic sector of Li *et al.*), the assumption under which
+   Eq. (15) is quoted; the `ζ̇³` kernel contributes `~10⁻⁷` of the total at `λ = 0`, so a rescue
+   would require `λ/Σ ≳ 10⁷`." Add "(in the Li *et al.* kinetic sector)" to the abstract's
+   "canonical or `k`-essence" clause at `:63`.
+2. **`R8-02`** — rewrite `main.tex:1639–1652`: print both maps at general `ε`,
+   `f_map^{init}` (whose sum with `f^{in-in}/λ` is `−5`, isotropic, for every constant `ε`) and
+   `f_map^{fin} = −5ε/4 + (5ε/4)μ²` (whose sum is `−25/4 + (15/4)μ²` at `ε = 3/2`), and delete the
+   present "isotropic monopole of exactly −5" attached to the `μ²`-carrying expression. Re-check the
+   one-line restatements in §II D and the Scope statement.
+3. **`DA3M-06`** — delete the `r = 0.84` scenario at `:790–791`, replace with the `r = 24`
+   first-order tensor background already propagated at Sec. VII (`Ω_GW h²(f_yr) = 1.7×10⁻¹⁴`),
+   and remove the dangling "(Sec. IX)" pointer.
+4. **`DA3M-08`** — sweep the 14 ledger/round tags out of body prose and captions
+   (`row18a`, `row18b`, `row14_`, "ledger row *n*", `LEDGER4_RESULT_v3_…`, `r5_15`, `r11_pbh`,
+   `D-A3-9`, `lane9c2`) into the reproducibility statement; rename cited outputs to
+   publication-clean filenames there.
+5. **`R8-03`** — at `:435` define `Υ` and `Δt_B` and give the numerical values used.
+6. **`R8-05`** — replace "at the current HEAD" (`:1706`) with the explicit commit hash, matching
+   the `68309c8` pointer used for Secs. II–III.
+7. **`R8-06`** — display the abstract's `1.84 ± 0.03` in Eq. (12) and demote `1.732 ± 0.050` to the
+   caption/regime note.
+8. **`R8-07`** — state the criterion at `:60`/`:1358` as Planck's 68% interval `[−6.0, +4.2]` and
+   recompute `c_s^min` (it moves slightly *up*, strengthening the no-go).
+9. **`R8-08`** — fix the §V B → §V C cross-reference and the `10⁸` → `6×10⁹–6×10¹⁰` GeV value.
+10. **`R8-04`** — give `[S]` its suppression scaling (`O(k²/a²H²)`) in the Appendix-A table.
+11. **`R8-09`/`R8-11`/`R8-12`** — rename the mode-mixing and shape-overlap `r`; use one year for
+    Ref. [4]; relabel Table IV's row "borrowed `γ = 3` comparator".
+12. **`R8-10`/`R8-13`/`R8-14`/`R8-15`** — state `r_dec ∈ [0.113, 1]`; keep one copy of the Bianchi-I
+    argument; enlarge Fig. 1 legend and label the two predicted curves; add the explicit
+    "not directly comparable" tag at `:1485`.
+13. Free fix from Grok's nits: supply the missing journal reference for `arXiv:1307.4995`.
+
+### (ii) Science items for the ledger (NOT v3M.0.18 text)
+
+- **`A3-lambda` (NEW, and this one is a scope decision — see R2 below).** Either bound the
+  `P_XXX` (`λ`) contribution using the already-computed `ζ̇³` kernel and keep the general
+  `k`-essence no-go, or restrict the no-go's stated scope to the Li *et al.* kinetic sector.
+  Cheap (the kernel exists); the *decision* is what is owed.
+- **`A3-S2perturb` (Fable Q3).** S2's pre-bounce amplitude is 6.25× S1's; check it stays inside the
+  perturbative regime of the cubic bounce-window integral.
+- **`A3-ns`** (carried) — Eq. (A3) evaluated at the `n_s = 0.9649` `ε`.
+- **`A3-dN`** (carried) — mechanism of the second-order `δN` piece.
+- **`DESI-4`** (carried) — wide-angle term + the three blocked systematics splits.
+- **`A3-ref25` (Fable Q2)** — locate `−320/π⁴` in Ref. [25] or re-attribute it (provenance, cheap).
+- Fable Q1 (is `1/(1 − ε/3) = 2` at `ε = 3/2` related to the Cai *et al.* factor of two?) and Q4
+  (Eq. (15)'s squeezed convention) are one-sentence answers; fold into (i) if the answer is known.
+
+## R2 statement (directive R2)
+
+**STOP rounds on A3M after v3M.0.18.** R8 is the fifth consecutive verification round; it produced
+**no physics error and no numerical error**, and 12 of 15 new items are one-line edits. Under
+directive R2 the remaining findings are genre/length/venue and unpaid editorial debt, which is
+exactly the stopping condition. Both external verdict words rest substantially on findings
+falsified above.
+
+**Is any (ii) item a science decision? Yes — one: `A3-lambda`.** It is a genuine scope decision
+about how broadly the joint `(r, f_NL)` no-go may be stated, and it is the only item that could
+justify a further round *after* v3M.0.18. Every other (ii) item is a carried computation or a
+provenance check and does not license a round. No round may be dispatched on A3M on editorial
+grounds alone.
