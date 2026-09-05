@@ -1,0 +1,84 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p4p-row16ib-axis-shift",
+  "title": "Row 16(i-b) — is the full-parent chirality dipole a QC/footprint systematic? Graded QC sweep, per-imaging-leg table, monopole/mask-leakage null",
+  "program": "galaxy-chirality",
+  "paper": "P4P",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Full DESI Legacy DR8 chirality catalog (class_eq, production equivariant Z2-TTA classifier; already-committed, not re-run)",
+      "type": "internal-artifact",
+      "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+      "checksum": "sha256:139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+    },
+    {
+      "name": "row16(ii) N=20,000 injection-calibrated postprocess residual bias",
+      "type": "internal-artifact",
+      "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_injection_results.json",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/p4prime_chirality_test/full_parent/full_parent_estimator_lib.py",
+      "entrypoint": "imports build_projector() verbatim from pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+      "sha256": "269add74ab903fb740793655a19684b4464a1c2d6ca07653a2f6a39aa70ccc26"
+    },
+    {
+      "path": "pipelines/p4prime_chirality_test/full_parent/row16ib_qc_leg_sweep.py",
+      "entrypoint": "python3 pipelines/p4prime_chirality_test/full_parent/row16ib_qc_leg_sweep.py",
+      "sha256": "8adacafd3cde0663185ad89015116bb52a198cac6aaa703e17f766d3d6cb4a0f"
+    },
+    {
+      "path": "pipelines/p4prime_chirality_test/full_parent/row16ib_figure.py",
+      "entrypoint": "python3 pipelines/p4prime_chirality_test/full_parent/row16ib_figure.py",
+      "sha256": "4807049e1311a1e35fcd4b123447c6f511929e840b39407425b61d4400e88e03"
+    }
+  ],
+  "environment": {
+    "python": "python3 + numpy + healpy + pyarrow",
+    "hardware": "cpu-only; Apple M-series, macOS arm64 (no GPU/pod needed — classifier inference already existed for all 8,474,531 rows)"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation",
+    "date": "2026-09-04",
+    "wall_clock": "95.3 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~2 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Re-runs the frozen P4' projector estimator on four QC selections (full parent; !raw_flip_qc_unsafe only; primary_hc only; strict), on each imaging leg (Dec boundaries (-20,32) from p2_chirality/c12b_wls_conditioning.py) in only-leg and drop-leg form for the parent and strict sets, and on |b|>20/30 cuts; fixed-occupancy label-shuffle nulls (10,000 draws for C0/C3, 2,000 elsewhere, seed 20260906) plus a 1,000-realisation pure-monopole mask-leakage null."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p4prime_chirality_test/full_parent/row16ib_axis_shift.json",
+      "type": "result-json",
+      "checksum": "sha256:01af9a4e37a8f93370760a6d71cfa2252327c10e2f6bb8b1b2b2150a4a93758b"
+    },
+    {
+      "locator": "pipelines/p4prime_chirality_test/full_parent/fig_row16ib_axis_shift.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Plan pre-registered and committed (a5fde20a) BEFORE any fit was run, including the decision rule. Estimator and null imported verbatim from the committed P4' strict-primary generator; leg boundaries taken from the committed c12b_wls_conditioning.py. Result: the parent dipole is removed by the primary_hc cut alone (z=+0.68) and by dropping the DES imaging leg alone (z=+0.48); C0-vs-C3 axis separation 107.5 deg; pure-monopole mask leakage 0.19%. Verdict SYSTEMATIC per the pre-registered rule. Depth/seeing/E(B-V)/brick-quality legs declared NOT RUN (columns absent from the immutable release).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 16(i-b)",
+    "pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md",
+    "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md"
+  ]
+}
