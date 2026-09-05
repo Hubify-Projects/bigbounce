@@ -298,6 +298,22 @@
         "a3-row15-curvaton",
         "p2-a3-row18a-s2-tensor-transfer"
       ]
+    },
+    {
+      "id": "lift2-separate-universe-failure-criterion",
+      "depends_on": []
+    },
+    {
+      "id": "psu-gates-s1-s2-label-composition-criterion",
+      "depends_on": [
+        "lift2-separate-universe-failure-criterion"
+      ]
+    },
+    {
+      "id": "psu-gates-s6-s11-science-gates",
+      "depends_on": [
+        "psu-gates-s1-s2-label-composition-criterion"
+      ]
     }
   ],
   "external_data": [
