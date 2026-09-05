@@ -162,3 +162,43 @@ figure-axis units, one missing journal ref — the last is worth a free fix); Ge
   transcription, gives the correct `≈0.264`, states the ratio is independent of it, and quantifies
   the `2.55×` rescaling of the tabulated `f_PBH`. Disclosed, not a defect.
 - **Fable Q1–Q4**: referee questions, routed to the ledger (below), not paper defects.
+
+## Clean-wave assessment and convergence trend
+
+**Clean-wave count: 0** — 15 genuinely-new-real findings this round, so the count resets again.
+But the *composition* is what matters, and it has changed decisively:
+
+| round | version | genuinely-new-real | of which MAJOR | character of the MAJORs |
+|---|---|---|---|---|
+| R3 | v3M.0.8 | 19 | 4 | physics errors (validity window inverted, 11–13-decade energy error, over-claimed "method-independent") |
+| R4 | v3M.0.9 | 13 | 3 | one **science** item (`DA3M-R4-02`, inconsistent primordial spectra) + scheme-mixing |
+| R5 | v3M.0.11 | 18 | 3 | scheme/scope corrections |
+| R6 | v3M.0.13 | 16 | 1 + 1 lite | one figure/pairing defect |
+| R7 | v3M.0.15 | 16 | 5 | scoping/disclosure of already-computed quantities + one stale embedded figure |
+| **R8** | **v3M.0.17** | **15** | **2 + 1 lite** | **one disclosure gap (`λ = 0`), one appendix label error, one undefined symbol — no numerical error anywhere** |
+
+Three independent measures say the paper is converging, not oscillating:
+
+1. **No leg found an arithmetic or physics error.** The Fable leg re-derived Tables I, III–VII,
+   the PTA `z`-scores, the PBH arithmetic and the curvaton relation from scratch and reports every
+   one correct; my own re-checks of the closed form, the `c_s = 1` gate, `r = 24c_s` and the S2
+   ratio agree with the committed artifacts to ≤0.2% (analytic) and ≤4×10⁻⁶ (numerical gate).
+   Compare R3, where four MAJORs were substantive physics errors.
+2. **Both R7 (ii) science items closed with committed artifacts.** `A3-S2r` → `row18a_s2_tensor/`
+   (`r_after_S2 = 937.11`, `λ_T/λ_ζ^S1 − 1 = −1.3×10⁻¹⁴`); `A3-cs-bounce` → `row18b_cs_bounce_cubic/`
+   (closed form `−(5/24)ρ_B(6c_s²−5)/c_s⁴`, gate rel_diff 3×10⁻⁶). Neither was re-flagged by any leg.
+3. **12 of the 15 new items are one-line editorial fixes**, and 2 of the 4 residuals are the same
+   two presentation dispositions (`DA3M-06`, `DA3M-08`) that have been open since R2 — i.e. the
+   round is now surfacing *the same* unpaid editorial debt, which is the signature of a paper whose
+   science has stopped moving.
+
+**Genuinely-new-real MAJORs remaining after this round: 3** (`R8-01`, `R8-02`, `R8-03`), plus
+**2 open residual MAJORs** (`DA3M-06`, `DA3M-08`). All five are closable by text edits in
+v3M.0.18; none requires new computation.
+
+**Verdict-word note (pattern-066).** Grok returned REJECT on a manuscript where 6 of its 14
+findings are falsified against the paper's own text and 6 more are genre/length opinion; its
+"multiple essential internal contradictions" rests entirely on charges E1/M2 that the abstract
+itself pre-empts. Gemini, at the same PRD bar, calls the physics "exceptionally high quality" and
+its ESSENTIALs are presentation/provenance. This is textbook referee variance; the verdict words
+are diagnostic, never the gate (directives H-refined, P).
