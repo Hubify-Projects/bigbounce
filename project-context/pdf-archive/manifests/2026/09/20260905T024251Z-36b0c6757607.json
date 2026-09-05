@@ -1,0 +1,73 @@
+{
+  "build_command": "tools/directive_g.sh paper=P1B version=v2B.0.18 source=arxiv/paper1b_namaster_proof.tex pdflatex_passes=2 bibtex=0",
+  "captured_at_local": "2026-09-04T19:42:51.618176-07:00",
+  "captured_at_utc": "2026-09-05T02:42:51.618176+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "9f498cf1e3287786c6f3a4625bc93c12250572dd",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "8ec2b6631680e2e17832d13508ec3a5ee4ab682e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": null,
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": null,
+      "overall_dirty": null,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": false,
+      "tracked": false,
+      "worktree_dirty": null
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/09/20260905T024251Z-36b0c6757607.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/35/354d63b2e672ba4084987d993e59b73fd457a020a6bb794895c6e1d5074f88d2.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v2B.0.18__2026-09-04T194251-0700-PDT__354d63b2e672.pdf",
+      "git": {
+        "head_blob": "d8cfde3e2098793405811a0d2605d4ec7fd230c9",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "89cbca0fc922f9c1c63f1afaf35f8517",
+      "object_created": true,
+      "page_count": 12,
+      "paper_id": "P1B",
+      "paper_version": "v2B.0.18",
+      "reference_created": true,
+      "sha256": "354d63b2e672ba4084987d993e59b73fd457a020a6bb794895c6e1d5074f88d2",
+      "size_bytes": 522547,
+      "source_mtime_ns": 1788576171533632907,
+      "source_pdf": "arxiv/paper1b_namaster_proof.pdf",
+      "source_tex": "arxiv/paper1b_namaster_proof.tex"
+    }
+  ],
+  "review_round": "directive-g/JORS-SOFTWARE/P1B/v2B.0.18",
+  "run_id": "36b0c6757607",
+  "schema": "bigbounce-pdf-retention/v3"
+}
