@@ -1,4 +1,4 @@
-# New-session prompt — BigBounce + Hubify (v10, written 2026-09-05 early PT; supersedes v9)
+# New-session prompt — BigBounce + Hubify (v11, written 2026-09-05 morning PT; supersedes v10)
 
 Paste everything below the line into a fresh session inside `~/Desktop/CODE_YOU/bigbounce`
 (`git pull --ff-only` first). State as of close is in
@@ -82,67 +82,80 @@ through D-A3-14 and D-PSU-1) → `HUBIFY_POSITIONING_2026-09-04.md` →
 `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5 (ASCL/Zenodo kit).
 
 ## Where things stand
-- **Wave-2 close (2026-09-05 early)**: row 16(i) full-parent dipole is non-null
-  (z=+4.44) but row 16(ib) closes it as QC/footprint SYSTEMATIC (primary_hc cut alone
-  drops z to +0.68, DES-leg-drop alone to +0.48, axis unstable ~100° across cuts);
-  row 16(iv) chirality×structure ran 15/17 pre-registered stats, all null; row 13's
-  N=20k pixel-injection calibration is resolved (real ~2.9-3σ discrepancy vs the
-  mixture-corrected identity, not noise-limited); row 4 (DESI PNG) v4 closes wide-angle
-  + 3 imaging splits at official-covariance fidelity, all null, WEIGHT_SYS/galactic-
-  latitude re-test still open; row 15b shows entropy/tensor transfer scheme-independent;
-  PSU gates S6/S8 RESOLVED, S9/S10 PARTIAL, S7/S11 NOT; P4′ bumped to v4P.0.6 (row-16
-  disclosure integrated, readiness still 95); row 12 SSL pilot did NOT land (two
-  COMMUNITY-tier RunPod pods both failed SSH within 15 min). See
-  `SESSION_HANDOFF_2026-09-04.md` "Wave-2 close" section for full receipts.
-- P4′ v4P.0.6 and ECH Note v1N.0.5: readiness 95, kits ready; **sign-off read must now
-  use v4P.0.6** (not v4P.0.5); wait only on Houston.
-- **A3M v3M.0.19: readiness 75; ROUNDS STOPPED (R2).** Six boards (R3–R8) run tonight;
-  fifth consecutive round with no physics/numerical error; row-19 general-λ (the last
-  Houston-gated open item) answered — no-go generalizes to all P(X) k-essence. No further
-  rounds without a science decision.
-- **namaster-proof/P1B v2B.0.19: readiness 95; ROUNDS STOPPED (R2).** Batch-2
-  pre-registered blind test is the primary result (S1-S4 20/20, honest 0/5, S5/S6 escapes
-  pre-declared); OTS Bitcoin-anchor pending confirmation; batch 3 and a PyMaster
-  cross-check remain open.
-- **paper-su v1S.0.3: readiness 65; ROUNDS STOPPED.** R1 framing decision D-PSU-1 +
-  R2 closure (E-1..E-11) done; pending S6–S11 and a venue decision.
+- **Wave-3 close (2026-09-05 morning)**: namaster-proof batch 3 landed — attempt 1
+  ABORTED (invalid harness, `pcl.make_map` ignored `seed`; disclosed, preserved, not
+  deleted), attempt 2 (post-fix) scores exactly as pre-registered: R7 flags S1/S2/S3/S6
+  6/6, S4b cross-run disjunct fires, honest false-positive 0/6, S5 escapes 0/6; PyMaster
+  cross-check agrees with the in-house MASTER estimator to machine precision; OTS
+  batch-1/2 now "Timestamp complete"; novelty tier set to **N3** (decision D-P1B-1) →
+  **v2B.0.20**. paper-su S7 LOCATED + CLOSED (Cai Eq. 37 = Li Eq. 4.19 at c_s=1; Cai's
+  Eqs. 38–41/Fig. 5 uniformly 2× Eq. 37, so −35/16 not −35/8; Li's rows independent, not
+  a reuse) → **v1S.0.4**, literature correction only, rounds stay stopped, readiness 65.
+  Same S7 correction applied to A3M Sec. IV.B → **v3M.0.20**, rounds stay stopped,
+  readiness 75. Ledger #4 v5: full 5-row systematics table at official fidelity —
+  3 imaging splits null (unchanged); **WEIGHT_SYS on/off confirmed real and necessary**
+  (−4.31σ raw / −3.05σ √2-corrected, crosses 2σ even corrected — not evidence against
+  the headline f_NL, every published DESI QSO result already applies it); Galactic
+  latitude marginal (−1.78σ / −1.26σ), flagged as a watch item, not a null. Row 16(iv-b):
+  DESI DR1 BGS_BRIGHT-21.5 genuine external-tracer environment test is NULL in both the
+  spec-z 3D (N=121,417) and projected (N=949,584) subsets, largest excursion z=+2.96
+  (p=0.084 corrected) — below the pre-registered 3σ bar → P4′ **v4P.0.7**, readiness
+  still 95. Row 12 SSL pilot still BLOCKED — third RunPod attempt (SECURE-tier, corrected
+  schema) failed the same SSH-reachability way as attempts 1–2; blocker is now explicitly
+  a **RunPod web-UI pod creation** step, API-side creation is the confirmed suspect. See
+  `SESSION_HANDOFF_2026-09-04.md` "Wave-3 close" section for full receipts.
+- P4′ v4P.0.7 and ECH Note v1N.0.5: readiness 95, kits ready; **sign-off read must now
+  use v4P.0.7** (not v4P.0.6); wait only on Houston.
+- **A3M v3M.0.20: readiness 75; ROUNDS STOPPED (R2).** Literature correction only tonight
+  (S7); sixth consecutive round with no physics/numerical error; row-19 general-λ answered
+  — no-go generalizes to all P(X) k-essence. No further rounds without a science decision.
+- **namaster-proof/P1B v2B.0.20: readiness 95; ROUNDS STOPPED (R2).** Batch 3 (value-level
+  R7 rule) scored exactly as pre-registered; PyMaster cross-check + OTS batch-1/2 complete;
+  novelty tier N3 (D-P1B-1). ASCL/Zenodo packaging is now the closing step — a review board
+  on v2B.0.20 is permitted (the batch-3 science change is new since the last board), then
+  packaging; DOI minting is Houston-only.
+- **paper-su v1S.0.4: readiness 65; ROUNDS STOPPED.** S7 now CLOSED; pending S9/S10
+  (second-order ρ-slice / constant-mode kernel K_c) and a venue decision. (S6/S8 RESOLVED,
+  S11 Houston-only Zenodo upload.)
 - Anomaly catalogue v2: data release documented; Zenodo DOI is Houston's click.
-- Site: six-lane redesign shipped and unchanged tonight; live headed-browser QA still owed.
-- Pod: row 16's 20k local-injection pilot running on MPS locally (no pod); row 12 and
-  ledger #4 both had RunPod attempts fail on SSH-reachability tonight — no pod currently
-  running; confirm before starting any new compute lane.
+- Site: six-lane redesign shipped and unchanged; live headed-browser QA still owed.
+- Pod: no pod currently running; row 12 blocked on a RunPod web-UI pod creation (see
+  TERMINAL GOAL item 1); confirm SSH reachability before starting any new compute lane.
 
 ## TERMINAL GOAL (run until done; never stop early)
-1. **Row 12 program (public-IP pod).** Retry the full 1M-spectrum DR1 SSL pilot on a
-   SECURE-tier GPU or a different region with a confirmed public IP + reachable 22/tcp
-   (or the `ssh.runpod.io` proxy) — two COMMUNITY-tier attempts both failed SSH within
-   15 min on 2026-09-04; don't repeat the same pool. List and terminate any stray pods
-   first, confirm SSH reachability before any data transfer, then run the pipeline
-   (already built, compiles clean) start to finish with backup-3plus.
-2. **Row 16 next steps.** A retrained D4-equivariant classifier against a human-vetted
-   held-out set (the 16(ib) systematic verdict points at classification-confidence as
-   one driver); Euclid Q1 domain adaptation; the chirality × cosmic-web-void test once a
-   DESI void/LRG catalogue product is on disk (not yet — row 16(iv)'s anomaly/redshift/
-   CMB-axis cross-correlations are done and null, but a void/environment catalogue was
-   not available this pass).
-3. **paper-su S7/S9/S10 + venue.** S7 needs an equation-level literature read (0903.0631
-   / 1612.02036) to resolve the uniform-factor-2 discrepancy; S9/S10 need the second-order
-   ρ-slice / constant-mode kernel K_c; then settle a venue choice — this is the path off
-   readiness 65. (S6/S8 are RESOLVED; S11 is Houston-only Zenodo upload.)
-4. **namaster-proof batch 3 (value-level rule, pre-registered) / OTS upgrade / PyMaster
-   cross-check.** Packaging for ASCL/Zenodo is otherwise ready per
-   `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5 — prep the
-   tagged-tarball + upload-metadata (DOI minting itself is Houston's click).
-5. **Ledger #4 (DESI PNG): WEIGHT_SYS + galactic-latitude re-test at official-product
-   fidelity, then the LRG channel.** v4 closed wide-angle + the 3 imaging splits (E(B-V)/
-   stellar/depth) at official-covariance fidelity, all null; WEIGHT_SYS is the sample's
-   own correction weight and the highest-impact remaining check, still at earlier
-   diagonal-sigma fidelity.
-6. **A3M: no further review rounds without a science decision.** The paper is at the
-   fifth-consecutive-clean-round floor; the Houston framing read (item 5 in the click-list,
-   `SSOT/paper-a3m/status.md` v3M.0.15→v3M.0.19) is the gate before any submission step —
-   do not spend another board on it until that read happens or a new science question
-   opens (e.g. row 4, 12, or 16 feeding back into Track A).
+1. **Row 12 program (RunPod web-UI pod).** API-side pod creation has now failed
+   SSH-reachability three times (2 COMMUNITY-tier + 1 SECURE-tier, corrected schema).
+   Create the GPU pod through the RunPod **web UI** instead (as the working phase-3 pod
+   was; see `pipelines/p5_desi_chirality/env_finder/LAUNCH_POD.md`), hand the agent its
+   SSH coordinates, then run `launch_row12_pilot.sh` unchanged (pipeline already built,
+   compiles clean) start to finish with backup-3plus.
+2. **Row 16 next steps: classifier retrain + Euclid.** A retrained D4-equivariant
+   classifier against a human-vetted held-out set (the 16(ib) systematic verdict points
+   at classification-confidence as one driver); Euclid Q1 domain adaptation. Row 16(iv-b)
+   closed the external-environment channel (DESI DR1 BGS, null in both subsets) —
+   no further environment test is open.
+3. **paper-su S9/S10 + venue.** S7 is now CLOSED (Cai/Li literature correction, v1S.0.4).
+   S9/S10 need the second-order ρ-slice / constant-mode kernel K_c; then settle a venue
+   choice — this is the path off readiness 65. (S6/S8 RESOLVED; S11 Houston-only Zenodo
+   upload.)
+4. **namaster-proof: a board on v2B.0.20, then ASCL/Zenodo.** Batch 3 is a genuine science
+   change since the last board (R7/S6/S4b/FP scored exactly as pre-registered, plus the
+   PyMaster cross-check and OTS batch-1/2 completion) — one review board on v2B.0.20 is
+   permitted under directive R2. After that board closes, packaging for ASCL/Zenodo is
+   ready per `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5 — prep the
+   tagged-tarball + upload-metadata, citing novelty tier N3 (D-P1B-1) in the kit (DOI
+   minting itself is Houston's click).
+5. **Ledger #4: LRG channel, plus keep the Galactic-latitude watch.** v5 closed the full
+   5-row systematics table at official fidelity — WEIGHT_SYS confirmed real/necessary
+   (not a null, not evidence against the headline), Galactic latitude marginal and
+   flagged as a watch item (not yet dispositioned). Next: extend the same official-fidelity
+   pipeline to the DESI LRG sample.
+6. **A3M: no further review rounds without a science decision.** v3M.0.20 is a literature
+   correction only, the sixth consecutive round with no physics/numerical error; the
+   Houston framing read (click-list item, `SSOT/paper-a3m/status.md` v3M.0.15→v3M.0.20) is
+   still the gate before any submission step — do not spend another board on it until that
+   read happens or a new science question opens (e.g. row 4, 12, or 16 feeding back into
+   Track A).
 7. **Hygiene every round.** Directive-G bundle, Convex/site/timeline sync with headed QA,
    manifests validated, ledger + handoff updated, next prompt written, ordered click-list
    kept current. Stop only when every item is done or Houston-only.
