@@ -1,0 +1,118 @@
+{
+ "constant_eps": {
+  "growing_mode_exponent_g": "(epsilon - 3)/(epsilon - 1)",
+  "zetadot_over_Hzeta": "epsilon - 3",
+  "Theta": "epsilon*(epsilon - 3)",
+  "lambda_": "1 - epsilon/3",
+  "deltaK_over_Hzeta": "-epsilon*(epsilon - 3)",
+  "delta_rho_c_over_rho_per_zeta": "2*epsilon*(3 - epsilon)/3"
+ },
+ "USR_exact_linear": {
+  "mean_eps_zeta": "sqrt(epsilon_f)*sqrt(epsilon_s) - epsilon_f",
+  "lambda_USR_exact": "-sqrt(epsilon_f)*sqrt(epsilon_s)/3 + epsilon_f/3 + 1",
+  "Theta": "3*epsilon",
+  "numeric": {
+   "es=0.01,ef=1e-06": 0.999967,
+   "es=0.01,ef=0.0001": 0.9997,
+   "es=0.001,ef=1e-09": 0.999999667
+  }
+ },
+ "second_order": {
+  "f_map": "5*epsilon*mu**2/4 - 5*epsilon/4",
+  "f_map_monopole": "-5*epsilon/6",
+  "f_inin": "5*epsilon**2*mu**2/12 - 5*epsilon**2/12 + 5*epsilon/2 - 5",
+  "f_dN_initial_label": "-5",
+  "f_dN_final_label": "15*(-epsilon*mu**2 - epsilon + 4)/(4*(epsilon - 3))",
+  "inin_minus_dN_monopole": "5*epsilon*(9 - epsilon)/18",
+  "all_map_pieces_carry_eps": true
+ },
+ "general_w": {
+  "lambda_": "-(w - 1)/2",
+  "Theta": "9*(w - 1)*(w + 1)/4",
+  "f_map": "15*(mu - 1)*(mu + 1)*(w + 1)/8",
+  "f_map_monopole": "-5*(w + 1)/4",
+  "f_inin": "15*mu**2*w**2/16 + 15*mu**2*w/8 + 15*mu**2/16 - 15*w**2/16 + 15*w/8 - 35/16",
+  "f_dN_initial_label": "-5",
+  "f_dN_final_label": "-5*(3*mu**2*w + 3*mu**2 + 3*w - 5)/(4*(w - 1))",
+  "w0_check": "15*mu**2/16 - 35/16",
+  "w_minus1": {
+   "lambda_": "1",
+   "f_map": "0"
+  },
+  "w_plus1": {
+   "lambda_": "0",
+   "f_inin_monopole": "0"
+  }
+ },
+ "validations": {
+  "dust_eps_3_2": {
+   "f_inin": "15*mu**2/16 - 35/16",
+   "f_dN": "-5",
+   "lambda_": "1/2",
+   "Theta": "-9/4",
+   "mean_eps_zeta": "3/2",
+   "monopole_gap": "25/8",
+   "verdict": "O(1) failure, as computed"
+  },
+  "USR": {
+   "lambda_minus_1": "-sqrt(epsilon_f)*sqrt(epsilon_s)/3 + epsilon_f/3",
+   "f_map_eps_to_0": "0",
+   "kernels_eps_to_0": {
+    "psi2": "0",
+    "grad": "0",
+    "zlap": "0",
+    "wl_fin": "0",
+    "wl_initextra": "0",
+    "lab_init": "0"
+   },
+   "verdict": "agreement to O(eps): consistent with delta N(phi,pi) = in-in = 5/2 (NFS 2013)"
+  },
+  "attractor": {
+   "zetadot": 0,
+   "Theta": 0,
+   "lambda_": 1,
+   "div_cross_from_input": "0",
+   "verdict": "identity map; Maldacena consistency relation untouched"
+  },
+  "ekpyrotic": {
+   "cases": {
+    "eps=5": {
+     "nonconstant_mode_exponent_g": "1/2",
+     "nonconstant_mode": "decays as eta->0-",
+     "dominant_mode": "constant zeta -> Theta=0, lambda=1, identity map",
+     "Theta_if_on_nonconstant_mode": "10",
+     "lambda_if_on_nonconstant_mode": "-2/3",
+     "constant_eps_kernels_applicable": false
+    },
+    "eps=10": {
+     "nonconstant_mode_exponent_g": "7/9",
+     "nonconstant_mode": "decays as eta->0-",
+     "dominant_mode": "constant zeta -> Theta=0, lambda=1, identity map",
+     "Theta_if_on_nonconstant_mode": "70",
+     "lambda_if_on_nonconstant_mode": "-7/3",
+     "constant_eps_kernels_applicable": false
+    },
+    "eps=30": {
+     "nonconstant_mode_exponent_g": "27/29",
+     "nonconstant_mode": "decays as eta->0-",
+     "dominant_mode": "constant zeta -> Theta=0, lambda=1, identity map",
+     "Theta_if_on_nonconstant_mode": "810",
+     "lambda_if_on_nonconstant_mode": "-9",
+     "constant_eps_kernels_applicable": false
+    },
+    "eps=100": {
+     "nonconstant_mode_exponent_g": "97/99",
+     "nonconstant_mode": "decays as eta->0-",
+     "dominant_mode": "constant zeta -> Theta=0, lambda=1, identity map",
+     "Theta_if_on_nonconstant_mode": "9700",
+     "lambda_if_on_nonconstant_mode": "-97/3",
+     "constant_eps_kernels_applicable": false
+    }
+   },
+   "verdict": "dominant (constant) mode: separate universe valid (consistent with Creminelli-Nicolis-Zaldarriaga 2004); the growing-Bardeen-potential mode has Theta=eps(eps-3)>>1 and lambda<0 but decays in zeta, so it never sets zeta_L(t_f)"
+  }
+ },
+ "criterion": "isotropic delta N (with N(phi,pi)) reproduces the squeezed bispectrum of comoving zeta iff <eps/c_s^2>_zeta = (1/zeta_Lf) int (eps/c_s^2) dzeta_L -> 0; failure is O(<eps>_zeta): lambda = 1 - <eps>_zeta/3, f_map = -(5 eps/4)(1-mu^2) at constant eps",
+ "wall_clock_s": 0.16,
+ "sympy": "1.14.0"
+}
