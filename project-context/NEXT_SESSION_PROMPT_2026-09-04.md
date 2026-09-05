@@ -1,4 +1,4 @@
-# New-session prompt — BigBounce + Hubify (v11, written 2026-09-05 morning PT; supersedes v10)
+# New-session prompt — BigBounce + Hubify (v12, written 2026-09-05; supersedes v11)
 
 Paste everything below the line into a fresh session inside `~/Desktop/CODE_YOU/bigbounce`
 (`git pull --ff-only` first). State as of close is in
@@ -134,17 +134,20 @@ through D-A3-14 and D-PSU-1) → `HUBIFY_POSITIONING_2026-09-04.md` →
    at classification-confidence as one driver); Euclid Q1 domain adaptation. Row 16(iv-b)
    closed the external-environment channel (DESI DR1 BGS, null in both subsets) —
    no further environment test is open.
-3. **paper-su S9/S10 + venue.** S7 is now CLOSED (Cai/Li literature correction, v1S.0.4).
-   S9/S10 need the second-order ρ-slice / constant-mode kernel K_c; then settle a venue
-   choice — this is the path off readiness 65. (S6/S8 RESOLVED; S11 Houston-only Zenodo
-   upload.)
-4. **namaster-proof: a board on v2B.0.20, then ASCL/Zenodo.** Batch 3 is a genuine science
-   change since the last board (R7/S6/S4b/FP scored exactly as pre-registered, plus the
-   PyMaster cross-check and OTS batch-1/2 completion) — one review board on v2B.0.20 is
-   permitted under directive R2. After that board closes, packaging for ASCL/Zenodo is
-   ready per `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5 — prep the
-   tagged-tarball + upload-metadata, citing novelty tier N3 (D-P1B-1) in the kit (DOI
-   minting itself is Houston's click).
+3. **paper-su: the intrinsic-term gap + venue.** S7/S9/S10 all RESOLVED (v1S.0.5): K_c
+   closed form + corrected normalisation (S10), and the rho-slice second-order map (S9) —
+   but S9's composition is NEGATIVE, it does not reproduce the lab's -55/16. The one
+   remaining science item is deriving the flat-slice in-in three-point function of u at
+   finite t_i (the intrinsic initial-data bispectrum omitted from the delta N lane,
+   Namjoo-Firouzjahi-Sasaki caveat) — **route this as a Fable-tier independent-derivation
+   task**, not a Sonnet closure. Then settle a venue choice — this is the path off
+   readiness 65.
+4. **namaster-proof: §9 σ recompute, then ASCL/Zenodo/venue.** Batch 4 landed (rounds
+   stopped, N3 held). Before packaging, recompute `VERIFICATION_PRIMITIVE_2026-09-04.md`
+   §9's significance/sigma numbers against the final batch-1-4 corpus (PyMaster cross-check
+   + OTS batch-1/2 completion included) and settle the venue question for the ASCL/Zenodo
+   kit. After that, prep the tagged-tarball + upload-metadata, citing novelty tier N3
+   (D-P1B-1) in the kit (DOI minting itself is Houston's click).
 5. **Ledger #4: LRG channel, plus keep the Galactic-latitude watch.** v5 closed the full
    5-row systematics table at official fidelity — WEIGHT_SYS confirmed real/necessary
    (not a null, not evidence against the headline), Galactic latitude marginal and

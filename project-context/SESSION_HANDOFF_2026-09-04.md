@@ -283,3 +283,22 @@ agent its SSH coordinates; the agent then runs `launch_row12_pilot.sh` unchanged
 5. **A3M framing read** — v3M.0.20 (S7 correction; unchanged science, rounds stay stopped).
 6. Zenodo DOIs, endorsement emails, `HUBIFY_TOKEN`, `com.you.context-sync` decision — carried
    forward unchanged from the wave-2 list above.
+
+## Wave-4 close (2026-09-05)
+
+namaster-proof v2B.0.21 batch 4 committed; rounds still stopped and novelty tier held at N3.
+paper-su v1S.0.5: S9/S10 second-order gates closed (`research/theory_audit/psu_gates_S9_S10_2026_09_05.md`)
+— Appendix A gains the general-admixture constant-mode kernel K_c in closed form (squeezed
+-2eps/3, cancels the constant-mode zlap term exactly) and the corrected normalisation
+1/(lambda_g lambda_1); g=1 reproduces -5 / -25/4+(15/4)mu^2. A3M v3M.0.21: Sec. II and
+Appendix A no longer claim the uniform-density delta N value -55/16 is reconciled — the
+second-order rho-slice map gives -5/2 at dust (gap 15/16), attributed to an omitted
+intrinsic initial-data bispectrum, not a slice-labelling error. **S9 negative finding**: the
+uniform-density-slice composition does not close, unlike the comoving-slice -5; the named
+missing step is the flat-slice initial-data bispectrum (Namjoo-Firouzjahi-Sasaki caveat) in
+the delta N lane. Readiness held (paper-su 65, A3M 75); rounds stay stopped under R2. Site
+synced (papers.ts/live-status.ts/publish.ts, one reviewTimeline.ts entry, repro.ts
+regenerated); manifest validator error fixed (0 errors); ledger rows 1 and 17 updated;
+PAPER_LINEAGE gains D-PSU-2/D-A3-15. The click-list is unchanged, plus: **Zenodo deposit of
+the blind-test corpus** (namaster-proof batches 1-4, PyMaster cross-check, OTS attestations)
+as the next packaging step toward DOI minting.
