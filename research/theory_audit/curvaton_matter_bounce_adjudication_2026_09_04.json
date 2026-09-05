@@ -1,0 +1,162 @@
+{
+  "validation_de_sitter": {
+    "nu_squared": "9/4 - m**2/H**2",
+    "tilt_leading": "2*m**2/(3*H**2)",
+    "matches_textbook_2m2_over_3H2": true,
+    "massless_scale_invariant": true
+  },
+  "C_spectator_tilt": {
+    "nu_squared_of_q": "q**2 - q + 1/4",
+    "same_MS_operator_as_adiabatic_for_const_eps": true,
+    "tilt_of_q": "4 - 2*q",
+    "tilt_of_w": "12*w/(3*w + 1)",
+    "equals_12w_over_1p3w": true,
+    "dust_exactly_scale_invariant": true,
+    "n_s_at_w_row10": 0.9648945828709775,
+    "caveat": "holds for constant w only; z''/z = a''/a needs eps = const. Both channels carry the same k-tilt, so P_total inherits it whatever the mixing weight."
+  },
+  "A_massive_spectator_dust": {
+    "gamma_identity_4m2_over_H2": true,
+    "tilt_tracking_mass_of_gamma": "2*gamma/3",
+    "tilt_tracking_mass": "8*m**2/(3*H**2)",
+    "coefficient_ratio_contraction_over_deSitter": "4",
+    "sign_positive_mass_squared": "blue (n_sigma - 1 > 0)",
+    "CXB11_eq18_equals_deSitter_formula": true,
+    "CXB11_eq18_to_eq19_with_half_mass": "1/2",
+    "CXB11_eq18_to_eq19_with_full_mass": "1",
+    "lane_8_3_to_eq19_with_half_mass": "2"
+  },
+  "B_massive_numeric": {
+    "massless_numeric_tilt": -0.0002212798862977534,
+    "tracking_mass_validation": [
+      {
+        "gamma": 0.01,
+        "numeric_tilt": 0.006454754755487607,
+        "exact_3_minus_2nu": 0.00667409058084667
+      },
+      {
+        "gamma": 0.03,
+        "numeric_tilt": 0.01985179087831298,
+        "exact_3_minus_2nu": 0.020067114849732004
+      }
+    ],
+    "constant_mass_rows": [
+      {
+        "m": 3e-05,
+        "m2_over_Hk2": {
+          "0.2": 0.00022499999999999989,
+          "0.4": 3.515624999999998e-06
+        },
+        "m_over_H_at_eta_i": 405.0,
+        "nonadiabaticity_sqrt_m_over_8Hk": {
+          "0.2": 0.043301270189221926,
+          "0.4": 0.01530931089239486
+        },
+        "crossing_estimate_2over3_diff": 0.00014765624999999992,
+        "numeric_tilt_minus_massless": 0.0002555848019058487
+      },
+      {
+        "m": 0.0001,
+        "m2_over_Hk2": {
+          "0.2": 0.0024999999999999988,
+          "0.4": 3.906249999999998e-05
+        },
+        "m_over_H_at_eta_i": 1350.0,
+        "nonadiabaticity_sqrt_m_over_8Hk": {
+          "0.2": 0.07905694150420947,
+          "0.4": 0.027950849718747367
+        },
+        "crossing_estimate_2over3_diff": 0.001640624999999999,
+        "numeric_tilt_minus_massless": -0.00014377441504236224
+      },
+      {
+        "m": 0.0002,
+        "m2_over_Hk2": {
+          "0.2": 0.009999999999999995,
+          "0.4": 0.00015624999999999992
+        },
+        "m_over_H_at_eta_i": 2700.0,
+        "nonadiabaticity_sqrt_m_over_8Hk": {
+          "0.2": 0.11180339887498947,
+          "0.4": 0.039528470752104736
+        },
+        "crossing_estimate_2over3_diff": 0.006562499999999996,
+        "numeric_tilt_minus_massless": 8.180334032726618e-05
+      },
+      {
+        "m": 0.0003,
+        "m2_over_Hk2": {
+          "0.2": 0.022499999999999982,
+          "0.4": 0.0003515624999999997
+        },
+        "m_over_H_at_eta_i": 4049.9999999999995,
+        "nonadiabaticity_sqrt_m_over_8Hk": {
+          "0.2": 0.1369306393762915,
+          "0.4": 0.0484122918275927
+        },
+        "crossing_estimate_2over3_diff": 0.014765624999999989,
+        "numeric_tilt_minus_massless": -0.0016898099875925763
+      }
+    ],
+    "sign_of_mass_induced_tilt": "NOT uniformly positive",
+    "noise_floor_from_tracking_validation": 0.00021933582535906253,
+    "note": "constant m in a contraction: m/H \u221d |t| so the field is HEAVY in the far past (m \u226b H at eta_i) and light only near the bounce; the heavy->relativistic transition at eta_m = -sqrt(k/m) has non-adiabaticity sqrt(m/8H_k), k-dependent, so the initial state is not BD-light and the crossing-time argument does not fix the sign."
+  },
+  "B_branchW_step": {
+    "branchW_wrote": "n_sigma - 1 = 2 nu - 3 = -2 m^2/(3 H_k^2)",
+    "correct": "n_sigma - 1 = 3 - 2 nu = 2*m**2/(3*H**2)",
+    "erring_step": "03_tilt_mechanisms.md: 'n_sigma - 1 \u2248 2\u03bd \u2212 3' \u2014 P_v \u221d k^{3-2\u03bd}, so the sign of the tilt relation is inverted; the \u03bd expansion itself (\u03bd < 3/2 for m^2 > 0) is correct."
+  },
+  "D_r_formula": {
+    "P_curv_over_P_ad": "8*M_pl**2*epsilon*r_dec**2/(9*sigma_star**2)",
+    "P_curv_over_P_ad_dust": "4*M_pl**2*r_dec**2/(3*sigma_star**2)",
+    "r_single_field": "16*epsilon",
+    "r_two_channel": "144*epsilon*sigma_star**2/(8*M_pl**2*epsilon*r_dec**2 + 9*sigma_star**2)",
+    "lane_form_matches_8eps_over_9": true,
+    "x_threshold_for_r_lt_0.036": 22.343902971504328,
+    "x_threshold_for_r_lt_0.01": 42.4175671155242,
+    "F_threshold_r_lt_0.036_row10_norm": 25.819888974716115,
+    "F_threshold_r_lt_0.036_CXB11_35": 31.18047822311618,
+    "assumptions": "sigma_* (the homogeneous curvaton value at conversion) is constant through contraction+bounce and the same transfer multiplies dsigma and zeta_ad (both obey the massless operator); curvaton is subdominant during the contraction; conversion after reheating (radiation era)."
+  },
+  "E_curvaton_fNL": {
+    "deltaN_sudden_decay_fNL": "5*(-2*r_dec**2 - 4*r_dec + 3)/(12*r_dec)",
+    "svw_quadratic": "-5*r_dec/6 - 5/3 + 5/(4*r_dec)",
+    "deltaN_matches_SVW": true,
+    "zero_crossing_r_dec": 0.5811388300841897,
+    "zero_crossing_exact": "-1 + sqrt(10)/2",
+    "f_at_r_dec_1": -1.25,
+    "r_dec_min_Planck_2sigma(-0.9+2*5.1)": 0.11301128043274705,
+    "f_at_that_r_dec": 9.299999999999999,
+    "assumptions": "sudden decay; quadratic potential (g''=0: sigma at decay linear in sigma_*, unchanged by the bounce); Gaussian delta sigma; radiation-dominated background at decay; no phi-sigma cross term N_{phi sigma}."
+  },
+  "F_dilution": {
+    "f_eff_two_channels": "(P1**2*f1 + P2**2*f2)/(P1 + P2)**2",
+    "adiabatic_weight_of_r": "r**2/576",
+    "weight_at_r_0.036": 2.2499999999999996e-06,
+    "bounce_term_at_r_0.036": {
+      "pre-transfer (T=1)": -4.921874999999999e-06,
+      "LQC (T=0.250)": -1.2304687499999998e-06,
+      "Quintin (T=0.165)": -8.121093749999999e-07
+    },
+    "r_min_for_SPHEREx_1sigma_0.5": {
+      "pre-transfer (T=1)": 11.47419464961018,
+      "LQC (T=0.250)": 22.94838929922036,
+      "Quintin (T=0.165)": 28.247514544151983
+    },
+    "lane_22.95_corresponds_to": "T = 0.250 (LQC); T=1 gives 11.5, T=0.165 gives 28.2 (> 24, unreachable)",
+    "assumptions": "no cross term N_{phi sigma}; the adiabatic f_NL is treated as a local amplitude (its mu-dependence rides along with the same weight); transfer T from row-10/A2, not re-derived."
+  },
+  "A_CXB11_case1": {
+    "fNL_from_eqs_60_64": "-5120*C*d**2/pi**6 + 640*m/(pi**4*m_pl)",
+    "leading_term": "-5120*C*d**2/pi**6",
+    "matches_eq65_minus5120_d2C_over_pi6": true,
+    "case1_symbolic": "-320/pi**4",
+    "case1_value": -3.285114321498987,
+    "CXB11_quote": -3.3,
+    "subleading_dropped": "+640 m/(pi^4 m_pl) (positive, O(1e-2) for m ~ 1e-5 m_pl)",
+    "parameter_free_condition": "C = (pi/4 d_1)^2 with d = d_1 (chi dominates first); d cancels exactly.",
+    "not_rederived": "Eqs. 62-64 (the zeta_NL integral through deflation/bounce) are CXB11 estimates ('\u2243'); the collapse to -320/pi^4 is arithmetic on THEIR equations, not an independent derivation."
+  },
+  "sympy_version": "1.14.0"
+}
