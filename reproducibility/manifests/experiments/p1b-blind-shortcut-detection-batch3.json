@@ -1,0 +1,153 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1b-blind-shortcut-detection-batch3",
+  "title": "Blind shortcut-detection test, batch 3: pre-registered value-level rule R7 (receipt-bound operator-consistency residual spot-check) against the effective-multipole class S6 that escaped batch 2, plus the previously untested cross-run cache disjunct (S4b)",
+  "program": "lab-infra",
+  "paper": "P1B",
+  "kind": "validation",
+  "inputs": [
+    {
+      "name": "Synthetic HEALPix Gaussian signal realisations (nside=64, lmax=64, power-law C_ell; seeds HMAC-derived from the sealed key)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_map)",
+      "checksum": null
+    },
+    {
+      "name": "Synthetic binary sky mask (equatorial cut + 12 random discs)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_mask, seed 11)",
+      "checksum": null
+    },
+    {
+      "name": "namaster-proof receipt primitive (publish_json / verify_json_receipt)",
+      "type": "internal-artifact",
+      "locator": "packages/namaster-proof/src/namaster_proof/receipts.py",
+      "checksum": null
+    },
+    {
+      "name": "Frozen decision rules R0-R7 (pre-registered, committed alone before any batch-3 script, seal or output existed)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/RULES_v3_FROZEN.md",
+      "checksum": "856f4c50b33eea109ee7ae9de1fc672c55896a9b3fb8ad5d2de87863088a23db"
+    },
+    {
+      "name": "Batch-3 pre-registration (design, arms, pre-declared expectations, scoring; committed before the seal)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/BATCH3_PREREGISTRATION.md",
+      "checksum": "bf1754685762aaf5e5babd41a081517b1f75e59a8db5b97585244c3ed9976f02"
+    },
+    {
+      "name": "Abort record for batch-3 attempt 1 (harness defect, never unsealed; 48 invalid runs preserved)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/BATCH3_ABORT_NOTE.md",
+      "checksum": "491ad0ea55bcf409eb5b50cdf38f9e9b4f5f4a7e9f67409c9c77ed27b8047b6a"
+    },
+    {
+      "name": "Batch-2 scorecard (the result batch 3 is the follow-up to: S6 escaped 5/5, R6 cross-run disjunct never fired)",
+      "type": "internal-artifact",
+      "locator": "pipelines/namaster_proof/blind_test/public2/scorecard.json",
+      "checksum": "7b3af7f12ba3ebe19ae6598a67929f26a067e5bfbf30eec2c78473e9380a7d1a"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "pipelines/namaster_proof/blind_test/variants3.py",
+      "entrypoint": "imported by run_blind3.py",
+      "sha256": "c24d98e2f47fc6f8ab1d539403e474f325a45b401326550c43ddec29b7c48a29"
+    },
+    {
+      "path": "pipelines/namaster_proof/blind_test/seal3.py",
+      "entrypoint": "NP_SEALED_DIR=<outside repo> python3 seal3.py",
+      "sha256": "1d14999dfa908313c9e554bb0753a7532a09849dd60d9768c16deaf3857df13f"
+    },
+    {
+      "path": "pipelines/namaster_proof/blind_test/run_blind3.py",
+      "entrypoint": "NP_SEALED_DIR=<outside repo> python3 run_blind3.py",
+      "sha256": "0a67b6549b961ae70640336ae5b366ca3b63466e280ee2b96514df5a958204eb"
+    },
+    {
+      "path": "pipelines/namaster_proof/blind_test/verify3.py",
+      "entrypoint": "python3 verify3.py public3",
+      "sha256": "ffca3212f1464068ec79275fc7ad82e15e6b6085988de60914ec4a36a75c4560"
+    },
+    {
+      "path": "pipelines/namaster_proof/blind_test/reveal3.py",
+      "entrypoint": "NP_SEALED_DIR=sealed3 python3 reveal3.py",
+      "sha256": "a27d5115deaafe392e13c68e546887a6a3bd6ed6d9a13d57f72427e5e3b7fdb2"
+    }
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + healpy 1.20.0 + scipy 1.18.0 (scipy only for the Clopper-Pearson bounds in reveal3.py) + opentimestamps-client 0.7.2 for the seal anchor. NaMaster/pymaster is NOT required and NOT installed: the test ships its own instrumented spin-0 MASTER estimator, which is a stated scope limit of the result.",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "~15 s for 48 runs, ~4 s to verify (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~1 min end to end",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Run from pipelines/namaster_proof/blind_test with NP_SEALED_DIR pointing outside the repo: seal3.py, run_blind3.py, verify3.py public3, reveal3.py. Re-sealing draws a fresh key, so a rerun reproduces the PROTOCOL and the per-arm outcome, not the byte-identical run directories. To re-score the committed batch exactly, skip seal3/run_blind3 and run 'python3 verify3.py public3' against the committed public3/runs plus 'NP_SEALED_DIR=sealed3 python3 reveal3.py'. Note pcl.make_map ignores its seed argument (healpy synfast uses the global NumPy RNG); variants3.seed_rng compensates at the call site and run_variant asserts map reproducibility, so batch-3 maps ARE reproducible from sealed seeds while batch-1/2 maps were not. R7 assumes verifier and runner reproduce healpy/numpy anafast bit-comparably; it is a same-environment rule by construction."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/namaster_proof/blind_test/public3/sealed_digest.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/namaster_proof/blind_test/public3/sealed_digest.json.ots",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/namaster_proof/blind_test/public3/contract.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/namaster_proof/blind_test/public3/runs",
+      "type": "dataset",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/namaster_proof/blind_test/public3/verdicts.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/namaster_proof/blind_test/public3/scorecard.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/namaster_proof/blind_test/sealed3",
+      "type": "dataset",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/namaster_proof/blind_test/public3_aborted",
+      "type": "dataset",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-score the committed batch and confirm: (a) scorecard.seal_verified == true and assignment_sha256 == abfe2793bc6fa2c0ed1d5be429e1e32c02bc5263067c83957298605a21c04f58, matching the sealed_digest.json committed before any run output; (b) detection_structural_S1_S4b == 24/24 (one-sided 95% lower bound 0.905); (c) S6_effective_multipole flagged 6/6 by R7 ALONE (lower bound 0.607) with per-arm r7 residuals in [1.77e-4, 4.92e-2]; (d) honest flagged 0/6, r7 residual max 1.44e-12 -- eight orders below TOL=1e-6, which is eight orders below the smallest S6 residual; (e) S5_metadata_forgery escapes 6/6 with r7 residuals <= 4.54e-17, the informed-forger limitation R7 declares in advance; (f) S4b_cache_crossrun 6/6 flagged with r6_crossrun_disjunct == 4 and r6_reference_disjunct == 2 (the two collapse because the substituted prior run was itself cache-substituting; sealed3/crossrun_sources.json names each source run); (g) git log shows RULES_v3_FROZEN.md committed alone (dcf96696) before the scripts (d03fe376), the scripts before the seal, the seal before any run output, and the reveal last; (h) RULES_v3_FROZEN.md is byte-identical at dcf96696 and at HEAD.",
+  "status": "runnable-now",
+  "provenance": [
+    "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md, 'Batch 3 (pre-registered)' section",
+    "pipelines/namaster_proof/blind_test/RULES_v3_FROZEN.md (rules frozen alone, before scripts/seal/output)",
+    "pipelines/namaster_proof/blind_test/BATCH3_PREREGISTRATION.md (design + pre-declared expectations)",
+    "pipelines/namaster_proof/blind_test/BATCH3_ABORT_NOTE.md (attempt 1 aborted on a harness defect, never unsealed)",
+    "Batch-2 open items this closes: S6 escaped 5/5 (no rule could see a trace-clean value-level shortcut) and R6's cross-run disjunct was never exercised",
+    "INT R1 on P1B v2B.0.17 (2026-09-04) finding M4, which specified the S6 class independently of the verifier's author",
+    "directive Q2 (per-experiment reproducibility manifests), directive R2 (a verification gate, not a review round)"
+  ]
+}
