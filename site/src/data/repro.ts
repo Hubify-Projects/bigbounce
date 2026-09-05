@@ -543,6 +543,14 @@ export const reproPrograms: ReproProgram[] = [
         ]
       },
       {
+        "id": "a3-4-row10-r-ns",
+        "depends_on": [
+          "p2-a2-bounce-fnl-transmission",
+          "a3-r5-15-tensor-omega-nhz",
+          "a3-1b-inlab-delta2-zeta"
+        ]
+      },
+      {
         "id": "a3-r5-18-gammacr-coverage",
         "depends_on": [
           "a3-pbh-compaction-fnl",
@@ -573,6 +581,48 @@ export const reproPrograms: ReproProgram[] = [
           "ledger9-c-abs-operator-map",
           "p2-a2-lane-a-cubic-vertex-table",
           "a3-1b-inlab-delta2-zeta"
+        ]
+      },
+      {
+        "id": "a3-row11a-choudhury-sign",
+        "depends_on": [
+          "a3-pbh-compaction-fnl",
+          "a3-r5-18-gammacr-coverage",
+          "a3-1b-inlab-delta2-zeta"
+        ]
+      },
+      {
+        "id": "row11c-threading-map-second-order",
+        "depends_on": [
+          "p2-fnl-monopole-adjudication"
+        ]
+      },
+      {
+        "id": "a3-row11b-gammacr-extension",
+        "depends_on": [
+          "a3-pbh-compaction-fnl",
+          "a3-r5-18-gammacr-coverage",
+          "a3-row11a-choudhury-sign"
+        ]
+      },
+      {
+        "id": "a3-row14-cs-window",
+        "depends_on": [
+          "a3-4-row10-r-ns",
+          "p2-fnl-adjudication-inin-from-scratch"
+        ]
+      },
+      {
+        "id": "a3-row15-curvaton",
+        "depends_on": [
+          "a3-row14-cs-window",
+          "a3-4-row10-r-ns"
+        ]
+      },
+      {
+        "id": "a3-row15-curvaton-adjudication",
+        "depends_on": [
+          "a3-row15-curvaton"
         ]
       }
     ],
@@ -1241,6 +1291,136 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-4-row10-r-ns",
+    "title": "Ledger row 10 (A3-4 + A3-ns) - the matter bounce's OWN tensor-to-scalar ratio r and scalar tilt n_s, derived for the dust contraction and propagated through all three A2 bounce backgrounds",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Cai, Easson & Brandenberger 2012 - nonsingular bouncing cosmology; the matter bounce's known large tensor-to-scalar ratio",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1206.2382",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - perturbations through a nonsingular bounce; single-field matter-bounce no-go trading r against f_NL",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1508.04141",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Wands 1999 - dust-contraction / de Sitter duality making the contracting spectra scale-invariant",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/gr-qc/9809062",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Brandenberger & Peter 2016 - bouncing cosmologies review",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1603.05834",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL) at k_* = 0.05 Mpc^-1, the bound the model is tested against",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2110.00483",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2018 - n_s = 0.9649, A_s = 2.1e-9, the anchor (not a prediction) for the tilt branch",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1807.06209",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A2 linear-transmission module - the three bounce backgrounds (LQC-effective dust, poly-analytic non-LQC, Quintin2015-type), the adiabatic-vacuum scalar evolution and the exact matter-basis projection, imported directly",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "First-order tensor Omega_GW at nHz - re-run with the model's own r as CASE C",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/r5_15_tensor_omega_nhz.py",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+        "entrypoint": "cd research/track_a3_multichannel/row10_r_ns && python3 row10_r_ns.py",
+        "sha256": "4554ac9add31704f973be6b4118d3c814aad2e15baa4b9f7db591eacc63d54b3"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy + scipy + sympy + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "1.5 s (measured, field wall_seconds in results.json)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~3 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). The symbolic block derives r = 16 eps and n_s - 1 = 12w/(1+3w) with sympy rather than asserting them. The tensor mode is integrated in h-form, an independent numerical route from A2's mu-form scalar integration, so T_h/T_zeta = 1 is a genuine numerical check and not an identity of the code. Nothing is tuned; no free parameter enters r."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/row10_r_ns/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/outputs/r5_15b_tensor_omega_nhz_model_r_2026_09_04.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) analytic.r_symbolic == '16*epsilon' and analytic.ns_minus_1_of_w == '12*w/(3*w + 1)' (both derived symbolically); (b) analytic.pure_dust.r == 24.0 and analytic.planck_anchored.w == -0.0028996 with r == 23.9304; (c) numeric_summary.max_abs_T_h_over_T_zeta_minus_1_all_backgrounds <= 1e-4 (poly 8.5e-9, LQC 1.0e-9, Quintin 8.0e-5), i.e. the tensor and scalar transfers through every bounce agree; (d) backgrounds.{poly,LQC,quintin}.r_after_median == 24.0000/24.0000/23.9962, so r is bounce-invariant; (e) cmb_verdict.ratio_model_over_bound == 664.7, verdict == CMB TENSION; (f) the CASE C rows in r5_15b_tensor_omega_nhz_model_r_2026_09_04.json give Omega_GW1 h^2(f_yr) = 1.691e-14 with log10 shortfall vs NANOGrav 5.33, so the PTA null of A3-3 is unchanged.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 10 (A3-4 + A3-ns), promoted 2026-09-04 by the R6 audit item R6-10",
+      "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md (derivation, per-background table, CMB verdict, paper-ready sentences)",
+      "research/cubic_bounce_transmission/a2_transmission_linear.py (backgrounds and scalar mode machinery, imported not copied)",
+      "directive Q2 (per-experiment reproducibility manifests); directive Q1 (the CMB tension is stated in its own terms as a limitation of the modelled background, not narrated as a fix of an earlier error)",
+      "provenance finding: the tensor-sense r = 0.84 at r5_15_tensor_omega_nhz.py:73,98 and paper/main.tex:769 is a conflation of P2's noise-weighted bispectrum shape overlap R_OVERLAP = 0.84 (survey_reach_fnl.py:46) with the tensor-to-scalar ratio; no in-repo derivation of a tensor r = 0.84 exists"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "a3-pbh-abundance-fnl",
     "title": "Track A3 channel 2 — Press-Schechter PBH abundance with local quadratic non-Gaussianity at f_NL = -35/16 vs -35/8 vs 0",
     "program": "bounce-theory",
@@ -1679,6 +1859,647 @@ export const reproExperiments: ReproExperiment[] = [
       "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md (per-point table and the sentence the paper may state)",
       "research/track_a3_multichannel/inlab_delta2_zeta_2026-09-03.md (open item A3-1d: the in-lab shape reaches the enhancement branch by a physically-motivated shape, not only by grid corners)",
       "directive Q2 (per-experiment reproducibility manifests), directive Q1 (result stated in its own terms), directive R1 (ledger-first)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row11a-choudhury-sign",
+    "title": "A3M ledger row 11(a) - operator-by-operator location of the Choudhury et al. 2025 compaction-function f_NL sign disagreement: does negative local f_NL suppress or enhance the PBH abundance at fixed Gaussian amplitude?",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025, 'Negative non-Gaussianity as a salvager for PBHs with PTAs in bounce', EPJC 85:472 - the compaction-function + local-f_NL formalism (Eqs. 30, 35, 40, 49-54, 60-66) whose f_NL sign response is under test; full text states 'f_NL<0 is considered more favourable to suppress the PBH abundance', with a sharply peaked USR/RRR spectrum",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2409.18983",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Kitajima, Tada, Yokoyama & Yoo 2021, 'Primordial black holes in peak theory with a non-Gaussian tail' - the averaged-compaction PBH criterion with critical scaling, the standard treatment the operator chain is checked against",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2109.00791",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Young & Byrnes 2013, 'Signatures of non-Gaussianity in the isocurvature modes of primordial black hole dark matter' - the standard local-f_NL PBH abundance treatment and the long-wavelength-mode modulation argument",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1307.4995",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Franciolini, Kehagias, Matarrese & Riotto 2018, 'Primordial black holes from inflation and non-Gaussianity'",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1801.09415",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1 compaction-function integrator (Eqs. 52-54 covariances, Eq. 60 abundance) - imported unmodified as the numerical engine",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+        "checksum": "27e4021f84b8607acc5da0811f4cacf030d5068464457b5534a647ba6a39de38",
+        "license": null
+      },
+      {
+        "name": "A3-1 note - the enhancement-at-gamma_cr<~0.85 statement (sec 4.3) this item adjudicates",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "R5-18 gamma_cr coverage note - the in-lab shape's gamma_cr in [0.267, 0.630] and the standing of the quoted 1.7-1.9 ratio",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/row11_pbh_residuals/row11_choudhury_sign.py",
+        "entrypoint": "cd research/track_a3_multichannel/row11_pbh_residuals && python3 row11_choudhury_sign.py",
+        "sha256": "b0274f1669bfd3c68d99e8158c23735e922655e6f7a63289eaa6c6a4dfa62bcf"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy/scipy/matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "~9 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~10 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic. Part (A) minimises the compaction-threshold saddle exponent S(x)=x^2/2+(nu/(1+eps x)-g x)^2/(2(1-g^2)) by bounded 1-D minimisation and compares finite-difference eps-derivatives with the analytic coefficients -g nu^3 and nu^4(6g^2-1). Part (B) calls the COMMITTED beta_ng/A_for_fpbh integrator unmodified. Part (C) monkeypatches only the spectrum shape (a power law with an explicit IR cutoff) and restores it in a finally block. No fitting, no tuning: the amplitude at each shape is SOLVED for from the fixed condition f_PBH(Gaussian)=1."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_choudhury_sign.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row11_pbh_residuals/ROW11_PBH_RESIDUALS_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) max_relative_error_d2S < 0.05, i.e. the numeric second eps-derivative of S_min reproduces nu^4(6 gamma_cr^2 - 1) at every (nu, g) checked; (b) gamma_cr_sign_flip_analytic == 1/sqrt(6) = 0.40825; (c) in full_beta_shape_scan, beta/beta_gauss < 1 at f_NL = -0.02 for EVERY gamma_cr including 0.305 (the O(eps) term suppresses universally); (d) beta/beta_gauss > 1 at f_NL = -35/16 only for gamma_cr <= 0.766; (e) in ir_sensitivity, sigma_cr2_over_sigma_c is constant to 5 significant figures (0.31921) over k_min/k_p from 1e-5 to 1e-2 while sigma_r changes by a factor 1.67 and gamma_cr moves 0.267 -> 0.446.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 11 - this experiment is that row's closure evidence",
+      "project-context/peer-reviews/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md sec 4 class (e): 'the Choudhury et al. gamma_cr<~0.85 sign disagreement (:929-930, a genuine discrepancy left unresolved)'",
+      "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row11b-gammacr-extension",
+    "title": "A3M ledger row 11(b) - compaction-function scan extended to gamma_cr in [0.2, 1.0]: the required-amplitude ratio A(-35/16)/A(-35/8) INSIDE the in-lab spectrum shape's own coverage [0.267, 0.630], and whether the quoted '1.7-1.9' survives",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025, 'Negative non-Gaussianity as a salvager for PBHs with PTAs in bounce', EPJC 85:472 - the compaction-function + local-f_NL formalism (Eqs. 30, 35, 40, 49-54, 60-66) whose f_NL sign response is under test; full text states 'f_NL<0 is considered more favourable to suppress the PBH abundance', with a sharply peaked USR/RRR spectrum",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2409.18983",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Kitajima, Tada, Yokoyama & Yoo 2021, 'Primordial black holes in peak theory with a non-Gaussian tail' - the averaged-compaction PBH criterion with critical scaling, the standard treatment the operator chain is checked against",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2109.00791",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Young & Byrnes 2013, 'Signatures of non-Gaussianity in the isocurvature modes of primordial black hole dark matter' - the standard local-f_NL PBH abundance treatment and the long-wavelength-mode modulation argument",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1307.4995",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Franciolini, Kehagias, Matarrese & Riotto 2018, 'Primordial black holes from inflation and non-Gaussianity'",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1801.09415",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A3-1 compaction-function integrator (Eqs. 52-54 covariances, Eq. 60 abundance) - imported unmodified as the numerical engine",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+        "checksum": "27e4021f84b8607acc5da0811f4cacf030d5068464457b5534a647ba6a39de38",
+        "license": null
+      },
+      {
+        "name": "A3-1 note - the enhancement-at-gamma_cr<~0.85 statement (sec 4.3) this item adjudicates",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/PBH_COMPACTION_NOTE_2026-09-02.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "R5-18 gamma_cr coverage note - the in-lab shape's gamma_cr in [0.267, 0.630] and the standing of the quoted 1.7-1.9 ratio",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Row 11(a) sign adjudication - establishes that gamma_cr controls the sign of the f_NL response, hence that the ratio must be quoted inside the in-lab gamma_cr coverage",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_choudhury_sign.json",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/row11_pbh_residuals/row11_gammacr_extension.py",
+        "entrypoint": "cd research/track_a3_multichannel/row11_pbh_residuals && python3 row11_gammacr_extension.py",
+        "sha256": "a0c01e1598295d59f577dd1147afecd12d2151c76a51c28d07ad30c8db4daf28"
+      }
+    ],
+    "environment": {
+      "python": "python3 + numpy/scipy/matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "~20-40 min (measured; field in the output JSON print line)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~30 min",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Deterministic. Two shape families (lognormal(Delta, r_p k_p) extended to broad Delta; the in-lab power law Delta^2 = A (k/k_p)^{n_s-1} with an explicit IR cutoff) are pushed through the COMMITTED beta_ng/A_for_fpbh integrator, with PC.covariances temporarily replaced by _cov_wide - the SAME Eqs. 52-54 integrals on a k-grid widened from [1e-5,1e3] k_p to [1e-9,1e3] k_p, which is what lets gamma_cr reach 0.2. _cov_wide is asserted against the committed integrator (max rel. diff < 1e-6) before any scan point is taken, and both PC.covariances and PC.delta2_zeta are restored in a finally block. NOTHING IS TUNED: at every point the amplitude A is solved by brentq from the fixed target f_PBH = 1e-3 (the floor of the Choudhury et al. band); the ratio is a property of the solution. Committed outputs (outputs/pbh_compaction_fnl.json) are not touched."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row11_pbh_residuals/ROW11_PBH_RESIDUALS_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) wide_integrator_validation_max_rel_diff < 1e-6 (the assert is in the script); (b) the union of scan points covers gamma_cr from <=0.2 to >=0.96, i.e. the [0.2,1.0] target the committed 27-point grid ([0.766,0.968]) does not reach; (c) summary.committed_grid_coverage reproduces the committed headline 1.732 +- 0.050 over gamma_cr in [0.766,0.968]; (d) summary.inlab_coverage reports the ratio over gamma_cr in [0.267,0.630] - the interval the lab's own spectrum shape occupies - with its own mean, std and [min,max]; (e) survives_1.7_to_1.9 records whether every scanned point falls in the quoted band.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 11 - this experiment is that row's closure evidence",
+      "project-context/peer-reviews/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md sec 4 class (e): 'the Choudhury et al. gamma_cr<~0.85 sign disagreement (:929-930, a genuine discrepancy left unresolved)'",
+      "directive Q2 (per-experiment reproducibility manifests), directive R1 (ledger-first), directive R6 (evidence-graded claims)",
+      "research/track_a3_multichannel/outputs/R5_18_GAMMACR_NOTE_2026-09-04.md - the finding this experiment closes: the quoted 1.7-1.9 was a UNION of an in-coverage scan (1.732 +- 0.050 over [0.766,0.968]) and ONE out-of-coverage evaluation (1.85-1.89 at [0.267,0.630]), not a scan result over that range",
+      "project-context/peer-reviews/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md R6-11 (abstract 'shape-robust' carries none of the body's conditionality)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row14-cs-window",
+    "title": "Ledger row 14 - joint dependence of the tensor-to-scalar ratio r and the squeezed local f_NL on the contraction's scalar sound speed c_s, and the (empty) window in which r < 0.036 with an acceptable f_NL",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Li, Quintin, Wang & Cai 2016 - matter bounce with a k-essence field: shape function Eq. (4.19), r = 24 c_s (Eq. 3.18), extended no-go theorem",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1612.02036",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - perturbations and non-Gaussianity through a nonsingular bounce; Eq. (31) |Delta zeta/zeta| >~ 49.1 and Eq. (44) f_NL ~ (Delta zeta)^2/(Delta t_B) M_p^2",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1508.04141",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai, Easson & Brandenberger 2012 - the matter bounce's large-r problem",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1206.2382",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Garriga & Mukhanov 1999 - perturbations in k-inflation; P_zeta ~ 1/(epsilon c_s) and the c_s-dependent canonical variable",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/9904176",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chen, Huang, Kachru & Shiu 2007 - cubic action and non-Gaussianity for general single-field P(X,phi); the 1/c_s^2 scaling of f_NL",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/0605045",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL), the tensor bound tested here",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2110.00483",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2019 - local f_NL = -0.9 +/- 5.1, the non-Gaussianity bound tested here",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1905.05697",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A2 linear-transmission module - the three bounce backgrounds and the adiabatic-vacuum scalar evolution with exact matter-basis projection, imported directly",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lab in-in adjudication of the matter-contraction f_NL at c_s = 1 (comoving-gauge isoceles squeezed limit -35/16), the c_s -> 1 cross-check target",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 10 - r = 16 epsilon = 24 at c_s = 1, bounce-invariant; the starting point of this row",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/row14_cs_window/row14_cs_window.py",
+        "entrypoint": "cd research/track_a3_multichannel/row14_cs_window && python3 row14_cs_window.py",
+        "sha256": "f3bc5214cd1f37d59e7f7422e35388e3a02259505d086ac7e6b5d39b882f13f0"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy + scipy + sympy + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "4.5 s (measured, field wall_seconds in results.json)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~6 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). r(c_s) is DERIVED symbolically from the c_s-dependent Mukhanov-Sasaki problem (z^2 = 2 a^2 eps/c_s^2, BD normalisation 1/sqrt(2 c_s k)) by two independent routes - the small-argument Hankel limit for general power-law index and the exact q = 2 mode functions - rather than imported from the inflationary formula. Li+2016's Eq. (4.19) shape function is transcribed once; both of its limits are taken symbolically here and checked against their quoted f_NL^equil and f_NL^local."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/row14_cs_window/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row14_cs_window/row14_cs_window.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row14_cs_window/row14_cs_window.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) analytic.r_dust_str == '16*c_s*epsilon' and analytic.r_exact_equals_16_eps_cs == true (two independent symbolic routes), reproducing Li+2016 Eq. (3.18) r = 24 c_s at eps = 3/2; (b) fnl_cs.f_NL_equilateral_matches_paper == true and fnl_cs.f_NL_squeezed_matches_paper == true (their Eq. 4.19 limits re-derived here), with fnl_cs.reproduces_lab_in_in_minus_35_over_16 == true; (c) numeric.*.max_abs_lambda_ratio_minus_1 <= 1e-10 and every numeric.*.rows[*].r_after_over_16epscs == 1.0, i.e. the bounce transfer is c_s-independent and r stays 16 eps c_s through all three A2 backgrounds; (d) window.cs_for_r_0.036 == 1.5e-3 with window.at_cs_for_r_0.036.f_NL_pre == 3.611e6 and f_NL_after (Quintin) == 5.959e5; (e) window.acceptable_fNL_requires.Planck_1sigma_5.1.min_c_s_per_background.quintin == 0.4440 with min_r == 10.66, so the gap between the two requirements is a factor ~296 in c_s; (f) window.no_go.verdict == 'NO VIABLE c_s WINDOW'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 14, promoted 2026-09-04 from row 10 by decision D-A3-10",
+      "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md (derivation, c_s table, no-go check, paper-ready sentences)",
+      "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md (r = 16 eps = 24 at c_s = 1, bounce-invariant)",
+      "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md (the lab's independent in-in -35/16 that Li+2016's c_s -> 1 limit reproduces exactly)",
+      "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the null is stated in its own terms as a limitation of the modelled background)",
+      "model-dependence disclosed: the general-c_s f_NL inherits Li+2016's k-essence kinetic sector; the lab's own in-in machinery is c_s = 1 only, and this lab's pressureless-dust / canonical-scalar contraction does not itself provide c_s < 1"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row15-curvaton",
+    "title": "Ledger row 15 - the curvaton-type matter bounce: whether a light spectator in the dust contraction gives r < 0.036 with n_s ~ 0.965 and an O(1) local f_NL, and what happens to the intrinsic -35/16 at that point",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Cai, Xue & Brandenberger 2011 - the matter bounce curvaton scenario: Eq. (18) spectator tilt, Eq. (58)/(61) r ~ 35 F^-2, Eq. (65) f_NL = -(5120/pi^6) d^2 C, Eq. (66) Case-1 f_NL ~ -3.3",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1101.0822",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lyth, Ungarelli & Wands 2003 - the primordial density perturbation in the curvaton scenario; zeta_sigma = (2/3) dsigma/sigma and the r_dec-dependent local f_NL",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/0208055",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Sasaki, Valiviita & Wands 2006 - non-Gaussianity of the curvaton: f_NL = 5/(4 r_dec) - 5/3 - 5 r_dec/6 with the non-quadratic corrections",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/0607627",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Bartolo, Komatsu, Matarrese & Riotto 2004 - non-Gaussianity from inflation: theory and observations (the f_NL^local convention zeta = zeta_L + (3/5) f_NL zeta_L^2 used here)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/astro-ph/0406398",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai, Easson & Brandenberger 2012 - towards a nonsingular bouncing cosmology; the matter bounce's large-r problem and its curvaton cure",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1206.2382",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Li, Quintin, Wang & Cai 2016 - matter bounce with a k-essence field; Eq. (4.19), the c_s-dependent f_NL used in row 14",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1612.02036",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Wands 1999 - duality invariance of cosmological perturbation spectra; the scale-invariant spectrum of a light field in a matter contraction",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/gr-qc/9809062",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL), the tensor bound tested here",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2110.00483",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2019 - local f_NL = -0.9 +/- 5.1, the non-Gaussianity bound tested here",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1905.05697",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A2 linear-transmission module - the three bounce backgrounds and the u'' + (k^2 - a''/a)u = 0 evolution, imported directly for the spectator's frozen-branch transfer",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 10 - r = 16 epsilon = 24 and n_s - 1 = 12w/(1+3w) on the w = -0.0029 anchor; the tensor amplitude and tilt this row reuses unchanged",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 14 - the c_s no-go and the A2 transfer values T = 0.165-0.250 quoted here",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row14_cs_window/results.json",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lab in-in adjudication of the matter-contraction f_NL (-35/16), the amplitude diluted by (r/24)^2 in this row",
+        "type": "internal-artifact",
+        "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Branch-W ALP-curvaton tilt program, phase 1 - the lab's existing curvaton work; its n_sigma - 1 sign is corrected here",
+        "type": "internal-artifact",
+        "locator": "research/branch_W_alp_curvaton_tilt/phase1_results.md",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/track_a3_multichannel/row15_curvaton/row15_curvaton.py",
+        "entrypoint": "cd research/track_a3_multichannel/row15_curvaton && python3 row15_curvaton.py",
+        "sha256": "aa493476e5936ea3f1d6f7723bb9ee516e83cdb074db52dcc951dbe3d2886a46"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy + scipy + sympy + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "~4 s (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~6 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). The spectator index nu = q - 1/2 and the tilt 12w/(1+3w) are DERIVED symbolically from the Mukhanov-Sasaki operator, not imported; the tracking-mass shift is expanded symbolically and is reported as 8m^2/(3H^2), a factor 4 above CXB11 Eq. (18)'s de Sitter value (sign unchanged). The curvaton power ratio, r(r_dec, sigma_*) and the (r/24)^2 dilution weight are symbolic. The A2 spectator transfer is a direct import of the same ODE used in rows 10 and 14."
+    },
+    "outputs": [
+      {
+        "locator": "research/track_a3_multichannel/row15_curvaton/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row15_curvaton/row15_curvaton.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row15_curvaton/row15_curvaton.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/track_a3_multichannel/row15_curvaton/ROW15_CURVATON_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) analytic.spectator_tilt_equals_adiabatic_tilt == true and analytic.ns_at_w_anchor == 0.9649, i.e. the curvaton inherits row 10's tilt exactly; (b) analytic.massive_shift_coeff_over_m2H2 == 8/3 (vs CXB11 Eq. 18's 2/3), sign positive => a curvaton mass tilts BLUE; (c) power_ratio.r_of_rdec_sigma_str == '216*sigma_star**2/(12*r_dec**2 + 9*sigma_star**2)' and power_ratio.F_needed_CXB_Eq61['r<0.036'] == 25.8199; (d) fnl.f_NL_at_rdec_1 == -1.25, fnl.sign_change_r_dec == 0.5811, fnl.rdec_min_Planck_2sigma == 0.1130; (e) fnl.bounce_term_at_r_0.036 is order 1e-6 on all three backgrounds and observability.r_max_for_bounce_term_above_SPHEREx_0.5 == 22.95; (f) cxb11.f_NL_case1_value == -3.2851 (= -320/pi^4, their quoted -3.3); (g) transmission.frozen_branch_check LQC/quintin T_c -> 1 as u_out decreases.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 15, promoted 2026-09-04 by decision D-A3-11",
+      "research/track_a3_multichannel/row15_curvaton/ROW15_CURVATON_2026-09-04.md (derivation, viable-window table, verdict, paper-ready sentences)",
+      "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md (the c_s no-go this row is the alternative to)",
+      "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md (r = 24, n_s anchor, nHz tensor amplitude rescaled here)",
+      "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the partial result is stated in its own terms)",
+      "model-dependence disclosed: CXB11's kinetic-amplification factor F is an assumption of their entropy sector and is NOT computed here - the A2 backgrounds carry no entropy field; the LUW/SVW f_NL is the exact-quadratic branch"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row15-curvaton-adjudication",
+    "title": "Row 15 adjudication: independent sympy re-derivation of the curvaton-type matter bounce claims (CXB11 Eq. 18 coefficient and Case-1 f_NL, branch-W tilt sign, spectator MS operator and tilt, two-channel r, delta-N curvaton f_NL, adiabatic-bispectrum dilution)",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "row-15 lane under adjudication",
+        "locator": "research/track_a3_multichannel/row15_curvaton/ (ROW15_CURVATON_2026-09-04.md, results.json, row15_curvaton.py)",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "branch-W ALP-curvaton tilt note",
+        "locator": "research/branch_W_alp_curvaton_tilt/03_tilt_mechanisms.md ; 04_dynamical_screening.md ; phase1_results.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "Cai, Xue & Brandenberger 2011 (source)",
+        "locator": "https://arxiv.org/abs/1101.0822",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai, Easson & Brandenberger 2012 (source)",
+        "locator": "https://arxiv.org/abs/1206.2382",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lyth, Ungarelli & Wands 2003",
+        "locator": "https://arxiv.org/abs/astro-ph/0208055",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Sasaki, Valiviita & Wands 2006",
+        "locator": "https://arxiv.org/abs/astro-ph/0607627",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.py",
+        "entrypoint": "python3 research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.py",
+        "sha256": "2db10d9a7fe967a29b67d5c8e7bb09c860c9c36f3533559f83241b8151e588df"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on sympy 1.14.0), numpy, scipy",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-04",
+      "wall_clock": "2 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 1 minute",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic sympy plus a small scipy DOP853 mode integration (first-order WKB vacuum). Self-validates: de Sitter massive-spectator tilt 2m^2/(3H^2) recovered before the contraction case; the integrator reproduces the exact tracking-mass Bessel tilt 2*gamma/3 to <=3%; the delta-N sudden-decay f_NL reproduces SVW06 exactly; CXB11 Eq. 65 is reproduced from their Eqs. 55/60/64. No network at run time."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/theory_audit/curvaton_matter_bounce_adjudication_2026_09_04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required exact values: validation_de_sitter.matches_textbook_2m2_over_3H2 == true; C_spectator_tilt.equals_12w_over_1p3w == true and same_MS_operator_as_adiabatic_for_const_eps == true; A_massive_spectator_dust.tilt_tracking_mass == '8*m**2/(3*H**2)' and coefficient_ratio_contraction_over_deSitter == '4'; D_r_formula.P_curv_over_P_ad_dust == '4*M_pl**2*r_dec**2/(3*sigma_star**2)' and x_threshold_for_r_lt_0.036 == 22.34 (2 dp); E_curvaton_fNL.deltaN_matches_SVW == true and zero_crossing_exact == '-1 + sqrt(10)/2'; F_dilution.adiabatic_weight_of_r == 'r**2/576'; A_CXB11_case1.case1_symbolic == '-320/pi**4'; B_massive_numeric.tracking_mass_validation within 3% of exact.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 15 (curvaton-type matter bounce) — adjudication of the lane's two literature corrections and central claims before the A3M paper may rely on them",
+      "directive R (vision governance) and directive Q2 (reproducibility manifests); /never-fabricate-derivation",
+      "input 'row-15 lane under adjudication' used for: the six claims A-F and their stated assumptions; its numbers compared only AFTER independent computation",
+      "input 'branch-W ALP-curvaton tilt note' used for: item B, locating the erring step (n-1 written as 2nu-3)",
+      "input 'Cai, Xue & Brandenberger 2011 (source)' used for: Eqs. 10-19 (spectator equation, Eq. 18 tilt, Eq. 19), Eq. 32 (C), Eqs. 55/60/61/64-67 (amplitudes, r, f_NL)",
+      "input 'Cai, Easson & Brandenberger 2012 (source)' used for: checked for an independent curvaton section — none (only a mention of the bounce curvaton); recorded as such",
+      "input 'Lyth, Ungarelli & Wands 2003' used for: Phi = -(3/5) zeta = -(r/5) delta rho_sigma/rho_sigma, f_NL = 5/(4r) leading term; zeta_curv = r_dec (2/3) delta sigma/sigma_*",
+      "input 'Sasaki, Valiviita & Wands 2006' used for: sudden-decay f_NL = (5/4r)(1+gg''/g'^2) - 5/3 - 5r/6, used as a VALIDATION target of the independent delta-N derivation"
     ]
   },
   {
@@ -2796,7 +3617,7 @@ export const reproExperiments: ReproExperiment[] = [
       "est_cost_usd": 0,
       "parallelizable": true,
       "resume_support": false,
-      "notes": "Requires the step-1 sanity-check files (ledger4-desi-dr1-lss-sanity manifest) plus randoms realisations 1-3 per cap (re-fetch from the DESI URL, sha256s in venv_setup/qso_randoms_1-3_sha256.txt). CLASS/pyclass fails to build in this environment (ValueError: could not build CLASS) -- cosmoprimo falls back to the eisenstein_hu transfer engine, a documented fidelity limitation vs the published CLASS-based pipeline. Run order: pk_estimator_qso.py NGC, pk_estimator_qso.py SGC, combine_and_compare.py, fit_fnl.py, systest_weight_sys.py, systest_fit.py."
+      "notes": "Requires the step-1 sanity-check files (ledger4-desi-dr1-lss-sanity manifest) plus randoms realisations 1-3 per cap (re-fetch from the DESI URL, sha256s in venv_setup/qso_randoms_1-3_sha256.txt). CLASS/pyclass fails to build in this environment (ValueError: could not build CLASS) -- cosmoprimo falls back to the eisenstein_hu transfer engine, a documented fidelity limitation vs the published CLASS-based pipeline. Run order: pk_estimator_qso.py NGC, pk_estimator_qso.py SGC, combine_and_compare.py, fit_fnl.py, systest_weight_sys.py, systest_fit.py.\nAddenda: [{\"id\": \"v3-official-products-2026-09-04\", \"note\": \"RunPod pod p8vj377enumve4 (RTX A6000) created, never reachable, stopped+terminated, $0 compute cost. Substituted official DESI DR1 full-shape-bao-clustering v1.0 VAC products (window matrix, full-18-randoms measured P_ell, EZmock covariance for QSO GCcomb z0.8-2.1) downloaded from data.desi.lbl.gov -- see research/desi_png_reproduction/official_products_sha256.txt for checksums and LEDGER4_RESULT_v3_2026-09-04.md for the full result.\", \"code\": [\"research/desi_png_reproduction/official_window_io.py\", \"research/desi_png_reproduction/fit_fnl_official.py\"], \"result\": \"f_NL(p=1.6)=-2.17+/-25.3, f_NL(p=1.0)=-1.13+/-13.1, marginalised(midpoint)=-1.65+/-19.2\", \"cost_usd\": 0.0}]"
     },
     "outputs": [
       {
@@ -7825,6 +8646,192 @@ export const reproExperiments: ReproExperiment[] = [
       "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 09_systematics.py maps to this analysis.",
       "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
       "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "row11c-threading-map-second-order",
+    "title": "Row 11(c): second-order threading map from Maldacena's comoving zeta to the zero-shift (fluid-congruence) delta N_c in a non-attractor contraction; mechanism behind the delta N = -5 vs in-in -15/8 monopole gap",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "lab monopole adjudication (2026-09-03)",
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab monopole adjudication script (conventions)",
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
+        "type": "internal-artifact",
+        "checksum": "sha256:058447db00cb61978e05dd0503983ebbe29a558abfd94ad5270fd87e5c3880aa"
+      },
+      {
+        "name": "Maldacena 2003",
+        "locator": "https://arxiv.org/abs/astro-ph/0210603",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Namjoo, Firouzjahi & Sasaki 2012",
+        "locator": "https://arxiv.org/abs/1210.3692",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lyth, Malik & Sasaki 2005",
+        "locator": "https://arxiv.org/abs/astro-ph/0411220",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/threading_map_second_order_2026_09_04.py",
+        "entrypoint": "python3 research/theory_audit/threading_map_second_order_2026_09_04.py",
+        "sha256": "b0c934158add4ddedb40f042a26e2f430b77849f301e86b93f0f76f3637c7fbf"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-04",
+      "wall_clock": "~3 min (second-order constraint solve ~105 s; rest ~50 s)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 5 minutes",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully deterministic exact sympy. No network access. Self-validating: background + first-order ADM constraints satisfied identically by alpha = zetadot/H, psi = -zeta/H + chi (all k); second-order lapse/shift solved from the exact constraints; 1/k_L poles asserted to cancel in the bispectrum; linear threading factor 1 - eps/3 recovered from the exact identity; monopole -5 for both labels and isotropy for the initial-position label asserted for general constant eps; adjudication general-eps in-in monopole reproduced by inversion; eps -> 0 kills every cross kernel; attractor (m = 0) map is the identity. Optional env THREADING_CACHE=<file> caches the slow constraint solve between dev runs (not used for the committed result)."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json",
+        "type": "result-json",
+        "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"
+      },
+      {
+        "locator": "research/theory_audit/threading_map_second_order_2026_09_04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required exact values: linear_threading_factor == '3 - epsilon' up to the factor 1/3 (printed '-(epsilon - 3)/3'); kernels_growing_mode.zlap == '2*epsilon/3'; map_fNL_pieces.total_final_label == {const '-5*epsilon/4', mu2 '5*epsilon/4', monopole '-5*epsilon/6'}; prediction.initial_label == {const '-5', mu2 '0', monopole '-5'}; prediction.final_label.const_eps_3_2 == '-25/4', mu2_eps_3_2 == '15/4'; map_fNL_pieces.pure_translation_init.monopole == '0'; five_eps_over_4_matches_a_map_term == []; gap_decomposition_inin_minus_dNc.sum == '5*epsilon*(9 - epsilon)/18'; attractor_limit.div_cross == '0'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 11(c): 'derive the second-order threading map (Fable-tier)'; acceptance 'mechanism derived or stated as an identity'",
+      "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md VERDICT and §4: the '(5/12)(3 eps)' identity recorded as 'a computed identity, not a claimed mechanism'",
+      "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+      "input 'lab monopole adjudication (2026-09-03)' used for: the open item; the comparison values f(mu,eps) = (5/12)(eps^2 mu^2 - eps^2 + 6 eps - 12), monopole -5(eps-3)(eps-6)/18, delta N_c = -5, and the [L]/[X] class values — used only AFTER the map kernels were computed and printed",
+      "input 'Maldacena 2003' used for: comoving-gauge ADM variables and the first-order constraint solution (re-verified here, not transcribed)",
+      "input 'Namjoo, Firouzjahi & Sasaki 2012' used for: the USR benchmark statement (structural limit only; 5/2 not re-derived here)",
+      "input 'Lyth, Malik & Sasaki 2005' used for: the gradient-expansion delta N = zeta argument whose shift assumption fails at O(1/k_L)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "row13-image-level-injection-pilot",
+    "title": "Row 13 PILOT — image-level end-to-end parity-injection test for the galaxy-spin classifier vs the existing label-level injection-recovery curve\ndescription: Status detail: pilot complete, inconclusive (raw single-pass model, N=500); real follow-up at scale through the equivariant pipeline queued (row 13).",
+    "program": "galaxy-chirality",
+    "paper": "P4P",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "bamfai/galaxy-chirality-catalog (catalog_production.parquet)",
+        "type": "external-dataset",
+        "locator": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+        "checksum": null
+      },
+      {
+        "name": "bamfai/galaxy-chirality-v2 checkpoint",
+        "type": "model",
+        "locator": "chirality_model_v2_best.pt, revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+        "checksum": null
+      },
+      {
+        "name": "Legacy Survey DR9 JPEG cutouts (500 real galaxies)",
+        "type": "external-dataset",
+        "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=..&dec=..&size=150&layer=ls-dr9",
+        "checksum": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "huggingface_hub.hf_hub_download",
+        "endpoint": "https://huggingface.co",
+        "auth_required": true
+      },
+      {
+        "name": "legacysurvey.org jpeg-cutout service",
+        "endpoint": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/fetch_pilot_sample.py",
+        "entrypoint": "python3 fetch_pilot_sample.py",
+        "sha256": "2cca334ac0f8ebb583a519bf67ef051aff8dc154aa8d283f986b4d17ed063add"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/run_injection_pilot.py",
+        "entrypoint": "python3 run_injection_pilot.py",
+        "sha256": "a4cb29e0835fce233fd3b9c8cb981916e1cb13c0e71b01c7b995dd043590b670"
+      }
+    ],
+    "environment": {
+      "python": "python3 + torch 2.13.0 + timm 1.0.28 + PIL + healpy + pandas + huggingface_hub",
+      "hardware": "cpu-only; Apple M-series, macOS arm64 (RunPod authorized but not used — local run completed in ~6.5 min wall-clock)"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation",
+      "date": "2026-09-04",
+      "wall_clock": "~6.5 min (500 cutout downloads + 2500 raw single-pass classifier forward passes on CPU)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local for N<=1000; RunPod GPU for N in thousands-tens-of-thousands",
+      "est_wall_clock": "~6.5 min for this N=500 reduced pilot; hours for the declared 10k spec on CPU, tens of minutes on GPU",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Cutout downloads are network-bound and can be parallelized; classifier forward passes are the compute-bound step. Re-running with SEED=42 reproduces the same sky-uniform sample and flip-set draws given unchanged catalog snapshot."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/pilot_sample_manifest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/injection_pilot_results.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Manual inspection of injection_pilot_results.json: 500/500 cutouts downloaded successfully, class order (CW=0/CCW=1/NOT_SPIRAL=2) confirmed against run_v2_inference.py/run_eq_dataloader.py/equivariant_postprocess.py before use. Result found INCONCLUSIVE and disclosed as such: (1) this pilot ran the raw single-pass classifier, not the production equivariant D4-averaged pipeline the paper's headline numbers use, so the f=0 baseline (A=-0.396) is far from the paper's post-equivariant residual bias (-0.0026); (2) N=500 with 2-25 flipped images per fraction is underpowered to resolve sub-percent-to-few-percent injected signals against per-image classification noise — ??A does not track f_injected monotonically. No claim of a recovered dipole or a validated comparison to the label-level curve is made; the gap (need equivariant-pass + N in thousands+) is the actionable finding.",
+    "status": "runnable-now",
+    "provenance": [
+      "Task: ledger row 13 PILOT (2026-09-04)",
+      "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (label-level baseline being compared against)",
+      "pipelines/p2_chirality/equivariant_postprocess.py (production pipeline this pilot did NOT replicate — flagged as the needed next step)",
+      "project-context/SSOT/paper-4p/status.md (A_95^obs≈0.98% context)"
     ]
   }
 ];
