@@ -1,0 +1,408 @@
+{
+  "task": "NEXT_SCIENCE_LEDGER row 14 -- the c_s window in (r, f_NL) for the matter-dominated contraction",
+  "date": "2026-09-04",
+  "analytic": {
+    "r_general_power_law": "Mul(Integer(16), Pow(Symbol('c_s', positive=True), Add(Mul(Integer(2), Symbol('q', positive=True)), Integer(-3))), Symbol('epsilon', positive=True))",
+    "r_general_str": "16*c_s**(2*q - 3)*epsilon",
+    "nu_of_q": "nu = q - 1/2, q = 2/(1+3w)",
+    "r_dust_str": "16*c_s*epsilon",
+    "r_exact_modefn_str": "16*c_s*epsilon",
+    "r_dust_equals_16_eps_cs": true,
+    "r_exact_equals_16_eps_cs": true,
+    "ns_minus_1_str": "12*w/(3*w + 1)",
+    "tensor_c_s_independent": true,
+    "note": "the tensor sector has c_T = 1 and no c_s; the whole c_s dependence of r enters through z^2 = 2 a^2 eps / c_s^2 and the BD factor 1/sqrt(2 c_s k)."
+  },
+  "numeric": {
+    "poly": {
+      "label": "poly-analytic-nonLQC",
+      "eta_B": 0.5773502794521735,
+      "k": 0.017320507767812344,
+      "T_fNL_at_cs1": 0.1955011060855527,
+      "rows": [
+        {
+          "c_s": 1.0,
+          "k_etaB_scalar": 0.01,
+          "T_fNL_scalar": 0.1955011060855527,
+          "lambda_scalar": 5.1150605744404585,
+          "lambda_tensor": 5.1150605744404585,
+          "lambda_ratio_minus_1": 0.0,
+          "r_before": 24.0,
+          "r_after": 24.0,
+          "r_after_over_16epscs": 1.0
+        },
+        {
+          "c_s": 0.1,
+          "k_etaB_scalar": 0.001,
+          "T_fNL_scalar": 0.19550110608544408,
+          "lambda_scalar": 5.115060574455002,
+          "lambda_tensor": 5.1150605744404585,
+          "lambda_ratio_minus_1": 5.577760475716786e-13,
+          "r_before": 2.4000000000000004,
+          "r_after": 2.399999999980883,
+          "r_after_over_16epscs": 0.9999999999920346
+        },
+        {
+          "c_s": 0.01,
+          "k_etaB_scalar": 0.0001,
+          "T_fNL_scalar": 0.19550110608544405,
+          "lambda_scalar": 5.115060574455003,
+          "lambda_tensor": 5.1150605744404585,
+          "lambda_ratio_minus_1": 5.557776461273534e-13,
+          "r_before": 0.24,
+          "r_after": 0.23999999999808608,
+          "r_after_over_16epscs": 0.9999999999920254
+        },
+        {
+          "c_s": 0.0015,
+          "k_etaB_scalar": 1.5e-05,
+          "T_fNL_scalar": 0.19550110608544405,
+          "lambda_scalar": 5.115060574455003,
+          "lambda_tensor": 5.1150605744404585,
+          "lambda_ratio_minus_1": 5.557776461273534e-13,
+          "r_before": 0.036000000000000004,
+          "r_after": 0.035999999999712914,
+          "r_after_over_16epscs": 0.9999999999920253
+        },
+        {
+          "c_s": 0.0001,
+          "k_etaB_scalar": 1.0000000000000002e-06,
+          "T_fNL_scalar": 0.19550110608544405,
+          "lambda_scalar": 5.115060574455003,
+          "lambda_tensor": 5.1150605744404585,
+          "lambda_ratio_minus_1": 5.557776461273534e-13,
+          "r_before": 0.0024000000000000002,
+          "r_after": 0.002399999999980861,
+          "r_after_over_16epscs": 0.9999999999920254
+        }
+      ],
+      "max_abs_lambda_ratio_minus_1": 5.577760475716786e-13
+    },
+    "LQC": {
+      "label": "LQC-effective-dust",
+      "eta_B": 1.0601459575428231,
+      "k": 0.009432663426060429,
+      "T_fNL_at_cs1": 0.24999984088268537,
+      "rows": [
+        {
+          "c_s": 1.0,
+          "k_etaB_scalar": 0.01,
+          "T_fNL_scalar": 0.24999984088268537,
+          "lambda_scalar": 4.000002545385354,
+          "lambda_tensor": 4.000002545385354,
+          "lambda_ratio_minus_1": 0.0,
+          "r_before": 24.0,
+          "r_after": 24.0,
+          "r_after_over_16epscs": 1.0
+        },
+        {
+          "c_s": 0.1,
+          "k_etaB_scalar": 0.001,
+          "T_fNL_scalar": 0.24999984087240826,
+          "lambda_scalar": 4.000002546043088,
+          "lambda_tensor": 4.000002545385354,
+          "lambda_ratio_minus_1": 4.123168473313399e-11,
+          "r_before": 2.4000000000000004,
+          "r_after": 2.3999999989159218,
+          "r_after_over_16epscs": 0.9999999995483007
+        },
+        {
+          "c_s": 0.01,
+          "k_etaB_scalar": 0.0001,
+          "T_fNL_scalar": 0.24999984087240826,
+          "lambda_scalar": 4.000002546043088,
+          "lambda_tensor": 4.000002545385354,
+          "lambda_ratio_minus_1": 4.110867202200552e-11,
+          "r_before": 0.24,
+          "r_after": 0.23999999989147408,
+          "r_after_over_16epscs": 0.9999999995478087
+        },
+        {
+          "c_s": 0.0015,
+          "k_etaB_scalar": 1.5e-05,
+          "T_fNL_scalar": 0.2499998408724083,
+          "lambda_scalar": 4.0000025460430875,
+          "lambda_tensor": 4.000002545385354,
+          "lambda_ratio_minus_1": 4.110822793279567e-11,
+          "r_before": 0.036000000000000004,
+          "r_after": 0.03599999998372111,
+          "r_after_over_16epscs": 0.9999999995478085
+        },
+        {
+          "c_s": 0.0001,
+          "k_etaB_scalar": 1.0000000000000002e-06,
+          "T_fNL_scalar": 0.2499998408724083,
+          "lambda_scalar": 4.0000025460430875,
+          "lambda_tensor": 4.000002545385354,
+          "lambda_ratio_minus_1": 4.110822793279567e-11,
+          "r_before": 0.0024000000000000002,
+          "r_after": 0.0023999999989147407,
+          "r_after_over_16epscs": 0.9999999995478086
+        }
+      ],
+      "max_abs_lambda_ratio_minus_1": 4.123168473313399e-11
+    },
+    "quintin": {
+      "label": "Quintin2015-type",
+      "eta_B": 0.4496009146522358,
+      "k": 0.022241947634236807,
+      "T_fNL_at_cs1": 0.16500538338212953,
+      "rows": [
+        {
+          "c_s": 1.0,
+          "k_etaB_scalar": 0.01,
+          "T_fNL_scalar": 0.16500538338212953,
+          "lambda_scalar": 6.060408330252349,
+          "lambda_tensor": 6.060408330252349,
+          "lambda_ratio_minus_1": 0.0,
+          "r_before": 24.0,
+          "r_after": 24.0,
+          "r_after_over_16epscs": 1.0
+        },
+        {
+          "c_s": 0.1,
+          "k_etaB_scalar": 0.001,
+          "T_fNL_scalar": 0.16500538338165804,
+          "lambda_scalar": 6.060408330357298,
+          "lambda_tensor": 6.060408330252349,
+          "lambda_ratio_minus_1": 2.87214696470528e-12,
+          "r_before": 2.4000000000000004,
+          "r_after": 2.399999999882314,
+          "r_after_over_16epscs": 0.9999999999509641
+        },
+        {
+          "c_s": 0.01,
+          "k_etaB_scalar": 0.0001,
+          "T_fNL_scalar": 0.1650053833816581,
+          "lambda_scalar": 6.060408330357295,
+          "lambda_tensor": 6.060408330252349,
+          "lambda_ratio_minus_1": 2.857047931570378e-12,
+          "r_before": 0.24,
+          "r_after": 0.23999999998821764,
+          "r_after_over_16epscs": 0.9999999999509069
+        },
+        {
+          "c_s": 0.0015,
+          "k_etaB_scalar": 1.5e-05,
+          "T_fNL_scalar": 0.16500538338165802,
+          "lambda_scalar": 6.060408330357299,
+          "lambda_tensor": 6.060408330252349,
+          "lambda_ratio_minus_1": 2.857714065385153e-12,
+          "r_before": 0.036000000000000004,
+          "r_after": 0.03599999999823261,
+          "r_after_over_16epscs": 0.9999999999509058
+        },
+        {
+          "c_s": 0.0001,
+          "k_etaB_scalar": 1.0000000000000002e-06,
+          "T_fNL_scalar": 0.16500538338165807,
+          "lambda_scalar": 6.060408330357297,
+          "lambda_tensor": 6.060408330252349,
+          "lambda_ratio_minus_1": 2.857492020780228e-12,
+          "r_before": 0.0024000000000000002,
+          "r_after": 0.0023999999998821756,
+          "r_after_over_16epscs": 0.9999999999509064
+        }
+      ],
+      "max_abs_lambda_ratio_minus_1": 2.87214696470528e-12
+    }
+  },
+  "transfer_used": {
+    "poly": 0.1955011060855527,
+    "LQC": 0.24999984088268537,
+    "quintin": 0.16500538338212953
+  },
+  "fnl_cs": {
+    "source": "Li, Quintin, Wang & Cai 2016 (arXiv:1612.02036) Eq. (4.19); f_NL = (10/3) A_tot / sum_i k_i^3 (their Eq. 4.20)",
+    "f_NL_equilateral_derived": "5*(9*c_s**4 - 268*c_s**2 + 208)/(128*c_s**2)",
+    "f_NL_equilateral_matches_paper": true,
+    "f_NL_squeezed_isoceles_derived": "-165/16 + 65/(8*c_s**2)",
+    "f_NL_squeezed_matches_paper": true,
+    "f_NL_squeezed_at_cs1": "-35/16",
+    "reproduces_lab_in_in_minus_35_over_16": true,
+    "f_NL_equilateral_at_cs1": "-255/128",
+    "leading_small_cs": "f_NL -> 65/(8 c_s^2) for both shapes (identical coefficient)"
+  },
+  "window": {
+    "cs_for_r_0.036": 0.0014999999999999998,
+    "cs_for_r_0.01": 0.0004166666666666667,
+    "table": [
+      {
+        "c_s": 1.0,
+        "r": 24.0,
+        "r_over_CMB_bound": 666.6666666666667,
+        "f_NL_pre": -2.1875,
+        "f_NL_after_poly": -0.42765866956214654,
+        "f_NL_after_LQC": -0.5468746519308743,
+        "f_NL_after_quintin": -0.3609492761484083
+      },
+      {
+        "c_s": 0.5,
+        "r": 12.0,
+        "r_over_CMB_bound": 333.33333333333337,
+        "f_NL_pre": 22.1875,
+        "f_NL_after_poly": 4.3376807912732005,
+        "f_NL_after_LQC": 5.546871469584581,
+        "f_NL_after_quintin": 3.661056943790999
+      },
+      {
+        "c_s": 0.1,
+        "r": 2.4000000000000004,
+        "r_over_CMB_bound": 66.66666666666669,
+        "f_NL_pre": 802.1874999999999,
+        "f_NL_after_poly": 156.82854353800428,
+        "f_NL_after_LQC": 200.54674735807913,
+        "f_NL_after_quintin": 132.36525598185202
+      },
+      {
+        "c_s": 0.01,
+        "r": 0.24,
+        "r_over_CMB_bound": 6.666666666666667,
+        "f_NL_pre": 81239.6875,
+        "f_NL_after_poly": 15882.44876429465,
+        "f_NL_after_LQC": 20309.908948359083,
+        "f_NL_after_quintin": 13404.985781781896
+      },
+      {
+        "c_s": 0.0014999999999999998,
+        "r": 0.036,
+        "r_over_CMB_bound": 1.0,
+        "f_NL_pre": 3611100.7986111115,
+        "f_NL_after_poly": 705974.200314895,
+        "f_NL_after_LQC": 902774.625064116,
+        "f_NL_after_quintin": 595851.0717063405
+      },
+      {
+        "c_s": 0.001,
+        "r": 0.024,
+        "r_over_CMB_bound": 0.6666666666666667,
+        "f_NL_pre": 8124989.6875,
+        "f_NL_after_poly": 1588444.4708399593,
+        "f_NL_after_LQC": 2031246.1290484595,
+        "f_NL_after_quintin": 1340667.0383617864
+      },
+      {
+        "c_s": 0.0004166666666666667,
+        "r": 0.01,
+        "r_over_CMB_bound": 0.2777777777777778,
+        "f_NL_pre": 46799989.68749999,
+        "f_NL_after_poly": 9149449.74869871,
+        "f_NL_after_LQC": 11699989.975186314,
+        "f_NL_after_quintin": 7722250.240665644
+      },
+      {
+        "c_s": 0.0001,
+        "r": 0.0024000000000000002,
+        "r_over_CMB_bound": 0.06666666666666668,
+        "f_NL_pre": 812499989.6875,
+        "f_NL_after_poly": 158844646.67840642,
+        "f_NL_after_LQC": 203124868.1390585,
+        "f_NL_after_quintin": 134066872.29636222
+      }
+    ],
+    "at_cs_for_r_0.036": {
+      "c_s": 0.0014999999999999998,
+      "r": 0.036,
+      "f_NL_pre": 3611100.7986111115,
+      "f_NL_after": {
+        "poly": 705974.200314895,
+        "LQC": 902774.625064116,
+        "quintin": 595851.0717063405
+      },
+      "sigma_vs_Planck": {
+        "poly": 138426.49025782256,
+        "LQC": 177014.80883610118,
+        "quintin": 116833.71994241973
+      },
+      "sigma_vs_SPHEREx_0.5": {
+        "poly": 1411948.40062979,
+        "LQC": 1805549.250128232,
+        "quintin": 1191702.143412681
+      }
+    },
+    "acceptable_fNL_requires": {
+      "Planck_1sigma_5.1": {
+        "min_c_s_per_background": {
+          "poly": 0.47246007621584013,
+          "LQC": 0.51434439115183,
+          "quintin": 0.4439710199189484
+        },
+        "min_r_per_background": {
+          "poly": 11.339041829180163,
+          "LQC": 12.344265387643919,
+          "quintin": 10.655304478054761
+        },
+        "gap_factor_in_c_s_vs_r_bound": {
+          "poly": 314.97338414389344,
+          "LQC": 342.8962607678867,
+          "quintin": 295.9806799459656
+        }
+      },
+      "Planck_2sigma_10.2": {
+        "min_c_s_per_background": {
+          "poly": 0.36059517643385636,
+          "LQC": 0.39870163141591963,
+          "quintin": 0.3356276544655699
+        },
+        "min_r_per_background": {
+          "poly": 8.654284234412552,
+          "LQC": 9.568839153982072,
+          "quintin": 8.055063707173678
+        },
+        "gap_factor_in_c_s_vs_r_bound": {
+          "poly": 240.3967842892376,
+          "LQC": 265.80108761061314,
+          "quintin": 223.75176964371332
+        }
+      },
+      "SPHEREx_sigma_0.5": {
+        "min_c_s_per_background": {
+          "poly": 0.7945512227886401,
+          "LQC": 0.812341313077912,
+          "quintin": 0.7803505779377029
+        },
+        "min_r_per_background": {
+          "poly": 19.06922934692736,
+          "LQC": 19.49619151386989,
+          "quintin": 18.72841387050487
+        },
+        "gap_factor_in_c_s_vs_r_bound": {
+          "poly": 529.7008151924268,
+          "LQC": 541.5608753852747,
+          "quintin": 520.2337186251353
+        }
+      },
+      "SPHEREx_sigma_0.7": {
+        "min_c_s_per_background": {
+          "poly": 0.764738586920604,
+          "LQC": 0.7871706714706759,
+          "quintin": 0.7471516762934157
+        },
+        "min_r_per_background": {
+          "poly": 18.353726086094497,
+          "LQC": 18.89209611529622,
+          "quintin": 17.93164023104198
+        },
+        "gap_factor_in_c_s_vs_r_bound": {
+          "poly": 509.8257246137361,
+          "LQC": 524.7804476471173,
+          "quintin": 498.10111752894386
+        }
+      }
+    },
+    "no_go": {
+      "statement": "the two requirements are disjoint: r < 0.036 needs c_s < 1.5e-3, |f_NL^after| < 5.1 needs c_s > 0.44 -- a gap of ~300 in c_s",
+      "verdict": "NO VIABLE c_s WINDOW"
+    },
+    "scalar_amplification_alternative": {
+      "lambda_needed_for_r_0.036_from_24": 25.819888974716115,
+      "lambda_available_A2_backgrounds": {
+        "poly": 5.115,
+        "LQC": 4.0,
+        "quintin": 6.06
+      },
+      "note": "row 10 showed the A2 bounces amplify tensors and scalars IDENTICALLY (T_h/T_zeta - 1 <= 8e-5), so they supply NO r suppression at all; Quintin et al. 2015 Eq. (31) require |Delta zeta / zeta| >~ 49.1 from a scalar-only mechanism, and their Eq. (44) f_NL ~ (Delta zeta)^2/(Delta t_B) M_p^2 is why that route carries its own f_NL cost."
+    }
+  },
+  "wall_seconds": 4.529443264007568
+}

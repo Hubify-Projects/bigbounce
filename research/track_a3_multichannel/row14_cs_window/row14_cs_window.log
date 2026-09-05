@@ -1,0 +1,39 @@
+==============================================================================
+ROW 14 -- the (r, f_NL) c_s window of the matter-dominated contraction
+==============================================================================
+[A] analytic r(c_s) ...
+    r_general_str: 16*c_s**(2*q - 3)*epsilon
+    nu_of_q: nu = q - 1/2, q = 2/(1+3w)
+    r_dust_str: 16*c_s*epsilon
+    r_exact_modefn_str: 16*c_s*epsilon
+    r_dust_equals_16_eps_cs: True
+    r_exact_equals_16_eps_cs: True
+    ns_minus_1_str: 12*w/(3*w + 1)
+    tensor_c_s_independent: True
+    note: the tensor sector has c_T = 1 and no c_s; the whole c_s dependence of r enters through z^2 = 2 a^2 eps / c_s^2 and the BD factor 1/sqrt(2 c_s k).
+[B] numeric r and bounce transfer ...
+    poly     T_fNL=0.19550111 max|lam_S/lam_T-1|=5.58e-13 r_after/16 eps c_s in [1.00000000, 1.00000000]
+    LQC      T_fNL=0.24999984 max|lam_S/lam_T-1|=4.12e-11 r_after/16 eps c_s in [1.00000000, 1.00000000]
+    quintin  T_fNL=0.16500538 max|lam_S/lam_T-1|=2.87e-12 r_after/16 eps c_s in [1.00000000, 1.00000000]
+[C] f_NL(c_s) from Li+2016 Eq. (4.19), limits re-derived here ...
+    source: Li, Quintin, Wang & Cai 2016 (arXiv:1612.02036) Eq. (4.19); f_NL = (10/3) A_tot / sum_i k_i^3 (their Eq. 4.20)
+    f_NL_equilateral_derived: 5*(9*c_s**4 - 268*c_s**2 + 208)/(128*c_s**2)
+    f_NL_equilateral_matches_paper: True
+    f_NL_squeezed_isoceles_derived: -165/16 + 65/(8*c_s**2)
+    f_NL_squeezed_matches_paper: True
+    f_NL_squeezed_at_cs1: -35/16
+    reproduces_lab_in_in_minus_35_over_16: True
+    f_NL_equilateral_at_cs1: -255/128
+    leading_small_cs: f_NL -> 65/(8 c_s^2) for both shapes (identical coefficient)
+[D] window + observational comparison ...
+    c_s=1.000e+00  r=2.4000e+01  f_NL^pre=-2.1875e+00  f_NL^after(quintin)=-3.6095e-01
+    c_s=5.000e-01  r=1.2000e+01  f_NL^pre=2.2188e+01  f_NL^after(quintin)=3.6611e+00
+    c_s=1.000e-01  r=2.4000e+00  f_NL^pre=8.0219e+02  f_NL^after(quintin)=1.3237e+02
+    c_s=1.000e-02  r=2.4000e-01  f_NL^pre=8.1240e+04  f_NL^after(quintin)=1.3405e+04
+    c_s=1.500e-03  r=3.6000e-02  f_NL^pre=3.6111e+06  f_NL^after(quintin)=5.9585e+05
+    c_s=1.000e-03  r=2.4000e-02  f_NL^pre=8.1250e+06  f_NL^after(quintin)=1.3407e+06
+    c_s=4.167e-04  r=1.0000e-02  f_NL^pre=4.6800e+07  f_NL^after(quintin)=7.7223e+06
+    c_s=1.000e-04  r=2.4000e-03  f_NL^pre=8.1250e+08  f_NL^after(quintin)=1.3407e+08
+    c_s for r=0.036: 1.5000e-03
+    VERDICT: NO VIABLE c_s WINDOW
+[done] 4.53 s
