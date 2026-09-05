@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.21}
+\newcommand{\paperVersion}{v3M.0.22}
 \newcommand{\paperTimestamp}{September 5, 2026}
 
 \begin{document}
@@ -327,9 +327,11 @@ disagreeing predictions of the same one. This equation-level closure is
 established for the comoving-slice $\delta N$ value ($-5$) only: a direct
 second-order continuation of the uniform-density variable itself gives
 $f_{\rm NL}^\rho=-5/2$ at dust, which does not reproduce $-55/16$ quoted above
-(gap $15/16$); the residual is attributed to an intrinsic initial-data
-bispectrum omitted from that $\delta N$ integration (Appendix~\ref{app:bianchi}),
-not to a slice-labelling error. We adopt
+(gap $15/16$). The intrinsic flat-slice initial-data term vanishes in the growing-mode
+limit that defines $-55/16$ (Appendix~\ref{app:bianchi}), so it does not close this gap;
+the residual arises instead in the super-Hubble evolution step between the flat and
+uniform-density slices, and is stated here as an open item, not a slice-labelling
+error. The flagship in-in monopole $-35/16$ is unaffected. We adopt
 Eq.~\eqref{eq:fnl} throughout this paper as the value of $\zeta_{\rm Mald}$,
 the variable every downstream channel (transmission, PTA, PBH, LSS)
 inherits, and carry $-35/8$ in parallel wherever a channel distinguishes
@@ -1746,10 +1748,13 @@ uniform-density (ρ-slice) $\delta N$ variable itself -- as opposed to a
 Bianchi-I correction to the isotropic construction -- gives
 $f_{\rm NL}^\rho=5(2\epsilon-15)/24=-5/2$ at $\epsilon=3/2$ (isotropic, initial
 label); this does not reproduce the separate-universe value $-55/16$ quoted
-in Sec.~\ref{sec:crosscheck} (gap $15/16$), and the residual is attributed to
-the intrinsic flat-slice initial-data bispectrum omitted from that $\delta N$
-integration, not to a slice-labelling error
-(\texttt{research/theory\_audit/}\allowbreak\texttt{psu\_gates\_S9\_S10\_2026\_09\_05.md}). Only
+in Sec.~\ref{sec:crosscheck} (gap $15/16$). The intrinsic term,
+$f^{\rm intr}_{\rm NL}=\tfrac{5\sqrt{3\epsilon}(3-\epsilon)}{18}\tfrac{r_i}{W-1}$, vanishes
+in the growing-mode limit that defines $-55/16$ for any $t_f$-independent $r_i$, so it does
+not close this gap; the residual, $5(6-\epsilon)/24$, arises instead in the super-Hubble
+evolution step between the flat and uniform-density slices -- not the initial data --
+and is stated as an open item
+(\texttt{research/theory\_audit/}\allowbreak\texttt{psu\_gate\_S9b\_intrinsic\_term\_2026\_09\_05.md}). Only
 the comoving-slice $\delta N$ value ($-5$) is fully reconciled by the map
 derived here; the flagship in-in monopole $-35/16$ is unaffected.
 
