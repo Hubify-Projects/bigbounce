@@ -1,0 +1,1 @@
+imaging_attach_*.npz (1.6 GB intermediate caches from the ledger-4 v4 systematics splits) live outside the repo at ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/imaging_attach_cache/ (regenerable by pk_estimator_qso_splits.py).
