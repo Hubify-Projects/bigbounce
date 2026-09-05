@@ -761,3 +761,78 @@ editorial items, then rounds STOP on A3M** until a science decision is taken on 
 NOT a bigger grid), `A3-ns` (Eq. (A3) at the `n_s=0.9649` ε), `A3-dN` (mechanism of the
 second-order δN piece), `DESI-4` (wide-angle + 3 blocked splits). No further round may be
 dispatched on A3M on editorial grounds alone.
+
+---
+
+# R7 — v3M.0.15 (exact PDF `909cf789…`, 17 pp) · 2026-09-04
+
+Legs: **Grok_brutal REJECT** (4E/3M/3n) · **Gemini_cosmology MAJOR REVISIONS** (7E/2M) ·
+**Claude Fable 5.1 INT major-revisions** (5M/14m/5Q). 43 raw → **27 distinct**;
+**16 genuinely-new-real**, 4 re-flag, 9 falsified, 6 opinion, 7 carried-unverified.
+Board: `../A3M_v3M.0.15_R7_BOARD_2026-09-04.md` · audit:
+`../INT_v3/A3M_v3M.0.15_R7_TRUTH_AUDIT_2026-09-04.md` (full citations there).
+**Clean-wave count: 0.**
+
+## OPEN — genuinely-new-real, MAJOR (R7)
+
+| id | finding | citation | closure |
+|---|---|---|---|
+| `R7-01` | `r=24` "exactly, bounce-invariant" is scheme-S1; `r_after[S2]=24(6.06/0.97)²≈9.4e2` | `main.tex:46,1232`; `row10_r_ns/results.json` (`T_zeta`=5.115/4.00/6.06 = S1 λ_ζ, `T_h/T_ζ−1≤8e-5`); `main.tex:364,543` | (i)-1 + science lane `A3-S2r` |
+| `R7-02` | **embedded Fig. 1 PNG is stale** — `paper/…png` md5 `8e749a23` (pre-R6-02, legend `A=2.4e-15`) vs generator output `af783c0a` (`A=6.46e-15`); auditor-originated, directive I6 | `sigw_…py:264`; both PNGs rendered | (i)-2 |
+| `R7-03` | `f_NL^pre` sign change at `c_s=0.8876` committed but absent from the paper; window `[0.444,0.888)` predicts POSITIVE `f_NL` | `row14_cs_window/results.json → window.f_NL_sign_change_c_s` + its note | (i)-3 |
+| `R7-04` | `c_s` window drops `Δf_NL^bounce` while asserting full `c_s`-independence of "the transmission" | `row14_cs_window.py:185` vs Eq. (7) | (i)-4 + `A3-cs-bounce` |
+| `R7-05` | `\bibitem{CaiXue2011}` id/title inconsistent with the lab's own curvaton source-of-record (`1101.0822`) | `main.tex:1798–1800` vs `theory_audit/curvaton_…2026_09_04.md:13,39` | (i)-5 |
+
+## OPEN — genuinely-new-real, MINOR (R7)
+
+`R7-06` abstract `|f_NL|`→`|f_NL^after|` (`:53`) · `-07` abstract no-go lacks the body's scope
+clause (`:55` vs `:1261`) · `-08` Table V's `γ_cr≲0.8` rows are the IR-divergent non-perturbative
+branch, unlabelled/uncapped, beside "suppresses throughout" (`:947–949`; `row11` β/β_G=3.5e+3 at
+γ_cr=0.766 reproduces the row; `A_*` IS per-point calibrated) · `-09` NANOGrav reference amplitude
+`2.622e-8` (`:754,782`) vs `3.6235e-09` (`r5_15_…json:25`) · `-10` companion-draft import by repo
+path (`:1621`) · `-11` version-history prose (`:968,1151,1254`) — **residual of `DA3M-08`/`R6-06`,
+3rd recurrence** · `-12` `n_s=1 exactly` vs `n_T=−0.035`; `r=23.93` at the anchored ε (`:47`) ·
+`-13` "`T_B≈2.3 GeV` … below the QCD scale — excluded by this paper's own baryogenesis argument"
+— above the QCD scale, and no such argument exists (`:793–796`) · `-14` insert "effectively" at
+`:221` · `-15` repeat the distinct-monomial qualifier at `:222` · `-16` Fig. 1 x-tick collision.
+
+## FALSIFIED (R7)
+
+`C1` Grok E1 "scheme-independent claim" — `:41–43` prints both schemes, **4th recurrence** ·
+`C2` Grok E2 / `C3` Grok E4 "no not-directly-comparable qualifier" — `:651` and `:501–502` carry
+it verbatim · `C4` Grok M3 "`296×` unsourced" — `:1665` + `row14 results.json` · `C5` Grok N1
+"phrase repeated three times" — string absent · `C6` Grok N3 future date = `DA3M-F3`,
+**11 consecutive rounds, 100% falsified** · **`C7` Gemini M1 "Fig. 1's line sits at 1e-14 = the
+primordial background" — the plotted curves are `1.38–5.88e-23`
+(`outputs/sigw_…json → curves_Omega_GW_h2`, confirmed by rendering); the 1e-10–1e-8 band is the
+NANOGrav/γ=3 reference. (The figure is defective for the unrelated reason `R7-02`.)** ·
+`C8` Gemini E7 "the the" — string absent (same class as `R6-F4`) · `C9` Fable M1(b)
+"(37)≠(4.19), not reproducible" — both readings are printed by the committed script
+(`…adjudication_2026_09_02.py:448–461`); residual is wording only (`R7-15`).
+
+## RE-FLAG (R7)
+
+`B1` Grok E3 γ_cr-grid truncation = `RF1`, **4th recurrence** (`:955–967` prints the 255-point
+scan and the 27-point caveat) · `B2` frozen DOI (Gemini E3, Fable m13) = `RF8`, carried packaging
+· `B3` Gemini E4 chain-dir date — a provenance date, one clause closes it · `B4` Fable M3 tail
+("demote 1.84") — `:940–950`+`:962–966` already do the work; residual is `R7-08`.
+
+## OPINION/GENRE (R7)
+
+`D1` Grok M1 length = `O1` recurrence · `D2` Grok N2 Fig. 1 prefactor · `D3` Grok M2 tail ·
+`D4` Gemini M2 "quantify weakly" (folded into (i)-8) · `D5` Fable m4/m10/m11/Q5 · `D6` Fable m14.
+
+## CARRIED — verify in the v3M.0.16 lane
+
+Fable m5 (`r_dec` interval) · m6 (Li 2016/2017) · m7 (Table II vs "no plateau"; §V C range) ·
+m8 (S2 evaluation time) · m9 (`Ω_DM` footnote vs calibration) · m12 (DESI `0.06σ` not
+independent) · Q2/Q4 (Q4 → science item `A3-cs-bounce`).
+
+## Convergence statement (R7) — directive R2 STOP
+
+**NOT converged at v3M.0.15.** Fourth consecutive verification round. No physics error beyond
+scoping/disclosure of already-committed quantities (`R7-01`, `R7-03`) and one stale figure
+(`R7-02`, found by the audit, not by a reviewer). Both reviewer verdict words rest substantially
+on `C1`–`C8`. **v3M.0.16 closes the 16 (i) items; then rounds STOP on A3M** until a science
+decision on `A3-S2r`, `A3-cs-bounce`, `A3-ns`, `A3-dN`, `DESI-4`. `A3-1e` is **closed** by
+`row11_pbh_residuals` item (a). No further round on editorial grounds alone.
