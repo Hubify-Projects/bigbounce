@@ -128,16 +128,5 @@
     "research/desi_png_reproduction/LEDGER4_RESULT_2026-09-04.md (result writeup)",
     "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength -- central-value offset from published reported honestly, not smoothed)"
   ],
-  "addenda": [
-    {
-      "id": "v3-official-products-2026-09-04",
-      "note": "RunPod pod p8vj377enumve4 (RTX A6000) created, never reachable, stopped+terminated, $0 compute cost. Substituted official DESI DR1 full-shape-bao-clustering v1.0 VAC products (window matrix, full-18-randoms measured P_ell, EZmock covariance for QSO GCcomb z0.8-2.1) downloaded from data.desi.lbl.gov -- see research/desi_png_reproduction/official_products_sha256.txt for checksums and LEDGER4_RESULT_v3_2026-09-04.md for the full result.",
-      "code": [
-        "research/desi_png_reproduction/official_window_io.py",
-        "research/desi_png_reproduction/fit_fnl_official.py"
-      ],
-      "result": "f_NL(p=1.6)=-2.17+/-25.3, f_NL(p=1.0)=-1.13+/-13.1, marginalised(midpoint)=-1.65+/-19.2",
-      "cost_usd": 0.0
-    }
-  ]
+  "notes": "Addenda: [{\"id\": \"v3-official-products-2026-09-04\", \"note\": \"RunPod pod p8vj377enumve4 (RTX A6000) created, never reachable, stopped+terminated, $0 compute cost. Substituted official DESI DR1 full-shape-bao-clustering v1.0 VAC products (window matrix, full-18-randoms measured P_ell, EZmock covariance for QSO GCcomb z0.8-2.1) downloaded from data.desi.lbl.gov -- see research/desi_png_reproduction/official_products_sha256.txt for checksums and LEDGER4_RESULT_v3_2026-09-04.md for the full result.\", \"code\": [\"research/desi_png_reproduction/official_window_io.py\", \"research/desi_png_reproduction/fit_fnl_official.py\"], \"result\": \"f_NL(p=1.6)=-2.17+/-25.3, f_NL(p=1.0)=-1.13+/-13.1, marginalised(midpoint)=-1.65+/-19.2\", \"cost_usd\": 0.0}]"
 }
