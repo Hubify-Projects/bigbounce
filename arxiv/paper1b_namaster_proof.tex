@@ -230,11 +230,12 @@ operator, and a mismatch between the simulation and fitting operators can
 appear as a parameter-recovery bias.  On the synthetic \(N_{\rm side}=64\),
 \(\ell_{\max}=64\) configuration used for the blind test below
 (Sec.~\ref{sec:blind-test}), replacing the full band evaluation with a single
-effective-multipole transfer factor per 8-\(\ell\) band produces a maximum
-fractional deviation of \(1.66\) and a median fractional deviation of
-\(0.17\) in the decoupled bandpowers relative to the complete-operator
-result --- large enough to bias a fit, and exactly the shortcut exercised as
-class S6 below.
+effective-multipole transfer factor per 8-\(\ell\) band produces
+order-unity fractional deviations in several bands of the decoupled
+bandpowers relative to the complete-operator result --- large enough to bias
+a fit.  This is exactly the shortcut exercised as class S6 below; a
+per-band deviation figure traceable to a committed script and output is
+recorded as batch-3 science item S2 (\S\ref{sec:limitations}).
 
 A separate reproducibility risk arises in long or sharded calculations.
 Ordinary filenames do not prove that a summary corresponds to the intended
@@ -381,13 +382,14 @@ random key, assigns \(N\) runs to arms via a balanced, HMAC(key, run\_id)-derive
 permutation of a fixed per-arm design, and commits only the sealed digest of
 the assignment before any run executes. (3) Each run executes its variant,
 unknown to the verifier, and publishes a result and receipt through the
-package's \texttt{publish\_json}. (4) The verifier applies a frozen rule set
+package's \texttt{publish\_json}. (4) The verifier, implemented in
+\texttt{verify.py}, applies a frozen rule set
 (Table~\ref{tab:rules}) to the run directories, the reference contract, and
 the input manifest. (5) The key is revealed and the confusion matrix
 computed. The protocol was run twice. In batch 1 (18 runs, arms
 honest/S1--S5), two of the rules were changed \emph{after} batch-1 outcomes
 were seen (\S\ref{sec:blind-test-pilot}); batch 1 is therefore relabelled a
-\textbf{pilot / rule-development round}, not a blind measurement of detector
+\textbf{pilot, rule-development round}, not a blind measurement of detector
 performance. In batch 2 (35 runs, arms honest/S1--S6), the rule set was
 frozen and committed alone, in its own commit, \emph{before} the seal
 commitment existed in the repository, and \textbf{no rule was added,
@@ -399,8 +401,7 @@ forgery) expected to escape 5/5 by construction; S6 (effective multipole,
 
 \begin{table}[h]
 \centering
-\caption{Frozen decision rules R0--R6 (batch 2), exactly as implemented in
-\texttt{verify.py}. A run is called \emph{shortcut} if one or more fires.}
+\caption{Frozen decision rules R0--R6 (batch 2). A run is called \emph{shortcut} if one or more fires.}
 \label{tab:rules}
 \footnotesize
 \begin{tabular}{@{}p{1.1cm}p{10.5cm}@{}}
@@ -484,7 +485,7 @@ batch 2 (see \S\ref{sec:limitations}).
 The frozen verifier's own sha256 is quoted from
 \texttt{public2/frozen\_rules\_digest.json}: \texttt{6a9acd70\ldots}.
 
-\paragraph{Batch 1: pilot / rule-development round, disclosed.}
+\paragraph{Batch 1: pilot, rule-development round, disclosed.}
 \label{sec:blind-test-pilot}
 An earlier 18-run batch (3 per arm, honest/S1--S5) is what motivated the
 frozen rules above; it is reported here as a pilot, not as a second blind
@@ -505,8 +506,8 @@ fixed survey mask; batch 1 removed this rule post hoc rather than having
 excluded it in advance. With these two post-hoc changes disclosed, batch 1's
 own confusion counts (12/12 on S1--S4, one-sided 95\% lower bound 0.779; 0/3
 honest false positives, upper bound 0.632) are rule-fitting numbers, not a
-blind-test result, and are not headlined; batch 2 (\S\ref{sec:blind-test-result})
-is the reported measurement.
+blind-test result, and are not headlined; the primary batch-2 result below
+(paragraph ``Result (batch~2, primary)'') is the reported measurement.
 
 \paragraph{S6: the effective-multipole class escaped, and that is the finding.}
 \label{sec:blind-test-s6}
@@ -584,7 +585,17 @@ measured consequence of the numerical code path, checked against a published
 contract derived from one honest reference run. That is complementary rather
 than competing: the trace is naturally expressible as an in-toto predicate,
 and anchoring such a predicate in a transparency log would close the
-metadata-forgery gap using existing infrastructure. The scope of the
+metadata-forgery gap using existing infrastructure. Remote-attestation
+mechanisms such as measured boot and Intel SGX/TDX enclaves~\cite{CostanDevadas2016}
+address a different part of the same threat model: they let a remote party
+verify \emph{which} harness binary ran, whereas the trace claimed here
+verifies \emph{what the harness observed} about the computation's internal
+path once running; the two are complementary and neither substitutes for the
+other under an adversary who controls the harness itself. Verifiable-computation
+schemes such as SNARKs~\cite{BenSasson2014} instead prove that a claimed
+output follows from a claimed program and input without re-execution, which
+would close the value-level gap (\S\ref{sec:limitations}) at the cost of a
+much larger proving system than this narrow layer aims to be. The scope of the
 guarantee remains what Sec.~\ref{sec:blind-test} measured: structural
 shortcuts in instrumented steps, under an unmodified-harness threat model.
 
@@ -757,8 +768,12 @@ continuous integration, so it is exercised locally, not CI-verified.
 \paragraph{Additional system requirements.}
 The package has no special hardware requirements: it is pure Python with a
 single NumPy runtime dependency, requires no GPU, and its full test suite
-completes in under one second with a negligible memory footprint on a commodity
-CPU. The optional PyMaster integration example (\(N_{\rm side}=16\)) completes
+completes in under one second on a commodity CPU; no formal memory profiling
+was performed, but the largest retained arrays are the
+\([4,20,4,1025]\)-shaped bandpower-window tensors in
+\S\ref{sec:workspace} (order \(10^5\) double-precision entries, a few MB),
+so heap use is dominated by NumPy allocation overhead rather than by the
+package's own data. The optional PyMaster integration example (\(N_{\rm side}=16\)) completes
 in a few seconds, whereas the retained physical validation campaign
 (\(N_{\rm side}=512\), \(\ell_{\max}=1024\); 500 realizations at each of three
 injected angles) recorded a wall time of order \(7\times10^{2}\,\mathrm{s}\)
@@ -946,6 +961,15 @@ OpenSSF, ``Supply-chain Levels for Software Artifacts (SLSA),''
 Z.~Newman, J.~S. Meyers, and S.~Torres-Arias, ``Sigstore: Software signing
 for everybody,'' in \emph{ACM SIGSAC Conference on Computer and
 Communications Security (CCS)} (2022).
+
+\bibitem{CostanDevadas2016}
+V.~Costan and S.~Devadas, ``Intel SGX Explained,'' \emph{IACR Cryptology
+ePrint Archive} 2016/086 (2016).
+
+\bibitem{BenSasson2014}
+E.~Ben-Sasson, A.~Chiesa, E.~Tromer, and M.~Virza, ``Succinct Non-Interactive
+Zero Knowledge for a von Neumann Architecture,'' in \emph{23rd USENIX
+Security Symposium} (2014).
 
 \bibitem{Chirigati2016}
 F.~Chirigati, R.~Rampin, D.~Shasha, and J.~Freire, ``ReproZip: Computational
