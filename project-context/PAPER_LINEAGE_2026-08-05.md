@@ -580,3 +580,27 @@ LQC-dust modes (bispectrum 2–4 dex below their plateau; PBH null unchanged at 
 **Why:** claims at evidential strength (VISION R6): scheme-independence was the paper's
 own stated open item; it is now answered negatively and stated as a band rather than
 hidden in a footnote. The three nulls stand.
+
+## 2026-09-04 — A3M: the modelled background's own tensor amplitude (science decision D-A3-10, ledger row 10)
+
+**ORIGINAL CLAIM (through v3M.0.14):** the matter-bounce prediction f_NL = −35/16 (and its
+transmitted values) is compared with data using the observed r < 0.036 and n_s = 0.9649; a
+tensor ratio "r = 0.84" is quoted as an open re-derivation.
+
+**NEW CLAIM (v3M.0.15):** for the canonical single-field/dust contraction, scalar and tensor
+modes obey the same Mukhanov–Sasaki equation from the same Bunch–Davies vacuum, so
+r = 16ε = 24 exactly (23.93 on the Planck-anchored w branch), bounce-invariant to 1e−4
+across the three A2 backgrounds, ~670× above the CMB bound; n_s = 1 exactly (0.9649 is an
+anchor, not a prediction); n_T = n_s − 1 = −0.035 is the one predictive tilt statement.
+The "r = 0.84" was the noise-weighted bispectrum shape overlap conflated into a tensor
+ratio; withdrawn. The paper states the tensor problem as a limitation of the modelled
+background: every channel result is conditional on a mechanism that suppresses r (reduced
+scalar sound speed c_s < 1 in the contraction, a curvaton, or a non-canonical matter
+sector), and f_NL itself depends on that mechanism (Li et al. 2016 Eq. 4.19 gives the
+c_s-dependence). First-order tensors at nHz with the model's own r: Ω_GW h² = 1.7e−14,
+still 10^5.3 below NANOGrav — the PTA null stands.
+
+**Why:** claims at evidential strength (VISION R6). This is the known matter-bounce tensor
+problem (Cai–Easson–Brandenberger 2012; Quintin+2015 no-go) applied to our own background,
+found by our own computation. Track A's next science is ledger row 14: the joint (r, f_NL)
+dependence on c_s and the viable c_s window. Rows 10 answered; nothing retired.
