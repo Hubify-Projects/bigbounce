@@ -1159,8 +1159,7 @@ published central value; the near-coincidence of the recovered central
 value with $-35/16$ is a coincidence, not evidence. This reproduction's
 $\sigma=25$ is $\sim2.8\times$ the published $9.0$ because wide-angle
 corrections (\texttt{PowerSpectrumOddWideAngleMatrix}) are not applied and
-only $2$ of $5$ imaging-systematics splits were run (open item
-\texttt{DESI-4}); full manifest and ledger in
+only $2$ of $5$ imaging-systematics splits were run; full manifest and ledger in
 \texttt{research/desi\_png\_reproduction/}\allowbreak
 \texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md},
 cited in the reproducibility statement below.
@@ -1275,8 +1274,7 @@ still $10^{6.2}$ below NANOGrav's $2.622\times10^{-8}$ (the same
 free-$\gamma$ posterior amplitude used throughout Sec.~\ref{sec:pta_null}):
 the PTA null of
 Sec.~\ref{sec:pta_null} is unaffected by this section's own tensor
-amplitude. A tensor-sense $r=0.84$ appeared in earlier drafts of this
-program; it is withdrawn here, having been traced to the
+amplitude. A tensor-sense $r=0.84$ is not used here: it traces to the
 noise-weighted bispectrum shape-overlap coefficient of
 Sec.~\ref{sec:lss}, a shape correlation and not a tensor-to-scalar
 ratio.
@@ -1661,10 +1659,13 @@ divergence), \texttt{lane9b2\_s2\_rawadm/} (the raw-ADM S2 computation,
 Agullo--Bolliet--Sreenath operator map and scale-window conversion), and
 \texttt{lane9c2\_lqc\_modes/} (the exact-mode LQC-dust in-in evaluation,
 \texttt{results.json}), each with its own manifest under
-\texttt{reproducibility/manifests/experiments/}. The bounce-to-local shape overlap ($r$, Sec.~\ref{sec:lss}) is
-imported from this lab's companion Fisher-forecast draft at
-\texttt{research/focused\_paper\_source\_integration/} and
-\texttt{outputs/survey\_reach\_fnl.json}. The three channel computations
+\texttt{reproducibility/manifests/experiments/}. The bounce-to-local shape
+overlap ($r=1$, an assumed value pending an explicit shape-overlap
+projection; Sec.~\ref{sec:lss}) is taken from this lab's companion
+$f_{\rm NL}$-forecast program (\texttt{outputs/survey\_reach\_fnl.json});
+every tabulated survey significance in Table~\ref{tab:reach} is
+accordingly an upper bound on the detectable significance, not a forecast
+of it. The three channel computations
 of Secs.~\ref{sec:pta}--\ref{sec:lss} are committed at
 \texttt{research/track\_a3\_multichannel/}: \texttt{pta\_gamma\_reproduce.py},
 \texttt{pbh\_abundance\_fnl.py} (first-pass Press--Schechter, retained for comparison only),
@@ -1687,7 +1688,8 @@ and \texttt{reproducibility/manifests/}\allowbreak
 pulsar-timing chain is
 \texttt{pipelines/p3\_pta\_mcmc/}\allowbreak
 \texttt{free\_spectrum\_real\_2026-05-01/}\allowbreak
-\texttt{chain\_real\_freespec.npy}
+\texttt{chain\_real\_freespec.npy} (the directory date is this lab's
+run date of the reduction, not the underlying NANOGrav release date)
 (SHA-256, in two halves to allow line-breaking:
 \texttt{50abc38a04e1bf886adc833b5eb653be4e986877fe2}\allowbreak
 \texttt{476f87a78927f4f3610fc}),
