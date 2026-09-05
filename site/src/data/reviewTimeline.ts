@@ -67,6 +67,43 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-novelty-lift3-v2b-0-17-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "skill-improvement",
+    title: "P1B v2B.0.17: reframed as a general verification primitive, sealed blind shortcut-detection test",
+    papers: ["P1B"],
+    summary:
+      "Novelty lift #3 (project-context/NOVELTY_AUDIT_2026-09-04.md #3; design note pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md): namaster-proof reframed from an N2 NaMaster-specific validation layer to a general verification primitive -- content-bound execution receipts -- tested against a pre-declared, sealed BLIND shortcut-detection protocol (18 runs, 3 per arm, local CPU, ~1 min, $0). The verifier detected all 4 receipt-visible shortcut classes (S1 operator-skip, S2 operator-truncate, S3 grid-reduce+interpolate, S4 cache-substitute) 12/12 (100%) with 0/3 (0%) false positives on honest runs; S5 (metadata forgery) escaped 3/3, exactly as pre-declared -- the escape is reported as the limitation, not a protocol failure. Two corrections discovered while running it: wall-clock is not a usable rule (would have false-fired on 3/3 honest runs); an M-hash collision across honest runs is not cache-substitution evidence (M depends only on mask+grid). New paper section 'Blind Shortcut-Detection Test' plus a 'What the receipt binds' table; title reframed to 'Content-bound execution receipts as a shortcut detector for pseudo-C_l computations'. N3-candidate claim (exactly as supported by the design note's Sec. 4): under a non-adversarial-analyst threat model, execution-trace receipts decide, from the receipts alone and without re-running the computation, whether an expensive pseudo-C_ell analysis was actually performed. 8 pp, md5 7bc21cbe7a1dfb837f08cae2c8b0f2b3. Readiness unchanged (95).",
+    keyTakeaways: [
+      "Reframed as a general verification primitive rather than an N2 NaMaster-specific layer",
+      "Sealed blind test: 12/12 (100%) shortcut classes detected, 0/3 (0%) false positives on honest runs",
+      "S5 metadata forgery escapes 3/3 -- pre-declared and disclosed as the limitation, not hidden",
+    ],
+    links: [
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+      { label: "Design note", href: `${GH}/pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` },
+    ],
+  },
+  {
+    id: "a3m-da3-10-11-reframe-v3m-0-15-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3M v3M.0.15: D-A3-10/D-A3-11 science reframe -- joint (r, f_NL) no-go",
+    papers: ["A3"],
+    summary:
+      "Not a review round; a science decision closing NEXT_SCIENCE_LEDGER.md rows 10 and 14 (decisions recorded in PAPER_LINEAGE_2026-08-05.md's last two sections). Title/abstract reframed to 'Multi-channel tests of the matter-bounce prediction f_NL = -35/16 and a joint (r, f_NL) no-go for single-field matter bounces'. New Sec. VII (D-A3-10): the model's own tensor-to-scalar ratio r=16eps=24 exactly for the dust contraction, bounce-invariant to 8e-5 across all three A2 backgrounds, ~670x above BICEP/Keck r<0.036; n_s=1 exactly (0.9649 is an anchor); the earlier tensor-sense 'r=0.84' is withdrawn -- traced to a noise-weighted bispectrum shape-overlap coefficient, not a tensor ratio. New Sec. VIII (D-A3-11): r=24c_s and f_NL^pre=-165/16+65/(8c_s^2) (reproduces Li, Quintin, Wang & Cai 2016 Eq. 3.18/4.19; c_s->1 limit matches this paper's own -35/16 exactly); r<0.036 needs c_s<1.5e-3 (f_NL^after 6e5-9e5, ~1e5sigma over Planck); |f_NL|<=5.1 needs c_s>=0.444 (r>=10.7); the two windows disjoint 296x. Single-field matter bounce (canonical or k-essence) excluded jointly by r and f_NL -- confirms and strengthens Li+2016's own no-go by 3.8x. Curvaton route (Cai-Xue-Brandenberger 2011) named as the surviving (r,n_s)-viable path, but dilutes -35/16 into the bispectrum by (r/24)^2, detectable only for r>~23. Appendix A wording fixed: the delta N_c second-order monopole's numerical match to the pure-translation coefficient is now stated as a coincidence of the threading map, not evidence that a pure translation supplies the monopole. Sec. V: the PBH sign disagreement with Choudhury et al. below gamma_cr~0.85 resolved as an IR-divergent O(eps^2) artefact of the quadratic compaction map, not physical; in-coverage amplitude ratio corrected to 1.84+-0.03 (144 pts). Directive G hygiene: 4-pass pdflatex, 0 undefined refs, 0 overfull hboxes >10pt (largest 3.9pt), 17 pp, md5 4f2bf5e8204021bf06cbe27e3b8932c9, sha256 909cf7893b89270f2a24d4a65a8750798b5bca7f6fa34e85acdb078a1bca6043, three-way md5 PASS across served paths, arXiv tarball rebuilt (sha256 bf94d9ded6ecd40027533a1468103bbf3ff38fe364383c923a00963012f73006). Convex paperVersions:bump k570ykr8ywyxmbqxpkhc630ys58dvztk; activityFeed:add j57d3z0140nthvhk7a8x3rwef98dtxbm. Readiness held at 75 -- one verification board (R7) permitted under directive R2's convergence budget.",
+    keyTakeaways: [
+      "r=16eps=24 exactly for the modelled dust contraction, ~670x above the BICEP/Keck bound r<0.036",
+      "Joint (r, f_NL) no-go: no constant sound speed can cure both r and f_NL simultaneously (windows disjoint 296x), excluding the single-field matter bounce and strengthening Li+2016's no-go 3.8x",
+      "Curvaton-type spectator named as the surviving (r, n_s)-viable route, diluting -35/16 by (r/24)^2",
+      "PBH sign disagreement with Choudhury et al. resolved (IR-divergent artefact, not physical); ratio corrected to 1.84+-0.03",
+    ],
+    links: [
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "Ledger rows 10/14", href: `${GH}/project-context/NEXT_SCIENCE_LEDGER.md` },
+    ],
+  },
+  {
     id: "a3m-r6-closure-v3m-0-14-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",
