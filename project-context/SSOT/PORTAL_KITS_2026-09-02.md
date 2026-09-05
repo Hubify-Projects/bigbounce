@@ -13,7 +13,10 @@
    `ENDORSER_OUTREACH_2026-09-02.md` click-list step 2) and the
    astro-ph.GA endorsement has cleared, then submit at
    `journals.aas.org/submission/` and paste the fields in §2 below — title
-   and abstract already final (v4P.0.5, trimmed to 246 words 2026-09-02;
+   and abstract already final (v4P.0.6 as of 2026-09-04 — row-16 disclosure
+   subsection integrated, arXiv tarball rebuilt as
+   paper4prime_chirality_test_arxiv_v4P.0.6.tar.gz, abstract text unchanged
+   from the v4P.0.5 246-word trim 2026-09-02;
    AAS working cap and needs a portal-side length check before pasting.
 3. **P2′**: no action — DEFERRED, no submission planned (§3).
 4. **A3 → PRD Letters / JCAP** (§3a note below): automated review converged
@@ -30,7 +33,7 @@
 
 Field-by-field paste sheets for the near-term works
 (`INTENT.md` Track A1/B1/C1): the **ECH Note** (v1N.0.5, APPROVE, readiness
-95) → CQG, **P4′** (v4P.0.5, APPROVE, readiness 95, P5 folded in) → ApJS.
+95) → CQG, **P4′** (v4P.0.6, APPROVE, readiness 95, P5 folded in) → ApJS.
 **P2′ is DEFERRED** (archived theory record, folded into the A3 paper) — no
 PRD Letters / JCAP submission is planned for it. **A3**
 (`research/track_a3_multichannel/paper/main.tex` v3M.0.7) is the paper that
@@ -123,7 +126,7 @@ guideline URLs.
 |---|---|---|
 | Portal | AAS journals general submission system (eJournalPress) at `journals.aas.org/submission/`; select ApJS at manuscript-type step | journals.aas.org/manuscript-preparation/ (fetched 2026-09-02) |
 | Article type | Regular Article — **confirm current label in the live portal**, unverified this session (existing kit flags the same) | pipelines/p2_chirality/APJS_PORTAL_KIT_v1.0.274.md |
-| Title | **FINAL — "The Largest Test of a Preferred Galaxy-Spin Axis: An 8.47-Million-Galaxy DESI Chirality Catalog, a Void-Environment Contrast, and a Sensitivity Confrontation with the Rotating-Black-Hole-Universe Prediction"** (`pipelines/p4prime_chirality_test/paper/main.tex` v4P.0.5 — P5 folded in as the void-environment contrast) | pipelines/p4prime_chirality_test/paper/main.tex |
+| Title | **FINAL — "The Largest Test of a Preferred Galaxy-Spin Axis: An 8.47-Million-Galaxy DESI Chirality Catalog, a Void-Environment Contrast, and a Sensitivity Confrontation with the Rotating-Black-Hole-Universe Prediction"** (`pipelines/p4prime_chirality_test/paper/main.tex` v4P.0.6 — P5 folded in as the void-environment contrast; v4P.0.6 adds row-16 disclosure content only, abstract text unchanged) | pipelines/p4prime_chirality_test/paper/main.tex |
 | Abstract | Final v4P.0.5 abstract (246 words, trimmed to the ApJS 250-word cap 2026-09-02), verbatim — see `ENDORSER_OUTREACH_2026-09-02.md` §2 for the full text | pipelines/p4prime_chirality_test/paper/main.tex |
 | Abstract cap | **250 words** for standard AAS-journal articles (general AASTeX guideline; ApJS-specific page did not publish a different number this session — treat 250 as the working cap and confirm on ApJS's own About page before finalizing) | journals.aas.org/manuscript-preparation/ (fetched 2026-09-02) — **the v4P.0.5 abstract (246 words) was trimmed 2026-09-02 to satisfy this cap; ready to paste as-is** |
 | Data-availability statement text | Verbatim from the manuscript's `Data Availability` section: "The 8,474,531-row catalog, quarantine, exact null arrays, generator scripts, and full provenance register are archived under Zenodo DOI 10.5281/zenodo.21461899 (concept DOI 10.5281/zenodo.21461898), published under CC-BY-4.0, and mirrored at huggingface.co/datasets/bamfai/galaxy-chirality-catalog. The black-hole-universe exclusion analysis is fully reproducible from the committed script `research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py` and its output JSON. The catalog is a single Apache Parquet file (952,115,239 bytes) with one row per DESI Legacy DR8 galaxy... This manuscript is served alongside its git-tracked source at github.com/Hubify-Projects/bigbounce." (full text, pipelines/p4prime_chirality_test/paper/main.tex `\section*{Data Availability}`) — **P5's own Zenodo DOI is still pending (residual item, click-list step 2); add it to this statement once minted.** | pipelines/p4prime_chirality_test/paper/main.tex |
@@ -142,7 +145,7 @@ guideline URLs.
 | Upload format | AASTeX (currently `aastex701.cls`/`aastex702.cls` per the two source `.tex` files — **confirm both P4 and P5 sources are on the same AASTeX version before merging**, and that the merge doesn't silently mix class versions) | repo grep, `pipelines/p2_chirality/` + `pipelines/p5_desi_chirality/paper/` |
 
 **Open item before this kit is submission-ready:** the title and abstract
-above are now FINAL (v4P.0.5, P5 folded in as the void-environment
+above are now FINAL (v4P.0.6, P5 folded in as the void-environment
 cross-check section) — the remaining open item is the **word-count trim**
 against the 250-word AAS abstract cap (current abstract ≈330 words) and
 minting P5's Zenodo DOI (click-list step 2). Do not paste the abstract into
@@ -313,7 +316,7 @@ works.
 
 ## 6. What is NOT done here
 
-- ECH Note (v1N.0.5) and P4′ (v4P.0.5) manuscripts ARE compiled, merged
+- ECH Note (v1N.0.5) and P4′ (v4P.0.6) manuscripts ARE compiled, merged
   where applicable, APPROVE at agent gates, readiness 95 — titles/abstracts
   above are final, not draft.
 - No Zenodo deposit command was run (draft or publish) this session — both
