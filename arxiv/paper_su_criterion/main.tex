@@ -13,7 +13,7 @@
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\eps}{\epsilon}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1S.0.4}
+\newcommand{\paperVersion}{v1S.0.5}
 \newcommand{\paperTimestamp}{September 5, 2026}
 
 \begin{document}
@@ -223,6 +223,13 @@ is $O(1/k_L)$ in every non-attractor, USR included, but its coefficient $\eps\do
 what controls $I$, and this coefficient is small in USR precisely when its growing-mode
 initial-data problem (i) is largest. Every inflationary test cited in Sec.~I checked (i)
 with (ii) automatically small; none tested a regime with $I=O(1)$.
+
+A distinct second-order question is the choice of final e-fold surface itself: continuing
+the fluid-congruence field $N_c$ onto the uniform-density surface $\rho=\bar\rho(t_f)$
+(rather than uniform-$\phi$) to second order gives $f^{\rho}_{\rm NL}=\tfrac{5}{24}(2\eps-15)$,
+isotropic, i.e.\ $-\tfrac52$ at $\eps=\tfrac32$ (initial-position label) -- an $O(1)$ slice
+dependence at second order as well as at first, additional to and independent of the
+linear-order criterion above (Appendix~\ref{app:kc}).
 
 \begin{table*}[t]
 \caption{Validation of the criterion on four backgrounds (constant $\eps$, $c_s=1$
@@ -480,5 +487,36 @@ constraint solver and the bispectrum assembly are written and frozen, then $f^{\
 is read in only at the closure step. The map derivation therefore takes no in-in and no
 $\delta N$ input; the composed monopole $-5$ is a consequence of the map applied to the
 independently-derived in-in shape, not a fit to the separate universe's own $-5$.
+
+\subsection{The general admixture: constant-mode kernel and the corrected normalisation}
+\label{app:kc}
+
+For a long mode with a constant admixture, $\zeta_L=C+G$ with $g\equiv G_f/\zeta_{L,f}$ the
+growing-mode fraction and $\lambda_g=1-\eps g/3$, the second-order shift kernel is bilinear,
+$M(g)=\tfrac23\eps+gK^{\rm grow}_{\rm rest}+(1-g)K_c$, where $K_c$ is the constant-mode
+piece, obtained by re-solving the ADM constraints at $(m_L,m_S)=(0,3/\eps-1)$; in the
+squeezed limit $K_c\to-\tfrac23\eps$, independent of the short-mode history. This exactly
+cancels the constant-mode \texttt{zlap} contribution $2\eps/3$: a constant long mode carries
+no $O(k^0)$ threading map, as it must, since a constant $\zeta_L$ is a pure coordinate
+rescaling. The bispectrum normalisation for a mixed long mode is two-lambda, not
+$1/\lambda_g^2$: the long leg carries $\lambda_g$, the short (growing) leg
+$\lambda_1\equiv1-\eps/3$,
+\begin{align}
+f_{\rm map}(g)&=\frac{5}{12\,\lambda_g\lambda_1}\,
+\frac{M(g;k_L,q)P(q)+M(g;k_L,p)P(p)}{P_S}\bigg|_{\rm sq}\nonumber\\
+&=\frac{g\lambda_1}{\lambda_g}f_{\rm map}(1),
+\end{align}
+so $g=1$ reproduces the $-5$ (initial label) / $-\tfrac{25}{4}+\tfrac{15}{4}\mu^2$ (final
+label) compositions above exactly, and $g=0$ gives the null map $f_{\rm map}(0)=0$ for both
+labels -- a purely constant long mode carries no super-Hubble signal
+(\texttt{psu\_gates\_S9\_S10\_2026\_09\_05.py}).
+
+The uniform-density (ρ-)slice question of Sec.~II is distinct from this admixture: continuing
+$N_c$ to second order on $\rho=\bar\rho(t_f)$ gives $f^{\rho}_{\rm NL}=\tfrac{5}{24}(2\eps-15)
+=-\tfrac52$ at $\eps=\tfrac32$ (isotropic, initial label). This value does not reproduce the
+uniform-density separate-universe number $-\tfrac{55}{16}$ quoted elsewhere in this program
+(gap $\tfrac{15}{16}$); the residual is attributed to the intrinsic flat-slice initial-data
+bispectrum omitted from that $\delta N$ integration (the Namjoo--Firouzjahi--Sasaki
+non-attractor caveat), not to an error in the slice map derived here.
 
 \end{document}
