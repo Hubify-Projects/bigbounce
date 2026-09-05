@@ -196,3 +196,53 @@ The honest counterweight: at `r < 0.036` no planned experiment measures `n_T` �
 `\sigma(n_T)` at that `r` is `O(1)`. The discriminator is **theoretically clean and
 observationally out of reach at the curvaton point**, which is the same trade row 15
 found for `f_{NL}`.
+
+## Verdict (ledger row 15's named open item)
+
+**CLOSED, as a transfer statement; the microphysical `\mathcal{F}` remains model input.**
+
+1. The A2 backgrounds now *do* carry an entropy sector: a massless spectator's transfer
+   `\lambda_\sigma` is computed on all three and equals the tensor's `\lambda_T` to
+   `8\times10^{-5}` (Quintin, a numerical floor) and `\sim10^{-9}` (LQC, poly), as the
+   `z = a` operator identity requires.
+2. Therefore the `\sigma/\zeta` amplitude ratio is **preserved through the bounce in S1**
+   (`\Lambda = 1`) and **rescaled by `\Lambda = \lambda_T/\lambda_\zeta^{S2} = 6.249` in S2**
+   — precisely as row 18a's tensor/scalar contrast predicted.
+3. The curvaton viability condition is consequently a **pre-bounce** condition:
+   `X = r_{dec}M_{pl}/\sigma_* > 22.34` (S1) / `22.36` (S2) for `r < 0.036`, i.e.
+   `\mathcal{F}_{eff} \ge 25.82` in both schemes — scheme-independent to `7\times10^{-4}`,
+   and background-independent because `\lambda_\sigma/\lambda_T = 1` on all three.
+4. **What is still NOT closed:** `\mathcal{F}` itself. This row shows that whatever
+   amplification the entropy sector achieves *survives the bounce untouched*; it does not
+   derive that amplification, which requires a microphysical curvaton potential and decay
+   history (CXB11's `g^2\phi^2` coupling, or the lab's branch-W ALP). Row 15's "`\mathcal{F}`
+   is not computable here" is now sharpened to "`\mathcal{F}` is a pre-bounce,
+   model-dependent number, and the bounce is guaranteed not to spoil it."
+5. `\lambda_\zeta^{S2}` is measured on the Quintin background only; LQC and poly S2 are an
+   open (small) item, not an assertion.
+
+## Paper-ready sentences
+
+> A spectator field with `m^2 \ll H^2` and a canonical kinetic term shares the tensor's
+> pump term `a''/a` exactly, so its Mukhanov–Sasaki variable and the graviton's obey the
+> same equation on any background. Integrating both through the three bounce backgrounds
+> of Sec. [A2] — with the tensor evolved in an independent first-order formulation as a
+> numerical control — we find `\lambda_\sigma/\lambda_T - 1 \le 8\times10^{-5}`, saturating
+> the sampling floor of the piecewise background and reaching `10^{-9}` on the two smooth
+> ones.
+
+> Because the entropy and tensor channels are amplified identically, the scheme factor
+> `\Lambda = \lambda_T/\lambda_\zeta` cancels between the tensor numerator and the curvaton
+> contribution to the scalar power, and the tensor-to-scalar constraint reduces to the
+> purely pre-bounce condition `r_{dec}M_{pl}/\sigma_* > 22.34`, equivalently
+> `\mathcal{F}_{eff} \ge 25.82`, in both the geometric (`z = a`) and fluid Mukhanov–Sasaki
+> schemes — despite the fact that the single-field ratio itself differs between them by a
+> factor of 39.
+
+> The transfer coefficient's scale dependence is `\lambda_T \propto 1 - c\,(k\eta_B)^2`
+> with `c = 236`–`285` across the three backgrounds, so the tensor tilt is shifted by
+> `|\Delta n_T| \lesssim 10^{-3}` already at `k\eta_B = 10^{-3}` and by vastly less on
+> observable scales: the matter-bounce prediction `n_T = n_s - 1 = -0.035`, in contrast
+> with inflation's `n_T = -r/8`, is transmitted through the bounce unchanged. At the
+> tensor-viable curvaton point, however, `r < 0.036` places `n_T` beyond the reach of
+> planned experiments.
