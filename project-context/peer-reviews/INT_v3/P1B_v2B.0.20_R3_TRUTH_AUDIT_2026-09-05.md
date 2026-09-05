@@ -157,3 +157,63 @@ disagree about severity but agree about the diagnosis. Opus recommends **ACM REP
 CiSE or Nature Scientific Data as alternates, with a short JORS/JOSS software paper for the
 package cross-citing; arXiv `astro-ph.IM` primary, `cs.SE` secondary. Under directive R3 a
 venue change is a recorded lineup decision, not a referee fix. Logged in §4(ii).
+
+---
+
+## 2. Canonical findings (33) — class · citation · closure action
+
+Classes: **NEW** genuinely-new REAL · **RF** re-flag (disposition id) · **FAL** falsified ·
+**OPI** opinion/venue-preference · **OOS** out-of-scope, disclosed limitation.
+"Src" gives the raw item(s) that raised it.
+
+| id | finding | src | class | citation | closure |
+|---|---|---|---|---|---|
+| D-R3-01 | R7's spot rows are prover-predictable; "cannot be chosen by the runner" is the wrong property; adaptive evasion is zero-cost, not one matvec | Opus M1 | **NEW** | `verify3.py:32–45,57–58`; `tex:573`; `public4/scorecard.json` S7 `r7_fired 0/6, r7_residual_max 0.0` | restate honestly + report S7 + cite Freivalds/Fiat–Shamir + present R8 |
+| D-R3-02 | R7 fails **open** when `intermediates.pseudo_cl` is absent/malformed (and on mask-hash mismatch); no other rule requires the field | Opus M2 | **NEW** | `verify3.py:48–56` returns `(False, nan)`, consumed at `:90–92`; `public4` S8 `r7_fired 0/6, r8_fired 6/6, suspect 6/6` | report S8; state the fail-open in §11; present R8 as fail-closed |
+| D-R3-03 | batch-3 run-level Clopper–Pearson bounds (0.607 / 0.393 / 0.905) contradict batch 2's pre-declared refusal to claim run-level intervals | Opus M3a, Gem E1, Grok M2 | **NEW** (recurrence of D-R2-01/02 class in new text) | `tex:188,584–586` vs `tex:479–491`; `public3/scorecard.json::independence_caveat` vs its own `lower95_one_sided` | adopt batch 4's treatment: class-level counts only, no run-level intervals, uniformly across batches 1–4 |
+| D-R3-04 | "S1–S4b pool to **24/24**" — five arms × 6 = **30**; `0.05^(1/30)=0.905` shows n=30 was used | Opus M3b, Gem E1 | **NEW** | `tex:586`; `public3/scorecard.json::detection_structural_S1_S4b`; `RULES_v4_FROZEN.md` §M3 | correct to 30/30 (and drop the bound per D-R3-03) |
+| D-R3-05 | abstract and §6 still say "run in two batches" / "run twice"; batch 3 missing from protocol steps (1)–(5) | Opus M4 | **NEW** | `tex:169,392,403` | rewrite the protocol paragraph for four batches (pilot / primary / value-level / post-commitment) |
+| D-R3-06 | batch-3 audit trail incomplete: no commit-ordered trail; no pre-registered abort criterion; no fresh-key/fresh-assignment non-contamination sentence; attempt-1 assignment unpublished | Opus M5 | **NEW** | `BATCH3_PREREGISTRATION.md` (no stopping rule); `BATCH3_ABORT_NOTE.md`; `tex:629` | add the four sentences + the trail `dcf96696→…→bf7d26e3` |
+| D-R3-07 | the blind-test corpus (batches 2–4, seals, keys, verdicts, scorecards, OTS proofs, `verify3/4.py`) is not archived immutably; Zenodo pins only `packages/namaster-proof@0a587b58` + manuscript source | Opus M6, Grok M3(part) | **NEW** (packaging/science) | `tex` §12 | deposit `pipelines/namaster_proof/blind_test/` as its own Zenodo record, cite the DOI + checksum |
+| D-R3-08 | two broken cross-references — "batch-3 science item S2 (§11)" and "(Sec. 11, item S3)" resolve to nothing and collide with shortcut-class names | Gem M1, Opus min2 | **NEW** (recurrence of D-R2-06 class) | `tex:252,652`; §11 numbers L1–L4 | repoint to §6's per-band-deviation discussion; drop the S-tags |
+| D-R3-09 | "**Both** batches' manifests" then lists three | Gem N1 | **NEW** | `tex:998` | "All four batches'" after batch-4 integration |
+| D-R3-10 | title-page revision stamp `v2B.0.20(2026-09-05 09:00 PT)`, the §12 sentence explaining it, and the `p1b-`-prefixed artefact filenames are internal bookkeeping | Gem E2, Grok N1, Grok E3(part) | **NEW** (stamp half = **RF** of D-R2-19, deferred to the submission build per directive G) | `tex` title page, §12 p. 12–13 | strip stamp + sentence in the submission build; rename the `p1b-…json` manifests |
+| D-R3-11 | manuscript says `pymaster 3.0.1`; the artefact records `"pymaster": "3.0"` | Opus min1 | **NEW** | `tex:196,684,700,892,1024` vs `pymaster_crosscheck_result.json` | correct to 3.0 or bind 3.0.1 to a recorded conda package version |
+| D-R3-12 | Freivalds (1979) and Fiat–Shamir (1986) — the exact prior art for R7/R8 — are uncited | Opus M1(2nd half) | **NEW** | `grep Freivalds\|Fiat` → no match | add a §7 prior-art paragraph |
+| D-R3-13 | abstract says the primitive is "not a detector … of value-level shortcuts" while R7 catches value-level S6 6/6 | Grok E2 | **NEW** | abstract vs `tex:584` | restate: R7 detects *rule-unaware* value-level shortcuts; R8 extends to rule-aware; metadata forgery remains open |
+| D-R3-14 | uncomputed quantitative claims: "order-unity fractional deviations … large enough to bias a fit"; "agrees to 6×10⁻¹⁶ on six cases" (six cases unspecified) | Gem M2 | **NEW** | `tex:246`, §6 p. 8 | quantify or cite the bias; name the six cases |
+| D-R3-15 | the frozen rule set is not bound by a digest quoted in the paper | Grok M1 | **NEW** | `RULES_v3_FROZEN.md` is committed alone (`dcf96696`); `public4/frozen_rules_digest.json` gives per-file sha256 | quote the rule-file digests in §6/§12 |
+| D-R3-16 | §6 is one long unnumbered section with ~12 internal "(§6)" self-references | Opus min3 | **NEW** (recurrence of D-R2-10 class) | `tex` §6 | split 6.1–6.8 (protocol / batches 1–4 / abort / scope / PyMaster) |
+| D-R3-17 | no per-run appendix table for batch 3 (the headline); batch 2 has one | Opus min4 | **NEW** | `public3/verdicts.json` carries `r7_relative_residual` | add batch-3 (and batch-4) per-run tables with the residual column |
+| D-R3-18 | abstract is ~500 words with five numeric bounds | Opus min5, Grok E5(part) | **NEW** | `tex:165–200` | cut to ~half; leave interval arithmetic to §6 |
+| D-R3-19 | "`ots verify` requires a Bitcoin node, which this machine does not run" — the OTS client falls back to public block explorers | Opus min6 | **NEW** (recurrence of D-R2-12 class) | §6 scope limits | re-check and report attested block heights, or name precisely which verification mode was declined and why |
+| D-R3-20 | Table 1's trust taxonomy has no category for asserted fields whose *absence* disables a rule | Opus min7 | **NEW** | `tex:356`; D-R3-02 | add the third category |
+| D-R3-21 | §9's 500-realization campaign reports σ for one injected angle; the other two are "expected" comparable | Opus min8 | **NEW** (recompute) | `tex:833` | recompute (seeds deterministic, cheap) or drop the expectation clause |
+| D-R3-22 | §8's `1.41e-18` hedge sits away from the `rebuild_workspace_check.py` sentence it belongs beside | Opus min9 | **NEW** | §8 | move two lines |
+| D-R3-23 | released 0.1.7 contains no R7 (nor R8/`verify3.py`/`verify4.py`) | Opus min10 | **NEW** | §12; `frozen_rules_digest.json` | say where batch-3/4 code sits relative to the release |
+| D-R3-24 | §7 reads as if a transparency-log entry nearly closes S5 | Opus min11 | **NEW** | §7 | one sentence: Rekor anchors the receipt, not the trace's truthfulness |
+| D-R3-25 | Q2 — a "semantically wrong but equally expensive" run (e.g. wrong pixel ordering) passes R7 **and** R8, since `M C = p` stays self-consistent | Opus Q2 | **NEW** | R7/R8 definition | one sentence in §11 beside the existing hedge |
+| D-R3-26 | Q3 — R7's marginal contribution is exactly one class (S6); the four-mechanism claim is now three mechanisms across seven classes | Opus Q3 | **NEW** | `public3/scorecard.json` per_arm | restate the mechanism count |
+| D-R3-27 | Q4 — S4b's cross-run source-selection rule is not stated; it determines whether 4/6 is a property of R6 or of the arm | Opus Q4 | **NEW** | `sealed3/crossrun_sources.json`; `public3/scorecard.json::S4b_crossrun_sources` (`run_037 ← run_036`, itself an S4b source) | state whether the rule was pre-registered |
+| D-R3-28 | Grok E1: "the abstract quotes 20/20 and 0.473 with no independence caveat" | Grok E1 | **FAL** | the abstract carries the caveat verbatim (`tex:179–182`) and "All detection claims are at class level, never per run" (`tex:195`); `0.473` does **not** appear in the abstract (only `tex:480`, adjacent to the caveat) | none; re-flag of D-R2-01, closed in v2B.0.19 |
+| D-R3-29 | Grok E3: "complete rewrite removing all review-process bookkeeping (pilot, post-hoc rule changes, abort, R7)" | Grok E3 | **OPI** (part actionable as D-R3-10) | the pilot demotion, disclosed post-hoc rule changes and the preserved abort **are** the required scientific disclosure; the Opus integrity note cites them as honesty markers | refuse the disclosure-stripping half — removing it would water down the paper; act only on D-R3-10 |
+| D-R3-30 | Grok E4: "retract the claim that the detector works for the production NaMaster library" | Grok E4 | **OOS**, disclosed (premise **FAL**) | no such claim is made: the abstract states PyMaster is not installed and exposes no Wigner-3j counter (`tex:171–174`); §11 states the scope limit; Table 5's cross-check validates the *estimator*, not a hook | none; re-flag of the D-R2-03/D-R2-23 family |
+| D-R3-31 | Grok E5: 15 pp vs JORS ≤8 pp; "reduce to 4–6 pp or submit elsewhere" | Grok E5 | **OPI** → escalated to a **scope decision** | converges with the Opus venue section; re-flag of D-R2-20 | §4(ii): venue decision (ACM REP primary), not a referee fix |
+| D-R3-32 | Grok M3: "commit `0a587b58` predates the manuscript revision date" | Grok M3(part) | **FAL** | §12 explains the software release line is deliberately independent of the manuscript revision — the sentence Gemini quotes in its own E2 | none; the archive half survives as D-R3-07 |
+| D-R3-33 | Grok N2: Table 1 caption "by trust level" vs column header "Trust" | Grok N2 | **OPI** (no contradiction; the caption names the taxonomy, the column is its header) | `tex:356` | harmonise for free while doing D-R3-20 |
+
+### Per-leg counts (gross → canonical)
+
+| leg | gross items | NEW | RF/FAL | OPI | OOS |
+|---|---|---|---|---|---|
+| Grok_brutal (REJECT) | 10 | 4 (E2→D-R3-13, M1→D-R3-15, M2→D-R3-03, M3→D-R3-07) | 2 (E1, M3-part) | 3 (E3, E5, N2) | 1 (E4) |
+| Gemini_cosmology (MAJOR) | 5 | 5 (E1→D-R3-03+04, E2→D-R3-10, M1→D-R3-08, M2→D-R3-14, N1→D-R3-09) | 0 | 0 | 0 |
+| Claude Opus INT (major-rev) | 17 + 5Q | 22 | 0 | 0 | 0 |
+
+**Canonical total 33 · genuinely-new REAL 27 · FALSIFIED 2 · OPINION 3 · OUT-OF-SCOPE
+disclosed 1.** No fabricated number was found in the manuscript, and no leg fabricated a
+finding. The three legs' *severity* words diverge widely (REJECT / MAJOR / major-revisions)
+while their *content* converges on one hard defect class (the R7 security claim, D-R3-01/02,
+raised only by Opus) plus one presentation defect class (the batch-3 statistics, D-R3-03/04,
+raised independently by Gemini and Grok and by Opus). Grok's REJECT is carried almost
+entirely by items this audit classes OPI/OOS/FAL (E1, E3, E4, E5 = 4 of its 5 essentials).
