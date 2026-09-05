@@ -758,3 +758,18 @@ Bitcoin-attested seals for batches 1–2, all committed and manifest-registered.
 
 **Why:** the R2 audit's surviving claim sentence plus the three named science items now
 closed; the tier is a self-claim within the ladder's ceiling and stays subject to referees.
+
+## 2026-09-05 — D-PSU-2 / D-A3-15: uniform-density δN not reconciled
+
+**ORIGINAL CLAIM:** paper-su/A3M treated the uniform-density δN value −55/16 as reconciled
+with the in-in result by the same threading-map identity that reconciles the comoving-slice
+δN value (−5).
+
+**NEW CLAIM (paper-su v1S.0.5, A3M v3M.0.21):** the second-order continuation of the
+uniform-density (ρ-slice) variable itself gives f^ρ_NL = −5/2 at dust, which does NOT
+reproduce −55/16 (gap 15/16); the residual is attributed to an intrinsic flat-slice
+initial-data bispectrum omitted from that δN integration, not a slice-labelling error. Only
+the comoving-slice δN (−5) is fully reconciled; the flagship −35/16 is unaffected.
+
+**Why:** `research/theory_audit/psu_gates_S9_S10_2026_09_05.md` (S9) computed the ρ-slice
+map directly rather than asserting reconciliation by analogy.
