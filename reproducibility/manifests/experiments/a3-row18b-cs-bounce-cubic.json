@@ -1,0 +1,134 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row18b-cs-bounce-cubic",
+  "title": "Ledger row 18(b) - c_s-dependence of the bounce's own cubic contribution Delta f_NL^bounce(c_s) in scheme S1, and the resulting shift of the joint (r, f_NL) window boundary of row 14",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Lane (a) cubic-vertex table - the c_s-dependent coefficients c_V(a,H,eps,eta_sr,c_s) of the P(X,phi) cubic action (Chen, Huang, Kachru & Shiu 2007; Seery & Lidsey 2005; Maldacena 2003) transcribed and checked",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lane (b) S1 in-in integrator at c_s = 1 - imported directly for its vertex slot/kernel definitions, mode class, dot-product table and quadrature; supplies the c_s = 1 regression gate (-0.139818 / -0.104311 / -0.127111)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A2 linear-transmission module - the three bounce backgrounds (Quintin-type, LQC-effective dust, poly) and the adiabatic-vacuum scalar evolution, imported directly",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger row 14 - f_NL^pre(c_s) = -165/16 + 65/(8 c_s^2), r = 24 c_s, and the c_s-independence of the bounce transfer T (verified to 4e-11); the window this row re-evaluates",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Li, Quintin, Wang & Cai 2016 - matter bounce with a k-essence field; Eq. (4.19) shape function and Eq. (3.18) r = 24 c_s, the source of f_NL^pre(c_s)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1612.02036",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chen, Huang, Kachru & Shiu 2007 - cubic action for general single-field P(X,phi); the c_s-dependent vertex coefficients used here",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/hep-th/0605045",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Garriga & Mukhanov 1999 - k-inflation perturbations; z^2 = 2a^2 eps/c_s^2 and the BD normalisation 1/sqrt(2 c_s k)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/hep-th/9904176",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2110.00483",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Planck 2019 - local f_NL = -0.9 +/- 5.1, the bound defining the window",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1905.05697",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/row18b_cs_bounce_cubic.py",
+      "entrypoint": "cd research/cubic_bounce_transmission/row18b_cs_bounce_cubic && python3 row18b_cs_bounce_cubic.py",
+      "sha256": "f8f8cd8d5266fd6866e62a326a83635c38cda39bb1b009b885eaaa3aa1faf588"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy + scipy + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "8.0 s (measured, printed in row18b_cs_bounce_cubic.log)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~10 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no data files, no network). Scheme S1 sets z = a exactly, so the Mukhanov-Sasaki equation is mu'' + (c_s^2 k^2 - a''/a) mu = 0 and c_s enters the mode functions ONLY through the sound horizon; this is implemented literally by evolving the modes at k_s = c_s k with the same Wronskian normalisation Im(v* v') = -1/2 (which IS the BD normalisation 1/sqrt(2 c_s k)), while every momentum kernel and dot product uses the physical k. c_s enters elsewhere only through the lane (a) vertex coefficients with the S1 substitutions eps -> 1/2, eta_sr -> 0, s -> 0, lambda -> 0 - the c_s extension of lane (a) assumption (A3). No parameter is tuned."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/row18b_cs_bounce_cubic.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/row18b_cs_bounce_cubic.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/ROW18B_CS_BOUNCE_CUBIC_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) backgrounds.*.gate_cs1.rel_diff <= 2e-3 - the c_s = 1 limit reproduces the lane (b) totals -0.139818 (Quintin), -0.104311 (LQC dust), -0.127111 (poly) at k eta_B = 1e-3, and the assert in dfnl_bounce/main fires otherwise; (b) every backgrounds.*.cs_scan[*].V2_scaling_numeric agrees with V2_scaling_analytic = (6 c_s^2 - 5)/c_s^4 to <= 3e-4 relative, the independent check that the S1 V2 coefficient is a^2 eps(eps-3+3c_s^2)/c_s^4; (c) backgrounds.quintin.cs_scan values Delta f_NL^bounce = +14.29, +3.058, +0.0611, -0.1398 at c_s = 0.44, 0.6, 0.8876, 1; (d) backgrounds.*.boundary.row14_no_bounce_cs.cs_min reproduces row 14 (Quintin 0.4440); (e) backgrounds.*.boundary.with_bounce_term.cs_min == 0.5997 / 0.6064 / 0.6020 with r_min == 14.39 / 14.55 / 14.45, i.e. the |f_NL^after| <= 5.1 boundary MOVES UP in c_s and the no-go strengthens; (f) backgrounds.*.boundary.at_tensor_viable_cs.fnl_after_with_bounce ~ 1e11 at c_s = 1.5e-3 versus ~1e6 without the bounce term.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 18 item (b), A3-cs-bounce",
+    "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/ROW18B_CS_BOUNCE_CUBIC_2026-09-04.md (derivation, c_s x background table, boundary statement, paper-ready sentences)",
+    "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md (the c_s-dependent coefficients, literature-cited)",
+    "research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md (the c_s = 1 values this row must reproduce)",
+    "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md (f_NL^pre(c_s), r = 24 c_s, c_s-independent T)",
+    "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the strengthened no-go is stated in its own terms)",
+    "model-dependence disclosed: f_NL^pre(c_s) inherits Li+2016's k-essence kinetic sector (row 14 sec 2), and the S1 vertex coefficients keep eps -> eps_eff = 1/2 while retaining c_s exactly, which is a scheme assumption (lane (a) A3) and not the dressed-metric H_3 of Agullo+2017"
+  ]
+}

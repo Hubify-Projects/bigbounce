@@ -264,6 +264,14 @@
       ]
     },
     {
+      "id": "a3-row18b-cs-bounce-cubic",
+      "depends_on": [
+        "p2-a2-lane-b-numerical-inin",
+        "p2-a2-lane-a-cubic-vertex-table",
+        "a3-row14-cs-window"
+      ]
+    },
+    {
       "id": "a3-row15-curvaton",
       "depends_on": [
         "a3-row14-cs-window",
