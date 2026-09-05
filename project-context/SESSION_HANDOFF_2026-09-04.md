@@ -224,3 +224,26 @@ Zenodo DOI still Houston's click.
    dipole run (~$60 estimate) once the 20k local injection pilot finishes; row 12 full
    1M-spectrum DR1 pilot (~$50) and, if that succeeds, the full DR1 SSL pass (~$300) —
    only once a pod is confirmed SSH-reachable via public IP or the ssh.runpod.io proxy.
+
+## Wave-2 close (2026-09-05 early, PT)
+
+HEAD at close: `35d706f5` (595 commits since 06:00 today — high auto-commit/lane volume,
+`com.you.context-sync` included).
+
+| Item | Result | Receipt |
+|---|---|---|
+| Row 4 (DESI PNG) | v4 confirms v3: p-marginalised f_NL=-1.648, σ~19; wide-angle + 3 imaging splits (E(B-V)/stellar/depth) all null at official-covariance fidelity (\|Δ/σ\|<0.6); WEIGHT_SYS + galactic-latitude re-test at official fidelity still OPEN | `research/desi_png_reproduction/LEDGER4_RESULT_v4_2026-09-04.md` |
+| Row 12 (SSL pilot) | NOT LANDED — both COMMUNITY-tier RunPod attempts (RTX 4090, RTX 3090) failed SSH within 15 min each; terminated per contract; $0.27 spent; no staging/training ran | `pipelines/p3_anomaly_engine/ssl_pilot/ROW12_PILOT_2026-09-04.md` |
+| Row 16(i) full-parent dipole | Non-null on 3.2M full parent (z=+4.44), axis-shifted 295° from strict subset | `ROW16I_FULL_PARENT_2026-09-04.md` |
+| Row 16(ib) axis-shift follow-up | VERDICT: SYSTEMATIC — primary_hc cut alone drops it to z=+0.68, dropping DES leg alone to z=+0.48, axis unstable ~100° across QC cuts, mask-leakage sim leaks 0.19% alone. Closed as null; P4′ paragraph drafted | `ROW16IB_AXIS_SHIFT_2026-09-04.md` |
+| Row 16(iv) chirality×structure | 15/17 pre-registered stats run, all null vs spiral density, anomaly positions, redshift, CMB axes; free-fit dipole 0.44% below its own null | `ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md` |
+| Row 13 pilot Part A (N=20k) | Pixel-level calibration resolved: measured slope +0.0167±0.0089 vs naive identity ~47σ off, vs mixture-corrected identity ~2.9-3.0σ (real, not noise-floor) | `pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md` |
+| Row 15b entropy sector | Spectator/tensor transfer identical (scheme-independent to 7e-4); F_eff≥25.82 both schemes; viability condition pre-bounce, curvaton potential itself still not derived | `research/track_a3_multichannel/row15b_entropy_sector/ROW15B_ENTROPY_SECTOR_2026-09-04.md` |
+| PSU gates S6-S11 | S6 RESOLVED, S8 RESOLVED, S7 NOT (uniform-factor-2 lit check pending), S9/S10 PARTIAL (second-order kernel K_c open), S11 NOT (Zenodo upload is Houston-only) | `research/theory_audit/psu_gates_S6_S11_2026_09_04.md` |
+| P4′ paper | v4P.0.6 — row-16 disclosure integrated (full-parent non-null + systematic verdict); readiness unchanged at 95 | `project-context/SSOT/paper-4p/status.md` |
+
+**Click-list delta:** P4′ sign-off read must now use v4P.0.6 (not v4P.0.5); A3M framing
+read stays v3M.0.19 (unchanged); paper-su venue decision still open; namaster-proof
+ASCL/Zenodo packaging still Houston-gated; RunPod public-IP/SECURE-tier pod approval
+still needed for the row-12 pilot (did not land tonight — two COMMUNITY-tier attempts
+both failed SSH).

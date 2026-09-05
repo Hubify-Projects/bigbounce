@@ -1,4 +1,4 @@
-# New-session prompt — BigBounce + Hubify (v9, written 2026-09-04 late evening; supersedes v8)
+# New-session prompt — BigBounce + Hubify (v10, written 2026-09-05 early PT; supersedes v9)
 
 Paste everything below the line into a fresh session inside `~/Desktop/CODE_YOU/bigbounce`
 (`git pull --ff-only` first). State as of close is in
@@ -82,7 +82,20 @@ through D-A3-14 and D-PSU-1) → `HUBIFY_POSITIONING_2026-09-04.md` →
 `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5 (ASCL/Zenodo kit).
 
 ## Where things stand
-- P4′ v4P.0.5 and ECH Note v1N.0.5: readiness 95, kits ready; wait only on Houston.
+- **Wave-2 close (2026-09-05 early)**: row 16(i) full-parent dipole is non-null
+  (z=+4.44) but row 16(ib) closes it as QC/footprint SYSTEMATIC (primary_hc cut alone
+  drops z to +0.68, DES-leg-drop alone to +0.48, axis unstable ~100° across cuts);
+  row 16(iv) chirality×structure ran 15/17 pre-registered stats, all null; row 13's
+  N=20k pixel-injection calibration is resolved (real ~2.9-3σ discrepancy vs the
+  mixture-corrected identity, not noise-limited); row 4 (DESI PNG) v4 closes wide-angle
+  + 3 imaging splits at official-covariance fidelity, all null, WEIGHT_SYS/galactic-
+  latitude re-test still open; row 15b shows entropy/tensor transfer scheme-independent;
+  PSU gates S6/S8 RESOLVED, S9/S10 PARTIAL, S7/S11 NOT; P4′ bumped to v4P.0.6 (row-16
+  disclosure integrated, readiness still 95); row 12 SSL pilot did NOT land (two
+  COMMUNITY-tier RunPod pods both failed SSH within 15 min). See
+  `SESSION_HANDOFF_2026-09-04.md` "Wave-2 close" section for full receipts.
+- P4′ v4P.0.6 and ECH Note v1N.0.5: readiness 95, kits ready; **sign-off read must now
+  use v4P.0.6** (not v4P.0.5); wait only on Houston.
 - **A3M v3M.0.19: readiness 75; ROUNDS STOPPED (R2).** Six boards (R3–R8) run tonight;
   fifth consecutive round with no physics/numerical error; row-19 general-λ (the last
   Houston-gated open item) answered — no-go generalizes to all P(X) k-essence. No further
@@ -100,35 +113,36 @@ through D-A3-14 and D-PSU-1) → `HUBIFY_POSITIONING_2026-09-04.md` →
   running; confirm before starting any new compute lane.
 
 ## TERMINAL GOAL (run until done; never stop early)
-1. **Row 16 program.** Check `pipelines/p4prime_chirality_test/injection_pilot/row16_local/`
-   for a DONE/FAILED marker — if DONE, analyse the N=20k injection-recovery result
-   (compare to the label-level 887k curve, state whether it's conservative or not); if
-   still running, let it finish (resumable from `scale20k_pairs.parquet`) and analyse when
-   it lands. Then: full-parent (8.47M-galaxy) dipole on a **reachable** RunPod pod (list
-   and terminate stray pods first; confirm SSH before staging data). Then, on local CPU
-   (no GPU needed): chirality × cosmic-web-environment and chirality × anomaly-catalogue
-   cross-correlations against the existing DESI DR1 LSS and anomaly-catalogue-v2 tables.
-2. **Row 12 program.** Retry the full 1M-spectrum DR1 SSL pilot on a SECURE-tier GPU or a
-   different region (two COMMUNITY-tier attempts both failed SSH within 15 min tonight —
-   don't repeat the same pool). Confirm SSH reachability before any data transfer; then
-   run the pipeline (already built, compiles clean) start to finish with backup-3plus.
-3. **Row 15 open items.** An entropy sector through the A2 backgrounds (needed for the
-   curvaton dilution factor F ≥ 22.35 to attach to a real matter-bounce background); CXB11
-   Eqs. 62–64 not yet re-derived.
-4. **paper-su S6–S11 + venue.** Close the remaining pre-registered items and settle a
-   venue choice; this is the path off readiness 65.
-5. **namaster-proof batch 3 (value-level rule, pre-registered) + OTS Bitcoin-anchor
-   confirmation + PyMaster cross-check.** Packaging for ASCL/Zenodo is otherwise ready
-   per `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5 — prep the
+1. **Row 12 program (public-IP pod).** Retry the full 1M-spectrum DR1 SSL pilot on a
+   SECURE-tier GPU or a different region with a confirmed public IP + reachable 22/tcp
+   (or the `ssh.runpod.io` proxy) — two COMMUNITY-tier attempts both failed SSH within
+   15 min on 2026-09-04; don't repeat the same pool. List and terminate any stray pods
+   first, confirm SSH reachability before any data transfer, then run the pipeline
+   (already built, compiles clean) start to finish with backup-3plus.
+2. **Row 16 next steps.** A retrained D4-equivariant classifier against a human-vetted
+   held-out set (the 16(ib) systematic verdict points at classification-confidence as
+   one driver); Euclid Q1 domain adaptation; the chirality × cosmic-web-void test once a
+   DESI void/LRG catalogue product is on disk (not yet — row 16(iv)'s anomaly/redshift/
+   CMB-axis cross-correlations are done and null, but a void/environment catalogue was
+   not available this pass).
+3. **paper-su S7/S9/S10 + venue.** S7 needs an equation-level literature read (0903.0631
+   / 1612.02036) to resolve the uniform-factor-2 discrepancy; S9/S10 need the second-order
+   ρ-slice / constant-mode kernel K_c; then settle a venue choice — this is the path off
+   readiness 65. (S6/S8 are RESOLVED; S11 is Houston-only Zenodo upload.)
+4. **namaster-proof batch 3 (value-level rule, pre-registered) / OTS upgrade / PyMaster
+   cross-check.** Packaging for ASCL/Zenodo is otherwise ready per
+   `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` §5 — prep the
    tagged-tarball + upload-metadata (DOI minting itself is Houston's click).
-6. **Ledger #4 residuals.** Wide-angle terms, E(B−V)/stellar-density/depth systematics
-   splits (find or request the pixweight VAC), own-covariance at official-product
-   fidelity if a RunPod pod becomes reachable.
-7. **A3M: no further review rounds without a science decision.** The paper is at the
+5. **Ledger #4 (DESI PNG): WEIGHT_SYS + galactic-latitude re-test at official-product
+   fidelity, then the LRG channel.** v4 closed wide-angle + the 3 imaging splits (E(B-V)/
+   stellar/depth) at official-covariance fidelity, all null; WEIGHT_SYS is the sample's
+   own correction weight and the highest-impact remaining check, still at earlier
+   diagonal-sigma fidelity.
+6. **A3M: no further review rounds without a science decision.** The paper is at the
    fifth-consecutive-clean-round floor; the Houston framing read (item 5 in the click-list,
    `SSOT/paper-a3m/status.md` v3M.0.15→v3M.0.19) is the gate before any submission step —
    do not spend another board on it until that read happens or a new science question
-   opens (e.g. row 4, 12, 13, or 16 feeding back into Track A).
-8. **Hygiene every round.** Directive-G bundle, Convex/site/timeline sync with headed QA,
+   opens (e.g. row 4, 12, or 16 feeding back into Track A).
+7. **Hygiene every round.** Directive-G bundle, Convex/site/timeline sync with headed QA,
    manifests validated, ledger + handoff updated, next prompt written, ordered click-list
    kept current. Stop only when every item is done or Houston-only.
