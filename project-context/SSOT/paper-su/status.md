@@ -230,3 +230,22 @@ accordingly; the paper no longer implies -55/16 is "the same physics in a
 third variable." 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp, md5
 `780b079e88e4ade112b35517edece020`. Readiness held at 65 — ROUNDS STOPPED
 (R2), unchanged.
+
+## v1S.0.6 (2026-09-05) — S9b: intrinsic term does not close the gap; open; rounds stopped; readiness 65
+
+`research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md` computes the
+intrinsic flat-slice initial-data term named in v1S.0.5 directly:
+f^intr_NL = 5*sqrt(3*eps)*(3-eps)/18 * r_i/(W-1) (= 5*sqrt(2)/8 * r_i/(W-1) at
+eps=3/2). It VANISHES in the growing-mode-dominated limit that defines the
+delta N value -55/16, for any t_f-independent r_i — it is not +-15/16, and
+-55/16 + f^intr does not equal -5/2. The residual, 5(6-eps)/24, is unchanged
+and does NOT arise in the initial data: it arises in the super-Hubble
+evolution step between the flat slice at t_i and the uniform-density slice
+at t_f (the separate-universe map versus the in-in evolution), with the
+dropped shift term (1/3)*integral(d_i N^i dt) named as a candidate, not
+asserted. The -55/16 sentence is replaced accordingly: NOT RECONCILED,
+stated as an open item. 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp,
+md5 `13b2e4b0f935e7275fdde03e93c41f2c`, mirrored to
+`public/papers/paper_su_criterion_v1S.0.6.pdf` and
+`site/public/papers/paper_su_criterion_v1S.0.6.pdf`. Readiness held at 65 —
+ROUNDS STOPPED (R2), unchanged.

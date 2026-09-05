@@ -773,3 +773,9 @@ the comoving-slice δN (−5) is fully reconciled; the flagship −35/16 is unaf
 
 **Why:** `research/theory_audit/psu_gates_S9_S10_2026_09_05.md` (S9) computed the ρ-slice
 map directly rather than asserting reconciliation by analogy.
+
+**S9b follow-up (2026-09-05, paper-su v1S.0.6, A3M v3M.0.22):** the intrinsic term named
+above was computed directly (`psu_gate_S9b_intrinsic_term_2026_09_05.md`) and VANISHES in
+the growing-mode limit that defines −55/16 — it does not close the gap. The residual,
+5(6−ε)/24, is now attributed to the super-Hubble evolution step between slices, not the
+initial data, and −55/16 remains stated as an open, unreconciled item.

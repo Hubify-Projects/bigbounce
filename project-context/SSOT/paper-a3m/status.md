@@ -1193,3 +1193,21 @@ hboxes >10pt, 18 pp, md5 `91d5a6511eb0169054855b5fae85960e`, mirrored to
 `public/papers/a3_multichannel_arxiv_v3M.0.21.pdf` and
 `site/public/papers/a3_multichannel_arxiv_v3M.0.21.pdf`. Readiness held at
 75 — ROUNDS STOPPED (R2), unchanged.
+
+## v3M.0.22 (2026-09-05) — S9b derivation-statement correction; rounds still stopped
+
+Same S9b follow-up as paper-su v1S.0.6
+(`research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md`): the
+intrinsic flat-slice initial-data term named in v3M.0.21 vanishes in the
+growing-mode-dominated limit that defines -55/16, so it cannot be the
+closure of the gap to f_NL^rho=-5/2. Sec. II's cross-check paragraph and
+Appendix A (Bianchi-I subsection) are corrected: the residual, 5(6-eps)/24,
+is now attributed to the super-Hubble evolution step between the flat and
+uniform-density slices, not the initial data, and the -55/16 value is
+stated as NOT RECONCILED, open. Only the comoving-slice delta N value (-5)
+is fully reconciled; the flagship in-in monopole -35/16 is unaffected.
+4-pass, 0 undef refs, 0 overfull hboxes >10pt, 18 pp, md5
+`afae524cbc3b660978951ae5a675f2c4`, mirrored to
+`public/papers/a3_multichannel_arxiv_v3M.0.22.pdf` and
+`site/public/papers/a3_multichannel_arxiv_v3M.0.22.pdf`. Readiness held at
+75 — ROUNDS STOPPED (R2), unchanged.
