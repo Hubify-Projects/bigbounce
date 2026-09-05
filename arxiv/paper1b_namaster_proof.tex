@@ -680,14 +680,19 @@ are content bindings, not digital signatures, an authorization system, or
 protection against coordinated replacement without an external anchor.
 Schema version 1 has no migration requirement yet; a future incompatible
 schema will require an explicit reader or conversion path. The blind
-shortcut-detection test (Sec.~\ref{sec:blind-test}) establishes a shortcut
-detector, not a fraud detector: it cannot in principle catch metadata forgery
-(an adversary who runs the shortcut and then writes the honest execution
-trace by hand), a semantically wrong but equally expensive computation, or
-numerical drift below the declared tolerance. It exercises this repository's
-own spin-0 MASTER estimator rather than NaMaster itself, and its seal is a
-process-level control rather than a cryptographic pre-registration against an
-external timestamp.
+shortcut-detection test (Sec.~\ref{sec:blind-test}) establishes a detector of
+\emph{structural} shortcuts in instrumented steps, not a fraud detector and
+not a detector of value-level shortcuts taken downstream of the instrumented
+operator: it cannot in principle catch metadata forgery (an adversary who
+alters the harness itself and writes a fabricated honest execution trace by
+hand), the effective-multipole class demonstrated to escape as S6
+(\S\ref{sec:blind-test-s6}), a semantically wrong but equally expensive
+computation, or numerical drift below the declared tolerance. It exercises
+this repository's own spin-0 MASTER estimator rather than NaMaster itself
+(S3, open); its seal establishes commit ordering, not an external witness,
+and an OpenTimestamps anchor is submitted but pending Bitcoin confirmation
+(S2, in progress) as of this revision, not yet a completed external
+timestamp.
 
 \section{Availability}
 
