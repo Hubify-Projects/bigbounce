@@ -243,6 +243,13 @@
         "a3-r5-18-gammacr-coverage",
         "a3-row11a-choudhury-sign"
       ]
+    },
+    {
+      "id": "a3-row14-cs-window",
+      "depends_on": [
+        "a3-4-row10-r-ns",
+        "p2-fnl-adjudication-inin-from-scratch"
+      ]
     }
   ],
   "external_data": [

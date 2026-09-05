@@ -1,0 +1,140 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row14-cs-window",
+  "title": "Ledger row 14 - joint dependence of the tensor-to-scalar ratio r and the squeezed local f_NL on the contraction's scalar sound speed c_s, and the (empty) window in which r < 0.036 with an acceptable f_NL",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Li, Quintin, Wang & Cai 2016 - matter bounce with a k-essence field: shape function Eq. (4.19), r = 24 c_s (Eq. 3.18), extended no-go theorem",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1612.02036",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Quintin, Sherkatghanad, Cai & Brandenberger 2015 - perturbations and non-Gaussianity through a nonsingular bounce; Eq. (31) |Delta zeta/zeta| >~ 49.1 and Eq. (44) f_NL ~ (Delta zeta)^2/(Delta t_B) M_p^2",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1508.04141",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai, Easson & Brandenberger 2012 - the matter bounce's large-r problem",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1206.2382",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Garriga & Mukhanov 1999 - perturbations in k-inflation; P_zeta ~ 1/(epsilon c_s) and the c_s-dependent canonical variable",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/hep-th/9904176",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chen, Huang, Kachru & Shiu 2007 - cubic action and non-Gaussianity for general single-field P(X,phi); the 1/c_s^2 scaling of f_NL",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/hep-th/0605045",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL), the tensor bound tested here",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2110.00483",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Planck 2019 - local f_NL = -0.9 +/- 5.1, the non-Gaussianity bound tested here",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1905.05697",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "A2 linear-transmission module - the three bounce backgrounds and the adiabatic-vacuum scalar evolution with exact matter-basis projection, imported directly",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lab in-in adjudication of the matter-contraction f_NL at c_s = 1 (comoving-gauge isoceles squeezed limit -35/16), the c_s -> 1 cross-check target",
+      "type": "internal-artifact",
+      "locator": "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger row 10 - r = 16 epsilon = 24 at c_s = 1, bounce-invariant; the starting point of this row",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/row14_cs_window/row14_cs_window.py",
+      "entrypoint": "cd research/track_a3_multichannel/row14_cs_window && python3 row14_cs_window.py",
+      "sha256": "23c2dacf5c57db6c3bdc111f5a923858f0e1f57f89abb451e6cf9bd5679dc350"
+    }
+  ],
+  "environment": {
+    "python": "python3.14.6 + numpy + scipy + sympy + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "4.5 s (measured, field wall_seconds in results.json)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~6 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic (no RNG, no data files, no network). r(c_s) is DERIVED symbolically from the c_s-dependent Mukhanov-Sasaki problem (z^2 = 2 a^2 eps/c_s^2, BD normalisation 1/sqrt(2 c_s k)) by two independent routes - the small-argument Hankel limit for general power-law index and the exact q = 2 mode functions - rather than imported from the inflationary formula. Li+2016's Eq. (4.19) shape function is transcribed once; both of its limits are taken symbolically here and checked against their quoted f_NL^equil and f_NL^local."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/row14_cs_window/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row14_cs_window/row14_cs_window.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row14_cs_window/row14_cs_window.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) analytic.r_dust_str == '16*c_s*epsilon' and analytic.r_exact_equals_16_eps_cs == true (two independent symbolic routes), reproducing Li+2016 Eq. (3.18) r = 24 c_s at eps = 3/2; (b) fnl_cs.f_NL_equilateral_matches_paper == true and fnl_cs.f_NL_squeezed_matches_paper == true (their Eq. 4.19 limits re-derived here), with fnl_cs.reproduces_lab_in_in_minus_35_over_16 == true; (c) numeric.*.max_abs_lambda_ratio_minus_1 <= 1e-10 and every numeric.*.rows[*].r_after_over_16epscs == 1.0, i.e. the bounce transfer is c_s-independent and r stays 16 eps c_s through all three A2 backgrounds; (d) window.cs_for_r_0.036 == 1.5e-3 with window.at_cs_for_r_0.036.f_NL_pre == 3.611e6 and f_NL_after (Quintin) == 5.959e5; (e) window.acceptable_fNL_requires.Planck_1sigma_5.1.min_c_s_per_background.quintin == 0.4440 with min_r == 10.66, so the gap between the two requirements is a factor ~296 in c_s; (f) window.no_go.verdict == 'NO VIABLE c_s WINDOW'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 14, promoted 2026-09-04 from row 10 by decision D-A3-10",
+    "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md (derivation, c_s table, no-go check, paper-ready sentences)",
+    "research/track_a3_multichannel/row10_r_ns/ROW10_R_NS_2026-09-04.md (r = 16 eps = 24 at c_s = 1, bounce-invariant)",
+    "research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.md (the lab's independent in-in -35/16 that Li+2016's c_s -> 1 limit reproduces exactly)",
+    "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the null is stated in its own terms as a limitation of the modelled background)",
+    "model-dependence disclosed: the general-c_s f_NL inherits Li+2016's k-essence kinetic sector; the lab's own in-in machinery is c_s = 1 only, and this lab's pressureless-dust / canonical-scalar contraction does not itself provide c_s < 1"
+  ]
+}
