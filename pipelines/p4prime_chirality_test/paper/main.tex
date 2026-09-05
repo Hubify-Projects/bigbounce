@@ -58,8 +58,8 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FSC}}
 
-\newcommand{\paperVersion}{v4P.0.5}
-\newcommand{\paperTimestamp}{September 2, 2026}
+\newcommand{\paperVersion}{v4P.0.6}
+\newcommand{\paperTimestamp}{September 4, 2026}
 
 \begin{document}
 \raggedbottom
@@ -979,6 +979,101 @@ reference only, not a calibrated detection threshold or a substitute for
 the injection-recovery-calibrated $A_{95}^{\rm obs}$ of
 Sec.~\ref{sec:dipole}.
 
+\subsection{Robustness and disclosure: pixel-level calibration, full-parent behavior, and structure cross-correlations}
+\label{sec:robustness_disclosure}
+
+\textbf{Pixel-level calibration of the injection--recovery curve.} The
+label-level injection--recovery curve used to set $A_{95}^{\rm obs}$
+(Sec.~\ref{sec:dipole}) is a catalog-level identity check; a companion
+image-level pixel-parity injection through the production equivariant
+classifier ($N=20{,}000$ Legacy DR9 cutouts, 10 seeds, true mirror-flip of
+raw pixels rather than relabeling) recovers a pixel-level slope
+$dA/df=+0.0167\pm0.0089$, far below both the naive label-identity slope
+($+0.434$, $47\sigma$ from the pixel result) and the mixture-corrected
+label identity ($-0.0093$, $2.9\sigma$). Table~\ref{tab:pixel_calib}
+records this comparison. The production pipeline suppresses pixel-level
+parity leakage well below what the label-level injection model alone would
+predict, consistent with the baseline residual already disclosed in
+Sec.~\ref{sec:catalog_classifier}.
+
+\begin{table}[t]
+\centering
+\caption{Pixel-level injection calibration vs.\ label-identity models
+(image-level parity injection, $N=20{,}000$, 10 seeds).}
+\label{tab:pixel_calib}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Model & $dA/df$ & $\sigma$ from pixel result \\
+\hline
+Pixel-level injection (measured) & $+0.0167\pm0.0089$ & --- \\
+Naive label identity & $+0.434$ & $47\sigma$ \\
+Mixture-corrected label identity & $-0.0093$ & $2.9\sigma$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\textbf{Full-parent selection behavior.} The primary channel's
+$887{,}472$-row \texttt{primary\_hc \&\& !raw\_flip\_qc\_unsafe} selection
+exists to exclude rows flagged by post-review raw-flip QC and
+low-confidence classification. Re-running the same fixed-occupancy null on
+the full $3{,}200{,}420$-galaxy parent (no QC/confidence cuts) gives a
+dipole $A=0.566\%$ at $z=+4.44$, axis RA~$278.6^\circ$/Dec~$+25.3^\circ$. A
+graded QC sweep localizes this to a single cut: removing only the
+\texttt{primary\_hc} confidence cut restores the null ($z=+0.68$), while
+removing only the raw-flip cut does not ($z=+9.13$, at a third,
+near-antipodal axis); a per-imaging-leg partition shows the excess is also
+removed by dropping the DES leg alone ($z=+0.48$) but not by any Galactic
+cut. The axis is inconsistent across selections (shifting by
+$107.5^\circ$), and the monopole-plus-mask-leakage floor in this
+population is $0.19\%$. This pattern -- signal present only in the
+population the primary QC cuts are designed to exclude, removed by a
+single confidence or footprint-leg cut, with an unstable axis -- is
+consistent with a confidence-cut/footprint systematic rather than a shared
+physical signal, and is reported here as a systematic, not subtracted from
+or used to adjust the primary channel's null result.
+
+\textbf{Structure cross-correlations.} A pre-registered battery of 15
+chirality$\times$structure statistics (local spiral surface-density
+quartiles; angular cross-correlation with 1,244 spectroscopic anomaly
+positions; five spectroscopic-redshift bins; and dipole projections along
+the CMB dipole and CMB quadrupole--octopole axes plus the catalog's own
+free best-fit direction), each tested against 1,000-realization
+label-shuffle and sky-rotation nulls with a $3\sigma$
+look-elsewhere-corrected threshold declared in advance, returns no
+detection: environment ($\chi^2$ $z=-0.38$, trend $z=+0.17$), the anomaly
+cross-correlation (all eight angular bins and the nearest-neighbor excess
+null; the largest raw excursion falls from $-2.37\sigma$ to $-1.05\sigma$
+under a rigid-rotation null), redshift (trend $z=-1.63$), and the two fixed
+astrophysical axes ($z=+0.21$, $-0.13$) are all null, and the free
+best-fit dipole ($0.44\%$) is below its own look-elsewhere-corrected null
+($0.38\%\pm0.16\%$, $z=+0.32$). Table~\ref{tab:structure_null} summarizes.
+Two data limits apply: the environment test uses a parity-blind projected
+surface-density proxy in place of a 3D void/filament catalog, since the
+DESI DR1 LSS products on disk are QSO-only at $z=0.8$--$2.1$ with no
+overlap with the $z\lesssim0.3$ spiral sample and no low-$z$ void catalog
+was available; and Shamir's claimed axis is not tested, as the sources this
+paper draws its quoted amplitudes from quote no explicit RA/Dec for it.
+
+\begin{table}[t]
+\centering
+\caption{Chirality$\times$structure cross-correlation nulls (representative
+statistics; full battery of 15 in the archived analysis).}
+\label{tab:structure_null}
+\begin{ruledtabular}
+\begin{tabular}{lcl}
+Statistic & $z$ & Result \\
+\hline
+Environment density, $\chi^2$ & $-0.38$ & null \\
+Environment density, trend & $+0.17$ & null \\
+Anomaly cross-corr.\ (rotation null) & $-1.05$ & null \\
+Redshift trend & $-1.63$ & null \\
+CMB dipole axis & $+0.21$ & null \\
+CMB quadrupole--octopole axis & $-0.13$ & null \\
+Free best-fit direction & $+0.32$ & null \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 % ============================================================
 \section*{Data Availability}
 % ============================================================
@@ -1014,7 +1109,15 @@ pin for its numbers: it is served alongside its git-tracked source at
 \url{https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p4prime_chirality_test/paper/main.tex},
 and the underlying catalog/quarantine/null-array revision it draws from is
 independently pinned by the versioned Zenodo DOI
-10.5281/zenodo.21461899 above.
+10.5281/zenodo.21461899 above. The three robustness/disclosure results of
+Sec.~\ref{sec:robustness_disclosure} are individually reproducible from
+their registered manifests:
+\artifact{reproducibility/manifests/experiments/row13-image-level-injection-pilot.json},
+\artifact{reproducibility/manifests/experiments/p4p-row16i-full-parent-dipole.json},
+and
+\artifact{reproducibility/manifests/experiments/p4p-row16ib-axis-shift.json},
+the last two registered in
+\artifact{reproducibility/manifests/programs/galaxy-chirality.json}.
 
 % ============================================================
 \section*{Software, Facilities, and Acknowledgements}
