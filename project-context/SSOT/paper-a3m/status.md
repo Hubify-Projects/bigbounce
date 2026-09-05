@@ -24,13 +24,36 @@ O(ε²) artefact; Choudhury right) and in-coverage ratio corrected to
 permitted (R7); site data sync pending in a separate bundle. See "v3M.0.15"
 section below. Prior: v3M.0.14. R6 truth-audit closure: 16 genuinely-new-real findings (0 physics errors) closed — T_B mapping corrected (thirteen decades above BBN, was eleven), Channel I amplitude re-paired to the free-gamma NANOGrav posterior, abstract calibrated to body, DESI DR1 v3 reproduction sentence added to Sec. VI. ROUNDS STOPPED under directive R2 (3rd consecutive verification round) — next board only after a science decision on the (ii) list (A3-4, A3-1e). Readiness held at 75. See "v3M.0.14" section below. Prior: v3M.0.13. Abstract trimmed to the PRD-regular ≤307-word cap (was ~415 words), no science change, every claim retained at its evidential strength; see "v3M.0.13" section below. Readiness held at 75. Prior: v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (18 pp / 0 undef refs / md5 4ce035b9139cbb74d80e84037c43a5fa)
-version: v3M.0.18 (2026-09-04, R8 closure under D-A3-13 — see "v3M.0.18" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (18 pp / 0 undef refs / md5 fdbf93bfacc6cc644e103ff522d15381)
+version: v3M.0.19 (2026-09-04, D-A3-14 row 19 — see "v3M.0.19" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
 headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 25 (R1+R2 closed, rounds stop per directive R2) / packaging 20 = ~95; awaiting Houston's final personal review for 100 per directive P)
-submission_status: draft, readiness 75 — ROUNDS STOPPED (R2): R3-R8 today, genuinely-new 19/13/18/16/16/15, no physics error found in R8; next board only after a science decision on row 19
+submission_status: draft, readiness 75 — ROUNDS STOPPED (R2); row 19 answered — no lambda opens the window; next board only after a further science decision
+
+## v3M.0.19 (2026-09-04) — D-A3-14 (ledger row 19): no-go generalized to full P(X)
+
+`research/track_a3_multichannel/row19_lambda/ROW19_LAMBDA_2026-09-04.md` answers
+R8-01's open item: restoring the cubic-action coefficient `lambda` does not
+open the window. `r=24c_s` and the bounce's own cubic term
+`Delta_fnl^bounce(c_s)` are exactly `lambda`-independent
+(`d(c_s^2)/d(P_XXX) = d(Sigma)/d(P_XXX) = 0`; the `lambda` vertex's S1
+coefficient is odd about a symmetric bounce and cancels, verified to
+`2.8e-7`). `fnl^pre(c_s, L) = -245/16 + 105/(8 c_s^2) - 30L` (`L =
+lambda/Sigma`, squeezed) reproduces Li et al. 2016 on their line and
+`-35/16` at `c_s=1, L=0`. No `L` in the physical range opens the window;
+cancelling the `1/c_s^2` divergence needs `lambda/Sigma = 7/(16 c_s^2)`,
+i.e. `s = 39/16`, far outside `|s| << 1`. The DBI line's best case gives
+`r_min = 12.57` at `c_s = 0.524` (349x BICEP/Keck). The `lambda=s=0`
+qualifier is dropped from the abstract, Sec. VIII, and Next steps; the
+general-`lambda` open item is removed. Reproducibility statement now
+cites `row19_lambda/row19_lambda.py`, `results.json`,
+`row19_lambda.log`, and manifest `a3-row19-lambda.json`. Recompiled
+18 pp, 0 undef refs, 0 overfull hboxes >10pt, md5
+`fdbf93bfacc6cc644e103ff522d15381` (source dir == site/public/papers ==
+public/papers). Readiness held at 75 — ROUNDS STOPPED (R2); row 19
+answered — no lambda opens the window.
 
 ## v3M.0.18 (2026-09-04) — D-A3-13 (ledger row 19): R8 truth-audit closure, scope statement for the no-go
 
