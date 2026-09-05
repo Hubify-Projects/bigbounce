@@ -1,0 +1,33 @@
+==============================================================================
+ROW 15b -- entropy (spectator) sector through the three A2 backgrounds
+==============================================================================
+[row 18a import] Quintin, k eta_B = 0.001: lam_T = 6.058597, lam_zeta^S1 = 6.058597, lam_zeta^S2 = 0.969576 -> Lambda_S2 = lam_T/lam_zeta^S2 = 6.24871
+
+--- quintin  (label=Quintin2015-type, eta_B=0.449601, eta_off=-0.625211, eta_star=8.99202)
+  k eta_B |   lam_sigma  |    lam_T     | lam_sig/lam_T-1 | dlam/lam (m eta_B = 1e-6, 1e-5, 1e-4, 1e-3, 1e-2)
+    0.001 | 4339.8061383 | 4339.4605895 |       +7.96e-05 | -4.23e-07  -4.23e-05  -4.23e-03  -3.72e-01  -9.86e-01
+    0.003 | 4330.3460228 | 4330.0012229 |       +7.96e-05 | -4.23e-07  -4.23e-05  -4.23e-03  -3.73e-01  -9.86e-01
+     0.01 | 4226.0940318 | 4225.7574762 |       +7.96e-05 | -4.27e-07  -4.27e-05  -4.27e-03  -3.76e-01  -9.85e-01
+  lam_T(k eta_B) = lam_T(0)[1 - c (k eta_B)^2], c = 262  ->  Delta n_T = 2 dln lam_T/dln k = -1.048e-03 at k eta_B = 1e-3
+
+--- LQC  (label=LQC-effective-dust, eta_B=1.06015, eta_off=-2.58711, eta_star=21.2029)
+  k eta_B |   lam_sigma  |    lam_T     | lam_sig/lam_T-1 | dlam/lam (m eta_B = 1e-6, 1e-5, 1e-4, 1e-3, 1e-2)
+    0.001 | 1016.2633968 | 1016.2633962 |       +5.49e-10 | -8.28e-08  -8.28e-06  -8.28e-04  -8.08e-02  -9.02e-01
+    0.003 | 1013.8444917 | 1013.8444912 |       +5.49e-10 | -8.29e-08  -8.29e-06  -8.29e-04  -8.09e-02  -9.01e-01
+     0.01 |  987.2717655 |  987.2717650 |       +5.48e-10 | -8.38e-08  -8.38e-06  -8.37e-04  -8.17e-02  -8.99e-01
+  lam_T(k eta_B) = lam_T(0)[1 - c (k eta_B)^2], c = 285.3  ->  Delta n_T = 2 dln lam_T/dln k = -1.141e-03 at k eta_B = 1e-3
+
+--- poly  (label=poly-analytic-nonLQC, eta_B=0.57735, eta_off=-0.000336721, eta_star=11.547)
+  k eta_B |   lam_sigma  |    lam_T     | lam_sig/lam_T-1 | dlam/lam (m eta_B = 1e-6, 1e-5, 1e-4, 1e-3, 1e-2)
+    0.001 | 7325.0154929 | 7325.0154877 |       +7.07e-10 | -5.42e-07  -5.44e-05  -5.43e-03  -4.61e-01  -9.64e-01
+    0.003 | 7310.6778327 | 7310.6778328 |       -9.96e-12 | -5.46e-07  -5.44e-05  -5.43e-03  -4.62e-01  -9.64e-01
+     0.01 | 7152.0411650 | 7152.0411451 |       +2.78e-09 | -5.48e-07  -5.49e-05  -5.48e-03  -4.65e-01  -9.63e-01
+  lam_T(k eta_B) = lam_T(0)[1 - c (k eta_B)^2], c = 236.1  ->  Delta n_T = 2 dln lam_T/dln k = -9.446e-04 at k eta_B = 1e-3
+
+==============================================================================
+[viability] r_after = 24 Lambda^2 / (1 + Lambda^2 (4/3) X^2),  X = r_dec Mpl/sigma_*
+  scheme S1: Lambda = 1.00000, single-field r_after = 24; X_min(r<0.036) = 22.3439, X_min(r<0.01) = 42.4176, F_eff_min = 25.8199
+  scheme S2: Lambda = 6.24871, single-field r_after = 937.1; X_min(r<0.036) = 22.3603, X_min(r<0.01) = 42.4262, F_eff_min = 25.8199
+  -> X_min is scheme-independent to 7.32e-04 (the tensor and the spectator share lambda, so Lambda cancels between numerator and curvaton term in the large-X limit)
+
+[done] 2.4 s -> results.json
