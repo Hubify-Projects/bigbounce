@@ -869,30 +869,40 @@ shortcut-detection test (Sec.~\ref{sec:blind-test}) establishes a detector of
 \emph{structural} shortcuts in instrumented steps, not a fraud detector and
 not a detector of value-level shortcuts taken downstream of the instrumented
 operator: it cannot in principle catch metadata forgery (an adversary who
-alters the harness itself and writes a fabricated honest execution trace by
-hand), the effective-multipole class demonstrated to escape as S6
-(\S\ref{sec:blind-test-s6}), a semantically wrong but equally expensive
-computation, or numerical drift below the declared tolerance. No
-value-level rule is pre-registered in batch 2: a shortcut that reproduces
-correct decoupled bandpowers by a different internal path is not exercised
-by R0--R6, and S6 (effective-multipole) is a design limitation of the current
-rule set rather than a claim about the primitive's scope.
+alters the harness itself, or who fabricates a declared intermediate such as
+\(p:=MC\) as the extended S5 arm does 6/6 in batch 3), a semantically wrong
+but equally expensive computation, or numerical drift below the declared
+tolerance. Batch 3's value-level rule R7
+(\S\ref{sec:blind-test-batch3}) catches the effective-multipole class S6
+6/6, but only because R7 was pre-registered against S6's own definition; a
+shortcut that reproduces a correct \emph{declared} \texttt{pseudo\_cl}
+by a different internal path, without ever computing it from the honest
+operator, is not exercised by R0--R7. All detection rates in this paper
+(R1--R7) are class-level, not per-run, probabilities
+(\S\ref{sec:blind-test-result}).
 
 Remaining open items, numbered independently of the shortcut classes S1--S6
 to avoid collision:
 \begin{description}[leftmargin=1.6cm,style=nextline]
-\item[L1 (estimator).] It exercises this repository's own spin-0 MASTER
-  estimator rather than NaMaster/PyMaster itself in the blind test (open;
-  a PyMaster cross-check is feasible on this platform and is future work).
+\item[L1 (estimator).] The blind test exercises this repository's own
+  spin-0 MASTER estimator rather than NaMaster/PyMaster itself; a separate,
+  non-blind cross-check now validates that estimator against
+  \texttt{pymaster} 3.0.1 to floating-point round-off
+  (\S\ref{sec:pymaster-crosscheck}), but an equivalent instrumented hook has
+  not been added inside NaMaster itself, so the blind-test claim does not
+  transfer to NaMaster verbatim (closed for the estimator; open for the
+  hook).
 \item[L2 (external anchor).] Its seal establishes commit ordering, not an
-  external witness, and an OpenTimestamps anchor was submitted 2026-09-04
-  19:31 but is pending Bitcoin confirmation as of this revision, not yet a
-  completed external timestamp (in progress).
+  external witness. \texttt{ots upgrade} now returns \emph{Timestamp
+  complete} with a Bitcoin attestation for the batch-1 and batch-2 stamps;
+  the batch-3 stamp is submitted and pending as of this revision (partially
+  closed).
 \item[L3 (mechanism coverage).] S1--S3 in batch 2 are all detected by the
-  same trace-mismatch mechanism (R3/R4); S4's five detections are all the
-  \emph{reference} disjunct of R6, and the \emph{cross-run} disjunct that
-  would exercise a realistic cache-substitution signal fired 0/5 and is
-  untested (open; the batch-3 rule set is designed to exercise it).
+  same trace-mismatch mechanism (R3/R4); S4's five detections were all the
+  \emph{reference} disjunct of R6. Batch 3's S4b arm exercised the
+  \emph{cross-run} disjunct for the first time (4/6 fired it; the other 2
+  collapsed to the reference disjunct via a named source run,
+  \S\ref{sec:blind-test-batch3}) (closed).
 \item[L4 (single run).] The batch-2 sequence was run once and not repeated.
   Git history proves the order of surviving commits, not the absence of
   discarded attempts; an OpenTimestamps anchor does not close that gap
