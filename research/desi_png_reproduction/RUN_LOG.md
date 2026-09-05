@@ -221,3 +221,64 @@ direction (n_shot wandered to O(500) with f_NL flipping sign, BFGS found a
 second local nll minimum at n_shot~550) -- an honest non-convergence, not
 force-fit; resolved by fixing n_shot=0 per the same physical convention
 fit_fnl.py's shot-noise-double-counting bug fix already established.
+
+---
+
+## v4 2026-09-04
+
+Task: (1) wide-angle correction to the official-products refit; (2) fit
+f_NL on imaging-systematics high/low splits (EBV, STARDENS, GALDEPTH_Z,
+NGC+SGC combined) at v3's official-window/official-covariance fidelity
+(not v2's ad-hoc diagonal-sigma method), rescaled for split volume.
+
+**Item 1 — wide-angle (DONE, genuine null).** `wideangle_check.py`
+constructs pypower's `PowerSpectrumOddWideAngleMatrix` (Beutler/Castorina-
+White, arXiv:2106.06324) for the official theory k-grid and confirms
+BOTH analytically-inspected (source read of `wide_angle.py`) and by the
+library's own runtime guard (`ValueError: "Wide-angle order 1 produces
+only odd poles"`) that leading-order (wa_orders=1, the only order pypower
+implements) wide-angle corrections populate ONLY odd output multipoles
+(ell=1,3,5); every even-ell (0,2,4) block is exactly zero to machine
+precision. The official DESI window matrix used in `fit_fnl_official.py`
+carries theory rows for ell=0,2,4 only. Consequence: applying the
+wide-angle correction changes f_NL by exactly 0.0 for both p=1.6 and
+p=1.0 — **v3's official-products numbers ARE the wide-angle-corrected
+numbers** (p=1.6: f_NL=-2.169+/-25.3; p=1.0: f_NL=-1.127+/-13.1;
+p-marginalised: -1.648+/-19.2; unchanged from v3). Second-order
+(wa_orders=2) wide-angle is not implemented in pypower and is
+parametrically suppressed by an extra factor of (pair separation)/d_eff
+~1e-2 to 1e-1 for DESI QSO. Result: `outputs/wideangle_check.json`.
+
+**Item 2 — systematics splits at official fidelity (DONE).**
+`pk_estimator_qso_splits.py` (run by the prior instance, finished before
+this session resumed) produced the 12 split P(k) files
+(`outputs/pk_split_{NGC,SGC}_{EBV,STARDENS,GALDEPTH_Z}_{low,high}.json`).
+`fit_fnl_splits.py` fits (b1, f_NL) per split (p=1.6, n_shot=0 fixed per
+v3's documented degeneracy finding) against the OFFICIAL window matrix +
+OFFICIAL EZmock covariance (same machinery as `fit_fnl_official.py`),
+combining NGC+SGC via n_data-weighted mean before rebinning to the
+covariance's coarse k-grid. Volume/noise rescaling: no separate
+split-specific covariance exists (same disclosed approximation as v2's
+splits), so the FULL-sample official covariance is reused as-is for each
+half-sample split — this is conservative in the wrong direction (a
+~50%-of-sample split has genuinely higher shot noise / larger true
+variance than the full sample), so the resulting sigma_fnl values are
+likely UNDER-estimated by roughly a factor ~sqrt(2), a caveat carried
+into the result doc rather than silently corrected with an ad-hoc
+rescaling factor.
+
+| Systematic | f_NL(high) | f_NL(low) | Delta f_NL | sigma_Delta | Delta/sigma |
+|---|---|---|---|---|---|
+| E(B-V) | -20.70 +/- 21.17 | -19.01 +/- 20.26 | -1.69 | 29.30 | -0.06 |
+| Stellar density | -6.37 +/- 21.69 | -4.00 +/- 27.08 | -2.37 | 34.70 | -0.07 |
+| Galactic depth (z-band) | -36.90 +/- 21.03 | -18.25 +/- 23.76 | -18.66 | 31.73 | -0.59 |
+
+No split exceeds |Delta/sigma| > 2 (largest is GALDEPTH_Z at 0.59sigma).
+Even applying the conservative ~sqrt(2) under-estimate correction to
+sigma_Delta (i.e. halving Delta/sigma further), no split would cross the
+2sigma flag. Full results: `outputs/imaging_splits_fnl_v4.json`.
+
+**Follow-up session closed (2026-09-04).** Result:
+`LEDGER4_RESULT_v4_2026-09-04.md`. Manifest
+`ledger4-desi-dr1-qso-fnl-reproduction-v4` (schema-valid). Ledger row 4
+updated.
