@@ -180,3 +180,58 @@ column (both wish-list; `m4` `=DA3M-R5-G2`) ·
 disagreement (`:929–930`, "a genuine discrepancy left unresolved"); the unreproducibility of
 Choudhury *et al.*'s spectrum (`:1010–1012`, `=DA3M-R5-F11/R3-R3`); which of S1/S2 is physical
 (§VII C(i)); scheme-S1 assumption A4 through $H=0$ (`:355–361`).
+
+# 5. Per-class counts per leg
+
+Every finding in every raw is mapped exactly once. Legs: Grok API (11 findings), Gemini API
+(10 findings, 7 questions n/a), Claude Fable (20 findings; 7 questions excluded).
+
+| leg | verdict word | findings | new-real | re-flag | falsified | opinion/genre | carried packaging |
+|---|---|---|---|---|---|---|---|
+| Grok_brutal (grok-4.3) | REJECT | 11 | **3** (E2→`R6-13`, E3→`R6-08`, E5→`R6-03`+`R6-04`) | 3 (E6,M1,M2) | 2 (E1,N1) | 2 (M3,N2) | 1 (E4) |
+| Gemini_cosmology (gemini-3.1-pro-preview) | MAJOR REVISIONS | 10 | **6** (E1,E2,E5,M1,N2,N3) | 0 | 2 (E6,N1) | 0 | 2 (E3,E4) |
+| Claude Fable 5.1 (INT) | major-revisions | 20 | **11** (M1h,M2h,M3ii,M3iii,M4,M5,m1,m10,m11,m14,m15; m7 dup of M3iii) | 4 (m2,m6,m8,m9) | 3 halves (M1,M2,M3i) | 4 (m3,m4,m5,m12) | 1 (m13) |
+
+**Canonical totals:** **16 genuinely-new REAL** (`R6-01`…`R6-16`; 1 MAJOR + 1 MAJOR-lite + 14 MINOR),
+of which `R6-01` is a REAL residual of `DA3M-R3-02`, `R6-06` a recurrence of `DA3M-08`, `R6-14` a
+residual of `DA3M-R5-04`, `R6-08` a residual of `DA3M-R5-16` · **8 RE-FLAG** · **7 FALSIFIED** ·
+**8 OPINION/GENRE** · 1 carried packaging · **0 BLOCKER**. **Clean-wave count: 0.**
+
+**Physics status.** No physics error was found in the paper's derivations: every number this
+auditor recomputed from the committed JSONs reproduces, and the Fable leg's independent hand-check
+of Tables I/III/IV/V/VI and Eqs. (3),(4),(7),(11),(A2),(A3) also reproduces. Exactly ONE quantitative
+statement is numerically wrong against the lab's own committed artifact — `R6-01`, the §V C bounce
+temperature — and its error direction makes the paper's null *stronger*, not weaker. `R6-02` is a
+reference-value mismatch with the same property. Everything else is abstract-vs-body calibration,
+attribution, and sourcing. Both reviewer verdict words (REJECT / MAJOR REVISIONS) rest on findings
+that this audit classes as falsified, re-flag, or abstract-wording (see `O4`, `F1`): **no leg
+identified a defect in the physics.**
+
+# 6. DESI DR1 reproduction v3 — the sentence §VI may state
+
+Source: `research/desi_png_reproduction/LEDGER4_RESULT_v3_2026-09-04.md` (official
+data.desi.lbl.gov QSO `full-shape-bao-clustering/v1.0` window matrix, full-18-randoms measured
+$P_\ell$, and EZmock covariance; $z=0.8$–$2.1$; $k\in[0.003,0.08]$, 46 dof; $b_1$ and $f_{\rm NL}$
+free, $n_{\rm shot}$ fixed at 0).
+
+**Recommended sentence (at evidential strength — this is the strongest form the artifact supports):**
+
+> An independent re-analysis of the public DESI DR1 QSO sample using DESI's own published window
+> matrix, full-randoms $P_\ell$, and EZmock covariance ($z=0.8$–$2.1$, $k\le0.08\,h\,{\rm Mpc}^{-1}$,
+> 46 dof) returns $\fnlloc = -2.2\pm25$ at $p=1.6$ — $0.06\sigma$ from DESI's published
+> $-3.6^{+9.0}_{-9.1}$ — which reproduces the published constraint's *sign and scale* while showing
+> that DR1's constraining power at this configuration is an order of magnitude too weak to separate
+> $-35/16$ from $-35/8$, from zero, or from the published central value; the near-coincidence of the
+> recovered central value with $-35/16$ is a coincidence, not evidence.
+
+Mandatory accompanying caveat (one clause or a footnote — do **not** drop it): the reproduction's
+$\sigma=25$ is ~2.8× the published $9.0$ because wide-angle corrections
+(`PowerSpectrumOddWideAngleMatrix`) are not applied and only 2 of 5 imaging-systematics splits were
+run; artifact `research/desi_png_reproduction/`, ledger `LEDGER4_RESULT_v3_2026-09-04.md`.
+
+**What §VI may NOT say:** that the reproduction *confirms*, *supports*, or *is consistent with*
+$-35/16$ specifically (the 0.0007σ distance to $-35/16$ is meaningless at $\sigma=25$ — the fit is
+equally 0.086σ from zero); that it validates this paper's own LSS forecast; or that it is a DESI
+collaboration result. It is a lab reproduction of a published constraint, and its value here is
+exactly that: it establishes that the pipeline this paper's Channel III forecasts rest on
+reproduces the published DR1 number on official products.
