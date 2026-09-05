@@ -182,3 +182,33 @@ Open Houston-gated decision: does the lab fund S7 (equation-level Cai
 reconciliation) and S8 (numerical USR validation), or is the note rescoped
 (Brief Report / comment, or held pending the Bianchi-I route)? Running R3 on
 an editorially-patched v1S.0.3 would measure referee variance, not progress.
+
+## v1S.0.4 — 2026-09-05 — S7 literature correction (rounds stay stopped)
+
+Per `research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md` (VERDICT:
+LOCATED — equation and mechanism; unprinted step not individually
+identifiable): Cai, Xue, Brandenberger & Zhang (2009) Eq. (37) is the correct
+squeezed shape function (equals the sum of their Eqs. 27–32 and Li, Quintin,
+Wang & Cai (2017) Eq. 4.19 at $c_s=1$); their quoted amplitudes Eqs. (38)–(41)
+and Fig. 5 are uniformly twice Eq. (37) in every printed configuration, so the
+correct isoceles amplitude is $-35/16$, not the printed $-35/8$. Li et al.'s
+$-35/16$ (their Eq. 5.1 at $c_s=1$) evaluates the same Eq. (4.19); their rows
+are an independent general-$(\epsilon,c_s)$ derivation coinciding with Cai's
+at $\epsilon=3/2$, not a reuse of Cai's rows. Replaced the paper's Sec. I
+Cai-comparison sentence with this equation-cited statement; the 4/3-vs-8/3
+counterfactual arithmetic from v1S.0.3 is unchanged.
+
+Recompiled: 4-pass pdflatex, 0 undefined refs, 0 overfull hboxes >10pt
+(largest 8.31pt, a pre-existing table alignment overfull unrelated to this
+edit). PDF md5 `32ef7a73c509eeb5cf4383f2e3ee00fe`, 6 pages, 438,804 bytes,
+mirrored byte-identical to `site/public/papers/paper_su_criterion_v1S.0.4.pdf`
+and `public/papers/paper_su_criterion_v1S.0.4.pdf`. Convex
+`paperVersions:bump` id `k577w3x0yrqxp98jm9kxg9q6ss8dtcye`; readback via
+`paperVersions:current` confirms version/md5/pages match. `activityFeed:add`
+id `j5752bnpcs3h0egbb871zrer3s8dv8bq`.
+
+This is a literature-statement correction, not a new review round — S7 is
+now CLOSED per the audit. Readiness held at 65. Review rounds remain STOPPED
+under directive R2; the open Houston-gated science/venue decision from
+v1S.0.3 (fund S8 numerical USR validation and rescope, vs. hold) is
+unchanged.
