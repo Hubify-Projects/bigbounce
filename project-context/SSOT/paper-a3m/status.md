@@ -1149,3 +1149,32 @@ ratio), `A3-cs-bounce` (the `c_s`-dependence of `Δf_NL^bounce`), and the
 carried `A3-ns`, `A3-dN`, `DESI-4` items. Site data sync (`papers.ts`,
 `live-status.ts`, `reviewTimeline.ts`) is out of this task's scope
 boundary (`site/src/` not touched) and is deferred to a separate bundle.
+
+## v3M.0.20 — 2026-09-05 — S7 literature correction; rounds still stopped
+
+Same literature-statement correction as paper-su v1S.0.4, applied wherever
+this paper's Sec. IV.B ("The Cai et al. factor of two") narrowly attributed
+the factor-of-two slip to "specifically their Eqs. (38)–(40)". Per
+`research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md`, the slip is
+uniform across Cai et al. (2009) Eqs. (38)–(41) and their Fig. 5 (all four
+printed configurations), downstream of the correct Eq. (37). No other
+"reuses Cai's rows" phrasing was present in this paper's text. This is a
+literature-statement correction, not a new review round — ROUNDS STAY
+STOPPED under directive R2; none of the open (ii)-ledger science items
+(`A3-S2r`, `A3-cs-bounce`, `A3-ns`, `A3-dN`, `DESI-4`) are touched.
+
+Recompiled: 4-pass pdflatex + bibtex, 0 undefined refs, 0 overfull hboxes
+>10pt. PDF md5 `541a6b8a76c9cb2875c13dc15246bcce`, 18 pages, 762,230 bytes,
+mirrored byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.20.pdf`
+and `public/papers/a3_multichannel_arxiv_v3M.0.20.pdf`. arXiv tarball
+`SSOT/arxiv_tarballs/a3_multichannel_arxiv_v3M.0.20.tar.gz` sha256
+`0dbe3064bb2802e3eabe58639104078280246ba2a6d456ee0f21484ceaa27fd6`, rebuilt
+from scratch (main.tex + main.bbl + 2 figures), standalone extract+recompile
+smoke test PASS (0 undefined refs). Convex `paperVersions:bump` id
+`k573f5pzg2fdz11hwhnppasqax8dvsby`; readback via `paperVersions:current`
+confirms version/md5/pages match. `activityFeed:add` id
+`j57c2n5c3eq0d00mm346w5qm418dtc38`.
+
+Readiness held at 75. ROUNDS STOPPED (directive R2), unchanged from v3M.0.19.
+Site data sync (`papers.ts`, `live-status.ts`, `reviewTimeline.ts`) covered
+in a separate task bundle.
