@@ -1,0 +1,72 @@
+{
+  "n_pixels": 24149,
+  "n_galaxies": 949584,
+  "nside": 64,
+  "shamir_axis": "UNAVAILABLE - no explicit RA/Dec quoted for Shamir's axis in the P4-prime paper; not fabricated",
+  "cmb_dipole_l264_b48": {
+    "axis_galactic_l_b": [
+      264.0,
+      48.0
+    ],
+    "amplitude_frac": -0.001995681094615852,
+    "vs_random_axis_null": {
+      "obs": 0.001995681094615852,
+      "null_mean": 0.0019492367388208945,
+      "null_std": 0.0013024660600821115,
+      "z": 0.03565878391643434,
+      "p_two_sided": 0.974025974025974,
+      "n_null": 1000
+    },
+    "vs_pixel_permutation_null": {
+      "obs": 0.001995681094615852,
+      "null_mean": 0.00172745428421659,
+      "null_std": 0.0012907609725540995,
+      "z": 0.2078051754760659,
+      "p_two_sided": 0.8491508491508492,
+      "n_null": 1000
+    }
+  },
+  "cmb_quad_oct_l250_b60": {
+    "axis_galactic_l_b": [
+      250.0,
+      60.0
+    ],
+    "amplitude_frac": -0.0013817897197622385,
+    "vs_random_axis_null": {
+      "obs": 0.0013817897197622385,
+      "null_mean": 0.0019419711107455729,
+      "null_std": 0.0012967976032303074,
+      "z": -0.431972876559865,
+      "p_two_sided": 0.7642357642357642,
+      "n_null": 1000
+    },
+    "vs_pixel_permutation_null": {
+      "obs": 0.0013817897197622385,
+      "null_mean": 0.0015288045859038139,
+      "null_std": 0.001144980063763407,
+      "z": -0.1283994986413613,
+      "p_two_sided": 0.9080919080919081,
+      "n_null": 1000
+    }
+  },
+  "free_best_fit_dipole": {
+    "amplitude_frac": 0.00437318222046439,
+    "direction_galactic_l_b": [
+      66.97185281613085,
+      -3.566874874244917
+    ],
+    "direction_equatorial_ra_dec": [
+      303.4143265664659,
+      27.960045958198755
+    ],
+    "vs_pixel_permutation_max_null": {
+      "obs": 0.00437318222046439,
+      "null_mean": 0.0038492185522988522,
+      "null_std": 0.0016246526594431523,
+      "z": 0.32250811588559863,
+      "p_two_sided": 0.7582417582417582,
+      "n_null": 1000
+    },
+    "seconds": 0.4511222839355469
+  }
+}

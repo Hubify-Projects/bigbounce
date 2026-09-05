@@ -104,6 +104,155 @@ built on parity fluctuations δ = s − ⟨s⟩ about the sample's own mean, so 
 residual handedness monopole (whatever its calibrated value) cancels identically.
 
 ## 2. Results
+
+All parity numbers are fluctuations δ = s − ⟨s⟩ (s = +1 CW, −1 CCW); 1,000 realisations per null; z and the empirical two-sided p are both quoted. Detection threshold (pre-registered): local p < 1.6×10⁻⁴ (|z| ≳ 3.8), i.e. 3σ after ×17 look-elsewhere.
+
+### (a) Environment — parity vs local spiral surface density
+
+Density = k=20 nearest-neighbour projected surface density from the catalogue's own 3,201,160 spirals (parity-blind); 949,584 HC-labelled spirals split into density quartiles (237,396 each).
+
+| Quartile | median log₁₀Σ₂₀ [sr⁻¹] | ⟨δ⟩ [%] | ±1σ [%] |
+|---|---|---|---|
+| Q1 | 5.542 | +0.061 | 0.205 |
+| Q2 | 5.709 | -0.019 | 0.205 |
+| Q3 | 5.845 | -0.210 | 0.205 |
+| Q4 | 6.042 | +0.167 | 0.205 |
+
+χ² across quartiles = 1.810 (null 2.585 ± 2.041) → **z = -0.38, p = 0.708**.
+Linear trend of ⟨δ⟩ vs log Σ = +0.00127 (null +0.00054 ± 0.00414) → **z = +0.17, p = 0.857**.
+
+### (b) Anomaly catalogue v2 × parity — angular cross-correlation
+
+1,244 anomaly positions × 949,584 HC spirals; 4,126,067 pairs inside 5°. Median anomaly→nearest-spiral separation 0.066°.
+
+| θ bin [deg] | pairs | w(θ) = ⟨δ⟩ [%] | z (label shuffle) | p | z (sky rotation) | p |
+|---|---|---|---|---|---|---|
+| 0.020–0.040 | 297 | -0.895 | +0.16 | 0.854 | -0.06 | 0.959 |
+| 0.040–0.080 | 892 | +6.618 | +1.80 | 0.070 | +1.17 | 0.239 |
+| 0.080–0.159 | 3,564 | -1.905 | -0.82 | 0.438 | -0.58 | 0.582 |
+| 0.159–0.316 | 13,849 | +0.160 | +0.10 | 0.912 | +0.01 | 0.998 |
+| 0.316–0.631 | 53,264 | +0.815 | +0.90 | 0.371 | +0.48 | 0.601 |
+| 0.631–1.257 | 211,609 | +1.116 | +0.44 | 0.655 | +1.04 | 0.294 |
+| 1.257–2.507 | 807,727 | +0.085 | -0.16 | 0.883 | +0.03 | 0.974 |
+| 2.507–5.000 | 3,034,865 | -0.406 | -2.37 | 0.019 | -1.05 | 0.291 |
+
+Nearest-neighbour parity excess: ⟨δ⟩ = -6.607% → z = -1.76 (p = 0.084) vs label shuffle, z = -0.81 (p = 0.455) vs sky rotation.
+
+The largest excursion anywhere in the battery is the outer 2.5–5° bin at z = −2.37 (p = 0.019) against the label-shuffle null — but the **same bin sits at z = −1.05 (p = 0.29) against the sky-rotation null**, i.e. it is an excursion of the large-scale selection/footprint structure that the rotation null absorbs, not a parity–anomaly association. It is a factor ~120 above the pre-registered detection p-threshold and is reported as noise.
+
+### (c) Redshift — parity in spec-z bins
+
+231,549 spirals with DESI spec-z (ZWARN=0, p_eq>0.6, matched-primary-deduped), 5 equal-count bins (46,310 each).
+
+| median z | ⟨δ⟩ [%] | ±1σ [%] |
+|---|---|---|
+| 0.038 | +0.957 | 0.465 |
+| 0.074 | +0.235 | 0.465 |
+| 0.106 | -0.397 | 0.465 |
+| 0.149 | -0.542 | 0.465 |
+| 0.233 | -0.253 | 0.465 |
+
+χ² across bins = 6.882 (null 3.777 ± 2.595) → **z = +1.20, p = 0.180**.
+Linear trend vs z = -0.0562 (null -0.0083 ± 0.0293) → **z = -1.63, p = 0.109**. The monotone-looking decline from +0.96% at z≈0.04 to −0.54% at z≈0.15 is a 1.6σ effect against its own null and is **not** a detection.
+
+### (d) Preferred axes — parity dipole amplitude
+
+Uniform-pixel-weight dipole on the NSIDE=64 map of the HC sample (24,149 occupied pixels, 949,584 galaxies).
+
+| Axis | A [%] | z (pixel-permutation null) | p | z (random-axis null) | p |
+|---|---|---|---|---|---|
+| CMB dipole (l=264°, b=48°) | -0.200 | +0.21 | 0.849 | +0.04 | 0.974 |
+| CMB quadrupole–octopole (l≈250°, b≈60°; Planck) | -0.138 | -0.13 | 0.908 | -0.43 | 0.764 |
+| Free best-fit (max over all directions) | 0.437 | +0.32 | 0.758 | — | — |
+
+Free best-fit direction: (l, b) = (67.0°, -3.6°), (RA, Dec) = (303.4°, 28.0°), amplitude 0.437%, against a max-amplitude null of 0.385% ± 0.162% — the look-elsewhere-corrected significance is z = +0.32. It is **not** aligned with either CMB axis (>60° away), which is what an unconstrained fit to noise looks like.
+
+UNAVAILABLE - no explicit RA/Dec quoted for Shamir's axis in the P4-prime paper; not fabricated.
+
+Figure: `chirality_structure_summary.png` (all four tests, observed vs null, with the 3.8σ local threshold marked).
+
 ## 3. Verdicts
+
+| Test | Statistic | Result | Verdict |
+|---|---|---|---|
+| (a) environment | χ² over density quartiles | z = -0.38, p = 0.71 | **NULL** |
+| (a) environment | trend vs log Σ | z = +0.17, p = 0.86 | **NULL** |
+| (b) anomaly × parity | w(θ), 8 bins | max \|z\| = 2.37 (2.5–5°, shuffle null), 1.05 under the rotation null | **NULL** |
+| (b) anomaly × parity | nearest-neighbour excess | z = -1.76, p = 0.08 | **NULL** |
+| (c) redshift | χ² over 5 spec-z bins | z = +1.20, p = 0.18 | **NULL** |
+| (c) redshift | linear trend vs z | z = -1.63, p = 0.11 | **NULL (suggestive threshold not reached)** |
+| (d) CMB dipole axis | A = -0.200% | z = +0.21, p = 0.85 | **NULL** |
+| (d) CMB quad/oct axis | A = -0.138% | z = -0.13, p = 0.91 | **NULL** |
+| (d) Shamir axis | — | no RA/Dec quoted in P4′; not fabricated | **NOT TESTED (unavailable)** |
+| (d) free best-fit dipole | A = 0.437%, LEE-corrected | z = +0.32, p = 0.76 | **NULL** |
+
+**Zero of the 15 executed pre-registered statistics reaches even the local 3σ
+mark, let alone the 3.8σ look-elsewhere-corrected threshold.** At the evidential
+strength these data support: the lab's own galaxy-spin parity field shows **no
+association with local environment density, with the anomaly catalogue's
+positions, with redshift, or with any of the tested preferred axes**. The
+strongest single excursion (2.37σ local, p = 0.019) is footprint structure, not
+signal — it drops to 1.05σ when the null is a rigid rotation of the tracers
+rather than a relabelling.
+
+These are null results and are published as nulls (directive R6). They extend the
+P4′ dipole null from "no preferred axis" to "no parity structure correlated with
+any of the environmental, positional, redshift, or axis handles the lab can
+currently apply" — a strictly stronger statement about the same catalogue, and a
+constraint on any bounce/parity-violation mechanism that would imprint handedness
+correlated with structure at these scales and amplitudes.
+
 ## 4. Deviations from pre-registration
+
+1. **Cosmic-web environment → density proxy.** Pre-registered fallback exercised:
+   the DESI DR1 LSS products on disk are QSO-only at z = 0.8–2.1 with no overlap
+   with the z ≲ 0.3 spirals and no void/filament product. The environment test is
+   therefore a projected k-NN density proxy, **not** void-vs-filament membership.
+   A real void test needs a low-z void catalogue (SDSS/DESI BGS) the lab does not
+   currently hold.
+2. **Shamir axis not tested.** The P4′ paper quotes Shamir's *amplitudes* only,
+   with no RA/Dec for an axis. Recorded UNAVAILABLE rather than invented; the
+   free best-fit direction stands in as the catalogue's own dipole direction.
+3. **Null for test (d) changed.** The pre-registered within-pixel label shuffle is
+   *degenerate* for any pixel-level dipole statistic — it preserves every pixel
+   mean exactly, so the null variance is identically zero. Substituted:
+   (i) random-axis rotation (already pre-registered for (d)) and (ii) permutation
+   of the per-pixel parity means among occupied pixels. Both are strictly harder
+   nulls than a galaxy-level shuffle for a large-scale statistic. Documented in
+   the script header.
+4. **Test count.** 15 of the 17 pre-registered statistics were executed (the
+   Shamir-axis statistic is unavailable; a third fixed axis therefore drops, and
+   the free fit absorbs its slot). The ×17 Bonferroni threshold was **kept**
+   rather than loosened to ×15.
+5. **HC sample size.** 949,584 HC rows carry a CW/CCW label, versus the 887,472
+   quoted in P4′ — the latter is a further *supported-pixel* cut specific to that
+   paper's dipole channel. The larger, cleanly-defined set is used here and the
+   difference is stated rather than reconciled by cutting to match.
+6. Full parent (8.47M) parity run not executed: only 3.2M rows carry `is_spiral`
+   and only the HC subset carries a trustworthy CW/CCW label, so the parent adds
+   selection noise rather than statistics. The parent **is** used, parity-blind,
+   as the density field for test (a).
+
 ## 5. Paragraph P4′ (or a new note) may state
+
+> Beyond the all-sky dipole, we tested whether the catalogue's handedness field
+> correlates with any structural handle available to us. Using parity
+> fluctuations about the sample mean (so the residual handedness monopole
+> cancels identically), and 1,000-realisation label-shuffle and sky-rotation
+> nulls, we find no association between spin parity and (i) local projected
+> spiral surface density, in quartiles spanning a factor of three (χ² z = -0.38,
+> trend z = +0.17); (ii) the angular positions of 1,244 spectroscopic anomaly
+> targets, over 0.02°–5° (all eight w(θ) bins and the nearest-neighbour parity
+> excess consistent with null; the largest excursion, -2.37σ in the outermost
+> bin against a relabelling null, falls to -1.05σ against a rigid-rotation null
+> and is footprint structure); (iii) redshift, in five equal-count spectroscopic
+> bins to z = 0.3 (trend z = -1.63); or (iv) the CMB dipole (l = 264°, b = 48°)
+> and CMB quadrupole-octopole (l ~ 250°, b ~ 60°) axes, whose parity dipole
+> amplitudes are -0.20% and -0.14% at z = +0.21 and -0.13. A free best-fit
+> dipole reaches 0.44%, below its own look-elsewhere-corrected null
+> (0.38% +/- 0.16%, z = +0.32), and points nowhere near either CMB axis. With a
+> 3-sigma-after-look-elsewhere threshold declared in advance, none of the fifteen
+> statistics is a detection. The catalogue's null therefore extends from
+> "no preferred spin axis" to "no parity structure correlated with environment,
+> anomaly positions, redshift, or the CMB axes" at these amplitudes.
+
