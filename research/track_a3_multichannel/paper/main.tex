@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.20}
+\newcommand{\paperVersion}{v3M.0.21}
 \newcommand{\paperTimestamp}{September 5, 2026}
 
 \begin{document}
@@ -323,7 +323,13 @@ diffeomorphism whose net second-order effect on the squeezed bispectrum
 Appendix~\ref{app:derivation} records as an identity, without deriving the
 mechanism that produces it -- so the naive squeezed-limit comparison of the
 two calculations' raw values compares two different variables, not two
-disagreeing predictions of the same one. We adopt
+disagreeing predictions of the same one. This equation-level closure is
+established for the comoving-slice $\delta N$ value ($-5$) only: a direct
+second-order continuation of the uniform-density variable itself gives
+$f_{\rm NL}^\rho=-5/2$ at dust, which does not reproduce $-55/16$ quoted above
+(gap $15/16$); the residual is attributed to an intrinsic initial-data
+bispectrum omitted from that $\delta N$ integration (Appendix~\ref{app:bianchi}),
+not to a slice-labelling error. We adopt
 Eq.~\eqref{eq:fnl} throughout this paper as the value of $\zeta_{\rm Mald}$,
 the variable every downstream channel (transmission, PTA, PBH, LSS)
 inherits, and carry $-35/8$ in parallel wherever a channel distinguishes
@@ -1735,7 +1741,17 @@ traceless, and no traceless linear-in-$\zeta_L$ response can supply a
 monopole. It therefore cannot by itself close the $-25/8$ gap between
 $\delta N^c=-5$ and the in-in monopole $-15/8$; the gap is closed only by
 $[X]$, the shift term no separate-universe construction contains
-(Sec.~\ref{app:decomp} above).
+(Sec.~\ref{app:decomp} above). A direct second-order continuation of the
+uniform-density (ρ-slice) $\delta N$ variable itself -- as opposed to a
+Bianchi-I correction to the isotropic construction -- gives
+$f_{\rm NL}^\rho=5(2\epsilon-15)/24=-5/2$ at $\epsilon=3/2$ (isotropic, initial
+label); this does not reproduce the separate-universe value $-55/16$ quoted
+in Sec.~\ref{sec:crosscheck} (gap $15/16$), and the residual is attributed to
+the intrinsic flat-slice initial-data bispectrum omitted from that $\delta N$
+integration, not to a slice-labelling error
+(\texttt{research/theory\_audit/}\allowbreak\texttt{psu\_gates\_S9\_S10\_2026\_09\_05.md}). Only
+the comoving-slice $\delta N$ value ($-5$) is fully reconciled by the map
+derived here; the flagship in-in monopole $-35/16$ is unaffected.
 
 %======================================================================
 \section*{Reproducibility statement}
