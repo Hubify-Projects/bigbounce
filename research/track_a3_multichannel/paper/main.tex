@@ -1214,6 +1214,132 @@ pre-bounce amplitude survived transmission unsuppressed, which
 Sec.~\ref{sec:transmission} shows it does not.
 
 %======================================================================
+\section{The tensor amplitude of the modelled background}
+\label{sec:tensor}
+
+Every result above is conditional on the canonical, constant-sound-speed
+dust contraction used for the amplitude and its transmission. That
+background is not free of its own tensor spectrum. In the dressed-metric
+scheme the tensor and scalar canonical variables obey the identical
+equation $\mu''+(k^2-a''/a)\mu=0$ from the identical Bunch--Davies
+vacuum, so $r=16\epsilon$ identically for this class of background, and
+the dust contraction's $\epsilon=3/2$ fixes $r=24$. Integrating the
+tensor mode independently through each of the three bounce backgrounds
+of Sec.~\ref{sec:transmission} returns transfers equal to the scalar
+transfers to better than $8\times10^{-5}$, so $r$ is unchanged by the
+bounce, $r_{\rm after}=23.996$--$24.000$: this exceeds the BICEP/Keck
+bound $r<0.036$~\cite{BicepKeck2021} by a factor of $\sim670$. This is the
+long-known matter-bounce large-$r$ problem~\cite{CaiEasson2012,
+Quintin2015}, applied here to the lab's own background rather than
+assumed from the literature: because tensors and scalars share the same
+geometric potential, no bounce in the class considered relieves it.
+Similarly, the exact dust contraction gives $n_s=1$; the observed
+$n_s=0.9649$ is an anchor fixing the contraction's equation of state to
+$w=-0.0029$ via $n_s-1=12w/(1+3w)$, not a prediction of the model. The
+model's one genuinely predictive tilt statement is the consistency
+relation $n_T=n_s-1=-0.035$, sharply different from single-field
+inflation's $n_T=-r/8$, and a cheap, falsifiable discriminator that
+survives everything else in this section. Propagating this
+first-order tensor background to nHz through the same kernel used in
+Sec.~\ref{sec:pta_null} gives $\OmGW h^2(f_{\rm yr})=1.7\times10^{-14}$,
+still $10^{5.3}$ below the NANOGrav band: the PTA null of
+Sec.~\ref{sec:pta_null} is unaffected by this section's own tensor
+amplitude. A tensor-sense $r=0.84$ appeared in earlier drafts of this
+program; it is withdrawn here, having been traced to the
+noise-weighted bispectrum shape-overlap coefficient of
+Sec.~\ref{sec:lss}, a shape correlation and not a tensor-to-scalar
+ratio.
+
+%======================================================================
+\section{The joint $(r,\fnl)$ no-go and the curvaton route}
+\label{sec:nogo}
+
+The textbook remedy for a large tensor-to-scalar ratio in a contracting
+background is a reduced constant scalar sound speed $c_s<1$, which
+suppresses $r$ while enhancing the scalar bispectrum. For the dust
+contraction with constant $c_s$, two independent symbolic routes (a
+general-$\nu$ Hankel limit and the exact $q=2$ mode functions) give
+\begin{equation}
+r=16\epsilon\,c_s^{2\nu-2}=24\,c_s,
+\end{equation}
+reproducing Li, Quintin, Wang \& Cai (2016)~\cite{Li2016} Eq.~(3.18) and
+row 10's $r=24$ at $c_s=1$. The squeezed local amplitude, from their
+Eq.~(4.19), is
+\begin{equation}
+\fnl^{\rm pre}(c_s)=-\frac{165}{16}+\frac{65}{8c_s^2},
+\end{equation}
+whose $c_s\to1$ limit reproduces this paper's own from-scratch
+$-35/16$ exactly (Sec.~\ref{sec:parameter}). The transfer through the
+bounce is $c_s$-independent to $\lesssim5\times10^{-11}$ across all
+three backgrounds, because lowering $c_s$ only rescales the mode's
+effective wavenumber and the transfer is already flat over
+$k\eta_B\ll1$.
+
+\begin{table}[t]
+\caption{\label{tab:nogo}The joint $(r,\fnl)$ window in $c_s$
+(Quintin-type background, $T_{\fnl}=0.165$; \texttt{row14\_cs\_window.py}).}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+requirement & $c_s$ & implied $r$ \\
+\colrule
+$r<0.036$ (BICEP/Keck) & $<1.5\times10^{-3}$ & $0.036$ \\
+$\fnl^{\rm after}$ at that $c_s$ & \multicolumn{2}{c}{$6.0$--$9.0\times10^{5}$} \\
+$|\fnl^{\rm after}|\le5.1$ (Planck $1\sigma$) & $\ge0.444$ & $\ge10.7$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The two regions are disjoint by a factor $\sim296$ in $c_s$ (BICEP/Keck-viable
+$c_s<1.5\times10^{-3}$ against Planck-viable $c_s\ge0.444$): no constant-$c_s$
+value keeps both the tensor ratio and the local non-Gaussianity within
+current bounds. This independently reproduces and strengthens Li
+\textit{et al.}'s (2016) own no-go statement (their $r<0.07$ era bound
+gives $c_s\lesssim0.0029$; the tighter current $r<0.036$ moves this to
+$c_s<1.5\times10^{-3}$ and $\fnl^{\rm pre}=3.6\times10^{6}$, a factor
+$3.8$ tighter). The alternative route of Quintin \textit{et al.}
+(2015)~\cite{Quintin2015} -- a scalar-only super-Hubble amplification
+through the bounce rather than a sound-speed change -- also fails on
+the three backgrounds used throughout this paper: their Eq.~(31)
+requires an amplification $\lambda\gtrsim49$ for $r<0.12$, while the
+velocity-dip evaluation of Sec.~\ref{sec:transmission} (Eq.~79 of that
+reference, evaluated on these backgrounds) finds $\lambda=4.0$--$6.1$
+with no net $r$ suppression. \emph{The single-field matter bounce,
+canonical or $k$-essence, is therefore excluded jointly by $r$ and
+$\fnl$ on the backgrounds and channels used in this paper.} This
+sharpens, rather than contradicts, the paper's earlier statements: the
+exact amplitude $-35/16$ and its transmitted values remain correct
+statements about this background, but that background is now shown to
+be observationally excluded on tensor grounds independent of $\fnl$
+itself, and no sound-speed fix rescues it.
+
+A route that survives is a light curvaton-type spectator riding the
+same contraction. Because it obeys the same Mukhanov--Sasaki operator
+as the adiabatic mode at constant $\epsilon$, it inherits the identical
+tilt $n_s-1=12w/(1+3w)$, and for a quadratic curvaton with sudden decay
+fraction $r_{\rm dec}$,
+\begin{equation}
+r=\frac{24}{1+\frac{4}{3}r_{\rm dec}^2(M_{\rm pl}/\sigma_*)^2},\qquad
+\fnl^{\rm curv}=\frac{5}{4r_{\rm dec}}-\frac{5}{3}-\frac{5r_{\rm dec}}{6},
+\end{equation}
+(Lyth--Ungarelli--Wands; Sasaki--Valiviita--Wands, applied here to
+Cai--Xue--Brandenberger's 2011~\cite{CaiXue2011} matter-bounce
+curvaton), which is $(r,n_s)$-tunable to observational viability and
+gives an $O(1)$ non-Gaussianity in its own right ($+9.30$ to $-1.25$,
+negative for $r_{\rm dec}>0.581$). The contraction's own intrinsic
+$-35/16$ does not disappear in this picture; it enters the observable
+bispectrum suppressed by the curvaton weight $(r/24)^2\simeq2\times10^{-6}$
+at $r=0.036$, below any planned survey's reach for any tensor-viable
+$r<11.5$ ($<23$ after this paper's own bounce transfer), and only
+becomes detectable for $r\gtrsim23$ -- essentially the single-field
+value this section excludes. Cai--Xue--Brandenberger's own quoted
+$-320/\pi^4\approx-3.29$ is arithmetic on their order-of-magnitude
+estimate, not an independently derived result, and is not adopted here.
+Converting this route into a concrete, checkable prediction requires an
+entropy-sector kinetic amplification mechanism and a demonstration that
+$\sigma_*$ stays constant across the bounce backgrounds used in this
+paper; neither is modelled here (Sec.~\ref{sec:next}).
+
+%======================================================================
 \section{Discussion}
 \label{sec:discussion}
 
@@ -1620,6 +1746,10 @@ against the committed script output.
   ``Improved Constraints on Primordial Gravitational Waves using Planck,
   WMAP, and BICEP/Keck Observations through the 2018 Observing Season,''
   Phys. Rev. Lett. \textbf{127}, 151301 (2021), arXiv:2110.00483.
+
+\bibitem{CaiXue2011} Y.-F. Cai, W. Xue, and R. Brandenberger,
+  ``Non-Gaussianity in a Matter Bounce,''
+  JCAP \textbf{05}, 011 (2011), arXiv:0912.2951.
 
 \end{thebibliography}
 
