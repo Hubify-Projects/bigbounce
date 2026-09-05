@@ -1,0 +1,69 @@
+==============================================================================
+Row 18(b) A3-cs-bounce: Delta f_NL^bounce(c_s) in scheme S1   (2026-09-04)
+==============================================================================
+S1: z = a  =>  mu'' + (c_s^2 k^2 - a''/a) mu = 0; c_s enters the mode functions ONLY
+through the sound horizon (modes evolved at k_s = c_s k, kernels at physical k).
+Vertices: lane (a) table with eps -> 1/2, eta_sr -> 0, s -> 0, lambda -> 0, c_s kept.
+Configuration: squeezed isoceles k1 = 0.02 k, k eta_B = 0.001.
+
+==========================================================================
+[Quintin2015-type]  eta_B=0.449601  rho_B=0.669989  T_fNL=0.165005
+  [gate c_s=1] total = -0.139818 vs lane (b) -0.139818  (rel 3.29e-06)  Wronskian -0.50000000
+  c_s = 0.44    Delta f_NL^bounce = +14.2918   (V2 +14.294, V1 -2.16e-07, V4 -0.00155, V6+V7 +0.000383)
+              f_NL^pre = +31.6555  T*f_NL^pre = +5.22332  => f_NL^after = +19.5151   r = 10.56
+              V2 coefficient scaling: numeric -102.403253 vs analytic (6c_s^2-5)/c_s^4 = -102.409330
+  c_s = 0.6     Delta f_NL^bounce = +3.05775   (V2 +3.05867, V1 -4.95e-08, V4 -0.000456, V6+V7 +0.000112)
+              f_NL^pre = +12.2569  T*f_NL^pre = +2.02246  => f_NL^after = +5.08021   r = 14.4
+              V2 coefficient scaling: numeric -21.912470 vs analytic (6c_s^2-5)/c_s^4 = -21.913580
+  c_s = 0.8876  Delta f_NL^bounce = +0.0610722   (V2 +0.0613934, V1 -3.4e-09, V4 -0.000101, V6+V7 +2.43e-05)
+              f_NL^pre = +0.000589401  T*f_NL^pre = +9.72543e-05  => f_NL^after = +0.0611694   r = 21.3
+              V2 coefficient scaling: numeric -0.439826 vs analytic (6c_s^2-5)/c_s^4 = -0.439835
+  c_s = 1       Delta f_NL^bounce = -0.139818   (V2 -0.139586, V1 +0, V4 -6.45e-05, V6+V7 +1.54e-05)
+              f_NL^pre = -2.1875  T*f_NL^pre = -0.360949  => f_NL^after = -0.500768   r = 24
+              V2 coefficient scaling: numeric +1.000000 vs analytic (6c_s^2-5)/c_s^4 = +1.000000
+  [window] |f_NL^after| <= 5.1 (with_bounce_term): c_s >= 0.599665  => r >= 14.3920  (399.8 x BICEP/Keck)
+  [window] |f_NL^after| <= 5.1 (row14_no_bounce_cs): c_s >= 0.443971  => r >= 10.6553  (296.0 x BICEP/Keck)
+  [window] f_NL^after changes sign at c_s = 0.897297 (row 14, f_NL^pre alone: 0.887567)
+  [tensor-viable c_s = 0.0015, r = 0.036]  row 14 f_NL^after = 5.959e+05; with the bounce term = 1.381e+11
+
+==========================================================================
+[LQC-effective-dust]  eta_B=1.06015  rho_B=0.500000  T_fNL=0.250000
+  [gate c_s=1] total = -0.104311 vs lane (b) -0.104311  (rel 3.16e-06)  Wronskian -0.50000000
+  c_s = 0.44    Delta f_NL^bounce = +10.666   (V2 +10.6679, V1 +8.3e-11, V4 -0.0012, V6+V7 +0.000293)
+              f_NL^pre = +31.6555  T*f_NL^pre = +7.91386  => f_NL^after = +18.5798   r = 10.56
+              V2 coefficient scaling: numeric -102.380958 vs analytic (6c_s^2-5)/c_s^4 = -102.409330
+  c_s = 0.6     Delta f_NL^bounce = +2.28203   (V2 +2.28282, V1 +3.52e-11, V4 -0.000374, V6+V7 +8.91e-05)
+              f_NL^pre = +12.2569  T*f_NL^pre = +3.06423  => f_NL^after = +5.34627   r = 14.4
+              V2 coefficient scaling: numeric -21.908417 vs analytic (6c_s^2-5)/c_s^4 = -21.913580
+  c_s = 0.8876  Delta f_NL^bounce = +0.0456155   (V2 +0.045826, V1 +6.51e-12, V4 -9.67e-05, V6+V7 +2.17e-05)
+              f_NL^pre = +0.000589401  T*f_NL^pre = +0.00014735  => f_NL^after = +0.0457628   r = 21.3
+              V2 coefficient scaling: numeric -0.439796 vs analytic (6c_s^2-5)/c_s^4 = -0.439835
+  c_s = 1       Delta f_NL^bounce = -0.104311   (V2 -0.104198, V1 +0, V4 -6.7e-05, V6+V7 +1.46e-05)
+              f_NL^pre = -2.1875  T*f_NL^pre = -0.546875  => f_NL^after = -0.651186   r = 24
+              V2 coefficient scaling: numeric +1.000000 vs analytic (6c_s^2-5)/c_s^4 = +1.000000
+  [window] |f_NL^after| <= 5.1 (with_bounce_term): c_s >= 0.606423  => r >= 14.5542  (404.3 x BICEP/Keck)
+  [window] |f_NL^after| <= 5.1 (row14_no_bounce_cs): c_s >= 0.514344  => r >= 12.3443  (342.9 x BICEP/Keck)
+  [window] f_NL^after changes sign at c_s = 0.893575 (row 14, f_NL^pre alone: 0.887567)
+  [tensor-viable c_s = 0.0015, r = 0.036]  row 14 f_NL^after = 9.028e+05; with the bounce term = 1.03e+11
+
+==========================================================================
+[poly-analytic-nonLQC]  eta_B=0.57735  rho_B=0.608998  T_fNL=0.195501
+  [gate c_s=1] total = -0.127111 vs lane (b) -0.127111  (rel 3.86e-06)  Wronskian -0.50000000
+  c_s = 0.44    Delta f_NL^bounce = +12.9911   (V2 +12.9932, V1 +2.15e-08, V4 -0.0014, V6+V7 +0.000347)
+              f_NL^pre = +31.6555  T*f_NL^pre = +6.18868  => f_NL^after = +19.1797   r = 10.56
+              V2 coefficient scaling: numeric -102.406162 vs analytic (6c_s^2-5)/c_s^4 = -102.409330
+  c_s = 0.6     Delta f_NL^bounce = +2.77942   (V2 +2.7803, V1 +6.79e-09, V4 -0.000409, V6+V7 +0.000101)
+              f_NL^pre = +12.2569  T*f_NL^pre = +2.39625  => f_NL^after = +5.17567   r = 14.4
+              V2 coefficient scaling: numeric -21.912997 vs analytic (6c_s^2-5)/c_s^4 = -21.913580
+  c_s = 0.8876  Delta f_NL^bounce = +0.0554909   (V2 +0.0558051, V1 +5.56e-10, V4 -8.8e-05, V6+V7 +2.15e-05)
+              f_NL^pre = +0.000589401  T*f_NL^pre = +0.000115229  => f_NL^after = +0.0556062   r = 21.3
+              V2 coefficient scaling: numeric -0.439830 vs analytic (6c_s^2-5)/c_s^4 = -0.439835
+  c_s = 1       Delta f_NL^bounce = -0.127111   (V2 -0.126879, V1 +0, V4 -5.56e-05, V6+V7 +1.35e-05)
+              f_NL^pre = -2.1875  T*f_NL^pre = -0.427659  => f_NL^after = -0.554769   r = 24
+              V2 coefficient scaling: numeric +1.000000 vs analytic (6c_s^2-5)/c_s^4 = +1.000000
+  [window] |f_NL^after| <= 5.1 (with_bounce_term): c_s >= 0.602041  => r >= 14.4490  (401.4 x BICEP/Keck)
+  [window] |f_NL^after| <= 5.1 (row14_no_bounce_cs): c_s >= 0.472460  => r >= 11.3390  (315.0 x BICEP/Keck)
+  [window] f_NL^after changes sign at c_s = 0.895791 (row 14, f_NL^pre alone: 0.887567)
+  [tensor-viable c_s = 0.0015, r = 0.036]  row 14 f_NL^after = 7.06e+05; with the bounce term = 1.255e+11
+
+DONE (8.0 s)
