@@ -215,3 +215,24 @@ for lab, M_ in (('final', M_rho_fin), ('initial', M_rho_init), ('extra_only', M_
 OUT['S9'] = {'lambda_phi': str(lam1), 'lambda_rho_prime(dNc_rho/zeta_phi)': str(lamr), 'dt1_S': str(dtS), 'dt2_LS_over_ZLZS': str(sp.simplify((dt2 / (ZL * ZS)).subs(hist_g).subs(m, m_grow))),
              'A2_superhubble_growing': str(sp.simplify(Kg['A2sh'].subs(m, m_grow))), 'M_rho_extra_growing': str(M_rho_extra_g),
              'M_rho_extra_general_m': str(M_rho_extra), 'f_map_rho': res9}
+# --- S9 composition (the delta N value is read only now): f^rho = f_inin / lambda' + f_map^rho
+f_inin_c0, f_inin_c2 = R(5, 12) * (-eps**2 + 6 * eps - 12), R(5, 12) * eps**2       # adjudication 2026-09-03 / threading note eq. (4)
+comp9 = {}
+for lab in ('final', 'initial'):
+    a0 = sp.simplify(f_inin_c0 / lamr + SY(res9[lab]['const'])); a2 = sp.simplify(f_inin_c2 / lamr + SY(res9[lab]['mu2']))
+    comp9[lab] = {'const': str(sp.factor(a0)), 'mu2': str(sp.factor(a2)), 'monopole': str(sp.factor(mono(a0, a2))),
+                  'const_3_2': str(a0.subs(eps, R(3, 2))), 'mu2_3_2': str(a2.subs(eps, R(3, 2)))}
+    print(f"  f_NL[delta N_c,rho] ({lab:7s} label) = {sp.factor(a0)} + ({sp.factor(a2)}) mu^2 ; eps=3/2: {a0.subs(eps, R(3,2))} + ({a2.subs(eps, R(3,2))}) mu^2", flush=True)
+f_rho_init = SY(comp9['initial']['const']); assert sp.simplify(SY(comp9['initial']['mu2'])) == 0        # isotropic in the initial label
+f_dN_lab = 5 * (eps - 7) / 8                                                         # lab delta N on uniform density (2026-09-02): -55/16 at 3/2
+gap9 = sp.factor(f_rho_init - f_dN_lab)
+print("  lab delta N (uniform rho) 5(eps-7)/8 =", f_dN_lab.subs(eps, R(3, 2)), "| threading rho-slice initial label =", f_rho_init.subs(eps, R(3, 2)),
+      "| difference (threading - lab) =", gap9, "=", gap9.subs(eps, R(3, 2)), flush=True)
+# --- limits: attractor (m -> 0: constant zeta, both slices coincide) and eps -> 0 at fixed m (USR-type)
+extra_attr = sp.simplify(M_rho_extra.subs(m, 0)); A2_attr = sp.simplify(Kg['A2sh'].subs(m, 0)); dt1_attr = sp.simplify(dtS.subs(m, 0))
+extra_usr = sp.simplify(sp.limit(M_rho_extra, eps, 0))
+print("  attractor m->0: dt^(1) =", dt1_attr, ", A2 =", A2_attr, ", rho-extra kernel =", extra_attr, "| eps->0 at fixed m: rho-extra kernel ->", sp.factor(extra_usr), flush=True)
+OUT['S9'].update({'composition': comp9, 'lab_deltaN_uniform_rho': str(f_dN_lab), 'threading_minus_lab_deltaN': str(gap9),
+                  'attractor_m0': {'dt1': str(dt1_attr), 'A2_superhubble': str(A2_attr), 'rho_extra_kernel': str(extra_attr)},
+                  'eps_to_0_fixed_m': {'rho_extra_kernel': str(extra_usr), 'lambda_rho_prime': str(sp.limit(lam_rho_lin, eps, 0))}})
+assert extra_attr == 0 and A2_attr == 0 and dt1_attr == 0
