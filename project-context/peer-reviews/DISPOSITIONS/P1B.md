@@ -33,3 +33,39 @@ v1B computational-companion dispositions remain below as retained history.
 | DP1B-23 | Public multipole helpers accepted fractional harmonic limits and silently truncated integer bin edges. | **CLOSED-BY-CODE v2B.0.7 / package 0.1.5** | All integer-valued public multipole arguments now reject floats and booleans without coercion; seven boundary regressions cover field limits and bin construction. |
 | DP1B-24 | Receipt metadata comparison used Python equality, allowing JSON boolean/integer and integer/float type substitutions. | **CLOSED-BY-CODE v2B.0.8 / package 0.1.6** | Metadata validation now uses recursive type-strict JSON equality; four regressions cover scalar and nested substitutions. |
 | DP1B-25 | Window equivalence allowed a broadcastable malformed `decouple_cell()` result to produce a false zero residual. | **CLOSED-BY-CODE v2B.0.8 / package 0.1.6** | The operator result must exactly match the finite `[4,n_band]` window result before subtraction; shape and non-finite regressions fail closed. |
+
+---
+
+## v2B.0.17 R1 — 2026-09-04 (exact PDF sha256 `0d0c92ab…4001fcac`, 8 pp)
+
+Active legs Grok API / Gemini API / Claude INT Opus — all three **major-revisions**.
+Full audit: `INT_v3/P1B_v2B.0.17_R1_TRUTH_AUDIT_2026-09-04.md`.
+Board: `P1B_v2B.0.17_R1_BOARD_2026-09-04.md`.
+
+**23 canonical · 21 genuinely-new REAL · 2 OPINION · 0 FALSIFIED · 0 re-flags.**
+
+Canonical fingerprints registered for future re-flag matching:
+
+- **C1** surrogate spin-0 estimator, not NaMaster; abstract unqualified — REAL, editorial.
+- **C2** batch-1 rules amended post-unblinding; "pre-declared" overstated — REAL; **answered
+  by pre-registered batch 2** (`4451b135` rules → `28efa21c` seal → `27300504` outputs →
+  `974e2859` reveal → `b3347c53` manifest).
+- **C3** seal not externally anchored / "independently verified" — REAL; ordering half
+  answered by batch 2, external timestamp remains a SCIENCE item.
+- **C4** R6 description ≠ implementation — REAL; answered by `RULES_v2_FROZEN.md`
+  (batch 2: reference disjunct fired 5/5 on S4, cross-run 0/5).
+- **C5** effective-multipole class missing — REAL; batch 2 added S6 and it **escaped 5/5**,
+  no rule added afterwards. The paper must report the escape.
+- **C6** n=3, bare percentages, no intervals — REAL; batch 2 gives 20/20 (lower 0.861) and
+  0/5 (upper 0.451) plus the pre-declared independence caveat (effective n = 1 per class).
+- **C7** no provenance/attestation related work — REAL; note `05b5940a` to be integrated.
+- **C8** abstract overstates the threat-model guarantee — REAL, editorial.
+- **C9** no uncertainty on the 0.270°/0.342°/0.000° recoveries — REAL, **not** answered by
+  batch 2; the one item needing a fresh number.
+- **C10, C12–C18, C20–C23** — REAL minors/trivia, all editorial.
+- **C11** JORS length/scope opinion — **OPINION**, recorded not actioned.
+- **C19** generalize the 54× cold/warm timing point — **OPINION** (enhancement).
+
+**Standing rule for this lane:** batch 1's 12/12 and 0/3 are **rule-development numbers**
+and must never again be reported as a blind result. Any future leg quoting them against a
+post-v2B.0.18 PDF is a re-flag of C2 and is dispositioned by citing batch 2.
