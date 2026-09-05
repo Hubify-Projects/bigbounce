@@ -1,0 +1,114 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger4-desi-dr1-qso-fnl-reproduction-v4",
+  "title": "Ledger #4 v4 - wide-angle correction check (genuine null) + imaging-systematics splits (E(B-V), stellar density, galactic depth) at official-window/official-EZmock-covariance fidelity, on the DESI DR1 QSO f_NL^loc reproduction; supersedes ledger4-desi-dr1-qso-fnl-reproduction-v3 headline (numbers unchanged, two open items closed)",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Official DESI DR1 full-shape-bao-clustering v1.0 VAC (window matrix, full-18-randoms P_ell, EZmock covariance) for QSO - same products as v3",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/",
+      "checksum": "sha256 list in research/desi_png_reproduction/official_products_sha256.txt",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "DESI DR1 QSO clustering + randoms catalogues (LSScats v1.5), split by imaging property median (E(B-V), STARDENS, GALDEPTH_Z) - NGC+SGC, produced by pk_estimator_qso_splits.py",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+      "checksum": null,
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "pypower PowerSpectrumOddWideAngleMatrix (Beutler/Castorina-White wide-angle formalism)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2106.06324 ; https://github.com/cosmodesi/pypower",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (reproduction target)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2411.17623",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI public data server (anonymous HTTP, no key)",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "research/desi_png_reproduction/wideangle_check.py",
+      "entrypoint": "python3 wideangle_check.py",
+      "sha256": "07b74363e8e7e9643f48b6835e6e7df6d0616bed4670a894b6df215fd6eafef0"
+    },
+    {
+      "path": "research/desi_png_reproduction/imaging_splits_crossmatch.py",
+      "entrypoint": "python3 imaging_splits_crossmatch.py",
+      "sha256": "287e449f1a04ab51746d73456550fb407969e12cadb06a7284269cb1ca7f3a8e"
+    },
+    {
+      "path": "research/desi_png_reproduction/pk_estimator_qso_splits.py",
+      "entrypoint": "python3 pk_estimator_qso_splits.py {EBV,STARDENS,GALDEPTH_Z}",
+      "sha256": "2260f73a7e7fc8a03293db4b0c922869c05fef72fc4ad4ba12e96c262743d700"
+    },
+    {
+      "path": "research/desi_png_reproduction/fit_fnl_splits.py",
+      "entrypoint": "python3 fit_fnl_splits.py",
+      "sha256": "de0e20c1d59e324c5eefef36b967571f4086b43220995f64f42724b27dc761cf"
+    }
+  ],
+  "environment": {
+    "python": "python3.12.13 (dedicated venv: research/desi_png_reproduction/.venv312, gitignored)",
+    "hardware": "cpu-only; Apple M-series MacBook Air, 25.8 GB RAM, 10 cores, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "wide-angle matrix construction + check ~10s; three split P(k) NGC+SGC pypower runs (prior session instance) several minutes each; fit_fnl_splits.py six official-fidelity fits with profile-likelihood scans ~3 min total",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~5 min given outputs/pk_split_*.json and official_products/ already on disk",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Requires official_products/ (window matrix, EZmock covariance) already downloaded per v3, and outputs/pk_split_{NGC,SGC}_{EBV,STARDENS,GALDEPTH_Z}_{low,high}.json already on disk (pk_estimator_qso_splits.py). Run order: wideangle_check.py (standalone, no split dependency) -> fit_fnl_splits.py (reads combine_and_compare.py-convention NGC+SGC combination internally). No new external data required beyond v1-v3's downloads."
+  },
+  "outputs": [
+    {
+      "locator": "research/desi_png_reproduction/outputs/wideangle_check.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/imaging_splits_fnl_v4.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/LEDGER4_RESULT_v4_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) wideangle_check.py's library guard raises ValueError 'Wide-angle order 1 produces only odd poles' when an even-ell projout is requested at wa_order=1, and the constructed matrix's even-ell blocks (ell=0,2,4) have max|M|=0.0 over k<=0.08 for all three; (b) fit_fnl_splits.py reproduces the table: E(B-V) Delta f_NL=-1.69 (sigma_Delta=29.30), STARDENS Delta f_NL=-2.37 (sigma_Delta=34.70), GALDEPTH_Z Delta f_NL=-18.66 (sigma_Delta=31.73) -- none exceeds |Delta/sigma|=2; (c) v3's headline numbers (f_NL=-2.169+/-25.3 at p=1.6, -1.127+/-13.1 at p=1.0) are UNCHANGED by the wide-angle correction, confirming the analytic null. Supersedes: ledger4-desi-dr1-qso-fnl-reproduction-v3 (v3 had no separate manifest; this manifest documents both v3's carried-forward headline and v4's two new closed items).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+    "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+    "research/desi_png_reproduction/RUN_LOG.md v4 section (2026-09-04)",
+    "research/desi_png_reproduction/LEDGER4_RESULT_v3_2026-09-04.md (v3, headline carried forward unchanged)",
+    "research/desi_png_reproduction/LEDGER4_RESULT_v4_2026-09-04.md (this result)",
+    "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength)"
+  ]
+}
