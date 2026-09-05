@@ -170,7 +170,7 @@ export const tracks: Track[] = [
     question:
       "What do DESI's public galaxy and spectral data show when tested directly against the rotating-black-hole-universe spin-axis prediction and scanned for early-universe anomalies — and what does that say about bounce vs. inflation?",
     leadResult:
-      "The largest test to date of Popławski's galaxy-spin-axis prediction, run on 8.47M DESI spirals with a void-environment cross-check, is a null: the catalog's own sensitivity floor excludes alignment fractions η > 0.98% at ≥95% coverage — a factor of 2–20× below the amplitudes reported in the literature it tests.",
+      "The largest test to date of Popławski's galaxy-spin-axis prediction, run on the 887,472-galaxy high-confidence subset of the 8.47M-galaxy DESI parent catalog with a void-environment cross-check, is a null: the catalog's own sensitivity floor excludes alignment fractions η > 0.98% at ≥95% coverage — a factor of 2–20× below the amplitudes reported in the literature it tests.",
     leadGrade: "null",
     channels: [
       {
@@ -312,6 +312,57 @@ export const contributions: Contribution[] = [
     oneLine:
       "1,244 science-target spectral anomalies released with provenance and cross-matching; answered as a data release, not yet a discovery paper, after no reference class cleared the confirmed-class bar.",
     href: `${TREE}/pipelines/p3_anomaly_engine/release`,
+  },
+  {
+    id: "threading-map",
+    tier: "N2",
+    contributionType: "derivation",
+    title: "Second-Order Threading Map: δN_c vs ζ in a Non-Attractor Contraction",
+    track: "Track A",
+    oneLine:
+      "The exact fluid-worldline map reconciling in-in and δN at second order in a matter-dominated contraction — showing the isotropic separate-universe construction fails at O(1), not O(k²), in this non-attractor case.",
+    href: `${TREE}/research/theory_audit/threading_map_second_order_2026_09_04.md`,
+  },
+  {
+    id: "row14-cs-window-no-go",
+    tier: "N2",
+    contributionType: "derivation",
+    title: "Row 14 — The Joint (r, f_NL) No-Go at a 296× Disjoint c_s Window",
+    track: "Track A",
+    oneLine:
+      "An independent re-derivation and first explicit numerical statement of Li–Brandenberger's r-vs-f_NL no-go: the tensor-viable and non-Gaussianity-viable sound-speed windows are disjoint by ~296×, and the bounce transfer cannot bridge the gap.",
+    href: `${TREE}/research/track_a3_multichannel/row14_cs_window`,
+  },
+  {
+    id: "row15-curvaton-dilution",
+    tier: "N2",
+    contributionType: "null-result",
+    title: "Row 15 — The Curvaton Cure Dilutes the Flagship Signal Below Reach",
+    track: "Track A",
+    oneLine:
+      "The standard curvaton fix to Row 14's tensor problem survives r and n_s, but dilutes the intrinsic −35/16 matter-bounce signal by (r/24)² — closing the last single-field-adjacent escape route with a new structural result.",
+    href: `${TREE}/research/track_a3_multichannel/row15_curvaton`,
+  },
+  {
+    id: "desi-dr1-fnl-reproduction",
+    tier: "N1",
+    contributionType: "reproduction",
+    paperSlugs: ["paper-2"],
+    title: "DESI DR1 f_NL Reproduction with an Independent Likelihood",
+    track: "Track A",
+    oneLine:
+      "An independent scale-dependent-bias pipeline on official DESI DR1 full-shape/BAO products recovers the published f_NL^loc = −3.6 to 0.057σ — evidence for the lab's reproducibility discipline, not a new constraint.",
+    href: `${TREE}/research/focused_paper_source_integration`,
+  },
+  {
+    id: "reproducibility-first-lab",
+    tier: "N2",
+    contributionType: "method-tool",
+    title: "The Reproducibility-First Lab — Manifests for Every Result",
+    track: "Program-wide",
+    oneLine:
+      "Every experiment, simulation, and compute run across the program carries a manifest (data sources, scripts, compute venue, cost, wall-clock) — a uniform provenance discipline applied to negative results and retractions alike, not only flattering ones.",
+    href: `${REPO}/reproducibility/README.md`,
   },
   {
     id: "namaster-proof",
