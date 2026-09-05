@@ -67,6 +67,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-r6-closure-v3m-0-14-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3 v3M.0.14: R6 truth-audit closure -- 0 physics errors, rounds stopped under R2",
+    papers: ["A3"],
+    summary:
+      "R6 verification board on the exact v3M.0.13 PDF (sha256 c6f9bb57..., 15 pp): Claude Fable INT major-revisions (5M/15m), Grok API REJECT, Gemini API major-revisions. Truth-audit found 41 findings across the three legs, canonicalized to 16 genuinely-new-real (1 MAJOR + 1 MAJOR-lite + 14 MINOR), 8 re-flags of already-disclosed items, 7 falsified against committed source, and 8 opinion/genre/venue. Zero findings identified an error in a derivation. R6-01 (MAJOR): the Sec. V C bounce-temperature condition was recomputed from the paper's own committed k_B~1.71e7*T_B[GeV] mapping (outputs/inlab_delta2_zeta_2026-09-03.json) -- corrected from 10^8-10^10 GeV / eleven decades above BBN to 6e9-6e10 GeV / thirteen decades; the error made the null stronger, not weaker. R6-02 (MAJOR-lite): Channel I's NANOGrav comparison mixed the gamma=13/3-fixed amplitude (2.4e-15) against the free-gamma slope (3.2); re-paired to the free-gamma posterior amplitude (~6.46e-15), moving the shortfall from 10^14.3 to 10^15.2 -- sigw_nhz_from_lab_spectrum_2026_09_04.py rerun, Fig. 1 regenerated. Fourteen MINORs closed: abstract calibrated to body (P+B candidate separation vs. bare significance; SMBH-seed FIRAS exclusion separated from this model's own shortfall; S1/S2 stated as two distinct scheme values, not a band; PBH ratio carries its gamma_cr-grid conditionality instead of 'shape-robust'); every printed PTA sigma labelled a Gaussian-equivalent z-distance, consistent with the paper's own Savage-Dickey stance; a sign-of-comparison inversion fixed; version-history prose removed; S2's missing f_NL^after clarified as cubic-order-only; a sentence fragment repaired; Table VI captioned as upper bounds; the 3162/3364/408-sigma excursion thresholds sourced with a one-line derivation and mass-scale labels. Sec. VI gained the DESI DR1 v3 reproduction sentence: an independent re-analysis of the public DESI DR1 QSO sample on DESI's own official window matrix, full-randoms P_l, and EZmock covariance returns f_NL=-2.2+-25 (p=1.6), 0.06sigma from the published -3.6, reproducing the published constraint's sign and scale while showing DR1's power is an order of magnitude too weak to separate -35/16 from -35/8, from zero, or from the published value -- the near-coincidence with -35/16 is labelled a coincidence, not evidence, with the mandatory wide-angle/systematics-split caveat (sigma=25 vs. published 9.0). Recompiled 4-pass, 0 undefined refs, 15 pp, overfull hboxes 2.7pt/2.2pt (both <10pt; a 74.9pt overfull introduced by the new DESI-sentence path was fixed with an \\allowbreak before the final compile). md5 de167ede0c3aa1ea31ded3fe9437fd82, mirrored byte-identical to site/public/papers/, public/papers/, and the source-dir main.pdf (three-way match verified). arXiv tarball rebuilt (sha256 207d39f23ee3fcb521b49a6dba33b7b5a639a1dcf8319b15aee4d5e946bb2ba3) and standalone-smoke-tested. Convex paperVersions:bump mutation id k57571ypt0a7rz8zx3pfj0evk58dt0pd; activityFeed:add id j57ce544b5tqt8zzm8dd2vppp98dtpx6. Per directive R2, this is A3M's third consecutive verification round and its yield confirms the review-convergence floor: rounds STOP on A3M. Remaining movement is a science decision, not a review decision -- A3-4 (derive r for the three bounce backgrounds and test against r<0.036) and A3-1e (resolve the Choudhury et al. gamma_cr sign disagreement) are moved to NEXT_SCIENCE_LEDGER.md; also carried: A3-ns (evaluate at n_s=0.9649 exactly) and DESI-4 (wide-angle corrections + blocked systematics splits). Readiness held at 75.",
+    keyTakeaways: [
+      "16 genuinely-new-real findings closed, 0 physics errors found in any derivation across three independent legs",
+      "R6-01: bounce-temperature condition corrected to thirteen decades above BBN (was eleven) from the paper's own committed k_B-T_B mapping; the fix strengthens the null",
+      "DESI DR1 v3 reproduction sentence added to Sec. VI at evidential strength: f_NL=-2.2+-25, 0.06sigma from published, too weak to separate any candidate",
+      "Rounds STOPPED under directive R2 (3rd consecutive verification round); next board gated on a science decision for A3-4 / A3-1e",
+    ],
+    links: [
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "Truth audit", href: `${PR}/INT_v3/A3M_v3M.0.13_R6_TRUTH_AUDIT_2026-09-04.md` },
+    ],
+  },
+  {
     id: "a3m-abstract-cap-v3m-0-13-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",

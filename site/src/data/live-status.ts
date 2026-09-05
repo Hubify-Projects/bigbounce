@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.13",
+      version: "v3M.0.14",
       readiness: 75,
-      pendingWork: "Abstract trimmed to PRD-regular cap (<=307 words), all claims preserved. One verification round remains under the R2 convergence budget. Houston final review pending.",
+      pendingWork: "R6 closure: T_B mapping corrected (thirteen decades above BBN, was eleven), Channel I amplitude re-paired to the free-gamma NANOGrav posterior, DESI DR1 v3 reproduction sentence added. Rounds STOPPED under directive R2 -- next board only after a science decision on A3-4 (r-derivation) / Choudhury sign disagreement. Houston final review pending.",
     },
     {
       slug: "paper-3",
