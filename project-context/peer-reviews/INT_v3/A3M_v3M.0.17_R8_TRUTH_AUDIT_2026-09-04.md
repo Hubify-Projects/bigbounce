@@ -60,3 +60,41 @@ notes + results.json, `research/theory_audit/curvaton_matter_bounce_adjudication
   sum `= −25/4 + (15/4)μ²`, which is the **final-label** value the same paragraph quotes at
   `:1652`, not −5, and is not isotropic. The initial-label map must be
   `−5/8 − (15/8)μ²` at `ε = 3/2`. Fable M2 is correct — see `R8-02`.
+
+## (a) GENUINELY-NEW-REAL — canonical list (15)
+
+**`R8-01` MAJOR — the `k`-essence no-go silently assumes `λ = 0` (and `s = 0`, `η_sr = 0`).**
+[Fable M1] `row18b_cs_bounce_cubic.py` docstring lines 20–22 and `results.json.scheme`
+("S1 (geometric, z = a, eps_eff = 1/2, eta_sr = 0, s = 0, lambda = 0; c_s retained)") state the
+assumption; `grep` of `main.tex` finds **no** statement of it anywhere, while the abstract
+(`:63–65`) concludes "the single-field matter bounce, canonical or `k`-essence, is jointly
+excluded". A general `P(X,φ)` carries a free `λ` (the `P_XXX` coefficient) multiplying the same
+`ζ̇³` kernel. REAL disclosure gap, not an arithmetic error.
+
+**`R8-02` MAJOR — Appendix A prints the final-label map as the initial-label one.**
+[Fable M2] `main.tex:1639–1641` (verified independently above). The paper's own "label-resolved"
+reconciliation of `δN_c = −5` with the in-in `−15/8 + (15/16)μ²` does not close as printed.
+Correctable by printing both maps; §II D and the Scope statement lean on it, so the fix
+propagates.
+
+**`R8-03` MAJOR-lite — `Υ` and `Δt_B` used undefined.** [Gemini M1] `main.tex:435–436`
+("evaluated for this program's `Υ` and `Δt_B`, the required amplification factor is exactly 1");
+neither symbol is defined nor given a value anywhere in the paper. Breaks standalone readability
+of a load-bearing claim.
+
+**minor (12):**
+
+| id | item | evidence |
+|---|---|---|
+| `R8-04` | `[S]` row "0 (suppressed)" has no scaling or bound | `main.tex:1610` [Gemini M2] |
+| `R8-05` | "committed, at the current HEAD" is a moving pointer | `main.tex:1706` [Gemini E2a, Fable m11] |
+| `R8-06` | Eq. (12) displays `1.732±0.050` while the abstract headlines `1.84±0.03` | `:924` vs `:74`, `:976` [Fable m4] |
+| `R8-07` | "`|f_after| ≤ 5.1` (Planck 1σ)" is not Planck's 68% interval (`−0.9 ± 5.1` → `[−6.0, +4.2]`); the `c_s = 0.6` value is **positive** (+5.08) | `:60`, `:1358` [Fable m2] |
+| `R8-08` | cross-reference error: "§V B's `T_B ≳ 10⁸` GeV" — the condition is §V C, `6×10⁹–6×10¹⁰` GeV | [Fable m3] |
+| `R8-09` | three distinct quantities named `r` (tensor ratio, mode-mixing `r`, bispectrum shape overlap) | Secs. III, VI, VII–VIII [Fable m1] |
+| `R8-10` | curvaton range "+9.30 to −1.25" ↔ `r_dec ∈ [0.113, 1]`; lower limit unstated | [Fable m5] |
+| `R8-11` | Ref. [4] cited as "Li et al. 2017" and "Li et al. (2016)" | abstract/§IX A vs §VIII, Table VII [Fable m6] |
+| `R8-12` | Table IV row labelled "Matter bounce, γ = 3" although `:740`/`:773` establish γ=3 is borrowed, not this model's prediction | `:684` [Fable m10] |
+| `R8-13` | §II D and Appendix A restate the Bianchi-I argument nearly verbatim | [Fable m9] |
+| `R8-14` | Fig. 1 axis/legend text small at column width; NANOGrav band and the two predicted lines unlabelled | [Fable m12] |
+| `R8-15` | §IX A juxtaposition `0.5–1.1σ` vs `3.13σ` lacks an explicit "not directly comparable" tag (the existing "a naive reading … would suggest" is weaker than the tag used at `:516`, `:665`) | `:1483–1487` [Gemini E3] |
