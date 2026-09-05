@@ -94,3 +94,83 @@ detector, not a fraud detector.
 present; **detection rate on S1–S4 = 100%** and **false-positive rate on honest
 runs = 0%**. S5 (metadata forgery) is included *expecting it to escape*; its
 escape is the reported limitation, not a failure of the protocol.
+
+---
+
+## 4. Reframing (executed 2026-09-04)
+
+The blind test in `blind_test/` was implemented, sealed, run, and scored.
+Artifacts: `blind_test/public/{contract,sealed_digest,verdicts,scorecard}.json`
+and 18 result+receipt pairs under `blind_test/public/runs/`; manifest
+`reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json`.
+18 runs, 3 per arm, nside 64, lmax 64, local CPU, ~1 min, $0.
+
+**Result against the pre-declared criterion (§3), which is MET:**
+
+| Arm | n | flagged | triggering rules |
+|---|---|---|---|
+| honest | 3 | 0 | — |
+| S1 operator skipped | 3 | 3 | R3 (3j count), R4 (operator shape) |
+| S2 operator truncated | 3 | 3 | R3, R4 |
+| S3 grid reduced + interpolated | 3 | 3 | R2 (ℓ-grid), R3, R4 |
+| S4 cache substitution | 3 | 3 | R6 (result reuse across inputs) |
+| S5 metadata forgery | 3 | 0 | — (escapes, as pre-declared) |
+
+Detection rate **12/12 = 100%** on the classes receipts can see (S1–S4);
+**12/15 = 80%** over all shortcut runs including the forgery arm; **false
+positive rate 0/3 = 0%** on honest runs. Seal verified: the assignment
+re-derived from the revealed key hashes to the digest committed before any run
+(`0f4ca4ba…`).
+
+**N3-eligible claim sentence (supported by this test):**
+
+> Under a non-adversarial-analyst threat model, execution-trace receipts
+> decide, from the receipts alone and without re-running the computation,
+> whether an expensive pseudo-C_ℓ analysis was actually performed: in a sealed
+> blind test of 18 runs the verifier detected 12/12 (100%) of the
+> operator-skipping, operator-truncating, grid-reducing, and cache-substituting
+> shortcut runs with a 0% false-positive rate on honest runs, while the
+> metadata-forgery arm escaped 3/3 — establishing that receipts of this kind
+> are a *shortcut detector*, not a fraud detector.
+
+**Two findings that change the recipe, both discovered by running it:**
+
+1. **Wall-clock is not a usable rule.** The shortcut arms run 3–15× faster than
+   honest ones, but a cold-cache honest reference run took 4.29 s against
+   0.08 s warm — so the pre-declared wall floor (25% of the reference) would
+   have fired on **3/3 honest runs**. It is recorded in each verdict as
+   `wall_rule_would_fire` and excluded from the decision rule set. §3's rule
+   list is amended accordingly.
+2. **A coupling-matrix hash collision across runs is not evidence of cache
+   substitution.** `M` depends only on the mask and the ℓ-grid, so for a fixed
+   survey mask every honest run legitimately shares one `M` hash. §2's item 4
+   is corrected: cache substitution is caught by *result* reuse under differing
+   input-map hashes (rule R6), not by `M` reuse.
+
+**Scope limits, stated plainly.** The estimator exercised here is this repo's
+own spin-0 MASTER implementation, not NaMaster itself (`pymaster` is not
+installed in the lab environment); the instrumented 3j counter is what makes
+the trace a measured consequence of the code path, and an equivalent hook would
+have to be added inside NaMaster to carry the claim over verbatim. The seal is
+process-level — the verifier had no access to `sealed/` — not a cryptographic
+pre-registration against an external timestamp. And the S5 escape is
+structural: closing it needs an anchor outside the analyst's control (witnessed
+CI, signed build/execution logs, or a third-party rerun), which is the natural
+next lift and is **not** claimed here.
+
+## 5. Packaging steps (Houston's click-list)
+
+Neither step is done here; both need Houston's account actions.
+
+1. **Zenodo DOI.** Create a new upload from a tagged tarball of
+   `packages/namaster-proof/` plus `pipelines/namaster_proof/` (design note,
+   `blind_test/` code, `sealed/`, `public/`). Upload type: software; title
+   "namaster-proof: execution receipts as a shortcut-detection primitive";
+   license MIT to match the package; link the GitHub repo so future tags mint
+   versioned DOIs automatically. Record the concept DOI in P1B and in the
+   manifest's `outputs`.
+2. **ASCL entry.** Submit at ascl.net/code/submit once the Zenodo DOI exists:
+   code name `namaster-proof`, one-line description "content receipts and blind
+   shortcut detection for masked-sky pseudo-C_ℓ analyses", site = the GitHub
+   repo, credit Houston Golden, and cite P1B as the describing paper. ASCL
+   assigns an ascl:XXXX.XXX id to quote alongside the DOI.
