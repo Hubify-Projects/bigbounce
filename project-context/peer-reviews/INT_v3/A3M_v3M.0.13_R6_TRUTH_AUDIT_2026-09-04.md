@@ -136,3 +136,47 @@ $|f_{\rm after}|\in[0.50,0.65]$…" following "(below)."). Legs: Fable m11.
 **`R6-16` (MINOR)** Table VI entries should be captioned **upper bounds**: the shape overlap
 $r<1$ between the $\mu^2$-dependent squeezed shape and the local template is acknowledged but not
 computed, and it can only *reduce* every entry. Legs: Fable m15.
+
+# 2. RE-FLAG-OF-DISCLOSED (class b)
+
+| id | finding | leg | page / disposition |
+|---|---|---|---|
+| `RF1` | "enlarge the PBH grid to ≥100 points" | Grok M1 | `=DA3M-R4-R4/R5-R4`, **3rd recurrence**; `:942–950` now prints the coverage, the straddle, and the out-of-coverage evaluation explicitly |
+| `RF2` | "the classical/δN route is not independent — same separate-universe assumption" | Grok E6 | `=DA3M-R3-R1/R4-R1/R5-R2`, **4th recurrence**; §II D + `:286–292` already state the two routes compute *different variables* |
+| `RF3` | "present a scheme-marginalized LSS forecast" | Grok M2 | `:1200–1206` + §VII C(i) state the scheme dependence; marginalizing over a *convention* (not a measured nuisance) is not a defined operation — half re-flag, half opinion (`O4`) |
+| `RF5` | "a factor 0.058 is a 17× suppression, not an excursion" | Fable m9 | `=DA3M-R5-10`, closed at `:413–415` with "(not order-unity in the strict sense)" and the three explicit ratios |
+| `RF6` | Table V uncapped $f_{\rm PBH}>1$ should be in the column header | Fable m8 | `=DA3M-R5-R6`; caption `:872–877` already says it; header placement is style |
+| `RF7` | "refit vs official σ qualifier" | Fable m6 | `=DA3M-R3-R2/R4-R2/R5-R1`, **5th recurrence**; `:616–618`, `:645–650` frame official as primary |
+| `RF8` | frozen-release DOI / SHA-256 / "current HEAD" | Grok E4, Gemini E3+E4, Fable m13 | **carried packaging item** (P-round). The paper *does* pin a git commit hash and declares DOI minting a maintainer action; Gemini E3's "no frozen hash" half is false. Real only as a submission-stage prerequisite, not a v3M.0.14 science defect |
+| `RF9` | §II D "resolved rather than merely bounded" vs Appendix "a computed identity, not a claimed mechanism" | Fable m2 | `=DA3M-R3-03` class; the Appendix wording is the honest one and is present. Harmonizing is cheap and is folded into the (i) list as optional |
+
+# 3. FALSIFIED — committed source checked (class c)
+
+| id | claim | leg | why it is false (source) |
+|---|---|---|---|
+| `F1` | "abstract presents $-35/16$ as exact/scheme-independent, body says scheme-dependent" | Grok E1 | `:49–54` explicitly labels transmission "scheme-qualified" and prints BOTH schemes. $-35/16$ is the **pre-bounce in-in** value; the scheme dependence is of $f^{\rm after}$, which the abstract states. `=DA3M-R5-F1/R4-F1`, **3rd recurrence** |
+| `F2` | "future date / affiliation is unusual for PRD" | Grok N1 | `=DA3M-F3`. **10th consecutive round, 100% falsified.** Compile date is today's date |
+| `F3` | "$3162\sigma$ and $\log_{10}\beta\approx-1.7\times10^{9}$ are mathematically incompatible (factor ~800 in the exponent)" | Gemini E6 | They describe **different mass scales**. `inlab_delta2_zeta_2026-09-03.json:252–253` gives `n_sigma_to_threshold = 89149.44`, `log10_beta_gaussian_estimate = -1.7258e9` at $M_H=10^{20}$ g — self-consistent: $89149^2/(2\ln 10)=1.726\times10^{9}$ ✓. The $3162\sigma$ is the 7.0-decade deficit at the $10^{15}$–$10^{16}$ g end ($10^{3.5}=3162$ ✓). No arithmetic error. (Editorial residual → `R6-07`.) |
+| `F4` | "regularized-renormalized- resummed: punctuation artifact" | Gemini N1 | `main.tex:863` contains no stray space; the gap in the PDF is a LaTeX line break at a compound hyphen |
+| `F6` | "the tensor sector is OMITTED from a multi-channel consistency assessment" | Fable M1 (first half) | `:762–774` computes it for both $r<0.036$ and $r=0.84$, citing `outputs/r5_15_tensor_omega_nhz.json` (Case A `2.54e-17`, Case B `5.94e-16` at $f_{\rm yr}$; shortfalls 8.15 and 6.79 decades). Only the *exclusion* sentence is missing → `R6-10` |
+| `F7` | "the paper must cite the exact statement in [11] fixing the ±0.6 convention" | Fable M3(i) | `:607–609` already does: "quoted explicitly as a posterior median and $5$–$95\%$ interval~\cite{NANOGrav15}" |
+| `F8` | "'shape-robust' is not established for the model's own spectrum; the paper carries none of this conditionality" | Fable M2 (second half) | The **body** establishes and states it in full at `:942–950` (from `outputs/R5_18_GAMMACR_NOTE_2026-09-04.md`), including the out-of-coverage $\gamma_{\rm cr}\in[0.27,0.63]$ and the sign-disagreement conditionality. Only the abstract word survives → `R6-11` |
+
+# 4. OPINION / GENRE / VENUE (class d) and DISCLOSED-LIMITATION (class e)
+
+`O1` Grok M3 — 15 pp too long for the increment; "6–8 page note" (venue/length; the paper itself
+credits Li *et al.* 2017 and Quintin *et al.* 2015 at `:230–231`, `:40–42`) ·
+`O2` Grok N2 — "honest null" undefined (style; partly addressed by `R6-13`) ·
+`O3` Grok N1 second half — institutional/ORCID preference ·
+`O4` Grok M2 tail — see `RF3` ·
+`O5` Gemini E4 "mint the DOI now" — packaging-stage preference, see `RF8` ·
+`O6` Fable m3 + m12 — move the Eq. (5) derivation and the full shape function from the repo note
+into the paper/supplement (venue-format preference; the science is committed and cited) ·
+`O7` Fable m4 + m5 — Table IV row labelling ($\gamma_*=5$ vs $5.035$) and an added ABS-plateau
+column (both wish-list; `m4` `=DA3M-R5-G2`) ·
+`O8` Fable Q5 — "is $1.732=\sqrt3$ a coincidence?" is a question, not a finding.
+
+**Class (e), disclosed and unchanged:** the Choudhury *et al.* $\gamma_{\rm cr}\lesssim0.85$ sign
+disagreement (`:929–930`, "a genuine discrepancy left unresolved"); the unreproducibility of
+Choudhury *et al.*'s spectrum (`:1010–1012`, `=DA3M-R5-F11/R3-R3`); which of S1/S2 is physical
+(§VII C(i)); scheme-S1 assumption A4 through $H=0$ (`:355–361`).
