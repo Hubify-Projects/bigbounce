@@ -460,17 +460,27 @@ S6 effective multipole & 5 & 0 & --- (escapes; \emph{no} outcome pre-declared) \
 \end{tabular}
 \end{table}
 
-Reporting counts with one-sided 95\% Clopper--Pearson bounds, never bare
-percentages: structural classes S1--S4 are detected 20/20 (lower bound
-\textbf{0.861}); honest false positives are 0/5 (upper bound on FPR
-\textbf{0.451}); across all six shortcut arms, 20/30 (point estimate 0.667,
-95\% interval [0.501, 0.807]). \textbf{Independence caveat (pre-declared):}
+All four structural classes were flagged in every replicate: 4/4 structural
+classes detected, 20/20 runs (one-sided 95\% Clopper--Pearson lower bound
+\textbf{0.473} on the class-level detection rate, the only i.i.d. unit
+available --- see the independence caveat below); honest false positives are
+0/5. A pooled figure across all six shortcut arms is not reported: its value
+is fixed by the arbitrary choice of how many escape classes are included at
+equal replication and carries no external interpretation. \textbf{Independence
+caveat (pre-declared):}
 rules R1--R5 compare seed-independent quantities against a fixed contract, so
 the five replicates within an arm are seed-varied executions of one
 deterministic variant, not five independent draws --- effective independent
 \(n\) per class is 1 for those rules, and the replicates measure firing
-\emph{reproducibility}, not sampling variance. R6 (result reuse) does vary
+\emph{determinism}, not sampling variance; no run-level detection-probability
+interval is claimed. R6 (result reuse) does vary
 with the seed-dependent input-map hash and is not subject to this caveat.
+S1--S3 are all caught by the same trace-mismatch mechanism (rules R3 and R4);
+S4 is caught by R6. The evidence is therefore two deterministic mechanisms
+across four classes, not four independent mechanisms. S4's five detections
+are all the \emph{reference} disjunct of R6 (\texttt{r6\_reference\_disjunct
+= 5}); the \emph{cross-run} disjunct fired 0/5 and is therefore untested in
+batch 2 (see \S\ref{sec:limitations}).
 The frozen verifier's own sha256 is quoted from
 \texttt{public2/frozen\_rules\_digest.json}: \texttt{6a9acd70\ldots}.
 
@@ -696,12 +706,32 @@ operator: it cannot in principle catch metadata forgery (an adversary who
 alters the harness itself and writes a fabricated honest execution trace by
 hand), the effective-multipole class demonstrated to escape as S6
 (\S\ref{sec:blind-test-s6}), a semantically wrong but equally expensive
-computation, or numerical drift below the declared tolerance. It exercises
-this repository's own spin-0 MASTER estimator rather than NaMaster itself
-(S3, open); its seal establishes commit ordering, not an external witness,
-and an OpenTimestamps anchor is submitted but pending Bitcoin confirmation
-(S2, in progress) as of this revision, not yet a completed external
-timestamp.
+computation, or numerical drift below the declared tolerance. No
+value-level rule is pre-registered in batch 2: a shortcut that reproduces
+correct decoupled bandpowers by a different internal path is not exercised
+by R0--R6, and S6 (effective-multipole) is a design limitation of the current
+rule set rather than a claim about the primitive's scope.
+
+Remaining open items, numbered independently of the shortcut classes S1--S6
+to avoid collision:
+\begin{description}[leftmargin=1.6cm,style=nextline]
+\item[L1 (estimator).] It exercises this repository's own spin-0 MASTER
+  estimator rather than NaMaster/PyMaster itself in the blind test (open;
+  a PyMaster cross-check is feasible on this platform and is future work).
+\item[L2 (external anchor).] Its seal establishes commit ordering, not an
+  external witness, and an OpenTimestamps anchor was submitted 2026-09-04
+  19:31 but is pending Bitcoin confirmation as of this revision, not yet a
+  completed external timestamp (in progress).
+\item[L3 (mechanism coverage).] S1--S3 in batch 2 are all detected by the
+  same trace-mismatch mechanism (R3/R4); S4's five detections are all the
+  \emph{reference} disjunct of R6, and the \emph{cross-run} disjunct that
+  would exercise a realistic cache-substitution signal fired 0/5 and is
+  untested (open; the batch-3 rule set is designed to exercise it).
+\item[L4 (single run).] The batch-2 sequence was run once and not repeated.
+  Git history proves the order of surviving commits, not the absence of
+  discarded attempts; an OpenTimestamps anchor does not close that gap
+  either. A third-party rerun or witnessed environment would.
+\end{description}
 
 \section{Availability}
 
