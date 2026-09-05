@@ -126,3 +126,82 @@ Canonical fingerprints registered for future re-flag matching (D-R2-nn = R2 cano
 4. **Rounds STOP after v2B.0.19** (directive R2: R1+R2 are the two permitted consecutive rounds).
    The next P1B action is a science/venue decision — batch 3 (value-level rule + cross-run cache
    variant) and the PyMaster/OTS confirmations — not another sweep.
+
+## v2B.0.20 R3 — 2026-09-05 (exact PDF sha256 `cf57f485…5ee50cf`, 15 pp)
+
+Active legs Grok API **REJECT** / Gemini API **MAJOR REVISIONS** / Claude INT Opus
+**major-revisions**. Full audit: `INT_v3/P1B_v2B.0.20_R3_TRUTH_AUDIT_2026-09-05.md`.
+Board: `INT_v3/P1B_v2B.0.20_R3_BOARD_2026-09-05.md`.
+Receipt: `INT_v3/ROUND_2026-09-05-P1B-v2B.0.20-EXACTPDF-cf57f485-R3VERIFY/preflight_receipt.json`
+(core `5af8959c…`, 9 rules, 0 findings).
+
+**33 canonical · 27 genuinely-new REAL · 2 FALSIFIED · 3 OPINION · 1 OUT-OF-SCOPE disclosed.**
+No fabricated number found. The genuinely-new count rose because the paper grew a batch
+(12 → 15 pp): 22 of the 27 sit in text that did not exist at R2.
+
+**The round's decisive finding — raised only by the INT leg, verified in code, then measured.**
+
+- **D-R3-01** R7's spot rows are **prover-predictable**: `verify3.py:32–45` draws them as
+  `sha256(mask_sha256 ‖ sha256(bandpowers) ‖ salt)` and `:57–58` feeds it two values the
+  runner holds before publishing. `tex:573`'s "cannot be chosen by the runner" is the wrong
+  property — unchoosable is not unpredictable — and an R7-aware S6 runner evades at **zero**
+  marginal cost (it already built `M`). Fiat–Shamir applied to a prover-chosen commitment.
+- **D-R3-02** R7 **fails open**: `verify3.py:48–56` returns `(False, nan)` on an absent or
+  malformed `intermediates.pseudo_cl`, and no other rule requires the field — omitting it
+  silently disables the only value-level rule.
+- **Both confirmed empirically by batch 4**, pre-registered in `RULES_v4_FROZEN.md` (frozen
+  before the scripts, the verifier-seed commitment and the seal, naming M1/M2/M3 as its
+  reason). `public4/scorecard.json`: **S7** (R7-aware) `r7_fired 0/6, r7_residual_max 0.0,
+  r8_fired 6/6`; **S8** (omit `pseudo_cl`) `r7_fired 0/6, r8_fired 6/6, suspect 6/6`;
+  S1–S4/S6 R7+R8 6/6; S5 still escapes 0/6; honest FP **0/6**. R8's challenge randomness is
+  a commit–reveal verifier seed (`efef74f2…` committed pre-seal, opened by `06e39b7a…` after
+  every receipt digest), with a Bitcoin OTS blockhash declared as the drop-in upgrade.
+
+**Canonical fingerprints registered for future re-flag matching (D-R3-nn = R3 canon):**
+
+- **D-R3-03** batch-3 run-level Clopper–Pearson bounds (0.607 / 0.393 / 0.905) contradict
+  batch 2's pre-declared refusal — REAL, a **recurrence of the D-R2-01/02 class in new text**,
+  not a re-flag (`public3/scorecard.json::independence_caveat` contradicts its own bounds).
+- **D-R3-04** "S1–S4b pool to **24/24**" — five arms × 6 = **30/30**; `0.05^(1/30)=0.905`
+  proves n=30 was used. REAL, verified by recomputation; the slip runs against the authors.
+- **D-R3-05 … D-R3-27** two-batch text, batch-3 trail + unpre-registered abort criterion,
+  unarchived blind-test corpus, two dead cross-refs, "Both batches", title-page stamp +
+  `p1b-` filenames, pymaster 3.0.1 vs 3.0, missing Freivalds/Fiat–Shamir, abstract
+  value-level scope, uncomputed 6×10⁻¹⁶/"bias a fit", unquoted rule digests, §6 subsectioning,
+  missing per-run tables, 500-word abstract, OTS verification mode, trust taxonomy third
+  category, §9 single-angle σ, §8 placement, 0.1.7-has-no-R7, Rekor/S5, Q2 semantically-wrong
+  case, mechanism recount, S4b source rule — all REAL, editorial (one recompute).
+- **D-R3-28** Grok E1 "abstract has no independence caveat / quotes 0.473" — **FALSIFIED**:
+  the caveat is in the abstract verbatim (`tex:179–182`, `:195`); `0.473` is not
+  (only `tex:480`). Re-flag of D-R2-01, closed in v2B.0.19.
+- **D-R3-29** Grok E3 "rewrite out all review-process language" — **OPINION**, half refused:
+  the pilot demotion, disclosed post-hoc changes and preserved abort **are** the required
+  disclosure; stripping them would water down. Only D-R3-10 is actionable.
+- **D-R3-30** Grok E4 "retract the production-library claim" — **OUT-OF-SCOPE, disclosed**;
+  premise FALSIFIED (`tex:171–174` states PyMaster is not installed and has no 3j counter).
+- **D-R3-31** Grok E5 JORS length/venue — **OPINION** → escalated to a **scope decision**
+  (converges with the Opus venue section). Re-flag of D-R2-20.
+- **D-R3-32** Grok M3 "commit predates the revision date" — **FALSIFIED** (§12 states the
+  release line is deliberately independent). Archive half survives as D-R3-07.
+- **D-R3-33** Grok N2 Table 1 caption vs header — **OPINION**, no contradiction.
+
+**Guardrail (not a finding): no priority claim exists in v2B.0.20.** `grep` for
+`first|novel|to our knowledge` returns only non-priority uses; D-R2-08's sentence was
+deleted in v2B.0.19 and has not returned. If N3 language is ever added it may claim **only**
+"first such measurement *for pseudo-C_ℓ execution receipts*", and only alongside the
+Freivalds / Fiat–Shamir / Klein–Roodman / in-toto-SLSA / OpenTimestamps citations.
+
+**Standing rules added for this lane:**
+1. Every statistics fix must be applied as a **rule for all future batches**, not as a patch
+   to the current one — D-R3-03 and D-R3-08 are both v2B.0.19 fixes that were not carried
+   forward into newly written batch-3 prose. Class-level counts only; no run-level intervals.
+2. A leg asserting the abstract lacks the independence caveat is a re-flag of **D-R3-28**;
+   disposition by citing `tex:179–182` and `:195`.
+3. A leg asserting the detector is claimed to work for production NaMaster is a re-flag of
+   **D-R3-30**; disposition by citing `tex:171–174` and §11.
+4. A leg demanding removal of the pilot/abort/post-hoc-change disclosures is a re-flag of
+   **D-R3-29** and is **refused** on integrity grounds; only the title-page stamp and the
+   `p1b-` filenames (D-R3-10) are actionable.
+5. **Rounds STOP after v2B.0.21** (directive R2: R2+R3 are the two permitted consecutive
+   rounds). The next P1B actions are the v2B.0.21 closure bundle, the batch-4 write-up, the
+   Zenodo deposit of the blind-test corpus, and the venue decision — not another sweep.
