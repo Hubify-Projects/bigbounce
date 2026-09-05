@@ -169,6 +169,63 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "a3m-r8-closure-da3-13-v3m-0-18-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3M v3M.0.18: R8 truth-audit closure -- scope statement for the no-go (D-A3-13)",
+    papers: ["A3"],
+    summary:
+      "R8 truth-audit (project-context/peer-reviews/INT_v3/A3M_v3M.0.17_R8_TRUTH_AUDIT_2026-09-04.md) closure plan (i), 18 items, no new computation. R8-01 (MAJOR): disclosed that the k-essence no-go (Eq. 16, Table VII) assumes the Li et al. kinetic sector lambda=s=0; general lambda stated as an open item (ledger row 19). Appendix A's initial/final-label maps corrected, the stale r=0.84 passage removed, 14 ledger tags swept to the reproducibility statement, Planck 68% interval fixed, 12 further minors closed. 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 18 pp. Readiness held at 75 -- ROUNDS STOPPED (R2); R3-R8 today, genuinely-new 19/13/18/16/16/15, no physics error found in R8; next board only after a science decision on row 19.",
+    keyTakeaways: [
+      "R8-01: no-go scope stated explicitly as the Li et al. lambda=s=0 kinetic sector; general lambda named as ledger row 19",
+      "Appendix A initial/final-label maps corrected; stale r=0.84 passage removed",
+      "0 physics errors found in R8 -- ROUNDS STOPPED under directive R2's convergence budget",
+      "Next board only after a science decision on row 19 -- answered same-day in v3M.0.19 (D-A3-14, below)",
+    ],
+    links: [
+      { label: "R8 truth-audit", href: `${PR}/INT_v3/A3M_v3M.0.17_R8_TRUTH_AUDIT_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+    ],
+  },
+  {
+    id: "a3m-da3-14-lambda-general-nogo-v3m-0-19-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3M v3M.0.19: D-A3-14 (ledger row 19) -- the no-go generalizes to the full P(X) k-essence class",
+    papers: ["A3"],
+    summary:
+      "research/track_a3_multichannel/row19_lambda/ROW19_LAMBDA_2026-09-04.md answers R8-01's open item: restoring the cubic-action coefficient lambda does not open the (r,f_NL) window. r=24c_s and the bounce's own cubic term Delta f_NL^bounce(c_s) are exactly lambda-independent (d(c_s^2)/d(P_XXX)=d(Sigma)/d(P_XXX)=0; the lambda vertex's S1 coefficient is odd about a symmetric bounce and cancels, verified to 2.8e-7). f_NL^pre(c_s,L) = -245/16 + 105/(8c_s^2) - 30L (L=lambda/Sigma, squeezed) reproduces Li et al. 2016 on their line and -35/16 at c_s=1, L=0. No L in the physical range opens the window; cancelling the 1/c_s^2 divergence needs lambda/Sigma=7/(16c_s^2), i.e. s=39/16, far outside |s|<<1. The DBI line's best case gives r_min=12.57 at c_s=0.524 (349x BICEP/Keck). The lambda=s=0 qualifier is dropped from the abstract, Sec. VIII, and Next steps; the general-lambda open item is removed. Reproducibility statement gains row19_lambda.py/results.json/row19_lambda.log + manifest a3-row19-lambda.json. 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 18 pp, md5 fdbf93bfacc6cc644e103ff522d15381, Convex bump k57axjh0ap83rgnmgd6qtdk3qh8dtsaz. Readiness held at 75 -- ROUNDS STOPPED (R2); row 19 answered, no lambda opens the window.",
+    keyTakeaways: [
+      "r=24c_s and the bounce cubic term are exactly lambda-independent (verified to 2.8e-7)",
+      "f_NL^pre(c_s,L)=-245/16+105/(8c_s^2)-30L reproduces Li+2016 on their line and -35/16 at c_s=1,L=0",
+      "No lambda in [-1,1], the matter-contraction line, or the DBI line opens the window",
+      "DBI best case r_min=12.57 at c_s=0.524 (349x BICEP/Keck) -- the lambda=s=0 scope qualifier is dropped",
+    ],
+    links: [
+      { label: "row19_lambda", href: `${GH}/research/track_a3_multichannel/row19_lambda/ROW19_LAMBDA_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+    ],
+  },
+  {
+    id: "psu-r2-closure-v1s-0-3-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "paper-su v1S.0.3: R2 truth-audit closure -- 20 genuinely-new-real findings, new Appendix A",
+    papers: ["PSU"],
+    summary:
+      "R2 truth-audit (project-context/peer-reviews/INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md) found 20 genuinely-new-real findings (32 canonical, 6 re-flags, 1 OOS, 2 falsified, 3 opinion) across Grok/Gemini/Fable INT legs. All 11 editorial items closed: abstract precision fixes, Eq. (4) sign flip (sympy-verified), algebra statement corrected (1-lambda=I/3), Cai 2009 counterfactual ratio corrected to 4/3 (a wrong 8/7 had been transcribed unverified from R1's own disposition), references split/fixed, gradient-expansion order term folded into the [1-I/3+O(.)] bracket, Eq. (1) caveats stated, Table I relabeled, reproducibility paths switched to \\url{}, and a required new self-contained Appendix A transcribing the second-order lapse/shift setup, the five kernel contributions, and the two-label translation. 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp (up from 4), md5 afeda89e03a7e0bc688d84c423d164fb, tarball paper_su_arxiv_v1S.0.3.tar.gz, Convex bump k572q3ewgfsmjb02ets0jyh9b58dvghn, readiness cap set to 65. Per directive R2's convergence budget (R1+R2 exhaust it), review rounds on paper-su STOP here pending a science or venue decision.",
+    keyTakeaways: [
+      "20 genuinely-new-real findings closed; all 11 editorial items resolved",
+      "Cai 2009 counterfactual ratio corrected 8/7 -> 4/3 (R1's own disposition had carried the wrong number)",
+      "Required new Appendix A transcribing the second-order lapse/shift derivation (no new math)",
+      "Readiness 55 -> 65; ROUNDS STOPPED (R2) pending a science or venue decision",
+    ],
+    links: [
+      { label: "R2 truth-audit", href: `${PR}/INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+    ],
+  },
+  {
     id: "a3m-r7-truth-audit-closure-v3m-0-16-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",
