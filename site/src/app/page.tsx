@@ -139,6 +139,11 @@ export default async function HomePage() {
             </a>
           ))}
         </div>
+        <p style={{ marginTop: 12, fontSize: 13.5 }}>
+          <a href="/research#contributions" style={{ color: "var(--accent)" }}>
+            See every contribution the lab claims &rarr;
+          </a>
+        </p>
       </Band>
 
       {/* 6 — Reproducibility band */}
