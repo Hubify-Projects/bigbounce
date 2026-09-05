@@ -485,6 +485,31 @@ batch 2 (see \S\ref{sec:limitations}).
 The frozen verifier's own sha256 is quoted from
 \texttt{public2/frozen\_rules\_digest.json}: \texttt{6a9acd70\ldots}.
 
+\paragraph{How to check this yourself.} The freeze commit \texttt{4451b135}
+contains the rules \emph{specification}
+(\nolinkurl{RULES_v2_FROZEN.md});
+\nolinkurl{verify.py} was edited once between freeze and seal
+(\texttt{28efa21c}) for non-rule plumbing (a one-line output-directory
+argument; the \texttt{judge()} function and the R6 block are unchanged), and
+its post-seal sha256 \texttt{6a9acd70\ldots} is the digest pinned in
+\nolinkurl{public2/frozen_rules_digest.json}. The sealed digest
+\texttt{c96b5bf1\ldots} is \(\mathrm{sha256}\) of the canonical JSON form of
+the arm assignment (\nolinkurl{json.dumps(assignment, sort_keys=True)}), not
+the on-disk file bytes, which hash to a different value
+(\texttt{c8566d0e\ldots}); recomputing the canonical-form digest from the
+revealed key reproduces \texttt{c96b5bf1\ldots}. The pre-declared success
+criterion is recorded in \nolinkurl{BATCH2_PREREGISTRATION.md} in the same
+seal commit. An OpenTimestamps proof of the sealed digest was submitted
+2026-09-04 19:31 (\nolinkurl{public2/sealed_digest.json.ots});
+\texttt{ots upgrade} then \texttt{ots verify} against that file establishes
+that the digest existed before a given Bitcoin block time, not an external
+witness to the batch-2 execution itself. The R6 rule's stated behavior was
+corrected in \nolinkurl{RULES_v2_FROZEN.md} as a documentation-only change
+(no code in \nolinkurl{verify.py} changed); this is disclosed here as a
+third post-hoc change alongside the two batch-1 rule changes below, because
+S4's 5/5 result rests on the reference disjunct that description
+clarifies.
+
 \paragraph{Batch 1: pilot, rule-development round, disclosed.}
 \label{sec:blind-test-pilot}
 An earlier 18-run batch (3 per arm, honest/S1--S5) is what motivated the
