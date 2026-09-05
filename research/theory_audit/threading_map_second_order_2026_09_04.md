@@ -133,3 +133,62 @@ rest $0$; script key `five_eps_over_4_matches_a_map_term = []`). The adjudicatio
 is the difference between a vertex-leg class of the in-in calculation and a differently-normalised variable; it is
 not a term of the threading map, and — by §2 — it cannot be a pair translation, whose monopole is identically zero
 (script: `pure_translation_init` monopole $0$, quadrupole $-\tfrac{45\epsilon}{4(3-\epsilon)^2}$).
+
+## 5. Limits
+
+- **Attractor** ($\dot\zeta=0$, $m=0$, any constant $\epsilon$): $\chi=0$, $N^i=-\partial_i\zeta/(a^2H)$, so
+  $\partial_iN^i=O(k^2/a^2H^2)$ at linear *and* second order (script: `div_linear = 0`, `div_cross = 0` at
+  $O(k^0)$). The map is the identity, $\delta N_c=\zeta_{\rm Mald}$, and Maldacena's consistency relation
+  $f_{\rm NL}=\tfrac{5}{12}(1-n_s)$ is untouched — the $O(k^0)$ shift terms exist only while $\dot\zeta_L\neq0$.
+- **USR-type** ($\epsilon\to0$ at fixed $\dot\zeta/\zeta$): every cross kernel is $O(\epsilon)$ (asserted), the linear
+  factor is $1-\epsilon/3\to1$, and for USR proper ($\epsilon\propto a^{-6}$, $\zeta\propto a^3$)
+  $\int\epsilon\dot\zeta\,dt=O(\epsilon)\zeta$; hence $\delta N_c=\zeta(1+O(\epsilon))$ and the known agreement
+  $\delta N=$ in-in $=5/2$ (Namjoo–Firouzjahi–Sasaki 2012; adjudication §1) is consistent with (2). A full
+  time-dependent-$\epsilon$ run was not attempted (the constant-$\epsilon$ solver would need the exact
+  $a^3\propto\sinh$ background); the statement above is structural, not a re-derivation of $5/2$.
+- **Kination** $\epsilon\to3$: $\lambda\to0$ and the map's $f$ contributions blow up as $(3-\epsilon)^{-2}$ while
+  $f^{\rm in\text{-}in}_{\rm mono}\to0$: $\delta N_c$ ceases to be a usable variable exactly where the
+  adjudication's monopole vanishes — consistent.
+
+## 6. VERDICT — **MECHANISM DERIVED** (and the "pair-translation" reading refuted)
+
+The second-order relation between Maldacena's comoving $\zeta$ and the zero-shift-threading $\delta N_c$ is the
+exact identity (2): $\delta N_c$ differs from $\zeta$ by the divergence of the comoving shift integrated along the
+fluid worldline. Solving the ADM constraints to second order and assembling the squeezed bispectrum, the in-in
+result $-\tfrac{35}{16}+\tfrac{15}{16}\mu^2$ maps to **exactly $-5$, isotropic, for every constant $\epsilon$** when
+the patch is labelled by its initial position — the separate-universe answer — so the $\delta N$ value is
+*derived from* the in-in value rather than merely explained away. The monopole gap $5\epsilon(9-\epsilon)/18$ is
+(5): $5\epsilon/3$ from the linear renormalisation $\delta N_c=(1-\epsilon/3)\zeta$ plus
+$5\epsilon(3-\epsilon)/18$ from two second-order terms — the $e^{-2\zeta}$ conformal factor in $N^i=h^{ij}N_j$
+(local, kernel $2\epsilon/3$) and the second-order scalar shift $\psi_2$ (non-local). The recorded
+"$[L]-\delta N_c=5\epsilon/4=(5/12)(3\epsilon)$" is **not** a term of the map and **not** a pair translation: a
+translation of the short modes by $\Delta_L=\int N_L\,dt$ has zero monopole by translation invariance (eq. 3) and
+only re-shuffles the quadrupole between labelling conventions (final-position label: $+\tfrac{15\epsilon}{4(3-\epsilon)}\mu^2$;
+initial-position label: $0$). The coincidence arose from a momentum-bookkeeping slip in the adjudication's
+translation estimate (the $P(p)-P(q)$ pole-cancellation term was dropped). The $[L]/[K]/[X]$ vertex classes and the
+geometric pieces of (2) are different decompositions of the same number; only the totals are comparable.
+
+**Appendix-A-ready paragraph.** *The isotropic separate universe computes the e-fold number of the fluid
+congruence, $\delta N_c$, which is related to the comoving curvature perturbation by the exact identity
+$\delta N_c(x_f)=\zeta(t_f,x_f)-\frac13\int^{t_f}\partial_iN^i\,dt$ along the fluid worldline $\dot x^i=-N^i$; in a
+non-attractor phase the comoving shift $N_i=\partial_i\psi$, $\psi\supset a^2\epsilon\,\partial^{-2}\dot\zeta$, is
+$O(1/k_L)$, so its divergence is $O(k^0)$ and the map is non-trivial: $\delta N_c=(1-\epsilon/3)\zeta$ at linear
+order, with second-order terms from the conformal factor in $N^i=h^{ij}N_j$ and from the second-order shift.
+Solving the ADM constraints to second order, the in-in squeezed limit
+$f_{\rm NL}=\frac{5}{12}(\epsilon^2\mu^2-\epsilon^2+6\epsilon-12)$ maps exactly to the separate-universe value
+$f_{\rm NL}^{\delta N}=-5$ (isotropic, all constant $\epsilon$; initial-position label), so the two methods agree once
+the variable is matched; the translation of the short modes by the long mode's displacement contributes no
+monopole and only sets the quadrupole's labelling convention.*
+
+## 7. Integrity note
+
+Eq. (2), the constraint solver and the bispectrum assembly were written and frozen before any adjudication
+number was substituted (the comparison section reads $f^{\rm in\text{-}in}$ only after the kernels are computed
+and printed). All assertions are exact rational/symbolic (sympy 1.14.0); no coefficient was tuned. The label
+dependence of the quadrupole is reported rather than chosen. Lane (C)'s Bianchi-I quadrupole ($\tfrac{15}{8}\mu^2$
+at $\epsilon=3/2$) matches neither label here ($\tfrac{15}{4}\mu^2$ final, $0$ initial); that comparison is
+outside this row and is recorded as an open note, not a finding.
+
+Artifacts: `threading_map_second_order_2026_09_04.py` (sha256 `b0c934158add4ddec7fbf…`), `.json`
+(`b961e8678c3e8eb291cf7…`), manifest `reproducibility/manifests/experiments/row11c-threading-map-second-order.json`.
+Venue local CPU, \$0, wall clock ~3 min (constraint solve 105 s) · deterministic.
