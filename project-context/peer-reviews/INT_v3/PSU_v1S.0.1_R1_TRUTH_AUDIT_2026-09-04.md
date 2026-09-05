@@ -177,3 +177,84 @@ dimensionless; the caption never says so and never defines the right-hand scale.
 reproduce known results; the note nowhere claims the four cases are new. This is a
 significance judgment about a PRD Letter, not a defect. It does, however, share a root with
 PSU-10 (what is actually being claimed), which IS actionable — tracked there.
+
+### PSU-16 — no frozen DOI / archival release for the cited scripts and JSON
+**Legs**: Grok E4 (first half). **Class (a) REAL.** No Zenodo (or equivalent) deposit exists
+for `research/theory_audit/*_2026_09_04.{py,json}`; the paper cites live repo paths.
+**Closure**: editorial/packaging E9.
+
+### PSU-17 — "future date September 4, 2026"; "no institutional address"; "self-citations post-date the submission window"
+**Legs**: Grok N1, N2, N3. **Class (c) FALSIFIED, single root cause.** The reviewer assumed a
+past submission window. `\paperTimestamp` is today's date (2026-09-04) and the cited 2026-09
+notes are contemporaneous, not future-dated. On N2: `main.tex` carries `\email{houston@hubify.com}`,
+an ORCID `\altaffiliation`, and `\affiliation{Independent Researcher, Los Angeles, California, USA}`
+— PRD accepts exactly this. No action.
+
+### PSU-18 — "the 'exact threading identity' is not exact once ε=O(1)"
+**Legs**: Grok E2. **Class (c) FALSIFIED as stated.** The abstract already separates the two
+exactness claims: "The linear result is exact for any history; the second-order result is exact
+at constant ε, c_s=1, with a closed general equation-of-state form." Eq. (1) is a nonlinear
+identity along the worldline; ε=O(1) does not touch it. The REAL residual in the neighbourhood
+of this complaint is the dropped gradient term, tracked as PSU-9 — not the ε-dependence Grok
+names.
+
+### PSU-19 — "'at w=1 the in-in monopole itself vanishes' is unsupported"
+**Legs**: Fable m2. **Class (c) FALSIFIED, with an editorial residual.**
+**Verdict citation**: the general-ε in-in monopole in
+`separate_universe_failure_criterion_2026_09_04.md` l. 123 / `threading_map` §4 is
+`−5(ε−3)(ε−6)/18`, which vanishes at ε=3, i.e. w=1. The claim is derived, but the formula that
+makes it checkable is not printed in the paper. **Closure**: editorial E6 (print the general-ε
+monopole).
+
+### PSU-20 — λ_USR assumes ζ∝a³ from ζ=0 at a_s
+**Legs**: Fable m3. **Class (a) REAL, minor.** In a slow-roll→USR transition ζ_L(a_s) is the
+frozen slow-roll value, not zero. State the pure-USR / a³-mode-dominance assumption.
+**Closure**: editorial E7.
+
+### PSU-21 — the ekpyrosis row tests the definition, not the criterion
+**Legs**: Fable m5. **Class (a) REAL, minor.** With ζ̇=0 the criterion is trivially satisfied.
+Mark the row a consistency check, or add the two-field/entropic case where ζ is sourced on
+super-Hubble scales. **Closure**: editorial E7.
+
+### PSU-22 — "every one of the five geometric contributions carries a factor ε" — the five are never listed
+**Legs**: Fable m6. **Class (a) REAL, minor.** They exist and are auditable:
+`threading_map_second_order_2026_09_04.md` §3 table — `zlap`, `psi2`, `grad`, `wl_fin`,
+`lab_init` (+`wl_initextra`). One footnote closes it. **Closure**: editorial E7.
+
+### PSU-23 — reference style; [18]/[19] presented as citable works
+**Legs**: Fable m8. **Class (a) REAL, minor.** Label them unpublished notes with commit hashes;
+give Ref. [12] its full author list and journal. **Closure**: editorial E8.
+
+### PSU-24 — the AI-usage disclosure overclaims what the scripts verify
+**Legs**: Fable m9. **Class (a) REAL, minor.** Scripts verify algebra, not the δN_c ↔ δN
+identification (PSU-8). Rephrase. **Closure**: editorial E8.
+
+### PSU-25 — notation: ⟨ε⟩_ζ vs ⟨ε/c_s²⟩_ζ; Θ defined only in passing
+**Legs**: Fable m10. **Class (a) REAL, minor.** **Closure**: editorial E8.
+
+### PSU-26 — Eq. (2) is claimed "for any c_s" without naming the matter class
+**Legs**: Fable Q4. **Class (a) REAL.** `∂_iN^i=(ε/c_s²)ζ̇` follows from the P(X) momentum
+constraint; a genuine fluid with non-adiabatic pressure adds a term. §V discloses the c_s≠1
+limitation for the SECOND-order map only; the linear claim is unqualified.
+**Closure**: editorial E10 (state the P(X) class).
+
+### PSU-27 — "USR: agree to O(ε)" is a statement about the map, not a test against NFS
+**Legs**: Fable m4. **Class (a) REAL, minor.** NFS's 5/2 is itself leading order in ε, so the
+row cannot constrain the O(ε) correction; it currently reads as if it does.
+**Closure**: editorial E7.
+
+### PSU-28 — "future-dated filenames and commit hashes"
+**Legs**: Grok E4 (second half). **Class (c) FALSIFIED.** Same root cause as PSU-17.
+
+## Per-class counts
+
+| leg | verdict word (raw) | findings | (a) real | (b) re-flag | (c) falsified | (d) opinion | (e) oos-disclosed |
+|---|---|---|---|---|---|---|---|
+| Claude Fable 5.1 (INT) | major-revisions | 16 (+5 Q) | 15 (+1 from Q4) | 0 | 1 | 0 | 0 |
+| Grok brutal (API) | REJECT | 17 | 10 | 0 | 5 | 1 | 1 |
+| Gemini cosmology (API) | MAJOR REVISIONS | 5 | 5 | 0 | 0 | 0 | 0 |
+| **canonical, de-duplicated** | — | **28** | **21** | **0** | **5** | **1** | **1** |
+
+Class (b) is empty by construction: this is the paper's first board.
+**21 genuinely-new real findings.** Under directive K this is wave 0 for `paper-su`; the
+clean-wave clock cannot start until the (a) items are closed and the note re-tested.
