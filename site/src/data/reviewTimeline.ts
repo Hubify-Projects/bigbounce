@@ -9827,6 +9827,25 @@ export const reviewRounds: ReviewRound[] = [
       { label: "scripts/namaster_500mc.py (recovery estimator)", href: `${GH}/reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py` },
     ],
   },
+  {
+    id: "p1b-deferred-text-items-v2B.0.23-2026-09-05",
+    kind: "closure-wave",
+    dateISO: "2026-09-05",
+    title: "P1B v2B.0.23 — three remaining deferred text items from the R3 audit closed",
+    papers: ["P1B"],
+    summary:
+      "Closed the last three text-only deferrals from the v2B.0.20 R3 truth audit. D-R3-06: added the commit-ordered batch-3 audit trail (dcf96696 rules-frozen -> d03fe376 pre-registration -> b19b72fc attempt-1 seal -> 60917635 attempt-1 aborted -> cd9ab366 artifacts preserved -> 56ef3fd2 harness fix -> c7fb5e38 fresh-key reseal -> 4a7f9f82 runs published -> 5b643fc2 reveal+scorecard -> bf7d26e3 OpenTimestamps anchor, all sourced from git log), disclosed that no abort criterion was pre-registered before attempt 1 was sealed, and added the fresh-key non-contamination sentence plus the attempt-1-assignment-unpublished sentence. D-R3-15: quoted the frozen rule-file sha256 digests as committed, from shasum against the repository files (RULES_v2_FROZEN.md 169b3690..., RULES_v3_FROZEN.md 856f4c50..., RULES_v4_FROZEN.md a59caaf8...). D-R3-20: added Table 1's third trust category for intermediates.pseudo_cl, whose absence fails R7 open rather than being contract-checked when present.",
+    keyTakeaways: [
+      "Every SHA and digest in this bundle was read from git log / shasum against the committed files, never from memory.",
+      "An early draft of the D-R3-20 table row overflowed the table width silently with no LaTeX warning (centered tables don't trigger overfull-hbox badness checks) — caught only by a pdftoppm visual render, not the compile log; shortened to fit and re-verified visually.",
+      "All deferred text items from the v2B.0.20 R3 audit are now closed. Remaining: Zenodo corpus deposit (D-R3-07) + venue decision (Houston-gated).",
+    ],
+    links: [
+      { label: "arxiv/paper1b_namaster_proof.tex (v2B.0.23)", href: `${GH}/arxiv/paper1b_namaster_proof.tex` },
+      { label: "RULES_v2/v3/v4_FROZEN.md", href: `${GH}/pipelines/namaster_proof/blind_test/` },
+      { label: "BATCH3_ABORT_NOTE.md", href: `${GH}/pipelines/namaster_proof/blind_test/BATCH3_ABORT_NOTE.md` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──

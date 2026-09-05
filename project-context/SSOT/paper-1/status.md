@@ -1,4 +1,35 @@
-<!-- CURRENT P1B 2026-09-05 — v2B.0.22: closed deferred D-R3-21 (§9 recompute
+<!-- CURRENT P1B 2026-09-05 — v2B.0.23: closed the three remaining deferred
+text-only items from the v2B.0.20 R3 truth audit. D-R3-06: added the
+commit-ordered batch-3 audit trail (dcf96696 rules-frozen -> d03fe376
+pre-registration+scripts -> b19b72fc attempt-1 seal -> 60917635 attempt-1
+aborted -> cd9ab366 artifacts preserved -> 56ef3fd2 harness fix -> c7fb5e38
+fresh-key reseal -> 4a7f9f82 runs published/blind-judged -> 5b643fc2
+reveal+scorecard -> bf7d26e3 OpenTimestamps anchor, all from `git log`),
+disclosed honestly that no abort criterion was pre-registered before
+attempt 1 was sealed, and added the fresh-key non-contamination sentence
+plus the attempt-1-assignment-unpublished sentence (assignment_sha256
+8b4fa840..., never revealed or inspected before the abort). D-R3-15: quoted
+the frozen rule-file sha256 digests as committed, from `shasum -a 256`
+against the repository files (matching each batch's own
+frozen_rules_digest.json): RULES_v2_FROZEN.md 169b3690..., RULES_v3_FROZEN.md
+856f4c50..., RULES_v4_FROZEN.md a59caaf8..., in the Reproducibility
+paragraph. D-R3-20: added Table 1's third trust category for
+`intermediates.pseudo_cl`, whose *absence* fails R7 open rather than being
+contract-checked when present (a first draft of this row overflowed the
+table width silently with no LaTeX warning — caught by pdftoppm visual
+check, not the compile log; shortened to fit). v2B.0.23: 16 pp, 2026-09-05,
+MD5 60d1a18ab3ea499398106d6a92bc8a35 (579465 bytes), tarball sha256
+495c4bde5404e8080d1f81d9d0bf0ad952df485b076f070f61d1400e8cc85579 (standalone
+smoke PASS), Convex paperVersions row k57044fvt6tf1thg4fkpb10bbd8dt2gf,
+activityFeed row j5713t6pxbmc322y6k204wkxah8dv48p, directive-G PASS (7-way
+md5 match across arxiv/, site/public/papers/ [versioned+arxiv-alias+bare],
+public/papers/ [versioned+arxiv-alias+bare]; 4-pass compile, 0 undef refs, 0
+overfull >10pt). All deferred text items from the v2B.0.20 R3 audit are now
+closed. Remaining: Zenodo corpus deposit (D-R3-07) + venue decision
+(Houston). **ROUNDS STOPPED (R2) — next: venue decision + ASCL/Zenodo kit
+(Houston).** -->
+
+<!-- PRIOR P1B 2026-09-05 — v2B.0.22: closed deferred D-R3-21 (§9 recompute
 of the two remaining injected-angle sigmas). Recomputed all three
 injected-angle recovery statistics (0.270deg, 0.342deg, 0.000deg-null)
 directly from the committed reproducibility/p1_namaster_500mc/results/
