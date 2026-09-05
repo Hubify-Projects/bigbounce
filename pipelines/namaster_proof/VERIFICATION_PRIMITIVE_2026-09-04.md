@@ -415,3 +415,153 @@ contain only their own files.
 > complete: the same rule that catches a shortcut taken by omission is defeated by
 > one fabricated intermediate. Receipts of this kind are therefore a detector of
 > shortcuts taken by an analyst who does not forge — not of forgery.
+
+## Batch 4 (pre-registered; post-commitment challenge)
+
+Batch 4 answers the three design MAJORs raised against R7 in the R3 referee
+report on P1B v2B.0.20
+(`project-context/peer-reviews/INT_v3/P1B_v2B.0.20_R3_claude_opus_2026-09-05.md`)
+by building the adversaries the referee described and measuring them, rather than
+by softening the prose.
+
+**MAJOR 1 — R7's challenge is prover-chosen.** `verify3.spot_rows` derives its six
+rows from `sha256(mask_sha256 ‖ sha256(bandpowers) ‖ salt)`, a public function of
+two values the runner holds before it publishes anything. *Unchoosable* is not
+*unpredictable*. Since the effective-multipole shortcut S6 genuinely builds the
+full operator `M` (which is why R3/R4 never fire on it), a rule-aware S6 runner
+can compute those six rows and write a declared pseudo-spectrum that is exact on
+exactly them, at zero marginal cost. Arm **`S7_r7_aware_effective`** is that
+runner, implemented with the verifier's own `spot_rows` function.
+
+**MAJOR 2 — R7 fails open.** `r7_residual` returns "does not fire" when
+`intermediates.pseudo_cl` is absent or malformed. Arm **`S8_omit_pseudo_cl`** is
+an S6 run whose receipt simply omits the field.
+
+**R8, the new rule.** `RULES_v4_FROZEN.md` (sha256
+`a59caaf8189afc9359157f1d36fffbf8f04c7b5f9455c0ea4bea5fcd10085f30`) adds a
+**post-commitment verifier challenge**. The verifier draws 32 random bytes
+`sigma` and publishes `sha256(sigma)` alone, before the batch seal and before any
+run. The runner then publishes each result `C` and receipt; the verifier binds
+each run with `D = sha256(mask_sha256 ‖ coupling_sha256 ‖ band_hash(C) ‖
+band_hash(p))` and commits those digests. Only then is `sigma` revealed, and the
+challenged rows are drawn as `sha256(sigma ‖ run_id ‖ D ‖ salt)`. The verifier
+rebuilds the mask (gated on `contract.mask_sha256`), recomputes only those `K=6`
+rows of `M` (~9% of a full build), and fires iff
+`|M[l1,:]·C − p[l1]| > TOL·‖p‖₂` for any challenged row, `TOL = 1e-6` carried over
+unchanged from v3 (its calibration is a property of the honest solve, not of any
+batch's data). **R8 fails CLOSED:** a missing, malformed, non-finite or
+wrong-length `pseudo_cl`, a missing operator hash, or a mask that does not rebuild
+to the contract hash each fire, with the run tagged `SHORTCUT-SUSPECT`. A missing
+declared intermediate is a verdict, never a pass.
+
+*Randomness source used.* The commit–reveal `sigma` above. The rules declare the
+Bitcoin block hash of a **confirmed** OpenTimestamps attestation of the batch
+receipt digest as the preferred source, but Bitcoin confirmation of a stamp made
+*after* the receipts are published takes hours, so it is not available at
+challenge time; both commitments are OTS-stamped here so that upgrade is a
+drop-in for a future batch. The security argument is identical (post-commitment
+randomness the runner cannot have known); the trust assumption is not
+(commit–reveal trusts the verifier not to have leaked `sigma`; the beacon trusts
+no one). The scorecard records which was used.
+
+*Why honest passes and shortcuts fail.* An honest run publishes `p` as the
+measured pseudo-spectrum of the map it analysed and `C` solving
+`(M[2:,2:] + 1e-12 I) C = p`, so its residual is `-1e-12·C` **on every row at
+once**: it passes any challenge set without knowing `sigma`. One-sided soundness,
+no false-rejection channel an honest solve can enter. A shortcut publishes a pair
+with `p ≠ M C` on generic rows and escapes only if all `K` post-commitment rows
+land in the measure-zero-ish agreeing set. This is Freivalds' probabilistic
+verification of a matrix product (R. Freivalds, IFIP Congress 1977, pp. 839–842),
+row-sampled and applied to `M C = p`; the commit–reveal step is the Fiat–Shamir
+condition (A. Fiat and A. Shamir, CRYPTO '86, LNCS 263, pp. 186–194) applied
+correctly, which is exactly the condition R7 violated. Both citations now belong
+in §7 related work; their absence was the referee's stated largest gap.
+
+**Design (frozen before anything else).** Nine arms × 6 replicates = **54 runs**:
+`honest`, `S1`–`S6`, `S7_r7_aware_effective`, `S8_omit_pseudo_cl`. R7 is retained
+unchanged and fail-open *on purpose*, so batch 4 measures the size of the defect
+instead of hiding it; S7 and S8 are pre-registered to escape R7.
+
+**Reporting.** Class-level counts only. **No Clopper–Pearson interval and no
+per-run detection probability is computed anywhere in batch 4**, which removes at
+the source the batch-2/batch-3 inconsistency MAJOR 3(a) identified: within-arm
+replicates are seed-varied executions of one deterministic variant, so the
+inferential unit is the class, not the run.
+
+### Result (54 runs, seal verified, seed commitment opened)
+
+| Arm | flagged | R7 fired | R8 fired | note |
+|---|---|---|---|---|
+| honest | 0/6 | 0 | 0 | max R8 relative residual 1.35e-12, six orders below TOL |
+| S1_skip_operator | 6/6 | 6 | 6 | R2/R3/R4 also; R8 via the fail-closed missing-operator-hash branch |
+| S2_truncate_operator | 6/6 | 6 | 6 | max R8 residual 8.5e-3 |
+| S3_grid_interpolate | 6/6 | 6 | 6 | max R8 residual 9.0e-1 |
+| S4_cache_substitute | 6/6 | 6 | 6 | R6 reference disjunct; max R8 residual 7.6e-1 |
+| S5_metadata_forgery | 0/6 | 0 | 0 | escapes; max R8 residual 5.9e-17 — the declared complete-forgery limit |
+| S6_effective_multipole | 6/6 | 6 | 6 | batch-3 result replicated under the new rule |
+| **S7_r7_aware_effective** | **6/6** | **0** | **6** | **R7 defeated at zero cost, as MAJOR 1 predicted; R8 catches it** |
+| **S8_omit_pseudo_cl** | **6/6** | **0** | **6** | **R7 fails open, as MAJOR 2 predicted; R8 fires SHORTCUT-SUSPECT 6/6** |
+
+False positives on honest runs: **0/6**. The referee's two design objections are
+therefore both confirmed empirically *and* closed by a rule frozen before the
+adversaries were run.
+
+### Correction carried from batch 3 (MAJOR 3b)
+
+The batch-3 structural pool is S1, S2, S3, S4, S4b — **five** arms × 6 =
+**30/30**, not "24/24". The one-sided 95% lower bound 0.905 always corresponded
+to n = 30, and `public3/scorecard.json:detection_structural_S1_S4b` was always the
+five-arm pool; only the prose count was wrong. Corrected here and in
+`reproducibility/manifests/experiments/p1b-blind-shortcut-detection-batch3.json`.
+Batch 3's intervals are run-level quantities and should be read as such; batch 4
+quotes none.
+
+### Batch-4 audit trail (commit-ordered)
+
+| # | commit | contents |
+|---|---|---|
+| 1 | `c54fd6a8` | `RULES_v4_FROZEN.md` **alone** (R0–R8, arms, expectations, reporting rule) |
+| 2 | `9ba7d503` | batch-4 scripts (`variants4`, `verify4`, `seal4`, `run_blind4`, `reveal4`, `verifier_seed4`) |
+| 3 | `330cfcbf` | R8 verifier-seed commitment **alone** (`sha256(sigma)` only) |
+| 4 | `8dc6fc67` | batch seal **alone** (54 runs, 9 arms, frozen-script digests) |
+| 5 | `db545724` | 54 published runs + bound receipt digests (pre-reveal) |
+| 6 | `de1ea743` | verifier-seed reveal **alone** |
+| 7 | `16e113c0` | blind verdicts under R0–R8 (assignment still sealed) |
+| 8 | `94a7541d` | batch-seal reveal + scorecard (class-level counts) |
+| 9 | `f7d92b66` | OpenTimestamps stamps for both commitments |
+| 10 | `65de63e7` | reproducibility manifest (`p1b-blind-shortcut-detection-batch4`) + batch-3 30/30 fix |
+| 11 | this section | |
+
+Sealed digest `dbe6a713bc89be8a8701377bc7a03edb56c5f9680af0f88cfd165af204cfd7a5`;
+verifier-seed commitment
+`efef74f2b39fbfd739e3af2c8d517126cf28201e8648bc939ca6bc79c80bd29d`, opened by the
+revealed `sigma` in commit 6. A commit by an unrelated lane in the same working
+tree (`42e7aac2`, a P1B truth-audit plan header) landed between commits 4 and 5;
+it is recorded here rather than rewritten, and every ordering-critical commit
+(1, 3, 4, 5, 6, 7, 8) contains only its own files. Nothing was tuned after
+unblinding: no rule, tolerance, arm or scoring choice was added, removed or
+edited between commit 1 and commit 8.
+
+### Revised claim sentence (what the four batches jointly support)
+
+> Under a threat model that now includes a **rule-aware** analyst — one who knows
+> the verifier's rules verbatim and adapts its published receipt — execution-trace
+> receipts decide, from receipts alone and without re-running the computation,
+> whether an expensive pseudo-C_ℓ analysis was actually performed. This is, to our
+> knowledge, the first post-commitment challenge protocol for **pseudo-C_ℓ
+> execution receipts**: the verifier commits to challenge randomness before the
+> batch, and only after every receipt is published and bound does it reveal that
+> randomness and recompute six challenged rows of the coupling operator — about
+> 9% of the work of the analysis — testing the published bandpowers against the
+> declared pseudo-spectrum. It is a row-sampled Freivalds test with a
+> Fiat–Shamir-correct challenge; neither primitive is new, and the contribution is
+> their application to this receipt. In a sealed batch of 54 runs scored by rules
+> frozen and committed before the challenge seed was committed and before the
+> batch was sealed, the rule caught all six replicates of an adversary that
+> defeats the previous value-level rule at zero marginal cost, and all six
+> replicates of an adversary that defeats it by simply omitting the declared
+> intermediate, at zero false positives on honest runs. Detection is established
+> at class level, not per run; no per-run probability is claimed. A runner that
+> fabricates the declared intermediate wholesale still escapes, unchanged across
+> all four batches: receipts of this kind detect shortcuts taken by an analyst who
+> does not forge — not forgery.
