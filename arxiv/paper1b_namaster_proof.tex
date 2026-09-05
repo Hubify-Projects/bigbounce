@@ -351,10 +351,12 @@ caller metadata (suite, seeds, \dots) & caller-asserted, contract-checked & asse
 The Content Validation layer above gives content binding: the result bytes
 are the ones the receipt describes. It does not, by itself, establish that an
 expensive computation was actually performed rather than shortcut and then
-honestly reported. This section reports a pre-declared, sealed test of that
-narrower and falsifiable claim: \emph{a referee who cannot afford to re-run an
-expensive exact computation can, from receipts alone, decide whether the
-computation was actually performed or silently shortcut.}
+honestly reported. This section reports a pre-registered, sealed test of that
+narrower and falsifiable claim, under an unmodified-instrumented-harness
+threat model (the analyst may alter the computation but not the harness that
+records it): \emph{a referee who cannot afford to re-run an expensive exact
+computation can, from receipts alone, decide whether the computation was
+actually performed or silently shortcut.}
 
 \paragraph{Execution-trace extension.} The blind test extends the
 caller-asserted metadata into an execution trace emitted by an instrumented
@@ -532,6 +534,43 @@ honest trace by hand is, by construction, invisible to a receipt-only check
 --- the tested claim is: receipts of this kind are a detector of
 \emph{structural} shortcuts in instrumented steps, not of forged metadata and
 not of value-level shortcuts taken downstream of the instrumented operator.
+
+\section{Relation to Provenance and Attestation Tooling}
+\label{sec:related-work}
+
+The receipt layer sits beside an established body of work on binding
+artifacts to the process that produced them. Supply-chain attestation
+frameworks --- in-toto~\cite{Torres2019} and the SLSA levels built on
+it~\cite{SLSA} --- record signed statements that a declared build or analysis
+step ran on declared inputs and emitted declared outputs, and
+Sigstore~\cite{Sigstore} with its Rekor transparency log supplies exactly the
+externally witnessed anchor identified above as the missing ingredient for
+the metadata-forgery class. Execution-capture tools such as
+ReproZip~\cite{Chirigati2016} package the environment and file accesses of a
+run so it can be replayed elsewhere; workflow engines including
+Snakemake~\cite{Molder2021} and Nextflow~\cite{DiTommaso2017} emit provenance
+reports over their task graphs, increasingly serialized as RO-Crate research
+objects~\cite{Soiland2022}; and experiment trackers such as
+MLflow~\cite{Zaharia2018} bind parameters, code versions, and output
+artifacts into a queryable run record.
+
+What these share is that the attested quantity is administrative: which step
+ran, on which inputs, under which environment, producing which bytes --- all
+reported by the harness, none of it a consequence of the numerical path taken
+inside the step. An analyst who replaces an exact mode-coupling inversion
+with an effective-multipole rescaling (Sec.~\ref{sec:blind-test-s6}) still
+produces a well-formed in-toto attestation, a valid ReproZip bundle, and a
+complete MLflow run record. The delta claimed here is narrower: the receipt
+carries a \emph{semantic execution trace} --- the number of Wigner-3\(j\)
+evaluations actually performed, the multipole grid actually evaluated, the
+shape and support of the operator actually built --- whose values are a
+measured consequence of the numerical code path, checked against a published
+contract derived from one honest reference run. That is complementary rather
+than competing: the trace is naturally expressible as an in-toto predicate,
+and anchoring such a predicate in a transparency log would close the
+metadata-forgery gap using existing infrastructure. The scope of the
+guarantee remains what Sec.~\ref{sec:blind-test} measured: structural
+shortcuts in instrumented steps, under an unmodified-harness threat model.
 
 \section{Quality Control}
 
@@ -790,6 +829,42 @@ M.~Reinecke, and M.~Bartelmann, ``HEALPix: A framework for high-resolution
 discretization and fast analysis of data distributed on the sphere,''
 \emph{Astrophysical Journal} 622, 759--771 (2005),
 \href{https://doi.org/10.1086/427976}{doi:10.1086/427976}.
+
+\bibitem{Torres2019}
+S.~Torres-Arias, H.~Afzali, T.~K. Kuppusamy, R.~Curtmola, and J.~Cappos,
+``in-toto: Providing farm-to-table guarantees for bits and bytes,'' in
+\emph{28th USENIX Security Symposium} (2019).
+
+\bibitem{SLSA}
+OpenSSF, ``Supply-chain Levels for Software Artifacts (SLSA),''
+\href{https://slsa.dev}{slsa.dev}.
+
+\bibitem{Sigstore}
+Z.~Newman, J.~S. Meyers, and S.~Torres-Arias, ``Sigstore: Software signing
+for everybody,'' in \emph{ACM SIGSAC Conference on Computer and
+Communications Security (CCS)} (2022).
+
+\bibitem{Chirigati2016}
+F.~Chirigati, R.~Rampin, D.~Shasha, and J.~Freire, ``ReproZip: Computational
+reproducibility with ease,'' in \emph{ACM SIGMOD International Conference on
+Management of Data} (2016).
+
+\bibitem{Molder2021}
+F.~M\"older, K.~L. Jablonski, B.~Letcher, et al., ``Sustainable data analysis
+with Snakemake,'' \emph{F1000Research} 10, 33 (2021).
+
+\bibitem{DiTommaso2017}
+P.~Di Tommaso, M.~Chatzou, E.~W. Floden, P.~P. Barja, E.~Palumbo, and
+C.~Notredame, ``Nextflow enables reproducible computational workflows,''
+\emph{Nature Biotechnology} 35, 316--319 (2017).
+
+\bibitem{Soiland2022}
+S.~Soiland-Reyes, P.~Sefton, M.~Crosas, et al., ``Packaging research
+artefacts with RO-Crate,'' \emph{Data Science} 5, 2 (2022).
+
+\bibitem{Zaharia2018}
+M.~Zaharia, A.~Chen, A.~Davidson, et al., ``Accelerating the machine learning
+lifecycle with MLflow,'' \emph{IEEE Data Engineering Bulletin} 41, 4 (2018).
 
 \end{thebibliography}
 
