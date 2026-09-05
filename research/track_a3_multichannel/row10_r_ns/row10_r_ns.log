@@ -1,0 +1,25 @@
+[   0.00s] [A] analytic block ...
+[   0.00s] [A] analytic block ...
+[   0.06s]     r = 16*epsilon;  pure dust r = 24.0000, n_s = 1 exactly;  Planck-anchored w = -0.002900, r = 23.9304
+[   0.06s] [B] backgrounds ...
+[   0.29s]   [M] poly (poly-analytic-nonLQC) eta_B=5.7735e-01
+[   0.33s]   poly     k*eta_B=2.0e-03  T_zeta=5.114935e+00  T_h=5.114935e+00  T_h/T_zeta-1=4.05e-09  r_after=24.0000
+[   0.37s]   poly     k*eta_B=5.0e-03  T_zeta=5.114209e+00  T_h=5.114209e+00  T_h/T_zeta-1=2.76e-09  r_after=24.0000
+[   0.41s]   poly     k*eta_B=1.0e-02  T_zeta=5.111917e+00  T_h=5.111917e+00  T_h/T_zeta-1=8.50e-09  r_after=24.0000
+[   0.45s]   poly     k*eta_B=2.0e-02  T_zeta=5.103626e+00  T_h=5.103626e+00  T_h/T_zeta-1=1.75e-09  r_after=24.0000
+[   0.50s]   poly     k*eta_B=3.0e-02  T_zeta=5.090845e+00  T_h=5.090845e+00  T_h/T_zeta-1=-3.32e-10  r_after=24.0000
+[   0.50s]   [M] LQC (LQC-effective-dust) eta_B=1.0601e+00
+[   0.55s]   LQC      k*eta_B=2.0e-03  T_zeta=3.999965e+00  T_h=3.999965e+00  T_h/T_zeta-1=-1.01e-09  r_after=24.0000
+[   0.60s]   LQC      k*eta_B=5.0e-03  T_zeta=3.999778e+00  T_h=3.999778e+00  T_h/T_zeta-1=-6.02e-10  r_after=24.0000
+[   0.65s]   LQC      k*eta_B=1.0e-02  T_zeta=3.999112e+00  T_h=3.999112e+00  T_h/T_zeta-1=-6.71e-10  r_after=24.0000
+[   0.70s]   LQC      k*eta_B=2.0e-02  T_zeta=3.996460e+00  T_h=3.996460e+00  T_h/T_zeta-1=-5.21e-10  r_after=24.0000
+[   0.75s]   LQC      k*eta_B=3.0e-02  T_zeta=3.992072e+00  T_h=3.992072e+00  T_h/T_zeta-1=-4.87e-10  r_after=24.0000
+[   0.75s]   [M] quintin (Quintin2015-type) eta_B=4.4960e-01
+[   0.81s]   quintin  k*eta_B=2.0e-03  T_zeta=6.060851e+00  T_h=6.060369e+00  T_h/T_zeta-1=-7.97e-05  r_after=23.9962
+[   0.87s]   quintin  k*eta_B=5.0e-03  T_zeta=6.060653e+00  T_h=6.060170e+00  T_h/T_zeta-1=-7.97e-05  r_after=23.9962
+[   0.94s]   quintin  k*eta_B=1.0e-02  T_zeta=6.059946e+00  T_h=6.059463e+00  T_h/T_zeta-1=-7.97e-05  r_after=23.9962
+[   1.00s]   quintin  k*eta_B=2.0e-02  T_zeta=6.057120e+00  T_h=6.056637e+00  T_h/T_zeta-1=-7.97e-05  r_after=23.9962
+[   1.07s]   quintin  k*eta_B=3.0e-02  T_zeta=6.052428e+00  T_h=6.051944e+00  T_h/T_zeta-1=-7.98e-05  r_after=23.9962
+[   1.07s] [C] re-running r5_15 with the model's own r ...
+[   1.07s] [D] figure ...
+[   1.45s] [done] r_model = 23.9304 (dust 24.0000); max |T_h/T_zeta - 1| = 7.98e-05; wrote results.json

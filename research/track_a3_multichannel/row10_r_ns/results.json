@@ -1,0 +1,331 @@
+{
+  "task": "NEXT_SCIENCE_LEDGER row 10 (A3-4 + A3-ns) -- the matter bounce's OWN tensor-to-scalar ratio r and scalar tilt n_s",
+  "date": "2026-09-04",
+  "analytic": {
+    "r_symbolic": "16*epsilon",
+    "r_of_w": "24*w + 24",
+    "ns_minus_1_of_w": "12*w/(3*w + 1)",
+    "consistency_relation": "n_T = n_s - 1 (both from q = 2/(1+3w)); NOT the single-field-inflation n_T = -r/8",
+    "pure_dust": {
+      "w": 0.0,
+      "eps": 1.5,
+      "n_s": 1.0,
+      "n_T": 0.0,
+      "r": 24.0
+    },
+    "planck_anchored": {
+      "n_s_target": 0.9649,
+      "w": -0.0028995563926544573,
+      "eps": 1.4956506654110182,
+      "n_T": -0.03510000000000002,
+      "r": 23.93041064657629
+    },
+    "note_formula_discrepancy": {
+      "inlab_delta2_zeta_2026-09-03.md line 23 states": "n_s - 1 = 12w/(1+w)",
+      "correct (a ~ (-eta)^{2/(1+3w)})": "n_s - 1 = 12w/(1+3w)",
+      "w_from_correct_formula": -0.0028995563926544573,
+      "w_from_note_formula": -0.002916469327217888,
+      "impact": "the two differ by 0.6% in w and 0.02% in eps -> r changes by 0.006; the note's spectra are unaffected at quoted precision"
+    }
+  },
+  "k_grid_k_etaB": [
+    0.002,
+    0.005,
+    0.01,
+    0.02,
+    0.03
+  ],
+  "backgrounds": {
+    "poly": {
+      "label": "poly-analytic-nonLQC",
+      "eta_B": 0.5773502794521735,
+      "I_inf": 0.78539816339224,
+      "eta_far_used": 230.94011178086942,
+      "rows": [
+        {
+          "k_etaB": 0.002,
+          "k": 0.003464101553562469,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999984954908,
+          "T_zeta": 5.114935258987474,
+          "T_h": 5.1149352796790355,
+          "T_h_over_T_zeta": 1.0000000040453223,
+          "T_h_over_T_zeta_minus_1": 4.045322299361942e-09,
+          "r_before": 23.99999992778356,
+          "r_after": 24.00000012195903,
+          "r_after_over_r_before": 1.0000000080906446,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.005,
+          "k": 0.008660253883906172,
+          "mu_T_over_mu_S_at_handoff_abs": 0.99999999964223,
+          "T_zeta": 5.11420926477067,
+          "T_h": 5.1142092788736555,
+          "T_h_over_T_zeta": 1.0000000027576081,
+          "T_h_over_T_zeta_minus_1": 2.7576081418345666e-09,
+          "r_before": 23.99999998282704,
+          "r_after": 24.00000011519224,
+          "r_after_over_r_before": 1.0000000055152167,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.01,
+          "k": 0.017320507767812344,
+          "mu_T_over_mu_S_at_handoff_abs": 1.0000000000694582,
+          "T_zeta": 5.111917160130587,
+          "T_h": 5.111917203605144,
+          "T_h_over_T_zeta": 1.0000000085045504,
+          "T_h_over_T_zeta_minus_1": 8.504550397248067e-09,
+          "r_before": 24.000000003333994,
+          "r_after": 24.000000411552413,
+          "r_after_over_r_before": 1.0000000170091008,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.02,
+          "k": 0.03464101553562469,
+          "mu_T_over_mu_S_at_handoff_abs": 1.0000000001627638,
+          "T_zeta": 5.103625766518456,
+          "T_h": 5.103625775467289,
+          "T_h_over_T_zeta": 1.0000000017534265,
+          "T_h_over_T_zeta_minus_1": 1.7534265150942474e-09,
+          "r_before": 24.000000007812663,
+          "r_after": 24.000000091977146,
+          "r_after_over_r_before": 1.0000000035068535,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.03,
+          "k": 0.051961523303437035,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999997387057,
+          "T_zeta": 5.090844812308626,
+          "T_h": 5.0908448106173445,
+          "T_h_over_T_zeta": 0.9999999996677797,
+          "T_h_over_T_zeta_minus_1": -3.322202513089678e-10,
+          "r_before": 23.999999987457873,
+          "r_after": 23.99999997151131,
+          "r_after_over_r_before": 0.9999999993355599,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        }
+      ],
+      "r_after_median": 24.00000011519224,
+      "max_abs_T_ratio_minus_1": 8.504550397248067e-09
+    },
+    "LQC": {
+      "label": "LQC-effective-dust",
+      "eta_B": 1.0601459575428231,
+      "I_inf": 1.8137982097415053,
+      "eta_far_used": 309.44074677114986,
+      "rows": [
+        {
+          "k_etaB": 0.002,
+          "k": 0.0018865326852120859,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999989803591,
+          "T_zeta": 3.999964506682019,
+          "T_h": 3.999964502624211,
+          "T_h_over_T_zeta": 0.999999998985539,
+          "T_h_over_T_zeta_minus_1": -1.0144609596807186e-09,
+          "r_before": 23.999999951057234,
+          "r_after": 23.999999902363115,
+          "r_after_over_r_before": 0.9999999979710784,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.005,
+          "k": 0.0047163317130302146,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999996955143,
+          "T_zeta": 3.9997779222045455,
+          "T_h": 3.9997779197962116,
+          "T_h_over_T_zeta": 0.9999999993978831,
+          "T_h_over_T_zeta_minus_1": -6.021169118852754e-10,
+          "r_before": 23.99999998538469,
+          "r_after": 23.999999956483077,
+          "r_after_over_r_before": 0.9999999987957661,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.01,
+          "k": 0.009432663426060429,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999998239923,
+          "T_zeta": 3.9991123306550134,
+          "T_h": 3.999112327971923,
+          "T_h_over_T_zeta": 0.9999999993290786,
+          "T_h_over_T_zeta_minus_1": -6.70921429524185e-10,
+          "r_before": 23.999999991551633,
+          "r_after": 23.99999995934741,
+          "r_after_over_r_before": 0.9999999986581574,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.02,
+          "k": 0.018865326852120858,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999998862156,
+          "T_zeta": 3.9964595630967352,
+          "T_h": 3.996459561013556,
+          "T_h_over_T_zeta": 0.9999999994787437,
+          "T_h_over_T_zeta_minus_1": -5.212562603773563e-10,
+          "r_before": 23.99999999453835,
+          "r_after": 23.999999969518047,
+          "r_after_over_r_before": 0.9999999989574874,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.03,
+          "k": 0.028297990278181286,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999998708703,
+          "T_zeta": 3.992072416555466,
+          "T_h": 3.9920724146122373,
+          "T_h_over_T_zeta": 0.999999999513228,
+          "T_h_over_T_zeta_minus_1": -4.867719560763817e-10,
+          "r_before": 23.999999993801772,
+          "r_after": 23.999999970436715,
+          "r_after_over_r_before": 0.999999999026456,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        }
+      ],
+      "r_after_median": 23.99999995934741,
+      "max_abs_T_ratio_minus_1": 1.0144609596807186e-09
+    },
+    "quintin": {
+      "label": "Quintin2015-type",
+      "eta_B": 0.4496009146522358,
+      "I_inf": 0.5573516955053205,
+      "eta_far_used": 121.31164929340626,
+      "rows": [
+        {
+          "k_etaB": 0.002,
+          "k": 0.004448389526847361,
+          "mu_T_over_mu_S_at_handoff_abs": 0.999999997322894,
+          "T_zeta": 6.060851447170777,
+          "T_h": 6.060368564532532,
+          "T_h_over_T_zeta": 0.9999203275905285,
+          "T_h_over_T_zeta_minus_1": -7.967240947148735e-05,
+          "r_before": 23.999999871498915,
+          "r_after": 23.996175748209374,
+          "r_after_over_r_before": 0.9998406615287494,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.005,
+          "k": 0.011120973817118403,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999971632186,
+          "T_zeta": 6.060653212530907,
+          "T_h": 6.060170327267094,
+          "T_h_over_T_zeta": 0.9999203245513512,
+          "T_h_over_T_zeta_minus_1": -7.967544864884157e-05,
+          "r_before": 23.999999863834496,
+          "r_after": 23.996175594677297,
+          "r_after_over_r_before": 0.9998406554508793,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.01,
+          "k": 0.022241947634236807,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999972323966,
+          "T_zeta": 6.059945557245779,
+          "T_h": 6.059462650463395,
+          "T_h_over_T_zeta": 0.9999203116962319,
+          "T_h_over_T_zeta_minus_1": -7.968830376814395e-05,
+          "r_before": 23.99999986715504,
+          "r_after": 23.996174981000753,
+          "r_after_over_r_before": 0.9998406297426892,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.02,
+          "k": 0.044483895268473614,
+          "mu_T_over_mu_S_at_handoff_abs": 0.9999999977610611,
+          "T_zeta": 6.05711984013447,
+          "T_h": 6.056636861232388,
+          "T_h_over_T_zeta": 0.9999202626141088,
+          "T_h_over_T_zeta_minus_1": -7.973738589117652e-05,
+          "r_before": 23.99999989253093,
+          "r_after": 23.996172650618515,
+          "r_after_over_r_before": 0.9998405315862686,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        },
+        {
+          "k_etaB": 0.03,
+          "k": 0.06672584290271041,
+          "mu_T_over_mu_S_at_handoff_abs": 0.999999998030346,
+          "T_zeta": 6.052427538865025,
+          "T_h": 6.051944461415861,
+          "T_h_over_T_zeta": 0.9999201845133936,
+          "T_h_over_T_zeta_minus_1": -7.981548660640492e-05,
+          "r_before": 23.999999905456608,
+          "r_after": 23.996168915006876,
+          "r_after_over_r_before": 0.9998403753972991,
+          "scalar_ode_success": true,
+          "tensor_ode_success": true
+        }
+      ],
+      "r_after_median": 23.996174981000753,
+      "max_abs_T_ratio_minus_1": 7.981548660640492e-05
+    }
+  },
+  "numeric_summary": {
+    "r_after_median_per_background": {
+      "poly": 24.00000011519224,
+      "LQC": 23.99999995934741,
+      "quintin": 23.996174981000753
+    },
+    "r_after_spread_vs_analytic_24": 0.003825018999247476,
+    "max_abs_T_h_over_T_zeta_minus_1_all_backgrounds": 7.981548660640492e-05,
+    "interpretation": "the tensor and the scalar are transported by the SAME geometric potential a''/a in the dressed-metric scheme, so T_h = T_zeta to integration accuracy and r is UNCHANGED by every one of the three bounces."
+  },
+  "cmb_verdict": {
+    "r_model_planck_anchored": 23.93041064657629,
+    "r_model_pure_dust": 24.0,
+    "cmb_bound_r": 0.036,
+    "ratio_model_over_bound": 664.7336290715637,
+    "sigma_style_statement": "r_model = 23.93 exceeds the BICEP/Keck 2021 95% bound r < 0.036 by a factor 665",
+    "vs_quoted_0.84": {
+      "quoted": 0.84,
+      "ratio_model_over_quoted": 28.488584103067016,
+      "provenance_finding": "no derivation of a TENSOR-sense r = 0.84 exists anywhere in this repository. The only derived 0.84 is R_OVERLAP in research/track_a3_multichannel/survey_reach_fnl.py:46, P2's noise-weighted bounce-vs-local BISPECTRUM SHAPE OVERLAP (a correlation coefficient, documented at length in research/focused_paper_source_integration/02_full_draft.tex). The tensor-sense attribution in r5_15_tensor_omega_nhz.py:73,98 and paper/main.tex:769 is a conflation of that shape overlap with the tensor-to-scalar ratio, and it is low by a factor 28.5 relative to the model's own value."
+    },
+    "verdict": "CMB TENSION. The modelled dust-contraction background is NOT CMB-viable in its bare single-field form: r = 16 eps = 24, three orders of magnitude above the observational bound. This is the matter bounce's known large-r problem (Cai, Easson & Brandenberger 2012; the single-field no-go of Quintin et al. 2015), not a new defect of this lab's backgrounds, and no bounce in the A2 set relieves it."
+  },
+  "r5_15_rerun_with_model_r": {
+    "output_file": "research/track_a3_multichannel/outputs/r5_15b_tensor_omega_nhz_model_r_2026_09_04.json",
+    "case_C_anchored": {
+      "r": 23.93041064657629,
+      "n_T": -0.03510000000000002,
+      "Omega_GW1_h2_at_2nHz": 1.8633095171941155e-14,
+      "Omega_GW1_h2_at_f_yr": 1.691101615043261e-14,
+      "Omega_GW1_h2_at_60nHz": 1.653628871224003e-14,
+      "n_Omega_local_slope": -0.0351,
+      "gamma_pred_first_order": 5.0351,
+      "log10_ratio_first_order_over_induced_at_f_yr": 9.065470594882317,
+      "log10_shortfall_vs_NANOGrav_at_f_yr": 5.330954421727756,
+      "g_star20_variant_Omega_GW1_h2_at_f_yr": 2.955395903313607e-14
+    },
+    "case_C_dust": {
+      "r": 23.93041064657629,
+      "n_T": 0.0,
+      "Omega_GW1_h2_at_2nHz": 3.3921357091521904e-14,
+      "Omega_GW1_h2_at_f_yr": 3.3921357091521904e-14,
+      "Omega_GW1_h2_at_60nHz": 3.3921357091521904e-14,
+      "n_Omega_local_slope": 0.0,
+      "gamma_pred_first_order": 5.0,
+      "log10_ratio_first_order_over_induced_at_f_yr": 8.761361705186946,
+      "log10_shortfall_vs_NANOGrav_at_f_yr": 5.028650907280745,
+      "g_star20_variant_Omega_GW1_h2_at_f_yr": 5.928149963984111e-14
+    }
+  },
+  "wall_seconds": 1.4513678550720215
+}
