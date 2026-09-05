@@ -33,9 +33,9 @@ gql '{"query":"query { myself { clientBalance } }"}' | python3 -c "import json,s
 # session never got SSH). Explicit ports:"22/tcp" added below (previously
 # relied on startSsh:true alone, which does not guarantee a mapped port).
 GPU_CONFIGS=(
-  'NVIDIA GeForce RTX 3090|SECURE'
   'NVIDIA GeForce RTX 4090|SECURE'
   'NVIDIA RTX A5000|SECURE'
+  'NVIDIA GeForce RTX 3090|SECURE'
 )
 
 POD_ID=""
