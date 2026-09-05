@@ -1,0 +1,367 @@
+{
+  "n_total": 5000,
+  "pipeline": "production equivariant Z2 (2-fold horizontal-flip) TTA, matching pipelines/p2_chirality/equivariant_postprocess.py exactly (NOT raw single-pass, NOT full D4 8-way)",
+  "model": "bamfai/galaxy-chirality-v2 chirality_model_v2_best.pt rev 237d021c451d75cf86a875e86d4de498b74e2f12",
+  "A0_baseline_pixel_level": -0.20743746129799323,
+  "M_cw_mean_eq": 0.3962812693510034,
+  "M_ccw_mean_eq": 0.3892053111475512,
+  "M_ns_mean_eq": 0.21451342121572597,
+  "A0_ccw": -0.22158937770489762,
+  "paper_residual_bias_postprocess": -0.0026,
+  "fractions": [
+    0.0,
+    0.005,
+    0.01,
+    0.02,
+    0.05
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "per_seed_results": [
+    {
+      "f_injected": 0.0,
+      "seed": 1,
+      "n_flipped": 0,
+      "A_recovered": -0.20743746129799323,
+      "bootstrap_se": 0.010062751547756281,
+      "A_recovered_spiral_classified": 0.009465336403172264,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.015763681512174634
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 2,
+      "n_flipped": 0,
+      "A_recovered": -0.20743746129799323,
+      "bootstrap_se": 0.010054575086279235,
+      "A_recovered_spiral_classified": 0.009465336403172264,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.015818698501716615
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 3,
+      "n_flipped": 0,
+      "A_recovered": -0.20743746129799323,
+      "bootstrap_se": 0.009647249140224627,
+      "A_recovered_spiral_classified": 0.009465336403172264,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01589143356808519
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 4,
+      "n_flipped": 0,
+      "A_recovered": -0.20743746129799323,
+      "bootstrap_se": 0.009912412943682444,
+      "A_recovered_spiral_classified": 0.009465336403172264,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016204665590221184
+    },
+    {
+      "f_injected": 0.0,
+      "seed": 5,
+      "n_flipped": 0,
+      "A_recovered": -0.20743746129799323,
+      "bootstrap_se": 0.010020321673594292,
+      "A_recovered_spiral_classified": 0.009465336403172264,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016497234401419696
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 1,
+      "n_flipped": 25,
+      "A_recovered": -0.20541124897664842,
+      "bootstrap_se": 0.009365891339140429,
+      "A_recovered_spiral_classified": 0.012535175236633389,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016268513962353754
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 2,
+      "n_flipped": 25,
+      "A_recovered": -0.2077864813425132,
+      "bootstrap_se": 0.009614360257809838,
+      "A_recovered_spiral_classified": 0.009465336403172264,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01564827457469671
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 3,
+      "n_flipped": 25,
+      "A_recovered": -0.2084932759247391,
+      "bootstrap_se": 0.010007892760352249,
+      "A_recovered_spiral_classified": 0.006395497569710917,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01591186844999162
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 4,
+      "n_flipped": 25,
+      "A_recovered": -0.20828120223095226,
+      "bootstrap_se": 0.01002914519134485,
+      "A_recovered_spiral_classified": 0.008442056792018482,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016595484577914203
+    },
+    {
+      "f_injected": 0.005,
+      "seed": 5,
+      "n_flipped": 25,
+      "A_recovered": -0.20617025772447573,
+      "bootstrap_se": 0.009632832472182615,
+      "A_recovered_spiral_classified": 0.012535175236633389,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.015554518016990712
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 1,
+      "n_flipped": 50,
+      "A_recovered": -0.20781940866375914,
+      "bootstrap_se": 0.010460719941191217,
+      "A_recovered_spiral_classified": 0.008442056792018482,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01677511245435483
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 2,
+      "n_flipped": 50,
+      "A_recovered": -0.2114480436848275,
+      "bootstrap_se": 0.009892629314990268,
+      "A_recovered_spiral_classified": 0.005883857764134026,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01647924094958139
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 3,
+      "n_flipped": 50,
+      "A_recovered": -0.20871305297505482,
+      "bootstrap_se": 0.009870571990545977,
+      "A_recovered_spiral_classified": 0.011000255819902716,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016165513436096193
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 4,
+      "n_flipped": 50,
+      "A_recovered": -0.20322641090558113,
+      "bootstrap_se": 0.009702917743787716,
+      "A_recovered_spiral_classified": 0.017139933486825187,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01637429922952011
+    },
+    {
+      "f_injected": 0.01,
+      "seed": 5,
+      "n_flipped": 50,
+      "A_recovered": -0.2065654386858483,
+      "bootstrap_se": 0.010394436676772313,
+      "A_recovered_spiral_classified": 0.013558454847787171,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.0159840103695865
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 1,
+      "n_flipped": 100,
+      "A_recovered": -0.20433692431276396,
+      "bootstrap_se": 0.009762344140759934,
+      "A_recovered_spiral_classified": 0.01304681504221028,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016543107177584664
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 2,
+      "n_flipped": 100,
+      "A_recovered": -0.20772587070609771,
+      "bootstrap_se": 0.009018314780071512,
+      "A_recovered_spiral_classified": 0.008953696597595373,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016276667462512925
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 3,
+      "n_flipped": 100,
+      "A_recovered": -0.20330256240243272,
+      "bootstrap_se": 0.00952743397173599,
+      "A_recovered_spiral_classified": 0.016116653875671627,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.015823594418655166
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 4,
+      "n_flipped": 100,
+      "A_recovered": -0.20945733768179975,
+      "bootstrap_se": 0.010088621278025234,
+      "A_recovered_spiral_classified": 0.00793041698644159,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016150884824526195
+    },
+    {
+      "f_injected": 0.02,
+      "seed": 5,
+      "n_flipped": 100,
+      "A_recovered": -0.20532028728187657,
+      "bootstrap_se": 0.009986062756192753,
+      "A_recovered_spiral_classified": 0.011000255819902716,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016110495569732933
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 1,
+      "n_flipped": 250,
+      "A_recovered": -0.21170531385042946,
+      "bootstrap_se": 0.009745518016631576,
+      "A_recovered_spiral_classified": -0.0033256587362496814,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01616851180275848
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 2,
+      "n_flipped": 250,
+      "A_recovered": -0.21156982677700287,
+      "bootstrap_se": 0.009370482491459773,
+      "A_recovered_spiral_classified": 0.0074187771808647,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01614540839104028
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 3,
+      "n_flipped": 250,
+      "A_recovered": -0.2100779604524885,
+      "bootstrap_se": 0.010094072015377636,
+      "A_recovered_spiral_classified": 0.006395497569710917,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01606808422423391
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 4,
+      "n_flipped": 250,
+      "A_recovered": -0.20839725202150494,
+      "bootstrap_se": 0.00941359155277751,
+      "A_recovered_spiral_classified": 0.0007674597083653367,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.016069975948943244
+    },
+    {
+      "f_injected": 0.05,
+      "seed": 5,
+      "n_flipped": 250,
+      "A_recovered": -0.2078940128309008,
+      "bootstrap_se": 0.009958610086829656,
+      "A_recovered_spiral_classified": 0.009976976208748933,
+      "n_spiral_classified": 3909,
+      "bootstrap_se_spiral_classified": 0.01622836403591999
+    }
+  ],
+  "per_fraction_mean_A": [
+    {
+      "f_injected": 0.0,
+      "A_mean": -0.20743746129799323,
+      "A_std_across_seeds": 0.0,
+      "A_spiral_classified_mean": 0.009465336403172264,
+      "A_spiral_classified_std_across_seeds": 0.0
+    },
+    {
+      "f_injected": 0.005,
+      "A_mean": -0.20722849323986575,
+      "A_std_across_seeds": 0.0013639520978387585,
+      "A_spiral_classified_mean": 0.009874648247633688,
+      "A_spiral_classified_std_across_seeds": 0.0026683867608913166
+    },
+    {
+      "f_injected": 0.01,
+      "A_mean": -0.20755447098301422,
+      "A_std_across_seeds": 0.0030117561948957714,
+      "A_spiral_classified_mean": 0.011204911742133516,
+      "A_spiral_classified_std_across_seeds": 0.004380425641955251
+    },
+    {
+      "f_injected": 0.02,
+      "A_mean": -0.20602859647699417,
+      "A_std_across_seeds": 0.0025214938261425624,
+      "A_spiral_classified_mean": 0.011409567664364318,
+      "A_spiral_classified_std_across_seeds": 0.0032840739904591997
+    },
+    {
+      "f_injected": 0.05,
+      "A_mean": -0.2099288731864653,
+      "A_std_across_seeds": 0.0017576416864207836,
+      "A_spiral_classified_mean": 0.004246610386288041,
+      "A_spiral_classified_std_across_seeds": 0.005407430070346495
+    }
+  ],
+  "slope_dA_df_pixel_level_TTA": -0.050429459974028944,
+  "intercept_pixel_level_TTA": -0.206778278217308,
+  "label_level_analytic_curve": [
+    {
+      "f_injected": 0.0,
+      "A_label": -0.20743746129799323
+    },
+    {
+      "f_injected": 0.005,
+      "A_label": -0.20750822088002774
+    },
+    {
+      "f_injected": 0.01,
+      "A_label": -0.20757898046206227
+    },
+    {
+      "f_injected": 0.02,
+      "A_label": -0.20772049962613132
+    },
+    {
+      "f_injected": 0.05,
+      "A_label": -0.20814505711833844
+    }
+  ],
+  "slope_dA_df_label_level_analytic": -0.014151916406904386,
+  "slope_ratio_pixel_over_label": 3.563436818311448,
+  "A0_spiral_classified": 0.009465336403172264,
+  "slope_dA_df_pixel_level_TTA_spiral_classified": -0.11612280650624641,
+  "label_level_analytic_curve_spiral_classified": [
+    {
+      "f_injected": 0.0,
+      "A_label_cls": 0.009465336403172264
+    },
+    {
+      "f_injected": 0.005,
+      "A_label_cls": 0.009370683039140541
+    },
+    {
+      "f_injected": 0.01,
+      "A_label_cls": 0.00927602967510882
+    },
+    {
+      "f_injected": 0.02,
+      "A_label_cls": 0.009086722947045373
+    },
+    {
+      "f_injected": 0.05,
+      "A_label_cls": 0.008518802762855038
+    }
+  ],
+  "slope_dA_df_label_level_analytic_spiral_classified": -0.01893067280634453,
+  "slope_ratio_pixel_over_label_spiral_classified": 6.134108792336656,
+  "note_on_comparison_scope": "The 'label-level curve' here is the exact closed-form mixture identity E[A(f)]=(1-f)*A0+f*A0_ccw for swapping eq_cw<->eq_ccw on a random fraction f of galaxies (A0_ccw=2*mean(eq_ccw)-1; this properly accounts for the NOT_SPIRAL probability mass, which a naive A(f)=A0*(1-2f) identity omits) -- NOT the paper's committed full_catalog_injection_recovery.py / gen_fig_injection_recovery.py detection-probability-vs-amplitude curve, which measures MASTER ell=1 sky-map dipole recovery under a physically-motivated cos(theta) dipole injection, a different statistic on a different axis (amplitude A, not flip-fraction f). Both are disclosed; conflating them would misstate the comparison."
+}
