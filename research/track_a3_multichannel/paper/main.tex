@@ -1246,26 +1246,32 @@ background is not free of its own tensor spectrum. In the dressed-metric
 scheme the tensor and scalar canonical variables obey the identical
 equation $\mu''+(k^2-a''/a)\mu=0$ from the identical Bunch--Davies
 vacuum, so $r=16\epsilon$ identically for this class of background, and
-the dust contraction's $\epsilon=3/2$ fixes $r=24$. The transfer ratio
-$r_{\rm after}/r_{\rm before}$ is scheme-dependent, because the scalar
-transfer is (S1 vs.\ S2). In scheme S1, tensor and scalar canonical
-variables share $z=a$, so integrating the tensor mode independently
-through each of the three bounce backgrounds of Sec.~\ref{sec:transmission}
-returns transfers equal to the scalar transfers to better than
-$8\times10^{-5}$, so $r$ is unchanged by the bounce,
-$r_{\rm after}^{\rm S1}=23.996$--$24.000$: this exceeds the BICEP/Keck
-bound $r<0.036$~\cite{BicepKeck2021} by a factor of $\sim670$. In
-scheme S2 the tensor transfer is unchanged ($z_T=a$ still) but the
-scalar transfer under the raw-ADM continuation is $|\lambda_\zeta|=0.97$
-(Sec.~\ref{sec:transmission}) against the S1 scalar transfer's
-$\lambda_\zeta=6.06$ on the Quintin-type background, so
-$r_{\rm after}^{\rm S2}=24\,(6.06/0.97)^2\approx9.4\times10^2$: the
-tensor problem is \emph{worse}, not cured, in S2. This is the
-long-known matter-bounce large-$r$ problem~\cite{CaiEasson2012,
-Quintin2015}, applied here to the lab's own background rather than
-assumed from the literature: because tensors and scalars share the same
-geometric potential, no bounce in the class considered relieves it, in
-either transmission scheme.
+the dust contraction's $\epsilon=3/2$ fixes $r=24$. The tensor mode
+obeys $h''+2(a'/a)h'+k^2h=0$ with $c_T=1$: it contains no $1/H$, no
+$\epsilon$, no $c_s$, and none of the scalar constraint variables, so
+the S1/S2 continuation ambiguity -- a choice of scalar variable $z$
+through $H=0$ -- cannot act on it, and because the S1 scalar equation
+with $z=a$ is literally the tensor equation, the tensor transfer
+$\lambda_T$ equals the S1 scalar transfer $\lambda_\zeta^{\rm S1}$
+\emph{identically}, verified to $1.4\times10^{-14}$ on the Quintin-type
+background at $k\eta_B=10^{-3},3\times10^{-3},10^{-2}$ by an independent
+tensor-equation solver, and to $8.5\times10^{-9}$ on the poly and LQC
+backgrounds (Sec.~\ref{sec:transmission}). So $r_{\rm after}=r_{\rm
+before}(\lambda_T/\lambda_\zeta)^2$ depends on the scheme only through
+the scalar denominator: $r_{\rm after}^{\rm S1}=24.0$ is an identity,
+unchanged by the bounce, exceeding the BICEP/Keck bound
+$r<0.036$~\cite{BicepKeck2021} by $\sim670\times$; in S2 the scalar
+transfer under the raw-ADM continuation is $\lambda_\zeta^{\rm
+S2}=0.970$ against the shared tensor transfer $\lambda_T=6.06$, so the
+bounce \emph{amplifies} $r$ by $(\lambda_T/\lambda_\zeta^{\rm
+S2})^2\approx39\times$ to $r_{\rm after}^{\rm S2}\approx9.4\times10^2$,
+$\sim2.6\times10^4\times$ above the bound -- the tensor problem is
+\emph{worse}, not cured, in S2. The conclusion is therefore
+scheme-independent: this is the long-known matter-bounce large-$r$
+problem~\cite{CaiEasson2012, Quintin2015}, applied here to the lab's own
+background rather than assumed from the literature, and no choice of
+scalar continuation through $H=0$ rescues it (ledger row 18(a),
+\texttt{row18a\_s2\_tensor/}).
 Similarly, the exact dust contraction gives $n_s=1$; the observed
 $n_s=0.9649$ is an anchor fixing the contraction's equation of state to
 $w=-0.0029$ via $n_s-1=12w/(1+3w)$, not a prediction of the model. The
