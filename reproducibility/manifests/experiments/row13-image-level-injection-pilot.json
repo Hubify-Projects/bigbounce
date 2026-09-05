@@ -29,12 +29,14 @@
     {
       "name": "huggingface_hub.hf_hub_download",
       "purpose": "used by the pilot",
-      "auth": "none"
+      "endpoint": "https://huggingface.co",
+      "auth_required": true
     },
     {
       "name": "legacysurvey.org jpeg-cutout service",
       "purpose": "used by the pilot",
-      "auth": "none"
+      "endpoint": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+      "auth_required": false
     }
   ],
   "code": [
