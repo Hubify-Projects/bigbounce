@@ -268,6 +268,9 @@ def main():
     ax.set_xlabel("f  [nHz]"); ax.set_ylabel(r"$\Omega_{\rm GW}h^2$"); ax.set_ylim(1e-24, 1e-7)
     ax.set_title("A3-3: induced GWs at nHz from the lab's own $\\Delta^2_\\zeta$")
     ax.legend(fontsize=7.5, loc="center left"); ax.grid(alpha=0.3, which="both")
+    # R7-16: default log-minor-tick labels collide (e.g. 3x10^0 over 4x10^0)
+    # on this narrow x-range; drop minor-tick labels, keep major-decade labels.
+    ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
     fig.tight_layout(); fig.savefig(OUTP, dpi=150)
 
     print(json.dumps({k2: out[k2] for k2 in
