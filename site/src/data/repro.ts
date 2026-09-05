@@ -4230,6 +4230,139 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "lift2-separate-universe-failure-criterion",
+    "title": "Novelty lift #2: criterion for the O(1) failure of the isotropic separate universe (delta N) in non-attractor phases — <eps/c_s^2>_zeta, general-w lambda and f_map, validations on dust / USR / attractor / ekpyrotic",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "lab threading map (2026-09-04), frozen constant-eps kernels",
+        "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json",
+        "type": "internal-artifact",
+        "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"
+      },
+      {
+        "name": "lab monopole adjudication (2026-09-03), in-in general-eps input",
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "novelty audit item C2",
+        "locator": "project-context/NOVELTY_AUDIT_2026-09-04.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "Namjoo, Firouzjahi & Sasaki 2013",
+        "locator": "https://arxiv.org/abs/1210.3692",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013",
+        "locator": "https://arxiv.org/abs/1301.5699",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Pajer, Schmidt & Zaldarriaga 2013",
+        "locator": "https://arxiv.org/abs/1305.0824",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Dai, Pajer & Schmidt 2015",
+        "locator": "https://arxiv.org/abs/1504.00351",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Cai et al. 2018",
+        "locator": "https://arxiv.org/abs/1712.09998",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Bravo, Mooij, Palma & Pradenas 2018",
+        "locator": "https://arxiv.org/abs/1711.02680",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Passaglia, Hu & Motohashi 2019",
+        "locator": "https://arxiv.org/abs/1812.08243",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lyth, Malik & Sasaki 2005",
+        "locator": "https://arxiv.org/abs/astro-ph/0411220",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.py",
+        "entrypoint": "python3 research/theory_audit/separate_universe_failure_criterion_2026_09_04.py",
+        "sha256": "21668ab6771101b663a9fcf3a3155e665fca92b30f34f76221ef9343b26a0a29"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-04",
+      "wall_clock": "0.2 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 10 seconds",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic exact sympy on closed forms; reads the frozen threading-map JSON (no constraint re-solve). Self-validating asserts: zetadot/(H zeta) = eps-3 on the constant-eps non-constant mode; f_map = -(5 eps/4)(1-mu^2); delta N initial-label = -5; in-in minus delta N monopole = 5 eps (9-eps)/18; exact USR linear lambda = 1 + eps_f/3 - sqrt(eps_s eps_f)/3; every frozen map piece vanishes at eps -> 0."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.json",
+        "type": "result-json",
+        "checksum": "sha256:4e2a49be541a57d34c4803a20bf7c66cc4016b0612a7881823a9c4cfde85563c"
+      },
+      {
+        "locator": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required: constant_eps.Theta == 'epsilon*(epsilon - 3)'; constant_eps.lambda_ == '1 - epsilon/3'; USR_exact_linear.lambda_USR_exact == '-sqrt(epsilon_f)*sqrt(epsilon_s)/3 + epsilon_f/3 + 1'; second_order.f_dN_initial_label == '-5'; second_order.all_map_pieces_carry_eps == true; general_w.lambda_ == '-(w - 1)/2'; general_w.f_map_monopole == '-5*(w + 1)/4'; validations.dust_eps_3_2.monopole_gap == '25/8'; validations.ekpyrotic.cases['eps=10'].nonconstant_mode == 'decays as eta->0-'.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NOVELTY_AUDIT_2026-09-04.md C2 'Lift to N3': generalise the map, state the failure as a criterion, demonstrate on >=2 backgrounds + USR control",
+      "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+      "input 'lab threading map' used for: the frozen constant-eps kernels and eps->0 / attractor limits (read, not re-derived)",
+      "input 'lab monopole adjudication' used for: f_inin(mu,eps) and the USR 5/2 benchmark statement",
+      "external literature used for: placement only (section 4); no result transcribed"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p1a-alp-prior-predictive",
     "title": "ALP prior-predictive / spectator-conditioned prior-predictive",
     "program": "bounce-theory",
@@ -4481,6 +4614,127 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/EXPERIMENT_INVENTORY_2026-08-05.md §PROGRAM: bounce-theory / P1A — N_tot sensitivity MC bullet (path corrected: inventory cites 'research/sensitivity_scan/', actual path is research/theory_audit/vacuum_scale_sensitivity_scan.py)",
       "project-context/SSOT/paper-1/status.md line 257 (Sensitivity scan table row) and line 275 (N_tot viable range)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p1b-blind-shortcut-detection",
+    "title": "Blind shortcut-detection test: can a referee decide from receipts alone whether an expensive pseudo-C_ell computation was actually performed?",
+    "program": "lab-infra",
+    "paper": "P1B",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "Synthetic HEALPix Gaussian signal realisations (nside=64, lmax=64, power-law C_ell)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_map; healpy.synfast, seeds from the sealed assignment)",
+        "checksum": null
+      },
+      {
+        "name": "Synthetic binary sky mask (equatorial cut + 12 random discs, f_sky = 0.7857)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_mask, seed 11)",
+        "checksum": null
+      },
+      {
+        "name": "namaster-proof receipt primitive (publish_json / verify_json_receipt)",
+        "type": "internal-artifact",
+        "locator": "packages/namaster-proof/src/namaster_proof/receipts.py",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/namaster_proof/blind_test/wigner.py",
+        "entrypoint": "python3 test_wigner.py",
+        "sha256": "13221ecafe217a9cc7d32842fccd73cfd4d41dba966a6e55fb441f8a7d794779"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/pcl.py",
+        "entrypoint": "imported by variants.py",
+        "sha256": "5d9fb3dcdba5821e187c9597874ab3987c0492b86b4d7b9fa11a53fa6ca9fc80"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/variants.py",
+        "entrypoint": "imported by run_blind.py",
+        "sha256": "1ea01738dd3a90da2c6260c28a2f6dbdc7d35519e3f3ac29309ca55d1272255b"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/seal.py",
+        "entrypoint": "python3 seal.py",
+        "sha256": "cd66d949511574cb164bd5247025946adb677ed1f7312b8aef6375ed8f1712e5"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/run_blind.py",
+        "entrypoint": "python3 run_blind.py",
+        "sha256": "d660743d120f6ed58be46150e03b1992989ec5504c82c9a4f3b3cbc327f1dc9c"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/verify.py",
+        "entrypoint": "python3 verify.py",
+        "sha256": "e847c512b5e4708830413d057eed0423026738791bef0831e10cf6c71535dc19"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/reveal.py",
+        "entrypoint": "python3 reveal.py",
+        "sha256": "c27518919c656b0206cdd9c7105af950fc867ce5f1e39278491ea20401e8346c"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + healpy 1.20.0 + scipy 1.18.0; sympy optional (test_wigner.py cross-check only). NaMaster/pymaster is NOT required and is NOT installed: the test ships its own spin-0 MASTER estimator so the Wigner-3j evaluation count can be instrumented.",
+      "hardware": "cpu-only, any laptop"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation (macOS arm64)",
+      "date": "2026-09-04",
+      "wall_clock": "~1 min total for seal + 19 runs (1 reference + 18 blind) + verify + reveal",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local CPU",
+      "est_wall_clock": "~1-2 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "python3 seal.py && python3 run_blind.py && python3 verify.py && python3 reveal.py, from pipelines/namaster_proof/blind_test/. seal.py draws a FRESH random key, so a re-run reproduces the scorecard STATISTICS (detection/false-positive rates per arm) but not the committed assignment digest. To reproduce the committed run exactly, skip seal.py and reuse the committed sealed/key.txt + sealed/assignment.json."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public/contract.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public/sealed_digest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public/runs",
+        "type": "receipt",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public/verdicts.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public/scorecard.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Exact, not tolerance-based. (1) python3 test_wigner.py reproduces the m=0 Wigner-3j kernel against sympy.physics.wigner to < 1e-12 on six cases. (2) reveal.py recomputes the sealed assignment from key.txt and asserts its sha256 equals the pre-run committed digest in public/sealed_digest.json (assignment_sha256 = 0f4ca4ba8e431067c8d47e182264ccedb62a72a6a1c564e72ccbab653a4d5515; seal_verified = true). (3) public/scorecard.json must reproduce byte-identically from the committed sealed/ and public/runs/: detection_rate_excluding_S5 = 1.0 (12/12 across S1-S4), detection_rate_all_shortcuts = 0.8 (12/15), false_positive_rate = 0.0 (0/3 honest). (4) Every run's result/receipt pair must pass namaster_proof.receipts.verify_json_receipt.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NOVELTY_AUDIT_2026-09-04.md, section '#3 — namaster-proof as a verification primitive (candidate 10)' (the lift this test executes)",
+      "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md (design note: threat model, trace fields, blind protocol, pre-declared success criterion)",
+      "packages/namaster-proof/src/namaster_proof/receipts.py (the content-binding primitive under test)",
+      "commit 0b43d5d6 (design note), b0426b4c (3j kernel), fc2f01b8 (pseudo-C_ell core), 73ec01ff (variants), 00132500 (seal), a07c496b (harness + verifier), d60949b7 (executed run + artifacts)"
     ]
   },
   {
@@ -8832,6 +9086,114 @@ export const reproExperiments: ReproExperiment[] = [
       "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (label-level baseline being compared against)",
       "pipelines/p2_chirality/equivariant_postprocess.py (production pipeline this pilot did NOT replicate — flagged as the needed next step)",
       "project-context/SSOT/paper-4p/status.md (A_95^obs≈0.98% context)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "row13-image-level-injection-scale",
+    "title": "Row 13 Part A AT SCALE — pixel-level parity-injection test through the PRODUCTION equivariant (Z2 2-fold flip-TTA) pipeline, N=5000, vs the exact label-level analytic identity",
+    "program": "galaxy-chirality",
+    "paper": "P4P",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "bamfai/galaxy-chirality-catalog (catalog_production.parquet)",
+        "type": "external-dataset",
+        "locator": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+        "checksum": null
+      },
+      {
+        "name": "bamfai/galaxy-chirality-v2 checkpoint",
+        "type": "model",
+        "locator": "chirality_model_v2_best.pt, revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+        "checksum": null
+      },
+      {
+        "name": "Legacy Survey DR9 JPEG cutouts (5000 real galaxies, 2500 CW / 2500 CCW by catalog label)",
+        "type": "external-dataset",
+        "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=..&dec=..&size=150&layer=ls-dr9",
+        "checksum": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "huggingface_hub.hf_hub_download",
+        "endpoint": "https://huggingface.co",
+        "auth_required": true
+      },
+      {
+        "name": "legacysurvey.org jpeg-cutout service",
+        "endpoint": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/fetch_scale_sample.py",
+        "entrypoint": "python3 fetch_scale_sample.py",
+        "sha256": "8d5978f34835eaefb3948fe79765d7611cf7371257f249a22a1b13e18f1b8687"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/run_injection_scale.py",
+        "entrypoint": "python3 run_injection_scale.py",
+        "sha256": "4300ee1d9c78dde028b43f1bef8033e3e5899c909c57332c16bd7cd3b7dd21c1"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/analyze_injection_scale.py",
+        "entrypoint": "python3 analyze_injection_scale.py",
+        "sha256": "85b7098d624ce3d82b4dedd6c4bab2bb9a7d84b5ca94f09ae13b86c635876e87"
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/injection_pilot/gen_fig_scale_injection.py",
+        "entrypoint": "python3 gen_fig_scale_injection.py",
+        "sha256": "18fd4bd378edd45b34f79b5f8817119ae6215b75e13cc280aee4770b2c464d57"
+      }
+    ],
+    "environment": {
+      "python": "python3 + torch 2.13.0 + timm + PIL + healpy + pandas + huggingface_hub + matplotlib",
+      "hardware": "local Apple Silicon MPS (Metal), macOS arm64 — no RunPod needed; 200-cutout timing test projected ~50 min for N=5000 (under the 90-min RunPod threshold), actual run completed in 44.5 min"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": "Apple M-series MPS",
+      "pod_id_or_host": "local workstation",
+      "date": "2026-09-04",
+      "wall_clock": "44.5 min (5000 cutout downloads + 10,000 classifier forward passes [orig+flip per galaxy] on MPS)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local MPS/GPU for N up to ~10k; RunPod only needed beyond that or on CPU-only hosts",
+      "est_wall_clock": "~45 min for N=5000 on Apple Silicon MPS; ~2x that on CPU-only per the N=200 CPU-vs-MPS pilot timing",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": true,
+      "notes": "run_injection_scale.py checkpoints every 500 galaxies and resumes from scale_pairs.parquet. Computational optimization: because the production Z2-TTA construction is EXACTLY antisymmetric under a single-image mirror flip (eq_cw(flip(img))=eq_ccw(img), proven identity, verified analytically in the script docstring), only ONE (orig, flip) forward-pass pair per galaxy is needed regardless of the f/seed injection grid — all 5 fractions x 5 seeds are evaluated in closed form by analyze_injection_scale.py from the single N=5000 inference pass, with NO re-inference. This is what makes the at-scale test tractable without a GPU pod."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale_sample_manifest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale_injection_results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/injection_pilot/fig_scale_injection_recovery.png",
+        "type": "figure",
+        "checksum": null
+      }
+    ],
+    "verification": "5000/5000 cutouts downloaded and classified successfully (0 failures). Baseline spiral-classified asymmetry A0=+0.95% (vs. paper's published post-equivariant residual of -0.26%): opposite sign, same order of magnitude (both sub-1%, both consistent with null within ~1 sigma at this N given per-image classification noise), a dramatic improvement over the N=500 raw single-pass pilot's -39.6% baseline. Injected-fraction slope dA/df (pixel-level, spiral-classified) = -0.116 vs the exact closed-form label-level analytic identity slope of -0.019 (same sign, same order of magnitude, ratio ~6x) -- both slopes are SMALLER than the per-seed sampling noise floor (std across 5 seeds ~0.003-0.005) at f in {0.5%,1%,2%,5%}, so this N=5000 test cannot yet distinguish whether the label-level curve is conservative or optimistic relative to the true pixel-level recovery; it DOES show the production pipeline's pixel-level and label-level responses are consistent in sign and order of magnitude, unlike the raw single-pass pilot which was inconsistent and non-monotonic. Larger N (paper's own ansatz suggests tens of thousands) is needed to resolve the slope ratio outside the noise floor.",
+    "status": "runnable-now",
+    "provenance": [
+      "Task: ledger row 13 Part A at scale (resumed 2026-09-04 from ROW13_PILOT_2026-09-04.md)",
+      "Supersedes row13-image-level-injection-pilot.json (N=500 raw single-pass pilot, inconclusive)",
+      "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (paper's committed sky-map amplitude-vs-detection-probability curve; a DIFFERENT statistic/axis, not directly comparable — disclosed in analyze_injection_scale.py's note_on_comparison_scope)",
+      "pipelines/p2_chirality/equivariant_postprocess.py (production Z2 2-fold flip-TTA pipeline replicated exactly here)",
+      "pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md (prior N=500 pilot this run follows up on)"
     ]
   }
 ];
