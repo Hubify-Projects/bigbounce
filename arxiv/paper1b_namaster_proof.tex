@@ -125,13 +125,31 @@
 %   to 6e-16; the protocol is a process-level seal, not a cryptographic
 %   pre-registration). Old title retained in SSOT version history, not here
 %   (Directive Q1). No prior science number changed.
-\newcommand{\paperVersion}{v2B.0.17}
-\newcommand{\paperTimestamp}{2026-09-04 12:00 PT}
+% v2B.0.18 (2026-09-04): closes R1 truth-audit INT_v3/P1B_v2B.0.17_R1_TRUTH_AUDIT
+%   (23 canonical findings, 21 genuinely-new real, 8 answered by the
+%   pre-registered batch-2 blind test) by integrating batch 2 (35 sealed runs,
+%   7 arms x 5, rules frozen in 4451b135 before the seal 28efa21c) as the
+%   PRIMARY result: S1-S4 20/20 (Clopper-Pearson lower bound 0.861), honest
+%   0/5 (upper bound 0.451), S5 forgery escaped 5/5, S6 effective-multipole
+%   escaped 5/5 with no rule added post hoc. Batch 1 (18 runs) is relabelled
+%   the pilot/rule-development round with its post-hoc wall-clock and M-hash
+%   rule changes disclosed rather than defended. Abstract rewritten to the
+%   audit's surviving claim sentence (structural shortcuts, unmodified-
+%   harness threat model, spin-0 in-house estimator). R6 restated with both
+%   disjuncts; SEM added to the 500-realization recovery numbers where
+%   logged; new Related Work subsection (in-toto/SLSA/Sigstore/ReproZip/
+%   Snakemake-Nextflow/RO-Crate/MLflow, per RELATED_WORK_NOTE_2026-09-04.md);
+%   sealed digests for both batches externally timestamped via OpenTimestamps
+%   (pipelines/namaster_proof/blind_test/public{,2}/sealed_digest.json.ots,
+%   pending Bitcoin confirmation) and cited as the S2 external-anchor step in
+%   progress. Appendix table of all 35 batch-2 per-run verdicts added.
+\newcommand{\paperVersion}{v2B.0.18}
+\newcommand{\paperTimestamp}{2026-09-04 19:40 PT}
 
 \title{\software: Content-bound execution receipts as a shortcut
 detector for pseudo-\(\Cl\) computations}
 \author{Houston Golden\\Independent researcher\\[2pt]\href{https://orcid.org/0009-0008-5616-5994}{\footnotesize ORCID: 0009-0008-5616-5994}}
-\date{September 4, 2026 --- manuscript revision \paperVersion}
+\date{September 4, 2026 --- manuscript revision \paperVersion (\paperTimestamp)}
 
 \begin{document}
 \maketitle
@@ -139,23 +157,32 @@ detector for pseudo-\(\Cl\) computations}
 \begin{abstract}
 \software{} is a focused Python verification layer for two error-prone steps
 in cut-sky spin-2 analyses.  First, it evaluates a uniformly rotated
-\(EE,EB,BE,BB\) spectrum through the complete NaMaster bandpower-window
-operator, avoiding replacement of the operator by bin-centre or
-effective-multipole templates.  Second, it writes JSON results and
-content-bound sidecar receipts with atomic per-file replacement and fails
+\(EE,EB,BE,BB\) spectrum through the complete bandpower-window operator of an
+instrumented spin-0 MASTER estimator in this repository (validated against
+NaMaster's couple--decouple route on a synthetic workspace; not run against
+NaMaster or PyMaster itself), avoiding replacement of the operator by
+bin-centre or effective-multipole templates.  Second, it writes JSON results
+and content-bound sidecar receipts with atomic per-file replacement and fails
 closed when result bytes or caller-asserted execution metadata change.  We
 extend the receipt idea into an execution-trace contract and test it under a
-pre-declared, sealed blind protocol: a verifier that never re-runs the
-computation must decide, from 18 sealed runs alone, whether each one actually
-performed the declared pseudo-\(\Cl\) calculation.  The verifier detected all
-12 runs (100\%) drawn from four shortcut classes --- operator-skipping,
-operator-truncating, grid-reducing, and cache-substituting --- with a 0\%
-false-positive rate on 3 honest runs, while a fifth, pre-declared
-metadata-forgery class escaped detection in all 3 of its runs, exactly as
-predicted by the threat model.  The result establishes the primitive as a
-\emph{shortcut detector, not a fraud detector}: it converts an
-expensive-computation claim into a cheap consistency check against a declared
-contract under a non-adversarial-analyst threat model.  The package also
+pre-registered, sealed blind protocol, run in two batches under an
+unmodified-instrumented-harness threat model --- the analyst may alter the
+computation but not the harness that records it.  In the primary batch (35
+runs, decision rules frozen and committed before the seal was drawn), a
+verifier that never re-runs the computation flagged 20 of 20 runs drawn from
+four structural shortcut classes --- operator-skipping, operator-truncating,
+grid-reducing, and cache-substituting --- (one-sided 95\% Clopper--Pearson
+lower bound 0.861) with 0 of 5 false positives on honest runs (upper bound
+0.451), while a metadata-forgery class and an effective-multipole class each
+escaped detection in 5 of 5 runs, the latter with no rule added after the
+fact.  An earlier 18-run pilot developed the decision rules and is reported
+as such, with its post-hoc rule changes disclosed.  The result establishes
+the primitive as a detector of \emph{structural shortcuts in instrumented
+steps}, not of forged metadata or of value-level shortcuts taken downstream
+of the instrumented operator: to our knowledge this is the first
+pre-registered, sealed blind measurement of shortcut-detection sensitivity
+for pseudo-\(\Cl\) execution receipts, including a negative class reported as
+an escape.  The package also
 supplies explicit multipole-support contracts, fixed-grid rotation-angle
 recovery, command-line receipt verification, and compatibility tests against
 the production helpers from which it was extracted.  The software is intended
