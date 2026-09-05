@@ -1,0 +1,19 @@
+{
+  "arms": [
+    "honest",
+    "S1_skip_operator",
+    "S2_truncate_operator",
+    "S3_grid_interpolate",
+    "S4_cache_substitute",
+    "S5_metadata_forgery",
+    "S6_effective_multipole",
+    "S7_r7_aware_effective",
+    "S8_omit_pseudo_cl"
+  ],
+  "assignment_sha256": "dbe6a713bc89be8a8701377bc7a03edb56c5f9680af0f88cfd165af204cfd7a5",
+  "batch": 4,
+  "key_file_sha256": "85b069a06773d34b078a06a80d1b8bbb5b3c2c0a8b2ad5ec08cd2eb427ce9ea9",
+  "n_arms": 9,
+  "n_runs": 54,
+  "replicates_per_arm": 6
+}
