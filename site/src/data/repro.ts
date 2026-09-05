@@ -427,6 +427,12 @@ export const reproPrograms: ReproProgram[] = [
         ]
       },
       {
+        "id": "p2-a3-row18a-s2-tensor-transfer",
+        "depends_on": [
+          "p2-a3-lane-9b2-s2-rawadm"
+        ]
+      },
+      {
         "id": "p2-a3-lane-9a-velocity-dip",
         "depends_on": [
           "p2-a2-bounce-fnl-transmission",
@@ -610,6 +616,14 @@ export const reproPrograms: ReproProgram[] = [
         "depends_on": [
           "a3-4-row10-r-ns",
           "p2-fnl-adjudication-inin-from-scratch"
+        ]
+      },
+      {
+        "id": "a3-row18b-cs-bounce-cubic",
+        "depends_on": [
+          "p2-a2-lane-b-numerical-inin",
+          "p2-a2-lane-a-cubic-vertex-table",
+          "a3-row14-cs-window"
         ]
       },
       {
@@ -2500,6 +2514,140 @@ export const reproExperiments: ReproExperiment[] = [
       "input 'Cai, Easson & Brandenberger 2012 (source)' used for: checked for an independent curvaton section — none (only a mention of the bounce curvaton); recorded as such",
       "input 'Lyth, Ungarelli & Wands 2003' used for: Phi = -(3/5) zeta = -(r/5) delta rho_sigma/rho_sigma, f_NL = 5/(4r) leading term; zeta_curv = r_dec (2/3) delta sigma/sigma_*",
       "input 'Sasaki, Valiviita & Wands 2006' used for: sudden-decay f_NL = (5/4r)(1+gg''/g'^2) - 5/3 - 5r/6, used as a VALIDATION target of the independent delta-N derivation"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "a3-row18b-cs-bounce-cubic",
+    "title": "Ledger row 18(b) - c_s-dependence of the bounce's own cubic contribution Delta f_NL^bounce(c_s) in scheme S1, and the resulting shift of the joint (r, f_NL) window boundary of row 14",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Lane (a) cubic-vertex table - the c_s-dependent coefficients c_V(a,H,eps,eta_sr,c_s) of the P(X,phi) cubic action (Chen, Huang, Kachru & Shiu 2007; Seery & Lidsey 2005; Maldacena 2003) transcribed and checked",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Lane (b) S1 in-in integrator at c_s = 1 - imported directly for its vertex slot/kernel definitions, mode class, dot-product table and quadrature; supplies the c_s = 1 regression gate (-0.139818 / -0.104311 / -0.127111)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane_b_numerical/bounce_cubic_inin.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "A2 linear-transmission module - the three bounce backgrounds (Quintin-type, LQC-effective dust, poly) and the adiabatic-vacuum scalar evolution, imported directly",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ledger row 14 - f_NL^pre(c_s) = -165/16 + 65/(8 c_s^2), r = 24 c_s, and the c_s-independence of the bounce transfer T (verified to 4e-11); the window this row re-evaluates",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Li, Quintin, Wang & Cai 2016 - matter bounce with a k-essence field; Eq. (4.19) shape function and Eq. (3.18) r = 24 c_s, the source of f_NL^pre(c_s)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1612.02036",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Chen, Huang, Kachru & Shiu 2007 - cubic action for general single-field P(X,phi); the c_s-dependent vertex coefficients used here",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/0605045",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Garriga & Mukhanov 1999 - k-inflation perturbations; z^2 = 2a^2 eps/c_s^2 and the BD normalisation 1/sqrt(2 c_s k)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/hep-th/9904176",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Ade et al. (BICEP/Keck) 2021 - r < 0.036 (95% CL)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2110.00483",
+        "checksum": null,
+        "license": null
+      },
+      {
+        "name": "Planck 2019 - local f_NL = -0.9 +/- 5.1, the bound defining the window",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/1905.05697",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/row18b_cs_bounce_cubic.py",
+        "entrypoint": "cd research/cubic_bounce_transmission/row18b_cs_bounce_cubic && python3 row18b_cs_bounce_cubic.py",
+        "sha256": "f8f8cd8d5266fd6866e62a326a83635c38cda39bb1b009b885eaaa3aa1faf588"
+      }
+    ],
+    "environment": {
+      "python": "python3.14.6 + numpy + scipy + matplotlib",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "8.0 s (measured, printed in row18b_cs_bounce_cubic.log)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~10 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Fully offline and deterministic (no RNG, no data files, no network). Scheme S1 sets z = a exactly, so the Mukhanov-Sasaki equation is mu'' + (c_s^2 k^2 - a''/a) mu = 0 and c_s enters the mode functions ONLY through the sound horizon; this is implemented literally by evolving the modes at k_s = c_s k with the same Wronskian normalisation Im(v* v') = -1/2 (which IS the BD normalisation 1/sqrt(2 c_s k)), while every momentum kernel and dot product uses the physical k. c_s enters elsewhere only through the lane (a) vertex coefficients with the S1 substitutions eps -> 1/2, eta_sr -> 0, s -> 0, lambda -> 0 - the c_s extension of lane (a) assumption (A3). No parameter is tuned."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/row18b_cs_bounce_cubic.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/row18b_cs_bounce_cubic.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/ROW18B_CS_BOUNCE_CUBIC_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: (a) backgrounds.*.gate_cs1.rel_diff <= 2e-3 - the c_s = 1 limit reproduces the lane (b) totals -0.139818 (Quintin), -0.104311 (LQC dust), -0.127111 (poly) at k eta_B = 1e-3, and the assert in dfnl_bounce/main fires otherwise; (b) every backgrounds.*.cs_scan[*].V2_scaling_numeric agrees with V2_scaling_analytic = (6 c_s^2 - 5)/c_s^4 to <= 3e-4 relative, the independent check that the S1 V2 coefficient is a^2 eps(eps-3+3c_s^2)/c_s^4; (c) backgrounds.quintin.cs_scan values Delta f_NL^bounce = +14.29, +3.058, +0.0611, -0.1398 at c_s = 0.44, 0.6, 0.8876, 1; (d) backgrounds.*.boundary.row14_no_bounce_cs.cs_min reproduces row 14 (Quintin 0.4440); (e) backgrounds.*.boundary.with_bounce_term.cs_min == 0.5997 / 0.6064 / 0.6020 with r_min == 14.39 / 14.55 / 14.45, i.e. the |f_NL^after| <= 5.1 boundary MOVES UP in c_s and the no-go strengthens; (f) backgrounds.*.boundary.at_tensor_viable_cs.fnl_after_with_bounce ~ 1e11 at c_s = 1.5e-3 versus ~1e6 without the bounce term.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 18 item (b), A3-cs-bounce",
+      "research/cubic_bounce_transmission/row18b_cs_bounce_cubic/ROW18B_CS_BOUNCE_CUBIC_2026-09-04.md (derivation, c_s x background table, boundary statement, paper-ready sentences)",
+      "research/cubic_bounce_transmission/lane_a_vertex_table/VERTEX_TABLE_2026-09-03.md (the c_s-dependent coefficients, literature-cited)",
+      "research/cubic_bounce_transmission/lane_b_numerical/LANE_B_NUMERICAL_2026-09-03.md (the c_s = 1 values this row must reproduce)",
+      "research/track_a3_multichannel/row14_cs_window/ROW14_CS_WINDOW_2026-09-04.md (f_NL^pre(c_s), r = 24 c_s, c_s-independent T)",
+      "directive Q2 (per-experiment reproducibility manifest); directive Q1 (the strengthened no-go is stated in its own terms)",
+      "model-dependence disclosed: f_NL^pre(c_s) inherits Li+2016's k-essence kinetic sector (row 14 sec 2), and the S1 vertex coefficients keep eps -> eps_eff = 1/2 while retaining c_s exactly, which is a scheme assumption (lane (a) A3) and not the dressed-metric H_3 of Agullo+2017"
     ]
   },
   {
@@ -4739,6 +4887,134 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "p1b-blind-shortcut-detection-batch2",
+    "title": "Blind shortcut-detection test, batch 2: pre-registered rerun under frozen rules, with the referee-requested effective-multipole shortcut class (S6)",
+    "program": "lab-infra",
+    "paper": "P1B",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "Synthetic HEALPix Gaussian signal realisations (nside=64, lmax=64, power-law C_ell; seeds HMAC-derived from the sealed key)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_map)",
+        "checksum": null
+      },
+      {
+        "name": "Synthetic binary sky mask (equatorial cut + 12 random discs)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_mask, seed 11)",
+        "checksum": null
+      },
+      {
+        "name": "namaster-proof receipt primitive (publish_json / verify_json_receipt)",
+        "type": "internal-artifact",
+        "locator": "packages/namaster-proof/src/namaster_proof/receipts.py",
+        "checksum": null
+      },
+      {
+        "name": "Frozen decision rules R0-R6 (pre-registered, committed alone before the seal)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/RULES_v2_FROZEN.md",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/namaster_proof/blind_test/variants2.py",
+        "entrypoint": "imported by run_blind2.py",
+        "sha256": "d1a2211c0fad3567e438cdac375e3af5bcc9c3446ee6d2c51b076edcaddb9881"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/seal2.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 seal2.py",
+        "sha256": "7b7212ef2277d83bc220237ac8bc3c4908c9fb6d30e358929579e23bcbde00eb"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/run_blind2.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 run_blind2.py",
+        "sha256": "149b12d899f671ec42a27e40ecea8640319bd80888a4f21850229c90a76bbff1"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/verify.py",
+        "entrypoint": "python3 verify.py public2",
+        "sha256": "6a9acd705cb50ce12220b95132f993a7f4a90c617e8f03668b32478b1ba815b2"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/reveal2.py",
+        "entrypoint": "NP_SEALED_DIR=sealed2 python3 reveal2.py",
+        "sha256": "10dc181cb14c3352cf8269dd389ef6614ea22e869cceaf1a3b2cfc32475fb41a"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + healpy 1.20.0 + scipy 1.18.0 (scipy used only for the Clopper-Pearson bounds in reveal2.py). NaMaster/pymaster is NOT required and is NOT installed: the test ships its own instrumented spin-0 MASTER estimator, which is a stated scope limit of the result.",
+      "hardware": "cpu-only, any laptop"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local workstation (macOS arm64)",
+      "date": "2026-09-04",
+      "wall_clock": "~11 s for 36 runs (1 reference + 35 blind); < 1 min including seal, verify and reveal",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local CPU",
+      "est_wall_clock": "~1 min",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "To reproduce the committed batch exactly, skip seal2.py and reuse the revealed sealed2/{key.txt,assignment.json}: NP_SEALED_DIR=$PWD/sealed2 python3 run_blind2.py && python3 verify.py public2 && NP_SEALED_DIR=$PWD/sealed2 python3 reveal2.py, from pipelines/namaster_proof/blind_test/. A fresh seal2.py draws a new key and reproduces the statistics, not the committed digest."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public2/sealed_digest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public2/frozen_rules_digest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public2/contract.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public2/runs",
+        "type": "receipt",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public2/verdicts.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public2/scorecard.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/sealed2",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Exact, not tolerance-based. (1) reveal2.py re-derives the assignment from the revealed key and asserts sha256 == the digest committed BEFORE any run output existed (assignment_sha256 = c96b5bf1d6d3dd3f6b8131e6260803bb2049e3481b9613b041091ac00a27e9ee; seal_verified = true), and sha256(sealed2/key.txt) must equal key_file_sha256 = bbf6373bc64bf3fbd6614a06e6b3c33e6332be92c9f951f910ad3e6143b3c535. (2) The commit ordering is itself the audit trail: 4451b135 (rules frozen, alone) -> 28efa21c (seal commitment + scripts, no run output in tree) -> 27300504 (35 run outputs + blind verdicts) -> 974e2859 (key reveal + scorecard). (3) public2/scorecard.json must reproduce byte-identically: S1-S4 detection 20/20 (one-sided 95% lower bound 0.861), honest false positives 0/5 (one-sided 95% upper bound 0.451), S5 escapes 5/5, S6 escapes 5/5. (4) Every run's result/receipt pair must pass namaster_proof.receipts.verify_json_receipt.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/peer-reviews/INT_v3/P1B_v2B.0.17_R1_claude_opus_2026-09-04.md (referee MAJORs M1 post-hoc rule amendment, M2 seal priority, M3 implemented-vs-described R6, M4 missing effective-multipole class, M5 intervals — this batch answers them)",
+      "pipelines/namaster_proof/blind_test/RULES_v2_FROZEN.md (frozen decision rules, committed alone in 4451b135)",
+      "pipelines/namaster_proof/blind_test/BATCH2_PREREGISTRATION.md (design, S6 definition, scoring, expectations)",
+      "reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json (batch 1, now labelled the rule-development pilot round)",
+      "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md section 'Batch 2 (pre-registered)'"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "p1b-namaster-window-regen",
     "title": "NaMaster window regenerability check (pymaster 3.0)",
     "program": "bounce-theory",
@@ -5349,6 +5625,86 @@ export const reproExperiments: ReproExperiment[] = [
       "builds on manifests p2-a3-lane-9b-s2-regularisation, p2-a2-lane-b-numerical-inin, p2-a2-lane-a-cubic-vertex-table; does not redo them",
       "literature (transcribed, not re-derived): astro-ph/0210603 Eq. 2.4, 2.9-2.14 (raw ADM action, constraint solutions), consistency relation f_NL^sq = (5/12)(1 - n_s) (Maldacena 2003; Creminelli & Zaldarriaga 2004) used only as an engine gate on an exact power-law background",
       "the S1 pseudo-scheme (eps_eff = 1/2, z = a) has no raw-ADM counterpart: its modes have zetadot(0) != 0 so N1 = zetadot/H is singular at H = 0; S1 remains a Maldacena-form-defined assumption-labelled anchor (lane a wording stands)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p2-a3-row18a-s2-tensor-transfer",
+    "title": "Track A3 (ledger row 18a / A3-S2r): tensor transfer through the Quintin-type bounce and the like-for-like post-bounce tensor-to-scalar ratio r_after per scalar continuation scheme (S1 geometric z=a vs S2 effective-fluid MS variable), including the c_s dependence",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "lane 9b-2 exact S2 scalar modes, Quintin-type background, S1 reference rho_B = 0.6699892 (imported as a module; single source of truth for the background and both scalar schemes)",
+        "type": "internal-artifact",
+        "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.py",
+        "checksum": "sha256:44b848063978e912770ed535a99f762765bc7b7e3ee96aee1be240c59c2f9d62"
+      },
+      {
+        "name": "row 10 tensor/scalar transfer on the poly and LQC backgrounds (T_h = T_zeta[S1] to 8.5e-9, r_before = r_after = 24) used as an independent cross-check, not as an input",
+        "type": "internal-artifact",
+        "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+        "checksum": "sha256:4554ac9add31704f973be6b4118d3c814aad2e15baa4b9f7db591eacc63d54b3"
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/cubic_bounce_transmission/row18a_s2_tensor/row18a_s2_tensor.py",
+        "entrypoint": "python3 row18a_s2_tensor.py",
+        "sha256": "0220439c3ee5bf3444a8919448e5ddd4caeeb5f4362a652253f40b54ae4602f3"
+      }
+    ],
+    "environment": {
+      "python": "numpy, scipy (integrate.solve_ivp DOP853, special.erf), matplotlib (repo requirements.txt)",
+      "hardware": "cpu-only; no GPU, no network"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": null,
+      "date": "2026-09-04",
+      "wall_clock": "0.1 s, measured",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 10 s",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic. Tensor mode solved as the regular first-order system hdot = Pi/a^3, Pidot = -a k^2 h in cosmic time (DOP853, rtol 1e-12) between the |t| = tm junctions, with exact matter-phase solutions outside; scalar S1/S2 transmissions from the imported lane 9b-2 BounceModes. A constant c_s enters the scalar problem only as k -> c_s k."
+    },
+    "outputs": [
+      {
+        "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/results.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/row18a_s2_tensor.log",
+        "type": "log",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/row18a_s2_tensor.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/ROW18A_S2_TENSOR_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm in the log: lam_T = 6.0585966 / 6.0470743 / 5.9171128 at k eta_B = 1e-3 / 3e-3 / 1e-2, equal to lam_zeta^S1 to |ratio - 1| <= 1.4e-14 at every k (the tensor equation and the S1 scalar equation with z = a are the same ODE); lam_zeta^S2 = 0.9695759 / 0.9677642 / 0.9473239 reproducing lane 9b-2's 0.9696 / 0.9678 at the two smallest k; r_after^S1 = 24.00000 at every k and r_after^S2 = 937.11 / 937.05 / 936.34; c_s scan at k eta_B = 1e-3 gives lam_T unchanged (6.0585966, c_s does not appear in the tensor equation) and lam_zeta^S2 = 0.9695759 / 0.9696239 / 0.9697210 / 0.9697587 at c_s = 1 / 0.888 / 0.6 / 0.44 (a 1.9e-4 relative spread), r_after^S2 = 937.11 / 937.02 / 936.83 / 936.76.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 18 item (a) A3-S2r, raised by the R7 truth-audit: the paper's r_after was stated with S1 transfers only",
+      "builds on manifests p2-a3-lane-9b2-s2-rawadm (exact S2 modes, background, rho_B) and the row-10 tensor/scalar transfer computation; does not redo either",
+      "no S2 r_after is quoted for the LQC or poly backgrounds: lane 9b-2 assumption (A1) is that their Hdot = 0 crossings put z^2[S2] = 0 and give the S2 zeta a logarithmic point, so exact S2 modes were never constructed there",
+      "r_before = 24 is row 10's pure-dust r = 24(1+w) at w = 0; no tuning of any transfer toward any target value"
     ]
   },
   {
@@ -8900,6 +9256,88 @@ export const reproExperiments: ReproExperiment[] = [
       "Split from the inventory's single bundled 05-09 bullet into 4 separate manifests (redshift/density/healpix/systematics) per directive; script mapping verified via `ls pipelines/p5_desi_chirality/scripts/` — 09_systematics.py maps to this analysis.",
       "2026-09-04 hygiene closure: pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet input is not retrievable anywhere (not in git, not on this machine, not on any bamfai/* HF repo, no documented B2 path) -- see this manifest's inputs[] locator disclosure. Regenerate via the p5-desi-dr1-crossmatch-build experiment instead of expecting a direct download.",
       "2026-09-04 P5 parquet restoration: regenerated via p5-desi-dr1-crossmatch-build (scripts/02_fetch_desi_dr1.py + 03_crossmatch.py), verified row count/schema against the committed p5_matched_chirality_desi_summary.json, backed up 3-way (HF/B2/local), sha256 recorded above."
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "psu-gates-s1-s2-label-composition-criterion",
+    "title": "PSU R1 science gates S1/S2 (+S3 math): label-resolved second-order composition (initial vs final worldline label), well-defined separate-universe criterion with the gradient term restored, change-of-variable statement",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "PSU v1S.0.1 R1 truth audit (items S1, S2, S3)",
+        "locator": "project-context/peer-reviews/INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab threading map (2026-09-04), frozen map pieces incl. lab_init / wl_initextra",
+        "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json",
+        "type": "internal-artifact",
+        "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"
+      },
+      {
+        "name": "separate-universe failure criterion note (2026-09-04)",
+        "locator": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "lab monopole adjudication (2026-09-03), in-in general-eps kernel",
+        "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+        "type": "internal-artifact",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/psu_gates_S1_S2_2026_09_04.py",
+        "entrypoint": "python3 research/theory_audit/psu_gates_S1_S2_2026_09_04.py",
+        "sha256": "4f6410228fef112775d2c7a29701657f04da67e027b5d8b31d969a1360dd53e4"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-04",
+      "wall_clock": "about 3 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 10 seconds",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic exact sympy on closed forms (no constraint re-solve). Self-validating asserts: f_map(final) = -(5 eps/4)(1-mu^2); f_map(initial) = 5 eps/(4(3-eps)) [(eps-2) - eps mu^2]; label term T = 5 eps/(4(3-eps))(1-3 mu^2) with zero monopole; f_inin/lam + f_map(initial) == -5 for all constant eps; final-label total = -15(eps-4)/(4(eps-3)) + 15 eps/(4(3-eps)) mu^2; I(dust) -> 3/2, I(attractor) = 0, I(USR) = sqrt(eps_s eps_f) - eps_f; dust gradient term G -> (k eta_f)^2/6; inversion recovers the in-in monopole -5(eps-3)(eps-6)/18."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/psu_gates_S1_S2_2026_09_04.json",
+        "type": "result-json",
+        "checksum": "sha256:f4164019c10766738527d93930255ccf1912c55a2ecf8bc2cbf06d908f39f329"
+      },
+      {
+        "locator": "research/theory_audit/psu_gates_S1_S2_2026_09_04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required: S1.f_dN_initial_label.const == '-5' and .mu2 == '0'; S1.at_eps.dust_eps_3_2.f_dN_fin == {const '-25/4', mu2 '15/4'}; S1.T_monopole == '0'; S2.attractor.I == '0'; S2.dust.I_limit_xi_to_inf == '3/2'; S2.dust['G_leading_over_(k_eta_f)^2'] == '1/6'; S2.USR.I == 'sqrt(epsilon_f)*sqrt(epsilon_s) - epsilon_f'; S3_math.inversion_recovers_inin_monopole == '-5*(epsilon - 3)*(epsilon - 6)/18' up to sympy ordering.",
+    "status": "runnable-now",
+    "provenance": [
+      "PSU R1 truth audit S1 (PSU-1, PSU-8): printed Eq. (3) composed the final-label map with the initial-label total",
+      "PSU R1 truth audit S2 (PSU-9): <X>_zeta 0/0 on constant-mode rows; gradient term dropped",
+      "PSU R1 truth audit S3 (PSU-10): failure vs change-of-variable, math level only; framing left to Houston (R3/R6)",
+      "directive Q2 (reproducibility manifests); arxiv/paper_su_criterion/main.tex NOT edited by this lane"
     ]
   },
   {
