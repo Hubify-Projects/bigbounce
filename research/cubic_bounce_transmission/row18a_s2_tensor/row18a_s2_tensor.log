@@ -1,0 +1,20 @@
+[background] Quintin dtB=1: Ups=2.6667 tm=0.5 eta_B=0.449586 am=1.395612
+[reference ] lane b rho_B=0.6699892 -> 2/(1-rho_B) = 6.060408; eta*=50 eta_B -> t*=4203
+
+[step 2] tensor transmission vs S1/S2 scalar transmission (same background, same eta*)
+  k eta_B |    lam_T    |  lam_zeta^S1 | lam_T/lam_S1-1 | lam_zeta^S2 |  r_after^S1 |  r_after^S2
+    0.001 |   6.0585966 |    6.0585966 |     -1.31e-14  |   0.9695759 |    24.00000 |      937.11
+    0.003 |   6.0470743 |    6.0470743 |     -1.35e-14  |   0.9677642 |    24.00000 |      937.05
+     0.01 |   5.9171128 |    5.9171128 |     -1.29e-14  |   0.9473239 |    24.00000 |      936.34
+
+[step 4] c_s dependence.  c_T = 1 exactly (no c_s in the tensor equation) -> lam_T is c_s-INDEPENDENT
+         by construction; verified below by re-running the tensor solver (which has no c_s input) and
+         the S2 scalar solver at k_eff = c_s k.  k eta_B = 1e-3.
+   c_s=1.000: lam_T=6.0585966 (c_s-free)  lam_zeta^S2=0.9695759  lam_zeta^S1=6.0585966  r_after^S2=937.11
+   c_s=0.888: lam_T=6.0585966 (c_s-free)  lam_zeta^S2=0.9696239  lam_zeta^S1=6.0589014  r_after^S2=937.02
+   c_s=0.600: lam_T=6.0585966 (c_s-free)  lam_zeta^S2=0.9697210  lam_zeta^S1=6.0595191  r_after^S2=936.83
+   c_s=0.440: lam_T=6.0585966 (c_s-free)  lam_zeta^S2=0.9697587  lam_zeta^S1=6.0597589  r_after^S2=936.76
+
+[VERDICT] lam_T = 6.047074 == lam_zeta^S1 to 1.4e-14 (identity: with z = a the S1 scalar equation IS the tensor equation).
+          r_after^S1 = 24.00000 (= r_before, 667x the BK18+Planck bound r < 0.036); r_after^S2 = 937.0 (26029x the bound).
+          The tensor problem's CONCLUSION is scheme-independent: both schemes are excluded, by >=670x.

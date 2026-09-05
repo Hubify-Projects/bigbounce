@@ -1,0 +1,108 @@
+{
+  "task": "ledger row 18(a) A3-S2r: tensor transfer through the bounce; r_after per scalar scheme",
+  "date": "2026-09-04",
+  "background": "Quintin-type piecewise (lane 9b-2 / a2_transmission_linear)",
+  "rho_B": 0.6699892332366839,
+  "lam_S1_closed_form": 6.060408330357298,
+  "r_before": 24.0,
+  "t_star": 4203.29002851367,
+  "eta_star_over_etaB": 50.0,
+  "rows": [
+    {
+      "k_etaB": 0.001,
+      "k": 0.0022242676962843148,
+      "k_eta_star": 0.05,
+      "lam_T": 6.05859659052785,
+      "lam_zeta_S1": 6.058596590527929,
+      "lam_zeta_S2": 0.9695759379176614,
+      "lam_T_over_lam_S1_minus_1": -1.3100631690576847e-14,
+      "lam_T_over_closed_form_minus_1": -0.00029894682514575166,
+      "r_after_S1": 23.99999999999937,
+      "r_after_S2": 937.1123381793457,
+      "ode_steps": 16
+    },
+    {
+      "k_etaB": 0.003,
+      "k": 0.006672803088852944,
+      "k_eta_star": 0.15,
+      "lam_T": 6.047074307925958,
+      "lam_zeta_S1": 6.04707430792604,
+      "lam_zeta_S2": 0.9677641829675677,
+      "lam_T_over_lam_S1_minus_1": -1.354472090042691e-14,
+      "lam_T_over_closed_form_minus_1": -0.002200185483302808,
+      "r_after_S1": 23.99999999999935,
+      "r_after_S2": 937.0499953179017,
+      "ode_steps": 16
+    },
+    {
+      "k_etaB": 0.01,
+      "k": 0.022242676962843145,
+      "k_eta_star": 0.49999999999999994,
+      "lam_T": 5.917112781027613,
+      "lam_zeta_S1": 5.917112781027689,
+      "lam_zeta_S2": 0.9473239163878797,
+      "lam_T_over_lam_S1_minus_1": -1.2878587085651816e-14,
+      "lam_T_over_closed_form_minus_1": -0.023644537054030024,
+      "r_after_S1": 23.999999999999382,
+      "r_after_S2": 936.3407669075136,
+      "ode_steps": 16
+    }
+  ],
+  "c_s_scan": [
+    {
+      "c_s": 1.0,
+      "k_etaB": 0.001,
+      "lam_T": 6.05859659052785,
+      "lam_zeta_S2": 0.9695759379176614,
+      "lam_zeta_S1": 6.058596590527929,
+      "r_after_S2": 937.1123381793457,
+      "r_after_S1": 23.99999999999937
+    },
+    {
+      "c_s": 0.888,
+      "k_etaB": 0.001,
+      "lam_T": 6.05859659052785,
+      "lam_zeta_S2": 0.9696238588279561,
+      "lam_zeta_S1": 6.058901361311058,
+      "r_after_S2": 937.0197122271732,
+      "r_after_S1": 23.997585596993147
+    },
+    {
+      "c_s": 0.6,
+      "k_etaB": 0.001,
+      "lam_T": 6.05859659052785,
+      "lam_zeta_S2": 0.9697209821442025,
+      "lam_zeta_S1": 6.059519054044374,
+      "r_after_S2": 936.8320254469621,
+      "r_after_S1": 23.992693334557483
+    },
+    {
+      "c_s": 0.44,
+      "k_etaB": 0.001,
+      "lam_T": 6.05859659052785,
+      "lam_zeta_S2": 0.9697586961636718,
+      "lam_zeta_S1": 6.059758911088515,
+      "r_after_S2": 936.7591598684216,
+      "r_after_S1": 23.990794017209968
+    }
+  ],
+  "headline": {
+    "lam_T": 6.047074307925958,
+    "lam_zeta_S1": 6.04707430792604,
+    "lam_zeta_S2": 0.9677641829675677,
+    "r_after_S1": 23.99999999999937,
+    "r_after_S2": 937.0499953179017,
+    "max_abs_lam_T_over_lam_S1_minus_1": 1.354472090042691e-14,
+    "r_after_S2_over_planck_bound": 26029.166536608383,
+    "r_after_S1_over_planck_bound": 666.6666666666492
+  },
+  "row10_tensor_crosscheck": {
+    "source": "research/track_a3_multichannel/row10_r_ns/results.json",
+    "note": "poly and LQC backgrounds: T_h/T_zeta[S1] - 1 <= 8.5e-9, r_after = 24 -- same identity, other backgrounds"
+  },
+  "s2_on_lqc_poly": "NOT AVAILABLE: lane 9b-2 assumption (A1) -- LQC/poly have Hdot = 0 crossings where z^2[S2] = 0 and the S2 zeta has a logarithmic point; exact S2 modes were not constructed there, so no S2 r_after can be quoted for LQC/poly.  Quintin-type only.",
+  "runtime_s": 0.07680416107177734,
+  "figures": [
+    "row18a_s2_tensor.png"
+  ]
+}
