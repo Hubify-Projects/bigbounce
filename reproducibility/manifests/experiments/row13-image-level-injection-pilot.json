@@ -28,13 +28,11 @@
   "apis": [
     {
       "name": "huggingface_hub.hf_hub_download",
-      "purpose": "used by the pilot",
       "endpoint": "https://huggingface.co",
       "auth_required": true
     },
     {
       "name": "legacysurvey.org jpeg-cutout service",
-      "purpose": "used by the pilot",
       "endpoint": "https://www.legacysurvey.org/viewer/jpeg-cutout",
       "auth_required": false
     }
