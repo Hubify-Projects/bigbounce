@@ -1,0 +1,115 @@
+{
+  "second_order_constraint_solution": {
+    "A2(tau)": "epsilon**2*tau**(-2*m - 2/epsilon)*(epsilon*k_L**3*k_S**3*m*mu**2*tau**2 - epsilon*k_L**3*k_S**3*m*tau**2 - epsilon*k_L**3*k_S*m**2*mu**2*tau**(2/epsilon)/2 + epsilon*k_L**3*k_S*m**2*tau**(2/epsilon)/2 - epsilon*k_L*k_S**3*m**2*mu**2*tau**(2/epsilon)/2 + epsilon*k_L*k_S**3*m**2*tau**(2/epsilon)/2 - k_L**4*k_S**2*mu*tau**2 + k_L**4*m*mu*tau**(2/epsilon) - k_L**3*k_S**3*mu**2*tau**2 - k_L**3*k_S**3*tau**2 + k_L**3*k_S*m*mu**2*tau**(2/epsilon)/2 + k_L**3*k_S*m*tau**(2/epsilon)/2 - k_L**2*k_S**4*mu*tau**2 + k_L*k_S**3*m*mu**2*tau**(2/epsilon)/2 + k_L*k_S**3*m*tau**(2/epsilon)/2 + k_S**4*m*mu*tau**(2/epsilon))/(k_L*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+    "P2(tau)": "epsilon*tau**(-2*m - 1 - 2/epsilon)*(-epsilon**2*k_L**5*k_S**3*mu**2*tau**4 + epsilon**2*k_L**5*k_S**3*tau**4 + epsilon**2*k_L**5*k_S*m*mu**2*tau**((2*epsilon + 2)/epsilon) - epsilon**2*k_L**5*k_S*m*tau**((2*epsilon + 2)/epsilon) - 2*epsilon**2*k_L**4*k_S**4*mu**3*tau**4 + 2*epsilon**2*k_L**4*k_S**4*mu*tau**4 + 2*epsilon**2*k_L**4*k_S**2*m*mu**3*tau**((2*epsilon + 2)/epsilon) - 2*epsilon**2*k_L**4*k_S**2*m*mu*tau**((2*epsilon + 2)/epsilon) - epsilon**2*k_L**3*k_S**5*mu**2*tau**4 + epsilon**2*k_L**3*k_S**5*tau**4 + 4*epsilon**2*k_L**3*k_S**3*m*mu**2*tau**((2*epsilon + 2)/epsilon) - 4*epsilon**2*k_L**3*k_S**3*m*tau**((2*epsilon + 2)/epsilon) - 2*epsilon**2*k_L**3*k_S*m**2*mu**2*tau**(4/epsilon) + 2*epsilon**2*k_L**3*k_S*m**2*tau**(4/epsilon) + 2*epsilon**2*k_L**2*k_S**4*m*mu**3*tau**((2*epsilon + 2)/epsilon) - 2*epsilon**2*k_L**2*k_S**4*m*mu*tau**((2*epsilon + 2)/epsilon) - 2*epsilon**2*k_L**2*k_S**2*m**2*mu**3*tau**(4/epsilon) + 2*epsilon**2*k_L**2*k_S**2*m**2*mu*tau**(4/epsilon) + epsilon**2*k_L*k_S**5*m*mu**2*tau**((2*epsilon + 2)/epsilon) - epsilon**2*k_L*k_S**5*m*tau**((2*epsilon + 2)/epsilon) - 2*epsilon**2*k_L*k_S**3*m**2*mu**2*tau**(4/epsilon) + 2*epsilon**2*k_L*k_S**3*m**2*tau**(4/epsilon) - 2*epsilon*k_L**5*k_S*m*tau**((2*epsilon + 2)/epsilon) - 4*epsilon*k_L**4*k_S**2*m*mu*tau**((2*epsilon + 2)/epsilon) - 2*epsilon*k_L**4*k_S**2*mu*tau**((2*epsilon + 2)/epsilon) + 2*epsilon*k_L**4*m*mu*tau**(4/epsilon) - 6*epsilon*k_L**3*k_S**3*m*mu**2*tau**((2*epsilon + 2)/epsilon) + 2*epsilon*k_L**3*k_S**3*m*tau**((2*epsilon + 2)/epsilon) - 2*epsilon*k_L**3*k_S**3*mu**2*tau**((2*epsilon + 2)/epsilon) - 2*epsilon*k_L**3*k_S**3*tau**((2*epsilon + 2)/epsilon) + 3*epsilon*k_L**3*k_S*m**2*mu**2*tau**(4/epsilon) - 5*epsilon*k_L**3*k_S*m**2*tau**(4/epsilon) + epsilon*k_L**3*k_S*m*mu**2*tau**(4/epsilon) + epsilon*k_L**3*k_S*m*tau**(4/epsilon) - 4*epsilon*k_L**2*k_S**4*m*mu*tau**((2*epsilon + 2)/epsilon) - 2*epsilon*k_L**2*k_S**4*mu*tau**((2*epsilon + 2)/epsilon) - 4*epsilon*k_L**2*k_S**2*m**2*mu*tau**(4/epsilon) - 2*epsilon*k_L*k_S**5*m*tau**((2*epsilon + 2)/epsilon) + 3*epsilon*k_L*k_S**3*m**2*mu**2*tau**(4/epsilon) - 5*epsilon*k_L*k_S**3*m**2*tau**(4/epsilon) + epsilon*k_L*k_S**3*m*mu**2*tau**(4/epsilon) + epsilon*k_L*k_S**3*m*tau**(4/epsilon) + 2*epsilon*k_S**4*m*mu*tau**(4/epsilon) + 4*k_L**4*k_S**2*mu*tau**((2*epsilon + 2)/epsilon) - 4*k_L**4*m*mu*tau**(4/epsilon) + 2*k_L**3*k_S**3*mu**2*tau**((2*epsilon + 2)/epsilon) + 6*k_L**3*k_S**3*tau**((2*epsilon + 2)/epsilon) + k_L**3*k_S*m*mu**2*tau**(4/epsilon) - 11*k_L**3*k_S*m*tau**(4/epsilon) + 4*k_L**2*k_S**4*mu*tau**((2*epsilon + 2)/epsilon) - 12*k_L**2*k_S**2*m*mu*tau**(4/epsilon) + k_L*k_S**3*m*mu**2*tau**(4/epsilon) - 11*k_L*k_S**3*m*tau**(4/epsilon) - 4*k_S**4*m*mu*tau**(4/epsilon))/(2*k_L*k_S*(k_L**4 + 4*k_L**3*k_S*mu + 4*k_L**2*k_S**2*mu**2 + 2*k_L**2*k_S**2 + 4*k_L*k_S**3*mu + k_S**4))",
+    "T2(tau)": "2*I*epsilon*tau**(-2*m - 1)*sqrt(1 - mu**2)*(epsilon*k_L**4*k_S**2*m*tau**2 + epsilon*k_L**3*k_S*m**2*mu*tau**(2/epsilon) - epsilon*k_L**2*k_S**4*m*tau**2 - epsilon*k_L*k_S**3*m**2*mu*tau**(2/epsilon) + k_L**4*k_S**2*tau**2 - k_L**4*m*tau**(2/epsilon) + k_L**3*k_S*m*mu*tau**(2/epsilon) - k_L**2*k_S**4*tau**2 - k_L*k_S**3*m*mu*tau**(2/epsilon) + k_S**4*m*tau**(2/epsilon))/(k_L*k_S*(k_L**4 + 4*k_L**3*k_S*mu + 4*k_L**2*k_S**2*mu**2 + 2*k_L**2*k_S**2 + 4*k_L*k_S**3*mu + k_S**4))"
+  },
+  "convergence_conditions": [
+    "-2*m < 0",
+    "-m < 0"
+  ],
+  "linear_threading_factor": "-(epsilon - 3)/3",
+  "kernels_growing_mode": {
+    "psi2": "epsilon*(epsilon**2*k_L**3*k_S*mu**2 - epsilon**2*k_L**3*k_S + epsilon**2*k_L**2*k_S**2*mu**3 - epsilon**2*k_L**2*k_S**2*mu + epsilon**2*k_L*k_S**3*mu**2 - epsilon**2*k_L*k_S**3 + epsilon*k_L**4*mu - 4*epsilon*k_L**3*k_S*mu**2 + 6*epsilon*k_L**3*k_S - 3*epsilon*k_L**2*k_S**2*mu**3 + 5*epsilon*k_L**2*k_S**2*mu - 4*epsilon*k_L*k_S**3*mu**2 + 6*epsilon*k_L*k_S**3 + epsilon*k_S**4*mu - 2*k_L**4*mu + 5*k_L**3*k_S*mu**2 - 13*k_L**3*k_S - 12*k_L**2*k_S**2*mu + 5*k_L*k_S**3*mu**2 - 13*k_L*k_S**3 - 2*k_S**4*mu)/(6*k_L*k_S*(k_L**2 + 2*k_L*k_S*mu + k_S**2))",
+    "grad": "epsilon*mu*(k_L**2 + k_S**2)/(3*k_L*k_S)",
+    "zlap": "2*epsilon/3",
+    "wl_fin": "-epsilon**2*k_S*mu/(6*k_L)",
+    "wl_initextra": "epsilon**2*k_S*mu/(3*k_L)",
+    "lab_init": "-epsilon*k_S*mu/k_L"
+  },
+  "map_fNL_pieces": {
+    "psi2": {
+      "const": "5*epsilon*(-2*epsilon**2 + 11*epsilon - 24)/(8*(epsilon**2 - 6*epsilon + 9))",
+      "mu2": "5*epsilon*(2*epsilon**2 - 9*epsilon + 12)/(8*(epsilon**2 - 6*epsilon + 9))",
+      "monopole": "5*epsilon*(-epsilon**2 + 6*epsilon - 15)/(6*(epsilon**2 - 6*epsilon + 9))"
+    },
+    "grad": {
+      "const": "-5*epsilon/(4*epsilon**2 - 24*epsilon + 36)",
+      "mu2": "15*epsilon/(4*(epsilon**2 - 6*epsilon + 9))",
+      "monopole": "0"
+    },
+    "zlap": {
+      "const": "5*epsilon/(epsilon**2 - 6*epsilon + 9)",
+      "mu2": "0",
+      "monopole": "5*epsilon/(epsilon**2 - 6*epsilon + 9)"
+    },
+    "wl_fin": {
+      "const": "5*epsilon**2/(8*(epsilon**2 - 6*epsilon + 9))",
+      "mu2": "-15*epsilon**2/(8*epsilon**2 - 48*epsilon + 72)",
+      "monopole": "0"
+    },
+    "total_final_label": {
+      "const": "-5*epsilon/4",
+      "mu2": "5*epsilon/4",
+      "monopole": "-5*epsilon/6"
+    },
+    "total_initial_label": {
+      "const": "5*epsilon*(2 - epsilon)/(4*(epsilon - 3))",
+      "mu2": "5*epsilon**2/(4*(epsilon - 3))",
+      "monopole": "-5*epsilon/6"
+    },
+    "pure_translation_init": {
+      "const": "15*epsilon/(4*(epsilon**2 - 6*epsilon + 9))",
+      "mu2": "-45*epsilon/(4*epsilon**2 - 24*epsilon + 36)",
+      "monopole": "0"
+    },
+    "wl_initextra": {
+      "const": "-5*epsilon**2/(4*epsilon**2 - 24*epsilon + 36)",
+      "mu2": "15*epsilon**2/(4*(epsilon**2 - 6*epsilon + 9))",
+      "monopole": "0"
+    }
+  },
+  "prediction": {
+    "final_label": {
+      "const": "15*(4 - epsilon)/(4*(epsilon - 3))",
+      "mu2": "-15*epsilon/(4*epsilon - 12)",
+      "monopole": "-5",
+      "const_eps_3_2": "-25/4",
+      "mu2_eps_3_2": "15/4"
+    },
+    "initial_label": {
+      "const": "-5",
+      "mu2": "0",
+      "monopole": "-5",
+      "const_eps_3_2": "-5",
+      "mu2_eps_3_2": "0"
+    }
+  },
+  "adjudication_identity": {
+    "5eps/4": "5*epsilon/4",
+    "L_minus_dNc": "5*epsilon/4",
+    "pure_translation_monopole_this_work": "0"
+  },
+  "attractor_limit": {
+    "div_linear": "0",
+    "div_cross": "0",
+    "statement": "delta N_c = zeta_Mald + O(k^2/a^2H^2); Maldacena consistency relation unchanged"
+  },
+  "usr_limit": {
+    "linear_factor_general_m": "1 - epsilon/3",
+    "cross_kernels_eps_to_0": {
+      "psi2": "0",
+      "grad": "0",
+      "zlap": "0",
+      "wl_fin": "0",
+      "wl_initextra": "0",
+      "lab_init": "0"
+    },
+    "statement": "delta N_c = zeta (1 + O(eps)) whenever eps -> 0 at fixed zetadot/zeta; USR (eps ~ a^-6, zeta ~ a^3): delta N = in-in = 5/2 unaffected"
+  },
+  "map_pieces_in_inin_normalisation": {
+    "psi2": "5*epsilon*(-epsilon**2 + 6*epsilon - 15)/(18*(epsilon - 3))",
+    "grad": "0",
+    "zlap": "5*epsilon/(3*(epsilon - 3))",
+    "wl_fin": "0",
+    "pure_translation_init": "0"
+  },
+  "five_eps_over_4_matches_a_map_term": [],
+  "gap_decomposition_inin_minus_dNc": {
+    "linear_rescaling 5(1-lam)": "5*epsilon/3",
+    "second_order_map -lam f_map": "5*epsilon*(3 - epsilon)/18",
+    "sum": "5*epsilon*(9 - epsilon)/18",
+    "adjudication": "5*epsilon*(9 - epsilon)/18"
+  },
+  "wall_clock_s": 42.8
+}

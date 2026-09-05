@@ -122,10 +122,18 @@ for zv in (zL, zS):
 print("background + first-order constraints satisfied exactly by alpha1 = zetadot/H, psi1 = -zeta/H + chi",
       round(time.time() - T0, 1), "s", flush=True)
 # second order: solve the L x S cross terms for A2, P2, T2 (algebraic in tau)
-eqs = [cross(Ham), cross(Momx), cross(Momy)]
-sol2 = sp.solve(eqs, [A2, P2, T2], dict=True)
-assert len(sol2) == 1
-sol2 = {k: sp.simplify(v) for k, v in sol2[0].items()}
+import os, pickle
+_cache = os.environ.get('THREADING_CACHE')          # optional dev cache of the (slow) constraint solve
+if _cache and os.path.exists(_cache):
+    sol2 = {sp.Function(k)(tau): sp.sympify(v, locals={'tau': tau, 'epsilon': eps, 'k_L': kL, 'k_S': kS, 'mu': mu, 'm': m})
+            for k, v in pickle.load(open(_cache, 'rb')).items()}
+else:
+    eqs = [cross(Ham), cross(Momx), cross(Momy)]
+    sol2 = sp.solve(eqs, [A2, P2, T2], dict=True)
+    assert len(sol2) == 1
+    sol2 = {k: sp.simplify(v) for k, v in sol2[0].items()}
+    if _cache:
+        pickle.dump({str(k.func): str(v) for k, v in sol2.items()}, open(_cache, 'wb'))
 print("second-order lapse/shift solved", round(time.time() - T0, 1), "s", flush=True)
 OUT = {'second_order_constraint_solution': {str(k): str(v) for k, v in sol2.items()}}
 # ---------------------------------------------------------------- the threading map  delta N_c = zeta - (1/3) int d_i N^i dt
@@ -133,38 +141,38 @@ subs2 = {A2: sol2[A2], P2: sol2[P2], T2: sol2[T2]}
 Nup = [trunc(hinv * Nlow[i]) for i in range(3)]                       # N^i = h^{ij} N_j
 div = trunc(sum(sp.diff(Nup[i], X[i]) for i in range(3))).subs(subs2)  # d_i N^i to second order
 d = sp.symbols('delta', positive=True)                                # super-Hubble scaling k -> delta k
-def superhubble(expr):
-    """leading (delta^0) term as k_L, k_S -> 0 jointly; asserts no 1/delta poles"""
+def superhubble(expr, order=0):
+    """leading term as k_L, k_S -> 0 jointly (delta^order expected; the long mode's shift itself is O(1/k_L))"""
     e = sp.expand(expr.subs({kL: d * kL, kS: d * kS}))
-    ser = sp.series(e, d, 0, 1).removeO()
-    lead = sp.expand(ser)
-    assert lead.coeff(d, -1) == 0 and lead.coeff(d, -2) == 0, "1/delta pole"
-    return sp.simplify(lead.coeff(d, 0))
+    lead = sp.expand(sp.series(e, d, 0, order + 1).removeO())
+    for n in range(order - 2, order):
+        assert lead.coeff(d, n) == 0, ("unexpected pole", n)
+    return sp.simplify(lead.coeff(d, order))
 tf = sp.symbols('tau_f', positive=True)
+def SY(v):
+    return sp.sympify(v, locals={'epsilon': eps, 'mu': mu})   # keep the positive-eps symbol identity
+def powterms(expr):
+    """split a sum of pure power laws in tau into [(coefficient, exponent)] via the logarithmic derivative"""
+    out = []
+    for term in sp.Add.make_args(sp.expand(expr)):
+        if term == 0:
+            continue
+        ex = sp.simplify(tau * sp.diff(term, tau) / term)
+        assert not ex.has(tau), (term, ex)
+        out.append((sp.simplify(term / tau**ex), ex))
+    return out
 def tail(expr):
     """int_{tau_f}^{infinity} expr d tau  (= int_{-inf}^{t_f} ... dt), term-by-term power law; records convergence"""
     out, conds = 0, []
-    for term in sp.Add.make_args(sp.expand(sp.powsimp(expr, force=True))):
-        c, tp = term.as_independent(tau)
-        base, ex = sp.powsimp(tp, force=True).as_base_exp()
-        if tp == 1:
-            base, ex = tau, 0
-        assert base == tau, (term, base)
+    for c, ex in powterms(expr):
         out += -c * tf**(ex + 1) / (ex + 1)
         conds.append(str(sp.simplify(ex + 1)) + ' < 0')
     return sp.simplify(out), conds
 def anti(expr):
     """antiderivative F(tau) of a power-law sum"""
-    out = 0
-    for term in sp.Add.make_args(sp.expand(sp.powsimp(expr, force=True))):
-        c, tp = term.as_independent(tau)
-        base, ex = sp.powsimp(tp, force=True).as_base_exp()
-        if tp == 1:
-            base, ex = tau, 0
-        out += c * tau**(ex + 1) / (ex + 1)
-    return out
+    return sum(c * tau**(ex + 1) / (ex + 1) for c, ex in powterms(expr))
 DL, DS, DLS = superhubble(lin(div, zL)), superhubble(lin(div, zS)), superhubble(cross(div))
-NxL = superhubble(lin(Nup[0], zL))              # N^x of the long mode at the origin (per z_L)
+NxL = superhubble(lin(Nup[0], zL), order=-1)              # N^x of the long mode at the origin (per z_L)
 print("d_i N^i: linear", DL, "| cross", sp.factor(DLS), round(time.time() - T0, 1), "s", flush=True)
 # linear map:  delta N_c^(1) / zeta  = 1 - (1/3) int D_S dt / Z(t_f)
 intDS, cDS = tail(DS)
@@ -245,8 +253,8 @@ OUT['map_fNL_pieces'] = res
 f_inin = sp.Rational(5, 12) * (eps**2 * mu**2 - eps**2 + 6 * eps - 12)     # adjudication 2026-09-03 §4
 c0i, c2i = sp.Rational(5, 12) * (-eps**2 + 6 * eps - 12), sp.Rational(5, 12) * eps**2
 def total(label, key):
-    c0 = sp.simplify(c0i / lamg + sp.sympify(res[key]['const']))
-    c2 = sp.simplify(c2i / lamg + sp.sympify(res[key]['mu2']))
+    c0 = sp.simplify(c0i / lamg + SY(res[key]['const']))
+    c2 = sp.simplify(c2i / lamg + SY(res[key]['mu2']))
     print(f"  f_NL[delta N_c] via in-in/lam + map, {label}: {c0} + ({c2}) mu^2 ; monopole {mono(c0, c2)}", flush=True)
     return {'const': str(c0), 'mu2': str(c2), 'monopole': str(mono(c0, c2)),
             'const_eps_3_2': str(c0.subs(eps, sp.Rational(3, 2))), 'mu2_eps_3_2': str(c2.subs(eps, sp.Rational(3, 2)))}
@@ -261,11 +269,33 @@ DLS0, DS0 = sp.simplify(DLS.subs(m, 0)), sp.simplify(DS.subs(m, 0))
 print("\nATTRACTOR (constant zeta, m = 0): d_i N^i linear =", DS0, ", cross =", DLS0, "-> map is the identity at O(k^0)")
 OUT['attractor_limit'] = {'div_linear': str(DS0), 'div_cross': str(DLS0),
                           'statement': 'delta N_c = zeta_Mald + O(k^2/a^2H^2); Maldacena consistency relation unchanged'}
-r = sp.symbols('r', real=True)                                     # r = zetadot/(H zeta) = -m eps, held fixed
-usr = {k: sp.simplify(sp.series(v.subs(m, -r / eps), eps, 0, 2).removeO()) for k, v in
-       {'DS': DS, 'DLS': DLS, 'NxL*kS': NxL * kS}.items()}
-print("USR-type limit (eps -> 0 at fixed zetadot/H zeta = r):", {k: str(v) for k, v in usr.items()})
-OUT['usr_limit'] = {k: str(v) for k, v in usr.items()}
+# USR-type limit: every cross kernel (general zeta history m) carries an explicit factor eps -> map trivial as eps -> 0
+usr = {k: str(sp.limit(v, eps, 0)) for k, v in pieces.items()}
+assert all(v == '0' for v in usr.values()), usr
+lam_m = sp.simplify(lam)                                            # linear factor for a general history
+print("general history m: linear factor", lam_m, "; all cross kernels -> 0 as eps -> 0:", usr)
+OUT['usr_limit'] = {'linear_factor_general_m': str(lam_m), 'cross_kernels_eps_to_0': usr,
+                    'statement': 'delta N_c = zeta (1 + O(eps)) whenever eps -> 0 at fixed zetadot/zeta; USR (eps ~ a^-6, zeta ~ a^3): delta N = in-in = 5/2 unaffected'}
+# ---------------------------------------------------------------- hard assertions (the validation)
+fin, ini = OUT['prediction']['final_label'], OUT['prediction']['initial_label']
+assert sp.simplify(SY(fin['monopole']) + 5) == 0
+assert sp.simplify(SY(ini['monopole']) + 5) == 0
+assert sp.simplify(SY(ini['mu2'])) == 0 and sp.simplify(SY(ini['const']) + 5) == 0
+inin_mono_pred = sp.simplify(lamg * (-5 - SY(res['total_final_label']['monopole'])))
+assert sp.simplify(inin_mono_pred + 5 * (eps - 3) * (eps - 6) / 18) == 0          # adjudication general-eps monopole
+assert SY(fin['const_eps_3_2']) == sp.Rational(-25, 4) and SY(fin['mu2_eps_3_2']) == sp.Rational(15, 4)
+map32 = {k: SY(v['monopole']).subs(eps, sp.Rational(3, 2)) for k, v in res.items()}
+assert map32['total_final_label'] == sp.Rational(-5, 4) and map32['pure_translation_init'] == 0
+# is 5 eps/4 (= [L] + 5 of the adjudication) any single term of the map, in in-in normalisation (x lam, sign flipped)?
+inin_norm = {k: sp.simplify(-lamg * SY(res[k]['monopole'])) for k in ('psi2', 'grad', 'zlap', 'wl_fin', 'pure_translation_init')}
+OUT['map_pieces_in_inin_normalisation'] = {k: str(v) for k, v in inin_norm.items()}
+OUT['five_eps_over_4_matches_a_map_term'] = [k for k, v in inin_norm.items() if sp.simplify(v - 5 * eps / 4) == 0]
+OUT['gap_decomposition_inin_minus_dNc'] = {'linear_rescaling 5(1-lam)': str(sp.simplify(5 * (1 - lamg))),
+    'second_order_map -lam f_map': str(sp.simplify(-lamg * SY(res['total_final_label']['monopole']))),
+    'sum': str(sp.simplify(5 * (1 - lamg) - lamg * SY(res['total_final_label']['monopole']))),
+    'adjudication': str(sp.simplify(5 * eps * (9 - eps) / 18))}
+assert sp.simplify(SY(OUT['gap_decomposition_inin_minus_dNc']['sum']) - 5 * eps * (9 - eps) / 18) == 0
+print("ALL VALIDATION ASSERTIONS PASS; 5eps/4 matches map term(s):", OUT['five_eps_over_4_matches_a_map_term'])
 OUT['wall_clock_s'] = round(time.time() - T0, 1)
 json.dump(OUT, open(__file__.replace('.py', '.json'), 'w'), indent=2)
 print("done", OUT['wall_clock_s'], "s")
