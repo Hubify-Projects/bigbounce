@@ -85,9 +85,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "NaMaster verification companion",
-      version: "v2B.0.16",
+      version: "v2B.0.17",
       readiness: 95,
-      pendingWork: "Current-hash bounded confirmation, correspondence metadata, and human software review remain open.",
+      pendingWork: "Novelty lift #3: reframed as a general verification primitive (content-bound execution receipts); sealed blind shortcut-detection test 12/12 detected, 0/3 false positives, S5 metadata forgery escapes 3/3 (disclosed limitation). Current-hash bounded confirmation, correspondence metadata, and human software review remain open.",
     },
     {
       slug: "paper-2",
@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.14",
+      version: "v3M.0.15",
       readiness: 75,
-      pendingWork: "R6 closure: T_B mapping corrected (thirteen decades above BBN, was eleven), Channel I amplitude re-paired to the free-gamma NANOGrav posterior, DESI DR1 v3 reproduction sentence added. Rounds STOPPED under directive R2 -- next board only after a science decision on A3-4 (r-derivation) / Choudhury sign disagreement. Houston final review pending.",
+      pendingWork: "D-A3-10/11 science reframe: r=16eps=24 exactly (Sec. VII, ~670x above BICEP/Keck); joint (r,f_NL) no-go excludes single-field matter bounces (windows disjoint 296x in c_s, strengthening Li+2016 3.8x); curvaton route named (r,n_s)-viable, -35/16 diluted by (r/24)^2; PBH sign resolved (ratio 1.84+-0.03). One verification board permitted (R7) under directive R2. Houston final review pending.",
     },
     {
       slug: "paper-3",
@@ -144,6 +144,14 @@ export const liveStatus: LiveStatus = {
       version: "v0.1.147-2026-08-03",
       readiness: 95,
       pendingWork: "Archived lineage: folded into P4′ (Track C1) 2026-09-02. Frozen on disk, not an independent submission target.",
+    },
+    {
+      slug: "paper-su",
+      number: "SU",
+      shortTitle: "Separate-universe failure criterion (short note)",
+      version: "v1S.0.1",
+      readiness: 40,
+      pendingWork: "Draft short note lifted from A3M Appendix A (no new math). No INT/EXT review round has run yet; venue/arXiv category and Convex registration pending.",
     },
   ],
   blockerTally: {
