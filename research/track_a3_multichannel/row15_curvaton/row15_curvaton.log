@@ -1,0 +1,21 @@
+ROW 15 - curvaton-type matter bounce
+============================================================
+spectator tilt n_s-1 = 12*w/(3*w + 1) (== adiabatic): n_s = 0.9649 at w = -0.0029
+massive shift: n_sigma - 1 = 8*m_over_H**2/3  (gamma = m^2 a^2 eta^2 = 4 m^2/H^2) (BLUE for m^2>0)
+r = 216*sigma_star**2/(12*r_dec**2 + 9*sigma_star**2)
+F needed (CXB Eq.61): {'r<0.036': 25.819888974716115, 'r<0.01': 48.98979485566356}
+f_NL(r_dec=1) = -1.2500; sign flip at r_dec = 0.5811; r_dec_min(Planck 2s) = 0.1130
+bounce term at r=0.036: {'poly': -9.622320065148295e-07, 'LQC': -1.2304679668444668e-06, 'quintin': -8.121358713339186e-07}
+CXB11 Case 1 f_NL = -3.2851 (6.6 sigma for SPHEREx)
+r_max keeping bounce f_NL above SPHEREx: 22.948
+------------------------------------------------------------
+r_dec=0.0500  sig*max(r<0.036)=0.0022 n_s=0.9649  f_NL_curv=+23.292  f_NL_tot=+23.292  Planck2s=False
+r_dec=0.1000  sig*max(r<0.036)=0.0045 n_s=0.9649  f_NL_curv=+10.750  f_NL_tot=+10.750  Planck2s=False
+r_dec=0.1153  sig*max(r<0.036)=0.0052 n_s=0.9649  f_NL_curv=+9.079  f_NL_tot=+9.079  Planck2s=True
+r_dec=0.2000  sig*max(r<0.036)=0.0090 n_s=0.9649  f_NL_curv=+4.417  f_NL_tot=+4.417  Planck2s=True
+r_dec=0.3000  sig*max(r<0.036)=0.0134 n_s=0.9649  f_NL_curv=+2.250  f_NL_tot=+2.250  Planck2s=True
+r_dec=0.5000  sig*max(r<0.036)=0.0224 n_s=0.9649  f_NL_curv=+0.417  f_NL_tot=+0.417  Planck2s=True
+r_dec=0.5811  sig*max(r<0.036)=0.0260 n_s=0.9649  f_NL_curv=+0.000  f_NL_tot=+0.000  Planck2s=True
+r_dec=0.7500  sig*max(r<0.036)=0.0336 n_s=0.9649  f_NL_curv=-0.625  f_NL_tot=-0.625  Planck2s=True
+r_dec=1.0000  sig*max(r<0.036)=0.0448 n_s=0.9649  f_NL_curv=-1.250  f_NL_tot=-1.250  Planck2s=True
+transmission: {"poly": {"eta_B": 0.5773502794521735, "k": 0.017320507767812344, "T_c_sigma_frozen_branch_vs_u_out": {"0.2": {"T_c": 0.7855744444698426, "abs_T_c_minus_1": 0.2144255555301574}, "0.1": {"T_c": 0.7504830183058483, "abs_T_c_minus_1": 0.2495169816941517}, "0.05": {"T_c": 0.9726332568298769, "abs_T_c_minus_1": 0.02736674317012311}}}, "LQC": {"eta_B": 1.0601459575428231, "k": 0.009432663426060429, "T_c_sigma_frozen_branch_vs_u_out": {"0.2": {"T_c": 1.0121048148205847, "abs_T_c_minus_1": 0.012104814820584675}, "0.1": {"T_c": 1.000189695575223, "abs_T_c_minus_1": 0.0001896955752229701}, "0.05": {"T_c": 1.0000055096624576, "abs_T_c_minus_1": 5.509662457603426e-06}}}, "quintin": {"eta_B": 0.4496009146522358, "k": 0.022241947634236807, "T_c_sigma_frozen_branch_vs_u_out": {"0.2": {"T_c": 1.0431848148931206, "abs_T_c_minus_1": 0.04318481489312065}, "0.1": {"T_c": 1.000780510054291, "abs_T_c_minus_1": 0.0007805100542910282}, "0.05": {"T_c": 1.0002703350561284, "abs_T_c_minus_1": 0.00027033505612839015}}}}

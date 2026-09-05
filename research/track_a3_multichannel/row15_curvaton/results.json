@@ -1,0 +1,277 @@
+{
+  "task": "NEXT_SCIENCE_LEDGER row 15 -- the curvaton-type matter bounce",
+  "date": "2026-09-04",
+  "analytic": {
+    "nu_of_q": "nu = q - 1/2 for the light spectator (same MS operator as the adiabatic mode)",
+    "ns_minus_1_spectator_str": "4 - 2*q",
+    "ns_minus_1_of_w_str": "12*w/(3*w + 1)",
+    "spectator_tilt_equals_adiabatic_tilt": true,
+    "dust_massless_exactly_scale_invariant": true,
+    "massive_shift_str": "n_sigma - 1 = 8*m_over_H**2/3  (gamma = m^2 a^2 eta^2 = 4 m^2/H^2)",
+    "massive_shift_coeff_over_m2H2": 2.6666666666666665,
+    "CXB11_Eq18_coeff_over_m2H2": 0.6666666666666666,
+    "massive_shift_note": "CXB11 Eq. (18) quotes 2 m^2/(3H^2), the de Sitter spectator value (m^2 a^2 = m^2/(H^2 eta^2)); in a MATTER CONTRACTION a^2 eta^2 = 4/H^2, so the same derivation gives 8 m^2/(3H^2), a factor 4 larger. Sign is unchanged: m^2 > 0 is BLUE.",
+    "ns_at_w_anchor": 0.9648945828709775
+  },
+  "power_ratio": {
+    "P_curv_over_P_ad_str": "8*epsilon*r_dec**2/(9*sigma_star**2)   (sigma_star in Mpl)",
+    "P_curv_over_P_ad_dust_str": "4*r_dec**2/(3*sigma_star**2)",
+    "r_of_rdec_sigma_str": "216*sigma_star**2/(12*r_dec**2 + 9*sigma_star**2)",
+    "r_single_field_dust": 24.0,
+    "F_needed_CXB_Eq61": {
+      "r<0.036": 25.819888974716115,
+      "r<0.01": 48.98979485566356
+    }
+  },
+  "fnl": {
+    "formula": "f_NL = 5/(4 r_dec) - 5/3 - 5 r_dec/6  (LUW03; SVW06 Eq. for a quadratic curvaton)",
+    "f_NL_at_rdec_1": -1.25,
+    "sign_change_r_dec": 0.5811388300841897,
+    "monotonic_decreasing_in_rdec": true,
+    "min_over_rdec_in_0_1": -1.25,
+    "non_quadratic_caveat": "SVW06 add potential-shape terms proportional to sigma V'''/V'' etc.; the values here are the exact-quadratic case, the standard quoted branch.",
+    "rdec_min_Planck_2sigma": 0.11301128043274705,
+    "rdec_min_Planck_1sigma": 0.20698269381546763,
+    "Planck_window": [
+      -11.1,
+      9.299999999999999
+    ],
+    "dilution_law": "f_NL^tot = f_NL^bounce (r/24)^2 + f_NL^curv (1 - r/24)^2",
+    "f_NL_bounce_pre": -2.1875,
+    "f_NL_bounce_after_A2": {
+      "poly": -0.42765866956214654,
+      "LQC": -0.5468746519308743,
+      "quintin": -0.3609492761484083
+    },
+    "bounce_term_at_r_0.036": {
+      "poly": -9.622320065148295e-07,
+      "LQC": -1.2304679668444668e-06,
+      "quintin": -8.121358713339186e-07
+    },
+    "bounce_term_at_r_0.036_pre": -4.921874999999999e-06,
+    "adiabatic_power_fraction_at_r_0.036": 0.0014999999999999998
+  },
+  "cxb11": {
+    "r_eq61_their_norm": "r ~ 35 F^-2 (their Eq. 61); in our row-10 normalisation r = 24 F^-2",
+    "f_NL_case1_symbolic": "-320/pi**4",
+    "f_NL_case1_value": -3.285114321498987,
+    "f_NL_case1_paper_quote": -3.3,
+    "f_NL_case1_is_parameter_free": true,
+    "f_NL_case2": "f_NL ~ -5.3 m^4/(d^2 M^4) (their Eq. 67) -- one free combination",
+    "sigma_vs_Planck_case1": 0.467669474803723,
+    "sigma_detection_SPHEREx_case1": 6.570228642997974
+  },
+  "table": [
+    {
+      "r_dec": 0.05,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.0022377469175267227,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.0011787569019181383,
+      "r_at_that_sigma": 0.035999999999999976,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": 23.291666666666664,
+      "f_NL_total_at_r_0.036": 23.2916130299487,
+      "sigma_vs_Planck": 4.7434535352840586,
+      "Planck_2sigma_ok": false,
+      "SPHEREx_detect_sigma": 46.5832260598974
+    },
+    {
+      "r_dec": 0.1,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.004475493835053445,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.0023575138038362765,
+      "r_at_that_sigma": 0.035999999999999976,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": 10.75,
+      "f_NL_total_at_r_0.036": 10.749974582032033,
+      "sigma_vs_Planck": 2.284308741574909,
+      "Planck_2sigma_ok": false,
+      "SPHEREx_detect_sigma": 21.499949164064066
+    },
+    {
+      "r_dec": 0.1153,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.005160244391816623,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.0027182134158232267,
+      "r_at_that_sigma": 0.036000000000000004,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": 9.078533607979185,
+      "f_NL_total_at_r_0.036": 9.0785119508106,
+      "sigma_vs_Planck": 1.9565709707471768,
+      "Planck_2sigma_ok": true,
+      "SPHEREx_detect_sigma": 18.1570239016212
+    },
+    {
+      "r_dec": 0.2,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.00895098767010689,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.004715027607672553,
+      "r_at_that_sigma": 0.035999999999999976,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": 4.416666666666666,
+      "f_NL_total_at_r_0.036": 4.4166554986987,
+      "sigma_vs_Planck": 1.0424814703330785,
+      "Planck_2sigma_ok": true,
+      "SPHEREx_detect_sigma": 8.8333109973974
+    },
+    {
+      "r_dec": 0.3,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.013426481505160336,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.007072541411508829,
+      "r_at_that_sigma": 0.03599999999999999,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": 2.25,
+      "f_NL_total_at_r_0.036": 2.2499937070320333,
+      "sigma_vs_Planck": 0.6176458249082418,
+      "Planck_2sigma_ok": true,
+      "SPHEREx_detect_sigma": 4.4999874140640665
+    },
+    {
+      "r_dec": 0.5,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.02237746917526723,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.011787569019181382,
+      "r_at_that_sigma": 0.036,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": 0.4166666666666666,
+      "f_NL_total_at_r_0.036": 0.41666449869869976,
+      "sigma_vs_Planck": 0.25816950954876466,
+      "Planck_2sigma_ok": true,
+      "SPHEREx_detect_sigma": 0.8333289973973995
+    },
+    {
+      "r_dec": 0.5811,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.02600709467549557,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.013699512714092602,
+      "r_at_that_sigma": 0.036,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": 0.0001760884529340978,
+      "f_NL_total_at_r_0.036": 0.00017485758876823425,
+      "sigma_vs_Planck": 0.1765048740370134,
+      "Planck_2sigma_ok": true,
+      "SPHEREx_detect_sigma": 0.0003497151775364685
+    },
+    {
+      "r_dec": 0.75,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.03356620376290084,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.017681353528772075,
+      "r_at_that_sigma": 0.036,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": -0.625,
+      "f_NL_total_at_r_0.036": -0.6249998242179668,
+      "sigma_vs_Planck": 0.05392160309451631,
+      "Planck_2sigma_ok": true,
+      "SPHEREx_detect_sigma": 1.2499996484359337
+    },
+    {
+      "r_dec": 1.0,
+      "sigma_star_max_over_Mpl_for_r_0.036": 0.04475493835053446,
+      "sigma_star_max_over_Mpl_for_r_0.01": 0.023575138038362763,
+      "r_at_that_sigma": 0.036,
+      "n_s": 0.9648945828709775,
+      "f_NL_curvaton": -1.25,
+      "f_NL_total_at_r_0.036": -1.2499984179679668,
+      "sigma_vs_Planck": 0.06862714077803271,
+      "Planck_2sigma_ok": true,
+      "SPHEREx_detect_sigma": 2.4999968359359337
+    }
+  ],
+  "viable": {
+    "exists": true,
+    "r_dec_window_Planck_2sigma": [
+      0.11301128043274705,
+      1.0
+    ],
+    "r_dec_window_Planck_1sigma": [
+      0.20698269381546763,
+      1.0
+    ],
+    "f_NL_range_over_window_2sigma": [
+      -1.25,
+      9.299999999999999
+    ],
+    "n_s": 0.9648945828709775,
+    "r_free": "r = 24/(1 + (4/3) r_dec^2 (Mpl/sigma_*)^2): any r <= 24 by choosing sigma_*"
+  },
+  "observability": {
+    "r_max_for_bounce_term_above_SPHEREx_0.5": 22.948396602196002,
+    "note": "solve |f_NL^bounce| T (r/24)^2 = 0.5 for r"
+  },
+  "transmission": {
+    "spectator_ODE": "u'' + (k^2 - a''/a) u = 0  with u = a*sigma (m << H)",
+    "identical_to_tensor_ODE": true,
+    "identical_to_adiabatic_ODE_at_cs1": "yes when eps = const (z ~ a), which holds for dust",
+    "frozen_branch_check": {
+      "poly": {
+        "eta_B": 0.5773502794521735,
+        "k": 0.017320507767812344,
+        "T_c_sigma_frozen_branch_vs_u_out": {
+          "0.2": {
+            "T_c": 0.7855744444698426,
+            "abs_T_c_minus_1": 0.2144255555301574
+          },
+          "0.1": {
+            "T_c": 0.7504830183058483,
+            "abs_T_c_minus_1": 0.2495169816941517
+          },
+          "0.05": {
+            "T_c": 0.9726332568298769,
+            "abs_T_c_minus_1": 0.02736674317012311
+          }
+        }
+      },
+      "LQC": {
+        "eta_B": 1.0601459575428231,
+        "k": 0.009432663426060429,
+        "T_c_sigma_frozen_branch_vs_u_out": {
+          "0.2": {
+            "T_c": 1.0121048148205847,
+            "abs_T_c_minus_1": 0.012104814820584675
+          },
+          "0.1": {
+            "T_c": 1.000189695575223,
+            "abs_T_c_minus_1": 0.0001896955752229701
+          },
+          "0.05": {
+            "T_c": 1.0000055096624576,
+            "abs_T_c_minus_1": 5.509662457603426e-06
+          }
+        }
+      },
+      "quintin": {
+        "eta_B": 0.4496009146522358,
+        "k": 0.022241947634236807,
+        "T_c_sigma_frozen_branch_vs_u_out": {
+          "0.2": {
+            "T_c": 1.0431848148931206,
+            "abs_T_c_minus_1": 0.04318481489312065
+          },
+          "0.1": {
+            "T_c": 1.000780510054291,
+            "abs_T_c_minus_1": 0.0007805100542910282
+          },
+          "0.05": {
+            "T_c": 1.0002703350561284,
+            "abs_T_c_minus_1": 0.00027033505612839015
+          }
+        }
+      }
+    },
+    "row10_T_h_over_T_zeta_minus_1_max": 8e-05,
+    "row14_lambda_scalar_over_tensor_minus_1_max": 4.123168473313399e-11,
+    "delta_fNL_bounce_applies_to_curvaton": false,
+    "delta_fNL_note": "The curvaton's local f_NL is generated at curvaton DECAY, after the bounce, from a Gaussian sigma; the A2 transfer T = 0.165-0.250 acts on the pre-bounce adiabatic bispectrum only.  In CXB11's variant the conversion happens AT the bounce and their Eq. (65) already contains it."
+  },
+  "multichannel": {
+    "tensor_PTA": "r is now free; the nHz first-order tensor amplitude scales with r, so at r <= 0.036 Omega_GW h^2 <= 1.7e-14 * (0.036/24) = 2.5e-17 -- the PTA null (row 10: 10^5.3 below NANOGrav) becomes STRONGER, not weaker.",
+    "Omega_GW_h2_nHz_at_r_0.036": 2.5349999999999995e-17,
+    "PBH": "unchanged: set by the scalar amplitude at small scales, which the curvaton does not tilt.",
+    "fNL_channel": "the observable f_NL becomes PURELY LOCAL and set by r_dec; the bounce's orientation-dependent shape f(mu) = -35/16 + (15/16) mu^2 is diluted by (r/24)^2 and is unobservable.",
+    "SPHEREx_reach_on_curvaton_fNL": {
+      "0.05": 46.5832260598974,
+      "0.1": 21.499949164064066,
+      "0.1153": 18.1570239016212,
+      "0.2": 8.8333109973974,
+      "0.3": 4.4999874140640665,
+      "0.5": 0.8333289973973995,
+      "0.5811": 0.0003497151775364685,
+      "0.75": 1.2499996484359337,
+      "1.0": 2.4999968359359337
+    }
+  }
+}
