@@ -1,9 +1,10 @@
 # PSU disposition ledger — `paper-su`
 
 **Canonical source:** `arxiv/paper_su_criterion/main.tex`
-**Current paper-local version:** `v1S.0.1` (2026-09-04)
-**Exact PDF:** `arxiv/paper_su_criterion/main.pdf` == `site/public/papers/paper_su_criterion_v1S.0.1.pdf`,
-sha256 `cc0dfb84a232967c45ea359d5de18f642af0727c2907512b289931854ed7c48e`, 4 pp.
+**Current paper-local version:** `v1S.0.2` (2026-09-04)
+**Exact PDF:** `arxiv/paper_su_criterion/main.pdf` == `site/public/papers/paper_su_criterion_v1S.0.2.pdf`,
+sha256 `812dbaf1af7e8eafa5769730fed55c81cfa8b429fbeab022d1125be1527aca31`, md5 `fcbecd03…`, 4 pp.
+(R1 artifact was `cc0dfb84…c48e` = v1S.0.1.)
 **Venue:** Physical Review D — Letter / short note.
 **Claim policy (as of R1, pending S3):** the note currently asserts an $O(1)$ *failure* of the
 isotropic separate universe. The committed source note it rests on concludes the opposite
@@ -16,6 +17,7 @@ do **not** restate the failure framing in SSOT, site copy, or abstracts as settl
 | Round | Exact PDF sha256 | Legs | Outcome |
 |---|---|---|---|
 | `ROUND_2026-09-04-PSU-v1S.0.1-EXACTPDF-cc0dfb84-R1` | `cc0dfb84…c48e` | Claude Fable 5.1 INT (**major-revisions**), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | 38 raw findings → **28 canonical**: 21 GENUINELY-NEW REAL, 0 re-flag, 5 FALSIFIED, 1 OPINION/GENRE, 1 OUT-OF-SCOPE-DISCLOSED. Clean-wave count **0**. Board: `../PSU_v1S.0.1_R1_BOARD_2026-09-04.md`; audit: `../INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md` |
+| `ROUND_2026-09-04-PSU-v1S.0.2-EXACTPDF-812dbaf1-R2VERIFY` | `812dbaf1…aca31` | Claude Fable 5.1 INT (**major-revisions**, 6M/13m/4Q), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | 39 raw findings → **32 canonical**: 20 GENUINELY-NEW REAL, 6 re-flag (4 still OPEN), 1 OUT-OF-SCOPE-DISCLOSED, 2 FALSIFIED, 3 OPINION. Clean-wave count **0**. Board: `../INT_v3/PSU_v1S.0.2_R2_BOARD_2026-09-04.md`; audit: `../INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md` |
 
 ## Canonical items (R1 board)
 
@@ -59,3 +61,40 @@ gradient-expansion literature verification (opus). Full specifications in the R1
 
 **Directive R2**: no further review round on `paper-su` until S1 and S3 have produced a science
 or scope decision.
+
+## R2 canonical items (v1S.0.2)
+
+Full table with citations and closure actions: `../INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md` §2.
+
+- **C1–C20 — GENUINELY-NEW REAL, all OPEN.** Headline three: **C2** Eq. (4)'s second equality carries
+  the wrong sign (`main.tex` l. 144–145; contradicts `psu_gates_S1_S2_2026_09_04.md` Eq. (S1.1) and
+  the auditor's sympy); **C1** the abstract calls the separate-universe value $-5$ "the in-in
+  monopole" (the in-in monopole is $-15/8$); **C4** the "$8/7$" robustness sentence (l. 88–90) is
+  wrong — a uniform $\times2$ of the from-scratch shape gives monopole $-15/4$, gap $-5/4$, **ratio
+  $4/3$**, and $-35/8$ is Cai's *isoceles* amplitude, not a monopole. Also C5/C7/C8 (reference layer:
+  Li–Quintin–Wang–Cai 2017 uncited; refs [6]/[11]/[12] wrong; DPS "On separate universes"
+  unengaged) and C9–C20 statement-precision items.
+- **C21–C26 — re-flags.** C21 (standalone-reader / PSU-5 / gate S4), C22 (DOI / PSU-16),
+  C23 ($\Theta$ / PSU-25), C24 (path breaks / PSU-6) remain **OPEN** — C23/C24 are regressions not
+  fixed in v1S.0.2. C25 = PSU-15 (OPINION, closed). C26 = PSU-17/28 ("future dates", FALSIFIED).
+- **C27 — OUT-OF-SCOPE:** `v1S.0.2` in the `\preprint` header, stripped at arXiv packaging.
+- **C28, C29 — FALSIFIED (Grok).** C28: the composition $f^{\rm in\text{-}in}/\lambda+f^{\rm init}_{\rm map}$
+  is identically $-5$ in $\mu$ and $\eps$; Grok used $f^{\rm init}_{\rm map}(\mu=0)=-5/8$ instead of the
+  monopole $-5\eps/6$. C29: Eq. (2)'s domain qualifier is printed at l. 122–125.
+- **C30–C32 — OPINION / genre.**
+
+**Process finding (new, R2):** C4 originated in R1's own PSU-4 *disposition*, whose number was
+transcribed into the manuscript unverified. Any number a disposition hands to a manuscript now gets
+the same independent re-derivation gate as a number in the manuscript.
+
+## Open science gates after R2
+
+S4 (self-containedness appendix — now judged **required**, spec in the R2 audit §5(i) Appendix A),
+**S6** identity-vs-fit verification + printed-Eq. (4) sympy assertion, **S7** Cai-2009 factor-2
+reconciliation incl. Li+2017, **S8** numerical USR validation, **S9** uniform-$\phi$ vs uniform-$\rho$
+final slice, **S10** general-history $f^{\rm init}_{\rm map}$, **S11** Zenodo DOI. S1/S2/S3 RESOLVED
+(`research/theory_audit/psu_gates_S1_S2_2026_09_04.md`), S5 carried.
+
+**Directive R2 (updated):** R1 + R2 exhaust the two-round convergence budget. After `v1S.0.3` lands
+the editorial closures (audit §5(i) E-1…E-11), **review rounds on `paper-su` STOP** until a science
+or venue decision is taken on S6–S10.
