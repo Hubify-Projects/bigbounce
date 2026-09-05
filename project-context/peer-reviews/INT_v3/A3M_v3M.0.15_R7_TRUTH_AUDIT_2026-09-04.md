@@ -188,3 +188,96 @@ Every classification above cites a committed file+line or a JSON key. Two review
 (Grok's REJECT rationale, Gemini's Fig. 1) rest on findings falsified against committed
 artifacts; the strongest real finding of the round (`R7-02`, the stale figure) was found by the
 audit, not by any reviewer.
+
+---
+
+# CLOSURE PLAN
+
+## (i) Editorial / real edits for v3M.0.16 — exact lines
+
+1. `main.tex:46` — "`r=16ε=24` exactly, bounce-invariant" → "`r=16ε=24` **before the bounce**;
+   the transfer is scheme-dependent — `r_after=24` in S1 (tensor and scalar share `z=a`, so the
+   equality is structural there, `|T_h/T_ζ−1|≤8×10⁻⁵`), while S2's raw-ADM continuation gives
+   `r_after≈9.4×10²` on the Quintin-type background. The no-go is unaffected (S2 worsens `r`)."
+   Same scoping at `:1232–1233`, and in Sec. VIII where Quintin *et al.*'s scalar-only
+   amplification is dismissed — say that test is available only in S1. [`R7-01`]
+2. Regenerate Fig. 1 from `sigw_nhz_from_lab_spectrum_2026_09_04.py` **with the publication
+   labels/title of commit `044ea88c`**, i.e. re-apply those labels to the current
+   (post-`87e3d6e2`, `A=6.46×10⁻¹⁵`) curves; widen/thin the x minor-tick labels; mirror
+   byte-identical into `paper/` and `outputs/`; verify by rendering p. 8 of the recompiled PDF,
+   not by filename. [`R7-02`, `R7-16`; directive I6 + G]
+3. `main.tex` Sec. VIII / Table VII — add: "`f_NL^pre(c_s)=−165/16+65/(8c_s²)` changes sign at
+   `c_s=0.8876`; on `c_s∈[0.444,0.888)` the constant-`c_s` k-essence branch predicts a
+   **positive** local amplitude, so the flagship negative sign survives only for `c_s≳0.89`."
+   [`R7-03`]
+4. Same section — state the window formula actually used (`T×f^pre`, no `Δf_NL^bounce`), why
+   (Eq. 7 derived at `c_s=1`), and that `Δ=−0.14` vs the 5.1 bound. [`R7-04`]
+5. `main.tex:1798–1800` — rebuild `\bibitem{CaiXue2011}` from **arXiv:1101.0822** (Cai,
+   Brandenberger & Zhang, *The Matter Bounce Curvaton Scenario*, JCAP **03**, 003 (2011)), the
+   source the lab's own curvaton adjudication reads; re-check the `−320/π⁴` quote and the
+   "Eqs. (62)–(64)" pointer against it, or drop the quote. Add bibliography entries for
+   Lyth–Ungarelli–Wands, Sasaki–Väliviita–Wands, and the Planck 2018 `f_NL` used in Table VII.
+   [`R7-05`, Fable M4]
+6. `main.tex:53–54` — `|f_NL|` → `|f_NL^{after}|`. [`R7-06`]
+7. `main.tex:55–57` — append "on the backgrounds and channels evaluated here". [`R7-07`]
+8. Table V (`tab:pbh`) — label the `γ_cr ≲ 0.8` rows "**non-perturbative branch**
+   (`1.2|f_NL|σ_r ≈ 0.5–2`; IR-cutoff-dependent, see Sec. V B)", state that `A_*` is
+   **per-point** Gaussian-calibrated, and mark the `f_PBH>1` entries as uncapped ratios. Reword
+   `:947–949` "suppresses … throughout" → "suppresses at first order in `ε=(6/5)f_NLσ_r` at every
+   `γ_cr`". Add the requested slope for "decreases … weakly". [`R7-08`, `D4`]
+9. Pick ONE NANOGrav reference amplitude and propagate: `main.tex:754,782` (`2.622e-8`) vs
+   `outputs/r5_15_tensor_omega_nhz.json:25` (`3.6235e-09`); restate the "`10^5.3` below" and
+   "8–9 orders" figures against it. [`R7-09`]
+10. `main.tex:1621` — remove the repo-path import of the companion Fisher draft; state the shape
+    overlap as an explicit assumed value with its provenance, and keep Table VI's entries labelled
+    upper bounds. [`R7-10`]
+11. `main.tex:968`, `:1151`, `:1254–1255` — delete all version-history/audit prose
+    ("noted in earlier drafts", "(open item DESI-4)", "appeared in earlier drafts … withdrawn
+    here"); state the withdrawn `r=0.84` as a plain statement of what the quantity is. [`R7-11`;
+    directive Q1]
+12. `main.tex:47–48` — "`n_s=1` exactly (pure dust); the observed `n_s=0.9649` fixes
+    `w=−0.0029`, hence `ε=1.4957`, `r=23.93`, `n_T=−0.035`". Use `23.9` or `ε=3/2` consistently.
+    [`R7-12`]
+13. `main.tex:793–796` — delete "below the QCD scale" (2.3 GeV is above it) and the appeal to a
+    baryogenesis argument the paper does not make; keep the `T_B` number and its real
+    consequence. [`R7-13`]
+14. `main.tex:221` — "converted … via" → "**effectively** converted … via". [`R7-14`]
+15. `main.tex:222–223` — repeat the distinct-monomial qualifier on the second `(37)=(4.19)`
+    statement, and add one clause: under the six-permutation reading the difference is
+    `−(99/128)Σk³` (squeezed `−305/64`), which is why the reading must be stated. Cite the
+    committed script. [`R7-15`, `C9`]
+16. `B3` clarify the `2026-05-01` chain directory as the run date of the NANOGrav free-spectrum
+    reduction. `E1`–`E6` verified-then-closed in the same lane.
+
+Then: `/paper-compile-revtex` (0 undef-refs) → `/latex-audit` → directive-G restamp
+(`\paperVersion` v3M.0.16, `\date`), re-mirror to all served paths byte-identical, Convex
+`paperVersions:bump` with real md5/pages, and a `reviewTimeline` entry for R7.
+
+## (ii) SCIENCE items — named exactly
+
+- **`A3-S2r` — the S2 tensor transfer.** Tensors carry no scheme ambiguity (`z_T=a`), so
+  `λ_T=6.06` on the Quintin-type background carries over and `r_after[S2]=24(6.06/0.97)²≈9.4×10²`
+  is arithmetic from committed numbers. **Required lane (small):** a `row10b_s2_tensor/` script
+  that evolves `h''+2(a'/a)h'+k²h=0` across the **S2 raw-ADM handoff convention** on the same
+  background and prints `λ_T`, `r_after[S2]` per `kη_B`, so the quoted `9.4×10²` rests on a
+  committed artifact rather than on a hand ratio. Owner lane; does not touch `main.tex`.
+- **`A3-cs-bounce` (Fable Q4) — the `c_s` dependence of `Δf_NL^bounce`.** The cubic k-essence
+  action carries `(1/c_s²−1)` operators; Eq. (7) was derived at `c_s=1` only. At the `r`-viable
+  end (`c_s=1.5×10⁻³`) the window numbers `6–9×10⁵` would move by `O(1/c_s²)` if the bounce term
+  scales like the contraction term. Compute `Δf_NL^bounce(c_s)` on the S1 background, or state
+  explicitly that the window is quoted with the `c_s=1` bounce term and bound the error.
+- **`A3-1e`** (Choudhury `γ_cr ≲ 0.85` sign, analytic route only) — **now CLOSED** by
+  `row11_pbh_residuals` item (a); it leaves only the Table V labelling of `R7-08`. Ledger row 9's
+  bounce-scale enhancement at `kη_B~1` is unaffected.
+- Carried from R6 and still open: `A3-ns` (Eq. (A3) at the `n_s=0.9649` ε), `A3-dN` (mechanism of
+  the second-order δN piece), `DESI-4` (wide-angle + the 3 blocked systematics splits).
+
+## R2 statement (directive R2)
+
+R7 is the **fourth consecutive verification round** on A3M. It produced **no physics error**
+except `R7-01`/`R7-03` (both scoping/disclosure of quantities the lab had already computed and
+committed) and `R7-02` (a stale embedded figure). Both reviewer verdict words rest substantially
+on findings falsified above (`C1`–`C8`). **After v3M.0.16 closes the 16 (i) items, rounds STOP on
+A3M** until a science decision is taken on the (ii) ledger — `A3-S2r`, `A3-cs-bounce`, `A3-ns`,
+`A3-dN`, `DESI-4`. No further round may be dispatched on A3M on editorial grounds alone.
+**Clean-wave count: 0** (16 genuinely-new-real findings this round).
