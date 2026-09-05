@@ -755,20 +755,26 @@ and the
 {repository bandpower artifact} (SHA-256
 \texttt{\seqsplit{b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331}}).
 
-\paragraph{Reproducibility: blind shortcut-detection test.} The test in
-Sec.~\ref{sec:blind-test} is recorded under reproducibility manifest
+\paragraph{Reproducibility: blind shortcut-detection test.} The pilot (batch
+1, Sec.~\ref{sec:blind-test-pilot}) is recorded under manifest
 \texttt{p1b-blind-shortcut-detection}
-(\nolinkurl{reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json}).
-Scripts live at
-\nolinkurl{pipelines/namaster_proof/blind_test/}: \texttt{seal.py} (commits the
-sealed assignment digest), \texttt{run\_blind.py} (executes the 18 runs via
-\texttt{variants.py} and \texttt{pcl.py}), \texttt{verify.py} (applies the
-verifier's decision rules), and \texttt{reveal.py} (discloses the key and
-recomputes the confusion matrix). Reproducing the exact committed run reuses
-the committed \texttt{sealed/key.txt} and \texttt{sealed/assignment.json}
-rather than re-running \texttt{seal.py}, which draws a fresh random key. Cost
-is \$0 on any CPU-only machine; wall time is approximately one to two
-minutes.
+(\nolinkurl{reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json}),
+with scripts \texttt{seal.py}, \texttt{run\_blind.py}, \texttt{verify.py},
+and \texttt{reveal.py} in \nolinkurl{pipelines/namaster_proof/blind_test/};
+reproducing the exact committed run reuses the committed
+\texttt{sealed/key.txt} and \texttt{sealed/assignment.json} rather than
+re-running \texttt{seal.py}, which draws a fresh random key. The primary
+result (batch 2, Sec.~\ref{sec:blind-test-result}) is recorded under manifest
+\texttt{p1b-blind-shortcut-detection-batch2}
+(\nolinkurl{reproducibility/manifests/experiments/p1b-blind-shortcut-detection-batch2.json}),
+with scripts \texttt{variants2.py} (adds S6), \texttt{seal2.py},
+\texttt{run\_blind2.py}, \texttt{verify.py}, and \texttt{reveal2.py} in the
+same directory, reusing the committed \texttt{sealed2/\{key.txt,
+assignment.json\}} the same way. Both batches cost \$0 on any CPU-only
+machine; batch 1's 18 runs plus seal/verify/reveal overhead take
+approximately one to two minutes, and batch 2's 35 runs measured
+\(\sim\)11~s of core execution (36 runs including the reference), under one
+minute including seal, verify, and reveal.
 
 \section{Reuse Potential}
 
