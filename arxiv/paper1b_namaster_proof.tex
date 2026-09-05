@@ -143,8 +143,8 @@
 %   (pipelines/namaster_proof/blind_test/public{,2}/sealed_digest.json.ots,
 %   pending Bitcoin confirmation) and cited as the S2 external-anchor step in
 %   progress. Appendix table of all 35 batch-2 per-run verdicts added.
-\newcommand{\paperVersion}{v2B.0.18}
-\newcommand{\paperTimestamp}{2026-09-04 19:40 PT}
+\newcommand{\paperVersion}{v2B.0.19}
+\newcommand{\paperTimestamp}{2026-09-04 21:00 PT}
 
 \title{\software: Content-bound execution receipts as a shortcut
 detector for pseudo-\(\Cl\) computations}
@@ -157,32 +157,38 @@ detector for pseudo-\(\Cl\) computations}
 \begin{abstract}
 \software{} is a focused Python verification layer for two error-prone steps
 in cut-sky spin-2 analyses.  First, it evaluates a uniformly rotated
-\(EE,EB,BE,BB\) spectrum through the complete bandpower-window operator of an
-instrumented spin-0 MASTER estimator in this repository (validated against
-NaMaster's couple--decouple route on a synthetic workspace; not run against
-NaMaster or PyMaster itself), avoiding replacement of the operator by
-bin-centre or effective-multipole templates.  Second, it writes JSON results
+\(EE,EB,BE,BB\) spectrum through the complete bandpower-window operator of a
+caller-supplied spin-2 NaMaster workspace tensor, avoiding replacement of the
+operator by bin-centre or effective-multipole templates; the layer has been
+exercised against PyMaster 2.6 in a retained production artifact
+(\S\ref{sec:workspace}) and in the integration example
+(\S\ref{sec:worked-examples}).  Second, it writes JSON results
 and content-bound sidecar receipts with atomic per-file replacement and fails
 closed when result bytes or caller-asserted execution metadata change.  We
 extend the receipt idea into an execution-trace contract and test it under a
 pre-registered, sealed blind protocol, run in two batches under an
 unmodified-instrumented-harness threat model --- the analyst may alter the
-computation but not the harness that records it.  In the primary batch (35
+computation but not the harness that records it; the blind test's own
+instrumented estimator is this repository's spin-0 MASTER implementation,
+because PyMaster is not installed in the test environment and exposes no
+Wigner-3\(j\) counter.  In the primary batch (35
 runs, decision rules frozen and committed before the seal was drawn), a
-verifier that never re-runs the computation flagged 20 of 20 runs drawn from
+verifier that never re-runs the computation flagged every replicate of all
 four structural shortcut classes --- operator-skipping, operator-truncating,
-grid-reducing, and cache-substituting --- (one-sided 95\% Clopper--Pearson
-lower bound 0.861) with 0 of 5 false positives on honest runs (upper bound
-0.451), while a metadata-forgery class and an effective-multipole class each
+grid-reducing, and cache-substituting --- (20/20 runs, 4/4 classes) and
+flagged none of the five honest runs.  Because rules R1--R5 compare
+seed-independent quantities against a fixed contract, the within-arm
+replicates measure firing determinism rather than sampling variance; no
+detection-probability interval is claimed at the run level.  A
+metadata-forgery class and an effective-multipole class each
 escaped detection in 5 of 5 runs, the latter with no rule added after the
 fact.  An earlier 18-run pilot developed the decision rules and is reported
 as such, with its post-hoc rule changes disclosed.  The result establishes
 the primitive as a detector of \emph{structural shortcuts in instrumented
 steps}, not of forged metadata or of value-level shortcuts taken downstream
-of the instrumented operator: to our knowledge this is the first
-pre-registered, sealed blind measurement of shortcut-detection sensitivity
-for pseudo-\(\Cl\) execution receipts, including a negative class reported as
-an escape.  The package also
+of the instrumented operator: we report a pre-registered, sealed blind map
+of what a receipt-based check does and does not catch, with the negative
+classes reported as escapes.  The package also
 supplies explicit multipole-support contracts, fixed-grid rotation-angle
 recovery, command-line receipt verification, and compatibility tests against
 the production helpers from which it was extracted.  The software is intended
@@ -593,7 +599,9 @@ bytes and receipt digests independently and require rejection.
 Compatibility tests load the pre-package production modules and compare
 windowed bandpowers at negative, zero, and positive angles with zero requested
 absolute or relative tolerance.  They also compare algebraic spectrum rotation,
-bandpower edges, and harmonic keyword contracts.  In the associated physical
+bandpower edges, and harmonic keyword contracts.
+\label{sec:workspace}
+In the associated physical
 production artifact, a workspace of shape
 \([4,20,4,1025]\) gave a maximum absolute difference of
 \(1.41\times10^{-18}\) between direct window contraction and the
@@ -616,6 +624,7 @@ platform-dependent). The full suite runs with
 root (or \texttt{pytest} from within the installed package's test extra).
 
 \section{Worked Examples}
+\label{sec:worked-examples}
 
 \paragraph{Minimal synthetic operator.}
 The documentation constructs an identity-like workspace, builds a response
