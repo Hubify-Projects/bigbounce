@@ -1,0 +1,8 @@
+{
+  "n_total": 20000,
+  "n_cw": 10000,
+  "n_ccw": 10000,
+  "sampling": "sky-uniform via NSIDE=64 healpix bins, one galaxy per bin per class, seed=44",
+  "source_catalog": "bamfai/galaxy-chirality-catalog:catalog_production.parquet",
+  "supersedes": "N=5000 Row13 scale sample (scale_sample.parquet, seed=43); this is Row16 step (ii)"
+}
