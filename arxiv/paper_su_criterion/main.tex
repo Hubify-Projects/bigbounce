@@ -378,4 +378,30 @@ verified by the author against the committed script output.
 
 \end{thebibliography}
 
+\appendix
+\section{Self-contained second-order derivation}
+
+This appendix transcribes, from the committed companion notes cited above, the material a
+standalone reader needs to verify Eq.~\eqref{eq:fmap}--\eqref{eq:fmapfin} and the $-5$
+composition without the external GitHub notes.
+
+\subsection{The second-order lapse/shift solution and the exact worldline identity}
+
+Comoving gauge ($\delta\phi=0$), Maldacena variables $h_{ij}=a^2e^{2\zeta}\delta_{ij}$,
+$N=1+\alpha$, $N_i=\partial_i\psi+\tilde N_i$; at first order $\alpha=\dot\zeta/H$,
+$\psi=-\zeta/H+\chi$, $\partial^2\chi=a^2\eps\dot\zeta$. The zero-shift threading is the
+fluid (normal) congruence, $n^\mu=(1/N,-N^i/N)$, $dx^i/dt=-N^i$. The expansion of the normal
+congruence is $K=\nabla_\mu n^\mu=\frac{1}{N\sqrt h}[\partial_t\sqrt h-\partial_i(\sqrt h\,N^i)]$;
+along a fluid worldline this gives the exact (fully nonlinear) identity
+\begin{equation}
+NK=\frac{d}{dt}\ln\sqrt h\Big|_{\rm worldline}-\partial_iN^i.
+\end{equation}
+With $\delta N_c=\int(K/3)N\,dt-\bar N$ and $\ln\sqrt h=3\ln a+3\zeta$, this is Eq.~\eqref{eq:threading}
+of the main text. Every difference between $\zeta_{\rm Mald}$ and $\delta N_c$ is the divergence of
+the shift integrated along the fluid worldline: (i) $\partial_iN^i$ itself at second order, from
+the second-order lapse and shift solving the exact ADM Hamiltonian and momentum constraints;
+(ii) its evaluation along the worldline displaced by the long mode; (iii) the choice of label
+(final position $x_f$ vs.\ initial position $x_i=x_f+\xi$), a rigid translation of the final
+field.
+
 \end{document}
