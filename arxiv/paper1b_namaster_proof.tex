@@ -143,7 +143,7 @@
 %   (pipelines/namaster_proof/blind_test/public{,2}/sealed_digest.json.ots,
 %   pending Bitcoin confirmation) and cited as the S2 external-anchor step in
 %   progress. Appendix table of all 35 batch-2 per-run verdicts added.
-\newcommand{\paperVersion}{v2B.0.22}
+\newcommand{\paperVersion}{v2B.0.23}
 \newcommand{\paperTimestamp}{2026-09-05 12:00 PT}
 
 \title{\software: Content-bound execution receipts as a shortcut
@@ -360,6 +360,7 @@ Field & Source & Trust \\
 \texttt{result\_sha256}, \texttt{result\_bytes} & recomputed at verify time & self-evident \\
 \texttt{result\_file}, \texttt{schema\_version} & protected & self-evident \\
 caller metadata (suite, seeds, \dots) & caller-asserted, contract-checked & asserted \\
+\texttt{intermediates.pseudo\_cl} & contract-checked \emph{when present} & asserted, absent fails R7 open \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -692,7 +693,29 @@ was untouched; the harness fix (\texttt{variants3.seed\_rng}) was committed
 statement: the sealed \texttt{map\_seed} never actually selected those
 batches' maps either, so their replicates were fresh random draws rather
 than seed-varied executions of one map --- a wording correction only, since
-no batch-1/2 rule depended on reproducing a map.
+no batch-1/2 rule depended on reproducing a map. The commit-ordered trail
+for all of batch 3 is
+\texttt{dcf96696} (rules frozen) \(\rightarrow\) \texttt{d03fe376}
+(pre-registration + scripts) \(\rightarrow\) \texttt{b19b72fc} (attempt-1
+seal) \(\rightarrow\) \texttt{60917635} (attempt-1 aborted) \(\rightarrow\)
+\texttt{cd9ab366} (attempt-1 artifacts preserved) \(\rightarrow\)
+\texttt{56ef3fd2} (harness fix) \(\rightarrow\) \texttt{c7fb5e38} (fresh-key
+reseal) \(\rightarrow\) \texttt{4a7f9f82} (runs published, blind-judged)
+\(\rightarrow\) \texttt{5b643fc2} (reveal + scorecard) \(\rightarrow\)
+\texttt{bf7d26e3} (OpenTimestamps anchor). No abort criterion was
+pre-registered before attempt 1 was sealed; the decision to abort was made
+ad hoc, on discovering the seeding defect from the public verdict file, not
+against a pre-specified stopping rule, and is disclosed here as such rather
+than implied to have been anticipated. The attempt-1 assignment itself was
+never published: only its commitment (\texttt{assignment\_sha256}
+\texttt{8b4fa8404d4ee0d7bb1276d376353ac045dbf16b05c8a8622141d46d4d6ed554})
+and its sealed key are retained under
+\nolinkurl{blind_test/public3_aborted/}, so the abort decision cannot have
+been informed by which arm any run actually was. The attempt-2 (reporting)
+seal that followed the harness fix drew a fresh key over a freshly
+constructed assignment before any attempt-2 run existed, so no information
+from the unsealed, un-inspected attempt-1 assignment could have propagated
+into it; the two assignments share no key material.
 \end{sloppypar}
 
 \paragraph{Scope limits.} The estimator exercised in both batches is this
@@ -1083,7 +1106,12 @@ extension to \texttt{verify.py}, and \texttt{reveal3.py}, with the aborted
 first attempt preserved under \nolinkurl{blind_test/public3_aborted/}; batch
 4 adds \texttt{variants4.py} (S7, S8) and uses \texttt{seal4.py},
 \texttt{run\_blind4.py}, \texttt{verify4.py} (R8), \texttt{reveal4.py}, and
-\texttt{verifier\_seed4.py} for the commit--reveal challenge.
+\texttt{verifier\_seed4.py} for the commit--reveal challenge. The frozen
+rule-set files themselves, as committed and pinned in each batch's
+\texttt{frozen\_rules\_digest.json}, are sha256
+\texttt{169b3690\ldots} (\nolinkurl{RULES_v2_FROZEN.md}, batch 2), sha256
+\texttt{856f4c50\ldots} (\nolinkurl{RULES_v3_FROZEN.md}, batch 3), and sha256
+\texttt{a59caaf8\ldots} (\nolinkurl{RULES_v4_FROZEN.md}, batch 4).
 Reproducing any committed run reuses its
 committed \texttt{sealed\{,2,3,4\}/key.txt} and
 \texttt{sealed\{,2,3,4\}/assignment.json} rather than re-running the seal
