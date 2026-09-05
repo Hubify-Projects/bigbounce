@@ -1,0 +1,94 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "row11c-threading-map-second-order",
+  "title": "Row 11(c): second-order threading map from Maldacena's comoving zeta to the zero-shift (fluid-congruence) delta N_c in a non-attractor contraction; mechanism behind the delta N = -5 vs in-in -15/8 monopole gap",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "lab monopole adjudication (2026-09-03)",
+      "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "lab monopole adjudication script (conventions)",
+      "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.py",
+      "type": "internal-artifact",
+      "checksum": "sha256:058447db00cb61978e05dd0503983ebbe29a558abfd94ad5270fd87e5c3880aa"
+    },
+    {
+      "name": "Maldacena 2003",
+      "locator": "https://arxiv.org/abs/astro-ph/0210603",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Namjoo, Firouzjahi & Sasaki 2012",
+      "locator": "https://arxiv.org/abs/1210.3692",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lyth, Malik & Sasaki 2005",
+      "locator": "https://arxiv.org/abs/astro-ph/0411220",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/threading_map_second_order_2026_09_04.py",
+      "entrypoint": "python3 research/theory_audit/threading_map_second_order_2026_09_04.py",
+      "sha256": "b0c934158add4ddedb40f042a26e2f430b77849f301e86b93f0f76f3637c7fbf"
+    }
+  ],
+  "environment": {
+    "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local macOS workstation",
+    "date": "2026-09-04",
+    "wall_clock": "~3 min (second-order constraint solve ~105 s; rest ~50 s)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 5 minutes",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic exact sympy. No network access. Self-validating: background + first-order ADM constraints satisfied identically by alpha = zetadot/H, psi = -zeta/H + chi (all k); second-order lapse/shift solved from the exact constraints; 1/k_L poles asserted to cancel in the bispectrum; linear threading factor 1 - eps/3 recovered from the exact identity; monopole -5 for both labels and isotropy for the initial-position label asserted for general constant eps; adjudication general-eps in-in monopole reproduced by inversion; eps -> 0 kills every cross kernel; attractor (m = 0) map is the identity. Optional env THREADING_CACHE=<file> caches the slow constraint solve between dev runs (not used for the committed result)."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json",
+      "type": "result-json",
+      "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"
+    },
+    {
+      "locator": "research/theory_audit/threading_map_second_order_2026_09_04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and diff the JSON. Required exact values: linear_threading_factor == '3 - epsilon' up to the factor 1/3 (printed '-(epsilon - 3)/3'); kernels_growing_mode.zlap == '2*epsilon/3'; map_fNL_pieces.total_final_label == {const '-5*epsilon/4', mu2 '5*epsilon/4', monopole '-5*epsilon/6'}; prediction.initial_label == {const '-5', mu2 '0', monopole '-5'}; prediction.final_label.const_eps_3_2 == '-25/4', mu2_eps_3_2 == '15/4'; map_fNL_pieces.pure_translation_init.monopole == '0'; five_eps_over_4_matches_a_map_term == []; gap_decomposition_inin_minus_dNc.sum == '5*epsilon*(9 - epsilon)/18'; attractor_limit.div_cross == '0'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 11(c): 'derive the second-order threading map (Fable-tier)'; acceptance 'mechanism derived or stated as an identity'",
+    "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md VERDICT and \u00a74: the '(5/12)(3 eps)' identity recorded as 'a computed identity, not a claimed mechanism'",
+    "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+    "input 'lab monopole adjudication (2026-09-03)' used for: the open item; the comparison values f(mu,eps) = (5/12)(eps^2 mu^2 - eps^2 + 6 eps - 12), monopole -5(eps-3)(eps-6)/18, delta N_c = -5, and the [L]/[X] class values \u2014 used only AFTER the map kernels were computed and printed",
+    "input 'Maldacena 2003' used for: comoving-gauge ADM variables and the first-order constraint solution (re-verified here, not transcribed)",
+    "input 'Namjoo, Firouzjahi & Sasaki 2012' used for: the USR benchmark statement (structural limit only; 5/2 not re-derived here)",
+    "input 'Lyth, Malik & Sasaki 2005' used for: the gradient-expansion delta N = zeta argument whose shift assumption fails at O(1/k_L)"
+  ]
+}
