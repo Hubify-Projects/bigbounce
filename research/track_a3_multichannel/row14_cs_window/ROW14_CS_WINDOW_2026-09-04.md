@@ -47,3 +47,69 @@ honestly; no viable window -> Track A states the tensor problem as unresolved.
 
 Never tune. Every number in the results table comes from the committed script.
 Claims stated at exactly their evidential strength; a null is published as a null.
+
+---
+
+# Results (2026-09-04, every number from `row14_cs_window.py`)
+
+**Status: DONE. VERDICT — NO VIABLE `c_s` WINDOW.** The `c_s` that brings `r` to the
+BICEP/Keck bound raises the squeezed `f_NL` to `~10^6`; the `c_s` that keeps `f_NL`
+inside Planck leaves `r ~ 11`. The two requirements are disjoint by a factor `~300`
+in `c_s`. Per the ledger's kill condition, **Track A must state the tensor problem as
+unresolved**, and the flagship `f_NL = -35/16` is a `c_s = 1` statement that cannot be
+carried onto a CMB-viable tensor branch.
+
+## 1. `r(c_s)` — derived, not imported
+
+With constant `c_s` the scalar canonical variable is `v = z\zeta`,
+`z^2 = a^2(\rho+p)/(c_s^2H^2) = 2a^2\epsilon/c_s^2`, obeying
+`v'' + (c_s^2k^2 - z''/z)v = 0` with `v \to e^{-ic_sk\eta}/\sqrt{2c_sk}`; the tensor
+sector has `c_T = 1` and is untouched. For `a \propto (-\eta)^q`, `z \propto a`, so
+`z''/z = a''/a` and the index is `\nu = |q - 1/2|`. Taking the small-argument Hankel
+limit of both sectors and forming `r = P_h/P_\zeta`:
+
+> **`r = 16\,\epsilon\, c_s^{2\nu-2}`** — and for the dust contraction (`q = 2`,
+> `\nu = 3/2`) **`r = 16\epsilon c_s = 24\,c_s`.**
+
+Two independent symbolic routes in the script agree (general-`\nu` Hankel limit and
+the exact `q = 2` mode functions `|v|^2 = (1+1/(c_sk\tau)^2)/(2c_sk)`,
+`|\mu_T|^2 = (1+1/(k\tau)^2)/(2k)`). The power of `c_s` is **not** assumed from the
+inflationary formula; it comes out as `c_s^{2\nu-2}`, which happens to coincide with
+the inflationary `c_s^1` only because both cases have `\nu = 3/2`.
+
+This **independently reproduces Li, Quintin, Wang & Cai 2016 (arXiv:1612.02036)
+Eq. (3.18), `r = 24c_s`**, and reduces to row 10's `r = 24` at `c_s = 1`.
+The scalar amplitude scales as `P_\zeta \propto 1/(\epsilon c_s)` (Garriga & Mukhanov
+1999, hep-th/9904176), which is the whole mechanism.
+
+**The window:** `r < 0.036` (BICEP/Keck 2021) requires **`c_s < 1.500\times10^{-3}`**;
+`r < 0.01` requires `c_s < 4.167\times10^{-4}`.
+
+## 2. `f_NL^{pre}(c_s)` — two routes, no discrepancy at `c_s = 1`
+
+Li+2016 Eq. (4.19) gives the total shape function `\mathcal{A}_{\rm tot}(k_1,k_2,k_3;c_s)`
+for the matter contraction with general `c_s`; `f_NL = (10/3)\mathcal{A}_{\rm tot}/\sum_ik_i^3`.
+That expression is transcribed once into the script and **both of its limits are taken
+symbolically here**, which is a genuine check of their algebra:
+
+| configuration | derived here | Li+2016 quoted | match |
+|---|---|---|---|
+| equilateral `k_1=k_2=k_3` | `-335/32 + 65/(8c_s^2) + 45c_s^2/128` | `f_NL^{equil}` identical | exact |
+| isoceles squeezed `k_1\to0`, `k_2=k_3=k` (`\mu\to0`) | `-165/16 + 65/(8c_s^2)` | `f_NL^{local}` identical | exact |
+
+At `c_s = 1` the squeezed value is **`-35/16`**, which is **exactly** the lab's own
+from-scratch in-in result (`research/theory_audit/fnl_matter_contraction_adjudication_2026_09_02.py`,
+commit `aa2987cf`, comoving-gauge isoceles squeezed limit, `f(\mu) = -35/16 + (15/16)\mu^2`
+at `\mu = 0`; the exactly-isoceles squeezed triangle has `\hat k_1\cdot\hat k_2 = -\delta/2 \to 0`,
+so `\mu = 0` is the right comparison point). **No discrepancy between the two routes.**
+
+**Honest scope statement on the general-`c_s` cross-check.** The lab's in-in machinery
+is built for `c_s = 1` (Maldacena comoving-gauge cubic action). A general-`c_s` in-in
+requires the k-essence cubic action of Chen, Huang, Kachru & Shiu 2007 (hep-th/0605045),
+whose `\dot\zeta^3` vertex carries a model-dependent coefficient `\lambda/\Sigma` that is
+**not** fixed by `c_s` alone. The `65/(8c_s^2)` coefficient therefore inherits Li+2016's
+choice of kinetic sector; this lane does **not** claim an independent lab derivation of it.
+What is independent is (i) the `c_s\to1` limit, verified exactly against the lab's own in-in,
+and (ii) the `1/c_s^2` *scaling*, which is the generic single-field result (CHKS 2007) and
+is what drives the conclusion below. A fine-tuned `\lambda` could shift the coefficient but
+not the divergence as `c_s\to0`.
