@@ -3241,8 +3241,11 @@ code {
 .data-table td {
   padding: 10px 16px;
   text-align: left;
+}
+
+.data-table td {
   white-space: normal;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .data-table th {
@@ -3253,6 +3256,7 @@ code {
   color: var(--ink-3);
   background: var(--bg-1);
   border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
   position: sticky;
   top: var(--topbar-h);
   z-index: 1;
