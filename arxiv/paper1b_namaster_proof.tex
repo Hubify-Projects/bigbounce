@@ -657,9 +657,14 @@ any reader from git history alone, but the reveal remains self-run --- the
 same party sealed, ran, and unsealed. An external anchor is in progress: the
 sealed digest of each batch has been submitted to the OpenTimestamps Bitcoin
 calendar (\texttt{blind\_test/public\{,2\}/sealed\_digest.json.ots}); as of
-this revision the timestamps are pending Bitcoin confirmation, not yet
-upgradeable to a confirmed proof, and are named as a stated limitation, not a
-completed claim, until confirmed. The S5 metadata-forgery escape is
+this revision \texttt{ots upgrade} returns \emph{Timestamp complete} with a
+Bitcoin block-header attestation for the batch-1 and batch-2 stamps; the
+batch-3 stamp (\S\ref{sec:blind-test-batch3}) is submitted and still pending.
+\texttt{ots verify} requires a Bitcoin node, which this machine does not run,
+so the attested heights are left for a reader with a node, or a public
+verifier, to confirm. This is a genuine third-party \emph{time} witness; it
+still does not witness \emph{execution}, and the reveal remains self-run.
+The S5 metadata-forgery escape is
 structural, not a bug: closing it needs the same external anchor, or a
 witnessed execution environment, signed build/execution logs, or a
 third-party rerun. Under an unmodified-instrumented-harness threat model ---
@@ -668,7 +673,39 @@ harness; an adversary who also alters the harness and writes a fabricated
 honest trace by hand is, by construction, invisible to a receipt-only check
 --- the tested claim is: receipts of this kind are a detector of
 \emph{structural} shortcuts in instrumented steps, not of forged metadata and
-not of value-level shortcuts taken downstream of the instrumented operator.
+not of value-level shortcuts taken downstream of a declared intermediate.
+
+\paragraph{PyMaster cross-check: the estimator itself, not the blind test.}
+\label{sec:pymaster-crosscheck}
+Independent of the blind protocol above, the in-house spin-0 MASTER
+estimator exercised throughout this paper was checked against the public
+NaMaster library (\texttt{pymaster} 3.0.1, installed via a throwaway
+conda-forge environment) on an identical map, mask, and \(\ell\)-range
+(\(N_{\rm side}=64\), \(\ell_{\max}=95\)). Table \ref{tab:pymaster} gives the
+result: the mode-coupling matrix and decoupled bandpowers agree with
+NaMaster to floating-point round-off, confirming the in-house implementation
+of the MASTER formalism NaMaster also implements. This validates the
+pointwise formalism itself, not NaMaster's binned-bandpower or single-field
+convenience APIs, which this check does not exercise; the S6
+effective-multipole shortcut remains an in-house-only diagnostic, quantified
+against the NaMaster-verified exact decoupling as O(10--100\%) per-multipole
+relative error, worst at low \(\ell\) (0.23--1.18 across the 8-wide bands
+used in the blind test), never approaching the honest path's round-off
+agreement.
+
+\begin{table}[h]
+\centering
+\caption{In-house spin-0 MASTER estimator vs.\ NaMaster (\texttt{pymaster} 3.0.1), identical map/mask/\(\ell\)-range.}
+\label{tab:pymaster}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Quantity & Max relative diff & Median relative diff \\
+\midrule
+Coupling matrix \(M_{\ell\ell'}\) (94\(\times\)94) & \(4.25\times10^{-13}\) & \(6.43\times10^{-14}\) \\
+Decoupled bandpowers & \(1.54\times10^{-12}\) & \(1.25\times10^{-12}\) \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Relation to Provenance and Attestation Tooling}
 \label{sec:related-work}
