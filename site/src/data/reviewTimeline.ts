@@ -67,6 +67,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-a3m-s9b-intrinsic-term-open-2026-09-05",
+    dateISO: "2026-09-05",
+    kind: "skill-improvement",
+    title: "S9b: intrinsic term does not close the -55/16 gap -- paper-su v1S.0.6 + A3M v3M.0.22",
+    papers: ["PSU", "A3"],
+    summary:
+      "research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md follows up the v1S.0.5/v3M.0.21 sentence that attributed the -55/16 vs -5/2 gap to an omitted intrinsic flat-slice initial-data term. Computing that term directly gives f^intr_NL = 5*sqrt(3*eps)*(3-eps)/18 * r_i/(W-1) (= 5*sqrt(2)/8 * r_i/(W-1) at eps=3/2), which VANISHES in the growing-mode-dominated limit that defines -55/16 for any t_f-independent r_i -- it is not +-15/16, and -55/16 + f^intr does not equal -5/2. The residual, 5(6-eps)/24, is unchanged and does not arise in the initial data at all: it arises in the super-Hubble evolution step between the flat slice at t_i and the uniform-density slice at t_f (the separate-universe map versus the in-in evolution), with the dropped shift term (1/3)*integral(d_i N^i dt) named as a candidate, not asserted. Both papers now state the -55/16 value as NOT RECONCILED and open, replacing the prior (incorrect) intrinsic-term attribution.",
+    keyTakeaways: [
+      "paper-su v1S.0.6: the intrinsic-term sentence replaced with the S9b open-item statement; 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp, md5 13b2e4b0f935e7275fdde03e93c41f2c",
+      "A3M v3M.0.22: same replacement in Sec. II (crosscheck) and Appendix A (Bianchi-I); 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 18 pp, md5 afae524cbc3b660978951ae5a675f2c4",
+      "Both readiness held (paper-su 65, A3M 75) -- derivation-statement correction, not a new review round; rounds stay stopped under directive R2; flagship -35/16 unaffected",
+    ],
+    links: [
+      { label: "S9b intrinsic-term note", href: `${GH}/research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md` },
+      { label: "paper-su SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "paper-su source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+      { label: "A3M source", href: `${GH}/research/track_a3_multichannel/paper/main.tex` },
+    ],
+  },
+  {
     id: "psu-a3m-s9-s10-rho-slice-correction-2026-09-05",
     dateISO: "2026-09-05",
     kind: "skill-improvement",
