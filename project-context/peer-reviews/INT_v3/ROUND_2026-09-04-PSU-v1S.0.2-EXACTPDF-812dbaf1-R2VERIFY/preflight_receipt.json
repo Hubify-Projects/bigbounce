@@ -1,6 +1,6 @@
 {
-  "core_sha256": "d77a0fd3f2017cdabde53f41615fab649b77f5fa75d9bc5b488379d7b076c5e2",
-  "generated_at": "2026-09-05T02:26:09.050207Z",
+  "core_sha256": "5b68d945def0271e232734a820975efe05d09853b03a08c33ab1f1e0f73a50ae",
+  "generated_at": "2026-09-05T03:11:47.800955Z",
   "generic_engine": {
     "bytes": 10058,
     "git_commit": "79a436e24ea4bdbb6887d12f896b4ba124e1c03d",
@@ -12,7 +12,7 @@
       "bytes": 8816,
       "sha256": "41fcd45b9903848382a3c1c03ea1d831b8e768d7bb04c2c4efec785d66be6be9"
     },
-    "core_sha256": "d2fae1dbcfbaa2a9524da481e8255ad190228b2bff0ad8441f0e8b0db0ddd06b",
+    "core_sha256": "bbe90ea89eaeef1d48051ae900d9d801bb3724e52b191265d9d8047d85339483",
     "finding_count": 0,
     "findings": [],
     "project_root": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce",
@@ -25,9 +25,9 @@
         "sha256": "7fff23a4c20d97022d09dee08488704efbd9b4181c93c1dca6a562d7e5417943"
       },
       {
-        "bytes": 37501,
+        "bytes": 53032,
         "path": "arxiv/paper1b_namaster_proof.tex",
-        "sha256": "4d7d3e5c9196c054e39b51da3b4cda0e73f0ebbc36c830ff76058c559716d955"
+        "sha256": "1a5d774158bb3c7f9c0a43f9b5efe8376c9902a8dcc2e2149fd6bc520bb2be85"
       },
       {
         "bytes": 244792,
@@ -52,7 +52,7 @@
     ],
     "verdict": "PASS"
   },
-  "generic_rule_receipt_sha256": "5ea36b1fd81a7b4e24b36f022c8ae555b5135a8fb477b8376b020c823d4ab90f",
+  "generic_rule_receipt_sha256": "dfdbe7a48b6789219132e072ff65cfae7edfb15d50d5dad0667bc75c7a10a4a3",
   "paper_count": 6,
   "papers": [
     {
@@ -72,20 +72,20 @@
       "version": "v1A.0.127"
     },
     {
-      "pages": 8,
+      "pages": 12,
       "paper_id": "P1B",
       "pdf": {
-        "bytes": 451755,
+        "bytes": 522547,
         "path": "arxiv/paper1b_namaster_proof.pdf",
-        "sha256": "0d0c92ab2b07add4f3de837c26d9ceff742b4931490a0d05c5a4fd4e4001fcac"
+        "sha256": "354d63b2e672ba4084987d993e59b73fd457a020a6bb794895c6e1d5074f88d2"
       },
       "source": {
-        "bytes": 37501,
+        "bytes": 53032,
         "path": "arxiv/paper1b_namaster_proof.tex",
-        "sha256": "4d7d3e5c9196c054e39b51da3b4cda0e73f0ebbc36c830ff76058c559716d955"
+        "sha256": "1a5d774158bb3c7f9c0a43f9b5efe8376c9902a8dcc2e2149fd6bc520bb2be85"
       },
       "verdict": "PASS",
-      "version": "v2B.0.17"
+      "version": "v2B.0.18"
     },
     {
       "pages": 12,
@@ -153,20 +153,20 @@
     },
     {
       "draft": true,
-      "pages": 17,
+      "pages": 18,
       "paper_id": "A3M",
       "pdf": {
-        "bytes": 739165,
+        "bytes": 743071,
         "path": "research/track_a3_multichannel/paper/main.pdf",
-        "sha256": "909cf7893b89270f2a24d4a65a8750798b5bca7f6fa34e85acdb078a1bca6043"
+        "sha256": "5ada01728d4eb2ebc5c24e81c9c66fbf6dcf16f9164b1875e257056124d220f0"
       },
       "source": {
-        "bytes": 106270,
+        "bytes": 112927,
         "path": "research/track_a3_multichannel/paper/main.tex",
-        "sha256": "b8833f8a9022bb408909d9a670154adcfe794c003a4f1c44e1b9ab23c945f77e"
+        "sha256": "3fa5bf9359b057b1ad522d0de06341b9bcc48fee15de2473de40eb3a00bbb8af"
       },
       "verdict": "PASS",
-      "version": "v3M.0.15"
+      "version": "v3M.0.17"
     },
     {
       "draft": true,
@@ -241,17 +241,17 @@
       "pages": 4,
       "paper_id": "PSU",
       "pdf": {
-        "bytes": 345928,
+        "bytes": 392312,
         "path": "arxiv/paper_su_criterion/main.pdf",
-        "sha256": "cc0dfb84a232967c45ea359d5de18f642af0727c2907512b289931854ed7c48e"
+        "sha256": "812dbaf1af7e8eafa5769730fed55c81cfa8b429fbeab022d1125be1527aca31"
       },
       "source": {
-        "bytes": 18691,
+        "bytes": 24094,
         "path": "arxiv/paper_su_criterion/main.tex",
-        "sha256": "e4c62bfdec00d3f3fc46d5ee20876a642378cc68b4a991a36c4b466dd5a28947"
+        "sha256": "32eb9ccd68eabe16fd74d37a7b136e8b19ec2761637e72ee8f24840f701dc051"
       },
       "verdict": "PASS",
-      "version": "v1S.0.1"
+      "version": "v1S.0.2"
     }
   ],
   "portfolio_engine": [
@@ -357,8 +357,8 @@
           "verdict": "PASS"
         },
         {
-          "output": "paper version: v2B.0.17 | candidate paths: 5\nOK       packages/namaster-proof\nOK       reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/bandpowers.npz\nOK       reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json\nRESOLVED sealed/assignment.json -> pipelines/namaster_proof/blind_test/sealed/assignment.json\nOK       sealed/assignment.json\nRESOLVED sealed/key.txt -> pipelines/namaster_proof/blind_test/sealed/key.txt\nOK       sealed/key.txt\n\nPASS: 0 problems\n",
-          "output_sha256": "40f4068db468c848488210e51fa35049d45ef7b5c7b28338a95c4c9158d05e25",
+          "output": "paper version: v2B.0.18 | candidate paths: 4\nOK       packages/namaster-proof\nRESOLVED public2/frozen_rules_digest.json -> pipelines/namaster_proof/blind_test/public2/frozen_rules_digest.json\nOK       public2/frozen_rules_digest.json\nOK       reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/bandpowers.npz\nOK       reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json\n\nPASS: 0 problems\n",
+          "output_sha256": "025ec2e6bced02d0c3e1f6be470ad4545c2539cac34af739fd5f32fb8dc9b464",
           "paper_id": "P1B",
           "verdict": "PASS"
         },
@@ -375,14 +375,14 @@
           "verdict": "PASS"
         },
         {
-          "output": "paper version: v1.0.274 | candidate paths: 32\nOK       pipelines/p2_chirality/BENCHMARK_REPORT.md\nOK       pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.json\nOK       pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.json\nOK       pipelines/p2_chirality/analysis/monopole_correction_map_v1_0_262.json\nHISTORICAL-LABEL pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json: explicitly versioned artifact contains ['v1.0.259']; paper is v1.0.274\nOK       pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json\nHISTORICAL-LABEL pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json: explicitly versioned artifact contains ['v1.0.259']; paper is v1.0.274\nOK       pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m4_slab_stats.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c16_r24conf_pod_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_flip_identity_qc.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g3_joint_estimator_covariance_master_v2.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g4_monopole_mechanism_injection.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g4_perpixel_confusion_nside64.npz\nOK       pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/stage_b_hybrid_image_field_recovery.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/DIAGNOSIS_ce_included_retrain.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/PROVENANCE.md\nOK       pipelines/p2_chirality/outputs/g1_full_composition/g1_full_composition_manifest.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/pod_evidence/g1_per_source_eval.json\nOK       pipelines/p2_chirality/outputs/g1_retrain/PROVENANCE.md\nOK       pipelines/p2_chirality/outputs/g1_retrain/g1_training_manifest.json\nOK       pipelines/p2_chirality/outputs/gz1_stratified_confusion.json\nOK       pipelines/p2_chirality/scripts/g1_ce_composition_assembly.py\nOK       pipelines/p2_chirality/scripts/gz1_stratified_confusion.py\nOK       pipelines/p2_chirality/scripts/joint_nuisance_bootstrap_sigma.py\nWARN-OLD-COMMIT 397671bf: valid ancestor but not HEAD (5646ddfb) \u2014 update at restamp\n\nPASS: 0 problems\n",
-          "output_sha256": "5f1ea09ddde02e5fbd7d75e8cc87cf0450f27b8ca2b015fcc2cc6ae28c4fce00",
+          "output": "paper version: v1.0.274 | candidate paths: 32\nOK       pipelines/p2_chirality/BENCHMARK_REPORT.md\nOK       pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.json\nOK       pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.json\nOK       pipelines/p2_chirality/analysis/monopole_correction_map_v1_0_262.json\nHISTORICAL-LABEL pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json: explicitly versioned artifact contains ['v1.0.259']; paper is v1.0.274\nOK       pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json\nHISTORICAL-LABEL pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json: explicitly versioned artifact contains ['v1.0.259']; paper is v1.0.274\nOK       pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c11_meta_m4_slab_stats.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/c16_r24conf_pod_batch.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_flip_identity_qc.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g3_joint_estimator_covariance_master_v2.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g4_monopole_mechanism_injection.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/g4_perpixel_confusion_nside64.npz\nOK       pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json\nOK       pipelines/p2_chirality/outputs/canonical_provenance/stage_b_hybrid_image_field_recovery.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/DIAGNOSIS_ce_included_retrain.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/PROVENANCE.md\nOK       pipelines/p2_chirality/outputs/g1_full_composition/g1_full_composition_manifest.json\nOK       pipelines/p2_chirality/outputs/g1_full_composition/pod_evidence/g1_per_source_eval.json\nOK       pipelines/p2_chirality/outputs/g1_retrain/PROVENANCE.md\nOK       pipelines/p2_chirality/outputs/g1_retrain/g1_training_manifest.json\nOK       pipelines/p2_chirality/outputs/gz1_stratified_confusion.json\nOK       pipelines/p2_chirality/scripts/g1_ce_composition_assembly.py\nOK       pipelines/p2_chirality/scripts/gz1_stratified_confusion.py\nOK       pipelines/p2_chirality/scripts/joint_nuisance_bootstrap_sigma.py\nWARN-OLD-COMMIT 397671bf: valid ancestor but not HEAD (5eafacdc) \u2014 update at restamp\n\nPASS: 0 problems\n",
+          "output_sha256": "d078554d7f3a400bc8aa3af608f02b467b43ab7cb872afd4e9d0c7521eee297b",
           "paper_id": "P4",
           "verdict": "PASS"
         },
         {
-          "output": "paper version: v0.1.147-2026-08-03 | candidate paths: 43\nOK       analysis/forward_leakage_injection_v0_1_141.json\nOK       analysis/forward_leakage_injection_v0_1_141.py\nOK       analysis/global_multiplicity_bound_v0_1_140.json\nOK       analysis/global_multiplicity_bound_v0_1_140.py\nOK       env_finder/01_compute_vweb.py\nOK       env_finder/03_tempel_cross_validation.py\nOK       env_finder/config.yaml\nOK       env_finder/reports/01_volume_fractions.json\nOK       env_finder/reports/02_phase2_sweep.csv\nOK       outputs/16_cosmic_web_zshell_corrected.json\nOK       outputs/17_v0151_closure_recomputes.json\nOK       outputs/18_v0151_stratified_and_density.json\nOK       outputs/19_v0151_zshell_geofootprint_check.json\nOK       outputs/20_v0151_covariate_regression.json\nOK       outputs/21_r23conf_meta_closures.json\nOK       outputs/22_r24conf_local_batch.json\nOK       outputs/23_unique_parent_rebuild.json\nOK       outputs/24_r24conf_pod_session.json\nOK       outputs/25_completeness_weighted_rebuild.json\nOK       outputs/26_r27conf_ess_recomputes.json\nOK       outputs/27_ext1_logistic_program_control.json\nOK       outputs/27_rsd_void_recon_bound.json\nOK       outputs/28_ext1_desivast_program_split.json\nOK       outputs/29_ext3_desivast_footprint_retabulation.json\nOK       outputs/30_ext4_galzone_complement_contrasts.json\nOK       outputs/31_ext5_appendixB_tables.json\nOK       outputs/35_desivast_cluster_bootstrap.json\nOK       outputs/36_desivast_native_selection_control.json\nOK       outputs/36_desivast_native_selection_manifest.json\nOK       outputs/36_desivast_native_selection_rows.parquet\nOK       outputs/38_focal_cluster_inference_sensitivity.json\nOK       outputs/39_focal_interaction_clustering_robustness.json\nOK       p2_chirality/outputs/gz1_stratified_confusion.json\nOK       p2_chirality/scripts/gz1_stratified_confusion.py\nOK       scripts/16_cosmic_web_zshell_corrected.py\nOK       scripts/27_rsd_void_recon_bound.py\nOK       scripts/31_ext5_appendixB_tables.py\nOK       scripts/35_desivast_cluster_bootstrap.py\nOK       scripts/36_desivast_native_selection_control.py\nOK       scripts/38_focal_cluster_inference_sensitivity.py\nOK       scripts/39_focal_interaction_clustering_robustness.py\nWARN-OLD-COMMIT 84d53b75: valid ancestor but not HEAD (5646ddfb) \u2014 update at restamp\n\nPASS: 0 problems\n",
-          "output_sha256": "3ec90ffd4efef0d4045777fc6e462891de35f9c4d21177a20923259d11d7fdff",
+          "output": "paper version: v0.1.147-2026-08-03 | candidate paths: 43\nOK       analysis/forward_leakage_injection_v0_1_141.json\nOK       analysis/forward_leakage_injection_v0_1_141.py\nOK       analysis/global_multiplicity_bound_v0_1_140.json\nOK       analysis/global_multiplicity_bound_v0_1_140.py\nOK       env_finder/01_compute_vweb.py\nOK       env_finder/03_tempel_cross_validation.py\nOK       env_finder/config.yaml\nOK       env_finder/reports/01_volume_fractions.json\nOK       env_finder/reports/02_phase2_sweep.csv\nOK       outputs/16_cosmic_web_zshell_corrected.json\nOK       outputs/17_v0151_closure_recomputes.json\nOK       outputs/18_v0151_stratified_and_density.json\nOK       outputs/19_v0151_zshell_geofootprint_check.json\nOK       outputs/20_v0151_covariate_regression.json\nOK       outputs/21_r23conf_meta_closures.json\nOK       outputs/22_r24conf_local_batch.json\nOK       outputs/23_unique_parent_rebuild.json\nOK       outputs/24_r24conf_pod_session.json\nOK       outputs/25_completeness_weighted_rebuild.json\nOK       outputs/26_r27conf_ess_recomputes.json\nOK       outputs/27_ext1_logistic_program_control.json\nOK       outputs/27_rsd_void_recon_bound.json\nOK       outputs/28_ext1_desivast_program_split.json\nOK       outputs/29_ext3_desivast_footprint_retabulation.json\nOK       outputs/30_ext4_galzone_complement_contrasts.json\nOK       outputs/31_ext5_appendixB_tables.json\nOK       outputs/35_desivast_cluster_bootstrap.json\nOK       outputs/36_desivast_native_selection_control.json\nOK       outputs/36_desivast_native_selection_manifest.json\nOK       outputs/36_desivast_native_selection_rows.parquet\nOK       outputs/38_focal_cluster_inference_sensitivity.json\nOK       outputs/39_focal_interaction_clustering_robustness.json\nOK       p2_chirality/outputs/gz1_stratified_confusion.json\nOK       p2_chirality/scripts/gz1_stratified_confusion.py\nOK       scripts/16_cosmic_web_zshell_corrected.py\nOK       scripts/27_rsd_void_recon_bound.py\nOK       scripts/31_ext5_appendixB_tables.py\nOK       scripts/35_desivast_cluster_bootstrap.py\nOK       scripts/36_desivast_native_selection_control.py\nOK       scripts/38_focal_cluster_inference_sensitivity.py\nOK       scripts/39_focal_interaction_clustering_robustness.py\nWARN-OLD-COMMIT 84d53b75: valid ancestor but not HEAD (5eafacdc) \u2014 update at restamp\n\nPASS: 0 problems\n",
+          "output_sha256": "64f6719c4fa6738f500b925d3532929cbd4edd57236c6a74442b316b2f152125",
           "paper_id": "P5",
           "verdict": "PASS"
         }
@@ -658,10 +658,10 @@
           "version": "v1A.0.127"
         },
         {
-          "md5": "7bc21cbe7a1dfb837f08cae2c8b0f2b3",
+          "md5": "89cbca0fc922f9c1c63f1afaf35f8517",
           "paper_id": "P1B",
           "pdf_path": "arxiv/paper1b_namaster_proof.pdf",
-          "version": "v2B.0.17"
+          "version": "v2B.0.18"
         },
         {
           "md5": "a993987a65d2ede378a3d0fc204a6228",
@@ -705,14 +705,14 @@
       "served_inventory": {
         "counts": {
           "current_mirror": 34,
-          "immutable_archive": 1160,
+          "immutable_archive": 1170,
           "non_manuscript_asset": 12,
           "orphan": 0,
           "retained_by_policy": 0,
-          "total": 1206
+          "total": 1216
         },
-        "inventory_sha256": "7f03ec709c43f916d3e594d42d9213771a99c853174a8d2f54e7f7017126822b",
-        "inventory_size": 1206
+        "inventory_sha256": "5b2a3ba57fdfea21973f2f5c40a42695623cb0772b886939382dd212448b1f33",
+        "inventory_size": 1216
       },
       "served_roots": [
         "public",
@@ -738,13 +738,13 @@
       "verdict": "PASS"
     }
   ],
-  "receipt_sha256": "ad6ea65bc383c4f128bab2155d0d437ee8d6f76577087ea237ba3e36feea02a0",
+  "receipt_sha256": "b7c12dc0006962b192f419ded33f6e5173f975ac92ef62df8436a82ce2af84d3",
   "registry": {
     "bytes": 7143,
     "path": "project-context/paper_registry.json",
     "sha256": "40e726f109887d00d505f77a8aee9eab126d5773fd846959574662e7287e9698"
   },
-  "repository_head": "5646ddfb6959e6c5c6ce656bdcda800a9bf342f3",
+  "repository_head": "5eafacdcc70426466e9dd2c8738e2c95ea2a8151",
   "schema": "bigbounce.pre-review-portfolio-receipt/v1",
   "verdict": "PASS"
 }
