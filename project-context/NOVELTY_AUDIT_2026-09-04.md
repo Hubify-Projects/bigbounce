@@ -402,3 +402,80 @@ model class, or (c) building a capability no one has built. The lab's 2026 work
 has mostly been (correctly, per directive R) verifying, quantifying and
 falsifying claims that already existed — which is why the tiers are N2. Four of
 the eleven candidates are one bounded piece of work away from (b) or (c).
+
+---
+
+## Section 7 — the top 3 nearest to N3, and the site labelling scheme
+
+### #1 — The joint no-go **plus its cure's failure** (candidates 4 + 5)
+*Type: derivation / null result. Cost: $0, desk work, ~2–3 weeks.*
+**Why nearest:** the ingredients are already computed and committed
+(`row14_cs_window/`, `row15_curvaton/`). The N3 claim is not "we re-derived
+Li+2016" — it is **"the standard cure for the matter-bounce tensor problem
+removes the matter-bounce non-Gaussian signature from observability, so the
+model class is closed both ways."** Li+2016 closes the single-field branch;
+nobody has published that the curvaton branch buys tensor viability at the price
+of a (r/24)² = 1.5e−6 dilution of the intrinsic amplitude.
+**Exact work:** (a) generalise the dilution from CXB11's specific conversion to
+a general spectator-conversion parametrisation (adiabatic fraction as the single
+control parameter); (b) add ekpyrotic contraction so the statement spans the two
+standard contraction classes; (c) state the escape hatches explicitly
+(multi-field entropic conversion, non-constant c_s, non-Weyssenhoff matter) so
+the no-go is scoped, not overreaching; (d) publish as one paper titled by the
+closure. **Bar for the N3 label:** a referee agrees the closure statement is new.
+
+### #2 — The separate-universe failure criterion in contracting non-attractors (candidate 2)
+*Type: derivation / method. Cost: $0, symbolic + light numerics, ~2–4 weeks.*
+**Why nearest:** the literature has this result for **inflationary** USR
+(2110.11720, 2311.03281, 2506.23571) and nothing comparable for **contracting**
+non-attractors, where the lab already has both the in-in answer and the exact
+threading map that reconciles it with δN.
+**Exact work:** generalise δN_c = (1 − ε/3)ζ and the second-order gap to
+arbitrary constant ε and c_s; express the O(1) failure as a stated criterion on
+(ε, c_s) rather than a single-background observation; validate on two contracting
+backgrounds and reproduce the known USR result as a control; write it as a
+standalone methods note with the symbolic scripts as artifacts.
+**Bar:** the control case reproduces the published inflationary answer.
+
+### #3 — `namaster-proof` as a verification primitive (candidate 10)
+*Type: method / tool. Cost: $0, ~1–2 weeks.*
+**Why nearest:** it is the one thing in the portfolio I could not find prior art
+for. Reproducibility workflows (showyourwork, 2110.06271) let you *re-run* a
+computation; a tamper-evident content-bound receipt lets a referee verify an
+expensive exact computation **was not shortcut** without re-running it.
+**Exact work:** reframe the paper's claim around the primitive rather than
+around NaMaster; run a blind test in which a deliberately shortcut (approximate
+window) computation is submitted and the receipts detect it; generalise the
+receipt schema beyond pseudo-Cℓ to one other expensive primitive; release with
+an ASCL entry and a Zenodo DOI. **Bar:** the blind test is documented and the
+detection is not circular.
+
+**Deliberately not on this list:** the DESI reproduction (N1 by construction),
+the multi-channel map (combination), the anomaly catalogue (its own pre-declared
+bar was not met), and the −35/16 confirmation (the value was already published).
+
+### Recommended site labelling scheme: **type + tier, always paired**
+
+The current site shows a tier alone, which invites the reader to compare a
+catalogue against a derivation on one axis that fits neither. Show two fields:
+
+- **Contribution type** (the honest noun, one of seven):
+  `measurement` · `derivation` · `null result` · `method / tool` ·
+  `data release` · `reproduction` · `catalogue`.
+- **Novelty tier** (N1/N2/N3, ceiling N3 per `/never-claim-n4`), with the
+  one-line justification **visible on the card, not buried** — every tier claim
+  carries its reason and, where relevant, the prior work it is measured against
+  (e.g. "N2 — independent confirmation; the value appears in Quintin+2015").
+
+Concretely in `site/src/data/tracks.ts`: add
+`type: ContributionType` and `tierWhy: string` to `Contribution`, render them as
+a type chip + tier chip + the justification line; keep the `/research` lead copy
+about the N3 ceiling. Add the five contributions currently missing from the list
+(candidates 2, 4, 5, 7, 10) so the page shows nulls and reproductions rather
+than only the flattering rows — a `reproduction` chip on the DESI work is a
+strength, not an embarrassment, and it is the evidence for the lab's
+reproducibility claim.
+
+**Standing honesty note:** no item may be relabelled N3 on the site before the
+work in this section is done and the claim survives a referee leg. Tier is
+earned by being first, not by being important.
