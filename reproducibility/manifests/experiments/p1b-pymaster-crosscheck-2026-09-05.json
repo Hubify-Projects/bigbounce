@@ -69,7 +69,7 @@
     }
   ],
   "verification": "Re-run and confirm: (a) coupling_matrix.max_rel_diff <= 1e-11 (measured 4.25e-13) over l=2..95, i.e. the in-house pcl.coupling_matrix formula matches NaMaster's raw get_coupling_matrix() to floating-point round-off; (b) decoupled_bandpowers.max_rel_diff <= 1e-10 (measured 1.54e-12), i.e. pcl.decouple matches wsp.decouple_cell(); (c) s6_effective_multipole_vs_namaster shows every 8-wide band's max_rel_err_vs_namaster > 0.1 (worst band 2-9 measured 1.177, best band 90-95 measured 0.232), quantifying the S6 shortcut's error in NaMaster-verified terms rather than against the in-house exact result alone.",
-  "status": "completed",
+  "status": "runnable-now",
   "provenance": [
     "project-context/peer-reviews/INT_v3/P1B_v2B.0.18_R2_TRUTH_AUDIT_2026-09-04.md, science item \"PyMaster cross-check (wheels resolve - feasible)\"",
     "pipelines/namaster_proof/PYMASTER_CROSSCHECK_2026-09-05.md (full tables, install record, paper-ready sentences)",
