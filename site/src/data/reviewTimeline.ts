@@ -9705,6 +9705,27 @@ export const reviewRounds: ReviewRound[] = [
       { label: "commit 0e9e5b41 — P3 anomaly catalogue v2 data-release doc (directive Q1)", href: `${GH_COMMIT}/0e9e5b41` },
     ],
   },
+  {
+    id: "p1b-batch3-pymaster-v2B.0.20-2026-09-05",
+    kind: "closure-wave",
+    dateISO: "2026-09-05",
+    title: "P1B v2B.0.20 — Batch 3 value-level rule (R7) + PyMaster cross-check integrated",
+    papers: ["P1B"],
+    summary:
+      "Batch 3 (48 sealed runs, 8 arms x 6, seal abfe2793..., seal_verified true) adds R7, a receipt-bound operator-consistency residual rule: it recomputes 6 receipt-selected coupling-matrix rows against the declared pseudo-spectrum and fires past a pre-registered 1e-6 tolerance. R7 catches S6 (effective-multipole), the class that escaped batch 2 5/5, now 6/6 (lower bound 0.607); honest false positives 0/6 (upper bound 0.393); S1-S4 and a new S4b cross-run cache variant fire 6/6 each, exercising R6's cross-run disjunct for the first time (4/6). Metadata forgery still escapes 6/6 by fabricating the one recorded intermediate R7 depends on, remaining the primitive's stated limit. A first batch-3 attempt was executed and blind-judged, then aborted before unsealing on a discovered seed-handling defect and preserved rather than discarded. Separately, a PyMaster (NaMaster 3.0.1) cross-check validates the in-house spin-0 MASTER estimator against the public library to floating-point round-off (coupling matrix 4.25e-13, bandpowers 1.54e-12 max relative difference), closing the estimator-identity open item.",
+    keyTakeaways: [
+      "Value-level detection closes a named batch-2 gap: R7 catches the effective-multipole shortcut (S6) 6/6 by recomputing a small, receipt-selected slice of the coupling operator rather than the whole build — about 9% of the work.",
+      "Forgery remains the honest limit, not closed: the same rule is defeated 6/6 by an extended metadata-forgery arm that fabricates the one declared intermediate R7 checks, confirming receipts of this kind detect shortcuts taken by omission, not deliberate fabrication.",
+      "Process integrity: a defective first attempt (RNG seed not actually varying the map) was caught from its own verdict file, disclosed, and preserved unsealed rather than silently redone — the harness fix was committed before a fresh key was drawn.",
+      "Independent validation: PyMaster 3.0.1 confirms the in-house MASTER estimator used throughout the blind test is a correct implementation of the same formalism, to round-off, closing the 'own estimator only' scope caveat for the pointwise coupling/decoupling operator (not for NaMaster's binned/single-field convenience APIs).",
+    ],
+    links: [
+      { label: "VERIFICATION_PRIMITIVE_2026-09-04.md — Batch 3 section", href: `${GH}/pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` },
+      { label: "PYMASTER_CROSSCHECK_2026-09-05.md", href: `${GH}/pipelines/namaster_proof/PYMASTER_CROSSCHECK_2026-09-05.md` },
+      { label: "RULES_v3_FROZEN.md", href: `${GH}/pipelines/namaster_proof/blind_test/RULES_v3_FROZEN.md` },
+      { label: "arxiv/paper1b_namaster_proof.tex (v2B.0.20)", href: `${GH}/arxiv/paper1b_namaster_proof.tex` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
