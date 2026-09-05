@@ -314,6 +314,12 @@
       "depends_on": [
         "psu-gates-s1-s2-label-composition-criterion"
       ]
+    },
+    {
+      "id": "psu-gate-s7-cai-factor-2",
+      "depends_on": [
+        "psu-gates-s6-s11-science-gates"
+      ]
     }
   ],
   "external_data": [
