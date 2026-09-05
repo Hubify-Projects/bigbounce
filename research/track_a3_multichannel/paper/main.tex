@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.13}
+\newcommand{\paperVersion}{v3M.0.14}
 \newcommand{\paperTimestamp}{September 4, 2026}
 
 \begin{document}
@@ -45,8 +45,8 @@ orientation dependent, $-35/16+(15/16)\mu^2$. A classical super-Hubble
 reproduces this value exactly. The residual gap to the separate-universe
 $\delta N$ value is stated at the strength established: the linear-order
 relation is a derived identity; the second-order piece is computed but
-its mechanism is not identified, so the routes compute different
-variables, not conflicting ones. Transmission is scheme-qualified: in
+its mechanism is not identified; the routes compute different
+variables. Transmission is scheme-qualified: in
 scheme S1 (linear handoff bound, assumption A4, $0\le T_{\fnl}<1/2$)
 combined with the bounce's own cubic term, $\fnl^{\rm after}\in[-0.65,-0.50]$
 ($-35/16$) or $[-1.20,-0.86]$ ($-35/8$); Scheme S2 gives
@@ -54,7 +54,7 @@ $\fnl^{\rm after}\approx-1.25$ -- two distinct scheme values, not a band.
 Three channels test the amplitude, each
 at its evidential strength. Pulsar timing: propagating this
 model's own spectrum through the validated induced-GW kernel predicts
-$\gamma_{\rm pred}=5.07$, $5.1\sigma$ off NANOGrav's $\gamma_{\rm HD}=3.2$,
+$\gamma_{\rm pred}=5.07$, a $5.1\sigma$ z-score off NANOGrav's $\gamma_{\rm HD}=3.2$,
 at an amplitude $\sim10^{15}$ below NANOGrav; the first-order tensor
 background stays $8$--$9$ orders of magnitude below NANOGrav either
 way -- a null, insensitive to $\fnl$. Primordial black holes: an
@@ -292,7 +292,8 @@ second order the map is a time-dependent, non-local ($\partial^{-2}$) spatial
 diffeomorphism, so no local $f_{\rm NL}$ relation between $\delta N_c$ and
 $\zeta_{\rm Mald}$ exists, and comparing their squeezed limits directly (as
 the naive cross-check does) compares two different observables. The
-quadrupole gap is likewise resolved rather than merely bounded: the shift's
+quadrupole gap is likewise closed by a computed identity, not merely
+bounded: the shift's
 dynamical coupling reproduces the anisotropic-rescaling ($\propto\mu^2$)
 piece exactly, and a final-time re-threading boundary term -- absent from any
 separate-universe treatment -- corrects it to the in-in coefficient exactly.
@@ -388,7 +389,8 @@ backgrounds and two conventions ($0.409/0.165$; the combined S1 range below
 uses the S1 rows only). The upper value, $0.409$, is
 the LQC background under the effective-fluid convention (scheme S2); it is
 \emph{not} a fourth background, and, as stated below, S2 has no computable
-post-bounce $\fnl^{\rm after}$ \emph{on the LQC background} (S2 is carried
+\emph{cubic-order} post-bounce $\fnl^{\rm after}$ \emph{on the LQC
+background} (the linear S2 transfer on LQC exists, $T=0.409$; S2 is carried
 through cubic order only on the Quintin-type background, Sec.~\ref{sec:bounce_cubic}),
 so this LQC/S2 value does not enter the combined
 S1 range that follows. This bound is a statement
@@ -515,8 +517,7 @@ Quintin-type (S2, raw-ADM) & $\approx1.03$ & -- & $-1.25$ \\
 \end{table}
 The LQC/S2 (effective-fluid) value $T_{\fnl}=0.409$ has no row above: S2 has
 been carried through cubic order only on the Quintin-type background
-(below).
-so $|\fnl^{\rm after}|\in[0.50,0.65]$ (S1, all three backgrounds) against
+(below), so $|\fnl^{\rm after}|\in[0.50,0.65]$ (S1, all three backgrounds) against
 $|\fnl^{\rm before}|=2.19$: the bounce's own term is negative -- it enhances
 $|\fnl|$, partially undoing but not reversing the linear suppression, at
 $19$--$39\%$ of the transmitted contraction term. This range is valid only
@@ -758,9 +759,11 @@ free-$\gamma$ posterior amplitude ($\log_{10}A\approx-14.19$,
 $A\approx6.46\times10^{-15}$) paired consistently with the free-$\gamma$
 slope $\gamma_{\rm HD}=3.2$ compared against below (source file in the
 reproducibility statement below). Two
-independent failures against the borrowed $\gamma=3$: the slope is
-$5.1\sigma$ ($4.9\sigma$, dust bracket) from NANOGrav's measured
-$\gamma_{\rm HD}=3.2\pm0.6$, and the amplitude is a shortfall of
+independent failures against the borrowed $\gamma=3$: the slope is a
+Gaussian-equivalent $5.1\sigma$ ($4.9\sigma$, dust bracket) $z$-distance from
+NANOGrav's measured $\gamma_{\rm HD}=3.2\pm0.6$ (a $5$--$95\%$ interval
+width, consistent with the Savage--Dickey stance of
+Sec.~\ref{sec:pta}), and the amplitude is a shortfall of
 $10^{15.2}$ ($10^{14.6}$, dust bracket) -- fifteen orders of magnitude
 below the PTA band. The model predicts an induced-GW background far below
 current sensitivity and does not account for the NANOGrav signal: this
@@ -773,7 +776,11 @@ prefactor and the same background's tensor tilt $n_T=n_s-1$, dominates the
 induced background by roughly six decades at the CMB bound
 $r<0.036$~\cite{BicepKeck2021} ($\OmGW^{(1)}h^2(f_{\rm yr})<2.5\times10^{-17}$
 against the induced $1.45\times10^{-23}$), and by $7.6$ decades in the
-unresolved $r=0.84$ matter-bounce scenario (open item, not adopted). Either
+unresolved $r=0.84$ matter-bounce scenario (open item, not adopted). If the
+$r=0.84$ of the unresolved matter-bounce item were confirmed, that
+background would already be excluded at $k_*$ by the same BICEP/Keck bound
+quoted above, independently of any of the three channels; resolving $r$ for
+these backgrounds is an open item (Sec.~\ref{sec:discussion}). Either
 way it remains $8$--$9$ orders of magnitude below NANOGrav's
 $2.622\times10^{-8}$, and its slope, $\gamma_{\rm pred}^{(1)}=5.035$, is
 within $0.04$ of the induced value, so Channel I is a null in both amplitude
@@ -806,8 +813,9 @@ bispectrum amplitude, and would be identical at $-35/16$ and $-35/8$.
   radiation-era kernel~\cite{KohriTerada2018} and the scale-independent A2
   transfer, against NANOGrav's 15-yr power-law posterior
   ($\gamma_{\rm HD}=3.2\pm0.6$). The predicted slope,
-  $\gamma_{\rm pred}=5.07$ ($5.00$, dust), is $5.1\sigma$ ($4.9\sigma$) from
-  the measured slope; the predicted amplitude is $10^{14.3}$ below the
+  $\gamma_{\rm pred}=5.07$ ($5.00$, dust), is a Gaussian-equivalent
+  $5.1\sigma$ ($4.9\sigma$) $z$-distance from
+  the measured slope; the predicted amplitude is $10^{15.2}$ below the
   NANOGrav band. Source: \texttt{outputs/sigw\_nhz\_from\_lab\_spectrum\_2026\_09\_04.json}.}
 \end{figure}
 
@@ -1088,8 +1096,10 @@ three orders of magnitude if broadband, and remains excluded for seeds
 $\ge10^4\,M_\odot$ even as a narrow ($\Delta=0.5$) spectral peak; only the
 lightest ($10^3\,M_\odot$) seeds evade the bound with a sufficiently narrow
 peak. Combined with the null above, the honest statement is two-part: the
-required SMBH-seed amplitude is largely excluded independent of this model,
-and this model's own spectrum falls far short of supplying it either way.
+required SMBH-seed amplitude is excluded by three orders of magnitude
+(broadband, and for $\ge10^4\,M_\odot$ narrow-peak seeds) independent of
+this model, and this model's own spectrum falls far short of supplying it
+either way.
 Full derivation, the four-mechanism literature survey, and every number
 above are archived in the lab-spectrum script cited in the reproducibility
 statement below.
@@ -1111,7 +1121,7 @@ DESI DR1 data (merger-response vs. universality) and are not directly
 comparable to each other; each is quoted here against its own prior. This
 section compares against the pre-bounce amplitude $\fnlloc=-35/16$, since
 that is the value the DESI DR1 analysis constrains directly, using the upper
-side of the merger-response error ($+9.0$, since the prediction lies below
+side of the merger-response error ($+9.0$, since the prediction lies above
 the central value) and the lower side of the universality error ($-7.4$,
 for the same reason); the transmitted, post-bounce range is compared
 against forecast reach below (Sec.~\ref{sec:lss}, ``Forecast reach''). The
@@ -1119,6 +1129,25 @@ prediction sits $0.16\sigma$ from the former and
 $0.77\sigma$ from the latter. The discriminating power is
 $|\fnl|/\sigma = 0.24$: DESI DR1 is consistent with the prediction under
 either prior and cannot test it.
+
+As an independent check of the pipeline these forecasts rest on, we
+re-analyze the public DESI DR1 QSO sample using DESI's own published
+window matrix, full-randoms $P_\ell$, and EZmock covariance
+($z=0.8$--$2.1$, $k\le0.08\,h\,{\rm Mpc}^{-1}$, $46$ dof; $b_1$ and $\fnl$
+free, $n_{\rm shot}$ fixed at $0$), and recover $\fnlloc=-2.2\pm25$ at
+$p=1.6$ -- $0.06\sigma$ from DESI's published $-3.6^{+9.0}_{-9.1}$, which
+reproduces the published constraint's sign and scale while showing that
+DR1's constraining power at this configuration is an order of magnitude
+too weak to separate $-35/16$ from $-35/8$, from zero, or from the
+published central value; the near-coincidence of the recovered central
+value with $-35/16$ is a coincidence, not evidence. This reproduction's
+$\sigma=25$ is $\sim2.8\times$ the published $9.0$ because wide-angle
+corrections (\texttt{PowerSpectrumOddWideAngleMatrix}) are not applied and
+only $2$ of $5$ imaging-systematics splits were run (open item
+\texttt{DESI-4}); full manifest and ledger in
+\texttt{research/desi\_png\_reproduction/}\allowbreak
+\texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md},
+cited in the reproducibility statement below.
 
 \subsection{Forecast reach}
 
@@ -1150,7 +1179,10 @@ background (Sec.~\ref{sec:bounce_cubic}, ``Scheme S2, resolved''); no
 $-35/8$ value is computed for S2 (not scaled from $-35/16$; see text).
 Forecast $\sigma$ values are quoted from the cited abstracts. MegaMapper is
 an unapproved design and is quoted only at its published order-unity
-level; no systematic budget is transferred to it. Values re-derived by
+level; no systematic budget is transferred to it. Every tabulated significance is an \emph{upper bound}: it assumes a
+shape overlap $r=1$ with the local template, and the matter-bounce shape's
+true overlap $r<1$ (not yet re-derived at this paper's $\fnl^{\rm after}$
+fiducial) can only reduce these numbers. Values re-derived by
 \texttt{survey\_reach\_fnl.py} (\texttt{outputs/survey\_reach\_fnl.json}).}
 \begin{ruledtabular}
 \scriptsize
@@ -1198,7 +1230,8 @@ not contradicted by any channel currently able to speak, but three of the
 four channels tested are honest nulls rather than supporting consistencies.
 Pulsar timing: propagating this model's own committed curvature spectrum
 through the validated induced-GW kernel gives $\gamma_{\rm pred}=5.07$
-($5.00$, dust bracket), $5.1\sigma$ ($4.9\sigma$) from NANOGrav's measured
+($5.00$, dust bracket), a Gaussian-equivalent $5.1\sigma$ ($4.9\sigma$)
+$z$-distance from NANOGrav's measured
 $\gamma_{\rm HD}=3.2\pm0.6$, at an amplitude $10^{15.2}$ below the NANOGrav
 band (Sec.~\ref{sec:pta_null}); the $\gamma=3$ slope quoted for a matter
 bounce elsewhere in the literature~\cite{Papanikolaou2025} requires a
@@ -1295,11 +1328,11 @@ horizon-re-entry) primordial-black-hole formation channel during the dust
 contraction phase itself, identified but not evaluated in
 Sec.~\ref{sec:pbh_inlab}. The propagation of the post-bounce amplitude to
 the CMB/LSS pivot and of the scalar spectrum through the induced-GW kernel
-to the nHz amplitude, listed as open in earlier versions, are now carried
+to the nHz amplitude are carried
 out in Secs.~\ref{sec:lss} and~\ref{sec:pta_null}; the bounce-scale
-enhancement mechanisms at $k\eta_B\sim1$ once listed here as the sole
-remaining route to reopen Channel~I or the black-hole channel have now
-been checked directly (velocity dip, transfer excursion, and LQC
+enhancement mechanisms at $k\eta_B\sim1$ that would be the remaining route
+to reopen Channel~I or the black-hole channel have been checked directly
+(velocity dip, transfer excursion, and LQC
 cubic-operator enhancement, Sec.~\ref{sec:transmission}) and found not to
 reopen either.
 
@@ -1444,7 +1477,9 @@ lab's own predicted spectrum and its FIRAS check),
 and \texttt{pta\_injection\_30bin\_realkde\_2026\_09\_02.py}
 (the Sec.~\ref{sec:pta_validity} injection-recovery validations), and
 \texttt{PBH\_COMPACTION\_NOTE\_2026-09-02.md} (the Sec.~\ref{sec:pbh_compaction}
-compaction-note validation), with results in \texttt{outputs/*.json} and
+compaction-note validation), and
+\texttt{sigw\_nhz\_from\_lab\_spectrum\_2026\_09\_04.py} (Sec.~\ref{sec:pta_null},
+the induced-GW SIGW computation), with results in \texttt{outputs/*.json} and
 manifests at \texttt{reproducibility/manifests/}\allowbreak
 \texttt{experiments/a3-*.json} (PTA/PBH/reach, including
 \texttt{a3-pbh-compaction-fnl.json}), \texttt{reproducibility/manifests/}\allowbreak
@@ -1463,7 +1498,10 @@ spectra, Zenodo \texttt{10.5281/zenodo.8060824}. This work's own code and
 artifacts are pinned by the GitHub commit hash above rather than a
 frozen-release DOI of their own; minting one is a maintainer action
 planned for the packaging stage. The exact-amplitude theory lineage this
-paper builds on is archived at Zenodo \texttt{10.5281/zenodo.21461881}.
+paper builds on is archived at Zenodo \texttt{10.5281/zenodo.21461881}. The
+DESI DR1 QSO reproduction of Sec.~\ref{sec:lss} is committed at
+\texttt{research/desi\_png\_reproduction/}, manifest
+\texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md}.
 Every computation reported in
 this paper ran on a local CPU (Apple M5, 24\,GB, macOS 26.5) at zero compute
 cost; the PTA/PBH/reach/injection channels ran in under $6\,$s total. Compute venue,
