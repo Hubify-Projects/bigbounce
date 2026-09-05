@@ -116,7 +116,10 @@ element gives the exact identity
 \quad x_f=x(t_f),
 \label{eq:threading}
 \end{equation}
-with $\delta\rho_c/\rho\propto\partial_iN^i$ up to a gradient term. On super-Hubble scales,
+with $\delta\rho_c/\rho\propto\partial_iN^i$ up to a gradient term; $\partial_iN^i$ is the
+coordinate divergence of the contravariant shift $N^i$, and $u^\mu\parallel n^\mu$
+(fluid four-velocity along the ADM normal) presumes a single scalar degree of freedom,
+i.e.\ no vorticity. On super-Hubble scales,
 $\partial_iN^i=(\eps/c_s^2)\dot\zeta-\nabla^2\zeta/(a^2H)$ for the $P(X)$ class (a genuine
 fluid with non-adiabatic pressure adds a term)~\cite{Maldacena2003,ChenHuang2007}. Splitting
 the interval at the comoving slice through $x_i$ and integrating,
@@ -132,7 +135,8 @@ attractor and the dominant ekpyrotic mode; $1-\lambda=I/3$ reduces to $\eps/3$ f
 $\eps$ (i.e.\ $I\to\eps$), so $\lambda\equiv1-I/3=1-\eps/3$, and to
 $\lambda_{\rm USR}=1+\eps_f/3-\sqrt{\eps_s\eps_f}/3$ for USR with $\eps=\eps_s(a/a_s)^{-6}$
 from a slow-roll-frozen $\zeta_{L,i}\neq0$ at $a_s$, $\zeta_L\propto a^3$ thereafter. At second
-order, for constant $\eps$ and $c_s=1$, solving the exact ADM constraints to
+order, for constant $\eps$ and $c_s=1$, assuming $\zeta_L(t_i)=0$ (a pure growing mode, no
+constant piece on the initial slice), solving the exact ADM constraints to
 $O(\zeta_L\zeta_S)$ and integrating Eq.~\eqref{eq:threading} gives
 $f_{\delta N}=f^{\rm in\text{-}in}/\lambda+f_{\rm map}$, where $f_{\rm map}$ depends on how
 the fluid worldline is labelled. Labelled by \emph{initial} position $x_i$ -- the label the
@@ -198,7 +202,11 @@ Via the Hamiltonian constraint on comoving slices, $I=O(1)$ is equivalent to the
 mode's Bardeen potential growing as $\Psi_L=O((aH/k)^2)\,\zeta_L$, the textbook signature
 of a non-attractor contraction~\cite{Wands1999,Finelli2002}, and $I\to0$ recovers the
 gradient-expansion assumption of Lyth, Malik \& Sasaki~\cite{Lyth2005}, following Salopek \&
-Bond~\cite{Salopek1990}. Two logically distinct requirements are thus needed for the
+Bond~\cite{Salopek1990}. The final slice used throughout is uniform-$\phi$ (comoving), which
+coincides with uniform-$\rho$ only at $I\to0$; at $I=O(1)$ the two differ already at
+$O(k^0)$, so Lyth--Malik--Sasaki's $\delta N=\zeta_{ud}$ (uniform-density $\to$ uniform-density)
+is not the object compared here, and this is a second, independent $O(1)$ slice ambiguity of
+the same order as the effect this note isolates. Two logically distinct requirements are thus needed for the
 standard $\delta N$ formula to give $\zeta$ in a non-attractor phase: (i) $N(\phi,\pi)$, to
 capture the growing mode as an independent initial datum~\cite{Namjoo2013}; (ii) $I\to0$,
 so that $\delta N_c=\zeta$. USR satisfies (ii) approximately because $\eps\ll1$ while
