@@ -1,0 +1,76 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "psu-gate-s9b-intrinsic-initial-data-term",
+ "title": "PSU gate S9b: intrinsic flat-slice initial-data non-Gaussianity through the delta-N map (does it close the 5(6-eps)/24 gap between -55/16 and -5/2?)",
+ "program": "bounce-theory",
+ "paper": "P2",
+ "kind": "derivation",
+ "inputs": [
+  {
+   "name": "PSU gates S9+S10 (S9.4 names the missing step)",
+   "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.md",
+   "type": "internal-artifact",
+   "checksum": "sha256:e9ffc0e6ca4ab1c069959538a3902b499da31086af3f8f36d72ed7048896bf3e"
+  },
+  {
+   "name": "lab separate-universe delta N on uniform density (ODE, closed forms, -55/16)",
+   "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py",
+   "type": "internal-artifact",
+   "checksum": "sha256:033fa555994aefcf2e5c2a4d25eb93a90f45b5140e89c0be77a503d1e9d8d592"
+  },
+  {
+   "name": "Namjoo, Firouzjahi & Sasaki 2012/2013 (delta N in non-attractor phases; USR 5/2)",
+   "locator": "https://arxiv.org/abs/1210.3692",
+   "type": "external-literature",
+   "checksum": null,
+   "license": null
+  }
+ ],
+ "apis": [],
+ "code": [
+  {
+   "path": "research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.py",
+   "entrypoint": "python3 research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.py",
+   "sha256": "adfb4db13fd885d90ebc516e57ff0687d7ca63f65e22231ab204bccbdcc1c124"
+  }
+ ],
+ "environment": {
+  "python": "python3 with sympy (>=1.12; run on sympy 1.14.0) and mpmath",
+  "hardware": "cpu-only"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": null,
+  "pod_id_or_host": "local macOS workstation",
+  "date": "2026-09-05",
+  "wall_clock": "9 s",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local",
+  "est_wall_clock": "under 1 minute",
+  "est_cost_usd": 0.0,
+  "parallelizable": false,
+  "resume_support": false,
+  "notes": "Deterministic exact sympy + mpmath (40 digits); no network. Self-validating: lane closed forms re-derived and asserted against -55/16; N_phi/N_pi chain asserted against N_u u_phi + s_phi/eps; every intrinsic channel asserted O(1/W); USR N(phi,pi) gives 5/2 exactly; mpmath nonlinear ODE with non-Gaussian data matches the closed-form intrinsic shift to 4e-10. Verdict written by the script into the json (key verdict): NOT RECONCILED."
+ },
+ "outputs": [
+  {
+   "locator": "research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md",
+   "type": "derivation-note",
+   "checksum": "sha256:279a76e690a0902f37136053b52b2193a05f3cc91e8725b72f1c69d5d2594d19"
+  },
+  {
+   "locator": "research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.json",
+   "type": "result-json",
+   "checksum": "sha256:0c73d74511536f1f5b0fc146b0a95c5fdfb96e996f0c88a5fbdade2800019c7e"
+  }
+ ],
+ "verification": "Re-run and diff the JSON. Required exact values: step1.f_lane_general_eps == '5*epsilon/8 - 35/8'; step2.f_intrinsic_r_channel == '-5*sqrt(3)*sqrt(epsilon)*r*(epsilon - 3)/(18*(W - 1))'; step2.r_required_dust == '3*sqrt(2)*(W - 1)/4'; step3.gaussian_part_dust_Winf == '-55/16'; step4_usr.f_usr == '5/2'; step4_mpmath.runs[*].absdiff < 1e-6; verdict.verdict == 'NOT'; verdict.intrinsic_dust_finiteW == '5*sqrt(2)*r/(8*(W - 1))'; verdict.residual_dust == '15/16'.",
+ "status": "runnable-now",
+ "provenance": [
+  "research/theory_audit/psu_gates_S9_S10_2026_09_05.md S9.4: 'candidate missing step' = intrinsic flat-slice initial-data bispectrum in the delta-N lane (this gate)",
+  "project-context/NEXT_SCIENCE_LEDGER.md rows 1 and 17: -55/16 vs -5/2 gap; status lines added 2026-09-05",
+  "directive R (vision governance): the intrinsic term was computed with arbitrary sign/size before the gap value was compared; verdict written by the script"
+ ]
+}

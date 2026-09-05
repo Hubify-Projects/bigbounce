@@ -327,6 +327,13 @@
         "psu-gates-s6-s11-science-gates",
         "row11c-threading-map-second-order"
       ]
+    },
+    {
+      "id": "psu-gate-s9b-intrinsic-initial-data-term",
+      "depends_on": [
+        "p2-fnl-second-method-deltan",
+        "psu-gates-s9-s10-rho-slice-kc"
+      ]
     }
   ],
   "external_data": [
@@ -355,7 +362,7 @@
       "license": null
     },
     {
-      "name": "Heinrich et al. 2023 SPHEREx forecast covariance (Cov_B) \u2014 NOT publicly released by original authors; DP2-26/DP2-29 gap",
+      "name": "Heinrich et al. 2023 SPHEREx forecast covariance (Cov_B) — NOT publicly released by original authors; DP2-26/DP2-29 gap",
       "link": "not-publicly-released",
       "kind": "covariance-matrix",
       "license": null
