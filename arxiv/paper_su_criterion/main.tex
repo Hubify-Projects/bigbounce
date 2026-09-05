@@ -81,7 +81,14 @@ that the isotropic separate universe applied to a matter-dominated cosmological
 contraction ($w=0$, $\eps=3/2$) returns $f_{\delta N}=-5$ (initial-position label) while
 the from-scratch in-in squeezed bispectrum of $\zeta$ is
 $-35/16+(15/16)\mu^2$~\cite{Golden2026Monopole}, a monopole gap of $25/8$ -- an $O(1)$
-discrepancy, not a small correction. A second companion note derived the exact
+discrepancy, not a small correction. Cai, Xue, Brandenberger \& Zhang quote a squeezed
+amplitude of $-35/8$ for the same background~\cite{Cai2009}; the from-scratch value is
+uniformly a factor of $2$ smaller, and \cite{Golden2026Monopole} locates the slip in their
+amplitude step rather than in any vertex or commutator, reproducing their shape function
+monomial by monomial. Were $-35/8$ the correct in-in monopole instead of $-15/8$, the gap
+to $f_{\delta N}^{\rm init}=-5$ would be $-5/8$, a factor of $8/7$ rather than $8/3$; the
+headline $O(1)$ statement of this note rests on the from-scratch value. A second companion
+note derived the exact
 second-order map between the two variables and showed the gap decomposes into a linear
 rescaling and an explicit second-order term, both proportional to
 $\eps$~\cite{Golden2026Threading}. Every prior test of $\delta N$/in-in agreement in the
@@ -238,11 +245,21 @@ transition with a non-negligible decaying piece is not covered.
 
 \section{What is new}
 
-Relative to Refs.~\cite{Namjoo2013,Chen2013}, this note identifies a second, independent
-failure mode of $\delta N$ in non-attractors -- the threading map $\delta N_c\neq\zeta$ --
-controlled by $\langle\eps/c_s^2\rangle_\zeta$ rather than by initial data, and shows it is
-$O(\eps)$ in USR (hence invisible to their test) and $O(1)$ in a matter-like contraction.
-Relative to Ref.~\cite{Pajer2013}, the attractor case reduces to $\Theta\equiv\eps\dot\zeta_L/(H\zeta_L)=0$
+Relative to Takamizu, Mukohyama, Sasaki \& Tanaka and Naruko, Takamizu \& Sasaki, who
+computed the $O(\eps^2)$ (gradient-expansion, $m=2$) correction beyond the leading-order
+$\delta N$/separate-universe approximation for the superhorizon
+non-Gaussianity~\cite{Takamizu2010,Naruko2012}, the term this note restores,
+$-\nabla^2\zeta/(a^2H)$ in $\partial_iN^i$, is the same known next-to-leading-order
+gradient-expansion object; the point here is that in a non-attractor contraction the
+\emph{other}, retained term, $(\eps/c_s^2)\dot\zeta$, is already $O(k^0)$ and $O(1)$ in
+$\eps$, so the leading-order ($m=0$) identification $\delta N_c=\zeta$ can fail at $O(1)$
+without needing the $m=2$ correction at all; the two effects are independent and this note
+isolates the first one with a single closed-form criterion $I$. Relative to
+Refs.~\cite{Namjoo2013,Chen2013}, this note identifies a second, independent source of
+identification error between $\delta N_c$ and $\zeta$ in non-attractors -- controlled by
+$I$ rather than by initial data -- and shows it is $O(\eps)$ in USR (hence invisible to
+their test) and $O(1)$ in a matter-like contraction. Relative to
+Ref.~\cite{Pajer2013}, the attractor case reduces to $\Theta\equiv\eps\dot\zeta_L/(H\zeta_L)=0$
 and the identity map, so the two curvature variables coincide there and the only remaining
 question is observability; away from the attractor they already differ at $O(1)$ before any
 observability argument, by an explicit, time-dependent, non-local map along the fluid
@@ -250,7 +267,7 @@ worldline. Relative to Ref.~\cite{Dai2015}, this note supplies the input a confo
 treatment of a genuine non-attractor would need: the $O(k^0)$ divergence of the long
 mode's comoving shift and the resulting displacement and dilation of the local frame.
 Relative to Refs.~\cite{Cai2018,Passaglia2019}, the agreement found there is explained as
-the $\eps\ll1$ corner of the criterion rather than a coincidence of the USR transition.
+the $I\ll1$ corner of the criterion rather than a coincidence of the USR transition.
 Relative to Refs.~\cite{Bravo2018a,Bravo2018b}, the coordinate-removal argument for the
 canonical single-field local $\fnl$ is $O(\eps)$-controlled in inflation; whether an
 analogous physical-coordinate argument removes the $O(1)$ in-in monopole in a matter-like
@@ -313,8 +330,11 @@ results were verified by the author against the committed script output.
 \bibitem{Wands1999} D.~Wands, Phys.\ Rev.\ D \textbf{60}, 023507 (1999), arXiv:gr-qc/9809062.
 \bibitem{Finelli2002} F.~Finelli, R.~Brandenberger, Phys.\ Rev.\ D \textbf{65}, 103522 (2002), arXiv:hep-th/0112249.
 \bibitem{Creminelli2004} P.~Creminelli, A.~Nicolis, M.~Zaldarriaga, Phys.\ Rev.\ D \textbf{71}, 063505 (2005), arXiv:hep-th/0411270.
-\bibitem{Golden2026Monopole} H.~Golden, ``$f_{\rm NL}$ monopole adjudication (2026-09-03),'' \url{https://github.com/Hubify-Projects/bigbounce/blob/main/research/theory_audit/fnl_monopole_adjudication_2026_09_03.md}.
-\bibitem{Golden2026Threading} H.~Golden, ``Threading map at second order (2026-09-04),'' \url{https://github.com/Hubify-Projects/bigbounce/blob/main/research/theory_audit/threading_map_second_order_2026_09_04.md}.
+\bibitem{Cai2009} Y.-F.~Cai, W.~Xue, R.~Brandenberger, X.~Zhang, JCAP \textbf{0905}, 011 (2009), arXiv:0903.0631.
+\bibitem{Takamizu2010} Y.-i.~Takamizu, S.~Mukohyama, M.~Sasaki, Y.~Tanaka, JCAP \textbf{1006}, 019 (2010), arXiv:1004.1870.
+\bibitem{Naruko2012} A.~Naruko, Y.-i.~Takamizu, M.~Sasaki, arXiv:1210.6525 (2012).
+\bibitem{Golden2026Monopole} H.~Golden, ``$f_{\rm NL}$ monopole adjudication'' (unpublished note, commit \texttt{f3516042}, 2026-09-03), \url{https://github.com/Hubify-Projects/bigbounce/blob/main/research/theory_audit/fnl_monopole_adjudication_2026_09_03.md}.
+\bibitem{Golden2026Threading} H.~Golden, ``Threading map at second order'' (unpublished note, commit \texttt{a310bd90}, 2026-09-04), \url{https://github.com/Hubify-Projects/bigbounce/blob/main/research/theory_audit/threading_map_second_order_2026_09_04.md}.
 
 \end{thebibliography}
 
