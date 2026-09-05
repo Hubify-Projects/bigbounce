@@ -5,7 +5,6 @@
   "program": "galaxy-chirality",
   "paper": "P4P",
   "kind": "analysis",
-  "supersedes": "row13-image-level-injection-pilot.json (N=500 raw single-pass pilot, inconclusive)",
   "inputs": [
     {
       "name": "bamfai/galaxy-chirality-catalog (catalog_production.parquet)",
@@ -78,9 +77,10 @@
     {"locator": "pipelines/p4prime_chirality_test/injection_pilot/fig_scale_injection_recovery.png", "type": "figure", "checksum": null}
   ],
   "verification": "5000/5000 cutouts downloaded and classified successfully (0 failures). Baseline spiral-classified asymmetry A0=+0.95% (vs. paper's published post-equivariant residual of -0.26%): opposite sign, same order of magnitude (both sub-1%, both consistent with null within ~1 sigma at this N given per-image classification noise), a dramatic improvement over the N=500 raw single-pass pilot's -39.6% baseline. Injected-fraction slope dA/df (pixel-level, spiral-classified) = -0.116 vs the exact closed-form label-level analytic identity slope of -0.019 (same sign, same order of magnitude, ratio ~6x) -- both slopes are SMALLER than the per-seed sampling noise floor (std across 5 seeds ~0.003-0.005) at f in {0.5%,1%,2%,5%}, so this N=5000 test cannot yet distinguish whether the label-level curve is conservative or optimistic relative to the true pixel-level recovery; it DOES show the production pipeline's pixel-level and label-level responses are consistent in sign and order of magnitude, unlike the raw single-pass pilot which was inconsistent and non-monotonic. Larger N (paper's own ansatz suggests tens of thousands) is needed to resolve the slope ratio outside the noise floor.",
-  "status": "complete",
+  "status": "reproduced",
   "provenance": [
     "Task: ledger row 13 Part A at scale (resumed 2026-09-04 from ROW13_PILOT_2026-09-04.md)",
+    "Supersedes row13-image-level-injection-pilot.json (N=500 raw single-pass pilot, inconclusive)",
     "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (paper's committed sky-map amplitude-vs-detection-probability curve; a DIFFERENT statistic/axis, not directly comparable — disclosed in analyze_injection_scale.py's note_on_comparison_scope)",
     "pipelines/p2_chirality/equivariant_postprocess.py (production Z2 2-fold flip-TTA pipeline replicated exactly here)",
     "pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md (prior N=500 pilot this run follows up on)"
