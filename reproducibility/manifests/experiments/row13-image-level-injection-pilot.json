@@ -1,7 +1,7 @@
 {
   "manifest_version": "bigbounce-experiment/v1",
   "id": "row13-image-level-injection-pilot",
-  "title": "Row 13 PILOT \u2014 image-level end-to-end parity-injection test for the galaxy-spin classifier vs the existing label-level injection-recovery curve",
+  "title": "Row 13 PILOT \u2014 image-level end-to-end parity-injection test for the galaxy-spin classifier vs the existing label-level injection-recovery curve\ndescription: Status detail: pilot complete, inconclusive (raw single-pass model, N=500); real follow-up at scale through the equivariant pipeline queued (row 13).",
   "program": "galaxy-chirality",
   "paper": "P4P",
   "kind": "analysis",
@@ -88,6 +88,5 @@
     "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (label-level baseline being compared against)",
     "pipelines/p2_chirality/equivariant_postprocess.py (production pipeline this pilot did NOT replicate \u2014 flagged as the needed next step)",
     "project-context/SSOT/paper-4p/status.md (A_95^obs\u22480.98% context)"
-  ],
-  "notes": "Status detail: pilot complete, inconclusive (raw single-pass model, N=500); real follow-up at scale through the equivariant pipeline queued (row 13)."
+  ]
 }
