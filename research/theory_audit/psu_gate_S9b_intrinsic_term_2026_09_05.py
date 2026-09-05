@@ -155,3 +155,87 @@ OUT['step3'] = {k: str(v) for k, v in [('N_phi', N_phi), ('N_pi', N_pi), ('N_phi
                 ('N_phipi', N_phipi), ('u_phi', u_phi), ('u_pi', u_pi), ('s_phi', s_phi), ('s_pi', s_pi),
                 ('f_intrinsic_chain', f_intr_chain), ('W_times_f_intrinsic_chain_limit', lead_chain),
                 ('gaussian_part_dust_Winf', fG_chain)]}
+
+# ---------------------------------------------------------------------------
+# Step 4 : validations of the machinery
+#  (a) USR (NFS 2013): N(phi,pi) = -(1/3) ln(1 - 3H(phi_e - phi)/pi);  Gaussian dphi, dpi=0
+#      => zeta_2/zeta_1^2 = 3/2, f_NL = 5/2; the intrinsic term enters with weight 1/N_phi ~ e^{-3N}.
+#  (b) attractor / no-growth: the lane map at W -> 0 (decaying u) gives a finite intrinsic weight.
+#  (c) mpmath: exact nonlinear patch ODE with NON-Gaussian data u_i = u_g + r u_g^2 reproduces
+#      the closed-form intrinsic shift  5 r alpha /(3 P (W-1)).
+# ---------------------------------------------------------------------------
+print("=== Step 4: validations ===")
+phi, pi_, phie, H0, N0, rU = sp.symbols('phi pi phi_e H_0 N_0 r_U')
+N_usr = -sp.Rational(1, 3) * sp.log(1 - 3 * H0 * (phie - phi) / pi_)
+Nphi_usr = sp.diff(N_usr, phi); Nphiphi_usr = sp.diff(N_usr, phi, 2); Npi_usr = sp.diff(N_usr, pi_); Npipi_usr = sp.diff(N_usr, pi_, 2)
+# evaluate on the trajectory where the remaining USR duration is N_0:  1 - 3H(phi_e-phi)/pi = e^{-3 N_0}
+sub_usr = {phie: phi + pi_ * (1 - sp.exp(-3 * N0)) / (3 * H0)}
+ratio_usr = sp.simplify((Nphiphi_usr / (2 * Nphi_usr**2)).subs(sub_usr))
+f_usr = sp.simplify(sp.Rational(5, 3) * ratio_usr)
+show("USR: zeta_2/zeta_1^2 from N(phi,pi), dpi=0", ratio_usr); show("USR: f_NL", f_usr)
+assert f_usr == sp.Rational(5, 2)
+w_usr = sp.simplify(sp.Rational(5, 3) * (1 / Nphi_usr).subs(sub_usr))     # weight of an intrinsic r_phi
+show("USR: intrinsic weight (5/3)/N_phi", w_usr)
+print("     -> intrinsic weight ~ e^{-3 N_0}: NFS's vanishing intrinsic term is doubly safe in USR;")
+print("        N_pi-terms: N_pi =", sp.simplify(Npi_usr.subs(sub_usr)), " (dpi=0 for the constant flat-gauge mode)")
+OUT['step4_usr'] = {'f_usr': str(f_usr), 'intrinsic_weight': str(w_usr), 'N_pi': str(sp.simplify(Npi_usr.subs(sub_usr)))}
+# (b) attractor / decaying direction: W -> 0
+w_att = sp.simplify(sp.limit(f_int_r_eps / r, W, 0))
+show("attractor (W->0): intrinsic weight df/dr", w_att)
+print("     finite, O(1): with no growth the initial-data NG passes through undiluted (Maldacena-type term).")
+OUT['step4_attractor'] = {'intrinsic_weight_W0': str(w_att)}
+# (c) mpmath on the exact nonlinear ODE at dust with non-Gaussian initial data
+mp.mp.dps = 40
+xs_n = mp.sqrt(mp.mpf(1) / 2); A_n = 1 - xs_n**2
+def rhs(_s, yv):
+    uu, _ = yv
+    return [uu * (A_n - 2 * xs_n * uu - uu**2) / (xs_n + uu)**2, -1 / (3 * (xs_n + uu)**2) + 1 / (3 * xs_n**2)]
+def zeta_of(u0, SIG):
+    sol = mp.odefun(rhs, 0, [u0, mp.mpf(0)], tol=mp.mpf(10)**(-36))
+    return sol(SIG)[1]
+def fnl_numeric(r_num, SIG, ug=mp.mpf('1e-7')):
+    zp = zeta_of(ug + r_num * ug**2, SIG); zm = zeta_of(-ug + r_num * ug**2, SIG)
+    z1 = (zp - zm) / 2; z2 = (zp + zm) / 2
+    return mp.mpf(5) / 3 * z2 / z1**2
+SIG_n = mp.mpf(6); W_n = mp.e**SIG_n
+P_n = 2 / (3 * xs_n**3); alpha_n = mp.mpf(1)
+res_c = {}
+for r_num in [mp.mpf(0), mp.mpf(3), mp.mpf(-3)]:
+    f_num = fnl_numeric(r_num, SIG_n)
+    f_pred = fnl_numeric(mp.mpf(0), SIG_n) + mp.mpf(5) * r_num * alpha_n / (3 * P_n * (W_n - 1))
+    print(f"     r = {mp.nstr(r_num,3):>4}:  numeric f_NL = {mp.nstr(f_num, 12)}   closed-form = {mp.nstr(f_pred, 12)}"
+          f"   |diff| = {mp.nstr(abs(f_num - f_pred), 3)}")
+    res_c[str(int(r_num))] = {'numeric': float(f_num), 'closed_form': float(f_pred), 'absdiff': float(abs(f_num - f_pred))}
+    assert abs(f_num - f_pred) < mp.mpf('1e-6')
+OUT['step4_mpmath'] = {'Sigma': 6, 'W': float(W_n), 'runs': res_c}
+
+# ---------------------------------------------------------------------------
+# Verdict block (computed, not typed): can  -55/16 + intrinsic = -5/2  hold?
+# ---------------------------------------------------------------------------
+print("=== Verdict ===")
+f_int_dust = sp.simplify(f_int_r_eps.subs(ep, sp.Rational(3, 2)))
+show("intrinsic term at dust, r-channel [r, W]", f_int_dust)
+show("intrinsic term at dust, W -> oo", sp.limit(f_int_dust, W, sp.oo))
+show("gap to close (S9.5)", gap.subs(ep, sp.Rational(3, 2)))
+closes = sp.simplify(sp.limit(f_int_dust, W, sp.oo) - gap.subs(ep, sp.Rational(3, 2))) == 0
+print("  -55/16 + intrinsic(W->oo) == -5/2 ?", closes)
+verdict = "RECONCILED" if closes else "NOT"
+OUT['verdict'] = {
+    'verdict': verdict,
+    'intrinsic_general_eps_finiteW': str(f_int_r_eps),
+    'intrinsic_general_eps_Winf': '0',
+    'intrinsic_dust_finiteW': str(f_int_dust),
+    'intrinsic_dust_Winf': '0',
+    'residual_general_eps': str(gap), 'residual_dust': str(gap.subs(ep, sp.Rational(3, 2))),
+    'r_that_would_be_needed_dust': str(r_req.subs(ep, sp.Rational(3, 2))),
+    'step_where_residual_arises': ("the super-Hubble evolution between the flat slice at t_i and the uniform-density "
+                                   "slice at t_f (the separate-universe map itself), not the initial data: any "
+                                   "t_f-independent intrinsic bispectrum of the flat-slice field/momentum enters f_NL "
+                                   "with weight O(1/W) and vanishes in the growing-mode-dominated limit that defines "
+                                   "the lane's number"),
+}
+out_path = os.path.join(HERE, 'psu_gate_S9b_intrinsic_term_2026_09_05.json')
+OUT['script_sha256'] = hashlib.sha256(open(os.path.abspath(__file__), 'rb').read()).hexdigest()
+OUT['sympy_version'] = sp.__version__
+json.dump(OUT, open(out_path, 'w'), indent=1, sort_keys=True)
+print("  wrote", out_path, " verdict:", verdict)
