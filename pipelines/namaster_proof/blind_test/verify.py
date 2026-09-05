@@ -45,7 +45,10 @@ def judge(payload: dict, receipt: dict, contract: dict) -> list[str]:
 
 
 def main() -> int:
-    public = ROOT / "public"
+    # Non-rule plumbing only: batch 2 publishes under public2/.  judge() and the
+    # R6 block below are byte-identical to the rule set frozen in
+    # RULES_v2_FROZEN.md; this argument selects the directory, nothing else.
+    public = ROOT / (sys.argv[1] if len(sys.argv) > 1 else "public")
     contract = json.loads((public / "contract.json").read_text())
     verdicts, seen = {}, {}
     for directory in sorted((public / "runs").iterdir()):
