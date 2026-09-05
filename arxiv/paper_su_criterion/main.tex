@@ -170,65 +170,71 @@ vanishes and $\lambda\to1$, so the map is the identity; $\lambda$ vanishes at $w
 
 \section{The criterion}
 
-Equations~\eqref{eq:lambda}--\eqref{eq:fmap} give a single statement:
+Equations~\eqref{eq:lambda}--\eqref{eq:fmapfin} give a single statement:
 
-\emph{The isotropic separate universe ($\delta N$, with $N(\phi,\pi)$) reproduces the
-squeezed bispectrum of $\zeta$ iff the $\zeta$-growth-weighted mean
-$\langle\eps/c_s^2\rangle_\zeta$ vanishes. When $\langle\eps/c_s^2\rangle_\zeta=O(1)$ --
-every constant-$\eps$ contraction with a growing $\zeta$ -- the two differ at $O(1)$; when
-$\langle\eps/c_s^2\rangle_\zeta\ll1$ (attractor: $\dot\zeta_L=0$; USR: $\eps\ll1$
-throughout the growth) they agree to $O(\langle\eps/c_s^2\rangle_\zeta)$.}
+\emph{The map $\delta N_c=\zeta_{L,f}[1-I/3]+O(k_L^2/a^2H^2)$, $I=\zeta_{L,f}^{-1}\int(\eps/c_s^2)\dot\zeta_L\,dt$,
+is exact and invertible for any single-field history ($\lambda\equiv1-I/3\neq0$); it is not
+a discrepancy in the physics, only a statement about which variable $\delta N_c$ is. The
+isotropic separate universe ($\delta N$, with $N(\phi,\pi)$) computes $\delta N_c$, and the
+standard $\delta N$ formula identifies $\delta N_c$ with $\zeta$. That identification is
+exact iff $I\to0$; it carries an $O(1)$ error in the identification -- not in either
+variable separately -- whenever $I=O(1)$, e.g.\ every constant-$\eps$ contraction with a
+growing $\zeta$. When $I\ll1$ (attractor and dominant ekpyrotic mode: $\dot\zeta_L=0$,
+$I=0$ exactly; USR: $\eps\ll1$ throughout the growth) the identification holds to $O(I)$.}
 
-Equivalently, via the Hamiltonian constraint on comoving slices, the criterion is a
-statement about the long mode's comoving density contrast: the separate universe holds
-iff $\delta\rho_c/\rho\propto O(k^2/a^2H^2)\,\zeta_L$ (the gradient-expansion assumption
-of Lyth, Malik \& Sasaki~\cite{Lyth2005}, following Salopek \& Bond~\cite{Salopek1990}),
-and fails at $O(1)$ exactly when the long mode's Bardeen potential grows as
-$\Psi_L=O((aH/k)^2)\,\zeta_L$, the textbook signature of a non-attractor
-contraction~\cite{Wands1999,Finelli2002}. Two logically distinct requirements are thus
-needed for $\delta N$ to work in a non-attractor phase: (i) $N(\phi,\pi)$, to capture the
-growing mode as an independent initial datum~\cite{Namjoo2013}; (ii)
-$\langle\eps/c_s^2\rangle_\zeta\to0$, so that the threading map is the identity. USR
-satisfies (ii) approximately because $\eps\ll1$ while $\zeta$ grows -- not because the
-comoving shift is small, which it is not: the shift itself is $O(1/k_L)$ in every
-non-attractor, USR included, but its coefficient $\eps\dot\zeta_L$ is what controls the
-$O(1)$ failure, and this coefficient is small in USR precisely when its growing-mode
-initial-data problem (i) is largest. Every inflationary test cited in Sec.~I checked
-(i) with (ii) automatically small; none tested a regime with $\langle\eps/c_s^2\rangle_\zeta=O(1)$.
+Via the Hamiltonian constraint on comoving slices, $I=O(1)$ is equivalent to the long
+mode's Bardeen potential growing as $\Psi_L=O((aH/k)^2)\,\zeta_L$, the textbook signature
+of a non-attractor contraction~\cite{Wands1999,Finelli2002}, and $I\to0$ recovers the
+gradient-expansion assumption of Lyth, Malik \& Sasaki~\cite{Lyth2005}, following Salopek \&
+Bond~\cite{Salopek1990}. Two logically distinct requirements are thus needed for the
+standard $\delta N$ formula to give $\zeta$ in a non-attractor phase: (i) $N(\phi,\pi)$, to
+capture the growing mode as an independent initial datum~\cite{Namjoo2013}; (ii) $I\to0$,
+so that $\delta N_c=\zeta$. USR satisfies (ii) approximately because $\eps\ll1$ while
+$\zeta$ grows -- not because the comoving shift is small, which it is not: the shift itself
+is $O(1/k_L)$ in every non-attractor, USR included, but its coefficient $\eps\dot\zeta_L$ is
+what controls $I$, and this coefficient is small in USR precisely when its growing-mode
+initial-data problem (i) is largest. Every inflationary test cited in Sec.~I checked (i)
+with (ii) automatically small; none tested a regime with $I=O(1)$.
 
 \begin{table*}[t]
 \caption{Validation of the criterion on four backgrounds (constant $\eps$, $c_s=1$
-except USR). $\langle\eps\rangle_\zeta$ is the $\zeta$-growth-weighted mean of
-$\eps$/$c_s^2$; $\lambda$ the linear rescaling; $f^{\rm in\text{-}in}$ the in-in monopole;
-$f_{\delta N}$ the isotropic separate-universe value.}
+except USR). $I$ is the $\zeta$-growth-weighted mean of $\eps/c_s^2$; $\lambda=1-I/3$;
+$f^{\rm in\text{-}in}(\mu)$ the from-scratch in-in bispectrum and $f^{\rm in\text{-}in}_{\rm mono}$
+its monopole; $f_{\delta N}^{\rm init}$ the isotropic separate-universe value (initial-position
+label, the label the separate universe computes).}
 \label{tab:validation}
 \begin{ruledtabular}
-\begin{tabular}{lccccc}
-case & $\langle\eps\rangle_\zeta$ & $\lambda$ & $f^{\rm in\text{-}in}$ & $f_{\delta N}$ & result \\
+\begin{tabular}{lcccccc}
+case & $I$ & $\lambda$ & $f^{\rm in\text{-}in}(\mu)$ & $f^{\rm in\text{-}in}_{\rm mono}$ & $f_{\delta N}^{\rm init}$ & result \\
 \hline
-dust, $\eps=3/2$ & $3/2$ & $1/2$ & $-35/16+\tfrac{15}{16}\mu^2$ & $-5$ & $O(1)$ fail, monopole gap $25/8$ \\
-USR, $\eps\propto a^{-6}$ & $\ll1$ & $1+O(\eps)$ & $5/2$ & $5/2$ & agree to $O(\eps)$ \\
-attractor slow roll & $0$ & $1$ & $\tfrac{5}{12}(1-n_s)$ & same & identity map \\
-ekpyrosis, dominant mode & $0$ & $1$ & attractor-like & same & passes ($\zeta$ on constant mode) \\
+dust, $\eps=3/2$ & $3/2$ & $1/2$ & $-35/16+\tfrac{15}{16}\mu^2$ & $-15/8$ & $-5$ & $I=O(1)$: identification off by $25/8$ \\
+USR, $\eps\propto a^{-6}$ & $\ll1$ & $1+O(\eps)$ & $5/2$ & $5/2$ & $5/2$ & $I=O(\eps)$: agree to $O(\eps)$ \\
+attractor slow roll & $0$ & $1$ & $\tfrac{5}{12}(1-n_s)$ & same & same & $I=0$: identity map \\
+ekpyrosis, dominant mode & $0$ & $1$ & attractor-like & same & same & $I=0$: consistency check ($\dot\zeta_L=0$ trivially) \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
 
-Table~\ref{tab:validation} summarizes the four validations (script:
-\texttt{separate\_uni\-verse\_failure\_criterion\_2026\_09\_04.py}, exact sympy). The dust
-case ($w=0$) is the one already reported in Ref.~\cite{Golden2026Monopole}: the isotropic
-separate universe gives $f_{\delta N}=-5$ for every constant $\eps\in(1,3)$, while the
-in-in monopole varies with $\eps$, so the two coincide only in the limit $\eps\to0$. USR
-agrees because $\eps\ll1$ throughout the growth of the long mode, exactly as the
-criterion predicts, and reduces to the $N(\phi,\pi)$ result of
-Ref.~\cite{Namjoo2013}. Attractor slow roll is the identity map, consistent with
-Maldacena's consistency relation~\cite{Maldacena2003}. Ekpyrotic contraction ($\eps\gg3$)
-passes not because the background is expanding -- it is not -- but because the physical
-long mode sits on the constant-$\zeta$ solution, so $\langle\eps\rangle_\zeta=0$; this
-reproduces the attractor behavior of single-field ekpyrosis found by Creminelli, Nicolis
-\& Zaldarriaga~\cite{Creminelli2004}. The non-dominant, growing-$\Psi$ ekpyrotic mode would
-fail by the same criterion, but never sets $\zeta_L(t_f)$ and so is not physically
-realized.
+Table~\ref{tab:validation} summarizes the four validations (\texttt{separate\_universe\_%
+failure\_criterion\_2026\_09\_04}, exact sympy; script and manifest in the reproducibility
+statement). The dust case ($w=0$) is the one already reported in
+Ref.~\cite{Golden2026Monopole}: the isotropic separate universe gives
+$f_{\delta N}^{\rm init}=-5$ for every constant $\eps\in(1,3)$, while the in-in monopole is
+$f^{\rm in\text{-}in}_{\rm mono}=-\tfrac{5}{18}(\eps-3)(\eps-6)=-15/8$ at $\eps=3/2$, so the
+identification error, $-5-(-15/8)=-25/8$, is a factor $8/3$; the two coincide only in the
+limit $\eps\to0$. USR agrees because $\eps\ll1$ throughout the growth of the long mode --
+its row tests the size of the $O(\eps)$ correction to the map, not a constraint from
+Namjoo-Firouzjahi-Sasaki's leading-order $\fnl=5/2$ itself~\cite{Namjoo2013}. Attractor slow
+roll is the identity map, consistent with Maldacena's consistency
+relation~\cite{Maldacena2003}. Ekpyrotic contraction ($\eps\gg3$) has $I=0$ because the
+physical long mode sits on the constant-$\zeta$ solution, reproducing the attractor
+behavior of single-field ekpyrosis found by Creminelli, Nicolis \&
+Zaldarriaga~\cite{Creminelli2004}; with $\dot\zeta_L=0$ the row is a consistency check on
+the definition of $I$ rather than a nontrivial test of the criterion. The non-dominant,
+growing-$\Psi$ ekpyrotic mode would have $I=O(1)$ by the same criterion, but never sets
+$\zeta_L(t_f)$ and so is not physically realized. $\lambda_{\rm USR}$ assumes $\zeta_L$ is
+purely the growing $a^3$ mode from a slow-roll-frozen value at $a_s$; a slow-roll-to-USR
+transition with a non-negligible decaying piece is not covered.
 
 \section{What is new}
 
