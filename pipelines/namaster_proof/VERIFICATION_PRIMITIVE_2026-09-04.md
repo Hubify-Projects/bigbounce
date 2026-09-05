@@ -270,3 +270,142 @@ digest alone, or CI-witnessed execution on infrastructure the analyst does not
 control) remains open, and is the same anchor that would be needed to close S5.
 Scope limits from §4 are unchanged: this exercises the repository's own
 instrumented spin-0 MASTER estimator, not NaMaster and not the spin-2 operator.
+
+---
+
+## Batch 3 (pre-registered) — a value-level rule, and the disjunct batch 2 never tested
+
+Batch 2 closed with two named open items, both recorded there as batch-3 proposals:
+`S6_effective_multipole` escaped 5/5 because every rule R0–R6 is *trace-level* and
+S6 is trace-clean by construction; and every S4 firing came from R6's
+reference-equality disjunct, so R6's cross-run disjunct had never fired. Batch 3
+addresses both, pre-registered.
+
+### R7 — receipt-bound operator-consistency residual (the new rule)
+
+The harness records one new instrumented intermediate, `intermediates.pseudo_cl`
+(65 floats — the pseudo-spectrum every MASTER pipeline computes as step one). The
+verifier then, for each run: rebuilds the mask and refuses the check unless its
+hash matches the contract; derives **K = 6** spot rows from
+`sha256(inputs.mask_sha256 ‖ sha256(bandpowers))`, so the rows depend on the run's
+own result and cannot be chosen by the runner; recomputes **only those 6 rows** of
+the coupling matrix (~9% of a full build, so verification still does not repeat the
+computation); and fires iff
+`|Σ_{l2≥2} M[l1,l2] C[l2] − p[l1]| > 1e-6 · ‖p‖₂` on any spot row.
+An effective-multipole shortcut cannot satisfy this: it divides each band by a
+scalar transfer factor, so its `C` is not the solution of `M C = p` no matter how
+honest its trace is.
+
+`TOL = 1e-6` was fixed from theory plus **non-blind** calibration before the seal —
+`κ(M[2:,2:]) = 1.28`, honest relative residuals `8.4e-13`–`1.4e-12` on seeds
+11/4242/90210, the same seeds under S6 giving `7.5e-2`–`1.5e-1`. The tolerance sits
+in an eleven-order gap; nothing was tuned after unblinding.
+
+### Result (48 runs: 8 arms × 6, seal `abfe2793…`, `seal_verified: true`)
+
+| Arm | Flagged | Rules that fired | R7 residual range |
+|---|---|---|---|
+| honest | **0/6** | — | 2.9e-14 – 1.4e-12 |
+| S1_skip_operator | 6/6 | R3, R4, R7 | 1.4e-3 – 5.7e-2 |
+| S2_truncate_operator | 6/6 | R3, R4, R7 | 2.4e-3 – 6.6e-3 |
+| S3_grid_interpolate | 6/6 | R2, R3, R4, R7 | 7.4e-3 – 5.2e-1 |
+| S4_cache_substitute | 6/6 | R6 (reference 6), R7 | 1.7e-2 – 1.4e-1 |
+| **S4b_cache_crossrun** | 6/6 | R6 (**cross-run 4**, reference 2), R7 | 7.0e-3 – 2.6e-2 |
+| S5_metadata_forgery | **0/6** | — | 7.5e-19 – 4.5e-17 |
+| **S6_effective_multipole** | **6/6 — by R7 alone** | R7 | 1.8e-4 – 4.9e-2 |
+
+Structural arms S1–S4b: 24/24, one-sided 95% lower bound **0.905**. S6: 6/6, lower
+bound **0.607**. Honest false positives: **0/6**, one-sided 95% upper bound
+**0.393**. The measured honest/S6 separation is eight orders on each side of the
+threshold, so the S6 result is not threshold-sensitive.
+
+**Does R7 catch S6? Yes, 6/6 — but the claim is bounded three ways.** (1) R7 was
+written *against S6's batch-2 definition*: this is a pre-registered rule detecting a
+known class, not a verifier discovering an unanticipated shortcut. (2) The false
+positive cost is measured at 0/6 with an upper bound of 0.393 — six honest runs
+cannot establish a small FP rate, only that none was seen. (3) R7 is bound to a
+*declared* intermediate, so an informed forger escapes by fabricating
+`p := M C` — one matrix-vector product. Batch 3 **exercises** that limit rather than
+asserting it: S5 forges `pseudo_cl` consistently and escapes 6/6 with residuals at
+1e-17. R7 therefore moves the effective-multipole shortcut out of "escapes by
+omission" and into the S5 class, "requires deliberate fabrication of a recorded
+intermediate". That is the whole of the improvement.
+
+**Detection is class-level, not run-level (R2 audit, restated for R7).** R1–R5
+compare seed-independent quantities against a fixed contract, so their replicates
+are repeated executions of one deterministic variant — effective independent n per
+class is 1. R7 *is* seed-dependent (both `p` and the spot-row draw vary), so its six
+replicates are distinct evaluations, but still of a single deterministic variant.
+The Clopper–Pearson bounds quoted above are class-level summaries. **No per-run
+detection probability is claimed from these data**, and the intervals must not be
+read as one.
+
+**S4b and the cross-run disjunct.** 4/6 replicates fired R6's cross-run disjunct —
+the first time it has ever fired. The other 2 collapsed to reference-equality
+because the prior run they substituted was itself cache-substituting;
+`sealed3/crossrun_sources.json` names the source run for each replicate, so the
+collapse is auditable rather than silent.
+
+### Attempt 1 was aborted on a harness defect, and is kept
+
+The first batch-3 seal (`8b4fa840…`, commit `b19b72fc`) was executed, blind-judged,
+and then **abandoned without ever being unsealed**. `pcl.make_map` ignores its
+`seed` argument — healpy's `synfast` draws from the global NumPy RNG — so the new
+`pseudo_cl` instrumentation described a *different random map* than the run
+analysed, and R7 was measuring RNG divergence rather than operator consistency. The
+defect was diagnosed from the public verdict file and the source, with the
+assignment still sealed. All 48 invalid runs, receipts and verdicts are preserved
+under `blind_test/public3_aborted/` with `BATCH3_ABORT_NOTE.md`; the rules file was
+not touched; the harness fix was committed before the new key was drawn. This also
+corrects a batch-1/2 statement: the sealed `map_seed` never actually selected those
+batches' maps, so their replicates were fresh random draws rather than
+"seed-varied executions" — which affects the wording, not their conclusions, since
+no batch-1/2 rule depended on reproducing a map.
+
+### External anchor
+
+`public3/sealed_digest.json.ots` is an OpenTimestamps stamp of the batch-3 seal,
+submitted to four calendars and currently **pending** Bitcoin confirmation. `ots
+upgrade` on the batch-1 and batch-2 stamps now returns *Timestamp complete*: both
+carry Bitcoin block-header attestations. `ots verify` requires a Bitcoin node,
+which this machine does not run, so the attested heights are left for a reader with
+a node or a public verifier to confirm. This is a genuine third-party *time*
+witness; it still does not witness *execution*, and the reveal remains self-run.
+
+### Audit trail (each step its own commit, in this order)
+
+| Step | Commit | Content |
+|---|---|---|
+| 1 | `dcf96696` | `RULES_v3_FROZEN.md` **alone** — R0–R7 and thresholds, before any batch-3 script existed |
+| 2 | `d03fe376` | pre-registration + the five loop scripts, no seal, no output |
+| 3 | `b19b72fc` | attempt-1 sealed commitment alone |
+| 4 | `60917635`, `1a4c3d4e` | attempt 1 aborted and preserved (`public3_aborted/`, abort note) |
+| 5 | `77d5f5a5` | harness fix (`variants3.seed_rng`), **before** the new key was drawn |
+| 6 | `c7fb5e38` | batch-3 sealed commitment alone — `abfe2793…`, no output yet |
+| 7 | `4a7f9f82` | 48 runs + receipts + blind verdicts, still sealed |
+| 8 | `5b643fc2` | reveal: key, assignment, cross-run sources, scorecard |
+| 9 | `bf7d26e3` | OpenTimestamps stamp + batch-1/2 upgrades |
+| 10 | `b5bcb278` | reproducibility manifest (`p1b-blind-shortcut-detection-batch3`) |
+
+`RULES_v3_FROZEN.md` is byte-identical at `dcf96696` and at HEAD
+(`git diff dcf96696 HEAD -- .../RULES_v3_FROZEN.md` is empty).
+
+### Revised claim sentence (what the three batches jointly support)
+
+> Under a non-adversarial-analyst threat model — the analyst may alter the
+> computation but runs an unmodified, instrumented harness — execution-trace
+> receipts decide, from receipts alone and without re-running the computation,
+> whether an expensive pseudo-C_l analysis was actually performed. In a sealed
+> batch of 48 runs scored by decision rules frozen and committed before the seal
+> was drawn, the verifier flagged 24/24 operator-skipping, operator-truncating,
+> grid-reducing and cache-substituting runs (one-sided 95% lower bound 0.91) and
+> 6/6 runs of the effective-multipole shortcut that had escaped the previous batch
+> (lower bound 0.61), at 0/6 false positives on honest runs (one-sided 95% upper
+> bound 0.39). The effective-multipole class is caught by a value-level rule that
+> recomputes six receipt-selected rows of the coupling operator and tests the
+> published bandpowers against the declared pseudo-spectrum — about 9% of the work
+> of the analysis. Detection is established at class level, not per run. The
+> metadata-forgery arm still escapes 6/6, and it escapes *because* the forgery is
+> complete: the same rule that catches a shortcut taken by omission is defeated by
+> one fabricated intermediate. Receipts of this kind are therefore a detector of
+> shortcuts taken by an analyst who does not forge — not of forgery.
