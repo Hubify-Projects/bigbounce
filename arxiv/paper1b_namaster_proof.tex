@@ -181,12 +181,26 @@ seed-independent quantities against a fixed contract, the within-arm
 replicates measure firing determinism rather than sampling variance; no
 detection-probability interval is claimed at the run level.  A
 metadata-forgery class and an effective-multipole class each
-escaped detection in 5 of 5 runs, the latter with no rule added after the
-fact.  An earlier 18-run pilot developed the decision rules and is reported
-as such, with its post-hoc rule changes disclosed.  The result establishes
+escaped detection in batch 2 (5 of 5 runs), the latter with no rule added
+after the fact.  A pre-registered batch 3 (48 runs, 8 arms \(\times\) 6) then
+added a value-level rule, R7, that recomputes six receipt-selected rows of
+the coupling operator against the declared pseudo-spectrum: it caught the
+effective-multipole class 6/6 (one-sided 95\% lower bound 0.607) at 0/6
+honest false positives (upper bound 0.393), while the metadata-forgery class
+still escaped 6/6 by fabricating the one recorded intermediate R7 depends on
+--- forgery remains the primitive's stated limit, not a class it closes. An
+earlier 18-run pilot developed the decision rules and is reported as such,
+with its post-hoc rule changes disclosed. All detection claims are at class
+level, never per run (\S\ref{sec:blind-test-result}). Separately, the
+in-house spin-0 MASTER estimator was validated against the public NaMaster
+library (PyMaster 3.0.1) on an identical map, mask, and \(\ell\)-range: the
+mode-coupling matrix and decoupled bandpowers agree with NaMaster to
+round-off (\(\lesssim\!5\times10^{-13}\) and \(\lesssim\!2\times10^{-12}\)
+relative difference), confirming the estimator's correctness independent of
+the blind test. The result establishes
 the primitive as a detector of \emph{structural shortcuts in instrumented
 steps}, not of forged metadata or of value-level shortcuts taken downstream
-of the instrumented operator: we report a pre-registered, sealed blind map
+of a declared intermediate: we report a pre-registered, sealed blind map
 of what a receipt-based check does and does not catch, with the negative
 classes reported as escapes.  The package also
 supplies explicit multipole-support contracts, fixed-grid rotation-angle
