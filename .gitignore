@@ -30,12 +30,14 @@ reproducibility/cosmology/archives/*.tar.gz
 reproducibility/cosmology/archives/gpu_run_snapshot_*/chains/
 reproducibility/cosmology/traces/
 runpod_backups/
+research/desi_png_reproduction/outputs/*_mcmc.npy
 
 # Pipeline outputs (large generated data)
 pipelines/pipeline_a_cmb/outputs/*.npy
 pipelines/pipeline_a_cmb/outputs/*.pt
 pipelines/pipeline_a_cmb/outputs/*.json
 pipelines/pipeline_a_cmb/*.fits
+pipelines/p4prime_chirality_test/injection_pilot/cutout_cache*/
 *.parquet
 # P4 v1.0.244 local ApJS payload bundle; compact receipts are retained under
 # project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.244-APJS-RELEASE-CLOSURE/.
