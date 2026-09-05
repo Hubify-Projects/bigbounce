@@ -309,3 +309,66 @@ full DESI DR1 science-target population with a public embedding release. A
 foundation-scale public embedding for DESI spectra, if first, is a defensible
 first-of-kind *resource*; a confirmed anomalous class would be a first-of-kind
 *discovery*. Both are GPU-cost programs, not desk work.
+
+---
+
+## Section 5 — method + note lane (candidates 10–11)
+
+### C10 — The reproducibility-first lab (98 manifests, every result re-runnable)
+
+**Claimed.** Every experiment, simulation and compute run in the program carries
+a manifest with external data sources and links, APIs used, exact scripts,
+compute venue, reproduction cost, and wall-clock time (directive Q2); ~98 such
+manifests exist; the full-reproduction pass is the final pre-publication test.
+
+**Prior art.** This is a well-populated field. `showyourwork`
+(Luger et al., **arXiv:2110.06271** / github.com/showyourwork) already automates
+end-to-end article reproduction with GitHub + Zenodo + CI; Snakemake/Nextflow,
+the ASCL, Zenodo DOIs, `repro`/containers, and journal-level reproducibility
+badges all predate this. Prior-art surveys of the space exist
+(**arXiv:2012.13427**), and the field even has benchmarks for automated
+replication (**arXiv:2510.24591**).
+
+**Verdict: N2 as an *engineering practice*; N1 as a *research contribution*.**
+Type = *method / tool*. Applying manifest-level provenance uniformly across an
+entire multi-paper program — including to negative results and to
+truth-audited retractions — is a real and unusual discipline, but it is a
+**combination of existing tools**, not a new capability. The honest framing is
+"this lab is reproducible", not "this lab invented reproducibility".
+**Lift to N3:** there is one genuinely first-of-kind-shaped element already in
+the repo — `namaster-proof`, the tamper-evident, content-bound computational
+receipt that *proves* an exact pseudo-Cℓ window inference was not shortcut.
+"Verification that a specific expensive computation was actually performed, with
+content-bound receipts" is different from "re-run the pipeline and hope", and I
+could not find a prior astronomy tool doing it. To claim N3: state the claim as
+the **verification primitive** (not as "reproducibility infrastructure"), show
+it detecting a deliberately shortcut computation in a blind test, and release it
+with an ASCL entry + Zenodo DOI. Bounded, ~days-weeks, $0.
+
+### C11 — The ECH Note
+
+**Claimed.** In minimal Einstein–Cartan–Holst gravity, algebraic Cartan
+elimination gives an axial spin–spin contact term identified with Popławski's
+torsion-bounce repulsion, while the same algebra closes four dark-energy routes;
+separately (ledger row 7) there is no parity-odd O(h²) operator, so no
+chiral-GW signal.
+
+**Prior art.** Cartan elimination and the four-fermion contact term are textbook
+(Hehl, von der Heyde, Kerlick & Nester, Rev. Mod. Phys. 48, 393, 1976);
+Holst/Nieh–Yan structure is Mercuri and Date–Kaul–Sengupta
+(**Class. Quantum Grav. 27, 135012**); the Popławski bounce is his own series;
+Einstein–Cartan four-fermion phenomenology is active (e.g. *Einstein–Cartan
+Portal to Dark Matter*, **PRL 126, 161301**). Torsion-as-dark-energy proposals
+are numerous and are individually critiqued in the literature.
+
+**Verdict: N2.** Type = *derivation / note*. The identification of the derived
+contact term with the Popławski mechanism, and the collection of four
+dark-energy routes closed by one algebra, is a useful consolidation — a novel
+combination and a clean negative statement — but each ingredient is standard.
+The chiral-GW gate (row 7) is honestly **N1**: a re-derivation confirming an
+earlier adjudication, closed negative. **Lift to N3:** state and prove the
+dark-energy closure as a *theorem over a stated class* ("no minimal-ECH torsion
+sector with Dirac/Weyssenhoff matter can source w ≈ −1 at the observed
+amplitude; here is the class, here is the proof, here are the escape hatches").
+A scoped no-go theorem is a legitimate first-of-kind contribution. Without that
+scoping it stays a note.
