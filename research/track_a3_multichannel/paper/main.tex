@@ -61,7 +61,7 @@ $|\fnl^{\rm after}|\le5.1$ requires $c_s\ge0.60$, giving $r\ge14.4$. The two
 windows are disjoint by $\sim400\times$ in $c_s$, and the transmission
 is $c_s$-independent: \emph{the single-field matter bounce, canonical
 or $k$-essence (in the Li \textit{et al.} kinetic sector, $\lambda=s=0$;
-general $\lambda$ is an open item, ledger row 19), is jointly excluded by
+general $\lambda$ is an open item), is jointly excluded by
 $r$ and $\fnl$ on the backgrounds and
 channels evaluated here}, confirming and strengthening Li
 \textit{et al.}'s no-go. A curvaton-type
@@ -464,7 +464,7 @@ $1/2$ within the (A4) handoff scheme.
 \begin{table}[h]
 \caption{\label{tab:lane9c2}Exact LQC-dust mode-function bispectrum
 $|\fnl^{\rm bounce}|$ vs.\ the ABS literature plateau, lab-vacuum initial
-state (source: \texttt{lane9c2\_lqc\_modes/results.json}). The squeezed
+state (reproducibility statement below). The squeezed
 deficit is $2.1$--$4.4$ dex only at and below $k_{\rm LQC}\eta_B\approx1.06$;
 above it the sign of the gap reverses.}
 \begin{tabular}{lccc}
@@ -675,7 +675,7 @@ samples reach $\gamma\ge5$ (chain max $4.70$), so no data-supported Bayes
 factor is reported there (see text). The ``Prim.\ tensors'' row's $\gamma=5$
 is the scale-invariant reference value; this model's own first-order tensor
 background instead predicts $\gamma_{\rm pred}^{(1)}=5.035$
-(\texttt{outputs/r5\_15\_tensor\_omega\_nhz.json}), within $0.04$ of it and
+(reproducibility statement below), within $0.04$ of it and
 subject to the same null verdict below.}
 \begin{ruledtabular}
 \scriptsize
@@ -797,7 +797,7 @@ remains $8$--$9$ orders of magnitude below NANOGrav's
 $2.622\times10^{-8}$, and its slope, $\gamma_{\rm pred}^{(1)}=5.035$, is
 within $0.04$ of the induced value, so Channel I is a null in both amplitude
 and slope whichever tensor order is compared
-(\texttt{outputs/r5\_15\_tensor\_omega\_nhz.json}).
+(reproducibility statement below).
 
 Reaching $\gamma=3$ would require $P_\mathcal R\propto k^1$ sustained
 across the full $2$--$60\,$nHz band (the lab spectrum instead has
@@ -988,7 +988,7 @@ the text) report $\fpbh>1$ as \emph{uncapped ratios} at the per-point
 Gaussian-calibrated $A_*$, not physical probabilities. The
 sign disagreement with Choudhury \textit{et al.} is resolved above:
 negative $\fnl$ suppresses the abundance, as they
-report (\texttt{outputs/r11\_pbh\_residuals.json}).}
+report (reproducibility statement below).}
 \begin{ruledtabular}
 \begin{tabular}{ccccccc}
 $\Delta$ & $r_pk_p$ & $C_{\rm th}$ & $\gamma_{\rm cr}$ & $\fpbh(-35/16)$ & $\fpbh(-35/8)$ & ratio $A$ \\
@@ -1169,10 +1169,8 @@ published central value; the near-coincidence of the recovered central
 value with $-35/16$ is a coincidence, not evidence. This reproduction's
 $\sigma=25$ is $\sim2.8\times$ the published $9.0$ because wide-angle
 corrections (\texttt{PowerSpectrumOddWideAngleMatrix}) are not applied and
-only $2$ of $5$ imaging-systematics splits were run; full manifest and ledger in
-\texttt{research/desi\_png\_reproduction/}\allowbreak
-\texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md},
-cited in the reproducibility statement below.
+only $2$ of $5$ imaging-systematics splits were run; full manifest cited
+in the reproducibility statement below.
 
 \subsection{Forecast reach}
 
@@ -1275,8 +1273,7 @@ $\sim2.6\times10^4\times$ above the bound -- the tensor problem is
 scheme-independent: this is the long-known matter-bounce large-$r$
 problem~\cite{CaiEasson2012, Quintin2015}, applied here to the lab's own
 background rather than assumed from the literature, and no choice of
-scalar continuation through $H=0$ rescues it (ledger row 18(a),
-\texttt{row18a\_s2\_tensor/}).
+scalar continuation through $H=0$ rescues it.
 Similarly, the exact dust contraction gives $n_s=1$; the observed
 $n_s=0.9649$ is an anchor fixing the contraction's equation of state to
 $w=-0.0029$ via $n_s-1=12w/(1+3w)$, not a prediction of the model. The
@@ -1323,7 +1320,7 @@ Eq.~\eqref{eq:bounce_cubic} to
 \end{equation}
 reproduced by the full numerical in-in integral to $3\times10^{-4}$ and
 reducing to Eq.~\eqref{eq:bounce_cubic} at $c_s=1$ to $4\times10^{-6}$
-(ledger row 18(b), \texttt{row18b\_cs\_bounce\_cubic/}); the
+(reproducibility statement below); the
 $c_s$ dependence enters the mode functions only through the sound
 horizon ($c_s^2k^2$ in the Mukhanov--Sasaki equation, with the
 Bunch--Davies Wronskian already carrying $1/\sqrt{2c_sk}$), so the
@@ -1338,8 +1335,7 @@ and the $P_{XXX}$ coefficient $\lambda=0$ (the kinetic sector of Li
 \textit{et al.}), the assumption under which
 Eq.~\eqref{eq:bounce_cubic_cs} is quoted; the $\dot\zeta^3$ kernel
 contributes $\sim10^{-7}$ of the total at $\lambda=0$, so a rescue
-would require $\lambda/\Sigma\gtrsim10^7$ (ledger row 19, an open
-item -- Sec.~\ref{sec:next}).
+would require $\lambda/\Sigma\gtrsim10^7$ (an open item, Sec.~\ref{sec:next}).
 $\fnl^{\rm pre}(c_s)$
 itself changes sign at $c_s=0.8876$ (negative above, positive below):
 on $c_s\in[0.444,0.888)$, the branch that is otherwise CMB-viable by
@@ -1355,8 +1351,7 @@ $k\eta_B\ll1$.
 \caption{\label{tab:nogo}The joint $(r,\fnl)$ window in $c_s$, with the
 bounce's own $c_s$-dependent cubic term
 (Eq.~\eqref{eq:bounce_cubic_cs}) included at the same $c_s$
-(Quintin-type background, $T_{\fnl}=0.165$; \texttt{row14\_cs\_window.py},
-\texttt{row18b\_cs\_bounce\_cubic.py}).}
+(Quintin-type background, $T_{\fnl}=0.165$; reproducibility statement below).}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 requirement & $c_s$ & implied $r$ \\
@@ -1580,7 +1575,7 @@ $P_{XXX}\dot\zeta^3$ contribution to $\Delta\fnl^{\rm bounce}(c_s)$
 (Sec.~\ref{sec:bounce_cubic}) so the no-go can be extended beyond the
 $\lambda=s=0$ kinetic sector evaluated here, or the scope statement
 retained as the paper's final claim -- a scope decision, not a numerical
-one (ledger row 19).
+one.
 
 %======================================================================
 \appendix
@@ -1736,7 +1731,13 @@ divergence), \texttt{lane9b2\_s2\_rawadm/} (the raw-ADM S2 computation,
 Agullo--Bolliet--Sreenath operator map and scale-window conversion), and
 \texttt{lane9c2\_lqc\_modes/} (the exact-mode LQC-dust in-in evaluation,
 \texttt{results.json}), each with its own manifest under
-\texttt{reproducibility/manifests/experiments/}. The bounce-to-local shape
+\texttt{reproducibility/manifests/experiments/}. The tensor $H=0$
+continuation of Sec.~\ref{sec:tensor} is at
+\texttt{research/cubic\_bounce\_transmission/}\allowbreak\texttt{row18a\_s2\_tensor/}
+(\texttt{results.json}); the $c_s$-dependent bounce cubic term of
+Sec.~\ref{sec:bounce_cubic} is at
+\texttt{research/cubic\_bounce\_transmission/}\allowbreak\texttt{row18b\_cs\_bounce\_cubic/}
+(\texttt{row18b\_cs\_bounce\_cubic.py}, \texttt{results.json}). The bounce-to-local shape
 overlap ($r=1$, an assumed value pending an explicit shape-overlap
 projection; Sec.~\ref{sec:lss}) is taken from this lab's companion
 $f_{\rm NL}$-forecast program (\texttt{outputs/survey\_reach\_fnl.json});
@@ -1779,7 +1780,9 @@ paper builds on is archived at Zenodo \texttt{10.5281/zenodo.21461881}. The
 DESI DR1 QSO reproduction of Sec.~\ref{sec:lss} is committed at
 \texttt{research/desi\_png\_reproduction/}, manifest
 \texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md}. The tensor amplitude of
-Sec.~\ref{sec:tensor} (ledger row 10) is committed at
+Sec.~\ref{sec:tensor} (ledger row 10), including the $\gamma_{\rm
+pred}^{(1)}=5.035$ nHz propagation of Sec.~\ref{sec:pta_null}
+(\texttt{outputs/r5\_15\_tensor\_omega\_nhz.json}), is committed at
 \texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{row10\_r\_ns/}
 (\texttt{row10\_r\_ns.py},
 \texttt{results.json}); the joint $(r,\fnl)$ no-go of Sec.~\ref{sec:nogo}
@@ -1789,7 +1792,8 @@ Sec.~\ref{sec:tensor} (ledger row 10) is committed at
 adjudication is at
 \texttt{research/theory\_audit/}\allowbreak\texttt{curvaton\_matter\_bounce\_}\allowbreak\texttt{adjudication\_2026\_09\_04.py};
 the PBH sign-correction and extended
-$\gamma_{\rm cr}$ scan of Sec.~\ref{sec:pbh_compaction} (ledger row 11) is at
+$\gamma_{\rm cr}$ scan of Sec.~\ref{sec:pbh_compaction} (ledger row 11),
+including \texttt{outputs/r11\_pbh\_residuals.json}, is at
 \texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{row11\_pbh\_residuals/};
 and the
 Appendix~\ref{app:derivation} threading-map identity is at
