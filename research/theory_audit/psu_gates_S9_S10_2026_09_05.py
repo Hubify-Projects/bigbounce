@@ -83,3 +83,86 @@ def Mom(j):
     return trunc(expr)
 Momx, Momy = Mom(0), Mom(1)
 print("constraints built (general mL, mS)", round(time.time() - T0, 1), "s", flush=True)
+# ---------------------------------------------------------------- background + first-order checks (exact, all k)
+bg = [sp.simplify(sp.expand(c).coeff(zL, 0).coeff(zS, 0)) for c in (Ham, Momx, Momy)]
+assert bg == [0, 0, 0], bg
+for zv in (zL, zS):
+    for c in (Ham, Momx, Momy):
+        assert lin(c, zv) == 0, (zv, lin(c, zv))
+print("background + first-order constraints hold for arbitrary (mL, mS)", round(time.time() - T0, 1), "s", flush=True)
+cHam, cMx, cMy = cross(Ham), cross(Momx), cross(Momy)
+m = sp.symbols('m', positive=True)
+LOC = {'tau': tau, 'epsilon': eps, 'k_L': kL, 'k_S': kS, 'mu': mu, 'm': m}
+_cache = os.environ.get('PSU_S9S10_CACHE')
+def solve_cross(hist, key):
+    """second-order lapse/shift A2, P2, T2 for the history substitution hist = {mL: ., mS: .}"""
+    if _cache and os.path.exists(_cache + key):
+        d = pickle.load(open(_cache + key, 'rb'))
+        return {sp.Function(k)(tau): sp.sympify(v, locals=LOC) for k, v in d.items()}
+    eqs = [sp.simplify(c.subs(hist)) for c in (cHam, cMx, cMy)]
+    sol = sp.solve(eqs, [A2, P2, T2], dict=True)
+    assert len(sol) == 1
+    sol = {k: sp.simplify(v) for k, v in sol[0].items()}
+    if _cache: pickle.dump({str(k.func): str(v) for k, v in sol.items()}, open(_cache + key, 'wb'))
+    return sol
+d = sp.symbols('delta', positive=True)
+def superhubble(expr, order=0):
+    e = sp.expand(expr.subs({kL: d * kL, kS: d * kS}))
+    lead = sp.expand(sp.series(e, d, 0, order + 1).removeO())
+    for n in range(order - 2, order):
+        assert lead.coeff(d, n) == 0, ("unexpected pole", n, lead.coeff(d, n))
+    return sp.simplify(lead.coeff(d, order))
+tf = sp.symbols('tau_f', positive=True)
+def powterms(expr):
+    out = []
+    for term in sp.Add.make_args(sp.expand(expr)):
+        if term == 0: continue
+        ex = sp.simplify(tau * sp.diff(term, tau) / term)
+        assert not ex.has(tau), (term, ex)
+        out.append((sp.simplify(term / tau**ex), ex))
+    return out
+def tail(expr):          # int_{tau_f}^{inf} expr dtau = int_{-inf}^{t_f} ... dt
+    out, conds = 0, []
+    for c, ex in powterms(expr):
+        out += -c * tf**(ex + 1) / (ex + 1); conds.append(str(sp.simplify(ex + 1)) + ' < 0')
+    return sp.simplify(out), conds
+def anti(expr): return sum(c * tau**(ex + 1) / (ex + 1) for c, ex in powterms(expr))
+def f_of(M, lamL, lamS):
+    """squeezed f_NL of the map kernel M(kL, kS, mu): B = lamL lamS P_L [M(kL,q)P(q) + M(kL,p)P(p)], P = k^-3,
+    f = (5/12) B / (lamL^2 lamS^2 P_L P_S) -> (5/12) [..]/(lamL lamS P_S).  Returns (const, mu^2 coefficient)."""
+    kp = sp.sqrt(kS**2 - mu * kS * kL + kL**2 / 4); kq = sp.sqrt(kS**2 + mu * kS * kL + kL**2 / 4)
+    Mp = M.subs({kS: kp, mu: (mu * kS - kL / 2) / kp}, simultaneous=True)
+    Mq = M.subs({kS: kq, mu: (-mu * kS - kL / 2) / kq}, simultaneous=True)
+    f = R(5, 12) / (lamL * lamS) * (Mq / kq**3 + Mp / kp**3) * kS**3
+    ser = sp.expand(sp.series(f.subs(kL, d * kS), d, 0, 1).removeO())
+    assert ser.coeff(d, -1) == 0, ("1/k_L pole survives", ser.coeff(d, -1))
+    f0 = sp.simplify(ser.coeff(d, 0))
+    f0 = sp.expand(sp.re(f0)) if f0.has(sp.I) else sp.expand(f0)
+    poly = sp.Poly(f0, mu)
+    assert poly.degree() <= 2 and poly.coeff_monomial(mu) == 0, f0
+    return sp.simplify(poly.coeff_monomial(1)), sp.simplify(poly.coeff_monomial(mu**2))
+def mono(c0, c2): return sp.simplify(c0 + c2 / 3)
+def SY(v): return sp.sympify(v, locals=LOC)
+def kernels(hist, sol):
+    """the five threading-map pieces (delta N_c^(2) = M zeta_L zeta_S at tau_f) for the history hist, plus the
+    linear factor, the divergences and the worldline displacement -- exactly as in the 2026-09-04 script"""
+    sub = {A2: sol[A2], P2: sol[P2], T2: sol[T2]}
+    Nup = [trunc(hinv * Nlow[i]) for i in range(3)]
+    div = trunc(sum(sp.diff(Nup[i], X[i]) for i in range(3))).subs(sub).subs(hist)
+    DS, DLS = superhubble(lin(div, zS)), superhubble(cross(div))
+    NxL = superhubble(lin(Nup[0], zL).subs(hist), order=-1)
+    Zf = ZS.subs(hist).subs(tau, tf); ZLf = ZL.subs(hist).subs(tau, tf)
+    intDS, cDS = tail(DS)
+    lamS_ = sp.simplify(1 - R(1, 3) * intDS / Zf)
+    Fx = anti(NxL); Delta_fin = sp.simplify(Fx - Fx.subs(tau, tf)); Delta_init_const = sp.simplify(-tail(NxL)[0])
+    Zf2 = ZLf * Zf
+    def kern(integrand): return sp.simplify(-R(1, 3) * tail(integrand)[0] / Zf2)
+    K = {}
+    K['psi2'] = kern(superhubble(cross(sum(sp.diff(psi2, xi, 2) for xi in X) / a**2).subs(sub).subs(hist)))
+    K['grad'] = kern(superhubble(cross(-2 / a**2 * sum(dz[i] * sp.diff(psi1, X[i]) for i in range(3))).subs(hist)))
+    K['zlap'] = kern(superhubble(cross(-2 / a**2 * zeta1 * lap(psi1)).subs(hist)))
+    assert sp.simplify(K['psi2'] + K['grad'] + K['zlap'] - kern(DLS)) == 0
+    K['wl_fin'] = kern(Delta_fin * sp.I * kS * mu * DS)
+    K['wl_initextra'] = kern(Delta_init_const * sp.I * kS * mu * DS)
+    K['lab_init'] = sp.simplify(sp.I * kS * mu * Delta_init_const * Zf / Zf2)
+    return dict(K=K, lamS=lamS_, DS=DS, DLS=DLS, Delta_init=Delta_init_const, conv=cDS)
