@@ -212,3 +212,21 @@ now CLOSED per the audit. Readiness held at 65. Review rounds remain STOPPED
 under directive R2; the open Houston-gated science/venue decision from
 v1S.0.3 (fund S8 numerical USR validation and rescope, vs. hold) is
 unchanged.
+
+## v1S.0.5 (2026-09-05) — S9 resolved-negative, S10 resolved; rounds stopped; readiness 65
+
+`research/theory_audit/psu_gates_S9_S10_2026_09_05.md` closes the remaining
+science gates. S10 RESOLVED: the constant-mode kernel K_c is derived in
+closed form (ADM constraints at (m_L,m_S)=(0,3/eps-1)), squeezing to -2eps/3,
+exactly cancelling the constant-mode zlap term; corrected normalisation
+f_map(g)=(g*lambda_1/lambda_g)*f_map(1), 1/(lambda_g*lambda_1); g=1
+reproduces -5 / -25/4+(15/4)mu^2. S9 RESOLVED (equations) but the
+composition is NEGATIVE: the second-order uniform-density (rho-slice) map
+gives f^rho_NL=5(2eps-15)/24=-5/2 at dust, isotropic — this does NOT
+reproduce the lab's uniform-density delta N value -55/16 (gap 15/16); the
+missing step is the intrinsic flat-slice initial-data bispectrum in that
+delta N lane (Namjoo-Firouzjahi-Sasaki caveat). Appendix A + Sec. II updated
+accordingly; the paper no longer implies -55/16 is "the same physics in a
+third variable." 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp, md5
+`780b079e88e4ade112b35517edece020`. Readiness held at 65 — ROUNDS STOPPED
+(R2), unchanged.

@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.20",
+      version: "v3M.0.21",
       readiness: 75,
-      pendingWork: "D-A3-14 (ledger row 19): the joint (r,f_NL) no-go generalizes to the full P(X) k-essence class -- r and the bounce cubic term are exactly lambda-independent; no lambda opens the window; DBI best case r_min=12.57 (349x BICEP/Keck). ROUNDS STOPPED (R2). Houston final review pending.",
+      pendingWork: "Literature/derivation correction: uniform-density delta N (-55/16) is not reconciled by the threading-map identity -- the second-order rho-slice map gives -5/2 at dust (gap 15/16), attributed to an omitted intrinsic initial-data bispectrum. Only the comoving-slice delta N (-5) is fully reconciled; flagship -35/16 unaffected. ROUNDS STOPPED (R2). Houston final review pending.",
     },
     {
       slug: "paper-3",
@@ -149,9 +149,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-su",
       number: "SU",
       shortTitle: "Separate-universe failure criterion (short note)",
-      version: "v1S.0.4",
+      version: "v1S.0.5",
       readiness: 65,
-      pendingWork: "R2 truth-audit closed (20 genuinely-new-real findings): Eq. (4) sign fix, Cai 2009 ratio corrected to 4/3, new Appendix A. ROUNDS STOPPED (R2) pending a science or venue decision.",
+      pendingWork: "S9/S10 second-order closure: Appendix A gains the K_c closed form (squeezed -2eps/3) + corrected normalisation 1/(lambda_g lambda_1); Sec. II gains the rho-slice result (-5/2 at dust, does not reproduce -55/16, gap 15/16). ROUNDS STOPPED (R2) pending a science or venue decision.",
     },
   ],
   blockerTally: {

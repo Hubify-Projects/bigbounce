@@ -67,6 +67,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-a3m-s9-s10-rho-slice-correction-2026-09-05",
+    dateISO: "2026-09-05",
+    kind: "skill-improvement",
+    title: "S9/S10 second-order closure: paper-su v1S.0.5 + A3M v3M.0.21 -- uniform-density δN not reconciled",
+    papers: ["PSU", "A3"],
+    summary:
+      "research/theory_audit/psu_gates_S9_S10_2026_09_05.md resolves the two remaining paper-su science gates. S10 (general admixture): re-solving the ADM constraints at (m_L,m_S)=(0,3/eps-1) gives the constant-mode kernel K_c in closed form, squeezing to -2eps/3, which exactly cancels the constant-mode 'zlap' term -- a constant long mode has a null O(k^0) threading map, and the corrected bispectrum normalisation is f_map(g)=(g*lambda_1/lambda_g)*f_map(1) with prefactor 1/(lambda_g*lambda_1); g=1 reproduces -5 (initial label) and -25/4+(15/4)mu^2 (final label). S9 (uniform-density slice): continuing the fluid-congruence field to second order onto rho=rho-bar(t_f) gives f^rho_NL=5(2eps-15)/24=-5/2 at dust, isotropic -- this does NOT reproduce the separate-universe uniform-density value -55/16 quoted elsewhere in this program (gap 15/16); the residual is attributed to an intrinsic flat-slice initial-data bispectrum omitted from that delta N integration (Namjoo-Firouzjahi-Sasaki non-attractor caveat), not to a slice-labelling error. Both papers now state this precisely: only the comoving-slice delta N value (-5) is fully reconciled; the flagship in-in monopole -35/16 is unaffected.",
+    keyTakeaways: [
+      "paper-su v1S.0.5: Appendix A gains K_c closed form + corrected normalisation + rho-slice sentence; 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp, md5 780b079e88e4ade112b35517edece020",
+      "A3M v3M.0.21: Sec. II cross-check + Appendix A (Bianchi-I) no longer claim -55/16 reconciled; 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 18 pp, md5 91d5a6511eb0169054855b5fae85960e",
+      "Both readiness held (paper-su 65, A3M 75) -- literature/derivation precision correction, not a new review round; rounds stay stopped under directive R2",
+    ],
+    links: [
+      { label: "S9/S10 gates note", href: `${GH}/research/theory_audit/psu_gates_S9_S10_2026_09_05.md` },
+      { label: "paper-su SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "paper-su source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+      { label: "A3M source", href: `${GH}/research/track_a3_multichannel/paper/main.tex` },
+    ],
+  },
+  {
     id: "psu-a3m-s7-cai-literature-correction-2026-09-05",
     dateISO: "2026-09-05",
     kind: "skill-improvement",

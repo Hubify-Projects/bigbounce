@@ -675,6 +675,13 @@ export const reproPrograms: ReproProgram[] = [
         "depends_on": [
           "psu-gates-s6-s11-science-gates"
         ]
+      },
+      {
+        "id": "psu-gates-s9-s10-rho-slice-kc",
+        "depends_on": [
+          "psu-gates-s6-s11-science-gates",
+          "row11c-threading-map-second-order"
+        ]
       }
     ],
     "external_data": [
@@ -906,6 +913,12 @@ export const reproPrograms: ReproProgram[] = [
         "id": "p4p-row16ib-axis-shift",
         "depends_on": [
           "p4p-row16i-full-parent-dipole"
+        ]
+      },
+      {
+        "id": "row16ivb-bgs-environment",
+        "depends_on": [
+          "row16iv-chirality-structure"
         ]
       }
     ],
@@ -4384,6 +4397,119 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "ledger4-desi-dr1-qso-fnl-reproduction-v5",
+    "title": "Ledger #4 v5 - WEIGHT_SYS on/off and Galactic-latitude splits re-measured at official-window/official-EZmock-covariance fidelity, completing the 5-row imaging-systematics table on one convention, on the DESI DR1 QSO f_NL^loc reproduction; supersedes ledger4-desi-dr1-qso-fnl-reproduction-v4 (headline unchanged, two open items closed, one real systematic flagged)",
+    "program": "bounce-theory",
+    "paper": "A3",
+    "kind": "analysis",
+    "inputs": [
+      {
+        "name": "Official DESI DR1 full-shape-bao-clustering v1.0 VAC (window matrix, full-18-randoms P_ell, EZmock covariance) for QSO - same products as v3/v4",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/",
+        "checksum": "sha256 list in research/desi_png_reproduction/official_products_sha256.txt",
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "DESI DR1 QSO clustering + randoms catalogues (LSScats v1.5), WEIGHT/WEIGHT_SYS columns and RA/DEC-derived Galactic latitude - NGC+SGC",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+        "checksum": null,
+        "license": "CC BY 4.0 (DESI public data releases)"
+      },
+      {
+        "name": "v4's already-fit EBV/STARDENS/GALDEPTH_Z rows, carried forward unchanged into this round's 5-row table",
+        "type": "internal-artifact",
+        "locator": "research/desi_png_reproduction/outputs/imaging_splits_fnl_v4.json",
+        "checksum": null
+      },
+      {
+        "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (reproduction target)",
+        "type": "external-literature",
+        "locator": "https://arxiv.org/abs/2411.17623",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "DESI public data server (anonymous HTTP, no key)",
+        "endpoint": "https://data.desi.lbl.gov/public/dr1/",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "research/desi_png_reproduction/pk_estimator_qso_weightsys_v5.py",
+        "entrypoint": "python3 pk_estimator_qso_weightsys_v5.py",
+        "sha256": "bebd5f4cd9b17bd91610874a0c10c4934b501f0d3ffa940db7ea3d8fffacfdcc"
+      },
+      {
+        "path": "research/desi_png_reproduction/pk_estimator_qso_gallat_v5.py",
+        "entrypoint": "python3 pk_estimator_qso_gallat_v5.py",
+        "sha256": "eacb217a94b71a596b54a0e01d980b9bfc245f2aedc4cc7d62130fd59668b80d"
+      },
+      {
+        "path": "research/desi_png_reproduction/fit_fnl_splits_v5.py",
+        "entrypoint": "python3 fit_fnl_splits_v5.py",
+        "sha256": "7c3b59ce1192e8f4472e8a07db481e5d4f7f78bf8b6c87b2a5cff8837e14dc56"
+      }
+    ],
+    "environment": {
+      "python": "python3.12.13 (dedicated venv: research/desi_png_reproduction/.venv312, gitignored)",
+      "hardware": "cpu-only; Apple M-series MacBook Air, 25.8 GB RAM, 10 cores, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "8 P(k) measurements (NGC+SGC x 2 splits x 2 halves), nmesh=256, ~50-100s each (~10 min total); fit_fnl_splits_v5.py five official-fidelity fits with profile-likelihood scans ~2 min",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~15 min given official_products/ already on disk",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": false,
+      "notes": "Requires official_products/ (window matrix, EZmock covariance) already downloaded per v3, and outputs/imaging_splits_fnl_v4.json already on disk (v4's three fitted rows). Run order: pk_estimator_qso_weightsys_v5.py and pk_estimator_qso_gallat_v5.py (independent, parallelizable) -> fit_fnl_splits_v5.py (reads both new pk_split_*.json sets plus v4's fitted rows, reuses fit_fnl_splits.py's fit_split() unchanged). No new external data required beyond v1-v4's downloads."
+    },
+    "outputs": [
+      {
+        "locator": "research/desi_png_reproduction/outputs/pk_split_NGC_WEIGHTSYS_high.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/pk_split_NGC_GALLAT_high.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/outputs/systematics_table_v5.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "research/desi_png_reproduction/LEDGER4_RESULT_v5_2026-09-04.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and confirm: fit_fnl_splits_v5.py reproduces WEIGHTSYS Delta f_NL=-88.15 (sigma_Delta=20.44, Delta/sigma=-4.31, i.e. crosses the 2-sigma flag even after the disclosed sqrt(2)-under-estimate correction: -3.05) and GALLAT Delta f_NL=-41.55 (sigma_Delta=23.30, Delta/sigma=-1.78, marginal, flagged not dismissed); v4's three carried-forward rows (EBV, STARDENS, GALDEPTH_Z) are byte-identical to imaging_splits_fnl_v4.json; the headline f_NL from fit_fnl_official.py (p=1.6: -2.169+/-25.3; p=1.0: -1.127+/-13.1) is untouched by this round. Supersedes: ledger4-desi-dr1-qso-fnl-reproduction-v4 (headline carried forward unchanged; two open items closed; WEIGHT_SYS's large effect explained as validation of the DESI correction already applied in the headline, not a headline-affecting residual).",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+      "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+      "research/desi_png_reproduction/RUN_LOG.md v5 section (2026-09-04)",
+      "research/desi_png_reproduction/LEDGER4_RESULT_v4_2026-09-04.md (v4, headline + wide-angle carried forward unchanged)",
+      "research/desi_png_reproduction/LEDGER4_RESULT_v5_2026-09-04.md (this result)",
+      "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "ledger7-chiral-gw-delta-h",
     "title": "Ledger #7 gate - net helicity asymmetry Delta_h of the SGWB from the minimal Einstein-Cartan-Holst torsion bounce (symbolic parity-operator check + super-Hubble k-odd estimate)",
     "program": "bounce-theory",
@@ -5437,6 +5563,347 @@ export const reproExperiments: ReproExperiment[] = [
       "pipelines/namaster_proof/blind_test/BATCH2_PREREGISTRATION.md (design, S6 definition, scoring, expectations)",
       "reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json (batch 1, now labelled the rule-development pilot round)",
       "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md section 'Batch 2 (pre-registered)'"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p1b-blind-shortcut-detection-batch3",
+    "title": "Blind shortcut-detection test, batch 3: pre-registered value-level rule R7 (receipt-bound operator-consistency residual spot-check) against the effective-multipole class S6 that escaped batch 2, plus the previously untested cross-run cache disjunct (S4b)",
+    "program": "lab-infra",
+    "paper": "P1B",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "Synthetic HEALPix Gaussian signal realisations (nside=64, lmax=64, power-law C_ell; seeds HMAC-derived from the sealed key)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_map)",
+        "checksum": null
+      },
+      {
+        "name": "Synthetic binary sky mask (equatorial cut + 12 random discs)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_mask, seed 11)",
+        "checksum": null
+      },
+      {
+        "name": "namaster-proof receipt primitive (publish_json / verify_json_receipt)",
+        "type": "internal-artifact",
+        "locator": "packages/namaster-proof/src/namaster_proof/receipts.py",
+        "checksum": null
+      },
+      {
+        "name": "Frozen decision rules R0-R7 (pre-registered, committed alone before any batch-3 script, seal or output existed)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/RULES_v3_FROZEN.md",
+        "checksum": "856f4c50b33eea109ee7ae9de1fc672c55896a9b3fb8ad5d2de87863088a23db"
+      },
+      {
+        "name": "Batch-3 pre-registration (design, arms, pre-declared expectations, scoring; committed before the seal)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/BATCH3_PREREGISTRATION.md",
+        "checksum": "bf1754685762aaf5e5babd41a081517b1f75e59a8db5b97585244c3ed9976f02"
+      },
+      {
+        "name": "Abort record for batch-3 attempt 1 (harness defect, never unsealed; 48 invalid runs preserved)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/BATCH3_ABORT_NOTE.md",
+        "checksum": "491ad0ea55bcf409eb5b50cdf38f9e9b4f5f4a7e9f67409c9c77ed27b8047b6a"
+      },
+      {
+        "name": "Batch-2 scorecard (the result batch 3 is the follow-up to: S6 escaped 5/5, R6 cross-run disjunct never fired)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/public2/scorecard.json",
+        "checksum": "7b3af7f12ba3ebe19ae6598a67929f26a067e5bfbf30eec2c78473e9380a7d1a"
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/namaster_proof/blind_test/variants3.py",
+        "entrypoint": "imported by run_blind3.py",
+        "sha256": "c24d98e2f47fc6f8ab1d539403e474f325a45b401326550c43ddec29b7c48a29"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/seal3.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 seal3.py",
+        "sha256": "1d14999dfa908313c9e554bb0753a7532a09849dd60d9768c16deaf3857df13f"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/run_blind3.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 run_blind3.py",
+        "sha256": "0a67b6549b961ae70640336ae5b366ca3b63466e280ee2b96514df5a958204eb"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/verify3.py",
+        "entrypoint": "python3 verify3.py public3",
+        "sha256": "ffca3212f1464068ec79275fc7ad82e15e6b6085988de60914ec4a36a75c4560"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/reveal3.py",
+        "entrypoint": "NP_SEALED_DIR=sealed3 python3 reveal3.py",
+        "sha256": "a27d5115deaafe392e13c68e546887a6a3bd6ed6d9a13d57f72427e5e3b7fdb2"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + healpy 1.20.0 + scipy 1.18.0 (scipy only for the Clopper-Pearson bounds in reveal3.py) + opentimestamps-client 0.7.2 for the seal anchor. NaMaster/pymaster is NOT required and NOT installed: the test ships its own instrumented spin-0 MASTER estimator, which is a stated scope limit of the result.",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-04",
+      "wall_clock": "~15 s for 48 runs, ~4 s to verify (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~1 min end to end",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Run from pipelines/namaster_proof/blind_test with NP_SEALED_DIR pointing outside the repo: seal3.py, run_blind3.py, verify3.py public3, reveal3.py. Re-sealing draws a fresh key, so a rerun reproduces the PROTOCOL and the per-arm outcome, not the byte-identical run directories. To re-score the committed batch exactly, skip seal3/run_blind3 and run 'python3 verify3.py public3' against the committed public3/runs plus 'NP_SEALED_DIR=sealed3 python3 reveal3.py'. Note pcl.make_map ignores its seed argument (healpy synfast uses the global NumPy RNG); variants3.seed_rng compensates at the call site and run_variant asserts map reproducibility, so batch-3 maps ARE reproducible from sealed seeds while batch-1/2 maps were not. R7 assumes verifier and runner reproduce healpy/numpy anafast bit-comparably; it is a same-environment rule by construction."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public3/sealed_digest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public3/sealed_digest.json.ots",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public3/contract.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public3/runs",
+        "type": "dataset",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public3/verdicts.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public3/scorecard.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/sealed3",
+        "type": "dataset",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public3_aborted",
+        "type": "dataset",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-score the committed batch and confirm: (a) scorecard.seal_verified == true and assignment_sha256 == abfe2793bc6fa2c0ed1d5be429e1e32c02bc5263067c83957298605a21c04f58, matching the sealed_digest.json committed before any run output; (b) detection_structural_S1_S4b == 30/30 (five arms x 6 replicates; the earlier \"24/24\" was an arithmetic slip, corrected 2026-09-05 per the R3 referee report MAJOR 3 -- the committed scorecard value was always the five-arm pool) (one-sided 95% lower bound 0.905); (c) S6_effective_multipole flagged 6/6 by R7 ALONE (lower bound 0.607) with per-arm r7 residuals in [1.77e-4, 4.92e-2]; (d) honest flagged 0/6, r7 residual max 1.44e-12 -- eight orders below TOL=1e-6, which is eight orders below the smallest S6 residual; (e) S5_metadata_forgery escapes 6/6 with r7 residuals <= 4.54e-17, the informed-forger limitation R7 declares in advance; (f) S4b_cache_crossrun 6/6 flagged with r6_crossrun_disjunct == 4 and r6_reference_disjunct == 2 (the two collapse because the substituted prior run was itself cache-substituting; sealed3/crossrun_sources.json names each source run); (g) git log shows RULES_v3_FROZEN.md committed alone (dcf96696) before the scripts (d03fe376), the scripts before the seal, the seal before any run output, and the reveal last; (h) RULES_v3_FROZEN.md is byte-identical at dcf96696 and at HEAD.",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md, 'Batch 3 (pre-registered)' section",
+      "pipelines/namaster_proof/blind_test/RULES_v3_FROZEN.md (rules frozen alone, before scripts/seal/output)",
+      "pipelines/namaster_proof/blind_test/BATCH3_PREREGISTRATION.md (design + pre-declared expectations)",
+      "pipelines/namaster_proof/blind_test/BATCH3_ABORT_NOTE.md (attempt 1 aborted on a harness defect, never unsealed)",
+      "Batch-2 open items this closes: S6 escaped 5/5 (no rule could see a trace-clean value-level shortcut) and R6's cross-run disjunct was never exercised",
+      "INT R1 on P1B v2B.0.17 (2026-09-04) finding M4, which specified the S6 class independently of the verifier's author",
+      "directive Q2 (per-experiment reproducibility manifests), directive R2 (a verification gate, not a review round)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "p1b-blind-shortcut-detection-batch4",
+    "title": "Blind shortcut-detection test, batch 4: pre-registered post-commitment verifier challenge R8 (Freivalds-style row spot-check with Fiat-Shamir-correct challenge randomness) against a rule-aware effective-multipole runner (S7) and an intermediate-omitting runner (S8) that both defeat R7",
+    "program": "lab-infra",
+    "paper": "P1B",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "Synthetic HEALPix Gaussian signal realisations (nside=64, lmax=64, power-law C_ell; seeds HMAC-derived from the sealed key)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_map)",
+        "checksum": null
+      },
+      {
+        "name": "Synthetic binary sky mask (equatorial cut + 12 random discs)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_mask, seed 11)",
+        "checksum": null
+      },
+      {
+        "name": "namaster-proof receipt primitive (publish_json / verify_json_receipt)",
+        "type": "internal-artifact",
+        "locator": "packages/namaster-proof/src/namaster_proof/receipts.py",
+        "checksum": null
+      },
+      {
+        "name": "Frozen decision rules R0-R8 (pre-registered; committed ALONE before any batch-4 script, before the verifier-seed commitment, before the seal, before any output)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/RULES_v4_FROZEN.md",
+        "checksum": "a59caaf8189afc9359157f1d36fffbf8f04c7b5f9455c0ea4bea5fcd10085f30"
+      },
+      {
+        "name": "R8 verifier-seed commitment (sha256 of sigma; committed ALONE before the batch seal and before any run existed)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/public4/verifier_seed_commitment.json",
+        "checksum": "9ec4be43d08c47d1d47d0ae7c2b253424737d8c5fd60491b224240739584d352"
+      },
+      {
+        "name": "Batch-3 rules and scorecard (the result batch 4 tests: R7 caught S6 6/6 but its challenge is prover-predictable and it fails open)",
+        "type": "internal-artifact",
+        "locator": "pipelines/namaster_proof/blind_test/public3/scorecard.json",
+        "checksum": "57e2dda25c9dccbe9208f4d4876f855e26dbaaf7c5e4f91632a8608d20949fda"
+      },
+      {
+        "name": "R3 referee report on P1B v2B.0.20 stating design MAJORs 1-3 that batch 4 answers",
+        "type": "internal-artifact",
+        "locator": "project-context/peer-reviews/INT_v3/P1B_v2B.0.20_R3_claude_opus_2026-09-05.md",
+        "checksum": null
+      }
+    ],
+    "apis": [
+      {
+        "name": "OpenTimestamps public calendars (Bitcoin anchor for the verifier-seed commitment and the batch seal digest; a confirmed attestation's block hash is the declared preferred R8 randomness source for a future batch)",
+        "endpoint": "https://a.pool.opentimestamps.org, https://b.pool.opentimestamps.org, https://a.pool.eternitywall.com, https://ots.btc.catallaxy.com",
+        "auth_required": false
+      }
+    ],
+    "code": [
+      {
+        "path": "pipelines/namaster_proof/blind_test/variants4.py",
+        "entrypoint": "imported by run_blind4.py",
+        "sha256": "894dd0dfc3bf03aaa387a44a916206cba706110ceb2be4cbee360bffe1372f06"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/verifier_seed4.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 verifier_seed4.py commit|reveal",
+        "sha256": "1817aa6118ba5f894919a896ed3ee591812694197deb7f87a4072825d96ab930"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/seal4.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 seal4.py",
+        "sha256": "67e8b18b4dff7eaf6c1f17938ae709e3a2ce07db34b87250cf560c6b55f55611"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/run_blind4.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 run_blind4.py",
+        "sha256": "5b293f5eacd9efde87bcc3398e548ef41a1f930f807e67fce7bf6896a06986a8"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/verify4.py",
+        "entrypoint": "python3 verify4.py digests public4 ; python3 verify4.py judge public4",
+        "sha256": "c3c058bcd06b78a73f91eaa29ad4998700706179177fd3ce92403b80c77bd210"
+      },
+      {
+        "path": "pipelines/namaster_proof/blind_test/reveal4.py",
+        "entrypoint": "NP_SEALED_DIR=<outside repo> python3 reveal4.py",
+        "sha256": "cc519b69a504580984e8bcb488dfb203fff294d8b8d9e8b91494c723d77411d0"
+      }
+    ],
+    "environment": {
+      "python": "python3.14 + numpy 2.5.1 + healpy 1.20.0 + opentimestamps-client 0.7.2. scipy is NOT used by batch 4: no Clopper-Pearson interval is computed, by design (class-level reporting only). NaMaster/pymaster is NOT required and NOT installed: the test ships its own instrumented spin-0 MASTER estimator, a stated scope limit.",
+      "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houstons-MacBook-Air.local",
+      "date": "2026-09-05",
+      "wall_clock": "~3 s for 54 runs; ~2 s to bind digests; ~2 s to judge (measured)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "~1 min end to end",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Run from pipelines/namaster_proof/blind_test with NP_SEALED_DIR pointing outside the repo, IN THIS ORDER, because R8's soundness is the order: verifier_seed4.py commit -> seal4.py -> run_blind4.py -> verify4.py digests public4 -> verifier_seed4.py reveal -> verify4.py judge public4 -> reveal4.py. Re-sealing draws a fresh key and a fresh seed, so a rerun reproduces the PROTOCOL and the per-arm outcome, not byte-identical run directories. To re-score the committed batch exactly, skip the seed/seal/run steps and run 'python3 verify4.py judge public4' against the committed public4/ (the revealed seed and the committed digests are both in the tree) then 'NP_SEALED_DIR=public4 python3 reveal4.py'. R8, like R7, assumes verifier and runner reproduce healpy/numpy anafast bit-comparably; it is a same-environment rule by construction, and its mask-rebuild gate now fails CLOSED rather than abstaining."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/verifier_seed_commitment.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/verifier_seed_commitment.json.ots",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/sealed_digest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/sealed_digest.json.ots",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/frozen_rules_digest.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/contract.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/runs",
+        "type": "dataset",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/receipt_digests.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/verifier_seed_reveal.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/verdicts.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/assignment.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/key.txt",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/namaster_proof/blind_test/public4/scorecard.json",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-score the committed batch and confirm: (a) scorecard.seal_verified == true and assignment_sha256 == dbe6a713bc89be8a8701377bc7a03edb56c5f9680af0f88cfd165af204cfd7a5, matching sealed_digest.json committed before any run output; (b) scorecard.verifier_seed_commitment_opened == true, i.e. sha256 of the revealed sigma equals the commitment published two commits before the seal was drawn; (c) S7_r7_aware_effective: R7 fired 0/6 (the zero-cost adaptive evasion MAJOR 1 predicted, reproduced) and R8 fired 6/6, flagged 6/6; (d) S8_omit_pseudo_cl: R7 fired 0/6 (the fail-open branch MAJOR 2 identified, reproduced) and R8 fired 6/6, all tagged SHORTCUT-SUSPECT, flagged 6/6; (e) honest flagged 0/6 with r8 residual max 1.35e-12, six orders below TOL=1e-6; (f) S1-S4 and S6 flagged 6/6, S6 by R7 and R8 both; (g) S5_metadata_forgery escapes 6/6 with r8 residual max 5.88e-17 -- the complete-forgery limit, unchanged and declared in advance; (h) NO Clopper-Pearson interval appears anywhere in scorecard.json; (i) git log shows RULES_v4_FROZEN.md committed alone, then the scripts, then the verifier-seed commitment alone, then the batch seal alone, then the runs and their bound digests, then the seed reveal, then the verdicts, then the batch-seal reveal and scorecard -- each ordering-critical commit containing only its own files.",
+    "status": "runnable-now",
+    "provenance": [
+      "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md, 'Batch 4 (pre-registered; post-commitment challenge)' section",
+      "pipelines/namaster_proof/blind_test/RULES_v4_FROZEN.md (rules frozen alone, before scripts, seed commitment, seal and output)",
+      "project-context/peer-reviews/INT_v3/P1B_v2B.0.20_R3_claude_opus_2026-09-05.md MAJOR 1 (R7's challenge is prover-chosen; cite Freivalds 1977 and Fiat-Shamir 1986), MAJOR 2 (R7 fails open on a missing declared intermediate), MAJOR 3 (batch-3 structural pool is 30/30 not 24/24; interval treatment inconsistent with batch 2)",
+      "R. Freivalds, 'Probabilistic machines can use less running time', IFIP Congress 1977, pp. 839-842 (probabilistic verification of a matrix product; one-sided error)",
+      "A. Fiat and A. Shamir, 'How to prove yourself', CRYPTO '86, LNCS 263, pp. 186-194 (the transform whose soundness condition R7 violates and R8 satisfies)",
+      "directive Q2 (per-experiment reproducibility manifests), directive R2 (a verification gate, not a review round)"
     ]
   },
   {
@@ -10175,6 +10642,90 @@ export const reproExperiments: ReproExperiment[] = [
   },
   {
     "manifest_version": "bigbounce-experiment/v1",
+    "id": "psu-gates-s9-s10-rho-slice-kc",
+    "title": "PSU gates S9 + S10 at second order: uniform-density-slice threading map (delta N_c,rho from the in-in bispectrum) and the constant-long-mode kernel K_c of the general-label map",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "PSU gates S6-S11 (S9/S10 sections: linear rho-slice map, f_map(g) with K_c open)",
+        "locator": "research/theory_audit/psu_gates_S6_S11_2026_09_04.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "threading map at second order (machinery + frozen phi-slice kernels)",
+        "locator": "research/theory_audit/threading_map_second_order_2026_09_04.py",
+        "type": "internal-artifact",
+        "checksum": "sha256:b0c934158add4ddedb40f042a26e2f430b77849f301e86b93f0f76f3637c7fbf"
+      },
+      {
+        "name": "lab separate-universe delta N on uniform density (comparison value 5(eps-7)/8 = -55/16)",
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.md",
+        "type": "internal-artifact",
+        "checksum": null
+      },
+      {
+        "name": "Namjoo, Firouzjahi & Sasaki 2012",
+        "locator": "https://arxiv.org/abs/1210.3692",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/psu_gates_S9_S10_2026_09_05.py",
+        "entrypoint": "python3 research/theory_audit/psu_gates_S9_S10_2026_09_05.py",
+        "sha256": "a75d892ef5c156d4c552454266fe1db06ad8cc8494c5fec393cf11c7535c4b18"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-05",
+      "wall_clock": "68 s (constraint solves 43 s + 16 s)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 3 minutes",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic exact sympy; no network. Self-validating: background + first-order ADM constraints hold for arbitrary (m_L, m_S); frozen phi-slice map reproduced before any rho-slice object is built; S9.1 linear shift and lambda' = 2 lambda recovered; 1/k_L poles cancel in every assembly; initial-label rho-slice f isotropic for all eps; attractor (m -> 0) kills dt, A2 and the rho-extra kernel; eps -> 0 kills every cross kernel; K_c squeezed value -2 eps/3; f_map(g=1) reproduces -5 (initial) and -25/4 + 15/4 mu^2 (final, eps=3/2); f_map(g=0) = 0 both labels; attractor cross divergence vanishes for both modes constant. Optional PSU_S9S10_CACHE=<prefix> caches the solves (not used for the committed json)."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.json",
+        "type": "result-json",
+        "checksum": "sha256:def17f817207131eaedb8a7b41a3a350a011fd47074994c095bc56a9ab1f22bc"
+      },
+      {
+        "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.md",
+        "type": "document",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required exact values: S9.lambda_rho_prime(dNc_rho/zeta_phi) == '2 - 2*epsilon/3' (printed '-2*(epsilon - 3)/3'); S9.composition.initial == {const '5*(2*epsilon - 15)/24', mu2 '0', const_3_2 '-5/2'}; S9.composition.final.const_3_2 == '-25/8', mu2_3_2 == '15/8'; S9.threading_minus_lab_deltaN == '-5*(epsilon - 6)/24'; S9.attractor_m0 all '0'; S10.K_c_squeezed_kL_over_kS_to_0 == '-2*epsilon/3'; S10.K_c_limits.K_c_independent_of_m_S == true; S10.f_map_g.initial.g0 == {const '0', mu2 '0'}; S10.f_map_g.final.g1 == {const '-5*epsilon/4', mu2 '5*epsilon/4'}.",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 17: S9/S10 recorded PARTIAL on 2026-09-04 (rho-slice second order open; K_c uncomputed)",
+      "research/theory_audit/psu_gates_S6_S11_2026_09_04.md S9 'missing step' and S10 eq. (S10.1): the two open kernels closed here",
+      "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+      "input 'lab separate-universe delta N on uniform density' used for: the comparison value only, read after the rho-slice map was computed and printed (negative result recorded)",
+      "input 'Namjoo, Firouzjahi & Sasaki 2012' used for: the literature caveat on delta N with non-Gaussian initial data in non-attractor phases (candidate missing step; not verified here)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
     "id": "row11c-threading-map-second-order",
     "title": "Row 11(c): second-order threading map from Maldacena's comoving zeta to the zero-shift (fluid-congruence) delta N_c in a non-attractor contraction; mechanism behind the delta N = -5 vs in-in -15/8 monopole gap",
     "program": "bounce-theory",
@@ -10689,6 +11240,165 @@ export const reproExperiments: ReproExperiment[] = [
     "provenance": [
       "project-context/NEXT_SCIENCE_LEDGER.md row 16, item (iv)",
       "pipelines/p4prime_chirality_test/chirality_structure/ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md (pre-registration committed at 8e429040)"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "row16ivb-bgs-environment",
+    "title": "Row 16 (iv-b) - chirality parity vs DESI DR1 BGS cosmic-web environment",
+    "program": "galaxy-chirality",
+    "paper": "P4",
+    "kind": "validation",
+    "inputs": [
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_0_clustering.ran.fits (13,248,857 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_0_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_0_clustering.ran.fits",
+        "checksum": "sha256:28eeada4fd38568a9744b30b82086ca962811cb389f30b58d538f12124e017f7",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_1_clustering.ran.fits (13,251,505 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_1_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_1_clustering.ran.fits",
+        "checksum": "sha256:125ce00a59cabfcb17eddf8a60ae4744dc885d915641528d0d67e227c8481f0a",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_2_clustering.ran.fits (13,247,566 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_2_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_2_clustering.ran.fits",
+        "checksum": "sha256:0db329a9dbb95a1f3a3973f587865af9085d9d5ec23dd34ea7cb467d0118ef0c",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_3_clustering.ran.fits (13,250,420 rows, 1.66 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_3_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_3_clustering.ran.fits",
+        "checksum": "sha256:452855d35bb72538e7b05b4c1623a66f8186d9e583035feb4337f773a3a15411",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_NGC_clustering.dat.fits (217,614 rows, 0.03 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_NGC_clustering.dat.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_NGC_clustering.dat.fits",
+        "checksum": "sha256:b67e8e3ee579d9673089f2c9c6930b793a2bf1895f85198472fb7fc5aa392825",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_0_clustering.ran.fits (5,432,939 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_0_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_0_clustering.ran.fits",
+        "checksum": "sha256:32757814469155ae4f399e2d0ae4af95fd6599b0804961de84648f6b116b71d4",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_1_clustering.ran.fits (5,435,725 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_1_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_1_clustering.ran.fits",
+        "checksum": "sha256:2d781f04d93bd6142f3e8e943fdf14e0a124163112019db58646e45b7720de51",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_2_clustering.ran.fits (5,429,301 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_2_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_2_clustering.ran.fits",
+        "checksum": "sha256:a1aa18d195a645f34337c15f58a27fa5272741642b4493edfbf5ac465801b421",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_3_clustering.ran.fits (5,432,593 rows, 0.68 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_3_clustering.ran.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_3_clustering.ran.fits",
+        "checksum": "sha256:77e34a57ad8d5bb180b5698dbc713c9e9fd2ce454db301d2ea3e77833f008070",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "DESI DR1 LSS BGS_BRIGHT-21.5_SGC_clustering.dat.fits (82,429 rows, 0.01 GB) -> local ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/BGS_BRIGHT-21.5_SGC_clustering.dat.parquet",
+        "type": "external-dataset",
+        "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/BGS_BRIGHT-21.5_SGC_clustering.dat.fits",
+        "checksum": "sha256:4daf878cc5bfce71c3ee67f91882bd70179643033741af1f1324bdf655c5d98f",
+        "license": "DESI DR1 public data, CC-BY-4.0"
+      },
+      {
+        "name": "P4 chirality catalog (primary-safe, 8,474,531 rows)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+        "checksum": null
+      },
+      {
+        "name": "DESI spec-z x chirality crossmatch (P5)",
+        "type": "internal-artifact",
+        "locator": "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+        "checksum": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_fetch_bgs.py",
+        "entrypoint": "python3 row16ivb_fetch_bgs.py 4",
+        "sha256": null
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_bgs_environment.py",
+        "entrypoint": "python3 row16ivb_bgs_environment.py",
+        "sha256": null
+      },
+      {
+        "path": "pipelines/p4prime_chirality_test/chirality_structure/chirality_structure_common.py",
+        "entrypoint": "imported",
+        "sha256": null
+      }
+    ],
+    "environment": {
+      "python": "numpy, scipy, pyarrow, astropy, healpy, matplotlib",
+      "hardware": "local laptop CPU (no GPU, no cloud)"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "Houston laptop (darwin)",
+      "date": "2026-09-05",
+      "wall_clock": "~2.1 h total: 0.7 h download/compaction + 1.4 h analysis (spec-z rotation null 28 min at 1000 realisations; projected rotation null wall-clock-capped at 10)",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local CPU",
+      "est_wall_clock": "~2.5 h (0.7 h download + ~1.5 h nulls)",
+      "est_cost_usd": 0,
+      "parallelizable": true,
+      "resume_support": true,
+      "notes": "Pre-registration committed BEFORE any download or statistic: commit ce9ce224. Seeds fixed (16050-16053); FITS sha256 recorded above; FITS deleted after compaction to parquet to keep peak disk small. Total download 9.38 GB across 10 DESI files; retained on disk as ~2.3 GB of compacted parquet."
+    },
+    "outputs": [
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_bgs_environment.json",
+        "type": "result-json",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/row16ivb_bgs_environment.png",
+        "type": "figure",
+        "checksum": null
+      },
+      {
+        "locator": "pipelines/p4prime_chirality_test/chirality_structure/ROW16IVB_BGS_ENVIRONMENT_2026-09-05.md",
+        "type": "document",
+        "checksum": null
+      },
+      {
+        "locator": "~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs/parquet_sha256.txt",
+        "type": "result-json",
+        "checksum": null
+      }
+    ],
+    "verification": "Re-run the fetch (sha256 must match) then the analysis; every observed statistic, null mean/std, z and empirical p must match the committed JSON (fixed seeds).",
+    "status": "runnable-now",
+    "provenance": [
+      "project-context/NEXT_SCIENCE_LEDGER.md row 16, item (iv-b)",
+      "pipelines/p4prime_chirality_test/chirality_structure/ROW16IVB_BGS_ENVIRONMENT_2026-09-05.md (pre-registration at ce9ce224)",
+      "closes the data limitation recorded in ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md section 1 (QSO-only LSS products on disk)"
     ]
   }
 ];

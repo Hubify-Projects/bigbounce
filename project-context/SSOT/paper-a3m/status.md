@@ -1178,3 +1178,18 @@ confirms version/md5/pages match. `activityFeed:add` id
 Readiness held at 75. ROUNDS STOPPED (directive R2), unchanged from v3M.0.19.
 Site data sync (`papers.ts`, `live-status.ts`, `reviewTimeline.ts`) covered
 in a separate task bundle.
+
+## v3M.0.21 (2026-09-05) — literature/derivation correction; rounds still stopped
+
+`research/theory_audit/psu_gates_S9_S10_2026_09_05.md` (S9) found the
+second-order uniform-density (rho-slice) delta N map gives f_NL^rho=-5/2 at
+dust, not -55/16 (gap 15/16). Sec. II's cross-check paragraph and Appendix A
+(Bianchi-I subsection) no longer imply -55/16 is reconciled by the
+threading-map identity; both now state the gap and attribute it to an
+omitted intrinsic initial-data bispectrum, not a slice-labelling error. Only
+the comoving-slice delta N value (-5) is fully reconciled; the flagship
+in-in monopole -35/16 is unaffected. 4-pass, 0 undef refs, 0 overfull
+hboxes >10pt, 18 pp, md5 `91d5a6511eb0169054855b5fae85960e`, mirrored to
+`public/papers/a3_multichannel_arxiv_v3M.0.21.pdf` and
+`site/public/papers/a3_multichannel_arxiv_v3M.0.21.pdf`. Readiness held at
+75 — ROUNDS STOPPED (R2), unchanged.
