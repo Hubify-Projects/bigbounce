@@ -604,3 +604,29 @@ still 10^5.3 below NANOGrav — the PTA null stands.
 problem (Cai–Easson–Brandenberger 2012; Quintin+2015 no-go) applied to our own background,
 found by our own computation. Track A's next science is ledger row 14: the joint (r, f_NL)
 dependence on c_s and the viable c_s window. Rows 10 answered; nothing retired.
+
+## 2026-09-04 — A3M: joint (r, f_NL) no-go for the single-field matter bounce (science decision D-A3-11, ledger row 14)
+
+**ORIGINAL CLAIM (through v3M.0.14):** f_NL = −35/16 is the matter-bounce prediction; the
+tensor problem (r = 24, D-A3-10) is a limitation to be cured by a mechanism such as
+c_s < 1.
+
+**NEW CLAIM (v3M.0.15):** for the dust contraction with constant scalar sound speed,
+r = 16ε c_s = 24 c_s (two symbolic routes; reproduces Li+2016 Eq. 3.18) and the squeezed
+f_NL = −165/16 + 65/(8c_s²) (Li+2016 Eq. 4.19 limit, re-derived; → −35/16 at c_s = 1).
+r < 0.036 requires c_s < 1.5e−3, where f_NL^pre ≈ +3.6e6 (f_NL^after 6e5–9e5, ~10⁵σ over
+Planck); |f_NL| ≤ 5.1 requires c_s ≥ 0.444, where r ≥ 10.7. The viable windows are
+disjoint by ~296× in c_s; the transfer through the bounce is c_s-independent (4e−11) and
+cannot help; Quintin+2015's amplification route also fails on the A2 backgrounds
+(needs λ = 25.8, the lab gives 4.0–6.1 with zero net r suppression). **The single-field
+matter bounce, canonical or k-essence, is excluded jointly by r and f_NL** — an independent
+confirmation of Li+2016's no-go, strengthened 3.8×, with the lab's own numbers. A3M's
+claim becomes: (i) the exact amplitude −35/16 and its transmission are correct statements
+about an excluded background; (ii) the joint no-go is stated as a result; (iii) the
+multi-channel map (three nulls, one unseparable channel, the DESI reproduction) is
+conditional on a mechanism outside single-field — curvaton-type (Cai–Xue–Brandenberger
+2011 matter-bounce curvaton; the lab's branch-W ALP-curvaton work) or ekpyrotic
+contraction — which is ledger row 15. Title and abstract are reframed accordingly.
+
+**Why:** VISION R6 (claims at evidential strength; nulls as results). The lab's guiding bet
+is not refuted — the specific single-field realisation is — and the next test is named.
