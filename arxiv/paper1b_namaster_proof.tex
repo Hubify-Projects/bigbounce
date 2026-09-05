@@ -624,6 +624,7 @@ effective-multipole shortcut from ``escapes by omission'' into the S5 class,
 ``requires deliberate fabrication of a recorded intermediate''; that is the
 whole of the improvement, and forgery remains the primitive's stated limit.
 
+\begin{sloppypar}
 \paragraph{Attempt 1 was aborted before unsealing, and is preserved.} The
 first batch-3 seal (\texttt{8b4fa840\ldots}, commit \texttt{b19b72fc}) was
 executed and blind-judged, then abandoned \emph{without ever being
@@ -641,6 +642,7 @@ statement: the sealed \texttt{map\_seed} never actually selected those
 batches' maps either, so their replicates were fresh random draws rather
 than seed-varied executions of one map --- a wording correction only, since
 no batch-1/2 rule depended on reproducing a map.
+\end{sloppypar}
 
 \paragraph{Scope limits.} The estimator exercised in both batches is this
 repository's own spin-0 MASTER implementation, not NaMaster itself: PyMaster
