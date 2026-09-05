@@ -26,7 +26,7 @@ Outputs: this file (verdicts + paper-ready sentences + open items),
 - [x] literature fetched (1101.0822 source; 1206.2382 source; astro-ph/0208055; astro-ph/0607627)
 - [x] sympy derivations + de Sitter validation (script committed)
 - [x] verdicts A–F written
-- [ ] manifest validated; ledger updated
+- [x] manifest validated; ledger updated
 
 ---
 
