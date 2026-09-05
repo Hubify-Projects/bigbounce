@@ -579,7 +579,12 @@ inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  All 41 run in a monorepo checkout; in a
 standalone package install 39 run and the 2 replay-equivalence tests skip
 cleanly, because those two tests replay against production helper modules that
-reside elsewhere in the monorepo rather than inside the package.  The window suite uses an exactly represented
+reside elsewhere in the monorepo rather than inside the package (39/41
+standalone-effective). CI is defined in
+\nolinkurl{.github/workflows/namaster-proof.yml} (Linux, Python
+3.10--3.13, and Windows, Python 3.12); no line- or branch-coverage tool is
+currently configured in that workflow, so a coverage percentage is not
+reported here rather than estimated.  The window suite uses an exactly represented
 synthetic linear workspace to compare the precontracted response with the
 couple--decouple route and to recover an injected grid angle.  Rotation tests
 check conservation of total \(EE+BB\) auto-power.  Receipt tests mutate result
@@ -592,7 +597,9 @@ bandpower edges, and harmonic keyword contracts.  In the associated physical
 production artifact, a workspace of shape
 \([4,20,4,1025]\) gave a maximum absolute difference of
 \(1.41\times10^{-18}\) between direct window contraction and the
-couple--decouple operator. This recorded execution check used IEEE-754
+couple--decouple operator --- zero to double-precision rounding, not a
+fractional-error figure, since the original bandpower magnitudes were not
+retained alongside this scalar. This recorded execution check used IEEE-754
 double-precision arrays and the production driver's \(10^{-10}\) acceptance
 threshold; the package's separate synthetic legacy-helper comparison uses
 zero requested absolute and relative tolerance. Because
@@ -755,26 +762,25 @@ and the
 {repository bandpower artifact} (SHA-256
 \texttt{\seqsplit{b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331}}).
 
-\paragraph{Reproducibility: blind shortcut-detection test.} The pilot (batch
-1, Sec.~\ref{sec:blind-test-pilot}) is recorded under manifest
-\texttt{p1b-blind-shortcut-detection}
-(\nolinkurl{reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json}),
-with scripts \texttt{seal.py}, \texttt{run\_blind.py}, \texttt{verify.py},
-and \texttt{reveal.py} in \nolinkurl{pipelines/namaster_proof/blind_test/};
-reproducing the exact committed run reuses the committed
-\texttt{sealed/key.txt} and \texttt{sealed/assignment.json} rather than
-re-running \texttt{seal.py}, which draws a fresh random key. The primary
-result (batch 2, Sec.~\ref{sec:blind-test-result}) is recorded under manifest
-\texttt{p1b-blind-shortcut-detection-batch2}
-(\nolinkurl{reproducibility/manifests/experiments/p1b-blind-shortcut-detection-batch2.json}),
-with scripts \texttt{variants2.py} (adds S6), \texttt{seal2.py},
-\texttt{run\_blind2.py}, \texttt{verify.py}, and \texttt{reveal2.py} in the
-same directory, reusing the committed \texttt{sealed2/\{key.txt,
-assignment.json\}} the same way. Both batches cost \$0 on any CPU-only
-machine; batch 1's 18 runs plus seal/verify/reveal overhead take
-approximately one to two minutes, and batch 2's 35 runs measured
-\(\sim\)11~s of core execution (36 runs including the reference), under one
-minute including seal, verify, and reveal.
+\begin{sloppypar}
+\paragraph{Reproducibility: blind shortcut-detection test.} Both batches'
+manifests live in \nolinkurl{reproducibility/manifests/experiments/}: the
+pilot (batch 1, Sec.~\ref{sec:blind-test-pilot}) as
+\nolinkurl{p1b-blind-shortcut-detection.json}, and the primary result (batch
+2, Sec.~\ref{sec:blind-test-result}) as
+\nolinkurl{p1b-blind-shortcut-detection-batch2.json}. Scripts for both live
+in \nolinkurl{pipelines/namaster_proof/blind_test/}: batch 1 uses
+\texttt{seal.py}, \texttt{run\_blind.py}, \texttt{verify.py}, and
+\texttt{reveal.py}; batch 2 adds \texttt{variants2.py} (the S6 class) and
+uses \texttt{seal2.py}, \texttt{run\_blind2.py}, the same \texttt{verify.py},
+and \texttt{reveal2.py}. Reproducing either committed run reuses its
+committed \texttt{sealed\{,2\}/key.txt} and
+\texttt{sealed\{,2\}/assignment.json} rather than re-running the seal script,
+which draws a fresh random key. Both batches cost \$0 on any CPU-only
+machine; batch 1's 18 runs plus overhead take approximately one to two
+minutes, and batch 2's 35 runs measured \(\sim\)11~s of core execution (36
+runs including the reference), under one minute total.
+\end{sloppypar}
 
 \section{Reuse Potential}
 
