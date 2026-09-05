@@ -1,7 +1,39 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.6 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** 95 (unchanged) — row-16 disclosure integrated; Houston sign-off read should use v4P.0.6.
+**Current candidate:** v4P.0.7 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** 95 (unchanged) — row-16 disclosure + BGS environment result integrated; Houston sign-off read should use v4P.0.7.
+
+## Row-16 (iv-b) BGS external environment result added (v4P.0.6 → v4P.0.7, 2026-09-05)
+
+Added the row-16 (iv-b) DESI DR1 BGS_BRIGHT-21.5 external environment test
+to the robustness/disclosure subsection: a genuine external tracer field
+(300,043 galaxies, 4 randoms/cap, k=10-NN density contrast vs. randoms —
+not a void finder) replacing the item-(iv) projected self-proxy. Table +
+verdict sentence added; parity fraction by density-contrast bin for the
+spec-z 3D subset (N=121,417) and the projected subset (N=949,584); NULL at
+the pre-registered threshold, largest excursion projected node-like
+f_CW z=+2.96 (p_local=0.0060, p=0.084 after x14 Bonferroni). Source:
+`chirality_structure/ROW16IVB_BGS_ENVIRONMENT_2026-09-05.md`. Manifest:
+`reproducibility/manifests/experiments/row16ivb-bgs-environment.json`
+(added to the itemized reproducibility list). No science-conclusion
+change; readiness stays 95.
+
+- **Version:** v4P.0.7, dated 2026-09-05.
+- **Compile:** 4-pass `pdflatex`, 0 undefined refs, 0 overfull hboxes
+  >10pt (one pre-existing 5.88pt overfull unchanged), 13 pages (+1 from
+  v4P.0.6's 12, the new table + paragraph).
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `1fc6b21ae07accb0b2a3441e4a31ebc1`. Mirrored byte-identically to
+  `site/public/papers/paper4prime_chirality_test_v4P.0.7.pdf`,
+  `public/papers/paper4prime_chirality_test_v4P.0.7.pdf`, and
+  `site/out/papers/` (gitignored build output). Four-way md5 verified
+  (compile == site/public == public/papers == Convex).
+- **arXiv tarball:** `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.7.tar.gz`,
+  standalone-compile smoke tested (extract + 4-pass pdflatex, 0 undefined
+  refs, 13 pages).
+- **Convex:** `paperVersions:bump` id `k57c3hhb090h1zapa7p47k4kyn8dtg74`
+  (slug `paper-4p`, version v4P.0.7) read back verified; `activityFeed:add`
+  id `j57bsb2x7dry9j16ja4jbp5nq58dvnb8` written.
 
 ## Row-16 disclosure integrated (v4P.0.5 → v4P.0.6, 2026-09-04)
 

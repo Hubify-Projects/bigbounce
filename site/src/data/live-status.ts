@@ -125,9 +125,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.6",
+      version: "v4P.0.7",
       readiness: 95,
-      pendingWork: "Row-16 disclosure integrated 2026-09-04 → v4P.0.6 (pixel-level injection calibration, full-parent selection systematic, structure cross-correlation nulls; no science-conclusion change). R3 verification closed; automated review converged; final author review APPROVE; readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.6.",
+      pendingWork: "Row-16 (iv-b) DESI DR1 BGS external environment result integrated 2026-09-05 → v4P.0.7 (genuine external tracer field, spec-z 3D N=121,417 + projected N=949,584, null; no science-conclusion change). R3 verification closed; automated review converged; final author review APPROVE; readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.7.",
     },
     {
       slug: "paper-4",

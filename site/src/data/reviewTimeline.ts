@@ -110,6 +110,25 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "p4p-v4p-0-7-bgs-environment-2026-09-05",
+    dateISO: "2026-09-05",
+    kind: "closure-wave",
+    title: "P4′ v4P.0.7: row-16 (iv-b) DESI DR1 BGS external environment result added",
+    papers: ["P4P"],
+    summary:
+      "Item (iv)'s environment channel used a projected self-proxy (no external tracer had z-overlap with the spirals). Row-16 (iv-b) closes that gap: downloaded the DESI DR1 BGS_BRIGHT-21.5 clustering catalogue + randoms (0.1<z<0.4, 300,043 tracers, 4 randoms/cap) and built a genuine external k=10-NN density-contrast field. Added to the robustness/disclosure subsection as a table + verdict: spec-z 3D subset (N=121,417) parity fraction by density bin (void/wall/node) is null (chi^2 trend z=-0.06, p=0.952, confirmed by a sky-rotation null p=0.917); projected subset (N=949,584) is also null at the pre-registered threshold, largest excursion the projected node-like f_CW (z=+2.96, p_local=0.0060, p=0.084 after x14 Bonferroni). No statistic reaches the pre-declared 3-sigma post-look-elsewhere bar. No change to the primary channel's null result or readiness (95, unchanged, pending Houston sign-off).",
+    keyTakeaways: [
+      "v4P.0.7: 13 pp (+1), 4-pass compile, 0 undefined refs, 0 new overfull hboxes >10pt; md5 1fc6b21ae07accb0b2a3441e4a31ebc1",
+      "Real external tracer field (DESI DR1 BGS_BRIGHT-21.5) replaces the item-(iv) projected self-proxy for the spec-z subset; null in both subsets",
+      "arXiv tarball rebuilt and standalone-compile smoke tested; Convex paperVersions:bump written and read back verified",
+    ],
+    links: [
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+      { label: "Row-16(iv-b) BGS environment", href: `${GH}/pipelines/p4prime_chirality_test/chirality_structure/ROW16IVB_BGS_ENVIRONMENT_2026-09-05.md` },
+      { label: "P4′ paper source", href: `${GH}/pipelines/p4prime_chirality_test/paper/main.tex` },
+    ],
+  },
+  {
     id: "row16-image-level-injection-n20k-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",
