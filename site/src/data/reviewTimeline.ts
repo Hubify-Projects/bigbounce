@@ -25,7 +25,7 @@ export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
  * multi-channel consistency flagship paper, paper-a3m) is added on the same
  * basis after its 2026-09-02 registration.
  */
-export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P" | "P2L" | "A3";
+export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P" | "P2L" | "A3" | "PSU";
 
 export interface ReviewRoundLink {
   label: string;
@@ -66,6 +66,111 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "psu-r2-board-in-progress-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "internal-cc",
+    title: "PSU: R2 verification board in progress on v1S.0.2",
+    papers: ["PSU"],
+    summary:
+      "Per directive R2's convergence budget, one further verification round is permitted after D-PSU-1's R1 closure. R2 board (Claude INT/Grok/Gemini) dispatched against the exact v1S.0.2 PDF (reframed title/abstract, label-resolved compositions, restored gradient term, Table I mono column). In progress; verdicts pending.",
+    keyTakeaways: [
+      "R2 board dispatched against exact v1S.0.2 PDF",
+      "Verdicts pending -- one further round permitted under directive R2 before a new science/scope decision is required",
+    ],
+    links: [{ label: "Status detail", href: `${GH}/project-context/SSOT/paper-su/status.md` }],
+  },
+  {
+    id: "psu-r1-dpsu1-v1s-0-2-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "PSU v1S.0.2: R1 truth-audit closure + D-PSU-1 reframe -- exact change of variable, not a 'failure'",
+    papers: ["PSU"],
+    summary:
+      "R1 board (Claude Fable INT, Grok API, Gemini API) truth-audited: 21 genuinely-new-real findings, 5 falsified, 1 opinion, 1 out-of-scope (project-context/peer-reviews/INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md). Decision D-PSU-1: the isotropic separate universe computes a different variable (delta N_c) from Maldacena's comoving zeta -- an exact, invertible change of variable, delta N_c = zeta_L,f[1 - I/3] + O(k_L^2/a^2H^2), not a 'failure'; the O(1) discrepancy is an error only when delta N_c is identified with zeta (iff I=O(1)). Title/abstract reframed to 'The separate universe computes a different variable: an exact criterion for delta N = zeta in non-attractor phases' (139-word abstract). All three science gates (S1 label-resolved compositions, S2 restored gradient term, S3 framing) resolved (research/theory_audit/psu_gates_S1_S2_2026_09_04.{md,py,json}). Label-resolved: initial-label composition exactly -5 for every constant eps; final-label -25/4+(15/4)mu^2 at eps=3/2. Table I gains an f^in-in_mono=-15/8 column; Cai et al. 2009 cited with the located factor-of-2. 4-pass pdflatex, 0 undef refs, 0 overfull hboxes >10pt, 4 pp, md5 fcbecd03679fdc4ecae3956c35b9b08c. Readiness 55 (up from 40) -- one further verification round (R2) permitted under directive R2.",
+    keyTakeaways: [
+      "D-PSU-1: exact, invertible change of variable, not a 'failure' -- reframed title/abstract",
+      "All three science gates (S1/S2/S3) resolved; 21 genuinely-new-real findings closed",
+      "Label-resolved compositions: initial-label -5 exactly, final-label -25/4+(15/4)mu^2 at eps=3/2",
+      "Readiness 40 -> 55; one further verification round permitted under directive R2",
+    ],
+    links: [
+      { label: "R1 truth-audit", href: `${PR}/INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+    ],
+  },
+  {
+    id: "p1b-r2-board-in-progress-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "internal-cc",
+    title: "P1B: R2 verification board in progress on v2B.0.18",
+    papers: ["P1B"],
+    summary:
+      "Per directive R2, at most one further verification round is permitted on v2B.0.18 before an intervening science/scope decision is required. R2 board (Claude INT/Grok/Gemini) dispatched against the exact v2B.0.18 PDF (batch-2 sealed blind test as primary result, new provenance/attestation-tooling section, per-run appendix table). In progress; verdicts pending.",
+    keyTakeaways: [
+      "R2 board dispatched against exact v2B.0.18 PDF",
+      "Verdicts pending -- at most one further round permitted under directive R2",
+    ],
+    links: [{ label: "Status detail", href: `${GH}/project-context/SSOT/paper-1/status.md` }],
+  },
+  {
+    id: "p1b-r1-truth-audit-batch2-v2b-0-18-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "P1B v2B.0.18: R1 truth-audit closure -- pre-registered batch-2 sealed blind test now primary result",
+    papers: ["P1B"],
+    summary:
+      "R1 truth-audit (project-context/peer-reviews/INT_v3/P1B_v2B.0.17_R1_TRUTH_AUDIT_2026-09-04.md): 23 canonical findings, 21 genuinely-new-real, 8 answered by integrating the pre-registered batch-2 blind test. Batch 2 (35 sealed runs, 7 arms x 5, rules frozen+committed before the seal) is now the PRIMARY result: S1-S4 20/20 detected (one-sided 95% Clopper-Pearson lower bound 0.861), honest 0/5 (FPR upper bound 0.451), S5 metadata-forgery escaped 5/5 (pre-declared), S6 effective-multipole escaped 5/5 with no rule added post hoc (independence caveat pre-declared). Batch 1 (18 runs) relabelled the pilot/rule-development round; its post-hoc wall-clock and M-hash rule changes disclosed, not defended. New 'Relation to Provenance and Attestation Tooling' section (in-toto/SLSA/Sigstore-Rekor/ReproZip/Snakemake/Nextflow/RO-Crate/MLflow). SEM added to 500-realization recovery numbers; exact recovered values reported. Sealed digests of both batches OpenTimestamps-anchored (pending Bitcoin confirmation, disclosed as in-progress). Appendix table of all 35 batch-2 per-run verdicts added. 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 12 pp, md5 89cbca0fc922f9c1c63f1afaf35f8517, tarball sha256 00bb9c78c25882537bd295d48d7adb8ba8041c3a11a5e82e413539ba0654c652, Convex bump k571wkyj4scvf02q553tyq9r8d8dtnsx. R1 CLOSED.",
+    keyTakeaways: [
+      "Batch-2 sealed blind test (35 runs, 7 arms) now the primary result: S1-S4 20/20 detected, honest 0/5",
+      "S5 metadata-forgery and S6 effective-multipole both escaped 5/5, pre-declared and disclosed",
+      "Batch 1 relabelled the pilot round; post-hoc rule changes disclosed, not defended",
+      "New provenance/attestation-tooling related-work section answers the missing-related-work finding",
+    ],
+    links: [
+      { label: "R1 truth-audit", href: `${PR}/INT_v3/P1B_v2B.0.17_R1_TRUTH_AUDIT_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+    ],
+  },
+  {
+    id: "a3m-da3-12-tensor-nogo-v3m-0-17-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3M v3M.0.17: D-A3-12 -- scheme-independent tensor no-go + c_s-dependent bounce cubic term",
+    papers: ["A3"],
+    summary:
+      "Ledger row 18: two items named by the R7 truth-audit are closed. Sec. VII: the tensor mode has no 1/H, eps, c_s, or scalar constraint variables, so the S1/S2 scalar-continuation ambiguity cannot act on it; because the S1 scalar equation with z=a IS the tensor equation, lambda_T = lambda_zeta^S1 identically (1.4e-14 on Quintin-type, 8.5e-9 on poly/LQC) -- r_after^S1=24.0 is an identity, r_after^S2~9.4e2 (39x bounce amplification), both excluded (670x, 2.6e4x), scheme-independent conclusion (row18a_s2_tensor). Sec. VIII: the bounce's own cubic term generalizes to Delta f_NL^bounce(c_s) = -(5/24) rho_B (6c_s^2-5)/c_s^4 (99.97% from the zeta-zetadot^2 vertex, reproduces c_s=1 to 4e-6), sign flip at c_s=sqrt(5/6)=0.913, diverging as 1/c_s^4 vs the transmitted term's 1/c_s^2 (row18b_cs_bounce_cubic); evaluated at the same c_s the Planck-viable boundary moves from c_s>=0.444 (r>=10.7) to c_s>=0.600 (r>=14.4), windows now disjoint ~400x (was 296x); at the tensor-viable c_s=1.5e-3, f_NL^after rises from ~7e5 to ~1e11. No-go strengthened, not relaxed. Abstract updated (302 words). 4-pass, 0 undef refs, 0 overfull hboxes >10pt (largest 3.9pt), 18 pp, md5 b18aafd1288ffddeea2c3a1ee074a23b, tarball sha256 f37ff2e050c6b03349fe0e22c5871caeb2f5f05b3620bed5029fe5ba4c47eba4 (standalone smoke test PASS), Convex bump k5773fexyjhsy11m8gpd4j01xn8dt1fj. Readiness held at 75 -- one verification board (R8) permitted.",
+    keyTakeaways: [
+      "Tensor transfer lambda_T equals the S1 scalar transfer identically -- r_after^S1=24.0 is an identity, r_after^S2~9.4e2 (39x amplification), scheme-independent",
+      "Bounce cubic term generalized to c_s: Delta f_NL^bounce(c_s), sign flip at c_s=0.913, diverges as 1/c_s^4",
+      "Joint (r,f_NL) window strengthened to c_s>=0.600/r>=14.4 (400x BICEP/Keck, up from 296x)",
+      "No-go is strengthened, not relaxed; readiness held at 75, R8 permitted next",
+    ],
+    links: [
+      { label: "row18a_s2_tensor", href: `${GH}/research/cubic_bounce_transmission/row18a_s2_tensor/ROW18A_S2_TENSOR_2026-09-04.md` },
+      { label: "row18b_cs_bounce_cubic", href: `${GH}/research/cubic_bounce_transmission/row18b_cs_bounce_cubic/ROW18B_CS_BOUNCE_CUBIC_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+    ],
+  },
+  {
+    id: "a3m-r7-truth-audit-closure-v3m-0-16-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "A3M v3M.0.16: R7 truth-audit closure -- 16 genuinely-new-real findings, 0 physics errors",
+    papers: ["A3"],
+    summary:
+      "R7 board (Grok_brutal REJECT / Gemini_cosmology MAJOR REVISIONS / Claude Fable 5.1 INT major-revisions) truth-audited: 16 genuinely-new-real findings closed, 0 physics errors beyond scoping and one stale figure (project-context/peer-reviews/INT_v3/A3M_v3M.0.15_R7_TRUTH_AUDIT_2026-09-04.md). R7-01 scoped r=16eps=24 to scheme S1 (S2 raw-ADM gives r_after~9.4e2, worse not cured) -- closed fully in v3M.0.17 above. R7-02 (auditor-found) regenerated Fig. 1 (stale NANOGrav amplitude A=2.4e-15 -> current A=6.46e-15) and fixed an x-axis tick-label collision. R7-03 disclosed the c_s=0.8876 sign flip. R7-04 disclosed the quoted window used T*f_NL^pre(c_s) only, without Delta f_NL^bounce's own c_s-dependence (ledger item A3-cs-bounce, closed in v3M.0.17). R7-05 rebuilt the CaiXue2011 bib entry + added 3 refs. R7-06/07 label/scope fixes. R7-08 Table V non-perturbative-branch labelling. R7-09 reconciled a stale tensor-nHz shortfall (10^5.3 -> 10^6.2). R7-10/11 removed repo-path framing + residual version-history prose (directive Q1). R7-13/14/15 dropped a false QCD-scale claim, marked the Cai conversion 'effectively' exact, restated the six-permutation alternative. Appendix A replaced 'translation coincidence' wording with the label-resolved exact-change-of-variable statement. 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 17 pp, md5 5544bea1dba2db64f25e85d476489ce4, tarball sha256 69d9178f24b6b8a3a292e3d579ec6c8a1c7834de574d31d9499b15c7e375914e, Convex bump k57421pb671psc0vbbxm8zkc698dt1ga. Readiness held at 75. Rounds stopped under directive R2 pending D-A3-12 (v3M.0.17 above).",
+    keyTakeaways: [
+      "16 genuinely-new-real findings closed, 0 physics errors beyond scoping + one stale figure",
+      "R7-01 (tensor-scheme scoping) and R7-04 (Delta f_NL^bounce c_s-dependence) fully closed in v3M.0.17",
+      "Fig. 1 regenerated (stale NANOGrav amplitude corrected); CaiXue2011 bib entry rebuilt from source",
+      "Appendix A wording corrected to the label-resolved exact-change-of-variable statement",
+    ],
+    links: [
+      { label: "R7 truth-audit", href: `${PR}/INT_v3/A3M_v3M.0.15_R7_TRUTH_AUDIT_2026-09-04.md` },
+      { label: "Status detail", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+    ],
+  },
   {
     id: "p1b-novelty-lift3-v2b-0-17-2026-09-04",
     dateISO: "2026-09-04",
