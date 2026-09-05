@@ -69,7 +69,11 @@ A_S, K_STAR = 2.1e-9, 0.05                       # Planck 2018 anchor
 BRANCHES = {"MB_anchored_ns0.9649": 0.9649, "pure_dust_ns1": 1.0}
 F_LO_NHZ, F_HI_NHZ = 2.0, 60.0
 F_YR = 1.0 / (365.25 * 24 * 3600)                # 3.1688e-8 Hz
-NG_A_YR, NG_GAMMA = 2.4e-15, 3.2                 # NANOGrav 15yr HD power law
+NG_A_YR, NG_GAMMA = 10.0 ** -14.19, 3.2          # NANOGrav 15yr HD power law,
+# free-gamma posterior (R6-02 fix): the previous A=2.4e-15 was the
+# gamma=13/3-FIXED-fit amplitude, mismatched against the free-gamma slope
+# 3.2; log10(A)~=-14.19 (A~=6.46e-15) is the free-gamma posterior median,
+# consistent with the gamma=3.2 compared against.
 NG_GAMMA_SIG = 0.6 / 1.645
 
 def delta2_zeta(k, ns):
@@ -257,7 +261,7 @@ def main():
     for name in BRANCHES:
         ax.loglog(fn, curves[name], lw=2, label=f"lab spectrum, {name}")
     ax.loglog(fn, [ng_omega_h2(x) for x in f], "k--", lw=2,
-              label=r"NANOGrav 15yr ($A=2.4\times10^{-15}$, $\gamma=3.2$)")
+              label=r"NANOGrav 15yr ($A=6.46\times10^{-15}$, $\gamma=3.2$)")
     ref = ng_omega_h2(F_YR)
     ax.loglog(fn, ref * (f / F_YR) ** 2.0, ":", color="crimson", lw=1.6,
               label=r"$\gamma=3$ ($\Omega\propto f^2$) at NANOGrav amplitude")

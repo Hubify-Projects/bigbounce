@@ -96,7 +96,7 @@
    "gamma_pred": 5.070199999999998,
    "gamma_pred_analytic_2(ns-1)+5": 5.0702,
    "z_vs_NANOGrav_official_gamma": 5.127464999999995,
-   "log10_amplitude_shortfall_vs_NANOGrav_at_f_yr": 14.341563937534168
+   "log10_amplitude_shortfall_vs_NANOGrav_at_f_yr": 15.201141454110958
   },
   "pure_dust_ns1": {
    "n_s": 1.0,
@@ -109,7 +109,7 @@
    "gamma_pred": 4.999999999999998,
    "gamma_pred_analytic_2(ns-1)+5": 5.0,
    "z_vs_NANOGrav_official_gamma": 4.934999999999994,
-   "log10_amplitude_shortfall_vs_NANOGrav_at_f_yr": 13.735151533391786
+   "log10_amplitude_shortfall_vs_NANOGrav_at_f_yr": 14.594729049968576
   }
  },
  "curves_Omega_GW_h2": {
@@ -169,12 +169,12 @@
   ]
  },
  "nanograv_reference": {
-  "A_at_f_yr": 2.4e-15,
+  "A_at_f_yr": 6.4565422903465625e-15,
   "gamma": 3.2,
   "gamma_sigma_equiv": 0.364741641337386,
-  "Omega_GW_h2_at_f_yr": 3.6234654615493524e-09,
-  "Omega_GW_h2_at_2nHz": 2.5082178774475478e-11,
-  "Omega_GW_h2_at_60nHz": 1.143361376766036e-08,
+  "Omega_GW_h2_at_f_yr": 2.6224163419828753e-08,
+  "Omega_GW_h2_at_2nHz": 1.8152764586472835e-10,
+  "Omega_GW_h2_at_60nHz": 8.274867225976602e-08,
   "source": "Agazie et al. 2023, arXiv:2306.16213 (HD-correlated power law)"
  },
  "what_would_give_gamma3": {
@@ -184,9 +184,9 @@
    "MB_anchored_ns0.9649": -0.03510000000000002,
    "pure_dust_ns1": 0.0
   },
-  "required_Delta2_zeta_at_f_yr_for_NANOGrav_amplitude": 0.016493613732930384,
+  "required_Delta2_zeta_at_f_yr_for_NANOGrav_amplitude": 0.04437154774471077,
   "lab_Delta2_zeta_at_f_yr": 1.0469255053709048e-09,
-  "log10_amplitude_gap": 7.197400039234421,
+  "log10_amplitude_gap": 7.627188797522815,
   "alternative_IR_causal_tail": "Omega_GW ~ f^3 (gamma = 2) is the universal IR causal floor (Cai, Pi & Sasaki 2020, PRD 102 083528, arXiv:1909.13728); gamma = 3 is neither that floor nor the flat-spectrum result -- it requires P_R ~ k^1 sustained ACROSS the band.",
   "k_B_needed_for_a_bounce_feature_in_band_Mpc-1": 38802611.99109953,
   "T_B_needed_GeV": 2.2635057790690967,
@@ -198,7 +198,7 @@
   "answer": "A",
   "gamma_pred_MB_anchored": 5.070199999999998,
   "gamma_pred_pure_dust": 4.999999999999998,
-  "statement": "The lab's CMB-anchored spectrum gives gamma_pred ~ 5.07 (near-flat Omega_GW), NOT gamma = 3, and an amplitude ~1e14 times below the NANOGrav signal. The PTA channel is a NULL for this model: it neither predicts nor is constrained by the signal. gamma = 3 requires P_R ~ k^1 across the nHz band plus a ~1e7 amplitude enhancement -- i.e. exactly the PBH-forming small-scale enhancement the paper's section V C denies the model has."
+  "statement": "The lab's CMB-anchored spectrum gives gamma_pred ~ 5.07 (near-flat Omega_GW), NOT gamma = 3, and an amplitude ~1e15 times below the NANOGrav signal. The PTA channel is a NULL for this model: it neither predicts nor is constrained by the signal. gamma = 3 requires P_R ~ k^1 across the nHz band plus a ~1e8 amplitude enhancement -- i.e. exactly the PBH-forming small-scale enhancement the paper's section V C denies the model has."
  },
- "wall_seconds": 7.79
+ "wall_seconds": 2.62
 }
