@@ -9787,6 +9787,25 @@ export const reviewRounds: ReviewRound[] = [
       { label: "arxiv/paper1b_namaster_proof.tex (v2B.0.21)", href: `${GH}/arxiv/paper1b_namaster_proof.tex` },
     ],
   },
+  {
+    id: "p1b-deferred-sem-recompute-v2B.0.22-2026-09-05",
+    kind: "closure-wave",
+    dateISO: "2026-09-05",
+    title: "P1B v2B.0.22 — deferred D-R3-21 closed: all three injected-angle recovery sigmas now report mean+-SEM",
+    papers: ["P1B"],
+    summary:
+      "The v2B.0.21 R3 closure left one flagged numeric gap open: §IX reported a standard error of the mean for only the first of three injected-angle recovery runs (0.270deg), leaving 0.342deg and the 0.000deg null without an interval. Recomputed all three directly from the committed physical_spectrum_v2/bandpowers.npz per-realization EB bandpowers (N=500 each, the current production artifact) using the identical windowed chi-squared grid-search estimator as scripts/namaster_500mc.py: the theory response was reconstructed exactly from the three stored theory vectors and cross-validated bit-for-bit against the script's own recorded beta_paper1 SD/SEM before trusting it on the other two angles. Result: 0.270deg -> 0.2699+-0.0006deg (SD 0.0128deg), 0.342deg -> 0.3419+-0.0006deg (SD 0.0128deg), 0.000deg (null) -> -0.0001+-0.0006deg (SD 0.0127deg), all N=500.",
+    keyTakeaways: [
+      "No new simulation was run — the per-realization EB bandpowers for all three angles were already committed in bandpowers.npz from the physical_spectrum_v2 production run; only the recovery-and-statistics step needed re-deriving.",
+      "The reconstructed theory response was validated against the script's own beta_paper1 output (0.0128deg / 0.0006deg) before being trusted on the two previously-unlogged angles, closing the D-R3-21 gap without introducing an unverified estimator.",
+      "Remaining deferred items from the R3 audit (Zenodo deposit, venue decision, §6 subsectioning, batch-3 audit-trail sentences, rule-file digest quoting, Table 1 third trust category) are unchanged by this pass.",
+    ],
+    links: [
+      { label: "arxiv/paper1b_namaster_proof.tex (v2B.0.22)", href: `${GH}/arxiv/paper1b_namaster_proof.tex` },
+      { label: "physical_spectrum_v2/bandpowers.npz (source data)", href: `${GH}/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/bandpowers.npz` },
+      { label: "scripts/namaster_500mc.py (recovery estimator)", href: `${GH}/reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──

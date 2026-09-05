@@ -143,8 +143,8 @@
 %   (pipelines/namaster_proof/blind_test/public{,2}/sealed_digest.json.ots,
 %   pending Bitcoin confirmation) and cited as the S2 external-anchor step in
 %   progress. Appendix table of all 35 batch-2 per-run verdicts added.
-\newcommand{\paperVersion}{v2B.0.21}
-\newcommand{\paperTimestamp}{2026-09-05 09:00 PT}
+\newcommand{\paperVersion}{v2B.0.22}
+\newcommand{\paperTimestamp}{2026-09-05 12:00 PT}
 
 \title{\software: Content-bound execution receipts as a shortcut
 detector for pseudo-\(\Cl\) computations}
@@ -891,17 +891,15 @@ shortcut comparison. It requires separately installed PyMaster and healpy.
 \paragraph{Synthetic CMB recovery campaign.}
 The production use case employed CAMB 1.6.6 raw \(EE/BB\) spectra, PyMaster
 2.6, \(N_{\rm side}=512\), \(\ell_{\max}=1024\), and deterministic seeds.
-For each of two nonzero injected angles, a 500-realization, foreground-free
-synthetic run recovered the injection from the mean bandpowers on the declared
-\(0.001^\circ\) grid: \(0.270^\circ\mapsto0.269^\circ\) (mean-of-means
-standard error \(0.0023^\circ\), per-realization standard deviation
-\(0.051^\circ\) over the 500 realizations) and
-\(0.342^\circ\mapsto0.341^\circ\).  The null injection, also run with 500
-realizations, recovered \(-0.001^\circ\).  Per-realization spread was logged
-only for the first angle; the other two were run under the identical
-500-realization procedure and seed structure, so a comparable standard error
-is expected but was not separately recorded, and no interval is reported for
-them here.  These are software-recovery checks under the stated
+For each of two nonzero injected angles plus a null injection, a
+500-realization, foreground-free synthetic run recovered the injection from
+the mean bandpowers on the declared \(0.001^\circ\) grid, with the
+per-realization standard deviation and the mean-of-means standard error
+(SEM \(=\) SD\(/\sqrt{500}\)) computed from all 500 realizations for every
+injected angle: \(0.270^\circ\mapsto0.2699^\circ\pm0.0006^\circ\) (SD
+\(0.0128^\circ\)), \(0.342^\circ\mapsto0.3419^\circ\pm0.0006^\circ\) (SD
+\(0.0128^\circ\)), and \(0.000^\circ\mapsto-0.0001^\circ\pm0.0006^\circ\)
+(SD \(0.0127^\circ\)); all \(N=500\).  These are software-recovery checks under the stated
 simulation contract, not measurements, detection significances, or evidence
 for a physical birefringence model.
 
