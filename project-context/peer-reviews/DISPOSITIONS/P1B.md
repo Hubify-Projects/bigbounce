@@ -69,3 +69,60 @@ Canonical fingerprints registered for future re-flag matching:
 **Standing rule for this lane:** batch 1's 12/12 and 0/3 are **rule-development numbers**
 and must never again be reported as a blind result. Any future leg quoting them against a
 post-v2B.0.18 PDF is a re-flag of C2 and is dispositioned by citing batch 2.
+
+---
+
+## v2B.0.18 R2 — 2026-09-04 (exact PDF sha256 `354d63b2…5074f88d2`, 12 pp)
+
+Active legs Grok API **REJECT** / Gemini API **MINOR REVISIONS** / Claude INT Opus
+**major-revisions**. Full audit: `INT_v3/P1B_v2B.0.18_R2_TRUTH_AUDIT_2026-09-04.md`.
+Board: `INT_v3/P1B_v2B.0.18_R2_BOARD_2026-09-04.md`.
+
+**27 canonical · 19 genuinely-new REAL · 3 OPINION · 2 FALSIFIED-in-part · 1 OUT-OF-SCOPE
+disclosed · 2 SCIENCE.** No fabricated number found. The batch-2 pre-registration was
+independently re-derived by the INT leg (sealed digest `c96b5bf1…` reproduced from the
+revealed key; seal commit `28efa21c` contains no run output; verifier sha256 `6a9acd70…`)
+— **the seal holds**, and R1's C2/C3-ordering half stays closed.
+
+Canonical fingerprints registered for future re-flag matching (D-R2-nn = R2 canon):
+
+- **D-R2-01** abstract CP bounds contradict the pre-declared independence caveat — REAL, editorial.
+- **D-R2-02** "95% interval [0.501,0.807]" is the **90%** two-sided CP interval (95% = [0.472,0.827]);
+  pooled 20/30 is an arm-design artefact — REAL, verified by recomputation.
+- **D-R2-03** abstract calls the window layer spin-0 (module contracts a **spin-2** \[4,n_b,4,n_l\]
+  workspace) and says "not run against PyMaster" while §§8/9/12 report PyMaster 2.6 — REAL.
+- **D-R2-04** S1–S3 share one mechanism (R3+R4); S4's R6 cross-run disjunct 0/5, untested — REAL.
+- **D-R2-05** pre-registration verifiable but no reader recipe; digest is over canonical JSON — REAL.
+- **D-R2-06** "(S3, open)"/"(S2, in progress)" dangling tags colliding with class names — REAL.
+- **D-R2-07** §2's 1.66 / 0.17 deviations untraceable to any committed artefact — REAL.
+- **D-R2-08** "to our knowledge this is the first" primacy claim — REAL, delete.
+- **D-R2-09** "negligible memory footprint" unquantified — REAL.
+- **D-R2-10 … D-R2-19** self-referential §6 refs, 34-s seal window / discard-and-retry gap,
+  OTS not checkable, pre-registration criterion uncited, R6 description correction absent
+  from the pilot disclosure, missing attestation/SNARK related work, implicit coverage
+  abstention, Table 2 caption, spaced slash, title-page version stamp (deferred to the
+  submission build per directive G) — all REAL, editorial.
+- **D-R2-20** JORS scope/adoption/length (Grok E3) — **OPINION**, re-flag of **C11**; venue fit is
+  a decision, not an edit.
+- **D-R2-21** "no value-level rule; S6 evades" — framing half **FALSIFIED** (abstract states the
+  primitive is not a detector of value-level shortcuts; §11 lists S6 as a limitation); re-flag of
+  **C5**; the rule itself is batch-3 science.
+- **D-R2-22** "no precise Wigner-3j count" — **FALSIFIED**: `public2/contract.json::n_wigner3j = 137345`,
+  enforced by R3. Only the workspace-tensor-DOI request survives as an enhancement.
+- **D-R2-23** "threat model incomplete (harness edit)" — **OUT-OF-SCOPE, DISCLOSED**: the abstract
+  states the unmodified-instrumented-harness model and §11 states metadata forgery is undetectable
+  in principle.
+- **D-R2-24 / D-R2-25** physical-units bias for the 1.66 deviation; "no figures" — **OPINION**.
+- **D-R2-26 / D-R2-27** regenerate the 1.41e-18 scalar under a live PyMaster; upstream-3j-counter
+  feasibility — **SCIENCE**.
+
+**Standing rules added for this lane:**
+1. Any future leg quoting the pooled 20/30 or a run-level Clopper–Pearson interval against a
+   post-v2B.0.19 PDF is a re-flag of D-R2-01/D-R2-02 once the class-level presentation lands.
+2. Any leg asserting the 3j count or mask contract is unpublished is a re-flag of D-R2-22 and is
+   dispositioned by citing `public2/contract.json`.
+3. Any leg asserting the paper hides the value-level/metadata escapes is a re-flag of D-R2-21/23
+   and is dispositioned by citing the abstract's threat-model sentence and §11.
+4. **Rounds STOP after v2B.0.19** (directive R2: R1+R2 are the two permitted consecutive rounds).
+   The next P1B action is a science/venue decision — batch 3 (value-level rule + cross-run cache
+   variant) and the PyMaster/OTS confirmations — not another sweep.
