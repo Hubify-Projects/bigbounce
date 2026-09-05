@@ -150,3 +150,120 @@ with source · **OP** opinion/genre/venue · **OOS** out-of-scope, disclosed · 
 **Canonical total 27 · genuinely-new REAL 19 · OPINION 3 · FALSIFIED-in-part 2 ·
 OUT-OF-SCOPE-disclosed 1 · SCIENCE 2.** Zero fabricated numbers found; zero findings
 dispositioned without a source citation.
+
+---
+
+## 3. CLOSURE PLAN
+
+### (i) Editorial — v2B.0.19 (`arxiv/paper1b_namaster_proof.tex`, exact lines)
+
+**E1 · Abstract statistics rewrite (D-R2-01, D-R2-08) — lines 175–186.**
+Replace "flagged 20 of 20 runs drawn from four structural shortcut classes … (one-sided
+95\% Clopper--Pearson lower bound 0.861) with 0 of 5 false positives on honest runs
+(upper bound 0.451)" with:
+> "flagged every replicate of all four structural shortcut classes --- operator-skipping,
+> operator-truncating, grid-reducing and cache-substituting (20/20 runs, 4/4 classes) ---
+> and flagged none of the five honest runs.  Because rules R1--R5 compare seed-independent
+> quantities against a fixed contract, the within-arm replicates measure firing
+> determinism rather than sampling variance; no detection-probability interval is claimed
+> at the run level."
+Delete "to our knowledge this is the first" (line 182) and state the contribution
+directly: "we report a pre-registered, sealed blind map of what a receipt-based check
+does and does not catch, with the negative classes reported as escapes."
+
+**E2 · §6 "Reporting counts" rewrite (D-R2-02, D-R2-04) — lines 457–467.**
+Replace "across all six shortcut arms, 20/30 (point estimate 0.667, 95\% interval
+[0.501, 0.807])" with either (a) deletion, or (b):
+> "A pooled figure across all six arms is not reported: its value is fixed by the
+> arbitrary choice of how many escape classes are included at equal replication and
+> carries no external interpretation."
+Where a class-level interval is wanted, use the only i.i.d. unit: "4/4 structural classes
+detected (one-sided 95\% Clopper--Pearson lower bound 0.473 on the class-level detection
+rate)". Add, after the independence caveat: "S1--S3 are all caught by the same
+trace-mismatch mechanism (R3 and R4); S4 is caught by R6.  The evidence is therefore two
+deterministic mechanisms across four classes, not four independent mechanisms." Add to
+the S4 discussion: "S4's five detections are all the reference disjunct of R6; the
+cross-run disjunct fired 0/5 and is therefore untested in batch 2."
+
+**E3 · Abstract estimator sentence split (D-R2-03) — lines 161–166.** Replace with:
+> "First, it evaluates a uniformly rotated \(EE,EB,BE,BB\) spectrum through the complete
+> bandpower-window operator of a caller-supplied spin-2 NaMaster workspace tensor,
+> avoiding replacement of the operator by bin-centre or effective-multipole templates;
+> the layer has been exercised against PyMaster 2.6 in a retained production artifact
+> (\S\ref{sec:workspace}) and in the integration example (\S\ref{sec:integration})."
+Then, in the blind-test sentence only: "the blind test's instrumented estimator is this
+repository's own spin-0 MASTER implementation, because PyMaster is not installed in the
+test environment and exposes no Wigner-3j counter."
+
+**E4 · Limitations list (D-R2-06) — lines 685–695.** Replace "(S3, open)" and
+"(S2, in progress)" with an explicitly numbered list **L1–L4** (names that cannot collide
+with the shortcut classes S1–S6), each with its status in prose.
+
+**E5 · Reproducibility recipe (D-R2-05, D-R2-11, D-R2-12, D-R2-13, D-R2-14) — §6 protocol
+and §12.** Add a short "how to check this yourself" list: the freeze commit `4451b135`
+contains the rules **specification** (`RULES_v2_FROZEN.md`); `verify.py` was edited once
+between freeze and seal (`28efa21c`) for non-rule plumbing (a one-line output-directory
+argument; `judge()` and the R6 block unchanged), and its post-seal sha256 `6a9acd70…` is
+the digest pinned in `public2/frozen_rules_digest.json`; the sealed digest `c96b5bf1…` is
+`sha256(json.dumps(assignment, sort_keys=True))` (canonical form, **not** the on-disk file
+bytes — that hashes to `c8566d0e…`), with the exact command to reproduce it. Cite
+`BATCH2_PREREGISTRATION.md` and the seal commit for the pre-declared success criterion.
+Add one sentence: the batch-2 sequence was run once and not repeated; git history proves
+the order of surviving commits, not the absence of discarded attempts, and an
+OpenTimestamps anchor does not close that gap either — a third-party rerun or witnessed
+environment does. Date the OTS submission (2026-09-04 19:31) and give `ots upgrade` /
+`ots verify` plus what a confirmed proof would establish (existence of the digest before
+a block time, not an external witness to the execution). Add the R6 description
+correction to the pilot-disclosure paragraph as a third disclosed post-hoc change
+(description only; no code changed — `verify.py` at `a07c496b` already contained the
+reference disjunct), noting that S4's 5/5 rests on that disjunct.
+
+**E6 · Traceability and small fixes.** D-R2-07: cite the script and committed output for
+the 1.66 / 0.17 deviations at lines 228–229, or recompute and commit them (blocking —
+do not ship an untraceable headline number). D-R2-09 line 721: replace "negligible memory
+footprint" with a measured upper bound. D-R2-15 §7: add remote-attestation (TPM measured
+boot, SGX/TDX) and verifiable-computation (SNARK/proof-carrying) sentences with citations.
+D-R2-16 §8: state that no coverage number is reported because no coverage tool is
+configured. D-R2-10: replace self-referential "§6" pointers with named paragraphs.
+D-R2-17: move the Table 2 caption's implementation detail into the text. D-R2-18
+lines 384/471: "pilot or rule-development round". D-R2-19: **not** actioned in v2B.0.19 —
+the version/date stamp is required on review builds by lab directive G; strip it in the
+submission build.
+
+Optional (D-R2-25): one per-arm detection figure with the escapes marked.
+
+### (ii) Science items (not editable text — real work)
+
+- **S1 — Batch-3 pre-registered value-level rule (D-R2-21, D-R2-04).** Design and freeze,
+  before any batch-3 seal, a value-level rule with a pre-registered tolerance on decoupled
+  bandpowers (the class S6 evades by construction), **and** a cache-substitution variant
+  that reuses a *prior blind run's* bandpowers so R6's cross-run disjunct is finally
+  exercised. Same protocol: rules commit alone → seal → run → reveal.
+- **S2 — External timestamp confirmation + PyMaster cross-check.** Upgrade and verify the
+  existing OTS proof (`public2/sealed_digest.json.ots`) and report the confirmed block
+  time. Independently: `pip download pymaster` resolves wheels on this platform, so the
+  PyMaster cross-check is feasible — install PyMaster 2.6 + healpy, run
+  `rebuild_workspace_check.py` to regenerate the \([4,20,4,1025]\) workspace and report a
+  reproducible `max|Δ|` in place of the historical \(1.41\times10^{-18}\) scalar
+  (D-R2-26), and record whether an upstream 3j counter is observable without forking the
+  C layer (D-R2-27).
+- **S3 — Venue decision (D-R2-20).** Grok's REJECT is principally a JORS scope/adoption
+  judgement, not a defect claim. Whether P1B goes to JORS, a methods venue, or rides as
+  supporting software for the parent program is a Houston-level decision, not an edit.
+
+### (iii) R2 statement
+
+The two substantive defects both legs converge on (D-R2-02 mislabelled interval,
+D-R2-01/03 abstract over-statement) are **real, verified in the code by this auditor, and
+editorial** — they are claim-calibration errors, not integrity failures. The
+pre-registration itself was independently re-derived and holds; no fabricated number was
+found. Nineteen genuinely-new real findings entered in R2, of which all nineteen close
+with text edits in v2B.0.19; nothing in the R2 sweep requires new computation to close.
+
+**After v2B.0.19 ships, review rounds on P1B STOP** (directive R2: at most two consecutive
+review rounds without an intervening science or scope decision; R1 and R2 are those two).
+The remaining lever is not another sweep — the residual findings are venue fit
+(D-R2-20), threat-model scope already disclosed (D-R2-23), and pre-registered new
+measurement (S1/S2). The next P1B action after v2B.0.19 is a **science decision**:
+run batch 3 with the value-level rule and the cross-run cache variant, or accept the
+current scope and route the venue question to Houston.
