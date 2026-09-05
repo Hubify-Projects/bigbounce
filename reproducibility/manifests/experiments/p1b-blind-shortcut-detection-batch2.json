@@ -1,0 +1,60 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p1b-blind-shortcut-detection-batch2",
+  "title": "Blind shortcut-detection test, batch 2: pre-registered rerun under frozen rules, with the referee-requested effective-multipole shortcut class (S6)",
+  "program": "lab-infra",
+  "paper": "P1B",
+  "kind": "validation",
+  "inputs": [
+    {"name": "Synthetic HEALPix Gaussian signal realisations (nside=64, lmax=64, power-law C_ell; seeds HMAC-derived from the sealed key)", "type": "internal-artifact", "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_map)", "checksum": null},
+    {"name": "Synthetic binary sky mask (equatorial cut + 12 random discs)", "type": "internal-artifact", "locator": "pipelines/namaster_proof/blind_test/pcl.py (make_mask, seed 11)", "checksum": null},
+    {"name": "namaster-proof receipt primitive (publish_json / verify_json_receipt)", "type": "internal-artifact", "locator": "packages/namaster-proof/src/namaster_proof/receipts.py", "checksum": null},
+    {"name": "Frozen decision rules R0-R6 (pre-registered, committed alone before the seal)", "type": "internal-artifact", "locator": "pipelines/namaster_proof/blind_test/RULES_v2_FROZEN.md", "checksum": null}
+  ],
+  "apis": [],
+  "code": [
+    {"path": "pipelines/namaster_proof/blind_test/variants2.py", "entrypoint": "imported by run_blind2.py", "sha256": "d1a2211c0fad3567e438cdac375e3af5bcc9c3446ee6d2c51b076edcaddb9881"},
+    {"path": "pipelines/namaster_proof/blind_test/seal2.py", "entrypoint": "NP_SEALED_DIR=<outside repo> python3 seal2.py", "sha256": "7b7212ef2277d83bc220237ac8bc3c4908c9fb6d30e358929579e23bcbde00eb"},
+    {"path": "pipelines/namaster_proof/blind_test/run_blind2.py", "entrypoint": "NP_SEALED_DIR=<outside repo> python3 run_blind2.py", "sha256": "149b12d899f671ec42a27e40ecea8640319bd80888a4f21850229c90a76bbff1"},
+    {"path": "pipelines/namaster_proof/blind_test/verify.py", "entrypoint": "python3 verify.py public2", "sha256": "6a9acd705cb50ce12220b95132f993a7f4a90c617e8f03668b32478b1ba815b2"},
+    {"path": "pipelines/namaster_proof/blind_test/reveal2.py", "entrypoint": "NP_SEALED_DIR=sealed2 python3 reveal2.py", "sha256": "10dc181cb14c3352cf8269dd389ef6614ea22e869cceaf1a3b2cfc32475fb41a"}
+  ],
+  "environment": {
+    "python": "python3.14 + numpy 2.5.1 + healpy 1.20.0 + scipy 1.18.0 (scipy used only for the Clopper-Pearson bounds in reveal2.py). NaMaster/pymaster is NOT required and is NOT installed: the test ships its own instrumented spin-0 MASTER estimator, which is a stated scope limit of the result.",
+    "hardware": "cpu-only, any laptop"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation (macOS arm64)",
+    "date": "2026-09-04",
+    "wall_clock": "~11 s for 36 runs (1 reference + 35 blind); < 1 min including seal, verify and reveal",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local CPU",
+    "est_wall_clock": "~1 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "To reproduce the committed batch exactly, skip seal2.py and reuse the revealed sealed2/{key.txt,assignment.json}: NP_SEALED_DIR=$PWD/sealed2 python3 run_blind2.py && python3 verify.py public2 && NP_SEALED_DIR=$PWD/sealed2 python3 reveal2.py, from pipelines/namaster_proof/blind_test/. A fresh seal2.py draws a new key and reproduces the statistics, not the committed digest."
+  },
+  "outputs": [
+    {"locator": "pipelines/namaster_proof/blind_test/public2/sealed_digest.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public2/frozen_rules_digest.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public2/contract.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public2/runs", "type": "receipt", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public2/verdicts.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/public2/scorecard.json", "type": "result-json", "checksum": null},
+    {"locator": "pipelines/namaster_proof/blind_test/sealed2", "type": "result-json", "checksum": null}
+  ],
+  "verification": "Exact, not tolerance-based. (1) reveal2.py re-derives the assignment from the revealed key and asserts sha256 == the digest committed BEFORE any run output existed (assignment_sha256 = c96b5bf1d6d3dd3f6b8131e6260803bb2049e3481b9613b041091ac00a27e9ee; seal_verified = true), and sha256(sealed2/key.txt) must equal key_file_sha256 = bbf6373bc64bf3fbd6614a06e6b3c33e6332be92c9f951f910ad3e6143b3c535. (2) The commit ordering is itself the audit trail: 4451b135 (rules frozen, alone) -> 28efa21c (seal commitment + scripts, no run output in tree) -> 27300504 (35 run outputs + blind verdicts) -> 974e2859 (key reveal + scorecard). (3) public2/scorecard.json must reproduce byte-identically: S1-S4 detection 20/20 (one-sided 95% lower bound 0.861), honest false positives 0/5 (one-sided 95% upper bound 0.451), S5 escapes 5/5, S6 escapes 5/5. (4) Every run's result/receipt pair must pass namaster_proof.receipts.verify_json_receipt.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/peer-reviews/INT_v3/P1B_v2B.0.17_R1_claude_opus_2026-09-04.md (referee MAJORs M1 post-hoc rule amendment, M2 seal priority, M3 implemented-vs-described R6, M4 missing effective-multipole class, M5 intervals — this batch answers them)",
+    "pipelines/namaster_proof/blind_test/RULES_v2_FROZEN.md (frozen decision rules, committed alone in 4451b135)",
+    "pipelines/namaster_proof/blind_test/BATCH2_PREREGISTRATION.md (design, S6 definition, scoring, expectations)",
+    "reproducibility/manifests/experiments/p1b-blind-shortcut-detection.json (batch 1, now labelled the rule-development pilot round)",
+    "pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md section 'Batch 2 (pre-registered)'"
+  ]
+}
