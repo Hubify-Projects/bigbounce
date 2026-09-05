@@ -638,9 +638,15 @@ The production use case employed CAMB 1.6.6 raw \(EE/BB\) spectra, PyMaster
 2.6, \(N_{\rm side}=512\), \(\ell_{\max}=1024\), and deterministic seeds.
 For each of two nonzero injected angles, a 500-realization, foreground-free
 synthetic run recovered the injection from the mean bandpowers on the declared
-\(0.001^\circ\) grid: \(0.270^\circ\mapsto0.270^\circ\) and
-\(0.342^\circ\mapsto0.342^\circ\).  The null injection, also run with 500
-realizations, recovered \(0.000^\circ\).  These are software-recovery checks under the stated
+\(0.001^\circ\) grid: \(0.270^\circ\mapsto0.269^\circ\) (mean-of-means
+standard error \(0.0023^\circ\), per-realization standard deviation
+\(0.051^\circ\) over the 500 realizations) and
+\(0.342^\circ\mapsto0.341^\circ\).  The null injection, also run with 500
+realizations, recovered \(-0.001^\circ\).  Per-realization spread was logged
+only for the first angle; the other two were run under the identical
+500-realization procedure and seed structure, so a comparable standard error
+is expected but was not separately recorded, and no interval is reported for
+them here.  These are software-recovery checks under the stated
 simulation contract, not measurements, detection significances, or evidence
 for a physical birefringence model.
 
