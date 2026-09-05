@@ -1,7 +1,55 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.5 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** not yet scored.
+**Current candidate:** v4P.0.6 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** 95 (unchanged) — row-16 disclosure integrated; Houston sign-off read should use v4P.0.6.
+
+## Row-16 disclosure integrated (v4P.0.5 → v4P.0.6, 2026-09-04)
+
+Added a "Robustness and disclosure" subsection (Sec.~\ref{sec:robustness_disclosure},
+end of the Supplementary systematics diagnostics appendix) carrying three
+row-16 results at evidential strength, as disclosure/robustness content
+(no history narration, per directive Q1):
+
+1. **Pixel-level calibration.** Image-level pixel-parity injection through
+   the production equivariant classifier ($N=20{,}000$, 10 seeds) recovers
+   $dA/df=+0.0167\pm0.0089$ — 47σ below the naive label-identity slope
+   ($+0.434$) and 2.9σ from the mixture-corrected label identity
+   ($-0.0093$). Source: `injection_pilot/ROW13_PILOT_2026-09-04.md` (Part A
+   at N=20k). Manifest: `reproducibility/manifests/experiments/row13-image-level-injection-pilot.json`.
+2. **Full-parent selection behavior.** The 3,200,420-galaxy full-parent
+   dipole ($A=0.566\%$, $z=+4.44$, RA 278.6°/Dec +25.3°) is disclosed as a
+   confidence-cut/DES-leg systematic — removed by the `primary_hc` cut
+   alone ($z=+0.68$) and by dropping the DES leg alone ($z=+0.48$), axis
+   shifts 107.5° across selections — reported, not subtracted from the
+   primary channel's null. Sources: `full_parent/ROW16I_FULL_PARENT_2026-09-04.md`,
+   `full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md`. Manifests:
+   `reproducibility/manifests/experiments/p4p-row16i-full-parent-dipole.json`,
+   `reproducibility/manifests/experiments/p4p-row16ib-axis-shift.json`
+   (both registered in `reproducibility/manifests/programs/galaxy-chirality.json`).
+3. **Structure cross-correlations.** 15 pre-registered chirality×structure
+   statistics (environment density, anomaly positions, redshift, CMB
+   dipole/quadrupole axes) all null against 1000-realization label-shuffle
+   and sky-rotation nulls; data limits stated (QSO-only LSS products, no
+   void catalog; Shamir axis unavailable, not fabricated). Source:
+   `chirality_structure/ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md`.
+
+No science-conclusion change to the primary channel; readiness stays 95.
+
+- **Version:** v4P.0.6, dated 2026-09-04.
+- **Compile:** 4-pass `pdflatex`, 0 undefined refs, 0 overfull hboxes
+  >10pt (one pre-existing 5.88pt overfull unchanged), 12 pages (+1 from
+  v4P.0.5's 11, the new subsection).
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `4e40b0507b924690310e26aae52e26e5`. Mirrored byte-identically to
+  `site/public/papers/paper4prime_chirality_test_v4P.0.6.pdf`,
+  `public/papers/paper4prime_chirality_test_v4P.0.6.pdf`, and
+  `site/out/papers/` (gitignored build output). Three-way md5 verified
+  (compile == served == Convex).
+- **arXiv tarball:** `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.6.tar.gz`,
+  standalone-compile smoke tested (extract + 4-pass pdflatex, 0 undefined
+  refs, 12 pages).
+- **Convex:** `paperVersions:bump` written (slug `paper-4p`, version
+  v4P.0.6) and read back verified; `activityFeed:add` written.
 
 ## Final-review REVISE executed (v4P.0.4 → v4P.0.5, 2026-09-02)
 
