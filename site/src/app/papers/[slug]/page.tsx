@@ -8,6 +8,8 @@ import { reproExperiments } from "@/data/repro";
 import { paperSlugForCode } from "@/lib/reproLab";
 import { MathText } from "@/components/MathText";
 import { Band, PageHeader, EvidenceChip, type EvidenceGrade } from "@/components/primitives";
+import { contributions } from "@/data/tracks";
+import { CONTRIBUTION_TYPE_LABEL, CONTRIBUTION_TYPE_HINT } from "@/lib/contributionTypes";
 import { ExternalReviewPanel } from "@/components/ExternalReviewPanel";
 import { PaperFigureGallery } from "./PaperFigureGallery";
 
@@ -126,6 +128,19 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
             { label: "target", value: paper.target, mono: true },
           ]}
         />
+        {contributions
+          .filter((c) => c.paperSlugs?.includes(paper.slug))
+          .map((c) => (
+            <span
+              key={c.id}
+              className="evidence-chip evidence-chip-type"
+              style={{ marginRight: 12 }}
+              title={CONTRIBUTION_TYPE_HINT[c.contributionType]}
+            >
+              <span className="evidence-chip-dot" aria-hidden="true" />
+              {CONTRIBUTION_TYPE_LABEL[c.contributionType]} &middot; {c.tier}
+            </span>
+          ))}
       </Band>
 
       <Band width="prose">

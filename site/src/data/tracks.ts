@@ -225,6 +225,10 @@ export interface Contribution {
   id: string;
   tier: NoveltyTier;
   contributionType: ContributionType;
+  /** Paper slugs (papers.ts) this contribution is reported in, for the
+   * tier + type chip shown on /papers/[slug]. Not every contribution
+   * maps to exactly one paper. */
+  paperSlugs?: string[];
   title: string;
   track: "Track A" | "Track B" | "Track C" | "Program-wide";
   oneLine: string;
@@ -236,6 +240,7 @@ export const contributions: Contribution[] = [
     id: "matter-bounce-fnl",
     tier: "N2",
     contributionType: "derivation",
+    paperSlugs: ["paper-a3m"],
     title: "Exact Matter-Contraction Non-Gaussianity",
     track: "Track A",
     oneLine:
@@ -246,6 +251,7 @@ export const contributions: Contribution[] = [
     id: "bounce-transmission",
     tier: "N2",
     contributionType: "derivation",
+    paperSlugs: ["paper-a3m"],
     title: "Bounce Transmission of the Non-Gaussian Amplitude",
     track: "Track A",
     oneLine:
@@ -256,6 +262,7 @@ export const contributions: Contribution[] = [
     id: "multichannel-consistency",
     tier: "N2",
     contributionType: "null-result",
+    paperSlugs: ["paper-a3m"],
     title: "Multi-Channel Consistency Test (PTA, PBH, high-z PNG)",
     track: "Track A",
     oneLine:
@@ -266,6 +273,7 @@ export const contributions: Contribution[] = [
     id: "ech-contact-term",
     tier: "N2",
     contributionType: "derivation",
+    paperSlugs: ["paper-1n"],
     title: "Minimal-ECH Contact Term Identified with the Popławski Mechanism",
     track: "Track B",
     oneLine:
@@ -276,6 +284,7 @@ export const contributions: Contribution[] = [
     id: "chiral-gw-gate",
     tier: "N1",
     contributionType: "null-result",
+    paperSlugs: ["paper-1n"],
     title: "Chiral Gravitational-Wave Gate — Closed Negative",
     track: "Track B",
     oneLine:
@@ -286,6 +295,7 @@ export const contributions: Contribution[] = [
     id: "chirality-catalog",
     tier: "N2",
     contributionType: "catalogue",
+    paperSlugs: ["paper-4p"],
     title: "8.47M-Galaxy Chirality Catalog and Spin-Axis Null",
     track: "Track C",
     oneLine:
@@ -296,6 +306,7 @@ export const contributions: Contribution[] = [
     id: "anomaly-catalogue-v2",
     tier: "N2",
     contributionType: "data-release",
+    paperSlugs: ["paper-3"],
     title: "Anomaly Catalogue v2 — Public Science-Target Data Release",
     track: "Track C",
     oneLine:
@@ -306,6 +317,7 @@ export const contributions: Contribution[] = [
     id: "namaster-proof",
     tier: "N2",
     contributionType: "method-tool",
+    paperSlugs: ["paper-1b"],
     title: "namaster-proof Verification Software",
     track: "Track C",
     oneLine:
