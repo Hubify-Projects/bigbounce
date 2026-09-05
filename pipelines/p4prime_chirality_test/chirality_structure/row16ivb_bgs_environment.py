@@ -15,7 +15,7 @@ from chirality_structure_common import (load_chirality, pix_of, PixelShuffler,
 
 BGS = os.path.expanduser("~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/bgs")
 K = 10
-NNULL_SHUF = 1000
+NNULL_SHUF = int(os.environ.get("NNULL_SHUF", 1000))
 NNULL_ROT = int(os.environ.get("NNULL_ROT", 1000))
 RAN_CAP = 3_000_000          # per cap, uniform seeded subsample of the randoms
 OM, H0 = 0.315, 67.4
@@ -136,12 +136,19 @@ def rotation_null(tag, s, ib0, X, td, tr, nd, nr, dim, res, seed, nrot):
     _, _, chi20 = bin_stats(s, ib0)
     cn = []
     t0 = time.time()
-    for _ in range(nrot):
+    budget = float(os.environ.get("ROT_BUDGET_S", 2700))
+    for i in range(nrot):
         Xr = X @ rand_rot(rng).T
         ib, _ = env_bins(knn_rho(td, Xr, dim=dim), knn_rho(tr, Xr, dim=dim), nd, nr)
         cn.append(bin_stats(s, ib)[2])
+        if i % 25 == 24:
+            print(tag, "rot", i + 1, round(time.time() - t0, 1), flush=True)
+        if time.time() - t0 > budget:
+            print(tag, "rotation null stopped at wall-clock budget after", i + 1, flush=True)
+            break
     res[tag]["chi2_trend_rotation_null"] = zscore(chi20, cn)
-    res[tag]["rotation_null_realisations"] = int(nrot)
+    res[tag]["rotation_null_requested"] = int(nrot)
+    res[tag]["rotation_null_realisations"] = len(cn)
     res[tag]["rotation_seconds"] = time.time() - t0
     print(tag, "rotation null done", time.time() - t0, flush=True)
 
@@ -182,7 +189,7 @@ def main():
     ib2, dl2 = env_bins(knn_rho(td2, Q, dim=2), knn_rho(tr2, Q, dim=2), dra.size, rra.size)
     run_subset("photoz_projected", ra, dec, s, ib2, res, 16052)
     rotation_null("photoz_projected", s, ib2, Q, td2, tr2, dra.size, rra.size, 2, res, 16053,
-                  max(NNULL_ROT // 5, 200))
+                  NNULL_ROT)
     res["median_density_contrast"] = {
         "specz_3d": [float(np.median(dl3[ib3 == j])) for j in range(3)],
         "photoz_projected": [float(np.median(dl2[ib2 == j])) for j in range(3)]}
