@@ -1355,8 +1355,12 @@ paper; neither is modelled here (Sec.~\ref{sec:next}).
 The matter-bounce prediction $\fnlloc=-35/16$ -- independently re-derived here
 within the in-in formalism, confirming Li \textit{et al.} (2017) and
 localizing the factor-of-two slip in Cai \textit{et al.} (2009), and now
-confirmed by a method-independent route (Sec.~\ref{sec:crosscheck}) -- is
-not contradicted by any channel currently able to speak, but three of the
+confirmed by a method-independent route (Sec.~\ref{sec:crosscheck}) -- is a
+correct statement about a background that Secs.~\ref{sec:tensor}
+and~\ref{sec:nogo} show is jointly excluded by its own tensor-to-scalar
+ratio and this same non-Gaussianity: no constant sound speed relieves both
+at once. Conditional on that background, the amplitude
+is not contradicted by any channel currently able to speak, but three of the
 four channels tested are honest nulls rather than supporting consistencies.
 Pulsar timing: propagating this model's own committed curvature spectrum
 through the validated induced-GW kernel gives $\gamma_{\rm pred}=5.07$
@@ -1465,7 +1469,18 @@ enhancement mechanisms at $k\eta_B\sim1$ that would be the remaining route
 to reopen Channel~I or the black-hole channel have been checked directly
 (velocity dip, transfer excursion, and LQC
 cubic-operator enhancement, Sec.~\ref{sec:transmission}) and found not to
-reopen either.
+reopen either. Two further items follow directly from
+Secs.~\ref{sec:tensor}--\ref{sec:nogo}: (vi)~converting the curvaton route
+of Sec.~\ref{sec:nogo} into a concrete, checkable prediction requires an
+entropy-sector kinetic-amplification mechanism realized on the A2 bounce
+backgrounds used throughout this paper, and a demonstration that
+$\sigma_*$ stays constant across them -- neither is modelled here, and
+Cai--Xue--Brandenberger's own Eqs.~(62)--(64) (the $\zeta_{NL}$ integral
+through deflation and bounce) remain un-re-derived by this lab; and
+(vii)~the consistency relation $n_T=n_s-1=-0.035$ (Sec.~\ref{sec:tensor})
+is a surviving, cheap discriminator of this class of background from
+single-field inflation independent of the $(r,\fnl)$ no-go, worth a
+dedicated forecast.
 
 %======================================================================
 \appendix
@@ -1640,7 +1655,22 @@ planned for the packaging stage. The exact-amplitude theory lineage this
 paper builds on is archived at Zenodo \texttt{10.5281/zenodo.21461881}. The
 DESI DR1 QSO reproduction of Sec.~\ref{sec:lss} is committed at
 \texttt{research/desi\_png\_reproduction/}, manifest
-\texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md}.
+\texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md}. The tensor amplitude of
+Sec.~\ref{sec:tensor} (ledger row 10) is committed at
+\texttt{research/track\_a3\_multichannel/row10\_r\_ns/} (\texttt{row10\_r\_ns.py},
+\texttt{results.json}); the joint $(r,\fnl)$ no-go of Sec.~\ref{sec:nogo}
+(ledger row 14) is at
+\texttt{research/track\_a3\_multichannel/row14\_cs\_window/}
+(\texttt{row14\_cs\_window.py}, \texttt{results.json}); the curvaton-route
+adjudication is at
+\texttt{research/theory\_audit/curvaton\_matter\_bounce\_adjudication\_}\allowbreak
+\texttt{2026\_09\_04.py}; the PBH sign-correction and extended
+$\gamma_{\rm cr}$ scan of Sec.~\ref{sec:pbh_compaction} (ledger row 11) is at
+\texttt{research/track\_a3\_multichannel/row11\_pbh\_residuals/}; and the
+Appendix~\ref{app:derivation} threading-map identity is at
+\texttt{research/theory\_audit/threading\_map\_second\_order\_}\allowbreak
+\texttt{2026\_09\_04.py}, each with a manifest under
+\texttt{reproducibility/manifests/experiments/}.
 Every computation reported in
 this paper ran on a local CPU (Apple M5, 24\,GB, macOS 26.5) at zero compute
 cost; the PTA/PBH/reach/injection channels ran in under $6\,$s total. Compute venue,
