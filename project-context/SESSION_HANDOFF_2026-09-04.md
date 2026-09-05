@@ -141,3 +141,86 @@ where items overlap):**
 7. RunPod spend approvals: row 16 full-parent dipole run after the 20–50k
    injection lands (~$60 estimate); row 12 full 1M-spectrum DR1 pilot
    (~$50) and, if that succeeds, the full DR1 SSL pass (~$300).
+
+---
+
+## Late-evening state (2026-09-04, close)
+
+**Paper table.**
+
+| Paper | Version | Readiness | Boards | Status |
+|---|---|---|---|---|
+| A3M | v3M.0.19 | 75 | R3–R8 (R3 c1-10, R4 15 real, R7 16 items closed, R8 18 items closed) | ROUNDS STOPPED (R2); five consecutive verification rounds found no physics/numerical error — only row-19 general-λ was Houston-gated, now answered (no-go generalizes to all P(X) k-essence, min r=12.57, 349× BK18) |
+| P1B (namaster-proof) | v2B.0.19 | 95 | R1 (23 findings, 21 genuinely-new-real, batch-2 pre-registered blind test integrated), R2 (statistics-presentation fixes) | ROUNDS STOPPED (R2) pending batch 3 / OTS confirmation / PyMaster cross-check; OTS Bitcoin-anchor pending confirmation |
+| paper-su | v1S.0.3 | 65 | R1 (framing decision D-PSU-1: reframed "failure" → "computes a different variable + criterion"), R2 (E-1..E-11 closed) | ROUNDS STOPPED pending S6–S11 / venue decision |
+| P4′ / ECH Note | v4P.0.5 / v1N.0.5 | 95 | — | unchanged; waiting on Houston sign-off quotes only |
+| Anomaly catalogue v2 | — | — | — | data release documented; Zenodo DOI is Houston's click |
+
+**Science ledger — rows answered today (one-line results).**
+- **Row 9** (bounce-scale enhancement, A3-1e): ANSWERED — no mechanism reopens PTA/PBH; S2-scheme raw-ADM gives a finite two-scheme band (f_NL^after ≈ −1.25 S2 vs −0.50 S1, factor 2.5); exact LQC-dust modes show no enhancement.
+- **Row 10** (model's own r, n_s): CLOSED — r=24 exactly (matter-bounce identity, bounce-invariant to 8e-5), ~670× above BICEP/Keck; n_s=1 exactly (0.9649 is an anchor, not a prediction); r=0.84 WITHDRAWN as a P2 bispectrum-overlap conflation.
+- **Row 11** (PBH residuals): (a) RESOLVED — Choudhury+2025's negative-f_NL-suppresses sign is correct, the lab's earlier enhancement was a cutoff artefact; (b) CLOSED — 255-pt γ_cr scan, ratio 1.84±0.03 holds in-coverage only; (c) DERIVED — exact δN_c threading map.
+- **Row 14** (joint r/f_NL vs c_s): CLOSED — NULL, kill condition met. r=24c_s exactly; r<0.036 needs c_s<1.5e-3 giving f_NL^after ~6e5-9e5 (~1e5σ over Planck); conversely |f_NL|≤5.1 needs c_s≥0.444 (r≥10.7) — windows disjoint by 296×. Confirms + strengthens Li+2016's no-go 3.8×.
+- **Row 15** (curvaton route): CLOSED — partial pass. n_s inherited unchanged (0.9649); r is free via r_dec; f_NL is O(1) and Planck-compatible for r_dec∈[0.113,1] — but the flagship −35/16 dilutes to (r/24)²≈1.5e−6 at the tensor-viable r, below SPHEREx reach. Net with row 14: every cure for r either blows up f_NL (c_s) or dilutes it away (curvaton) — matter bounce is un-diagnosed by f_NL, not excluded by it.
+- **Row 17** (separate-universe failure criterion, paper-su): OPEN → spun into standalone note; R1 board (Fable major-revisions, Grok REJECT, Gemini major-revisions) truth-audited, gates S1/S2/S3 resolved, decision D-PSU-1 reframed the claim; now at v1S.0.3, rounds stopped pending venue.
+- **Row 18** (S2-scheme tensor transfer + c_s-dependent bounce cubic term): DONE both lanes — (a) tensor no-go is scheme-independent (r_after^S1=24.0, r_after^S2=9.37e2, both excluded); (b) Δf_NL^bounce(c_s) generalized, moves the no-go boundary to c_s≥0.600 (r≥14.4, 400× BK18) — strengthens, not relaxes.
+- **Row 19** (general-λ k-essence no-go): DONE — no-go generalized to all P(X); λ is exactly r-independent and Δf_NL^bounce-independent in S1; scan over λ/Σ∈[−1,1] + Li/DBI lines gives min r=12.57 (DBI, c_s=0.524), 349× BK18. The v3M.0.18 "λ=s=0" qualifier is dropped.
+
+**Rows still open.**
+- **Row 4** (DESI f_NL reproduction): ledger #4 v3 — official DESI-collaboration window/P_ell/EZmock-covariance products downloaded and used directly (higher-fidelity than local reconstruction); flagship f_NL=−35/16 now 0.0007σ from the 2-parameter (b1,f_NL) official-covariance fit (n_shot fixed at 0 after a genuine 3-param degeneracy was found and reported honestly, not hidden). Residuals open: wide-angle terms, systematics splits, own-covariance if RunPod becomes reachable.
+- **Row 12** (SSL spectral model, full DR1): OPEN — pipeline built and compiles clean; two pod-boot attempts (RTX 4090 COMMUNITY, RTX 3090 COMMUNITY) both failed SSH within 15 min and were terminated per contract (~$0.27 spent total, no training ran). Two consecutive COMMUNITY-pool SSH failures suggest a pool/networking issue, not a fluke — retry on SECURE-cloud GPU or different region next session.
+- **Row 13** (image-level injection + Euclid Q1): OPEN — GPU program proposed to Houston, not yet run.
+- **Row 16** (galaxy chirality at scale): OPEN, IN PROGRESS — 20k-sample local injection pilot running on MPS (mps device, ~1.36 img/s, at 12048/20000 done, ETA ~96 min at last check, resumable from scale20k_pairs.parquet); STAGE_SAMPLE_DONE marker present, no final DONE/FAILED marker yet. Full-parent (8.47M) dipole and chirality×environment/anomaly cross-correlations still queued behind it.
+
+**Site.** Redesign remains live (tracks-as-spine /research, flat /papers, calm /status,
+works table full-width, contribution-type + novelty-tier labels, "started from one
+question" positioning band). No new site-architecture changes tonight beyond routine
+readiness/version syncs for A3M/P1B/paper-su. Anomaly data-release page unchanged,
+Zenodo DOI still Houston's click.
+
+**Process notes.**
+- A provider rate-limit outage (18:04–18:41 PT, carried over from earlier in the day)
+  had killed four concurrent Agent lanes; recovery held for the rest of the evening —
+  no repeat outage.
+- Anti-stall rules (commit within ~10 tool calls, commit per item, ≤80-line edits, no
+  nested delegation, no Monitor inside a lane) held for every lane that ran tonight;
+  the A3M R3–R8 boards and paper-su R1/R2 all landed via this discipline without a stall.
+- RunPod SSH reachability: two independent programs (row 12 SSL pilot, ledger #4's
+  own-covariance pod) both hit pods that boot but never become SSH-reachable within
+  15–30 min on COMMUNITY-tier GPUs; row 12 burned $0.27 across two attempts, ledger #4's
+  pod burned $0 (never rsynced). This is now a standing lesson: prefer SECURE-tier pods
+  or a different region before another COMMUNITY-tier attempt; always confirm SSH
+  reachability before staging any data transfer.
+- Disposition re-derivation gate lesson: row 11's PBH sign "disagreement" turned out to
+  be a genuine physics resolution (Choudhury+2025 correct, the lab's own earlier
+  enhancement was a cutoff-dependent artefact) rather than a formula mismatch — closing
+  a disposition sometimes requires re-deriving the competing claim term-by-term, not
+  just re-running the lab's own code.
+- `com.you.context-sync` (launchd) continued auto-committing in this repo through the
+  evening ("context-sync: Mac-1287 …" commits interleaved with review-lane commits);
+  expect HEAD to move between checks — always re-read HEAD before trusting a receipt.
+
+**Updated ordered click-list for Houston.**
+1. Sign-off reads (95 → 100): P4′ v4P.0.5 and ECH Note v1N.0.5 — paste sign-off quotes
+   into `SSOT/paper-4p/status.md`, `SSOT/paper-1n/status.md`.
+2. Zenodo DOIs (irreversible): records 21481838/21461899 (P4′/ECH Note); the anomaly
+   catalogue v2 data release; namaster-proof/P1B per §5 of
+   `pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md` (Zenodo upload, then
+   an ASCL entry at ascl.net/code/submit once the DOI exists).
+3. namaster-proof/P1B ASCL/Zenodo kit finalization per the same §5 (packaging steps
+   written, DOI minting is the Houston-only step).
+4. Endorsement emails (gr-qc → Popławski; astro-ph.GA → Desmond) per
+   `SSOT/ENDORSER_OUTREACH_2026-09-02.md`.
+5. **A3M framing read (now a MUST-READ before any A3M submission step, upgraded
+   tonight):** after the no-go generalized to all P(X) k-essence (row 19, v3M.0.19),
+   re-read `SSOT/paper-a3m/status.md` v3M.0.15→v3M.0.19 sections in full and confirm the
+   joint (r,f_NL) no-go + curvaton-dilution framing before submitting.
+6. paper-su venue choice (readiness 65, rounds stopped pending S6–S11/venue).
+7. `HUBIFY_TOKEN` (vault passphrase or `hubify auth login`) — still blocks the manifest
+   importer / hubify parity check.
+8. `com.you.context-sync` decision for this repo — it keeps auto-committing
+   mid-session; decide whether to exclude `bigbounce`.
+9. RunPod spend approvals, contingent on pod reachability: row 16 full-parent (8.47M)
+   dipole run (~$60 estimate) once the 20k local injection pilot finishes; row 12 full
+   1M-spectrum DR1 pilot (~$50) and, if that succeeds, the full DR1 SSL pass (~$300) —
+   only once a pod is confirmed SSH-reachable via public IP or the ssh.runpod.io proxy.
