@@ -67,6 +67,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4p-v4p-0-6-row16-disclosure-integrated-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "P4′ v4P.0.6: ledger row-16 results integrated as disclosure/robustness content",
+    papers: ["P4P"],
+    summary:
+      "Integrated the three ledger row-16 results into P4′ (v4P.0.5 -> v4P.0.6) as a new 'Robustness and disclosure' subsection, at evidential strength, per directive Q1 (no history narration): (1) the N=20,000 pixel-level injection calibration of the label-level A95 curve (dA/df=+0.0167+/-0.0089 vs the naive label identity +0.434, 47 sigma, and the mixture-corrected identity -0.0093, 2.9 sigma); (2) the full-parent (3,200,420-galaxy) dipole (A=0.566%, z=+4.44) disclosed as a confidence-cut/DES-leg systematic -- removed by the primary_hc cut alone (z=+0.68) and by dropping the DES leg alone (z=+0.48), axis shifting 107.5 degrees across selections -- reported, not subtracted; (3) 15 pre-registered chirality x structure cross-correlation statistics (environment, anomaly positions, redshift, CMB axes), all null against 1000-realisation label-shuffle and sky-rotation nulls, with data limits stated (QSO-only LSS products, no void catalogue; Shamir axis unavailable). No change to the primary channel's null result or readiness (95, unchanged, pending Houston sign-off).",
+    keyTakeaways: [
+      "v4P.0.6: 12 pp (+1), 4-pass compile, 0 undefined refs, 0 new overfull hboxes >10pt; md5 4e40b0507b924690310e26aae52e26e5",
+      "Three row-16 results (pixel calibration, full-parent systematic, structure nulls) integrated as disclosure content, not as a mistake-narration rewrite",
+      "arXiv tarball rebuilt and standalone-compile smoke tested; Convex paperVersions:bump written and read back verified",
+    ],
+    links: [
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+      { label: "Row-13 pilot notes", href: `${GH}/pipelines/p4prime_chirality_test/injection_pilot/ROW13_PILOT_2026-09-04.md` },
+      { label: "Row-16(i) full-parent", href: `${GH}/pipelines/p4prime_chirality_test/full_parent/ROW16I_FULL_PARENT_2026-09-04.md` },
+      { label: "Row-16(ib) axis shift", href: `${GH}/pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md` },
+      { label: "Row-16(iv) structure nulls", href: `${GH}/pipelines/p4prime_chirality_test/chirality_structure/ROW16IV_CHIRALITY_STRUCTURE_2026-09-04.md` },
+      { label: "P4′ paper source", href: `${GH}/pipelines/p4prime_chirality_test/paper/main.tex` },
+    ],
+  },
+  {
     id: "row16-image-level-injection-n20k-2026-09-04",
     dateISO: "2026-09-04",
     kind: "closure-wave",
