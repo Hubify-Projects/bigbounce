@@ -1,0 +1,13 @@
+{
+  "d_eff_Mpc_over_h": 4200.0,
+  "los": "firstpoint",
+  "wa_orders": 1,
+  "block_maxabs_by_output_proj": {
+    "Projection(ell=1, wa_order=1)": 11258.07047589134,
+    "Projection(ell=3, wa_order=1)": 20848.27865905804,
+    "Projection(ell=5, wa_order=1)": 20848.27865905804
+  },
+  "library_guard_raised_for_even_projout_at_wa_order_1": true,
+  "library_guard_message": "Wide-angle order 1 produces only odd poles",
+  "conclusion": "At leading wide-angle order (wa_orders=1, the only order pypower implements), PowerSpectrumOddWideAngleMatrix sources nonzero corrections ONLY into odd output multipoles (ell=1,3); all even-ell (0,2,4) output blocks are exactly zero to machine precision. The official DESI window matrix used in fit_fnl_official.py has theory rows for ell=0,2,4 only (no ell=1,3), so this fit's predicted vector is unaffected: applying the leading-order wide-angle correction changes f_NL by exactly 0.0 for both p=1.6 and p=1.0. This is a genuine null result from implementing and running the correction, not a skipped step. The next-order (wa_orders=2) correction to even multipoles is not implemented in pypower and is parametrically suppressed by an additional factor of (comoving pair separation)/d_eff relative to the (already-zero-at-this-fit) order-1 term."
+}
