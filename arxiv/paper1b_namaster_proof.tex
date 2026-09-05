@@ -705,10 +705,10 @@ the software release line. The two numbers are not expected to agree.
 \paragraph{Operating system.}
 The package supports Linux and Windows where Python and NumPy are available;
 CI covers Linux with Python 3.10--3.13 and Windows with Python 3.12. Directory
-metadata are synchronized on POSIX systems after atomic replacement. macOS is
-expected to work as a POSIX platform wherever Python and NumPy are available,
-but is not currently exercised in continuous integration and is therefore
-listed as untested.
+metadata are synchronized on POSIX systems after atomic replacement. The
+suite (including both blind-test batches, Sec.~\ref{sec:blind-test}) is
+developed and exercised locally on macOS (arm64), but macOS is not covered by
+continuous integration, so it is exercised locally, not CI-verified.
 
 \paragraph{Additional system requirements.}
 The package has no special hardware requirements: it is pure Python with a
@@ -819,6 +819,47 @@ No external funding supported this software release.
 
 \paragraph{Competing Interests.}
 The author declares no competing interests.
+
+\section*{Appendix: Batch-2 Per-Run Verdicts}
+\label{app:verdicts}
+
+Table~\ref{tab:appendix-verdicts} lists all 35 batch-2 runs from
+\nolinkurl{blind_test/public2/verdicts.json} and
+\nolinkurl{blind_test/sealed2/assignment.json} (run id, assigned arm, call,
+rule(s) fired), reproducing Table~\ref{tab:blind-results} at per-run
+granularity.
+
+\begin{table}[h]
+\centering
+\footnotesize
+\caption{Batch-2 per-run verdicts (run id \(\to\) arm \(\to\) call \(\to\) rules fired).}
+\label{tab:appendix-verdicts}
+\begin{tabular}{@{}cllc@{\hspace{1em}}cllc@{}}
+\toprule
+\# & Arm & Call & Rules & \# & Arm & Call & Rules \\
+\midrule
+0 & S5 & honest & --- & 18 & S2 & shortcut & R3,R4 \\
+1 & S3 & shortcut & R2,R3,R4 & 19 & S2 & shortcut & R3,R4 \\
+2 & S6 & honest & --- & 20 & honest & honest & --- \\
+3 & honest & honest & --- & 21 & S1 & shortcut & R3,R4 \\
+4 & S1 & shortcut & R3,R4 & 22 & honest & honest & --- \\
+5 & S4 & shortcut & R6 & 23 & S4 & shortcut & R6 \\
+6 & S3 & shortcut & R2,R3,R4 & 24 & S5 & honest & --- \\
+7 & S4 & shortcut & R6 & 25 & S6 & honest & --- \\
+8 & S4 & shortcut & R6 & 26 & S1 & shortcut & R3,R4 \\
+9 & S4 & shortcut & R6 & 27 & S3 & shortcut & R2,R3,R4 \\
+10 & honest & honest & --- & 28 & S5 & honest & --- \\
+11 & S3 & shortcut & R2,R3,R4 & 29 & S1 & shortcut & R3,R4 \\
+12 & S5 & honest & --- & 30 & S2 & shortcut & R3,R4 \\
+13 & S2 & shortcut & R3,R4 & 31 & S5 & honest & --- \\
+14 & S6 & honest & --- & 32 & S1 & shortcut & R3,R4 \\
+15 & S3 & shortcut & R2,R3,R4 & 33 & S2 & shortcut & R3,R4 \\
+16 & S6 & honest & --- & 34 & S6 & honest & --- \\
+17 & honest & honest & --- & & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 
 \footnotesize
 \begin{thebibliography}{9}
