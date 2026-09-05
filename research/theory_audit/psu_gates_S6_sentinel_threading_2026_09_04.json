@@ -61,18 +61,18 @@
   },
   "prediction": {
     "final_label": {
-      "const": "15*(4 - epsilon)/(4*(epsilon - 3))",
-      "mu2": "-15*epsilon/(4*epsilon - 12)",
-      "monopole": "-5",
-      "const_eps_3_2": "-25/4",
-      "mu2_eps_3_2": "15/4"
+      "const": "3*(-5*epsilon - 8)/(4*(epsilon - 3))",
+      "mu2": "3*(-5*epsilon - 44)/(4*(epsilon - 3))",
+      "monopole": "(-5*epsilon - 17)/(epsilon - 3)",
+      "const_eps_3_2": "31/4",
+      "mu2_eps_3_2": "103/4"
     },
     "initial_label": {
-      "const": "-5",
-      "mu2": "0",
-      "monopole": "-5",
-      "const_eps_3_2": "-5",
-      "mu2_eps_3_2": "0"
+      "const": "(-5*epsilon - 6)/(epsilon - 3)",
+      "mu2": "-33/(epsilon - 3)",
+      "monopole": "(-5*epsilon - 17)/(epsilon - 3)",
+      "const_eps_3_2": "9",
+      "mu2_eps_3_2": "22"
     }
   },
   "adjudication_identity": {
@@ -111,5 +111,5 @@
     "sum": "5*epsilon*(9 - epsilon)/18",
     "adjudication": "5*epsilon*(9 - epsilon)/18"
   },
-  "wall_clock_s": 100.6
+  "wall_clock_s": 95.3
 }

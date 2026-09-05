@@ -1,0 +1,283 @@
+{
+ "S6": {
+  "static": {
+   "first_line_mentioning_inin": 253,
+   "map_assembly_lines": [
+    189,
+    190,
+    234,
+    245,
+    246
+   ],
+   "map_built_before_inin_is_read": true
+  },
+  "frozen_pieces_equal_S1S2_closed_forms": true,
+  "Eq4_residual_minus_sign": "0",
+  "Eq4_residual_printed_plus_sign": "5*epsilon*(1 - 3*mu**2)/(2*(epsilon - 3))",
+  "Eq4_correct_form": "f_map^fin - f_map^init = -(5 eps/(4(3-eps)))(1-3mu^2)",
+  "dynamic_sentinel_map_unchanged": true,
+  "rows": {
+   "dust": {
+    "f_map_fin": "15*mu**2/8 - 15/8",
+    "f_map_init": "-15*mu**2/8 - 5/8",
+    "T": "15*mu**2/4 - 5/4"
+   },
+   "attractor": {
+    "f_map_fin": "0",
+    "f_map_init": "0",
+    "T": "0"
+   },
+   "usr_eps_to_0": {
+    "f_map_fin": "0",
+    "f_map_init": "0",
+    "T": "0"
+   }
+  },
+  "verdict": "RESOLVED"
+ },
+ "S7": {
+  "inin_shape_eps_3_2": "15*mu**2/16 - 35/16",
+  "isoceles": "-35/16",
+  "monopole": "-15/8",
+  "Cai_amplitude": "-35/8",
+  "ratio_to_isoceles": "2",
+  "ratio_to_monopole": "7/3",
+  "uniform_factor_test": "a single overall factor 2 on the full shape is consistent with -35/8 only as an isoceles amplitude (ratio 2); as a monopole the ratio is 7/3 (not an integer factor)",
+  "candidate_loci_LITERATURE_not_verified": [
+   "Im vs 2 Im in <zeta^3> = i int <[H_int, zeta^3]>  (overall x2 on every vertex)",
+   "f_NL convention: (5/6) B/(P1P2+perms) with 3 permutations vs a 2-permutation squeezed formula",
+   "zeta vs Phi normalisation (3/5) - excluded: gives 5/3 or 3/5, not 2",
+   "a doubled cubic vertex from the field redefinition zeta -> zeta_n (boundary term counted twice)"
+  ],
+  "what_needs_the_paper_text": "equation-level comparison with Cai, Xue, Brandenberger, Zhang 2009 (arXiv:0903.0631) and Li, Quintin, Wang, Cai 2017 (arXiv:1612.02036)",
+  "verdict": "NOT (symbolic content exhausted; the slip can only be located against the published equations)"
+ },
+ "S8": {
+  "setup": "exact USR (V=const), closed-form N(phi,pi); k->0 linear theory exact; flat-gauge lapse used for pi_loc",
+  "cases": {
+   "es=0.01,ef=1e-06,C1=0,C2=1": {
+    "eps_s": 0.01,
+    "eps_f": 1e-06,
+    "C1": 0,
+    "C2": 1,
+    "N_f": 1.5356131566513846,
+    "I": "0.000100109117613",
+    "lambda_pred_1_minus_I_over_3": "0.999966630294129",
+    "zeta_f": "5706.42385539652",
+    "deltaN_SU_uniform_phi": "5706.23343371664",
+    "ratio_dN_SU_over_zeta_f": "0.999966630295136",
+    "ratio_dN_SU_over_predB": "1.00000000000101",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "-57.4482998670059",
+    "deltaN_SU_uniform_rho": "-57.6387215526353",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.00331466181019",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.0"
+   },
+   "es=0.01,ef=1e-06,C1=1,C2=0": {
+    "eps_s": 0.01,
+    "eps_f": 1e-06,
+    "C1": 1,
+    "C2": 0,
+    "N_f": 1.5356131566513846,
+    "I": "0.0",
+    "lambda_pred_1_minus_I_over_3": "1.0",
+    "zeta_f": "1.0",
+    "deltaN_SU_uniform_phi": "1.0",
+    "ratio_dN_SU_over_zeta_f": "1.0",
+    "ratio_dN_SU_over_predB": "1.0",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "1.0",
+    "deltaN_SU_uniform_rho": "1.0",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.0",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.0"
+   },
+   "es=0.01,ef=1e-06,C1=1,C2=1": {
+    "eps_s": 0.01,
+    "eps_f": 1e-06,
+    "C1": 1,
+    "C2": 1,
+    "N_f": 1.5356131566513846,
+    "I": "0.000100091577455",
+    "lambda_pred_1_minus_I_over_3": "0.999966636140848",
+    "zeta_f": "5707.42385539652",
+    "deltaN_SU_uniform_phi": "5707.23343371664",
+    "ratio_dN_SU_over_zeta_f": "0.999966636141855",
+    "ratio_dN_SU_over_predB": "1.00000000000101",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "-56.4482998670059",
+    "deltaN_SU_uniform_rho": "-56.6387215526353",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.00337338212272",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.0"
+   },
+   "es=0.01,ef=0.0001,C1=0,C2=1": {
+    "eps_s": 0.01,
+    "eps_f": 0.0001,
+    "C1": 0,
+    "C2": 1,
+    "N_f": 0.7680792922274507,
+    "I": "0.00100090176211",
+    "lambda_pred_1_minus_I_over_3": "0.999666366079297",
+    "zeta_f": "518.921623829614",
+    "deltaN_SU_uniform_phi": "518.748493973723",
+    "ratio_dN_SU_over_zeta_f": "0.999666366079308",
+    "ratio_dN_SU_over_predB": "1.00000000000001",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "-57.4655916967392",
+    "deltaN_SU_uniform_rho": "-57.6387215526353",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.00301275686518",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.0"
+   },
+   "es=0.01,ef=0.0001,C1=1,C2=0": {
+    "eps_s": 0.01,
+    "eps_f": 0.0001,
+    "C1": 1,
+    "C2": 0,
+    "N_f": 0.7680792922274507,
+    "I": "0.0",
+    "lambda_pred_1_minus_I_over_3": "1.0",
+    "zeta_f": "1.0",
+    "deltaN_SU_uniform_phi": "1.0",
+    "ratio_dN_SU_over_zeta_f": "1.0",
+    "ratio_dN_SU_over_predB": "1.0",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "1.0",
+    "deltaN_SU_uniform_rho": "1.0",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.0",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.0"
+   },
+   "es=0.01,ef=0.0001,C1=1,C2=1": {
+    "eps_s": 0.01,
+    "eps_f": 0.0001,
+    "C1": 1,
+    "C2": 1,
+    "N_f": 0.7680792922274507,
+    "I": "0.000998976660872",
+    "lambda_pred_1_minus_I_over_3": "0.999667007779709",
+    "zeta_f": "519.921623829614",
+    "deltaN_SU_uniform_phi": "519.748493973723",
+    "ratio_dN_SU_over_zeta_f": "0.999667007779721",
+    "ratio_dN_SU_over_predB": "1.00000000000001",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "-56.4655916967392",
+    "deltaN_SU_uniform_rho": "-56.6387215526353",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.00306611248893",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.0"
+   },
+   "es=0.001,ef=1e-09,C1=0,C2=1": {
+    "eps_s": 0.001,
+    "eps_f": 1e-09,
+    "C1": 0,
+    "C2": 1,
+    "N_f": 2.302640657755363,
+    "I": "1.00011091118e-6",
+    "lambda_pred_1_minus_I_over_3": "0.999999666629696",
+    "zeta_f": "576676.974335524",
+    "deltaN_SU_uniform_phi": "576676.787859165",
+    "ratio_dN_SU_over_zeta_f": "0.999999676636371",
+    "ratio_dN_SU_over_predB": "1.00000001000668",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "-577.061789146585",
+    "deltaN_SU_uniform_rho": "-577.254036124676",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.00033314799508",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.00000000000001"
+   },
+   "es=0.001,ef=1e-09,C1=1,C2=0": {
+    "eps_s": 0.001,
+    "eps_f": 1e-09,
+    "C1": 1,
+    "C2": 0,
+    "N_f": 2.302640657755363,
+    "I": "0.0",
+    "lambda_pred_1_minus_I_over_3": "1.0",
+    "zeta_f": "1.0",
+    "deltaN_SU_uniform_phi": "1.0",
+    "ratio_dN_SU_over_zeta_f": "1.0",
+    "ratio_dN_SU_over_predB": "1.0",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "1.0",
+    "deltaN_SU_uniform_rho": "1.0",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.0",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.0"
+   },
+   "es=0.001,ef=1e-09,C1=1,C2=1": {
+    "eps_s": 0.001,
+    "eps_f": 1e-09,
+    "C1": 1,
+    "C2": 1,
+    "N_f": 2.302640657755363,
+    "I": "1.00010917691e-6",
+    "lambda_pred_1_minus_I_over_3": "0.999999666630274",
+    "zeta_f": "576677.974335524",
+    "deltaN_SU_uniform_phi": "576677.787859165",
+    "ratio_dN_SU_over_zeta_f": "0.999999676636932",
+    "ratio_dN_SU_over_predB": "1.00000001000666",
+    "zeta_rho_f (= zeta_f - zetadot_f/3H_f)": "-576.061789146585",
+    "deltaN_SU_uniform_rho": "-576.254036124676",
+    "ratio_dN_SU_rho_over_zeta_rho_f": "1.00033372631498",
+    "ratio_dN_SU_rho_over_(zeta_rho_f - I zeta_f/3)": "1.00000000000001"
+   }
+  },
+  "verdict": "RESOLVED: delta N_SU(phi,pi)/zeta_f = 1 - I/3 to 1e-12 (eps_s=1e-2, eps_f=1e-6: I=1.0011e-4, lambda-1=-3.34e-5); identification delta N = zeta_f fails by exactly I/3 on both final slices"
+ },
+ "S9": {
+  "slice_shift_dt": "-zetadot/(3*H**2)",
+  "zeta_rho_general": "zeta_phi - zetadot/(3H)  (exact, linear, k->0, single field)",
+  "growing_mode_constant_eps": {
+   "zeta_rho_over_zeta_phi": "2 - epsilon/3",
+   "dNc_rho_over_zeta_phi": "2 - 2*epsilon/3",
+   "lambda_phi": "1 - epsilon/3",
+   "lambda_rho": "2*(epsilon - 3)/(epsilon - 6)"
+  },
+  "rows": {
+   "dust_eps_3_2": {
+    "zeta_rho/zeta_phi": "3/2",
+    "lambda_phi": "1/2",
+    "lambda_rho": "2/3",
+    "dNc_rho/zeta_phi": "1"
+   },
+   "attractor": {
+    "zetadot": 0,
+    "all_slices_coincide": true,
+    "lambda": 1
+   },
+   "USR_growing_de_Sitter": {
+    "zetadot/(H zeta)": 3,
+    "zeta_rho/zeta_phi": "0",
+    "note": "uniform-rho = flat slices for the USR growing mode; S8 numerics: rho-slice threading identity holds to 1e-12"
+   }
+  },
+  "which_slice_the_note_uses": "comoving (uniform-phi) final slice, by construction of the comoving-gauge threading identity; the delta-N literature value -5 (Cai lanes A/B/C) is quoted on uniform-density slices",
+  "second_order_missing_step": "H dt^(2)_{LS} from the L x S lapse A2(tau) of the threading constraint solve, run through the same squeezed-limit pipeline; not evaluated here",
+  "verdict": "PARTIAL: linear-order slice dependence is exact and O(1) (dust: lambda_phi = 1/2, lambda_rho = 2/3, zeta_rho = 3/2 zeta_phi); the second-order (-5) composition on the rho slice is not computed"
+ },
+ "S10": {
+  "linear": {
+   "I": "eps*g",
+   "lambda": "-epsilon*g/3 + 1",
+   "note": "exact for any admixture; I<eps iff g<1"
+  },
+  "zlap_is_total_derivative": "(2/3) eps [zeta_L zeta_S]_i^f, so K_zlap = 2 eps/3 for any history with a flat start",
+  "K_rest_growing_initial_label": "epsilon*(epsilon**2*mu**2 - epsilon**2 - 3*epsilon*mu**2 + 5*epsilon - 10)/6",
+  "f_map_mixed(g, K_c)": "5*(-6*K_c*(g - 1) - epsilon*g*(-epsilon**2*mu**2 + epsilon**2 + 3*epsilon*mu**2 - 5*epsilon + 10) + 4*epsilon)/(4*(epsilon*g - 3)**2)",
+  "f_map_g_to_0_known_part": "5*epsilon/9",
+  "rows": {
+   "dust": "5/6",
+   "attractor": "0",
+   "usr_eps_to_0": "0"
+  },
+  "missing_step": "constant-mode L x S second-order constraint solve (m_L = 0, m_S = m) for K_c; the in-in f for a mixed long mode is likewise a new mode-function computation",
+  "verdict": "PARTIAL: linear part exact; second-order map given up to one uncomputed kernel K_c"
+ },
+ "S11": {
+  "verdict": "NOT (archival action: Zenodo upload of the exact script release requires the lab account; no derivation)",
+  "release_contents": [
+   "psu_gates_S1_S2_2026_09_04.{py,json}",
+   "psu_gates_S6_S11_2026_09_04.{py,json}",
+   "threading_map_second_order_2026_09_04.{py,json}",
+   "separate_universe_failure_criterion_2026_09_04.{py,json}"
+  ]
+ },
+ "verdicts": {
+  "S6": "RESOLVED",
+  "S7": "NOT (symbolic content exhausted; the slip can only be located against the published equations)",
+  "S8": "RESOLVED: delta N_SU(phi,pi)/zeta_f = 1 - I/3 to 1e-12 (eps_s=1e-2, eps_f=1e-6: I=1.0011e-4, lambda-1=-3.34e-5); identification delta N = zeta_f fails by exactly I/3 on both final slices",
+  "S9": "PARTIAL: linear-order slice dependence is exact and O(1) (dust: lambda_phi = 1/2, lambda_rho = 2/3, zeta_rho = 3/2 zeta_phi); the second-order (-5) composition on the rho slice is not computed",
+  "S10": "PARTIAL: linear part exact; second-order map given up to one uncomputed kernel K_c",
+  "S11": "NOT (archival action: Zenodo upload of the exact script release requires the lab account; no derivation)"
+ },
+ "wall_clock_s": 0.5,
+ "sympy": "1.14.0",
+ "mpmath": "1.3.0"
+}
