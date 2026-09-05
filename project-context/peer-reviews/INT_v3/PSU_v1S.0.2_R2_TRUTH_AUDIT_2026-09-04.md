@@ -135,3 +135,69 @@ Two observations the count alone hides:
    it was wrong ($-35/8$ is Cai's isoceles amplitude, not a monopole; the correct counterfactual
    ratio is $4/3$). **Rule for this lab: any number a disposition hands to a manuscript gets the
    same independent re-derivation gate as a number in the manuscript.**
+
+## 5. CLOSURE PLAN
+
+### (i) Editorial — `v1S.0.3` (exact lines in `arxiv/paper_su_criterion/main.tex`)
+
+| # | Line(s) | Edit |
+|---|---|---|
+| E-1 | 39–41 | C1/C13/C18/C20 abstract rewrite: "…is an **exact linear-order, super-Hubble** change of variable…; at second order the initial-position label composes the in-in bispectrum back to **the isotropic separate-universe value, $-5$**, for every constant $\eps$… ultra-slow-roll ($I=O(\sqrt{\eps_s\eps_f})$)… **one nontrivial check (matter contraction) plus three consistency limits**" |
+| E-2 | 144–145 | C2: `=f_{\rm map}^{\rm init}+` → `=f_{\rm map}^{\rm init}-`; re-run the sympy gate on the **printed** Eq. (4) (the current script asserts only the composed totals) |
+| E-3 | 126 | C3: "$1-\lambda=I/3$ reduces to $\eps/3$ for constant $\eps$ (i.e. $I\to\eps$), so $\lambda\equiv1-I/3=1-\eps/3$" |
+| E-4 | 88–90 | C4/C6: "Cai *et al.* quote a squeezed (isoceles) amplitude $-35/8$; the from-scratch shape is uniformly a factor of 2 smaller ($-35/16$, monopole $-15/8$). Were the from-scratch shape uniformly twice as large, the monopole would be $-15/4$ and the gap to $f_{\delta N}^{\rm init}=-5$ would be $-5/4$, **a ratio of $4/3$ rather than $8/3$**. The **linear** criterion $\lambda=1-\eps/3$ is independent of any bispectrum; only the second-order $-5$ composition uses the in-in input." |
+| E-5 | 331, 336, 337 + new | C5/C7: verify against the arXiv listings, then fix [6] (split DPS "On separate universes" arXiv:1504.00351, JCAP **1510, 059** from Conformal Fermi Coordinates arXiv:1502.02011, JCAP 1511, 043), [11] "D.~Artigas, J.~Grain, V.~Vennin", [12] "J.~H.~P.~Jackson \etal"; add Li, Quintin, Wang & Cai, arXiv:1612.02036 |
+| E-6 | §IV (248–276) | C8 paragraph on DPS "On separate universes" (which assumption fails at $I=O(1)$); C10 rename the gradient-expansion order to $\eps_{\rm grad}$ |
+| E-7 | 37, 118–121 | C9: error term inside the bracket, $\zeta_{L,f}[1-I/3+O(k_L^2/a^2H^2)]$ |
+| E-8 | 122–130 | C11 (state $\zeta_L(t_i)=0$ for the second-order map), C19 (Eq. (1) caveats), C16 (uniform-$\phi$ vs uniform-$\rho$; LMS $\delta N=\zeta_{ud}$ is not the compared object) |
+| E-9 | Table I + 165 | C12 (relabel "dust" → "$w=0$ scalar, $c_s=1$"; note genuine dust $c_s\to0$), C17 (ekpyrosis row), C14, C15 (kination/attractor domain qualifiers), C20 (USR entry marked not computed here) |
+| E-10 | Reproducibility | C23 ($\Theta$ definition), C24 (`\url`/breakable macro for paths), C22 (Zenodo DOI once minted) |
+| E-11 | new Appendix A | **C21 — required.** See below |
+
+**Appendix A (self-containedness) — the audit finds this REQUIRED for a standalone PRD note:**
+three of four legs (Grok E1/E2, Gemini 3, Fable M3) independently judged the note unverifiable
+without [21],[22], and this audit could verify the *composition* but not the *kernels*. Transcribe
+from the committed notes:
+
+1. `threading_map_second_order_2026_09_04.md` §2 — the second-order lapse/shift solution used
+   (constant $\eps$, $c_s=1$) — and §3 "Totals" — the five kernel contributions `zlap`, `psi2`,
+   `grad`, `wl_fin`, `lab_init` with their closed forms.
+2. `psu_gates_S1_S2_2026_09_04.md` §S1.1–S1.3 — the two worldline labels, the translation
+   $\xi^i=\int N_L^i dt$, Eq. (S1.1) $T=\tfrac{5\eps}{4(3-\eps)}(1-3\mu^2)$ (zero monopole), and the
+   per-label maps.
+3. `fnl_matter_contraction_adjudication_2026_09_02.md` l. 22–23 — the general-$\eps$ in-in **shape**
+   $\tfrac{5}{12}(\eps^2\mu^2-\eps^2+6\eps-12)$ (the note currently prints only its monopole), which
+   the isotropy of $f_{\delta N}^{\rm init}$ depends on, with its source.
+4. An explicit sentence (Fable Q4) that the map derivation takes **no in-in and no $\delta N$ input** —
+   verify against the script before writing it. Without it a referee cannot separate an identity
+   from a fit to the lab's own $-5$.
+
+### (ii) SCIENCE items (not closable by editing)
+
+| Gate | Item | Why it is science |
+|---|---|---|
+| **S6** | Verify (not assert) that the second-order map used no in-in/$\delta N$ input; add the printed-Eq. (4) assertion to the sympy gate | identity-vs-fit is the note's central credibility claim |
+| **S7** | The Cai 2009 factor-2 dispute: either an equation-level appendix locating the slip, or downgrade to "differs from [18]"; must engage Li, Quintin, Wang & Cai 2017, which reproduces Cai's polynomial (adjudication l. 38) | contradicting a published result needs in-manuscript evidence |
+| **S8** | Turn the USR row into a real validation: exact numerical $\delta N(\phi,\pi)$ at finite $\eps_s$ (e.g. $\eps_s=10^{-2},\eps_f=10^{-6}$, $\lambda-1\approx-3\times10^{-5}$) — Fable Q3 | the only route to more than one nontrivial check |
+| **S9** | To which final slice (uniform $\phi$ or uniform $\rho$) is the separate-universe $-5$ computed, and is it the same on both? — Fable Q1 | a second $O(1)$ slice ambiguity of the same order as the effect |
+| **S10** | $f^{\rm init}_{\rm map}$ when $\zeta_L$ carries a constant piece as well as the growing mode ($I<\eps$) — Fable Q2 | §III claims a general-history statement; kernels exist only for a constant-$\eps$ power law |
+| **S11** | Zenodo DOI for the exact script release (carried from R1 E9) | archival record |
+| — | Bianchi-I anisotropic separate-universe recovery of the in-in monopole/quadrupole (adjudication l. 40) | remains the open physics route; out of scope for this note |
+
+## 6. R2 statement
+
+Verdict board: Grok **REJECT**, Gemini **MAJOR REVISIONS**, Fable INT **MAJOR REVISIONS**. Verdict
+words are diagnostic, not a gate (directives P, H-refined); the operative result is **20
+genuinely-new real findings**, so `paper-su` is **not converged** and its clean-wave count is 0.
+
+Per **directive R2** (convergence budget: at most two consecutive rounds without an intervening
+science or scope decision), R1 and R2 exhaust the budget. **After `v1S.0.3` lands the E-1…E-11
+closures, review rounds on `paper-su` STOP** until a science or venue decision is taken on S6–S10 —
+specifically: does the lab fund S7 (equation-level Cai reconciliation) and S8 (numerical USR
+validation), or is the note rescoped (e.g. Brief Report / comment, or held pending the Bianchi-I
+route)? Running R3 on an editorially-patched v1S.0.3 would measure referee variance, not progress.
+
+*Integrity note:* this audit consulted `DISPOSITIONS/PSU.md` and the R1 audit only to classify
+re-flags; every physics disposition above was re-derived independently (§1) before being written,
+and no finding was dispositioned non-real on assertion. No verdict was faked; the two FALSIFIED
+items carry line-level citations to the artifact.
