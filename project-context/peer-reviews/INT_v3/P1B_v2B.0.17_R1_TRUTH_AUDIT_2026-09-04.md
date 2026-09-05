@@ -38,3 +38,48 @@ S5 metadata forgery escaped 5/5 (pre-declared); **S6 effective-multipole escaped
 **no rule was added after the fact**. One-sided 95% Clopper–Pearson: sensitivity lower
 bound **0.861** (= 0.05^(1/20)); FPR upper bound **0.451** (= 1 − 0.05^(1/5)). Batch-1
 equivalents, for the pilot framing: 12/12 → lower bound **0.779**; 0/3 → upper bound **0.632**.
+
+---
+
+## Canonical findings (23), merged across legs
+
+Legend: **(a)** genuinely-new real · **(d)** opinion. No (b) re-flags (R1 on this version,
+`DISPOSITIONS/P1B.md` holds no v2B fingerprints), no (c) falsifications, no (e).
+"B2" = already answered by pre-registered batch 2 → closable in v2B.0.18 by integrating it.
+
+| # | Fingerprint | Legs | Class | Source check | Closure action |
+|---|---|---|---|---|---|
+| C1 | Headline 12/12 + 0/3 obtained on the repo's own spin-0 MASTER estimator, not NaMaster and not the spin-2 operator; abstract does not qualify | Grok E1, E3; Gemini E1; Claude M6 | **(a)** | VERIFIED. Abstract says "evaluates … through the complete NaMaster bandpower-window operator" then "detected all 12 runs" with no surrogate clause; §6 "Scope limits" discloses it. Abstract/body mismatch is real. | Abstract clause: "demonstrated on an instrumented spin-0 MASTER estimator in this repository, not on NaMaster itself". |
+| C2 | The "pre-declared, sealed blind protocol" had two rules amended *after* unblinding; the 0% FPR is a rule-fitting number, not a blind result | Gemini E2; Claude M1 | **(a)**, **B2** | VERIFIED and **TRUE for batch 1**: §4 states the wall floor "would have fired on 3/3 honest runs" and was excluded, and the M-hash rule was corrected, both "discovered by running the test". | **B2 fixes it**: rules frozen alone in `4451b135` *before* the seal `28efa21c`. Reframe batch 1 as the pilot/rule-development round with the post-hoc change disclosed; batch 2 becomes the primary result. |
+| C3 | Seal priority asserted, not externally anchored; "independently verified" overstates; only 8 hex chars given | Grok M1; Claude M2 | **(a)**, **B2 partial** | VERIFIED. §6 quotes `0f4ca4ba…` with no timestamp or witness; batch 1's digest and outputs entered git in one commit (`d60949b7`). | **B2 partially fixes it**: commit-ordering trail (rules→seal→outputs→key→manifest), sealed material outside the tree, `seal_verified: true`. Residual = external anchor → SCIENCE item S2. Delete "independently verified"; state ordering, not witness. |
+| C4 | Implemented R6 flags equality with `reference_bandpowers_sha256`; the paper describes only cross-run reuse — verifier and paper disagree | Claude M3; Q4 | **(a)**, **B2** | VERIFIED against `verify.py::main` via `RULES_v2_FROZEN.md`. | **B2 fixes it**: R6 restated verbatim with both disjuncts; batch 2 reports **all 5 S4 detections fired the reference disjunct, 0 the cross-run disjunct** — under the rule as previously *described*, S4 would have gone undetected. Print the verbatim R0–R6 table. |
+| C5 | The five classes omit the effective-multipole shortcut the paper itself names as the common one, and were chosen inside the verifier's visible space | Claude M4; Q3 | **(a)**, **B2** | VERIFIED. §2 motivates the whole windows module by that shortcut; no arm tests it. | **B2 tests it and it ESCAPED 5/5**, with no pre-declared expectation and **no rule added afterwards**. The paper must now state the escape as a finding and narrow the claim to *structural shortcuts in instrumented steps*. |
+| C6 | n=3 per arm supports neither "100%" nor "0%"; no intervals; replicates are not independent | Claude M5; Q7 | **(a)**, **B2** | VERIFIED — abstract prints bare percentages. | **B2 fixes it**: 20/20 with one-sided 95% lower bound **0.861**; 0/5 with upper bound **0.451**; independence caveat pre-declared (effective independent n per class = 1 for R1–R5). Paper must **print the CIs**, never a bare percentage. |
+| C7 | No related work on provenance/attestation; novelty unlocatable | Claude M7; Q8 | **(a)**, **B2** | VERIFIED — reference list has no in-toto/SLSA/Sigstore/Rekor/RO-Crate entry. | `RELATED_WORK_NOTE_2026-09-04.md` (`05b5940a`) exists post-freeze; integrate as a half-page related-work subsection with citations. |
+| C8 | Abstract's "non-adversarial-analyst threat model" overstates the guarantee §10 already limits (metadata forgery uncatchable in principle) | Grok E2; Claude M8 | **(a)** | VERIFIED — abstract phrase present; §10 states the stronger limit. | Replace with the operative wording: analyst may alter the computation but runs an **unmodified, instrumented harness**; forged metadata and downstream value-level shortcuts are out of reach. |
+| C9 | 0.270°→0.270°, 0.342°→0.342°, null 0.000° over 500 realizations with no standard error | Gemini M1 | **(a)** | VERIFIED — §8 gives no uncertainty. **Not answered by batch 2.** | Report the SEM, or state that the recovery is algebraically exact (shared seeds) and explain why 500 realizations were run. |
+| C10 | "maximum absolute difference 1.41e-18" quoted without the scale of the multiplicands | Gemini M2; Claude m5 | **(a)** | VERIFIED. | Give bandpower magnitude/units, or say "zero to double-precision rounding" rather than 3 s.f. of noise. |
+| C11 | 8 pp is long / scope too narrow for a JORS software metapaper; recommend 4–5 pp | Grok M2 | **(d)** | Venue-fit judgment; JORS publishes no such page limit and the length carries a sealed protocol + results. Recorded, not actioned as a defect. | Optional tightening only. No claim change. |
+| C12 | "manuscript revision v2B.0.17" internal versioning in the header | Grok N1 | **(a)** trivial | VERIFIED — lab stamp per directive G. | Strip from the submission copy only; keep in the served/lab copy. |
+| C13 | 41 tests advertised, 2 skipped in a standalone install; no coverage figure or CI link | Grok N2; Claude m4 | **(a)** | Consistent with §7. | State 39/41 standalone-effective, add line/branch coverage and cite the workflow file. |
+| C14 | Eq. 4 index k never defined at point of use | Gemini N1 | **(a)** | VERIFIED. | Define k ∈ {0, c, s} immediately after Eq. 4. |
+| C15 | §6 opening claim stated without the threat-model qualifier | Claude m1 | **(a)** | VERIFIED. | Inline qualifier at point of claim. |
+| C16 | "HMAC(key, run_id)" understates a balanced per-arm multiset that is HMAC-permuted | Claude m2 | **(a)** | VERIFIED against `seal.py`. | Say "HMAC-derived random permutation of a balanced design". |
+| C17 | The effective-multipole deviation is asserted but never quantified anywhere | Claude m3 | **(a)** | VERIFIED — §8 says the comparison is recorded, never reports it. | Report max fractional bandpower deviation or induced angle shift; it is the quantitative motivation for the windows module and now also the S6 arm. |
+| C18 | "~1 minute" (§6) vs "one to two minutes" (§11) | Claude m6 | **(a)** trivial | VERIFIED. | Harmonize. |
+| C19 | The 54× cold/warm ratio vs the 3–15× shortcut signal deserves a generalizing sentence | Claude m7 | **(d)** | Enhancement, not a defect; the point is already made. | Optional; batch 2 confirms the wall rule fires 5/5 honest + 5/5 S6. |
+| C20 | macOS listed "untested" though the suite is developed there | Claude m8 | **(a)** | VERIFIED. | "Exercised locally on macOS, not covered by CI." |
+| C21 | Table 2 gives prose rule names, not R1–R6 identifiers | Claude m9 | **(a)** | VERIFIED. | Use implemented identifiers so the table maps onto `verdicts.json`. |
+| C22 | Sealed digest published but not the sha256 of `verify.py` — self-inconsistent for a receipts paper | Claude m10 | **(a)**, **B2** | VERIFIED. | **B2 fixes it**: `public2/frozen_rules_digest.json` records the verifier digest at seal time. Quote it. |
+| C23 | Per-run verdicts not inspectable without a checkout | Claude m11 | **(a)** | VERIFIED. | Include `verdicts.json` as an appendix table (35 rows, batch 2). |
+
+**Counts: 23 canonical · 21 genuinely-new REAL · 2 OPINION · 0 FALSIFIED · 0 re-flags · 0 out-of-scope.**
+Of the 21 real items, **8 (C2, C3-partial, C4, C5, C6, C7, C22 + C1's evidence base) are already
+answered by post-freeze work** and close by integration rather than by new computation.
+
+**Author questions (8, Claude leg).** Q1/Q2 → answered by the batch-2 commit ordering.
+Q3 → answered: S6 escaped 5/5. Q4 → answered: reference disjunct 5/5, cross-run 0/5.
+Q7 → answered: effective independent n = 1, pre-declared. Q5/Q6 (run the blind test against
+real PyMaster; which hook carries the 3j counter) remain **open and honest** — they are the
+NaMaster-applicability limitation, disclosed, not closable by editing. Q8 → the related-work
+note addresses in-toto/Rekor as the S5 anchor.
