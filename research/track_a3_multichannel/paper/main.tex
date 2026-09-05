@@ -948,8 +948,9 @@ cr}\approx0.85$ is traced to its source and resolved: the apparent
 quadratic compaction map ($\propto(6\gamma_{\rm cr}^2-1)\sigma_r^2$,
 positive only below $\gamma_{\rm cr}=1/\sqrt6\approx0.408$ and formally
 divergent as the IR cutoff is removed), not a physical effect; the
-IR-finite $O(\epsilon)$ term suppresses at every $\gamma_{\rm cr}$, so
-negative $\fnl$ suppresses the compaction abundance throughout, and
+IR-finite $O(\epsilon)$ term, $\epsilon=(6/5)\fnl\sigma_r$, suppresses at
+first order in $\epsilon$ at every $\gamma_{\rm cr}$, so negative $\fnl$
+suppresses the compaction abundance at first order, and
 Choudhury \textit{et al.} are right.
 
 \begin{table}[t]
@@ -966,11 +967,17 @@ near-scale-invariant spectrum shape occupies, the ratio is
 $\mathbf{1.84\pm0.03}$ ($144$ points, range $[1.76,1.89]$); on the
 original $27$-point committed grid ($\gamma_{\rm cr}\in[0.766,0.968]$) it
 is $1.732\pm0.050$ (range $[1.610,1.809]$) and must not be quoted as
-universal. The ratio decreases monotonically and weakly with
-$\gamma_{\rm cr}$, so the abstract's $1.84\pm0.03$ is a shape-resolved
-scan result, not a union of a scan and an out-of-coverage point, and the
-sign disagreement with Choudhury \textit{et al.} noted in earlier drafts
-is resolved above: negative $\fnl$ suppresses the abundance, as they
+universal. The ratio decreases monotonically, with a slope of
+$\sim0.13$ per unit $\gamma_{\rm cr}$ across the 255-point scan, so the
+abstract's $1.84\pm0.03$ is a shape-resolved
+scan result, not a union of a scan and an out-of-coverage point. The
+$\gamma_{\rm cr}\lesssim0.8$ rows below (\emph{non-perturbative branch};
+$1.2|\fnl|\sigma_r\approx0.5$--$2$, i.e.\ $O(\epsilon)\sim1$ where the
+linearized criterion above is not controlled, IR-cutoff-dependent per
+the text) report $\fpbh>1$ as \emph{uncapped ratios} at the per-point
+Gaussian-calibrated $A_*$, not physical probabilities. The
+sign disagreement with Choudhury \textit{et al.} is resolved above:
+negative $\fnl$ suppresses the abundance, as they
 report (\texttt{outputs/r11\_pbh\_residuals.json}).}
 \begin{ruledtabular}
 \begin{tabular}{ccccccc}
@@ -979,10 +986,11 @@ $\Delta$ & $r_pk_p$ & $C_{\rm th}$ & $\gamma_{\rm cr}$ & $\fpbh(-35/16)$ & $\fpb
 $0.35$ & $0.75$ & $0.5$ & $0.897$ & $5.8\times10^{-21}$ & $4.5\times10^{-7}$ & $1.767$ \\
 $0.35$ & $1.5$  & $0.5$ & $0.968$ & $5.3\times10^{-107}$ & $7.0\times10^{-59}$ & $1.673$ \\
 $0.50$ & $1.0$  & $0.5$ & $0.888$ & $3.6\times10^{-14}$ & $1.6\times10^{-2}$ & $1.734$ \\
-$0.80$ & $0.75$ & $0.6$ & $0.766$ & $3.5\times10^{3}$   & $2.2\times10^{8}$  & $1.809$ \\
+$0.80$ & $0.75$ & $0.6$ & $0.766^{\dagger}$ & $3.5\times10^{3}$   & $2.2\times10^{8}$  & $1.809$ \\
 $0.80$ & $1.5$  & $0.4$ & $0.857$ & $5.8\times10^{-9}$  & $1.6\times10^{1}$  & $1.677$ \\
 \colrule
 \multicolumn{6}{l}{\footnotesize mean ratio $1.732\,[1.610,1.809]$, std $0.050$, $n=27$} & \\
+\multicolumn{6}{l}{\footnotesize $^{\dagger}$non-perturbative: $\fpbh{>}1$ uncapped} & \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
