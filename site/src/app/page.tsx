@@ -48,6 +48,7 @@ export default async function HomePage() {
   const publishReadyCount = live.filter((p) => p.readinessComputed >= 90).length;
 
   const activity = await getRecentActivity(5);
+  const readiness95Count = live.filter((p) => p.readinessComputed === 95).length;
 
   return (
     <>
@@ -68,6 +69,42 @@ export default async function HomePage() {
             All works
           </Link>
         </div>
+      </Band>
+
+      {/* 1.5 — Started from one question (Hubify positioning band, 2026-09-04) */}
+      <Band tone="alt" width="prose">
+        <p className="eyebrow">Started from one question</p>
+        <p style={{ fontSize: 18, lineHeight: 1.5, fontWeight: 600, margin: "6px 0 10px" }}>
+          Was the Big Bang the beginning?
+        </p>
+        <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--text-secondary)", marginBottom: 16 }}>
+          This lab is a reproducible AI research agent guided by a human who asks the next
+          question, approves the compute, and pushes back — one question, months of work, many
+          lanes of research.
+        </p>
+        <StatRow
+          items={[
+            { value: 17, label: "ledger rows worked (as of 2026-09-04)", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/NEXT_SCIENCE_LEDGER.md" },
+            { value: reproPrograms.length, label: "reproducibility programs", href: "/reproduce" },
+            { value: reproExperiments.length, label: "reproducibility manifests", href: "/reproduce" },
+            { value: readiness95Count, label: "works at readiness 95", href: "/status" },
+            { value: NULLS.length, label: "channels published as nulls", href: "#nulls" },
+          ]}
+        />
+        <div style={{ display: "flex", gap: 20, marginTop: 16, fontSize: 14.5, flexWrap: "wrap" }}>
+          <Link href="/research" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            The three tracks &rarr;
+          </Link>
+          <Link href="/reviews" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            The timeline &rarr;
+          </Link>
+          <Link href="/reproduce" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            Reproduce it &rarr;
+          </Link>
+        </div>
+        <p style={{ marginTop: 18, fontSize: 15.5, fontStyle: "italic", color: "var(--text-secondary)" }}>
+          What if your next question could lead to a discovery?
+        </p>
       </Band>
 
       {/* 2 — Live result strip */}
