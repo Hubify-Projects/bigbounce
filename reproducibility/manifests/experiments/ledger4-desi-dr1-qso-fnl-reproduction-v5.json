@@ -1,0 +1,113 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger4-desi-dr1-qso-fnl-reproduction-v5",
+  "title": "Ledger #4 v5 - WEIGHT_SYS on/off and Galactic-latitude splits re-measured at official-window/official-EZmock-covariance fidelity, completing the 5-row imaging-systematics table on one convention, on the DESI DR1 QSO f_NL^loc reproduction; supersedes ledger4-desi-dr1-qso-fnl-reproduction-v4 (headline unchanged, two open items closed, one real systematic flagged)",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Official DESI DR1 full-shape-bao-clustering v1.0 VAC (window matrix, full-18-randoms P_ell, EZmock covariance) for QSO - same products as v3/v4",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/",
+      "checksum": "sha256 list in research/desi_png_reproduction/official_products_sha256.txt",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "DESI DR1 QSO clustering + randoms catalogues (LSScats v1.5), WEIGHT/WEIGHT_SYS columns and RA/DEC-derived Galactic latitude - NGC+SGC",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+      "checksum": null,
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "v4's already-fit EBV/STARDENS/GALDEPTH_Z rows, carried forward unchanged into this round's 5-row table",
+      "type": "internal-artifact",
+      "locator": "research/desi_png_reproduction/outputs/imaging_splits_fnl_v4.json",
+      "checksum": null
+    },
+    {
+      "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint (reproduction target)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2411.17623",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI public data server (anonymous HTTP, no key)",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "research/desi_png_reproduction/pk_estimator_qso_weightsys_v5.py",
+      "entrypoint": "python3 pk_estimator_qso_weightsys_v5.py",
+      "sha256": "bebd5f4cd9b17bd91610874a0c10c4934b501f0d3ffa940db7ea3d8fffacfdcc"
+    },
+    {
+      "path": "research/desi_png_reproduction/pk_estimator_qso_gallat_v5.py",
+      "entrypoint": "python3 pk_estimator_qso_gallat_v5.py",
+      "sha256": "eacb217a94b71a596b54a0e01d980b9bfc245f2aedc4cc7d62130fd59668b80d"
+    },
+    {
+      "path": "research/desi_png_reproduction/fit_fnl_splits_v5.py",
+      "entrypoint": "python3 fit_fnl_splits_v5.py",
+      "sha256": "7c3b59ce1192e8f4472e8a07db481e5d4f7f78bf8b6c87b2a5cff8837e14dc56"
+    }
+  ],
+  "environment": {
+    "python": "python3.12.13 (dedicated venv: research/desi_png_reproduction/.venv312, gitignored)",
+    "hardware": "cpu-only; Apple M-series MacBook Air, 25.8 GB RAM, 10 cores, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-04",
+    "wall_clock": "8 P(k) measurements (NGC+SGC x 2 splits x 2 halves), nmesh=256, ~50-100s each (~10 min total); fit_fnl_splits_v5.py five official-fidelity fits with profile-likelihood scans ~2 min",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~15 min given official_products/ already on disk",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Requires official_products/ (window matrix, EZmock covariance) already downloaded per v3, and outputs/imaging_splits_fnl_v4.json already on disk (v4's three fitted rows). Run order: pk_estimator_qso_weightsys_v5.py and pk_estimator_qso_gallat_v5.py (independent, parallelizable) -> fit_fnl_splits_v5.py (reads both new pk_split_*.json sets plus v4's fitted rows, reuses fit_fnl_splits.py's fit_split() unchanged). No new external data required beyond v1-v4's downloads."
+  },
+  "outputs": [
+    {
+      "locator": "research/desi_png_reproduction/outputs/pk_split_NGC_WEIGHTSYS_high.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/pk_split_NGC_GALLAT_high.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/outputs/systematics_table_v5.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/desi_png_reproduction/LEDGER4_RESULT_v5_2026-09-04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: fit_fnl_splits_v5.py reproduces WEIGHTSYS Delta f_NL=-88.15 (sigma_Delta=20.44, Delta/sigma=-4.31, i.e. crosses the 2-sigma flag even after the disclosed sqrt(2)-under-estimate correction: -3.05) and GALLAT Delta f_NL=-41.55 (sigma_Delta=23.30, Delta/sigma=-1.78, marginal, flagged not dismissed); v4's three carried-forward rows (EBV, STARDENS, GALDEPTH_Z) are byte-identical to imaging_splits_fnl_v4.json; the headline f_NL from fit_fnl_official.py (p=1.6: -2.169+/-25.3; p=1.0: -1.127+/-13.1) is untouched by this round. Supersedes: ledger4-desi-dr1-qso-fnl-reproduction-v4 (headline carried forward unchanged; two open items closed; WEIGHT_SYS's large effect explained as validation of the DESI correction already applied in the headline, not a headline-affecting residual).",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+    "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+    "research/desi_png_reproduction/RUN_LOG.md v5 section (2026-09-04)",
+    "research/desi_png_reproduction/LEDGER4_RESULT_v4_2026-09-04.md (v4, headline + wide-angle carried forward unchanged)",
+    "research/desi_png_reproduction/LEDGER4_RESULT_v5_2026-09-04.md (this result)",
+    "directive Q2 (reproducibility manifests), directive R1 (ledger-first), directive R6 (claims at their evidential strength)"
+  ]
+}

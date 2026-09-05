@@ -282,3 +282,35 @@ sigma_Delta (i.e. halving Delta/sigma further), no split would cross the
 `LEDGER4_RESULT_v4_2026-09-04.md`. Manifest
 `ledger4-desi-dr1-qso-fnl-reproduction-v4` (schema-valid). Ledger row 4
 updated.
+
+## v5 2026-09-04
+
+Task: re-measure WEIGHT_SYS on/off and Galactic-latitude splits at v4's
+official-window/official-EZmock-covariance fidelity (both were still at
+v1/v2 ad-hoc diagonal-sigma fidelity); assemble a full 5-row systematics
+table on one convention.
+
+`pk_estimator_qso_weightsys_v5.py` and `pk_estimator_qso_gallat_v5.py`
+(NGC+SGC, nmesh=256, N_RAN=4, ell=0,2,4 -- identical settings to v4's
+imaging splits) produced 8 P(k) files in ~10 min total.
+`fit_fnl_splits_v5.py` reused v4's `fit_split()` unchanged.
+
+| Systematic | Delta f_NL | sigma_Delta | Delta/sigma | Delta/sigma (sqrt2-corrected) |
+|---|---|---|---|---|
+| E(B-V) | -1.69 | 29.30 | -0.06 | -0.04 |
+| Stellar density | -2.37 | 34.70 | -0.07 | -0.05 |
+| Galactic depth (z) | -18.66 | 31.73 | -0.59 | -0.42 |
+| WEIGHT_SYS on/off | -88.15 | 20.44 | -4.31 | -3.05 |
+| Galactic latitude | -41.55 | 23.30 | -1.78 | -1.26 |
+
+WEIGHT_SYS crosses the 2-sigma flag even after correction -- a real,
+large, EXPECTED effect (chi2/dof good with WEIGHT_SYS applied ~0.85, bad
+without it ~4.4), confirming DESI's own imaging-systematics correction
+does necessary work. It does not affect the headline (which always uses
+WEIGHT_SYS-included WEIGHT, matching the "high" row here). Galactic
+latitude is marginal (-1.26 to -1.78 sigma), flagged as an open watch
+item, not dismissed. Headline f_NL unchanged from v3/v4.
+
+Result: `LEDGER4_RESULT_v5_2026-09-04.md`. Manifest:
+`ledger4-desi-dr1-qso-fnl-reproduction-v5` (schema-valid). Ledger row 4
+updated.
