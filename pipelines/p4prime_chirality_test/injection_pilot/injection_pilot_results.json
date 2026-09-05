@@ -1,0 +1,49 @@
+{
+  "n_total_pilot": 500,
+  "n_download_failed": 0,
+  "seed": 42,
+  "img_size": 224,
+  "results": [
+    {
+      "f_injected": 0.0,
+      "n_flipped": 0,
+      "n_total": 500,
+      "mean_p_cw": 0.3018194880238734,
+      "A_recovered": -0.39636102395225326,
+      "dA_from_baseline": 0.0
+    },
+    {
+      "f_injected": 0.005,
+      "n_flipped": 2,
+      "n_total": 500,
+      "mean_p_cw": 0.30023759378203974,
+      "A_recovered": -0.39952481243592053,
+      "dA_from_baseline": -0.0031637884836672736
+    },
+    {
+      "f_injected": 0.01,
+      "n_flipped": 5,
+      "n_total": 500,
+      "mean_p_cw": 0.30123186701110805,
+      "A_recovered": -0.3975362659777839,
+      "dA_from_baseline": -0.001175242025530654
+    },
+    {
+      "f_injected": 0.02,
+      "n_flipped": 10,
+      "n_total": 500,
+      "mean_p_cw": 0.3060488128734758,
+      "A_recovered": -0.3879023742530484,
+      "dA_from_baseline": 0.008458649699204845
+    },
+    {
+      "f_injected": 0.05,
+      "n_flipped": 25,
+      "n_total": 500,
+      "mean_p_cw": 0.3055254326763364,
+      "A_recovered": -0.38894913464732717,
+      "dA_from_baseline": 0.007411889304926089
+    }
+  ],
+  "note": "Reduced pilot N (500 target, see n_total_pilot for actual valid count) vs declared 10k spec, due to session time budget; single random flip-set draw per fraction (not averaged over multiple MC draws), unlike the label-level MASTER-pipeline injection script which uses N_MC=50 draws per amplitude."
+}

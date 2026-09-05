@@ -1,0 +1,84 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "row13-image-level-injection-pilot",
+  "title": "Row 13 PILOT — image-level end-to-end parity-injection test for the galaxy-spin classifier vs the existing label-level injection-recovery curve",
+  "program": "galaxy-chirality",
+  "paper": "P4P",
+  "kind": "pilot-analysis",
+  "inputs": [
+    {
+      "name": "bamfai/galaxy-chirality-catalog (catalog_production.parquet)",
+      "type": "external-dataset",
+      "locator": "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+      "checksum": null
+    },
+    {
+      "name": "bamfai/galaxy-chirality-v2 checkpoint",
+      "type": "external-model",
+      "locator": "chirality_model_v2_best.pt, revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+      "checksum": null
+    },
+    {
+      "name": "Legacy Survey DR9 JPEG cutouts (500 real galaxies)",
+      "type": "external-imagery",
+      "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=..&dec=..&size=150&layer=ls-dr9",
+      "checksum": null
+    }
+  ],
+  "apis": [
+    "huggingface_hub.hf_hub_download",
+    "legacysurvey.org jpeg-cutout service"
+  ],
+  "code": [
+    {
+      "path": "pipelines/p4prime_chirality_test/injection_pilot/fetch_pilot_sample.py",
+      "entrypoint": "python3 fetch_pilot_sample.py",
+      "sha256": "2cca334ac0f8ebb583a519bf67ef051aff8dc154aa8d283f986b4d17ed063add"
+    },
+    {
+      "path": "pipelines/p4prime_chirality_test/injection_pilot/run_injection_pilot.py",
+      "entrypoint": "python3 run_injection_pilot.py",
+      "sha256": "a4cb29e0835fce233fd3b9c8cb981916e1cb13c0e71b01c7b995dd043590b670"
+    }
+  ],
+  "environment": {
+    "python": "python3 + torch 2.13.0 + timm 1.0.28 + PIL + healpy + pandas + huggingface_hub",
+    "hardware": "cpu-only; Apple M-series, macOS arm64 (RunPod authorized but not used — local run completed in ~6.5 min wall-clock)"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local workstation",
+    "date": "2026-09-04",
+    "wall_clock": "~6.5 min (500 cutout downloads + 2500 raw single-pass classifier forward passes on CPU)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local for N<=1000; RunPod GPU for N in thousands-tens-of-thousands",
+    "est_wall_clock": "~6.5 min for this N=500 reduced pilot; hours for the declared 10k spec on CPU, tens of minutes on GPU",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Cutout downloads are network-bound and can be parallelized; classifier forward passes are the compute-bound step. Re-running with SEED=42 reproduces the same sky-uniform sample and flip-set draws given unchanged catalog snapshot."
+  },
+  "outputs": [
+    {
+      "locator": "pipelines/p4prime_chirality_test/injection_pilot/pilot_sample_manifest.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "pipelines/p4prime_chirality_test/injection_pilot/injection_pilot_results.json",
+      "type": "result-json",
+      "checksum": null
+    }
+  ],
+  "verification": "Manual inspection of injection_pilot_results.json: 500/500 cutouts downloaded successfully, class order (CW=0/CCW=1/NOT_SPIRAL=2) confirmed against run_v2_inference.py/run_eq_dataloader.py/equivariant_postprocess.py before use. Result found INCONCLUSIVE and disclosed as such: (1) this pilot ran the raw single-pass classifier, not the production equivariant D4-averaged pipeline the paper's headline numbers use, so the f=0 baseline (A=-0.396) is far from the paper's post-equivariant residual bias (-0.0026); (2) N=500 with 2-25 flipped images per fraction is underpowered to resolve sub-percent-to-few-percent injected signals against per-image classification noise — ??A does not track f_injected monotonically. No claim of a recovered dipole or a validated comparison to the label-level curve is made; the gap (need equivariant-pass + N in thousands+) is the actionable finding.",
+  "status": "pilot-complete-inconclusive-real-followup-queued",
+  "provenance": [
+    "Task: ledger row 13 PILOT (2026-09-04)",
+    "pipelines/p2_chirality/scripts/full_catalog_injection_recovery.py (label-level baseline being compared against)",
+    "pipelines/p2_chirality/equivariant_postprocess.py (production pipeline this pilot did NOT replicate — flagged as the needed next step)",
+    "project-context/SSOT/paper-4p/status.md (A_95^obs≈0.98% context)"
+  ]
+}
