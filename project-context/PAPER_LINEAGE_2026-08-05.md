@@ -630,3 +630,43 @@ contraction — which is ledger row 15. Title and abstract are reframed accordin
 
 **Why:** VISION R6 (claims at evidential strength; nulls as results). The lab's guiding bet
 is not refuted — the specific single-field realisation is — and the next test is named.
+
+## 2026-09-04 — new standalone note: separate-universe failure criterion (ledger row 17, spun out of A3M Appendix A)
+
+**ORIGINAL CLAIM (A3M Appendix A, matter-bounce theory-audit lane):** the isotropic
+separate universe ($\delta N$) applied to the A2 matter-dominated contraction background
+gives $f_{\delta N}=-5$, while the from-scratch in-in squeezed bispectrum of $\zeta$ is
+$-35/16+(15/16)\mu^2$ (monopole gap $25/8$) — reported as an internal cross-check finding
+within the A3M program, without a general statement of when the two constructions agree
+or disagree.
+
+**NEW CLAIM (standalone note, `arxiv/paper_su_criterion/main.tex` v1S.0.1):** the gap is
+not specific to the matter bounce background — it is one instance of a general criterion.
+The isotropic separate universe ($\delta N$, with $N(\phi,\pi)$) reproduces the squeezed
+bispectrum of the comoving curvature perturbation $\zeta$ **iff** the $\zeta$-growth-weighted
+mean $\langle\epsilon/c_s^2\rangle_\zeta$ vanishes; otherwise
+$\delta N_c=(1-\langle\epsilon/c_s^2\rangle_\zeta/3)\,\zeta$ plus an explicit second-order
+correction (general equation-of-state closed form). Validated on four backgrounds: dust
+contraction ($O(1)$ failure — the A3M finding, now explained), ultra-slow-roll inflation
+(agreement to $O(\epsilon)$, reproducing Namjoo-Firouzjahi-Sasaki 2013), attractor slow
+roll (identity map), and ekpyrotic contraction (passes because $\zeta$ sits on its constant
+mode). The note identifies a second, independent failure mode of $\delta N$ in
+non-attractors beyond the known Namjoo-Firouzjahi-Sasaki initial-data requirement, and
+places it against the full non-attractor consistency-relation literature (Chen+2013,
+Pajer-Schmidt-Zaldarriaga 2013, Dai-Pajer-Schmidt 2015, Cai+2018, Bravo+2018,
+Passaglia-Hu-Motohashi 2019, Artigas-Grain-Vennin 2022, Jackson+2023).
+
+**Disposition:** this is a **pure-contribution split**, not a rescope of A3M. A3M keeps
+its own internal cross-check finding (the specific dust-background numbers, unchanged);
+the new note generalizes that finding into a portable criterion with independent
+literature placement, worth standing alone per directive Q1 (no mistake-narration; the
+note's thesis is the criterion itself, not "we found a discrepancy and explain it").
+Source science: `research/theory_audit/separate_universe_failure_criterion_2026_09_04.{md,py,json}`
+and `research/theory_audit/threading_map_second_order_2026_09_04.{md,py,json}` (both
+already-committed theory-audit lanes, transcribed verbatim into the note, no new math
+introduced in the paper draft itself). Tracked in
+`project-context/SSOT/paper-su/status.md`, readiness 40 (draft, no review round run yet).
+
+**Why:** VISION R6 (claims at evidential strength) and directive Q1 (pure-contribution
+framing) — the criterion is the publishable content; the internal discrepancy-finding
+process stays in the theory-audit lane, not the paper.
