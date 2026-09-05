@@ -1,0 +1,416 @@
+{
+  "run_000": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.04919571,
+    "rules": [
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_001": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.005385993,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_002": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.02492623,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_003": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01271761,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_004": {
+    "call": "honest",
+    "r7_relative_residual": 2.936999e-14,
+    "rules": [],
+    "wall_rule_would_fire": true
+  },
+  "run_005": {
+    "call": "honest",
+    "r7_relative_residual": 5.360604e-18,
+    "rules": [],
+    "wall_rule_would_fire": false
+  },
+  "run_006": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01688389,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": false
+  },
+  "run_007": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.05723746,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_008": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.005925568,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_009": {
+    "call": "honest",
+    "r7_relative_residual": 1.435996e-12,
+    "rules": [],
+    "wall_rule_would_fire": true
+  },
+  "run_010": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.002440538,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_011": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.03277206,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": false
+  },
+  "run_012": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.006685798,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_013": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.001655529,
+    "rules": [
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_014": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.03528697,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": false
+  },
+  "run_015": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.1363047,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": false
+  },
+  "run_016": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.004250807,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_017": {
+    "call": "honest",
+    "r7_relative_residual": 4.536737e-17,
+    "rules": [],
+    "wall_rule_would_fire": false
+  },
+  "run_018": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01097772,
+    "rules": [
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_019": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.006596661,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_020": {
+    "call": "honest",
+    "r7_relative_residual": 9.937703e-14,
+    "rules": [],
+    "wall_rule_would_fire": true
+  },
+  "run_021": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.2290927,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_022": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.004972258,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_023": {
+    "call": "honest",
+    "r7_relative_residual": 5.462227e-14,
+    "rules": [],
+    "wall_rule_would_fire": true
+  },
+  "run_024": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.5152136,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_025": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.06631948,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_026": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.007391487,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_027": {
+    "call": "honest",
+    "r7_relative_residual": 2.07608e-17,
+    "rules": [],
+    "wall_rule_would_fire": false
+  },
+  "run_028": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.002908657,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_029": {
+    "call": "honest",
+    "r7_relative_residual": 1.831717e-17,
+    "rules": [],
+    "wall_rule_would_fire": false
+  },
+  "run_030": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.004345042,
+    "rules": [
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_031": {
+    "call": "honest",
+    "r7_relative_residual": 2.820684e-18,
+    "rules": [],
+    "wall_rule_would_fire": false
+  },
+  "run_032": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.008094808,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_033": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.002690163,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_034": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.003823324,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_035": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.07556522,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": false
+  },
+  "run_036": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01771734,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_037": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.007018515,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_038": {
+    "call": "honest",
+    "r7_relative_residual": 3.196229e-14,
+    "rules": [],
+    "wall_rule_would_fire": true
+  },
+  "run_039": {
+    "call": "honest",
+    "r7_relative_residual": 3.168886e-13,
+    "rules": [],
+    "wall_rule_would_fire": true
+  },
+  "run_040": {
+    "call": "honest",
+    "r7_relative_residual": 7.495643e-19,
+    "rules": [],
+    "wall_rule_would_fire": false
+  },
+  "run_041": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0001767247,
+    "rules": [
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_042": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.0006207955,
+    "rules": [
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_043": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.001409496,
+    "rules": [
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_044": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.01137459,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_045": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.05279538,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": false
+  },
+  "run_046": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.03767807,
+    "rules": [
+      "R2_grid_mismatch",
+      "R3_3j_count_mismatch",
+      "R4_operator_shape_mismatch",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  },
+  "run_047": {
+    "call": "shortcut",
+    "r7_relative_residual": 0.02630552,
+    "rules": [
+      "R6_result_reuse_across_inputs",
+      "R7_operator_consistency_residual"
+    ],
+    "wall_rule_would_fire": true
+  }
+}
