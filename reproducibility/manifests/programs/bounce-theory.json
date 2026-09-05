@@ -72,6 +72,12 @@
       ]
     },
     {
+      "id": "p2-a3-row18a-s2-tensor-transfer",
+      "depends_on": [
+        "p2-a3-lane-9b2-s2-rawadm"
+      ]
+    },
+    {
       "id": "p2-a3-lane-9a-velocity-dip",
       "depends_on": [
         "p2-a2-bounce-fnl-transmission",

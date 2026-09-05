@@ -1,0 +1,64 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "p2-a3-row18a-s2-tensor-transfer",
+  "title": "Track A3 (ledger row 18a / A3-S2r): tensor transfer through the Quintin-type bounce and the like-for-like post-bounce tensor-to-scalar ratio r_after per scalar continuation scheme (S1 geometric z=a vs S2 effective-fluid MS variable), including the c_s dependence",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "lane 9b-2 exact S2 scalar modes, Quintin-type background, S1 reference rho_B = 0.6699892 (imported as a module; single source of truth for the background and both scalar schemes)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.py",
+      "checksum": "sha256:44b848063978e912770ed535a99f762765bc7b7e3ee96aee1be240c59c2f9d62"
+    },
+    {
+      "name": "row 10 tensor/scalar transfer on the poly and LQC backgrounds (T_h = T_zeta[S1] to 8.5e-9, r_before = r_after = 24) used as an independent cross-check, not as an input",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row10_r_ns/row10_r_ns.py",
+      "checksum": "sha256:4554ac9add31704f973be6b4118d3c814aad2e15baa4b9f7db591eacc63d54b3"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/row18a_s2_tensor/row18a_s2_tensor.py",
+      "entrypoint": "python3 row18a_s2_tensor.py",
+      "sha256": "0220439c3ee5bf3444a8919448e5ddd4caeeb5f4362a652253f40b54ae4602f3"
+    }
+  ],
+  "environment": {
+    "python": "numpy, scipy (integrate.solve_ivp DOP853, special.erf), matplotlib (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-04",
+    "wall_clock": "0.1 s, measured",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 10 s",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic. Tensor mode solved as the regular first-order system hdot = Pi/a^3, Pidot = -a k^2 h in cosmic time (DOP853, rtol 1e-12) between the |t| = tm junctions, with exact matter-phase solutions outside; scalar S1/S2 transmissions from the imported lane 9b-2 BounceModes. A constant c_s enters the scalar problem only as k -> c_s k."
+  },
+  "outputs": [
+    {"locator": "research/cubic_bounce_transmission/row18a_s2_tensor/results.json", "type": "result-json", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row18a_s2_tensor/row18a_s2_tensor.log", "type": "log", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row18a_s2_tensor/row18a_s2_tensor.png", "type": "figure", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row18a_s2_tensor/ROW18A_S2_TENSOR_2026-09-04.md", "type": "document", "checksum": null}
+  ],
+  "verification": "Re-run and confirm in the log: lam_T = 6.0585966 / 6.0470743 / 5.9171128 at k eta_B = 1e-3 / 3e-3 / 1e-2, equal to lam_zeta^S1 to |ratio - 1| <= 1.4e-14 at every k (the tensor equation and the S1 scalar equation with z = a are the same ODE); lam_zeta^S2 = 0.9695759 / 0.9677642 / 0.9473239 reproducing lane 9b-2's 0.9696 / 0.9678 at the two smallest k; r_after^S1 = 24.00000 at every k and r_after^S2 = 937.11 / 937.05 / 936.34; c_s scan at k eta_B = 1e-3 gives lam_T unchanged (6.0585966, c_s does not appear in the tensor equation) and lam_zeta^S2 = 0.9695759 / 0.9696239 / 0.9697210 / 0.9697587 at c_s = 1 / 0.888 / 0.6 / 0.44 (a 1.9e-4 relative spread), r_after^S2 = 937.11 / 937.02 / 936.83 / 936.76.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 18 item (a) A3-S2r, raised by the R7 truth-audit: the paper's r_after was stated with S1 transfers only",
+    "builds on manifests p2-a3-lane-9b2-s2-rawadm (exact S2 modes, background, rho_B) and the row-10 tensor/scalar transfer computation; does not redo either",
+    "no S2 r_after is quoted for the LQC or poly backgrounds: lane 9b-2 assumption (A1) is that their Hdot = 0 crossings put z^2[S2] = 0 and give the S2 zeta a logarithmic point, so exact S2 modes were never constructed there",
+    "r_before = 24 is row 10's pure-dust r = 24(1+w) at w = 0; no tuning of any transfer toward any target value"
+  ]
+}
