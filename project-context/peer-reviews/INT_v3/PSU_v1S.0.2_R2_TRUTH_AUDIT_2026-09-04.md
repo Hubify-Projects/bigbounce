@@ -71,3 +71,67 @@ commit that produced sha256 `812dbaf1…`.
 | C18 | F min11 | Abstract "USR: $I=O(\eps)$"; exact is $I=\sqrt{\eps_s\eps_f}-\eps_f$ | l. 127–129 ($\lambda_{\rm USR}$) | $O(\sqrt{\eps_s\eps_f})$ |
 | C19 | F min13 | Eq. (1): $\partial_iN^i$ is the coordinate divergence of the contravariant shift; $u^\mu\!\parallel\!n^\mu$ presumes a single scalar (no vorticity) | Eq. (1) | one clarifying sentence |
 | C20 | F M5 | "We validate on four backgrounds" (l. 42–44): attractor + ekpyrosis are $I=0$ by definition, the USR row is not computed here, leaving one nontrivial check | §V Limits; Table I; R1 PSU-21/27 | "one nontrivial check plus three consistency limits"; mark the USR entry as not computed here |
+
+### (b) RE-FLAG of an R1-dispositioned item — 6 items
+
+| ID | Legs | Finding | R1 item | Status |
+|---|---|---|---|---|
+| C21 | G E1, G E2, Ge 3, F M3 | Standalone-reader failure: Eqs. (3)–(5), the second-order kernels, the general-$\eps$ in-in shape and the factor-2 claim all live in unpublished GitHub notes [21],[22] | **PSU-5 → gate S4** | **OPEN** — still real; closed only by the appendix in the closure plan |
+| C22 | Ge 5, G N1 (part) | GitHub commit hashes are not an archival record; mint a Zenodo DOI | **PSU-16 → E9** | OPEN |
+| C23 | F min7 | $\Theta$ used at l. 262 without definition | **PSU-25 → E8** | OPEN (regression: not fixed in v1S.0.2) |
+| C24 | F min12 | Reproducibility file paths break mid-word | **PSU-6 → E2** | OPEN (regression) |
+| C25 | G M2 | "The four validations are known analytic limits; no new observable" | **PSU-15 (OPINION, CLOSED)** | re-flag; significance judgement, root shared with PSU-10/S3. Real residual is C20 |
+| C26 | Ge pass-2 m1 | "Futuristic dates" (2026) in the affiliation block and refs | **PSU-17 / PSU-28 (FALSIFIED, CLOSED)** | re-flag; the dates are today's (`\paperTimestamp`), a reviewer knowledge-cutoff artifact |
+
+### (c) OUT-OF-SCOPE / disclosed — 1 item
+
+| ID | Legs | Finding | Disposition |
+|---|---|---|---|
+| C27 | G N2, Ge 7 | Version tag `v1S.0.2` in the `\preprint` header | Deliberate lab bookkeeping on the review artifact; stripped in the arXiv packaging (P-round) build, not in the science round. `main.tex` l. 16, 21 |
+
+### (d) FALSIFIED — 2 items
+
+| ID | Leg | Claim | Falsification |
+|---|---|---|---|
+| C28 | G E4 (ESSENTIAL) | "$f^{\rm in\text{-}in}/\lambda+f^{\rm init}_{\rm map}=-5$ is false; $\eps=3/2$ gives $-3.75-0.625=-4.375$" | §1: the composition is identically $-5$ **in $\mu$ and in $\eps$**. Grok used $f^{\rm init}_{\rm map}(\mu=0)=-5/8$ where the monopole is $\langle f^{\rm init}_{\rm map}\rangle=-5\eps/6=-5/4$ (his $-4.375=-35/16$ is the isoceles in-in value, not a composition). No paper change |
+| C29 | G M3 (MAJOR) | "Eq. (2) is claimed exact with no error estimate or domain qualifier" | `main.tex` l. 122–125 prints the qualifier immediately after Eq. (2) ("exact on super-Hubble scales … from a flat, super-Hubble initial slice; the dropped gradient term is $O(k_L^2/a_iH_i^2)$ …"); constant $\eps$ is used only at second order. Real residual = C11 |
+
+### (e) OPINION / venue-genre — 3 items
+
+| ID | Legs | Finding | Disposition |
+|---|---|---|---|
+| C30 | G M1, F min8 | Fig. 1 plots two straight lines fixed by the caption's algebra | Presentation judgement, but both legs agree it is uninformative; optional editorial action (replace with $\lambda_{\rm USR}(\eps_s,\eps_f)$ or $I(t)$), tracked with R1 PSU-14 |
+| C31 | G N1 | "Delete the Reproducibility and AI-usage sections" | Venue-genre preference; lab policy (directive Q2) requires reproducibility manifests. Archival-DOI part is real → C22 |
+| C32 | G N3 | "'No discrepancy in the physics, only in which variable' is interpretive" | It is the S3-adjudicated conclusion of the composition ($f^{\rm in\text{-}in}/\lambda+f^{\rm init}_{\rm map}\equiv-5$), source-cited to `threading_map_second_order_2026_09_04.md` §4 and `psu_gates_S1_S2_2026_09_04.md` §S3. Keep |
+
+## 3. Per-leg counts
+
+| Leg | Raw findings | (a) new-real | (b) re-flag | (c) OOS | (d) falsified | (e) opinion |
+|---|---|---|---|---|---|---|
+| Grok (REJECT) | 10 | 1 (C1) | 3 (C21×2, C22, C25) | 1 (C27) | 2 (C28, C29) | 3 (C30–C32) |
+| Gemini (MAJOR REVISIONS) | 10 | 7 (C1–C5, C9, C10) | 2 (C21, C22) | 1 (C27) | 1 (C26) | 0 |
+| Fable INT (MAJOR REVISIONS) | 19 (6 MAJOR + 13 minor) | 18 | 3 (C21, C23, C24) | 0 | 0 | 1 (C30) |
+
+**Canonical: 32 items — 20 genuinely-new real, 6 re-flags (4 still OPEN), 1 out-of-scope,
+2 falsified, 3 opinion.**
+
+## 4. Convergence note (R1 → R2)
+
+R1 (v1S.0.1, sha `cc0dfb84…`): 38 raw → 28 canonical, **21 genuinely-new real**.
+R2 (v1S.0.2, sha `812dbaf1…`): 39 raw → 32 canonical, **20 genuinely-new real**.
+Clean-wave count stays **0** (directive K); the paper is not converged.
+
+Two observations the count alone hides:
+
+1. **The R2 new-real set is qualitatively different.** R1's items were load-bearing physics (label
+   resolution, the criterion's normalisation, the framing) and were resolved by gates S1/S2/S3. R2's
+   20 are one algebra sign (C2), one arithmetic error inherited from an R1 *disposition* (C4), the
+   reference layer (C5, C7, C8), and 15 statement-precision items. The science core survived a
+   second independent re-derivation (Fable re-derived Eq. (1) and the linear map from scratch; this
+   audit re-derived the composition and both monopoles).
+2. **Process finding (new).** C4 traces to R1's own PSU-4 disposition, which wrote "with $-35/8$ the
+   gap is $-5/8$, factor $8/7$" and that sentence was transcribed into the manuscript. A number
+   supplied by a truth-audit disposition entered the paper without an independent re-derivation, and
+   it was wrong ($-35/8$ is Cai's isoceles amplitude, not a monopole; the correct counterfactual
+   ratio is $4/3$). **Rule for this lab: any number a disposition hands to a manuscript gets the
+   same independent re-derivation gate as a number in the manuscript.**
