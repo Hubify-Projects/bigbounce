@@ -28,7 +28,7 @@ export default async function ResearchPage() {
         <PageHeader
           eyebrow="Research"
           title="Three questions, three lead results"
-          lead="The portfolio is organized by scientific question, not a fixed paper count. Track A is the flagship line testing bounce vs. inflation; Track B is one closed theory Note; Track C is DESI data products tested against a specific physical prediction, on-vision per the lab's guiding question — was the Big Bang the beginning?"
+          lead="Started from one question — was the Big Bang the beginning? The portfolio is organized by scientific question, not a fixed paper count. Track A is the flagship line testing bounce vs. inflation; Track B is one closed theory Note; Track C is DESI data products tested against a specific physical prediction, on-vision per the lab's guiding question."
         />
       </Band>
 
