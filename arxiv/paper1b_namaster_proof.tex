@@ -366,23 +366,56 @@ evaluated; an instrumented count of Wigner-3\(j\) symbol evaluations
 performed; the decoupled bandpowers (hash-bound, in the result file); and
 measured wall time.
 
-\paragraph{Protocol.} (1) A reference contract is published first, from one
-honest reference run: full \(\ell\)-grid, \(M\) shape, exact 3\(j\)-evaluation
-count, code sha256, tolerance. (2) A sealing script draws a random key,
-assigns \(N\) runs to \{honest, S1\ldots S5\} via HMAC(key, run\_id), and
-commits only the sealed digest of the assignment before any run executes. (3)
-Each run executes its variant, unknown to the verifier, and publishes a
-result and receipt through the package's \texttt{publish\_json}. (4) The
-verifier sees only the run directories, the reference contract, and the input
-manifest; it flags a run when receipt verification fails, code sha256
-disagrees, the \(\ell\)-grid disagrees, the 3\(j\) count disagrees, the \(M\)
-shape or support disagrees, an \(M\) hash collides across runs with differing
-input hashes, or a result hash repeats across runs with differing input-map
-hashes. (5) The key is revealed and the confusion matrix computed. The
-success criterion was pre-declared: \(\geq\)1 honest and \(\geq\)1 run of each
-of S1--S4 present; detection rate 100\% on S1--S4; false-positive rate 0\% on
-honest runs. S5 (metadata forgery) was included expecting it to escape, as a
-reported limitation rather than a protocol failure.
+\paragraph{Protocol, two batches.} (1) A reference contract is published
+first, from one honest reference run: full \(\ell\)-grid, \(M\) shape, exact
+3\(j\)-evaluation count, code sha256, tolerance. (2) A sealing script draws a
+random key, assigns \(N\) runs to arms via a balanced, HMAC(key, run\_id)-derived
+permutation of a fixed per-arm design, and commits only the sealed digest of
+the assignment before any run executes. (3) Each run executes its variant,
+unknown to the verifier, and publishes a result and receipt through the
+package's \texttt{publish\_json}. (4) The verifier applies a frozen rule set
+(Table~\ref{tab:rules}) to the run directories, the reference contract, and
+the input manifest. (5) The key is revealed and the confusion matrix
+computed. The protocol was run twice. In batch 1 (18 runs, arms
+honest/S1--S5), two of the rules were changed \emph{after} batch-1 outcomes
+were seen (\S\ref{sec:blind-test-pilot}); batch 1 is therefore relabelled a
+\textbf{pilot / rule-development round}, not a blind measurement of detector
+performance. In batch 2 (35 runs, arms honest/S1--S6), the rule set was
+frozen and committed alone, in its own commit, \emph{before} the seal
+commitment existed in the repository, and \textbf{no rule was added,
+removed, or edited between that freeze and the reveal}; batch 2 is the
+primary result reported below. The pre-declared success criterion for batch 2
+was: every arm of S1--S4 detected 5/5, honest 0/5 flagged; S5 (metadata
+forgery) expected to escape 5/5 by construction; S6 (effective multipole,
+\S\ref{sec:blind-test-s6}) had \emph{no} pre-declared expected outcome.
+
+\begin{table}[h]
+\centering
+\caption{Frozen decision rules R0--R6 (batch 2), exactly as implemented in
+\texttt{verify.py}. A run is called \emph{shortcut} if one or more fires.}
+\label{tab:rules}
+\footnotesize
+\begin{tabular}{@{}p{1.1cm}p{10.5cm}@{}}
+\toprule
+Rule & Fires when \\
+\midrule
+R0 & Receipt verification fails: result bytes do not match the content binding, or the receipt is malformed. \\
+R1 & \texttt{code.sha256} disagrees with the contract. \\
+R2 & The evaluated \(\ell\)-grid disagrees with the contract (exact list equality). \\
+R3 & The instrumented Wigner-3\(j\) evaluation count disagrees with the contract. \\
+R4 & The coupling-matrix shape or support disagrees with the contract. \\
+R5 & The input mask sha256 disagrees with the contract. \\
+R6 & \texttt{sha256(bandpowers)} equals the contract's \emph{reference-run} bandpower hash, \textbf{or} that digest already occurred on an earlier run with a different input-map hash (two disjuncts; both are load-bearing --- \S\ref{sec:blind-test-result}). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two rules considered during rule development are \textbf{not} part of the
+decision set: a wall-clock floor (advisory only, recorded per run but never
+contributing to a call) and an \(M\)-hash-collision rule (withdrawn, not
+evidential, since \(M\) depends only on the mask and \(\ell\)-grid so every
+honest run legitimately shares one \(M\) hash). Both are discussed under the
+pilot round below.
 
 \paragraph{Result.} 18 runs were sealed and executed (3 per arm; \(N_{\rm
 side}=64\), \(\ell_{\max}=64\), local CPU, \(\sim\)1 minute, \$0 marginal
