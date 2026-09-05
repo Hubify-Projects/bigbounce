@@ -258,3 +258,39 @@ row cannot constrain the O(ε) correction; it currently reads as if it does.
 Class (b) is empty by construction: this is the paper's first board.
 **21 genuinely-new real findings.** Under directive K this is wave 0 for `paper-su`; the
 clean-wave clock cannot start until the (a) items are closed and the note re-tested.
+
+## CLOSURE PLAN
+
+### (i) Editorial / real edits for v1S.0.2 — exact locations in `arxiv/paper_su_criterion/main.tex`
+
+| id | items | edit |
+|---|---|---|
+| E1 | PSU-2 | Fig. 1 caption, l. 141–142: replace "Both vanish at $w=-1$ (attractor limit)" with "At $w=-1$ (attractor limit, $\eps=0$) $f_{\rm map}^{\rm mono}$ vanishes and $\lambda\to1$, so the map is the identity". |
+| E2 | PSU-6 | §III l. ~184: delete "(script: \texttt{separate\_uni\-verse\_...py}, exact sympy)". Reproducibility statement: delete the inline manifest path. Move both into one data-availability footnote using `\url{}`. |
+| E3 | PSU-3, PSU-7 | Table I (l. ~166–176): rename the column to $f^{\rm in\text{-}in}(\mu)$ and add a column $f^{\rm in\text{-}in}_{\rm mono}$ with $-15/8$ for the dust row. In §III add one sentence: "the monopole gap is $-5-(-15/8)=-25/8$, a factor $8/3$." |
+| E4 | PSU-4 | §I, immediately after `\cite{Golden2026Monopole}` (l. ~85): cite Cai, Xue, Brandenberger & Zhang, JCAP 0905:011 (arXiv:0903.0631); state that their squeezed $-35/8$ is uniformly $2\times$ the from-scratch value, that their shape function (their Eq. 37) is reproduced monomial-by-monomial and the $\times2$ sits in their amplitude step (their Eqs. 38–40), and that $-35/16$ agrees with Li, Quintin, Wang & Cai (2016) Eq. (5.1) at $c_s=1$. Add the dependence sentence: "were the monopole $-35/8$, the gap would be $-5/8$ and the factor $8/7$; the $O(1)$ claim rests on $-35/16$." |
+| E5 | PSU-14 | Fig. 1 caption: state that both ordinates are dimensionless and give the right-axis normalization. |
+| E6 | PSU-19 | §II: print the general-$\eps$ in-in monopole $-5(\eps-3)(\eps-6)/18$ so the $w=1$ vanishing is checkable in-paper. |
+| E7 | PSU-20, PSU-21, PSU-22, PSU-27 | §II: state the pure-USR / $\zeta\propto a^3$ assumption behind $\lambda_{\rm USR}$. Table I: mark the ekpyrosis row a consistency check; reword the USR row so it does not read as an NFS-constrained test. Footnote listing the five geometric pieces (`zlap`, `psi2`, `grad`, `wl_fin`, `lab_init`). |
+| E8 | PSU-23, PSU-24, PSU-25 | Bibliography: full author list + JCAP 2024 for Ref. [12]; label [18]/[19] unpublished notes with commit hashes. Rephrase the AI-usage disclosure (scripts verify algebra, not the identification). Unify $\langle\eps/c_s^2\rangle_\zeta$ notation; define $\Theta$ where introduced. |
+| E9 | PSU-16 | Mint a Zenodo deposit for `research/theory_audit/*_2026_09_0{3,4}.{py,json,md}` and cite the DOI. |
+| E10 | PSU-26 | §II: state that Eq. (2) holds for the $P(X)$ class; a genuine fluid with non-adiabatic pressure adds a term. |
+
+E1–E3, E5–E8, E10 are pure text and can land in one v1S.0.2 bundle under directive G
+(bump `\paperVersion`+`\paperTimestamp`, recompile 0 undef-refs, `/latex-audit`, re-mirror
+byte-identical to all served paths). E4 and E9 need the Cai reconciliation sentence and the
+DOI respectively, but no new computation. **None of E1–E10 closes the board.**
+
+### (ii) SCIENCE items — a derivation is required before the note may claim these
+
+| id | items | computation required | tier |
+|---|---|---|---|
+| **S1** | PSU-1, PSU-8 | **Label-resolved second-order composition.** Re-run `threading_map_second_order_2026_09_04.py` §3 with BOTH worldline labels and export the initial-position-label $f_{\rm map}^{\rm init}(\eps,\mu)$ in closed form (the final-label total $-\tfrac{5\eps}{4}(1-\mu^2)$ is what the paper currently prints). Verify symbolically that $f^{\rm in\text{-}in}/\lambda + f_{\rm map}^{\rm init} = -5$ for every constant $\eps$, and that the monopole is label-independent at $-5\eps/6$. Then define "initial-position label" in the paper and print both totals. | **Fable** — contested: three referees derived a contradiction from the printed numbers, and Gemini proposed a composition that fits only at $\eps=3/2$. |
+| **S2** | PSU-9 | **Normalization of $\langle X\rangle_\zeta$ and the dropped gradient term.** Derive the super-Hubble reduction keeping $-(1/a^2H)\nabla^2\zeta$; bound its worldline integral as $O(k^2/a^2H^2)$ from a super-Hubble initial slice $t_i$; redefine $\langle X\rangle_\zeta=\int X\,d\zeta_L/[\zeta_L(t_f)-\zeta_L(t_i)]$; restate the attractor and ekpyrosis rows under that definition (they are currently $0/0$). Decide whether "exact for any history" survives or becomes "exact on super-Hubble scales for any history". | **Fable** — it decides the survival of the note's central linear claim. |
+| **S3** | PSU-10, PSU-15 | **Failure vs change-of-variable adjudication.** Written argument for which variable is physical for the contraction-to-expansion observable, reconciled against `threading_map_second_order` §4's own "there was never a discrepancy in the physics, only in the variable". Outcome is either a supplied argument that $\delta N_c$ is the wrong variable, or a retitle/reframe as a threading map with a quantified $\delta N$-usage caveat. | **Fable + Houston decision** (directive R6: claims at exactly their evidential strength; a retitle is a lineup change under R3). |
+| **S4** | PSU-5, PSU-8 | **Self-containedness.** Reproduce in an appendix (a) the in-in $-35/16+(15/16)\mu^2$ kernel and (b) the second-order map derivation — or post the two companion notes as an arXiv preprint and cite that. No contested math once S1 lands. | **sonnet** (packaging), gated on S1. |
+| **S5** | PSU-11 | **Literature positioning.** Confirm that Takamizu–Mukohyama–Kobayashi–Tanaka (arXiv:1004.1870) and Naruko–Takamizu–Sasaki (arXiv:1210.6525) carry the NLO gradient term as claimed, then rewrite §IV as "the known NLO term is LO in a non-attractor contraction". Fable's integrity note flags both refs as from memory — do not cite unverified. | **opus** (literature verification). |
+
+**Ordering**: S1 → S2 → S3 gate the paper's claims; E1–E10 can land in parallel but must not be
+presented as closing the board. S4 and S5 follow S1/S3. Directive R2 applies: no further review
+round on `paper-su` until at least S1 and S3 have produced a science or scope decision.
