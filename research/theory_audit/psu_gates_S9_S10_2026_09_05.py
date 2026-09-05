@@ -126,7 +126,7 @@ def tail(expr):          # int_{tau_f}^{inf} expr dtau = int_{-inf}^{t_f} ... dt
     for c, ex in powterms(expr):
         out += -c * tf**(ex + 1) / (ex + 1); conds.append(str(sp.simplify(ex + 1)) + ' < 0')
     return sp.simplify(out), conds
-def anti(expr): return sum(c * tau**(ex + 1) / (ex + 1) for c, ex in powterms(expr))
+def anti(expr): return sp.sympify(sum(c * tau**(ex + 1) / (ex + 1) for c, ex in powterms(expr)))
 def f_of(M, lamL, lamS):
     """squeezed f_NL of the map kernel M(kL, kS, mu): B = lamL lamS P_L [M(kL,q)P(q) + M(kL,p)P(p)], P = k^-3,
     f = (5/12) B / (lamL^2 lamS^2 P_L P_S) -> (5/12) [..]/(lamL lamS P_S).  Returns (const, mu^2 coefficient)."""
@@ -244,7 +244,10 @@ Kc_all = kernels(hist_c, sol_c)
 Pc = {k: sp.simplify(v.subs(m, m_grow)) for k, v in Kc_all['K'].items()}
 for k, v in Pc.items(): assert not v.has(tf), (k, v)
 print("  constant-long-mode kernels:", {k: str(sp.factor(v)) for k, v in Pc.items()}, flush=True)
-assert all(Pc[k] == 0 for k in ('grad', 'wl_fin', 'wl_initextra', 'lab_init')) and sp.simplify(Pc['zlap'] - 2 * eps / 3) == 0
+assert all(Pc[k] == 0 for k in ('wl_fin', 'wl_initextra', 'lab_init')) and sp.simplify(Pc['zlap'] - 2 * eps / 3) == 0
+assert sp.limit(Pc['grad'].subs(kL, d * kS), d, 0) == 0 and f_of(Pc['grad'], 1, lam1) == (0, 0)   # grad = O(k_L/k_S): no squeezed contribution
+K_c_sq = sp.simplify(sp.limit(Pc['psi2'].subs(kL, d * kS), d, 0))                     # squeezed (k_L/k_S -> 0) value of the psi_2 kernel
+print('  K_c squeezed limit (k_L/k_S -> 0):', K_c_sq, flush=True)
 K_c = Pc['psi2']                                                                     # THE constant-mode psi_2 kernel
 K_c_general_m = sp.simplify(Kc_all['K']['psi2'])
 print("  K_c(eps) =", sp.factor(K_c), "| general short history m:", sp.factor(K_c_general_m), flush=True)
@@ -276,10 +279,15 @@ assert sp.simplify(n0.subs(g, 1) + 5 * eps / 4) == 0 and sp.simplify(n2.subs(g, 
 assert sp.simplify(i0.subs(g, 0) - n0.subs(g, 0)) == 0 and sp.simplify(i2.subs(g, 0) - n2.subs(g, 0)) == 0
 # limits of K_c: both modes constant (m -> 0) and eps -> 0 at fixed short history
 Kc_m0 = sp.simplify(K_c_general_m.subs(m, 0)); Kc_eps0 = sp.simplify(sp.limit(K_c, eps, 0))
-print("  K_c limits: m_S -> 0 (both constant):", Kc_m0, "| eps -> 0:", Kc_eps0, "| f-contribution of K_c alone:", sp.factor(fKc0), "+", sp.factor(fKc2), "mu^2", flush=True)
-assert Kc_m0 == 0 and Kc_eps0 == 0
-OUT['S10'] = {'kernels_constant_long_mode': {k: str(v) for k, v in Pc.items()}, 'K_c': str(sp.factor(K_c)), 'K_c_general_short_history_m': str(K_c_general_m),
-              'K_c_limits': {'m_S_to_0': str(Kc_m0), 'eps_to_0': str(Kc_eps0)}, 'f_of_K_c_alone(lamL=1,lamS=lam1)': {'const': str(fKc0), 'mu2': str(fKc2)},
+sum_m0 = sp.simplify(sum(Kc_all['K'][k] for k in ('psi2', 'grad', 'zlap')).subs(m, 0))        # both modes constant: full O(k^0) map
+Kc_m_indep = sp.simplify(K_c_general_m - K_c) == 0
+print("  K_c limits: m_S -> 0 (K_c alone):", sp.factor(Kc_m0), "; full kernel psi2+grad+zlap at m_S -> 0:", sum_m0,
+      "| eps -> 0:", Kc_eps0, "| K_c independent of the short history m:", Kc_m_indep, "| f-contribution of K_c alone:", sp.factor(fKc0), "+", sp.factor(fKc2), "mu^2", flush=True)
+DLS_m0 = sp.simplify(Kc_all['DLS'].subs(m, 0)); sum_m0_sq = sp.limit(sum_m0.subs(kL, d * kS), d, 0)
+print('  attractor (m_L = m_S = 0): O(k^0) cross divergence d_i N^i =', DLS_m0, '; formally integrated kernel sum, squeezed:', sum_m0_sq, flush=True)
+assert DLS_m0 == 0 and sum_m0_sq == 0 and Kc_eps0 == 0
+OUT['S10'] = {'kernels_constant_long_mode': {k: str(v) for k, v in Pc.items()}, 'K_c': str(sp.factor(K_c)), 'K_c_squeezed_kL_over_kS_to_0': str(K_c_sq), 'K_c_general_short_history_m': str(K_c_general_m),
+              'K_c_limits': {'m_S_to_0_Kc_alone': str(Kc_m0), 'm_S_to_0_full_kernel': str(sum_m0), 'm_S_to_0_cross_divergence_integrand': str(DLS_m0), 'm_S_to_0_full_kernel_squeezed': str(sum_m0_sq), 'eps_to_0': str(Kc_eps0), 'K_c_independent_of_m_S': Kc_m_indep}, 'f_of_K_c_alone(lamL=1,lamS=lam1)': {'const': str(fKc0), 'mu2': str(fKc2)},
               'normalisation_note': 'f_map(g) = (5/12)/(lambda_g lambda_1) Assemble[M(g)]: the long leg carries lambda_g, the short leg lambda_1; '
                                     'the 2026-09-04 S10.1 prefactor 5/(6 lambda_g^2) is correct only at g = 1',
               'lambda_g': str(lam_g), 'f_map_g': res10, 'convergence_conditions': sorted(set(Kc_all['conv'] + Kg['conv']))}
