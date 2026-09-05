@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.15}
+\newcommand{\paperVersion}{v3M.0.16}
 \newcommand{\paperTimestamp}{September 4, 2026}
 
 \begin{document}
@@ -43,17 +43,21 @@ $\fnl^{\rm after}\in[-0.65,-0.50]$, S2 gives $\approx-1.25$. But the
 same canonical, constant-$c_s=1$
 background also fixes its tensor-to-scalar ratio: scalar and tensor
 modes share the same Mukhanov--Sasaki equation and vacuum, so
-$r=16\epsilon=24$ exactly, bounce-invariant, $\sim670\times$ above the
-BICEP/Keck bound; $n_s=1$ exactly, with $n_T=n_s-1=-0.035$ the model's
-one falsifiable tilt. A reduced sound speed $c_s<1$ trades $r$ for
+$r=16\epsilon=24$ before the bounce; in scheme S1 (tensor and scalar
+share $z=a$) $r_{\rm after}=24$ exactly, $\sim670\times$ above the
+BICEP/Keck bound, while S2's raw-ADM continuation instead gives
+$r_{\rm after}\approx9.4\times10^2$ (worse, not cured). $n_s=1$ exactly
+for pure dust ($n_s=0.9649$ anchors $w=-0.0029$, $r=23.93$); $n_T=n_s-1=-0.035$
+is the model's one falsifiable tilt. A reduced sound speed $c_s<1$ trades $r$ for
 $\fnl$: $r=24c_s$ and
 $\fnl^{\rm pre}=-165/16+65/(8c_s^2)$ (reproducing Li \textit{et al.}
 2016). $r<0.036$ requires $c_s<1.5\times10^{-3}$, driving
 $\fnl^{\rm after}$ to $6\times10^5$--$9\times10^5$; keeping
-$|\fnl|\le5.1$ requires $c_s\ge0.444$, giving $r\ge10.7$. The two
+$|\fnl^{\rm after}|\le5.1$ requires $c_s\ge0.444$, giving $r\ge10.7$. The two
 windows are disjoint by $\sim296\times$ in $c_s$, and the transmission
 is $c_s$-independent: \emph{the single-field matter bounce, canonical
-or $k$-essence, is jointly excluded by $r$ and $\fnl$}, confirming Li
+or $k$-essence, is jointly excluded by $r$ and $\fnl$ on the backgrounds and
+channels evaluated here}, confirming Li
 \textit{et al.}'s no-go, strengthened $3.8\times$. A curvaton-type
 spectator inherits the contraction's tilt with a tunable
 $r=24/[1+(4/3)r_{\rm dec}^2(M_{\rm pl}/\sigma_*)^2]$ and its own $O(1)$
@@ -1230,16 +1234,26 @@ background is not free of its own tensor spectrum. In the dressed-metric
 scheme the tensor and scalar canonical variables obey the identical
 equation $\mu''+(k^2-a''/a)\mu=0$ from the identical Bunch--Davies
 vacuum, so $r=16\epsilon$ identically for this class of background, and
-the dust contraction's $\epsilon=3/2$ fixes $r=24$. Integrating the
-tensor mode independently through each of the three bounce backgrounds
-of Sec.~\ref{sec:transmission} returns transfers equal to the scalar
-transfers to better than $8\times10^{-5}$, so $r$ is unchanged by the
-bounce, $r_{\rm after}=23.996$--$24.000$: this exceeds the BICEP/Keck
-bound $r<0.036$~\cite{BicepKeck2021} by a factor of $\sim670$. This is the
+the dust contraction's $\epsilon=3/2$ fixes $r=24$. The transfer ratio
+$r_{\rm after}/r_{\rm before}$ is scheme-dependent, because the scalar
+transfer is (S1 vs.\ S2). In scheme S1, tensor and scalar canonical
+variables share $z=a$, so integrating the tensor mode independently
+through each of the three bounce backgrounds of Sec.~\ref{sec:transmission}
+returns transfers equal to the scalar transfers to better than
+$8\times10^{-5}$, so $r$ is unchanged by the bounce,
+$r_{\rm after}^{\rm S1}=23.996$--$24.000$: this exceeds the BICEP/Keck
+bound $r<0.036$~\cite{BicepKeck2021} by a factor of $\sim670$. In
+scheme S2 the tensor transfer is unchanged ($z_T=a$ still) but the
+scalar transfer under the raw-ADM continuation is $|\lambda_\zeta|=0.97$
+(Sec.~\ref{sec:transmission}) against the S1 scalar transfer's
+$\lambda_\zeta=6.06$ on the Quintin-type background, so
+$r_{\rm after}^{\rm S2}=24\,(6.06/0.97)^2\approx9.4\times10^2$: the
+tensor problem is \emph{worse}, not cured, in S2. This is the
 long-known matter-bounce large-$r$ problem~\cite{CaiEasson2012,
 Quintin2015}, applied here to the lab's own background rather than
 assumed from the literature: because tensors and scalars share the same
-geometric potential, no bounce in the class considered relieves it.
+geometric potential, no bounce in the class considered relieves it, in
+either transmission scheme.
 Similarly, the exact dust contraction gives $n_s=1$; the observed
 $n_s=0.9649$ is an anchor fixing the contraction's equation of state to
 $w=-0.0029$ via $n_s-1=12w/(1+3w)$, not a prediction of the model. The
@@ -1310,9 +1324,16 @@ the three backgrounds used throughout this paper: their Eq.~(31)
 requires an amplification $\lambda\gtrsim49$ for $r<0.12$, while the
 velocity-dip evaluation of Sec.~\ref{sec:transmission} (Eq.~79 of that
 reference, evaluated on these backgrounds) finds $\lambda=4.0$--$6.1$
-with no net $r$ suppression. \emph{The single-field matter bounce,
-canonical or $k$-essence, is therefore excluded jointly by $r$ and
-$\fnl$ on the backgrounds and channels used in this paper.} This
+with no net $r$ suppression. This entire $c_s$-window analysis is
+carried out in scheme S1, where $r$ and $\fnl$ are computed on the
+same transmission; the alternative-route test of Quintin \textit{et
+al.} above is likewise available only in S1. Scheme S2's tensor ratio
+is larger still ($r_{\rm after}^{\rm S2}\approx9.4\times10^2$,
+Sec.~\ref{sec:tensor}), so the joint exclusion is not relieved --
+if anything it is strengthened -- by moving to S2. \emph{The
+single-field matter bounce, canonical or $k$-essence, is therefore
+excluded jointly by $r$ and $\fnl$ on the backgrounds and channels
+used in this paper.} This
 sharpens, rather than contradicts, the paper's earlier statements: the
 exact amplitude $-35/16$ and its transmitted values remain correct
 statements about this background, but that background is now shown to
