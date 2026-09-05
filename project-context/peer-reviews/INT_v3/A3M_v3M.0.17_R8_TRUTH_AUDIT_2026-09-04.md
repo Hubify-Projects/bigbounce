@@ -98,3 +98,67 @@ of a load-bearing claim.
 | `R8-13` | §II D and Appendix A restate the Bianchi-I argument nearly verbatim | [Fable m9] |
 | `R8-14` | Fig. 1 axis/legend text small at column width; NANOGrav band and the two predicted lines unlabelled | [Fable m12] |
 | `R8-15` | §IX A juxtaposition `0.5–1.1σ` vs `3.13σ` lacks an explicit "not directly comparable" tag (the existing "a naive reading … would suggest" is weaker than the tag used at `:516`, `:665`) | `:1483–1487` [Gemini E3] |
+
+## (b) RE-FLAG / RESIDUAL of an open canonical disposition (4) — real, but not genuinely-new
+
+- **`DA3M-06` residual (MAJOR, still open).** [Fable M3] `main.tex:790–791` still carries
+  "the unresolved `r = 0.84` matter-bounce scenario (open item, not adopted) … resolving `r` for
+  these backgrounds is an open item (Sec. IX)", contradicting `:1292` ("a tensor-sense `r = 0.84`
+  is not used here: it traces to the noise-weighted bispectrum shape-overlap coefficient of
+  Sec. VI") and the `r = 24` identity of Sec. VII. §IX C lists no such open item, so the
+  cross-reference dangles. Fingerprint matches `DISPOSITIONS/A3M.md § DA3M-06`. **Must close in
+  v3M.0.18** — it is the paper's only surviving internal contradiction on its headline quantity.
+- **`DA3M-08` residual (MAJOR — presentation, both external legs rank it ESSENTIAL).**
+  [Gemini E1, Fable m7] 14 hits of ledger/round jargon remain in body prose and captions
+  (`row18a`, `row18b`, `row14_`, "ledger row", `LEDGER4_RESULT_v3_…`, `r5_15`, `r11_pbh`,
+  `D-A3-9`, `lane9c2`). Fingerprint matches `DA3M-08`. **Must close in v3M.0.18.**
+- **`DA3M-01` re-flag (not real as stated).** [Grok E2] Table IV's caption (`:658–665`) already
+  declares the official posterior the *primary* comparison and the 30-bin refit a "secondary,
+  differently-conditioned cross-check, **not directly comparable to it**". The abstract quotes the
+  declared primary statistic, which is the paper's own stated convention, not the
+  more-favourable of two comparable numbers.
+- **`DA3M-04` re-flag (already disclosed).** [Grok E3] Table V daggers the non-perturbative rows,
+  its footnote reads "†non-perturbative: `f_PBH > 1` uncapped" (`:1002`), and `:976–983` state
+  explicitly that `1.732 ± 0.050` "must not be quoted as" the headline while the abstract's
+  `1.84 ± 0.03` is the shape-resolved, `γ_cr`-covered value. The perturbativity cut is applied,
+  not ignored. (The residual editorial mismatch is logged separately as `R8-06`.)
+
+## (c) FALSIFIED against source (6)
+
+- **Grok E1** ("no explicit statement that S1 and S2 are not directly comparable"): FALSE.
+  Abstract `:41–42` — "Transmission through the bounce is **scheme-qualified**: S1 gives …,
+  S2 gives …"; body `:516` — S2 "is a different continuation and **is not directly comparable to
+  the S1 rows above it**".
+- **Grok M2** ("S2 diverges or requires an ad-hoc cutoff"): FALSE. S2 is the raw-ADM continuation
+  with `|λ_ζ| = 0.97` (`row18a_s2_tensor/results.json:lam_zeta_S2 = 0.96958`); no cutoff appears
+  in the S2 lane. Same falsification as E1 for the "symmetric" charge.
+- **Grok M3** ("recovered central value shifts to `−2.2 ± 2.5`"): misquotes the paper. `:1162`
+  reports `f_NL^local = −2.2 ± 25` — the error bar is ~2.8× the published `+9.0/−9.1`, which is
+  why the paper labels the reproduction consistent but **under-powered**, exactly the assessment
+  Grok says is missing.
+- **Grok M4** ("effect-size information is missing"): FALSE. The amplitude ratio between the two
+  candidates *is* the effect size and is the abstract's headline (`1.84 ± 0.03`, `:74`), tabulated
+  at `:976` and `:1073`.
+- **Grok E4** ("the no-go is presented as background-independent"): FALSE. The abstract scopes it
+  "on the backgrounds and channels evaluated here" (`:63–65`), and Eq. (16)/Table VII are computed
+  on **all three** backgrounds (`row18b …/results.json` → `quintin`, `lqc`, `poly` blocks). Eq. (17)
+  is the surviving-route curvaton sketch, not a premise of the no-go.
+- **Grok m1** ("future date September 4, 2026 … inconsistent with a 2024–2025 submission cycle"):
+  the date is the true compile date; the reviewer's assumed submission cycle is not a paper fact.
+
+## (d) OPINION / GENRE / VENUE (7)
+
+Grok M1 (18 pp → "should be a 6–8 page letter"); Grok m2 (Table II caption phrasing); Grok m3
+(restate `ε = 3/2` on every page); Grok's three nits ("Quintin-type" vs "Quintin et al. [3]",
+figure-axis units, one missing journal ref — the last is worth a free fix); Gemini N1
+(the honesty-grading sentence in §I is "overly conversational"). None is a defect in the science.
+
+## (e) DISCLOSED LIMITATION / OUT OF SCOPE (4)
+
+- **Gemini E2b** (no frozen-release DOI): the paper says so itself at `:1752` and assigns it to the
+  packaging stage. Real for a journal submission, out of scope for the current arXiv-track state;
+  it is a P-round action, not a v3M.0.18 text edit.
+- **Fable m8** (`Ω_DM = 0.674` transcription from [16]): `:1029–1039` already footnotes the
+  transcription, gives the correct `≈0.264`, states the ratio is independent of it, and quantifies
+  the `2.55×` rescaling of the tabulated `f_PBH`. Disclosed, not a defect.
+- **Fable Q1–Q4**: referee questions, routed to the ledger (below), not paper defects.
