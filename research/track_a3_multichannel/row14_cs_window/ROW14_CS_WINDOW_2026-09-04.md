@@ -178,3 +178,108 @@ Read the other way — the largest `c_s`-suppression the `f_{\rm NL}` data permi
 
 **The two allowed regions do not overlap.** The gap is a factor `296` in `c_s`
 (`224`–`542` across the three backgrounds and the four bounds).
+
+## 6. The no-go check
+
+**Li+2016's own no-go (arXiv:1612.02036 §5).** They state it as: *"There is no region of
+parameter space where `c_s` can give a small tensor-to-scalar ratio and small
+non-Gaussianities simultaneously."* With the weaker bound of their era, `r < 0.07`, they
+get `c_s \lesssim 0.0029` and `f_{\rm NL} \gtrsim 9.55\times10^{5}`. Our formula at
+`c_s = 0.0029` gives `f_{\rm NL}^{\rm pre} = 9.66\times10^{5}` — their number reproduced.
+With the current `r < 0.036` the bound tightens to `c_s < 1.500\times10^{-3}` and
+`f_{\rm NL}^{\rm pre} = 3.61\times10^{6}`. **The lab's independent computation confirms
+their no-go and strengthens it by a factor `3.8`.**
+
+**Quintin, Sherkatghanad, Cai & Brandenberger 2015 (arXiv:1508.04141).** Their route to a
+small `r` is not `c_s` but a scalar-only amplification through the bounce. Their Eq. (31)
+requires `|\Delta\zeta_{k_*}/\zeta_{k_*}(\eta_{B-})| \gtrsim 49.1` (for `r < 0.12`), and
+their Eq. (44) `f_{\rm NL} \sim (\Delta\zeta)^2 M_p^2/\Delta t_B` is why paying that price
+in `\zeta` buys a large `f_{\rm NL}`. Tested against this lab's own backgrounds:
+
+- suppressing `r` from 24 to 0.036 by scalar amplification alone needs
+  `\lambda = \sqrt{24/0.036} = 25.82`;
+- the A2 bounces supply `\lambda = 4.00` (LQC), `5.12` (poly), `6.06` (Quintin-type) —
+  short by a factor `4.3`–`6.5`;
+- and, per row 10, those bounces amplify **tensors and scalars identically**
+  (`T_h/T_\zeta - 1 \le 8\times10^{-5}`), so their true contribution to `r` suppression
+  is **zero**, not merely insufficient.
+
+So both routes out of the tensor problem — small `c_s`, or bounce amplification of `\zeta`
+— fail on this lab's own backgrounds, and the `c_s` route fails against the `f_{\rm NL}`
+data by five orders of magnitude.
+
+## 7. What would have to set `c_s < 1` (and why this lab's model does not)
+
+`c_s < 1` is not a free dial: it is a property of the matter sector. A canonical scalar
+field — the standard realisation of the `w \simeq 0` contraction, and the one this
+program's background assumes — has `c_s = 1` identically, because its perturbations are
+adiabatic with `\delta p = \delta\rho`. To get `c_s < 1` at `w \simeq 0` one needs a
+non-canonical kinetic sector: k-essence `P(X,\phi)` with
+`c_s^2 = P_{,X}/(P_{,X} + 2XP_{,XX})` (Garriga & Mukhanov 1999, hep-th/9904176), of which
+DBI is the standard example (Chen, Huang, Kachru & Shiu 2007, hep-th/0605045). Li+2016
+use exactly this: a k-essence/ghost-condensate field engineered to contract as dust while
+carrying `c_s \ll 1`. A *literal* pressureless fluid is not an escape either — it has
+`c_s = 0`, for which `z^2 = 2a^2\epsilon/c_s^2` diverges and the perturbation problem is
+ill-posed (no sound horizon, no adiabatic vacuum to normalise to).
+
+> **This lab's contraction does not provide `c_s < 1`.** Adopting it means replacing the
+> matter sector with a specified k-essence Lagrangian, which is new physics this program
+> has not modelled, and which — per §5 — is ruled out by `f_{\rm NL}` at any `c_s` small
+> enough to help `r`.
+
+## 8. Verdict against the ledger's success/kill
+
+Ledger row 14: *"A viable `c_s` window with a stated `f_NL^{after}` → the flagship claim
+re-anchored honestly; no viable window → Track A states the tensor problem as unresolved."*
+
+> **KILL CONDITION MET. There is no viable `c_s` window.** Row 14 closes as a **null**.
+> Track A must state the tensor problem as **unresolved**, and must state that the `c_s`
+> remedy is closed, not merely untried. The flagship `f_{\rm NL} = -35/16` remains a
+> `c_s = 1` prediction of a background that is in `\sim670\times` tension with the CMB
+> tensor bound (row 10); this row establishes that the standard fix for that tension
+> destroys the `f_{\rm NL}` prediction rather than re-anchoring it.
+
+## 9. Paper-ready sentences (at evidential strength)
+
+> The tensor tension of row 10 has a textbook remedy — a scalar sound speed `c_s < 1` in
+> the contracting phase, which suppresses `r` while leaving the tensor sector untouched.
+> Carrying the constant-`c_s` Mukhanov–Sasaki problem through
+> (`z^2 = 2a^2\epsilon/c_s^2`, `v \to e^{-ic_sk\eta}/\sqrt{2c_sk}`, `c_T = 1`) gives
+> `r = 16\epsilon c_s^{2\nu-2}` with `\nu = |q-1/2|`, hence `r = 16\epsilon c_s = 24c_s`
+> for the dust contraction, in agreement with Ref. [Li *et al.* 2016] Eq. (3.18). The
+> bound `r < 0.036` therefore requires `c_s < 1.5\times10^{-3}`.
+
+> The same `c_s` enters the bispectrum with the opposite sign of benefit. The squeezed
+> isoceles amplitude is `f_{\rm NL} = -165/16 + 65/(8c_s^2)`, whose `c_s\to1` limit is
+> `-35/16` — exactly the value derived independently here in the canonical case — and
+> which grows as `1/c_s^2`, the generic single-field scaling [Chen *et al.* 2007]. The
+> bounce transfer is `c_s`-independent (for constant `c_s` the mode problem is the
+> canonical one at wavenumber `c_s k`, verified numerically to `4\times10^{-11}` across
+> all three backgrounds), so `f_{\rm NL}^{\rm after} = T\,f_{\rm NL}^{\rm pre}` with
+> `T = 0.165`–`0.250`.
+
+> At `c_s = 1.5\times10^{-3}` this gives `f_{\rm NL}^{\rm after} = 6\times10^{5}`–
+> `9\times10^{5}`, some `10^{5}\sigma` above `f_{\rm NL}^{\rm local} = -0.9\pm5.1`
+> [Planck 2018] and `10^{6}\sigma` above the SPHEREx target `\sigma \simeq 0.5`.
+> Conversely, keeping `|f_{\rm NL}|` within Planck's `1\sigma` requires `c_s > 0.44`,
+> i.e. `r > 10.7`. **The two allowed regions are disjoint by a factor of about 300 in
+> `c_s`**, confirming and — with the current tensor bound — strengthening by a factor
+> `3.8` the extended no-go theorem of Ref. [Li *et al.* 2016]. The alternative route,
+> suppressing `r` by amplifying `\zeta` through the bounce [Quintin *et al.* 2015,
+> Eq. (31)], requires `\lambda \gtrsim 26` here, while the bounces of Ref. [A2] supply
+> `\lambda = 4.0`–`6.1` and, amplifying tensors identically, no net suppression at all.
+
+> We therefore state the tensor-to-scalar problem of the matter-bounce background as
+> **unresolved**, and record that it is not resolvable within this class by a reduced
+> scalar sound speed: doing so is excluded by the non-Gaussianity data, and in any case
+> requires a k-essence matter sector [Garriga & Mukhanov 1999] that the single-clock dust
+> contraction used throughout this work does not contain.
+
+## 10. What changes in the A3 paper (for the closure lane; this lane does not edit `main.tex`)
+
+1. Wherever the `r` limitation from row 10 is stated, add one sentence closing the `c_s`
+   escape with the `\sim300\times` disjointness number — otherwise a referee will ask.
+2. State `f_{\rm NL} = -35/16` explicitly as a `c_s = 1` result, and note the sign flip
+   (`f_{\rm NL} > 0` for `c_s < 0.888`) so the negative sign is not read as robust.
+3. Cite Li *et al.* 2016's extended no-go and record that this work reproduces it
+   independently and tightens it with `r < 0.036`.
