@@ -109,3 +109,49 @@ OUT['step2'] = {'ratio_gaussian_finiteW': str(ratio_G), 'f_intrinsic_r_channel':
                 'W_times_f_intrinsic_r_limit': str(lead_r), 'W_times_f_intrinsic_s_channels_limit': str(f_int_s),
                 'r_required_general': str(r_req), 'r_required_dust': str(r_req.subs(ep, sp.Rational(3, 2))),
                 'gap_general': str(gap), 'gap_dust': str(gap.subs(ep, sp.Rational(3, 2)))}
+
+# ---------------------------------------------------------------------------
+# Step 3 : the (delta phi, delta pi) chain.  Flat-slice local data (M=1):
+#   3 H_loc^2 = pi^2/2 + V(phi),  V = Vbar e^{-lam dphi}, lam = sqrt6 x*,
+#   x_loc = pi/(sqrt6 H_loc), s_loc = ln|H_loc|;  u_i = x_loc - x*,  ds_i = s_loc - sbar.
+#   N_phi, N_pi, N_phiphi, N_pipi, N_phipi by composition; intrinsic data
+#   dphi = dphi_g + r_phi dphi_g^2, dpi = varpi dphi_g + r_pi dphi_g^2 (varpi = growing-mode ratio).
+# ---------------------------------------------------------------------------
+print("=== Step 3: (delta phi, delta pi) chain rule and where the in-in enters ===")
+dphi, dpi, rphi, rpi, varpi = sp.symbols('delta_phi delta_pi r_phi r_pi varpi')
+Hbar = -1                                   # contracting, |H|=1 at t_i (s_bar = 0)
+pibar = sp.sqrt(6) * xs * Hbar              # x* = pibar/(sqrt6 Hbar) > 0
+Vbar = 3 - pibar**2 / 2
+lam_v = sp.sqrt(6) * xs
+Hloc = -sp.sqrt((( pibar + dpi)**2 / 2 + Vbar * sp.exp(-lam_v * dphi)) / 3)
+u_loc = (pibar + dpi) / (sp.sqrt(6) * Hloc) - xs
+s_loc = sp.log(-Hloc)
+Nphi_pi = (-(Sig - s_loc) / epsq + N_u.subs(Sg, Sig - s_loc) * u_loc + N_uu2.subs(Sg, Sig - s_loc) * u_loc**2)
+def d(e, *vs):
+    return sp.simplify(sp.diff(e, *vs).subs({dphi: 0, dpi: 0}).subs(sp.exp(q**2 * Sig), W))
+N_phi, N_pi = d(Nphi_pi, dphi), d(Nphi_pi, dpi)
+N_phiphi, N_pipi, N_phipi = d(Nphi_pi, dphi, dphi), d(Nphi_pi, dpi, dpi), d(Nphi_pi, dphi, dpi)
+for k, v in [('N_phi', N_phi), ('N_pi', N_pi), ('N_phiphi', N_phiphi), ('N_pipi', N_pipi), ('N_phipi', N_phipi)]:
+    show(k + "  [q, W]", sp.factor(v))
+# the flat-slice Jacobian: u_phi, u_pi, s_phi, s_pi
+u_phi, u_pi = d(u_loc, dphi), d(u_loc, dpi); s_phi, s_pi = d(s_loc, dphi), d(s_loc, dpi)
+show("u_phi, u_pi", (sp.simplify(u_phi), sp.simplify(u_pi))); show("s_phi, s_pi", (sp.simplify(s_phi), sp.simplify(s_pi)))
+assert sp.simplify(N_phi - (N_u_W * u_phi + s_phi / epsq)) == 0 and sp.simplify(N_pi - (N_u_W * u_pi + s_pi / epsq)) == 0
+# intrinsic contribution with a single Gaussian seed dphi_g and growing-mode ratio varpi
+z1 = N_phi + varpi * N_pi
+z2 = sp.Rational(1, 2) * (N_phiphi + 2 * varpi * N_phipi + varpi**2 * N_pipi) + N_phi * rphi + N_pi * rpi
+f_tot = sp.Rational(5, 3) * z2 / z1**2
+f_intr_chain = sp.simplify(sp.Rational(5, 3) * (N_phi * rphi + N_pi * rpi) / z1**2)
+show("intrinsic f (chain) [q,W]", sp.factor(f_intr_chain))
+# leading large-W: numerator ~ W, denominator ~ W^2  -> 1/W, for every varpi with u_phi + varpi u_pi != 0
+lead_chain = sp.simplify(sp.limit(f_intr_chain * W, W, sp.oo))
+show("lim W * f_intrinsic(chain)", sp.factor(lead_chain))
+assert sp.simplify(sp.limit(f_intr_chain.subs({rphi: 1, rpi: 1, varpi: 1, q: 1}), W, sp.oo)) == 0
+# consistency: the Gaussian part of the chain reproduces the lane's -55/16 at dust for any varpi
+fG_chain = sp.simplify(sp.limit((f_tot - f_intr_chain).subs(q, q_of_ep).subs(ep, sp.Rational(3, 2)), W, sp.oo))
+show("Gaussian part of chain, W->oo, eps=3/2 (any varpi)", fG_chain)
+assert sp.simplify(fG_chain + sp.Rational(55, 16)) == 0
+OUT['step3'] = {k: str(v) for k, v in [('N_phi', N_phi), ('N_pi', N_pi), ('N_phiphi', N_phiphi), ('N_pipi', N_pipi),
+                ('N_phipi', N_phipi), ('u_phi', u_phi), ('u_pi', u_pi), ('s_phi', s_phi), ('s_pi', s_pi),
+                ('f_intrinsic_chain', f_intr_chain), ('W_times_f_intrinsic_chain_limit', lead_chain),
+                ('gaussian_part_dust_Winf', fG_chain)]}
