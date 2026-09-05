@@ -741,3 +741,20 @@ stated for the full P(X) class (`row19_lambda/`).
 
 **Why:** R8 audit R8-01 named λ as the one genuine scope decision; the computation answers
 it negatively with the lab's own numbers.
+
+## 2026-09-05 — namaster-proof (P1B): novelty tier set to N3 (decision D-P1B-1)
+
+**ORIGINAL:** N2 (novel application) per the 2026-09-04 novelty audit, pending a
+pre-registered blind demonstration.
+
+**NEW (v2B.0.20):** N3 — first-of-kind demonstration by the lab's ladder: "first
+pre-registered, sealed, externally time-stamped blind measurement of shortcut-detection
+sensitivity for pseudo-C_ℓ receipts: three batches, frozen rules, class-level detection of
+five structural shortcut classes including the effective-multipole class caught by a
+value-level rule, with metadata forgery reported as an escape; estimator validated against
+NaMaster to round-off." Ceiling N3; never N4. Basis: batch 3 (R7; S6 6/6; S4 cross-run 6/6;
+FP 0/6; aborted attempt disclosed), PyMaster cross-check (M and bandpowers to ~1e−12),
+Bitcoin-attested seals for batches 1–2, all committed and manifest-registered.
+
+**Why:** the R2 audit's surviving claim sentence plus the three named science items now
+closed; the tier is a self-claim within the ladder's ceiling and stays subject to referees.
