@@ -836,3 +836,59 @@ scoping/disclosure of already-committed quantities (`R7-01`, `R7-03`) and one st
 on `C1`–`C8`. **v3M.0.16 closes the 16 (i) items; then rounds STOP on A3M** until a science
 decision on `A3-S2r`, `A3-cs-bounce`, `A3-ns`, `A3-dN`, `DESI-4`. `A3-1e` is **closed** by
 `row11_pbh_residuals` item (a). No further round on editorial grounds alone.
+
+---
+
+## R8 — v3M.0.17 (2026-09-04), exact PDF sha256 `5ada0172…`, md5 `b18aafd1…`, 18 pp
+
+Full audit: `../INT_v3/A3M_v3M.0.17_R8_TRUTH_AUDIT_2026-09-04.md`; board:
+`../INT_v3/A3M_v3M.0.17_R8_BOARD_2026-09-04.md`. Legs: Grok_brutal **REJECT**,
+Gemini_cosmology **MAJOR REVISIONS**, Claude Fable 5.1 INT **MAJOR REVISIONS** (no leg FAILED).
+40 raw findings → 27 distinct → **15 genuinely-new-real** (2 MAJOR + 1 MAJOR-lite + 12 minor),
+4 re-flag/residual, 6 falsified, 7 opinion/genre, 4 disclosed. **Clean-wave count: 0.**
+
+### New OPEN items (MAJOR)
+- **`DA3M-R8-01`: the `k`-essence no-go silently assumes `λ (P_XXX) = 0`, `s = 0`, `η_sr = 0`.**
+  Evidence: `row18b_cs_bounce_cubic.py` docstring L20–22 and `results.json.scheme`; no statement
+  anywhere in `main.tex`. Closure: disclose at `main.tex:1331` + qualify the abstract's
+  "canonical or `k`-essence" (`:63`), or bound `λ/Σ` with the already-computed `ζ̇³` kernel.
+  Fingerprint: lambda, P_XXX, k-essence no-go scope, s = 0, eta_sr = 0, Li et al. kinetic sector.
+- **`DA3M-R8-02`: Appendix A prints the final-label map as the initial-label one.**
+  `main.tex:1639–1641`: `f^{in-in}/λ + f_map = −25/4 + (15/4)μ²` at `ε = 3/2` (= the final-label
+  value quoted at `:1652`), **not** the "isotropic monopole of exactly −5" the sentence claims;
+  the initial-label map must be `−5/8 − (15/8)μ²`. Closure: print both maps at general `ε` and
+  correct the prose; propagate to §II D and the Scope statement.
+  Fingerprint: f_map, initial-label, final-label, isotropic monopole −5, delta N_c label map.
+- **`DA3M-R8-03` (MAJOR-lite): `Υ` and `Δt_B` used undefined** at `main.tex:435–436`.
+
+### Minor OPEN items
+`R8-04` `[S]` suppression scaling · `R8-05` "current HEAD" pointer · `R8-06` Eq. (12) `1.732` vs
+abstract `1.84` · `R8-07` "Planck 1σ" ≠ `[−6.0, +4.2]` · `R8-08` §V B/§V C `T_B` cross-ref ·
+`R8-09` three quantities named `r` · `R8-10` `r_dec ∈ [0.113, 1]` unstated · `R8-11` Ref. [4] year ·
+`R8-12` Table IV "Matter bounce γ = 3" label · `R8-13` Bianchi-I duplication · `R8-14` Fig. 1
+legibility · `R8-15` `0.5–1.1σ` vs `3.13σ` comparability tag. (Details in the R8 audit.)
+
+### CLOSED this round
+- **`A3-S2r`** — closed by `research/cubic_bounce_transmission/row18a_s2_tensor/`
+  (`r_after_S2 = 937.11`, `r_after_S1 = 24.0000` to 1e−13); the paper's `9.4×10²` now rests on a
+  committed artifact, not a hand ratio.
+- **`A3-cs-bounce`** — closed by `row18b_cs_bounce_cubic/`; the closed form
+  `Δf^bounce(c_s) = −(5/24)ρ_B(6c_s²−5)/c_s⁴` reproduces the integrated `Δ₁` to ≤0.2% on all three
+  backgrounds and the `c_s = 1` gate matches lane (b) to 3×10⁻⁶.
+
+### Still OPEN from earlier rounds (re-flagged, real)
+`DA3M-06` (`r = 0.84` contradiction, `main.tex:790–791` vs `:1292`) and `DA3M-08` (14 ledger/round
+tags in body prose) — both must close in v3M.0.18.
+
+### Falsified this round (do not re-open without new evidence)
+Grok E1/M2 (abstract says "scheme-qualified"; `:516` says "not directly comparable"), Grok M3
+(paper reports `−2.2 ± 25`, not `± 2.5`), Grok M4 (the `1.84 ± 0.03` ratio *is* the effect size),
+Grok E4 (no-go scoped "on the backgrounds and channels evaluated here"; Eq. 16 computed on all
+three), Grok m1 (the date is the true compile date).
+
+### R2
+**Rounds STOP on A3M after v3M.0.18.** R8 found no physics or numerical error; 12 of 15 new items
+are one-line edits. The only (ii) item that is a science/scope decision — and therefore the only
+thing that could license a further round — is **`A3-lambda`** (bound `λ/Σ`, or restrict the no-go
+to the Li *et al.* kinetic sector). Carried: `A3-S2perturb`, `A3-ns`, `A3-dN`, `DESI-4`,
+`A3-ref25`. No round on editorial grounds alone.
