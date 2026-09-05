@@ -200,5 +200,5 @@
   "gamma_pred_pure_dust": 4.999999999999998,
   "statement": "The lab's CMB-anchored spectrum gives gamma_pred ~ 5.07 (near-flat Omega_GW), NOT gamma = 3, and an amplitude ~1e15 times below the NANOGrav signal. The PTA channel is a NULL for this model: it neither predicts nor is constrained by the signal. gamma = 3 requires P_R ~ k^1 across the nHz band plus a ~1e8 amplitude enhancement -- i.e. exactly the PBH-forming small-scale enhancement the paper's section V C denies the model has."
  },
- "wall_seconds": 10.56
+ "wall_seconds": 2.67
 }

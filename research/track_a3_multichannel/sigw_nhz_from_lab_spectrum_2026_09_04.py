@@ -256,18 +256,20 @@ def main():
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(7.2, 5.0))
+    fig, ax = plt.subplots(figsize=(8.0, 5.6))
     fn = f * 1e9
     for name in BRANCHES:
-        ax.loglog(fn, curves[name], lw=2, label=f"lab spectrum, {name}")
-    ax.loglog(fn, [ng_omega_h2(x) for x in f], "k--", lw=2,
-              label=r"NANOGrav 15yr ($A=6.46\times10^{-15}$, $\gamma=3.2$)")
+        ax.loglog(fn, curves[name], lw=2.4, label=f"lab spectrum, {name}")
+    ax.loglog(fn, [ng_omega_h2(x) for x in f], "k--", lw=2.4,
+              label=r"NANOGrav 15yr band ($A=6.46\times10^{-15}$, $\gamma=3.2$)")
     ref = ng_omega_h2(F_YR)
-    ax.loglog(fn, ref * (f / F_YR) ** 2.0, ":", color="crimson", lw=1.6,
-              label=r"$\gamma=3$ ($\Omega\propto f^2$) at NANOGrav amplitude")
-    ax.set_xlabel("f  [nHz]"); ax.set_ylabel(r"$\Omega_{\rm GW}h^2$"); ax.set_ylim(1e-24, 1e-7)
-    ax.set_title("A3-3: induced GWs at nHz from the lab's own $\\Delta^2_\\zeta$")
-    ax.legend(fontsize=7.5, loc="center left"); ax.grid(alpha=0.3, which="both")
+    ax.loglog(fn, ref * (f / F_YR) ** 2.0, ":", color="crimson", lw=2.0,
+              label=r"predicted $\gamma=3$ curve ($\Omega\propto f^2$, NANOGrav-normalized)")
+    ax.set_xlabel("f  [nHz]", fontsize=13); ax.set_ylabel(r"$\Omega_{\rm GW}h^2$", fontsize=13)
+    ax.set_ylim(1e-24, 1e-7)
+    ax.tick_params(axis="both", labelsize=11)
+    ax.set_title("A3-3: induced GWs at nHz from the lab's own $\\Delta^2_\\zeta$", fontsize=12)
+    ax.legend(fontsize=10, loc="center left"); ax.grid(alpha=0.3, which="both")
     # R7-16: default log-minor-tick labels collide (e.g. 3x10^0 over 4x10^0)
     # on this narrow x-range; drop minor-tick labels, keep major-decade labels.
     ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
