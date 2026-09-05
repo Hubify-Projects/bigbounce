@@ -4,6 +4,8 @@ import { papers, researchPrograms, type Paper } from "@/data/papers";
 import { getLivePapers, displayVersion } from "@/lib/livePapers";
 import { MathText } from "@/components/MathText";
 import { Band, PageHeader, DataTable, type DataTableColumn } from "@/components/primitives";
+import { contributions } from "@/data/tracks";
+import { CONTRIBUTION_TYPE_LABEL, CONTRIBUTION_TYPE_HINT } from "@/lib/contributionTypes";
 
 export const metadata: Metadata = {
   title: "All works",
@@ -50,14 +52,23 @@ const columns: DataTableColumn<WorkRow>[] = [
   {
     key: "work",
     header: "Work",
-    render: (row) => (
-      <Link href={`/papers/${row.paper.slug}`} className="works-table-title-link">
-        <span className="works-table-title">
-          <MathText>{row.paper.title}</MathText>
-        </span>
-        <span className="row-purpose">{row.paper.plainTitle}</span>
-      </Link>
-    ),
+    render: (row) => {
+      const c = contributions.find((x) => x.paperSlugs?.includes(row.paper.slug));
+      return (
+        <Link href={`/papers/${row.paper.slug}`} className="works-table-title-link">
+          <span className="works-table-title">
+            <MathText>{row.paper.title}</MathText>
+          </span>
+          <span className="row-purpose">{row.paper.plainTitle}</span>
+          {c && (
+            <span className="evidence-chip evidence-chip-type" title={CONTRIBUTION_TYPE_HINT[c.contributionType]}>
+              <span className="evidence-chip-dot" aria-hidden="true" />
+              {CONTRIBUTION_TYPE_LABEL[c.contributionType]} &middot; {c.tier}
+            </span>
+          )}
+        </Link>
+      );
+    },
   },
   {
     key: "kind",
