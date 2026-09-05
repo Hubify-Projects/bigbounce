@@ -724,3 +724,20 @@ final-label form beside it; the stale "r = 0.84 open" passage is removed.
 
 **Why:** R8 truth-audit R8-01/R8-02/DA3M-06; claims at evidential strength. Rounds stop
 after v3M.0.18 under R2.
+
+## 2026-09-04 — A3M: the no-go holds for all P(X) k-essence (decision D-A3-14, ledger row 19)
+
+**ORIGINAL CLAIM (v3M.0.18):** the joint (r, f_NL) no-go stated for canonical scalars and
+P(X) k-essence with λ = s = 0.
+
+**NEW CLAIM (v3M.0.19):** r = 24 c_s and the bounce term Δf_NL^bounce(c_s) are exactly
+λ-independent (∂c_s²/∂P_XXX = ∂Σ/∂P_XXX = 0; the λ vertex's S1 coefficient is odd about a
+symmetric bounce and cancels, verified to 2.8e−7); f_NL^pre(c_s, L) = −245/16 + 105/(8c_s²) − 30L
+(squeezed; L = λ/Σ) reproduces Li+2016 on their line and −35/16 at c_s = 1, L = 0; no L in
+the physical range opens the window — cancelling the 1/c_s² divergence needs
+λ/Σ = 7/(16c_s²), i.e. s = 39/16, contradicting |s| ≪ 1; the DBI line's best case gives
+r_min = 12.57 at c_s = 0.524 (349× BK18). The λ = 0 qualifier is dropped; the no-go is
+stated for the full P(X) class (`row19_lambda/`).
+
+**Why:** R8 audit R8-01 named λ as the one genuine scope decision; the computation answers
+it negatively with the lab's own numbers.
