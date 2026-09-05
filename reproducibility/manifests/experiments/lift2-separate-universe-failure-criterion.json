@@ -1,0 +1,133 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "lift2-separate-universe-failure-criterion",
+  "title": "Novelty lift #2: criterion for the O(1) failure of the isotropic separate universe (delta N) in non-attractor phases \u2014 <eps/c_s^2>_zeta, general-w lambda and f_map, validations on dust / USR / attractor / ekpyrotic",
+  "program": "bounce-theory",
+  "paper": "P2",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "lab threading map (2026-09-04), frozen constant-eps kernels",
+      "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json",
+      "type": "internal-artifact",
+      "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"
+    },
+    {
+      "name": "lab monopole adjudication (2026-09-03), in-in general-eps input",
+      "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03.md",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "novelty audit item C2",
+      "locator": "project-context/NOVELTY_AUDIT_2026-09-04.md",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "Namjoo, Firouzjahi & Sasaki 2013",
+      "locator": "https://arxiv.org/abs/1210.3692",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Chen, Firouzjahi, Namjoo & Sasaki 2013",
+      "locator": "https://arxiv.org/abs/1301.5699",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Pajer, Schmidt & Zaldarriaga 2013",
+      "locator": "https://arxiv.org/abs/1305.0824",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Dai, Pajer & Schmidt 2015",
+      "locator": "https://arxiv.org/abs/1504.00351",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cai et al. 2018",
+      "locator": "https://arxiv.org/abs/1712.09998",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Bravo, Mooij, Palma & Pradenas 2018",
+      "locator": "https://arxiv.org/abs/1711.02680",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Passaglia, Hu & Motohashi 2019",
+      "locator": "https://arxiv.org/abs/1812.08243",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Lyth, Malik & Sasaki 2005",
+      "locator": "https://arxiv.org/abs/astro-ph/0411220",
+      "type": "external-literature",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.py",
+      "entrypoint": "python3 research/theory_audit/separate_universe_failure_criterion_2026_09_04.py",
+      "sha256": "21668ab6771101b663a9fcf3a3155e665fca92b30f34f76221ef9343b26a0a29"
+    }
+  ],
+  "environment": {
+    "python": "python3 with sympy (>=1.12; run on sympy 1.14.0)",
+    "hardware": "cpu-only"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local macOS workstation",
+    "date": "2026-09-04",
+    "wall_clock": "0.2 s",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 10 seconds",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic exact sympy on closed forms; reads the frozen threading-map JSON (no constraint re-solve). Self-validating asserts: zetadot/(H zeta) = eps-3 on the constant-eps non-constant mode; f_map = -(5 eps/4)(1-mu^2); delta N initial-label = -5; in-in minus delta N monopole = 5 eps (9-eps)/18; exact USR linear lambda = 1 + eps_f/3 - sqrt(eps_s eps_f)/3; every frozen map piece vanishes at eps -> 0."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.json",
+      "type": "result-json",
+      "checksum": "sha256:4e2a49be541a57d34c4803a20bf7c66cc4016b0612a7881823a9c4cfde85563c"
+    },
+    {
+      "locator": "research/theory_audit/separate_universe_failure_criterion_2026_09_04.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and diff the JSON. Required: constant_eps.Theta == 'epsilon*(epsilon - 3)'; constant_eps.lambda_ == '1 - epsilon/3'; USR_exact_linear.lambda_USR_exact == '-sqrt(epsilon_f)*sqrt(epsilon_s)/3 + epsilon_f/3 + 1'; second_order.f_dN_initial_label == '-5'; second_order.all_map_pieces_carry_eps == true; general_w.lambda_ == '-(w - 1)/2'; general_w.f_map_monopole == '-5*(w + 1)/4'; validations.dust_eps_3_2.monopole_gap == '25/8'; validations.ekpyrotic.cases['eps=10'].nonconstant_mode == 'decays as eta->0-'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NOVELTY_AUDIT_2026-09-04.md C2 'Lift to N3': generalise the map, state the failure as a criterion, demonstrate on >=2 backgrounds + USR control",
+    "directive R (vision governance) and directive Q2 (reproducibility manifests)",
+    "input 'lab threading map' used for: the frozen constant-eps kernels and eps->0 / attractor limits (read, not re-derived)",
+    "input 'lab monopole adjudication' used for: f_inin(mu,eps) and the USR 5/2 benchmark statement",
+    "external literature used for: placement only (section 4); no result transcribed"
+  ]
+}
