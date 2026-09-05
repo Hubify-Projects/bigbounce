@@ -1,3 +1,44 @@
+<!-- CURRENT P1B 2026-09-05 — v2B.0.20: Batch 3 + PyMaster integrated. Batch 3
+(pipelines/namaster_proof/VERIFICATION_PRIMITIVE_2026-09-04.md "Batch 3
+(pre-registered)" section) adds R7, a receipt-bound value-level rule: rebuilds
+the mask from its bound hash, derives 6 receipt-selected spot rows of the
+coupling operator from sha256(mask_sha256 || sha256(bandpowers)), recomputes
+only those rows (~9% of a full build), fires iff |sum M C - p| > 1e-6*||p||.
+48 runs (8 arms x 6, seal abfe2793..., seal_verified true): honest 0/6 (FP
+upper bound 0.393); S1-S3 6/6; S4 6/6 and the new S4b cross-run cache variant
+6/6 (cross-run disjunct fired 4/6, 2 collapsed to the reference disjunct,
+sources recorded in sealed3/crossrun_sources.json); S6 effective-multipole
+6/6 by R7 alone (lower bound 0.607) — closes the open item from batch 2; S5
+metadata forgery escapes 6/6 by forging p := M C, R7's declared limit.
+Attempt 1 was aborted before unsealing (pcl.make_map ignored its seed arg,
+RNG divergence), preserved under blind_test/public3_aborted/, fix committed
+before the new key was drawn. OTS: batch-1/2 seals now `ots upgrade` complete
+with Bitcoin attestations; batch-3 stamp submitted, pending. Separately, a
+PyMaster cross-check (pipelines/namaster_proof/PYMASTER_CROSSCHECK_2026-09-05.md)
+validates the in-house spin-0 MASTER estimator against NaMaster 3.0.1 on an
+identical map/mask/l-range: coupling matrix max rel diff 4.25e-13, bandpowers
+1.54e-12 (floating-point round-off); S6 shortcut vs NaMaster-exact 0.23-1.18
+per 8-wide band (O(10-100%) per-multipole error, never approaching honest
+round-off agreement). Paper edits: abstract (three batches, class-level
+statements only, S6 now caught by a pre-registered value-level rule, forgery
+remains the stated limit, NaMaster applicability demonstrated to round-off);
+new Batch-3 subsection in Sec. Blind Shortcut-Detection Test (R7 definition,
+8x6 confusion table, aborted attempt disclosed, S4b cross-run result); new
+PyMaster cross-check table; Limitations L1/L3 closed, L2 partially closed
+(batch-1/2 OTS complete, batch-3 pending); reproducibility statement lists
+the batch-3 and PyMaster manifests. Recompiled 4-pass, 0 undefined refs, 0
+overfull >10pt (one 11.76pt overfull fixed via sloppypar around the
+Attempt-1-aborted paragraph); page 1 + Batch-3 subsection page rendered at 55
+dpi and visually checked. Mirrored byte-identical (md5 c22158448310861711838e3544a0e04b)
+to arxiv/, site/public/papers/, public/papers/ (versioned + arxiv alias +
+unversioned). arXiv tarball rebuilt (sha256 01c6c1a6bad158aa5b02303727ef29011
+9607c86b635d8308a3ff9db86c8d584), standalone extract+recompile smoke passed.
+Convex paperVersions:bump (paper-1b, doc k575xtm4bmq583t45mznzdbcq18dvdke,
+readback-verified) + activityFeed:add. Readiness: 95 — batch 3 + PyMaster
+integrated; one verification board permitted after this science change
+(directive per orchestrator; rounds remain stopped under the R2 convergence
+budget until a board is run). -->
+
 <!-- CURRENT P1B 2026-09-04 — v2B.0.18: R1 truth-audit closure (project-context/peer-reviews/INT_v3/P1B_v2B.0.17_R1_TRUTH_AUDIT_2026-09-04.md, 23 canonical findings, 21 genuinely-new-real, 8 answered by integrating the pre-registered batch-2 blind test). Batch 2 (35 sealed runs, 7 arms x 5, rules frozen+committed in 4451b135 before the seal 28efa21c) is now the PRIMARY result: S1-S4 20/20 (one-sided 95% Clopper-Pearson lower bound 0.861), honest 0/5 (FPR upper bound 0.451), S5 metadata-forgery escaped 5/5 (pre-declared), S6 effective-multipole escaped 5/5 with NO rule added post hoc — independence caveat (effective n=1 for R1-R5) pre-declared and stated. Batch 1 (18 runs) relabelled the pilot/rule-development round; its post-hoc wall-clock and M-hash rule changes are disclosed, not defended (12/12 lower bound 0.779; 0/3 upper bound 0.632, not headlined). R6 restated with both disjuncts verbatim (reference disjunct fired all 5/5 S4 detections). Abstract rewritten to the audit's surviving claim sentence (structural shortcuts, unmodified-instrumented-harness threat model, spin-0 surrogate estimator, "first pre-registered sealed blind measurement... including a negative class reported as an escape"). New "Relation to Provenance and Attestation Tooling" section (in-toto/SLSA/Sigstore-Rekor/ReproZip/Snakemake/Nextflow/RO-Crate/MLflow, 8 new bibitems) answers the missing-related-work finding. SEM added to the 500-realization recovery numbers where logged (0.0023 deg on the 0.27 deg angle); exact (not rounded) recovered values reported. Sealed digests of BOTH batches externally timestamped via OpenTimestamps (opentimestamps-client installed; pipelines/namaster_proof/blind_test/public{,2}/sealed_digest.json.ots committed, pending Bitcoin confirmation — stated as a limitation in progress, not a completed external anchor). Appendix table of all 35 batch-2 per-run verdicts added. Eq. 4 k-index defined; effective-multipole deviation quantified (max 1.66, median 0.17 fractional, on the nside=64/lmax=64 config); 1.41e-18 scale caveat added; QC coverage disclosed honestly (no coverage tool configured in CI, not estimated); macOS wording, timing harmonization (batch1 ~1-2min, batch2 ~11s/36 runs). v2B.0.18: 12 pp, 2026-09-04, MD5 89cbca0fc922f9c1c63f1afaf35f8517, tarball sha256 00bb9c78c25882537bd295d48d7adb8ba8041c3a11a5e82e413539ba0654c652 (standalone smoke test PASS), Convex paperVersions row k571wkyj4scvf02q553tyq9r8d8dtnsx, activityFeed row j5791xkfypy53xkqm5kdhvqnq58dvtv7, directive-G PASS (3-way md5 match: compile == served (site/public/papers, public/papers) == Convex; 0 overfull >50pt, 0 undef refs). R1 CLOSED. Per directive R2, rounds continue only within the R2 budget — at most one further verification round permitted on this paper before an intervening science/scope decision is required. -->
 <!-- CURRENT P1B 2026-09-04 — v2B.0.19: R2 closure packaged (commits af7f2b18, a7cbd82e, 7a7f98f9 closed the R2 items: statistics presentation corrected -- class-level detection, no run-level intervals, 90% interval labelled correctly -- estimator description fixed, traceability + reproducibility recipe). Directive-G packaging complete: 4-pass pdflatex clean (0 undef refs, 0 overfull >10pt, 13 pages), page 1 + Blind Shortcut-Detection Test statistics page visually verified at 55dpi, MD5 b1c68336fdd183918dcb677fddb9fd72 (523928 bytes) mirrored byte-identical to site/public/papers + public/papers (versioned + arxiv-alias + bare filenames), tarball sha256 9a695757d0ee5a493bcf6177fa53fcd1eda6d88a7ac76767b0d046df5ce57370 rebuilt (single .tex, no figures/bbl needed) and standalone smoke-compiled text-identical to source, Convex paperVersions row k5753kmsvg9bp644qwt03vrrex8dv0v8, activityFeed row j5738m6bcnfs6ht92xqr5a7jhd8dtvx2. ROUNDS STOPPED (R2) pending science/venue decision: batch 3, OTS confirmation, PyMaster cross-check remain open. -->
 <!-- CURRENT P1A 2026-07-16 — exact v1A.0.124 confirmation board: Grok MINOR / Gemini MINOR / Claude MAJOR; truth audit: 0 genuinely-new-real (13 findings; algebra hand-verified a third time; all majors disclosed re-flags or Houston-gated venue items). P1A is CONVERGED to human gates (CQG significance disposition, license/deposit authorization, alternate-regulator robustness). No version change; v1A.0.124 stands. Readiness cap 62 HOLDS. -->

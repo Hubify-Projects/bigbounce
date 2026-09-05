@@ -191,7 +191,7 @@ a standalone paper. P5 remains a standalone AJ companion to P4.
 | Paper | Canonical source | Version | Readiness | Publishing state |
 |---|---|---:|---:|---|
 | P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | CQG packet; Houston sign-off and portal work next |
-| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.16 | 95 | JORS packet; reviewer list, fee/waiver decision, sign-off, portal work |
+| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.20 | 95 | Batch 3 (R7) + PyMaster crosscheck integrated; one verification board permitted next |
 | P2 | `research/focused_paper_source_integration/02_full_draft.tex` | v1.7.130 | 95 | PRD packet; Houston sign-off and APS portal work next |
 | P3 support | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r17 | 95 | Supporting Data Release · DESI Public-ID Recovery; integrate with anomaly flagship; no standalone ApJS submission |
 | P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.274 | 95 | Core chirality paper; Houston sign-off precedes ApJS submission |
