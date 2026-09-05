@@ -85,9 +85,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "NaMaster verification companion",
-      version: "v2B.0.18",
+      version: "v2B.0.19",
       readiness: 95,
-      pendingWork: "R1 truth-audit closure: batch-2 sealed blind test (35 runs, 7 arms) now primary — S1-S4 20/20 detected, honest 0/5, S5/S6 escapes pre-declared. Current-hash bounded confirmation, correspondence metadata, and human software review remain open.",
+      pendingWork: "R2 closure: statistics presentation corrected, estimator description fixed, traceability + reproducibility recipe. ROUNDS STOPPED under directive R2 — batch 3, OTS confirmation, PyMaster cross-check, correspondence metadata, and human software review remain open.",
     },
     {
       slug: "paper-2",

@@ -100,6 +100,22 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "p1b-r2-closure-v2b-0-19-2026-09-04",
+    dateISO: "2026-09-04",
+    kind: "closure-wave",
+    title: "P1B v2B.0.19: R2 closure -- statistics presentation corrected, rounds stopped under R2",
+    papers: ["P1B"],
+    summary:
+      "R2 board (Claude INT Opus major / Grok REJECT / Gemini MINOR) audited: 19 real findings closed by real edits -- statistics presentation corrected (class-level detection rate, not a run-level interval; the 95% Clopper-Pearson lower bound 0.473 correctly labelled; no fabricated run-level confidence interval), estimator description fixed, traceability strengthened, and a reproducibility recipe added. 4-pass pdflatex clean (0 undef refs, 0 overfull hboxes >10pt), 13 pp, md5 b1c68336fdd183918dcb677fddb9fd72, tarball sha256 9a695757d0ee5a493bcf6177fa53fcd1eda6d88a7ac76767b0d046df5ce57370, Convex bump k5753kmsvg9bp644qwt03vrrex8dv0v8. ROUNDS STOPPED under directive R2 pending a science/venue decision: batch 3, OTS confirmation, and PyMaster cross-check remain open next steps.",
+    keyTakeaways: [
+      "R2 board: Claude INT major, Grok REJECT, Gemini MINOR -- 19 real findings audited and closed",
+      "Statistics presentation corrected: class-level detection rate, not a run-level interval; 90%/95% interval labelling fixed",
+      "Estimator description fixed; traceability and a reproducibility recipe added",
+      "ROUNDS STOPPED under directive R2 -- next steps are science/venue: batch 3, OTS confirmation, PyMaster cross-check",
+    ],
+    links: [{ label: "Status detail", href: `${GH}/project-context/SSOT/paper-1/status.md` }],
+  },
+  {
     id: "p1b-r2-board-in-progress-2026-09-04",
     dateISO: "2026-09-04",
     kind: "internal-cc",
