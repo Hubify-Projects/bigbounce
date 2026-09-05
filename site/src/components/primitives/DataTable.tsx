@@ -39,7 +39,7 @@ export function DataTable<T>({
   return (
     <div className="data-table-wrap">
       <table className={cn("data-table", dense && "data-table-dense", className)}>
-        <thead className={cn(stickyHeader && "data-table-sticky-head")}>
+        <thead>
           <tr>
             {columns.map((c) => (
               <th key={c.key} className={c.align === "right" ? "align-right" : undefined}>

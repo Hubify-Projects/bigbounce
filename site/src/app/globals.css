@@ -3218,10 +3218,13 @@ code {
   color: var(--ink-3);
 }
 
-/* ── DataTable — the only bordered list surface (§4.3 surface rule) ── */
+/* ── DataTable — the only bordered list surface (§4.3 surface rule) ──
+   Full-width, no inner horizontal scroll at any viewport (Houston
+   2026-09-04). The header row is the only sticky element; below 640px
+   the table collapses to stacked rows (first column as title, the rest
+   joined into one wrapping meta line) instead of scrolling sideways. */
 .data-table-wrap {
   width: 100%;
-  overflow-x: auto;
   border: 1px solid var(--rule);
   border-radius: 4px;
   background: var(--tool);
@@ -3229,6 +3232,7 @@ code {
 
 .data-table {
   width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
   font-size: 13.5px;
 }
@@ -3237,7 +3241,8 @@ code {
 .data-table td {
   padding: 10px 16px;
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .data-table th {
@@ -3248,6 +3253,9 @@ code {
   color: var(--ink-3);
   background: var(--bg-1);
   border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: var(--topbar-h);
+  z-index: 1;
 }
 
 .data-table td {
@@ -3262,18 +3270,37 @@ code {
 .data-table-dense th,
 .data-table-dense td { padding: 6px 12px; }
 
-.data-table-sticky-head th {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
 .data-table-empty {
   color: var(--ink-3);
   font-style: italic;
 }
 
 .align-right { text-align: right; }
+
+@media (max-width: 640px) {
+  .data-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .data-table, .data-table tbody, .data-table tr, .data-table td { display: block; width: 100%; }
+  .data-table tr { padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  .data-table tbody tr:last-child { border-bottom: 0; }
+  .data-table td {
+    display: inline;
+    padding: 0;
+    margin-right: 8px;
+    border-bottom: none;
+    font-size: 12.5px;
+  }
+  .data-table td:first-child {
+    display: block;
+    margin: 0 0 4px;
+    font-size: 13.5px;
+  }
+  .data-table td:not(:first-child):not(:last-child)::after {
+    content: "\00b7";
+    margin-left: 8px;
+    color: var(--ink-3);
+  }
+  .data-table-dense td { padding: 0; }
+}
 
 /* ── Slim topbar (replaces sidebar+topbar shell) ── */
 .topbar-slim {
