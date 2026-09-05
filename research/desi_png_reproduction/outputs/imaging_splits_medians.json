@@ -1,0 +1,28 @@
+{
+  "medians": {
+    "EBV": 0.0394710898399353,
+    "STARDENS": 648.1640625,
+    "GALDEPTH_Z": 68.34925842285156
+  },
+  "counts": {
+    "NGC_data_n": 793219,
+    "SGC_data_n": 430172,
+    "EBV_n_unmatched": 0,
+    "STARDENS_n_unmatched": 0,
+    "GALDEPTH_Z_n_unmatched": 0,
+    "NGC_ran0_n": 11610722,
+    "NGC_ran1_n": 11609227,
+    "NGC_ran2_n": 11611667,
+    "NGC_ran3_n": 11612201,
+    "SGC_ran0_n": 6511977,
+    "SGC_ran1_n": 6513300,
+    "SGC_ran2_n": 6512641,
+    "SGC_ran3_n": 6512959
+  },
+  "nside": 256,
+  "props": [
+    "EBV",
+    "STARDENS",
+    "GALDEPTH_Z"
+  ]
+}
