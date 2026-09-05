@@ -105,3 +105,94 @@ transfer: over a window reaching `20\eta_B` the expansion has driven `H` down to
 `\sim m`, which is exactly the epoch at which the curvaton *begins to oscillate* — the
 physics that generates `\mathcal{F}` in the first place, and which happens well after the
 bounce.
+
+## 3. Background × scheme table and the pre-bounce viability condition
+
+With `P_h/P_{\zeta,ad}|_{pre} = 24` (row 10) and `P_{\zeta,curv}/P_{\zeta,ad}|_{pre} =
+(4/3)X^2`, `X \equiv r_{dec} M_{pl}/\sigma_*` (row 15), and `\lambda_\sigma = \lambda_T`:
+
+```
+r_{after} = 24 \Lambda^2 / [1 + \Lambda^2 (4/3) X^2] ,     \Lambda = \lambda_T/\lambda_\zeta
+        =  24 / \mathcal{F}_{eff}^2 ,   \mathcal{F}_{eff}^2 = 1/\Lambda^2 + (4/3)X^2
+```
+
+| background | scheme | `\lambda_\sigma` | `\lambda_T` | `\lambda_\zeta` | `\Lambda` | single-field `r_{after}` | `X_{min}` for `r<0.036` | for `r<0.01` |
+|---|---|---|---|---|---|---|---|---|
+| Quintin / LQC / poly | S1 (`z=a`) | `=\lambda_T` | — | `=\lambda_T` | **1.0000** | 24 | **22.344** | 42.418 |
+| Quintin | S2 (fluid MS) | `=\lambda_T` | 6.05860 | 0.96958 | **6.24871** | 937.1 | **22.360** | 42.426 |
+| LQC, poly | S2 | `=\lambda_T` | — | not computed | — | — | — | — |
+
+(`\lambda_T`, `\lambda_\zeta^{S1}`, `\lambda_\zeta^{S2}` for Quintin are row 18a's values at
+`k\eta_B = 10^{-3}`, imported; S2 on the LQC and poly backgrounds is **not computed here**
+and is disclosed as an open item, not asserted.)
+
+**Central result.** `X_{min}` is the *same in both schemes to `7.3\times10^{-4}`*, and it is
+exactly row 15's number: `\mathcal{F}_{eff} \ge 25.8199` for `r < 0.036`,
+`\ge 48.99` for `r < 0.01`. The reason is structural, not numerical: because the
+spectator and the tensor share `\lambda`, the scheme factor `\Lambda^2` appears in the
+numerator *and* in the curvaton term, and cancels for `\Lambda^2(4/3)X^2 \gg 1`. Scheme S2
+inflates the *single-field* ratio to `r = 937` (row 18a) — a 39× worse starting point —
+yet the curvaton requirement is unchanged, because the curvaton channel is inflated by
+exactly the same factor.
+
+Equivalently, at `r_{dec} = 1` the condition is `\sigma_*/M_{pl} < 0.04476` for
+`r < 0.036` (`< 0.02357` for `r < 0.01`) — a **pre-bounce** statement about the spectator
+VEV, with no bounce-model input whatsoever.
+
+## 4. Does the bounce touch the curvaton's non-Gaussianity? (stated, not computed)
+
+Three separate questions, and the operator identity settles the first two:
+
+1. **The curvaton's LOCAL `f_NL`** (LUW03/SVW06, `5/(4r_{dec}) - 5/3 - 5r_{dec}/6`) is
+   generated at curvaton *decay*, from a Gaussian `\delta\sigma`, long after the bounce.
+   `\Delta f_{NL}^{bounce}` does **not** act on it. Row 15 already stated this; row 15b
+   adds the reason it is safe to say so — the linear transfer of `\delta\sigma` is the
+   *tensor's*, and a single overall factor `\lambda_\sigma` on a Gaussian field changes
+   no dimensionless ratio at decay.
+2. **Any INTRINSIC `\delta\sigma`-sector non-Gaussianity generated before the bounce**
+   (from `\sigma`'s own potential, `\delta\sigma \to \delta\sigma_L + (g/2)\delta\sigma_L^2`)
+   transmits with the *same 1/λ structure* as the adiabatic case —
+   `f_{NL}^{intrinsic} \to f_{NL}^{intrinsic}/\lambda_\sigma` — but with
+   `\lambda_\sigma = \lambda_T`, **not** `\lambda_\zeta`. In S1 those coincide and the
+   transmitted suppression is numerically the row-14/A2 one; in S2 they differ by
+   `\Lambda = 6.25`, so a spectator's intrinsic `f_{NL}` is suppressed `6.25\times` more
+   than the adiabatic one.
+3. **Which cubic vertices apply to a spectator.** The A2/lane-A vertex table is built from
+   the adiabatic cubic action, whose operators (`\epsilon^2\zeta\dot\zeta^2`,
+   `\epsilon^2\zeta(\partial\zeta)^2`, the `\dot\zeta^3` and field-redefinition terms) all
+   carry powers of `\epsilon` and of the *constraint* solutions `\delta N`, `\psi`. A test
+   spectator contributes to the constraints only at `O(\delta\sigma^2/M_{pl}^2)`, so the
+   gravitationally-induced `\delta\sigma^3` vertices are suppressed by
+   `(\sigma_*/M_{pl})^2 < 2\times10^{-3}` at the viable point on top of the usual slow-roll
+   counting. The surviving cubic vertices are `\sigma`'s own `V'''(\sigma)\delta\sigma^3`
+   and the minimal-coupling `a^2 V''' `-type term. **We state this structurally and do not
+   compute it here** — it requires the spectator's potential, which is model input the A2
+   backgrounds do not fix.
+
+## 5. The surviving discriminator `n_T = n_s - 1 = -0.035`: is it bounce-affected?
+
+The matter bounce predicts `n_T = n_s - 1 = 12w/(1+3w) = -0.035` on row 10's anchor,
+versus inflation's consistency relation `n_T = -r/8 \simeq -0.0045` at `r = 0.036` and
+`\simeq 0` at the curvaton point. A `k`-dependent `\lambda_T` would shift it by
+`\Delta n_T = 2\,d\ln\lambda_T/d\ln k`. Fitting `\lambda_T = \lambda_T(0)[1 - c(k\eta_B)^2]`
+over `k\eta_B \in [10^{-3}, 10^{-2}]`:
+
+| background | `c` | `\Delta n_T` at `k\eta_B = 10^{-3}` | at `k\eta_B = 10^{-2}` |
+|---|---|---|---|
+| Quintin-type | 262.0 | `-1.05\times10^{-3}` | `-1.05\times10^{-1}` |
+| LQC-eff.-dust | 285.3 | `-1.14\times10^{-3}` | `-1.14\times10^{-1}` |
+| poly-analytic | 236.1 | `-9.45\times10^{-4}` | `-9.45\times10^{-2}` |
+
+The shift is `O((k\eta_B)^2)` — it is the same gradient correction that makes
+`T_c \to 1` in row 15 §5. Observable CMB scales sit at `k\eta_B \lll 10^{-3}` (the
+bounce-scale enhancement at `k\eta_B \sim 1` is a *separate* route, ledger row 9 / A3-1e),
+so across the entire observable band the correction is utterly negligible and
+
+```
+n_T = n_s - 1 = -0.035   is TRANSMITTED UNCHANGED by the bounce.
+```
+
+The honest counterweight: at `r < 0.036` no planned experiment measures `n_T` — CMB-S4's
+`\sigma(n_T)` at that `r` is `O(1)`. The discriminator is **theoretically clean and
+observationally out of reach at the curvaton point**, which is the same trade row 15
+found for `f_{NL}`.
