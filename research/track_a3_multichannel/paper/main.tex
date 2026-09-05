@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.18}
+\newcommand{\paperVersion}{v3M.0.19}
 \newcommand{\paperTimestamp}{September 4, 2026}
 
 \begin{document}
@@ -41,11 +41,9 @@ value (their slip traced to amplitude normalization). Transmission
 through the bounce is scheme-qualified: S1 gives
 $\fnl^{\rm after}\in[-0.65,-0.50]$, S2 gives $\approx-1.25$. The same $c_s=1$ background also fixes $r=16\epsilon=24$ before the
 bounce: the tensor and S1 scalar transfers are identical, so
-$r_{\rm after}=24$ in S1 ($\sim670\times$ above BICEP/Keck), while S2's
-raw-ADM continuation amplifies it $39\times$ to $r_{\rm after}\approx
-9.4\times10^2$ on the one background where S2 is defined -- worse in
-either scheme. $n_s=1$
-exactly for pure dust ($n_s=0.9649$ anchors $w=-0.0029$);
+$r_{\rm after}=24$ in S1 ($\sim670\times$ BICEP/Keck), while S2's
+raw-ADM continuation amplifies it $39\times$, worse in either scheme.
+$n_s=1$ exactly for pure dust ($n_s=0.9649$ anchors $w=-0.0029$);
 $n_T=n_s-1=-0.035$ is the model's one falsifiable tilt. A reduced
 sound speed $c_s<1$ trades $r$ for $\fnl$: $r=24c_s$ and
 $\fnl^{\rm pre}=-165/16+65/(8c_s^2)$, and the bounce's own cubic term
@@ -55,22 +53,23 @@ $c_s<1.5\times10^{-3}$, driving $\fnl^{\rm after}$ to
 $1.0$--$1.4\times10^{11}$; keeping $\fnl^{\rm after}$ inside Planck's
 $68\%$ interval $[-6.0,+4.2]$ requires $c_s\ge0.62$, giving $r\ge15.0$.
 The two windows are disjoint by $\sim416\times$ in $c_s$: \emph{the
-single-field matter bounce, canonical or $k$-essence (Li \textit{et
-al.}'s kinetic sector, $\lambda=s=0$; general $\lambda$ is an open
-item), is jointly excluded by $r$ and $\fnl$ on the backgrounds and
-channels evaluated here}, strengthening Li \textit{et al.}'s no-go. A
-curvaton-type spectator inherits the contraction's tilt with a
-tunable $r=24/[1+(4/3)r_{\rm dec}^2(M_{\rm pl}/\sigma_*)^2]$, is
+single-field matter bounce, for the full $P(X)$ $k$-essence class, is
+jointly excluded by $r$ and $\fnl$ here} -- $r$ and the bounce's cubic
+term are exactly $\lambda$-independent (the cubic coefficient $\lambda$
+cancels by parity in the bounce window), so no $\lambda$ opens the
+window; the best case (DBI) gives only $r_{\rm min}=12.6$,
+strengthening Li \textit{et al.}'s no-go. A
+curvaton-type spectator inherits the tilt with a tunable
+$r=24/[1+(4/3)r_{\rm dec}^2(M_{\rm pl}/\sigma_*)^2]$, is
 $(r,n_s)$-viable, but dilutes $-35/16$ by weight $(r/24)^2$, detectable
 only for $r\gtrsim23$; a concrete prediction needs an unmodelled
 entropy sector. Three channels remain conditional checks on the
 excluded background: pulsar timing ($\gamma_{\rm pred}=5.07$ vs.\
 NANOGrav's $3.2\pm0.6$, $5.1\sigma$ null), PBHs (ratio $1.84\pm0.03$,
 spectrum $6.7$--$7.0$ decades short, $\fpbh=0$), and SMBH-seed
-abundance (FIRAS-excluded); DESI DR1 is consistent but under-powered
-to separate candidates. The paper's contribution is the exact
-amplitude, the joint no-go these numbers expose, and the surviving
-curvaton route.
+abundance (FIRAS-excluded); DESI DR1 is under-powered to separate
+candidates. The contribution is the exact amplitude, the
+$\lambda$-general no-go, and the surviving curvaton route.
 \end{abstract}
 
 \maketitle
@@ -1338,12 +1337,17 @@ changes sign at $c_s=\sqrt{5/6}=0.913$ and diverges as $1/c_s^4$,
 faster than the transmitted contraction term $T\fnl^{\rm pre}\propto
 1/c_s^2$, so $\fnl^{\rm after}(c_s)=T\fnl^{\rm pre}(c_s)+\Delta\fnl^{\rm
 bounce}(c_s)$ is used below rather than the transfer term alone. This
-evaluation takes the $P(X,\phi)$ cubic action with $\eta_{\rm sr}=s=0$
-and the $P_{XXX}$ coefficient $\lambda=0$ (the kinetic sector of Li
-\textit{et al.}), the assumption under which
-Eq.~\eqref{eq:bounce_cubic_cs} is quoted; the $\dot\zeta^3$ kernel
-contributes $\sim10^{-7}$ of the total at $\lambda=0$, so a rescue
-would require $\lambda/\Sigma\gtrsim10^7$ (an open item, Sec.~\ref{sec:next}).
+evaluation holds for the full $P(X,\phi)$ cubic action, including a
+nonzero $P_{XXX}$ coefficient $\lambda\equiv X^2P_{,XX}+(2/3)X^3P_{,XXX}$:
+$\lambda$ enters the quadratic action nowhere
+($\partial c_s^2/\partial P_{,XXX}=\partial\Sigma/\partial P_{,XXX}=0$, so
+$r=24c_s$ is exactly $\lambda$-independent), and its $\dot\zeta^3$ vertex
+in the bounce window is odd in conformal time about the symmetric bounce
+and cancels identically in the S1 in-in integral (verified to
+$2.8\times10^{-7}$ across $\lambda/\Sigma\in[-1,1]$, the
+matter-contraction line, and the DBI line; \texttt{row19\_lambda},
+reproducibility statement below), so Eq.~\eqref{eq:bounce_cubic_cs} also
+holds for any $\lambda$.
 $\fnl^{\rm pre}(c_s)$
 itself changes sign at $c_s=0.8876$ (negative above, positive below):
 on $c_s\in[0.444,0.888)$, the branch that is otherwise CMB-viable by
@@ -1408,11 +1412,23 @@ same transmission; the alternative-route test of Quintin \textit{et
 al.} above is likewise available only in S1. Scheme S2's tensor ratio
 is larger still ($r_{\rm after}^{\rm S2}\approx9.4\times10^2$,
 Sec.~\ref{sec:tensor}), so the joint exclusion is not relieved --
-if anything it is strengthened -- by moving to S2. \emph{The
-single-field matter bounce, canonical or $k$-essence (in the Li
-\textit{et al.} kinetic sector, $\lambda=s=0$), is therefore
+if anything it is strengthened -- by moving to S2. Restoring the cubic
+coefficient $\lambda$ does not open the window either: a scan over
+$\lambda/\Sigma\in[-1,1]$, the matter-contraction line
+$\lambda/\Sigma=(1-c_s^2)/(6c_s^2)$, and the DBI line
+$\lambda/\Sigma=(1-c_s^2)/(2c_s^2)$ shifts $\fnl^{\rm pre}$ only by the
+constant $-30\lambda/\Sigma$ (a purely local-shaped operator, Li
+\textit{et al.} Eq.~4.18) while leaving $r=24c_s$ untouched
+(Sec.~\ref{sec:bounce_cubic}); the best case is the DBI line, giving
+$r_{\rm min}=12.57$ at $c_s=0.524$ ($349\times$ BICEP/Keck), and
+cancelling the $1/c_s^2$ growth in $\fnl^{\rm pre}$ at the
+tensor-viable $c_s$ would require $\lambda/\Sigma=7/(16c_s^2)$, i.e.\
+a sound-speed running $s=39/16$, far outside the $|s|\ll1$ regime under
+which the amplitude being cancelled is derived. \emph{The single-field
+matter bounce, for the full $P(X)$ $k$-essence class, is therefore
 excluded jointly by $r$ and $\fnl$ on the backgrounds and channels
-used in this paper.} This
+used in this paper, independently of the cubic coefficient
+$\lambda$.} This
 sharpens, rather than contradicts, the paper's earlier statements: the
 exact amplitude $-35/16$ and its transmitted values remain correct
 statements about this background, but that background is now shown to
@@ -1582,15 +1598,14 @@ backgrounds used throughout this paper, and a demonstration that
 $\sigma_*$ stays constant across them -- neither is modelled here, and
 Cai, Brandenberger \& Zhang's~\cite{CaiXue2011} own $\zeta_{NL}$ integral
 through deflation and bounce remains un-re-derived by this lab; and
-(vii)~the consistency relation $n_T=n_s-1=-0.035$ (Sec.~\ref{sec:tensor})
-is a surviving, cheap discriminator of this class of background from
-single-field inflation independent of the $(r,\fnl)$ no-go, worth a
-dedicated forecast; and (viii)~bounding or computing the general-$\lambda$
-$P_{XXX}\dot\zeta^3$ contribution to $\Delta\fnl^{\rm bounce}(c_s)$
-(Sec.~\ref{sec:bounce_cubic}) so the no-go can be extended beyond the
-$\lambda=s=0$ kinetic sector evaluated here, or the scope statement
-retained as the paper's final claim -- a scope decision, not a numerical
-one.
+and (vii)~the consistency relation $n_T=n_s-1=-0.035$
+(Sec.~\ref{sec:tensor}) is a surviving, cheap discriminator of this
+class of background from single-field inflation independent of the
+$(r,\fnl)$ no-go, worth a dedicated forecast. The general-$P_{XXX}$
+coefficient $\lambda$ is no longer an open item: Sec.~\ref{sec:bounce_cubic}
+shows $r=24c_s$ and $\Delta\fnl^{\rm bounce}(c_s)$ are exactly
+$\lambda$-independent, so the no-go holds for the full $P(X)$ class
+(row19\_lambda, reproducibility statement below).
 
 %======================================================================
 \appendix
@@ -1754,7 +1769,14 @@ continuation of Sec.~\ref{sec:tensor} is at
 (\texttt{results.json}); the $c_s$-dependent bounce cubic term of
 Sec.~\ref{sec:bounce_cubic} is at
 \texttt{research/cubic\_bounce\_transmission/}\allowbreak\texttt{row18b\_cs\_bounce\_cubic/}
-(\texttt{row18b\_cs\_bounce\_cubic.py}, \texttt{results.json}). The bounce-to-local shape
+(\texttt{row18b\_cs\_bounce\_cubic.py}, \texttt{results.json}). The
+general-$\lambda$ extension of Sec.~\ref{sec:bounce_cubic}
+(the $\lambda$-independence of $r$ and $\Delta\fnl^{\rm bounce}$, and the
+$\lambda/\Sigma$ scan) is at
+\texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{row19\_lambda/}
+(\texttt{row19\_lambda.py}, \texttt{results.json},
+\texttt{row19\_lambda.log}), manifest
+\texttt{reproducibility/manifests/}\allowbreak\texttt{experiments/}\allowbreak\texttt{a3-row19-lambda.json}. The bounce-to-local shape
 overlap ($r_{\rm sh}=1$, an assumed value pending an explicit shape-overlap
 projection; Sec.~\ref{sec:lss}) is taken from this lab's companion
 $f_{\rm NL}$-forecast program (\texttt{outputs/survey\_reach\_fnl.json});
