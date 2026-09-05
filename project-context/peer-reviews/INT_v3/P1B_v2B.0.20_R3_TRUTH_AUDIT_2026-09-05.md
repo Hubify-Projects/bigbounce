@@ -93,3 +93,67 @@ exercised the path. This is a **real hole**, not a hypothetical.
 `public4/scorecard.json::per_arm.S8_omit_pseudo_cl` → `r7_fired = 0` of 6 (R7 fails open,
 as predicted), `r8_fired = 6`, `shortcut_suspect = 6`. R8 is fail-closed on a missing
 contract-declared intermediate. **Class (a) genuinely-new REAL.**
+
+### 1.3 Opus M3 / Gemini E1 / Grok M2 — batch-3 statistics. **Both halves correct.**
+
+**(a) The interval inconsistency is real, and the artefact contradicts itself too.**
+The paper's batch-2 presentation (`…tex:479–491`) pre-declares the caveat properly:
+"the five replicates within an arm are seed-varied executions of one deterministic variant
+… effective independent *n* per class is 1 … **no run-level detection-probability interval
+is claimed**". The batch-3 paragraph (`tex:584–586`) then quotes **0.607** (S6, 6 runs),
+**0.393** (honest FP, 6 runs) and **0.905** (pooled structural) and calls them "class-level
+detection rates, not per-run probabilities". Recomputation settles what was actually
+computed: `0.05^(1/6) = 0.6070`, `1 − 0.05^(1/6) = 0.3930`, `0.05^(1/30) = 0.9050`. Every
+one of the three is a Clopper–Pearson bound whose *n* is the **number of runs**. Calling a
+run-level bound class-level does not change what was computed.
+`public3/scorecard.json::independence_caveat` states the same thing against itself — R7's
+replicates are "class-level evidence, not a run-level interval" — while the same file
+reports `S6_detection.lower95_one_sided = 0.607` and
+`detection_structural_S1_S4b.lower95_one_sided = 0.905`.
+Gemini's proposed corrections check out arithmetically (batch 1 `n=4 → 0.4729`; batch 3
+structural `n=5 → 0.5493`), but the cleaner fix is the one batch 4 already adopted.
+
+**(b) The `24/24` is an arithmetic slip.** `tex:586` reads "Structural arms S1–S4b pool to
+24/24 (lower bound 0.905)". S1, S2, S3, S4, S4b is **five** arms × 6 = **30** runs, and
+`0.05^(1/30) = 0.905` confirms the bound was computed for *n* = 30, against
+`public3/scorecard.json::detection_structural_S1_S4b`. The text should read **30/30**.
+The slip runs *against* the authors' interest, which is the signature of an honest error.
+`RULES_v4_FROZEN.md` §M3 already records the correction and states that batch 4 reports
+**class-level counts only, no run-level Clopper–Pearson intervals** — the treatment the R2
+audit asked for, applied at the source. **Class (a) genuinely-new REAL** (both halves).
+
+*Not a re-flag.* Standing rule 1 of the R2 ledger (`DISPOSITIONS/P1B.md`) would make a
+run-level-CP complaint against a post-v2B.0.19 PDF a re-flag of D-R2-01/D-R2-02 — but that
+rule was written for the **batch-2** presentation, which v2B.0.19 fixed and which survives
+intact here. The defect is a *recurrence of the same failure class in newly written
+batch-3 text*, so it enters R3 as genuinely-new.
+
+### 1.4 Prior art: Freivalds and Fiat–Shamir. **Absent. The gap is real.**
+
+`grep -n "Freivalds\|Fiat\|Klein" arxiv/paper1b_namaster_proof.tex` → **no matches**.
+Freivalds (1979) randomized verification of matrix products is the direct ancestor of R7
+(check `M C = p` on a random subset of rows rather than rebuilding `M`), and Fiat–Shamir
+(1986) is the transform whose soundness condition R7 violates and R8 restores. Neither is
+cited. §7 is the correct home. **Class (a) genuinely-new REAL.**
+
+### 1.5 The N3 / priority question. **No priority claim exists in v2B.0.20.**
+
+`grep -n "first\|novel\|to our knowledge"` returns only non-priority uses — "the first
+must return a finite …" (`tex:284`), "first, from one honest reference run" (`tex:393`),
+"S4b is the first replicate set to exercise R6's cross-run disjunct" (`tex:586`), "the
+first batch-3 seal" (`tex:629`). The "to our knowledge this is the first" sentence flagged
+as **D-R2-08** was deleted in v2B.0.19 and has not returned. The Opus leg reaches the same
+finding independently ("the manuscript makes no explicit priority claim at all"). This is
+therefore **not a finding** but a standing guardrail: if any N3 language is ever added it
+may claim **only** "first such measurement *for pseudo-C_ℓ execution receipts*", and only
+alongside the Freivalds / Fiat–Shamir / blind-analysis (Klein & Roodman 2005) /
+in-toto-SLSA / OpenTimestamps-Sigstore citations. Recorded as a guardrail, not an item.
+
+### 1.6 Venue. **Two independent legs converge; this is a decision, not an edit.**
+
+Grok E5 (JORS expects ≤8 pp; this is 15) and the Opus venue section ("§6 is now the paper:
+a measurement, with a pre-registration, a seal, a confusion matrix and an adversary model")
+disagree about severity but agree about the diagnosis. Opus recommends **ACM REP** primary,
+CiSE or Nature Scientific Data as alternates, with a short JORS/JOSS software paper for the
+package cross-citing; arXiv `astro-ph.IM` primary, `cs.SE` secondary. Under directive R3 a
+venue change is a recorded lineup decision, not a referee fix. Logged in §4(ii).
