@@ -13,7 +13,7 @@
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\eps}{\epsilon}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1S.0.7}
+\newcommand{\paperVersion}{v1S.0.8}
 \newcommand{\paperTimestamp}{September 7, 2026}
 
 \begin{document}
@@ -512,20 +512,20 @@ labels -- a purely constant long mode carries no super-Hubble signal
 (\texttt{psu\_gates\_S9\_S10\_2026\_09\_05.py}).
 
 The uniform-density (ρ-)slice question of Sec.~II is distinct from this admixture: continuing
-$N_c$ to second order on $\rho=\bar\rho(t_f)$ gives $f^{\rho}_{\rm NL}=\tfrac{5}{24}(2\eps-15)
-=-\tfrac52$ at $\eps=\tfrac32$ (isotropic, initial label). This value does not reproduce the
-uniform-density separate-universe number $-\tfrac{55}{16}$ quoted elsewhere in this program
-(gap $\tfrac{15}{16}$). The intrinsic flat-slice initial-data term,
-$f^{\rm intr}_{\rm NL}=\tfrac{5\sqrt{3\epsilon}(3-\epsilon)}{18}\tfrac{r_i}{W-1}$, vanishes
-in the growing-mode-dominated limit that defines $-\tfrac{55}{16}$, so it does not close this
-gap; an independent exact separate-universe solution reproduces both $-\tfrac{55}{16}$
-(uniform-density slice) and $-5$ (comoving slice) for all $\epsilon$, so the
-uniform-density $\delta N$ value is itself a well-defined variable, not an
-evolution-step artifact. The gap $5(6-\epsilon)/24$ is entirely the second-order
-threading map's long$\times$short lapse monopole coefficient $A_2=\epsilon(3-\epsilon)^2/3$
-(this map) versus the separate universe's required $2(3-\epsilon)^2$; which coefficient
-is correct is under independent adjudication
-(\texttt{research/theory\_audit/}\allowbreak\texttt{psu\_gate\_S9c\_evolution\_residual\_2026\_09\_05.md}).
-This gap is stated as an open item, not reconciled by the slice map derived here.
+$N_c$ to second order on $\rho=\bar\rho(t_f)$ has squeezed monopole
+$f^{\rho}_{\rm NL}=\tfrac58(\eps-7)=-\tfrac{55}{16}$ at $\eps=\tfrac32$ (isotropic, initial
+label), reconciled by an independent adjudication
+(\texttt{research/theory\_audit/}\allowbreak\texttt{a2\_lapse\_monopole\_adjudication\_2026\_09\_07.md}):
+the second-order threading map's long$\times$short lapse monopole coefficient
+$A_2=\epsilon(3-\epsilon)^2/3$ is the correct constraint-solve value (not
+$2(3-\epsilon)^2$), and the earlier initial-label figure $\tfrac{5}{24}(2\eps-15)=-\tfrac52$
+came from composing the map with the linear-mode weight $\lambda'=2\lambda$ where the
+$\rho$-surface time shift, acting on the second-order curvature perturbation, instead carries
+weight $3\lambda$; correcting the weight closes the gap $5(6-\epsilon)/24$ exactly. An
+independent exact separate-universe solution reproduces both $-\tfrac{55}{16}$
+(uniform-density slice) and $-5$ (comoving slice) for all $\epsilon$ from the same ADM
+monopole equations, so the two slice values, together with the in-in monopole
+$-\tfrac{15}{8}$ at dust, are three well-defined variables related by exact threading maps,
+not competing claims about one number.
 
 \end{document}
