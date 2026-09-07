@@ -60,3 +60,58 @@ $$
 which is exactly the ledger-row-1 in-in monopole ($-\tfrac{35}{16}+\tfrac{15}{16}\cdot\tfrac13$) and, at general $\epsilon$, exactly the
 $f^{\rm in\text{-}in}/\lambda'=5(\epsilon-6)/12$ implied by S9's own table ($f^\rho_{\rm S9}-f^{\rho,\rm init}_{\rm map}$ with $f_{\rm map}=-\tfrac58$).
 With $A_2^{\rm req}=2(3-\epsilon)^2$ instead, the same identity would demand $f^{\rm in\text{-}in}_{\rm mono}=-\tfrac{15}{4}$ at dust — twice the adjudicated value.
+
+## 4. The step in S9's map that carries the gap (script Part C) — the decisive equation
+
+S9 assembles $f^\rho=f^{\rm in\text{-}in}/\lambda'+f^\rho_{\rm map}$ with $\lambda'=\lambda+H\delta t^{(1)}_S/\zeta_S=2\lambda$ "asserted from the same objects".
+But $\delta N_c=\lambda\zeta$ is a multiplicative map for **any** time dependence (it is $\zeta-\tfrac13\!\int\!\epsilon\dot\zeta\,dt$), whereas the
+$\rho$-surface shift is a **derivative operator**, $H\delta t^{(1)}=-\dot\zeta/(3H)$. On the linear growing mode $\dot\zeta=-(3-\epsilon)H\zeta$ it gives
+$\lambda\zeta$ (hence $\lambda'=2\lambda$); on the second-order piece $\zeta_2\propto a^{-2(3-\epsilon)}$, which is what the late-time in-in bispectrum
+consists of, $\dot\zeta_2=-2(3-\epsilon)H\zeta_2$ and it gives $2\lambda\zeta_2$. Therefore (asserted symbolically in the script)
+$$
+\delta N_{c,\rho}=\lambda'\zeta_1+\underbrace{3\lambda}_{\neq\,\lambda'}\zeta_2+M_\rho\,\zeta_1\zeta_1,\qquad
+\boxed{\ f^\rho=\frac{3\lambda}{\lambda'}\frac{f^{\rm in\text{-}in}}{\lambda'}+f^\rho_{\rm map}=\frac32\frac{f^{\rm in\text{-}in}}{\lambda'}+f^\rho_{\rm map}\ }.
+$$
+With the derived $A_2$, $f^{\rm in\text{-}in}_{\rm mono}$ of §3 and the map monopole computed from the ADM objects
+($f_{\rm extra}=\tfrac56M_{\rm extra}/\lambda'^2=5(\epsilon-3)/24$ plus the comoving shift-divergence kernel
+$\partial_iN^i|_{LS}=-\tfrac{2\epsilon}{3}(3-\epsilon)^3H\zeta_L\zeta_S$, i.e. $f^\phi_{\rm map}=-5\epsilon/6$, $-5\epsilon/24$ in $\rho$ normalisation;
+total $f^\rho_{\rm map}=-\tfrac58$ for all $\epsilon$, equal to S9's initial-label monopole and to the local system's requirement):
+$$
+f^{\rm in\text{-}in}/\lambda'+f^\rho_{\rm map}=\frac{5(2\epsilon-15)}{24}\ (\text{S9, reproduced}),\qquad
+\tfrac32f^{\rm in\text{-}in}/\lambda'+f^\rho_{\rm map}=\frac{5(\epsilon-7)}{8}\ (\text{= the exact local system}),\qquad
+\text{gap}=\tfrac12\frac{f^{\rm in\text{-}in}}{\lambda'}=\frac{5(\epsilon-6)}{24}.
+$$
+The gap is S9c's $5(6-\epsilon)/24$ exactly, for every $\epsilon$ — produced with S9's own $A_2$. S9c's "$A_2^{\rm req}=2(3-\epsilon)^2$" is what one
+obtains by forcing the gap into the lapse while keeping the $\lambda'$-on-$\zeta_2$ assumption ("the combination in which $\zeta_2$ cancels, $\lambda'=2\lambda$");
+it is not a lapse (§1, and it fails the $\epsilon\to0$ limit). Equivalently: $1/N$ does carry the second-order monopole $2\alpha_L\alpha_S-A_2\zeta_L\zeta_S$.
+
+## 5. Validations (all asserted in the script)
+- Background and linear constraints reproduced from the exact ADM expressions ($N_1=\dot\zeta/H$, $\partial^2\chi=a^2\epsilon\dot\zeta$).
+- Pole $\epsilon(3-\epsilon)\mu k_S/k_L$: odd in $\mu$, zero monopole (translation, label-only) — agrees with S9's eq. (3) and the threading note.
+- $\epsilon\to0$ (USR-like growing mode $a^{-3}$; inflationary USR by the same Hamiltonian argument): $A_2\to0$ — S9 passes, $2(3-\epsilon)^2$ fails.
+- Attractor ($\dot\zeta_L=0$): every factor $(3-\epsilon)$ in $A_2$ is a $\dot\zeta/(H\zeta)$; the quadratic lapse vanishes with $\dot\zeta$ — not discriminating (as S9c noted).
+- Comoving analogue: the local system gives the established initial-label composition $-5$ for all $\epsilon$; the same objects give $\lambda'/\lambda=2$.
+- Three-way closure: momentum-constraint $A_2$ + local system ⇒ in-in monopole $-15/8$ at dust = row-1 adjudicated value; general-$\epsilon$ form matches S9's table inversion.
+- $f_{\rm map}$ from the ADM objects (Hamiltonian-constraint second-order shift divergence + $M_{\rm extra}$) $=-5/8=$ the local system's requirement.
+
+## VERDICT
+**Neither framing as posed; each lane is right about its own number.** $A_2=\epsilon(3-\epsilon)^2/3$ (S9's constraint solve stands; the "named step"
+`solve_cross` is correct). $f^\rho=5(\epsilon-7)/8=-55/16$ at dust (the separate-universe value stands, and it is the same variable — $\delta N_c$ on the
+uniform-density surface, initial label). S9's $-5/2$ comes from applying the growing-mode factor $\lambda'=2\lambda$ to the second-order $\zeta_2$ in
+$f^{\rm in\text{-}in}/\lambda'$; the correct weight is $3\lambda$. S9c localised the gap correctly to "one number" but mis-assigned it to the lapse because it
+inherited the same $\lambda'$ assumption. Consequences: S9's table row "$f^\rho_{\rm NL}$ initial label $=5(2\epsilon-15)/24$" is superseded by
+$5(\epsilon-7)/8$ (isotropy claim unaffected: the correction is a monopole); the residual in S9.4/S9c §5 is closed; nothing in paper-su's comoving
+statements ($-5$, $\lambda=1-\epsilon/3$) changes. The ledger's "two lanes" now agree on both slices.
+
+## Sentences paper-su and A3M may print
+1. *On the uniform-density surface the fluid e-fold perturbation of the constant-$\epsilon$ growing mode has squeezed monopole $f_{\rm NL}=5(\epsilon-7)/8$ ($-55/16$ at $\epsilon=3/2$), obtained both from an exact separate-universe integration and from the comoving-gauge in-in bispectrum continued through the second-order Hamiltonian and momentum constraints (second-order lapse monopole $\epsilon(3-\epsilon)^2/3$); the two routes agree for every $\epsilon$.*
+2. *The continuation is not a rescaling: the time shift to the uniform-density surface acts on the second-order curvature perturbation with weight $3\lambda$ rather than the linear-mode factor $2\lambda$, and omitting this shifts the monopole by $5(6-\epsilon)/24$.*
+3. (May **not** print) any statement that the second-order lapse monopole is $2(3-\epsilon)^2$, or that the separate universe and the in-in continuation disagree on the uniform-density slice.
+
+## Integrity note
+Part A (the constraint solve) was written and run with $A_2$ unknown, and its output compared with both claimed values only after the monopole was
+extracted; Part B was written from the ADM monopole equations without reading S9c's script (only its §2 result was known); the composition diagnosis
+(§4) followed from the Part-B/Part-A consistency and was then verified against S9's quoted $5(2\epsilon-15)/24$ and S9c's gap, both reproduced exactly.
+
+## Artifacts
+`a2_lapse_monopole_adjudication_2026_09_07.py` (sympy 1.14, 9.6 s, all asserts) · `.json` · manifest `reproducibility/manifests/experiments/a2-lapse-monopole-adjudication.json`.
