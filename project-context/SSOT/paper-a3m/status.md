@@ -1211,3 +1211,22 @@ is fully reconciled; the flagship in-in monopole -35/16 is unaffected.
 `public/papers/a3_multichannel_arxiv_v3M.0.22.pdf` and
 `site/public/papers/a3_multichannel_arxiv_v3M.0.22.pdf`. Readiness held at
 75 — ROUNDS STOPPED (R2), unchanged.
+
+## v3M.0.23 (2026-09-07) — derivation-statement update; rounds still stopped
+
+Same S9c follow-up as paper-su v1S.0.7
+(`research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.md`): the
+v3M.0.22 "residual arises in the evolution step" hypothesis is NOT
+supported — an independent exact separate-universe solution reproduces both
+-5 (comoving) and -55/16 (uniform-density) for all eps, so both delta N
+values are well-defined variables. Sec. II's cross-check paragraph and
+Appendix A (Bianchi-I subsection) are corrected: the 15/16 gap is relocated
+to the second-order threading map's long x short lapse monopole coefficient
+A2 = eps*(3-eps)^2/3 versus the separate universe's required 2*(3-eps)^2;
+which coefficient is correct is under independent adjudication, not yet
+resolved. The flagship in-in monopole -35/16 is unaffected. 4-pass, 0 undef
+refs, 0 overfull hboxes >10pt, 19 pp, md5
+`52f438454b6227083b54eb8e9746dc79`, mirrored to
+`public/papers/a3_multichannel_arxiv_v3M.0.23.pdf` and
+`site/public/papers/a3_multichannel_arxiv_v3M.0.23.pdf`. Readiness held at
+75 — ROUNDS STOPPED (R2), unchanged.

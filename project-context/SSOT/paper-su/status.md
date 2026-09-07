@@ -249,3 +249,21 @@ md5 `13b2e4b0f935e7275fdde03e93c41f2c`, mirrored to
 `public/papers/paper_su_criterion_v1S.0.6.pdf` and
 `site/public/papers/paper_su_criterion_v1S.0.6.pdf`. Readiness held at 65 —
 ROUNDS STOPPED (R2), unchanged.
+
+## v1S.0.7 (2026-09-07) — S9c: dropped-evolution-term hypothesis NOT supported; A2 under adjudication; rounds stopped; readiness 65
+
+`research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.md` tests
+the v1S.0.6 evolution-step hypothesis directly with an independent exact
+separate-universe solution: it reproduces both -5 (comoving slice, all eps)
+and -55/16 (uniform-density/rho slice, all eps) — the hypothesis that the
+lane drops an evolution term is NOT SUPPORTED, and both delta N values are
+well-defined variables, not artifacts. The 15/16 gap is relocated exactly to
+the second-order threading map's long x short lapse monopole coefficient
+A2 = eps*(3-eps)^2/3 (this map, = 9/8 at dust) versus the separate universe's
+required 2*(3-eps)^2 (= 9/2 at dust); WHICH coefficient is correct is under
+independent adjudication (a Fable lane), not yet resolved. The residual
+sentence is replaced accordingly in both papers-su and A3M. 4-pass, 0 undef
+refs, 0 overfull hboxes >10pt, 6 pp, md5 `89d7965b86fe1961c69b474d2764e54d`,
+mirrored to `public/papers/paper_su_criterion_v1S.0.7.pdf` and
+`site/public/papers/paper_su_criterion_v1S.0.7.pdf`. Readiness held at 65 —
+ROUNDS STOPPED (R2), unchanged.
