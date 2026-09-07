@@ -786,3 +786,16 @@ independent exact separate-universe solution reproduces both −55/16 (uniform-d
 −5 (comoving) for all ε, so the uniform-density δN value is itself well-defined; the 15/16
 gap is relocated to the second-order threading map's lapse monopole coefficient A₂, now
 under independent adjudication (which coefficient is correct is not yet resolved).
+
+**CLOSING AMENDMENT (2026-09-07, paper-su v1S.0.8, A3M v3M.0.24):** the independent
+adjudication (`research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md`)
+resolves the coefficient dispute: A₂ = ε(3−ε)²/3 is the correct constraint-solve value
+(not 2(3−ε)²); the earlier −5/2 initial-label figure came from composing the threading
+map with the linear-mode weight λ′ = 2λ where the ρ-surface time shift, acting on the
+second-order curvature perturbation, instead carries weight 3λ. Correcting the weight
+gives f^ρ_NL = 5(ε−7)/8 = −55/16 at dust, closing the 15/16 gap exactly. The in-in
+monopole (−15/8), the comoving-slice δN value (−5), and the uniform-density δN value
+(−55/16) are now three well-defined variables related by exact threading maps, not
+competing claims. D-PSU-2 / D-A3-15 is CLOSED: both papers' science gates on this item
+are complete; the remaining step for paper-su is venue selection, not further review
+rounds.
