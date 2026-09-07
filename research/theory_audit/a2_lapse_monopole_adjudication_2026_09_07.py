@@ -58,3 +58,33 @@ assert sp.simplify(PL_sol - (-ZL/H - a**2*eps*ddt(ZL)/kL**2)) == 0              
 AS_sol = AL_sol.subs(ZL, ZS); PS_sol = PL_sol.subs({kL: kS}).subs(ZL, ZS)
 lin = {AL: AL_sol, AS: AS_sol, PL: PL_sol, PS: PS_sol}
 print('linear order reproduced (N1 = zeta_dot/H, d^2 chi = a^2 eps zeta_dot)', round(time.time()-t0, 1), 's')
+# ---- second order, L x S ----
+ham2 = coeff(HAM, l, s).subs(lin)
+kvec = [kS*nu, 0, kL + kS*mu]                                   # k_L + k_S
+mom2_long = sp.simplify(sum(kvec[i]*coeff(MOM[i], l, s) for i in range(3)).subs(lin))   # longitudinal projection
+# squeezed, gradient-free limit: k -> delta*k, leading order in delta; P2 ~ 1/delta^2
+p2 = sp.Symbol('p2')
+scale = {kL: dl*kL, kS: dl*kS}
+ham2s = sp.series(sp.expand(ham2.subs(scale).subs(P2, p2/dl**2)), dl, 0, 1).removeO()
+mom2s = sp.series(sp.expand(mom2_long.subs(scale)), dl, 0, 3).removeO()   # projection adds one power of k
+assert sp.simplify(ham2s.coeff(dl, -1)) == 0 and sp.simplify(mom2s.coeff(dl, 0)) == 0 and sp.simplify(mom2s.coeff(dl, 1)) == 0
+ham0 = sp.simplify(ham2s.coeff(dl, 0)); mom1s = sp.simplify(mom2s.coeff(dl, 2))
+A2_sol = sp.solve(mom1s, A2)[0]
+A2_quad = sp.simplify((A2_sol - ddt(Z2)/H)/(ZL*ZS))              # coefficient of zeta_L zeta_S beyond zeta_dot/H
+A2_quad = sp.simplify(sp.expand(A2_quad))
+print('A2(mu, kS/kL, eps) =', A2_quad)
+r = sp.Symbol('r', positive=True)                                 # r = k_L/k_S -> 0 (squeezed), pole kept
+A2_sq = sp.series(A2_quad.subs(kL, r*kS), r, 0, 1).removeO()
+pole = sp.factor(A2_sq.coeff(r, -1)); A2_0 = sp.factor(sp.expand(A2_sq.coeff(r, 0)))
+print('1/k_L pole  :', pole, '* k_S/k_L   (odd in mu, zero monopole:', sp.integrate(pole, (mu, -1, 1)) == 0, ')')
+print('A2 O(k^0)(mu):', A2_0)
+A2_mono = sp.factor(sp.integrate(A2_0, (mu, -1, 1))/2)
+A2_S9 = eps*(3-eps)**2/3; A2_S9c = 2*(3-eps)**2
+print('A2 monopole =', A2_mono, '| S9:', A2_S9, '| S9c-required:', A2_S9c)
+verdict_A2 = ('S9' if sp.simplify(A2_mono - A2_S9) == 0 else 'S9c' if sp.simplify(A2_mono - A2_S9c) == 0 else 'neither')
+print('A2 monopole matches:', verdict_A2, '| at dust:', A2_mono.subs(eps, sp.Rational(3, 2)), '| eps->0:', sp.limit(A2_mono, eps, 0))
+assert verdict_A2 == 'S9'
+# the second-order shift divergence (Hamiltonian constraint), for the record
+p2_sol = sp.solve(ham0.subs(A2, A2_sol), p2)[0]
+DN2 = sp.simplify(-(kL+kS*mu)**2*p2_sol/a**2 - kS**2*nu**2*p2_sol/a**2)   # d^2 psi_2 / a^2 at leading order (|k_L+k_S|^2 = kL^2+2kLkS mu+kS^2)
+print('Part A done', round(time.time()-t0, 1), 's')
