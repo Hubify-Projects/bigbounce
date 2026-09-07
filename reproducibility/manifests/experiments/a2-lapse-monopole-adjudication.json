@@ -1,0 +1,82 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "a2-lapse-monopole-adjudication",
+ "title": "Adjudication of the L x S second-order lapse monopole A2(eps) on the uniform-density slice: S9 (eps(3-eps)^2/3, f^rho=-5/2) vs S9c (2(3-eps)^2 required, f^rho=-55/16)",
+ "program": "bounce-theory",
+ "paper": "P2",
+ "kind": "derivation",
+ "inputs": [
+  {
+   "name": "PSU gates S9+S10 (rho-slice map, A2 = eps(3-eps)^2/3, f^rho = 5(2eps-15)/24)",
+   "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.md",
+   "type": "internal-artifact",
+   "checksum": "sha256:e9ffc0e6ca4ab1c069959538a3902b499da31086af3f8f36d72ed7048896bf3e"
+  },
+  {
+   "name": "PSU gates S9+S10 json (S9.A2_superhubble_growing)",
+   "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.json",
+   "type": "internal-artifact",
+   "checksum": "sha256:def17f817207131eaedb8a7b41a3a350a011fd47074994c095bc56a9ab1f22bc"
+  },
+  {
+   "name": "PSU gate S9c (exact separate universe: -5 comoving, 5(eps-7)/8 uniform density; A2 = 2(3-eps)^2 required)",
+   "locator": "research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.md",
+   "type": "internal-artifact",
+   "checksum": "sha256:18ba18090969a1148952ff291b3e458fffdc7868d77ec4e774f0a1808d30a937"
+  },
+  {
+   "name": "Maldacena 2003 (comoving-gauge ADM constraints, N_1 = zeta_dot/H, d^2 chi = a^2 eps zeta_dot)",
+   "locator": "https://arxiv.org/abs/astro-ph/0210603",
+   "type": "external-literature",
+   "checksum": null,
+   "license": null
+  }
+ ],
+ "apis": [],
+ "code": [
+  {
+   "path": "research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.py",
+   "entrypoint": "python3 research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.py",
+   "sha256": "dcc8c57d1c9a1e8e56c171639c66c7c9434532b810bcc0db6c5b6e65a780cd1c"
+  }
+ ],
+ "environment": {
+  "python": "python3 with sympy (>=1.12; run on 1.14.0)",
+  "hardware": "cpu-only"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": null,
+  "pod_id_or_host": "local macOS workstation",
+  "date": "2026-09-07",
+  "wall_clock": "9.6 s",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local",
+  "est_wall_clock": "under 1 minute",
+  "est_cost_usd": 0.0,
+  "parallelizable": false,
+  "resume_support": false,
+  "notes": "Deterministic sympy. Part A: exact ADM Hamiltonian + momentum constraints in comoving gauge expanded to second order for two plane waves on the constant-eps growing mode, gradient-free then squeezed limit; solves N_LS = zeta2_dot/H + A2 zeta_L zeta_S; A2 monopole = eps(3-eps)^2/3 (S9), pole eps(3-eps) mu kS/kL odd in mu. Part B: exact local monopole system (Hamiltonian + energy conservation) integrated along a worldline, both final slices: -5 and 5(eps-7)/8 (S9c's separate universe). Part C: shows lambda' weights zeta_2 by 3 lambda (not 2 lambda), reproducing S9's 5(2eps-15)/24 and S9c's gap 5(eps-6)/24 exactly; f_map = -5/8 recomputed from the ADM objects. Verdict written by the script (json key 'verdict')."
+ },
+ "outputs": [
+  {
+   "locator": "research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md",
+   "type": "document",
+   "checksum": "sha256:d7521ad594a889169fa1d3a4d8a7b9d983141e2776d4e310b3f8cd179ef3c853"
+  },
+  {
+   "locator": "research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.json",
+   "type": "result-json",
+   "checksum": "sha256:2c2c672b9e53b25b78342a612126118eea40921489ee3af3fe54dd8130e379b4"
+  }
+ ],
+ "verification": "Re-run and diff the JSON. Required exact values: A2_monopole == 'epsilon*(epsilon - 3)**2/3'; A2_matches == 'S9'; A2_eps_to_0 == '0'; f_phi_local == '-5'; f_rho_local == '5*(epsilon - 7)/8'; lambda_prime_over_lambda == '2'; implied_inin_monopole_dust == '-15/8'; f_map_monopole_rho_normalised == '-5/8'; weight_on_zeta1 == '2 - 2*epsilon/3'; weight_on_zeta2 == '3 - epsilon'; S9_composition_reproduced == '5*(2*epsilon - 15)/24'; gap_S9_minus_true == '5*(epsilon - 6)/24'; the script's asserts all pass.",
+ "status": "runnable-now",
+ "provenance": [
+  "research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.md section 5: named step = independent re-derivation of the L x S super-Hubble lapse monopole from the second-order constraints",
+  "project-context/NEXT_SCIENCE_LEDGER.md rows 1 and 17: -5/2 vs -55/16 on the uniform-density slice",
+  "directive R: Part A (constraint solve) run with A2 unknown and compared with both claims only after the monopole was extracted; Part B written from the ADM monopole equations without reading S9c's script; verdict written by the script"
+ ]
+}
