@@ -779,3 +779,10 @@ above was computed directly (`psu_gate_S9b_intrinsic_term_2026_09_05.md`) and VA
 the growing-mode limit that defines −55/16 — it does not close the gap. The residual,
 5(6−ε)/24, is now attributed to the super-Hubble evolution step between slices, not the
 initial data, and −55/16 remains stated as an open, unreconciled item.
+
+**S9c follow-up (2026-09-07, paper-su v1S.0.7, A3M v3M.0.23):** the "dropped evolution-step
+term" hypothesis is NOT supported (`psu_gate_S9c_evolution_residual_2026_09_05.md`) — an
+independent exact separate-universe solution reproduces both −55/16 (uniform-density) and
+−5 (comoving) for all ε, so the uniform-density δN value is itself well-defined; the 15/16
+gap is relocated to the second-order threading map's lapse monopole coefficient A₂, now
+under independent adjudication (which coefficient is correct is not yet resolved).
