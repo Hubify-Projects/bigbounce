@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.22",
+      version: "v3M.0.23",
       readiness: 75,
-      pendingWork: "S9b derivation-statement correction: the intrinsic flat-slice term vanishes in the growing-mode limit that defines -55/16, so it does not close the gap to -5/2 (residual 5(6-eps)/24); the residual now attributed to the super-Hubble evolution step between slices -- open item, not reconciled. Only the comoving-slice delta N (-5) is fully reconciled; flagship -35/16 unaffected. ROUNDS STOPPED (R2). Houston final review pending.",
+      pendingWork: "S9c derivation-statement update: the dropped-evolution-term hypothesis is NOT supported -- an independent exact separate-universe solution reproduces both -55/16 (uniform-density) and -5 (comoving) for all eps, so both delta N values are well-defined; the 15/16 gap is relocated to the threading map's lapse monopole coefficient A2, under independent adjudication. Flagship -35/16 unaffected. ROUNDS STOPPED (R2). Houston final review pending.",
     },
     {
       slug: "paper-3",
@@ -149,9 +149,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-su",
       number: "SU",
       shortTitle: "Separate-universe failure criterion (short note)",
-      version: "v1S.0.6",
+      version: "v1S.0.7",
       readiness: 65,
-      pendingWork: "S9b: the intrinsic flat-slice term does not close the -55/16 gap (vanishes in the growing-mode limit); residual attributed to the super-Hubble evolution step between slices -- open item, not reconciled. ROUNDS STOPPED (R2) pending a science or venue decision.",
+      pendingWork: "S9c: the dropped-evolution-term hypothesis is NOT supported -- both -55/16 (uniform-density) and -5 (comoving) delta N values are well-defined; the 15/16 gap is relocated to the threading map's lapse monopole coefficient A2, under independent adjudication. ROUNDS STOPPED (R2) pending a science or venue decision.",
     },
   ],
   blockerTally: {

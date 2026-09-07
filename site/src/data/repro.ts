@@ -689,6 +689,14 @@ export const reproPrograms: ReproProgram[] = [
           "p2-fnl-second-method-deltan",
           "psu-gates-s9-s10-rho-slice-kc"
         ]
+      },
+      {
+        "id": "psu-gate-s9c-evolution-residual-shift-term",
+        "depends_on": [
+          "psu-gate-s9b-intrinsic-initial-data-term",
+          "psu-gates-s9-s10-rho-slice-kc",
+          "p2-fnl-second-method-deltan"
+        ]
       }
     ],
     "external_data": [
@@ -10553,6 +10561,94 @@ export const reproExperiments: ReproExperiment[] = [
       "research/theory_audit/psu_gates_S9_S10_2026_09_05.md S9.4: 'candidate missing step' = intrinsic flat-slice initial-data bispectrum in the delta-N lane (this gate)",
       "project-context/NEXT_SCIENCE_LEDGER.md rows 1 and 17: -55/16 vs -5/2 gap; status lines added 2026-09-05",
       "directive R (vision governance): the intrinsic term was computed with arbitrary sign/size before the gap value was compared; verdict written by the script"
+    ]
+  },
+  {
+    "manifest_version": "bigbounce-experiment/v1",
+    "id": "psu-gate-s9c-evolution-residual-shift-term",
+    "title": "PSU gate S9c: is the 5(6-eps)/24 gap between the delta-N uniform-density value -55/16 and the threading rho-slice value -5/2 the shift-divergence term dropped in the separate-universe evolution?",
+    "program": "bounce-theory",
+    "paper": "P2",
+    "kind": "derivation",
+    "inputs": [
+      {
+        "name": "PSU gate S9b (residual assigned to the evolution step)",
+        "locator": "research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md",
+        "type": "internal-artifact",
+        "checksum": "sha256:279a76e690a0902f37136053b52b2193a05f3cc91e8725b72f1c69d5d2594d19"
+      },
+      {
+        "name": "PSU gates S9+S10 json (S9.A2_superhubble_growing, f_map_rho tables)",
+        "locator": "research/theory_audit/psu_gates_S9_S10_2026_09_05.json",
+        "type": "internal-artifact",
+        "checksum": "sha256:def17f817207131eaedb8a7b41a3a350a011fd47074994c095bc56a9ab1f22bc"
+      },
+      {
+        "name": "threading map at second order (worldline identity, eq. 2)",
+        "locator": "research/theory_audit/threading_map_second_order_2026_09_04.md",
+        "type": "internal-artifact",
+        "checksum": "sha256:4277010e6983e81dbcbc343868f7c236ff4e102a9e7729b7455cb89d8443c70c"
+      },
+      {
+        "name": "lab separate-universe delta N on uniform density (-55/16)",
+        "locator": "research/theory_audit/fnl_matter_contraction_second_method_2026_09_02.py",
+        "type": "internal-artifact",
+        "checksum": "sha256:033fa555994aefcf2e5c2a4d25eb93a90f45b5140e89c0be77a503d1e9d8d592"
+      },
+      {
+        "name": "Namjoo, Firouzjahi & Sasaki 2012 (USR delta N, 5/2)",
+        "locator": "https://arxiv.org/abs/1210.3692",
+        "type": "external-literature",
+        "checksum": null,
+        "license": null
+      }
+    ],
+    "apis": [],
+    "code": [
+      {
+        "path": "research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.py",
+        "entrypoint": "python3 research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.py",
+        "sha256": "c3adcdbf1a8368fe6b5d9fdac56addf79c7835a25e66fdf7cfd14c25650179c7"
+      }
+    ],
+    "environment": {
+      "python": "python3 with sympy (>=1.12; run on 1.14.0), scipy (DOP853), mpmath",
+      "hardware": "cpu-only"
+    },
+    "original_run": {
+      "venue": "local",
+      "gpu": null,
+      "pod_id_or_host": "local macOS workstation",
+      "date": "2026-09-07",
+      "wall_clock": "0.7 s",
+      "actual_cost_usd": 0
+    },
+    "reproduction": {
+      "recommended_venue": "local",
+      "est_wall_clock": "under 1 minute",
+      "est_cost_usd": 0,
+      "parallelizable": false,
+      "resume_support": false,
+      "notes": "Deterministic. Part B: exact second-order separate-universe solution (sympy) for a constant-eps scalar contraction, growing eigenvector data on a flat slice, comoving and uniform-density final slices; Part A: nonlinear DOP853 integration at four (eps, dN) points asserted against the closed form (<2e-5); Part C: S9's rho-continuation chain with the second-order lapse monopole A2 symbolic, asserted to reproduce S9's extra_only monopole, then solved for the A2 the separate universe requires; USR check asserted == 5/2. Verdict written by the script."
+    },
+    "outputs": [
+      {
+        "locator": "research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.md",
+        "type": "document",
+        "checksum": "sha256:18ba18090969a1148952ff291b3e458fffdc7868d77ec4e774f0a1808d30a937"
+      },
+      {
+        "locator": "research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.json",
+        "type": "result-json",
+        "checksum": "sha256:014ebb9670b046520611763454e7e15b81fab618c3f6a6208936e57f220e3d9c"
+      }
+    ],
+    "verification": "Re-run and diff the JSON. Required exact values: part_B_closed_form.f_phi_Winf == '-5'; part_B_closed_form.f_rho_Winf == '5*epsilon/8 - 35/8'; part_B_closed_form.f_rho_Winf_minus_lane == '0'; part_B_closed_form.N1_rho_over_N1_phi_Winf == '2'; part_C_lapse_chain.f_extra_s9 == '5*epsilon/24 - 5/8'; part_C_lapse_chain.A2_req == '2*(epsilon - 3)**2'; part_C_lapse_chain.f_gap_from_A2 == '5/4 - 5*epsilon/24'; usr_comoving_slice_f == '5/2'; part_A_numeric_crosscheck[*].{phi,rho}.absdiff < 2e-5; verdict.shift_divergence_is_evolution_term == false.",
+    "status": "runnable-now",
+    "provenance": [
+      "research/theory_audit/psu_gate_S9b_intrinsic_term_2026_09_05.md section 5: residual assigned to the super-Hubble evolution step; candidate = dropped shift divergence (this gate tests it)",
+      "project-context/NEXT_SCIENCE_LEDGER.md rows 1 and 17: -55/16 vs -5/2 gap",
+      "directive R: the separate-universe closed forms were asserted against -5 and 5(eps-7)/8 before S9's A2 was read; the S9 chain was reproduced with A2 symbolic before the required A2 was solved for; verdict written by the script"
     ]
   },
   {

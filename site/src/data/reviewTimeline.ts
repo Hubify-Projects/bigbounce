@@ -67,6 +67,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-a3m-s9c-evolution-residual-adjudication-2026-09-07",
+    dateISO: "2026-09-07",
+    kind: "skill-improvement",
+    title: "S9c: dropped-evolution-term hypothesis NOT supported -- paper-su v1S.0.7 + A3M v3M.0.23",
+    papers: ["PSU", "A3"],
+    summary:
+      "research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.md tests the v1S.0.6/v3M.0.22 hypothesis that the -55/16 gap arises from a dropped super-Hubble evolution term, directly. An independent exact separate-universe solution reproduces both -5 (comoving slice, all eps) and -55/16 (uniform-density/rho slice, all eps) -- the hypothesis is NOT SUPPORTED: both delta N values are well-defined variables, not evolution-step artifacts. The gap 5(6-eps)/24=15/16 is relocated exactly to the second-order threading map's long x short lapse monopole coefficient A2=eps*(3-eps)^2/3 (this map, =9/8 at dust) versus the separate universe's required 2*(3-eps)^2 (=9/2 at dust); which coefficient is correct is under independent adjudication (a Fable lane), not yet resolved. Both papers replace the v1S.0.6/v3M.0.22 residual sentence with this precise statement; the flagship in-in monopole -35/16 is unaffected.",
+    keyTakeaways: [
+      "paper-su v1S.0.7: the evolution-step sentence replaced with the S9c well-defined-values/A2-adjudication statement; 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 6 pp, md5 89d7965b86fe1961c69b474d2764e54d",
+      "A3M v3M.0.23: same replacement in Sec. II (crosscheck) and Appendix A (Bianchi-I); 4-pass, 0 undef refs, 0 overfull hboxes >10pt, 19 pp, md5 52f438454b6227083b54eb8e9746dc79",
+      "Both readiness held (paper-su 65, A3M 75) -- derivation-statement update, not a new review round; rounds stay stopped under directive R2; flagship -35/16 unaffected; A2 coefficient adjudication pending",
+    ],
+    links: [
+      { label: "S9c evolution-residual note", href: `${GH}/research/theory_audit/psu_gate_S9c_evolution_residual_2026_09_05.md` },
+      { label: "paper-su SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "paper-su source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+      { label: "A3M source", href: `${GH}/research/track_a3_multichannel/paper/main.tex` },
+      { label: "Paper lineage amendment", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+    ],
+  },
+  {
     id: "psu-a3m-s9b-intrinsic-term-open-2026-09-05",
     dateISO: "2026-09-05",
     kind: "skill-improvement",
