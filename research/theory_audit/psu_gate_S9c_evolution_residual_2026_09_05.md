@@ -1,6 +1,6 @@
 # paper-su gate S9c — the dropped shift-divergence term in the δN uniform-density lane (2026-09-05)
 
-**Status:** IN PROGRESS (plan header committed first, anti-stall).
+**Status:** DONE 2026-09-07 — **VERDICT S9c: hypothesis NOT supported; residual LOCATED.** The shift-divergence term is the exact difference between $\zeta_{\rm Mald}$ and $\delta N_c$ (already in S9), not an evolution term the lane drops; an independent exact separate-universe solution reproduces $-5$ (comoving, all $\epsilon$) and the lane's $5(\epsilon-7)/8=-55/16$ ($\rho$-slice, all $\epsilon$). The gap $5(6-\epsilon)/24$ is entirely S9's second-order lapse monopole $A_2=\epsilon(3-\epsilon)^2/3$ vs the required $2(3-\epsilon)^2$ (§3); named step: independent re-derivation of that constraint solve. Script + json alongside (0.7 s, all asserts pass).
 
 ## Plan
 
@@ -113,3 +113,54 @@ attractor ($\dot\zeta=0$) like S9's, so the attractor check S9 passed does not d
 separate universe alone is derive $A_2$ independently: the SU supplies two exact relations (the lapse $1+\alpha=x_*e^{\bar s}/(xe^{s})$
 on the comoving slice and $N_c$), but they involve $\zeta^{(2)}_{\rm Mald}$ and the second-order shift divergence as well, and only
 the momentum constraint closes the system — that is the S9 constraint solve itself.
+
+## 4. Validations
+
+- **Attractor** ($\dot\zeta_L=0$): the only $O(k^0)$ term the separate universe drops, $2\sigma_L{:}\sigma_S\propto\dot\zeta_L\dot\zeta_S$,
+  vanishes; the map is the identity and the SU is exact (§1). Both lapse monopoles of §3 vanish there ($A_2\propto\alpha_L\alpha_S$),
+  so the attractor is not a discriminating test of S9's $A_2$ — recorded, not claimed.
+- **USR** (NFS 2012): the same SU machinery with $\lambda=0$ ($x'=-3x+3x^3$, comoving end slice, $N=\tfrac13\ln(x_i/x_f)$)
+  gives $f=\tfrac56N_2/N_1^2\to\tfrac52$ exactly as $x_f/x_i\to0$ (script `usr_check`, asserted). Nothing in this gate touches
+  the USR result: the shift-divergence term is in the *definition* of the variable, not an evolution correction.
+- **Comoving threading**: $f^{\rm SU}_\phi\to-5$ for every constant $\epsilon$ = the threading map's initial-label result
+  (`threading_map_second_order_2026_09_04.md` eq. 4) and the lab's comoving $\delta N$; finite-$W$ corrections $10\epsilon/(3W)$
+  are the S9b $O(1/W)$ initial-data channels, seen from the evolution side.
+- **Lane reproduction**: $f^{\rm SU}_\rho\to5(\epsilon-7)/8$ for every $\epsilon$; numeric DOP853 vs closed form $<2\times10^{-5}$.
+- **S9 bookkeeping reproduction**: the §3 chain returns S9's `extra_only` monopole $5(\epsilon-3)/24$ when fed S9's $A_2$ (asserted),
+  so the localisation is not a convention mismatch.
+
+## 5. Verdict, consequence, printable sentences
+
+**VERDICT S9c: the plan's hypothesis is NOT supported — the residual is LOCATED, not reconciled.**
+The shift-divergence term is not dropped by the $\delta N$ lane's evolution: $\partial_iN^i$ is exactly the difference between the
+metric variable $\zeta_{\rm Mald}$ and the e-fold variable $\delta N_c$ (threading identity (2)), which S9 already keeps; the only
+$O(k^0)$ omission of the isotropic separate universe is the shear cross term, a pure quadrupole. An exact separate-universe solution
+reproduces the comoving value $-5$ (all $\epsilon$) **and** the lane's uniform-density value $5(\epsilon-7)/8=-\tfrac{55}{16}$ (all
+$\epsilon$). The residual $5(6-\epsilon)/24$ ($\tfrac{15}{16}$ at dust) is entirely the difference between S9's squeezed second-order
+lapse monopole $A_2=\epsilon(3-\epsilon)^2/3$ and the value $2(3-\epsilon)^2$ the exact separate universe requires. **Named step:**
+re-derive the $L\times S$ super-Hubble lapse monopole from the second-order Hamiltonian + momentum constraints on the growing mode
+(S9's `solve_cross`), independently of `THREADING_CACHE`; if $2(3-\epsilon)^2$ is confirmed, S9's $\rho$-slice value becomes
+$5(\epsilon-7)/8$ and the two lanes coincide with no residual; if $\epsilon(3-\epsilon)^2/3$ is confirmed, the separate universe
+is *not* exact for the monopole and §1 must be wrong somewhere (the shear or a hidden $O(k^0)$ term) — that would be new physics
+and must be found, not assumed.
+
+**Consequence for the papers.** $-\tfrac{55}{16}$ **is** the value of a well-defined variable: the fluid-congruence e-fold number
+read on the uniform-density surface, labelled by initial position, for the constant-$\epsilon$ growing mode — now obtained by two
+independent separate-universe computations. It is superseded by nothing. The sentence proposed in the plan ("the uniform-density
+$\delta N$ value $-55/16$ is not the second-order $\rho$-slice curvature; the discrepancy is the dropped shift-divergence term")
+is **false** and must not be printed. Until the named step closes, the $\rho$-slice value from the threading continuation
+($-\tfrac52$) is the one under audit, not $-\tfrac{55}{16}$.
+
+Printable (paper-su Appendix A / A3M Sec. II; the papers are NOT edited by this lane):
+
+1. *An exact separate-universe integration of the constant-$\epsilon$ growing mode reproduces the comoving-slice value $f_{\rm NL}=-5$
+   for every $\epsilon$ and the uniform-density value $5(\epsilon-7)/8$ ($-55/16$ at $\epsilon=3/2$); the isotropic separate universe
+   omits only the shear cross term, a pure quadrupole, so its monopoles are exact on super-Hubble scales.*
+2. *The second-order threading continuation to the uniform-density slice gives $5(2\epsilon-15)/24$; the difference,
+   $5(6-\epsilon)/24$, is traced to the second-order lapse monopole entering the time shift between the slices
+   ($\epsilon(3-\epsilon)^2/3$ in the continuation versus $2(3-\epsilon)^2$ required by the separate universe) and is under
+   re-derivation; the shift-divergence term is not responsible, being the exact difference between the metric and e-fold variables.*
+
+Integrity: the SU closed forms (§2) were derived and asserted against $-5$ and $5(\epsilon-7)/8$ before S9's $A_2$ was read from the
+json; the §3 chain was written with $A_2$ symbolic and checked to reproduce S9's number before the required value was solved for.
+Script `psu_gate_S9c_evolution_residual_2026_09_05.py` (scipy DOP853 + sympy 1.14, 0.7 s, all asserts pass), json alongside.
