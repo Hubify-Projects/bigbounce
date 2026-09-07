@@ -1230,3 +1230,28 @@ refs, 0 overfull hboxes >10pt, 19 pp, md5
 `public/papers/a3_multichannel_arxiv_v3M.0.23.pdf` and
 `site/public/papers/a3_multichannel_arxiv_v3M.0.23.pdf`. Readiness held at
 75 — ROUNDS STOPPED (R2), unchanged.
+
+## v3M.0.24 (2026-09-07) — derivation reconciled; rounds still stopped; readiness 75
+
+Follow-up to paper-su v1S.0.8: the independent adjudication
+(`research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md`)
+resolves v3M.0.23's open A2 dispute. A2 = eps*(3-eps)^2/3 (this map) stands
+as the correct constraint-solve value, not the separate universe's required
+2*(3-eps)^2. The v3M.0.23 initial-label figure f^rho=-5/2 came from
+composing the threading map with the linear-mode weight lambda'=2*lambda;
+the rho-surface time shift, acting on the second-order curvature
+perturbation, instead carries weight 3*lambda, and correcting the weight
+gives f^rho=5*(eps-7)/8=-55/16 at dust, closing the 15/16 gap exactly. Sec.
+II's cross-check paragraph and Appendix A (Bianchi-I subsection) are
+updated: the in-in monopole -15/8 (delta N_c normalization), the
+comoving-slice delta N value -5, and the uniform-density delta N value
+-55/16 are now stated as three well-defined variables related by exact
+threading maps, not competing claims — the "not reconciled / open item"
+wording is removed. The flagship in-in monopole -35/16 (Maldacena
+normalization) is unaffected; no new math. 4-pass, 0 undef refs, max
+overfull hbox 3.9pt, 19 pp, md5 `b29ebb90be09f8d0bbc3875647bb150a`,
+mirrored to `public/papers/a3_multichannel_arxiv_v3M.0.24.pdf` and
+`site/public/papers/a3_multichannel_arxiv_v3M.0.24.pdf`; arXiv tarball
+rebuilt and standalone smoke-compiled clean (0 undef refs, 19 pp). Convex
+bumped (`paperVersions:bump` k5790qqz..., `activityFeed:add` j5783hvb...).
+Readiness held at 75 — ROUNDS STOPPED (R2), unchanged.
