@@ -67,6 +67,29 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-a3m-a2-monopole-reconciled-2026-09-07",
+    dateISO: "2026-09-07",
+    kind: "skill-improvement",
+    title: "A2 monopole gap RECONCILED -- paper-su v1S.0.8 + A3M v3M.0.24",
+    papers: ["PSU", "A3"],
+    summary:
+      "research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md (independent adjudicator, reading only S9 and S9c) resolves the A2 coefficient dispute left open by the previous round. A direct second-order ADM constraint solve gives A2=eps*(3-eps)^2/3 (S9's constraint solve is correct; 2*(3-eps)^2 fails the eps->0 Hamiltonian limit), while the exact local monopole system gives f^rho=5*(eps-7)/8=-55/16 at dust (S9c's number is right, the same variable delta N_c on the uniform-density surface). The 5*(6-eps)/24 gap is located in S9's composition step: the rho-surface time shift weights the second-order zeta_2 (proportional to a^-2(3-eps)) by 3*lambda, not lambda'=2*lambda. Both lanes now agree on both slices -- comoving -5, uniform-density -55/16 -- and, together with the in-in monopole -15/8 (dust, delta N_c normalization), the three values are stated as well-defined variables related by exact threading maps, not competing claims. Both papers replace the 'under adjudication / open item / not reconciled' wording with this reconciled statement; no new math introduced.",
+    keyTakeaways: [
+      "paper-su v1S.0.8: Appendix A composition step corrected in place; all S9 science gates closed; 4-pass, 0 undef refs, max overfull hbox 8.3pt, 6 pp, md5 87bda8d5faf08102b621a3ea1755d233; readiness 65 -> 70",
+      "A3M v3M.0.24: same reconciliation in Sec. II (crosscheck) and Appendix A (Bianchi-I); 4-pass, 0 undef refs, max overfull hbox 3.9pt, 19 pp, md5 b29ebb90be09f8d0bbc3875647bb150a; readiness held at 75",
+      "Rounds stay stopped under directive R2 for both papers; paper-su's remaining step is venue selection, not further review; flagship in-in monopole -35/16 (Maldacena normalization) unaffected",
+    ],
+    links: [
+      { label: "A2 lapse-monopole adjudication", href: `${GH}/research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md` },
+      { label: "paper-su SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "paper-su source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+      { label: "A3M source", href: `${GH}/research/track_a3_multichannel/paper/main.tex` },
+      { label: "Paper lineage closing amendment", href: `${GH}/project-context/PAPER_LINEAGE_2026-08-05.md` },
+      { label: "Next-science ledger", href: `${GH}/project-context/NEXT_SCIENCE_LEDGER.md` },
+    ],
+  },
+  {
     id: "psu-a3m-s9c-evolution-residual-adjudication-2026-09-07",
     dateISO: "2026-09-07",
     kind: "skill-improvement",
