@@ -1,4 +1,4 @@
-# New-session prompt — BigBounce + Hubify (v12, written 2026-09-05; supersedes v11)
+# New-session prompt — BigBounce + Hubify (v13, written 2026-09-07; supersedes v12)
 
 Paste everything below the line into a fresh session inside `~/Desktop/CODE_YOU/bigbounce`
 (`git pull --ff-only` first). State as of close is in
@@ -106,17 +106,20 @@ through D-A3-14 and D-PSU-1) → `HUBIFY_POSITIONING_2026-09-04.md` →
   `SESSION_HANDOFF_2026-09-04.md` "Wave-3 close" section for full receipts.
 - P4′ v4P.0.7 and ECH Note v1N.0.5: readiness 95, kits ready; **sign-off read must now
   use v4P.0.7** (not v4P.0.6); wait only on Houston.
-- **A3M v3M.0.20: readiness 75; ROUNDS STOPPED (R2).** Literature correction only tonight
-  (S7); sixth consecutive round with no physics/numerical error; row-19 general-λ answered
-  — no-go generalizes to all P(X) k-essence. No further rounds without a science decision.
+- **A3M v3M.0.24: readiness 75; ROUNDS STOPPED (R2).** A₂ lapse-monopole gap reconciled
+  (same adjudication as paper-su); Sec. II + Appendix A no longer state the uniform-density
+  δN gap as an open item. No further rounds without a science decision.
 - **namaster-proof/P1B v2B.0.20: readiness 95; ROUNDS STOPPED (R2).** Batch 3 (value-level
   R7 rule) scored exactly as pre-registered; PyMaster cross-check + OTS batch-1/2 complete;
   novelty tier N3 (D-P1B-1). ASCL/Zenodo packaging is now the closing step — a review board
   on v2B.0.20 is permitted (the batch-3 science change is new since the last board), then
   packaging; DOI minting is Houston-only.
-- **paper-su v1S.0.4: readiness 65; ROUNDS STOPPED.** S7 now CLOSED; pending S9/S10
-  (second-order ρ-slice / constant-mode kernel K_c) and a venue decision. (S6/S8 RESOLVED,
-  S11 Houston-only Zenodo upload.)
+- **paper-su v1S.0.8: readiness 70; ROUNDS STOPPED.** S7/S9/S10/S9b/S9c and the A₂
+  adjudication are ALL CLOSED (`research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md`):
+  A₂=ε(3−ε)²/3 confirmed correct, f^ρ=5(ε−7)/8=−55/16 at dust via the corrected 3λ
+  composition weight; in-in −15/8, comoving δN −5, uniform-density δN −55/16 are three
+  well-defined variables via exact threading maps. No science items remain — the only
+  open step is a venue decision. (S11 Houston-only Zenodo upload unchanged.)
 - Anomaly catalogue v2: data release documented; Zenodo DOI is Houston's click.
 - Site: six-lane redesign shipped and unchanged; live headed-browser QA still owed.
 - Pod: no pod currently running; row 12 blocked on a RunPod web-UI pod creation (see
@@ -134,14 +137,13 @@ through D-A3-14 and D-PSU-1) → `HUBIFY_POSITIONING_2026-09-04.md` →
    at classification-confidence as one driver); Euclid Q1 domain adaptation. Row 16(iv-b)
    closed the external-environment channel (DESI DR1 BGS, null in both subsets) —
    no further environment test is open.
-3. **paper-su: the intrinsic-term gap + venue.** S7/S9/S10 all RESOLVED (v1S.0.5): K_c
-   closed form + corrected normalisation (S10), and the rho-slice second-order map (S9) —
-   but S9's composition is NEGATIVE, it does not reproduce the lab's -55/16. The one
-   remaining science item is deriving the flat-slice in-in three-point function of u at
-   finite t_i (the intrinsic initial-data bispectrum omitted from the delta N lane,
-   Namjoo-Firouzjahi-Sasaki caveat) — **route this as a Fable-tier independent-derivation
-   task**, not a Sonnet closure. Then settle a venue choice — this is the path off
-   readiness 65.
+3. **paper-su: venue decision only.** All science gates (S6-S11, S9b, S9c, the A₂
+   adjudication) are CLOSED as of v1S.0.8 (readiness 70) — the S9/S9c/A₂ chain resolved
+   2026-09-07: A₂=ε(3−ε)²/3 is the correct constraint-solve value, f^ρ=5(ε−7)/8=−55/16
+   at dust via the corrected 3λ composition weight, and in-in −15/8 / comoving δN −5 /
+   uniform-density δN −55/16 are three reconciled variables. Nothing left to derive —
+   settle a venue choice (candidate gr-qc or astro-ph.CO); this is the path off
+   readiness 70 toward Houston sign-off.
 4. **namaster-proof: §9 σ recompute, then ASCL/Zenodo/venue.** Batch 4 landed (rounds
    stopped, N3 held). Before packaging, recompute `VERIFICATION_PRIMITIVE_2026-09-04.md`
    §9's significance/sigma numbers against the final batch-1-4 corpus (PyMaster cross-check
