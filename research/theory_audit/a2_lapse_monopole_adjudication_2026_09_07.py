@@ -88,3 +88,81 @@ assert verdict_A2 == 'S9'
 p2_sol = sp.solve(ham0.subs(A2, A2_sol), p2)[0]
 DN2 = sp.simplify(-(kL+kS*mu)**2*p2_sol/a**2 - kS**2*nu**2*p2_sol/a**2)   # d^2 psi_2 / a^2 at leading order (|k_L+k_S|^2 = kL^2+2kLkS mu+kS^2)
 print('Part A done', round(time.time()-t0, 1), 's')
+# ================= Part B: exact local (monopole) system along a worldline =================
+# u = 1/N.  Hamiltonian monopole: K^2/9 = rho/3, rho = phidot^2 u^2/2 + V  ->  K = 3H sqrt(1+eps(u^2-1)/3)
+# energy conservation (= KG): u phi_ddot + u_dot phi_dot + K phi_dot + V'/u = 0, phi_ddot = -eps H phi_dot, V' = (eps-3)H phi_dot
+u, A = sp.symbols('u A')
+g = 1 + eps*(u**2-1)/3
+F = eps*H*u - 3*H*sp.sqrt(g) + (3-eps)*H/u                    # u_dot = F(u)
+Theta = H*sp.sqrt(g)/u                                        # d ln a_loc/dt = N K/3 = K/(3u)
+F1 = sp.simplify(sp.diff(F, u).subs(u, 1)); F2 = sp.simplify(sp.diff(F, u, 2).subs(u, 1))
+assert sp.simplify(F.subs(u, 1)) == 0 and sp.simplify(F1 + (3-eps)*H) == 0   # linear growing mode v ~ a^{-(3-eps)}
+c_loc = sp.factor(F2/F1)                                      # v_LS = c v_L v_S  (particular solution; homogeneous is O(1/W))
+print('local system: u_LS = c u_L u_S with c(eps) =', c_loc, '| dust:', c_loc.subs(eps, sp.Rational(3, 2)))
+v1 = T**(-(3-eps)/eps)                                        # normalised growing mode of v = u - 1
+v = A*v1 + A**2*(c_loc/2)*v1**2                             # v_dot = F' v + (F''/2) v^2  ->  v_2 = (c/2) v_1^2, i.e. v_LS = c v_L v_S
+Th1 = sp.diff(Theta, u).subs(u, 1); Th2 = sp.diff(Theta, u, 2).subs(u, 1)
+# int H v1 dt = -v1/(3-eps), int H v1^2 dt = -v1^2/(2(3-eps))  (both vanish at the initial flat slice, W->0 side)
+dNc = sp.expand(A*(Th1/H)*(-v1/(3-eps)) + A**2*((Th1/H)*(c_loc/2)*(-v1**2/(2*(3-eps))) + (Th2/H)/2*(-v1**2/(2*(3-eps)))))
+n1 = sp.simplify(dNc.coeff(A, 1)/v1); assert sp.simplify(n1 - sp.Rational(1, 3)) == 0   # delta N_c = v/3 = (1-eps/3) zeta  (lambda)
+def fnl(dN):                                                  # initial-position label by construction (worldline quantities)
+    return sp.factor(sp.Rational(5, 6)*2*dN.coeff(A, 2)/dN.coeff(A, 1)**2)
+f_phi_loc = fnl(dNc)                                          # comoving slice t = t_f
+# uniform-density slice: rho(T_f+dT, u) = rho_bar(T_f), rho = H^2 (3 + eps(u^2-1)), H^2 = 1/(eps T)^2
+dT1, dT2 = sp.symbols('dT1 dT2')
+Tf = sp.Symbol('T_f', positive=True); dT = A*dT1 + A**2*dT2
+rho_loc = (3 + eps*((1+v)**2 - 1))/(eps*T)**2
+eq = sp.series(sp.expand(rho_loc.subs(T, Tf + dT)*(eps*Tf)**2 - 3), A, 0, 3).removeO()
+dT1s = sp.solve(eq.coeff(A, 1), dT1)[0]; dT2s = sp.solve(eq.coeff(A, 2).subs(dT1, dT1s), dT2)[0]
+Nbar = sp.log(T)/eps
+dNrho = sp.series(sp.expand((dNc + Nbar).subs(T, Tf + dT).subs({dT1: dT1s, dT2: dT2s}) - Nbar.subs(T, Tf)), A, 0, 3).removeO()
+f_rho_loc = fnl(dNrho)
+lam = 1 - eps/3; lamp = sp.simplify(dNrho.coeff(A, 1)/dNc.coeff(A, 1).subs(T, Tf))
+print('f_phi^loc =', f_phi_loc, '| f_rho^loc =', f_rho_loc, "| lambda'/lambda =", lamp)
+assert sp.simplify(f_phi_loc + 5) == 0 and sp.simplify(f_rho_loc - 5*(eps-7)/8) == 0 and lamp == 2
+# consistency with the momentum-constraint lapse: u = 1/N, N = 1 + zeta_dot/H + A2 zeta_L zeta_S  =>
+# u_LS = -zeta2_dot/H + (2(3-eps)^2 - A2) zeta_L zeta_S, zeta2 = c_zeta zeta_L zeta_S ~ a^{-2(3-eps)}, v_L = (3-eps) zeta_L
+c_zeta = sp.factor((c_loc*(3-eps)**2 - 2*(3-eps)**2 + A2_mono)/(2*(3-eps)))
+f_inin_mono = sp.factor(sp.Rational(5, 6)*c_zeta)             # classical late-time in-in monopole implied by (A2, local system)
+print('implied in-in monopole f(eps) =', f_inin_mono, '| dust:', f_inin_mono.subs(eps, sp.Rational(3, 2)), '(row-1 in-in: -35/16 + 15/16 * 1/3 = -15/8)')
+assert f_inin_mono.subs(eps, sp.Rational(3, 2)) == -sp.Rational(15, 8)
+# ================= Part C: the composition step =================
+lamp_val = 2*lam                                              # growing mode: lambda' = lambda + H dt^(1)/zeta = 2 lambda
+w2 = lam + 2*lam                                              # on zeta_2 ~ a^{-2(3-eps)}: H dt^(1) = -zeta2_dot/(3H) = 2 lambda zeta2  -> weight 3 lambda
+f_map_mono = sp.simplify(f_rho_loc - (w2/lamp_val)*f_inin_mono/lamp_val)      # what the quadratic map must contribute
+f_S9_chain = sp.simplify(f_inin_mono/lamp_val + f_map_mono)   # S9's composition f^{in-in}/lambda' + f_map with the same map
+print('f_map monopole (rho-normalised) =', f_map_mono, "| S9-style composition f^{in-in}/lambda' + f_map =", sp.factor(f_S9_chain),
+      '| S9 quoted 5(2eps-15)/24 ->', sp.simplify(f_S9_chain - 5*(2*eps-15)/24) == 0)
+gap = sp.factor(f_rho_loc - f_S9_chain); print('gap = (1/2) f^{in-in}/lambda\' =', gap, '| S9c gap 5(eps-6)/24 ->', sp.simplify(gap - 5*(eps-6)/24) == 0)
+assert sp.simplify(f_S9_chain - 5*(2*eps-15)/24) == 0 and sp.simplify(gap - 5*(eps-6)/24) == 0 and sp.simplify(f_map_mono + sp.Rational(5, 8)) == 0
+# independent f_map from the ADM objects (no S9 table): f_extra chain (S9c section 3) with my A2 + comoving shift-divergence kernel
+# D_i N^i = a^-2 e^-2zeta (d^2 psi + dzeta.dpsi): L x S, O(k^0) = a^-2 d^2 psi_2 - 2 zeta_L (eps zeta_S_dot) - 2 zeta_S (eps zeta_L_dot) (+ odd-mu pole)
+DN2_full = DN2.subs(A2, A2_sol) - 2*eps*(ZL*ddt(ZS) + ZS*ddt(ZL)) - eps*ddt(Z2)   # minus the linear operator eps*zeta2_dot (already in lambda*zeta_2)
+DN2_sq = sp.series(sp.simplify(DN2_full.subs(kL, r*kS)), r, 0, 1).removeO()
+DN2_pole = sp.integrate(DN2_sq.coeff(r, -1), (mu, -1, 1)); assert DN2_pole == 0
+DN2_mono = sp.simplify(sp.integrate(DN2_sq.coeff(r, 0), (mu, -1, 1))/2)                     # d_i N^i at L x S, O(k^0), monopole
+kern = sp.simplify(DN2_mono/(ZL*ZS*H))                                                       # DN2 = kern * H zeta_L zeta_S,  ~ a^{-2(3-eps)}
+M_phi = sp.simplify(-sp.Rational(1, 3)*kern*(-1/(2*(3-eps))))                                 # -(1/3) int DN2 dt  (int H W^2 dt = -W^2/(2(3-eps)))
+M_extra = -A2_mono/3 + (3-eps)**2*(2*eps-3)/9
+f_map_adm = sp.factor(sp.Rational(5, 6)*(M_phi + M_extra)/lamp_val**2)
+print('shift-divergence kernel d_iN^i|_LS = H zeta_L zeta_S *', sp.factor(kern), '| f_map (ADM, rho-normalised) =', f_map_adm)
+print('   f_map from local system =', f_map_mono, '| difference =', sp.simplify(f_map_adm - f_map_mono))
+assert sp.simplify(f_map_adm - f_map_mono) == 0
+# the named step: lambda' is a derivative operator. On zeta_2 ~ a^{-2(3-eps)}: delta N_c = lambda zeta_2, H dt = -zeta2_dot/(3H) = 2 lambda zeta_2
+Z2g = T**(-2*(3-eps)/eps); w_on_zeta2 = sp.simplify((lam*Z2g - ddt(Z2g)/(3*H))/Z2g); assert sp.simplify(w_on_zeta2 - 3*lam) == 0
+w_on_zeta1 = sp.simplify((lam*ZL - ddt(ZL)/(3*H))/ZL); assert sp.simplify(w_on_zeta1 - 2*lam) == 0
+out = {'A2_full_mu_k': str(A2_quad), 'A2_pole_coeff_of_kS_over_kL': str(pole), 'A2_O_k0_mu': str(A2_0),
+       'A2_monopole': str(A2_mono), 'A2_monopole_dust': str(A2_mono.subs(eps, sp.Rational(3, 2))), 'A2_eps_to_0': str(sp.limit(A2_mono, eps, 0)),
+       'A2_matches': verdict_A2, 'A2_S9': str(A2_S9), 'A2_S9c_required': str(A2_S9c),
+       'local_c_u': str(c_loc), 'f_phi_local': str(f_phi_loc), 'f_rho_local': str(f_rho_loc), 'f_rho_local_dust': str(f_rho_loc.subs(eps, sp.Rational(3, 2))),
+       'lambda_prime_over_lambda': str(lamp), 'implied_inin_monopole': str(f_inin_mono), 'implied_inin_monopole_dust': str(f_inin_mono.subs(eps, sp.Rational(3, 2))),
+       'shift_div_LS_kernel_over_H': str(sp.factor(kern)), 'f_map_monopole_rho_normalised': str(f_map_adm),
+       'weight_on_zeta1': str(w_on_zeta1), 'weight_on_zeta2': str(w_on_zeta2),
+       'S9_composition_reproduced': str(f_S9_chain), 'gap_S9_minus_true': str(gap),
+       'f_rho_true_dust': '-55/16', 'f_rho_S9_dust': '-5/2',
+       'verdict': 'A2 = eps(3-eps)^2/3 (S9 constraint solve correct); f^rho = 5(eps-7)/8 = -55/16 (S9c/SU number correct, same variable delta N_c on the uniform-density surface, initial label); '
+                  'the S9 map error is the composition f^{in-in}/lambda\': lambda\' = lambda + H dt^(1)/zeta is a time-derivative operator that equals 2 lambda only on the linear growing mode; '
+                  'on the second-order zeta_2 ~ a^{-2(3-eps)} it equals 3 lambda, so f^rho = (3/2) f^{in-in}/lambda\' + f_map; S9c\'s A2_req = 2(3-eps)^2 inherits the same assumption and is not a lapse.',
+       'runtime_s': round(time.time()-t0, 1), 'sympy': sp.__version__}
+json.dump(out, open(__file__.replace('.py', '.json'), 'w'), indent=1)
+print('all asserts pass; json written;', out['runtime_s'], 's')
