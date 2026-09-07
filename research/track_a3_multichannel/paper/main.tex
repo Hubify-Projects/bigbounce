@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.23}
+\newcommand{\paperVersion}{v3M.0.24}
 \newcommand{\paperTimestamp}{September 7, 2026}
 
 \begin{document}
@@ -324,19 +324,21 @@ Appendix~\ref{app:derivation} records as an identity, without deriving the
 mechanism that produces it -- so the naive squeezed-limit comparison of the
 two calculations' raw values compares two different variables, not two
 disagreeing predictions of the same one. This equation-level closure is
-established for the comoving-slice $\delta N$ value ($-5$) only: a direct
-second-order continuation of the uniform-density variable itself gives
-$f_{\rm NL}^\rho=-5/2$ at dust, which does not reproduce $-55/16$ quoted above
-(gap $15/16$). The intrinsic flat-slice initial-data term vanishes in the growing-mode
-limit that defines $-55/16$ (Appendix~\ref{app:bianchi}), so it does not close this gap.
-An independent exact separate-universe solution reproduces both $-55/16$
-(uniform-density slice) and $-5$ (comoving slice) for all $\epsilon$, so the
-uniform-density $\delta N$ value is itself well-defined, not an evolution-step
-artifact; the $15/16$ gap is entirely the second-order threading map's
-long$\times$short lapse monopole coefficient $A_2=\epsilon(3-\epsilon)^2/3$ (this map)
-versus the separate universe's required $2(3-\epsilon)^2$, and which coefficient is
-correct is under independent adjudication, stated here as an open item, not a
-slice-labelling error. The flagship in-in monopole $-35/16$ is unaffected. We adopt
+established for the comoving-slice $\delta N$ value ($-5$)
+and, following an independent adjudication
+(\texttt{research/theory\_audit/}\allowbreak\texttt{a2\_lapse\_monopole\_adjudication\_2026\_09\_07.md}),
+for the uniform-density value as well: a direct second-order continuation of the
+uniform-density variable itself has squeezed monopole $f_{\rm NL}^\rho=5(\epsilon-7)/8=-55/16$
+at dust, reproducing $-55/16$ quoted above exactly. The threading map's long$\times$short
+lapse monopole coefficient $A_2=\epsilon(3-\epsilon)^2/3$ is the correct constraint-solve
+value (not $2(3-\epsilon)^2$); the earlier initial-label figure $5(2\epsilon-15)/24=-5/2$
+came from composing the map with the linear-mode weight $\lambda'=2\lambda$, whereas the
+$\rho$-surface time shift, acting on the second-order curvature perturbation, carries
+weight $3\lambda$, and correcting the weight closes the $15/16$ gap exactly. The in-in
+monopole $-15/8$ (dust, $\delta N_c$ normalization), the comoving-slice $\delta N$ value
+$-5$, and the uniform-density $\delta N$ value $-55/16$ are therefore three well-defined
+variables related by exact threading maps, not competing claims about one number. The
+flagship in-in monopole $-35/16$ (Maldacena, $\zeta_{\rm Mald}$ normalization) is unaffected. We adopt
 Eq.~\eqref{eq:fnl} throughout this paper as the value of $\zeta_{\rm Mald}$,
 the variable every downstream channel (transmission, PTA, PBH, LSS)
 inherits, and carry $-35/8$ in parallel wherever a channel distinguishes
@@ -1759,14 +1761,16 @@ in the growing-mode limit that defines $-55/16$ for any $t_f$-independent $r_i$,
 not close this gap. An independent exact separate-universe solution reproduces
 both $-55/16$ (uniform-density slice) and $-5$ (comoving slice) for all
 $\epsilon$, so the uniform-density $\delta N$ value is itself well-defined, not
-an evolution-step artifact; the gap $5(6-\epsilon)/24$ is entirely the
-second-order threading map's long$\times$short lapse monopole coefficient
-$A_2=\epsilon(3-\epsilon)^2/3$ (this map) versus the separate universe's
-required $2(3-\epsilon)^2$, and which coefficient is correct is under
-independent adjudication, stated as an open item
-(\texttt{research/theory\_audit/}\allowbreak\texttt{psu\_gate\_S9c\_evolution\_residual\_2026\_09\_05.md}). Only
-the comoving-slice $\delta N$ value ($-5$) is fully reconciled by the map
-derived here; the flagship in-in monopole $-35/16$ is unaffected.
+an evolution-step artifact; the gap $5(6-\epsilon)/24$ is closed, per an independent
+adjudication
+(\texttt{research/theory\_audit/}\allowbreak\texttt{a2\_lapse\_monopole\_adjudication\_2026\_09\_07.md}),
+by correcting the composition weight on the second-order curvature perturbation from
+$\lambda'=2\lambda$ to $3\lambda$: the threading map's long$\times$short lapse monopole
+coefficient $A_2=\epsilon(3-\epsilon)^2/3$ (this map) is the correct constraint-solve
+value, not the separate universe's $2(3-\epsilon)^2$. Both
+the comoving-slice $\delta N$ value ($-5$) and the uniform-density $\delta N$ value
+($-55/16$) are now fully reconciled by the map derived here; the flagship in-in
+monopole $-35/16$ is unaffected.
 
 %======================================================================
 \section*{Reproducibility statement}
