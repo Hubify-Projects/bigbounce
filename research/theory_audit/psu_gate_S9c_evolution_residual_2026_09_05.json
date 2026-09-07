@@ -1,0 +1,95 @@
+{
+ "part_B_closed_form": {
+  "f_phi(W)": "5*(-6*W**2 + 4*W*epsilon - 3*epsilon - 3)/(6*W**2)",
+  "f_rho(W)": "5*(3*W**2*epsilon - 21*W**2 + 8*W*epsilon - 3*epsilon - 3)/(24*W**2)",
+  "f_phi_Winf": "-5",
+  "f_rho_Winf": "5*epsilon/8 - 35/8",
+  "f_rho_Winf_minus_lane": "0",
+  "f_rho_Winf_minus_S9": "5*epsilon/24 - 5/4",
+  "N1_rho_over_N1_phi_Winf": "2",
+  "f_phi_dust": "-5",
+  "f_rho_dust": "-55/16"
+ },
+ "part_A_numeric_crosscheck": [
+  {
+   "eps": 1.5,
+   "dN": 3,
+   "W": 90.01713130052181,
+   "phi": {
+    "numeric": -4.94522623124884,
+    "closed_form": -4.94522632858433,
+    "absdiff": 9.73354898903267e-08
+   },
+   "rho": {
+    "numeric": -3.4099204074257785,
+    "closed_form": -3.409920336473281,
+    "absdiff": 7.095249765498579e-08
+   }
+  },
+  {
+   "eps": 1.5,
+   "dN": 6,
+   "W": 8103.083927575384,
+   "phi": {
+    "numeric": -4.999381600024874,
+    "closed_form": -4.999383046166941,
+    "absdiff": 1.4461420674294345e-06
+   },
+   "rho": {
+    "numeric": -3.437196052566327,
+    "closed_form": -3.437191499286628,
+    "absdiff": 4.553279699059942e-06
+   }
+  },
+  {
+   "eps": 1.2,
+   "dN": 4,
+   "W": 1339.430764394418,
+   "phi": {
+    "numeric": -4.997017200845022,
+    "closed_form": -4.997016722413525,
+    "absdiff": 4.784314970862624e-07
+   },
+   "rho": {
+    "numeric": -3.6235083150386624,
+    "closed_form": -3.6235075947950053,
+    "absdiff": 7.202436571596138e-07
+   }
+  },
+  {
+   "eps": 2.2,
+   "dN": 6,
+   "W": 121.51041751873476,
+   "phi": {
+    "numeric": -4.940190242347604,
+    "closed_form": -4.940190351532446,
+    "absdiff": 1.0918484250055371e-07
+   },
+   "rho": {
+    "numeric": -2.9699597581396455,
+    "closed_form": -2.9699597182932416,
+    "absdiff": 3.984640395415795e-08
+   }
+  }
+ ],
+ "part_C_lapse_chain": {
+  "M_extra": "-A2/3 + 2*epsilon**3/9 - 5*epsilon**2/3 + 4*epsilon - 3",
+  "f_extra": "5*(-3*A2 + 2*epsilon**3 - 15*epsilon**2 + 36*epsilon - 27)/(24*(epsilon - 3)**2)",
+  "f_extra_s9": "5*epsilon/24 - 5/8",
+  "A2_s9": "epsilon*(3 - epsilon)**2/3",
+  "f_extra_req": "5*epsilon/12 - 15/8",
+  "A2_req": "2*(epsilon - 3)**2",
+  "f_gap_from_A2": "5/4 - 5*epsilon/24"
+ },
+ "usr_comoving_slice_f": "5/2",
+ "verdict": {
+  "verdict": "NOT (hypothesis) / LOCATED",
+  "shift_divergence_is_evolution_term": false,
+  "lane_value_confirmed_general_eps": "5*epsilon/8 - 35/8",
+  "phi_slice_confirmed": "-5 (all eps)",
+  "residual_general_eps": "5*(6 - epsilon)/24",
+  "residual_dust": "15/16",
+  "located_in": "S9 second-order L x S lapse monopole A2: S9 eps(3-eps)^2/3 (dust 9/8) vs required 2(3-eps)^2 = 2 alpha_L alpha_S (dust 9/2)",
+  "wall_clock_s": 0.7
+ }
+}

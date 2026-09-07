@@ -96,10 +96,68 @@ def su_second_order():
                 f_phi_inf=sp.simplify(sp.limit(f_phi_W, W, sp.oo)),
                 lin_ratio=sp.simplify((s1/(-eps))/((2*s1 + L1*x1)/(-2*eps))))
 
-if __name__ == '__main__' and '--sym' in sys.argv:
-    r = su_second_order(); eps = r['eps']
-    print('f_phi(W)   =', r['f_phi']); print('f_phi(oo)  =', r['f_phi_inf'])
-    print('f_rho(W)   =', r['f_rho']); print('f_rho(oo)  =', r['f_rho_inf'])
-    print('lane 5(eps-7)/8, S9 5(2eps-15)/24; f_rho(oo)-lane =', sp.simplify(r['f_rho_inf'] - 5*(eps-7)/8),
-          '; f_rho(oo)-S9 =', sp.simplify(r['f_rho_inf'] - sp.Rational(5,24)*(2*eps-15)))
-    print('N1_rho/N1_phi (W->oo) =', sp.limit(r['lin_ratio'], r['W'], sp.oo))
+def s9_lapse_chain():
+    """S9's rho-continuation (S9.3)-(S9.4) on the growing mode, monopole, with the second-order L x S lapse
+    A2 (coefficient of zeta_L zeta_S) left symbolic: every other input is a linear object
+    (dt1 = lam zeta/H, zetadot = -(3-eps) H zeta, alpha1 = zetadot/H, rhobar' = -6 eps H^3, rhobar'' = 18 eps^2 H^4).
+    Returns f_extra(A2), S9's A2 monopole from its json, and the A2 the exact separate universe requires."""
+    eps = sp.Symbol('epsilon', positive=True); A2 = sp.Symbol('A2')
+    lam = 1 - eps/3; lamp = 2*lam
+    H = sp.Symbol('H'); zLzS = 1                              # per zeta_L zeta_S
+    dt = lam/H                                                # H dt^(1) = lam zeta
+    zdot = -(3 - eps)*H; al = zdot/H
+    drho1 = -2*eps*H**2*al                                    # -phidot^2 alpha,  phidot^2 = 2 eps H^2
+    # d/dt of the linear field delta rho_L(t) = 2 eps (3-eps) H^2 zeta_L(t): both H (Hdot = -eps H^2) and zeta (zetadot) vary
+    drho1dot = 2*eps*(3 - eps)*(2*H*(-eps*H**2) + H**2*zdot)
+    rhob1 = -6*eps*H**3; rhob2 = 18*eps**2*H**4
+    drho2 = -2*eps*H**2*A2 + 3*2*eps*H**2*al*al               # (S9.4): -phidot^2 A2 + 3 phidot^2 alpha_L alpha_S
+    dt2 = -(drho2 + 2*drho1dot*dt + rhob2*dt*dt)/rhob1
+    M_extra = sp.simplify(H*dt2 - eps*H**2*dt*dt + lam*2*zdot*dt)   # (S9.3) extra kernel per zeta_L zeta_S
+    assert not M_extra.has(H)
+    f_extra = sp.simplify(sp.Rational(5, 6)*M_extra/lamp**2)  # local kernel -> f monopole, rho normalisation
+    A2_s9 = eps*(3 - eps)**2/3                                # json S9.A2_superhubble_growing, k_L^0, mu^2 -> 1/3
+    f_extra_s9 = sp.simplify(f_extra.subs(A2, A2_s9))
+    # requirement: f_rho_SU - f_phi_SU/2 = f[M_extra - M_phi]_rho with f[M_phi]_rho = -5 eps/24 (S9 table)
+    f_phi_map_rho = -5*eps/24
+    f_extra_req = sp.simplify((5*(eps - 7)/8 + sp.Rational(5, 2)) + f_phi_map_rho)
+    A2_req = sp.solve(sp.Eq(f_extra, f_extra_req), A2)[0]
+    return dict(eps=eps, A2=A2, M_extra=M_extra, f_extra=f_extra, f_extra_s9=f_extra_s9, A2_s9=A2_s9,
+                f_extra_req=f_extra_req, A2_req=sp.factor(A2_req),
+                f_gap_from_A2=sp.simplify(f_extra_s9 - f_extra_req))
+
+def usr_check():
+    """USR (V const, lam = 0): x' = -3x + 3x^3, comoving slice phi = phi_f; small-x closed form N = (1/3) ln(x_i/x_f)."""
+    xi, c = sp.symbols('x_i c', positive=True)                 # c = (3/sqrt6) Delta phi, x_f = x_i - c
+    N = sp.log(xi/(xi - c))/3
+    N1, N2 = sp.diff(N, xi), sp.diff(N, xi, 2)
+    f = sp.simplify(sp.Rational(5, 6)*N2/N1**2)
+    return sp.simplify(sp.limit(f.subs(xi, c + sp.Symbol('xf', positive=True)), sp.Symbol('xf', positive=True), 0))
+
+if __name__ == '__main__':
+    t0 = time.time(); r = su_second_order(); eps, W = r['eps'], r['W']; ch = s9_lapse_chain()
+    out = {'part_B_closed_form': {'f_phi(W)': str(r['f_phi']), 'f_rho(W)': str(r['f_rho']),
+                                  'f_phi_Winf': str(r['f_phi_inf']), 'f_rho_Winf': str(r['f_rho_inf']),
+                                  'f_rho_Winf_minus_lane': str(sp.simplify(r['f_rho_inf'] - 5*(eps - 7)/8)),
+                                  'f_rho_Winf_minus_S9': str(sp.simplify(r['f_rho_inf'] - sp.Rational(5, 24)*(2*eps - 15))),
+                                  'N1_rho_over_N1_phi_Winf': str(sp.limit(r['lin_ratio'], W, sp.oo)),
+                                  'f_phi_dust': str(r['f_phi_inf'].subs(eps, sp.Rational(3, 2))),
+                                  'f_rho_dust': str(r['f_rho_inf'].subs(eps, sp.Rational(3, 2)))},
+           'part_A_numeric_crosscheck': [], 'part_C_lapse_chain': {k: str(v) for k, v in ch.items() if k not in ('eps', 'A2')},
+           'usr_comoving_slice_f': str(usr_check())}
+    for e_, dN in ((1.5, 3), (1.5, 6), (1.2, 4), (2.2, 6)):
+        Wv = sp.exp((e_ - 3)*(-dN)); row = {'eps': e_, 'dN': dN, 'W': float(Wv)}
+        for kind in ('phi', 'rho'):
+            f = m_f = float(fnl_su(e_, dN, kind)[2]); pred = float(r['f_' + kind].subs({eps: e_, W: Wv}))
+            row[kind] = {'numeric': f, 'closed_form': pred, 'absdiff': abs(f - pred)}
+            assert abs(f - pred) < 2e-5, (kind, e_, dN, f, pred)
+        out['part_A_numeric_crosscheck'].append(row)
+    assert sp.simplify(r['f_phi_inf'] + 5) == 0 and sp.simplify(r['f_rho_inf'] - 5*(eps - 7)/8) == 0
+    assert sp.simplify(ch['f_extra_s9'] - (5*eps/24 - sp.Rational(5, 8))) == 0      # reproduces S9 extra_only monopole
+    assert sp.simplify(ch['f_gap_from_A2'] - 5*(6 - eps)/24) == 0                  # the whole gap sits in A2
+    assert sp.simplify(ch['A2_req'] - 2*(3 - eps)**2) == 0 and str(usr_check()) == '5/2'
+    out['verdict'] = {'verdict': 'NOT (hypothesis) / LOCATED', 'shift_divergence_is_evolution_term': False,
+        'lane_value_confirmed_general_eps': '5*epsilon/8 - 35/8', 'phi_slice_confirmed': '-5 (all eps)',
+        'residual_general_eps': '5*(6 - epsilon)/24', 'residual_dust': '15/16',
+        'located_in': 'S9 second-order L x S lapse monopole A2: S9 eps(3-eps)^2/3 (dust 9/8) vs required 2(3-eps)^2 = 2 alpha_L alpha_S (dust 9/2)',
+        'wall_clock_s': round(time.time() - t0, 1)}
+    json.dump(out, open(OUT, 'w'), indent=1); print(json.dumps(out['part_B_closed_form'], indent=1)); print(json.dumps(out['part_C_lapse_chain'], indent=1)); print(out['verdict'])
