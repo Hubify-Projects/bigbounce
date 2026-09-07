@@ -267,3 +267,27 @@ refs, 0 overfull hboxes >10pt, 6 pp, md5 `89d7965b86fe1961c69b474d2764e54d`,
 mirrored to `public/papers/paper_su_criterion_v1S.0.7.pdf` and
 `site/public/papers/paper_su_criterion_v1S.0.7.pdf`. Readiness held at 65 —
 ROUNDS STOPPED (R2), unchanged.
+
+## v1S.0.8 (2026-09-07) — S9 fully reconciled (A2 adjudicated); all science gates closed; readiness 65 -> 70; rounds stopped; next: venue
+
+`research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md`
+(independent adjudicator) resolves v1S.0.7's open A2 dispute: S9's
+constraint solve A2 = eps*(3-eps)^2/3 is correct (not the separate
+universe's required 2*(3-eps)^2). The uniform-density-surface squeezed
+monopole is f^rho_NL = 5*(eps-7)/8 = -55/16 at eps=3/2 — S9's earlier
+-5/2 came from composing the threading map with the linear-mode weight
+lambda' = 2*lambda where the rho-surface time shift, acting on the
+second-order curvature perturbation, instead carries weight 3*lambda;
+correcting the weight closes the 5*(6-eps)/24 gap exactly. In-in monopole
+-15/8, comoving delta N -5, and uniform-density delta N -55/16 are now
+three well-defined variables related by exact threading maps, not
+competing claims. paper-su Appendix A composition step corrected in
+place (v1S.0.8, no new math). 4-pass, 0 undef refs, max overfull hbox
+8.3pt, 6 pp, md5 `87bda8d5faf08102b621a3ea1755d233`, mirrored to
+`public/papers/paper_su_criterion_v1S.0.8.pdf` and
+`site/public/papers/paper_su_criterion_v1S.0.8.pdf`; arXiv tarball
+rebuilt and standalone smoke-compiled clean. Convex bumped
+(`paperVersions:bump` k57b0pej..., `activityFeed:add` j577wamk...,
+`papers:setReadinessCap` -> 70, readback confirmed). All S9 science
+gates now closed. Readiness 65 -> 70 — ROUNDS STOPPED (R2); next step
+is venue selection, not further review rounds.
