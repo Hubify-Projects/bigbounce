@@ -302,3 +302,49 @@ regenerated); manifest validator error fixed (0 errors); ledger rows 1 and 17 up
 PAPER_LINEAGE gains D-PSU-2/D-A3-15. The click-list is unchanged, plus: **Zenodo deposit of
 the blind-test corpus** (namaster-proof batches 1-4, PyMaster cross-check, OTS attestations)
 as the next packaging step toward DOI minting.
+
+## Wave-5 close (2026-09-07)
+
+S9c/S9b/A2 chain closed. Recap: S9 (2026-09-05) gave the ρ-slice composition
+f^ρ=5(2ε−15)/24=−5/2 at dust, not reproducing the separate-universe −55/16
+(gap 15/16). S9b (2026-09-05) computed the intrinsic flat-slice initial-data
+term directly and showed it VANISHES in the growing-mode limit — it does not
+close the gap; the residual was re-attributed to the super-Hubble evolution
+step. S9c (2026-09-07) tested that evolution-step hypothesis with an
+independent exact separate-universe solution and found it NOT SUPPORTED: both
+−5 (comoving) and −55/16 (uniform-density) are well-defined for all ε, and
+the gap relocates exactly to the second-order threading map's lapse monopole
+coefficient A₂ — S9's ε(3−ε)²/3 versus the separate universe's required
+2(3−ε)². The **A₂ adjudication** (`research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07.md`,
+independent adjudicator, reading only S9 and S9c) resolves it: a direct
+second-order ADM constraint solve confirms A₂=ε(3−ε)²/3 (S9's constraint
+solve is correct — 2(3−ε)² fails the ε→0 Hamiltonian limit), while the exact
+local monopole system confirms f^ρ=5(ε−7)/8=−55/16 at dust (S9c's number is
+right, same variable). The gap is S9's composition step: the ρ-surface time
+shift weights the second-order ζ₂ by 3λ, not λ′=2λ. In-in −15/8, comoving
+δN −5, and uniform-density δN −55/16 are now three well-defined variables
+related by exact threading maps, not competing claims — the three-way
+closure Houston asked for. paper-su v1S.0.7→v1S.0.8 (all S9 science gates
+closed, readiness 65→70, next step is venue) and A3M v3M.0.23→v3M.0.24
+(Sec. II + Appendix A reconciled, readiness held at 75) both bumped, mirrored
+three-way (md5-matched), tarballed, Convex-bumped, and SSOT-updated in this
+wave. namaster-proof stands at v2B.0.22/v2B.0.23 (batch-3 attempt-2 scorecard
+R7/S6/S4b/FP as predicted, PyMaster cross-check, OTS batch-1/2 timestamp
+complete) — packaging kit closing evidence unchanged, DOI minting is still
+the Houston-only step. NEXT_SCIENCE_LEDGER.md rows 1 and 17 marked CLOSED
+(three-way reconciliation); PAPER_LINEAGE_2026-08-05.md's D-PSU-2/D-A3-15
+entry gets a closing amendment. Site synced (papers.ts/live-status.ts/
+publish.ts, one reviewTimeline.ts entry, repro.ts regenerated,
+site_freshness_check.sh --report PASS).
+
+**Unexplained item for Houston:** the RunPod account balance shows a ~$9 drop
+between 2026-09-05 and 2026-09-07 with no pod of ours alive in that window
+(no launch/stop/backup commits touch RunPod in this wave) — please check the
+RunPod billing page directly; this session did not start or stop any pod and
+cannot explain the charge from repo state alone.
+
+**Click-list is otherwise unchanged from the wave-4 list above**: P4′
+sign-off read (now v4P.0.7), RunPod web-UI pod for row 12, paper-su venue
+decision (now readiness 70, all science gates closed), namaster-proof
+ASCL/Zenodo DOI minting, Zenodo DOIs / endorsement emails / `HUBIFY_TOKEN` /
+`com.you.context-sync` decision carried forward.
