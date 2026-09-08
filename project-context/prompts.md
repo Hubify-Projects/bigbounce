@@ -1019,3 +1019,29 @@ Switched to Opus 4.7 + xhigh effort for this.
 > Anything that needs to be rerun on run pod, we can rerun. You can let me know and I can add more credits to the run pod account if necessary. If not then just let me know what else needs to be done.
 >
 > I have been working on this for almost a year now. I need to get these scientific papers published and the hubify platform launched, as well as a joint sort of release, I guess.
+
+## 2026-09-08 - bigbounce-autonomous-research-lab-2026-09-08
+
+### Houston messages, verbatim
+
+**13:18 PT - recovered verbatim BigBounce and Hubify portion from cross-project brain dump in director task 01a0822f-5b2e-7451-bf09-78fa8a7fd5c1**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-autonomous-research-lab-2026-09-08
+- `agent`: Codex delegated BigBounce planning lane
+
+> I think it's also worth looking at BigBounce and Hubify, just to make a little side note. If you want to, just spawn a little session in there so we don't forget this and that would be like 
+>
+> To continue just reviewing and planning that same sort of concept. Not only are we in Hubify, so this is part of this little side session you should spawn just on this thought note: basically this idea of auto research.
+>
+> Right now we're positioning Hubify as reproducible labs but we need to compound that to "**reproducible labs for autonomous research,** *with human steering*" + "{rotate/type text: ' for scientific advancement, curiosity, inspiration,passion,purpose,impact,truth," + from humans. ... 
+>
+> I don't know. That's basically what it is.
+
+**13:18 PT - recovered Houston authorization concerning the legacy Hubify AIOS schedule**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-autonomous-research-lab-2026-09-08
+- `agent`: Codex delegated BigBounce planning lane
+
+> also answer to this: Whether old Hubify AIOS schedules should be paused after the audit. -- yes, definitely it is not associated with our active hubify project at all anymore ... ok please finalize the plan for being the main Director agent of the relevant spawned subagent sessions here in Codex - please ensure you use Terra or Sol Light/Medium not high for these sessions thanks and have the spawned sessions always report back to you on progress as you are the director and ensure they all have goals and report back with the same standards and tracking of everything just like we want to achieve with this youmd etc - and go ahead and give yourself a proper goal for this and launch all subagents thanks - and be sure to take all learnings from this session etc and create or improve related skills and save all new repeatable processes, work, sops, etc we've developed or worked on or improved etc etc
