@@ -92,11 +92,15 @@ export default async function ResearchPage() {
       })}
 
       <Band tone="deep" width="content" id="contributions" close>
-        <PageHeader
-          eyebrow="Contributions"
-          title="What's novel here"
-          lead="Every result the lab claims as its own — what kind of contribution it is, and how novel, ranked on a four-tier scale. Self-claim ceiling is N3 (first-of-kind); N4 (paradigm-shifting) is reserved for outside arbiters and never self-claimed."
-        />
+        <div className="band-head">
+          <p className="eyebrow">Contributions</p>
+          <h2 className="band-title">What&rsquo;s novel here</h2>
+        </div>
+        <p className="band-body" style={{ marginTop: 0, marginBottom: "var(--space-7)" }}>
+          Every result the lab claims as its own — what kind of contribution it is, and how novel,
+          ranked on a four-tier scale. Self-claim ceiling is N3 (first-of-kind); N4
+          (paradigm-shifting) is reserved for outside arbiters and never self-claimed.
+        </p>
         <RowList
           items={contributions.map((c) => ({
             title: c.title,

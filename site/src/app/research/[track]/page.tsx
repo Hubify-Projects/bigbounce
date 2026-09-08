@@ -55,7 +55,7 @@ export default async function TrackPage({
 
   return (
     <>
-      <Band tone="base" width="content">
+      <Band tone="base" width="content" open>
         <PageHeader
           eyebrow={`Research · ${track.navTitle}`}
           title={<MathText>{track.question}</MathText>}
@@ -65,20 +65,17 @@ export default async function TrackPage({
       <Band tone="alt" width="prose">
         <p className="eyebrow">Lead result</p>
         {track.leadEquation && (
-          <p
-            className="mono"
-            style={{ fontSize: 19, textAlign: "center", margin: "16px 0" }}
-          >
+          <p className="claim-line mono">
             <MathText>{track.leadEquation}</MathText>
           </p>
         )}
-        <p style={{ fontSize: 16, lineHeight: 1.65, marginBottom: 12 }}>
-          {track.leadResult}
+        <p className="band-body" style={{ marginTop: 0 }}>{track.leadResult}</p>
+        <p className="claim-grade">
+          <EvidenceChip grade={track.leadGrade} />
         </p>
-        <EvidenceChip grade={track.leadGrade} />
       </Band>
 
-      <Band tone="base" width="content">
+      <Band tone="base" width="wide">
         <p className="eyebrow">Channels &amp; tests</p>
         <DataTable
           columns={[
@@ -105,7 +102,7 @@ export default async function TrackPage({
         />
       </Band>
 
-      <Band tone="alt" width="content">
+      <Band tone="base" width="content" tight>
         <p className="eyebrow">Works in this track</p>
         <RowList
           items={works.map((w) => ({
@@ -117,7 +114,7 @@ export default async function TrackPage({
         />
       </Band>
 
-      <Band tone="base" width="prose">
+      <Band tone="deep" width="prose">
         <p className="eyebrow">What is still open</p>
         <div className="row-list">
           {track.openItems.map((o) => (
@@ -131,9 +128,9 @@ export default async function TrackPage({
         </div>
       </Band>
 
-      <Band tone="deep" width="prose">
+      <Band tone="deep" width="prose" tight close>
         <p className="eyebrow">Boundary</p>
-        <p style={{ fontSize: 15, lineHeight: 1.65 }}>{track.boundary}</p>
+        <p className="band-body" style={{ marginTop: "var(--space-4)" }}>{track.boundary}</p>
       </Band>
     </>
   );
