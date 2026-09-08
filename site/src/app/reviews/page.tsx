@@ -68,7 +68,7 @@ export default async function ReviewsPage() {
 
   return (
     <>
-      <Band>
+      <Band tone="base" width="content" open>
         <PageHeader
           eyebrow="Review activity"
           title="A gate on readiness, not a product"
@@ -77,8 +77,7 @@ export default async function ReviewsPage() {
         />
       </Band>
 
-      <Band tone="alt" width="full" id="grid">
-        <div style={{ maxWidth: "var(--content-width)", margin: "0 auto", padding: "0 24px" }}>
+      <Band tone="alt" width="wide" id="grid">
           <PageHeader
             eyebrow="Verdict grid · newest round left"
             title="External referee verdicts"
@@ -92,23 +91,21 @@ export default async function ReviewsPage() {
             rows={gridRows()}
             maxRounds={10}
           />
-          <p className="row-purpose" style={{ marginTop: 10 }}>
+          <p className="band-note">
             Historical board versions/caps: P1A {cap("paper-1a")}, P1B {cap("paper-1b")}, P2{" "}
             {cap("paper-2")}, P3 {cap("paper-3")}, P4 {cap("paper-4")}, P5 {cap("paper-5")}. The
             live-lineup works (A3, P4′, P1N) are not yet columns in this historical grid — their
             round-by-round evidence is in the timeline below and their readiness is on{" "}
             <Link href="/status">/status</Link>.
           </p>
-        </div>
       </Band>
 
-      <Band id="publication-status">
+      <Band tone="alt" width="content" id="publication-status" tight>
         <PageHeader eyebrow="Publication status" title="What's left before publication" />
         <PublicationStatusWidget status={publicationStatus} livePapers={livePapers} />
       </Band>
 
-      <Band tone="alt" width="full">
-        <div style={{ maxWidth: "var(--content-width)", margin: "0 auto", padding: "0 24px" }}>
+      <Band tone="base" width="content">
           <PageHeader
             eyebrow="Gap and skills"
             title="The review machinery, self-improving"
@@ -121,17 +118,16 @@ export default async function ReviewsPage() {
           <ChartShell title="Skills stack — review patterns + reviewer-prompt rules">
             <SkillsGrowthChart />
           </ChartShell>
-        </div>
       </Band>
 
-      <Band id="timeline">
+      <Band tone="base" width="content" id="timeline" tight close>
         <PageHeader
           eyebrow={`Round timeline · newest first · showing ${ROUNDS_SHOWN}`}
           title="Every round, truth-audit, closure, and skill upgrade"
           lead="One line per event: date, kind, what changed, receipt link. Skill-improvement entries carry a quiet marker."
         />
         <TimelineList entries={timelineEntries()} />
-        <p className="row-purpose" style={{ marginTop: 12 }}>
+        <p className="band-note">
           Full history (append-only, {sortedReviewRounds().length} rounds total) in{" "}
           <a href="https://github.com/Hubify-Projects/bigbounce/blob/main/site/src/data/reviewTimeline.ts">
             reviewTimeline.ts
