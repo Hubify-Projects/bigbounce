@@ -9891,6 +9891,25 @@ export const reviewRounds: ReviewRound[] = [
       { label: "BATCH3_ABORT_NOTE.md", href: `${GH}/pipelines/namaster_proof/blind_test/BATCH3_ABORT_NOTE.md` },
     ],
   },
+  {
+    id: "skill-improvement-2026-09-08-brand-token-sync",
+    kind: "skill-improvement",
+    dateISO: "2026-09-08",
+    title: "Adopted hubify's unified brand tokens with an idempotent, drift-failing sync script",
+    papers: [],
+    summary:
+      "The lab site now consumes hubify's canonical design tokens (packages/brand/tokens.css, per project-context/brand-unification/2026-09-08/BRAND_SYSTEM.md) instead of maintaining its own parallel color/type/space/motion values. New tool: tools/sync_brand_tokens.sh copies the canonical file to site/src/styles/brand.tokens.css and re-applies the lab's single permitted divergence — a deep-teal --accent/--accent-ink/--on-accent — in all three theme scopes (light :root, guarded prefers-color-scheme dark, explicit data-theme=\"dark\"). It is idempotent (a second run with no upstream change is a clean no-op) and fails loudly with a diff, refusing to overwrite, if the checked-in copy has drifted from a fresh rebuild — a --force flag is required to accept the rebuild, so a hand-edit inside the synced region can never be silently clobbered or silently kept. globals.css now @imports the synced file first; legacy custom-property names (--bg, --text, --border, --surface, --text-secondary, --text-tertiary, --font-mono-stack) are aliased onto the canonical tokens instead of being redefined, and a typography-scale utility layer (.text-display through .text-code, .prose at the token's 68ch measure, tabular-nums on table/stat/version-chip surfaces) was added per BRAND_SYSTEM.md SS2.",
+    keyTakeaways: [
+      "One canonical token source (hubify) now governs bigbounce's color/type/space/radii/motion; the lab keeps exactly one documented divergence (teal accent) instead of a full parallel palette.",
+      "tools/sync_brand_tokens.sh is safe-by-default: idempotent on re-run, and it fails loudly (exit 1 + diff) rather than silently overwriting a drifted local copy.",
+      "globals.css aliases legacy variable names onto the new tokens rather than renaming call-sites, so this wave's visual repaint (notably the dark theme moving from a warm near-black to the token's neutral near-black, and accent moving from sage green to teal) required zero component-file edits.",
+    ],
+    links: [
+      { label: "hubify packages/brand/tokens.css", href: "https://github.com/Hubify-Projects/hubify/blob/main/packages/brand/tokens.css" },
+      { label: "tools/sync_brand_tokens.sh", href: `${GH}/tools/sync_brand_tokens.sh` },
+      { label: "site/src/styles/brand.tokens.css", href: `${GH}/site/src/styles/brand.tokens.css` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
@@ -11357,6 +11376,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "a3m-r6-closure-2026-09-05", dateISO: "2026-09-05", patterns: 79, promptRules: 42, tooling: 42, note: "A3M R6 truth-audit closure bundle (v3M.0.13->v3M.0.14): tools/a3m_convex_bump_v3M_0_14.mjs added (routine per-round Convex bump script, same pattern as prior paper bump scripts) -- lands at UTC calendar-day 2026-09-05 due to a -07:00 local-vs-UTC boundary on the commit timestamp (session date 2026-09-04 PT). No new review pattern or prompt rule this wave -- patterns/promptRules/tooling unchanged at 79/42/42; this point exists solely to keep the skills-freshness date-granularity gate current with the newest tools/ commit." },
   { id: "autolog-2026-09-04", dateISO: "2026-09-04", patterns: 79, promptRules: 42, tooling: 42, note: "Auto-logged 9 skill/process/tooling commit(s) since 2026-09-03 (8 bigbounce, 1 scistack): skills-autolog housekeeping; P3 anomaly catalogue v2 data-release doc; A3M v3M.0.12 paperVersion bump + Fig. 1 regeneration with publication labels (directive I6); site redesign /reviews grid + six-lane pattern logging; full-reproduction pass kickoff (directive Q2); SIGW nHz reproducibility manifest (directive Q2); scistack generated skill-index refresh. patterns/promptRules/tooling unchanged — process/doc/science wave, no new catalog entry or standalone tool." },
   { id: "autolog-2026-09-07", dateISO: "2026-09-07", patterns: 79, promptRules: 42, tooling: 44, note: "Auto-logged 2 skill/process/tooling commit(s) since 2026-09-05 (both bigbounce, +2 new tools/ scripts): tools/su_convex_bump_v1S_0_8.mjs and tools/a3m_convex_bump_v3M_0_24.mjs, the routine per-round Convex bump scripts for the A2 lapse-monopole reconciliation wave (paper-su v1S.0.8, A3M v3M.0.24). patterns/promptRules unchanged at 79/42; tooling 42->44." },
+  { id: "brand-tokens-sync-2026-09-08", dateISO: "2026-09-08", patterns: 79, promptRules: 42, tooling: 45, note: "Brand-unification wave: adopted hubify's canonical brand tokens (packages/brand/tokens.css @ commit efef5fc7) as the lab's single color/type/space/motion source. +1 tooling: tools/sync_brand_tokens.sh (44->45) — an idempotent, drift-detecting sync script that copies the canonical file to site/src/styles/brand.tokens.css and re-applies the lab's one permitted divergence (deep teal --accent/--accent-ink/--on-accent per BRAND_SYSTEM.md SS3), failing loudly with a diff instead of silently clobbering hand-edits. globals.css now @imports the synced file first and aliases legacy custom-property names (--bg, --text, --border, --surface, --text-secondary, --text-tertiary, --font-mono-stack) onto the canonical tokens rather than redefining them, plus a typography-scale utility layer (.text-display/.text-h1../.text-code, .prose at 68ch, tabular-nums on table/stat/version-chip surfaces) per SS2. patterns/promptRules unchanged at 79/42." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
