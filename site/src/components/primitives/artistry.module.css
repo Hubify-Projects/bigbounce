@@ -406,3 +406,16 @@
 :global(.breadcrumb-line a:hover) { color: var(--accent-ink); }
 :global(.review-evidence-details > summary) { list-style: none; }
 :global(.review-evidence-details > summary::-webkit-details-marker) { display: none; }
+
+/* Code block — a tool surface (§4), the one place a border is earned. */
+:global(.code-block) {
+  margin-top: var(--space-6);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--tool);
+  font-size: var(--text-code);
+  line-height: var(--lh-code);
+  color: var(--ink-2);
+  overflow-x: auto;
+}
