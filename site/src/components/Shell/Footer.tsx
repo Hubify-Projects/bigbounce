@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { liveStatus } from "@/data/live-status";
-import { Lockup } from "@/components/brand/Lockup";
 
 interface FooterLink {
   label: string;
@@ -66,9 +65,6 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer-inner">
-        <div className="site-footer-lockup" style={{ marginBottom: 24 }}>
-          <Lockup size="lg" href="/" />
-        </div>
         <div className="site-footer-columns">
           {COLUMNS.map((col) => (
             <div key={col.title} className="site-footer-col">

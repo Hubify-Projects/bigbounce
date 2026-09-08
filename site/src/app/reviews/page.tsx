@@ -68,7 +68,7 @@ export default async function ReviewsPage() {
 
   return (
     <>
-      <Band tone="base" width="content" open>
+      <Band>
         <PageHeader
           eyebrow="Review activity"
           title="A gate on readiness, not a product"
@@ -77,16 +77,13 @@ export default async function ReviewsPage() {
         />
       </Band>
 
-      <Band tone="alt" width="wide" id="grid">
-          <div className="band-head">
-            <p className="eyebrow">Verdict grid &middot; newest round left</p>
-            <h2 className="band-title">External referee verdicts</h2>
-          </div>
-          <p className="band-body" style={{ marginTop: 0 }}>
-            Active legs only (directive M-AMENDED): Grok API + Gemini API, plotted against the
-            historical six-paper board. The ChatGPT column is frozen while directive N&rsquo;s
-            Codex/OpenAI pause stands — shown dimmed, never deleted or faked.
-          </p>
+      <Band tone="alt" width="full" id="grid">
+        <div style={{ maxWidth: "var(--content-width)", margin: "0 auto", padding: "0 24px" }}>
+          <PageHeader
+            eyebrow="Verdict grid · newest round left"
+            title="External referee verdicts"
+            lead="Active legs only (directive M-AMENDED): Grok API + Gemini API, plotted against the historical six-paper board. The ChatGPT column is frozen while directive N's Codex/OpenAI pause stands — shown dimmed, never deleted or faked."
+          />
           <AllAMeter />
           <VerdictGrid
             legLabels={[...REVIEWERS]}
@@ -95,32 +92,28 @@ export default async function ReviewsPage() {
             rows={gridRows()}
             maxRounds={10}
           />
-          <p className="band-note">
+          <p className="row-purpose" style={{ marginTop: 10 }}>
             Historical board versions/caps: P1A {cap("paper-1a")}, P1B {cap("paper-1b")}, P2{" "}
             {cap("paper-2")}, P3 {cap("paper-3")}, P4 {cap("paper-4")}, P5 {cap("paper-5")}. The
             live-lineup works (A3, P4′, P1N) are not yet columns in this historical grid — their
             round-by-round evidence is in the timeline below and their readiness is on{" "}
             <Link href="/status">/status</Link>.
           </p>
+        </div>
       </Band>
 
-      <Band tone="alt" width="content" id="publication-status" tight>
-        <div className="band-head">
-          <p className="eyebrow">Publication status</p>
-          <h2 className="band-title">What&rsquo;s left before publication</h2>
-        </div>
+      <Band id="publication-status">
+        <PageHeader eyebrow="Publication status" title="What's left before publication" />
         <PublicationStatusWidget status={publicationStatus} livePapers={livePapers} />
       </Band>
 
-      <Band tone="base" width="content">
-          <div className="band-head">
-            <p className="eyebrow">Gap and skills</p>
-            <h2 className="band-title">The review machinery, self-improving</h2>
-          </div>
-          <p className="band-body" style={{ marginTop: 0 }}>
-            Substantive findings only the external tier caught, and the pattern/prompt-rule
-            catalog those findings get mined into.
-          </p>
+      <Band tone="alt" width="full">
+        <div style={{ maxWidth: "var(--content-width)", margin: "0 auto", padding: "0 24px" }}>
+          <PageHeader
+            eyebrow="Gap and skills"
+            title="The review machinery, self-improving"
+            lead="Substantive findings only the external tier caught, and the pattern/prompt-rule catalog those findings get mined into."
+          />
           <ChartShell title="Internal/external gap — externally-caught findings per round">
             <GapClosureChart />
           </ChartShell>
@@ -128,19 +121,17 @@ export default async function ReviewsPage() {
           <ChartShell title="Skills stack — review patterns + reviewer-prompt rules">
             <SkillsGrowthChart />
           </ChartShell>
+        </div>
       </Band>
 
-      <Band tone="base" width="content" id="timeline" tight close>
-        <div className="band-head">
-          <p className="eyebrow">{`Round timeline · newest first · showing ${ROUNDS_SHOWN}`}</p>
-          <h2 className="band-title">Every round, truth-audit, closure, and skill upgrade</h2>
-        </div>
-        <p className="band-body" style={{ marginTop: 0, marginBottom: "var(--space-7)" }}>
-          One line per event: date, kind, what changed, receipt link. Skill-improvement entries
-          carry a quiet marker.
-        </p>
+      <Band id="timeline">
+        <PageHeader
+          eyebrow={`Round timeline · newest first · showing ${ROUNDS_SHOWN}`}
+          title="Every round, truth-audit, closure, and skill upgrade"
+          lead="One line per event: date, kind, what changed, receipt link. Skill-improvement entries carry a quiet marker."
+        />
         <TimelineList entries={timelineEntries()} />
-        <p className="band-note">
+        <p className="row-purpose" style={{ marginTop: 12 }}>
           Full history (append-only, {sortedReviewRounds().length} rounds total) in{" "}
           <a href="https://github.com/Hubify-Projects/bigbounce/blob/main/site/src/data/reviewTimeline.ts">
             reviewTimeline.ts

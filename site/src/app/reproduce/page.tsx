@@ -253,7 +253,7 @@ export default function ReproducePage() {
 
   return (
     <>
-      <Band tone="base" width="content" open>
+      <Band width="content">
         <PageHeader
           eyebrow="Reproducibility &middot; manifests"
           title="Reproduce this lab"
@@ -265,7 +265,7 @@ export default function ReproducePage() {
         />
       </Band>
 
-      <Band tone="base" width="content" tight>
+      <Band width="content">
         <StatRow
           items={[
             { value: lab.totalPrograms, label: "Research programs" },
@@ -274,7 +274,7 @@ export default function ReproducePage() {
             { value: formatCost(lab.totalEstCostUsd), label: "Est. total reproduction cost" },
           ]}
         />
-        <p className="band-note mono">
+        <p style={{ fontSize: 13.5, color: "var(--ink-3)", marginTop: 16 }} className="mono">
           {lab.needsDataRestore} experiment{lab.needsDataRestore === 1 ? "" : "s"} need a data
           restore before they can run; {lab.superseded} {lab.superseded === 1 ? "is" : "are"}{" "}
           superseded and kept for lineage only, never offered as a live reproduction target.
@@ -288,27 +288,28 @@ export default function ReproducePage() {
         const rows = programExperimentsInDagOrder(program);
 
         return (
-          <Band
-            key={program.id}
-            tone={i % 2 === 0 ? "alt" : "base"}
-            width="wide"
-          >
-            <div className="band-head">
-              <p className="eyebrow">Research program &middot; {program.id}</p>
-              <h2 className="band-title">{program.title}</h2>
-            </div>
-            <p className="band-body" style={{ marginTop: 0 }}>{program.question}</p>
-            <div className="meta-row">
-              <span className="meta-row-item"><span className="meta-row-label">experiments</span><span className="meta-row-value">{rollup.totalExperiments}</span></span>
-              <span className="meta-row-item"><span className="meta-row-label">runnable now</span><span className="meta-row-value">{rollup.runnableNow}</span></span>
-              <span className="meta-row-item"><span className="meta-row-label">full reproduction</span><span className="meta-row-value">{formatCost(rollup.estCostUsd)}</span></span>
-              <span className="meta-row-item"><span className="meta-row-label">wall clock</span><span className="meta-row-value">{rollup.estWallClock}</span></span>
-            </div>
+          <Band key={program.id} tone={i % 2 === 0 ? "alt" : "base"} width="content">
+            <p className="eyebrow">Research program &middot; {program.id}</p>
+            <h2 className="page-header-title" style={{ fontSize: 24 }}>
+              {program.title}
+            </h2>
+            <p style={{ maxWidth: "70ch", color: "var(--ink-2)", marginTop: 8 }}>
+              <strong style={{ color: "var(--ink)" }}>Question:</strong> {program.question}
+            </p>
+            <p className="mono" style={{ fontSize: 12.5, color: "var(--ink-3)", marginTop: 10 }}>
+              {rollup.totalExperiments} experiments &middot; {rollup.runnableNow} runnable now
+              &middot; full reproduction {formatCost(rollup.estCostUsd)} &middot;{" "}
+              {rollup.estWallClock}
+            </p>
 
-            <h3 className="subsection-h3">Experiments &mdash; reproduction order</h3>
+            <h3 style={{ fontSize: 16, marginTop: 28, marginBottom: 10 }}>
+              Experiments &mdash; reproduction order
+            </h3>
             <DataTable columns={experimentColumns} rows={rows} rowKey={(r) => r.experiment.id} />
 
-            <h3 className="subsection-h3">Papers in this program</h3>
+            <h3 style={{ fontSize: 16, marginTop: 28, marginBottom: 10 }}>
+              Papers in this program
+            </h3>
             <DataTable
               columns={[
                 { key: "paper", header: "Work", accessor: (p) => p.title },
@@ -327,7 +328,9 @@ export default function ReproducePage() {
               rowKey={(p, idx) => `${p.paper}-${idx}`}
             />
 
-            <h3 className="subsection-h3">External data sources</h3>
+            <h3 style={{ fontSize: 16, marginTop: 28, marginBottom: 10 }}>
+              External data sources
+            </h3>
             <DataTable
               columns={[
                 { key: "name", header: "Source", accessor: (d) => d.name },
@@ -353,31 +356,40 @@ export default function ReproducePage() {
         );
       })}
 
-      <Band tone="deep" width="wide" id="releases">
-        <div className="band-head">
-          <p className="eyebrow">Archival record</p>
-          <h2 className="band-title">Releases &amp; DOIs</h2>
-        </div>
-        <p className="band-body" style={{ marginTop: 0 }}>
+      <Band width="content" id="releases">
+        <h2 className="page-header-title" style={{ fontSize: 24 }}>
+          Releases &amp; DOIs
+        </h2>
+        <p style={{ maxWidth: "72ch", color: "var(--ink-2)", marginTop: 8 }}>
           Archival records and data mirrors for every work that has one — Zenodo (permanent DOI),
           HuggingFace (dataset mirror), Backblaze B2 (raw-file mirror), and the GitHub source
           repository. A release without a minted DOI yet is cited via its pinned repository commit
           in the meantime, never left uncited.
         </p>
-        <div style={{ marginTop: "var(--space-6)" }}>
+        <div style={{ marginTop: 16 }}>
           <DataTable columns={releaseColumns} rows={RELEASES} rowKey={(r) => r.work} />
         </div>
       </Band>
 
-      <Band tone="deep" width="content" tight close>
-        <div className="band-head">
-          <p className="eyebrow">Getting started</p>
-          <h2 className="band-title">How to run one</h2>
-        </div>
-        <p className="band-body" style={{ marginTop: 0 }}>
+      <Band width="content">
+        <h2 className="page-header-title" style={{ fontSize: 24 }}>
+          How to run one
+        </h2>
+        <p style={{ maxWidth: "72ch", color: "var(--ink-2)", marginTop: 8 }}>
           Every experiment row above names its own entrypoint. In general:
         </p>
-        <pre className="code-block mono">
+        <pre
+          className="mono"
+          style={{
+            marginTop: 12,
+            padding: "16px 20px",
+            border: "1px solid var(--rule)",
+            borderRadius: 4,
+            background: "var(--tool)",
+            fontSize: 13,
+            overflowX: "auto",
+          }}
+        >
 {`git clone https://github.com/Hubify-Projects/bigbounce
 cd bigbounce
 python3 -m venv .venv && source .venv/bin/activate

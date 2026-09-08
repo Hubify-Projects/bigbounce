@@ -112,10 +112,8 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
 
   return (
     <>
-      {/* Title block — journal front matter: kind, title, plain-English
-          purpose line, then a quiet mono metadata row. */}
-      <Band tone="base" width="prose" open>
-        <p className="breadcrumb-line">
+      <Band width="prose">
+        <p className="row-purpose" style={{ marginBottom: 4 }}>
           <Link href="/papers">All works</Link> &rarr; {kind}
         </p>
         <PageHeader
@@ -130,21 +128,23 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
             { label: "target", value: paper.target, mono: true },
           ]}
         />
-        <div className="chip-line">
-          {contributions
-            .filter((c) => c.paperSlugs?.includes(paper.slug))
-            .map((c) => (
-              <span
-                key={c.id}
-                className="evidence-chip evidence-chip-type"
-                title={CONTRIBUTION_TYPE_HINT[c.contributionType]}
-              >
-                <span className="evidence-chip-dot" aria-hidden="true" />
-                {CONTRIBUTION_TYPE_LABEL[c.contributionType]} &middot; {c.tier}
-              </span>
-            ))}
-        </div>
-        <div className="action-row">
+        {contributions
+          .filter((c) => c.paperSlugs?.includes(paper.slug))
+          .map((c) => (
+            <span
+              key={c.id}
+              className="evidence-chip evidence-chip-type"
+              style={{ marginRight: 12 }}
+              title={CONTRIBUTION_TYPE_HINT[c.contributionType]}
+            >
+              <span className="evidence-chip-dot" aria-hidden="true" />
+              {CONTRIBUTION_TYPE_LABEL[c.contributionType]} &middot; {c.tier}
+            </span>
+          ))}
+      </Band>
+
+      <Band width="prose">
+        <div className="page-header-actions" style={{ borderTop: "1px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "12px 0" }}>
           {pdfHref && <a href={pdfHref} target="_blank" rel="noreferrer" className="page-header-action">Read PDF</a>}
           {doiLink && <a href={doiLink.href} target="_blank" rel="noreferrer" className="page-header-action">{doiLink.label.toLowerCase().includes("arxiv") ? "arXiv" : "DOI"}</a>}
           {texArtifact && <a href={texArtifact.href} target="_blank" rel="noreferrer" className="page-header-action">Source .tex</a>}
@@ -153,13 +153,13 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
         </div>
       </Band>
 
-      {/* Abstract and results — one tonal step, read as a single act. */}
-      <Band tone="alt" width="prose">
+      <Band width="prose">
         <h2 className="section-h2">Abstract</h2>
-        <div className="abstract">
-          <p><MathText>{paper.description}</MathText></p>
-        </div>
-        <h3 className="subsection-h3">Result summary</h3>
+        <p className="prose-body"><MathText>{paper.description}</MathText></p>
+      </Band>
+
+      <Band width="prose">
+        <h2 className="section-h2">Result summary</h2>
         <ul className="result-summary-list">
           {paper.keyResults.slice(0, 4).map((r, i) => (
             <li key={i}>
@@ -171,14 +171,13 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
       </Band>
 
       {(inPaperFigures.length > 0 || candidateFigures.length > 0) && (
-        <Band tone="alt" width="content" id="figures" tight>
+        <Band width="prose" id="figures">
           <h2 className="section-h2">Figures</h2>
           <PaperFigureGallery inPaper={inPaperFigures} candidates={candidateFigures} paperNumber={paper.number} />
         </Band>
       )}
 
-      {/* Evidence act — readiness, then the separately-tracked publishing state. */}
-      <Band tone="base" width="prose">
+      <Band width="prose">
         <h2 className="section-h2">Readiness</h2>
         <div className="readiness-line">
           <strong className="readiness-line-value mono">{readiness}%</strong>
@@ -186,31 +185,33 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
             <div className="readiness-line-fill" style={{ width: `${readiness}%` }} />
           </div>
         </div>
-        {openSummary && <p className="band-note mono">{openSummary}</p>}
-        <p className="prose-body">
+        {openSummary && <p className="row-purpose mono">{openSummary}</p>}
+        <p className="row-purpose">
           Readiness is publication readiness only — science, evidence, review convergence,
           packaging, and Houston&rsquo;s final sign-off. Venue and submission are tracked
           separately below, and never subtract from this number (directive P).
         </p>
+      </Band>
 
-        <h3 className="subsection-h3">Publishing</h3>
-        <p className="prose-body">Tracked separately; not part of readiness.</p>
-        <div className="meta-row">
-          <span className="meta-row-item"><span className="meta-row-label">target venue</span><span className="meta-row-value">{paper.target}</span></span>
-          <span className="meta-row-item"><span className="meta-row-label">state</span><span className="meta-row-value">{state}</span></span>
+      <Band width="prose">
+        <h2 className="section-h2">Publishing</h2>
+        <p className="row-purpose">Not part of readiness.</p>
+        <div className="page-header-meta mono" style={{ marginTop: 8 }}>
+          <span className="page-header-meta-item"><span className="page-header-meta-label">target venue</span> {paper.target}</span>
+          <span className="page-header-meta-item"><span className="page-header-meta-label">state</span> {state}</span>
           {live?.houstonSignOff && (
-            <span className="meta-row-item"><span className="meta-row-label">sign-off</span><span className="meta-row-value">{live.houstonSignOff}</span></span>
+            <span className="page-header-meta-item"><span className="page-header-meta-label">sign-off</span> {live.houstonSignOff}</span>
           )}
         </div>
       </Band>
 
       {recentRounds.length > 0 && (
-        <Band tone="base" width="prose" tight>
+        <Band width="prose">
           <details className="review-evidence-details">
             <summary className="section-h2" style={{ cursor: "pointer", display: "inline-block" }}>
               Review evidence ({paperRounds.length} rounds)
             </summary>
-            <div className="row-list">
+            <div className="row-list" style={{ marginTop: 12 }}>
               {recentRounds.map((r) => (
                 <div key={r.id} className="row" style={{ cursor: "default" }}>
                   <span className="row-main">
@@ -221,7 +222,7 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
                 </div>
               ))}
             </div>
-            <p className="band-note">
+            <p className="row-purpose" style={{ marginTop: 8 }}>
               Automated review is a gate on publication readiness, not a product.{" "}
               <Link href={`/reviews?papers=${paperId}`}>Full review timeline &rarr;</Link>
             </p>
@@ -241,7 +242,7 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
       )}
 
       {manifests.length > 0 && (
-        <Band tone="alt" width="prose" id="reproduce">
+        <Band width="prose" id="reproduce">
           <h2 className="section-h2">Reproduce this</h2>
           <div className="row-list">
             {manifests.slice(0, 6).map((m) => (
@@ -257,13 +258,13 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
               </div>
             ))}
           </div>
-          <p className="band-note">
+          <p className="row-purpose" style={{ marginTop: 8 }}>
             <Link href="/reproduce">Full reproduction manifests &rarr;</Link>
           </p>
         </Band>
       )}
 
-      <Band tone="alt" width="prose" close tight>
+      <Band width="prose">
         <h2 className="section-h2">Lineage</h2>
         <p className="prose-body">
           {paper.archivedInto

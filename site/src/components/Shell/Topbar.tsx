@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Moon, Search, Sun, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Lockup } from "@/components/brand/Lockup";
 
 type Theme = "light" | "dark";
 
@@ -90,7 +89,9 @@ export function Topbar() {
 
   return (
     <header className="topbar topbar-slim" ref={headerRef}>
-      <Lockup size="sm" href="/" className="topbar-wordmark" />
+      <Link href="/" className="topbar-wordmark">
+        bigbounce
+      </Link>
       <nav className="topbar-nav" aria-label="Primary">
         {NAV_ITEMS.map((item) => {
           const active = pathname === item.href || pathname.startsWith(`${item.href}/`);

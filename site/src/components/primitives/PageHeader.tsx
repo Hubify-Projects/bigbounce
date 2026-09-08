@@ -21,12 +21,9 @@ export interface PageHeaderProps {
   meta?: MetaItem[];
   actions?: LinkItem[];
   className?: string;
-  /** Heading level for `title`. Defaults to "h1" — pass "h2" for repeated
-   * in-page section headers so a page keeps exactly one h1. */
-  level?: "h1" | "h2";
 }
 
-/** Page/section header — eyebrow, H1 (or H2), one-line lead, mono meta row, text actions. */
+/** Page/section header — eyebrow, H1, one-line lead, mono meta row, text actions. */
 export function PageHeader({
   eyebrow,
   title,
@@ -34,13 +31,11 @@ export function PageHeader({
   meta,
   actions,
   className,
-  level = "h1",
 }: PageHeaderProps) {
-  const Title = level;
   return (
     <header className={cn("page-header", className)}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <Title className="page-header-title">{title}</Title>
+      <h1 className="page-header-title">{title}</h1>
       {lead && <p className="page-header-lead">{lead}</p>}
       {meta && meta.length > 0 && (
         <div className="page-header-meta mono">

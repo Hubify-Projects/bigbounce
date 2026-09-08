@@ -153,7 +153,6 @@ export default async function StatusPage() {
 
       <Band id="signoff">
         <PageHeader
-          level="h2"
           eyebrow="Final review · directive P"
           title="What &ldquo;ready&rdquo; means — five gates per work"
           lead={readinessBreakdownNote}
@@ -197,29 +196,27 @@ export default async function StatusPage() {
         </div>
       </Band>
 
-      <Band tone="alt" close>
-        <PageHeader level="h2" eyebrow="Operations" title="Compute &amp; survey QC" />
-        <div className="widget-row">
-          <p className="row-title mono">Active compute</p>
-          {runningPods.length === 0 ? (
-            <p className="row-purpose">0 pods running · $0/hr. All compute jobs idle.</p>
-          ) : (
-            <StatRow
-              items={runningPods.map((pod) => ({
-                value: `$${pod.hourlyCostUsd.toFixed(2)}/hr`,
-                label: `${pod.name} · ${pod.gpu}`,
-              }))}
-            />
-          )}
-        </div>
-        <div id="surveys" className="widget-row" style={{ marginTop: 24 }}>
-          <p className="row-title mono">Survey QC — legacy survey-pipeline records</p>
-          <p className="row-purpose" style={{ marginBottom: 10 }}>
-            Preserved methodology and archive records. Historic candidate counts are superseded by
-            the current portfolio; no survey result here proves a bounce.
-          </p>
-          <SurveyQcTable />
-        </div>
+      <Band tone="alt">
+        <PageHeader eyebrow="Compute" title="Active compute" />
+        {runningPods.length === 0 ? (
+          <p className="row-purpose">0 pods running · $0/hr. All compute jobs idle.</p>
+        ) : (
+          <StatRow
+            items={runningPods.map((pod) => ({
+              value: `$${pod.hourlyCostUsd.toFixed(2)}/hr`,
+              label: `${pod.name} · ${pod.gpu}`,
+            }))}
+          />
+        )}
+      </Band>
+
+      <Band id="surveys">
+        <PageHeader
+          eyebrow="Legacy survey-pipeline records"
+          title="Survey QC"
+          lead="Preserved methodology and archive records. Historic candidate counts are superseded by the current portfolio; no survey result here proves a bounce."
+        />
+        <SurveyQcTable />
       </Band>
     </>
   );

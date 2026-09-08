@@ -50,13 +50,13 @@ main { max-width: none; padding: 0; }
 /* ── Main Panel ── */
 .main-panel { flex: 1; padding: 24px; overflow-x: auto; min-width: 0; }
 .dataset-header { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-.dataset-header h2 { font-family: var(--font-sans); font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 0 0 6px; letter-spacing: -0.02em; }
+.dataset-header h1 { font-family: var(--font-sans); font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 0 0 6px; letter-spacing: -0.02em; }
 .dataset-header .description { font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); margin: 0 0 12px; line-height: 1.5; }
 .dataset-meta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .dataset-meta-item { font-family: var(--font-sans); font-size: 12px; color: var(--text-tertiary); }
 .dataset-meta-item strong { color: var(--text-secondary); font-weight: 600; }
 .dataset-meta-item .mono-val { font-family: var(--font-mono); font-size: 12px; color: var(--text); font-weight: 500; }
-.status-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.status-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
 .status-badge.frozen { background: #f0fdf4; color: #166534; }
 .status-badge.active-badge { background: #eff6ff; color: #1e40af; }
 .status-badge.ref { background: #fefce8; color: #854d0e; }
@@ -71,7 +71,7 @@ main { max-width: none; padding: 0; }
 .btn:hover { background: var(--bg-subtle); color: var(--text); }
 .btn svg { width: 14px; height: 14px; }
 .pagination { display: flex; align-items: center; gap: 6px; margin-left: auto; }
-.pagination-info { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); }
+.pagination-info { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); }
 
 /* ── Data Table ── */
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
@@ -174,10 +174,10 @@ main { max-width: none; padding: 0; }
 </div>
 
 <main>
-<div class="explorer" data-tool="data-explorer">
+<div class="explorer">
 
 <!-- ═════════════ Left Sidebar ═════════════ -->
-<aside class="de-sidebar" id="sidebar" role="navigation" aria-label="Dataset navigation" data-tool="data-explorer-sidebar">
+<aside class="de-sidebar" id="sidebar" role="navigation" aria-label="Dataset navigation">
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
   <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all six papers. MCMC chains &amp; birefringence checks back Papers 1A/1B; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; the exploratory autoencoder anomaly-detection pipeline (candidate list) underlies Paper 3, which is a public-ID recovery of 181 DESI DR1 TARGETIDs from a frozen historical list (an archive-recovery product, not a detection claim); the 8.47 M-galaxy chirality catalog backs Paper 4 and the DESI void-spiral cross-match backs Paper 5.</div>
 
@@ -237,7 +237,7 @@ main { max-width: none; padding: 0; }
 </aside>
 
 <!-- ═════════════ Main Panel ═════════════ -->
-<div class="main-panel" id="mainPanel" role="main" aria-label="Dataset viewer" data-tool="data-explorer-panel">
+<div class="main-panel" id="mainPanel" role="main" aria-label="Dataset viewer">
   <div id="datasetHeader" class="dataset-header"></div>
   <div id="controlsBar" class="controls-bar">
     <input type="text" class="search-bar" id="searchInput" placeholder="Search across all columns..." oninput="filterRows()" aria-label="Search across all dataset columns">
@@ -2492,7 +2492,7 @@ function selectDataset(key) {
   const rowDisplay = (ds.fullDataUrl && !ds._fullLoaded)
     ? (ds.data.length > 0 ? ds.data.length + ' samples shown \u2014 full dataset has ' + (ds.fullRows || '?').toLocaleString() + ' rows' : 'No rows loaded yet \u2014 full dataset has ' + (ds.fullRows || '?').toLocaleString() + ' rows')
     : (ds.rows || ds.data.length);
-  h.innerHTML = `<h2>${ds.name}</h2><p class="description">${ds.description}</p>
+  h.innerHTML = `<h1>${ds.name}</h1><p class="description">${ds.description}</p>
     <div class="dataset-meta">
       <div class="dataset-meta-item"><strong>Rows:</strong> <span class="mono-val">${rowDisplay}</span></div>
       <div class="dataset-meta-item"><strong>Columns:</strong> <span class="mono-val">${ds.columns.length}</span></div>
@@ -2654,7 +2654,7 @@ function exportCSV() {
 // ══════════════════════════════════════════════════════════════
 function showEquations() {
   const h = document.getElementById('datasetHeader');
-  h.innerHTML = `<h2>Equation Calculators</h2><p class="description">Interactive calculators for key equations in the spin-torsion cosmology framework.</p>`;
+  h.innerHTML = `<h1>Equation Calculators</h1><p class="description">Interactive calculators for key equations in the spin-torsion cosmology framework.</p>`;
   const sp = document.getElementById('specialContent');
   sp.innerHTML = `
   <div class="formula-panel open">
@@ -2794,7 +2794,7 @@ function runCalc(id) {
 // ══════════════════════════════════════════════════════════════
 function showTree() {
   const h = document.getElementById('datasetHeader');
-  h.innerHTML = `<h2>Program Connections</h2><p class="description">Node-tree visualization of the BigBounce research program showing relationships between data, theory, and predictions.</p>`;
+  h.innerHTML = `<h1>Program Connections</h1><p class="description">Node-tree visualization of the BigBounce research program showing relationships between data, theory, and predictions.</p>`;
   const sp = document.getElementById('specialContent');
   sp.innerHTML = `<div class="tree-container">
     <svg class="tree-svg" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">

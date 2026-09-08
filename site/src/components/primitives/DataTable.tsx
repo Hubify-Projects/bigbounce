@@ -37,7 +37,7 @@ export function DataTable<T>({
   emptyLabel = "Nothing to show.",
 }: DataTableProps<T>) {
   return (
-    <div className="data-table-wrap" data-tool="data-table">
+    <div className="data-table-wrap">
       <table className={cn("data-table", dense && "data-table-dense", className)}>
         <thead>
           <tr>

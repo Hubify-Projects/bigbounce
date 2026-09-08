@@ -1,4 +1,3 @@
-@import "../styles/brand.tokens.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -29,8 +28,8 @@
 }
 
 :root {
-  --bg: var(--bg-1);
-  --surface: var(--tool);
+  --bg: #f8f5ef;
+  --surface: #fffdf8;
   --surface-2: #f0ebe2;
   --surface-3: #e4ded2;
   --surface-4: #d7cfbf;
@@ -47,18 +46,19 @@
   --sidebar-hover: rgba(51, 47, 43, 0.055);
   --sidebar-active: rgba(47, 111, 78, 0.13);
   --sidebar-active-text: #20372c;
-  --sidebar-active-icon: var(--accent);
+  --sidebar-active-icon: #2f6f4e;
   --sidebar-rule: rgba(82, 73, 61, 0.14);
-  --border: var(--rule);
+  --border: #ddd4c2;
   --border-subtle: #ebe4d6;
   --border-strong: #c7b99d;
   --border-bright: #9c927e;
-  --text: var(--ink);
-  --text-secondary: var(--ink-2);
-  --text-tertiary: var(--ink-3);
+  --text: #332f2b;
+  --text-secondary: #554c43;
+  --text-tertiary: #7a6d5d;
   --text-muted: #a18f76;
-  --accent-dim: #1e4a44;
-  --accent-bg: rgba(38, 104, 95, 0.12);
+  --accent: #2f6f4e;
+  --accent-dim: #244f39;
+  --accent-bg: rgba(47, 111, 78, 0.12);
   --success: #2f6f4e;
   --warn: #8f6a2f;
   --crit: #8b4639;
@@ -73,22 +73,42 @@
   --model-gemini: #a78bfa;
   --accent-link: var(--text);
   --accent-link-hover: var(--accent-dim);
-  --font-mono-stack: var(--font-mono);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono-stack: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
   --radius: 6px;
   --radius-lg: 8px;
   --radius-xl: 12px;
   --sidebar-w: 247px;
   --topbar-h: 56px;
   --max-width: 1180px;
+  --prose-width: 760px;
   --transition: 140ms ease;
+
+  /* ── §4.2 redesign token layer (2026-09-04, Lane 1 — REDESIGN_SPEC.md) ──
+     Additive: consumed by Shell/Topbar, Shell/Footer, Shell/CommandSearch,
+     and components/primitives/*. Legacy tokens above are unchanged so every
+     existing route keeps rendering until its own lane migrates it. */
+  --bg-1: #f2eee5;
+  --bg-2: #e9e3d7;
+  --tool: var(--surface);
+  --ink: #2b2825;
+  --ink-2: #5b544c;
+  --ink-3: #8a8177;
+  --rule: #ddd6c8;
+  --accent-ink: #215239;
+  --grade-measured: #2f6f4e;
+  --grade-derived: #4b6ea8;
+  --grade-null: #6f7a72;
+  --grade-open: #9a7430;
+  --danger: var(--crit);
+  --content-width: 1120px;
 }
 
 /* Dark mode */
-/* Dark mode — system preference, guarded so an explicit light choice wins. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: var(--bg-1);
-    --surface: var(--tool);
+  :root {
+    --bg: #1a1512;
+    --surface: #211d18;
     --surface-2: #2a251e;
     --surface-3: #343029;
     --surface-4: #403a31;
@@ -105,18 +125,19 @@
     --sidebar-hover: rgba(245, 239, 228, 0.055);
     --sidebar-active: rgba(65, 116, 84, 0.16);
     --sidebar-active-text: #f5efe4;
-    --sidebar-active-icon: var(--accent);
+    --sidebar-active-icon: #6f947b;
     --sidebar-rule: rgba(245, 239, 228, 0.08);
-    --border: var(--rule);
+    --border: #36291f;
     --border-subtle: #2a2018;
     --border-strong: #4a3a2c;
     --border-bright: #6b5746;
-    --text: var(--ink);
-    --text-secondary: var(--ink-2);
-    --text-tertiary: var(--ink-3);
+    --text: #f5efe4;
+    --text-secondary: #d4c8b6;
+    --text-tertiary: #a8957b;
     --text-muted: #6b5d4b;
-    --accent-dim: #395f59;
-    --accent-bg: rgba(95, 176, 164, 0.14);
+    --accent: #5f8a6c;
+    --accent-dim: #3f604b;
+    --accent-bg: rgba(95, 138, 108, 0.14);
     --success: #6f947b;
     --warn: #b8955b;
     --crit: #a66555;
@@ -125,9 +146,29 @@
   }
 }
 
+/* §4.2 redesign token layer — dark, system preference only (guarded so an
+   explicit data-theme="light" choice always wins, per the theme-aware hard
+   rule). Mirrored unconditionally into [data-theme="dark"] below. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-1: #1e1a15;
+    --bg-2: #241f19;
+    --tool: var(--surface);
+    --ink: #ece7dd;
+    --ink-2: #b6aea1;
+    --ink-3: #877f73;
+    --rule: #372f26;
+    --accent-ink: #8fd3ab;
+    --grade-measured: #63b98a;
+    --grade-derived: #7ea3d8;
+    --grade-null: #93a099;
+    --grade-open: #cfa458;
+  }
+}
+
 [data-theme="dark"] {
-  --bg: var(--bg-1);
-  --surface: var(--tool);
+  --bg: #1a1512;
+  --surface: #211d18;
   --surface-2: #2a251e;
   --surface-3: #343029;
   --surface-4: #403a31;
@@ -144,28 +185,44 @@
   --sidebar-hover: rgba(245, 239, 228, 0.055);
   --sidebar-active: rgba(65, 116, 84, 0.16);
   --sidebar-active-text: #f5efe4;
-  --sidebar-active-icon: var(--accent);
+  --sidebar-active-icon: #6f947b;
   --sidebar-rule: rgba(245, 239, 228, 0.08);
-  --border: var(--rule);
+  --border: #36291f;
   --border-subtle: #2a2018;
   --border-strong: #4a3a2c;
   --border-bright: #6b5746;
-  --text: var(--ink);
-  --text-secondary: var(--ink-2);
-  --text-tertiary: var(--ink-3);
+  --text: #f5efe4;
+  --text-secondary: #d4c8b6;
+  --text-tertiary: #a8957b;
   --text-muted: #6b5d4b;
-  --accent-dim: #395f59;
-  --accent-bg: rgba(95, 176, 164, 0.14);
+  --accent: #5f8a6c;
+  --accent-dim: #3f604b;
+  --accent-bg: rgba(95, 138, 108, 0.14);
   --success: #6f947b;
   --warn: #b8955b;
   --crit: #a66555;
   --accent-link: var(--text);
   --accent-link-hover: #ffffff;
+
+  /* §4.2 redesign token layer — dark, explicit toggle (wins over system
+     preference in both directions per the theme-aware hard rule). */
+  --bg-1: #1e1a15;
+  --bg-2: #241f19;
+  --tool: var(--surface);
+  --ink: #ece7dd;
+  --ink-2: #b6aea1;
+  --ink-3: #877f73;
+  --rule: #372f26;
+  --accent-ink: #8fd3ab;
+  --grade-measured: #63b98a;
+  --grade-derived: #7ea3d8;
+  --grade-null: #93a099;
+  --grade-open: #cfa458;
 }
 
 [data-theme="light"] {
-  --bg: var(--bg-1);
-  --surface: var(--tool);
+  --bg: #f8f5ef;
+  --surface: #fffdf8;
   --surface-2: #f0ebe2;
   --surface-3: #e4ded2;
   --surface-4: #d7cfbf;
@@ -182,18 +239,19 @@
   --sidebar-hover: rgba(51, 47, 43, 0.055);
   --sidebar-active: rgba(47, 111, 78, 0.13);
   --sidebar-active-text: #20372c;
-  --sidebar-active-icon: var(--accent);
+  --sidebar-active-icon: #2f6f4e;
   --sidebar-rule: rgba(82, 73, 61, 0.14);
-  --border: var(--rule);
+  --border: #ddd4c2;
   --border-subtle: #ebe4d6;
   --border-strong: #c7b99d;
   --border-bright: #9c927e;
-  --text: var(--ink);
-  --text-secondary: var(--ink-2);
-  --text-tertiary: var(--ink-3);
+  --text: #332f2b;
+  --text-secondary: #554c43;
+  --text-tertiary: #7a6d5d;
   --text-muted: #a18f76;
-  --accent-dim: #1e4a44;
-  --accent-bg: rgba(38, 104, 95, 0.12);
+  --accent: #2f6f4e;
+  --accent-dim: #244f39;
+  --accent-bg: rgba(47, 111, 78, 0.12);
   --success: #2f6f4e;
   --warn: #8f6a2f;
   --crit: #8b4639;
@@ -204,25 +262,6 @@
 /* ── Reset ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-
-/* ── Typography scale utilities (BRAND_SYSTEM.md §2) — apply at the token/
-   utility level, not per-component. Geist Sans/Mono are the only faces
-   (see --font-sans/--font-mono in the synced tokens). ── */
-.text-display { font-size: var(--text-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
-.text-h1 { font-size: var(--text-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); }
-.text-h2 { font-size: var(--text-h2); line-height: var(--lh-h2); letter-spacing: var(--ls-h2); }
-.text-h3 { font-size: var(--text-h3); line-height: var(--lh-h3); letter-spacing: var(--ls-h3); }
-.text-body { font-size: var(--text-body); line-height: var(--lh-body); }
-.text-dense { font-size: var(--text-dense); line-height: var(--lh-dense); }
-.text-small { font-size: var(--text-small); line-height: var(--lh-small); }
-.text-eyebrow { font-size: var(--text-eyebrow); line-height: var(--lh-eyebrow); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; }
-.text-code { font-size: var(--text-code); line-height: var(--lh-code); font-family: var(--font-mono); }
-.prose { max-width: var(--prose-width); }
-
-/* Tabular numerals on data surfaces (§2): tables, stat rows, version chips. */
-table, td, th, .stat-row, .stat-value, .version-chip, [data-numeric] {
-  font-variant-numeric: tabular-nums;
-}
 
 body {
   background:
@@ -2985,9 +3024,9 @@ code {
   width: 100%;
 }
 
-.band-base { background: var(--bg-1); }
-.band-alt { background: var(--bg-2); }
-.band-deep { background: var(--bg-3); }
+.band-base { background: var(--bg); }
+.band-alt { background: var(--bg-1); }
+.band-deep { background: var(--bg-2); }
 
 .band-inner {
   margin: 0 auto;
@@ -3190,7 +3229,6 @@ code {
    joined into one wrapping meta line) instead of scrolling sideways. */
 .data-table-wrap {
   width: 100%;
-  overflow-x: auto;
   border: 1px solid var(--rule);
   border-radius: 4px;
   background: var(--tool);
@@ -3397,7 +3435,7 @@ code {
 
 .site-footer-col-title {
   font-family: var(--font-mono-stack);
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--ink-3);
@@ -3420,11 +3458,9 @@ code {
 .site-footer-links a:hover { color: var(--accent-ink); }
 
 .site-footer-bottom {
-  /* No inner hairline — .site-footer already carries a border-top separating
-     the whole footer from the page above; a second border-top here would be
-     a border-inside-a-border. The two zones (link columns vs. meta row) read
-     apart via spacing alone. */
-  margin-top: 56px;
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
   display: flex;
   flex-wrap: wrap;
   gap: 8px 20px;
@@ -3785,425 +3821,4 @@ code {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   Artistry layer — BRAND_SYSTEM.md §2 (typography), §4 (band
-   system), §5 (motion), §6 (components). Folded in from the former
-   primitives/artistry.css (was imported once by Band.tsx as a
-   workaround) so the whole band/typography system lives in one
-   file. Tokens only — no hex literals.
-   ══════════════════════════════════════════════════════════════ */
-/* ── §4 Band system ───────────────────────────────────────────────── */
-/* Tonal separation was collapsed: base and alt both resolved to --bg-1.
-   Restore the three-tone ramp so transitions do the work borders used to. */
-.band-base { background: var(--bg-1); }
-.band-alt  { background: var(--bg-2); }
-.band-deep { background: var(--bg-3); }
-
-/* Vertical rhythm: --space-9 between bands, generous top-and-tail. */
-.band-inner {
-  padding-top: var(--space-9);
-  padding-bottom: var(--space-9);
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
-}
-.band-width-prose { max-width: var(--prose-width); }
-.band-width-content { max-width: var(--content-width); }
-.band-width-wide { max-width: var(--wide-width); }
-
-/* The opening band of a page breathes wider; the closing band tails out. */
-.band-open .band-inner { padding-top: var(--space-10); }
-.band-close .band-inner { padding-bottom: var(--space-10); }
-/* A band that only continues the idea above it: no re-establishing space. */
-.band-tight .band-inner { padding-top: var(--space-7); }
-
-@media (min-width: 1024px) {
-  .band-inner { padding-left: var(--space-8); padding-right: var(--space-8); }
-}
-@media (max-width: 700px) {
-  .band-inner {
-    padding-top: var(--space-8);
-    padding-bottom: var(--space-8);
-    padding-left: var(--space-6);
-    padding-right: var(--space-6);
-  }
-  .band-open .band-inner { padding-top: var(--space-8); }
-  .band-close .band-inner { padding-bottom: var(--space-9); }
-}
-
-/* ── §2 Typographic hierarchy ─────────────────────────────────────── */
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--text-eyebrow);
-  line-height: var(--lh-eyebrow);
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  font-weight: var(--weight-medium);
-  color: var(--ink-3);
-  margin: 0;
-}
-
-/* One display-level line per page. */
-.display-line {
-  font-size: clamp(2.25rem, 1.35rem + 3.4vw, var(--text-display));
-  line-height: var(--lh-display);
-  letter-spacing: var(--ls-display);
-  font-weight: var(--weight-medium);
-  color: var(--ink);
-  margin: var(--space-5) 0 0;
-  max-width: 18ch;
-  text-wrap: balance;
-}
-
-/* Secondary tier — every band heading below the display line. */
-.band-title {
-  font-size: var(--text-h2);
-  line-height: var(--lh-h2);
-  letter-spacing: var(--ls-h2);
-  font-weight: var(--weight-medium);
-  color: var(--ink);
-  margin: var(--space-4) 0 0;
-  max-width: 34ch;
-  text-wrap: balance;
-}
-
-/* Standfirst / lede — body at prose measure, secondary ink, never bold. */
-.band-lede {
-  font-size: 1.0625rem;
-  line-height: var(--lh-body);
-  font-weight: var(--weight-body);
-  color: var(--ink-2);
-  max-width: var(--prose-width);
-  margin: var(--space-4) 0 0;
-}
-.band-body {
-  font-size: var(--text-body);
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-  max-width: var(--prose-width);
-  margin: var(--space-4) 0 0;
-}
-.band-note {
-  font-size: var(--text-small);
-  line-height: var(--lh-small);
-  color: var(--ink-3);
-  margin: var(--space-5) 0 0;
-}
-.band-body strong, .band-lede strong { font-weight: var(--weight-medium); }
-
-/* Numerals: tabular wherever a value is compared. */
-.stat-row-value,
-.row-right,
-.page-header-meta,
-.readiness-bar-value,
-.meta-row,
-.data-table td.mono,
-.data-table th,
-.verdict-grid-cell,
-.timeline-list-date { font-variant-numeric: tabular-nums; }
-
-/* ── §6 Links — accent on hover, never accent-coloured at rest ────── */
-.band-link {
-  font-size: var(--text-dense);
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 1px;
-  transition: color var(--dur-1) var(--ease-out),
-              border-color var(--dur-1) var(--ease-out);
-}
-.band-link:hover { color: var(--accent-ink); border-bottom-color: var(--accent); }
-.band-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-/* The one restrained accent moment per page. */
-.band-link-accent {
-  color: var(--accent-ink);
-  border-bottom-color: color-mix(in srgb, var(--accent) 45%, transparent);
-  font-weight: var(--weight-medium);
-}
-.band-link-accent:hover { border-bottom-color: var(--accent); }
-
-.link-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4) var(--space-6);
-  margin-top: var(--space-6);
-  align-items: baseline;
-}
-
-/* ── §4 Rules: the only approved separators ──────────────────────── */
-.rule { height: 1px; background: var(--rule); border: 0; margin: var(--space-7) 0; }
-.band-head {
-  padding-bottom: var(--space-5);
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: var(--space-6);
-}
-.band-head .eyebrow + .band-title { margin-top: var(--space-3); }
-
-/* ── §6 Primitives polish ─────────────────────────────────────────── */
-/* StatRow — measured values read as a printed figure line. */
-.stat-row { gap: 0; margin-top: var(--space-2); }
-.stat-row-value {
-  font-size: 1.75rem;
-  font-weight: var(--weight-medium);
-  letter-spacing: -0.012em;
-  line-height: 1.15;
-}
-.stat-row-label {
-  font-size: var(--text-small);
-  line-height: var(--lh-small);
-  color: var(--ink-3);
-  max-width: 24ch;
-}
-.stat-row-item-link {
-  transition: color var(--dur-1) var(--ease-out);
-}
-.stat-row-item-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-
-/* RowList — hairline rows, no per-row frame; hover moves ink, not boxes. */
-.row {
-  padding-top: var(--space-5);
-  padding-bottom: var(--space-5);
-  transition: background-color var(--dur-1) var(--ease-out);
-}
-.row-title {
-  font-size: var(--text-h3);
-  line-height: var(--lh-h3);
-  letter-spacing: var(--ls-h3);
-  font-weight: var(--weight-medium);
-  transition: color var(--dur-1) var(--ease-out);
-}
-.row-purpose {
-  font-size: var(--text-dense);
-  line-height: var(--lh-dense);
-  color: var(--ink-2);
-  max-width: 76ch;
-}
-.row-chips { margin-top: var(--space-3); gap: var(--space-5); }
-.row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-
-/* EvidenceChip — 6px dot + label, calm in both themes; null never red. */
-.evidence-chip {
-  font-family: var(--font-mono);
-  font-size: var(--text-code);
-  line-height: var(--lh-code);
-  letter-spacing: 0.01em;
-  gap: var(--space-3);
-}
-.evidence-chip-dot { width: 6px; height: 6px; border-radius: var(--radius-sm); }
-.evidence-chip-measured { color: var(--grade-measured); }
-.evidence-chip-derived { color: var(--grade-derived); }
-.evidence-chip-null { color: var(--grade-null); }
-.evidence-chip-open { color: var(--grade-open); }
-.evidence-chip-type { color: var(--ink-3); }
-
-/* DataTable — the one bordered surface; hairline, no radius stack. */
-.data-table-wrap { border-radius: var(--radius-md); background: var(--tool); }
-.data-table th {
-  font-family: var(--font-mono);
-  font-size: var(--text-eyebrow);
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  font-weight: var(--weight-strong);
-  color: var(--ink-3);
-  background: var(--bg-2);
-}
-.data-table td { font-size: var(--text-dense); line-height: var(--lh-dense); }
-.data-table tbody tr { transition: background-color var(--dur-1) var(--ease-out); }
-
-/* PageHeader — the journal title block. */
-.page-header { padding-left: 0; padding-right: 0; padding-top: 0; max-width: none; }
-.page-header-title {
-  font-size: var(--text-h1);
-  line-height: var(--lh-h1);
-  letter-spacing: var(--ls-h1);
-  font-weight: var(--weight-medium);
-  margin-top: var(--space-4);
-  max-width: 26ch;
-  text-wrap: balance;
-}
-.page-header-lead {
-  font-size: 1.0625rem;
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-  margin-top: var(--space-5);
-}
-.page-header-meta {
-  font-family: var(--font-mono);
-  font-size: var(--text-code);
-  color: var(--ink-3);
-  margin-top: var(--space-6);
-  gap: var(--space-3) var(--space-6);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--rule);
-}
-.page-header-meta-label {
-  letter-spacing: var(--ls-eyebrow);
-  font-size: 0.6875rem;
-  margin-right: var(--space-3);
-}
-.page-header-actions { margin-top: var(--space-6); border-top: 0; padding-top: 0; gap: var(--space-4) var(--space-6); }
-.page-header-action {
-  font-size: var(--text-dense);
-  color: var(--ink);
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 1px;
-  transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
-}
-.page-header-action:hover { text-decoration: none; color: var(--accent-ink); border-bottom-color: var(--accent); }
-
-/* Meter — one hairline track, no gradient. */
-.readiness-bar-track { height: 3px; border-radius: 0; }
-.readiness-bar-value { font-family: var(--font-mono); color: var(--ink-2); }
-
-/* TimelineList */
-.timeline-list-row { padding: var(--space-4) 0; }
-.timeline-list-date { font-size: var(--text-code); }
-.timeline-list-title { font-size: var(--text-dense); color: var(--ink); }
-
-/* ── Journal page furniture (papers/[slug]) ──────────────────────── */
-.meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-6);
-  font-family: var(--font-mono);
-  font-size: var(--text-code);
-  line-height: var(--lh-code);
-  color: var(--ink-3);
-  padding-top: var(--space-4);
-  margin-top: var(--space-6);
-  border-top: 1px solid var(--rule);
-}
-.meta-row-item { display: inline-flex; align-items: baseline; gap: var(--space-3); min-width: 0; }
-.meta-row-label {
-  font-size: 0.6875rem;
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-.meta-row-value { color: var(--ink-2); overflow-wrap: anywhere; }
-
-/* Abstract sits at measure with a 2px leading rule — the only emphasis marker. */
-.abstract {
-  border-left: 2px solid var(--rule-strong);
-  padding-left: var(--space-6);
-  max-width: var(--prose-width);
-}
-.abstract p {
-  font-size: var(--text-body);
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-  margin: 0;
-}
-
-/* Figures: generous margins, caption in the small tier. */
-.figure-block { margin: var(--space-8) 0; }
-.figure-block-caption {
-  font-size: var(--text-small);
-  line-height: var(--lh-small);
-  color: var(--ink-3);
-  margin-top: var(--space-4);
-  max-width: var(--prose-width);
-}
-
-/* ── §5 Motion ────────────────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .row, .band-link, .row-title,
-  .page-header-action, .data-table tbody tr,
-  .stat-row-item-link { transition-duration: 1ms !important; }
-}
-
-/* ── The single claim line (home, track pages) ────────────────────── */
-.claim-line {
-  font-family: var(--font-mono);
-  font-size: 1.375rem;
-  line-height: 1.45;
-  letter-spacing: -0.01em;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink);
-  margin: var(--space-7) 0 var(--space-6);
-  padding-left: var(--space-6);
-  border-left: 2px solid var(--accent);
-  max-width: var(--prose-width);
-}
-.claim-grade { margin: var(--space-5) 0 0; }
-
-/* A supporting stat line, subordinate to the band's own numbers. */
-.stat-row-quiet { margin-top: var(--space-7); }
-.stat-row-quiet .stat-row-value { font-size: 1.25rem; }
-
-@media (max-width: 700px) {
-  .claim-line { font-size: 1.0625rem; padding-left: var(--space-5); }
-}
-
-/* ── Journal page (papers/[slug]) ─────────────────────────────────── */
-.section-h2 {
-  font-size: var(--text-h2);
-  line-height: var(--lh-h2);
-  letter-spacing: var(--ls-h2);
-  font-weight: var(--weight-medium);
-  color: var(--ink);
-  margin: 0 0 var(--space-5);
-}
-.section-h2 + .prose-body { margin-top: 0; }
-.prose-body {
-  font-size: var(--text-body);
-  line-height: var(--lh-body);
-  color: var(--ink-2);
-  max-width: var(--prose-width);
-}
-.subsection-h3 {
-  font-size: var(--text-h3);
-  line-height: var(--lh-h3);
-  letter-spacing: var(--ls-h3);
-  font-weight: var(--weight-medium);
-  color: var(--ink);
-  margin: var(--space-8) 0 var(--space-5);
-}
-.result-summary-list li { font-size: var(--text-body); line-height: var(--lh-body); }
-.readiness-line-value {
-  font-size: var(--text-h2);
-  font-weight: var(--weight-medium);
-  font-variant-numeric: tabular-nums;
-}
-.readiness-line-track { height: 3px; }
-
-/* The paper's action row — one hairline above, never a boxed strip. */
-.action-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4) var(--space-6);
-  margin-top: var(--space-7);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--rule);
-}
-.chip-line {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-6);
-  margin-top: var(--space-6);
-}
-.breadcrumb-line {
-  font-family: var(--font-mono);
-  font-size: var(--text-code);
-  color: var(--ink-3);
-  margin: 0 0 var(--space-6);
-}
-.breadcrumb-line a { color: var(--ink-2); text-decoration: none; }
-.breadcrumb-line a:hover { color: var(--accent-ink); }
-.review-evidence-details > summary { list-style: none; }
-.review-evidence-details > summary::-webkit-details-marker { display: none; }
-
-/* Code block — a tool surface (§4), the one place a border is earned. */
-.code-block {
-  margin-top: var(--space-6);
-  padding: var(--space-5) var(--space-6);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-md);
-  background: var(--tool);
-  font-size: var(--text-code);
-  line-height: var(--lh-code);
-  color: var(--ink-2);
-  overflow-x: auto;
 }

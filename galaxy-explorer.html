@@ -248,7 +248,7 @@
 </style>
 </head>
 <body>
-<main class="wide-container" data-tool="galaxy-explorer">
+<main class="wide-container">
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <div class="hero">
@@ -266,7 +266,7 @@
 <!-- ═══════════════════════════════ FILTER PANEL ═══════════════════════════════ -->
 <h2>Filter Galaxies</h2>
 
-<div class="gx-filters" data-tool="galaxy-filter-panel">
+<div class="gx-filters">
   <div class="gx-filter-group">
     <label for="gx-class-filter">Classification</label>
     <select id="gx-class-filter">
@@ -333,7 +333,7 @@
   Schema extension (add ra/dec + reimport) is queued as a follow-up.
 </div>
 
-<div class="gx-table-wrap" data-tool="galaxy-results-table">
+<div class="gx-table-wrap">
   <table class="gx-table" id="gx-results-table">
     <thead>
       <tr>
@@ -731,12 +731,13 @@
   </div>
 </div>
 
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
 
 </main>
 
 <!-- ═══════════════════════ GALAXY DETAIL PANEL ═══════════════════════ -->
 <div class="gx-panel-backdrop" id="gxPanelBackdrop"></div>
-<div class="gx-panel" id="gxPanel" data-tool="galaxy-detail-panel">
+<div class="gx-panel" id="gxPanel">
   <div class="gx-panel-header">
     <h3 id="gxPanelTitle">Galaxy Detail</h3>
     <button class="gx-panel-close" id="gxPanelClose">ESC &times;</button>
@@ -749,11 +750,9 @@
 // Confidence slider
 var confSlider = document.getElementById('gx-confidence');
 var confVal = document.getElementById('gx-conf-val');
-if (confSlider && confVal) {
-  confSlider.addEventListener('input', function() {
-    confVal.textContent = parseFloat(this.value).toFixed(2);
-  });
-}
+confSlider.addEventListener('input', function() {
+  confVal.textContent = parseFloat(this.value).toFixed(2);
+});
 
 // ── Placeholder data ──
 // 20 sample galaxies with realistic coordinates and probabilities
