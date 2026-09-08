@@ -10,7 +10,10 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HUBIFY_BRAND="/Users/houstongolden/Desktop/CODE_YOU/hubify/packages/brand/tokens.css"
 DEST="$REPO_ROOT/site/src/styles/brand.tokens.css"
 FORCE="${1:-}"
-SOURCE_COMMIT="$(git -C "$(dirname "$HUBIFY_BRAND")" rev-parse --short=8 HEAD 2>/dev/null || echo unknown)"
+HUBIFY_REPO_ROOT="$(git -C "$(dirname "$HUBIFY_BRAND")" rev-parse --show-toplevel 2>/dev/null || echo "")"
+# Stamp the commit that last touched the tokens file itself, not whatever
+# commit happens to be checked out in the hubify worktree.
+SOURCE_COMMIT="$(git -C "$HUBIFY_REPO_ROOT" log -1 --format=%h -- packages/brand/tokens.css 2>/dev/null || echo unknown)"
 
 [[ -f "$HUBIFY_BRAND" ]] || { echo "FAIL: canonical token file not found at $HUBIFY_BRAND" >&2; exit 1; }
 
