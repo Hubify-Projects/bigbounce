@@ -1,8 +1,8 @@
 import type { ElementType, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-// Artistry layer (BRAND_SYSTEM.md §2/§4/§5/§6). Authored in :global() so it
+// Artistry layer (BRAND_SYSTEM.md §2/§4/§5/§6). A global sheet so it
 // composes over the primitive classes without owning globals.css.
-import "./artistry.module.css";
+import "./artistry.css";
 
 export type BandTone = "base" | "alt" | "deep";
 export type BandWidth = "prose" | "content" | "wide" | "full";

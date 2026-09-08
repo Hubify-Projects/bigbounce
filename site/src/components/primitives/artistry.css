@@ -1,51 +1,52 @@
 /* ─────────────────────────────────────────────────────────────────────
    Artistry layer — BRAND_SYSTEM.md §2 (typography), §4 (band system),
-   §5 (motion), §6 (components). Scoped as a CSS module but authored
-   entirely in :global() so it composes over the primitive classes in
-   globals.css without owning that file. Imported once by Band.tsx.
+   §5 (motion), §6 (components). A plain global sheet, imported once by
+   Band.tsx (the App Router allows global CSS from any component), so it
+   composes over the primitive classes in globals.css without owning that
+   file.
    Tokens only — no hex literals.
    ───────────────────────────────────────────────────────────────── */
 
 /* ── §4 Band system ───────────────────────────────────────────────── */
 /* Tonal separation was collapsed: base and alt both resolved to --bg-1.
    Restore the three-tone ramp so transitions do the work borders used to. */
-:global(.band-base) { background: var(--bg-1); }
-:global(.band-alt)  { background: var(--bg-2); }
-:global(.band-deep) { background: var(--bg-3); }
+.band-base { background: var(--bg-1); }
+.band-alt  { background: var(--bg-2); }
+.band-deep { background: var(--bg-3); }
 
 /* Vertical rhythm: --space-9 between bands, generous top-and-tail. */
-:global(.band-inner) {
+.band-inner {
   padding-top: var(--space-9);
   padding-bottom: var(--space-9);
   padding-left: var(--space-6);
   padding-right: var(--space-6);
 }
-:global(.band-width-prose) { max-width: var(--prose-width); }
-:global(.band-width-content) { max-width: var(--content-width); }
-:global(.band-width-wide) { max-width: var(--wide-width); }
+.band-width-prose { max-width: var(--prose-width); }
+.band-width-content { max-width: var(--content-width); }
+.band-width-wide { max-width: var(--wide-width); }
 
 /* The opening band of a page breathes wider; the closing band tails out. */
-:global(.band-open .band-inner) { padding-top: var(--space-10); }
-:global(.band-close .band-inner) { padding-bottom: var(--space-10); }
+.band-open .band-inner { padding-top: var(--space-10); }
+.band-close .band-inner { padding-bottom: var(--space-10); }
 /* A band that only continues the idea above it: no re-establishing space. */
-:global(.band-tight .band-inner) { padding-top: var(--space-7); }
+.band-tight .band-inner { padding-top: var(--space-7); }
 
 @media (min-width: 1024px) {
-  :global(.band-inner) { padding-left: var(--space-8); padding-right: var(--space-8); }
+  .band-inner { padding-left: var(--space-8); padding-right: var(--space-8); }
 }
 @media (max-width: 700px) {
-  :global(.band-inner) {
+  .band-inner {
     padding-top: var(--space-8);
     padding-bottom: var(--space-8);
     padding-left: var(--space-6);
     padding-right: var(--space-6);
   }
-  :global(.band-open .band-inner) { padding-top: var(--space-8); }
-  :global(.band-close .band-inner) { padding-bottom: var(--space-9); }
+  .band-open .band-inner { padding-top: var(--space-8); }
+  .band-close .band-inner { padding-bottom: var(--space-9); }
 }
 
 /* ── §2 Typographic hierarchy ─────────────────────────────────────── */
-:global(.eyebrow) {
+.eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-eyebrow);
   line-height: var(--lh-eyebrow);
@@ -57,7 +58,7 @@
 }
 
 /* One display-level line per page. */
-:global(.display-line) {
+.display-line {
   font-size: clamp(2.25rem, 1.35rem + 3.4vw, var(--text-display));
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
@@ -69,7 +70,7 @@
 }
 
 /* Secondary tier — every band heading below the display line. */
-:global(.band-title) {
+.band-title {
   font-size: var(--text-h2);
   line-height: var(--lh-h2);
   letter-spacing: var(--ls-h2);
@@ -81,7 +82,7 @@
 }
 
 /* Standfirst / lede — body at prose measure, secondary ink, never bold. */
-:global(.band-lede) {
+.band-lede {
   font-size: 1.0625rem;
   line-height: var(--lh-body);
   font-weight: var(--weight-body);
@@ -89,34 +90,34 @@
   max-width: var(--prose-width);
   margin: var(--space-4) 0 0;
 }
-:global(.band-body) {
+.band-body {
   font-size: var(--text-body);
   line-height: var(--lh-body);
   color: var(--ink-2);
   max-width: var(--prose-width);
   margin: var(--space-4) 0 0;
 }
-:global(.band-note) {
+.band-note {
   font-size: var(--text-small);
   line-height: var(--lh-small);
   color: var(--ink-3);
   margin: var(--space-5) 0 0;
 }
-:global(.band-body strong), :global(.band-lede strong) { font-weight: var(--weight-medium); }
+.band-body strong, .band-lede strong { font-weight: var(--weight-medium); }
 
 /* Numerals: tabular wherever a value is compared. */
-:global(.stat-row-value),
-:global(.row-right),
-:global(.page-header-meta),
-:global(.readiness-bar-value),
-:global(.meta-row),
-:global(.data-table td.mono),
-:global(.data-table th),
-:global(.verdict-grid-cell),
-:global(.timeline-list-date) { font-variant-numeric: tabular-nums; }
+.stat-row-value,
+.row-right,
+.page-header-meta,
+.readiness-bar-value,
+.meta-row,
+.data-table td.mono,
+.data-table th,
+.verdict-grid-cell,
+.timeline-list-date { font-variant-numeric: tabular-nums; }
 
 /* ── §6 Links — accent on hover, never accent-coloured at rest ────── */
-:global(.band-link) {
+.band-link {
   font-size: var(--text-dense);
   color: var(--ink);
   text-decoration: none;
@@ -125,18 +126,18 @@
   transition: color var(--dur-1) var(--ease-out),
               border-color var(--dur-1) var(--ease-out);
 }
-:global(.band-link:hover) { color: var(--accent-ink); border-bottom-color: var(--accent); }
-:global(.band-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.band-link:hover { color: var(--accent-ink); border-bottom-color: var(--accent); }
+.band-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* The one restrained accent moment per page. */
-:global(.band-link-accent) {
+.band-link-accent {
   color: var(--accent-ink);
   border-bottom-color: color-mix(in srgb, var(--accent) 45%, transparent);
   font-weight: var(--weight-medium);
 }
-:global(.band-link-accent:hover) { border-bottom-color: var(--accent); }
+.band-link-accent:hover { border-bottom-color: var(--accent); }
 
-:global(.link-row) {
+.link-row {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4) var(--space-6);
@@ -145,74 +146,74 @@
 }
 
 /* ── §4 Rules: the only approved separators ──────────────────────── */
-:global(.rule) { height: 1px; background: var(--rule); border: 0; margin: var(--space-7) 0; }
-:global(.band-head) {
+.rule { height: 1px; background: var(--rule); border: 0; margin: var(--space-7) 0; }
+.band-head {
   padding-bottom: var(--space-5);
   border-bottom: 1px solid var(--rule);
   margin-bottom: var(--space-6);
 }
-:global(.band-head .eyebrow + .band-title) { margin-top: var(--space-3); }
+.band-head .eyebrow + .band-title { margin-top: var(--space-3); }
 
 /* ── §6 Primitives polish ─────────────────────────────────────────── */
 /* StatRow — measured values read as a printed figure line. */
-:global(.stat-row) { gap: 0; margin-top: var(--space-2); }
-:global(.stat-row-value) {
+.stat-row { gap: 0; margin-top: var(--space-2); }
+.stat-row-value {
   font-size: 1.75rem;
   font-weight: var(--weight-medium);
   letter-spacing: -0.012em;
   line-height: 1.15;
 }
-:global(.stat-row-label) {
+.stat-row-label {
   font-size: var(--text-small);
   line-height: var(--lh-small);
   color: var(--ink-3);
   max-width: 24ch;
 }
-:global(.stat-row-item-link) {
+.stat-row-item-link {
   transition: color var(--dur-1) var(--ease-out);
 }
-:global(.stat-row-item-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 4px; }
+.stat-row-item-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 /* RowList — hairline rows, no per-row frame; hover moves ink, not boxes. */
-:global(.row) {
+.row {
   padding-top: var(--space-5);
   padding-bottom: var(--space-5);
   transition: background-color var(--dur-1) var(--ease-out);
 }
-:global(.row-title) {
+.row-title {
   font-size: var(--text-h3);
   line-height: var(--lh-h3);
   letter-spacing: var(--ls-h3);
   font-weight: var(--weight-medium);
   transition: color var(--dur-1) var(--ease-out);
 }
-:global(.row-purpose) {
+.row-purpose {
   font-size: var(--text-dense);
   line-height: var(--lh-dense);
   color: var(--ink-2);
   max-width: 76ch;
 }
-:global(.row-chips) { margin-top: var(--space-3); gap: var(--space-5); }
-:global(.row:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
+.row-chips { margin-top: var(--space-3); gap: var(--space-5); }
+.row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
 /* EvidenceChip — 6px dot + label, calm in both themes; null never red. */
-:global(.evidence-chip) {
+.evidence-chip {
   font-family: var(--font-mono);
   font-size: var(--text-code);
   line-height: var(--lh-code);
   letter-spacing: 0.01em;
   gap: var(--space-3);
 }
-:global(.evidence-chip-dot) { width: 6px; height: 6px; border-radius: var(--radius-sm); }
-:global(.evidence-chip-measured) { color: var(--grade-measured); }
-:global(.evidence-chip-derived) { color: var(--grade-derived); }
-:global(.evidence-chip-null) { color: var(--grade-null); }
-:global(.evidence-chip-open) { color: var(--grade-open); }
-:global(.evidence-chip-type) { color: var(--ink-3); }
+.evidence-chip-dot { width: 6px; height: 6px; border-radius: var(--radius-sm); }
+.evidence-chip-measured { color: var(--grade-measured); }
+.evidence-chip-derived { color: var(--grade-derived); }
+.evidence-chip-null { color: var(--grade-null); }
+.evidence-chip-open { color: var(--grade-open); }
+.evidence-chip-type { color: var(--ink-3); }
 
 /* DataTable — the one bordered surface; hairline, no radius stack. */
-:global(.data-table-wrap) { border-radius: var(--radius-md); background: var(--tool); }
-:global(.data-table th) {
+.data-table-wrap { border-radius: var(--radius-md); background: var(--tool); }
+.data-table th {
   font-family: var(--font-mono);
   font-size: var(--text-eyebrow);
   letter-spacing: var(--ls-eyebrow);
@@ -221,12 +222,12 @@
   color: var(--ink-3);
   background: var(--bg-2);
 }
-:global(.data-table td) { font-size: var(--text-dense); line-height: var(--lh-dense); }
-:global(.data-table tbody tr) { transition: background-color var(--dur-1) var(--ease-out); }
+.data-table td { font-size: var(--text-dense); line-height: var(--lh-dense); }
+.data-table tbody tr { transition: background-color var(--dur-1) var(--ease-out); }
 
 /* PageHeader — the journal title block. */
-:global(.page-header) { padding-left: 0; padding-right: 0; padding-top: 0; max-width: none; }
-:global(.page-header-title) {
+.page-header { padding-left: 0; padding-right: 0; padding-top: 0; max-width: none; }
+.page-header-title {
   font-size: var(--text-h1);
   line-height: var(--lh-h1);
   letter-spacing: var(--ls-h1);
@@ -235,13 +236,13 @@
   max-width: 26ch;
   text-wrap: balance;
 }
-:global(.page-header-lead) {
+.page-header-lead {
   font-size: 1.0625rem;
   line-height: var(--lh-body);
   color: var(--ink-2);
   margin-top: var(--space-5);
 }
-:global(.page-header-meta) {
+.page-header-meta {
   font-family: var(--font-mono);
   font-size: var(--text-code);
   color: var(--ink-3);
@@ -250,32 +251,32 @@
   padding-top: var(--space-4);
   border-top: 1px solid var(--rule);
 }
-:global(.page-header-meta-label) {
+.page-header-meta-label {
   letter-spacing: var(--ls-eyebrow);
   font-size: 0.6875rem;
   margin-right: var(--space-3);
 }
-:global(.page-header-actions) { margin-top: var(--space-6); border-top: 0; padding-top: 0; gap: var(--space-4) var(--space-6); }
-:global(.page-header-action) {
+.page-header-actions { margin-top: var(--space-6); border-top: 0; padding-top: 0; gap: var(--space-4) var(--space-6); }
+.page-header-action {
   font-size: var(--text-dense);
   color: var(--ink);
   border-bottom: 1px solid var(--rule-strong);
   padding-bottom: 1px;
   transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
 }
-:global(.page-header-action:hover) { text-decoration: none; color: var(--accent-ink); border-bottom-color: var(--accent); }
+.page-header-action:hover { text-decoration: none; color: var(--accent-ink); border-bottom-color: var(--accent); }
 
 /* Meter — one hairline track, no gradient. */
-:global(.readiness-bar-track) { height: 3px; border-radius: 0; }
-:global(.readiness-bar-value) { font-family: var(--font-mono); color: var(--ink-2); }
+.readiness-bar-track { height: 3px; border-radius: 0; }
+.readiness-bar-value { font-family: var(--font-mono); color: var(--ink-2); }
 
 /* TimelineList */
-:global(.timeline-list-row) { padding: var(--space-4) 0; }
-:global(.timeline-list-date) { font-size: var(--text-code); }
-:global(.timeline-list-title) { font-size: var(--text-dense); color: var(--ink); }
+.timeline-list-row { padding: var(--space-4) 0; }
+.timeline-list-date { font-size: var(--text-code); }
+.timeline-list-title { font-size: var(--text-dense); color: var(--ink); }
 
 /* ── Journal page furniture (papers/[slug]) ──────────────────────── */
-:global(.meta-row) {
+.meta-row {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3) var(--space-6);
@@ -287,22 +288,22 @@
   margin-top: var(--space-6);
   border-top: 1px solid var(--rule);
 }
-:global(.meta-row-item) { display: inline-flex; align-items: baseline; gap: var(--space-3); min-width: 0; }
-:global(.meta-row-label) {
+.meta-row-item { display: inline-flex; align-items: baseline; gap: var(--space-3); min-width: 0; }
+.meta-row-label {
   font-size: 0.6875rem;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
   color: var(--ink-3);
 }
-:global(.meta-row-value) { color: var(--ink-2); overflow-wrap: anywhere; }
+.meta-row-value { color: var(--ink-2); overflow-wrap: anywhere; }
 
 /* Abstract sits at measure with a 2px leading rule — the only emphasis marker. */
-:global(.abstract) {
+.abstract {
   border-left: 2px solid var(--rule-strong);
   padding-left: var(--space-6);
   max-width: var(--prose-width);
 }
-:global(.abstract p) {
+.abstract p {
   font-size: var(--text-body);
   line-height: var(--lh-body);
   color: var(--ink-2);
@@ -310,8 +311,8 @@
 }
 
 /* Figures: generous margins, caption in the small tier. */
-:global(.figure-block) { margin: var(--space-8) 0; }
-:global(.figure-block-caption) {
+.figure-block { margin: var(--space-8) 0; }
+.figure-block-caption {
   font-size: var(--text-small);
   line-height: var(--lh-small);
   color: var(--ink-3);
@@ -321,13 +322,13 @@
 
 /* ── §5 Motion ────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  :global(.row), :global(.band-link), :global(.row-title),
-  :global(.page-header-action), :global(.data-table tbody tr),
-  :global(.stat-row-item-link) { transition-duration: 1ms !important; }
+  .row, .band-link, .row-title,
+  .page-header-action, .data-table tbody tr,
+  .stat-row-item-link { transition-duration: 1ms !important; }
 }
 
 /* ── The single claim line (home, track pages) ────────────────────── */
-:global(.claim-line) {
+.claim-line {
   font-family: var(--font-mono);
   font-size: 1.375rem;
   line-height: 1.45;
@@ -339,18 +340,18 @@
   border-left: 2px solid var(--accent);
   max-width: var(--prose-width);
 }
-:global(.claim-grade) { margin: var(--space-5) 0 0; }
+.claim-grade { margin: var(--space-5) 0 0; }
 
 /* A supporting stat line, subordinate to the band's own numbers. */
-:global(.stat-row-quiet) { margin-top: var(--space-7); }
-:global(.stat-row-quiet .stat-row-value) { font-size: 1.25rem; }
+.stat-row-quiet { margin-top: var(--space-7); }
+.stat-row-quiet .stat-row-value { font-size: 1.25rem; }
 
 @media (max-width: 700px) {
-  :global(.claim-line) { font-size: 1.0625rem; padding-left: var(--space-5); }
+  .claim-line { font-size: 1.0625rem; padding-left: var(--space-5); }
 }
 
 /* ── Journal page (papers/[slug]) ─────────────────────────────────── */
-:global(.section-h2) {
+.section-h2 {
   font-size: var(--text-h2);
   line-height: var(--lh-h2);
   letter-spacing: var(--ls-h2);
@@ -358,14 +359,14 @@
   color: var(--ink);
   margin: 0 0 var(--space-5);
 }
-:global(.section-h2 + .prose-body) { margin-top: 0; }
-:global(.prose-body) {
+.section-h2 + .prose-body { margin-top: 0; }
+.prose-body {
   font-size: var(--text-body);
   line-height: var(--lh-body);
   color: var(--ink-2);
   max-width: var(--prose-width);
 }
-:global(.subsection-h3) {
+.subsection-h3 {
   font-size: var(--text-h3);
   line-height: var(--lh-h3);
   letter-spacing: var(--ls-h3);
@@ -373,16 +374,16 @@
   color: var(--ink);
   margin: var(--space-8) 0 var(--space-5);
 }
-:global(.result-summary-list li) { font-size: var(--text-body); line-height: var(--lh-body); }
-:global(.readiness-line-value) {
+.result-summary-list li { font-size: var(--text-body); line-height: var(--lh-body); }
+.readiness-line-value {
   font-size: var(--text-h2);
   font-weight: var(--weight-medium);
   font-variant-numeric: tabular-nums;
 }
-:global(.readiness-line-track) { height: 3px; }
+.readiness-line-track { height: 3px; }
 
 /* The paper's action row — one hairline above, never a boxed strip. */
-:global(.action-row) {
+.action-row {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4) var(--space-6);
@@ -390,25 +391,25 @@
   padding-top: var(--space-5);
   border-top: 1px solid var(--rule);
 }
-:global(.chip-line) {
+.chip-line {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3) var(--space-6);
   margin-top: var(--space-6);
 }
-:global(.breadcrumb-line) {
+.breadcrumb-line {
   font-family: var(--font-mono);
   font-size: var(--text-code);
   color: var(--ink-3);
   margin: 0 0 var(--space-6);
 }
-:global(.breadcrumb-line a) { color: var(--ink-2); text-decoration: none; }
-:global(.breadcrumb-line a:hover) { color: var(--accent-ink); }
-:global(.review-evidence-details > summary) { list-style: none; }
-:global(.review-evidence-details > summary::-webkit-details-marker) { display: none; }
+.breadcrumb-line a { color: var(--ink-2); text-decoration: none; }
+.breadcrumb-line a:hover { color: var(--accent-ink); }
+.review-evidence-details > summary { list-style: none; }
+.review-evidence-details > summary::-webkit-details-marker { display: none; }
 
 /* Code block — a tool surface (§4), the one place a border is earned. */
-:global(.code-block) {
+.code-block {
   margin-top: var(--space-6);
   padding: var(--space-5) var(--space-6);
   border: 1px solid var(--rule);
