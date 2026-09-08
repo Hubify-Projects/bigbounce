@@ -1,9 +1,7 @@
-/* ─────────────────────────────────────────────────────────────────────────
-   SYNCED COPY — DO NOT EDIT HERE.
-   Source: hubify/packages/brand/tokens.css @ commit efef5fc7
+/* ── SYNCED COPY — DO NOT EDIT HERE. ─────────────────────────────────
+   Source: hubify/packages/brand/tokens.css @ commit eec66f89
    Synced: 2026-09-08 via bigbounce/tools/sync_brand_tokens.sh
-   Edit the canonical file in the hubify repo and re-run the sync script.
-   ───────────────────────────────────────────────────────────────────────── */
+   Edit the canonical file in hubify and re-run this script. ── */
 
 /* ─────────────────────────────────────────────────────────────────────────
    Hubify Brand Tokens — SINGLE SOURCE OF TRUTH
@@ -178,27 +176,9 @@
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   BigBounce Lab differentiator (the ONE allowed divergence)
-   Deep teal accent per BRAND_SYSTEM.md §3 — overrides --accent, --accent-ink,
-   --on-accent in all three theme scopes. Nothing else may diverge here.
-   ───────────────────────────────────────────────────────────────────────── */
-:root {
-  --accent: #26685f;
-  --accent-ink: #1b4f48;
-  --on-accent: #f8f6f0;
-}
-
+/* ── BigBounce Lab differentiator (the ONE allowed divergence) ── */
+:root { --accent: #26685f; --accent-ink: #1b4f48; --on-accent: #f8f6f0; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --accent: #5fb0a4;
-    --accent-ink: #84d2c6;
-    --on-accent: #0a0a0a;
-  }
+  :root:not([data-theme="light"]) { --accent: #5fb0a4; --accent-ink: #84d2c6; --on-accent: #0a0a0a; }
 }
-
-:root[data-theme="dark"] {
-  --accent: #5fb0a4;
-  --accent-ink: #84d2c6;
-  --on-accent: #0a0a0a;
-}
+:root[data-theme="dark"] { --accent: #5fb0a4; --accent-ink: #84d2c6; --on-accent: #0a0a0a; }
