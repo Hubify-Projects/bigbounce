@@ -24,7 +24,7 @@ export default async function ResearchPage() {
 
   return (
     <>
-      <Band tone="base" width="content">
+      <Band tone="base" width="content" open>
         <PageHeader
           eyebrow="Research"
           title="Three questions, three lead results"
@@ -32,7 +32,7 @@ export default async function ResearchPage() {
         />
       </Band>
 
-      {tracks.map((track) => {
+      {tracks.map((track, i) => {
         const works = track.paperSlugs
           .map((slug) => {
             const stat = getPaperBySlug(slug);
@@ -50,21 +50,29 @@ export default async function ResearchPage() {
         const lead = works[0];
 
         return (
-          <Band tone="alt" width="content" key={track.slug}>
-            <p className="eyebrow">{track.navTitle}</p>
-            <h3 style={{ margin: "4px 0 8px", fontSize: 20 }}>
-              <MathText>{track.question}</MathText>
-            </h3>
-            <p style={{ fontSize: 14.5, lineHeight: 1.6, maxWidth: "70ch", marginBottom: 6 }}>
-              {track.leadResult}
-            </p>
-            <EvidenceChip grade={track.leadGrade} />
-            {lead && (
-              <p style={{ marginTop: 8, fontSize: 13, fontFamily: "var(--font-mono-stack)" }}>
-                Readiness: {lead.readiness}% · {displayVersion(lead.version)}
-              </p>
-            )}
-            <div style={{ marginTop: 10 }}>
+          <Band
+            tone={i % 2 === 0 ? "alt" : "base"}
+            width="content"
+            key={track.slug}
+            tight={i > 0}
+          >
+            <div className="band-head">
+              <p className="eyebrow">{track.navTitle}</p>
+              <h2 className="band-title">
+                <MathText>{track.question}</MathText>
+              </h2>
+            </div>
+            <p className="band-body" style={{ marginTop: 0 }}>{track.leadResult}</p>
+            <div className="chip-line">
+              <EvidenceChip grade={track.leadGrade} />
+              {lead && (
+                <span className="evidence-chip evidence-chip-type">
+                  <span className="evidence-chip-dot" aria-hidden="true" />
+                  readiness {lead.readiness}% &middot; {displayVersion(lead.version)}
+                </span>
+              )}
+            </div>
+            <div style={{ marginTop: "var(--space-7)" }}>
               <RowList
                 items={works.map((w) => ({
                   title: w.title,
@@ -74,8 +82,8 @@ export default async function ResearchPage() {
                 }))}
               />
             </div>
-            <p style={{ marginTop: 10, fontSize: 13 }}>
-              <a href={`/research/${track.slug}`} style={{ color: "var(--accent)" }}>
+            <p className="band-note">
+              <a href={`/research/${track.slug}`} className="band-link">
                 Full track — channels, open items, boundary &rarr;
               </a>
             </p>
@@ -83,9 +91,9 @@ export default async function ResearchPage() {
         );
       })}
 
-      <Band tone="base" width="content" id="contributions">
-        <p className="eyebrow">Contributions</p>
+      <Band tone="deep" width="content" id="contributions" close>
         <PageHeader
+          eyebrow="Contributions"
           title="What's novel here"
           lead="Every result the lab claims as its own — what kind of contribution it is, and how novel, ranked on a four-tier scale. Self-claim ceiling is N3 (first-of-kind); N4 (paradigm-shifting) is reserved for outside arbiters and never self-claimed."
         />

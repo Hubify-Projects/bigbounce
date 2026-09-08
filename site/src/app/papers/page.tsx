@@ -142,7 +142,7 @@ export default async function PapersIndexPage() {
 
   return (
     <>
-      <Band width="content">
+      <Band tone="base" width="content" open>
         <PageHeader
           eyebrow="Works"
           title="All works"
@@ -150,8 +150,12 @@ export default async function PapersIndexPage() {
           actions={[{ label: "Research tracks", href: "/research" }]}
         />
       </Band>
-      <Band width="content">
+      <Band tone="alt" width="wide" close>
         <DataTable columns={columns} rows={rows} rowKey={(r) => r.paper.slug} />
+        <p className="band-note">
+          {rows.length} works &middot; readiness is publication readiness only; venue and
+          submission are tracked separately on each work&rsquo;s page.
+        </p>
       </Band>
     </>
   );
