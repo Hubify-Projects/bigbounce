@@ -1,0 +1,199 @@
+{
+  "schema_id": "bigbounce-autonomous-lab/v1",
+  "contract_id": "bigbounce-autonomous-lab",
+  "version": "1.0.0",
+  "status": "implementation-ready",
+  "canonical_authorities": {
+    "program_plan": "ops/PLAN.md",
+    "science_state": "project-context/SSOT/",
+    "vision": "project-context/VISION.md",
+    "next_science": "project-context/NEXT_SCIENCE_LEDGER.md",
+    "reproducibility": "reproducibility/manifests/"
+  },
+  "ownership": {
+    "bigbounce": [
+      "scientific_question",
+      "run_parameters",
+      "code_input_output_provenance",
+      "qc_and_results",
+      "interpretation_and_claims",
+      "paper_and_program_readiness"
+    ],
+    "astrostack": [
+      "bigbounce_execution_adapters",
+      "houston_method_checkpoints",
+      "provider_lifecycle_safety",
+      "bigbounce_review_and_sync_gates"
+    ],
+    "hubstack": [
+      "reusable_research_governance",
+      "learning_loop_semantics",
+      "versioned_import_conventions"
+    ],
+    "hubify": [
+      "persistent_lab_product",
+      "captain_view",
+      "one_way_run_projection"
+    ],
+    "you_runtime": [
+      "identity_and_preferences",
+      "machine_session_goal_routing",
+      "approval_interrupt_resume_and_cost_telemetry"
+    ]
+  },
+  "forbidden_ownership": {
+    "hubify": ["bigbounce_scientific_truth", "bigbounce_write_back"],
+    "you_runtime": ["scientific_truth", "claim_acceptance", "paper_readiness"],
+    "astrostack": ["bigbounce_results", "generic_hubify_product"],
+    "hubstack": ["bigbounce_specific_facts", "duplicate_astrostack_skills"]
+  },
+  "states": [
+    "selected",
+    "proposed",
+    "preflight_passed",
+    "approved",
+    "running",
+    "paused",
+    "stopped",
+    "qc_complete",
+    "verified",
+    "committed",
+    "projected",
+    "captain_accepted"
+  ],
+  "required_envelopes": {
+    "proposal": [
+      "run_id",
+      "proposal_id",
+      "source_commit",
+      "manifest_path",
+      "manifest_version",
+      "manifest_sha256",
+      "command_digest",
+      "input_hashes",
+      "environment_fingerprint",
+      "expected_outputs",
+      "verification_rule",
+      "budget",
+      "deadline",
+      "allowed_side_effects"
+    ],
+    "approval": [
+      "proposal_sha256",
+      "captain_identity",
+      "decision",
+      "timestamp",
+      "allowed_actions"
+    ],
+    "checkpoint": [
+      "run_id",
+      "source_commit",
+      "machine_session_agent",
+      "writer_lease",
+      "phase",
+      "progress",
+      "timing",
+      "cost_estimated_accrued_final",
+      "artifact_hashes",
+      "next_checkpoint",
+      "steer_events"
+    ],
+    "receipt": [
+      "proposal_sha256",
+      "approval_reference",
+      "stdout_stderr_hashes",
+      "output_hashes",
+      "provider_receipts_or_unknown",
+      "qc_result",
+      "verification_result",
+      "evidence_grade",
+      "limitations",
+      "generated_tasks",
+      "backup_locations",
+      "run_succeeded",
+      "verification_passed",
+      "claim_accepted",
+      "captain_accepted"
+    ]
+  },
+  "approval_policy": {
+    "preapproved": [
+      "read_only_inventory",
+      "validation",
+      "dry_run",
+      "named_offline_cpu_pilot_with_zero_external_spend_and_task_owned_outputs",
+      "safety_pause_or_stop"
+    ],
+    "captain_exact_run_required": [
+      "paid_provider_use",
+      "external_provider_mutation",
+      "schedule_change",
+      "new_data_egress",
+      "proposal_parameter_or_environment_change",
+      "resume_after_deadline_or_budget_expiry"
+    ],
+    "houston_explicit_required": [
+      "scientific_claim_acceptance",
+      "readiness_change",
+      "paper_edit",
+      "submission_or_publication",
+      "external_communication",
+      "account_or_billing_change",
+      "destructive_operation",
+      "permanent_schedule_change"
+    ]
+  },
+  "steering": {
+    "allowed_without_revision": [
+      "pause",
+      "resume",
+      "stop",
+      "reprioritize_without_parameter_change",
+      "request_explanation"
+    ],
+    "requires_new_proposal_and_approval": [
+      "parameter_change",
+      "verification_rule_change",
+      "source_commit_change",
+      "environment_change",
+      "budget_or_deadline_expansion"
+    ]
+  },
+  "fail_closed_conditions": [
+    "unknown_or_exceeded_spend",
+    "approval_hash_mismatch",
+    "source_or_manifest_hash_mismatch",
+    "insufficient_disk",
+    "active_conflicting_writer_lease",
+    "unapproved_external_side_effect",
+    "unsupported_import_schema"
+  ],
+  "projection": {
+    "direction": "bigbounce_to_hubify_and_you_runtime",
+    "mode": "pinned_content_addressed_read_only",
+    "write_back": false,
+    "unknown_live_state_display": "required"
+  },
+  "pilot": {
+    "id": "bb-pilot-p2-vertex-check-v1",
+    "manifest": "reproducibility/manifests/experiments/p2-vertex-check.json",
+    "execution": "local_cpu_offline",
+    "external_spend_max_usd": 0,
+    "wall_time_max_seconds": 600,
+    "minimum_start_free_disk_bytes": 2147483648,
+    "minimum_runtime_free_disk_bytes": 1073741824,
+    "expected_outputs": {
+      "local_f_nl": "-35/16",
+      "equilateral_f_nl": "-255/128"
+    },
+    "required_steer_event": "request_explanation",
+    "forbidden_changes": [
+      "paper",
+      "ssot_readiness",
+      "publication_state",
+      "provider_schedule",
+      "external_provider_state"
+    ],
+    "execution_authorized_by_this_contract": false
+  }
+}

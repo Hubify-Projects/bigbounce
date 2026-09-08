@@ -20,6 +20,10 @@ it must not become a second planning authority.
    and the linked truth audits only when review evidence is needed.
 7. Compare Convex and `site/src/data/` against the SSOT before making a public
    status claim.
+8. For autonomous-research execution or You Runtime/Hubify steering work, read
+   [`BIGBOUNCE_AUTONOMOUS_RESEARCH_LAB_PLAN_2026-09-08.md`](BIGBOUNCE_AUTONOMOUS_RESEARCH_LAB_PLAN_2026-09-08.md)
+   and its machine-readable boundary contract. These extend `ops/PLAN.md`; they
+   do not own scientific truth or authorize a run.
 
 ## Current objective
 

@@ -55,6 +55,7 @@ process evidence in `CLAUDE.md`; they are not the current scoring or exit model.
 | Finding dispositions | `project-context/peer-reviews/DISPOSITIONS/` |
 | Public projection | Convex plus `site/src/data/` |
 | Recovery/You.md context | `project-context/plan.md` and `.youmd/projects/bigbounce/` |
+| Autonomous-research lab integration | `project-context/BIGBOUNCE_AUTONOMOUS_RESEARCH_LAB_PLAN_2026-09-08.md` and `project-context/BIGBOUNCE_AUTONOMOUS_LAB_CONTRACT_V1.json` |
 
 ## Current state
 
@@ -104,6 +105,18 @@ evidence packet, not a request that Houston independently re-audit the
 technical science.
 
 ## Phase plan
+
+### Integration track — autonomous research with human steering (planned 2026-09-08)
+
+BigBounce is the bounded scientific proof case for Hubify's direction of
+reproducible labs for autonomous research, with human steering. The detailed
+plan and v1 machine-readable boundary contract are linked in the canonical map
+above. BigBounce retains scientific truth; AstroStack owns BigBounce-specific
+execution adapters; HubStack owns reusable research governance; Hubify and You
+Runtime consume content-addressed, read-only projections. The first proposed
+pilot is the existing offline CPU-only `p2-vertex-check` reproduction with a
+`$0.00` external-spend cap. Planning does not authorize its execution, change a
+schedule, alter a paper, or publish a claim.
 
 ### Phase 0 — publication architecture reset (complete 2026-08-04)
 
