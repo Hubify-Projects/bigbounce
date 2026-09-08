@@ -67,6 +67,24 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "brand-pass-reverted-2026-09-08",
+    dateISO: "2026-09-08",
+    kind: "skill-improvement",
+    title: "Lab-site brand pass reverted -- the lab is the reference standard",
+    papers: [],
+    summary:
+      "A cross-property brand-unification pass (2026-09-08, commits fa5a8211..eae25baf) applied a shared Hubify token layer to the lab site: synced tokens with a teal accent override replacing the sage, a five-act homepage recomposition, journal-style paper pages, a mark/lockup identity pair, and tools/sync_brand_tokens.sh. Houston reviewed it live and rejected it -- the 2026-09-04 design reads better -- so the whole pass is reverted in commit 00d769ea and the approved design is restored: original globals.css token layer and warm-paper palette with the sage accent, original page compositions, text mark in the Topbar/Footer, untouched canonical explorer .html files. The standing lesson, now in the timeline so no future lane repeats it: the BigBounce Lab site is the REFERENCE for the portfolio's visual language. Hubify moves toward it -- more white space, calmer minimalism, the lab's palette -- and never the reverse; a brand change to the reference itself is proposed and approved before a lane touches it. The shared brand system and token file stay in the hubify repo, where they apply to that property alone.",
+    keyTakeaways: [
+      "The 2026-09-04 lab design is restored byte-for-byte (commit 00d769ea); tsc and next build clean",
+      "Direction of travel: Hubify adopts the lab's standard, not the reverse -- the lab is the reference",
+      "A brand pass touching the reference property needs approval before it lands, not after",
+    ],
+    links: [
+      { label: "revert commit 00d769ea", href: `${GH_COMMIT}/00d769ea` },
+      { label: "brand system (hubify repo)", href: "https://github.com/Hubify-Projects/bigbounce" },
+    ],
+  },
+  {
     id: "psu-a3m-a2-monopole-reconciled-2026-09-07",
     dateISO: "2026-09-07",
     kind: "skill-improvement",
@@ -11357,6 +11375,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "a3m-r6-closure-2026-09-05", dateISO: "2026-09-05", patterns: 79, promptRules: 42, tooling: 42, note: "A3M R6 truth-audit closure bundle (v3M.0.13->v3M.0.14): tools/a3m_convex_bump_v3M_0_14.mjs added (routine per-round Convex bump script, same pattern as prior paper bump scripts) -- lands at UTC calendar-day 2026-09-05 due to a -07:00 local-vs-UTC boundary on the commit timestamp (session date 2026-09-04 PT). No new review pattern or prompt rule this wave -- patterns/promptRules/tooling unchanged at 79/42/42; this point exists solely to keep the skills-freshness date-granularity gate current with the newest tools/ commit." },
   { id: "autolog-2026-09-04", dateISO: "2026-09-04", patterns: 79, promptRules: 42, tooling: 42, note: "Auto-logged 9 skill/process/tooling commit(s) since 2026-09-03 (8 bigbounce, 1 scistack): skills-autolog housekeeping; P3 anomaly catalogue v2 data-release doc; A3M v3M.0.12 paperVersion bump + Fig. 1 regeneration with publication labels (directive I6); site redesign /reviews grid + six-lane pattern logging; full-reproduction pass kickoff (directive Q2); SIGW nHz reproducibility manifest (directive Q2); scistack generated skill-index refresh. patterns/promptRules/tooling unchanged — process/doc/science wave, no new catalog entry or standalone tool." },
   { id: "autolog-2026-09-07", dateISO: "2026-09-07", patterns: 79, promptRules: 42, tooling: 44, note: "Auto-logged 2 skill/process/tooling commit(s) since 2026-09-05 (both bigbounce, +2 new tools/ scripts): tools/su_convex_bump_v1S_0_8.mjs and tools/a3m_convex_bump_v3M_0_24.mjs, the routine per-round Convex bump scripts for the A2 lapse-monopole reconciliation wave (paper-su v1S.0.8, A3M v3M.0.24). patterns/promptRules unchanged at 79/42; tooling 42->44." },
+  { id: "brand-pass-reverted-2026-09-08", dateISO: "2026-09-08", patterns: 79, promptRules: 42, tooling: 44, note: "Brand-unification pass on the lab site (2026-09-08, commits fa5a8211..eae25baf) REVERTED at Houston's direction (commit 00d769ea): synced Hubify tokens with a teal accent override, a five-act homepage recomposition, journal-style paper pages, mark/lockup components and the tools/sync_brand_tokens.sh sync script are all removed; the 2026-09-04 design he approved is restored byte-for-byte. Process learning, not a tooling delta (counters unchanged at 79/42/44): the lab site is the REFERENCE standard for the portfolio's visual language -- Hubify moves toward it (more white space, calmer minimalism, its palette), never the reverse; a cross-property brand pass must be proposed against the reference and approved before any lane touches the reference itself. The shared brand system, token file and coordination notes remain in the hubify repo for that property's own use." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
