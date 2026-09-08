@@ -1,3 +1,4 @@
+@import "../styles/brand.tokens.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -28,8 +29,8 @@
 }
 
 :root {
-  --bg: #f8f5ef;
-  --surface: #fffdf8;
+  --bg: var(--bg-1);
+  --surface: var(--tool);
   --surface-2: #f0ebe2;
   --surface-3: #e4ded2;
   --surface-4: #d7cfbf;
@@ -48,15 +49,14 @@
   --sidebar-active-text: #20372c;
   --sidebar-active-icon: #2f6f4e;
   --sidebar-rule: rgba(82, 73, 61, 0.14);
-  --border: #ddd4c2;
+  --border: var(--rule);
   --border-subtle: #ebe4d6;
   --border-strong: #c7b99d;
   --border-bright: #9c927e;
-  --text: #332f2b;
-  --text-secondary: #554c43;
-  --text-tertiary: #7a6d5d;
+  --text: var(--ink);
+  --text-secondary: var(--ink-2);
+  --text-tertiary: var(--ink-3);
   --text-muted: #a18f76;
-  --accent: #2f6f4e;
   --accent-dim: #244f39;
   --accent-bg: rgba(47, 111, 78, 0.12);
   --success: #2f6f4e;
@@ -73,42 +73,22 @@
   --model-gemini: #a78bfa;
   --accent-link: var(--text);
   --accent-link-hover: var(--accent-dim);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono-stack: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --font-mono-stack: var(--font-mono);
   --radius: 6px;
   --radius-lg: 8px;
   --radius-xl: 12px;
   --sidebar-w: 247px;
   --topbar-h: 56px;
   --max-width: 1180px;
-  --prose-width: 760px;
   --transition: 140ms ease;
-
-  /* ── §4.2 redesign token layer (2026-09-04, Lane 1 — REDESIGN_SPEC.md) ──
-     Additive: consumed by Shell/Topbar, Shell/Footer, Shell/CommandSearch,
-     and components/primitives/*. Legacy tokens above are unchanged so every
-     existing route keeps rendering until its own lane migrates it. */
-  --bg-1: #f2eee5;
-  --bg-2: #e9e3d7;
-  --tool: var(--surface);
-  --ink: #2b2825;
-  --ink-2: #5b544c;
-  --ink-3: #8a8177;
-  --rule: #ddd6c8;
-  --accent-ink: #215239;
-  --grade-measured: #2f6f4e;
-  --grade-derived: #4b6ea8;
-  --grade-null: #6f7a72;
-  --grade-open: #9a7430;
-  --danger: var(--crit);
-  --content-width: 1120px;
 }
 
 /* Dark mode */
+/* Dark mode — system preference, guarded so an explicit light choice wins. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1a1512;
-    --surface: #211d18;
+  :root:not([data-theme="light"]) {
+    --bg: var(--bg-1);
+    --surface: var(--tool);
     --surface-2: #2a251e;
     --surface-3: #343029;
     --surface-4: #403a31;
@@ -127,15 +107,14 @@
     --sidebar-active-text: #f5efe4;
     --sidebar-active-icon: #6f947b;
     --sidebar-rule: rgba(245, 239, 228, 0.08);
-    --border: #36291f;
+    --border: var(--rule);
     --border-subtle: #2a2018;
     --border-strong: #4a3a2c;
     --border-bright: #6b5746;
-    --text: #f5efe4;
-    --text-secondary: #d4c8b6;
-    --text-tertiary: #a8957b;
+    --text: var(--ink);
+    --text-secondary: var(--ink-2);
+    --text-tertiary: var(--ink-3);
     --text-muted: #6b5d4b;
-    --accent: #5f8a6c;
     --accent-dim: #3f604b;
     --accent-bg: rgba(95, 138, 108, 0.14);
     --success: #6f947b;
@@ -146,29 +125,9 @@
   }
 }
 
-/* §4.2 redesign token layer — dark, system preference only (guarded so an
-   explicit data-theme="light" choice always wins, per the theme-aware hard
-   rule). Mirrored unconditionally into [data-theme="dark"] below. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg-1: #1e1a15;
-    --bg-2: #241f19;
-    --tool: var(--surface);
-    --ink: #ece7dd;
-    --ink-2: #b6aea1;
-    --ink-3: #877f73;
-    --rule: #372f26;
-    --accent-ink: #8fd3ab;
-    --grade-measured: #63b98a;
-    --grade-derived: #7ea3d8;
-    --grade-null: #93a099;
-    --grade-open: #cfa458;
-  }
-}
-
 [data-theme="dark"] {
-  --bg: #1a1512;
-  --surface: #211d18;
+  --bg: var(--bg-1);
+  --surface: var(--tool);
   --surface-2: #2a251e;
   --surface-3: #343029;
   --surface-4: #403a31;
@@ -187,15 +146,14 @@
   --sidebar-active-text: #f5efe4;
   --sidebar-active-icon: #6f947b;
   --sidebar-rule: rgba(245, 239, 228, 0.08);
-  --border: #36291f;
+  --border: var(--rule);
   --border-subtle: #2a2018;
   --border-strong: #4a3a2c;
   --border-bright: #6b5746;
-  --text: #f5efe4;
-  --text-secondary: #d4c8b6;
-  --text-tertiary: #a8957b;
+  --text: var(--ink);
+  --text-secondary: var(--ink-2);
+  --text-tertiary: var(--ink-3);
   --text-muted: #6b5d4b;
-  --accent: #5f8a6c;
   --accent-dim: #3f604b;
   --accent-bg: rgba(95, 138, 108, 0.14);
   --success: #6f947b;
@@ -203,26 +161,11 @@
   --crit: #a66555;
   --accent-link: var(--text);
   --accent-link-hover: #ffffff;
-
-  /* §4.2 redesign token layer — dark, explicit toggle (wins over system
-     preference in both directions per the theme-aware hard rule). */
-  --bg-1: #1e1a15;
-  --bg-2: #241f19;
-  --tool: var(--surface);
-  --ink: #ece7dd;
-  --ink-2: #b6aea1;
-  --ink-3: #877f73;
-  --rule: #372f26;
-  --accent-ink: #8fd3ab;
-  --grade-measured: #63b98a;
-  --grade-derived: #7ea3d8;
-  --grade-null: #93a099;
-  --grade-open: #cfa458;
 }
 
 [data-theme="light"] {
-  --bg: #f8f5ef;
-  --surface: #fffdf8;
+  --bg: var(--bg-1);
+  --surface: var(--tool);
   --surface-2: #f0ebe2;
   --surface-3: #e4ded2;
   --surface-4: #d7cfbf;
@@ -241,15 +184,14 @@
   --sidebar-active-text: #20372c;
   --sidebar-active-icon: #2f6f4e;
   --sidebar-rule: rgba(82, 73, 61, 0.14);
-  --border: #ddd4c2;
+  --border: var(--rule);
   --border-subtle: #ebe4d6;
   --border-strong: #c7b99d;
   --border-bright: #9c927e;
-  --text: #332f2b;
-  --text-secondary: #554c43;
-  --text-tertiary: #7a6d5d;
+  --text: var(--ink);
+  --text-secondary: var(--ink-2);
+  --text-tertiary: var(--ink-3);
   --text-muted: #a18f76;
-  --accent: #2f6f4e;
   --accent-dim: #244f39;
   --accent-bg: rgba(47, 111, 78, 0.12);
   --success: #2f6f4e;
@@ -262,6 +204,25 @@
 /* ── Reset ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+/* ── Typography scale utilities (BRAND_SYSTEM.md §2) — apply at the token/
+   utility level, not per-component. Geist Sans/Mono are the only faces
+   (see --font-sans/--font-mono in the synced tokens). ── */
+.text-display { font-size: var(--text-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
+.text-h1 { font-size: var(--text-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); }
+.text-h2 { font-size: var(--text-h2); line-height: var(--lh-h2); letter-spacing: var(--ls-h2); }
+.text-h3 { font-size: var(--text-h3); line-height: var(--lh-h3); letter-spacing: var(--ls-h3); }
+.text-body { font-size: var(--text-body); line-height: var(--lh-body); }
+.text-dense { font-size: var(--text-dense); line-height: var(--lh-dense); }
+.text-small { font-size: var(--text-small); line-height: var(--lh-small); }
+.text-eyebrow { font-size: var(--text-eyebrow); line-height: var(--lh-eyebrow); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; }
+.text-code { font-size: var(--text-code); line-height: var(--lh-code); font-family: var(--font-mono); }
+.prose { max-width: var(--prose-width); }
+
+/* Tabular numerals on data surfaces (§2): tables, stat rows, version chips. */
+table, td, th, .stat-row, .stat-value, .version-chip, [data-numeric] {
+  font-variant-numeric: tabular-nums;
+}
 
 body {
   background:
