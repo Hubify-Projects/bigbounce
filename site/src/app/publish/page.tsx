@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { papers, researchPrograms } from "@/data/papers";
 import { publicationArchitecture, publicationExecution, publicationMap } from "@/data/publish";
-import { Band, PageHeader, RowList, DataTable, EvidenceChip } from "@/components/primitives";
+import { Band, PageHeader, RowList, DataTable } from "@/components/primitives";
 
 export const metadata: Metadata = {
   title: "Portfolio Decisions",
@@ -41,7 +41,14 @@ export default function PublishPage() {
               title: program.title,
               purpose: `Q: ${program.question} — ${program.result}`,
               href: lead ? `/papers/${lead.slug}` : "/research",
-              right: <EvidenceChip grade="open" label={program.status} />,
+              right: (
+                <span
+                  className="row-purpose"
+                  style={{ maxWidth: 340, whiteSpace: "normal", textAlign: "right" }}
+                >
+                  {program.status}
+                </span>
+              ),
             };
           })}
         />
