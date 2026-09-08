@@ -248,7 +248,7 @@
 </style>
 </head>
 <body>
-<main class="wide-container">
+<main class="wide-container" data-tool="galaxy-explorer">
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <div class="hero">
@@ -737,7 +737,7 @@
 
 <!-- ═══════════════════════ GALAXY DETAIL PANEL ═══════════════════════ -->
 <div class="gx-panel-backdrop" id="gxPanelBackdrop"></div>
-<div class="gx-panel" id="gxPanel">
+<div class="gx-panel" id="gxPanel" data-tool="galaxy-detail-panel">
   <div class="gx-panel-header">
     <h3 id="gxPanelTitle">Galaxy Detail</h3>
     <button class="gx-panel-close" id="gxPanelClose">ESC &times;</button>
@@ -750,9 +750,11 @@
 // Confidence slider
 var confSlider = document.getElementById('gx-confidence');
 var confVal = document.getElementById('gx-conf-val');
-confSlider.addEventListener('input', function() {
-  confVal.textContent = parseFloat(this.value).toFixed(2);
-});
+if (confSlider && confVal) {
+  confSlider.addEventListener('input', function() {
+    confVal.textContent = parseFloat(this.value).toFixed(2);
+  });
+}
 
 // ── Placeholder data ──
 // 20 sample galaxies with realistic coordinates and probabilities

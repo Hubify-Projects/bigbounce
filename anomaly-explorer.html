@@ -57,7 +57,7 @@
 </head>
 <body>
 
-<main class="container" style="padding-top: 20px;">
+<main class="container" style="padding-top: 20px;" data-tool="anomaly-explorer">
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">DESI DR1 Spectral Anomaly Catalog</p>
   <h1>Anomaly Explorer</h1>
@@ -342,7 +342,7 @@
 </section>
 
 <div class="anomaly-panel-backdrop" id="panelBackdrop" onclick="closePanel()"></div>
-<div class="anomaly-panel" id="anomalyPanel">
+<div class="anomaly-panel" id="anomalyPanel" data-tool="anomaly-detail-panel">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
     <h3 id="modalTitle" style="margin:0;font-family:var(--font-sans);">Anomaly #1</h3>
     <button onclick="closePanel()" style="background:none;border:none;font-size:20px;cursor:pointer;">&times;</button>
@@ -589,10 +589,14 @@ document.addEventListener('keydown', function(e) {
 
 function renderTable(data) {
   const tbody = document.getElementById('tableBody');
-  const minScore = parseFloat(document.getElementById('minScore').value) || 5;
-  const bandFilter = document.getElementById('bandFilter').value;
+  const minScoreEl = document.getElementById('minScore');
+  const bandFilterEl = document.getElementById('bandFilter');
+  const rowCountEl = document.getElementById('rowCount');
+  if (!tbody || !minScoreEl || !bandFilterEl) return;
+  const minScore = parseFloat(minScoreEl.value) || 5;
+  const bandFilter = bandFilterEl.value;
   const filtered = data.filter(d => d[0] >= minScore && (!bandFilter || d[3] === bandFilter));
-  document.getElementById('rowCount').textContent = filtered.length + ' shown';
+  if (rowCountEl) rowCountEl.textContent = filtered.length + ' shown';
   tbody.innerHTML = filtered.map((d, i) => {
     const [score, ra, dec, worst, rB, rR, rZ, tid] = d;
     const pct = Math.min(100, (score - 5) / 20 * 100);
