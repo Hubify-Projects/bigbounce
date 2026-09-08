@@ -3190,6 +3190,7 @@ code {
    joined into one wrapping meta line) instead of scrolling sideways. */
 .data-table-wrap {
   width: 100%;
+  overflow-x: auto;
   border: 1px solid var(--rule);
   border-radius: 4px;
   background: var(--tool);
