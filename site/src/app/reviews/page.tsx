@@ -78,11 +78,15 @@ export default async function ReviewsPage() {
       </Band>
 
       <Band tone="alt" width="wide" id="grid">
-          <PageHeader
-            eyebrow="Verdict grid · newest round left"
-            title="External referee verdicts"
-            lead="Active legs only (directive M-AMENDED): Grok API + Gemini API, plotted against the historical six-paper board. The ChatGPT column is frozen while directive N's Codex/OpenAI pause stands — shown dimmed, never deleted or faked."
-          />
+          <div className="band-head">
+            <p className="eyebrow">Verdict grid &middot; newest round left</p>
+            <h2 className="band-title">External referee verdicts</h2>
+          </div>
+          <p className="band-body" style={{ marginTop: 0 }}>
+            Active legs only (directive M-AMENDED): Grok API + Gemini API, plotted against the
+            historical six-paper board. The ChatGPT column is frozen while directive N&rsquo;s
+            Codex/OpenAI pause stands — shown dimmed, never deleted or faked.
+          </p>
           <AllAMeter />
           <VerdictGrid
             legLabels={[...REVIEWERS]}
@@ -101,16 +105,22 @@ export default async function ReviewsPage() {
       </Band>
 
       <Band tone="alt" width="content" id="publication-status" tight>
-        <PageHeader eyebrow="Publication status" title="What's left before publication" />
+        <div className="band-head">
+          <p className="eyebrow">Publication status</p>
+          <h2 className="band-title">What&rsquo;s left before publication</h2>
+        </div>
         <PublicationStatusWidget status={publicationStatus} livePapers={livePapers} />
       </Band>
 
       <Band tone="base" width="content">
-          <PageHeader
-            eyebrow="Gap and skills"
-            title="The review machinery, self-improving"
-            lead="Substantive findings only the external tier caught, and the pattern/prompt-rule catalog those findings get mined into."
-          />
+          <div className="band-head">
+            <p className="eyebrow">Gap and skills</p>
+            <h2 className="band-title">The review machinery, self-improving</h2>
+          </div>
+          <p className="band-body" style={{ marginTop: 0 }}>
+            Substantive findings only the external tier caught, and the pattern/prompt-rule
+            catalog those findings get mined into.
+          </p>
           <ChartShell title="Internal/external gap — externally-caught findings per round">
             <GapClosureChart />
           </ChartShell>
@@ -121,11 +131,14 @@ export default async function ReviewsPage() {
       </Band>
 
       <Band tone="base" width="content" id="timeline" tight close>
-        <PageHeader
-          eyebrow={`Round timeline · newest first · showing ${ROUNDS_SHOWN}`}
-          title="Every round, truth-audit, closure, and skill upgrade"
-          lead="One line per event: date, kind, what changed, receipt link. Skill-improvement entries carry a quiet marker."
-        />
+        <div className="band-head">
+          <p className="eyebrow">{`Round timeline · newest first · showing ${ROUNDS_SHOWN}`}</p>
+          <h2 className="band-title">Every round, truth-audit, closure, and skill upgrade</h2>
+        </div>
+        <p className="band-body" style={{ marginTop: 0, marginBottom: "var(--space-7)" }}>
+          One line per event: date, kind, what changed, receipt link. Skill-improvement entries
+          carry a quiet marker.
+        </p>
         <TimelineList entries={timelineEntries()} />
         <p className="band-note">
           Full history (append-only, {sortedReviewRounds().length} rounds total) in{" "}
