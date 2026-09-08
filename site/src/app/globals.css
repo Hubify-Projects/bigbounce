@@ -47,7 +47,7 @@
   --sidebar-hover: rgba(51, 47, 43, 0.055);
   --sidebar-active: rgba(47, 111, 78, 0.13);
   --sidebar-active-text: #20372c;
-  --sidebar-active-icon: #2f6f4e;
+  --sidebar-active-icon: var(--accent);
   --sidebar-rule: rgba(82, 73, 61, 0.14);
   --border: var(--rule);
   --border-subtle: #ebe4d6;
@@ -57,8 +57,8 @@
   --text-secondary: var(--ink-2);
   --text-tertiary: var(--ink-3);
   --text-muted: #a18f76;
-  --accent-dim: #244f39;
-  --accent-bg: rgba(47, 111, 78, 0.12);
+  --accent-dim: #1e4a44;
+  --accent-bg: rgba(38, 104, 95, 0.12);
   --success: #2f6f4e;
   --warn: #8f6a2f;
   --crit: #8b4639;
@@ -105,7 +105,7 @@
     --sidebar-hover: rgba(245, 239, 228, 0.055);
     --sidebar-active: rgba(65, 116, 84, 0.16);
     --sidebar-active-text: #f5efe4;
-    --sidebar-active-icon: #6f947b;
+    --sidebar-active-icon: var(--accent);
     --sidebar-rule: rgba(245, 239, 228, 0.08);
     --border: var(--rule);
     --border-subtle: #2a2018;
@@ -115,8 +115,8 @@
     --text-secondary: var(--ink-2);
     --text-tertiary: var(--ink-3);
     --text-muted: #6b5d4b;
-    --accent-dim: #3f604b;
-    --accent-bg: rgba(95, 138, 108, 0.14);
+    --accent-dim: #395f59;
+    --accent-bg: rgba(95, 176, 164, 0.14);
     --success: #6f947b;
     --warn: #b8955b;
     --crit: #a66555;
@@ -144,7 +144,7 @@
   --sidebar-hover: rgba(245, 239, 228, 0.055);
   --sidebar-active: rgba(65, 116, 84, 0.16);
   --sidebar-active-text: #f5efe4;
-  --sidebar-active-icon: #6f947b;
+  --sidebar-active-icon: var(--accent);
   --sidebar-rule: rgba(245, 239, 228, 0.08);
   --border: var(--rule);
   --border-subtle: #2a2018;
@@ -154,8 +154,8 @@
   --text-secondary: var(--ink-2);
   --text-tertiary: var(--ink-3);
   --text-muted: #6b5d4b;
-  --accent-dim: #3f604b;
-  --accent-bg: rgba(95, 138, 108, 0.14);
+  --accent-dim: #395f59;
+  --accent-bg: rgba(95, 176, 164, 0.14);
   --success: #6f947b;
   --warn: #b8955b;
   --crit: #a66555;
@@ -182,7 +182,7 @@
   --sidebar-hover: rgba(51, 47, 43, 0.055);
   --sidebar-active: rgba(47, 111, 78, 0.13);
   --sidebar-active-text: #20372c;
-  --sidebar-active-icon: #2f6f4e;
+  --sidebar-active-icon: var(--accent);
   --sidebar-rule: rgba(82, 73, 61, 0.14);
   --border: var(--rule);
   --border-subtle: #ebe4d6;
@@ -192,8 +192,8 @@
   --text-secondary: var(--ink-2);
   --text-tertiary: var(--ink-3);
   --text-muted: #a18f76;
-  --accent-dim: #244f39;
-  --accent-bg: rgba(47, 111, 78, 0.12);
+  --accent-dim: #1e4a44;
+  --accent-bg: rgba(38, 104, 95, 0.12);
   --success: #2f6f4e;
   --warn: #8f6a2f;
   --crit: #8b4639;
@@ -3420,9 +3420,11 @@ code {
 .site-footer-links a:hover { color: var(--accent-ink); }
 
 .site-footer-bottom {
-  margin-top: 48px;
-  padding-top: 20px;
-  border-top: 1px solid var(--rule);
+  /* No inner hairline — .site-footer already carries a border-top separating
+     the whole footer from the page above; a second border-top here would be
+     a border-inside-a-border. The two zones (link columns vs. meta row) read
+     apart via spacing alone. */
+  margin-top: 56px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 20px;
