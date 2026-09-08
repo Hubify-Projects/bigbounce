@@ -1,8 +1,11 @@
 import type { ElementType, ReactNode } from "react";
 import { cn } from "@/lib/utils";
+// Artistry layer (BRAND_SYSTEM.md §2/§4/§5/§6). Authored in :global() so it
+// composes over the primitive classes without owning globals.css.
+import "./artistry.module.css";
 
 export type BandTone = "base" | "alt" | "deep";
-export type BandWidth = "prose" | "content" | "full";
+export type BandWidth = "prose" | "content" | "wide" | "full";
 
 export interface BandProps {
   tone?: BandTone;
@@ -11,6 +14,12 @@ export interface BandProps {
   className?: string;
   innerClassName?: string;
   id?: string;
+  /** Extra top space — use on the first band of a page. */
+  open?: boolean;
+  /** Extra bottom space — use on the last band of a page. */
+  close?: boolean;
+  /** Continues the idea above it: no re-establishing top space. */
+  tight?: boolean;
   children: ReactNode;
 }
 
@@ -27,10 +36,20 @@ export function Band({
   className,
   innerClassName,
   id,
+  open,
+  close,
+  tight,
   children,
 }: BandProps) {
   return (
-    <Tag id={id} className={cn("band", `band-${tone}`, className)}>
+    <Tag id={id} className={cn(
+        "band",
+        `band-${tone}`,
+        open && "band-open",
+        close && "band-close",
+        tight && "band-tight",
+        className,
+      )}>
       <div className={cn("band-inner", `band-width-${width}`, innerClassName)}>
         {children}
       </div>
