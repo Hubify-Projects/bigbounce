@@ -1,0 +1,204 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   SYNCED COPY — DO NOT EDIT HERE.
+   Source: hubify/packages/brand/tokens.css @ commit efef5fc7
+   Synced: 2026-09-08 via bigbounce/tools/sync_brand_tokens.sh
+   Edit the canonical file in the hubify repo and re-run the sync script.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Hubify Brand Tokens — SINGLE SOURCE OF TRUTH
+   Version 1.0 · 2026-09-08 · Spec: project-context/brand-unification/
+   2026-09-08/BRAND_SYSTEM.md
+
+   This file is canonical for hubify.com, the Hubify app shell, and every
+   Hubify property. BigBounce Lab consumes a BYTE-IDENTICAL SYNCED COPY at
+   bigbounce/site/src/styles/brand-tokens.css (scripts/sync-brand-tokens.sh)
+   and overrides exactly four tokens: --accent, --accent-ink, --on-accent,
+   and their dark counterparts. Do not edit the copy. Do not add a token
+   here that only one property needs.
+
+   Theme model: light is the :root default (warm paper). Dark applies under
+   prefers-color-scheme guarded by :root:not([data-theme="light"]), and
+   again unconditionally under :root[data-theme="dark"] so an explicit
+   choice wins in both directions.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Type ── */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, "SF Mono",
+    Menlo, Consolas, monospace;
+
+  --text-display: 3.25rem;   --lh-display: 1.06;  --ls-display: -0.022em;
+  --text-h1: 2.25rem;        --lh-h1: 1.12;       --ls-h1: -0.018em;
+  --text-h2: 1.5rem;         --lh-h2: 1.25;       --ls-h2: -0.012em;
+  --text-h3: 1.125rem;       --lh-h3: 1.35;       --ls-h3: -0.006em;
+  --text-body: 1rem;         --lh-body: 1.6;
+  --text-dense: 0.9375rem;   --lh-dense: 1.55;
+  --text-small: 0.8125rem;   --lh-small: 1.5;
+  --text-eyebrow: 0.75rem;   --lh-eyebrow: 1.4;   --ls-eyebrow: 0.08em;
+  --text-code: 0.8125rem;    --lh-code: 1.6;
+
+  --weight-body: 400;
+  --weight-medium: 500;
+  --weight-strong: 600;
+
+  --prose-width: 68ch;
+  --content-width: 1120px;
+  --wide-width: 1440px;
+
+  /* ── Space (4px base) ── */
+  --space-1: 2px;   --space-2: 4px;   --space-3: 8px;   --space-4: 12px;
+  --space-5: 16px;  --space-6: 24px;  --space-7: 32px;  --space-8: 48px;
+  --space-9: 64px;  --space-10: 96px; --space-11: 128px; --space-12: 160px;
+
+  /* ── Radii ── */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* ── Motion ── */
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Color · LIGHT (warm paper) ── */
+  --bg-1: #f2eee5;
+  --bg-2: #e9e3d7;
+  --bg-3: #ddd6c8;
+  --tool: #fffdf8;
+
+  --ink: #2b2825;       /* 12.66:1 on --bg-1 */
+  --ink-2: #5b544c;     /*  6.44:1 */
+  --ink-3: #6f695f;     /*  4.70:1 */
+
+  --rule: #ddd6c8;
+  --rule-strong: #c7bda9;
+
+  --accent: #2f6f4e;      /* 5.18:1 — Hubify sage. Lab overrides to #26685f */
+  --accent-ink: #215239;  /* 7.78:1 */
+  --on-accent: #f8f6f0;   /* 5.54:1 on --accent */
+
+  --grade-measured: #2f6f4e; /* 5.18:1 */
+  --grade-derived: #39558c;  /* 6.36:1 */
+  --grade-null: #5f6a63;     /* 4.86:1 */
+  --grade-open: #8a6520;     /* 4.58:1 */
+
+  --success: #2d7a4e;  /* 4.53:1 */
+  --warn: #8a6520;     /* 4.58:1 */
+  --danger: #a04430;   /* 5.39:1 */
+  --info: #2c5f9e;     /* 5.60:1 */
+
+  --success-wash: color-mix(in srgb, var(--success) 9%, transparent);
+  --warn-wash: color-mix(in srgb, var(--warn) 9%, transparent);
+  --danger-wash: color-mix(in srgb, var(--danger) 9%, transparent);
+  --info-wash: color-mix(in srgb, var(--info) 9%, transparent);
+  --accent-wash: color-mix(in srgb, var(--accent) 10%, transparent);
+
+  /* ── Elevation — exactly two treatments ── */
+  --elev-hairline: 0 0 0 1px var(--rule);
+  --elev-overlay: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.14);
+  --focus-ring: 0 0 0 2px var(--bg-1), 0 0 0 4px var(--accent);
+}
+
+/* Dark — system preference, guarded so an explicit light choice wins. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-1: #0a0a0a;
+    --bg-2: #131313;
+    --bg-3: #1a1a1a;
+    --tool: #151515;
+
+    --ink: #ededed;    /* 16.91:1 on --bg-1 */
+    --ink-2: #a8a8a8;  /*  8.33:1 */
+    --ink-3: #8a8a8a;  /*  5.73:1 */
+
+    --rule: #262626;
+    --rule-strong: #343434;
+
+    --accent: #6fae88;      /*  7.62:1 — Lab overrides to #5fb0a4 */
+    --accent-ink: #8fd3ab;  /* 11.38:1 */
+    --on-accent: #0a0a0a;   /*  7.62:1 on --accent */
+
+    --grade-measured: #6fae88; /* 7.62:1 */
+    --grade-derived: #8aabdf;  /* 8.46:1 */
+    --grade-null: #98a49d;     /* 7.67:1 */
+    --grade-open: #d0a75f;     /* 8.84:1 */
+
+    --success: #6fae88; /* 7.62:1 */
+    --warn: #d0a75f;    /* 8.84:1 */
+    --danger: #d98878;  /* 7.30:1 */
+    --info: #8aabdf;    /* 8.46:1 */
+
+    --elev-overlay: 0 1px 2px rgba(0, 0, 0, 0.5), 0 16px 40px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* Dark — explicit choice. Mirrors the block above unconditionally. */
+:root[data-theme="dark"] {
+  --bg-1: #0a0a0a;
+  --bg-2: #131313;
+  --bg-3: #1a1a1a;
+  --tool: #151515;
+
+  --ink: #ededed;
+  --ink-2: #a8a8a8;
+  --ink-3: #8a8a8a;
+
+  --rule: #262626;
+  --rule-strong: #343434;
+
+  --accent: #6fae88;
+  --accent-ink: #8fd3ab;
+  --on-accent: #0a0a0a;
+
+  --grade-measured: #6fae88;
+  --grade-derived: #8aabdf;
+  --grade-null: #98a49d;
+  --grade-open: #d0a75f;
+
+  --success: #6fae88;
+  --warn: #d0a75f;
+  --danger: #d98878;
+  --info: #8aabdf;
+
+  --elev-overlay: 0 1px 2px rgba(0, 0, 0, 0.5), 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-1: 1ms;
+    --dur-2: 1ms;
+    --dur-3: 1ms;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BigBounce Lab differentiator (the ONE allowed divergence)
+   Deep teal accent per BRAND_SYSTEM.md §3 — overrides --accent, --accent-ink,
+   --on-accent in all three theme scopes. Nothing else may diverge here.
+   ───────────────────────────────────────────────────────────────────────── */
+:root {
+  --accent: #26685f;
+  --accent-ink: #1b4f48;
+  --on-accent: #f8f6f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --accent: #5fb0a4;
+    --accent-ink: #84d2c6;
+    --on-accent: #0a0a0a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --accent: #5fb0a4;
+  --accent-ink: #84d2c6;
+  --on-accent: #0a0a0a;
+}
