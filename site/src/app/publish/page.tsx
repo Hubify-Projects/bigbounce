@@ -28,7 +28,12 @@ export default function PublishPage() {
       </Band>
 
       <Band tone="alt">
-        <PageHeader eyebrow="01" title="Research tracks" lead="Each program starts with its question, lead result, and boundary." />
+        <PageHeader
+          level="h2"
+          eyebrow="01"
+          title="Research tracks"
+          lead="Each program starts with its question, lead result, and boundary."
+        />
         <RowList
           items={researchPrograms.map((program) => {
             const lead = program.leadSlug ? papers.find((paper) => paper.slug === program.leadSlug) : undefined;
@@ -44,6 +49,7 @@ export default function PublishPage() {
 
       <Band>
         <PageHeader
+          level="h2"
           eyebrow="02"
           title="What we publish, and what supports it"
           lead="Manuscripts make scientific arguments. Data, checkpoints, and code make those arguments inspectable; they are tracked separately so no artifact is mistaken for a discovery claim."
@@ -67,6 +73,7 @@ export default function PublishPage() {
 
       <Band tone="alt">
         <PageHeader
+          level="h2"
           eyebrow="03"
           title="Approved portfolio decisions"
           lead="These decisions settle what each output is for. The remaining work is manuscript review, then the separate endorsement and submission phase."
@@ -83,6 +90,7 @@ export default function PublishPage() {
       <Band width="full">
         <div style={{ maxWidth: "var(--content-width)", margin: "0 auto", padding: "0 24px" }}>
           <PageHeader
+            level="h2"
             eyebrow="04"
             title="Candidate package evidence"
             lead="Every candidate remains available with its exact PDF and artifact record. The evidence percentage is a packaging/review record, not a claim of journal acceptance."
