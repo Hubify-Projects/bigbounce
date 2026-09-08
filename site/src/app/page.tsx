@@ -52,63 +52,31 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* 1 — Hero */}
-      <Band tone="base" width="content">
+      {/* ACT I — the question. One display line, one accent moment. */}
+      <Band tone="base" width="content" open>
         <p className="eyebrow">Spin-torsion cosmology · reproducible lab</p>
-        <h1 style={{ fontFamily: "var(--font-mono-stack)", fontSize: 44, fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.02em", margin: "8px 0 12px", maxWidth: "16ch" }}>
-          Was the Big Bang the beginning?
-        </h1>
-        <p style={{ fontSize: 19, lineHeight: 1.55, maxWidth: "62ch", color: "var(--text-secondary)" }}>
-          This lab tests a nonsingular bounce against data that exists now — and publishes the nulls.
+        <h1 className="display-line">Was the Big Bang the beginning?</h1>
+        <p className="band-lede">
+          This lab tests a nonsingular bounce against data that exists now — and publishes the
+          nulls.
         </p>
-        <div style={{ display: "flex", gap: 20, marginTop: 18, fontSize: 15 }}>
-          <Link href="/explained" style={{ color: "var(--accent)", fontWeight: 600 }}>
+        <div className="link-row">
+          <Link href="/explained" className="band-link band-link-accent">
             Start with the explainer &rarr;
           </Link>
-          <Link href="/papers" style={{ color: "var(--text-secondary)" }}>
+          <Link href="/papers" className="band-link">
             All works
           </Link>
         </div>
       </Band>
 
-      {/* 1.5 — Started from one question (Hubify positioning band, 2026-09-04) */}
-      <Band tone="alt" width="prose">
-        <p className="eyebrow">Started from one question</p>
-        <p style={{ fontSize: 18, lineHeight: 1.5, fontWeight: 600, margin: "6px 0 10px" }}>
-          Was the Big Bang the beginning?
-        </p>
-        <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--text-secondary)", marginBottom: 16 }}>
-          This lab is a reproducible AI research agent guided by a human who asks the next
-          question, approves the compute, and pushes back — one question, months of work, many
-          lanes of research.
-        </p>
-        <StatRow
-          items={[
-            { value: 17, label: "ledger rows worked (as of 2026-09-04)", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/NEXT_SCIENCE_LEDGER.md" },
-            { value: reproPrograms.length, label: "reproducibility programs", href: "/reproduce" },
-            { value: reproExperiments.length, label: "reproducibility manifests", href: "/reproduce" },
-            { value: readiness95Count, label: "works at readiness 95", href: "/status" },
-            { value: NULLS.length, label: "channels published as nulls", href: "#nulls" },
-          ]}
-        />
-        <div style={{ display: "flex", gap: 20, marginTop: 16, fontSize: 14.5, flexWrap: "wrap" }}>
-          <Link href="/research" style={{ color: "var(--accent)", fontWeight: 600 }}>
-            The three tracks &rarr;
-          </Link>
-          <Link href="/reviews" style={{ color: "var(--accent)", fontWeight: 600 }}>
-            The timeline &rarr;
-          </Link>
-          <Link href="/reproduce" style={{ color: "var(--accent)", fontWeight: 600 }}>
-            Reproduce it &rarr;
-          </Link>
+      {/* ACT II — where the work stands. Tone shifts once; the two bands
+          below share it and are separated by whitespace, not a border. */}
+      <Band tone="alt" width="content">
+        <div className="band-head">
+          <p className="eyebrow">Where the work stands</p>
+          <h2 className="band-title">Current results, read from the live record.</h2>
         </div>
-        <p style={{ marginTop: 18, fontSize: 15.5, fontStyle: "italic", color: "var(--text-secondary)" }}>
-          What if your next question could lead to a discovery?
-        </p>
-      </Band>
-
-      {/* 2 — Live result strip */}
-      <Band tone="base" width="content">
         <StatRow
           items={[
             { value: publishReadyCount, label: "works publish-ready", href: "/status" },
@@ -119,24 +87,12 @@ export default async function HomePage() {
         />
       </Band>
 
-      {/* 3 — The claim band */}
-      <Band tone="alt" width="prose">
-        <p className="eyebrow">The lab's strongest sentence</p>
-        <p className="mono" style={{ fontSize: 22, textAlign: "center", margin: "18px 0" }}>
-          <MathText>{"f_NL^local = −35/16  →  f_NL^after ∈ [−0.65, −0.50]"}</MathText>
-        </p>
-        <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--text-secondary)", textAlign: "center" }}>
-          The exact matter-contraction amplitude, transmitted through an explicit nonsingular bounce — the number a survey would actually see.
-        </p>
-        <div style={{ textAlign: "center", marginTop: 8 }}>
-          <EvidenceChip grade="derived" />
+      <Band tone="alt" width="content" tight>
+        <div className="band-head">
+          <p className="eyebrow">Research tracks</p>
+          <h2 className="band-title">Three tracks, each with a lead result.</h2>
         </div>
-      </Band>
-
-      {/* 4 — Three tracks band */}
-      <Band tone="base" width="content">
-        <p className="eyebrow">Research tracks</p>
-        <div className="row-list" style={{ marginTop: 8 }}>
+        <div className="row-list">
           {tracks.map((track) => {
             const leadSlug = track.paperSlugs[0];
             const lp = leadSlug ? liveBySlug.get(leadSlug) : undefined;
@@ -145,7 +101,7 @@ export default async function HomePage() {
             return (
               <Link key={track.slug} href={`/research/${track.slug}`} className="row">
                 <span className="row-main">
-                  <span className="row-title" style={{ fontSize: 18 }}>{track.navTitle}</span>
+                  <span className="row-title">{track.navTitle}</span>
                   <span className="row-purpose">{track.leadResult}</span>
                   <span className="row-chips">
                     <EvidenceChip grade={track.leadGrade} />
@@ -158,12 +114,20 @@ export default async function HomePage() {
             );
           })}
         </div>
+        <p className="band-note">
+          <Link href="/research" className="band-link">
+            The three tracks in full &rarr;
+          </Link>
+        </p>
       </Band>
 
-      {/* 5 — Nulls band */}
-      <Band tone="deep" width="content" id="nulls">
-        <p className="eyebrow">What we ruled out</p>
-        <div className="row-list" style={{ marginTop: 8 }}>
+      {/* ACT III — the nulls, stated as results, then the strongest sentence. */}
+      <Band tone="base" width="content" id="nulls">
+        <div className="band-head">
+          <p className="eyebrow">What we ruled out</p>
+          <h2 className="band-title">Nulls are results. These channels are closed.</h2>
+        </div>
+        <div className="row-list">
           {NULLS.map((n) => (
             <a key={n.label} href={n.href} target="_blank" rel="noreferrer" className="row">
               <span className="row-main">
@@ -176,42 +140,77 @@ export default async function HomePage() {
             </a>
           ))}
         </div>
-        <p style={{ marginTop: 12, fontSize: 13.5 }}>
-          <a href="/research#contributions" style={{ color: "var(--accent)" }}>
-            See every contribution the lab claims &rarr;
+        <p className="band-note">
+          <a href="/research#contributions" className="band-link">
+            Every contribution the lab claims &rarr;
           </a>
         </p>
       </Band>
 
-      {/* 6 — Reproducibility band */}
-      <Band tone="base" width="content">
-        <p className="eyebrow">Reproducibility</p>
-        <p style={{ fontSize: 15, lineHeight: 1.6, maxWidth: "70ch", marginBottom: 12 }}>
-          Every experiment carries a manifest — inputs, scripts, compute venue, and an estimated
-          cost and wall-clock time to reproduce it. BigBounce is the flagship reproducible lab for
-          the Hubify platform.
+      <Band tone="base" width="prose" tight>
+        <p className="eyebrow">The lab&rsquo;s strongest sentence</p>
+        <p className="claim-line mono">
+          <MathText>{"f_NL^local = −35/16  →  f_NL^after ∈ [−0.65, −0.50]"}</MathText>
         </p>
-        <StatRow
-          items={[
-            { value: reproPrograms.length, label: "programs", href: "/reproduce" },
-            { value: reproExperiments.length, label: "experiment manifests", href: "/reproduce" },
-            { value: runnableCount, label: "runnable now", href: "/reproduce" },
-          ]}
-        />
-        <p style={{ marginTop: 12, fontSize: 13.5 }}>
-          <a href="https://huggingface.co/bamfai" target="_blank" rel="noreferrer" style={{ color: "var(--accent)" }}>
-            HuggingFace
-          </a>{" · "}
-          <a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" rel="noreferrer" style={{ color: "var(--accent)" }}>
-            Backblaze B2 (via GitHub source)
-          </a>{" · "}
-          <Link href="/reproduce" style={{ color: "var(--accent)" }}>Zenodo releases &amp; DOIs &rarr;</Link>
+        <p className="band-body">
+          The exact matter-contraction amplitude, transmitted through an explicit nonsingular
+          bounce — the number a survey would actually see.
+        </p>
+        <p className="claim-grade">
+          <EvidenceChip grade="derived" />
         </p>
       </Band>
 
-      {/* 7 — Latest band */}
-      <Band tone="alt" width="content">
-        <p className="eyebrow">Latest</p>
+      {/* ACT IV — how the lab works. */}
+      <Band tone="alt" width="prose">
+        <div className="band-head">
+          <p className="eyebrow">Started from one question</p>
+          <h2 className="band-title">A reproducible research agent, guided by a human.</h2>
+        </div>
+        <p className="band-body">
+          One question, months of work, many lanes of research. A human asks the next question,
+          approves the compute, and pushes back. What if your next question could lead to a
+          discovery?
+        </p>
+        <StatRow
+          className="stat-row-quiet"
+          items={[
+            { value: 17, label: "ledger rows worked (as of 2026-09-04)", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/NEXT_SCIENCE_LEDGER.md" },
+            { value: reproPrograms.length, label: "reproducibility programs", href: "/reproduce" },
+            { value: reproExperiments.length, label: "reproducibility manifests", href: "/reproduce" },
+            { value: readiness95Count, label: "works at readiness 95", href: "/status" },
+            { value: NULLS.length, label: "channels published as nulls", href: "#nulls" },
+          ]}
+        />
+      </Band>
+
+      <Band tone="alt" width="content" tight>
+        <div className="band-head">
+          <p className="eyebrow">Reproducibility</p>
+          <h2 className="band-title">Every experiment carries a manifest.</h2>
+        </div>
+        <p className="band-body">
+          Inputs, scripts, compute venue, and an estimated cost and wall-clock time to reproduce
+          it. BigBounce is the flagship reproducible lab for the Hubify platform.
+        </p>
+        <div className="link-row">
+          <Link href="/reproduce" className="band-link">Reproduce it &rarr;</Link>
+          <a href="https://huggingface.co/bamfai" target="_blank" rel="noreferrer" className="band-link">
+            HuggingFace
+          </a>
+          <a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" rel="noreferrer" className="band-link">
+            GitHub source
+          </a>
+          <Link href="/reproduce" className="band-link">Zenodo releases &amp; DOIs</Link>
+        </div>
+      </Band>
+
+      {/* ACT V — the running record. */}
+      <Band tone="deep" width="content" close>
+        <div className="band-head">
+          <p className="eyebrow">Latest</p>
+          <h2 className="band-title">What changed most recently.</h2>
+        </div>
         <RowList
           items={activity.events.slice(0, 5).map((e) => ({
             title: e.headline,
@@ -220,8 +219,10 @@ export default async function HomePage() {
             right: new Date(e.timestamp).toISOString().slice(0, 10),
           }))}
         />
-        <p style={{ marginTop: 10, fontSize: 13 }}>
-          <Link href="/activity" style={{ color: "var(--accent)" }}>Full activity feed &rarr;</Link>
+        <p className="band-note">
+          <Link href="/activity" className="band-link">Full activity feed &rarr;</Link>
+          {" · "}
+          <Link href="/reviews" className="band-link">Review timeline &rarr;</Link>
         </p>
       </Band>
     </>
