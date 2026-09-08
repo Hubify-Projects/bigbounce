@@ -348,3 +348,61 @@
 @media (max-width: 700px) {
   :global(.claim-line) { font-size: 1.0625rem; padding-left: var(--space-5); }
 }
+
+/* ── Journal page (papers/[slug]) ─────────────────────────────────── */
+:global(.section-h2) {
+  font-size: var(--text-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  font-weight: var(--weight-medium);
+  color: var(--ink);
+  margin: 0 0 var(--space-5);
+}
+:global(.section-h2 + .prose-body) { margin-top: 0; }
+:global(.prose-body) {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+  max-width: var(--prose-width);
+}
+:global(.subsection-h3) {
+  font-size: var(--text-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  font-weight: var(--weight-medium);
+  color: var(--ink);
+  margin: var(--space-8) 0 var(--space-5);
+}
+:global(.result-summary-list li) { font-size: var(--text-body); line-height: var(--lh-body); }
+:global(.readiness-line-value) {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-medium);
+  font-variant-numeric: tabular-nums;
+}
+:global(.readiness-line-track) { height: 3px; }
+
+/* The paper's action row — one hairline above, never a boxed strip. */
+:global(.action-row) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--rule);
+}
+:global(.chip-line) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  margin-top: var(--space-6);
+}
+:global(.breadcrumb-line) {
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
+  color: var(--ink-3);
+  margin: 0 0 var(--space-6);
+}
+:global(.breadcrumb-line a) { color: var(--ink-2); text-decoration: none; }
+:global(.breadcrumb-line a:hover) { color: var(--accent-ink); }
+:global(.review-evidence-details > summary) { list-style: none; }
+:global(.review-evidence-details > summary::-webkit-details-marker) { display: none; }
