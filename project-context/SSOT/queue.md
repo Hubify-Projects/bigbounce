@@ -42,6 +42,17 @@ The active work is:
    publishing items are Houston-only (approvals, accounts, reviewer picks,
    fee/waiver, endorsement emails, submit clicks) + post-approval Zenodo
    P4 refresh / P5 mint.
+6. **ACTIVE — legacy-2025 archaeology campaign (opened 2026-09-18, Claude director):**
+   Houston's March–July 2025 pre-BigBounce notes (White Hole Sponge / Black Hole
+   Sponge / ICBC / Omega Black Hole / "Born in a black hole") audited as
+   provenance, not science. Ledger items #20–#22 opened (cosmic fate; black-hole
+   daughter universes; parent–child bookkeeping + Popławski reproduction).
+   Constraints: no active manuscript edits, no version bumps, existing nulls
+   (P4/P5 spin dipole, 2026-09-02 Popławski dipole exclusion, P1N dark-energy
+   closures) stay closed; outputs publish to the site's Open Questions
+   (`/speculations`) and new Research Genealogy layers only. Plan:
+   `research/archaeology_2025/PLAN.md`; live board:
+   `research/archaeology_2025/STATUS.md`.
 5. **ACTIVE — Hubify canonical-lab alignment / auth gap:** restore
    `HUBIFY_TOKEN` through an approved secret source before CLI verification;
    then align the canonical lab/status surfaces with the current repo and SSOT
