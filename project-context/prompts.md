@@ -1045,3 +1045,19 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex delegated BigBounce planning lane
 
 > also answer to this: Whether old Hubify AIOS schedules should be paused after the audit. -- yes, definitely it is not associated with our active hubify project at all anymore ... ok please finalize the plan for being the main Director agent of the relevant spawned subagent sessions here in Codex - please ensure you use Terra or Sol Light/Medium not high for these sessions thanks and have the spawned sessions always report back to you on progress as you are the director and ensure they all have goals and report back with the same standards and tracking of everything just like we want to achieve with this youmd etc - and go ahead and give yourself a proper goal for this and launch all subagents thanks - and be sure to take all learnings from this session etc and create or improve related skills and save all new repeatable processes, work, sops, etc we've developed or worked on or improved etc etc
+
+**16:30 PT - Houston shared the ChatGPT 2025-notes brain dump and asked for an opinion (2026-09-18)**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU
+- `session`: claude-code-legacy-archaeology-2026-09-18
+- `agent`: Claude Fable 5.1 director
+
+> without affecting any current on-going research i just wanted to share this long brain dump prompt from chatgpt that had reviewed a bunch of my OLD OLD PRE-RESEARCH notes pre-bigbounce project stuff and ideas and i don't want to mess up our current legit bigbounce project but wanted to share all this with you and get your opinion on what should and shouldn't be added or expanded on or left out etc what is relevant vs not or whatever but felt like i should share this with you at least as historical context from my initial idea exploration before realizing i needed a proper scientific setup which is what led me to create hubify and the bigbounce projects respectively together etc .... ok here is the dump dont destroy my good research or anything --- please....
+
+Full dump archived verbatim: `research/archaeology_2025/inputs/chatgpt_braindump_2026-09-18.md`.
+
+**16:30 PT - Houston authorized full execution of the triaged plan (2026-09-18)**
+
+> continue and don't stop until all the new plans and lanes are fully executed documented and running live with live monitoring for all spawned subagents sessions and research and site improvements and everything
+
+Director's standing constraints for this campaign: no active-manuscript edits, existing nulls stay nulls, new science to Open Questions / Genealogy layers only. Plan: `research/archaeology_2025/PLAN.md`; live board: `research/archaeology_2025/STATUS.md`.
