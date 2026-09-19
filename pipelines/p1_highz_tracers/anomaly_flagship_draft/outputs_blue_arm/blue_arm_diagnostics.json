@@ -1,0 +1,37 @@
+{
+  "mean_mse_r2_drop_rB": 0.006049705350691159,
+  "mean_mse_r2_drop_rR": 0.6087560730909919,
+  "mean_mse_r2_drop_rZ": 0.2006900877428205,
+  "mean_mse_r2_full": 0.7773946933937833,
+  "residual_vs_snr_spearman": {
+    "B": {
+      "n": 1244,
+      "p": 0.7795969542043931,
+      "rho": -0.007942116503337327
+    },
+    "R": {
+      "n": 1244,
+      "p": 0.006163486533939814,
+      "rho": -0.07761679233087501
+    },
+    "Z": {
+      "n": 1244,
+      "p": 1.1682728652124642e-09,
+      "rho": -0.1714053713693917
+    }
+  },
+  "restframe_test": {
+    "interpretation": "observed-frame IQR/median < rest-frame IQR/median => the residual concentrates in the OBSERVED frame, not the rest frame -- favours a fixed-wavelength (instrumental/calibration) origin over a rest-frame spectral feature",
+    "n_zwarn0": 502,
+    "observed_iqr_over_median": 0.3910567976669906,
+    "observed_median_A": 4211.111111111111,
+    "restframe_iqr_over_median": 0.6755848156854417,
+    "restframe_median_A": 2098.366886804045
+  },
+  "worst_band_b_fraction": 0.9485530546623794,
+  "worst_band_census": {
+    "B": 1180,
+    "R": 4,
+    "Z": 60
+  }
+}

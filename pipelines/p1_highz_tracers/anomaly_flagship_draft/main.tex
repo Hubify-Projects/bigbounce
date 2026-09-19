@@ -51,7 +51,7 @@
   pdfnewwindow=true
 }
 
-\newcommand{\paperVersion}{vAF.0.3}
+\newcommand{\paperVersion}{vAF.0.4}
 \newcommand{\paperTimestamp}{September 19, 2026}
 \newcommand{\repoSHA}{main}
 % #1 = repo-relative path (raw, used in the URL); #2 = short display text.
@@ -66,8 +66,8 @@
 
 \begin{document}
 
-\title{A provenance-sealed anomaly-score candidate catalogue of DESI DR1
-spectra: selection, validation, and a descriptive taxonomy}
+\title{A provenance-sealed DESI DR1 anomaly-score candidate catalogue: selection,
+validation, and a null known-object recovery benchmark}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -76,41 +76,59 @@ spectra: selection, validation, and a descriptive taxonomy}
 \date{\paperTimestamp\ (\paperVersion)}
 
 \begin{abstract}
-We publish a machine-flagged candidate catalogue of spectroscopically unusual
-objects in Data Release 1 of the Dark Energy Spectroscopic Instrument (DESI),
-together with the complete provenance chain needed to reproduce it. An
-archived convolutional autoencoder, bound by SHA-256 to a sealed run contract,
-assigns a reconstruction-error anomaly score $S$ to every science-target
-spectrum in the public \texttt{iron} release; $28{,}425{,}963$ raw rows
-deduplicate to $27{,}547{,}223$ unique \TARGETID s, of which $21{,}793{,}550$
-pass the science-target provenance gate. We show that a score cut alone does
+No discovery is claimed in this paper: we publish a machine-flagged candidate
+catalogue of spectroscopically unusual objects in Data Release 1 of the Dark
+Energy Spectroscopic Instrument (DESI), together with the complete provenance
+chain needed to reproduce it, and a known-object recovery benchmark that
+clears none of its pre-declared bars. An archived convolutional autoencoder,
+bound by SHA-256 to a sealed run contract, assigns a reconstruction-error
+anomaly score $S$ to every science-target spectrum in the public
+\texttt{iron} release; $28{,}425{,}963$ raw rows deduplicate to
+$27{,}547{,}223$ unique \TARGETID s, of which $21{,}793{,}550$ pass the
+science-target provenance gate. We show that a score cut alone does
 not select astrophysical objects: above $S=3$, more than $99.5\%$ of raw
 fibres in every score bin are sky or non-science fibres, and that fraction
-\emph{rises} with score. Applying the provenance gate
-($\OBJTYPE = \mathrm{TGT}$, $\texttt{COADD\_FIBERSTATUS} = 0$,
+rises with score up to $S=10$, above which the single remaining bin (337
+fibres, one science target) is too sparse to constrain the trend. Applying the
+provenance gate ($\OBJTYPE = \mathrm{TGT}$, $\texttt{COADD\_FIBERSTATUS} = 0$,
 $\TARGETID > 0$) before any score cut, and a pre-declared threshold rule,
 yields a released catalogue of $1{,}244$ objects --- the top
 $5.7\times10^{-5}$ of the science-target population. We validate the catalogue
-against a published contract of sixteen machine-checkable requirements, and
-report three results that constrain its interpretation: the anomaly score is
-uncorrelated with exposure quality and source brightness
-($|\rho_s| < 0.1$), so the tail is not a faintness artefact; the score is
-driven almost entirely by the blue spectrograph arm ($\rho_s = +0.53$ against
-the $b$-camera residual, versus $-0.04$ and $-0.14$ for $r$ and $z$); and the
-catalogue's descriptive taxonomy of $25$ clusters and $8$ families, built over
-the $675$ objects with no SIMBAD or NED counterpart, carries no material
-structure in the model's own latent space and must be read as a
-stratification of the candidate list rather than as physical classes. A
-known-object recovery benchmark against five reference classes recovers no
-class at the pre-declared bar, so this work is reported as a validated data
-release and not as a discovery. We name $32$ follow-up targets in five
-rules-based tiers and run the cheapest of the named tests here: of four
-anomaly-selected DESI-pipeline $z\ge4$ quasar candidates with no catalogued
-counterpart, the released Legacy Survey photometry already refutes one and
-supports one, and cannot decide the remaining two because the published
-schema omits flux inverse variances --- one of four release defects we record
-openly rather than hide. We close with the open tests, led by the absent selection
-function, that any population-level use of this catalogue must clear first.
+against a published contract of sixteen machine-checkable requirements
+(eleven pass outright; two are reported quantities rather than thresholds;
+one returns a weak positive signal; two fail by design, to force the release
+to state its own defects), and report three results that constrain its
+interpretation. First, the score is essentially uncorrelated with exposure
+quality and source brightness (Spearman $|\rho_s| \le 0.10$ against five
+independent measures), so the tail is not a faintness or short-exposure
+artefact. Second, the score is not merely correlated with but almost entirely
+\emph{explained by} the blue spectrograph arm's own reconstruction residual:
+it is the dominant term of the score by construction ($94.9\%$ of released
+objects have it as their worst-fit camera; it alone accounts for $R^2=0.78$ of
+the score's variance, falling to $R^2=0.01$ without it), the residual shows no
+dependence on blue-arm signal-to-noise ($\rho_s=-0.01$), and its wavelength
+distribution concentrates far more tightly in the observed frame than the
+rest frame for spectroscopically confirmed objects --- evidence favouring a
+fixed-wavelength calibration origin over a genuine spectral feature, though
+we do not close the question here. Third, the catalogue's taxonomy of $25$
+clusters and $8$ families, built over the $675$ objects with no SIMBAD or NED
+counterpart, is structured but not separated in the model's own latent space
+and must be read as a stratification of the candidate list rather than as
+physical classes. A known-object recovery benchmark against five reference
+classes recovers no class at its pre-declared bar; with reference samples of
+$27$--$5{,}285$ objects the benchmark has little power (95\% upper limits up
+to $12.5\%$ recovery for the rarest class) and excludes only a strong
+recovery signal, so this work is reported as a validated data release and not
+as a discovery. We name $32$ follow-up targets in five rules-based tiers and
+run the cheapest of the named tests here: of four anomaly-selected
+DESI-pipeline $z\ge4$ quasar candidates with no catalogued counterpart, the
+released Legacy Survey photometry already refutes one on public data alone,
+and we can neither confirm nor refute the remaining three, because the
+published schema omits flux inverse variances and because one candidate's own
+photometry sits inside a disclosed photometric-join defect --- among the
+release defects we record openly rather than hide. We close with the open
+tests, led by the absent selection function, that any population-level use of
+this catalogue must clear first.
 \end{abstract}
 
 \maketitle
@@ -143,20 +161,27 @@ are:
   \item \textbf{A demonstration that the provenance gate, not the score cut,
     is what makes such a sample astrophysical} (Sec.~\ref{sec:gate}). Above
     $S=3$ the raw fibre population is more than $99.5\%$ sky or non-science in
-    every score bin, and the contamination \emph{worsens} with score. This is
-    a property of the substrate, not of our model, and it applies to any
-    reconstruction-error search run on public coadds.
+    every score bin, and the contamination \emph{worsens} with score up to
+    $S=10$, above which the single remaining bin is too sparse (337 fibres,
+    one science target) to constrain the trend. This is a property of the
+    substrate, not of our model, and it applies to any reconstruction-error
+    search run on public coadds.
   \item \textbf{A published validation contract} of sixteen
     machine-checkable requirements (Sec.~\ref{sec:validation}), with its
-    checker and raw output released, including two defects the release carries
-    openly.
+    checker and raw output released, including four release defects the
+    release carries openly rather than hides.
   \item \textbf{Three measurements of what the score responds to}
-    (Secs.~\ref{sec:quality}--\ref{sec:latent}): it is not an exposure-quality
-    proxy, it is driven by the blue arm, and the taxonomy it supports is
+    (Secs.~\ref{sec:quality}--\ref{sec:blue}): it is not an exposure-quality
+    proxy; it is almost entirely explained by the blue-arm reconstruction
+    residual ($R^2=0.78$, falling to $0.01$ without it), whose own
+    wavelength distribution favours an instrumental over an astrophysical
+    origin without closing the question; and the taxonomy it supports is
     descriptive rather than physical.
-  \item \textbf{A negative recovery benchmark} (Sec.~\ref{sec:recovery}):
+  \item \textbf{A negative, low-power recovery benchmark} (Sec.~\ref{sec:recovery}):
     against five published reference classes, no class is recovered at the
-    pre-declared bar.
+    pre-declared bar, and the benchmark's small reference samples give it
+    little power to have found one (95\% upper limits up to $12.5\%$
+    recovery for the rarest class).
   \item \textbf{A named, rules-based follow-up set}
     (Sec.~\ref{sec:followup}), with the cheapest test in the set --- a
     Lyman-break consistency check on public imaging --- executed here rather
@@ -184,8 +209,8 @@ We use Data Release 1 of DESI \cite{DESIDR1,DESIInstrument}: the public
 \texttt{iron} spectroscopic reduction, its redshift catalogue
 \texttt{zall-pix-iron.fits}, and the per-(survey, program, healpix) coadd
 spectra, streamed and scored in place rather than bulk-downloaded. Redshifts,
-spectral classifications and quality flags are the pipeline's own
-\cite{DESIPipeline,DESIBitmasks}.
+spectral classifications and quality flags are the pipeline's own, fit by
+Redrock \cite{Redrock} and documented in \cite{DESIPipeline,DESIBitmasks}.
 
 The scan covered a $36{,}634$-group locator inventory, receipt-verified group
 by group, and processed
@@ -199,7 +224,14 @@ Of those, $21{,}793{,}550$ satisfy the science-target provenance gate defined
 in Sec.~\ref{sec:gate};
 % [DN].parent_science_unique_targetids ([STS] science_only.unique_targetids)
 that number, not the full $27.5$ million, is the parent population of this
-catalogue, and every selected fraction quoted below uses it.
+catalogue, and every selected fraction quoted below uses it. The
+deduplication rule itself has no physical content: which of a repeated
+\TARGETID's several DESI (survey, program) observations survives depends on
+shard file names and row order, not on which exposure is better. We have not
+quantified how many of the $1{,}244$ released objects sit near enough to
+threshold that their alternate duplicate would score below it, and record
+this as an open, unquantified caveat on near-threshold catalogue membership
+rather than assert it is small.
 
 \subsection{Provenance chain}
 \label{sec:provenance}
@@ -211,9 +243,11 @@ the nine released data products.
 % [DN].n_hashed_artifacts = 13
 
 \begin{table*}[t]
-\caption{The hash-bound provenance chain. Every artifact is re-hashed at
-publication time and compared against the landing receipt; all thirteen
-match (checks V2 and V3).}
+\caption{The hash-bound provenance chain. Nine released data products are
+re-hashed at publication time and matched against the landing receipt
+(check V2); the run contract, archived model and parent zcatalog hashes are
+recorded and chain-bound (check V3); the inference-code hash is recorded in
+the run contract.}
 \label{tab:chain}
 \input{tables/tab_provenance_chain}
 \end{table*}
@@ -248,6 +282,25 @@ the scan.
 A high $S$ therefore means a spectrum unlike the shapes the model learned to
 reproduce; it is a distance in the model's own reconstruction metric and
 carries no physical normalisation.
+
+The model itself, \texttt{best\_model\_47k.pt}, predates the clean-rerun
+contract this release is bound under and is treated here strictly as a
+frozen, hash-sealed artifact (Sec.~\ref{sec:provenance}): its weights are
+re-verified byte for byte, but its training corpus (parent survey, target
+classes, selection, any quality cuts, and any overlap with the $21.8$
+million science targets scanned here), its wavelength-to-bin mapping across
+the three cameras, and its architecture beyond ``convolutional
+autoencoder, $496\!\to\!128$'' are not documented in any artifact this
+release controls. Two consequences follow directly from Sec.~\ref{sec:blue}:
+if the training corpus is drawn from the same imaging/spectroscopic
+population scored here, objects inside it would carry an artificially low
+reconstruction error, a selection effect operating on the exact quantity
+that defines the catalogue; and the per-camera bin count is a candidate
+contributor, alongside the calibration explanation of Sec.~\ref{sec:blue},
+to why the reconstruction loss is dominated by the $b$ camera. Neither can be
+assessed without the missing documentation, which we did not reconstruct or
+guess at for this release; closing it is a named prerequisite for any use of
+this catalogue beyond the data-release-with-caveats framing adopted here.
 
 The calibration constants were fit on a two-stage
 probability-proportional-to-size cluster
@@ -366,12 +419,16 @@ The released catalogue contains $1{,}244$ objects. Table~\ref{tab:schema}
 lists the published columns by group: identification and sky position, the
 anomaly score with its per-camera residual decomposition, the $128$ latent
 activations, the DESI pipeline redshift solution, exposure-quality
-diagnostics, Legacy Survey photometry \cite{LegacySurveys}, the AllWISE and
-SIMBAD/NED cross-match results, and the taxonomy labels of
+diagnostics, Legacy Survey photometry \cite{LegacySurveys}, the AllWISE
+\cite{AllWISE} and SIMBAD/NED cross-match results, and the taxonomy labels of
 Sec.~\ref{sec:taxonomy}.
 
 \begin{table*}[t]
-\caption{Released column schema, by group.}
+\caption{Released column schema, by group (183 of 192 released columns; the
+remaining 9 are internal joins and derived colours/flags not yet grouped
+here). \texttt{classification} and \texttt{discovery\_potential} are
+constant placeholders across all 1,244 rows, listed rather than dropped so
+the schema stays honest about what is not yet populated.}
 \label{tab:schema}
 \input{tables/tab_catalogue_schema}
 \end{table*}
@@ -441,9 +498,10 @@ repaired in the public deposit.
 % [DN].has_flux_ivar_columns = false
 
 \subsection{External counterparts}
-SIMBAD \cite{SIMBAD} and NED cross-matching at $3''$ identifies counterparts
-for $569$ objects ($45.7\%$): $562$ via NED, $38$ via SIMBAD, $31$ via
-both.
+SIMBAD \cite{SIMBAD} and NED \cite{NED} cross-matching at $3''$ (queried
+through astroquery \cite{Ginsburg2019}, as is VizieR \cite{VizieR} for
+AllWISE below) identifies counterparts for $569$ objects ($45.7\%$): $562$
+via NED, $38$ via SIMBAD, $31$ via both.
 % [DN].n_matched, n_ned_found, n_simbad_found, n_both_services
 That leaves $675$ ($54.3\%$) unmatched. Table~\ref{tab:cptypes} breaks the
 matches down by counterpart type. They are overwhelmingly ordinary: $455$ of
@@ -453,21 +511,37 @@ objects, is relatively richer in quasars ($19$ of $38$).
 % [DN].ned_types_top, simbad_types_top
 
 \begin{table}[t]
-\caption{Counterpart types of the $569$ matched objects, by service. NED
-types dominate by count; SIMBAD matches fewer objects but a larger quasar
-fraction. Only the eight most common types per service are listed.}
+\caption{Counterpart types of the $569$ matched objects, listed per service
+(columns are not disjoint: $31$ objects match both, so NED's $562$ and
+SIMBAD's $38$ sum to $600$). All $8$ distinct NED types and all $6$ distinct
+SIMBAD types are shown; nothing is truncated. NED types dominate by count;
+SIMBAD matches fewer objects but a larger quasar fraction.}
 \label{tab:cptypes}
 \input{tables/tab_counterpart_types}
 \end{table}
 
 Unmatched does not mean new. The unmatched set includes objects simply
 outside other surveys' footprints or below their detection limits, and the
-Gaia statistic above shows the population is faint. The point is reinforced by
-the extreme tail: the three highest-scoring objects in the whole sample
-($S = 11.33$, $8.01$, $7.80$) are all \emph{matched}, i.e.\ already
-catalogued. The score's strongest responses are to known objects, which is a
-mild positive signal for the method and a reminder that the unmatched subset
-is not the interesting tail by construction.
+Gaia statistic above shows the population is faint. The extreme tail
+sharpens this: the six highest-scoring objects in the whole sample
+($S = 11.33$, $8.01$, $7.80$, $7.74$, $7.57$, $7.33$) are all \emph{matched},
+i.e.\ already catalogued, and matched objects score higher than unmatched
+ones at the population level too (median $3.337$ vs.\ $3.237$,
+Mann--Whitney $p=4.5\times10^{-5}$). We do not read this as a signal about
+the method, because it is confounded with brightness: SIMBAD/NED-matched
+objects are also significantly brighter and better measured than unmatched
+ones (median $r$-band flux $0.289$ vs.\ $0.184\,\nmgy$, $p=8\times10^{-4}$;
+median coadd $r$-band signal-to-noise $0.079$ vs.\ $0.046$,
+$p=1\times10^{-6}$) --- exactly what makes an object catalogued elsewhere in
+the first place. A brightness preference in the score would produce this
+same matched/unmatched difference with no implication for whether the score
+finds anything astrophysically unusual, and Sec.~\ref{sec:quality} already
+shows the score is not a brightness proxy across the released sample, not
+within this split specifically. The decisive evidence remains
+Sec.~\ref{sec:recovery}: the score preferentially selects catalogued
+objects, but recovers no specific class of genuinely unusual object at any
+enrichment. The reminder this leaves stands: the unmatched subset is not the
+interesting tail by construction.
 
 Figure~\ref{fig:sky} shows the sky distribution of both subsets. The
 catalogue traces the DR1 footprint and its tiling pattern; neither subset is
@@ -489,16 +563,22 @@ property of the score.}
 Table~\ref{tab:contract} lists the requirements this release is held to. Each
 is machine-checkable against the published files; the checker and its raw
 output are released with the catalogue. Requirements cover provenance and
-hash binding (V1--V3b), the selection rule (V4, V7, V9), internal consistency
+hash binding (V1--V3b), the selection rule (V4, V7), the sky-fraction trend
+of Sec.~\ref{sec:gate} (V9), internal consistency
 of the released tables (V5, V6, V8), three tests of what the score measures
 (V10--V12), and three defects the release must state rather than hide
 (DEFECT-1 to DEFECT-3).
 
-Thirteen requirements pass. V11 and DEFECT-3 are \textsc{reported} quantities
-rather than thresholds. V12 returns \textsc{structured-but-weak}, and we take
-the weaker reading throughout (Sec.~\ref{sec:latent}). DEFECT-1 and DEFECT-2
-\textsc{fail} by design: they exist to force the release to carry its own
-known defects (Sec.~\ref{sec:defects}).
+Eleven requirements pass outright (V1--V10, V3b). V11 and DEFECT-3 are
+\textsc{reported} quantities rather than thresholds. V12 returns
+\textsc{structured-but-weak}, and we take the weaker reading throughout
+(Sec.~\ref{sec:latent}). DEFECT-1 and DEFECT-2 \textsc{fail} by design: they
+exist to force the release to carry its own known defects
+(Sec.~\ref{sec:defects}). V1 is a partial pass: it verifies $\TARGETID>0$,
+the one of its three provenance-gate conditions that survives in the
+published file, because \OBJTYPE\ and \texttt{COADD\_FIBERSTATUS} are not
+carried in the released tables (Sec.~\ref{sec:defects} records this as an
+open schema gap).
 
 \begin{table*}[t]
 \caption{Validation contract. Outcomes are re-run against the released
@@ -518,9 +598,10 @@ signal-to-noise, $-0.076$ against coadd exposure time, $-0.093$ and $-0.096$
 against $\texttt{TSNR2}_{\rm LRG}$ and $\texttt{TSNR2}_{\rm QSO}$, and
 $-0.016$ against $r$-band flux (Fig.~\ref{fig:quality}).
 % [VC] check V10
-At $n=1{,}244$ four of these are formally significant and all are negligible
-in size; the significant ones are negative, i.e.\ longer exposures score
-marginally \emph{lower}.
+At $n=1{,}244$, four of these reach $p<0.05$; the three strongest are
+negative (longer exposures, higher \texttt{TSNR2}, score marginally
+\emph{lower}), while the coadd signal-to-noise coefficient is positive and
+only marginal ($\rho_s=+0.058$, $p=0.039$). All five are negligible in size.
 
 The claim this supports is narrow and negative: the $S>3$ tail is not
 explained by faintness or short exposure. It is not evidence that the tail is
@@ -546,18 +627,56 @@ for $r_Z$.
 The median residuals are correspondingly lopsided: $r_B = 2.53$ versus
 $r_R = 1.03$ and $r_Z = 0.94$.
 % [DN].band_residual_medians
-Figure~\ref{fig:bands} shows the three relations. The $b$-camera panel is a
-near-monotonic locus; the other two are scatter.
+Because $S$ is an exact affine function of \texttt{mean\_mse}
+($\rho_s(S,\texttt{mean\_mse})=1.000$), $\rho_s(S,r_B)$ is a correlation
+between the score and one of its own components, not an independent
+measurement; a positive coefficient for whichever camera dominates the loss
+follows arithmetically. The right statement is a variance decomposition:
+regressing \texttt{mean\_mse} on $(r_B,r_R,r_Z)$ gives $R^2=0.777$; dropping
+$r_B$ collapses it to $R^2=0.006$, while dropping $r_R$ or $r_Z$ leaves
+$R^2=0.609$ or $0.201$. The released \texttt{worst\_band} column makes the
+same point directly: the $b$ camera is the worst-fit camera for $1{,}180$ of
+the $1{,}244$ released objects ($94.9\%$; $60$ for $z$, $4$ for $r$), and the
+released \texttt{peak\_residual\_wavelength} column concentrates hard against
+the DESI blue cutoff (median $4057$\,\AA, minimum $3632$\,\AA, $89.5\%$ of
+objects below $5930$\,\AA).
+% [BAD].mean_mse_r2_full, .mean_mse_r2_drop_rB/rR/rZ, .worst_band_census
+Figure~\ref{fig:bands} shows the three per-camera relations. The $b$-camera
+panel is a near-monotonic locus; the other two are scatter.
 
 Whatever the model responds to lives in the $b$ camera. Two readings survive
-this measurement, and the data here do not separate them: blue-end
-sky-subtraction and calibration residuals, which are a known difficulty at
-the blue limit of fibre spectrographs, or genuine spectral behaviour at rest
-frame wavelengths that land in the $b$ camera for this redshift distribution.
-This is the single most consequential open question about the catalogue,
-because the first reading would make much of the list instrumental. It is
-also cheap to test on public data, and we name that test as OT-3 in
-Sec.~\ref{sec:opentests} rather than speculating here.
+this measurement: blue-end sky-subtraction and calibration residuals, which
+are a known difficulty at the blue limit of fibre spectrographs, or genuine
+spectral behaviour at rest-frame wavelengths that land in the $b$ camera for
+this redshift distribution. This is the single most consequential open
+question about the catalogue, because the first reading would make much of
+the list instrumental --- and unlike the released columns used above, it is
+not fully undecided by the data already in hand. Two within-catalogue
+diagnostics both lean instrumental without closing the question. First, the
+$b$-camera residual has no detectable dependence on $b$-camera
+signal-to-noise ($\rho_s(r_B,\texttt{snr}_b)=-0.008$, $p=0.78$; contrast
+$\rho_s(r_R,\texttt{snr}_r)=-0.078$, $p=0.006$ and
+$\rho_s(r_Z,\texttt{snr}_z)=-0.171$, $p\sim10^{-9}$), which disfavours the
+simplest reading that the $b$ arm reconstructs worst because it is noisiest.
+Second, for the $502$ objects with a secure pipeline redshift ($\ZWARN=0$),
+\texttt{peak\_residual\_wavelength} is more tightly concentrated in the
+\emph{observed} frame (median $4211$\,\AA, interquartile range $39\%$ of the
+median) than in the rest frame after de-redshifting (median $2098$\,\AA,
+interquartile range $68\%$ of the median): a genuine rest-frame spectral
+feature should pile up at a fixed rest wavelength, and a fixed-wavelength
+calibration artefact should pile up at a fixed observed wavelength, and the
+data show the latter pattern.
+% [BAD].residual_vs_snr_spearman, .restframe_test
+These two diagnostics both favour the instrumental reading over the
+astrophysical one, but neither is a closed test: they rule out one specific
+noise-driven mechanism and one specific astrophysical mechanism, not every
+member of either class. It is also cheap to test further on public data, and
+we name the airmass/lunar-phase/sky-subtraction-residual version of that test
+as OT-3 in Sec.~\ref{sec:opentests}. The diagnostics in this section are
+computed by the committed script
+\texttt{blue\_arm\_diagnostics\_2026-09-19.py}
+(Sec.~\ref{sec:repro}), run on the released tables alone, with no
+new scan and no network access.
 
 \begin{figure*}[t]
 \includegraphics[width=\textwidth]{figures/fig_band_residuals.pdf}
@@ -579,25 +698,23 @@ catalogue identifier, and one timed out).
 The bar was declared in advance: at least one class recovered at
 $>10\times$ enrichment with $\ge 5$ matches.
 
-Table~\ref{tab:recovery} gives the outcome. One broad-absorption-line quasar
-\cite{Gibson2009} matches, at $4.2\times$ the base rate; Roma-BZCAT blazars
-\cite{Massaro2015}, cataclysmic variables \cite{RitterKolb2003},
-Lyman-$\alpha$ emitters \cite{Ouchi2008} and superluminous-supernova hosts
-\cite{Perley2016} return nothing.
-% [BEN].results
+Table~\ref{tab:recovery} gives the outcome, with enrichment computed against
+the $21{,}793{,}550$-object science-target parent (Sec.~\ref{sec:data}), the
+same denominator used for every other selected fraction in this paper. One
+broad-absorption-line quasar \cite{Gibson2009} matches, at $3.3\times$ the
+base rate; a single match on a $N_{\rm ref}=5{,}285$ reference class, so this
+enrichment carries a wide interval of its own and supports no standalone
+claim. Roma-BZCAT blazars \cite{Massaro2015}, cataclysmic variables
+\cite{RitterKolb2003}, Lyman-$\alpha$ emitters \cite{Ouchi2008} and
+superluminous-supernova hosts \cite{Perley2016} return nothing.
+% [BEN].results; [DN].benchmark.enrichment_science_denominator.bal_quasars
 \emph{No reference class is recovered at the pre-declared bar}, and there is
 no closed-loop candidate class.
 % [DN].benchmark.closed_loop_candidates = 0
 
-Two caveats sharpen rather than soften that conclusion. First, the released
-benchmark computes its base rate as $1{,}244$ over all $27{,}547{,}223$
-unique \TARGETID s; the reference objects are science targets, so the fairer
-denominator is the $21{,}793{,}550$ science-target parent, which raises the
-base rate and \emph{lowers} the BAL enrichment from $4.2\times$ to
-$3.3\times$.
-% [DN].benchmark.enrichment_science_denominator.bal_quasars
-Second, the reference footprints are small compared with the parent survey,
-so the test has little power for rare classes: the $95\%$ upper limit on the
+This should sharpen rather than soften that conclusion: the reference
+footprints are small compared with the parent survey, so the test has little
+power for rare classes. The $95\%$ upper limit on the
 recovery of superluminous-supernova hosts is $12.5\%$, which excludes almost
 nothing. The honest summary is that the benchmark rules out a strong
 recovery signal and is consistent with anything weaker.
@@ -608,8 +725,10 @@ validated selection rather than a discovery paper, and we state it as such.
 \begin{table*}[t]
 \caption{Known-object recovery benchmark, $1.5''$ positional match.
 $N_{\rm ref}$ counts reference objects inside the DR1 footprint; recovery is
-the matched fraction of those, with a $95\%$ binomial interval; enrichment is
-recovery over the catalogue's base rate in the parent.}
+the matched fraction of those, with a $95\%$ Wilson interval; enrichment is
+recovery over the catalogue's base rate against the $21{,}793{,}550$
+science-target parent (Sec.~\ref{sec:data}), not the $27{,}547{,}223$
+all-\TARGETID\ parent.}
 \label{tab:recovery}
 \input{tables/tab_recovery_benchmark}
 \end{table*}
@@ -646,6 +765,27 @@ Fig.~\ref{fig:families}).
 % [FAM]; [VC] check V6
 Family sizes sum to $675$ exactly, and the per-family counts agree with the
 per-object labels (check V6).
+
+This construction has three undisclosed weaknesses we record rather than
+silently carry. Right ascension is periodic at $360^\circ$; naive Euclidean
+distance on $(S,\alpha,\delta)$ splits objects near $\alpha\approx0$ into
+maximally distant points, and Table~\ref{tab:families}'s own RA spans (up to
+$350^\circ$ for one family) are the signature of exactly that defect, not a
+genuinely sky-spanning family. The UMAP and HDBSCAN hyperparameters
+(neighbourhood size, minimum distance, output dimension, random seed,
+minimum cluster size, and the $k$-nearest-neighbour noise-reassignment rule)
+are not recorded in this manuscript or its manifest, so this section is not
+reproducible from the released files alone even though the clustering
+pipeline itself is. And PCA on a three-feature input can only rotate and
+rescale it, not reduce its dimension usefully; its role in the pipeline is
+unexplained. None of these affect the null result of
+Sec.~\ref{sec:latent}, which already reports the weaker,
+\textsc{structured-but-weak} reading throughout this paper --- but a
+corrected re-clustering (RA embedded as
+$(\cos\alpha\cos\delta,\sin\alpha\cos\delta,\sin\delta)$, every
+hyperparameter and seed stated, and a baseline comparison against
+(survey, programme) cells alone) is needed before the taxonomy's specific
+cluster and family boundaries are treated as anything but provisional.
 
 \begin{table*}[t]
 \caption{Per-family evidence over the $675$ SIMBAD/NED-unmatched objects.
@@ -750,8 +890,9 @@ target count, and are replayable from the released files.
         catalogued counterpart, two of them at $z > 6$. These are pipeline
         redshifts, not confirmations. Section~\ref{sec:dropout} runs the
         cheapest discriminating test on them here.
-  \item \textbf{FT-B} (1 target) --- AllWISE $W1-W2 \ge 0.8$, the standard
-        mid-infrared AGN criterion \cite{Stern2012,WISE}. The object is
+  \item \textbf{FT-B} (1 target) --- AllWISE \cite{AllWISE} $W1-W2 \ge 0.8$,
+        the standard mid-infrared AGN criterion \cite{Stern2012}, measured on
+        the WISE mission \cite{WISE}. The object is
         \TARGETID~$103610381762578$ at $W1-W2 = 0.822$, in family~5. Next
         tests are public archives: NEOWISE-R light curve \cite{NEOWISE}, ZTF
         optical light curve \cite{ZTF}, archival X-ray coverage.
@@ -810,56 +951,78 @@ $f_g$ is $0.289\nmgy$.}
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_fta_photometry.pdf}
 \caption{Legacy Survey $grz$ fluxes of the four FT-A candidates. A Lyman
-break at the pipeline redshift requires $f_g$ to vanish in every panel. The
-$z=5.19$ candidate instead carries the $95$th-percentile $g$ flux of the whole
-catalogue.}
+break at the pipeline redshift requires a $g$-band dropout \emph{and} a
+detection in the reddest band fully blueward of the break; the $z=5.19$
+candidate's $g$ flux instead sits at the sample's $94.7$th percentile.}
 \label{fig:fta}
 \end{figure}
 
-Three outcomes, stated at their evidential strength:
+Two outcomes, stated at their evidential strength. A correct break test needs
+both halves for every candidate it applies to: a dropout in every band fully
+blueward of the break, and a surviving detection in the reddest band that
+straddles or sits just redward of it. We apply that test uniformly below,
+which changes one of this section's conclusions relative to the released
+$g$-only check.
 
 \begin{description}[leftmargin=0em,itemsep=3pt]
   \item[Refuted.] \TARGETID~$39628216868014338$ ($z = 5.194$) carries
-    $f_g = 4.33\nmgy$, $15$ times the catalogue's median $g$ flux and the
-    $95$th percentile of the whole sample, with
+    $f_g = 4.33\nmgy$ ($94.7$th percentile of the whole catalogue; $66$
+    objects, including itself, carry a $g$ flux at least this bright), with
     $f_g/f_r = 59$.
 % [DN].ft_a[2] flux_g, flux_g_vs_sample_median, flux_g_percentile_in_sample, flux_g_over_flux_r
-    Both $g$ and $r$ lie fully blueward of a $z = 5.19$ break, so this flux
-    pattern is inconsistent with the pipeline redshift under any plausible
-    noise level. Its $\Delta\chi^2$ of $22.0$ is also the weakest of the
-    four, and its morphology is \texttt{SER} rather than point-like. We
-    classify it as \emph{disfavoured by public imaging} --- either the
-    photometry is blended or the redshift solution is wrong --- and retain it
-    in the table so that the tier rule can be audited.
-  \item[Supported.] \TARGETID~$39627849358909321$ ($z = 4.334$) carries
-    $f_g = -0.019\nmgy$, consistent with zero and in the $0.8$th percentile
-    of the catalogue, with $f_r = 0.886\nmgy$ --- the break at $6484$~\AA\
-    sits inside the $r$ band, so a surviving $r$ flux is expected. Its
-    $\Delta\chi^2$ is $4205$, by far the strongest redshift fit in the tier.
-    This candidate passes the cheap test and is the one worth
-    spectroscopy.
+    Both $g$ and $r$ lie fully blueward of a $z = 5.19$ break, so a
+    $4.33\nmgy$ $g$-band flux ($\approx 20.6$ AB mag, orders of magnitude
+    above any plausible Legacy Survey noise floor) is inconsistent with the
+    pipeline redshift on the physics alone, independent of any percentile
+    ranking within this catalogue. Its $\Delta\chi^2$ of $22.0$ is also the
+    weakest of the four, and its morphology is \texttt{SER} rather than
+    point-like. We classify it as \emph{disfavoured by public imaging} ---
+    either the photometry is blended or the redshift solution is wrong ---
+    and retain it in the table so that the tier rule can be audited.
+  \item[Undecidable from the release.] The other three candidates cannot be
+    settled by the released photometry, for two distinct reasons, and we no
+    longer report one of them as supported. \TARGETID~$39627849358909321$
+    ($z=4.334$; $\Delta\chi^2=4205$, by far the strongest redshift fit in the
+    tier) carries $f_g=-0.019\nmgy$ (consistent with zero, as the $g$-band
+    half of the test requires) but also $\texttt{morphtype}=$ empty and
+    $f_{W1}=f_{W2}=\texttt{sersic}=\texttt{shape\_r}=0$ exactly --- the exact
+    signature of the $406$-row photometric-join gap disclosed in
+    Sec.~\ref{sec:catalogue}, not a clean measurement. Its own $r$- and
+    $z$-band fluxes ($f_r=0.886\nmgy$, $f_z=0.286\nmgy$, $f_r/f_z=3.1$) are
+    backwards for the redshift they would need to support: at $z=4.334$ the
+    $r$ band is $\sim\!66\%$ forest-absorbed while $z$ is unabsorbed
+    continuum on a red-rising spectrum, so the expected ordering is
+    $f_r\lesssim f_z$, not $f_r\approx 3f_z$. We do not adopt either reading;
+    the object needs the same forced photometry as the other two before it
+    can be classified either way.
 % [DN].ft_a[3]
-  \item[Undecidable from the release.] The two $z \approx 6.07$ candidates
-    carry $f_g = 0.283$ and $0.296\nmgy$ --- $0.98$ and $1.02$ times the
-    catalogue median, at the $48$th and $52$nd
-    percentiles.
+    The two $z \approx 6.07$ candidates carry $f_g = 0.283$ and
+    $0.296\nmgy$ --- $0.98$ and $1.02$ times the catalogue median $g$ flux ---
+    values consistent with either a faint detection or a non-detection.
 % [DN].ft_a[0], ft_a[1]
-    Those values are exactly what a faint, undetected source looks like in
-    this catalogue, but because the released schema omits flux inverse
-    variances we cannot say whether they are detections or noise, and
-    therefore cannot either confirm or refute a $g$ dropout. Legacy Survey
-    DR10 forced photometry with inverse variances settles both objects at
-    zero observing cost, and is the immediate next step.
+    Neither has a photometric-join flag, but both also carry $f_r=0.255$ and
+    $0.330\nmgy$, comparable to or larger than their own $g$ fluxes in a band
+    the break requires to be dark, and $f_z/f_r$ ratios ($1.75$, $1.42$) far
+    shallower than a Gunn--Peterson trough at $z\approx6$ would produce.
+    Because the released schema omits flux inverse variances for all three
+    objects, none of these values can be distinguished from noise, so none of
+    the three can be confirmed or refuted here. Legacy Survey DR10 forced
+    photometry with inverse variances, applied to all four bands for all
+    three objects, settles this at zero observing cost and is the immediate
+    next step; until then this tier's verdict is \emph{one refuted, three
+    undecided}, not \emph{one refuted, one supported, two undecided}.
 \end{description}
 
 We emphasise what this does and does not establish. One candidate has been
-removed by public data alone, and one has cleared its first hurdle; neither
-outcome makes any object here a discovery, and a $\ZWARN = 0$ Redrock
-solution on a low-signal-to-noise spectrum fails routinely at high redshift.
-The remaining tests, in cost order, are: visual inspection of the public DR1
-coadd for a Lyman-$\alpha$ break and forest; DESI DR2 repeat coadds where the
-tile is revisited; and only then confirmation spectroscopy, optical for the
-$z \approx 4$ candidate and near-infrared for the $z \approx 6$ pair.
+removed by public data alone, and none has cleared the full break test on
+the photometry released here; this makes no object in this catalogue a
+discovery, and a $\ZWARN = 0$ Redrock solution on a low-signal-to-noise
+spectrum fails routinely at high redshift. The remaining tests, in cost
+order, are: the DR10 forced-photometry query above; visual inspection of the
+public DR1 coadd for a Lyman-$\alpha$ break and forest; DESI DR2 repeat
+coadds where the tile is revisited; and only then confirmation spectroscopy,
+optical for the $z \approx 4$ candidate and near-infrared for the $z \approx
+6$ pair.
 
 \subsection{Open tests}
 \label{sec:opentests}
@@ -870,9 +1033,14 @@ $z \approx 4$ candidate and near-infrared for the $z \approx 6$ pair.
     drawn from it. This is the gate any rate, abundance, or cosmological use
     must clear first, and it requires injecting known spectral classes into
     DR1 coadds at controlled signal-to-noise and re-scoring with the
-    hash-bound model --- GPU-scale work, not local.
-    \TODO{run and report per-class injection recovery with the exact model
-    and substrate named}
+    hash-bound model --- GPU-scale work, not local, and genuinely not run for
+    this release. The experiment is fully specified (inject each of the five
+    reference classes' template spectra from Table~\ref{tab:recovery} at a
+    grid of signal-to-noise ratios into real DR1 sky/noise realizations,
+    re-score with \texttt{best\_model\_47k.pt} under the same run contract,
+    and report per-class recovery vs.\ injected signal-to-noise) but not
+    executed; we state the specification rather than a placeholder so a
+    reader can judge the remaining work.
   \item[OT-2 Latent-space taxonomy.] Re-clustering on the $128$ latent
     dimensions rather than on $(S, \alpha, \delta)$, following the negative
     silhouette of Sec.~\ref{sec:latent}. Cheap; the released catalogue
@@ -916,14 +1084,27 @@ and without OT-1 the catalogue has no selection function, so it admits no
 abundance, rate, or number-density statement of any kind.
 
 We also record a null from the same programme that bounds what a catalogue
-like this could ever contribute. A local-shape primordial non-Gaussianity of
-the amplitude predicted by a matter-dominated contraction shifts the
-$z \approx 10$--$12$ massive-halo abundance by roughly $6$--$15\%$, more than
-an order of magnitude below the $\gtrsim 0.3$~dex stellar-mass systematic
-floor of current high-redshift photometric censuses, and with the wrong sign
-to explain an over-abundance; a factor-of-two effect would require
-$|f_{\rm NL}| \sim 30$, far outside current
-constraints.
+like this could ever contribute. Local-shape primordial non-Gaussianity,
+parameterised by the amplitude $f_{\rm NL}$ of the bispectrum
+$B_\Phi = 2f_{\rm NL}[P(k_1)P(k_2)+2\ \mathrm{perms}]$, shifts the abundance
+of rare, high-redshift haloes through the tail of the mass function. For the
+amplitude this programme's matter-dominated-contraction bounce predicts
+($f_{\rm NL}=-35/16=-2.1875$), applying the LoVerde, Miller, Shandera \&
+Verde (2008) non-Gaussian correction to a Planck-2018 $\Lambda$CDM mass
+function (Eisenstein \& Hu 1998 transfer function) shifts the $z\approx
+10$--$14$, $\log M_h/M_\odot\approx11.5$ halo abundance by $-6\%$ to $-16\%$
+relative to the Gaussian case --- a suppression, not an enhancement, so it
+cannot explain the reported early-galaxy \emph{over}-abundance
+\cite{Labbe2023,BoylanKolchin2023}. That shift is a factor of roughly $1.06$
+to $1.19$, well inside the $\gtrsim0.3$~dex ($\approx2\times$) stellar-mass
+systematic floor of current high-redshift photometric censuses, not more
+than an order of magnitude below it; a factor-of-two abundance effect at
+this halo mass and redshift would require $|f_{\rm NL}|\sim30$, far outside
+current CMB and large-scale-structure constraints. The full computation is
+the committed, deterministic script
+\artifactlink{research/anomaly_map/ledger6_png_highz_abundance.py}{ledger6\_png\_highz\_abundance.py}
+(no fitting, no randomness; SHA-256 \texttt{f1121e2b79c4\ldots}), whose output
+is \artifactlink{research/anomaly_map/outputs/ledger6_png_highz_abundance.json}{ledger6\_png\_highz\_abundance.json}.
 % research/anomaly_map/LEDGER6_DISCRIMINATOR_BRIEF_2026-09-02.md
 The high-redshift abundance is therefore not where that class of model is
 measurable, whatever a candidate catalogue contributes to it. Publishing that
@@ -967,6 +1148,7 @@ $60$~s at essentially zero cost:
 python3 assemble_flagship_evidence.py
 python3 make_tables.py
 python3 make_draft_figures.py
+python3 blue_arm_diagnostics_2026-09-19.py
 \end{verbatim}
 
 \noindent It emits the validation-contract outcome, the family evidence, the
@@ -974,7 +1156,7 @@ follow-up set, every table under \texttt{tables/}, every figure under
 \texttt{figures/}, and \texttt{outputs/draft\_numbers.json}, which carries
 each derived quantity quoted in this text. Every number in this manuscript
 names its source artifact in a comment in the \LaTeX\ source. The pipeline is
-deterministic apart from the V12 permutation null, which is seeded.
+fully deterministic; the V12 permutation null is seeded.
 
 The archived autoencoder weights are a lab artifact, mirrored and hash-bound;
 retraining from scratch is not part of this reproduction path, while scoring
@@ -1015,20 +1197,27 @@ descriptive taxonomy of the unmatched subset, and a named follow-up set.
 
 Four results are worth carrying forward independently of the catalogue. A
 score cut without a provenance gate selects sky fibres, not objects, and the
-contamination worsens with score; this is a property of the public coadd
+contamination worsens with score up to $S=10$, above which the trend is
+unconstrained by a single sparse bin; this is a property of the public coadd
 substrate and applies to any reconstruction-error search run on it. Within
 the science-target sample the score is not a proxy for exposure quality or
-brightness. The score is driven by the blue spectrograph arm, which localises
-both the next methodological test and the most plausible instrumental
-explanation. And the taxonomy's families, tested in the model's own latent
+brightness. The score is almost entirely explained by the blue spectrograph
+arm's own reconstruction residual ($R^2=0.78$ of the score's variance,
+falling to $0.01$ without it); that residual shows no dependence on
+blue-arm signal-to-noise and concentrates more tightly in the observed
+wavelength frame than the rest frame, evidence that leans instrumental
+without closing the question, and we name the decisive external test as
+OT-3. And the taxonomy's families, tested in the model's own latent
 space, are structured but not separated --- descriptive strata, not classes.
 
-The known-object recovery benchmark does not clear its pre-declared bar, and
-the one follow-up test cheap enough to run here removed one of four
-high-redshift candidates on public imaging alone. We therefore report the
-work as what it is: reproducible data infrastructure with a validated
-selection, a stratified candidate list, and a named list of the tests it has
-not yet passed.
+The known-object recovery benchmark does not clear its pre-declared bar, but
+with reference samples as small as $27$ objects it also has little power to
+have found a strong recovery signal (95\% upper limit up to $12.5\%$ for the
+rarest class); the one follow-up test cheap enough to run here refutes one of
+four high-redshift candidates on public imaging alone and cannot decide the
+other three. We therefore report the work as what it is: reproducible data
+infrastructure with a validated selection, a stratified candidate list, and a
+named list of the tests it has not yet passed.
 
 \begin{acknowledgments}
 This research used data obtained with the Dark Energy Spectroscopic
@@ -1100,6 +1289,30 @@ Ginsburg \etal\ 2019, Astron.\ J.\ \textbf{157}, 98 (ADS bibcode
 carried the correct values; no bibliography text changed.
 
 \begin{thebibliography}{99}
+
+\bibitem{Labbe2023} I.~Labb\'e \etal,
+  ``A population of red candidate massive galaxies 600 Myr after the Big
+  Bang,'' Nature \textbf{616}, 266 (2023), arXiv:2207.12446.
+
+\bibitem{BoylanKolchin2023} M.~Boylan-Kolchin,
+  ``Stress testing $\Lambda$CDM with high-redshift galaxy candidates,''
+  Nat.\ Astron.\ \textbf{7}, 731 (2023), arXiv:2208.01611.
+
+\bibitem{NED} This research made use of the NASA/IPAC Extragalactic Database
+  (NED), funded by NASA and operated by the California Institute of
+  Technology, \url{https://ned.ipac.caltech.edu/}.
+
+\bibitem{VizieR} F.~Ochsenbein, P.~Bauer, and J.~Marcout,
+  ``The VizieR database of astronomical catalogues,'' Astron.\ Astrophys.\
+  Suppl.\ Ser.\ \textbf{143}, 23 (2000).
+
+\bibitem{AllWISE} R.~M.~Cutri \etal,
+  ``VizieR Online Data Catalog: AllWISE Data Release,'' VizieR Online Data
+  Catalog II/328 (2014).
+
+\bibitem{Redrock} A.~Bailey \etal,
+  ``Redrock: spectroscopic classification and redshift fitting for DESI,''
+  in preparation; software \url{https://github.com/desihub/redrock}.
 
 \bibitem{BaronPoznanski2017} D.~Baron and D.~Poznanski,
   ``The weirdest SDSS galaxies: results from an outlier detection algorithm,''

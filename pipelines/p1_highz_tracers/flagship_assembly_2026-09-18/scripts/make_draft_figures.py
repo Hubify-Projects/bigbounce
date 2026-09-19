@@ -323,7 +323,7 @@ def tab_catalogue_schema(m: pd.DataFrame, nums: dict) -> None:
         ("identification", ["targetid", "target_ra", "target_dec", "survey", "program",
                             "healpix"]),
         ("anomaly", ["anomaly_score", "mean_mse", "rB", "rR", "rZ", "worst_band",
-                     "peak_residual_wavelength"]),
+                     "peak_residual_wavelength", "residual_kurtosis"]),
         ("latent", [f"latent_{i:03d}" for i in range(128)]),
         ("DESI pipeline", ["z", "zerr", "zwarn", "spectype", "subtype", "deltachi2"]),
         ("exposure", ["coadd_numexp", "coadd_exptime", "median_coadd_snr_b",
@@ -337,6 +337,7 @@ def tab_catalogue_schema(m: pd.DataFrame, nums: dict) -> None:
         ("SIMBAD/NED cross-match", ["simbad_found", "simbad_main_id", "simbad_otype",
                                     "ned_found", "ned_name", "ned_type"]),
         ("taxonomy", ["cluster_id", "family_id", "family_descriptor", "is_core_member"]),
+        ("unpopulated placeholder", ["classification", "discovery_potential"]),
     ]
     # rendered inside a full-width table* float in the manuscript
     lines = [r"\begin{ruledtabular}", r"\begin{tabular}{l r p{0.66\textwidth}}",
@@ -418,6 +419,8 @@ def tab_family_sky(nums: dict) -> None:
 
 def tab_recovery_benchmark(nums: dict) -> None:
     b = json.loads(BENCH.read_text())
+    parent_science = nums["parent_science_unique_targetids"]
+    parent_all = b["catalogs"][0]["parent_total"]
     lines = [r"\begin{ruledtabular}", r"\begin{tabular}{l r r l r}",
              r"Reference class & $N_{\rm ref}$ & $N_{\rm match}$ & "
              r"Recovery (95\% CI) & Enrichment \\", r"\hline"]
@@ -426,8 +429,14 @@ def tab_recovery_benchmark(nums: dict) -> None:
         name = esc(r["class_name"]).replace("Lyman-alpha", r"Lyman-$\alpha$")
         ci = (f"{100*r['recovery']:.3f}\\% "
               f"[{100*r['recovery_ci_95_lo']:.3f}, {100*r['recovery_ci_95_hi']:.3f}]")
+        # Enrichment vs. the science-target parent (21,793,550), not the
+        # all-TARGETID parent (27,547,223) -- Sec. II A's own declared
+        # denominator convention. R1 truth-audit MAJOR-7 (Claude/Grok
+        # convergent): the raw benchmark JSON's `enrichment` field uses the
+        # all-TARGETID denominator and must not be printed here uncorrected.
+        enrichment_science = r["enrichment"] * parent_science / parent_all
         lines.append(f"{name} & {texnum(r['n_reference_in_footprint'])} & "
-                     f"{r['n_matched']} & {ci} & {r['enrichment']:.1f}$\\times$ " + r"\\")
+                     f"{r['n_matched']} & {ci} & {enrichment_science:.1f}$\\times$ " + r"\\")
     lines += [r"\end{tabular}", r"\end{ruledtabular}"]
     (DTAB / "tab_recovery_benchmark.tex").write_text("\n".join(lines) + "\n")
     nums["benchmark"] = {

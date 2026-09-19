@@ -168,15 +168,20 @@
     "review_profile": "ApJS-CATALOG",
     "served_aliases": [
       "anomaly_flagship_vAF.0.2.pdf",
-      "anomaly_flagship_vAF.0.3.pdf"
+      "anomaly_flagship_vAF.0.3.pdf",
+      "anomaly_flagship_vAF.0.4.pdf"
     ],
-    "version": "vAF.0.3",
-    "pages": 15,
+    "version": "vAF.0.4",
+    "pages": 17,
     "date": "2026-09-19",
-    "sha256": "d85487e97f6856040d12ef78b78ab57ce4d74fc6420d6664013cdc9651c17b41",
-    "md5": "078505552a563eccee07ddd7ca81e811",
-    "review_paths": [],
-    "status": "registered (lane LR1, 2026-09-19): mirrored byte-identical to site/public/papers/, public/papers/ (canonical + versioned alias); Convex papers:upsert (slug paper-af) + paperVersions:bump vAF.0.2 then vAF.0.3 done, read-back verified. vAF.0.2->vAF.0.3 closed 2/4 LA TODOs (ADS bib verification, acknowledgements). R1 INT board in progress: Claude-opus leg dispatched against vAF.0.2 sha b972d890 (verdict-blind, science-content-identical to vAF.0.3 -- only acks/appendix differ); Grok+Gemini API legs pending against vAF.0.3 exact PDF.",
+    "sha256": "6a475b3cbc10856a2ccaf648cd0fef670d7d9101416a1eceaf4843b803f060e9",
+    "md5": "4ae6347c1a4c48538241d3397a5653dd",
+    "review_paths": [
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-19-AF-vAF.0.2-EXACTPDF-b972d890-R1/",
+      "project-context/peer-reviews/ROUND_2026-09-19-AF-vAF.0.3-EXACTPDF-d85487e9-R1_AF_Grok_brutal.md",
+      "project-context/peer-reviews/ROUND_2026-09-19-AF-vAF.0.3-EXACTPDF-d85487e9-R1_AF_Gemini_cosmology.md"
+    ],
+    "status": "R1 INT board closed (lane LR1, 2026-09-19): Claude-opus (major-revisions), Grok API grok-4.3 (reject), Gemini API gemini-3.1-pro-preview (major-revisions) -- all convergent, truth-audited verdict-first, real closures in vAF.0.4 (see project-context/peer-reviews/DISPOSITIONS/AF.md and SSOT/paper-af/status.md). Readiness 75 COMPUTED (Convex). Directive R2: round 1 of 2 spent.",
     "evidence_root": "pipelines/p1_highz_tracers/flagship_assembly_2026-09-18"
   }
 }
