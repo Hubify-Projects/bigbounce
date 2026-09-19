@@ -166,11 +166,13 @@ but contain superseded P1U identities, caps, versions, and campaign objectives.
 
 Publication readiness = science 25 + evidence/reproducibility 25 + automated
 convergence 25 + packaging/PDF hygiene 20 + Houston sign-off 5. The first four
-agent gates are complete for 8 of the 11 tracked papers (P1A, P1B, P1N, P2, P3
-support, P4, P4P, P5), so each of those is **95**. A3M and P-SU sit below 95
-(readinessCap pinned at 75 and 70 respectively — active-drive-to-100 legs, not
-hand-set) and P2L is archived at 20 (theory record, folded into A3M). Only
-Houston's explicit per-paper sign-off moves a 95-paper to **100**.
+agent gates are complete for 7 of the 11 tracked papers (P1A, P1B, P2, P3
+support, P4, P4P, P5), so each of those is **95**. P1N cleared its D-round and
+P-round on 2026-09-18 and sits at **99** (packaging kit assembled, only
+Houston's sign-off remains). A3M and P-SU sit below 95 (readinessCap pinned at
+75 and 70 respectively — active-drive-to-100 legs, not hand-set) and P2L is
+archived at 20 (theory record, folded into A3M). Only Houston's explicit
+per-paper sign-off moves a 95-or-99 paper to **100**.
 
 Automated convergence means zero genuinely-new-real findings are outstanding
 across active Grok API, Gemini API, and Claude Opus INT legs. Raw verdict words
@@ -195,7 +197,7 @@ a standalone paper. P5 remains a standalone AJ companion to P4.
 |---|---|---:|---:|---|
 | P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | Superseded by P1N (merge, `PAPER_LINEAGE_2026-08-05.md` §(a)); CQG packet retained; Houston sign-off and portal work next |
 | P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.23 | 95 | Batch 3 (R7) + PyMaster crosscheck integrated; one verification board permitted next |
-| P1N | `arxiv/paper1bc_ech_note/main.tex` | v1N.0.5 | 95 | Track B closed-line ECH Note (P1A+P1C merged); D-round/P-round in progress (campaign lane L3); see `project-context/SSOT/paper-1n/status.md` |
+| P1N | `arxiv/paper1bc_ech_note/main.tex` | v1N.0.6 | 99 | Track B closed-line ECH Note (P1A+P1C merged); D-round + P-round complete (campaign lane L3, DONE 2026-09-18 23:58 PT); CQG submission kit assembled; Houston sign-off (99→100) next; see `project-context/SSOT/paper-1n/status.md` |
 | P2 | `research/focused_paper_source_integration/02_full_draft.tex` | v1.7.130 | 95 | PRD packet; Houston sign-off and APS portal work next |
 | P2L | `arxiv/paper2prime_fnl_letter/main.tex` | v2L.0.2 | 20 | Archived theory record (folded into A3M per lineage 2026-09-02 evening decision); not an active submission target |
 | A3M | `research/track_a3_multichannel/paper/main.tex` | v3M.0.24 | 75 | Track A flagship; readinessCap pinned at 75, ROUNDS STOPPED under directive R2 until a science decision reopens the board; R9 board in progress (campaign lane L1); see `project-context/SSOT/paper-a3m/status.md` |

@@ -123,6 +123,18 @@ def git_last_commit_iso(cwd, path):
     except Exception:
         return None
 
+def git_last_commit_local_date(cwd, path):
+    try:
+        p = subprocess.run(
+            ["git", "-C", cwd, "log", "-1", "--format=%cI", "--", path],
+            capture_output=True, text=True, timeout=30)
+        s = p.stdout.strip()
+        if not s:
+            return None
+        return datetime.fromisoformat(s).date()
+    except Exception:
+        return None
+
 def slice_array(text, const_name):
     """Return the substring of the named `export const NAME ... [ ... ]` block."""
     m = re.search(r'export const %s\b' % re.escape(const_name), text)
@@ -229,8 +241,8 @@ last_skill = max(skill_dates) if skill_dates else None
 # resolve scistack repo root + the relative SKILL.md path
 scistack_root = skill_md.split("/astrostack/")[0]
 skill_rel = "astrostack/" + skill_md.split("/astrostack/")[1]
-skill_commit = git_last_commit_iso(scistack_root, skill_rel)
-tools_commit = git_last_commit_iso(repo, "tools/")
+skill_commit = git_last_commit_local_date(scistack_root, skill_rel)
+tools_commit = git_last_commit_local_date(repo, "tools/")
 
 newest_lesson = None
 nl_src = ""
@@ -251,16 +263,16 @@ else:
     # granularity: stale only if the newest lesson/tool commit lands on a LATER
     # calendar day than the last skills point. The sha-based `skillslog` check
     # (below) is the precise same-day enforcement — this is the coarse signal.
-    day_lag = (newest_lesson.date() - last_skill.date()).days
+    day_lag = (newest_lesson - last_skill.date()).days
     if day_lag > 0:
         results.append(("STALE", "skills",
             "last skills point %s is %d day(s) behind newest %s commit (%s)" %
-            (last_skill.date().isoformat(), day_lag, nl_src, newest_lesson.date().isoformat())))
+            (last_skill.date().isoformat(), day_lag, nl_src, newest_lesson.isoformat())))
         overall_fail = True
     else:
         results.append(("FRESH", "skills",
             "last skills point %s current with newest %s commit (%s)" %
-            (last_skill.date().isoformat(), nl_src, newest_lesson.date().isoformat())))
+            (last_skill.date().isoformat(), nl_src, newest_lesson.isoformat())))
 
 # ---------------------------------------------------------------------------
 # 3. BOARD (externalVerdictRounds latest date vs newest harvested round)
