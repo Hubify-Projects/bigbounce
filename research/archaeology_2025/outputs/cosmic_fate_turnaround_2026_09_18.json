@@ -1,0 +1,351 @@
+{
+  "script": "cosmic_fate_turnaround_2026_09_18.py",
+  "generated_utc": "2026-09-18T23:56:27+00:00",
+  "worker": "W3",
+  "memo": "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md",
+  "inputs": {
+    "H0_km_s_Mpc": 67.4,
+    "Omega_m": 0.315,
+    "Omega_Lambda_flat": 0.685,
+    "source": "Planck 2018 VI, arXiv:1807.06209 (abstract values verified 2026-09-18)",
+    "c_m_s": 299792458.0,
+    "GM_sun_m3_s2": 1.32712440018e+20,
+    "Mpc_m": 3.085677581491367e+22,
+    "Gyr_s": 3.15576e+16,
+    "Hubble_time_Gyr": 14.507302992296575,
+    "Lambda_m^-2": 1.0909105028380932e-52,
+    "Lambda_definition": "Lambda = 3 Omega_Lambda H0^2 / c^2"
+  },
+  "A0_observed_flat_LCDM": {
+    "Omega_m": 0.315,
+    "Omega_Lambda": 0.685,
+    "Omega_k": 0.0,
+    "turnaround_scale_factor": null,
+    "recollapses": false,
+    "E2_at_a_1e6": 0.685,
+    "E2_floor_is_Omega_Lambda": 0.685
+  },
+  "A1_closed_LCDM_recollapse_boundary": {
+    "criterion_derived_in_memo_sec3b": "future turnaround  <=>  Omega_Lambda < 0, OR (Omega_Lambda > 0 AND |Omega_k| > 3 Omega_Lambda AND 4|Omega_k|^3 >= 27 Omega_m^2 Omega_Lambda)",
+    "note": "|Omega_k| > 3 Omega_Lambda with Omega_k = 1 - Omega_m - Omega_Lambda < 0 requires Omega_Lambda < (Omega_m - 1)/2, so for Omega_m < 1 no positive Lambda permits recollapse at any curvature.",
+    "rows": [
+      {
+        "Omega_m": 0.1,
+        "Omega_Lambda_crit": -2.9778502051915018e-24,
+        "recollapse_requires": "Omega_Lambda < -2.97785e-24",
+        "analytic_discriminant_at_boundary": 2.9160000000000004,
+        "Omega_k_at_boundary": 0.9,
+        "a_star_at_boundary": null
+      },
+      {
+        "Omega_m": 0.31,
+        "Omega_Lambda_crit": -2.2830184906482223e-24,
+        "recollapse_requires": "Omega_Lambda < -2.28302e-24",
+        "analytic_discriminant_at_boundary": 1.3140359999999998,
+        "Omega_k_at_boundary": 0.69,
+        "a_star_at_boundary": null
+      },
+      {
+        "Omega_m": 0.315,
+        "Omega_Lambda_crit": -2.2664748783971915e-24,
+        "recollapse_requires": "Omega_Lambda < -2.26647e-24",
+        "analytic_discriminant_at_boundary": 1.2856765000000003,
+        "Omega_k_at_boundary": 0.685,
+        "a_star_at_boundary": null
+      },
+      {
+        "Omega_m": 0.5,
+        "Omega_Lambda_crit": -1.6543612251090646e-24,
+        "recollapse_requires": "Omega_Lambda < -1.65436e-24",
+        "analytic_discriminant_at_boundary": 0.5,
+        "Omega_k_at_boundary": 0.5,
+        "a_star_at_boundary": null
+      },
+      {
+        "Omega_m": 0.9,
+        "Omega_Lambda_crit": -3.3087224502662764e-25,
+        "recollapse_requires": "Omega_Lambda < -3.30872e-25",
+        "analytic_discriminant_at_boundary": 0.0039999999999999975,
+        "Omega_k_at_boundary": 0.09999999999999998,
+        "a_star_at_boundary": null
+      },
+      {
+        "Omega_m": 1.0,
+        "Omega_Lambda_crit": -6.018531076210112e-36,
+        "recollapse_requires": "Omega_Lambda < -6.01853e-36",
+        "analytic_discriminant_at_boundary": 1.6250033905767303e-34,
+        "Omega_k_at_boundary": 6.018531076210112e-36,
+        "a_star_at_boundary": null
+      },
+      {
+        "Omega_m": 1.05,
+        "Omega_Lambda_crit": 1.6813793010212553e-05,
+        "recollapse_requires": "Omega_Lambda < 1.68138e-05",
+        "analytic_discriminant_at_boundary": -1.0842021724855044e-19,
+        "Omega_k_at_boundary": -0.050016813793010255,
+        "a_star_at_boundary": 31.48941087127191
+      },
+      {
+        "Omega_m": 1.5,
+        "Omega_Lambda_crit": 0.008665856025717986,
+        "recollapse_requires": "Omega_Lambda < 0.00866586",
+        "analytic_discriminant_at_boundary": -3.3306690738754696e-16,
+        "Omega_k_at_boundary": -0.508665856025718,
+        "a_star_at_boundary": 4.4233360139003315
+      },
+      {
+        "Omega_m": 2.0,
+        "Omega_Lambda_crit": 0.0418890660015821,
+        "recollapse_requires": "Omega_Lambda < 0.0418891",
+        "analytic_discriminant_at_boundary": -1.7763568394002505e-15,
+        "Omega_k_at_boundary": -1.041889066001582,
+        "a_star_at_boundary": 2.8793852415718164
+      },
+      {
+        "Omega_m": 3.0,
+        "Omega_Lambda_crit": 0.1676588673011678,
+        "recollapse_requires": "Omega_Lambda < 0.167659",
+        "analytic_discriminant_at_boundary": 1.4210854715202004e-14,
+        "Omega_k_at_boundary": -2.1676588673011676,
+        "a_star_at_boundary": 2.075972408704098
+      },
+      {
+        "Omega_m": 5.0,
+        "Omega_Lambda_crit": 0.5629984151136245,
+        "recollapse_requires": "Omega_Lambda < 0.562998",
+        "analytic_discriminant_at_boundary": -5.684341886080802e-14,
+        "Omega_k_at_boundary": -4.562998415113625,
+        "a_star_at_boundary": 1.6436560607074504
+      },
+      {
+        "Omega_m": 10.0,
+        "Omega_Lambda_crit": 1.939489134852487,
+        "recollapse_requires": "Omega_Lambda < 1.93949",
+        "analytic_discriminant_at_boundary": -1.8189894035458565e-12,
+        "Omega_k_at_boundary": -10.939489134852487,
+        "a_star_at_boundary": 1.3711792036257884
+      }
+    ]
+  },
+  "A2_spot_checks_Om_0.31": [
+    {
+      "Omega_Lambda": 0.69,
+      "Omega_k": 0.0,
+      "turnaround_a": null
+    },
+    {
+      "Omega_Lambda": 0.8,
+      "Omega_k": -0.1100000000000001,
+      "turnaround_a": null
+    },
+    {
+      "Omega_Lambda": 1.0,
+      "Omega_k": -0.31000000000000005,
+      "turnaround_a": null
+    },
+    {
+      "Omega_Lambda": 1.5,
+      "Omega_k": -0.81,
+      "turnaround_a": null
+    },
+    {
+      "Omega_Lambda": 2.0,
+      "Omega_k": -1.31,
+      "turnaround_a": null
+    },
+    {
+      "Omega_Lambda": 0.0,
+      "Omega_k": 0.69,
+      "turnaround_a": null
+    },
+    {
+      "Omega_Lambda": -0.01,
+      "Omega_k": 0.7,
+      "turnaround_a": 8.579809658038922
+    },
+    {
+      "Omega_Lambda": -0.1,
+      "Omega_k": 0.7899999999999999,
+      "turnaround_a": 2.9894766755042266
+    },
+    {
+      "Omega_Lambda": -0.345,
+      "Omega_k": 1.035,
+      "turnaround_a": 1.8658953469666786
+    },
+    {
+      "Omega_Lambda": -0.69,
+      "Omega_k": 1.38,
+      "turnaround_a": 1.5154111446142084
+    }
+  ],
+  "A3_matter_required_to_recollapse_at_observed_Lambda": {
+    "Omega_Lambda_fixed": 0.685,
+    "Omega_m_min_for_recollapse": 5.5158097399057215,
+    "ratio_to_observed_Omega_m": 17.510507110811815,
+    "Omega_k_there": -5.200809739905722,
+    "turnaround_a_just_above": 1.4982607300144695
+  },
+  "A4_analytic_vs_bruteforce": [
+    {
+      "Omega_m": 0.315,
+      "Omega_Lambda": 0.685,
+      "analytic": null,
+      "brute_force": null,
+      "agree": true
+    },
+    {
+      "Omega_m": 0.31,
+      "Omega_Lambda": 1.5,
+      "analytic": null,
+      "brute_force": null,
+      "agree": true
+    },
+    {
+      "Omega_m": 0.31,
+      "Omega_Lambda": 2.0,
+      "analytic": null,
+      "brute_force": null,
+      "agree": true
+    },
+    {
+      "Omega_m": 0.31,
+      "Omega_Lambda": -0.1,
+      "analytic": 2.9894766755042266,
+      "brute_force": 2.9894766755042266,
+      "agree": true
+    },
+    {
+      "Omega_m": 1.5,
+      "Omega_Lambda": 0.02,
+      "analytic": null,
+      "brute_force": null,
+      "agree": true
+    },
+    {
+      "Omega_m": 2.0,
+      "Omega_Lambda": 0.01,
+      "analytic": 2.067728466872617,
+      "brute_force": 2.067728466872617,
+      "agree": true
+    },
+    {
+      "Omega_m": 2.0,
+      "Omega_Lambda": 0.1,
+      "analytic": null,
+      "brute_force": null,
+      "agree": true
+    },
+    {
+      "Omega_m": 5.0,
+      "Omega_Lambda": 0.5,
+      "analytic": 1.4494897427831779,
+      "brute_force": 1.4494897427831779,
+      "agree": true
+    },
+    {
+      "Omega_m": 1.2,
+      "Omega_Lambda": 0.0,
+      "analytic": 6.000000000000001,
+      "brute_force": 6.0,
+      "agree": true
+    }
+  ],
+  "B_negative_Lambda_flat": {
+    "solution": "a(t) = a_turn [sin((3/2) sqrt(|OL|) H0 t)]^(2/3), flatness forces Om = 1 + |OL|",
+    "rows": [
+      {
+        "abs_Omega_Lambda": 0.001,
+        "Omega_m_required_for_flatness": 1.001,
+        "a_turn_over_a0": 10.003332222839093,
+        "age_today_Gyr": 9.668313416014808,
+        "time_of_turnaround_Gyr": 480.4136069187274,
+        "time_from_now_to_turnaround_Gyr": 470.74529350271257,
+        "time_of_crunch_Gyr": 960.8272138374548,
+        "time_from_now_to_crunch_Gyr": 951.1589004214399,
+        "check_H_over_H0_today": 1.0
+      },
+      {
+        "abs_Omega_Lambda": 0.01,
+        "Omega_m_required_for_flatness": 1.01,
+        "a_turn_over_a0": 4.657009507803835,
+        "age_today_Gyr": 9.639488936821348,
+        "time_of_turnaround_Gyr": 151.92012168000045,
+        "time_from_now_to_turnaround_Gyr": 142.2806327431791,
+        "time_of_crunch_Gyr": 303.8402433600009,
+        "time_from_now_to_crunch_Gyr": 294.20075442317955,
+        "check_H_over_H0_today": 1.0
+      },
+      {
+        "abs_Omega_Lambda": 0.05,
+        "Omega_m_required_for_flatness": 1.05,
+        "a_turn_over_a0": 2.7589241763811203,
+        "age_today_Gyr": 9.515012587130288,
+        "time_of_turnaround_Gyr": 67.94074384530413,
+        "time_from_now_to_turnaround_Gyr": 58.42573125817384,
+        "time_of_crunch_Gyr": 135.88148769060825,
+        "time_from_now_to_crunch_Gyr": 126.36647510347795,
+        "check_H_over_H0_today": 1.0000000000000002
+      },
+      {
+        "abs_Omega_Lambda": 0.1,
+        "Omega_m_required_for_flatness": 1.1,
+        "a_turn_over_a0": 2.2239800905693152,
+        "age_today_Gyr": 9.367211593918631,
+        "time_of_turnaround_Gyr": 48.04136069187273,
+        "time_from_now_to_turnaround_Gyr": 38.67414909795411,
+        "time_of_crunch_Gyr": 96.08272138374547,
+        "time_from_now_to_crunch_Gyr": 86.71550978982684,
+        "check_H_over_H0_today": 1.0
+      },
+      {
+        "abs_Omega_Lambda": 0.345,
+        "Omega_m_required_for_flatness": 1.345,
+        "a_turn_over_a0": 1.5738659140381905,
+        "age_today_Gyr": 8.744697588265812,
+        "time_of_turnaround_Gyr": 25.86459914675283,
+        "time_from_now_to_turnaround_Gyr": 17.11990155848702,
+        "time_of_crunch_Gyr": 51.72919829350566,
+        "time_from_now_to_crunch_Gyr": 42.984500705239846,
+        "check_H_over_H0_today": 1.0
+      },
+      {
+        "abs_Omega_Lambda": 0.685,
+        "Omega_m_required_for_flatness": 1.685,
+        "a_turn_over_a0": 1.3499047055914508,
+        "age_today_Gyr": 8.079093929461422,
+        "time_of_turnaround_Gyr": 18.355660385659416,
+        "time_from_now_to_turnaround_Gyr": 10.276566456197996,
+        "time_of_crunch_Gyr": 36.71132077131883,
+        "time_from_now_to_crunch_Gyr": 28.632226841857413,
+        "check_H_over_H0_today": 1.0
+      }
+    ],
+    "observational_note": "every row has Omega_m > 1 and a present age below the observed 13.8 Gyr, which is how the pure flat matter + negative-Lambda model is excluded; the rows are a scaling reference, not a fit."
+  },
+  "C_max_turnaround_radius": {
+    "formula": "r_ta = (3 G M / (Lambda c^2))^(1/3)",
+    "reference": "Pavlidou & Tomaras, arXiv:1310.1920 (verified 2026-09-18)",
+    "Lambda_m^-2": 1.0909105028380932e-52,
+    "rows": [
+      {
+        "M_over_Msun": 1000000000000.0,
+        "r_ta_m": 3.4371682120332124e+22,
+        "r_ta_Mpc": 1.1139103555893752,
+        "M_crit_historical_form_Msun": 999999999999.9912
+      },
+      {
+        "M_over_Msun": 100000000000000.0,
+        "r_ta_m": 1.595392159222216e+23,
+        "r_ta_Mpc": 5.170313868149284,
+        "M_crit_historical_form_Msun": 99999999999999.14
+      },
+      {
+        "M_over_Msun": 1000000000000000.0,
+        "r_ta_m": 3.437168212033212e+23,
+        "r_ta_Mpc": 11.139103555893751,
+        "M_crit_historical_form_Msun": 999999999999991.0
+      }
+    ]
+  }
+}
