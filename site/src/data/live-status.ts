@@ -149,9 +149,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-su",
       number: "SU",
       shortTitle: "Separate-universe failure criterion (short note)",
-      version: "v1S.0.10",
+      version: "v1S.0.11",
       readiness: 72,
-      pendingWork: "S12 (translation-term monopole generality) RESOLVED and applied 2026-09-19: the trace part carries a nonzero (n_s-1) monopole, exactly cancelled by a compensating in-in tilt term, so f_deltaN^init=-5 holds for every constant eps and n_s -- Appendix A2/A3/A4 corrected, no science number changed. R4 (the one directive-R2-permitted board) is in progress on the exact v1S.0.10 PDF: Claude-opus leg dispatched, Grok/Gemini API legs pending a shared-checkout preflight clear.",
+      pendingWork: "S12 RESOLVED+applied (v1S.0.10): f_deltaN^init=-5 for every constant eps and n_s. R4 Claude-opus leg (verdict-blind) then found and closed a real internal-consistency gap the S12 fix introduced (Sec. II/abstract/Fig.1 still stated the n_s=1-specific formulas as general) -> v1S.0.11; also fixed 2 wording slips in the S12 addition itself. 3 further real findings (initial-slice convention S13, Cai 2009 citation S14, Appendix A5 lambda_g derivation S15) are pre-existing and out of this lane's scope -- carried, non-blocking. Grok/Gemini API legs of R4 still not run (shared-checkout preflight gate).",
     },
   ],
   blockerTally: {
