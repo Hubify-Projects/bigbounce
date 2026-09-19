@@ -318,3 +318,55 @@ bundle verifies (directive-G hygiene: version+date bump, 0 undef refs, `/latex-a
 byte-identical mirrors, Convex `paperVersions:bump`, three-way md5), P4′ moves to the publication
 phase under directive P at readiness **95**, the final 5 reserved for Houston's explicit
 per-paper sign-off; venue/submission/endorsement tracked separately and never subtracted.
+
+## Exact-v4P.0.7 confirmation board (2026-09-18, campaign lane L4) — v4P.0.8 closure
+
+R3's "rounds stop" statement applied to the v4P.0.4 content it reviewed. It did not
+cover the three disclosure results added in v4P.0.5–v4P.0.7 (pixel-level calibration,
+full-parent selection behavior, structure cross-correlations, row-16(iv-b) BGS
+environment) — that content had never been independently reviewed. This board ran
+Grok API + Gemini API + a Claude opus INT sub-agent against the exact v4P.0.7 PDF,
+scoped to that new content (with a fresh full read of the rest of the paper). Full
+audit: `project-context/peer-reviews/INT_v3/ROUND_2026-09-18-P4P-v4P.0.7-EXACTPDF-7eb1f99e-CONFIRM/P4P_v4P.0.7_CONFIRM_truth_audit.md`.
+
+**7 GENUINELY-NEW-REAL MAJOR, all independently source-verified and closed in v4P.0.8:**
+CONFIRM-1 (full-parent QC-cut attribution was inverted vs. source), CONFIRM-2 (primary
+887,472-channel's own drop-one-leg fits reach z>4 above A₉₅ᵒᵇˢ, omitted from disclosure),
+CONFIRM-3 (new BGS/structure channels silently ran on the pre-QC 949,584 sample, not the
+887,472 primary channel, mislabeled), CONFIRM-4 (void-catalog-availability appendix
+sentence contradicted Sec. 4's own use of DESIVAST), CONFIRM-5 (Shamir-axis-untested
+justification misattributed a scope limitation of this manuscript to the cited
+literature), CONFIRM-6 (two of four Data-Availability manifest pointers resolved to the
+wrong experiment, one to a superseded "inconclusive" pilot), CONFIRM-7 (new pixel-level
+calibration measurement implies an observed-to-physical transfer ~10× smaller than the
+illustrative g=0.398 bridge the Sec. 5 exclusion carries; this tension is now disclosed
+explicitly in-paper, not resolved by new derivation — see the truth audit for the exact
+arithmetic and why it is not adopted as a repair).
+
+12 MINOR items also closed (wording/disclosure fixes; see truth audit for the full list).
+2 items — Claude MIN-9 (low-severity, no in-text contradiction) and Gemini E4/M2 (Table 7
+effect-size + full-15-statistic expansion) — are OPEN, explicitly deferred with reason
+(not silently dropped); the latter is a real, bounded table-construction task using data
+already on disk, not a correctness defect.
+
+### FALSIFIED / RE-FLAG / OPINION this board — do not re-open without new evidence
+| Finding | Verdict | Source-cited basis |
+|---|---|---|
+| Grok E1 — remove DRAFT VERSION / dated header strings | **OPINION/GENRE** | precedent line 122 (R2 Grok N1); AASTeX default, removed at actual submission |
+| Grok E2/E3 — internal `\artifact{}` script paths unacceptable in submission; no independent verification of 0.98%/0.75% | **OPINION/GENRE** | directive Q2 mandatory reproducibility manifests; scripts already `\artifact{}`-linked in-paper |
+| Grok E4/M1 — literature-ratio Table 5 asserts unquantified factors | **RE-FLAG-OF-DISCLOSED** | closed R1 DP4P-10 (line 90-95), reconfirmed R2 (line 213) |
+| Grok M2 — z_mom/FSC juxtaposed without "not comparable" caveat | **FALSIFIED** | `main.tex` states "uses a different support" at two separate mentions, pre-edit |
+| Grok M3 — Fig. 1 "no coherent structure" lacks quantitative ℓ>1 test | **OPINION/GENRE** | caption already hedges "visually apparent"; quantitative ℓ=1 tests exist elsewhere (Sec. 2.3) |
+| Gemini E2 — Table 8 z-scores "irreconcilable" with $f_{\rm CW}$/naive-Gaussian p | **FALSIFIED** | every Table 8 value byte-matches `ROW16IVB` §2; z-values come from the paper's own disclosed non-Gaussian permutation null (MIN-5), not a naive binomial vs. pooled mean |
+| Gemini E3 — unarchived Ref. [16] URL for load-bearing material | **RE-FLAG-OF-DISCLOSED** | closed R1 DP4P-07 (line 68-74), reconfirmed (line 215) |
+| Gemini M4 (pass-2) — "Largest Test" title contradicted by Shamir 2022's 1.3M sample | **RE-FLAG-OF-DISCLOSED** | closed R1 DP4P-01: abstract already discloses the Shamir-2022 exception in the same sentence |
+| Gemini N3 — space in HuggingFace URL | **FALSIFIED** | `main.tex` l.1209 (pre-edit) has no space; PDF-render line-wrap artifact of the reviewer's native-PDF read |
+| Gemini N1/N2 — Fig. 3 Cluster-bin significance claim; missing effect size, sample-purity ladder | **NOT DISPOSITIONED, carried forward** | pre-v4P.0.5 content, outside this board's charge (the v4P.0.5–v4P.0.7 additions); flag for the next full R-round rather than disposition without full-paper context |
+
+### v4P.0.8 hygiene
+`\paperVersion` v4P.0.7→v4P.0.8, `\paperTimestamp` Sept 5→Sept 18 2026; 4-pass compile,
+0 undef refs, pre-existing 5.88pt hbox only; 13→14 pages; sha256
+`e8f1969e415777622561dde0f21a8ac7d6398c3b2ef55f69200ba50a89d91cd2`, md5
+`b2399780320a50542279c35410b6b545`; four-way byte-identical mirror verified;
+`reproducibility/manifests/programs/galaxy-chirality.json` gained
+`row16-image-level-injection-n20k` (previously committed, unregistered).

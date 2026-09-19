@@ -58,8 +58,8 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FSC}}
 
-\newcommand{\paperVersion}{v4P.0.7}
-\newcommand{\paperTimestamp}{September 5, 2026}
+\newcommand{\paperVersion}{v4P.0.8}
+\newcommand{\paperTimestamp}{September 18, 2026}
 
 \begin{document}
 \raggedbottom
@@ -85,8 +85,8 @@ claim to date: an 8,474,531-galaxy DESI Legacy DR8 chirality catalog and two
 independent null tests. The primary, quality-controlled real-space dipole
 ($N_{\rm support}=887{,}472$ of $890{,}069$ rows) is null-consistent
 ($z_{\rm mom}=+0.635$, one-sided $p=0.238$), with a $95\%$ sensitivity floor
-$A_{95}^{\rm obs}\simeq0.98\%$ (Neyman $95\%$ CL limit
-$A_{95}^{\rm CL}\simeq0.75\%$, the floor used below). A companion DESIVAST
+$A_{95}^{\rm obs}\simeq0.98\%$, the more conservative of two limits and the
+floor used below (Neyman $95\%$ CL limit $A_{95}^{\rm CL}\simeq0.75\%$). A companion DESIVAST
 void/non-void contrast on $145{,}766$ classifier-labelled galaxies likewise
 finds no significant effect ($\Delta f_{\rm CW}=+0.00145$, two-sided
 $p=0.66$). We derive the model's spin-axis-dipole implication; the cited
@@ -358,12 +358,12 @@ under honest, manifest-retained ingestion, discussed above.
 \begin{table}[t]
 \caption{Bias-hardening test results from the archived release, quoted
 verbatim~\cite{Golden:P4v274}. Seven of the eight originally numbered tests
-are tabulated (T5, the former linear-Pearson RA/Dec metadata-leakage row,
-was \emph{removed} because a linear Pearson correlation is inappropriate
-for the circular RA coordinate $0^\circ\equiv360^\circ$; the map-level
-low-$\ell$ real-$Y_{\ell m}$ regression in the archived release supersedes
-it and finds all three $\ell=1$ coefficients consistent with zero,
-$|z|\leq1.25$). All seven tabulated tests pass; these are
+are tabulated. T5, a linear-Pearson RA/Dec metadata-leakage test, is
+omitted: a linear Pearson correlation is inappropriate for the circular RA
+coordinate $0^\circ\equiv360^\circ$, so the archived release instead reports
+a map-level low-$\ell$ real-$Y_{\ell m}$ regression against RA/Dec, finding
+all three $\ell=1$ coefficients consistent with zero, $|z|\leq1.25$. All
+seven tabulated tests pass; these are
 necessary, not sufficient, checks for sub-percent-level bias control and
 are not calibrated against a physical sensitivity bound.
 \label{tab:bias_tests}}
@@ -988,13 +988,42 @@ label-level injection--recovery curve used to set $A_{95}^{\rm obs}$
 image-level pixel-parity injection through the production equivariant
 classifier ($N=20{,}000$ Legacy DR9 cutouts, 10 seeds, true mirror-flip of
 raw pixels rather than relabeling) recovers a pixel-level slope
-$dA/df=+0.0167\pm0.0089$, far below both the naive label-identity slope
-($+0.434$, $47\sigma$ from the pixel result) and the mixture-corrected
-label identity ($-0.0093$, $2.9\sigma$). Table~\ref{tab:pixel_calib}
-records this comparison. The production pipeline suppresses pixel-level
+$dA/df=+0.0167\pm0.0089$, an order of magnitude below the naive
+label-identity slope ($+0.434$, $47\sigma$ from the pixel result) and, against
+the mixture-corrected label identity ($-0.0093$), consistent in magnitude
+but sign-flipped at $2.9\sigma$ -- an unresolved discrepancy, not a
+consistency, between the two label-level identities. Table~\ref{tab:pixel_calib}
+records this comparison; the injection baseline itself is $A_0=+0.59\%$ for
+the spiral-classified population probed here, a different quantity from
+(and opposite in sign to) the catalog's HC monopole
+($f_{\rm CW}-\tfrac12=-0.265\%$, Sec.~\ref{sec:catalog_classifier}), not the
+same baseline residual. The production pipeline suppresses pixel-level
 parity leakage well below what the label-level injection model alone would
-predict, consistent with the baseline residual already disclosed in
-Sec.~\ref{sec:catalog_classifier}.
+predict.
+
+This pixel-level slope is also the first direct empirical measurement
+bearing on the observed-to-physical bridge factor $g$ carried, on an
+explicitly illustrative and not-adopted-for-strengthening basis, in
+Assumption~2 of Sec.~\ref{sec:bh} ($g=0.398$, from the committed exclusion
+script, not an established calibration). Taken at face value, the implied response
+ratio $dA/df$ (naive identity) $=0.0167/0.434\approx0.038$ is roughly an
+order of magnitude smaller than $g=0.398$; propagated naively, it would
+move the observed-label floor $A_{95}^{\rm obs}=0.98\%$ to a physical-amplitude
+floor of order $0.98\%/0.038\approx26\%$, under which every literature
+amplitude in Table~\ref{tab:bh_exclusion} except Shamir (2025) would fall
+below the floor rather than above it. We do not adopt this propagation: the
+pixel-level slope is a response to an injected mirror-flip fraction at a
+fixed operating point, not a validated dipole-amplitude transfer function on
+the sky, and its sign relative to the mixture-corrected identity is itself
+unresolved (above). We state this tension explicitly rather than leave it
+implicit: Sec.~\ref{sec:bh}'s exclusion rests on $g=0.398$ as an
+illustrative, non-adopted bridge, and this new direct measurement of the
+pipeline's own pixel-to-label transfer is not consistent with that bridge
+value at face value. Resolving this -- deriving a validated
+observed-to-physical transfer function, rather than assuming or measuring an
+uncalibrated proxy for one -- is necessary before the Sec.~\ref{sec:bh}
+exclusion can be treated as more than illustrative, and is not attempted in
+this manuscript.
 
 \begin{table}[t]
 \centering
@@ -1016,43 +1045,68 @@ Mixture-corrected label identity & $-0.0093$ & $2.9\sigma$ \\
 $887{,}472$-row \texttt{primary\_hc \&\& !raw\_flip\_qc\_unsafe} selection
 exists to exclude rows flagged by post-review raw-flip QC and
 low-confidence classification. Re-running the same fixed-occupancy null on
-the full $3{,}200{,}420$-galaxy parent (no QC/confidence cuts) gives a
+the full $3{,}200{,}420$-galaxy parent (the $3{,}201{,}160$-spiral
+classified sample of Sec.~\ref{sec:catalog_classifier}, restricted to the
+$N_{\rm spiral}(p)\geq10$ pixel-support cut used by this null; no
+QC/confidence cut) gives a
 dipole $A=0.566\%$ at $z=+4.44$, axis RA~$278.6^\circ$/Dec~$+25.3^\circ$. A
-graded QC sweep localizes this to a single cut: removing only the
-\texttt{primary\_hc} confidence cut restores the null ($z=+0.68$), while
-removing only the raw-flip cut does not ($z=+9.13$, at a third,
-near-antipodal axis); a per-imaging-leg partition shows the excess is also
-removed by dropping the DES leg alone ($z=+0.48$) but not by any Galactic
-cut. The axis is inconsistent across selections (shifting by
-$107.5^\circ$), and the monopole-plus-mask-leakage floor in this
+graded QC sweep localizes this to a single cut: removing only the raw-flip
+cut (retaining \texttt{primary\_hc}) restores the null ($z=+0.68$), while
+removing only the \texttt{primary\_hc} confidence cut does not ($z=+9.13$,
+at a third, near-antipodal axis); a per-imaging-leg partition shows the
+excess is also removed by dropping the DES leg alone ($z=+0.48$) but not
+by any Galactic cut. The axis is inconsistent across selections (shifting
+by $107.5^\circ$), and the monopole-plus-mask-leakage floor in this
 population is $0.19\%$. This pattern -- signal present only in the
 population the primary QC cuts are designed to exclude, removed by a
 single confidence or footprint-leg cut, with an unstable axis -- is
 consistent with a confidence-cut/footprint systematic rather than a shared
 physical signal, and is reported here as a systematic, not subtracted from
-or used to adjust the primary channel's null result.
+or used to adjust the primary channel's null result. The same per-leg
+partition applied instead to the primary $887{,}472$-galaxy channel (C3)
+is less clean: two drop-one-leg variants (dropping DECaLS, $z=+4.19$,
+$A=2.21\%$; dropping DES, $z=+4.26$, $A=1.39\%$) and the DES-only fit
+($A=5.83\%$) exceed $A_{95}^{\rm obs}=0.98\%$, versus $z_{\rm mom}=+0.635$
+for the full four-leg primary sample. We report this rather than omit it:
+it indicates the primary channel's own footprint-stability nulls are not
+uniformly clean under leg removal, a residual not resolved by this
+disclosure and not subtracted from the primary result.
 
-\textbf{Structure cross-correlations.} A pre-registered battery of 15
-chirality$\times$structure statistics (local spiral surface-density
-quartiles; angular cross-correlation with 1,244 spectroscopic anomaly
-positions; five spectroscopic-redshift bins; and dipole projections along
-the CMB dipole and CMB quadrupole--octopole axes plus the catalog's own
-free best-fit direction), each tested against 1,000-realization
-label-shuffle and sky-rotation nulls with a $3\sigma$
-look-elsewhere-corrected threshold declared in advance, returns no
-detection: environment ($\chi^2$ $z=-0.38$, trend $z=+0.17$), the anomaly
-cross-correlation (all eight angular bins and the nearest-neighbor excess
-null; the largest raw excursion falls from $-2.37\sigma$ to $-1.05\sigma$
-under a rigid-rotation null), redshift (trend $z=-1.63$), and the two fixed
-astrophysical axes ($z=+0.21$, $-0.13$) are all null, and the free
-best-fit dipole ($0.44\%$) is below its own look-elsewhere-corrected null
-($0.38\%\pm0.16\%$, $z=+0.32$). Table~\ref{tab:structure_null} summarizes.
-Two data limits apply: the environment test uses a parity-blind projected
-surface-density proxy in place of a 3D void/filament catalog, since the
-DESI DR1 LSS products on disk are QSO-only at $z=0.8$--$2.1$ with no
-overlap with the $z\lesssim0.3$ spiral sample and no low-$z$ void catalog
-was available; and Shamir's claimed axis is not tested, as the sources this
-paper draws its quoted amplitudes from quote no explicit RA/Dec for it.
+\textbf{Structure cross-correlations.} On the same $949{,}584$-galaxy
+\texttt{primary\_hc}-labelled sample used for the full-parent test above
+(pre-dating the \texttt{raw\_flip\_qc\_unsafe} exclusion; not the
+$887{,}472$-galaxy primary channel), a pre-registered battery of 15 of 17
+declared chirality$\times$structure statistics was executed (the
+Shamir-axis statistic below was unavailable; the full $\times17$
+Bonferroni correction is retained rather than loosened to $\times15$):
+local spiral surface-density quartiles; angular cross-correlation with
+1,244 spectroscopic anomaly positions; five spectroscopic-redshift bins;
+and dipole projections along the CMB dipole and CMB quadrupole--octopole
+axes plus the catalog's own free best-fit direction. Each is tested
+against a label-shuffle null where that null has non-zero variance for the
+statistic in question, or else (for the pixel-level axis/dipole
+projections, where within-pixel label-shuffle is degenerate) against a
+1,000-realization random-axis-rotation null and a permutation-of-per-pixel-parity-means
+null, with a $3\sigma$ look-elsewhere-corrected threshold declared in
+advance. The battery returns no detection: environment ($\chi^2$
+$z=-0.38$, trend $z=+0.17$), the anomaly cross-correlation (all eight
+angular bins and the nearest-neighbor excess null; the largest raw
+excursion falls from $-2.37\sigma$ to $-1.05\sigma$ under a rigid-rotation
+null), redshift (trend $z=-1.63$), and the two fixed astrophysical axes
+($z=+0.21$, $-0.13$) are all null, and the free best-fit dipole ($0.44\%$)
+is below its own look-elsewhere-corrected null ($0.38\%\pm0.16\%$,
+$z=+0.32$). Table~\ref{tab:structure_null} summarizes. Two data limits
+apply: the environment test uses a parity-blind projected surface-density
+proxy in place of a 3D void/filament \emph{membership} product, since the
+DESI DR1 LSS products on disk at the time of this run were QSO-only at
+$z=0.8$--$2.1$ with no overlap with the $z\lesssim0.3$ spiral sample and no
+low-$z$ 3D density field was available on disk (the DESIVAST void
+\emph{catalog} used in Sec.~\ref{sec:void} provides hole membership,
+not a continuous density field, and does not substitute for one here); and
+Shamir's claimed axis is not tested, because this manuscript draws its
+quoted Shamir/Longo amplitudes from citation only and did not extract an
+explicit RA/Dec axis from those sources for this battery -- not because
+the cited works report no axis.
 
 \begin{table}[t]
 \centering
@@ -1077,13 +1131,22 @@ Free best-fit direction & $+0.32$ & null \\
 \textbf{External environment: DESI DR1 BGS clustering catalog.} A
 density-based environment split against an external tracer field --
 $k$=10-NN density contrast measured on the public DESI DR1
-\texttt{BGS\_BRIGHT-21.5} clustering catalog and its randoms
-(300,043 tracers, 4 randoms per cap; not a void finder) -- finds no
-dependence of the parity fraction on environment in either subset it can
-be tested on. Table~\ref{tab:bgs_environment} reports the three-way
-void-like/wall-filament/node-like split for the 121,417-spiral DESI
-spectroscopic-redshift subset (three-dimensional comoving density) and the
-949,584-spiral photometric/no-redshift subset (projected density).
+\texttt{BGS\_BRIGHT-21.5} clustering catalog and 4 randoms/cap downloaded
+and uniformly sub-sampled to $6.0\times10^6$ total (not a void finder) --
+finds no dependence of the parity fraction on environment in either subset
+it can be tested on. Table~\ref{tab:bgs_environment} reports the three-way
+density-tercile split (labelled void-like/wall-filament/node-like by
+relative rank; every tercile's median $\delta_k$ is in fact overdense
+relative to the randoms in both subsets, so the split spans relative, not
+absolute, density and does not reach genuinely underdense environments)
+for the 121,417-spiral DESI spectroscopic-redshift subset (three-dimensional
+comoving density, cut from a $0.1<z<0.4$ tracer-matched 231,549-spiral
+parent) and the same-selection $949{,}584$-galaxy \texttt{primary\_hc}
+sample used for the structure battery above (projected density; this
+projected subset is not disjoint from the spec-z subset -- the 121,417
+spec-z rows are a nested subset of the 949,584 -- and it is not the
+$887{,}472$-galaxy primary channel, since it retains the
+\texttt{raw\_flip\_qc\_unsafe} rows excluded from that channel).
 
 \begin{table}[t]
 \centering
@@ -1111,13 +1174,16 @@ Node-like & 189,917 & $0.49388\pm0.00115$ & $+2.96$ \\
 The $\chi^2$ trend across bins is null in both subsets (spec-z: obs
 $1.872$ vs.\ null $1.984\pm1.841$, $z=-0.06$, $p=0.952$, confirmed by a
 sky-rotation null at $z=-0.12$, $p=0.917$; projected: $z=-1.51$,
-$p=0.084$ two-sided). Per-bin dipole amplitudes are likewise consistent
-with their nulls in every bin ($|z|\le2.15$). The largest excursion in
-the full 14-statistic battery (2 subsets $\times$ [3 $f_{\rm CW}$ + 1
-$\chi^2$ + 3 dipole]) is the projected node-like bin's parity fraction,
-$z=+2.96$ ($p_{\rm local}=0.0060$, $p=0.084$ after the pre-registered
-$\times14$ Bonferroni look-elsewhere correction) -- below the
-pre-declared $3\sigma$ post-look-elsewhere detection threshold
+$p=0.083$ two-sided, from the same 1,000-realization label-shuffle null --
+the projected subset's own sky-rotation cross-check used only 10
+realizations for wall-clock reasons and is not used as evidence, only as a
+non-quantitative consistency check). Per-bin dipole amplitudes are
+likewise consistent with their nulls in every bin ($|z|\le2.15$). The
+largest excursion in the full 14-statistic battery (2 subsets $\times$ [3
+$f_{\rm CW}$ + 1 $\chi^2$ + 3 dipole]) is the projected node-like bin's
+parity fraction, $z=+2.96$ ($p_{\rm local}=0.0060$, $p=0.084$ after the
+pre-registered $\times14$ Bonferroni look-elsewhere correction) -- below
+the pre-declared $3\sigma$ post-look-elsewhere detection threshold
 ($|z|\gtrsim3.7$). We report this channel as \textbf{null}: splitting the
 chirality sample by local environment, measured against a genuine
 external tracer population rather than the chirality catalog's own
@@ -1168,15 +1234,16 @@ and the underlying catalog/quarantine/null-array revision it draws from is
 independently pinned by the versioned Zenodo DOI
 10.5281/zenodo.21461899 above. The four robustness/disclosure results of
 Sec.~\ref{sec:robustness_disclosure} are individually reproducible from
-their registered manifests (the latter two registered in
-\artifact{reproducibility/manifests/programs/galaxy-chirality.json}):
+their registered manifests, all registered in
+\artifact{reproducibility/manifests/programs/galaxy-chirality.json}:
 \begin{itemize}
-\item pixel-level calibration: \\
-\artifact{reproducibility/manifests/experiments/row13-image-level-injection-pilot.json}
-\item full-parent selection behavior: \\
-\artifact{reproducibility/manifests/experiments/p4p-row16i-full-parent-dipole.json}
-\item structure cross-correlations: \\
+\item pixel-level calibration ($N=20{,}000$ production run): \\
+\artifact{reproducibility/manifests/experiments/row16-image-level-injection-n20k.json}
+\item full-parent selection behavior (dipole and graded QC/leg sweep): \\
+\artifact{reproducibility/manifests/experiments/p4p-row16i-full-parent-dipole.json} \\
 \artifact{reproducibility/manifests/experiments/p4p-row16ib-axis-shift.json}
+\item structure cross-correlations: \\
+\artifact{reproducibility/manifests/experiments/row16iv-chirality-structure.json}
 \item external environment (DESI DR1 BGS clustering catalog): \\
 \artifact{reproducibility/manifests/experiments/row16ivb-bgs-environment.json}
 \end{itemize}
