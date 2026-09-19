@@ -80,7 +80,7 @@
     },
     {
       "id": "DEFECT-1",
-      "observed": "unpopulated in flagship_sample_v2_enriched.parquet: ['z', 'zwarn', 'spectype', 'subtype']; authoritative values are present in flagship_sample_v2.parquet (z range -0.0031..6.7457, SPECTYPE {'GALAXY': 1153, 'QSO': 86, 'STAR': 5}); repair table emitted as outputs/flagship_sample_v2_zcat_rejoin.parquet",
+      "observed": "unpopulated in flagship_sample_v2_enriched.parquet: ['z', 'zwarn', 'spectype', 'subtype']; authoritative values are present in flagship_sample_v2.parquet (z range -0.0031..6.7457, SPECTYPE {'GALAXY': 1153, 'QSO': 86, 'STAR': 5}); repair table emitted as outputs/flagship_sample_v2_zcat_rejoin.csv (and .parquet locally)",
       "requirement": "the enriched table's zcatalog columns (z, zwarn, spectype, subtype) are populated",
       "status": "FAIL"
     },

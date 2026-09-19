@@ -344,7 +344,7 @@ def validation_contract(d: dict, m: pd.DataFrame, prov: dict) -> list[dict]:
         f"are present in flagship_sample_v2.parquet (z range "
         f"{sample.z.min():.4f}..{sample.z.max():.4f}, SPECTYPE "
         f"{sample.spectype.value_counts().to_dict()}); repair table emitted as "
-        f"outputs/flagship_sample_v2_zcat_rejoin.parquet")
+        f"outputs/flagship_sample_v2_zcat_rejoin.csv (and .parquet locally)")
 
     # DEFECT-2: all-NaN derived columns
     dead = [c for c in ("residual_kurtosis", "peak_residual_wavelength", "worst_band")
@@ -546,8 +546,10 @@ def main() -> None:
     m = build_master(d)
 
     # repair table for DEFECT-1
-    d["sample"][["targetid", "z", "zwarn", "spectype", "deltachi2"]].to_parquet(
-        OUT / "flagship_sample_v2_zcat_rejoin.parquet", index=False)
+    rejoin = d["sample"][["targetid", "z", "zwarn", "spectype", "deltachi2"]]
+    rejoin.to_parquet(OUT / "flagship_sample_v2_zcat_rejoin.parquet", index=False)
+    # CSV is the committed copy: the repo gitignores *.parquet by convention.
+    rejoin.to_csv(OUT / "flagship_sample_v2_zcat_rejoin.csv", index=False)
 
     contract = validation_contract(d, m, prov)
     jdump({"generated": "2026-09-18", "n_checks": len(contract), "checks": contract},
