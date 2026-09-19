@@ -149,9 +149,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-su",
       number: "SU",
       shortTitle: "Separate-universe failure criterion (short note)",
-      version: "v1S.0.9",
+      version: "v1S.0.10",
       readiness: 72,
-      pendingWork: "R3VERIFY (2026-09-18) closed 2 ESSENTIAL + 3 MAJOR genuinely-new-real defects: the v1S.0.8 A2 closing amendment had landed in the Appendix only, contradicting Sec. III's stale value in the served PDF for 11 days; a LaTeX unicode error also dropped text. New open item S12 (translation-term monopole generality) gates the next review round.",
+      pendingWork: "S12 (translation-term monopole generality) RESOLVED and applied 2026-09-19: the trace part carries a nonzero (n_s-1) monopole, exactly cancelled by a compensating in-in tilt term, so f_deltaN^init=-5 holds for every constant eps and n_s -- Appendix A2/A3/A4 corrected, no science number changed. R4 (the one directive-R2-permitted board) is in progress on the exact v1S.0.10 PDF: Claude-opus leg dispatched, Grok/Gemini API legs pending a shared-checkout preflight clear.",
     },
   ],
   blockerTally: {
