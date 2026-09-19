@@ -305,25 +305,31 @@ def main():
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots(1, 2, figsize=(10.5, 4.0))
         keta = KS[0]; k = keta / ETA_B
-        ts = np.linspace(-3 * TM, 3 * TM, 1200)
-        for nm, sc in (("S1  ($z=a$)", "S1"), ("S2  ($z^2=2a^2\\epsilon$)", "S2")):
+        ts = np.concatenate([np.linspace(-6 * TM, -TM, 300), np.linspace(-TM, TM, 500)[1:-1],
+                             np.linspace(TM, 6 * TM, 300)])
+        for nm, sc, col in (("S1  ($z=a$)", "S1", "C0"), ("S2  ($z^2=2a^2\\epsilon$)", "S2", "C1")):
             bm = BounceModes(Q, k, sc)
-            zz = []
-            for t in ts:
-                zz.append(bm.window(t)[0] if abs(t) <= TM else (bm.early(t)[0] if t < 0 else bm.late(t)[0]))
-            zz = np.abs(np.array(zz, dtype=complex)); ax[0].plot(ts / TM, zz / zz[0], label=nm)
+            zz = np.array([complex(bm.window(t)[0]) if abs(t) <= TM else
+                           complex(bm.early(t)[0] if t < 0 else bm.late(t)[0]) for t in ts])
+            ax[0].plot(ts / TM, np.abs(zz / complex(bm.window(-TM)[0])), col, label=nm)
         Phi0, Xi0, z0 = matter_ic(k, -TM)
-        tw = np.linspace(-TM, TM, 400)
-        r, i = evolve(rhs_sharp, -TM, TM, [Phi0, Xi0], (k,), teval=tw)
-        aa = np.array([Sharp.a(t) for t in tw]); HH = np.array([Sharp.H(t) for t in tw])
-        zb = np.abs(zeta_of(aa, HH, r.y[1] + 1j * i.y[1], r.y[0] + 1j * i.y[0]))
-        ax[0].plot(tw / TM, zb / abs(z0), "k--", lw=2, label="Bardeen $\\Phi$ route (scheme-free)")
+        segs = []
+        for (ta, tb, y0) in [(-TM, -6 * TM, [Phi0, Xi0]), (-TM, 6 * TM, [Phi0, Xi0])]:
+            tt = np.linspace(ta, tb, 700)
+            r, i2 = evolve(rhs_sharp, ta, tb, y0, (k,), teval=tt)
+            aa = np.array([Sharp.a(t) for t in tt]); HH = np.array([Sharp.H(t) for t in tt])
+            Hd = np.where(np.abs(tt) <= TM, UPS, -1.5 * HH ** 2)
+            segs.append((tt, np.abs(zeta_of(aa, HH, r.y[1] + 1j * i2.y[1], r.y[0] + 1j * i2.y[0]) / z0)))
+        for n, (tt, zb) in enumerate(segs):
+            ax[0].plot(tt / TM, zb, "k--", lw=2, label=("Bardeen $\\Phi$ route (scheme-free)" if n == 0 else None))
         ax[0].axvline(0, color="0.7", lw=0.6, ls=":"); ax[0].axvline(-1, color="0.7", lw=0.6, ls=":")
         ax[0].axvline(1, color="0.7", lw=0.6, ls=":")
+        ax[0].annotate("S1: 6.06", (5.2, 5.4), fontsize=8, color="C0")
+        ax[0].annotate("S2 = $\\Phi$: 0.970", (3.0, 0.60), fontsize=8, color="C1")
         ax[0].set_xlabel("$t/t_m$  (bounce $H=0$ at 0, NEC boundaries at $\\pm1$)")
-        ax[0].set_ylabel("$|\\zeta(t)/\\zeta(-t_m)|$"); ax[0].set_yscale("log")
+        ax[0].set_ylabel("$|\\zeta(t)/\\zeta(-t_m)|$"); ax[0].set_yscale("log"); ax[0].set_ylim(1e-2, 3e1)
         ax[0].set_title("linear transfer of $\\zeta$, $k\\eta_B=10^{-3}$", fontsize=10)
-        ax[0].legend(fontsize=8); ax[0].grid(alpha=0.3)
+        ax[0].legend(fontsize=8, loc="lower left"); ax[0].grid(alpha=0.3)
         for keta in KS:
             row = smooth[keta]
             ds = sorted({float(kk.split("|")[0]) for kk in row})
