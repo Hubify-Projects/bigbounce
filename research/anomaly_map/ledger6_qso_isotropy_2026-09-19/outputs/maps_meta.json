@@ -1,0 +1,19 @@
+{
+  "data": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss",
+  "nran_files": 4,
+  "zmin": 0.8,
+  "zmax": 2.1,
+  "nsides": [
+    32,
+    64,
+    128
+  ],
+  "counts": {
+    "data_NGC": 555913,
+    "data_NGC_sumw": 553836.367353656,
+    "ran_NGC": 32546199,
+    "data_SGC": 300918,
+    "data_SGC_sumw": 296715.66889866546,
+    "ran_SGC": 18221806
+  }
+}
