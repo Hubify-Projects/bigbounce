@@ -13,7 +13,7 @@
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\eps}{\epsilon}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1S.0.10}
+\newcommand{\paperVersion}{v1S.0.11}
 \newcommand{\paperTimestamp}{September 19, 2026}
 
 \begin{document}
@@ -39,8 +39,9 @@ $\delta N_c=\zeta_{L,f}[1-I/3+O(k_L^2/a^2H^2)]$, with
 $I=\zeta_{L,f}^{-1}\int(\eps/c_s^2)\dot\zeta_L\,dt$ the $\zeta$-growth-weighted mean:
 $\delta N_c=\zeta$ at linear order iff $I\to0$. At second order the worldline label matters:
 the initial-position label (the separate universe's own label) composes the in-in
-bispectrum back to the isotropic separate-universe value, $-5$, for every constant $\eps$;
-the final-position label differs by a translation term with zero monopole. We present one
+bispectrum back to the isotropic separate-universe value, $-5$, for every constant $\eps$
+and every spectral index $n_s$; the final-position label differs by a translation term whose
+monopole vanishes only at $n_s=1$. We present one
 nontrivial check (matter-dominated contraction, $I\to\eps$, an $O(1)$ identification error)
 plus three consistency limits -- attractor slow roll and ekpyrosis ($I=0$, identity map)
 and ultra-slow-roll ($I=O(\sqrt{\eps_s\eps_f})$, not computed here) -- and place the
@@ -145,23 +146,32 @@ constant piece on the initial slice), solving the exact ADM constraints to
 $O(\zeta_L\zeta_S)$ and integrating Eq.~\eqref{eq:threading} gives
 $f_{\delta N}=f^{\rm in\text{-}in}/\lambda+f_{\rm map}$, where $f_{\rm map}$ depends on how
 the fluid worldline is labelled. Labelled by \emph{initial} position $x_i$ -- the label the
-separate universe uses, since it never learns where the fluid element ends up --
+separate universe uses, since it never learns where the fluid element ends up -- at $n_s=1$
 \begin{equation}
 f_{\rm map}^{\rm init}(\eps,\mu)=\frac{5\eps}{4(3-\eps)}\big[(\eps-2)-\eps\mu^2\big],
 \label{eq:fmap}
 \end{equation}
 and $f_{\delta N}^{\rm init}\equiv f^{\rm in\text{-}in}/\lambda+f_{\rm map}^{\rm init}=-5$,
-isotropic, for every constant $\eps$. Labelled instead by \emph{final} position
-$x_f=x(t_f)$, the two labels differ by a pure translation $\xi^i=-\int N_L^i\,dt$ along the
-long mode, adding a shear-plus-dilation term with zero monopole:
-\begin{equation}
-f_{\rm map}^{\rm fin}(\eps,\mu)=-\frac{5\eps}{4}(1-\mu^2)=f_{\rm map}^{\rm init}-
-\frac{5\eps}{4(3-\eps)}(1-3\mu^2),
+isotropic, for every constant $\eps$ \emph{and every spectral index $n_s$}: a constant-$\eps$
+background is not scale-invariant, but the $n_s$-dependence of $f_{\rm map}^{\rm init}$ and of
+$f^{\rm in\text{-}in}$ cancel exactly in this composition (App.~A3--A4). Labelled instead by
+\emph{final} position $x_f=x(t_f)$, the two labels differ by a pure translation
+$\xi^i=-\int N_L^i\,dt$ along the long mode, adding a shear-plus-dilation term whose quadrupole
+alone is $n_s$-independent; at $n_s=1$ it has zero monopole, and at general $n_s$
+\begin{align}
+f_{\rm map}^{\rm fin}(\eps,\mu)&=-\frac{5\eps}{4}(1-\mu^2)\nonumber\\
+&=f_{\rm map}^{\rm init}-
+\frac{5\eps}{4(3-\eps)}\big[1-3\mu^2+(n_s-1)\mu^2\big],
 \label{eq:fmapfin}
-\end{equation}
-giving $f_{\delta N}^{\rm fin}=-\tfrac{15(\eps-4)}{4(\eps-3)}+\tfrac{15\eps}{4(3-\eps)}\mu^2$
-($-\tfrac{25}{4}+\tfrac{15}{4}\mu^2$ at $\eps=3/2$); $\mu=\hat k_L\!\cdot\!\hat k_S$. Both
-labels give the same, label-independent monopole $-5\eps/6$; only the quadrupole is a
+\end{align}
+where $f_{\rm map}^{\rm fin}$ itself carries no $n_s$-dependence (its kernel has no $1/k_L$
+pole). At $n_s=1$ this gives
+$f_{\delta N}^{\rm fin}=-\tfrac{15(\eps-4)}{4(\eps-3)}+\tfrac{15\eps}{4(3-\eps)}\mu^2$
+($-\tfrac{25}{4}+\tfrac{15}{4}\mu^2$ at $\eps=3/2$); at general $n_s$,
+$f_{\delta N}^{\rm fin}=\tfrac{5[\eps(n_s-4)\mu^2-3\eps+12]}{4(\eps-3)}$ (App.~A4);
+$\mu=\hat k_L\!\cdot\!\hat k_S$. The two labels' monopoles agree, at $-5\eps/6$, only at
+$n_s=1$: $f_{\rm map}^{\rm fin}$'s monopole is $n_s$-independent, while $f_{\rm map}^{\rm init}$'s
+is $\frac{5\eps(2\eps-7+n_s)}{12(3-\eps)}$ (App.~A2); only the $n_s=1$ quadrupole is a pure
 labelling convention.\footnote{Four geometric contributions to $f_{\rm map}^{\rm fin}$ each
 carry an overall factor of $\eps$: the shift/spatial-metric ($zlap$) term, the second-order
 metric perturbation, the gradient term, and the final-position worldline displacement. A
@@ -173,7 +183,8 @@ state $w$ ($\eps=\tfrac32(1+w)$, $c_s=1$),
 f_{\rm map}^{\rm fin}=-\frac{15}{8}(1+w)(1-\mu^2),
 \label{eq:generalw}
 \end{equation}
-with label-independent monopole $f_{\rm map}^{\rm mono}=-\tfrac54(1+w)$. Fig.~\ref{fig:lambda}
+with final-position monopole $f_{\rm map}^{\rm mono}=-\tfrac54(1+w)$ ($n_s$-independent; equal
+to the initial-position monopole only at $n_s=1$). Fig.~\ref{fig:lambda}
 shows both across $-1\le w\le1$: at $w=-1$ ($\eps=0$, de~Sitter/attractor limit) $\lambda\to1$
 and $f_{\rm map}^{\rm mono}\to0$, so the map is the identity; $\lambda\to0$ at $w=1$
 (kination, $\eps=3$, formally the $m=3/\eps-1=0$ constant mode, $\dot\zeta_L=0$, $I=0$ --
@@ -184,7 +195,8 @@ $-\tfrac{5}{18}(\eps-3)(\eps-6)$ itself vanishes.
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{fig_lambda_fmap.png}
 \caption{The linear rescaling $\lambda(w)=(1-w)/2$ (dimensionless, left axis) and the
-label-independent second-order map monopole $f_{\rm map}^{\rm mono}(w)=-\tfrac54(1+w)$
+final-position second-order map monopole $f_{\rm map}^{\rm mono}(w)=-\tfrac54(1+w)$
+($n_s$-independent; equals the initial-position monopole only at $n_s=1$, App.~A2),
 (dimensionless, right axis), Eq.~\eqref{eq:generalw}, for constant equation of state
 $-1\le w\le1$ at $c_s=1$. At $w=-1$ (attractor limit, $\eps=0$) $f_{\rm map}^{\rm mono}$
 vanishes and $\lambda\to1$, so the map is the identity; $\lambda$ vanishes at $w=1$
@@ -360,8 +372,9 @@ monopole coefficient $A_2$ and the $\lambda'=2\lambda$, $3\lambda$ weights are d
 sympy-validated in
 \url{research/theory_audit/a2_lapse_monopole_adjudication_2026_09_07}\texttt{.\{py,json\}}
 (SHA-256 \texttt{dcc8c57d\ldots} / \texttt{2c2c672b\ldots}). The general-$n_s$ translation-term
-trace part and the compensating in-in tilt term (Secs.~A3-A4 above) are
-derived from the linearised ADM constraints and sympy-validated in
+trace part (Sec.~A3, from the linearised ADM constraints) and the compensating in-in tilt
+term (Sec.~A4, from re-running the committed in-in vertex assembly with general-tilt external
+power spectra) are derived and sympy-validated in
 \url{research/theory_audit/psu_gate_S12_translation_trace_2026_09_19}\texttt{.\{py,json\}}
 (SHA-256 \texttt{8b39192b\ldots} / \texttt{eaf940c0\ldots}), independently cross-checked by a
 blind second derivation. Manifest:
@@ -503,11 +516,14 @@ homogeneous FRW region identified by its fluid element's coordinates on the init
 has no shift and never learns where that element ends up, so its output is $\delta N_c$
 labelled by \emph{initial} position -- the label for which the composition is exactly $-5$.
 The $-5$ does not rely on scale invariance: a constant-$\eps$ background is not
-scale-invariant (the growing branch carries $n_s-1=2(2\eps-3)/(\eps-1)$, vanishing only at
-$\eps=3/2$), yet away from that point the translation term's $\eps(n_s-1)$ monopole is
-cancelled term-by-term in $\mu$ by an exactly compensating $-\tfrac{5\eps}{12}(n_s-1)\mu^2$
-carried by the general-$n_s$ in-in shape (Sec.~A4 below), so the composed
-$f_{\delta N}^{\rm init}=-5$ is exact for every constant $\eps$ and every spectral index.
+scale-invariant (the growing branch these kernels correlate carries
+$n_s-1=2(2\eps-3)/(\eps-1)$, vanishing only at $\eps=3/2$; this equals the late-time dominant
+mode's index for $1<\eps<3$, the range in which the growing branch is that dominant mode), yet
+away from that point the translation term's tilt-dependent correction
+$\tfrac{5\eps(n_s-1)}{4(3-\eps)}\mu^2$ is cancelled, term-by-term in $\mu$, by the general-$n_s$
+in-in shape's own tilt term $-\tfrac{5\eps}{12}(n_s-1)\mu^2$ once divided by $\lambda$
+(Sec.~A4 below), so the composed $f_{\delta N}^{\rm init}=-5$ is exact for every constant
+$\eps$ and every spectral index.
 
 \subsection{The general-$\eps$ in-in shape and the identity-vs-fit check}
 
@@ -527,9 +543,10 @@ constraints alone and is validated symbolically before any in-in number is subst
 constraint solver and the bispectrum assembly are written and frozen, then $f^{\rm in\text{-}in}$
 is read in only at the closure step. The map derivation therefore takes no in-in and no
 $\delta N$ input; the composed monopole $-5$ is a consequence of the map applied to the
-independently-derived in-in shape, not a fit to the separate universe's own $-5$. The extra
-tilt term $-\tfrac{5\eps}{12}(n_s-1)\mu^2$ is exactly $-\delta T$, the negative of the
-translation term's own tilt correction (Sec.~A3), term-by-term in $\mu$; this is why the
+independently-derived in-in shape, not a fit to the separate universe's own $-5$. Divided by
+$\lambda$, the extra tilt term becomes $\lambda^{-1}\big[-\tfrac{5\eps}{12}(n_s-1)\mu^2\big]
+=-\tfrac{5\eps(n_s-1)}{4(3-\eps)}\mu^2=-\delta T$, exactly cancelling the translation term's
+own tilt correction (Sec.~A3), monopole-free and term-by-term in $\mu$; this is why the
 composed initial-position result $f_{\delta N}^{\rm init}=-5$ is $n_s$-independent while the
 final-position result $f_{\delta N}^{\rm fin}=\tfrac{5[\eps(n_s-4)\mu^2-3\eps+12]}{4(\eps-3)}$
 is not.

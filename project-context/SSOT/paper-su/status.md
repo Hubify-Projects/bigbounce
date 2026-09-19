@@ -1,6 +1,6 @@
 # P-SU status — current authoritative section
 
-**Current candidate:** v1S.0.10 · 2026-09-19 ·
+**Current candidate:** v1S.0.11 · 2026-09-19 ·
 `arxiv/paper_su_criterion/main.tex`
 
 **Title:** "The separate universe computes a different variable: an exact
@@ -114,6 +114,90 @@ convergence claim is made on a partial board. Retry
 is clean, then re-run `tools/v3_native_pdf_review.py` on the same exact PDF
 (sha8 `1015f442`) to complete the Grok/Gemini legs.
 
+## v1S.0.11 — R4 Claude-opus leg closed (Grok/Gemini legs still pending)
+
+The Claude-opus verdict-blind referee (dispatched on v1S.0.10, sha8 `1015f442`)
+returned **MAJOR REVISIONS**, full raw saved to
+`project-context/peer-reviews/INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/claude_opus_referee.md`.
+It independently re-derived and confirmed correct essentially everything in
+Appendix A2 (all four kernel totals, the normalisation), Eq. (4)'s identity,
+the $-5$ composition, $f_{\delta N}^{\rm fin}$'s general-$n_s$ form, and every
+one of the 10 SHA-256 prefixes cited in the Reproducibility Statement
+(byte-verified against the actual files) — strong positive evidence the S12
+fix did not introduce a computational error.
+
+**Truth-audited findings:**
+
+- **MAJOR 2 — genuinely-new-real, CLOSED.** Sec. II's Eqs. (3)–(5), the
+  "label-independent monopole $-5\eps/6$" claim, Fig. 1's caption, and the
+  abstract's "translation term with zero monopole" are all the $n_s=1$
+  special case, printed with no tilt caveat — directly contradicting the
+  Appendix A2/A3 correction this lane had just applied there. This was an
+  internal-consistency gap introduced by fixing only the Appendix and not the
+  main text. Fixed in v1S.0.11: the same $n_s$ qualifiers, the general-$n_s$
+  $f_{\rm map}^{\rm fin}$/$f_{\delta N}^{\rm fin}$ forms, and the corrected
+  monopole-agreement statement now appear in Sec. II, the abstract, Eq. (5)'s
+  surrounding text, and Fig. 1's caption. The $-5$ statement in the abstract
+  and Sec. II is also strengthened to "for every constant $\eps$ and every
+  spectral index $n_s$", matching the Appendix.
+- **Two wording slips in the S12 addition itself, CLOSED (referee MINOR 4 and
+  MINOR 6, both real):** (i) Appendix A3/A4 stated the in-in shape's extra
+  tilt term "is exactly $-\delta T$" — the identity in fact requires dividing
+  by $\lambda$ first ($\lambda^{-1}[-\tfrac{5\eps}{12}(n_s-1)\mu^2]=-\delta T$);
+  both sentences now show the $\lambda^{-1}$ step explicitly. (ii) the
+  Reproducibility Statement said the compensating in-in tilt term is "derived
+  from the linearised ADM constraints" — an in-in bispectrum term cannot come
+  from linearised constraints alone; corrected to name the actual route
+  (re-running the committed in-in vertex assembly with general-tilt external
+  spectra).
+- **MAJOR 1 (initial-slice/$\zeta_L(t_i)=0$ convention inconsistency across
+  Eq. (1)-(2), the USR $\lambda_{\rm USR}$ formula, and the ekpyrosis Table I
+  row), MAJOR 3 (Appendix A5's $\lambda_g=1-\eps g/3$ asserted without
+  derivation, in tension with the flat-slice premise), and MAJOR 4 (the Cai
+  et al. 2009 factor-of-2 erratum claim rests on an unpublished note, not an
+  in-paper derivation) — all appear genuinely real on inspection, but concern
+  pre-S12 content (Sec. II's original Eq. 1/2/USR text, Appendix A5, Sec. I's
+  literature comparison) that this lane's S12-application scope did not
+  touch and does not have budget to re-derive.** Not closed, not dismissed —
+  carried below as new open items for a future lane. None of the three touch
+  the S12 result or the headline $f_{\delta N}^{\rm init}=-5$.
+- Referee MINOR items 1, 2, 3, 5, 7-16: real but cosmetic/definitional
+  (undefined symbol $m$, a sign-convention mismatch between Sec. II and App.
+  A3 for $\xi^i$, undefined App. A5 symbols, the $n_s(\eps)$ validity range,
+  an uncited blind-adjudication claim, $c_s=1$ not stated at Appendix A1's
+  head, a difference-vs-ratio wording slip in Sec. III, etc.) — carried,
+  non-blocking, listed in the raw report for whichever lane next touches
+  those sections.
+
+**Directive-G hygiene:** v1S.0.10→v1S.0.11, `\paperTimestamp` unchanged
+(September 19, 2026 — same day). 4-pass pdflatex, 0 undefined references, 0
+raw non-ASCII. The added $n_s$ bracket in Eq. (4) initially overflowed the
+column by 26.77pt (single-line display too long); fixed by wrapping into a
+two-line `align` block — 0 overfull `\hbox` >10pt after. `/latex-audit`
+visual-rendered all 7 pages, confirmed no column overflow/crossing. 7 pages
+(unchanged), PDF md5 `c5b0ea962c5b9f965c22bc6d08d93250`, three-way matched:
+fresh compile == `site/public/papers/paper_su_criterion_v1S.0.11.pdf` ==
+`public/papers/paper_su_criterion_v1S.0.11.pdf` == Convex `paperVersions:current`.
+No science number changed.
+
+**R4 status: Claude-opus leg CLOSED (findings truth-audited and dispositioned
+above); Grok API + Gemini API legs STILL NOT RUN.** The
+`bigbounce_preflight.py` clean-tree gate cleared for `site/src/data/*.ts`
+after this lane's own commits landed, but immediately re-blocked on a
+**different** validator (`draft paper inputs are dirty`,
+`research/track_a3_multichannel/paper/{main.tex,main.pdf}`) — lane
+`bb-L1b-a3m-r10`'s own active A3M review round, unrelated to paper-su. This
+is the same class of shared-checkout contention, just a different pair of
+files; not bypassed. Readiness stays **72 (COMPUTED)** — one leg of R4 is
+closed with real findings fixed, but the board is not complete and no
+convergence is claimed. **Budget for this lane is spent here** (task
+directive: "close real items... then STOP"); the next lane should retry
+`python3 tools/bigbounce_preflight.py run --receipt <path>` once
+`git status --short -- research/track_a3_multichannel/paper` is clean, then
+run `tools/v3_native_pdf_review.py` on the exact v1S.0.11 PDF to complete
+the Grok/Gemini legs and truth-audit their findings before any convergence
+claim.
+
 ## v1S.0.2 closure summary (this bundle)
 
 - Title/abstract reframed per D-PSU-1: an exact, invertible change-of-variable
@@ -188,8 +272,64 @@ plus `reproducibility/manifests/experiments/psu-gates-s1-s2-label-composition-cr
 (new in v1S.0.2, backs the label-resolved composition + restored gradient
 term), both local CPU, \$0, under 5 seconds total compute.
 
-## Close-the-gap section (open items, as of v1S.0.9 — superseded the v1S.0.2-era list below)
+## Close-the-gap section (open items, as of v1S.0.11 — superseded the v1S.0.2-era list below)
 
+- **S13 (NEW, R4 2026-09-19, Claude-opus leg, MAJOR 1) — initial-slice
+  convention inconsistency.** Eq. (1)-(2) assume $\zeta_L(t_i)=0$ (a flat,
+  super-Hubble initial slice), which makes $I=\eps$ exactly for any
+  constant-$\eps$ background with a growing mode. Three passages conflict
+  with this: (i) "$I\to0$ (identity map) on any constant mode, including...
+  the dominant ekpyrotic mode" — under the flat-slice premise a mode that
+  relaxes onto the constant branch from $\zeta_i=0$ has $I=\eps\gg0$, not
+  $I=0$; Table I's ekpyrosis row needs $\zeta_{L,i}\neq0$, where Eq. (2) does
+  not hold as stated. (ii) $\lambda_{\rm USR}$'s printed leading coefficient
+  assumes $\zeta_{L,i}\neq0$ (stated explicitly in that sentence), so Eq. (2)
+  is not applicable there either, and the referee's own re-derivation under
+  two plausible non-flat conventions does not reproduce the printed
+  coefficient (order $O(\sqrt{\eps_s\eps_f})$ and the paper's conclusion
+  survive; the printed number may not). (iii) Appendix A5 needs
+  $\zeta_{L,i}\neq0$ (a free admixture $g$), also inconsistent with A3's flat
+  premise (see S15). **Not closed.** Requires stating once, explicitly,
+  where $\Sigma_i$ sits, whether $\zeta_L(t_i)=0$, and reconciling the
+  ekpyrosis row + $\lambda_{\rm USR}$ coefficient under that stated
+  convention — a real derivation task, not an edit. Full detail:
+  `INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/claude_opus_referee.md`
+  MAJOR 1.
+- **S14 (NEW, R4 2026-09-19, Claude-opus leg, MAJOR 4) — Cai et al. 2009
+  factor-of-2 erratum claim not self-contained.** Sec. I asserts Cai, Xue,
+  Brandenberger & Zhang's published Eqs. (38)-(41)/Fig. 5 are uniformly twice
+  their own Eq. (37), an erratum-strength claim against published literature,
+  supported only by the self-cited unpublished note `[23]`. The paper
+  correctly insulates its linear criterion from this and gives the 4/3
+  counterfactual, but the headline $-5$ composition and the $25/8$ gap in
+  Table I both depend on which amplitude is adopted. **Not closed.** Either
+  reproduce the monomial-by-monomial comparison establishing the factor of 2
+  in an appendix, or demote to "we adopt Eq. (37); it differs from the
+  printed amplitudes by an overall factor 2, unresolved here" and carry the
+  4/3 counterfactual wherever the gap is quoted.
+- **S15 (NEW, R4 2026-09-19, Claude-opus leg, MAJOR 3) — Appendix A5's
+  $\lambda_g=1-\eps g/3$ asserted, not derived, and conflicts with S13's
+  flat-slice premise (which forces $g\to1$, making $g=0$ unreachable).** If
+  $\zeta_{L,i}\neq0$ is allowed instead, the correct linear map is
+  $\delta N_c=(\zeta_{L,f}-\zeta_{L,i})(1-\eps/3)=g\lambda_1\zeta_{L,f}$, not
+  $g\lambda_g\zeta_{L,f}$ with $\lambda_g=1-\eps g/3$ (the two agree only at
+  $g=1$); the stated "$g=0$: no super-Hubble signal" conclusion is then an
+  indeterminate $0/0$ rather than a clean zero. **Not closed.** Requires
+  stating A5's initial-slice convention, deriving $\lambda_g$ from Eq. (1) in
+  that setting, and recasting the $g=0$ conclusion in terms of the
+  kernel $M(0)=0$ (normalisation-free) rather than $f_{\rm map}(0)$.
+- S16 (carried, non-blocking, cosmetic): referee MINORs 1, 2, 3, 5, 7-16 in
+  the R4 Claude-opus raw report — undefined symbol $m$; a sign mismatch
+  between Sec. II's $\xi^i=-\int N_L^i dt$ and Appendix A3's
+  $\xi^i\equiv\int N_L^i dt$ for the same displacement; undefined App.
+  A5/A7 symbols ($K^{\rm grow}_{\rm rest}$, $q$, $p$, $P_S$); the
+  $n_s(\eps)$ growing-branch formula's validity range ($1<\eps<3$ for the
+  dominant-mode identification); an uncited blind-adjudication claim;
+  $c_s=1$ not stated at Appendix A1's head; Sec. III's "factor $8/3$" wording
+  for what is actually a difference of $25/8$; Table I's USR row not marked
+  as quoting Ref.~[3]; the abstract calling the map "exact" without the
+  $O(k_L^2/a^2H^2)$ qualifier Sec. V itself states. None touch a headline
+  number; deferred to whichever lane next edits those sections.
 - **S12 (RESOLVED 2026-09-19, campaign lane `bb-LS3-psu-s12`) — CLOSED-WITH-CORRECTION;
   NO LONGER GATING.** The from-scratch derivation was done:
   `research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.{py,md,json}`

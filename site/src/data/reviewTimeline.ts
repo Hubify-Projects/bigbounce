@@ -67,6 +67,92 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-r4-claude-opus-leg-closed-v1s-0-11-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "internal-cc",
+    title: "R4 Claude-opus leg closes a real internal-consistency gap the S12 fix left behind -- paper-su v1S.0.11",
+    papers: ["PSU"],
+    summary:
+      "Campaign lane bb-L2b-psu-s12-apply. Dispatched a verdict-blind Claude-opus sub-agent (not shown DISPOSITIONS/PSU.md, SSOT, or the S12 derivation note) as the Claude-opus INT leg of R4, the one directive-R2-permitted verification board unlocked by the S12 science decision, exact-PDF-bound to v1S.0.10 (sha8 1015f442). It returned MAJOR REVISIONS. Before dismissing or closing anything, every finding was checked against the manuscript and the S12 note directly: the referee independently re-derived and confirmed correct essentially all of Appendix A2's kernel totals, Eq. (4)'s identity, the -5 composition, the general-n_s f_deltaN^fin form, and byte-verified all 10 SHA-256 prefixes cited in the Reproducibility Statement -- strong positive evidence the S12 fix introduced no computational error. One finding (MAJOR 2) was genuinely-new-real and squarely this lane's responsibility: Sec. II's Eqs. (3)-(5), the 'label-independent monopole -5eps/6' claim, Fig. 1's caption, and the abstract's 'translation term with zero monopole' all print the n_s=1 special case as if valid for every constant eps, directly contradicting the Appendix A2/A3 correction the same lane had just applied -- the S12 manuscript fix touched only the Appendix, leaving the main text's restatement of the same formulas uncorrected. Closed in v1S.0.11 with matching n_s qualifiers, the general-n_s f_map^fin/f_deltaN^fin forms, and a strengthened -5 statement in Sec. II, the abstract, and Fig. 1's caption. Two further real wording slips inside the S12 addition itself were also caught and closed: the Appendix A3/A4 cancellation identity was stated as an unqualified equality when it in fact requires dividing by lambda first, and the Reproducibility Statement mis-attributed the compensating in-in tilt term to the linearised ADM constraints alone (an in-in bispectrum term needs the vertex assembly, not just the constraints). Three further findings (MAJOR 1: an initial-slice/zeta_L(t_i)=0 convention inconsistency across Eq. (1)-(2), the USR lambda formula, and the ekpyrosis Table I row; MAJOR 3: Appendix A5's lambda_g=1-eps*g/3 asserted rather than derived; MAJOR 4: the Cai et al. 2009 factor-of-2 erratum claim resting on an unpublished note) all appear genuinely real but concern pre-existing content this lane's S12-application brief did not scope in and does not have budget to re-derive -- carried as new open science gates S13/S14/S15 rather than closed with an unsupported claim or silently dropped, per /never-fabricate-derivation. None of the three touch S12 or the headline f_deltaN^init=-5. Directive-G hygiene: v1S.0.10 -> v1S.0.11, 4-pass recompile (0 undef refs), one new 26.77pt overfull hbox from the added n_s bracket in Eq. (4) (a single-line display grown too long) fixed by wrapping into a two-line align block, 0 overfull hboxes >10pt after, /latex-audit visual PASS on all 7 rendered pages, byte-identical three-way mirror match confirmed against the fresh compile and Convex. The Grok API and Gemini API legs of R4 remain not run: the shared-checkout preflight clean-tree gate cleared for site/src/data/*.ts once this lane's own v1S.0.10 commit landed, then immediately re-blocked on a different validator (draft paper inputs dirty, research/track_a3_multichannel/paper -- lane bb-L1b-a3m-r10's own active A3M round, unrelated to paper-su). Same class of shared-checkout contention as before, different files; the gate was not bypassed. Readiness holds at 72 (COMPUTED) -- one INT leg of R4 is closed with real findings fixed, but the board itself is not complete and no convergence is claimed. This lane's task budget is spent here.",
+    keyTakeaways: [
+      "v1S.0.11: 7 pp (unchanged), 4-pass compile, 0 undef refs, 0 overfull hboxes >10pt after a wrap-fix, md5 c5b0ea962c5b9f965c22bc6d08d93250, three-way mirror + Convex match",
+      "MAJOR 2 (genuinely-new-real) + 2 wording slips closed with real edits; MAJOR 1/3/4 are real but pre-existing and out of scope -- carried as new gates S13/S14/S15, not fabricated closed and not silently dropped",
+      "The referee independently re-derived and confirmed essentially the entire S12 computation correct, plus byte-verified all 10 cited SHA-256 prefixes -- strong positive evidence alongside the earlier blind fable adjudication",
+      "R4 NOT complete: Grok/Gemini API legs still blocked by a shared-checkout preflight gate (now on a different concurrent lane's files); readiness holds at 72, no convergence claimed on a partial board",
+    ],
+    links: [
+      { label: "Claude-opus raw referee report", href: `${PR}/INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/claude_opus_referee.md` },
+      { label: "paper-su SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "paper-su dispositions (S12-S16)", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/PSU.md` },
+      { label: "paper-su source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+    ],
+  },
+  {
+    id: "anomaly-flagship-vaf-0-2-full-draft-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "closure-wave",
+    title: "Anomaly flagship vAF.0.2: skeleton grown into a full first draft, one named follow-up test executed",
+    papers: [],
+    summary:
+      "Lane LA (inheriting L5) of the 2026-09-18 publication-push campaign converted the vAF.0.1 skeleton (7pp) into a full first draft vAF.0.2 (15pp, 9 figures, 11 tables), with every number carrying a trailing comment naming the committed artifact it comes from and every derived figure/table regenerated by a committed generator script into outputs/draft_numbers.json -- nothing from memory. Ledger #8 framing held throughout (data release + taxonomy; the pre-declared discovery condition is NOT met). Two new results from landed data: the true science-target parent is 21,793,550 unique TARGETIDs, not the 27,547,223 all-fibre figure previously used, which moves the release to the top 5.7e-5 of science targets (far above their 99th percentile of 0.96); and 36 ZWARN=0 objects sit at z>=4 (16 at z>=6) in the full sample. Most notably, the cheapest named follow-up test was actually executed rather than deferred: an FT-A Lyman-break check against the released Legacy grz fluxes REFUTES one z=5.19 candidate (g-band flux 15x the sample median, entirely blueward of the break), SUPPORTS one z=4.33 candidate (0.8th-percentile g-band flux, Delta-chi2=4205), and cannot decide the two z~6 candidates because the released schema omits FLUX_IVAR -- recorded as a fourth release-schema defect rather than glossed over. The benchmark enrichment figure was also corrected against the fairer science-target denominator (4.2x -> 3.3x; still short of the 10x bar, conclusion unchanged). Four honest TODOs remain (selection function, Zenodo DOI, acknowledgements, a 4-entry ADS check) -- none invented. No review board has run on this draft yet; no site/Convex/SSOT touch was made by this lane (L7b reconciles it here).",
+    keyTakeaways: [
+      "A pre-declared discovery condition that isn't met stays disclosed as not met even while the draft grows from a skeleton to a full paper -- ledger #8's data-release framing did not slip toward a discovery claim under the pressure of a fuller draft",
+      "The cheapest named follow-up test was run, not deferred: the Lyman-break check actually discriminated two of the four FT-A candidates from released photometry alone, and the two it could not decide were logged as a concrete schema gap (missing FLUX_IVAR) rather than left ambiguous",
+      "Correcting a denominator (all-fibre count -> true science-target count) changed a headline percentile figure -- a reminder to verify what population a released fraction is actually a fraction OF before publishing it",
+    ],
+    links: [
+      { label: "vAF.0.2 draft", href: `${GH}/pipelines/p1_highz_tracers/anomaly_flagship_draft` },
+      { label: "draft_numbers.json", href: `${GH}/pipelines/p1_highz_tracers/flagship_assembly_2026-09-18/outputs/draft_numbers.json` },
+      { label: "commit e533f7ed", href: `${GH_COMMIT}/e533f7ed` },
+    ],
+  },
+  {
+    id: "a3m-r10-confirm-board-v3m-0-26-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "internal-api",
+    title:
+      "A3M R10: the confirmation board did not confirm \u2014 four MAJORs, a headline corrected downward, v3M.0.25 \u2192 v3M.0.26",
+    papers: ["A3"],
+    summary:
+      "Lane L1b of the 2026-09-18 publication-push campaign, running the one confirmation board directive R2 permits after R9 closed real items. Only the Grok raw survived the prior session, so the Gemini and Fable legs were recorded FAILED and re-run on the same exact v3M.0.25 PDF (sha256 c5fe8889, md5 d46166cb, 20 pp) rather than back-filled. Verdicts: Grok REJECT, Gemini MAJOR REVISIONS, and a verdict-blind Claude Fable 5.1 INT referee MAJOR REVISIONS with 0 ESSENTIAL / 4 MAJOR / 9 minor / 5 nit. It did not confirm: 17 findings were dispositioned genuinely-new-real and 15 falsified with source citations. Table V\u2019s two f_PBH columns turned out not to be evaluated at the rows\u2019 own labels \u2014 rows 4 and 5 carried C_th = 0.5 values under C_th = 0.6/0.4 labels because the generator computes that block at a fixed baseline, and row 1 carried an entirely different grid point\u2019s pair; re-evaluating at the labeled points with the committed functions unchanged left the ratio column, the n = 27 footer and every qualitative claim intact. The Sec. VIII \u2018best case r_min = 12.6\u2019 was computed under |f_NL^after| \u2264 5.1 on one background while the adjacent Planck-95% number used 9.3 across three; on a common criterion the DBI minimum is r_min = 10.3 (286\u00d7 BICEP/Keck), so the headline moved against the paper and is printed that way. Page 8 called the same tensor amplitude \u20188\u20139 orders\u2019 below NANOGrav where page 13 said 10^6.2 \u2014 the arithmetic is 6.19. And two reproducibility citations resolved to nothing: a .log matched by .gitignore that was never committed, and a JSON path that exists on no branch. No physics error was found in either round: the four committed sympy derivations re-ran byte-identically and Cai et al.\u2019s Eq. (37) was re-derived from the e-print to exactly half of each quoted amplitude. Directive R2\u2019s budget is now spent \u2014 rounds stop until a scope decision.",
+    keyTakeaways: [
+      "A confirmation board is not a formality: the board meant to certify R9\u2019s closure found four MAJORs no earlier round had reached, including a table whose printed numbers belonged to different grid points than its own row labels",
+      "Closures scoped to the instances a reviewer named leave residuals \u2014 R9 removed one drafting-history parenthetical and seven survived; it cleared nine raw artifact paths and seven survived, two of them introduced by that same closure. Close the pattern with a grep, then re-grep after the edit",
+      "Verify table cells against the generator at the labeled parameters, not against a JSON key that looks right: three of five rows matched real entries of the committed output, just not the entries their labels described",
+      "Every window/threshold number needs its criterion printed beside it \u2014 two different criteria on two different model lines coincided at 12.6, and the collision is exactly what hid the mismatch until a referee recomputed both",
+      "A correction that moves a headline against the paper (r_min 12.6 \u2192 10.3) is the one most worth making unprompted; it is also the strongest evidence a review loop is not being gamed",
+    ],
+    links: [
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "R10 truth audit", href: `${PR}/INT_v3/A3M_v3M.0.25_R10_TRUTH_AUDIT_2026-09-19.md` },
+      { label: "Claude Fable INT raw", href: `${PR}/INT_v3/A3M_v3M.0.25_R10_claude_fable_2026-09-19.md` },
+      { label: "Grok API raw", href: `${PR}/ROUND_2026-09-18-A3M-v3M.0.25-EXACTPDF-c5fe8889-R10CONFIRM_A3M_Grok_brutal.md` },
+      { label: "Gemini API raw", href: `${PR}/ROUND_2026-09-18-A3M-v3M.0.25-EXACTPDF-c5fe8889-R10CONFIRM_A3M_Gemini_cosmology.md` },
+      { label: "Dispositions", href: `${PR}/DISPOSITIONS/A3M.md` },
+      { label: "Table V recomputation", href: `${GH}/research/track_a3_multichannel/r10_tableV_recompute` },
+      { label: "Window-criterion computation", href: `${GH}/research/track_a3_multichannel/r10_window_criterion` },
+    ],
+  },
+  {
+    id: "skill-confirmation-boards-and-pattern-scoped-closures-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "skill-improvement",
+    title: "Pattern: closures scoped to the instances a reviewer named, and tables verified against the wrong artifact key",
+    papers: ["A3"],
+    summary:
+      "Two process defects surfaced together in the A3M R10 confirmation board and are now standing rules for the R-round skills. First, a closure that fixes the instances a reviewer listed is not a closure of the finding: R9 removed one drafting-history parenthetical and seven survived elsewhere in the same manuscript, and it cleared nine raw artifact paths while seven survived \u2014 two of which the R9 closure itself introduced. Every closure of a pattern-class finding must end with the grep that defines the pattern, re-run after the edit, over everything the reader sees. Second, a table cell can match a real key of the committed output and still be wrong: three of Table V\u2019s five rows carried values from grid points other than the ones their own labels named, because the generator computes that block at a fixed C_th baseline regardless of the label. Verification must re-evaluate at the labeled parameters, not look up a plausible key. A third, cheaper rule came out of the same round: cited artifacts must be checked with git ls-files, since a .log can be matched by .gitignore and a JSON path can exist in no branch at all while the surrounding statement reads as authoritative.",
+    keyTakeaways: [
+      "Pattern-class closures end with a re-run grep over the rendered text, not with the instance list the reviewer happened to give",
+      "Re-evaluate table cells at their labeled parameters; matching a key in the committed JSON proves the number is real, not that it belongs in that row",
+      "Check every cited artifact with git ls-files \u2014 .gitignore silently swallows .log citations, and a path can exist on no branch while reading as authoritative",
+      "A closure can introduce the very defect it is closing: two of the raw artifact paths R10 removed were added by R9\u2019s own closure of that finding",
+    ],
+    links: [
+      { label: "R10 truth audit", href: `${PR}/INT_v3/A3M_v3M.0.25_R10_TRUTH_AUDIT_2026-09-19.md` },
+      { label: "A3M dispositions", href: `${PR}/DISPOSITIONS/A3M.md` },
+    ],
+  },
+  {
     id: "psu-s12-translation-trace-fix-v1s-0-10-2026-09-19",
     dateISO: "2026-09-19",
     kind: "closure-wave",

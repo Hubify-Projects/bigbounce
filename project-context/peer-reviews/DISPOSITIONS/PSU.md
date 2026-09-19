@@ -206,3 +206,57 @@ on `site/src/data/{live-status,papers}.ts`, which are mid-edit by concurrent cam
 this shared checkout (not a `paper-su`-specific problem). Whichever lane completes R4 must
 truth-audit every finding against this file's fingerprints before closing; S8/S11/venue-length
 remain carried, non-blocking open items.
+
+**R4 Claude-opus leg — RETURNED and TRUTH-AUDITED (2026-09-19): MAJOR REVISIONS.** Raw:
+`INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/claude_opus_referee.md`. The referee
+independently re-derived and confirmed correct essentially all of Appendix A2's kernel totals,
+Eq. (4)'s identity, the $-5$ composition, the general-$n_s$ $f_{\delta N}^{\rm fin}$ form, and
+byte-verified all 10 cited SHA-256 prefixes — strong evidence the S12 fix introduced no
+computational error. Findings:
+
+- **MAJOR 2 — genuinely-new-real, CLOSED in v1S.0.11.** Sec. II's Eqs. (3)-(5), the
+  "label-independent monopole $-5\eps/6$" claim, Fig. 1's caption, and the abstract's
+  "translation term with zero monopole" print the $n_s=1$ special case as general-$\eps$, with
+  no tilt caveat — a direct contradiction with the Appendix A2/A3 correction this lane had just
+  applied. Root cause: the S12 manuscript fix touched only the Appendix, not the main text that
+  restates the same formulas. Fixed: matching $n_s$ qualifiers, the general-$n_s$
+  $f_{\rm map}^{\rm fin}$/$f_{\delta N}^{\rm fin}$ forms, and the corrected monopole-agreement
+  statement now appear in Sec. II, the abstract, and Fig. 1's caption; the $-5$ statement
+  strengthened to "for every constant $\eps$ and every spectral index $n_s$" in both places.
+- **Two real wording slips in the S12 addition itself, CLOSED in v1S.0.11** (referee MINOR 4,
+  MINOR 6): (i) App. A3/A4 stated the in-in shape's extra tilt term "is exactly $-\delta T$"
+  without the required $\lambda^{-1}$ factor (the identity is
+  $\lambda^{-1}[-\tfrac{5\eps}{12}(n_s-1)\mu^2]=-\delta T$) — both sentences now show the
+  division explicitly. (ii) the Reproducibility Statement said the in-in tilt term is "derived
+  from the linearised ADM constraints" (an in-in bispectrum term cannot come from linearised
+  constraints alone) — corrected to name the actual route (re-running the committed in-in
+  vertex assembly with general-tilt external spectra).
+- **MAJOR 1, MAJOR 3, MAJOR 4 — real findings, NOT closed, NOT dismissed, OUT OF THIS LANE'S
+  SCOPE.** Tracked as new gates **S13** (initial-slice/$\zeta_L(t_i)=0$ convention
+  inconsistency across Eq. 1-2, $\lambda_{\rm USR}$, and the ekpyrosis Table I row), **S14**
+  (Cai et al. 2009 factor-of-2 erratum rests on an unpublished note, not an in-paper
+  derivation), and **S15** (Appendix A5's $\lambda_g=1-\eps g/3$ asserted rather than derived,
+  conflicting with S13's flat-slice premise) — full detail in
+  `project-context/SSOT/paper-su/status.md` and the raw report. None of the three concern S12
+  or the headline $f_{\delta N}^{\rm init}=-5$; they concern pre-existing Sec. II/Appendix A5/
+  Sec. I content this lane's S12-application brief did not scope in, and closing them properly
+  is a real derivation task, not an edit — correctly left open per `/never-fabricate-derivation`
+  rather than closed with an unsupported claim.
+- MINOR items 1, 2, 3, 5, 7-16: real but cosmetic (undefined symbol $m$; a sign mismatch between
+  Sec. II and App. A3's $\xi^i$ convention; undefined App. A5/A7 symbols; the $n_s(\eps)$
+  validity range; an uncited blind-adjudication claim; etc.) — carried as **S16**, non-blocking.
+
+Directive-G: v1S.0.10→v1S.0.11 (4-pass, 0 undef refs, one new 26.77pt overfull hbox from the
+added bracket fixed by wrapping into a two-line `align`, 0 overfull >10pt after, `/latex-audit`
+visual PASS all 7 pages, md5 `c5b0ea962c5b9f965c22bc6d08d93250`, three-way matched including
+Convex). No science number changed.
+
+**R4 status: Claude-opus leg CLOSED and dispositioned; Grok API + Gemini API legs STILL NOT
+RUN.** The site-data clean-tree gate cleared after this lane's commits landed, then immediately
+re-blocked on a *different* validator (`draft paper inputs are dirty`,
+`research/track_a3_multichannel/paper/{main.tex,main.pdf}` — lane `bb-L1b-a3m-r10`'s own active
+A3M round, unrelated to paper-su). Same class of shared-checkout contention, different files;
+not bypassed. **This lane's budget is spent here** (task directive: close real items, then
+stop). Next lane: retry the preflight once `research/track_a3_multichannel/paper` is clean, run
+the Grok/Gemini legs on the exact v1S.0.11 PDF, truth-audit against S13/S14/S15/S16's
+fingerprints above before any convergence claim.
