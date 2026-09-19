@@ -7,9 +7,14 @@
 > result, a prediction, or a claim. Houston's preference for a regenerative universe is motivation
 > for asking the questions below; it is **never** evidence, a prior, or a model-selection criterion.
 >
-> **Citation policy:** every reference below was resolved this session by fetching its arXiv abstract
-> page or DOI landing page. Items that could not be resolved are explicitly tagged
-> `[UNVERIFIED — pending W2 bibliography]` and are **not** relied on for any statement.
+> **Citation policy:** every reference below was resolved by W4 this session by fetching its arXiv
+> abstract page or DOI landing page, and then cross-checked against W2's independently produced
+> `research/archaeology_2025/bibliography/VERIFIED_BIBLIOGRAPHY.md` +
+> `archaeology_2025.bib` (28 resolved entries). Where W2 and W4 agree, the entry is marked
+> **[W4+W2]**. Items still unresolved by either worker are tagged `[UNVERIFIED]` and are **not**
+> relied on for any statement. W2's two standing corrections are carried here: the dump's NASA
+> citation `[11]` is a **MISMATCH** and must not be used for the morphology claim (§6), and the
+> Popławski PLB pairing is corrected in §2.6 / §9.
 
 ---
 
@@ -195,9 +200,9 @@ far side of a spacelike bounce surface, with no return to the parent exterior.
     *The Universe as a Black Hole*, *Nature* **240**, 298 (1972), DOI 10.1038/240298a0 —
     bibliographic record resolved this session via DOI-keyed metadata; the Nature landing page is
     authentication-walled and **the abstract was not retrieved**, so the record is cited for
-    priority only and its content is `[UNVERIFIED — pending W2 bibliography]`.
+    priority only and its content is `[UNVERIFIED]`.
     Good, *Chinese universes*, *Physics Today* **25**(7), 15 (1972) —
-    `[UNVERIFIED — pending W2 bibliography]` (AIP landing page returned 403 this session).
+    `[UNVERIFIED]` (AIP landing page returned 403 this session).
 - **Asymptotic regions:** parent has one (or more); the **child has none** — a closed FLRW has
   compact spatial slices and therefore no `ℐ`, no `i⁰`, and no ADM or Bondi mass. This is the single
   most important structural fact for W5's bookkeeping.
@@ -228,16 +233,15 @@ seen from inside it is a closed universe that disconnects from the original spac
     DOI 10.1103/PhysRevD.35.1747: "An observer in the exterior true-vacuum region will describe the
     system as a black hole, while an observer in the interior will describe a closed universe which
     completely disconnects from the original spacetime."
-  - Farhi & Guth, *An obstacle to creating a universe in the laboratory*, *Phys. Lett. B* **183**,
-    149–155 (1987), DOI 10.1016/0370-2693(87)90429-1. Bibliographic record resolved this session via
-    DOI-keyed metadata (title, authors, journal, volume, pages, year); the Elsevier landing page
-    returned 403 and **the abstract was not retrieved** — the result summarised here (any
-    spherically symmetric false-vacuum bubble forming in asymptotically flat space and growing
-    beyond a critical size must have emerged from an initial singularity, which is an obstacle to
-    laboratory universe creation) is therefore `[UNVERIFIED — pending W2 bibliography]` at the level
-    of the exact wording, though the record itself is confirmed.
+  - Farhi & Guth, *An obstacle to creating a universe in the laboratory*, *Phys. Lett. B* **183**(2),
+    149 (1987), DOI 10.1016/0370-2693(87)90429-1 **[W4+W2]**. Pre-arXiv; the Elsevier landing page
+    returned 403 to W4, so W4's confirmation is of the DOI-keyed bibliographic record only, but W2
+    independently resolved both the record and its content via ScienceDirect indexing:
+    *"any false-vacuum bubble growing beyond a critical size in asymptotically flat space traces
+    back to an initial singularity."* That is the obstacle. No verbatim abstract is quoted here
+    because neither worker retrieved one.
   - Farhi, Guth & Guven, *Is it possible to create a universe in the laboratory by quantum
-    tunneling?*, *Nucl. Phys. B* **339**, 417–490 (1990), DOI 10.1016/0550-3213(90)90357-J:
+    tunneling?*, *Nucl. Phys. B* **339**, 417 (1990), DOI 10.1016/0550-3213(90)90357-J **[W4+W2]**:
     a bubble *can* be produced without an initial singularity, but classically it collapses; the
     paper investigates quantum tunneling as the mechanism that would let it expand into a universe,
     using canonical and functional-integral semiclassical methods in the thin-wall limit — with the
@@ -271,9 +275,9 @@ Singularity resolution without any daughter cosmology: the interior is simply re
     evaporation to a vacuum region. The static region is Bardeen-like … behaving as a cosmological
     constant at small radius." The black hole is "a compact space-time region of trapped surfaces"
     with inner and outer boundaries joining as a single smooth trapping horizon. **No child.**
-  - Bardeen (1968), the original regular-black-hole metric — `[UNVERIFIED — pending W2
-    bibliography]`; it is a conference proceeding (GR5, Tbilisi) with no DOI and no landing page
-    resolvable this session. Hayward's own description of his static region as "Bardeen-like" is
+  - Bardeen (1968), the original regular-black-hole metric — `[UNVERIFIED]`: a conference
+    proceeding (GR5, Tbilisi) with no DOI, no landing page resolvable by W4, and not in W2's
+    resolved set. Hayward's own description of his static region as "Bardeen-like" is
     the verified attribution used here.
   - Ashtekar, Olmedo & Singh, *Quantum transfiguration of Kruskal black holes*, arXiv:1806.00648,
     *Phys. Rev. Lett.* **121**, 241301 (2018), DOI 10.1103/PhysRevLett.121.241301, and the companion
@@ -286,7 +290,7 @@ Singularity resolution without any daughter cosmology: the interior is simply re
     *Precision note:* the widely used phrase "transition surface" does **not** appear in either
     verified abstract; the anti-trapped regions in the quantum-extended Kruskal spacetime are
     white-hole-type in the sense of (ii)/(i), **not** closed daughter cosmologies. Any stronger
-    statement about a named transition surface is `[UNVERIFIED — pending W2 bibliography]`.
+    statement about a named transition surface is `[UNVERIFIED]`.
 - **Asymptotic regions:** one (Hayward); infinitely many in the AOS quantum extension, which is an
   eternal-Kruskal-type structure, not a reproduction mechanism.
 - **Causally connected?** **N/A — there is no child.** This class exists in the taxonomy precisely
@@ -308,6 +312,44 @@ model, **(iv)** — a false-vacuum bubble that pinches off. It can **never** mea
   asymptotic region. Citing Haggard–Rovelli or Planck stars for a daughter universe is a category
   error.
 - **(v) contains no child by construction.**
+
+
+#### 2.6.1 The one published paper that *does* use the bridge language — and exactly what it costs
+
+Honesty requires flagging the source of the 2025 conflation, because it is not purely an
+error of the notes. Popławski, *Radial motion into an Einstein-Rosen bridge*, arXiv:0902.1994,
+*Phys. Lett. B* **687**, 110–113 (2010), DOI 10.1016/j.physletb.2010.03.029 **[W4+W2]**, argues
+that "observed astrophysical black holes may be Einstein-Rosen bridges, each with a new universe
+inside that formed simultaneously with the black hole. Accordingly, our own Universe may be the
+interior of a black hole existing inside another universe."
+
+**Citation correction (W2, carried here):** this paper is *Phys. Lett. B* **687**, 110 (2010) —
+**not** *Phys. Lett. B* **694** (2010) 181, which is the *different* Popławski paper
+*Cosmology with torsion* (arXiv:1007.0587). The two were conflated in the campaign's own task
+framing; both papers are real and both are verified, but the pairing must be used correctly.
+
+What that paper needs, from its own verified abstract, in order to say "bridge" and "new universe
+inside" at the same time: the black hole is read in **isotropic coordinates**; the interior is
+declared "regular and physically equivalent to the asymptotically flat exterior of a white hole";
+geodesic completeness is obtained because "the expansion scalar in the Raychaudhuri equation has a
+discontinuity at the horizon"; and the bridge is "represented by the Kruskal diagram with
+**Rindler's elliptic identification of the two antipodal future event horizons**." That elliptic
+identification is a non-standard topological identification imposed on the Kruskal manifold — it is
+an assumption, not a consequence of Einstein's equations, and it is what manufactures the
+"new universe" on the far side. Three consequences for BigBounce:
+
+1. This is a **different construction** from the one BigBounce's lineage actually rests on.
+   Popławski's later and far more developed line — arXiv:1410.3881 (ApJ 832, 96), arXiv:2007.11556
+   (GRG 53, 18) — is construction **(iii)**: a torsion bounce producing a **closed** daughter FLRW
+   with no asymptotic region and no bridge. The 2009 paper is a vacuum-geometry/identification
+   argument; the 2016 paper is a matter-collapse argument. They should never be cited as one idea.
+2. Even in the 2009 paper the child is **not** causally connected to the parent's exterior; the
+   "bridge" is not traversable in the ordinary sense, and the paper's own framing is that distant
+   observers cannot distinguish the two solutions.
+3. Therefore the ruling below stands unchanged, with one amendment: *if* a BigBounce document ever
+   uses "Einstein–Rosen bridge", it must cite arXiv:0902.1994 specifically, state the elliptic
+   identification as an assumption, and say explicitly that it is **not** the construction behind
+   the torsion-bounce line.
 
 **"Einstein–Rosen bridge" must not be used as shorthand for (iii) or (iv).** The term denotes a
 specific vacuum geometry — the Kruskal throat connecting two asymptotically flat exteriors of one
@@ -332,7 +374,7 @@ interior universe"**, or **"bounce spacetime"**, with the construction number at
 |---|---|---|---|---|---|
 | **What avoids the singularity** | **Nothing** — both singularities are present in the maximal extension | Quantum-gravity effects accumulating over long times; quantum-gravitational pressure at high *energy density*, not small size (1401.6562) | **Torsion** from fermionic spin (ECSK; 1410.3881) **or** a limiting-curvature de Sitter core (PRD 41, 383) | **Nothing about singularities** — the mechanism is false-vacuum repulsion + a domain wall; Farhi–Guth 1987 finds an initial singularity is required unless one tunnels | Quantum-geometry corrections (LQG; 1806.00648 / 1806.02406) or an assumed regular matter core behaving as a cosmological constant at small radius (gr-qc/0506126) |
 | **Can an ordinary astrophysical BH (stellar / SMBH, formed by collapse) produce it, in the published model?** | **No** — realistic collapse has one exterior and no white-hole region | **Yes**, in principle: the published scenario is the end state of ordinary collapse + evaporation | **Yes** in the published models: 1410.3881 applies to collapsing fermionic matter generally; PRD 41, 383 attaches de Sitter to Schwarzschild inside a black hole | **No** — requires a pre-existing false-vacuum region; ordinary collapse of Standard-Model matter does not supply one | **Yes** (that is the point) — and it yields **no** child |
-| **Required assumptions** | Only that one takes the eternal vacuum solution seriously as physics | Quantum gravity affects the metric in a small region **outside** the horizon (1407.0989 argues this is not forbidden by causality); a tunneling amplitude; a bounce timescale | ECSK torsion is real and unsuppressed at high density; fermions averaged as a **spin fluid** (Weyssenhoff-type, Frenkel condition); a **particle-production ansatz** whose rate is a free input (1410.3881: "depending on the particle production rate…"); for the anisotropic case, particle production must **dominate over shear** (2007.11556) | A false-vacuum region exists; a thin domain wall; a semiclassical tunneling prescription — FGG 1990 needed a "pseudomanifold" action prescription because the functional integral gave a non-manifold solution | Either LQG effective dynamics, or a phenomenological regular metric with matter of "finite density and pressures" (energy-condition-violating in the core) |
+| **Required assumptions** | Only that one takes the eternal vacuum solution seriously as physics | Quantum gravity affects the metric in a small region **outside** the horizon (1407.0989 argues this is not forbidden by causality); a tunneling amplitude; a bounce timescale | ECSK torsion is real and unsuppressed at high density; fermions averaged as a **spin fluid** (Weyssenhoff-type, Frenkel condition); a **particle-production ansatz** whose rate is a free input (1410.3881: "depending on the particle production rate…"); for the anisotropic case, particle production must **dominate over shear** (2007.11556) | A false-vacuum region exists; a thin domain wall; a semiclassical tunneling prescription — FGG 1990 needed a "pseudomanifold" action prescription because the functional integral gave a non-manifold solution | Either LQG effective dynamics (canonical LQC bounce review: Ashtekar & Singh, *Class. Quantum Grav.* **28**, 213001 (2011), arXiv:1108.0893, DOI 10.1088/0264-9381/28/21/213001 **[W2]**), or a phenomenological regular metric with matter of "finite density and pressures" (energy-condition-violating in the core) |
 | **Does any observable survive to the parent's exterior?** | No (throat pinches off; Fuller–Wheeler) | **Yes by construction** — the matter/radiation re-emerges into the same exterior; 1401.6562 even proposes "a detectable signal, of quantum gravitational origin, around the 10⁻¹⁴ cm wavelength" | **No signal.** The only claimed exterior-facing handle is the *reverse* direction — the child inheriting the parent's spin axis (1910.10819) — and that route is EXCLUDED for BigBounce (§1.2) | **No.** Once the throat pinches off, the child is causally disconnected; the parent sees only a black hole | N/A — the observables are black-hole observables (evaporation, horizon structure), not cosmological ones |
 
 **Reading of the table.** Only construction (ii) offers an exterior observable, and (ii) has no
@@ -389,13 +431,13 @@ of spin-torsion coupling*, arXiv:2212.13871, *Universe* **9**(1), 38 (2023),
 DOI 10.3390/universe9010038, derive torsion-induced polarization rotation and "establish the strong
 bound on the possible cosmic axial torsion field from the astrophysical data" — i.e. the state of the
 art is **bounds, not detections** (the numeric bound was not displayed on the abstract page and is
-`[UNVERIFIED — pending W2 bibliography]`). Consequently every ECSK daughter-universe statement is
+`[UNVERIFIED]`). Consequently every ECSK daughter-universe statement is
 conditional on unmeasured physics, and BigBounce should never present it otherwise.
 
 ### 4.5 The Farhi–Guth "obstacle" and what FGG 1990 did and did not rescue
-The false-vacuum route (iv) carries an explicit published obstacle: Farhi & Guth 1987 (record
-verified; wording `[UNVERIFIED — pending W2 bibliography]`) find that a bubble growing past a
-critical size in asymptotically flat space must have emerged from an initial singularity. FGG 1990
+The false-vacuum route (iv) carries an explicit published obstacle: Farhi & Guth 1987 **[W4+W2]**
+find that a bubble growing past a critical size in asymptotically flat space must have emerged from
+an initial singularity. FGG 1990
 (verified) does **not** remove the obstacle by classical means — it shows the bubble collapses
 classically and investigates **quantum tunneling** as the escape, using a semiclassical thin-wall
 treatment whose functional-integral version produced a non-manifold solution requiring an *ad hoc*
@@ -495,6 +537,14 @@ precisely the standard §7/Q16 applies to the rest of the lane.
 8. **Verdict: RETIRE.** Class F (no scientific basis). Recommended for the public Retired-Hypotheses
    page as a clean, teachable correction with the Kormendy & Ho citation attached.
 
+**Citation warning (W2, carried here).** The dump's supporting citation `[11]`
+(`nasa.gov/universe/new-simulation-sheds-light-on-spiraling-supermassive-black-holes/`) is a
+**MISMATCH**: the URL resolves, but the page is a 2018 NASA/Goddard press release about the
+*electromagnetic signatures of two merging SMBHs* (circumbinary disk + mini-disks) and says nothing
+about SMBH prevalence across galaxy morphologies. **Do not cite `[11]` for this claim.** The
+morphology sidebar above rests solely on Kormendy & Ho 2013 **[W4+W2]**. If a lay-audience source
+is wanted for the public page, one must be found and verified independently.
+
 ---
 
 ## 7. Explicit answers to §18 synthesis questions 6, 11, 14, 15, 16
@@ -580,8 +630,12 @@ is an **invariant** or an artifact of comparing two non-comparable mass definiti
 **8.3 Which quasi-local mass is appropriate on each side (this is the crux).**
 - **Parent side:** the parent exterior is asymptotically flat, so **ADM** (at spatial infinity) and
   **Bondi** (at null infinity) are both defined, and for a spherically symmetric configuration the
-  **Misner–Sharp/Hernandez** mass is the right quasi-local quantity to track through the collapse
-  and evaluate at the horizon.
+  **Misner–Sharp** mass is the right quasi-local quantity to track through the collapse and evaluate
+  at the horizon. Canonical sources, both resolved by W2 and present in
+  `bibliography/archaeology_2025.bib`: Misner & Sharp, *Phys. Rev.* **136**, B571 (1964),
+  DOI 10.1103/PhysRev.136.B571 **[W2]**; and, for the covariant spherically symmetric energy
+  formalism, Hayward, *Gravitational energy in spherical symmetry*, gr-qc/9408002,
+  *Phys. Rev. D* **53**, 1938–1949 (1996), DOI 10.1103/PhysRevD.53.1938 **[W2]**.
 - **Child side:** the child in construction (iii) is a **closed FLRW** — compact spatial slices,
   **no `ℐ`, no `i⁰`, therefore no ADM mass and no Bondi mass at all**. Any statement of the form
   "the child's mass exceeds the parent's ADM mass" is comparing a quantity that exists to one that
@@ -600,7 +654,12 @@ is an **invariant** or an artifact of comparing two non-comparable mass definiti
    abstract says "**depending on the particle production rate**, such a universe may undergo several
    nonsingular bounces until it has enough matter…". W5 should expect a **one-parameter family of
    histories**, not a unique prediction, and should report it that way. If a specific rate is used,
-   its provenance must be traced to an equation, not inferred from a plot.
+   its provenance must be traced to an equation, not inferred from a plot. The upstream
+   gravitational-particle-creation formalism the rate must ultimately reduce to is
+   Parker, *Phys. Rev.* **183**, 1057 (1969), DOI 10.1103/PhysRev.183.1057 **[W2]**, and — for the
+   anisotropic case relevant to the Kantowski–Sachs interior — Zel'dovich & Starobinsky,
+   *Sov. Phys. JETP* **34**, 1159 (1972) **[W2, lower confidence: no primary APS/ADS record reached;
+   W2 recommends an ADS bibcode check before load-bearing use]**.
 2. **The anisotropic version self-flags as unreached.** 2007.11556: "This scenario is only
    approximate: the Kantowski-Sachs metric is never reached and should be replaced with a more
    general metric that tends to that of a 3-sphere." It also requires **particle production to
@@ -628,49 +687,71 @@ is an **invariant** or an artifact of comparing two non-comparable mass definiti
 
 ---
 
-## 9. Reference list (all resolved this session unless tagged)
+## 9. Reference list
+
+**Cross-worker status.** Entries marked **[W4+W2]** were resolved independently by W4 (this session,
+by fetching the arXiv abstract page or DOI landing page) **and** appear as resolved entries in W2's
+`research/archaeology_2025/bibliography/VERIFIED_BIBLIOGRAPHY.md` / `archaeology_2025.bib`.
+Entries marked **[W4]** were resolved by W4 only (they are outside the set W2 was asked to resolve).
+Entries marked **[W2]** come from W2's verified `.bib` and were not independently re-fetched by W4.
+For BibTeX keys, cite from `bibliography/archaeology_2025.bib`.
 
 Verified by arXiv abstract page or DOI landing page on 2026-09-18:
 
-- Fuller & Wheeler, *Phys. Rev.* **128**, 919 (1962) — DOI 10.1103/PhysRev.128.919
-- Penrose, *Phys. Rev. Lett.* **14**, 57 (1965) — DOI 10.1103/PhysRevLett.14.57 *(record verified; no abstract displayed)*
-- Blau, Guendelman & Guth, *Phys. Rev. D* **35**, 1747 (1987) — DOI 10.1103/PhysRevD.35.1747
-- Farhi & Guth, *Phys. Lett. B* **183**, 149 (1987) — DOI 10.1016/0370-2693(87)90429-1 *(record verified; publisher page 403, abstract not retrieved)*
-- Frolov, Markov & Mukhanov, *Phys. Rev. D* **41**, 383 (1990) — DOI 10.1103/PhysRevD.41.383
-- Farhi, Guth & Guven, *Nucl. Phys. B* **339**, 417 (1990) — DOI 10.1016/0550-3213(90)90357-J
-- Smolin, *Class. Quantum Grav.* **9**, 173 (1992) — DOI 10.1088/0264-9381/9/1/016
-- Hayward, *Phys. Rev. Lett.* **96**, 031103 (2006) — gr-qc/0506126, DOI 10.1103/PhysRevLett.96.031103
-- Smolin, hep-th/0612185 (2006)
-- Brown, Lee & Rho, *Phys. Rev. Lett.* **101**, 091101 (2008) — arXiv:0802.2997, DOI 10.1103/PhysRevLett.101.091101
-- de Berredo-Peixoto & de Freitas, *Int. J. Mod. Phys. A* **24**, 1652 (2009) — arXiv:0907.1701
-- Popławski, *Phys. Lett. B* **694**, 181 (2010); Erratum **701**, 672 (2011) — arXiv:1007.0587, DOI 10.1016/j.physletb.2010.09.056
-- Popławski, arXiv:1103.4192 (2011) *(arXiv only)*
-- Popławski, *Gen. Relativ. Gravit.* **44**, 1007 (2012) — arXiv:1105.6127, DOI 10.1007/s10714-011-1323-2
-- Popławski, *Phys. Rev. D* **85**, 107502 (2012) — arXiv:1111.4595, DOI 10.1103/PhysRevD.85.107502
-- Kormendy & Ho, *Annu. Rev. Astron. Astrophys.* **51**, 511 (2013) — arXiv:1304.7762, DOI 10.1146/annurev-astro-082708-101811
-- Rovelli & Vidotto, *Planck stars* — arXiv:1401.6562, DOI 10.1142/S0218271814420267
-- Haggard & Rovelli, *Phys. Rev. D* **92**, 104020 (2015) — arXiv:1407.0989, DOI 10.1103/PhysRevD.92.104020
-- Hashemi, Jalalzadeh & Ziaie, *Eur. Phys. J. C* **75**, 53 (2015) — arXiv:1407.4103, DOI 10.1140/epjc/s10052-015-3276-1
-- Barceló, Carballo-Rubio, Garay & Jannes, *Class. Quantum Grav.* **32**, 035012 (2015) — arXiv:1409.1501, DOI 10.1088/0264-9381/32/3/035012
-- Popławski, *Astrophys. J.* **832**, 96 (2016) — arXiv:1410.3881, DOI 10.3847/0004-637X/832/2/96
-- Pasmatsiou, Tsagas & Barrow, *Phys. Rev. D* **95**, 104007 (2017) — arXiv:1611.07878
-- Christodoulou & D'Ambrosio, arXiv:1801.03027 (2018)
-- Bianchi, Christodoulou, D'Ambrosio, Haggard & Rovelli, *Class. Quantum Grav.* **35**, 225003 (2018) — arXiv:1802.04264, DOI 10.1088/1361-6382/aae550
-- Ashtekar, Olmedo & Singh, *Phys. Rev. Lett.* **121**, 241301 (2018) — arXiv:1806.00648, DOI 10.1103/PhysRevLett.121.241301
-- Ashtekar, Olmedo & Singh, *Phys. Rev. D* **98**, 126003 (2018) — arXiv:1806.02406, DOI 10.1103/PhysRevD.98.126003
-- Popławski, arXiv:1910.10819 (2019) *(physics.pop-ph; no journal reference)*
-- Ashtekar & Olmedo, *Int. J. Mod. Phys. D* **29**, 2050076 (2020) — arXiv:2005.02309, DOI 10.1142/S0218271820500765
-- Popławski, *Gen. Relativ. Gravit.* **53**, 18 (2021) — arXiv:2007.11556, DOI 10.1007/s10714-021-02790-7
-- Romani, Kandel, Filippenko, Brink & Zheng, *Astrophys. J. Lett.* **934**, L17 (2022) — arXiv:2207.05124, DOI 10.3847/2041-8213/ac8007
-- Trukhanova, Andreev & Obukhov, *Universe* **9**(1), 38 (2023) — arXiv:2212.13871, DOI 10.3390/universe9010038
-- Martin-Dussaud, arXiv:2504.05492 (2025)
+- Fuller & Wheeler, *Phys. Rev.* **128**, 919 (1962) — DOI 10.1103/PhysRev.128.919 **[W4]**
+- Penrose, *Phys. Rev. Lett.* **14**, 57 (1965) — DOI 10.1103/PhysRevLett.14.57 **[W4]** *(record verified; no abstract displayed)*
+- Blau, Guendelman & Guth, *Phys. Rev. D* **35**, 1747 (1987) — DOI 10.1103/PhysRevD.35.1747 **[W4]**
+- Farhi & Guth, *Phys. Lett. B* **183**(2), 149 (1987) — DOI 10.1016/0370-2693(87)90429-1 **[W4+W2]** *(pre-arXiv; no abstract retrieved by either worker; content per W2's ScienceDirect check)*
+- Frolov, Markov & Mukhanov, *Phys. Rev. D* **41**, 383 (1990) — DOI 10.1103/PhysRevD.41.383 **[W4+W2]**
+- Farhi, Guth & Guven, *Nucl. Phys. B* **339**, 417 (1990) — DOI 10.1016/0550-3213(90)90357-J **[W4+W2]**
+- Smolin, *Class. Quantum Grav.* **9**, 173 (1992) — DOI 10.1088/0264-9381/9/1/016 **[W4+W2]**
+- Hayward, *Phys. Rev. Lett.* **96**, 031103 (2006) — gr-qc/0506126, DOI 10.1103/PhysRevLett.96.031103 **[W4]**
+- Smolin, hep-th/0612185 (2006) **[W4]**
+- Brown, Lee & Rho, *Phys. Rev. Lett.* **101**, 091101 (2008) — arXiv:0802.2997, DOI 10.1103/PhysRevLett.101.091101 **[W4]**
+- de Berredo-Peixoto & de Freitas, *Int. J. Mod. Phys. A* **24**, 1652 (2009) — arXiv:0907.1701 **[W4]**
+- Popławski, *Cosmology with torsion*, *Phys. Lett. B* **694**, 181–185 (2010); Erratum **701**, 672 (2011) — arXiv:1007.0587, DOI 10.1016/j.physletb.2010.09.056 **[W4+W2]**
+- Popławski, *Radial motion into an Einstein-Rosen bridge*, *Phys. Lett. B* **687**, 110–113 (2010) — arXiv:0902.1994, DOI 10.1016/j.physletb.2010.03.029 **[W4+W2]** *(W2 correction: this is B **687**:110, NOT B 694:181 — see §2.6.1)*
+- Popławski, arXiv:1103.4192 (2011) **[W4]** *(arXiv only; no journal ref on the abstract page)*
+- Popławski, *Gen. Relativ. Gravit.* **44**, 1007 (2012) — arXiv:1105.6127, DOI 10.1007/s10714-011-1323-2 **[W4+W2]**
+- Popławski, *Phys. Rev. D* **85**, 107502 (2012) — arXiv:1111.4595, DOI 10.1103/PhysRevD.85.107502 **[W4]**
+- Kormendy & Ho, *Annu. Rev. Astron. Astrophys.* **51**, 511 (2013) — arXiv:1304.7762, DOI 10.1146/annurev-astro-082708-101811 **[W4+W2]**
+- Rovelli & Vidotto, *Planck stars*, *Int. J. Mod. Phys. D* (2014) — arXiv:1401.6562, DOI 10.1142/S0218271814420267 **[W4+W2]**
+- Haggard & Rovelli, *Phys. Rev. D* **92**, 104020 (2015) — arXiv:1407.0989, DOI 10.1103/PhysRevD.92.104020 **[W4+W2]**
+- Hashemi, Jalalzadeh & Ziaie, *Eur. Phys. J. C* **75**, 53 (2015) — arXiv:1407.4103, DOI 10.1140/epjc/s10052-015-3276-1 **[W4]**
+- Barceló, Carballo-Rubio, Garay & Jannes, *Class. Quantum Grav.* **32**, 035012 (2015) — arXiv:1409.1501, DOI 10.1088/0264-9381/32/3/035012 **[W4]**
+- Popławski, *Astrophys. J.* **832**, 96 (2016) — arXiv:1410.3881, DOI 10.3847/0004-637X/832/2/96 **[W4+W2]**
+- Pasmatsiou, Tsagas & Barrow, *Phys. Rev. D* **95**, 104007 (2017) — arXiv:1611.07878 **[W4]**
+- Christodoulou & D'Ambrosio, arXiv:1801.03027 (2018) **[W4]**
+- Bianchi, Christodoulou, D'Ambrosio, Haggard & Rovelli, *Class. Quantum Grav.* **35**, 225003 (2018) — arXiv:1802.04264, DOI 10.1088/1361-6382/aae550 **[W4]**
+- Ashtekar, Olmedo & Singh, *Phys. Rev. Lett.* **121**, 241301 (2018) — arXiv:1806.00648, DOI 10.1103/PhysRevLett.121.241301 **[W4+W2]**
+- Ashtekar, Olmedo & Singh, *Phys. Rev. D* **98**, 126003 (2018) — arXiv:1806.02406, DOI 10.1103/PhysRevD.98.126003 **[W4]**
+- Popławski, arXiv:1910.10819 (2019) **[W4]** *(physics.pop-ph; no journal reference)*
+- Ashtekar & Olmedo, *Int. J. Mod. Phys. D* **29**, 2050076 (2020) — arXiv:2005.02309, DOI 10.1142/S0218271820500765 **[W4]**
+- Popławski, *Gen. Relativ. Gravit.* **53**, 18 (2021) — arXiv:2007.11556, DOI 10.1007/s10714-021-02790-7 **[W4]**
+- Romani, Kandel, Filippenko, Brink & Zheng, *Astrophys. J. Lett.* **934**, L17 (2022) — arXiv:2207.05124, DOI 10.3847/2041-8213/ac8007 **[W4]**
+- Trukhanova, Andreev & Obukhov, *Universe* **9**(1), 38 (2023) — arXiv:2212.13871, DOI 10.3390/universe9010038 **[W4]**
+- Martin-Dussaud, arXiv:2504.05492 (2025) **[W4]**
+- Ashtekar & Singh, *Loop quantum cosmology: a status report*, *Class. Quantum Grav.* **28**, 213001 (2011) — arXiv:1108.0893, DOI 10.1088/0264-9381/28/21/213001 **[W2]** *(canonical LQC bounce review; cited in §3)*
+- Misner & Sharp, *Phys. Rev.* **136**, B571 (1964) — DOI 10.1103/PhysRev.136.B571 **[W2]** *(quasi-local mass; §8.3)*
+- Hayward, *Phys. Rev. D* **53**, 1938–1949 (1996) — gr-qc/9408002, DOI 10.1103/PhysRevD.53.1938 **[W2]** *(spherically symmetric gravitational energy; §8.3)*
+- Parker, *Phys. Rev.* **183**, 1057 (1969) — DOI 10.1103/PhysRev.183.1057 **[W2]** *(gravitational particle creation; §8.4)*
+- Zel'dovich & Starobinsky, *Sov. Phys. JETP* **34**, 1159 (1972) **[W2, lower confidence]** *(anisotropic particle production; §8.4)*
 
-Not resolved this session — **do not cite until W2 clears them**:
+**Still unresolved after both workers — do not cite as evidence:**
 
-- Bardeen (1968), regular black hole, GR5 Tbilisi proceedings — `[UNVERIFIED — pending W2 bibliography]` (no DOI; attribution here rests on Hayward's verified "Bardeen-like" description)
-- Pathria, *Nature* **240**, 298 (1972) — record resolved, **abstract not retrieved** (Nature auth-wall); content `[UNVERIFIED — pending W2 bibliography]`
-- Good, *Chinese universes*, *Physics Today* **25**(7), 15 (1972) — `[UNVERIFIED — pending W2 bibliography]` (AIP landing page 403)
-- The numeric cosmic-axial-torsion bound in arXiv:2212.13871 — `[UNVERIFIED — pending W2 bibliography]` (not displayed on the abstract page)
+- Bardeen (1968), regular black hole, GR5 Tbilisi proceedings — `[UNVERIFIED]`. No DOI; not in W2's
+  resolved set. The attribution used in §2(v) rests only on Hayward's verified description of his
+  own static region as "Bardeen-like".
+- Pathria, *The Universe as a Black Hole*, *Nature* **240**, 298 (1972), DOI 10.1038/240298a0 —
+  bibliographic record resolved by W4 via DOI-keyed metadata; **abstract not retrieved** (Nature
+  auth-wall) and not in W2's resolved set. Cite for **priority only**; content `[UNVERIFIED]`.
+- Good, *Chinese universes*, *Physics Today* **25**(7), 15 (1972) — `[UNVERIFIED]` (AIP landing page
+  returned 403 to W4; not in W2's set).
+- The numeric cosmic-axial-torsion bound inside arXiv:2212.13871 — `[UNVERIFIED]` (the paper is
+  verified; the specific number is not displayed on the abstract page and was not retrieved).
+- *Recommendation to the director:* these four are the only open citation items on this lane. They
+  are all provenance/priority items, none is load-bearing for any statement in this memo, and none
+  blocks W5.
 
 Repo artifacts referenced (read-only):
 `research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py` and its
