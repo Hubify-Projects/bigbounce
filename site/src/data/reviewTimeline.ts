@@ -67,6 +67,62 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "anomaly-flagship-vaf-0-1-assembled-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "closure-wave",
+    title: "Anomaly flagship (ledger #8, A7): defended sample + validation contract + manuscript skeleton vAF.0.1 assembled",
+    papers: [],
+    summary:
+      "Lane L5 of the 2026-09-18 publication-push campaign. Not a discovery paper: ledger row 8 scopes this as a data-release + taxonomy release. Re-ran the provenance gate clean on both released tables (9/9 artifact sha256 match the phase-3-v2 landing receipt), then built a 16-item validation contract (13 PASS, 2 disclosed defects) and found the score is not an exposure-quality proxy (|rho_s|<0.1), is blue-arm-driven (rho_s=+0.527 vs r_B), and the taxonomy carries no material latent-space structure (silhouette -0.016 vs null -0.024). Assembled an 8-family/25-cluster per-family evidence table, 32 named follow-up targets in 5 tiers (4 DESI-pipeline z>4 QSO candidates, 2 at z>6), a revtex4-2 skeleton vAF.0.1 (7pp, 0 undef refs, 0 overfull, visual render checked), and a directive-Q2 reproducibility manifest. This is a fresh draft under pipelines/p1_highz_tracers/anomaly_flagship_draft/ — no INT/EXT review board has run on it yet and it is not registered as a Convex-tracked paper slug.",
+    keyTakeaways: [
+      "Ledger #8 is explicitly NOT a discovery paper — the honest finding is a null/disclosure one: the anomaly score is not an exposure-quality proxy and the taxonomy has no material latent-space structure, stated plainly rather than oversold",
+      "Provenance gate re-run clean before any new claim was built on the landing tables: 9/9 artifact sha256 matched the phase-3-v2 receipt",
+      "32 named follow-up targets in 5 tiers give the release a concrete next-observation path (4 z>4, 2 z>6 DESI-pipeline QSO candidates) rather than ending on a null",
+    ],
+    links: [
+      { label: "Validation contract", href: `${GH}/pipelines/p1_highz_tracers/flagship_assembly_2026-09-18/VALIDATION_CONTRACT.md` },
+      { label: "Manuscript skeleton vAF.0.1", href: `${GH}/pipelines/p1_highz_tracers/anomaly_flagship_draft` },
+      { label: "Ledger row 8", href: `${GH}/project-context/NEXT_SCIENCE_LEDGER.md` },
+      { label: "commit c7d40bda", href: `${GH_COMMIT}/c7d40bda` },
+      { label: "commit fc590f99", href: `${GH_COMMIT}/fc590f99` },
+    ],
+  },
+  {
+    id: "freshness-gate-timezone-fix-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "skill-improvement",
+    title: "Site freshness gate fixed a UTC-vs-PT false-STALE bug on the skills-currency check",
+    papers: [],
+    summary:
+      "Lane L7 of the 2026-09-18 publication-push campaign. tools/site_freshness_check.sh's skills-staleness check (git_last_commit_iso) converted a commit's timestamp to UTC before taking .date(), so any tools/ or scistack commit made at or after roughly 17:00 PT rolled onto the next UTC calendar day and could false-trigger a '1 day behind' STALE verdict on the skills surface even though the skillsSeries point was logged the same Pacific day. Added git_last_commit_local_date, which reads the commit's own recorded UTC offset instead of normalizing to UTC, and pointed the skills/tools staleness checks at it.",
+    keyTakeaways: [
+      "A commit-freshness check that normalizes timestamps to UTC before taking a calendar date will false-trigger on any campaign running west of UTC after ~17:00 local — compare using the commit's own recorded offset, not a normalized zone",
+      "This is exactly the kind of self-referential bug the freshness gate exists to prevent: an agent late in a PT evening session would see its own honest same-day work reported as stale",
+    ],
+    links: [
+      { label: "commit 6e20fee9", href: `${GH_COMMIT}/6e20fee9` },
+      { label: "site_freshness_check.sh", href: `${GH}/tools/site_freshness_check.sh` },
+    ],
+  },
+  {
+    id: "raw-unicode-tex-compile-defect-pattern-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "skill-improvement",
+    title: "Pattern: two independent papers had a raw Unicode character silently breaking the committed .tex the same day",
+    papers: ["A3", "PSU"],
+    summary:
+      "Lane L1 (A3M) and lane L2 (P-SU) of the 2026-09-18 publication-push campaign each independently found a raw non-ASCII character (a literal Unicode rho, not the LaTeX \\rho macro) committed inside main.tex. In A3M's case the committed v3M.0.24 source did not compile at all on a clean toolchain — the served PDF was not reproducible from its own committed source. In P-SU's case the character threw a hard LaTeX error that silently dropped text from the rendered page without tripping the 0-undefined-references check. Neither defect was caught by any prior round's directive-G hygiene pass, because those passes compiled from an already-built local tree rather than a clean checkout. Both are fixed in v3M.0.25 and v1S.0.9 respectively.",
+    keyTakeaways: [
+      "0 undefined references is necessary but not sufficient — a raw non-ASCII byte in a .tex source can throw a hard error or silently eat text without ever producing an undefined-reference warning; grep main.log for lines starting with '!' separately",
+      "Directive-G recompiles should run from a clean checkout (or at minimum with the LaTeX cache cleared), not an incremental local build directory, since an incremental build can mask a source-level compile failure",
+      "Two unrelated papers hit the identical defect class the same day — worth a standing pre-commit grep for non-ASCII bytes outside comments in any .tex diff, not just a one-off fix per paper",
+    ],
+    links: [
+      { label: "A3M v3M.0.25 closure", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "P-SU v1S.0.9 closure", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/PSU.md` },
+    ],
+  },
+  {
     id: "a3m-r9-board-closure-2026-09-18",
     dateISO: "2026-09-18",
     kind: "internal-api",
