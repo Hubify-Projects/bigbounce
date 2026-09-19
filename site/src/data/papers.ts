@@ -619,8 +619,8 @@ export const papers: Paper[] = [
       "v3M.0.1 and earlier: A3 multi-channel first-pass skeleton (research/track_a3_multichannel/) \u2014 NANOGrav \u03b3, PBH abundance, SPHEREx/MegaMapper reach; not yet registered as a site paper.",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.24.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.24.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.25.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/a3_multichannel_arxiv_v3M.0.25.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/research/track_a3_multichannel/paper",
