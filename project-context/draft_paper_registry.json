@@ -68,13 +68,14 @@
       "paper1bc_ech_note_v1N.0.2.pdf",
       "paper1bc_ech_note_v1N.0.3.pdf",
       "paper1bc_ech_note_v1N.0.4.pdf",
-      "paper1bc_ech_note_v1N.0.5.pdf"
+      "paper1bc_ech_note_v1N.0.5.pdf",
+      "paper1bc_ech_note_v1N.0.6.pdf"
     ],
-    "version": "v1N.0.5",
+    "version": "v1N.0.6",
     "pages": 11,
-    "date": "2026-09-02",
-    "pdf_sha256": "014a96ebffc21d75e92dfa7e05592132ef4ba0a5fa950a6ec50c4b33a6e8e3d9",
-    "pdf_md5": "6836eb995effef298cca6830b1beda7c",
+    "date": "2026-09-18",
+    "pdf_sha256": "1bb5ade7a9b7948c587a9f884ef7af8cc44d1a4eae0221a30a0bec63b2b0f223",
+    "pdf_md5": "b9ac109139b7d88aa0f798ee7ef80c8d",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.1-EXACTPDF-2287537b-R1/P1N_v1N.0.1_R1_truth_audit.md",
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2/P1N_v1N.0.2_R2_truth_audit.md",

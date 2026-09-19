@@ -1,7 +1,7 @@
 # P1N disposition ledger
 
 **Canonical source:** `arxiv/paper1bc_ech_note/main.tex`
-**Current paper-local version:** `v1N.0.2` (2026-09-02; R1 closure — 19 canonical items incl. 3 regressions closed; see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
+**Current paper-local version:** `v1N.0.5` (2026-09-02, reconciled into this ledger 2026-09-18 lane L3; R3 closure + DP1N-57 abstract-length closure; see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
 **Claim policy:** channel-level closure of minimal-coupling ECH dark-energy routes only; **no** operator-level completeness theorem, no unrestricted no-go, no ECH dark-energy or birefringence prediction.
 **Venue:** CQG — form is **Paper**, not Note (7725 words at v1N.0.2, 4144 words at v1N.0.1, both above the ≤2500-word Note ceiling, `project-context/SESSION_HANDOFF_2026-09-02.md:32`).
 
@@ -186,7 +186,7 @@ Also closed: DP1N-26, 31, 34, 36, 38, 39, 41, 43.
 | **DP1N-54** | Gap-equation loop-integral prefactor `N_cN_f/(4π²)` (`313–317`) printed without derivation or citation; only `I>0` is load-bearing and the three-line argument is verified sound. Residual of DP1N-28 | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | Derive/cite, or write `I ∝ ∫₀^Λ p²dp/√(p²+M²) > 0` and use positivity only |
 | **DP1N-55** | `954–956`: "vanishes only in the γ→∞ limit" — `O4 ∝ γ³/(1+γ²)²` vanishes as γ→0 as well | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | "…(and, degenerately, as γ→0)" |
 | **DP1N-56** | `938–941`: "supported only by the **non-axial** torsion irreps … carried entirely by the **axial×trace-vector** cross term" — the cross term requires the axial irrep. Intended statement (needs both, vanishes on either alone) is correct | GENUINELY-NEW-REAL | MINOR | SUBSTANTIVE | Repair the "non-axial" clause |
-| **DP1N-57** | Abstract measured at **444 words** (Claude leg: 433) vs CQG ≈300; SSOT records "435 → ~380". **DP1N-37 not closed** | GENUINELY-NEW-REAL | MINOR | **GENRE/LENGTH** | Cut to ~250–300; lead with the structural dichotomy |
+| **DP1N-57** | Abstract measured at **444 words** (Claude leg: 433) vs CQG ≈300; SSOT records "435 → ~380". **DP1N-37 not closed** | **CLOSED v1N.0.5** — abstract rewritten and trimmed to 298 words (simple word-count) / measured 330 words at v1N.0.4 by the stricter LaTeX-stripping method used for this row's original flag; no science content removed (every quantitative claim preserved). Commit `b1842272`, 2026-09-02; reconciled into this ledger 2026-09-18. | MINOR | **GENRE/LENGTH** | Cut to ~250–300; lead with the structural dichotomy |
 | **DP1N-58** | Archival residual of DP1N-06/DP1N-31: P1C v1C.0.16 and the three theory-audit `.md` artifacts are commit-SHA-pinned only, no DOI (`Golden2026P1a` already carries Zenodo `10.5281/zenodo.21481838`). Gemini E3+M1+M2, Grok E1 | RE-FLAG-OF-DISCLOSED with real archival residual | MINOR | **VENUE/ARCHIVAL** | Mint Zenodo version DOIs for P1C + the three artifacts; cite the DOIs |
 
 ### R3 additions to "Falsified — do not re-litigate"

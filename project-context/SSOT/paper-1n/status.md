@@ -1,8 +1,97 @@
 # P1N status — current authoritative section
 
-**Current candidate:** v1N.0.4 · 2026-09-02 ·
-`arxiv/paper1bc_ech_note/main.tex` — **R3 (final) closure complete;
-automated review convergence declared.**
+**Current candidate:** v1N.0.6 · 2026-09-18 ·
+`arxiv/paper1bc_ech_note/main.tex` — **D-round (visual) + P-round
+(packaging) complete. Readiness ladder: R→96, D→98, P→99 (Convex
+`readinessCap`).**
+
+## D-round + P-round — 2026-09-18 (v1N.0.5 → v1N.0.6, lane L3)
+
+**D-round (visual/design pass):** Fresh 4-pass recompile (pdflatex×2 +
+bibtex + pdflatex×2), 0 undefined refs/citations, 0 compile errors, 1
+residual overfull hbox at 4.5pt (under the >10pt gate; pre-existing since
+R2, in the six-density `align` block, Eq. (12)). All 11 pages rendered at
+100dpi (`pdftoppm`) and visually spot-checked: title/abstract (date now
+prints "September 18, 2026"), Table I (barrier catalog, fits in-column),
+Table II (evidentiary-status, full-width `table*`, no overflow), the
+six-density operator equations (Eq. 12, the page hosting the known 4.5pt
+residual — no visible overflow at 100dpi), the gap-equation/Route pages,
+Data & Code Availability (artifact list renders as filenames, not
+floated), and the references page (long GitHub URLs wrap cleanly at
+underscores). No figures (`\includegraphics` count: 0, text-only paper).
+**Verdict: PASS, no fixes required beyond the pre-existing accepted
+residual.**
+
+**P-round (packaging):** `/artifact-link-verify` — extracted all 45 URI
+annotations from the compiled PDF; 8/8 pinned GitHub `/blob/` links + 1/1
+`/tree/` link resolve at the exact pinned commit
+`ded46bc5df8d39bbaac7bfbee16b07f0376bab34` (`git cat-file -e`); spot-checked
+external DOIs (3 self-citation Zenodo DOIs + GitHub repo root) all HTTP
+200. **Zero broken links.**
+
+`/bib-tarball-rebuild` reconciliation caught a **genuine defect**:
+`references.bib` carried one orphaned entry (`Weinberg1989`) left over from
+the DP1N-47 closure, which removed its citations from B2/B5/B6/B10 but not
+the now-unused `.bib` entry — violating the DP1N-18 convention ("prune to
+the exact cited set"). **Fixed:** entry deleted; re-verified 30 cited keys
+== 30 `.bib` entries == 30 `.bbl` entries, 0 missing, 0 unused.
+
+arXiv tarball rebuilt from scratch in `/tmp` (`main.tex` + `main.bbl` +
+`references.bib`, 0 figures) and standalone-smoke-tested (clean extract to
+a fresh temp dir, 2-pass pdflatex, no repo context): **0 undefined
+refs/citations, 11 pages — PASSED.** Tarball:
+`project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.6.tar.gz`,
+sha256 `9d5945dcf4e71a6609b4b6d9b0bde8a9ce2229454c920b683be4478ef0b8250b`.
+
+Submission kit assembled: `project-context/SSOT/CQG_SUBMISSION_KIT_P1N_2026-09-18.md`
+(abstract paste-block, categories, keywords, cover letter, DAS answer).
+**ORCID (D5) is RESOLVED** — `0009-0008-5616-5994` re-verified public
+(HTTP 200) 2026-09-18; no placeholder needed. **arXiv gr-qc endorsement
+(D4) remains OPEN** — Houston-only action (forward/regenerate the
+`HYEJ7S` endorsement code); not a blocker for the CQG journal submission
+itself, which needs no arXiv prerequisite.
+
+**Hygiene (directive G):** `\paperVersion` v1N.0.5→v1N.0.6, `\paperTimestamp`/`\date`
+September 2 → **September 18, 2026** (real edit day). 4-pass recompile, 0
+undef refs. `tools/p1c_consistency_check.py` 4/4 PASS. PDF: 11 pages,
+433655 bytes, md5 `b9ac109139b7d88aa0f798ee7ef80c8d`, sha256
+`1bb5ade7a9b7948c587a9f884ef7af8cc44d1a4eae0221a30a0bec63b2b0f223`. Mirrored
+byte-identical to `site/public/papers/paper1bc_ech_note_v1N.0.6.pdf` and
+`public/papers/paper1bc_ech_note_v1N.0.6.pdf` (md5-verified against the
+source dir copy; older v1N.0.1–v1N.0.5 copies retained). Registry
+`project-context/draft_paper_registry.json` key `"P1N"` updated (version,
+md5, sha256, served_aliases).
+
+**Ladder disposition:** D-round clean + P-round verified in the same
+session with no intervening review round required (both are packaging/
+presentation gates, not science gates — R-phase was already closed at
+v1N.0.5). Convex `readinessCap` raised **95 → 98 (D-round) → 99 (P-round)**
+in this bundle; `readinessComputed` = 99 (0 open findings/caveats tracked).
+**100 remains Houston-only** (explicit sign-off, per readiness-cap-99).
+
+## v1N.0.4 → v1N.0.5 (2026-09-02, reconciled into SSOT 2026-09-18 lane L3)
+
+## v1N.0.4 → v1N.0.5 (2026-09-02, reconciled into SSOT 2026-09-18 lane L3)
+
+Abstract measured 330 words at v1N.0.4 (DISPOSITIONS/P1N.md R3 board
+recorded it as still-open item DP1N-57, target ≤300). Trimmed to 298
+words with no science change — every quantitative claim preserved
+(the axial-axial contact interaction, the repulsive `G_s` condensate
+result, the fourteen mechanism-class constraints, the six-member
+generating-list result, `β/α=1/(2γ)≈2.11` at `γ=0.2375`). 4-pass
+recompile, 0 undef refs, 11 pages (down from 12), no new overfull
+hboxes. Mirrored byte-identical to `site/public/papers/`,
+`public/papers/`. arXiv tarball rebuilt
+(`project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.5.tar.gz`)
+and smoke-tested. Convex `paperVersions:bump` + `activityFeed:add`
+posted 2026-09-02 (commit `b1842272`). **This SSOT page and
+`DISPOSITIONS/P1N.md`'s header/DP1N-57 row were not updated at the time
+— reconciled now, 2026-09-18, lane L3.** No further open substantive
+items remain in `DISPOSITIONS/P1N.md`; residuals are genre/venue
+(Note-vs-Paper form, pattern-066 referee variance, settled by DP1N-20)
+and archival (DP1N-58, Zenodo DOI minting for P1C + theory-audit
+artifacts — a minting action outside agent authorization, not an
+editable defect).
 
 ## R1 closure (v1N.0.1 → v1N.0.2, 2026-09-02)
 
