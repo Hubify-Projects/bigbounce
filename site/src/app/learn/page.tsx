@@ -45,6 +45,11 @@ export default function LearnPage() {
               purpose: "Future research directions — clearly labeled as not yet formal work.",
               href: "/speculations",
             },
+            {
+              title: "Research genealogy",
+              purpose: "Where the program came from: the 2025 exploratory lineage, what was retired, and which questions survived.",
+              href: "/genealogy",
+            },
           ]}
         />
       </section>
