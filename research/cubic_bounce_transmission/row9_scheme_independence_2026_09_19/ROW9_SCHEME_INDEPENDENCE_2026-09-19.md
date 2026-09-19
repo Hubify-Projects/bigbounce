@@ -132,3 +132,57 @@ and one variable choice that does not solve the Einstein equations on these back
   `λ_ζ = 0.970`, `r_after = 24(λ_T/λ_ζ)²` takes row 18a's **S2 value `≈ 9.4×10²`**, not the S1 value `24.0`.
   Against BK18+Planck `r < 0.036` that is `2.6×10⁴×` rather than `6.7×10²×`: the tensor no-go is **strengthened,
   and the paper's currently-quoted conservative number moves against the paper.** Both directions are reported.
+
+---
+
+## 6. Independent blind adjudication — CONFIRMS, by a different route
+
+Commissioned per the lane's brief because §5 is a headline change. The adjudicator (Fable-tier, one agent, one
+run) was given the background, the two schemes and their two numbers, and was told **neither this lane's
+conclusion nor its method**; it was instructed to derive from first principles, forbidden to read this
+directory, and explicitly told that "neither" and "undecidable" were acceptable verdicts.
+
+**Verdict: S2. `λ_ζ = 0.970` at all three `kη_B`. Confidence ≈ 90 %.** It reproduced S1's 6.06 from the S1
+recipe and identified it as "the transfer of a fictitious field with `ε ≡ const`".
+
+It reached this by a **different construction**: instead of this lane's `(Φ, Ξ)` pair it used
+`D ≡ −δφ/φ̇` (the comoving-slice displacement), giving the `z`-free, `1/H`-free cosmic-time system
+`Ψ̇ = Ḣ D − HΨ`, `Ḋ = −(1 + k²/(a²Ḣ))Ψ` with `ζ = Ψ − H D`; and it fixed the junction from **Israel matching**
+(continuity of the induced metric and extrinsic curvature on the matter's own comoving surface,
+`T = D/a`), obtaining `[Ψ] = 0`, `[D] = 0` ⟹ `[ζ] = 0`, `[z²ζ'] = 0`. Independent agreements with §1–§3:
+
+* `(z²ζ')' + k²z²ζ = 0` with `z² = 2a²ε` has **residual ≡ 0** on the exact Ψ-equation; S1 is exact iff `ε' = 0`.
+* `ζ' = −k²Ψℋ/(ℋ²ε)` — the same exact identity as A3b.
+* The delta-free/conserved form is the only well-posed distributional equation; "naive integration of the
+  expanded forms is invalid" because `ε'/ε` (and `φ''/φ'`) carry deltas multiplied by sign-flipping functions
+  — independently reproducing this lane's A4 trap and its rejection.
+* The junction conditions it derives from Israel matching are **exactly S2's**, and it notes S1's `[a²ζ'] = 0`
+  would require `Ψ₊ = −Ψ₋`, contradicting induced-metric continuity.
+* **ζ diverges logarithmically at a smooth NEC crossing** — independent confirmation of §3.
+* Tensors are not scheme-dependent (`z_T = a` is exact in GR) — consistent with row 18a.
+
+**Two things it adds that this lane had not stated explicitly, and which are adopted here:**
+
+1. **The kinetic-sign flip is a physical assumption, not a detail.** A canonical scalar cannot produce `Ḣ > 0`;
+   the window requires `P = σX − V` with `σ: +1 → −1`, i.e. the ghost sector that lane 9b-2 flagged as its
+   assumption (A5). Both this lane's `φ'² = 2(ℋ²−ℋ')` and the adjudicator's `D` inherit it. The result is
+   therefore conditional on the same NEC-violating matter idealisation the rest of the A3M transmission
+   calculation already assumes — it does not add a new assumption, but it should be named.
+2. **At `ρ+p = 0` no metric-only variable is complete.** Φ (=Ψ) stays finite and continuous there, and its
+   equation is regular (§1 A5, which the adjudicator confirms), but the `0i` constraint degenerates to
+   `Ψ' + ℋΨ = 0` independently of `δφ`, so the full perturbation content at that point needs the unreduced
+   triple `(Ψ, δφ, δφ̇)`. This refines rather than contradicts §1: it is the same degeneracy that makes ζ
+   log-divergent there, and it is why §3's smooth-crossing computation is a principal-value statement.
+
+**Its strongest argument against its own verdict** (recorded verbatim in substance, not dismissed): the answer
+inherits the choice of matching surface and the thin-shell idealisation of the kinetic-sign flip, and a smooth
+NEC crossing could shift the `O(1)` window contribution — though it notes comoving versus uniform-density
+surfaces differ only by `O(k²η_B²)`. §3's `d → 0` control addresses the smooth-crossing half of this directly
+(the limit is linear in `d` and lands on the sharp value to `5×10⁻⁶`…`6×10⁻⁵`); the matching-surface and
+thin-shell halves are **not** closed by this lane and are carried as named open caveats.
+
+**One number to keep straight when propagating.** The adjudicator states S1 overestimates `λ_ζ` by 6.25, hence
+the inherited `|f_NL|` is too small by that factor. That is correct **for the linear transfer alone**. The
+paper's `f_NL^after = T·f_NL^before + Δf_NL^bounce` also carries the bounce's own cubic term, which differs
+between the schemes, so the change in the quoted `f_NL^after` is **−0.50 → −1.25, a factor 2.5, not 6.25**.
+Do not propagate "6.25×" into the manuscript.

@@ -96,7 +96,28 @@ integrity audit (directive F) exists to catch.
    $\mathcal R=-(a/z)\delta\phi$ with $z=a\dot\phi/H$ — the S2 $z$ — per the source-cited transcription in
    `../lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md` §1.2 (their Eq. 25). This lane did not re-derive
    those equations.
-4. $c_s=1$, single minimally coupled scalar, no anisotropic stress.
+4. $c_s=1$, single scalar, no anisotropic stress — and note that the bounce window requires a **kinetic-sign
+   flip** ($P=\sigma X-V$, $\sigma:+1\to-1$): a canonical scalar cannot give $\dot H>0$. This is the same
+   NEC-violating idealisation the rest of the A3M transmission calculation already assumes (lane 9b-2's (A5)),
+   but it should be named in-paper rather than left implicit.
+5. At $\rho+p=0$ no metric-only variable is complete: $\Phi$ stays finite and its equation regular, but the
+   $0i$ constraint degenerates, so the full content there needs $(\Psi,\delta\phi,\dot{\delta\phi})$. This is
+   the same degeneracy that makes $\zeta$ log-divergent there.
+6. **Not closed by this lane:** the dependence on the choice of matching surface, and the thin-shell
+   idealisation of the kinetic-sign flip. Carry both as stated caveats; do not claim they are resolved.
+
+**Independent blind adjudication: CONFIRMS.** A separate Fable-tier referee, told neither this lane's
+conclusion nor its method and forbidden to read its directory, derived the same verdict by a different route
+(the $(\Psi, D)$ system with $D=-\delta\phi/\dot\phi$, junctions fixed by Israel matching rather than by the
+$\delta$-free-system argument): **S2, $\lambda_\zeta=0.970$, confidence $\approx90\%$**, independently
+reproducing the exact $\zeta'$ identity, the "S1 is exact iff $\epsilon'=0$" condition, the invalidity of the
+naive expanded-form junction, and the logarithmic divergence of $\zeta$ at a smooth NEC crossing. Details and
+its own strongest counter-argument: findings note \S6.
+
+**One number to keep straight.** The adjudicator's "S1 overestimates $\lambda_\zeta$ by 6.25" is correct for
+the LINEAR transfer only. Because $\fnl^{\rm after}=T\,\fnl^{\rm before}+\Delta\fnl^{\rm bounce}$ also carries
+the bounce's own cubic term, the change in the quoted value is $-0.50\to-1.25$, a factor **2.5, not 6.25**.
+Do not propagate 6.25 into the manuscript.
 
 ## 6. Directive-G / process reminders for the A3M lane
 
