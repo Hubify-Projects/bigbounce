@@ -67,6 +67,52 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-s12-translation-trace-fix-v1s-0-10-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "closure-wave",
+    title: "S12 (translation-term monopole generality) resolved and applied -- paper-su v1S.0.10; R4 board dispatched",
+    papers: ["PSU"],
+    summary:
+      "Campaign lane bb-L2b-psu-s12-apply. research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.md (exact sympy, independently blind-adjudicated by a second `fable` derivation) resolves the open science gate S12 that R3VERIFY's Gemini leg surfaced: Appendix A3's claim that the translation term T(eps,mu) has monopole 0 for all eps implicitly assumed n_s=1. The from-scratch derivation SOLVES the linearised ADM Hamiltonian/momentum constraints (not assumed) and shows the trace part never vanishes -- partial_i xi^i = eps*zeta_L exactly -- so at general n_s, T(eps,mu,n_s)=5*eps/(4*(3-eps))*[1-3*mu^2+(n_s-1)*mu^2] with monopole 5*eps*(n_s-1)/(12*(3-eps)) != 0; a constant-eps background is not scale-invariant (growing-branch n_s-1=2*(2*eps-3)/(eps-1), vanishing only at eps=3/2). But the paper's headline result SURVIVES unconditionally and is stronger than printed: the general-eps in-in shape carries an exactly compensating -(5*eps/12)*(n_s-1)*mu^2 term, cancelling the translation-term correction term-by-term in mu, so f_deltaN^init = -5 exactly for every constant eps AND every n_s (the residual vanishes identically before n_s(eps) is substituted). This lane applied the derivation note's five ready-to-paste sentences (P1-P5) verbatim to main.tex -- Appendix A3's trace clause and T monopole, Appendix A2's Totals monopole (correcting the n_s=1-specific '-5*eps/6' claim for the initial-position label), Appendix A4's in-in shape (labelled n_s=1, general-n_s shape added), the strengthened f_deltaN^init=-5 statement, one optional 'What is new' sentence, and the Reproducibility Statement citation -- with no science number changed and every added sentence/equation traced to the source note (/never-fabricate-derivation clean). Directive-G hygiene: v1S.0.9 -> v1S.0.10, 4-pass recompile (0 undef refs, 0 raw Unicode -- checked before compiling, the v1S.0.8 regression was not repeated), /latex-audit visual PASS on all 7 rendered pages (no column overflow), PDF byte-identical across all served paths. R4, the one directive-R2-permitted verification board this science decision unlocks, was dispatched on the exact v1S.0.10 PDF: a Claude-opus verdict-blind cold-read referee leg is running; the Grok API + Gemini API legs via tools/v3_native_pdf_review.py are blocked pending bigbounce_preflight.py's clean-tree requirement on site/src/data/live-status.ts and papers.ts, which were mid-edit by concurrent campaign lanes in this shared single-checkout repo at dispatch time -- a genuine cross-lane contention (also hit independently by lane L4b the same evening), not a bypassed gate. Readiness holds at 72 (COMPUTED) until R4's truth-audit completes against all three legs.",
+    keyTakeaways: [
+      "S12 CLOSED-WITH-CORRECTION: the -5 result is stronger than the paper claimed -- it holds for every constant eps AND every spectral index, not only at n_s=1 -- via an exact term-by-term cancellation between the translation term's tilt correction and the in-in shape's own tilt term",
+      "v1S.0.10: 7 pp (unchanged), 4-pass compile, 0 undef refs, 0 raw Unicode, max overfull hbox 8.31pt (pre-existing Table I row), md5 c6457c37f51a8ba0a92f57f1aed5d650, three-way mirror match",
+      "R4 IN PROGRESS, not closed: Claude-opus leg dispatched; Grok/Gemini API legs blocked on a shared-checkout preflight clean-tree gate (concurrent lanes editing site/src/data/*.ts) -- readiness held at 72 pending completion, no convergence claimed on a partial board",
+      "2026-09-19 venue/arXiv-category recommendation recorded in SSOT (Houston-gated final choice): primary astro-ph.CO, cross-list gr-qc",
+    ],
+    links: [
+      { label: "S12 translation-trace derivation", href: `${GH}/research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.md` },
+      { label: "paper-su SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "paper-su dispositions (S12)", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/PSU.md` },
+      { label: "paper-su source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+      { label: "R4 board directory", href: `${PR}/INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4` },
+    ],
+  },
+  {
+    id: "p4p-v4p-0-8-reverify-board-v4p-0-9-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "internal-api",
+    title: "P4′ exact-v4P.0.8 re-verification board closed 6 further genuinely-new-real findings → v4P.0.9",
+    papers: ["P4P"],
+    summary:
+      "Campaign lane L4b (bb-L4b-p4p-reverify). Directive-R2 permits exactly one consecutive verification round after lane L4's 2026-09-18 confirmation board without an intervening science/scope decision -- this is that round, independently checking L4's own v4P.0.7-to-v4P.0.8 closures rather than new content. Ran a fresh exact-v4P.0.8 INT board: Grok API grok-4.3 (REJECT, mostly re-flags of already-disclosed content), Gemini API gemini-3.1-pro-preview (accept with minor corrections), and a Claude opus sub-agent explicitly not shown the prior closure list or DISPOSITIONS/P4P.md before writing its report (major-revisions, cold read). Every MAJOR finding was independently re-derived by the orchestrator directly from the underlying committed JSON/scripts -- not accepted from reviewer text alone -- including recomputing all six pairwise angular separations among four QC-sweep axes from their own committed RA/Dec coordinates, and reading the 4x4 correlation matrix and the density-binning script directly. Found and fixed 6 genuinely-new-real MAJOR items: a pixel-injection baseline compared against the wrong monopole sample (catalog-wide, not HC-selected) and the wrong amplitude convention; a 'near-antipodal axis' claim that is quantitatively false (recomputed max pairwise separation is 119.9 degrees, not ~180) which also omitted that the closest axis pair (19.3 degrees apart) is the primary_hc-relaxed excess sitting next to the primary channel's own axis; two headline-qualifying disclosures (a pixel-transfer measurement in tension with the exclusion's bridge factor, and the primary channel's own leg-removal instability) that had zero forward reference from the Abstract, Sec. 3, Sec. 5, Sec. 6, or Sec. 7, fixed with four targeted pointer sentences rather than a rewrite (the Abstract was deliberately left untouched, already at the 250-word ApJS cap); a 'density-tercile split' that is actually a 20/60/20 quintile split per the committed script's own docstring and the paper's own Table 8 counts; and a correlation figure (0.79) misattributed to the wrong channel pair, contradicted by the paper's own next sentence. 4 MINOR items also closed with real, source-verified edits (a structure-battery count that did not reconcile, an incomplete leg-exceedance enumeration recomputed in full, a Table-5 low-end-amplitude convention slip, and a Data-Availability list wrongly excluding a diagnostic that is in fact reproduced). 6 Claude-leg minors and 6 nits explicitly deferred with documented reason, not silently dropped. Every Grok/Gemini MAJOR/ESSENTIAL finding this round was re-flagged against existing DISPOSITIONS/P4P.md precedent or independently falsified against the manuscript's own text, including the DESIVAST 'post-hoc' objection (the paper already discloses this verbatim) and three 'space in URL' claims (PDF-render column-wrap artifacts, no space in the LaTeX source). Primary null result unchanged. Directive R2: no further consecutive review round on this content is authorized without an intervening science/scope decision.",
+    keyTakeaways: [
+      "v4P.0.9: 14 pp (unchanged), 4-pass compile, 0 undefined refs, 1 pre-existing 5.88pt overfull hbox (below the 10pt gate); md5 e31da2ee9cc57fbf0344b8d5c3b9a330",
+      "6 MAJOR + 4 MINOR genuinely-new-real findings closed with real edits, each independently re-derived by the orchestrator from underlying committed artifacts before closure -- not accepted from reviewer citations alone",
+      "This is the second of exactly two directive-R2-permitted consecutive rounds on this content; a further round requires an intervening science/scope decision",
+      "arXiv tarball rebuilt and standalone-compile smoke tested (0 undef refs, 14pp); Convex paperVersions:bump written and read back verified; four-way byte-identical PDF mirror verified",
+    ],
+    links: [
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+      { label: "Re-verification truth audit", href: `${PR}/INT_v3/ROUND_2026-09-19-P4P-v4P.0.8-EXACTPDF-e8f1969e-REVERIFY/P4P_v4P.0.8_REVERIFY_truth_audit.md` },
+      { label: "Claude opus INT raw", href: `${PR}/INT_v3/ROUND_2026-09-19-P4P-v4P.0.8-EXACTPDF-e8f1969e-REVERIFY/P4P_claude_reverify_leg.md` },
+      { label: "Grok API raw", href: `${PR}/INT_v3/ROUND_2026-09-19-P4P-v4P.0.8-EXACTPDF-e8f1969e-REVERIFY/API_P4P_Grok_brutal.md` },
+      { label: "Gemini API raw", href: `${PR}/INT_v3/ROUND_2026-09-19-P4P-v4P.0.8-EXACTPDF-e8f1969e-REVERIFY/API_P4P_Gemini_cosmology.md` },
+      { label: "P4′ dispositions", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P4P.md` },
+      { label: "P4′ paper source", href: `${GH}/pipelines/p4prime_chirality_test/paper/main.tex` },
+    ],
+  },
+  {
     id: "anomaly-flagship-vaf-0-1-assembled-2026-09-18",
     dateISO: "2026-09-18",
     kind: "closure-wave",

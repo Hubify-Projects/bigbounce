@@ -370,3 +370,67 @@ already on disk, not a correctness defect.
 `b2399780320a50542279c35410b6b545`; four-way byte-identical mirror verified;
 `reproducibility/manifests/programs/galaxy-chirality.json` gained
 `row16-image-level-injection-n20k` (previously committed, unregistered).
+
+## Exact-v4P.0.8 re-verification board (2026-09-19, campaign lane L4b) — v4P.0.9 closure
+
+Directive R2 permits exactly one consecutive verification round after the 2026-09-18
+confirmation board without an intervening science/scope decision. This is that round
+(lane `bb-L4b-p4p-reverify`), independently re-reviewing the v4P.0.7→v4P.0.8 closures
+themselves. **No third consecutive round on this content is authorized.** Full audit:
+`project-context/peer-reviews/INT_v3/ROUND_2026-09-19-P4P-v4P.0.8-EXACTPDF-e8f1969e-REVERIFY/P4P_v4P.0.8_REVERIFY_truth_audit.md`.
+
+**6 GENUINELY-NEW-REAL MAJOR (Claude opus leg, verdict-blind, cold read — not shown
+the prior closure list or this dispositions file before writing its report), all
+independently re-derived by the orchestrator from underlying committed artifacts and
+closed in v4P.0.9:** RVFY-A1 (pixel-injection baseline compared against the wrong
+monopole sample, catalog-wide vs. HC-selected, and the wrong amplitude convention),
+RVFY-A2 ("near-antipodal axis" is quantitatively false — max pairwise separation
+among the four QC-sweep axes is 119.9°, not ~180°; the closest pair, 19.3° apart, was
+omitted: the primary_hc-relaxed excess axis sits next to the primary channel's own
+axis), RVFY-A3/A4 (the two most consequential §A.1 disclosures — the pixel-transfer
+tension and the primary channel's own leg-instability — had zero forward reference
+from the Abstract, §3, §5, §6, or §7; fixed with four targeted pointer insertions,
+Abstract deliberately left untouched at its 250-word ApJS cap), RVFY-A5 ("tercile"
+split is actually a 20/60/20 quintile split, contradicted by the paper's own Table 8
+N's and the committed script's own docstring), RVFY-A6 (the "0.79 correlation"
+justifying an FSC/monopole identification is misattributed — the matrix shows 0.79 is
+real-space↔$C_1^{\rm master}$, not monopole-related, and the paper's own next
+sentence says the monopole is nearly uncorrelated with the other three).
+
+4 MINOR also closed with real, source-verified edits: RVFY-B1 ("15 of 17" structure
+statistics does not reconcile, 17−1=16), RVFY-B4 (C3 leg-exceedance enumeration
+incomplete: 5 of 6, not 2 of 6, single-leg fits exceed $A_{95}^{\rm obs}$), RVFY-B5
+(Shamir 2025 low-end-amplitude convention inconsistency), RVFY-B6 (Data Availability
+wrongly listed T-Web as unreproduced when §4 reproduces it), RVFY-B7 (0.1<z<0.4 BGS
+window misattributed to the 231,549-spiral parent rather than the cut that produces
+121,417 from it).
+
+6 Claude-leg MINORs (B2, B3, B8, B9, B10, B11) and 6 NITs (C1, C2, C4–C7) explicitly
+deferred with reason — real but lower-severity items requiring either a considered
+rewrite (B2, B8, B10, B11) or cosmetic-only fixes (B3, B9, C1–C7) — not silently
+dropped; see the truth audit for the full per-item reason. NIT C3 (undefined "C3"
+jargon) was incidentally resolved by the B4 rewrite.
+
+### FALSIFIED / RE-FLAG / OPINION this board — do not re-open without new evidence
+| Finding | Verdict | Source-cited basis |
+|---|---|---|
+| Grok E1/E4 — g-bridge factor unestablished (abstract/Table 5) | **RE-FLAG-OF-DISCLOSED** | precedent DP4P-10, DP4P-24 |
+| Grok E2 — Poplawski papers only qualitative, $A_{\rm pred}\approx\eta$ author-introduced | **RE-FLAG-OF-DISCLOSED** | main.tex l.93, 734, 827 already state this; Eq. 4 is a named Assumption |
+| Grok E3 — $z_{\rm mom}$/FSC juxtaposed without "not comparable" | **FALSIFIED** | precedent (twice before); still states "different support" at both mentions |
+| Grok M1 — manuscript overlength | **OPINION/GENRE** | subjective page-count preference |
+| Grok M2 — DESIVAST test is post-hoc | **FALSIFIED** | main.tex §4 states this **verbatim** already |
+| Grok M3 — "largest test" vs. Shamir (2022)'s larger $N$ | **RE-FLAG-OF-DISCLOSED** | precedent DP4P-01 |
+| Grok M4 — released classifier's $\kappa=0.40$ disclosure | **RE-FLAG-OF-DISCLOSED** | precedent DP4P-04 |
+| Grok M5 — Fig. 1 "no coherent structure" | **OPINION/GENRE** | precedent (Grok M3, prior round) |
+| Grok m1/m2 — Table 1 column truncated / Neyman description incomplete | **FALSIFIED** | both already complete in main.tex, pre-edit |
+| Grok m3 — "research program's own bounce papers" self-promotional | **OPINION/GENRE** | factual cross-reference, no superlative claim |
+| Grok NITs — future date; one-sided/two-sided labeling; Table 8 null repeat | **FALSIFIED / OPINION** | 2026-09-18 is today, not future; every occurrence already labels its tail; caption cross-references adjacent text |
+| Gemini M1 — three URLs contain spaces | **FALSIFIED** | no spaces in `main.tex` source at any of the three lines; PDF-render column-wrap artifact, same pattern as prior-round Gemini N3 |
+| Gemini N1 — internal version string in journal date line | **OPINION/GENRE** | standard practice across this campaign's papers |
+
+### v4P.0.9 hygiene
+`\paperVersion` v4P.0.8→v4P.0.9, `\paperTimestamp` Sept 18→Sept 19 2026;
+4-pass compile, 0 undef refs, pre-existing 5.88pt hbox only; 14→14 pages;
+sha256 `0224d3b8e85c8a26fd8ed8e6a715ff571e3d6483cce4eadfbdf87acafd17a5bf`, md5
+`e31da2ee9cc57fbf0344b8d5c3b9a330`; four-way byte-identical mirror verified; arXiv
+tarball rebuilt and standalone-compile-verified.

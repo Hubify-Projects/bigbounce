@@ -1,7 +1,94 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.8 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** 95 (unchanged) — exact-v4P.0.7 confirmation board closed, all 7 genuinely-new-real MAJOR findings fixed; Houston sign-off read should use **v4P.0.8**, sha256 `e8f1969e415777622561dde0f21a8ac7d6398c3b2ef55f69200ba50a89d91cd2`, 14 pages.
+**Current candidate:** v4P.0.9 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** 95 (unchanged) — exact-v4P.0.8 re-verification board closed, all 6 genuinely-new-real MAJOR + 4 MINOR findings fixed; directive R2 exit — **no further consecutive review round on this content is authorized without an intervening science/scope decision.** Houston sign-off read should use **v4P.0.9**, sha256 `0224d3b8e85c8a26fd8ed8e6a715ff571e3d6483cce4eadfbdf87acafd17a5bf`, 14 pages.
+
+## Exact-v4P.0.8 re-verification board closed (v4P.0.8 → v4P.0.9, 2026-09-19)
+
+Campaign 2026-09-18 lane L4b (`bb-L4b-p4p-reverify`), the one directive-R2-permitted
+consecutive verification round following lane L4's 2026-09-18 confirmation board.
+L4 closed 7 MAJOR + 12 MINOR findings on the v4P.0.5–v4P.0.7 disclosure content but
+those closures had never themselves been independently reviewed. This board ran a
+fresh, verdict-blind exact-v4P.0.8 INT board (Grok API `grok-4.3` + Gemini API
+`gemini-3.1-pro-preview`, ACCEPT-with-minor-corrections + a Claude opus INT
+sub-agent that was not shown the prior closure list or `DISPOSITIONS/P4P.md`
+before writing its report, major-revisions).
+
+**6 genuinely-new-real MAJOR findings (Claude opus leg), each independently
+re-derived by the orchestrator from the underlying committed artifacts (not
+accepted from the reviewer's text alone) before closure:**
+
+1. The pixel-injection baseline's comparator was misnamed as "the catalog's HC
+   monopole" — it is the catalog-*wide* monopole per the paper's own §2.2; the
+   amplitude convention was also inconsistent (a half-amplitude compared to a
+   full amplitude). Fixed with the correctly-named, correctly-converted
+   comparator.
+2. "A third, near-antipodal axis" is quantitatively false: recomputing all six
+   pairwise angular separations among the four QC-sweep axes from the
+   committed JSON's own coordinates gives a maximum of 119.9° (not ~180°), and
+   the closest pair (19.3°) — the `primary_hc`-relaxed excess axis sitting
+   next to the primary channel's own axis — was omitted entirely. Fixed with
+   the full, accurate pairwise pattern.
+3. The new pixel-level calibration's headline-weakening implication (§A.1) and
+   the primary channel's own leg-instability (also §A.1) had **zero forward
+   reference** from the Abstract, §3, §5, §6, or §7 — a reader following the
+   normal read order would never encounter either caveat. Fixed with four
+   targeted pointer sentences (§3, Assumption 2, Discussion, Conclusions); the
+   Abstract was deliberately left untouched (already at the 250-word ApJS
+   single-paragraph cap).
+4. "Density-tercile split" is actually a 20/60/20 quintile split — the
+   committed script bins on `np.quantile(dl, [0.2, 0.8])` and its own
+   docstring says "quintile bins"; the paper's own Table 8 counts prove the
+   20/60/20 split. Fixed.
+5. A "0.79 correlation" was cited as evidence the FSC harmonic diagnostic and
+   the monopole are "the same structure" — the committed 4×4 correlation
+   matrix shows 0.79 is real-space↔$C_1^{\rm master}$, has nothing to do with
+   the monopole, and the paper's own next sentence says the monopole is
+   nearly uncorrelated with the other three. Fixed: removed the false
+   identification, correctly attributed the correlation, and disclaimed that
+   this bootstrap's in-sample "MASTER ℓ=1" channel is not the §3 FSC
+   diagnostic (different sample, support, and null).
+
+4 MINOR closed with real, source-verified edits (a structure-battery count
+that did not reconcile, an incomplete leg-exceedance enumeration recomputed in
+full from the committed JSON, a Table-5 low-end-amplitude convention
+inconsistency, a Data-Availability list that wrongly excluded a diagnostic
+that is in fact reproduced, and a redshift-window misattributed to the wrong
+parent sample). 6 Claude-leg minors and 6 nits explicitly deferred with
+documented reason (real but lower-severity; several require a considered
+rewrite rather than a wording fix — see the truth audit). Every Grok/Gemini
+MAJOR/ESSENTIAL finding this round was re-flagged against existing
+`DISPOSITIONS/P4P.md` precedent or independently falsified against the
+manuscript's own text — see the truth audit for the full table, including two
+FALSIFIED claims (the DESIVAST-test "post-hoc" objection, which the paper
+already discloses verbatim, and three "space in URL" claims, all PDF-render
+column-wrap artifacts with no space in the LaTeX source).
+
+Full item-by-item audit: `project-context/peer-reviews/INT_v3/ROUND_2026-09-19-P4P-v4P.0.8-EXACTPDF-e8f1969e-REVERIFY/P4P_v4P.0.8_REVERIFY_truth_audit.md`.
+Dispositions: `project-context/peer-reviews/DISPOSITIONS/P4P.md`.
+
+**Hygiene (directive G):** `\paperVersion` v4P.0.8→v4P.0.9; `\paperTimestamp`
+September 18→September 19, 2026; 4-pass `pdflatex`, 0 undefined refs, one pre-existing 5.88pt overfull
+hbox (unchanged, below the 10pt gate); 14→14 pages (unchanged). `pdftoppm -r
+110` full render of every edited page plus the abstract — no overflow, no
+overlap, no broken table/figure.
+
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `e31da2ee9cc57fbf0344b8d5c3b9a330`, SHA-256
+  `0224d3b8e85c8a26fd8ed8e6a715ff571e3d6483cce4eadfbdf87acafd17a5bf`.
+  Mirrored byte-identically (four-way md5 verified: compile ==
+  `site/public/papers/` == `public/papers/` == `site/out/papers/`) to
+  `paper4prime_chirality_test_v4P.0.9.pdf`.
+- **arXiv tarball:** rebuilt and standalone-compile-verified (extract +
+  4-pass pdflatex, 0 undefined refs, 14 pages):
+  `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.9.tar.gz`,
+  sha256 `015552aa771bd5efb7fcaf2651ffaca501be8862110a647da05f255cd6a9f500`.
+- **Artifact links:** all 12 `\artifact{}` paths in `main.tex` confirmed
+  committed on `main` (`git ls-files`); HF dataset mirror and both Zenodo
+  DOIs (versioned 21461899, concept 21461898) curl 200.
+- **Convex:** see activity feed / paperVersions entries written in the same
+  bundle as this SSOT update.
+- **Git:** commit(s) recorded in the campaign log (`L4b-p4p-reverify`).
 
 ## Exact-v4P.0.7 confirmation board closed (v4P.0.7 → v4P.0.8, 2026-09-18)
 

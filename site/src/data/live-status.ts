@@ -125,9 +125,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.8",
+      version: "v4P.0.9",
       readiness: 95,
-      pendingWork: "Exact-v4P.0.7 INT confirmation board (Grok + Gemini + Claude opus sub-agent) closed 7 genuinely-new-real findings 2026-09-18 → v4P.0.8, including an honest disclosure of tension between the new pixel-level calibration and the exclusion's bridge factor; primary null unchanged. Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.8.",
+      pendingWork: "Exact-v4P.0.8 re-verification board (Grok + Gemini + a Claude opus sub-agent not shown the prior round's closures) independently checked lane L4's own closures and closed 6 further genuinely-new-real MAJOR + 4 MINOR findings 2026-09-19 → v4P.0.9 (mislabeled monopole comparator, a false near-antipodal-axis claim, two disclosures with no forward reference from the headline sections, a mislabeled quintile split, a misattributed correlation); primary null unchanged. Directive R2: no further consecutive round without a scope decision. Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.9.",
     },
     {
       slug: "paper-4",

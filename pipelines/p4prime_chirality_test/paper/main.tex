@@ -58,8 +58,8 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FSC}}
 
-\newcommand{\paperVersion}{v4P.0.8}
-\newcommand{\paperTimestamp}{September 18, 2026}
+\newcommand{\paperVersion}{v4P.0.9}
+\newcommand{\paperTimestamp}{September 19, 2026}
 
 \begin{document}
 \raggedbottom
@@ -498,7 +498,20 @@ spatially resolved morphology transfer function, which remains an open gate
 in the archived release paper~\cite{Golden:P4v274}. This distinction
 matters directly for Sec.~\ref{sec:bh}, which uses Eq.~\ref{eq:a95_obs} as
 the sensitivity floor against which the black-hole-universe claim is
-confronted.
+confronted. Two results in Sec.~\ref{sec:robustness_disclosure} directly
+qualify this floor and this null and are not otherwise referenced from
+this section: (i) a per-imaging-leg partition of this same
+$887{,}472$-galaxy primary sample is not uniformly clean under leg
+removal -- two single-leg-removal variants and the DES-only fit
+individually exceed $A_{95}^{\rm obs}$, even though the full four-leg fit
+reported here is null-consistent; and (ii) a first direct empirical
+measurement of the observed-to-physical transfer function implies a
+response roughly an order of magnitude smaller than the illustrative
+bridge value $g=0.398$ used in Sec.~\ref{sec:bh}, which if propagated at
+face value would substantially raise the physical-amplitude floor implied
+by $A_{95}^{\rm obs}$. Neither is resolved here; both are stated
+explicitly, not adopted as corrections, in
+Sec.~\ref{sec:robustness_disclosure}.
 
 A distinct harmonic diagnostic on the wider, 24,087-pixel \FSC{} support
 (Fig.~\ref{fig:skymap}) gives a fixed-occupancy $\ell=1$ moment
@@ -578,12 +591,13 @@ $C_1^{\rm master}$ & $0.794$ & $0.129$ & $-0.061$ & $1.000$ \\
 \end{tabular}
 \end{center}
 The monopole is the only channel with $|z|>3$ against its own bootstrap
-scatter ($z=-6.57$; the FSC harmonic diagnostic above is the same
-structure seen through a different estimator, consistent with its
-$0.79$ correlation to the real-space channel here); the other three
-channels are all non-significant on this same shared bootstrap
-($z=+2.21$ real-space dipole, $+0.81$ WLS dipole, $-0.61$ MASTER
-$\ell=1$), consistent with the primary null. The block-bootstrap
+scatter ($z=-6.57$); the other three channels are all non-significant on
+this same shared bootstrap ($z=+2.21$ real-space dipole, $+0.81$ WLS
+dipole, $-0.61$ this bootstrap's own MASTER $\ell=1$ channel on the
+pre-support-cut $N=949{,}584$ sample -- a different sample, support, and
+null than the \FSC{} $\ell=1$ diagnostic of Sec.~\ref{sec:dipole}
+($z=+6.923$, 24,087-pixel support), and not to be identified with it),
+consistent with the primary null. The block-bootstrap
 real-space $z=+2.21$ is a distinct statistic from the primary null's
 fixed-occupancy $z_{\rm mom}=+0.635$ (\HCRI{}-support quantity, above): the
 former is the full-sample dipole amplitude over its own $\nside=8$
@@ -591,9 +605,12 @@ block-bootstrap scatter (which does not model the pixel-occupancy
 constraint), the latter is the fixed-occupancy label-randomization
 statistic reported as the primary result; both are non-significant and
 neither supersedes the other. The monopole is nearly
-uncorrelated with the other three; the primary real-space dipole and its
-WLS variant are only weakly correlated ($0.16$), consistent with them
-answering related but non-identical questions on different supports.
+uncorrelated with the other three ($|\rho|\leq0.06$); the real-space
+dipole and its own MASTER $\ell=1$ channel are the most correlated pair in
+this bootstrap ($0.79$), and the real-space dipole and its WLS variant are
+only weakly correlated ($0.16$) -- both patterns consistent with these
+four channels answering related but non-identical questions on different
+supports.
 
 % ============================================================
 \section{Void/non-void environment contrast}
@@ -835,7 +852,11 @@ deprojected spin. The observed-to-physical bridge requires the spatially
 resolved morphology transfer function, an open gate in the archived catalog
 paper; an illustrative bridge factor $g=0.398$ used there for a different
 comparison is explicitly not an established calibration and is not used to
-strengthen this statement.
+strengthen this statement. Sec.~\ref{sec:robustness_disclosure} reports a
+first direct empirical probe of that transfer function whose implied
+response is roughly an order of magnitude smaller than $g=0.398$; taken at
+face value this would weaken, not strengthen, the present exclusion, and is
+not resolved here.
 \item The preferred axis is a free direction in the model (inherited from
 an unobserved parent black hole); \texttt{healpy.fit\_dipole} fits both
 amplitude and direction, which is the correct match to a model with no
@@ -897,6 +918,11 @@ derived. We regard that as the honest state of the test: the model predicts
 a direction of effect (preferred-axis alignment) that this catalog is
 well-positioned to detect were it present at the amplitudes the
 observational literature has claimed, and does not detect it.
+Sec.~\ref{sec:robustness_disclosure} discloses two results that qualify
+this exclusion and are not adopted as corrections to it: the primary
+sample's own per-imaging-leg partition is not uniformly clean, and a new
+pixel-level transfer measurement is in tension, by roughly an order of
+magnitude, with the illustrative observed-to-physical bridge used above.
 
 % ============================================================
 \section{Conclusions}
@@ -920,7 +946,12 @@ the independent reanalyses of Iye \etal\ (2021) and Patel \& Desmond
 (2024). We make no claim beyond this stated test: the
 result bears on the black-hole-universe model's spin-axis prediction only,
 not on the separate matter-bounce cosmology this research program develops
-from the same torsion mechanism.
+from the same torsion mechanism. Two disclosure results
+(Sec.~\ref{sec:robustness_disclosure}) qualify this exclusion and remain
+unresolved: the primary channel's own leg-removal stability, and a direct
+pixel-level measurement of the observed-to-physical transfer function
+roughly an order of magnitude smaller than the illustrative bridge used
+above; neither is adopted as a correction here.
 
 \appendix
 
@@ -995,8 +1026,10 @@ but sign-flipped at $2.9\sigma$ -- an unresolved discrepancy, not a
 consistency, between the two label-level identities. Table~\ref{tab:pixel_calib}
 records this comparison; the injection baseline itself is $A_0=+0.59\%$ for
 the spiral-classified population probed here, a different quantity from
-(and opposite in sign to) the catalog's HC monopole
-($f_{\rm CW}-\tfrac12=-0.265\%$, Sec.~\ref{sec:catalog_classifier}), not the
+(and opposite in sign to) the catalog-wide monopole reported in
+Sec.~\ref{sec:catalog_classifier} ($f_{\rm CW}-\tfrac12=-0.265\%$,
+equivalently $A_p=-0.53\%$ in this paper's amplitude convention -- not the
+HC-selected primary channel's own monopole, which is positive), not the
 same baseline residual. The production pipeline suppresses pixel-level
 parity leakage well below what the label-level injection model alone would
 predict.
@@ -1010,8 +1043,9 @@ ratio $dA/df$ (naive identity) $=0.0167/0.434\approx0.038$ is roughly an
 order of magnitude smaller than $g=0.398$; propagated naively, it would
 move the observed-label floor $A_{95}^{\rm obs}=0.98\%$ to a physical-amplitude
 floor of order $0.98\%/0.038\approx26\%$, under which every literature
-amplitude in Table~\ref{tab:bh_exclusion} except Shamir (2025) would fall
-below the floor rather than above it. We do not adopt this propagation: the
+amplitude's low-end value in Table~\ref{tab:bh_exclusion} would fall below
+the floor rather than above it (only Shamir (2025)'s range, $20$--$33\%$,
+straddles this floor). We do not adopt this propagation: the
 pixel-level slope is a response to an injected mirror-flip fraction at a
 fixed operating point, not a validated dipole-amplitude transfer function on
 the sky, and its sign relative to the mixture-corrected identity is itself
@@ -1053,20 +1087,29 @@ dipole $A=0.566\%$ at $z=+4.44$, axis RA~$278.6^\circ$/Dec~$+25.3^\circ$. A
 graded QC sweep localizes this to a single cut: removing only the raw-flip
 cut (retaining \texttt{primary\_hc}) restores the null ($z=+0.68$), while
 removing only the \texttt{primary\_hc} confidence cut does not ($z=+9.13$,
-at a third, near-antipodal axis); a per-imaging-leg partition shows the
-excess is also removed by dropping the DES leg alone ($z=+0.48$) but not
-by any Galactic cut. The axis is inconsistent across selections (shifting
-by $107.5^\circ$), and the monopole-plus-mask-leakage floor in this
+at a distinct axis); a per-imaging-leg partition shows the excess is also
+removed by dropping the DES leg alone ($z=+0.48$) but not by any Galactic
+cut. The four selections' best-fit axes are not uniformly scattered: the
+full-parent axis and the raw-flip-relaxed (null) axis agree to
+$17.3^\circ$, and the \texttt{primary\_hc}-relaxed axis agrees with the
+primary channel's own axis to $19.3^\circ$; the two pairs are separated
+from each other by $107$--$120^\circ$, well short of antipodal
+($180^\circ$). We report the full pairwise pattern rather than a single
+separation, since the \texttt{primary\_hc}-relaxed excess sitting near the
+primary channel's own axis is itself part of what this disclosure reports.
+The monopole-plus-mask-leakage floor in this
 population is $0.19\%$. This pattern -- signal present only in the
 population the primary QC cuts are designed to exclude, removed by a
 single confidence or footprint-leg cut, with an unstable axis -- is
 consistent with a confidence-cut/footprint systematic rather than a shared
 physical signal, and is reported here as a systematic, not subtracted from
 or used to adjust the primary channel's null result. The same per-leg
-partition applied instead to the primary $887{,}472$-galaxy channel (C3)
-is less clean: two drop-one-leg variants (dropping DECaLS, $z=+4.19$,
-$A=2.21\%$; dropping DES, $z=+4.26$, $A=1.39\%$) and the DES-only fit
-($A=5.83\%$) exceed $A_{95}^{\rm obs}=0.98\%$, versus $z_{\rm mom}=+0.635$
+partition applied instead to the primary $887{,}472$-galaxy channel is
+less clean: five of the six single-leg fits exceed $A_{95}^{\rm obs}=0.98\%$
+(only BASS+MzLS, $z=+2.00$, $A=3.92\%$; only DECaLS, $z=+2.20$, $A=1.66\%$;
+dropping DECaLS, $z=+4.19$, $A=2.21\%$; only DES, $z=+2.49$, $A=5.83\%$;
+dropping DES, $z=+4.26$, $A=1.39\%$), and only dropping BASS+MzLS
+($z=+1.02$, $A=0.66\%$) does not, versus $z_{\rm mom}=+0.635$
 for the full four-leg primary sample. We report this rather than omit it:
 it indicates the primary channel's own footprint-stability nulls are not
 uniformly clean under leg removal, a residual not resolved by this
@@ -1075,10 +1118,10 @@ disclosure and not subtracted from the primary result.
 \textbf{Structure cross-correlations.} On the same $949{,}584$-galaxy
 \texttt{primary\_hc}-labelled sample used for the full-parent test above
 (pre-dating the \texttt{raw\_flip\_qc\_unsafe} exclusion; not the
-$887{,}472$-galaxy primary channel), a pre-registered battery of 15 of 17
+$887{,}472$-galaxy primary channel), a pre-registered battery of 16 of 17
 declared chirality$\times$structure statistics was executed (the
 Shamir-axis statistic below was unavailable; the full $\times17$
-Bonferroni correction is retained rather than loosened to $\times15$):
+Bonferroni correction is retained rather than loosened to $\times16$):
 local spiral surface-density quartiles; angular cross-correlation with
 1,244 spectroscopic anomaly positions; five spectroscopic-redshift bins;
 and dipole projections along the CMB dipole and CMB quadrupole--octopole
@@ -1134,14 +1177,16 @@ $k$=10-NN density contrast measured on the public DESI DR1
 \texttt{BGS\_BRIGHT-21.5} clustering catalog and 4 randoms/cap downloaded
 and uniformly sub-sampled to $6.0\times10^6$ total (not a void finder) --
 finds no dependence of the parity fraction on environment in either subset
-it can be tested on. Table~\ref{tab:bgs_environment} reports the three-way
-density-tercile split (labelled void-like/wall-filament/node-like by
-relative rank; every tercile's median $\delta_k$ is in fact overdense
-relative to the randoms in both subsets, so the split spans relative, not
-absolute, density and does not reach genuinely underdense environments)
+it can be tested on. Table~\ref{tab:bgs_environment} reports a
+density-quintile split (void-like = lowest quintile, wall/filament =
+middle three quintiles, node-like = top quintile, by relative rank; every
+bin's median $\delta_k$ is in fact overdense relative to the randoms in
+both subsets, so the split spans relative, not absolute, density and does
+not reach genuinely underdense environments)
 for the 121,417-spiral DESI spectroscopic-redshift subset (three-dimensional
-comoving density, cut from a $0.1<z<0.4$ tracer-matched 231,549-spiral
-parent) and the same-selection $949{,}584$-galaxy \texttt{primary\_hc}
+comoving density; cut to the $0.1<z<0.4$ BGS tracer volume from a
+$0<z<0.6$, tracer-matched 231,549-spiral parent) and the same-selection
+$949{,}584$-galaxy \texttt{primary\_hc}
 sample used for the structure battery above (projected density; this
 projected subset is not disjoint from the spec-z subset -- the 121,417
 spec-z rows are a nested subset of the 949,584 -- and it is not the
@@ -1216,7 +1261,8 @@ and its output
 \artifact{research/bh\_universe\_dipole/outputs/poplawski\_dipole\_exclusion\_2026\_09\_02.json}.
 Full systematics appendices, harmonic and weighted-least-squares diagnostics,
 the classifier bias-hardening audit, and the void/non-void secondary
-diagnostic paths (author VoidFinder, T-Web, Tempel, ASTRA) are not
+diagnostic paths (author VoidFinder, Tempel, ASTRA -- the T-Web
+diagnostic is reproduced in this manuscript, Sec.~\ref{sec:void}) are not
 reproduced in this condensed manuscript; they remain available in the
 archived source papers~\cite{Golden:P4v274,Golden:P5v147} referenced above.
 The catalog is a single Apache Parquet file (952,115,239 bytes for the
