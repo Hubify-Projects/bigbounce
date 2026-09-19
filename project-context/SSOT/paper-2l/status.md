@@ -2,15 +2,15 @@
 title: "Paper 2L SSOT — P2′ Letter: Exact Matter-Contraction f_NL"
 type: ssot
 paper: 2L
-last_updated: 2026-09-02 — CREATED. v2L.0.1, 4 pp, md5 66a28438cc0f0b8dc347a3016389363f, 0 undef refs, 0 overfull hboxes.
+last_updated: 2026-09-19 — ARCHIVED. v2L.0.2 is the archived theory record; per the 2026-09-02 (evening) decision record below, R1's real defects were closed to this honest v2L.0.2 and the Letter's content (independent from-scratch in-in confirmation, the Cai et al. 2009 factor-2 location, the δN/comoving reconciliation) was folded into A3M (`research/track_a3_multichannel/paper/main.tex`) as its theory section. Not an independent submission target; rounds stopped (directive R2), no further review board.
 canonical_source: arxiv/paper2prime_fnl_letter/main.tex
-canonical_pdf: arxiv/paper2prime_fnl_letter/main.pdf (4 pp / 0 undef refs / md5 66a28438cc0f0b8dc347a3016389363f)
-version: v2L.0.1 (2026-09-02, created)
+canonical_pdf: arxiv/paper2prime_fnl_letter/main.pdf
+version: v2L.0.2 (2026-09-02, archived theory record)
 registry_id: P2L (project-context/draft_paper_registry.json)
-review_profile: PRD-LETTER
-target_journal: Physical Review D — Letters (JCAP alternate)
-headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 0 / review-convergence 0 / packaging 20 = ~45; no INT/EXT board run yet)
-submission_status: draft, unreviewed — first INT/EXT board pending
+review_profile: PRD-LETTER (ARCHIVED — content lives on in A3M)
+target_journal: n/a — folded into A3M (Physical Review D, regular article)
+headline_pct: 20 (Convex readinessComputed; archived theory record, not an active submission)
+submission_status: ARCHIVED — folded into A3M per PAPER_LINEAGE_2026-08-05.md decision record 2026-09-02 (evening)
 ---
 
 # P2L status — current authoritative section

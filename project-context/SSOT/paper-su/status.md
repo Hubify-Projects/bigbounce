@@ -1,6 +1,6 @@
 # P-SU status — current authoritative section
 
-**Current candidate:** v1S.0.8 · 2026-09-07 ·
+**Current candidate:** v1S.0.9 · 2026-09-18 ·
 `arxiv/paper_su_criterion/main.tex`
 
 **Title:** "The separate universe computes a different variable: an exact
