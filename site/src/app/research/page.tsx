@@ -85,7 +85,7 @@ export default async function ResearchPage() {
 
       <Band tone="base" width="content" id="contributions">
         <p className="eyebrow">Contributions</p>
-        <PageHeader
+        <PageHeader level="h2"
           title="What's novel here"
           lead="Every result the lab claims as its own — what kind of contribution it is, and how novel, ranked on a four-tier scale. Self-claim ceiling is N3 (first-of-kind); N4 (paradigm-shifting) is reserved for outside arbiters and never self-claimed."
         />

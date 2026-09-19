@@ -79,7 +79,7 @@ export default async function ReviewsPage() {
 
       <Band tone="alt" width="full" id="grid">
         <div style={{ maxWidth: "var(--content-width)", margin: "0 auto", padding: "0 24px" }}>
-          <PageHeader
+          <PageHeader level="h2"
             eyebrow="Verdict grid · newest round left"
             title="External referee verdicts"
             lead="Active legs only (directive M-AMENDED): Grok API + Gemini API, plotted against the historical six-paper board. The ChatGPT column is frozen while directive N's Codex/OpenAI pause stands — shown dimmed, never deleted or faked."
@@ -103,13 +103,13 @@ export default async function ReviewsPage() {
       </Band>
 
       <Band id="publication-status">
-        <PageHeader eyebrow="Publication status" title="What's left before publication" />
+        <PageHeader level="h2" eyebrow="Publication status" title="What's left before publication" />
         <PublicationStatusWidget status={publicationStatus} livePapers={livePapers} />
       </Band>
 
       <Band tone="alt" width="full">
         <div style={{ maxWidth: "var(--content-width)", margin: "0 auto", padding: "0 24px" }}>
-          <PageHeader
+          <PageHeader level="h2"
             eyebrow="Gap and skills"
             title="The review machinery, self-improving"
             lead="Substantive findings only the external tier caught, and the pattern/prompt-rule catalog those findings get mined into."
@@ -125,7 +125,7 @@ export default async function ReviewsPage() {
       </Band>
 
       <Band id="timeline">
-        <PageHeader
+        <PageHeader level="h2"
           eyebrow={`Round timeline · newest first · showing ${ROUNDS_SHOWN}`}
           title="Every round, truth-audit, closure, and skill upgrade"
           lead="One line per event: date, kind, what changed, receipt link. Skill-improvement entries carry a quiet marker."
