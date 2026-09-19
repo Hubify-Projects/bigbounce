@@ -1,0 +1,32 @@
+{
+  "A2_E3_is_redundant": true,
+  "A2_phi_equation_residual": "0",
+  "A2_phi_equation": "Phi'' + 2(H - pp)Phi' + (k^2 + 2H' - 2 H pp)Phi = 0 ; pp = (2HH'-H'')/(2(H^2-H'))",
+  "A2b_mu_residual": "0",
+  "A2b_mu": "mu = a^2/(H^2-H') = -1/Hdot",
+  "A3_dictionary": "zeta = Phi + H (Phi' + H Phi)/(H^2 - H')",
+  "A3b_zetaprime_residual": "0",
+  "A3b_zetaprime": "zeta' = -k^2 H Phi/(H^2 - H')",
+  "A1_S2_residual": "0",
+  "A1_S1_residual": "k**2*(-a(eta)*Derivative(a(eta), eta)*Derivative(a(eta), (eta, 3)) + 2*a(eta)*Derivative(a(eta), (eta, 2))**2 - Derivative(a(eta), eta)**2*Derivative(a(eta), (eta, 2)))*Phi(eta)*a(eta)**3/(a(eta)**2*Derivative(a(eta), (eta, 2))**2 - 4*a(eta)*Derivative(a(eta), eta)**2*Derivative(a(eta), (eta, 2)) + 4*Derivative(a(eta), eta)**4)",
+  "A1_S1_powerlaw_residual": "0",
+  "A1_S1_condition": "S1 (z=a) is exact iff eps = -Hdot/H^2 is constant (power-law background)",
+  "A3c_muW_residual": "0",
+  "A3c_Xi_residual": "0",
+  "A3c_conclusion": "(Phi, Xi) continuous <=> ([zeta]=0 and [z^2 zeta']=0) = scheme S2's junction prescription",
+  "A4_correct": "[Phi]=0 and [Xi]=0  ==  [zeta]=0 and [z^2 zeta']=0",
+  "A4_rejected_naive": "[Phi]=0 and [mu Phi']=0 -- drops the H mu' Phi delta",
+  "A5_indicial_NEC": [
+    "0",
+    "2"
+  ],
+  "A5_H0_form": "Phi'' + (k^2 + 2 a^2 Ups) Phi = 0 in the window",
+  "A5b_window_pp_minus_H": "0",
+  "A5b_window_k0": "2*Ups*exp(Ups*t**2)",
+  "G1_friction": "6/etasym",
+  "G1_k0": "0",
+  "G1_zeta": "5*Phi(eta)/3",
+  "G1_pass": true,
+  "A1_S2_is_exact": true,
+  "A1_S1_is_exact": false
+}

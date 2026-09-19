@@ -1,0 +1,76 @@
+====================================================================================================
+LEG A - exact symbolic derivation (sympy 1.14.0).  Units 8 pi G = 1.
+====================================================================================================
+
+[background] Friedmann :                                    2                 2                    / d            \    / d          \            2        |----(phi(eta))|    |----(a(eta))|    V(eta)*a (eta)   \deta          /    \deta        /  - -------------- - ----------------- + ---------------         3                  6                2                                                     a (eta)    
+[background] H^2 - H'   = phi'^2 / 2   (equivalently  H^2 - H' = -a^2 Hdot = (a^2/2)(rho+p) )
+
+[A2] momentum constraint (E2)  ->  dphi = 2(Phi' + H Phi)/phi'
+[A2] after the background reduction:  E3 = 0
+     (the pressure equation is REDUNDANT given E2 + the background -- an internal consistency check)
+[A2] energy constraint E1 (with E2 and the background substituted) minus the claimed closed Phi equation = 0
+[A2] PASS -- exact closed equation, obtained from the ENERGY constraint:
+        Phi'' + 2(H - phi''/phi') Phi' + (k^2 + 2H' - 2 H phi''/phi') Phi = 0,
+        phi''/phi' = (2 H H' - H'')/(2(H^2 - H'))  -- no z, no 1/H anywhere.
+
+[A2b] mu = a^2/(H^2 - H') : mu'/mu - 2(H - phi''/phi') = 0
+[A2b] PASS -- self-adjoint form  (mu Phi')' + mu (k^2 + 2H' - 2 H phi''/phi') Phi = 0,
+        mu = a^2/(H^2 - H') = -1/Hdot   (since H^2 - H' = -a^2 Hdot).
+        => mu is FINITE at H = 0 (Hdot != 0) and blows up only at the NEC crossing Hdot = 0.
+
+[A3] R_comoving = Phi + H dphi/phi' = (Phi(eta)*a(eta)*Derivative(a(eta), (eta, 2)) - 3*Phi(eta)*Derivative(a(eta), eta)**2 - a(eta)*Derivative(Phi(eta), eta)*Derivative(a(eta), eta))/(a(eta)*Derivative(a(eta), (eta, 2)) - 2*Derivative(a(eta), eta)**2)
+[A3] i.e.  zeta = Phi + H (Phi' + H Phi)/(H^2 - H').  At H = 0 this gives zeta = Phi exactly.
+
+[A3b] zeta' computed from the dictionary and reduced on the Phi equation, minus  -k^2 H Phi/(H^2-H') = 0
+[A3b] => exact:  zeta' = -k^2 H Phi/(H^2 - H') = k^2 H Phi/(a^2 Hdot).
+      Together with A3 this is an invertible algebraic map (Phi, Phi') <-> (zeta, zeta') wherever H != 0,
+      and it makes super-Hubble zeta-conservation manifest (zeta' = O(k^2)).
+
+[A1] (z^2 zeta')' + k^2 z^2 zeta  with z^2 = 2a^2 eps (scheme S2) and zeta from the dictionary,
+     reduced on the Phi equation  =  0
+[A1] S2 equation implied by the exact Einstein equations: YES (residual 0)
+
+[A1] same with z = a (scheme S1) = k**2*(-a(eta)*Derivative(a(eta), eta)*Derivative(a(eta), (eta, 3)) + 2*a(eta)*Derivative(a(eta), (eta, 2))**2 - Derivative(a(eta), eta)**2*Derivative(a(eta), (eta, 2)))*Phi(eta)*a(eta)**3/(a(eta)**2*Derivative(a(eta), (eta, 2))**2 - 4*a(eta)*Derivative(a(eta), eta)**2*Derivative(a(eta), (eta, 2)) + 4*Derivative(a(eta), eta)**4)
+[A1] S1 equation implied by the exact Einstein equations: NO
+
+[A1] the S1 residual is proportional to  N[a] = -a a1 a3 + 2 a a2^2 - a1^2 a2  (a_n = n-th eta-derivative);
+     on a power-law background a = eta^q (i.e. eps = -Hdot/H^2 constant)  N[a] = 0
+     so S1 z = a is the exact scalar variable IF AND ONLY IF eps is constant.
+
+[A3c] mu W - [ mu(k^2 + 2H' - 2H^2) + H mu' ] = 0
+      -> in the self-adjoint form the ENTIRE delta-function content of a jump in Hdot sits in the
+         single term H mu' Phi, because mu = -1/Hdot jumps there.  Absorbing it:
+[A3c] Xi' - [(a^2 - mu k^2)Phi + H Xi] = 0   with Xi = mu(Phi' + H Phi)
+      Phi' = Xi/mu - H Phi = -Hdot Xi - H Phi
+      NEITHER right-hand side contains mu' (or any other derivative of a jumping background
+      quantity), so Phi and Xi are BOTH continuous across a jump in Hdot: the Bardeen system
+      needs NO junction prescription at all.
+[A3c] zeta - (Phi + H Xi/a^2) = 0
+[A3c] z^2 zeta' + 2 a^2 k^2 Phi/H = 0   (z^2 = 2a^2 eps)
+      => [Xi] = 0  <=>  [zeta] = 0   and   [Phi] = 0  <=>  [z^2 zeta'] = 0 .
+      The continuity that the Bardeen system enforces automatically is therefore EXACTLY scheme S2's
+      junction prescription ([zeta] = 0, [z^2 zeta'] = 0) -- derived here, not assumed.
+
+[A4] Junction condition across a surface where a, H are continuous but Hdot jumps.
+     NAIVE reading of the self-adjoint form -- '[Phi] = 0 and [mu Phi'] = 0' -- is WRONG: by A3c
+     the potential term mu W itself carries a delta (H mu' Phi), so mu Phi' is NOT continuous.
+     The correct, delta-free statement is A3c's:  [Phi] = 0 and [Xi] = 0, Xi = mu(Phi' + H Phi),
+     which by A3c is identically  [zeta] = 0 and [z^2 zeta'] = 0  -- scheme S2's prescription.
+     (The naive [mu Phi'] = 0 is kept in the numerics as a labelled REJECTED control: it excites
+      the decaying mode and gives lambda ~ k^-2, destroying scale invariance.)
+
+[A5] Indicial exponents of the Phi equation at a SIMPLE ZERO of Hdot (the NEC crossing): [0, 2]
+     Both are >= 0, so Phi and Phi' are bounded there: Phi is REGULAR at rho + p = 0.
+[A5] At H = 0 with Hdot = Ups != 0 the equation is  Phi'' + (k^2 + 2 a^2 Ups) Phi = 0  (phi''/phi' = H),
+     manifestly regular.  Hence Phi is regular at BOTH degenerate points, with no choice of z.
+
+[A5b] Quintin window check: scriptH^2 - scriptH_prime + a^2 Ups = 0  (must be 0)
+
+[A5b] Quintin window (a = exp(Ups t^2/2), H = Ups t):  phi''/phi' - script-H = 0
+      friction coefficient 2(script-H - phi''/phi') = 0 ;  k^0 coefficient 2H' - 2 H phi''/phi' = 2*Ups*exp(Ups*t**2)
+
+[G1] matter contraction/expansion (eps = 3/2, a ~ eta^2):
+     friction 2(H - phi''/phi') = 6/etasym   (expect 6/eta)
+     k^0 term  2H' - 2 H phi''/phi'  = 0   (expect 0)
+     dictionary: zeta = 5*Phi(eta)/3  -> for Phi = const, zeta = (5/3) Phi
+     G1 symbolic part: PASS

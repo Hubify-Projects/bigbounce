@@ -1,0 +1,37 @@
+========================================================================================================
+LEG B / B' - scheme-free linear transfer lambda_zeta through the Quintin-type bounce, via (Phi, Xi)
+background Ups=2.666667 tm=0.500 a_m=1.395612 eta_B=0.449586 | t in [-400, 400] | rtol=1e-12 atol=1e-16
+========================================================================================================
+
+[G1] matter-domination limit  zeta/Phi (Phi = const) = 1.666666666667  (5/3)  rel err 2.22e-16 -> PASS
+[G2] constant-eps control (pure matter contraction, where S1 == S2 identically): Phi route vs the exact vacuum mode, rel err 5.51e-09 -> PASS
+[G3] Wronskian Phi_1 Xi_2 - Phi_2 Xi_1 (traceless system) across t in [-20,20] (both junctions + H=0): rel err 5.10e-09 -> PASS
+
+[ref] committed S1/S2 machinery (lane9b2 BounceModes), |zeta_after/zeta(-tm)|:
+      k eta_B=0.001    S1 6.0601    S2 0.9699
+      k eta_B=0.003    S1 6.0601    S2 0.9699
+      k eta_B=0.01     S1 6.0592    S2 0.9702
+
+[B] SHARP background, Bardeen (Phi, Xi) integrated straight through -- no junction prescription:
+      k eta_B=0.001    lambda_Phi = 0.969924 | dev from S1 0.8400, from S2 1.80e-07 | REJECTED naive junction: 6.7944e+06
+      k eta_B=0.003    lambda_Phi = 0.969946 | dev from S1 0.8399, from S2 2.00e-08 | REJECTED naive junction: 7.5493e+05
+      k eta_B=0.01     lambda_Phi = 0.970188 | dev from S1 0.8399, from S2 1.80e-09 | REJECTED naive junction: 67933
+
+[B'] SMOOTHED-junction control -- the background genuinely crosses rho+p = 0, where scheme S2's
+     own variable z^2 = 2a^2 eps VANISHES and zeta is LOG-DIVERGENT, while Phi stays finite.
+     1/Hdot is taken as the principal value Hdot/(Hdot^2 + eps^2); both d and eps are scanned.
+      k eta_B=0.001    0.05|0.01:1.14530  0.05|0.001:1.14520  0.02|0.01:1.04489  0.02|0.001:1.04481  0.01|0.001:1.00805  0.005|0.001:0.98916  0.002|0.001:0.97765  0.001|0.001:0.97377  0.0005|0.001:0.97188
+               last three (smallest d): 0.97765, 0.97377, 0.97188 -> spread 5.92e-03 about 0.97443  [G4 PASS]
+               Richardson d -> 0 : 0.969985   (sharp-background lambda_Phi = 0.969924, rel 6.2e-05)
+      k eta_B=0.003    0.05|0.01:1.14535  0.05|0.001:1.14523  0.02|0.01:1.04491  0.02|0.001:1.04480  0.01|0.001:1.00808  0.005|0.001:0.98918  0.002|0.001:0.97768  0.001|0.001:0.97382  0.0005|0.001:0.97188
+               last three (smallest d): 0.97768, 0.97382, 0.97188 -> spread 5.94e-03 about 0.97446  [G4 PASS]
+               Richardson d -> 0 : 0.969952   (sharp-background lambda_Phi = 0.969946, rel 6.8e-06)
+      k eta_B=0.01     0.05|0.01:1.14561  0.05|0.001:1.14548  0.02|0.01:1.04515  0.02|0.001:1.04505  0.01|0.001:1.00833  0.005|0.001:0.98943  0.002|0.001:0.97792  0.001|0.001:0.97406  0.0005|0.001:0.97213
+               last three (smallest d): 0.97792, 0.97406, 0.97213 -> spread 5.95e-03 about 0.97470  [G4 PASS]
+               Richardson d -> 0 : 0.970192   (sharp-background lambda_Phi = 0.970188, rel 4.6e-06)
+
+========================================================================================================
+VERDICT (against PREREGISTRATION.md section 3):  L = 0.970019 ; |L/S1 - 1| = 0.8399 ; |L/S2 - 1| = 6.73e-08
+  -> OUTCOME-S2
+========================================================================================================
+[fig] row9_scheme_independence.png

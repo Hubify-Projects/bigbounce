@@ -1,0 +1,91 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row9-scheme-independence",
+  "title": "Track A3 (ledger row 9 residual / decision D-A3-9): is the S1/S2 transmission band physical? Exact symbolic adjudication of the linear Mukhanov-Sasaki variable through H = 0 via the Bardeen potential, plus the scheme-free lambda_zeta on the Quintin-type bounce and a smoothed-NEC-crossing control",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "pre-registration (criterion + kill/success conditions, committed BEFORE any number existed, commit 117051bd)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/PREREGISTRATION.md",
+      "checksum": null
+    },
+    {
+      "name": "exact Quintin-type background, S1/S2 mode machinery and the real matter basis (imported UNMODIFIED: Quintin, BounceModes, matter_real_basis); supplies the S1 = 6.06 and S2 = 0.9699 reference values",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.py",
+      "checksum": "sha256:44b848063978e912770ed535a99f762765bc7b7e3ee96aee1be240c59c2f9d62"
+    },
+    {
+      "name": "lane 9b-2 finding under adjudication (S2 != S1; f_NL^after -1.249 vs -0.501; factor 2.5 traced to the linear MS-variable choice, |lambda| 0.97 vs 6.06)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/LANE9B2_S2_RAWADM_2026-09-04.md",
+      "checksum": null
+    },
+    {
+      "name": "row 18a (tensor transfer is scheme-independent; lambda_T = lambda_zeta^S1 identically; r_after = 24(lambda_T/lambda_zeta)^2) -- used only to state the consequence, not re-derived",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/ROW18A_S2_TENSOR_2026-09-04.md",
+      "checksum": null
+    },
+    {
+      "name": "source-cited transcription of the AAN/ABS dressed-metric gauge dictionary R = -(a/z) dphi with z = a phidot/H (their Eq. 25) -- cited for a limit statement, NOT re-derived here",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane9c_abs_operator/LANE9C_ABS_OPERATOR_2026-09-04.md",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/row9_symbolic.py",
+      "entrypoint": "python3 row9_symbolic.py",
+      "sha256": "277a99376a7e0375dc44a859578456736c5369963f55fa8532c48cab6e832410"
+    },
+    {
+      "path": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/row9_numeric.py",
+      "entrypoint": "python3 row9_numeric.py",
+      "sha256": "c356166d40d4225c81740f8145be3ca1acf2e0505d97ba4043c563c4b5a9d4c4"
+    }
+  ],
+  "environment": {
+    "python": "sympy 1.14, numpy, scipy (integrate.solve_ivp DOP853/LSODA, special.erf), matplotlib (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-19",
+    "wall_clock": "symbolic ~20 s, numeric 0.5 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 min for both scripts",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic; no random seeds, no data download, no fitting. row9_symbolic.py must be run first (it asserts its own key residual). row9_numeric.py imports the committed lane9b2 module by relative path (../lane9b2_s2_rawadm) and does not modify it."
+  },
+  "outputs": [
+    {"locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/row9_symbolic.log", "type": "log", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/symbolic_results.json", "type": "result-json", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/row9_numeric.log", "type": "log", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/results.json", "type": "result-json", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/row9_scheme_independence.png", "type": "figure", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/ROW9_SCHEME_INDEPENDENCE_2026-09-19.md", "type": "document", "checksum": null},
+    {"locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/PROPAGATION_NOTE.md", "type": "document", "checksum": null}
+  ],
+  "verification": "Re-run both scripts and confirm in the logs. row9_symbolic.log: A2 residual 0 (the closed Phi equation follows from the ENERGY constraint; the pressure equation E3 reduces to 0 identically); A2b mu = a^2/(H^2-H') = -1/Hdot residual 0; A3 dictionary and A3b zeta' = -k^2 H Phi/(H^2-H') residuals 0; A3c the (Phi, Xi) system is delta-free (both residuals 0) and its automatic continuity equals S2's junction prescription; A1 the S2 equation residual is 0 while the S1 (z = a) residual is NONZERO and its numerator N[a] vanishes on a power law (eps = const) only; A5 indicial exponents at a simple zero of Hdot are [0, 2] and the window equation is Phi'' + (k^2 + 2 a^2 Ups) Phi = 0; G1 friction 6/eta, k^0 term 0, zeta = (5/3) Phi. row9_numeric.log: gates G1 2e-16, G2 5.5e-9, G3 5.1e-9 all PASS; reference S1 6.0601/6.0601/6.0592 and S2 0.96992/0.96995/0.97019; the Phi route gives lambda = 0.969924/0.969946/0.970188, i.e. |L/S2 - 1| = 6.7e-8 and |L/S1 - 1| = 0.840; the REJECTED naive junction gives 6.79e6/7.55e5/6.79e4 (proportional to k^-2); the smoothed control converges linearly in d with Richardson limit 0.969985/0.969952/0.970192 (G4 PASS, last-three spread 5.9e-3). Final line must read 'OUTCOME-S2'.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 9, stated residual: 'a scheme-independent variable choice through H = 0'; decision D-A3-9 (A3M reports the two-scheme band)",
+    "pre-registered in PREREGISTRATION.md with five named outcomes including INCONCLUSIVE and BAND-IS-PHYSICAL, committed before computing (117051bd)",
+    "builds on manifests p2-a3-lane-9b2-s2-rawadm and p2-a3-row18a-s2-tensor; does not redo either",
+    "literature statements are cited only, never re-derived: the AAN/ABS dressed-metric gauge dictionary is taken from the committed source-cited transcription in lane9c_abs_operator, and this lane makes no claim to have refuted a dressed-metric calculation",
+    "an independent blind adjudication of the same question was commissioned (Fable-tier, verdict-blind prompt, told neither this lane's conclusion nor its method); its outcome is recorded in ROW9_SCHEME_INDEPENDENCE_2026-09-19.md section 6"
+  ]
+}

@@ -78,6 +78,13 @@
       ]
     },
     {
+      "id": "a3-row9-scheme-independence",
+      "depends_on": [
+        "p2-a3-lane-9b2-s2-rawadm",
+        "p2-a3-row18a-s2-tensor-transfer"
+      ]
+    },
+    {
       "id": "p2-a3-lane-9a-velocity-dip",
       "depends_on": [
         "p2-a2-bounce-fnl-transmission",
