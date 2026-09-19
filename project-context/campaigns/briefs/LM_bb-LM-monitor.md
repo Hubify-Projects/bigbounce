@@ -1,0 +1,7 @@
+You are the monitor lane (LM) of the BigBounce publication-push campaign. Repo /Users/houstongolden/Desktop/CODE_YOU/bigbounce. Read project-context/campaigns/CAMPAIGN_2026-09-18_publication_push.md once. You edit ONLY that file's `## Log` section (append lines) — nothing else. Never run git commit/push. Never kill processes.
+Every 15 minutes (use `sleep 900` between rounds; run for up to 8 hours or until the log shows every lane L1–L7 DONE or BLOCKED, whichever first):
+1. `df -g / | tail -1` → free GB. If free < 12 GB append `- <time> · LM · ALERT-DISK · <free> GB free` ; if < 8 GB also run `~/.claude/skills/agent-runtime-guard/scripts/reclaim-disk.sh --level deep` and log its reclaimed_mb.
+2. `bash tools/lab_lease.sh renew code-you-2d-MacBookAir24GB 240` → log CLAIMED/renewed or the error.
+3. Lane liveness: `ps -eo pid,etime,command | grep -E "claude.*--name bb-L" | grep -v grep` → for each expected lane (L1..L7) note alive/absent; also check the newest mtime under ~/.claude/state/bb-campaign-2026-09-18/*.log. If a lane's log file has not changed for > 45 min and its process is alive, append `- <time> · LM · STALL-SUSPECT · <lane> · log idle <N> min`. If a lane process is absent and the campaign log has no DONE/BLOCKED line for it, append `- <time> · LM · LANE-EXITED-WITHOUT-DONE · <lane>`.
+4. Append one heartbeat line: `- <time> · LM · HEARTBEAT · disk <free>GB · lease <status> · lanes alive: <list> · done: <list>`.
+Final report ≤80 words: number of heartbeats, any alerts, final lane states.
