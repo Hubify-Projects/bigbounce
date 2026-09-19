@@ -69,9 +69,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1n",
       number: "1N",
       shortTitle: "The ECH Note (P1A + P1C merged, grown to CQG Paper form)",
-      version: "v1N.0.5",
-      readiness: 95,
-      pendingWork: "REVISE (abstract cap) executed 2026-09-02 → v1N.0.5 (abstract trimmed to 298 words). R3 verification closed; automated review converged; final author review APPROVE; Houston sign-off (95→100) not yet sought.",
+      version: "v1N.0.6",
+      readiness: 99,
+      pendingWork: "D-round (visual) + P-round (packaging) complete 2026-09-18 → v1N.0.6 (0 broken artifact links; unused bib entry pruned; arXiv tarball rebuilt + standalone-smoke-tested; CQG submission kit assembled). arXiv gr-qc endorsement (D4) remains Houston-only, not a CQG-submission blocker. Houston sign-off (99→100) not yet sought.",
     },
     {
       slug: "paper-1a",

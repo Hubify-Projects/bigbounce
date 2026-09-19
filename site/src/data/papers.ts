@@ -143,12 +143,12 @@ export const researchPrograms: ResearchProgram[] = [
     question:
       "What does minimal Einstein\u2013Cartan\u2013Holst spin-torsion gravity do for the bounce, and what can it not do for dark energy?",
     result:
-      "P1N (v1N.0.1) merges P1A and P1C into one \u226412 pp gr-qc/CQG Note: the derived axial spin-spin contact term is identified with Po\u0142awski's torsion-bounce repulsion mechanism (the positive result), while the same algebraic elimination closes four candidate dark-energy routes (the negative result).",
+      "P1N (v1N.0.6) merges P1A and P1C into one gr-qc/CQG paper: the derived axial spin-spin contact term is identified with Po\u0142awski's torsion-bounce repulsion mechanism (the positive result), while the same algebraic elimination closes four candidate dark-energy routes (the negative result).",
     limitation:
-      "P1N has not yet been through any INT/EXT review board. P1A and P1C remain on disk, frozen and unedited, as this Note's archived lineage \u2014 not separate live submission targets.",
+      "P1N's R1\u2013R3 INT review board (Claude, Grok API, Gemini API) closed with automated review convergence declared 2026-09-02; D-round + P-round packaging complete 2026-09-18. P1A and P1C remain on disk, frozen and unedited, as this paper's archived lineage \u2014 not separate live submission targets.",
     leadSlug: "paper-1n",
     supportSlugs: [],
-    status: "One closed-line Note. P1A + P1C review churn stopped after R13; single INT board runs on the merged Note before submission.",
+    status: "One closed-line paper, readiness 99. P1A + P1C review churn stopped after R13; the merged paper's own R1\u2013R3 board is closed; CQG submission kit assembled, pending Houston's venue-click decision.",
   },
   {
     id: "track-c-desi-data-products",
@@ -357,13 +357,13 @@ export const papers: Paper[] = [
     standaloneSubmission: true,
     title: "What Minimal Einstein–Cartan–Holst Torsion Does for the Bounce and Cannot Do for Dark Energy",
     plainTitle: "One closed-line Note: spin-torsion gravity's contact repulsion powers a bounce mechanism, but not dark energy",
-    version: "v1N.0.5",
-    lastUpdated: "2026-09-02",
-    tldr: "Merges P1A and P1C into a single gr-qc/CQG paper. The derived axial spin-spin contact term is identified with Popławski's torsion-bounce repulsion mechanism (the positive result) while the same algebraic elimination closes four candidate dark-energy routes (the negative result). R3 verification pass closed (Claude major-revisions, Grok reject, Gemini major-revisions) with machine-checked regressions; automated review convergence criterion met and final author review recorded APPROVE — readiness 95. v1N.0.5: abstract trimmed to the CQG venue word cap (298 words); no science change.",
+    version: "v1N.0.6",
+    lastUpdated: "2026-09-18",
+    tldr: "Merges P1A and P1C into a single gr-qc/CQG paper. The derived axial spin-spin contact term is identified with Popławski's torsion-bounce repulsion mechanism (the positive result) while the same algebraic elimination closes four candidate dark-energy routes (the negative result). R3 verification pass closed (Claude major-revisions, Grok reject, Gemini major-revisions) with machine-checked regressions; automated review convergence criterion met and final author review recorded APPROVE. v1N.0.6: D-round (visual) + P-round (packaging) complete — 0 broken artifact links, arXiv tarball rebuilt and standalone-smoke-tested, submission kit assembled; readiness 99.",
     path: publicationPath({}),
     pages: "13",
     refs: "—",
-    readiness: 95,
+    readiness: 99,
     statusVariant: "amber",
     target: "Classical and Quantum Gravity — Paper",
     description:
@@ -381,14 +381,16 @@ export const papers: Paper[] = [
     predictions: ["Axial contact coefficient in the stated ECH convention", "Identification of the contact term with the Popławski torsion-bounce mechanism"],
     figures: ["Table I: 14-entry barrier catalog", "Table II: six-member operator list with rank-4 spanning status"],
     remainingWork: [
-      "R3 verification pass closed — automated review converged (Claude major-revisions, Grok reject, Gemini major-revisions) with machine-checked regressions — v1N.0.4; final author review APPROVE; readiness 95",
-      "Readiness composition (directive P): science closure + evidence & reproducibility + automated review convergence + packaging & PDF hygiene = 95; the remaining 5 requires Houston's explicit per-paper sign-off (quote recorded in SSOT) and is tracked separately from publishing-phase steps (arXiv endorsement, venue submission, independent human review)",
-      "arXiv tarball assembled: SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.5.tar.gz",
-      "Houston sign-off (readiness 95→100) has not been sought",
+      "D-round (visual) + P-round (packaging) complete — v1N.0.6, readiness ladder R(96)→D(98)→P(99)",
+      "arXiv gr-qc endorsement (D4) remains open — Houston-only action (forward/regenerate endorsement code); not a blocker for the CQG journal submission, which needs no arXiv prerequisite",
+      "CQG submission kit assembled: SSOT/CQG_SUBMISSION_KIT_P1N_2026-09-18.md (abstract, categories, cover letter, DAS)",
+      "arXiv tarball rebuilt + standalone-smoke-tested: SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.6.tar.gz",
+      "Houston sign-off (readiness 99→100) has not been sought",
     ],
     preprintId: "HUBIFY-2026-001N",
-    pdfMeta: "PDF · 11 pp · v1N.0.5 · created Sep 2, 2026 · md5 6836eb995effef298cca6830b1beda7c — abstract trimmed to CQG's word cap (298 words); no science change; REVISE (abstract cap) executed 2026-09-02.",
+    pdfMeta: "PDF · 11 pp · v1N.0.6 · created Sep 18, 2026 · md5 b9ac109139b7d88aa0f798ee7ef80c8d — D-round + P-round complete; unused bib entry pruned; no science change.",
     changelog: [
+      "v1N.0.6: D-round (visual audit clean, 0 fixes needed beyond pre-existing sub-gate residual) + P-round (0 broken artifact links; bib-tarball-rebuild pruned one orphaned unused entry; arXiv tarball rebuilt + standalone-smoke-tested; CQG submission kit assembled). No science change. Readiness 95→99.",
       "v1N.0.5: REVISE (abstract cap) executed — abstract trimmed to venue word cap (298 words), no science change; tarball rebuilt.",
       "v1N.0.4: R3 verification pass closed — automated review converged (Claude major-revisions, Grok reject, Gemini major-revisions) with machine-checked regressions; final author review APPROVE; readiness 95; arXiv tarball assembled.",
       "v1N.0.3: R2 closure — 23/23 findings closed, including two errors inherited from P1C (8π coefficient, O5 parity). R2 verdicts: Claude major-revisions, Grok reject, Gemini major-revisions. R3 verification pass dispatched, verdicts pending.",
@@ -396,8 +398,8 @@ export const papers: Paper[] = [
       "v1N.0.1: first merged draft. Compiled 4-pass, 0 undef refs, 0 overfull hboxes, 4/4 consistency-check rules PASS. Superseded P1A (v1A.0.127, archived, Zenodo 10.5281/zenodo.21481838) and P1C (v1C.0.16, frozen, not independently submitted).",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1bc_ech_note_v1N.0.5.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1bc_ech_note_v1N.0.5.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1bc_ech_note_v1N.0.6.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1bc_ech_note_v1N.0.6.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/arxiv/paper1bc_ech_note",
