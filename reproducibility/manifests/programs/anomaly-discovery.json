@@ -36,7 +36,8 @@
     { "id": "anomaly-known-object-recovery-benchmark", "depends_on": [] },
     { "id": "anomaly-known-object-recovery-benchmark-v2", "depends_on": ["p3-flagship-v2-enrichment"] },
     { "id": "p3-ledger8-known-object-recovery-benchmark", "depends_on": ["p3-flagship-s8-enrichment"] },
-    { "id": "anomaly-map-png-highz-abundance", "depends_on": [] }
+    { "id": "anomaly-map-png-highz-abundance", "depends_on": [] },
+    { "id": "anomaly-map-qso-large-angle-isotropy", "depends_on": ["anomaly-map-png-highz-abundance"] }
   ],
   "external_data": [
     { "name": "DESI DR1 iron zcatalog (zall-pix-iron.fits)", "link": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits", "kind": "dataset", "license": null },

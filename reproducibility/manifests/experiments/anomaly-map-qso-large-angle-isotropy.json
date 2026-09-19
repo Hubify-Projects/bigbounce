@@ -1,0 +1,129 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "anomaly-map-qso-large-angle-isotropy",
+  "title": "Ledger #6 second discriminator - large-angle isotropy of DESI DR1 quasars: dipolar modulation of the degree-scale clustering amplitude along the Planck 2018 VII asymmetry axis, plus the number-count dipole",
+  "program": "anomaly-discovery",
+  "paper": "none",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "DESI DR1 LSS clustering catalogue, QSO NGC (data)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_NGC_clustering.dat.fits (local: ~/Desktop/CODE_YOU/bigbounce_datasets/desi_dr1_lss/)",
+      "checksum": null,
+      "license": "DESI DR1 public data (CC BY 4.0)"
+    },
+    {
+      "name": "DESI DR1 LSS clustering catalogue, QSO SGC (data)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/QSO_SGC_clustering.dat.fits (local: same directory)",
+      "checksum": null,
+      "license": "DESI DR1 public data (CC BY 4.0)"
+    },
+    {
+      "name": "DESI DR1 QSO random catalogues 0-3 per cap (survey selection function)",
+      "type": "external-dataset",
+      "locator": "QSO_{NGC,SGC}_{0,1,2,3}_clustering.ran.fits, same DESI DR1 LSScats/v1.5 path; 50,768,005 randoms used after the 0.8<z<2.1 cut",
+      "checksum": null,
+      "license": "DESI DR1 public data (CC BY 4.0)"
+    },
+    {
+      "name": "Planck 2018 VII (Isotropy and Statistics of the CMB) dipolar power modulation: A ~ 0.07 at ell <~ 60 toward (l,b) = (209 deg, -15 deg)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/1906.02552",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Hirata 2009, constraints on cosmic hemispherical power anomalies from quasars (literature context only; no number of theirs is used in a lab result)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/0907.0703",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Ledger #6 first discriminator (theory-side closure of the asymmetry class: EKC route dead at |f_NL| = 2.19)",
+      "type": "internal-artifact",
+      "locator": "research/anomaly_map/LEDGER6_DISCRIMINATOR_BRIEF_2026-09-02.md",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Pre-registration (statistic, nulls, decision rule, outcome meanings) fixed before any statistic was computed",
+      "type": "internal-artifact",
+      "locator": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/PREREGISTRATION.md (commit c1acb329)",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/build_maps.py",
+      "entrypoint": "python build_maps.py",
+      "sha256": "ae8dbd0e82ad8d1801f8a9564af579470b11075ced5bc8aa50849ca50cb97ac5"
+    },
+    {
+      "path": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/analyze_isotropy.py",
+      "entrypoint": "python analyze_isotropy.py",
+      "sha256": "625d31cba10c0dd24aa5e46163ab420282b58a0eadabd7a39a70c5428b63b01a"
+    },
+    {
+      "path": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/make_figure.py",
+      "entrypoint": "python make_figure.py",
+      "sha256": "543c641be838c05081e2e42932610613156dc7d8992c5e57a10603bdafa32d2c"
+    }
+  ],
+  "environment": {
+    "python": "python3.12 (research/desi_png_reproduction/.venv312) + numpy 2.5.2 + scipy 1.18.1 + astropy 8.0.1 + healpy 1.20.0 + matplotlib",
+    "hardware": "cpu-only; Apple M-series MacBook Air (24 GB), macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-19",
+    "wall_clock": "23.2 s map build + 5.0 s analysis + 4 s figure (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~35 s once the DR1 QSO catalogues are on disk; ~1 h if they must be downloaded (about 18 GB)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic given seed 20260919 (Poisson null, injection-recovery). No network at run time. New bytes written: ~2.3 MB of HEALPix maps + 0.3 MB figure + JSON. The only external requirement is the DESI DR1 LSS QSO clustering catalogues and randoms 0-3 per cap; randoms 4-6 exist locally but are not used (4 files per cap already give 59x the data density)."
+  },
+  "outputs": [
+    {
+      "locator": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/outputs/ledger6_qso_isotropy.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/outputs/ledger6_qso_isotropy.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/outputs/maps_nside64.npz",
+      "type": "dataset",
+      "checksum": null
+    },
+    {
+      "locator": "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/LEDGER6_QSO_ISOTROPY_RESULT_2026-09-19.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run all three scripts and confirm: (a) sample sizes 555,913 (NGC) + 300,918 (SGC) data and 32,546,199 + 18,221,806 randoms after the 0.8<z<2.1 cut, masked footprint 10,660 pixels = 8946.87 deg2; (b) S2_modulation.A == -0.05347 +/- 1e-4 with A_err == 0.04275 +/- 1e-4 and a_cap == [0.004809, 0.006207] +/- 1e-5; (c) N1_poisson_null.shot_plus_clustering.p_two_sided_b == 0.186 and N2_axis_scan.p_LEE == 0.582 with n_axes_admissible == 1536 (seed-exact); (d) validation_injection: A_in 0.07 recovered as 0.0766 +/- 0.0469 (bias < 0.01), A_in 0.20 recovered as 0.1972; (e) S1_dipole.amp == 0.004464 +/- 1e-5 with N3_bracket.no_weight_sys.dipole_amp == 0.02205 (the 5x growth when WEIGHT_SYS is removed) while N3_bracket.no_weight_sys.A == -0.0546 (A moves by < 0.002); (f) decision.detection == false. Any change to (b), (c) or (f) invalidates the verdict.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 6 (second pre-registered test; the abundance and early-SMBH classes were closed 2026-09-02/03)",
+    "project-context/VISION.md route 3 (early-universe anomaly map)",
+    "research/anomaly_map/ledger6_qso_isotropy_2026-09-19/PREREGISTRATION.md (commit c1acb329, written before any statistic)",
+    "research/anomaly_map/LEDGER6_DISCRIMINATOR_BRIEF_2026-09-02.md (first discriminator; theory-side closure of the same anomaly class)",
+    "research/desi_png_reproduction/ (ledger #4; same DR1 QSO products, independent analysis chain)",
+    "project-context/campaigns/CAMPAIGN_2026-09-18_publication_push.md lane bb-LS2-ledger6"
+  ]
+}
