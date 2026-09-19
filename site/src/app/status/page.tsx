@@ -152,7 +152,7 @@ export default async function StatusPage() {
       </Band>
 
       <Band id="signoff">
-        <PageHeader
+        <PageHeader level="h2"
           eyebrow="Final review · directive P"
           title="What &ldquo;ready&rdquo; means — five gates per work"
           lead={readinessBreakdownNote}
@@ -197,7 +197,7 @@ export default async function StatusPage() {
       </Band>
 
       <Band tone="alt">
-        <PageHeader eyebrow="Compute" title="Active compute" />
+        <PageHeader level="h2" eyebrow="Compute" title="Active compute" />
         {runningPods.length === 0 ? (
           <p className="row-purpose">0 pods running · $0/hr. All compute jobs idle.</p>
         ) : (
@@ -211,7 +211,7 @@ export default async function StatusPage() {
       </Band>
 
       <Band id="surveys">
-        <PageHeader
+        <PageHeader level="h2"
           eyebrow="Legacy survey-pipeline records"
           title="Survey QC"
           lead="Preserved methodology and archive records. Historic candidate counts are superseded by the current portfolio; no survey result here proves a bounce."
