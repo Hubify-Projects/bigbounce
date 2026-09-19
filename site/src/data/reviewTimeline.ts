@@ -67,6 +67,29 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "psu-r3verify-v1s-0-9-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "closure-wave",
+    title:
+      "P-SU R3VERIFY closes a real Sec.III/Appendix contradiction + LaTeX unicode bug → v1S.0.9; new open item S12 gates the next round",
+    papers: ["PSU"],
+    summary:
+      "Lane L2 of the 2026-09-18 publication-push campaign ran the review round directive R2's intervening S7-through-A2-adjudication science decisions unlocked, on the exact v1S.0.8 artifact: Claude Opus 5 INT (full-repo context, independent re-derivation), Grok API (native-PDF), Gemini API (native-PDF); OpenAI/ChatGPT absent per directive N. All three legs independently caught the same serious regression: the v1S.0.8 A2 lapse-monopole closing amendment had landed in Appendix A5 but was never propagated to Sec. III, so the served PDF printed two contradictory values (-5/2 and -55/16) for the same headline second-order quantity for 11 days. Claude additionally found a raw UTF-8 rho character that threw a hard LaTeX error and was silently dropped from the rendered text. Both closed in v1S.0.9, along with a directive-G leak-gate violation (Appendix A5 narrated internal review/adjudication process and used undefined symbols), a footnote miscount independently caught by both Gemini and Claude, and missing reproducibility citations for the two newest scripts. One item was NOT closed: Gemini's pass-2 finding that the translation term's exact zero monopole was derived assuming n_s=1, unverified at general constant-epsilon -- tracked as new open science gate S12, which now gates any further review round on this paper. DISPOSITIONS/PSU.md, which had gone stale at v1S.0.2 for six versions, was reconciled in the same bundle.",
+    keyTakeaways: [
+      "All three INT legs (Claude Opus, Grok, Gemini) independently caught the same ESSENTIAL defect: a science closure landed in the Appendix but was never propagated to the main text, leaving a literal internal contradiction live in the served PDF for 11 days",
+      "A raw non-ASCII character in a .tex source silently drops text from the compiled PDF without tripping the 0-undefined-references check -- 0 undef refs is necessary but not sufficient; grep main.log for '^!' errors separately",
+      "A from-scratch derivation genuinely surfaced a new, unresolved open question (S12) rather than confirming convergence -- this round is dispositioned CLOSED (no third board) while the paper's status stays OPEN pending S12, per directive R2",
+    ],
+    links: [
+      { label: "P-SU SSOT", href: `${GH}/project-context/SSOT/paper-su/status.md` },
+      { label: "P-SU dispositions", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/PSU.md` },
+      { label: "Claude Opus INT raw", href: `${PR}/INT_v3/PSU_v1S.0.8_R3VERIFY_claude_opus_2026-09-18.md` },
+      { label: "Grok API raw", href: `${PR}/R3VERIFY_PSU_Grok_brutal.md` },
+      { label: "Gemini API raw", href: `${PR}/R3VERIFY_PSU_Gemini_cosmology.md` },
+      { label: "P-SU source", href: `${GH}/arxiv/paper_su_criterion/main.tex` },
+    ],
+  },
+  {
     id: "publication-push-campaign-2026-09-18",
     dateISO: "2026-09-18",
     kind: "skill-improvement",

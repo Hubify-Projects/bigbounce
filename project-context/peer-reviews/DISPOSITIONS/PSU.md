@@ -1,16 +1,18 @@
 # PSU disposition ledger — `paper-su`
 
 **Canonical source:** `arxiv/paper_su_criterion/main.tex`
-**Current paper-local version:** `v1S.0.2` (2026-09-04)
-**Exact PDF:** `arxiv/paper_su_criterion/main.pdf` == `site/public/papers/paper_su_criterion_v1S.0.2.pdf`,
-sha256 `812dbaf1af7e8eafa5769730fed55c81cfa8b429fbeab022d1125be1527aca31`, md5 `fcbecd03…`, 4 pp.
-(R1 artifact was `cc0dfb84…c48e` = v1S.0.1.)
-**Venue:** Physical Review D — Letter / short note.
-**Claim policy (as of R1, pending S3):** the note currently asserts an $O(1)$ *failure* of the
-isotropic separate universe. The committed source note it rests on concludes the opposite
-framing ("there was never a discrepancy in the physics, only in the variable",
-`research/theory_audit/threading_map_second_order_2026_09_04.md` §4). Until S3 is adjudicated,
-do **not** restate the failure framing in SSOT, site copy, or abstracts as settled.
+**Current paper-local version:** `v1S.0.9` (2026-09-18) — ledger reconciled this bundle after
+sitting stale at v1S.0.2 for six versions (2026-09-18 process observation: this staleness is
+exactly the class of gap that let the v1S.0.8 A2 closing-amendment land in Appendix A only,
+undetected in Sec. III, for 11 days — see round `R3VERIFY` below).
+**Exact PDF:** `arxiv/paper_su_criterion/main.pdf` == `site/public/papers/paper_su_criterion_v1S.0.9.pdf`,
+sha256 `2b225d0b3ceaa42d9223cc5b54fb50e1c9a06875c8d6d1292610d85e00d94fb7`, md5 `fcc3383a…`, 7 pp.
+(R1 artifact was `cc0dfb84…c48e` = v1S.0.1; R2 artifact `812dbaf1…aca31` = v1S.0.2; R3VERIFY
+artifact reviewed was `9f1fc41c…443d` = v1S.0.8.)
+**Venue:** Physical Review D — Letter / short note (length now 7 pp.; see N19, open).
+**Claim policy:** S3 (failure vs. change-of-variable) is RESOLVED — the note is framed as an
+exact, invertible change of variable, not a failure; this framing survived R1, R2, and
+R3VERIFY unchallenged on the physics.
 
 ## Round history
 
@@ -18,6 +20,7 @@ do **not** restate the failure framing in SSOT, site copy, or abstracts as settl
 |---|---|---|---|
 | `ROUND_2026-09-04-PSU-v1S.0.1-EXACTPDF-cc0dfb84-R1` | `cc0dfb84…c48e` | Claude Fable 5.1 INT (**major-revisions**), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | 38 raw findings → **28 canonical**: 21 GENUINELY-NEW REAL, 0 re-flag, 5 FALSIFIED, 1 OPINION/GENRE, 1 OUT-OF-SCOPE-DISCLOSED. Clean-wave count **0**. Board: `../PSU_v1S.0.1_R1_BOARD_2026-09-04.md`; audit: `../INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md` |
 | `ROUND_2026-09-04-PSU-v1S.0.2-EXACTPDF-812dbaf1-R2VERIFY` | `812dbaf1…aca31` | Claude Fable 5.1 INT (**major-revisions**, 6M/13m/4Q), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | 39 raw findings → **32 canonical**: 20 GENUINELY-NEW REAL, 6 re-flag (4 still OPEN), 1 OUT-OF-SCOPE-DISCLOSED, 2 FALSIFIED, 3 OPINION. Clean-wave count **0**. Board: `../INT_v3/PSU_v1S.0.2_R2_BOARD_2026-09-04.md`; audit: `../INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md` |
+| `ROUND_2026-09-18-PSU-v1S.0.8-EXACTPDF-9f1fc41c-R3VERIFY` (campaign lane L2; the R2-permitted verification round, unlocked by the intervening S7/S9/S9b/S9c/A2-adjudication science decisions) | `9f1fc41c…443d` | Claude Opus 5 INT (**MAJOR REVISIONS**, 2 ESSENTIAL/6 MAJOR/19 minor/7 nit), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | Genuinely-new-real (all CLOSED in v1S.0.9): **PSU-9 (ESSENTIAL)** Sec. III printed the pre-A2-adjudication value `f^ρ_NL=-5/2` while Appendix A5 printed the corrected `-55/16` for the same quantity — the v1S.0.8 closing amendment landed in the Appendix only, never propagated to the main text; **PSU-10 (ESSENTIAL)** a raw UTF-8 `ρ` at `main.tex:514` threw `! LaTeX Error: Unicode character ρ not set up` and was silently dropped from the served PDF; **PSU-11 (MAJOR)** Appendix A5's closing-amendment paragraph narrated internal review/adjudication history ("reconciled by an independent adjudication…", "the earlier initial-label figure … came from composing … correcting the weight closes the gap") and used `λ'`, `A_2` without definition — a directive-G leak-gate violation; **PSU-12 (MAJOR)** footnote 1 miscounted `f_map^fin`'s contributions (listed the initial-label translation as a 5th contribution to `f_map^fin`, when it is the difference that distinguishes `f_map^init`); **PSU-13 (MINOR)** Reproducibility Statement omitted the two newest scripts (`psu_gates_S9_S10…`, `a2_lapse_monopole_adjudication…`) and their manifests. Re-flags (no action): future-date/version-string/AI-disclosure-genre items (= PSU-17/28, C27, C31); self-containedness/DOI complaints (= PSU-5/S4, PSU-16/S11, still OPEN, unchanged). **One item NOT closed, genuinely new, requires a science decision**: Gemini's pass-2 finding that the translation term's zero monopole (Appendix A3, `T(\eps,\mu)` "monopole 0 (all $\eps$)") was derived assuming $n_s=1$, which is not exact for general constant-$\eps$ backgrounds — if the exact $n_s(\eps)$-dependent trace is included, the composed `-5` may pick up an $\eps$-dependent correction. Claude's independent check confirms the five A2 contributions sum exactly to the printed Eq. (4) (a strong but not dispositive internal-consistency check — it does not independently re-derive the trace term). **Tracked as new open science gate S12** (below); not fabricated closed, not dismissed. Board/audit: `../INT_v3/PSU_v1S.0.8_R3VERIFY_claude_opus_2026-09-18.md`, `../R3VERIFY_PSU_Grok_brutal.md`, `../R3VERIFY_PSU_Gemini_cosmology.md`. |
 
 ## Canonical items (R1 board)
 
@@ -98,3 +101,36 @@ final slice, **S10** general-history $f^{\rm init}_{\rm map}$, **S11** Zenodo DO
 **Directive R2 (updated):** R1 + R2 exhaust the two-round convergence budget. After `v1S.0.3` lands
 the editorial closures (audit §5(i) E-1…E-11), **review rounds on `paper-su` STOP** until a science
 or venue decision is taken on S6–S10.
+
+## Status after v1S.0.3–v1S.0.8 (science-only bundles, no review round) + R3VERIFY (2026-09-18)
+
+S6 (identity-vs-fit), S7 (Cai-2009, `psu_gate_S7_cai_factor_2026_09_05.md`), S9/S10 (general
+admixture + uniform-density slice, `psu_gates_S9_S10_2026_09_05.md`, then S9b/S9c follow-ups),
+and the A2 lapse-monopole coefficient dispute (`a2_lapse_monopole_adjudication_2026_09_07.md`)
+are all RESOLVED — this is the intervening science decision that unlocked the R3VERIFY round
+under directive R2. S4 (self-containedness) remains **partially open**: R3VERIFY confirms the
+Appendix A2/A3/A5 kernel listing is internally consistent (sums exactly to Eq. (4)) but Gemini's
+MAJOR still holds that the ADM constraint *solve* itself (not just its listed results) is not
+reproduced in-paper — tracked, not blocking. S8 (numerical USR validation) and S11 (Zenodo DOI)
+remain OPEN, unchanged since R2 — carried, not blocking (venue/effort items, per directive R2's
+"stop rounds when remaining findings are genre/length/venue").
+
+**S12 (NEW, 2026-09-18, R3VERIFY) — translation-term monopole generality.** Gemini's pass-2
+finding: Appendix A3's derivation that the translation term $T(\eps,\mu)$ has monopole $0$ for
+all $\eps$ implicitly assumes $n_s=1$ (scale invariance) to drop a trace-part contribution
+proportional to $n_s-1$; for a general constant-$\eps$ background $n_s\neq1$ except at specific
+points ($\eps=3/2$, $\eps\to0$), so the exact monopole may carry an $\eps$-dependent correction
+that (if present) would break the exact, $\eps$-independent $f_{\delta N}^{\rm init}\equiv-5$
+result. Claude's independent check (same round) confirms the five A2 contributions sum exactly
+to Eq. (4) and to monopole $-5\eps/6$, which is a strong internal-consistency check but does
+**not** independently re-derive the trace-part computation Gemini is questioning. **Not closed,
+not dismissed** — requires a from-scratch derivation of the translation term's trace part at
+general (non-scale-invariant) $\eps$ before this can be dispositioned either way. This is now the
+gating item for any further review round on `paper-su`.
+
+**Directive R2 (updated 2026-09-18):** R3VERIFY is the one round the intervening S7–A2 science
+decisions unlocked. It found and closed 2 ESSENTIAL + 3 MAJOR genuinely-new-real defects in
+v1S.0.9 (see round table above). It also surfaced S12, a genuinely-new, unresolved science
+question. Per directive R2, **review rounds on `paper-su` STOP again** until S12 is resolved (or
+Houston explicitly defers it) — a fourth board on an unchanged S12 would measure referee
+variance, not progress. S8/S11/venue-length remain carried, non-blocking open items.

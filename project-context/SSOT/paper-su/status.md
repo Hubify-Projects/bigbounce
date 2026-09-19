@@ -1,21 +1,38 @@
 # P-SU status — current authoritative section
 
-**Current candidate:** v1S.0.2 · 2026-09-04 ·
+**Current candidate:** v1S.0.8 · 2026-09-07 ·
 `arxiv/paper_su_criterion/main.tex`
 
 **Title:** "The separate universe computes a different variable: an exact
 criterion for $\delta N=\zeta$ in non-attractor phases"
 
-**Status: readiness 55 (up from 40). First R1 board closed under decision
-D-PSU-1 (see `project-context/PAPER_LINEAGE_2026-08-05.md`, final section):
-Claude Fable (INT), Grok API, Gemini API — 21 genuinely-new-real findings,
-5 falsified, 1 opinion, 1 out-of-scope, per
+**Status: readiness 72 (up from 40). This header was frozen at v1S.0.2 while
+five further science-only bundles (v1S.0.3–v1S.0.8) landed below — reconciled
+2026-09-18 (campaign lane L2). First R1 board closed under decision D-PSU-1
+(see `project-context/PAPER_LINEAGE_2026-08-05.md`, final section): Claude
+Fable (INT), Grok API, Gemini API — 21 genuinely-new-real findings, 5
+falsified, 1 opinion, 1 out-of-scope, per
 `project-context/peer-reviews/INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md`.
-All editorial items (E1–E10) closed and all three science gates resolved
-(`research/theory_audit/psu_gates_S1_S2_2026_09_04.{md,py,json}`, S1/S2/S3
-RESOLVED). Per directive R2, one verification round is permitted after
-D-PSU-1; no further rounds beyond that without a new science or scope
-decision.**
+R2 board (v1S.0.2, `PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md`) found 20 more
+genuinely-new-real findings, closed in v1S.0.3; R1+R2 exhausted directive R2's
+two-round convergence budget, so rounds stopped pending a science or scope
+decision. That decision arrived as the S7/S9/S9b/S9c/A2-adjudication science
+sequence (v1S.0.4–v1S.0.8, all editorial/science-only, no review round),
+closing science gates S6/S7/S9/S10 and reconciling the -55/16 uniform-density
+gap. Per directive R2, that intervening science decision re-opened the round
+budget: campaign lane L2 (2026-09-18) ran the next permitted verification
+board (R3VERIFY) on the exact v1S.0.8 artifact — see `## v1S.0.9 — R3VERIFY`
+below for the outcome. R3VERIFY found and closed 2 ESSENTIAL + 3 MAJOR
+genuinely-new-real defects (v1S.0.9) — most seriously, the v1S.0.8 A2 closing
+amendment had landed in the Appendix but was never propagated to the main
+text, leaving the served PDF with two contradictory values for the same
+headline quantity for 11 days. **Exit decision: the R3VERIFY round is CLOSED
+(no third board scheduled); the paper's status is OPEN pending a new science
+gate S12** (Gemini's finding that the translation-term monopole's exact
+vanishing was derived assuming $n_s=1$, not verified at general constant-$\eps$)
+— see `project-context/peer-reviews/DISPOSITIONS/PSU.md` for the full
+citation and required follow-up derivation. No further review round on
+`paper-su` until S12 is resolved or Houston explicitly defers it.**
 
 ## v1S.0.2 closure summary (this bundle)
 
@@ -91,22 +108,23 @@ plus `reproducibility/manifests/experiments/psu-gates-s1-s2-label-composition-cr
 (new in v1S.0.2, backs the label-resolved composition + restored gradient
 term), both local CPU, \$0, under 5 seconds total compute.
 
-## Close-the-gap section (open items, as of v1S.0.2)
+## Close-the-gap section (open items, as of v1S.0.9 — superseded the v1S.0.2-era list below)
 
-- Per directive R2, exactly one more verification round is permitted on this
-  paper before another science/scope decision is required — the next INT/EXT
-  round should target the closed E1–E10/S1–S3 items for re-audit, not open
-  new science.
-- S4 (self-containedness appendix reproducing the in-in kernel and
-  second-order map derivation in-paper, or posting the companion notes as a
-  citable preprint) and S5 (opus-tier confirmation that the literature
-  positioning language in "What is new" is precise, beyond this bundle's
-  WebFetch abstract check) remain open per the truth audit's ordering note.
+- **S12 (gating, new 2026-09-18)**: translation-term monopole generality —
+  requires a from-scratch derivation of the trace part at general
+  (non-scale-invariant) constant-ε. No further review round until this is
+  resolved or Houston defers it. See `DISPOSITIONS/PSU.md` §S12.
+- S4 (self-containedness): partially open — Gemini's R3VERIFY MAJOR holds
+  that the ADM constraint *solve* itself, not just its listed results, is
+  not reproduced in-paper. Non-blocking per directive R2's genre exception.
+- S8 (numerical USR validation) and S11 (Zenodo DOI for the cited scripts)
+  remain open, unchanged since R2 — non-blocking, carried.
 - Venue/arXiv-category selection not yet made (candidate: gr-qc or
-  astro-ph.CO, cross-list astro-ph.CO given the P2/P2L family).
-- Site (`site/src/data/papers.ts` etc.) not yet updated — explicitly out of
-  scope for this lane per the originating task (another lane owns
-  `site/src`).
+  astro-ph.CO); the note is now 7 pp., over a strict PRD-Letter page limit —
+  the venue-form decision (Letter vs. Brief Report) is also still open.
+- Site (`site/src/data/papers.ts`, `live-status.ts`, `reviewTimeline.ts`)
+  updated in the same commit bundle as this v1S.0.9 closure (lane L2, this
+  round) — no longer deferred to another lane.
 
 ## v1S.0.3 — ROUNDS STOPPED (R2) pending S6–S11 / venue
 
@@ -291,3 +309,97 @@ rebuilt and standalone smoke-compiled clean. Convex bumped
 `papers:setReadinessCap` -> 70, readback confirmed). All S9 science
 gates now closed. Readiness 65 -> 70 — ROUNDS STOPPED (R2); next step
 is venue selection, not further review rounds.
+
+## v1S.0.9 (2026-09-18) — R3VERIFY: the intervening-decision-permitted round; 2 ESSENTIAL + 3 MAJOR genuinely-new-real closed; new open item S12; rounds stopped again
+
+Campaign lane L2 ran the one review round directive R2 permitted after the
+S7–A2-adjudication science sequence, on the exact v1S.0.8 artifact (sha256
+`9f1fc41c…443d`): Claude Opus 5 INT (full-repo context, independent
+re-derivation), Grok API (native-PDF), Gemini API (native-PDF); OpenAI/ChatGPT
+absent per directive N. Raws: `project-context/peer-reviews/INT_v3/PSU_v1S.0.8_R3VERIFY_claude_opus_2026-09-18.md`,
+`project-context/peer-reviews/R3VERIFY_PSU_Grok_brutal.md`,
+`project-context/peer-reviews/R3VERIFY_PSU_Gemini_cosmology.md`.
+
+**Genuinely-new-real, closed in v1S.0.9:**
+- **ESSENTIAL** — Sec. III still printed the pre-adjudication `f^ρ_NL=-5/2`
+  while Appendix A5 printed the corrected `f^ρ_NL=5(ε-7)/8=-55/16` for the
+  identical quantity: the v1S.0.8 closing amendment landed in the Appendix
+  only and was never propagated to the main text, leaving a literal internal
+  contradiction in the served PDF for 11 days. Fixed: Sec. III now prints
+  `5(ε-7)/8`, `-55/16`.
+- **ESSENTIAL** — a raw UTF-8 `ρ` at `main.tex:514` threw a hard
+  `! LaTeX Error: Unicode character ρ (U+03C1) not set up for use with LaTeX`
+  and was silently dropped from the rendered PDF (readable as "the
+  uniform-density (-)slice question"). arXiv's AutoTeX would very likely
+  reproduce or hard-fail on the same error. Fixed: `(ρ-)` → `($\rho$-)`.
+- **MAJOR** — the Appendix A5 closing-amendment paragraph narrated internal
+  review/adjudication process ("reconciled by an independent adjudication…",
+  "the earlier initial-label figure … came from composing … correcting the
+  weight closes the gap") and used undefined symbols `λ'`, `A_2` — a
+  directive-G leak-gate violation (Gemini's two ESSENTIAL findings + Claude's
+  M1/M2). Rewritten to state the physics directly, define `λ'≡2λ` and `A_2`
+  in place, and state the `f^ρ_NL` normalization (`P_{δN_{c,ρ}}`, not `P_ζ`).
+- **MAJOR** — footnote 1 miscounted `f_map^fin`'s geometric contributions,
+  listing the initial-label translation as a fifth contribution to
+  `f_map^fin` when Appendix A2/A3 establish it is the *difference* that
+  distinguishes `f_map^init` (independently caught by both Gemini and Claude).
+  Fixed: footnote now says four contributions to `f_map^fin`, translation is
+  the separate fifth term for `f_map^init`.
+- **MINOR** — Reproducibility Statement omitted the two newest scripts
+  (`psu_gates_S9_S10_2026_09_05`, `a2_lapse_monopole_adjudication_2026_09_07`)
+  and their manifests, making the single newest number in the paper the
+  least reproducibly sourced. Fixed: both scripts + SHA-256 prefixes + both
+  manifests added; AI Usage Disclosure extended to cover the ρ-slice/A₂ work.
+- Nit: `isoceles` → `isosceles` (×2).
+
+**Re-flagged, no action (already dispositioned):** future-date / version-string
+/ AI-disclosure-genre complaints (PSU-17/28, C27, C31); self-containedness and
+Zenodo-DOI complaints (PSU-5/S4, PSU-16/S11 — still OPEN, unchanged, carried
+as non-blocking per directive R2's genre/length/venue exception).
+
+**New open science item, NOT closed, NOT dismissed — S12:** Gemini's pass-2
+finding that Appendix A3's derivation of the translation term's exact zero
+monopole (`T(ε,μ)`, "monopole 0 (all ε)") implicitly assumes `n_s=1` to drop
+a trace-part contribution `∝(n_s-1)`; for general constant-ε, `n_s≠1` except
+at isolated points, so the exact monopole may carry an ε-dependent correction
+that (if present) would break the exact, ε-independent `f_δN^init≡-5` result.
+Claude's independent check (same round) confirms the five A2 contributions
+sum exactly to Eq. (4) and to monopole `-5ε/6` — a strong internal-consistency
+check, but it does not independently re-derive the trace-part computation
+Gemini is questioning. Full citation and required follow-up derivation:
+`project-context/peer-reviews/DISPOSITIONS/PSU.md` §S12.
+
+**Directive-G hygiene:** `\paperVersion`/`\paperTimestamp` bumped to
+v1S.0.9/September 18, 2026. 4-pass pdflatex, 0 `^!` errors, 0 undefined
+references (only a benign `OMS/cmtt/m/n` font-shape substitution warning),
+leak-gate grep clean, 0 overfull hboxes >10pt except the pre-existing 8.31pt
+Table I alignment overflow (unchanged, tracked, cosmetic). 7 pages (up from
+6 — the reproducibility additions pushed one paragraph to a new page; page 7
+is mostly whitespace, a cosmetic byproduct, not a content defect). PDF md5
+`fcc3383afa72efebd7e4cf888c5851e0`, sha256
+`2b225d0b3ceaa42d9223cc5b54fb50e1c9a06875c8d6d1292610d85e00d94fb7`,
+three-way matched: fresh compile == `site/public/papers/paper_su_criterion_v1S.0.9.pdf`
+== `public/papers/paper_su_criterion_v1S.0.9.pdf`. arXiv tarball
+`project-context/SSOT/arxiv_tarballs/paper_su_arxiv_v1S.0.9.tar.gz` (sha256
+`f8dc10f1f526b216a610c40766f80ea9a2be192c0ed500d8d261fd1a48668d4c`),
+standalone-compile-verified (0 errors, 0 undef, 7 pages) in an isolated temp
+dir before packaging.
+
+**Readiness 70 → 72.** Rationale: this round both fixed a genuine
+science-integrity regression (a served PDF with two contradictory values for
+its own headline second-order result, live for 11 days) and improved
+reproducibility/self-containment (leak-gate cleanup, missing script
+citations, footnote correction) — real, verified progress. Held below a
+larger bump by: (a) this was not a "0 genuinely-new-real" clean wave — the
+round found real defects, so it does not count toward directive-K's
+clean-wave streak; (b) it surfaced a new, unresolved open science question
+(S12) rather than closing the paper out. `DISPOSITIONS/PSU.md`'s "current
+version" header, which had gone stale for six versions, is reconciled in the
+same bundle as a process fix.
+
+**Exit decision (per this lane's brief, D-PSU-1/R2 disposition):** the
+R3VERIFY round is **CLOSED** — no third board is scheduled on unchanged
+content. The paper's overall status is **OPEN**, gated on science item S12.
+No further INT/EXT review round on `paper-su` until S12 is resolved by a
+from-scratch derivation of the translation term's trace part at general
+(non-scale-invariant) constant-ε, or Houston explicitly defers/descopes it.

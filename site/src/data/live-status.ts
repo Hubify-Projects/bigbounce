@@ -149,9 +149,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-su",
       number: "SU",
       shortTitle: "Separate-universe failure criterion (short note)",
-      version: "v1S.0.8",
-      readiness: 70,
-      pendingWork: "A2 monopole gap reconciled (independent adjudication 2026-09-07): A2=eps(3-eps)^2/3 correct, f^rho=5(eps-7)/8=-55/16 at dust via the corrected 3lambda composition weight. All S9 science gates closed. ROUNDS STOPPED (R2); next step is venue selection, not further review.",
+      version: "v1S.0.9",
+      readiness: 72,
+      pendingWork: "R3VERIFY (2026-09-18) closed 2 ESSENTIAL + 3 MAJOR genuinely-new-real defects: the v1S.0.8 A2 closing amendment had landed in the Appendix only, contradicting Sec. III's stale value in the served PDF for 11 days; a LaTeX unicode error also dropped text. New open item S12 (translation-term monopole generality) gates the next review round.",
     },
   ],
   blockerTally: {
