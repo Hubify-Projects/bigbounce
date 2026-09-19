@@ -15,15 +15,15 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.25}
-\newcommand{\paperTimestamp}{September 18, 2026}
+\newcommand{\paperVersion}{v3M.0.26}
+\newcommand{\paperTimestamp}{September 19, 2026}
 
 \begin{document}
 
 \preprint{\paperVersion}
 
 \title{Multi-channel tests of the matter-bounce prediction $\fnlloc=-35/16$
-and a joint $(r,\fnlloc)$ no-go for single-field matter bounces}
+and a joint $(r,\fnlloc)$ no-go for single-field matter bounces at constant sound speed}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -53,7 +53,8 @@ in $c_s$: \emph{the single-field matter bounce, for the full $P(X)$
 $k$-essence class at constant sound speed, is jointly excluded by $r$
 and $\fnl$ here}; $r$ and the bounce term are exactly
 $\lambda$-independent (the cubic coefficient cancels by parity in the
-bounce window), the best case (DBI) giving $r_{\rm min}=12.6$. A
+bounce window), the best case (DBI) giving $r_{\rm min}=10.3$ on the
+same $95\%$ criterion. A
 time-dependent $c_s(\eta)$ is not covered. A curvaton-type spectator is
 $(r,n_s)$-viable but dilutes $-35/16$ by weight $(r/24)^2$, below a
 $1\sigma$ SPHEREx-class detection for every tensor-viable $r$; a
@@ -227,9 +228,9 @@ checked symbolically). Their three quoted amplitudes -- local $-35/8$, equilater
 $-255/64$, folded $-9/4$ -- are each exactly twice the corresponding limits of
 their own printed polynomial, in all three configurations. We locate the
 discrepancy between their printed shape function and their quoted amplitudes at
-this normalization step; this localizes the factor of two to Cai
-\textit{et al.}'s amplitude-conversion step downstream of their printed
-shape function, uniformly across their Eqs.~(38)--(41) and their Fig.~5 (all
+this normalization step; this localizes the factor of two to a point
+between their printed shape function and their quoted amplitudes,
+uniformly across their Eqs.~(38)--(41) and their Fig.~5 (all
 four printed configurations), where the printed shape function is
 \emph{effectively} converted to the quoted amplitude via
 $\fnlloc=(20/3)\mathcal{A}/\Sigma k^3$. Their printed shape
@@ -243,17 +244,19 @@ directly in their Eq.~5.1, which reduces to $-35/16$ at $c_s=1$. Li
 \textit{et al.} do not themselves comment on the discrepancy with Cai
 \textit{et al.}'s quoted amplitude; because their shape function (Eq.~4.19)
 agrees with Cai \textit{et al.}'s (Eq.~37) exactly, the localization above --
-a uniform factor-$2$ slip at Cai \textit{et al.}'s amplitude-conversion
-step -- is adjudicated directly from the two shape functions here, not a convention difference
-reported by either source. Quintin \textit{et al.}~\cite{Quintin2015}
+a uniform factor-$2$ slip between Cai \textit{et al.}'s printed shape
+function and their quoted amplitudes -- is adjudicated directly from the
+two shape functions here, not a convention difference
+reported by either source. Which of the two steps carries the factor
+cannot be decided from print alone. Quintin \textit{et al.}~\cite{Quintin2015}
 likewise quote $-35/16$ in the text following their cubic-action equation
 for $\mathcal L_3$, explicitly attributing it to Cai \textit{et al.} as a
 citation rather than an independent computation. Li \textit{et al.} already
 give an independent in-in re-derivation of the amplitude itself (Eq.~5.1);
 the present computation's novelty relative to theirs is not the amplitude
 number but the per-vertex attribution of it (the per-vertex table above) and
-the factor-of-two localization to Cai \textit{et al.}'s normalization step
-above, neither of which either published derivation provides.
+the factor-of-two localization above,
+neither of which either published derivation provides.
 
 \subsection{Cross-check by an independent classical route}
 \label{sec:crosscheck}
@@ -545,8 +548,7 @@ Numerical accuracy: the closed form for $\Delta\fnl^{\rm bounce}$
 reproduces the full in-in integral to $3\times10^{-4}$ and its $c_s=1$
 gate to $4\times10^{-6}$ on all three backgrounds, and the $T_{\fnl}$
 integrations are step-converged to $1.5\times10^{-8}$ or better
-(\texttt{lane\_b\_numerical}, \texttt{results.json} field
-\texttt{step\_convergence\_rel}), so every digit quoted here is stable.}
+(reproducibility statement below), so every digit quoted here is stable.}
 \begin{tabular}{lccc}
 \hline\hline
 background & $T_{\fnl}$ & $\Delta\fnl^{\rm bounce}$ & $\fnl^{\rm after}$ \\
@@ -568,10 +570,9 @@ for $k\eta_B\lesssim10^{-2}$ (set by the competing requirements that the
 post-bounce integral converge and the super-Hubble boundary treatment hold)
 and only within scheme S1.
 
-\textit{Scheme S2, resolved.}---The effective-fluid scheme S2's cubic
-bounce-window integral, previously reported divergent with no quoted
-number, is now shown to be finite: the divergence is an artefact of the
-standard
+\textit{Scheme S2.}---The effective-fluid scheme S2's cubic
+bounce-window integral is finite: its apparent divergence is an artefact
+of the standard
 integrated-by-parts (Maldacena/Chen) form of the cubic action, which
 introduces explicit $1/H$ factors singular exactly at the bounce; on the
 exact linear S2 mode functions the comoving-gauge lapse and shift,
@@ -591,9 +592,8 @@ bounce-plus-expansion cubic contribution is $+1.0$ (S2) against $-0.14$
 (S1), traced by an operator-by-operator decomposition to a
 geometric-versus-lapse cancellation rather than a single dominant vertex.
 S1 and S2 are therefore genuinely physically inequivalent continuations
-through $H=0$, not two regularizations of the same answer, and the paper's
-own previously stated open item -- whether the transmitted amplitude is
-scheme-independent -- is answered negatively: at $\fnlloc=-35/16$ the
+through $H=0$, not two regularizations of the same answer, and the
+transmitted amplitude is not scheme-independent: at $\fnlloc=-35/16$ the
 transmitted amplitude is reported as the two-scheme band
 $\fnl^{\rm after}\in[-1.25,-0.50]$ on the Quintin-type background (the S1
 range across all three backgrounds is $[-0.65,-0.50]$; S2 is evaluated only
@@ -612,12 +612,11 @@ Eq.~\eqref{eq:bounce_cubic}, sharing its sign (both enhance $|\fnl|$); the
 factor-of-two suppression identified above is the \emph{multiplicative}
 transmission of the inherited contraction amplitude, a quantity they do not
 compute, so the two statements are about different terms and are not in
-tension. The nonlinear channel is therefore no longer an unknown but a
-scheme-qualified prediction reported as a band; every use of
+tension. The nonlinear channel is therefore a scheme-qualified
+prediction reported as a band; every use of
 $\fnl^{\rm after}$ in this paper carries its scheme qualifier, and the
-unqualified statement that the bounce produces no orders-of-magnitude
-enhancement is addressed directly in Sec.~\ref{sec:transmission} rather
-than left open.
+absence of an orders-of-magnitude enhancement holds in both schemes
+(Sec.~\ref{sec:transmission}).
 The full vertex table, regularization-assumption note, numerical
 cross-check, and literature-comparison derivation are archived and
 referenced in the reproducibility statement below.
@@ -701,7 +700,9 @@ differently-conditioned cross-check, not directly comparable to it. The
 causal floor ($\gamma=2$, $\OmGW\propto f^3$, the universal IR bound
 discussed below in this section) is included as a comparator alongside
 the three physical hypotheses. All
-values reproduced from the committed chain (reproducibility statement below);
+values reproduced from the committed chain -- this lab's own $2026$-$05$-$01$
+reduction of the NANOGrav $15$-yr KDE free spectra, so ``reproduced'' means
+re-read from that chain, not re-sampled (reproducibility statement below);
 differences from a self-reproduction run of the same script against the same chain are $\le3\times10^{-15}$ (floating-point-level agreement, not an independent external check). $z_{\rm refit}$
 at $\gamma=5$ is a Gaussian approximation only: $0$ of $3.2\times10^5$ chain
 samples reach $\gamma\ge5$ (chain max $4.70$), so no data-supported Bayes
@@ -837,7 +838,7 @@ model's own $r_{\rm after}=24$ first-order tensor background of
 Sec.~\ref{sec:tensor} ($\OmGW^{(1)}h^2(f_{\rm yr})=1.7\times10^{-14}$,
 propagated with the same kernel), which is already excluded at $k_*$ by
 the same BICEP/Keck bound independently of any of the three channels. It
-remains $8$--$9$ orders of magnitude below NANOGrav's
+remains $10^{6.2}$ below NANOGrav's
 $2.622\times10^{-8}$, and its slope, $\gamma_{\rm pred}^{(1)}=5.035$, is
 within $0.04$ of the induced value, so Channel I is a null in both amplitude
 and slope whichever tensor order is compared
@@ -1023,24 +1024,32 @@ Gaussian-calibrated amplitude $A_*$ with no upper cutoff applied -- for
 representative points of the $(\Delta,r_pk_p,C_{\rm th})$ grid (full 27-point
 grid in the reproducibility statement's Channel~II artifacts; the
 headline $1.84\pm0.03$ below comes from the $144$-point in-coverage subset
-of the extended scan, \texttt{row11\_pbh\_residuals}, not from the
+of the extended scan (reproducibility statement below), not from the
 $27$-point grid). An extended $255$-point scan over
 $\gamma_{\rm cr}\in[0.196,0.968]$ (two spectrum-shape families) gives
 $1.83\pm0.05$ overall (range $[1.61,1.91]$); restricted to
 $\gamma_{\rm cr}\in[0.267,0.630]$, the interval this model's own
 near-scale-invariant spectrum shape occupies, the ratio is
-$\mathbf{1.84\pm0.03}$ ($144$ points, range $[1.76,1.89]$); on the
+$\mathbf{1.84\pm0.03}$ ($144$ points, range $[1.76,1.89]$; $78$
+lognormal and $66$ power-law shapes whose $\gamma_{\rm cr}$ falls in that
+interval, the power-law family alone giving $1.839\pm0.031$); on the
 original $27$-point committed grid ($\gamma_{\rm cr}\in[0.766,0.968]$) it
 is $1.732\pm0.050$ (range $[1.610,1.809]$) and must not be quoted as
-universal. The ratio decreases monotonically, with a slope of
-$\sim0.13$ per unit $\gamma_{\rm cr}$ across the 255-point scan, so the
-abstract's $1.84\pm0.03$ is a shape-resolved
-scan result, not a union of a scan and an out-of-coverage point. The
-$\gamma_{\rm cr}\lesssim0.8$ rows below (\emph{non-perturbative branch};
+universal. The ratio decreases with $\gamma_{\rm cr}$ at fixed
+spectrum family and $C_{\rm th}$ (ordinary-least-squares slope $-0.20$ per
+unit $\gamma_{\rm cr}$ over the 255-point scan and $-0.20$ over the $144$
+in-window points) and rises by $\simeq+0.03$ per $+0.1$ in
+$C_{\rm th}$, so it is not monotonic across the union of families and
+thresholds. The abstract's $1.84\pm0.03$ is therefore a shape-resolved
+scan result, not a union of a scan and an out-of-coverage point. Each row is evaluated at its own labeled
+$(\Delta,r_pk_p,C_{\rm th})$ with its own Gaussian calibration; the
+per-row $A_*$ are $0.1687$, $0.1054$, $0.1314$, $0.3790$, $0.0963$
+(reproducibility statement below). Any entry with $\fpbh>1$ -- including
+the $\gamma_{\rm cr}\lesssim0.8$ rows (\emph{non-perturbative branch};
 $1.2|\fnl|\sigma_r\approx0.5$--$2$, i.e.\ $O(\epsilon)\sim1$ where the
 linearized criterion above is not controlled, IR-cutoff-dependent per
-the text) report $\fpbh>1$ as \emph{uncapped ratios} at the per-point
-Gaussian-calibrated $A_*$, not physical probabilities. The
+the text) -- is an \emph{uncapped ratio} at that $A_*$, not a physical
+probability. The
 sign disagreement with Choudhury \textit{et al.} is resolved above:
 negative $\fnl$ suppresses the abundance, as they
 report (reproducibility statement below).}
@@ -1048,11 +1057,11 @@ report (reproducibility statement below).}
 \begin{tabular}{ccccccc}
 $\Delta$ & $r_pk_p$ & $C_{\rm th}$ & $\gamma_{\rm cr}$ & $\fpbh(-35/16)$ & $\fpbh(-35/8)$ & ratio $A$ \\
 \colrule
-$0.35$ & $0.75$ & $0.5$ & $0.897$ & $5.8\times10^{-21}$ & $4.5\times10^{-7}$ & $1.767$ \\
+$0.35$ & $0.75$ & $0.5$ & $0.897$ & $1.7\times10^{-11}$ & $1.0$ & $1.767$ \\
 $0.35$ & $1.5$  & $0.5$ & $0.968$ & $5.3\times10^{-107}$ & $7.0\times10^{-59}$ & $1.673$ \\
 $0.50$ & $1.0$  & $0.5$ & $0.888$ & $3.6\times10^{-14}$ & $1.6\times10^{-2}$ & $1.734$ \\
-$0.80$ & $0.75$ & $0.6$ & $0.766^{\dagger}$ & $3.5\times10^{3}$   & $2.2\times10^{8}$  & $1.809$ \\
-$0.80$ & $1.5$  & $0.4$ & $0.857$ & $5.8\times10^{-9}$  & $1.6\times10^{1}$  & $1.677$ \\
+$0.80$ & $0.75$ & $0.6$ & $0.766^{\dagger}$ & $9.5\times10^{5}$   & $6.6\times10^{9}$  & $1.809$ \\
+$0.80$ & $1.5$  & $0.4$ & $0.857$ & $1.9\times10^{-14}$ & $3.2\times10^{-3}$ & $1.677$ \\
 \colrule
 \multicolumn{6}{l}{\footnotesize mean ratio $1.732\,[1.610,1.809]$, std $0.050$, $n=27$} & \\
 \multicolumn{6}{l}{\footnotesize $^{\dagger}$non-perturbative: $\fpbh{>}1$ uncapped} & \\
@@ -1122,7 +1131,7 @@ $k\sim10^{15}$--$10^{16}\,{\rm Mpc}^{-1}$) needs $a_BH_B\gtrsim10^{17}$--$10^{18
 Mpc}^{-1}$, i.e.\ a bounce temperature $T_B\gtrsim6\times10^{9}$--$6\times10^{10}\,$GeV
 (using $k_B\simeq1.71\times10^{7}\,T_B[{\rm GeV}]\,{\rm Mpc}^{-1}$,
 the committed in-lab spectrum) --
-thirteen decades above the BBN scale ($\sim1\,$MeV); a scale-independent transfer with $T_{\fnl}<1/2$ cannot by
+thirteen to fourteen decades above the BBN scale ($\sim1\,$MeV); a scale-independent transfer with $T_{\fnl}<1/2$ cannot by
 itself close the $7$-decade amplitude shortfall found below, so this
 condition, while formally required, does not affect the null verdict. On
 this shape, inside the model's own $\gamma_{\rm cr}\in[0.267,0.630]$
@@ -1148,13 +1157,13 @@ neither constrains nor is evidenced by primordial black holes, and any
 quotable PBH signal would require a small-scale amplification mechanism the
 model does not contain -- a survey of four such candidate
 mechanisms~\cite{Quintin2015,AgulloBolliet2017} finds none applies within the
-model's validated ($k\eta_B\lesssim10^{-2}$) domain, and this is no longer
-only a literature survey: at $k\eta_B\approx3$ (an illustrative bounce
+model's validated ($k\eta_B\lesssim10^{-2}$) domain, and the survey is
+supplemented by a direct evaluation: at $k\eta_B\approx3$ (an illustrative bounce
 energy \emph{below} \S\ref{sec:pbh_compaction}'s validity condition,
 $T_B=10^8\,$GeV, $k_B\approx1.714\times10^{15}\,{\rm Mpc}^{-1}$, so
 $k\approx5.1\times10^{15}\,{\rm Mpc}^{-1}$,
 inside this paper's own PBH band), the extreme small-scale
-end of the PBH band, the scheme-S1 bispectrum has now been evaluated
+end of the PBH band, the scheme-S1 bispectrum is evaluated
 directly on exact (non-super-Hubble) LQC-dust mode functions
 (Sec.~\ref{sec:transmission}) and gives $|\fnl|\approx0.9$--$1.9$, which
 \emph{worsens} rather than relieves the required Gaussian excursion
@@ -1414,7 +1423,7 @@ $r=24c_s$ is exactly $\lambda$-independent), and its $\dot\zeta^3$ vertex
 in the bounce window is odd in conformal time about the symmetric bounce
 and cancels identically in the S1 in-in integral (verified to
 $2.8\times10^{-7}$ across $\lambda/\Sigma\in[-1,1]$, the
-matter-contraction line, and the DBI line; \texttt{row19\_lambda},
+matter-contraction line, and the DBI line;
 reproducibility statement below), so Eq.~\eqref{eq:bounce_cubic_cs} also
 holds for any $\lambda$.
 $\fnl^{\rm pre}(c_s)$
@@ -1471,7 +1480,7 @@ Sec.~\ref{sec:pbh_compaction}, $1.2|\fnl|\zeta_{\rm rms}\le1$ with
 $\zeta_{\rm rms}=\sqrt{A_s}=4.6\times10^{-5}$, gives
 $|\fnl^{\rm after}|\le1.8\times10^{4}$ and hence a floor
 $c_s\gtrsim0.073$--$0.079$ across the three backgrounds
-(\texttt{r9\_perturbativity}, reproducibility statement below). At
+(reproducibility statement below). At
 $c_s=1.5\times10^{-3}$ the formal value of $\fnl^{\rm after}$ is
 $\sim10^{11}$, but that is $6.9$ decades past the criterion and is
 reported here only as the formal continuation of
@@ -1522,10 +1531,18 @@ untouched (Sec.~\ref{sec:bounce_cubic}); note that on both physical
 lines $\Lambda\propto1/c_s^2$, so the shift is constant in \emph{shape},
 not in $c_s$. Scanning $\Lambda\in[-1,1]$ together with the
 matter-contraction line $\Lambda=(1-c_s^2)/(6c_s^2)$ and the DBI line
-$\Lambda=(1-c_s^2)/(2c_s^2)$, the best case is the DBI line, giving
-$r_{\rm min}=12.57$ at $c_s=0.524$ ($349\times$ BICEP/Keck). Cancelling
+$\Lambda=(1-c_s^2)/(2c_s^2)$ -- under the same Planck $95\%$ criterion
+$|\fnl^{\rm after}|\le9.3$ as Table~\ref{tab:nogo} and across all three
+backgrounds of Table~\ref{tab:s1_after} -- the best case is the DBI line
+on the LQC-effective-dust background, giving $r_{\rm min}=10.3$ at
+$c_s=0.430$ ($286\times$ BICEP/Keck); on the $68\%$ edge
+$|\fnl^{\rm after}|\le4.2$ it is $r_{\rm min}=11.9$ at $c_s=0.494$, and
+the best constant $\Lambda$ reaches only $r_{\rm min}=11.7$ at $95\%$.
+Every window number in this section carries the criterion and background
+set it was computed under (reproducibility statement below). Cancelling
 the $1/c_s^2$ growth of Eq.~\eqref{eq:fnlpre_general} outright would
-require $\Lambda=7/(16c_s^2)$, i.e.\ a sound-speed running
+require $\Lambda=7/(16c_s^2)$, which by Li \textit{et al.}'s
+Eq.~(A.19)~\cite{Li2016} corresponds to a sound-speed running
 $s\equiv\dot c_s/(Hc_s)=39/16$, far outside the $|s|\ll1$ regime under
 which the amplitude being cancelled is derived. \emph{The single-field
 matter bounce, for the full $P(X)$ $k$-essence class at constant sound
@@ -1533,13 +1550,11 @@ speed ($s=0$), is therefore excluded jointly by $r$ and $\fnl$ on the
 backgrounds and channels used in this paper, independently of the cubic
 coefficient $\lambda$}; a time-dependent $c_s(\eta)$ lies outside the
 present computation, which evaluates every vertex at fixed $c_s$
-(\texttt{row19\_lambda}, \texttt{results.json} field \texttt{scheme}).
-This
-sharpens, rather than contradicts, the paper's earlier statements: the
-exact amplitude $-35/16$ and its transmitted values remain correct
-statements about this background, but that background is now shown to
-be observationally excluded on tensor grounds independent of $\fnl$
-itself, and no sound-speed fix rescues it.
+(reproducibility statement below).
+The exact amplitude $-35/16$ and its transmitted values remain correct
+statements about this background; the background itself is excluded on
+tensor grounds independent of $\fnl$, and no sound-speed choice
+rescues it.
 
 A route that survives is a light curvaton-type spectator riding the
 same contraction. Because it obeys the same Mukhanov--Sasaki operator
@@ -1562,7 +1577,8 @@ bispectrum suppressed by the curvaton weight $(r/24)^2\simeq2\times10^{-6}$
 at $r=0.036$. Taking a $1\sigma$ SPHEREx-class threshold
 $\sigma_{\fnl}\simeq0.5$ as the detectability criterion, the diluted
 intrinsic term clears it only for $r>11.5$ before the bounce transfer,
-or $r>23$ after it -- the threshold on $r$ moves, not $r$ itself, which
+or $r>21$--$24$ after it (the S1 band of
+Table~\ref{tab:s1_after}) -- the threshold on $r$ moves, not $r$ itself, which
 is unchanged through the bounce in S1 (Sec.~\ref{sec:tensor}). Both
 values are far above the tensor-viable $r<0.036$ and bracket the
 single-field $r=24$ this section excludes, so the intrinsic amplitude is
@@ -1652,11 +1668,11 @@ output, and does not by itself separate $-35/16$ from $-35/8$ observationally
 shown to be strongly non-monotonic along the path to both candidates on the
 earlier lognormal grid (Sec.~\ref{sec:pbh_compaction}). The transmission
 result is scheme-qualified and validated only for $k\eta_B\lesssim10^{-2}$;
-scheme-independence, previously an open question, is now answered
-negatively rather than left unresolved: the effective-fluid scheme S2,
-evaluated on its raw (pre-integration-by-parts) cubic action with exact
-mode functions, is finite -- the earlier ``S2 diverges'' statement traced
-to a total-derivative artefact, not a physical pathology -- but gives
+the transmitted amplitude is not scheme-independent: the effective-fluid
+scheme S2, evaluated on its raw (pre-integration-by-parts) cubic action
+with exact mode functions, is finite -- its apparent divergence in the
+integrated-by-parts form is a total-derivative artefact, not a physical
+pathology -- but gives
 $\fnl^{\rm after}\approx-1.25$ on the one background tested (Quintin-type),
 a factor $\approx2.5$ from S1's $-0.50$ on the same background
 (Sec.~\ref{sec:bounce_cubic}). The transmitted amplitude is therefore
@@ -1734,10 +1750,10 @@ through deflation and bounce remains un-re-derived by this lab; and
 (Sec.~\ref{sec:tensor}) is a surviving, in-principle discriminator of this
 class of background from single-field inflation independent of the
 $(r,\fnl)$ no-go, worth a dedicated forecast. The general-$P_{XXX}$
-coefficient $\lambda$ is no longer an open item: Sec.~\ref{sec:bounce_cubic}
+coefficient $\lambda$ does not weaken the result: Sec.~\ref{sec:bounce_cubic}
 shows $r=24c_s$ and $\Delta\fnl^{\rm bounce}(c_s)$ are exactly
 $\lambda$-independent, so the no-go holds for the full $P(X)$ class
-(row19\_lambda, reproducibility statement below).
+(reproducibility statement below).
 
 %======================================================================
 \appendix
@@ -1881,8 +1897,7 @@ not close this gap. An independent exact separate-universe solution reproduces
 both $-55/16$ (uniform-density slice) and $-5$ (comoving slice) for all
 $\epsilon$, so the uniform-density $\delta N$ value is itself well-defined, not
 an evolution-step artifact; the gap $5(6-\epsilon)/24$ is closed, per an independent
-adjudication
-(\texttt{research/theory\_audit/}\allowbreak\texttt{a2\_lapse\_monopole\_adjudication\_2026\_09\_07.md}),
+adjudication (reproducibility statement below),
 by correcting the composition weight on the second-order curvature perturbation from
 $\lambda'=2\lambda$ to $3\lambda$: the threading map's long$\times$short lapse monopole
 coefficient $A_2=\epsilon(3-\epsilon)^2/3$ (this map) is the correct constraint-solve
@@ -1911,9 +1926,9 @@ including \texttt{fnl\_monopole\_adjudication\_}\allowbreak\texttt{2026\_09\_03.
 in the first (Appendix~\ref{app:derivation}). A branch pointer is used
 deliberately: several of the artifacts below postdate any single earlier
 commit, so no one historical hash resolves to all of them. The immutable
-pointer for this manuscript is the frozen-release DOI to be minted at
-submission (see the end of this statement); until then the branch tree is the
-pointer that is guaranteed to resolve. The ledger-row-9 (D-A3-9)
+pointer for this manuscript is the frozen-release DOI that will be
+deposited at publication (see the end of this statement); the branch trees
+above are the pointers guaranteed to resolve in the meantime. The ledger-row-9 (D-A3-9)
 mechanisms of Sec.~\ref{sec:transmission} and the S2 resolution of
 Sec.~\ref{sec:bounce_cubic} are under
 \texttt{research/cubic\_bounce\_transmission/}: \texttt{lane9a\_velocity\_dip/}
@@ -1942,10 +1957,20 @@ Sec.~\ref{sec:nogo} (the $c_s$ floor at which
 $1.2|\fnl^{\rm after}|\zeta_{\rm rms}=1$, and the $68\%/95\%$ Planck edges
 of Table~\ref{tab:nogo}) is at
 \texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{r9\_perturbativity/}
-(\texttt{r9\_perturbativity.py}, \texttt{results.json},
-\texttt{r9\_perturbativity.log}); it reproduces the $68\%$ boundary
+(\texttt{r9\_perturbativity.py}, \texttt{results.json}); it reproduces the $68\%$ boundary
 $c_s\ge0.624/0.632/0.627$ quoted in Sec.~\ref{sec:nogo} as an independent
-check. The step-convergence figures quoted in
+check. The criterion-explicit $\Lambda$-line window minima of
+Sec.~\ref{sec:nogo} (the Planck $95\%$ and $68\%$ edges for the DBI,
+$P\propto X^n$ and $\Lambda=0$ lines on all three backgrounds) are at
+\texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{r10\_window\_criterion/}
+(\texttt{r10\_window\_criterion.py}, \texttt{results.json}), and the
+per-row evaluation of Table~\ref{tab:pbh} at its own labeled
+$(\Delta,r_pk_p,C_{\rm th})$ with per-row Gaussian calibration is at
+\texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{r10\_tableV\_recompute/}
+(\texttt{r10\_tableV\_recompute.py}, \texttt{results.json}), together with the
+measured ratio trends quoted above -- the ordinary-least-squares slope in
+$\gamma_{\rm cr}$, the $C_{\rm th}$ step, and the family composition of the
+$144$-point subset -- in \texttt{r10\_ratio\_slope.py}, \texttt{ratio\_slope.json}. The step-convergence figures quoted in
 Table~\ref{tab:s1_after}'s caption are in
 \texttt{research/cubic\_bounce\_transmission/}\allowbreak\texttt{lane\_b\_numerical/}
 (\texttt{results.json}). The bounce-to-local shape
@@ -1984,10 +2009,9 @@ run date of the reduction, not the underlying NANOGrav release date)
 \texttt{476f87a78927f4f3610fc}),
 derived from the NANOGrav 15-yr KDE free
 spectra, Zenodo \texttt{10.5281/zenodo.8060824}. This work's own code and
-artifacts are referenced by the branch trees above rather than by a
-frozen-release DOI of their own; minting that DOI -- and re-pointing this
-statement at it -- is a maintainer action required at the packaging stage,
-before submission. The exact-amplitude theory lineage this
+artifacts are referenced by the branch trees above; a frozen-release DOI
+covering them will be deposited at publication.
+The exact-amplitude theory lineage this
 paper builds on is archived at Zenodo \texttt{10.5281/zenodo.21461881}. The
 DESI DR1 QSO reproduction of Sec.~\ref{sec:lss} is committed at
 \texttt{research/desi\_png\_reproduction/}, manifest
@@ -2005,7 +2029,7 @@ adjudication is at
 \texttt{research/theory\_audit/}\allowbreak\texttt{curvaton\_matter\_bounce\_}\allowbreak\texttt{adjudication\_2026\_09\_04.py};
 the PBH sign-correction and extended
 $\gamma_{\rm cr}$ scan of Sec.~\ref{sec:pbh_compaction} (ledger row 11),
-including \texttt{outputs/r11\_pbh\_residuals.json}, is at
+including \texttt{results/}\allowbreak\texttt{row11\_gammacr\_extension.json}, is at
 \texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{row11\_pbh\_residuals/};
 and the
 Appendix~\ref{app:derivation} threading-map identity is at
@@ -2013,8 +2037,11 @@ Appendix~\ref{app:derivation} threading-map identity is at
 \texttt{2026\_09\_04.py}, each with a manifest under
 \texttt{reproducibility/manifests/experiments/}.
 Every computation reported in
-this paper ran on a local CPU (Apple M5, 24\,GB, macOS 26.5) at zero compute
-cost; the PTA/PBH/reach/injection channels ran in under $6\,$s total. Compute venue,
+this paper ran on a single laptop CPU at zero compute
+cost. Wall-clock times: pulsar timing $0.02\,$s, survey reach $0.002\,$s,
+induced-GW spectrum $2.7\,$s, in-lab curvature spectrum $49\,$s, PBH
+compaction grid $215\,$s, and the extended $\gamma_{\rm cr}$ scan
+$1283\,$s. Compute venue,
 wall-clock time, and external data sources are recorded per-experiment in the
 manifests cited above.
 

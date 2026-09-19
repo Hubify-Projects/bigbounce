@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.25",
+      version: "v3M.0.26",
       readiness: 75,
-      pendingWork: "R9 INT board (first since the directive-R2 stop was lifted by ledger row 19 / D-A3-14): Grok REJECT, Gemini minor-revisions, Claude Fable 5.1 major-revisions on exact v3M.0.24. Truth-audit: 24 genuinely-new-real (3 MAJOR + 1 MAJOR-lite), 14 falsified with source citations. All closed in v3M.0.25 -- reproducibility pin resolved to a commit holding none of the cited artifacts; Eq. (15) misattributed and double-counting lambda; the 10^11 f_NL figure printed without noting tree-level control expires 6.9 decades earlier (new committed computation r9_perturbativity supplies the floor). Readiness 75 COMPUTED; the one confirmation board permitted by R2 is the remaining gate before the convergence gate can be claimed."
+      pendingWork: "R10 confirmation board (Grok REJECT, Gemini MAJOR REVISIONS, Claude Fable 5.1 INT referee MAJOR REVISIONS on the exact v3M.0.25 PDF; the Gemini and Fable legs were re-run because the prior session left no raw) DID NOT CONFIRM: 17 genuinely-new-real findings, 4 of them MAJOR -- Table V's f_PBH columns were not evaluated at their own row labels, the DBI window minimum used an unstated criterion on one background (corrected against the paper, r_min 12.6 -> 10.3, 286x BICEP/Keck), p.8 and p.13 gave the same tensor amplitude incompatible shortfalls, and two reproducibility citations resolved to nothing. All 17 closed in v3M.0.26 with two new committed computations; 15 further findings falsified with source citations. No physics error in either round. Directive R2 budget SPENT -- rounds stopped; a scope decision from the director is required before any further board. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, and mint the frozen-release DOI."
     },
     {
       slug: "paper-3",

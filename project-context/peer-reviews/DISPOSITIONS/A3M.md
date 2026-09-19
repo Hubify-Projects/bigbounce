@@ -991,3 +991,136 @@ disposition that closed it with a quantified factor-2.55 footnote.
 R9 closed ≥1 real item, so **one confirmation board is permitted and is the remaining gate**;
 it must run on the exact v3M.0.25 PDF. Readiness stays at the computed cap **75** until that
 board returns 0 genuinely-new-real.
+
+---
+
+## R10 CONFIRM — v3M.0.25 (2026-09-18/19), exact PDF sha256 `c5fe8889…`, md5 `d46166cb…`, 20 pp
+
+The one confirmation board directive R2 permits after R9. **It did not confirm.** Board legs on
+the exact v3M.0.25 PDF: Grok `grok-4.3` **REJECT**, Gemini `gemini-3.1-pro-preview` **MAJOR
+REVISIONS**, Claude Fable 5.1 INT referee (verdict-blind cold read) **MAJOR REVISIONS** —
+0 ESSENTIAL / 4 MAJOR / 9 MINOR / 5 NIT / 6 verification requests. No leg FAILED; the Gemini and
+Fable legs had no raw on disk when this lane started and were **re-run**, not back-filled.
+Raws: `../ROUND_2026-09-18-A3M-v3M.0.25-EXACTPDF-c5fe8889-R10CONFIRM_A3M_{Grok_brutal,Gemini_cosmology}.md`
+and `../INT_v3/A3M_v3M.0.25_R10_claude_fable_2026-09-19.md`. Full audit:
+`../INT_v3/A3M_v3M.0.25_R10_TRUTH_AUDIT_2026-09-19.md`.
+
+**17 GENUINELY-NEW-REAL** (4 MAJOR, 1 MAJOR-lite, 12 minor/nit), **15 FALSIFIED** each with a
+source citation, **5 RE-FLAG-OF-DISCLOSED**, **4 OPINION/GENRE**, 2 carried to D-round/proof.
+**Clean-wave count: 0.** All 17 closed in v3M.0.26.
+
+### New OPEN items (MAJOR) — all CLOSED in v3M.0.26
+- **`DA3M-R10-06`: Table V's `f_PBH` columns were not evaluated at the rows' own labels.**
+  Rows 4–5 carried `C_th = 0.5` values under `C_th = 0.6/0.4` labels (`pbh_compaction_fnl.py:417-427`
+  computes `gamma_cr_sensitivity` at `C_TH_BASE = 0.5` for every point); row 1 carried
+  `calibrated_amplitude_comparison["C_th=0.4"]`, the (0.5, 1.0, 0.4) baseline. Re-evaluated at
+  the labeled points in the new committed `r10_tableV_recompute/`: row 1 → 1.7e-11 / 1.0,
+  row 4 → 9.5e5 / 6.6e9, row 5 → 1.9e-14 / 3.2e-3; rows 2–3 unchanged. The ratio column and the
+  n=27 footer are correct and untouched; every qualitative claim survives. Per-row `A_*` added.
+  Fingerprint: Table V f_PBH columns, labeled grid point mismatch, C_TH_BASE 0.5, gamma_cr_sensitivity, calibrated_amplitude_comparison C_th=0.4, per-row A_star.
+- **`DA3M-R10-07`: the DBI "best case `r_min = 12.6`" used an undeclared criterion on one background.**
+  `row19_lambda.py:46,200` tests `|f_after| <= 5.1` (Planck 1σ) on the Quintin-type background
+  only, while Table VII and the adjacent abstract number use the 95% upper edge 9.3 over three
+  backgrounds — two criteria and two Λ lines colliding at 12.6. Recomputed on a common criterion
+  (new committed `r10_window_criterion/`): DBI at 95% gives **r_min = 10.3 (LQC, 286× BK18)**,
+  at 68% 11.9; the P∝X^n line at 95% gives 12.60, reproducing Table VII exactly. The correction
+  moves the headline **against** the paper and is printed that way. Fable m6 closes with it.
+  Fingerprint: DBI best case, r_min 12.57 vs 10.3, PLANCK_1SIG 5.1 vs 95% edge 9.3, undeclared criterion, Quintin-only Lambda scan.
+- **`DA3M-R10-08`: the same tensor amplitude given two incompatible shortfalls.** p. 8 said the
+  r_after=24 first-order tensor (1.7e-14) is "8–9 orders below" NANOGrav's 2.622e-8; p. 13 said
+  10^6.2 for the same pair. log10(2.622e-8/1.70e-14) = 6.19 — the 8–9 is the tensor-vs-*induced*
+  ratio (correctly given as 9.1 decades in the same sentence), comparator slipped. Fixed on p. 8.
+  Fingerprint: 8-9 orders vs 10^6.2, 1.7e-14, NANOGrav 2.622e-8, comparator slip.
+- **`DA3M-R10-09`: reproducibility citations that cannot resolve.** (c) `r9_perturbativity.log`
+  is matched by `.gitignore: *.log` and has never been committed — citation dropped;
+  (d) `outputs/r11_pbh_residuals.json` exists on no branch (the real artifact is
+  `row11_pbh_residuals/results/row11_gammacr_extension.json`) — path corrected; this is also
+  where `DA3M-R9-20`'s re-cite landed on a non-existent name. (a) `origin/main` is behind this
+  lane, so the branch-tree pointers resolve to an older PDF for external readers — a **PUSH GATE**
+  for the director, recorded open, not closed by an edit.
+  Fingerprint: r9_perturbativity.log gitignored, outputs/r11_pbh_residuals.json absent, origin/main behind.
+
+### New OPEN item (MAJOR-lite) — CLOSED in v3M.0.26
+- **`DA3M-R10-01`: drafting-history / self-referential revision prose survived (directive Q1).**
+  Seven instances (`main.tex:572, 592-595, 615-620, 1151+1157, 1537-1541, 1655-1659, 1737`).
+  `DA3M-R9-04` had closed one parenthetical; the closure was scoped to that instance, not the
+  pattern. The "S2 diverges" statement referred to is this lab's own earlier finding
+  (`lane9b_s2_regulation/LANE9B_S2_REGULATION_2026-09-04.md:12,139,153`), not the literature, so
+  no attribution is lost. All rewritten to state the conclusion directly.
+  Fingerprint: drafting history, previously reported, now shown, no longer an open item, S2 diverges statement, directive Q1.
+
+### Minor/nit OPEN items — all CLOSED in v3M.0.26
+`R10-02` seven raw artifact paths/JSON keys still in BODY text (residual of `DA3M-R9-05`; two of
+them *introduced* by the R9 closure) · `R10-03` the reproducibility statement contained an
+instruction to ourselves ("minting that DOI … is a maintainer action required at the packaging
+stage") — rewritten as a data-availability sentence · `R10-04` `s = 39/16` printed with a bare
+"i.e." — the value is computed (`row19_lambda.py:60`, Li+2016 Eq. (A.19)) and independently
+re-derived here, so the defect was the missing citation, now printed · `R10-05` the **title**
+claimed the no-go without the constant-sound-speed scope the abstract and body carry (same class
+as `DA3M-R9-02` at a new location) — title now ends "at constant sound speed" · `R10-10` the
+printed ratio slope "~0.13 per unit γ_cr" vs the measured OLS **−0.20** (255-pt and 144-pt), and
+"monotonically" scoped to fixed family and C_th (+0.03 per +0.1 in C_th) · `R10-11` the 144-point
+subset's composition stated (78 lognormal + 66 power-law; power-law alone 1.839±0.031) ·
+`R10-12` "the PTA/PBH/reach/injection channels ran in under 6 s total" was false (PBH grid alone
+215 s, γ_cr scan 1283 s) — true per-channel wall-clock list printed · `R10-13` the factor-of-two
+attribution softened from "at Cai et al.'s amplitude-conversion step" to "between their printed
+shape function and their quoted amplitudes", with the undecidability from print stated ·
+`R10-14` "thirteen decades above BBN" → "thirteen to fourteen" · `R10-15` curvaton "r > 23 after
+it" → the S1 band "r > 21–24" · `R10-16` Table IV caption states the chain is this lab's own
+2026-05-01 reduction, so "reproduced" means re-read, not re-sampled · `R10-17` hardware string
+dropped from the reproducibility statement.
+
+### FALSIFIED this round (do NOT re-open without new evidence)
+Grok **E3** (the factor-2 resolution is *not* a normalization step of ours: `main.tex:223-232`
+reads Cai's own printed Eq. (37) and finds Cai's own quoted amplitudes are each exactly twice
+its limits, checked symbolically — the Fable leg re-derived this independently from the e-print;
+the "from-scratch" sub-claim is the already-falsified `R9-E4` fingerprint, novelty narrowed at
+`:250-256`) · **E4** (`tab:pta` caption `:699-700` carries "not directly comparable" verbatim —
+second falsification, `R9-E6`) · **E7(b)** (the manuscript itself states the DOI is not yet
+minted) · **E7(c)** (the only 40-hex token is the NANOGrav chain's SHA-256, not a commit hash;
+the pin was removed at R9) · **M4** (`:805-806` prints γ = 5.070 and 5.000 as a labelled dust
+bracket; caption `:871` prints both — second falsification, `R9-M3`) · **M5** (`:1170-1172`
+computes the model's own μ = 1.65e-8 = 1.8e-4 of the FIRAS bound; the SMBH-seed statement is the
+*required* amplitude) · **m1** (true compile date — third falsification) · **m2** (all 23 uses of
+"exactly" are exact; `:900` says "not exactly 2" where it isn't) · **m3** (`tab:s1_after`'s
+caption `:541-543` states the S2 scheme and non-comparability; `:600-606` gives the real reason —
+not bounce-localised, not divergence) · **n1** ("matter-bounce scenario" and "matter contraction"
+are distinct defined objects, `:76-77`) · **n2** (f_PBH is dimensionless; `pbh_compaction_fnl.py:608`)
+· **n3** (`:2151` prints "Astron. Astrophys. **641**, A9 (2020)" — the volume is there).
+Gemini **N1** (49× and r ≃ 1.8 are the same computed quantity, `r9_perturbativity/results.json →
+backgrounds/lqc/r_at_floor = 1.7620`; 1.7620/0.036 = 48.9) · Gemini **M2's "uncomputed" framing**
+(computed in `row19_lambda.py:60` and re-derived here). Fable **n5** (`:392-393` already reads
+"0 ≤ T < 1/2 since ρ ∈ (0,1]").
+
+### RE-FLAG-OF-DISCLOSED (no edit)
+Grok **E5** (the 1.61–1.91 range is the paper's own printed 255-point range `:1029`, and the
+headline's scope, grid and "must not be quoted as universal" are stated at `:977,982,1023-1038`)
+· Grok **E6** (`DA3M-03` class: transmission is *reported* scheme-qualified, both values printed,
+abstract `:40-42`) · Grok **M2** (the kη_B window is quantified at `:431-492`, incl. the scan over
+[0.1,10]; the constant-c_s restriction is the `DA3M-R9-02` disclosure) · Grok **M3** (`:769-778`
+states "what this establishes is *bias*, not *coverage*" in the paper's own words — `R9-21`) ·
+Fable **m2** (Ω_DM = 0.674 retained for comparability with Choudhury et al.'s printed Eq. (66),
+with the quantified 2.55 footnote — re-flag of the R5 disposition, same as the R9 Fable minor-13).
+
+### OPINION/GENRE (venue pass only)
+Grok **E2** (no PRD rule against a contribution sentence in an abstract) · Grok **E7(a)** (remove
+the reproducibility statement — contradicts PRD data-availability practice and directive Q2) ·
+Grok **M1** (20 pp "excessive" — no PRD page cap, second time, `R9-M4`) · Fable **n2** (inline
+parenthetical inside a numbered display — style preference).
+
+### Carried, not closed
+- Fable **n1**: Fig. 1's ~5 pt legend/tick labels — real, needs the figure regenerated →
+  **D-round** (`/paper-design-round`).
+- Fable **n4**: check refs [19]/[20] for journal references → **proof stage / P-round**.
+- Fable's **6 verification requests**: recorded in the raw; none asserts a defect and none is
+  closed by an edit (`/never-fabricate-derivation`).
+- **Frozen-release DOI** — unminted; a P-round/maintainer action.
+- **PUSH GATE** (`DA3M-R10-09(a)`) — `origin/main` must carry this manuscript before the
+  reproducibility statement's branch pointers are true for external readers.
+
+### R2 status — BUDGET SPENT
+R9 + R10 are two consecutive boards. **No further board on A3M without an intervening science or
+scope decision** (directive R2); that decision belongs to the director. Readiness stays at the
+**COMPUTED** cap 75: the automated-review-convergence gate of directive P is not met — the last
+board found 17 real items, and v3M.0.26 has not been reviewed by anything. **No cap-95
+recommendation is made on this evidence.**

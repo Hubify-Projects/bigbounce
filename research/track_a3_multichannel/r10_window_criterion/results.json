@@ -1,0 +1,231 @@
+{
+  "task": "A3M R10: (r, f_NL) window minima with an explicit criterion",
+  "equations": {
+    "f_pre": "-245/16 + 105/(8 cs^2) - 30 Lambda",
+    "d_f_bounce": "-(5/24) rho_B (6 cs^2 - 5)/cs^4",
+    "r_of_cs": "24 cs"
+  },
+  "T_fNL_per_background_TableIII": {
+    "quintin": 0.165,
+    "lqc": 0.25,
+    "poly": 0.196
+  },
+  "criteria": {
+    "planck_95_upper": 9.3,
+    "planck_68_upper": 4.2,
+    "planck_1sigma": 5.1
+  },
+  "results": {
+    "planck_95_upper": {
+      "DBI": {
+        "line": "Lambda = (1-c_s^2)/(2 c_s^2)",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.4676166862932125,
+            "r_min": 11.2228004710371,
+            "r_min_over_BK18": 311.74445752880837
+          },
+          "lqc": {
+            "c_s_min": 0.42948697740281777,
+            "r_min": 10.307687457667626,
+            "r_min_over_BK18": 286.32465160187854
+          },
+          "poly": {
+            "c_s_min": 0.4547157530010859,
+            "r_min": 10.913178072026062,
+            "r_min_over_BK18": 303.1438353340573
+          }
+        },
+        "best_background": "lqc",
+        "r_min_overall": 10.307687457667626
+      },
+      "P_propto_X_n": {
+        "line": "Lambda = (1-c_s^2)/(6 c_s^2)  [Li+2016 Eq. (A.20)]",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.5251459252199697,
+            "r_min": 12.603502205279273,
+            "r_min_over_BK18": 350.09728347997986
+          },
+          "lqc": {
+            "c_s_min": 0.5261262856429534,
+            "r_min": 12.627030855430881,
+            "r_min_over_BK18": 350.7508570953023
+          },
+          "poly": {
+            "c_s_min": 0.5254846084769571,
+            "r_min": 12.61163060344697,
+            "r_min_over_BK18": 350.3230723179714
+          }
+        },
+        "best_background": "quintin",
+        "r_min_overall": 12.603502205279273
+      },
+      "Lambda_0": {
+        "line": "Lambda = 0",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.5527134079444351,
+            "r_min": 13.265121790666443,
+            "r_min_over_BK18": 368.4756052962901
+          },
+          "lqc": {
+            "c_s_min": 0.5697180773655065,
+            "r_min": 13.673233856772157,
+            "r_min_over_BK18": 379.8120515770044
+          },
+          "poly": {
+            "c_s_min": 0.5587917685706613,
+            "r_min": 13.411002445695871,
+            "r_min_over_BK18": 372.52784571377424
+          }
+        },
+        "best_background": "quintin",
+        "r_min_overall": 13.265121790666443
+      }
+    },
+    "planck_68_upper": {
+      "DBI": {
+        "line": "Lambda = (1-c_s^2)/(2 c_s^2)",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.540505353708669,
+            "r_min": 12.972128489008057,
+            "r_min_over_BK18": 360.33690247244607
+          },
+          "lqc": {
+            "c_s_min": 0.49373054955276174,
+            "r_min": 11.849533189266282,
+            "r_min_over_BK18": 329.15369970184116
+          },
+          "poly": {
+            "c_s_min": 0.5246866327776174,
+            "r_min": 12.592479186662818,
+            "r_min_over_BK18": 349.79108851841164
+          }
+        },
+        "best_background": "lqc",
+        "r_min_overall": 11.849533189266282
+      },
+      "P_propto_X_n": {
+        "line": "Lambda = (1-c_s^2)/(6 c_s^2)  [Li+2016 Eq. (A.20)]",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.623821013587305,
+            "r_min": 14.97170432609532,
+            "r_min_over_BK18": 415.88067572487006
+          },
+          "lqc": {
+            "c_s_min": 0.6322371336632822,
+            "r_min": 15.173691207918772,
+            "r_min_over_BK18": 421.49142244218814
+          },
+          "poly": {
+            "c_s_min": 0.62683032681345,
+            "r_min": 15.043927843522798,
+            "r_min_over_BK18": 417.8868845423
+          }
+        },
+        "best_background": "quintin",
+        "r_min_overall": 14.97170432609532
+      },
+      "Lambda_0": {
+        "line": "Lambda = 0",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.6600244137075282,
+            "r_min": 15.840585928980676,
+            "r_min_over_BK18": 440.01627580501884
+          },
+          "lqc": {
+            "c_s_min": 0.6849517821751604,
+            "r_min": 16.43884277220385,
+            "r_min_over_BK18": 456.63452145010694
+          },
+          "poly": {
+            "c_s_min": 0.6693449636867879,
+            "r_min": 16.06427912848291,
+            "r_min_over_BK18": 446.2299757911919
+          }
+        },
+        "best_background": "quintin",
+        "r_min_overall": 15.840585928980676
+      }
+    },
+    "planck_1sigma": {
+      "DBI": {
+        "line": "Lambda = (1-c_s^2)/(2 c_s^2)",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.5227090266695037,
+            "r_min": 12.545016640068088,
+            "r_min_over_BK18": 348.4726844463358
+          },
+          "lqc": {
+            "c_s_min": 0.47818946066590834,
+            "r_min": 11.4765470559818,
+            "r_min_over_BK18": 318.79297377727227
+          },
+          "poly": {
+            "c_s_min": 0.5076565570044113,
+            "r_min": 12.18375736810587,
+            "r_min_over_BK18": 338.4377046696075
+          }
+        },
+        "best_background": "lqc",
+        "r_min_overall": 11.4765470559818
+      },
+      "P_propto_X_n": {
+        "line": "Lambda = (1-c_s^2)/(6 c_s^2)  [Li+2016 Eq. (A.20)]",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.5995425351665007,
+            "r_min": 14.389020843996017,
+            "r_min_over_BK18": 399.6950234443338
+          },
+          "lqc": {
+            "c_s_min": 0.606345278294286,
+            "r_min": 14.552286679062863,
+            "r_min_over_BK18": 404.230185529524
+          },
+          "poly": {
+            "c_s_min": 0.6019632800979711,
+            "r_min": 14.447118722351306,
+            "r_min_over_BK18": 401.3088533986474
+          }
+        },
+        "best_background": "quintin",
+        "r_min_overall": 14.389020843996017
+      },
+      "Lambda_0": {
+        "line": "Lambda = 0",
+        "per_background": {
+          "quintin": {
+            "c_s_min": 0.6339280955035017,
+            "r_min": 15.214274292084042,
+            "r_min_over_BK18": 422.61873033566786
+          },
+          "lqc": {
+            "c_s_min": 0.6575972676194997,
+            "r_min": 15.782334422867992,
+            "r_min_over_BK18": 438.3981784129998
+          },
+          "poly": {
+            "c_s_min": 0.6426729190558185,
+            "r_min": 15.424150057339643,
+            "r_min_over_BK18": 428.448612703879
+          }
+        },
+        "best_background": "quintin",
+        "r_min_overall": 15.214274292084042
+      }
+    }
+  },
+  "headline": {
+    "criterion": "Planck 95% upper edge |f_NL^after| <= 9.3, three backgrounds",
+    "best_line": "Lambda = (1-c_s^2)/(2 c_s^2)",
+    "best_background": "lqc",
+    "r_min": 10.307687457667626,
+    "r_min_over_BK18": 286.32465160187854
+  }
+}

@@ -2,31 +2,130 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-18 -- v3M.0.25. R9 INT board (the first since the
-directive-R2 stop was lifted by NEXT_SCIENCE_LEDGER row 19 / D-A3-14, which
-reads "DONE 2026-09-04 -- NO-GO GENERALISED") run on the exact v3M.0.24 PDF:
-Grok REJECT, Gemini minor-revisions, Claude Fable 5.1 major-revisions.
-Truth-audit: 24 genuinely-new-real (3 MAJOR + 1 MAJOR-lite + 17 minor + 3
-nit), 14 FALSIFIED with source citations, 2 re-flags, 2 opinion/genre. NOT a
-clean wave. All 24 closed in v3M.0.25 plus one defect found during closure
-(the committed v3M.0.24 .tex did not compile on a clean toolchain -- raw
-Unicode rho -- so the served PDF was not reproducible from its own source).
-Readiness held at the COMPUTED cap 75; one confirmation board is permitted by
-directive R2 and is the remaining gate. See "v3M.0.25" section below.
-PRIOR-HEADER NOTE (reconciled 2026-09-18): this header previously described
-v3M.0.18 and asserted "ROUNDS STOPPED (R2)" while the .tex had advanced
-through v3M.0.24 (six bumps, v3M.0.19-v3M.0.24, all science/derivation
-corrections rather than review rounds). The full per-version history for
-those bumps is preserved in the dated sections below; only this header was
-stale.
+last_updated: 2026-09-19 -- v3M.0.26. R10 CONFIRMATION board (the one board
+directive R2 permits after R9 closed real items) run on the exact v3M.0.25
+PDF: Grok REJECT, Gemini MAJOR REVISIONS, Claude Fable 5.1 INT referee MAJOR
+REVISIONS (0 ESSENTIAL / 4 MAJOR / 9 minor / 5 nit / 6 verification requests).
+The Gemini and Fable legs had no raw on disk from the prior lane and were
+RE-RUN, never back-filled. IT DID NOT CONFIRM: truth-audit found 17
+genuinely-new-real (4 MAJOR + 1 MAJOR-lite + 12 minor/nit), 15 FALSIFIED with
+source citations, 5 re-flags, 4 opinion/genre. All 17 closed in v3M.0.26 with
+two new committed computations. NO physics error was found in either round --
+every scientific number re-checked reproduced; the defects were presentation,
+provenance and criterion labelling, and one of them moved a headline number
+AGAINST the paper (DBI r_min 12.6 -> 10.3). Directive R2: the convergence
+budget is SPENT (R9 + R10); no further board without an intervening science or
+scope decision, which is the director's call. Readiness stays at the COMPUTED
+cap 75 -- the automated-review-convergence gate of directive P is NOT met, and
+no cap-95 recommendation is made. See "v3M.0.26" section below.
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (20 pp / 0 undef refs / md5 d46166cb88b32009cdc6be59bb620547 / sha256 c5fe8889766be7f408b5e385f2826af85182ea50b00d4b8142f4db46422ca001)
-version: v3M.0.25 (2026-09-18, R9 closure -- see "v3M.0.25" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (20 pp / 0 undef refs / md5 4dcb996e0a1252e9dca3c9414a33a213 / sha256 2181fd270e78e1d3ac4bc86decd60daeaf786e16e2028d20eebc58105b98ff7b)
+version: v3M.0.26 (2026-09-19, R10 confirmation-board closure -- see "v3M.0.26" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
-headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 done / automated-review convergence NOT MET (R9 surfaced 3 MAJOR + 1 MAJOR-lite; closed in v3M.0.25, confirmation board pending) / packaging 20 partial / Houston's final 5 not sought. The earlier '~95' claim in this field was not supported by the gate state and is withdrawn.
-submission_status: draft, readiness 75 -- ROUNDS RESUMED 2026-09-18 (R2 stop lifted, row 19 CLOSED). R9 closed as v3M.0.25; the one confirmation board permitted by directive R2 is the next and final review gate before the convergence gate can be claimed.
+headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (R10, the permitted confirmation board, surfaced 17 genuinely-new-real incl. 4 MAJOR; closed in v3M.0.26, which no board has reviewed) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
+submission_status: draft, readiness 75 -- ROUNDS STOPPED 2026-09-19 under directive R2 (budget spent: R9 + R10). R10 was the permitted confirmation board and it did not confirm; its 17 findings are closed in v3M.0.26. A further board requires an intervening science or scope decision from the director.
+
+## v3M.0.26 (2026-09-19) — R10 confirmation board + closure; ROUNDS STOPPED (R2 budget spent); readiness held at 75
+
+**What this round was.** Directive R2 allows one board plus one confirmation board when the
+first closes real items. R9 closed 24. R10 was the confirmation board, run on the **exact
+v3M.0.25 PDF** (sha256 `c5fe8889…`, md5 `d46166cb…`, 20 pp, verified byte-identical at both
+served mirrors and against the Convex row before dispatch; preflight receipt PASS, 0 findings).
+INT-only per Directive N + Portfolio Decision 2026-09-02 #6.
+
+**Leg hygiene.** Only the Grok raw existed when this lane took over; the Gemini and Fable legs
+had produced no raw and were therefore **FAILED and re-run on the same exact PDF**, not
+back-filled and not recorded from a label. Verdicts: Grok `grok-4.3` **REJECT**; Gemini
+`gemini-3.1-pro-preview` **MAJOR REVISIONS**; Claude Fable 5.1 INT referee (verdict-blind cold
+read, no prior history) **MAJOR REVISIONS** — 0 ESSENTIAL / 4 MAJOR / 9 MINOR / 5 NIT / 6
+verification requests.
+
+**Outcome: the confirmation board did not confirm.** 17 genuinely-new-real (4 MAJOR, 1
+MAJOR-lite, 12 minor/nit), 15 FALSIFIED each with a source citation, 5 re-flags-of-disclosed,
+4 opinion/genre, 2 carried to D-round/proof. Clean-wave count 0. Full audit:
+`peer-reviews/INT_v3/A3M_v3M.0.25_R10_TRUTH_AUDIT_2026-09-19.md`; canonical dispositions:
+`peer-reviews/DISPOSITIONS/A3M.md` § "R10 CONFIRM".
+
+**The four MAJORs, all closed in v3M.0.26 and all independently re-verified before closure:**
+
+1. `DA3M-R10-06` — **Table V's `f_PBH` columns did not belong to their own row labels.** Rows 4–5
+   carried `C_th = 0.5` values under `C_th = 0.6/0.4` labels (`pbh_compaction_fnl.py:417-427`
+   computes the `gamma_cr_sensitivity` block at `C_TH_BASE = 0.5` for every point); row 1 carried
+   the `calibrated_amplitude_comparison["C_th=0.4"]` pair, i.e. the (0.5, 1.0, 0.4) baseline.
+   Re-evaluated at the labeled points with the committed functions unchanged
+   (`research/track_a3_multichannel/r10_tableV_recompute/`, new): row 1 → 1.7e-11 / 1.0,
+   row 4 → 9.5e5 / 6.6e9, row 5 → 1.9e-14 / 3.2e-3; rows 2–3 already correct. The **ratio column
+   and the n = 27 footer are correct and untouched** (the required-amplitude ratio is not the
+   calibrated-abundance quantity), and every qualitative claim survives. Per-row `A_*` now printed.
+
+2. `DA3M-R10-07` — **the DBI "best case `r_min` = 12.6" was computed under an unstated criterion,
+   on one background.** `row19_lambda.py:46,200` tests `|f_after| ≤ 5.1` (Planck 1σ) on the
+   Quintin-type background alone; Table VII and the adjacent abstract number use the asymmetric
+   95% upper edge 9.3 across three backgrounds. Two criteria and two Λ lines colliding at 12.6.
+   Recomputed on a common criterion (`research/track_a3_multichannel/r10_window_criterion/`, new):
+   the DBI line at Planck 95% gives **r_min = 10.3 (LQC, 286× BICEP/Keck)**, at 68% 11.9; the
+   P∝X^n line at 95% gives 12.60, reproducing Table VII exactly, which confirms Table VII is
+   internally consistent and localises the defect. **The correction moves the headline against the
+   paper and is printed that way.** §VIII now names the criterion and the background set for every
+   window number.
+
+3. `DA3M-R10-08` — **the same tensor amplitude carried two incompatible shortfalls.** p. 8 said the
+   r_after = 24 first-order tensor (1.7e-14) is "8–9 orders below" NANOGrav's 2.622e-8; p. 13 said
+   10^6.2. log10(2.622e-8 / 1.70e-14) = 6.19; the 8–9 is the tensor-vs-*induced* ratio, given
+   correctly as 9.1 decades in the same sentence. Fixed on p. 8.
+
+4. `DA3M-R10-09` — **two reproducibility citations that cannot resolve for any reader.**
+   `r9_perturbativity.log` is matched by `.gitignore: *.log` and has never been committed
+   (citation dropped); `outputs/r11_pbh_residuals.json` exists on no branch — the real artifact is
+   `row11_pbh_residuals/results/row11_gammacr_extension.json` (path corrected). A third
+   sub-finding, that `origin/main` does not yet carry this manuscript, is a **PUSH GATE** for the
+   director and is recorded open, not closed by an edit.
+
+**MAJOR-lite** `DA3M-R10-01`: seven instances of drafting-history / self-referential revision prose
+survived R9's closure of one such parenthetical (directive Q1) — the "S2 diverges" statement they
+refer to is this lab's own earlier finding, not the literature, so nothing external is lost by
+removing it. All rewritten to state the conclusion directly.
+
+**Twelve minor/nit items** closed: raw artifact paths still in body text (`R10-02`, residual of
+`DA3M-R9-05`, two of them introduced by the R9 closure itself); the reproducibility statement's
+instruction-to-ourselves about minting the DOI (`R10-03`); the missing Li Eq. (A.19) citation for
+`s = 39/16` (`R10-04`, value independently re-derived: Λ = 7/(16c_s²) ⇒ s = 39/16 exactly);
+**the title's missing constant-sound-speed scope** (`R10-05`, same class as `DA3M-R9-02` at a new
+location); the printed ratio slope 0.13 vs the measured OLS −0.20 (`R10-10`); the 144-point
+subset's composition, 78 lognormal + 66 power-law (`R10-11`); the false "under 6 s total"
+wall-clock claim, corrected to the real per-channel times (`R10-12`); the over-precise
+factor-of-two attribution (`R10-13`); BBN decades (`R10-14`); the curvaton r-threshold band
+(`R10-15`); Table IV's chain provenance (`R10-16`); the hardware string (`R10-17`).
+
+**No physics error in either round.** Every scientific number re-checked across R10 reproduced:
+the four committed sympy derivations (byte-identical re-runs), Cai et al.'s Eq. (37) re-derived
+from the arXiv e-print (exactly half of each quoted amplitude), every Li/Cai/Quintin equation
+attribution against the rendered PDFs, the transmission and tensor algebra, the perturbative
+floor, the PTA channel end to end, the induced-GW and DESI numbers, and the curvaton algebra.
+
+**Directive G hygiene (this bundle).** `\paperVersion` v3M.0.25 → **v3M.0.26**, `\paperTimestamp`
+→ September 19, 2026; 4-pass pdflatex, 0 errors, **0 undefined references or citations**, 20 pp,
+max overfull hbox 3.90 pt (unchanged from v3M.0.25); pages 10 and 14 rendered and visually
+checked (no column overflow, tables and the rewritten §VIII fit). PDF mirrored **byte-identical**
+to `site/public/papers/a3_multichannel_arxiv_v3M.0.26.pdf`, `public/papers/…v3M.0.26.pdf` and the
+source dir: md5 `4dcb996e0a1252e9dca3c9414a33a213`, sha256 `2181fd270e78e1d3ac4bc86decd60daeaf786e16e2028d20eebc58105b98ff7b`,
+20 pp. Convex `paperVersions:bump` posted with these real values.
+
+**Directive R2 — budget SPENT, this lane STOPS.** R9 + R10 are two consecutive boards. No further
+board runs on A3M without an intervening science or scope decision; that decision is the
+director's. **Readiness stays at the COMPUTED cap 75, and no cap-95 recommendation is made** —
+the automated-review-convergence gate of directive P is not met (the last board found 17 real
+items; v3M.0.26 has been reviewed by nothing), and packaging is incomplete.
+
+**Open, for the director:**
+- **PUSH GATE** — `origin/main` must carry this manuscript and `r9_perturbativity/` before the
+  reproducibility statement's branch-tree pointers are true for external readers.
+- **Frozen-release DOI** — unminted; a P-round/maintainer action. The manuscript now promises it
+  as a deposit at publication rather than instructing us to mint it.
+- **D-round item** — Fig. 1's ~5 pt legend/tick labels need the figure regenerated.
+- **Scope decision** — required before any further review board on this paper.
 
 ## v3M.0.25 (2026-09-18) — R9 board + closure; rounds RESUMED; readiness held at 75
 

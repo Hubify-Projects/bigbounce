@@ -1,0 +1,26 @@
+{
+  "task": "A3M R10: amplitude-ratio trend vs gamma_cr and C_th",
+  "source": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.json",
+  "n_points": 255,
+  "ols_slope_vs_gamma_cr_all": -0.19731313329723008,
+  "ols_slope_vs_gamma_cr_inwindow": -0.1951800480554293,
+  "n_inwindow": 144,
+  "d_ratio_per_0.1_C_th": {
+    "mean": 0.03167641794186238,
+    "n_pairs": 94,
+    "min": 0.01668803825511223,
+    "max": 0.06369641414775697
+  },
+  "inwindow_family_composition": {
+    "lognormal": {
+      "n": 78,
+      "mean": 1.8364224449931572,
+      "std": 0.03095661994176297
+    },
+    "powerlaw": {
+      "n": 66,
+      "mean": 1.838583227089197,
+      "std": 0.031386812065446454
+    }
+  }
+}
