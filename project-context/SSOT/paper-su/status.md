@@ -1,6 +1,6 @@
 # P-SU status — current authoritative section
 
-**Current candidate:** v1S.0.11 · 2026-09-19 ·
+**Current candidate:** v1S.0.12 · 2026-09-19 ·
 `arxiv/paper_su_criterion/main.tex`
 
 **Title:** "The separate universe computes a different variable: an exact
@@ -198,6 +198,108 @@ run `tools/v3_native_pdf_review.py` on the exact v1S.0.11 PDF to complete
 the Grok/Gemini legs and truth-audit their findings before any convergence
 claim.
 
+## v1S.0.12 — R4COMPLETE: Grok+Gemini legs run and closed; R4 board COMPLETE; R2 budget spent
+
+Campaign lane `bb-L2c-psu-r4-complete` completed R4. Directive-G pre-check on v1S.0.11 first:
+served md5 `c5b0ea962c5b9f965c22bc6d08d93250` matched Convex `paperVersions:current` and a fresh
+4-pass recompile (byte-size/page-count identical; the raw md5 differed only in pdflatex's
+embedded `/CreationDate` timestamp, confirmed via `pdfinfo` — not a content difference) — PASS.
+
+**Dispatch:** the shared-checkout preflight gate blocked three times in sequence (site-data
+dirty → cleared by polling; then the AF draft paper dirty → cleared by polling; then a
+persistent AF mirror-integrity defect, `anomaly_flagship_vAF.0.2.pdf`'s served bytes stale
+against its own registered current PDF — not a transient dirty-tree race, an actual mismatch —
+fixed as a one-line, zero-judgment byte re-mirror unrelated to paper-su's content, commit
+`f2fb65f4`). To keep the API legs bound to the exact v1S.0.11 PDF while this lane's own S14 fix
+was already drafted in the working tree, `arxiv/paper_su_criterion/{main.tex,main.pdf}` were
+`git stash`ed for the dispatch window and popped back afterward — the tool requires the
+supplied PDF path to equal the registry's canonical path exactly, so this was necessary rather
+than pointing at a versioned mirror copy. Grok API (`grok-4.3`) and Gemini API
+(`gemini-3.1-pro-preview`) both ran successfully via `tools/v3_native_pdf_review.py` against
+`arxiv/paper_su_criterion/main.pdf` at sha256 `0fc47bd5f7c49d5c67bead2627ea2628c19b15e8687098d5a5b927c416291563`
+(= v1S.0.11, confirmed identical to the served mirror's md5 before dispatch). Raws saved to
+`project-context/peer-reviews/R4COMPLETE_PSU_Grok_brutal.md` and
+`R4COMPLETE_PSU_Gemini_cosmology.md` before any verdict was recorded. **Record keeping: the
+Claude-opus leg (already closed, see above) reviewed v1S.0.10; these two API legs reviewed
+v1S.0.11 — two different exact PDFs, stated plainly, never blended into one verdict.**
+
+**Verdicts:** Grok **REJECT**; Gemini **MAJOR REVISIONS**.
+
+**Truth-audit (verdict-first, every finding checked against `DISPOSITIONS/PSU.md` fingerprints
+or independently re-derived):**
+
+- **4 genuinely-new-real findings, all CLOSED in v1S.0.12:**
+  1. **S14's citation half (Gemini ESSENTIAL-1).** Sec. I's Cai et al. (2009) factor-of-2 claim
+     — an erratum-strength claim against a published PRD paper — was cited only to an
+     unpublished note (`Golden2026Monopole`) that, checked directly, does not even contain the
+     Cai comparison; the actual equation-level derivation (fetches the real arXiv e-prints of
+     both Cai 2009 and Li–Quintin–Wang–Cai 2017, LOCATED verdict) lives in
+     `research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md` and was never cited anywhere
+     in the paper. Fixed: new citation (`Golden2026CaiFactor`, commit `7222c91f`) plus a new
+     Appendix A6 transcribing the note's hypothesis table and verdict verbatim (transcription
+     only, no new math). The general self-containment concern (the in-in shape itself) remains
+     tracked as **S4**, unchanged.
+  2. **Three `(App.~A2)` → `(App.~A3)` cross-reference errors** (Gemini pass-2). Confirmed by
+     direct text check: the cited formulas (the general-$n_s$ initial-position monopole, the
+     "kernel carries no $1/k_L$ pole" statement) are actually in Appendix A3, not A2. Fixed.
+  3. **Fig. 1 caption clarity** (Gemini pass-2). Confirmed by rendering the actual figure:
+     $\lambda(w)$ and $f_{\rm map}^{\rm mono}(w)$ are deliberately dual-axis-scaled to coincide
+     exactly, so only one visible curve appears — genuine reader confusion, not a defect. Fixed
+     with one added caption sentence.
+  4. **Table I's USR row citation** (Grok + Gemini, independently, both reviewers). The row
+     prints exact $5/2$ values next to "(not computed here)" with no in-row citation, reading as
+     an internally-derived validated number when it is Namjoo–Firouzjahi–Sasaki's (2013)
+     literature value (cited only in prose two paragraphs later). Fixed with a table-caption
+     footnote.
+- **Re-flagged, no new action** (already tracked): Grok E3 + Gemini's self-containment half of
+  ESSENTIAL-1 = S4; Gemini ESSENTIAL-2 (Zenodo DOI) = S11; Gemini MAJOR-4 (7 pp. exceeds the
+  PRD-Letter length) = the already-tracked Houston-gated venue/length decision; reproducibility
+  hashes/AI-disclosure/version-tag/"not computed here"/2026-dates complaints (Grok E4/E5/N1/N3/
+  N5, Gemini MINOR-N1/N3) = the same genre pattern dispositioned across R1–R4 (directive R2
+  genre exception; these are deliberate, honest disclosures, not defects, and 2026 is the
+  correct current date).
+- **FALSIFIED** (independently re-derived or checked against source; not real): Grok E1/E2
+  (mischaracterizes already-precise, already-scoped abstract/Sec. V language), E6 (quoted
+  contradictory clause does not exist in the text), E7 (hand re-derivation of Eq. 3/4's
+  composition at $\eps=3/2,n_s=1$ reproduces the paper's own $-5$ exactly; no $+25/4$ anywhere),
+  M5 (cites the wrong formula; $f_{\rm map}^{\rm fin}$ vanishes identically at $\eps=0$,
+  confirming the paper's identity-map claim), N2/N4 (footnote 1 already correctly reads "Four
+  … a fifth" — this exact defect, PSU-12, was already fixed before this round), M2/M3
+  (genre/opinion — Sec. IV already individually distinguishes this note from every cited ref).
+  Full findings-by-ID detail in `DISPOSITIONS/PSU.md`'s `R4COMPLETE` entry.
+
+**Directive-G hygiene:** v1S.0.11→v1S.0.12. 4-pass pdflatex, 0 undef refs, 0 raw non-ASCII. A
+transient 179pt table overfull hbox from an over-long USR-row parenthetical was caught and
+fixed by moving the citation into a table-caption footnote (final overfull 12.6pt, matching the
+pre-existing ~8pt Table I alignment-overflow class already tracked across rounds — visually
+confirmed clean via `/latex-audit`, full-width `table*`, no column crossing, rendered and
+inspected). All touched pages (2, 3, 4, 6, 7, 8) visually re-rendered and confirmed PASS. 8
+pages (up from 7 — the new Appendix A6 pushes one paragraph to a new mostly-whitespace page,
+cosmetic, matching the same pattern as the v1S.0.9→7pp bump). PDF md5
+`7bae5b35c4ee1456557a8c74f57a3692`, sha256
+`d400dec4a70d5167b8ddbc0f2acef4185d3cdb08077f550601f25add8a730ac5`, three-way matched: fresh
+compile == `site/public/papers/paper_su_criterion_v1S.0.12.pdf` ==
+`public/papers/paper_su_criterion_v1S.0.12.pdf`. No science number changed — all four closures
+are citation/cross-reference/caption/table-footnote fixes plus one appendix transcription of an
+already-existing, already-verified note.
+
+**R4 status: COMPLETE.** All three legs run and truth-audited (Claude-opus on v1S.0.10, Grok+
+Gemini on v1S.0.11). Readiness held at **72 (COMPUTED, unchanged)** — this round closed
+presentation/citation defects, not a headline science item, and per the task directive
+readiness stays computed rather than hand-bumped by the closing lane.
+
+**Per directive R2 and this lane's task directive: the review-round budget for paper-su is now
+spent. R4 was the one board the S12 science decision unlocked, and it is closed (all three
+legs run, all findings truth-audited, four genuinely-real items fixed). No further INT/EXT
+review round on paper-su without a new intervening science or scope decision** — exactly as
+S12's resolution was the intervening decision that unlocked R4 itself. The two real blockers to
+further readiness are science gates, not review-process items: **S13** (initial-slice/
+$\zeta_L(t_i)=0$ convention reconciliation across Eq. 1-2, $\lambda_{\rm USR}$, and the
+ekpyrosis Table I row — a real derivation task) and **S15** (Appendix A5's $\lambda_g$
+derivation, linked to S13). Non-blocking, unchanged: S16 (cosmetic minors), S4
+(self-containedness), S11 (Zenodo DOI), and the Houston-gated Letter-vs-Brief-Report
+length/venue decision.
+
 ## v1S.0.2 closure summary (this bundle)
 
 - Title/abstract reframed per D-PSU-1: an exact, invertible change-of-variable
@@ -272,7 +374,7 @@ plus `reproducibility/manifests/experiments/psu-gates-s1-s2-label-composition-cr
 (new in v1S.0.2, backs the label-resolved composition + restored gradient
 term), both local CPU, \$0, under 5 seconds total compute.
 
-## Close-the-gap section (open items, as of v1S.0.11 — superseded the v1S.0.2-era list below)
+## Close-the-gap section (open items, as of v1S.0.12 — superseded the v1S.0.2-era list below)
 
 - **S13 (NEW, R4 2026-09-19, Claude-opus leg, MAJOR 1) — initial-slice
   convention inconsistency.** Eq. (1)-(2) assume $\zeta_L(t_i)=0$ (a flat,
@@ -295,18 +397,20 @@ term), both local CPU, \$0, under 5 seconds total compute.
   convention — a real derivation task, not an edit. Full detail:
   `INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/claude_opus_referee.md`
   MAJOR 1.
-- **S14 (NEW, R4 2026-09-19, Claude-opus leg, MAJOR 4) — Cai et al. 2009
-  factor-of-2 erratum claim not self-contained.** Sec. I asserts Cai, Xue,
-  Brandenberger & Zhang's published Eqs. (38)-(41)/Fig. 5 are uniformly twice
-  their own Eq. (37), an erratum-strength claim against published literature,
-  supported only by the self-cited unpublished note `[23]`. The paper
-  correctly insulates its linear criterion from this and gives the 4/3
-  counterfactual, but the headline $-5$ composition and the $25/8$ gap in
-  Table I both depend on which amplitude is adopted. **Not closed.** Either
-  reproduce the monomial-by-monomial comparison establishing the factor of 2
-  in an appendix, or demote to "we adopt Eq. (37); it differs from the
-  printed amplitudes by an overall factor 2, unresolved here" and carry the
-  4/3 counterfactual wherever the gap is quoted.
+- **S14 (R4 2026-09-19, Claude-opus leg, MAJOR 4) — Cai et al. 2009
+  factor-of-2 erratum claim not self-contained. CLOSED in v1S.0.12
+  (campaign lane `bb-L2c-psu-r4-complete`, independently confirmed real by
+  Gemini's R4COMPLETE ESSENTIAL-1).** The citation was wrong, not just
+  missing: Sec. I cited only the unpublished `Golden2026Monopole` note, which
+  does not contain the Cai comparison at all; the actual equation-level
+  derivation (fetches the real arXiv e-prints of Cai 2009 and
+  Li–Quintin–Wang–Cai 2017, tests four hypotheses against Cai's own printed
+  Eqs. 38–41 and Fig. 5, LOCATED verdict) lives in
+  `research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md`. Fixed: new
+  citation `Golden2026CaiFactor` (commit `7222c91f`) plus a new Appendix A6
+  transcribing the note's hypothesis table and verdict verbatim (transcription
+  only, no new math — `/never-fabricate-derivation` clean). The general
+  self-containment concern for the in-in shape itself remains tracked as S4.
 - **S15 (NEW, R4 2026-09-19, Claude-opus leg, MAJOR 3) — Appendix A5's
   $\lambda_g=1-\eps g/3$ asserted, not derived, and conflicts with S13's
   flat-slice premise (which forces $g\to1$, making $g=0$ unreachable).** If

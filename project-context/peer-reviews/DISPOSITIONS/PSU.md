@@ -1,14 +1,14 @@
 # PSU disposition ledger — `paper-su`
 
 **Canonical source:** `arxiv/paper_su_criterion/main.tex`
-**Current paper-local version:** `v1S.0.9` (2026-09-18) — ledger reconciled this bundle after
-sitting stale at v1S.0.2 for six versions (2026-09-18 process observation: this staleness is
-exactly the class of gap that let the v1S.0.8 A2 closing-amendment land in Appendix A only,
-undetected in Sec. III, for 11 days — see round `R3VERIFY` below).
-**Exact PDF:** `arxiv/paper_su_criterion/main.pdf` == `site/public/papers/paper_su_criterion_v1S.0.9.pdf`,
-sha256 `2b225d0b3ceaa42d9223cc5b54fb50e1c9a06875c8d6d1292610d85e00d94fb7`, md5 `fcc3383a…`, 7 pp.
+**Current paper-local version:** `v1S.0.12` (2026-09-19) — R4COMPLETE closure (campaign lane
+`bb-L2c-psu-r4-complete`); see the `R4COMPLETE` entry below for the full diff.
+**Exact PDF:** `arxiv/paper_su_criterion/main.pdf` == `site/public/papers/paper_su_criterion_v1S.0.12.pdf`,
+sha256 `d400dec4a70d5167b8ddbc0f2acef4185d3cdb08077f550601f25add8a730ac5`, md5
+`7bae5b35c4ee1456557a8c74f57a3692`, 8 pp.
 (R1 artifact was `cc0dfb84…c48e` = v1S.0.1; R2 artifact `812dbaf1…aca31` = v1S.0.2; R3VERIFY
-artifact reviewed was `9f1fc41c…443d` = v1S.0.8.)
+artifact reviewed was `9f1fc41c…443d` = v1S.0.8; R4's Claude-opus leg reviewed `1015f442…` =
+v1S.0.10; R4's Grok/Gemini legs reviewed `0fc47bd5…291563` = v1S.0.11 — see R4COMPLETE.)
 **Venue:** Physical Review D — Letter / short note (length now 7 pp.; see N19, open).
 **Claim policy:** S3 (failure vs. change-of-variable) is RESOLVED — the note is framed as an
 exact, invertible change of variable, not a failure; this framing survived R1, R2, and
@@ -21,6 +21,7 @@ R3VERIFY unchallenged on the physics.
 | `ROUND_2026-09-04-PSU-v1S.0.1-EXACTPDF-cc0dfb84-R1` | `cc0dfb84…c48e` | Claude Fable 5.1 INT (**major-revisions**), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | 38 raw findings → **28 canonical**: 21 GENUINELY-NEW REAL, 0 re-flag, 5 FALSIFIED, 1 OPINION/GENRE, 1 OUT-OF-SCOPE-DISCLOSED. Clean-wave count **0**. Board: `../PSU_v1S.0.1_R1_BOARD_2026-09-04.md`; audit: `../INT_v3/PSU_v1S.0.1_R1_TRUTH_AUDIT_2026-09-04.md` |
 | `ROUND_2026-09-04-PSU-v1S.0.2-EXACTPDF-812dbaf1-R2VERIFY` | `812dbaf1…aca31` | Claude Fable 5.1 INT (**major-revisions**, 6M/13m/4Q), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | 39 raw findings → **32 canonical**: 20 GENUINELY-NEW REAL, 6 re-flag (4 still OPEN), 1 OUT-OF-SCOPE-DISCLOSED, 2 FALSIFIED, 3 OPINION. Clean-wave count **0**. Board: `../INT_v3/PSU_v1S.0.2_R2_BOARD_2026-09-04.md`; audit: `../INT_v3/PSU_v1S.0.2_R2_TRUTH_AUDIT_2026-09-04.md` |
 | `ROUND_2026-09-18-PSU-v1S.0.8-EXACTPDF-9f1fc41c-R3VERIFY` (campaign lane L2; the R2-permitted verification round, unlocked by the intervening S7/S9/S9b/S9c/A2-adjudication science decisions) | `9f1fc41c…443d` | Claude Opus 5 INT (**MAJOR REVISIONS**, 2 ESSENTIAL/6 MAJOR/19 minor/7 nit), Grok API (**REJECT**), Gemini API (**MAJOR REVISIONS**); OpenAI/ChatGPT **ABSENT** (directive N pause) | Genuinely-new-real (all CLOSED in v1S.0.9): **PSU-9 (ESSENTIAL)** Sec. III printed the pre-A2-adjudication value `f^ρ_NL=-5/2` while Appendix A5 printed the corrected `-55/16` for the same quantity — the v1S.0.8 closing amendment landed in the Appendix only, never propagated to the main text; **PSU-10 (ESSENTIAL)** a raw UTF-8 `ρ` at `main.tex:514` threw `! LaTeX Error: Unicode character ρ not set up` and was silently dropped from the served PDF; **PSU-11 (MAJOR)** Appendix A5's closing-amendment paragraph narrated internal review/adjudication history ("reconciled by an independent adjudication…", "the earlier initial-label figure … came from composing … correcting the weight closes the gap") and used `λ'`, `A_2` without definition — a directive-G leak-gate violation; **PSU-12 (MAJOR)** footnote 1 miscounted `f_map^fin`'s contributions (listed the initial-label translation as a 5th contribution to `f_map^fin`, when it is the difference that distinguishes `f_map^init`); **PSU-13 (MINOR)** Reproducibility Statement omitted the two newest scripts (`psu_gates_S9_S10…`, `a2_lapse_monopole_adjudication…`) and their manifests. Re-flags (no action): future-date/version-string/AI-disclosure-genre items (= PSU-17/28, C27, C31); self-containedness/DOI complaints (= PSU-5/S4, PSU-16/S11, still OPEN, unchanged). **One item NOT closed, genuinely new, requires a science decision**: Gemini's pass-2 finding that the translation term's zero monopole (Appendix A3, `T(\eps,\mu)` "monopole 0 (all $\eps$)") was derived assuming $n_s=1$, which is not exact for general constant-$\eps$ backgrounds — if the exact $n_s(\eps)$-dependent trace is included, the composed `-5` may pick up an $\eps$-dependent correction. Claude's independent check confirms the five A2 contributions sum exactly to the printed Eq. (4) (a strong but not dispositive internal-consistency check — it does not independently re-derive the trace term). **Tracked as new open science gate S12** (below); not fabricated closed, not dismissed. Board/audit: `../INT_v3/PSU_v1S.0.8_R3VERIFY_claude_opus_2026-09-18.md`, `../R3VERIFY_PSU_Grok_brutal.md`, `../R3VERIFY_PSU_Gemini_cosmology.md`. |
+| `ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4` + `R4COMPLETE` (campaign lanes L2b then L2c; the one R2-permitted board unlocked by S12's resolution; Claude-opus leg on v1S.0.10, Grok/Gemini legs on v1S.0.11 — different exact PDFs, recorded separately) | opus: `1015f442…`; Grok/Gemini: `0fc47bd5…291563` | Claude Opus 5 INT (**MAJOR REVISIONS**, v1S.0.10), Grok API (**REJECT**, v1S.0.11), Gemini API (**MAJOR REVISIONS**, v1S.0.11); OpenAI/ChatGPT **ABSENT** (directive N pause) | Genuinely-new-real, all CLOSED: opus leg closed in v1S.0.11 (Sec. II/abstract/Fig. 1 internal-consistency gap from the S12 fix, 2 wording slips); Grok/Gemini legs closed in v1S.0.12 (S14's Cai citation, 3× App.~A2→A3 cross-refs, Fig. 1 caption dual-axis clarity, Table I USR citation) — full detail in the `R4COMPLETE` narrative entry below. New gates opened by the opus leg: S13, S15 (both require a real derivation, carried OPEN); S16 (cosmetic, carried). Re-flags: S4, S11, venue/length decision (all unchanged). Board/audit: `../INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/claude_opus_referee.md`, `../R4COMPLETE_PSU_Grok_brutal.md`, `../R4COMPLETE_PSU_Gemini_cosmology.md`. **R2 budget spent — no further board without a new science/scope decision.** |
 
 ## Canonical items (R1 board)
 
@@ -251,12 +252,123 @@ added bracket fixed by wrapping into a two-line `align`, 0 overfull >10pt after,
 visual PASS all 7 pages, md5 `c5b0ea962c5b9f965c22bc6d08d93250`, three-way matched including
 Convex). No science number changed.
 
-**R4 status: Claude-opus leg CLOSED and dispositioned; Grok API + Gemini API legs STILL NOT
-RUN.** The site-data clean-tree gate cleared after this lane's commits landed, then immediately
-re-blocked on a *different* validator (`draft paper inputs are dirty`,
-`research/track_a3_multichannel/paper/{main.tex,main.pdf}` — lane `bb-L1b-a3m-r10`'s own active
-A3M round, unrelated to paper-su). Same class of shared-checkout contention, different files;
-not bypassed. **This lane's budget is spent here** (task directive: close real items, then
-stop). Next lane: retry the preflight once `research/track_a3_multichannel/paper` is clean, run
-the Grok/Gemini legs on the exact v1S.0.11 PDF, truth-audit against S13/S14/S15/S16's
-fingerprints above before any convergence claim.
+**R4COMPLETE (2026-09-19, campaign lane `bb-L2c-psu-r4-complete`) — Grok API + Gemini API legs
+run on the exact v1S.0.11 PDF (sha256 `0fc47bd5…291563`), completing R4.** Preflight cleared
+after three rounds of cross-lane shared-checkout contention (site-data dirty, then AF draft
+dirty, then a stale AF mirror-integrity defect fixed as an unrelated one-line hygiene commit,
+`f2fb65f4`); the exact v1S.0.11 tree state was preserved via `git stash` across the wait so the
+API legs reviewed byte-identical content to the Claude-opus leg's target. Raws:
+`../R4COMPLETE_PSU_Grok_brutal.md` (grok-4.3, REJECT), `../R4COMPLETE_PSU_Gemini_cosmology.md`
+(gemini-3.1-pro-preview, MAJOR REVISIONS). **Record keeping: the Claude-opus leg reviewed
+v1S.0.10; the Grok/Gemini legs reviewed v1S.0.11 — different exact PDFs, not blended.**
+
+Truth-audit of every finding (verdict-first, against this file's fingerprints and by
+independent re-derivation where a physics claim was made):
+
+**Genuinely-new-real, CLOSED in v1S.0.12:**
+- **S14 (Gemini ESSENTIAL-1, the Cai-citation half)** — confirmed real: Sec. I's factor-of-2
+  claim against Cai et al. (2009), a published PRD paper, was cited only to
+  `Golden2026Monopole`, an unpublished note that (checked directly) does not even contain the
+  Cai comparison. The actual equation-level derivation lives in
+  `research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md` (fetches the real arXiv e-prints
+  of both Cai 2009 and Li–Quintin–Wang–Cai 2017, tests four hypotheses against Cai's own
+  printed Eqs. 38–41 and Fig. 5, LOCATED verdict) but was never cited in the paper at all.
+  **Fixed:** new bibitem `Golden2026CaiFactor` (commit `7222c91f`), Sec. I's sentence now cites
+  it, and a new Appendix~A6 ("The Cai et al. (2009) amplitude factor of two") transcribes the
+  note's hypothesis table and verdict verbatim (transcription only, no new math —
+  `/never-fabricate-derivation` clean). The self-containment concern for the *in-in shape*
+  itself (the other half of Gemini's ESSENTIAL-1) remains part of already-tracked **S4**.
+- **PSU-N2 (Gemini pass-2 finding "N2"), cross-reference error** — confirmed real by direct
+  text check: three in-text `(App.~A2)` citations (main.tex, formerly lines 176, 201, 337) all
+  cite formulas/statements that are actually in Appendix **A3** ("The two worldline labels and
+  the translation" — the general-$n_s$ initial-position monopole formula and the "kernel
+  carries no $1/k_L$ pole" statement), not Appendix A2 ("The five second-order kernel
+  contributions"). **Fixed:** all three corrected to `(App.~A3)`.
+- **Gemini pass-2 "m1", Fig. 1 caption/plot ambiguity** — confirmed real by rendering the
+  actual figure: $\lambda(w)$ and $f_{\rm map}^{\rm mono}(w)$ are deliberately dual-axis-scaled
+  to coincide exactly, so only one visible curve appears on the page — a genuine reader-facing
+  clarity gap, not a rendering defect. **Fixed:** one sentence added to the Fig. 1 caption
+  stating the axes are scaled so the two curves coincide by construction.
+- **Grok "M1" + Gemini "MAJOR-3" (independently, both reviewers), Table I's USR row** —
+  confirmed real: the row prints exact values ($5/2$, $5/2$, $5/2$) next to "(not computed
+  here)" with no in-row citation, reading as an internally-derived validated number when it is
+  Namjoo–Firouzjahi–Sasaki's (2013) literature value (the citation exists two paragraphs later
+  in prose, not in the table). **Fixed:** table caption gains a footnote citing
+  `\cite{Namjoo2013}` directly, explicit that the row tests only the structural order.
+
+**Re-flagged, no new action (already tracked):**
+- Grok "E3" + the self-containment half of Gemini "ESSENTIAL-1" (in-in shape/derivations live
+  in companion notes) = **S4**, OPEN non-blocking, unchanged since R1.
+- Gemini "ESSENTIAL-2" (need a persistent Zenodo DOI for the reproducibility scripts) = **S11**,
+  OPEN non-blocking, unchanged since R1.
+- Gemini "MAJOR-4" (7 pp. exceeds the ~4.5 pp. PRD-Letter limit) = the already-tracked
+  Houston-gated venue/length decision (SSOT close-the-gap section), unchanged.
+- Grok "E4"/"E5"/"N1" + Gemini "MINOR N1" (reproducibility-statement hashes, AI Usage
+  Disclosure section, version-string header read as "internal bookkeeping") = genre re-flags of
+  the same pattern dispositioned across R1–R4 (PSU-17/28, C27, C31) — directive R2's genre
+  exception; these are deliberate lab-policy disclosures, not defects.
+- Grok "N5"/"N3" ("not computed here" inside the abstract) + Gemini "N3" (2026 dates read as
+  stale) = same genre pattern; the honest disclosure is directive Q1/R6-compliant by design,
+  and 2026 is the correct current date (not an error).
+
+**FALSIFIED (independently re-derived or checked against the source text; not real):**
+- Grok "E1"/"E2" (abstract/title overstate generality) — the abstract already states "for
+  every constant $\eps$" for the second-order claim; the linear-order "exact" claim is
+  legitimately general per Eq. (2)'s own proof (any single-field history); Sec. V "Limits"
+  explicitly bounds validity (constant $c_s$/$\eps$, no time-dependent-$\eps$ second-order
+  calc). Mischaracterizes already-precise, already-scoped language; the quoted phrase "carries
+  an $O(1)$ error … not in either variable separately" exists (Sec. III's boxed statement, not
+  the abstract) and is a correct, generally-true statement about the linear criterion.
+- Grok "E6" (claims an "immediately following clause" asserts $f^\rho_{\rm NL}=-5/16$,
+  contradicting the printed $-55/16$) — no such clause exists anywhere in the source text
+  (checked verbatim); apparent misread of an unrelated $15/16$ coefficient elsewhere on the
+  same page.
+- Grok "E7" (claims the general-$n_s$ expression "preceding Eq. (4)" gives $+25/4$ at
+  $\eps=3/2,n_s=1$) — independently re-derived Eq. (3)/(4) and the full composition by hand at
+  $\eps=3/2,n_s=1$: reproduces the paper's own claimed $f_{\delta N}^{\rm init}=-5$ exactly (via
+  $f^{\rm in\text{-}in}_{\rm mono}=-15/8$, $\lambda=1/2$: $-15/8\div(1/2)+(-5/4)=-5$); no
+  $+25/4$ appears in any term.
+- Grok "M5" (Fig. 1 "identity at $w=-1$" over-claim; "quadrupole piece … remains finite") —
+  the quoted quadrupole formula does not match $f_{\rm map}^{\rm fin}$'s actual form (it matches
+  an unrelated translation-term expression); at $w=-1$ ($\eps=0$), $f_{\rm map}^{\rm fin}(\eps,
+  \mu)=-\tfrac{5\eps}{4}(1-\mu^2)$ vanishes identically for *every* $\mu$ (overall $\eps$
+  prefactor), confirming the paper's identity-map claim is correct.
+- Grok "N2"/"N4" (footnote 1 "asserts five … enumerates a sixth") — footnote 1 already reads
+  "Four geometric contributions to $f_{\rm map}^{\rm fin}$ … A fifth contribution, the
+  initial-label translation, is the difference that distinguishes $f_{\rm map}^{\rm init}$ from
+  $f_{\rm map}^{\rm fin}$" (verified in the rendered v1S.0.11 PDF) — this exact defect (PSU-12,
+  R3VERIFY) was already fixed before this round.
+- Grok "M2"/"M3" — genre/opinion (style preference for denser anchoring against Refs.
+  [3,4,9,12]); Sec. IV "What is new" already individually distinguishes this note's
+  contribution from Refs. [3,4,6,9,10,11,12,13,14].
+
+**Genuinely-new-real count this round: 4** (S14's citation fix, the 3 App.~A2→A3
+cross-references, the Fig. 1 caption clarity note, and the Table I USR citation — S14 counted
+once; App.~A2/A3 + caption + table are 3 additional independent items). All 4 closed in
+v1S.0.12 with real, source-cited edits (no new derivations beyond transcription of an existing
+verified note for S14). S13/S15/S16/S4/S11/venue-length remain OPEN, unchanged, not re-raised
+this round.
+
+**Directive-G:** v1S.0.11→v1S.0.12. 4-pass pdflatex, 0 undef refs, 0 raw non-ASCII, leak-gate
+clean. One transient 179pt table overfull hbox from an over-long USR-row parenthetical was
+caught and fixed by moving the citation to a table-caption footnote instead (final table
+overfull is 12.6pt, `/latex-audit` visually confirmed PASS — full-width `table*`, no column
+crossing, matches the pre-existing ~8pt Table I alignment overflow class already tracked across
+rounds). 8 pages (up from 7 — the new Appendix A6 pushes one paragraph to a new page, mostly
+whitespace, cosmetic). PDF md5 `7bae5b35c4ee1456557a8c74f57a3692`, sha256
+`d400dec4a70d5167b8ddbc0f2acef4185d3cdb08077f550601f25add8a730ac5`, three-way matched: fresh
+compile == `site/public/papers/paper_su_criterion_v1S.0.12.pdf` ==
+`public/papers/paper_su_criterion_v1S.0.12.pdf`. No science number changed (all four closures
+are citation/cross-reference/caption fixes and one appendix transcription).
+
+**R4 status: COMPLETE.** All three legs run and truth-audited: Claude-opus (v1S.0.10, MAJOR
+REVISIONS, dispositioned in v1S.0.11), Grok API (v1S.0.11, REJECT, dispositioned above — mostly
+FALSIFIED/genre, 1 genuinely-real item contributing), Gemini API (v1S.0.11, MAJOR REVISIONS,
+dispositioned above — 1 genuinely-real ESSENTIAL half-closed as S14, 2 more genuinely-real
+items, rest re-flags). **Per this lane's task directive and directive R2, the round budget for
+paper-su is now spent — R4 is the one board the S12 science decision unlocked, and it is
+closed. No further review round on paper-su without a new intervening science/scope decision.**
+Open, unchanged, non-blocking: S13 (initial-slice convention, needs a real derivation), S15
+(Appendix A5 $\lambda_g$ derivation, needs a real derivation, linked to S13), S16 (cosmetic
+MINORs, carried), S4 (self-containedness), S11 (Zenodo DOI), the Letter-vs-Brief-Report
+length/venue decision (Houston-gated).

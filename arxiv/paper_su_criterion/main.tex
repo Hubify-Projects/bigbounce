@@ -13,7 +13,7 @@
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\eps}{\epsilon}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1S.0.11}
+\newcommand{\paperVersion}{v1S.0.12}
 \newcommand{\paperTimestamp}{September 19, 2026}
 
 \begin{document}
@@ -88,9 +88,11 @@ discrepancy, not a small correction. Cai, Xue, Brandenberger \& Zhang's Eq.~(37)
 equal to the sum of their Eqs.~(27)--(32) and to Li, Quintin, Wang \& Cai's Eq.~(4.19) at
 $c_s=1$~\cite{Cai2009,LiQuintinWangCai2017} -- but their quoted amplitudes Eqs.~(38)--(41)
 and Fig.~5, including the isosceles value they print as $-35/8$, are uniformly twice
-Eq.~(37) in every configuration, so the correct isosceles amplitude is $-35/16$; \cite{Golden2026Monopole}
-locates this unprinted factor of $2$ downstream of Eq.~(37), in the amplitude-conversion
-step rather than in any vertex or commutator, and the from-scratch shape
+Eq.~(37) in every configuration, so the correct isosceles amplitude is $-35/16$; an
+equation-level comparison against the published arXiv e-prints of both
+papers~\cite{Golden2026CaiFactor} locates this unprinted factor of $2$ downstream of
+Eq.~(37) (App.~\ref{app:cai}), in the amplitude-conversion
+step rather than in any vertex or commutator, and \cite{Golden2026Monopole}'s from-scratch shape
 ($-35/16+\tfrac{15}{16}\mu^2$, monopole $-15/8$) then matches Cai \etal's Eq.~(37) monomial by
 monomial. Li \etal's $-35/16$ (their Eq.~5.1 at $c_s=1$) evaluates the same Eq.~(4.19); their
 rows are an independent general-$(\eps,c_s)$ derivation that coincides with Cai \etal's at
@@ -171,7 +173,7 @@ $f_{\delta N}^{\rm fin}=-\tfrac{15(\eps-4)}{4(\eps-3)}+\tfrac{15\eps}{4(3-\eps)}
 $f_{\delta N}^{\rm fin}=\tfrac{5[\eps(n_s-4)\mu^2-3\eps+12]}{4(\eps-3)}$ (App.~A4);
 $\mu=\hat k_L\!\cdot\!\hat k_S$. The two labels' monopoles agree, at $-5\eps/6$, only at
 $n_s=1$: $f_{\rm map}^{\rm fin}$'s monopole is $n_s$-independent, while $f_{\rm map}^{\rm init}$'s
-is $\frac{5\eps(2\eps-7+n_s)}{12(3-\eps)}$ (App.~A2); only the $n_s=1$ quadrupole is a pure
+is $\frac{5\eps(2\eps-7+n_s)}{12(3-\eps)}$ (App.~A3); only the $n_s=1$ quadrupole is a pure
 labelling convention.\footnote{Four geometric contributions to $f_{\rm map}^{\rm fin}$ each
 carry an overall factor of $\eps$: the shift/spatial-metric ($zlap$) term, the second-order
 metric perturbation, the gradient term, and the final-position worldline displacement. A
@@ -196,12 +198,15 @@ $-\tfrac{5}{18}(\eps-3)(\eps-6)$ itself vanishes.
 \includegraphics[width=\columnwidth]{fig_lambda_fmap.png}
 \caption{The linear rescaling $\lambda(w)=(1-w)/2$ (dimensionless, left axis) and the
 final-position second-order map monopole $f_{\rm map}^{\rm mono}(w)=-\tfrac54(1+w)$
-($n_s$-independent; equals the initial-position monopole only at $n_s=1$, App.~A2),
+($n_s$-independent; equals the initial-position monopole only at $n_s=1$, App.~A3),
 (dimensionless, right axis), Eq.~\eqref{eq:generalw}, for constant equation of state
 $-1\le w\le1$ at $c_s=1$. At $w=-1$ (attractor limit, $\eps=0$) $f_{\rm map}^{\rm mono}$
 vanishes and $\lambda\to1$, so the map is the identity; $\lambda$ vanishes at $w=1$
 (kination, the $m=3/\eps-1=0$ constant mode), a formal limit of the constant-$\eps$
-formula rather than a physically realized loss of linear response.}
+formula rather than a physically realized loss of linear response. The two axes are scaled
+so that $\lambda(w)$ and $f_{\rm map}^{\rm mono}(w)$ coincide exactly at every $w$ (both are
+affine in $w$ with the same slope sign), so only one visible curve is expected -- the dashed
+red line traces the solid blue line throughout.}
 \label{fig:lambda}
 \end{figure}
 
@@ -249,14 +254,16 @@ linear-order criterion above (Appendix~\ref{app:kc}).
 except USR). $I$ is the $\zeta$-growth-weighted mean of $\eps/c_s^2$; $\lambda=1-I/3$;
 $f^{\rm in\text{-}in}(\mu)$ the from-scratch in-in bispectrum and $f^{\rm in\text{-}in}_{\rm mono}$
 its monopole; $f_{\delta N}^{\rm init}$ the isotropic separate-universe value (initial-position
-label, the label the separate universe computes).}
+label, the label the separate universe computes). $^{*}$USR's $5/2$ entries are Namjoo,
+Firouzjahi \& Sasaki's~\cite{Namjoo2013} literature value, not derived in this note; the row
+tests only the structural order $I=O(\sqrt{\eps_s\eps_f})$.}
 \label{tab:validation}
 \begin{ruledtabular}
 \begin{tabular}{lcccccc}
 case & $I$ & $\lambda$ & $f^{\rm in\text{-}in}(\mu)$ & $f^{\rm in\text{-}in}_{\rm mono}$ & $f_{\delta N}^{\rm init}$ & result \\
 \hline
 $w{=}0$ scalar, $c_s{=}1$, $\eps=3/2$ & $3/2$ & $1/2$ & $-35/16+\tfrac{15}{16}\mu^2$ & $-15/8$ & $-5$ & $I=O(1)$: identification off by $25/8$ \\
-USR, $\eps\propto a^{-6}$ (not computed here) & $\ll1$ & $1+O(\sqrt{\eps_s\eps_f})$ & $5/2$ & $5/2$ & $5/2$ & $I=O(\sqrt{\eps_s\eps_f})$: agree to that order \\
+USR, $\eps\propto a^{-6}$ (not computed here)$^{*}$ & $\ll1$ & $1+O(\sqrt{\eps_s\eps_f})$ & $5/2$ & $5/2$ & $5/2$ & $I=O(\sqrt{\eps_s\eps_f})$: agree to that order \\
 attractor slow roll & $0$ & $1$ & $\tfrac{5}{12}(1-n_s)$ & same & same & $I=0$: identity map \\
 ekpyrosis, dominant mode & $0$ & $1$ & n/a ($\dot\zeta_L=0$) & same & same & $I=0$: consistency check ($\dot\zeta_L=0$ trivially) \\
 \end{tabular}
@@ -332,7 +339,7 @@ at constant $\eps$, with no transition required. The initial-position label used
 is the label in which the long mode's own Lagrangian displacement is undone (App.~A3), which
 is why the composed squeezed answer $f_{\delta N}^{\rm init}=-5$ is insensitive to the
 spectral tilt, while the final-position label's map is tilt-independent for the opposite
-reason -- its kernel carries no $1/k_L$ pole (App.~A2) -- so the two labels' composed
+reason -- its kernel carries no $1/k_L$ pole (App.~A3) -- so the two labels' composed
 results are $n_s$-independent for different reasons, and only the initial-position one stays
 fixed at exactly $-5$.
 
@@ -424,6 +431,7 @@ verified by the author against the committed script output.
 \bibitem{Naruko2012} A.~Naruko, Y.-i.~Takamizu, M.~Sasaki, arXiv:1210.6525 (2012).
 \bibitem{Golden2026Monopole} H.~Golden, ``$f_{\rm NL}$ monopole adjudication'' (unpublished note, commit \texttt{f3516042}, 2026-09-03), \url{https://github.com/Hubify-Projects/bigbounce/blob/main/research/theory_audit/fnl_monopole_adjudication_2026_09_03.md}.
 \bibitem{Golden2026Threading} H.~Golden, ``Threading map at second order'' (unpublished note, commit \texttt{a310bd90}, 2026-09-04), \url{https://github.com/Hubify-Projects/bigbounce/blob/main/research/theory_audit/threading_map_second_order_2026_09_04.md}.
+\bibitem{Golden2026CaiFactor} H.~Golden, ``Locating Cai et al.\ (2009)'s factor of two'' (unpublished note, commit \texttt{7222c91f}, 2026-09-05), \url{https://github.com/Hubify-Projects/bigbounce/blob/main/research/theory_audit/psu_gate_S7_cai_factor_2026_09_05.md}.
 
 \end{thebibliography}
 
@@ -588,5 +596,31 @@ reproduces both $\tfrac58(\eps-7)$ (uniform-density slice) and $-5$ (comoving sl
 $\eps$ from the same ADM monopole equations, so the two slice values, together with the
 in-in monopole $-\tfrac{15}{8}$ at dust, are three well-defined variables related by exact
 threading maps, not competing claims about one number.
+
+\subsection{The Cai et al.\ (2009) amplitude factor of two}
+\label{app:cai}
+
+Sec.~I's claim that Cai, Xue, Brandenberger \& Zhang's~\cite{Cai2009} quoted amplitudes are
+uniformly twice their own Eq.~(37) is an equation-level result against the published arXiv
+e-prints of both papers, not an assertion resting on an internal note alone. From
+\texttt{0903.0631} (Cai \etal) and \texttt{1612.02036} (Li, Quintin, Wang \&
+Cai~\cite{LiQuintinWangCai2017}): the sum of Cai's second-form rows Eqs.~(27), (28), (30),
+(32) equals their Eqs.~(34)--(36) identically in $\eps$, and at $\eps=3/2$ equals Eq.~(37)
+exactly under the \emph{distinct-monomial} reading of its $-66$ term (Cai's own
+six-permutation row convention instead gives the row sum minus $\tfrac{99}{128}\sum k_i^3$ --
+a genuine, separate notational inconsistency in how $\sum_{i\neq j\neq k}$ is read, not the
+source of the printed $-35/8$). Li's Eq.~(4.19) at $c_s=1$ equals the same row sum
+identically; their four rows differ from Cai's as polynomials in $\eps$ but agree with Cai's
+at $\eps=3/2$, so Li \etal\ re-derived the result at general $(\eps,c_s)$ rather than reusing
+Cai's rows. Testing four hypotheses against Cai's own printed Eqs.~(38)~$=-35/8$,
+(39)~$=-255/64$, (40)~$=-9/4$, (41)~$\mathcal A_T|_{\rm sq}=-\tfrac{21}{8}k^3$, and the
+digitized Fig.~5 curve, only a uniform factor of $2$ applied to $\mathcal A_T$ itself,
+downstream of Eq.~(37), reproduces all four printed configurations (isosceles, equilateral,
+folded, squeezed) and the figure; the row-convention ambiguity, the isosceles normalisation,
+and a $P$-vs-$2P$ or $f_{NL}$-side Wick-factor slip are each excluded (none reproduces more
+than one printed configuration). The specific unprinted operation between Eqs.~(37) and (38)
+cannot be named from the published text alone; the equation-level location is that Eq.~(37)
+is correct and Eqs.~(38)--(41) and Fig.~5 are uniformly $2\times$ Eq.~(37), giving the
+correct isosceles amplitude $-35/16$, not the printed $-35/8$~\cite{Golden2026CaiFactor}.
 
 \end{document}

@@ -149,9 +149,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-su",
       number: "SU",
       shortTitle: "Separate-universe failure criterion (short note)",
-      version: "v1S.0.11",
+      version: "v1S.0.12",
       readiness: 72,
-      pendingWork: "S12 RESOLVED+applied (v1S.0.10): f_deltaN^init=-5 for every constant eps and n_s. R4 Claude-opus leg (verdict-blind) then found and closed a real internal-consistency gap the S12 fix introduced (Sec. II/abstract/Fig.1 still stated the n_s=1-specific formulas as general) -> v1S.0.11; also fixed 2 wording slips in the S12 addition itself. 3 further real findings (initial-slice convention S13, Cai 2009 citation S14, Appendix A5 lambda_g derivation S15) are pre-existing and out of this lane's scope -- carried, non-blocking. Grok/Gemini API legs of R4 still not run (shared-checkout preflight gate).",
+      pendingWork: "R4 board COMPLETE (2026-09-19): Claude-opus leg (v1S.0.10) + Grok/Gemini API legs (v1S.0.11) all run and truth-audited -> v1S.0.12. 4 genuinely-real findings closed: S14's Cai-2009 citation (now backed by a new equation-level appendix), 3 App.~A2->A3 cross-reference errors, a Fig.1 caption clarity note, a Table I citation. S13 (initial-slice convention) and S15 (Appendix A5 lambda_g derivation) remain open real science gates needing a from-scratch derivation, not an edit. Per directive R2, paper-su's review-round budget is now spent -- no further board without a new science/scope decision.",
     },
     {
       slug: "paper-af",
