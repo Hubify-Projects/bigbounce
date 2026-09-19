@@ -1,8 +1,8 @@
 {
-  "holder": "Houstons-MacBook-Air",
-  "claimedUTC": "2026-08-05T06:41:42Z",
-  "expiresUTC": "2026-08-05T07:26:42Z",
-  "ttlMinutes": 45,
+  "holder": "code-you-2d-MacBookAir24GB",
+  "claimedUTC": "2026-09-19T05:38:02Z",
+  "expiresUTC": "2026-09-19T09:38:02Z",
+  "ttlMinutes": 240,
   "lastAction": "claim",
-  "seq": 1
+  "seq": 2
 }
