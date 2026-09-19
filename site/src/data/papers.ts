@@ -156,12 +156,12 @@ export const researchPrograms: ResearchProgram[] = [
     question:
       "What do DESI's public galaxy and spectral data show when tested directly against the rotating-black-hole-universe spin-axis prediction and scanned for early-universe anomalies \u2014 and what does that say about bounce vs. inflation?",
     result:
-      "C1 \u00b7 P4\u2032 (v4P.0.1) folds P5 into P4 as the largest test of Po\u0142awski's galaxy-spin-axis prediction: a null so far, excluding alignment fractions \u03b7 > 0.98% at \u226595% coverage, a factor of 2\u201320\u00d7 below literature claims. C2 (early-universe anomaly map) redirects the anomaly line from a bare data product to an explicit bounce-vs-inflation discriminator; P3 stands as its provenance/public-ID release until the map's autoencoder catalogue is earned. C3 (namaster-proof) is an optional software note.",
+      "C1 \u00b7 P4\u2032 (v4P.0.9) folds P5 into P4 as the largest test of Po\u0142awski's galaxy-spin-axis prediction: a null so far, excluding alignment fractions \u03b7 > 0.98% at \u226595% coverage, a factor of 2\u201320\u00d7 below literature claims. C2 (paper-af, vAF.0.3) is now a registered first full draft of the early-universe anomaly map: a 1,244-object DESI DR1 anomaly-score catalogue with a 16-item validation contract, reported honestly as a data release \u2014 ledger #8's pre-declared discovery condition is NOT met (no reference class clears the recovery bar). P3 remains its provenance/public-ID supporting release. C3 (namaster-proof) is an optional software note.",
     limitation:
-      "P4\u2032's exclusion bears on the black-hole-universe model's spin-axis claim only \u2014 it is not itself a bounce-cosmology detection. C2's catalogue is contingent on ledger #8 (known-object recovery benchmark) passing before it is drafted.",
+      "P4\u2032's exclusion bears on the black-hole-universe model's spin-axis claim only \u2014 it is not itself a bounce-cosmology detection. C2 (paper-af) is a validated data release, not a discovery: its taxonomy carries no material latent-space structure and the recovery benchmark clears no reference class at the pre-declared bar; no INT/EXT review board has closed on it yet (R1 in progress).",
     leadSlug: "paper-4p",
-    supportSlugs: ["paper-3", "paper-1b"],
-    status: "P4\u2032 fresh draft, review board not yet run. P3 is provenance support for the redirected anomaly map. P1B (namaster-proof) is an optional JOSS note.",
+    supportSlugs: ["paper-af", "paper-3", "paper-1b"],
+    status: "P4\u2032 at readiness 95, fresh exact-version confirmation in hand. Paper-af (anomaly-score catalogue) registered as a full first draft, R1 INT board in progress, readiness 60. P3 is provenance support for paper-af. P1B (namaster-proof) is an optional JOSS note.",
   },
 ];
 
@@ -996,6 +996,79 @@ export const papers: Paper[] = [
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/arxiv/paper_su_criterion",
+        kind: "secondary",
+        external: true,
+      },
+    ],
+  },
+  {
+    slug: "paper-af",
+    number: "AF",
+    publicationRole: "Track C2 · DESI Data Products (on-vision)",
+    standaloneSubmission: true,
+    title:
+      "A Provenance-Sealed Anomaly-Score Candidate Catalogue of DESI DR1 Spectra: Selection, Validation, and a Descriptive Taxonomy",
+    plainTitle:
+      "The DESI anomaly-map catalogue: a public list of the strangest-looking spectra, with an honest test of whether that tail is actually anomalous (result: a validated data release, not a discovery)",
+    version: "vAF.0.3",
+    lastUpdated: "2026-09-19",
+    tldr:
+      "Publishes a provenance-sealed candidate catalogue of 1,244 spectroscopically unusual DESI DR1 objects (the top 5.7×10⁻⁵ of 21,793,550 science-target spectra) with a 16-item validation contract. The anomaly score is uncorrelated with exposure quality/brightness (|ρₛ|<0.1), is driven almost entirely by the blue spectrograph arm, and the 25-cluster/8-family taxonomy carries no material latent-space structure — read as a stratification, not physical classes. A known-object recovery benchmark clears no reference class at the pre-declared bar, so this is reported as a validated data release, not a discovery (ledger #8 condition NOT met). The cheapest named follow-up test is executed, not deferred: a Legacy Survey Lyman-break check refutes one anomaly-selected z≥4 quasar candidate and supports another.",
+    path: publicationPath({}),
+    pages: "15",
+    refs: "—",
+    readiness: 60,
+    statusVariant: "amber",
+    target: "ApJS (candidate; catalogue + method paper with a large public data product)",
+    description:
+      "Track C2 of the 2026-09-02 portfolio restructure (directive R3): the early-universe anomaly map's first full manuscript, redirecting the anomaly line from a bare data product (P3) to an explicit, honestly-scoped catalogue release. An archived convolutional autoencoder, SHA-256-bound to a sealed run contract, scores every DESI DR1 iron science-target spectrum; 21,793,550 unique TARGETIDs pass the science-target provenance gate, and a pre-declared threshold yields the released 1,244-object catalogue. Every quoted number traces to a committed generator script and outputs/draft_numbers.json (directive Q2 reproducibility); ledger row 8's pre-declared discovery condition is stated as NOT met, per directive Q1/R6 (nulls stay nulls).",
+    keyResults: [
+      "28,425,963 raw rows deduplicate to 27,547,223 unique TARGETIDs; 21,793,550 pass the science-target provenance gate — the released 1,244 objects are the top 5.7×10⁻⁵ of that science-target population, not the all-fibre denominator",
+      "Above S=3, >99.5% of raw fibres in every score bin are sky/non-science fibres, and that fraction rises with score — a score cut alone does not select astrophysical objects; the provenance gate must be applied first",
+      "Anomaly score uncorrelated with exposure quality/brightness (|ρₛ|<0.1); driven almost entirely by the blue spectrograph arm (ρₛ=+0.53 vs. b-camera residual, vs. −0.04/−0.14 for r/z)",
+      "25-cluster/8-family descriptive taxonomy (built over 675 no-SIMBAD/NED-counterpart objects) carries no material latent-space structure (silhouette −0.016 vs. null −0.024) — a stratification of the candidate list, not physical classes",
+      "Known-object recovery benchmark against 5 reference classes clears no class at the pre-declared bar — reported as a validated data release, not a discovery (ledger #8 condition NOT met)",
+      "36 ZWARN=0 objects at z≥4 (16 at z≥6) in the full sample; of 4 anomaly-selected DESI-pipeline z≥4 quasar candidates with no catalogued counterpart, the released Legacy Survey photometry already refutes one (z=5.19, f_g=15× sample median) and supports one (z=4.33, Δχ²=4205); the remaining two are undecidable because the released schema omits flux inverse variances — one of four release defects recorded openly",
+      "4-pass compile: 0 undefined refs, 0 overfull hboxes >10pt, 15 pages; every number carries a trailing comment naming its committed artifact",
+    ],
+    surveys: ["DESI DR1 iron spectral release (science-target population)"],
+    predictions: ["Anomaly-score candidate catalogue (data release, not a detection claim)", "Descriptive taxonomy stratification", "Named follow-up target tiers"],
+    figures: [
+      "Score distribution + survival curve",
+      "Mollweide sky map",
+      "Per-camera residual diagnostics (blue-arm-driven result)",
+      "V12 latent-space silhouette vs. permutation null",
+    ],
+    remainingWork: [
+      "R1 INT board dispatched on the exact vAF.0.3 PDF: Claude-opus verdict-blind leg running (science-content-identical to vAF.0.2); Grok/Gemini API legs pending on the shared-checkout preflight gate",
+      "2 of 4 honest TODOs remain: the absent selection function (OT-1) and a Zenodo DOI",
+      "Convex registered (paperVersions:bump vAF.0.2→vAF.0.3, read-back verified); readiness 60 COMPUTED, no board closed yet",
+    ],
+    preprintId: "HUBIFY-2026-AF",
+    pdfMeta: "PDF · 15 pp · vAF.0.3 · created Sep 19, 2026 · md5 078505552a563eccee07ddd7ca81e811 — registered in Convex; ADS bibliography verification + acknowledgements section closed; R1 INT board in progress.",
+    changelog: [
+      "vAF.0.3: registered in Convex (papers:upsert slug paper-af, paperVersions:bump vAF.0.2→vAF.0.3, byte-identical mirrors to site/public/papers + public/papers). Closed 2 of LA's 4 open TODOs: ADS-verified the 4 uncommitted-artifact bibliography citations (all already correct, no bibliography text changed) and replaced the acknowledgements placeholder with the DESI DR1 standard funding/land acknowledgement, SIMBAD/NED/VizieR service acknowledgements, a compute-cost acknowledgement, and the lab's AI-assisted-methodology disclosure paragraph. 4-pass compile clean: 0 errors, 0 undefined refs/cites, 0 overfull hboxes >10pt, 15 pages (unchanged). Zenodo DOI and OT-1 selection function remain open.",
+      "vAF.0.2: full first draft (from the vAF.0.1 skeleton): 15pp, 9 figures, 11 tables, 0 undef refs, 0 overfull hboxes, all 7 artifact links resolve. Corrected the science-target parent to 21,793,550 unique TARGETIDs (not the 27,547,223 all-fibre figure); found 36 ZWARN=0 objects at z≥4 (16 at z≥6); executed the cheapest named follow-up test (FT-A Lyman-break check refutes one z=5.19 candidate, supports one z=4.33 candidate, 2 undecidable on a released-schema flux-inverse-variance gap — a fourth release defect recorded). Corrected the benchmark enrichment against the fairer science-target denominator (4.2× → 3.3×; still short of the 10× bar, conclusion unchanged). No review board run yet; not registered as a Convex-tracked paper slug at this version.",
+      "vAF.0.1: manuscript skeleton assembled from the phase-3-v2 landing (7pp, revtex4-2). Provenance gate re-run clean on both released tables (9/9 artifact sha256 match); 16-item validation contract built (13 PASS, 2 disclosed defects); 8-family/25-cluster per-family evidence table; 32 named follow-up targets in 5 tiers; directive-Q2 reproducibility manifest.",
+    ],
+    artifacts: [
+      { label: "Read PDF", href: "/papers/anomaly_flagship_vAF.0.3.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/anomaly_flagship_vAF.0.3.pdf", kind: "secondary", download: true },
+      {
+        label: "LaTeX source",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p1_highz_tracers/anomaly_flagship_draft",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Figure/table generator",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p1_highz_tracers/flagship_assembly_2026-09-18/scripts/make_draft_figures.py",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "Supporting release: DESI public-ID recovery (P3)",
+        href: "https://doi.org/10.5281/zenodo.21461888",
         kind: "secondary",
         external: true,
       },

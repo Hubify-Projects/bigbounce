@@ -105,6 +105,19 @@
       "site_surface": "site/src/data/papers.ts researchPrograms[bounce-theory].supportingLinks (program-level supporting link, not a papers[] entry)",
       "note": "P1B's MCMC companion manuscript. Not one of the six campaign papers, but its PDF is mirrored under served roots. Canonical-owner resolution: surfaced 2026-08-05 as a first-class supporting validation dossier under the bounce-theory research program on /paper and /papers, per project-context/PAPER_LINEAGE_2026-08-05.md §Decision record item 2. Modeled as a program-level supporting link rather than a papers[] entry so it does not pick up version-chip/PDF-mirror/publication-path machinery it doesn't have."
     },
+    "AF": {
+      "tex_path": "pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex",
+      "pdf_path": "pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf",
+      "site_slug": "paper-af",
+      "served_aliases": [
+        "anomaly_flagship.pdf",
+        "anomaly_flagship_vAF.0.2.pdf",
+        "anomaly_flagship_vAF.0.3.pdf"
+      ],
+      "status": "active-drive-to-100",
+      "venue_candidate": "ApJS",
+      "note": "Anomaly-flagship catalogue paper (Program 2 / Track C2 primary; P3 is its integrated support release). Not one of the six campaign papers, so registered here (like P1C) so tools/verify_pdf_mirror_integrity.py's reverse-direction PDF-mirror-integrity check recognizes its served mirrors as canonical rather than orphaned. Its \\paperVersion tokens (vAF.0.2, vAF.0.3, ...) use a letter-only prefix (no leading digit before the letter), so they do not match served_pdf_policy.immutable_archive_name_patterns either -- this companion_manuscripts registration is the only path that makes its versioned aliases pass the gate. Registered by lane LR1, 2026-09-19; also tracked in project-context/draft_paper_registry.json (the auxiliary draft-paper registry used by tools/v3_native_pdf_review.py and directive-G tooling)."
+    },
     "P1C": {
       "tex_path": "arxiv/paper1c_nogo_survey/main.tex",
       "pdf_path": "arxiv/paper1c_nogo_survey/main.pdf",

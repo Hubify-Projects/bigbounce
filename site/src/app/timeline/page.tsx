@@ -61,7 +61,7 @@ const events: Array<{ time: string; label: string; desc: ReactNode }> = [
   {
     time: "~1 Gyr",
     label: "First galaxies",
-    desc: "Galaxies form from primordial perturbations. BigBounce's historical DESI pipeline records are unreconciled and do not establish a high-redshift population or a bounce connection; the anomaly flagship is being rebuilt.",
+    desc: "Galaxies form from primordial perturbations. BigBounce's early-universe anomaly map (paper-af) is now a registered first draft: a 1,244-object DESI DR1 anomaly-score catalogue, reported as a validated data release rather than a bounce-vs-inflation discovery — the pre-declared discovery condition is not yet met.",
   },
   {
     time: "9.8 Gyr",

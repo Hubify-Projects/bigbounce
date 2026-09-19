@@ -25,7 +25,7 @@ export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
  * multi-channel consistency flagship paper, paper-a3m) is added on the same
  * basis after its 2026-09-02 registration.
  */
-export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P" | "P2L" | "A3" | "PSU";
+export type RoundPaperId = PaperId | "P1U" | "P1C" | "P1N" | "P4P" | "P2L" | "A3" | "PSU" | "AF";
 
 export interface ReviewRoundLink {
   label: string;
@@ -66,6 +66,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "paper-af-registered-convex-vaf-0-3-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "closure-wave",
+    title: "Paper-af registered in Convex as the campaign's 12th tracked block -- vAF.0.2 -> vAF.0.3",
+    papers: ["AF"],
+    summary:
+      "Lane LR1 of the 2026-09-18 publication-push campaign registered the anomaly-score catalogue (paper-af) as a Convex-tracked paper for the first time: papers:upsert (slug paper-af) + paperVersions:bump (vAF.0.2 then vAF.0.3), both read back and verified, with byte-identical mirrors to site/public/papers/ and public/papers/ (canonical alias anomaly_flagship.pdf plus versioned aliases). This closes 2 of LA's 4 open TODOs from the vAF.0.2 full draft: ADS-verified the 4 uncommitted-artifact bibliography citations (all already correct; no bibliography text changed) and replaced the acknowledgements placeholder with the DESI DR1 standard funding/land acknowledgement, SIMBAD/NED/VizieR service acknowledgements, a compute-cost acknowledgement, and the lab's AI-assisted-methodology disclosure paragraph. 4-pass pdflatex recompile clean: 0 errors, 0 undefined refs/cites, 0 overfull hboxes >10pt, 15 pages (unchanged from vAF.0.2 -- the edits are additive prose only, no science number changed). Readiness computes to 60 in Convex (a fresh registration with 0 boards closed yet, not a hand-set number). A Claude-opus verdict-blind INT referee leg (the first leg of the paper's R1 board) was dispatched against the exact vAF.0.3 PDF in the background; the Grok and Gemini API legs remain queued behind the shared-checkout preflight gate (site/src/data/live-status.ts and papers.ts were mid-edit by concurrent campaign lanes). This is the paper's first appearance in Convex, papers.ts, live-status.ts, and publish.ts -- it had existed only as a draft_paper_registry.json entry and an unregistered PDF before this lane.",
+    keyTakeaways: [
+      "Paper-af is now the campaign's 12th Convex-tracked paper block (alongside P1A/P1B/P1N/P2/P2L/P3/P4/P4P/P5/A3M/PSU); the site's papers.ts/live-status.ts/publish.ts entries were added in the same reconciliation pass as this timeline entry",
+      "The ADS bibliography check and acknowledgements section closed with zero science-content changes -- readiness stays computed at 60, not hand-advanced by a presentation-only bump",
+      "R1's first leg (Claude-opus) is running against the exact vAF.0.3 PDF; Grok/Gemini legs are queued on the same shared-checkout preflight contention that has recurred across every lane sharing site/src/data/*.ts this campaign",
+    ],
+    links: [
+      { label: "paper-af registry entry", href: `${GH}/project-context/draft_paper_registry.json` },
+      { label: "anomaly flagship source", href: `${GH}/pipelines/p1_highz_tracers/anomaly_flagship_draft` },
+      { label: "commit f7e85cd3", href: `${GH_COMMIT}/f7e85cd3` },
+    ],
+  },
   {
     id: "psu-r4-claude-opus-leg-closed-v1s-0-11-2026-09-19",
     dateISO: "2026-09-19",

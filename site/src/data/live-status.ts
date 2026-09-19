@@ -153,6 +153,14 @@ export const liveStatus: LiveStatus = {
       readiness: 72,
       pendingWork: "S12 RESOLVED+applied (v1S.0.10): f_deltaN^init=-5 for every constant eps and n_s. R4 Claude-opus leg (verdict-blind) then found and closed a real internal-consistency gap the S12 fix introduced (Sec. II/abstract/Fig.1 still stated the n_s=1-specific formulas as general) -> v1S.0.11; also fixed 2 wording slips in the S12 addition itself. 3 further real findings (initial-slice convention S13, Cai 2009 citation S14, Appendix A5 lambda_g derivation S15) are pre-existing and out of this lane's scope -- carried, non-blocking. Grok/Gemini API legs of R4 still not run (shared-checkout preflight gate).",
     },
+    {
+      slug: "paper-af",
+      number: "AF",
+      shortTitle: "DESI anomaly-score catalogue (Track C2 flagship draft)",
+      version: "vAF.0.3",
+      readiness: 60,
+      pendingWork: "Registered in Convex 2026-09-19 (papers:upsert + paperVersions:bump vAF.0.2->vAF.0.3, byte-identical mirrors to site/public/papers + public/papers). Closed 2/4 open TODOs: ADS-verified bibliography citations, real acknowledgements section. R1 INT board dispatched on the exact vAF.0.3 PDF: Claude-opus verdict-blind leg running; Grok/Gemini API legs pending (shared-checkout preflight gate). Open TODOs: absent selection function (OT-1), Zenodo DOI. Readiness 60 COMPUTED -- no board closed yet.",
+    },
   ],
   blockerTally: {
     closed: 920,
