@@ -186,3 +186,63 @@ No paper `.tex`, SSOT, site, or Convex edit (P4' belongs to lane L4). No
 RunPod. No `git add -A`. Only the row-16 status cell of
 `project-context/NEXT_SCIENCE_LEDGER.md` is touched, re-read immediately
 before editing.
+
+---
+
+# ADDENDUM A1 (2026-09-19, committed before the statistic it governs was run)
+
+**Why.** The pre-registered post-hoc crop diagnostic, evaluated on the partial
+checkpoint, shows that the 106 px centre crop is not benign: only **69.0%** of
+galaxies keep the class they have under the committed uncropped 150 px
+preprocessing. The crop is common-mode between `X_φ` and `Y_φ`, so it cannot
+manufacture a parity asymmetry; but it can make the classifier intrinsically
+noisier, and the S5b dilution bound `D ≤ 1 − d(θ)` is a bound on the *released*
+pipeline, which does not crop. A `d` inflated by the crop would make that bound
+look stronger than it is — the one direction in which an error here would
+matter.
+
+**What is added.** For rotations by multiples of 90° no crop is needed at all: a
+150×150 image rotated by 90/180/270° is still 150×150 and the rotation is a
+lossless pixel permutation. A second inference stage therefore recomputes, for
+`θ ∈ {0, 90, 180, 270}` and the identical committed sample and checkpoint,
+
+    A'_θ = Resize₂₂₄( Rot_θ( I ) )        A'_θ,M = Resize₂₂₄( Rot_θ( M I ) )
+
+i.e. **the exact released preprocessing** (`Resize((224,224))` on the full
+cutout, as in `run_injection_scale20k.py`), with no crop and no interpolation
+anywhere in the chain. The angle set is closed under negation mod 360, so the
+production equivariant triple at each θ follows in closed form as before.
+
+**Statistic (unchanged in form).** `d_nocrop(θ) = P(L(0) ≠ L(θ))` on galaxies
+labelled spiral at both orientations, and the bound
+`D ≤ 1 − max_{θ∈{90,180,270}} d_nocrop(θ)`, with the same 1,000-resample
+galaxy-level cluster bootstrap. `θ = 180` is reported separately as the
+assumption-free anchor: a cutout rotated by 180° depicts the same galaxy at the
+same position angle (PA is defined mod 180°), so the two error rates are equal
+by construction and no PA-uniformity argument is needed at all.
+
+**Threshold.** Unchanged: a deficit is declared only if the effect exceeds 3σ of
+its cluster-bootstrap error. `d_nocrop` is the number that will be propagated to
+P4′; the cropped-grid `d` and `ε(φ)` are reported beside it, never instead of
+it, and if `d_nocrop` comes back consistent with 0 the whole bound is reported
+as a null at its achieved precision.
+
+**Positive control, unchanged:** `θ = 0` and `θ = 180` must satisfy the exact
+TTA identity `eq_cw(Y) = eq_ccw(X)` at machine precision.
+
+# ADDENDUM A2 — recorded deviations from the original text
+
+1. **S2 wording.** The original S2 said the hard-class exact-swap fraction must
+   be `1.000000`. The claim it encodes is the identity on the equivariant
+   triples; the class swap is that identity composed with `argmax`, which is
+   undefined at an exact `eq_cw == eq_ccw` tie. Such ties exist (a saturated
+   galaxy at `eq = (0.5, 0.5, 7×10⁻¹²)`), and `argmax` then sends both `X` and
+   `Y` to CW. S2 is therefore evaluated as: identity residual exactly `0.0`,
+   **and** class-swap fraction exactly 1 among non-tied galaxies, with the tie
+   count reported.
+2. **S6 axis source.** The pre-registration cited the strict-subset dipole axis
+   as coming from `../full_parent/row16i_full_parent_dipole.json`. That file
+   carries the *full-parent* axis (278.63°, +25.32°); the strict-887,472 axis
+   (195.5°, −57.2°) is in
+   `../full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md` line 95. Both splits are
+   reported.
