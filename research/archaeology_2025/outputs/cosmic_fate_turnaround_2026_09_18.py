@@ -361,6 +361,29 @@ def main():
         "rows": rta_rows,
     }
 
+    # ---- (D) what the historical "M_crit" criterion actually reduces to ------
+    # Applying M_encl > Lambda c^2 r^3/(3G) to a homogeneous sphere,
+    # M_encl = (4 pi/3) rho_m r^3, cancels r^3 entirely and leaves
+    #   rho_m > Lambda c^2/(4 pi G) = 2 rho_Lambda,  i.e.  Om (1+z)^3 > 2 OL,
+    # which is exactly the condition for cosmic DECELERATION (addot < 0),
+    # not for recollapse.
+    rho_lambda_over_rho_crit0 = OMEGA_L_PLANCK
+    one_plus_z_acc = (2.0 * OMEGA_L_PLANCK / OMEGA_M_PLANCK) ** (1.0 / 3.0)
+    out["D_historical_Mcrit_reduces_to_deceleration"] = {
+        "identity": "M_encl > Lambda c^2 r^3/(3G) with M_encl=(4pi/3) rho_m r^3  <=>  rho_m > 2 rho_Lambda",
+        "deceleration_condition": "addot < 0  <=>  Omega_m (1+z)^3 > 2 Omega_Lambda",
+        "Omega_m": OMEGA_M_PLANCK,
+        "Omega_Lambda": rho_lambda_over_rho_crit0,
+        "one_plus_z_acceleration_onset": one_plus_z_acc,
+        "z_acceleration_onset": one_plus_z_acc - 1.0,
+        "a_acceleration_onset": 1.0 / one_plus_z_acc,
+        "note": (
+            "the universe satisfied the historical M_crit inequality at every "
+            "z above this value and still never recollapsed; the inequality is "
+            "a statement about the sign of addot, not about the fate."
+        ),
+    }
+
     here = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(here, "cosmic_fate_turnaround_2026_09_18.json")
     with open(path, "w") as fh:

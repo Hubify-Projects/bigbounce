@@ -1,6 +1,6 @@
 {
   "script": "cosmic_fate_turnaround_2026_09_18.py",
-  "generated_utc": "2026-09-18T23:56:27+00:00",
+  "generated_utc": "2026-09-19T00:05:32+00:00",
   "worker": "W3",
   "memo": "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md",
   "inputs": {
@@ -347,5 +347,15 @@
         "M_crit_historical_form_Msun": 999999999999991.0
       }
     ]
+  },
+  "D_historical_Mcrit_reduces_to_deceleration": {
+    "identity": "M_encl > Lambda c^2 r^3/(3G) with M_encl=(4pi/3) rho_m r^3  <=>  rho_m > 2 rho_Lambda",
+    "deceleration_condition": "addot < 0  <=>  Omega_m (1+z)^3 > 2 Omega_Lambda",
+    "Omega_m": 0.315,
+    "Omega_Lambda": 0.685,
+    "one_plus_z_acceleration_onset": 1.6323126179796772,
+    "z_acceleration_onset": 0.6323126179796772,
+    "a_acceleration_onset": 0.6126277460488578,
+    "note": "the universe satisfied the historical M_crit inequality at every z above this value and still never recollapsed; the inequality is a statement about the sign of addot, not about the fate."
   }
 }
