@@ -31,8 +31,17 @@ headline quantity for 11 days. **Exit decision: the R3VERIFY round is CLOSED
 gate S12** (Gemini's finding that the translation-term monopole's exact
 vanishing was derived assuming $n_s=1$, not verified at general constant-$\eps$)
 — see `project-context/peer-reviews/DISPOSITIONS/PSU.md` for the full
-citation and required follow-up derivation. No further review round on
-`paper-su` until S12 is resolved or Houston explicitly defers it.**
+citation and required follow-up derivation. **S12 was RESOLVED on 2026-09-19
+by campaign lane `bb-LS3-psu-s12`
+(`research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.{py,md,json}`,
+independently adjudicated): CLOSED-WITH-CORRECTION — the translation term does
+carry a nonzero $(n_s-1)$ monopole, but an exactly compensating in-in term
+cancels it, so $f_{\delta N}^{\rm init}\equiv-5$ holds for every constant
+$\eps$ AND every $n_s$ (stronger than the paper states). S12 is therefore no
+longer a science gate; what remains is a PRESENTATION correction to
+Appendix A2/A3/A4 (sentences P1–P5 in the derivation note's §"Printable"),
+owned by a separate manuscript lane — no `main.tex` edit, version bump, or
+review board was done by the S12 lane. See the Close-the-gap section below.**
 
 ## v1S.0.2 closure summary (this bundle)
 
@@ -110,10 +119,34 @@ term), both local CPU, \$0, under 5 seconds total compute.
 
 ## Close-the-gap section (open items, as of v1S.0.9 — superseded the v1S.0.2-era list below)
 
-- **S12 (gating, new 2026-09-18)**: translation-term monopole generality —
-  requires a from-scratch derivation of the trace part at general
-  (non-scale-invariant) constant-ε. No further review round until this is
-  resolved or Houston defers it. See `DISPOSITIONS/PSU.md` §S12.
+- **S12 (RESOLVED 2026-09-19, campaign lane `bb-LS3-psu-s12`) — CLOSED-WITH-CORRECTION;
+  NO LONGER GATING.** The from-scratch derivation was done:
+  `research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.{py,md,json}`
+  (exact sympy; solves the linearised ADM constraints rather than assuming
+  Maldacena's solution; rebuilds the label-change kernel from the displacement
+  ξ alone and reproduces the committed `lab_init + wl_initextra` exactly; full
+  n_s=1 validation battery against every committed and printed value passes
+  before any general-tilt claim; finite-k_L numeric guard on the series
+  extraction). Manifest
+  `reproducibility/manifests/experiments/psu-gate-s12-translation-trace.json`
+  (local CPU, 27 s, $0). **Gemini was right about the mechanism:** the trace
+  never vanishes (∂_i ξ^i = ε ζ_L exactly) and
+  T(ε,μ,n_s) = 5ε/(4(3−ε))·[1 − 3μ² + (n_s−1)μ²], monopole
+  5ε(n_s−1)/(12(3−ε)) ≠ 0; the growing branch carries
+  n_s − 1 = 2(2ε−3)/(ε−1), which vanishes only at ε=3/2. **But the paper's
+  result survives unconditionally:** the in-in shape carries an exactly
+  compensating −(5ε/12)(n_s−1)μ², so f_δN^init ≡ −5 for every constant ε AND
+  every n_s — the residual vanishes identically before n_s(ε) is substituted,
+  i.e. the −5 is *stronger* than the paper claims, not weaker. An independent
+  blind `fable` adjudicator returned the same verdict and the same seven
+  expressions (re-checked symbolically in script §S9) and caught two further
+  n_s=1-specific printed statements (Appendix A2's "both with monopole −5ε/6";
+  the printed in-in shape). **Carried forward as a PRESENTATION item, not a
+  science gate:** Appendix A2/A3/A4 wording must be corrected and the −5 claim
+  strengthened — ready-to-paste sentences P1–P5 are in the derivation note's
+  §"Printable". That manuscript edit plus directive-G hygiene is a *separate
+  lane's* job; this lane did not touch `main.tex`, did not bump the version,
+  and ran no review board. See `DISPOSITIONS/PSU.md` §S12.
 - S4 (self-containedness): partially open — Gemini's R3VERIFY MAJOR holds
   that the ADM constraint *solve* itself, not just its listed results, is
   not reproduced in-paper. Non-blocking per directive R2's genre exception.

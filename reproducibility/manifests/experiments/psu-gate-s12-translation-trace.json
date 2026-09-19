@@ -1,0 +1,86 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "psu-gate-s12-translation-trace",
+  "title": "PSU science gate S12: from-scratch derivation of the translation term's trace part at general constant-epsilon (non-scale-invariant), and the exact n_s-independence of the composed f_deltaN^init = -5",
+  "program": "bounce-theory",
+  "paper": "P-SU",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "S12 gate statement (Gemini R3VERIFY pass-2 finding, not closed at the time)",
+      "locator": "project-context/peer-reviews/DISPOSITIONS/PSU.md",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "paper-su v1S.0.9 Appendix A2/A3 (the T(eps,mu) claim under test)",
+      "locator": "arxiv/paper_su_criterion/main.tex",
+      "type": "internal-artifact",
+      "checksum": null
+    },
+    {
+      "name": "committed threading-map kernels (psi2/grad/zlap/wl_fin/wl_initextra/lab_init) used only as an independent cross-check of the from-scratch translation kernel, and as the map kernels re-assembled at general tilt",
+      "locator": "research/theory_audit/threading_map_second_order_2026_09_04.json",
+      "type": "internal-artifact",
+      "checksum": "sha256:b961e8678c3e8eb27df881600982cf2ce0b97ece902e3873835a9d0ac4d91cf7"
+    },
+    {
+      "name": "committed general-eps in-in vertex set (T1/T3/T4 + two field-redefinition pieces), re-run here with a general external power-spectrum tilt",
+      "locator": "research/theory_audit/fnl_monopole_adjudication_2026_09_03_general_eps.py",
+      "type": "internal-artifact",
+      "checksum": "sha256:0c30afe73b8080e5443fa2af28461782a8a5a01bdebe147830f57f5563d447d7"
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.py",
+      "entrypoint": "python3 research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.py",
+      "sha256": "8b39192bde377ce42b1569b79d18746b197f173066ee1e88be04ed62feb5dd6e"
+    }
+  ],
+  "environment": {
+    "python": "python 3.14.6, sympy 1.14.0",
+    "hardware": "cpu-only",
+    "network": "none",
+    "data": "none"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "local macOS workstation",
+    "date": "2026-09-19",
+    "wall_clock": "27 s",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 minute",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Deterministic exact sympy. The script is self-validating: it SOLVES the linearised ADM Hamiltonian+momentum constraints for (alpha_1, psi_1) rather than asserting Maldacena's solution, derives the long-mode Lagrangian displacement xi and its trace/shear split, builds the translation kernel from xi alone, and only then cross-checks it against the committed lab_init+wl_initextra. All general-tilt claims are gated behind a full s=0 validation battery against every committed and printed value."
+  },
+  "outputs": [
+    {
+      "locator": "research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.json",
+      "type": "result-json",
+      "checksum": "sha256:eaf940c03fd3b006199937c82b7be41f230d7d694983e4b6a6941fa435060f3a"
+    },
+    {
+      "locator": "research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and diff the JSON. Required keys/values: S2_trace.div_xi_over_zetaL == 'epsilon' (the trace does NOT vanish); S2_translation_kernel.agree == true; S4_validation_s0.T == '5*epsilon*(3*mu**2 - 1)/(4*(epsilon - 3))' with T_monopole == '0' and composed == '-5'; S5_general_tilt.T_monopole_of_s == '-5*epsilon*s/(12*(epsilon - 3))' (nonzero for s = n_s-1 != 0) and pole_g.final == '0'; S6_ns_of_eps.n_s_minus_1 == '3 - 2*Abs(1/2 - 1/(epsilon - 1))' with validated {eps=3/2: 0, eps->0: 0, eps->oo: 2}; S7_inin_and_composition.delta_f_inin == '-5*epsilon*mu**2*s/12' and residual_composed_plus_5 == '0' and composed_at_physical_ns == '-5'. Any assertion failure aborts the run with a nonzero exit code. Sections S8 (finite-k_L numeric convergence, errors falling as (k_L/k_S)^2) and S9 (reconciliation against an independent blind 'fable' adjudicator: seven expressions, all agree) must also pass; S9 additionally asserts that f_map^init's monopole equals -5*eps/6 ONLY at n_s=1 and that the printed in-in shape is the n_s=1 shape.",
+  "status": "runnable-now",
+  "provenance": [
+    "directive Q2 (per-experiment reproducibility manifests)",
+    "directive /never-fabricate-derivation: every claim in the .md carries a script line or an equation reference",
+    "campaign CAMPAIGN_2026-09-18_publication_push.md, lane bb-LS3-psu-s12",
+    "scope: closes DISPOSITIONS/PSU.md gate S12 with verdict (b) CLOSED-WITH-CORRECTION -- the trace part does NOT vanish identically (delta T = 5 eps (n_s-1) mu^2 / (4(3-eps))), but an exactly compensating in-in term -(5 eps/12)(n_s-1) mu^2 cancels it after the 1/lambda of the composition, so f_deltaN^init = -5 exactly for every constant eps AND every n_s",
+    "arxiv/paper_su_criterion/main.tex NOT edited by this lane; the Appendix A3 wording fix + directive-G hygiene is the next lane's job (printable sentences in the .md section 'Printable')",
+    "independently adjudicated: one blind 'fable' sub-agent, run once, not shown this script or its conclusion, returned the same verdict (b) and the same seven expressions (script S9); it also caught two further n_s=1-specific printed statements now carried in the note's Printable section"
+  ]
+}

@@ -128,6 +128,64 @@ not dismissed** — requires a from-scratch derivation of the translation term's
 general (non-scale-invariant) $\eps$ before this can be dispositioned either way. This is now the
 gating item for any further review round on `paper-su`.
 
+**S12 — DISPOSITION (2026-09-19, campaign lane `bb-LS3-psu-s12`): CLOSED-WITH-CORRECTION.**
+From-scratch exact-sympy derivation:
+`research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.{py,md,json}`; manifest
+`reproducibility/manifests/experiments/psu-gate-s12-translation-trace.json` (local CPU, 27 s, \$0).
+The script **solves** the linearised ADM Hamiltonian + momentum constraints for
+$(\alpha_1,\psi_1)$ rather than assuming Maldacena's solution, integrates
+$\xi^i=\int N^i\,dt$ along the fluid worldline, and builds the label-change kernel from $\xi$
+alone — that kernel reproduces the committed `lab_init + wl_initextra` exactly. The full $s=0$
+validation battery (per-piece $f$'s, $f^{\rm fin}_{\rm map}$, $f^{\rm init}_{\rm map}$, both
+monopoles $-5\eps/6$, $T$, the composed $-5$, dust $-15/8$ / $25/8$ / $8/3$ /
+$-25/4+\tfrac{15}{4}\mu^2$, the $\eps\to0$ USR row) passes **before** any general-tilt claim is
+made, and a finite-$k_L$ numeric re-evaluation at $k_L/k_S=10^{-2..-4}$ confirms the series
+extraction (errors falling as $(k_L/k_S)^2$).
+
+**Gemini's premise is CORRECT; the printed Appendix A3 clause is wrong as written.** The trace
+never vanishes — $\partial_i\xi^i=\eps\,\zeta_L$ exactly — and at general tilt
+$T(\eps,\mu,n_s)=\frac{5\eps}{4(3-\eps)}\big[1-3\mu^2+(n_s-1)\mu^2\big]$, monopole
+$\frac{5\eps(n_s-1)}{12(3-\eps)}\neq0$. A constant-$\eps$ background is not scale-invariant: the
+growing branch these kernels correlate carries $n_s-1=2(2\eps-3)/(\eps-1)$ (equal to the
+late-time dominant-mode index $3-2|1/(\eps-1)-1/2|$ exactly for $1<\eps<3$), vanishing at
+$\eps=3/2$. Also established: $f^{\rm fin}_{\rm map}$ is tilt-**independent** (its kernel carries
+no $1/k_L$ pole), so the entire tilt-sensitivity of the map is the translation term Gemini named.
+
+**But the paper's result SURVIVES, unconditionally — and is stronger than stated.** Re-running
+the committed general-$\eps$ in-in assembly with $P(k)=k^{n_s-4}$ (legitimate without touching
+the vertices: those second-order kernels are bilinear in two linear modes whose $k$-dependent
+amplitudes factor out, so the tilt enters only through the external power-spectrum weights; the
+$s=0$ re-derivation reproduces $\frac{5}{12}(\eps^2\mu^2-\eps^2+6\eps-12)$ exactly) gives
+$\delta f^{\rm in\text{-}in}=-\frac{5\eps}{12}(n_s-1)\mu^2$, and
+$\delta f^{\rm in\text{-}in}/\lambda=-\delta T$ **term by term in $\mu$**. Hence
+$f^{\rm init}_{\delta N}=f^{\rm in\text{-}in}/\lambda+f^{\rm init}_{\rm map}=-5$ exactly, for
+every constant $\eps$ **and every $n_s$** — the residual vanishes identically *before*
+$n_s(\eps)$ is substituted, so the verdict does not depend on the mode-function calculation.
+Physically, the initial-position label is precisely the label in which the long mode's
+Lagrangian displacement is undone. Every headline number is untouched ($\eps=3/2$ has $n_s=1$).
+
+**Independent blind adjudication (one `fable` sub-agent, run once, not shown this lane's script
+or conclusion): SAME verdict, same mechanism.** All seven expressions it reported are re-checked
+symbolically in script §S9 and agree exactly. It additionally caught **two printed statements
+this lane had not flagged**, both confirmed: (i) Appendix A2's "both with monopole $-5\eps/6$"
+is $n_s=1$-specific — the initial-label map monopole is $\frac{5\eps(2\eps-7+n_s)}{12(3-\eps)}$,
+while the final-label one is $-5\eps/6$ for any $n_s$; (ii) the printed $f^{\rm in\text{-}in}$
+shape is the $n_s=1$ shape. It also noted, correctly, that $f^{\rm fin}_{\delta N}$ *is*
+$n_s$-dependent, $\frac{5[\eps(n_s-4)\mu^2-3\eps+12]}{4(\eps-3)}$ — the expected asymmetry.
+
+**Required manuscript changes (NOT made by this lane):** Appendix A3's clause "the trace part
+vanishes at $n_s=1$" and the label "monopole $0$ (all $\eps$)"; Appendix A2's "both with monopole
+$-5\eps/6$"; the Appendix A4 in-in shape's $n_s=1$ labelling; and the $-5$ claim can be
+**strengthened** to "for every constant $\eps$ and every spectral index". Ready-to-paste
+sentences P1–P5 are in the derivation note's §"Printable". The manuscript edit plus directive-G
+hygiene (version bump, 4-pass recompile, `/latex-audit`, byte-identical PDF re-mirror to all
+served paths, Convex `paperVersions:bump`) is the **next lane's** job — no `main.tex` edit, no
+version bump, and no review board was run here.
+
+**Gate status: S12 CLOSED (with the manuscript corrections above pending).** It is no longer the
+blocker on a further review round; remaining `paper-su` open items are S4, S8, S11 and the
+venue/length decision, all non-blocking.
+
 **Directive R2 (updated 2026-09-18):** R3VERIFY is the one round the intervening S7–A2 science
 decisions unlocked. It found and closed 2 ESSENTIAL + 3 MAJOR genuinely-new-real defects in
 v1S.0.9 (see round table above). It also surfaced S12, a genuinely-new, unresolved science
