@@ -51,7 +51,7 @@
   pdfnewwindow=true
 }
 
-\newcommand{\paperVersion}{vAF.0.2}
+\newcommand{\paperVersion}{vAF.0.3}
 \newcommand{\paperTimestamp}{September 19, 2026}
 \newcommand{\repoSHA}{main}
 % #1 = repo-relative path (raw, used in the URL); #2 = short display text.
@@ -1031,8 +1031,51 @@ selection, a stratified candidate list, and a named list of the tests it has
 not yet passed.
 
 \begin{acknowledgments}
-\TODO{DESI collaboration and facility acknowledgements; SIMBAD/NED/VizieR
-service acknowledgements; compute acknowledgement}
+This research used data obtained with the Dark Energy Spectroscopic
+Instrument (DESI).  DESI construction and operations is managed by the
+Lawrence Berkeley National Laboratory.  This material is based upon work
+supported by the U.S. Department of Energy, Office of Science, Office of
+High-Energy Physics, under Contract No. DE--AC02--05CH11231, and by the
+National Energy Research Scientific Computing Center, a DOE Office of
+Science User Facility under the same contract.  Additional support for DESI
+was provided by the U.S. National Science Foundation (NSF), Division of
+Astronomical Sciences under Contract No. AST-0950945 to the NSF's National
+Optical-Infrared Astronomy Research Laboratory; the Science and Technology
+Facilities Council of the United Kingdom; the Gordon and Betty Moore
+Foundation; the Heising-Simons Foundation; the French Alternative Energies
+and Atomic Energy Commission (CEA); the National Council of Humanities,
+Science and Technology of Mexico (CONAHCYT); the Ministry of Science and
+Innovation of Spain (MICINN), and by the DESI Member Institutions:
+\url{https://www.desi.lbl.gov/collaborating-institutions}.  The DESI
+collaboration is honored to be permitted to conduct scientific research on
+I'oligam Du'ag (Kitt Peak), a mountain with particular significance to the
+Tohono O'odham Nation.  Any opinions, findings, and conclusions or
+recommendations expressed in this material are those of the author and do
+not necessarily reflect the views of the U.S. National Science Foundation,
+the U.S. Department of Energy, or any of the listed funding agencies.
+
+This research has made use of the SIMBAD database \cite{SIMBAD}, operated
+at CDS, Strasbourg, France; the NASA/IPAC Extragalactic Database (NED),
+which is funded by the National Aeronautics and Space Administration and
+operated by the California Institute of Technology; and the VizieR
+catalogue access tool, CDS, Strasbourg, France, all queried through
+astroquery \cite{Ginsburg2019}.
+
+All computation for this manuscript's assembled numbers (Sec.~\ref{app:software})
+ran locally on the author's own hardware at zero incremental cost. The
+upstream scan and characterisation stage (Sec.~2) used a single low-cost
+RunPod GPU rental (\$1.31 total); no proprietary or allocated compute time
+was used.
+
+\emph{AI-assisted methodology.}---AI coding and review tools, operated
+under the author's direction, assisted with implementation review,
+documentation, manuscript drafting and revision, and adversarial
+cross-checking and adversarial review. Their outputs were not treated as
+evidence: all catalogue assertions reported here were accepted only after
+direct checking against the machine-readable artifacts, committed code, and
+local or public-source validation. The author set the study scope, made the
+scientific judgments, and takes full responsibility for the manuscript. No
+AI system is an author or is credited as one.
 \end{acknowledgments}
 
 \appendix
@@ -1045,14 +1088,16 @@ Matplotlib \cite{Hunter2007}, Apache Arrow/PyArrow \cite{ApacheArrow}, and
 astroquery \cite{Ginsburg2019} for the SIMBAD, NED and VizieR queries. Exact
 versions are recorded in the reproducibility manifest.
 
-\TODO{final bibliography verification pass against ADS before submission.
-The five recovery-benchmark reference-class citations
-(Refs.~\cite{Gibson2009,Massaro2015,RitterKolb2003,Ouchi2008,Perley2016})
-are taken verbatim from the committed benchmark artifact, except the
-journal/volume/page of Ref.~\cite{RitterKolb2003}, which the artifact does
-not carry; the software citations
-(Refs.~\cite{Pedregosa2011,Hunter2007,Ginsburg2019}) are not recorded in any
-committed artifact either. Verify those four before submission.}
+The four citations not recorded in any committed benchmark artifact
+(Ref.~\cite{RitterKolb2003}'s journal/volume/page, and the three software
+citations Refs.~\cite{Pedregosa2011,Hunter2007,Ginsburg2019}) were verified
+against ADS for this manuscript (2026-09-19): Ritter \& Kolb 2003, Astron.\ Astrophys.\ \textbf{404}, 301
+(ADS bibcode 2003A\&A...404..301R); Pedregosa \etal\ 2011, J.\ Mach.\ Learn.\
+Res.\ \textbf{12}, 2825 (JMLR volume 12 official record); Hunter 2007,
+Comput.\ Sci.\ Eng.\ \textbf{9}, 90 (ADS bibcode 2007CSE.....9...90H); and
+Ginsburg \etal\ 2019, Astron.\ J.\ \textbf{157}, 98 (ADS bibcode
+2019AJ....157...98G, arXiv:1901.04520). All four entries below already
+carried the correct values; no bibliography text changed.
 
 \begin{thebibliography}{99}
 

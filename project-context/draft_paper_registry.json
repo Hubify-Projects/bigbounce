@@ -162,18 +162,21 @@
   "AF": {
     "tex_path": "pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex",
     "pdf_path": "pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf",
-    "site_slug": null,
+    "site_slug": "paper-af",
     "target_journal": "ApJS (candidate; catalogue + method paper with a large public data product)",
     "article_type": "provenance-sealed DESI DR1 anomaly-score candidate catalogue: selection, validation contract, descriptive taxonomy, named follow-up set (Program 2 / Track C2 primary paper; P3 is its integrated support release)",
     "review_profile": "ApJS-CATALOG",
-    "served_aliases": [],
-    "version": "vAF.0.2",
+    "served_aliases": [
+      "anomaly_flagship_vAF.0.2.pdf",
+      "anomaly_flagship_vAF.0.3.pdf"
+    ],
+    "version": "vAF.0.3",
     "pages": 15,
     "date": "2026-09-19",
-    "sha256": "b972d890cf5b907eec0a7bf614dac5ba5647502efe3ee907533e4b3f96dd4cba",
-    "md5": "de97bde2a7769b382b7e71a17a8c1d18",
+    "sha256": "d85487e97f6856040d12ef78b78ab57ce4d74fc6420d6664013cdc9651c17b41",
+    "md5": "078505552a563eccee07ddd7ca81e811",
     "review_paths": [],
-    "status": "first full draft; no review board run yet (director decides the first R-round). Not mirrored to site/public/papers or Convex.",
+    "status": "registered (lane LR1, 2026-09-19): mirrored byte-identical to site/public/papers/, public/papers/ (canonical + versioned alias); Convex papers:upsert (slug paper-af) + paperVersions:bump vAF.0.2 then vAF.0.3 done, read-back verified. vAF.0.2->vAF.0.3 closed 2/4 LA TODOs (ADS bib verification, acknowledgements). R1 INT board in progress: Claude-opus leg dispatched against vAF.0.2 sha b972d890 (verdict-blind, science-content-identical to vAF.0.3 -- only acks/appendix differ); Grok+Gemini API legs pending against vAF.0.3 exact PDF.",
     "evidence_root": "pipelines/p1_highz_tracers/flagship_assembly_2026-09-18"
   }
 }
