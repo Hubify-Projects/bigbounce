@@ -67,6 +67,24 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "autolog-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "skill-improvement",
+    title:
+      "Skill/process autolog: legacy-2025 archaeology campaign opened (ledger #20–#22) + Convex live-monitoring helper",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Auto-generated from git log --since=2026-09-08: 1 skill/process/tooling commit found (1 bigbounce, 0 scistack). Commit 95affd13 opened the legacy-2025 archaeology campaign (Houston's March–July 2025 pre-BigBounce notes audited as provenance, not science; plan + live status board under research/archaeology_2025/) and added tools/archaeology_activity_add.mjs, a generic activityFeed:add helper so campaign lanes post live events to the public activity feed without a per-event script. Tooling counter 44→45; patterns/promptRules unchanged at 79/42. Campaign constraints: no active manuscript edits; existing nulls stay closed; outputs publish to the Open Questions (/speculations) and Research Genealogy (/genealogy) layers only.",
+    keyTakeaways: [
+      "Campaign lanes now post live-monitoring events via one reusable helper instead of per-event scripts — bigbounce 95affd13",
+      "Legacy-2025 archaeology opened ledger items #20 (cosmic fate), #21 (black-hole daughter universes), #22 (parent–child bookkeeping)",
+    ],
+    links: [
+      { label: "commit 95affd13", href: `${GH_COMMIT}/95affd13` },
+      { label: "campaign plan", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/archaeology_2025/PLAN.md" },
+    ],
+  },
+  {
     id: "brand-pass-reverted-2026-09-08",
     dateISO: "2026-09-08",
     kind: "skill-improvement",
@@ -11376,6 +11394,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "autolog-2026-09-04", dateISO: "2026-09-04", patterns: 79, promptRules: 42, tooling: 42, note: "Auto-logged 9 skill/process/tooling commit(s) since 2026-09-03 (8 bigbounce, 1 scistack): skills-autolog housekeeping; P3 anomaly catalogue v2 data-release doc; A3M v3M.0.12 paperVersion bump + Fig. 1 regeneration with publication labels (directive I6); site redesign /reviews grid + six-lane pattern logging; full-reproduction pass kickoff (directive Q2); SIGW nHz reproducibility manifest (directive Q2); scistack generated skill-index refresh. patterns/promptRules/tooling unchanged — process/doc/science wave, no new catalog entry or standalone tool." },
   { id: "autolog-2026-09-07", dateISO: "2026-09-07", patterns: 79, promptRules: 42, tooling: 44, note: "Auto-logged 2 skill/process/tooling commit(s) since 2026-09-05 (both bigbounce, +2 new tools/ scripts): tools/su_convex_bump_v1S_0_8.mjs and tools/a3m_convex_bump_v3M_0_24.mjs, the routine per-round Convex bump scripts for the A2 lapse-monopole reconciliation wave (paper-su v1S.0.8, A3M v3M.0.24). patterns/promptRules unchanged at 79/42; tooling 42->44." },
   { id: "brand-pass-reverted-2026-09-08", dateISO: "2026-09-08", patterns: 79, promptRules: 42, tooling: 44, note: "Brand-unification pass on the lab site (2026-09-08, commits fa5a8211..eae25baf) REVERTED at Houston's direction (commit 00d769ea): synced Hubify tokens with a teal accent override, a five-act homepage recomposition, journal-style paper pages, mark/lockup components and the tools/sync_brand_tokens.sh sync script are all removed; the 2026-09-04 design he approved is restored byte-for-byte. Process learning, not a tooling delta (counters unchanged at 79/42/44): the lab site is the REFERENCE standard for the portfolio's visual language -- Hubify moves toward it (more white space, calmer minimalism, its palette), never the reverse; a cross-property brand pass must be proposed against the reference and approved before any lane touches the reference itself. The shared brand system, token file and coordination notes remain in the hubify repo for that property's own use." },
+  { id: "autolog-2026-09-18", dateISO: "2026-09-18", patterns: 79, promptRules: 42, tooling: 45, note: "Auto-logged 1 skill/process/tooling commit since 2026-09-08: bigbounce 95affd13 opened the legacy-2025 archaeology campaign and added tools/archaeology_activity_add.mjs, a generic Convex activityFeed:add helper for campaign live-monitoring events (tooling 44→45). No new catalog pattern or reviewer-prompt rule; patterns/promptRules unchanged at 79/42." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
