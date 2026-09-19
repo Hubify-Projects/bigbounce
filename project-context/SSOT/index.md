@@ -170,7 +170,7 @@ agent gates are complete for 7 of the 11 tracked papers (P1A, P1B, P2, P3
 support, P4, P4P, P5), so each of those is **95**. P1N cleared its D-round and
 P-round on 2026-09-18 and sits at **99** (packaging kit assembled, only
 Houston's sign-off remains). A3M and P-SU sit below 95 (readinessCap pinned at
-75 and 70 respectively — active-drive-to-100 legs, not hand-set) and P2L is
+75 and 72 respectively — active-drive-to-100 legs, not hand-set) and P2L is
 archived at 20 (theory record, folded into A3M). Only Houston's explicit
 per-paper sign-off moves a 95-or-99 paper to **100**.
 
@@ -203,10 +203,10 @@ a standalone paper. P5 remains a standalone AJ companion to P4.
 | A3M | `research/track_a3_multichannel/paper/main.tex` | v3M.0.24 | 75 | Track A flagship; readinessCap pinned at 75, ROUNDS STOPPED under directive R2 until a science decision reopens the board; R9 board in progress (campaign lane L1); see `project-context/SSOT/paper-a3m/status.md` |
 | P3 support | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r17 | 95 | Supporting Data Release · DESI Public-ID Recovery; integrate with anomaly flagship; no standalone ApJS submission |
 | P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.274 | 95 | Superseded by P4P (fold, `PAPER_LINEAGE_2026-08-05.md` §(b)); core chirality paper retained; Houston sign-off precedes ApJS submission |
-| P4P | `pipelines/p4prime_chirality_test/paper/main.tex` | v4P.0.7 | 95 | Track C1 (P4+P5 folded), Poplawski spin-axis exclusion; exact-version INT confirmation board in progress (campaign lane L4); see `project-context/SSOT/paper-4p/status.md` |
+| P4P | `pipelines/p4prime_chirality_test/paper/main.tex` | v4P.0.8 | 95 | Track C1 (P4+P5 folded), Poplawski spin-axis exclusion; exact-v4P.0.7 INT confirmation board closed 7 genuinely-new-real MAJOR + 12 MINOR (campaign lane L4, DONE 2026-09-18 23:13 PT) → v4P.0.8; Houston sign-off next; see `project-context/SSOT/paper-4p/status.md` |
 | P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | Superseded by P4P (fold, `PAPER_LINEAGE_2026-08-05.md` §(b)); standalone AJ companion retained; Houston sign-off precedes AJ submission |
 | P1C | `arxiv/paper1c_nogo_survey/main.tex` | frozen v1C.0.16 | — | **FROZEN, merged into P1N** (`PAPER_LINEAGE_2026-08-05.md` §(a)); review churn stopped after R13; content lives on in the P1N Note, not a standalone submission target |
-| P-SU | `arxiv/paper_su_criterion/main.tex` | v1S.0.8 | 70 | R2-verification INT board in progress (campaign lane L2); see `project-context/SSOT/paper-su/status.md` |
+| P-SU | `arxiv/paper_su_criterion/main.tex` | v1S.0.9 | 72 | R3VERIFY (campaign lane L2, DONE 2026-09-18 23:10 PT) closed 2 ESSENTIAL + 3 MAJOR genuinely-new-real defects → v1S.0.9; open science gate S12 (n_s=1 translation-monopole assumption) gates the next round; see `project-context/SSOT/paper-su/status.md` |
 
 P5's target-program-by-environment interaction remains an honestly disclosed
 systematic limitation; convergence does not turn that conditional null into a
