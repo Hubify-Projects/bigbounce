@@ -166,8 +166,11 @@ but contain superseded P1U identities, caps, versions, and campaign objectives.
 
 Publication readiness = science 25 + evidence/reproducibility 25 + automated
 convergence 25 + packaging/PDF hygiene 20 + Houston sign-off 5. The first four
-agent gates are complete for the six current candidates, so each is **95**.
-Only Houston's explicit per-paper sign-off moves that paper to **100**.
+agent gates are complete for 8 of the 11 tracked papers (P1A, P1B, P1N, P2, P3
+support, P4, P4P, P5), so each of those is **95**. A3M and P-SU sit below 95
+(readinessCap pinned at 75 and 70 respectively — active-drive-to-100 legs, not
+hand-set) and P2L is archived at 20 (theory record, folded into A3M). Only
+Houston's explicit per-paper sign-off moves a 95-paper to **100**.
 
 Automated convergence means zero genuinely-new-real findings are outstanding
 across active Grok API, Gemini API, and Claude Opus INT legs. Raw verdict words
@@ -190,14 +193,18 @@ a standalone paper. P5 remains a standalone AJ companion to P4.
 
 | Paper | Canonical source | Version | Readiness | Publishing state |
 |---|---|---:|---:|---|
-| P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | CQG packet; Houston sign-off and portal work next |
-| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.20 | 95 | Batch 3 (R7) + PyMaster crosscheck integrated; one verification board permitted next |
+| P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | Superseded by P1N (merge, `PAPER_LINEAGE_2026-08-05.md` §(a)); CQG packet retained; Houston sign-off and portal work next |
+| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.23 | 95 | Batch 3 (R7) + PyMaster crosscheck integrated; one verification board permitted next |
+| P1N | `arxiv/paper1bc_ech_note/main.tex` | v1N.0.5 | 95 | Track B closed-line ECH Note (P1A+P1C merged); D-round/P-round in progress (campaign lane L3); see `project-context/SSOT/paper-1n/status.md` |
 | P2 | `research/focused_paper_source_integration/02_full_draft.tex` | v1.7.130 | 95 | PRD packet; Houston sign-off and APS portal work next |
+| P2L | `arxiv/paper2prime_fnl_letter/main.tex` | v2L.0.2 | 20 | Archived theory record (folded into A3M per lineage 2026-09-02 evening decision); not an active submission target |
+| A3M | `research/track_a3_multichannel/paper/main.tex` | v3M.0.24 | 75 | Track A flagship; readinessCap pinned at 75, ROUNDS STOPPED under directive R2 until a science decision reopens the board; R9 board in progress (campaign lane L1); see `project-context/SSOT/paper-a3m/status.md` |
 | P3 support | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r17 | 95 | Supporting Data Release · DESI Public-ID Recovery; integrate with anomaly flagship; no standalone ApJS submission |
-| P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.274 | 95 | Core chirality paper; Houston sign-off precedes ApJS submission |
-| P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | Standalone Companion · Chirality–Environment Null Test; Houston sign-off precedes AJ submission |
-| P1C | `arxiv/paper1c_nogo_survey/main.tex` | draft-extraction v1C.0.1 | — | **NEW DRAFT — not yet in review pipeline.** No-go barrier survey extracted from paper1_unified.tex sec:barriers; see `project-context/SSOT/paper-1c/status.md` |
-| P-SU | `arxiv/paper_su_criterion/main.tex` | v1S.0.1 | 40 | **NEW DRAFT — not yet in review pipeline.** Separate-universe failure criterion note, spun out of A3M Appendix A; see `project-context/SSOT/paper-su/status.md` |
+| P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.274 | 95 | Superseded by P4P (fold, `PAPER_LINEAGE_2026-08-05.md` §(b)); core chirality paper retained; Houston sign-off precedes ApJS submission |
+| P4P | `pipelines/p4prime_chirality_test/paper/main.tex` | v4P.0.7 | 95 | Track C1 (P4+P5 folded), Poplawski spin-axis exclusion; exact-version INT confirmation board in progress (campaign lane L4); see `project-context/SSOT/paper-4p/status.md` |
+| P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.147-2026-08-03 | 95 | Superseded by P4P (fold, `PAPER_LINEAGE_2026-08-05.md` §(b)); standalone AJ companion retained; Houston sign-off precedes AJ submission |
+| P1C | `arxiv/paper1c_nogo_survey/main.tex` | frozen v1C.0.16 | — | **FROZEN, merged into P1N** (`PAPER_LINEAGE_2026-08-05.md` §(a)); review churn stopped after R13; content lives on in the P1N Note, not a standalone submission target |
+| P-SU | `arxiv/paper_su_criterion/main.tex` | v1S.0.8 | 70 | R2-verification INT board in progress (campaign lane L2); see `project-context/SSOT/paper-su/status.md` |
 
 P5's target-program-by-environment interaction remains an honestly disclosed
 systematic limitation; convergence does not turn that conditional null into a
