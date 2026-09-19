@@ -67,6 +67,45 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "publication-push-campaign-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "skill-improvement",
+    title:
+      "Multi-lane publication-push campaign opened: 6 file-disjoint paper lanes + a continuous site/SSOT truthfulness integrator",
+    papers: [],
+    summary:
+      "Houston authorized launching multiple dedicated Claude Code sessions to push every non-frozen paper toward its maximum agent-reachable readiness in parallel, per the goal plan at project-context/campaigns/CAMPAIGN_2026-09-18_publication_push.md. Six lanes own disjoint files (A3M R9 board; the one permitted P-SU R2 board; P1N D-round + P-round; P4P exact-version INT confirmation; the anomaly-flagship data-release architecture; refreshed Houston sign-off packets), plus a seventh lane (this one) running continuously as the site+SSOT truthfulness integrator rather than a bounded round: verify the freshness gate and tsc, build a Convex-vs-tex-vs-site truth table across all 11 tracked papers, and fix any static surface that disagrees with Convex (the only readiness source). First pass: freshness gate + tsc both clean; all 11 papers.ts/live-status.ts rows already matched Convex's listAllPaperStates exactly (including A3M's readinessCap=75 and P-SU's =70, which are real pins from directive-R2 rounds-stop decisions, not drift); SSOT/index.md's top-board table was missing P1N/P4P/A3M rows entirely and carried stale P1B/P-SU/P1C versions, now reconciled; and 39 legacy static pages plus astro/chat-widget.js were discovered pointing their ConvexHttpClient at a dead, empty deployment (impressive-quail-879) instead of the canonical brilliant-panther-471, silently breaking activity.html's live feed and the old site's chat history — repointed and verified.",
+    keyTakeaways: [
+      "Campaign pattern: bounded per-paper round lanes (file-disjoint writes) plus one continuous site/SSOT truthfulness integrator lane that re-reconciles after every lane's commit, rather than a single end-of-campaign sync pass",
+      "Convex's listAllPaperStates query is the correct one-shot ground-truth source for a cross-paper readiness truth table — static mirrors (papers.ts, live-status.ts, SSOT headers) should be diffed against it directly rather than assumed current",
+      "Found a real, previously-undocumented bug: 39 old-static-site files were wired to a dead third Convex deployment (impressive-quail-879), distinct from both the documented canonical (brilliant-panther-471) and legacy-prod (scintillating-cow-269) deployments in AGENT_ONBOARDING.md §6.2",
+    ],
+    links: [
+      { label: "Campaign plan", href: `${GH}/project-context/campaigns/CAMPAIGN_2026-09-18_publication_push.md` },
+    ],
+  },
+  {
+    id: "p1n-d-round-p-round-v1n-0-6-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "closure-wave",
+    title: "P1N D-round (visual) + P-round (packaging) complete → v1N.0.6; SSOT reconciled from stale v1N.0.4/v1N.0.2 headers",
+    papers: ["P1N"],
+    summary:
+      "Lane L3 of the 2026-09-18 publication-push campaign found the R-phase already closed (v1N.0.5, DP1N-57 abstract-length item closed 2026-09-02) but SSOT/paper-1n/status.md and DISPOSITIONS/P1N.md had never been updated past v1N.0.4/v1N.0.2 headers — reconciled first. D-round: fresh 4-pass recompile (0 undef refs, 1 pre-existing 4.5pt residual overfull hbox under the >10pt gate), all 11 pages rendered at 100dpi and visually spot-checked — no overflow, tables fit in-column, artifact list renders as filenames not floated blocks. P-round: /artifact-link-verify found 0 broken links (8 pinned GitHub blob links + 1 tree link resolve at commit ded46bc5, 3 self-citation Zenodo DOIs + repo root HTTP 200); /bib-tarball-rebuild caught a genuine defect — references.bib carried one orphaned unused entry (Weinberg1989, left over from the DP1N-47 citation removal) — fixed, now exactly 30 cited == 30 bib == 30 bbl. arXiv tarball rebuilt from scratch and standalone-smoke-tested (0 undef refs, 11pp, clean extract to a fresh temp dir, no repo context). CQG submission kit assembled (abstract, categories, cover letter, DAS); ORCID public-status gate (D5) re-verified resolved (HTTP 200); arXiv gr-qc endorsement (D4) remains Houston-only, not a CQG-submission blocker. No science content changed. Convex readinessCap raised 95→98 (D-round)→99 (P-round).",
+    keyTakeaways: [
+      "v1N.0.6: D-round clean (0 fixes needed beyond a pre-existing sub-gate overfull hbox), P-round verified (0 broken links, 1 orphaned bib entry pruned)",
+      "arXiv tarball rebuilt and standalone-smoke-tested clean; CQG submission kit assembled",
+      "SSOT status.md + DISPOSITIONS/P1N.md reconciled to the paper's actual current version (a prior session's v1N.0.5 abstract-trim closure was never written back)",
+      "Readiness ladder: 95 (stale manual override) → 98 (D-round) → 99 (P-round); 100 remains Houston-only sign-off",
+    ],
+    links: [
+      { label: "P1N SSOT", href: `${GH}/project-context/SSOT/paper-1n/status.md` },
+      { label: "P1N dispositions", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P1N.md` },
+      { label: "CQG submission kit", href: `${GH}/project-context/SSOT/CQG_SUBMISSION_KIT_P1N_2026-09-18.md` },
+      { label: "arXiv tarball v1N.0.6", href: `${GH}/project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.6.tar.gz` },
+    ],
+  },
+  {
     id: "autolog-2026-09-18",
     dateISO: "2026-09-18",
     kind: "skill-improvement",
