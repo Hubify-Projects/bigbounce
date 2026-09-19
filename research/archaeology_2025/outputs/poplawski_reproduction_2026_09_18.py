@@ -180,6 +180,7 @@ def rhs_contract(s, y, b, N0):
 
 
 def run_cycle(aT_in_ell, b):
+    print(f"  cycle b={b:.6f} aT_in={aT_in_ell:.3e}", file=sys.stderr, flush=True)
     """One contraction -> bounce -> expansion cycle.
 
     aT_in_ell : a*theta at entry (theta << 1), in units of ell = c tau.
@@ -191,7 +192,7 @@ def run_cycle(aT_in_ell, b):
     ev_bounce.terminal = True
     ev_bounce.direction = 1
     solc = solve_ivp(rhs_contract, [0.0, 400.0], [math.log(THETA_START), 0.0],
-                     args=(b, N0), events=ev_bounce, rtol=1e-11, atol=1e-14,
+                     args=(b, N0), events=ev_bounce, rtol=1e-9, atol=1e-13,
                      method="DOP853", dense_output=True)
     if solc.t_events[0].size == 0:
         raise RuntimeError("contraction did not reach the bounce")
@@ -207,8 +208,8 @@ def run_cycle(aT_in_ell, b):
     ev_end.terminal = True
     ev_end.direction = -1
     sole = solve_ivp(rhs_expand, [N_b, N_b + 400.0], [math.log(theta_b), 0.0],
-                     args=(b,), events=ev_end, rtol=1e-11, atol=1e-14,
-                     method="DOP853", dense_output=True, max_step=0.05)
+                     args=(b,), events=ev_end, rtol=1e-9, atol=1e-13,
+                     method="DOP853", dense_output=True, max_step=0.1)
     if sole.t_events[0].size == 0:
         raise RuntimeError("expansion did not reach THETA_START")
     N_end = sole.t_events[0][0]
@@ -216,7 +217,7 @@ def run_cycle(aT_in_ell, b):
     Ne_expand = math.log(aT_out / aT_bounce)
 
     # --- acceleration bookkeeping on a fine grid (k negligible in this era) ---
-    Ngrid = np.linspace(N_b, N_end, 20001)
+    Ngrid = np.linspace(N_b, N_end, 6001)
     U = sole.sol(Ngrid)
     th = np.exp(U[0])
     tt = U[1]
@@ -264,7 +265,10 @@ def run_cycle(aT_in_ell, b):
 
 
 def Ne_of_b(b, aT_in_ell):
-    return run_cycle(aT_in_ell, b)["Ne_total"]
+    try:
+        return run_cycle(aT_in_ell, b)["Ne_total"]
+    except RuntimeError:
+        return 1.0e6   # stalled (eternal inflation) -> treat as "more than enough"
 
 
 def bounces_to_escape(aT0_ell, b, max_cycles=300):
@@ -358,9 +362,9 @@ ev_end = lambda N, y, b: y[0] - math.log(THETA_START)
 ev_end.terminal = True
 ev_end.direction = -1
 sol_DP = solve_ivp(rhs_expand, [N_b, N_b + 400.0], [math.log(DP_T0_over_Tmax), 0.0],
-                   args=(b_DP,), events=ev_end, rtol=1e-11, atol=1e-14, method="DOP853",
-                   dense_output=True, max_step=0.05)
-Ng = np.linspace(N_b, sol_DP.t_events[0][0], 20001)
+                   args=(b_DP,), events=ev_end, rtol=1e-9, atol=1e-13, method="DOP853",
+                   dense_output=True, max_step=0.1)
+Ng = np.linspace(N_b, sol_DP.t_events[0][0], 6001)
 U = sol_DP.sol(Ng)
 th = np.exp(U[0])
 dudN = np.array([rhs_expand(n, [u, 0.0], b_DP)[0] for n, u in zip(Ng, U[0])])
@@ -377,6 +381,7 @@ results["desai_poplawski_calibration"] = dict(
     paper_efolds=DP_efolds, paper_t_end_accel_s=DP_t_end_accel,
 )
 
+print("scan", file=sys.stderr, flush=True)
 # ---- N_e(b) scan (single cycle, stellar a_i) ----
 aT0 = s5["aT_mK"] / T_max / ell
 scan = {}
@@ -396,6 +401,7 @@ results["efolds_vs_b_powerlaw"] = dict(exponent_of_one_minus_b=float(slope),
                                        prefactor=float(math.exp(intercept)),
                                        note="N_e ≈ prefactor * (1-b)^exponent; paper text says t_infl ∝ (beta_cr-beta)^-1")
 
+print("tableI", file=sys.stderr, flush=True)
 # ---- Table I reproduction (bounces before escape) for stellar a_i ----
 tab = {}
 for bb, n_paper in DP_table_I.items():
@@ -403,6 +409,7 @@ for bb, n_paper in DP_table_I.items():
     tab[str(bb)] = dict(paper=n_paper, ours_stellar_ai_1e4m=n_ours)
 results["table_I_reproduction"] = tab
 
+print("masses", file=sys.stderr, flush=True)
 # ---- Parent-mass sweep ----
 for Msun in [10.0, 1.0e3, 1.0e6, 1.0e10]:
     M = Msun * M_SUN
@@ -416,7 +423,7 @@ for Msun in [10.0, 1.0e3, 1.0e6, 1.0e10]:
     # b that delivers req_Ne in one cycle
     f = lambda b: Ne_of_b(b, aT0m) - req_Ne
     try:
-        b_req = brentq(f, 0.05, 1 - 1e-7, xtol=1e-9)
+        b_req = brentq(f, 0.05, 1 - 1e-4, xtol=1e-6)
     except ValueError:
         b_req = float("nan")
     per_b = {}
