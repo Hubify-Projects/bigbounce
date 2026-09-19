@@ -1,7 +1,111 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.7 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** 95 (unchanged) — row-16 disclosure + BGS environment result integrated; Houston sign-off read should use v4P.0.7.
+**Current candidate:** v4P.0.8 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** 95 (unchanged) — exact-v4P.0.7 confirmation board closed, all 7 genuinely-new-real MAJOR findings fixed; Houston sign-off read should use **v4P.0.8**, sha256 `e8f1969e415777622561dde0f21a8ac7d6398c3b2ef55f69200ba50a89d91cd2`, 14 pages.
+
+## Exact-v4P.0.7 confirmation board closed (v4P.0.7 → v4P.0.8, 2026-09-18)
+
+Campaign 2026-09-18 lane L4, criterion A1′. R3 (2026-09-02) converged v4P.0.4
+and declared rounds stopped per directive-R2, but the three disclosure
+results added afterward (v4P.0.5–v4P.0.7: pixel-level calibration,
+full-parent selection behavior, structure cross-correlations, row-16(iv-b)
+BGS environment) had never been independently reviewed. This board ran an
+exact-v4P.0.7 INT confirmation (Grok API `grok-4.3` + Gemini API
+`gemini-3.1-pro-preview` + a Claude opus INT sub-agent, verdict-blind, full
+repo access) scoped to that new content.
+
+**7 genuinely-new-real MAJOR findings, all independently re-verified against
+source documents before closure (not accepted from the reviewer text alone),
+all fixed with real edits, none required new computation except one
+disclosure:**
+
+1. Full-parent QC-cut attribution was inverted relative to source
+   (`ROW16IB_AXIS_SHIFT_2026-09-04.md`): the manuscript said removing
+   `primary_hc` restores the null; the source shows the opposite cut does.
+2. The source's own per-imaging-leg table shows the *primary* 887,472-galaxy
+   channel's drop-one-leg fits reaching z>4 (amplitudes 1.4–2.2%, above
+   $A_{95}^{\rm obs}=0.98\%$) — omitted from the manuscript, which quoted
+   only the full-parent leg rows. Now disclosed.
+3. The new BGS-projected and structure-battery channels silently ran on the
+   pre-QC 949,584-galaxy sample (not the 887,472-galaxy primary channel),
+   mischaracterized as a "photometric/no-redshift subset." Now disclosed
+   with the correct selection and its nesting with the spec-z subset.
+4. Appendix claimed no low-$z$ void catalog was available, directly
+   contradicting Sec. 4's own use of the DESIVAST low-$z$ void catalog. Fixed
+   to the true, narrower scope (no 3D density-*field* product, as opposed to
+   the hole-membership catalog used elsewhere).
+5. The stated reason for not testing Shamir's axis misattributed a scope
+   limitation of this manuscript's own citation-only treatment to the cited
+   literature itself (contradicted by this paper's own bibliography titles).
+   Reworded to the true, narrower scope.
+6. Two of four Data-Availability reproducibility-manifest pointers resolved
+   to the wrong experiment — the pixel-calibration item pointed at an
+   explicitly superseded, inconclusive $N=500$ pilot rather than the real
+   $N=20{,}000$ production manifest, and the structure-battery item pointed
+   at the QC-sweep manifest instead of its own. Both fixed; the previously
+   unregistered `row16-image-level-injection-n20k` manifest is now registered
+   in `reproducibility/manifests/programs/galaxy-chirality.json`.
+7. **Science-honesty disclosure (not a science-conclusion change):** the new
+   pixel-level calibration measurement ($dA/df=+0.0167$) implies an
+   observed-to-physical transfer ratio (÷ naive label identity) of $\approx
+   0.038$ — roughly 10× smaller than the illustrative bridge $g=0.398$
+   Assumption 2 of the Sec. 5 exclusion carries. Propagated at face value
+   this would move the physical floor to $\approx26\%$, under which most
+   literature amplitudes in Table 5 would fall below rather than above the
+   floor. The manuscript previously reported the pixel measurement but
+   discussed only its benign (leakage-suppression) reading without
+   cross-referencing $g$. **Per `/never-fabricate-derivation`, this is not
+   resolved by a new derivation** — a new paragraph states the arithmetic and
+   the tension explicitly, declines to adopt the propagation (the pixel slope
+   is a response to an injected mirror-flip fraction, not a validated
+   on-sky amplitude transfer, and its sign relative to the mixture-corrected
+   identity is itself unresolved), and states plainly that a validated
+   observed-to-physical transfer function is necessary before the exclusion
+   can be treated as more than illustrative, and is not attempted here.
+
+12 MINOR items closed (mixture-identity sign/magnitude wording, missing
+pixel-test baseline, randoms-count precision, a 0.083→0.084 transcription
+slip, null-family naming, 15-of-17 pre-registration wording, BGS
+bin-naming/density-tercile disclosure, 10-realization sky-rotation-null
+caveat, spec-z cut disclosure, parent-count conflation (3,200,420 vs
+3,201,160), abstract/body sensitivity-floor clause, and Table 4 caption
+drafting-history language). 2 items explicitly deferred with reason (a
+low-severity double-z-value nitpick, and a real-but-bounded Table 7
+effect-size/full-15-statistic expansion using data already on disk).
+Several Grok/Gemini findings were dispositioned FALSIFIED or
+RE-FLAG-OF-DISCLOSED against existing `DISPOSITIONS/P4P.md` precedent
+(draft-header/internal-path genre objections, Table 8 z-score
+misunderstanding of the disclosed non-Gaussian permutation null, "largest
+test" already disclosed against Shamir 2022 in the same abstract sentence).
+
+Full item-by-item audit: `project-context/peer-reviews/INT_v3/ROUND_2026-09-18-P4P-v4P.0.7-EXACTPDF-7eb1f99e-CONFIRM/P4P_v4P.0.7_CONFIRM_truth_audit.md`.
+Dispositions: `project-context/peer-reviews/DISPOSITIONS/P4P.md`.
+
+**Hygiene (directive G):** `\paperVersion` v4P.0.7→v4P.0.8;
+`\paperTimestamp` September 5→September 18, 2026; 4-pass `pdflatex`, 0
+undefined refs, one pre-existing 5.88pt overfull hbox (unchanged, below the
+10pt gate); 13→14 pages. `pdftoppm -r 110` full render, pages 1, 4, 8, 10,
+11, 12, 13 visually inspected — no overflow, no overlap.
+
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `b2399780320a50542279c35410b6b545`, SHA-256
+  `e8f1969e415777622561dde0f21a8ac7d6398c3b2ef55f69200ba50a89d91cd2`.
+  Mirrored byte-identically (four-way md5 verified: compile ==
+  `site/public/papers/` == `public/papers/` == `site/out/papers/`) to
+  `paper4prime_chirality_test_v4P.0.8.pdf`.
+- **arXiv tarball:** rebuilt and standalone-compile-verified (extract +
+  4-pass pdflatex, 0 undefined refs, 14 pages):
+  `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.8.tar.gz`,
+  sha256 `485bf1f79a6e9e1f09bdaf4df8e567851fa42e796fe9d6163ae94f7a1a4e5fbd`.
+- **Artifact links:** all 11 `\artifact{}` paths in `main.tex` confirmed
+  committed on `main` (`git ls-files`); HF dataset mirror and both Zenodo
+  DOIs (versioned 21461899, concept 21461898) curl 200.
+- **Convex:** `paperVersions:bump` ids `k579k39cmq3r2hfq48xd3r0zsx8eq61c`
+  (initial bump) and `k5727kb9rv00yn588wth9d8kb58eqfaj` (tarball-path
+  correction, authoritative) read back verified; `activityFeed:add` id
+  `j57ercd996m1fjscp0gtx2z5gn8epms9`.
+- **Git:** commit `598f7e848679cd8e31e5de434137595ae6566718` (tex + mirrors +
+  round + dispositions), commit `0c41549f` (tarball rebuild).
 
 ## Row-16 (iv-b) BGS external environment result added (v4P.0.6 → v4P.0.7, 2026-09-05)
 

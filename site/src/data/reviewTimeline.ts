@@ -67,6 +67,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4p-v4p-0-7-confirm-board-v4p-0-8-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "internal-api",
+    title: "P4′ exact-v4P.0.7 confirmation board closed 7 genuinely-new-real findings → v4P.0.8",
+    papers: ["P4P"],
+    summary:
+      "Campaign lane L4, criterion A1′. R3 (2026-09-02) converged v4P.0.4 and declared rounds stopped (directive-R2), but the three disclosure results added afterward (v4P.0.5-v4P.0.7) had never been independently reviewed. Ran an exact-v4P.0.7 INT confirmation board (Grok API grok-4.3 + Gemini API gemini-3.1-pro-preview + a Claude opus sub-agent, verdict-blind, full repo access) scoped to that new content. Every MAJOR finding was independently re-verified against the cited source document before closure, not accepted from reviewer text alone. Found and fixed 7 genuinely-new-real MAJOR items: an inverted QC-cut attribution (paper said the opposite of what the source measured), an omitted disclosure that the primary 887,472-galaxy channel's own drop-one-leg fits reach z>4 above the sensitivity floor, two new channels silently computed on a 949,584-galaxy sample that includes rows the paper elsewhere excludes as release-unsafe (mislabeled as a different subset), a void-catalog data-availability sentence that contradicted the paper's own Sec. 4, a literature claim misattributing this manuscript's own citation-only scope limitation to the cited sources, two Data-Availability reproducibility-manifest pointers resolved to the wrong experiment (one to an explicitly superseded, inconclusive pilot), and an honest new disclosure that the paper's own new pixel-level calibration measurement implies an observed-to-physical transfer ratio roughly 10x smaller than the illustrative bridge factor the exclusion's Assumption 2 carries -- stated explicitly per never-fabricate-derivation, not resolved by a new derivation. 12 MINOR items also closed; 2 items explicitly deferred with reason. Several Grok/Gemini findings were dispositioned FALSIFIED or RE-FLAG-OF-DISCLOSED against existing DISPOSITIONS/P4P.md precedent. Primary null result unchanged.",
+    keyTakeaways: [
+      "v4P.0.8: 14 pp (+1), 4-pass compile, 0 undefined refs, 1 pre-existing 5.88pt overfull hbox (below the 10pt gate); md5 b2399780320a50542279c35410b6b545",
+      "7 MAJOR + 12 MINOR genuinely-new-real findings closed with real edits, all independently source-verified by the orchestrator before closure; one closure is a science-honesty disclosure (pixel-slope vs. g-bridge tension), not a science-conclusion change",
+      "arXiv tarball rebuilt and standalone-compile smoke tested (0 undef refs, 14pp); a previously-committed-but-unregistered reproducibility manifest (row16-image-level-injection-n20k) is now registered",
+      "Convex paperVersions:bump written and read back verified; four-way byte-identical PDF mirror verified",
+    ],
+    links: [
+      { label: "P4′ SSOT", href: `${GH}/project-context/SSOT/paper-4p/status.md` },
+      { label: "Confirmation-board truth audit", href: `${PR}/INT_v3/ROUND_2026-09-18-P4P-v4P.0.7-EXACTPDF-7eb1f99e-CONFIRM/P4P_v4P.0.7_CONFIRM_truth_audit.md` },
+      { label: "Claude opus INT raw", href: `${PR}/INT_v3/ROUND_2026-09-18-P4P-v4P.0.7-EXACTPDF-7eb1f99e-CONFIRM/P4P_claude_confirm_leg.md` },
+      { label: "Grok API raw", href: `${PR}/INT_v3/ROUND_2026-09-18-P4P-v4P.0.7-EXACTPDF-7eb1f99e-CONFIRM/API_P4P_Grok_brutal.md` },
+      { label: "Gemini API raw", href: `${PR}/INT_v3/ROUND_2026-09-18-P4P-v4P.0.7-EXACTPDF-7eb1f99e-CONFIRM/API_P4P_Gemini_cosmology.md` },
+      { label: "P4′ dispositions", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P4P.md` },
+      { label: "P4′ paper source", href: `${GH}/pipelines/p4prime_chirality_test/paper/main.tex` },
+    ],
+  },
+  {
     id: "psu-r3verify-v1s-0-9-2026-09-18",
     dateISO: "2026-09-18",
     kind: "closure-wave",
