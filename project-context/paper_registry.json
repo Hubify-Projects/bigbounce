@@ -116,7 +116,7 @@
       ],
       "status": "active-drive-to-100",
       "venue_candidate": "ApJS",
-      "note": "Anomaly-flagship catalogue paper (Program 2 / Track C2 primary; P3 is its integrated support release). Not one of the six campaign papers, so registered here (like P1C) so tools/verify_pdf_mirror_integrity.py's reverse-direction PDF-mirror-integrity check recognizes its served mirrors as canonical rather than orphaned. Its \\paperVersion tokens (vAF.0.2, vAF.0.3, ...) use a letter-only prefix (no leading digit before the letter), so they do not match served_pdf_policy.immutable_archive_name_patterns either -- this companion_manuscripts registration is the only path that makes its versioned aliases pass the gate. Registered by lane LR1, 2026-09-19; also tracked in project-context/draft_paper_registry.json (the auxiliary draft-paper registry used by tools/v3_native_pdf_review.py and directive-G tooling)."
+      "note": "Anomaly-flagship catalogue paper (Program 2 / Track C2 primary; P3 is its integrated support release). Not one of the six campaign papers, so registered here (like P1C) so tools/verify_pdf_mirror_integrity.py's reverse-direction PDF-mirror-integrity check recognizes its served mirrors as canonical rather than orphaned. Its \\paperVersion tokens (vAF.0.2, vAF.0.3, ...) use a letter-only prefix (no leading digit before the letter) -- served_pdf_policy.immutable_archive_name_patterns originally required a leading digit, so vAF.0.2.pdf (a superseded served alias committed by lane L7c) failed the gate as neither a canonical current mirror nor a recognized archive. Fixed 2026-09-19 (lane LR1) by widening the first immutable_archive_name_patterns regex to accept a letter-only prefix (`[A-Za-z]+[0-9]*` as an alternative to `[0-9]+[A-Za-z]?`) -- verified non-breaking against every existing served basename (4P/3M/1S/1.7.x all still match via the original alternative) before landing. Registered by lane LR1, 2026-09-19; also tracked in project-context/draft_paper_registry.json (the auxiliary draft-paper registry used by tools/v3_native_pdf_review.py and directive-G tooling)."
     },
     "P1C": {
       "tex_path": "arxiv/paper1c_nogo_survey/main.tex",
@@ -141,7 +141,7 @@
       "(?:^|/)figures/"
     ],
     "immutable_archive_name_patterns": [
-      "_v[0-9]+[A-Za-z]?\\.[0-9]+\\.[0-9]+(?:[.\\-][0-9A-Za-z][0-9A-Za-z\\-]*)*\\.pdf$",
+      "_v(?:[0-9]+[A-Za-z]?|[A-Za-z]+[0-9]*)\\.[0-9]+\\.[0-9]+(?:[.\\-][0-9A-Za-z][0-9A-Za-z\\-]*)*\\.pdf$",
       "_v[0-9]{2,}\\.pdf$"
     ],
     "site_data_sources": [
