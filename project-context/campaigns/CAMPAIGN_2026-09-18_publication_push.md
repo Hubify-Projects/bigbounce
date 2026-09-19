@@ -51,3 +51,4 @@ Campaign closes when every A-criterion has its evidence line in the log, origin/
 - 2026-09-18 22:40 PT · director · plan written; lease claimed; Hubify campaign task created; peer session bigbounce-aa queried
 
 - 2026-09-18 22:55 PT · director · lineage check corrected the lane table (see Parallel lanes); peer bigbounce-aa confirmed idle/no ownership; spawning lanes as named `claude -p` sessions, logs in ~/.claude/state/bb-campaign-2026-09-18/
+- 2026-09-18 23:05 PT · L1-a3m-r9 · START · ledger row 19 verified CLOSED ("DONE 2026-09-04 — NO-GO GENERALISED", artifacts research/track_a3_multichannel/row19_lambda/, decision D-A3-14) → R2 stop condition met, R9 board authorized · project-context/NEXT_SCIENCE_LEDGER.md:28
