@@ -29,10 +29,14 @@ The active work is:
    `project-context/SESSION_HANDOFF_2026-08-05_to_2026-08-28.md` §2 using
    `clean_rerun/pod/pod_phase3.sh`. Threshold decision recorded: catalog
    S>5 = 52,188; follow-up sample S>8 = 3,810.
-3c. **ACTIVE — P1C no-go survey (bounce-theory specialist, resurrected
-   2026-08-05):** v1C.0.16, 13 review boards, R-phase NOT converged; R13
-   partial (MAJOR-1..4 closed; 8 MINORs + Gemini/Grok ledgers open) → R14 on
-   the exact v1C.0.16 PDF. See `SSOT/paper-1c/status.md`.
+3c. **FROZEN — P1C no-go survey merged into P1N (2026-09-02, directive R3):**
+   v1C.0.16 review churn stopped after R13 (the R14 board this item used to
+   point to never runs); the barrier catalog content is merged with P1A into
+   the single Track B ECH Note at `arxiv/paper1bc_ech_note/` (working id P1N,
+   readiness 95, D-round/P-round in progress under the 2026-09-18 publication-
+   push campaign). See `PAPER_LINEAGE_2026-08-05.md` §"P1A → merged into P1C"
+   and `SSOT/paper-1n/status.md`; `SSOT/paper-1c/status.md` retained as the
+   frozen v1C.0.16 record, not an active review target.
 4. **HOUSTON + AGENT — publishing:** PRD/CQG/ApJS/JORS/AJ portal work, tracked
    separately from readiness. arXiv endorsement remains a parallel channel.
    2026-08-04/05 hygiene pass: WAVE1/WAVE2 kits + May sign-off brief marked
