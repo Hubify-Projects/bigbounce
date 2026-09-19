@@ -1,0 +1,36 @@
+{
+  "preregistration": "PREREGISTRATION_2026-09-19.md sec.5 S4 (commit 12248d70)",
+  "input_pairs": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_pairs.parquet",
+  "n_galaxies": 20000,
+  "n_spiral_classified": 15435,
+  "A0_spiral_classified": 0.005895691609977272,
+  "A0_soft_all_classes": -0.2171503173876852,
+  "exact_identity_slope_spiral_classified": -0.011791383219954543,
+  "mixture_identity_slope_soft": -0.009336564772980838,
+  "committed_slope_spiral_classified": 0.029671181311585162,
+  "committed_slope_soft": 0.016725717057065635,
+  "mc_replicas": 2000,
+  "mc_mean_slope_spiral_classified": -0.012471946463937561,
+  "mc_se_slope_spiral_classified": 0.02375429570043761,
+  "mc_mean_slope_soft": -0.009606495418401952,
+  "mc_se_slope_soft": 0.011454023210331985,
+  "z_committed_vs_identity_spiral_classified": 1.7454764836818915,
+  "z_committed_vs_identity_soft": 2.2753823133986018,
+  "se_vs_N_sizes": [
+    2500,
+    5000,
+    10000,
+    20000
+  ],
+  "se_vs_N_values": [
+    0.06721222498227111,
+    0.04599377823561339,
+    0.03236347804075882,
+    0.02375429570043761
+  ],
+  "se_scaling_exponent_measured": -0.5008677748161187,
+  "n_required_for_3sigma_power_spiral_classified": 725972.2945815807,
+  "n_required_for_3sigma_power_sqrtN_reference": 730511.9312805826,
+  "naive_identity_used_in_committed_headline": 0.4343006347753704,
+  "verdict": "CONSISTENT WITH NOISE FLOOR"
+}
