@@ -41,12 +41,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-09-02T20:00:00Z",
-  lastUpdatedDisplay: "September 2, 2026",
+  lastUpdatedISO: "2026-09-19T06:52:00Z",
+  lastUpdatedDisplay: "September 18, 2026",
   headline:
-    "Portfolio restructured to Track A (bounce vs. inflation, flagship) / Track B (the ECH Note) / Track C (DESI data products), replacing the retired three-research-programs framing (directive R3). P1N and P4′ are freshly merged/folded drafts, not yet scored — P1A, P1C, P4, and P5 remain listed as their archived lineage.",
+    "Portfolio restructured to Track A (bounce vs. inflation, flagship) / Track B (the ECH Note) / Track C (DESI data products), replacing the retired three-research-programs framing (directive R3). The 2026-09-18 publication-push campaign closed P1N's D-round + P-round (95→99) and ran a fresh exact-version confirmation board on P4′ (→v4P.0.8, still 95) — P1A, P1C, P4, and P5 remain listed as their archived lineage.",
   summary:
-    "P1N (Track B) merges P1A into P1C as one closed-line ECH Note. P4′ (Track C1) folds P5 into P4 and adds the Poplawski black-hole-universe spin-axis exclusion. Both are fresh drafts (readiness cap 20, no review board run yet). P2 remains gated toward P2′ pending the ledger #1 independent re-derivation. P3 is provenance support for the redirected early-universe anomaly map.",
+    "P1N (Track B) merges P1A into P1C as one closed-line ECH Note; its D-round and P-round are now complete (readiness 99, Houston sign-off next). P4′ (Track C1) folds P5 into P4 and adds the Poplawski black-hole-universe spin-axis exclusion; an exact-version INT confirmation board closed 7 genuinely-new-real MAJOR + 12 MINOR findings on its post-R3 disclosure content (readiness 95, Houston sign-off next). P2 remains gated toward P2′ pending the ledger #1 independent re-derivation. P3 is provenance support for the redirected early-universe anomaly map.",
   currentlyRunning: [
     "Deterministic preflight, clean-room package compiles, link checks, mirror checks, and all-page visual audits pass; bounded reviewer confirmation remains version-specific.",
     "Houston's final review applies only after a program-level scientific and editorial decision; it is not implied by an automated review result.",
