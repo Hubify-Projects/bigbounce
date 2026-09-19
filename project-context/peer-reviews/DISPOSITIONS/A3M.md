@@ -892,3 +892,102 @@ are one-line edits. The only (ii) item that is a science/scope decision — and 
 thing that could license a further round — is **`A3-lambda`** (bound `λ/Σ`, or restrict the no-go
 to the Li *et al.* kinetic sector). Carried: `A3-S2perturb`, `A3-ns`, `A3-dN`, `DESI-4`,
 `A3-ref25`. No round on editorial grounds alone.
+
+---
+
+## R9 — v3M.0.24 (2026-09-18), exact PDF sha256 `e0e923d6…`, md5 `b29ebb90…`, 19 pp
+
+First board since the directive-R2 stop after v3M.0.18. Stop lifted because
+`NEXT_SCIENCE_LEDGER.md` row 19 reads **"DONE 2026-09-04 — NO-GO GENERALISED"** (`D-A3-14`,
+`research/track_a3_multichannel/row19_lambda/`). Board:
+`../INT_v3/A3M_v3M.0.24_R9_BOARD_2026-09-18.md`; full audit:
+`../INT_v3/A3M_v3M.0.24_R9_TRUTH_AUDIT_2026-09-18.md`.
+Legs: Grok_brutal **REJECT**, Gemini_cosmology **MINOR REVISIONS**, Claude Fable 5.1 INT
+**MAJOR REVISIONS** (no leg FAILED). 50 raw findings → **24 genuinely-new-real**
+(3 MAJOR + 1 MAJOR-lite + 17 minor + 3 nit), 2 re-flag, 14 falsified, 2 opinion/genre.
+**Clean-wave count: 0.** All 24 closed in v3M.0.25.
+
+### New OPEN items (MAJOR) — all CLOSED in v3M.0.25
+- **`DA3M-R9-01`: the reproducibility pin resolves to a commit containing none of the cited artifacts.**
+  `main.tex:1782-1786` pinned commit `68309c8` (2026-09-02). `git cat-file -e 68309c8:<path>`
+  fails for all ~12 named artifacts (`row19_lambda`, the A2 adjudication, `lane9a/9b/9b2/9c/9c2`,
+  `row10_r_ns`, `row11_pbh_residuals`, `row14_cs_window`, `row18a`, `row18b`,
+  `desi_png_reproduction`, `fnl_monopole_adjudication_2026_09_03.md`); all exist at
+  `origin/main`. Both published tree URLs return HTTP 200 because the *parent* directories
+  exist at that commit — a status-code link check cannot catch this.
+  Closed by re-pointing at the `main`-branch trees + naming the frozen-release DOI as a
+  required packaging action.
+  Fingerprint: reproducibility pin, 68309c8, stale commit, tree URL 200, artifacts absent at pin.
+- **`DA3M-R9-12`: Eq. (15) is Li+2016 Eq. (5.1), not (4.19), and already carries λ.**
+  Verified symbolically: the general form `-245/16 + 105/(8c_s²) - 30Λ` (the lab's own
+  `row19_lambda/results.json`) evaluated on the matter line `Λ=(1-c_s²)/(6c_s²)` reproduces
+  `-165/16 + 65/(8c_s²)` exactly, and `7/(16c_s²)` is recoverable only from the `Λ=0` baseline.
+  The §VIII scan therefore double-counted λ on that line, and the `Λ=0` baseline was never
+  printed. Conclusion (`D-A3-14`) unaffected; defect was that the headline claim could not be
+  verified from the PDF. Closed by printing the general-λ form as primary.
+  Fingerprint: Eq. 15 attribution, Li Eq. 4.19 vs 5.1, -245/16 + 105/(8cs^2) - 30L, double-counting lambda, 7/(16 cs^2).
+- **`DA3M-R9-13`: `f_NL^after = 1.0–1.4e11` printed with no perturbativity statement.**
+  Value reproduces (1.38e11) but `f_NL·ζ_rms = 1` at `|f_NL| ≈ 2.2e4` — 6.9 decades earlier.
+  Closed by the new committed computation `r9_perturbativity/` (floor `c_s ≳ 0.073–0.079`,
+  `r ≳ 1.8` = 49× BK18) and by resting the exclusion on `r = 24c_s` + loss of control.
+  Fingerprint: perturbative control, f_NL zeta ~ 1, 1.0-1.4e11, Table VII row 2, tree-level validity.
+
+### New OPEN item (MAJOR-lite) — CLOSED in v3M.0.25
+- **`DA3M-R9-02`: the constant-`c_s` / `s=0` restriction was dropped along with the λ qualifier.**
+  `DA3M-R8-01`'s fingerprint named `λ = 0`, **`s = 0`, `η_sr = 0`**; `D-A3-14` proved
+  λ-independence only, yet v3M.0.19 dropped the whole "λ = s = 0" qualifier.
+  `row19_lambda/results.json` still records `scheme: "… eta_sr = 0, s = 0 …"`. Restored to
+  the abstract and claim sentence; `c_s(η)` stated as outside the computation.
+  Fingerprint: constant c_s, sound-speed running s, eta_sr, full P(X) class, time-dependent c_s.
+
+### Minor/nit OPEN items — all CLOSED in v3M.0.25
+`R9-03` internal ledger-row/lane labels in prose · `R9-04` drafting-history parenthetical
+(directive Q1) · `R9-05` nine raw artifact paths in body/captions · `R9-06` `T_3`/`T_4`
+undefined · `R9-07` γ marginal's σ vs its 68% half-width (left skew −1.10, both numbers
+verified correct from the 320k chain) · `R9-08` no stated tolerance on the transmitted
+amplitudes (added from `lane_b_numerical`, `step_convergence_rel ≤ 1.5e-8`) · `R9-09` Fig. 1
+frequency frame · `R9-10` "essentially" · `R9-11` `p=1.6` reads as a p-value · `R9-14`
+curvaton detectability criterion + "tensor-viable r<11.5" misuse · `R9-15` `T_B` / `kη_B`
+pairing · `R9-16` squeezed LQC deficit 2.1→**3.1**–4.4 dex · `R9-17` `𝒜` undefined ·
+`R9-18` `n_T` "cheap" discriminator · `R9-19` Planck 95% edge missing · `R9-20` Table V
+caption cited the wrong artifact for the headline 1.84 · `R9-21` injection test tests bias
+not coverage · `R9-22` S2 0.409 presented beside the S1 spread · `R9-23` abstract 341 words
+(→ 307) · `R9-24` `s` undefined · **Gemini N1** duplicated "and and" — initially recorded
+FALSIFIED on a single-line grep, **re-verified as REAL** (it spans a line break) and fixed.
+
+### Found during closure, by no leg
+- **`DA3M-R9-25`: the committed v3M.0.24 `main.tex` did not compile.** A raw Unicode `ρ`
+  (line 1754) is a fatal `pdflatex` error under both TinyTeX and Homebrew TeX Live, so the
+  served v3M.0.24 PDF was not reproducible from its own committed source. Fixed; file is now
+  pure ASCII. Independently, lane L2 hit the identical defect class in paper-su the same day.
+
+### FALSIFIED this round (do not re-open without new evidence)
+Grok E1 (the date is the true compile date — same fingerprint as R8), E2 ("no labeled
+abstract"; `main.tex:37` is `\begin{abstract}`, revtex renders PRD abstracts unlabeled),
+E3 (λ-independence is proved, not assumed), E4 ("from-scratch" ≠ new formalism; novelty
+already narrowed at R5 to per-vertex attribution), E6 (Table IV caption carries "not
+directly comparable" verbatim at `:675-681`), E8 (paper prints both the 144-point
+`1.84±0.03` and the 27-point `1.732±0.050` and says which is headline — R8-06 fingerprint),
+E9 (Grok used 0.6 as a 1σ width; the paper states the 5–95% interval type and
+`√(0.365²+0.382²)=0.5283`, `0.633/0.5283=1.20σ` — auditor's own arithmetic), M2 (range
+contradicts the tabulated `[1.610,1.809]`), M3 (`(5.070−3.2)/0.365 = 5.12`; and **4.9σ is the
+paper's own dust-bracket value printed beside 5.1σ** in the Fig. 1 caption), m1 (caption does
+state the squeezed configuration), m2 (`r_mix` defined at `:373`), m4 (vacuum normalization
+fixed at `:374-377`), N1 ("the the" not present), Grok E7's "units/masks inconsistent"
+sub-claim (unsupported; only the *pin* was defective).
+
+### OPINION/GENRE (venue pass only)
+Grok M4 (19 pp "disproportionate" — no PRD page cap), Grok m3 ("no sympy script deposited" —
+they are deposited; the real defect was the pin, `R9-01`).
+
+### Carried as disclosed limitations (NOT closed by edit — `/never-fabricate-derivation`)
+Fable Q1–Q6 and minors 9/10 become four explicit limitations in §IX (S1 prescription at
+`c_s≠1`; the (A4) frozen-shape handoff; the `δN` gradient expansion given `N_i = O(1/k_L)`;
+bounce-window asymmetry) plus two standing verification requests (Cai Eq. (37) under both
+readings; Quintin's attribution). Fable minor 13 (`Ω_DM=0.674`) is a **RE-FLAG** of the R5
+disposition that closed it with a quantified factor-2.55 footnote.
+
+### R2 status
+R9 closed ≥1 real item, so **one confirmation board is permitted and is the remaining gate**;
+it must run on the exact v3M.0.25 PDF. Readiness stays at the computed cap **75** until that
+board returns 0 genuinely-new-real.

@@ -177,7 +177,7 @@ recommendation line — never inferred, never softened.
 | Grok m4 | no statement that the same $T_{f_{\rm NL}}$ normalization is used on all three backgrounds | `main.tex:374-377` fixes the vacuum normalization explicitly ($1+2r_{\rm mix}$; $C_1=\alpha_-(1+r_{\rm mix})$, $C_2=\beta_-$) inside the single $T_{f_{\rm NL}}(\eta_h)$ formula applied to all three. |
 | Grok N1 | "the the" appears on p. 3 | `grep -n "the the" main.tex` → no match. |
 | Grok E7 (sub-claim) | manifest lists files whose units/masks are inconsistent with the body | Unsupported; `row11_pbh_residuals` is cited coherently at `:1870-1873` for exactly the §V $\gamma_{\rm cr}$ scan Grok names. Only the **pin** is defective (`DA3M-R9-01`). |
-| Gemini N1 | "and and (vii)" in §IX.C | `grep -n "and and" main.tex` → no match. |
+| ~~Gemini N1~~ | ~~"and and (vii)" in §IX.C~~ | **CORRECTED — this finding is REAL.** The initial disposition used `grep -n "and and" main.tex`, which cannot match across a line break; the defect is `main.tex:1662-1663`, `"…by this lab; and\nand (vii)~the consistency relation"`. Re-classified GENUINELY-NEW-REAL (nit) and fixed in v3M.0.25. Lesson: single-line greps cannot falsify a text defect in wrapped LaTeX source — the check must be whitespace-normalised. |
 
 ## OPINION / GENRE (venue pass only, not review items)
 
@@ -299,7 +299,7 @@ was not computed.
 |---|---|
 | **GENUINELY-NEW-REAL** | **24** — 3 MAJOR (`R9-01` repro pin, `R9-12` Eq. 15 chain, `R9-13` perturbativity), 1 MAJOR-lite (`R9-02` constant-$c_s$ scope), 17 minor, 3 nit |
 | RE-FLAG-OF-DISCLOSED | 2 (Grok E8/E6 fingerprints closed at v3M.0.18; Fable minor 13 → R5) |
-| FALSIFIED | 14 (table above, each source-cited) |
+| FALSIFIED | 14 (table above, each source-cited) — **one of these, Gemini N1, was corrected to GENUINELY-NEW-REAL after a line-break-aware re-check; the counts below already include it as real** |
 | OPINION/GENRE | 2 (Grok M4 length, Grok m3) |
 | Carried open questions (disclosed limitations) | 6 + 2 verification requests |
 

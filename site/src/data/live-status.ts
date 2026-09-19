@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.24",
+      version: "v3M.0.25",
       readiness: 75,
-      pendingWork: "A2 monopole gap reconciled (independent adjudication 2026-09-07): A2=eps(3-eps)^2/3 correct, f_NL^rho=5(eps-7)/8=-55/16 at dust via the corrected 3lambda composition weight. In-in -15/8, comoving -5, uniform-density -55/16 now three well-defined variables. Flagship -35/16 unaffected. ROUNDS STOPPED (R2). Houston final review pending.",
+      pendingWork: "R9 INT board (first since the directive-R2 stop was lifted by ledger row 19 / D-A3-14): Grok REJECT, Gemini minor-revisions, Claude Fable 5.1 major-revisions on exact v3M.0.24. Truth-audit: 24 genuinely-new-real (3 MAJOR + 1 MAJOR-lite), 14 falsified with source citations. All closed in v3M.0.25 -- reproducibility pin resolved to a commit holding none of the cited artifacts; Eq. (15) misattributed and double-counting lambda; the 10^11 f_NL figure printed without noting tree-level control expires 6.9 decades earlier (new committed computation r9_perturbativity supplies the floor). Readiness 75 COMPUTED; the one confirmation board permitted by R2 is the remaining gate before the convergence gate can be claimed."
     },
     {
       slug: "paper-3",

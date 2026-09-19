@@ -1,0 +1,92 @@
+{
+  "criterion": {
+    "form": "1.2 |f_NL| zeta_rms <= 1 (Sec. V B, applied at CMB scales)",
+    "A_s": 2.1e-09,
+    "zeta_rms": 4.58257569495584e-05,
+    "coefficient": 1.2,
+    "fnl_max": 18184.8241863327
+  },
+  "backgrounds": {
+    "quintin": {
+      "T": 0.165,
+      "rho_B": 0.6699999999999999,
+      "cs_perturbative_floor": 0.07879493917339965,
+      "fnl_after_at_floor": 18184.824186332695,
+      "r_at_floor": 1.8910785401615917,
+      "fnl_after_at_cs_1p5e-3": 137860305913.9363,
+      "fnl_after_at_cs_0p624": 4.193825893047864
+    },
+    "lqc": {
+      "T": 0.25,
+      "rho_B": 0.5,
+      "cs_perturbative_floor": 0.07341769661700907,
+      "fnl_after_at_floor": 18184.82418633269,
+      "r_at_floor": 1.7620247188082176,
+      "fnl_after_at_cs_1p5e-3": 102881283433.63586,
+      "fnl_after_at_cs_0p624": 4.468689035505804
+    },
+    "poly": {
+      "T": 0.196,
+      "rho_B": 0.608,
+      "cs_perturbative_floor": 0.07696813041210028,
+      "fnl_after_at_floor": 18184.824186332695,
+      "r_at_floor": 1.8472351298904068,
+      "fnl_after_at_cs_1p5e-3": 125103250656.415,
+      "fnl_after_at_cs_0p624": 4.294070097944289
+    }
+  },
+  "planck_edges": {
+    "central": -0.9,
+    "sigma": 5.1,
+    "68": {
+      "upper_fnl": 4.199999999999999,
+      "per_background": {
+        "quintin": {
+          "cs_min": 0.6238166452825074,
+          "r_min": 14.971599486780176
+        },
+        "lqc": {
+          "cs_min": 0.6322257277943157,
+          "r_min": 15.173417467063578
+        },
+        "poly": {
+          "cs_min": 0.6268263389951132,
+          "r_min": 15.043832135882717
+        }
+      },
+      "cs_min_overall": 0.6238166452825074,
+      "r_min_overall": 14.971599486780176,
+      "disjointness_factor_vs_tensor": 415.87776352167157
+    },
+    "95": {
+      "upper_fnl": 9.299999999999999,
+      "per_background": {
+        "quintin": {
+          "cs_min": 0.5251388640324348,
+          "r_min": 12.603332736778436
+        },
+        "lqc": {
+          "cs_min": 0.5261182805953069,
+          "r_min": 12.626838734287364
+        },
+        "poly": {
+          "cs_min": 0.5254792249127913,
+          "r_min": 12.611501397906991
+        }
+      },
+      "cs_min_overall": 0.5251388640324348,
+      "r_min_overall": 12.603332736778436,
+      "disjointness_factor_vs_tensor": 350.0925760216232
+    }
+  },
+  "summary": {
+    "fnl_max": 18184.8241863327,
+    "cs_floor_min": 0.07341769661700907,
+    "cs_floor_max": 0.07879493917339965,
+    "r_at_floor_min": 1.7620247188082176,
+    "r_at_floor_max": 1.8910785401615917,
+    "cs_tensor_viable": 0.0015,
+    "decades_past_control_at_tensor_viable": 6.8797301312793175,
+    "statement": "Tree-level control is lost for c_s below ~the quoted floor; the tensor-viable c_s = 1.5e-3 sits many decades past it, so the 10^11 figure is not a prediction of a controlled calculation. The no-go does not depend on it: r = 24 c_s alone excludes the window."
+  }
+}

@@ -2,35 +2,143 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-04 — v3M.0.18. R8 truth-audit closure under D-A3-13
-(ledger row 19): lambda=s=0 k-essence scope disclosed, Appendix A
-initial/final-label maps corrected, stale r=0.84 passage removed, 14 ledger
-tags swept to reproducibility statement, Planck 68% interval fix, 12 minors
-closed. Readiness held at 75. ROUNDS STOPPED (R2): R3-R8 today,
-genuinely-new 19/13/18/16/16/15, no physics error found in R8; next board
-only after a science decision on row 19. See "v3M.0.18" section below.
-Prior: v3M.0.15. Science reframe (not a review round) per
-decisions D-A3-10 (ledger row 10) and D-A3-11 (ledger row 14): the model's own
-tensor-to-scalar ratio r=16ε=24, ~670× above BICEP/Keck; no constant sound
-speed cures both r and f_NL (windows disjoint 296× in c_s), confirming and
-strengthening Li et al. 2016's no-go 3.8×; the single-field matter bounce is
-excluded jointly by r and f_NL; a curvaton-type spectator is named as the
-surviving (r,n_s)-viable route. Title/abstract reframed; two new sections
-(VII tensor amplitude, VIII joint no-go/curvaton); Appendix A wording fixed
-(pure-translation coefficient match is a numerical coincidence, not a
-mechanism); PBH sign disagreement with Choudhury et al. resolved (IR-divergent
-O(ε²) artefact; Choudhury right) and in-coverage ratio corrected to
-1.84±0.03. Readiness held at 75 — D-A3-10/11 → one verification board
-permitted (R7); site data sync pending in a separate bundle. See "v3M.0.15"
-section below. Prior: v3M.0.14. R6 truth-audit closure: 16 genuinely-new-real findings (0 physics errors) closed — T_B mapping corrected (thirteen decades above BBN, was eleven), Channel I amplitude re-paired to the free-gamma NANOGrav posterior, abstract calibrated to body, DESI DR1 v3 reproduction sentence added to Sec. VI. ROUNDS STOPPED under directive R2 (3rd consecutive verification round) — next board only after a science decision on the (ii) list (A3-4, A3-1e). Readiness held at 75. See "v3M.0.14" section below. Prior: v3M.0.13. Abstract trimmed to the PRD-regular ≤307-word cap (was ~415 words), no science change, every claim retained at its evidential strength; see "v3M.0.13" section below. Readiness held at 75. Prior: v3M.0.12. R5 truth-audit closure C1–C7 (S1/S2 transfer-bound scoping, exact-mode LQC deficit scoping, NANOGrav Omega_GW h^2 correction, editorial MINORs, Fig. 1 regeneration, "this lab's" neutralization, overfull-hbox elimination) plus the (ii) science items DA3M-R5-15 (first-order tensor Omega_GW at nHz, computed by a concurrent lane) and DA3M-R5-18 (gamma_cr grid coverage, computed by a concurrent lane); see "v3M.0.12" section below. Readiness held at 75; directive R2 note: this is A3M's second consecutive review round, one verification round remains before the R2 convergence-budget is exhausted. Prior: v3M.0.11 and v3M.0.10 (2026-09-04, PDF source-dir/served-copy md5 sync + site version sync — no SSOT section was written for these two bumps at the time; see git log a3m-v3M.0.10/.0.11 commits for detail, a gap this entry flags for a future housekeeping pass). Prior: v3M.0.9. R3 truth-audit closure C1–C10 (transmitted-amplitude LSS reach, δN_c derivation appendix, induced-GW IR-slope correction, numeric/definitional fixes); see "v3M.0.9" section below. Prior: v3M.0.8 (2026-09-04), three closed science-gate results integrated (method-independent f_NL cross-check, bounce cubic term, lab-own-spectrum PBH null); see "v3M.0.8" section below. Prior: v3M.0.7 (2026-09-02), R2 CLOSED (round ROUND_2026-09-02-A3M-v3M.0.4-EXACTPDF-d86f484f-R2VERIFY): 9 pp, md5 67e1510e2b300ec683ed2e288ef1aefe, sha256 e7ae9d324de41822728e01d2161aba71dd15fd255dd4d2b4247b3b5122e6de24, 0 undef refs, 0 overfull hboxes >10pt (largest 2.7pt). Per directive R2 the convergence budget (2 rounds) is now consumed — REVIEW ROUNDS STOP on this paper; residue is genre/length/venue. See "R2 closure (2026-09-02)" section below for verdicts, the science decision, and the item-to-edit table. Prior: v3M.0.4, R1 CLOSED: 8 pp, md5 b98ee16e11d106c96ac593480857112b, sha256 d86f484f5d4f83fb7b4a339cced6a9c4bf9482f5f5bc206a55bdbfe2270e277c. v3M.0.3, PBH compaction-function channel integrated: 7 pp, md5 9f7afea9e22a7816168fc7638fc8a753. v3M.0.2, 6 pp, md5 8f17a2dc877c0b58982e91a8dea0fa1b. Ledger #1 correction: fixed §II wording from "OPEN" to CLOSED per NEXT_SCIENCE_LEDGER.md row 1 (only the Bianchi-I shear cross-check remains open).
+last_updated: 2026-09-18 -- v3M.0.25. R9 INT board (the first since the
+directive-R2 stop was lifted by NEXT_SCIENCE_LEDGER row 19 / D-A3-14, which
+reads "DONE 2026-09-04 -- NO-GO GENERALISED") run on the exact v3M.0.24 PDF:
+Grok REJECT, Gemini minor-revisions, Claude Fable 5.1 major-revisions.
+Truth-audit: 24 genuinely-new-real (3 MAJOR + 1 MAJOR-lite + 17 minor + 3
+nit), 14 FALSIFIED with source citations, 2 re-flags, 2 opinion/genre. NOT a
+clean wave. All 24 closed in v3M.0.25 plus one defect found during closure
+(the committed v3M.0.24 .tex did not compile on a clean toolchain -- raw
+Unicode rho -- so the served PDF was not reproducible from its own source).
+Readiness held at the COMPUTED cap 75; one confirmation board is permitted by
+directive R2 and is the remaining gate. See "v3M.0.25" section below.
+PRIOR-HEADER NOTE (reconciled 2026-09-18): this header previously described
+v3M.0.18 and asserted "ROUNDS STOPPED (R2)" while the .tex had advanced
+through v3M.0.24 (six bumps, v3M.0.19-v3M.0.24, all science/derivation
+corrections rather than review rounds). The full per-version history for
+those bumps is preserved in the dated sections below; only this header was
+stale.
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (18 pp / 0 undef refs / md5 fdbf93bfacc6cc644e103ff522d15381)
-version: v3M.0.19 (2026-09-04, D-A3-14 row 19 — see "v3M.0.19" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (20 pp / 0 undef refs / md5 d46166cb88b32009cdc6be59bb620547 / sha256 c5fe8889766be7f408b5e385f2826af85182ea50b00d4b8142f4db46422ca001)
+version: v3M.0.25 (2026-09-18, R9 closure -- see "v3M.0.25" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
-headline_pct: not-yet-reviewed (agent gates: science 25 / evidence 25 / review-convergence 25 (R1+R2 closed, rounds stop per directive R2) / packaging 20 = ~95; awaiting Houston's final personal review for 100 per directive P)
-submission_status: draft, readiness 75 — ROUNDS STOPPED (R2); row 19 answered — no lambda opens the window; next board only after a further science decision
+headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 done / automated-review convergence NOT MET (R9 surfaced 3 MAJOR + 1 MAJOR-lite; closed in v3M.0.25, confirmation board pending) / packaging 20 partial / Houston's final 5 not sought. The earlier '~95' claim in this field was not supported by the gate state and is withdrawn.
+submission_status: draft, readiness 75 -- ROUNDS RESUMED 2026-09-18 (R2 stop lifted, row 19 CLOSED). R9 closed as v3M.0.25; the one confirmation board permitted by directive R2 is the next and final review gate before the convergence gate can be claimed.
+
+## v3M.0.25 (2026-09-18) — R9 board + closure; rounds RESUMED; readiness held at 75
+
+**Stop lift.** `NEXT_SCIENCE_LEDGER.md` row 19 reads **"DONE 2026-09-04 — NO-GO
+GENERALISED"** (decision `D-A3-14`, artifacts
+`research/track_a3_multichannel/row19_lambda/`). That was the sole condition the
+directive-R2 stop after v3M.0.18 named, so one board (R9) was authorized, plus one
+confirmation board if R9 closed a real item. It did; the confirmation board is now the
+remaining gate.
+
+**R9 board (INT only; Directive N + Portfolio Decision 2026-09-02 #6).** Exact artifact
+`main.pdf` sha256 `e0e923d6…`, md5 `b29ebb90…`, 19 pp, three-way-verified against both
+served mirrors and the Convex row before dispatch; preflight receipt PASS. Legs:
+Grok `grok-4.3` **REJECT**; Gemini `gemini-3.1-pro-preview` **MINOR REVISIONS**; Claude
+Fable 5.1 INT referee **MAJOR REVISIONS**. No leg FAILED. Board:
+`peer-reviews/INT_v3/A3M_v3M.0.24_R9_BOARD_2026-09-18.md`; truth-audit:
+`…_R9_TRUTH_AUDIT_2026-09-18.md`; receipts:
+`INT_v3/ROUND_2026-09-18-A3M-v3M.0.24-EXACTPDF-e0e923d6-R9VERIFY/`.
+
+**Truth-audit outcome.** 24 genuinely-new-real (3 MAJOR, 1 MAJOR-lite, 17 minor, 3 nit),
+14 FALSIFIED each with a source citation, 2 re-flags of disclosed, 2 opinion/genre.
+Clean-wave count 0.
+
+**The three MAJORs, all closed in v3M.0.25:**
+
+1. `DA3M-R9-01` — the reproducibility statement pinned to commit `68309c8` (2026-09-02).
+   `git cat-file -e 68309c8:<path>` over the full artifact list shows **none** of the ~12
+   artifacts it names exists at that commit (`row19_lambda`, the A2 adjudication, all five
+   `lane9*` dirs, `row10_r_ns`, `row11_pbh_residuals`, `row14_cs_window`, `row18a`,
+   `row18b`, `desi_png_reproduction`, `fnl_monopole_adjudication_2026_09_03.md`). Both
+   published tree URLs returned HTTP 200 — the parent directories do exist at that commit —
+   which is exactly why no link check caught it. Closed by re-pointing the statement at the
+   repository `main`-branch trees, stating why a branch pointer is used, and naming the
+   frozen-release DOI as a required packaging-stage action rather than an aspiration.
+2. `DA3M-R9-12` — Eq. (15) was attributed to Li *et al.* Eq. (4.19) but is their Eq. (5.1),
+   the $P\propto X^n$ specialization that already carries $\lambda$ at
+   $\Lambda=(1-c_s^2)/(6c_s^2)$ (verified symbolically: substituting that line into the
+   general form reproduces $-165/16+65/(8c_s^2)$ exactly). The §VIII $\lambda$-scan
+   measured from it therefore double-counted $\lambda$ on the matter-contraction line, and
+   the $\lambda=0$ baseline its numbers actually come from was never printed. Closed by
+   printing the general-$\lambda$ amplitude $-245/16+105/(8c_s^2)-30\Lambda$ as the primary
+   equation, the $X^n$ line as its specialization citing Eq. (5.1)/(A.20), and stating that
+   every scan number is measured from the $\Lambda=0$ baseline. `D-A3-14`'s conclusion is
+   unchanged — this was a presentation defect that made the headline claim unverifiable
+   from the PDF.
+3. `DA3M-R9-13` — $f_{NL}^{after}=1.0$–$1.4\times10^{11}$ appeared in the abstract, §VIII
+   and Table VII with no statement that the tree-level bispectrum has lost control. The
+   paper's own §V B criterion ($1.2|f_{NL}|\sigma\le1$) applied at CMB scales with
+   $\zeta_{rms}=\sqrt{A_s}=4.6\times10^{-5}$ gives $|f_{NL}|\le1.8\times10^4$ — the printed
+   value is 6.9 decades past it. Closed by a new committed computation,
+   `research/track_a3_multichannel/r9_perturbativity/` (`.py`, `results.json`, `.log`),
+   which gives a floor $c_s\gtrsim0.073$–$0.079$ (where $r\gtrsim1.8$, already $49\times$
+   BICEP/Keck) and independently reproduces the paper's own 68% boundary
+   $c_s\ge0.624/0.632/0.627$ as a gate. Table VII and the abstract now rest the exclusion
+   on $r=24c_s$ plus loss of perturbative control; the $10^{11}$ figure is retained only as
+   an explicitly-labelled formal continuation.
+
+**MAJOR-lite `DA3M-R9-02`.** v3M.0.19 dropped the whole "$\lambda=s=0$" qualifier when
+`D-A3-14` had proved $\lambda$-independence **only**; `row19_lambda/results.json` still
+records `scheme: "S1 geometric, eps_eff = 1/2, eta_sr = 0, s = 0, k eta_B = 1e-3"`. The
+constant-sound-speed restriction is restored to the abstract and to the italicized claim
+sentence, with time-dependent $c_s(\eta)$ stated as outside the present computation.
+
+**Minors/nits closed (17 + 3).** Planck 95% edge added as the headline
+($c_s\ge0.525$, $r\ge12.6$, disjointness $\sim350\times$) beside the 68% one; squeezed LQC
+deficit corrected 2.1–4.4 → **3.1–4.4 dex** against `lane9c2` `abs_comparison/per_k`
+(4.41/3.24/3.07 at $k\eta_B=0.1/0.3/1$); §IV D's $T_B$ / $k\eta_B$ pairing corrected
+($3.8\times10^{-10}$, not the $T_B=10^8$ GeV value $2.3\times10^{-8}$); PTA injection test
+disclosed as establishing bias but **not** coverage, with the $\sigma_\gamma\approx0.16$–$0.17$
+recovered widths vs the real-data $0.382$ stated; the $\gamma$ marginal's left skew
+($-1.10$, verified from the 320k-sample chain) noted so $\sigma$ exceeding the 68%
+half-width no longer reads as an inconsistency; Table V caption re-cited to
+`row11_pbh_residuals` (source of the headline $1.84\pm0.03$) rather than the 27-point grid;
+bispectrum amplitude $\mathcal A$, $T_3$/$T_4$, sound-speed running $s$, and the quasar
+response parameter $p$ all defined at first use; transmitted-amplitude tolerances stated
+from `lane_b_numerical` (`step_convergence_rel` $\le1.5\times10^{-8}$); curvaton
+"detectable for $r\gtrsim23$" reworded with its $1\sigma$ criterion and the
+"tensor-viable $r<11.5$" misuse removed; $n_T$ "cheap discriminator" softened to
+in-principle with the $\sigma(n_T)$ reality stated; a drafting-history parenthetical
+removed (directive Q1); four internal ledger-row/lane labels removed from prose; nine raw
+artifact paths moved out of body/captions into the reproducibility statement; Fig. 1
+frequency identified as present-day observed; duplicated "and and" fixed (this one had been
+provisionally falsified by a single-line grep and was re-verified as REAL — it spans a line
+break); abstract re-trimmed 341 → **307 words**; four disclosed limitations added to §IX
+covering the S1 prescription at $c_s\ne1$, the (A4) handoff, the $\delta N$ gradient
+expansion, and bounce-window asymmetry.
+
+**Defect found during closure, not by any leg.** The committed v3M.0.24 `main.tex` **did not
+compile at all** on a clean toolchain — a raw Unicode `ρ` at line 1754 — under both TinyTeX
+and Homebrew TeX Live. The served v3M.0.24 PDF therefore was not reproducible from its own
+committed source. Fixed (`$\rho$`); the file is now pure ASCII. This is logged as
+`DA3M-R9-25` and is the strongest argument yet for compiling from a clean checkout as part
+of directive-G rather than trusting an incremental local build.
+
+**Directive G.** `\paperVersion` v3M.0.25, `\paperTimestamp` September 18, 2026. 4-pass
+pdflatex: **0 errors, 0 undefined references, 0 undefined citations**, 20 pp (grew from 19).
+Overfull hboxes: max **3.9 pt**, none above 10 pt, none in a table row after Table VII was
+narrowed (the first recompile put 8.7 pt into the new Table VII; fixed with footnote
+markers). `/latex-audit` visual render of pages 1, 5, 13, 17 — no column escape, no margin
+overflow, Table VII and Eqs. (15)/(16) render correctly. Three-way md5
+`d46166cb88b32009cdc6be59bb620547` (fresh compile == `public/papers/` ==
+`site/public/papers/`), sha256 `c5fe8889766be7f408b5e385f2826af85182ea50b00d4b8142f4db46422ca001`,
+775 652 bytes. arXiv tarball rebuilt and standalone smoke-compiled clean (0 undef, 20 pp),
+sha256 `403f6b1f…`.
+
+**Readiness: 75, COMPUTED not chosen.** Convex `readinessCap` stays 75 and
+`convex/papers.ts` computes `min(cap, cap − penalty)` from open findings. The
+automated-review-convergence gate of directive P is **not** met until a board on the exact
+v3M.0.25 PDF returns 0 genuinely-new-real. That confirmation board is the one remaining
+round permitted under directive R2; after it, and only if clean, A3M becomes a candidate
+for cap 95 on the same evidential basis P4′ used. The SSOT frontmatter's former
+`headline_pct … ~95` is withdrawn as unsupported.
 
 ## v3M.0.19 (2026-09-04) — D-A3-14 (ledger row 19): no-go generalized to full P(X)
 

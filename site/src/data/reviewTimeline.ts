@@ -67,6 +67,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-r9-board-closure-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "internal-api",
+    title:
+      "A3M R9: rounds resumed after the R2 stop, three MAJORs closed \u2014 v3M.0.24 \u2192 v3M.0.25",
+    papers: ["A3"],
+    summary:
+      "Lane L1 of the 2026-09-18 publication-push campaign. A3M's review rounds had been STOPPED under directive R2 since v3M.0.18, with the stop conditioned on a science decision about ledger row 19; that row now reads 'DONE 2026-09-04 \u2014 NO-GO GENERALISED' (D-A3-14), so exactly one board was authorized. INT only per directive N: Grok API (native-PDF), Gemini API (native-PDF), and one Claude Fable 5.1 INT referee under the de-biased paper-page prompt; no EXT browser round, no Codex. Verdicts on the byte-identical v3M.0.24 artifact: REJECT / MINOR REVISIONS / MAJOR REVISIONS. The truth-audit dispositioned 24 findings as genuinely-new-real (3 MAJOR, 1 MAJOR-lite, 17 minor, 3 nit) and FALSIFIED 14 with source citations \u2014 including four of the items Grok's REJECT rested on, which were checked against the manuscript's own text and the auditor's own arithmetic. The three MAJORs: the reproducibility statement pinned to a commit that contains none of the ~12 artifacts it names (both published tree URLs return 200 only because the parent directories exist, which is why no link check caught it); Eq. (15) was attributed to Li+2016 Eq. (4.19) but is their Eq. (5.1), already carrying lambda, so the Sec. VIII lambda-scan double-counted it on the matter-contraction line; and f_NL^after = 1.0\u20131.4e11 was printed in the abstract, Sec. VIII and Table VII with no statement that the tree-level bispectrum lost control 6.9 decades earlier. All closed in v3M.0.25, the last via a new committed computation (r9_perturbativity) that supplies a validity floor c_s >~ 0.073\u20130.079 \u2014 where r >~ 1.8 is already 49x the BICEP/Keck bound, so the no-go now rests on r = 24c_s plus loss of perturbative control rather than on an uncontrolled 10^11 figure. A defect no leg found surfaced during closure: the committed v3M.0.24 .tex did not compile at all on a clean toolchain (a raw Unicode rho), so the served PDF was not reproducible from its own committed source.",
+    keyTakeaways: [
+      "A reproducibility commit pin can be simultaneously live (HTTP 200) and worthless: the parent directories existed at the pinned commit while every artifact cited inside them postdated it \u2014 verify per-artifact with git cat-file -e <pin>:<path>, never by URL status",
+      "Two independent lanes on the same day (A3M and P-SU) found a raw non-ASCII character breaking a committed .tex \u2014 the served PDFs were not reproducible from their own sources; directive-G should compile from a clean checkout, not an incremental local build",
+      "The harshest verdict word was the least reliable signal: four of the items Grok's REJECT rested on were falsified against the paper's own text, while two of its other findings produced the round's most serious MAJOR \u2014 verdict words stay diagnostic, the gate stays 0 genuinely-new-real",
+      "A number can be arithmetically correct and still unpublishable: 1.0\u20131.4e11 reproduces exactly from the printed equations, but sits ~7 decades past the paper's own perturbativity criterion, so it was recast as an explicitly-labelled formal continuation rather than a requirement",
+    ],
+    links: [
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "R9 board", href: `${PR}/INT_v3/A3M_v3M.0.24_R9_BOARD_2026-09-18.md` },
+      { label: "R9 truth audit", href: `${PR}/INT_v3/A3M_v3M.0.24_R9_TRUTH_AUDIT_2026-09-18.md` },
+      { label: "Claude Fable INT raw", href: `${PR}/INT_v3/A3M_v3M.0.24_R9_claude_fable_2026-09-18.md` },
+      { label: "Grok API raw", href: `${PR}/ROUND_2026-09-18-A3M-v3M.0.24-EXACTPDF-e0e923d6-R9VERIFY_A3M_Grok_brutal.md` },
+      { label: "Gemini API raw", href: `${PR}/ROUND_2026-09-18-A3M-v3M.0.24-EXACTPDF-e0e923d6-R9VERIFY_A3M_Gemini_cosmology.md` },
+      { label: "Perturbativity computation", href: `${GH}/research/track_a3_multichannel/r9_perturbativity` },
+      { label: "A3M source", href: `${GH}/research/track_a3_multichannel/paper/main.tex` },
+    ],
+  },
+  {
     id: "p4p-v4p-0-7-confirm-board-v4p-0-8-2026-09-18",
     dateISO: "2026-09-18",
     kind: "internal-api",
