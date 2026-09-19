@@ -493,7 +493,7 @@ function closePanel() {
 }
 
 // Convex-backed comment system
-const convexUrl = 'https://impressive-quail-879.convex.cloud';
+const convexUrl = 'https://brilliant-panther-471.convex.cloud';
 
 async function loadComments(tid) {
   try {
@@ -677,7 +677,7 @@ window.addEventListener('resize', drawSkyMap);
 <script>
 (function() {
   try {
-    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var c = new convex.ConvexHttpClient("https://brilliant-panther-471.convex.cloud");
     var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
     c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
   } catch(e) {}

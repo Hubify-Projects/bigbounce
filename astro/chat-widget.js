@@ -598,7 +598,7 @@
   function restoreMessages(msgArea) {
     try {
       if (!window.convex) return;
-      var c = new convex.ConvexHttpClient('https://impressive-quail-879.convex.cloud');
+      var c = new convex.ConvexHttpClient('https://brilliant-panther-471.convex.cloud');
       c.query('chatMessages:bySession', { sessionId: sessionId }).then(function(stored) {
         if (!stored || stored.length === 0 || messages.length > 0) return;
         // Sort by timestamp ascending

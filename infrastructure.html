@@ -201,7 +201,7 @@ Public Archive (DESI, SDSS, Planck, etc.)<br>
     <h4>Convex Real-Time Database</h4>
     <p>Powers interactive features: anomaly explorer comments/reviews, pipeline state tracking, chirality catalog querying.</p>
     <p><strong>Tables:</strong> anomalies, reviews, pipelineState, galaxies</p>
-    <p><strong>Dev:</strong> <code>impressive-quail-879.convex.cloud</code></p>
+    <p><strong>Dev:</strong> <code>brilliant-panther-471.convex.cloud</code></p>
   </div>
   <div class="infra-card">
     <h4>Website (Static + Convex)</h4>
@@ -278,7 +278,7 @@ Public Archive (DESI, SDSS, Planck, etc.)<br>
 <script>
 (function() {
   try {
-    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var c = new convex.ConvexHttpClient("https://brilliant-panther-471.convex.cloud");
     var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
     c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
   } catch(e) {}
