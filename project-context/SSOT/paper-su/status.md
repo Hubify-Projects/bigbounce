@@ -1,6 +1,6 @@
 # P-SU status — current authoritative section
 
-**Current candidate:** v1S.0.9 · 2026-09-18 ·
+**Current candidate:** v1S.0.10 · 2026-09-19 ·
 `arxiv/paper_su_criterion/main.tex`
 
 **Title:** "The separate universe computes a different variable: an exact
@@ -39,9 +39,80 @@ carry a nonzero $(n_s-1)$ monopole, but an exactly compensating in-in term
 cancels it, so $f_{\delta N}^{\rm init}\equiv-5$ holds for every constant
 $\eps$ AND every $n_s$ (stronger than the paper states). S12 is therefore no
 longer a science gate; what remains is a PRESENTATION correction to
-Appendix A2/A3/A4 (sentences P1–P5 in the derivation note's §"Printable"),
-owned by a separate manuscript lane — no `main.tex` edit, version bump, or
-review board was done by the S12 lane. See the Close-the-gap section below.**
+Appendix A2/A3/A4 (sentences P1–P5 in the derivation note's §"Printable").
+**That manuscript edit was APPLIED 2026-09-19 by campaign lane `bb-L2b-psu-s12-apply`,
+landing v1S.0.10** — see `## v1S.0.10 — S12 presentation fix + R4 (in progress)`
+below.**
+
+## v1S.0.10 — S12 presentation fix + R4 (in progress)
+
+Campaign lane `bb-L2b-psu-s12-apply` applied the S12 derivation note's §7
+"Printable" sentences P1–P5 to `main.tex` verbatim (no new math beyond
+`research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.md` /
+`DISPOSITIONS/PSU.md` §S12 — `/never-fabricate-derivation` clean):
+
+- **P1/P2 (Appendix A3):** replaced "the trace part vanishes at $n_s=1$" with
+  the correct mechanism statement; $T(\eps,\mu)$ now printed as
+  $T(\eps,\mu,n_s)=\frac{5\eps}{4(3-\eps)}[1-3\mu^2+(n_s-1)\mu^2]$ with
+  monopole $\frac{5\eps(n_s-1)}{12(3-\eps)}$ (vanishing at $n_s=1$), replacing
+  the wrong "monopole $0$ (all $\eps$)".
+- **P2b (Appendix A2 "Totals"):** "both with monopole $-5\eps/6$" corrected —
+  final-label monopole is $-5\eps/6$ for any $n_s$ (tilt-independent kernel,
+  no $1/k_L$ pole); initial-label monopole is
+  $\frac{5\eps(2\eps-7+n_s)}{12(3-\eps)}$, reducing to $-5\eps/6$ only at
+  $n_s=1$.
+- **P2c (Appendix A4):** the printed in-in shape
+  $\frac{5}{12}(\eps^2\mu^2-\eps^2+6\eps-12)$ labelled explicitly as the
+  $n_s=1$ shape; the general-$n_s$ shape
+  $\frac{5}{12}[\eps^2\mu^2-\eps^2+6\eps-12-\eps(n_s-1)\mu^2]$ added, with the
+  extra tilt term identified as exactly $-\delta T$ (cancels the App. A3
+  correction term-by-term in $\mu$) — this is why $f_{\delta N}^{\rm init}=-5$
+  is $n_s$-independent while $f_{\delta N}^{\rm fin}=\frac{5[\eps(n_s-4)\mu^2-3\eps+12]}{4(\eps-3)}$
+  is not.
+- **P3:** added, after the $f_{\delta N}^{\rm init}\equiv-5$ statement, the
+  strengthened claim that the $-5$ does not rely on scale invariance (a
+  constant-$\eps$ background is not scale-invariant; the growing branch
+  carries $n_s-1=2(2\eps-3)/(\eps-1)$, vanishing only at $\eps=3/2$) and holds
+  for every constant $\eps$ and every spectral index.
+- **P4 (optional, applied):** one sentence added at the end of "What is new"
+  stating the two labels' composed results are $n_s$-independent for
+  different reasons (initial-label: the map undoes the long mode's own
+  Lagrangian displacement; final-label: its kernel carries no $1/k_L$ pole).
+- **P5:** Reproducibility Statement now cites
+  `research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.{py,json}`
+  with real SHA-256 prefixes (`8b39192b…` / `eaf940c0…`) and
+  `reproducibility/manifests/experiments/psu-gate-s12-translation-trace.json`.
+
+**Directive-G hygiene:** `\paperVersion` v1S.0.9→v1S.0.10, `\paperTimestamp`
+→ September 19, 2026. 4-pass pdflatex, 0 undefined references, 0 raw
+non-ASCII characters (grepped before compiling — v1S.0.8 had a raw-Unicode
+defect; not repeated). 5 overfull `\hbox` (max 8.31pt, the pre-existing
+Table I alignment overflow; two new ones at 1.4–1.5pt from the edited
+paragraphs), all `/latex-audit`-visual-rendered (all 7 pages, `pdftoppm` at
+110dpi) and confirmed to NOT cross the column gutter or escape the page — PASS.
+7 pages (unchanged), PDF md5 `c6457c37f51a8ba0a92f57f1aed5d650`, three-way
+matched: fresh compile == `site/public/papers/paper_su_criterion_v1S.0.10.pdf`
+== `public/papers/paper_su_criterion_v1S.0.10.pdf`. No science number changed.
+
+**R4 (the one directive-R2-permitted verification board, unlocked by the S12
+science decision): IN PROGRESS, not yet closed.** Exact-PDF-bound
+(SHA-256 prefix `1015f442`), board directory
+`project-context/peer-reviews/INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/`.
+Claude-opus INT referee (verdict-blind cold read, independent sub-agent, not
+shown any internal disposition history) dispatched. **Grok API + Gemini API
+legs via `tools/v3_native_pdf_review.py` BLOCKED**: the tool's
+`bigbounce_preflight.py` pdf-mirror-integrity validator refuses dispatch
+unless `site/src/data/live-status.ts` and `papers.ts` are git-clean, and both
+were mid-edit by concurrent campaign lanes (L7b-site-sync / L4b) in this
+shared single-checkout repo at the time — the same blocker L4b logged
+independently. This is a genuine cross-lane contention, not a fabricated
+excuse; the gate was not bypassed. Readiness stays **72 (COMPUTED,
+unchanged)** until R4's truth-audit completes against all three legs — no
+convergence claim is made on a partial board. Retry
+`python3 tools/bigbounce_preflight.py run --receipt <path>` once
+`git status --short -- site/src/data/live-status.ts site/src/data/papers.ts`
+is clean, then re-run `tools/v3_native_pdf_review.py` on the same exact PDF
+(sha8 `1015f442`) to complete the Grok/Gemini legs.
 
 ## v1S.0.2 closure summary (this bundle)
 
@@ -144,20 +215,38 @@ term), both local CPU, \$0, under 5 seconds total compute.
   the printed in-in shape). **Carried forward as a PRESENTATION item, not a
   science gate:** Appendix A2/A3/A4 wording must be corrected and the −5 claim
   strengthened — ready-to-paste sentences P1–P5 are in the derivation note's
-  §"Printable". That manuscript edit plus directive-G hygiene is a *separate
-  lane's* job; this lane did not touch `main.tex`, did not bump the version,
-  and ran no review board. See `DISPOSITIONS/PSU.md` §S12.
+  §"Printable". **APPLIED 2026-09-19 (campaign lane `bb-L2b-psu-s12-apply`,
+  v1S.0.10)** — see `## v1S.0.10 — S12 presentation fix + R4 (in progress)`
+  above for exactly what changed. See `DISPOSITIONS/PSU.md` §S12.
 - S4 (self-containedness): partially open — Gemini's R3VERIFY MAJOR holds
   that the ADM constraint *solve* itself, not just its listed results, is
   not reproduced in-paper. Non-blocking per directive R2's genre exception.
+  Not addressed by lane L2b (not cheap/real within this lane's scope — would
+  need a real in-paper re-solve of the ADM constraints, not an edit).
 - S8 (numerical USR validation) and S11 (Zenodo DOI for the cited scripts)
-  remain open, unchanged since R2 — non-blocking, carried.
-- Venue/arXiv-category selection not yet made (candidate: gr-qc or
-  astro-ph.CO); the note is now 7 pp., over a strict PRD-Letter page limit —
-  the venue-form decision (Letter vs. Brief Report) is also still open.
+  remain open, unchanged since R2 — non-blocking, carried. Not addressed by
+  lane L2b (both require new compute/infrastructure, not a cheap edit).
+- **Venue/arXiv-category recommendation (Houston-only final choice, recorded
+  2026-09-19 by lane `bb-L2b-psu-s12-apply`):** the note's content — the
+  δN/separate-universe formalism, the squeezed-bispectrum criterion, and the
+  four background validations (dust, USR, attractor slow roll, ekpyrosis) —
+  is a cosmological-perturbation-theory / non-Gaussianity result, the same
+  observational-target class as its own citation list (Maldacena 2003,
+  Namjoo-Firouzjahi-Sasaki 2013, Chen et al. 2013, Pajer-Schmidt-Zaldarriaga
+  2013, Cai et al. 2009) — all astro-ph.CO papers. **Recommendation: primary
+  category astro-ph.CO, cross-list gr-qc** (the ADM-constraint derivation
+  machinery is the gr-qc-flavored part, but the paper's question and result
+  are squeezed-bispectrum non-Gaussianity, astro-ph.CO's home territory).
+  This reverses the paper metadata's current placeholder
+  ("gr-qc / astro-ph.CO (candidate; cross-list astro-ph.CO)"); the metadata
+  is left unchanged pending Houston's actual click, per directive P (venue
+  selection is a publishing-phase decision, not a readiness-score input).
+  The Letter-vs-Brief-Report form decision (paper is 7 pp., over a strict
+  PRD-Letter limit) is also still open and equally Houston-gated.
 - Site (`site/src/data/papers.ts`, `live-status.ts`, `reviewTimeline.ts`)
-  updated in the same commit bundle as this v1S.0.9 closure (lane L2, this
-  round) — no longer deferred to another lane.
+  updated for the v1S.0.10 bump in the same commit bundle as this closure
+  (lane L2b, this round), staged precisely (`git add -p`) since both files
+  are shared with concurrent lanes' unrelated edits.
 
 ## v1S.0.3 — ROUNDS STOPPED (R2) pending S6–S11 / venue
 

@@ -173,22 +173,36 @@ while the final-label one is $-5\eps/6$ for any $n_s$; (ii) the printed $f^{\rm 
 shape is the $n_s=1$ shape. It also noted, correctly, that $f^{\rm fin}_{\delta N}$ *is*
 $n_s$-dependent, $\frac{5[\eps(n_s-4)\mu^2-3\eps+12]}{4(\eps-3)}$ — the expected asymmetry.
 
-**Required manuscript changes (NOT made by this lane):** Appendix A3's clause "the trace part
-vanishes at $n_s=1$" and the label "monopole $0$ (all $\eps$)"; Appendix A2's "both with monopole
-$-5\eps/6$"; the Appendix A4 in-in shape's $n_s=1$ labelling; and the $-5$ claim can be
-**strengthened** to "for every constant $\eps$ and every spectral index". Ready-to-paste
-sentences P1–P5 are in the derivation note's §"Printable". The manuscript edit plus directive-G
-hygiene (version bump, 4-pass recompile, `/latex-audit`, byte-identical PDF re-mirror to all
-served paths, Convex `paperVersions:bump`) is the **next lane's** job — no `main.tex` edit, no
-version bump, and no review board was run here.
+**Required manuscript changes — APPLIED 2026-09-19 (campaign lane `bb-L2b-psu-s12-apply`,
+v1S.0.10):** Appendix A3's clause "the trace part vanishes at $n_s=1$" and the label "monopole
+$0$ (all $\eps$)" replaced with the general-$n_s$ $T(\eps,\mu,n_s)$ and its correct monopole;
+Appendix A2's "both with monopole $-5\eps/6$" corrected to state the final-label monopole holds
+for any $n_s$ while the initial-label one is $n_s=1$-specific; the Appendix A4 in-in shape
+labelled as the $n_s=1$ shape with the general-$n_s$ shape added; the $-5$ claim **strengthened**
+to "for every constant $\eps$ and every spectral index" with the cancellation mechanism stated
+inline; one optional sentence (P4) added to "What is new"; the Reproducibility Statement (P5)
+now cites this note's script/json with real SHA-256 prefixes. Directive-G hygiene done in the
+same bundle: version v1S.0.9→v1S.0.10, 4-pass recompile (0 undef refs, 0 raw Unicode, checked
+before compiling), `/latex-audit` visual pass on all 7 rendered pages (PASS, no overflow), PDF
+md5 `c6457c37f51a8ba0a92f57f1aed5d650` mirrored byte-identical to all served paths. No science
+number changed; every sentence traces to this note's §"Printable" or the boxed results above —
+`/never-fabricate-derivation` clean. See `project-context/SSOT/paper-su/status.md`
+`## v1S.0.10 — S12 presentation fix + R4` for the full diff description.
 
-**Gate status: S12 CLOSED (with the manuscript corrections above pending).** It is no longer the
-blocker on a further review round; remaining `paper-su` open items are S4, S8, S11 and the
-venue/length decision, all non-blocking.
+**Gate status: S12 CLOSED, manuscript corrections APPLIED.** It is no longer the blocker on a
+further review round; remaining `paper-su` open items are S4, S8, S11 and the venue/length
+decision, all non-blocking.
 
-**Directive R2 (updated 2026-09-18):** R3VERIFY is the one round the intervening S7–A2 science
-decisions unlocked. It found and closed 2 ESSENTIAL + 3 MAJOR genuinely-new-real defects in
-v1S.0.9 (see round table above). It also surfaced S12, a genuinely-new, unresolved science
-question. Per directive R2, **review rounds on `paper-su` STOP again** until S12 is resolved (or
-Houston explicitly defers it) — a fourth board on an unchanged S12 would measure referee
-variance, not progress. S8/S11/venue-length remain carried, non-blocking open items.
+**Directive R2 (updated 2026-09-19):** R3VERIFY was the one round the intervening S7–A2 science
+decisions unlocked; it found and closed 2 ESSENTIAL + 3 MAJOR genuinely-new-real defects in
+v1S.0.9 and surfaced S12. S12's resolution (2026-09-19, `bb-LS3-psu-s12`) plus its manuscript
+application (this entry, `bb-L2b-psu-s12-apply`, v1S.0.10) is the intervening science decision
+that re-opens the round budget: **R4, the one permitted verification board, is IN PROGRESS on
+the exact v1S.0.10 PDF** (SHA-256 prefix `1015f442`,
+`project-context/peer-reviews/INT_v3/ROUND_2026-09-19-PSU-v1S.0.10-EXACTPDF-1015f442-R4/`) — a
+Claude-opus verdict-blind referee leg was dispatched; the Grok API + Gemini API legs via
+`tools/v3_native_pdf_review.py` are blocked pending `bigbounce_preflight.py`'s clean-tree check
+on `site/src/data/{live-status,papers}.ts`, which are mid-edit by concurrent campaign lanes in
+this shared checkout (not a `paper-su`-specific problem). Whichever lane completes R4 must
+truth-audit every finding against this file's fingerprints before closing; S8/S11/venue-length
+remain carried, non-blocking open items.
