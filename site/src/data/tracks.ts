@@ -180,7 +180,7 @@ export const tracks: Track[] = [
       {
         channel: "Early-universe anomaly map (C2, redirected)",
         prediction: "Anomalies that strain single-field inflation (over-massive high-z galaxies, PNG, isolated early SMBHs).",
-        currentData: "Registered as a full first draft (paper-af, vAF.0.3): 1,244-object anomaly-score catalogue, 21,793,550-row science-target parent, no reference class clears the confirmed-class recovery bar — reported honestly as a data release, not a discriminator paper (ledger #8 condition NOT met). R1 INT board in progress.",
+        currentData: "paper-af (vAF.0.4): 1,244-object anomaly-score catalogue, 21,793,550-row science-target parent, no reference class clears the confirmed-class recovery bar — reported honestly as a data release, not a discriminator paper (ledger #8 condition NOT met). R1 INT board closed 17/20 findings, readiness 75.",
         grade: "open",
         receiptLabel: "paper-af source",
         receiptHref: `${TREE}/pipelines/p1_highz_tracers/anomaly_flagship_draft`,
@@ -190,7 +190,7 @@ export const tracks: Track[] = [
     openItems: [
       {
         item: "C2 discriminator paper",
-        blocker: "Registered as paper-af (vAF.0.3, readiness 60): a validated data release, not yet a discriminator paper. R1 INT board dispatched (Claude-opus leg running; Grok/Gemini pending); the known-object recovery benchmark (ledger #8) clears no reference class at the pre-declared bar.",
+        blocker: "paper-af (vAF.0.4, readiness 75): a validated data release, not yet a discriminator paper. R1 INT board closed 17/20 findings; directive R2 round 1 of 2 spent. The known-object recovery benchmark (ledger #8) clears no reference class at the pre-declared bar.",
       },
       {
         item: "Houston's final sign-off read",
@@ -306,7 +306,7 @@ export const contributions: Contribution[] = [
     title: "Anomaly Catalogue v2 — Public Science-Target Data Release",
     track: "Track C",
     oneLine:
-      "1,244 science-target spectral anomalies released with provenance and cross-matching; registered as paper-af (vAF.0.3), answered as a data release, not yet a discovery paper, after no reference class cleared the confirmed-class bar.",
+      "1,244 science-target spectral anomalies released with provenance and cross-matching; paper-af (vAF.0.4, R1 board closed), answered as a data release, not yet a discovery paper, after no reference class cleared the confirmed-class bar.",
     href: `${TREE}/pipelines/p1_highz_tracers/anomaly_flagship_draft`,
   },
   {

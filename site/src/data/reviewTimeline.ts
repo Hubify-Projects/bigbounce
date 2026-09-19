@@ -67,6 +67,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "paper-af-r1-board-closed-vaf-0-4-2026-09-19",
+    dateISO: "2026-09-19",
+    kind: "internal-api",
+    title: "R1: paper-af's first review board closes 17/20 findings, downgrades a candidate to undecidable -- vAF.0.3 -> vAF.0.4",
+    papers: ["AF"],
+    summary:
+      "Lane LR1's R1 board on the exact vAF.0.3 PDF: a Claude-opus verdict-blind INT referee (6 BLOCKER / 16 MAJOR / 16 MINOR / 9 NIT), Grok API grok-4.3 (REJECT), and Gemini API gemini-3.1-pro-preview (MAJOR REVISIONS) under the ApJS-CATALOG profile -- all three legs independently convergent on the same core defects. Every BLOCKER and the highest-impact MAJORs were independently re-derived from committed artifacts before closure (10/10 spot-checks matched exactly), per the standing verdict-first truth-audit rule. The most consequential finding: the abstract's claim to 'support' a z~4.3 quasar candidate was re-checked against the released Legacy photometry and found to sit inside the paper's own already-disclosed 406-row photometric-join defect (empty morphtype, exact-zero WISE/shape columns, a physically backwards r/z flux ratio) -- downgraded from Supported to Undecidable, so the honest verdict for the FT-A follow-up test is now 'refutes one of four, cannot decide the other three,' not the two-decided reading vAF.0.2/vAF.0.3 printed. 17 of 20 canonical findings closed with real edits or new, independently verified computation and no science number changed without a committed computation: the validation-contract pass count corrected 13->11; the provenance-chain caption corrected to state exactly what its two verification passes check; the title rewritten to carry the null result directly; the abstract/intro/conclusions rewritten in all three summary locations; a new committed script (blue_arm_diagnostics_2026-09-19.py) adds a real variance decomposition showing the anomaly score's R^2 with the blue-arm residual included is 0.78, falling to 0.01 without it, plus a rest-frame-vs-observed-frame concentration test -- both leaning toward an instrumental calibration origin without closing the question; the benchmark-enrichment denominator fixed at the generator (4.2x->3.3x); the matched/unmatched score difference reframed as confounded by brightness; a schema/citation gap fixed in Table IV (NED/VizieR/AllWISE/Redrock). Three findings were left honestly disclosed as open rather than fabricated closed: the archived autoencoder's undocumented training corpus/architecture, the deduplication rule's unquantified near-threshold effect, and the taxonomy's RA-wrap plus missing clustering hyperparameters. Directive-G hygiene: vAF.0.3 -> vAF.0.4, 4-pass compile clean (0 errors, 0 undefined refs/cites, 0 overfull hboxes >10pt), 17 pages (up from 15, real new content), mirrored byte-identical to site/public/papers + public/papers. Convex: paperVersions:bump, rRounds:create, 3x externalReviews:upsertByLabelDate, activityFeed:add, readinessCap 60->75, all read back verified. Directive R2: round 1 of 2 spent -- one further board is permitted before a scope decision is required.",
+    keyTakeaways: [
+      "A paper's own headline claim was downgraded by its own review board: 'supports one' z~4.3 quasar candidate is now 'undecidable' after independent re-verification found the candidate inside a data defect the paper itself already disclosed -- the honest FT-A tally moves from 2-decided/2-undecidable to 1-decided/3-undecidable",
+      "All three independent legs (Claude opus, Grok, Gemini) converged on the same core defects on a paper's very first review board -- unusually strong agreement for an R1, and every BLOCKER-tier finding was independently re-derived from source before being accepted, not taken from reviewer text alone",
+      "A new committed variance-decomposition script turned a qualitative 'driven by the blue arm' claim into a quantitative one (R^2=0.78 with it, R^2=0.01 without) -- evidence, not yet closure, toward an instrumental origin for the anomaly signal",
+      "3 findings stayed open and disclosed rather than being closed with an unsupported edit, per /never-fabricate-derivation -- directive R2 leaves one further board before a scope decision is required",
+    ],
+    links: [
+      { label: "R1 truth-audited findings ledger (DISPOSITIONS/AF.md)", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/AF.md` },
+      { label: "paper-af SSOT", href: `${GH}/project-context/SSOT/paper-af/status.md` },
+      { label: "anomaly flagship source", href: `${GH}/pipelines/p1_highz_tracers/anomaly_flagship_draft` },
+      { label: "commit 227f2668", href: `${GH_COMMIT}/227f2668` },
+    ],
+  },
+  {
     id: "paper-af-registered-convex-vaf-0-3-2026-09-19",
     dateISO: "2026-09-19",
     kind: "closure-wave",

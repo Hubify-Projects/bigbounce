@@ -157,9 +157,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-af",
       number: "AF",
       shortTitle: "DESI anomaly-score catalogue (Track C2 flagship draft)",
-      version: "vAF.0.3",
-      readiness: 60,
-      pendingWork: "Registered in Convex 2026-09-19 (papers:upsert + paperVersions:bump vAF.0.2->vAF.0.3, byte-identical mirrors to site/public/papers + public/papers). Closed 2/4 open TODOs: ADS-verified bibliography citations, real acknowledgements section. R1 INT board dispatched on the exact vAF.0.3 PDF: Claude-opus verdict-blind leg running; Grok/Gemini API legs pending (shared-checkout preflight gate). Open TODOs: absent selection function (OT-1), Zenodo DOI. Readiness 60 COMPUTED -- no board closed yet.",
+      version: "vAF.0.4",
+      readiness: 75,
+      pendingWork: "R1 INT board closed 2026-09-19 (Claude opus 6 BLOCKER/16 MAJOR, Grok REJECT, Gemini MAJOR REVISIONS, all convergent): 17/20 canonical findings closed with real edits or new committed computation. Most consequential: abstract's 'supports one' z~4.3 quasar candidate independently re-verified as sitting inside the paper's own disclosed photometric-join defect -- downgraded Supported->Undecidable (now 'refutes one of four, cannot decide the other three'). New committed blue-arm variance-decomposition script shows the score is R^2=0.78 explained by the blue arm alone (R^2=0.01 without it). 3 findings honestly disclosed as open (training corpus, dedup near-threshold, taxonomy RA-wrap). Directive R2: round 1 of 2 spent. Readiness 75 COMPUTED.",
     },
   ],
   blockerTally: {
