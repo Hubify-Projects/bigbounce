@@ -82,5 +82,13 @@ export const articles: Article[] = [
     "type": "Visual Guide",
     "category": "Overview",
     "isNew": false
+  },
+  {
+    "slug": "big-freeze-big-crunch-big-bounce",
+    "title": "Big Freeze, Big Crunch, Big Bounce: three different questions",
+    "summary": "A constant positive cosmological constant forbids a future turnaround outright; a Crunch would not itself be a Bounce; and an independent reproduction of Popławski's daughter-universe model finds 15 of 26 steps hold, 8 need unstated assumptions, and 3 do not. Three legacy-2025 questions, disentangled and left open.",
+    "type": "Explainer",
+    "category": "Cosmic Fate",
+    "isNew": true
   }
 ];
