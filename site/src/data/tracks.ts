@@ -151,12 +151,8 @@ export const tracks: Track[] = [
     paperSlugs: ["paper-1n"],
     openItems: [
       {
-        item: "First INT/EXT review board on the merged Note",
-        blocker: "P1N has not yet been through any review board; P1A + P1C review churn stopped after R13 as separate manuscripts.",
-      },
-      {
         item: "Houston's final sign-off read",
-        blocker: "Readiness 95 (v1N.0.5) pending Houston's personal review quote in SSOT/paper-1n/status.md.",
+        blocker: "Readiness 99 (v1N.0.6) — D-round and P-round complete 2026-09-18 (arXiv tarball rebuilt, CQG submission kit assembled) — pending Houston's personal review quote in SSOT/paper-1n/status.md.",
       },
     ],
     boundary:
@@ -198,7 +194,7 @@ export const tracks: Track[] = [
       },
       {
         item: "Houston's final sign-off read",
-        blocker: "P4′ v4P.0.5 readiness 95 pending Houston's personal review quote in SSOT/paper-4p/status.md.",
+        blocker: "P4′ v4P.0.8 readiness 95 — exact-version INT confirmation board closed 7 genuinely-new-real MAJOR + 12 MINOR 2026-09-18 — pending Houston's personal review quote in SSOT/paper-4p/status.md.",
       },
     ],
     boundary:
