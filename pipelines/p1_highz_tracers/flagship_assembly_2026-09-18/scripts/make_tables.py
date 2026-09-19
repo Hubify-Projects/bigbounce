@@ -19,8 +19,20 @@ TAB = DRAFT / "tables"
 TAB.mkdir(parents=True, exist_ok=True)
 
 
-def esc(s: str) -> str:
-    return str(s).replace("_", r"\_").replace("%", r"\%").replace("&", r"\&")
+def esc(s) -> str:
+    """LaTeX-escape a raw requirement/label string from a JSON artifact.
+
+    These strings contain shell- and code-like characters (`>`, `<`, `|`,
+    `->`, `_`) that OT1 text mode silently renders as the wrong glyph, so the
+    escaping has to be explicit rather than left to LaTeX.
+    """
+    s = str(s)
+    for a, b in (("\\", r"\textbackslash{}"), ("&", r"\&"), ("%", r"\%"),
+                 ("#", r"\#"), ("_", r"\_"), ("$", r"\$"),
+                 ("~", r"\textasciitilde{}"), ("^", r"\textasciicircum{}"),
+                 ("->", r"$\to$"), (">", "$>$"), ("<", "$<$"), ("|", "$|$")):
+        s = s.replace(a, b)
+    return s
 
 
 def main() -> None:

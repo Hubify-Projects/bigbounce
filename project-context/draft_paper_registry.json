@@ -158,5 +158,22 @@
     "sha256": "cc0dfb84a232967c45ea359d5de18f642af0727c2907512b289931854ed7c48e",
     "md5": "b974dc018e0f5a9f62aa92ea8cef697b",
     "review_paths": []
+  },
+  "AF": {
+    "tex_path": "pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex",
+    "pdf_path": "pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf",
+    "site_slug": null,
+    "target_journal": "ApJS (candidate; catalogue + method paper with a large public data product)",
+    "article_type": "provenance-sealed DESI DR1 anomaly-score candidate catalogue: selection, validation contract, descriptive taxonomy, named follow-up set (Program 2 / Track C2 primary paper; P3 is its integrated support release)",
+    "review_profile": "ApJS-CATALOG",
+    "served_aliases": [],
+    "version": "vAF.0.2",
+    "pages": 15,
+    "date": "2026-09-19",
+    "sha256": "b972d890cf5b907eec0a7bf614dac5ba5647502efe3ee907533e4b3f96dd4cba",
+    "md5": "de97bde2a7769b382b7e71a17a8c1d18",
+    "review_paths": [],
+    "status": "first full draft; no review board run yet (director decides the first R-round). Not mirrored to site/public/papers or Convex.",
+    "evidence_root": "pipelines/p1_highz_tracers/flagship_assembly_2026-09-18"
   }
 }

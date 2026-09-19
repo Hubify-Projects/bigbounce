@@ -2,17 +2,17 @@
 \begin{tabular}{l p{0.52\textwidth} l}
 ID & Requirement & Outcome \\
 \hline
-V1 & gates/check\_sample\_provenance.py exits 0 on the released sample tables (TARGETID > 0; OBJTYPE/FIBERSTATUS where carried) & \textsc{pass} \\
+V1 & gates/check\_sample\_provenance.py exits 0 on the released sample tables (TARGETID $>$ 0; OBJTYPE/FIBERSTATUS where carried) & \textsc{pass} \\
 V2 & every released artifact's SHA-256 equals the value in the landing receipt (PHASE3\_V2\_LANDING\_2026-09-03.md) & \textsc{pass} \\
-V3 & the manifest chain closes end to end: sample -> enrichment -> cross-match -> taxonomy, each stage binding the exact SHA-256 of its input and output, under one run contract, with the model / inference-code / zcatalog hashes recorded & \textsc{pass} \\
+V3 & the manifest chain closes end to end: sample $\to$ enrichment $\to$ cross-match $\to$ taxonomy, each stage binding the exact SHA-256 of its input and output, under one run contract, with the model / inference-code / zcatalog hashes recorded & \textsc{pass} \\
 V3b & the enrichment stage's own MSE reproduction cross-check passed for every released row & \textsc{pass} \\
-V4 & replaying the pre-declared threshold rule (largest grid point with science-only count >= 300, step up if > 1,500) on the science-target counts selects the released threshold & \textsc{pass} \\
+V4 & replaying the pre-declared threshold rule (largest grid point with science-only count $>$= 300, step up if $>$ 1,500) on the science-target counts selects the released threshold & \textsc{pass} \\
 V5 & the cross-match output partitions the sample exactly: matched + unmatched = sample, disjoint, no duplicate TARGETIDs, and the enriched table covers the same TARGETIDs & \textsc{pass} \\
 V6 & the taxonomy covers exactly the SIMBAD/NED-unmatched subset; 25 clusters roll up into 8 families; per-family counts sum to the unmatched count and match the per-object labels & \textsc{pass} \\
-V7 & every released object exceeds the stated score threshold (S > 3) & \textsc{pass} \\
+V7 & every released object exceeds the stated score threshold (S $>$ 3) & \textsc{pass} \\
 V8 & the AllWISE table covers every released object and its match count equals the released figure (74) & \textsc{pass} \\
-V9 & the released sky-fraction-by-score validation supports the stated claim that every score bin above 3 is > 99.5\% sky-or-nonscience before the provenance gate & \textsc{pass} \\
-V10 & within the science-target sample the anomaly score is not a restatement of exposure quality or source brightness (|Spearman rho| < 0.2 against S/N, exposure time, TSNR2 and r-band flux) & \textsc{pass} \\
+V9 & the released sky-fraction-by-score validation supports the stated claim that every score bin above 3 is $>$ 99.5\% sky-or-nonscience before the provenance gate & \textsc{pass} \\
+V10 & within the science-target sample the anomaly score is not a restatement of exposure quality or source brightness ($|$Spearman rho$|$ $<$ 0.2 against S/N, exposure time, TSNR2 and r-band flux) & \textsc{pass} \\
 V11 & the per-band residual decomposition identifies which camera arm drives the score (reported, not gated) & \textsc{reported} \\
 V12 & the released taxonomy's family partition is tested for structure in the 128-dimensional latent space it was NOT built from (silhouette vs a label-permutation null, 50 draws) & \textsc{structured-but-weak} \\
 DEFECT-1 & the enriched table's zcatalog columns (z, zwarn, spectype, subtype) are populated & \textsc{fail} \\
