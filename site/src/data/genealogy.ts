@@ -1,7 +1,6 @@
-// Provisional content — refined by the W6 legacy-hypothesis ledger; do not
-// treat as a result.
+// Content source: research/archaeology_2025/RETIRED_HYPOTHESES.md +
+// LEGACY_HYPOTHESIS_LEDGER.md (2026-09-19)
 //
-// Source: research/archaeology_2025/ (2026-09-18 legacy-archaeology campaign).
 // This file renders the /genealogy page — the pre-2026 exploratory lineage of
 // the BigBounce program, mined for questions, never restored as theory.
 // Every claim below is either (a) a plain historical fact about what Houston
@@ -47,7 +46,7 @@ export const generations: Generation[] = [
     explored:
       "A universe ending in a giant black hole with white-hole rebirth — ICBC, QGBW, the Omega Black Hole, and a Vacuum Collapse Anomaly (VCA) triggering mechanism.",
     survived:
-      "The intuition that gravitational collapse might terminate in a nonsingular new expanding spacetime, rather than the specific mechanisms proposed.",
+      "The White Hole Sponge / ICBC physics package itself was retired outright (ledger status F, zero derivation) — only the general intuition that gravitational collapse might terminate in a nonsingular new expanding spacetime carried forward, via the Black Hole Sponge pivot below.",
   },
   {
     period: "Mar 25–27, 2025",
@@ -55,7 +54,7 @@ export const generations: Generation[] = [
     explored:
       "A reframing away from a literal “white-hole universe” toward our universe as the interior, or daughter, of a parent black hole.",
     survived:
-      "A stronger conceptual direction with much less dependence on literal white holes — the parent→daughter framing that later became scientifically tractable.",
+      "The genuine conceptual seed of the parent→daughter framing (ledger status C) — historical/speculative, not a retired package, and what later became scientifically tractable.",
   },
   {
     period: "Jul 2025",
@@ -87,40 +86,58 @@ export const retired: RetiredHypothesis[] = [
   {
     name: "ICBC as dark energy",
     claim:
-      "The Inverse/Inverted Cosmic Boundary Curvature (ICBC) mechanism was proposed as a replacement for dark energy driving late-time cosmic acceleration.",
+      "The Inverted/Interior Cosmic Boundary Curvature (ICBC) was proposed as a mechanism replacing the cosmological constant as the driver of late-time cosmic acceleration.",
     whyRetired:
-      "The program's own ECH derivation systematically closed candidate late-time dark-energy routes — the current answer is “no” for this class of mechanism, not a re-opening of it.",
+      "No covariant action or dimensional derivation for ICBC was ever produced. BigBounce's own Einstein-Cartan-Holst (ECH) analysis independently closed four candidate dark-energy routes without invoking it.",
     evidence:
-      "arxiv/paper1bc_ech_note; research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §7 (Q15, archival list)",
+      "research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §7 (Q15); arxiv/paper1bc_ech_note/main.tex",
     status: "closed",
   },
   {
     name: "Inevitable Omega Black Hole",
     claim:
-      "All black holes inevitably merge over cosmic time into a single “Omega Black Hole,” treated as a required endpoint of cosmic evolution.",
+      "All black holes in the universe inevitably merge over cosmic time into a single “Omega Black Hole,” treated as a required endpoint of cosmic evolution.",
     whyRetired:
-      "False under an eternally accelerating Λ (cosmological-constant) universe: with a positive, constant Λ, causally disconnected regions never merge, and no mechanism was ever derived for universal black-hole coalescence.",
-    evidence:
-      "research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §7 (Q15, archival list); research/archaeology_2025/inputs/chatgpt_braindump_2026-09-18.md §“Complete idea triage”",
+      "False under an eternally accelerating, constant, positive cosmological constant: causally disconnected regions never merge, and no coalescence mechanism was ever derived for the claim.",
+    evidence: "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md §3(a), §8 (Branch A)",
     status: "retired",
   },
   {
-    name: "Inherited galaxy-spin alignment",
+    name: "Inherited galaxy-spin-axis dipole",
     claim:
-      "A rotating parent black hole would imprint a preferred spin axis on its daughter universe, observable today as a dipole in galaxy chirality or spin alignment.",
+      "A rotating parent black hole imprints a preferred spin axis on its daughter universe, observable today as a dipole in galaxy chirality or spin alignment.",
     whyRetired:
-      "Null on two independent tests: P4's DESI Legacy DR8 survey of 887,472 spiral galaxies found a dipole consistent with zero, P5's environment channel is null, and the Popławski rotating-parent amplitude was excluded against the DESI A95 upper limit on 2026-09-02.",
+      "DESI Legacy DR8 (887,472 galaxies) gives a dipole consistent with zero. The 2026-09-02 exclusion shows the literature-claimed Popławski alignment amplitudes sit 2-30x above the observed sensitivity floor.",
     evidence:
-      "research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py; research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §7 (Q14c)",
+      "research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py; pipelines/p2_chirality/chirality_catalog_paper.tex",
     status: "null",
   },
   {
     name: "M_crit = Λc²r³/3G as a universal collapse mass",
     claim:
-      "A single critical mass M_crit = Λc²r³/(3G) within a cosmic radius was proposed as the threshold at which enough matter would overcome dark energy and trigger universal gravitational collapse.",
+      "A single critical mass within a cosmic radius was thought to trigger universal gravitational collapse once a region's mass exceeded it.",
     whyRetired:
-      "Superseded by reidentification: rearranged as r = (3GM/Λc²)^{1/3}, this is the established ΛCDM maximum-turnaround-radius relation for a single bound structure (Pavlidou & Tomaras), not a universal collapse criterion. The historical interpretation was too sweeping; the physics hiding inside it was real.",
-    evidence: "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md §6 (retirement) + §9 Q12",
+      "Superseded, not falsified: rearranged, it is the established ΛCDM maximum-turnaround-radius relation for one bound structure (Pavlidou & Tomaras), not a global collapse test. Applied globally it only diagnoses deceleration, never recollapse.",
+    evidence: "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md §6, §9 (Q12)",
+    status: "retired",
+  },
+  {
+    name: "Central SMBH causes spiral galaxy morphology",
+    claim:
+      "A galaxy's central black hole determines whether it forms a spiral rather than an elliptical shape.",
+    whyRetired:
+      "Kormendy & Ho (2013) show the most massive supermassive black holes sit in giant ellipticals, not spirals. Morphology tracks angular momentum, gas fraction, merger history, and environment, not black-hole presence.",
+    evidence: "research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §6",
+    status: "retired",
+  },
+  {
+    name: "UMPBH as a required cosmic era",
+    claim:
+      "Ultra-massive primordial black holes (UMPBH) were treated as a mandatory intermediate era of cosmic evolution.",
+    whyRetired:
+      "No supporting derivation or observational requirement exists anywhere in the source material or the repo; the era was asserted, never derived.",
+    evidence:
+      "research/archaeology_2025/inputs/chatgpt_braindump_2026-09-18.md (“Complete idea triage”); research/archaeology_2025/SOURCE_MAP.md",
     status: "retired",
   },
 ];
