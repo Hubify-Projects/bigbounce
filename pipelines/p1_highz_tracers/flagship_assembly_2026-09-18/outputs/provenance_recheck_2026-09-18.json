@@ -1,0 +1,18 @@
+{
+  "flagship_sample_v2.parquet": {
+    "returncode": 0,
+    "sha256_landing_receipt": "d6d43dfa04d6a8b2b4d014f5f4899b5e5b844144a50b6c88e01a9a771a6baa5f",
+    "sha256_local": "d6d43dfa04d6a8b2b4d014f5f4899b5e5b844144a50b6c88e01a9a771a6baa5f",
+    "sha256_match": true,
+    "stderr": "",
+    "stdout": "OK: {'sample': '/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2.parquet', 'row_count': 1244, 'checked_objtype': False, 'checked_fiberstatus': False, 'status': 'clean'}"
+  },
+  "flagship_sample_v2_enriched.parquet": {
+    "returncode": 0,
+    "sha256_landing_receipt": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff",
+    "sha256_local": "c3b176ff2d355a421ac48d00c5b6565fdfce8956fe6298eb85596bfb94f09fff",
+    "sha256_match": true,
+    "stderr": "",
+    "stdout": "OK: {'sample': '/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet', 'row_count': 1244, 'checked_objtype': False, 'checked_fiberstatus': False, 'status': 'clean'}"
+  }
+}

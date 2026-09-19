@@ -1,0 +1,102 @@
+{
+  "checks": [
+    {
+      "id": "V1",
+      "observed": "flagship_sample_v2.parquet: rc=0 OK: {'sample': '/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2.parquet', 'row_count': 1244, 'checked_objtype': False, 'checked_fiberstatus': False, 'status': 'clean'}; flagship_sample_v2_enriched.parquet: rc=0 OK: {'sample': '/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2_enriched.parquet', 'row_count': 1244, 'checked_objtype': False, 'checked_fiberstatus': False, 'status': 'clean'}",
+      "requirement": "gates/check_sample_provenance.py exits 0 on the released sample tables (TARGETID > 0; OBJTYPE/FIBERSTATUS where carried)",
+      "status": "PASS"
+    },
+    {
+      "id": "V2",
+      "observed": "9/9 artifacts match",
+      "requirement": "every released artifact's SHA-256 equals the value in the landing receipt (PHASE3_V2_LANDING_2026-09-03.md)",
+      "status": "PASS"
+    },
+    {
+      "id": "V3",
+      "observed": "8/8 links verified; contract=6699d09ff886\u2026, model=f5266ba48f47\u2026, zcatalog=2d95ad993610\u2026",
+      "requirement": "the manifest chain closes end to end: sample -> enrichment -> cross-match -> taxonomy, each stage binding the exact SHA-256 of its input and output, under one run contract, with the model / inference-code / zcatalog hashes recorded",
+      "status": "PASS"
+    },
+    {
+      "id": "V3b",
+      "observed": "offenders=0 / rows_checked=1244 at relative tolerance 1e-06; enrichment groups completed 752/752, skipped 0",
+      "requirement": "the enrichment stage's own MSE reproduction cross-check passed for every released row",
+      "status": "PASS"
+    },
+    {
+      "id": "V4",
+      "observed": "rule selects S>3 with n=1244; released sample n=1244",
+      "requirement": "replaying the pre-declared threshold rule (largest grid point with science-only count >= 300, step up if > 1,500) on the science-target counts selects the released threshold",
+      "status": "PASS"
+    },
+    {
+      "id": "V5",
+      "observed": "matched=569, unmatched=675, sample=1244 unique of 1244 rows, enriched covers 1244/1244, overlap matched\u2229unmatched=0",
+      "requirement": "the cross-match output partitions the sample exactly: matched + unmatched = sample, disjoint, no duplicate TARGETIDs, and the enriched table covers the same TARGETIDs",
+      "status": "PASS"
+    },
+    {
+      "id": "V6",
+      "observed": "objects=675 (unmatched=675), clusters=25, families=8, sum(family sizes)=675, per-object rollup identical: True",
+      "requirement": "the taxonomy covers exactly the SIMBAD/NED-unmatched subset; 25 clusters roll up into 8 families; per-family counts sum to the unmatched count and match the per-object labels",
+      "status": "PASS"
+    },
+    {
+      "id": "V7",
+      "observed": "min anomaly_score = 3.0002, max = 11.3316",
+      "requirement": "every released object exceeds the stated score threshold (S > 3)",
+      "status": "PASS"
+    },
+    {
+      "id": "V8",
+      "observed": "rows=1244, matched=74, median W1-W2 (matched) = 0.508",
+      "requirement": "the AllWISE table covers every released object and its match count equals the released figure (74)",
+      "status": "PASS"
+    },
+    {
+      "id": "V9",
+      "observed": "6 score bins, min sky-or-nonscience fraction = 0.99534",
+      "requirement": "the released sky-fraction-by-score validation supports the stated claim that every score bin above 3 is > 99.5% sky-or-nonscience before the provenance gate",
+      "status": "PASS"
+    },
+    {
+      "id": "V10",
+      "observed": "median coadd S/N: rho=+0.058 (p=0.039); coadd exposure time: rho=-0.076 (p=0.0072); TSNR2_LRG: rho=-0.093 (p=0.00098); TSNR2_QSO: rho=-0.096 (p=0.00067); r-band flux: rho=-0.016 (p=0.56)",
+      "requirement": "within the science-target sample the anomaly score is not a restatement of exposure quality or source brightness (|Spearman rho| < 0.2 against S/N, exposure time, TSNR2 and r-band flux)",
+      "status": "PASS"
+    },
+    {
+      "id": "V11",
+      "observed": "rB: rho=+0.527 (p=1.1e-89); rR: rho=-0.037 (p=0.19); rZ: rho=-0.142 (p=5.3e-07)",
+      "requirement": "the per-band residual decomposition identifies which camera arm drives the score (reported, not gated)",
+      "status": "REPORTED"
+    },
+    {
+      "id": "V12",
+      "observed": "silhouette = -0.0162; permutation null mean = -0.0244 (sd 0.0039); empirical p = 0.000. The partition is separable from a random relabelling, but the absolute silhouette is negative: the families are not latent-space-separated clusters and must be reported as descriptive groupings only",
+      "requirement": "the released taxonomy's family partition is tested for structure in the 128-dimensional latent space it was NOT built from (silhouette vs a label-permutation null, 50 draws)",
+      "status": "STRUCTURED-BUT-WEAK"
+    },
+    {
+      "id": "DEFECT-1",
+      "observed": "unpopulated in flagship_sample_v2_enriched.parquet: ['z', 'zwarn', 'spectype', 'subtype']; authoritative values are present in flagship_sample_v2.parquet (z range -0.0031..6.7457, SPECTYPE {'GALAXY': 1153, 'QSO': 86, 'STAR': 5}); repair table emitted as outputs/flagship_sample_v2_zcat_rejoin.parquet",
+      "requirement": "the enriched table's zcatalog columns (z, zwarn, spectype, subtype) are populated",
+      "status": "FAIL"
+    },
+    {
+      "id": "DEFECT-2",
+      "observed": "all-null columns: ['residual_kurtosis']",
+      "requirement": "every derived residual-diagnostic column in the enriched table carries values",
+      "status": "FAIL"
+    },
+    {
+      "id": "DEFECT-3",
+      "observed": "ZWARN == 0: 502/1244 (40.4%); ZWARN == 4 (SMALL_DELTA_CHI2): 742",
+      "requirement": "the fraction of released objects carrying a DESI-reliable redshift (ZWARN == 0) is stated with the catalogue",
+      "status": "REPORTED"
+    }
+  ],
+  "generated": "2026-09-18",
+  "n_checks": 16
+}
