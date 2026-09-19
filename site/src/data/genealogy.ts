@@ -31,6 +31,8 @@ export interface OpenQuestion {
   question: string;
   ledgerItem: string;
   layer: "open-question";
+  /** The archaeology memo's answer, in <=25 words. Not a new result. */
+  finding: string;
 }
 
 export interface ProvenanceEntry {
@@ -88,7 +90,8 @@ export const retired: RetiredHypothesis[] = [
       "The Inverse/Inverted Cosmic Boundary Curvature (ICBC) mechanism was proposed as a replacement for dark energy driving late-time cosmic acceleration.",
     whyRetired:
       "The program's own ECH derivation systematically closed candidate late-time dark-energy routes — the current answer is “no” for this class of mechanism, not a re-opening of it.",
-    evidence: "arxiv/paper1bc_ech_note",
+    evidence:
+      "arxiv/paper1bc_ech_note; research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §7 (Q15, archival list)",
     status: "closed",
   },
   {
@@ -98,7 +101,7 @@ export const retired: RetiredHypothesis[] = [
     whyRetired:
       "False under an eternally accelerating Λ (cosmological-constant) universe: with a positive, constant Λ, causally disconnected regions never merge, and no mechanism was ever derived for universal black-hole coalescence.",
     evidence:
-      "research/archaeology_2025/inputs/chatgpt_braindump_2026-09-18.md §“Complete idea triage”",
+      "research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §7 (Q15, archival list); research/archaeology_2025/inputs/chatgpt_braindump_2026-09-18.md §“Complete idea triage”",
     status: "retired",
   },
   {
@@ -107,7 +110,8 @@ export const retired: RetiredHypothesis[] = [
       "A rotating parent black hole would imprint a preferred spin axis on its daughter universe, observable today as a dipole in galaxy chirality or spin alignment.",
     whyRetired:
       "Null on two independent tests: P4's DESI Legacy DR8 survey of 887,472 spiral galaxies found a dipole consistent with zero, P5's environment channel is null, and the Popławski rotating-parent amplitude was excluded against the DESI A95 upper limit on 2026-09-02.",
-    evidence: "research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py",
+    evidence:
+      "research/bh_universe_dipole/poplawski_dipole_exclusion_2026_09_02.py; research/archaeology_2025/memos/DAUGHTER_UNIVERSE_MEMO.md §7 (Q14c)",
     status: "null",
   },
   {
@@ -116,7 +120,7 @@ export const retired: RetiredHypothesis[] = [
       "A single critical mass M_crit = Λc²r³/(3G) within a cosmic radius was proposed as the threshold at which enough matter would overcome dark energy and trigger universal gravitational collapse.",
     whyRetired:
       "Superseded by reidentification: rearranged as r = (3GM/Λc²)^{1/3}, this is the established ΛCDM maximum-turnaround-radius relation for a single bound structure (Pavlidou & Tomaras), not a universal collapse criterion. The historical interpretation was too sweeping; the physics hiding inside it was real.",
-    evidence: "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md",
+    evidence: "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md §6 (retirement) + §9 Q12",
     status: "retired",
   },
 ];
@@ -128,6 +132,8 @@ export const openQuestions: OpenQuestion[] = [
       "Given all current cosmological constraints, what physically complete classes of dark-energy models permit our currently accelerating universe to undergo a future turnaround, and what observable present-day signatures distinguish them?",
     ledgerItem: "#20",
     layer: "open-question",
+    finding:
+      "Constant positive Λ forbids any turnaround; only dark energy whose density crosses zero could permit one, and nothing measured requires or excludes it.",
   },
   {
     title: "Black-hole daughter universes: which causal structure?",
@@ -135,6 +141,8 @@ export const openQuestions: OpenQuestion[] = [
       "Which mathematically consistent black-hole interior models produce an expanding daughter cosmology, and which causal structure does “born in a black hole” actually denote — an Einstein–Rosen bridge, a black→white transition, a closed FLRW region behind the horizon, or a pinched-off false-vacuum bubble?",
     ledgerItem: "#21",
     layer: "open-question",
+    finding:
+      "Only a closed FLRW region behind the horizon matches “born in a black hole”; it is causally sealed, so no exterior signal exists.",
   },
   {
     title: "Parent–child bookkeeping: what does ‘more matter than the parent’ mean?",
@@ -142,6 +150,8 @@ export const openQuestions: OpenQuestion[] = [
       "Does a black-hole daughter universe contain “vastly more matter” than the parent's mass, in what invariant sense, and does Popławski's Einstein–Cartan particle-production amplification (arXiv:1410.3881) reproduce independently?",
     ledgerItem: "#22",
     layer: "open-question",
+    finding:
+      "15 of 26 reproduction steps hold exactly, 8 need unstated assumptions, 3 do not; no invariant parent-to-child amplification ratio exists.",
   },
 ];
 

@@ -58,6 +58,29 @@ const sections: Array<{ heading: string; cards: SpecItemProps[] }> = [
     ],
   },
   {
+    heading: "Cosmic fate & reproduction (legacy-2025 archaeology, ledger #20–#22)",
+    cards: [
+      {
+        title: "Can an accelerating universe recollapse?",
+        tag: "Open question · not a result · ledger #20",
+        children:
+          "A constant positive cosmological constant at the observed matter density (Ω_m ≈ 0.315) forbids a turnaround at any curvature — not merely improbable, mathematically impossible. Only a dark-energy density that crosses zero in the future — zero-crossing quintessence, an interacting dark sector, or effective-SEC-restoring modified gravity — could permit one. DESI DR2's Lyα full-shape result (arXiv:2607.27410) neither implies nor excludes such models; a CPL (w₀, w_a) fit extrapolated to a→∞ is a fitting-function artifact, not a fate forecast.",
+      },
+      {
+        title: "Crunch is not bounce: which structure does 'born in a black hole' mean?",
+        tag: "Open question · not a result · ledger #21",
+        children:
+          "A future contraction does not itself produce a new universe — classical GR ends contraction in a singularity, the opposite sign from what a bounce requires. Of five constructions the 2025 notes conflated, only a closed FLRW region behind the horizon (Popławski; Frolov–Markov–Mukhanov) matches the phrase 'born in a black hole.' That daughter is causally sealed: no exterior observable exists. The spin-axis inheritance route some of the same notes hoped for was excluded against DESI data on 2026-09-02.",
+      },
+      {
+        title: "Does a daughter universe hold more matter than its parent black hole?",
+        tag: "Reproduction result · not a claim about our universe · ledger #22",
+        children:
+          "An independent reproduction of Popławski's Einstein–Cartan daughter-universe model (ApJ 832:96, 2016): 15 of 26 published steps reproduce exactly, 8 reproduce only with an unstated assumption, and 3 do not reproduce. The daughter can hold arbitrarily more proper matter than the parent's mass — but the excess is set by a free particle-production coefficient, not by the parent. No invariant parent-to-child amplification ratio exists. Local conservation, ∇_μT^{μν}=0, is respected throughout.",
+      },
+    ],
+  },
+  {
     heading: "Black holes & extreme gravity",
     cards: [
       {

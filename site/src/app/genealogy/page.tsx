@@ -101,7 +101,14 @@ export default function GenealogyPage() {
         <RowList
           items={openQuestions.map((q) => ({
             title: q.title,
-            purpose: q.question,
+            purpose: (
+              <>
+                {q.question}
+                <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                  Finding: {q.finding}
+                </span>
+              </>
+            ),
             href: "/speculations",
             right: `Ledger ${q.ledgerItem}`,
             chips: (
