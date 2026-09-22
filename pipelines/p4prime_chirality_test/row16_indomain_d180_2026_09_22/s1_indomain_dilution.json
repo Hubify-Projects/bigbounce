@@ -1,0 +1,211 @@
+{
+  "preregistration": "PREREGISTRATION_2026-09-22.md (commit f45c9d1b)",
+  "images": "Smith42/galaxies@bdd1b063a9a22874a79a4363aa9fb6a2b356a4c2 config v1.0 (data/train-*), 512x512 RGB JPEG",
+  "model": "bamfai/galaxy-chirality-v2 chirality_model_v2_best.pt @237d021c451d75cf86a875e86d4de498b74e2f12",
+  "preprocessing": "Resize((224,224)) -> ToTensor -> Normalize(ImageNet), NO crop; rotations are lossless PIL transposes of the 512x512 square",
+  "estimator": "eq_triple imported verbatim from ../row16_pa_parity_transfer/s5b_nocrop_dilution.py",
+  "statistic": "d(theta) = P(L(0) != L(theta) | both spiral); D <= 1 - max_theta d(theta), theta in {90,180,270}; A95_phys = A95_obs / D with A95_obs = 0.98%",
+  "sample": {
+    "n_galaxies": 40000,
+    "row_groups": 400,
+    "row_groups_planned": 400,
+    "shards": [
+      0,
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90,
+      100,
+      110,
+      120,
+      130,
+      140,
+      150,
+      160,
+      170,
+      180,
+      190
+    ],
+    "ra_range": [
+      0.0020400265340881,
+      359.99545250944124
+    ],
+    "dec_range": [
+      -65.83344976947785,
+      84.77304792366472
+    ],
+    "fraction_dec_negative": 0.36315,
+    "fraction_dec_negative_parent": 0.3642887140303103,
+    "fraction_catalogue_spiral": 0.380475,
+    "fraction_catalogue_spiral_parent": 0.37773889788119247,
+    "fraction_primary_hc": 0.114475,
+    "fraction_primary_hc_parent": 0.11205151057916951,
+    "note": "the sample is a uniform random draw of row groups from a fully sky-shuffled dataset; it is NOT the same galaxies as the row-16(ii-b) N=19,800 sample and is never described as a measurement on the 8,474,531-row parent"
+  },
+  "control_C1_catalogue_scale": {
+    "n_compared": 8474531,
+    "class_agreement_all": 0.9993552445557164,
+    "class_agreement_catalogue_spirals": 0.9986351822464357,
+    "class_agreement_primary_hc": 1.0,
+    "source": "p2_chirality/outputs/canonical_provenance/e2e_fullrun (192 shards, 2026-07-11)"
+  },
+  "control_C2_this_lane": {
+    "n": 40000,
+    "class_agreement_all": 0.9995,
+    "class_agreement_catalogue_spirals": 0.9989486825678429,
+    "class_agreement_primary_hc": 1.0,
+    "max_abs_eq_cw_difference": 0.03694675862789154,
+    "median_abs_eq_cw_difference": 6.1271821323316544e-06,
+    "threshold_for_in_domain": 0.99,
+    "out_of_domain_reference_agreement": 0.439
+  },
+  "control_C3_tta_identity": {
+    "0": {
+      "max_identity_residual": 0.0,
+      "exact_cw_ccw_ties": 9,
+      "class_swap_fraction_excluding_ties": 1.0
+    },
+    "180": {
+      "max_identity_residual": 0.0,
+      "exact_cw_ccw_ties": 3,
+      "class_swap_fraction_excluding_ties": 1.0
+    }
+  },
+  "in_domain_gate": "IN-DOMAIN",
+  "results": {
+    "all_drawn": {
+      "n_selected": 40000,
+      "per_theta": {
+        "90": {
+          "n_both_spiral": 12332,
+          "d_disagreement": 0.4762406746675316
+        },
+        "180": {
+          "n_both_spiral": 12655,
+          "d_disagreement": 0.43871987356775977
+        },
+        "270": {
+          "n_both_spiral": 12154,
+          "d_disagreement": 0.4749876583840711
+        }
+      },
+      "max_d": 0.4762406746675316,
+      "D_upper_bound": 0.5237593253324684,
+      "D_upper_bound_boot_se": 0.0037927401455280043,
+      "D_upper_bound_theta180_only": 0.5612801264322402,
+      "D_upper_bound_theta180_boot_se": 0.004442203825454304,
+      "z_vs_D_equals_1": -125.56638641038036,
+      "A95_phys_percent_from_max": 1.8710884037776745,
+      "A95_phys_percent_from_theta180": 1.7460087287061805,
+      "g_gz1_below_bound": true
+    },
+    "catalogue_spiral": {
+      "n_selected": 15219,
+      "per_theta": {
+        "90": {
+          "n_both_spiral": 12329,
+          "d_disagreement": 0.4762754481304242
+        },
+        "180": {
+          "n_both_spiral": 12654,
+          "d_disagreement": 0.4387545440177019
+        },
+        "270": {
+          "n_both_spiral": 12152,
+          "d_disagreement": 0.4750658327847268
+        }
+      },
+      "max_d": 0.4762754481304242,
+      "D_upper_bound": 0.5237245518695758,
+      "D_upper_bound_boot_se": 0.003761067724370712,
+      "D_upper_bound_theta180_only": 0.5612454559822981,
+      "D_upper_bound_theta180_boot_se": 0.004396655696326381,
+      "z_vs_D_equals_1": -126.6330422726203,
+      "A95_phys_percent_from_max": 1.8712126374477311,
+      "A95_phys_percent_from_theta180": 1.746116586876936,
+      "g_gz1_below_bound": true,
+      "held_out_of_domain": {
+        "D_max": 0.6296,
+        "se": 0.004,
+        "D_180": 0.6928,
+        "se_180": 0.0038,
+        "n": 19800,
+        "A95_phys": 1.56
+      },
+      "delta_vs_held_D_max": -0.10587544813042427,
+      "delta_in_combined_se": 19.283376300226745,
+      "agrees_with_held_within_2_combined_se": false
+    },
+    "primary_hc": {
+      "n_selected": 4579,
+      "per_theta": {
+        "90": {
+          "n_both_spiral": 3963,
+          "d_disagreement": 0.4002018672722685
+        },
+        "180": {
+          "n_both_spiral": 4087,
+          "d_disagreement": 0.3401027648642036
+        },
+        "270": {
+          "n_both_spiral": 3900,
+          "d_disagreement": 0.39871794871794874
+        }
+      },
+      "max_d": 0.4002018672722685,
+      "D_upper_bound": 0.5997981327277315,
+      "D_upper_bound_boot_se": 0.006518634101541418,
+      "D_upper_bound_theta180_only": 0.6598972351357963,
+      "D_upper_bound_theta180_boot_se": 0.00753435952474487,
+      "z_vs_D_equals_1": -61.393516040060504,
+      "A95_phys_percent_from_max": 1.633883045856121,
+      "A95_phys_percent_from_theta180": 1.4850797182054136,
+      "g_gz1_below_bound": true,
+      "held_out_of_domain": {
+        "D_max": 0.7166,
+        "se": 0.0047,
+        "D_180": 0.7887,
+        "se_180": 0.0047,
+        "n": 7982,
+        "A95_phys": 1.37
+      },
+      "delta_vs_held_D_max": -0.11680186727226849,
+      "delta_in_combined_se": 14.534230886410889,
+      "agrees_with_held_within_2_combined_se": false
+    },
+    "primary_hc_safe": {
+      "n_selected": 4296,
+      "per_theta": {
+        "90": {
+          "n_both_spiral": 3732,
+          "d_disagreement": 0.3946945337620579
+        },
+        "180": {
+          "n_both_spiral": 3850,
+          "d_disagreement": 0.33844155844155843
+        },
+        "270": {
+          "n_both_spiral": 3679,
+          "d_disagreement": 0.3963033432998097
+        }
+      },
+      "max_d": 0.3963033432998097,
+      "D_upper_bound": 0.6036966567001902,
+      "D_upper_bound_boot_se": 0.007046131541861208,
+      "D_upper_bound_theta180_only": 0.6615584415584416,
+      "D_upper_bound_theta180_boot_se": 0.0076037770140168146,
+      "z_vs_D_equals_1": -56.24410230569266,
+      "A95_phys_percent_from_max": 1.6233318325078794,
+      "A95_phys_percent_from_theta180": 1.481350608559089,
+      "g_gz1_below_bound": true
+    }
+  },
+  "n_bootstrap": 1000,
+  "seed": 20260922,
+  "wall_clock_s": 2.6419310569763184
+}

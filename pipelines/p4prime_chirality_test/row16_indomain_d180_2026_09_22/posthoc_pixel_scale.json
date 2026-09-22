@@ -1,0 +1,25 @@
+{
+  "_label": "POST-HOC DIAGNOSTIC, NOT PRE-REGISTERED. Feeds no pre-registered statistic.",
+  "recorded_deviation": "fetched 180 256 px Legacy Survey viewer cutouts (~10 MB) as a diagnostic; the pre-registration's sample is untouched",
+  "question": "what angular field does a Smith42/galaxies v1.0 image cover?",
+  "native_image_size_px": [
+    512,
+    512
+  ],
+  "native_image_format": "JPEG",
+  "paper_claim_main_tex_171": "224x224 px grz cutouts at 0.262 arcsec/pixel",
+  "n_galaxies_compared": 30,
+  "median_pixel_correlation_by_assumed_pixscale_arcsec_per_px": {
+    "0.131": 0.1829161218815802,
+    "0.2": 0.25123016975580587,
+    "0.262": 0.9924477785258923,
+    "0.35": 0.1774373437738524,
+    "0.45": 0.09803224959963196,
+    "0.524": 0.09134375652063337
+  },
+  "best_fit_pixscale_arcsec_per_px": 0.262,
+  "implied_field_arcsec": 134.144,
+  "viewer_cutout_field_arcsec_rows_13_16": 39.300000000000004,
+  "field_ratio_indomain_over_viewer": 3.413333333333333,
+  "wall_clock_s": 188.40255212783813
+}
