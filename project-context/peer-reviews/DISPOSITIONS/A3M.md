@@ -1124,3 +1124,100 @@ scope decision** (directive R2); that decision belongs to the director. Readines
 **COMPUTED** cap 75: the automated-review-convergence gate of directive P is not met — the last
 board found 17 real items, and v3M.0.26 has not been reviewed by anything. **No cap-95
 recommendation is made on this evidence.**
+
+## R11 — v3M.0.27 (2026-09-21/22), exact PDF sha256 `3e49f29b…`, md5 `ea6ebd91…`, 21 pp
+
+**What unlocked this board.** Ledger row 9 (D-A3-9) CLOSED 2026-09-19
+(`research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/`) — the intervening
+science decision directive R2 required after the R9+R10 rounds-stop. Propagated into `main.tex`
+as v3M.0.27 (Bardeen-potential argument selects scheme S2 on Quintin-type; f_NL^after single
+value -1.25; tensor no-go strengthened to r_after~9.4e2) plus a gate-S12 general-tilt correction
+to Appendix A. R11 ran INT-only (directive N + Portfolio Decision 2026-09-02 #6) on this exact
+v3M.0.27 PDF: Grok `grok-4.3` **REJECT**, Gemini `gemini-3.1-pro-preview` **MAJOR REVISIONS**,
+Claude opus INT referee (verdict-blind, no prior-history access) **MAJOR REVISIONS**. No leg
+FAILED. Full board + truth-audit:
+`INT_v3/A3M_v3M.0.27_R11_TRUTH_AUDIT_2026-09-22.md`.
+
+**Outcome: 16 genuinely-new-real finding-classes, all CLOSED in v3M.0.28** (full detail and
+source citations in the truth-audit doc, not duplicated here):
+
+1. **Internal-audit/lab-bookkeeping language leaked into prose** — "superseded", "blind
+   adjudication", "committed [grid/chain/spectrum]", "this lab's own", "this program's",
+   "ledger row N", "D-A3-9", "monopole-adjudication note", "independent adjudication" — a
+   recurrence of the class R9/R10 already closed (`DA3M-R9-04`, `DA3M-R10-01`), reintroduced by
+   the row-9 propagation copying working-note language verbatim. Full scrub applied.
+2. Abstract NANOGrav "0.6" left unscoped as a 90% CI half-width.
+3. Abstract PBH ratio 1.84±0.03 missing its γ_cr-coverage scope.
+4. DESI DR1 reproduction's 0.06σ comparability qualifier stated too late.
+5. Wrong cross-reference: n_s=0.9649 "Sec. VI" → should be Sec. VII.
+6. c_s=0.8876 sign-flip silently mixed with the Λ=0-baseline framing rule (0.8876 is Eq. 16's
+   root, not Eq. 15's — scoped inline).
+7. Symbol collision: the new Bardeen-system coefficient reused μ, already the squeezed-angle
+   cosine throughout the paper — renamed to ϖ (self-caught during Grok-E1 verification).
+8. **ESSENTIAL** — the Bardeen regularity/scheme-selection claim was asserted not derived, and
+   inconsistent with the paper's own LQC/poly exclusion. Closed with the cited artifact's own
+   indicial-exponent {0,2} result, the H=0 friction-term vanishing (verified symbolically), and
+   the smoothed-NEC-crossing numerical control (G4 PASS, 6e-5/7e-6/5e-6) — no new derivation.
+9. **ESSENTIAL** — f_NL^after[S2] quoted to 3 sig figs with an undisclosed, non-uniform
+   evaluation-window convention. Closed by stating the actual η*/η_B convention used per
+   k-point (read from `lane9b2_s2_rawadm/results.json`, not recomputed) and disclosing the
+   third k-point's lower convergence honestly.
+10. Abstract misattributed the S1 three-background range [-0.65,-0.50] as the LQC/poly-only
+    retained range (actually [-0.65,-0.55]).
+11. Sec. III's blanket "not supported by any of these calculations" directly contradicted the
+    paper's own S2 selection (T≈1.03) — rescoped to S1/(A4).
+12. Four passages (Sec. IV D, Sec. VII ×2, Sec. V C, Sec. VIII curvaton) quoted S1 numbers as
+    "the model's own" without a scheme label or the S2 counterpart — all four now labelled and
+    given the S2 value by simple linear scaling of already-printed numbers.
+13. Sec. VI A's DESI-comparison reasoning was backwards relative to Sec. III's own framing —
+    corrected; S2-value comparison (0.26σ/0.64σ) added.
+14. Sec. V B's PBH artefact term had the wrong overall sign (matches the committed script's own
+    verdict string) — sign fixed; the unaccounted 0.408–0.85 window attributed to the saddle
+    expansion's breakdown near the already-disclosed perturbativity floor.
+15. Abstract/Discussion presented f_NL^after=-1.25 as scheme-free though Sec. III A itself says
+    a cubic-action-form (raw-ADM vs. Maldacena) qualifier is still owed — added to abstract.
+16. Minor cluster: Table III S2-row additive-relation clarified; six wrong internal
+    `\ref`/`\S` cross-references repaired (Sec. III A ↔ Sec. VIII ×4, §V B ↔ §V C ×2); Fig. 1's
+    in-image title carried the internal label "A3-3" (regenerated, re-mirrored, directive I6);
+    Fig. 1 caption now describes its 4th curve and that the NANOGrav line is not a shaded band;
+    abstract's ambiguous "Li 2016; Quintin 2015" dual-attribution dropped (Quintin only cites
+    Cai); "84%" → "factor 6.25"; "two independent failures" → "two distinct failures (not
+    statistically independent)"; broken "see Table III" pointer removed.
+
+### FALSIFIED this round (do NOT re-open without new evidence)
+Grok **E1/E2** (the Bardeen construction and first-order system are printed explicitly in
+Sec. III A body text, not merely cited; independently re-derived and certified algebraically
+equivalent by the Claude opus leg — the real gap was the regularity *proof*, closed as item 8
+above) · Grok **E3** (γ_pred=5.07 is direct model propagation, not "an external KDE refit" —
+factual confusion with the disclosed secondary 30-bin refit ≈2.57) · Grok **M1** (Sec. II C
+already gives the Cai factor-of-two methodology in prose; independently re-evaluated from the
+arXiv e-print by the Claude opus leg, exact match in all three configurations) · Gemini **N1**
+(claimed duplicate "the the" — zero grep hits in source).
+
+### RE-FLAG-OF-DISCLOSED (no edit)
+Grok **M2** (handoff-surface sensitivity — already named as an unquantified limitation,
+Discussion (b)) · Grok **M3** (144-point PBH subset — a physical γ_cr-coverage restriction,
+already stated as such, not a statistical filter) · Gemini **M1** (frozen DOI/commit hash —
+`DA3M-R2-11`, carried since R2, Houston-gated P-round action).
+
+### OPINION/GENRE (venue pass only)
+Grok **N1** (affiliation) · **N2** (caption provenance notes — legitimate PRD practice) ·
+**NIT1** (nomenclature shorthand) · length/genre complaint (repeat of falsified `R9-M4`/`R10-M1`).
+
+### Carried, not closed
+- Claude opus MINOR 3, 4, 5, 6, 10, 11, 14 and its NIT list (items 1,3,4,6) — real but lower
+  priority or requiring new computation this lane did not perform; full text in the truth-audit
+  doc.
+- **Frozen-release DOI** — unminted; P-round/maintainer action.
+- **PUSH GATE** — `origin/main` must carry this manuscript before the reproducibility
+  statement's branch pointers are true for external readers.
+- **Fig. 1 legend/tick-label size** — D-round item, carried unchanged from v3M.0.26.
+
+### R2 status — BUDGET SPENT AGAIN
+R11 is the one board directive R2 permitted after the row-9 intervening science decision. It
+closed 16 genuinely-new-real finding-classes (not a clean wave — clean-wave count resets to
+**0**). **No further board on A3M without another intervening science or scope decision.**
+Readiness stays at the **COMPUTED** cap 75. Next unlock: a science/scope decision on the
+"Carried, not closed" items above (most concretely, the Next-steps item (i) LQC/poly Bardeen
+extension), or Houston authorizing a confirmation board on the resulting v3M.0.28 PDF under
+R2's "one confirmation board when the first closes real items" clause, which R11 satisfies.

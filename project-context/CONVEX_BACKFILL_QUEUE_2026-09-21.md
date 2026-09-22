@@ -106,3 +106,72 @@ activityFeed:add({
   summary: "Ledger row 23 answered as a BOUNDARY result (lane bb-LS7-row23-fate-de, research/cosmic_fate_de_2026_09_22/). Pre-registration committed alone before any statistic. Cross-table: the 11 Branch I bounce-compatible DE rows (Classes 1-7 plus Phase-1 subclasses A-F) evaluated against the row-20 turnaround criterion (COSMIC_FATE_MEMO.md Eqs. 2.3-2.5), each decided by a sympy lemma. Intersection = 3 classes: zero-crossing quintessence, zero-crossing k-essence, interacting dark sector with a sustained drain. Lambda, viable f(R) and vacuum sequestering FAIL by the positive-floor lemma; braiding, DHOST and massive gravity stay UNDETERMINED on the bounce axis per Branch I's own verdict and are not promoted. Step 2, at fixed Omega_m = 0.2975 and h*r_d = 101.54 Mpc against DESI DR2 per-bin uncertainties and correlations derived in code from published covariance blocks: a >1 sigma present-day separation from LambdaCDM DOES exist, but only above a threshold in the PRESENT-DAY equation of state -- linear-potential quintessence crosses 1 sigma at w0 = -0.951 / t_c = 53.8 Gyr and the quadratic-top family at w0 = -0.934 / t_c = 13.7 Gyr, i.e. a 0.017 spread in w0 but a factor 3.93 in the turnaround epoch. DESI DR2 therefore constrains how fast dark energy is evolving now; the fate epoch is inferred, not measured, and the inference is potential-family dependent. Row 23 stays an OPEN QUESTION at the row-20 memo's evidence layer: no manuscript claim, no SSOT row, no null changed. Three named gaps recorded and never filled with an invented number (frame-dependence for non-minimally coupled scalars; no citable DR2-era f*sigma8; no citable DR2 central values). Also re-verified symbolically that CPL's rho_DE(a) is positive for every a, so no CPL fit implies a Crunch.",
 })
 ```
+
+---
+
+## L1c (bb-L1c-a3m-row9-r11), 2026-09-22 (R11 closure)
+
+Paper A3M, v3M.0.27 → v3M.0.28. R11 INT board closure — the one board
+directive R2 permitted after the row-9 science decision. See
+`project-context/SSOT/paper-a3m/status.md` §"v3M.0.28 (2026-09-22)" and
+`project-context/peer-reviews/INT_v3/A3M_v3M.0.27_R11_TRUTH_AUDIT_2026-09-22.md`
+for full detail.
+
+```
+paperVersions:bump({
+  paperId: "A3M" (slug "paper-a3m"),
+  version: "v3M.0.28",
+  pages: 21,
+  date: "2026-09-22",
+  sha256: "87fd3c2372dbf09c2d4a7fa6ea339db2da0641184f00cbf4112db7a5df841012",
+  md5: "e4a2ca93564bc566a52e68252865c460",
+})
+
+externalReviews:upsertByLabelDate({
+  paperSlug: "paper-a3m",
+  reviewerLabel: "Grok (R11-INT)",
+  recommendation: "reject",
+  source: "internal-stage3",
+  notes: "Grok grok-4.3 API, native-PDF (rasterized), exact v3M.0.27 PDF sha256 3e49f29b. Raw: project-context/peer-reviews/INT_v3/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11/..._A3M_Grok_brutal.md",
+  receivedAt: "2026-09-22",
+})
+
+externalReviews:upsertByLabelDate({
+  paperSlug: "paper-a3m",
+  reviewerLabel: "Gemini (R11-INT)",
+  recommendation: "major-revisions",
+  source: "internal-stage3",
+  notes: "Gemini gemini-3.1-pro-preview API, native-PDF. Raw: project-context/peer-reviews/INT_v3/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11/..._A3M_Gemini_cosmology.md",
+  receivedAt: "2026-09-22",
+})
+
+externalReviews:upsertByLabelDate({
+  paperSlug: "paper-a3m",
+  reviewerLabel: "Claude opus (R11-INT)",
+  recommendation: "major-revisions",
+  source: "internal-stage3",
+  notes: "Claude opus sub-agent, verdict-blind (no access to prior review history), 2 ESSENTIAL / 6 MAJOR / 14 minor / 12 nit. Raw: project-context/peer-reviews/INT_v3/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11/..._A3M_claude_opus_referee.md",
+  receivedAt: "2026-09-22",
+})
+
+rRounds:create({
+  paperSlug: "paper-a3m",
+  roundLabel: "R11",
+  dateISO: "2026-09-22",
+  kind: "internal-api",
+  genuinelyNewCount: 16,
+  cleanWaveStreak: 0,
+  summary: "R11 INT board on exact v3M.0.27 PDF; 16 genuinely-new-real finding-classes closed in v3M.0.28 (2 ESSENTIAL on the row-9 Bardeen material, 5 MAJOR scheme-labelling/reasoning, 1 pre-existing PBH sign error, 1 recurrence of the internal-audit-language leak, minor cluster). No physics error found; no headline number changed.",
+})
+
+activityFeed:add({
+  type: "r-round",
+  tags: ["paper-a3m", "v3M.0.28", "R11", "campaign-2026-09-18"],
+  summary: "A3M v3M.0.27->v3M.0.28 (lane L1c): R11 INT board (Grok REJECT, Gemini MAJOR REVISIONS, Claude opus verdict-blind referee MAJOR REVISIONS) on the exact v3M.0.27 PDF -- the one board directive R2 permitted after the row-9 (D-A3-9) Bardeen-potential science decision. Truth-audit closed 16 genuinely-new-real finding-classes: two ESSENTIAL items on the new Bardeen material (its regularity claim was asserted not derived, and f_NL^after[S2]=-1.25 was quoted to 3 sig figs with an undisclosed evaluation-window convention -- both closed using material already in the cited artifact, no new derivation/computation), five MAJOR scheme-labelling/reasoning defects from the row-9 propagation not being swept through the whole manuscript, one pre-existing PBH sign error (confirmed against the committed script's own verdict string, no conclusion change), and a third recurrence of the internal-audit-language-leak defect class (directive Q1; closed twice before in R9/R10). No physics error found: the Claude opus leg independently re-derived/cross-checked ~40 numerical claims against primary literature and committed JSONs, all reproduced. No headline number changed. Directive R2 budget SPENT AGAIN -- rounds stopped; a further science/scope decision or Houston's authorization of a confirmation board is required. Readiness held at 75 COMPUTED.",
+})
+
+papers:setReadinessCap({
+  slug: "paper-a3m",
+  readinessCap: 75,   // unchanged -- automated-review-convergence gate still not met
+})
+```

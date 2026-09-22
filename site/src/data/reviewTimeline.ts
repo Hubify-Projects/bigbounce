@@ -67,6 +67,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "a3m-r11-board-v3m-0-28-2026-09-22",
+    dateISO: "2026-09-22",
+    kind: "internal-api",
+    title:
+      "A3M R11: the row-9 Bardeen material needed its own regularity proof — 16 findings closed, v3M.0.27 → v3M.0.28",
+    papers: ["A3"],
+    summary:
+      "Lane L1c of the 2026-09-18 publication-push campaign, running the one board directive R2 permitted after the row-9 (D-A3-9) Bardeen-potential science decision was propagated into v3M.0.27. INT only per directive N: Grok API (native-PDF, REJECT), Gemini API (native-PDF, MAJOR REVISIONS), and a verdict-blind Claude opus INT referee with no access to prior review history (MAJOR REVISIONS, 2 ESSENTIAL / 6 MAJOR / 14 minor / 12 nit) on the byte-identical v3M.0.27 PDF. Truth-audit dispositioned 16 findings genuinely-new-real. Both ESSENTIAL items landed on the newest material: the paper asserted, without deriving, that the Bardeen potential is regular at the NEC crossing and that its continuity is identically scheme S2's junction condition — closed not by new physics but by citing what the underlying artifact already proves (indicial exponents {0,2} at the crossing, the friction term vanishing at H=0, and a smoothed-crossing numerical control reproducing the sharp result to 5–6×10⁻⁶); and f_NL^after[S2]=−1.25 was quoted to three significant figures with an evaluation-window convention the paper never stated — closed by reading the actual convention (η*/η_B=50 vs. 20 across the three k-points) directly out of the committed JSON rather than asserting stability. Five MAJORs were scheme-labelling residue from the row-9 propagation not being swept through the whole manuscript — the abstract misattributed the three-background S1 range as the LQC/poly-only one, a blanket sentence in Sec. III directly contradicted the paper's own S2 selection, four passages quoted S1 numbers as ‘the model's own’ with no S2 counterpart — plus one pre-existing sign error in an already-disclosed-null PBH sub-argument, confirmed against the committed script's own verdict string. A recurrence of the internal-audit-language-leak defect class (closed twice before, in R9 and R10) was found a third time: the row-9 propagation had copied working-note phrasing (‘superseded’, ‘blind adjudication’, ‘committed grid’, ‘ledger row N’) verbatim into the manuscript. No physics error was found: the Claude opus leg independently re-derived or cross-checked roughly forty numerical claims — the exact-amplitude vertex table, the Bardeen first-order-system equivalence, every window/no-go boundary, all four channel tables — against the primary literature and the committed JSONs, and every one reproduced. No headline number changed. Directive R2's budget is spent again — rounds stop until a further science/scope decision or Houston authorizes a confirmation board.",
+    keyTakeaways: [
+      "A science-decision propagation is a paper edit like any other: it needs the same whole-manuscript sweep a numeric correction does, or scheme labels drift out of sync exactly like a superseded value would — five of this round's six MAJORs were exactly that",
+      "An 'independently blind-confirmed' result from a working note is not the same as a self-contained proof in the paper: the underlying artifact had already done the regularity analysis (indicial exponents, a smoothed-crossing numerical control) the manuscript needed — the fix was citing it, not re-deriving it",
+      "A quoted-to-3-sig-figs number with an unstated evaluation convention is a real defect even when the underlying computation is correct: reading the actual convention out of the committed JSON (not recomputing it) was enough to close it honestly",
+      "The internal-audit-language leak is now a three-time repeat offender (R9, R10, R11) with one common trigger: copying a working note's own prose into the manuscript verbatim during a science-decision propagation — the closure needs to become a standing pre-commit grep, not a per-round catch",
+      "A pre-existing sign error, unrelated to the round's own new content, was still worth fixing in the same bundle once found (matched against the committed script's own verdict string) — directive G's hygiene sweep is not scoped only to what the round was dispatched to review",
+    ],
+    links: [
+      { label: "A3M SSOT", href: `${GH}/project-context/SSOT/paper-a3m/status.md` },
+      { label: "R11 truth audit", href: `${PR}/INT_v3/A3M_v3M.0.27_R11_TRUTH_AUDIT_2026-09-22.md` },
+      { label: "Grok API raw", href: `${PR}/INT_v3/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11_A3M_Grok_brutal.md` },
+      { label: "Gemini API raw", href: `${PR}/INT_v3/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11_A3M_Gemini_cosmology.md` },
+      { label: "Claude opus INT raw", href: `${PR}/INT_v3/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11/ROUND_2026-09-21-A3M-v3M.0.27-EXACTPDF-3e49f29b-R11_A3M_claude_opus_referee.md` },
+      { label: "Dispositions", href: `${PR}/DISPOSITIONS/A3M.md` },
+      { label: "Row-9 Bardeen-potential artifact", href: `${GH}/research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19` },
+    ],
+  },
+  {
     id: "l6b-background-poll-death-2026-09-22",
     dateISO: "2026-09-22",
     kind: "skill-improvement",

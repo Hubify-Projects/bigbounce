@@ -268,7 +268,7 @@ def main():
     ax.set_xlabel("f  [nHz]", fontsize=13); ax.set_ylabel(r"$\Omega_{\rm GW}h^2$", fontsize=13)
     ax.set_ylim(1e-24, 1e-7)
     ax.tick_params(axis="both", labelsize=11)
-    ax.set_title("A3-3: induced GWs at nHz from the lab's own $\\Delta^2_\\zeta$", fontsize=12)
+    ax.set_title("Induced GWs at nHz from this model's own $\\Delta^2_\\zeta$", fontsize=12)
     ax.legend(fontsize=10, loc="center left"); ax.grid(alpha=0.3, which="both")
     # R7-16: default log-minor-tick labels collide (e.g. 3x10^0 over 4x10^0)
     # on this narrow x-range; drop minor-tick labels, keep major-decade labels.
