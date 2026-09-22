@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.26",
+      version: "v3M.0.27",
       readiness: 75,
-      pendingWork: "R10 confirmation board (Grok REJECT, Gemini MAJOR REVISIONS, Claude Fable 5.1 INT referee MAJOR REVISIONS on the exact v3M.0.25 PDF; the Gemini and Fable legs were re-run because the prior session left no raw) DID NOT CONFIRM: 17 genuinely-new-real findings, 4 of them MAJOR -- Table V's f_PBH columns were not evaluated at their own row labels, the DBI window minimum used an unstated criterion on one background (corrected against the paper, r_min 12.6 -> 10.3, 286x BICEP/Keck), p.8 and p.13 gave the same tensor amplitude incompatible shortfalls, and two reproducibility citations resolved to nothing. All 17 closed in v3M.0.26 with two new committed computations; 15 further findings falsified with source citations. No physics error in either round. Directive R2 budget SPENT -- rounds stopped; a scope decision from the director is required before any further board. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, and mint the frozen-release DOI."
+      pendingWork: "Ledger row 9 (D-A3-9) science decision CLOSED and propagated: a scheme-independent Bardeen-potential argument (independently blind-confirmed) selects scheme S2 on the Quintin-type background, so f_NL^after is now the single value -1.25 there (was the two-scheme band) and the tensor no-go strengthens to r_after~9.4e2 (2.6e4x BICEP/Keck, was 670x). A gate-S12 general-tilt correction to Appendix A closed in the same bundle (no headline number affected). This is the intervening science decision directive R2 required after the R9+R10 rounds-stop; R11 INT board dispatched on this exact v3M.0.27 PDF. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, and mint the frozen-release DOI."
     },
     {
       slug: "paper-3",

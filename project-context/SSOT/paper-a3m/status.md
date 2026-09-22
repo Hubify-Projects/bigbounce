@@ -2,30 +2,120 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-19 -- v3M.0.26. R10 CONFIRMATION board (the one board
-directive R2 permits after R9 closed real items) run on the exact v3M.0.25
-PDF: Grok REJECT, Gemini MAJOR REVISIONS, Claude Fable 5.1 INT referee MAJOR
-REVISIONS (0 ESSENTIAL / 4 MAJOR / 9 minor / 5 nit / 6 verification requests).
-The Gemini and Fable legs had no raw on disk from the prior lane and were
-RE-RUN, never back-filled. IT DID NOT CONFIRM: truth-audit found 17
-genuinely-new-real (4 MAJOR + 1 MAJOR-lite + 12 minor/nit), 15 FALSIFIED with
-source citations, 5 re-flags, 4 opinion/genre. All 17 closed in v3M.0.26 with
-two new committed computations. NO physics error was found in either round --
-every scientific number re-checked reproduced; the defects were presentation,
-provenance and criterion labelling, and one of them moved a headline number
-AGAINST the paper (DBI r_min 12.6 -> 10.3). Directive R2: the convergence
-budget is SPENT (R9 + R10); no further board without an intervening science or
-scope decision, which is the director's call. Readiness stays at the COMPUTED
-cap 75 -- the automated-review-convergence gate of directive P is NOT met, and
-no cap-95 recommendation is made. See "v3M.0.26" section below.
+last_updated: 2026-09-21 -- v3M.0.27. Ledger row 9 (D-A3-9) CLOSED 2026-09-19
+(`research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/`) --
+the intervening science decision directive R2 required after the R9+R10
+rounds-stop. A scheme-independent Bardeen-potential argument, independently
+blind-confirmed by a second construction, resolves the S1/S2 bounce-window
+continuation ambiguity in favor of S2 on the Quintin-type background:
+f_NL^after is now the single value -1.25 there (was the two-scheme band
+[-1.25,-0.50]; S1's range is retained only for LQC/poly, where S2 is not yet
+computed), and the tensor no-go strengthens (r_after~9.4e2, 2.6e4x BICEP/Keck,
+superseding the S1 24.0/670x headline) -- both directions propagated together
+per directive F. Propagated into `main.tex` in the same bundle as a
+general-tilt (n_s=1) correction to Appendix A's monopole and squeezed-bispectrum
+formulas (gate S12, `research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.md`);
+no number this paper headlines changes, since this paper's construction is
+exactly at eps=3/2 (dust), where the correction vanishes. Directive-G hygiene
+complete. R11 INT board dispatched on this exact v3M.0.27 PDF -- see "R11"
+section below for outcome. Readiness stays at the COMPUTED cap 75.
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (20 pp / 0 undef refs / md5 4dcb996e0a1252e9dca3c9414a33a213 / sha256 2181fd270e78e1d3ac4bc86decd60daeaf786e16e2028d20eebc58105b98ff7b)
-version: v3M.0.26 (2026-09-19, R10 confirmation-board closure -- see "v3M.0.26" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (21 pp / 0 undef refs / md5 ea6ebd918399650702ee5a9c81182ab2 / sha256 3e49f29bdc4bb21ea293db6a2174c4289f1308db2da9b3d96fa1e5192fbbdcef)
+version: v3M.0.27 (2026-09-21, row-9 science-decision propagation + gate-S12 correction -- see "v3M.0.27" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
-headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (R10, the permitted confirmation board, surfaced 17 genuinely-new-real incl. 4 MAJOR; closed in v3M.0.26, which no board has reviewed) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
-submission_status: draft, readiness 75 -- ROUNDS STOPPED 2026-09-19 under directive R2 (budget spent: R9 + R10). R10 was the permitted confirmation board and it did not confirm; its 17 findings are closed in v3M.0.26. A further board requires an intervening science or scope decision from the director.
+headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (v3M.0.27 has not been reviewed by any board until R11) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
+submission_status: draft, readiness 75 -- row-9 science decision propagated 2026-09-21, unlocking the one board directive R2 permits after an intervening decision (R11). See "R11" section below for outcome.
+
+## v3M.0.27 (2026-09-21) — row-9 (D-A3-9) science-decision propagation + gate-S12 correction; readiness held at 75
+
+**What this bundle was.** Not a review round: the intervening science decision directive
+R2 requires before another board can run. Ledger row 9 (D-A3-9) closed 2026-09-19 in
+`research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/` (pre-registration
+`117051bd`, result `8d7ede35`, manifest `a3-row9-scheme-independence`); this lane verified
+the artifact, applied its printable sentences to `main.tex` exactly, and ran directive-G
+hygiene.
+
+**The science.** The Bardeen potential $\Phi$ obeys a second-order equation containing
+neither a choice of linear variable $z$ nor any explicit $1/H$; it is regular at $H=0$ and
+at the NEC crossing $\rho+p=0$. Written as the $\delta$-function-free first-order
+$(\Phi,\Xi)$ system, its automatic continuity across the NEC boundaries is identically
+scheme S2's junction condition ($[\zeta]=0$, $[z^2\zeta']=0$) -- no junction prescription
+need be imposed. Propagated across the Quintin-type bounce: $|\lambda_\zeta|=0.9699$,
+agreeing with S2 to $7\times10^{-8}$ and differing from S1's $6.06$ by 84%. Scheme S1's
+$z=a$ is exact iff $\epsilon=-\dot H/H^2$ is constant (true in the matter contraction, false
+in the bounce window, which is exactly where the schemes part company). An independent
+blind adjudication (a different construction: the $(\Psi,D)$ system with Israel-matching
+junctions, given neither this argument nor its conclusion) confirmed S2, $\lambda_\zeta=0.970$.
+
+**Consequence, propagated in both directions together (directive F).** On the Quintin-type
+background, $f_{\rm NL}^{\rm after}$ collapses from the two-scheme band $[-1.25,-0.50]$ to
+the single value $-1.25$ (favorable to the survey-reach channel), while
+$r_{\rm after}=24(\lambda_T/\lambda_\zeta)^2$ takes row-18a's S2 value $\approx9.4\times10^2$
+rather than the S1 value $24.0$ (unfavorable -- $2.6\times10^4\times$ BICEP/Keck rather than
+$670\times$); the tensor no-go is strengthened, not relieved.
+
+**What is NOT claimed.** Adjudicates the linear MS-variable choice only (the cubic-action
+choice -- raw-ADM vs. Maldacena-form -- is settled only indirectly). Computed on the
+Quintin-type background only; the LQC and poly backgrounds have $\dot H=0$ crossings not yet
+covered, so their rows in Table III/VI remain S1-only and are stated as such throughout.
+No claim of refuting an LQC dressed-metric calculation.
+
+**Paper edits (`research/track_a3_multichannel/paper/main.tex`).** Abstract; the
+assumption-(A4) transfer-bound paragraph (Sec. III, now scoped to S1 and flagged
+superseded on Quintin-type); Table III (`tab:s1_after`) caption relabeled per the
+propagation note's option (a) -- S1 rows "superseded ... retained for comparison", S2 row
+"this paper's selected result"; the Scheme-S2 closing paragraph replaced verbatim with the
+Bardeen-potential argument and the blind-adjudication confirmation; the
+"every use of f_NL^after carries its scheme qualifier" sentence rescoped (qualifier dropped
+for the linear transfer on Quintin-type, retained for the cubic-action form and LQC/poly);
+Sec. VII (tensor) and Sec. VIII (no-go) label S2 as the selected scheme on Quintin-type;
+Table VI (`tab:reach`) caption and row labels updated, S2 row now "(selected)"; Discussion
+Secs. "joint statement" and "where the consistency is weak" rewritten -- "which scheme's
+linear variable is physical at H=0" is no longer stated as an open theory question on
+Quintin-type; Next-steps item (i) rewritten from "settling which linear variable is
+correct" (answered) to "extending the Bardeen argument to the LQC/poly $\dot H=0$
+crossings" (the real remaining gap). Reproducibility statement gains two entries:
+`row9_scheme_independence_2026_09_19/` and `psu_gate_S12_translation_trace_2026_09_19`.
+
+**Gate-S12 correction (Appendix A).** `research/theory_audit/psu_gate_S12_translation_trace_2026_09_19.md`
+flagged that Appendix A2's printed "both with monopole $-5\epsilon/6$" and Appendix A4's
+general-$\epsilon$ in-in bispectrum formula are both $n_s=1$-specific (a constant-$\epsilon$
+background is scale-invariant only at $\epsilon=3/2$ and, on the dominant mode, as
+$\epsilon\to0$), imported from the same derivation family as `paper_su_criterion`'s Appendix
+A3. Both locations now state the $n_s=1$ scope and the general-$n_s$ correction; a
+general-tilt gate (in the cited note) proves the correction cancels identically after the
+$1/\lambda$ composition, so $f_{\delta N}^{\rm init}=-5$ for every constant $\epsilon$ and
+every $n_s$ -- **no number in Sec. II, Sec. `crosscheck`, or Appendix A changes**, since
+this paper's entire construction is at the dust value $\epsilon=3/2$, where the correction
+vanishes exactly. Sec. II (`sec:parameter`) itself is entirely evaluated at $\epsilon=3/2$
+and carried no $n_s=1$-specific general-$\epsilon$ claim; nothing to fix there.
+
+**Directive I6 figure sweep.** Two `\includegraphics` in the whole paper:
+`sigw_nhz_from_lab_spectrum_2026_09_04.png` (PTA/GW spectrum) and `pbh_compaction_fnl.png`
+(PBH compaction). Neither renders $f_{\rm NL}^{\rm after}$, $r_{\rm after}$, or
+$\lambda_\zeta$ -- confirmed by content, not by filename alone. No regeneration needed.
+
+**Directive G hygiene.** `\paperVersion` v3M.0.26 -> **v3M.0.27**, `\paperTimestamp` ->
+September 21, 2026; 4-pass pdflatex, 0 errors, 0 undefined references or citations, 21 pp
+(grew from 20 -- substantial new text), max overfull hbox 3.9pt (unchanged from v3M.0.26;
+one intermediate 116pt table-row overflow from an over-long multicolumn label was caught by
+`/latex-audit` and fixed by shortening the label, final residual 2.16pt, invisible). Pages
+1, 6, 13, 18, 19 rendered and visually checked -- no column overflow, Table III/VI/Appendix-A
+and the reproducibility statement's new entries all fit and wrap correctly. PDF mirrored
+byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.27.pdf`,
+`public/papers/a3_multichannel_arxiv_v3M.0.27.pdf` and the source dir: md5
+`ea6ebd918399650702ee5a9c81182ab2`, sha256
+`3e49f29bdc4bb21ea293db6a2174c4289f1308db2da9b3d96fa1e5192fbbdcef`, 21 pp. Convex
+`paperVersions:bump` queued to `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`
+(Convex disabled, spending limit).
+
+**Open, for the director:** PUSH GATE (`origin/main` must carry the manuscript, this
+propagation, and `row9_scheme_independence_2026_09_19/`/`psu_gate_S12_translation_trace_2026_09_19.*`
+before the reproducibility statement's branch pointers are true); frozen-release DOI
+unminted (P-round action); Fig. 1's ~5pt legend/tick labels (D-round item, unchanged from
+v3M.0.26).
 
 ## v3M.0.26 (2026-09-19) — R10 confirmation board + closure; ROUNDS STOPPED (R2 budget spent); readiness held at 75
 
