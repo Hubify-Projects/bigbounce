@@ -58,8 +58,9 @@ been computed anywhere — LQC `[-1.198, -0.087]`, poly `[-1.267, -0.133]` — a
 > the momentum constraint at $\rho+p=0$, obtained here as the equation's own first recursion rather than
 > assumed. The resonance between the two exponents gives the $r=0$ branch a $t^2\log t$ term of amplitude
 > $-\Phi(\eta_c)k^2/2$, so $\zeta$ and $\Xi$ diverge only logarithmically, with amplitude
-> $c_{\log}=-k^2\mathcal H(\eta_c)\Phi(\eta_c)/Q'(\eta_c)$; a logarithm is integrable, and the continuation
-> through the surface is its unique symmetric finite part. Propagating the regular system across both
+> $c_{\log}=-k^2\mathcal H(\eta_c)\Phi(\eta_c)/Q'(\eta_c)$; a logarithm is integrable, and we continue
+> through the surface by its symmetric finite part -- one member of a one-parameter family of self-adjoint
+> extensions, whose spread is quantified in Sec.~[ref]. Propagating the regular system across both
 > backgrounds, and comparing at fixed incoming adiabatic vacuum, the transmitted constant-$\zeta$ amplitude is
 > a fraction $R=1/2$ (LQC) and $R=3/8$ (poly) of scheme S1's, against $R=0.160$ on the Quintin-type
 > background. Both rational values are exact: at leading order in the gradient expansion

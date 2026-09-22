@@ -100,8 +100,10 @@ Hence `Phi ~ a0 - h0 a0 t + O(t^2 log t)` (continuous, `C^1`), `Phi''` diverges 
 zeta  ->  finite part  +  c_log * log|t| ,        c_log = -k^2 Hc(eta_c) Phi(eta_c) / Q'(eta_c) ,
 ```
 which is exactly what the independent identity `zeta' = -k^2 Hc Phi/Q` gives. **A logarithm is integrable, so
-the continuation through the crossing exists; being logarithmic and not a pole, it has a unique symmetric
-finite part — the principal value.**
+the continuation through the crossing exists; being logarithmic and not a pole, it has a well-defined
+*symmetric* finite part — the principal value.** That does **not** make the continuation unique: the
+principal value is one member of a one-parameter family of self-adjoint extensions, and §2.6 measures how far
+the others move the answer.
 
 **A5 — the two backgrounds, in closed form.**
 `LQC`: `Q = x^{1/3}(1/2 - x)`, simple zero at `x = 1/2` (`dQ/dx = -2^{2/3}/2 != 0`), once on each side;
