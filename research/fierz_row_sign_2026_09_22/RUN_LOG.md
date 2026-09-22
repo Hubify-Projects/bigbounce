@@ -135,3 +135,15 @@ and no uplift from it either. No `main.tex`, SSOT, `DISPOSITIONS/` or site-data
 file was touched by this lane. Convex is disabled (spending limit): no Convex
 write attempted; the intended mutation is queued in
 `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+
+---
+
+**04:11 · PUSH.** `324c5cf4` pushed to `origin/main` with `FRESHNESS_SKIP=1`.
+Recorded here because the two lane commits omitted the required statement in
+their own bodies: the site-freshness gate's only FAIL lines were the six
+`versions  paper-*: Convex unreachable x2 - infra, not staleness` rows —
+Convex is disabled for this campaign by the spending limit. Every other
+surface (banner, skills, board, heartbeat, papers) reported FRESH, and the one
+WARN (`skillslog`, 18 unlogged skill improvements since 2026-09-18) predates
+this lane and belongs to the site-sync lane. No non-Convex staleness was
+bypassed.
