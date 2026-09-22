@@ -46,7 +46,7 @@ export const liveStatus: LiveStatus = {
   headline:
     "Portfolio restructured to Track A (bounce vs. inflation, flagship) / Track B (the ECH Note) / Track C (DESI data products), replacing the retired three-research-programs framing (directive R3). The 2026-09-18 publication-push campaign closed P1N's D-round + P-round (95→99) and ran a fresh exact-version confirmation board on P4′ (→v4P.0.8, still 95) — P1A, P1C, P4, and P5 remain listed as their archived lineage.",
   summary:
-    "P1N (Track B) merges P1A into P1C as one closed-line ECH Note; its D-round and P-round are now complete (readiness 99, Houston sign-off next). P4′ (Track C1) folds P5 into P4 and adds the Poplawski black-hole-universe spin-axis exclusion; an exact-version INT confirmation board closed 7 genuinely-new-real MAJOR + 12 MINOR findings on its post-R3 disclosure content (readiness 95, Houston sign-off next). P2 remains gated toward P2′ pending the ledger #1 independent re-derivation. P3 is provenance support for the redirected early-universe anomaly map.",
+    "P1N (Track B) merges P1A into P1C as one closed-line ECH Note; its D-round and P-round packaging are complete, but a 2026-09-22 exact-version CONFIRM board's cold-read referee leg surfaced two ESSENTIAL open science findings (DP1N-60, DP1N-61) targeting the paper's title claims — readiness held at 95 pending real science closure, not Houston sign-off. P4′ (Track C1) folds P5 into P4 and adds the Poplawski black-hole-universe spin-axis exclusion; an exact-version INT confirmation board closed 7 genuinely-new-real MAJOR + 12 MINOR findings on its post-R3 disclosure content (readiness 95, Houston sign-off next). P2 remains gated toward P2′ pending the ledger #1 independent re-derivation. P3 is provenance support for the redirected early-universe anomaly map.",
   currentlyRunning: [
     "Deterministic preflight, clean-room package compiles, link checks, mirror checks, and all-page visual audits pass; bounded reviewer confirmation remains version-specific.",
     "Houston's final review applies only after a program-level scientific and editorial decision; it is not implied by an automated review result.",
@@ -68,10 +68,10 @@ export const liveStatus: LiveStatus = {
     {
       slug: "paper-1n",
       number: "1N",
-      shortTitle: "The ECH Note (P1A + P1C merged, grown to CQG Paper form)",
-      version: "v1N.0.6",
-      readiness: 99,
-      pendingWork: "D-round (visual) + P-round (packaging) complete 2026-09-18 → v1N.0.6 (0 broken artifact links; unused bib entry pruned; arXiv tarball rebuilt + standalone-smoke-tested; CQG submission kit assembled). arXiv gr-qc endorsement (D4) remains Houston-only, not a CQG-submission blocker. Houston sign-off (99→100) not yet sought.",
+      shortTitle: "The ECH Note (P1A + P1C merged, grown to CQG Paper form) — SIGN-OFF HOLD",
+      version: "v1N.0.7",
+      readiness: 95,
+      pendingWork: "SIGN-OFF HOLD (2026-09-22): exact-version CONFIRM board closed a wording-only item (DP1N-59, v1N.0.7) but a verdict-blind Claude opus cold-read referee surfaced two ESSENTIAL, previously-unexamined findings targeting the title claims directly — the contact-term equation-of-state assumption contradicts its own density parametrization (DP1N-60), and the Popławski dark-energy rebuttal evaluates the wrong physical scale by ~74 orders of magnitude against a misdescribed source (DP1N-61). Neither closeable by a text edit; readiness held at 95 pending real science closure via a dedicated science lane, not another review board.",
     },
     {
       slug: "paper-1a",

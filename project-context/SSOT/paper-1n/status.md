@@ -1,9 +1,102 @@
 # P1N status — current authoritative section
 
-**Current candidate:** v1N.0.6 · 2026-09-18 ·
-`arxiv/paper1bc_ech_note/main.tex` — **D-round (visual) + P-round
-(packaging) complete. Readiness ladder: R→96, D→98, P→99 (Convex
-`readinessCap`).**
+**Current candidate:** v1N.0.7 · 2026-09-22 ·
+`arxiv/paper1bc_ech_note/main.tex` — **SIGN-OFF HOLD. Readiness-99 (D-round
+98 + P-round 99, both still valid as packaging gates) is HELD, not current,
+pending real science closure of DP1N-60 and DP1N-61 — two ESSENTIAL findings
+a verdict-blind Claude opus cold-read referee surfaced on the exact v1N.0.6
+CONFIRM board, neither previously examined by any prior review round, neither
+closeable by a text edit.**
+
+## CONFIRM board — 2026-09-22 (v1N.0.6 → v1N.0.7, lane bb-L3c-p1n-confirm) — SIGN-OFF HOLD PLACED
+
+P1N's last INT board (R3) audited exact v1N.0.3; the paper moved v1N.0.3 →
+v1N.0.6 (D-round + P-round packaging, "no science change" recorded) without a
+fresh exact-version board — a gap `HOUSTON_SIGNOFF_PACKET_2026-09-22.md` §5
+named explicitly. Directive R2's version-drift exception permitted exactly
+one confirmation round.
+
+**Directive-G pre-check:** served PDF byte-identical across all paths (md5
+`b9ac109139b7d88aa0f798ee7ef80c8d`, v1N.0.6); a fresh isolated recompile
+produced a different md5 but byte-identical `pdftotext` output (0-line diff)
+— pdflatex's non-deterministic `/CreationDate`/`/ID` metadata, not stale
+content. Convex UNAVAILABLE (spending limit), neither passed nor failed.
+
+**Board:** Grok API (`REJECT`, 3E/3M/3N), Gemini API (`MAJOR REVISIONS` + 1
+pass-2 self-critique ESSENTIAL), Claude opus verdict-blind cold-read referee
+(`MAJOR REVISIONS`, 2 ESSENTIAL / 6 MAJOR / 15 minor / 6 nit — cold read, no
+repository access beyond `main.tex`, no prior verdict shown). Full truth
+audit: `project-context/peer-reviews/INT_v3/ROUND_2026-09-22-P1N-v1N.0.6-EXACTPDF-1bb5ade7-CONFIRM/P1N_v1N.0.6_CONFIRM_truth_audit.md`.
+Dispositions: `project-context/peer-reviews/DISPOSITIONS/P1N.md` (DP1N-59
+CLOSED, DP1N-60/61 OPEN).
+
+**One item closed (DP1N-59, MAJOR, wording only):** the abstract misattached
+a branch-qualifier ("exact total derivative on the torsion-free branch")
+that the body (`main.tex:904-907`) assigns to a different category
+(identically-vanishing, not total-derivative). Fixed at `main.tex:92-95` —
+no science/numeric content changed. Directive-G hygiene: `\paperVersion`
+v1N.0.6→v1N.0.7, `\paperTimestamp` September 18→22, 2026; 4-pass recompile,
+0 undef refs, 11 pp unchanged, pre-existing 4.49666pt overfull hbox
+unchanged (below the 10pt gate); page 1 rendered at 150dpi and visually
+confirmed. PDF sha256
+`6f7851d6db2df0dc5f20b74fe7395280df6f75196f88ffb5ec9958c96d4e022e`, md5
+`8f073078c95ff587825e0a78397b13a3`; mirrored byte-identical to
+`site/public/papers/paper1bc_ech_note_v1N.0.7.pdf` and
+`public/papers/paper1bc_ech_note_v1N.0.7.pdf`.
+
+**Two items OPEN and blocking, both targeting the paper's title claims
+directly, neither closeable by this lane:**
+
+- **DP1N-60 (ESSENTIAL) — the "repulsive/bounce" sign argument's equation of
+  state.** §II (`main.tex:216-219`) assigns the contact term's stress tensor
+  as $\rho=-\mathcal L$, $p=+\mathcal L$ ($w=-1$, "for a term with no
+  explicit time derivatives"). But §II.A (`main.tex:250-263`) parametrizes
+  the same term's magnitude by a fermion number density $n_\psi$ (called
+  "the cosmic fermion number density" at `main.tex:822-823`), and
+  $n_\psi\propto a^{-3}\Rightarrow\rho\propto a^{-6}$ forces $w=+1$ (stiff)
+  under covariant conservation, not $w=-1$. Under the correct $w=+1$ the
+  paper's repulsion-sign condition **inverts**. This also disagrees with the
+  standard ECSK spin-fluid literature result ($\varepsilon_{\rm
+  spin}=p_{\rm spin}<0$, $w=+1$) for the identical interaction. No prior
+  `DP1N-*` round examined the EOS assumption itself (DP1N-44/49 fixed an
+  arithmetic sign error *within* the assumed EOS, not the assumption).
+- **DP1N-61 (ESSENTIAL) — the Popławski rebuttal's scale.** §VII.D
+  (`main.tex:815-836`) claims a "direct, quantitative rebuttal" of
+  Popławski's own dark-energy proposal, citing `Poplawski2012`
+  ("Cosmological constant from quarks and torsion," Annalen der Physik 523,
+  291 — a paper whose mechanism sets $\rho_\Lambda$ via the QCD quark
+  chiral condensate $\langle\bar qq\rangle\sim-(235\,{\rm MeV})^3$, not a
+  baryon/fermion number density as `main.tex:817-819` describes it).
+  §VII.D then evaluates the rebuttal at the §II.A ISM benchmark
+  ($n_\psi\sim100\,{\rm cm^{-3}}$) instead — off by $\sim74$ orders of
+  magnitude from the cited paper's actual scale, and in the wrong
+  direction: at the condensate scale, independently recomputed,
+  $\tfrac{3}{16}\kappa\langle\bar qq\rangle^2\approx2\times10^5\times
+  \rho_{\Lambda,\rm obs}$ (**over**-production), not the claimed
+  under-production. §II.A's own text (`main.tex:262-263`) warns against
+  exactly this substitution, which §VII.D then performs.
+
+Both findings survived independent re-derivation from scratch (arithmetic
+reproduced to 3 significant figures) and are not falsifiable against the
+source — they are genuine, previously-unexamined gaps in what the paper's
+own (independently-verified-correct) equations are used to assert. Neither
+is closeable with a text edit: DP1N-60 needs a rigorous re-derivation of the
+contact term's stress tensor with the fermion-fluid averaging made explicit;
+DP1N-61 needs either a correct evaluation at Popławski's actual scale (which
+may invert the Route-1 conclusion from under- to over-production — a
+different, non-trivial result) or a withdrawal of the rebuttal claim.
+Manufacturing either resolution under a bounded confirmation-board lane would
+violate `/never-fabricate-derivation`. Directive R2's one-permitted-round
+budget for this confirmation board is spent — the next step is a dedicated
+science-closure lane (the same pattern as P4P's in-domain re-measurement),
+not another review board.
+
+**Readiness:** D-round (98) and P-round (99) packaging gates remain valid on
+their own terms (visual/PDF hygiene, artifact links, tarball) — this hold is
+about science content, not packaging. But the overall readiness-99 claim is
+**HELD**, not current, until DP1N-60/61 close. Houston sign-off should NOT
+be read against v1N.0.6 or v1N.0.7 as "ready to publish" until this hold is
+lifted.
 
 ## D-round + P-round — 2026-09-18 (v1N.0.5 → v1N.0.6, lane L3)
 
