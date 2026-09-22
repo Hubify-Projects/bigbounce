@@ -1,0 +1,100 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "row16iib-pa-parity-transfer",
+ "title": "Row 16 (ii-b) — position-angle-restoring parity transfer through the released P4' chirality pipeline, plus the corrected error bar on the N=20,000 row 16(ii) injection slope",
+ "program": "galaxy-chirality",
+ "paper": "P4P",
+ "kind": "calibration",
+ "preregistration": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/PREREGISTRATION_2026-09-19.md (git 12248d70, committed before any statistic was computed)",
+ "inputs": [
+  {
+   "name": "row 16(ii) N=20,000 galaxy sample (RA/Dec/class_eq/hpix/cutout URL), drawn from bamfai/galaxy-chirality-catalog",
+   "type": "committed-artifact",
+   "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_sample.parquet",
+   "checksum": null
+  },
+  {
+   "name": "Legacy Survey DR9 jpeg cutouts, 150 px, layer ls-dr9, for those galaxies (19,800 of 20,000 cached on disk from the 2026-09-04 row 16(ii) run; the 200 missing are the 2026-09-04 fetch failures and are simply absent, not replaced)",
+   "type": "external-dataset",
+   "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+   "checksum": null,
+   "license": "Legacy Surveys public data (NOIRLab), CC-BY-4.0"
+  },
+  {
+   "name": "committed row 16(ii) forward-pass pairs, reused unchanged for statistic S4 (no new inference)",
+   "type": "committed-artifact",
+   "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_pairs.parquet",
+   "checksum": null
+  },
+  {
+   "name": "chirality classifier checkpoint (ViT-S/16 encoder + 3-class head), identical revision pin to row 16(ii)",
+   "type": "external-model",
+   "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2 @ 237d021c451d75cf86a875e86d4de498b74e2f12 :: chirality_model_v2_best.pt",
+   "checksum": null
+  }
+ ],
+ "apis": [
+  {
+   "name": "huggingface_hub.hf_hub_download (model checkpoint only; the cutouts are read from the local cache, no network needed to reproduce the inference stage)",
+   "endpoint": "https://huggingface.co",
+   "auth_required": false
+  }
+ ],
+ "code": [
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/run_pa_transfer_inference.py",
+   "entrypoint": "python3 run_pa_transfer_inference.py",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s1_pa_transfer_analysis.py",
+   "entrypoint": "python3 s1_pa_transfer_analysis.py",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s4_reanalyse_n20k_slope.py",
+   "entrypoint": "python3 s4_reanalyse_n20k_slope.py",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/make_figures.py",
+   "entrypoint": "python3 make_figures.py",
+   "sha256": null
+  }
+ ],
+ "environment": {
+  "python": "python3.14 + torch 2.13.0 + timm + PIL + pandas + numpy + huggingface_hub + matplotlib",
+  "hardware": "local Apple Silicon MPS (Metal), macOS arm64 — no GPU rental needed"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": "Apple M-series MPS",
+  "pod_id_or_host": "local workstation (code-you-2d-MacBookAir24GB)",
+  "date": "2026-09-19",
+  "wall_clock": "TBD",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local MPS/CUDA; nothing here needs a rented GPU",
+  "est_wall_clock": "TBD",
+  "est_cost_usd": 0.0,
+  "parallelizable": true,
+  "resume_support": true,
+  "notes": "run_pa_transfer_inference.py checkpoints pa_transfer_probs.npz every 2,000 galaxies and resumes when the cached-index list matches. The analysis stages need no GPU. Total new inference is N x 8 angles x 2 mirror-states = 316,800 forward passes; every f/seed grid point of S3 and S4 is evaluated in closed form from those stored probabilities, with no re-inference."
+ },
+ "outputs": [
+  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s1_pa_transfer_results.json", "type": "result-json", "checksum": null},
+  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s4_n20k_slope_reanalysis.json", "type": "result-json", "checksum": null},
+  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/fig_row16iib_pa_parity_transfer.png", "type": "figure", "checksum": null},
+  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/ROW16IIB_PA_PARITY_TRANSFER_2026-09-19.md", "type": "report", "checksum": null},
+  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/pa_transfer_probs.npz", "type": "intermediate-array", "checksum": null, "note": "3.8 MB, committed"}
+ ],
+ "status": "runnable-now",
+ "provenance": [
+  "Task: ledger row 16 sub-item (ii), lane bb-LS-ledger16 of campaign CAMPAIGN_2026-09-18_publication_push.md",
+  "Supersedes the proposed 'N > 20k' extension of row16-image-level-injection-n20k.json, for the reason derived in the pre-registration sec.1 and quantified by statistic S4",
+  "pipelines/p2_chirality/equivariant_postprocess.py (production Z2 flip-TTA, replicated exactly)",
+  "pipelines/p2_chirality/build_apjs_release_v1_0_244.py:163-168 (primary_hc selection used by the post-hoc catalogue-subset stratification)",
+  "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md (strict-subset dipole axis used by S6)"
+ ]
+}

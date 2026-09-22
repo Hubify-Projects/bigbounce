@@ -202,6 +202,20 @@ def main():
             v = [eps_rho_L(clsX[phi][sel], clsY[phi][sel])[0] for phi in informative]
             hs[lab] = {"n": int(sel.sum()), "eps_bar_informative": float(np.mean(v))}
         hs["delta"] = hs["north_of_axis"]["eps_bar_informative"] - hs["south_of_axis"]["eps_bar_informative"]
+        # pre-registered sec.5 S6: "no claim unless |delta| > 3 sigma" -- so the
+        # sigma has to exist. Galaxy-level cluster bootstrap of the difference,
+        # resampling within each hemisphere.
+        ii_n, ii_s = np.where(m)[0], np.where(~m)[0]
+        bd = np.empty(N_BOOT)
+        for b in range(N_BOOT):
+            rn = ii_n[rng.integers(0, len(ii_n), size=len(ii_n))]
+            rs_ = ii_s[rng.integers(0, len(ii_s), size=len(ii_s))]
+            bd[b] = (np.mean([eps_rho_L(clsX[phi][rn], clsY[phi][rn])[0] for phi in informative])
+                     - np.mean([eps_rho_L(clsX[phi][rs_], clsY[phi][rs_])[0] for phi in informative]))
+        hs["delta_boot_se"] = float(bd.std(ddof=1))
+        hs["delta_z"] = float(hs["delta"] / bd.std(ddof=1))
+        hs["claim"] = ("hemisphere difference in parity transfer efficiency"
+                       if abs(hs["delta_z"]) > 3 else "no claim (|z| <= 3)")
         s6[name] = {"axis_ra_dec_deg": list(axis), **hs}
 
     # ---- POST-HOC: effect of the 106 px centre crop on the baseline labels ----
@@ -363,6 +377,9 @@ def main():
         print(f"  phi={phi:3d}  eps={e['eps']:.4f}+-{e['eps_boot_se']:.4f}  "
               f"rho={e['rho']:.4f}  L={e['L']:.4f}  R_rot={s5[str(phi)]['R_same_class']:.4f}  "
               f"eps_obs={posthoc_obs[str(phi)]['eps_obs']:.4f}")
+    print("\n-- S6 hemisphere split --")
+    for k, v in s6.items():
+        print(f"  {k}: delta={v['delta']:+.4f} +- {v['delta_boot_se']:.4f} (z={v['delta_z']:+.1f}) -> {v['claim']}")
     print("\n-- S5b dilution bound --")
     for phi in angles:
         if phi == 0:
