@@ -157,9 +157,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-af",
       number: "AF",
       shortTitle: "DESI anomaly-score catalogue (Track C2 flagship draft)",
-      version: "vAF.0.4",
-      readiness: 75,
-      pendingWork: "R1 INT board closed 2026-09-19 (Claude opus 6 BLOCKER/16 MAJOR, Grok REJECT, Gemini MAJOR REVISIONS, all convergent): 17/20 canonical findings closed with real edits or new committed computation. Most consequential: abstract's 'supports one' z~4.3 quasar candidate independently re-verified as sitting inside the paper's own disclosed photometric-join defect -- downgraded Supported->Undecidable (now 'refutes one of four, cannot decide the other three'). New committed blue-arm variance-decomposition script shows the score is R^2=0.78 explained by the blue arm alone (R^2=0.01 without it). 3 findings honestly disclosed as open (training corpus, dedup near-threshold, taxonomy RA-wrap). Directive R2: round 1 of 2 spent. Readiness 75 COMPUTED.",
+      version: "vAF.0.5",
+      readiness: 77,
+      pendingWork: "vAF.0.5 (lane LAF2, non-review directive-G bundle, no board run): DAF-16 fully closed -- released-column schema now documents all 192/192 columns (was 183/192), the 9 remaining derived colours/flags/join-tags reconstructed and documented from the committed assembly/enrichment scripts. Full bibliography ADS-verified (26 remaining entries beyond the 4 LR1 already checked; all match, no text changed). OT-1 selection function and the Zenodo DOI reconfirmed genuinely not agent-closable (GPU compute / Houston-only) -- left as already honestly specified. Prior: R1 INT board closed 2026-09-19 (Claude opus 6 BLOCKER/16 MAJOR, Grok REJECT, Gemini MAJOR REVISIONS, all convergent): 17/20 canonical findings closed with real edits or new committed computation, most consequentially downgrading the abstract's 'supports one' z~4.3 quasar candidate to Undecidable. 3 findings remain honestly disclosed as open (training corpus, dedup near-threshold, taxonomy RA-wrap). Directive R2: round 1 of 2 spent. Readiness 77 COMPUTED.",
     },
   ],
   blockerTally: {

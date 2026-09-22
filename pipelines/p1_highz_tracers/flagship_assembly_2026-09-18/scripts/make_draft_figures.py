@@ -337,6 +337,9 @@ def tab_catalogue_schema(m: pd.DataFrame, nums: dict) -> None:
         ("SIMBAD/NED cross-match", ["simbad_found", "simbad_main_id", "simbad_otype",
                                     "ned_found", "ned_name", "ned_type"]),
         ("taxonomy", ["cluster_id", "family_id", "family_descriptor", "is_core_member"]),
+        ("derived colours, flags \\& join tags",
+         ["mean_fiber_ra", "mean_fiber_dec", "gr_color", "rz_color", "w1w2_color",
+          "is_point_source", "is_star_candidate", "crossmatch", "snr_med"]),
         ("unpopulated placeholder", ["classification", "discovery_potential"]),
     ]
     # rendered inside a full-width table* float in the manuscript

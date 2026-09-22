@@ -144,15 +144,28 @@ matched/unmatched flux/SNR/score medians and p-values; the BAL enrichment 3.3× 
 - **fingerprint:** mild positive signal, matched unmatched, confounded, brightness
 
 ### DAF-16 (MAJOR): Table IV describes no single released file; several released columns (residual_kurtosis, SUBTYPE) undocumented
-- **class:** PARTIALLY CLOSED
+- **class:** CLOSED — GENUINELY-NEW-REAL (fully closed 2026-09-21, lane LAF2; was
+  PARTIALLY CLOSED as of vAF.0.4)
 - `residual_kurtosis` added to the anomaly group; `classification`/`discovery_potential`
   (constant placeholders across all rows) added as an explicit "unpopulated placeholder"
-  group rather than silently omitted. Caption now states the table covers 183/192 columns
-  and names the constant-placeholder pair. Full per-artifact schema reconciliation
-  (9 remaining derived/internal columns: mean_fiber_ra/dec, gr/rz/w1w2_color,
-  is_point_source, is_star_candidate) deferred — real but bounded further work, not
-  fabricated as closed. main.tex Table~\ref{tab:schema} caption.
-- **fingerprint:** Table IV, released column schema, residual_kurtosis, discovery_potential
+  group rather than silently omitted (vAF.0.4).
+- **vAF.0.5 closure:** the remaining 9 columns were identified exactly (not estimated) by
+  running `assemble_flagship_evidence.py::build_master()` and diffing its real 192-column
+  frame against the schema generator's grouped columns:
+  `mean_fiber_ra`, `mean_fiber_dec`, `gr_color`, `rz_color`, `w1w2_color`,
+  `is_point_source`, `is_star_candidate`, `crossmatch`, `snr_med`. Their definitions were
+  read from the committed `enhanced_18M_inference.py` (colours: AB-mag differences from
+  already-released fluxes; `is_point_source`: `morphtype=='PSF'`; `is_star_candidate`:
+  parallax>0.5 mas or a `gr_color`/`rz_color` stellar-locus cut) and
+  `assemble_flagship_evidence.py` (`crossmatch`: the matched/unmatched join tag;
+  `snr_med`: median of the three per-band SNR columns). Added as a new schema group in
+  the generator (`make_draft_figures.py::tab_catalogue_schema`, never hand-edited) and a
+  documenting paragraph in main.tex §IV A. Table IV caption now reads "all 192 released
+  columns accounted for." Full pipeline rerun; every other number (V1–V12,
+  DEFECT-1/2/3, all draft_numbers.json values) reproduced identically —
+  `n_columns_joined` 183→192 is the only number that changed. main.tex §IV A,
+  Table~\ref{tab:schema} caption, `tables/tab_catalogue_schema.tex`.
+- **fingerprint:** Table IV, released column schema, residual_kurtosis, discovery_potential, mean_fiber_ra, crossmatch, snr_med, 192 columns
 
 ### DAF-17 (MAJOR): dedup rule (`878,740` rows removed) is physically arbitrary and its effect on catalogue membership near threshold is unquantified
 - **class:** DISCLOSED, NOT CLOSED (genuinely needs new analysis on raw pre-dedup data)
@@ -228,3 +241,15 @@ run, should (a) verify these closures on the exact vAF.0.4 PDF and (b) assess wh
 DAF-17/19/20's disclosures are sufficient or require the named follow-up work
 (dedup-sensitivity quantification, corrected re-clustering, training-corpus archaeology)
 before further readiness advance.
+
+---
+
+## LAF2 non-review TODO closure (vAF.0.4 → vAF.0.5, 2026-09-21)
+
+Not a review round — directive R2 stays at round 1 of 2 spent. DAF-16 fully closed (see
+its updated entry above). Bibliography verification completed for all remaining 26
+entries (all match ADS/journal records, no text changed). OT-1 and Zenodo DOI
+reconfirmed genuinely not agent-closable, left unchanged as already honestly specified.
+DAF-17/19/20 unchanged (still genuinely open, real further work). Full account in
+`project-context/SSOT/paper-af/status.md` §"LAF2 non-review TODO closure". An R2 board,
+if run, should verify these closures plus the R1 closures on the exact vAF.0.5 PDF.

@@ -1,12 +1,117 @@
 # AF (anomaly flagship) status — current authoritative section
 
-**Current candidate:** vAF.0.4 · `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex`
-**Directive-P readiness:** 75 (COMPUTED, Convex `readinessCap`) — R1 INT board closed
-2026-09-19 (lane LR1): all 6 BLOCKER + all 16 MAJOR findings truth-audited verdict-first;
-17 closed with real edits/new computation, 3 honestly disclosed as open (not fabricated,
-not hidden). Directive R2: round 1 of 2 spent. See "R1 INT board closed" below for the
-full item-by-item outcome; `project-context/peer-reviews/DISPOSITIONS/AF.md` for the
-canonical per-item ledger.
+**Current candidate:** vAF.0.5 · `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex`
+**Directive-P readiness:** 77 (COMPUTED) — lane LAF2 (2026-09-21) closed DAF-16 fully and
+completed the bibliography verification LR1 started; no review board run (directive R2:
+round 1 of 2 still spent, unchanged from R1). Directive-G bundle re-verified clean at
+vAF.0.5. See "LAF2 non-review TODO closure" below for the full account;
+`project-context/peer-reviews/DISPOSITIONS/AF.md` for the canonical per-item ledger.
+
+## LAF2 non-review TODO closure (vAF.0.4 → vAF.0.5, 2026-09-21)
+
+Campaign lane LAF2. Scope: close every remaining agent-closable open item on paper-af and
+run a full directive-G hygiene bundle. Explicitly NOT a review round (directive R2: R1
+remains round 1 of 2; no board dispatched).
+
+**DAF-16 fully closed (was PARTIALLY CLOSED).** The released-column schema table
+(`tab_catalogue_schema.tex`, Table IV) previously documented 183 of 192 released columns,
+with the remaining 9 named only as "internal joins and derived colours/flags not yet
+grouped." This lane reconstructed the actual master frame by running
+`assemble_flagship_evidence.py::build_master()` directly and diffing its 192 real columns
+against every column already grouped in the schema generator
+(`make_draft_figures.py::tab_catalogue_schema`) — confirming exactly 9 remain:
+`mean_fiber_ra`, `mean_fiber_dec`, `gr_color`, `rz_color`, `w1w2_color`,
+`is_point_source`, `is_star_candidate`, `crossmatch`, `snr_med`. Their exact definitions
+were read out of the committed `enhanced_18M_inference.py` (colour/flag derivations from
+already-released flux/parallax/morphtype columns) and `assemble_flagship_evidence.py`
+(the `crossmatch` matched/unmatched join tag and `snr_med`, the assembly-time median of
+the three per-band SNR columns) — real, committed, deterministic functions, not new
+computation. Added a new schema group ("derived colours, flags & join tags") to the
+generator script (never hand-edited the table) and reran the full assembly pipeline
+(`assemble_flagship_evidence.py` → `make_tables.py` → `make_draft_figures.py` →
+`blue_arm_diagnostics_2026-09-19.py`); every validation-contract status (V1–V12,
+DEFECT-1/2/3) and every previously reported number reproduced byte-for-byte identical
+except `n_columns_joined` (183→192, the intended change). Table IV now reads "all 192
+released columns accounted for"; main.tex §IV A gained one paragraph naming and defining
+all 9 columns. No science number changed.
+
+**Bibliography verification completed.** LR1 (vAF.0.3) ADS-verified 4 of ~30 bibliography
+entries (the ones the paper's own Appendix A flagged as unconfirmed against committed
+artifacts). This lane verified the remaining 26 via live ADS/journal lookups (not
+memory): every journal, volume, page, and year matches exactly, including the three
+hardest-to-verify entries — Nicolaou et al. 2026 (MNRAS 547, page-ID `stag010`, OUP's
+continuous-publication identifier, confirmed genuine not a typo), the DESI DR1 release
+paper (AJ 171, 285, 2026), and Guy et al. 2023 (AJ 165, 144). Three entries have no fixed
+journal record to check (Redrock: still "in preparation" per DESI's own papers page,
+matching the bib's own non-claim; DESIBitmasks and ApacheArrow: living-docs/URL
+citations) — correctly cited as such already. No bibliography text changed. Appendix A
+extended with a verification statement naming the three hardest cases.
+
+**OT-1 (selection function) and Zenodo DOI: reconfirmed genuinely not agent-closable, left
+untouched.** Read the existing §"Open tests" OT-1 entry and the recovery-benchmark
+section (§V D) to check whether the already-landed known-object recovery benchmark could
+substitute for or partially satisfy OT-1. It cannot: the recovery benchmark measures
+threshold-recovery of *known* reference-class objects already in the released catalogue
+(a different, narrower question), while OT-1 is a controlled injection-recovery
+experiment across a signal-to-noise grid into raw DR1 coadds — the paper's own "What this
+catalogue is not" section is explicit that the two are not interchangeable, and
+conflating them would be exactly the kind of fabricated-adequacy this lane was told not
+to produce. OT-1's existing specification (inject each of the five reference classes'
+template spectra at a grid of S/N into real DR1 sky/noise realizations, re-score with the
+hash-bound model) was already complete and honest from LR1; left unchanged. Zenodo DOI
+minting is Houston-only (an external account action, not a repo edit); left unchanged.
+
+**Directive-G bundle.** `\paperVersion` vAF.0.4→vAF.0.5; `\paperTimestamp`
+September 19→September 21, 2026. 4-pass `pdflatex`, 0 errors, 0 undefined refs/citations,
+0 overfull hboxes >10pt, 18 pages (up from 17 — the new schema paragraph, no padding).
+`/latex-audit` full visual pass (title page, the two touched pages, bibliography/appendix)
+— no overflow, no overlap. `/artifact-link-verify`: all 6 `\artifact{}`/`\artifactdirlink{}`
+GitHub links resolve on `main` (4 files, 2 directories). `tools/verify_pdf_mirror_integrity.py`:
+0 findings after the site-data update (was 5: two stale hrefs, one stale version field in
+papers.ts, one stale md5, one stale version field in live-status.ts). arXiv tarball
+rebuilt from scratch in `/tmp` (main.tex + 9 figures + 11 tables, no stale-.bbl risk —
+this paper uses inline `thebibliography`, cite/bibitem keys reconcile exactly, 0
+missing/unused) and standalone-smoke-tested: 4-pass recompile, 0 errors, 0 undefined
+refs, 18 pages, matches the served build exactly (tarball discarded after the smoke test
+per protocol, not committed as a binary).
+
+- **PDF:** `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf` — MD5
+  `60de7e9dbfbcc77336b3050ee788e68e`, SHA-256
+  `ea81ef413503d25291853a2be714226d3b47fe680ead2f01727aaabe961140ca`.
+  Mirrored byte-identically to `site/public/papers/anomaly_flagship_vAF.0.5.pdf`,
+  `site/public/papers/anomaly_flagship.pdf`, `public/papers/anomaly_flagship_vAF.0.5.pdf`,
+  `public/papers/anomaly_flagship.pdf` (five-way md5 verified, including the source dir).
+- **Registry:** `project-context/draft_paper_registry.json` (AF block: version, pages,
+  date, sha256, md5, served_aliases, status) and `project-context/paper_registry.json`
+  (companion_manuscripts.AF served_aliases) both updated.
+- **Site:** `site/src/data/papers.ts` (AF block: version, lastUpdated, pages, readiness
+  75→77, pdfMeta, both PDF hrefs, remainingWork, new vAF.0.5 changelog entry) and
+  `site/src/data/live-status.ts` (AF row: version, readiness, pendingWork) — AF's own
+  rows only. `npx tsc --noEmit` clean.
+- **Convex:** DISABLED (spending limit) for the duration of this lane. Intended mutations
+  (`paperVersions:bump` for vAF.0.5 with the real md5/sha256/pages;
+  `papers:setReadinessCap` 75→77; `activityFeed:add` for this bundle) queued to
+  `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md` with exact function names and
+  args, per the standing Convex-outage instruction.
+- **Dispositions:** DAF-16 entry updated from PARTIALLY CLOSED to CLOSED in
+  `project-context/peer-reviews/DISPOSITIONS/AF.md`.
+- **Git:** lane LAF2 commit(s), this bundle.
+
+**What genuinely remains, and who/what unblocks each:**
+- **OT-1 selection function** — needs GPU injection-recovery compute (RunPod or
+  equivalent); fully specified in-paper, not agent-closable without that compute.
+- **Zenodo DOI** — Houston-only (external account action to mint the deposit).
+- **DAF-17** (dedup near-threshold sensitivity) — needs new analysis on the raw
+  pre-dedup data (878,740 removed rows), not a text-edit closure.
+- **DAF-19** (taxonomy RA-wrap / missing UMAP-HDBSCAN hyperparameters) — needs a
+  corrected re-clustering run (spherical embedding, stated hyperparameters/seed).
+- **DAF-20** (archived model's training corpus/architecture) — confirmed absent from
+  every artifact in the repo by search; genuinely undocumented, not recoverable by
+  agent-side work.
+- **What an R2 board would need:** verify this lane's closures on the exact vAF.0.5 PDF,
+  and assess whether DAF-17/19/20's disclosures are sufficient as final published
+  limitations or require the named follow-up work before further readiness advance.
+  Directive R2: still round 1 of 2 spent (this lane did not run a board).
 
 ## R1 INT board closed (vAF.0.3 → vAF.0.4, 2026-09-19)
 

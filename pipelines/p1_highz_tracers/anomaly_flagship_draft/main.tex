@@ -51,8 +51,8 @@
   pdfnewwindow=true
 }
 
-\newcommand{\paperVersion}{vAF.0.4}
-\newcommand{\paperTimestamp}{September 19, 2026}
+\newcommand{\paperVersion}{vAF.0.5}
+\newcommand{\paperTimestamp}{September 21, 2026}
 \newcommand{\repoSHA}{main}
 % #1 = repo-relative path (raw, used in the URL); #2 = short display text.
 \newcommand{\artifactlink}[2]{\href{https://github.com/Hubify-Projects/bigbounce/blob/\repoSHA/#1}{\texttt{#2}}}
@@ -420,13 +420,28 @@ lists the published columns by group: identification and sky position, the
 anomaly score with its per-camera residual decomposition, the $128$ latent
 activations, the DESI pipeline redshift solution, exposure-quality
 diagnostics, Legacy Survey photometry \cite{LegacySurveys}, the AllWISE
-\cite{AllWISE} and SIMBAD/NED cross-match results, and the taxonomy labels of
-Sec.~\ref{sec:taxonomy}.
+\cite{AllWISE} and SIMBAD/NED cross-match results, the taxonomy labels of
+Sec.~\ref{sec:taxonomy}, and a group of derived colours, boolean flags, and
+join tags added at assembly time: \texttt{mean\_fiber\_ra}/
+\texttt{mean\_fiber\_dec} (DESI's own per-object mean fibre position across
+the coadded exposures); \texttt{gr\_color}, \texttt{rz\_color},
+\texttt{w1w2\_color} (AB-magnitude colours computed from the Legacy Survey
+and AllWISE fluxes already listed above); \texttt{is\_point\_source}
+(\texttt{morphtype}\texttt{==}\texttt{'PSF'}); \texttt{is\_star\_candidate}
+(parallax $>0.5$~mas, or $\texttt{gr\_color}<0.5$ and
+$\texttt{rz\_color}<0.3$ jointly, a stellar-locus colour cut);
+\texttt{crossmatch} (the matched/unmatched tag assigned by the SIMBAD/NED
+join); and \texttt{snr\_med} (the per-object median of the three
+\texttt{median\_coadd\_snr\_\{b,r,z\}} columns, used by
+Sec.~\ref{sec:blue}'s diagnostics). All nine are deterministic functions of
+already-released columns, defined in the committed
+\texttt{enhanced\_18M\_inference.py} (colours, flags) and
+\texttt{assemble\_flagship\_evidence.py} (\texttt{crossmatch},
+\texttt{snr\_med}).
 
 \begin{table*}[t]
-\caption{Released column schema, by group (183 of 192 released columns; the
-remaining 9 are internal joins and derived colours/flags not yet grouped
-here). \texttt{classification} and \texttt{discovery\_potential} are
+\caption{Released column schema, by group: all 192 released columns
+accounted for. \texttt{classification} and \texttt{discovery\_potential} are
 constant placeholders across all 1,244 rows, listed rather than dropped so
 the schema stays honest about what is not yet populated.}
 \label{tab:schema}
@@ -1287,6 +1302,15 @@ Comput.\ Sci.\ Eng.\ \textbf{9}, 90 (ADS bibcode 2007CSE.....9...90H); and
 Ginsburg \etal\ 2019, Astron.\ J.\ \textbf{157}, 98 (ADS bibcode
 2019AJ....157...98G, arXiv:1901.04520). All four entries below already
 carried the correct values; no bibliography text changed.
+
+The remaining 26 entries below were separately ADS/journal-verified
+(2026-09-21): every journal, volume, and page matches the publisher's or
+ADS's record exactly, including the three least-common entries
+(Nicolaou~\etal\ 2026, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{547}, page-ID
+\texttt{stag010} --- OUP's continuous-publication identifier, not a
+typographical error; the DESI DR1 release paper, Astron.\ J.\
+\textbf{171}, 285, 2026; and Guy \etal\ 2023, Astron.\ J.\ \textbf{165},
+144). No bibliography text changed as a result.
 
 \begin{thebibliography}{99}
 
