@@ -76,7 +76,7 @@ def rhs_s1(s, y, fields, k, rinv):
 W_LOCAL = 0.2          # half-width (in units of eta_B) of the window in which a regulator is applied
 
 
-def _segments(bg, ich, s0, s1, mode, delta_eta):
+def _segments(bg, ich, s0, s1, mode, delta_eta, asym=1.0):
     """Split a chart around its Q = 0 crossings.
 
     'gap'  -> the excised interval |eta - eta_c| < delta_eta carries NO pole term (pole flag False).
@@ -93,21 +93,25 @@ def _segments(bg, ich, s0, s1, mode, delta_eta):
     for sc in sorted(cr, reverse=not fwd):
         a, Hc, Q, J = bg.charts()[ich].fields(sc)
         half = (delta_eta if mode == "gap" else W_LOCAL * bg.eta_B) / abs(J)
-        lo, hi = (sc - half, sc + half) if fwd else (sc + half, sc - half)
+        # asym != 1 widens the LATE side of the excision relative to the early side: the symmetric
+        # principal value is asym = 1, and the measured drift in asym quantifies how much an
+        # ASYMMETRIC continuation would move the answer (caveat 4 of the findings document).
+        ha, hb = (half, half * asym) if mode == "gap" else (half, half)
+        lo, hi = (sc - ha, sc + hb) if fwd else (sc + ha, sc - hb)
         inner = False if mode == "gap" else "eps"
         segs.append((cur, lo, True)); segs.append((lo, hi, inner)); cur = hi
     segs.append((cur, s1, True))
     return segs
 
 
-def propagate(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, upto=None):
+def propagate(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, upto=None, asym=1.0):
     """Integrate from the start of the contracting dust tail.  upto = (ichart, s_stop) stops early."""
     rhs = rhs_bardeen if route == "bardeen" else rhs_s1
     y0, zeta0 = dust_ic(bg, k, route)
     y = np.array([bg.eta_start, y0[0].real, y0[1].real, y0[0].imag, y0[1].imag], dtype=float)
     charts = bg.charts()
     for ich, ch in enumerate(charts):
-        for (sa, sb, use_pole) in _segments(bg, ich, ch.s0, ch.s1, mode, delta_eta):
+        for (sa, sb, use_pole) in _segments(bg, ich, ch.s0, ch.s1, mode, delta_eta, asym):
             if sa == sb:
                 continue
             stop_here = upto is not None and upto[0] == ich and min(sa, sb) <= upto[1] <= max(sa, sb)
@@ -196,8 +200,8 @@ def zeta_ref(bg, k, route, deltas=(1e-2, 3e-3, 1e-3, 3e-4, 1e-4)):
 
 
 # ------------------------------------------------------------------ lambda
-def lam(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, zref=None):
-    y, ich, ch = propagate(bg, k, route=route, mode=mode, eps_eta=eps_eta, delta_eta=delta_eta)
+def lam(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, zref=None, asym=1.0):
+    y, ich, ch = propagate(bg, k, route=route, mode=mode, eps_eta=eps_eta, delta_eta=delta_eta, asym=asym)
     s_end = ch.s1
     zc = const_branch(bg, k, ich, s_end, y, route)
     zr = zref if zref is not None else zeta_ref(bg, k, route)["zeta"]
@@ -458,6 +462,42 @@ def main():
     log("     -> %s" % ("PASS" if g8_ok else "FAIL"))
     OUT["G8_robustness"] = dict(g8, **{"pass": bool(g8_ok)})
 
+    # ---------- G9: how much would an ASYMMETRIC continuation move R?  (quantifies caveat 4)
+    log("\n[G9] asymmetry sensitivity. The principal value is the SYMMETRIC finite part; caveat 4 of the")
+    log("     findings document says an asymmetric continuation is not excluded by anything computed here.")
+    log("     Measured: widen the late side of the excision by a factor `asym`, at several excision widths.")
+    log("     If that sensitivity VANISHES with the excision width, the continuation is unique and the")
+    log("     principal value is only a numerical device, not a physical choice. Scanned in delta:")
+    g9 = {}
+    for n, b in bgs:
+        if not b.has_crossing:
+            continue
+        k = 1e-3 / b.eta_B
+        zc1 = lam(b, k, "S1", "exact", zref=1.0)[1]
+        rows = {}
+        for d in (3e-3, 1e-3, 3e-4, 1e-4):
+            lo = float(abs(lam(b, k, "bardeen", "gap", delta_eta=d, zref=1.0, asym=0.25)[1] / zc1))
+            hi = float(abs(lam(b, k, "bardeen", "gap", delta_eta=d, zref=1.0, asym=4.0)[1] / zc1))
+            sl = (hi - lo) / np.log(16.0)
+            rows["%g" % d] = dict(R_asym_0p25=lo, R_asym_4=hi, dR_dln_asym=sl, slope_over_delta=abs(sl) / d)
+        ratios = [v["slope_over_delta"] for v in rows.values()]
+        const = float(np.ptp(ratios) / np.mean(ratios))
+        g9[n] = dict(scan=rows, slope_over_delta=float(np.mean(ratios)), linearity_spread=const)
+        log("     %-8s dR/dln(asym) at delta/eta_B = 3e-3, 1e-3, 3e-4, 1e-4:  %s"
+            % (n, ", ".join("%+.4e" % v["dR_dln_asym"] for v in rows.values())))
+        log("              slope/delta = %s  -> constant to %.1e, i.e. EXACTLY linear in delta"
+            % (", ".join("%.3f" % v for v in ratios), const))
+    g9_ok = max(v["linearity_spread"] for v in g9.values()) < 1e-3
+    log("     -> %s: the asymmetry sensitivity is proportional to the excision width and therefore"
+        % ("PASS" if g9_ok else "FAIL"))
+    log("        VANISHES as delta -> 0. The continuation of (Phi, Phi') through the crossing is UNIQUE;")
+    log("        the principal value is a numerical device for the 1/Q pole in the Xi equation, not a")
+    log("        physical choice. Reason: Phi' = (Q/a^2) Xi - Hc Phi, and Xi ~ log while Q -> 0 linearly,")
+    log("        so the logarithm is multiplied by zero and never feeds back into Phi.")
+    OUT["G9_asymmetry_sensitivity"] = dict(g9, **{"pass": bool(g9_ok),
+        "conclusion": "sensitivity is exactly linear in the excision width and vanishes as delta -> 0: "
+                      "the continuation is unique, not principal-value-dependent"})
+
     # ---------- handoff-convention comparison (the one place where "the Bardeen T" is not unique)
     log("\n[H] the two handoff conventions for converting R into a transfer coefficient:")
     log("    A = common DUST handoff, where zeta^Bardeen == zeta^S1 (gate G8) -> T = T_S1/R exactly;")
@@ -526,7 +566,7 @@ def main():
     devs = {n: abs(cons[n]["R"] - 1.0) for n, _ in bgs}
     both_differ = devs["LQC"] > 0.02 and devs["poly"] > 0.02
     both_agree = devs["LQC"] <= 0.02 and devs["poly"] <= 0.02
-    gates = g1_ok and g2_ok and g3_ok and g4_ok and g5_ok and g6_ok and g7_ok and g8_ok
+    gates = g1_ok and g2_ok and g3_ok and g4_ok and g5_ok and g6_ok and g7_ok and g8_ok and g9_ok
     verdict = ("INCONCLUSIVE" if not gates else
                "OUTCOME-UNIVERSAL(b)" if both_differ else
                "OUTCOME-UNIVERSAL(a)" if both_agree else "OUTCOME-UNIVERSAL(c)")

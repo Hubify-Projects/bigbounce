@@ -376,6 +376,70 @@
     },
     "pass": true
   },
+  "G9_asymmetry_sensitivity": {
+    "LQC": {
+      "scan": {
+        "0.003": {
+          "R_asym_0p25": 0.4991877490701504,
+          "R_asym_4": 0.49674565564121215,
+          "dR_dln_asym": -0.0008807990198291852,
+          "slope_over_delta": 0.2935996732763951
+        },
+        "0.001": {
+          "R_asym_0p25": 0.4997304561617515,
+          "R_asym_4": 0.4989164245670613,
+          "dR_dln_asym": -0.0002935998361966139,
+          "slope_over_delta": 0.2935998361966139
+        },
+        "0.0003": {
+          "R_asym_0p25": 0.4999204121341201,
+          "R_asym_4": 0.49967621902935005,
+          "dR_dln_asym": -8.807404531775021e-05,
+          "slope_over_delta": 0.2935801510591674
+        },
+        "0.0001": {
+          "R_asym_0p25": 0.49997466806065927,
+          "R_asym_4": 0.49989324135928953,
+          "dR_dln_asym": -2.936847456551604e-05,
+          "slope_over_delta": 0.2936847456551604
+        }
+      },
+      "slope_over_delta": 0.29361610154683415,
+      "linearity_spread": 0.00035622908771679504
+    },
+    "poly": {
+      "scan": {
+        "0.003": {
+          "R_asym_0p25": 0.37433069797200386,
+          "R_asym_4": 0.3723163398993623,
+          "dR_dln_asym": -0.0007265261004936549,
+          "slope_over_delta": 0.2421753668312183
+        },
+        "0.001": {
+          "R_asym_0p25": 0.37477829488001907,
+          "R_asym_4": 0.37410686203945187,
+          "dR_dln_asym": -0.00024216820734407191,
+          "slope_over_delta": 0.2421682073440719
+        },
+        "0.0003": {
+          "R_asym_0p25": 0.374934950416577,
+          "R_asym_4": 0.3747336160078799,
+          "dR_dln_asym": -7.261603824689499e-05,
+          "slope_over_delta": 0.24205346082298332
+        },
+        "0.0001": {
+          "R_asym_0p25": 0.37497978195800263,
+          "R_asym_4": 0.37491264001684205,
+          "dR_dln_asym": -2.421633638700925e-05,
+          "slope_over_delta": 0.2421633638700925
+        }
+      },
+      "slope_over_delta": 0.2421400997170915,
+      "linearity_spread": 0.0005034523747921314
+    },
+    "pass": true,
+    "conclusion": "sensitivity is exactly linear in the excision width and vanishes as delta -> 0: the continuation is unique, not principal-value-dependent"
+  },
   "handoff_conventions": {
     "quintin": {
       "0.001": {
@@ -528,5 +592,5 @@
       "poly": 0.624923927523135
     }
   },
-  "runtime_s": 3.669236183166504
+  "runtime_s": 3.611668109893799
 }

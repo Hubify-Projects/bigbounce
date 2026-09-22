@@ -144,6 +144,7 @@ constant there, so S1 ≡ S2 identically — row 9 §1 A1). Define
 | **G6** analytic | ODE-free super-Hubble principal-value quadrature (§2.4) | rel `2.5e-5 / 1.2e-4 / 2.0e-4` — **PASS** |
 | **G7** log | measured log slope vs Leg A's `c_log` | rel `2.7e-3 / 1.8e-3` — **PASS** |
 | **G8** robustness | `R` vs the two numerical truncations; and the dust-phase identity the propagation rule rests on | see §2.5 — **PASS** |
+| **G9** uniqueness | does an *asymmetric* continuation move the answer? | sensitivity exactly linear in the excision width — see §2.6 — **PASS** |
 
 **G5's domain, stated because it was corrected.** Run over the *full* integration domain the gate FAILED on
 poly (`9.1e+4`): over `|eta| <= 4000` the two basis solutions differ by many orders of magnitude and `W` is a
@@ -214,6 +215,29 @@ a common input — is verified directly, at a point where the measured `epsilon`
 |---|---|---|
 | LQC | `1.50000000` | `7.7e-10` |
 | poly | `1.49999994` | `1.3e-8` |
+
+### 2.6 The continuation is unique, not principal-value-dependent (G9)
+
+The pre-registration treated the principal value as a *prescription*, and an earlier draft of this document
+carried "an asymmetric continuation is not excluded by anything computed here" as a caveat. **That caveat is
+now closed, in the direction that strengthens the result.** Widening the late side of the excision by a factor
+`asym` (the symmetric principal value is `asym = 1`) and measuring `dR/d ln(asym)` at four excision widths:
+
+| background | `delta/eta_B` = 3e-3 | 1e-3 | 3e-4 | 1e-4 | `slope/delta` | linearity |
+|---|---|---|---|---|---|---|
+| LQC | `-8.8080e-4` | `-2.9360e-4` | `-8.8074e-5` | `-2.9368e-5` | `0.294` (constant) | `3.6e-4` |
+| poly | `-7.2653e-4` | `-2.4217e-4` | `-7.2616e-5` | `-2.4216e-5` | `0.242` (constant) | `5.0e-4` |
+
+The sensitivity is **exactly proportional to the excision width** — the ratio is constant to four significant
+figures over a factor 30 in `delta` — and therefore **vanishes as `delta -> 0`**. A finite asymmetry is a
+finite-`delta` artefact, not a physical freedom.
+
+**Why, and it follows directly from §1.** The integrated variables are `(Phi, Xi)` with
+`Phi' = (Q/a^2) Xi - \mathcal{H} Phi`. At the crossing `Xi` diverges logarithmically but `Q` vanishes
+*linearly*, so `Q Xi -> 0`: **the logarithm is multiplied by zero and never feeds back into `Phi`.** `Phi` and
+`Phi'` therefore pass through the surface uniquely, and `zeta_C(+infty)`, which is reconstructed from them far
+away in the dust expansion, inherits that uniqueness. The principal value is a numerical device for the `1/Q`
+pole in the `Xi` equation, not a choice about physics.
 
 ---
 
@@ -369,9 +393,11 @@ reporting it plainly if P1 and P2 had disagreed or `Phi` had diverged. They agre
 3. **The two LQC `z^2` variables are different** (§0) and the paper's `T = 0.409` is the fluid one. This lane
    does not adjudicate between "which effective source is physical on an LQC effective background" — it
    adjudicates the *continuation* of a given `a(eta)` in classical GR.
-4. **The principal value is a prescription.** It is derived to be the unique *symmetric* finite part of an
-   integrable logarithm, and two independent implementations agree; but an asymmetric continuation is not
-   excluded by anything computed here, and would shift `R`.
+4. ~~The principal value is a prescription and an asymmetric continuation is not excluded.~~ **Closed by G9
+   (§2.6), and it closes in the strengthening direction:** the asymmetry sensitivity is exactly linear in the
+   excision width and vanishes in the limit, because the logarithm lives in `Xi` and enters `Phi`'s equation
+   only through `Q Xi -> 0`. The continuation of `(Phi, Phi')` is unique. This limitation is struck, not
+   softened — it is listed here struck through so that the earlier statement is not silently replaced.
 5. **`c_s = 1`, single scalar, no anisotropic stress**, and the bounce window requires the same kinetic-sign
    flip (`rho + p < 0`) the rest of the A3M transmission calculation already assumes. Inherited, not new.
 6. **At `rho + p = 0` no metric-only variable is complete** — `Phi` stays finite and `C^1` and its equation

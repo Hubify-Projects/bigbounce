@@ -43,6 +43,21 @@ ROW 9b LEG B - the Bardeen linear transfer on the LQC and poly backgrounds (smoo
      LQC eps=1.50000000 rel=7.7e-10, poly eps=1.49999994 rel=1.3e-08
      -> PASS
 
+[G9] asymmetry sensitivity. The principal value is the SYMMETRIC finite part; caveat 4 of the
+     findings document says an asymmetric continuation is not excluded by anything computed here.
+     Measured: widen the late side of the excision by a factor `asym`, at several excision widths.
+     If that sensitivity VANISHES with the excision width, the continuation is unique and the
+     principal value is only a numerical device, not a physical choice. Scanned in delta:
+     LQC      dR/dln(asym) at delta/eta_B = 3e-3, 1e-3, 3e-4, 1e-4:  -8.8080e-04, -2.9360e-04, -8.8074e-05, -2.9368e-05
+              slope/delta = 0.294, 0.294, 0.294, 0.294  -> constant to 3.6e-04, i.e. EXACTLY linear in delta
+     poly     dR/dln(asym) at delta/eta_B = 3e-3, 1e-3, 3e-4, 1e-4:  -7.2653e-04, -2.4217e-04, -7.2616e-05, -2.4216e-05
+              slope/delta = 0.242, 0.242, 0.242, 0.242  -> constant to 5.0e-04, i.e. EXACTLY linear in delta
+     -> PASS: the asymmetry sensitivity is proportional to the excision width and therefore
+        VANISHES as delta -> 0. The continuation of (Phi, Phi') through the crossing is UNIQUE;
+        the principal value is a numerical device for the 1/Q pole in the Xi equation, not a
+        physical choice. Reason: Phi' = (Q/a^2) Xi - Hc Phi, and Xi ~ log while Q -> 0 linearly,
+        so the logarithm is multiplied by zero and never feeds back into Phi.
+
 [H] the two handoff conventions for converting R into a transfer coefficient:
     A = common DUST handoff, where zeta^Bardeen == zeta^S1 (gate G8) -> T = T_S1/R exactly;
     B = the paper's handoff at -eta_B, each scheme using its own zeta there (Bardeen: log finite part).

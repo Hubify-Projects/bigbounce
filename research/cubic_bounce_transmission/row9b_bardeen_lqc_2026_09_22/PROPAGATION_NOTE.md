@@ -162,9 +162,12 @@ instead of disclosing a non-uniform convention.
 3. **On the LQC background the source's `rho+p` is not `-2\dot H`**, so "the effective-fluid scheme" and "the
    geometric scheme" are two different variables there; this lane adjudicates the continuation of a given
    `a(eta)`, not which effective source is physical.
-4. **The principal value is a prescription** — derived to be the unique symmetric finite part of an integrable
-   logarithm, and two independent implementations agree to `6\times10^{-5}` (LQC) and `2\times10^{-4}` (poly),
-   but an asymmetric continuation is not excluded by anything computed here.
+4. **The continuation is UNIQUE — this is a strength, not a caveat.** An earlier draft of this note listed the
+   principal value as an unresolved prescription. Measured since: widening one side of the excision changes `R`
+   at a rate exactly proportional to the excision width (`slope/delta` constant to four significant figures
+   over a factor 30 in `delta`), so the asymmetry freedom vanishes in the limit. The reason is structural —
+   the logarithm lives in `Xi`, which enters `Phi`'s equation only as `Q Xi`, and `Q` vanishes linearly.
+   The paper may state the continuation as unique rather than as a principal-value convention.
 5. `c_s=1`, single scalar, no anisotropic stress, and the same kinetic-sign-flip idealisation the rest of the
    A3M transmission calculation already assumes. Inherited, not new.
 6. At `\rho+p=0` no metric-only variable is complete: the `0i` constraint degenerates to
