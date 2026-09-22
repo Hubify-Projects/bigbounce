@@ -1,7 +1,8 @@
 # P1N disposition ledger
 
 **Canonical source:** `arxiv/paper1bc_ech_note/main.tex`
-**Current paper-local version:** `v1N.0.5` (2026-09-02, reconciled into this ledger 2026-09-18 lane L3; R3 closure + DP1N-57 abstract-length closure; see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
+**Current paper-local version:** `v1N.0.6` (2026-09-22, reconciled into this ledger by lane L3b; D-round+P-round closure at v1N.0.6 carried no science/scope changes over v1N.0.5 — see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
+**Ledger reconciliation (2026-09-22, lane L3b):** the R3 board's own closure table (`SSOT/paper-1n/status.md` "R3 closure (final) — 2026-09-02 (v1N.0.3 → v1N.0.4)") already recorded DP1N-44 through DP1N-57 as closed with grep-verified edits at v1N.0.4; this ledger file had not been updated to match (only DP1N-57's row below carried a CLOSED marker). Reconciled here: **DP1N-44, 45, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56 are CLOSED v1N.0.4** (per the SSOT item→edit table, each with a grep-verified `main.tex` citation) and **DP1N-47 is CLOSED v1N.0.4 (downgrade branch taken — B2/B5/B6/B10 restated as "argued in-paper," unsupported cites removed)**. **DP1N-58 remains OPEN** — Zenodo DOI minting for P1C + theory-audit artifacts is a genuine archival residual outside agent authorization (SSOT confirms this explicitly, not silently dropped).
 **Claim policy:** channel-level closure of minimal-coupling ECH dark-energy routes only; **no** operator-level completeness theorem, no unrestricted no-go, no ECH dark-energy or birefringence prediction.
 **Venue:** CQG — form is **Paper**, not Note (7725 words at v1N.0.2, 4144 words at v1N.0.1, both above the ≤2500-word Note ceiling, `project-context/SESSION_HANDOFF_2026-09-02.md:32`).
 
