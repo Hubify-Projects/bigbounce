@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.29}
+\newcommand{\paperVersion}{v3M.0.30}
 \newcommand{\paperTimestamp}{September 22, 2026}
 
 \begin{document}
@@ -415,12 +415,12 @@ this handoff scheme, linear transfer can only suppress the amplitude, never
 invert or amplify its sign. This bound is a statement about scheme S1's
 variable, which is exact only where $\epsilon=-\dot H/H^2$ is constant --
 true throughout the matter contraction but not through the bounce window
-itself -- and on the Quintin-type background scheme S1 is replaced by
-the scheme-independent Bardeen-potential argument of
-Sec.~\ref{sec:bounce_cubic}, which selects S2; it should therefore not be
-read as this paper's transfer bound on that background. S2's raw-ADM
-continuation lies outside assumption (A4) and transmits with
-$T_{\fnl}\approx1.03$ (from $|\lambda_\zeta|=0.97$), outside $[0,1/2)$. The
+itself -- and on all three backgrounds scheme S1 is superseded by a
+Bardeen-potential continuation (Sec.~\ref{sec:bounce_cubic}); it should
+therefore not be read as this paper's transfer bound anywhere. The Bardeen
+continuation's own transfers lie outside $[0,1/2)$ on every background:
+$T_{\fnl}\approx1.03$ on Quintin-type (raw-ADM, outside assumption (A4)),
+exactly $1/2$ on LQC, and $0.521$ on poly. The
 general constant-$c_s$ no-go of Sec.~\ref{sec:nogo} retains the S1
 assumption-(A4) framework, which the Bardeen argument has not yet been
 extended to cover at $c_s\neq1$.
@@ -614,7 +614,19 @@ poly (Bardeen) & $0.521$ & -- & $[-1.27,-0.13]$ \\
 \hline\hline
 \end{tabular}
 \end{table}
-The LQC/S2 (effective-fluid) value $T_{\fnl}=0.409$ has no row above: S2 has
+The LQC/S2 (effective-fluid) value $T_{\fnl}=0.409$ has no row above and is
+\emph{not} superseded by the LQC Bardeen row's $T_{\fnl}=0.500$: they are two
+different constructions on the same background, not two estimates of one
+quantity. $0.409$ is $\zeta_{\rm fluid}(-\eta_B)/\zeta_C^{\rm fluid}(+\infty)$,
+a handoff amplitude taken at the paper's own NEC-boundary convention $-\eta_B$
+in the matter-kinetic variable $z_K^2=a^2(\rho+p)/(c_s^2H^2)$; $0.500$ is
+$f_{\rm NL}^{\rm after,lin}/f_{\rm NL}^{\rm before}$ in the geometric Bardeen
+variable $z^2=2a^2\epsilon$, using a handoff in the dust contraction rather
+than at $-\eta_B$ (Sec.~\ref{sec:bounce_cubic} above) -- a different variable
+\emph{and} a different handoff surface. The two coincide only through the
+mixing integral $\pi/(6\sqrt3)$, a property specific to $R$, not to
+$\zeta(-\eta_B)$ itself. S2 (the effective-fluid scheme selected on
+Quintin-type) has
 been carried through cubic order only on the Quintin-type background
 (below), so $|\fnl^{\rm after}|\in[0.50,0.65]$ (S1, all three backgrounds;
 the Quintin-type entry replaced by the S2 result below) against
@@ -687,7 +699,10 @@ fluids with no explicit scalar field $\phi$ and reach $\dot H=0$ as an
 intrinsic feature of their own functional form rather than by a jump;
 the indicial argument above applies to them identically, and unlike the
 Quintin-type background -- where $\dot H$ jumps and no $\rho+p=0$ crossing
-exists -- both cross $\rho+p=0$ \emph{smoothly}: at the crossing $\Phi$ and
+exists -- both cross $\rho+p\equiv-2\dot H=0$ \emph{smoothly} (the
+GR-identity combination that vanishes with $\dot H$, not the LQC background's
+own matter density plus pressure, which does not vanish there -- see below):
+at the crossing $\Phi$ and
 $\Phi'$ stay continuous, every solution obeying the degenerate momentum
 constraint $\Phi'(\eta_c)=-\mathcal H(\eta_c)\Phi(\eta_c)$ (the equation's
 own first recursion, not assumed), while the resonance between the
@@ -726,10 +741,16 @@ self-adjoint extensions per surface, and continuity of $\Phi,\Phi'$ does
 not select one. A complex-contour member of that family gives $R=0.707$
 (LQC) and $R=0.750$ (poly), not the principal value, and a real extension
 parameter $\theta=\pi$ (LQC) or $\theta=3.02$ (poly) returns $R$ to $1$,
-erasing the difference from scheme S1 entirely. On LQC this ambiguity is
-resolved independently of the extension parameter: the crossing is where
-the quantum-geometry factor $(1-2x)$ vanishes, not where the matter
-kinetic term does (the dust source has $\rho+p=x\neq0$ there), so the
+erasing the difference from scheme S1 entirely. On LQC, writing
+$x\equiv\rho/\rho_c\in(0,1]$ for the density in units of the LQC critical
+density (so $H^2=(\rho/3)(1-\rho/\rho_c)=(x\rho_c/3)(1-x)$), this ambiguity
+is resolved independently of the extension parameter: the crossing
+$-2\dot H=0$ is where the \emph{quantum-geometry} factor $(1-2x)$ vanishes,
+not where the \emph{matter} kinetic term does -- the dust source's own
+$\rho+p=x$ never vanishes for $x\in(0,1]$, so the geometric and matter
+combinations part company here precisely because $-2\dot H=x(1-2x)\neq
+\rho+p=x$ on this background (the classical GR identity is violated by the
+modified Friedmann equation). Consequently the
 matter-built weight $z_K^2=a^2(\rho+p)/(c_s^2H^2)$ has no zero at all,
 its continuation is unambiguous, and its mixing integral coincides
 exactly with the principal value -- giving $R=1/2$ with no prescription.
@@ -803,7 +824,9 @@ systematic (a fourth digit is not justified).
 Quintin~\textit{et al.}'s reported bispectrum growth through a nonsingular
 bounce~\cite{Quintin2015} is not contradicted: their growth is the
 \emph{additive} bounce-generated term, the counterpart of
-Eq.~\eqref{eq:bounce_cubic}, sharing its sign (both enhance $|\fnl|$); the
+Eq.~\eqref{eq:bounce_cubic}, sharing its sign in scheme S1 (both enhance
+$|\fnl|$; under the selected S2 continuation the net cubic contribution
+instead \emph{suppresses} $|\fnl|$ on this background, Table~\ref{tab:s1_after}); the
 factor-of-two suppression identified above is the \emph{multiplicative}
 transmission of the inherited contraction amplitude, a quantity they do not
 compute, so the two statements are about different terms and are not in
@@ -1193,10 +1216,18 @@ general validity. \emph{Regime of validity.} The result lives on the
 anti-correlated ($\gamma_{\rm cr}>0$, $J>1$) branch identified above, and it
 holds at curvature excursions where the quadratic local map is not always
 perturbatively controlled: $1.2|\fnl|\sigma_r\approx0.54$--$1.01$ at $-35/16$
-and $\approx1.09$--$2.02$ at $-35/8$ across the grid -- the same class of
-limitation Choudhury \textit{et al.} report as their own $|\fnl|\lesssim60$
-perturbativity bound, and a limitation of the shared quadratic ansatz rather
-than of either calculation specifically. \emph{Non-monotonicity.} At fixed
+and $\approx1.09$--$2.02$ at $-35/8$ on the displayed $27$-point grid -- the
+same class of limitation Choudhury \textit{et al.} report as their own
+$|\fnl|\lesssim60$ perturbativity bound, and a limitation of the shared
+quadratic ansatz rather than of either calculation specifically. This
+diagnostic has not been separately evaluated point-by-point on the
+headline $144$-point in-coverage set, whose entire $\gamma_{\rm
+cr}\in[0.267,0.630]$ range lies below the $\gamma_{\rm cr}\lesssim0.8$
+non-perturbative-branch threshold identified below; that the ratio's own
+$\gamma_{\rm cr}$-slope is measured continuous and consistent between the
+two grids (above) is evidence the same qualitative regime applies, not a
+substitute for the pointwise diagnostic, which is left for future work.
+\emph{Non-monotonicity.} At fixed
 curvature amplitude, $\fpbh(\fnl)$ is strongly non-monotonic along the
 continuity path from the Gaussian case ($\fnl=0$) to $-35/8$: it falls by
 $\sim55$ decades to a minimum near $\fnl\approx-0.35$, then climbs back by
@@ -1252,8 +1283,12 @@ spectrum family and $C_{\rm th}$ (ordinary-least-squares slope $-0.20$ per
 unit $\gamma_{\rm cr}$ over the 255-point scan and $-0.20$ over the $144$
 in-window points) and rises by $\simeq+0.03$ per $+0.1$ in
 $C_{\rm th}$, so it is not monotonic across the union of families and
-thresholds. The abstract's $1.84\pm0.03$ is therefore a shape-resolved
-scan result, not a union of a scan and an out-of-coverage point. Each row is evaluated at its own labeled
+thresholds. This single slope reconciles the two headline numbers: the
+mean $\gamma_{\rm cr}$ of the $144$-point set is $0.430$ against $0.853$ for
+the $27$-point grid, and $1.759+(-0.20)(0.430-0.853)=1.84$, matching the
+$144$-point mean to three significant figures. The abstract's $1.84\pm0.03$
+is therefore a shape-resolved scan result, not a union of a scan and an
+out-of-coverage point. Each row is evaluated at its own labeled
 $(\Delta,r_pk_p,C_{\rm th})$ with its own Gaussian calibration; the
 per-row $A_*$ are $0.1687$, $0.1054$, $0.1314$, $0.3790$, $0.0963$
 (reproducibility statement below). Any entry with $\fpbh>1$ -- including
