@@ -352,3 +352,20 @@ activityFeed:add({
   summary: "Lane bb-LCB-confirm-p1b-p2 closed the exact-version confirmation gap flagged in the 2026-09-19/22 sign-off packets. Board (Grok REJECT / Gemini REJECT / Claude opus verdict-blind MAJOR REVISIONS, 43 findings) was NOT clean. Most genuinely-new-real items closed by real edit: every Clopper-Pearson interval removed because honest replicates are deterministic replicas of a fixed reference configuration, not an i.i.d. sample; the abstract's stale value-level-shortcuts claim brought in line with Sec.11; a new batch-4 confusion table transcribed from already-committed data plus an explicit R8 soundness bound; Sigstore/Rekor and Fiat-Shamir mislabeling corrected; archive-predates-work gap disclosed. Left open by design: the venue-split scope decision (Houston-gated), archive re-mint (Houston-gated), a full batch-4 commit trail, and a few deferred items. v2B.0.23 -> v2B.0.24, 16 -> 18 pp. Readiness holds 95.",
 })
 ```
+
+---
+
+## LS9 `bb-LS9-bardeen-lqc` — ledger row 9b (2026-09-22)
+
+Research lane; no paper, SSOT or site data touched, so **no** `paperVersions:bump`,
+`papers:setReadinessCap`, `rRounds:create` or `externalReviews:upsertByLabelDate` applies.
+One mutation queued.
+
+```
+activityFeed:add({
+  type: "research",
+  title: "Row 9b: the Bardeen scheme selection extends to the LQC and polymer backgrounds -- background-independent in direction, background-specific in magnitude",
+  tags: ["A3M", "ledger-row-9", "ledger-row-18", "ledger-row-2", "bounce-transmission", "campaign-2026-09-18"],
+  summary: "Lane bb-LS9-bardeen-lqc closed A3M v3M.0.28's own Next-steps item (i). At a simple zero of Q = -a^2 Hdot -- the smooth rho+p = 0 crossing that the LQC-effective-dust and poly backgrounds have and the Quintin-type parametrisation avoids by jumping Hdot -- the Bardeen equation is a regular singular point with indicial exponents {0,2}: Phi and Phi' stay continuous with Phi'(eta_c) = -Hc(eta_c)Phi(eta_c) (the 0i-constraint degeneration, derived as the first recursion rather than assumed), the {0,2} resonance gives a t^2 log t term of closed-form amplitude -Phi(eta_c)k^2/2, so zeta and Xi diverge only logarithmically and the continuation is the principal value. Transmitted-amplitude ratio against scheme S1 at fixed incoming dust vacuum: 0.1600 (Quintin-type), exactly 1/2 (LQC), exactly 3/8 (poly) -- each obtained twice, by a finite-k ODE with two independent principal-value prescriptions and by an ODE-free super-Hubble quadrature R = 3 I_eps/I_S1. Gates G1-G8 all pass, G1 first (it reproduces row 9's committed Quintin lambda to 2.5e-5). Pre-registered OUTCOME-UNIVERSAL(b): S1 understates the transmitted f_NL magnitude on every background, but by 6.25x / 2.00x / 2.67x, so row 9's factor 6.25 is Quintin-specific. A3M's LQC and poly linear transfers move 0.250 -> 0.500 and 0.196 -> 0.521; the cubic term on those backgrounds is declared out of scope and reported only as a labelled bracket. The unfavourable half is propagated in the same pass: row 18's stated gap closes against the paper at r_after = 96.0 (LQC) and 170.6 (poly) versus S1's 24.0. Separately, A3M R11 ESSENTIAL 2 is closed by computation -- a uniform eta_*/eta_B = 15 sits in the stationary region at every k-point and gives f_NL^after[S2] = -1.249/-1.249/-1.246, so the committed -1.25 survives. An independent blind adjudication was commissioned; the Fable-tier attempt failed on provider usage credits and the check was re-run at Opus tier and labelled as such.",
+})
+```
