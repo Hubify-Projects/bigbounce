@@ -1,0 +1,151 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-row9b-bardeen-lqc-poly",
+  "title": "Track A3 (ledger row 9b, A3M Next-steps item (i)): does the row-9 Bardeen scheme selection extend to backgrounds that cross rho+p = 0 SMOOTHLY? Local Frobenius analysis at a simple zero of Q = -a^2 Hdot, the principal-value continuation, the transmitted-amplitude ratio R on the LQC-effective-dust and poly backgrounds, and the f_NL^after[S2] evaluation-window convention (A3M R11 ESSENTIAL 2)",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "derivation",
+  "inputs": [
+    {
+      "name": "pre-registration (reading, regularity criterion, two PV prescriptions, gates G1-G5, every outcome branch including OUTCOME-BARDEEN-FAILS; committed BEFORE any number existed, commit d079d7bd)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/PREREGISTRATION.md",
+      "checksum": null
+    },
+    {
+      "name": "row 9 (the Bardeen variable and its selection of scheme S2 on the Quintin-type background); supplies the G1 control values 0.969924/0.969946/0.970188, which this lane reproduces before touching a new background",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/row9_scheme_independence_2026_09_19/ROW9_SCHEME_INDEPENDENCE_2026-09-19.md",
+      "checksum": null
+    },
+    {
+      "name": "committed LQC-effective-dust and poly backgrounds and the committed S1 transfer coefficients T_fNL = 0.250 (LQC) / 0.195501 (poly) / 0.165005 (Quintin), plus the LQC effective-fluid mixing integral pi/(6 sqrt3); reproduced here in closed form and used as gate G3",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/a2_transmission_linear.py",
+      "checksum": "sha256:bea7758b952eb6cd7c77f624ba8d31557916df5b0614cc60e6d1278105c8fca0"
+    },
+    {
+      "name": "raw-ADM cubic kernel, Quintin background, S1/S2 mode machinery and the real matter basis (imported UNMODIFIED: build_kernels, kernel_fn, full_fnl_after_S2, Quintin, matter_mode, matter_real_basis)",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/lane9b2_s2_rawadm/lane9b2_s2_rawadm.py",
+      "checksum": "sha256:44b848063978e912770ed535a99f762765bc7b7e3ee96aee1be240c59c2f9d62"
+    },
+    {
+      "name": "row 18a (lambda_T = lambda_zeta^S1 identically on every background; r_after = 24(lambda_T/lambda_zeta)^2; and its explicit open gap 'no S2 r_after for LQC/poly') -- used to state the tensor consequence, not re-derived",
+      "type": "internal-artifact",
+      "locator": "research/cubic_bounce_transmission/row18a_s2_tensor/ROW18A_S2_TENSOR_2026-09-04.md",
+      "checksum": null
+    },
+    {
+      "name": "A3M R11 dispositions, ESSENTIAL 2 (the undisclosed non-uniform eta_* convention) -- the item Leg C closes by computation",
+      "type": "internal-artifact",
+      "locator": "project-context/peer-reviews/DISPOSITIONS/A3M.md",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_symbolic.py",
+      "entrypoint": "python3 row9b_symbolic.py",
+      "sha256": "c48cb2fa29eab81c6a4ff17181825043c1875f96be5983decc37bbd796a1de80"
+    },
+    {
+      "path": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_backgrounds.py",
+      "entrypoint": "imported by row9b_numeric.py",
+      "sha256": "7bec036cc5f56c594f5cdbf8a7d9f6e4d3c39cf08cf6d992754744cdb81c5713"
+    },
+    {
+      "path": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_numeric.py",
+      "entrypoint": "python3 row9b_numeric.py",
+      "sha256": "c38ee6edc4193d56b928a6c7e7c0e3bd6e340e4d4d966b1882e66ffe87d8a1e6"
+    },
+    {
+      "path": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_window.py",
+      "entrypoint": "python3 row9b_window.py",
+      "sha256": "507f3d605198756f445897f70a3521514ceeced6c5208c963c27d2f388df16ba"
+    }
+  ],
+  "environment": {
+    "python": "sympy 1.14, numpy, scipy (integrate.solve_ivp DOP853, integrate.quad, special.erf), matplotlib (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-22",
+    "wall_clock": "symbolic 7.9 s, numeric 1.2 s, window 18.1 s (measured)",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 1 min for all three scripts",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic; no random seeds, no data download, no fitting. Run from this directory: row9b_symbolic.py (asserts its own A1 residual), then row9b_numeric.py, then row9b_window.py. row9b_numeric.py and row9b_window.py import the committed lane9b2 module by relative path (../lane9b2_s2_rawadm) and a2_transmission_linear is read for the gate values only; neither is modified. row9b_numeric.py refuses to report anything beyond gate G1 if G1 fails."
+  },
+  "outputs": [
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_symbolic.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/symbolic_results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_numeric.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_window.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/window_results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_bardeen_lqc.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/ROW9B_BARDEEN_LQC_2026-09-22.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/PROPAGATION_NOTE.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/ADJUDICATION.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run all three scripts and confirm in the logs. row9b_symbolic.log: A1 system residual 0 and zeta' identity residual 0; A2 indicial equation r^2 - 2r = 0 with roots [0, 2]; A3 recursion -a0*h0 - a1 = 0 giving a1 = -a0*h0, printed as CONFIRMED; A4 log amplitude C = -a0*k**2/2; A5 LQC Q = x**(1/3)*(1/2 - x) with a simple zero at x = 1/2, poly Q = 2(3u^2-1)/(1+u^2)^2 with simple zeros at u = +-sqrt(3)/3, both reproducing the committed appa/Hd (printed True), and z^2[geometric]/z^2[fluid] = 1 - 2x on LQC. row9b_numeric.log: G1 rel 2.5e-5/3.1e-6/4.4e-7 (row 9 control) PASS -- this gate is evaluated first and the run stops if it fails; G2 <= 8.3e-9; G3 rel <= 1.8e-4 against a2's 0.165005/0.250000/0.195501; G4 P1-vs-P2 disagreement 6.0e-5 (LQC) and 2.1e-4 (poly) with last-three spreads <= 2.7e-3; G5 Wronskian <= 3.3e-11 over the bounded sub-domain spanning both Q = 0 crossings and H = 0 (over the FULL domain the test is a catastrophic cancellation and fails at 9.1e4 -- conditioning of the test, not of the solution, and it is reported in the .md); G6 the ODE-free principal-value quadrature gives R = 0.1600489 / 0.4999994 = 1/2 / 0.3749996 = 3/8, matching the ODE to <= 2.0e-4; G7 the measured log slope matches Leg A's closed form c_log = -k^2 Hc Phi / Q' to 2.7e-3 (LQC) and 1.8e-3 (poly). Final line must read 'OUTCOME-UNIVERSAL(b)'. row9b_window.log: the eta_* table, and f_NL^after = -1.2492 / -1.2490 / -1.2464 at the uniform eta_*/eta_B = 15.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 9, residual carried by row 9's own limit 2 ('LQC/poly ... extending it to those two backgrounds is a well-posed next step, not done here'), and A3M v3M.0.28 Next-steps item (i)",
+    "pre-registered in PREREGISTRATION.md with every outcome branch named, including OUTCOME-BARDEEN-FAILS and OUTCOME-SCOPE-LIMITED, committed on its own before computing (d079d7bd)",
+    "the cubic-order Delta on LQC/poly was declared OUT OF SCOPE in the pre-registration and is NOT computed; the full f_NL^after on those backgrounds is reported only as a labelled bracket between the two cubic endpoints this program has actually computed",
+    "builds on manifests a3-row9-scheme-independence, p2-a3-lane-9b2-s2-rawadm and p2-a3-row18a-s2-tensor; redoes none of them",
+    "no claim is made about loop-quantum-cosmology dressed-metric perturbation theory: the result is a classical-GR continuation statement about a given a(eta), as stated in section 0 of the findings document",
+    "an independent blind adjudication was commissioned; the first attempt (Fable tier, per the lane brief) FAILED on provider usage credits (HTTP 429, model claude-fable-5-1) and produced no output, and the check was re-run at Opus tier and is labelled as such. Both the failure and the substitution are recorded in ADJUDICATION.md"
+  ]
+}
