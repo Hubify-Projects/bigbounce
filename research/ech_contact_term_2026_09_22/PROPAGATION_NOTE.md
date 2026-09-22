@@ -9,74 +9,91 @@
 
 ## 0. Headline for the P1N lane
 
-Both ESSENTIAL findings are **REAL and CONFIRMED**, but they land differently:
+Both ESSENTIAL findings are **REAL and CONFIRMED**, and both cost the paper a
+claim:
 
 * **DP1N-60** — the reviewer is right that the equation of state is `w=+1`, not
-  `w=-1`, and right that the repulsion-sign condition **inverts**. The paper's
-  §II derivation is wrong in two places. **The paper's physical conclusion
-  nevertheless survives**, because a second, independent sign error in §II
-  cancels the first. §II must be **re-derived**, not reworded. **No title claim
-  is withdrawn.**
+  `w=-1`, and right that the repulsion-sign condition **inverts**. Worse than
+  the reviewer stated: with the manuscript's *own* stated configuration
+  (spin-aligned Dirac ensemble, spacelike `J⁵`, mostly-plus) the corrected
+  equation of state makes the contact term gravitationally **attractive** — which
+  is the published Kerlick (1975) / O'Connell (1977) ECSK result for the Dirac
+  field. §II's *"carries the same repulsive sign at every finite γ"* is
+  **unsupported and must be withdrawn**. The `γ→∞` operator identification is
+  untouched and the title need not change if §II retreats to it.
 * **DP1N-61** — the rebuttal does not hold at any scale the paper evaluates, and
-  the cited source is misdescribed. **The "direct, quantitative rebuttal" claim
+  the cited source is misdescribed. The **"direct, quantitative rebuttal" claim
   must be WITHDRAWN** from §VII.D *and* from the abstract. This lane does not
   manufacture a replacement rebuttal.
 
-**Readiness: must DROP from 95, not hold and not be restored.** See §5.
+**Readiness: must DROP from 95, not hold and not be restored. Recommend 85.**
+See §5.
 
----
+> **Correction recorded.** An earlier draft of this note argued that a second
+> sign error in §II cancelled the first, so that the paper's conclusion survived
+> intact. A blind-adjudication leg surfaced the Kerlick/O'Connell result and that
+> reading is now withdrawn. The recommendation moved from 88 to 85 as a result.
 
 ## 1. DP1N-60 — exact printable sentences for §II
 
 Replace the sentence at `main.tex:213-224` beginning *"and it carries the same
 repulsive sign at every finite $\gamma$"* through *"...the regime stated."*
 
-### 1a. Preferred branch — corrected derivation kept, sign of the bilinear derived
+### 1a. Required branch — sign argument withdrawn, operator identification kept
 
-Use this **only if** the P1N lane derives the sign of `⟨J_5^I J_{5I}⟩` in the
-bounce configuration in-paper (Shifman–Vainshtein–Zakharov vacuum-saturation
-contraction, not the square of a macroscopic polarization). Printable:
-
-> and it carries the same repulsive sign at every finite $\gamma$. The contact
-> term's contribution to the effective stress tensor is
-> $\rho_{4\psi}=-\mathcal L_{4\psi}$; because Sec.~\ref{sec:theory}'s own
-> parametrization fixes the magnitude of $\langle J_5^IJ_{5I}\rangle$ through a
-> conserved fermion number density ($n_\psi\propto a^{-3}$, so
-> $\rho_{4\psi}\propto a^{-6}$), covariant conservation against a separately
-> conserved pressureless fermion fluid fixes
-> $p_{4\psi}=\rho_{4\psi}=-\mathcal L_{4\psi}$ --- a stiff equation of state
-> $w=+1$, not $w=-1$. This reproduces the standard
-> Einstein--Cartan--Sciama--Kibble spin-fluid result
-> $\varepsilon_{\rm spin}=p_{\rm spin}=-\kappa s^2/4$ for the identical
-> interaction. A repulsive (halts collapse) contact interaction therefore
-> requires $\rho_{4\psi}+3p_{4\psi}=-4\mathcal L_{4\psi}<0$, i.e.\
-> $\mathcal L_{4\psi}>0$, i.e.\ $\langle J_5^IJ_{5I}\rangle<0$ in the
-> mostly-plus convention used here. The expectation value that enters is the
-> condensate contraction of the axial bilinear, not the square of a macroscopic
-> polarization, and it carries that sign [derivation to be supplied in-paper];
-> Eq.~\eqref{eq:4fermi}'s coefficient $-(3\kappa/16)\gamma^2/(1+\gamma^2)<0$
-> then gives $\mathcal L_{4\psi}>0$ and a negative, stiff
-> $\rho_{4\psi}$ --- the Einstein--Cartan bounce contribution.
-
-### 1b. Fallback branch — bridge restated as an operator identification
-
-Use this **if** the sign of `⟨J_5^I J_{5I}⟩` is not derived in-paper. This
-withdraws the independent sign result while keeping the (untouched) operator
-identification, and is fully acceptable. Printable:
+Replace the sentence at `main.tex:213-224` beginning *"and it carries the same
+repulsive sign at every finite $\gamma$"* through *"...the regime stated."*
+Printable:
 
 > and it is the same operator: in the Einstein--Cartan limit
 > Eq.~\eqref{eq:4fermi} reduces exactly to the Hehl--Datta term underlying
 > Pop{\l}awski's bounce. We do not offer an independent sign-of-pressure
-> argument here. For completeness we record the equation of state this term
-> carries under Sec.~\ref{sec:theory}'s own parametrization: with
-> $\rho_{4\psi}=-\mathcal L_{4\psi}$ and $\langle J_5^IJ_{5I}\rangle$ set by a
-> conserved number density ($n_\psi\propto a^{-3}$), covariant conservation
-> fixes $p_{4\psi}=\rho_{4\psi}$, a stiff $w=+1$ --- matching the standard
-> Einstein--Cartan--Sciama--Kibble spin-fluid result
-> $\varepsilon_{\rm spin}=p_{\rm spin}=-\kappa s^2/4$ --- so that repulsion
-> requires $\rho_{4\psi}<0$. Establishing that sign requires the condensate
-> contraction of the axial bilinear, which is outside the scope of this paper's
-> channel-level assessment.
+> argument here, and we do not claim to establish that minimal ECH torsion
+> supplies the repulsive branch of that bounce at finite $\gamma$. For
+> completeness we record the equation of state this term carries under the
+> parametrization used below: with $\rho_{4\psi}=-\mathcal L_{4\psi}$ and
+> $\langle J_5^IJ_{5I}\rangle$ set by a conserved number density
+> ($n_\psi\propto a^{-3}$, so $\rho_{4\psi}\propto a^{-6}$), covariant
+> conservation against a separately conserved pressureless fermion fluid fixes
+> $p_{4\psi}=\rho_{4\psi}$ --- a stiff equation of state $w=+1$, matching the
+> standard Einstein--Cartan--Sciama--Kibble spin-fluid result
+> $\varepsilon_{\rm spin}=p_{\rm spin}=-\kappa s^2/4$ --- so that a repulsive
+> contribution requires $\rho_{4\psi}+3p_{4\psi}=-4\mathcal L_{4\psi}<0$, i.e.\
+> $\mathcal L_{4\psi}>0$. Whether the medium expectation value
+> $\langle J_5^IJ_{5I}\rangle$ realizes that branch is configuration dependent
+> and remains contested for the Dirac field, whose totally antisymmetric spin
+> density gives an \emph{attractive} contact
+> interaction~\cite{Kerlick1975,OConnell1977} while a semiclassical Weyssenhoff
+> spin fluid gives a repulsive one; settling it is outside this paper's
+> channel-level scope.
+
+Two `references.bib` entries are needed:
+
+```bibtex
+@article{Kerlick1975,
+  author = {Kerlick, G. D.},
+  title = {Cosmology and particle pair production via gravitational
+           spin-spin interaction in the Einstein--Cartan--Sciama--Kibble
+           theory of gravity},
+  journal = {Phys. Rev. D}, volume = {12}, pages = {3004}, year = {1975},
+  doi = {10.1103/PhysRevD.12.3004}
+}
+@article{OConnell1977,
+  author = {O'Connell, R. F.},
+  title = {Attractive spin-spin contact interactions in the
+           Einstein--Cartan--Sciama--Kibble torsion theory of gravitation},
+  journal = {Phys. Rev. D}, volume = {16}, pages = {1247}, year = {1977},
+  doi = {10.1103/PhysRevD.16.1247}
+}
+```
+
+### 1b. Branch that would RESTORE the stronger claim (optional, real work)
+
+Only if the P1N lane derives `⟨J_5^I J_{5I}⟩`'s sign in-paper for the bounce
+configuration and it comes out negative in mostly-plus, may §II reinstate a
+repulsion claim — and it must then explicitly engage Kerlick/O'Connell rather
+than pass over them. This lane did **not** derive that sign and does not
+assert it. **Do not print a repulsion claim without that derivation.**
 
 ### 1c. Sentences that must be DELETED either way
 
@@ -90,21 +107,30 @@ identification, and is fully acceptable. Printable:
 * *"gives $\mathcal L_{4\psi}<0$ whenever $(J_5^IJ_{5I})>0$, i.e.\ whenever
   $J^5$ is normalized spacelike ... the case realized by a spin-aligned fermion
   ensemble's axial current in the nonrelativistic, high-spin-density regime"* —
-  this is the second sign error; the bounce-relevant contraction is not the
-  square of a macroscopic polarization.
+  this configuration, fed through the *corrected* equation of state, yields
+  `ρ_4ψ > 0` and therefore **attraction**, i.e. the opposite of what §II
+  concludes from it, and matches Kerlick/O'Connell for the Dirac field. It
+  cannot be kept as a premise of a repulsion claim.
+* *"it carries the same repulsive sign at every finite $\gamma$"* — withdraw.
+  The `γ→∞` operator identification is what survives, and it is a separate,
+  algebraic statement.
 
 ### 1d. What does NOT change
 
 * The abstract's *"the same contact term supplying Pop{\l}awski's bounce
   mechanism as $\gamma\to\infty$"* — operator identification, untouched.
-* The title's first half, *"What Minimal Einstein--Cartan Torsion Does for the
-  Bounce"* — supported by the operator identification and by the corrected
-  derivation, which still yields a repulsive stiff negative-energy contribution.
+* The title *"What Minimal Einstein--Cartan Torsion Does for the Bounce and
+  Cannot Do for Dark Energy"* — the first half is carried by the operator
+  identification and by §II.A's finite-density benchmark, both untouched. The
+  title need not change; the abstract must stop claiming a *repulsive sign*
+  result. **Re-read the abstract's "positive/negative dichotomy" framing
+  end-to-end for overclaim once §II retreats.**
 * `eq:4fermi`, `eq:ech_onshell_torsion`, `α`, `β`, `β/α=2.11`, the
   `γ²/(1+γ²)=0.053` suppression, and Sec. II.A's arithmetic — all verified
   correct and untouched.
-
----
+* The perturbation-transparency theorem (the paper's sole Tier-I rigorous
+  result), the 14-barrier catalog, the operator list, and the amplitude
+  closures — untouched by this item.
 
 ## 2. DP1N-61 — exact printable sentences for §VII.D and the abstract
 
@@ -188,13 +214,18 @@ comparable. No venue-form consequence for CQG.
 
 ## 4. Ledger lines for `DISPOSITIONS/P1N.md`
 
-* **DP1N-60** → `CONFIRMED REAL, closure derived, OPEN pending §II re-derivation`.
+* **DP1N-60** → `CONFIRMED REAL, closure derived, WITHDRAWAL required`.
   Equation of state is `w=+1` (stiff), not `w=-1`; `ρ_4ψ = -L_4ψ` correct,
   `p_4ψ = +L_4ψ` wrong; `ρ+3p = -4L_4ψ`, so repulsion requires `L_4ψ > 0` — the
-  condition **inverts**. A second, independent sign error (the sign assigned to
-  `⟨J_5·J_5⟩` for the bounce configuration) cancels the first, so the paper's
-  physical conclusion is right and its derivation is not. Title claim survives;
-  §II must be re-derived. Evidence: `research/ech_contact_term_2026_09_22/`.
+  condition **inverts**. Taken with the manuscript's own stated configuration
+  (spin-aligned Dirac ensemble, spacelike `J⁵`), the corrected EOS gives a
+  positive stiff `ρ_4ψ` and therefore **attraction** — the published Kerlick
+  (PRD 12, 3004, 1975) / O'Connell (PRD 16, 1247, 1977) ECSK result for the
+  Dirac field. §II's "carries the same repulsive sign at every finite γ" is
+  unsupported and must be withdrawn; the `γ→∞` operator identification stands.
+  Verified by two independent derivations (this lane + a blind adjudicator given
+  neither conclusion nor method). Evidence:
+  `research/ech_contact_term_2026_09_22/`.
 * **DP1N-61** → `CONFIRMED REAL, WITHDRAWAL required`. `Poplawski2012` is the
   QCD quark-condensate paper; its `ρ_Λ = (κ/3)⟨q̄q⟩² ≈ (54 meV)⁴` is reproduced
   here to 3 s.f. §VII.D evaluates `κn_ψ²` at `100 cm⁻³`, `10^73.9` in density
@@ -210,43 +241,44 @@ comparable. No venue-form consequence for CQG.
 ## 5. Readiness recommendation — plainly
 
 **Readiness 95 cannot be restored toward 99, and must DROP further. Recommend
-88, SIGN-OFF HOLD retained.**
+85, SIGN-OFF HOLD retained.**
 
 Reasoning, against directive P's composition:
 
 * **Science closure (25):** two ESSENTIAL items confirmed real on the current
-  exact PDF. One requires re-deriving a mechanism paragraph that supports half
-  the title; the other requires withdrawing a claim from the abstract. Neither
-  is packaging. This component is not complete. → **drop**
+  exact PDF. Both require *withdrawing* a printed claim — one from §II (the
+  repulsive-sign bridge), one from §VII.D **and the abstract** (the Popławski
+  rebuttal). Neither is packaging; neither is a reword. → **drop hard**
 * **Automated review convergence (25):** the CONFIRM board surfaced
-  genuinely-new real findings and this lane has now confirmed both. The
-  clean-wave clock for P1N **resets**; convergence cannot be claimed on the
-  current text. → **drop**
-* **Evidence & reproducibility (25):** unaffected and in fact improved — this
-  lane adds a Q2 manifest and a self-validating script. `DP1N-58` (Zenodo DOI)
-  remains the only other open item. → hold
-* **Packaging & PDF hygiene (20):** unaffected; will need the normal
-  directive-G cycle after the edits. → hold
+  genuinely-new real findings and this lane confirms both, with a third
+  independent leg agreeing. P1N's clean-wave clock **resets**; convergence
+  cannot be claimed on the current text. → **drop**
+* **Evidence & reproducibility (25):** unaffected, and improved — this lane adds
+  a Q2 manifest and a self-validating script. `DP1N-58` (Zenodo DOI) remains the
+  only other open item. → hold
+* **Packaging & PDF hygiene (20):** unaffected; needs the normal directive-G
+  cycle after the edits. → hold
 * **Houston's final personal review (5):** not reached. → 0
 
-88 is the honest floor that reflects two open ESSENTIAL science items with
-written closure instructions and verified evidence, against a paper whose other
-four components are sound. After both edits land, recompile clean, and a fresh
-exact-version board runs on the new PDF, P1N can climb back — but it must not
-re-enter sign-off on the strength of this lane alone, because §1a leaves a
-sign this lane did not itself re-derive.
+**85, not 88.** An earlier draft of this note recommended 88 on the reading that
+§II's conclusion survived through compensating errors. The blind-adjudication
+leg surfaced Kerlick/O'Connell and that reading is withdrawn: §II now loses a
+claim rather than merely a derivation, so the science-closure component takes a
+larger hit. 85 is the honest floor for a paper whose Tier-I theorem, barrier
+catalog, operator list and amplitude closures are all sound, but which must
+retract one supporting claim in each half of its title framing.
 
-**What would make it worse.** If the P1N lane takes branch **1b** (bridge
-restated as operator identification only) *and* the withdrawal in §2, the paper
-loses one supporting argument in each half of its title. That is still a
-publishable, honest paper — but the abstract's dichotomy framing should be
-re-read end-to-end for overclaim before any readiness uplift.
+**This is not a collapse.** Nothing here touches the perturbation-transparency
+theorem, the 14-barrier catalog, the operator-list argument, §II.A's benchmark,
+or the amplitude closures. P1N remains a publishable, honest paper after both
+withdrawals — a *narrower* one. After the edits land, recompile clean, and a
+fresh exact-version board runs on the new PDF, P1N can climb back.
 
-**What would make it better.** Deriving `⟨J_5^I J_{5I}⟩`'s sign in-paper
-(branch **1a**) turns DP1N-60 from a retreat into a strengthened §II that
-explicitly reproduces the ECSK spin-fluid result — a net gain over `v1N.0.7`.
-
----
+**What would raise it further.** Deriving `⟨J_5^I J_{5I}⟩`'s sign in-paper
+(branch §1b) and engaging Kerlick/O'Connell explicitly would turn DP1N-60 from a
+retraction into a strengthened §II that reproduces the ECSK spin-fluid result and
+takes a defensible position on a known open tension. That is real new science and
+should be scoped as its own lane, not bolted onto a text edit.
 
 ## 6. Flagged, not claimed — needs its own lane
 

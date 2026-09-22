@@ -149,41 +149,81 @@ correct:     ρ+3p = -L_4ψ - 3L_4ψ = -4 L_4ψ   ⟹  repulsion ⟺ L_4ψ > 0
 **DP1N-60 is CONFIRMED.** The manuscript's stated equation of state is wrong for the
 configuration it parametrizes, and the sign condition it derives from it is inverted.
 
-### 1.7 What this does to the paper's claim — and what survives
+### 1.7 What this does to the paper's claim — the bridge does NOT survive
 
-Taken at the manuscript's own further assertion that `(J5·J5) > 0` because
-"`J⁵` is normalized spacelike ... the case realized by a spin-aligned fermion
-ensemble" (`main.tex:216-221`), one gets `L_4ψ < 0`, hence `ρ_4ψ = -L_4ψ > 0`: a
-**positive** stiff energy density, hence `ρ+3p = 4ρ_4ψ > 0` — gravitationally
-**attractive**. That contradicts the established ECSK bounce (`ε_spin < 0`,
-which is what makes `H² → 0` possible at all).
+**This section was rewritten after an independent blind-adjudication leg. The
+first version of this note argued that a second sign error cancelled the first
+and that the paper's conclusion survived. That was wrong, and the correction is
+recorded here rather than silently replaced.**
 
-The escape is not available by assertion: for the bounce configuration the relevant
-object is *not* `(⟨J⃗₅⟩)²` of a polarized ensemble but the medium/condensate
-contraction of `⟨J5^I J5_I⟩`. Popławski evaluates exactly that contraction
-(arXiv:1005.0893 Eqs. 8–9, Shifman–Vainshtein–Zakharov vacuum saturation) and
-obtains a **positive** value in mostly-minus signature — i.e. **negative** in the
-manuscript's mostly-plus convention — giving `L_4ψ > 0`, `ρ_4ψ < 0`, stiff and
-repulsive: the standard bounce, and the corrected condition of §1.6 satisfied.
+Take the manuscript entirely at its own word. Its coefficient gives
+`L_4ψ = -(3κ/16)f·(J5·J5)`, and `main.tex:216-221` states that the relevant
+configuration is one in which `J⁵` is "normalized spacelike in the paper's
+mostly-plus convention — the case realized by a spin-aligned fermion ensemble's
+axial current in the nonrelativistic, high-spin-density regime". Then
+`(J5·J5) > 0`, so `L_4ψ < 0`, and by §1.5:
 
-**Therefore §II reaches a correct physical conclusion ("repulsive, the Hehl–Datta
-bounce term") through two compensating sign errors**: the pressure sign (§1.6) and
-the sign assigned to `⟨J5·J5⟩` in the bounce configuration (this section). Neither
-is repairable by rewording. The physics of the title's first half survives — the
-operator identification (`γ→∞` reduces exactly to Hehl–Datta) is untouched and the
-corrected derivation still yields a repulsive stiff negative-energy contribution —
-but the printed derivation of it does not.
+```
+ρ_4ψ = -L_4ψ > 0        (positive stiff energy density)
+p_4ψ = -L_4ψ > 0
+ρ_4ψ + 3p_4ψ = -4L_4ψ > 0   ⟹  gravitationally ATTRACTIVE
+```
 
-**Scope boundary (honest).** This note establishes the equation of state and the
-sign condition (§1.5, §1.6) with high confidence. The sign of `⟨J5·J5⟩` in the
-bounce configuration (§1.7) is established as *required* by the corrected condition
-plus the standard ECSK result, and is *consistent with* Popławski's own evaluation;
-this note does not itself re-derive the SVZ contraction. §II must derive it rather
-than assert it. Relatedly — and **out of this lane's scope, flagged not claimed** —
-the manuscript's Fierz row (`eq:fierz_row`) assigns the scalar channel coefficient
-`+1` and calls it signature-independent; that row is what makes `G_s < 0` and hence
-the NJL no-condensate result. Whether it is sign-consistent with the SVZ contraction
-above deserves its own lane, since `G_s`'s sign is a separate headline claim.
+So the manuscript's own equations, with the manuscript's own stated
+configuration and the corrected equation of state, give **attraction, not
+repulsion** — the opposite of what §II concludes.
+
+**This is not a novelty of this lane; it is a published result.** Kerlick
+(Phys. Rev. D **12**, 3004 (1975)) found that the ECSK spin-spin contact
+interaction is *attractive* for the totally antisymmetric spin angular momentum
+density appropriate to the Dirac field — a result explicitly verified by
+R. F. O'Connell, *"Attractive spin-spin contact interactions in the
+Einstein–Cartan–Sciama–Kibble torsion theory of gravitation"*,
+Phys. Rev. D **16**, 1247 (1977). The derivation above reproduces exactly that
+sign for exactly that case.
+
+**Why this does not abolish the torsion bounce.** The repulsive ECSK result
+(`ε_spin = p_spin = -κs²/4 < 0`, §1.5 check 4) is obtained for a *semiclassical
+Weyssenhoff spin fluid* — an unpolarized ensemble whose `⟨s²⟩` is a fluctuation
+average — which is the object Popławski's bounce papers use. The Kerlick–O'Connell
+attractive result is for the Dirac field's totally antisymmetric spin density.
+The two coexist in the literature as a long-recognized tension, and which one
+governs at bounce densities is a genuine open modelling question, not a
+bookkeeping choice.
+
+**Consequence for the manuscript.** §II picks one side of that open question by
+assertion, in a single subordinate clause, without deriving the medium
+expectation value `⟨J5^I J5_I⟩` that decides it — and the side it picks is
+contradicted by its own equations once the equation of state is corrected, and by
+the Kerlick–O'Connell branch of the literature for precisely the Dirac-field case
+it treats. The claim that the contact term "carries the same repulsive sign at
+every finite `γ`" is therefore **unsupported as written**.
+
+**What survives, precisely:**
+
+* The operator identification — `eq:4fermi` reduces exactly to the Hehl–Datta
+  term as `γ→∞` — is untouched. This is an algebraic identity and does not
+  depend on any sign of a medium expectation value.
+* The `γ`-dependence, `α`, `β`, `β/α = 2.11`, the `γ²/(1+γ²) = 0.053`
+  suppression, and all of §II.A's arithmetic are verified correct.
+* The paper's Tier-I result (the perturbation-transparency theorem), the
+  14-barrier catalog, the operator list, and the amplitude closures are all
+  untouched by this item.
+
+**What does not survive:** the independent sign-of-pressure argument, and with
+it the claim that minimal ECH torsion is shown *here* to supply the repulsive
+branch of Popławski's bounce at finite `γ`.
+
+**Scope boundary (honest).** This lane establishes §1.5 and §1.6 — the equation
+of state and the inverted sign condition — with high confidence and two
+independent derivations. It establishes that the manuscript's own stated
+configuration yields attraction. It does **not** claim to settle the
+Weyssenhoff-vs-Kerlick question, and it does not claim the torsion bounce is
+wrong. Relatedly — and **out of this lane's scope, flagged not claimed** — the
+manuscript's Fierz row (`eq:fierz_row`) assigns the scalar channel coefficient
+`+1` and calls it signature-independent; that row is what makes `G_s < 0` and
+hence the NJL no-condensate result. It deserves its own lane, since `G_s`'s sign
+is a separate headline claim.
 
 ---
 
@@ -280,9 +320,10 @@ and state honestly what Route 1 does and does not close.
 |---|---|---|
 | DP1N-60 EOS | `w=+1`, not `w=-1` | **CONFIRMED.** `ρ_4ψ = -L_4ψ` (manuscript right), `p_4ψ = -L_4ψ` (manuscript wrong), `w=+1` stiff, `∝a^-6`; reproduces ECSK `ε_spin = p_spin = -κs²/4`. |
 | DP1N-60 sign condition | inverts | **CONFIRMED.** `ρ+3p = -4L_4ψ`; repulsion needs `L_4ψ > 0`, not `< 0`. |
-| DP1N-60 effect on title | targets "positive/bounce" claim | **Claim survives, derivation does not.** §II is right by two compensating sign errors; the operator identification is untouched. §II must be re-derived, not reworded. |
+| DP1N-60 effect on title | targets "positive/bounce" claim | **The sign claim does NOT survive.** With the manuscript's own configuration and the corrected EOS, the term is gravitationally *attractive* — the published Kerlick (1975) / O'Connell (1977) result for the Dirac field. The operator identification (`γ→∞` → Hehl–Datta) survives; the independent sign-of-pressure argument must be withdrawn. |
 | DP1N-61 wrong scale | ~74 orders | **CONFIRMED**, `10^73.9` recomputed independently. |
 | DP1N-61 misdescribed source | quark condensate, not baryon density | **CONFIRMED** against the primary source verbatim. |
 | DP1N-61 outcome at correct scale | ~`2×10⁵` over-production | **CONFIRMED**; Popławski's own value `(54 meV)⁴` reproduced to 3 s.f. |
 | DP1N-61 disposition | re-evaluate or withdraw | **WITHDRAW.** The rebuttal does not hold and this lane does not manufacture a replacement. |
+| Independent blind adjudication | — | `blind-adjudicator-opus`, given neither this lane's conclusions nor its method and permitted to answer "undecidable": independently reached `w=+1`, the inverted sign condition, the ECSK cross-check, and every DP1N-61 finding — and supplied the Kerlick/O'Connell branch that corrected this note's first §1.7. |
 | Adversarial "57-order unit error" (prior board) | — | **Re-falsified a fourth time**: `κn_ψ²` and the `3.884×10⁻⁶⁹` ratio reproduce to 4 s.f. |
