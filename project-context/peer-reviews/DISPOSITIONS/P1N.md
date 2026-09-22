@@ -243,8 +243,8 @@ One adversarial finding deserves explicit note: Gemini's pass-2 self-critique cl
 | ID | Issue | Verdict | Sev | Class | Closure instruction |
 |---|---|---|---|---|---|
 | **DP1N-59** | Abstract (`main.tex:92-94` pre-fix) reads "...is either an exact total derivative **on the torsion-free branch**, a Fierz-closed M_Pl⁻²-suppressed contact term on-shell, or identically vanishing" — misattaches the branch qualifier. Body (`main.tex:904-907`) assigns "on the torsion-free branch only" to the *identically-vanishing* category (O1, O6), while the *total-derivative* category (O2, O3) is unconditional ("on any connection") | **CLOSED v1N.0.7** — abstract reordered to "...is either an exact total derivative, a Fierz-closed M_Pl⁻²-suppressed contact term on-shell, or identically vanishing on the torsion-free branch only" — matches the body exactly. No science/numeric content changed. | MAJOR | SUBSTANTIVE (precision/self-consistency) | `main.tex:92-95` |
-| **DP1N-60** | §II (`main.tex:216-219`) assigns the contact term's stress tensor as $\rho_{4\psi}=-\mathcal L_{4\psi}$, $p_{4\psi}=+\mathcal L_{4\psi}$ ($w=-1$) "for a term with no explicit time derivatives" — but §II.A (`main.tex:250-263`) parametrizes the same term's magnitude via a fermion number density $n_\psi$ (explicitly called "the cosmic fermion number density" at `main.tex:822-823`), $n_\psi\propto a^{-3}\Rightarrow\rho_{4\psi}\propto a^{-6}$, which under covariant conservation forces $w=+1$ (stiff), not $w=-1$. Under the correct $w=+1$, $\rho+3p=4\rho_{4\psi}=-4\mathcal L_{4\psi}$ — the repulsion sign condition **inverts**. Matches the standard ECSK spin-fluid literature result ($\varepsilon_{\rm spin}=p_{\rm spin}<0$, $w=+1$) for the identical interaction, which the paper's $w=-1$ assignment contradicts. No prior `DP1N-*` (including DP1N-44/49, which fixed a sign error *within* this same assumed EOS) examined the EOS assumption itself. Claude opus cold-read leg E1, independently confirmed against the source. | **OPEN — ESSENTIAL, not closeable by this lane** | SUBSTANTIVE, science-content (targets the paper's "positive/bounce" title claim directly) | Real re-derivation of $T_{\mu\nu}$ for the contact term with the fermion-fluid averaging made explicit, reconciled with the standard ECSK $w=+1$ result; or a corrected sign-condition derivation and honest restatement of what it implies for the title claim. Requires a dedicated science-closure lane, not a text edit. |
-| **DP1N-61** | §VII.D (`main.tex:815-836`) claims a "direct, quantitative rebuttal" of Popławski's own dark-energy proposal, citing `Poplawski2012` (`references.bib`: "Cosmological constant from quarks and torsion," Annalen der Physik 523, 291, arXiv:1005.0893 — a paper whose mechanism sets $\rho_\Lambda$ via the QCD quark chiral condensate $\langle\bar qq\rangle\sim-(235\,{\rm MeV})^3$), but `main.tex:817-819` misdescribes this as a "cosmic fermion (baryon) spin density" mechanism and §VII.D then evaluates the rebuttal at the §II.A ISM benchmark ($n_\psi\sim100\,{\rm cm^{-3}}$) instead of the condensate scale — off by $\sim74$ orders of magnitude. At the condensate's actual scale, independently recomputed: $\tfrac{3}{16}\kappa\langle\bar qq\rangle^2=5.32\times10^{-42}\,{\rm GeV^4}$ vs. $\rho_{\Lambda,\rm obs}=2.563\times10^{-47}\,{\rm GeV^4}$ — a factor $\approx2\times10^5$ **over**-production, not the claimed under-production. §II.A's own text (`main.tex:262-263`) warns against exactly this substitution ("number density also does not fix the renormalized composite ... a vacuum stress tensor, or an equation of state"), which §VII.D then performs. Claude opus cold-read leg E2, independently re-verified (arithmetic reproduces to 3 s.f.; `Poplawski2012` bib entry confirmed to be the quark-condensate paper). | **OPEN — ESSENTIAL, not closeable by this lane** | SUBSTANTIVE, science-content (targets the "cannot do for dark energy... rebutting Popławski's own proposed mechanism" title/abstract claim directly) | Either re-evaluate §VII.D at Popławski's actual (condensate) scale and report the true outcome honestly (may invert the Route-1 conclusion from under- to over-production — a different, non-trivial result), or withdraw the "direct, quantitative rebuttal" claim and correct the description of `Poplawski2012`. Requires a dedicated science-closure lane, not a text edit. |
+| **DP1N-60** | §II (`main.tex:216-219`) assigns the contact term's stress tensor as $\rho_{4\psi}=-\mathcal L_{4\psi}$, $p_{4\psi}=+\mathcal L_{4\psi}$ ($w=-1$) "for a term with no explicit time derivatives" — but §II.A (`main.tex:250-263`) parametrizes the same term's magnitude via a fermion number density $n_\psi$ (explicitly called "the cosmic fermion number density" at `main.tex:822-823`), $n_\psi\propto a^{-3}\Rightarrow\rho_{4\psi}\propto a^{-6}$, which under covariant conservation forces $w=+1$ (stiff), not $w=-1$. Under the correct $w=+1$, $\rho+3p=4\rho_{4\psi}=-4\mathcal L_{4\psi}$ — the repulsion sign condition **inverts**. Matches the standard ECSK spin-fluid literature result ($\varepsilon_{\rm spin}=p_{\rm spin}<0$, $w=+1$) for the identical interaction, which the paper's $w=-1$ assignment contradicts. No prior `DP1N-*` (including DP1N-44/49, which fixed a sign error *within* this same assumed EOS) examined the EOS assumption itself. Claude opus cold-read leg E1, independently confirmed against the source. | **CLOSED-BY-WITHDRAWAL v1N.0.8** — confirmed REAL and worse than stated: with the manuscript's own stated configuration (spin-aligned Dirac ensemble, spacelike $J^5$, mostly-plus), the corrected $w=+1$ EOS makes the term gravitationally **attractive** — the published Kerlick (PRD 12, 3004, 1975) / O'Connell (PRD 16, 1247, 1977) ECSK result for the Dirac field. The independent sign-of-pressure argument is withdrawn from §II, Introduction, Discussion, and Conclusions; the $\gamma\to\infty$ operator identification (untouched, algebraic) is what survives and carries the title's "does for the bounce" half. Two Kerlick/O'Connell citations added. No replacement sign claim manufactured. | SUBSTANTIVE, science-content (targeted the paper's "positive/bounce" title claim directly) | Derivation: `research/ech_contact_term_2026_09_22/DERIVATION.md` §1, independently re-verified by a blind adjudicator (neither conclusion nor method shown) — see `PROPAGATION_NOTE.md` §0. Applied at `main.tex:127-131,209-232,1000-1004,1082-1087`, abstract `main.tex:89-90`. What would raise it further: deriving $\langle J_5^IJ_{5I}\rangle$'s sign in-paper (PROPAGATION_NOTE.md §1b) — a separate, unopened lane. |
+| **DP1N-61** | §VII.D (`main.tex:815-836`) claims a "direct, quantitative rebuttal" of Popławski's own dark-energy proposal, citing `Poplawski2012` (`references.bib`: "Cosmological constant from quarks and torsion," Annalen der Physik 523, 291, arXiv:1005.0893 — a paper whose mechanism sets $\rho_\Lambda$ via the QCD quark chiral condensate $\langle\bar qq\rangle\sim-(235\,{\rm MeV})^3$), but `main.tex:817-819` misdescribes this as a "cosmic fermion (baryon) spin density" mechanism and §VII.D then evaluates the rebuttal at the §II.A ISM benchmark ($n_\psi\sim100\,{\rm cm^{-3}}$) instead of the condensate scale — off by $\sim74$ orders of magnitude. At the condensate's actual scale, independently recomputed: $\tfrac{3}{16}\kappa\langle\bar qq\rangle^2=5.32\times10^{-42}\,{\rm GeV^4}$ vs. $\rho_{\Lambda,\rm obs}=2.563\times10^{-47}\,{\rm GeV^4}$ — a factor $\approx2\times10^5$ **over**-production, not the claimed under-production. §II.A's own text (`main.tex:262-263`) warns against exactly this substitution ("number density also does not fix the renormalized composite ... a vacuum stress tensor, or an equation of state"), which §VII.D then performs. Claude opus cold-read leg E2, independently re-verified (arithmetic reproduces to 3 s.f.; `Poplawski2012` bib entry confirmed to be the quark-condensate paper). | **CLOSED-BY-WITHDRAWAL v1N.0.8** — confirmed REAL: `Poplawski2012`'s own `(54 meV)^4` reproduced to 3 s.f.; the rebuttal does not hold at any scale the paper evaluates (over-production by ~2×10⁵ at the correct scale, not under-production). The "direct, quantitative rebuttal" claim is withdrawn from §VII.D and from the abstract; the section is rewritten to state plainly that Popławski's condensate-based mechanism lies outside the Route-1 channel this paper closes. **No replacement rebuttal manufactured** (a correct-scale argument is possible but is a different, non-trivial claim this paper does not make). | SUBSTANTIVE, science-content (targeted the "cannot do for dark energy... rebutting Popławski's own proposed mechanism" title/abstract claim directly) | Derivation: `research/ech_contact_term_2026_09_22/DERIVATION.md` §2, `outputs/eos_and_scales.json`. Applied at `main.tex:824-843` (§VII.D full rewrite), abstract `main.tex:89-90,104-105`. |
 
 ### CONFIRM board — Falsified / Re-flag / Opinion (not opened as new items)
 
@@ -263,7 +263,82 @@ One adversarial finding deserves explicit note: Gemini's pass-2 self-critique cl
 | "'well before the singularity' lacks a specific density scale" | Gemini P1N-N1 | Introduction background sentence describing the established bounce mechanism, not this paper's own quantitative claim. |
 | Repeated "programme's benchmark γ=0.2375" phrase / redundant "no ECH dark-energy prediction" sentence | Grok N1, N2 | Style opinions on already-cited/already-disclosed content; N2 targets the same sentence R3 already falsified once under a different framing. |
 
-### CONFIRM board convergence statement
+---
+
+## Withdrawal closure — v1N.0.7 → v1N.0.8 (lane `bb-L3d-p1n-withdrawals`, 2026-09-22)
+
+**DP1N-60 and DP1N-61 CLOSED-BY-WITHDRAWAL.** Lane `bb-LS13-p1n-essentials`
+derived both findings from scratch against the manuscript's own equations and
+the primary sources (`research/ech_contact_term_2026_09_22/`), independently
+re-verified by a blind adjudicator given neither conclusion nor method. Both
+are REAL and CONFIRMED; both cost the paper a claim. This lane applied the
+derivation's exact printable sentences:
+
+- **DP1N-60.** §II's independent sign-of-pressure argument ("carries the same
+  repulsive sign at every finite γ") is withdrawn — not reworded, not
+  softened. With the manuscript's own stated configuration, the corrected
+  $w=+1$ equation of state gives **attraction**, matching the published
+  Kerlick (1975)/O'Connell (1977) ECSK result for the Dirac field. The
+  γ→∞ operator identification (an algebraic identity, independent of any
+  medium expectation-value sign) is untouched and is what the title's "does
+  for the bounce" half now rests on alone. The same withdrawal was also
+  applied to the Introduction (`main.tex:124-131`), Discussion
+  (`main.tex:1000-1004`), and Conclusions (`main.tex:1082-1087`), which had
+  independently restated the withdrawn claim as established fact — leaving
+  those in place would have made the §II withdrawal invisible to a reader
+  who only reads the paper's frame sections. Two references added
+  (Kerlick1975, OConnell1977).
+- **DP1N-61.** §VII.D's "direct, quantitative rebuttal" of Popławski's
+  dark-energy proposal is withdrawn from §VII.D and from the abstract. The
+  section is rewritten to state, honestly, that Popławski's mechanism (a QCD
+  quark-condensate vacuum expectation value) lies outside the Route-1 channel
+  this paper closes (a cosmic fermion number density) — **no replacement
+  rebuttal is manufactured**. The abstract's added limitations sentence
+  states this scope boundary explicitly.
+
+**What did NOT change:** the perturbation-transparency theorem (Tier-I), the
+14-barrier catalog, the operator-list argument, §II.A's finite-density
+benchmark and all its arithmetic, the NJL scalar-projection sign result
+($G_s<0$, Eq. `eq:Gs`) and its gap-equation closure — none of these were
+examined or touched by DP1N-60/61; they remain as previously verified.
+
+**New flagged item (not opened as a disposition — needs its own lane):** the
+Fierz row (`eq:fierz_row`) assigns the scalar-channel coefficient $+1$ and is
+what produces $G_s<0$ (the NJL condensate closure, a separate headline
+claim). Its sign consistency with the vacuum-saturation contraction used in
+the DP1N-60 derivation was **not checked** by `bb-LS13-p1n-essentials` and is
+**not asserted to be wrong** — flagged, not claimed. Lane `bb-LS15-fierz-sign`
+is deriving it separately; a further readiness change may follow depending on
+its result. Recorded in `SSOT/paper-1n/status.md`.
+
+**Directive-G hygiene:** `\paperVersion` v1N.0.7→v1N.0.8, `\paperTimestamp`
+unchanged (September 22, 2026 — same edit day). 4-pass recompile, 0 undefined
+refs/citations, 12 pages (up from 11 — real added content, no padding), same
+pre-existing 4.49666pt overfull hbox (line 871, in the unrelated Operator-List
+section, untouched by this lane). All pages touched by the withdrawal (1, 2,
+7, 9, 10) rendered at 110dpi and visually confirmed clean — no overflow, no
+column crossing, citations `[14]`/`[15]` render correctly on the references
+page. Three-way byte-identical PDF mirror (source/site/public), md5
+`0d1ca775d81c4428a784ba26914aa5ae`. `/artifact-link-verify`: 54/54 URI
+annotations extracted (up from 45 — the 2 new DOIs), 9/9 pinned GitHub links
+resolve at commit `ded46bc5df8d39bbaac7bfbee16b07f0376bab34`, all sampled DOIs
+HTTP 200 including the two new Kerlick/O'Connell entries. `/bib-tarball-rebuild`:
+32 cited == 32 `.bib` == 32 `.bbl`, 0 missing, 0 unused; tarball rebuilt from
+scratch and standalone-smoke-tested (0 undef refs, 12pp, clean extract, no
+repo context) — `project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.8.tar.gz`.
+Directive-I6 figure sweep: not triggered, `main.tex` has 0 `\includegraphics`
+calls (confirmed by grep, unchanged from the propagation note's own check).
+
+**Readiness: 95 → 85 COMPUTED** (the derivation lane's honest floor, not
+restored toward 99 and not held). SIGN-OFF HOLD RETAINED — this is a science
+closure by withdrawal, not a convergence event; no review board was run (the
+directive R2 budget for this paper is spent, and withdrawals are corrections,
+not new content requiring re-review). See `SSOT/paper-1n/status.md` for the
+full readiness-composition breakdown and what the next unlock requires.
+
+---
+
+### CONFIRM board convergence statement (superseded by the withdrawal closure above)
 
 **NOT CONFIRMED. Readiness-99 placed on SIGN-OFF HOLD pending DP1N-60/61.**
 DP1N-59 (a wording-precision drift, zero science content) is closed at v1N.0.7

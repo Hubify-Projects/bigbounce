@@ -1,12 +1,12 @@
 # P1N status — current authoritative section
 
-**Current candidate:** v1N.0.7 · 2026-09-22 ·
-`arxiv/paper1bc_ech_note/main.tex` — **SIGN-OFF HOLD. Readiness-99 (D-round
-98 + P-round 99, both still valid as packaging gates) is HELD, not current,
-pending real science closure of DP1N-60 and DP1N-61 — two ESSENTIAL findings
-a verdict-blind Claude opus cold-read referee surfaced on the exact v1N.0.6
-CONFIRM board, neither previously examined by any prior review round, neither
-closeable by a text edit.**
+**Current candidate:** v1N.0.8 · 2026-09-22 ·
+`arxiv/paper1bc_ech_note/main.tex` — **SIGN-OFF HOLD RETAINED. DP1N-60 and
+DP1N-61 are CLOSED-BY-WITHDRAWAL, not restored: the repulsive-sign bridge
+(§II) and the "direct, quantitative rebuttal" of Popławski's dark-energy
+proposal (§VII.D + abstract) have been withdrawn from the paper, with no
+replacement claim manufactured. Readiness DROPS 95 → 85 COMPUTED. See the
+"v1N.0.7 → v1N.0.8" section below for the full closure record.**
 
 ## CONFIRM board — 2026-09-22 (v1N.0.6 → v1N.0.7, lane bb-L3c-p1n-confirm) — SIGN-OFF HOLD PLACED
 
@@ -97,6 +97,142 @@ about science content, not packaging. But the overall readiness-99 claim is
 **HELD**, not current, until DP1N-60/61 close. Houston sign-off should NOT
 be read against v1N.0.6 or v1N.0.7 as "ready to publish" until this hold is
 lifted.
+
+## Withdrawal closure — 2026-09-22 (v1N.0.7 → v1N.0.8, lane `bb-L3d-p1n-withdrawals`)
+
+**DP1N-60 and DP1N-61 CLOSED-BY-WITHDRAWAL.** Lane `bb-LS13-p1n-essentials`
+derived both findings from scratch from the manuscript's own equations and
+the primary sources (`research/ech_contact_term_2026_09_22/DERIVATION.md`,
+`PROPAGATION_NOTE.md`, `outputs/eos_and_scales.json`, `MANIFEST.md`),
+independently re-verified by a blind adjudicator given neither this lane's
+conclusion nor its method. **Both are REAL and CONFIRMED, and both cost the
+paper a claim.** This lane applied the derivation's exact printable sentences
+— it did not re-derive or second-guess the science, only verified each
+replacement against `DERIVATION.md` and the committed JSON before applying it.
+
+**DP1N-60 — the repulsive-sign bridge is withdrawn, not restored.** §II
+assigned the contact term's stress tensor as $w=-1$ ("no explicit time
+derivatives"); the manuscript's own §II.A parametrization
+($n_\psi\propto a^{-3}$) forces the corrected $w=+1$ (stiff) under covariant
+conservation, which **inverts** the repulsion-sign condition. Worse than the
+original finding stated: taken with the manuscript's *own* stated
+configuration (spin-aligned Dirac ensemble, spacelike $J^5$, mostly-plus),
+the corrected EOS gives **attraction** — the published Kerlick (Phys. Rev. D
+12, 3004, 1975) / O'Connell (Phys. Rev. D 16, 1247, 1977) result for the
+Dirac field's totally antisymmetric spin density. (An earlier draft of the
+derivation argued a second sign error cancelled the first and the paper's
+conclusion survived; a blind-adjudication leg surfaced the Kerlick/O'Connell
+result and that reading was withdrawn in place — recorded in
+`PROPAGATION_NOTE.md` §0, not silently replaced.) The independent
+sign-of-pressure argument is withdrawn from §II (`main.tex:209-232`); the
+γ→∞ operator identification — an algebraic identity, not dependent on any
+medium expectation-value sign — is untouched and is what "does for the
+bounce" now rests on alone. Two references added: Kerlick1975, OConnell1977.
+
+The same withdrawn claim was also restated as established fact in three
+other places the derivation lane's scope did not cover, which this lane
+found and fixed for consistency (a withdrawal that survives in the paper's
+own frame sections is not a real withdrawal): the Introduction
+(`main.tex:124-131`, "becomes repulsive well before the classical curvature
+singularity is reached, halting collapse" — removed), the Discussion
+(`main.tex:1000-1004`, "(a) repulsive at high spin density at every finite γ"
+— removed), and the Conclusions (`main.tex:1082-1087`, "repulsive at high
+density at every finite γ" — removed). All three now state only the
+operator identification, with an explicit note that this paper does not
+independently establish the sign of pressure at finite γ.
+
+**DP1N-61 — the Popławski rebuttal is withdrawn, not replaced.** §VII.D's
+"direct, quantitative rebuttal" claim cited `Poplawski2012`, which actually
+sets its dark-energy scale via the QCD quark chiral condensate (a vacuum
+expectation value), not a cosmic fermion number density as the manuscript
+described it; §VII.D then evaluated the rebuttal at an ISM number-density
+benchmark ~74 orders of magnitude from the condensate scale. Independently
+recomputed: at the condensate's actual scale the mechanism **over**-produces
+by ~2×10⁵ in density (Popławski's own `(54 meV)⁴` reproduced to 3 s.f.),
+not the claimed under-production — the rebuttal does not hold at any scale
+the paper evaluates. §VII.D (`main.tex:824-843`) is rewritten in full: the
+claim is withdrawn and the section states plainly, without a replacement
+rebuttal, that Popławski's condensate-based mechanism lies outside the
+Route-1 channel this paper closes. The abstract's "rebutting Popławski's own
+proposed mechanism" clause is deleted (`main.tex:89-90`), and a disclosure
+sentence is added to the abstract's limitations passage stating the scope
+boundary explicitly (`main.tex:104-105`).
+
+**What did NOT change:** the perturbation-transparency theorem (this paper's
+sole Tier-I result), the 14-barrier catalog, the operator-list argument,
+§II.A's finite-density benchmark and its arithmetic, and the NJL
+scalar-projection sign result ($G_s<0$, Eq. `eq:Gs`, driving the gap-equation
+closure) — none of these were examined or touched by DP1N-60/61; all remain
+as previously independently verified. Title unchanged: the first half is now
+carried entirely by the untouched operator identification and §II.A's
+benchmark.
+
+**New flagged item — not a disposition, needs its own lane.** The Fierz row
+(`eq:fierz_row`) assigns the scalar-channel coefficient $+1$ and is what
+produces $G_s<0$ (the NJL no-condensate closure, a separate headline claim
+from DP1N-60/61). Its sign consistency with the vacuum-saturation contraction
+used in the DP1N-60 derivation was **not checked** by `bb-LS13-p1n-essentials`
+and is **not asserted to be wrong** — flagged, not claimed. Lane
+`bb-LS15-fierz-sign` is deriving it separately; **a further readiness change
+may follow from its result**, in either direction.
+
+**Directive-G hygiene:** `\paperVersion` v1N.0.7→v1N.0.8, `\paperTimestamp`
+unchanged (September 22, 2026 — same edit day, real edit). 4-pass recompile,
+**0 undefined refs/citations**, 12 pages (up from 11 — real added content,
+no padding), the same pre-existing 4.49666pt overfull hbox (line 871, in the
+unrelated Operator-List section, untouched by this lane) — no new overflow.
+All five pages touched by the withdrawal (1 abstract/intro, 2 §II, 7 §VII.D,
+9 Discussion, 10 Conclusions) rendered at 110dpi via `/latex-audit` and
+visually confirmed clean: no column crossing, no overflow, the two new
+citations `[14]`/`[15]` (Kerlick, O'Connell) render correctly on the
+references page. Three-way byte-identical PDF mirror (source/site/public),
+md5 `0d1ca775d81c4428a784ba26914aa5ae`, sha256
+`00c64248f4c486d61c1834916a6724fbe8cfc3f5d1461b04633d453310f1d0d6`.
+
+`/artifact-link-verify`: 54/54 URI annotations extracted (up from 45 — the
+2 new DOIs), 9/9 pinned GitHub `/blob/`+`/tree/` links resolve at commit
+`ded46bc5df8d39bbaac7bfbee16b07f0376bab34` (`git cat-file -e`), all sampled
+DOIs (including both new Kerlick/O'Connell entries, both Zenodo self-cites,
+GitHub repo root) HTTP 200. **Zero broken links.**
+
+`/bib-tarball-rebuild`: 32 `\cite{}` keys == 32 `.bib` entries == 32 `.bbl`
+entries, 0 missing, 0 unused (the 2 new keys reconcile cleanly). Tarball
+rebuilt from scratch in `/tmp` and standalone-smoke-tested (clean extract to
+a fresh temp dir, 2-pass pdflatex, no repo context): **0 undefined
+refs/citations, 12 pages — PASSED.** Tarball:
+`project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.8.tar.gz`,
+sha256 `c2165aff6d4a953a6510c7a6771fa5a7253f06e8782825e50781f85dfe31b2d4`.
+
+Directive-I6 figure-propagation sweep: **not triggered** — `main.tex` has 0
+`\includegraphics` calls (confirmed by grep; both edits are text-only, and
+this paper has no figures for a numeric to hide inside).
+
+**Readiness composition (directive P), against the derivation lane's own
+honest accounting:**
+
+| Component (max) | Score | Why |
+|---|---|---|
+| Science closure (25) | drop hard | two ESSENTIAL items confirmed real; both required *withdrawing* a printed claim (§II's bridge, §VII.D + abstract's rebuttal), not a reword or packaging fix |
+| Automated review convergence (25) | drop | the CONFIRM board's genuinely-new findings are now closed, but no fresh board has run on the withdrawn text — convergence cannot be claimed on unreviewed content; the clean-wave clock resets |
+| Evidence & reproducibility (25) | hold, improved | this closure adds a Q2-compliant reproducibility manifest (`research/ech_contact_term_2026_09_22/MANIFEST.md`) and a self-validating script; DP1N-58 (Zenodo DOI) remains the only other open item |
+| Packaging & PDF hygiene (20) | hold | full directive-G cycle re-run and verified clean above |
+| Houston's final personal review (5) | 0 | not reached |
+
+**Readiness: 95 → 85 COMPUTED.** Not restored toward 99 (the withdrawal
+costs real claims, not just review-convergence status) and not held above
+the derivation lane's own honest floor. **SIGN-OFF HOLD RETAINED** — this is
+a science closure by withdrawal, not a convergence event; no review board
+was run (directive R2's confirmation-round budget for this paper is spent,
+and a withdrawal is a correction, not new content that needs re-review).
+
+**What the next unlock requires:** (1) a fresh exact-version confirmation
+board on v1N.0.8 (spends a new directive-R2 round, since the last budget was
+used on the v1N.0.6 CONFIRM board) to re-verify the withdrawal reads cleanly
+to an independent referee; (2) resolution of the newly flagged Fierz-row
+sign question (`bb-LS15-fierz-sign`) — closeable either direction, and may
+raise or lower readiness depending on its result; (3) DP1N-58 (Zenodo DOI,
+archival, non-blocking) remains open. Houston sign-off should not be sought
+against v1N.0.8 until at least (1) completes.
 
 ## D-round + P-round — 2026-09-18 (v1N.0.5 → v1N.0.6, lane L3)
 

@@ -681,3 +681,36 @@ activityFeed:add({
   summary: "Lane bb-LS14-row4-ebv closed the one loose end lane bb-LS11-row4-lrg named: the LRG channel's closest systematic, E(B-V) at 0.8<z<1.1, which came in at -0.995 sigma corrected -- 0.005 sigma on the null side of a threshold fixed in advance. Pre-registration committed alone at 34db5010 before any f_NL statistic, inheriting LS11's verdict thresholds verbatim and fixing in advance the gate, a robustness rule and a propagation rule. Input characterisation done first and disclosed: the theta-cut lowers the official P_0 by ~3.7% with a ~5% tilt across 0.003<=k<=0.08 while the EZmock covariance diagonal moves <=0.32%, so it changes the DATA-side estimator, not only the window -- a window/covariance-only swap against LS11's untreated split spectra is therefore NOT self-consistent and was demoted in the pre-registration to a labelled diagnostic. GATE: LS11's published row reproduced by this lane's code to 0.00038 in the corrected Delta/sigma (tolerance 0.02) and 0.0005/0.0037 on the two halves, and the new transfer machinery asserted at run time to reduce BITWISE to LS11's combine_caps when the transfer is identically 1. PRIMARY RESULT: with each cap's half put on the theta-cut convention by that cap's official transfer and the theta-cut window + theta-cut covariance, Delta f_NL = -17.27, sigma_Delta = 13.06, corrected Delta/sigma = -0.935 at p=1.0 and -0.938 at p=1.6 -- no detectable sensitivity, and ROBUST: a deliberately wrong-geometry swapped-cap transfer moves it only eps_T = 0.051 and does not change the verdict word. The LRG headline is therefore UNCHANGED at -3.40 +- 5.74; the pre-registered half-difference systematic was not triggered. Reported with equal prominence: the row is NOT settled. Every treatment tried lands between -0.935 and -1.002 (the inconsistent window/covariance-only diagnostic crosses the threshold at p=1.6), a margin an order of magnitude below the ~+-0.2 precision these split Delta/sigma carry while no split-specific covariance exists and split chi2/dof runs to 2.09. NEW AND APPROXIMATION-FREE: swapping the COMPLETE official theta-cut triple (measured P_ell + window + covariance) moves this z-bin's f_NL by +1.89 at p=1.0 and +3.80 at p=1.6, i.e. +0.18 sigma with a sign flip, and b1 from 2.2133 to 2.1883 -- the first time this lab has measured the theta-cut convention systematic. The channel deliberately stays on the untreated convention so LRG and QSO remain comparable. The QSO channel cannot arbitrate the row: its own E(B-V) is an emphatic null at -0.04, but with sigma_Delta = 29.30 the same Delta would have registered at only 0.85 sigma, on the same null side of the same threshold. A genuine pypower theta-cut re-measurement of the four split halves (~1e8 random-random pairs per half against 300 k-bins) is out of laptop budget and is named as the next step rather than faked. Cost: 436 MB streamed, ZERO bulk catalogue bytes streamed or written, peak disk 56 KB, 84 s, $0 on local CPU. Evidence research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/, manifest ledger4-lrg-ebv-thetacut.",
 })
 ```
+
+---
+
+## L3d (bb-L3d-p1n-withdrawals), 2026-09-22
+
+Paper P1N, v1N.0.7 → v1N.0.8. DP1N-60/61 CLOSED-BY-WITHDRAWAL (derivation: lane
+`bb-LS13-p1n-essentials`, `research/ech_contact_term_2026_09_22/`). No review board run
+this lane (directive R2 budget already spent on this paper); readiness recomputed
+95→85 per the derivation lane's own accounting. See `SSOT/paper-1n/status.md`
+"Withdrawal closure" section and `DISPOSITIONS/P1N.md` for full detail.
+
+```
+paperVersions:bump({
+  paperId: "P1N" (slug "paper-1n"),
+  version: "v1N.0.8",
+  pages: 12,
+  date: "2026-09-22",
+  sha256: "00c64248f4c486d61c1834916a6724fbe8cfc3f5d1461b04633d453310f1d0d6",
+  md5: "0d1ca775d81c4428a784ba26914aa5ae",
+})
+
+papers:setReadinessCap({
+  slug: "paper-1n",
+  readinessCap: 85,
+})
+
+activityFeed:add({
+  type: "r-round",
+  title: "P1N: both ESSENTIAL CONFIRM-board findings closed by WITHDRAWAL -- the repulsive-sign bridge and the Popławski rebuttal come out, readiness 95->85 -- v1N.0.7 -> v1N.0.8",
+  tags: ["P1N", "ech-note", "withdrawal", "science-closure", "campaign-2026-09-18"],
+  summary: "Lane bb-L3d-p1n-withdrawals applied the bb-LS13-p1n-essentials derivation's exact printable sentences to arxiv/paper1bc_ech_note/main.tex, closing both ESSENTIAL findings from the 2026-09-22 CONFIRM board by withdrawal, not restoration. DP1N-60: the manuscript's w=-1 equation of state for the contact term contradicts its own density parametrization; the corrected w=+1 (stiff), taken with the manuscript's own stated configuration (spin-aligned Dirac ensemble, spacelike J^5, mostly-plus), makes the term gravitationally ATTRACTIVE -- the published Kerlick (1975)/O'Connell (1977) ECSK result for the Dirac field. The independent sign-of-pressure argument is withdrawn from Sec. II, the Introduction, the Discussion, and the Conclusions (the latter three independently restated the withdrawn claim and were found and fixed by this lane for consistency); the gamma-to-infinity operator identification is untouched and is what the title's 'does for the bounce' half now rests on alone. Two references added (Kerlick1975, OConnell1977). DP1N-61: the 'direct, quantitative rebuttal' of Popławski's dark-energy proposal evaluated the wrong physical quantity (~74 orders of magnitude off, against a misdescribed source) and is withdrawn from Sec. VII.D and the abstract with NO replacement rebuttal manufactured; Sec. VII.D now states plainly that Popławski's condensate-based mechanism lies outside the Route-1 channel this paper closes. Directive-G hygiene: 4-pass recompile, 0 undef refs, 12pp (up from 11, real content), pre-existing 4.49666pt overfull hbox unchanged; three-way byte-identical mirror; /artifact-link-verify 54/54 URIs resolve (9/9 pinned GitHub links, all sampled DOIs HTTP 200 incl. the 2 new Kerlick/O'Connell entries); /bib-tarball-rebuild 32==32==32, tarball rebuilt from scratch + standalone-smoke-tested (0 undef refs, 12pp, no repo context). Directive-I6 figure sweep not triggered (0 includegraphics). Readiness 95->85 COMPUTED, SIGN-OFF HOLD RETAINED -- no review board run (R2 budget already spent; a withdrawal is a correction, not new content needing re-review). New flagged item, not a disposition: the Fierz row's scalar-channel sign (drives G_s, a separate headline claim) was not checked and is being derived separately (lane bb-LS15-fierz-sign); a further readiness change may follow either direction. Evidence: research/ech_contact_term_2026_09_22/ (DERIVATION.md, PROPAGATION_NOTE.md, MANIFEST.md, outputs/eos_and_scales.json); SSOT/paper-1n/status.md; DISPOSITIONS/P1N.md.",
+})
+```

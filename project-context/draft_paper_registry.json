@@ -70,19 +70,22 @@
       "paper1bc_ech_note_v1N.0.4.pdf",
       "paper1bc_ech_note_v1N.0.5.pdf",
       "paper1bc_ech_note_v1N.0.6.pdf",
-      "paper1bc_ech_note_v1N.0.7.pdf"
+      "paper1bc_ech_note_v1N.0.7.pdf",
+      "paper1bc_ech_note_v1N.0.8.pdf"
     ],
-    "version": "v1N.0.7",
-    "pages": 11,
+    "version": "v1N.0.8",
+    "pages": 12,
     "date": "2026-09-22",
-    "pdf_sha256": "6f7851d6db2df0dc5f20b74fe7395280df6f75196f88ffb5ec9958c96d4e022e",
-    "pdf_md5": "8f073078c95ff587825e0a78397b13a3",
-    "sign_off_hold": "DP1N-60, DP1N-61 (ESSENTIAL, open) — see project-context/SSOT/paper-1n/status.md CONFIRM board section",
+    "pdf_sha256": "00c64248f4c486d61c1834916a6724fbe8cfc3f5d1461b04633d453310f1d0d6",
+    "pdf_md5": "0d1ca775d81c4428a784ba26914aa5ae",
+    "sign_off_hold": "SIGN-OFF HOLD RETAINED. DP1N-60/61 CLOSED-BY-WITHDRAWAL (bb-LS13-p1n-essentials derivation + bb-L3d-p1n-withdrawals applied it): the repulsive-sign bridge (§II) and the Popławski rebuttal claim (§VII.D + abstract) are withdrawn, not replaced. Readiness 95->85 COMPUTED — see project-context/SSOT/paper-1n/status.md.",
+    "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.8.tar.gz",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.1-EXACTPDF-2287537b-R1/P1N_v1N.0.1_R1_truth_audit.md",
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.2-EXACTPDF-790795fe-R2/P1N_v1N.0.2_R2_truth_audit.md",
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-02-P1N-v1N.0.3-EXACTPDF-c758664b-R3VERIFY/P1N_v1N.0.3_R3_truth_audit.md",
-      "project-context/peer-reviews/INT_v3/ROUND_2026-09-22-P1N-v1N.0.6-EXACTPDF-1bb5ade7-CONFIRM/P1N_v1N.0.6_CONFIRM_truth_audit.md"
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-22-P1N-v1N.0.6-EXACTPDF-1bb5ade7-CONFIRM/P1N_v1N.0.6_CONFIRM_truth_audit.md",
+      "research/ech_contact_term_2026_09_22/DERIVATION.md"
     ],
     "lineage": {
       "merges": [
