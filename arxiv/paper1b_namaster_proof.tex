@@ -130,7 +130,11 @@
 %   pre-registered batch-2 blind test) by integrating batch 2 (35 sealed runs,
 %   7 arms x 5, rules frozen in 4451b135 before the seal 28efa21c) as the
 %   PRIMARY result: S1-S4 20/20 (Clopper-Pearson lower bound 0.861), honest
-%   0/5 (upper bound 0.451), S5 forgery escaped 5/5, S6 effective-multipole
+%   0/5 (upper bound 0.451) [HISTORICAL: this CP-bound framing was withdrawn
+%   in v2B.0.24's R-CONFIRM closure as statistically indefensible -- honest
+%   replicates are deterministic by construction, not an i.i.d. sample; see
+%   DISPOSITIONS/P1B.md D-CONF-03. Left here as the accurate v2B.0.18 audit
+%   record, not a current claim.], S5 forgery escaped 5/5, S6 effective-multipole
 %   escaped 5/5 with no rule added post hoc. Batch 1 (18 runs) is relabelled
 %   the pilot/rule-development round with its post-hoc wall-clock and M-hash
 %   rule changes disclosed rather than defended. Abstract rewritten to the
