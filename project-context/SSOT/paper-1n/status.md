@@ -1,12 +1,17 @@
 # P1N status — current authoritative section
 
-**Current candidate:** v1N.0.8 · 2026-09-22 ·
-`arxiv/paper1bc_ech_note/main.tex` — **SIGN-OFF HOLD RETAINED. DP1N-60 and
-DP1N-61 are CLOSED-BY-WITHDRAWAL, not restored: the repulsive-sign bridge
-(§II) and the "direct, quantitative rebuttal" of Popławski's dark-energy
-proposal (§VII.D + abstract) have been withdrawn from the paper, with no
-replacement claim manufactured. Readiness DROPS 95 → 85 COMPUTED. See the
-"v1N.0.7 → v1N.0.8" section below for the full closure record.**
+**Current candidate:** v1N.0.9 · 2026-09-22 ·
+`arxiv/paper1bc_ech_note/main.tex` — **SIGN-OFF HOLD RETAINED (unchanged from
+v1N.0.8; this bump is a verification + wording item, not a science-closure
+event).** The `eq:fierz_row` scalar-channel sign flagged (but not asserted
+wrong) at v1N.0.8 has been independently derived and found **CORRECT**;
+every `G_s`-dependent claim (the NJL no-condensate closure) is now
+independently verified rather than merely presumed. One MINOR wording
+qualifier applied to the "unique" claim. Readiness **HOLDS at 85 COMPUTED** —
+this item takes P1N no lower and does not by itself raise it. See the
+"v1N.0.8 → v1N.0.9" section below for the full record; DP1N-60/DP1N-61
+CLOSED-BY-WITHDRAWAL (v1N.0.7 → v1N.0.8) remains the operative closure for
+the sign-off hold itself.
 
 ## CONFIRM board — 2026-09-22 (v1N.0.6 → v1N.0.7, lane bb-L3c-p1n-confirm) — SIGN-OFF HOLD PLACED
 
@@ -233,6 +238,123 @@ sign question (`bb-LS15-fierz-sign`) — closeable either direction, and may
 raise or lower readiness depending on its result; (3) DP1N-58 (Zenodo DOI,
 archival, non-blocking) remains open. Houston sign-off should not be sought
 against v1N.0.8 until at least (1) completes.
+
+## Fierz-row verification — 2026-09-22 (v1N.0.8 → v1N.0.9, lane `bb-L3e-p1n-fierz-qualifier`)
+
+**Context.** The v1N.0.7 → v1N.0.8 withdrawal closure (above) flagged, but
+did not check, whether the `eq:fierz_row` scalar-channel sign (which drives
+`G_s<0` and the NJL no-condensate closure — a separate headline claim from
+DP1N-60/61) was consistent with the vacuum-saturation contraction used in
+the withdrawal derivation. Lane `bb-LS15-fierz-sign` derived it separately
+and produced `research/fierz_row_sign_2026_09_22/` (`DERIVATION.md`,
+`PRE_REGISTRATION.md`, `MANIFEST.md`, `RUN_LOG.md`, `PROPAGATION_NOTE.md`,
+`outputs/*.json`, `scripts/*.py`); this lane applied its printable repair
+and verification record without re-deriving or second-guessing the science.
+
+**Outcome: the sign is CORRECT, `G_s<0` is unchanged, no claim moves.** Row
+$(S,V,T,A,P)=(1,\tfrac12,0,\tfrac12,-1)$, tensor channel absent, derived in
+exact rational arithmetic, identical across three Dirac representations,
+both metric signatures, and two $\gamma^5$ conventions; $F^2=1$ to
+$6.7\times10^{-16}$. Confirmed against a published external anchor:
+vacuum-saturating the derived row at Popławski's own scale reproduces his
+`arXiv:1005.0893` Eq. (9)–(11) value $\rho_\Lambda=(53.71\,{\rm meV})^4$
+against his published $(54\,{\rm meV})^4$ — the opposite sign would give a
+negative cosmological constant. A blind adjudicator — **opus tier** (the
+`fable` tier was out of usage credit and is recorded honestly rather than
+silently substituted) — told neither the conclusion nor the method, derived
+the same row by an independent route including a brute-force Grassmann
+check, and returned **CONFIRMED**.
+
+**Every `G_s`-dependent claim is now independently verified, entry for
+entry** (full table in `PROPAGATION_NOTE.md` §1): the abstract's item (i),
+`eq:fierz_row` itself, `eq:Gs` (`G_s=-(3\kappa/16)\gamma^2/(1+\gamma^2)<0`
+at every finite $\gamma$), `eq:gap` and its three-line no-nonzero-solution
+argument, §VII.D's restatement, and the Conclusions. Nothing moves.
+
+**One MINOR wording item, closed this round.** `main.tex:282-296` (v1N.0.8)
+called the scalar coefficient "unique" without qualification. For a
+strictly single-species Dirac field the five quartics `{SS,VV,TT,AA,PP}`
+are not independent — `scripts/multispecies_rank.py`
+(`outputs/multispecies_rank.json`) confirms operator rank **3** at $N=1$
+(singular values `[8.72, 8.00, 6.32, 8.5e-16, 6.7e-16]` — exactly 3
+nonzero) and rank **5** at $N\geq2$. "Unique" holds only for the declared
+direct-channel projection at colour/flavour multiplicity $N_cN_f>1$, which
+is exactly what `eq:gap`'s own degeneracy factor $N_cN_f/(4\pi^2)$ assumes.
+Applied verbatim per `PROPAGATION_NOTE.md` §3's printable repair at
+`main.tex:282-296`: "...unique for the declared direct-channel projection at
+the colour/flavour multiplicity $N_cN_f>1$ assumed in Eq.~\eqref{eq:gap};
+for a strictly single-species field the five quartics obey two linear
+relations, so an identical-field rearrangement row is fixed only once that
+projection is declared~\cite{FierzAdj2026}." The following sentence (the
+Grassmann-exchange provenance of the overall minus sign) was split into its
+own sentence for grammatical continuity only — no content change.
+
+**What this lane explicitly does NOT claim.** The $-(3\kappa/16)\gamma^2/
+(1+\gamma^2)$ prefactor of `eq:4fermi` was **not** re-derived from the
+action by this verification — it is reported as verified-elsewhere
+(`research/theory_audit/ech_torsion_onshell_2026_08_08.py` `[L27]`, where it
+appears as $\lambda^2/s_H^2$, insensitive to sign convention) and
+independently consistent with Popławski per the anchor above, but this is
+not this lane's own derivation. Recorded as an open, named, low-priority
+item — not claimed as verified here. This lane also does not reopen or
+soften DP1N-60/61, and does not claim the `G_s` argument bears on
+Popławski's mechanism (settled non-relevant, DP1N-61).
+
+**Readiness (directive P composition): NO FURTHER DROP from 85; does not
+raise it either.** Science closure (25): a flagged, unchecked sign that a
+headline claim rides on is now checked and correct — restores confidence,
+does not close the two open withdrawals (unaffected, unchanged). Automated
+review convergence (25): no genuinely-new real finding; the "unique"
+wording item is a precision qualifier, MINOR at most; P1N's clean-wave clock
+is unaffected. Evidence & reproducibility (25): improved marginally — two
+self-validating scripts, a Q2-compliant manifest, and the `FierzAdj2026`
+artifact link independently confirmed to do what `main.tex` says it does.
+Packaging & PDF hygiene (20): full directive-G cycle re-run and verified
+clean below. Houston's final personal review (5): not reached.
+**Readiness: 85 COMPUTED (unchanged). SIGN-OFF HOLD RETAINED** — the hold is
+about the two v1N.0.8 withdrawals, not this verified item.
+
+**Directive-G hygiene:** `\paperVersion` v1N.0.8→v1N.0.9, `\paperTimestamp`
+unchanged (September 22, 2026 — same edit day). 4-pass recompile, **0
+undefined refs/citations**, 12 pages (unchanged), same pre-existing
+4.49666pt overfull hbox (now at line 875 after the line-count shift from
+this edit, in the unrelated Operator-List section, untouched by this lane)
+— no new overflow. `/latex-audit`: page 1 (title/date) and page 3 (the
+edited Fierz-row text) rendered at 110dpi and visually confirmed clean — no
+column crossing, no overflow, the qualified sentence reads grammatically;
+page 8 (Operator-List, hosting the pre-existing residual hbox) also
+rendered clean at 110dpi. PDF sha256
+`fd0da925f0853912aa4bb9a2f1958ee2fb905174fc5cdfbf09946384b03e0915`, md5
+`adc34e683bbc1f0c00b5f937fb63cc42`. Three-way byte-identical mirror
+(`arxiv/paper1bc_ech_note/main.pdf`,
+`site/public/papers/paper1bc_ech_note_v1N.0.9.pdf`,
+`public/papers/paper1bc_ech_note_v1N.0.9.pdf`) md5-verified identical.
+`project-context/draft_paper_registry.json` key `"P1N"` updated (version,
+sha256, md5, served_aliases, arxiv_tarball, sign_off_hold note).
+
+`/artifact-link-verify`: 54/54 URI annotations extracted (unchanged set — no
+new links added this round), 9/9 pinned GitHub `/blob/`+`/tree/` links
+resolve at commit `ded46bc5df8d39bbaac7bfbee16b07f0376bab34`
+(`git cat-file -e`), the `FierzAdj2026` artifact link specifically
+re-confirmed resolving. **Zero broken links.**
+
+`/bib-tarball-rebuild`: 32 `\cite{}` keys == 32 `.bib` entries == 32 `.bbl`
+entries, 0 missing, 0 unused. Tarball rebuilt from scratch in `/tmp` and
+standalone-smoke-tested (clean extract to a fresh temp dir, 2-pass
+pdflatex, no repo context): **0 undefined refs/citations, 12 pages —
+PASSED.** Tarball:
+`project-context/SSOT/arxiv_tarballs/paper1bc_ech_note_arxiv_v1N.0.9.tar.gz`,
+sha256 `79d8bda4276ae6a27622837484432a61f06c553521c565cf6d6a7e0e47ac1d08`.
+
+Directive-I6 figure-propagation sweep: **not triggered** — `main.tex` has 0
+`\includegraphics` calls (confirmed by grep, unchanged).
+
+**What remains before P1N could be approved:** (1) DP1N-60/61's withdrawal
+still requires a fresh exact-version confirmation board on the withdrawn
+text (directive R2 budget for a new round on this paper has not been spent
+since v1N.0.8 — no board has yet run against v1N.0.8/v1N.0.9); (2) DP1N-58
+(Zenodo DOI, archival, non-blocking) remains open; (3) Houston's final
+personal review/sign-off (not reached). This lane does not run a board.
 
 ## D-round + P-round — 2026-09-18 (v1N.0.5 → v1N.0.6, lane L3)
 

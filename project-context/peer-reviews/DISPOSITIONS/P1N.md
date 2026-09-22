@@ -1,7 +1,7 @@
 # P1N disposition ledger
 
 **Canonical source:** `arxiv/paper1bc_ech_note/main.tex`
-**Current paper-local version:** `v1N.0.7` (2026-09-22, lane L3c CONFIRM board closure; D-round+P-round closure at v1N.0.6 carried no science/scope changes over v1N.0.5 — see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
+**Current paper-local version:** `v1N.0.9` (2026-09-22, lane `bb-L3e-p1n-fierz-qualifier` — verified the `eq:fierz_row` scalar sign, qualified the "unique" clause, no readiness change; v1N.0.8 was lane L3d's DP1N-60/61 withdrawal closure, v1N.0.7 was lane L3c's CONFIRM board closure; D-round+P-round closure at v1N.0.6 carried no science/scope changes over v1N.0.5 — see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
 **Ledger reconciliation (2026-09-22, lane L3b):** the R3 board's own closure table (`SSOT/paper-1n/status.md` "R3 closure (final) — 2026-09-02 (v1N.0.3 → v1N.0.4)") already recorded DP1N-44 through DP1N-57 as closed with grep-verified edits at v1N.0.4; this ledger file had not been updated to match (only DP1N-57's row below carried a CLOSED marker). Reconciled here: **DP1N-44, 45, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56 are CLOSED v1N.0.4** (per the SSOT item→edit table, each with a grep-verified `main.tex` citation) and **DP1N-47 is CLOSED v1N.0.4 (downgrade branch taken — B2/B5/B6/B10 restated as "argued in-paper," unsupported cites removed)**. **DP1N-58 remains OPEN** — Zenodo DOI minting for P1C + theory-audit artifacts is a genuine archival residual outside agent authorization (SSOT confirms this explicitly, not silently dropped).
 **Claim policy:** channel-level closure of minimal-coupling ECH dark-energy routes only; **no** operator-level completeness theorem, no unrestricted no-go, no ECH dark-energy or birefringence prediction.
 **Venue:** CQG — form is **Paper**, not Note (7725 words at v1N.0.2, 4144 words at v1N.0.1, both above the ≤2500-word Note ceiling, `project-context/SESSION_HANDOFF_2026-09-02.md:32`).
@@ -310,6 +310,81 @@ the DP1N-60 derivation was **not checked** by `bb-LS13-p1n-essentials` and is
 **not asserted to be wrong** — flagged, not claimed. Lane `bb-LS15-fierz-sign`
 is deriving it separately; a further readiness change may follow depending on
 its result. Recorded in `SSOT/paper-1n/status.md`.
+
+---
+
+## Verification note — `eq:fierz_row` scalar sign, v1N.0.8 → v1N.0.9 (lane `bb-LS15-fierz-sign` derivation, applied by `bb-L3e-p1n-fierz-qualifier`, 2026-09-22)
+
+**Not a disposition item (no reviewer raised it) — recorded because the check
+came back clean and that is itself worth stating, per §0 of the propagation
+note.**
+
+The Fierz-row scalar sign flagged-but-unchecked above was derived
+independently from scratch and is **CORRECT**: row
+$(S,V,T,A,P)=(1,\tfrac12,0,\tfrac12,-1)$, exact rational arithmetic, agreeing
+across three Dirac representations, both metric signatures, and two $\gamma^5$
+conventions, $F^2=1$ satisfied to $6.7\times10^{-16}$. Confirmed against a
+published external anchor: vacuum-saturating the derived row at Popławski's
+own scale reproduces his `arXiv:1005.0893` Eq. (9)–(11)
+$\rho_\Lambda=(53.71\,{\rm meV})^4$ against his published $(54\,{\rm meV})^4$
+— the opposite sign would give a negative cosmological constant. A blind
+adjudicator — **opus tier** (the `fable` tier was unavailable, out of usage
+credit, and is labelled honestly here rather than silently substituted),
+told neither the conclusion nor the method and explicitly permitted to answer
+"undecidable" — derived the same row by an independent route (including a
+brute-force Grassmann check) and returned **CONFIRMED**. Manifest:
+`research/fierz_row_sign_2026_09_22/` (`DERIVATION.md`, `MANIFEST.md`,
+`PRE_REGISTRATION.md`, `RUN_LOG.md`, `PROPAGATION_NOTE.md`,
+`outputs/*.json`, `scripts/*.py`).
+
+**Every `G_s`-dependent claim in the paper is independently verified**, entry
+for entry: `eq:fierz_row` itself, `G_s=-(3\kappa/16)\gamma^2/(1+\gamma^2)<0`
+at every finite $\gamma$ (Eq. `eq:Gs`), the gap equation (Eq. `eq:gap`) and
+its three-line no-nonzero-solution argument, and every downstream restatement
+(abstract item (i), §VII.D, Conclusions). No claim moves; `G_s<0` and the
+no-condensate closure stand as previously recorded.
+
+**One MINOR wording item, closed this round.** `main.tex:282-296` (v1N.0.8)
+called the scalar coefficient "unique" unconditionally. For a strictly
+single-species Dirac field the five quartics `{SS,VV,TT,AA,PP}` are not
+independent — operator rank **3** at $N=1$ (confirmed by
+`scripts/multispecies_rank.py`, committed output
+`outputs/multispecies_rank.json`: singular values
+`[8.72, 8.00, 6.32, 8.5e-16, 6.7e-16]`, i.e. exactly 3 nonzero), rank **5** at
+$N\geq2$ (`five_channels_independent: true`). "Unique" is correct only for
+the declared direct-channel projection at colour/flavour multiplicity
+$N_cN_f>1$, which is what Eq. `eq:gap`'s own degeneracy factor
+$N_cN_f/(4\pi^2)$ already assumes. Applied verbatim per the propagation
+note's printable repair at `main.tex:282-296` (v1N.0.9): the sentence now
+reads "...unique for the declared direct-channel projection at the
+colour/flavour multiplicity $N_cN_f>1$ assumed in Eq.~\eqref{eq:gap}; for a
+strictly single-species field the five quartics obey two linear relations,
+so an identical-field rearrangement row is fixed only once that projection
+is declared~\cite{FierzAdj2026}." The following sentence (Grassmann-exchange
+provenance of the overall minus sign, unaffected) was split off as its own
+sentence for grammatical continuity — no content added or removed from it.
+
+**Explicitly NOT claimed by this note:** the $-(3\kappa/16)\gamma^2/(1+
+\gamma^2)$ prefactor of `eq:4fermi` was **not** re-derived here from the
+action — it is reported as verified-elsewhere
+(`research/theory_audit/ech_torsion_onshell_2026_08_08.py` `[L27]`, where it
+appears as $\lambda^2/s_H^2$ and is therefore insensitive to sign
+convention) and is independently consistent with Popławski per the anchor
+above, but this is **not** this verification's own derivation. Left open,
+named, and low-priority — not claimed as verified in this pass. Also not
+claimed: any rebuttal of, or bearing on, Popławski's mechanism (settled
+non-relevant per DP1N-61); this note only confirms the paper's own internal
+`G_s` argument is self-consistent.
+
+**Readiness: NO FURTHER DROP from 85.** This item does not close DP1N-60/61
+and does not lift the SIGN-OFF HOLD — it removes a separate, previously-open
+risk (that a second sign error might be hiding behind the withdrawals) and
+adds confidence, not points, per directive P's composition (science closure
+does not gain from re-confirming an unchanged claim; automated review
+convergence gains nothing since no reviewer raised this; evidence &
+reproducibility improves marginally via the added manifest and machine-
+checkable rank script). Readiness stays **85 COMPUTED**. See
+`project-context/SSOT/paper-1n/status.md` for the full composition record.
 
 **Directive-G hygiene:** `\paperVersion` v1N.0.7→v1N.0.8, `\paperTimestamp`
 unchanged (September 22, 2026 — same edit day). 4-pass recompile, 0 undefined
