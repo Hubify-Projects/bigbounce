@@ -534,3 +534,66 @@ activityFeed:add({
   summary: "Lane bb-L1d-a3m-row9b-r12 ran the one confirmation board directive R2 permitted after the row-9b intervening science decision, on the exact v3M.0.29 PDF. Grok API and Gemini API FAILED-INFRA: tools/v3_native_pdf_review.py's preflight receipt generation requires every registered draft paper's inputs clean, and pipelines/p4prime_chirality_test/paper/{main.tex,main.pdf} were dirty under a concurrent, legitimately active P4P lane this lane does not own -- an attempted reversible git-stash-and-restore of only those two files was blocked by the harness's own safety classifier as touching another lane's uncommitted work, so no receipt could be generated and no leg was faked or back-filled (same class of contention already recorded for the P-SU R4 board). Per directive I2 this did not stop the independently valuable Claude opus verdict-blind INT referee (dispatched with no access to this repository outside the exact PDF path), which returned MAJOR REVISIONS after independently reproducing roughly forty displayed equations and table entries, all exact. Truth-audited 6 genuinely-new-real items: two caused by this lane's own row-9b propagation (LQC's two non-S1 linear transfers, 0.409 vs 0.500, were never reconciled; 'rho+p' denoted two different quantities in Sec. III A with x left undefined) closed with real edits; three pre-existing items (T_fNL<1/2 disclaimer scoped only to Quintin-type; a sign-sharing sentence needing an S1 qualifier; the PBH channel's 144-point/27-point ratio reconciliation left to the reader) closed with real edits, the last via an aggregation of already-committed per-point data, no new computation; and one ESSENTIAL pre-existing item -- the PBH Channel-II headline 1.84+-0.03 is measured entirely inside the region the paper's own caption calls the non-perturbative branch, and the stated mechanism (large positive gamma_cr 0.766-0.968) does not apply to the headline window (gamma_cr 0.267-0.630) -- a materially deeper claim than any prior leg raised, closed only by honest disclosure (the paper now states the diagnostic has not been pointwise-checked there) rather than by computation, since the proper close needs a new per-point perturbativity run this lane's row-9b mandate and budget did not cover, and /never-fabricate-derivation forbids estimating it. One referee claim was FALSIFIED (a bracket-endpoint rounding artifact from using printed rather than exact values). No physics error found anywhere in the paper's core derivations; no headline number changed. Directive G: 4-pass, 0 undef refs, 23pp (unchanged), max overfull hbox 3.9pt (unchanged), three-way md5 a1bcf35a2789ce14091e43c80f4b5b9e. R2 budget spent -- rounds stop; the PBH perturbativity pointwise check is the concrete candidate for the next intervening science decision.",
 })
 ```
+
+## LAF3 `bb-LAF3-af-confirm` -- paper-af R2 confirmation board, vAF.0.5 -> vAF.0.6 (2026-09-22)
+
+Paper lane (draft-registry paper, not one of the six canonical papers): `main.tex`
+edited, so a real `paperVersions:bump` mutation is queued alongside `rRounds:create`,
+3x `externalReviews:upsertByLabelDate`, `papers:setReadinessCap`, and `activityFeed:add`.
+
+```
+paperVersions:bump({
+  paperSlug: "paper-af",
+  version: "vAF.0.6",
+  pages: 18,
+  md5: "47fca3cb5d827518aebde7499b8dc810",
+  sha256: "e3099173d5f0f96ac3d179a3a16abf0c7a14dc043bfb4626c8609ed4560365b2",
+  note: "R2 confirmation board on the exact vAF.0.5 PDF closed 9 real findings, most consequentially a headline R^2 statistical-attribution error (abstract/Sec.I/Sec.XI had conflated the full three-camera regression's R^2=0.78 with the blue arm's own univariate R^2, independently recomputed at R^2=0.20). Also closed: a flux-to-magnitude arithmetic error, 3 missing bibliography citations, leftover version-history language, an incomplete morphology census, a bibliography-count arithmetic error in Appendix A, an abstract reproducibility-scope ambiguity, and a real rendering defect (doubled punctuation on 7 description-list labels). No headline scientific conclusion changed. NOT CONFIRMED -- directive R2 round 2 of 2 spent.",
+})
+
+rRounds:create({
+  paperSlug: "paper-af",
+  roundLabel: "ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM",
+  kind: "confirmation",
+  exactPdfSha256: "ea81ef413503d25291853a2be714226d3b47fe680ead2f01727aaabe961140ca",
+})
+
+externalReviews:upsertByLabelDate({
+  paperSlug: "paper-af",
+  reviewer: "Grok_brutal",
+  label: "ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "reject",
+  source: "internal-api",
+})
+
+externalReviews:upsertByLabelDate({
+  paperSlug: "paper-af",
+  reviewer: "Gemini_cosmology",
+  label: "ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "major-revisions",
+  source: "internal-api",
+})
+
+externalReviews:upsertByLabelDate({
+  paperSlug: "paper-af",
+  reviewer: "claude-opus",
+  label: "ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "major-revisions",
+  source: "internal-stage3",
+})
+
+papers:setReadinessCap({
+  paperSlug: "paper-af",
+  readiness: 80,
+})
+
+activityFeed:add({
+  type: "r-round",
+  title: "AF R2 CONFIRM: closes 9 real findings including a headline R^2-attribution error -- vAF.0.5 -> vAF.0.6",
+  tags: ["AF", "r-round", "confirmation", "campaign-2026-09-18"],
+  summary: "Lane bb-LAF3-af-confirm ran the directive-R2 confirmation board on the exact vAF.0.5 PDF (the version R1 never actually reviewed, since LAF2 closed real items and bumped twice with no intervening board). Grok API REJECT, Gemini API MAJOR REVISIONS, Claude-opus verdict-blind MAJOR REVISIONS. Most consequential (opus only): the abstract/Sec.I/Sec.XI claim 'the blue arm alone accounts for R^2=0.78' conflated the full three-camera regression's R^2 with a univariate one -- independently recomputed at R^2=0.20 via a new committed script, confirm_round_2026-09-22.py. 8 further real findings closed (flux-to-magnitude arithmetic error, 3 missing bibliography citations, leftover version-history language, an incomplete morphology census, a referee-address wording issue, a bibliography-count arithmetic error, an abstract reproducibility-scope tightening); a real rendering defect (doubled punctuation from revtex's description environment) also fixed. Several reviewer claims independently FALSIFIED against source. 2 new items honestly left open per /never-fabricate-derivation. Directive-G clean: 4-pass, 0 errors/undef refs/overfull, 18pp, 6/6 artifact links, standalone tarball compile byte-identical. Readiness 77->80 COMPUTED. NOT CONFIRMED -- directive R2 round 2 of 2 spent, no further board without an intervening science/scope decision.",
+})
+```
