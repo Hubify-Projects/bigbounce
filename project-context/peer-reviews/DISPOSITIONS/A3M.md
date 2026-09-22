@@ -1357,24 +1357,34 @@ closed by honest disclosure, not fully resolved), **1 FALSIFIED**, **2 RE-FLAG-O
   from the already-committed `row11_gammacr_extension.json` points — an aggregation, not new
   computation.
   Fingerprint: 144-point vs 27-point reconciliation, gamma_cr mean 0.430 0.853, OLS slope -0.20.
-- **`DA3M-R12-06` [ESSENTIAL, PARTIAL]: Channel II's headline $1.84\pm0.03$ is measured entirely
-  inside the region Table V's own caption calls the non-perturbative branch, and the stated
-  mechanism (large positive $\gamma_{\rm cr}=0.766$–$0.968$) does not apply to the headline
-  window ($\gamma_{\rm cr}=0.267$–$0.630$).** CONFIRMED real, pre-existing (a materially deeper
-  claim than Grok M3's RE-FLAGGED "144-point subset is a physical restriction" at R11 — no prior
-  leg raised this specific regime-validity question). **Not closed by computation** — the proper
-  close needs the per-point perturbativity diagnostic ($1.2|f_{\rm NL}|\sigma_r$) run across the
-  144-point in-coverage grid, which needs $\sigma_r$ per point derived from the compaction
-  script's own variance integral applied to `row11_gammacr_extension.json`'s per-point
-  $(\Delta,r_pk_p)$ — real, bounded, but new computation this lane's row-9b mandate and remaining
-  budget did not cover, and `/never-fabricate-derivation` forbids estimating it from adjacent
-  numbers. **Closed by honest disclosure instead**: the paper now states plainly that this
-  diagnostic has only been checked on the displayed 27-point grid, that the entire 144-point
-  headline population lies below the non-perturbative threshold, and that the measured
-  $\gamma_{\rm cr}$-slope continuity across both grids is evidence (not proof) the same regime
-  applies. **R12 is NOT converged on this item** — it is the most concrete candidate for the
-  next intervening science decision.
-  Fingerprint: gamma_cr coverage 0.267-0.630, non-perturbative branch, mechanism 0.766-0.968 does not apply, perturbativity diagnostic not pointwise-checked.
+- **`DA3M-R12-06` [ESSENTIAL] — CLOSED BY COMPUTATION in v3M.0.31 (superseding R12's
+  disclosure-only close).** Channel II's headline $1.84\pm0.03$ was measured entirely inside the
+  region Table V's own caption called the non-perturbative branch, and the stated mechanism
+  (large positive $\gamma_{\rm cr}=0.766$–$0.968$) did not apply to the headline window
+  ($\gamma_{\rm cr}=0.267$–$0.630$). Lane `LS12-pbh-perturbativity` (2026-09-22) ran the per-point
+  diagnostic $1.2|f_{\rm NL}|\sigma_r$ pointwise across all $144$ headline points, at each point's
+  own required amplitude, re-integrating $\sigma_r$ from the compaction script's own Eq.-(53)
+  variance integral (pre-registered `PREREGISTRATION.md`, committed alone at `b289aa0f` before any
+  number existed; five validation gates G1–G5, three exact to machine zero, `pbh_perturbativity.py`,
+  `results.json`, manifest `a3-pbh-perturbativity-pointwise.json`). **Outcome: the criterion is
+  satisfied at both candidate values at $62$ of the $144$ points (branch b2, RE-SCOPE — CENTRAL
+  VALUE CHANGES).** The headline is re-scoped, not withdrawn: `$1.84\pm0.03$ (n=144)` →
+  `$1.81\pm0.02$ (n=62)`, applied to the abstract, Eq.~(eq:pbh_ratio), Sec.~V C, the "Regime of
+  validity" passage, and Table V's caption in `main.tex` v3M.0.31. Reported with equal prominence
+  (against the paper): no point of the $144$ reaches $\varepsilon\le0.5$ (the whole population is
+  marginal); the ratio correlates with the diagnostic at Pearson $+0.83$, so the subset value is
+  threshold-conditional, sliding from $1.798$ at a cut of $0.9$ to $1.837$ at $1.4$; and Table V's
+  "non-perturbative branch" label on the $\gamma_{\rm cr}\lesssim0.8$ rows is **inverted**
+  pointwise — $\varepsilon$ *rises* with $\gamma_{\rm cr}$ (the headline window is, pointwise, the
+  *more* controlled of the two), so the caption and the table's dagger footnote are corrected to
+  "uncapped-abundance rows" (an amplitude-calibration label, not a perturbativity one). The 27-point
+  grid's own attribution of the printed "0.54–1.01 / 1.09–2.02" is also corrected in the same
+  passage (those six numbers are the Gaussian-calibrated $A_*$ rows, not the 27-point grid's own
+  ratio amplitudes, which are $[0.64,2.22]$/$[0.97,3.22]$). Channel II's scientific conclusion is
+  **unchanged**: still 7.0 dex short, $f_{\rm PBH}=0$, a NULL. Decision recorded as `D-A3-15`.
+  Full detail: `research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PROPAGATION_NOTE.md`
+  and its `PBH_PERTURBATIVITY_2026-09-22.md` result note.
+  Fingerprint: gamma_cr coverage 0.267-0.630, pointwise perturbativity diagnostic, headline re-scoped 1.84-to-1.81 n=144-to-62, non-perturbative branch label inverted.
 
 ### FALSIFIED
 
@@ -1401,11 +1411,22 @@ $\rho_B$/$\rho_c$ near-collision from `DA3M-R12-02`; a NIT cluster (caption word
 consistency, dangling $r=0.84$ cross-reference, undefined $W$/$r_i$ in App. A 4, symbol $A$
 overload, decade-range phrasing).
 
-### R2 status — BUDGET SPENT
+### R2 status — BUDGET SPENT, then re-armed by a new intervening science decision (2026-09-22)
 
 R12 is the one confirmation board directive R2 permitted after the row-9b intervening science
 decision. It did not confirm: 6 genuinely-new-real items found, 5 closed with real edits or
-honest disclosure, 1 (`DA3M-R12-06`) left genuinely open. **No further board on A3M without
-another intervening science or scope decision.** Readiness stays at the **COMPUTED** cap 75.
-Next unlock: the PBH perturbativity pointwise check named in `DA3M-R12-06`, or Houston's
-authorization of another confirmation board once that closes.
+honest disclosure, 1 (`DA3M-R12-06`) left genuinely open. **No further board ran on A3M** between
+R12 and this entry.
+
+**`D-A3-15` (2026-09-22) — the next directive-R2 intervening science decision.** Lane
+`LS12-pbh-perturbativity` closed `DA3M-R12-06` by computation (see above), re-scoping the Channel
+II headline `1.84±0.03 (n=144)` → `1.81±0.02 (n=62)` and correcting Table V's inverted
+non-perturbative-branch label — real new computation, pre-registered before any number existed,
+changing a printed headline value in five locations. This is exactly the class of decision
+directive R2 requires to re-arm the stop: **one further confirmation board on A3M is now
+authorized, to be run on the exact `v3M.0.31` PDF** (this bundle applied the propagation with
+directive-G hygiene but ran no board itself, per this lane's mandate). Readiness stays at the
+**COMPUTED** cap 75 pending that confirmation board (and Convex recompute — Convex is currently
+UNAVAILABLE, spending limit; this lane's mutations are queued in
+`CONVEX_BACKFILL_QUEUE_2026-09-21.md`). **Whether and when to spend that board is the director's
+call**, not decided by this lane.

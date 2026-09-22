@@ -2,35 +2,146 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-22 -- v3M.0.30. R12 (the one confirmation board the row-9b
-science decision authorized) ran on the exact v3M.0.29 PDF. Grok API and
-Gemini API legs FAILED-INFRA (shared-checkout preflight-receipt contention on
-a concurrent lane's dirty draft-paper files, not touched; same class as the
-P-SU R4 precedent) -- never a verdict, never back-filled. Claude opus INT
-referee (verdict-blind, no repository access outside the exact PDF) ran:
-MAJOR REVISIONS. 6 genuinely-new-real items found: 2 ESSENTIAL + 1 MAJOR + 2
-MINOR closed by real edit (LQC's two irreconcilable linear transfers 0.409 vs
-0.500 now distinguished; rho+p double meaning and undefined x in Sec. III A
-fixed; T_fNL<1/2 disclaimer extended to all three backgrounds; a scheme
-qualifier added to the Quintin-type sign-sharing sentence; the PBH
-144-point/27-point ratio reconciliation arithmetic added), plus 1 ESSENTIAL
-(the PBH Channel-II headline sits entirely inside the paper's own
-non-perturbative-branch window, a materially new finding beyond any prior
-leg) closed only by honest disclosure, NOT by computation -- R12 does NOT
-converge on this item, named as the next concrete unlock. 1 referee claim
-FALSIFIED (poly bracket endpoint, referee used rounded inputs). No physics
-error found anywhere in the paper's core derivations; no headline number
-changed. Full detail: `peer-reviews/DISPOSITIONS/A3M.md` section "R12";
-raw + truth-audit:
-`peer-reviews/INT_v3/ROUND_2026-09-22-A3M-v3M.0.29-EXACTPDF-0c8c318e-R12/`.
+last_updated: 2026-09-22 -- v3M.0.31. `D-A3-15`: lane `LS12-pbh-perturbativity`
+closed `DA3M-R12-06` [ESSENTIAL] BY COMPUTATION (superseding R12's
+disclosure-only close), the next directive-R2 intervening science decision.
+The Channel-II required-amplitude ratio was measured pointwise
+(1.2|f_NL|sigma_r, re-integrated from the compaction script's own Eq.-53
+variance integral at each of the 144 headline points' own required
+amplitude; 5 validation gates, 3 exact to machine zero) and found
+perturbatively controlled (both legs) at only 62 of 144 points. Headline
+RE-SCOPED, not withdrawn: 1.84+-0.03 (n=144) -> 1.81+-0.02 (n=62), applied in
+the abstract, Eq. (12), Sec. V C, "Regime of validity", and Table V's
+caption + dagger footnote (which also corrected an INVERTED
+non-perturbative-branch label: measured pointwise, epsilon *rises* with
+gamma_cr, so the headline window is the *more* controlled of the two, the
+opposite of the caption's prior implication). Reported against the paper
+with equal prominence: no point of the 144 reaches epsilon<=0.5 (population
+marginal throughout); ratio correlates with epsilon at Pearson +0.83
+(threshold-conditional, not cut-independent). Channel II's scientific
+conclusion UNCHANGED: still 7.0 dex short, f_PBH=0, a NULL. This lane ran
+directive-G hygiene only and NO review board; one confirmation board on the
+exact v3M.0.31 PDF is now authorized by R2 but not spent -- the director's
+call. Full detail: `peer-reviews/DISPOSITIONS/A3M.md` "R2 status" +
+`DA3M-R12-06`; source:
+`research/track_a3_multichannel/pbh_perturbativity_2026_09_22/` (pre-reg
+committed alone at `b289aa0f`, `PROPAGATION_NOTE.md`,
+`PBH_PERTURBATIVITY_2026-09-22.md`), manifest
+`reproducibility/manifests/experiments/a3-pbh-perturbativity-pointwise.json`.
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (23 pp / 0 undef refs / md5 a1bcf35a2789ce14091e43c80f4b5b9e / sha256 0f4c5f606dc8dabf6cf08eed58d5a3b10d128f44608ef8dd8eb0b7db1603fbae)
-version: v3M.0.30 (2026-09-22, R12 closure -- see "v3M.0.30" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (24 pp / 0 undef refs / md5 d669a73cd1ec8e330e212963a5930c89 / sha256 6f84f2600154d17e528184672bbd4eab7c29c85855e960de1868009abad3f21b)
+version: v3M.0.31 (2026-09-22, D-A3-15 propagation -- see "v3M.0.31" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
-headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (R12 found 6 genuinely-new-real, closed 5 of 6, 1 left open) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
-submission_status: draft, readiness 75 -- ROUNDS STOPPED 2026-09-22 under directive R2 (R12 budget spent). A further board requires an intervening science or scope decision (the PBH perturbativity pointwise check is the concrete candidate) or Houston's authorization.
+headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75; Convex UNAVAILABLE this bundle so the live number could not be recomputed -- stated as unchanged from v3M.0.30 pending recompute, not hand-set). Directive-P gate status: science 25 -- the propagation's own science is done, but automated-review convergence 25 remains NOT MET until a board confirms 0 genuinely-new-real on the exact v3M.0.31 PDF (none has run) / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence; this bundle explicitly did NOT run a board (task scope), so it cannot itself move the convergence gate.
+submission_status: draft, readiness 75 -- ROUNDS STOPPED under directive R2 from v3M.0.30, RE-ARMED 2026-09-22 by `D-A3-15` (one confirmation board on the exact v3M.0.31 PDF is now authorized, not yet spent; the director's call).
+
+## v3M.0.31 (2026-09-22) — D-A3-15 (PBH pointwise perturbativity) propagation; DA3M-R12-06 CLOSED BY COMPUTATION; no board run; R2 re-armed, not spent; readiness held at 75
+
+**What unlocked this bundle.** Lane `LS12-pbh-perturbativity` ran the per-point perturbativity
+diagnostic R12 could only disclose (`DA3M-R12-06` [ESSENTIAL]), pre-registered
+(`research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PREREGISTRATION.md`, committed
+alone at `b289aa0f` before any number existed) and handed off in `PROPAGATION_NOTE.md`. This lane
+(`bb-L1e-a3m-pbh-rescope`) verified every number against the committed `results.json` and
+`PBH_PERTURBATIVITY_2026-09-22.md` before applying it — no number here was trusted from the note's
+prose alone.
+
+**The computation.** For each of the 144 headline scan points (`gamma_cr in [0.267,0.630]`), the
+diagnostic `eps(f_NL) = 1.2|f_NL|sigma_r` was evaluated at both legs (`f_NL=-35/16` at
+`A=A_-35/16`, `f_NL=-35/8` at `A=A_-35/8`), `sigma_r` re-integrated from the compaction script's
+own Eq.-(53) variance integral (`pbh_compaction_fnl.covariances`, unmodified) at each point's own
+stored spectrum shape and required amplitude. Five validation gates, three exact to machine zero
+(G2 all-255-point `gamma_cr` reproduction, G3 the three committed `calibrated_amplitude_comparison`
+rows bit-for-bit, G4 the 27-point grid's `gamma_cr`), G1 (wide-vs-narrow integrator) at `5.7e-16`,
+G5 (headline population `n=144`, mean `1.8374`, std `0.0312`) exact.
+
+**Result: perturbative at both legs (`eps<=1`) at 62 of 144 points.** The `-35/8` leg fails at 82
+points (all 48 at `C_th=0.6`, 33 of 48 at `C_th=0.5`, 1 of 48 at `C_th=0.4`); the `-35/16` leg
+fails at 1. The controlled subset `P` (n=62, 34 lognormal + 28 power-law, 18 shapes, 5 `r_pk_p`
+values, 2 `C_th` values — passes the pre-registered diversity test, branch b1 does not fire):
+mean `1.8121`, std `0.0241`, range `[1.7594,1.8511]`. Branch **b2 fires**: `mean(P)=1.8121` rounds
+to `1.81`, not `1.84`. **The headline is re-scoped, not withdrawn**: the shift (`0.0253`) is
+within the previously quoted std (`0.0312`), but the printed three-significant-figure value and
+`n` both change.
+
+**What separates perturbative from non-perturbative is NOT `gamma_cr`** (P and H\P span the
+identical `gamma_cr` range `[0.2679,0.6298]`) — it is the formation threshold `C_th`. And **Table
+V's caption "non-perturbative branch" label on the `gamma_cr<~0.8` rows is inverted**: measured
+pointwise, `eps` *rises* with `gamma_cr` (Pearson `+0.32` over the full 255-point scan), so the
+headline window is, pointwise, the *more* controlled of the two windows — the opposite of what the
+caption implied. The referee's original premise (headline sits in a worse regime than the 27-point
+grid) is therefore false as stated, though the underlying concern (82 of 144 headline points are
+not perturbatively controlled) is confirmed.
+
+**The material weakness, reported with equal prominence (against the paper).** No point of the
+144-point population reaches `eps<=0.5` — the whole population is marginal, `eps~O(1)`
+everywhere. The ratio correlates with the diagnostic itself (Pearson `+0.83`, slope `+0.16` per
+unit `eps`), so the subset mean **slides with wherever the cut is placed**: `1.798` at a cut of
+`0.9`, `1.812` at `1.0`, `1.837` at `1.4`. `1.81±0.02` is therefore a threshold-conditional result,
+not a cut-independent observable — stated as such everywhere it is now quoted.
+
+**Paper edits (`research/track_a3_multichannel/paper/main.tex`), applying `PROPAGATION_NOTE.md`
+§2.1–2.9 exactly, verified against `results.json` before each edit:** abstract (`1.84±0.03` →
+`1.81±0.02 over the perturbatively controlled points`); Eq.~\eqref{eq:pbh_ratio} and its lead-in
+(now `1.81 [1.76,1.85], std=0.02, n=62`, with the full-144 and 27-point-grid numbers stated
+alongside, not dropped); the bridging sentence before "Regime of validity" (previously asserted
+the ratio "holds at every one of the 144 grid points... mean of 1.84" — now correctly scoped to
+the 62 controlled points); the "Regime of validity" passage fully replaced with the pointwise
+result, the marginality statement, and the cut-dependence; Sec.~V C's in-lab-shortfall paragraph;
+the Discussion's Channel-II sentence; Table V's caption headline sentence and `78`/`66` vs.
+`34`/`28` lognormal/power-law split; the caption's non-perturbative-branch parenthetical and the
+table's own dagger footnote (both corrected to "uncapped-abundance rows/uncapped", an
+amplitude-calibration label, not a perturbativity one — shortened under `\scriptsize` after an
+initial version overflowed the column by 118pt, then 40pt, caught by `/latex-audit`); a
+reproducibility-statement entry added for
+`research/track_a3_multichannel/pbh_perturbativity_2026_09_22/` and its manifest. **No `.tex`
+location retains the superseded "not been evaluated point-by-point ... left for future work"
+sentence** — it is deleted, replaced by the computation. Channel II's scientific conclusion is
+**unchanged**: still 7.0 dex short of the required amplitude, `f_PBH=0`, a NULL (ledger row 11 /
+A3-1b untouched).
+
+**Directive-I6 figure sweep (required by `PROPAGATION_NOTE.md` §2.9) — completed, negative
+result.** Inventoried every `\includegraphics` in `main.tex`: exactly two,
+`sigw_nhz_from_lab_spectrum_2026_09_04.png` (PTA/GW spectrum, unrelated to PBH) and
+`pbh_compaction_fnl.png` (Fig.~2, Channel II). Verified by reading the generator script
+(`pbh_compaction_fnl.py`'s plotting block) that Fig.~2 renders only `f_PBH` vs. amplitude curves
+at one representative grid point plus the Choudhury et al. band annotation — it contains no baked
+`1.84`, no `n=144`, and no branch label, so it needed no regeneration. The `row11_gammacr_extension.png`
+image `PROPAGATION_NOTE.md` names as baking the "quoted 1.7-1.9" band is confirmed real (its own
+generator script hardcodes `axhspan(1.7,1.9,...,label='quoted "1.7-1.9"')`) but **is not
+`\includegraphics`-ed or referenced anywhere in `main.tex`** — grep confirms zero occurrences of
+`row11_gammacr_extension` as a figure path or in prose. This is stated as a finding, not silently
+dropped: the note's assumption that this image is embedded in the paper does not hold for this
+exact manuscript, so directive-I6 requires no action here; verified by rendering the recompiled
+PDF (not by filename), pages 1, 12, 17, 21, 23 at 130dpi — no stale value, population count, or
+branch label visible on any rendered page.
+
+**Directive G hygiene.** `\paperVersion` v3M.0.30 → **v3M.0.31**, `\paperTimestamp` unchanged
+(already today's date). 4-pass pdflatex: 0 errors, 0 undefined references/citations, 24 pp (grew
+from 23). Overfull hboxes: max 3.90pt (unchanged pre-existing), one new table-footer overflow
+introduced by this bundle's first-draft caption text (118pt, then 40pt after shortening) fixed
+before commit by shortening the footnote text and switching it to `\scriptsize`; final state
+matches the two pre-existing residuals only (3.90pt, 2.16pt). `/latex-audit` visual PASS: pages 1
+(abstract), 11–12 (Eq.~(12) + Regime of validity), 17 (Discussion), 21 (reproducibility statement),
+23 (Table V + corrected footnote) rendered at 130dpi and inspected — no column overflow, no table
+overflow, all new prose and the shortened footnote fit cleanly. PDF mirrored byte-identical to
+`site/public/papers/a3_multichannel_arxiv_v3M.0.31.pdf`,
+`public/papers/a3_multichannel_arxiv_v3M.0.31.pdf`, and the source dir: md5
+`d669a73cd1ec8e330e212963a5930c89`, sha256
+`6f84f2600154d17e528184672bbd4eab7c29c85855e960de1868009abad3f21b`, 24 pp — verified served ==
+fresh-compile md5 on all three paths. **Convex UNAVAILABLE** (spending limit) —
+`paperVersions:bump` queued to `CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+
+**Directive R2 — re-armed, not spent.** `D-A3-15` (this bundle) is a genuine intervening science
+decision per directive R2: new computation (255 variance integrals at points' own amplitudes,
+pre-registered before any number existed), changing a printed headline value in five locations and
+a table caption's physical label — not a re-reading or presentation pass. It therefore authorizes
+**one further confirmation board on A3M, on the exact `v3M.0.31` PDF** — not run in this bundle,
+which was scoped to the propagation and directive-G hygiene only, per its own task mandate.
+**Readiness stays at the COMPUTED cap 75** (Convex unavailable to recompute the live number this
+bundle; automated-review-convergence remains NOT MET until that board runs and returns 0
+genuinely-new-real). Whether and when to spend the newly authorized board is the director's call.
 
 ## v3M.0.30 (2026-09-22) — R12 board + partial closure; ROUNDS STOPPED (R2 budget spent); readiness held at 75
 

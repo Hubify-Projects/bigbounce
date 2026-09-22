@@ -636,3 +636,30 @@ activityFeed:add({
 })
 ```
 
+
+---
+
+## L1e (bb-L1e-a3m-pbh-rescope), 2026-09-22
+
+Paper A3M, v3M.0.30 → v3M.0.31. Applied `D-A3-15` (the `LS12-pbh-perturbativity` propagation
+above) to `main.tex` with full directive-G hygiene. Closed `DA3M-R12-06` [ESSENTIAL] BY
+COMPUTATION. No review board run (this lane's explicit scope); one confirmation board on the
+exact v3M.0.31 PDF is now authorized by directive R2 but not spent — the director's call.
+
+```
+paperVersions:bump({
+  paperId: "A3M" (slug "paper-a3m"),
+  version: "v3M.0.31",
+  pages: 24,
+  date: "2026-09-22",
+  sha256: "6f84f2600154d17e528184672bbd4eab7c29c85855e960de1868009abad3f21b",
+  md5: "d669a73cd1ec8e330e212963a5930c89",
+})
+
+activityFeed:add({
+  type: "r-round",
+  title: "A3M: Channel II PBH headline re-scoped 1.84+-0.03 (n=144) -> 1.81+-0.02 (n=62) by the pointwise perturbativity computation; DA3M-R12-06 closed by computation -- v3M.0.30 -> v3M.0.31",
+  tags: ["A3M", "pbh", "channel-II", "r-round", "campaign-2026-09-18"],
+  summary: "Lane bb-L1e-a3m-pbh-rescope applied D-A3-15 (lane LS12-pbh-perturbativity's pre-registered pointwise perturbativity computation) to main.tex, closing A3M's last open R12 ESSENTIAL item (DA3M-R12-06) by computation rather than honest disclosure. Every number verified against the committed results.json before use. The Channel II required-amplitude ratio is re-scoped from 1.84+-0.03 (n=144, all in-coverage points) to 1.81+-0.02 (n=62, the subset perturbatively controlled at both candidate values per the paper's own 1.2|f_NL|sigma_r<=1 criterion) in the abstract, Eq. (eq:pbh_ratio), Sec. V C, the Regime-of-validity passage, and Table V's caption. Table V's caption and dagger footnote also corrected an inverted non-perturbative-branch label: measured pointwise, the diagnostic RISES with gamma_cr, so the headline window is the more controlled of the two, the opposite of the prior caption's implication. Reported with equal prominence against the paper: no point of the 144 reaches eps<=0.5 (population marginal throughout); the ratio correlates with the diagnostic at Pearson +0.83, so the subset value is threshold-conditional (1.798 at a cut of 0.9 to 1.837 at 1.4), not cut-independent. Channel II's scientific conclusion is unchanged: still 7.0 dex short, f_PBH=0, a NULL. Directive-I6 figure sweep: both includegraphics in main.tex inspected via their generator scripts; neither bakes the superseded value (the row11_gammacr_extension.png the propagation note names as baking a stale '1.7-1.9' band is confirmed real but is not included anywhere in main.tex -- a finding stated plainly, not silently dropped); no figure regeneration needed. Directive-G: 4-pass recompile 0 undef refs, 24pp (grew from 23), max overfull hbox 3.90pt (unchanged pre-existing; a new 118pt table-footer overflow from this bundle's first-draft caption text was caught by /latex-audit and fixed by shortening + scriptsize before commit), visual PASS on pages 1/11-12/17/21/23 at 130dpi, byte-identical 3-way mirror verified (md5 d669a73cd1ec8e330e212963a5930c89 == fresh compile == both served paths). No review board run (this lane's scope was the propagation + hygiene only); directive R2 is re-armed by D-A3-15 (one confirmation board on the exact v3M.0.31 PDF now authorized, not spent -- the director's call). Readiness held at the COMPUTED cap 75 pending that board and a live Convex recompute. Evidence: research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PROPAGATION_NOTE.md; peer-reviews/DISPOSITIONS/A3M.md (DA3M-R12-06, D-A3-15); SSOT/paper-a3m/status.md 'v3M.0.31' section.",
+})
+```

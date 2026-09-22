@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.30}
+\newcommand{\paperVersion}{v3M.0.31}
 \newcommand{\paperTimestamp}{September 22, 2026}
 
 \begin{document}
@@ -77,7 +77,7 @@ concrete prediction needs an unmodelled entropy sector. Three channels
 remain conditional checks on the excluded background: pulsar timing
 ($\gamma_{\rm pred}=5.07$ vs.\ NANOGrav's $3.2\pm0.6$, a $90\%$
 half-width, i.e.\ a $5.1\sigma$
-null), PBHs (ratio $1.84\pm0.03$ within this model's own
+null), PBHs (ratio $1.81\pm0.02$ over the perturbatively controlled points of this model's own
 $\gamma_{\rm cr}$ coverage, $6.7$--$7.0$ decades short,
 $\fpbh=0$), and SMBH seeds (FIRAS-excluded); DESI DR1 cannot separate
 candidates. The contribution is the exact
@@ -1198,35 +1198,42 @@ curvature amplitudes needed to reach a fixed target abundance, since $K$,
 $\Omega_{\rm DM}$, $g_*$, and $M_H$ all cancel in it: reaching the floor of the
 Choudhury \textit{et al.} band, $\fpbh = 10^{-3}$, requires
 \begin{equation}
-  \frac{A(-35/16)}{A(-35/8)} = 1.84~[1.76,\,1.89],\quad {\rm std}=0.03,\ n=144,
+  \frac{A(-35/16)}{A(-35/8)} = 1.81~[1.76,\,1.85],\quad {\rm std}=0.02,\ n=62,
   \label{eq:pbh_ratio}
 \end{equation}
-restricted to $\gamma_{\rm cr}\in[0.267,0.630]$, the interval this model's
-own near-scale-invariant spectrum shape occupies (on the narrower,
-original $27$-point fiducial grid, $\gamma_{\rm
-cr}\in[0.766,0.968]$, the same ratio is $1.732~[1.610,\,1.809]$,
-${\rm std}=0.050$, and must not be quoted as universal), i.e.\ stable to
+over the points of the $\gamma_{\rm cr}\in[0.267,0.630]$ in-coverage set --- the interval this model's
+own near-scale-invariant spectrum shape occupies --- that satisfy the paper's own perturbativity
+criterion at both candidate values ($62$ of $144$; see \emph{Regime of validity} below). Without that
+restriction the same $144$ points give $1.84~[1.76,\,1.89]$, ${\rm std}=0.03$; on the narrower,
+original $27$-point fiducial grid ($\gamma_{\rm cr}\in[0.766,0.968]$, whose own pointwise diagnostic is
+\emph{worse}, $1.2|\fnl|\sigma_r$ up to $2.2$ and $3.2$ at the two candidate values) the ratio is
+$1.732~[1.610,\,1.809]$, ${\rm std}=0.050$, and must not be quoted as universal, i.e.\ stable to
 $\pm2\%$--$6\%$ while $\fpbh$ itself moves by more than $100$ dex. This
-ratio is the channel's most reproducible output -- it holds at every one of
-the $144$ grid points in this model's own $\gamma_{\rm cr}$ range and is
-robust to spectrum shape ($\rm std=0.03$ on a mean of $1.84$; the original,
+ratio is the channel's most reproducible output -- it holds, subject to the perturbativity
+restriction detailed below, at $62$ of the $144$ grid points in this model's own $\gamma_{\rm cr}$
+range and is robust to spectrum shape ($\rm std=0.02$ on a mean of $1.81$; the original,
 narrower $27$-point fiducial grid gives $1.732\pm0.050$ and must not be
-quoted as universal) -- and it is a result within a stated regime, not a claim of
-general validity. \emph{Regime of validity.} The result lives on the
-anti-correlated ($\gamma_{\rm cr}>0$, $J>1$) branch identified above, and it
-holds at curvature excursions where the quadratic local map is not always
-perturbatively controlled: $1.2|\fnl|\sigma_r\approx0.54$--$1.01$ at $-35/16$
-and $\approx1.09$--$2.02$ at $-35/8$ on the displayed $27$-point grid -- the
-same class of limitation Choudhury \textit{et al.} report as their own
-$|\fnl|\lesssim60$ perturbativity bound, and a limitation of the shared
-quadratic ansatz rather than of either calculation specifically. This
-diagnostic has not been separately evaluated point-by-point on the
-headline $144$-point in-coverage set, whose entire $\gamma_{\rm
-cr}\in[0.267,0.630]$ range lies below the $\gamma_{\rm cr}\lesssim0.8$
-non-perturbative-branch threshold identified below; that the ratio's own
-$\gamma_{\rm cr}$-slope is measured continuous and consistent between the
-two grids (above) is evidence the same qualitative regime applies, not a
-substitute for the pointwise diagnostic, which is left for future work.
+quoted as universal) -- and it is a result within a stated and threshold-conditional regime, not a
+claim of general validity. \emph{Regime of validity.} The result lives on the anti-correlated
+($\gamma_{\rm cr}>0$, $J>1$) branch identified above, and the perturbativity of the quadratic local
+map has now been evaluated \emph{pointwise} across the full $144$-point in-coverage set, each point
+at its own required amplitude: $1.2|\fnl|\sigma_r$ runs $0.54$--$1.05$ at $-35/16$ and
+$0.82$--$1.53$ at $-35/8$, so the criterion $1.2|\fnl|\sigma_r\lesssim1$ is satisfied at both
+candidate values at $62$ of the $144$ points and violated at the remaining $82$ (all $48$ points
+at $C_{\rm th}=0.6$, $33$ of $48$ at $C_{\rm th}=0.5$, $1$ of $48$ at $C_{\rm th}=0.4$; the
+$-35/8$ leg is the binding one, the $-35/16$ leg failing at a single point). Restricted to the
+$62$ points that satisfy it, the required-amplitude ratio is $1.81~[1.76,\,1.85]$,
+${\rm std}=0.02$ --- the value quoted in Eq.~\eqref{eq:pbh_ratio} and in the abstract. Two facts
+are recorded against it rather than around it: no point of the in-coverage set reaches
+$1.2|\fnl|\sigma_r\le0.5$, so the population is marginal throughout; and the ratio is correlated
+with the diagnostic itself (Pearson $+0.83$, slope $+0.16$ per unit $1.2|\fnl|\sigma_r$ across
+the window), so the subset mean slides with the threshold, from $1.798$ at a cut of $0.9$ to the
+full-window $1.837$ at $1.4$. The ratio is therefore a result within a stated and
+threshold-conditional regime, not a claim of general validity, and a cut-independent Channel~II
+observable would require the resummed (non-quadratic) map left open above. This is the same class
+of limitation Choudhury \textit{et al.} report as their own $|\fnl|\lesssim60$ perturbativity
+bound, and a limitation of the shared quadratic ansatz rather than of either calculation
+specifically.
 \emph{Non-monotonicity.} At fixed
 curvature amplitude, $\fpbh(\fnl)$ is strongly non-monotonic along the
 continuity path from the Gaussian case ($\fnl=0$) to $-35/8$: it falls by
@@ -1266,16 +1273,17 @@ ratio $A(-35/16)/A(-35/8)$ required to reach $\fpbh=10^{-3}$, and the
 Gaussian-calibrated amplitude $A_*$ with no upper cutoff applied -- for
 representative points of the $(\Delta,r_pk_p,C_{\rm th})$ grid (full 27-point
 grid in the reproducibility statement's Channel~II artifacts; the
-headline $1.84\pm0.03$ below comes from the $144$-point in-coverage subset
-of the extended scan (reproducibility statement below), not from the
+headline $1.81\pm0.02$ below comes from the $62$ perturbatively controlled points of the
+$144$-point in-coverage subset of the extended scan (reproducibility statement below), not from the
 $27$-point grid). An extended $255$-point scan over
 $\gamma_{\rm cr}\in[0.196,0.968]$ (two spectrum-shape families) gives
 $1.83\pm0.05$ overall (range $[1.61,1.91]$); restricted to
 $\gamma_{\rm cr}\in[0.267,0.630]$, the interval this model's own
 near-scale-invariant spectrum shape occupies, the ratio is
-$\mathbf{1.84\pm0.03}$ ($144$ points, range $[1.76,1.89]$; $78$
-lognormal and $66$ power-law shapes whose $\gamma_{\rm cr}$ falls in that
-interval, the power-law family alone giving $1.839\pm0.031$); on the
+$\mathbf{1.81\pm0.02}$ ($62$ of $144$ points, range $[1.76,1.85]$; the full $144$ give
+$1.84\pm0.03$, range $[1.76,1.89]$). The $78$
+lognormal and $66$ power-law split refers to the full $144$; the controlled subset is $34$
+lognormal and $28$ power-law. On the
 original $27$-point fiducial grid ($\gamma_{\rm cr}\in[0.766,0.968]$) it
 is $1.732\pm0.050$ (range $[1.610,1.809]$) and must not be quoted as
 universal. The ratio decreases with $\gamma_{\rm cr}$ at fixed
@@ -1286,17 +1294,19 @@ $C_{\rm th}$, so it is not monotonic across the union of families and
 thresholds. This single slope reconciles the two headline numbers: the
 mean $\gamma_{\rm cr}$ of the $144$-point set is $0.430$ against $0.853$ for
 the $27$-point grid, and $1.759+(-0.20)(0.430-0.853)=1.84$, matching the
-$144$-point mean to three significant figures. The abstract's $1.84\pm0.03$
-is therefore a shape-resolved scan result, not a union of a scan and an
+$144$-point mean to three significant figures. The abstract's $1.81\pm0.02$
+(the perturbatively controlled subset; the full $144$-point in-coverage scan gives
+$1.84\pm0.03$) is therefore a shape-resolved scan result, not a union of a scan and an
 out-of-coverage point. Each row is evaluated at its own labeled
 $(\Delta,r_pk_p,C_{\rm th})$ with its own Gaussian calibration; the
 per-row $A_*$ are $0.1687$, $0.1054$, $0.1314$, $0.3790$, $0.0963$
 (reproducibility statement below). Any entry with $\fpbh>1$ -- including
-the $\gamma_{\rm cr}\lesssim0.8$ rows (\emph{non-perturbative branch};
-$1.2|\fnl|\sigma_r\approx0.5$--$2$, i.e.\ $O(\epsilon)\sim1$ where the
-linearized criterion above is not controlled, IR-cutoff-dependent per
-the text) -- is an \emph{uncapped ratio} at that $A_*$, not a physical
-probability. The
+the $\gamma_{\rm cr}\lesssim0.8$ rows (\emph{uncapped-abundance rows}; these are the rows
+whose Gaussian-calibrated $\fpbh$ exceeds unity, an amplitude-calibration statement and not a
+perturbativity one --- the pointwise diagnostic $1.2|\fnl|\sigma_r$ in fact \emph{increases}
+with $\gamma_{\rm cr}$, reaching $2.2$ and $3.2$ at the two candidate values on this grid's own
+required amplitudes, against $1.05$ and $1.53$ on the headline in-coverage set) -- is an
+\emph{uncapped ratio} at that $A_*$, not a physical probability. The
 sign disagreement with Choudhury \textit{et al.} is resolved above:
 negative $\fnl$ suppresses the abundance, as they
 report (reproducibility statement below).}
@@ -1311,7 +1321,7 @@ $0.80$ & $0.75$ & $0.6$ & $0.766^{\dagger}$ & $9.5\times10^{5}$   & $6.6\times10
 $0.80$ & $1.5$  & $0.4$ & $0.857$ & $1.9\times10^{-14}$ & $3.2\times10^{-3}$ & $1.677$ \\
 \colrule
 \multicolumn{6}{l}{\footnotesize mean ratio $1.732\,[1.610,1.809]$, std $0.050$, $n=27$} & \\
-\multicolumn{6}{l}{\footnotesize $^{\dagger}$non-perturbative: $\fpbh{>}1$ uncapped} & \\
+\multicolumn{6}{l}{\scriptsize $^{\dagger}$uncapped: $\fpbh{>}1$ (amplitude calib., not perturbativity)} & \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -1382,8 +1392,10 @@ thirteen to fourteen decades above the BBN scale ($\sim1\,$MeV); a scale-indepen
 itself close the $7$-decade amplitude shortfall found below, so this
 condition, while formally required, does not affect the null verdict. On
 this shape, inside the model's own $\gamma_{\rm cr}\in[0.267,0.630]$
-coverage the required-amplitude ratio is $1.84\pm0.03$ across a threshold
-scan $C_{\rm th}\in\{0.4,0.5,0.6\}$: the ratio remains the channel's
+coverage the required-amplitude ratio is $1.81\pm0.02$ over the perturbatively
+controlled points of a threshold scan $C_{\rm th}\in\{0.4,0.5,0.6\}$ --- the
+whole of $C_{\rm th}=0.6$ being excluded by that criterion, and
+$1.84\pm0.03$ if the uncontrolled points are retained: the ratio remains the channel's
 robust, spectrum-shape-stable output, but the narrower $1.732\pm0.050$
 from the original fiducial grid must not be quoted as if it were
 universal.
@@ -1899,7 +1911,8 @@ small-scale spectral enhancement this model does not have, and is retained
 only as a flagged contrast case. This channel is also insensitive to the
 value of $\fnl$ and therefore does not test it either way.
 Primordial black holes yield a reproducible amplitude ratio
-($1.84\pm0.03$ within this model's own $\gamma_{\rm cr}$ coverage)
+($1.81\pm0.02$ over the perturbatively controlled points of this model's own
+$\gamma_{\rm cr}$ coverage; $1.84\pm0.03$ if the uncontrolled points are retained)
 between the two candidate values, but the lab's own predicted spectrum falls
 $6.7$--$7.0$ orders of magnitude short of the required amplitude at every mass
 scale considered (Sec.~\ref{sec:pbh_inlab}): the channel is a clean null for
@@ -2356,8 +2369,15 @@ calculation is at
 the PBH sign-correction and extended
 $\gamma_{\rm cr}$ scan of Sec.~\ref{sec:pbh_compaction},
 including \texttt{results/}\allowbreak\texttt{row11\_gammacr\_extension.json}, is at
-\texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{row11\_pbh\_residuals/};
-and the
+\texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{row11\_pbh\_residuals/}.
+The pointwise perturbativity diagnostic of Sec.~\ref{sec:pbh_compaction} is
+\texttt{research/track\_a3\_multichannel/}\allowbreak\texttt{pbh\_perturbativity\_2026\_09\_22/}
+(\texttt{pbh\_perturbativity.py}, \texttt{results.json},
+\texttt{threshold\_sensitivity.json}; pre-registration committed before the computation), manifest
+\texttt{reproducibility/manifests/}\allowbreak\texttt{experiments/}\allowbreak\texttt{a3-pbh-perturbativity-pointwise.json}.
+It re-runs the committed variance integral at each scan point's own required amplitude and reproduces
+the committed $\gamma_{\rm cr}$ and $\sigma_r$ values exactly.
+The
 Appendix~\ref{app:derivation} threading-map identity is at
 \texttt{research/theory\_audit/threading\_map\_second\_order\_}\allowbreak
 \texttt{2026\_09\_04.py}, each with a manifest under

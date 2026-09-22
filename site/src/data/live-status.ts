@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.30",
+      version: "v3M.0.31",
       readiness: 75,
-      pendingWork: "R12 (the one confirmation board the row-9b science decision authorized) found 6 genuinely-new-real items on the exact v3M.0.29 PDF -- Grok/Gemini API FAILED-INFRA (shared-checkout contention, not faked/back-filled), Claude opus verdict-blind referee MAJOR REVISIONS. 5 closed by real edit (two caused by this lane's own row-9b propagation: LQC's two irreconcilable transfers 0.409/0.500 distinguished; rho+p notation and undefined x fixed); 1 ESSENTIAL closed only by honest disclosure -- the PBH channel's headline ratio sits entirely inside the paper's own non-perturbative-branch window, the next concrete unlock. No physics error found; no headline number changed. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI, and run the PBH perturbativity pointwise check that would authorize a further board."
+      pendingWork: "D-A3-15 (2026-09-22): the PBH channel's headline ratio is RE-SCOPED, not withdrawn -- 1.84+-0.03 (n=144) -> 1.81+-0.02 (n=62), the subset perturbatively controlled at both candidate values by the paper's own criterion -- closing R12's last open ESSENTIAL item (DA3M-R12-06) BY COMPUTATION. Table V's non-perturbative-branch label corrected (inverted pointwise: the diagnostic rises, not falls, with gamma_cr). Channel II's null conclusion unchanged (7.0 dex short, f_PBH=0). No review board run this bundle; directive R2 is re-armed and now authorizes one confirmation board on the exact v3M.0.31 PDF -- not yet spent, the director's call. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI, and spend or defer the newly authorized confirmation board."
     },
     {
       slug: "paper-3",
