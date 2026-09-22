@@ -353,6 +353,94 @@ activityFeed:add({
 })
 ```
 
+## Lane bb-LCB-confirm-p1b-p2 (2026-09-22) — P2 R-CONFIRM, v1.7.130 -> v1.7.131
+
+Exact-version confirmation board on P2 v1.7.130 (sha256 d3afe79fe70c...): Grok
+API REJECT, Gemini API MINOR REVISIONS, Claude opus verdict-blind sub-agent
+MAJOR REVISIONS (36 findings). NOT a clean wave. Truth-audited against
+`DISPOSITIONS/P2.md`; mechanical/editorial majority of genuinely-new-real
+items closed by real edit in v1.7.131 (see `DISPOSITIONS/P2.md` "v1.7.130
+R-CONFIRM" section for the full fingerprinted list). Left open by design:
+three ESSENTIAL-tier scientific-framing findings (independent-derivation-vs-
+trusted-inputs framing; Cai/Li convention-mismatch, Houston-gated re-flag of
+standing DP2-25; inflation-vs-bounce projection-argument asymmetry), a full
+Fisher-ladder specification table, and several smaller deferred items.
+
+```
+rRounds:create({
+  paperId: "P2",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  reviewers: ["Grok API (grok-4.3)", "Gemini API (gemini-3.1-pro-preview)", "Claude opus sub-agent (verdict-blind)"],
+  note: "Exact-version confirmation board on v1.7.130 (sha256 d3afe79fe70c...). Verdicts: REJECT / MINOR REVISIONS / MAJOR REVISIONS, 36 findings (opus leg). Truth-audited against DISPOSITIONS/P2.md; mechanical/editorial majority closed by real edit in v1.7.131. NOT a clean/converged wave -- 3 ESSENTIAL scientific-framing findings + a Fisher-ladder spec table left open by design.",
+})
+```
+
+```
+rRounds:markComplete({
+  paperId: "P2",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+})
+```
+
+```
+externalReviews:upsertByLabelDate({
+  paperId: "P2",
+  reviewer: "Grok",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "reject",
+  source: "internal-stage3",
+  note: "Exact v1.7.130 (sha256 d3afe79fe70c...) via tools/v3_native_pdf_review.py. 4 ESSENTIAL + 3 MAJOR + 2 MINOR + 1 NIT. Two findings FALSIFIED (abstract qualifier claimed missing but present verbatim; r=0.84 rounding claimed unpropagated but the direct 2.61sigma value is already shown beside it). Remaining genuinely-new-real findings closed by real edit or re-flagged to standing DP2-25/DP2-30.",
+})
+```
+
+```
+externalReviews:upsertByLabelDate({
+  paperId: "P2",
+  reviewer: "Gemini",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "minor-revisions",
+  source: "internal-stage3",
+  note: "Exact v1.7.130 (sha256 d3afe79fe70c...) via tools/v3_native_pdf_review.py. 1 ESSENTIAL (DOI-version mismatch, already disclosed in-text, Houston-gated re-archival) + 3 MAJOR (2 missing citations, 1 leaked script-name jargon) + 1 NIT (figure-axis claim, FALSIFIED by direct render check). All actionable findings closed by real edit in v1.7.131.",
+})
+```
+
+```
+externalReviews:upsertByLabelDate({
+  paperId: "P2",
+  reviewer: "Claude opus (verdict-blind sub-agent)",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "major-revisions",
+  source: "internal-stage3",
+  note: "Exact v1.7.130 (sha256 d3afe79fe70c...), cold read, no repository access, no review history. 3 ESSENTIAL + 10 MAJOR + 15 MINOR + 8 NIT (36 total); every displayed equation and table entry independently re-derived in sympy and found exact, no algebraic error found anywhere. Mechanical/editorial majority (citations, undefined r/r_cos grid, growth-factor text/code fidelity, table mislabeling, count inconsistency, AI-disclosure length, bib formatting) closed by real edit in v1.7.131. Left open by design: independent-derivation-vs-trusted-inputs framing (E1), Cai/Li convention-mismatch (E2, re-flag of DP2-25), inflation-vs-bounce projection asymmetry (E3), Fisher-ladder specification table (M3), several smaller deferred items -- none fabricated toward, none silently dropped.",
+})
+```
+
+```
+paperVersions:bump({
+  paperId: "P2",
+  version: "v1.7.131",
+  dateISO: "2026-09-22",
+  sha256: "0e7aaf3fc46cad71f63f1d804d4993ad17a95d432076523927ff4afd3fa3dd90",
+  md5: "b7ba55724042883ce6c27a29b5b56436",
+  pages: 12,
+  note: "R-CONFIRM exact-version board closed most genuinely-new-real findings (missing citations, r/r_cos grid definition transcribed from committed script, growth-factor text/code fidelity clarification, misattributed citation fixed, certification-count harmonized with Li-et-al internal tension disclosed, table mislabeling fixed, uncertainty propagated, AI-disclosure trimmed, bib formatting). NOT a confirmed/converged board -- 3 ESSENTIAL scientific-framing findings + a Fisher-ladder spec table remain open by design. Readiness holds 95, computed.",
+})
+```
+
+```
+activityFeed:add({
+  type: "r-round",
+  title: "P2 R-CONFIRM: exact-version board raises three deep scientific-framing questions on the -35/16 result",
+  tags: ["P2", "v1.7.131", "r-round", "confirmation", "campaign-2026-09-18"],
+  summary: "Lane bb-LCB-confirm-p1b-p2 closed the exact-version confirmation gap flagged in the 2026-09-19/22 sign-off packets. Board (Grok REJECT / Gemini MINOR REVISIONS / Claude opus verdict-blind MAJOR REVISIONS, 36 findings) was NOT clean, though every displayed equation was independently re-derived in sympy with zero algebraic errors found. Mechanical/editorial majority closed by real edit: 2 missing citations (one traced to the committed Fisher script's own code comments), the r=0.8354/r_cos=0.9817 grid+weight+formulas defined explicitly and verified live against the committed script, a growth-factor text/code fidelity gap clarified (the Fisher code uses CAMB directly, sidestepping the referee's D(z)-convention worry), a misattributed citation fixed, an inconsistent certification count harmonized (with a new Li-et-al internal tension disclosed, not resolved), a table mislabeling fixed, an uncertainty propagated, the AI-usage disclosure trimmed. Left open by design: whether -35/16 is an independent derivation or a re-summation of trusted inputs, the Cai/Li convention-mismatch question (Houston-gated re-flag of DP2-25), the inflation-vs-bounce projection asymmetry, and a Fisher-ladder specification table. v1.7.130 -> v1.7.131, 12pp unchanged. Readiness holds 95.",
+})
+```
+
 ---
 
 ## LS9 `bb-LS9-bardeen-lqc` — ledger row 9b (2026-09-22)

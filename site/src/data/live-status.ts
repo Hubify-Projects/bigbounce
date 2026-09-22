@@ -92,10 +92,10 @@ export const liveStatus: LiveStatus = {
     {
       slug: "paper-2",
       number: "2",
-      shortTitle: "Matter-contraction f_NL forecast (archived — see P2′)",
-      version: "v1.7.130",
+      shortTitle: "Matter-contraction f_NL forecast",
+      version: "v1.7.131",
       readiness: 95,
-      pendingWork: "Archived lineage: rescoped into P2′ (Track A A1 Letter) 2026-09-02 after ledger #1 closed. Unedited on disk, not an independent submission target.",
+      pendingWork: "R-CONFIRM exact-version board (2026-09-22) found real items and closed most by real edit (see DISPOSITIONS/P2.md); NOT yet a confirmed/converged board. Open by design: whether -35/16 is an independent derivation vs. a re-summation of trusted inputs, the Cai/Li convention-mismatch question (Houston-gated re-flag of DP2-25), and the inflation-vs-bounce projection-argument asymmetry. Standalone PRD submission target; its theory content also echoes inside A3M but P2 itself was not retired.",
     },
     {
       slug: "paper-2l",

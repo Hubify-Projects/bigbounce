@@ -56,17 +56,39 @@ submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HAR
 
 # P2 status — current authoritative section
 
-**Current candidate:** v1.7.130 · `research/focused_paper_source_integration/02_full_draft.tex`
+**Current candidate:** v1.7.131 · `research/focused_paper_source_integration/02_full_draft.tex`
 **Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
 
-The July 22 active-leg findings and subsequent publication-compliance closures
-are closed in v1.7.130. The central contraction-phase result remains bounded by
-the manuscript's stated scheme and evidence; convergence is not a claim of
-journal acceptance. A bounded final-hash confirmation remains evidence hygiene
-because v1.7.130 postdates the complete portfolio board. Next is Houston's
-sign-off and PRD portal work (APS account, ORCID/DAS checks, upload), tracked as
-publishing rather than a readiness deduction. Old caps and OPEN rows below are
-historical unless promoted here.
+**v1.7.131 (2026-09-22, lane bb-LCB-confirm-p1b-p2):** closed the exact-version
+confirmation gap this row previously carried (last confirmed board several
+patches behind the served PDF). A fresh Grok+Gemini+Claude-opus board ran on
+the exact v1.7.130 PDF (verdicts REJECT/MINOR-REVISIONS/MAJOR-REVISIONS, 36
+findings from the opus leg alone) — see `DISPOSITIONS/P2.md` "v1.7.130
+R-CONFIRM" for the full fingerprinted list. **This is NOT a CONFIRMED/converged
+board.** The mechanical/editorial majority of genuinely-new-real findings were
+closed by real edit (missing citations, undefined r/r_cos grid definition now
+transcribed from the committed script, CP-adjacent statistical-framing fixes,
+a text/code fidelity gap on the growth-factor kernel, bibliography formatting,
+several wording/labeling fixes). Left open by design, not silently dropped:
+three ESSENTIAL-tier scientific-framing findings (whether the -35/16 result
+constitutes an independent derivation vs. a re-summation of trusted transcribed
+inputs; whether a convention mismatch rather than a literature error explains
+the discrepancy with Cai/Li's own printed polynomials — re-flag of the
+already-disclosed, Houston-gated DP2-25; and whether the squeezed-limit
+projection argument applied to inflation also applies to matter-contraction),
+plus a full Fisher-ladder specification table and several smaller deferred
+items (all logged in DISPOSITIONS/P2.md). None of these are hidden or
+disclosed-away; each requires either new derivation work this lane did not
+attempt (per /never-fabricate-derivation) or a deliberate author framing
+decision. The central contraction-phase result remains bounded by the
+manuscript's stated scheme and evidence; convergence is not a claim of journal
+acceptance. Readiness holds 95 (computed; the open items are Houston-gated,
+already-disclosed, or explicitly deferred non-blocking editorial/derivation
+gaps, not live agent-actionable defects hidden from the record). Next is
+Houston's sign-off and PRD portal work (APS account, ORCID/DAS checks,
+upload), tracked as publishing rather than a readiness deduction, alongside a
+possible future lane closing the three escalated ESSENTIAL items. Old caps and
+OPEN rows below are historical unless promoted here.
 
 ## Historical status ledger
 
