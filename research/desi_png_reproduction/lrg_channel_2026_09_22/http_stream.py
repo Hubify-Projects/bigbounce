@@ -236,3 +236,124 @@ def stream_fits_bintable(url, columns, chunk_rows=200000, row_filter=None,
         if progress:
             progress(done, nrows)
     return {c: np.concatenate(acc[c]) if acc[c] else np.array([]) for c in columns}, nrows
+
+
+def stream_fits_sequential(url, columns, row_filter=None, chunk=32 << 20,
+                            progress=None):
+    """Single strictly-sequential pass over a remote FITS binary table.
+
+    Reads byte 0 -> EOF exactly once, so the returned sha256 is the sha256 of
+    the WHOLE file at no extra network cost, while only `columns` are kept in
+    memory (optionally filtered per chunk). Nothing is written to disk.
+    """
+    import hashlib
+
+    size = content_length(url)
+    h = hashlib.sha256()
+    pos = 0
+    hdr_buf = bytearray()
+    data_start = nrows = rowbytes = None
+    cols = None
+    acc = {c: [] for c in columns}
+    rem = b""
+    rows_done = 0
+    while pos < size:
+        end = min(pos + chunk, size) - 1
+        blk = _get(url, pos, end)
+        h.update(blk)
+        if data_start is None:
+            hdr_buf += blk
+            try:
+                data_start, nrows, rowbytes, cols = fits_bintable_header_from_bytes(bytes(hdr_buf))
+            except _NeedMore:
+                pos = end + 1
+                continue
+            for c in columns:
+                if c not in cols:
+                    raise KeyError(f"{c} not in {sorted(cols)}")
+            blk = bytes(hdr_buf)[data_start:]
+        body = rem + blk
+        nfull = min(len(body) // rowbytes, nrows - rows_done)
+        if nfull > 0:
+            arr = np.frombuffer(body[:nfull * rowbytes], dtype=np.uint8).reshape(nfull, rowbytes)
+            chunkd = {}
+            for c in columns:
+                off, dt, isz, rep = cols[c]
+                sub = arr[:, off:off + isz * rep].copy()
+                v = sub.view(dt if dt.startswith("S") else f">{dt}")
+                chunkd[c] = v[:, 0] if rep == 1 else v
+            if row_filter is not None:
+                m = row_filter(chunkd)
+                for c in columns:
+                    chunkd[c] = chunkd[c][m]
+            for c in columns:
+                acc[c].append(np.ascontiguousarray(
+                    chunkd[c].astype(chunkd[c].dtype.newbyteorder("="))))
+            rows_done += nfull
+            del arr, chunkd
+        rem = body[nfull * rowbytes:]
+        del body
+        pos = end + 1
+        if progress:
+            progress(rows_done, nrows, pos, size)
+    assert rows_done == nrows, (rows_done, nrows)
+    out = {c: (np.concatenate(acc[c]) if acc[c] else np.array([])) for c in columns}
+    return out, dict(nrows=nrows, rowbytes=rowbytes, bytes=size,
+                     sha256=h.hexdigest())
+
+
+class _NeedMore(Exception):
+    pass
+
+
+def fits_bintable_header_from_bytes(buf):
+    """Same parse as fits_bintable_header but over an in-memory prefix."""
+    pos = 0
+    hdr = {}
+    while True:
+        if pos + 2880 > len(buf):
+            raise _NeedMore()
+        h = _parse_header(buf[pos:pos + 2880])
+        hdr.update(h)
+        pos += 2880
+        if h.get("__END__"):
+            break
+    naxis = int(hdr.get("NAXIS", "0"))
+    npix = 1
+    for a in range(1, naxis + 1):
+        npix *= int(hdr.get(f"NAXIS{a}", "1"))
+    if naxis == 0:
+        npix = 0
+    bitpix = abs(int(hdr.get("BITPIX", "8")))
+    pos += ((npix * bitpix // 8 + 2879) // 2880) * 2880
+    ehdr = {}
+    while True:
+        if pos + 2880 > len(buf):
+            raise _NeedMore()
+        h = _parse_header(buf[pos:pos + 2880])
+        ehdr.update(h)
+        pos += 2880
+        if h.get("__END__"):
+            break
+    assert ehdr.get("XTENSION", "").upper().startswith("BINTABLE")
+    rowbytes = int(ehdr["NAXIS1"])
+    nrows = int(ehdr["NAXIS2"])
+    cols, off = {}, 0
+    for j in range(1, int(ehdr["TFIELDS"]) + 1):
+        name = ehdr[f"TTYPE{j}"].strip()
+        tform = ehdr[f"TFORM{j}"].strip()
+        rep, k = "", 0
+        while k < len(tform) and tform[k].isdigit():
+            rep += tform[k]
+            k += 1
+        rep = int(rep) if rep else 1
+        code = tform[k]
+        dt, isz = _FITS_TYPES[code]
+        if code == "A":
+            cols[name] = (off, f"S{rep}", rep, 1)
+            off += rep
+        else:
+            cols[name] = (off, dt, isz, rep)
+            off += isz * rep
+    assert off == rowbytes, (off, rowbytes)
+    return pos, nrows, rowbytes, cols

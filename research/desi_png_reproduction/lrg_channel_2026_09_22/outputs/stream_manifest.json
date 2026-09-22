@@ -1,0 +1,105 @@
+{
+  "_galb_vs_astropy_max_absdeg": 3.056556582947678e-06,
+  "LRG_NGC_data": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_NGC_clustering.dat.fits",
+    "sha256": "84548c4ea5208232f1c2f04416ddf272c72fa31313e3bbb60e67d134f186a027",
+    "bytes": 143196480,
+    "nrows_file": 1476135,
+    "nrows_kept": 1476135,
+    "seconds": 7.6,
+    "streamed_bytes": 143196480,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_NGC_ran0": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_NGC_0_clustering.ran.fits",
+    "sha256": "f80aaa1bd48f2695c07cbccd480065f74e8e393e6a9e93b209af42419749e2bd",
+    "bytes": 985916160,
+    "nrows_file": 9389588,
+    "nrows_kept": 9389588,
+    "seconds": 52.0,
+    "streamed_bytes": 985916160,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_NGC_ran1": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_NGC_1_clustering.ran.fits",
+    "sha256": "92ddf5980dc83e5b503df6f3f4e21e651f8701bdd5abf9435e0ad04f3d647e5a",
+    "bytes": 985394880,
+    "nrows_file": 9384611,
+    "nrows_kept": 9384611,
+    "seconds": 62.4,
+    "streamed_bytes": 985394880,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_NGC_ran2": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_NGC_2_clustering.ran.fits",
+    "sha256": "00d2af1b89bb04669484da3743e6d701dd3efc3c1e0c3d1caeaf619bb6212f9a",
+    "bytes": 985570560,
+    "nrows_file": 9386285,
+    "nrows_kept": 9386285,
+    "seconds": 58.3,
+    "streamed_bytes": 985570560,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_NGC_ran3": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_NGC_3_clustering.ran.fits",
+    "sha256": "7d108cc86e14435e2380e9e103986fa2162608cfe41e932ce01811588c15995e",
+    "bytes": 985976640,
+    "nrows_file": 9390153,
+    "nrows_kept": 9390153,
+    "seconds": 62.5,
+    "streamed_bytes": 985976640,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_SGC_data": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_clustering.dat.fits",
+    "sha256": "ae478557d9ef70257cc689197052515f5ebbc0b23359c81159a8ad3289332e69",
+    "bytes": 64272960,
+    "nrows_file": 662492,
+    "nrows_kept": 662492,
+    "seconds": 8.5,
+    "streamed_bytes": 64272960,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_SGC_ran0": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_0_clustering.ran.fits",
+    "sha256": "70821a9609c4f825fecd6c45f6ede3b95bc309103e7ca580231b212a27e2592e",
+    "bytes": 520781760,
+    "nrows_file": 4959721,
+    "nrows_kept": 4959721,
+    "seconds": 39.8,
+    "streamed_bytes": 520781760,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_SGC_ran1": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_1_clustering.ran.fits",
+    "sha256": "4d798de8c7103a42e28edd3bd2eb9b8662a1795a65a6e1c55558f57a56ddca94",
+    "bytes": 520732800,
+    "nrows_file": 4959267,
+    "nrows_kept": 4959267,
+    "seconds": 26.4,
+    "streamed_bytes": 520732800,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_SGC_ran2": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_2_clustering.ran.fits",
+    "sha256": "816c55bc611ddf38114b7e8b3650ff4e1811b675ce467f07f521fd3e4d4e38dc",
+    "bytes": 520750080,
+    "nrows_file": 4959422,
+    "nrows_kept": 4959422,
+    "seconds": 29.7,
+    "streamed_bytes": 520750080,
+    "n_unmatched_pixweight": 0
+  },
+  "LRG_SGC_ran3": {
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_3_clustering.ran.fits",
+    "sha256": "6194e5f2b6b945257e69c79cf94429021c29ff960b06e3a7c5319668998bba57",
+    "bytes": 520548480,
+    "nrows_file": 4957497,
+    "nrows_kept": 4957497,
+    "seconds": 29.2,
+    "streamed_bytes": 520548480,
+    "n_unmatched_pixweight": 0
+  },
+  "_total_streamed_bytes": 6233140800,
+  "_cache_bytes": 2381031400
+}
