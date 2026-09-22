@@ -1,7 +1,7 @@
 # P1N disposition ledger
 
 **Canonical source:** `arxiv/paper1bc_ech_note/main.tex`
-**Current paper-local version:** `v1N.0.6` (2026-09-22, reconciled into this ledger by lane L3b; D-round+P-round closure at v1N.0.6 carried no science/scope changes over v1N.0.5 — see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
+**Current paper-local version:** `v1N.0.7` (2026-09-22, lane L3c CONFIRM board closure; D-round+P-round closure at v1N.0.6 carried no science/scope changes over v1N.0.5 — see `project-context/SSOT/paper-1n/status.md` for the full item→edit table)
 **Ledger reconciliation (2026-09-22, lane L3b):** the R3 board's own closure table (`SSOT/paper-1n/status.md` "R3 closure (final) — 2026-09-02 (v1N.0.3 → v1N.0.4)") already recorded DP1N-44 through DP1N-57 as closed with grep-verified edits at v1N.0.4; this ledger file had not been updated to match (only DP1N-57's row below carried a CLOSED marker). Reconciled here: **DP1N-44, 45, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56 are CLOSED v1N.0.4** (per the SSOT item→edit table, each with a grep-verified `main.tex` citation) and **DP1N-47 is CLOSED v1N.0.4 (downgrade branch taken — B2/B5/B6/B10 restated as "argued in-paper," unsupported cites removed)**. **DP1N-58 remains OPEN** — Zenodo DOI minting for P1C + theory-audit artifacts is a genuine archival residual outside agent authorization (SSOT confirms this explicitly, not silently dropped).
 **Claim policy:** channel-level closure of minimal-coupling ECH dark-energy routes only; **no** operator-level completeness theorem, no unrestricted no-go, no ECH dark-energy or birefringence prediction.
 **Venue:** CQG — form is **Paper**, not Note (7725 words at v1N.0.2, 4144 words at v1N.0.1, both above the ≤2500-word Note ceiling, `project-context/SESSION_HANDOFF_2026-09-02.md:32`).
@@ -223,3 +223,73 @@ The R2 closure converted six "assert it" items into "display the derivation" ite
 **No science decision would be outstanding after v1N.0.4.** The physics — Cartan elimination, the contact term, the transparency theorem, the operator rank/count, the Popławski mapping — is verified sound and correctly scoped at v1N.0.3; every remaining defect is in a displayed step, a label, or a cross-reference.
 
 **Condition on stopping:** v1N.0.4 must ship machine-checkable assertions for the three regressed derivations and a line-level re-verification of every SSOT-recorded closure. Absent that, the closure record is not trustworthy enough to declare convergence on — and this round is the demonstration.
+
+---
+
+## CONFIRM board — `ROUND_2026-09-22-P1N-v1N.0.6-EXACTPDF-1bb5ade7-CONFIRM` (exact-version confirmation round, lane bb-L3c-p1n-confirm)
+
+**Why:** P1N's last INT board audited exact v1N.0.3; the paper moved v1N.0.3 → v1N.0.6 (D-round + P-round packaging) without a fresh exact-version board, a gap named in `HOUSTON_SIGNOFF_PACKET_2026-09-22.md` §5. Sibling confirmation boards on P1B and P2 each found a real regression despite "no science change" packaging claims — directive R2's version-drift exception permits exactly one confirmation round here, no more.
+
+**Exact PDF sha256:** `1bb5ade7a9b7948c587a9f884ef7af8cc44d1a4eae0221a30a0bec63b2b0f223` (v1N.0.6, 11 pp).
+**Legs:** Grok API `REJECT` (3 ESSENTIAL / 3 MAJOR / 3 MINOR), Gemini API `MAJOR REVISIONS` + 1 ESSENTIAL pass-2 self-critique finding, Claude opus verdict-blind cold-read referee `MAJOR REVISIONS` (2 ESSENTIAL / 6 MAJOR / 15 minor / 6 nit) — raw: `project-context/peer-reviews/ROUND_2026-09-22-P1N-v1N.0.6-EXACTPDF-1bb5ade7-CONFIRM_P1N_Claude_opus_coldread.md`.
+**Full truth audit:** `INT_v3/ROUND_2026-09-22-P1N-v1N.0.6-EXACTPDF-1bb5ade7-CONFIRM/P1N_v1N.0.6_CONFIRM_truth_audit.md`.
+
+**Directive-G pre-check:** served PDF byte-identical across all paths (md5 `b9ac109139b7d88aa0f798ee7ef80c8d`); a fresh isolated recompile gave a different md5 but byte-identical `pdftotext` output (0-line diff) — divergence is pdflatex's non-deterministic `/CreationDate`/`/ID` metadata, not stale content. Convex UNAVAILABLE (spending limit), neither passed nor failed.
+
+24 leg findings audited → **3 GENUINELY-NEW-REAL** (1 MAJOR wording drift, closed; **2 ESSENTIAL science-content items, OPEN — not closeable by this lane**), 6 MAJOR + 21 lower-tier genuinely-new-real presentational items logged open but non-gating (opus leg), 5 RE-FLAG-OF-DISCLOSED, 4 FALSIFIED, 1 already-tracked-open (`DP1N-58` re-surfaced) + 2 OPINION/GENRE from the Grok/Gemini legs. **Three canonical items opened: DP1N-59 (closed), DP1N-60, DP1N-61 (both OPEN, blocking).**
+
+One adversarial finding deserves explicit note: Gemini's pass-2 self-critique claimed the paper's headline benchmark-density calculation (`κn_ψ²≈9.954×10⁻⁸⁰ eV⁴` at `n_ψ=100 cm⁻³`) was wrong by **57 orders of magnitude** from an inverted `ħc` unit conversion. Independently re-derived from first principles (standard convention: a number density, i.e. inverse-length³, converts to natural units by **multiplying** by `(ħc)³`, exactly as `1 fm⁻¹ = 197.3 MeV` and nuclear saturation density `n₀≈0.16 fm⁻³ → ≈1.2×10⁻³ GeV³` — the standard QCD-literature value, computed the same way) — the paper's number is correct to 3 significant figures and Gemini's proposed "fix" inverts the conversion direction. This exact chain was independently falsified once before at R3 (Grok M2), and was also independently re-verified correct a third time by the opus leg's own from-scratch computation. **This is exactly why the two findings that DID survive three independent adversarial passes (opus E1, E2 below) carry real weight** — this board's legs are demonstrably capable of finding nothing when there is nothing, which is not the case here.
+
+| ID | Issue | Verdict | Sev | Class | Closure instruction |
+|---|---|---|---|---|---|
+| **DP1N-59** | Abstract (`main.tex:92-94` pre-fix) reads "...is either an exact total derivative **on the torsion-free branch**, a Fierz-closed M_Pl⁻²-suppressed contact term on-shell, or identically vanishing" — misattaches the branch qualifier. Body (`main.tex:904-907`) assigns "on the torsion-free branch only" to the *identically-vanishing* category (O1, O6), while the *total-derivative* category (O2, O3) is unconditional ("on any connection") | **CLOSED v1N.0.7** — abstract reordered to "...is either an exact total derivative, a Fierz-closed M_Pl⁻²-suppressed contact term on-shell, or identically vanishing on the torsion-free branch only" — matches the body exactly. No science/numeric content changed. | MAJOR | SUBSTANTIVE (precision/self-consistency) | `main.tex:92-95` |
+| **DP1N-60** | §II (`main.tex:216-219`) assigns the contact term's stress tensor as $\rho_{4\psi}=-\mathcal L_{4\psi}$, $p_{4\psi}=+\mathcal L_{4\psi}$ ($w=-1$) "for a term with no explicit time derivatives" — but §II.A (`main.tex:250-263`) parametrizes the same term's magnitude via a fermion number density $n_\psi$ (explicitly called "the cosmic fermion number density" at `main.tex:822-823`), $n_\psi\propto a^{-3}\Rightarrow\rho_{4\psi}\propto a^{-6}$, which under covariant conservation forces $w=+1$ (stiff), not $w=-1$. Under the correct $w=+1$, $\rho+3p=4\rho_{4\psi}=-4\mathcal L_{4\psi}$ — the repulsion sign condition **inverts**. Matches the standard ECSK spin-fluid literature result ($\varepsilon_{\rm spin}=p_{\rm spin}<0$, $w=+1$) for the identical interaction, which the paper's $w=-1$ assignment contradicts. No prior `DP1N-*` (including DP1N-44/49, which fixed a sign error *within* this same assumed EOS) examined the EOS assumption itself. Claude opus cold-read leg E1, independently confirmed against the source. | **OPEN — ESSENTIAL, not closeable by this lane** | SUBSTANTIVE, science-content (targets the paper's "positive/bounce" title claim directly) | Real re-derivation of $T_{\mu\nu}$ for the contact term with the fermion-fluid averaging made explicit, reconciled with the standard ECSK $w=+1$ result; or a corrected sign-condition derivation and honest restatement of what it implies for the title claim. Requires a dedicated science-closure lane, not a text edit. |
+| **DP1N-61** | §VII.D (`main.tex:815-836`) claims a "direct, quantitative rebuttal" of Popławski's own dark-energy proposal, citing `Poplawski2012` (`references.bib`: "Cosmological constant from quarks and torsion," Annalen der Physik 523, 291, arXiv:1005.0893 — a paper whose mechanism sets $\rho_\Lambda$ via the QCD quark chiral condensate $\langle\bar qq\rangle\sim-(235\,{\rm MeV})^3$), but `main.tex:817-819` misdescribes this as a "cosmic fermion (baryon) spin density" mechanism and §VII.D then evaluates the rebuttal at the §II.A ISM benchmark ($n_\psi\sim100\,{\rm cm^{-3}}$) instead of the condensate scale — off by $\sim74$ orders of magnitude. At the condensate's actual scale, independently recomputed: $\tfrac{3}{16}\kappa\langle\bar qq\rangle^2=5.32\times10^{-42}\,{\rm GeV^4}$ vs. $\rho_{\Lambda,\rm obs}=2.563\times10^{-47}\,{\rm GeV^4}$ — a factor $\approx2\times10^5$ **over**-production, not the claimed under-production. §II.A's own text (`main.tex:262-263`) warns against exactly this substitution ("number density also does not fix the renormalized composite ... a vacuum stress tensor, or an equation of state"), which §VII.D then performs. Claude opus cold-read leg E2, independently re-verified (arithmetic reproduces to 3 s.f.; `Poplawski2012` bib entry confirmed to be the quark-condensate paper). | **OPEN — ESSENTIAL, not closeable by this lane** | SUBSTANTIVE, science-content (targets the "cannot do for dark energy... rebutting Popławski's own proposed mechanism" title/abstract claim directly) | Either re-evaluate §VII.D at Popławski's actual (condensate) scale and report the true outcome honestly (may invert the Route-1 conclusion from under- to over-production — a different, non-trivial result), or withdraw the "direct, quantitative rebuttal" claim and correct the description of `Poplawski2012`. Requires a dedicated science-closure lane, not a text edit. |
+
+### CONFIRM board — Falsified / Re-flag / Opinion (not opened as new items)
+
+| Finding | Leg | Settled evidence |
+|---|---|---|
+| "Theorem 1's H1-H5 boundary data lie outside the paper, proof not reproducible" | Grok E3 | `main.tex:341-352` states H1-H5 in full inline; `355-383` gives the complete 4-step proof in-paper. Same class as R3's falsified Grok E3. |
+| "Operator rank-4 claim's only support is an unreproduced symbolic script" | Grok M3 | `main.tex:874-902` gives the full analytic derivation in-text (both null-space relations, the O1≡O6 tetrad-conversion identity, step-by-step); the cited script is supplementary, not sole evidence. |
+| "Some arXiv ids lack journal data despite subsequent publication" | Grok N3 | `references.bib` audited: every eprint-only entry is a genuinely-unpublished self-citation companion preprint; no external citation is missing journal data. |
+| "57-order-of-magnitude unit-conversion error in the benchmark density" | Gemini P2N-E1 (pass 2) | See above — independently re-derived, paper's number correct, Gemini's proposed fix inverts the conversion. Same value/chain falsified once before (R3, Grok M2). |
+| "14-barrier catalog's negative result unsupported, majority heuristic" | Grok E1 | `main.tex:87-88,1066-1071` — abstract and Discussion explicitly tier the catalog and hedge the closure as channel-level. Same class as R3's conceded-in-paper Grok E4. |
+| "γ=0.2375, β/α≈2.11 asserted without in-paper derivation" | Grok E2 | `main.tex:96-97,619,952` — cited to `Ashtekar2011` (published LQC literature) at every occurrence. |
+| "7 barrier entries non-rigorous, unsupported 'jointly close' language" | Grok M1 | Matches `DP1N-47`'s v1N.0.4 closure exactly (already downgraded to "argued in-paper"). |
+| "Route 2/3 rely on unreproduced companion loop integrals" | Grok M2 | `main.tex:1130-1136` discloses the companion manuscript/survey by name and DOI — standalone-reader objection, R3 convergence-statement precedent. |
+| "Barrier-catalog derivations outsourced to unpublished companion" | Gemini P1N-E2 | Same disclosure as Grok M2 above. |
+| "Code artifacts lack a Zenodo DOI" | Gemini P1N-M1 | Matches already-open `DP1N-58` exactly; not a new item. |
+| "'well before the singularity' lacks a specific density scale" | Gemini P1N-N1 | Introduction background sentence describing the established bounce mechanism, not this paper's own quantitative claim. |
+| Repeated "programme's benchmark γ=0.2375" phrase / redundant "no ECH dark-energy prediction" sentence | Grok N1, N2 | Style opinions on already-cited/already-disclosed content; N2 targets the same sentence R3 already falsified once under a different framing. |
+
+### CONFIRM board convergence statement
+
+**NOT CONFIRMED. Readiness-99 placed on SIGN-OFF HOLD pending DP1N-60/61.**
+DP1N-59 (a wording-precision drift, zero science content) is closed at v1N.0.7
+with full directive-G hygiene verified clean (0 undef refs, 11 pp unchanged,
+pre-existing 4.5pt overfull hbox unchanged, three-way byte-identical PDF
+mirror). But the opus cold-read leg independently surfaced two ESSENTIAL,
+previously-unexamined findings (DP1N-60, DP1N-61) that target the paper's two
+title claims directly and are not closeable by a text edit. Directive R2's
+confirmation-round budget is spent — no second board. The path forward is a
+dedicated science-closure lane (real re-derivation of the contact term's EOS;
+a correct or withdrawn Popławski-scale evaluation), the same pattern used for
+P4P's in-domain re-measurement, not another review round. Per the campaign
+lane's task: *"P1N's exact-version confirmation board (Grok API + Gemini API
++ a verdict-blind Claude opus cold-read referee, exact v1N.0.6→v1N.0.7 PDF)
+re-verified essentially every quantitative claim in the paper as
+arithmetically correct, including successfully falsifying an adversarial
+claim that the benchmark density calculation was off by 57 orders of
+magnitude — but the cold-read referee independently surfaced two ESSENTIAL
+findings that were never examined by any prior review round: the paper's
+sign argument for the repulsive/bounce mechanism rests on an equation-of-state
+assumption that contradicts its own density parametrization and the standard
+torsion-cosmology literature result for the same interaction, and its claimed
+'direct quantitative rebuttal' of Popławski's actual dark-energy proposal
+evaluates the wrong physical quantity by roughly 74 orders of magnitude
+against a misdescribed source. Both target the title's own claims directly,
+neither is a wording fix, and resolving the second honestly may reverse the
+paper's Route-1 conclusion. Readiness-99 is placed on SIGN-OFF HOLD pending
+real science closure — not a re-run of another review board — of these two
+items."*
