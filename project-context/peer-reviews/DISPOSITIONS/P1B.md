@@ -205,3 +205,124 @@ Freivalds / Fiat–Shamir / Klein–Roodman / in-toto-SLSA / OpenTimestamps cita
 5. **Rounds STOP after v2B.0.21** (directive R2: R2+R3 are the two permitted consecutive
    rounds). The next P1B actions are the v2B.0.21 closure bundle, the batch-4 write-up, the
    Zenodo deposit of the blind-test corpus, and the venue decision — not another sweep.
+
+## v2B.0.23 R-CONFIRM — 2026-09-22 (exact PDF sha256 `c7cac6c9f16c…`, 16 pp)
+
+Directive-R2 exact-version confirmation board, triggered by version drift since R3 (v2B.0.20
+to v2B.0.23, batch-4/R8 integrated) with no board run on the literal current PDF. Active legs
+Grok API (`grok-4.3`) **REJECT** / Gemini API (`gemini-3.1-pro-preview`) **REJECT** / Claude
+opus verdict-blind sub-agent referee **MAJOR REVISIONS** (43 findings: 4 ESSENTIAL, 12 MAJOR,
+17 MINOR, 10 NIT; every printed arithmetic and design-count claim independently re-verified
+and found correct; Appendix Table 6 audited run-by-run against Table 3, exact match).
+Raws: `INT_v3/ROUND_2026-09-22-P1B-v2B.0.23-EXACTPDF-CONFIRM/` (Claude leg) and
+`peer-reviews/R-CONFIRM-2026-09-22_P1B_{Grok_brutal,Gemini_cosmology}.md` (API legs).
+
+**This was NOT a clean wave.** Genuinely-new-real findings existed and most were closed in
+v2B.0.24 (below); this round does not itself confirm the paper. Canonical fingerprints:
+
+- **D-CONF-01** abstract's "not of forged metadata or of value-level shortcuts taken
+  downstream of a declared intermediate" is stale against R7/R8 (Grok E3; Gemini implicit;
+  Opus M9-part-3) -- REAL, recurrence of D-R3-13 (the v2B.0.20/R3 remedy was applied to
+  Sec.11 but never to the abstract or the "Scope limits" paragraph) -- CLOSED v2B.0.24:
+  abstract and Scope-limits both restated to match Sec.11's already-correct framing.
+- **D-CONF-02** abstract's "All detection claims...never as run-level probability intervals"
+  is contradicted by batch 1's own printed 0.779/0.632 (12/12, 0/3) run-level bounds and by
+  p.7's "batches 1-4 uniformly...never a run-level Clopper-Pearson interval" (Grok E2/E5;
+  Gemini E2; Opus M7) -- REAL -- CLOSED v2B.0.24: scoped to "frozen rule sets
+  (batches 2-4)"; batch-1 pilot exception stated explicitly wherever the blanket claim
+  appears (abstract, Sec.6, Sec.11).
+- **D-CONF-03** the class-level Clopper-Pearson bound (0.473, 4/4) and the false-positive
+  CP bounds (0.393 at 0/6; 0.779/0.632 at batch-1's 12/12, 0/3) have no defensible i.i.d.
+  sampling model: honest replicates are deterministic replicas of one fixed reference
+  configuration by construction, and the paper's own text two sentences later says the four
+  structural classes reduce to two mechanisms (Opus E3, M6) -- REAL, genuinely new --
+  CLOSED v2B.0.24: every CP-interval claim removed from batches 1-4; replaced with
+  "expected by construction" / descriptive counts, with the reasoning stated once and
+  cross-referenced.
+- **D-CONF-04** batch 4/R8 (the abstract's headline result) carried no confusion table and
+  no quantitative soundness bound, while batches 2-3 get both (Opus E4, M1) -- REAL,
+  genuinely new -- PARTIALLY CLOSED v2B.0.24: Table 5 (batch-4 confusion table) added,
+  transcribed verbatim from the already-committed `public4/scorecard.json`; the
+  escape-probability bound f^K added with N~63, K=6 stated explicitly and a
+  partial-operator adversary named as an open arm. Remaining open (not closed this round):
+  a full commit-ordered audit trail for batch 4 (needs git-log archaeology) and a per-run
+  appendix for all 54 batch-4 runs.
+- **D-CONF-05** "Protocol, two batches." heading contradicted the same paragraph's own "run
+  four times" sentence (Gemini M1; Opus m2, independently) -- REAL, genuinely new --
+  CLOSED v2B.0.24: heading reworded to "Protocol, common to every batch."
+- **D-CONF-06** Sec.11 Limitations L1-L3 used literal reviewer-response-style status tags
+  ("(closed for the estimator; open for the hook)", "(partially closed)", "(closed)")
+  rather than standard prose (Gemini E1) -- REAL, genuinely new, distinct from D-R3-29
+  (D-R3-29 protects the disclosure content -- pilot/abort/post-hoc-change narration --
+  which stays; this finding is about formatting those items as a checklist, which does not
+  need to stay) -- CLOSED v2B.0.24: reworded into prose, no disclosed content removed; new
+  L5 added disclosing R0/R1/R5 never fire in any of the 83+54 tabulated runs (Opus M8,
+  REAL, genuinely new, closed by disclosure only, no new arm built).
+- **D-CONF-07** Sigstore/Rekor was twice claimed to close the metadata-forgery gap; a
+  transparency log witnesses publication time, not truth (Opus M3) -- REAL, genuinely new
+  -- CLOSED v2B.0.24: both sentences corrected; SGX/TDX enclave attestation (already in the
+  paper) identified as the actual closing mechanism, removing the self-contradiction with
+  the paper's own correct OTS-limitation language (Opus m16, same fix).
+- **D-CONF-08** "Fiat-Shamir-correct" mislabeled R8, and Sec.7's description of the
+  Fiat-Shamir transform was the generic interactive-soundness condition, not Fiat-Shamir
+  itself (Opus M2) -- REAL, genuinely new -- CLOSED v2B.0.24 in the batch-4 paragraph and
+  Sec.7: R7 now described as the hash-derived (Fiat-Shamir-style) version that is
+  prover-predictable; R8 as the interactive, verifier-committed challenge that restores
+  soundness. Freivalds, Fiat-Shamir, and Klein-Roodman promoted from inline-only prose
+  citations to numbered bibliography entries (Opus M4).
+- **D-CONF-09** the archive (Zenodo, both software and manuscript, deposited July 21, 2026)
+  predates batches 2-4 (sealed 2026-09-04) and this manuscript revision (2026-09-05) by
+  6-7 weeks, so neither deposit contains the described work (Opus E2) -- REAL, genuinely
+  new, recurrence/completion of D-R3-23 (D-R3-23 flagged only "0.1.7 contains no R7/R8" and
+  required a disclosure sentence that was never actually added) -- PARTIALLY CLOSED
+  v2B.0.24: Archive paragraph now discloses the gap explicitly. Re-archiving is a
+  Houston-gated irreversible action, not performed by this lane -- remains open.
+- **D-CONF-10** venue: Sec.13 Reuse Potential states the manuscript should be split, with
+  the measurement (Sec.6) targeting ACM REP and a short metapaper targeting JORS/JOSS (Opus
+  E1; Grok E4/M1 length opinion) -- RE-FLAG of D-R3-31 (already escalated as a standing
+  scope decision converging with "the Opus venue section" at R3-time) -- NOT closed, not
+  actionable by this lane: standing Houston-gated decision, unchanged.
+- **D-CONF-11** spin-0 vs spin-2 labeling in Sec.2's motivating deviation number; missing
+  disclosure that S4b is dropped in batch 4; "retained" used in two inconsistent senses;
+  Sec.2 promised a "figure" the paper doesn't have; Author Contributions claimed funding
+  acquisition while the Funding Statement says none; title-page macro-spacing bug
+  swallowing the space before "("; opaque Author Contributions sentence; two SLSA/MLflow
+  bibliography formatting gaps; three range-reference pairs rendering as the literal glitch
+  "6-6" because Sec.6 has no numbered subsections; Table 4 (batch 3) floating after the
+  batch-4 paragraph that supersedes it (Opus M12, m9, m8, m13, m15, n1, n9, n6, m17-partial,
+  n5) -- all REAL, genuinely new, editorial-only -- CLOSED v2B.0.24.
+- **D-CONF-12** deferred, genuinely-real, NOT closed this round (flagged for a future lane,
+  not fabricated toward): missing ABFT/program-result-checking/randomness-beacon related
+  work (Opus M5); freeze-commit vs. post-seal `verify.py` digest not published separately
+  (Opus M10); S6/S7 cost-model motivation not quantified against a realistic MCMC call
+  count (Opus M11); R6 cross-run order-dependence not analyzed (Opus m5); TOL's
+  per-row-absolute-vs-global-norm sensitivity not characterized (Opus m6); no coverage
+  tool configured (Opus m12); JORS structural template (Overview to Implementation to QC
+  ordering, contributor-list/language sub-headings) not fully conformed (Opus m11); full
+  Sec.6 numbered-subsection restructuring beyond the 3 literal "6-6" instances (Opus m17);
+  batch-4 commit trail and per-run appendix (D-CONF-04 residual).
+- **D-CONF-13** Grok's "0.473 is the CP bound for 20/20, not 4/4" (E5) and its restatement
+  (N4) -- FALSIFIED: the printed sentence explicitly scoped the bound "on the class-level
+  detection rate," consistent with 0.05^(1/4)=0.4729; superseded in any case by D-CONF-03's
+  removal of the interval entirely.
+- Grok E1 (untested on production NaMaster) = re-flag of D-R3-30/C1, disclosed
+  out-of-scope, unchanged. Grok M3/M5 (round-off number only shown at N_side=64, not the
+  N_side=512 production config) = re-flag of D-R2-26, SCIENCE-tier, deferred, unchanged --
+  the cross-check is explicitly scoped and manifest-linked, not concealed. Grok N2 (R0-R8
+  vocabulary) = re-flag of D-R3-29, refused (these are the paper's own load-bearing rule
+  names, not review-log bookkeeping). Gemini N1 (EB parity assumption) = already disclosed
+  at point of use (tex:289) and in Limitations -- no action. Gemini M2/M3 (memory/speedup
+  citation, cosmological effect-size quantification) = OPINION/SCIENCE, honestly disclosed
+  already, deferred.
+
+**Directive-G v2B.0.24**: 16 to 18 pp, 4-pass compile 0 undef refs / 0 overfull, sha256
+`eec6e6d4792b2d8ecb17b05a4ee97d4ec2b5bd1c1f579f41b92bfc8746dc5bbd` / md5
+`b94a18fbfbdece5949999354d6833864`, mirrored byte-identical to `arxiv/`,
+`arxiv/jors_submission/`, `site/public/papers/` (bare + `_v2B.0.24` + `_arxiv_v2B.0.24`),
+`public/papers/` (same three), tarball `paper1b_namaster_proof_arxiv_v2B.0.24.tar.gz`
+rebuilt from the single `.tex` and standalone-recompiled clean. Visual audit: title page,
+both new/moved confusion tables, Sec.7, Sec.11 Limitations, and the Archive paragraph
+rendered and inspected -- no overflow, no broken tables. **Round CLOSED, not CONFIRMED**:
+real items existed and were substantially (not entirely) closed; D-CONF-04/09/10/12 remain
+open by design (Houston-gated or explicitly deferred, not silently dropped). No further
+board this round per the no-re-board rule.

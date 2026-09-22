@@ -264,3 +264,91 @@ activityFeed:add({
   summary: "Lane bb-L4e-p4p-hold-correction. The dilution bound D<=0.717+-0.005 / A_95^phys>=1.37% that lane bb-L4d-p4p-row16-propagate printed into v4P.0.10 hours earlier was found by lane bb-LS6-row16-tta to have been measured on Legacy Survey display cutouts rather than the classifier's own Smith42/galaxies inference images (a positive control reproduces released labels at only 43.9%/42.4%/44.7% across three draws on the wrong images, vs. 99.99% in-domain). Withdrawn from all 7 prose locations and 2 table rows in main.tex, replaced with a named, lifted-by-a-specific-test hold (never a silent deletion): the hold lifts on re-running the identical PA-restoring test on the correct, pinned Smith42/galaxies images (bounded, disk-only, no GPU). The Q-1a architectural argument (why the transfer is not unity by construction) is retained verbatim and unaffected. Also printed the pre-registered sky-dependence systematic: an 11-sigma efficiency dipole imprints a spurious 0.23% label dipole on the strict-887,472 support, 23% of the quoted A_95=0.98% limit. Row-16(ii-b) items P-1-P-4 (pixel-injection error-bar fix, withdrawal of the invalid 47sigma/2.9sigma/0.038/~26% comparisons) confirmed unaffected. Readiness holds at 95 -- this correction improves science closure and evidence/reproducibility (no unsupported claim remains) rather than degrading it; directive R2's round budget is refreshed again, a fresh INT confirmation board on the exact v4P.0.11 PDF is now due. Co-director sign-off hold LIFTED for the printed-claim defect; STILL STANDS pending that board and the in-domain re-measurement.",
 })
 ```
+
+## Lane bb-LCB-confirm-p1b-p2 (2026-09-22) — P1B R-CONFIRM, v2B.0.23 -> v2B.0.24
+
+Exact-version confirmation board on P1B v2B.0.23 (sha256 c7cac6c9f16c...): Grok
+API REJECT, Gemini API REJECT, Claude opus verdict-blind sub-agent MAJOR
+REVISIONS (43 findings). NOT a clean wave. Truth-audited against
+`DISPOSITIONS/P1B.md`; most genuinely-new-real items closed by real edit in
+v2B.0.24 (see `DISPOSITIONS/P1B.md` "v2B.0.23 R-CONFIRM" section for the full
+fingerprinted list: D-CONF-01 through D-CONF-13). Left open by design:
+Sec.13-vs-JORS venue split (Houston-gated, re-flag of standing D-R3-31), the
+archive re-mint (Houston-gated), a full batch-4 commit trail + 54-run
+appendix, and a handful of deferred related-work/derivation items
+(D-CONF-04/09/10/12).
+
+```
+rRounds:create({
+  paperId: "P1B",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  reviewers: ["Grok API (grok-4.3)", "Gemini API (gemini-3.1-pro-preview)", "Claude opus sub-agent (verdict-blind)"],
+  note: "Exact-version confirmation board on v2B.0.23 (sha256 c7cac6c9f16c...). Verdicts: REJECT / REJECT / MAJOR REVISIONS, 43 findings. Truth-audited against DISPOSITIONS/P1B.md; most genuinely-new-real items closed by real edit in v2B.0.24. NOT a clean/converged wave -- see D-CONF-04/09/10/12 for residual open items.",
+})
+```
+
+```
+rRounds:markComplete({
+  paperId: "P1B",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+})
+```
+
+```
+externalReviews:upsertByLabelDate({
+  paperId: "P1B",
+  reviewer: "Grok",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "reject",
+  source: "internal-stage3",
+  note: "Exact v2B.0.23 (sha256 c7cac6c9f16c...) via tools/v3_native_pdf_review.py. 4 ESSENTIAL + 4 MAJOR + 3 NIT (+ pass-2: 1 ESSENTIAL, 1 MAJOR, 1 NIT). Most genuinely-new-real findings closed by real edit in v2B.0.24; the E5/N4 arithmetic-misreading finding FALSIFIED (the printed bound was correctly scoped to the class-level rate, not run-level).",
+})
+```
+
+```
+externalReviews:upsertByLabelDate({
+  paperId: "P1B",
+  reviewer: "Gemini",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "reject",
+  source: "internal-stage3",
+  note: "Exact v2B.0.23 (sha256 c7cac6c9f16c...) via tools/v3_native_pdf_review.py. 3 ESSENTIAL + 3 MAJOR + 2 MINOR + 1 NIT. All genuinely-new-real findings (internal audit tags, class/run-level statistics contradiction, scope/length) closed by real edit or already a standing Houston-gated venue decision in v2B.0.24.",
+})
+```
+
+```
+externalReviews:upsertByLabelDate({
+  paperId: "P1B",
+  reviewer: "Claude opus (verdict-blind sub-agent)",
+  label: "R-CONFIRM",
+  dateISO: "2026-09-22",
+  verdict: "major-revisions",
+  source: "internal-stage3",
+  note: "Exact v2B.0.23 (sha256 c7cac6c9f16c...), cold read, no repository access, no review history. 4 ESSENTIAL + 12 MAJOR + 17 MINOR + 10 NIT (43 total); every printed arithmetic and design-count claim independently re-verified and found correct (Appendix Table 6 audited run-by-run against Table 3, exact match). Most closed by real edit in v2B.0.24: CP-bound validity (E3/M6), stale abstract value-level claim (M9), missing batch-4 confusion table + soundness bound (E4/M1), Sigstore/Rekor + Fiat-Shamir mislabeling (M2/M3), archive-predates-work disclosure (E2, partial). Left open by design: venue split (E1, Houston-gated re-flag of D-R3-31), full archive re-mint (Houston-gated), batch-4 commit trail + appendix, related-work/derivation items (D-CONF-12).",
+})
+```
+
+```
+paperVersions:bump({
+  paperId: "P1B",
+  version: "v2B.0.24",
+  dateISO: "2026-09-22",
+  sha256: "eec6e6d4792b2d8ecb17b05a4ee97d4ec2b5bd1c1f579f41b92bfc8746dc5bbd",
+  md5: "b94a18fbfbdece5949999354d6833864",
+  pages: 18,
+  note: "R-CONFIRM exact-version board closed most genuinely-new-real findings (CP-bound removal, stale abstract/Scope-limits value-level claim, batch-4 confusion table transcribed from committed public4/scorecard.json + f^K soundness bound, checklist-style Limitations prose reworded, Sigstore/Rekor + Fiat-Shamir mislabeling corrected, archive-predates-work disclosure, ~15 editorial fixes). NOT a confirmed/converged board -- D-CONF-04/09/10/12 remain open by design (Houston-gated or explicitly deferred). Readiness holds 95, computed.",
+})
+```
+
+```
+activityFeed:add({
+  type: "r-round",
+  title: "P1B R-CONFIRM: exact-version board finds a real Clopper-Pearson validity defect and a stale abstract claim",
+  tags: ["P1B", "v2B.0.24", "r-round", "confirmation", "campaign-2026-09-18"],
+  summary: "Lane bb-LCB-confirm-p1b-p2 closed the exact-version confirmation gap flagged in the 2026-09-19/22 sign-off packets. Board (Grok REJECT / Gemini REJECT / Claude opus verdict-blind MAJOR REVISIONS, 43 findings) was NOT clean. Most genuinely-new-real items closed by real edit: every Clopper-Pearson interval removed because honest replicates are deterministic replicas of a fixed reference configuration, not an i.i.d. sample; the abstract's stale value-level-shortcuts claim brought in line with Sec.11; a new batch-4 confusion table transcribed from already-committed data plus an explicit R8 soundness bound; Sigstore/Rekor and Fiat-Shamir mislabeling corrected; archive-predates-work gap disclosed. Left open by design: the venue-split scope decision (Houston-gated), archive re-mint (Houston-gated), a full batch-4 commit trail, and a few deferred items. v2B.0.23 -> v2B.0.24, 16 -> 18 pp. Readiness holds 95.",
+})
+```

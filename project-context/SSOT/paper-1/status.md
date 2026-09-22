@@ -1,3 +1,51 @@
+<!-- CURRENT P1B 2026-09-22 — v2B.0.24: R-CONFIRM exact-version board (lane
+bb-LCB-confirm-p1b-p2) on exact v2B.0.23 (sha256 c7cac6c9f16c..., 16pp) found
+Grok REJECT / Gemini REJECT / Claude opus verdict-blind MAJOR-REVISIONS (43
+findings). NOT a clean wave. Truth-audited against DISPOSITIONS/P1B.md;
+substantial genuinely-new-real items closed by real edit, none fabricated:
+(1) abstract's stale "not of value-level shortcuts" claim brought in line
+with Sec.11's already-correct R7/R8 framing (recurrence of D-R3-13, whose
+remedy had only ever been applied to Sec.11); (2) abstract/Sec.6/Sec.11's
+absolute "never run-level" claim scoped correctly against batch-1's own
+disclosed run-level pilot numbers; (3) every Clopper-Pearson interval
+removed from batches 1-4 (0.473, 0.393, 0.779, 0.632) because honest runs
+are deterministic replicas of one reference configuration by construction
+and are not an i.i.d. sample -- replaced with honest "expected by
+construction" framing; (4) a new batch-4 confusion table (Table 5)
+transcribed verbatim from the already-committed public4/scorecard.json,
+plus an explicit f^K escape-probability bound (N~63, K=6) for R8's
+soundness, naming the untested partial-operator adversary as open; (5)
+"Protocol, two batches" heading fixed to match the paper's own "run four
+times" sentence; (6) Sec.11 L1-L3 reworded from reviewer-response-style
+status tags into prose (no disclosed content removed) + new L5 disclosing
+R0/R1/R5 never fire across all 137 tabulated runs; (7) Sigstore/Rekor and
+"Fiat-Shamir-correct" mislabeling corrected in Sec.6 and Sec.7 (a
+transparency log witnesses publication time, not truth; R8 is an
+interactive verifier-committed challenge, not a Fiat-Shamir instance);
+Freivalds/Fiat-Shamir/Klein-Roodman promoted to numbered bibliography
+entries; (8) Archive paragraph now discloses that both Zenodo deposits
+(July 21) predate batches 2-4 and this revision by 6-7 weeks -- re-archiving
+is a Houston-gated action, not performed here; (9) ~15 further editorial
+fixes (spin-0/spin-2 labeling, S4b-drop disclosure, "retained" terminology
+collision, funding-acquisition/statement mismatch, title-stamp spacing bug,
+bibliography formatting, three "Sec.6-6" dangling cross-ref glitches, Table
+4/5 float ordering). Left standing/unclosed by design, not silently
+dropped: the venue-split question (Sec.13 vs JORS; re-flag of the already-
+escalated D-R3-31 scope decision, Houston-gated); the archive re-mint
+itself (Houston-gated); a full batch-4 commit-ordered audit trail + 54-run
+appendix; missing ABFT/program-checking related work; freeze-commit-vs-
+post-seal verify.py digest; S6/S7 cost-model quantification; a few other
+MINOR items (all logged as D-CONF-12 in DISPOSITIONS/P1B.md with exact
+citations). v2B.0.24: 18pp (was 16), sha256
+eec6e6d4792b2d8ecb17b05a4ee97d4ec2b5bd1c1f579f41b92bfc8746dc5bbd, md5
+b94a18fbfbdece5949999354d6833864, 4-pass compile 0 undef refs / 0 overfull,
+directive-G PASS (8-way byte-identical mirror: arxiv/, arxiv/jors_submission/,
+site/public/papers/ x3, public/papers/ x3), tarball
+paper1b_namaster_proof_arxiv_v2B.0.24.tar.gz rebuilt from the single .tex and
+standalone-recompiled clean (0 undef refs). Convex DOWN (spending limit) --
+paperVersions:bump queued to CONVEX_BACKFILL_QUEUE_2026-09-21.md. **NOT
+CONFIRMED on this pass** -- round closed real items, did not re-board;
+readiness stays computed from open findings, not hand-set. -->
 <!-- CURRENT P1B 2026-09-05 — v2B.0.23: closed the three remaining deferred
 text-only items from the v2B.0.20 R3 truth audit. D-R3-06: added the
 commit-ordered batch-3 audit trail (dcf96696 rules-frozen -> d03fe376
@@ -151,7 +199,23 @@ and `paper1b_mcmc_companion.tex` identity are historical.
 | ID | Canonical source | Current version | Readiness |
 |---|---|---:|---:|
 | P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 |
-| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.23 | 95 |
+| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.24 | 95 |
+
+**P1B v2B.0.24 (2026-09-22, lane bb-LCB-confirm-p1b-p2):** the exact-version
+confirmation gap this row previously carried (last confirmed board several
+patches behind the served PDF) is now addressed: a fresh Grok+Gemini+Claude-
+opus board ran on the exact v2B.0.23 PDF, found real items (verdicts REJECT/
+REJECT/MAJOR-REVISIONS), and most were closed by real edit in v2B.0.24 — see
+`DISPOSITIONS/P1B.md` "v2B.0.23 R-CONFIRM" for the full fingerprinted list.
+**This is NOT a CONFIRMED/converged board.** Left open by design: the
+Sec.13-vs-JORS venue split (Houston-gated, re-flag of the standing D-R3-31
+decision), the archive re-mint (Houston-gated, both Zenodo deposits predate
+batches 2–4 by 6–7 weeks — now disclosed in-paper), a full batch-4
+commit-ordered audit trail + 54-run appendix, and several deferred
+editorial/related-work items (D-CONF-12). Readiness holds 95 (computed; the
+open items are Houston-gated or explicitly deferred non-blocking editorial
+gaps, not live agent-actionable science defects) pending either those
+Houston decisions or a future lane closing the D-CONF-12/04-residual list.
 
 **P1B v2B.0.19 (2026-09-04):** R2 closure packaged (statistics presentation
 corrected, estimator description fixed, traceability + reproducibility

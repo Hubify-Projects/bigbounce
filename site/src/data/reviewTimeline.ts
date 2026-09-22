@@ -67,6 +67,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-r-confirm-v2b-0-23-v2b-0-24-2026-09-22",
+    dateISO: "2026-09-22",
+    kind: "internal-api",
+    title:
+      "P1B R-CONFIRM: exact-version confirmation board finds a real CP-bound validity defect and a stale abstract claim — v2B.0.23 → v2B.0.24, not yet converged",
+    papers: ["P1B"],
+    summary:
+      "Lane bb-LCB-confirm-p1b-p2 closed the exact-version confirmation gap the 2026-09-19/22 sign-off packets flagged for P1B: its last confirmed multi-vendor board had run several patches behind the served PDF. Directive-G pre-check first verified the served v2B.0.23 PDF (sha256 c7cac6c9f16c...) was content-identical to a fresh isolated 4-pass recompile. The board itself — Grok API (grok-4.3) REJECT, Gemini API (gemini-3.1-pro-preview) REJECT, a verdict-blind Claude opus sub-agent referee (cold read, no repository access, no review history) MAJOR REVISIONS with 43 findings — was NOT a clean wave. Truth-audited against DISPOSITIONS/P1B.md's existing fingerprints (which trace back through R1/R2/R3), most genuinely-new-real items were closed by real edit: the abstract's claim that the primitive is 'not a detector...of value-level shortcuts' was stale against R7/R8 (a fix Sec.11 already carried but the abstract and 'Scope limits' paragraph never received, from standing fingerprint D-R3-13); the abstract's absolute 'never as run-level probability intervals' claim was contradicted by batch 1's own printed run-level bounds; most substantively, every Clopper-Pearson confidence interval in the paper (0.473 on 4/4 classes, 0.393 on 0/6 false positives, 0.779/0.632 on batch 1) was removed, because honest replicates are deterministic replicas of one fixed reference configuration by construction and are not an i.i.d. sample — the paper's own text two sentences later concedes the four 'independent' classes reduce to two mechanisms. The batch-4/R8 result (the abstract's headline) previously had no confusion table where batches 2-3 each got one; a new Table 5 was added, transcribed verbatim from the already-committed public4/scorecard.json, plus an explicit escape-probability bound (~f^K, N~63, K=6) for R8's soundness claim, naming a partial-operator adversary as an open arm rather than claiming a bound that doesn't exist. A checklist-style 'Protocol, two batches' heading, reviewer-response-style status tags in the Limitations list, an incorrect claim that Sigstore/Rekor closes the metadata-forgery gap, and a mislabeling of R8 as 'Fiat-Shamir-correct' when it is in fact the classical interactive predecessor to Fiat-Shamir were all corrected, with Freivalds/Fiat-Shamir/Klein-Roodman promoted from inline-only prose to numbered bibliography entries. The Archive paragraph now discloses that both Zenodo deposits (July 21) predate batches 2-4 and this manuscript revision by 6-7 weeks. Left open by design, not silently dropped: the paper's own Sec.13 states it should be split with the measurement targeting ACM REP and a short metapaper targeting JORS — this re-flags the already-standing, Houston-gated D-R3-31 scope decision, unchanged; re-archiving the work is a Houston-gated irreversible action; a full batch-4 commit-ordered audit trail and 54-run appendix, missing ABFT/program-checking related work, and a few other deferred items are logged as D-CONF-04/09/10/12 for a future lane. Directive-G: 16 -> 18 pp, 4-pass compile 0 undefined refs / 0 overfull, 8-way byte-identical mirror, arXiv tarball rebuilt and standalone-recompiled clean. Convex remains UNAVAILABLE (spending limit); the paperVersions:bump is queued to CONVEX_BACKFILL_QUEUE_2026-09-21.md. Readiness holds 95, computed.",
+    keyTakeaways: [
+      "An exact-version confirmation board is not a formality: this one found a genuine statistical-methodology defect (Clopper-Pearson intervals applied to a false-positive process that is deterministic by construction) that 3 prior INT rounds and 1 EXT wave had all missed",
+      "A remedy specified in an earlier round's disposition (D-R3-13, from R3 on v2B.0.20) can go half-applied across a later revision — closed in one section, never carried to the abstract — until a fresh cold-read referee re-surfaces it",
+      "A committed scorecard.json for an already-run, already-sealed batch can be transcribed into a confusion table after the fact without any new computation — this closed the paper's most-cited (batch-4/R8) result's missing evidence table",
+      "The correct response to a real-but-large finding set is substantial, honest partial closure with explicitly logged residuals (D-CONF-04/09/10/12), not a rushed 100% close or a deferred no-op",
+      "A paper's own text can flag its own venue mismatch (Sec.13 recommending an ACM REP split) years before an external referee catches it — the fix is recognizing the re-flag of an already-escalated Houston-gated decision, not re-litigating it as new",
+    ],
+    links: [
+      { label: "P1B SSOT status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+      { label: "P1B dispositions (v2B.0.23 R-CONFIRM section)", href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P1B.md` },
+      { label: "Claude opus referee raw", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-09-22-P1B-v2B.0.23-EXACTPDF-CONFIRM/P1B_Claude_opus_referee_raw.md` },
+      { label: "Grok API raw", href: `${GH}/project-context/peer-reviews/R-CONFIRM-2026-09-22_P1B_Grok_brutal.md` },
+      { label: "Gemini API raw", href: `${GH}/project-context/peer-reviews/R-CONFIRM-2026-09-22_P1B_Gemini_cosmology.md` },
+      { label: "P1B paper source", href: `${GH}/arxiv/paper1b_namaster_proof.tex` },
+    ],
+  },
+  {
     id: "p4p-hold-correction-out-of-domain-dilution-v4p-0-11-2026-09-22",
     dateISO: "2026-09-22",
     kind: "closure-wave",

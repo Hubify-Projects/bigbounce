@@ -143,13 +143,13 @@
 %   (pipelines/namaster_proof/blind_test/public{,2}/sealed_digest.json.ots,
 %   pending Bitcoin confirmation) and cited as the S2 external-anchor step in
 %   progress. Appendix table of all 35 batch-2 per-run verdicts added.
-\newcommand{\paperVersion}{v2B.0.23}
-\newcommand{\paperTimestamp}{2026-09-05 12:00 PT}
+\newcommand{\paperVersion}{v2B.0.24}
+\newcommand{\paperTimestamp}{2026-09-22 08:00 PT}
 
 \title{\software: Content-bound execution receipts as a shortcut
 detector for pseudo-\(\Cl\) computations}
 \author{Houston Golden\\Independent researcher\\[2pt]\href{https://orcid.org/0009-0008-5616-5994}{\footnotesize ORCID: 0009-0008-5616-5994}}
-\date{September 5, 2026 --- manuscript revision \paperVersion (\paperTimestamp)}
+\date{September 22, 2026 --- manuscript revision \paperVersion\ (\paperTimestamp)}
 
 \begin{document}
 \maketitle
@@ -171,8 +171,10 @@ a 35-run primary sweep; a 48-run value-level extension; a 54-run
 post-commitment challenge) under an unmodified-instrumented-harness threat
 model --- the analyst may alter the computation but not the harness that
 records it; the blind test's own instrumented estimator is this
-repository's spin-0 MASTER implementation, because PyMaster is not
-installed in the test environment and exposes no Wigner-3\(j\) counter. A
+repository's spin-0 MASTER implementation, because the public NaMaster/PyMaster
+library exposes no Wigner-3\(j\) counter to instrument (a separate, non-blind
+cross-check installs PyMaster to validate the estimator against it,
+\S\ref{sec:pymaster-crosscheck}). A
 structural rule set (R1--R6) flags every replicate of operator-skipping,
 operator-truncating, grid-reducing, and cache-substituting shortcuts and
 none of the honest runs; a value-level rule (R7) additionally catches an
@@ -186,10 +188,14 @@ after every receipt is bound --- and catches both the rule-aware evasion
 and the omission 6/6 with zero honest false positives, at the cost of the
 committing verifier's honesty rather than a public randomness beacon. A
 metadata-forgery class that fabricates the declared intermediate wholesale
-still escapes every rule, unchanged across all four batches, and remains
-the primitive's stated limit. All detection claims are reported as
+still escapes every rule, unchanged across all four batches (flagged 0 of 3,
+0 of 5, 0 of 6, and 0 of 6 respectively; \S\ref{sec:blind-test-result}), and
+remains the primitive's stated limit. All detection claims against the
+frozen rule sets (batches 2--4) are reported as
 class-level counts, never as run-level probability intervals
-(\S\ref{sec:blind-test-result}). Separately, the
+(\S\ref{sec:blind-test-result}); the demoted batch-1 pilot round's own
+run-level numbers are disclosed separately and are not a claim of this kind
+(\S\ref{sec:blind-test-pilot}). Separately, the
 in-house spin-0 MASTER estimator was validated against the public NaMaster
 library (PyMaster 3.0) on an identical map, mask, and \(\ell\)-range: the
 mode-coupling matrix and decoupled bandpowers agree with NaMaster to
@@ -197,8 +203,11 @@ round-off (\(\lesssim\!5\times10^{-13}\) and \(\lesssim\!2\times10^{-12}\)
 relative difference), confirming the estimator's correctness independent of
 the blind test. The result establishes
 the primitive as a detector of \emph{structural shortcuts in instrumented
-steps}, not of forged metadata or of value-level shortcuts taken downstream
-of a declared intermediate: we report a pre-registered, sealed blind map
+steps} and, via R7/R8, of the specific value-level effective-multipole
+shortcut under both a rule-unaware and a rule-aware adversary; it remains
+not a fraud detector and cannot in principle catch forged metadata taken
+downstream of a declared intermediate: we report a pre-registered, sealed
+blind map
 of what a receipt-based check does and does not catch, with the negative
 classes reported as escapes.  The package also
 supplies explicit multipole-support contracts, fixed-grid rotation-angle
@@ -241,12 +250,15 @@ generally identical to applying the complete mode-coupling and binning
 operator, and a mismatch between the simulation and fitting operators can
 appear as a parameter-recovery bias.  On the synthetic \(N_{\rm side}=64\),
 \(\ell_{\max}=64\) configuration used for the blind test below
-(Sec.~\ref{sec:blind-test}), replacing the full band evaluation with a single
+(Sec.~\ref{sec:blind-test}), measured on the in-house
+\emph{spin-0} MASTER estimator (\S\ref{sec:blind-test}), replacing the full band evaluation with a single
 effective-multipole transfer factor per 8-\(\ell\) band produces
-order-unity fractional deviations in several bands of the decoupled
+order-unity fractional deviations (0.23--1.18 relative) in several bands of the decoupled
 bandpowers relative to the complete-operator result --- large enough to bias
-a fit.  This is exactly the shortcut exercised as class S6 below; a
-per-band deviation figure traceable to a committed script and output is
+a fit; the magnitude is not shown to transfer to the spin-2 tensor
+\texttt{windows} actually contracts, which has additional E/B-mixing
+structure.  This is exactly the shortcut exercised as class S6 below; the
+per-band deviation numbers, traceable to a committed script and output, are
 discussed in \S\ref{sec:blind-test-s6} below.
 
 A separate reproducibility risk arises in long or sharded calculations.
@@ -360,7 +372,7 @@ Field & Source & Trust \\
 \texttt{result\_sha256}, \texttt{result\_bytes} & recomputed at verify time & self-evident \\
 \texttt{result\_file}, \texttt{schema\_version} & protected & self-evident \\
 caller metadata (suite, seeds, \dots) & caller-asserted, contract-checked & asserted \\
-\texttt{intermediates.pseudo\_cl} & contract-checked \emph{when present} & asserted, absent fails R7 open \\
+\texttt{intermediates.pseudo\_cl} & contract-checked \emph{when present} & asserted; absent fails R7 open but fails R8 closed \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -388,7 +400,7 @@ evaluated; an instrumented count of Wigner-3\(j\) symbol evaluations
 performed; the decoupled bandpowers (hash-bound, in the result file); and
 measured wall time.
 
-\paragraph{Protocol, two batches.} (1) A reference contract is published
+\paragraph{Protocol, common to every batch.} (1) A reference contract is published
 first, from one honest reference run: full \(\ell\)-grid, \(M\) shape, exact
 3\(j\)-evaluation count, code sha256, tolerance. (2) A sealing script draws a
 random key, assigns \(N\) runs to arms via a balanced, HMAC(key, run\_id)-derived
@@ -401,7 +413,7 @@ package's \texttt{publish\_json}. (4) The verifier, implemented in
 the input manifest. (5) The key is revealed and the confusion matrix
 computed. The protocol was run four times: a pilot, a primary structural
 sweep, a value-level extension, and a post-commitment challenge
-(\S\ref{sec:blind-test-batch3}--\ref{sec:blind-test-batch4}). In batch 1 (18 runs, arms
+(\S\ref{sec:blind-test}). In batch 1 (18 runs, arms
 honest/S1--S5), two of the rules were changed \emph{after} batch-1 outcomes
 were seen (\S\ref{sec:blind-test-pilot}); batch 1 is therefore relabelled a
 \textbf{pilot, rule-development round}, not a blind measurement of detector
@@ -477,10 +489,15 @@ S6 effective multipole & 5 & 0 & --- (escapes; \emph{no} outcome pre-declared) \
 \end{table}
 
 All four structural classes were flagged in every replicate: 4/4 structural
-classes detected, 20/20 runs (one-sided 95\% Clopper--Pearson lower bound
-\textbf{0.473} on the class-level detection rate, the only i.i.d. unit
-available --- see the independence caveat below); honest false positives are
-0/5. A pooled figure across all six shortcut arms is not reported: its value
+classes detected, 20/20 runs, by two distinct mechanisms (see the
+independence caveat below); honest false positives are
+0/5, which is expected by construction --- see below --- not a measured rate.
+No Clopper--Pearson interval is reported for either number: a valid interval
+requires i.i.d.\ draws from a population, and neither the four
+self-selected structural classes (which the independence caveat below shows
+reduce to two mechanisms, not four) nor the honest replicates (which are
+deterministic replicas of one fixed reference configuration) satisfy that
+requirement. A pooled figure across all six shortcut arms is not reported: its value
 is fixed by the arbitrary choice of how many escape classes are included at
 equal replication and carries no external interpretation. \textbf{Independence
 caveat (pre-declared):}
@@ -544,9 +561,11 @@ once it was recognized that \(M\) depends only on the mask and the
 \(\ell\)-grid, so every honest run legitimately shares one \(M\) hash for a
 fixed survey mask; batch 1 removed this rule post hoc rather than having
 excluded it in advance. With these two post-hoc changes disclosed, batch 1's
-own confusion counts (12/12 on S1--S4, one-sided 95\% lower bound 0.779; 0/3
-honest false positives, upper bound 0.632) are rule-fitting numbers, not a
-blind-test result, and are not headlined; the primary batch-2 result below
+own confusion counts (12/12 on S1--S4; 0/3
+honest false positives) are rule-fitting numbers, not a
+blind-test result, and are not headlined --- no Clopper--Pearson interval is
+reported for them either, for the same reason given for batch 2 above; the
+primary batch-2 result below
 (paragraph ``Result (batch~2, primary)'') is the reported measurement.
 
 \paragraph{S6: the effective-multipole class escaped, and that is the finding.}
@@ -588,9 +607,10 @@ seeds, \(7.5\times10^{-2}\)--\(1.5\times10^{-1}\)): an eleven-order gap, not
 tuned after unblinding. 48 runs were sealed (8 arms \(\times\) 6; seal
 \texttt{abfe2793\ldots}, \texttt{seal\_verified: true}). Table
 \ref{tab:blind-results-batch3} gives the result: honest 0/6 flagged;
-S1--S4 and the new S4b (cross-run cache variant) 6/6 each; \textbf{S6 6/6 by
+S1--S4 and the new S4b (cross-run cache variant) flagged 6/6 each; \textbf{S6
+flagged 6/6 by
 R7 alone}; S5 (metadata forgery, extended to forge \(p := MC\)) still
-escapes 6/6. Structural arms S1--S4 plus S4b are \textbf{five} arms
+escapes, flagged 0/6. Structural arms S1--S4 plus S4b are \textbf{five} arms
 \(\times\) 6 = \textbf{30/30}, not the 24/24 an earlier draft misreported.
 S4b is the first replicate set to exercise R6's cross-run disjunct
 (\S\ref{sec:blind-test-result}): 4/6 fired it, and the other 2 collapsed to
@@ -600,49 +620,6 @@ cache-substituting, with the source run for each replicate named in
 seed-dependent executions of one deterministic variant, so the inferential
 unit is the class, not the run: batches 1--4 uniformly report class-level
 detection counts and never a run-level Clopper--Pearson interval.
-
-\paragraph{Batch 4: a post-commitment verifier challenge (R8), pre-registered against a rule-aware adversary.}
-\label{sec:blind-test-batch4}
-R7's two design gaps are real and are answered by building the exact
-adversaries they predict rather than by softening the prose above. First,
-R7's spot rows are a public function of values the runner holds before
-publishing, so arm \textbf{S7 (R7-aware effective multipole)} computes those
-six rows in advance and writes a declared pseudo-spectrum exact on exactly
-them, at zero marginal cost. Second, R7 fails \emph{open} when
-\texttt{intermediates.pseudo\_cl} is absent, so arm \textbf{S8 (omit
-pseudo\_cl)} is an S6 run whose receipt simply omits the field. Rule R8
-(\texttt{RULES\_v4\_FROZEN.md}, sha256 \texttt{a59caaf8\ldots}) adds a
-post-commitment challenge: before the batch seal and before any run, the
-verifier draws 32 random bytes \(\sigma\) and publishes only
-\(\mathrm{sha256}(\sigma)\); each run's receipt is then bound as
-\(D=\mathrm{sha256}(\text{mask hash}\,\Vert\,\text{coupling hash}\,\Vert\,
-\text{band\_hash}(C)\,\Vert\,\text{band\_hash}(p))\); only after every
-receipt is published and every \(D\) committed is \(\sigma\) revealed, and
-the challenged rows are drawn as \(\mathrm{sha256}(\sigma \Vert \text{run
-id} \Vert D)\); the verifier rebuilds the mask, recomputes those six
-challenged rows, and fires the same \(\mathrm{TOL}=10^{-6}\) test. R8 fails
-\textbf{closed}: a missing, malformed, non-finite or wrong-length
-\texttt{pseudo\_cl}, a missing operator hash, or a mask that fails to
-rebuild to the contract hash all fire, tagged \texttt{SHORTCUT-SUSPECT}. An
-honest run's residual is \(-10^{-12}C\) on every row at once, so it passes
-any challenge set without knowing \(\sigma\); a shortcut with \(p\neq MC\)
-on generic rows escapes only if all \(K\) post-commitment rows land in its
-agreeing set. Nine arms \(\times\) 6 replicates (54 runs, seal
-\texttt{dbe6a713\ldots}) gave: honest 0/6; S1--S4, S6 6/6 on both R7 and R8;
-S5 (metadata forgery) still escapes 0/6; \textbf{S7 6/6 flagged, R7 fired
-0/6, R8 fired 6/6} --- R7 evaded exactly as predicted, at zero residual,
-and R8 catches it; \textbf{S8 6/6 flagged, R7 fired 0/6, R8 fired 6/6} ---
-the fail-open confirmed, and R8's fail-closed branch catches it. False
-positives on honest runs: 0/6. Reporting is class-level counts only, per
-the rule above; no per-run detection probability is computed for batch 4.
-This is, to our knowledge, the first post-commitment challenge protocol for
-pseudo-\(C_\ell\) execution receipts: a row-sampled Freivalds test
-(\S\ref{sec:related-work}) made sound by a Fiat--Shamir-correct
-post-commitment challenge, applied to this receipt. Detection is
-established at class level, not per run; a runner that fabricates the
-declared intermediate wholesale (S5) still escapes, unchanged across all
-four batches --- receipts of this kind detect shortcuts taken by an analyst
-who does not forge, not forgery itself.
 
 \begin{table}[h]
 \centering
@@ -664,11 +641,99 @@ S6 effective multipole & 6 & 6 & R7 alone \\
 \end{tabular}
 \end{table}
 
-\textbf{R7 catches S6, bounded three ways.} (1) R7 was written against S6's
+\paragraph{Batch 4: a post-commitment verifier challenge (R8), pre-registered against a rule-aware adversary.}
+\label{sec:blind-test-batch4}
+R7's two design gaps are real and are answered by building the exact
+adversaries they predict rather than by softening the prose above. Batch 4
+carries forward honest and S1--S6 from batch 3 but drops S4b (the
+cross-run cache variant): R6's cross-run disjunct was already exercised for
+the first time in batch 3 (\S\ref{sec:blind-test-batch3}), so batch 4's arms
+target the two new R7 design gaps instead. First,
+R7's spot rows are a public function of values the runner holds before
+publishing, so arm \textbf{S7 (R7-aware effective multipole)} computes those
+six rows in advance and writes a declared pseudo-spectrum exact on exactly
+them, at zero marginal cost. Second, R7 fails \emph{open} when
+\texttt{intermediates.pseudo\_cl} is absent, so arm \textbf{S8 (omit
+pseudo\_cl)} is an S6 run whose receipt simply omits the field. Rule R8
+(\texttt{RULES\_v4\_FROZEN.md}, sha256 \texttt{a59caaf8\ldots}) adds a
+post-commitment challenge: before the batch seal and before any run, the
+verifier draws 32 random bytes \(\sigma\) and publishes only
+\(\mathrm{sha256}(\sigma)\); each run's receipt is then bound as
+\(D=\mathrm{sha256}(\text{mask hash}\,\Vert\,\text{coupling hash}\,\Vert\,
+\text{band\_hash}(C)\,\Vert\,\text{band\_hash}(p))\); only after every
+receipt is published and every \(D\) committed is \(\sigma\) revealed, and
+the challenged rows are drawn as \(\mathrm{sha256}(\sigma \Vert \text{run
+id} \Vert D)\); the verifier rebuilds the mask, recomputes those six
+challenged rows, and fires the same \(\mathrm{TOL}=10^{-6}\) test. R8 fails
+\textbf{closed}: a missing, malformed, non-finite or wrong-length
+\texttt{pseudo\_cl}, a missing operator hash, or a mask that fails to
+rebuild to the contract hash all fire, tagged \texttt{SHORTCUT-SUSPECT}. An
+honest run's residual is \(\sim10^{-12}\) (the same relative measure as
+above) on every row at once, so it passes
+any challenge set without knowing \(\sigma\); a shortcut with \(p\neq MC\)
+on generic rows escapes only if all \(K\) post-commitment rows land in its
+agreeing set. With \(N\approx63\) rows (\(\ell=2,\ldots,64\)) and
+\(K=6\) sampled uniformly, an adversary who computes a fraction \(f\) of the
+operator's rows honestly and shortcuts the rest escapes with probability
+\(\approx f^K\): 0.016 at \(f=0.5\), 0.26 at \(f=0.8\), 0.53 at \(f=0.9\).
+R8's measured 6/6 on S1--S8 is therefore a strong result against arms that
+shortcut most or all rows (as every arm defined here does), not a bound
+against a partial-row adversary; a \(K\) chosen from a target soundness
+error against a stated \(f\), and a partial-operator arm exercising this
+bound directly, are open for a future revision. Nine arms \(\times\) 6 replicates (54 runs, seal
+\texttt{dbe6a713\ldots}) gave: honest flagged 0/6; S1--S4, S6 flagged 6/6 on both R7 and R8;
+S5 (metadata forgery) still escapes, flagged 0/6; \textbf{S7 flagged 6/6, R7 fired
+0/6, R8 fired 6/6} --- R7 evaded exactly as predicted, at zero residual,
+and R8 catches it; \textbf{S8 flagged 6/6, R7 fired 0/6, R8 fired 6/6} ---
+the fail-open confirmed, and R8's fail-closed branch catches it. False
+positives on honest runs: 0/6, expected by construction (no Clopper--Pearson
+interval is reported, for the same reason given for batch 2). Reporting is class-level counts only, per
+the rule above; no per-run detection probability is computed for batch 4.
+This is, to our knowledge, the first post-commitment challenge protocol for
+pseudo-\(C_\ell\) execution receipts: a row-sampled Freivalds test
+(\S\ref{sec:related-work}) using an interactive, verifier-drawn
+commit-then-challenge --- the classical predecessor to the Fiat--Shamir
+transform, not an application of it: R7 is the Fiat--Shamir-style version
+(challenge derived by hashing the runner's own inputs) and it is the one
+that is prover-predictable; R8 abandons that hash-derived challenge for a
+verifier-committed one precisely to restore the soundness Fiat--Shamir
+could not provide here. Detection is
+established at class level, not per run; a runner that fabricates the
+declared intermediate wholesale (S5) still escapes, unchanged across all
+four batches --- receipts of this kind detect shortcuts taken by an analyst
+who does not forge, not forgery itself. Table~\ref{tab:blind-results-batch4},
+transcribed from the committed \texttt{public4/scorecard.json}, gives the
+full per-arm result.
+
+\begin{table}[h]
+\centering
+\caption{Blind shortcut-detection confusion table, batch 4 (54 sealed runs, 9 arms \(\times\) 6, R0--R8; transcribed from \texttt{public4/scorecard.json}).}
+\label{tab:blind-results-batch4}
+\begin{tabular}{@{}lccl@{}}
+\toprule
+Arm & \(n\) & Flagged & Rule(s) fired \\
+\midrule
+Honest & 6 & 0 & --- \\
+S1 operator skipped & 6 & 6 & R3, R4, R7, R8 \\
+S2 operator truncated & 6 & 6 & R3, R4, R7, R8 \\
+S3 grid reduced + interpolated & 6 & 6 & R2, R3, R4, R7, R8 \\
+S4 cache substituted & 6 & 6 & R6, R7, R8 \\
+S5 metadata forgery (extended) & 6 & 0 & --- (escapes; forges \(p:=MC\)) \\
+S6 effective multipole & 6 & 6 & R7, R8 \\
+S7 R7-aware effective multipole & 6 & 6 & R8 only (R7 fired 0/6, residual max 0.0) \\
+S8 omit \texttt{pseudo\_cl} & 6 & 6 & R8 only (R7 fired 0/6, fails open) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\textbf{R7 catches S6, qualified three ways.} (1) R7 was written against S6's
 own batch-2 definition: a pre-registered rule targeting a known class, not a
 verifier discovering an unanticipated shortcut. (2) 0/6 honest false
-positives bounds the false-positive rate above by 0.393; six runs cannot
-establish a small rate. (3) R7 is bound to a \emph{declared} intermediate, so
+positives is expected by construction, since honest runs are deterministic
+replicas of the reference contract and R7's spot rows are recomputed from
+that same contract; no Clopper--Pearson interval is reported, for the same
+reason given for batch 2 (\S\ref{sec:blind-test-result}). (3) R7 is bound to a \emph{declared} intermediate, so
 an informed forger escapes by fabricating \(p := MC\) --- one
 matrix-vector product --- which is exactly what the extended S5 arm does,
 6/6, at residuals \(\sim\!10^{-17}\). R7 therefore moves the
@@ -718,7 +783,7 @@ from the unsealed, un-inspected attempt-1 assignment could have propagated
 into it; the two assignments share no key material.
 \end{sloppypar}
 
-\paragraph{Scope limits.} The estimator exercised in both batches is this
+\paragraph{Scope limits.} The estimator exercised in all four batches is this
 repository's own spin-0 MASTER implementation, not NaMaster itself: PyMaster
 is not installed in this environment, and the instrumented Wigner-3\(j\)
 counter is what makes the trace a measured consequence of the code path
@@ -733,25 +798,33 @@ trail (rules, then seal commitment, then outputs, then key, each in its own
 commit, sealed material held outside the tree until reveal) is checkable by
 any reader from git history alone, but the reveal remains self-run --- the
 same party sealed, ran, and unsealed. An external anchor is in progress: the
-sealed digest of each batch has been submitted to the OpenTimestamps Bitcoin
-calendar (\texttt{blind\_test/public\{,2\}/sealed\_digest.json.ots}); as of
+sealed digest of each of the four batches has been submitted to the
+OpenTimestamps Bitcoin calendar (the \texttt{sealed\_digest.json.ots} sidecar
+in each of \texttt{blind\_test/public/}, \texttt{public2/}, \texttt{public3/},
+and \texttt{public4/}); as of
 this revision \texttt{ots upgrade} returns \emph{Timestamp complete} with a
 Bitcoin block-header attestation for the batch-1 and batch-2 stamps; the
-batch-3 stamp (\S\ref{sec:blind-test-batch3}) is submitted and still pending.
+batch-3 stamp (\S\ref{sec:blind-test-batch3}) is submitted and still pending,
+and the batch-4 stamp and the separate commitment to \(\mathrm{sha256}(\sigma)\)
+(\S\ref{sec:blind-test-batch4}) are both submitted but not re-verified as of
+this revision.
 \texttt{ots verify} requires a Bitcoin node, which this machine does not run,
 so the attested heights are left for a reader with a node, or a public
 verifier, to confirm. This is a genuine third-party \emph{time} witness; it
 still does not witness \emph{execution}, and the reveal remains self-run.
 The S5 metadata-forgery escape is
-structural, not a bug: closing it needs the same external anchor, or a
-witnessed execution environment, signed build/execution logs, or a
-third-party rerun. Under an unmodified-instrumented-harness threat model ---
+structural, not a bug: closing it needs a witnessed or attested execution
+environment (\S\ref{sec:related-work}'s SGX/TDX discussion), signed
+build/execution logs, or a third-party rerun --- a transparency log alone
+witnesses that a statement was published at a time, not that it is true, and
+does not by itself close this gap. Under an unmodified-instrumented-harness threat model ---
 the analyst may alter the computation but runs an unmodified, instrumented
 harness; an adversary who also alters the harness and writes a fabricated
 honest trace by hand is, by construction, invisible to a receipt-only check
 --- the tested claim is: receipts of this kind are a detector of
-\emph{structural} shortcuts in instrumented steps, not of forged metadata and
-not of value-level shortcuts taken downstream of a declared intermediate.
+\emph{structural} shortcuts in instrumented steps and, via R7/R8, of the
+value-level effective-multipole shortcut under both a rule-unaware and a
+rule-aware adversary, but not of forged metadata.
 
 \paragraph{PyMaster cross-check: the estimator itself, not the blind test.}
 \label{sec:pymaster-crosscheck}
@@ -793,9 +866,12 @@ artifacts to the process that produced them. Supply-chain attestation
 frameworks --- in-toto~\cite{Torres2019} and the SLSA levels built on
 it~\cite{SLSA} --- record signed statements that a declared build or analysis
 step ran on declared inputs and emitted declared outputs, and
-Sigstore~\cite{Sigstore} with its Rekor transparency log supplies exactly the
-externally witnessed anchor identified above as the missing ingredient for
-the metadata-forgery class. Execution-capture tools such as
+Sigstore~\cite{Sigstore} with its Rekor transparency log witnesses that a
+signed statement existed, unaltered, at a given time; it does not witness
+that the statement is true, so on its own it closes backdating and
+post-hoc substitution but not fabrication at write time, the same
+limitation this paper states for its own OpenTimestamps anchors
+(\S\ref{sec:limitations}). Execution-capture tools such as
 ReproZip~\cite{Chirigati2016} package the environment and file accesses of a
 run so it can be replayed elsewhere; workflow engines including
 Snakemake~\cite{Molder2021} and Nextflow~\cite{DiTommaso2017} emit provenance
@@ -817,33 +893,36 @@ shape and support of the operator actually built --- whose values are a
 measured consequence of the numerical code path, checked against a published
 contract derived from one honest reference run. That is complementary rather
 than competing: the trace is naturally expressible as an in-toto predicate,
-and anchoring such a predicate in a transparency log would close the
-metadata-forgery gap using existing infrastructure. Remote-attestation
+and anchoring such a predicate in a transparency log closes backdating and
+post-hoc substitution of the receipt itself, but --- as above --- not
+fabrication of the trace at write time. Remote-attestation
 mechanisms such as measured boot and Intel SGX/TDX enclaves~\cite{CostanDevadas2016}
-address a different part of the same threat model: they let a remote party
-verify \emph{which} harness binary ran, whereas the trace claimed here
-verifies \emph{what the harness observed} about the computation's internal
-path once running; the two are complementary and neither substitutes for the
-other under an adversary who controls the harness itself. Verifiable-computation
+close that remaining gap: they let a remote party
+verify \emph{which} harness binary ran inside the enclave, and because the
+attestation binds the measured binary rather than trusting the analyst, an
+instrumented harness executed inside such an enclave is the mechanism that
+would close the metadata-forgery class, complementing the trace claimed here,
+which verifies \emph{what the harness observed} about the computation's
+internal path once running. Verifiable-computation
 schemes such as SNARKs~\cite{BenSasson2014} instead prove that a claimed
 output follows from a claimed program and input without re-execution, which
 would close the value-level gap (\S\ref{sec:limitations}) at the cost of a
 much larger proving system than this narrow layer aims to be. R7 and R8
-(\S\ref{sec:blind-test-batch3}--\ref{sec:blind-test-batch4}) draw directly
+(\S\ref{sec:blind-test}) draw directly
 on two older results outside the provenance literature above: Freivalds'
 randomized verification of a matrix product by checking it on a random
-subset of rows rather than rebuilding the product (R. Freivalds, IFIP
-Congress 1977, pp.\ 839--842), of which R7/R8's spot-row check of
-\(MC=p\) is a direct application; and the Fiat--Shamir transform, which
-makes a randomized challenge sound only when the challenge is drawn after
-the prover's commitment rather than chosen or predictable by the prover
-(A.\ Fiat and A.\ Shamir, CRYPTO~'86, LNCS~263, pp.\ 186--194) --- the
-condition R7 violates (\S\ref{sec:blind-test-batch3}) and R8 restores via
-its post-commitment verifier seed (\S\ref{sec:blind-test-batch4}). The
+subset of rows rather than rebuilding the product~\cite{Freivalds1979}, of
+which R7/R8's spot-row check of
+\(MC=p\) is a direct application; and the general requirement, of which
+Fiat--Shamir~\cite{FiatShamir1986} is the non-interactive instance, that a
+randomized challenge is sound only when it cannot be predicted by the prover
+before it commits --- the property R7's hash-derived, prover-computable
+challenge violates (\S\ref{sec:blind-test-batch3}) and R8 restores by
+returning to an interactive, verifier-committed challenge
+(\S\ref{sec:blind-test-batch4}). The
 blind protocol itself follows the discipline of blind analysis in
 cosmology, in which decision rules are frozen before results are seen
-precisely to prevent post-hoc tuning (J.\ R.\ Klein and A.\ Roodman,
-Ann.\ Rev.\ Nucl.\ Part.\ Sci.\ 55, 141 (2005)). The scope of the
+precisely to prevent post-hoc tuning~\cite{KleinRoodman2005}. The scope of the
 guarantee remains what Sec.~\ref{sec:blind-test} measured: structural
 shortcuts in instrumented steps, under an unmodified-harness threat model.
 
@@ -936,9 +1015,12 @@ campaign, rather than silently combining it with valid results.
 
 Houston Golden: conceptualization, methodology, software, validation, formal
 analysis, investigation, data curation, writing---original draft,
-writing---review and editing, visualization, project administration, and
-funding acquisition. Correspondence metadata remain author-supplied submission
-metadata and are not inferred by the software release process.
+writing---review and editing, visualization, and project administration; no
+external funding was sought or received (see the Funding Statement below).
+The corresponding-author email and affiliation given on the title page are
+supplied directly by the author as part of this journal submission; they are
+not derived or verified by the software release process described in
+\S\ref{sec:limitations}--\ref{sec:availability}.
 
 \section{Limitations}
 \label{sec:limitations}
@@ -957,8 +1039,7 @@ protection against coordinated replacement without an external anchor.
 Schema version 1 has no migration requirement yet; a future incompatible
 schema will require an explicit reader or conversion path. The blind
 shortcut-detection test (Sec.~\ref{sec:blind-test}) establishes a detector of
-\emph{structural} shortcuts in instrumented steps and, via R7/R8
-(\S\ref{sec:blind-test-batch3}--\ref{sec:blind-test-batch4}), of both
+\emph{structural} shortcuts in instrumented steps and, via R7/R8, of both
 rule-unaware and rule-aware \emph{value-level} shortcuts and of omitted
 declared intermediates; it is not a fraud detector: it cannot in principle
 catch metadata forgery (an adversary who
@@ -970,39 +1051,55 @@ tolerance. Batch 3's value-level rule R7
 6/6, but only because R7 was pre-registered against S6's own definition; a
 shortcut that reproduces a correct \emph{declared} \texttt{pseudo\_cl}
 by a different internal path, without ever computing it from the honest
-operator, is not exercised by R0--R7. All detection rates in this paper
-(R1--R7) are class-level, not per-run, probabilities
-(\S\ref{sec:blind-test-result}).
+operator, is not exercised by R0--R8. All detection rates reported for the
+frozen rule sets (R0--R8, batches 2--4) are class-level, not per-run,
+probabilities (\S\ref{sec:blind-test-result}); the demoted batch-1 pilot's
+own run-level numbers (\S\ref{sec:blind-test-pilot}) are the sole,
+disclosed, non-headlined exception.
 
 Remaining open items, numbered independently of the shortcut classes S1--S6
 to avoid collision:
 \begin{description}[leftmargin=1.6cm,style=nextline]
 \item[L1 (estimator).] The blind test exercises this repository's own
-  spin-0 MASTER estimator rather than NaMaster/PyMaster itself; a separate,
+  spin-0 MASTER estimator rather than NaMaster/PyMaster itself. A separate,
   non-blind cross-check now validates that estimator against
   \texttt{pymaster} 3.0 to floating-point round-off
-  (\S\ref{sec:pymaster-crosscheck}), but an equivalent instrumented hook has
-  not been added inside NaMaster itself, so the blind-test claim does not
-  transfer to NaMaster verbatim (closed for the estimator; open for the
-  hook).
+  (\S\ref{sec:pymaster-crosscheck}), which establishes the estimator's own
+  correctness; an equivalent instrumented hook inside NaMaster itself has
+  not been built, so the blind-test detection claim does not transfer to
+  NaMaster verbatim, and remains open.
 \item[L2 (external anchor).] Its seal establishes commit ordering, not an
-  external witness. \texttt{ots upgrade} now returns \emph{Timestamp
+  external witness. \texttt{ots upgrade} returns \emph{Timestamp
   complete} with a Bitcoin attestation for the batch-1 and batch-2 stamps;
-  the batch-3 stamp is submitted and pending as of this revision (partially
-  closed).
+  the batch-3 and batch-4 stamps, and the separate commitment to
+  \(\mathrm{sha256}(\sigma)\) that batch 4's soundness rests on
+  (\S\ref{sec:blind-test-batch4}), are submitted but not yet re-verified as
+  of this revision.
 \item[L3 (mechanism coverage).] S1--S3 in batch 2 are all detected by the
   same trace-mismatch mechanism (R3/R4); S4's five detections were all the
   \emph{reference} disjunct of R6. Batch 3's S4b arm exercised the
   \emph{cross-run} disjunct for the first time (4/6 fired it; the other 2
   collapsed to the reference disjunct via a named source run,
-  \S\ref{sec:blind-test-batch3}) (closed).
+  \S\ref{sec:blind-test-batch3}), closing this gap for R6.
 \item[L4 (single run).] The batch-2 sequence was run once and not repeated.
   Git history proves the order of surviving commits, not the absence of
   discarded attempts; an OpenTimestamps anchor does not close that gap
   either. A third-party rerun or witnessed environment would.
+\item[L5 (untested rules).] Rules R0 (receipt verification failure), R1
+  (code hash mismatch), and R5 (mask hash mismatch) never fire in any
+  tabulated run across all four batches (Tables~\ref{tab:blind-results},
+  \ref{tab:blind-results-batch3}, and the batch-4 confusion table,
+  \S\ref{sec:blind-test-batch4}): every honest run shares the reference
+  contract's code, \(\ell\)-grid, and mask by construction, and none of the
+  designed shortcut arms alters the imported compute module's own hash, the
+  evaluated \(\ell\)-grid, or the mask. These three rules are therefore
+  untested against any run that should fire them; a corrupted receipt, a
+  modified compute module, or a substituted mask would be needed to exercise
+  them, and no such arm exists yet.
 \end{description}
 
 \section{Availability}
+\label{sec:availability}
 
 \paragraph{Software version.}
 This paper documents \software{} version 0.1.7. Every version number of the
@@ -1027,7 +1124,7 @@ continuous integration, so it is exercised locally, not CI-verified.
 The package has no special hardware requirements: it is pure Python with a
 single NumPy runtime dependency, requires no GPU, and its full test suite
 completes in under one second on a commodity CPU; no formal memory profiling
-was performed, but the largest retained arrays are the
+was performed, but the largest arrays held in memory at any point are the
 \([4,20,4,1025]\)-shaped bandpower-window tensors in
 \S\ref{sec:workspace} (order \(10^5\) double-precision entries, a few MB),
 so heap use is dominated by NumPy allocation overhead rather than by the
@@ -1073,7 +1170,14 @@ its license, citation metadata, and checksums, is published on Zenodo under
 (deposited July 21, 2026). The manuscript itself, with its
 exact source, arXiv bundle, and provenance manifest, is separately archived
 under \href{https://doi.org/10.5281/zenodo.21481842}{doi:10.5281/zenodo.21481842}
-(CC-BY-4.0, deposited July 21, 2026).
+(CC-BY-4.0, deposited July 21, 2026). Both deposits predate the blind-test
+batches 2--4 (Sec.~\ref{sec:blind-test}, first sealed 2026-09-04) and this
+revision of the manuscript (2026-09-05): the frozen rule files, variant and
+verification scripts, sealed material, and manifests for batches 2--4, and
+the current manuscript text, are therefore not yet in either archived
+snapshot and are available only at the mutable repository location above.
+A follow-on archival deposit covering the current state is a planned,
+Houston-authorized action not yet taken as of this revision.
 
 \paragraph{Validation artifacts.}
 The corrected physical example is bound to the
@@ -1112,10 +1216,10 @@ rule-set files themselves, as committed and pinned in each batch's
 \texttt{169b3690\ldots} (\nolinkurl{RULES_v2_FROZEN.md}, batch 2), sha256
 \texttt{856f4c50\ldots} (\nolinkurl{RULES_v3_FROZEN.md}, batch 3), and sha256
 \texttt{a59caaf8\ldots} (\nolinkurl{RULES_v4_FROZEN.md}, batch 4).
-Reproducing any committed run reuses its
-committed \texttt{sealed\{,2,3,4\}/key.txt} and
-\texttt{sealed\{,2,3,4\}/assignment.json} rather than re-running the seal
-script, which draws a fresh random key. All four batches cost \$0 on any
+Reproducing any committed run reuses the committed \texttt{key.txt} and
+\texttt{assignment.json} files in the corresponding \texttt{sealed/},
+\texttt{sealed2/}, \texttt{sealed3/}, or \texttt{sealed4/} directory rather
+than re-running the seal script, which draws a fresh random key. All four batches cost \$0 on any
 CPU-only machine; batch 1's 18 runs plus overhead take approximately one to
 two minutes, batch 2's 35 runs measured \(\sim\)11~s of core execution, and
 batch 3's 48 runs (plus the 48 aborted) complete in under two minutes total.
@@ -1242,7 +1346,7 @@ S.~Torres-Arias, H.~Afzali, T.~K. Kuppusamy, R.~Curtmola, and J.~Cappos,
 
 \bibitem{SLSA}
 OpenSSF, ``Supply-chain Levels for Software Artifacts (SLSA),''
-\href{https://slsa.dev}{slsa.dev}.
+\href{https://slsa.dev}{slsa.dev}, living specification, accessed 2026-09-05.
 
 \bibitem{Sigstore}
 Z.~Newman, J.~S. Meyers, and S.~Torres-Arias, ``Sigstore: Software signing
@@ -1257,6 +1361,21 @@ ePrint Archive} 2016/086 (2016).
 E.~Ben-Sasson, A.~Chiesa, E.~Tromer, and M.~Virza, ``Succinct Non-Interactive
 Zero Knowledge for a von Neumann Architecture,'' in \emph{23rd USENIX
 Security Symposium} (2014).
+
+\bibitem{Freivalds1979}
+R.~Freivalds, ``Probabilistic machines can use less running time,'' in
+\emph{Information Processing 77 (Proc.\ IFIP Congress 1977)}, pp.~839--842
+(North-Holland, 1977).
+
+\bibitem{FiatShamir1986}
+A.~Fiat and A.~Shamir, ``How to prove yourself: Practical solutions to
+identification and signature problems,'' in \emph{CRYPTO~'86}, LNCS~263,
+pp.~186--194 (Springer, 1986).
+
+\bibitem{KleinRoodman2005}
+J.~R.~Klein and A.~Roodman, ``Blind analysis in nuclear and particle
+physics,'' \emph{Annual Review of Nuclear and Particle Science} 55, 141--163
+(2005).
 
 \bibitem{Chirigati2016}
 F.~Chirigati, R.~Rampin, D.~Shasha, and J.~Freire, ``ReproZip: Computational
@@ -1278,7 +1397,7 @@ artefacts with RO-Crate,'' \emph{Data Science} 5, 2 (2022).
 
 \bibitem{Zaharia2018}
 M.~Zaharia, A.~Chen, A.~Davidson, et al., ``Accelerating the machine learning
-lifecycle with MLflow,'' \emph{IEEE Data Engineering Bulletin} 41, 4 (2018).
+lifecycle with MLflow,'' \emph{IEEE Data Engineering Bulletin} 41(4), 39--45 (2018).
 
 \end{thebibliography}
 

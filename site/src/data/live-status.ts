@@ -85,9 +85,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "NaMaster verification companion",
-      version: "v2B.0.23",
+      version: "v2B.0.24",
       readiness: 95,
-      pendingWork: "All deferred text items from the v2B.0.20 R3 truth audit now closed (batch-3 commit-ordered audit trail, frozen rule-file sha256 digests, Table 1 third trust category). ROUNDS STOPPED under directive R2 — next: Zenodo corpus deposit + venue decision (Houston-gated).",
+      pendingWork: "R-CONFIRM exact-version board (2026-09-22) found real items and closed most by real edit (see DISPOSITIONS/P1B.md); NOT yet a confirmed/converged board. Open by design: venue split Sec.13-vs-JORS (Houston-gated), archive re-mint (Houston-gated, both Zenodo deposits predate batches 2-4), full batch-4 commit trail + appendix, deferred related-work items.",
     },
     {
       slug: "paper-2",
