@@ -1,0 +1,176 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger4-desi-dr1-lrg-fnl-channel",
+  "title": "Ledger #4 - LRG channel of the DESI DR1 scale-dependent-bias f_NL^loc measurement, opened at the v5 QSO fidelity by HTTP-range streaming (zero bulk catalogue bytes on disk): headline f_NL per z-bin and combined, the same 5-row systematics table, and the LRG-vs-QSO comparison on one convention",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Official DESI DR1 full-shape-bao-clustering v1.0 VAC - LRG window matrix, measured P_ell and EZmock covariance, all three z-bins (z0.4-0.6, z0.6-0.8, z0.8-1.1), GCcomb",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/",
+      "checksum": "sha256 of the exact streamed bytes for each of the 9 files recorded in research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/fnl_lrg_headline.json (\"sha256\" block); streamed by HTTP range read into memory with h5py's fileobj driver, never written to disk",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "DESI DR1 LRG clustering + randoms catalogues (LSScats v1.5), NGC+SGC, 4 random realisations per cap - same catalogue version v5 used for QSO",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+      "checksum": "whole-file sha256 for each of the 10 files in research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/stream_manifest.json, computed during a single sequential byte-0-to-EOF pass; only RA/DEC/Z/WEIGHT/WEIGHT_SYS/WEIGHT_FKP were kept in memory and no bulk catalogue was written to disk",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "Legacy Survey DR9 imaging pixweight map (main/dark, nside 256 nested) for EBV / STARDENS / GALDEPTH_Z - local, same file v4 used",
+      "type": "external-dataset",
+      "locator": "bigbounce_datasets/desi_dr1_lss/imaging_pixweight/pixweight-dark.fits",
+      "checksum": "sha256 in imaging_pixweight/pixweight-dark.fits.sha256",
+      "license": "CC BY 4.0"
+    },
+    {
+      "name": "v3/v5 QSO headline (comparison baseline, unchanged)",
+      "type": "internal-artifact",
+      "locator": "research/desi_png_reproduction/outputs/fnl_official_nshot0_summary.json",
+      "checksum": null
+    },
+    {
+      "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2411.17623",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Streaming pattern reused from lane bb-LS10-indomain-d180",
+      "type": "internal-artifact",
+      "locator": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/run_indomain_rotations.py",
+      "checksum": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI public data server (anonymous HTTP range requests, no key)",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/http_stream.py",
+      "entrypoint": "python3 http_stream.py",
+      "sha256": "cc496ebf3e9a9341194de9c16415999ba53d1c8b06cdb4476b13de191dbcb00d"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/lrg_official_io.py",
+      "entrypoint": "python3 lrg_official_io.py",
+      "sha256": "7e652b025d27f3ea09bed735614a2f695fead2bb49532e71aad70d5bac54d721"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/lrg_fit_core.py",
+      "entrypoint": "python3 lrg_fit_core.py",
+      "sha256": "111c19c2eb5bcbbf06056727bb3265cd46580260143f699113f008acd9cf816d"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/stream_lrg_cache.py",
+      "entrypoint": "python3 stream_lrg_cache.py",
+      "sha256": "a0f49c95a4b7f94be9031f8283be9bce2b215d74996b92894eaaa928b835aba5"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/fit_lrg_headline.py",
+      "entrypoint": "python3 fit_lrg_headline.py",
+      "sha256": "228b408095ce91880fe5cd4d64e1453b6358c86363d527f4138d5c9db01c6284"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/pk_lrg_splits.py",
+      "entrypoint": "python3 pk_lrg_splits.py",
+      "sha256": "5d6207589a72f01a788e10998a8f801a4fd23a82389dd222194f0fc8d55a6fe4"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/fit_lrg_splits.py",
+      "entrypoint": "python3 fit_lrg_splits.py",
+      "sha256": "31fb38a1a1c2a3bf0ef264c583b6e4b8c0d07e2c62f7ac3e276e7b9fc47c07f5"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/compare_lrg_qso.py",
+      "entrypoint": "python3 compare_lrg_qso.py",
+      "sha256": "2d128d5bbdad04cd5ab7c54dc087940656d04e40c3677a813d42c5c693ebf690"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/tests/regress_qso.py",
+      "entrypoint": "python3 tests/regress_qso.py",
+      "sha256": "c2204e491aeb6d7e01be5f8f77041389e64d06f14ce9dd854b8797b763451c4d"
+    }
+  ],
+  "environment": {
+    "python": "python3.12.13 (research/desi_png_reproduction/.venv312, gitignored): numpy 2.5.2, scipy 1.18.1, h5py 3.16.0, fitsio 1.4.2, healpy 1.20.0, astropy 8.0.1, camb 2.0.4, pypower 1.0.0, cosmoprimo 1.0.0",
+    "hardware": "cpu-only, ~4 GB RAM peak, >=3 GB free disk; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Mac-3559.lan",
+    "date": "2026-09-22",
+    "wall_clock": "streamed 6885080568 B (6.89 GB) total: 6233140800 B of LRG catalogues + randoms in 376 s and 651939768 B of official VAC products; bulk catalogue bytes written to disk = 0; peak disk = 2381031400 B (2.38 GB) of derived float32 columns outside the repo (bigbounce_datasets/desi_dr1_lss/lrg_stream_cache, 10 files, 59,525,171 rows); headline fit 1299 s; 60 pypower P(k) measurements totalling 1755 s",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~10 min to stream the 6.2 GB cache + ~1 h for the 60 P(k) measurements + ~25 min of fits",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": true,
+    "notes": "Needs >=3 GB free disk. No pre-downloaded product is required: run stream_lrg_cache.py (6.2 GB over the wire, 2.4 GB derived cache), then fit_lrg_headline.py (streams the 652 MB of official products), then pk_lrg_splits.py (resumable per measurement) and fit_lrg_splits.py, then compare_lrg_qso.py. tests/regress_qso.py is a hard gate: it must reproduce v5's published QSO headline before any LRG number is believed, and it needs the local QSO official_products/ from v3."
+  },
+  "outputs": [
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/fnl_lrg_headline.json",
+      "type": "result-json"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/systematics_table_lrg.json",
+      "type": "result-json"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/lrg_vs_qso.json",
+      "type": "result-json"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/stream_manifest.json",
+      "type": "result-json"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/regress_qso.json",
+      "type": "result-json"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/split_medians.json",
+      "type": "result-json"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/LEDGER4_LRG_RESULT_2026-09-22.md",
+      "type": "document"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/RUN_LOG.md",
+      "type": "document"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/PROPAGATION_NOTE.md",
+      "type": "document"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/PRE_REGISTRATION.md",
+      "type": "document"
+    }
+  ],
+  "verification": "Re-run tests/regress_qso.py: it must reproduce v5's published QSO headline (p=1.6 f_NL=-2.169, p=1.0 f_NL=-1.127, b1=2.24932, chi2=62.401, 48 data bins) to within 2% of sigma, and verify_quadratic must stay below 1e-9. Then re-run the LRG chain and confirm the headline, the 5-row table verdicts and the LRG-vs-QSO |T| reported in research/desi_png_reproduction/lrg_channel_2026_09_22/LEDGER4_LRG_RESULT_2026-09-22.md.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+    "research/desi_png_reproduction/LEDGER4_DESI_PNG_PLAN_2026-09-03.md",
+    "research/desi_png_reproduction/LEDGER4_RESULT_v5_2026-09-04.md (the QSO channel this one is matched to)",
+    "research/desi_png_reproduction/lrg_channel_2026_09_22/PRE_REGISTRATION.md",
+    "research/desi_png_reproduction/lrg_channel_2026_09_22/RUN_LOG.md",
+    "directive Q2 (reproducibility manifests), R1 (ledger-first), R6 (claims at their evidential strength)"
+  ]
+}

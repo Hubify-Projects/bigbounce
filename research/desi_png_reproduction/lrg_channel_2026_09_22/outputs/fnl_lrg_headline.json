@@ -1,0 +1,161 @@
+{
+  "code_path_check": {
+    "check": "z_eff parameterisation is the same code path as the QSO fits",
+    "at_z_eff": 1.491,
+    "alpha_bitwise_equal": true,
+    "plin_bitwise_equal": true,
+    "f_zeff": 0.9299406756568468,
+    "D_zeff": 0.49776177812001304
+  },
+  "zeff": {
+    "0.4-0.6": 0.5096288678782911,
+    "0.6-0.8": 0.7057956472488681,
+    "0.8-1.1": 0.9185851971138159
+  },
+  "p": {
+    "1.0": {
+      "bins": {
+        "0.4-0.6": {
+          "zeff": 0.5096288678782911,
+          "f_nl": -7.915654365246816,
+          "lo_68": -17.78662127443557,
+          "hi_68": 2.0321929668105354,
+          "sigma": 9.909407120623053,
+          "b1": 1.865587106548951,
+          "b1_over_D": 1.4296397715227962,
+          "chi2_min": 59.137760538518705,
+          "n_bins": 48,
+          "chi2_per_dof": 1.285603489967798
+        },
+        "0.6-0.8": {
+          "zeff": 0.7057956472488681,
+          "f_nl": -1.3782747024544317,
+          "lo_68": -10.581398741594255,
+          "hi_68": 7.382601954306929,
+          "sigma": 8.982000347950592,
+          "b1": 2.054624990110864,
+          "b1_over_D": 1.4289996615741976,
+          "chi2_min": 54.8712210420008,
+          "n_bins": 48,
+          "chi2_per_dof": 1.1928526313478434
+        },
+        "0.8-1.1": {
+          "zeff": 0.9185851971138159,
+          "f_nl": -0.7950022619525516,
+          "lo_68": -11.774975397797224,
+          "hi_68": 8.985255009474772,
+          "sigma": 10.380115203635999,
+          "b1": 2.2131947814329123,
+          "b1_over_D": 1.3939734694851742,
+          "chi2_min": 62.09973096148133,
+          "n_bins": 48,
+          "chi2_per_dof": 1.3499941513365505
+        }
+      },
+      "combined": {
+        "f_nl": -3.4032819964709917,
+        "lo_68": -9.191717978227114,
+        "hi_68": 2.2981161010717712,
+        "sigma": 5.744917039649443,
+        "chi2_min": 176.41584217727086,
+        "n_bins": 144,
+        "note": "three z-bins combined by summing the b1-profiled chi2 curves (independent b1 per bin, one shared f_NL). Bins treated as independent: no cross-bin official covariance product exists. Disclosed approximation, same class as the v4/v5 split covariance reuse."
+      }
+    },
+    "1.6": {
+      "bins": {
+        "0.4-0.6": {
+          "zeff": 0.5096288678782911,
+          "f_nl": -25.798262448708975,
+          "lo_68": -57.68106679882833,
+          "hi_68": 6.673103663737833,
+          "sigma": 32.17708523128308,
+          "b1": 1.865587128671469,
+          "b1_over_D": 1.4296397884757603,
+          "chi2_min": 59.13776053843594,
+          "n_bins": 48,
+          "chi2_per_dof": 1.2856034899659987
+        },
+        "0.6-0.8": {
+          "zeff": 0.7057956472488681,
+          "f_nl": -3.1972761086202515,
+          "lo_68": -24.450015075613038,
+          "hi_68": 17.202752115532576,
+          "sigma": 20.826383595572807,
+          "b1": 2.054624789727841,
+          "b1_over_D": 1.4289995222070266,
+          "chi2_min": 54.8712210378053,
+          "n_bins": 48,
+          "chi2_per_dof": 1.192852631256637
+        },
+        "0.8-1.1": {
+          "zeff": 0.9185851971138159,
+          "f_nl": -1.5728943978511325,
+          "lo_68": -23.198366761062537,
+          "hi_68": 17.846273783997894,
+          "sigma": 20.522320272530216,
+          "b1": 2.2131945610876302,
+          "b1_over_D": 1.3939733307014215,
+          "chi2_min": 62.09973095670739,
+          "n_bins": 48,
+          "chi2_per_dof": 1.3499941512327693
+        }
+      },
+      "combined": {
+        "f_nl": -6.632951593815755,
+        "lo_68": -20.39584569258143,
+        "hi_68": 6.971228523797765,
+        "sigma": 13.683537108189599,
+        "chi2_min": 176.53466915463196,
+        "n_bins": 144,
+        "note": "three z-bins combined by summing the b1-profiled chi2 curves (independent b1 per bin, one shared f_NL). Bins treated as independent: no cross-bin official covariance product exists. Disclosed approximation, same class as the v4/v5 split covariance reuse."
+      }
+    }
+  },
+  "quadratic_max_rel_diff": 1.1847959558305211e-12,
+  "p_marginalised_midpoint": {
+    "f_nl": -5.018116795143373,
+    "sigma": 9.71422707391952,
+    "note": "midpoint of the p=1.0 and p=1.6 results, the same p-marginalisation presentation v3/v5 used for QSO"
+  },
+  "streamed_bytes": 651939768,
+  "sha256": {
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/window_spectrum-poles_LRG_GCcomb_z0.4-0.6.h5": {
+      "sha256": "6e1b55cb348c8d6ad6812f6a06eb63658be0a1345354680a5576db2e167ed928",
+      "bytes": 216704470
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_GCcomb_z0.4-0.6.h5": {
+      "sha256": "8a2585fed9522cddb5b062977b170570a2dde679bd98a766eefa93fe81522fce",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/covariance/EZmock/covariance_spectrum-poles_LRG_GCcomb_z0.4-0.6.h5": {
+      "sha256": "def3611cc2bcfc65274ea972862f16400fbe1bee8f68f794a4b2e47f6557083f",
+      "bytes": 497102
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/window_spectrum-poles_LRG_GCcomb_z0.6-0.8.h5": {
+      "sha256": "497cdaa9361873572ddf2126c1c8f4401bf2ea659f7ac01ad676578f07a737f1",
+      "bytes": 216704470
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_GCcomb_z0.6-0.8.h5": {
+      "sha256": "fc044682bbd02046aa33daa78b2697c1c5a7780c50c14fdda31188e7564b9e02",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/covariance/EZmock/covariance_spectrum-poles_LRG_GCcomb_z0.6-0.8.h5": {
+      "sha256": "e8534213a4d914003059101052e64b07501502edb8d0a738124f3695f6d4c53b",
+      "bytes": 497102
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/window_spectrum-poles_LRG_GCcomb_z0.8-1.1.h5": {
+      "sha256": "b78c7d9c14fea8d768e8f2dd9f731aa2b4e511aaccb97f2a7100f0782e8f95fa",
+      "bytes": 216704470
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_GCcomb_z0.8-1.1.h5": {
+      "sha256": "653c3b57e19e17f63dc09e99815c3c176c1cbccf717aa7981a232fc502aa76e5",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/covariance/EZmock/covariance_spectrum-poles_LRG_GCcomb_z0.8-1.1.h5": {
+      "sha256": "def2208cfe6327538c37e251172592af7348bc95439c586d7da49a03df5b0840",
+      "bytes": 497102
+    }
+  },
+  "wall_seconds": 1298.8
+}

@@ -1,0 +1,85 @@
+{
+  "comparisons": {
+    "1.0": {
+      "lrg_f_nl": -3.4032819964709917,
+      "lrg_sigma": 5.744917039649443,
+      "qso_f_nl": -1.1274388922309584,
+      "qso_sigma": 13.148718150430838,
+      "T": -0.15860675312172448,
+      "verdict": "AGREE"
+    },
+    "1.6": {
+      "lrg_f_nl": -6.632951593815755,
+      "lrg_sigma": 13.683537108189599,
+      "qso_f_nl": -2.1692216978098755,
+      "qso_sigma": 25.287008875009295,
+      "T": -0.15524988663640296,
+      "verdict": "AGREE"
+    }
+  },
+  "discrimination": {
+    "1.0": {
+      "-35/16": {
+        "value": -2.1875,
+        "distance_in_lrg_sigma": -0.21162742439622403
+      },
+      "-35/8 (superseded)": {
+        "value": -4.375,
+        "distance_in_lrg_sigma": 0.16914395748842753
+      },
+      "separation_of_the_two_in_lrg_sigma": 0.3807713818846516
+    },
+    "1.6": {
+      "-35/16": {
+        "value": -2.1875,
+        "distance_in_lrg_sigma": -0.32487591173740826
+      },
+      "-35/8 (superseded)": {
+        "value": -4.375,
+        "distance_in_lrg_sigma": -0.16501227540533878
+      },
+      "separation_of_the_two_in_lrg_sigma": 0.15986363633206951
+    }
+  },
+  "published": {
+    "1.0": {
+      "target": "Chaussidon et al. 2024 (arXiv:2411.17623), LRG+QSO",
+      "f_nl": -3.6,
+      "T_vs_published": 0.01842400007232706,
+      "T_vs_brown": -0.030312182425298432
+    },
+    "1.6": {
+      "target": "Chaussidon et al. 2024 (arXiv:2411.17623), LRG+QSO",
+      "f_nl": -3.6,
+      "T_vs_published": -0.18456274519425478,
+      "T_vs_brown": -0.1996129696630888
+    }
+  },
+  "published_sample_matched_0.6_1.1": {
+    "1.0": {
+      "f_nl": -1.1408106332139176,
+      "sigma": 6.899699522834282,
+      "lo_68": -8.234226332435549,
+      "hi_68": 5.565172713233014,
+      "T_vs_qso": -0.0009005108185376285,
+      "verdict_vs_qso": "AGREE",
+      "T_vs_published": 0.21685108743702247,
+      "note": "bins z0.6-0.8 + z0.8-1.1 only, matching Chaussidon+2024's LRG PNG sample definition; reported alongside the pre-registered three-bin headline, never in place of it"
+    },
+    "1.6": {
+      "f_nl": -2.407334542043072,
+      "sigma": 14.86774812760071,
+      "lo_68": -17.679384101292005,
+      "hi_68": 12.056112153909416,
+      "T_vs_qso": -0.008117302633215208,
+      "verdict_vs_qso": "AGREE",
+      "T_vs_published": 0.06862451190240153,
+      "note": "bins z0.6-0.8 + z0.8-1.1 only, matching Chaussidon+2024's LRG PNG sample definition; reported alongside the pre-registered three-bin headline, never in place of it"
+    }
+  },
+  "internal_zbin_consistency_p1.0": {
+    "0.4-0.6 vs 0.6-0.8": -0.48880056698457647,
+    "0.4-0.6 vs 0.8-1.1": -0.4961878224752207,
+    "0.6-0.8 vs 0.8-1.1": -0.04249172469672827
+  }
+}
