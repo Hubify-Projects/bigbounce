@@ -58,7 +58,7 @@
     {
       "path": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_numeric.py",
       "entrypoint": "python3 row9b_numeric.py",
-      "sha256": "97bcef3f23566625a4e30e82cf57bb463bac1010ba73625cd0b99295a10d7a61"
+      "sha256": "95e2af2f798f48c65d42dcd0214ec84352cf3579632fbe28552e7d1742179733"
     },
     {
       "path": "research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/row9b_window.py",

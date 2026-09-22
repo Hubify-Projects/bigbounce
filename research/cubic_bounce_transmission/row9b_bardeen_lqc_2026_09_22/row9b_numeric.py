@@ -581,7 +581,7 @@ def main():
     try:
         import matplotlib; matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        fig, ax = plt.subplots(1, 3, figsize=(13.5, 4.0))
+        fig, ax = plt.subplots(1, 4, figsize=(17.5, 4.0))
         # (a) Q(eta) for the three backgrounds, showing the crossings
         for n, b in bgs:
             ee, QQ = [], []
@@ -625,6 +625,19 @@ def main():
         ax[2].set_ylabel(r"$|\,T_{f_{\rm NL}}\cdot f_{\rm NL}^{\rm before}|$  (linear transfer only)")
         ax[2].set_title("transmitted amplitude, cubic term excluded", fontsize=9)
         ax[2].legend(fontsize=8); ax[2].grid(alpha=0.3, axis="y")
+        # (d) G9: the asymmetry sensitivity is exactly linear in the excision width -> unique continuation
+        for n, b in bgs:
+            if n not in g9:
+                continue
+            ds = [float(kk) for kk in g9[n]["scan"]]
+            sl = [abs(v["dR_dln_asym"]) for v in g9[n]["scan"].values()]
+            ax[3].loglog(ds, sl, "o-", ms=4, label="%s  (slope/$\\delta$ = %.3f)" % (n, g9[n]["slope_over_delta"]))
+        dd = np.array([1e-4, 3e-3])
+        ax[3].loglog(dd, 0.29 * dd, "k:", lw=1, label=r"$\propto\delta$")
+        ax[3].set_xlabel(r"excision half-width $\delta/\eta_B$")
+        ax[3].set_ylabel(r"$|dR/d\ln({\rm asym})|$")
+        ax[3].set_title("asymmetry sensitivity vanishes with $\delta$:\nthe continuation is unique", fontsize=9)
+        ax[3].legend(fontsize=7); ax[3].grid(alpha=0.3, which="both")
         fig.tight_layout(); fig.savefig("row9b_bardeen_lqc.png", dpi=140)
         log("[fig] row9b_bardeen_lqc.png")
     except Exception as e:
