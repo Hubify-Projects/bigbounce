@@ -151,13 +151,17 @@ and `paper1b_mcmc_companion.tex` identity are historical.
 | ID | Canonical source | Current version | Readiness |
 |---|---|---:|---:|
 | P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 |
-| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.19 | 95 |
+| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.23 | 95 |
 
 **P1B v2B.0.19 (2026-09-04):** R2 closure packaged (statistics presentation
 corrected, estimator description fixed, traceability + reproducibility
 recipe). ROUNDS STOPPED under directive R2 pending a science/venue decision;
 batch 3, OTS confirmation, and PyMaster cross-check remain open next steps.
-Readiness cap unchanged at 95.
+Readiness cap unchanged at 95. [Table row corrected 2026-09-22 by
+L6b-verify-signoff: was stale at v2B.0.19 while the .tex macro, served PDF,
+SSOT/index.md top board, and site/src/data/papers.ts have read v2B.0.23 since
+the R3 truth-audit closure (v2B.0.20→.23, 2026-09-05); this narrative
+paragraph is left as the v2B.0.19 historical entry point, not re-dated.]
 
 All known genuinely-new-real active-leg findings are closed. P1B v2B.0.16
 closes the legibility MAJOR recovered by the July 23–24 completeness resweep;

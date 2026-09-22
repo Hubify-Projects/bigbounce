@@ -1,7 +1,11 @@
 # P1C status — current authoritative section
 
-**Current candidate:** draft v1C.0.15 · 2026-08-07 ·
-`arxiv/paper1c_nogo_survey/main.tex`
+**Current candidate:** frozen v1C.0.16 · 2026-08-07 ·
+`arxiv/paper1c_nogo_survey/main.tex` [header corrected 2026-09-22 by
+L6b-verify-signoff: was stale at "draft v1C.0.15" while the .tex macro, the
+served PDF (sha256 `285948c6248e79951d1f961142bee844baab23dd03012d009ac78afb02ac409c`),
+and SSOT/index.md's top board have read v1C.0.16 since the R13-round close;
+P1C remains FROZEN, merged into P1N per `PAPER_LINEAGE_2026-08-05.md` §(a)]
 
 **Status: R12 CORRECTNESS-CONVERGENCE BOARD RUN AND TRUTH-AUDITED →
 15 GENUINELY-NEW-REAL FINDINGS CLOSED (v1C.0.15): 11 CORRECTNESS-GRADE +
