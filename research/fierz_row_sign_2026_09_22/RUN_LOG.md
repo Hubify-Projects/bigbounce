@@ -24,7 +24,7 @@ trusted, all three outcome branches (sign correct / sign wrong / undecidable),
 and the conditions that would invalidate the lane's own result. START logged to
 the campaign at `49db24e5`.
 
-**04:05 · MILESTONE — the row, derived.** `scripts/fierz_row_sign.py`:
+**03:57 · MILESTONE — the row, derived.** `scripts/fierz_row_sign.py`:
 explicit 4×4 Dirac matrices in **three** representations (Dirac, Weyl, a real
 Majorana basis) × **two** signatures × **two** `γ⁵` sign conventions = 12
 combinations, each gated on `{γ^μ,γ^ν}=2η^{μν}`, `(γ⁵)²=1`, `{γ⁵,γ^μ}=0`. The
@@ -43,7 +43,7 @@ hold as an operator identity for a single Dirac field (residual `4.4×10⁻¹⁶
 `(+1, +½, 0, +½, -1)`. The scalar coefficient is `+1` — the manuscript's
 printed row, entry for entry. `G_s = -(3κ/16)γ²/(1+γ²) < 0` unchanged.**
 
-**04:12 · MILESTONE — exact arithmetic + the published-number anchor.**
+**04:00 · MILESTONE — exact arithmetic + the published-number anchor.**
 `scripts/fierz_exact_and_anchors.py` re-solved the same system in exact
 rationals over `Q(i)` (`sympy.linsolve`, residual exactly the zero vector) in
 both signatures: `S=1, V=1/2, T=0, A=1/2, P=-1`. Also proved that every
@@ -63,14 +63,14 @@ Exact single-species relation module also computed: operator rank **3**, with
 `O_S + ¼O_V + ⅙O_T − ¼O_A = 0` and `O_S + ⅓O_T + O_P = 0`, and the derived row's
 self-application `O_A = 2O_S + O_V − 2O_P` verified exactly.
 
-**04:18 · NOTE — the manuscript's own cited artifact.**
+**04:01 · NOTE — the manuscript's own cited artifact.**
 `research/theory_audit/fierz_adjudication_2026_08_05.{py,md}`, cited at
 `main.tex:1125-1129`, was opened **after** the above results existed. It reaches
 the identical row, the identical `F_op = -F_c` rule, `G_s = -3κ/16`, and records
 the same single-species rank-3 caveat. The artifact link does what the paper
 says it does.
 
-**04:20 · MILESTONE — blind adjudication.**
+**04:02 · MILESTONE — blind adjudication.**
 `fable` leg attempted first per the lane rule: **HTTP 429, out of usage credits**
 (`req_011CfJMnkioxuZFbia9FVoDR`). Recorded **FAILED-INFRA, never a verdict**;
 substituted `opus` with the label changed to `blind-adjudicator-opus`.
@@ -102,7 +102,7 @@ family follows from them, and its unprompted flag on the prefactor is the same
 gap this lane had already isolated. The blind leg agrees on everything and
 independently corroborates the one wording item.
 
-**04:28 · MILESTONE — the adjudicator's open item, answered as far as it can
+**04:04 · MILESTONE — the adjudicator's open item, answered as far as it can
 honestly be.** The `eq:4fermi` prefactor is **not** this lane's derivation, and
 is not left unchecked either: `research/theory_audit/ech_torsion_onshell_2026_08_08.py`
 `[L27]` back-substitutes the solved contorsion into the ECH action and obtains
@@ -112,7 +112,7 @@ combining `eq:4fermi` with LS13's derived `ρ_{4ψ} = -L_{4ψ}` and this lane's 
 reproduces Poplawski's Eq. (10) in sign and coefficient. Reported as
 verified-elsewhere, with its provenance stated.
 
-**04:32 · MILESTONE — the multi-species question, settled by computation
+**04:05 · MILESTONE — the multi-species question, settled by computation
 rather than asserted.** `scripts/multispecies_rank.py`: operator rank of the
 five species-singlet channels is **3** at `N=1` but **5** at `N=2` and `N=3`.
 The degeneracy is an artifact of having only four Grassmann components and
@@ -120,7 +120,7 @@ evaporates at any multiplicity — including the `N_cN_f > 1` that `eq:gap`'s ow
 degeneracy factor assumes. So "unique" is correct in the setting the paper's
 argument runs in, and the repair is a one-clause qualifier, not a correction.
 
-**04:40 · MILESTONE — propagation hazard found while enumerating the
+**04:07 · MILESTONE — propagation hazard found while enumerating the
 `G_s`-dependent claims.** The word "repulsive" carries **two different senses**
 in P1N: the NJL scalar-channel sense (lines 79, 141, 296, 317, 831–833, 839,
 1088 — **correct, must survive**) and the gravitational halts-collapse sense
@@ -128,7 +128,7 @@ in P1N: the NJL scalar-channel sense (lines 79, 141, 296, 317, 831–833, 839,
 Lines 1000 and 1082 sit far from §II and are easy to miss. Flagged prominently
 for `bb-L3d-p1n-withdrawals` in `PROPAGATION_NOTE.md` §2.
 
-**04:45 · DONE.** Outcome: pre-registration **Branch A** — the sign as printed
+**04:09 · DONE.** Outcome: pre-registration **Branch A** — the sign as printed
 is correct. `G_s` unchanged, no claim moves, one MINOR wording qualifier
 recommended. Readiness recommendation: hold at 85, no further drop on this item,
 and no uplift from it either. No `main.tex`, SSOT, `DISPOSITIONS/` or site-data
