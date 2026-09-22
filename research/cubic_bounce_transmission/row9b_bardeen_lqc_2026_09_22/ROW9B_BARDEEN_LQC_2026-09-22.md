@@ -2,13 +2,13 @@
 
 **Lane:** `LS9-bardeen-lqc` · **Date:** 2026-09-22 · **Pre-registration:** `PREREGISTRATION.md` (committed
 `d079d7bd`, before any number existed) · **Verdict: OUTCOME-UNIVERSAL(b) — pre-registered branch, gates
-G1–G7 all PASS.**
+G1–G9 all PASS.**
 
 **Headline.** The Bardeen route **does** extend. On the LQC-effective-dust and poly backgrounds — which,
 unlike the Quintin-type parametrization, cross `rho + p = 0` **smoothly** — the Bardeen potential `Phi` and
 its first derivative remain **continuous**, the divergence is confined to the momentum sector and is only
-**logarithmic** with a closed-form amplitude, and the continuation through the crossing is the principal
-value. The transmitted linear amplitude differs from scheme S1 on **all three** backgrounds, so the
+**logarithmic** with a closed-form amplitude, and the continuation through the crossing is **unique** — the
+principal value is a numerical device for the `1/Q` pole, not a physical choice (§2.6). The transmitted linear amplitude differs from scheme S1 on **all three** backgrounds, so the
 selection is **background-independent in direction** — but its **magnitude is strongly background-specific**:
 
 | background | `Q = 0` crossing | `R` ≡ transmitted `zeta_C` (Bardeen / S1) | closed form | `1/R` |
@@ -27,7 +27,8 @@ committed `-1.25` survives the convention scan to 0.3 %.
 
 **Artifacts (this dir):** `row9b_symbolic.py` -> `row9b_symbolic.log`, `symbolic_results.json`;
 `row9b_backgrounds.py`; `row9b_numeric.py` -> `row9b_numeric.log`, `results.json`, `row9b_bardeen_lqc.png`;
-`row9b_window.py` -> `row9b_window.log`, `window_results.json`; manifest
+`row9b_window.py` -> `row9b_window.log`, `window_results.json`; `PROPAGATION_NOTE.md`, `ADJUDICATION.md`;
+manifest
 `reproducibility/manifests/experiments/a3-row9b-bardeen-lqc-poly.json`.
 **Venue:** local CPU (numpy/scipy/sympy), symbolic 7.9 s + numeric 1.2 s + window 18 s, $0.
 **Provenance rule:** *computed* = produced by the committed scripts here; *literature* = cited, not re-derived.
@@ -372,7 +373,7 @@ disclosure gap, not a numerical error. The recommendation to A3M is to replace t
 
 ## 5. Verdict against the pre-registration
 
-**OUTCOME-UNIVERSAL(b)** (`PREREGISTRATION.md` §4.1): `|R - 1| > 0.02` on **both** LQC and poly, with G1–G7
+**OUTCOME-UNIVERSAL(b)** (`PREREGISTRATION.md` §4.1): `|R - 1| > 0.02` on **both** LQC and poly, with G1–G9
 all passing. The Bardeen selection is **background-independent in direction** — on every background tested the
 `z = a` prescription transmits *more* `zeta` than the regular continuation does, so it *understates*
 `|f_NL^after|` — and **background-specific in magnitude**, by 6.25× (Quintin), 2.00× (LQC), 2.67× (poly).
