@@ -143,6 +143,7 @@ constant there, so S1 ≡ S2 identically — row 9 §1 A1). Define
 | **G5** Wronskian | `Phi_1 Xi_2 - Phi_2 Xi_1` (traceless system) over the sub-domain spanning both crossings and `H = 0` | `1.1e-11 / 2.7e-12 / 3.3e-11` — **PASS** |
 | **G6** analytic | ODE-free super-Hubble principal-value quadrature (§2.4) | rel `2.5e-5 / 1.2e-4 / 2.0e-4` — **PASS** |
 | **G7** log | measured log slope vs Leg A's `c_log` | rel `2.7e-3 / 1.8e-3` — **PASS** |
+| **G8** robustness | `R` vs the two numerical truncations; and the dust-phase identity the propagation rule rests on | see §2.5 — **PASS** |
 
 **G5's domain, stated because it was corrected.** Run over the *full* integration domain the gate FAILED on
 poly (`9.1e+4`): over `|eta| <= 4000` the two basis solutions differ by many orders of magnitude and `W` is a
@@ -185,6 +186,24 @@ effective-fluid mixing integral `a2_transmission_linear.fluid_scheme_contrast` a
 fluid `z^2` on this background **drops out of the principal value**. The two variables of §0 are different, but
 their super-Hubble mixing integrals coincide. (This does **not** make `T = 0.409` the Bardeen number — that
 value is built on the fluid variable's own handoff at `-eta_B`; see §3.2.)
+
+### 2.5 Robustness (G8), including the one identity the propagation rule rests on
+
+`R` is insensitive to both numerical truncations, over ranges far wider than needed:
+
+| knob | values | `R` |
+|---|---|---|
+| LQC dust-tail start `x_i` (integration span 72 / 158 / 344 in eta) | `1e-8 / 1e-10 / 1e-12` | `0.4999584 / 0.4999583 / 0.4999585` |
+| poly far boundary `eta_far` | `2000 / 4000 / 8000` | `0.3749660 / 0.3749660 / 0.3749660` |
+
+And the identity without which `f_NL^after,lin ∝ 1/R` would **not** be the propagation rule — that the Bardeen
+route and the S1 route carry *the same* `zeta(eta)` in the dust contraction, so that `f_NL^before = -35/16` is
+a common input — is verified directly, at a point where the measured `epsilon` is still `3/2`:
+
+| background | `epsilon` at the test point | `\|zeta^Bardeen/zeta^S1 - 1\|` |
+|---|---|---|
+| LQC | `1.50000000` | `7.7e-10` |
+| poly | `1.49999994` | `1.3e-8` |
 
 ---
 

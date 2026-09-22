@@ -427,6 +427,37 @@ def main():
     log("     -> %s (the log is REAL and its amplitude is the Leg-A closed form)" % ("PASS" if g7_ok else "FAIL"))
     OUT["G7_log_amplitude"] = dict(g7, **{"pass": bool(g7_ok)})
 
+    # ---------- G8 robustness to the two numerical truncations, and the dust-phase agreement the
+    #            propagation rule f_NL^after,lin ~ 1/R depends on
+    log("\n[G8] robustness: R vs the LQC dust-tail truncation x_i and the poly far boundary eta_far; and the")
+    log("     dust-phase identity zeta^Bardeen == zeta^S1 (without which 1/R is not the propagation rule):")
+    g8 = {"R_vs_truncation": {}, "dust_identity": {}}
+    for xi in (1e-8, 1e-10, 1e-12):
+        b = BG.LQC(x_i=xi); k = 1e-3 / b.eta_B
+        zc1 = lam(b, k, "S1", "exact", zref=1.0)[1]
+        zc = lam(b, k, "bardeen", "gap", delta_eta=1e-4, zref=1.0)[1]
+        g8["R_vs_truncation"]["LQC x_i=%.0e" % xi] = float(abs(zc / zc1))
+    for ef in (2000.0, 4000.0, 8000.0):
+        b = BG.Poly(eta_far=ef); k = 1e-3 / b.eta_B
+        zc1 = lam(b, k, "S1", "exact", zref=1.0)[1]
+        zc = lam(b, k, "bardeen", "gap", delta_eta=1e-4, zref=1.0)[1]
+        g8["R_vs_truncation"]["poly eta_far=%g" % ef] = float(abs(zc / zc1))
+    for n, b in bgs[1:]:
+        k = 1e-3 / b.eta_B; ch = b.charts()[0]
+        sm = ch.s0 + 0.15 * (ch.s1 - ch.s0)
+        yB, iB, _ = propagate(b, k, "bardeen", "exact", upto=(0, sm)); zB, _ = zeta_of(b, iB, sm, yB, "bardeen", k)
+        y1, i1, _ = propagate(b, k, "S1", "exact", upto=(0, sm)); z1, _ = zeta_of(b, i1, sm, y1, "S1", k)
+        a_, H_, Q_, J_ = ch.fields(sm)
+        g8["dust_identity"][n] = dict(eps=float(Q_ / (H_ * H_)), rel=float(abs(zB / z1 - 1)))
+    log("     " + ", ".join("%s: %.7f" % (kk, vv) for kk, vv in g8["R_vs_truncation"].items()))
+    log("     " + ", ".join("%s eps=%.8f rel=%.1e" % (kk, vv["eps"], vv["rel"])
+                            for kk, vv in g8["dust_identity"].items()))
+    g8_ok = (float(np.ptp(list(g8["R_vs_truncation"].values())[:3])) < 1e-5
+             and float(np.ptp(list(g8["R_vs_truncation"].values())[3:])) < 1e-5
+             and max(v["rel"] for v in g8["dust_identity"].values()) < 1e-6)
+    log("     -> %s" % ("PASS" if g8_ok else "FAIL"))
+    OUT["G8_robustness"] = dict(g8, **{"pass": bool(g8_ok)})
+
     # ---------- consequences
     FNL_BEFORE = -35.0 / 16.0
     DELTA_S1 = {"quintin": -0.140, "LQC": -0.104, "poly": -0.127}
@@ -461,7 +492,7 @@ def main():
     devs = {n: abs(cons[n]["R"] - 1.0) for n, _ in bgs}
     both_differ = devs["LQC"] > 0.02 and devs["poly"] > 0.02
     both_agree = devs["LQC"] <= 0.02 and devs["poly"] <= 0.02
-    gates = g1_ok and g2_ok and g3_ok and g4_ok and g5_ok and g6_ok and g7_ok
+    gates = g1_ok and g2_ok and g3_ok and g4_ok and g5_ok and g6_ok and g7_ok and g8_ok
     verdict = ("INCONCLUSIVE" if not gates else
                "OUTCOME-UNIVERSAL(b)" if both_differ else
                "OUTCOME-UNIVERSAL(a)" if both_agree else "OUTCOME-UNIVERSAL(c)")
