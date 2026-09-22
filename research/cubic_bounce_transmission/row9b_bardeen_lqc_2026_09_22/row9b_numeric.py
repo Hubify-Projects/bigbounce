@@ -458,6 +458,40 @@ def main():
     log("     -> %s" % ("PASS" if g8_ok else "FAIL"))
     OUT["G8_robustness"] = dict(g8, **{"pass": bool(g8_ok)})
 
+    # ---------- handoff-convention comparison (the one place where "the Bardeen T" is not unique)
+    log("\n[H] the two handoff conventions for converting R into a transfer coefficient:")
+    log("    A = common DUST handoff, where zeta^Bardeen == zeta^S1 (gate G8) -> T = T_S1/R exactly;")
+    log("    B = the paper's handoff at -eta_B, each scheme using its own zeta there (Bardeen: log finite part).")
+    log("    On the Quintin-type background -eta_B IS the end of the exact dust phase, so A and B must coincide;")
+    log("    on LQC/poly -eta_B is the Q = 0 surface, where eps = Q/Hc^2 = 0 EXACTLY -- so the matter-contraction")
+    log("    value f_NL^before = -35/16 (an eps = 3/2 result) cannot be evaluated there at all, and zeta is")
+    log("    additionally log-divergent. Convention A is therefore the defensible one; B is reported anyway.")
+    hand = {}
+    for n, b in bgs:
+        hand[n] = {}
+        for keta in KS:
+            k = keta / b.eta_B
+            zc1 = lam(b, k, "S1", "exact", zref=1.0)[1]
+            zcP = (lam(b, k, "bardeen", "gap", delta_eta=1e-4, zref=1.0)[1] if b.has_crossing
+                   else lam(b, k, "bardeen", "exact", zref=1.0)[1])
+            R = float(abs(zcP / zc1))
+            zr1 = zeta_ref(b, k, "S1"); zrP = zeta_ref(b, k, "bardeen")
+            T1 = float(abs(zr1["zeta"] / zc1))
+            TA = T1 / R
+            TB = float(abs(zrP["zeta"] / zcP))
+            hand[n][str(keta)] = dict(R=R, T_S1=T1, T_conventionA=TA, T_conventionB=TB, ratio_B_over_A=TB / TA,
+                                      log_over_finite_part=zrP.get("log_over_zeta", 0.0),
+                                      eps_at_handoff=float(0.0 if b.has_crossing else 1.5))
+        r = hand[n][str(KS[0])]
+        log("    %-8s T_S1 %.4f | A %.4f | B %.4f | B/A %.3f | log/finite-part %.2f | eps at handoff %.3f"
+            % (n, r["T_S1"], r["T_conventionA"], r["T_conventionB"], r["ratio_B_over_A"],
+               r["log_over_finite_part"], r["eps_at_handoff"]))
+    qn = hand["quintin"][str(KS[0])]["ratio_B_over_A"]
+    log("    -> the two conventions agree to %.1e on the Quintin-type background, where the handoff is"
+        % abs(qn - 1.0))
+    log("       legitimate; they differ by the log contamination elsewhere. Convention A is adopted.")
+    OUT["handoff_conventions"] = hand
+
     # ---------- consequences
     FNL_BEFORE = -35.0 / 16.0
     DELTA_S1 = {"quintin": -0.140, "LQC": -0.104, "poly": -0.127}

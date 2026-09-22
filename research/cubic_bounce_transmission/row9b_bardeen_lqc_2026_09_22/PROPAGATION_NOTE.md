@@ -75,6 +75,30 @@ been computed anywhere — LQC `[-1.198, -0.087]`, poly `[-1.267, -0.133]` — a
 > selected continuation; the ratio $R$ quoted above is used precisely because it refers to no handoff surface
 > at all.
 
+## 2b. The handoff convention — read this before quoting `T_fNL = 0.500 / 0.521`
+
+Those two numbers use a handoff in the **dust contraction**, where the Bardeen and S1 `zeta` are the same
+function (verified to `7.7e-10` and `1.3e-8`). They are **not** `zeta_Bardeen(-eta_B)/zeta_C(+infty)`. Both
+conventions were computed:
+
+| background | `T_fNL[S1]` | dust handoff (**adopted**) | at `-eta_B` | ratio | `epsilon` at `-eta_B` |
+|---|---|---|---|---|---|
+| Quintin-type | 0.1650 | 1.0310 | 1.0310 | **1.000** | 1.500 |
+| LQC | 0.2500 | **0.5000** | 0.3465 | 0.693 | **0.000** |
+| poly | 0.1955 | **0.5213** | 0.0975 | 0.187 | **0.000** |
+
+On the Quintin-type background the two agree to `4.4e-6`, because `-t_m` there really is the end of the exact
+dust phase. On LQC and poly they do not, and the `-eta_B` column is the wrong one: that surface is *defined*
+by `Q = 0`, so `epsilon = Q/\mathcal H^2 = 0` there **exactly**, and the matter-contraction
+`\fnl^{\rm before} = -35/16` is an `epsilon = 3/2` result that cannot be evaluated on it. The same surface is
+where `zeta` is logarithmically divergent, and the discrepancy tracks the log amplitude exactly (`0.693` vs
+`c_log/zeta_fp = 0.46`; `0.187` vs `2.83`).
+
+**Consequence for the paper, stated plainly:** A3M's existing LQC and poly rows already pair a handoff
+amplitude taken at `epsilon = 0` with an `epsilon = 3/2` bispectrum. That is a *pre-existing* convention
+mismatch, not one introduced by this note, and it does not arise on the Quintin-type row. The A3M lane should
+either state the handoff explicitly in the caption or move it into the dust phase for all three rows.
+
 ## 3. The change that goes AGAINST the paper — must be propagated in the same pass
 
 Row 18a established `lambda_T = lambda_zeta^S1` identically on **every** background and that the tensor

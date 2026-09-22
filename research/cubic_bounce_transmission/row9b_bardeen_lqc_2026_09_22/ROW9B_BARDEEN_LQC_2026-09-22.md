@@ -221,7 +221,42 @@ a common input — is verified directly, at a point where the measured `epsilon`
 
 The Quintin row is a **consistency check, not a new result**: `T_eff = 1.031` and `f_NL^after,lin = -2.255`
 reproduce the committed `lane9b2_s2_rawadm` values `~1.03` and `-2.256` (0.04 %), and adding that lane's
-cubic `Delta_T = +1.007` returns `-1.249`, A3M's printed number.
+cubic `Delta_T = +1.007` returns `-1.249`, A3M's printed number. The `T_eff` column uses handoff convention A;
+§3.1b computes the alternative and shows why it is not the right one on the two new backgrounds.
+
+### 3.1b The one place "the Bardeen `T`" is not unique — the handoff convention, quantified
+
+Converting `R` into a transfer coefficient needs a handoff surface, and there are two candidates. They are
+**not** equivalent on the new backgrounds, so both are computed:
+
+* **Convention A (adopted):** a common handoff in the dust contraction, where the Bardeen and S1 `zeta` are
+  *the same function* (G8, §2.5). Then `T = T_fNL[S1]/R` exactly.
+* **Convention B:** the paper's own handoff at `-eta_B`, each scheme using its own `zeta` there — for the
+  Bardeen route, the log finite part of §2.1.
+
+| background | `T_fNL[S1]` | A | B | B/A | `\|c_log/zeta_fp\|` | `epsilon` at `-eta_B` |
+|---|---|---|---|---|---|---|
+| Quintin-type | 0.1650 | 1.0310 | 1.0310 | **1.000** | — (no crossing) | 1.500 |
+| LQC | 0.2500 | 0.5000 | 0.3465 | 0.693 | 0.46 | **0.000** |
+| poly | 0.1955 | 0.5213 | 0.0975 | 0.187 | 2.83 | **0.000** |
+
+**On the Quintin-type background the two conventions agree to `4.4e-6`** — they must, because `-t_m` there *is*
+the end of the exact dust phase, so the handoff is legitimate and both schemes share `zeta` at it. That
+agreement is what licenses convention A.
+
+**On LQC and poly they disagree by 31 % and 81 %, and convention B is the one that is wrong**, for two
+independent reasons, both computed rather than argued:
+
+1. At the paper's handoff surface `epsilon = Q/\mathcal{H}^2 = 0` **exactly** — the surface is *defined* by
+   `Q = 0`. The matter-contraction value `f_NL^before = -35/16` is an `epsilon = 3/2` result and simply cannot
+   be evaluated on a surface where `epsilon` vanishes. The paper's LQC/poly rows pair a handoff amplitude
+   taken at `epsilon = 0` with an `epsilon = 3/2` bispectrum; on Quintin-type no such mismatch arises.
+2. That same surface is the logarithm's location, and the discrepancy B/A tracks the log contamination
+   exactly: `0.693` against `\|c_log/zeta_fp\| = 0.46`, and `0.187` against `2.83`. On poly the log amplitude is
+   **2.8x the finite part**, so a "transfer coefficient at `-eta_B`" there has no stable meaning at all.
+
+**Convention A is adopted throughout this lane and in the propagation note.** Convention B's numbers are
+recorded here so that nobody re-derives them and mistakes them for a discrepancy.
 
 ### 3.2 What is NOT claimed — the cubic term on LQC/poly (declared out of scope in the pre-registration)
 

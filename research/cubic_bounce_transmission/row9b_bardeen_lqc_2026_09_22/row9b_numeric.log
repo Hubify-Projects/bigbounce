@@ -43,6 +43,19 @@ ROW 9b LEG B - the Bardeen linear transfer on the LQC and poly backgrounds (smoo
      LQC eps=1.50000000 rel=7.7e-10, poly eps=1.49999994 rel=1.3e-08
      -> PASS
 
+[H] the two handoff conventions for converting R into a transfer coefficient:
+    A = common DUST handoff, where zeta^Bardeen == zeta^S1 (gate G8) -> T = T_S1/R exactly;
+    B = the paper's handoff at -eta_B, each scheme using its own zeta there (Bardeen: log finite part).
+    On the Quintin-type background -eta_B IS the end of the exact dust phase, so A and B must coincide;
+    on LQC/poly -eta_B is the Q = 0 surface, where eps = Q/Hc^2 = 0 EXACTLY -- so the matter-contraction
+    value f_NL^before = -35/16 (an eps = 3/2 result) cannot be evaluated there at all, and zeta is
+    additionally log-divergent. Convention A is therefore the defensible one; B is reported anyway.
+    quintin  T_S1 0.1650 | A 1.0310 | B 1.0310 | B/A 1.000 | log/finite-part 0.00 | eps at handoff 1.500
+    LQC      T_S1 0.2500 | A 0.5000 | B 0.3465 | B/A 0.693 | log/finite-part 0.46 | eps at handoff 0.000
+    poly     T_S1 0.1955 | A 0.5213 | B 0.0975 | B/A 0.187 | log/finite-part 2.83 | eps at handoff 0.000
+    -> the two conventions agree to 4.4e-06 on the Quintin-type background, where the handoff is
+       legitimate; they differ by the log contamination elsewhere. Convention A is adopted.
+
 ============================================================================================================
 CONSEQUENCES (linear transfer only; the cubic term Delta_T is OUT OF SCOPE on LQC/poly by pre-registration)
 ============================================================================================================
