@@ -34,3 +34,16 @@ LEG A - Bardeen route at a simple zero of Q = Hc^2 - Hc' = -a^2 Hdot  (the smoot
      Quintin-type: Hdot = Upsilon > 0 inside |t| < tm and -3/2 H^2 < 0 outside -- it JUMPS between the
            two signs and is never zero, so this background has NO Q = 0 crossing at all.  That is the
            structural difference row 9 could not test.
+
+[A6] the super-Hubble mixing integral I_eps = int deta/z_eps^2 as a CLOSED-FORM principal value
+     (this is what makes R = 3 I_eps/I_S1 exactly 1/2 and 3/8 rather than numerically close to them)
+     poly: partial-fraction residual 0 ; int 1/(1+e^2) = pi/2 ; int 1/(1+e^2)^2 = pi/4 ;
+           the 1/(3e^2-1) term is an odd logarithm about the pole, so its principal value is 0
+           =>  I_eps[poly] = pi/32  (pi/32 = pi/32)  -> R = 3 I_eps/(pi/4) = 3/8
+     LQC: substitute x = (1+t)/2, then fold t -> -t; the two square roots combine to -2t/sqrt(1-t^2),
+          so the 1/t of the pole CANCELS and the principal value is an ordinary integral.
+          fold identity sqrt((1-t)/(1+t)) - sqrt((1+t)/(1-t)) = -2t/sqrt(1-t^2): verified
+          int_0^1 -2/sqrt(1-t^2) dt = -pi  =>  PV int_0^1 sqrt((1-x)/x)/(1-2x) dx = pi/2
+          =>  I_eps[LQC] = sqrt(3)*pi/18 = pi/(6 sqrt3) = 0.3022998940  -> R = 3 I_eps/(pi/sqrt3) = 1/2
+     NOTE pi/(6 sqrt3) is EXACTLY the dust effective-fluid mixing integral already computed in
+          a2_transmission_linear.fluid_scheme_contrast: the (1-2x) factor drops out of the principal value.

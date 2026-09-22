@@ -178,6 +178,49 @@ log("           two signs and is never zero, so this background has NO Q = 0 cro
 log("           structural difference row 9 could not test.")
 OUT["A5_quintin"] = "Hdot jumps Upsilon <-> -3/2 H^2 at |t| = tm; Q never vanishes; no smooth NEC crossing."
 
+# ---------------------------------------------------------------- A6: the two principal values in closed form
+log("\n[A6] the super-Hubble mixing integral I_eps = int deta/z_eps^2 as a CLOSED-FORM principal value")
+log("     (this is what makes R = 3 I_eps/I_S1 exactly 1/2 and 3/8 rather than numerically close to them)")
+
+# ---- poly:  I_eps = PV int_0^inf eta^2 / ((1+eta^2)^2 (3 eta^2 - 1)) d eta
+ee = sp.symbols("e", positive=True)
+f_poly = ee**2 / ((1 + ee**2) ** 2 * (3 * ee**2 - 1))
+Ap, Bp, Cp = sp.Rational(-1, 16), sp.Rational(1, 4), sp.Rational(3, 16)
+res_pf = sp.simplify(f_poly - (Ap / (1 + ee**2) + Bp / (1 + ee**2) ** 2 + Cp / (3 * ee**2 - 1)))
+i1 = sp.integrate(1 / (1 + ee**2), (ee, 0, sp.oo))
+i2 = sp.integrate(1 / (1 + ee**2) ** 2, (ee, 0, sp.oo))
+I_poly = sp.simplify(Ap * i1 + Bp * i2)          # the C term is an odd log about eta = 1/sqrt3 -> PV = 0
+log("     poly: partial-fraction residual %s ; int 1/(1+e^2) = %s ; int 1/(1+e^2)^2 = %s ;"
+    % (res_pf, i1, i2))
+log("           the 1/(3e^2-1) term is an odd logarithm about the pole, so its principal value is 0")
+log("           =>  I_eps[poly] = %s  (pi/32 = %s)  -> R = 3 I_eps/(pi/4) = %s"
+    % (I_poly, sp.pi / 32, sp.simplify(3 * I_poly / (sp.pi / 4))))
+
+# ---- LQC:  I_eps = (1/(3 sqrt3)) PV int_0^1 sqrt((1-x)/x)/(1-2x) dx
+tt = sp.symbols("t")
+fold_lhs = sp.sqrt((1 - tt) / (1 + tt)) - sp.sqrt((1 + tt) / (1 - tt))
+fold_rhs = -2 * tt / sp.sqrt(1 - tt**2)
+fold_ok = all(sp.simplify(fold_lhs.subs(tt, sp.Rational(a, 10)) - fold_rhs.subs(tt, sp.Rational(a, 10))) == 0
+              for a in (1, 3, 5, 7, 9))
+J = sp.integrate(fold_rhs / tt, (tt, 0, 1))      # x = (1+t)/2 then fold t -> -t; the 1/t cancels
+PV = sp.simplify(-J / 2)
+I_lqc = sp.simplify(PV / (3 * sp.sqrt(3)))
+log("     LQC: substitute x = (1+t)/2, then fold t -> -t; the two square roots combine to -2t/sqrt(1-t^2),")
+log("          so the 1/t of the pole CANCELS and the principal value is an ordinary integral.")
+log("          fold identity sqrt((1-t)/(1+t)) - sqrt((1+t)/(1-t)) = -2t/sqrt(1-t^2): %s" % ("verified" if fold_ok else "FAILED"))
+log("          int_0^1 -2/sqrt(1-t^2) dt = %s  =>  PV int_0^1 sqrt((1-x)/x)/(1-2x) dx = %s" % (J, PV))
+log("          =>  I_eps[LQC] = %s = pi/(6 sqrt3) = %.10f  -> R = 3 I_eps/(pi/sqrt3) = %s"
+    % (I_lqc, float(I_lqc), sp.simplify(3 * I_lqc / (sp.pi / sp.sqrt(3)))))
+log("     NOTE pi/(6 sqrt3) is EXACTLY the dust effective-fluid mixing integral already computed in")
+log("          a2_transmission_linear.fluid_scheme_contrast: the (1-2x) factor drops out of the principal value.")
+OUT["A6_closed_form_PV"] = {
+    "poly": {"partial_fraction_residual": str(res_pf), "I_eps": str(I_poly),
+             "I_eps_equals_pi_over_32": bool(sp.simplify(I_poly - sp.pi / 32) == 0),
+             "R": str(sp.simplify(3 * I_poly / (sp.pi / 4)))},
+    "LQC": {"fold_identity_verified": bool(fold_ok), "PV": str(PV), "I_eps": str(I_lqc),
+            "I_eps_equals_pi_over_6sqrt3": bool(sp.simplify(I_lqc - sp.pi / (6 * sp.sqrt(3))) == 0),
+            "R": str(sp.simplify(3 * I_lqc / (sp.pi / sp.sqrt(3))))}}
+
 OUT["runtime_s"] = time.time() - T0
 open("row9b_symbolic.log", "w").write("\n".join(LOG) + "\n")
 json.dump(OUT, open("symbolic_results.json", "w"), indent=2, default=str)

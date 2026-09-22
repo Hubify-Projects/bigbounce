@@ -172,13 +172,23 @@ has `C1 = C2 I_s` (i.e. `zeta(-infty) = 0`), so `zeta_C(+infty) = 2 C2 I_s`. In 
 
 > **`R = 3 I_eps / I_S1`,   `I_s = int_0^infty deta/z_s^2`,   `I_eps` a principal value through the `Q = 0` poles.**
 
-Evaluated by direct quadrature with no ODE at all:
+Evaluated by direct quadrature with no ODE at all, the principal values come out at `0.3022995` (LQC) and
+`0.0981747` (poly). **Both are closed forms, derived not fitted** (`row9b_symbolic.py` A6, machine-checked):
 
-* **LQC:** `I_S1 = pi/sqrt3`; `PV I_eps -> 0.3022995 = pi/(6 sqrt3)`; **`R = 3(pi/(6 sqrt3))/(pi/sqrt3) = 1/2` exactly.**
-* **poly:** `I_S1 = pi/4`; `PV I_eps -> 0.0981747 = pi/32`; **`R = 3(pi/32)/(pi/4) = 3/8` exactly.**
+* **poly.** `I_eps = PV int_0^inf eta^2 d eta /((1+eta^2)^2 (3 eta^2 - 1))`. Partial fractions (residual 0):
+  `-1/16 * 1/(1+eta^2) + 1/4 * 1/(1+eta^2)^2 + 3/16 * 1/(3 eta^2 - 1)`. The first two give `pi/2` and `pi/4`;
+  the third is an **odd logarithm about its own pole**, so its principal value is exactly 0. Hence
+  `I_eps = -pi/32 + pi/16 = pi/32`, and with `I_S1 = pi/4`, **`R = 3(pi/32)/(pi/4) = 3/8` exactly.**
+* **LQC.** `I_eps = (1/(3 sqrt3)) PV int_0^1 sqrt((1-x)/x) dx /(1-2x)`. Substituting `x = (1+t)/2` and folding
+  `t -> -t`, the two square roots combine by the verified identity
+  `sqrt((1-t)/(1+t)) - sqrt((1+t)/(1-t)) = -2t/sqrt(1-t^2)`, whose factor of `t` **cancels the pole**: the
+  principal value collapses to the ordinary integral `-(1/2) int_0^1 -2 dt/sqrt(1-t^2) = pi/2`. Hence
+  `I_eps = pi/(6 sqrt3)`, and with `I_S1 = pi/sqrt3`, **`R = 3(pi/(6 sqrt3))/(pi/sqrt3) = 1/2` exactly.**
 * **Quintin:** no crossing, ordinary integral, `R = 0.1600489` — matching the ODE's `0.1600449` to `2.5e-5`.
+  (There is no reason to expect a rational here, and there is not one.)
 
-So `R = 1/2` and `R = 3/8` are exact rational numbers, obtained twice by independent routes.
+So `R = 1/2` and `R = 3/8` are exact rationals, reached three ways: a finite-k ODE with two independent
+principal-value prescriptions, a numerical principal-value quadrature, and a closed-form evaluation.
 
 **A third fact, worth stating for the paper.** `PV I_eps` on LQC equals `pi/(6 sqrt3)` — which is *exactly* the
 effective-fluid mixing integral `a2_transmission_linear.fluid_scheme_contrast` already computes

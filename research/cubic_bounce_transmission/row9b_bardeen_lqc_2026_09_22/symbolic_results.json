@@ -57,5 +57,20 @@
     "Hdot_matches_committed": true
   },
   "A5_quintin": "Hdot jumps Upsilon <-> -3/2 H^2 at |t| = tm; Q never vanishes; no smooth NEC crossing.",
-  "runtime_s": 7.911974906921387
+  "A6_closed_form_PV": {
+    "poly": {
+      "partial_fraction_residual": "0",
+      "I_eps": "pi/32",
+      "I_eps_equals_pi_over_32": true,
+      "R": "3/8"
+    },
+    "LQC": {
+      "fold_identity_verified": true,
+      "PV": "pi/2",
+      "I_eps": "sqrt(3)*pi/18",
+      "I_eps_equals_pi_over_6sqrt3": true,
+      "R": "1/2"
+    }
+  },
+  "runtime_s": 13.631384134292603
 }
