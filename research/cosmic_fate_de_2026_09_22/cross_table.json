@@ -1,0 +1,210 @@
+{
+  "generated_utc": "2026-09-22T06:54:02.638261+00:00",
+  "script": "cross_table.py",
+  "ledger_row": 23,
+  "preregistration": "research/cosmic_fate_de_2026_09_22/PREREGISTRATION.md",
+  "set_B_source": [
+    "research/branch_I_bounce_compatible_DE/02_candidate_DE_classes.md",
+    "research/branch_I_bounce_compatible_DE/horndeski_bounce_stability/phase1_results.md"
+  ],
+  "set_T_criterion": "COSMIC_FATE_MEMO.md Eqs. (2.3)-(2.5)",
+  "symbolic_lemmas": [
+    {
+      "lemma": "L1 positive-floor -> no turnaround (flat/open)",
+      "E2": "Omega_m/a**3 + Omega_r/a**4 + rho_floor",
+      "E2_minus_floor": "(Omega_m*a + Omega_r)/a**4",
+      "limit_a_to_infinity": "rho_floor",
+      "decides": "E^2(a) >= rho_floor > 0 for all a  =>  H never reaches 0  [memo Eq. (3.1); memo Sec. 3(e) case 2]",
+      "passed_turnaround": false,
+      "sympy_excess_is_positive": true
+    },
+    {
+      "lemma": "L2 zero-crossing quintessence: SEC at turnaround is automatic",
+      "V_at_turnaround": "-phidot**2/2 - rho_m",
+      "rho_tot_plus_3p_tot_at_turnaround": "3*phidot**2 + 3*rho_m",
+      "decides": "rho_tot = 0 forces V = -(rho_m + phidot^2/2) < 0, and then rho_tot + 3 p_tot = 3(rho_m + phidot^2) > 0 identically [memo Eqs. (3.7), (3.8)]",
+      "passed_turnaround": true,
+      "sympy_SEC_is_positive_for_rho_m_or_phidot_nonzero": true
+    },
+    {
+      "lemma": "L3 zero-crossing k-essence: SEC at turnaround is automatic and the crossing is compatible with no-ghost/c_s^2>0",
+      "rho_kessence": "K*X + 3*L*X**2 + V",
+      "p_kessence": "K*X + L*X**2 - V",
+      "V_at_turnaround": "-K*X - 3*L*X**2 - rho_m",
+      "rho_tot_plus_3p_tot_at_turnaround": "6*K*X + 12*L*X**2 + 3*rho_m",
+      "no_ghost_quantity_P_X_plus_2X_P_XX": "K + 6*L*X",
+      "c_s_squared": "(K + 2*L*X)/(K + 6*L*X)",
+      "decides": "rho = 2X P_X - P = K X + 3 L X^2 + V crosses zero when V < -(rho_m + K X + 3 L X^2); at that point rho_tot + 3 p_tot = 3(rho_m + 2 K X + 4 L X^2) > 0, while K + 6 L X > 0 keeps the mode healthy",
+      "passed_turnaround": true
+    },
+    {
+      "lemma": "L4 CPL rho_DE(a) > 0 for every a (no zero crossing)",
+      "rho_DE_over_rho_DE0": "a**(-3*w_0 - 3*w_a - 3)*exp(-3*w_a*(1 - a))",
+      "identity_check_dlnrho_dlna_plus_3(1+w)": "0",
+      "decides": "rho_DE(a) = rho_0 a^{-3(1+w0+wa)} e^{-3 w_a (1-a)} is a product of strictly positive factors, so it decays to 0+ and is never negative [memo Eq. (4.1)]",
+      "passed_turnaround": false,
+      "identity_verified": true
+    },
+    {
+      "lemma": "L5 interacting dark sector with a sustained drain crosses zero",
+      "rho_DE_of_u": "Omega_DE0 - u*xi",
+      "rho_c_of_u": "(3*Omega_c0 + xi*exp(3*u) - xi)*exp(-3*u)/3",
+      "e_folds_to_rho_DE_zero": "Omega_DE0/xi",
+      "decides": "with Q/H = -xi rho_crit0, rho_DE(u) = Omega_DE0 - xi u reaches zero at u = Omega_DE0/xi and goes negative after; the drained energy reappears in the pressureless sector, rho_c -> xi/3 floor [memo Sec. 3(e) case 1]",
+      "passed_turnaround": true
+    },
+    {
+      "lemma": "L6 constant negative effective Lambda: turnaround exists but flatness forces Omega_m > 1",
+      "a_turnaround": "Omega_m**(1/3)/absOmega_L**(1/3)",
+      "decides": "E^2 = Omega_m a^-3 - |Omega_L| = 0 at a_t = (Omega_m/|Omega_L|)^(1/3); flatness gives Omega_m = 1 + |Omega_L| > 1, excluded at the observed matter density [memo Eq. (3.6) and Sec. 3(c)]",
+      "passed_turnaround": true,
+      "observationally_viable_today": false
+    }
+  ],
+  "cross_table": [
+    {
+      "cls": "1 / A-adjacent",
+      "name": "Cosmological constant Lambda",
+      "branch_I_verdict": "TRIVIALLY COMPATIBLE",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/02_candidate_DE_classes.md Class 1",
+      "in_set_B": true,
+      "rho_p": "rho_Lambda = Lambda c^2/(8 pi G) = const > 0, p = -rho c^2",
+      "turnaround": "FAIL",
+      "deciding_equation": "E^2(a) >= rho_floor > 0 for all a  =>  H never reaches 0  [memo Eq. (3.1); memo Sec. 3(e) case 2]",
+      "note": "Memo Eq. (3.1): H^2 >= Lambda c^2/3 > 0 for every a. Memo Eq. (3.5): at Omega_m < 1 no positive Lambda permits recollapse at ANY curvature, so opening k > 0 does not help.",
+      "in_intersection": false
+    },
+    {
+      "cls": "2 / A",
+      "name": "Canonical quintessence (scalar with V(phi))",
+      "branch_I_verdict": "GENERALLY COMPATIBLE (weak early-time caveat) / TRIVIALLY_COMPATIBLE at the bounce",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/02_candidate_DE_classes.md Class 2; research/branch_I_bounce_compatible_DE/horndeski_bounce_stability/phase1_results.md Class A",
+      "in_set_B": true,
+      "rho_p": "rho = phidot^2/2 + V, p = phidot^2/2 - V",
+      "turnaround": "PASS (sub-class: V unbounded below / crossing zero)",
+      "deciding_equation": "rho_tot = 0 forces V = -(rho_m + phidot^2/2) < 0, and then rho_tot + 3 p_tot = 3(rho_m + phidot^2) > 0 identically [memo Eqs. (3.7), (3.8)]",
+      "note": "Branch I's compatibility verdict concerns rho_phi at rho ~ M_Pl^4; the turnaround condition concerns V at a >> 1. Disjoint questions, both satisfiable (memo Sec. 3(d)).",
+      "in_intersection": true
+    },
+    {
+      "cls": "3 / B",
+      "name": "K-essence, L = P(X, phi)",
+      "branch_I_verdict": "LIKELY COMPATIBLE / TRIVIALLY_COMPATIBLE (X -> 0 canonical limit at the bounce)",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/02_candidate_DE_classes.md Class 3; research/branch_I_bounce_compatible_DE/horndeski_bounce_stability/phase1_results.md Class B",
+      "in_set_B": true,
+      "rho_p": "rho = 2 X P_X - P, p = P",
+      "turnaround": "PASS (sub-class: effective potential crossing zero)",
+      "deciding_equation": "rho = 2X P_X - P = K X + 3 L X^2 + V crosses zero when V < -(rho_m + K X + 3 L X^2); at that point rho_tot + 3 p_tot = 3(rho_m + 2 K X + 4 L X^2) > 0, while K + 6 L X > 0 keeps the mode healthy",
+      "note": "Background phenomenology of the crossing is that of Class 2; the distinctive k-essence freedom is c_s^2, which moves growth, not background distances.",
+      "in_intersection": true
+    },
+    {
+      "cls": "4a",
+      "name": "f(R) dark energy (Hu-Sawicki-type, viable sub-class)",
+      "branch_I_verdict": "TRIVIALLY COMPATIBLE (Test I-2: the correction is 10^-122 of R_bounce)",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/03_nontrivial_compatibility_tests.md Test I-2",
+      "in_set_B": true,
+      "rho_p": "rho_eff -> const > 0 asymptotically (the model is built to mimic Lambda today)",
+      "turnaround": "FAIL for the observationally viable sub-class",
+      "deciding_equation": "E^2(a) >= rho_floor > 0 for all a  =>  H never reaches 0  [memo Eq. (3.1); memo Sec. 3(e) case 2]",
+      "note": "Viability as DE today requires a positive asymptotic effective floor; the positive-floor lemma then forbids a turnaround. f(R) branches without that floor are not viable DE. No general f(R) criterion is claimed (memo Sec. 3(g)).",
+      "in_intersection": false
+    },
+    {
+      "cls": "4b / C",
+      "name": "Cubic Horndeski / kinetic gravity braiding",
+      "branch_I_verdict": "EFT_INAPPLICABLE (Q_S -> 0 at the bounce; M ~ H_0 << M_Pl) -- UNDETERMINED, not compatible",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/horndeski_bounce_stability/phase1_results.md Class C, Findings 3 and 5",
+      "in_set_B": false,
+      "rho_p": "model-dependent",
+      "turnaround": "UNDETERMINED",
+      "deciding_equation": "no general criterion exists (memo Sec. 3(g))",
+      "note": "Excluded from the intersection on the bounce axis by Branch I's own verdict; not promoted here.",
+      "in_intersection": false
+    },
+    {
+      "cls": "4c / D",
+      "name": "Non-minimally coupled scalar (xi R phi^2)",
+      "branch_I_verdict": "COMPATIBLE_WITH_CAVEAT (bounded tachyonic kick exp(sqrt(21 xi)); bound weaker than existing ones)",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/horndeski_bounce_stability/phase1_results.md Class D, Finding 4",
+      "in_set_B": true,
+      "rho_p": "Jordan-frame effective density includes -6 xi H phi phidot",
+      "turnaround": "UNDETERMINED -- NAMED GAP",
+      "deciding_equation": "the turnaround condition (2.3) is frame-dependent for xi != 0: H = 0 in the Jordan frame is not Htilde = 0 in the Einstein frame, and no frame-invariant criterion is derived here (memo Sec. 3(g): model-by-model, no general criterion)",
+      "note": "GAP-1. This is the one class that is squarely inside Set B and whose Set-T status is genuinely open.",
+      "in_intersection": false
+    },
+    {
+      "cls": "4d / E",
+      "name": "Quartic/quintic Horndeski",
+      "branch_I_verdict": "TRIVIALLY_COMPATIBLE (pre-empted by GW170817: c_T = 1 forces G_4 = G_4(phi), G_5 = 0)",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/horndeski_bounce_stability/phase1_results.md Class E",
+      "in_set_B": true,
+      "rho_p": "reduces to a non-minimally coupled scalar",
+      "turnaround": "UNDETERMINED -- NAMED GAP (same as 4c)",
+      "deciding_equation": "same frame-dependence obstruction as class 4c",
+      "note": "GAP-1 (shared).",
+      "in_intersection": false
+    },
+    {
+      "cls": "4e / F",
+      "name": "DHOST / beyond Horndeski",
+      "branch_I_verdict": "EFT_INAPPLICABLE (Lambda_SC << M_Pl) -- UNDETERMINED",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/horndeski_bounce_stability/phase1_results.md Class F, Finding 3",
+      "in_set_B": false,
+      "rho_p": "model-dependent",
+      "turnaround": "UNDETERMINED",
+      "deciding_equation": "no general criterion exists (memo Sec. 3(g))",
+      "note": "Excluded on the bounce axis by Branch I's own verdict.",
+      "in_intersection": false
+    },
+    {
+      "cls": "5",
+      "name": "Vacuum-energy sequestering (Kaloper-Padilla)",
+      "branch_I_verdict": "COMPATIBLE BUT DISCONNECTED (Foundations E, G)",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/02_candidate_DE_classes.md Class 5",
+      "in_set_B": true,
+      "rho_p": "residual Lambda_eff = const, fixed by the spacetime four-volume",
+      "turnaround": "FAIL for the observed sign (Lambda_eff > 0 today)",
+      "deciding_equation": "E^2(a) >= rho_floor > 0 for all a  =>  H never reaches 0  [memo Eq. (3.1); memo Sec. 3(e) case 2]  [and, for the opposite sign, E^2 = Omega_m a^-3 - |Omega_L| = 0 at a_t = (Omega_m/|Omega_L|)^(1/3); flatness gives Omega_m = 1 + |Omega_L| > 1, excluded at the observed matter density [memo Eq. (3.6) and Sec. 3(c)]]",
+      "note": "The residual is a constant, so the class inherits the Lambda row exactly: a turnaround needs Lambda_eff < 0, which contradicts present-day acceleration.",
+      "in_intersection": false
+    },
+    {
+      "cls": "6",
+      "name": "Interacting dark energy (DE-DM energy exchange)",
+      "branch_I_verdict": "COMPATIBLE (weak constraint: at rho ~ M_Pl^4 the dark-matter density is negligible)",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/02_candidate_DE_classes.md Class 6",
+      "in_set_B": true,
+      "rho_p": "rhodot_DE + 3H(1+w) rho_DE = Q, rhodot_c + 3H rho_c = -Q",
+      "turnaround": "PASS (sub-class: sustained drain, Q < 0 strong enough to take rho_DE,eff through zero)",
+      "deciding_equation": "with Q/H = -xi rho_crit0, rho_DE(u) = Omega_DE0 - xi u reaches zero at u = Omega_DE0/xi and goes negative after; the drained energy reappears in the pressureless sector, rho_c -> xi/3 floor [memo Sec. 3(e) case 1]",
+      "note": "The complementary sub-class -- any coupling that leaves rho_DE,eff > 0 asymptotically -- FAILS by the positive-floor lemma. Merely making w evolve is not enough (memo Sec. 3(e)).",
+      "in_intersection": true
+    },
+    {
+      "cls": "7",
+      "name": "Massive gravity / bigravity",
+      "branch_I_verdict": "POSSIBLY NOT COMPATIBLE (Boulware-Deser ghost may reappear at Planck curvature) -- UNDETERMINED",
+      "branch_I_source": "research/branch_I_bounce_compatible_DE/02_candidate_DE_classes.md Class 7; Test I-4",
+      "in_set_B": false,
+      "rho_p": "model-dependent",
+      "turnaround": "UNDETERMINED",
+      "deciding_equation": "no general criterion exists (memo Sec. 3(g))",
+      "note": "Excluded on the bounce axis by Branch I's own verdict.",
+      "in_intersection": false
+    }
+  ],
+  "intersection": [
+    "Canonical quintessence (scalar with V(phi))",
+    "K-essence, L = P(X, phi)",
+    "Interacting dark energy (DE-DM energy exchange)"
+  ],
+  "named_gaps": [
+    "Non-minimally coupled scalar (xi R phi^2)",
+    "Quartic/quintic Horndeski"
+  ],
+  "n_rows": 11,
+  "n_in_set_B": 8,
+  "n_in_intersection": 3
+}

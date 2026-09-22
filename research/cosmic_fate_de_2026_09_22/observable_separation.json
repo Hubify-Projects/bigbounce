@@ -1,0 +1,883 @@
+{
+  "generated_utc": "2026-09-22T06:59:15.768420+00:00",
+  "script": "observable_separation.py",
+  "ledger_row": 23,
+  "preregistration": "research/cosmic_fate_de_2026_09_22/PREREGISTRATION.md",
+  "protocol": "fixed Omega_m and fixed h*r_d; the model is NOT re-fit. Every separation below is an UPPER BOUND on a marginalised separation.",
+  "reference": {
+    "Omega_m": 0.2975,
+    "h_rd_Mpc": 101.54,
+    "r_d_Mpc": 147.09,
+    "h": 0.690325650961996,
+    "Omega_r": 8.708434196008997e-05,
+    "hubble_time_Gyr": 14.164216849224669,
+    "source": "DESI DR2 BAO-only LambdaCDM (S1), as quoted in S2 Table I; r_d from S2 Table IV"
+  },
+  "data_spec": [
+    {
+      "tracer": "BGS",
+      "z": 0.295,
+      "kind": "DV",
+      "sigma": 0.075,
+      "source": "S2 Case 1 <- S1"
+    },
+    {
+      "tracer": "LRG1",
+      "z": 0.51,
+      "kind": "DM_DH",
+      "sigma_M": 0.167,
+      "sigma_H": 0.425,
+      "rho": -0.4589999295526594,
+      "source": "S2 covariance block <- S1"
+    },
+    {
+      "tracer": "LRG2",
+      "z": 0.706,
+      "kind": "DM_DH",
+      "sigma_M": 0.17700000000000002,
+      "sigma_H": 0.33,
+      "rho": -0.4039999999999999,
+      "source": "S2 covariance block <- S1"
+    },
+    {
+      "tracer": "LRG3+ELG1",
+      "z": 0.934,
+      "kind": "DM_DH",
+      "sigma_M": 0.152,
+      "sigma_H": 0.193,
+      "rho": -0.41599979547313876,
+      "source": "S2 covariance block <- S1"
+    },
+    {
+      "tracer": "ELG2",
+      "z": 1.321,
+      "kind": "DM_DH",
+      "sigma_M": 0.318,
+      "sigma_H": 0.221,
+      "rho": -0.4339999715415919,
+      "source": "S2 covariance block <- S1"
+    },
+    {
+      "tracer": "QSO",
+      "z": 1.484,
+      "kind": "DM_DH",
+      "sigma_M": 0.76,
+      "sigma_H": 0.516,
+      "rho": -0.5,
+      "source": "S2 covariance block <- S1"
+    },
+    {
+      "tracer": "Lya",
+      "z": 2.33,
+      "kind": "DM_DH",
+      "sigma_M": 0.531,
+      "sigma_H": 0.101,
+      "rho": -0.4309999813540676,
+      "source": "S2 covariance block <- S1"
+    }
+  ],
+  "ruler_wCDM": {
+    "w": -0.916,
+    "note": "DESI DR2 BAO-only wCDM central value w = -0.916 +- 0.078 (S2 Table I). Calibrates the metric: this is what a ~1.1 sigma marginalised departure from w = -1 looks like in the fixed-parameter statistic.",
+    "max_abs_delta": 2.4086566049179816,
+    "delta_tot_independent": 4.953096993516564,
+    "delta_tot_block_cov": 6.419987615230013,
+    "points": [
+      {
+        "tracer": "BGS",
+        "z": 0.295,
+        "obs": "D_V/r_d",
+        "delta_sigma": -1.2813517391118505,
+        "sigma": 0.075,
+        "model": 7.805953367051125,
+        "lcdm": 7.902054747484514
+      },
+      {
+        "tracer": "LRG1",
+        "z": 0.51,
+        "obs": "D_M/r_d",
+        "delta_sigma": -1.076411323252617,
+        "sigma": 0.167,
+        "model": 13.076113916624582,
+        "lcdm": 13.255874607607769
+      },
+      {
+        "tracer": "LRG1",
+        "z": 0.51,
+        "obs": "D_H/r_d",
+        "delta_sigma": -1.1384524934810676,
+        "sigma": 0.425,
+        "model": 21.981824985263238,
+        "lcdm": 22.46566729499269
+      },
+      {
+        "tracer": "LRG2",
+        "z": 0.706,
+        "obs": "D_M/r_d",
+        "delta_sigma": -1.535948395485541,
+        "sigma": 0.17700000000000002,
+        "model": 17.140918745762477,
+        "lcdm": 17.412781611763418
+      },
+      {
+        "tracer": "LRG2",
+        "z": 0.706,
+        "obs": "D_H/r_d",
+        "delta_sigma": -1.3591675038023554,
+        "sigma": 0.33,
+        "model": 19.546665164865903,
+        "lcdm": 19.99519044112068
+      },
+      {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -2.4086566049179816,
+        "sigma": 0.152,
+        "model": 21.310472816978933,
+        "lcdm": 21.676588620926466
+      },
+      {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_H/r_d",
+        "delta_sigma": -1.9484422474540852,
+        "sigma": 0.193,
+        "model": 17.095328788457138,
+        "lcdm": 17.471378142215777
+      },
+      {
+        "tracer": "ELG2",
+        "z": 1.321,
+        "obs": "D_M/r_d",
+        "delta_sigma": -1.533213145367424,
+        "sigma": 0.318,
+        "model": 27.25335126157761,
+        "lcdm": 27.74091304180445
+      },
+      {
+        "tracer": "ELG2",
+        "z": 1.321,
+        "obs": "D_H/r_d",
+        "delta_sigma": -1.1590847960071236,
+        "sigma": 0.221,
+        "model": 13.779820477890457,
+        "lcdm": 14.035978217808031
+      },
+      {
+        "tracer": "QSO",
+        "z": 1.484,
+        "obs": "D_M/r_d",
+        "delta_sigma": -0.6920037351123962,
+        "sigma": 0.76,
+        "model": 29.40556368015566,
+        "lcdm": 29.93148651884108
+      },
+      {
+        "tracer": "QSO",
+        "z": 1.484,
+        "obs": "D_H/r_d",
+        "delta_sigma": -0.4178629280991764,
+        "sigma": 0.516,
+        "model": 12.650998075807284,
+        "lcdm": 12.866615346706459
+      },
+      {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_M/r_d",
+        "delta_sigma": -1.2183904686745808,
+        "sigma": 0.531,
+        "model": 38.19648881003138,
+        "lcdm": 38.843454148897585
+      },
+      {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": -0.8943547832620612,
+        "sigma": 0.101,
+        "model": 8.541766530142528,
+        "lcdm": 8.632096363251996
+      }
+    ]
+  },
+  "M1_quintessence_scan": [
+    {
+      "alpha": -0.02,
+      "v0": 0.7025397971623836,
+      "w0": -0.9998755928050661,
+      "t_c_Gyr": 14006.260201328729,
+      "a_turnaround": 3.7107143888595984e+268,
+      "rho_DE_over_rho_DE0_at_z1": 1.0001479987929531,
+      "w_at_z1": -0.9999698102727164,
+      "max_abs_delta": 0.0025707279102642126,
+      "delta_tot_independent": 0.004941018754503063,
+      "delta_tot_block_cov": 0.006278265543996474,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -0.0025707279102642126,
+        "sigma": 0.152,
+        "model": 21.676197870284106,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": true
+    },
+    {
+      "alpha": -0.05,
+      "v0": 0.7032057960569813,
+      "w0": -0.9992225708267208,
+      "t_c_Gyr": 2289.8765454302234,
+      "a_turnaround": 2.8134295962498948e+43,
+      "rho_DE_over_rho_DE0_at_z1": 1.0009248221133094,
+      "w_at_z1": -0.9998114831834586,
+      "max_abs_delta": 0.016061530719693302,
+      "delta_tot_independent": 0.03087099029523877,
+      "delta_tot_block_cov": 0.03922599681590283,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -0.016061530719693302,
+        "sigma": 0.152,
+        "model": 21.674147268257073,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": true
+    },
+    {
+      "alpha": -0.1,
+      "v0": 0.7055825975086941,
+      "w0": -0.9968919348059334,
+      "t_c_Gyr": 600.7051012669874,
+      "a_turnaround": 161400464817.98587,
+      "rho_DE_over_rho_DE0_at_z1": 1.003696859250838,
+      "w_at_z1": -0.9992483359779627,
+      "max_abs_delta": 0.06416745098624052,
+      "delta_tot_independent": 0.12333602981484079,
+      "delta_tot_block_cov": 0.15671633991761566,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -0.06416745098624052,
+        "sigma": 0.152,
+        "model": 21.666835168376558,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": true
+    },
+    {
+      "alpha": -0.15,
+      "v0": 0.709537825324088,
+      "w0": -0.993013025320057,
+      "t_c_Gyr": 282.35584416733656,
+      "a_turnaround": 157513.31615540225,
+      "rho_DE_over_rho_DE0_at_z1": 1.0083088569481702,
+      "w_at_z1": -0.9983176850694714,
+      "max_abs_delta": 0.1440830412192147,
+      "delta_tot_independent": 0.276953737693155,
+      "delta_tot_block_cov": 0.35191114596217554,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -0.1440830412192147,
+        "sigma": 0.152,
+        "model": 21.654687998661146,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": false
+    },
+    {
+      "alpha": -0.2,
+      "v0": 0.7150624027282034,
+      "w0": -0.9875939949465485,
+      "t_c_Gyr": 168.59666339100156,
+      "a_turnaround": 1182.1643774570312,
+      "rho_DE_over_rho_DE0_at_z1": 1.0147488338484973,
+      "w_at_z1": -0.9970311368994661,
+      "max_abs_delta": 0.25542137688954425,
+      "delta_tot_independent": 0.4909964389902672,
+      "delta_tot_block_cov": 0.6238873650384984,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -0.25542137688954425,
+        "sigma": 0.152,
+        "model": 21.637764571639256,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": false
+    },
+    {
+      "alpha": -0.3,
+      "v0": 0.7307661443464208,
+      "w0": -0.9721836272908965,
+      "t_c_Gyr": 84.68185774533329,
+      "a_turnaround": 33.619286342641665,
+      "rho_DE_over_rho_DE0_at_z1": 1.0330421852336453,
+      "w_at_z1": -0.9934567217231595,
+      "max_abs_delta": 0.5700972918190634,
+      "delta_tot_independent": 1.0960886456518253,
+      "delta_tot_block_cov": 1.392769797465532,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -0.5700972918190634,
+        "sigma": 0.152,
+        "model": 21.58993383256997,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": false
+    },
+    {
+      "alpha": -0.4,
+      "v0": 0.7525551021263347,
+      "w0": -0.9507856677152844,
+      "t_c_Gyr": 53.68549686303496,
+      "a_turnaround": 9.221533136698264,
+      "rho_DE_over_rho_DE0_at_z1": 1.058393995261436,
+      "w_at_z1": -0.9886900124722305,
+      "max_abs_delta": 1.0023460551847243,
+      "delta_tot_independent": 1.92760620361723,
+      "delta_tot_block_cov": 2.4494014248741136,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -1.0023460551847243,
+        "sigma": 0.152,
+        "model": 21.52423202053839,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": false
+    },
+    {
+      "alpha": -0.6,
+      "v0": 0.813613326501937,
+      "w0": -0.8907268060946208,
+      "t_c_Gyr": 29.67267231580224,
+      "a_turnaround": 3.422569206649868,
+      "rho_DE_over_rho_DE0_at_z1": 1.1292523248255948,
+      "w_at_z1": -0.9764039394197874,
+      "max_abs_delta": 2.187428919883304,
+      "delta_tot_independent": 4.209398115593711,
+      "delta_tot_block_cov": 5.3491352439841116,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -2.187428919883304,
+        "sigma": 0.152,
+        "model": 21.344099425104204,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": false
+    },
+    {
+      "alpha": -0.8,
+      "v0": 0.896367237680094,
+      "w0": -0.8091123948019289,
+      "t_c_Gyr": 20.06976187113106,
+      "a_turnaround": 2.3030541854571065,
+      "rho_DE_over_rho_DE0_at_z1": 1.2248683581271047,
+      "w_at_z1": -0.96187452604585,
+      "max_abs_delta": 3.7350978001808985,
+      "delta_tot_independent": 7.1938577351916155,
+      "delta_tot_block_cov": 9.142271151531013,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -3.7350978001808985,
+        "sigma": 0.152,
+        "model": 21.10885375529897,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": false
+    },
+    {
+      "alpha": -1.0,
+      "v0": 0.9986357989771908,
+      "w0": -0.7079354945582705,
+      "t_c_Gyr": 14.990259989174413,
+      "a_turnaround": 1.865042652224026,
+      "rho_DE_over_rho_DE0_at_z1": 1.3423916060322887,
+      "w_at_z1": -0.9465739227958808,
+      "max_abs_delta": 5.561416801543674,
+      "delta_tot_independent": 10.72230041038528,
+      "delta_tot_block_cov": 13.62743497865069,
+      "worst_point": {
+        "tracer": "LRG3+ELG1",
+        "z": 0.934,
+        "obs": "D_M/r_d",
+        "delta_sigma": -5.561416801543674,
+        "sigma": 0.152,
+        "model": 20.831253267091828,
+        "lcdm": 21.676588620926466
+      },
+      "absurd_epoch": false
+    }
+  ],
+  "absurd_epoch_note": "a_turnaround > 1e6 flags a formal turnaround at an epoch where a linear potential -- itself a local expansion of V about today's field value -- carries no physical content. Those rows are reported for completeness, not as models.",
+  "M1_boundary": {
+    "alpha_star": -0.3995195881186414,
+    "w0_star": -0.9509025299261795,
+    "t_c_star_Gyr": 53.783802428993766,
+    "a_turnaround": 9.259463620070006,
+    "max_abs_delta": 1.000000000607848,
+    "delta_tot_independent": 1.923092019998683,
+    "delta_tot_block_cov": 2.4436650259110757,
+    "meaning": "turnaround SOONER than t_c_star_Gyr => conservative per-point separation exceeds 1 sigma at DR2 precision (fixed-parameter, hence optimistic)"
+  },
+  "marginalisation_calibration": {
+    "ruler_marginalised_sigma": 1.0769230769230764,
+    "ruler_fixed_param_max_abs_delta": 2.4086566049179816,
+    "kappa_fixed_param_sigma_per_marginalised_sigma": 2.2366097045666984,
+    "caveat": "single-ruler, one-parameter DE departure, assumes comparable degeneracy directions. Use only as an order-of-magnitude conversion; it is NOT a marginalised likelihood analysis."
+  },
+  "M1_boundary_marginalisation_calibrated": {
+    "alpha": -0.6070938329615998,
+    "w0": -0.8881895389502863,
+    "t_c_Gyr": 29.190321114235278,
+    "a_turnaround": 3.355240967657157,
+    "meaning": "turnaround sooner than this t_c would be a ~1 sigma MARGINALISED departure, using the ruler conversion"
+  },
+  "M2_interacting_scan": [
+    {
+      "xi": 0.005,
+      "w0_eff": -0.9976272266219575,
+      "t_c_Gyr": 4753.012543540122,
+      "a_turnaround": 1.4307886450757287e+61,
+      "rho_DE_over_rho_DE0_at_z1": 1.0049340435312937,
+      "max_abs_delta": 0.19743066886734773,
+      "delta_tot_independent": 0.29409108848578536,
+      "delta_tot_block_cov": 0.3763643862536205,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 0.19743066886734773,
+        "sigma": 0.101,
+        "model": 8.652036860807598,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": true
+    },
+    {
+      "xi": 0.01,
+      "w0_eff": -0.9952544532439148,
+      "t_c_Gyr": 2378.8056883794447,
+      "a_turnaround": 4.4685863656639747e+30,
+      "rho_DE_over_rho_DE0_at_z1": 1.0098680870625876,
+      "max_abs_delta": 0.39623590848344026,
+      "delta_tot_independent": 0.58974356184153,
+      "delta_tot_block_cov": 0.7546650555219402,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 0.39623590848344026,
+        "sigma": 0.101,
+        "model": 8.672116190008824,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": true
+    },
+    {
+      "xi": 0.02,
+      "w0_eff": -0.9905089064878296,
+      "t_c_Gyr": 1191.7043285612083,
+      "a_turnaround": 2497281452798403.5,
+      "rho_DE_over_rho_DE0_at_z1": 1.019736174125175,
+      "max_abs_delta": 0.7980344614243781,
+      "delta_tot_independent": 1.1857974629969499,
+      "delta_tot_block_cov": 1.5171537367839527,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 0.7980344614243781,
+        "sigma": 0.101,
+        "model": 8.712697843855858,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": true
+    },
+    {
+      "xi": 0.05,
+      "w0_eff": -0.9762722662195742,
+      "t_c_Gyr": 479.45010237210494,
+      "a_turnaround": 1761350.9300886306,
+      "rho_DE_over_rho_DE0_at_z1": 1.0493404353129374,
+      "max_abs_delta": 2.0381419477315266,
+      "delta_tot_independent": 3.013163570863016,
+      "delta_tot_block_cov": 3.8531866518861535,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 2.0381419477315266,
+        "sigma": 0.101,
+        "model": 8.83794869997288,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": true
+    },
+    {
+      "xi": 0.1,
+      "w0_eff": -0.9525445324391484,
+      "t_c_Gyr": 242.04278673519616,
+      "a_turnaround": 1567.8530691166266,
+      "rho_DE_over_rho_DE0_at_z1": 1.098680870625875,
+      "max_abs_delta": 4.229415323870387,
+      "delta_tot_independent": 6.198179544343914,
+      "delta_tot_block_cov": 7.919012817893869,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 4.229415323870387,
+        "sigma": 0.101,
+        "model": 9.059267310962905,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": false
+    },
+    {
+      "xi": 0.2,
+      "w0_eff": -0.9050890648782968,
+      "t_c_Gyr": 123.35580112285146,
+      "a_turnaround": 46.777821337228524,
+      "rho_DE_over_rho_DE0_at_z1": 1.1973617412517499,
+      "max_abs_delta": 9.15604580137718,
+      "delta_tot_independent": 13.167833440610003,
+      "delta_tot_block_cov": 16.78998023712585,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 9.15604580137718,
+        "sigma": 0.101,
+        "model": 9.556856989191092,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": false
+    },
+    {
+      "xi": 0.3,
+      "w0_eff": -0.857633597317445,
+      "t_c_Gyr": 83.8041682363007,
+      "a_turnaround": 14.511263881677596,
+      "rho_DE_over_rho_DE0_at_z1": 1.2960426118776247,
+      "max_abs_delta": 14.995237534609997,
+      "delta_tot_independent": 21.120354975513386,
+      "delta_tot_block_cov": 26.866923336380204,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 14.995237534609997,
+        "sigma": 0.101,
+        "model": 10.146615354247606,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": false
+    },
+    {
+      "xi": 0.5,
+      "w0_eff": -0.7627226621957418,
+      "t_c_Gyr": 52.25541936360009,
+      "a_turnaround": 5.694928538650126,
+      "rho_DE_over_rho_DE0_at_z1": 1.4934043531293744,
+      "max_abs_delta": 30.883024044550282,
+      "delta_tot_independent": 41.38991517437607,
+      "delta_tot_block_cov": 52.32620847463011,
+      "worst_point": {
+        "tracer": "Lya",
+        "z": 2.33,
+        "obs": "D_H/r_d",
+        "delta_sigma": 30.883024044550282,
+        "sigma": 0.101,
+        "model": 11.751281791751575,
+        "lcdm": 8.632096363251996
+      },
+      "absurd_epoch": false
+    }
+  ],
+  "M2_boundary": {
+    "xi_star": 0.02497397059713518,
+    "w0_eff": -0.9881484854846199,
+    "t_c_star_Gyr": 955.2746935875592,
+    "a_turnaround": 2288994768450.624
+  },
+  "robustness": {
+    "with_DR2_IV_Lya_errors": 1.000000000607848,
+    "no_radiation": 1.0005206504087345,
+    "note": "both re-evaluated at the boundary alpha_star; compare to max_abs_delta = 1 by construction in the baseline run"
+  },
+  "M1b_quadratic_top_scan": [
+    {
+      "m2": 0.3,
+      "w0": -0.9996704176532896,
+      "t_c_Gyr": 134.01970593320607,
+      "a_turnaround": 1290.818914210241,
+      "max_abs_delta": 0.006518179376246991,
+      "delta_tot_block_cov": 0.015855472713034925,
+      "absurd_epoch": false
+    },
+    {
+      "m2": 0.6,
+      "w0": -0.9984537388951269,
+      "t_c_Gyr": 65.4872809529527,
+      "a_turnaround": 31.160177724212843,
+      "max_abs_delta": 0.029331411394057108,
+      "delta_tot_block_cov": 0.07109058609295134,
+      "absurd_epoch": false
+    },
+    {
+      "m2": 1.0,
+      "w0": -0.9947182488712792,
+      "t_c_Gyr": 38.54038588530905,
+      "a_turnaround": 7.363213349072234,
+      "max_abs_delta": 0.09505264173614274,
+      "delta_tot_block_cov": 0.2293856892470494,
+      "absurd_epoch": false
+    },
+    {
+      "m2": 1.5,
+      "w0": -0.9847573083254391,
+      "t_c_Gyr": 24.89215626541391,
+      "a_turnaround": 3.576311529141775,
+      "max_abs_delta": 0.2578608710205964,
+      "delta_tot_block_cov": 0.619388581709571,
+      "absurd_epoch": false
+    },
+    {
+      "m2": 2.0,
+      "w0": -0.9656314058316083,
+      "t_c_Gyr": 17.896523796372588,
+      "a_turnaround": 2.475906399002502,
+      "max_abs_delta": 0.5484137809387571,
+      "delta_tot_block_cov": 1.312157313855338,
+      "absurd_epoch": false
+    },
+    {
+      "m2": 3.0,
+      "w0": -0.8803884041064031,
+      "t_c_Gyr": 10.687880202893634,
+      "a_turnaround": 1.6967131482161668,
+      "max_abs_delta": 1.7090762334157277,
+      "delta_tot_block_cov": 4.06552246418066,
+      "absurd_epoch": false
+    }
+  ],
+  "M1b_boundary": {
+    "m2_star": 2.4869122334141442,
+    "w0_star": -0.9338175492140552,
+    "t_c_star_Gyr": 13.6913544567738,
+    "a_turnaround": 1.9858720519614717
+  },
+  "boundary_universality": {
+    "t_c_star_linear_Gyr": 53.783802428993766,
+    "t_c_star_quadratic_top_Gyr": 13.6913544567738,
+    "t_c_ratio": 3.928303996423394,
+    "w0_star_linear": -0.9509025299261795,
+    "w0_star_quadratic_top": -0.9338175492140552,
+    "w0_spread": 0.017084980712124276,
+    "statement": "the 1-sigma boundary is nearly the same in w0 across the two potential families but differs by the quoted factor in t_c: DESI DR2 constrains the PRESENT-DAY equation of state, and the translation into a turnaround epoch is potential-family dependent."
+  },
+  "M1b_note": "quadratic-top potential V = V0 - m^2 phi^2/2, x_i = 0.1, scanned in m^2 (in units where rho is measured in rho_crit0 and phi in M_pl). Tests potential-shape dependence of the t_c <-> separation relation.",
+  "trajectories": {
+    "quintessence_alpha_-0.1": {
+      "z": [
+        0.0,
+        0.295,
+        0.51,
+        0.706,
+        0.934,
+        1.321,
+        1.484,
+        2.33
+      ],
+      "w": [
+        -0.9968919348059334,
+        -0.9979821793524419,
+        -0.9985282891648928,
+        -0.9988860059455433,
+        -0.9991811963746345,
+        -0.9994925616844648,
+        -0.9995783746970278,
+        -0.9998161138685205
+      ],
+      "rho_DE_over_rho_DE0": [
+        1.0000000000000002,
+        1.0019802337699473,
+        1.0027822713720282,
+        1.0032548925920457,
+        1.0036175605669924,
+        1.0039759621895723,
+        1.0040706844315384,
+        1.004324513939313
+      ],
+      "t_c_Gyr": 600.7051012669874
+    },
+    "quintessence_alpha_-0.2": {
+      "z": [
+        0.0,
+        0.295,
+        0.51,
+        0.706,
+        0.934,
+        1.321,
+        1.484,
+        2.33
+      ],
+      "w": [
+        -0.9875939949465485,
+        -0.991999783931715,
+        -0.9941771624177571,
+        -0.995596834591594,
+        -0.9967655834329291,
+        -0.9979964470199388,
+        -0.9983354236678142,
+        -0.9992741533508595
+      ],
+      "rho_DE_over_rho_DE0": [
+        1.0000000000000002,
+        1.007899700490566,
+        1.0110987171859351,
+        1.0129845031620548,
+        1.0144321963079659,
+        1.0158636081087264,
+        1.016242069276645,
+        1.0172566107919325
+      ],
+      "t_c_Gyr": 168.59666339100156
+    },
+    "quintessence_alpha_-0.4": {
+      "z": [
+        0.0,
+        0.295,
+        0.51,
+        0.706,
+        0.934,
+        1.321,
+        1.484,
+        2.33
+      ],
+      "w": [
+        -0.9507856677152844,
+        -0.9690840045761017,
+        -0.977676073320153,
+        -0.9831812690355769,
+        -0.987673270940204,
+        -0.9923766566435709,
+        -0.9936684565581213,
+        -0.9972407583444526
+      ],
+      "rho_DE_over_rho_DE0": [
+        1.0,
+        1.0312680967291687,
+        1.0439220375561364,
+        1.051391935207326,
+        1.0571361661111474,
+        1.062827421093729,
+        1.0643345451815112,
+        1.0683804876959917
+      ],
+      "t_c_Gyr": 53.68549686303496
+    },
+    "interacting_xi_0.05": {
+      "z": [
+        0.0,
+        0.295,
+        0.51,
+        0.706,
+        0.934,
+        1.321,
+        1.484,
+        2.33
+      ],
+      "w_eff": [
+        -0.9762722662195742,
+        -0.9767010054373797,
+        -0.9769484888514959,
+        -0.9771414094948357,
+        -0.9773363637401065,
+        -0.9776139964636371,
+        -0.9777155722495162,
+        -0.9781438402119216
+      ],
+      "rho_DE_over_rho_DE0": [
+        1.0,
+        1.018401618861843,
+        1.02933528424949,
+        1.0380226101458485,
+        1.0469517560346382,
+        1.0599361222240264,
+        1.0647674710835036,
+        1.085631419723068
+      ],
+      "t_c_Gyr": 479.45010237210494
+    },
+    "interacting_xi_0.2": {
+      "z": [
+        0.0,
+        0.295,
+        0.51,
+        0.706,
+        0.934,
+        1.321,
+        1.484,
+        2.33
+      ],
+      "w_eff": [
+        -0.9050890648782968,
+        -0.9115961599596781,
+        -0.9150564389164914,
+        -0.9176185030459567,
+        -0.9200956610013847,
+        -0.9234431481875641,
+        -0.924618215158163,
+        -0.9293041938683697
+      ],
+      "rho_DE_over_rho_DE0": [
+        1.0,
+        1.0736064754473718,
+        1.1173411369979602,
+        1.1520904405833943,
+        1.1878070241385528,
+        1.2397444888961058,
+        1.259069884334015,
+        1.3425256788922724
+      ],
+      "t_c_Gyr": 123.35580112285146
+    }
+  },
+  "qc": {
+    "quintessence_alpha_-0.4": {
+      "E_at_z0_minus_1": 0.0,
+      "rho_DE_nondecreasing_with_z": true,
+      "rho_DE_at_z2p33_over_rho_DE0": 1.0683804876959917
+    },
+    "interacting_xi_0.05": {
+      "E_at_z0_minus_1": 0.0,
+      "rho_DE_nondecreasing_with_z": true,
+      "rho_DE_at_z2p33_over_rho_DE0": 1.085631419723068
+    },
+    "lcdm_DH_over_rd_at_z0.51": 22.46566729499269,
+    "lcdm_DM_over_rd_at_z0.51": 13.255874607607769,
+    "note": "E(z=0) must equal 1 by construction; rho_DE must be non-decreasing with z because rho_dot_phi = -3 H phidot^2 <= 0. The two LambdaCDM distances are printed so the pipeline can be checked against any published DR2 central value later (GAP-3)."
+  },
+  "named_gaps": [
+    "GAP-2: no citable DESI DR2-era f*sigma8 measurement with an uncertainty was obtained in this lane, so the growth observable -- the one that separates the k-essence member (M3) from the canonical one -- is NOT computed. It is not estimated.",
+    "GAP-1 (from cross_table.py): the turnaround criterion is frame-dependent for non-minimally coupled scalars, so Branch I classes D and E have no Set-T verdict.",
+    "GAP-3: DR2 central values were not obtained from a citable source in this lane, so no goodness-of-fit to the data is computed; only model-vs-LambdaCDM separations in units of the published sigma."
+  ]
+}
