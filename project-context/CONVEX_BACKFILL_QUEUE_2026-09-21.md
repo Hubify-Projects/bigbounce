@@ -175,3 +175,18 @@ papers:setReadinessCap({
   readinessCap: 75,   // unchanged -- automated-review-convergence gate still not met
 })
 ```
+
+---
+
+## Lane `bb-LS8-row23-growth` — 2026-09-22 (ledger row 23, GAP-2 closed as a null)
+
+Research lane. No paper touched, so **no** `paperVersions:bump`, `rRounds:create`,
+`externalReviews:upsertByLabelDate` or `papers:setReadinessCap` applies. One event:
+
+```js
+activityFeed:add({
+  type: "research",
+  tags: ["ledger-row-23", "open-questions", "gap2-growth", "null-result", "campaign-2026-09-18"],
+  summary: "Row 23 GAP-2 CLOSED AS A NULL (lane bb-LS8-row23-growth). The parent lane left growth as the one observable that could separate the k-essence member (M3) from the canonical quintessence member (M1), which share an identical background exactly. Citation first, honestly: no citable DESI DR2-era growth measurement with an uncertainty EXISTS -- DR2 Results II is BAO-only, the DR2-era joint paper (2602.18761) still takes growth from DR1 and reports sigma8, and the one DR2 full-shape analysis producing an fsigma8 (2607.27411, Lya) withdrew it, its abstract citing a significant mock-verified bias. Pre-registered fallback taken and labelled everywhere: DESI DR1 full-shape arXiv:2411.12021, every per-bin sigma DERIVED in code as sqrt(C[2][2]) from the Appendix-A Gaussian covariances (eps = 9.5-19.9%); DESI's own Sec. 7.1 restriction honoured, so no measured central value enters any decision and no goodness-of-fit is computed. RESULT: growth does NOT separate M3 from M1. Over the entire c_s^2 range the model permits -- derived symbolically as [0,1), with M1 the c_s^2 -> 1 endpoint -- and over k in [0.01,0.2] h/Mpc, max|Delta| = 0.0043 sigma, 233x short of threshold, monotone in c_s^2 so the c_s^2 = 0 endpoint bounds every trajectory. The null is structural: across a factor ~20 in background strength the maximal sound-speed signature stays a fixed 3.83% +- 0.09% of the model's own background growth signature. Growth also adds nothing to the boundary: 0.113 sigma at the parent lane's alpha* against BAO's 1.00 sigma (~8.8x weaker); growth alone would need w0 = -0.500 or xi = 0.153 against BAO's xi* = 0.025. Also derived: in a coupled dark sector RSD measures f = dln(delta)/dln(a) + gamma, so scoring M2 with dln(delta)/dln(a) overstates its separation by 2.65x. Row 23's published deliverable is UNCHANGED -- the w0 threshold and the x3.93 fate ambiguity stand; the lane removes the possibility that the missing observable would have changed them. Row 23 stays an Open Question; no manuscript claim, no SSOT row, no null changed. GAP-1 (frame-dependence for non-minimally coupled scalars) is now the only remaining row-23 step that could change the row's content.",
+})
+```

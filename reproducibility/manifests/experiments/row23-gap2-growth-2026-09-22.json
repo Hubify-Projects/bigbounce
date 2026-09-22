@@ -1,0 +1,132 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "row23-gap2-growth-2026-09-22",
+  "title": "Ledger row 23 GAP-2 - the linear growth rate f*sigma8(z) for LambdaCDM and for the three bounce-compatible dark-energy classes in the row-23 intersection, and whether the k-essence sound speed c_s^2 separates M3 from M1 at published full-shape precision",
+  "program": "open-questions",
+  "paper": null,
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "DESI Collaboration, DESI 2024 V: Full-Shape Galaxy Clustering from Galaxies and Quasars, JCAP 09 (2025) 008 - THE GROWTH SOURCE. Table 1 (z_eff); Table 6 row 1 (ShapeFit template cosmology); Table 9 (published ratio errors, used only as a cross-check); Table 11 (fiducial f*sigma_s8(z)); Appendix A Eqs. (A.1)-(A.24) (ShapeFit datavectors and full 4x4 Gaussian covariances, from which every sigma used here is DERIVED IN CODE as sqrt(C[2][2]) - none hand-typed); Sec. 7.1 (DESI's own restriction that f*sigma8 must not be used to infer cosmology, honoured here); abstract (4.7% combined RSD-amplitude precision). PDF v5 fetched and read 2026-09-22. THIS IS DR1, NOT DR2 - see the why_not_DR2 entries below.",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2411.12021",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "DESI DR2 Lyman-alpha forest full-shape validation - NEGATIVE evidence, and the reason no DR2 growth value is used: its abstract states that 'mock studies reveal a significant bias in the inferred growth-rate parameter fsigma8, leading us to exclude this measurement from the final analysis'. Abstract verified 2026-09-22.",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2607.27411",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Cosmological constraints from a joint DESI DR1 Full-Shape and DR2 BAO (2026-02) - NEGATIVE evidence: the DR2-era combination still takes its growth information from DR1 full-shape and reports sigma8, not f*sigma8(z). Abstract verified 2026-09-22.",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2602.18761",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "DESI DR2 Results II: BAO measurements and cosmological constraints - BAO-only, contains no growth measurement; supplies the LambdaCDM reference background (Omega_m = 0.2975, h*r_d = 101.54 Mpc) inherited unchanged from the parent lane",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2503.14738",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Valiviita, Majerotto & Maartens, Instability in interacting dark energy and dark matter fluids - the Q^mu = Q u_c^mu perturbation setup under which lemma G2's coupled growth equation is derived (energy transfer along the CDM four-velocity, no momentum transfer in the CDM frame, CDM Euler unmodified)",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/0804.0232",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Amendola, Coupled quintessence, Phys. Rev. D 62 (2000) 043511 - coupled dark-sector perturbation framework",
+      "type": "external-literature",
+      "locator": "https://doi.org/10.1103/PhysRevD.62.043511",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "Parent lane bb-LS7-row23-fate-de: ROW23_MEMO.md (GAP-2 as stated), PREREGISTRATION.md (the conventions inherited), cross_table.py lemmas L3 (k-essence rho, p, c_s^2) and L5 (interacting-sector closed form)",
+      "type": "internal-artifact",
+      "locator": "research/cosmic_fate_de_2026_09_22/",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "observable_separation.py - the backgrounds are IMPORTED UNCHANGED from this module (quintessence_background, interacting_background, the fixed-parameter constants), so the fixed-parameter convention is literally the same code and not a re-implementation",
+      "type": "internal-artifact",
+      "locator": "research/cosmic_fate_de_2026_09_22/observable_separation.py",
+      "checksum": null,
+      "license": null
+    },
+    {
+      "name": "COSMIC_FATE_MEMO.md (ledger row 20) - the inherited Open-Questions evidence layer and turnaround criterion",
+      "type": "internal-artifact",
+      "locator": "research/archaeology_2025/memos/COSMIC_FATE_MEMO.md",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/cosmic_fate_de_2026_09_22/gap2_growth/growth_separation.py",
+      "entrypoint": "cd research/cosmic_fate_de_2026_09_22/gap2_growth && python3 growth_separation.py",
+      "sha256": "4080008d3225042a06593d5d49ac280519461fd13cf1ed42efb82d58178a8861"
+    }
+  ],
+  "environment": {
+    "python": "python3 + sympy 1.14.0 + numpy 2.5.1 + scipy 1.18.0",
+    "hardware": "cpu-only; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Houstons-MacBook-Air.local",
+    "date": "2026-09-22",
+    "wall_clock": "growth_separation.py ~3 min (measured); dominated by the stiff Radau integrations of the clustering-DE two-fluid system over the 44-point c_s^2 x k grid",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~3 min",
+    "est_cost_usd": 0.0,
+    "parallelizable": true,
+    "resume_support": false,
+    "notes": "Fully offline and deterministic: no RNG, no catalogue downloads, no network at run time (DISK CONSTRAINT: this lane was run under a ~10 GB free-disk cap and downloads nothing). Every growth uncertainty is derived in code as sqrt(C[2][2]) from the DESI DR1 Appendix-A Gaussian covariances transcribed verbatim; none is hand-typed, estimated or interpolated. No measured central value enters any decision, so no goodness-of-fit is computed. Disk footprint a few hundred kB."
+  },
+  "outputs": [
+    {
+      "locator": "research/cosmic_fate_de_2026_09_22/gap2_growth/growth_separation.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/cosmic_fate_de_2026_09_22/gap2_growth/GAP2_MEMO.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/cosmic_fate_de_2026_09_22/gap2_growth/PREREGISTRATION_GAP2.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/cosmic_fate_de_2026_09_22/PROPAGATION_NOTE.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "Re-run and confirm: (a) growth_yardstick_shapefit_alone gives eps_frac = 0.1992, 0.1358, 0.1151, 0.1075, 0.0949, 0.1186 for BGS/LRG1/LRG2/LRG3/ELG2/QSO, each derived as sqrt(C[2][2])/(f*sigma_s8)_fid; (b) lemma_G1 endpoints: c_s^2 = 0 at K = -2s and -> 1 as K -> infinity, i.e. the DERIVED allowed range is [0,1) and c_s^2 = 1 iff L = 0 (which is M1); (c) lemma_G2 second_order_form is D^2 delta + (2 + dlnE/dN + gamma) D delta + [(2+dlnE/dN) gamma + D gamma - (3/2) Omega_m] delta = 0 with D gamma = 3 gamma - gamma^2; (d) THE PRIMARY RESULT - M3_vs_M1_best.max_abs_delta == 0.0043 (2 sf) at c_s^2 = 0, k-independent there, with M3_precision_shrink_factor_for_1sigma.factor == 233 (3 sf); (e) M3_cs2_monotonicity monotone_decreasing == true at all four k, which is what licenses the bracketing argument; (f) M3_cs2_signal_is_a_fixed_fraction_of_the_background_signal.mean == 0.0383 with spread < 0.001 across alpha = -0.2 ... -1.0 - the structural statement; (g) sensitivity.M1_at_LS7_boundary_max_abs_delta == 0.113 against LS7's BAO 1.00 at the same alpha* = -0.3995; (h) M1_growth_boundary.alpha_star_growth == -1.335 (w0 = -0.500) and M2_growth_boundary.xi_star_growth == 0.1527 against LS7's BAO xi* = 0.0250; (i) M2 at xi = 0.025 gives max_abs_delta == 0.154 with max_abs_delta_if_dlnDelta_dlna_used == 0.409, the factor-2.65 RSD-rate trap; (j) qc.clustering_solver_vs_smooth_cs2_1.0 all < 1e-7 (independent code path agrees), qc.lcdm_f_vs_Omega_m_0p55 |frac_diff| <= 0.006, qc.derived_sigma_vs_published_table9 agreement_ratio in [0.86, 1.00], and qc.a_init_insensitivity stable to 9 digits across a_i = 3e-3, 1e-3, 3e-4.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md row 23; closes GAP-2, the highest-value cheap extension named by the parent lane bb-LS7-row23-fate-de in ROW23_MEMO.md",
+    "research/cosmic_fate_de_2026_09_22/gap2_growth/PREREGISTRATION_GAP2.md, committed ALONE in 908d87f7 BEFORE any statistic was computed: it fixes the statistic, the 1-sigma threshold, the M3-vs-M1-at-identical-backgrounds comparison, the bracketing argument over c_s^2, both allowed outcomes including an explicit NULL branch, and - in Sec. 1, in advance - the honest record that no citable DESI DR2-era growth measurement exists",
+    "RESULT: the pre-registered NULL branch. Growth does not separate M3 from M1 (0.0043 sigma, 233x short of threshold, structurally 3.83% of the background signature everywhere in the family) and does not tighten the parent lane's boundary (0.113 sigma against BAO's 1.00 at the same point). The null is published as a null and is not softened; GAP-1 (frame-dependence for non-minimally coupled scalars) is now the only remaining row-23 step that could change the row's content.",
+    "directive Q1 (pure-contribution framing), Q2 (per-experiment manifests), R1 (ledger-first), R6 (claims stated at exactly their evidential strength; nulls published as nulls). Row 23 remains an Open Question - no manuscript claim, no SSOT row, no null changed.",
+    "/never-fabricate-derivation: lemma G1 (the c_s^2 range) and lemma G2 (the coupled growth equation, with its covariant coupling choice named) are both derived by sympy in the committed script; no uncertainty is invented anywhere, and the DR1-not-DR2 fallback is labelled at every point of use including inside growth_separation.json."
+  ]
+}
