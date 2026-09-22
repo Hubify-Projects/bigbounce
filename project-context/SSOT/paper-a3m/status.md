@@ -2,37 +2,99 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-22 -- v3M.0.28. R11 INT board (Grok REJECT, Gemini MAJOR
-REVISIONS, Claude opus INT referee verdict-blind MAJOR REVISIONS) ran on the
-exact v3M.0.27 PDF -- the one board directive R2 permitted after the row-9
-(D-A3-9) intervening science decision. No leg FAILED. Truth-audit found 16
-genuinely-new-real finding-classes: a recurrence of the internal-audit-language
-leak (directive Q1, reintroduced by the row-9 propagation copying working-note
-prose), two ESSENTIAL items on the new Bardeen-potential material (its
-regularity claim was asserted not derived, and f_NL^after[S2] was quoted to
-3 sig figs with an undisclosed evaluation-window convention -- both closed
-using material already in the cited artifact, no new derivation), five MAJOR
-scheme-labelling/reasoning defects (abstract band misattribution, a
-self-contradicting blanket statement, four S1-numbers-presented-as-the-model's-own
-passages, backwards DESI-comparison reasoning, a wrong-sign PBH artefact term),
-and a minor cluster (cross-reference repairs, a leaked internal figure-title
-label, caption fixes). All 16 closed in v3M.0.28 with no new science computation
--- every fix cites already-committed artifacts or is simple arithmetic on
-already-printed numbers. No physics error found; no headline number changed.
-Full detail: `peer-reviews/INT_v3/A3M_v3M.0.27_R11_TRUTH_AUDIT_2026-09-22.md`;
-canonical dispositions: `peer-reviews/DISPOSITIONS/A3M.md` section "R11".
-Directive R2: budget SPENT again (R11 was the one permitted board) -- rounds
-STOP; a further science/scope decision or Houston's authorization of a
-confirmation board is required before any next board. Readiness stays at the
-COMPUTED cap 75.
+last_updated: 2026-09-22 -- v3M.0.29. Row-9b science decision (LQC/poly Bardeen
+extension, lane bb-LS9-bardeen-lqc, closed 2026-09-19->2026-09-22) propagated
+into main.tex -- the directive-R2 intervening decision authorizing the
+co-director-authorized R12 confirmation board. The Bardeen continuation
+established on Quintin-type (R11-era) now extends to LQC and poly, which cross
+rho+p=0 smoothly: linear-transfer amplitude -1.094 (LQC, prescription-free via
+a second matter-kinetic anchor) / -1.140 (poly, principal-value only; the
+continuation is NOT unique -- a retraction the source lane's own blind
+adjudication caught), cubic term uncomputed so f_NL^after is a bracket only
+([-1.20,-0.09] / [-1.27,-0.13]), never a single value. AGAINST the paper, same
+prominence (directive F): tensor no-go strengthens on both, r_after=96.0 (LQC)
+/ 170.6 (poly) vs S1's common 24.0. Separately, R11 ESSENTIAL 2 (undisclosed
+evaluation-window convention) now closes BY COMPUTATION: a 12-point eta_*/eta_B
+scan shows a stationary region common to all three k-points, uniform
+eta_*/eta_B=15 sits inside it, f_NL^after[S2]=-1.2492/-1.2490/-1.2464 (0.22%
+spread) -- headline -1.25 survives. No headline number changed on Quintin-type.
+Full detail: `peer-reviews/DISPOSITIONS/A3M.md` section "Row-9b propagation --
+v3M.0.29". R12 confirmation board dispatched next on this exact PDF.
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (21 pp / 0 undef refs / md5 e4a2ca93564bc566a52e68252865c460 / sha256 87fd3c2372dbf09c2d4a7fa6ea339db2da0641184f00cbf4112db7a5df841012)
-version: v3M.0.28 (2026-09-22, R11 board closure -- see "v3M.0.28" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (23 pp / 0 undef refs / md5 8ee1f13bd4e596c87655a9347c0c0918 / sha256 0c8c318e184577b614251d9d517f1cdf7d5bb9c667a6b731ca130a26b47d4a60)
+version: v3M.0.29 (2026-09-22, row-9b propagation -- see "v3M.0.29" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
-headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (R11 surfaced 16 genuinely-new-real, closed in v3M.0.28, which no board has reviewed) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
-submission_status: draft, readiness 75 -- ROUNDS STOPPED 2026-09-22 under directive R2 (R11 budget spent). A further board requires an intervening science or scope decision, or Houston's authorization of a confirmation board under R2's "one confirmation board when the first closes real items" clause.
+headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (R12 board pending on this exact PDF) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
+submission_status: draft, readiness 75 -- R12 confirmation board authorized by the row-9b intervening science decision, dispatched on the exact v3M.0.29 PDF.
+
+## v3M.0.29 (2026-09-22) — row-9b (LQC/poly Bardeen extension) science-decision propagation; R11 ESSENTIAL 2 closed by computation; readiness held at 75
+
+**What unlocked this bundle.** Ledger row 9b CLOSED 2026-09-19->2026-09-22
+(`research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/`, lane
+`bb-LS9-bardeen-lqc`, verdict `OUTCOME-UNIVERSAL(b)`, gates G1-G10 PASS,
+independently blind-adjudicated at Opus tier after the specified Fable tier
+FAILED-INFRA HTTP 429). This is directive R2's required intervening science
+decision, authorized by the co-director to unlock exactly one confirmation
+board (R12) on the resulting PDF.
+
+**Science propagated (full detail: `peer-reviews/DISPOSITIONS/A3M.md` "Row-9b
+propagation -- v3M.0.29"):** the Bardeen-potential scheme-selection argument,
+established only on Quintin-type at R11, extends to LQC and poly (smooth
+`rho+p=0` crossing, `Phi/Phi'` continuous, logarithmic divergence with
+closed-form amplitude, continuation = one member of a one-parameter
+self-adjoint-extension family -- not essentially self-adjoint, so NOT unique).
+Transmitted amplitude differs from S1 on all three backgrounds (direction) by
+`6.25x`/`2.00x`/`2.67x` (magnitude, background-specific -- row 9's "6.25"
+must not be carried to LQC/poly). Table `tab:s1_after` gains two rows: LQC
+`T_fNL=0.500` (exact, prescription-free via a second matter-kinetic anchor)
+and poly `T_fNL=0.521` (principal-value only); `Delta f_NL^bounce` not
+computed on either, so `f_NL^after` is a bracket (`[-1.20,-0.09]` /
+`[-1.27,-0.13]`), never collapsed to a single value. AGAINST the paper (same
+prominence, directive F): tensor `r_after=24/R^2` gives `96.0` (LQC) /
+`170.6` (poly) vs S1's `24.0` -- `2.7e3x`/`4.7e3x` BICEP/Keck, strengthening
+the no-go on both. Every downstream "S1 range"/"not yet computed" LQC-poly
+reference swept through the whole manuscript (abstract, Sec. III A, Sec. VII,
+Sec. VI, Discussion, Next-steps) -- the R11 lesson that an unswept propagation
+leaves scheme-labelling MAJORs.
+
+**R11 ESSENTIAL 2 CLOSED BY COMPUTATION** (supersedes R11's disclosure-only
+closure): a 12-point `eta_*/eta_B` scan (`row9b_window.py`, committed
+raw-ADM kernel unmodified) at all three `k`-points shows a stationary region
+common to all three; uniform `eta_*/eta_B=15` sits inside it, satisfies
+`k eta_*<=0.2` throughout, and gives `f_NL^after[S2]=-1.2492,-1.2490,-1.2464`
+(`0.22%` spread) -- the headline `-1.25` survives to 3 sig figs with a stated
+`0.3%` systematic. `main.tex`'s per-`k` triple updated from
+`-1.249,-1.246,-1.244` to `-1.249,-1.249,-1.246`.
+
+**Symbol audit:** the extension parameter (named `nu` in the source note)
+renamed `\theta` in `main.tex` to avoid colliding with the pre-existing
+general-`\nu` Hankel-limit symbol in Sec. VIII (self-caught before any leg
+could flag it; the R11 lesson applied proactively).
+
+**Directive G hygiene.** `\paperVersion` v3M.0.28 -> **v3M.0.29**,
+`\paperTimestamp` unchanged (already today's date). 4-pass pdflatex, 0 errors,
+0 undefined references/citations, 23 pp (grew from 21). One new 73.97pt table
+overflow from the two added rows, caught by `/latex-audit` and fixed with
+`\scriptsize` + shortened row labels before this commit; max overfull hbox
+after fix 3.89pt (unchanged pre-existing tolerance). `/latex-audit` visual
+PASS: pages 1, 6-9, 13-15, 17-18 rendered at 130dpi, no column overflow, no
+table-row overflow, title block clean. PDF mirrored byte-identical to
+`site/public/papers/a3_multichannel_arxiv_v3M.0.29.pdf`,
+`public/papers/a3_multichannel_arxiv_v3M.0.29.pdf`, and the source dir: md5
+`8ee1f13bd4e596c87655a9347c0c0918`, sha256
+`0c8c318e184577b614251d9d517f1cdf7d5bb9c667a6b731ca130a26b47d4a60`, 23 pp.
+**Convex UNAVAILABLE** (spending limit) -- `paperVersions:bump` mutation
+queued to `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`, not written.
+
+**No headline number changed** on the Quintin-type background
+(`f_NL^after=-1.25` unchanged).
+
+**Next: R12.** The one confirmation board authorized by this science decision
+under directive R2's "confirmation after real closure" clause, dispatched on
+this exact v3M.0.29 PDF: Grok API + Gemini API + one Claude opus verdict-blind
+referee, exact-SHA-bound.
 
 ## v3M.0.28 (2026-09-22) — R11 board + closure; ROUNDS STOPPED (R2 budget spent again); readiness held at 75
 

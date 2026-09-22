@@ -1221,3 +1221,91 @@ Readiness stays at the **COMPUTED** cap 75. Next unlock: a science/scope decisio
 "Carried, not closed" items above (most concretely, the Next-steps item (i) LQC/poly Bardeen
 extension), or Houston authorizing a confirmation board on the resulting v3M.0.28 PDF under
 R2's "one confirmation board when the first closes real items" clause, which R11 satisfies.
+
+---
+
+## Row-9b propagation — v3M.0.29 (2026-09-22): the Next-steps (i) science decision, and
+## R11 ESSENTIAL 2 closed by computation
+
+**Lane `bb-L1d-a3m-row9b-r12`, co-director authorized.** Lane `bb-LS9-bardeen-lqc` closed
+ledger row 9b 2026-09-19→2026-09-22
+(`research/cubic_bounce_transmission/row9b_bardeen_lqc_2026_09_22/`, verdict
+`OUTCOME-UNIVERSAL(b)`, gates G1–G10 PASS, independently blind-adjudicated at Opus tier —
+the specified Fable tier FAILED-INFRA, HTTP 429, recorded never as a verdict). **This closure
+is directive R2's required intervening science decision**, authorizing exactly one confirmation
+board (R12) on the resulting PDF, per Houston's co-director authorization.
+
+**What the science decision does.** The Bardeen-potential scheme-selection argument of R11's
+new material (Sec. III A), established only on the Quintin-type background, extends to the
+LQC and poly backgrounds, which cross `rho+p=0` **smoothly** rather than by a jump: `Phi` and
+`Phi'` stay continuous (the momentum constraint's own first recursion), the divergence is a
+logarithm confined to the momentum sector with closed-form amplitude, and the continuation is
+one member of a one-parameter self-adjoint-extension family (the operator is **not**
+essentially self-adjoint at the crossing — a retraction of the source lane's own earlier
+"unique" claim, caught by its blind adjudication). The transmitted amplitude differs from
+scheme S1 on **all three** backgrounds — background-independent in **direction** — but by
+`6.25x` (Quintin, unchanged), `2.00x` (LQC), `2.67x` (poly) — **background-specific in
+magnitude**; row 9's "factor 6.25" language, and any "conservative"/"only computed value"
+language about the LQC/poly S1 rows, must not be carried forward, and every such instance was
+swept from `main.tex` in this bundle (the R11 lesson: an unswept propagation leaves
+scheme-labelling MAJORs — 5 of R11's 16 findings were exactly that class).
+
+**Table `tab:s1_after` gains two rows** (v3M.0.29): LQC and poly under the Bardeen
+continuation, linear-transfer-only (`T_fNL=0.500` exact/prescription-free on LQC via a second
+matter-kinetic anchor; `T_fNL=0.521` principal-value-only on poly), with `Delta f_NL^bounce`
+**not computed** and `f_NL^after` reported **only as a bracket**
+(`[-1.20,-0.09]` LQC, `[-1.27,-0.13]` poly) — directive-F rule: a bracket is never collapsed to
+a single value.
+
+**AGAINST the paper, same prominence (directive F):** row 18's open tensor gap for LQC/poly
+(`main.tex` R11-era: "No S2 `r_after` for LQC/poly … `z_S2^2=0` at their `Hdot=0` crossings")
+is now closed, in the unfavourable direction: `r_after=24/R^2` gives `96.0` (LQC) and `170.6`
+(poly) against S1's common `24.0` — `2.7e3x` and `4.7e3x` BICEP/Keck, not `6.7e2x`. Printed in
+Sec. VII (tensor section) with the same weight as the favourable Sec. III A material, not
+buried in an appendix or footnote.
+
+**R11 ESSENTIAL 2 (the undisclosed evaluation-window convention) — CLOSED BY COMPUTATION, not
+disclosure, superseding R11's closure.** R11 closed the item by *disclosing* the paper's actual
+non-uniform rule (`eta_*/eta_B=50,50,20`). The row9b lane's `row9b_window.py` ran a 12-point
+`eta_*/eta_B` scan at all three `k`-points on the committed, unmodified raw-ADM kernel and
+found a **stationary region common to all three `k`-points**; a single uniform convention
+`eta_*/eta_B=15` sits inside it at every `k` and satisfies `k eta_*<=0.2` throughout, giving
+`f_NL^after[S2]=-1.2492,-1.2490,-1.2464` — a `0.22%` spread across `k` and across the
+stationary window. **Outcome: WINDOW-SETTLED.** The headline `-1.25` survives to three
+significant figures with a stated `0.3%` evaluation-time systematic; the disclosure gap is now
+a positive computed statement. `main.tex`'s per-`k` `f_NL^after[S2]` triple is updated from
+`-1.249,-1.246,-1.244` (old non-uniform convention) to `-1.249,-1.249,-1.246` (uniform
+convention) — closer to, not further from, the printed headline.
+
+**Limits carried forward, not softened (row9b §6, PROPAGATION_NOTE §2c/§6):** linear transfer
+only on LQC/poly (cubic term uncomputed, needs the raw-ADM in-in integral there, same `Q=0`
+logarithm at cubic order); a classical-GR continuation statement about a given `a(eta)`, not a
+claim about LQC's own dressed-metric perturbation theory; the LQC anchor's prescription-freedom
+rests on an assumption about the effective theory's kinetic weight that neither this lane nor
+row9b derived — if false, LQC is as prescription-dependent as poly; the matching-surface/
+thin-shell caveats from row 9 remain open.
+
+**Symbol audit (self-caught, R11-lesson applied proactively):** the source note's own extension
+parameter, called `nu`, would have collided with the pre-existing general-`\nu` Hankel-limit
+symbol in Sec. VIII (the constant-`c_s` no-go); renamed `\theta` in `main.tex`. No other
+collisions found (checked `R`, `Q`, `u`, `z_K` against the whole document).
+
+**Directive G hygiene:** `\paperVersion` v3M.0.28→**v3M.0.29**, `\paperTimestamp` unchanged
+(already today's date). 4-pass pdflatex, 0 errors, 0 undefined references/citations, 23 pp
+(grew from 21). One new 73.97pt table overflow from the two added `tab:s1_after` rows, caught
+by `/latex-audit` and fixed with `\scriptsize` + shortened row labels before this commit — max
+overfull hbox after fix: 3.89pt (unchanged pre-existing tolerance). `/latex-audit` visual PASS:
+pages 1, 6–9, 13–15, 17–18 rendered at 130dpi and inspected — no column overflow, no
+table-row overflow, title block clean. Three-way byte-identical mirror: source compile ==
+`site/public/papers/a3_multichannel_arxiv_v3M.0.29.pdf` == `public/papers/…v3M.0.29.pdf`, md5
+`8ee1f13bd4e596c87655a9347c0c0918`, sha256
+`0c8c318e184577b614251d9d517f1cdf7d5bb9c667a6b731ca130a26b47d4a60`. **Convex UNAVAILABLE**
+(spending limit) — `paperVersions:bump` queued to `CONVEX_BACKFILL_QUEUE_2026-09-21.md`, not
+written; readiness stays COMPUTED from static site data only until the backfill lands.
+
+**No headline number changed** on the Quintin-type background (`f_NL^after=-1.25` unchanged;
+only its per-`k` third-decimal triple moved, per the window closure above, itself unchanged in
+the rounded headline).
+
+**Next: R12.** The one confirmation board R2's "confirmation after real closure" clause
+permits, on this exact v3M.0.29 PDF. See the "R12" section below for the board result.
