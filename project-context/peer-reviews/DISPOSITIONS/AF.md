@@ -187,14 +187,56 @@ matched/unmatched flux/SNR/score medians and p-values; the BAL enrichment 3.3× 
 - **fingerprint:** f_NL, order of magnitude, LoVerde, ledger6, uncited
 
 ### DAF-19 (MAJOR): taxonomy construction — RA-wrap artifact, missing hyperparameters, near-vacuous PCA on 3 features
-- **class:** DISCLOSED, NOT CLOSED (a corrected re-clustering is real follow-up work, not a text fix)
+- **class:** CLOSED — GENUINELY-NEW-REAL (closed 2026-09-22, lane LAF4 computation +
+  LAF5 propagation; was DISCLOSED, NOT CLOSED as of vAF.0.6)
 - Verified: Table VIII's own RA spans (up to 350°) match the unwrapped-coordinate
-  signature exactly.
-- **Disposition:** honest limitation paragraph added naming all three issues and the
-  exact fix (spherical embedding, stated hyperparameters/seed, a (survey,programme)
-  baseline) needed before the taxonomy's specific boundaries are non-provisional; states
-  this does not affect the already-weak V12 null. main.tex §VI A.
-- **fingerprint:** taxonomy, RA wrap, UMAP HDBSCAN hyperparameters, PCA
+  signature exactly (the pre-closure state).
+- **The exact fix named in the disposition is now complete and independently verified**
+  (lane LAF4, `pipelines/p1_highz_tracers/anomaly_flagship_draft/reclustering_2026_09_22/`):
+  a corrected re-clustering re-runs the identical PCA→UMAP→HDBSCAN pipeline on the same
+  675-object input with (a) sky position embedded on the unit sphere
+  ($\cos\alpha\cos\delta,\sin\alpha\cos\delta,\sin\delta$) instead of raw degrees,
+  eliminating the RA-wrap by construction; (b) every hyperparameter and the random seed
+  stated and reused verbatim from the published run's own manifest
+  (`pca_components=10, umap_neighbors=15, umap_min_dist=0.05, min_cluster_size=15,
+  min_samples=3, random_state=42`), isolating the embedding fix as the only changed
+  variable; (c) a (survey, programme)-only baseline comparison. Confirmed deterministic
+  (bit-identical rerun). Independently re-verified by lane LAF5 against LAF4's committed
+  JSONs before adoption (`comparison_metrics.json`, `corrected_family_table.json`,
+  `flagship_taxonomy_corrected.json`) — every number quoted in main.tex traces to one of
+  these files, not to the propagation note's prose alone. LAF5 additionally caught and
+  fixed two propagation defects LAF4's own report did not flag: (i) reusing
+  `assemble_flagship_evidence.py::family_evidence()`'s RA-span column unmodified would
+  have reintroduced the *same* wrap defect into the corrected Table VIII/IX (it computes
+  a naive `max-min` span); the wrap-aware per-family span from
+  `corrected_family_table.json` was substituted instead. (ii) the corrected taxonomy's
+  own `family_descriptor` text field (and the published taxonomy's, by inspection of the
+  same code path) can disagree with the family's true empirical dominant (survey,
+  programme) cell — e.g. family 3's descriptor reads "survey=main, program=other" while
+  the actual plurality cell, verified directly against the merged dataframe, is
+  `sv1/other` (37.5% share, matching `corrected_family_table.json`'s own `dominant_cell`
+  field) — a marginal-mode-instead-of-joint-mode labelling bug in the shared descriptor
+  generator, not something to repeat when writing the corrected Table VIII/IX's
+  Survey/prog. column. Both are disclosed here rather than silently worked around.
+- **Adoption decision (co-director, 2026-09-22):** the corrected taxonomy REPLACES
+  Table VIII/IX (and the dependent Fig.~7/8, the "What the families are" and "Two
+  families worth starting with" prose, and the FT-B/FT-C/FT-E follow-up references) as
+  the paper's taxonomy, rather than being cited as a disclosed robustness check
+  alongside the retained published table. Result: 25→23 clusters, 8→9 families, ARI
+  0.603/AMI 0.626 against the published partition (moderate restructuring — no family
+  reproduced unchanged), ARI/AMI 0.257/0.256 against the (survey,programme) baseline
+  (not a relabelling), largest wrap-aware RA span 350.4°→331.6° (the
+  not-a-compact-sky-region conclusion is reinforced, not undermined). The V12
+  latent-space silhouette test was recomputed against the corrected family labels
+  (−0.0162→−0.0183, still STRUCTURED-BUT-WEAK) since a validation check on "the released
+  taxonomy's family partition" must use whichever partition is actually released; V6's
+  hardcoded assertion (previously literal 25/8) was made to check the taxonomy's own
+  declared cluster/family counts dynamically so it does not silently fail against a
+  future re-clustering. main.tex §VI (Construction, What the families are, the
+  latent-space test, Two families worth starting with), Tables VIII/IX, Figs. 7/8, §VII
+  (FT-B/FT-C/FT-E), abstract, §IX (reproducibility). New committed script:
+  `pipelines/p1_highz_tracers/anomaly_flagship_draft/taxonomy_adoption_2026_09_22/`.
+- **fingerprint:** taxonomy, RA wrap, UMAP HDBSCAN hyperparameters, PCA, spherical embedding, corrected re-clustering, 23 clusters, 9 families
 
 ### DAF-20 (BLOCKER): archived model's training corpus, wavelength grid, and architecture are undocumented and unhashed
 - **class:** DISCLOSED, NOT CLOSED (genuinely absent from every artifact in this repo, confirmed by search)
@@ -375,6 +417,15 @@ closures below (the blue-arm univariate R² and the score-vs-redshift Spearman t
 - **Closure:** abstract sentence scoped precisely to what is reproducible (the catalogue
   selection: score, provenance gate, threshold), with an explicit forward pointer to the
   taxonomy's own disclosed limitation. DAF-19 itself is unchanged and still open.
+  main.tex abstract.
+- **2026-09-22 update (lane LAF5, vAF.0.7):** DAF-19 is now CLOSED (see its updated entry
+  above) and the corrected taxonomy was adopted as the paper's Table VIII/IX. Per the
+  disposition note's own guidance, the abstract's forward pointer changed from "not
+  itself reproducible from the released files alone" to a statement that the taxonomy's
+  clustering is now fully specified and reproducible, while its specific cluster/family
+  boundaries differ moderately from the earlier construction. This is not a re-opening of
+  DAF-29 — the abstract-scoping fix from 2026-09-19 stands; only the sentence's content
+  changed because the underlying fact it points to (DAF-19) changed from open to closed.
   main.tex abstract.
 - **fingerprint:** complete provenance chain, contradiction, not reproducible, hyperparameters
 

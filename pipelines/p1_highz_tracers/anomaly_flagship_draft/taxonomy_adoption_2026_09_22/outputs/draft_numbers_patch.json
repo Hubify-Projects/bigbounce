@@ -1,0 +1,13 @@
+{
+  "family_dominant_share_weighted": 0.7185185185185186,
+  "family_max_ra_span_deg": 331.6,
+  "family_min_ra_span_deg": 15.4,
+  "family_n": 9,
+  "family_n_clusters": 23,
+  "latent_n_dims": 128,
+  "latent_null_max": -0.021515360662729712,
+  "latent_null_mean": -0.030932407465487158,
+  "latent_null_sd": 0.005934587607625986,
+  "latent_p_emp": 0.0,
+  "latent_silhouette": -0.01834646516968453
+}

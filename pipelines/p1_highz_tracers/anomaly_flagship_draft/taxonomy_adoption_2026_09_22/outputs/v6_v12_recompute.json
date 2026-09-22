@@ -1,0 +1,17 @@
+{
+  "V12": {
+    "n_dims": 128,
+    "null_max": -0.021515360662729712,
+    "null_mean": -0.030932407465487158,
+    "null_sd": 0.005934587607625986,
+    "p_emp": 0.0,
+    "silhouette": -0.01834646516968453,
+    "status": "STRUCTURED-BUT-WEAK"
+  },
+  "V6": {
+    "n_clusters": 23,
+    "n_families": 9,
+    "observed": "objects=675 (unmatched=675), clusters=23, families=9, sum(family sizes)=675, per-object rollup identical: True",
+    "status": "PASS"
+  }
+}

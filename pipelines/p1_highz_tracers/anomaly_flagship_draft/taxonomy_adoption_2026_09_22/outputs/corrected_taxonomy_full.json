@@ -1,0 +1,5298 @@
+{
+  "clusters": {
+    "0": {
+      "cluster_id": 0,
+      "dec_range": [
+        14.925462757104759,
+        31.92768768082926
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 19,
+      "n_objects": 19,
+      "ra_range": [
+        1.5909988776374326,
+        354.65805206620666
+      ],
+      "ra_span_deg": 69.34867992585293,
+      "score_median": 3.0888875897036403,
+      "score_tier": "low"
+    },
+    "1": {
+      "cluster_id": 1,
+      "dec_range": [
+        -18.124577113118416,
+        1.086846600959195
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 19,
+      "n_objects": 21,
+      "ra_range": [
+        9.660582118834457,
+        71.61299346194245
+      ],
+      "ra_span_deg": 61.952411343108,
+      "score_median": 3.2211509856226543,
+      "score_tier": "low"
+    },
+    "10": {
+      "cluster_id": 10,
+      "dec_range": [
+        -8.49893498653324,
+        23.761834054655417
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 43,
+      "n_objects": 43,
+      "ra_range": [
+        139.20083942731966,
+        166.13790516854618
+      ],
+      "ra_span_deg": 26.93706574122649,
+      "score_median": 3.1893792973148893,
+      "score_tier": "low"
+    },
+    "11": {
+      "cluster_id": 11,
+      "dec_range": [
+        -5.487671291091581,
+        8.379573038650756
+      ],
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "n_core": 21,
+      "n_objects": 21,
+      "ra_range": [
+        208.85084574147905,
+        227.85264468376496
+      ],
+      "ra_span_deg": 19.001798942285973,
+      "score_median": 3.1160290392469805,
+      "score_tier": "low"
+    },
+    "12": {
+      "cluster_id": 12,
+      "dec_range": [
+        37.41748001629161,
+        72.20589021719692
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 45,
+      "n_objects": 45,
+      "ra_range": [
+        259.23068658307994,
+        295.5602075320755
+      ],
+      "ra_span_deg": 36.329520948995594,
+      "score_median": 3.4661821275272073,
+      "score_tier": "elevated"
+    },
+    "13": {
+      "cluster_id": 13,
+      "dec_range": [
+        -3.380150124557106,
+        6.114824194700925
+      ],
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "n_core": 23,
+      "n_objects": 23,
+      "ra_range": [
+        125.74950752795458,
+        197.65178627166262
+      ],
+      "ra_span_deg": 71.90227874370805,
+      "score_median": 3.990900930108842,
+      "score_tier": "high"
+    },
+    "14": {
+      "cluster_id": 14,
+      "dec_range": [
+        -7.553336516975153,
+        6.0715992998309245
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 27,
+      "n_objects": 27,
+      "ra_range": [
+        166.2590924732349,
+        202.64190587128547
+      ],
+      "ra_span_deg": 36.38281339805059,
+      "score_median": 3.1669840966056904,
+      "score_tier": "low"
+    },
+    "15": {
+      "cluster_id": 15,
+      "dec_range": [
+        43.11536707441092,
+        57.057653236313136
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 15,
+      "n_objects": 15,
+      "ra_range": [
+        258.9634858853547,
+        280.1328672472035
+      ],
+      "ra_span_deg": 21.16938136184882,
+      "score_median": 3.1014895778206384,
+      "score_tier": "low"
+    },
+    "16": {
+      "cluster_id": 16,
+      "dec_range": [
+        30.280425156157815,
+        42.48053208490547
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 20,
+      "n_objects": 20,
+      "ra_range": [
+        247.93848609318798,
+        272.88382913510105
+      ],
+      "ra_span_deg": 24.945343041913077,
+      "score_median": 3.186240891969643,
+      "score_tier": "low"
+    },
+    "17": {
+      "cluster_id": 17,
+      "dec_range": [
+        24.102219776120226,
+        76.56269303074832
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 21,
+      "n_objects": 46,
+      "ra_range": [
+        91.93763376679527,
+        165.13248902841988
+      ],
+      "ra_span_deg": 73.19485526162464,
+      "score_median": 3.1285439321907926,
+      "score_tier": "low"
+    },
+    "18": {
+      "cluster_id": 18,
+      "dec_range": [
+        61.7861852472887,
+        69.29881777561812
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 17,
+      "n_objects": 17,
+      "ra_range": [
+        93.37963790245881,
+        112.35738662292367
+      ],
+      "ra_span_deg": 18.977748720464888,
+      "score_median": 3.225043105937463,
+      "score_tier": "low"
+    },
+    "19": {
+      "cluster_id": 19,
+      "dec_range": [
+        57.68417874713294,
+        70.64373615966879
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 16,
+      "n_objects": 17,
+      "ra_range": [
+        94.00106283126225,
+        103.36713006029406
+      ],
+      "ra_span_deg": 9.366067229031842,
+      "score_median": 3.3340827579303305,
+      "score_tier": "elevated"
+    },
+    "2": {
+      "cluster_id": 2,
+      "dec_range": [
+        23.79838225051471,
+        36.93303844572205
+      ],
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "n_core": 19,
+      "n_objects": 33,
+      "ra_range": [
+        184.95753395376462,
+        196.27564208516375
+      ],
+      "ra_span_deg": 11.318108131399185,
+      "score_median": 3.1769069881277856,
+      "score_tier": "low"
+    },
+    "20": {
+      "cluster_id": 20,
+      "dec_range": [
+        43.805533533693016,
+        67.10329674140048
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 24,
+      "n_objects": 36,
+      "ra_range": [
+        94.352896282592,
+        146.08653907685633
+      ],
+      "ra_span_deg": 51.73364279426437,
+      "score_median": 3.620398939584793,
+      "score_tier": "high"
+    },
+    "21": {
+      "cluster_id": 21,
+      "dec_range": [
+        15.043740532921156,
+        57.12256484623826
+      ],
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "n_core": 30,
+      "n_objects": 49,
+      "ra_range": [
+        198.84666280474593,
+        272.82236359516264
+      ],
+      "ra_span_deg": 73.97570079041668,
+      "score_median": 3.7117936702639374,
+      "score_tier": "high"
+    },
+    "22": {
+      "cluster_id": 22,
+      "dec_range": [
+        31.226375131665684,
+        51.68745422363281
+      ],
+      "dominant_program": "other",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "n_core": 50,
+      "n_objects": 56,
+      "ra_range": [
+        198.18252530797093,
+        247.08620611764115
+      ],
+      "ra_span_deg": 48.90368080967016,
+      "score_median": 3.1652365854044624,
+      "score_tier": "low"
+    },
+    "3": {
+      "cluster_id": 3,
+      "dec_range": [
+        39.178784137382564,
+        51.511444091796875
+      ],
+      "dominant_program": "other",
+      "dominant_survey": "sv1",
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "n_core": 16,
+      "n_objects": 16,
+      "ra_range": [
+        154.4134620153506,
+        185.23755959632547
+      ],
+      "ra_span_deg": 30.824097580974808,
+      "score_median": 3.124080348375462,
+      "score_tier": "low"
+    },
+    "4": {
+      "cluster_id": 4,
+      "dec_range": [
+        -8.790352725181249,
+        9.856084277670805
+      ],
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "n_core": 21,
+      "n_objects": 21,
+      "ra_range": [
+        209.04239553553214,
+        224.46845212105075
+      ],
+      "ra_span_deg": 15.426056585518609,
+      "score_median": 3.4753237911175865,
+      "score_tier": "elevated"
+    },
+    "5": {
+      "cluster_id": 5,
+      "dec_range": [
+        -1.7946066430199255,
+        29.574306454229458
+      ],
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "n_core": 29,
+      "n_objects": 31,
+      "ra_range": [
+        149.92219007479088,
+        219.86199620454497
+      ],
+      "ra_span_deg": 69.93980612975406,
+      "score_median": 4.681289121917521,
+      "score_tier": "extreme"
+    },
+    "6": {
+      "cluster_id": 6,
+      "dec_range": [
+        -0.07476228382407588,
+        24.06842672093399
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 44,
+      "n_objects": 44,
+      "ra_range": [
+        228.67137010020323,
+        267.0544709609231
+      ],
+      "ra_span_deg": 38.38310086071982,
+      "score_median": 3.1897657054776154,
+      "score_tier": "low"
+    },
+    "7": {
+      "cluster_id": 7,
+      "dec_range": [
+        -9.74203541220892,
+        4.803625757977681
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 25,
+      "n_objects": 29,
+      "ra_range": [
+        10.539034169358457,
+        351.9569977258674
+      ],
+      "ra_span_deg": 61.99245269708433,
+      "score_median": 3.089033741362467,
+      "score_tier": "low"
+    },
+    "8": {
+      "cluster_id": 8,
+      "dec_range": [
+        -8.964801322290715,
+        6.01123148247681
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 18,
+      "n_objects": 19,
+      "ra_range": [
+        310.1550900164927,
+        333.3194906653924
+      ],
+      "ra_span_deg": 23.16440064889963,
+      "score_median": 3.5484006719819337,
+      "score_tier": "elevated"
+    },
+    "9": {
+      "cluster_id": 9,
+      "dec_range": [
+        -7.291967069499162,
+        24.436479495189303
+      ],
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "n_core": 27,
+      "n_objects": 27,
+      "ra_range": [
+        121.25736084900004,
+        150.95166975905818
+      ],
+      "ra_span_deg": 29.694308910058112,
+      "score_median": 3.1242100273053564,
+      "score_tier": "low"
+    }
+  },
+  "families": {
+    "0": {
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "n_objects": 308,
+      "score_tier": "low",
+      "source_clusters": [
+        0,
+        1,
+        6,
+        7,
+        9,
+        10,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "1": {
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "n_objects": 81,
+      "score_tier": "elevated",
+      "source_clusters": [
+        8,
+        12,
+        19
+      ]
+    },
+    "2": {
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "n_objects": 72,
+      "score_tier": "high",
+      "source_clusters": [
+        13,
+        21
+      ]
+    },
+    "3": {
+      "dominant_program": "other",
+      "dominant_survey": "sv1",
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "n_objects": 56,
+      "score_tier": "low",
+      "source_clusters": [
+        22
+      ]
+    },
+    "4": {
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "n_objects": 54,
+      "score_tier": "low",
+      "source_clusters": [
+        2,
+        11
+      ]
+    },
+    "5": {
+      "dominant_program": "dark",
+      "dominant_survey": "main",
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "n_objects": 36,
+      "score_tier": "high",
+      "source_clusters": [
+        20
+      ]
+    },
+    "6": {
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "n_objects": 31,
+      "score_tier": "extreme",
+      "source_clusters": [
+        5
+      ]
+    },
+    "7": {
+      "dominant_program": "bright",
+      "dominant_survey": "sv3",
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "n_objects": 21,
+      "score_tier": "elevated",
+      "source_clusters": [
+        4
+      ]
+    },
+    "8": {
+      "dominant_program": "other",
+      "dominant_survey": "sv1",
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "n_objects": 16,
+      "score_tier": "low",
+      "source_clusters": [
+        3
+      ]
+    }
+  },
+  "metadata": {
+    "feature_columns": [
+      "anomaly_score",
+      "sky_x",
+      "sky_y",
+      "sky_z"
+    ],
+    "method": "spherical-embedding PCA -> UMAP(2, n_neighbors, min_dist) -> HDBSCAN(leaf, min_cluster_size, min_samples) -> kNN noise reassignment -> descriptor-identity family merge",
+    "n_clusters": 23,
+    "n_families": 9,
+    "pca_reduced_dimension": false,
+    "sky_embedding": "unit vector (cos(ra)cos(dec), sin(ra)cos(dec), sin(dec)), ra/dec in degrees converted to radians",
+    "source": "AUG-011 flagship candidate sample, crossmatch-unmatched subset (no SIMBAD/NED match) -- same 675-object input as the published taxonomy",
+    "total_objects": 675
+  },
+  "objects": [
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 67803973419009
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103606506225687
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103609752616969
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103610381762560
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103610381762572
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103610381762578
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 103610385956874
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 103610385956889
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103613607182340
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103613615570946
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103613623959579
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103617465942020
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103617465942022
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103617465942071
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103617470136359
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103618082504738
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103618090893357
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 103618095087659
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": false,
+      "targetid": 103618095087660
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103618120253459
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103621291147328
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": false,
+      "targetid": 103621920292866
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 103621920292875
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": false,
+      "targetid": 103621920292893
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": false,
+      "targetid": 103621949653042
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103625711943693
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103625716137987
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 103625720332289
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103625720332329
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103625724526678
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103625732915205
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 103628895420416
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103629486817325
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103629499400193
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": false,
+      "targetid": 103629499400211
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103633257496605
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 103633261690907
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 238900798816274
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070066263130112
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070066263130117
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070072240013313
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070072240013319
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070084327997452
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070084386717697
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070089809952769
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070089864478733
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070090426515458
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070090476847105
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070101897936902
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070101918908421
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070101948268552
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070108562685956
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070113985921031
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070120025718790
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070120633892864
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070120633892868
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070126057127950
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070126115848192
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070131593609217
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070132151451653
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070132654768146
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070132768014337
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070132768014347
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070138191249413
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070138191249414
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070138744897536
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070144176521218
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070144235241477
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070150270844933
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070150270844940
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070150270844941
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070150270844946
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070150275039232
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070155782160389
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070185960177669
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070185960177672
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070187101028353
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070192004169733
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070199155458050
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070199159652358
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070199163846661
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070199168040976
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070205199450113
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070205199450117
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070211088252929
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070223142682630
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070229195063302
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070235201306631
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070253232619530
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070253232619534
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070253253591043
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070259272417281
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 1070259272417285
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070265278660609
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070271272321030
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070271276515329
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070271289098246
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070672323280902
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070677855567874
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070688874004481
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070710818603008
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070716262809606
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 1070716279586816
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070721727987713
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": false,
+      "targetid": 1070727151222785
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070727151222788
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070743378984965
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070743378984978
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070743378984991
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070743383179264
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070748756082692
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070748764471309
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070748764471314
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070748768665621
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070754128986112
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070754137374723
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070754137374737
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070754166734850
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070759493500949
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070759497695233
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070759497695246
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070759501889569
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070764866404364
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070770205753361
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 1070770205753369
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070780817342468
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070791412154381
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": false,
+      "targetid": 1070796667617280
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070801927274497
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": false,
+      "targetid": 1070801927274501
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070874471956480
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1070874476150795
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 1070880016826374
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070890104127488
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070895107932160
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070905052626952
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070905065209861
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1070909561503749
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070914988933125
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070914993127433
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 1070919908851713
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1070924359008259
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 1070924837158914
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071042420277253
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071042424471565
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071042424471570
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1071042424471576
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071046899793921
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071046899793925
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071051366727683
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071051375116294
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071051379310604
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071051387699200
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071051387699205
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071051446419462
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071055833661445
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1071055900770305
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071060283817991
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1071060283817999
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071060292206594
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071064637505540
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1071073411989509
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 1071073416183827
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1071073479098374
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071077912477712
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071082123558912
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1071082131947531
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071082136141824
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 1071090898042885
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 1071095058792448
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": false,
+      "targetid": 1071192052072453
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 1071195856306181
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 2394047184371712
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 2394624320602116
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 2394715538325512
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 2394716482043908
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 2394948510941191
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 2394964851949575
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 2394988512018434
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 2394996040794117
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 2395142027739143
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 2395197874896901
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 2395223116218371
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 2398886731710469
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 2411663034679303
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390693046
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390693441
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390695147
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390695195
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390695268
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390698274
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390698317
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390700232
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39089837390702158
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39627356880504576
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39627414736733624
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627486056680761
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627491920318510
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627551202607993
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627555329807169
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627567245825465
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627568877404802
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": false,
+      "targetid": 39627573226903613
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627577572197178
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627582357899682
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627582370485493
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627603312645176
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627607293039577
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627612166821688
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627619175498728
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627629032114360
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627630160381301
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627633331277238
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627635118054078
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627635122243701
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627639337521815
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627641153652617
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627642311282831
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39627651849130098
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627654445405293
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39627655586255871
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627657373026407
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627657398192938
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627657414972466
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627665161848725
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627667103813278
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627669213545886
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627671184868675
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39627676247392575
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627679040800849
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627679300845971
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39627679590252892
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627681398002694
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627681444135067
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627683222525151
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627684526948863
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39627685781050304
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627687521682462
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627688876444801
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627693494372824
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627694912048495
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627700947653605
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627703292270455
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627715648687081
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627721843674212
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627732648199127
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627732736281286
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627732736282789
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627732736283177
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627732740473115
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627735613577482
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627735756178807
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627735756181540
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627735756183176
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627735785542013
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627739401027985
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627739501695310
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627744820071748
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627745612794847
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627748041295714
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627750654347788
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627750885034779
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627750973114532
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627751803587631
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627753686835175
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627753779109476
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39627754378887944
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627756685759246
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627757319094524
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39627758036321657
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627759823098213
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627761479848535
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627762943657666
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627763010766446
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627763048513627
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627763446972858
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627763858018682
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39627766336852356
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627772045305656
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627775572709888
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627778101872111
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627779037201051
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627781021110380
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627782040323756
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627782052905031
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627786922495227
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627788939952850
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627790043057279
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627792916157219
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627794275107815
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627799241164860
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627799438296995
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627799450878840
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627799471853674
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627800373626199
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627802235903457
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627804995749019
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627806413423299
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627806413425751
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627806472147398
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627808204394328
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627808271502168
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627810054079354
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627811064911258
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627811450784185
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627812453222189
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627812453222421
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627812461610773
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627812511940836
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627812511942411
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627812516137363
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627812574857836
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627814080615690
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627814147725109
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627817935176336
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627817989705740
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627823979168225
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627823979169612
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627824033696218
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627824033697169
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627829477903349
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627830014775597
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627832296474950
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627832392947666
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627832439085538
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627836704686848
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627843080031362
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627848733952888
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627849358909321
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627853595148805
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627859718835586
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627860205376108
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627862386416788
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627865456640807
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627865779604558
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39627867029506392
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627867377635310
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627868413629220
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627871383196574
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627871781653698
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627872813451742
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627874449228508
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627877414602764
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627877464938065
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627877523653293
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627877817258009
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627877817258319
+    },
+    {
+      "cluster_id": 14,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627884540728086
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627884989517959
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627884989519065
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627884993709057
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627885593499905
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627892916750259
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627895508832046
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627901540241065
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39627903234741210
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627903570285763
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627904740494123
+    },
+    {
+      "cluster_id": 7,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627904790828638
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627910830623133
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627916715231896
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627919592523908
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627921756788802
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627927804969313
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627931625983352
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627931705676333
+    },
+    {
+      "cluster_id": 13,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39627931743422578
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627932297072019
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39627933140126511
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627933542777044
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627934775902991
+    },
+    {
+      "cluster_id": 8,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39627934796874172
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627937678362596
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627937745471063
+    },
+    {
+      "cluster_id": 5,
+      "family_descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 6,
+      "is_core_member": true,
+      "targetid": 39627939033125930
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627939481911924
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627939830043976
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627943734941165
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627957672611828
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627975691344428
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627987653493607
+    },
+    {
+      "cluster_id": 11,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39627993127063532
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39627999569513337
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628005764500493
+    },
+    {
+      "cluster_id": 4,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 7,
+      "is_core_member": true,
+      "targetid": 39628023078586661
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628039272794849
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628041143455709
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628041441254254
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628045211927739
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628052958809656
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628063461347013
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628069387896106
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628075331228688
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628076656627948
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628086861369182
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628118410924576
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628118431894742
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628124152926184
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628124266175426
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628135628542800
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628141680922239
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628147661999604
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628148911903368
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628153492079861
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628182579580166
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628191886738275
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628195183465169
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628199717509743
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628211025349447
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628216868014338
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628219170685776
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628223985746121
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628228582706932
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628234312127577
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628234316320374
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628240192540298
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628245443809655
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628268634113367
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628281284136166
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628290855539400
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628291237221824
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628296954055072
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628296954055370
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628304071790695
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628304105345131
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628309214006869
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628323264923201
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628324384804883
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628324468687541
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628324535797659
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628330143583760
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628330500097054
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628337471031014
+    },
+    {
+      "cluster_id": 10,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628345436012838
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628349168947419
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628352641829301
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628352734101721
+    },
+    {
+      "cluster_id": 6,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628352734107978
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628354214696426
+    },
+    {
+      "cluster_id": 9,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628361990931280
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628363710600668
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628379971916849
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628387353889221
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39628391044874940
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628397520884987
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628419150907528
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628425282980999
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628451598043279
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628487115410239
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628493465587196
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39628497202712296
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39628505767482040
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39628507474563674
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628507847853660
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628509781430893
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39628517876437768
+    },
+    {
+      "cluster_id": 0,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39628519810007197
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39628522964125699
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39628528085370596
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39632931349596976
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39632936928020225
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39632940765808873
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39632941369788272
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39632941743080973
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39632946235181990
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39632946906268127
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39632957144569697
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39632960072190733
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39632961968015226
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39632965042441549
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39632969970746532
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39632976274788058
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39632982121648638
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39632986492110629
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39632987058344204
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633001075704606
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633001075705262
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39633001079899014
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633001356725339
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633001541275270
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633006012403248
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633014497479851
+    },
+    {
+      "cluster_id": 2,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 4,
+      "is_core_member": true,
+      "targetid": 39633020168177025
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633030855262559
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633034890185889
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633044910374979
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633053848439842
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 39633062929108448
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39633063570837088
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633071342880364
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633077898576011
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633109427161644
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633114267388767
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39633123218033279
+    },
+    {
+      "cluster_id": 16,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633123352252144
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633127475250050
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39633127613662215
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633127915653891
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633132365808110
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633136530755085
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 39633140087521722
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633143778510611
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 39633148606153139
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633152355863188
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 39633153328939148
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633162279585691
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633169590258797
+    },
+    {
+      "cluster_id": 3,
+      "family_descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "family_id": 8,
+      "is_core_member": true,
+      "targetid": 39633170471061036
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633170693359134
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633173822311129
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633175667804200
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633180034073528
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633182303192857
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633184245159076
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633186518469218
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633188493985065
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633192625377545
+    },
+    {
+      "cluster_id": 22,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "family_id": 3,
+      "is_core_member": true,
+      "targetid": 39633196022759659
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633215551441839
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633217258523405
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633221192780941
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633223495451861
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633225324168154
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633237290517870
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633237382794762
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633245171618968
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633245175813069
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633247281349173
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": true,
+      "targetid": 39633260371771790
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633260715705785
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633264436056083
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633264444443443
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633272015160922
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633272015161126
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633275773255750
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633279510382445
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633279510382768
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633279560713252
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633279573295923
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633281553010272
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633283289452294
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39633312251119794
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633328025898653
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633328113978838
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633336502584717
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633346577303136
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633349739810653
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39633349869831142
+    },
+    {
+      "cluster_id": 15,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633349874028521
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633349928554983
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633349932745592
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633356463276211
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633356480055364
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633358099058779
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633358115833207
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633359684503514
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633359722252985
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633359726444847
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633359730642408
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633361303507069
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633369285264389
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633372498104325
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633381771706920
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633387954111651
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633390999175881
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633392781755750
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633393884860305
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633396854425388
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633396858619848
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633396862812945
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633401271029944
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633404177680927
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633404207040485
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633404248983304
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633404580334643
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633407071751009
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633407080138947
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633407080140242
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633407084333082
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633407088526175
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633407088529181
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633407092720132
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633407092722202
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633407096914096
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633407096917948
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633407101108450
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633407101110115
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633407101110485
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633407101112367
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633407105303683
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633407440849122
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633407457626720
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633409949041262
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633409953235773
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633409957432333
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633409970013091
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633412792782111
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633412809557688
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633412809558151
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633412809559298
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633412817948567
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633413187044468
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633415602966575
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633415623937356
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633415628129625
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633415628129667
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633415628132719
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633415636517275
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633415636519553
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633415984646388
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633415997229188
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633416005615841
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633416005616099
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633417108721230
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633418396372527
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633418404759790
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633418425730722
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633418429924798
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633418434118762
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633418778053415
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633421168807839
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633421177194742
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633421177195172
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633421189776816
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633423928657093
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633423928660710
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633423932850487
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633423932850822
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633423958020654
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633426659148615
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633426659150506
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633426675927225
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633426675928503
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633426692703230
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633429372865126
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633429389639822
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633429398028627
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633429398029088
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633430589214015
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633432057219468
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633432073997420
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": false,
+      "targetid": 39633432254350339
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633437325262973
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633437333652805
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": false,
+      "targetid": 39633437581119017
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633439942509992
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633439942510481
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633439980259156
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633440013813768
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633441293077754
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633447613893890
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633447651641936
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633447655833653
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633449018987028
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633454014403107
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633456463873450
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633458762353746
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633459987089009
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633461270544461
+    },
+    {
+      "cluster_id": 20,
+      "family_descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 5,
+      "is_core_member": true,
+      "targetid": 39633462432368621
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633466035275117
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633468304395634
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633472968461249
+    },
+    {
+      "cluster_id": 18,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633476277765204
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633480715337957
+    },
+    {
+      "cluster_id": 19,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": false,
+      "targetid": 39633495382820413
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633504127942717
+    },
+    {
+      "cluster_id": 12,
+      "family_descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 1,
+      "is_core_member": true,
+      "targetid": 39633507844098362
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633508984948575
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633510666864080
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633524453542206
+    },
+    {
+      "cluster_id": 17,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39633535077713548
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39636182677589446
+    },
+    {
+      "cluster_id": 1,
+      "family_descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "family_id": 0,
+      "is_core_member": true,
+      "targetid": 39636437221510213
+    },
+    {
+      "cluster_id": 21,
+      "family_descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "family_id": 2,
+      "is_core_member": false,
+      "targetid": 39636960876168041
+    }
+  ]
+}
