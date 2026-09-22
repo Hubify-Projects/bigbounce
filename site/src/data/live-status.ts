@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.28",
+      version: "v3M.0.29",
       readiness: 75,
-      pendingWork: "R11 INT board (Grok REJECT, Gemini MAJOR REVISIONS, Claude opus verdict-blind referee MAJOR REVISIONS) ran on the exact v3M.0.27 PDF -- the one board directive R2 permitted after the row-9 (D-A3-9) Bardeen-potential science decision. Truth-audit found 16 genuinely-new-real finding-classes: a recurrence of the internal-audit-language leak, two ESSENTIAL items on the new Bardeen material (regularity proof, evaluation-window convention -- both closed using material already in the cited artifact, no new derivation), five MAJOR scheme-labelling/reasoning defects, and a minor cluster incl. a leaked internal figure-title label. No physics error found; no headline number changed. Directive R2 budget SPENT AGAIN -- rounds stopped. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI, and authorize either a scope decision or a confirmation board on v3M.0.28."
+      pendingWork: "Row-9b science decision (LQC/poly Bardeen extension) propagated -- the directive-R2 intervening decision authorizing one confirmation board (R12, dispatched next on this exact PDF). The Bardeen continuation extends to LQC/poly (linear transfer -1.094/-1.140, cubic term uncomputed so f_NL^after is a bracket only); tensor no-go strengthens on both (r_after 96.0/170.6, same prominence as the favourable half per directive F); R11's ESSENTIAL evaluation-window item now closes by computation (uniform eta_*/eta_B=15) rather than disclosure. No headline number changed on Quintin-type. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI, and act on R12's verdict."
     },
     {
       slug: "paper-3",
