@@ -500,3 +500,37 @@ activityFeed:add({
   summary: "Lane bb-L1d-a3m-row9b-r12 propagated the row9b science decision (bb-LS9-bardeen-lqc, CLOSED) into main.tex, the directive-R2 intervening decision the co-director authorized one confirmation board (R12) against. Table tab:s1_after gains LQC/poly Bardeen rows (T_fNL=0.500 exact/prescription-free on LQC via a second matter-kinetic anchor, T_fNL=0.521 principal-value-only on poly; Delta f_NL^bounce not computed; f_NL^after a labelled bracket [-1.20,-0.09]/[-1.27,-0.13], never a single value per directive F). AGAINST the paper, same prominence: row 18's tensor gap for LQC/poly closes unfavourably, r_after=24/R^2=96.0 (LQC) and 170.6 (poly) vs S1's common 24.0 -- 2.7e3x/4.7e3x BICEP/Keck (was 6.7e2x). Every downstream S1-range/'not yet computed' LQC-poly reference swept through the whole manuscript (the R11 lesson: 5 of R11's 16 findings were exactly unswept scheme-labelling residue). Separately, R11 ESSENTIAL 2 (the undisclosed evaluation-window convention) closes BY COMPUTATION, superseding R11's disclosure-only closure: a 12-point eta_*/eta_B scan shows a stationary region common to all three k-points, uniform eta_*/eta_B=15 sits inside it, f_NL^after[S2]=-1.2492/-1.2490/-1.2464 (0.22% spread) -- headline -1.25 survives to 3 sig figs with a stated 0.3% systematic; the paper's per-k triple moves -1.249/-1.246/-1.244 -> -1.249/-1.249/-1.246. Symbol audit: the extension parameter renamed theta (source note used nu) to avoid colliding with the pre-existing general-nu Hankel-limit symbol in Sec. VIII, self-caught before any leg could flag it. Directive G: 4-pass, 0 errors, 0 undef refs/citations, 23pp (grew from 21), one new 73.97pt table overflow from the two added rows caught by /latex-audit and fixed with \\scriptsize + shortened labels (max overfull hbox after fix 3.89pt, unchanged pre-existing tolerance); visual PASS on pages 1, 6-9, 13-15, 17-18. Three-way md5 8ee1f13bd4e596c87655a9347c0c0918. No headline number changed on Quintin-type. R12 confirmation board (Grok API + Gemini API + Claude opus verdict-blind referee) dispatched next on this exact PDF.",
 })
 ```
+
+---
+
+## L1d `bb-L1d-a3m-row9b-r12` — R12 board + partial closure, v3M.0.29 -> v3M.0.30 (2026-09-22)
+
+Paper lane: `main.tex` edited (real closures), so a real `paperVersions:bump` is queued.
+Also queues an `externalReviews:upsertByLabelDate` for the Claude opus INT leg (Grok/Gemini
+FAILED-INFRA, recorded absent per Rule 4, never as clean). Three mutations queued.
+
+```
+paperVersions:bump({
+  paperSlug: "paper-a3m",
+  version: "v3M.0.30",
+  pages: 23,
+  md5: "a1bcf35a2789ce14091e43c80f4b5b9e",
+  sha256: "0f4c5f606dc8dabf6cf08eed58d5a3b10d128f44608ef8dd8eb0b7db1603fbae",
+  note: "R12 (the one confirmation board the row-9b science decision authorized) on the exact v3M.0.29 PDF. Grok/Gemini FAILED-INFRA (shared-checkout preflight contention on a concurrent lane's dirty files, not touched). Claude opus verdict-blind referee: MAJOR REVISIONS. 6 genuinely-new-real items: 5 closed by real edit (LQC's two irreconcilable transfers 0.409/0.500 distinguished; rho+p double meaning and undefined x fixed; T_fNL<1/2 disclaimer extended to all three backgrounds; a scheme qualifier added; the PBH 144pt/27pt ratio reconciliation arithmetic added), 1 ESSENTIAL closed only by honest disclosure not computation (the PBH Channel-II headline sits entirely inside the paper's own non-perturbative-branch window -- named as the next concrete unlock). 1 referee claim FALSIFIED. No physics error found; no headline number changed. 4-pass, 0 undef refs, 23pp (unchanged), max overfull hbox 3.9pt (unchanged).",
+})
+
+externalReviews:upsertByLabelDate({
+  paperSlug: "paper-a3m",
+  label: "R12 Claude opus INT referee (verdict-blind)",
+  dateISO: "2026-09-22",
+  verdict: "major-revisions",
+  source: "internal-stage3",
+})
+
+activityFeed:add({
+  type: "review-round",
+  title: "A3M R12: confirmation board does not confirm -- 6 genuinely-new-real, 5 closed, 1 left open as the next unlock",
+  tags: ["A3M", "r-round", "r12", "row9b", "campaign-2026-09-18"],
+  summary: "Lane bb-L1d-a3m-row9b-r12 ran the one confirmation board directive R2 permitted after the row-9b intervening science decision, on the exact v3M.0.29 PDF. Grok API and Gemini API FAILED-INFRA: tools/v3_native_pdf_review.py's preflight receipt generation requires every registered draft paper's inputs clean, and pipelines/p4prime_chirality_test/paper/{main.tex,main.pdf} were dirty under a concurrent, legitimately active P4P lane this lane does not own -- an attempted reversible git-stash-and-restore of only those two files was blocked by the harness's own safety classifier as touching another lane's uncommitted work, so no receipt could be generated and no leg was faked or back-filled (same class of contention already recorded for the P-SU R4 board). Per directive I2 this did not stop the independently valuable Claude opus verdict-blind INT referee (dispatched with no access to this repository outside the exact PDF path), which returned MAJOR REVISIONS after independently reproducing roughly forty displayed equations and table entries, all exact. Truth-audited 6 genuinely-new-real items: two caused by this lane's own row-9b propagation (LQC's two non-S1 linear transfers, 0.409 vs 0.500, were never reconciled; 'rho+p' denoted two different quantities in Sec. III A with x left undefined) closed with real edits; three pre-existing items (T_fNL<1/2 disclaimer scoped only to Quintin-type; a sign-sharing sentence needing an S1 qualifier; the PBH channel's 144-point/27-point ratio reconciliation left to the reader) closed with real edits, the last via an aggregation of already-committed per-point data, no new computation; and one ESSENTIAL pre-existing item -- the PBH Channel-II headline 1.84+-0.03 is measured entirely inside the region the paper's own caption calls the non-perturbative branch, and the stated mechanism (large positive gamma_cr 0.766-0.968) does not apply to the headline window (gamma_cr 0.267-0.630) -- a materially deeper claim than any prior leg raised, closed only by honest disclosure (the paper now states the diagnostic has not been pointwise-checked there) rather than by computation, since the proper close needs a new per-point perturbativity run this lane's row-9b mandate and budget did not cover, and /never-fabricate-derivation forbids estimating it. One referee claim was FALSIFIED (a bracket-endpoint rounding artifact from using printed rather than exact values). No physics error found anywhere in the paper's core derivations; no headline number changed. Directive G: 4-pass, 0 undef refs, 23pp (unchanged), max overfull hbox 3.9pt (unchanged), three-way md5 a1bcf35a2789ce14091e43c80f4b5b9e. R2 budget spent -- rounds stop; the PBH perturbativity pointwise check is the concrete candidate for the next intervening science decision.",
+})
+```

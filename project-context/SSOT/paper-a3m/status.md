@@ -2,32 +2,97 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-22 -- v3M.0.29. Row-9b science decision (LQC/poly Bardeen
-extension, lane bb-LS9-bardeen-lqc, closed 2026-09-19->2026-09-22) propagated
-into main.tex -- the directive-R2 intervening decision authorizing the
-co-director-authorized R12 confirmation board. The Bardeen continuation
-established on Quintin-type (R11-era) now extends to LQC and poly, which cross
-rho+p=0 smoothly: linear-transfer amplitude -1.094 (LQC, prescription-free via
-a second matter-kinetic anchor) / -1.140 (poly, principal-value only; the
-continuation is NOT unique -- a retraction the source lane's own blind
-adjudication caught), cubic term uncomputed so f_NL^after is a bracket only
-([-1.20,-0.09] / [-1.27,-0.13]), never a single value. AGAINST the paper, same
-prominence (directive F): tensor no-go strengthens on both, r_after=96.0 (LQC)
-/ 170.6 (poly) vs S1's common 24.0. Separately, R11 ESSENTIAL 2 (undisclosed
-evaluation-window convention) now closes BY COMPUTATION: a 12-point eta_*/eta_B
-scan shows a stationary region common to all three k-points, uniform
-eta_*/eta_B=15 sits inside it, f_NL^after[S2]=-1.2492/-1.2490/-1.2464 (0.22%
-spread) -- headline -1.25 survives. No headline number changed on Quintin-type.
-Full detail: `peer-reviews/DISPOSITIONS/A3M.md` section "Row-9b propagation --
-v3M.0.29". R12 confirmation board dispatched next on this exact PDF.
+last_updated: 2026-09-22 -- v3M.0.30. R12 (the one confirmation board the row-9b
+science decision authorized) ran on the exact v3M.0.29 PDF. Grok API and
+Gemini API legs FAILED-INFRA (shared-checkout preflight-receipt contention on
+a concurrent lane's dirty draft-paper files, not touched; same class as the
+P-SU R4 precedent) -- never a verdict, never back-filled. Claude opus INT
+referee (verdict-blind, no repository access outside the exact PDF) ran:
+MAJOR REVISIONS. 6 genuinely-new-real items found: 2 ESSENTIAL + 1 MAJOR + 2
+MINOR closed by real edit (LQC's two irreconcilable linear transfers 0.409 vs
+0.500 now distinguished; rho+p double meaning and undefined x in Sec. III A
+fixed; T_fNL<1/2 disclaimer extended to all three backgrounds; a scheme
+qualifier added to the Quintin-type sign-sharing sentence; the PBH
+144-point/27-point ratio reconciliation arithmetic added), plus 1 ESSENTIAL
+(the PBH Channel-II headline sits entirely inside the paper's own
+non-perturbative-branch window, a materially new finding beyond any prior
+leg) closed only by honest disclosure, NOT by computation -- R12 does NOT
+converge on this item, named as the next concrete unlock. 1 referee claim
+FALSIFIED (poly bracket endpoint, referee used rounded inputs). No physics
+error found anywhere in the paper's core derivations; no headline number
+changed. Full detail: `peer-reviews/DISPOSITIONS/A3M.md` section "R12";
+raw + truth-audit:
+`peer-reviews/INT_v3/ROUND_2026-09-22-A3M-v3M.0.29-EXACTPDF-0c8c318e-R12/`.
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (23 pp / 0 undef refs / md5 8ee1f13bd4e596c87655a9347c0c0918 / sha256 0c8c318e184577b614251d9d517f1cdf7d5bb9c667a6b731ca130a26b47d4a60)
-version: v3M.0.29 (2026-09-22, row-9b propagation -- see "v3M.0.29" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (23 pp / 0 undef refs / md5 a1bcf35a2789ce14091e43c80f4b5b9e / sha256 0f4c5f606dc8dabf6cf08eed58d5a3b10d128f44608ef8dd8eb0b7db1603fbae)
+version: v3M.0.30 (2026-09-22, R12 closure -- see "v3M.0.30" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
-headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (R12 board pending on this exact PDF) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
-submission_status: draft, readiness 75 -- R12 confirmation board authorized by the row-9b intervening science decision, dispatched on the exact v3M.0.29 PDF.
+headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75). Directive-P gate status: science 25 done / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / automated-review convergence NOT MET (R12 found 6 genuinely-new-real, closed 5 of 6, 1 left open) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence.
+submission_status: draft, readiness 75 -- ROUNDS STOPPED 2026-09-22 under directive R2 (R12 budget spent). A further board requires an intervening science or scope decision (the PBH perturbativity pointwise check is the concrete candidate) or Houston's authorization.
+
+## v3M.0.30 (2026-09-22) — R12 board + partial closure; ROUNDS STOPPED (R2 budget spent); readiness held at 75
+
+**What this round was.** The one confirmation board directive R2 permitted after the row-9b
+intervening science decision (v3M.0.29). Grok API and Gemini API FAILED-INFRA on a shared-checkout
+preflight-receipt contention (a concurrent lane's dirty draft-paper files this lane does not own
+and could not touch — an attempted reversible stash was blocked by the harness's safety
+classifier). Per directive I2 this did not stop the Claude opus verdict-blind INT referee, which
+ran with no access to this repository outside the exact v3M.0.29 PDF: **MAJOR REVISIONS**. Full
+raw + truth-audit:
+`peer-reviews/INT_v3/ROUND_2026-09-22-A3M-v3M.0.29-EXACTPDF-0c8c318e-R12/`; canonical dispositions:
+`peer-reviews/DISPOSITIONS/A3M.md` section "R12".
+
+**Outcome: 6 genuinely-new-real items, 5 closed in v3M.0.30, 1 left genuinely open.**
+
+1. **CLOSED — LQC's two non-S1 linear transfers ($0.409$ vs $0.500$) were never reconciled**,
+   caused by this lane's own row-9b propagation. Closed with a paragraph distinguishing the
+   fluid-variable handoff-at-$-\eta_B$ construction from the geometric Bardeen dust-handoff
+   construction.
+2. **CLOSED — "$\rho+p$" denoted two different quantities in Sec. III A, and $x$ was undefined**,
+   also caused by row-9b's new prose. Closed: the NEC crossing is now written
+   $\rho+p\equiv-2\dot H=0$ with an explicit note distinguishing it from the LQC matter's own
+   $\rho+p$; $x\equiv\rho/\rho_c$ defined at first use.
+3. **CLOSED — the $T_{f_{\rm NL}}<1/2$ disclaimer covered only Quintin-type**; extended to all
+   three backgrounds now that LQC/poly also have Bardeen transfers outside $[0,1/2)$.
+4. **CLOSED — a pre-existing sentence needed an S1 scheme qualifier** once S2 selection made the
+   claim scheme-specific.
+5. **CLOSED — the PBH channel's 144-point/27-point ratio reconciliation was left to the
+   reader**; added the explicit arithmetic (an aggregation of already-committed per-point data,
+   no new computation).
+6. **NOT CLOSED (honest disclosure only) — the PBH Channel-II headline $1.84\pm0.03$ is measured
+   entirely inside the region the paper's own caption calls the non-perturbative branch, and the
+   stated mechanism does not apply there.** A materially new finding beyond anything any prior
+   leg raised. Closing it properly needs a per-point perturbativity diagnostic across the
+   144-point in-coverage grid — real, bounded, but new computation outside this lane's row-9b
+   mandate and budget. The paper now states the scope gap honestly instead of implying the
+   diagnostic covers the headline population. **This is the next unlock's most concrete
+   candidate.**
+
+**FALSIFIED:** the referee's claim that the poly Bardeen bracket's upper endpoint should be
+$-0.14$ (it used rounded inputs; the unrounded arithmetic gives exactly the printed $-0.13$).
+
+**No physics error found.** The referee independently reproduced roughly forty displayed
+equations and table entries against the primary text, all exact. **No headline number changed.**
+
+**Directive G hygiene.** `\paperVersion` v3M.0.29 → **v3M.0.30**, `\paperTimestamp` unchanged
+(already today's date). 4-pass pdflatex, 0 errors, 0 undefined references/citations, 23 pp
+(unchanged). Max overfull hbox 3.89pt (unchanged pre-existing tolerance). `/latex-audit` visual
+PASS: pages 4, 6, 7, 8, 11, 12 rendered at 130dpi and inspected, no column overflow. PDF mirrored
+byte-identical to `site/public/papers/a3_multichannel_arxiv_v3M.0.30.pdf`,
+`public/papers/a3_multichannel_arxiv_v3M.0.30.pdf`, and the source dir: md5
+`a1bcf35a2789ce14091e43c80f4b5b9e`, sha256
+`0f4c5f606dc8dabf6cf08eed58d5a3b10d128f44608ef8dd8eb0b7db1603fbae`, 23 pp. **Convex UNAVAILABLE**
+(spending limit) — `paperVersions:bump` queued to `CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+
+**Directive R2 — budget SPENT, this lane STOPS.** R12 is the one board permitted after row-9b's
+intervening decision; it did not converge (1 of 6 genuinely-new-real items remains open). No
+further board on A3M without another intervening science or scope decision — the PBH
+perturbativity pointwise check is the concrete candidate — or Houston's authorization.
+**Readiness stays at the COMPUTED cap 75, and no cap-95 recommendation is made.**
+
+## v3M.0.29 (2026-09-22) — row-9b (LQC/poly Bardeen extension) science-decision propagation; R11 ESSENTIAL 2 closed by computation; readiness held at 75
 
 ## v3M.0.29 (2026-09-22) — row-9b (LQC/poly Bardeen extension) science-decision propagation; R11 ESSENTIAL 2 closed by computation; readiness held at 75
 

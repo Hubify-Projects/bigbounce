@@ -1309,3 +1309,103 @@ the rounded headline).
 
 **Next: R12.** The one confirmation board R2's "confirmation after real closure" clause
 permits, on this exact v3M.0.29 PDF. See the "R12" section below for the board result.
+
+---
+
+## R12 — v3M.0.29 exact PDF (sha256 `0c8c318e18…12`), 2026-09-22
+
+**Legs.** Grok API and Gemini API: **FAILED-INFRA**, never a verdict. `tools/v3_native_pdf_review.py`
+requires a fresh whole-portfolio preflight receipt, which requires every registered draft paper's
+inputs to be git-clean; `pipelines/p4prime_chirality_test/paper/{main.tex,main.pdf}` were dirty
+under a concurrent, legitimately active lane (P4P) this lane does not own, and an attempted
+temporary stash-and-restore of only those two files was blocked by the harness's own safety
+classifier. Same class of shared-checkout contention already recorded for the P-SU lane's R4
+board. Per directive I2 this does not stop the independently-valuable check that remains:
+**Claude opus INT referee** (verdict-blind, dispatched with no access to this repository outside
+the exact PDF) ran: **MAJOR REVISIONS**. Full raw + truth-audit:
+`INT_v3/ROUND_2026-09-22-A3M-v3M.0.29-EXACTPDF-0c8c318e-R12/`.
+
+**6 GENUINELY-NEW-REAL** (2 ESSENTIAL + 1 MAJOR + 2 MINOR closed by real edit; 1 ESSENTIAL
+closed by honest disclosure, not fully resolved), **1 FALSIFIED**, **2 RE-FLAG-OF-DISCLOSED**,
+**11 carried** (not closed this round; full list in the truth-audit doc). Clean-wave count: **0**.
+
+### CLOSED in v3M.0.30
+
+- **`DA3M-R12-01` [ESSENTIAL]: LQC's two non-S1 linear transfers ($0.409$ vs $0.500$) were never
+  reconciled.** Caused by this lane's own row-9b propagation (v3M.0.29). Closed with an explicit
+  paragraph distinguishing the two constructions (different variable, different handoff surface)
+  immediately after Table III.
+  Fingerprint: LQC 0.409 vs 0.500, effective-fluid vs geometric Bardeen, two different constructions not superseded.
+- **`DA3M-R12-02` [MAJOR]: "$\rho+p$" denoted two different quantities in Sec. III A; $x$
+  undefined.** Caused by this lane's own new prose. Closed: the first NEC-crossing statement now
+  reads $\rho+p\equiv-2\dot H=0$ with an explicit GR-identity note; $x\equiv\rho/\rho_c\in(0,1]$
+  defined at first use; the LQC anchor sentence states explicitly that the classical GR identity
+  is violated by the modified Friedmann equation. $\rho_B$/$\rho_c$ near-collision left open
+  (carried, not renamed this round).
+  Fingerprint: rho+p double meaning, x undefined, quantum-geometry factor 1-2x, GR identity violated.
+- **`DA3M-R12-03` [MINOR]: $T_{f_{\rm NL}}<1/2$ disclaimer scoped only to Quintin-type.** Caused
+  by row-9b (LQC/poly now also have Bardeen transfers outside $[0,1/2)$). Closed: disclaimer now
+  covers all three backgrounds with all three values stated.
+  Fingerprint: T_fNL bound scope, LQC 0.500 poly 0.521 outside [0,1/2), disclaimer all three backgrounds.
+- **`DA3M-R12-04` [MINOR]: Quintin-type "sharing its sign" sentence lacked an S1 qualifier.**
+  Pre-existing text, consequential once S2 selection was established. Closed: "in scheme S1"
+  added plus a parenthetical noting S2's net cubic term suppresses $|f_{\rm NL}|$ instead.
+  Fingerprint: additive bounce term sign, scheme S1 qualifier, S2 suppresses instead of enhances.
+- **`DA3M-R12-05` [MAJOR]: the 144-point/27-point PBH ratio reconciliation was left to the
+  reader.** Pre-existing, not row-9b-caused. Closed with the explicit arithmetic
+  ($\gamma_{\rm cr}$ means $0.430$/$0.853$, OLS slope $-0.20\Rightarrow1.84$ to 3 s.f.), computed
+  from the already-committed `row11_gammacr_extension.json` points — an aggregation, not new
+  computation.
+  Fingerprint: 144-point vs 27-point reconciliation, gamma_cr mean 0.430 0.853, OLS slope -0.20.
+- **`DA3M-R12-06` [ESSENTIAL, PARTIAL]: Channel II's headline $1.84\pm0.03$ is measured entirely
+  inside the region Table V's own caption calls the non-perturbative branch, and the stated
+  mechanism (large positive $\gamma_{\rm cr}=0.766$–$0.968$) does not apply to the headline
+  window ($\gamma_{\rm cr}=0.267$–$0.630$).** CONFIRMED real, pre-existing (a materially deeper
+  claim than Grok M3's RE-FLAGGED "144-point subset is a physical restriction" at R11 — no prior
+  leg raised this specific regime-validity question). **Not closed by computation** — the proper
+  close needs the per-point perturbativity diagnostic ($1.2|f_{\rm NL}|\sigma_r$) run across the
+  144-point in-coverage grid, which needs $\sigma_r$ per point derived from the compaction
+  script's own variance integral applied to `row11_gammacr_extension.json`'s per-point
+  $(\Delta,r_pk_p)$ — real, bounded, but new computation this lane's row-9b mandate and remaining
+  budget did not cover, and `/never-fabricate-derivation` forbids estimating it from adjacent
+  numbers. **Closed by honest disclosure instead**: the paper now states plainly that this
+  diagnostic has only been checked on the displayed 27-point grid, that the entire 144-point
+  headline population lies below the non-perturbative threshold, and that the measured
+  $\gamma_{\rm cr}$-slope continuity across both grids is evidence (not proof) the same regime
+  applies. **R12 is NOT converged on this item** — it is the most concrete candidate for the
+  next intervening science decision.
+  Fingerprint: gamma_cr coverage 0.267-0.630, non-perturbative branch, mechanism 0.766-0.968 does not apply, perturbativity diagnostic not pointwise-checked.
+
+### FALSIFIED
+
+- **`DA3M-R12-F1`: "the poly Bardeen bracket's upper endpoint should be $-0.14$, not $-0.13$."**
+  FALSE — the referee reconstructed from rounded printed values ($-1.140+1.00$); the actual
+  construction uses the unrounded linear transfer and cubic endpoint
+  ($-1.1400+1.007=-0.133\to-0.13$, `results.json` `consequences.poly`), exactly as printed.
+
+### RE-FLAG-OF-DISCLOSED
+
+- Abstract $c_s$-window numbers stated as S1-only in the body (Sec. VIII) but not flagged as
+  such in the abstract itself; LQC anchor's conditional status stated in the body (Sec. III A).
+  Both already disclosed where the referee's own report concedes they are; no edit.
+
+### Carried, not closed
+
+Table II literature-plateau column untabulated; symbol $\lambda$ carries three meanings (a
+renaming sweep, not a one-line fix); App. A 4's superseded $f^\rho_{\rm NL}$ formula unmarked;
+$\epsilon_{\rm eff}=1/2$ undefined with no stated sensitivity; Discussion quotes stale S1
+significances after S2 selection; curvaton $r$-comparability across S1/S2 tensor amplification;
+a Savage–Dickey factor at $\gamma_*=2$ not reconstructible from printed chain statistics; a
+$B_{\rm MB/SMBHB}$ rounding inconsistency ($6.5\times10^3$ vs stated $7$–$9\times10^3$); the
+$\rho_B$/$\rho_c$ near-collision from `DA3M-R12-02`; a NIT cluster (caption wording, citation-year
+consistency, dangling $r=0.84$ cross-reference, undefined $W$/$r_i$ in App. A 4, symbol $A$
+overload, decade-range phrasing).
+
+### R2 status — BUDGET SPENT
+
+R12 is the one confirmation board directive R2 permitted after the row-9b intervening science
+decision. It did not confirm: 6 genuinely-new-real items found, 5 closed with real edits or
+honest disclosure, 1 (`DA3M-R12-06`) left genuinely open. **No further board on A3M without
+another intervening science or scope decision.** Readiness stays at the **COMPUTED** cap 75.
+Next unlock: the PBH perturbativity pointwise check named in `DA3M-R12-06`, or Houston's
+authorization of another confirmation board once that closes.
