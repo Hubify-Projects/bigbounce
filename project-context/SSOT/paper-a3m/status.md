@@ -2,7 +2,20 @@
 title: "Paper A3M SSOT — Multi-channel consistency of the matter-bounce prediction at f_NL = -35/16"
 type: ssot
 paper: A3M
-last_updated: 2026-09-22 -- v3M.0.31. `D-A3-15`: lane `LS12-pbh-perturbativity`
+last_updated: 2026-09-22 -- v3M.0.32. Lane `L1f-a3m-lrg-board` closed
+`DA3M-VI-01` [DEFECT]: two now-false statements in Sec. VI (wide-angle "not
+applied" and "2 of 5 splits run") corrected against `LEDGER4_RESULT_v4/v5`
+(wide-angle is a genuine null; all five splits were run, independently
+re-verified against the committed fit outputs, not taken on the propagating
+lane's word). Ledger row 4 (LRG channel) opened in the same bundle:
+f_NL^loc = -3.4+-5.7 (p=1.0, three official z-bins), AGREES with QSO at
+T=-0.159, all 15 systematics rows null, WEIGHT_SYS (QSO's dominant -3.05
+sigma systematic) null in every LRG bin -- still cannot separate -35/16
+from -35/8 (0.38 sigma apart), printed as a null with equal prominence.
+Full detail: `peer-reviews/DISPOSITIONS/A3M.md` "SVI DESI DR1 false-statement
+correction" section. Previous entry (v3M.0.31, D-A3-15 PBH re-scope)
+preserved below.
+last_updated_prior: 2026-09-22 -- v3M.0.31. `D-A3-15`: lane `LS12-pbh-perturbativity`
 closed `DA3M-R12-06` [ESSENTIAL] BY COMPUTATION (superseding R12's
 disclosure-only close), the next directive-R2 intervening science decision.
 The Channel-II required-amplitude ratio was measured pointwise
@@ -29,13 +42,58 @@ committed alone at `b289aa0f`, `PROPAGATION_NOTE.md`,
 `PBH_PERTURBATIVITY_2026-09-22.md`), manifest
 `reproducibility/manifests/experiments/a3-pbh-perturbativity-pointwise.json`.
 canonical_source: research/track_a3_multichannel/paper/main.tex
-canonical_pdf: research/track_a3_multichannel/paper/main.pdf (24 pp / 0 undef refs / md5 d669a73cd1ec8e330e212963a5930c89 / sha256 6f84f2600154d17e528184672bbd4eab7c29c85855e960de1868009abad3f21b)
-version: v3M.0.31 (2026-09-22, D-A3-15 propagation -- see "v3M.0.31" section below)
+canonical_pdf: research/track_a3_multichannel/paper/main.pdf (25 pp / 0 undef refs / md5 62153f02dcd5cd3158db2e69b2634f4f / sha256 563aaf399474e34314bb61b5a14fe1c9c1b2cd9037a4b9e72fc4d88aac3c2120)
+version: v3M.0.32 (2026-09-22, DA3M-VI-01 correction + LRG channel opened -- see "v3M.0.32" section below)
 registry_id: A3M (project-context/draft_paper_registry.json)
 review_profile: PRD-REGULAR
 target_journal: Physical Review D (regular article)
 headline_pct: 75 (COMPUTED by convex/papers.ts from open findings, capped at readinessCap=75; Convex UNAVAILABLE this bundle so the live number could not be recomputed -- stated as unchanged from v3M.0.30 pending recompute, not hand-set). Directive-P gate status: science 25 -- the propagation's own science is done, but automated-review convergence 25 remains NOT MET until a board confirms 0 genuinely-new-real on the exact v3M.0.31 PDF (none has run) / evidence 25 partial (frozen-release DOI unminted; branch pointers untrue until the push lands) / packaging 20 partial (no P-round this round) / Houston's final 5 not sought. No cap-95 recommendation is made on this evidence; this bundle explicitly did NOT run a board (task scope), so it cannot itself move the convergence gate.
 submission_status: draft, readiness 75 -- ROUNDS STOPPED under directive R2 from v3M.0.30, RE-ARMED 2026-09-22 by `D-A3-15` (one confirmation board on the exact v3M.0.31 PDF is now authorized, not yet spent; the director's call).
+
+## v3M.0.32 (2026-09-22) — DA3M-VI-01 (SVI false-statement correction) + LRG channel opened; no board run yet this bundle; readiness held at 75 pending the board below
+
+Lane `L1f-a3m-lrg-board`, precondition set by the spawning director for spending D-A3-15's
+authorized confirmation board. Two now-false statements in Sec. VI were corrected and ledger row 4
+(the LRG channel) was opened, both sourced from lane `LS11-row4-lrg`'s
+`PROPAGATION_NOTE.md` but independently re-verified against the underlying committed artifacts
+before landing (`LEDGER4_RESULT_v4/v5_2026-09-04.md`, `LEDGER4_LRG_RESULT_2026-09-22.md`, and the
+committed QSO fit-point JSONs) rather than trusted on the note's word.
+
+**DA3M-VI-01 [DEFECT] closed:** Sec. VI previously attributed the QSO reproduction's
+$\sigma=25$ (vs. published $9.0$) to wide-angle corrections "not applied" and only "2 of 5"
+systematics splits run. Both are false: `LEDGER4_RESULT_v4` implements and runs the wide-angle
+correction and finds it a genuine null (sources only odd multipoles; the official window uses
+$\ell=0,2,4$ only, confirmed by source inspection, a runtime guard, and explicit numeric
+construction to machine precision); `LEDGER4_RESULT_v5` closes the remaining two of five splits
+(WEIGHT_SYS, Galactic latitude), so all five have been run. The real explanation (independently
+recomputed from `outputs/fnl_official_p16_point.json`/`p10_point.json`, not copied from the note):
+the response lever $b_1-p$ is $0.649$ at $p=1.6$ vs. $1.249$ at $p=1.0$ ($1.9\times$ weaker
+constraint on the same data); the published number combines LRG+QSO while this fit is QSO-only;
+and only $b_1,f_{\rm NL}$ are free ($n_{\rm shot}=0$ fixed) against DESI's full nuisance
+marginalisation.
+
+**Ledger row 4 (LRG channel) opened**, science addition: DESI DR1 LRG, official window + measured
+$P_\ell$ + EZmock covariance, three z-bins. $f_{\rm NL}^{\rm loc}=-3.4\pm5.7$ ($p=1.0$, three-bin
+headline; $-1.1\pm6.9$ restricted to the published $0.6<z<1.1$ sample). AGREES with QSO at
+$T=-0.159$ ($0.16\sigma$). All 15 systematics rows null (closest: E(B–V) at $0.8<z<1.1$,
+$-0.995\sigma$ after the disclosed $\sqrt2$ correction). WEIGHT_SYS — QSO's dominant systematic at
+$-3.05\sigma$ — is a null in every LRG bin. **Still cannot discriminate $-35/16$ from $-35/8$**
+($0.38\sigma$ apart at $p=1.0$): printed as a null for the flagship question with equal prominence,
+not softened. Directive-I6 figure sweep: neither of the paper's two figures bakes a §VI number; no
+regeneration needed.
+
+Directive G: 4-pass pdflatex, 0 undef refs/citations, 24→25 pp, two small pre-existing overfull
+hboxes unchanged (3.90pt, 2.16pt — neither touched by this bundle's edits), `/latex-audit` visual
+PASS (pp 14/15/21/25). Three-way byte-identical mirror (source/`site/public/papers`/`public/papers`,
+md5 `62153f02dcd5cd3158db2e69b2634f4f`, sha256
+`563aaf399474e34314bb61b5a14fe1c9c1b2cd9037a4b9e72fc4d88aac3c2120`), confirmed against an isolated
+fresh 4-pass recompile (`pdftotext`-content-identical). Convex UNAVAILABLE (spending limit) —
+`paperVersions:bump` queued to `CONVEX_BACKFILL_QUEUE_2026-09-21.md`. Full detail:
+`peer-reviews/DISPOSITIONS/A3M.md`, "§VI DESI DR1 false-statement correction + LRG channel opened"
+section.
+
+One INT confirmation board (Grok API + Gemini API + one verdict-blind Claude opus referee) on this
+exact `v3M.0.32` PDF follows in the same lane, per D-A3-15's authorization.
 
 ## v3M.0.31 (2026-09-22) — D-A3-15 (PBH pointwise perturbativity) propagation; DA3M-R12-06 CLOSED BY COMPUTATION; no board run; R2 re-armed, not spent; readiness held at 75
 

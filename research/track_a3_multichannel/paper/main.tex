@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.31}
+\newcommand{\paperVersion}{v3M.0.32}
 \newcommand{\paperTimestamp}{September 22, 2026}
 
 \begin{document}
@@ -1495,10 +1495,55 @@ DR1's constraining power at this configuration is an order of magnitude
 too weak to separate $-35/16$ from $-35/8$, from zero, or from the
 published central value; the near-coincidence of the recovered central
 value with $-35/16$ is a coincidence, not evidence. This reproduction's
-$\sigma=25$ is $\sim2.8\times$ the published $9.0$ because wide-angle
-corrections (\texttt{PowerSpectrumOddWideAngleMatrix}) are not applied and
-only $2$ of $5$ imaging-systematics splits were run; full manifest cited
-in the reproducibility statement below.
+$\sigma=25$ at $p=1.6$ is larger than the published $9.0$ for three
+reasons, none of them wide-angle: the response lever $b_1-p$ is $0.649$ at
+$p=1.6$ against $1.249$ at $p=1.0$, so the same data give a $1.9\times$
+weaker constraint; the published number combines LRG and QSO while this
+fit uses QSO alone; and this fit frees only $b_1$ and $\fnl$, with
+$n_{\rm shot}$ fixed at $0$, against DESI's full nuisance marginalisation.
+Applying the identical pipeline to the DR1 LRG sample at $p=1.0$ returns
+$\sigma=5.7$ (below), confirming that the $\sigma=25$ figure is a property
+of the QSO configuration and not of the pipeline. Order-1 wide-angle
+corrections were implemented and verified to be a genuine null for this
+configuration: they source only odd multipoles, while the official window
+matrix uses $\ell=0,2,4$. All five imaging-systematics splits have been
+run; full manifest cited in the reproducibility statement below.
+
+Applying the same machinery to the public DESI DR1 LRG sample --- DESI's
+own window matrix, measured $P_\ell$ and EZmock covariance for each of the
+three official redshift bins ($z_{\rm eff}=0.510$, $0.706$, $0.919$), with
+$b_1$ free per bin, $n_{\rm shot}$ fixed at $0$, and
+$k\le0.08\,h\,{\rm Mpc}^{-1}$ --- gives $\fnlloc = -3.4\pm5.7$ at $p=1.0$
+(the universality response adopted for LRGs), or $-1.1\pm6.9$ restricted
+to $0.6<z<1.1$, the redshift range of the published LRG sample. The two
+tracers agree: the LRG and QSO channels differ by $0.16\sigma$ on a common
+convention. The fitted linear biases rise monotonically with redshift
+($b_1=1.87$, $2.05$, $2.21$) without being imposed.
+
+These uncertainties are optimistic and are not competitive with the
+published constraint: only $b_1$ and $\fnl$ are free, no cross-bin
+covariance product exists so the three bins are combined as independent,
+and the untreated (no $\theta$-cut, unrotated) data vectors are used. The
+value of the exercise is an internally consistent comparison of the two
+tracers on one convention, not an independent measurement.
+
+A five-row imaging-systematics table (E(B--V), stellar density, $z$-band
+galactic depth, \texttt{WEIGHT\_SYS} on/off, and Galactic latitude), run
+for each redshift bin at the same window/covariance fidelity, returns no
+detectable sensitivity in any of the fifteen rows; the largest, E(B--V) in
+$0.8<z<1.1$, reaches $1.0\sigma$ after the disclosed $\sqrt2$
+covariance-reuse correction. Notably, \texttt{WEIGHT\_SYS} --- the
+dominant systematic in the QSO channel at $3.05\sigma$ --- is a null in
+every LRG bin, consistent with quasar target selection being far more
+sensitive to imaging depth and stellar contamination than LRG selection.
+
+With $\sigma=5.7$, the LRG channel places $\fnlloc=-35/16$ and $-35/8$
+$0.21\sigma$ and $0.17\sigma$ from its central value, separated by
+$0.38\sigma$: DESI DR1 still cannot distinguish them. Opening the LRG
+channel improves the reach by a factor $\sim2.3$ over the QSO-only
+configuration and remains an order of magnitude short of a test. As
+above, the near-coincidence of the recovered central value with $-35/16$
+is a coincidence, not evidence.
 
 \subsection{Forecast reach}
 
@@ -2352,9 +2397,19 @@ artifacts are referenced by the branch trees above; a frozen-release DOI
 covering them will be deposited at publication.
 The exact-amplitude theory lineage this
 paper builds on is archived at Zenodo \texttt{10.5281/zenodo.21461881}. The
-DESI DR1 QSO reproduction of Sec.~\ref{sec:lss} is archived at
+DESI DR1 QSO reproduction of Sec.~\ref{sec:lss}, including the
+wide-angle-null and five-row systematics checks, is archived at
 \texttt{research/desi\_png\_reproduction/}, manifest
-\texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md}. The tensor amplitude of
+\texttt{LEDGER4\_RESULT\_v5\_2026-09-04.md} (supersedes
+\texttt{LEDGER4\_RESULT\_v3\_2026-09-04.md}, kept as record). The DESI
+DR1 LRG reproduction of Sec.~\ref{sec:lss} is archived at
+\texttt{research/desi\_png\_reproduction/}\allowbreak
+\texttt{lrg\_channel\_2026\_09\_22/}, manifest
+\texttt{reproducibility/manifests/}\allowbreak\texttt{experiments/}\allowbreak
+\texttt{ledger4-desi-dr1-lrg-fnl-channel.json}. The LRG catalogues and
+randoms ($6.2\,$GB) were read directly from the DESI public server by
+HTTP range request and reduced in memory; no bulk catalogue was written
+to disk. The tensor amplitude of
 Sec.~\ref{sec:tensor}, including the $\gamma_{\rm
 pred}^{(1)}=5.035$ nHz propagation of Sec.~\ref{sec:pta_null}
 (\texttt{outputs/r5\_15\_tensor\_omega\_nhz.json}), is archived at

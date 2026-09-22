@@ -1430,3 +1430,84 @@ directive-G hygiene but ran no board itself, per this lane's mandate). Readiness
 UNAVAILABLE, spending limit; this lane's mutations are queued in
 `CONVEX_BACKFILL_QUEUE_2026-09-21.md`). **Whether and when to spend that board is the director's
 call**, not decided by this lane.
+
+## §VI DESI DR1 false-statement correction + LRG channel opened — v3M.0.32 (2026-09-22)
+
+**Lane:** `L1f-a3m-lrg-board` · **Source:** lane `LS11-row4-lrg`'s
+`research/desi_png_reproduction/lrg_channel_2026_09_22/PROPAGATION_NOTE.md`, independently
+re-verified against `LEDGER4_RESULT_v4_2026-09-04.md`, `LEDGER4_RESULT_v5_2026-09-04.md`,
+`LEDGER4_LRG_RESULT_2026-09-22.md`, and the committed QSO fit outputs
+(`outputs/fnl_official_p16_point.json`, `outputs/fnl_official_p10_point.json`) before landing —
+not taken on the note's word alone.
+
+### DA3M-VI-01 [DEFECT, now-false statement] — CLOSED by real edit
+
+§VI stated the reproduction's $\sigma=25$ (vs. published $9.0$) was "because wide-angle
+corrections (`PowerSpectrumOddWideAngleMatrix`) are not applied and only 2 of 5
+imaging-systematics splits were run." Both clauses are false and contradicted by the lab's own
+committed artifacts:
+
+- **Wide-angle is a genuine null**, not an unapplied correction. `LEDGER4_RESULT_v4` implements
+  and runs `PowerSpectrumOddWideAngleMatrix`: order-1 wide-angle terms source only odd multipoles
+  (confirmed by source inspection AND a runtime `ValueError` guard AND explicit numeric
+  construction, max$|M|=0$ to machine precision), while the official window matrix carries
+  $\ell=0,2,4$ only. Applying it changes $f_{\rm NL}$ by exactly $0.0$.
+- **All five imaging-systematics splits were run**, not two. `LEDGER4_RESULT_v4` ran three
+  (E(B–V), stellar density, galactic depth-z) at official-covariance fidelity; `LEDGER4_RESULT_v5`
+  ran the remaining two (WEIGHT_SYS, Galactic latitude) at the same fidelity. All five are tabulated
+  in v5 §2.
+
+**Independently re-derived, not just re-quoted:** the real explanation's first reason (the
+response lever $b_1-p$) was computed directly from the committed headline fit outputs —
+$b_1=2.24932$ in both `fnl_official_p16_point.json` and `fnl_official_p10_point.json`, giving
+$b_1-p=0.649$ at $p=1.6$ and $1.249$ at $p=1.0$, ratio $1.925\times$ — matching the note's claimed
+$1.9\times$ to the fit's own printed digits, not merely copied from the note. The $\sigma=5.7$
+LRG cross-check figure matches `LEDGER4_LRG_RESULT_2026-09-22.md`'s three-bin headline
+($-3.40\pm5.74$) to the printed rounding.
+
+**Closed** in `main.tex` v3M.0.32 (Sec. VI, the paragraph following the QSO reproduction) with the
+three real reasons (response-lever ratio, LRG+QSO-combined published number vs. QSO-only fit,
+$n_{\rm shot}=0$ vs. DESI's full nuisance marginalisation) plus the wide-angle/five-splits
+correction, exactly as verified above.
+
+Fingerprint: wide-angle "not applied" claim, "2 of 5 splits" claim, $\sigma=25$ causal attribution, DESI DR1 QSO reproduction paragraph.
+
+### Ledger row 4 (LRG channel) — OPENED, science addition (not a defect)
+
+New paragraphs added to §VI reporting `LEDGER4_LRG_RESULT_2026-09-22.md` in full: three-bin
+headline $f_{\rm NL}^{\rm loc}=-3.4\pm5.7$ ($p=1.0$; $-1.1\pm6.9$ restricted to the published
+$0.6<z<1.1$ sample definition); AGREES with QSO at $T=-0.159$ ($0.16\sigma$); linear biases rise
+monotonically with $z$ (1.87, 2.05, 2.21) without being imposed; all 15 systematics rows null
+(closest: E(B–V) at $0.8<z<1.1$, $-0.995\sigma$ after the disclosed $\sqrt2$ correction, named not
+buried); WEIGHT_SYS — the QSO channel's dominant systematic at $-3.05\sigma$ — is a null in every
+LRG bin. **Discrimination result printed with equal prominence, not softened**: the LRG channel
+still cannot separate $-35/16$ from $-35/8$ ($0.38\sigma$ apart at $p=1.0$) — a null for the
+flagship question. The existing "near-coincidence... is a coincidence, not evidence" sentence is
+carried over verbatim for the LRG number.
+
+Directive-I6 figure sweep: both `\includegraphics` in `main.tex` (`sigw_nhz_from_lab_spectrum...`,
+`pbh_compaction_fnl.png`) checked — neither is a Channel III/§VI figure and neither bakes any
+QSO/LRG DESI number; no regeneration needed.
+
+Reproducibility statement updated: the QSO manifest citation corrected from the superseded
+`LEDGER4_RESULT_v3_2026-09-04.md` to `LEDGER4_RESULT_v5_2026-09-04.md` (v3 kept as record), and a
+new LRG citation added (`research/desi_png_reproduction/lrg_channel_2026_09_22/`, manifest
+`reproducibility/manifests/experiments/ledger4-desi-dr1-lrg-fnl-channel.json`).
+
+Directive G: `\paperVersion` v3M.0.31→v3M.0.32, `\paperTimestamp` unchanged (2026-09-22, same
+day), 4-pass pdflatex 0 undef refs/citations, 24→25 pp, two pre-existing overfull hboxes
+unchanged in magnitude and location (3.90pt Sec. VIII paragraph; 2.16pt Table VI alignment — both
+present before this bundle's edits, neither touched by them), `/latex-audit` visual PASS on pages
+14 (new §VI text), 15 (unaffected control), 21 (reproducibility statement), 25 (Table VI). Three-way
+byte-identical mirror confirmed (source == `site/public/papers/` == `public/papers/`, md5
+`62153f02dcd5cd3158db2e69b2634f4f`, sha256 `563aaf399474e34314bb61b5a14fe1c9c1b2cd9037a4b9e72fc4d88aac3c2120`);
+isolated fresh 4-pass recompile in a clean scratch dir is `pdftotext`-content-identical to the
+served bytes. Convex `paperVersions:bump` UNAVAILABLE (spending limit) — queued to
+`CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+
+### R2 status — board authorized by D-A3-15, now due on the exact v3M.0.32 PDF
+
+D-A3-15 (above) re-armed directive R2 for exactly one confirmation board, explicitly conditioned
+on landing this §VI correction first (per the spawning director's instruction). That precondition
+is now met. One INT confirmation board (Grok API + Gemini API + one verdict-blind Claude opus
+referee) on the exact `v3M.0.32` PDF follows in this same lane.

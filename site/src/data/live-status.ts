@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.31",
+      version: "v3M.0.32",
       readiness: 75,
-      pendingWork: "D-A3-15 (2026-09-22): the PBH channel's headline ratio is RE-SCOPED, not withdrawn -- 1.84+-0.03 (n=144) -> 1.81+-0.02 (n=62), the subset perturbatively controlled at both candidate values by the paper's own criterion -- closing R12's last open ESSENTIAL item (DA3M-R12-06) BY COMPUTATION. Table V's non-perturbative-branch label corrected (inverted pointwise: the diagnostic rises, not falls, with gamma_cr). Channel II's null conclusion unchanged (7.0 dex short, f_PBH=0). No review board run this bundle; directive R2 is re-armed and now authorizes one confirmation board on the exact v3M.0.31 PDF -- not yet spent, the director's call. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI, and spend or defer the newly authorized confirmation board."
+      pendingWork: "DA3M-VI-01 (2026-09-22): two now-false Sec. VI statements (wide-angle 'not applied', '2 of 5' splits) corrected against the lab's own LEDGER4_RESULT_v4/v5 -- wide-angle is a genuine null, all five splits were run. Real reasons for the QSO reproduction's sigma=25 vs. published 9.0: response lever b1-p=0.649 (p=1.6) vs 1.249 (p=1.0), the published number combines LRG+QSO vs. this fit's QSO-only, and n_shot fixed at 0 vs. DESI's full nuisance marginalisation. Ledger row 4 (LRG channel) opened: f_NL^loc=-3.4+-5.7 (p=1.0), AGREES with QSO at T=-0.159, all 15 systematics rows null, still cannot separate -35/16 from -35/8 (0.38 sigma). D-A3-15's authorized confirmation board runs on this exact PDF next in the same lane. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI."
     },
     {
       slug: "paper-3",
