@@ -1,0 +1,52 @@
+{
+  "A_validation_w_from_density_power": {
+    "dust  e ~ n^1      -> w": 0.0,
+    "radiation e ~ n^(4/3) -> w": 0.33333333333333326,
+    "vacuum e ~ n^0     -> w": -1.0,
+    "two-body contact e ~ n^2 -> w": 1.0
+  },
+  "A_validation_GP_contact_gas": {
+    "L_int": -0.5,
+    "e_int = -L_int": 0.5,
+    "p_int (textbook GP)": 0.5,
+    "w": 1.0,
+    "agrees_with_p=n de/dn - e": true
+  },
+  "A_validation_scaling": {
+    "w=+1 -> rho ~ a^": -6.0,
+    "n^2 ~ a^": -6.0,
+    "consistent": true
+  },
+  "C_constants": {
+    "M_Pl_GeV": 1.2208900000000002e+19,
+    "kappa_GeV^-2": 1.6861134260852608e-37,
+    "rho_Lambda_obs_GeV^4 = (2.25 meV)^4": 2.5628906249999997e-47
+  },
+  "C1_poplawski_own_formula": {
+    "condensate <qbar q> (GeV^3)": -0.012167,
+    "rho_Lambda = (kappa/3)<qbar q>^2 (GeV^4)": 8.320176666178913e-42,
+    "energy scale rho^(1/4) in meV": 53.707277385819985,
+    "paper states": "(54 meV)^4",
+    "ratio to rho_Lambda_obs (density)": 324640.33326349675,
+    "ratio in energy scale": 23.869901060364437
+  },
+  "C2_manuscript_coefficient_at_condensate_scale": {
+    "condensate <qbar q> (GeV^3)": -0.012977874999999998,
+    "(3/16) kappa <qbar q>^2 (GeV^4)": 5.32470108072977e-42,
+    "ratio to rho_Lambda_obs (density)": 207761.5419397685,
+    "ratio in energy scale": 21.34967606609207
+  },
+  "C3_manuscript_ISM_benchmark": {
+    "n_psi (cm^-3)": 100.0,
+    "n_psi (GeV^3)": 7.683505522728323e-40,
+    "kappa n_psi^2 (GeV^4)": 9.954182575213845e-116,
+    "kappa n_psi^2 (eV^4)": 9.954182575213845e-80,
+    "manuscript states (eV^4)": 9.954e-80,
+    "ratio to rho_Lambda_obs": 3.8839669856039393e-69,
+    "manuscript states ratio": 3.884e-69
+  },
+  "C4_scale_gap": {
+    "condensate result / ISM benchmark (density ratio)": 8.358473037149584e+73,
+    "orders of magnitude": 73.92212694584691
+  }
+}
