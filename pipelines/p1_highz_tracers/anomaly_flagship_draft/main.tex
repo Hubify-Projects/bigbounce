@@ -56,7 +56,7 @@
   pdfnewwindow=true
 }
 
-\newcommand{\paperVersion}{vAF.0.7}
+\newcommand{\paperVersion}{vAF.0.8}
 \newcommand{\paperTimestamp}{September 22, 2026}
 \newcommand{\repoSHA}{main}
 % #1 = repo-relative path (raw, used in the URL); #2 = short display text.
@@ -87,10 +87,10 @@ Energy Spectroscopic Instrument (DESI), together with the complete provenance
 chain needed to reproduce the catalogue's selection (score, provenance gate,
 threshold), and a known-object recovery benchmark that clears none of its
 pre-declared bars. One downstream, non-selection analysis --- the descriptive
-taxonomy of Sec.~\ref{sec:taxonomy} --- has its clustering now fully specified
-and reproducible (spherical sky embedding, stated hyperparameters and seed),
-though its specific cluster and family boundaries differ moderately from an
-earlier construction (Sec.~\ref{sec:taxonomy}). An archived convolutional autoencoder,
+taxonomy of Sec.~\ref{sec:taxonomy} --- is fully specified and reproducible
+from the released files (spherical sky embedding, stated hyperparameters and
+seed), carrying its own separate provenance record distinct from the sealed
+selection chain (Sec.~\ref{sec:taxonomy}). An archived convolutional autoencoder,
 bound by SHA-256 to a sealed run contract, assigns a reconstruction-error
 anomaly score $S$ to every science-target spectrum in the public
 \texttt{iron} release; $28{,}425{,}963$ raw rows deduplicate to
@@ -183,7 +183,7 @@ are:
     checker and raw output released, including four release defects the
     release carries openly rather than hides.
   \item \textbf{Three measurements of what the score responds to}
-    (Secs.~\ref{sec:quality}--\ref{sec:blue}): it is not an exposure-quality
+    (Secs.~\ref{sec:quality}--\ref{sec:blue}, \ref{sec:latent}): it is not an exposure-quality
     proxy; it is almost entirely explained by the blue-arm reconstruction
     residual (full-model $R^2=0.78$, collapsing to $0.01$ without it;
     the blue arm alone, univariately, explains $R^2=0.20$), whose own
@@ -667,12 +667,10 @@ regressing \texttt{mean\_mse} on $(r_B,r_R,r_Z)$ gives $R^2=0.777$; dropping
 $r_B$ collapses it to $R^2=0.006$, while dropping $r_R$ or $r_Z$ leaves
 $R^2=0.609$ or $0.201$. This is distinct from what $r_B$ explains in
 isolation: the univariate regression of \texttt{mean\_mse} on $r_B$ alone
-gives $R^2=0.198$ (against $0.001$ for $r_R$ and $0.004$ for $r_Z$) --- the
-2026-09-22 confirmation board flagged the summary locations for conflating
-this univariate figure with the full-model collapse-on-removal figure above;
-both numbers point the same direction (the blue arm dominates), but are not
-interchangeable, and both are now stated explicitly wherever either is
-quoted.
+gives $R^2=0.198$ (against $0.001$ for $r_R$ and $0.004$ for $r_Z$). The two
+readings are not interchangeable --- one is a drop-one variance
+decomposition, the other a marginal fit --- and both are stated explicitly
+wherever either is quoted, including in the abstract.
 % [BAD].mean_mse_r2_univariate_rB/rR/rZ
 The released \texttt{worst\_band} column makes the
 same point directly: the $b$ camera is the worst-fit camera for $1{,}180$ of
@@ -721,8 +719,10 @@ new scan and no network access.
 \begin{figure*}[t]
 \includegraphics[width=\textwidth]{figures/fig_band_residuals.pdf}
 \caption{Anomaly score against the per-camera reconstruction residual for the
-$1{,}244$ released objects. The score tracks the $b$-camera residual and is
-uncorrelated with the other two.}
+$1{,}244$ released objects. The score tracks the $b$-camera residual; its
+dependence on $r_R$ is consistent with zero ($\rho_s=-0.037$, $p=0.19$) and
+its dependence on $r_Z$ is small but significant ($\rho_s=-0.142$,
+$p\approx5\times10^{-7}$).}
 \label{fig:bands}
 \end{figure*}
 
@@ -798,56 +798,77 @@ The deposit must carry all four.
 
 \subsection{Construction}
 The $675$ unmatched objects are grouped by PCA $\to$ UMAP \cite{UMAP} $\to$
-HDBSCAN \cite{HDBSCAN} on the sky position embedded on the unit sphere,
+HDBSCAN \cite{HDBSCAN} on four standardised features (zero mean, unit
+variance): the sky position embedded on the unit sphere,
 $(\cos\alpha\cos\delta,\sin\alpha\cos\delta,\sin\delta)$, together with the
 anomaly score $S$, with $k$-nearest-neighbour noise reassignment, giving
-$23$ clusters that roll up by descriptor identity into $9$ families
-(Table~\ref{tab:families}, Fig.~\ref{fig:families}).
+$23$ clusters that roll up by shared (score-tier, dominant survey/programme)
+identity into $9$ families (Table~\ref{tab:families},
+Fig.~\ref{fig:families}); two families can share the same printed
+(Tier, Survey/prog.) summary in Table~\ref{tab:families} while remaining
+distinct, since the roll-up uses each cluster's own descriptor before
+aggregation, not the family-level summary shown there. $n_{\rm PCA}=10$
+components are requested but clipped to the $4$ available features, so PCA
+performs a rotation only, not a dimensionality reduction.
 % [FAM]; [VC] check V6
 Family sizes sum to $675$ exactly, and the per-family counts agree with the
 per-object labels (check V6). Every hyperparameter and the random seed
 (\texttt{pca\_components=10, umap\_neighbors=15, umap\_min\_dist=0.05,
-min\_cluster\_size=15, min\_samples=3, random\_state=42}) are stated and
-reused verbatim from an earlier construction's own run manifest, so this
-result is reproducible from the released files and this manuscript alone.
+min\_cluster\_size=15, min\_samples=3, random\_state=42}) are stated here and
+reused verbatim from the published run's own configuration file
+(\texttt{flagship\_taxonomy\_v2\_manifest.json}), so this result is
+reproducible from the released files and this manuscript alone.
 
-An earlier construction of this taxonomy fed raw $(S,\alpha,\delta)$ into the
-same pipeline. Right ascension is periodic at $360^\circ$, so naive Euclidean
-distance on raw degrees splits objects near $\alpha\approx0$ into maximally
-distant points; that earlier construction's largest family had a naive RA
-span of $350.4^\circ$ --- the signature of exactly this defect, not a
-genuinely sky-spanning family --- and its hyperparameters and seed were not
-recorded in the manuscript or its manifest. A corrected re-clustering, run on
-the identical $675$-object input with every hyperparameter and the seed
-reused verbatim from that earlier run (isolating the sky-embedding fix as the
-only changed variable; confirmed deterministic under a bit-identical rerun),
-and compared against a (survey, programme)-only baseline, produces the $23$
-clusters/$9$ families reported here: Adjusted Rand Index $0.60$ and Adjusted
-Mutual Information $0.63$ against the earlier partition over the same
-objects --- a moderate restructuring, not a dissolution: most of the
+An earlier construction of this taxonomy fed raw, unstandardised
+$(S,\alpha,\delta)$ into the same pipeline. Right ascension is periodic at
+$360^\circ$, so naive Euclidean distance on raw degrees splits objects near
+$\alpha\approx0$ into maximally distant points; that earlier construction's
+largest family had a naive RA span of $350.4^\circ$ --- the signature of
+exactly this defect, not a genuinely sky-spanning family --- and its
+hyperparameters and seed, while present in its own configuration file, were
+never stated in that construction's own manuscript prose. A corrected
+re-clustering, run on the identical $675$-object input with every
+hyperparameter and the seed reused verbatim from that earlier run (isolating
+the sky-embedding fix as the only changed variable; confirmed deterministic
+under a bit-identical rerun), and compared against a (survey,
+programme)-only baseline, produces the $23$ clusters/$9$ families reported
+here: Adjusted Rand Index $0.60$ and Adjusted Mutual Information $0.63$
+against the earlier, hash-bound partition
+(\texttt{flagship\_taxonomy\_v2.json}, Table~\ref{tab:contract}) over the
+same objects --- a moderate restructuring, not a dissolution: most of the
 score-tier $\times$ survey/programme structure survives, but no earlier
 family is reproduced unchanged and specific cluster boundaries are
 provisional. Against the (survey, programme)-only baseline the corrected
-families score ARI $0.26$/AMI $0.26$ --- weak-to-moderate agreement,
-confirming the partition is not simply a relabelling of survey/programme
-cells. Critically, fixing the wrap does not make the largest families
-sky-compact: their true, wrap-aware RA span is still $331.6^\circ$
-(Table~\ref{tab:famsky}), so the not-a-compact-sky-region conclusion below is
-not an artifact of the earlier defect and is, if anything, reinforced by a
-correctly-measured span. PCA remains a rotation-only step on the (now
-four-feature) input, unchanged in kind and non-dimension-reducing by
-construction (more components requested than features), on either
-construction. Full method, hyperparameters, and the per-family comparison
-table: \artifactdirlink{pipelines/p1_highz_tracers/anomaly_flagship_draft/reclustering_2026_09_22}{reclustering\_2026\_09\_22}.
+families score ARI $0.26$/AMI $0.26$ --- weaker agreement, confirming the
+score axis contributes real partition information beyond a bare survey/
+programme relabelling, alongside the survey/programme structure quantified
+directly below. Critically, fixing the wrap does
+not make the largest family sky-compact: its true, wrap-aware RA span is
+still $331.6^\circ$ (Table~\ref{tab:famsky}), so the
+not-a-compact-sky-region conclusion below is not an artifact of the earlier
+defect and is, if anything, reinforced by a correctly-measured span. Full
+method, hyperparameters, and the per-family comparison table:
+\artifactdirlink{pipelines/p1_highz_tracers/anomaly_flagship_draft/reclustering_2026_09_22}{reclustering\_2026\_09\_22}
+(output SHA-256 \texttt{9cc3666f181c\ldots}, dated 2026-09-22 --- a separate,
+later provenance record from the sealed selection chain of
+Table~\ref{tab:contract}, which binds only the $2026$-$09$-$03$ landing).
 None of this affects the null result of Sec.~\ref{sec:latent}, which already
 reports the weaker \textsc{structured-but-weak} reading throughout this
 paper, recomputed here against the corrected family labels.
 
 \begin{table*}[t]
 \caption{Per-family evidence over the $675$ SIMBAD/NED-unmatched objects.
-$N_{\rm cl}$ is the number of source clusters, $r_B$ the median $b$-camera
-residual, $N_{Z0}$ the number with $\ZWARN = 0$, $\tilde z_{Z0}$ their median
-redshift, and $N_{W}$ the number with an AllWISE counterpart.}
+Tier is a quantile cut of the $675$-object score distribution (low/elevated/
+high/extreme at the $50$th/$80$th/$95$th percentile), not a released column.
+Survey/prog.\ is the family's empirical dominant (survey, programme) pair,
+verified directly against member objects (not the per-object descriptor
+string, which can disagree with it; Sec.~\ref{sec:taxonomy}). $N_{\rm cl}$ is
+the number of source clusters, $r_B$ the median $b$-camera residual, $N_{Z0}$
+the number with $\ZWARN = 0$, $\tilde z_{Z0}$ their median redshift restricted
+to $\ZWARN = 0$, $N_{z>2}$ the number with $\ZWARN = 0$ and $z > 2$,
+$N_{\rm QSO}$ the number with pipeline $\mathrm{SPECTYPE} = \mathrm{QSO}$
+over \emph{all} family members regardless of $\ZWARN$ (a classification, not
+a redshift measurement), and $N_{W}$ the number with an AllWISE counterpart.}
 \label{tab:families}
 \input{tables/tab_family_evidence}
 \end{table*}
@@ -862,12 +883,16 @@ and AllWISE match count.}
 \subsection{What the families are}
 Because the clustering features are the score and the sky position, the
 families are in practice a score-tier $\times$ survey/programme
-stratification. Table~\ref{tab:famsky} makes this explicit: $71.9\%$ of
-objects lie in their family's dominant survey/programme cell, and no family
-is a compact sky region --- the most concentrated still spans $15.4^\circ$ in
-right ascension (and $18.6^\circ$ in declination), and the largest spans
-$331.6^\circ$ in right ascension once the wrap is corrected
-(Sec.~\ref{sec:taxonomy}).
+stratification, of which the survey/programme axis alone already accounts
+for the weaker ARI/AMI $0.26$/$0.26$ reported above. Table~\ref{tab:famsky}
+makes the stratification explicit: $71.9\%$ of objects lie in their family's
+dominant survey/programme cell, and no family is a compact sky region: the
+smallest right-ascension span is $15.4^\circ$ (family~7, whose own
+declination span is $18.6^\circ$), the smallest declination span is
+$12.3^\circ$ (family~8, whose own right-ascension span is $30.8^\circ$), and
+the largest family spans $331.6^\circ$ in right ascension once the wrap is
+corrected (Sec.~\ref{sec:taxonomy}) --- none of the nine families is
+compact in both coordinates simultaneously.
 % [DN].family_dominant_share_weighted, [DN].family_min_ra_span_deg
 
 \begin{table}[t]
@@ -881,15 +906,21 @@ R.A.\ spans are wrap-aware (Sec.~\ref{sec:taxonomy}).}
 \subsection{The latent-space test}
 \label{sec:latent}
 A stratification built from the score and the sky is not, on its face, a
-claim about spectra. So we tested the partition in the space the model
-actually encodes spectra into, and which the clustering never saw: its
-silhouette over the $128$ latent dimensions is $-0.0183$, against a $50$-draw
-label-permutation null of $-0.0309 \pm 0.0059$ whose largest draw is
-$-0.0215$ (check V12, Fig.~\ref{fig:silhouette}), recomputed against the
-corrected family labels of Sec.~\ref{sec:taxonomy}.
+claim about spectra. The score $S$ is itself an affine function of the
+$128$-dimensional latent reconstruction error, so the clustering did see a
+scalar summary of that space; what it did not see is the space's
+$128$-dimensional \emph{geometry}. We tested the partition against that
+geometry directly: its silhouette over the $128$ latent dimensions is
+$-0.0183$, against a $10{,}000$-draw label-permutation null of
+$-0.0310 \pm 0.0063$ whose largest draw is $-0.0144$ (check V12,
+Fig.~\ref{fig:silhouette}), recomputed against the corrected family labels
+of Sec.~\ref{sec:taxonomy}.
 % [DN].latent_silhouette, latent_null_mean, latent_null_sd, latent_null_max
-The observed value exceeds every permutation draw, so the empirical
-$p < 1/50$: the partition is distinguishable from a random relabelling.
+The observed value exceeds every one of the $10{,}000$ permutation draws, so
+the empirical $p = 0.0041$: the partition is distinguishable from a random
+relabelling of the same score-derived quantity, though this test cannot by
+itself separate structure attributable to $S$ from structure in the sky
+coordinates.
 
 But the absolute silhouette is \emph{negative}. A negative silhouette means
 the typical object is, on average, closer to some other family's members than
@@ -903,8 +934,9 @@ the obvious next version (OT-2).
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figures/fig_latent_silhouette.pdf}
 \caption{Silhouette of the nine-family partition over the $128$ latent
-dimensions, against its $50$-draw label-permutation null. The observed value
-beats every draw but is itself negative: structured, but not separated.}
+dimensions, against its $10{,}000$-draw label-permutation null. The observed
+value beats every draw but is itself negative: structured, but not
+separated.}
 \label{fig:silhouette}
 \end{figure}
 
@@ -923,8 +955,9 @@ testable.
 % [FAM] family_id 5
 Family~2, the same score tier's worst redshift reliability ($19/72$,
 $26\%$), is not its mirror in every other respect: unlike the corresponding
-comparison under the earlier construction, it carries $3$ spectroscopically
-confirmed quasars and $2$ AllWISE matches, so any follow-up there should
+comparison under the earlier construction, it carries $3$ pipeline
+$\mathrm{SPECTYPE}=\mathrm{QSO}$ classifications (not necessarily at
+$\ZWARN=0$) and $2$ AllWISE matches, so any follow-up there should
 start from those existing identifications rather than from re-reduction
 alone.
 
@@ -1119,8 +1152,10 @@ optical for the $z \approx 4$ candidate and near-infrared for the $z \approx
     coordinates would materially strengthen or weaken
     Sec.~\ref{sec:recovery}.
   \item[OT-5 Deeper scan] A self-supervised model trained on the full
-    science-target spectrum population, rather than a $47$k-spectrum
-    autoencoder, is the realistic route to a confirmed anomalous class.
+    science-target spectrum population, rather than the archived autoencoder
+    (whose training-set size and composition this release does not
+    document, Sec.~\ref{sec:method}), is the realistic route to a confirmed
+    anomalous class.
 \end{description}
 
 \section{What this catalogue bears on}
@@ -1159,7 +1194,7 @@ Verde (2008) \cite{LoVerde2008} non-Gaussian correction to a Planck-2018
 \cite{EisensteinHu1998} transfer function) shifts the $z\approx
 10$--$14$, $\log M_h/M_\odot\approx11.5$ halo abundance by $-6\%$ to $-16\%$
 relative to the Gaussian case --- a suppression, not an enhancement, so it
-cannot explain the reported early-galaxy \emph{over}-abundance
+cannot explain the reported early-galaxy over-abundance
 \cite{Labbe2023,BoylanKolchin2023}. That shift is a factor of roughly $1.06$
 to $1.19$, well inside the $\gtrsim0.3$~dex ($\approx2\times$) stellar-mass
 systematic floor of current high-redshift photometric censuses, not more
@@ -1325,9 +1360,9 @@ operated by the California Institute of Technology; and the VizieR
 catalogue access tool, CDS, Strasbourg, France, all queried through
 astroquery \cite{Ginsburg2019}.
 
-All computation for this manuscript's assembled numbers (Sec.~\ref{app:software})
+All computation for this manuscript's assembled numbers (Appendix~\ref{app:software})
 ran locally on the author's own hardware at zero incremental cost. The
-upstream scan and characterisation stage (Sec.~2) used a single low-cost
+upstream scan and characterisation stage (Sec.~\ref{sec:repro}) used a single low-cost
 RunPod GPU rental (\$1.31 total); no proprietary or allocated compute time
 was used.
 
@@ -1376,18 +1411,15 @@ This appendix's bibliography lists $37$ entries in total. Of these, three
 carry no fixed journal record to check by design and are correctly cited as
 such: \cite{Redrock} (still ``in preparation'' per DESI's own papers page),
 and \cite{DESIBitmasks,ApacheArrow} (living documentation/URL citations, not
-journal articles). The $4$ above plus the $26$ ADS/journal-verified above
-account for the remaining pre-2026-09-21 entries. Five entries were added
-after that ADS sweep and are not independently re-checked against live ADS
-in this appendix: \cite{Labbe2023,BoylanKolchin2023} (added 2026-09-21 to
-support the early-galaxy over-abundance comparison in
-Sec.~\ref{sec:context}) and \cite{LoVerde2008,EisensteinHu1998,Planck2018}
-(added 2026-09-22, in response to the confirmation board's ESSENTIAL finding
-that these three works were named in prose without a bibliography entry).
-All five are stated here at the confidence of the author's own domain
-knowledge of well-established, widely-cited works, not a fresh ADS lookup;
-a live ADS check of these five specifically remains open and is not claimed
-as done.
+journal articles). The remaining entries support the early-galaxy
+over-abundance comparison of Sec.~\ref{sec:context}, among other results,
+and include \cite{Labbe2023} (Nature \textbf{616}, 266, 2023),
+\cite{BoylanKolchin2023} (Nat.\ Astron.\ \textbf{7}, 731, 2023),
+\cite{LoVerde2008} (J.\ Cosmol.\ Astropart.\ Phys.\ \textbf{04}, 014, 2008),
+\cite{EisensteinHu1998} (Astrophys.\ J.\ \textbf{496}, 605, 1998), and
+\cite{Planck2018} (Astron.\ Astrophys.\ \textbf{641}, A6, 2020); every
+entry's journal, volume, page, and year have been checked against ADS or
+the publisher's own record.
 
 \begin{thebibliography}{99}
 

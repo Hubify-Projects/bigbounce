@@ -179,22 +179,26 @@
       "anomaly_flagship_vAF.0.4.pdf",
       "anomaly_flagship_vAF.0.5.pdf",
       "anomaly_flagship_vAF.0.6.pdf",
-      "anomaly_flagship_vAF.0.7.pdf"
+      "anomaly_flagship_vAF.0.7.pdf",
+      "anomaly_flagship_vAF.0.8.pdf"
     ],
-    "version": "vAF.0.7",
-    "pages": 18,
+    "version": "vAF.0.8",
+    "pages": 19,
     "date": "2026-09-22",
-    "sha256": "8982c1d8e1e0fac155aa27909a71300c1ee68bc2cfded6c6f944f019985c4023",
-    "md5": "b018c84f924a9ab06d8dceba4f45d173",
+    "sha256": "8308bb6950795a942598875c8c2b8ce0bed4231d85caffc4cc2d38509b3dc5c1",
+    "md5": "795bba62d57aada93bdf9428388c06bd",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-19-AF-vAF.0.2-EXACTPDF-b972d890-R1/",
       "project-context/peer-reviews/ROUND_2026-09-19-AF-vAF.0.3-EXACTPDF-d85487e9-R1_AF_Grok_brutal.md",
       "project-context/peer-reviews/ROUND_2026-09-19-AF-vAF.0.3-EXACTPDF-d85487e9-R1_AF_Gemini_cosmology.md",
       "project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM_AF_Grok_brutal.md",
       "project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM_AF_Gemini_cosmology.md",
-      "project-context/peer-reviews/INT_v3/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM/AF_vAF.0.5_CONFIRM_claude_opus.md"
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM/AF_vAF.0.5_CONFIRM_claude_opus.md",
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-22-AF-vAF.0.7-EXACTPDF-8982c1d8-BOARD/AF_vAF.0.7_BOARD_claude_opus.md",
+      "project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.7-EXACTPDF-8982c1d8-BOARD_AF_Grok_brutal.md",
+      "project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.7-EXACTPDF-8982c1d8-BOARD_AF_Gemini_cosmology.md"
     ],
-    "status": "Lane LAF5 (2026-09-22, vAF.0.7): DAF-19 CLOSED -- adopted lane LAF4's corrected (spherical-embedding) re-clustering as the paper's taxonomy, replacing Table VIII/IX (25->23 clusters, 8->9 families, ARI 0.60/AMI 0.63 vs published, wrap-aware largest RA span 350.4->331.6 deg, not-a-compact-sky-region conclusion reinforced). Every downstream number re-derived from committed JSONs (family evidence, family-sky spans, V6/V12, FT-B/FT-C/FT-E, 'two families worth starting with'), not hand-edited; two propagation defects LAF4 did not flag were caught and fixed (naive vs wrap-aware RA-span reuse; a marginal-mode vs joint-mode dominant-cell labelling bug). Directive-G bundle: 0 undef refs, 0 overfull hboxes, 18pp, 5-way md5-verified mirror, standalone tarball compile text-identical. Board authorized next this round. Prior: Lane LAF3 (2026-09-22, vAF.0.6) R2 confirmation board on the exact vAF.0.5 PDF (Grok API REJECT, Gemini API MAJOR REVISIONS, Claude-opus verdict-blind MAJOR REVISIONS) closed 9 real findings. Lane LAF2 (2026-09-21, vAF.0.5) non-review TODO-closure. R1 INT board closed (lane LR1, 2026-09-19). See project-context/peer-reviews/DISPOSITIONS/AF.md.",
+    "status": "Lane LAF5 (2026-09-22, vAF.0.8): DAF-19 CLOSED (vAF.0.7) -- adopted lane LAF4's corrected (spherical-embedding) re-clustering as the paper's taxonomy, replacing Table VIII/IX (25->23 clusters, 8->9 families, ARI 0.60/AMI 0.63 vs published, wrap-aware largest RA span 350.4->331.6 deg, not-a-compact-sky-region conclusion reinforced); two propagation defects LAF4 did not flag were caught and fixed (naive vs wrap-aware RA-span reuse; a marginal-mode vs joint-mode dominant-cell labelling bug). The directive-R2-authorized board then ran on the exact vAF.0.7 PDF (Grok API REJECT, Gemini API ACCEPT WITH MINOR CORRECTIONS, Claude-opus verdict-blind MAJOR REVISIONS): 9 genuinely-new-real findings closed (DAF-32..40, all cross-vendor-convergent leaked review-process prose, a self-contradiction, undefined table columns, an undisclosed separate-provenance gap, undisclosed feature scaling, a too-weak permutation null bumped to 10,000 draws) -> vAF.0.8. 5 findings independently FALSIFIED against source. 12 findings (DAF-41..52) genuinely real but need new computation/literature search, left open for future lanes. Directive R2's board budget spent this wave -- no further board without another intervening science/scope decision. Directive-G: 0 undef refs, 0 overfull hboxes, 19pp, 5-way md5-verified mirror, standalone tarball compile text-identical. See project-context/peer-reviews/DISPOSITIONS/AF.md.",
     "evidence_root": "pipelines/p1_highz_tracers/flagship_assembly_2026-09-18"
   }
 }

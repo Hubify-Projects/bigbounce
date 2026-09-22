@@ -523,3 +523,341 @@ real edits or new, independently-verified computation. Per the no-re-board rule,
 round does not re-test the new vAF.0.6 PDF. **Directive R2: round 2 of 2 spent — no
 further board on paper-af without an intervening science/scope decision** (e.g., landing
 OT-1's GPU compute, a corrected re-clustering for DAF-19, or Houston's Zenodo DOI).
+
+---
+
+## DAF-19 closure + taxonomy adoption (vAF.0.6 → vAF.0.7, 2026-09-22, lane LAF5)
+
+Lane LAF4 produced a corrected (spherical-embedding) re-clustering
+(`reclustering_2026_09_22/`) as the exact fix DAF-19's disposition named. Co-director
+decision (2026-09-22): **adopt the corrected taxonomy as the paper's Table VIII/IX**,
+replacing the published one, rather than citing it as a disclosed robustness check —
+this is the directive-R2 intervening-science decision that unlocks one further board.
+
+**Verification before adoption:** every number was independently re-derived from LAF4's
+committed JSONs (`comparison_metrics.json`, `corrected_family_table.json`,
+`flagship_taxonomy_corrected.json`) by rerunning the real assembly pipeline
+(`taxonomy_adoption_2026_09_22/`, a new committed script) against the corrected
+taxonomy, not by trusting `PROPAGATION_NOTE.md`'s prose. Two propagation defects were
+caught independently during this verification and fixed before adoption: (1) the shared
+`family_evidence()` RA-span column is a naive `max−min` span — reusing it unmodified
+would have reintroduced the exact wrap defect DAF-19 fixed into the "corrected" tables;
+substituted the wrap-aware per-family span from `corrected_family_table.json` instead.
+(2) the taxonomy's own per-object `family_descriptor` text can disagree with a family's
+true empirical dominant (survey, programme) cell (a marginal-mode-vs-joint-mode
+labelling bug, present in both the published and corrected taxonomy's descriptor
+generator) — e.g. family 3's descriptor reads "survey=main, program=other" while its
+verified empirical plurality cell is `sv1/other` (37.5% share); used the verified joint
+mode throughout Table VIII/IX instead of the descriptor string.
+
+**DAF-19: CLOSED.** 25→23 clusters, 8→9 families, ARI 0.603/AMI 0.626 against the
+published partition (moderate restructuring, no family reproduced unchanged), ARI/AMI
+0.257/0.256 against a (survey,programme)-only baseline (not a relabelling), largest
+wrap-aware RA span 350.4°→331.6° — the not-a-compact-sky-region conclusion is
+reinforced, not undermined. Every downstream number was re-derived, not hand-edited:
+family evidence (Table VIII), family-sky spans (Table IX), V6 (made dynamic instead of
+hardcoded 25/8), V12's latent-space silhouette test recomputed on the corrected family
+labels, the "two families worth starting with" narrative, and the FT-B/FT-C/FT-E
+follow-up references (30 distinct objects/33 tier rows, was 32/35).
+
+**DAF-29 re-scoped, not re-opened:** the abstract's forward pointer changed from "not
+itself reproducible from the released files alone" to a statement that the taxonomy's
+clustering is now fully specified and reproducible with a real, hash-bound separate
+provenance record; DAF-29's original 2026-09-19 abstract-scoping closure stands.
+
+**Directive-G bundle (vAF.0.7):** `\paperVersion` vAF.0.6→vAF.0.7, `\paperTimestamp`
+unchanged (September 22, same day). 4-pass compile, 0 errors, 0 undefined refs, 0
+overfull hboxes >10pt, 18pp. 37 cited == 37 bibitems. Standalone tarball-style compile
+text-identical to the served build (discarded after smoke test). 5-way md5-verified
+mirror at `b018c84f924a9ab06d8dceba4f45d173`.
+
+---
+
+## R-BOARD wave (vAF.0.7, 2026-09-22, lane LAF5) — the directive-R2-authorized board on the DAF-19 closure
+
+Board: Grok API `grok-4.3` + Gemini API `gemini-3.1-pro-preview`
+(`tools/v3_native_pdf_review.py`, `ApJS-CATALOG` profile) + one Claude-opus
+verdict-blind referee (dispatched as a separate sub-agent, no access to the other two
+legs' reports), all against the exact vAF.0.7 PDF (sha256 `8982c1d8...`). Fable was
+out of usage credit for this lane (labelled per lane brief) — opus substituted for all
+three judgment-heavy legs (the API legs are Grok/Gemini directly; opus is the third,
+independent leg). Raws saved and read in full before any verdict recorded:
+`project-context/peer-reviews/INT_v3/ROUND_2026-09-22-AF-vAF.0.7-EXACTPDF-8982c1d8-BOARD/AF_vAF.0.7_BOARD_claude_opus.md`,
+`project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.7-EXACTPDF-8982c1d8-BOARD_AF_Grok_brutal.md`,
+`project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.7-EXACTPDF-8982c1d8-BOARD_AF_Gemini_cosmology.md`.
+
+**Verdicts (words diagnostic only, per directive H):** Claude-opus MAJOR REVISIONS (17
+ESSENTIAL, 17 MAJOR, 27 MINOR). Gemini ACCEPT WITH MINOR CORRECTIONS (2 ESSENTIAL, 2
+MAJOR, 2 MINOR/NIT). Grok REJECT (4 ESSENTIAL, 4 MAJOR, several MINOR/NIT). All three
+independently converged on the manuscript's own leaked internal review-process prose
+(the "2026-09-22 confirmation board" language and the title-page version string) —
+strong triangulation on the single most consequential class of finding.
+
+### DAF-32 (ESSENTIAL, all 3 legs convergent): internal review-process prose and version-history narration leaked into the body, Acknowledgments, and abstract
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified in source: main.tex §V C literally read "the 2026-09-22 confirmation board
+  flagged the summary locations..."; the Acknowledgments' bibliography paragraph read
+  "...in response to the confirmation board's ESSENTIAL finding..." and disclosed a
+  bibliography-audit work log ("a live ADS check of these five specifically remains
+  open and is not claimed as done"); the abstract narrated an "earlier construction"
+  the reader cannot access.
+- **Closure:** §V C's R² paragraph rewritten to state the scientific content only (no
+  review-process reference). The Acknowledgments paragraph rewritten to state the five
+  citations' verified journal/volume/page directly (all independently re-verified
+  against the committed bibitems before this closure) rather than narrate the audit
+  trail. Abstract's taxonomy sentence rewritten to state the method positively without
+  comparing to an unpublished earlier draft. main.tex abstract, §V C, Appendix A.
+- **fingerprint:** confirmation board, ESSENTIAL finding, earlier construction, version history, review-process prose
+
+### DAF-33 (ESSENTIAL, Claude-opus): §VI A's hyperparameter-provenance sentence contradicts itself twelve lines later
+- **class:** CLOSED — GENUINELY-NEW-REAL (introduced by this lane's own vAF.0.7 propagation text)
+- Verified: one sentence said the hyperparameters "are stated and reused verbatim from
+  an earlier construction's own run manifest" (true of the JSON configuration file);
+  the next paragraph said the earlier construction's "hyperparameters and seed were
+  not recorded in the manuscript or its manifest" (true of the paper's own prose and
+  reproducibility manifest document) — both true of different documents both called
+  "manifest," reading as a direct contradiction.
+- **Closure:** disambiguated: the JSON configuration file
+  (`flagship_taxonomy_v2_manifest.json`) is now named explicitly wherever "reused
+  verbatim" is claimed; the disclosure that hyperparameters were "never stated in that
+  construction's own manuscript prose" no longer uses the word "manifest" for the
+  paper-level document. main.tex §VI A.
+- **fingerprint:** reused verbatim, run manifest, not recorded in the manuscript, contradiction
+
+### DAF-34 (ESSENTIAL, Claude-opus): Table VIII's own rows 3 and 8 share an identical (Tier, Survey/prog.) summary, apparently violating the stated "roll up by descriptor identity" rule; four of eleven columns undefined
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified: families 3 and 8 are both (low, sv1/other) in the printed Survey/prog.
+  column (the verified empirical joint mode), while their underlying per-cluster
+  descriptors differ before aggregation — the printed table's coarse two-field summary
+  can coincide across distinct families by construction, which the manuscript never
+  explained. `N_QSO` is computed over all family members regardless of `ZWARN`
+  (verified against `family_evidence()`), not restricted to `ZWARN=0`; `Tier` cut
+  points were never stated.
+- **Closure:** Table VIII's caption now states explicitly that the roll-up uses each
+  cluster's own descriptor before aggregation (not the family-level summary shown),
+  defines the Tier quantile cut points (50th/80th/95th percentile), and states the
+  exact `ZWARN` convention for `N_{z>2}` and `N_QSO`. main.tex Table~\ref{tab:families} caption.
+- **fingerprint:** descriptor identity, Table VIII rows 3 8, undefined columns, N_QSO ZWARN
+
+### DAF-35 (ESSENTIAL, Claude-opus): the corrected taxonomy is outside the sealed provenance chain of Table I, and this was never disclosed
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified: Table I's SHA-256 bindings all trace to the 2026-09-03 landing receipt;
+  the corrected taxonomy (`reclustering_2026_09_22`, dated 2026-09-22) has no row
+  there and no SHA-256 anywhere in the prior draft of the manuscript.
+- **Closure:** §VI A now states explicitly, with the real output SHA-256
+  (`9cc3666f181c...`) and date, that the corrected taxonomy is a separate, later
+  provenance record from the sealed selection chain — not silently folded into Table I
+  as if it were part of the original sealed run. main.tex abstract, §VI A.
+- **fingerprint:** provenance-sealed, outside the chain, reclustering_2026_09_22, no SHA-256
+
+### DAF-36 (ESSENTIAL, Claude-opus, part (a) real / part (b) FALSIFIED): feature scaling never stated
+- **class:** CLOSED — GENUINELY-NEW-REAL (part a only)
+- Verified against `recluster_spherical.py`: `StandardScaler().fit_transform(matrix)`
+  IS applied before PCA (part (a) was a real disclosure gap: the manuscript never said
+  so). Part (b) — "`pca_components=10` cannot run on a 4-feature input, `ValueError`" —
+  is FALSIFIED: the script computes `n_components = min(PCA_COMPONENTS, n_features,
+  n_samples-1)` before calling `PCA(...)`, so it never passes 10 to a 4-column array;
+  the manuscript's existing "non-dimension-reducing by construction (more components
+  requested than features)" sentence already describes this correctly.
+- **Closure:** §VI A now states the four features are standardised (zero mean, unit
+  variance) before PCA/UMAP/HDBSCAN. main.tex §VI A.
+- **fingerprint:** feature scaling, StandardScaler, pca_components=10, dynamic range
+
+### DAF-37 (MAJOR, Claude-opus): 50 permutation draws floors the achievable empirical p-value at a test that costs nothing
+- **class:** CLOSED — GENUINELY-NEW-REAL, real new computation added
+- The taxonomy-adoption script was re-run with 10,000 draws (was 50) at zero
+  marginal cost (~58s total, CPU only): silhouette unchanged (`-0.0183`, deterministic
+  given the fixed labels), null mean `-0.0310 ± 0.0063`, largest draw `-0.0144`,
+  empirical $p=0.0041$ (was the floor `<1/50`).
+- **Closure:** §VI C, Table VI's V12 observed text, and Fig. 8's caption/figure all
+  updated to the 10,000-draw numbers. main.tex §VI C, Fig.~\ref{fig:silhouette}.
+- **fingerprint:** 50 draws, permutation null, empirical p, V12
+
+### DAF-38 (MAJOR, Claude-opus): §VI A's "not simply a relabelling" and §VI B's "score-tier × survey/programme stratification" read as opposing claims; "most concentrated" family is ambiguous across two different families
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified: family 7 has the smallest RA span (15.4°) but not the smallest Dec span
+  (18.6°); family 8 has the smallest Dec span (12.3°) but a larger RA span (30.8°) —
+  "the most concentrated" as a single label was underspecified.
+- **Closure:** §VI B now states explicitly that the survey/programme axis alone
+  accounts for the weaker ARI/AMI 0.26/0.26 reported in §VI A (reconciling the two
+  sections in one sentence) and reports both families' spans instead of picking one
+  "most concentrated" family. main.tex §VI A, §VI B.
+- **fingerprint:** not simply a relabelling, score-tier stratification, most concentrated, family 7 family 8
+
+### DAF-39 (MINOR, cross-vendor: Claude-opus N3/N5, Gemini N1): three broken/mislabelled cross-references
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified: "(Sec.~\ref{app:software})" renders as "Sec. A" for an `\appendix` section
+  (should read "Appendix"); "The upstream scan and characterisation stage (Sec.~2)" was
+  a literal hardcoded "2" pointing nowhere near the actual $1.31-cost description in
+  §IX; the contributions list's "(Secs. V B–V C)" range excluded §VI C, where the third
+  listed result (taxonomy is descriptive not physical) is actually discussed.
+- **Closure:** first reference changed to "Appendix~\ref{app:software}"; second changed
+  to "Sec.~\ref{sec:repro}"; third range extended to include `\ref{sec:latent}`.
+  main.tex Acknowledgments, Introduction contributions list.
+- **fingerprint:** Sec. A, Sec. 2, Secs. V B-V C, cross-reference
+
+### DAF-40 (NIT, Grok, verified via rendered PDF not source diff): "over -abundance" renders with a stray space
+- **class:** CLOSED — GENUINELY-NEW-REAL (rendering defect, confirmed by rendering the PDF, not by reading the source)
+- Verified: source read `\emph{over}-abundance`; the italic/roman font-shape boundary
+  immediately before the hyphen rendered as a visible gap in the compiled PDF, though
+  the source contains no literal space. Same class of defect as the earlier
+  `\item[Label.]` double-punctuation rendering bug (R2 wave).
+- **Closure:** removed the unnecessary `\emph{}` around "over"; confirmed via re-render
+  that "over-abundance" now prints with no gap. main.tex §VIII.
+- **fingerprint:** over -abundance, emph, kerning, rendering defect
+
+### AF-M5-fix (MINOR-tier, Claude-opus, folded in as a cheap fix, not a numbered DAF): Fig. 6's caption said "uncorrelated with the other two"; the body's own p-values show $r_Z$ significant at $p\approx5\times10^{-7}$
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- **Closure:** caption rewritten to state both coefficients and p-values explicitly,
+  matching the already-correct body text (§V C) exactly. main.tex Fig.~\ref{fig:bands} caption.
+- **fingerprint:** uncorrelated with the other two, rho_s r_Z, Fig. 6 caption
+
+### AF-M13-fix (MINOR-tier, Claude-opus, folded in as a cheap fix, not a numbered DAF): "a 47k-spectrum autoencoder" infers a training-set size from a filename and contradicts the manuscript's own undocumented-training-corpus disclosure
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- **Closure:** reworded to reference the archived autoencoder without asserting a
+  specific spectrum count, with an explicit pointer to the existing undocumented-corpus
+  disclosure. main.tex OT-5.
+- **fingerprint:** 47k-spectrum, best_model_47k, training-set size
+
+### Findings FALSIFIED against source (not real):
+- **Claude-opus AF-M14** ("the comparison partition is an internal, unreleased,
+  unhashed object"): FALSE — `flagship_taxonomy_v2.json` (the earlier partition) is
+  Table I's own artifact #6, SHA-256 `1420388b59f3727814dda63c90c8e4cd0d2226c1e6ad2907c3301ed844edbf60`,
+  verified present in `tables/tab_provenance_chain.tex`. It is hash-bound and released.
+- **Grok AF-N1** ("Table IV's placeholder columns should be dropped or marked
+  'reserved'"): FALSE — `classification`/`discovery_potential` are already explicitly
+  documented as an "unpopulated placeholder" group (DAF-16 closure, vAF.0.4/0.5); no
+  change needed.
+- **Grok AF-N2** ("the landing-receipt date (2026-09-03) post-dates the manuscript date
+  (2026-09-22)"): FALSE and backwards — 2026-09-03 precedes 2026-09-22 by 19 days. Same
+  recurring error pattern as R1's Grok AF-E4 (also backwards on this exact date pair).
+- **Grok AF-E2** ("no effect-size/practical-significance statement accompanies the
+  headline recovery fractions... state in the abstract that the selection recovers no
+  known class above the pre-declared bar"): FALSE — the abstract already states "clears
+  none of its pre-declared bars" and "excludes only a strong recovery signal" verbatim.
+- **Grok AF-E4** ("no quantitative statement of how much variance remains after removing
+  the b-arm term is given in the abstract"): FALSE — the abstract already states
+  "collapses to R²=0.01 when it is dropped" verbatim.
+
+### Re-flags of already-disclosed content (not genuinely new, no change):
+- **Grok AF-E3, part of Claude-opus AF-N1** (title-page version string "vAF.0.8"):
+  re-flag of R1's Gemini AF-N1, dispositioned OPINION/OUT-OF-SCOPE (deliberate
+  lab-wide dating/version convention across every current paper), unchanged.
+- **Gemini finding "orders of magnitude" noise floor**: re-flag of the prior R2 wave's
+  Gemini finding 8, already dispositioned deferred/non-blocking, unchanged.
+- **Claude-opus AF-E16, Gemini "Missing Provenance/DOI"**: re-flag of DAF-05 (Zenodo
+  DOI), Houston-only, unchanged.
+- **Claude-opus AF-E1/E2 substance (taxonomy non-physical stratification)**: re-flag of
+  the by-now-closed DAF-19; the framing itself is fine, only the leaked review-process
+  language around it needed removal (DAF-32).
+
+### OPINION/OUT-OF-SCOPE (editorial/venue, per directive R2's genre-length-venue guidance):
+- **Grok AF-E1, M1, M2, M4** (retitle/reframe/relegate-taxonomy-to-appendix/remove-FT-A
+  because the paper's own honest null framing "doesn't meet ApJS catalogue standards"):
+  this is Grok re-arguing that an honestly-scoped negative/infrastructure result should
+  not be published as framed, not a factual or reproducibility defect — every fact Grok
+  cites is already disclosed in the paper's own words. Consistent with prior rounds'
+  Grok M1 disposition (recommend cutting to 10-12pp) — an editorial/venue call, Houston-gated
+  if ever pursued, not a correctness defect.
+- **Claude-opus §4's "recommended maximum 14 pages" / merge-Tables-VIII-IX / abstract
+  ≤250-word AAS house-style cap (M16)**: genre/venue restructuring recommendations, not
+  correctness defects; the lab's existing convention across all current papers carries
+  a fuller abstract than the strict AAS 250-word cap. Houston-gated if ever pursued.
+
+### Genuinely real, honestly left open (not closable this wave without new computation, a literature search this lane cannot responsibly attach, or expanding scope well beyond DAF-19's taxonomy-propagation task):
+- **DAF-41 (Claude-opus E9–E13):** five abstract-drift items independently verified
+  real and pre-dating this lane's session (not introduced by the taxonomy adoption):
+  "almost entirely explained by" is stronger than the univariate R²=0.20 supports; the
+  FT-A candidates are labelled "anomaly-selected" while three of four sit below the
+  catalogue's median score; "refutes" in the abstract vs. "disfavoured" in the body for
+  the same FT-A candidate; "eleven pass outright" vs. V1's own "partial pass" language
+  in §V A; the two R² decompositions juxtaposed without a "not interchangeable"
+  qualifier in the abstract/contributions/conclusions (only §V C carries it, now fixed
+  as part of DAF-32's closure, but the abstract-level juxtaposition itself was not
+  touched by that fix). Real, independently verified, but an abstract-calibration sweep
+  spanning five load-bearing sentences is squarely outside a single lane's "close what
+  the board found on the taxonomy adoption" remit — named here for a dedicated
+  abstract-calibration closure lane.
+- **DAF-42 (Claude-opus E14/E15):** the wavelength-to-bin calibration and the archived
+  model's training corpus are both undocumented (re-flag of DAF-20's root cause), yet
+  the abstract's "complete provenance chain" and the blue-arm wavelength-concentration
+  argument both lean on them as if resolved. Needs either recovering the calibration
+  array (cheap, if it exists) or downgrading the claims to labelled assumptions — real
+  work, not a one-line fix, left for the DAF-20 closure lane.
+- **DAF-43 (Claude-opus E17):** $f_{\rm NL}=-35/16$ is attributed to "this programme"
+  with no citation or in-paper derivation. A real, citable/derivable number is needed;
+  this lane does not have the companion-paper cross-reference or literature-search path
+  to attach one responsibly without risking a fabricated or misattributed source.
+- **DAF-44 (Claude-opus M3):** the recovery benchmark's 1.5″ match radius vs. the
+  cross-match's 3″ radius asymmetry is unexplained and could bias the null toward
+  smaller recovery; a real, cheap re-run at 3″ would settle it, but is new computation
+  beyond this lane's scope.
+- **DAF-45 (Claude-opus M4):** the observed-vs-rest-frame concentration test (§V C) has
+  no null and no effect size; a real fix needs computing the expected fractional IQR
+  under both extreme hypotheses from the sample's own redshift distribution — new
+  computation, not a text edit.
+- **DAF-46 (Claude-opus M6):** "five independent measures" in the abstract overstates
+  the independence of TSNR2_LRG/TSNR2_QSO/S/N/exptime/flux_r; a real fix needs the
+  correlation matrix among the five or an effective-degrees-of-freedom statement — new
+  computation.
+- **DAF-47 (Claude-opus M7/M8):** the "$\gtrsim0.3$ dex stellar-mass systematic floor"
+  citation and the "$|f_{\rm NL}|\sim30$" linear extrapolation both need a real
+  literature citation and/or a direct re-run of the committed `ledger6_png_highz_abundance.py`
+  script at the extrapolated value — real work, not fabricated here.
+- **DAF-48 (Claude-opus M9/M10):** Table IV's schema documentation has internal
+  inconsistencies against DEFECT-1's column list and the "all nine are deterministic
+  functions" claim (two of nine, `mean_fiber_ra`/`mean_fiber_dec`, are carried through
+  unchanged from the parent zcatalog, not derived) — a real data-audit task, left open.
+- **DAF-49 (Claude-opus M11/M12):** the FT-A/FT-C tier rules are under-specified
+  (reference population for percentiles, an unstated `SPECTYPE=QSO` condition) and
+  Table X omits `family_id`/`cluster_id`/$\Delta\chi^2$ columns that would let a reader
+  verify every family/follow-up cross-reference in the paper — real, adding released
+  columns to a table, left open pending a dedicated pass.
+- **DAF-50 (Claude-opus M17):** OT-1's "fully specified" experiment description never
+  names a template-spectrum source, resolution, or normalisation — real gap, needs a
+  literature-sourced template library, left open.
+- **DAF-51 (Gemini M1):** the reference-class footprint area comparison in §V D is
+  asserted, not computed or cited — needs a real DESI DR1 footprint-area figure this
+  lane cannot responsibly attach without a literature/document lookup.
+- **DAF-52 (Grok M3):** no external outlier-detection recovery-rate benchmark is cited
+  for comparison against this release's own null result — real ask, needs a literature
+  search this lane does not have a live path to perform responsibly.
+
+**Directive-G bundle (vAF.0.8):** `\paperVersion` vAF.0.7→vAF.0.8; `\paperTimestamp`
+unchanged (September 22, same day). 4-pass `pdflatex`, 0 errors, 0 undefined
+refs/citations, 0 overfull hboxes >10pt, 19 pages (up from 18 — real new disclosure
+content: the standardisation statement, the caption redefinitions, the separate
+provenance-record disclosure; not padding). `/latex-audit`-style visual render of every
+touched page (1, 2, 10, 11, 12, 13, 15, 16, 17) — no overflow, no overlap. 37 cited ==
+37 bibitems. Standalone tarball-style compile (`.tex` + `figures/` + `tables/` only)
+reproduces the served build's text byte-for-byte identically (discarded after the smoke
+test per protocol). 5-way md5-verified mirror (source dir, `site/public/papers/`
+versioned+alias, `public/papers/` versioned+alias) at
+`795bba62d57aada93bdf9428388c06bd`.
+
+- **PDF:** `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf` — MD5
+  `795bba62d57aada93bdf9428388c06bd`, SHA-256
+  `8308bb6950795a942598875c8c2b8ce0bed4231d85caffc4cc2d38509b3dc5c1`.
+- **New committed script:**
+  `pipelines/p1_highz_tracers/anomaly_flagship_draft/taxonomy_adoption_2026_09_22/`.
+- **Convex:** DISABLED (spending limit) for the duration of this lane. Intended
+  mutations (`paperVersions:bump` vAF.0.6→vAF.0.7→vAF.0.8 with real md5/sha256/pages;
+  `rRounds:create` for this board; `externalReviews:upsertByLabelDate` × 3;
+  `activityFeed:add`) queued to `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+- **Directive R2:** the DAF-19 closure was the intervening science decision authorizing
+  exactly one board this wave; that board is now spent. No further board on paper-af
+  without another intervening science/scope decision.
+
+**Result: AF is NOT CONFIRMED on this pass.** DAF-19 closed by real computation and
+independent re-verification, the taxonomy adopted as the paper's own, and a real board
+ran on the exact result — finding 9 genuinely-new-real items (DAF-32 through DAF-40,
+plus two cheap MINOR-tier fixes), all closed with real edits, one real new computation
+(the 10,000-draw permutation null), and zero fabricated derivations. 5 findings were
+independently FALSIFIED against source (not real). 21 further findings (DAF-41 through
+DAF-52) are genuinely real per independent verification but need new computation, a
+literature search this lane cannot responsibly perform, or expand well beyond this
+lane's DAF-19-propagation scope — named honestly for future dedicated closure lanes
+rather than silently dropped or fabricated shut. Several editorial/genre-reframing asks
+(Grok's recommendation to reject an honestly-scoped null result; abstract length vs. AAS
+house style) are OPINION/OUT-OF-SCOPE, consistent with prior rounds' disposition of the
+same class of finding.

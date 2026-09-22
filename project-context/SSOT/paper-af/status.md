@@ -1,14 +1,126 @@
 # AF (anomaly flagship) status — current authoritative section
 
-**Current candidate:** vAF.0.6 · `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex`
+**Current candidate:** vAF.0.8 · `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex`
 **Directive-P readiness:** 80 (COMPUTED, author's reasoned estimate — no automated
-calculator exists for this draft-registry paper; Convex disabled) — lane LAF3 (2026-09-22)
-ran the directive-R2 confirmation board on the exact vAF.0.5 PDF (the version R1 never
-actually reviewed, since LAF2 closed real items and bumped twice after R1), found real
-items across all three legs including a genuine statistical-attribution error (DAF-22),
-and closed the substantial majority with real edits/computation, bumping to vAF.0.6. NOT
-CONFIRMED — directive R2's two-board budget is now fully spent; no further board without
-an intervening science/scope decision. Full account below in "LAF3 R2 confirmation wave".
+calculator exists for this draft-registry paper; Convex disabled) — lane LAF5 (2026-09-22)
+closed DAF-19 by adopting lane LAF4's corrected (spherical-embedding) taxonomy as the
+paper's own (vAF.0.7), then ran the directive-R2-authorized board on that exact PDF
+(Grok REJECT, Gemini ACCEPT WITH MINOR CORRECTIONS, Claude-opus verdict-blind MAJOR
+REVISIONS), closing 9 genuinely-new-real findings with real edits and one real new
+computation (10,000-draw permutation null) to vAF.0.8. NOT CONFIRMED — directive R2's
+board budget is spent again this wave; no further board without another intervening
+science/scope decision. Full account below in "LAF5 DAF-19 closure + board wave"; prior
+wave in "LAF3 R2 confirmation wave".
+
+## LAF5 DAF-19 closure + board wave (vAF.0.6 → vAF.0.7 → vAF.0.8, 2026-09-22)
+
+Lane LAF5. Co-director decision: adopt lane LAF4's corrected re-clustering
+(`reclustering_2026_09_22/`, spherical sky embedding eliminating the RA-wrap defect,
+every hyperparameter and seed reused verbatim from the published run) as the paper's
+Table VIII/IX, replacing the published (RA-wrap-defective) taxonomy rather than citing
+it as a disclosed robustness check — this is the directive-R2 intervening-science
+decision that authorizes one further board.
+
+**Verification before adoption.** Every number was independently re-derived from
+LAF4's committed JSONs by rerunning the real assembly pipeline against the corrected
+taxonomy (new committed script, `taxonomy_adoption_2026_09_22/`), not by trusting
+`PROPAGATION_NOTE.md`'s prose. Two propagation defects were caught and fixed before
+adoption that neither LAF4's own report nor a naive prose swap would have caught: (1)
+the shared RA-span computation is a naive max−min span — reusing it unmodified would
+have reintroduced the exact wrap defect DAF-19 fixed into the "corrected" tables;
+substituted the wrap-aware per-family span instead. (2) the taxonomy's own per-object
+descriptor text can name the wrong dominant (survey, programme) cell (a
+marginal-mode-vs-joint-mode labelling bug) — verified the true empirical joint mode
+directly against the merged dataframe and used that throughout instead.
+
+**DAF-19 CLOSED (vAF.0.7).** 25→23 clusters, 8→9 families, ARI 0.603/AMI 0.626 against
+the published partition (moderate restructuring, no family reproduced unchanged),
+ARI/AMI 0.257/0.256 against a (survey,programme)-only baseline (not a relabelling),
+largest wrap-aware RA span 350.4°→331.6° — the not-a-compact-sky-region conclusion is
+reinforced, not undermined. Every downstream number re-derived, not hand-edited: family
+evidence, family-sky spans, V6 (made dynamic), V12's latent silhouette (recomputed on
+corrected labels), the "two families worth starting with" narrative, and the
+FT-B/FT-C/FT-E follow-up references (30 distinct objects/33 tier rows, was 32/35).
+
+**Board (vAF.0.7 → vAF.0.8).** Grok API `grok-4.3` + Gemini API `gemini-3.1-pro-preview`
+(ApJS-CATALOG profile) + one Claude-opus verdict-blind referee (Fable was out of usage
+credit; opus substituted per lane brief). Verdicts: Grok REJECT, Gemini ACCEPT WITH
+MINOR CORRECTIONS, Claude-opus MAJOR REVISIONS (17 ESSENTIAL/17 MAJOR/27 MINOR — by far
+the most exhaustive single-leg report this paper has received). All three converged on
+the manuscript's own leaked internal review-process prose. 9 genuinely-new-real items
+closed (DAF-32 through DAF-40): the leaked "confirmation board" language and
+bibliography-audit trail removed from the body/Acknowledgments/abstract; a
+self-contradiction in the taxonomy's hyperparameter-provenance sentence resolved; Table
+VIII's caption now defines every column and explains why two families can share a
+printed summary; the corrected taxonomy's separate (non-sealed-chain) provenance
+disclosed with its real SHA-256; feature standardisation (StandardScaler) disclosed;
+the permutation null bumped from 50 to 10,000 draws at zero marginal cost; §VI A/§VI B
+reconciled in one sentence; three broken cross-references fixed; one PDF-rendering
+kerning artifact fixed. Two more cheap MINOR-tier fixes folded in (a false "uncorrelated
+with the other two" figure caption; a training-set-size number inferred from a
+filename). 5 findings independently FALSIFIED against source (Grok repeated its R1-era
+backwards-date error; claimed-missing abstract statements that are already present
+verbatim; a claim that the comparison partition is unhashed when it is Table I's own
+artifact #6). 12 further findings (DAF-41 through DAF-52) are genuinely real per
+independent verification but need new computation, a literature search this lane
+cannot responsibly perform, or expand well beyond this lane's DAF-19-propagation
+remit — named honestly in DISPOSITIONS/AF.md for future dedicated closure lanes, not
+silently dropped or fabricated shut. A few editorial/genre-reframing asks (Grok's
+recommendation to reject an honestly-scoped null result; abstract length vs. AAS house
+style) are OPINION/OUT-OF-SCOPE, consistent with prior rounds.
+
+**Directive-G bundle.** `\paperVersion` vAF.0.6→vAF.0.7→vAF.0.8; `\paperTimestamp`
+unchanged (September 22, same day both bumps). 4-pass `pdflatex`, 0 errors, 0 undefined
+refs/citations, 0 overfull hboxes >10pt, 19 pages (up from 18 — real new disclosure
+content, not padding). Visual render of every touched page (1, 2, 10, 11, 12, 13, 15,
+16, 17) — no overflow, no overlap. 37 cited == 37 bibitems throughout. Standalone
+tarball-style compile reproduces the served build's text byte-for-byte identically at
+both vAF.0.7 and vAF.0.8 (discarded after each smoke test). 5-way md5-verified mirror
+(source dir, `site/public/papers/` versioned+alias, `public/papers/` versioned+alias)
+at `795bba62d57aada93bdf9428388c06bd` (vAF.0.8).
+
+- **PDF:** `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf` — MD5
+  `795bba62d57aada93bdf9428388c06bd`, SHA-256
+  `8308bb6950795a942598875c8c2b8ce0bed4231d85caffc4cc2d38509b3dc5c1`.
+- **New committed script:**
+  `pipelines/p1_highz_tracers/anomaly_flagship_draft/taxonomy_adoption_2026_09_22/`.
+- **Convex:** DISABLED (spending limit). Intended mutations queued to
+  `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+- **Dispositions:** DAF-19 CLOSED; DAF-29 re-scoped (not re-opened); DAF-32 through
+  DAF-52 added in `project-context/peer-reviews/DISPOSITIONS/AF.md`.
+- **Directive R2:** board budget spent this wave (the DAF-19 closure was the
+  intervening-science decision that unlocked it). No further board without another
+  intervening science/scope decision.
+
+**What genuinely remains, and who/what unblocks each (supersedes the vAF.0.6 list
+below where it repeats):**
+- **DAF-41** (abstract-drift sweep: 5 load-bearing sentences) — a dedicated
+  abstract-calibration closure lane, text-only but touches many load-bearing sentences
+  at once.
+- **DAF-42** (wavelength-to-bin calibration / training corpus, re-flag of DAF-20's root
+  cause) — recover the calibration array or downgrade the claims; real work.
+- **DAF-43** ($f_{\rm NL}=-35/16$ uncited) — needs a citation or in-paper derivation.
+- **DAF-44** (recovery benchmark match-radius asymmetry, 1.5″ vs 3″) — a cheap re-run,
+  new computation.
+- **DAF-45** (frame-concentration test has no null/effect size) — new computation from
+  the sample's own redshift distribution.
+- **DAF-46** ("five independent measures" overstates independence) — new computation
+  (correlation matrix or effective-dof statement).
+- **DAF-47** (stellar-mass systematic floor citation / $|f_{\rm NL}|\sim30$
+  extrapolation) — literature citation + a re-run of the committed abundance script.
+- **DAF-48** (Table IV schema internal inconsistencies) — a data-audit task.
+- **DAF-49** (FT-A/FT-C rules under-specified; Table X missing columns) — add released
+  columns to a table, real but bounded work.
+- **DAF-50** (OT-1 template-spectrum source unspecified) — needs a literature-sourced
+  template library.
+- **DAF-51** (reference-class footprint area uncited) — needs a DESI DR1 footprint-area
+  figure from the literature.
+- **DAF-52** (no external recovery-rate benchmark comparison) — needs a literature
+  search.
+- **OT-1 selection function, Zenodo DOI** — unchanged from prior waves (GPU compute /
+  Houston-only respectively).
+
+---
 
 ## LAF3 R2 confirmation wave (vAF.0.5 → vAF.0.6, 2026-09-22)
 
