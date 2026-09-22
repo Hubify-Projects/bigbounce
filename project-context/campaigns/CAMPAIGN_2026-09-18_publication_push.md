@@ -397,3 +397,4 @@ Campaign closes when every A-criterion has its evidence line in the log, origin/
 - 2026-09-21 17:54 PT · LM-monitor · HEARTBEAT · disk_free=12G · lanes_alive=none · opus_lanes=0 · lease=skipped(director gone; lease commits were flooding origin)
 - 2026-09-21 18:09 PT · LM-monitor · HEARTBEAT · disk_free=12G · lanes_alive=none · opus_lanes=0 · lease=skipped(director gone; lease commits were flooding origin)
 - 2026-09-21 18:24 PT · LM-monitor · HEARTBEAT · disk_free=12G · lanes_alive=none · opus_lanes=0 · lease=skipped(director gone; lease commits were flooding origin)
+- 2026-09-21 18:39 PT · LM-monitor · HEARTBEAT · disk_free=14G · lanes_alive=none · opus_lanes=0 · lease=skipped(director gone; lease commits were flooding origin)
