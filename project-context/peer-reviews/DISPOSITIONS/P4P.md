@@ -481,3 +481,62 @@ refs, pre-existing 5.88pt hbox only (unchanged); 14→15 pages; sha256
 `d2d017145530e641ea491c4f5f0909de`; three-way byte-identical mirror verified
 (source, `site/public/papers/`, `public/papers/`); arXiv tarball rebuilt
 and standalone-compile-verified (0 undef refs on a clean extract).
+
+## v4P.0.10 → v4P.0.11 — HOLD CORRECTION: out-of-domain dilution bound withdrawn (2026-09-22, lane `bb-L4e-p4p-hold-correction`)
+
+Not a review round — a correction of a defect introduced by the immediately
+preceding lane. `bb-LS6-row16-tta` (2026-09-21/22) found that the
+`D ≤ 0.717 ± 0.005` / `A₉₅^phys ≥ 1.37%` bound v4P.0.10 had just printed
+(propagated from `bb-L4d-p4p-row16-propagate`) was measured on **out-of-domain
+images**: a pre-registered positive control required the released
+preprocessing, run at the identity transform, to reproduce the released
+catalog's own labels on ≥99.9% of galaxies; on the images that measurement
+used it reproduces them for only 43.9% of 19,800 galaxies (42.4%/44.7% on two
+further draws), while an identical check against the lane's own committed
+forward passes on the same images agrees at 99.99% — proving the classifier
+code and preprocessing were correct and the images were Legacy Survey display
+cutouts (39.3″, upsampled to 224 px) rather than the `Smith42/galaxies` images
+the released classifier ran inference on (224×224 px, 58.7″ native DR8,
+`main.tex:171`). An out-of-domain instability bounds an in-domain one in
+neither direction.
+
+**DISP-HOLD-01 — dilution bound / physical-parity floor: WITHDRAWN, ON HOLD
+(not a reviewer finding; a self-caught measurement-domain defect).** Removed
+from every location it appeared (7 prose instances + 2 table rows) and
+replaced with a named hold citing the exact positive-control numbers above;
+the hold is lifted by re-running the identical PA-restoring test on the
+correct, pinned `Smith42/galaxies` images (bounded, disk-only, no GPU). The
+Q-1a architectural paragraph (why the transfer is not unity by construction)
+is retained verbatim in Assumption 2 — that argument carries no image-domain
+dependence and is unaffected.
+
+**Unaffected (confirmed, re-verified this lane):** row-16(ii-b) items P-1–P-4
+(pixel-injection error-bar correction, withdrawal of the invalid
+`47σ`/`2.9σ`/`0.038`/`≈26%` comparisons, retirement of the mirror-injection
+extension) — re-analyses of committed label-level quantities and of the exact
+identity `eq_cw(MI)=eq_ccw(I)`, which holds for any image whatsoever. No
+image enters them; v4P.0.10's text for these stands unchanged in v4P.0.11.
+
+**DISP-HOLD-02 — sky-dependence systematic: ADOPTED (new disclosure, not a
+reviewer finding).** Printed exactly as `bb-LS6-row16-tta` propagation note
+item Q-3 gives it: an 11σ sky dipole in the classifier's parity-transfer
+efficiency (`a_δ = 0.090 ± 0.010`, permutation-null `p ≤ 0.001`) projected
+through the paper's own exact estimator imprints a spurious `0.23%` dipole on
+the strict-887,472 support — 23% of the quoted `A₉₅ = 0.98%` limit, above the
+note's pre-registered 10%-of-`A₉₅` disclosure threshold. Replaces the
+superseded `0.036 ± 0.005` hemisphere-difference sentence (itself measured on
+the same out-of-domain images and therefore carrying the same defect).
+
+No new numbers introduced anywhere outside the two propagation notes'
+committed JSON (`/never-fabricate-derivation`).
+
+### v4P.0.11 hygiene
+`\paperVersion` v4P.0.10→v4P.0.11, `\paperTimestamp` Sept 21→Sept 22 2026;
+4-pass compile, 0 undef refs, pre-existing 5.88pt hbox only (unchanged);
+15→15 pages (unchanged); sha256
+`9f3822a2f1c97184c7d4beccd14294739816228b53ef8e59af02e6bc20b1528a`, md5
+`c5944b14d0987d14bbe0d2a61953b1f6`; three-way byte-identical mirror verified
+(source, `site/public/papers/`, `public/papers/` — Convex arm UNAVAILABLE,
+spending limit, mutation queued in `CONVEX_BACKFILL_QUEUE_2026-09-21.md`);
+arXiv tarball rebuilt and standalone-compile-verified (0 undef refs, 15 pp,
+byte-identical size on a clean extract).

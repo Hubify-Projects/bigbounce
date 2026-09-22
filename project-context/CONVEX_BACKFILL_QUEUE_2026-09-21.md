@@ -235,3 +235,32 @@ activityFeed:add({
   summary: "A pre-registered positive control failed and it outranks everything else this lane produced. Every image-level run of rows 13 and 16 -- the 500-galaxy pilot, the N=5,000 scale run, the N=20,000 run and row 16(ii-b) -- fetched the DISPLAY-ONLY image_url column that run_eq_fast.py:265-270 appends to catalog_production.parquet (jpeg-cutout, size=150, layer=ls-dr9: a 39.3-arcsec field upsampled 150 -> 224), instead of the parent images the catalogue was actually inferred on and that BOTH papers document correctly (Smith42/galaxies, 224 px, 0.262 arcsec/px = 58.7 arcsec, DESI Legacy DR8, pinned HF revision bdd1b063; chirality_catalog_paper.tex:1019 and p4prime paper/main.tex:171). Re-running the released preprocessing through the released checkpoint on those cutouts reproduces the released catalogue's class for only 43.9% of 19,800 galaxies (42.4% and 44.7% on two further independent draws) while reproducing this repository's own committed 2026-09-04 forward passes at 99.99% -- the code is right and the images are wrong. Post-hoc diagnostics: the documented 224 px / 58.7-arcsec geometry recovers about a sixth of the gap (agreement 0.460 -> 0.497, handedness transfer 0.611 -> 0.654); the ls-dr8 vs ls-dr9 layer explains none of it (0.4533 vs 0.4600, the two layers agreeing with each other at 0.89); central-crop zoom explains none of it. Roughly half the gap remains, most plausibly the grz-to-RGB rendering. The released data products and both papers' provenance are NOT implicated, and the catalogue's (RA,Dec)-to-label correspondence is confirmed sound (77% of catalogued spirals are labelled spiral, handedness agreement 16.6 sigma above chance), so P4's dipole coordinates are unaffected. Consequence: every image-level number from rows 13/16(ii)/16(ii-b) is OUT OF DOMAIN, and D <= 0.7166 with A_95^phys >= 1.37% are ON HOLD for P4' until re-measured on Smith42/galaxies (PROPAGATION_NOTE.md Q-1). The mirror-injection retirement is UNAFFECTED: it rests on the exact identity eq_cw(MI) = eq_ccw(I), which holds for any image whatsoever.",
 })
 ```
+
+## Lane bb-L4e-p4p-hold-correction (2026-09-22) — v4P.0.11 hold correction
+
+Urgent correction lane applying the above provenance-defect finding to
+`pipelines/p4prime_chirality_test/paper/main.tex` itself: withdrew
+`D <= 0.717 +/- 0.005` / `A_95^phys >= 1.37%` from all 7 prose locations + 2
+table rows, replaced with a named hold, and printed the Q-3 sky-dependence
+systematic sentence. `\paperVersion` v4P.0.10 -> v4P.0.11.
+
+```
+paperVersions:bump({
+  paperId: "P4P",
+  version: "v4P.0.11",
+  dateISO: "2026-09-22",
+  sha256: "9f3822a2f1c97184c7d4beccd14294739816228b53ef8e59af02e6bc20b1528a",
+  md5: "c5944b14d0987d14bbe0d2a61953b1f6",
+  pages: 15,
+  note: "HOLD CORRECTION: withdrew the v4P.0.10 dilution bound (D<=0.717+-0.005, A_95^phys>=1.37%) after a positive control found it was measured on out-of-domain images (43.9% agreement with released labels on the wrong images vs. 99.99% in-domain); replaced with a named, lifted-by-a-specific-test hold plus the new sky-dependence systematic (0.23% spurious dipole, 23% of A_95 on the strict support). Row-16(ii-b) items P-1-P-4 unaffected. Readiness unchanged at 95 (correction, not a review round).",
+})
+```
+
+```
+activityFeed:add({
+  type: "research",
+  title: "P4' hold correction: the just-published dilution bound was measured on out-of-domain images -- withdrawn same day, sky-dependence systematic disclosed",
+  tags: ["ledger-row-16", "galaxy-chirality", "P4P", "hold-correction", "integrity", "campaign-2026-09-18"],
+  summary: "Lane bb-L4e-p4p-hold-correction. The dilution bound D<=0.717+-0.005 / A_95^phys>=1.37% that lane bb-L4d-p4p-row16-propagate printed into v4P.0.10 hours earlier was found by lane bb-LS6-row16-tta to have been measured on Legacy Survey display cutouts rather than the classifier's own Smith42/galaxies inference images (a positive control reproduces released labels at only 43.9%/42.4%/44.7% across three draws on the wrong images, vs. 99.99% in-domain). Withdrawn from all 7 prose locations and 2 table rows in main.tex, replaced with a named, lifted-by-a-specific-test hold (never a silent deletion): the hold lifts on re-running the identical PA-restoring test on the correct, pinned Smith42/galaxies images (bounded, disk-only, no GPU). The Q-1a architectural argument (why the transfer is not unity by construction) is retained verbatim and unaffected. Also printed the pre-registered sky-dependence systematic: an 11-sigma efficiency dipole imprints a spurious 0.23% label dipole on the strict-887,472 support, 23% of the quoted A_95=0.98% limit. Row-16(ii-b) items P-1-P-4 (pixel-injection error-bar fix, withdrawal of the invalid 47sigma/2.9sigma/0.038/~26% comparisons) confirmed unaffected. Readiness holds at 95 -- this correction improves science closure and evidence/reproducibility (no unsupported claim remains) rather than degrading it; directive R2's round budget is refreshed again, a fresh INT confirmation board on the exact v4P.0.11 PDF is now due. Co-director sign-off hold LIFTED for the printed-claim defect; STILL STANDS pending that board and the in-domain re-measurement.",
+})
+```

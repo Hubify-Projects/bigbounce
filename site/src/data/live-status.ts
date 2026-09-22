@@ -125,9 +125,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.10",
+      version: "v4P.0.11",
       readiness: 95,
-      pendingWork: "Row-16(ii-b) science propagation 2026-09-21 → v4P.0.10: withdrew the invalid pixel-injection tension claim (comparisons between statistics that didn't share a normalization) and adopted a direct, assumption-light dilution bound instead (D≤0.717±0.005, A₉₅ᵖʰʸˢ≥1.37%, consistent with the illustrative g=0.398 bridge); primary null unchanged. Not a review round — a fresh INT confirmation board is now due (directive R2 round budget refreshed by this science decision). Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.10.",
+      pendingWork: "HOLD CORRECTION 2026-09-22 → v4P.0.11: the v4P.0.10 dilution bound (D≤0.717±0.005, A₉₅ᵖʰʸˢ≥1.37%) was found to have been measured on out-of-domain images (Legacy Survey display cutouts, not the classifier's own Smith42/galaxies inference images — a positive control reproduces released labels at only 43-45% on those images vs. 99.99% in-domain) and is withdrawn, on hold pending an in-domain re-measurement; a new sky-dependence dipole systematic (23% of A₉₅ on the strict support) is now disclosed. Row-16(ii-b)'s other closures (P-1–P-4) are unaffected. Primary null unchanged. A fresh INT confirmation board on the exact v4P.0.11 PDF is now due (directive R2 round budget refreshed again). Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.11.",
     },
     {
       slug: "paper-4",

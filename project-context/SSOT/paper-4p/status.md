@@ -1,7 +1,105 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.10 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** 95 (unchanged) — this is a science-content propagation, not a review-round closure. Directive R2 status: since the propagated result is an intervening science decision, **the round budget for this paper is refreshed** (a fresh board may be run by a future lane); no board was run in this lane. Houston sign-off read should use **v4P.0.10**, sha256 `054b63f8a73902000a0e703da62229ee887f2fc77b0cc027533c2309985f9310`, 15 pages.
+**Current candidate:** v4P.0.11 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** 95 (unchanged) — this is a correction, not a review-round closure, and not a new negative finding: it withdraws a claim that lane `bb-L4d-p4p-row16-propagate` (v4P.0.10) had printed on an out-of-domain measurement, and replaces it with an honest, named hold plus a real, disclosed sky-dependence systematic. Science closure and evidence/reproducibility are, if anything, stronger than v4P.0.10 (no unsupported numeric claim remains); automated review convergence carries forward v4P.0.10's refreshed round budget (directive R2) — a fresh INT board on the exact v4P.0.11 PDF is now due and was not run in this lane (out of scope, correction-only). Houston sign-off read should use **v4P.0.11**, sha256 `9f3822a2f1c97184c7d4beccd14294739816228b53ef8e59af02e6bc20b1528a`, 15 pages.
+
+## HOLD CORRECTION — out-of-domain dilution bound withdrawn, sky-dependence systematic disclosed (v4P.0.10 → v4P.0.11, 2026-09-22)
+
+Campaign 2026-09-18 lane `bb-L4e-p4p-hold-correction` (urgent correction lane).
+Lane `bb-LS6-row16-tta` (2026-09-21/22) found that the row-16(ii-b)
+PA-restoring dilution measurement lane `bb-L4d-p4p-row16-propagate` had just
+printed into v4P.0.10 (`D ≤ 0.717 ± 0.005`, `A₉₅^phys ≥ 1.37%`) was measured
+on the **wrong images**: Legacy Survey display cutouts from the `image_url`
+column that `run_eq_fast.py` appends *for display only* (39.3″ field
+upsampled to 224 px), not the `Smith42/galaxies` images the released
+classifier actually ran inference on (224×224 px, 58.7″ native DR8 field,
+documented at `main.tex:171`). A pre-registered positive control found that
+re-running the released preprocessing and checkpoint on those wrong images
+reproduces the released catalog's own labels for only **43.9%** of 19,800
+galaxies (42.4% and 44.7% on two further independent draws), against
+**99.99%** agreement with an in-domain forward pass — the implementation is
+correct; the images were out of domain. An out-of-domain instability bounds
+an in-domain one in neither direction, so this lane withdrew the bound
+everywhere it appeared and replaced it with a named, lifted-by-a-specific-test
+hold (not a silent deletion): the hold is lifted by re-running the same
+PA-restoring test on the correct, pinned `Smith42/galaxies` images
+(bounded, disk-only work, no GPU needed).
+
+The row-16(ii-b) note's other items — P-1 through P-4 (the corrected
+pixel-injection error bar, the withdrawal of the invalid `47σ`/`2.9σ`/`0.038`/
+`≈26%` comparisons, and the retirement of the mirror-injection extension) —
+are re-analyses of committed label-level quantities and an exact identity
+that holds for any image whatsoever; they are **not affected** and remain as
+v4P.0.10 printed them.
+
+This lane also added the pre-registered, honestly-scoped **sky-dependence
+systematic** (`bb-LS6-row16-tta` item Q-3): the classifier's parity-transfer
+efficiency carries an 11σ dipole on the sky (fractional amplitude
+`0.090 ± 0.010`, permutation-null rank `p ≤ 0.001`) whose axis lies 31.6°
+from the strict-887,472 dipole axis; propagated through the paper's own
+exact estimator, a dilution modulated in proportion to it would imprint a
+spurious dipole of `0.23%` on the strict support — 23% of the `A₉₅ = 0.98%`
+limit quoted in the paper, above the note's pre-registered 10%-of-`A₉₅`
+disclosure threshold. Printed exactly as the propagation note gives it,
+stated as a systematic floor on interpretation, not a detected contamination.
+
+**What changed (content), all in `pipelines/p4prime_chirality_test/paper/main.tex`:**
+- Removed every instance of the held numbers (`0.717`/`0.7166`, `1.37%`,
+  the derived `A_{95}^{\rm phys}` claim) — 7 prose locations plus 2 table
+  rows (`tab:pixel_calib`): the pre-`sec:bh` floor discussion (~l.507),
+  Assumption 2 of `sec:bh` (~l.855, now carrying the Q-1a architectural
+  paragraph verbatim plus the named hold), the black-hole-section closing
+  paragraph (~l.937), the Conclusions (~l.967), the
+  `sec:robustness_disclosure` narrative (~l.1059, rewritten with the
+  positive-control numbers and the hold), and the table's `D` and
+  `A_{95}^{\rm phys}` rows (now "on hold", with an explanatory caption).
+- Replaced the superseded `0.036 ± 0.005` hemisphere-difference sentence
+  (itself measured on the same out-of-domain images) with the Q-3
+  sky-dependence-systematic paragraph.
+- Data Availability: relabelled the PA-parity-transfer artifact entry as
+  "on hold" and added a new entry for the `row16_tta_2026_09_21` diagnostic
+  directory and its three manifests (`row16-tta-recovery-bound`,
+  `row16-d180-largest-feasible-subset`, `row16-s6-dipole-projection`), all
+  already registered in `reproducibility/manifests/programs/galaxy-chirality.json`.
+- No new numbers were introduced anywhere outside what the two propagation
+  notes already gave (`/never-fabricate-derivation`).
+
+**Hygiene (directive G):** `\paperVersion` v4P.0.10→v4P.0.11;
+`\paperTimestamp` September 21→22, 2026; 4-pass `pdflatex`, 0 undefined
+refs; one pre-existing 5.88pt overfull hbox, unchanged, below the 10pt gate;
+15→15 pages (unchanged). `/latex-audit` full render of every edited page
+(title, floor-discussion page, Assumption-2 page, black-hole closing +
+Conclusions page, robustness-disclosure pages, the rebuilt table, and the
+Data-Availability page) — no overflow, no overlap, no broken table.
+
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `c5944b14d0987d14bbe0d2a61953b1f6`, SHA-256
+  `9f3822a2f1c97184c7d4beccd14294739816228b53ef8e59af02e6bc20b1528a`.
+  Mirrored byte-identically (three-way md5 verified: compile ==
+  `site/public/papers/` == `public/papers/`) to
+  `paper4prime_chirality_test_v4P.0.11.pdf`.
+- **arXiv tarball:** rebuilt from scratch and standalone-compile-verified
+  (extract to a clean dir + 3-pass pdflatex, 0 undefined refs,
+  byte-identical page count and file size — 15 pp, 1,127,450 bytes — to the
+  source compile; PDF bytes differ only in the embedded pdflatex
+  timestamp/ID, as expected across separate compiles):
+  `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.11.tar.gz`,
+  sha256 `b5a15d03fc252f90741b8433cbd1164d4310ecd5aa38c81756dac9e34ef23111`.
+- **Convex:** UNAVAILABLE (deployment `brilliant-panther-471` over its
+  spending limit) — the `paperVersions:bump` mutation for v4P.0.11 is
+  queued in `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`, not
+  written. The three-way md5 check is therefore source==site==public only;
+  the Convex arm cannot be verified until the deployment is re-enabled.
+- **Git:** commit recorded in the campaign log (`L4e-p4p-hold-correction`).
+
+**Sign-off hold status:** the co-director's SIGN-OFF HOLD on P4P is **LIFTED
+for the printed-claim defect** this lane was spawned to fix — the served
+PDF no longer asserts a dilution bound measured on the wrong images. It
+**STILL STANDS** on the broader open item: a fresh INT confirmation board on
+the exact v4P.0.11 PDF has not been run (directive R2 round budget was
+already refreshed by v4P.0.10 and is refreshed again by this correction),
+and the in-domain re-measurement that would let the dilution bound itself be
+reinstated has not been done. See campaign Log for the exact next-lane ask.
 
 ## Row-16(ii-b) PA-parity-transfer propagation (v4P.0.9 → v4P.0.10, 2026-09-21)
 
