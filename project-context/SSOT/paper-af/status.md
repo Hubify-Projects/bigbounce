@@ -1,13 +1,137 @@
 # AF (anomaly flagship) status — current authoritative section
 
-**Current candidate:** vAF.0.5 · `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex`
-**Directive-P readiness:** 77 (COMPUTED) — lane LAF2 (2026-09-21) closed DAF-16 fully and
-completed the bibliography verification LR1 started; no review board run (directive R2:
-round 1 of 2 still spent, unchanged from R1). Directive-G bundle re-verified clean at
-vAF.0.5. See "LAF2 non-review TODO closure" below for the full account;
-`project-context/peer-reviews/DISPOSITIONS/AF.md` for the canonical per-item ledger.
+**Current candidate:** vAF.0.6 · `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.tex`
+**Directive-P readiness:** 80 (COMPUTED, author's reasoned estimate — no automated
+calculator exists for this draft-registry paper; Convex disabled) — lane LAF3 (2026-09-22)
+ran the directive-R2 confirmation board on the exact vAF.0.5 PDF (the version R1 never
+actually reviewed, since LAF2 closed real items and bumped twice after R1), found real
+items across all three legs including a genuine statistical-attribution error (DAF-22),
+and closed the substantial majority with real edits/computation, bumping to vAF.0.6. NOT
+CONFIRMED — directive R2's two-board budget is now fully spent; no further board without
+an intervening science/scope decision. Full account below in "LAF3 R2 confirmation wave".
 
-## LAF2 non-review TODO closure (vAF.0.4 → vAF.0.5, 2026-09-21)
+## LAF3 R2 confirmation wave (vAF.0.5 → vAF.0.6, 2026-09-22)
+
+Campaign lane LAF3. Directive-G pre-check on vAF.0.5 PASS before dispatch (fresh 4-pass
+recompile matched the served build byte-for-byte in text content; the raw PDF md5 only
+differs by pdflatex's embedded build timestamp). Board: Grok API `grok-4.3` + Gemini API
+`gemini-3.1-pro-preview` (`tools/v3_native_pdf_review.py`, `ApJS-CATALOG` profile — the
+paper's own registered catalogue/data-release referee profile) + one Claude-opus
+verdict-blind referee, all against the exact vAF.0.5 PDF (sha256 `ea81ef41...`). Raws
+saved and read in full before any verdict recorded.
+
+**Verdicts (words diagnostic only, per directive H):** Grok REJECT, Gemini MAJOR
+REVISIONS, Claude-opus MAJOR REVISIONS. All three converged on the flux-to-magnitude
+arithmetic error and the missing LoVerde/Eisenstein-Hu/Planck citations; opus alone
+caught the round's most consequential finding.
+
+**The single most consequential finding (DAF-22):** the abstract/§I/§XI claimed "the
+blue arm alone accounts for R²=0.78 of the score's variance" — but §V C's own body text
+correctly computes R²=0.78 for the FULL three-camera regression, collapsing to R²=0.01
+when the blue arm is dropped. What the blue arm explains in isolation (a univariate
+regression) is a different, previously uncomputed number. Independently computed fresh
+(new committed script `confirm_round_2026-09-22.py`): the blue arm alone gives R²=0.198
+— roughly 4× lower than what the summary locations attributed to it. All three summary
+locations now state both numbers explicitly and distinguish them; no headline conclusion
+changes (the blue arm still dominates by every measure), but the specific number
+attributed to "alone" is now the one actually computed for that quantity.
+
+**8 further findings closed with real edits or new committed computation:** the flux-to-
+magnitude conversion "≈20.6 AB mag" corrected to "≈20.9" (arithmetic error, all 3 legs
+convergent); LoVerde 2008/Eisenstein & Hu 1998/Planck 2018 added to the bibliography
+(named in prose, uncited, all 3 legs convergent); leftover version-history language ("we
+no longer report one of them as supported") removed; the §IV.C morphology census
+completed (441 PSF + 316 REX + 406 empty summed to 1,163, not the released 1,244 — the
+missing 81 are EXP/SER/DEV, verified against `draft_numbers.json`); "a referee should
+read V10 as..." reworded to address the reader, not a referee; Appendix A's
+bibliography-verification arithmetic ("4+26=30") corrected to reconcile against the
+actual 37-entry bibliography; the abstract's reproducibility claim scoped precisely to
+the catalogue's selection (score/gate/threshold) rather than reading as a blanket promise
+the taxonomy section's own honest disclosure immediately contradicts; and a real,
+independently-computed Spearman statistic (ρ=0.009, p=0.85, n=502) added to the existing
+"no visible trend of score with redshift" claim. A separate, purely presentational defect
+was also found and fixed by rendering the PDF (not by reading the source): revtex's
+`description` environment appends its own colon after a bracketed `\item` label, so
+`\item[Refuted.]`-style labels (7 total) rendered as "Refuted.:" — fixed by dropping the
+redundant in-bracket periods.
+
+**Findings FALSIFIED against source, not real:** the claim the paper never states the
+null result's effect size (the abstract already states "95% upper limits up to 12.5%");
+the claim only an aggregate UL is reported, not per-class (Table VII already reports a
+per-class Wilson 95% CI for all five reference classes); the claim the phase-3-v2 landing
+receipt post-dates the paper (it precedes it by 18 days); a claimed body/abstract
+significant-figure inconsistency on `5.7×10⁻⁵` (all three occurrences already match).
+
+**Genuinely real, left honestly open (not closable without fabricating a threshold or an
+uncited physical claim):** how much of the catalogue a "simple blue-arm quality cut"
+would remove (no such cut is defined anywhere in the release); the expected $f_z/f_r$
+ratio for a Gunn-Peterson trough at z≈6 (needs a literature-sourced number this lane
+cannot responsibly attach without risking a misremembered citation); an explicit
+Legacy-Survey noise-floor value for the "orders of magnitude above" claim (same
+reasoning, non-blocking MINOR).
+
+**Re-flags of already-disclosed content, no change:** the taxonomy's non-physical
+stratification and RA-wrap (re-flag of DAF-19, still DISCLOSED-NOT-CLOSED); the Zenodo
+DOI placeholder (re-flag of DAF-05, Houston-only); the internal `vAF.0.5`-style version
+tag on the title page (re-flag of R1's Gemini AF-N1, OPINION/OUT-OF-SCOPE, deliberate
+lab-wide convention). Full item-by-item ledger in
+`project-context/peer-reviews/DISPOSITIONS/AF.md` (DAF-22 through DAF-31).
+
+**Directive-G bundle.** `\paperVersion` vAF.0.5→vAF.0.6; `\paperTimestamp` September
+21→22, 2026. 4-pass `pdflatex`, 0 errors, 0 undefined refs/citations, 0 overfull hboxes
+>10pt, 18 pages (unchanged). `/latex-audit` full visual pass on all 8 touched pages plus
+the OT-list page — no overflow, no overlap. `/artifact-link-verify`: all 6 GitHub links
+(extracted from the compiled PDF's link annotations) resolve on `main`, unchanged.
+Standalone tarball-style compile (`.tex` + `figures/` + `tables/` only) reproduces the
+served build's text byte-for-byte identically; discarded after the smoke test per
+protocol. 5-way md5-verified mirror at `47fca3cb5d827518aebde7499b8dc810`.
+
+- **PDF:** `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf` — MD5
+  `47fca3cb5d827518aebde7499b8dc810`, SHA-256
+  `e3099173d5f0f96ac3d179a3a16abf0c7a14dc043bfb4626c8609ed4560365b2`.
+  Mirrored byte-identically to `site/public/papers/anomaly_flagship_vAF.0.6.pdf`,
+  `site/public/papers/anomaly_flagship.pdf`, `public/papers/anomaly_flagship_vAF.0.6.pdf`,
+  `public/papers/anomaly_flagship.pdf`.
+- **New committed script:**
+  `pipelines/p1_highz_tracers/flagship_assembly_2026-09-18/scripts/confirm_round_2026-09-22.py`
+  → `outputs_blue_arm/confirm_round_2026-09-22.json`.
+- **Convex:** DISABLED (spending limit) for the duration of this lane. Intended mutations
+  (`paperVersions:bump` vAF.0.5→vAF.0.6 with the real md5/sha256/pages;
+  `rRounds:create` for this confirmation board; `externalReviews:upsertByLabelDate` × 3;
+  `papers:setReadinessCap` 77→80; `activityFeed:add`) queued to
+  `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+- **Dispositions:** DAF-22 through DAF-31 added in
+  `project-context/peer-reviews/DISPOSITIONS/AF.md`.
+- **Git:** lane LAF3 commit(s), this bundle.
+
+**What genuinely remains, and who/what unblocks each (unchanged from vAF.0.5 except as
+noted):**
+- **OT-1 selection function** — needs GPU injection-recovery compute (RunPod or
+  equivalent); fully specified in-paper, not agent-closable without that compute.
+- **Zenodo DOI** — Houston-only (external account action to mint the deposit).
+- **DAF-17** (dedup near-threshold sensitivity) — needs new analysis on the raw
+  pre-dedup data.
+- **DAF-19** (taxonomy RA-wrap / missing UMAP-HDBSCAN hyperparameters) — needs a
+  corrected re-clustering run.
+- **DAF-20** (archived model's training corpus/architecture) — confirmed absent from
+  every artifact in the repo; genuinely undocumented, not recoverable by agent-side work.
+- **DAF-30** (new) — blue-arm quality-cut removal quantification: needs someone to
+  pre-declare a cut threshold before it can be computed honestly.
+- **DAF-31** (new) — Gunn-Peterson expected f_z/f_r ratio: needs a literature-sourced
+  citation, ideally from a lane with live literature-search access.
+- **Directive R2: round 2 of 2 spent.** No further board on paper-af without an
+  intervening science/scope decision (e.g., landing OT-1's compute, a corrected
+  re-clustering for DAF-19, or Houston's Zenodo DOI).
+
+---
+
+## LAF2 non-review TODO closure (vAF.0.4 → vAF.0.5, 2026-09-21) [superseded by vAF.0.6 above; kept for history]
+
+**Directive-P readiness (as of vAF.0.5, historical):** 77 (COMPUTED) — lane LAF2
+(2026-09-21) closed DAF-16 fully and completed the bibliography verification LR1
+started; no review board run (directive R2: round 1 of 2 still spent, unchanged from
+R1). Directive-G bundle re-verified clean at vAF.0.5.
+`project-context/peer-reviews/DISPOSITIONS/AF.md` for the canonical per-item ledger.
 
 Campaign lane LAF2. Scope: close every remaining agent-closable open item on paper-af and
 run a full directive-G hygiene bundle. Explicitly NOT a review round (directive R2: R1

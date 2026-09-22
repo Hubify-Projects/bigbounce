@@ -170,19 +170,23 @@
       "anomaly_flagship_vAF.0.2.pdf",
       "anomaly_flagship_vAF.0.3.pdf",
       "anomaly_flagship_vAF.0.4.pdf",
-      "anomaly_flagship_vAF.0.5.pdf"
+      "anomaly_flagship_vAF.0.5.pdf",
+      "anomaly_flagship_vAF.0.6.pdf"
     ],
-    "version": "vAF.0.5",
+    "version": "vAF.0.6",
     "pages": 18,
-    "date": "2026-09-21",
-    "sha256": "ea81ef413503d25291853a2be714226d3b47fe680ead2f01727aaabe961140ca",
-    "md5": "60de7e9dbfbcc77336b3050ee788e68e",
+    "date": "2026-09-22",
+    "sha256": "e3099173d5f0f96ac3d179a3a16abf0c7a14dc043bfb4626c8609ed4560365b2",
+    "md5": "47fca3cb5d827518aebde7499b8dc810",
     "review_paths": [
       "project-context/peer-reviews/INT_v3/ROUND_2026-09-19-AF-vAF.0.2-EXACTPDF-b972d890-R1/",
       "project-context/peer-reviews/ROUND_2026-09-19-AF-vAF.0.3-EXACTPDF-d85487e9-R1_AF_Grok_brutal.md",
-      "project-context/peer-reviews/ROUND_2026-09-19-AF-vAF.0.3-EXACTPDF-d85487e9-R1_AF_Gemini_cosmology.md"
+      "project-context/peer-reviews/ROUND_2026-09-19-AF-vAF.0.3-EXACTPDF-d85487e9-R1_AF_Gemini_cosmology.md",
+      "project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM_AF_Grok_brutal.md",
+      "project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM_AF_Gemini_cosmology.md",
+      "project-context/peer-reviews/INT_v3/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM/AF_vAF.0.5_CONFIRM_claude_opus.md"
     ],
-    "status": "Lane LAF2 (2026-09-21, vAF.0.5): non-review TODO-closure + directive-G bundle -- schema table closed to all 192/192 columns (DAF-16 fully closed), full bibliography ADS-verified (26 remaining entries, all match), OT-1/Zenodo confirmed genuinely-open (GPU compute / Houston-only, unchanged). No review board run (directive R2: R1 remains round 1 of 2). Readiness recomputed post-bundle -- see SSOT/paper-af/status.md. Prior: R1 INT board closed (lane LR1, 2026-09-19): Claude-opus (major-revisions), Grok API grok-4.3 (reject), Gemini API gemini-3.1-pro-preview (major-revisions) -- all convergent, truth-audited verdict-first, real closures in vAF.0.4 (see project-context/peer-reviews/DISPOSITIONS/AF.md).",
+    "status": "Lane LAF3 (2026-09-22, vAF.0.6): R2 confirmation board on the exact vAF.0.5 PDF (Grok API REJECT, Gemini API MAJOR REVISIONS, Claude-opus verdict-blind MAJOR REVISIONS) closed 9 real findings, most consequentially a headline R^2 statistical-attribution error (full-model vs univariate conflation, independently recomputed at R^2=0.20). NOT CONFIRMED -- directive R2 round 2 of 2 spent. Readiness 77->80 COMPUTED. See DISPOSITIONS/AF.md DAF-22..31 and SSOT/paper-af/status.md. Prior: LAF2 (2026-09-21, vAF.0.5) non-review TODO-closure + directive-G bundle -- schema table closed to all 192/192 columns (DAF-16 fully closed), full bibliography ADS-verified (26 remaining entries, all match). R1 INT board closed (lane LR1, 2026-09-19): Claude-opus (major-revisions), Grok API grok-4.3 (reject), Gemini API gemini-3.1-pro-preview (major-revisions) -- all convergent, truth-audited verdict-first, real closures in vAF.0.4 (see project-context/peer-reviews/DISPOSITIONS/AF.md).",
     "evidence_root": "pipelines/p1_highz_tracers/flagship_assembly_2026-09-18"
   }
 }

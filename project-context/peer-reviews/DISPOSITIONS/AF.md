@@ -253,3 +253,222 @@ reconfirmed genuinely not agent-closable, left unchanged as already honestly spe
 DAF-17/19/20 unchanged (still genuinely open, real further work). Full account in
 `project-context/SSOT/paper-af/status.md` §"LAF2 non-review TODO closure". An R2 board,
 if run, should verify these closures plus the R1 closures on the exact vAF.0.5 PDF.
+
+---
+
+## R2 confirmation wave (2026-09-22) — `ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM`
+
+Lane LAF3. Directive R2 authorized exactly one confirmation board because vAF.0.5 (this
+round's exact target) had never been reviewed: R1 ran on vAF.0.2/vAF.0.3, and lane LAF2
+then closed real items and bumped twice (vAF.0.3→vAF.0.4→vAF.0.5) without an intervening
+board. Directive-G pre-check on vAF.0.5 PASS before dispatch: fresh 4-pass recompile
+0 errors/0 undef refs/0 overfull >10pt/18pp, `pdftotext` byte-identical to the served
+build (the raw PDF md5 differs only in pdflatex's embedded build timestamp), and all 5
+served paths md5-matched at `60de7e9dbfbcc77336b3050ee788e68e`. Convex arm UNAVAILABLE
+(spending limit) — no board-registration mutation possible; queued below.
+
+**Board:** Grok API `grok-4.3` + Gemini API `gemini-3.1-pro-preview`
+(`tools/v3_native_pdf_review.py`, `ApJS-CATALOG` profile — the paper's own registered
+profile, a catalogue+data-release referee stance) + one Claude-opus verdict-blind
+referee (INT leg, dispatched as a separate sub-agent with no access to the other two
+legs' reports), all against the exact vAF.0.5 PDF (sha256 `ea81ef41...`). Fable was not
+attempted for this leg — the lane brief authorizes opus directly for non-flagship INT
+legs. Raws saved and read in full before any verdict recorded:
+`project-context/peer-reviews/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM_AF_Grok_brutal.md`,
+`..._AF_Gemini_cosmology.md`,
+`project-context/peer-reviews/INT_v3/ROUND_2026-09-22-AF-vAF.0.5-EXACTPDF-ea81ef41-CONFIRM/AF_vAF.0.5_CONFIRM_claude_opus.md`.
+
+**Verdicts (words diagnostic only, per directive H):** Grok REJECT (4 ESSENTIAL, 4
+MAJOR, 4 MINOR/NIT). Gemini MAJOR REVISIONS (4 ESSENTIAL, 4 MAJOR, 2 MINOR/NIT).
+Claude-opus MAJOR REVISIONS (5 ESSENTIAL, 19 MAJOR, 14 MINOR, 6 NIT). All three legs
+independently converged on the flux-to-magnitude arithmetic error and the missing
+LoVerde/Eisenstein-Hu/Planck citations; opus additionally caught a genuinely-new,
+higher-value statistical-attribution error the other two legs did not (DAF-22 below).
+
+**Orchestrator verification method (before any closure):** every ESSENTIAL/BLOCKER-tier
+finding was independently re-derived from the exact main.tex source and, where a
+released-data claim was involved, from the committed parquet files directly (not
+accepted from reviewer text alone) — a new committed script,
+`flagship_assembly_2026-09-18/scripts/confirm_round_2026-09-22.py`, reproduces two of the
+closures below (the blue-arm univariate R² and the score-vs-redshift Spearman test) from
+`clean_rerun/results_2026-08-07/phase3_v2/flagship_sample_v2{,_enriched}.parquet`.
+
+### DAF-22 (ESSENTIAL, Claude-opus only — genuinely new, most consequential): abstract/§I/§XI claim "it alone accounts for R²=0.78" conflates the full three-camera regression's R² with the blue arm's own univariate R²
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Independently verified: §V C's own body text already correctly reports the full-model
+  regression (`mean_mse ~ r_B+r_R+r_Z`, R²=0.777) and the drop-one-collapses-to-0.006
+  result — that arithmetic was never wrong. But three summary locations (abstract, §I
+  item 4, §XI) simplified this to "it [the blue arm] alone accounts for R²=0.78,"
+  which is a different, previously uncomputed quantity: a univariate regression of
+  `mean_mse` on `r_B` alone. Computed fresh (`confirm_round_2026-09-22.py`): R²=0.198
+  for `r_B` alone (0.001 for `r_R`, 0.004 for `r_Z`) — roughly a factor of 4 below the
+  0.78 figure the summary locations attributed to it alone.
+- **Closure:** all three summary locations rewritten to state both numbers explicitly
+  and distinguish them ("the full three-camera regression explains R²=0.78 ... and
+  collapses to R²=0.01 when it is dropped, while it alone, univariately, explains
+  R²=0.20"); §V C gains one paragraph naming the confirmation board and stating why the
+  two numbers are not interchangeable. No conclusion changes — the blue arm still
+  dominates the score by every measure — but the specific number attributed to "the blue
+  arm alone" is now the one actually computed for that quantity. main.tex abstract, §I
+  item 4, §V C, §XI.
+- **fingerprint:** R^2=0.78, it alone, univariate, blue arm, drop rB, full model
+
+### DAF-23 (ESSENTIAL, all 3 legs convergent): §VII.B flux-to-magnitude conversion "≈20.6 AB mag" is arithmetically wrong
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Independently recomputed: $m = 22.5 - 2.5\log_{10}(4.33) = 20.91$, not $20.6$. Does not
+  change the physical conclusion (still far too bright for the claimed dropout).
+- **Closure:** corrected to "≈20.9 AB mag" with the formula shown inline. main.tex §VII.B.
+- **fingerprint:** 20.6 AB mag, flux to magnitude, 4.33 nmgy, 22.5
+
+### DAF-24 (ESSENTIAL, all 3 legs convergent): §VIII names LoVerde et al. 2008, Eisenstein & Hu 1998, and Planck 2018 in prose with no bibliography entry
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified: none of the three had a `\bibitem`/`\cite` in vAF.0.5, despite the paper's
+  own stated standalone-reader-test standard (already applied to NED/VizieR/AllWISE in
+  DAF-21).
+- **Closure:** three new bibitems added, `\cite{}` wired at first mention. The two also
+  cited in the same paragraph (Labbé 2023, Boylan-Kolchin 2023, added by DAF-18) were
+  already present. main.tex §VIII, bibliography.
+- **fingerprint:** LoVerde, Eisenstein Hu, Planck 2018, uncited, f_NL abundance
+
+### DAF-25 (ESSENTIAL, Gemini + Claude-opus convergent): §VII.B "we no longer report one of them as supported" is leftover version-history language
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified: the phrase is literal in vAF.0.5, referring to the R1-wave downgrade
+  (DAF-03/04) rather than describing the current analysis.
+- **Closure:** removed; the sentence now states the current classification directly with
+  no reference to a prior draft. main.tex §VII.B.
+- **fingerprint:** no longer report, supported, version history, previous draft
+
+### DAF-26 (MAJOR, Claude-opus): §IV.C morphology census (441 PSF + 316 REX + 406 empty = 1,163) does not reach the released 1,244
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified against `draft_numbers.json::morphtype_counts`: the missing 81 are EXP (61),
+  SER (14), DEV (6); all six values sum to 1,244 exactly.
+- **Closure:** the three missing categories added to the sentence, with an explicit
+  sum-check clause. main.tex §IV.C.
+- **fingerprint:** morphology census, 441 PSF, 316 REX, unaccounted, 81 objects
+
+### DAF-27 (MAJOR, Claude-opus): "A referee should read V10 as..." addresses a referee directly inside the manuscript body
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- **Closure:** reworded to address the reader generically ("V10 should be read as...").
+  main.tex §III B.
+- **fingerprint:** referee should read, V10, addressing referee
+
+### DAF-28 (MAJOR, Claude-opus): Appendix A's bibliography-verification arithmetic (4 + 26 = 30) does not reconcile with the actual 34-entry (now 37) bibliography
+- **class:** CLOSED — GENUINELY-NEW-REAL
+- Verified by direct enumeration of every `\bibitem` key: 3 entries are disclosed
+  non-journal citations correctly excluded from ADS checking (Redrock in-prep,
+  DESIBitmasks, ApacheArrow); 5 entries (Labbé 2023, Boylan-Kolchin 2023 added
+  2026-09-21; LoVerde 2008, Eisenstein & Hu 1998, Planck 2018 added 2026-09-22 by
+  DAF-24 above) postdate the 2026-09-21 ADS sweep and were not part of it.
+- **Closure:** the verification paragraph rewritten to name all four categories
+  explicitly (ADS-verified, disclosed-non-journal, post-sweep-additions) instead of
+  asserting two counts that silently didn't sum to the total; the 5 post-sweep entries
+  are honestly flagged as stated at the author's domain-knowledge confidence, not a
+  fresh ADS lookup, with a live check left open. main.tex Appendix A.
+- **fingerprint:** 4+26, bibliography count, does not reconcile, 34 entries
+
+### DAF-29 (ESSENTIAL, Gemini; substance is a re-flag of DAF-19, but the specific abstract-scoping gap is new): abstract's "complete provenance chain needed to reproduce it" reads as contradicted by §VI.A's own "not reproducible from the released files alone"
+- **class:** CLOSED — GENUINELY-NEW-REAL (presentational scope, not new substance)
+- The underlying fact (UMAP/HDBSCAN hyperparameters unrecorded) is DAF-19, already
+  disclosed and correctly left open (needs a corrected re-clustering, not a text fix).
+  What is new here is that the abstract's own reproducibility claim was unscoped enough
+  to read as a blanket promise the taxonomy subsection immediately contradicts.
+- **Closure:** abstract sentence scoped precisely to what is reproducible (the catalogue
+  selection: score, provenance gate, threshold), with an explicit forward pointer to the
+  taxonomy's own disclosed limitation. DAF-19 itself is unchanged and still open.
+  main.tex abstract.
+- **fingerprint:** complete provenance chain, contradiction, not reproducible, hyperparameters
+
+### Findings FALSIFIED against source (not real):
+- **Grok AF-E1** ("the paper never states the effect size of the null result"): FALSE —
+  the abstract already states "95% upper limits up to 12.5% recovery for the rarest
+  class" verbatim, and Table VII already gives the 3.3× BAL enrichment.
+- **Grok AF-M3** ("95% ULs should be per-class, not only aggregate"): FALSE — Table VII
+  already reports a per-class Wilson 95% CI for all five reference classes (0.107% to
+  12.456%); the "12.5%" in the abstract is the worst (SLSN) class's own per-class UL.
+- **Grok AF-E4** (partial): "the landing receipt date post-dates the paper date" is
+  backwards — `PHASE3_V2_LANDING_2026-09-03.md` is dated 18 days *before* the paper
+  (September 21/22, 2026), not after.
+- **Grok/Gemini/opus "double punctuation" and typo claims on `\item[Refuted.]`-style
+  labels**: the *source* had no double punctuation; the *rendered PDF* did — revtex's
+  `description` environment appends its own colon after a bracketed label, so a label
+  ending in "." rendered as "Label.:". CONFIRMED as a real rendering defect once checked
+  against the rendered PDF (not the source diff) and closed by removing the 7 redundant
+  in-bracket periods across `\item[Refuted]`, `\item[Undecidable from the release]`, and
+  the five `\item[OT-N ...]` labels. Logged here rather than as a numbered DAF because it
+  is presentational, not a factual/scientific claim.
+- **Grok AF-N4** ("5.7×10⁻⁵ should be 5.71×10⁻⁵ for consistency with the body"): FALSE —
+  all three occurrences (abstract, §II, §IX) already read "5.7×10⁻⁵" identically; there
+  is no inconsistency to fix.
+
+### Re-flags of already-disclosed content (not genuinely new, no change):
+- **Grok AF-E2/AF-M4, Claude-opus AF-E1/E2** (taxonomy is a non-physical stratification;
+  Family 0 spans 350° RA): re-flag of DAF-19, already DISCLOSED-NOT-CLOSED, unchanged.
+- **Grok AF-E4 (DOI half), Gemini finding 4** (Zenodo DOI placeholder): re-flag of
+  DAF-05, Houston-only, unchanged.
+- **Claude-opus** ("vAF.0.5 on the title page" internal version tag): re-flag of R1's
+  Gemini AF-N1, dispositioned OPINION/OUT-OF-SCOPE (deliberate lab-wide convention
+  across all papers), unchanged.
+
+### Genuinely real, honestly left open (not closable this wave without fabricating a threshold or an uncited physical claim):
+- **DAF-30 (Grok AF-M2):** no quantitative statement of how much of the released
+  catalogue a "simple blue-arm quality cut" would remove — real ask, but no such cut is
+  defined anywhere in the release; computing one now would require inventing a threshold
+  never pre-declared, which `/never-fabricate-derivation` forbids. Left as a named
+  follow-up for whoever defines and pre-registers a cut.
+- **DAF-31 (Gemini finding 6):** the "far shallower than a Gunn-Peterson trough at
+  z≈6 would produce" claim (§VII.B) has no cited expected $f_z/f_r$ ratio. A real,
+  literature-sourced number is needed (e.g. from a GP-trough transmission model); this
+  lane does not have a live literature-search path it can respectably attach a citation
+  from without risking an uncited or misremembered physical claim, so it is left as a
+  named gap rather than guessed.
+- **Gemini finding 8** (MINOR): the "orders of magnitude above any plausible noise
+  floor" claim in §VII.B is not given a numeric noise-floor value. Same reasoning as
+  DAF-31 — deferred rather than guessed, non-blocking.
+
+### OPINION/OUT-OF-SCOPE (editorial/venue, per directive R2's genre-length-venue guidance):
+Grok AF-M1 (recommend cutting to 10-12pp — a venue/length call, Houston-gated if ever
+pursued, not a correctness defect); Grok AF-N1 (the "future" date header — same
+deliberate lab-wide dating convention as every other current paper, already the subject
+of R1's Gemini AF-N1 disposition); Grok AF-N3 (minor "sky/non-science" vs. "non-science
+fibres" terminology drift — cosmetic, deferred non-blocking in the same class as R1's
+MINOR-1).
+
+**Directive-G bundle:** `\paperVersion` vAF.0.5→vAF.0.6; `\paperTimestamp` September
+21→22, 2026. 4-pass `pdflatex`, 0 errors, 0 undefined refs/citations, 0 overfull hboxes
+>10pt, 18 pages (unchanged — additive sentence-level edits, no padding).
+`/latex-audit` full visual pass on all 8 touched pages (1, 2, 5, 6, 7, 13, 15, 17) plus
+the OT-list page (14) after the description-label fix — no overflow, no overlap.
+`/artifact-link-verify`: all 6 GitHub `\artifact{}`/`\artifactdirlink{}` links (extracted
+from the compiled PDF's link annotations, not guessed from the source) resolve on `main`,
+unchanged. Standalone tarball-style compile (`.tex` + `figures/` + `tables/` only, no
+other source files) reproduces the served build's text byte-for-byte identically
+(4-pass, 0 errors, 0 undef refs, 18pp); discarded after the smoke test per protocol.
+5-way md5-verified mirror (source dir, `site/public/papers/` versioned+alias,
+`public/papers/` versioned+alias) at `47fca3cb5d827518aebde7499b8dc810`.
+
+- **PDF:** `pipelines/p1_highz_tracers/anomaly_flagship_draft/main.pdf` — MD5
+  `47fca3cb5d827518aebde7499b8dc810`, SHA-256
+  `e3099173d5f0f96ac3d179a3a16abf0c7a14dc043bfb4626c8609ed4560365b2`.
+- **New committed script:**
+  `pipelines/p1_highz_tracers/flagship_assembly_2026-09-18/scripts/confirm_round_2026-09-22.py`
+  → `pipelines/p1_highz_tracers/anomaly_flagship_draft/outputs_blue_arm/confirm_round_2026-09-22.json`.
+- **Convex:** DISABLED — intended mutations queued to
+  `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
+- **Readiness:** 77→80, COMPUTED by the author's own reasoning against the directive-P
+  components (no automated calculator exists for this draft-registry paper): a real,
+  independently-verified science-attribution correction (DAF-22) plus 8 further real
+  closures raise evidence/reproducibility and science-closure quality, but "automated
+  review convergence" earns no additional credit this wave — the board found genuinely-
+  new-real items (not a clean confirmation) and 2 new items (DAF-30/31) join the 3
+  pre-existing disclosed-open items (DAF-17/19/20) plus OT-1 and the Zenodo DOI as still
+  open. This is a reasoned estimate, not a Convex-computed value (Convex disabled);
+  flagged as such for the director to reconcile once Convex is restored.
+
+**Result: AF is NOT CONFIRMED on this pass.** A real board ran on the exact vAF.0.5 PDF,
+found real items across all three legs (most consequentially DAF-22, a genuine
+statistical-attribution error the R1 board never had the chance to catch since it
+concerned language introduced only at vAF.0.4), and closed the substantial majority with
+real edits or new, independently-verified computation. Per the no-re-board rule, this
+round does not re-test the new vAF.0.6 PDF. **Directive R2: round 2 of 2 spent — no
+further board on paper-af without an intervening science/scope decision** (e.g., landing
+OT-1's GPU compute, a corrected re-clustering for DAF-19, or Houston's Zenodo DOI).

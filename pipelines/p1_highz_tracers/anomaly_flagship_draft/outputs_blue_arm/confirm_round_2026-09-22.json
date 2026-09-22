@@ -1,0 +1,8 @@
+{
+  "mean_mse_r2_univariate_rB": 0.19761714864809876,
+  "mean_mse_r2_univariate_rR": 0.0007471430483236841,
+  "mean_mse_r2_univariate_rZ": 0.004034995273701547,
+  "n_zwarn0": 502,
+  "score_vs_z_zwarn0_rho": 0.008583895154729472,
+  "score_vs_z_zwarn0_p": 0.8478602377405989
+}
