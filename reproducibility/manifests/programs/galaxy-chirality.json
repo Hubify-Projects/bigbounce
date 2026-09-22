@@ -202,6 +202,13 @@
    "depends_on": [
     "row16iib-pa-parity-transfer"
    ]
+  },
+  {
+   "id": "row16-indomain-d180",
+   "depends_on": [
+    "row16iib-pa-parity-transfer",
+    "row16-d180-largest-feasible-subset"
+   ]
   }
  ],
  "external_data": [

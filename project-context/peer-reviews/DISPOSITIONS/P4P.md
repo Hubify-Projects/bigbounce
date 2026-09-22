@@ -540,3 +540,95 @@ committed JSON (`/never-fabricate-derivation`).
 spending limit, mutation queued in `CONVEX_BACKFILL_QUEUE_2026-09-21.md`);
 arXiv tarball rebuilt and standalone-compile-verified (0 undef refs, 15 pp,
 byte-identical size on a clean extract).
+
+## v4P.0.11 → v4P.0.12 — HOLD LIFTED: in-domain dilution bound adopted (2026-09-22, lane `bb-L4f-p4p-indomain`)
+
+Not a review round — the named lift of the DISP-HOLD-01 hold, by the exact
+test that hold specified. Lane `bb-LS10-indomain-d180` (2026-09-22) re-ran the
+identical PA-restoring rotation test directly on the classifier's own
+`Smith42/galaxies` imaging (the pinned revision documented at
+`main.tex:171-173`): $N=40{,}000$ galaxies streamed by HTTP range read (zero
+image bytes to disk), 320,000 forward passes, local MPS, 47 min, \$0. Two
+gates passed before the measurement was trusted: (1) catalogue-scale in-domain
+agreement is 99.936% over all 8,474,531 galaxies and 100.000% over the
+949,584 `primary_hc` galaxies (`c1_e2e_catalogue_agreement.json`), against
+43.9% on the withdrawn out-of-domain viewer cutouts; (2) the domain gap is a
+measured $3.41\times$ difference in angular field — the in-domain cutouts are
+$512\times512$ px at $0.262''$/px (a $134.1''$ field, median pixel
+correlation 0.992 at that scale, $\le 0.25$ at every other grid point tested;
+`posthoc_pixel_scale.json`) against the withdrawn measurement's $39.3''$
+viewer-cutout field.
+
+**DISP-HOLD-01 — dilution bound / physical-parity floor: CLOSED, adopted
+in-domain.** The withdrawn out-of-domain bound (`D ≤ 0.7166 ± 0.0047` /
+`D ≤ 0.717 ± 0.005` cross-tabulation depending on selection, `A₉₅^phys ≥
+1.37%`) is superseded, not averaged with, the in-domain measurement:
+`primary_hc` (N=4,579) `D ≤ 0.5998 ± 0.0065` (`61σ` below unity;
+`θ=180°`-only, assumption-free: `D ≤ 0.6599 ± 0.0075`), all spirals
+(N=15,219) `D ≤ 0.5237 ± 0.0038`; `A₉₅^phys ≥ 1.63%` (`primary_hc`),
+`≥ 1.87%` (all spirals). The in-domain classifier is **less** rotation-stable
+than the withdrawn measurement suggested — `θ=180°` self-disagreement rose
+from `21.1%` to `34.0%` — so the correction moves the physical-parity floor
+upward, in the conservative direction, exactly as
+`row16_indomain_d180_2026_09_22/PROPAGATION_NOTE.md` item R-1 characterizes
+it. Applied verbatim per items R-1/R-1a/R-1b: Assumption 2 of §`sec:bh`, the
+pre-`sec:bh` forward reference, the black-hole-section closing paragraph, the
+Conclusions, the `sec:robustness_disclosure` narrative, and `tab:pixel_calib`
+(9 prose locations + the table) all now state the in-domain result and record
+the withdrawal explicitly (never a silent substitution) — a reader of
+v4P.0.11 can see exactly what changed and why. Per R-3, the `$\bar\epsilon$`
+(PA-restoring transfer efficiency) and TTA rotation-recovery-fraction clauses
+are **cut**, not re-quoted, since they remain out-of-domain and the in-domain
+instability being larger makes an out-of-domain recovery estimate optimistic
+in the wrong direction.
+
+**DISP-HOLD-02 — sky-dependence systematic: unchanged, still OUT-OF-DOMAIN.**
+Not re-measured by this lane. The `0.090 ± 0.010` sky-dipole amplitude and its
+propagated `0.23%` spurious-dipole figure remain measured on the same
+withdrawn out-of-domain viewer cutouts; `main.tex` now says so explicitly
+(new sentence: "This amplitude was measured on the same out-of-domain viewer
+cutouts as the withdrawn dilution bound above and has not been re-measured on
+the classifier's own imaging"). Do not read DISP-HOLD-01's closure as also
+closing DISP-HOLD-02 — the two are independent measurements and only the
+first was re-run in-domain.
+
+**R-2 documentation fix (applied):** `main.tex:171-173` previously stated the
+`Smith42/galaxies` parent cutouts are $224\times224$~px; they are
+$512\times512$~px at $0.262''$/pixel (a $134''$ field), resampled to the
+$224\times224$ network input. The same stale $224\times224$/`58.7''`
+description was repeated at two further prose locations (Assumption 2,
+`sec:robustness_disclosure`) and corrected in the same bundle. Verified: `grep
+-n 224 main.tex` now returns only the one correct resize-target sentence plus
+an unrelated journal-volume-number citation.
+
+**No new numbers introduced anywhere outside `row16_indomain_d180_2026_09_22`'s
+committed JSON** (`/never-fabricate-derivation`).
+
+### v4P.0.12 hygiene
+`\paperVersion` v4P.0.11→v4P.0.12, `\paperTimestamp` unchanged (September 22,
+2026 — same day); 4-pass compile, 0 undef refs, pre-existing 5.88pt hbox only
+(unchanged); 15→16 pages (grew by one page from the added in-domain content);
+sha256 `025bec74e3b947e760c398f0eaaf5a82d6569207ed2769d9d355581906614768`, md5
+`afff6bec7b78bac271104d89a3582bf9`; three-way byte-identical mirror verified
+(source, `site/public/papers/`, `public/papers/` — Convex arm still
+UNAVAILABLE, spending limit; mutation queued in
+`CONVEX_BACKFILL_QUEUE_2026-09-21.md`); arXiv tarball rebuilt
+(`paper4prime_chirality_test_arxiv_v4P.0.12.tar.gz`, sha256
+`8e7fff95a9cc935fff37dd6f09049c220da324d78783e82363096c3e09cfdea5`) and
+standalone-compile-verified on a clean extract (0 undef refs, 16 pp,
+byte-identical 1,132,763 bytes to the source compile). New reproducibility
+manifest registered: `reproducibility/manifests/experiments/row16-indomain-d180.json`,
+linked into `reproducibility/manifests/programs/galaxy-chirality.json`.
+
+**Sign-off hold status:** the co-director's SIGN-OFF HOLD on P4P, which
+v4P.0.11 left standing on "the in-domain re-measurement that would let the
+dilution bound itself be reinstated has not been done," is **RELEASABLE**:
+that re-measurement is now done, verified against committed JSON, propagated
+without a silent substitution, and the full directive-G bundle (compile,
+audit, mirror, links, tarball) verifies clean except for the Convex arm
+(unavailable, spending limit — queued). The one item still open is unchanged
+from v4P.0.11: a fresh INT confirmation board on the exact v4P.0.12 PDF has
+not been run (directive R2 budget already refreshed twice by the v4P.0.10/11
+corrections). That is a review-convergence item, not a correctness defect,
+and does not by itself justify continuing the hold — recommend RELEASE, with
+the INT board scheduled as the next lane's task.

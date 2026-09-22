@@ -125,9 +125,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.11",
+      version: "v4P.0.12",
       readiness: 95,
-      pendingWork: "HOLD CORRECTION 2026-09-22 → v4P.0.11: the v4P.0.10 dilution bound (D≤0.717±0.005, A₉₅ᵖʰʸˢ≥1.37%) was found to have been measured on out-of-domain images (Legacy Survey display cutouts, not the classifier's own Smith42/galaxies inference images — a positive control reproduces released labels at only 43-45% on those images vs. 99.99% in-domain) and is withdrawn, on hold pending an in-domain re-measurement; a new sky-dependence dipole systematic (23% of A₉₅ on the strict support) is now disclosed. Row-16(ii-b)'s other closures (P-1–P-4) are unaffected. Primary null unchanged. A fresh INT confirmation board on the exact v4P.0.11 PDF is now due (directive R2 round budget refreshed again). Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.11.",
+      pendingWork: "HOLD LIFTED 2026-09-22 → v4P.0.12: the v4P.0.11 hold on the PA-restoring dilution bound is lifted by an in-domain re-measurement on the classifier's own Smith42/galaxies imaging (N=40,000, streamed by HTTP range read, 320,000 forward passes, $0), gated by 99.936% in-domain catalogue-scale agreement (43.9% out-of-domain) and a measured 3.41× field-of-view gap. Result D≤0.5998±0.0065 (primary_hc), A₉₅ᵖʰʸˢ≥1.63%, superseding — not averaged with — the withdrawn D≤0.717±0.005/A₉₅ᵖʰʸˢ≥1.37%; the in-domain classifier is less rotation-stable, so the correction is conservative. The sky-dependence dipole systematic (23% of A₉₅) remains out-of-domain, unchanged. A fresh INT confirmation board on the exact v4P.0.12 PDF is due (directive R2 round budget refreshed twice). Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.12. The prior co-director SIGN-OFF HOLD is recommended RELEASED.",
     },
     {
       slug: "paper-4",

@@ -1,7 +1,124 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.11 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** 95 (unchanged) — this is a correction, not a review-round closure, and not a new negative finding: it withdraws a claim that lane `bb-L4d-p4p-row16-propagate` (v4P.0.10) had printed on an out-of-domain measurement, and replaces it with an honest, named hold plus a real, disclosed sky-dependence systematic. Science closure and evidence/reproducibility are, if anything, stronger than v4P.0.10 (no unsupported numeric claim remains); automated review convergence carries forward v4P.0.10's refreshed round budget (directive R2) — a fresh INT board on the exact v4P.0.11 PDF is now due and was not run in this lane (out of scope, correction-only). Houston sign-off read should use **v4P.0.11**, sha256 `9f3822a2f1c97184c7d4beccd14294739816228b53ef8e59af02e6bc20b1528a`, 15 pages.
+**Current candidate:** v4P.0.12 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** 95 (unchanged) — this is a hold-lift/correction closure, not a review-round closure: it replaces the v4P.0.11 named hold with a real in-domain measurement (see the "HOLD LIFTED" section below), strictly strengthening evidence/reproducibility over v4P.0.11 (no unsupported numeric claim remains; the correction moves the physical-parity floor in the conservative direction). Automated review convergence still carries forward the refreshed round budget (directive R2) — a fresh INT board on the exact v4P.0.12 PDF is due and was not run in this lane (out of scope, correction-only). Houston sign-off read should use **v4P.0.12**, sha256 `025bec74e3b947e760c398f0eaaf5a82d6569207ed2769d9d355581906614768`, 16 pages. **The co-director's SIGN-OFF HOLD on P4P is recommended RELEASED** — see the "HOLD LIFTED" section for the exact reasoning.
+
+## HOLD LIFTED — in-domain dilution bound adopted (v4P.0.11 → v4P.0.12, 2026-09-22)
+
+Campaign 2026-09-18 lane `bb-L4f-p4p-indomain`. Lane `bb-LS10-indomain-d180`
+(2026-09-22) lifted the v4P.0.11 hold by the exact test that hold specified:
+it re-ran the identical PA-restoring rotation test directly on the
+classifier's own `Smith42/galaxies` imaging (the pinned revision documented
+at `main.tex:171-173`, not the Legacy Survey display cutouts the withdrawn
+v4P.0.10/11 measurement used) — `N=40,000` galaxies streamed by HTTP range
+read (zero image bytes to disk), 320,000 forward passes, local MPS, 47 min,
+$0. Two pre-registered gates passed before the result was trusted: (1)
+catalogue-scale in-domain agreement is **99.936%** over all 8,474,531
+galaxies and **100.000%** over the 949,584 `primary_hc` galaxies, against
+43.9% on the out-of-domain viewer cutouts; (2) the domain gap is a *measured*
+3.41× difference in angular field — the in-domain cutouts are 512×512 px at
+0.262″/px (a 134.1″ field, median pixel correlation 0.992 at that scale, ≤
+0.25 at every other grid point tested) against the withdrawn measurement's
+39.3″ viewer-cutout field.
+
+**Result adopted (`DISP-HOLD-01` closed):** `primary_hc` (N=4,579)
+`D ≤ 0.5998 ± 0.0065` (61σ below unity; θ=180°-only, assumption-free:
+`D ≤ 0.6599 ± 0.0075`), all spirals (N=15,219) `D ≤ 0.5237 ± 0.0038`;
+`A₉₅^phys ≥ 1.63%` (`primary_hc`), `≥ 1.87%` (all spirals). This **supersedes,
+not averages with**, the withdrawn out-of-domain bound
+(`D ≤ 0.717 ± 0.005`/`0.7166 ± 0.0047`, `A₉₅^phys ≥ 1.37%`). The in-domain
+classifier is **less** rotation-stable than the withdrawn measurement
+suggested — θ=180° self-disagreement rose from 21.1% to 34.0% — so the
+correction moves the physical-parity floor **upward, in the conservative
+direction**, not toward an improvement.
+
+**What changed in `main.tex` (9 prose locations + 1 table), all per
+`row16_indomain_d180_2026_09_22/PROPAGATION_NOTE.md` items R-1/R-1a/R-1b,
+never a silent substitution:** the pre-`sec:bh` forward reference; Assumption
+2 of `sec:bh` (now stating the in-domain measurement, with the withdrawn
+out-of-domain attempt described as a caught domain mismatch rather than
+silently deleted); the black-hole-section closing paragraph; the
+Conclusions; the `sec:robustness_disclosure` narrative (now carrying an
+explicit "An earlier version of this measurement is withdrawn" paragraph
+with the exact out-of-domain positive-control numbers); and `tab:pixel_calib`
+(the `D` and `A₉₅^phys` rows now carry the in-domain values; caption
+records the withdrawal). Per R-3, the `$\bar\epsilon$` (PA-restoring
+transfer-efficiency) and TTA-recovery-fraction clauses are **cut**, not
+re-quoted — they remain out-of-domain, and since the in-domain rotation
+instability is larger, an out-of-domain recovery estimate would be
+optimistic in the wrong direction.
+
+**`DISP-HOLD-02` (sky-dependence systematic) is UNCHANGED, still
+out-of-domain** — not re-measured by this lane. `main.tex` now says so
+explicitly in `sec:robustness_disclosure` ("This amplitude was measured on
+the same out-of-domain viewer cutouts... and has not been re-measured").
+
+**R-2 documentation fix (applied, same bundle):** `main.tex:171-173`
+previously stated the `Smith42/galaxies` parent cutouts are 224×224 px; they
+are actually 512×512 px at 0.262″/pixel (a 134″ field), resampled to the
+224×224 network input fed to the network. The same stale
+224×224/58.7″-native-field description was repeated at two further prose
+locations (Assumption 2, `sec:robustness_disclosure`) and corrected in the
+same bundle — `grep -n 224 main.tex` now returns only the one correct
+resize-target sentence plus an unrelated journal-volume-number citation.
+
+**Data Availability:** relabelled the PA-parity-transfer artifact entry as
+"withdrawn, superseded below" (was "on hold"), and added a new registered
+manifest entry, `reproducibility/manifests/experiments/row16-indomain-d180.json`
+(linked into `reproducibility/manifests/programs/galaxy-chirality.json`),
+pointing at `pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/`.
+
+No new numbers were introduced anywhere outside the propagation note's
+committed JSON (`/never-fabricate-derivation`).
+
+**Hygiene (directive G):** `\paperVersion` v4P.0.11→v4P.0.12;
+`\paperTimestamp` unchanged (September 22, 2026, same day); 4-pass
+`pdflatex`, 0 undefined refs; one pre-existing 5.88pt overfull hbox,
+unchanged, below the 10pt gate; 15→16 pages (grew by one page from the added
+in-domain content and withdrawal record). `/latex-audit` full render of
+every edited page (title page, Assumption-2/black-hole-closing page,
+robustness-disclosure pages including the rebuilt table, and the Data
+Availability page) — no overflow, no overlap, no broken table; one
+self-referential wording bug caught and fixed on visual review (a sentence
+had used the `\paperVersion` macro to name the *prior* version, which
+silently drifts to the *current* version on every future bump — replaced
+with literal text).
+
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `afff6bec7b78bac271104d89a3582bf9`, SHA-256
+  `025bec74e3b947e760c398f0eaaf5a82d6569207ed2769d9d355581906614768`, 16 pages.
+  Mirrored byte-identically (three-way md5 verified: compile ==
+  `site/public/papers/` == `public/papers/`) to
+  `paper4prime_chirality_test_v4P.0.12.pdf`.
+- **arXiv tarball:** rebuilt from scratch (main.tex + aastex702.cls + 3
+  figure PNGs; inline `thebibliography`, no `.bbl` dependency) and
+  standalone-compile-verified (extract to a clean dir + 3-pass pdflatex, 0
+  undefined refs, byte-identical page count and file size — 16 pp,
+  1,132,763 bytes — to the source compile):
+  `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.12.tar.gz`,
+  sha256 `8e7fff95a9cc935fff37dd6f09049c220da324d78783e82363096c3e09cfdea5`.
+- **Artifact links:** all 21 `\artifact{}`/`\href{}` GitHub URLs in the
+  compiled PDF resolve on the checked-out tree (14 `/blob/` file links + 3
+  `/tree/` directory links to files/dirs verified to exist, plus Zenodo/HF/
+  bigbounce.hubify.app external links unchanged from v4P.0.11).
+- **Convex:** still UNAVAILABLE (deployment `brilliant-panther-471` over its
+  spending limit) — the `paperVersions:bump` mutation for v4P.0.12 is queued
+  in `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`, not written. The
+  three-way md5 check is therefore source==site==public only.
+- **Git:** commit recorded in the campaign log (`L4f-p4p-indomain`).
+
+**Sign-off hold status:** the co-director's SIGN-OFF HOLD on P4P — which
+v4P.0.11 left standing specifically because "the in-domain re-measurement
+that would let the dilution bound itself be reinstated has not been done" —
+is **recommended RELEASED**: that re-measurement is now done, verified
+against committed JSON, and propagated into the manuscript without a silent
+substitution, and the full directive-G bundle (compile, visual audit, mirror,
+artifact links, tarball) verifies clean except for the Convex arm
+(unavailable, spending-limit, queued — a pre-existing, unrelated blocker).
+The one item still open, unchanged from v4P.0.11, is a fresh INT confirmation
+board on the exact v4P.0.12 PDF — a review-convergence task, not a
+correctness defect, and it does not by itself justify continuing the hold.
+Recommend the next lane schedule that board.
 
 ## HOLD CORRECTION — out-of-domain dilution bound withdrawn, sky-dependence systematic disclosed (v4P.0.10 → v4P.0.11, 2026-09-22)
 

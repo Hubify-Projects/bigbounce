@@ -1,0 +1,143 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "row16-indomain-d180",
+ "title": "Row 16 in-domain d(theta) and dilution bound D, measured directly on the classifier's own Smith42/galaxies imaging, lifting the row-16(ii-b)/row-16-TTA out-of-domain hold",
+ "program": "galaxy-chirality",
+ "paper": "P4P",
+ "kind": "inference-scan",
+ "inputs": [
+  {
+   "name": "Smith42/galaxies v1.0 train shards (512x512 px grz DESI Legacy DR8 cutouts, the released catalogue's own inference imaging), individual parquet row groups streamed by HTTP range read, zero image bytes to disk",
+   "type": "external-dataset",
+   "locator": "https://huggingface.co/datasets/Smith42/galaxies",
+   "checksum": "hf-revision bdd1b063a9a22874a79a4363aa9fb6a2b356a4c2, config v1.0, data/train-*",
+   "license": null
+  },
+  {
+   "name": "chirality classifier checkpoint (ViT-S/16 encoder + 3-class head), identical revision pin to every prior row-16 lane",
+   "type": "model",
+   "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2 :: chirality_model_v2_best.pt",
+   "checksum": "hf-revision 237d021c451d75cf86a875e86d4de498b74e2f12, md5 6f36e97c45a127b0d05ca4fb7f30f636",
+   "license": null
+  },
+  {
+   "name": "P4' primary-safe release catalogue, 8,474,531 rows (labels, primary_hc, raw_flip_qc_unsafe, coordinates)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+   "checksum": null
+  },
+  {
+   "name": "2026-07-11 full-catalogue in-domain forward-pass shards, used unchanged as control C1 (catalogue-scale agreement)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_shards",
+   "checksum": null
+  },
+  {
+   "name": "row-16(ii-b) eq_triple statistic, imported verbatim (same estimator as the withdrawn out-of-domain measurement)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s5b_nocrop_dilution.py",
+   "checksum": null
+  },
+  {
+   "name": "Legacy Survey viewer cutouts, post-hoc pixel-scale diagnostic only (180 cutouts, ~10 MB)",
+   "type": "external-dataset",
+   "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+   "checksum": null,
+   "license": "Legacy Surveys public data (NOIRLab), CC-BY-4.0"
+  }
+ ],
+ "apis": [
+  {
+   "name": "huggingface_hub.HfFileSystem + pyarrow.parquet.ParquetFile.read_row_group (individual row groups only, never a full file download)",
+   "endpoint": "https://huggingface.co",
+   "auth_required": true
+  },
+  {
+   "name": "huggingface_hub.hf_hub_download (checkpoint only, 88 MB)",
+   "endpoint": "https://huggingface.co",
+   "auth_required": false
+  }
+ ],
+ "code": [
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/PREREGISTRATION_2026-09-22.md",
+   "entrypoint": "cat PREREGISTRATION_2026-09-22.md  # pre-registration, committed before any statistic was computed",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/c1_e2e_catalogue_agreement.py",
+   "entrypoint": "python3 c1_e2e_catalogue_agreement.py  # control C1: catalogue-scale in-domain agreement, local only, ~5 s",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/run_indomain_rotations.py",
+   "entrypoint": "RUN_SECONDS=480 python3 run_indomain_rotations.py  # streaming rotation inference, resumable, ~47 min total (320,000 forward passes)",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/s1_indomain_dilution.py",
+   "entrypoint": "python3 s1_indomain_dilution.py  # d(theta)/D table + controls C2/C3, ~3 s",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/posthoc_pixel_scale.py",
+   "entrypoint": "python3 posthoc_pixel_scale.py  # POST-HOC, not pre-registered: pixel-scale cross-correlation vs Legacy Survey cutouts, ~3 min, fetches ~10 MB",
+   "sha256": null
+  }
+ ],
+ "environment": {
+  "python": "python3 + torch (MPS backend) + huggingface_hub + pyarrow + pandas + numpy + PIL",
+  "hardware": "local Apple-silicon MPS for the 320,000-forward-pass inference stage; CPU-only for every analysis stage; no RunPod, no GPU rental"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": "Apple M-series MPS (Metal) - no rented GPU",
+  "pod_id_or_host": "local workstation",
+  "date": "2026-09-22",
+  "wall_clock": "inference 2816.4 s (46.9 min) for 320,000 forward passes; C1 ~5 s; analysis ~3 s; pixel-scale diagnostic ~188 s",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local MPS/CUDA or CPU (streaming makes GPU optional for the analysis, required only to keep the inference wall-clock at ~47 min)",
+  "est_wall_clock": "~50 min end-to-end",
+  "est_cost_usd": 0.0,
+  "parallelizable": true,
+  "resume_support": true,
+  "notes": "Row groups are streamed by HTTP range read; the run is resumable via RUN_SECONDS checkpointing and never writes image bytes to disk (streamed_bytes=4,539,915,870; image_bytes_written_to_disk=0). One shared ParquetFile handle across prefetch threads was found to interleave seeks under concurrency during development; fixed with thread-local handles before any number here was computed (see REPRODUCIBILITY_MANIFEST.md sec.5)."
+ },
+ "outputs": [
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/c1_e2e_catalogue_agreement.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/s1_indomain_dilution.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/posthoc_pixel_scale.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/stream_manifest.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_indomain_d180_2026_09_22/indomain_probs.npz",
+   "type": "dataset",
+   "checksum": null
+  }
+ ],
+ "verification": "Control C1 (catalogue scale, N=8,474,531) reproduces the released label for 99.936% of galaxies, 100.000% on primary_hc, against 43.9% for the withdrawn out-of-domain viewer-cutout measurement -- the in-domain gate (pre-registered threshold >=99.0%) passes. Control C2 (this lane's own 40,000-galaxy draw at theta=0) agrees with the released label at 99.95% overall / 100.000% on primary_hc. Control C3 (TTA mirror-flip identity) is exact (max_identity_residual=0.0, class-swap fraction 1.0 among non-tied galaxies) at both 0 and 180 degrees. Headline: primary_hc (N=4,579) D<=0.5998+-0.0065 (theta180-only D<=0.6599+-0.0075), all spirals (N=15,219) D<=0.5237+-0.0038; z vs D=1 is -61.4 (primary_hc) and -125.6/-126.6 (all/catalogue-spiral). posthoc_pixel_scale.py finds best-fit pixel scale 0.262 arcsec/px (median correlation 0.992) against Legacy Survey cutouts, implied field 134.144 arcsec, a 3.413x ratio to the 39.3 arcsec viewer-cutout field used by the withdrawn measurement.",
+ "status": "runnable-now",
+ "provenance": [
+  "Task: lift the row-16(ii-b)/row-16-TTA out-of-domain hold on P4P's dilution bound, per PROPAGATION_NOTE.md item Q-1 of pipelines/p4prime_chirality_test/row16_tta_2026_09_21/; lane bb-LS10-indomain-d180 of CAMPAIGN_2026-09-18_publication_push.md",
+  "Pre-registration PREREGISTRATION_2026-09-22.md (commit f45c9d1b), committed BEFORE any statistic in this lane was computed",
+  "HEADLINE RESULT: the released catalogue IS reproducible from the released checkpoint and preprocessing on its documented Smith42/galaxies imaging and ONLY there (99.936% catalogue-scale agreement, 43.9% on the out-of-domain viewer cutouts); measured in-domain, D<=0.5998+-0.0065 (primary_hc) / D<=0.5237+-0.0038 (all spirals), in the CONSERVATIVE direction relative to the withdrawn out-of-domain bound (D<=0.7166+-0.0047) -- the in-domain classifier is LESS rotation-stable (theta=180 self-disagreement rose from 21.1% to 34.0%).",
+  "Propagated into P4P main.tex per PROPAGATION_NOTE.md items R-1/R-1a/R-1b (in-domain dilution bound replaces the withdrawn out-of-domain one) and R-2 (documentation fix: the Smith42/galaxies parent cutouts are 512x512 px at 0.262 arcsec/px, a 134 arcsec field; 224x224 is the post-Resize network input, not the source image size). R-3's Q-3 sky-dipole amplitude and Q-4/P-5a epsilon-bar/TTA-recovery numbers remain out-of-domain and are NOT re-measured by this manifest; they stay flagged as such wherever printed."
+ ]
+}
