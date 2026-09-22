@@ -62,6 +62,14 @@ def rhs_bardeen(s, y, fields, k, rinv):
     a2 = a * a
     coef = a2 * (1.0 - k * k * rinv(Q))
     PR, XR, PI, XI = y[1], y[2], y[3], y[4]
+    if isinstance(coef, complex):
+        # a COMPLEX deformation of 1/Q mixes the real and imaginary parts of the mode; this is the
+        # analytic-continuation prescription, i.e. a DIFFERENT self-adjoint extension from the
+        # principal value, not a numerical regulator of it.
+        cr, ci = coef.real, coef.imag
+        return [J,
+                J * (Q * XR / a2 - Hc * PR), J * (cr * PR - ci * PI + Hc * XR),
+                J * (Q * XI / a2 - Hc * PI), J * (cr * PI + ci * PR + Hc * XI)]
     return [J,
             J * (Q * XR / a2 - Hc * PR), J * (coef * PR + Hc * XR),
             J * (Q * XI / a2 - Hc * PI), J * (coef * PI + Hc * XI)]
@@ -98,13 +106,14 @@ def _segments(bg, ich, s0, s1, mode, delta_eta, asym=1.0):
         # ASYMMETRIC continuation would move the answer (caveat 4 of the findings document).
         ha, hb = (half, half * asym) if mode == "gap" else (half, half)
         lo, hi = (sc - ha, sc + hb) if fwd else (sc + ha, sc - hb)
-        inner = False if mode == "gap" else "eps"
+        inner = {"gap": False, "eps": "eps", "imu": "imu"}[mode]
         segs.append((cur, lo, True)); segs.append((lo, hi, inner)); cur = hi
     segs.append((cur, s1, True))
     return segs
 
 
-def propagate(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, upto=None, asym=1.0):
+def propagate(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, upto=None, asym=1.0,
+              nu=0.0):
     """Integrate from the start of the contracting dust tail.  upto = (ichart, s_stop) stops early."""
     rhs = rhs_bardeen if route == "bardeen" else rhs_s1
     y0, zeta0 = dust_ic(bg, k, route)
@@ -121,6 +130,9 @@ def propagate(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, 
             elif use_pole == "eps":
                 e2 = (abs(bg.Qprime_at_crossing()[0]) * eps_eta) ** 2
                 rinv = lambda Q, e2=e2: Q / (Q * Q + e2)
+            elif use_pole == "imu":
+                mu = abs(bg.Qprime_at_crossing()[0]) * eps_eta
+                rinv = lambda Q, mu=mu: 1.0 / complex(Q, -mu)
             else:
                 rinv = lambda Q: 1.0 / Q
             if sa != sb_eff:
@@ -128,6 +140,16 @@ def propagate(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, 
                                 rtol=RTOL, atol=ATOL, method="DOP853")
                 assert sol.success, (bg.label, ich, sol.message)
                 y = sol.y[:, -1]
+            if use_pole is False and nu and route == "bardeen":
+                # EXTENSION PARAMETER: add nu x (the natural log-coefficient scale) to the finite part of
+                # Xi across the excised surface.  nu = 0 is the principal value; any real nu is an equally
+                # admissible self-adjoint extension of the singular operator (see ADJUDICATION.md section 2).
+                a_c, Hc_c, Q_c, J_c = ch.fields(0.5 * (sa + sb))
+                qp = bg.Qprime_at_crossing()[0]
+                sc = nu * a_c * a_c * k * k / qp
+                y = y.copy()
+                y[2] += sc * y[1]
+                y[4] += sc * y[3]
             if stop_here:
                 return y, ich, ch
     return y, len(charts) - 1, charts[-1]
@@ -200,8 +222,9 @@ def zeta_ref(bg, k, route, deltas=(1e-2, 3e-3, 1e-3, 3e-4, 1e-4)):
 
 
 # ------------------------------------------------------------------ lambda
-def lam(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, zref=None, asym=1.0):
-    y, ich, ch = propagate(bg, k, route=route, mode=mode, eps_eta=eps_eta, delta_eta=delta_eta, asym=asym)
+def lam(bg, k, route="bardeen", mode="exact", eps_eta=0.0, delta_eta=0.0, zref=None, asym=1.0, nu=0.0):
+    y, ich, ch = propagate(bg, k, route=route, mode=mode, eps_eta=eps_eta, delta_eta=delta_eta, asym=asym,
+                           nu=nu)
     s_end = ch.s1
     zc = const_branch(bg, k, ich, s_end, y, route)
     zr = zref if zref is not None else zeta_ref(bg, k, route)["zeta"]
@@ -463,11 +486,9 @@ def main():
     OUT["G8_robustness"] = dict(g8, **{"pass": bool(g8_ok)})
 
     # ---------- G9: how much would an ASYMMETRIC continuation move R?  (quantifies caveat 4)
-    log("\n[G9] asymmetry sensitivity. The principal value is the SYMMETRIC finite part; caveat 4 of the")
-    log("     findings document says an asymmetric continuation is not excluded by anything computed here.")
+    log("\n[G9] excision-width asymmetry: is the PRINCIPAL-VALUE IMPLEMENTATION numerically stable?")
     log("     Measured: widen the late side of the excision by a factor `asym`, at several excision widths.")
-    log("     If that sensitivity VANISHES with the excision width, the continuation is unique and the")
-    log("     principal value is only a numerical device, not a physical choice. Scanned in delta:")
+    log("     Scanned in delta (this tests the PV implementation, NOT the extension parameter -- see G10):")
     g9 = {}
     for n, b in bgs:
         if not b.has_crossing:
@@ -488,15 +509,64 @@ def main():
         log("              slope/delta = %s  -> constant to %.1e, i.e. EXACTLY linear in delta"
             % (", ".join("%.3f" % v for v in ratios), const))
     g9_ok = max(v["linearity_spread"] for v in g9.values()) < 1e-3
-    log("     -> %s: the asymmetry sensitivity is proportional to the excision width and therefore"
+    log("     -> %s: proportional to the excision width, so the PRINCIPAL-VALUE IMPLEMENTATION is stable."
         % ("PASS" if g9_ok else "FAIL"))
-    log("        VANISHES as delta -> 0. The continuation of (Phi, Phi') through the crossing is UNIQUE;")
-    log("        the principal value is a numerical device for the 1/Q pole in the Xi equation, not a")
-    log("        physical choice. Reason: Phi' = (Q/a^2) Xi - Hc Phi, and Xi ~ log while Q -> 0 linearly,")
-    log("        so the logarithm is multiplied by zero and never feeds back into Phi.")
+    log("        RETRACTION: an earlier version of this lane read that as 'the continuation is unique'.")
+    log("        It is not. Widening one side of the excision moves within the principal-value family only;")
+    log("        it does NOT probe the self-adjoint-extension parameter of the singular operator, which is")
+    log("        the actual freedom. That is measured in G10, and it is O(1). G9 now claims only what it")
+    log("        tests: the PV implementation is numerically stable.")
     OUT["G9_asymmetry_sensitivity"] = dict(g9, **{"pass": bool(g9_ok),
-        "conclusion": "sensitivity is exactly linear in the excision width and vanishes as delta -> 0: "
-                      "the continuation is unique, not principal-value-dependent"})
+        "conclusion": "the PV IMPLEMENTATION is stable (sensitivity linear in the excision width). This does "
+                      "NOT establish uniqueness -- see G10, which probes the extension parameter and finds an "
+                      "O(1) dependence. The earlier 'unique' reading is retracted."})
+
+    # ---------- G10: the actual prescription freedom (commissioned by the blind adjudication)
+    log("\n[G10] the SELF-ADJOINT-EXTENSION freedom. At a simple sign-changing zero of z^2 = 2a^2 eps the")
+    log("      Mukhanov-Sasaki operator has z''/z = -1/(4u^2), the critical inverse-square potential: it is")
+    log("      NOT essentially self-adjoint, and admits a one-parameter family of extensions per surface.")
+    log("      (a) complex contour 1/Q -> 1/(Q - i mu), mu -> 0 -- the analytic-continuation extension:")
+    g10 = {}
+    for n, b in bgs:
+        if not b.has_crossing:
+            continue
+        k = 1e-3 / b.eta_B
+        zc1 = lam(b, k, "S1", "exact", zref=1.0)[1]
+        Rpv = float(abs(lam(b, k, "bardeen", "gap", delta_eta=1e-4, zref=1.0)[1] / zc1))
+        imu = {}
+        for mu in (1e-2, 3e-3, 1e-3, 3e-4, 1e-4):
+            imu["%g" % mu] = float(abs(lam(b, k, "bardeen", "imu", eps_eta=mu, zref=1.0)[1] / zc1))
+        pred = Rpv * abs(complex(1, 1)) if n == "LQC" else Rpv * abs(complex(1, np.sqrt(3)))
+        nus = {}
+        for nu in (-2.0, -1.0, 0.0, 1.0, 2.0):
+            nus["%g" % nu] = float(abs(lam(b, k, "bardeen", "gap", delta_eta=1e-4, zref=1.0, nu=nu)[1] / zc1))
+        from scipy.optimize import brentq
+        f = lambda nu: float(abs(lam(b, k, "bardeen", "gap", delta_eta=1e-4, zref=1.0, nu=nu)[1] / zc1)) - 1.0
+        nu_star = float(brentq(f, 0.05, 60.0))
+        g10[n] = dict(R_PV=Rpv, complex_contour=imu, complex_limit=list(imu.values())[-1],
+                      predicted_by_adjudicator=float(pred), nu_scan=nus, nu_giving_R_equal_1=nu_star)
+        log("      %-8s R_PV = %.6f | 1/(Q - i mu): %s -> %.6f  (adjudication predicted %.6f)"
+            % (n, Rpv, ", ".join("%.6f" % v for v in imu.values()), list(imu.values())[-1], pred))
+        log("               real extension nu = -2,-1,0,1,2: %s" % ", ".join("%.5f" % v for v in nus.values()))
+        log("               R(nu) is LINEAR in nu, and R = 1 -- i.e. INDISTINGUISHABLE FROM SCHEME S1 --")
+        log("               at nu = %+.4f%s" % (nu_star, "  (= pi to 4 digits)" if abs(nu_star - np.pi) < 1e-3 else ""))
+    # (c) the LQC-only anchor: the matter-kinetic weight has NO zero, so its continuation is unambiguous
+    from scipy.integrate import quad
+    I_K = quad(lambda x: np.sqrt(1 - x) / (3 * SQ3 * np.sqrt(x)), 0, 1, limit=400)[0]
+    I_S1 = np.pi / SQ3
+    log("      (b) LQC ONLY -- an anchor that needs no prescription at all. The MATTER-KINETIC weight")
+    log("          z_K^2 = a^2(rho+p)/(c_s^2 H^2) = 3a^2/(1-x) is STRICTLY POSITIVE: it has no zero, because")
+    log("          on this background the zero of 2a^2 eps sits at 1-2x = 0, where the quantum-geometry")
+    log("          factor vanishes, NOT where the matter kinetic term does (rho+p = x never vanishes).")
+    log("          I_K = int deta/z_K^2 = %.10f = pi/(6 sqrt3) -- IDENTICAL to the principal value of the"
+        % I_K)
+    log("          geometric mixing integral -- so R = 3 I_K/I_S1 = %.6f = 1/2 with NO prescription."
+        % (3 * I_K / I_S1))
+    log("          poly has no matter sector specified, so no such anchor exists there and 3/8 is PV-only.")
+    g10["LQC_matter_kinetic_anchor"] = dict(I_K=float(I_K), I_K_closed_form="pi/(6 sqrt3)",
+                                            R=float(3 * I_K / I_S1), prescription_free=True)
+    g10["poly_has_no_such_anchor"] = True
+    OUT["G10_extension_freedom"] = g10
 
     # ---------- handoff-convention comparison (the one place where "the Bardeen T" is not unique)
     log("\n[H] the two handoff conventions for converting R into a transfer coefficient:")
@@ -635,8 +705,8 @@ def main():
         dd = np.array([1e-4, 3e-3])
         ax[3].loglog(dd, 0.29 * dd, "k:", lw=1, label=r"$\propto\delta$")
         ax[3].set_xlabel(r"excision half-width $\delta/\eta_B$")
-        ax[3].set_ylabel(r"$|dR/d\ln({\rm asym})|$")
-        ax[3].set_title("asymmetry sensitivity vanishes with $\delta$:\nthe continuation is unique", fontsize=9)
+        ax[3].set_ylabel(r"$|dR/d\ln({\rm asym})|$  (within the PV family)")
+        ax[3].set_title("PV implementation is stable in $\\delta$\n(NOT uniqueness \u2014 see G10)", fontsize=9)
         ax[3].legend(fontsize=7); ax[3].grid(alpha=0.3, which="both")
         fig.tight_layout(); fig.savefig("row9b_bardeen_lqc.png", dpi=140)
         log("[fig] row9b_bardeen_lqc.png")

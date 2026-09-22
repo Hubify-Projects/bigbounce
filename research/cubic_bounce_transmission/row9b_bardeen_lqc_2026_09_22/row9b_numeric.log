@@ -43,20 +43,39 @@ ROW 9b LEG B - the Bardeen linear transfer on the LQC and poly backgrounds (smoo
      LQC eps=1.50000000 rel=7.7e-10, poly eps=1.49999994 rel=1.3e-08
      -> PASS
 
-[G9] asymmetry sensitivity. The principal value is the SYMMETRIC finite part; caveat 4 of the
-     findings document says an asymmetric continuation is not excluded by anything computed here.
+[G9] excision-width asymmetry: is the PRINCIPAL-VALUE IMPLEMENTATION numerically stable?
      Measured: widen the late side of the excision by a factor `asym`, at several excision widths.
-     If that sensitivity VANISHES with the excision width, the continuation is unique and the
-     principal value is only a numerical device, not a physical choice. Scanned in delta:
+     Scanned in delta (this tests the PV implementation, NOT the extension parameter -- see G10):
      LQC      dR/dln(asym) at delta/eta_B = 3e-3, 1e-3, 3e-4, 1e-4:  -8.8080e-04, -2.9360e-04, -8.8074e-05, -2.9368e-05
               slope/delta = 0.294, 0.294, 0.294, 0.294  -> constant to 3.6e-04, i.e. EXACTLY linear in delta
      poly     dR/dln(asym) at delta/eta_B = 3e-3, 1e-3, 3e-4, 1e-4:  -7.2653e-04, -2.4217e-04, -7.2616e-05, -2.4216e-05
               slope/delta = 0.242, 0.242, 0.242, 0.242  -> constant to 5.0e-04, i.e. EXACTLY linear in delta
-     -> PASS: the asymmetry sensitivity is proportional to the excision width and therefore
-        VANISHES as delta -> 0. The continuation of (Phi, Phi') through the crossing is UNIQUE;
-        the principal value is a numerical device for the 1/Q pole in the Xi equation, not a
-        physical choice. Reason: Phi' = (Q/a^2) Xi - Hc Phi, and Xi ~ log while Q -> 0 linearly,
-        so the logarithm is multiplied by zero and never feeds back into Phi.
+     -> PASS: proportional to the excision width, so the PRINCIPAL-VALUE IMPLEMENTATION is stable.
+        RETRACTION: an earlier version of this lane read that as 'the continuation is unique'.
+        It is not. Widening one side of the excision moves within the principal-value family only;
+        it does NOT probe the self-adjoint-extension parameter of the singular operator, which is
+        the actual freedom. That is measured in G10, and it is O(1). G9 now claims only what it
+        tests: the PV implementation is numerically stable.
+
+[G10] the SELF-ADJOINT-EXTENSION freedom. At a simple sign-changing zero of z^2 = 2a^2 eps the
+      Mukhanov-Sasaki operator has z''/z = -1/(4u^2), the critical inverse-square potential: it is
+      NOT essentially self-adjoint, and admits a one-parameter family of extensions per surface.
+      (a) complex contour 1/Q -> 1/(Q - i mu), mu -> 0 -- the analytic-continuation extension:
+      LQC      R_PV = 0.499958 | 1/(Q - i mu): 0.692227, 0.702620, 0.705610, 0.706658, 0.706958 -> 0.706958  (adjudication predicted 0.707048)
+               real extension nu = -2,-1,0,1,2: 0.18165, 0.34080, 0.49996, 0.65911, 0.81827
+               R(nu) is LINEAR in nu, and R = 1 -- i.e. INDISTINGUISHABLE FROM SCHEME S1 --
+               at nu = +3.1419  (= pi to 4 digits)
+      poly     R_PV = 0.374966 | 1/(Q - i mu): 0.713544, 0.738956, 0.746312, 0.748894, 0.749633 -> 0.749633  (adjudication predicted 0.749932)
+               real extension nu = -2,-1,0,1,2: 0.03853, 0.16822, 0.37497, 0.58171, 0.78846
+               R(nu) is LINEAR in nu, and R = 1 -- i.e. INDISTINGUISHABLE FROM SCHEME S1 --
+               at nu = +3.0232
+      (b) LQC ONLY -- an anchor that needs no prescription at all. The MATTER-KINETIC weight
+          z_K^2 = a^2(rho+p)/(c_s^2 H^2) = 3a^2/(1-x) is STRICTLY POSITIVE: it has no zero, because
+          on this background the zero of 2a^2 eps sits at 1-2x = 0, where the quantum-geometry
+          factor vanishes, NOT where the matter kinetic term does (rho+p = x never vanishes).
+          I_K = int deta/z_K^2 = 0.3022998940 = pi/(6 sqrt3) -- IDENTICAL to the principal value of the
+          geometric mixing integral -- so R = 3 I_K/I_S1 = 0.500000 = 1/2 with NO prescription.
+          poly has no matter sector specified, so no such anchor exists there and 3/8 is PV-only.
 
 [H] the two handoff conventions for converting R into a transfer coefficient:
     A = common DUST handoff, where zeta^Bardeen == zeta^S1 (gate G8) -> T = T_S1/R exactly;

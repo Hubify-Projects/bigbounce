@@ -18,7 +18,12 @@ A3M's own Next-steps item (i) is **closed**. The Bardeen route extends to the LQ
 the momentum sector with a closed-form amplitude, and the continuation is the principal value. The transmitted
 linear amplitude differs from scheme S1 on **all three** backgrounds — so the selection is background-
 independent in direction — but by **6.25x (Quintin), 2.00x (LQC), 2.67x (poly)**, so the magnitude is
-background-specific and row 9's "factor 6.25" must NOT be carried to the LQC/poly rows. Separately, the R11
+background-specific and row 9's "factor 6.25" must NOT be carried to the LQC/poly rows.
+
+**Read §2c before quoting any of this.** At the smooth crossing the Mukhanov-Sasaki operator is **not
+essentially self-adjoint**, so the continuation carries a free parameter per surface and the numbers above are
+the **time-symmetric (principal-value)** member of that family. On LQC there is a second, prescription-free
+anchor giving the same `1/2`; **on poly there is not**, and `3/8` is conventional. Separately, the R11
 ESSENTIAL evaluation-window item now closes by computation, not disclosure.
 
 ## 1. Table `tab:s1_after` — recommended replacement
@@ -33,8 +38,8 @@ form (values from `results.json`, `consequences`):
 | LQC effective dust (S1, superseded) | 0.250 | -0.104 | -0.651 |
 | poly (S1, superseded) | 0.196 | -0.127 | -0.555 |
 | Quintin-type (Bardeen continuation / S2 raw-ADM) | 1.031 | +1.007 | **-1.25** |
-| LQC effective dust (Bardeen continuation) | **0.500** | *not computed* | linear part **-1.094** |
-| poly (Bardeen continuation) | **0.521** | *not computed* | linear part **-1.140** |
+| LQC effective dust (Bardeen continuation, PV; second anchor agrees) | **0.500** | *not computed* | linear part **-1.094** |
+| poly (Bardeen continuation, **PV-only**) | **0.521** | *not computed* | linear part **-1.140** |
 
 **The two new `f_NL^after` entries are LINEAR-TRANSFER-ONLY and the caption must say so.** The cubic term
 `Delta` on LQC/poly is not computed by anyone in this program (it needs the raw-ADM in-in integral on those
@@ -99,6 +104,50 @@ amplitude taken at `epsilon = 0` with an `epsilon = 3/2` bispectrum. That is a *
 mismatch, not one introduced by this note, and it does not arise on the Quintin-type row. The A3M lane should
 either state the handoff explicitly in the caption or move it into the dust phase for all three rows.
 
+## 2c. The prescription dependence — a hard caveat, quantified, that must travel with §1–§2
+
+At a simple sign-changing zero of `z^2 = 2a^2\epsilon` (which every smooth NEC-violating bounce has, and which
+the Quintin-type parametrization avoids only by jumping `\dot H`), writing `u = \eta-\eta_B` and
+`z^2 = \alpha u(1+O(u))` gives `z''/z = -1/(4u^2)` — the **critical** attractive inverse-square potential. The
+operator is **not essentially self-adjoint**: it admits a one-parameter family of self-adjoint extensions per
+surface, and continuity of `\Phi` and `\Phi'` does not select one (every solution obeys
+`\Phi'(\eta_c) = -\mathcal H_c\Phi(\eta_c)`, so the two-dimensional solution space maps onto a one-dimensional
+set of data there). Measured, in this lane's own code and independently by the blind adjudication:
+
+| background | `R` (principal value) | complex-contour extension | extension parameter giving `R = 1` |
+|---|---|---|---|
+| LQC | 0.500 | 0.7070 ( `= \|1+i\| x 1/2` ) | `\nu = \pi` |
+| poly | 0.375 | 0.7496 ( `= \|1+i\sqrt3\| x 3/8` ) | `\nu = 3.02` |
+
+`R(\nu)` is linear, so the family sweeps the positive line. **An extension one analytic-continuation unit away
+from the principal value returns `R` to 1 and erases the entire effect.**
+
+**Why LQC survives this and poly does not.** On the LQC background the zero of `2a^2\epsilon` sits at
+`1-2x = 0`, where the *quantum-geometry* factor vanishes — not where the matter kinetic term does, since the
+source is dust and `\rho+p = x` never vanishes. The matter-built weight
+`z_K^2 = a^2(\rho+p)/(c_s^2H^2) = 3a^2/(1-x)` is therefore **strictly positive with no zero at all**, its
+continuation is unambiguous, and its mixing integral `\pi/(6\sqrt3)` is *identical* to the principal value of
+the geometric one — giving `R = 1/2` with **no prescription**. poly specifies no matter sector, so no such
+anchor exists there.
+
+**Recommended in-paper sentence:**
+
+> Because $z^2=2a^2\epsilon$ has a simple sign-changing zero wherever the null energy condition is violated
+> smoothly, the Mukhanov-Sasaki operator there is the critical inverse-square case and is not essentially
+> self-adjoint; the transmitted amplitude carries a one-parameter continuation ambiguity per surface, and we
+> quote the time-symmetric member. On the loop-quantum-cosmology background this choice is not required: the
+> zero lies where the quantum-geometry factor vanishes rather than where the matter kinetic term does, the
+> matter-built weight $a^2(\rho+p)/c_s^2H^2$ has no zero, and it returns the same value independently. On the
+> analytic non-LQC background no such anchor exists and the quoted value is convention-dependent at
+> $\mathcal O(1)$.
+
+**The assumption the LQC anchor rests on, which must be stated:** that the effective theory producing
+`H^2=(\rho/3)(1-\rho/\rho_c)` leaves the scalar kinetic weight proportional to `a^2(\rho+p)/H^2`. If its
+constraint algebra instead rescales that weight by the same `(1-2x)` factor — plausible, since in
+holonomy-corrected effective dynamics that factor also multiplies `k^2` and signals **signature change**
+rather than ordinary evolution — the anchor disappears and LQC becomes as convention-dependent as poly.
+Neither this lane nor the adjudication derived which weight that theory produces.
+
 ## 3. The change that goes AGAINST the paper — must be propagated in the same pass
 
 Row 18a established `lambda_T = lambda_zeta^S1` identically on **every** background and that the tensor
@@ -162,12 +211,10 @@ instead of disclosing a non-uniform convention.
 3. **On the LQC background the source's `rho+p` is not `-2\dot H`**, so "the effective-fluid scheme" and "the
    geometric scheme" are two different variables there; this lane adjudicates the continuation of a given
    `a(eta)`, not which effective source is physical.
-4. **The continuation is UNIQUE — this is a strength, not a caveat.** An earlier draft of this note listed the
-   principal value as an unresolved prescription. Measured since: widening one side of the excision changes `R`
-   at a rate exactly proportional to the excision width (`slope/delta` constant to four significant figures
-   over a factor 30 in `delta`), so the asymmetry freedom vanishes in the limit. The reason is structural —
-   the logarithm lives in `Xi`, which enters `Phi`'s equation only as `Q Xi`, and `Q` vanishes linearly.
-   The paper may state the continuation as unique rather than as a principal-value convention.
+4. **The continuation is a PRESCRIPTION and the freedom is O(1)** — see §2c, which supersedes an earlier
+   version of this note that wrongly called it unique. The quoted values are the time-symmetric member of the
+   extension family; `\nu = \pi` (LQC) or `3.02` (poly) returns `R` to 1. LQC has an independent anchor,
+   poly does not. The paper must **not** present the poly number as prescription-free.
 5. `c_s=1`, single scalar, no anisotropic stress, and the same kinetic-sign-flip idealisation the rest of the
    A3M transmission calculation already assumes. Inherited, not new.
 6. At `\rho+p=0` no metric-only variable is complete: the `0i` constraint degenerates to

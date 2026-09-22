@@ -1,24 +1,30 @@
 # Row 9b — does the row-9 Bardeen scheme selection extend to the LQC and polymer backgrounds?
 
 **Lane:** `LS9-bardeen-lqc` · **Date:** 2026-09-22 · **Pre-registration:** `PREREGISTRATION.md` (committed
-`d079d7bd`, before any number existed) · **Verdict: OUTCOME-UNIVERSAL(b) — pre-registered branch, gates
-G1–G9 all PASS.**
+`d079d7bd`, before any number existed) · **Verdict: OUTCOME-UNIVERSAL(b) under the time-symmetric continuation — pre-registered branch,
+gates G1–G9 all PASS, plus G10 which quantifies the prescription freedom the pre-registration missed.**
 
 **Headline.** The Bardeen route **does** extend. On the LQC-effective-dust and poly backgrounds — which,
 unlike the Quintin-type parametrization, cross `rho + p = 0` **smoothly** — the Bardeen potential `Phi` and
-its first derivative remain **continuous**, the divergence is confined to the momentum sector and is only
-**logarithmic** with a closed-form amplitude, and the continuation through the crossing is **unique** — the
-principal value is a numerical device for the `1/Q` pole, not a physical choice (§2.6). The transmitted linear amplitude differs from scheme S1 on **all three** backgrounds, so the
+its first derivative remain **continuous**, and the divergence is confined to the momentum sector and is only
+**logarithmic**, with a closed-form amplitude. The continuation through that surface is **not unique**: the
+operator is not essentially self-adjoint there and admits a one-parameter family of extensions per surface
+(§2.6, established by the blind adjudication and then reproduced in this lane's own code). The numbers below
+are the **time-symmetric (principal-value) continuation**, and on the LQC background — but not on poly —
+they have a second, prescription-free anchor. The transmitted linear amplitude differs from scheme S1 on **all three** backgrounds, so the
 selection is **background-independent in direction** — but its **magnitude is strongly background-specific**:
 
-| background | `Q = 0` crossing | `R` ≡ transmitted `zeta_C` (Bardeen / S1) | closed form | `1/R` |
-|---|---|---|---|---|
-| Quintin-type | none (`Hdot` jumps) | `0.16004` | — | **6.248** |
-| LQC effective dust | simple zero at `rho/rho_c = 1/2` | `0.500000` | **`1/2`** | **2.000** |
-| poly (analytic non-LQC) | simple zero at `eta = ±1/sqrt3` | `0.375000` | **`3/8`** | **2.666** |
+| background | `Q = 0` crossing | `R` (PV continuation) | closed form | `1/R` | prescription-free? |
+|---|---|---|---|---|---|
+| Quintin-type | none (`Hdot` jumps) | `0.16004` | — | **6.248** | **yes** — no crossing exists |
+| LQC effective dust | simple zero at `rho/rho_c = 1/2` | `0.500000` | **`1/2`** | **2.000** | **yes** — second anchor, §2.6(b) |
+| poly (analytic non-LQC) | simple zero at `eta = ±1/sqrt3` | `0.375000` | **`3/8`** | **2.666** | **no** — PV-only |
 
 Consequently **A3M's LQC and poly rows are superseded in the same direction as its Quintin row already was,
-but by 2.0× and 2.7×, not by the Quintin factor 6.25** — the S1 rows are *not* a conservative choice. The
+but by 2.0× and 2.7×, not by the Quintin factor 6.25** — the S1 rows are *not* a conservative choice. On poly
+that statement is conditional on the principal-value continuation: an extension parameter `nu = 3.02` would
+bring `R` back to 1 and erase the effect entirely (`nu = pi` does the same on LQC, where the independent
+anchor is what rules it out). **The prescription dependence is O(1) and must be carried, not buried.** The
 `f_NL^after` linear transfer moves `-0.547 -> -1.094` (LQC) and `-0.428 -> -1.140` (poly), while `r_after`
 moves `24.0 -> 96.0` and `24.0 -> 170.6`, i.e. the tensor no-go is **strengthened on both**. Separately,
 A3M R11's ESSENTIAL evaluation-window item is closed by **computation**: a uniform `eta_*/eta_B = 15` sits in
@@ -145,7 +151,8 @@ constant there, so S1 ≡ S2 identically — row 9 §1 A1). Define
 | **G6** analytic | ODE-free super-Hubble principal-value quadrature (§2.4) | rel `2.5e-5 / 1.2e-4 / 2.0e-4` — **PASS** |
 | **G7** log | measured log slope vs Leg A's `c_log` | rel `2.7e-3 / 1.8e-3` — **PASS** |
 | **G8** robustness | `R` vs the two numerical truncations; and the dust-phase identity the propagation rule rests on | see §2.5 — **PASS** |
-| **G9** uniqueness | does an *asymmetric* continuation move the answer? | sensitivity exactly linear in the excision width — see §2.6 — **PASS** |
+| **G9** PV stability | is the principal-value *implementation* stable in the excision width? | sensitivity exactly linear in `delta` — **PASS** (this is NOT uniqueness; see §2.6) |
+| **G10** extension freedom | how much does the *self-adjoint-extension parameter* move `R`? | O(1): `nu = pi` (LQC) / `3.02` (poly) gives `R = 1` — §2.6 |
 
 **G5's domain, stated because it was corrected.** Run over the *full* integration domain the gate FAILED on
 poly (`9.1e+4`): over `|eta| <= 4000` the two basis solutions differ by many orders of magnitude and `W` is a
@@ -217,28 +224,68 @@ a common input — is verified directly, at a point where the measured `epsilon`
 | LQC | `1.50000000` | `7.7e-10` |
 | poly | `1.49999994` | `1.3e-8` |
 
-### 2.6 The continuation is unique, not principal-value-dependent (G9)
+### 2.6 The continuation is NOT unique — a retraction, and what replaces it
 
-The pre-registration treated the principal value as a *prescription*, and an earlier draft of this document
-carried "an asymmetric continuation is not excluded by anything computed here" as a caveat. **That caveat is
-now closed, in the direction that strengthens the result.** Widening the late side of the excision by a factor
-`asym` (the symmetric principal value is `asym = 1`) and measuring `dR/d ln(asym)` at four excision widths:
+**What this lane claimed, and why it was wrong.** An earlier committed version of this document (commit
+`b037af0c`) carried G9 as having *closed* the principal-value caveat: widening one side of the excision moves
+`R` at a rate exactly proportional to the excision width, so the asymmetry freedom "vanishes in the limit" and
+"the continuation is unique". **That inference does not hold, and it is retracted.** G9 varies the *width* of
+the excision, which moves only *within* the principal-value family. It never touches the actual freedom, which
+is the self-adjoint-extension parameter of the singular operator. The error was caught by the blind
+adjudication (`ADJUDICATION.md`), not by this lane.
 
-| background | `delta/eta_B` = 3e-3 | 1e-3 | 3e-4 | 1e-4 | `slope/delta` | linearity |
-|---|---|---|---|---|---|---|
-| LQC | `-8.8080e-4` | `-2.9360e-4` | `-8.8074e-5` | `-2.9368e-5` | `0.294` (constant) | `3.6e-4` |
-| poly | `-7.2653e-4` | `-2.4217e-4` | `-7.2616e-5` | `-2.4216e-5` | `0.242` (constant) | `5.0e-4` |
+**The real structure.** At a simple, sign-changing zero of `z^2 = 2 a^2 epsilon`, writing `u = eta - eta_B` and
+`z^2 = alpha u (1 + O(u))`, one has `z = (alpha u)^{1/2}` and hence
 
-The sensitivity is **exactly proportional to the excision width** — the ratio is constant to four significant
-figures over a factor 30 in `delta` — and therefore **vanishes as `delta -> 0`**. A finite asymmetry is a
-finite-`delta` artefact, not a physical freedom.
+> **`z''/z = -1/(4 u^2)`**
 
-**Why, and it follows directly from §1.** The integrated variables are `(Phi, Xi)` with
-`Phi' = (Q/a^2) Xi - \mathcal{H} Phi`. At the crossing `Xi` diverges logarithmically but `Q` vanishes
-*linearly*, so `Q Xi -> 0`: **the logarithm is multiplied by zero and never feeds back into `Phi`.** `Phi` and
-`Phi'` therefore pass through the surface uniquely, and `zeta_C(+infty)`, which is reconstructed from them far
-away in the dust expansion, inherits that uniqueness. The principal value is a numerical device for the `1/Q`
-pole in the `Xi` equation, not a choice about physics.
+— the *critical* attractive inverse-square potential, exactly at the limit-circle/limit-point boundary. The
+operator is **not essentially self-adjoint** and admits a one-parameter family of self-adjoint extensions, one
+per surface. Equivalently, in the `zeta` variable the equation `(W zeta')' + k^2 W zeta = 0` with `W = alpha u`
+has Frobenius exponents `{0, 0}` — degenerate, so a logarithm is guaranteed — and the connection across the
+surface is `(A, B) -> (A + lambda B, B)` with `lambda` **undetermined**: `Pi = W zeta'` is continuous (which is
+why `Phi` and `Phi'` are), but the coefficient of the analytic branch is not fixed by continuity of anything.
+
+This is consistent with, and explains, Leg A's own §1 A3 result that **every** solution satisfies
+`Phi'(eta_c) = -Hc(eta_c) Phi(eta_c)`: the two-dimensional solution space maps onto a *one*-dimensional set of
+`(Phi, Phi')` data at the surface, so continuing "by continuity of `Phi` and `Phi'`" necessarily loses one
+parameter. The lost parameter is the logarithm's finite part.
+
+**Measured in this lane's own code (G10), reproducing the adjudication's independent numbers:**
+
+| background | `R` (PV) | complex contour `1/(Q - i mu)`, `mu -> 0` | adjudication predicted | `nu` giving `R = 1` |
+|---|---|---|---|---|
+| LQC | `0.499958` | `0.706958` | `0.707048` ( `= \|1+i\| x 1/2` ) | **`+3.1419` = `pi`** |
+| poly | `0.374966` | `0.749633` | `0.749932` ( `= \|1+i sqrt3\| x 3/8` ) | `+3.0232` |
+
+`R(nu)` is **linear** in the extension parameter (`nu = -2, -1, 0, 1, 2` gives
+`0.1817, 0.3408, 0.5000, 0.6591, 0.8183` on LQC), so the family sweeps `R` over the whole positive line.
+**An extension parameter one analytic-continuation unit away from the principal value erases the entire
+effect**: `R = 1` means indistinguishable from scheme S1.
+
+### 2.6(b) The one anchor that needs no prescription — and it exists only on LQC
+
+On the LQC background the zero of `2 a^2 epsilon` sits at `1 - 2x = 0`, i.e. where the **quantum-geometry
+factor** vanishes — *not* where the matter kinetic term does: the source is dust, `rho + p = x`, which never
+vanishes. The Mukhanov-Sasaki kinetic weight built from the matter sector,
+
+> `z_K^2 = a^2 (rho+p)/(c_s^2 H^2) = 3 a^2/(1-x)`,   **strictly positive, no zero anywhere**,
+
+therefore has **no singular surface at all**, and its continuation is unambiguous. Its mixing integral is
+`I_K = int deta/z_K^2 = pi/(6 sqrt3) = 0.3022998940` — **identical to the principal value of the geometric
+one** — so it gives `R = 3 I_K/I_S1 = 1/2` **with no prescription**. This is what makes `R(LQC) = 1/2` robust
+rather than conventional. (The coincidence is exact but not generic: it rests on
+`PV int_0^{pi/2} sec 2theta dtheta = int_0^{pi/2} cos 2theta dtheta = 0`, a property of dust on *this*
+modified Friedmann law. poly, which specifies no matter sector at all, has no such anchor, and there
+`R = 3/8` is principal-value-only.)
+
+**The assumption this anchor rests on, named:** that whatever effective theory produces
+`H^2 = (rho/3)(1 - rho/rho_c)` leaves the scalar kinetic weight proportional to `a^2(rho+p)/H^2`. If instead
+its constraint algebra rescales that weight by the same `(1 - 2x)` factor — which is not implausible, since in
+holonomy-corrected effective dynamics that factor is also known to multiply `k^2` and to signal **signature
+change** rather than ordinary evolution — then `z_K^2 = z_PB^2`, the anchor disappears, the `Ḣ = 0` surface is
+where the effective metric degenerates, and evolution through it is not a well-posed initial-value problem at
+all. This lane has **not** derived which weight that theory produces, and does not claim to have.
 
 ---
 
@@ -374,7 +421,10 @@ disclosure gap, not a numerical error. The recommendation to A3M is to replace t
 ## 5. Verdict against the pre-registration
 
 **OUTCOME-UNIVERSAL(b)** (`PREREGISTRATION.md` §4.1): `|R - 1| > 0.02` on **both** LQC and poly, with G1–G9
-all passing. The Bardeen selection is **background-independent in direction** — on every background tested the
+all passing — **under the time-symmetric (principal-value) continuation**, which is the qualification the
+pre-registration did not anticipate and which §2.6 establishes is necessary. On LQC the outcome additionally
+survives without any prescription, via the zero-free matter-kinetic anchor of §2.6(b); on poly it does not,
+and there OUTCOME-UNIVERSAL(b) holds only for the principal-value member of the extension family. The Bardeen selection is **background-independent in direction** — on every background tested the
 `z = a` prescription transmits *more* `zeta` than the regular continuation does, so it *understates*
 `|f_NL^after|` — and **background-specific in magnitude**, by 6.25× (Quintin), 2.00× (LQC), 2.67× (poly).
 Row 9's "factor 6.25" is a Quintin-type number and must not be carried to the other two backgrounds.
@@ -394,11 +444,13 @@ reporting it plainly if P1 and P2 had disagreed or `Phi` had diverged. They agre
 3. **The two LQC `z^2` variables are different** (§0) and the paper's `T = 0.409` is the fluid one. This lane
    does not adjudicate between "which effective source is physical on an LQC effective background" — it
    adjudicates the *continuation* of a given `a(eta)` in classical GR.
-4. ~~The principal value is a prescription and an asymmetric continuation is not excluded.~~ **Closed by G9
-   (§2.6), and it closes in the strengthening direction:** the asymmetry sensitivity is exactly linear in the
-   excision width and vanishes in the limit, because the logarithm lives in `Xi` and enters `Phi`'s equation
-   only through `Q Xi -> 0`. The continuation of `(Phi, Phi')` is unique. This limitation is struck, not
-   softened — it is listed here struck through so that the earlier statement is not silently replaced.
+4. **The continuation is a PRESCRIPTION, and the freedom is O(1)** (§2.6). The operator at the crossing is not
+   essentially self-adjoint; the extension family sweeps `R` over the positive line, and a parameter
+   `nu = pi` (LQC) or `3.02` (poly) returns `R` to 1, i.e. erases the difference from scheme S1 entirely.
+   The quoted `R` are the **time-symmetric (principal-value)** members of that family. On LQC there is a
+   second, prescription-free anchor that independently gives `1/2` (§2.6(b)); **on poly there is not**, so
+   `3/8` is conventional. An earlier version of this document claimed the continuation was unique on the
+   strength of G9; that claim is **retracted** (§2.6) — G9 tests only the stability of the PV implementation.
 5. **`c_s = 1`, single scalar, no anisotropic stress**, and the bounce window requires the same kinetic-sign
    flip (`rho + p < 0`) the rest of the A3M transmission calculation already assumes. Inherited, not new.
 6. **At `rho + p = 0` no metric-only variable is complete** — `Phi` stays finite and `C^1` and its equation
@@ -408,7 +460,33 @@ reporting it plainly if P1 and P2 had disagreed or `Phi` had diverged. They agre
 
 ---
 
-## 7. Independent blind adjudication
+## 7. Independent blind adjudication — CONFIRMS the numbers, REFUTES a claim this lane had made
 
-*(section written after the adjudication returned; see `ADJUDICATION.md` for the full text and the record of
-the failed first attempt)*
+Full record, including the failed first attempt and the tier substitution: **`ADJUDICATION.md`**.
+
+**Attempt 1 (Fable tier, as the lane brief specifies) FAILED** with no output — HTTP 429, "out of usage
+credits", model `claude-fable-5-1`. Recorded as FAILED-INFRA, never as a verdict; nothing was back-filled.
+The check was re-run at **Opus tier** with the byte-identical prompt and is labelled as such throughout. It is
+**not** a Fable adjudication.
+
+**It confirmed the numbers by a different route:** `R = 1/2` (LQC) and `R = 3/8` (poly) exactly, the same
+partial-fraction decomposition on poly, the same `rho+p = x` vs `-2 Hdot = x(1-2x)` structural fact on LQC,
+`zeta` log-divergent with `Pi = W zeta'` continuous through the crossing, and no monodromy at the bounce
+itself. It was told neither this lane's method nor its conclusion and was forbidden to read this directory.
+
+**It refuted this lane's uniqueness claim, and it was right.** `z''/z = -1/(4u^2)` at the crossing is the
+critical inverse-square potential: the operator is not essentially self-adjoint and the continuation carries a
+free parameter per surface. This lane **reproduced that in its own code before accepting it** (G10) — the
+complex contour converges to `0.706958` / `0.749633` against the adjudicator's `0.707048` / `0.749932`, a
+*different* limit from the principal value, not a return to it. Commit `b037af0c`'s G9 conclusion is retracted
+in §2.6, the caveat is restored in quantified form, and every `R` in this document is now labelled as the
+time-symmetric continuation.
+
+**It also strengthened one thing:** the LQC matter-kinetic weight, which this lane had noted only as a
+coincidence, is a genuine **prescription-free anchor** (§2.6(b)) — which is why `R(LQC) = 1/2` is robust and
+`R(poly) = 3/8` is not.
+
+**Its own strongest counter-argument is carried, not dismissed** (§2.6(b), final paragraph): if the effective
+theory's scalar kinetic weight carries the same `(1-2x)` factor, the LQC anchor disappears and the `Ḣ = 0`
+surface is a signature change rather than an evolution, in which case LQC is as undecidable as poly. Its
+stated confidence: `>= 95 %` on the mathematics, **`~65 %`** on the physical resolvability claim.

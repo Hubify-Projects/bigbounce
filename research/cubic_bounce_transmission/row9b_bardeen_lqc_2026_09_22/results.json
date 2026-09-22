@@ -438,7 +438,56 @@
       "linearity_spread": 0.0005034523747921314
     },
     "pass": true,
-    "conclusion": "sensitivity is exactly linear in the excision width and vanishes as delta -> 0: the continuation is unique, not principal-value-dependent"
+    "conclusion": "the PV IMPLEMENTATION is stable (sensitivity linear in the excision width). This does NOT establish uniqueness -- see G10, which probes the extension parameter and finds an O(1) dependence. The earlier 'unique' reading is retracted."
+  },
+  "G10_extension_freedom": {
+    "LQC": {
+      "R_PV": 0.4999582721045116,
+      "complex_contour": {
+        "0.01": 0.692227358582762,
+        "0.003": 0.7026204866435684,
+        "0.001": 0.7056100243664173,
+        "0.0003": 0.7066582276161144,
+        "0.0001": 0.7069578850358654
+      },
+      "complex_limit": 0.7069578850358654,
+      "predicted_by_adjudicator": 0.7070477690308186,
+      "nu_scan": {
+        "-2": 0.1816487931750357,
+        "-1": 0.3408036168968643,
+        "0": 0.4999582721045116,
+        "1": 0.6591127575914237,
+        "2": 0.8182670743691596
+      },
+      "nu_giving_R_equal_1": 3.141867438975306
+    },
+    "poly": {
+      "R_PV": 0.3749660018421678,
+      "complex_contour": {
+        "0.01": 0.7135444489757659,
+        "0.003": 0.7389555680379529,
+        "0.001": 0.7463115627088505,
+        "0.0003": 0.7488942418219724,
+        "0.0001": 0.7496328626662226
+      },
+      "complex_limit": 0.7496328626662226,
+      "predicted_by_adjudicator": 0.7499320036843354,
+      "nu_scan": {
+        "-2": 0.038531791133849226,
+        "-1": 0.16821719478611627,
+        "0": 0.3749660018421678,
+        "1": 0.5817146296022981,
+        "2": 0.7884630779726737
+      },
+      "nu_giving_R_equal_1": 3.0231617630607133
+    },
+    "LQC_matter_kinetic_anchor": {
+      "I_K": 0.30229989403903684,
+      "I_K_closed_form": "pi/(6 sqrt3)",
+      "R": 0.5000000000000009,
+      "prescription_free": true
+    },
+    "poly_has_no_such_anchor": true
   },
   "handoff_conventions": {
     "quintin": {
@@ -592,5 +641,5 @@
       "poly": 0.624923927523135
     }
   },
-  "runtime_s": 3.611668109893799
+  "runtime_s": 4.591125965118408
 }
