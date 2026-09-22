@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-a3m",
       number: "A3",
       shortTitle: "Multi-channel consistency (Track A flagship submission candidate)",
-      version: "v3M.0.29",
+      version: "v3M.0.30",
       readiness: 75,
-      pendingWork: "Row-9b science decision (LQC/poly Bardeen extension) propagated -- the directive-R2 intervening decision authorizing one confirmation board (R12, dispatched next on this exact PDF). The Bardeen continuation extends to LQC/poly (linear transfer -1.094/-1.140, cubic term uncomputed so f_NL^after is a bracket only); tensor no-go strengthens on both (r_after 96.0/170.6, same prominence as the favourable half per directive F); R11's ESSENTIAL evaluation-window item now closes by computation (uniform eta_*/eta_B=15) rather than disclosure. No headline number changed on Quintin-type. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI, and act on R12's verdict."
+      pendingWork: "R12 (the one confirmation board the row-9b science decision authorized) found 6 genuinely-new-real items on the exact v3M.0.29 PDF -- Grok/Gemini API FAILED-INFRA (shared-checkout contention, not faked/back-filled), Claude opus verdict-blind referee MAJOR REVISIONS. 5 closed by real edit (two caused by this lane's own row-9b propagation: LQC's two irreconcilable transfers 0.409/0.500 distinguished; rho+p notation and undefined x fixed); 1 ESSENTIAL closed only by honest disclosure -- the PBH channel's headline ratio sits entirely inside the paper's own non-perturbative-branch window, the next concrete unlock. No physics error found; no headline number changed. Readiness 75 COMPUTED, no cap-95 claim. Open for the director: push origin/main so the reproducibility branch pointers resolve, mint the frozen-release DOI, and run the PBH perturbativity pointwise check that would authorize a further board."
     },
     {
       slug: "paper-3",
