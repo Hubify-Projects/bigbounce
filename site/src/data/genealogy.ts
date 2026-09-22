@@ -170,6 +170,15 @@ export const openQuestions: OpenQuestion[] = [
     finding:
       "15 of 26 reproduction steps hold exactly, 8 need unstated assumptions, 3 do not; no invariant parent-to-child amplification ratio exists.",
   },
+  {
+    title: "Does bounce-compatible dark energy leave a fingerprint we can already see?",
+    question:
+      "A future turnaround — the universe stopping its expansion and contracting — is impossible under a constant, positive cosmological constant, so it requires the dark-energy density to fall to zero and go negative. Of the dark-energy classes compatible with a bounce, which admit a future turnaround, and can today's data already tell any of them apart from ΛCDM?",
+    ledgerItem: "#23",
+    layer: "open-question",
+    finding:
+      "Intersection non-empty (3 classes: zero-crossing quintessence, zero-crossing k-essence, a sustained-drain interacting dark sector); a >1σ DESI DR2-era separation from ΛCDM exists, but only above w₀ ≈ −0.95, and the corresponding turnaround epoch shifts by a factor of four (54 vs 14 Gyr) depending only on the potential family assumed. Current data constrain how fast dark energy is evolving now, not when — or whether — the expansion ends.",
+  },
 ];
 
 export const disclaimer =

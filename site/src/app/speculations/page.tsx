@@ -58,7 +58,7 @@ const sections: Array<{ heading: string; cards: SpecItemProps[] }> = [
     ],
   },
   {
-    heading: "Cosmic fate & reproduction (legacy-2025 archaeology, ledger #20–#22)",
+    heading: "Cosmic fate & reproduction (legacy-2025 archaeology, ledger #20–#23)",
     cards: [
       {
         title: "Can an accelerating universe recollapse?",
@@ -77,6 +77,12 @@ const sections: Array<{ heading: string; cards: SpecItemProps[] }> = [
         tag: "Reproduction result · not a claim about our universe · ledger #22",
         children:
           "An independent reproduction of Popławski's Einstein–Cartan daughter-universe model (ApJ 832:96, 2016): 15 of 26 published steps reproduce exactly, 8 reproduce only with an unstated assumption, and 3 do not reproduce. The daughter can hold arbitrarily more proper matter than the parent's mass — but the excess is set by a free particle-production coefficient, not by the parent. No invariant parent-to-child amplification ratio exists. Local conservation, ∇_μT^{μν}=0, is respected throughout.",
+      },
+      {
+        title: "Does bounce-compatible dark energy leave a fingerprint we can already see?",
+        tag: "Open question · not a result · ledger #23",
+        children:
+          "A future turnaround — the universe stopping its expansion and contracting — is impossible under a constant, positive cosmological constant, so it requires the dark-energy density to fall to zero and go negative. We crossed the dark-energy classes that are compatible with a bounce against that requirement and found three that qualify: quintessence and k-essence whose potential crosses zero, and a dark sector that steadily drains energy into dark matter. We then asked whether today's data can tell any of them apart from ΛCDM. They can — but only above a threshold, and the threshold is in the present-day equation of state, not in the fate. At DESI DR2 precision the separation reaches 1σ once w₀ ≳ −0.95, while the turnaround epoch that same threshold corresponds to shifts by a factor of four (54 Gyr vs 14 Gyr) depending only on the shape of the potential assumed. Current data constrain how fast dark energy is evolving now; they do not measure when, or whether, the expansion ends.",
       },
     ],
   },

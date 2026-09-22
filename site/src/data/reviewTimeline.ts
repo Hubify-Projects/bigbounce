@@ -67,6 +67,43 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "l6b-background-poll-death-2026-09-22",
+    dateISO: "2026-09-22",
+    kind: "skill-improvement",
+    title: "Lane L6b's sign-off verification died waiting on a background poll, leaving empty stubs behind",
+    papers: [],
+    summary:
+      "Lane bb-L6b-verify-signoff spent over an hour building a clean 10-paper served-PDF/recompile sweep (all of P1A/P1B/P1N/P2/P3/P4/P4P/P5/A3M/P-SU hash-verified, 5 SSOT/site bookkeeping defects found and fixed) and had logged a MILESTONE stating it would poll the still-running A3M R11 board (lane bb-L1c-a3m-row9-r11) in the background for up to 90 minutes before its final commit. The harness's background-poll watchdog ended the session mid-wait, leaving behind empty file stubs instead of a completed hand-off. The co-director recovered the work directly from L6b's own MILESTONE log line rather than losing it: committed L6b's already-verified SSOT bookkeeping fixes, removed the stubs, and respawned the remaining work as lane L6c under a hard no-background-poll rule, instructed to reuse L6b's clean 10-paper sweep rather than redo it from scratch.",
+    keyTakeaways: [
+      "Never wait on a condition (another lane's DONE, a long-running board) with a background poll inside an agent session — the harness's own watchdog can kill the session mid-wait and lose the hand-off; use short foreground sleeps with re-checks instead, or end the lane's turn and let a fresh spawn pick up the wait",
+      "A lane's own progress-log MILESTONE line is real recovery evidence: when a session dies mid-task, the co-director could reconstruct and commit the verified work directly from the log rather than losing it or redoing it",
+      "When recovering a killed lane, reuse its completed sub-work (the 10-paper sweep) rather than re-running it — respawn only the remaining, un-logged step",
+    ],
+    links: [
+      { label: "Campaign log (L6b/L6c hand-off)", href: `${GH}/project-context/campaigns/CAMPAIGN_2026-09-18_publication_push.md` },
+      { label: "Portfolio verification packet", href: `${GH}/project-context/PORTFOLIO_VERIFICATION_2026-09-22.md` },
+    ],
+  },
+  {
+    id: "shared-site-data-dispatch-block-and-git-index-hazard-2026-09-18",
+    dateISO: "2026-09-18",
+    kind: "skill-improvement",
+    title: "Pattern: concurrent lanes sharing site/src/data/*.ts blocked review dispatch and leaked staged hunks into the wrong commit",
+    papers: [],
+    summary:
+      "Two related process defects surfaced the same evening as multiple campaign lanes edited the same shared site-data files concurrently. First, tools/bigbounce_preflight.py refuses to dispatch a review board while site/src/data/live-status.ts, papers.ts, or reviewTimeline.ts are left dirty — lanes L4b (23:17 PT) and L2b (01:48 PT) both hit this independently, blocking their Grok/Gemini API legs. Second, a shared git INDEX hazard: another lane's already-staged hunks in a shared file can ride into your commit if you run a broad `git add`/`git commit` without checking what's staged — this happened twice the same night (commit 82ea582f accidentally bundled L4b's P4P commit with L2b's pre-staged paper-su hunks; a later campaign-log-only commit accidentally swept L2b's v1S.0.11 papers.ts/live-status.ts hunk into cbb4e2e5). No data was lost either time — both were caught and reconciled by tracing `git reflog` and messaging the owning lane directly — but both are now standing rules.",
+    keyTakeaways: [
+      "Never leave a shared site-data file (site/src/data/live-status.ts, papers.ts, reviewTimeline.ts) dirty between edits: re-read, edit, tsc, commit in one pass, or the preflight gate blocks the next review-board dispatch for any lane, including ones that did not touch the file",
+      "Run `git diff --cached --stat` before every commit and unstage anything outside your own ownership (`git restore --staged <path>`) — a broad `git add`/`git commit` can silently carry another lane's pre-staged hunks in a shared single-checkout repo",
+      "For shared *.ts files specifically, stage only your own hunks (`git add -p` or a filtered `git apply --cached`) rather than the whole file",
+      "If contention is detected, wait with short foreground sleeps and re-check — never a background poll (see the L6b lesson the same campaign later reinforced)",
+    ],
+    links: [
+      { label: "Campaign log (RULE lines, 2026-09-18 23:53 / 2026-09-19 00:00)", href: `${GH}/project-context/campaigns/CAMPAIGN_2026-09-18_publication_push.md` },
+      { label: "tools/bigbounce_preflight.py", href: `${GH}/tools/bigbounce_preflight.py` },
+    ],
+  },
+  {
     id: "p4p-row16iib-pa-parity-propagation-v4p-0-10-2026-09-21",
     dateISO: "2026-09-21",
     kind: "closure-wave",
