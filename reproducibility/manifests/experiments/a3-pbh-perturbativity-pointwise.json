@@ -1,0 +1,152 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "a3-pbh-perturbativity-pointwise",
+  "title": "Track A3 (A3M DA3M-R12-06, ESSENTIAL): the per-point perturbativity diagnostic 1.2|f_NL|sigma_r across the full 144-point in-coverage PBH grid, with sigma_r re-integrated from the compaction script's own Eq.-53 variance integral at each point's own required amplitude -- the computation that replaces R12's honest-disclosure close",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "pre-registration (diagnostic definition, which amplitude enters, threshold eps<=1 at BOTH legs, gates G1-G5, and every decision branch including the WITHDRAW branches; committed ALONE before any number existed, commit b289aa0f)",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PREREGISTRATION.md",
+      "checksum": "sha256:2515a704030639d745c9dd130882c99909f3b7907f3bc5c64b9318bf1d115073"
+    },
+    {
+      "name": "the 255-point extended compaction scan -- per-point spectrum shape (family, Delta or n_s + k_min/k_p), r_p k_p, C_th, gamma_cr, and the solved required amplitudes A(0), A(-35/16), A(-35/8) at f_PBH=1e-3. READ ONLY; no value in it is modified, and the 144-point headline population is reproduced from it as gate G5",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/results/row11_gammacr_extension.json",
+      "checksum": "sha256:92c20778551369fa2a10b15830d3471b36ee0f954116f421ee56473ace327f68"
+    },
+    {
+      "name": "the compaction module supplying the variance integral itself (covariances, Eqs. 52-54), the lognormal spectrum, the Gaussian/sinc windows and the radiation transfer -- imported UNMODIFIED",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/pbh_compaction_fnl.py",
+      "checksum": "sha256:27e4021f84b8607acc5da0811f4cacf030d5068464457b5534a647ba6a39de38"
+    },
+    {
+      "name": "the committed 27-point robust grid and the three Gaussian-calibration rows carrying the paper's only published sigma_r values (0.20699892, 0.28147149, 0.38522840) and its printed 0.54-1.01 / 1.09-2.02 -- used as gates G3 and G4, both reproduced to exact machine zero",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/outputs/pbh_compaction_fnl.json",
+      "checksum": "sha256:c3bf551feb4311451b22535a98fa69ac98971876b34fb72c20d5f3198b07aadc"
+    },
+    {
+      "name": "the wide-k integrator this lane re-implements verbatim (row11's _cov_wide) and the row-11 selection that defines the 144-point headline population",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/row11_pbh_residuals/row11_gammacr_extension.py",
+      "checksum": "sha256:a0c01e1598295d59f577dd1147afecd12d2151c76a51c28d07ad30c8db4daf28"
+    },
+    {
+      "name": "the paper's own perturbativity criterion 1.2|f_NL|sigma <~ 1 (Sec. V B), as coded for the c_s window -- the coefficient and threshold are taken from here, not chosen by this lane",
+      "type": "internal-artifact",
+      "locator": "research/track_a3_multichannel/r9_perturbativity/r9_perturbativity.py",
+      "checksum": "sha256:94baf4d92ee475c46aa30a2dd9db301aa409de40d61416c15b051dddf6746c33"
+    },
+    {
+      "name": "A3M dispositions, DA3M-R12-06 [ESSENTIAL, PARTIAL] -- the open item this lane closes by computation; and DA3M-R12-05, the 144-vs-27-point reconciliation whose arithmetic is unaffected",
+      "type": "internal-artifact",
+      "locator": "project-context/peer-reviews/DISPOSITIONS/A3M.md",
+      "checksum": null
+    },
+    {
+      "name": "Choudhury, Dey, Ganguly, Karde, Singh & Tiwari 2025, EPJC 85:472, arXiv:2409.18983 -- Eqs. 30-66; the formalism whose Eq. 53 variance integral is the diagnostic's sigma_r, and whose own |f_NL| <~ 60 perturbativity bound is the published analogue of this criterion",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2409.18983",
+      "checksum": null
+    }
+  ],
+  "apis": [],
+  "code": [
+    {
+      "path": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/pbh_perturbativity.py",
+      "entrypoint": "python3 pbh_perturbativity.py",
+      "sha256": "fd930e7371926b123aa6904e4931cef3b3c54f545b67abf584e3763d59473c63"
+    },
+    {
+      "path": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/threshold_sensitivity.py",
+      "entrypoint": "python3 threshold_sensitivity.py (after pbh_perturbativity.py)",
+      "sha256": "87fbe196e0f688da891a2883a17dd29065c6ee87618e177833c4207182e66371"
+    },
+    {
+      "path": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/make_figure.py",
+      "entrypoint": "python3 make_figure.py (after pbh_perturbativity.py)",
+      "sha256": "34ed10a18e20a82e1da8a4658d9876c71ffa70a5e60831e6afa98cdc0726d0e2"
+    }
+  ],
+  "environment": {
+    "python": "python3 with numpy 2.5.1, scipy 1.18.0 (integrate.simpson), matplotlib (repo requirements.txt)",
+    "hardware": "cpu-only; no GPU, no network, no data download"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": null,
+    "date": "2026-09-22",
+    "wall_clock": "pbh_perturbativity.py 1.9 s (measured); threshold_sensitivity.py and make_figure.py under 2 s each",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "under 10 s for all three scripts",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": false,
+    "notes": "Fully deterministic: no random seeds, no fitting, no network. Run from this directory in order: pbh_perturbativity.py (which refuses to report any diagnostic and writes outcome 'c' if any of gates G1-G5 fails), then threshold_sensitivity.py, then make_figure.py. The script imports research/track_a3_multichannel/pbh_compaction_fnl.py by relative path and restores every module global it monkeypatches; it reads row11_gammacr_extension.json and outputs/pbh_compaction_fnl.json read-only and modifies no committed artifact. Gates G2, G3 and G4 reproduce the committed gamma_cr and sigma_r values to EXACT machine zero, so a reproduction that does not is a real discrepancy, not numerical noise."
+  },
+  "outputs": [
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/results.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/pbh_perturbativity.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/threshold_sensitivity.json",
+      "type": "result-json",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/threshold_sensitivity.log",
+      "type": "log",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/pbh_perturbativity.png",
+      "type": "figure",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PBH_PERTURBATIVITY_2026-09-22.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PROPAGATION_NOTE.md",
+      "type": "document",
+      "checksum": null
+    },
+    {
+      "locator": "research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PREREGISTRATION.md",
+      "type": "document",
+      "checksum": null
+    }
+  ],
+  "verification": "EXACT-HASH / MACHINE-ZERO. pbh_perturbativity.py re-runs five validation gates itself and refuses to report any diagnostic (writing outcome 'c') unless all five PASS: G1: wide vs committed integrator, lognormal family: 5.74e-16 (tol 1e-6) PASS. G2: gamma_cr reproduced for all 255 stored points: 0.0 exact (tol 1e-10) PASS. G3: committed calibration sigma_r and the paper's printed epsilon values: 0.0 exact (tol 1e-10) PASS. G4: committed 27-point grid gamma_cr, narrow integrator: 0.0 exact (tol 1e-10) PASS. G5: headline population reproduced from the committed JSON (n=144, 1.83741 +- 0.03117, [1.7594, 1.8915]) PASS. Expected headline on reproduction: outcome (b), pre-registered branch b2 (RE-SCOPE, CENTRAL VALUE CHANGES); n_P = 62 of n_H = 144 perturbative at BOTH legs; perturbative-subset ratio 1.8121 +- 0.0241, range [1.7594, 1.8511], against 1.8374 +- 0.0312, range [1.7594, 1.8915] on the full 144; eps over the window [0.543, 1.048] at -35/16 and [0.817, 1.534] at -35/8; 0 of 144 points reach eps <= 0.5; ratio-vs-eps Pearson +0.829. Deterministic quadrature, no seeds: results.json should reproduce bit-for-bit on the same numpy/scipy, and any deviation beyond 1e-12 relative in the reported means is a real discrepancy, not noise.",
+  "status": "runnable-now",
+  "provenance": [
+    "OPEN ITEM CLOSED: project-context/peer-reviews/DISPOSITIONS/A3M.md :: DA3M-R12-06 [ESSENTIAL, PARTIAL] -- R12 closed it by honest disclosure only and recorded A3M as NOT converged on it; this computation replaces that disclosure.",
+    "PRE-REGISTRATION committed ALONE before any number existed: commit b289aa0f, research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PREREGISTRATION.md (diagnostic, threshold, gates and every decision branch including the WITHDRAW branches fixed in advance).",
+    "FINDINGS: research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PBH_PERTURBATIVITY_2026-09-22.md",
+    "PROPAGATION (exact printable sentences for the A3M lane; this lane edited no .tex, no SSOT file and no site datum): research/track_a3_multichannel/pbh_perturbativity_2026_09_22/PROPAGATION_NOTE.md",
+    "LEDGER: project-context/NEXT_SCIENCE_LEDGER.md row 11 (PBH channel residuals) -- the only ledger cell this lane updates.",
+    "SUPERSEDES the A3M v3M.0.30 claim that the pointwise diagnostic 'has not been separately evaluated point-by-point on the headline 144-point in-coverage set' and is 'left for future work'.",
+    "RESULT, stated against the paper as well as for it: No point of the headline population reaches 1.2|f_NL|sigma_r <= 0.5: the whole population is marginal, eps ~ O(1) throughout. The ratio is correlated with the diagnostic it is supposed to be robust to (Pearson +0.829, OLS slope +0.161 per unit eps inside the window), so the subset mean slides monotonically with the cut: 1.798 at 0.9, 1.812 at 1.0, 1.837 at 1.4. Inside the headline window gamma_cr does NOT discriminate -- the controlled and uncontrolled subsets span the identical range [0.2679, 0.6298]. The formation threshold C_th does: 47/48 controlled at C_th=0.4, 15/48 at 0.5, 0/48 at 0.6. Table V's caption label 'non-perturbative branch' on the gamma_cr <~ 0.8 rows is INVERTED pointwise: eps rises with gamma_cr (Pearson +0.32 over 255 points), and the 27-point window is the less controlled of the two ([0.64,2.22] and [0.97,3.22] at its own required amplitudes, vs [0.54,1.05] and [0.82,1.53] in the headline window). That caption label tracks uncapped f_PBH > 1, an amplitude-calibration fact, not perturbativity. The paper's printed '0.54-1.01 / 1.09-2.02 on the displayed 27-point grid' is reproduced here to exact machine zero -- but from three Gaussian-calibration rows at the single shape (Delta, r_p k_p) = (0.5, 1.0) at A_*, not from the 27-point grid and not at the amplitude the ratio is defined at. The attribution is inaccurate.",
+    "UNCHANGED: Channel II's scientific conclusion is untouched: the in-lab spectrum is 7.0 dex short of the required amplitude and the PBH channel is a NULL with f_PBH = 0 (ledger row 11 / A3-1b).",
+    "LIMITS: eps <= 1 is a NECESSARY control diagnostic for the quadratic local map, not a proof that the truncated expansion converges. Points that pass are reported as passing the paper's own criterion, nothing more. Only the variance integral was re-run. Every A(f_PBH = 1e-3) is read unchanged from the committed scan; no compaction solve was repeated and no committed number was modified. The 1.81 +- 0.02 figure is CONDITIONAL on the threshold, by the correlation above. A cut-independent Channel II observable needs the resummed (non-quadratic) NG map, open item A3-1c. sigma_r is evaluated with the same IR-cutoff-dependent power-law family the committed scan uses; the IR divergence of the O(eps^2) saddle term recorded in row 11(a) is a separate, already-recorded issue and is not re-opened here.",
+    "LANE: LS12-pbh-perturbativity, campaign project-context/campaigns/CAMPAIGN_2026-09-18_publication_push.md"
+  ]
+}

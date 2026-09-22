@@ -1,0 +1,24 @@
+==============================================================================
+LS12 / DA3M-R12-06: pointwise 1.2|f_NL|sigma_r on the 144-point grid
+==============================================================================
+  [PASS] G1 wide vs committed integrator, lognormal family  max_rel=5.74e-16
+  [PASS] G2 gamma_cr reproduced for all 255 stored points  max_rel=0.00e+00
+  [PASS] G3 committed calibration sigma_r + printed epsilon range  max_rel=0.00e+00
+  [PASS] G4 committed 27-point grid gamma_cr, narrow integrator  max_rel=0.00e+00
+  [PASS] G5 headline population reproduced from the committed JSON
+  [info] sigma_r ∝ sqrt(A) holds to 0.00e+00 (consistency only; every sigma_r below is integrated directly)
+
+--- diagnostic over all 255 scan points ---
+
+  headline population H: n=144  ratio 1.8374 +- 0.0312
+  eps[-35/16] over H: [0.543, 1.048]  median 0.703
+  eps[ -35/8] over H: [0.817, 1.534]  median 1.035
+  perturbative at BOTH legs (eps<=1): n=62 of 144   (-35/16 leg fails at 1, -35/8 leg fails at 82)
+  P: ratio 1.8121 +- 0.0241  [1.7594, 1.8511]
+  H\P: ratio 1.8565 +- 0.0205  [1.7972, 1.8915]
+  [27-pt slice, own amplitudes] eps[-35/16]: [0.635, 2.220]
+  [27-pt slice, own amplitudes] eps[ -35/8]: [0.965, 3.217]
+
+  OUTCOME (b) -- b2 RE-SCOPE -- CENTRAL VALUE CHANGES
+
+[1.9s] wrote /Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/track_a3_multichannel/pbh_perturbativity_2026_09_22/results.json

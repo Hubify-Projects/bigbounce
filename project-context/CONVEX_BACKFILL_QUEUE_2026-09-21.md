@@ -597,3 +597,22 @@ activityFeed:add({
   summary: "Lane bb-LAF3-af-confirm ran the directive-R2 confirmation board on the exact vAF.0.5 PDF (the version R1 never actually reviewed, since LAF2 closed real items and bumped twice with no intervening board). Grok API REJECT, Gemini API MAJOR REVISIONS, Claude-opus verdict-blind MAJOR REVISIONS. Most consequential (opus only): the abstract/Sec.I/Sec.XI claim 'the blue arm alone accounts for R^2=0.78' conflated the full three-camera regression's R^2 with a univariate one -- independently recomputed at R^2=0.20 via a new committed script, confirm_round_2026-09-22.py. 8 further real findings closed (flux-to-magnitude arithmetic error, 3 missing bibliography citations, leftover version-history language, an incomplete morphology census, a referee-address wording issue, a bibliography-count arithmetic error, an abstract reproducibility-scope tightening); a real rendering defect (doubled punctuation from revtex's description environment) also fixed. Several reviewer claims independently FALSIFIED against source. 2 new items honestly left open per /never-fabricate-derivation. Directive-G clean: 4-pass, 0 errors/undef refs/overfull, 18pp, 6/6 artifact links, standalone tarball compile byte-identical. Readiness 77->80 COMPUTED. NOT CONFIRMED -- directive R2 round 2 of 2 spent, no further board without an intervening science/scope decision.",
 })
 ```
+
+---
+
+## LS12 — PBH perturbativity (A3M `DA3M-R12-06` closed by computation), 2026-09-22
+
+Convex is DISABLED (spending limit); these are the intended mutations, not written.
+This lane produced **no version bump and no review board** — it is a science lane whose output is a
+propagation note for the A3M lane, so the only intended write is an activity event. **No
+`papers:setReadinessCap` is queued**: A3M's readiness must not move until the A3M lane actually applies
+the re-scope (the paper currently prints a value this lane has superseded).
+
+```
+activityFeed:add({
+  type: "research",
+  title: "PBH channel: the headline amplitude ratio is re-scoped 1.84+-0.03 (n=144) -> 1.81+-0.02 (n=62) by the pointwise perturbativity computation",
+  tags: ["A3M", "pbh", "channel-II", "research", "campaign-2026-09-18"],
+  summary: "Lane bb-LS12-pbh-perturbativity closed A3M's one remaining R12 ESSENTIAL (DA3M-R12-06) by computation rather than disclosure. The per-point diagnostic 1.2*abs(f_NL)*sigma_r was run across the full 144-point in-coverage grid, sigma_r re-integrated from the compaction script's own Eq.-53 variance integral at each point's own spectrum shape and own required amplitude; the pre-registration, fixing the threshold and every decision branch including the two WITHDRAW branches, was committed alone at b289aa0f before any number existed. Gates G2/G3/G4 reproduce the committed gamma_cr, the three committed sigma_r and the paper's own printed 0.54-1.01 / 1.09-2.02 to exact machine zero. Result: the criterion holds at both candidate values at only 62 of the 144 points; 82 fail on the -35/8 leg. The controlled subset gives 1.812 +- 0.024, range [1.759, 1.851], against 1.837 +- 0.031 on the full 144 -- pre-registered branch b2, the headline is RE-SCOPED, not withdrawn (the 0.025 shift is inside the previously quoted 0.031 std, but the printed three-significant-figure value and the abstract change). Recorded against the paper with equal prominence: no point of the window reaches eps <= 0.5, so the whole population is marginal; the ratio correlates with the diagnostic it is meant to be robust to (Pearson +0.829), so 1.81 slides with the cut; inside the window gamma_cr does not discriminate at all (identical [0.268, 0.630] on both sides) while the formation threshold C_th does (C_th=0.6: 0 of 48 controlled); and Table V's 'non-perturbative branch' label on the gamma_cr <~ 0.8 rows is inverted pointwise -- eps rises with gamma_cr and the 27-point window is the less controlled of the two. Channel II's science is unchanged: the in-lab spectrum is still 7.0 dex short and the PBH channel is still a null with f_PBH = 0. Evidence research/track_a3_multichannel/pbh_perturbativity_2026_09_22/, manifest a3-pbh-perturbativity-pointwise. Recorded as the next directive-R2 intervening science decision (suggested D-A3-15), which lifts A3M's no-further-board stop once the propagation lands.",
+})
+```
