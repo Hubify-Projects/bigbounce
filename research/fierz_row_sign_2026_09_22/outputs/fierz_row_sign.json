@@ -1,0 +1,241 @@
+{
+  "V1_clifford_and_universality": {
+    "combinations": [
+      "dirac/mostly-minus/g5sign+1",
+      "dirac/mostly-minus/g5sign-1",
+      "dirac/mostly-plus/g5sign+1",
+      "dirac/mostly-plus/g5sign-1",
+      "weyl/mostly-minus/g5sign+1",
+      "weyl/mostly-minus/g5sign-1",
+      "weyl/mostly-plus/g5sign+1",
+      "weyl/mostly-plus/g5sign-1",
+      "majorana/mostly-minus/g5sign+1",
+      "majorana/mostly-minus/g5sign-1",
+      "majorana/mostly-plus/g5sign+1",
+      "majorana/mostly-plus/g5sign-1"
+    ],
+    "max_deviation_between_combinations": 6.661338147750939e-16,
+    "max_decomposition_residual": 1.1257298622852005e-15,
+    "tensor_rank_of_five_channels": [
+      5
+    ],
+    "fierz_matrix_rows": [
+      "S",
+      "V",
+      "T",
+      "A",
+      "P"
+    ],
+    "fierz_matrix_cols": [
+      "S",
+      "V",
+      "T",
+      "A",
+      "P"
+    ],
+    "fierz_matrix": [
+      [
+        0.2500000000000001,
+        0.25,
+        0.25000000000000006,
+        -0.25000000000000006,
+        0.25
+      ],
+      [
+        1.0000000000000004,
+        -0.5000000000000002,
+        -2.5762814944582913e-17,
+        -0.5000000000000002,
+        -1.0
+      ],
+      [
+        1.5000000000000007,
+        5.551115123125783e-17,
+        -0.49999999999999994,
+        -3.9703299110913454e-17,
+        1.5
+      ],
+      [
+        -1.0000000000000004,
+        -0.5000000000000001,
+        -4.063698308792037e-17,
+        -0.5000000000000002,
+        1.0
+      ],
+      [
+        0.2500000000000001,
+        -0.24999999999999997,
+        0.25,
+        0.25,
+        0.25
+      ]
+    ],
+    "fierz_matrix_times_4": [
+      [
+        1.0000000000000004,
+        1.0,
+        1.0000000000000002,
+        -1.0000000000000002,
+        1.0
+      ],
+      [
+        4.000000000000002,
+        -2.000000000000001,
+        -1.0305125977833165e-16,
+        -2.000000000000001,
+        -4.0
+      ],
+      [
+        6.000000000000003,
+        2.220446049250313e-16,
+        -1.9999999999999998,
+        -1.5881319644365382e-16,
+        6.0
+      ],
+      [
+        -4.000000000000002,
+        -2.0000000000000004,
+        -1.6254793235168148e-16,
+        -2.000000000000001,
+        4.0
+      ],
+      [
+        1.0000000000000004,
+        -0.9999999999999999,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "passed": true
+  },
+  "V2_involution": {
+    "F_squared": [
+      [
+        1.0000000000000007,
+        4.85722573273506e-17,
+        3.469446951953614e-17,
+        -2.7755575615628914e-17,
+        5.551115123125783e-17
+      ],
+      [
+        5.551115123125783e-17,
+        1.0000000000000004,
+        2.220446049250313e-16,
+        2.7755575615628914e-16,
+        1.1102230246251565e-16
+      ],
+      [
+        3.885780586188048e-16,
+        2.0816681711721685e-16,
+        1.0000000000000002,
+        -2.7755575615628914e-16,
+        1.6653345369377348e-16
+      ],
+      [
+        -5.551115123125783e-17,
+        2.498001805406602e-16,
+        -1.1102230246251565e-16,
+        1.0000000000000007,
+        -2.7755575615628914e-16
+      ],
+      [
+        5.551115123125783e-17,
+        3.469446951953614e-17,
+        4.85722573273506e-17,
+        -5.551115123125783e-17,
+        1.0
+      ]
+    ],
+    "max_dev_from_identity": 6.661338147750939e-16,
+    "passed": true
+  },
+  "V3_V_minus_A_self_conjugacy": {
+    "detail": {
+      "dirac/mostly-minus": {
+        "cnumber_coefficient": -1.0,
+        "residual": 0.0,
+        "grassmann_coefficient": 1.0
+      },
+      "weyl/mostly-plus": {
+        "cnumber_coefficient": -1.0,
+        "residual": 0.0,
+        "grassmann_coefficient": 1.0
+      }
+    },
+    "passed": true,
+    "note": "textbook: (V-A)x(V-A) Fierzes into itself; c-number coefficient -1, Grassmann coefficient +1"
+  },
+  "V4_grassmann_sign": {
+    "reordering": "psibar_a psi_b psibar_c psi_d -> psibar_a psi_d psibar_c psi_b",
+    "sign": -1,
+    "method": "adjacent-transposition count on a word of four odd generators",
+    "passed": true
+  },
+  "R1_axial_axial_row": {
+    "cnumber_row": {
+      "S": -1.0000000000000004,
+      "V": -0.5000000000000001,
+      "T": -4.063698308792037e-17,
+      "A": -0.5000000000000002,
+      "P": 1.0
+    },
+    "grassmann_row": {
+      "S": 1.0000000000000004,
+      "V": 0.5000000000000001,
+      "T": 4.063698308792037e-17,
+      "A": 0.5000000000000002,
+      "P": -1.0
+    },
+    "manuscript_printed_row": {
+      "S": 1.0,
+      "V": 0.5,
+      "T": 0.0,
+      "A": 0.5,
+      "P": -1.0
+    },
+    "scalar_coefficient_derived": 1.0000000000000004,
+    "scalar_coefficient_printed": 1.0,
+    "agrees_with_manuscript": true
+  },
+  "R2_single_field_operator_relations": {
+    "operator_rank_of_five_channels": 3,
+    "singular_values": [
+      8.717797887081348,
+      7.999999999999999,
+      6.324555320336757,
+      8.454229181017812e-16,
+      6.747243666949131e-16
+    ],
+    "null_space_relations": [
+      {
+        "S": 1.0,
+        "V": 0.296325124827,
+        "T": 0.135783250115,
+        "A": -0.296325124827,
+        "P": -0.185300499308
+      },
+      {
+        "S": 0.265488854476,
+        "V": -0.183627786381,
+        "T": 0.210914809079,
+        "A": 0.183627786381,
+        "P": 1.0
+      }
+    ],
+    "note": "a relation {X: c_X} means sum_X c_X O_X = 0 as an operator for a single Grassmann Dirac field"
+  },
+  "R3_row_holds_as_operator_identity": {
+    "max_residual": 4.440892098500626e-16,
+    "passed": true
+  },
+  "R4_Gs": {
+    "L4psi_prefactor": "-(3 kappa/16) gamma^2/(1+gamma^2)",
+    "scalar_channel_coefficient": 1.0000000000000004,
+    "Gs_over_prefactor": 1.0000000000000004,
+    "Gs": "-(3 kappa/16) gamma^2/(1+gamma^2) * (+1)",
+    "Gs_sign": "negative",
+    "manuscript_Gs": "-(3 kappa/16) gamma^2/(1+gamma^2) < 0",
+    "manuscript_Gs_confirmed": true
+  }
+}

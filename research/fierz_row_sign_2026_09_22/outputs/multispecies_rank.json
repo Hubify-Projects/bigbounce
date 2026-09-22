@@ -1,0 +1,39 @@
+{
+  "N_species=1": {
+    "dirac_x_species_components": 4,
+    "operator_rank": 3,
+    "singular_values": [
+      8.717797887081348,
+      8.0,
+      6.324555320336758,
+      8.45422918101781e-16,
+      6.747243666949132e-16
+    ],
+    "five_channels_independent": false
+  },
+  "N_species=2": {
+    "dirac_x_species_components": 8,
+    "operator_rank": 5,
+    "singular_values": [
+      15.659111519645007,
+      13.856406460551021,
+      11.734087966579422,
+      4.723471138111905,
+      4.335000163243451
+    ],
+    "five_channels_independent": true
+  },
+  "N_species=3": {
+    "dirac_x_species_components": 12,
+    "operator_rank": 5,
+    "singular_values": [
+      22.577932472953005,
+      19.595917942265437,
+      17.26807150846769,
+      7.862169317589568,
+      7.364575021464059
+    ],
+    "five_channels_independent": true
+  },
+  "reading": "rank 5 means the five species-singlet quartics are linearly independent as operators, so the Fierz decomposition \u2014 and therefore the mean-field scalar coupling G_s read off from it \u2014 is unambiguous.  rank 3 (N=1) is the single-species degeneracy that makes the word 'unique' an overstatement for a strictly one-species reading."
+}

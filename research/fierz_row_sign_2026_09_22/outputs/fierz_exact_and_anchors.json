@@ -1,0 +1,101 @@
+{
+  "E1_exact_axial_row": {
+    "rows": {
+      "mostly-minus": {
+        "cnumber": {
+          "S": "-1",
+          "V": "-1/2",
+          "T": "0",
+          "A": "-1/2",
+          "P": "1"
+        },
+        "grassmann": {
+          "S": "1",
+          "V": "1/2",
+          "T": "0",
+          "A": "1/2",
+          "P": "-1"
+        }
+      },
+      "mostly-plus": {
+        "cnumber": {
+          "S": "-1",
+          "V": "-1/2",
+          "T": "0",
+          "A": "-1/2",
+          "P": "1"
+        },
+        "grassmann": {
+          "S": "1",
+          "V": "1/2",
+          "T": "0",
+          "A": "1/2",
+          "P": "-1"
+        }
+      }
+    },
+    "identical_across_signatures": true,
+    "manuscript_printed": {
+      "S": "1",
+      "V": "1/2",
+      "T": "0",
+      "A": "1/2",
+      "P": "-1"
+    },
+    "matches_manuscript": true,
+    "grassmann_sign_applied": -1
+  },
+  "E2_operator_signature_invariance": {
+    "max_component_difference": "0",
+    "identical": true,
+    "why": "gamma^mu_(-+++) = i gamma^mu_(+---) contributes i^2 = -1 while eta flips sign, so (J_5^I J_{5I}) \u2014 and every other contracted channel \u2014 is literally the same 4-index tensor in the two signatures. 'Signature-independent' is therefore a theorem, not a coincidence."
+  },
+  "E3_single_species_relations": {
+    "operator_rank": 3,
+    "relations": [
+      {
+        "S": "1",
+        "V": "1/4",
+        "T": "1/6",
+        "A": "-1/4",
+        "P": "0"
+      },
+      {
+        "S": "1",
+        "V": "0",
+        "T": "1/3",
+        "A": "0",
+        "P": "1"
+      }
+    ],
+    "reading": "each entry {X: c_X} means sum_X c_X O_X = 0 identically for ONE 4-component Grassmann Dirac field"
+  },
+  "E4_row_self_application": {
+    "statement": "O_A = 2 O_S + O_V - 2 O_P (single species), the fixed point of applying the derived row to its own A term",
+    "holds": true
+  },
+  "E5_poplawski_anchor": {
+    "derived_+1": {
+      "rho_Lambda_eV4": 8.320176666178916e-06,
+      "sign": "positive",
+      "energy_scale_meV": 53.707277385819985,
+      "matches_published_54meV_positive": true
+    },
+    "counterfactual_-1": {
+      "rho_Lambda_eV4": -8.320176666178916e-06,
+      "sign": "negative",
+      "energy_scale_meV": -53.707277385819985,
+      "matches_published_54meV_positive": false
+    },
+    "poplawski_published": "rho_Lambda = (kappa/3)<qbar q>^2 ~ (54 meV)^4, POSITIVE (his Eq. 10-11)",
+    "coefficient_identity": "(3/16)*(16/9) = 1/3 exactly \u2014 the paper's 3/16 and Poplawski's 1/3 are the same number once his Eq.(9) colour factor is included, and they agree in SIGN only for scalar coefficient +1.",
+    "passed": true
+  },
+  "E6_Gs": {
+    "scalar_coefficient": "+1 (exact rational, both signatures, 3 reps, both gamma5 sign conventions)",
+    "Gs": "-(3 kappa/16) gamma^2/(1+gamma^2)",
+    "sign": "negative at every finite gamma",
+    "manuscript_eq_Gs_confirmed": true,
+    "gap_equation_step_2_stands": true
+  }
+}
