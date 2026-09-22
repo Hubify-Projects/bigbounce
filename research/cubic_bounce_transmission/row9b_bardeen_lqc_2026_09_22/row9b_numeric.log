@@ -1,0 +1,50 @@
+============================================================================================================
+ROW 9b LEG B - the Bardeen linear transfer on the LQC and poly backgrounds (smooth NEC crossings)
+============================================================================================================
+
+[G1] control - Bardeen lambda on the Quintin-type background vs row 9's committed values:
+     k eta_B=0.001    this lane 0.969900   row 9 0.969924   rel 2.5e-05
+     k eta_B=0.003    this lane 0.969943   row 9 0.969946   rel 3.1e-06
+     k eta_B=0.01     this lane 0.970188   row 9 0.970188   rel 4.4e-07
+     -> PASS
+
+[G2] dust limit zeta/Phi (Phi = const): quintin 1.666666666667 (err 1.1e-16), LQC 1.666666666733 (err 4.0e-11), poly 1.666666680556 (err 8.3e-09)  -> PASS
+[G3] S1 reference, this lane's own projection vs the committed a2_transmission_linear T_fNL:
+     quintin  lambda_S1 = 6.060147  T = 0.165012   (a2: 0.165005, rel 4.3e-05)
+     LQC      lambda_S1 = 4.000269  T = 0.249983   (a2: 0.250000, rel 6.7e-05)
+     poly     lambda_S1 = 5.115957  T = 0.195467   (a2: 0.195501, rel 1.8e-04)
+     -> PASS
+[G5] Wronskian Phi_1 Xi_2 - Phi_2 Xi_1 over the singular sub-domain (both Q = 0 crossings + H = 0): quintin 1.1e-11 (term scale 0.99), LQC 2.7e-12 (term scale 0.96), poly 3.3e-11 (term scale 0.97)  -> PASS
+
+[B] R = |zeta_C^Bardeen(+inf) / zeta_C^S1(+inf)| at the SAME incoming dust adiabatic vacuum.
+    This is the convention-free transfer ratio: it needs no handoff surface, and because
+    zeta^Bardeen == zeta^S1 identically in the dust contraction, f_NL^after,lin scales as 1/R.
+    quintin  k eta_B=0.001: R=0.160045   k eta_B=0.003: R=0.160055   k eta_B=0.01: R=0.160118
+    LQC      k eta_B=0.001: R=0.500060   k eta_B=0.003: R=0.500073   k eta_B=0.01: R=0.500226
+             P1(eps) scan ['0.497838', '0.499276', '0.499783', '0.499929'] -> 0.500075 | P2(gap) scan ['0.498699', '0.499568', '0.499871', '0.499958'] -> 0.500045 | disagreement 6.0e-05
+    poly     k eta_B=0.001: R=0.375076   k eta_B=0.003: R=0.375087   k eta_B=0.01: R=0.375203
+             P1(eps) scan ['0.371711', '0.373888', '0.374667', '0.374891'] -> 0.375115 | P2(gap) scan ['0.373928', '0.374644', '0.374894', '0.374966'] -> 0.375038 | disagreement 2.1e-04
+[G4] P1 vs P2: LQC disagree 6.0e-05, eps-spread 1.3e-03, gap-spread 7.8e-04, poly disagree 2.1e-04, eps-spread 2.7e-03, gap-spread 8.6e-04  -> PASS
+
+[G6] independent super-Hubble cross-check  R = 3 I_eps / I_S1  (principal-value quadrature, no ODE):
+     quintin  analytic R = 0.1600489  | ODE R = 0.1600449 | rel 2.5e-05
+     LQC      analytic R = 0.4999994 = 3*(pi/(6 sqrt3))/(pi/sqrt3) = 1/2 | ODE R = 0.5000601 | rel 1.2e-04
+     poly     analytic R = 0.3749996 = 3*(pi/32)/(pi/4) = 3/8 | ODE R = 0.3750761 | rel 2.0e-04
+     -> PASS
+
+[G7] the logarithm at Q = 0: measured slope of zeta vs Leg A's closed form c_log = -k^2 Hc Phi / Q':
+     LQC      measured 1019.74  closed form 1016.97  rel 2.7e-03 | |c_log/zeta_fp| = 0.459
+     poly     measured 2763.51  closed form 2758.65  rel 1.8e-03 | |c_log/zeta_fp| = 2.827
+     -> PASS (the log is REAL and its amplitude is the Leg-A closed form)
+
+============================================================================================================
+CONSEQUENCES (linear transfer only; the cubic term Delta_T is OUT OF SCOPE on LQC/poly by pre-registration)
+============================================================================================================
+  quintin  R = 0.16004  ->  T_fNL: S1 0.1650 -> Bardeen 1.0310 (x6.248) | f_NL^after,lin: -0.3610 -> -2.2554 | r_after: 24.0 -> 937.0
+  LQC      R = 0.50006  ->  T_fNL: S1 0.2500 -> Bardeen 0.4999 (x2.000) | f_NL^after,lin: -0.5468 -> -1.0935 | r_after: 24.0 -> 96.0
+  poly     R = 0.37508  ->  T_fNL: S1 0.1955 -> Bardeen 0.5211 (x2.666) | f_NL^after,lin: -0.4276 -> -1.1400 | r_after: 24.0 -> 170.6
+
+============================================================================================================
+VERDICT (PREREGISTRATION.md section 4.1): gates ALL PASS ; |R-1| = LQC 0.500, poly 0.625  ->  OUTCOME-UNIVERSAL(b)
+============================================================================================================
+[fig] row9b_bardeen_lqc.png

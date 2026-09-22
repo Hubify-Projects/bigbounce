@@ -1,0 +1,36 @@
+========================================================================================================
+LEG A - Bardeen route at a simple zero of Q = Hc^2 - Hc' = -a^2 Hdot  (the smooth NEC crossing)
+========================================================================================================
+
+[A1] (Phi, Psi) system, Psi = Phi' + Hc Phi:
+        Phi' = Psi - Hc Phi ;   Psi' = (Q'/Q - Hc) Psi + (Q - k^2) Phi
+     residual against row 9's Phi equation: 0
+     zeta = Phi + Hc Psi/Q  ->  residual of  zeta' = -k^2 Hc Phi/Q : 0
+
+[A2-A4] local analysis at a simple zero of Q.  Hc is expanded about eta_c as h0 + h1 t + h2 t^2 + h3 t^3,
+        and Q = Hc^2 - Hc' is NOT independent: Q(eta_c) = 0 forces h1 = h0^2.
+        Q series: q0 = 0 ; q1 = 2*(h0**3 - h2) ; q2 = h0**4 + 2*h0*h2 - 3*h3
+        t*p -> -1   (p_{-1});   t^2*q -> 0   (q_{-2});   t*q -> -h0   (q_{-1})
+[A2] indicial equation: r**2 - 2*r = 0   ->  roots [0, 2]
+[A3] order t^{-1} of the ODE (i.e. t^0 after multiplying by t):  -a0*h0 - a1 = 0
+     ->  a1 = -a0*h0          i.e.  Phi'(eta_c) = -Hc(eta_c) Phi(eta_c)  : CONFIRMED
+[A4] resonance at n = 2 (exponents differ by the integer 2): the t^0 coefficient fixes the LOG amplitude
+     C = -a0*k**2/2
+     -> C != 0 whenever  k != 0  and  Phi(eta_c) != 0 : the r = 0 solution CARRIES a t^2 log t term,
+        so Phi and Phi' are continuous (the log is O(t^2 log t), O(t log t)) while Phi'' diverges as log t.
+     Psi = Phi' + Hc Phi  near eta_c :  t*(2*C*log(t) + C + 2*a2)
+     zeta = Phi + Hc Psi/Q  near eta_c :  (-C*h0*t*(-2*h0*(h0**6 - 2*h0**3*h2 + h2**2) + (h0**3 - h2)*(h0**4 + 2*h0*h2 - 3*h3))*log(t) + (h0**6 - 2*h0**3*h2 + h2**2)*(2*C*h0*log(t) + C*h0 + 2*a0*h0**3 - 2*a0*h2 + 2*a2*h0))/(2*(h0**3 - h2)*(h0**6 - 2*h0**3*h2 + h2**2))
+
+[A5] the committed backgrounds (a2_transmission_linear.bg_lqc / bg_poly), closed form
+     LQC:  a = x^(-1/3),  Hdot = x*(x - 1/2),  Q = -a^2 Hdot = x**(1/3)*(1/2 - x)
+           Hc = x**(1/6)*sqrt(3 - 3*x)/3 ;  a''/a = x**(1/3)*(2*x + 1)/6   (matches the committed appa = x^(1/3)(1/6 + x/3): True)
+           Q = 0 at x = [1/2, (-2**(2/3)/4 - 2**(2/3)*sqrt(3)*I/4)**3, (-2**(2/3)/4 + 2**(2/3)*sqrt(3)*I/4)**3] ;  dQ/dx there = [-2**(2/3)/2, -2**(2/3)/2, -2**(2/3)/2]  (nonzero -> SIMPLE zero)
+           z^2[S2, geometric 2 a^2 eps]      = 3*(2*x - 1)/(x**(2/3)*(x - 1))
+           z^2[S2, fluid a^2(rho+p)/H^2]     = -3/(x**(2/3)*(x - 1))   (the value A3M quotes, T = 0.409)
+           ratio = 1 - 2*x  -> the two differ by (1-2x) and are NOT the same variable on this background
+     poly: a = 1 + u^2,  Hc = 2*u/(u**2 + 1),  Q = 2*(3*u**2 - 1)/(u**2 + 1)**2
+           Q = 0 at u = [-sqrt(3)/3, sqrt(3)/3] ;  Q' there = [-9*sqrt(3)/4, 9*sqrt(3)/4]  (nonzero -> SIMPLE zero)
+           -Q/a^2 = Hdot = 2*(1 - 3*u**2)/(u**2 + 1)**4   (matches the committed Hd = 2(1-3u^2)/(1+u^2)^4: True)
+     Quintin-type: Hdot = Upsilon > 0 inside |t| < tm and -3/2 H^2 < 0 outside -- it JUMPS between the
+           two signs and is never zero, so this background has NO Q = 0 crossing at all.  That is the
+           structural difference row 9 could not test.

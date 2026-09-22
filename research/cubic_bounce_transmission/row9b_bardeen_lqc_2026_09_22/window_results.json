@@ -1,0 +1,509 @@
+{
+  "date": "2026-09-22",
+  "background": "Quintin2015-type dtB=1",
+  "convention": {
+    "rule": "largest eta_* on a plateau (3 consecutive within 0.5%) subject to k eta_* <= 0.2",
+    "plateau_tol": 0.005,
+    "k_eta_star_cap": 0.2,
+    "facs_scanned": [
+      5.0,
+      7.5,
+      10.0,
+      12.5,
+      15.0,
+      20.0,
+      30.0,
+      50.0,
+      75.0,
+      100.0,
+      150.0,
+      200.0
+    ]
+  },
+  "committed_convention_in_lane9b2": "fac = min(50, 0.2/k eta_B)",
+  "rows": {
+    "0.001": {
+      "f_NL_before": -2.1872753649135515,
+      "scan": [
+        {
+          "fac": 5.0,
+          "k_eta_star": 0.005000000000000001,
+          "f_NL_after": -1.4198244601593735,
+          "parts": {
+            "contraction": -13.423746856537088,
+            "window": 11.26222800582776,
+            "expansion": 0.7416943905499545
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 7.5,
+          "k_eta_star": 0.0075,
+          "f_NL_after": -1.2531647161229076,
+          "parts": {
+            "contraction": -3.9997285627808,
+            "window": 2.7715237718901724,
+            "expansion": -0.024959925232280085
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 10.0,
+          "k_eta_star": 0.010000000000000002,
+          "f_NL_after": -1.2496480046983054,
+          "parts": {
+            "contraction": -3.1465521550667708,
+            "window": 2.0124279549325412,
+            "expansion": -0.11552380456407596
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 12.5,
+          "k_eta_star": 0.0125,
+          "f_NL_after": -1.2492842736138958,
+          "parts": {
+            "contraction": -2.9167088662019616,
+            "window": 1.8084180066138493,
+            "expansion": -0.14099341402578366
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 15.0,
+          "k_eta_star": 0.015,
+          "f_NL_after": -1.2492109599975627,
+          "parts": {
+            "contraction": -2.82822046177144,
+            "window": 1.7299362227303476,
+            "expansion": -0.15092672095647017
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 20.0,
+          "k_eta_star": 0.020000000000000004,
+          "f_NL_after": -1.2491653050943652,
+          "parts": {
+            "contraction": -2.7649177356767276,
+            "window": 1.6738134848946324,
+            "expansion": -0.15806105431226994
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 30.0,
+          "k_eta_star": 0.03,
+          "f_NL_after": -1.24908569968916,
+          "parts": {
+            "contraction": -2.735714982543849,
+            "window": 1.6479290720407338,
+            "expansion": -0.16129978918604448
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 50.0,
+          "k_eta_star": 0.05,
+          "f_NL_after": -1.248829194822185,
+          "parts": {
+            "contraction": -2.726919630090831,
+            "window": 1.6401338114362871,
+            "expansion": -0.1620433761676409
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 75.0,
+          "k_eta_star": 0.07500000000000001,
+          "f_NL_after": -1.2483200762185822,
+          "parts": {
+            "contraction": -2.7253173182833557,
+            "window": 1.6387136153398498,
+            "expansion": -0.16171637327507649
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 100.0,
+          "k_eta_star": 0.1,
+          "f_NL_after": -1.2476021344759316,
+          "parts": {
+            "contraction": -2.724939058498832,
+            "window": 1.6383782242247062,
+            "expansion": -0.16104130020180576
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 150.0,
+          "k_eta_star": 0.15000000000000002,
+          "f_NL_after": -1.2455396270383643,
+          "parts": {
+            "contraction": -2.72474929202253,
+            "window": 1.6382096302063047,
+            "expansion": -0.1589999652221392
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 200.0,
+          "k_eta_star": 0.2,
+          "f_NL_after": -1.2426402267076995,
+          "parts": {
+            "contraction": -2.7247052649213503,
+            "window": 1.638170050175277,
+            "expansion": -0.15610501196162602
+          },
+          "within_cap": true
+        }
+      ]
+    },
+    "0.003": {
+      "f_NL_before": -2.1872277237682027,
+      "scan": [
+        {
+          "fac": 5.0,
+          "k_eta_star": 0.015,
+          "f_NL_after": -1.4198112572509287,
+          "parts": {
+            "contraction": -13.423533694779229,
+            "window": 11.26211421287212,
+            "expansion": 0.7416082246561798
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 7.5,
+          "k_eta_star": 0.0225,
+          "f_NL_after": -1.253113309079976,
+          "parts": {
+            "contraction": -3.9995596174382633,
+            "window": 2.771443648022291,
+            "expansion": -0.0249973396640037
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 10.0,
+          "k_eta_star": 0.03,
+          "f_NL_after": -1.2495555380147725,
+          "parts": {
+            "contraction": -3.1463558874243778,
+            "window": 2.0123206886702603,
+            "expansion": -0.11552033926065493
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 12.5,
+          "k_eta_star": 0.0375,
+          "f_NL_after": -1.2491318670541847,
+          "parts": {
+            "contraction": -2.916492833647412,
+            "window": 1.80829176272767,
+            "expansion": -0.1409307961344428
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 15.0,
+          "k_eta_star": 0.045,
+          "f_NL_after": -1.248980236608265,
+          "parts": {
+            "contraction": -2.8279904220479786,
+            "window": 1.7297966662865958,
+            "expansion": -0.15078648084688212
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 20.0,
+          "k_eta_star": 0.06,
+          "f_NL_after": -1.248724981201039,
+          "parts": {
+            "contraction": -2.7646696625092018,
+            "window": 1.6736568683647925,
+            "expansion": -0.15771218705662987
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 30.0,
+          "k_eta_star": 0.09,
+          "f_NL_after": -1.2480207423598217,
+          "parts": {
+            "contraction": -2.735448843336972,
+            "window": 1.647755343730835,
+            "expansion": -0.16032724275368465
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 50.0,
+          "k_eta_star": 0.15,
+          "f_NL_after": -1.2457068304530605,
+          "parts": {
+            "contraction": -2.726640098598832,
+            "window": 1.6399470700413352,
+            "expansion": -0.15901380189556372
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 75.0,
+          "k_eta_star": 0.225,
+          "f_NL_after": -1.2411155386428605,
+          "parts": {
+            "contraction": -2.7250331814970576,
+            "window": 1.6385216507827471,
+            "expansion": -0.15460400792855009
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 100.0,
+          "k_eta_star": 0.3,
+          "f_NL_after": -1.23463129204606,
+          "parts": {
+            "contraction": -2.724655103253362,
+            "window": 1.6381851475280638,
+            "expansion": -0.14816133632076162
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 150.0,
+          "k_eta_star": 0.45,
+          "f_NL_after": -1.2159320039910253,
+          "parts": {
+            "contraction": -2.724472669909186,
+            "window": 1.6380197391688294,
+            "expansion": -0.1294790732506688
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 200.0,
+          "k_eta_star": 0.6,
+          "f_NL_after": -1.1894625097205198,
+          "parts": {
+            "contraction": -2.7244422173626104,
+            "window": 1.637987701752226,
+            "expansion": -0.10300799411013535
+          },
+          "within_cap": false
+        }
+      ]
+    },
+    "0.01": {
+      "f_NL_before": -2.1866862438984396,
+      "scan": [
+        {
+          "fac": 5.0,
+          "k_eta_star": 0.049999999999999996,
+          "f_NL_after": -1.419661768224814,
+          "parts": {
+            "contraction": -13.421110646211922,
+            "window": 11.260820219481847,
+            "expansion": 0.7406286585052612
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 7.5,
+          "k_eta_star": 0.075,
+          "f_NL_after": -1.2525289943182667,
+          "parts": {
+            "contraction": -3.997638403769823,
+            "window": 2.770532014594017,
+            "expansion": -0.02542260514246045
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 10.0,
+          "k_eta_star": 0.09999999999999999,
+          "f_NL_after": -1.2485040081571277,
+          "parts": {
+            "contraction": -3.1441236484049133,
+            "window": 2.0111001473996906,
+            "expansion": -0.11548050715190503
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 12.5,
+          "k_eta_star": 0.12499999999999999,
+          "f_NL_after": -1.2473981600781499,
+          "parts": {
+            "contraction": -2.9140355302060095,
+            "window": 1.806855147389928,
+            "expansion": -0.1402177772620683
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 15.0,
+          "k_eta_star": 0.15,
+          "f_NL_after": -1.246354932601669,
+          "parts": {
+            "contraction": -2.8253735249865057,
+            "window": 1.7282083851970107,
+            "expansion": -0.14918979281217398
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 20.0,
+          "k_eta_star": 0.19999999999999998,
+          "f_NL_after": -1.2437119683031637,
+          "parts": {
+            "contraction": -2.7618470595893325,
+            "window": 1.671874000395442,
+            "expansion": -0.15373890910927313
+          },
+          "within_cap": true
+        },
+        {
+          "fac": 30.0,
+          "k_eta_star": 0.3,
+          "f_NL_after": -1.2358791936975522,
+          "parts": {
+            "contraction": -2.7324194813913967,
+            "window": 1.6457766616315832,
+            "expansion": -0.14923637393773878
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 50.0,
+          "k_eta_star": 0.49999999999999994,
+          "f_NL_after": -1.2099492784430987,
+          "parts": {
+            "contraction": -2.72345570974261,
+            "window": 1.6378178599574293,
+            "expansion": -0.12431142865791811
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 75.0,
+          "k_eta_star": 0.75,
+          "f_NL_after": -1.1578708367626283,
+          "parts": {
+            "contraction": -2.721792854842699,
+            "window": 1.6363297277758255,
+            "expansion": -0.07240770969575468
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 100.0,
+          "k_eta_star": 0.9999999999999999,
+          "f_NL_after": -1.0828250092600873,
+          "parts": {
+            "contraction": -2.721413054310697,
+            "window": 1.6359770788945551,
+            "expansion": 0.0026109661560544404
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 150.0,
+          "k_eta_star": 1.5,
+          "f_NL_after": -0.855650212381505,
+          "parts": {
+            "contraction": -2.7213053889007437,
+            "window": 1.6358400478939237,
+            "expansion": 0.22981512862531506
+          },
+          "within_cap": false
+        },
+        {
+          "fac": 200.0,
+          "k_eta_star": 1.9999999999999998,
+          "f_NL_after": -0.501735143597864,
+          "parts": {
+            "contraction": -2.721418407082428,
+            "window": 1.6358840854544112,
+            "expansion": 0.5837991780301529
+          },
+          "within_cap": false
+        }
+      ]
+    }
+  },
+  "adopted": {
+    "0.001": {
+      "status": "PLATEAU",
+      "eta_star_over_etaB": 200.0,
+      "f_NL_after": -1.2426402267076995,
+      "plateau_facs": [
+        100.0,
+        150.0,
+        200.0
+      ],
+      "plateau_spread": 0.003984633833459081,
+      "systematic": 0.003984633833459081,
+      "full_spread_within_cap": 0.14032250824473777,
+      "n_qualifying_triples": 9,
+      "posthoc_stationary": {
+        "facs": [
+          12.5,
+          15.0,
+          20.0
+        ],
+        "value": -1.2492109599975627,
+        "spread": 9.523422810198366e-05
+      }
+    },
+    "0.003": {
+      "status": "PLATEAU",
+      "eta_star_over_etaB": 50.0,
+      "f_NL_after": -1.2457068304530605,
+      "plateau_facs": [
+        20.0,
+        30.0,
+        50.0
+      ],
+      "plateau_spread": 0.002419389989119378,
+      "systematic": 0.002419389989119378,
+      "full_spread_within_cap": 0.1370490288095342,
+      "n_qualifying_triples": 5,
+      "posthoc_stationary": {
+        "facs": [
+          12.5,
+          15.0,
+          20.0
+        ],
+        "value": -1.248980236608265,
+        "spread": 0.0003257834626352249
+      }
+    },
+    "0.01": {
+      "status": "PLATEAU",
+      "eta_star_over_etaB": 20.0,
+      "f_NL_after": -1.2437119683031637,
+      "plateau_facs": [
+        12.5,
+        15.0,
+        20.0
+      ],
+      "plateau_spread": 0.0029588438004153764,
+      "systematic": 0.0029588438004153764,
+      "full_spread_within_cap": 0.13785280311887532,
+      "n_qualifying_triples": 3,
+      "posthoc_stationary": {
+        "facs": [
+          10.0,
+          12.5,
+          15.0
+        ],
+        "value": -1.2473981600781499,
+        "spread": 0.0017228176719697582
+      }
+    }
+  },
+  "runtime_s": 18.123464107513428
+}

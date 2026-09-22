@@ -1,0 +1,31 @@
+========================================================================================================
+LEG C - evaluation-window convention for f_NL^after[S2] on the Quintin-type background
+========================================================================================================
+background: Quintin-type dtB=1, eta_B=0.449586 | committed lane9b2 raw-ADM cubic kernel, unmodified
+
+ k eta_B = 0.001   (f_NL^before = -2.187275)
+   eta*/eta_B :        5        8       10       12       15       20       30       50       75      100      150      200
+   k eta*     :    0.005    0.007    0.010    0.013    0.015    0.020    0.030    0.050    0.075    0.100    0.150    0.200
+   f_NL^after :  -1.4198  -1.2532  -1.2496  -1.2493  -1.2492  -1.2492  -1.2491  -1.2488  -1.2483  -1.2476  -1.2455  -1.2426
+   within cap :      yes      yes      yes      yes      yes      yes      yes      yes      yes      yes      yes      yes
+
+ k eta_B = 0.003   (f_NL^before = -2.187228)
+   eta*/eta_B :        5        8       10       12       15       20       30       50       75      100      150      200
+   k eta*     :    0.015    0.022    0.030    0.037    0.045    0.060    0.090    0.150    0.225    0.300    0.450    0.600
+   f_NL^after :  -1.4198  -1.2531  -1.2496  -1.2491  -1.2490  -1.2487  -1.2480  -1.2457  -1.2411  -1.2346  -1.2159  -1.1895
+   within cap :      yes      yes      yes      yes      yes      yes      yes      yes       NO       NO       NO       NO
+
+ k eta_B = 0.01   (f_NL^before = -2.186686)
+   eta*/eta_B :        5        8       10       12       15       20       30       50       75      100      150      200
+   k eta*     :    0.050    0.075    0.100    0.125    0.150    0.200    0.300    0.500    0.750    1.000    1.500    2.000
+   f_NL^after :  -1.4197  -1.2525  -1.2485  -1.2474  -1.2464  -1.2437  -1.2359  -1.2099  -1.1579  -1.0828  -0.8557  -0.5017
+   within cap :      yes      yes      yes      yes      yes      yes       NO       NO       NO       NO       NO       NO
+
+--------------------------------------------------------------------------------------------------------
+plateau test: three consecutive scanned eta_* agreeing to <= 0.5%, subject to k eta_* <= 0.20
+  k eta_B=0.001   PLATEAU (pre-registered rule) over eta*/eta_B = [100.0, 150.0, 200.0] (spread 0.398%) -> adopt eta*/eta_B = 200, f_NL^after = -1.2426 +- 0.0050
+              post-hoc STATIONARY triple [12.5, 15.0, 20.0]: f_NL^after = -1.2492 (spread 0.010%)
+  k eta_B=0.003   PLATEAU (pre-registered rule) over eta*/eta_B = [20.0, 30.0, 50.0] (spread 0.242%) -> adopt eta*/eta_B = 50, f_NL^after = -1.2457 +- 0.0030
+              post-hoc STATIONARY triple [12.5, 15.0, 20.0]: f_NL^after = -1.2490 (spread 0.033%)
+  k eta_B=0.01    PLATEAU (pre-registered rule) over eta*/eta_B = [12.5, 15.0, 20.0] (spread 0.296%) -> adopt eta*/eta_B = 20, f_NL^after = -1.2437 +- 0.0037
+              post-hoc STATIONARY triple [10.0, 12.5, 15.0]: f_NL^after = -1.2474 (spread 0.172%)
