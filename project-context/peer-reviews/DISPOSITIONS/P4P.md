@@ -434,3 +434,50 @@ jargon) was incidentally resolved by the B4 rewrite.
 sha256 `0224d3b8e85c8a26fd8ed8e6a715ff571e3d6483cce4eadfbdf87acafd17a5bf`, md5
 `e31da2ee9cc57fbf0344b8d5c3b9a330`; four-way byte-identical mirror verified; arXiv
 tarball rebuilt and standalone-compile-verified.
+
+## v4P.0.9 → v4P.0.10 — row-16(ii-b) science propagation (2026-09-21, lane `bb-L4d-p4p-row16-propagate`)
+
+Not a review round — no board run, nothing here is a reviewer finding. This
+is a **science-content update**: lanes `bb-LS-ledger16` / `bb-LS5-row16-finalize`
+measured a direct, assumption-light bound on the observed-to-physical
+transfer function ($D \le 0.717 \pm 0.005$, released `primary_hc`
+preprocessing, from a PA-restoring handedness-reversal test) and left an
+exact propagation note
+(`pipelines/p4prime_chirality_test/row16_pa_parity_transfer/PROPAGATION_NOTE.md`,
+sentences P-1..P-5d) rather than editing the paper themselves (per the
+lane split, only lane L4/its descendants may write `main.tex`). This lane
+applied every printable sentence in that note verbatim, and additionally
+made the withdrawn claim's three other in-paper mentions (§2.3
+forward-reference, Discussion, Conclusions) consistent with it, reusing only
+numbers already given in the note (no new derivation, per
+`/never-fabricate-derivation`).
+
+**Superseded (withdrawn, not "reviewed away"):** the naive-identity
+`+0.434`/`47σ` comparison, the `0.038` response ratio, the `≈26%`
+propagated floor, and the "unresolved discrepancy"/"order of magnitude
+tension" framing throughout — all four were comparisons between statistics
+that do not share a normalization (P-1/P-2/P-3 of the propagation note), not
+findings from any external reviewer.
+
+**Adopted (new, measured):** $\bar\epsilon = 0.754 \pm 0.005$ (PA-restoring
+reversal, `primary_hc`, released preprocessing, $51\sigma$ below unity);
+dilution bound $D \le 0.717 \pm 0.005$; $A_{95}^{\rm phys} \ge 1.37\%$,
+consistent with the illustrative $g=0.398$ bridge (source: `s1_pa_transfer_results.json`,
+`s5b_nocrop_dilution.json`, `posthoc_nocrop_eps.json`, per the note's P-5d
+citation table).
+
+**Not yet done:** LS6's second propagation note
+(`row16_tta_2026_09_21/PROPAGATION_NOTE.md`) did not exist when this lane
+ran (checked, absent) — a future lane should check for and apply it before
+the next review board. Directive R2's round budget is refreshed by this
+science decision, but no board was run in this lane (out of scope; reserved
+for whichever lane runs the next one).
+
+### v4P.0.10 hygiene
+`\paperVersion` v4P.0.9→v4P.0.10, `\paperTimestamp` Sept 19→Sept 21 2026;
+4-pass compile (inline `thebibliography`, no `.bbl` dependency), 0 undef
+refs, pre-existing 5.88pt hbox only (unchanged); 14→15 pages; sha256
+`054b63f8a73902000a0e703da62229ee887f2fc77b0cc027533c2309985f9310`, md5
+`d2d017145530e641ea491c4f5f0909de`; three-way byte-identical mirror verified
+(source, `site/public/papers/`, `public/papers/`); arXiv tarball rebuilt
+and standalone-compile-verified (0 undef refs on a clean extract).

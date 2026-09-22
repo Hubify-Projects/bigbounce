@@ -1,7 +1,83 @@
 # P4' status — current authoritative section
 
-**Current candidate:** v4P.0.9 · `pipelines/p4prime_chirality_test/paper/main.tex`
-**Directive-P readiness:** 95 (unchanged) — exact-v4P.0.8 re-verification board closed, all 6 genuinely-new-real MAJOR + 4 MINOR findings fixed; directive R2 exit — **no further consecutive review round on this content is authorized without an intervening science/scope decision.** Houston sign-off read should use **v4P.0.9**, sha256 `0224d3b8e85c8a26fd8ed8e6a715ff571e3d6483cce4eadfbdf87acafd17a5bf`, 14 pages.
+**Current candidate:** v4P.0.10 · `pipelines/p4prime_chirality_test/paper/main.tex`
+**Directive-P readiness:** 95 (unchanged) — this is a science-content propagation, not a review-round closure. Directive R2 status: since the propagated result is an intervening science decision, **the round budget for this paper is refreshed** (a fresh board may be run by a future lane); no board was run in this lane. Houston sign-off read should use **v4P.0.10**, sha256 `054b63f8a73902000a0e703da62229ee887f2fc77b0cc027533c2309985f9310`, 15 pages.
+
+## Row-16(ii-b) PA-parity-transfer propagation (v4P.0.9 → v4P.0.10, 2026-09-21)
+
+Campaign 2026-09-18 lane `bb-L4d-p4p-row16-propagate`. Lane `bb-LS-ledger16`
+(2026-09-19) and lane `bb-LS5-row16-finalize` (2026-09-21) produced a genuine,
+measured result — a direct, assumption-light bound on the observed-to-physical
+transfer function (dilution $D \le 0.717 \pm 0.005$ on the released
+`primary_hc` preprocessing, $60\sigma$ from $D=1$) — that supersedes the
+paper's prior pixel-injection-based tension claim, and left an exact
+propagation note (`pipelines/p4prime_chirality_test/row16_pa_parity_transfer/PROPAGATION_NOTE.md`,
+sentences P-1 through P-5d) rather than editing `main.tex` themselves. This
+lane applied those sentences exactly, plus the minimal consistent
+propagation the note's own directive-G reminder requires to the three other
+places in the manuscript that referenced the now-withdrawn claim (the §2.3
+forward-reference, Discussion, Conclusions) — no new numbers were introduced
+anywhere; every value in the diff is one already cited in the propagation
+note. LS6's second propagation note
+(`pipelines/p4prime_chirality_test/row16_tta_2026_09_21/PROPAGATION_NOTE.md`)
+did not exist at run time (checked, absent) and is NOT included — a future
+lane should check for it before the next round.
+
+**What changed (content):**
+- Table `tab:pixel_calib`: dropped the invalid `+0.434`/`47σ` naive-identity
+  row and the `0.038`/`≈26%` derived ratio (P-1/P-2/P-3, both relied on
+  comparing incompatible statistics); corrected the pixel-injection slope's
+  error bar from the fixed-realization bootstrap (`±0.0089`) to the
+  Monte-Carlo-propagated true SE (`±0.0238`), now consistent with the exact
+  label identity at 1.8σ, not "47σ"/"2.9σ discrepant"; added the new
+  measured $\bar\epsilon=0.754\pm0.005$ and $D\le0.717\pm0.005$ rows.
+- Assumption 2 of §`sec:bh` and the §`sec:robustness_disclosure` narrative:
+  replaced the withdrawn "order-of-magnitude tension, unresolved" language
+  with the measured dilution bound and its consequence
+  $A_{95}^{\rm phys}\ge1.37\%$, consistent with (not in tension with) the
+  illustrative $g=0.398$.
+- §2.3 forward-reference, Discussion, Conclusions: updated the same claim
+  consistently (previously all three repeated the withdrawn tension).
+- Data Availability: added the row16(ii-b) manifest and artifact directory
+  as a fifth (was four) individually-reproducible disclosure result; added
+  the experiment ID to `reproducibility/manifests/programs/galaxy-chirality.json`.
+
+**Not done in this lane (explicitly out of scope):** no INT/EXT review board
+was run (the brief reserves that for a separate lane, now that the round
+budget is refreshed); readiness stays 95, computed, not hand-set.
+
+**Hygiene (directive G):** `\paperVersion` v4P.0.9→v4P.0.10;
+`\paperTimestamp` September 19→21, 2026; 4-pass `pdflatex` + confirmed no
+`\bibliography{}` dependency (inline `thebibliography`), 0 undefined refs;
+one pre-existing 5.88pt overfull hbox, unchanged, below the 10pt gate;
+14→15 pages (net +1 page from the new material). `pdftoppm -r 110` render of
+every edited page (title, Assumption-2 page, robustness-disclosure page, the
+rebuilt table, and the Data-Availability page) — no overflow, no overlap, no
+broken table.
+
+- **PDF:** `pipelines/p4prime_chirality_test/paper/main.pdf` — MD5
+  `d2d017145530e641ea491c4f5f0909de`, SHA-256
+  `054b63f8a73902000a0e703da62229ee887f2fc77b0cc027533c2309985f9310`.
+  Mirrored byte-identically (three-way md5 verified: compile ==
+  `site/public/papers/` == `public/papers/`) to
+  `paper4prime_chirality_test_v4P.0.10.pdf`. (`site/out/papers/` is a
+  gitignored Next.js build artifact and regenerates on the next site build —
+  not hand-mirrored.)
+- **arXiv tarball:** rebuilt from scratch and standalone-compile-verified
+  (extract to a clean dir + 3-pass pdflatex, 0 undefined refs, byte-identical
+  page count/size to the source compile):
+  `project-context/SSOT/arxiv_tarballs/paper4prime_chirality_test_arxiv_v4P.0.10.tar.gz`,
+  sha256 `603582d74203aa57f252167e348b65a9b63994120ff86c94c20d4c7e27b936f6`.
+- **Artifact links:** all 19 hyperlink URIs in the compiled PDF extracted via
+  `pypdf`; 15 GitHub links (14 `/blob/` files + 1 `/tree/` directory,
+  including the two new row-16(ii-b) entries) confirmed present on `main`
+  via `git ls-files`-equivalent local check; 2 Zenodo DOIs + 1 HuggingFace
+  dataset link + 1 site PDF link unchanged from v4P.0.9 (not re-curled this
+  round).
+- **Convex:** DISABLED (deployment `brilliant-panther-471` over its spending
+  limit) — the intended `paperVersions:bump` mutation is queued in
+  `project-context/CONVEX_BACKFILL_QUEUE_2026-09-21.md`, not written.
+- **Git:** commit recorded in the campaign log (`L4d-p4p-row16-propagate`).
 
 ## Exact-v4P.0.8 re-verification board closed (v4P.0.8 → v4P.0.9, 2026-09-19)
 

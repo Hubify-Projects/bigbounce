@@ -58,8 +58,8 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FSC}}
 
-\newcommand{\paperVersion}{v4P.0.9}
-\newcommand{\paperTimestamp}{September 19, 2026}
+\newcommand{\paperVersion}{v4P.0.10}
+\newcommand{\paperTimestamp}{September 21, 2026}
 
 \begin{document}
 \raggedbottom
@@ -498,20 +498,19 @@ spatially resolved morphology transfer function, which remains an open gate
 in the archived release paper~\cite{Golden:P4v274}. This distinction
 matters directly for Sec.~\ref{sec:bh}, which uses Eq.~\ref{eq:a95_obs} as
 the sensitivity floor against which the black-hole-universe claim is
-confronted. Two results in Sec.~\ref{sec:robustness_disclosure} directly
-qualify this floor and this null and are not otherwise referenced from
+confronted. Sec.~\ref{sec:robustness_disclosure} reports two results that
+bear on this floor and this null and are not otherwise referenced from
 this section: (i) a per-imaging-leg partition of this same
 $887{,}472$-galaxy primary sample is not uniformly clean under leg
 removal -- two single-leg-removal variants and the DES-only fit
 individually exceed $A_{95}^{\rm obs}$, even though the full four-leg fit
-reported here is null-consistent; and (ii) a first direct empirical
-measurement of the observed-to-physical transfer function implies a
-response roughly an order of magnitude smaller than the illustrative
-bridge value $g=0.398$ used in Sec.~\ref{sec:bh}, which if propagated at
-face value would substantially raise the physical-amplitude floor implied
-by $A_{95}^{\rm obs}$. Neither is resolved here; both are stated
-explicitly, not adopted as corrections, in
-Sec.~\ref{sec:robustness_disclosure}.
+reported here is null-consistent; and (ii) a direct measurement of the
+observed-to-physical transfer function bounds its dilution at
+$D \le 0.717 \pm 0.005$, raising the physical-parity sensitivity floor to
+$A_{95}^{\rm phys} \ge 1.37\%$ -- consistent with the illustrative bridge
+value $g=0.398$ used in Sec.~\ref{sec:bh}. The leg-removal result, (i),
+remains unresolved and is stated explicitly, not adopted as a correction,
+in Sec.~\ref{sec:robustness_disclosure}.
 
 A distinct harmonic diagnostic on the wider, 24,087-pixel \FSC{} support
 (Fig.~\ref{fig:skymap}) gives a fixed-occupancy $\ell=1$ moment
@@ -853,10 +852,23 @@ resolved morphology transfer function, an open gate in the archived catalog
 paper; an illustrative bridge factor $g=0.398$ used there for a different
 comparison is explicitly not an established calibration and is not used to
 strengthen this statement. Sec.~\ref{sec:robustness_disclosure} reports a
-first direct empirical probe of that transfer function whose implied
-response is roughly an order of magnitude smaller than $g=0.398$; taken at
-face value this would weaken, not strengthen, the present exclusion, and is
-not resolved here.
+direct measurement of that transfer function. Presenting the released
+pipeline with a genuine handedness reversal --- the mirror about each
+galaxy's own major axis, which preserves its observed position angle ---
+and marginalising over position angle, the reversal is registered in
+$\bar\epsilon = 0.754 \pm 0.005$ of high-confidence spirals, $51\sigma$
+below unity. Because handedness does not depend on the orientation at
+which a galaxy is presented, the rate at which the pipeline contradicts
+itself between two orientations of the same image bounds the dilution $D$
+of any true population asymmetry from above, $D \le 1 - \max_\theta
+P\big(L(0) \ne L(\theta)\big) = 0.717 \pm 0.005$, with no human truth
+labels entering the argument. The observed-label floor $A_{95}^{\rm
+obs} = 0.98\%$ therefore corresponds to a physical-parity floor
+$A_{95}^{\rm phys} = A_{95}^{\rm obs}/D \ge 1.37\%$. This is consistent
+with the illustrative $g = 0.398$ used above (which would give $2.46\%$)
+and supersedes it as the quantity we can defend: it is an upper bound on
+$D$, so it can only weaken the exclusion, and we adopt it in that
+direction only.
 \item The preferred axis is a free direction in the model (inherited from
 an unobserved parent black hole); \texttt{healpy.fit\_dipole} fits both
 amplitude and direction, which is the correct match to a model with no
@@ -918,11 +930,13 @@ derived. We regard that as the honest state of the test: the model predicts
 a direction of effect (preferred-axis alignment) that this catalog is
 well-positioned to detect were it present at the amplitudes the
 observational literature has claimed, and does not detect it.
-Sec.~\ref{sec:robustness_disclosure} discloses two results that qualify
-this exclusion and are not adopted as corrections to it: the primary
-sample's own per-imaging-leg partition is not uniformly clean, and a new
-pixel-level transfer measurement is in tension, by roughly an order of
-magnitude, with the illustrative observed-to-physical bridge used above.
+Sec.~\ref{sec:robustness_disclosure} discloses one further result that
+qualifies this exclusion and is not adopted as a correction to it: the
+primary sample's own per-imaging-leg partition is not uniformly clean. A
+direct measurement of the observed-to-physical transfer function is also
+reported there; it bounds the dilution at $D \le 0.717 \pm 0.005$ and is
+consistent with, not in tension with, the illustrative bridge $g=0.398$
+used above.
 
 % ============================================================
 \section{Conclusions}
@@ -946,12 +960,14 @@ the independent reanalyses of Iye \etal\ (2021) and Patel \& Desmond
 (2024). We make no claim beyond this stated test: the
 result bears on the black-hole-universe model's spin-axis prediction only,
 not on the separate matter-bounce cosmology this research program develops
-from the same torsion mechanism. Two disclosure results
-(Sec.~\ref{sec:robustness_disclosure}) qualify this exclusion and remain
-unresolved: the primary channel's own leg-removal stability, and a direct
-pixel-level measurement of the observed-to-physical transfer function
-roughly an order of magnitude smaller than the illustrative bridge used
-above; neither is adopted as a correction here.
+from the same torsion mechanism. One disclosure result
+(Sec.~\ref{sec:robustness_disclosure}) qualifies this exclusion and
+remains unresolved -- the primary channel's own leg-removal stability --
+and is not adopted as a correction here. A second, a direct measurement of
+the observed-to-physical transfer function bounding its dilution at
+$D \le 0.717 \pm 0.005$ ($A_{95}^{\rm phys} \ge 1.37\%$), is consistent
+with the illustrative bridge used above and is reported in the same
+section.
 
 \appendix
 
@@ -1019,58 +1035,59 @@ label-level injection--recovery curve used to set $A_{95}^{\rm obs}$
 image-level pixel-parity injection through the production equivariant
 classifier ($N=20{,}000$ Legacy DR9 cutouts, 10 seeds, true mirror-flip of
 raw pixels rather than relabeling) recovers a pixel-level slope
-$dA/df=+0.0167\pm0.0089$, an order of magnitude below the naive
-label-identity slope ($+0.434$, $47\sigma$ from the pixel result) and, against
-the mixture-corrected label identity ($-0.0093$), consistent in magnitude
-but sign-flipped at $2.9\sigma$ -- an unresolved discrepancy, not a
-consistency, between the two label-level identities. Table~\ref{tab:pixel_calib}
-records this comparison; the injection baseline itself is $A_0=+0.59\%$ for
+$dA/df=+0.0297\pm0.0238$ (hard, spiral-classified statistic). The
+pixel-level mirror injection is exactly the symmetry of the production
+post-processing: the two-fold horizontal-flip test-time average satisfies
+$\mathrm{eq}_{\rm cw}(MI) = \mathrm{eq}_{\rm ccw}(I)$ identically for every
+image, independent of the network's weights. The injected operation
+\emph{is} $M$, so it transfers with unit efficiency by construction and
+the recovered curve obeys $E[A(f)] = A_0(1-2f)$ at every $N$; we report it
+as a consistency check of the post-processing implementation, not as a
+measurement of the morphology transfer function. Propagating the
+injection-realisation variance that the original analysis omitted, the
+fitted slope $dA/df = +0.0297 \pm 0.0238$ is consistent with the exact
+label identity at $1.8\sigma$, and the design would first reach $3\sigma$
+power at $N \approx 7.3\times10^5$. Table~\ref{tab:pixel_calib} records
+this comparison; the injection baseline itself is $A_0=+0.59\%$ for
 the spiral-classified population probed here, a different quantity from
 (and opposite in sign to) the catalog-wide monopole reported in
 Sec.~\ref{sec:catalog_classifier} ($f_{\rm CW}-\tfrac12=-0.265\%$,
 equivalently $A_p=-0.53\%$ in this paper's amplitude convention -- not the
 HC-selected primary channel's own monopole, which is positive), not the
-same baseline residual. The production pipeline suppresses pixel-level
-parity leakage well below what the label-level injection model alone would
-predict.
+same baseline residual.
 
-This pixel-level slope is also the first direct empirical measurement
-bearing on the observed-to-physical bridge factor $g$ carried, on an
-explicitly illustrative and not-adopted-for-strengthening basis, in
-Assumption~2 of Sec.~\ref{sec:bh} ($g=0.398$, from the committed exclusion
-script, not an established calibration). Taken at face value, the implied response
-ratio $dA/df$ (naive identity) $=0.0167/0.434\approx0.038$ is roughly an
-order of magnitude smaller than $g=0.398$; propagated naively, it would
-move the observed-label floor $A_{95}^{\rm obs}=0.98\%$ to a physical-amplitude
-floor of order $0.98\%/0.038\approx26\%$, under which every literature
-amplitude's low-end value in Table~\ref{tab:bh_exclusion} would fall below
-the floor rather than above it (only Shamir (2025)'s range, $20$--$33\%$,
-straddles this floor). We do not adopt this propagation: the
-pixel-level slope is a response to an injected mirror-flip fraction at a
-fixed operating point, not a validated dipole-amplitude transfer function on
-the sky, and its sign relative to the mixture-corrected identity is itself
-unresolved (above). We state this tension explicitly rather than leave it
-implicit: Sec.~\ref{sec:bh}'s exclusion rests on $g=0.398$ as an
-illustrative, non-adopted bridge, and this new direct measurement of the
-pipeline's own pixel-to-label transfer is not consistent with that bridge
-value at face value. Resolving this -- deriving a validated
-observed-to-physical transfer function, rather than assuming or measuring an
-uncalibrated proxy for one -- is necessary before the Sec.~\ref{sec:bh}
-exclusion can be treated as more than illustrative, and is not attempted in
-this manuscript.
+The transfer function is instead measured directly, by presenting the
+pipeline with a genuine handedness reversal at the galaxy's observed
+position angle (Assumption~2). Marginalised over position angle, a real
+reversal is registered in $\bar\epsilon = 0.754 \pm 0.005$ of
+high-confidence spirals; the deficit is a rotation-equivariance failure
+rather than a parity failure, since the flip test-time average renders the
+parity operation exact wherever it commutes with the rotation
+($\bar\epsilon = 1$ at $0^\circ$ and $180^\circ$, the positive control)
+and $\epsilon(\varphi)$ tracks the rotation-only class stability
+elsewhere. The implied dilution bound $D \le 0.717 \pm 0.005$ raises the
+physical-parity sensitivity floor to $A_{95}^{\rm phys} \ge 1.37\%$, which
+is the figure we quote. Transfer efficiency is not uniform on the sky ---
+it differs by $0.036 \pm 0.005$ between the hemispheres of the
+strict-subset dipole axis --- and we flag that position-dependent
+dilution as an open systematic rather than correcting for it here.
 
 \begin{table}[t]
 \centering
-\caption{Pixel-level injection calibration vs.\ label-identity models
-(image-level parity injection, $N=20{,}000$, 10 seeds).}
+\caption{Pixel-level injection calibration and the direct dilution
+measurement (image-level parity injection, $N=20{,}000$, 10 seeds; PA-restoring
+reversal, released preprocessing).}
 \label{tab:pixel_calib}
 \begin{ruledtabular}
-\begin{tabular}{lcc}
-Model & $dA/df$ & $\sigma$ from pixel result \\
+\begin{tabular}{lc}
+Quantity & Value \\
 \hline
-Pixel-level injection (measured) & $+0.0167\pm0.0089$ & --- \\
-Naive label identity & $+0.434$ & $47\sigma$ \\
-Mixture-corrected label identity & $-0.0093$ & $2.9\sigma$ \\
+Pixel-level injection slope $dA/df$ (hard, measured) & $+0.0297\pm0.0238$ \\
+$\sigma$ from exact label identity ($-0.011791$) & $1.8\sigma$ \\
+Mixture-corrected identity, soft statistic ($-0.0093$) & consistent at $2.3\sigma$ \\
+$\bar\epsilon$ (PA-restoring reversal, \texttt{primary\_hc}) & $0.754\pm0.005$ \\
+$D \le 1-\max_\theta d(\theta)$ & $0.717\pm0.005$ \\
+$\Rightarrow A_{95}^{\rm phys}$ & $\ge 1.37\%$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -1278,7 +1295,7 @@ pin for its numbers: it is served alongside its git-tracked source at
 \url{https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p4prime_chirality_test/paper/main.tex},
 and the underlying catalog/quarantine/null-array revision it draws from is
 independently pinned by the versioned Zenodo DOI
-10.5281/zenodo.21461899 above. The four robustness/disclosure results of
+10.5281/zenodo.21461899 above. The five robustness/disclosure results of
 Sec.~\ref{sec:robustness_disclosure} are individually reproducible from
 their registered manifests, all registered in
 \artifact{reproducibility/manifests/programs/galaxy-chirality.json}:
@@ -1292,6 +1309,10 @@ their registered manifests, all registered in
 \artifact{reproducibility/manifests/experiments/row16iv-chirality-structure.json}
 \item external environment (DESI DR1 BGS clustering catalog): \\
 \artifact{reproducibility/manifests/experiments/row16ivb-bgs-environment.json}
+\item direct dilution measurement (PA-restoring reversal, released
+preprocessing): \\
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p4prime_chirality_test/row16_pa_parity_transfer}{\texttt{pipelines/p4prime\_chirality\_test/row16\_pa\_parity\_transfer}} \\
+\artifact{reproducibility/manifests/experiments/row16iib-pa-parity-transfer.json}
 \end{itemize}
 
 % ============================================================

@@ -125,9 +125,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4p",
       number: "4P",
       shortTitle: "Chirality test + black-hole-universe exclusion (P4 + P5 folded)",
-      version: "v4P.0.9",
+      version: "v4P.0.10",
       readiness: 95,
-      pendingWork: "Exact-v4P.0.8 re-verification board (Grok + Gemini + a Claude opus sub-agent not shown the prior round's closures) independently checked lane L4's own closures and closed 6 further genuinely-new-real MAJOR + 4 MINOR findings 2026-09-19 → v4P.0.9 (mislabeled monopole comparator, a false near-antipodal-axis claim, two disclosures with no forward reference from the headline sections, a mislabeled quintile split, a misattributed correlation); primary null unchanged. Directive R2: no further consecutive round without a scope decision. Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.9.",
+      pendingWork: "Row-16(ii-b) science propagation 2026-09-21 → v4P.0.10: withdrew the invalid pixel-injection tension claim (comparisons between statistics that didn't share a normalization) and adopted a direct, assumption-light dilution bound instead (D≤0.717±0.005, A₉₅ᵖʰʸˢ≥1.37%, consistent with the illustrative g=0.398 bridge); primary null unchanged. Not a review round — a fresh INT confirmation board is now due (directive R2 round budget refreshed by this science decision). Readiness 95. 100 requires Houston's explicit per-paper sign-off (directive P), which should read v4P.0.10.",
     },
     {
       slug: "paper-4",
