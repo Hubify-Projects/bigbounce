@@ -12,6 +12,7 @@ import numpy as np
 HERE = Path(__file__).parent
 r1 = json.loads((HERE / "s1_pa_transfer_results.json").read_text())
 r4 = json.loads((HERE / "s4_n20k_slope_reanalysis.json").read_text())
+rn = json.loads((HERE / "posthoc_nocrop_eps.json").read_text())
 
 ang = r1["angles_deg"]
 eps = [r1["S1_paired_parity_transfer"][str(a)]["eps"] for a in ang]
@@ -31,17 +32,21 @@ a0.plot(ang, rho, "s--", color="#d62728", label=r"$\rho(\varphi)$  handedness re
 a0.plot(ang, L, "^--", color="#ff7f0e", label=r"$L(\varphi)$  leaked to NOT_SPIRAL")
 a0.plot(ang, R, "d:", color="#7f7f7f", label=r"$R(\varphi)$  rotation-only class stability")
 a0.plot(ang, eobs, "v-.", color="#2ca02c", label=r"$\epsilon_{\rm obs}(\varphi)$ vs observed frame (post-hoc)")
+nc_ang = rn["angles_deg"]
+nc_eps = [rn["all_galaxies"]["per_theta"][str(a)]["eps_corotated"] for a in nc_ang]
+a0.plot(nc_ang, nc_eps, "*", ms=13, color="#9467bd", ls="none", zorder=5,
+        label=r"$\epsilon(\varphi)$, EXACT released preprocessing, no crop (post-hoc)")
 for c in (0, 180):
     a0.axvline(c, color="k", lw=0.6, alpha=0.25)
 a0.set_xticks(ang)
 a0.set_xlabel(r"restoring rotation $\varphi = 2\,\mathrm{PA}$  [deg]")
 a0.set_ylabel("probability")
-a0.set_ylim(-0.03, 1.08)
+a0.set_ylim(-0.03, 1.46)
 a0.set_title(f"PA-restoring parity transfer, N={r1['n_galaxies']:,}\n"
              r"$\bar\epsilon_{\rm inf}=$" + f"{r1['S1_eps_bar_informative']:.4f}"
              + r"$\pm$" + f"{r1['S1_eps_bar_informative_boot_se']:.4f}"
              + f"  (z={r1['S1_z_vs_unity']:+.1f} vs unity)", fontsize=9)
-a0.legend(fontsize=6.6, loc="center left", framealpha=0.9)
+a0.legend(fontsize=6.4, loc="upper left", ncol=2, framealpha=0.95)
 a0.grid(alpha=0.25)
 
 a1 = ax[1]

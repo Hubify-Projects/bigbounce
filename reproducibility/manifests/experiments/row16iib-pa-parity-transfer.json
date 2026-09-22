@@ -1,20 +1,19 @@
 {
  "manifest_version": "bigbounce-experiment/v1",
  "id": "row16iib-pa-parity-transfer",
- "title": "Row 16 (ii-b) — position-angle-restoring parity transfer through the released P4' chirality pipeline, plus the corrected error bar on the N=20,000 row 16(ii) injection slope",
+ "title": "Row 16 (ii-b) \u2014 position-angle-restoring parity transfer through the released P4' chirality pipeline, plus the corrected error bar on the N=20,000 row 16(ii) injection slope",
  "program": "galaxy-chirality",
  "paper": "P4P",
- "kind": "calibration",
- "preregistration": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/PREREGISTRATION_2026-09-19.md (git 12248d70, committed before any statistic was computed)",
+ "kind": "inference-scan",
  "inputs": [
   {
    "name": "row 16(ii) N=20,000 galaxy sample (RA/Dec/class_eq/hpix/cutout URL), drawn from bamfai/galaxy-chirality-catalog",
-   "type": "committed-artifact",
+   "type": "internal-artifact",
    "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_sample.parquet",
    "checksum": null
   },
   {
-   "name": "Legacy Survey DR9 jpeg cutouts, 150 px, layer ls-dr9, for those galaxies (19,800 of 20,000 cached on disk from the 2026-09-04 row 16(ii) run; the 200 missing are the 2026-09-04 fetch failures and are simply absent, not replaced)",
+   "name": "Legacy Survey DR9 jpeg cutouts, 150 px, layer ls-dr9 (19,800 of 20,000 cached on disk from the 2026-09-04 row 16(ii) run; the 200 missing are that run's fetch failures and are absent, not replaced)",
    "type": "external-dataset",
    "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout",
    "checksum": null,
@@ -22,79 +21,161 @@
   },
   {
    "name": "committed row 16(ii) forward-pass pairs, reused unchanged for statistic S4 (no new inference)",
-   "type": "committed-artifact",
+   "type": "internal-artifact",
    "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_pairs.parquet",
    "checksum": null
   },
   {
    "name": "chirality classifier checkpoint (ViT-S/16 encoder + 3-class head), identical revision pin to row 16(ii)",
-   "type": "external-model",
-   "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2 @ 237d021c451d75cf86a875e86d4de498b74e2f12 :: chirality_model_v2_best.pt",
+   "type": "model",
+   "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2 :: chirality_model_v2_best.pt",
+   "checksum": "hf-revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+   "license": null
+  },
+  {
+   "name": "strict-887,472-subset dipole axis (195.5 deg, -57.2 deg) used by statistic S6",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md",
    "checksum": null
   }
  ],
  "apis": [
   {
-   "name": "huggingface_hub.hf_hub_download (model checkpoint only; the cutouts are read from the local cache, no network needed to reproduce the inference stage)",
+   "name": "huggingface_hub.hf_hub_download (model checkpoint only; the cutouts are read from the local cache, so no network is needed to reproduce the inference stage)",
    "endpoint": "https://huggingface.co",
    "auth_required": false
   }
  ],
  "code": [
   {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/PREREGISTRATION_2026-09-19.md",
+   "entrypoint": "cat PREREGISTRATION_2026-09-19.md  # pre-registration, git 12248d70 (+ addendum A1, git 06cf6fbb), committed before any statistic was computed",
+   "sha256": null
+  },
+  {
    "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/run_pa_transfer_inference.py",
-   "entrypoint": "python3 run_pa_transfer_inference.py",
+   "entrypoint": "python3 run_pa_transfer_inference.py  # stage 1: 8-angle cropped grid, 316,800 forward passes, 49.4 min local MPS",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/run_exact_rotation_nocrop.py",
+   "entrypoint": "python3 run_exact_rotation_nocrop.py  # stage 2 (addendum A1): exact released preprocessing, lossless 90/180/270 rotations, 158,400 forward passes, 24.8 min local MPS",
    "sha256": null
   },
   {
    "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s1_pa_transfer_analysis.py",
-   "entrypoint": "python3 s1_pa_transfer_analysis.py",
+   "entrypoint": "python3 s1_pa_transfer_analysis.py  # pre-registered S1/S2/S3/S5/S5b/S6 plus self-labelled post-hoc blocks, 4 s CPU",
    "sha256": null
   },
   {
    "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s4_reanalyse_n20k_slope.py",
-   "entrypoint": "python3 s4_reanalyse_n20k_slope.py",
+   "entrypoint": "python3 s4_reanalyse_n20k_slope.py  # pre-registered S4, re-analysis of the committed row 16(ii) pairs, no new inference, 2 s CPU",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s5b_nocrop_dilution.py",
+   "entrypoint": "python3 s5b_nocrop_dilution.py  # pre-registered addendum-A1 dilution bound on the released preprocessing, <1 s CPU",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/posthoc_nocrop_eps.py",
+   "entrypoint": "python3 posthoc_nocrop_eps.py  # POST-HOC, not pre-registered: parity-transfer efficiency on the released preprocessing, 2 s CPU",
    "sha256": null
   },
   {
    "path": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/make_figures.py",
-   "entrypoint": "python3 make_figures.py",
+   "entrypoint": "python3 make_figures.py  # reads only the committed result JSONs, so plotted numbers cannot diverge from reported ones, 2 s CPU",
    "sha256": null
   }
  ],
  "environment": {
   "python": "python3.14 + torch 2.13.0 + timm + PIL + pandas + numpy + huggingface_hub + matplotlib",
-  "hardware": "local Apple Silicon MPS (Metal), macOS arm64 — no GPU rental needed"
+  "hardware": "cpu-only for every analysis stage; the two inference stages want any GPU/MPS device but run on CPU \u2014 original run was local Apple Silicon MPS (Metal), macOS arm64, no GPU rental"
  },
  "original_run": {
   "venue": "local",
-  "gpu": "Apple M-series MPS",
+  "gpu": "Apple M-series MPS (Metal) \u2014 no rented GPU",
   "pod_id_or_host": "local workstation (code-you-2d-MacBookAir24GB)",
-  "date": "2026-09-19",
-  "wall_clock": "TBD",
+  "date": "2026-09-19 (pre-registration, both inference stages, S1 + S4); 2026-09-21 (addendum-A1 and post-hoc analyses, figures, write-up)",
+  "wall_clock": "75 min total \u2014 stage-1 inference 2,965 s (49.4 min, 6.7 gal/s, inference.log); stage-2 no-crop inference 1,489 s (24.8 min, 13.2 gal/s, nocrop.log); all five analysis/figure stages <15 s combined on CPU",
   "actual_cost_usd": 0.0
  },
  "reproduction": {
-  "recommended_venue": "local MPS/CUDA; nothing here needs a rented GPU",
-  "est_wall_clock": "TBD",
+  "recommended_venue": "local MPS/CUDA; nothing here needs a rented GPU. Marginal cost of the original run was $0.00 \u2014 no pod, no API spend, no new downloads (cutouts reused from the 2026-09-04 row 16(ii) cache).",
+  "est_wall_clock": "~75 min end-to-end on an Apple M-series laptop with the cutout cache present (~35 min on one mid-range CUDA GPU); analysis-only re-run from the two committed .npz files is <15 s",
   "est_cost_usd": 0.0,
   "parallelizable": true,
   "resume_support": true,
-  "notes": "run_pa_transfer_inference.py checkpoints pa_transfer_probs.npz every 2,000 galaxies and resumes when the cached-index list matches. The analysis stages need no GPU. Total new inference is N x 8 angles x 2 mirror-states = 316,800 forward passes; every f/seed grid point of S3 and S4 is evaluated in closed form from those stored probabilities, with no re-inference."
+  "notes": "run_pa_transfer_inference.py checkpoints pa_transfer_probs.npz every 2,000 galaxies and resumes when the cached-index list matches. The analysis stages need no GPU and run from the two committed .npz files alone. Total new inference is 316,800 (stage 1) + 158,400 (stage 2) = 475,200 forward passes; every f/seed grid point of S3 and S4 is evaluated in closed form from the stored probabilities, with no re-inference. Run order: run_pa_transfer_inference.py, run_exact_rotation_nocrop.py, s1_pa_transfer_analysis.py, s4_reanalyse_n20k_slope.py, s5b_nocrop_dilution.py, posthoc_nocrop_eps.py, make_figures.py."
  },
  "outputs": [
-  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s1_pa_transfer_results.json", "type": "result-json", "checksum": null},
-  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s4_n20k_slope_reanalysis.json", "type": "result-json", "checksum": null},
-  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/fig_row16iib_pa_parity_transfer.png", "type": "figure", "checksum": null},
-  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/ROW16IIB_PA_PARITY_TRANSFER_2026-09-19.md", "type": "report", "checksum": null},
-  {"locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/pa_transfer_probs.npz", "type": "intermediate-array", "checksum": null, "note": "3.8 MB, committed"}
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/ROW16IIB_PA_PARITY_TRANSFER_2026-09-19.md",
+   "type": "document",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/PROPAGATION_NOTE.md",
+   "type": "document",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s1_pa_transfer_results.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s4_n20k_slope_reanalysis.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/s5b_nocrop_dilution.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/posthoc_nocrop_eps.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/fig_row16iib_pa_parity_transfer.png",
+   "type": "figure",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/pa_transfer_probs.npz",
+   "type": "dataset",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/nocrop_probs.npz",
+   "type": "dataset",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/inference.log",
+   "type": "log",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/nocrop.log",
+   "type": "log",
+   "checksum": null
+  }
  ],
+ "verification": "Exact, not tolerance-based, for the two re-analysis stages: `python3 s4_reanalyse_n20k_slope.py` must reproduce s4_n20k_slope_reanalysis.json BYTE-IDENTICALLY, and `python3 s1_pa_transfer_analysis.py` must reproduce every point estimate in s1_pa_transfer_results.json exactly (all randomness is seeded: default_rng(20260919), default_rng(31415)); both were re-verified on 2026-09-21. See the results document sec.11.3 for the one recorded deviation \u2014 the 2026-09-19 checkpointed JSON predates the script's S6-significance block, so three bootstrap standard errors move in the third significant figure through the shared RNG stream; the re-run values are the committed ones. Two hard asserts gate everything downstream and must both pass on a reproduction: the S2/addendum-A1 positive control requires max|eq_cw(Y_phi) - eq_ccw(X_phi)| == 0.0 EXACTLY at phi = 0 and 180 and a class-swap fraction of exactly 1 among non-tied galaxies (the scripts raise AssertionError otherwise); and at theta = 0 the no-crop chain IS the committed preprocessing, so its classes must agree with the committed catalogue on >=99.9% of galaxies (measured 0.99990). Headline numbers to match: S1_eps_bar_informative = 0.6363 +- 0.0024 (z = -149.8); primary_hc D_upper_bound = 0.7166 +- 0.0047; z_committed_vs_identity_spiral_classified = 1.745; n_required_for_3sigma_power_spiral_classified = 725972.",
  "status": "runnable-now",
  "provenance": [
   "Task: ledger row 16 sub-item (ii), lane bb-LS-ledger16 of campaign CAMPAIGN_2026-09-18_publication_push.md",
-  "Supersedes the proposed 'N > 20k' extension of row16-image-level-injection-n20k.json, for the reason derived in the pre-registration sec.1 and quantified by statistic S4",
+  "Pre-registration pipelines/p4prime_chirality_test/row16_pa_parity_transfer/PREREGISTRATION_2026-09-19.md, git 12248d70, committed before any statistic was computed; addendum A1 at git 06cf6fbb, committed before the statistic it governs was computed",
+  "HEADLINE RESULT: a genuine handedness reversal (mirror about the galaxy's own major axis, preserving its observed position angle) is registered as a reversal by the released P4' pipeline in only eps_bar = 0.6363 +- 0.0024 of galaxies (z = -149.8 vs unity; 0.7543 +- 0.0048 on the catalogue's primary_hc cut measured with the exact released preprocessing). The pre-registered sec.7.2 deficit threshold is met. The failure is a rotation-equivariance failure, not a parity failure: eps(phi) tracks the rotation-only class stability R(phi), and the parity operation transfers exactly wherever the flip-TTA covers it.",
+  "PROPAGATED TO P4P: dilution bound D <= 0.7166 +- 0.0047 raises the physical-parity sensitivity floor from the observed-label A_95 = 0.98% to A_95^phys >= 1.37% \u2014 consistent with, and independent of, the illustrative GZ1 bridge g = 0.398. Exact printable sentences in PROPAGATION_NOTE.md; the P4P manuscript is owned by another lane and was NOT edited here.",
+  "SUPERSEDES the proposed 'N > 20k' extension of row16-image-level-injection-n20k.json: statistic S4 shows the committed N=20,000 mirror-injection slope is consistent with its own exact label identity at 1.75 sigma once the omitted injection-realisation variance is propagated, and the design first reaches 3-sigma power at N ~ 7.3e5. The retirement rests on the exact algebraic identity eq_cw(MI) = eq_ccw(I) of the production flip-TTA (pre-registration sec.1), not on a null.",
   "pipelines/p2_chirality/equivariant_postprocess.py (production Z2 flip-TTA, replicated exactly)",
-  "pipelines/p2_chirality/build_apjs_release_v1_0_244.py:163-168 (primary_hc selection used by the post-hoc catalogue-subset stratification)",
-  "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md (strict-subset dipole axis used by S6)"
+  "pipelines/p2_chirality/build_apjs_release_v1_0_244.py:163-168 (primary_hc selection used by the catalogue-subset stratification)",
+  "pipelines/p4prime_chirality_test/full_parent/ROW16IB_AXIS_SHIFT_2026-09-04.md (strict-subset dipole axis used by S6)",
+  "Finalised by lane bb-LS5-row16-finalize (2026-09-21): verified the checkpointed results against the pre-registration, re-ran s1/s4 (reproduced), ran the never-executed addendum-A1 s5b_nocrop_dilution.py and the new post-hoc posthoc_nocrop_eps.py, completed the write-up, propagation note and ledger row. Convex sync pending \u2014 the deployment is disabled for exceeding its spending limit (Houston-only fix)."
  ]
 }

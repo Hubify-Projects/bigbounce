@@ -1,0 +1,68 @@
+{
+  "preregistration": "PREREGISTRATION_2026-09-19.md addendum A1 (commit 06cf6fbb)",
+  "preprocessing": "EXACT released preprocessing: Resize((224,224)) on the full 150 px cutout, no crop; rotations are lossless PIL transposes (90/180/270)",
+  "model": "bamfai/galaxy-chirality-v2 chirality_model_v2_best.pt rev 237d021c451d75cf86a875e86d4de498b74e2f12",
+  "n_galaxies": 19800,
+  "positive_control": {
+    "0": {
+      "max_identity_residual": 0.0,
+      "exact_cw_ccw_ties": 5,
+      "class_swap_fraction_excluding_ties": 1.0
+    },
+    "180": {
+      "max_identity_residual": 0.0,
+      "exact_cw_ccw_ties": 8,
+      "class_swap_fraction_excluding_ties": 1.0
+    }
+  },
+  "theta0_class_agreement_with_committed_catalogue": 0.99989898989899,
+  "n_common_with_committed_pairs": 19800,
+  "all_galaxies": {
+    "per_theta": {
+      "90": {
+        "n_both_spiral": 14675,
+        "d_disagreement": 0.3703577512776831
+      },
+      "180": {
+        "n_both_spiral": 14779,
+        "d_disagreement": 0.3071926382028554
+      },
+      "270": {
+        "n_both_spiral": 14663,
+        "d_disagreement": 0.36268157948578056
+      }
+    },
+    "max_d": 0.3703577512776831,
+    "D_upper_bound": 0.6296422487223169,
+    "D_upper_bound_boot_se": 0.00396175672697166,
+    "D_upper_bound_theta180_only": 0.6928073617971446,
+    "D_upper_bound_theta180_boot_se": 0.0037551475825052093,
+    "z_vs_D_equals_1": -93.48321383700458
+  },
+  "primary_hc_subset": {
+    "n": 7982,
+    "selection": "is_spiral AND max(eq_cw,eq_ccw) > 0.6 on the committed uncropped probabilities",
+    "per_theta": {
+      "90": {
+        "n_both_spiral": 7785,
+        "d_disagreement": 0.2822093770070649
+      },
+      "180": {
+        "n_both_spiral": 7827,
+        "d_disagreement": 0.21131979046888974
+      },
+      "270": {
+        "n_both_spiral": 7773,
+        "d_disagreement": 0.28341695613019424
+      }
+    },
+    "max_d": 0.28341695613019424,
+    "D_upper_bound": 0.7165830438698058,
+    "D_upper_bound_boot_se": 0.004705266260629758,
+    "D_upper_bound_theta180_only": 0.7886802095311103,
+    "D_upper_bound_theta180_boot_se": 0.004672013066161573,
+    "z_vs_D_equals_1": -60.23398898838541
+  },
+  "g_gz1_illustrative_bridge": 0.397616,
+  "n_bootstrap": 1000
+}
