@@ -1,0 +1,32 @@
+{
+  "_label": "POST-HOC DIAGNOSTIC, NOT PRE-REGISTERED. Tests the field-of-view mechanism behind the step-P control P2c failure.",
+  "recorded_deviation": "~600-900 new cutouts (~12 MB) fetched; the pre-registration said no new cutout downloads. Diagnostic only.",
+  "documented_parent_images": "Smith42/galaxies, 224x224 px, grz, 0.262 arcsec/px, DESI Legacy DR8 (chirality_catalog_paper.tex:1019; p4prime paper/main.tex:171) = 58.7 arcsec field at native 224 px",
+  "harness_images": "image_url column appended by run_eq_fast.py:265-270 = jpeg-cutout size=150 layer=ls-dr9 = 39.3 arcsec field upsampled 150 -> 224",
+  "model": "bamfai/galaxy-chirality-v2@237d021c451d75cf86a875e86d4de498b74e2f12",
+  "n_requested": 300,
+  "seed": 20260921,
+  "variants": {
+    "size224_ls-dr8": {
+      "field_arcsec": 58.7,
+      "n": 300,
+      "agreement_with_released_catalogue": 0.4866666666666667,
+      "fraction_NOT_SPIRAL": 0.23666666666666666,
+      "cw_ccw_agreement_among_our_spirals": 0.6375545851528385
+    },
+    "size224_ls-dr9": {
+      "field_arcsec": 58.7,
+      "n": 300,
+      "agreement_with_released_catalogue": 0.49666666666666665,
+      "fraction_NOT_SPIRAL": 0.24,
+      "cw_ccw_agreement_among_our_spirals": 0.6535087719298246
+    },
+    "size150_ls-dr9_harness": {
+      "field_arcsec": 39.3,
+      "n": 300,
+      "agreement_with_released_catalogue": 0.46,
+      "fraction_NOT_SPIRAL": 0.24666666666666667,
+      "cw_ccw_agreement_among_our_spirals": 0.6106194690265486
+    }
+  }
+}

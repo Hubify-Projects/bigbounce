@@ -1,0 +1,129 @@
+{
+  "preregistration": "PREREGISTRATION_2026-09-21.md Step S (git 712e9e7e, committed before this script ran)",
+  "input_grid": "row16(ii-b) stage-1 cropped 8-angle grid (the grid the S6 finding was made on)",
+  "n_galaxies_total": 19800,
+  "S1_per_galaxy_eps_definition": "per galaxy: (#informative phi with L(X_phi) spiral and L(Y_phi)=swap) / (#informative phi with L(X_phi) spiral)",
+  "S1_per_galaxy_eps_mean": 0.605513439007581,
+  "S1_confusion_matrix_eps_bar_informative_for_comparison": 0.6363,
+  "S2a_hemisphere_splits": {
+    "strict_887k_axis": {
+      "axis_ra_dec_deg": [
+        195.5,
+        -57.2
+      ],
+      "n_north": 6905,
+      "n_south": 10507,
+      "eps_bar_north": 0.6271735457398021,
+      "eps_bar_south": 0.5912788299863582,
+      "delta": 0.03589471575344394,
+      "delta_boot_se": 0.00545362335020947,
+      "delta_z": 6.581810559408223
+    },
+    "full_parent_axis": {
+      "axis_ra_dec_deg": [
+        278.629719594135,
+        25.3202680239249
+      ],
+      "n_north": 9108,
+      "n_south": 8304,
+      "eps_bar_north": 0.5874835309617918,
+      "eps_bar_south": 0.6252890173410404,
+      "delta": -0.03780548637924852,
+      "delta_boot_se": 0.005224246859835091,
+      "delta_z": -7.236542872792556
+    }
+  },
+  "S2b_eps_dipole_fit": {
+    "nside_map": 8,
+    "min_galaxies_per_pixel": 5,
+    "n_pixels_used": 424,
+    "n_galaxies_used": 17375,
+    "n_galaxies_with_informative_angle": 17412,
+    "n_dropped_no_informative_angle": 2388,
+    "monopole_eps": 0.6086869991073824,
+    "dipole_amplitude_eps": 0.05481740051322189,
+    "dipole_amplitude_eps_boot_se": 0.006295530338375849,
+    "fractional_dipole_a_delta": 0.09005843823444502,
+    "fractional_dipole_a_delta_boot_se": 0.010207993905340277,
+    "dipole_ra_deg": 123.15942385964397,
+    "dipole_dec_deg": -72.79542458027416,
+    "permutation_null": {
+      "n_perm": 1000,
+      "mean": 0.009053028271748403,
+      "std": 0.004189996026066409,
+      "z_moment": 10.922294903567565,
+      "rank_k_ge_observed": 0,
+      "rank_p_one_sided": 0.000999000999000999
+    }
+  },
+  "S2c_induced_label_dipole": {
+    "catalog": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+    "n_parent_rows": 8474531,
+    "estimator": "build_projector imported verbatim via full_parent_estimator_lib (NSIDE=64, support>=10)",
+    "model": "m(n) = A_mono * (1 + delta(n)), delta from the fitted epsilon dipole (Step S sec.S0)",
+    "full_parent": {
+      "selection": "class_eq in (CW,CCW) -- full parent",
+      "n_rows": 3201160,
+      "n_support_pixels": 24087,
+      "n_galaxies_in_support": 3200420,
+      "A_obs_amplitude": 0.005660281175118039,
+      "A_monopole": -0.0051159627346717635,
+      "A_induced_spurious_dipole": 0.00046073561395017476,
+      "A_induced_boot_se": 5.291339991384371e-05,
+      "A_induced_pct": 0.046073561395017476
+    },
+    "strict_primary": {
+      "selection": "primary_hc AND NOT raw_flip_qc_unsafe -- strict primary",
+      "n_rows": 890069,
+      "n_support_pixels": 23633,
+      "n_galaxies_in_support": 887472,
+      "A_obs_amplitude": 0.004665198792857318,
+      "A_monopole": 0.025506455362784414,
+      "A_induced_spurious_dipole": 0.0022970715348689962,
+      "A_induced_boot_se": 0.0002638082689400599,
+      "A_induced_pct": 0.22970715348689963
+    }
+  },
+  "S2d_alignment": {
+    "vs_full_parent_A_obs_axis": {
+      "axis_ra_dec_deg": [
+        278.629719594135,
+        25.3202680239249
+      ],
+      "cos_angle": -0.651778772518516,
+      "angle_deg": 130.6758483352138
+    },
+    "vs_strict_887k_axis": {
+      "axis_ra_dec_deg": [
+        195.5,
+        -57.2
+      ],
+      "cos_angle": 0.8515619770223909,
+      "angle_deg": 31.618032794161945
+    }
+  },
+  "S3_verdict": {
+    "threshold": "caveat required iff A_induced > 0.10 * A95_obs on either support (pre-registered Step S sec.S3)",
+    "A95_obs_full_parent": 0.005095238095238095,
+    "threshold_full_parent": 0.0005095238095238095,
+    "A95_obs_strict_887k": 0.0098,
+    "threshold_strict": 0.00098,
+    "A_induced_over_A95_full_parent": 0.09042474666311841,
+    "A_induced_over_A95_strict": 0.23439505457846901,
+    "A_induced_over_A_obs_full_parent": 0.08139800827837261,
+    "CAVEAT_REQUIRED": true
+  },
+  "POSTHOC_primary_hc_eps_dipole": {
+    "_label": "POST-HOC, not pre-registered: the same dipole fit restricted to the catalogue's primary_hc galaxies, because S2c applies a delta measured on all parent spirals to the strict-primary support",
+    "n": 7926,
+    "n_pixels_used": 406,
+    "monopole_eps": 0.7205454704733879,
+    "dipole_amplitude_eps": 0.07763518547451642,
+    "fractional_dipole_a_delta": 0.1077450190943692,
+    "dipole_ra_deg": 141.95243205433417,
+    "dipole_dec_deg": -76.70496494013781
+  },
+  "n_bootstrap": 1000,
+  "n_permutations": 1000,
+  "seed": 20260921
+}

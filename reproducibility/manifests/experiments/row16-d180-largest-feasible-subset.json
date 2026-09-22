@@ -1,0 +1,139 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "row16-d180-largest-feasible-subset",
+ "title": "Row 16 - d(180 deg) label self-disagreement on the largest feasible subset (N=25,254, the union of all three committed cutout caches), and the failed pre-registered control that voids its catalogue-wide extrapolation",
+ "program": "galaxy-chirality",
+ "paper": "P4P",
+ "kind": "inference-scan",
+ "inputs": [
+  {
+   "name": "row 16(ii-b) stage-2 no-crop probabilities for the 19,800 sample (reused unchanged)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/nocrop_probs.npz",
+   "checksum": null
+  },
+  {
+   "name": "the three committed samples (seeds 44/43/42)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/injection_pilot/{scale20k,scale,pilot}_sample.parquet",
+   "checksum": null
+  },
+  {
+   "name": "P4' primary-safe release catalogue, 8,474,531 rows, read from local disk (no download) for score_eq_max / primary_hc / raw_flip_qc_unsafe and the RA/Dec join",
+   "type": "internal-artifact",
+   "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+   "checksum": "sha256 139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3 (as recorded in row16i_full_parent_dipole.json)"
+  },
+  {
+   "name": "Legacy Survey DR9 jpeg cutouts, 150 px, layer ls-dr9, cached by the 2026-09-04 row 13/16 runs (19,800 + 5,000 + 500); NOTE: these are NOT the images the released catalogue was inferred on - see the results document sec.5",
+   "type": "external-dataset",
+   "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+   "checksum": null,
+   "license": "Legacy Surveys public data (NOIRLab), CC-BY-4.0"
+  },
+  {
+   "name": "chirality classifier checkpoint (ViT-S/16 encoder + 3-class head), identical revision pin to rows 16(ii) and 16(ii-b)",
+   "type": "model",
+   "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2 :: chirality_model_v2_best.pt",
+   "checksum": "hf-revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+   "license": null
+  }
+ ],
+ "apis": [
+  {
+   "name": "huggingface_hub.hf_hub_download (model checkpoint only)",
+   "endpoint": "https://huggingface.co",
+   "auth_required": false
+  }
+ ],
+ "code": [
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/PREREGISTRATION_2026-09-21.md",
+   "entrypoint": "cat PREREGISTRATION_2026-09-21.md  # pre-registration, git 712e9e7e, committed before any statistic was computed",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/run_stage4_d180_extra_caches.py",
+   "entrypoint": "python3 run_stage4_d180_extra_caches.py  # stage 4: theta in {0,180} on the 5,000- and 500-galaxy caches, 22,000 forward passes, 2.4 min local MPS",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/p_d180_catalogue_wide.py",
+   "entrypoint": "python3 p_d180_catalogue_wide.py  # pre-registered P2a-P2c and the P3 re-weighting (VOID as a catalogue-wide claim, see verification), ~50 s CPU",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/posthoc_provenance_diagnostic.py",
+   "entrypoint": "python3 posthoc_provenance_diagnostic.py  # POST-HOC, not pre-registered: zoom sweep + ls-dr8/ls-dr9 layer test; fetches ~300 new cutouts (~3 MB), a recorded deviation",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/posthoc_fov_test.py",
+   "entrypoint": "python3 posthoc_fov_test.py  # POST-HOC, not pre-registered: matched 224 px / 58.7 arcsec field-of-view test; fetches ~900 new cutouts (~12 MB), a recorded deviation",
+   "sha256": null
+  }
+ ],
+ "environment": {
+  "python": "python3.14 + torch 2.13.0 + timm + PIL + pandas + numpy + pyarrow + healpy 1.20.0 + huggingface_hub + matplotlib",
+  "hardware": "cpu-only for every analysis stage; the inference stages want any GPU/MPS device - original run was local Apple Silicon MPS (Metal), macOS arm64, no GPU rental"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": "Apple M-series MPS (Metal) - no rented GPU",
+  "pod_id_or_host": "local workstation (code-you-2d-MacBookAir24GB)",
+  "date": "2026-09-21/22",
+  "wall_clock": "stage-4 inference 143 s (2.4 min, stage4.log); provenance diagnostics ~11 min including ~15 MB of HTTP; analysis ~50 s CPU",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local MPS/CUDA or CPU",
+  "est_wall_clock": "~15 min end-to-end with the caches present; analysis-only ~50 s",
+  "est_cost_usd": 0.0,
+  "parallelizable": true,
+  "resume_support": false,
+  "notes": "The full 8,474,531-row parent was declared INFEASIBLE in the pre-registration (sec.P0) before the run: it needs a forward pass per galaxy per orientation ON THE IMAGE and no parent cutouts are cached. The largest feasible subset is the de-duplicated union of the three committed caches. The two post-hoc diagnostics require network access; the pre-registered statistics do not."
+ },
+ "outputs": [
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/p_d180_catalogue_wide.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/posthoc_provenance_diagnostic.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/posthoc_fov_test.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/stage4_scale5k_probs.npz",
+   "type": "dataset",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/stage4_pilot500_probs.npz",
+   "type": "dataset",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/stage4.log",
+   "type": "log",
+   "checksum": null
+  }
+ ],
+ "verification": "The mirror-identity control must be EXACT on every draw: max|eq_cw(Y)-eq_ccw(X)| == 0.0 at theta = 0 and 180 with a class-swap fraction of exactly 1 among non-tied galaxies (the script raises AssertionError otherwise); it passes on all three. The PRE-REGISTERED CONTROL P2c FAILS and the failure is the point: theta=0 classes agree with the RELEASED catalogue on only 43.9% / 44.7% / 42.4% of the three draws (requirement was >= 99.9%), while agreeing with the row-16 lane's own committed forward passes on 99.99%. Per the pre-registration the catalogue-wide claim is VOID; the P3 re-weighted numbers are retained ONLY as the confidence-re-weighted value of the checkpoint statistic. Headline measured numbers to match: UNION N=25,254 (46 duplicates removed) d(180)=0.3090+-0.0034, D<=0.6910; per-draw 0.3072+-0.0037 / 0.3116+-0.0075 / 0.3497+-0.0252; strict union 0.2501+-0.0057. The RA/Dec -> parent-row match rate must be 1.000 and the sample files' class_eq must equal the release catalogue's class_eq at the same coordinates on 100.0% of rows.",
+ "status": "runnable-now",
+ "provenance": [
+  "Task: ledger rows 13 and 16 follow-ups named in ROW16IIB_PA_PARITY_TRANSFER_2026-09-19.md sec.10 and sec.11; lane bb-LS6-row16-tta of CAMPAIGN_2026-09-18_publication_push.md",
+  "Pre-registration PREREGISTRATION_2026-09-21.md, git 712e9e7e, committed BEFORE any statistic in this lane was computed",
+  "CROSS-CUTTING CAVEAT: the pre-registered step-P control P2c FAILED - the released catalogue's inference ran on Smith42/galaxies images (224 px, 58.7 arcsec, DR8; documented correctly in both papers) while rows 13/16 fetched the display-only image_url column (150 px, 39.3 arcsec, ls-dr9). Every image-level number from rows 13, 16(ii), 16(ii-b) and this lane is therefore OUT OF DOMAIN. See the results document sec.5 and PROPAGATION_NOTE.md Q-1.",
+  "HEADLINE RESULT: d(180) = 0.3090 +- 0.0034 on N = 25,254 (D <= 0.6910), consistent across three independently drawn samples; the N=19,800 value reproduces row 16(ii-b) sec.6 exactly from an independently written analysis path.",
+  "THE FINDING THAT OUTRANKS IT: the pre-registered control P2c failed, exposing that the whole row 13/16 image-level program used the display-only image_url column instead of the documented Smith42/galaxies parent images. Post-hoc diagnostics: the central-crop zoom sweep is flat (0.41-0.46, and cannot reach the documented 58.7 arcsec field from a 150 px cutout); the ls-dr8/ls-dr9 layer moves 11% of labels but not the discrepancy (0.4533 vs 0.4600 agreement); fetching the documented 224 px / 58.7 arcsec geometry raises agreement 0.460 -> 0.497 and handedness transfer 0.611 -> 0.654. Roughly half the gap remains, most plausibly the grz->RGB rendering. The decisive test - re-inference on Smith42/galaxies at pinned revision bdd1b063a9a22874a79a4363aa9fb6a2b356a4c2 - is a multi-GB download and was out of this lane's scope; it is named, not guessed.",
+  "REASSURANCE FOR P4': the catalogue's (RA,Dec) <-> label correspondence is sound - 77% of catalogued spirals are labelled spiral on the viewer cutouts and handedness agreement is 16.6 sigma above chance, which random or mismatched coordinates could not produce. The dipole estimator's coordinates are not implicated.",
+  "Closes the 'next step (d) recompute d(180) on the full 8.47M parent' line of ledger row 16(ii-b) with a stated infeasibility and the largest feasible subset instead."
+ ]
+}

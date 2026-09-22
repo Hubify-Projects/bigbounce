@@ -1,0 +1,14 @@
+[0.1s] N=19800 cached cutouts; processing 19800 in seeded-permutation order (seed 20260921)
+[0.3s] model bamfai/galaxy-chirality-v2@237d021c on mps
+[0.3s] resuming with 24 galaxies done
+[166.7s] ckpt 2024/19800 done | 12.1 gal/s | ETA 24.4 min
+[354.6s] ckpt 4024/19800 done | 11.3 gal/s | ETA 23.2 min
+[542.2s] ckpt 6024/19800 done | 11.1 gal/s | ETA 20.7 min
+[801.8s] ckpt 8024/19800 done | 10.0 gal/s | ETA 19.6 min
+[1066.9s] ckpt 10024/19800 done | 9.4 gal/s | ETA 17.3 min
+[1322.3s] ckpt 12024/19800 done | 9.1 gal/s | ETA 14.3 min
+[1554.8s] ckpt 14024/19800 done | 9.0 gal/s | ETA 10.7 min
+[1798.8s] ckpt 16024/19800 done | 8.9 gal/s | ETA 7.1 min
+[2041.0s] ckpt 18024/19800 done | 8.8 gal/s | ETA 3.4 min
+[2252.5s] FINAL 19800/19800 done | 8.8 gal/s | ETA 0.0 min
+[2252.5s] DONE 19800 galaxies x 8 angles x 2 kinds = 316800 forward passes -> /Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p4prime_chirality_test/row16_tta_2026_09_21/stage3_offset_probs.npz

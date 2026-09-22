@@ -184,6 +184,24 @@
    "depends_on": [
     "p4-e2e-mirror-flip"
    ]
+  },
+  {
+   "id": "row16-tta-recovery-bound",
+   "depends_on": [
+    "row16iib-pa-parity-transfer"
+   ]
+  },
+  {
+   "id": "row16-d180-largest-feasible-subset",
+   "depends_on": [
+    "row16iib-pa-parity-transfer"
+   ]
+  },
+  {
+   "id": "row16-s6-dipole-projection",
+   "depends_on": [
+    "row16iib-pa-parity-transfer"
+   ]
   }
  ],
  "external_data": [

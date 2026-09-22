@@ -1,0 +1,133 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "row16-tta-recovery-bound",
+ "title": "Row 16 - how much of the row-16(ii-b) parity-transfer deficit a rotation-equivariant model could recover, measured as a D4/D8 test-time average over the existing checkpoint on a new 16-angle 22.5 degree grid",
+ "program": "galaxy-chirality",
+ "paper": "P4P",
+ "kind": "inference-scan",
+ "inputs": [
+  {
+   "name": "row 16(ii-b) stage-1 probabilities, 8-angle 45 deg cropped grid (reused unchanged, no re-inference)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/pa_transfer_probs.npz",
+   "checksum": null
+  },
+  {
+   "name": "row 16(ii) N=20,000 sample (RA/Dec/class_eq/hpix/cutout URL)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_sample.parquet",
+   "checksum": null
+  },
+  {
+   "name": "committed row 16(ii) forward-pass pairs, used only for the primary_hc selection",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/injection_pilot/scale20k_pairs.parquet",
+   "checksum": null
+  },
+  {
+   "name": "Legacy Survey DR9 jpeg cutouts, 150 px, layer ls-dr9, cached by the 2026-09-04 row 13/16 runs (19,800 + 5,000 + 500); NOTE: these are NOT the images the released catalogue was inferred on - see the results document sec.5",
+   "type": "external-dataset",
+   "locator": "https://www.legacysurvey.org/viewer/jpeg-cutout",
+   "checksum": null,
+   "license": "Legacy Surveys public data (NOIRLab), CC-BY-4.0"
+  },
+  {
+   "name": "chirality classifier checkpoint (ViT-S/16 encoder + 3-class head), identical revision pin to rows 16(ii) and 16(ii-b)",
+   "type": "model",
+   "locator": "https://huggingface.co/bamfai/galaxy-chirality-v2 :: chirality_model_v2_best.pt",
+   "checksum": "hf-revision 237d021c451d75cf86a875e86d4de498b74e2f12",
+   "license": null
+  }
+ ],
+ "apis": [
+  {
+   "name": "huggingface_hub.hf_hub_download (model checkpoint only)",
+   "endpoint": "https://huggingface.co",
+   "auth_required": false
+  }
+ ],
+ "code": [
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/PREREGISTRATION_2026-09-21.md",
+   "entrypoint": "cat PREREGISTRATION_2026-09-21.md  # pre-registration, git 712e9e7e, committed before any statistic was computed",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/run_stage3_offset_grid.py",
+   "entrypoint": "python3 run_stage3_offset_grid.py  # stage 3: the eight 22.5 deg offset angles, 316,800 forward passes, 37.5 min local MPS, seeded-permutation order with a 90 min pre-registered wall cap (not reached)",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/t_tta_recovery.py",
+   "entrypoint": "python3 t_tta_recovery.py  # pre-registered T0-C controls, T2a-T2e statistics and the T3 decision rule, ~60 s CPU",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/make_figures.py",
+   "entrypoint": "python3 make_figures.py  # reads only committed result JSONs",
+   "sha256": null
+  }
+ ],
+ "environment": {
+  "python": "python3.14 + torch 2.13.0 + timm + PIL + pandas + numpy + pyarrow + healpy 1.20.0 + huggingface_hub + matplotlib",
+  "hardware": "cpu-only for every analysis stage; the inference stages want any GPU/MPS device - original run was local Apple Silicon MPS (Metal), macOS arm64, no GPU rental"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": "Apple M-series MPS (Metal) - no rented GPU",
+  "pod_id_or_host": "local workstation (code-you-2d-MacBookAir24GB)",
+  "date": "2026-09-21/22",
+  "wall_clock": "stage-3 inference 2,252 s (37.5 min, 8.8 gal/s, stage3.log); analysis ~60 s CPU",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "local MPS/CUDA; nothing here needs a rented GPU",
+  "est_wall_clock": "~40 min with the cutout cache present (~15 min on one mid-range CUDA GPU); analysis-only re-run from the committed .npz files is ~60 s",
+  "est_cost_usd": 0.0,
+  "parallelizable": true,
+  "resume_support": true,
+  "notes": "stage 3 checkpoints every 2,000 galaxies and resumes on a matching cached-index list; galaxies are processed in a seeded permutation (default_rng(20260921)) so a truncated run is an unbiased subsample. The analysis needs no GPU and runs from stage-1 + stage-3 .npz alone."
+ },
+ "outputs": [
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/ROW16_TTA_D180_DIPOLE_2026-09-21.md",
+   "type": "document",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/PROPAGATION_NOTE.md",
+   "type": "document",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/t_tta_recovery.json",
+   "type": "result-json",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/stage3_offset_probs.npz",
+   "type": "dataset",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/stage3.log",
+   "type": "log",
+   "checksum": null
+  },
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/fig_row16_tta_d180_dipole.png",
+   "type": "figure",
+   "checksum": null
+  }
+ ],
+ "verification": "Three hard asserts gate everything and must pass on a reproduction (control T0-C): for each TTA group the C_n-invariance residual and the parity-identity residual must be below 1e-6 (measured 0.0 for the released pipeline, 1.2e-7 for D4, 1.8e-7 for D8 - float32 summation-order noise, zero in exact arithmetic) and the class-swap fraction among non-tied galaxies must be exactly 1 (it is, for all three). The combined grid must reproduce the row-16(ii-b) stage-1 values exactly: eps(45)=0.6115, eps(90)=0.6818, eps(135)=0.6167, eps(180)=1.0000. Headline numbers to match: D_upper_bound 0.6237+-0.0033 (released) / 0.7017+-0.0037 (D4) / 0.7718+-0.0035 (D8); recovery fractions F_D4=0.2073+-0.0104, F_D8=0.3935+-0.0091; T3 VERDICT 'NO-GPU, WRONG-LEVER'. eps_D8 is NOT MEASURABLE on this grid by the pre-registered theorem and must be reported as such, never as 1.0.",
+ "status": "runnable-now",
+ "provenance": [
+  "Task: ledger rows 13 and 16 follow-ups named in ROW16IIB_PA_PARITY_TRANSFER_2026-09-19.md sec.10 and sec.11; lane bb-LS6-row16-tta of CAMPAIGN_2026-09-18_publication_push.md",
+  "Pre-registration PREREGISTRATION_2026-09-21.md, git 712e9e7e, committed BEFORE any statistic in this lane was computed",
+  "CROSS-CUTTING CAVEAT: the pre-registered step-P control P2c FAILED - the released catalogue's inference ran on Smith42/galaxies images (224 px, 58.7 arcsec, DR8; documented correctly in both papers) while rows 13/16 fetched the display-only image_url column (150 px, 39.3 arcsec, ls-dr9). Every image-level number from rows 13, 16(ii), 16(ii-b) and this lane is therefore OUT OF DOMAIN. See the results document sec.5 and PROPAGATION_NOTE.md Q-1.",
+  "HEADLINE RESULT: a rotation TTA over the EXISTING checkpoint recovers 20.7+-1.0% (D4) and 39.4+-0.9% (D8) of the released pipeline's dilution gap. The pre-registered decision rule (GO iff F_D4 >= 0.5 AND residual >= 0.10) therefore returns NO-GPU, WRONG-LEVER for row 16(iii) D4-equivariant retraining: the deficit is a smooth-orientation instability, not a discrete-symmetry defect, and the free 8-fold TTA is the larger lever.",
+  "THEOREM (pre-registered sec.T0, verified numerically): a G-TTA is exactly C_n-invariant and exactly mirror-antisymmetric, so d(theta)=0 on its own rotation orbit and eps(phi)=1 identically wherever 2*phi is in the group. A grid closed under a TTA's rotation group therefore measures nothing about that TTA - which is why stage 3 (the 22.5 deg offsets) had to be run at all.",
+  "Supersedes the 'next step (a) 8-fold rotation TTA' line of ledger row 16(ii-b) and is the decision input for row 16(iii)."
+ ]
+}

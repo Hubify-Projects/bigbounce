@@ -1,0 +1,288 @@
+{
+  "preregistration": "PREREGISTRATION_2026-09-21.md Step P (git 712e9e7e, committed before this script ran)",
+  "P0_feasibility_declared_in_advance": "A literal d(180) on the 8,474,531-row parent needs one forward pass per galaxy per orientation ON THE IMAGE. The repository caches cutouts for 25,300 galaxies only; fetching 8.47M is excluded by this lane's no-large-download and ~10 GB disk constraint. The full parent was therefore declared infeasible BEFORE the run and the largest feasible subset is the de-duplicated union of the three committed caches. No number below is a measurement on 8.47M galaxies.",
+  "preprocessing": "EXACT released preprocessing (Resize((224,224)) of the full 150 px cutout, no crop); theta = 180 is a lossless PIL transpose, so no interpolation enters anywhere",
+  "n_parent_rows": 8474531,
+  "n_parent_spiral": 3201160,
+  "n_parent_strict_primary": 890069,
+  "positive_controls": {
+    "scale20k": {
+      "0": {
+        "max_identity_residual": 0.0,
+        "exact_cw_ccw_ties": 5,
+        "class_swap_fraction_excluding_ties": 1.0
+      },
+      "180": {
+        "max_identity_residual": 0.0,
+        "exact_cw_ccw_ties": 8,
+        "class_swap_fraction_excluding_ties": 1.0
+      },
+      "parent_match_rate": 1.0,
+      "theta0_class_agreement_with_released_catalogue": 0.4385858585858586,
+      "fraction_we_label_NOT_SPIRAL": 0.22833333333333333,
+      "cw_ccw_agreement_among_our_spirals": 0.5683618037829701,
+      "P2c_PREREGISTERED_CONTROL": "FAIL"
+    },
+    "scale5k": {
+      "0": {
+        "max_identity_residual": 0.0,
+        "exact_cw_ccw_ties": 0,
+        "class_swap_fraction_excluding_ties": 1.0
+      },
+      "180": {
+        "max_identity_residual": 0.0,
+        "exact_cw_ccw_ties": 0,
+        "class_swap_fraction_excluding_ties": 1.0
+      },
+      "parent_match_rate": 1.0,
+      "theta0_class_agreement_with_released_catalogue": 0.4472,
+      "fraction_we_label_NOT_SPIRAL": 0.2182,
+      "cw_ccw_agreement_among_our_spirals": 0.572013302634945,
+      "P2c_PREREGISTERED_CONTROL": "FAIL"
+    },
+    "pilot500": {
+      "0": {
+        "max_identity_residual": 0.0,
+        "exact_cw_ccw_ties": 0,
+        "class_swap_fraction_excluding_ties": 1.0
+      },
+      "180": {
+        "max_identity_residual": 0.0,
+        "exact_cw_ccw_ties": 0,
+        "class_swap_fraction_excluding_ties": 1.0
+      },
+      "parent_match_rate": 1.0,
+      "theta0_class_agreement_with_released_catalogue": 0.424,
+      "fraction_we_label_NOT_SPIRAL": 0.24,
+      "cw_ccw_agreement_among_our_spirals": 0.5578947368421052,
+      "P2c_PREREGISTERED_CONTROL": "FAIL"
+    }
+  },
+  "P2c_CONTROL_OUTCOME": {
+    "status": "FAILED",
+    "requirement": "theta=0 classes agree with the RELEASED catalogue on >= 99.9% of matched galaxies (pre-registered Step P sec.P2c)",
+    "measured": "43.9% on scale20k (99.99% against the row-16 lane's OWN committed forward passes, which validates this implementation)",
+    "consequence_per_preregistration": "the CATALOGUE-WIDE claim of step P is VOID. The measured d(180) numbers below are valid statements about the released CHECKPOINT on the cached Legacy DR9 jpeg-cutouts (the same images row 16(ii-b) used, and its bound never used catalogue labels either); the P3 re-weighting is retained ONLY as the confidence-re-weighted value of that same checkpoint statistic, NOT as a statement about the released catalogue's own labels.",
+    "diagnosis": "posthoc_provenance_diagnostic.json -- the catalogue's inference ran on HF dataset Smith42/galaxies images (run_eq_fast.py:37); the `image_url` jpeg-cutout column was appended afterwards for display (run_eq_fast.py:265-270). Neither the field of view (flat zoom sweep) nor the ls-dr8/ls-dr9 layer (0.453 vs 0.460 agreement) explains it."
+  },
+  "MEASURED": {
+    "scale20k": {
+      "provenance": "seed 44, NSIDE=64 sky-uniform (the row 16(ii-b) sample)",
+      "n": 19800,
+      "all": {
+        "subset": "scale20k all",
+        "n": 19800,
+        "n_both_spiral": 14779,
+        "d_180": 0.3071926382028554,
+        "d_180_boot_se": 0.003726982093450591,
+        "D_upper_bound": 0.6928073617971446,
+        "D_upper_bound_boot_se": 0.003726982093450591
+      },
+      "primary_hc": {
+        "subset": "scale20k primary_hc",
+        "n": 5952,
+        "n_both_spiral": 4954,
+        "d_180": 0.24626564392410175,
+        "d_180_boot_se": 0.006355937480696958,
+        "D_upper_bound": 0.7537343560758982,
+        "D_upper_bound_boot_se": 0.006355937480696958
+      }
+    },
+    "scale5k": {
+      "provenance": "seed 43, NSIDE=32 sky-uniform",
+      "n": 5000,
+      "all": {
+        "subset": "scale5k all",
+        "n": 5000,
+        "n_both_spiral": 3781,
+        "d_180": 0.31155778894472363,
+        "d_180_boot_se": 0.007547872883976553,
+        "D_upper_bound": 0.6884422110552764,
+        "D_upper_bound_boot_se": 0.007547872883976553
+      },
+      "primary_hc": {
+        "subset": "scale5k primary_hc",
+        "n": 1479,
+        "n_both_spiral": 1216,
+        "d_180": 0.26151315789473684,
+        "d_180_boot_se": 0.01319462126771393,
+        "D_upper_bound": 0.7384868421052632,
+        "D_upper_bound_boot_se": 0.01319462126771393
+      }
+    },
+    "pilot500": {
+      "provenance": "seed 42, NSIDE=32 sky-uniform pilot",
+      "n": 500,
+      "all": {
+        "subset": "pilot500 all",
+        "n": 500,
+        "n_both_spiral": 366,
+        "d_180": 0.34972677595628415,
+        "d_180_boot_se": 0.025219331604519758,
+        "D_upper_bound": 0.6502732240437159,
+        "D_upper_bound_boot_se": 0.025219331604519758
+      },
+      "primary_hc": {
+        "subset": "pilot500 primary_hc",
+        "n": 134,
+        "n_both_spiral": 111,
+        "d_180": 0.25225225225225223,
+        "d_180_boot_se": 0.04088176882217368,
+        "D_upper_bound": 0.7477477477477478,
+        "D_upper_bound_boot_se": 0.04088176882217368
+      }
+    },
+    "UNION": {
+      "provenance": "de-duplicated union of the three committed caches (duplicates matched on (ra,dec) to 1e-7 deg)",
+      "n_duplicates_removed": 46,
+      "all": {
+        "subset": "union all",
+        "n": 25254,
+        "n_both_spiral": 18891,
+        "d_180": 0.3089831136520036,
+        "d_180_boot_se": 0.0034001348429392128,
+        "D_upper_bound": 0.6910168863479964,
+        "D_upper_bound_boot_se": 0.0034001348429392128
+      },
+      "strict_primary": {
+        "subset": "union primary_hc AND NOT unsafe",
+        "n": 7071,
+        "n_both_spiral": 5865,
+        "d_180": 0.2501278772378517,
+        "d_180_boot_se": 0.0056521574465582475,
+        "D_upper_bound": 0.7498721227621483,
+        "D_upper_bound_boot_se": 0.0056521574465582475
+      }
+    }
+  },
+  "P3_REWEIGHTED_ESTIMATE": {
+    "_label": "VOID as a catalogue-wide claim (control P2c FAILED); retained as the confidence-re-weighted value of the checkpoint statistic. EXTRAPOLATION, NOT A MEASUREMENT. Stratified re-weighting of the measured union onto the parent's score_eq_max decile distribution.",
+    "assumption": "within a score_eq_max stratum, d(180) is independent of the quantities the sky-uniform sampling distorts (principally local sky density). Declared in advance (Step P sec.P3).",
+    "strata": "deciles of score_eq_max over the parent spiral set",
+    "decile_edges": [
+      0.4994223088026047,
+      0.5001007318496704,
+      0.5007813572883606,
+      0.5030104875564575,
+      0.5095521211624146,
+      0.5295600533485413,
+      0.5961518883705139,
+      0.7873797655105591,
+      0.9817018747329712
+    ],
+    "n_measured_matched": 25254,
+    "parent_all_spirals": {
+      "d_180_estimate": 0.314774998539496,
+      "d_180_estimate_boot_se": 0.0034563538855983005,
+      "D_upper_bound_estimate": 0.685225001460504,
+      "parent_weight_covered": 1.0,
+      "d_by_decile": [
+        0.3650568181818182,
+        0.30884557721139433,
+        0.361863488624052,
+        0.3454146073585942,
+        0.3233166388425153,
+        0.3485838779956427,
+        0.3236088600756348,
+        0.32204273058884836,
+        0.28452088452088453,
+        0.16449305847707194
+      ],
+      "n_measured_by_decile": [
+        2541,
+        2499,
+        2498,
+        2444,
+        2526,
+        2564,
+        2542,
+        2544,
+        2517,
+        2579
+      ],
+      "parent_weight_by_decile": [
+        0.1,
+        0.09999281510452461,
+        0.1000040610278774,
+        0.10000312386759799,
+        0.0999993752264804,
+        0.1000006247735196,
+        0.0999993752264804,
+        0.1000006247735196,
+        0.1,
+        0.1
+      ]
+    },
+    "parent_strict_primary": {
+      "d_180_estimate": 0.25697526056333303,
+      "d_180_estimate_boot_se": 0.00570830609376674,
+      "D_upper_bound_estimate": 0.7430247394366669,
+      "parent_weight_covered": 1.0,
+      "d_by_decile": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.32786885245901637,
+        0.29004329004329005,
+        0.1649789029535865
+      ],
+      "n_measured_by_decile": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2207,
+        2293,
+        2571
+      ],
+      "parent_weight_by_decile": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31126126176734614,
+        0.3301901313268971,
+        0.35854860690575674
+      ]
+    },
+    "sensitivity_2d_decile_x_hemisphere": {
+      "evaluable": true,
+      "min_cell_required": 50,
+      "cell_counts": {
+        "0N": 883,
+        "0S": 1658,
+        "1N": 987,
+        "1S": 1512,
+        "2N": 899,
+        "2S": 1599,
+        "3N": 895,
+        "3S": 1549,
+        "4N": 1027,
+        "4S": 1499,
+        "5N": 1067,
+        "5S": 1497,
+        "6N": 1075,
+        "6S": 1467,
+        "7N": 1113,
+        "7S": 1431,
+        "8N": 1127,
+        "8S": 1390,
+        "9N": 1121,
+        "9S": 1458
+      },
+      "d_180_estimate_2d": 0.31477080023577014
+    }
+  },
+  "n_bootstrap": 1000,
+  "seed": 20260921
+}

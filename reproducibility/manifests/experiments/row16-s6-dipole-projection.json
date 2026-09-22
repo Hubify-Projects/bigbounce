@@ -1,0 +1,91 @@
+{
+ "manifest_version": "bigbounce-experiment/v1",
+ "id": "row16-s6-dipole-projection",
+ "title": "Row 16 - projecting the row-16(ii-b) S6 sky dependence of parity-transfer efficiency onto a dipole, and propagating it through the exact P4' estimator as a spurious-dipole systematic",
+ "program": "galaxy-chirality",
+ "paper": "P4P",
+ "kind": "analysis",
+ "inputs": [
+  {
+   "name": "row 16(ii-b) stage-1 probabilities, 8-angle cropped grid (reused unchanged, no new inference at all)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/row16_pa_parity_transfer/pa_transfer_probs.npz",
+   "checksum": null
+  },
+  {
+   "name": "P4' primary-safe release catalogue (8,474,531 rows) for the real sky support of both selections",
+   "type": "internal-artifact",
+   "locator": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+   "checksum": "sha256 139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+  },
+  {
+   "name": "P4' strict-primary dipole estimator, imported VERBATIM (NSIDE=64, support>=10, unweighted healpy.fit_dipole)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py::build_projector via pipelines/p4prime_chirality_test/full_parent/full_parent_estimator_lib.py",
+   "checksum": null
+  },
+  {
+   "name": "the two candidate dipole axes (strict-887,472 and full-parent)",
+   "type": "internal-artifact",
+   "locator": "pipelines/p4prime_chirality_test/full_parent/{ROW16IB_AXIS_SHIFT_2026-09-04.md,row16i_full_parent_dipole.json}",
+   "checksum": null
+  }
+ ],
+ "apis": [
+  {
+   "name": "huggingface_hub.hf_hub_download (model checkpoint only)",
+   "endpoint": "https://huggingface.co",
+   "auth_required": false
+  }
+ ],
+ "code": [
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/PREREGISTRATION_2026-09-21.md",
+   "entrypoint": "cat PREREGISTRATION_2026-09-21.md  # pre-registration, git 712e9e7e, committed before any statistic was computed",
+   "sha256": null
+  },
+  {
+   "path": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/s_sky_dipole.py",
+   "entrypoint": "python3 s_sky_dipole.py  # pre-registered S1, S2a-S2d and the S3 threshold; 3 s CPU, NO new inference",
+   "sha256": null
+  }
+ ],
+ "environment": {
+  "python": "python3.14 + torch 2.13.0 + timm + PIL + pandas + numpy + pyarrow + healpy 1.20.0 + huggingface_hub + matplotlib",
+  "hardware": "cpu-only for every analysis stage; the inference stages want any GPU/MPS device - original run was local Apple Silicon MPS (Metal), macOS arm64, no GPU rental"
+ },
+ "original_run": {
+  "venue": "local",
+  "gpu": "none - CPU only",
+  "pod_id_or_host": "local workstation (code-you-2d-MacBookAir24GB)",
+  "date": "2026-09-21",
+  "wall_clock": "3 s CPU (1,000 bootstrap resamples + 1,000 permutations + two full-parent projector builds)",
+  "actual_cost_usd": 0.0
+ },
+ "reproduction": {
+  "recommended_venue": "any CPU with ~2 GB RAM",
+  "est_wall_clock": "3 s",
+  "est_cost_usd": 0.0,
+  "parallelizable": false,
+  "resume_support": false,
+  "notes": "No inference of any kind: reads the committed row-16(ii-b) probabilities and the local release catalogue. healpy 1.20.0 required."
+ },
+ "outputs": [
+  {
+   "locator": "pipelines/p4prime_chirality_test/row16_tta_2026_09_21/s_sky_dipole.json",
+   "type": "result-json",
+   "checksum": null
+  }
+ ],
+ "verification": "The estimator reproduction is exact and is the control: building the projector from the release catalogue must return 24,087 support pixels / 3,200,420 galaxies and A_obs = 0.005660281175118039 on the full parent, and 23,633 pixels / 887,472 galaxies on the strict-primary selection, matching row16i_full_parent_dipole.json. The per-galaxy epsilon estimator must reproduce the row-16(ii-b) S6 hemisphere split: delta = +0.0359 +- 0.0055 (z=6.58) on the strict axis and -0.0378 +- 0.0052 (z=-7.24) on the full-parent axis, against sec.8's +0.0356 (z=7.1) and -0.0353 (z=-7.0). Headline numbers: fractional epsilon dipole a_delta = 0.0901 +- 0.0102 toward (123.2 deg, -72.8 deg), permutation-null z = +10.9 with rank_k = 0 of 1,000; A_induced = 0.000461 +- 0.000053 (full parent, 9.0% of A95) and 0.002297 +- 0.000264 (strict, 23.4% of A95); S3 CAVEAT_REQUIRED = true.",
+ "status": "runnable-now",
+ "provenance": [
+  "Task: ledger rows 13 and 16 follow-ups named in ROW16IIB_PA_PARITY_TRANSFER_2026-09-19.md sec.10 and sec.11; lane bb-LS6-row16-tta of CAMPAIGN_2026-09-18_publication_push.md",
+  "Pre-registration PREREGISTRATION_2026-09-21.md, git 712e9e7e, committed BEFORE any statistic in this lane was computed",
+  "CROSS-CUTTING CAVEAT: the pre-registered step-P control P2c FAILED - the released catalogue's inference ran on Smith42/galaxies images (224 px, 58.7 arcsec, DR8; documented correctly in both papers) while rows 13/16 fetched the display-only image_url column (150 px, 39.3 arcsec, ls-dr9). Every image-level number from rows 13, 16(ii), 16(ii-b) and this lane is therefore OUT OF DOMAIN. See the results document sec.5 and PROPAGATION_NOTE.md Q-1.",
+  "HEADLINE RESULT: the S6 sky dependence is a genuine dipole in the classifier's parity-transfer efficiency (fractional amplitude 0.090 +- 0.010, permutation-null rank p <= 0.001), whose axis lies 31.6 deg from the strict-887,472 dipole axis. Propagated through P4's own estimator it imprints a spurious label dipole of 0.230% +- 0.026 on the strict support - 23% of that subset's A95 = 0.98% - and 0.046% on the full parent (9% of A95 = 0.51%). The pre-registered threshold (> 10% of A95) FIRES: P4' needs a written systematic caveat. Exact sentence in PROPAGATION_NOTE.md Q-3.",
+  "MECHANISM, declared before the computation: a sky-varying dilution cannot manufacture a dipole from a zero true asymmetry; the spurious dipole is sourced by the product of the sky-varying dilution and the non-zero MONOPOLE of the observed label asymmetry. The strict subset is the exposed one because its monopole is +2.55%, five times the full parent's and of opposite sign.",
+  "Stated at exactly its strength: this is not a measured contamination of the P4' dipole. It is a measured 11-sigma sky dependence plus an estimator-exact propagation of what a dilution tracking it would imprint.",
+  "Closes the 'next step (c) project the S6 sky dependence onto a dipole' line of ledger row 16(ii-b)."
+ ]
+}

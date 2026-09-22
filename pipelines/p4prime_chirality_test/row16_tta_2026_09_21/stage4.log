@@ -1,0 +1,3 @@
+model bamfai/galaxy-chirality-v2@237d021c on mps
+[128.2s] scale5k: 5000 galaxies x 2 angles x 2 kinds = 20000 forward passes (39.0 gal/s) -> stage4_scale5k_probs.npz
+[15.1s] pilot500: 500 galaxies x 2 angles x 2 kinds = 2000 forward passes (33.2 gal/s) -> stage4_pilot500_probs.npz

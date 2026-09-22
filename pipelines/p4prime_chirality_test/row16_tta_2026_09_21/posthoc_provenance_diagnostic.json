@@ -1,0 +1,56 @@
+{
+  "_label": "POST-HOC DIAGNOSTIC, NOT PRE-REGISTERED. Explains the failure of the pre-registered step-P control P2c. Feeds no pre-registered statistic.",
+  "recorded_deviation": "fetched 300 new ls-dr8 cutouts (~3 MB) for the layer test; the pre-registration said no new cutout downloads, so this is recorded as a deviation",
+  "finding": "the released catalogue's inference ran on images from the HF dataset Smith42/galaxies (pipelines/p2_chirality/run_eq_fast.py:37, keyed by dr8_id); the `image_url` column (jpeg-cutout, size=150, layer=ls-dr9) was APPENDED to catalog_production.parquet afterwards (run_eq_fast.py:265-270) and is what the row 13/16 fetch scripts used. They are not the same images.",
+  "model": "bamfai/galaxy-chirality-v2@237d021c451d75cf86a875e86d4de498b74e2f12",
+  "n_zoom_sample": 3000,
+  "seed": 20260921,
+  "zoom_sweep_central_crop": {
+    "150": {
+      "arcsec_field": 39.3,
+      "agreement_with_released_catalogue_class": 0.446,
+      "fraction_labelled_NOT_SPIRAL": 0.23066666666666666,
+      "cw_ccw_agreement_among_our_spirals": 0.5797227036395147
+    },
+    "128": {
+      "arcsec_field": 33.54,
+      "agreement_with_released_catalogue_class": 0.43166666666666664,
+      "fraction_labelled_NOT_SPIRAL": 0.21866666666666668,
+      "cw_ccw_agreement_among_our_spirals": 0.5524744027303754
+    },
+    "106": {
+      "arcsec_field": 27.77,
+      "agreement_with_released_catalogue_class": 0.4493333333333333,
+      "fraction_labelled_NOT_SPIRAL": 0.19733333333333333,
+      "cw_ccw_agreement_among_our_spirals": 0.5598006644518272
+    },
+    "90": {
+      "arcsec_field": 23.58,
+      "agreement_with_released_catalogue_class": 0.4643333333333333,
+      "fraction_labelled_NOT_SPIRAL": 0.198,
+      "cw_ccw_agreement_among_our_spirals": 0.5789692435577722
+    },
+    "75": {
+      "arcsec_field": 19.65,
+      "agreement_with_released_catalogue_class": 0.436,
+      "fraction_labelled_NOT_SPIRAL": 0.193,
+      "cw_ccw_agreement_among_our_spirals": 0.540272614622057
+    },
+    "60": {
+      "arcsec_field": 15.72,
+      "agreement_with_released_catalogue_class": 0.41133333333333333,
+      "fraction_labelled_NOT_SPIRAL": 0.231,
+      "cw_ccw_agreement_among_our_spirals": 0.5348938014737755
+    }
+  },
+  "layer_test": {
+    "n_requested": 300,
+    "n_fetched": 300,
+    "bytes_note": "150 px JPEG cutouts, ~10 kB each; ~3 MB total, diagnostic only",
+    "agreement_ls_dr8_with_catalogue": 0.4533333333333333,
+    "agreement_ls_dr9_with_catalogue_same_galaxies": 0.46,
+    "agreement_ls_dr8_vs_ls_dr9": 0.89,
+    "fraction_NOT_SPIRAL_ls_dr8": 0.25,
+    "fraction_NOT_SPIRAL_ls_dr9": 0.24666666666666667
+  }
+}
