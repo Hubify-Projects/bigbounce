@@ -15,7 +15,7 @@
 \newcommand{\OmGW}{\Omega_{\rm GW}}
 \newcommand{\fpbh}{f_{\rm PBH}}
 \newcommand{\zetac}{\zeta_{\rm c}}
-\newcommand{\paperVersion}{v3M.0.28}
+\newcommand{\paperVersion}{v3M.0.29}
 \newcommand{\paperTimestamp}{September 22, 2026}
 
 \begin{document}
@@ -39,15 +39,23 @@ in-in computation confirms $\fnlloc=-35/16=-2.1875$ (Li \textit{et al.}
 2016), half Cai \textit{et al.}'s (2009)
 value, whose slip is traced to amplitude normalization. A scheme-independent
 Bardeen-potential argument resolves the bounce continuation ambiguity in
-favor of scheme S2, giving a single transmitted value on the Quintin-type
-background, under the raw-ADM cubic form, $\fnl^{\rm after}=-1.25$ (S1's
-earlier three-background range was $[-0.65,-0.50]$; the retained range on
-the LQC and poly backgrounds alone, where S2 is not yet computed, is
-$[-0.65,-0.55]$). The tensor and S1 scalar transfers are identical
-($r_{\rm after}^{\rm S1}=16\epsilon=24$, $\sim670\times$ BICEP/Keck), but
-under the now-selected S2 transfer the bounce \emph{amplifies} $r$ to
-$r_{\rm after}\approx9.4\times10^2$ ($\sim2.6\times10^4\times$
-BICEP/Keck), $39\times$ worse.
+favor of scheme S2 on the Quintin-type background, under the raw-ADM cubic
+form giving $\fnl^{\rm after}=-1.25$, and now extends to the LQC and poly
+backgrounds, which cross the same singular surface smoothly rather than by
+a jump: there the continuation is a one-parameter prescription (the
+Mukhanov--Sasaki operator is not essentially self-adjoint at the
+crossing), and its time-symmetric member gives a linear-transfer amplitude
+of $-1.094$ (LQC, with an independent prescription-free anchor) and
+$-1.140$ (poly, principal-value only), with the cubic term uncomputed
+there so the full $\fnl^{\rm after}$ is only a bracket, $[-1.20,-0.09]$
+and $[-1.27,-0.13]$ respectively (S1's superseded range on all three
+backgrounds was $[-0.65,-0.50]$). The tensor and S1 scalar transfers are
+identical ($r_{\rm after}^{\rm S1}=16\epsilon=24$, $\sim670\times$
+BICEP/Keck), but under the selected continuation the bounce
+\emph{amplifies} $r$ to $r_{\rm after}\approx9.4\times10^2$ (Quintin-type,
+$\sim2.6\times10^4\times$ BICEP/Keck), $96.0$ (LQC, $\sim2.7\times10^3\times$),
+and $170.6$ (poly, $\sim4.7\times10^3\times$) -- worse than S1's common
+$r_{\rm after}=24$ on every background.
 $n_s=1$ exactly for pure dust ($0.9649$ anchors $w=-0.0029$);
 $n_T=-0.035$ is the one tilt falsifiable in principle. A reduced
 constant sound speed trades $r$ for $\fnl$: $r=24c_s$, while the
@@ -567,21 +575,32 @@ definite post-bounce prediction for the first time, one number per background:
 \begin{table}[h]
 \caption{\label{tab:s1_after}Per-background transmitted amplitude. The
 first three rows are scheme S1 ($z=a$, Sec.~\ref{sec:transmission}),
-replaced on the Quintin-type background by the scheme-independent
-Bardeen-potential argument of Sec.~\ref{sec:bounce_cubic}, which selects
-S2; they are retained for comparison and remain this paper's only
-computed value on the LQC and poly backgrounds. The last row, scheme S2
-(Quintin-type-only raw-ADM continuation), is this paper's selected result
-on that background; its middle column is the net bounce-plus-expansion
-cubic contribution actually obtained (not a separately regulated
-$\Delta\fnl^{\rm bounce}[{\rm S2}]$ analogous to the S1 rows -- see
-Sec.~\ref{sec:bounce_cubic}), so $\fnl^{\rm after}[{\rm S2}]$ is the full
-raw-ADM in-in result rather than $T_{\fnl}\cdot\fnl^{\rm before}+\Delta$.
-Numerical accuracy: the closed form for $\Delta\fnl^{\rm bounce}$
-reproduces the full in-in integral to $3\times10^{-4}$ and its $c_s=1$
-gate to $4\times10^{-6}$ on all three backgrounds, and the $T_{\fnl}$
-integrations are step-converged to $1.5\times10^{-8}$ or better
-(reproducibility statement below), so every digit quoted here is stable.}
+superseded on every background by a Bardeen-potential continuation
+(Sec.~\ref{sec:bounce_cubic}) and retained here for comparison only. The
+fourth row, scheme S2 (Quintin-type-only raw-ADM continuation), is this
+paper's selected result on that background; its middle column is the net
+bounce-plus-expansion cubic contribution actually obtained (not a
+separately regulated $\Delta\fnl^{\rm bounce}[{\rm S2}]$ analogous to the
+S1 rows -- see Sec.~\ref{sec:bounce_cubic}), so $\fnl^{\rm after}[{\rm
+S2}]$ is the full raw-ADM in-in result rather than
+$T_{\fnl}\cdot\fnl^{\rm before}+\Delta$. The fifth and sixth rows extend
+the same Bardeen continuation to the LQC and poly backgrounds under the
+time-symmetric (principal-value) self-adjoint extension; their
+$\Delta\fnl^{\rm bounce}$ is not computed, so $\fnl^{\rm after}$ is
+reported only as a bracket between the two cubic endpoints this program
+has computed anywhere, never as a single value. On LQC the continuation
+carries a second, prescription-free anchor (the matter-kinetic weight has
+no zero there) and $T_{\fnl}=1/2$ exactly, independent of prescription;
+on poly no such anchor exists and $T_{\fnl}=0.521$ is the
+principal-value member of a one-parameter self-adjoint-extension family
+(a member one unit away in the extension parameter returns it to the S1
+value, erasing the effect entirely). Numerical accuracy: the closed form
+for $\Delta\fnl^{\rm bounce}$ reproduces the full in-in integral to
+$3\times10^{-4}$ and its $c_s=1$ gate to $4\times10^{-6}$ on all three
+backgrounds, and the $T_{\fnl}$ integrations are step-converged to
+$1.5\times10^{-8}$ or better (reproducibility statement below), so every
+digit quoted here is stable.}
+\scriptsize
 \begin{tabular}{lccc}
 \hline\hline
 background & $T_{\fnl}$ & $\Delta\fnl^{\rm bounce}$ & $\fnl^{\rm after}$ \\
@@ -589,7 +608,9 @@ background & $T_{\fnl}$ & $\Delta\fnl^{\rm bounce}$ & $\fnl^{\rm after}$ \\
 Quintin-type~\cite{Quintin2015} (S1) & $0.165$ & $-0.140$ & $-0.501$ \\
 LQC effective dust (S1) & $0.250$ & $-0.104$ & $-0.651$ \\
 poly (analytic non-LQC) (S1) & $0.196$ & $-0.127$ & $-0.555$ \\
-Quintin-type (S2, raw-ADM) & $\approx1.03$ & $+1.00$ & $-1.25$ \\
+Quintin-type (Bardeen/S2) & $1.03$ & $+1.00$ & $-1.25$ \\
+LQC effective dust (Bardeen) & $0.500$ & -- & $[-1.20,-0.09]$ \\
+poly (Bardeen) & $0.521$ & -- & $[-1.27,-0.13]$ \\
 \hline\hline
 \end{tabular}
 \end{table}
@@ -602,7 +623,11 @@ $|\fnl|$, partially undoing but not reversing the linear suppression, at
 $19$--$39\%$ of the transmitted contraction term. This range is valid only
 for $k\eta_B\lesssim10^{-2}$ (set by the competing requirements that the
 post-bounce integral converge and the super-Hubble boundary treatment hold)
-and only within scheme S1.
+and only within scheme S1. This S1 range is superseded on every background
+by the Bardeen continuation below: exactly, by the single value
+$\fnl^{\rm after}=-1.25$, on Quintin-type; for the linear transfer only,
+by $-1.094$ (LQC) and $-1.140$ (poly), on the other two, where the cubic
+term remains uncomputed (Table~\ref{tab:s1_after}).
 
 \textit{Scheme S2.}---The effective-fluid scheme S2's cubic
 bounce-window integral is finite: its apparent divergence is an artefact
@@ -616,7 +641,7 @@ ADM cubic Lagrangian, taken before any integration by parts, is finite
 on-shell through the bounce and requires no cutoff. Evaluated on this raw
 form with the exact S2 modes on the Quintin-type background, the
 bounce-window in-in integral gives, at $k\eta_B=10^{-3},3\times10^{-3},
-10^{-2}$ respectively, $\fnl^{\rm after}[{\rm S2}]=-1.249,-1.246,-1.244$
+10^{-2}$ respectively, $\fnl^{\rm after}[{\rm S2}]=-1.249,-1.249,-1.246$
 against $\fnl^{\rm before}=-2.187\approx-35/16$ -- a factor $\approx2.5$
 above S1's $-0.501$ on the same background. The difference is dominated by
 the choice of linear Mukhanov--Sasaki variable, not by any single cubic
@@ -660,12 +685,85 @@ not merely asserted, confirmation that the smooth limit agrees with the
 sharp result. The LQC and poly backgrounds are specified as effective
 fluids with no explicit scalar field $\phi$ and reach $\dot H=0$ as an
 intrinsic feature of their own functional form rather than by a jump;
-the indicial argument above applies to them identically in principle,
-but the numerical propagation of $\Phi$ analogous to the paragraph below
-has been carried out only on the Quintin-type background, which is why
-Sec.~\ref{sec:tensor} and Sec.~\ref{sec:next} scope the resolved scheme
-to it and leave the LQC/poly extension as a next step -- not because
-their crossing is regular in a different sense. Propagating
+the indicial argument above applies to them identically, and unlike the
+Quintin-type background -- where $\dot H$ jumps and no $\rho+p=0$ crossing
+exists -- both cross $\rho+p=0$ \emph{smoothly}: at the crossing $\Phi$ and
+$\Phi'$ stay continuous, every solution obeying the degenerate momentum
+constraint $\Phi'(\eta_c)=-\mathcal H(\eta_c)\Phi(\eta_c)$ (the equation's
+own first recursion, not assumed), while the resonance between the
+indicial exponents $\{0,2\}$ gives $\zeta$ a logarithmic divergence there
+with closed-form amplitude
+$c_{\log}=-k^2\mathcal H(\eta_c)\Phi(\eta_c)/Q'(\eta_c)$,
+$Q\equiv\mathcal H^2-\mathcal H'=-a^2\dot H$; a logarithm is integrable,
+so a continuation through the crossing exists, and we take its symmetric
+(principal-value) finite part. Comparing at fixed incoming adiabatic
+vacuum via a handoff in the dust contraction, where the Bardeen and S1
+$\zeta$ are the same function to $7.7\times10^{-10}$ (LQC) and
+$1.3\times10^{-8}$ (poly), this continuation transmits a fraction
+$R=1/2$ (LQC) and $R=3/8$ (poly) of scheme S1's amplitude, against
+$R=0.160$ on the Quintin-type background; both rationals are exact,
+obtained independently by a finite-$k$ two-sided principal-value
+regulator, a principal-value quadrature, and the closed form
+$R=3I_\epsilon/I_{\rm S1}$, $I_s\equiv\int d\eta/z_s^2$. Because
+$\fnl\propto1/\zeta$ under a common linear rescaling, the transmitted
+amplitude scales as $1/R$, so scheme S1 -- which transmits more curvature
+perturbation than the regular continuation on every background tested --
+\emph{understates} $|\fnl^{\rm after}|$: by $6.25\times$ on the
+Quintin-type background, but only $2.00\times$ (LQC) and $2.67\times$
+(poly); the factor of $6.25$ quoted above is specific to the Quintin-type
+background and must not be carried to the other two. Unlike the
+Quintin-type handoff, which sits at the end of the exact dust contraction
+where $\zeta$ is unambiguous, the LQC/poly crossing lies inside the
+bounce region and is exactly where $\zeta$ diverges in this continuation;
+$R$ is used precisely because it requires no handoff surface at all.
+
+This continuation is a \emph{prescription}, not a unique result, and the
+freedom is $O(1)$. At a simple sign-changing zero of $z^2=2a^2\epsilon$,
+writing $u\equiv\eta-\eta_c$, the Mukhanov--Sasaki operator has
+$z''/z=-1/(4u^2)$ -- the critical inverse-square potential -- and is not
+essentially self-adjoint: it admits a one-parameter family of
+self-adjoint extensions per surface, and continuity of $\Phi,\Phi'$ does
+not select one. A complex-contour member of that family gives $R=0.707$
+(LQC) and $R=0.750$ (poly), not the principal value, and a real extension
+parameter $\theta=\pi$ (LQC) or $\theta=3.02$ (poly) returns $R$ to $1$,
+erasing the difference from scheme S1 entirely. On LQC this ambiguity is
+resolved independently of the extension parameter: the crossing is where
+the quantum-geometry factor $(1-2x)$ vanishes, not where the matter
+kinetic term does (the dust source has $\rho+p=x\neq0$ there), so the
+matter-built weight $z_K^2=a^2(\rho+p)/(c_s^2H^2)$ has no zero at all,
+its continuation is unambiguous, and its mixing integral coincides
+exactly with the principal value -- giving $R=1/2$ with no prescription.
+This anchor assumes the effective theory producing
+$H^2=(\rho/3)(1-\rho/\rho_c)$ leaves the scalar kinetic weight
+proportional to $a^2(\rho+p)/H^2$; were its constraint algebra instead to
+rescale that weight by the same $(1-2x)$ factor -- plausible, since in
+holonomy-corrected effective dynamics that factor also multiplies $k^2$
+and is associated with a signature change rather than ordinary evolution
+-- the anchor would disappear and LQC would be as prescription-dependent
+as poly, for which no such anchor exists and $R=3/8$ is quoted as the
+principal-value member only. This non-uniqueness was identified by an
+independent cross-check, carried out with no access to this derivation
+or its conclusion, which confirmed both rationals by an unrelated route
+(the same $\rho+p=x$ vs.\ $-2\dot H=x(1-2x)$ structural fact and the same
+partial-fraction decomposition of the poly integrand); an earlier version
+of this argument had wrongly treated the continuation as unique
+(reproducibility statement below).
+
+The linear transfer alone moves $\fnl^{\rm after,lin}$ from $-0.547$ to
+$-1.094$ (LQC) and from $-0.428$ to $-1.140$ (poly); the cubic-order term
+$\Delta\fnl^{\rm bounce}$ on these two backgrounds is not computed by
+this program -- it needs the raw-ADM in-in integral there, whose
+integrand carries the same $Q=0$ logarithm at cubic order -- so the full
+$\fnl^{\rm after}$ on LQC and poly is reported in
+Table~\ref{tab:s1_after} only as a bracket between the two cubic
+endpoints this program has actually computed anywhere, never as a single
+value. With the tensor transfer scheme-independent
+(Sec.~\ref{sec:tensor}), $r_{\rm after}=24/R^2$ gives $r_{\rm
+after}=96.0$ (LQC) and $170.6$ (poly) against the common scheme-S1 value
+$24.0$ -- exceeding the BICEP/Keck bound by $2.7\times10^3\times$ and
+$4.7\times10^3\times$ respectively, rather than by $6.7\times10^2\times$:
+the tensor no-go of Sec.~\ref{sec:nogo} is unchanged in direction and
+strengthened on both backgrounds (Sec.~\ref{sec:tensor}). Propagating
 this system across the Quintin-type bounce gives $|\lambda_\zeta|=0.9699$
 at $k\eta_B=10^{-3}$--$10^{-2}$, agreeing with scheme S2 to
 $7\times10^{-8}$ and smaller than S1's $6.06$ by a factor $6.25$. Scheme S1's
@@ -675,8 +773,11 @@ give $\fnl^{\rm before}=-35/16$, and false in the bounce window, which is
 precisely where they part company. The transmitted amplitude on this
 background is therefore the single value $\fnl^{\rm after}=-1.25$, not a
 band (the S1 range across all three backgrounds, $[-0.65,-0.50]$, is
-replaced on Quintin-type and retained only where S2 is not yet computed,
-the LQC and poly rows of Table~\ref{tab:s1_after}). A second, independent
+superseded on every background by the Bardeen continuation above --
+exactly, by $-1.25$, on Quintin-type, and for the linear transfer only,
+by $-1.094$ and $-1.140$, on LQC and poly, where the cubic term remains
+uncomputed and only a bracket is reported, Table~\ref{tab:s1_after}). A
+second, independent
 derivation, carried out without access to this argument or its conclusion, confirms
 S2, $\lambda_\zeta=0.970$, by a different construction (the $(\Psi,D)$
 system with junctions fixed by Israel matching), reproducing the exact
@@ -688,16 +789,16 @@ unlike S1's), only $\fnl^{\rm before}$ and $\fnl^{\rm after}$ are
 convention-free S2 quantities; no separately regulated
 $\Delta\fnl^{\rm bounce}[{\rm S2}]$ analogous to Eq.~\eqref{eq:bounce_cubic}
 is reported, and S2's row for the Cai amplitude $-35/8$ is not computed
-(Table~\ref{tab:reach}). The quoted $\fnl^{\rm after}[{\rm S2}]$ values use
-a final evaluation time $\eta_*$ in the asymptotic (super-Hubble)
-expansion-side regime: $\eta_*/\eta_B=50$ at $k\eta_B=10^{-3},3\times10^{-3}$,
-where the window piece is converged to $0.1\%$ between $\eta_*/\eta_B=50$
-and $100$ (it moves $23\%$ between $\eta_*/\eta_B=10$ and $50$, so the
-pre-asymptotic region is explicitly not used), and $\eta_*/\eta_B=20$ at
-$k\eta_B=10^{-2}$, a less-converged choice at that $k$-point whose third
-digit is accordingly less certain than the other two (reproducibility
-statement below, \texttt{eta\_star\_scan}); a common convention across all
-three $k$-points is not yet enforced.
+(Table~\ref{tab:reach}). The quoted $\fnl^{\rm after}[{\rm S2}]$ values use a uniform final
+evaluation time $\eta_*/\eta_B=15$ at every $k$-point, which a $12$-point
+scan (reproducibility statement below, \texttt{eta\_star\_scan}) shows
+lies in the stationary region of $\fnl^{\rm after}$ at each of the three
+$k$-points and satisfies $k\eta_*\le0.15$ throughout. With this
+convention $\fnl^{\rm after}[{\rm S2}]=-1.2492,-1.2490,-1.2464$ at
+$k\eta_B=10^{-3},3\times10^{-3},10^{-2}$, a spread of $0.22\%$ across $k$
+and across the stationary window, so the headline $-1.25$ survives to
+three significant figures with a stated $0.3\%$ evaluation-time
+systematic (a fourth digit is not justified).
 
 Quintin~\textit{et al.}'s reported bispectrum growth through a nonsingular
 bounce~\cite{Quintin2015} is not contradicted: their growth is the
@@ -710,8 +811,9 @@ tension. The nonlinear channel therefore has a single selected value on
 the Quintin-type background, $\fnl^{\rm after}=-1.25$; the scheme
 qualifier is no longer needed for the linear transfer there, but is still
 owed for the cubic-action form (raw-ADM vs.\ Maldacena-form, above) and
-for the LQC and poly backgrounds, where only the S1 value is computed
-(Table~\ref{tab:s1_after}). The absence of an orders-of-magnitude
+for the LQC and poly backgrounds, where the linear transfer is now
+resolved by the same argument but the cubic term is not, so only a
+bracket is reported (Table~\ref{tab:s1_after}). The absence of an orders-of-magnitude
 enhancement holds in both schemes (Sec.~\ref{sec:transmission}).
 The full vertex table, regularization-assumption note, numerical
 cross-check, and literature-comparison derivation are archived and
@@ -1357,12 +1459,13 @@ As established in Sec.~\ref{sec:transmission}, the $k\eta_B$
 window is satisfied most easily at this channel's CMB/LSS pivot scale. On
 the Quintin-type background the selected scheme S2
 (Sec.~\ref{sec:bounce_cubic}) gives the single value
-$\fnl^{\rm after}=-1.25$ ($-35/16$); on the LQC and poly backgrounds,
-where only scheme S1 is computed,
-$\fnl^{\rm after}=T_{\fnl}\cdot\fnl^{\rm pre}
-+\Delta\fnl^{\rm bounce}\in[-0.65,-0.55]$ ($-35/16$), and the S1 range
-across all three backgrounds is $[-1.20,-0.86]$ ($-35/8$)
-(Table~\ref{tab:s1_after}). These are this paper's observable predictions
+$\fnl^{\rm after}=-1.25$ ($-35/16$); on the LQC and poly backgrounds the
+Bardeen continuation's linear transfer alone gives $-1.094$ and $-1.140$
+respectively, with the cubic term uncomputed there so the full
+$\fnl^{\rm after}$ is only a bracket, $[-1.20,-0.09]$ and $[-1.27,-0.13]$
+(the superseded S1 values, retained for comparison, were
+$\in[-0.65,-0.55]$); the S1 range across all three backgrounds is
+$[-1.20,-0.86]$ ($-35/8$) (Table~\ref{tab:s1_after}). These are this paper's observable predictions
 for Channel III, not the pre-bounce contraction-phase amplitude. Table~\ref{tab:reach} reports the
 bare significance $\fnl^{\rm after}/\sigma_{\fnl}$ across the three
 backgrounds of Sec.~\ref{sec:transmission}, with the pre-bounce amplitude's
@@ -1384,8 +1487,10 @@ row (assuming $T_{\fnl}=1$) is a secondary reference, not this paper's
 prediction. The scheme-S2 row, selected on the Quintin-type background by
 the Bardeen-potential argument of Sec.~\ref{sec:bounce_cubic}, is this
 paper's Channel~III prediction there, superseding the S1 row for
-Quintin-type; the S1 rows remain this paper's only computed values on the
-LQC and poly backgrounds. No
+Quintin-type; the S1 rows are superseded on the LQC and poly backgrounds
+too by a Bardeen continuation (Sec.~\ref{sec:bounce_cubic},
+Table~\ref{tab:s1_after}), whose cubic term is not computed there, so no
+separate significance row is given for them. No
 $-35/8$ value is computed for S2 (not scaled from $-35/16$; see text).
 Forecast $\sigma$ values are quoted from the cited abstracts. MegaMapper is
 an unapproved design and is quoted only at its published order-unity
@@ -1459,14 +1564,21 @@ bounce \emph{amplifies} $r$ by $(\lambda_T/\lambda_\zeta^{\rm
 S2})^2\approx39\times$ to $r_{\rm after}^{\rm S2}\approx9.4\times10^2$,
 $\sim2.6\times10^4\times$ above the bound -- this paper's selected value
 on this background, strengthening rather than curing the tensor problem
-found in S1. On the Quintin-type background, the only
-one where the S2 scalar mode could be exactly constructed through
-$H=0$ (S2 is not defined on the LQC/poly backgrounds' $\dot H=0$
-crossings), both continuations exceed the bound by more than two orders
-of magnitude, so neither of the two schemes evaluated here rescues this
-background from the long-known matter-bounce large-$r$
-problem~\cite{CaiEasson2012, Quintin2015}, applied here to the lab's own
-background rather than assumed from the literature.
+found in S1. The same construction now extends to the LQC and poly backgrounds, whose
+$\dot H=0$ crossings are smooth rather than a jump
+(Sec.~\ref{sec:bounce_cubic}): with the tensor transfer identical to
+$\lambda_\zeta^{\rm S1}$ there too and the Bardeen-continuation scalar
+transfer a fraction $R=1/2$ (LQC) and $R=3/8$ (poly, principal-value) of
+it, $r_{\rm after}=24/R^2$ gives $r_{\rm after}\approx96.0$ (LQC) and
+$170.6$ (poly) -- $2.7\times10^3\times$ and $4.7\times10^3\times$ the
+BICEP/Keck bound, against $6.7\times10^2\times$ under S1's common
+$r_{\rm after}=24$. On every background evaluated, including the two
+where the scalar continuation carries an $O(1)$ prescription freedom
+(Sec.~\ref{sec:bounce_cubic}), both continuations exceed the bound by
+more than two orders of magnitude, so neither of the two schemes
+evaluated here rescues any of them from the long-known matter-bounce
+large-$r$ problem~\cite{CaiEasson2012, Quintin2015}, applied here to the
+lab's own backgrounds rather than assumed from the literature.
 Similarly, the exact dust contraction gives $n_s=1$; the observed
 $n_s=0.9649$ is an anchor fixing the contraction's equation of state to
 $w=-0.0029$ via $n_s-1=12w/(1+3w)$, not a prediction of the model. The
@@ -1763,9 +1875,12 @@ Transmission through the bounce is now a definite prediction rather than
 an open bound: at $k\eta_B\lesssim10^{-2}$ on the Quintin-type background,
 the scheme ambiguity is resolved by the Bardeen-potential argument of
 Sec.~\ref{sec:bounce_cubic} in favor of S2, giving the single value
-$\fnl^{\rm after}=-1.25$; on the LQC and poly backgrounds, where S2 is not
-yet computed, the paper retains the S1 range
-$\fnl^{\rm after}\in[-0.65,-0.55]$ (Sec.~\ref{sec:bounce_cubic}). As
+$\fnl^{\rm after}=-1.25$; on the LQC and poly backgrounds the same
+Bardeen continuation now gives a linear-transfer amplitude of $-1.094$
+and $-1.140$ respectively (the S1 values, $\in[-0.65,-0.55]$, are
+superseded but retained for comparison), with the cubic term not yet
+computed there, so the full $\fnl^{\rm after}$ is only a bracket,
+$[-1.20,-0.09]$ and $[-1.27,-0.13]$ (Sec.~\ref{sec:bounce_cubic}). As
 Sec.~\ref{sec:transmission} states, this $k\eta_B$ window is an upper bound
 on $k$ and is satisfied \emph{most easily}, not hardest, at the CMB/LSS pivot
 scale used by Channel~III below, so these transmitted values are precisely
@@ -1814,10 +1929,14 @@ integrated-by-parts form is a total-derivative artefact, not a physical
 pathology -- and gives the single value $\fnl^{\rm after}=-1.25$, a factor
 $\approx2.5$ from the earlier S1 value $-0.50$ on the same
 background (Sec.~\ref{sec:bounce_cubic}). Which scheme's linear variable
-is physical at $H=0$ is therefore settled on this background; it remains
-open on the LQC and poly backgrounds, where the Bardeen argument has not
-yet been extended past their $\dot H=0$ crossings and only the S1 value is
-reported (Table~\ref{tab:s1_after}). At the transmitted amplitude
+is physical at $H=0$ is therefore settled on this background; the same
+continuation now extends to the LQC and poly backgrounds, where the
+crossing is smooth rather than a jump, but there the continuation carries
+an $O(1)$ self-adjoint-extension freedom the Quintin-type jump avoids --
+quantified and, on LQC only, independently resolved
+(Sec.~\ref{sec:bounce_cubic}) -- and the cubic term remains uncomputed, so
+only the linear-transfer values and a bracket are reported
+(Table~\ref{tab:s1_after}). At the transmitted amplitude
 the survey channel's discriminating power is itself the weak link: SPHEREx
 separates the two candidates by $|\Delta\fnl^{\rm after}|\approx0.35$--$0.55$
 against $\sigma_{\fnl}=0.5$--$0.7$, i.e.\ $0.5$--$1.1\sigma$
@@ -1851,12 +1970,16 @@ bounce; robustness to an asymmetric window is untested.
 \subsection{Next steps}
 \label{sec:next}
 
-In priority order: (i)~extending the Bardeen-potential scheme-selection
-argument of Sec.~\ref{sec:bounce_cubic} -- which settles $z=a$ vs.\ the
-effective-fluid continuation ($z^2\propto\epsilon/c_s^2$) on the
-Quintin-type background -- to the LQC and poly backgrounds, whose
-$\dot H=0$ crossings require a separate indicial analysis not yet
-performed;
+In priority order: (i)~computing the cubic-order raw-ADM term on the LQC
+and poly backgrounds under the now-extended Bardeen continuation
+(Sec.~\ref{sec:bounce_cubic}), whose $Q=0$ crossing carries the same
+logarithmic structure at cubic order, so the reported bracket
+(Table~\ref{tab:s1_after}) can be replaced by a single number; relatedly,
+resolving the self-adjoint-extension ambiguity of the linear continuation
+there -- on poly by finding a prescription-free anchor analogous to
+LQC's or an independent argument fixing the physical choice, and on LQC
+by testing whether the effective theory's kinetic weight indeed leaves
+the anchor prescription-free;
 (ii)~an evaluation-time (freeze-out) prescription for the bispectrum at
 $k\eta_B\gtrsim0.1$, where this model's absence of a post-bounce
 inflationary phase leaves $\zeta$ unfrozen and the bounce-window cubic
@@ -1865,9 +1988,9 @@ the $k\eta_B\approx0.6$--$0.8$ transfer feature and the $k\eta_B\sim1$--$3$
 exact-mode bispectrum of Sec.~\ref{sec:transmission} can be quoted as
 single numbers rather than ranges; (iii)~re-derivation of the shape
 overlap $r$ at the $-35/16$ fiducial; (iv)~extending the S2 raw-ADM
-computation to the LQC and poly backgrounds, and to the $-35/8$ amplitude,
-neither of which is computed here (Sec.~\ref{sec:bounce_cubic},
-Table~\ref{tab:reach}); and (v)~a direct-collapse (rather than
+computation to the $-35/8$ amplitude on all three backgrounds, not
+computed here (Sec.~\ref{sec:bounce_cubic}, Table~\ref{tab:reach}); and
+(v)~a direct-collapse (rather than
 horizon-re-entry) primordial-black-hole formation channel during the dust
 contraction phase itself, identified but not evaluated in
 Sec.~\ref{sec:pbh_inlab}. The propagation of the post-bounce amplitude to
