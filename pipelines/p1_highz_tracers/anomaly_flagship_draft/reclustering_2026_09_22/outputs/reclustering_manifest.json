@@ -1,0 +1,73 @@
+{
+  "created_utc": "2026-09-22T10:28:13Z",
+  "disposition": "DAF-19",
+  "lane": "LAF4-af-reclustering",
+  "manifest_version": "daf19-corrected-taxonomy/v1",
+  "n_clusters": 23,
+  "n_families": 9,
+  "n_objects": 675,
+  "output_comparison": {
+    "file_name": "comparison_metrics.json",
+    "sha256": "549a95f5a55823d38cc596ccb0f0857f84bdfdeb875035556263d645d1503b3b"
+  },
+  "output_results": {
+    "file_name": "flagship_taxonomy_corrected.json",
+    "sha256": "9cc3666f181c81fb87fe2f9042e6d746d397c1d4e811f8f160233eaadea2026a"
+  },
+  "params": {
+    "feature_columns": [
+      "anomaly_score",
+      "sky_x",
+      "sky_y",
+      "sky_z"
+    ],
+    "min_cluster_size": 15,
+    "min_samples": 3,
+    "note": "numeric hyperparameters reused verbatim from the published run's manifest (flagship_taxonomy_v2_manifest.json) so the RA-wrap fix is isolated as the only changed variable",
+    "pca_components": 10,
+    "random_state": 42,
+    "score_tier_labels": [
+      "low",
+      "elevated",
+      "high",
+      "extreme"
+    ],
+    "score_tier_quantiles": [
+      0.5,
+      0.8,
+      0.95
+    ],
+    "sky_embedding": "unit-vector spherical embedding of (ra_deg, dec_deg)",
+    "umap_min_dist": 0.05,
+    "umap_neighbors": 15
+  },
+  "reproducibility_manifest_q2": {
+    "apis_used": [],
+    "compute_venue": "local (Houston's machine), CPU only, no GPU required",
+    "external_data_sources": [],
+    "input_files": [
+      {
+        "note": "identical file used for the published (defective) taxonomy -- verified byte-identical before this run",
+        "path": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_crossmatch_v2_unmatched.parquet",
+        "sha256": "c0a6b57bd672f81b1424a65449f99d891810073ea59e600c1fc35cfec30eb7c3"
+      },
+      {
+        "note": "published taxonomy, used only as the comparison target",
+        "path": "pipelines/p1_highz_tracers/clean_rerun/results_2026-08-07/phase3_v2/flagship_taxonomy_v2.json",
+        "sha256": "1420388b59f3727814dda63c90c8e4cd0d2226c1e6ad2907c3301ed844edbf60"
+      }
+    ],
+    "reproduction_cost_estimate": "free (local CPU, <1 minute, no external API calls)",
+    "scripts": [
+      "pipelines/p1_highz_tracers/anomaly_flagship_draft/reclustering_2026_09_22/recluster_spherical.py"
+    ],
+    "wall_clock_seconds": 18.04
+  },
+  "versions": {
+    "numpy": "2.5.1",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6",
+    "sklearn": "1.9.0",
+    "umap_learn": "0.5.12"
+  }
+}

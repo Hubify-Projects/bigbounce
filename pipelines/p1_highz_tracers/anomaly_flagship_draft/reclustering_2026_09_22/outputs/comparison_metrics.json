@@ -1,0 +1,20 @@
+{
+  "corrected_taxonomy": {
+    "n_clusters": 23,
+    "n_families": 9
+  },
+  "corrected_vs_published": {
+    "adjusted_mutual_info": 0.6260676209339013,
+    "adjusted_rand_index": 0.6034189287887818
+  },
+  "corrected_vs_survey_programme_baseline": {
+    "adjusted_mutual_info": 0.2564120632843868,
+    "adjusted_rand_index": 0.2568069754675659,
+    "n_survey_programme_cells": 7
+  },
+  "n_objects": 675,
+  "published_taxonomy": {
+    "n_clusters": 25,
+    "n_families": 8
+  }
+}

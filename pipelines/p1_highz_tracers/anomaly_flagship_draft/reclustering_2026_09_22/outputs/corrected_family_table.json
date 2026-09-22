@@ -1,0 +1,79 @@
+{
+  "weighted_dominant_cell_purity": 0.719,
+  "min_family_ra_span_deg": 15.4,
+  "max_family_ra_span_deg": 331.6,
+  "families": [
+    {
+      "family_id": 0,
+      "n_objects": 308,
+      "descriptor": "low-anomaly-score candidate family (survey=main, program=dark)",
+      "dominant_cell": "main/dark",
+      "dominant_cell_share": 0.805,
+      "ra_span_deg_wrap_aware": 331.6
+    },
+    {
+      "family_id": 1,
+      "n_objects": 81,
+      "descriptor": "elevated-anomaly-score candidate family (survey=main, program=dark)",
+      "dominant_cell": "main/dark",
+      "dominant_cell_share": 0.877,
+      "ra_span_deg_wrap_aware": 204.1
+    },
+    {
+      "family_id": 2,
+      "n_objects": 72,
+      "descriptor": "high-anomaly-score candidate family (survey=sv3, program=bright)",
+      "dominant_cell": "sv3/bright",
+      "dominant_cell_share": 0.514,
+      "ra_span_deg_wrap_aware": 147.1
+    },
+    {
+      "family_id": 3,
+      "n_objects": 56,
+      "descriptor": "low-anomaly-score candidate family (survey=main, program=other)",
+      "dominant_cell": "sv1/other",
+      "dominant_cell_share": 0.375,
+      "ra_span_deg_wrap_aware": 48.9
+    },
+    {
+      "family_id": 4,
+      "n_objects": 54,
+      "descriptor": "low-anomaly-score candidate family (survey=sv3, program=bright)",
+      "dominant_cell": "sv3/bright",
+      "dominant_cell_share": 0.796,
+      "ra_span_deg_wrap_aware": 42.9
+    },
+    {
+      "family_id": 5,
+      "n_objects": 36,
+      "descriptor": "high-anomaly-score candidate family (survey=main, program=dark)",
+      "dominant_cell": "main/dark",
+      "dominant_cell_share": 0.75,
+      "ra_span_deg_wrap_aware": 51.7
+    },
+    {
+      "family_id": 6,
+      "n_objects": 31,
+      "descriptor": "extreme-anomaly-score candidate family (survey=sv3, program=bright)",
+      "dominant_cell": "sv3/bright",
+      "dominant_cell_share": 0.516,
+      "ra_span_deg_wrap_aware": 69.9
+    },
+    {
+      "family_id": 7,
+      "n_objects": 21,
+      "descriptor": "elevated-anomaly-score candidate family (survey=sv3, program=bright)",
+      "dominant_cell": "sv3/bright",
+      "dominant_cell_share": 0.571,
+      "ra_span_deg_wrap_aware": 15.4
+    },
+    {
+      "family_id": 8,
+      "n_objects": 16,
+      "descriptor": "low-anomaly-score candidate family (survey=sv1, program=other)",
+      "dominant_cell": "sv1/other",
+      "dominant_cell_share": 0.625,
+      "ra_span_deg_wrap_aware": 30.8
+    }
+  ]
+}
