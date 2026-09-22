@@ -153,8 +153,13 @@ instead of disclosing a non-uniform convention.
 * Any edit acting on this note is a paper change: bump `\paperVersion` + `\date`, 4-pass recompile with
   0 undef-refs, `/latex-audit`, re-mirror byte-identical to every served path, three-way md5 check, all in the
   same bundle. Convex is disabled — queue the mutations to `CONVEX_BACKFILL_QUEUE_2026-09-21.md`.
-* **Directive I6 applies and is not optional here.** `T_fNL`, `f_NL^after` and `r_after` appear inside figure
-  images. Inventory every `\includegraphics` and regenerate any figure carrying `0.250`, `0.196`, `-0.651`,
-  `-0.555`, `r_after = 24`, or a "factor 6.25" annotation, then verify by rendering the figure page.
+* **Directive I6 — inventoried by this lane, and the answer is NO regeneration needed.** `main.tex` has exactly
+  two `\includegraphics`: `sigw_nhz_from_lab_spectrum_2026_09_04.png` and `pbh_compaction_fnl.png`. Their
+  committed generators (`sigw_nhz_from_lab_spectrum_2026_09_04.py`, `pbh_compaction_fnl.py`) were grepped for
+  every quantity this note moves — `T_fNL`, `f_NL^after`, `r_after`, `0.250`, `0.196`, `-0.651`, `-0.555`,
+  `6.25`, `lambda` — and carry **none** of them: the PBH figure's `FNL` dict contains only the *pre*-bounce
+  values `0`, `-35/16` and `-35/8`, and the SIGW figure's only `24` is the `P_T/24` transfer normalisation,
+  not `r_after`. **No figure regeneration is required by this note.** (The A3M lane should still re-run the
+  inventory itself if it adds a number to a figure while applying §1–§4.)
 * **Directive R2:** this note is a *science decision* — exactly the intervening event R2 requires before
   another board on A3M. Whether to run one is the director's call, not this lane's.
