@@ -1,0 +1,388 @@
+{
+  "lane": "LS14-row4-ebv",
+  "zbin": "0.8-1.1",
+  "prop": "EBV",
+  "grid": "np.linspace(-400,400,801) -- LS11's split grid",
+  "k_range": [
+    0.003,
+    0.08
+  ],
+  "transfer": {
+    "NGC": {
+      "0": {
+        "n_fine_in_range": 77,
+        "ratio_min": 0.9349985249633547,
+        "ratio_med": 0.9614710380761794,
+        "ratio_max": 0.986282846739431
+      },
+      "2": {
+        "n_fine_in_range": 77,
+        "ratio_min": 0.946956539886806,
+        "ratio_med": 0.9884346035275396,
+        "ratio_max": 0.9991840520727784
+      },
+      "4": {
+        "n_fine_in_range": 77,
+        "n_clipped_in_range": 4
+      }
+    },
+    "SGC": {
+      "0": {
+        "n_fine_in_range": 77,
+        "ratio_min": 0.9432758709838356,
+        "ratio_med": 0.9676620104445115,
+        "ratio_max": 0.9911562050295278
+      },
+      "2": {
+        "n_fine_in_range": 77,
+        "ratio_min": 0.7308738746589114,
+        "ratio_med": 0.9768774163765073,
+        "ratio_max": 1.2403642018923486
+      },
+      "4": {
+        "n_fine_in_range": 77,
+        "n_clipped_in_range": 4
+      }
+    },
+    "cap_spread": {
+      "0": 0.015876982020401442,
+      "2": 0.25464120112544175
+    }
+  },
+  "identity_check": "combine_caps_T(Tmap=None) reproduces LS11's fit_lrg_splits.combine_caps bitwise for both halves",
+  "untreated": {
+    "zeff": 0.9185851971138159,
+    "1.0": {
+      "anchor": {
+        "f_nl": -0.8009208280767938,
+        "lo_68": -11.764427079967641,
+        "hi_68": 8.984319766147888,
+        "sigma": 10.374373423057765,
+        "b1": 2.213293238921475,
+        "chi2_min": 62.1000828845099,
+        "n_bins": 48,
+        "chi2_per_dof": 1.3500018018371718
+      },
+      "G_gate": {
+        "high": {
+          "f_nl": -17.619538842099924,
+          "sigma": 8.465931222991816,
+          "b1": 2.1976934158886667,
+          "chi2": 81.80997074571587,
+          "n_bins": 48,
+          "chi2_per_dof": 1.7784776249068668,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": -0.27369238726018214,
+          "sigma": 8.953540992155457,
+          "b1": 2.2014228284284885,
+          "chi2": 82.5237768102179,
+          "n_bins": 48,
+          "chi2_per_dof": 1.793995148048215,
+          "n_data": 429917
+        },
+        "delta_fnl": -17.34584645483974,
+        "sigma_delta": 12.32225173296812,
+        "delta_over_sigma": -1.407684799072155,
+        "delta_over_sigma_sqrt2corrected": -0.9953834671971434,
+        "verdict": "no detectable sensitivity"
+      }
+    },
+    "1.6": {
+      "anchor": {
+        "f_nl": -1.5743203221497468,
+        "lo_68": -23.19357269517288,
+        "hi_68": 17.84147271577109,
+        "sigma": 20.517522705471983,
+        "b1": 2.2132983428379878,
+        "chi2_min": 62.10012145921519,
+        "n_bins": 48,
+        "chi2_per_dof": 1.3500026404177214
+      },
+      "G_gate": {
+        "high": {
+          "f_nl": -35.32686281243926,
+          "sigma": 16.878551195843162,
+          "b1": 2.1974325391064897,
+          "chi2": 81.80832844417455,
+          "n_bins": 48,
+          "chi2_per_dof": 1.7784419226994468,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": -0.5387450301287121,
+          "sigma": 17.901808393067277,
+          "b1": 2.2016612268366034,
+          "chi2": 82.52354899070542,
+          "n_bins": 48,
+          "chi2_per_dof": 1.7939901954501178,
+          "n_data": 429917
+        },
+        "delta_fnl": -34.78811778231055,
+        "sigma_delta": 24.604069464476655,
+        "delta_over_sigma": -1.4139172315595037,
+        "delta_over_sigma_sqrt2corrected": -0.9997904624722349,
+        "verdict": "no detectable sensitivity"
+      }
+    }
+  },
+  "thetacut0.05": {
+    "zeff": 0.9185851971138159,
+    "1.0": {
+      "anchor": {
+        "f_nl": 1.0923208088069192,
+        "lo_68": -10.132148849910083,
+        "hi_68": 10.526575259000754,
+        "sigma": 10.32936205445542,
+        "b1": 2.1883207082540226,
+        "chi2_min": 62.53024425077183,
+        "n_bins": 48,
+        "chi2_per_dof": 1.3593531358863442
+      },
+      "D2_diagnostic_inconsistent": {
+        "high": {
+          "f_nl": -18.34996295863069,
+          "sigma": 7.634437651467296,
+          "b1": 2.2379564229412865,
+          "chi2": 90.31893118653988,
+          "n_bins": 48,
+          "chi2_per_dof": 1.9634550257943453,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": -1.9155371501555618,
+          "sigma": 8.818289902505201,
+          "b1": 2.2428340913405957,
+          "chi2": 82.41282719832998,
+          "n_bins": 48,
+          "chi2_per_dof": 1.791583199963695,
+          "n_data": 429917
+        },
+        "delta_fnl": -16.43442580847513,
+        "sigma_delta": 11.663913368109636,
+        "delta_over_sigma": -1.4089975885287844,
+        "delta_over_sigma_sqrt2corrected": -0.9963117495241962,
+        "verdict": "no detectable sensitivity"
+      },
+      "D1_primary": {
+        "high": {
+          "f_nl": -16.33344545293622,
+          "sigma": 9.403724659409667,
+          "b1": 2.1738174457352053,
+          "chi2": 76.88788788948114,
+          "n_bins": 48,
+          "chi2_per_dof": 1.6714758236843725,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": 0.9359362469101419,
+          "sigma": 9.062828883125828,
+          "b1": 2.1753043954504747,
+          "chi2": 96.268636926,
+          "n_bins": 48,
+          "chi2_per_dof": 2.0927964549130436,
+          "n_data": 429917
+        },
+        "delta_fnl": -17.269381699846363,
+        "sigma_delta": 13.060049955295316,
+        "delta_over_sigma": -1.3223059451502583,
+        "delta_over_sigma_sqrt2corrected": -0.9350115006190346,
+        "verdict": "no detectable sensitivity"
+      },
+      "V_swapped_cap": {
+        "high": {
+          "f_nl": -16.818343447391154,
+          "sigma": 9.315311979422606,
+          "b1": 2.17454850292054,
+          "chi2": 78.30881797712573,
+          "n_bins": 48,
+          "chi2_per_dof": 1.7023656081983853,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": 1.277439775208149,
+          "sigma": 9.030200496820578,
+          "b1": 2.1825369700387283,
+          "chi2": 85.83629530128837,
+          "n_bins": 48,
+          "chi2_per_dof": 1.8660064195932256,
+          "n_data": 429917
+        },
+        "delta_fnl": -18.0957832225993,
+        "sigma_delta": 12.973802768916789,
+        "delta_over_sigma": -1.394794074251998,
+        "delta_over_sigma_sqrt2corrected": -0.9862683482624006,
+        "verdict": "no detectable sensitivity"
+      },
+      "robustness": {
+        "eps_T": 0.05125684764336602,
+        "verdict_D1": "no detectable sensitivity",
+        "verdict_V": "no detectable sensitivity",
+        "robust": true
+      },
+      "delta_theta_full_sample": 1.893241636883713
+    },
+    "1.6": {
+      "anchor": {
+        "f_nl": 2.222016727525739,
+        "lo_68": -20.378563245104022,
+        "hi_68": 21.37779460876883,
+        "sigma": 20.878178926936428,
+        "b1": 2.1883255363841223,
+        "chi2_min": 62.53026262424646,
+        "n_bins": 48,
+        "chi2_per_dof": 1.3593535353097057
+      },
+      "D2_diagnostic_inconsistent": {
+        "high": {
+          "f_nl": -35.61936986161112,
+          "sigma": 14.72280145961164,
+          "b1": 2.2382410793373633,
+          "chi2": 90.31729668648586,
+          "n_bins": 48,
+          "chi2_per_dof": 1.9634194931844753,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": -3.698717983628263,
+          "sigma": 17.0520766591131,
+          "b1": 2.2428687346198855,
+          "chi2": 82.41302946695123,
+          "n_bins": 48,
+          "chi2_per_dof": 1.7915875971076354,
+          "n_data": 429917
+        },
+        "delta_fnl": -31.920651877982856,
+        "sigma_delta": 22.528519729609677,
+        "delta_over_sigma": -1.4168996570169194,
+        "delta_over_sigma_sqrt2corrected": -1.001899355737557,
+        "verdict": "MARGINAL WATCH ITEM"
+      },
+      "D1_primary": {
+        "high": {
+          "f_nl": -33.42760235386122,
+          "sigma": 19.143102661035822,
+          "b1": 2.173888814492712,
+          "chi2": 76.88700585072638,
+          "n_bins": 48,
+          "chi2_per_dof": 1.6714566489288345,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": 1.9229736297083715,
+          "sigma": 18.540330778719117,
+          "b1": 2.175314329210182,
+          "chi2": 96.26861410592755,
+          "n_bins": 48,
+          "chi2_per_dof": 2.092795958824512,
+          "n_data": 429917
+        },
+        "delta_fnl": -35.35057598356959,
+        "sigma_delta": 26.649619976188706,
+        "delta_over_sigma": -1.3264945622172153,
+        "delta_over_sigma_sqrt2corrected": -0.9379733001508735,
+        "verdict": "no detectable sensitivity"
+      },
+      "V_swapped_cap": {
+        "high": {
+          "f_nl": -34.41428208880945,
+          "sigma": 18.95709632338807,
+          "b1": 2.174368735222668,
+          "chi2": 78.30900286446467,
+          "n_bins": 48,
+          "chi2_per_dof": 1.7023696274883624,
+          "n_data": 429904
+        },
+        "low": {
+          "f_nl": 2.6030977935048654,
+          "sigma": 18.358502785805392,
+          "b1": 2.182308500860308,
+          "chi2": 85.83580285834705,
+          "n_bins": 48,
+          "chi2_per_dof": 1.8659957143118924,
+          "n_data": 429917
+        },
+        "delta_fnl": -37.017379882314316,
+        "sigma_delta": 26.389507868670798,
+        "delta_over_sigma": -1.4027309666604566,
+        "delta_over_sigma_sqrt2corrected": -0.9918805787059697,
+        "verdict": "no detectable sensitivity"
+      },
+      "robustness": {
+        "eps_T": 0.05390727855509614,
+        "verdict_D1": "no detectable sensitivity",
+        "verdict_V": "no detectable sensitivity",
+        "robust": true
+      },
+      "delta_theta_full_sample": 3.7963370496754862
+    }
+  },
+  "gate": {
+    "ls11_published": {
+      "high": -17.62,
+      "low": -0.27,
+      "delta": -17.35,
+      "sigma_delta": 12.32,
+      "raw": -1.41,
+      "corr": -0.995
+    },
+    "reproduced_corr": -0.9953834671971434,
+    "d_corr": 0.0003834671971434389,
+    "d_high": 0.00046115790007661417,
+    "d_low": 0.0036923872601821173,
+    "tolerance": {
+      "corr": 0.02,
+      "half_fnl": 0.05
+    },
+    "passed": true
+  },
+  "streamed_bytes_runs": [
+    435073248
+  ],
+  "streamed_bytes": 435073248,
+  "sha256": {
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_NGC_z0.8-1.1.h5": {
+      "sha256": "07af1f04dac8cadea0243b102da4fea00fb00732bbc08a399a90877d0fd2c5de",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_NGC_z0.8-1.1_thetacut0.05.h5": {
+      "sha256": "025a932b80caa7a765b96045f92acd9f7fb7a7c9852438b8ba3deb824026b308",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_SGC_z0.8-1.1.h5": {
+      "sha256": "4bd06185db21ee3853991f2226d3e5f62a7ac9a04f8dda8bb1c5f1f2edd3e37d",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_SGC_z0.8-1.1_thetacut0.05.h5": {
+      "sha256": "901199c9bb4c3198d2b478ec6d6748c2a7f093e2417adc1102927f6b2754344d",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/window_spectrum-poles_LRG_GCcomb_z0.8-1.1.h5": {
+      "sha256": "b78c7d9c14fea8d768e8f2dd9f731aa2b4e511aaccb97f2a7100f0782e8f95fa",
+      "bytes": 216704470
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_GCcomb_z0.8-1.1.h5": {
+      "sha256": "653c3b57e19e17f63dc09e99815c3c176c1cbccf717aa7981a232fc502aa76e5",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/covariance/EZmock/covariance_spectrum-poles_LRG_GCcomb_z0.8-1.1.h5": {
+      "sha256": "def2208cfe6327538c37e251172592af7348bc95439c586d7da49a03df5b0840",
+      "bytes": 497102
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/window_spectrum-poles_LRG_GCcomb_z0.8-1.1_thetacut0.05.h5": {
+      "sha256": "3a03d94faaab492bf2d1cbb4c6032b57daad06b3a3ff01d8339d290a8fdb42e6",
+      "bytes": 216704470
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/spectrum/spectrum-poles_LRG_GCcomb_z0.8-1.1_thetacut0.05.h5": {
+      "sha256": "fda0733f8ba0e43bc171391f1e10e4a1bfdee1d360f16e9602af6ec6f4f05582",
+      "bytes": 111684
+    },
+    "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/covariance/EZmock/covariance_spectrum-poles_LRG_GCcomb_z0.8-1.1_thetacut0.05.h5": {
+      "sha256": "a995b577127cf6d9abd8df483ca2a7227e2b4c8e9881470f8dbb146c1531923d",
+      "bytes": 497102
+    }
+  },
+  "wall_seconds": 84.1,
+  "streamed_bytes_note": "bytes streamed by THIS process; a resumed run re-streams the variant it computes"
+}

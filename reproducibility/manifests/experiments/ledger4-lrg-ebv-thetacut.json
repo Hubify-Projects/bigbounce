@@ -1,0 +1,132 @@
+{
+  "manifest_version": "bigbounce-experiment/v1",
+  "id": "ledger4-lrg-ebv-thetacut",
+  "title": "Ledger #4 - the LRG E(B-V) imaging systematic at 0.8 < z < 1.1 re-tested on the official DESI DR1 _thetacut0.05 products: LS11's row reproduced as a gate, an approximation-free full-sample theta-cut anchor, and the split test put on the theta-cut convention by the official per-cap transfer with a swapped-cap validation",
+  "program": "bounce-theory",
+  "paper": "A3",
+  "kind": "analysis",
+  "inputs": [
+    {
+      "name": "Official DESI DR1 full-shape-bao-clustering v1.0 VAC - LRG z0.8-1.1 window matrix, measured P_ell (GCcomb, NGC, SGC) and EZmock covariance, in BOTH conventions (untreated and _thetacut0.05)",
+      "type": "external-dataset",
+      "locator": "https://data.desi.lbl.gov/public/dr1/vac/dr1/full-shape-bao-clustering/v1.0/data/",
+      "checksum": "sha256 of the exact streamed bytes for each of the 10 files, recorded in research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/outputs/ebv_thetacut_z0.8-1.1.json (\"sha256\" block); streamed by HTTP range read into memory and opened with h5py from a BytesIO, never written to disk",
+      "license": "CC BY 4.0 (DESI public data releases)"
+    },
+    {
+      "name": "LS11's 4 committed split P(k) measurements for E(B-V) at z0.8-1.1 (NGC/SGC x high/low), measured with pypower at v5 settings WITHOUT the theta-cut",
+      "type": "internal-artifact",
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/outputs/pk/pk_LRG_z0.8-1.1_{NGC,SGC}_EBV_{high,low}.json",
+      "checksum": null
+    },
+    {
+      "name": "LS11's published untreated E(B-V) z0.8-1.1 row (the gate target)",
+      "type": "internal-artifact",
+      "locator": "research/desi_png_reproduction/lrg_channel_2026_09_22/LEDGER4_LRG_RESULT_2026-09-22.md",
+      "checksum": null
+    },
+    {
+      "name": "v5 QSO E(B-V) row (the cross-tracer comparison, unchanged)",
+      "type": "internal-artifact",
+      "locator": "research/desi_png_reproduction/LEDGER4_RESULT_v5_2026-09-04.md",
+      "checksum": null
+    },
+    {
+      "name": "Chaussidon et al. 2024 - DESI DR1 LRG+QSO local PNG constraint",
+      "type": "external-literature",
+      "locator": "https://arxiv.org/abs/2411.17623",
+      "checksum": null,
+      "license": null
+    }
+  ],
+  "apis": [
+    {
+      "name": "DESI public data server (anonymous HTTP range requests, no key)",
+      "endpoint": "https://data.desi.lbl.gov/public/dr1/",
+      "auth_required": false
+    }
+  ],
+  "code": [
+    {
+      "path": "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/thetacut_io.py",
+      "entrypoint": "imported by run_ebv_thetacut.py",
+      "sha256": "b4693f79a08c21887ab1d4050e787c19daf7afc466bea6fcd79e6017bac3c3ed"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/run_ebv_thetacut.py",
+      "entrypoint": "research/desi_png_reproduction/.venv312/bin/python research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/run_ebv_thetacut.py",
+      "sha256": "0175dbeae7cdbdcd0a70c37cd0a017abda38e9a299e616d5769abb7c3e7ee056"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/lrg_fit_core.py",
+      "entrypoint": "reused UNMODIFIED from LS11 (profile-likelihood core, ModelGrid, rebin, interval)",
+      "sha256": "111c19c2eb5bcbbf06056727bb3265cd46580260143f699113f008acd9cf816d"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/fit_lrg_splits.py",
+      "entrypoint": "reused UNMODIFIED from LS11 (combine_caps + verdict thresholds)",
+      "sha256": "31fb38a1a1c2a3bf0ef264c583b6e4b8c0d07e2c62f7ac3e276e7b9fc47c07f5"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/fit_lrg_headline.py",
+      "entrypoint": "reused UNMODIFIED from LS11 (cosmo_at)",
+      "sha256": "228b408095ce91880fe5cd4d64e1453b6358c86363d527f4138d5c9db01c6284"
+    },
+    {
+      "path": "research/desi_png_reproduction/lrg_channel_2026_09_22/http_stream.py",
+      "entrypoint": "reused UNMODIFIED from LS11 (HTTP range streaming)",
+      "sha256": "cc496ebf3e9a9341194de9c16415999ba53d1c8b06cdb4476b13de191dbcb00d"
+    }
+  ],
+  "environment": {
+    "python": "python3.12.13 (research/desi_png_reproduction/.venv312, gitignored): numpy 2.5.2, scipy 1.18.1, h5py 3.16.0, camb 2.0.4, cosmoprimo 1.0.0 (pypower present but NOT used by this lane - no P(k) was re-measured)",
+    "hardware": "cpu-only, ~2 GB RAM peak, <1 GB free disk needed; Apple M-series MacBook Air, macOS 25.5.0 arm64"
+  },
+  "original_run": {
+    "venue": "local",
+    "gpu": null,
+    "pod_id_or_host": "Mac-3559.lan",
+    "date": "2026-09-22",
+    "wall_clock": "84 s for the four-treatment fit run (2 window variants x 2 p, each a model-basis build of 14-16 s) plus ~5 s for the pre-registration input characterisation; streamed 436290820 B (436 MB) of official products total (435073248 B in the fit run + 1217572 B in the characterisation); bulk catalogue bytes streamed = 0 and written to disk = 0; peak disk = 57344 B (56 KB), this lane's own output directory",
+    "actual_cost_usd": 0.0
+  },
+  "reproduction": {
+    "recommended_venue": "local",
+    "est_wall_clock": "~2 min (436 MB over the wire, 4 model-basis builds)",
+    "est_cost_usd": 0.0,
+    "parallelizable": false,
+    "resume_support": true,
+    "notes": "Self-contained apart from LS11's 4 committed split P(k) JSONs, which are in the repo. No catalogue, no pypower run and no derived cache are needed. The driver is resumable per window variant: delete outputs/ebv_thetacut_z0.8-1.1.json to force a full re-run."
+  },
+  "outputs": [
+    {
+      "locator": "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/outputs/ebv_thetacut_z0.8-1.1.json",
+      "type": "result-json"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/RESULT_2026-09-22.md",
+      "type": "document"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/PRE_REGISTRATION.md",
+      "type": "document"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/RUN_LOG.md",
+      "type": "document"
+    },
+    {
+      "locator": "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/PROPAGATION_NOTE.md",
+      "type": "document"
+    }
+  ],
+  "verification": "Three checks, in this order. (1) The GATE: the untreated re-fit must reproduce LS11's published row - f_NL(high) = -17.62 +/- 8.47, f_NL(low) = -0.27 +/- 8.95, sqrt(2)-corrected Delta/sigma = -0.995 - to within 0.02 on the corrected Delta/sigma and 0.05 on each half (achieved: 0.00038 / 0.00046 / 0.0037). (2) The BITWISE IDENTITY assertion inside run_ebv_thetacut.py: combine_caps_T(Tmap=None) must equal LS11's fit_lrg_splits.combine_caps exactly, for both halves and all three multipoles. (3) The reported theta-cut numbers: D1 sqrt(2)-corrected Delta/sigma = -0.9350 (p=1.0) and -0.9380 (p=1.6), swapped-cap V = -0.9863 / -0.9919 (eps_T = 0.051 / 0.054), window+covariance-only diagnostic D2 = -0.9963 / -1.0019, and the approximation-free anchor shift delta_theta = +1.893 (p=1.0) / +3.796 (p=1.6), i.e. +0.18 sigma.",
+  "status": "runnable-now",
+  "provenance": [
+    "project-context/NEXT_SCIENCE_LEDGER.md item 4",
+    "research/desi_png_reproduction/lrg_channel_2026_09_22/LEDGER4_LRG_RESULT_2026-09-22.md section 6 items 1 and 6 (the two open items this lane addresses)",
+    "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/PRE_REGISTRATION.md",
+    "research/desi_png_reproduction/lrg_ebv_thetacut_2026_09_22/RUN_LOG.md",
+    "directive Q2 (reproducibility manifests), R1 (ledger-first), R6 (claims at their evidential strength)"
+  ]
+}
