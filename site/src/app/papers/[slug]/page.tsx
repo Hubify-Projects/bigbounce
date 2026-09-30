@@ -94,7 +94,7 @@ export default async function PaperDetailPage({ params }: { params: PageParams }
   const paperRounds = paperId ? sortedReviewRounds().filter((r) => r.papers.includes(paperId)) : [];
   const recentRounds = paperRounds.slice(0, 5);
 
-  const manifests = reproExperiments.filter((e) => paperSlugForCode(e.paper) === slug);
+  const manifests = reproExperiments.filter((e) => paperSlugForCode(e.paper ?? "none") === slug);
 
   const pdfArtifactRaw = paper.artifacts.find((a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"));
   const pdfHref = live?.sitePdfPath ?? pdfArtifactRaw?.href ?? null;

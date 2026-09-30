@@ -76,6 +76,9 @@ export interface ReproCode {
 export interface ReproEnvironment {
   python: string;
   hardware: string;
+  network?: string;
+  data?: string;
+  [key: string]: string | undefined;
 }
 
 export interface ReproOriginalRun {
@@ -109,7 +112,7 @@ export interface ReproExperiment {
   id: string;
   title: string;
   program: "bounce-theory" | "anomaly-discovery" | "galaxy-chirality" | "lab-infra" | "track-a" | "track-b" | "track-c" | string;
-  paper: "P1A" | "P1B" | "P1N" | "P2" | "P3-support" | "P4" | "P4P" | "P5" | "anomaly-flagship" | "anomaly-map" | "none" | string;
+  paper: null | "P1A" | "P1B" | "P1N" | "P2" | "P3-support" | "P4" | "P4P" | "P5" | "anomaly-flagship" | "anomaly-map" | "none" | string;
   kind:
     | "derivation"
     | "training"
