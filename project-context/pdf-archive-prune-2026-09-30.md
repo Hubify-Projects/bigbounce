@@ -3554,3 +3554,10 @@ pdf-archive: P1A v1A.0.127, P1B v2B.0.18 (newest archived; current served v2B.0.
 | project-context/pdf-archive/objects/sha256/ff/ff3b7703b491747e9283855e1bd8da26797bfffae5344afe3c61c24a801da79a.pdf | 25677314 | - | ff3b7703b491747e9283855e1bd8da26797bfffae5344afe3c61c24a801da79a | 3e2f5ad7747bde7a78eeb0c554db79a402cb1c0a |
 | project-context/pdf-archive/objects/sha256/ff/ffa61f556f65cd99c5774fe6b99827c20d31acdd56246dab475568d47252c676.pdf | 785362 | - | ffa61f556f65cd99c5774fe6b99827c20d31acdd56246dab475568d47252c676 | 21c8491c655e87c7bb6a2e56f635d5e057526975 |
 | project-context/pdf-archive/objects/sha256/ff/ffcecf9d4c758998a7edd100881359fe3a430b2da205b231d40d830f0bee3470.pdf | 28219805 | - | ffcecf9d4c758998a7edd100881359fe3a430b2da205b231d40d830f0bee3470 | 43e16909fece2df26f6954f447269d4ba369f350 |
+
+## B2 copy (third copy)
+
+- Remote: Backblaze B2 bucket `bigbounce`, prefix `bigbounce/pdf-archive-pruned-2026-09-30/<original repo path>` (S3 endpoint s3.us-west-004.backblazeb2.com).
+- Uploaded by streaming `git cat-file blob <git_blob>` straight to B2 (no local materialization); each object carries `sha256` and `md5` user metadata, and the streamed sha256 was checked against the table above before the upload was accepted.
+- Uploaded: 3538 of 3538. Verified (remote size and ETag/md5 equal to the table): 2345 of 3538, 19.79 GB. Objects under prefix: 3538. Failures: 1193.
+- Restore: `aws s3 cp s3://bigbounce/bigbounce/pdf-archive-pruned-2026-09-30/<path> <path> --endpoint-url https://s3.us-west-004.backblazeb2.com`.
